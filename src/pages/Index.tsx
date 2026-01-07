@@ -3,18 +3,12 @@ import { useTranslation } from 'react-i18next';
 import { countries } from '@/lib/countries-data';
 import { Button } from '@/components/ui/button';
 import { CountryCard } from '@/components/CountryCard';
+import { PyramidTypesShowcase } from '@/components/PyramidTypesShowcase';
 import { ArrowRight, Compass, Shield, Target, Zap } from 'lucide-react';
 
 export default function Index() {
   const navigate = useNavigate();
   const { t } = useTranslation();
-
-  const pyramidTypes = [
-    { key: 'problemRent', color: 'pyramid-rent' },
-    { key: 'stabilityRedis', color: 'pyramid-stability' },
-    { key: 'competenceTrust', color: 'pyramid-competence' },
-    { key: 'growthRisk', color: 'pyramid-growth' },
-  ];
 
   return (
     <div className="min-h-screen pt-16">
@@ -94,7 +88,7 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Pyramid Types */}
+      {/* Pyramid Types - Enhanced Showcase */}
       <section className="py-24 border-t border-border/50 bg-gradient-to-b from-transparent via-card/50 to-transparent">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -104,26 +98,7 @@ export default function Index() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {pyramidTypes.map((type) => (
-              <div
-                key={type.key}
-                className="glass-card rounded-xl p-6 text-center hover:border-primary/30 transition-colors"
-              >
-                <div
-                  className="w-12 h-12 mx-auto mb-4 rounded-lg flex items-center justify-center"
-                  style={{ backgroundColor: `hsl(var(--${type.color}) / 0.2)` }}
-                >
-                  <div
-                    className="w-4 h-4 rounded-sm"
-                    style={{ backgroundColor: `hsl(var(--${type.color}))` }}
-                  />
-                </div>
-                <h3 className="font-display font-semibold mb-2">{t(`pyramids.${type.key}.label`)}</h3>
-                <p className="text-sm text-muted-foreground">{t(`pyramids.${type.key}.description`)}</p>
-              </div>
-            ))}
-          </div>
+          <PyramidTypesShowcase />
         </div>
       </section>
 

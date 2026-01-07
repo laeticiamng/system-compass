@@ -43,8 +43,9 @@
     }
   },
   "pyramids": {
-    "title": "De vier piramides",
+    "title": "De zes piramides",
     "subtitle": "Elk systeem valt in een van deze categorieën",
+    "examples": "Voorbeelden",
     "problemRent": {
       "label": "Probleemrente",
       "description": "De disfunctie is het actief. Problemen oplossen brengt je in gevaar."
@@ -60,6 +61,34 @@
     "growthRisk": {
       "label": "Groei risico",
       "description": "Groei is het actief. Snelheid, schaalbaarheid en kapitaal worden beloond."
+    },
+    "hybridTransition": {
+      "label": "Hybride transitie",
+      "description": "Meerdere logica's bestaan naast elkaar. Navigeer tegenstrijdigheden en snelle veranderingen."
+    },
+    "resourceExtraction": {
+      "label": "Grondstofextractie",
+      "description": "Natuurlijke grondstoffen financieren het systeem. Nabijheid tot de stroom telt het meest."
+    },
+    "characteristics": {
+      "corruption": "Corruptie",
+      "informality": "Informaliteit",
+      "networks": "Netwerken",
+      "bureaucracy": "Bureaucratie",
+      "protection": "Bescherming",
+      "redistribution": "Herverdeling",
+      "precision": "Precisie",
+      "credentials": "Referenties",
+      "trust": "Vertrouwen",
+      "speed": "Snelheid",
+      "capital": "Kapitaal",
+      "scalability": "Schaalbaarheid",
+      "contradictions": "Tegenstrijdigheden",
+      "change": "Verandering",
+      "adaptation": "Aanpassing",
+      "resources": "Grondstoffen",
+      "proximity": "Nabijheid",
+      "distribution": "Distributie"
     }
   },
   "featured": {

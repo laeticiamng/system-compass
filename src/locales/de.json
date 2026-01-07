@@ -43,8 +43,9 @@
     }
   },
   "pyramids": {
-    "title": "Die vier Pyramiden",
+    "title": "Die sechs Pyramiden",
     "subtitle": "Jedes System fällt in eine dieser Kategorien",
+    "examples": "Beispiele",
     "problemRent": {
       "label": "Problemrente",
       "description": "Die Dysfunktion ist das Kapital. Probleme zu lösen bringt dich in Gefahr."
@@ -60,6 +61,34 @@
     "growthRisk": {
       "label": "Wachstumsrisiko",
       "description": "Wachstum ist das Kapital. Geschwindigkeit, Skalierbarkeit und Kapital werden belohnt."
+    },
+    "hybridTransition": {
+      "label": "Hybride Transition",
+      "description": "Mehrere Logiken koexistieren. Navigiere Widersprüche und schnelle Veränderungen."
+    },
+    "resourceExtraction": {
+      "label": "Ressourcenextraktion",
+      "description": "Natürliche Ressourcen finanzieren das System. Nähe zum Fluss zählt am meisten."
+    },
+    "characteristics": {
+      "corruption": "Korruption",
+      "informality": "Informalität",
+      "networks": "Netzwerke",
+      "bureaucracy": "Bürokratie",
+      "protection": "Schutz",
+      "redistribution": "Umverteilung",
+      "precision": "Präzision",
+      "credentials": "Qualifikationen",
+      "trust": "Vertrauen",
+      "speed": "Geschwindigkeit",
+      "capital": "Kapital",
+      "scalability": "Skalierbarkeit",
+      "contradictions": "Widersprüche",
+      "change": "Wandel",
+      "adaptation": "Anpassung",
+      "resources": "Ressourcen",
+      "proximity": "Nähe",
+      "distribution": "Verteilung"
     }
   },
   "featured": {

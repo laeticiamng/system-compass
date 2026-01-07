@@ -43,8 +43,9 @@
     }
   },
   "pyramids": {
-    "title": "Les quatre pyramides",
+    "title": "Les six pyramides",
     "subtitle": "Chaque système entre dans l'une de ces catégories",
+    "examples": "Exemples",
     "problemRent": {
       "label": "Rente du problème",
       "description": "Le dysfonctionnement est l'actif. Résoudre les problèmes te met en danger."
@@ -60,6 +61,34 @@
     "growthRisk": {
       "label": "Risque croissance",
       "description": "La croissance est l'actif. Vitesse, scalabilité et capital sont récompensés."
+    },
+    "hybridTransition": {
+      "label": "Hybride transition",
+      "description": "Plusieurs logiques coexistent. Navigue les contradictions et les changements rapides."
+    },
+    "resourceExtraction": {
+      "label": "Extraction ressources",
+      "description": "Les ressources naturelles financent le système. La proximité au flux compte le plus."
+    },
+    "characteristics": {
+      "corruption": "Corruption",
+      "informality": "Informalité",
+      "networks": "Réseaux",
+      "bureaucracy": "Bureaucratie",
+      "protection": "Protection",
+      "redistribution": "Redistribution",
+      "precision": "Précision",
+      "credentials": "Diplômes",
+      "trust": "Confiance",
+      "speed": "Vitesse",
+      "capital": "Capital",
+      "scalability": "Scalabilité",
+      "contradictions": "Contradictions",
+      "change": "Changement",
+      "adaptation": "Adaptation",
+      "resources": "Ressources",
+      "proximity": "Proximité",
+      "distribution": "Distribution"
     }
   },
   "featured": {
