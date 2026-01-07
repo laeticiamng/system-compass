@@ -85,7 +85,7 @@ export function PyramidTypesShowcase() {
           <div
             key={config.key}
             className="glass-card rounded-xl p-6 hover:border-primary/30 transition-all group cursor-pointer"
-            onClick={() => navigate('/countries')}
+            onClick={() => navigate(`/pyramid-types#${config.type.toLowerCase()}`)}
           >
             {/* Header */}
             <div className="flex items-start gap-4 mb-4">
