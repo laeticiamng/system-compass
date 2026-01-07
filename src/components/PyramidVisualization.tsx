@@ -1,22 +1,34 @@
+import { useTranslation } from 'react-i18next';
 import { Country, PYRAMID_TYPE_INFO } from '@/lib/types';
 import { cn } from '@/lib/utils';
 
 interface PyramidVisualizationProps {
   country: Country;
+  translatedPyramid?: {
+    top: string;
+    institutions: string;
+    gatekeepers: string;
+    valueCreators: string;
+    base: string;
+    realAsset: string;
+  };
   className?: string;
 }
 
 const pyramidLevels = [
-  { key: 'top', label: 'Summit', width: '35%' },
-  { key: 'institutions', label: 'Institutions', width: '50%' },
-  { key: 'gatekeepers', label: 'Gatekeepers', width: '65%' },
-  { key: 'valueCreators', label: 'Value Creators', width: '80%' },
-  { key: 'base', label: 'Base', width: '95%' },
+  { key: 'top', width: '35%' },
+  { key: 'institutions', width: '50%' },
+  { key: 'gatekeepers', width: '65%' },
+  { key: 'valueCreators', width: '80%' },
+  { key: 'base', width: '95%' },
 ] as const;
 
-export function PyramidVisualization({ country, className }: PyramidVisualizationProps) {
+export function PyramidVisualization({ country, translatedPyramid, className }: PyramidVisualizationProps) {
+  const { t } = useTranslation();
   const typeInfo = PYRAMID_TYPE_INFO[country.pyramidType];
   const colorClass = `pyramid-gradient-${typeInfo.color.replace('pyramid-', '')}`;
+
+  const pyramid = translatedPyramid || country.pyramid;
 
   return (
     <div className={cn('space-y-6', className)}>
@@ -43,10 +55,10 @@ export function PyramidVisualization({ country, className }: PyramidVisualizatio
               }}
             >
               <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">
-                {level.label}
+                {t(`pyramid.${level.key}`)}
               </div>
               <div className="text-sm font-medium text-foreground/90">
-                {country.pyramid[level.key]}
+                {pyramid[level.key]}
               </div>
             </div>
           </div>
@@ -56,9 +68,9 @@ export function PyramidVisualization({ country, className }: PyramidVisualizatio
       {/* Real Asset */}
       <div className="text-center mt-8">
         <div className="inline-block px-6 py-3 rounded-full border border-primary/30 bg-primary/5">
-          <div className="text-xs uppercase tracking-wider text-primary mb-1">Real Asset</div>
+          <div className="text-xs uppercase tracking-wider text-primary mb-1">{t('pyramid.realAsset')}</div>
           <div className="text-lg font-display font-semibold text-foreground">
-            {country.pyramid.realAsset}
+            {pyramid.realAsset}
           </div>
         </div>
       </div>
