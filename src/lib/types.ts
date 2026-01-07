@@ -122,3 +122,144 @@ export const PYRAMID_TYPE_INFO: Record<PyramidType, { label: string; description
     color: 'pyramid-growth',
   },
 };
+
+// Life Trajectory Types
+export type LifeMotorProfile = 
+  | 'LOTTERY'
+  | 'COMFORT'
+  | 'BUILDER'
+  | 'SAFE_WEALTH'
+  | 'NOMAD'
+  | 'PURPOSE'
+  | 'STATUS'
+  | 'RECOVERY';
+
+export type TrajectoryPlan = 'SAFE' | 'HYBRID' | 'AMBITIOUS';
+
+export type LifePriority = 'freedom' | 'money' | 'meaning' | 'status' | 'family' | 'calm';
+
+export interface LifeTrajectoryProfile {
+  motorProfile: LifeMotorProfile;
+  riskTolerance: 'low' | 'medium' | 'high';
+  timeHorizon: 'short' | 'medium' | 'long';
+  energyCapacity: 'low' | 'medium' | 'high';
+  geographicFreedom: boolean;
+  priority: LifePriority;
+  avoidsLongStudies: boolean;
+  canSell: boolean;
+  wantsToContribute: boolean;
+  prefersAutonomy: boolean;
+  lgbtq: boolean;
+}
+
+export interface TrajectoryRecommendation {
+  plan: TrajectoryPlan;
+  title: string;
+  description: string;
+  duration: string;
+  paths: string[];
+  skills: string[];
+  risks: string[];
+  firstSteps: string[];
+}
+
+export interface LGBTQRights {
+  index: number; // 0-100, higher is better
+  sameSecMarriage: boolean;
+  civilUnion: boolean;
+  employmentProtection: boolean;
+  safetyRating: 'safe' | 'caution' | 'dangerous';
+  notes?: string;
+}
+
+export const LIFE_MOTOR_PROFILES: Record<LifeMotorProfile, {
+  label: string;
+  description: string;
+  icon: string;
+  workRelation: string;
+  riskRelation: string;
+  whatWorks: string;
+  trap: string;
+  color: string;
+}> = {
+  LOTTERY: {
+    label: 'lifeProfiles.lottery.label',
+    description: 'lifeProfiles.lottery.description',
+    icon: '🎰',
+    workRelation: 'lifeProfiles.lottery.workRelation',
+    riskRelation: 'lifeProfiles.lottery.riskRelation',
+    whatWorks: 'lifeProfiles.lottery.whatWorks',
+    trap: 'lifeProfiles.lottery.trap',
+    color: 'text-yellow-500',
+  },
+  COMFORT: {
+    label: 'lifeProfiles.comfort.label',
+    description: 'lifeProfiles.comfort.description',
+    icon: '🛋️',
+    workRelation: 'lifeProfiles.comfort.workRelation',
+    riskRelation: 'lifeProfiles.comfort.riskRelation',
+    whatWorks: 'lifeProfiles.comfort.whatWorks',
+    trap: 'lifeProfiles.comfort.trap',
+    color: 'text-blue-400',
+  },
+  BUILDER: {
+    label: 'lifeProfiles.builder.label',
+    description: 'lifeProfiles.builder.description',
+    icon: '🏗️',
+    workRelation: 'lifeProfiles.builder.workRelation',
+    riskRelation: 'lifeProfiles.builder.riskRelation',
+    whatWorks: 'lifeProfiles.builder.whatWorks',
+    trap: 'lifeProfiles.builder.trap',
+    color: 'text-emerald-500',
+  },
+  SAFE_WEALTH: {
+    label: 'lifeProfiles.safeWealth.label',
+    description: 'lifeProfiles.safeWealth.description',
+    icon: '🏦',
+    workRelation: 'lifeProfiles.safeWealth.workRelation',
+    riskRelation: 'lifeProfiles.safeWealth.riskRelation',
+    whatWorks: 'lifeProfiles.safeWealth.whatWorks',
+    trap: 'lifeProfiles.safeWealth.trap',
+    color: 'text-amber-500',
+  },
+  NOMAD: {
+    label: 'lifeProfiles.nomad.label',
+    description: 'lifeProfiles.nomad.description',
+    icon: '🌍',
+    workRelation: 'lifeProfiles.nomad.workRelation',
+    riskRelation: 'lifeProfiles.nomad.riskRelation',
+    whatWorks: 'lifeProfiles.nomad.whatWorks',
+    trap: 'lifeProfiles.nomad.trap',
+    color: 'text-cyan-500',
+  },
+  PURPOSE: {
+    label: 'lifeProfiles.purpose.label',
+    description: 'lifeProfiles.purpose.description',
+    icon: '💝',
+    workRelation: 'lifeProfiles.purpose.workRelation',
+    riskRelation: 'lifeProfiles.purpose.riskRelation',
+    whatWorks: 'lifeProfiles.purpose.whatWorks',
+    trap: 'lifeProfiles.purpose.trap',
+    color: 'text-pink-500',
+  },
+  STATUS: {
+    label: 'lifeProfiles.status.label',
+    description: 'lifeProfiles.status.description',
+    icon: '👔',
+    workRelation: 'lifeProfiles.status.workRelation',
+    riskRelation: 'lifeProfiles.status.riskRelation',
+    whatWorks: 'lifeProfiles.status.whatWorks',
+    trap: 'lifeProfiles.status.trap',
+    color: 'text-purple-500',
+  },
+  RECOVERY: {
+    label: 'lifeProfiles.recovery.label',
+    description: 'lifeProfiles.recovery.description',
+    icon: '🔄',
+    workRelation: 'lifeProfiles.recovery.workRelation',
+    riskRelation: 'lifeProfiles.recovery.riskRelation',
+    whatWorks: 'lifeProfiles.recovery.whatWorks',
+    trap: 'lifeProfiles.recovery.trap',
+    color: 'text-teal-500',
+  },
+};

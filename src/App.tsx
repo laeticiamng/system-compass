@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Countries from "./pages/Countries";
 import CountryDetail from "./pages/CountryDetail";
 import ProfileTest from "./pages/ProfileTest";
+import LifeTrajectory from "./pages/LifeTrajectory";
 import Match from "./pages/Match";
 import Compare from "./pages/Compare";
 import Resources from "./pages/Resources";
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/countries" element={<Countries />} />
           <Route path="/country/:id" element={<CountryDetail />} />
           <Route path="/profile-test" element={<ProfileTest />} />
+          <Route path="/life-trajectory" element={<LifeTrajectory />} />
           <Route path="/match" element={<Match />} />
           <Route path="/compare" element={<Compare />} />
           <Route path="/resources" element={<Resources />} />
