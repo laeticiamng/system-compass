@@ -221,13 +221,6 @@ export default function ProfileTest() {
               {t('profileTest.retakeTest')}
             </Button>
           </div>
-                setResult(null);
-                setStep(0);
-              }}
-            >
-              {t('profileTest.retakeTest')}
-            </Button>
-          </div>
         </div>
       </div>
     );
