@@ -8,6 +8,8 @@
     "start": "Accueil",
     "countries": "Pays",
     "profile": "Profil",
+    "match": "Match",
+    "compare": "Comparer",
     "resources": "Ressources"
   },
   "hero": {
@@ -305,7 +307,10 @@
     "compatibility": "compatibilité",
     "exploreAll": "Explorer tous les pays",
     "compareCountries": "Comparer les pays",
-    "retakeTest": "Refaire le test"
+    "retakeTest": "Refaire le test",
+    "shareResults": "Partager les résultats",
+    "copyLink": "Copier le lien",
+    "linkCopied": "Lien copié !"
   },
   "compare": {
     "title": "Comparer les pays",
@@ -315,6 +320,37 @@
     "selectBoth": "Sélectionne deux pays ci-dessus pour les comparer côte à côte.",
     "keyMetrics": "Métriques clés",
     "systemType": "Type de système",
-    "strategies": "Stratégies"
+    "strategies": "Stratégies",
+    "shareComparison": "Partager la comparaison",
+    "copyLink": "Copier le lien",
+    "linkCopied": "Lien copié !",
+    "visaInfo": "Visa & Immigration",
+    "costOfLiving": "Coût de la vie",
+    "qualityOfLife": "Qualité de vie"
+  },
+  "visa": {
+    "workVisa": "Visa travail",
+    "startupVisa": "Visa startup",
+    "digitalNomadVisa": "Visa nomade digital",
+    "investmentVisa": "Visa investisseur",
+    "citizenshipYears": "Années jusqu'à la citoyenneté",
+    "easy": "Facile",
+    "moderate": "Modéré",
+    "difficult": "Difficile",
+    "available": "Disponible",
+    "notAvailable": "Non disponible",
+    "minInvestment": "Investissement min."
+  },
+  "costOfLiving": {
+    "index": "Indice coût",
+    "rentIndex": "Indice loyer",
+    "monthlyBudgetSingle": "Budget mensuel (célibataire)",
+    "monthlyBudgetFamily": "Budget mensuel (famille)"
+  },
+  "qualityOfLife": {
+    "healthcareRank": "Rang santé",
+    "safetyIndex": "Indice sécurité",
+    "workLifeBalance": "Équilibre vie-travail",
+    "internetSpeed": "Vitesse internet"
   }
 }

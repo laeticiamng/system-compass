@@ -26,6 +26,33 @@ export interface CountryPlaybook {
   planB: string;
 }
 
+export interface CountryVisaInfo {
+  workVisa: 'easy' | 'moderate' | 'difficult';
+  startupVisa: boolean;
+  digitalNomadVisa: boolean;
+  investmentVisa: boolean;
+  investmentMinimum?: number;
+  citizenshipYears: number;
+  notes?: string;
+}
+
+export interface CountryCostOfLiving {
+  index: number; // 0-100, relative to NYC (100)
+  rentIndex: number;
+  groceriesIndex: number;
+  monthlyBudgetSingle: number;
+  monthlyBudgetFamily: number;
+}
+
+export interface CountryQualityOfLife {
+  healthcareRank: number;
+  educationIndex: number;
+  safetyIndex: number;
+  environmentIndex: number;
+  workLifeBalance: number; // 1-10
+  internetSpeed: number; // Mbps average
+}
+
 export interface Country {
   id: string;
   name: string;
@@ -46,6 +73,9 @@ export interface Country {
     corruptionIndex: number;
     freedomIndex: number;
   };
+  visa: CountryVisaInfo;
+  costOfLiving: CountryCostOfLiving;
+  qualityOfLife: CountryQualityOfLife;
   lastUpdated: string;
   sources: string[];
 }
