@@ -1,0 +1,297 @@
+{
+  "common": {
+    "appName": "Pyramid Compass",
+    "tagline": "Navega pelo sistema real",
+    "disclaimer": "Apenas ferramenta analítica. Não é aconselhamento legal ou financeiro."
+  },
+  "nav": {
+    "start": "Início",
+    "countries": "Países",
+    "profile": "Perfil",
+    "resources": "Recursos"
+  },
+  "hero": {
+    "badge": "Navega pelo sistema real",
+    "title1": "Compreende a tua",
+    "titleHighlight": "Pirâmide",
+    "title2": "Encontra o teu caminho",
+    "subtitle": "Cada país tem um sistema oculto. Aprende o que realmente recompensa, onde te encaixas, e como sobreviver inteligentemente — ou escapar estrategicamente.",
+    "discoverProfile": "Descobre o teu perfil",
+    "exploreCountries": "Explorar países"
+  },
+  "howItWorks": {
+    "title": "Como funciona",
+    "subtitle": "Um framework pragmático para entender sistemas, não para combatê-los",
+    "understand": {
+      "title": "Compreende a pirâmide",
+      "description": "Cada país recompensa algo diferente. Aprende o que o sistema realmente valoriza — problemas, estabilidade, competência ou crescimento."
+    },
+    "profile": {
+      "title": "Conhece o teu perfil",
+      "description": "Descobre os teus valores, tolerância ao risco e ambições. Encontra quais sistemas se alinham contigo."
+    },
+    "playbook": {
+      "title": "Obtém o teu playbook",
+      "description": "Estratégias concretas para sobreviver onde estás e construir opções para onde queres estar."
+    }
+  },
+  "pyramids": {
+    "title": "As quatro pirâmides",
+    "subtitle": "Cada sistema cai numa destas categorias",
+    "problemRent": {
+      "label": "Renda do problema",
+      "description": "A disfunção é o ativo. Resolver problemas põe-te em risco."
+    },
+    "stabilityRedis": {
+      "label": "Redistribuição estabilidade",
+      "description": "O sistema recompensa estabilidade, proteção e redistribuição."
+    },
+    "competenceTrust": {
+      "label": "Confiança competência",
+      "description": "A solução é o ativo. Rigor e competência são recompensados."
+    },
+    "growthRisk": {
+      "label": "Risco crescimento",
+      "description": "O crescimento é o ativo. Velocidade, escalabilidade e capital são recompensados."
+    }
+  },
+  "featured": {
+    "title": "Explorar países",
+    "subtitle": "Análise profunda de sistemas reais, não rankings de fantasia",
+    "viewAll": "Ver tudo"
+  },
+  "cta": {
+    "title": "Pronto para navegar?",
+    "subtitle": "Este site não julga. Explica. Ajuda-te a sobreviver inteligentemente onde estás e a mover-te para um sistema que recompensa o que és.",
+    "button": "Começa a tua jornada"
+  },
+  "countries": {
+    "title": "Inteligência de países",
+    "subtitle": "Análise profunda de sistemas nacionais. Compreende o que cada país realmente recompensa, os riscos e as tuas opções estratégicas.",
+    "allSystems": "Todos os sistemas",
+    "noResults": "Nenhum país corresponde a este filtro.",
+    "explore": "Explorar →",
+    "gdpCap": "PIB/cap",
+    "passport": "Passaporte",
+    "population": "População"
+  },
+  "countryDetail": {
+    "notFound": "País não encontrado",
+    "backToCountries": "Voltar aos países",
+    "snapshot": {
+      "gdpPerCapita": "PIB/Capita",
+      "population": "População",
+      "passportRank": "Ranking passaporte",
+      "corruptionIndex": "Índice corrupção",
+      "freedomIndex": "Índice liberdade"
+    },
+    "systemPyramid": "Pirâmide do sistema",
+    "riskAssessment": "Avaliação de riscos",
+    "whoWinsLoses": "Quem ganha / Quem perde",
+    "survivalPlaybook": "Playbook de sobrevivência",
+    "sourcesUpdates": "Fontes & atualizações",
+    "lastUpdated": "Última atualização"
+  },
+  "pyramid": {
+    "top": "Topo",
+    "institutions": "Instituições",
+    "gatekeepers": "Guardiões",
+    "valueCreators": "Criadores de valor",
+    "base": "Base",
+    "realAsset": "Ativo real"
+  },
+  "risks": {
+    "legal": "Risco legal",
+    "safety": "Risco segurança",
+    "corruption": "Corrupção",
+    "volatility": "Volatilidade",
+    "bureaucracy": "Burocracia",
+    "levels": {
+      "low": "Baixo",
+      "medium": "Médio",
+      "high": "Alto",
+      "critical": "Crítico"
+    }
+  },
+  "whoWins": {
+    "wins": "Quem ganha",
+    "loses": "Quem perde"
+  },
+  "playbook": {
+    "do": "Fazer",
+    "dont": "Não fazer",
+    "survivalRoadmap": "Roteiro de sobrevivência",
+    "timeline": {
+      "days30": "0-30 dias",
+      "months12": "3-12 meses",
+      "years5": "1-5 anos"
+    },
+    "planB": "Plano B"
+  },
+  "profileTest": {
+    "questionOf": "Pergunta {{current}} de {{total}}",
+    "questions": {
+      "ambition": {
+        "question": "Quão importante é maximizar o teu rendimento, impacto e progressão de carreira?",
+        "low": "Não importante",
+        "high": "Essencial"
+      },
+      "meritNeed": {
+        "question": "Quanto precisas que esforço e competência sejam justamente recompensados?",
+        "low": "Adapto-me",
+        "high": "Não negociável"
+      },
+      "riskTolerance": {
+        "question": "Consegues viver sem rede de segurança social se o potencial ascendente for alto?",
+        "low": "Preciso de segurança",
+        "high": "Pronto para arriscar"
+      },
+      "securityNeed": {
+        "question": "Quanto valorizas estabilidade, previsibilidade e proteção?",
+        "low": "Flexível",
+        "high": "Essencial"
+      },
+      "bureaucracyTolerance": {
+        "question": "Consegues tolerar procedimentos pesados, papelada e processos lentos?",
+        "low": "Odeio",
+        "high": "Consigo lidar"
+      },
+      "innovationDrive": {
+        "question": "Quão motivado estás para criar coisas novas e resolver problemas complexos?",
+        "low": "Prefiro rotina",
+        "high": "Obcecado"
+      },
+      "discretionPreference": {
+        "question": "Preferes operar discretamente em vez de ser publicamente visível?",
+        "low": "Adoro os holofotes",
+        "high": "Ficar invisível"
+      },
+      "mobility": {
+        "question": "Qual é o teu potencial de mobilidade?",
+        "options": {
+          "low": {
+            "label": "Não posso mudar",
+            "description": "Preso aqui por agora"
+          },
+          "medium": {
+            "label": "1-3 anos",
+            "description": "Posso mudar a médio prazo"
+          },
+          "high": {
+            "label": "Qualquer momento",
+            "description": "Pronto para mudar"
+          }
+        }
+      }
+    },
+    "back": "Voltar",
+    "next": "Seguinte",
+    "seeResults": "Ver resultados",
+    "archetypes": {
+      "ambitiousMeritocrat": {
+        "name": "Meritocrático ambicioso",
+        "description": "Procuras recompensas proporcionais pela excelência. Prosperas onde a competência ganha."
+      },
+      "stabilitySeeker": {
+        "name": "Buscador de estabilidade",
+        "description": "Valorizas previsibilidade e proteção. Rendes melhor com uma rede de segurança."
+      },
+      "strategicSurvivor": {
+        "name": "Sobrevivente estratégico",
+        "description": "Sabes navegar sem exposição. Constróis em silêncio e proteges ganhos."
+      },
+      "growthConquistador": {
+        "name": "Conquistador de crescimento",
+        "description": "Persegues escala e velocidade. Prosperas em ambientes de alto risco e alta recompensa."
+      },
+      "balancedNavigator": {
+        "name": "Navegador equilibrado",
+        "description": "Adaptas-te ao contexto. Podes sobreviver em muitos sistemas mas não otimizas para nenhum."
+      }
+    },
+    "strengths": "Pontos fortes",
+    "vulnerabilities": "Vulnerabilidades",
+    "compatibleSystems": "Sistemas compatíveis",
+    "redFlags": "Bandeiras vermelhas — Evita estes",
+    "findCountries": "Encontra países compatíveis",
+    "retakeTest": "Refazer teste"
+  },
+  "resources": {
+    "title": "Recursos",
+    "subtitle": "Ferramentas práticas e frameworks para construir opcionalidade. Sem fantasias—apenas passos acionáveis.",
+    "categories": {
+      "financial": {
+        "title": "Independência financeira",
+        "description": "Constrói a tua base financeira independentemente da localização",
+        "items": {
+          "emergencyFund": { "name": "Calculadora fundo emergência", "description": "6-12 meses de despesas mínimo" },
+          "multipleIncome": { "name": "Múltiplas fontes de rendimento", "description": "Nunca depender de uma só fonte" },
+          "offshoreBanking": { "name": "Banca offshore básica", "description": "Estratégias de diversificação legítimas" },
+          "taxOptimization": { "name": "Otimização fiscal", "description": "Estruturas legais para a tua situação" }
+        }
+      },
+      "skills": {
+        "title": "Competências exportáveis",
+        "description": "Competências que atravessam fronteiras e sistemas",
+        "items": {
+          "remote": { "name": "Competências remote-first", "description": "Tech, escrita, design, consultoria" },
+          "certifications": { "name": "Certificações que viajam", "description": "Credenciais reconhecidas internacionalmente" },
+          "languages": { "name": "Aquisição de línguas", "description": "Prioridades de aprendizagem estratégicas" },
+          "digitalPresence": { "name": "Presença digital", "description": "Constrói uma reputação que te precede" }
+        }
+      },
+      "mobility": {
+        "title": "Preparação para mobilidade",
+        "description": "Prepara-te para te moveres quando a oportunidade surgir",
+        "items": {
+          "documents": { "name": "Segurança de documentos", "description": "Mantém todos os papéis organizados e atualizados" },
+          "visaStrategy": { "name": "Matriz estratégia de visto", "description": "Conhece as tuas opções antes de precisares delas" },
+          "secondResidency": { "name": "Opções segunda residência", "description": "Caminhos baseados em investimento e competências" },
+          "digitalNomad": { "name": "Frameworks nómada digital", "description": "Testa localizações antes de te comprometeres" }
+        }
+      },
+      "security": {
+        "title": "Segurança & discrição",
+        "description": "Protege-te em ambientes de alto risco",
+        "items": {
+          "opsec": { "name": "Segurança operacional básica", "description": "Minimiza o teu perfil de exposição" },
+          "digitalPrivacy": { "name": "Privacidade digital", "description": "Comunicações e dados seguros" },
+          "assetProtection": { "name": "Proteção de ativos", "description": "Estrutura para minimizar risco de apreensão" },
+          "networkSafety": { "name": "Segurança de rede", "description": "Em quem confiar e como verificar" }
+        }
+      }
+    },
+    "checklists": {
+      "title": "Checklists rápidas",
+      "survival30": {
+        "title": "Arranque sobrevivência 30 dias",
+        "items": [
+          "Audita a tua posição financeira atual",
+          "Identifica a tua competência exportável principal",
+          "Assegura todos os documentos de identidade",
+          "Começa um fundo de emergência (mesmo 50€/mês)",
+          "Mapeia o valor da tua rede atual",
+          "Pesquisa um destino potencial"
+        ]
+      },
+      "preMove": {
+        "title": "Checklist pré-mudança",
+        "items": [
+          "Passaporte válido (6+ meses restantes)",
+          "Pegada digital limpa",
+          "Fonte de rendimento que viaja",
+          "Conta bancária com acesso internacional",
+          "Registos médicos e prescrições",
+          "Procuração para assuntos do país de origem"
+        ]
+      }
+    },
+    "disclaimer": {
+      "title": "Aviso importante",
+      "text": "Este site fornece apenas frameworks analíticos. Não é aconselhamento legal, financeiro ou de imigração. Consulta sempre profissionais qualificados para a tua situação específica. Cada ação tem consequências—planeia cuidadosamente e nunca tomes riscos desnecessários."
+    }
+  },
+  "language": {
+    "select": "Idioma"
+  }
+}

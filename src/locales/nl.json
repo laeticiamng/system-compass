@@ -1,0 +1,297 @@
+{
+  "common": {
+    "appName": "Pyramid Compass",
+    "tagline": "Navigeer door het echte systeem",
+    "disclaimer": "Alleen analytisch hulpmiddel. Geen juridisch of financieel advies."
+  },
+  "nav": {
+    "start": "Start",
+    "countries": "Landen",
+    "profile": "Profiel",
+    "resources": "Bronnen"
+  },
+  "hero": {
+    "badge": "Navigeer door het echte systeem",
+    "title1": "Begrijp je",
+    "titleHighlight": "Piramide",
+    "title2": "Vind je pad",
+    "subtitle": "Elk land heeft een verborgen systeem. Leer wat het echt beloont, waar jij past, en hoe je slim kunt overleven — of strategisch kunt ontsnappen.",
+    "discoverProfile": "Ontdek je profiel",
+    "exploreCountries": "Verken landen"
+  },
+  "howItWorks": {
+    "title": "Hoe het werkt",
+    "subtitle": "Een pragmatisch kader om systemen te begrijpen, niet om ze te bestrijden",
+    "understand": {
+      "title": "Begrijp de piramide",
+      "description": "Elk land beloont iets anders. Leer wat het systeem echt waardeert — problemen, stabiliteit, competentie of groei."
+    },
+    "profile": {
+      "title": "Ken je profiel",
+      "description": "Ontdek je waarden, risicotolerantie en ambities. Vind welke systemen bij jou passen."
+    },
+    "playbook": {
+      "title": "Krijg je playbook",
+      "description": "Concrete strategieën om te overleven waar je bent en opties te bouwen naar waar je wilt zijn."
+    }
+  },
+  "pyramids": {
+    "title": "De vier piramides",
+    "subtitle": "Elk systeem valt in een van deze categorieën",
+    "problemRent": {
+      "label": "Probleemrente",
+      "description": "De disfunctie is het actief. Problemen oplossen brengt je in gevaar."
+    },
+    "stabilityRedis": {
+      "label": "Stabiliteit herverdeling",
+      "description": "Het systeem beloont stabiliteit, bescherming en herverdeling."
+    },
+    "competenceTrust": {
+      "label": "Competentie vertrouwen",
+      "description": "De oplossing is het actief. Nauwkeurigheid en competentie worden beloond."
+    },
+    "growthRisk": {
+      "label": "Groei risico",
+      "description": "Groei is het actief. Snelheid, schaalbaarheid en kapitaal worden beloond."
+    }
+  },
+  "featured": {
+    "title": "Verken landen",
+    "subtitle": "Diepgaande analyse van echte systemen, geen fantasie-ranglijsten",
+    "viewAll": "Bekijk alles"
+  },
+  "cta": {
+    "title": "Klaar om te navigeren?",
+    "subtitle": "Deze site oordeelt niet. Hij legt uit. Hij helpt je slim te overleven waar je bent en naar een systeem te bewegen dat beloont wat je bent.",
+    "button": "Begin je reis"
+  },
+  "countries": {
+    "title": "Landenintelligentie",
+    "subtitle": "Diepgaande analyse van nationale systemen. Begrijp wat elk land echt beloont, de risico's en je strategische opties.",
+    "allSystems": "Alle systemen",
+    "noResults": "Geen landen voldoen aan dit filter.",
+    "explore": "Verkennen →",
+    "gdpCap": "BBP/cap",
+    "passport": "Paspoort",
+    "population": "Bevolking"
+  },
+  "countryDetail": {
+    "notFound": "Land niet gevonden",
+    "backToCountries": "Terug naar landen",
+    "snapshot": {
+      "gdpPerCapita": "BBP/Capita",
+      "population": "Bevolking",
+      "passportRank": "Paspoort rang",
+      "corruptionIndex": "Corruptie-index",
+      "freedomIndex": "Vrijheidsindex"
+    },
+    "systemPyramid": "Systeempiramide",
+    "riskAssessment": "Risicobeoordeling",
+    "whoWinsLoses": "Wie wint / Wie verliest",
+    "survivalPlaybook": "Overlevings-playbook",
+    "sourcesUpdates": "Bronnen & updates",
+    "lastUpdated": "Laatst bijgewerkt"
+  },
+  "pyramid": {
+    "top": "Top",
+    "institutions": "Instituties",
+    "gatekeepers": "Poortwachters",
+    "valueCreators": "Waardecreators",
+    "base": "Basis",
+    "realAsset": "Echt actief"
+  },
+  "risks": {
+    "legal": "Juridisch risico",
+    "safety": "Veiligheidsrisico",
+    "corruption": "Corruptie",
+    "volatility": "Volatiliteit",
+    "bureaucracy": "Bureaucratie",
+    "levels": {
+      "low": "Laag",
+      "medium": "Gemiddeld",
+      "high": "Hoog",
+      "critical": "Kritiek"
+    }
+  },
+  "whoWins": {
+    "wins": "Wie wint",
+    "loses": "Wie verliest"
+  },
+  "playbook": {
+    "do": "Doen",
+    "dont": "Niet doen",
+    "survivalRoadmap": "Overlevingsroutekaart",
+    "timeline": {
+      "days30": "0-30 dagen",
+      "months12": "3-12 maanden",
+      "years5": "1-5 jaar"
+    },
+    "planB": "Plan B"
+  },
+  "profileTest": {
+    "questionOf": "Vraag {{current}} van {{total}}",
+    "questions": {
+      "ambition": {
+        "question": "Hoe belangrijk is het maximaliseren van je inkomen, impact en carrièreontwikkeling?",
+        "low": "Niet belangrijk",
+        "high": "Essentieel"
+      },
+      "meritNeed": {
+        "question": "Hoeveel heb je nodig dat inspanning en competentie eerlijk worden beloond?",
+        "low": "Ik pas me aan",
+        "high": "Niet onderhandelbaar"
+      },
+      "riskTolerance": {
+        "question": "Kun je leven zonder sociaal vangnet als het opwaarts potentieel hoog is?",
+        "low": "Zekerheid nodig",
+        "high": "Klaar om te riskeren"
+      },
+      "securityNeed": {
+        "question": "Hoeveel waarde hecht je aan stabiliteit, voorspelbaarheid en bescherming?",
+        "low": "Flexibel",
+        "high": "Essentieel"
+      },
+      "bureaucracyTolerance": {
+        "question": "Kun je zware procedures, papierwerk en trage processen tolereren?",
+        "low": "Haat het",
+        "high": "Kan ermee omgaan"
+      },
+      "innovationDrive": {
+        "question": "Hoe gedreven ben je om nieuwe dingen te creëren en complexe problemen op te lossen?",
+        "low": "Geef voorkeur aan routine",
+        "high": "Geobsedeerd"
+      },
+      "discretionPreference": {
+        "question": "Geef je de voorkeur aan discreet opereren boven publiek zichtbaar zijn?",
+        "low": "Hou van de schijnwerpers",
+        "high": "Onzichtbaar blijven"
+      },
+      "mobility": {
+        "question": "Wat is je mobiliteitspotentieel?",
+        "options": {
+          "low": {
+            "label": "Kan niet verhuizen",
+            "description": "Voorlopig hier vastzitten"
+          },
+          "medium": {
+            "label": "1-3 jaar",
+            "description": "Kan op middellange termijn verhuizen"
+          },
+          "high": {
+            "label": "Elk moment",
+            "description": "Klaar om te verhuizen"
+          }
+        }
+      }
+    },
+    "back": "Terug",
+    "next": "Volgende",
+    "seeResults": "Bekijk resultaten",
+    "archetypes": {
+      "ambitiousMeritocrat": {
+        "name": "Ambitieuze meritocraat",
+        "description": "Je zoekt proportionele beloningen voor excellentie. Je bloeit waar competentie wint."
+      },
+      "stabilitySeeker": {
+        "name": "Stabiliteitszoeker",
+        "description": "Je waardeert voorspelbaarheid en bescherming. Je presteert het beste met een vangnet."
+      },
+      "strategicSurvivor": {
+        "name": "Strategische overlever",
+        "description": "Je weet hoe je zonder blootstelling moet navigeren. Je bouwt stil en beschermt winsten."
+      },
+      "growthConquistador": {
+        "name": "Groei-conquistador",
+        "description": "Je jaagt op schaal en snelheid. Je bloeit in hoog-risico, hoge-beloning omgevingen."
+      },
+      "balancedNavigator": {
+        "name": "Gebalanceerde navigator",
+        "description": "Je past je aan de context aan. Je kunt in veel systemen overleven maar optimaliseert voor geen."
+      }
+    },
+    "strengths": "Sterktes",
+    "vulnerabilities": "Kwetsbaarheden",
+    "compatibleSystems": "Compatibele systemen",
+    "redFlags": "Rode vlaggen — Vermijd deze",
+    "findCountries": "Vind compatibele landen",
+    "retakeTest": "Test opnieuw doen"
+  },
+  "resources": {
+    "title": "Bronnen",
+    "subtitle": "Praktische tools en kaders voor het bouwen van optionaliteit. Geen fantasieën—alleen uitvoerbare stappen.",
+    "categories": {
+      "financial": {
+        "title": "Financiële onafhankelijkheid",
+        "description": "Bouw je financiële basis ongeacht locatie",
+        "items": {
+          "emergencyFund": { "name": "Noodfonds calculator", "description": "6-12 maanden uitgaven minimum" },
+          "multipleIncome": { "name": "Meerdere inkomstenbronnen", "description": "Nooit afhankelijk van één bron" },
+          "offshoreBanking": { "name": "Offshore banking basis", "description": "Legitieme diversificatiestrategieën" },
+          "taxOptimization": { "name": "Belastingoptimalisatie", "description": "Legale structuren voor jouw situatie" }
+        }
+      },
+      "skills": {
+        "title": "Exporteerbare vaardigheden",
+        "description": "Vaardigheden die grenzen en systemen oversteken",
+        "items": {
+          "remote": { "name": "Remote-first vaardigheden", "description": "Tech, schrijven, design, consulting" },
+          "certifications": { "name": "Certificeringen die reizen", "description": "Internationaal erkende referenties" },
+          "languages": { "name": "Taalverwerving", "description": "Strategische leerprioriteiten" },
+          "digitalPresence": { "name": "Digitale aanwezigheid", "description": "Bouw een reputatie die je voorafgaat" }
+        }
+      },
+      "mobility": {
+        "title": "Mobiliteitsvoorbereiding",
+        "description": "Bereid je voor op beweging wanneer de kans komt",
+        "items": {
+          "documents": { "name": "Documentbeveiliging", "description": "Houd alle papieren georganiseerd en up-to-date" },
+          "visaStrategy": { "name": "Visum strategie matrix", "description": "Ken je opties voordat je ze nodig hebt" },
+          "secondResidency": { "name": "Tweede verblijfsopties", "description": "Investering en vaardigheidsgebaseerde paden" },
+          "digitalNomad": { "name": "Digital nomad kaders", "description": "Test locaties voordat je je vastlegt" }
+        }
+      },
+      "security": {
+        "title": "Beveiliging & discretie",
+        "description": "Bescherm jezelf in hoog-risico omgevingen",
+        "items": {
+          "opsec": { "name": "Operationele beveiliging basis", "description": "Minimaliseer je blootstellingsprofiel" },
+          "digitalPrivacy": { "name": "Digitale privacy", "description": "Beveiligde communicatie en data" },
+          "assetProtection": { "name": "Vermogensbescherming", "description": "Structuur om inbeslagnemingsrisico te minimaliseren" },
+          "networkSafety": { "name": "Netwerkbeveiliging", "description": "Wie te vertrouwen en hoe te verifiëren" }
+        }
+      }
+    },
+    "checklists": {
+      "title": "Snelle checklists",
+      "survival30": {
+        "title": "30-dagen overlevingsstart",
+        "items": [
+          "Audit je huidige financiële positie",
+          "Identificeer je top exporteerbare vaardigheid",
+          "Beveilig alle identiteitsdocumenten",
+          "Start een noodfonds (zelfs €50/maand)",
+          "Breng de waarde van je huidige netwerk in kaart",
+          "Onderzoek één potentiële bestemming"
+        ]
+      },
+      "preMove": {
+        "title": "Pre-verhuizing checklist",
+        "items": [
+          "Geldig paspoort (6+ maanden resterend)",
+          "Schone digitale voetafdruk",
+          "Inkomstenbron die reist",
+          "Bankrekening met internationale toegang",
+          "Medische dossiers en recepten",
+          "Volmacht voor thuislandzaken"
+        ]
+      }
+    },
+    "disclaimer": {
+      "title": "Belangrijke disclaimer",
+      "text": "Deze site biedt alleen analytische kaders. Het is geen juridisch, financieel of immigratieadvies. Raadpleeg altijd gekwalificeerde professionals voor jouw specifieke situatie. Elke actie heeft gevolgen—plan zorgvuldig en neem nooit onnodige risico's."
+    }
+  },
+  "language": {
+    "select": "Taal"
+  }
+}
