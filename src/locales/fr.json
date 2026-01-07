@@ -99,13 +99,915 @@
     "sourcesUpdates": "Sources & mises à jour",
     "lastUpdated": "Dernière mise à jour"
   },
-  "pyramid": {
+"pyramid": {
     "top": "Sommet",
     "institutions": "Institutions",
     "gatekeepers": "Gardiens",
     "valueCreators": "Créateurs de valeur",
     "base": "Base",
     "realAsset": "Actif réel"
+  },
+  "countriesData": {
+    "cameroon": {
+      "name": "Cameroun",
+      "region": "Afrique Centrale",
+      "ruleOfGold": "Ne jamais résoudre un problème visible. Ne jamais devenir indispensable. Ne jamais centraliser.",
+      "pyramid": {
+        "top": "Élites politiques et réseaux connectés",
+        "institutions": "Appareil d'État servant des intérêts privés",
+        "gatekeepers": "Bureaucrates, intermédiaires et courtiers informels",
+        "valueCreators": "Entrepreneurs, agriculteurs et travailleurs informels",
+        "base": "Population générale finançant le système",
+        "realAsset": "Le problème lui-même — le dysfonctionnement est profitable"
+      },
+      "whoWins": [
+        "Insiders connectés avec accès politique",
+        "Gardiens qui contrôlent les goulots d'étranglement",
+        "Ceux qui monétisent le dysfonctionnement",
+        "Acteurs internationaux extrayant des ressources"
+      ],
+      "whoLoses": [
+        "Personnes compétentes sans connexions",
+        "Entrepreneurs transparents",
+        "Quiconque résout des problèmes publiquement",
+        "Jeunes ambitieux sans réseaux"
+      ],
+      "playbook": {
+        "do": [
+          "Rester invisible, construire discrètement",
+          "Diversifier les sources de revenus",
+          "Développer des compétences exportables",
+          "Créer des options offshore progressivement",
+          "Réseauter avec la diaspora"
+        ],
+        "dont": [
+          "Résoudre publiquement des problèmes systémiques",
+          "Devenir visiblement prospère sans protection",
+          "Centraliser les actifs ou le pouvoir",
+          "Faire confiance aveuglément aux institutions formelles",
+          "Moraliser ou critiquer ouvertement"
+        ],
+        "plan30Days": [
+          "Sécuriser les documents et papiers d'identité",
+          "Commencer un fonds d'urgence (même petit)",
+          "Identifier une compétence exportable à développer",
+          "Cartographier la valeur de votre réseau actuel"
+        ],
+        "plan12Months": [
+          "Développer une source de revenus secondaire",
+          "Construire des connexions internationales",
+          "Apprendre des compétences de travail à distance",
+          "Créer un premier compte offshore si possible"
+        ],
+        "plan5Years": [
+          "Établir une option de résidence à l'étranger",
+          "Diversifier les actifs géographiquement",
+          "Construire une réputation dans un réseau international",
+          "Créer des flux de revenus passifs"
+        ],
+        "planB": "Se concentrer sur les destinations francophones avec un accès visa plus facile (Maroc, Sénégal, France, Canada-Québec). Développer des compétences numériques pour le travail à distance."
+      }
+    },
+    "france": {
+      "name": "France",
+      "region": "Europe de l'Ouest",
+      "ruleOfGold": "Le système protège la stabilité, pas l'explosion. Joue le long terme dans les règles.",
+      "pyramid": {
+        "top": "Institutions étatiques et modèle social",
+        "institutions": "Bureaucratie lourde assurant la redistribution",
+        "gatekeepers": "Diplômes, certifications et procédures",
+        "valueCreators": "Travailleurs, entrepreneurs (contraints)",
+        "base": "Contribuables finançant le contrat social",
+        "realAsset": "Stabilité et prévisibilité"
+      },
+      "whoWins": [
+        "Ceux qui maîtrisent les règles du système",
+        "Employés du secteur public",
+        "Ceux avec les bons diplômes et réseaux",
+        "Planificateurs patients à long terme"
+      ],
+      "whoLoses": [
+        "Profils à haute ambition, faible patience",
+        "Outsiders sans diplômes français",
+        "Ceux cherchant une croissance explosive",
+        "Non-conformistes et innovateurs"
+      ],
+      "playbook": {
+        "do": [
+          "Comprendre et utiliser le système",
+          "Optimiser la structure fiscale légalement",
+          "Construire plusieurs sources de revenus",
+          "Développer des options internationales",
+          "Investir dans la qualité de vie"
+        ],
+        "dont": [
+          "Dépendre d'une seule source de revenus",
+          "Ignorer les exigences administratives",
+          "S'attendre à ce que la méritocratie seule gagne",
+          "Brûler les ponts avec les institutions",
+          "Sous-estimer le temps de la bureaucratie"
+        ],
+        "plan30Days": [
+          "Auditer votre situation actuelle",
+          "Comprendre votre tranche d'imposition",
+          "Commencer l'épargne automatisée",
+          "Rechercher des options de revenus secondaires"
+        ],
+        "plan12Months": [
+          "Établir un revenu secondaire",
+          "Optimiser votre structure juridique",
+          "Construire des certifications transférables",
+          "Créer un portefeuille international"
+        ],
+        "plan5Years": [
+          "Diversification géographique",
+          "Construire un revenu indépendant du lieu",
+          "Établir des alternatives UE",
+          "Créer de la richesse hors portée du système"
+        ],
+        "planB": "La mobilité UE est votre avantage. Considérez le Portugal, l'Espagne ou les Pays-Bas pour moins de friction. La Suisse pour plus d'ambition. Gardez les avantages français tout en construisant ailleurs."
+      }
+    },
+    "switzerland": {
+      "name": "Suisse",
+      "region": "Europe de l'Ouest",
+      "ruleOfGold": "Excellence + règles + réputation = sécurité. Pas de raccourcis, pas d'approximations.",
+      "pyramid": {
+        "top": "Confiance, précision et fiabilité institutionnelle",
+        "institutions": "Gouvernance efficace basée sur les règles",
+        "gatekeepers": "Standards de qualité et exigences professionnelles",
+        "valueCreators": "Travailleurs et entrepreneurs hautement qualifiés",
+        "base": "Citoyens investis dans le maintien du système",
+        "realAsset": "Compétence et confiance collective"
+      },
+      "whoWins": [
+        "Spécialistes hautement compétents",
+        "Ceux qui suivent les règles avec excellence",
+        "Constructeurs de réputation à long terme",
+        "Ceux qui valorisent la précision"
+      ],
+      "whoLoses": [
+        "Approximateurs et preneurs de raccourcis",
+        "Perturbateurs impatients",
+        "Ceux sans diplômes reconnus",
+        "Outsiders culturels refusant de s'adapter"
+      ],
+      "playbook": {
+        "do": [
+          "Maîtriser votre métier jusqu'à l'excellence",
+          "Suivre les règles précisément",
+          "Construire une réputation dans le temps",
+          "S'intégrer culturellement",
+          "Investir dans les certifications"
+        ],
+        "dont": [
+          "Prendre des raccourcis jamais",
+          "Tricher ou contourner les règles",
+          "Survendre ou exagérer",
+          "Ignorer les normes locales",
+          "Précipiter le processus d'intégration"
+        ],
+        "plan30Days": [
+          "Rechercher la reconnaissance des diplômes",
+          "Comprendre les standards professionnels locaux",
+          "Commencer l'apprentissage de la langue sérieusement",
+          "Cartographier les exigences d'intégration"
+        ],
+        "plan12Months": [
+          "Obtenir les certifications requises",
+          "Construire un réseau professionnel local",
+          "Démontrer une performance constante",
+          "Établir une stabilité financière"
+        ],
+        "plan5Years": [
+          "Obtenir la résidence permanente/citoyenneté",
+          "Devenir une référence dans votre domaine",
+          "Construire une richesse à long terme",
+          "S'intégrer pleinement tout en gardant des options"
+        ],
+        "planB": "Autres systèmes CONFIANCE_COMPÉTENCE : Allemagne, Pays-Bas, Autriche, Singapour. Construisez des diplômes qui se transfèrent entre ces systèmes."
+      }
+    },
+    "usa": {
+      "name": "États-Unis",
+      "region": "Amérique du Nord",
+      "ruleOfGold": "Gagne vite, sécurise les gains, diversifie. Le système récompense la vélocité, pas la stabilité.",
+      "pyramid": {
+        "top": "Capital et potentiel de croissance",
+        "institutions": "Marchés et structures d'opportunités",
+        "gatekeepers": "Accès au capital et aux réseaux",
+        "valueCreators": "Entrepreneurs et performeurs de haut niveau",
+        "base": "Travailleurs dans un environnement compétitif",
+        "realAsset": "Croissance et scalabilité"
+      },
+      "whoWins": [
+        "Entrepreneurs à haute vélocité",
+        "Ceux avec accès au capital",
+        "Propriétaires de compétences scalables",
+        "Constructeurs de réseaux"
+      ],
+      "whoLoses": [
+        "Chercheurs de stabilité",
+        "Ceux dépendant du filet social",
+        "Profils lents et réguliers",
+        "Ceux sans tampon santé/richesse"
+      ],
+      "playbook": {
+        "do": [
+          "Bouger vite et scaler",
+          "Construire plusieurs sources de revenus",
+          "Sécuriser des filets de sécurité privés",
+          "Réseauter agressivement",
+          "Diversifier géographiquement"
+        ],
+        "dont": [
+          "Compter sur les systèmes sociaux",
+          "Rester sur une seule source de revenus",
+          "Ignorer l'assurance santé",
+          "S'épuiser sans plan de sortie",
+          "Supposer que la stabilité existe"
+        ],
+        "plan30Days": [
+          "Sécuriser une couverture santé",
+          "Commencer un fonds d'urgence",
+          "Identifier les opportunités de croissance",
+          "Cartographier la valeur de votre réseau"
+        ],
+        "plan12Months": [
+          "Construire un revenu scalable",
+          "Créer une stratégie d'investissement",
+          "Établir une réputation professionnelle",
+          "Construire des tampons de sécurité"
+        ],
+        "plan5Years": [
+          "Atteindre l'indépendance financière",
+          "Diversifier internationalement",
+          "Construire des revenus passifs",
+          "Créer des options de sortie"
+        ],
+        "planB": "Considérez le Canada pour la stabilité avec croissance, le Portugal pour l'accès UE, Dubaï pour l'optimisation fiscale. Gardez les revenus US tout en construisant des options."
+      }
+    },
+    "germany": {
+      "name": "Allemagne",
+      "region": "Europe de l'Ouest",
+      "ruleOfGold": "Précision, processus et patience. Le système récompense ceux qui maîtrisent les règles.",
+      "pyramid": {
+        "top": "Excellence industrielle et confiance institutionnelle",
+        "institutions": "Bureaucratie efficace et syndicats forts",
+        "gatekeepers": "Qualifications professionnelles et certifications",
+        "valueCreators": "Ingénieurs, travailleurs qualifiés, entrepreneurs Mittelstand",
+        "base": "Contribuables soutenant l'économie sociale de marché",
+        "realAsset": "Compétence technique et fiabilité"
+      },
+      "whoWins": [
+        "Spécialistes techniques et ingénieurs",
+        "Ceux avec qualifications reconnues",
+        "Constructeurs patients à long terme",
+        "Entrepreneurs Mittelstand"
+      ],
+      "whoLoses": [
+        "Ceux cherchant des gains rapides",
+        "Outsiders sans diplômes allemands",
+        "Perturbateurs impatients",
+        "Ceux qui résistent à la bureaucratie"
+      ],
+      "playbook": {
+        "do": [
+          "Faire reconnaître vos qualifications",
+          "Apprendre l'allemand sérieusement",
+          "Construire un réseau professionnel méthodiquement",
+          "Embrasser les processus et procédures",
+          "Penser stabilité à long terme"
+        ],
+        "dont": [
+          "Se précipiter ou prendre des raccourcis",
+          "Ignorer les exigences administratives",
+          "Sous-estimer l'importance de la langue",
+          "S'attendre à une flexibilité à l'américaine",
+          "Rejeter les syndicats et droits des travailleurs"
+        ],
+        "plan30Days": [
+          "Rechercher la reconnaissance des qualifications",
+          "Évaluer le niveau d'allemand requis",
+          "Identifier les employeurs potentiels",
+          "Commencer le processus administratif"
+        ],
+        "plan12Months": [
+          "Atteindre le niveau B2 en allemand",
+          "Faire reconnaître les qualifications",
+          "Construire un réseau professionnel",
+          "Stabiliser la situation légale"
+        ],
+        "plan5Years": [
+          "Obtenir la résidence permanente",
+          "Devenir expert reconnu dans son domaine",
+          "Construire une stabilité financière",
+          "S'intégrer pleinement"
+        ],
+        "planB": "Autres systèmes similaires : Autriche, Suisse, Pays-Bas. Les qualifications allemandes sont hautement transférables en UE."
+      }
+    },
+    "uae": {
+      "name": "Émirats Arabes Unis",
+      "region": "Moyen-Orient",
+      "ruleOfGold": "Sois utile au pouvoir, reste discret, jamais local. Tes gains t'appartiennent tant que tu suis les règles.",
+      "pyramid": {
+        "top": "Familles régnantes et leurs cercles proches",
+        "institutions": "Structures étatiques servant la vision royale",
+        "gatekeepers": "Sponsors, free zones et autorisations",
+        "valueCreators": "Expatriés qualifiés et entrepreneurs",
+        "base": "Travailleurs étrangers sans droits permanents",
+        "realAsset": "Accès au pouvoir et utilité pour le système"
+      },
+      "whoWins": [
+        "Expatriés qualifiés avec compétences demandées",
+        "Ceux qui comprennent les lignes rouges",
+        "Constructeurs discrets",
+        "Ceux avec capital et réseaux"
+      ],
+      "whoLoses": [
+        "Ceux cherchant la stabilité permanente",
+        "Activistes ou critiques du système",
+        "Ceux qui oublient qu'ils sont invités",
+        "Travailleurs non qualifiés sans protection"
+      ],
+      "playbook": {
+        "do": [
+          "Maximiser les gains pendant le séjour",
+          "Construire des actifs hors du pays",
+          "Maintenir un profil bas sur les sujets sensibles",
+          "Réseauter stratégiquement",
+          "Planifier une sortie permanente"
+        ],
+        "dont": [
+          "Critiquer le pouvoir publiquement",
+          "Oublier que vous êtes temporaire",
+          "Centraliser tous vos actifs localement",
+          "Ignorer les règles culturelles",
+          "S'attendre à des droits permanents"
+        ],
+        "plan30Days": [
+          "Comprendre le système de visa et sponsor",
+          "Ouvrir des comptes bancaires locaux et internationaux",
+          "Identifier les lignes rouges à ne pas franchir",
+          "Cartographier les opportunités de réseau"
+        ],
+        "plan12Months": [
+          "Maximiser l'épargne et l'investissement",
+          "Construire une réputation professionnelle",
+          "Établir des actifs en dehors des EAU",
+          "Développer un réseau international"
+        ],
+        "plan5Years": [
+          "Créer des options de résidence alternatives",
+          "Diversifier géographiquement les actifs",
+          "Construire des revenus indépendants du lieu",
+          "Préparer une transition douce"
+        ],
+        "planB": "Options à considérer : Portugal ou Espagne pour l'UE, Singapour pour l'Asie, Maurice pour une fiscalité avantageuse avec résidence."
+      }
+    },
+    "nigeria": {
+      "name": "Nigeria",
+      "region": "Afrique de l'Ouest",
+      "ruleOfGold": "Hustle ou disparais. Le système récompense l'agilité, pas la conformité.",
+      "pyramid": {
+        "top": "Élites politiques et magnats du pétrole",
+        "institutions": "État faible avec poches de compétence",
+        "gatekeepers": "Connexions, 'settlement' et accès",
+        "valueCreators": "Entrepreneurs, diaspora, techies",
+        "base": "Population massive cherchant des opportunités",
+        "realAsset": "Énergie, réseau et adaptabilité"
+      },
+      "whoWins": [
+        "Entrepreneurs agiles et connectés",
+        "Diaspora avec compétences et capital",
+        "Ceux qui naviguent l'informel",
+        "Tech entrepreneurs avec vision globale"
+      ],
+      "whoLoses": [
+        "Ceux qui attendent les institutions",
+        "Employés dépendant de structures formelles",
+        "Ceux sans réseau protecteur",
+        "Ceux qui refusent de s'adapter"
+      ],
+      "playbook": {
+        "do": [
+          "Développer plusieurs sources de revenus",
+          "Construire un réseau solide",
+          "Investir dans des compétences exportables",
+          "Maintenir des options de sortie",
+          "Être visible mais pas vulnérable"
+        ],
+        "dont": [
+          "Dépendre d'une seule source de revenus",
+          "Faire confiance aux institutions formelles",
+          "Afficher sa richesse ostensiblement",
+          "Négliger les connexions locales",
+          "Ignorer la sécurité personnelle"
+        ],
+        "plan30Days": [
+          "Sécuriser les documents essentiels",
+          "Identifier votre avantage compétitif",
+          "Commencer un fonds d'urgence",
+          "Cartographier votre réseau de valeur"
+        ],
+        "plan12Months": [
+          "Développer une compétence exportable",
+          "Construire une source de revenus secondaire",
+          "Établir des connexions diaspora",
+          "Créer une présence en ligne"
+        ],
+        "plan5Years": [
+          "Établir une résidence alternative",
+          "Diversifier les actifs internationalement",
+          "Construire des revenus en devises fortes",
+          "Créer des options de mobilité"
+        ],
+        "planB": "Ghana pour la stabilité régionale, UK ou Canada pour la diaspora établie, Dubaï pour les affaires. Développez des compétences tech pour la mobilité globale."
+      }
+    },
+    "singapore": {
+      "name": "Singapour",
+      "region": "Asie du Sud-Est",
+      "ruleOfGold": "Excellence + conformité + valeur ajoutée = permission de rester. Pas de place pour la médiocrité.",
+      "pyramid": {
+        "top": "Gouvernement et intérêt national",
+        "institutions": "Bureaucratie ultra-efficace et méritocratique",
+        "gatekeepers": "Compétence, capital et valeur ajoutée",
+        "valueCreators": "Professionnels qualifiés et entrepreneurs",
+        "base": "Travailleurs contribuant à l'économie",
+        "realAsset": "Compétence et contribution mesurable"
+      },
+      "whoWins": [
+        "Professionnels hautement qualifiés",
+        "Entrepreneurs avec capital",
+        "Ceux qui ajoutent une valeur mesurable",
+        "Conformistes excellents"
+      ],
+      "whoLoses": [
+        "Profils moyens ou génériques",
+        "Ceux sans compétences différenciantes",
+        "Non-conformistes et activistes",
+        "Ceux cherchant un filet social occidental"
+      ],
+      "playbook": {
+        "do": [
+          "Exceller dans un domaine demandé",
+          "Respecter toutes les règles à la lettre",
+          "Construire une valeur mesurable",
+          "Réseauter stratégiquement",
+          "Planifier la permanence à long terme"
+        ],
+        "dont": [
+          "Être moyen ou générique",
+          "Critiquer le système publiquement",
+          "Ignorer les contraintes culturelles",
+          "Prendre le statut pour acquis",
+          "Sous-estimer la compétition"
+        ],
+        "plan30Days": [
+          "Comprendre les critères d'éligibilité visa",
+          "Évaluer votre positionnement compétitif",
+          "Identifier les secteurs porteurs",
+          "Commencer le networking stratégique"
+        ],
+        "plan12Months": [
+          "Obtenir ou renouveler le visa de travail",
+          "Construire une réputation professionnelle",
+          "Développer un réseau local solide",
+          "Maximiser l'épargne"
+        ],
+        "plan5Years": [
+          "Obtenir la résidence permanente",
+          "Devenir indispensable dans son domaine",
+          "Construire un patrimoine significatif",
+          "Diversifier les options géographiques"
+        ],
+        "planB": "Hong Kong pour la finance, Malaisie MM2H pour le coût de vie, Australie pour la citoyenneté. Construisez des compétences transférables Asie-Pacifique."
+      }
+    },
+    "portugal": {
+      "name": "Portugal",
+      "region": "Europe du Sud",
+      "ruleOfGold": "Patience et douceur de vivre. Le système offre l'accès UE en échange de temps et de capital.",
+      "pyramid": {
+        "top": "Institutions UE et stabilité démocratique",
+        "institutions": "Bureaucratie lente mais prévisible",
+        "gatekeepers": "Visas, investissements et procédures",
+        "valueCreators": "Entrepreneurs, retraités, nomades digitaux",
+        "base": "Population locale et immigrants intégrés",
+        "realAsset": "Accès UE et qualité de vie"
+      },
+      "whoWins": [
+        "Ceux avec capital ou revenus passifs",
+        "Nomades digitaux avec revenus en devise forte",
+        "Retraités cherchant la qualité de vie",
+        "Patients acceptant la lenteur administrative"
+      ],
+      "whoLoses": [
+        "Ceux cherchant des salaires élevés",
+        "Entrepreneurs à haute croissance",
+        "Impatients avec la bureaucratie",
+        "Ceux sans revenus indépendants"
+      ],
+      "playbook": {
+        "do": [
+          "Utiliser le Portugal comme tremplin UE",
+          "Apprendre le portugais pour l'intégration",
+          "Profiter du régime fiscal NHR si éligible",
+          "Construire un réseau expat et local",
+          "Apprécier la qualité de vie"
+        ],
+        "dont": [
+          "S'attendre à des opportunités d'emploi locales élevées",
+          "Ignorer les exigences de présence physique",
+          "Sous-estimer la bureaucratie",
+          "Dépendre uniquement du marché local",
+          "Négliger l'apprentissage de la langue"
+        ],
+        "plan30Days": [
+          "Rechercher les options de visa appropriées",
+          "Évaluer les exigences financières",
+          "Comprendre le régime fiscal",
+          "Planifier une visite exploratoire"
+        ],
+        "plan12Months": [
+          "Obtenir le visa ou titre de séjour",
+          "Établir la résidence fiscale",
+          "Commencer l'apprentissage du portugais",
+          "Construire un réseau local"
+        ],
+        "plan5Years": [
+          "Obtenir la résidence permanente ou citoyenneté",
+          "Profiter de la mobilité UE",
+          "Construire des actifs en Europe",
+          "S'intégrer à la communauté locale"
+        ],
+        "planB": "Espagne pour plus d'opportunités économiques, Malte pour la fiscalité, France pour les francophones. Le passeport portugais ouvre toute l'UE."
+      }
+    },
+    "morocco": {
+      "name": "Maroc",
+      "region": "Afrique du Nord",
+      "ruleOfGold": "Respecte les codes, construis des relations, reste discret sur le pouvoir.",
+      "pyramid": {
+        "top": "Monarchie et cercles proches du pouvoir",
+        "institutions": "État modernisé avec zones d'ombre",
+        "gatekeepers": "Relations, recommandations et wasta",
+        "valueCreators": "Entrepreneurs, diaspora, professionnels",
+        "base": "Population cherchant des opportunités",
+        "realAsset": "Relations et positionnement stratégique"
+      },
+      "whoWins": [
+        "Ceux avec de bonnes connexions",
+        "Diaspora avec capital et compétences",
+        "Entrepreneurs discrets",
+        "Ceux qui comprennent les codes"
+      ],
+      "whoLoses": [
+        "Ceux qui défient le système ouvertement",
+        "Outsiders sans réseau local",
+        "Ceux qui ignorent les codes culturels",
+        "Impatients avec la complexité"
+      ],
+      "playbook": {
+        "do": [
+          "Construire des relations avant les affaires",
+          "Respecter les codes culturels et religieux",
+          "Rester discret sur les sujets sensibles",
+          "Développer un réseau local solide",
+          "Valoriser le long terme"
+        ],
+        "dont": [
+          "Critiquer ouvertement le pouvoir",
+          "Ignorer l'importance des relations",
+          "Être trop direct ou impatient",
+          "Négliger les formes et le protocole",
+          "Sous-estimer la complexité administrative"
+        ],
+        "plan30Days": [
+          "Comprendre les codes culturels de base",
+          "Identifier des contacts locaux fiables",
+          "Évaluer les opportunités de marché",
+          "Planifier une période d'immersion"
+        ],
+        "plan12Months": [
+          "Construire un réseau de confiance",
+          "Établir une présence légale si nécessaire",
+          "Développer des partenariats locaux",
+          "Apprendre le darija de base"
+        ],
+        "plan5Years": [
+          "Consolider une position établie",
+          "Diversifier les activités",
+          "Construire une réputation locale",
+          "Maintenir des options internationales"
+        ],
+        "planB": "France pour la diaspora francophone, Espagne pour la proximité, EAU pour les affaires. Le Maroc peut être un hub Afrique."
+      }
+    },
+    "canada": {
+      "name": "Canada",
+      "region": "Amérique du Nord",
+      "ruleOfGold": "Immigrer par les règles, s'intégrer patiemment, construire sur le long terme.",
+      "pyramid": {
+        "top": "Institutions démocratiques et multiculturalisme",
+        "institutions": "Bureaucratie structurée et prévisible",
+        "gatekeepers": "Points d'immigration et qualifications",
+        "valueCreators": "Immigrants qualifiés et entrepreneurs",
+        "base": "Population diverse et intégrée",
+        "realAsset": "Accès permanent et stabilité"
+      },
+      "whoWins": [
+        "Immigrants qualifiés avec points élevés",
+        "Ceux qui suivent le processus patiemment",
+        "Professionnels avec compétences demandées",
+        "Ceux qui s'intègrent à la culture locale"
+      ],
+      "whoLoses": [
+        "Ceux sans qualifications reconnues",
+        "Impatients avec le processus d'immigration",
+        "Ceux attendant des salaires US",
+        "Ceux qui ne s'adaptent pas au climat"
+      ],
+      "playbook": {
+        "do": [
+          "Maximiser vos points d'immigration",
+          "Faire reconnaître vos qualifications",
+          "Construire une expérience canadienne",
+          "Réseauter dans votre industrie",
+          "S'adapter au style de communication local"
+        ],
+        "dont": [
+          "Sous-estimer l'importance de l'expérience locale",
+          "Ignorer les exigences linguistiques",
+          "S'attendre à des salaires US",
+          "Négliger le networking",
+          "Sous-estimer l'hiver"
+        ],
+        "plan30Days": [
+          "Évaluer votre éligibilité immigration",
+          "Passer les tests de langue requis",
+          "Faire évaluer vos diplômes",
+          "Rechercher le marché de l'emploi"
+        ],
+        "plan12Months": [
+          "Soumettre la demande d'immigration",
+          "Préparer la transition logistique",
+          "Construire un réseau professionnel",
+          "Planifier l'installation"
+        ],
+        "plan5Years": [
+          "Obtenir la citoyenneté",
+          "Établir une carrière stable",
+          "Construire un patrimoine",
+          "S'intégrer à la communauté"
+        ],
+        "planB": "USA pour les opportunités (si visa possible), Australie pour un climat similaire, UK pour les liens Commonwealth."
+      }
+    },
+    "brazil": {
+      "name": "Brésil",
+      "region": "Amérique du Sud",
+      "ruleOfGold": "Jeitinho et relations. Le système formel existe, mais le vrai jeu est informel.",
+      "pyramid": {
+        "top": "Oligarchies économiques et politiques",
+        "institutions": "État complexe avec bureaucratie lourde",
+        "gatekeepers": "Connexions, avocat et cartório",
+        "valueCreators": "Entrepreneurs, classe moyenne émergente",
+        "base": "Population massive avec opportunités limitées",
+        "realAsset": "Réseau et capacité à naviguer le système"
+      },
+      "whoWins": [
+        "Ceux avec un bon réseau (QI = Quem Indica)",
+        "Entrepreneurs adaptables",
+        "Ceux qui comprennent le jeitinho",
+        "Étrangers avec capital et compétences"
+      ],
+      "whoLoses": [
+        "Ceux qui s'attendent à la transparence",
+        "Ceux sans connexions locales",
+        "Impatients avec la bureaucratie",
+        "Ceux qui ne s'adaptent pas à la culture"
+      ],
+      "playbook": {
+        "do": [
+          "Construire un réseau local fort",
+          "Apprendre le portugais couramment",
+          "Trouver un bon avocat et comptable",
+          "Comprendre le jeitinho sans l'abuser",
+          "Apprécier la culture et les relations"
+        ],
+        "dont": [
+          "S'attendre à une efficacité européenne",
+          "Ignorer l'importance des relations personnelles",
+          "Sous-estimer la bureaucratie",
+          "Afficher sa richesse ostensiblement",
+          "Négliger la sécurité personnelle"
+        ],
+        "plan30Days": [
+          "Comprendre les bases du système brésilien",
+          "Identifier des contacts locaux fiables",
+          "Évaluer les options de visa",
+          "Planifier une visite exploratoire"
+        ],
+        "plan12Months": [
+          "Établir une présence légale",
+          "Construire un réseau professionnel",
+          "Maîtriser le portugais",
+          "Comprendre le marché local"
+        ],
+        "plan5Years": [
+          "Obtenir la résidence permanente",
+          "Établir une activité stable",
+          "S'intégrer à la communauté",
+          "Diversifier les actifs régionalement"
+        ],
+        "planB": "Portugal pour l'UE (langue commune), Argentine pour la région, USA pour les opportunités. Le Brésil peut être un hub Amérique Latine."
+      }
+    },
+    "uk": {
+      "name": "Royaume-Uni",
+      "region": "Europe du Nord",
+      "ruleOfGold": "Compétence + réseau + persévérance. Le système est ouvert mais compétitif.",
+      "pyramid": {
+        "top": "Institutions financières et establishment",
+        "institutions": "Démocratie mature avec bureaucratie modérée",
+        "gatekeepers": "Diplômes, expérience et réseaux professionnels",
+        "valueCreators": "Professionnels, entrepreneurs, créatifs",
+        "base": "Population diverse et compétitive",
+        "realAsset": "Accès au marché anglophone global"
+      },
+      "whoWins": [
+        "Professionnels hautement qualifiés",
+        "Ceux avec compétences demandées",
+        "Entrepreneurs avec capital",
+        "Ceux qui maîtrisent les codes britanniques"
+      ],
+      "whoLoses": [
+        "Ceux sans visa de travail",
+        "Profils génériques post-Brexit",
+        "Ceux attendant un filet social généreux",
+        "Impatients avec le système de classes"
+      ],
+      "playbook": {
+        "do": [
+          "Obtenir un visa de travail qualifié",
+          "Construire un réseau professionnel solide",
+          "Maîtriser les codes culturels britanniques",
+          "Développer une spécialisation demandée",
+          "Planifier le long terme"
+        ],
+        "dont": [
+          "Sous-estimer le coût de la vie à Londres",
+          "Ignorer l'importance du networking",
+          "S'attendre à une intégration facile",
+          "Négliger les codes sociaux",
+          "Dépendre du système de santé sans backup"
+        ],
+        "plan30Days": [
+          "Évaluer les options de visa post-Brexit",
+          "Rechercher le marché de l'emploi",
+          "Identifier les secteurs qui sponsorisent",
+          "Commencer le networking en ligne"
+        ],
+        "plan12Months": [
+          "Obtenir un emploi avec sponsorship",
+          "S'installer et s'adapter",
+          "Construire un réseau local",
+          "Comprendre le système fiscal"
+        ],
+        "plan5Years": [
+          "Obtenir l'ILR (Indefinite Leave to Remain)",
+          "Établir une carrière stable",
+          "Construire un patrimoine",
+          "Décider de la citoyenneté"
+        ],
+        "planB": "Irlande pour l'accès UE + anglophone, USA pour les opportunités, Canada pour un style de vie similaire. Le UK reste un hub financier mondial."
+      }
+    },
+    "japan": {
+      "name": "Japon",
+      "region": "Asie de l'Est",
+      "ruleOfGold": "Conformité, patience et maîtrise. Le système récompense ceux qui s'intègrent vraiment.",
+      "pyramid": {
+        "top": "Grandes corporations et institutions",
+        "institutions": "Bureaucratie efficace et consensuelle",
+        "gatekeepers": "Langue, culture et seniority",
+        "valueCreators": "Salariés dévoués, entrepreneurs de niche",
+        "base": "Société homogène avec codes stricts",
+        "realAsset": "Intégration et maîtrise culturelle"
+      },
+      "whoWins": [
+        "Ceux qui maîtrisent le japonais",
+        "Spécialistes de niche demandés",
+        "Patients qui s'intègrent profondément",
+        "Ceux qui respectent les hiérarchies"
+      ],
+      "whoLoses": [
+        "Ceux qui ne parlent pas japonais",
+        "Individualistes et non-conformistes",
+        "Impatients avec la lenteur hiérarchique",
+        "Ceux qui ne s'adaptent pas culturellement"
+      ],
+      "playbook": {
+        "do": [
+          "Apprendre le japonais sérieusement (N2 minimum)",
+          "Respecter les codes hiérarchiques",
+          "Développer une spécialisation de niche",
+          "Construire des relations sur le long terme",
+          "S'adapter aux pratiques de travail locales"
+        ],
+        "dont": [
+          "Sous-estimer l'importance de la langue",
+          "Être trop direct ou confrontationnel",
+          "Ignorer les codes sociaux",
+          "S'attendre à une progression rapide",
+          "Négliger le networking interne"
+        ],
+        "plan30Days": [
+          "Évaluer votre niveau de japonais",
+          "Rechercher les opportunités de visa",
+          "Identifier les secteurs ouverts aux étrangers",
+          "Commencer l'apprentissage intensif de la langue"
+        ],
+        "plan12Months": [
+          "Obtenir un visa de travail",
+          "Atteindre un niveau de japonais fonctionnel",
+          "S'intégrer à l'environnement de travail",
+          "Construire des relations professionnelles"
+        ],
+        "plan5Years": [
+          "Maîtriser le japonais couramment",
+          "Obtenir la résidence permanente",
+          "Établir une position stable",
+          "Décider de l'engagement à long terme"
+        ],
+        "planB": "Singapour pour l'Asie anglophone, Corée du Sud pour une culture similaire, Taiwan pour un environnement plus détendu. Le Japon demande un engagement total."
+      }
+    },
+    "australia": {
+      "name": "Australie",
+      "region": "Océanie",
+      "ruleOfGold": "Compétences + points = accès. Le système est méritocratique mais sélectif.",
+      "pyramid": {
+        "top": "Institutions démocratiques et ressources naturelles",
+        "institutions": "Bureaucratie efficace et transparente",
+        "gatekeepers": "Système de points et qualifications",
+        "valueCreators": "Immigrants qualifiés et entrepreneurs",
+        "base": "Population multiculturelle et intégrée",
+        "realAsset": "Qualité de vie et stabilité"
+      },
+      "whoWins": [
+        "Professionnels avec compétences demandées",
+        "Ceux qui passent le système de points",
+        "Entrepreneurs avec capital",
+        "Ceux qui s'adaptent au style de vie australien"
+      ],
+      "whoLoses": [
+        "Ceux sans compétences sur la liste",
+        "Profils ne correspondant pas aux critères",
+        "Ceux attendant une grande ville européenne",
+        "Impatients avec l'isolement géographique"
+      ],
+      "playbook": {
+        "do": [
+          "Maximiser vos points d'immigration",
+          "Cibler les compétences sur la skills list",
+          "Faire évaluer vos qualifications",
+          "Préparer les tests de langue",
+          "Planifier l'adaptation au style de vie"
+        ],
+        "dont": [
+          "Sous-estimer les distances",
+          "Ignorer le coût de la vie élevé",
+          "S'attendre à une culture européenne",
+          "Négliger la reconnaissance des qualifications",
+          "Sous-estimer l'importance du networking"
+        ],
+        "plan30Days": [
+          "Évaluer votre éligibilité immigration",
+          "Passer les tests de langue (IELTS)",
+          "Faire évaluer vos qualifications",
+          "Rechercher le marché de l'emploi"
+        ],
+        "plan12Months": [
+          "Soumettre la demande de visa",
+          "Préparer la relocalisation",
+          "Construire un réseau professionnel",
+          "Planifier l'installation"
+        ],
+        "plan5Years": [
+          "Obtenir la résidence permanente",
+          "Établir une carrière stable",
+          "S'intégrer à la communauté",
+          "Décider de la citoyenneté"
+        ],
+        "planB": "Nouvelle-Zélande pour un accès plus facile, Canada pour un système similaire, Singapour pour l'Asie-Pacifique. L'Australie offre une excellente qualité de vie."
+      }
+    }
   },
   "risks": {
     "legal": "Risque juridique",

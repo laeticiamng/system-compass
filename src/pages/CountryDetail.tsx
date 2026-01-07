@@ -26,7 +26,7 @@ const PYRAMID_TYPE_COLORS: Record<string, string> = {
 export default function CountryDetail() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const country = getCountryById(id || '');
 
   if (!country) {
@@ -42,6 +42,26 @@ export default function CountryDetail() {
 
   const typeLabel = t(PYRAMID_TYPE_LABELS[country.pyramidType]);
   const typeColor = PYRAMID_TYPE_COLORS[country.pyramidType];
+
+  // Get translated country data
+  const countryData = t(`countriesData.${country.id}`, { returnObjects: true }) as {
+    name: string;
+    region: string;
+    ruleOfGold: string;
+    pyramid: { top: string; institutions: string; gatekeepers: string; valueCreators: string; base: string; realAsset: string };
+    whoWins: string[];
+    whoLoses: string[];
+    playbook: { do: string[]; dont: string[]; plan30Days: string[]; plan12Months: string[]; plan5Years: string[]; planB: string };
+  };
+
+  // Fallback to original data if translation not available
+  const displayName = countryData?.name || country.name;
+  const displayRegion = countryData?.region || country.region;
+  const displayRuleOfGold = countryData?.ruleOfGold || country.ruleOfGold;
+  const displayPyramid = countryData?.pyramid || country.pyramid;
+  const displayWhoWins = countryData?.whoWins || country.whoWins;
+  const displayWhoLoses = countryData?.whoLoses || country.whoLoses;
+  const displayPlaybook = countryData?.playbook || country.playbook;
 
   return (
     <div className="min-h-screen pt-24 pb-16">
@@ -61,7 +81,7 @@ export default function CountryDetail() {
           <div className="text-6xl">{getFlagEmoji(country.iso2)}</div>
           <div className="flex-1">
             <div className="flex flex-wrap items-center gap-3 mb-2">
-              <h1 className="font-display text-4xl font-bold">{country.name}</h1>
+              <h1 className="font-display text-4xl font-bold">{displayName}</h1>
               <span
                 className="px-3 py-1 rounded-full text-sm font-medium"
                 style={{
@@ -72,7 +92,7 @@ export default function CountryDetail() {
                 {typeLabel}
               </span>
             </div>
-            <p className="text-muted-foreground">{country.region}</p>
+            <p className="text-muted-foreground">{displayRegion}</p>
           </div>
         </div>
 
@@ -86,14 +106,14 @@ export default function CountryDetail() {
         </div>
 
         {/* Rule of Gold */}
-        <RuleOfGoldBanner rule={country.ruleOfGold} className="mb-12" />
+        <RuleOfGoldBanner rule={displayRuleOfGold} className="mb-12" />
 
         {/* Main Content Grid */}
         <div className="grid lg:grid-cols-2 gap-12 mb-12">
           {/* Pyramid */}
           <div>
             <h2 className="font-display text-2xl font-bold mb-6">{t('countryDetail.systemPyramid')}</h2>
-            <PyramidVisualization country={country} />
+            <PyramidVisualization country={country} translatedPyramid={displayPyramid} />
           </div>
 
           {/* Risk Assessment */}
@@ -108,13 +128,13 @@ export default function CountryDetail() {
         {/* Who Wins / Who Loses */}
         <div className="mb-12">
           <h2 className="font-display text-2xl font-bold mb-6">{t('countryDetail.whoWinsLoses')}</h2>
-          <WhoWinsWhoLoses wins={country.whoWins} loses={country.whoLoses} />
+          <WhoWinsWhoLoses wins={displayWhoWins} loses={displayWhoLoses} />
         </div>
 
         {/* Playbook */}
         <div className="mb-12">
           <h2 className="font-display text-2xl font-bold mb-6">{t('countryDetail.survivalPlaybook')}</h2>
-          <PlaybookSection playbook={country.playbook} />
+          <PlaybookSection playbook={displayPlaybook} />
         </div>
 
         {/* Sources */}
