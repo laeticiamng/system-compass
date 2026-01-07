@@ -86,6 +86,7 @@
     "notFound": "Country not found",
     "backToCountries": "Back to Countries",
     "ruleOfGold": "Rule of Gold",
+    "lgbtqRights": "LGBTQ+ Rights",
     "snapshot": {
       "gdpPerCapita": "GDP/Capita",
       "population": "Population",
@@ -100,7 +101,19 @@
     "sourcesUpdates": "Sources & Updates",
     "lastUpdated": "Last updated"
   },
-"pyramid": {
+  "lgbtqRights": {
+    "title": "LGBTQ+ Rights",
+    "index": "Index",
+    "marriage": "Marriage",
+    "civilUnion": "Civil Union",
+    "employmentProtection": "Employment Protection",
+    "safety": {
+      "safe": "Safe",
+      "caution": "Caution Advised",
+      "dangerous": "Dangerous"
+    }
+  },
+  "pyramid": {
     "top": "Summit",
     "institutions": "Institutions",
     "gatekeepers": "Gatekeepers",

@@ -6,6 +6,7 @@ import { RiskBars } from '@/components/RiskBars';
 import { RuleOfGoldBanner } from '@/components/RuleOfGoldBanner';
 import { WhoWinsWhoLoses } from '@/components/WhoWinsWhoLoses';
 import { PlaybookSection } from '@/components/PlaybookSection';
+import { LGBTQRightsIndicator } from '@/components/LGBTQRightsIndicator';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Calendar, ExternalLink } from 'lucide-react';
 
@@ -129,6 +130,12 @@ export default function CountryDetail() {
         <div className="mb-12">
           <h2 className="font-display text-2xl font-bold mb-6">{t('countryDetail.whoWinsLoses')}</h2>
           <WhoWinsWhoLoses wins={displayWhoWins} loses={displayWhoLoses} />
+        </div>
+
+        {/* LGBTQ+ Rights */}
+        <div className="mb-12">
+          <h2 className="font-display text-2xl font-bold mb-6">{t('countryDetail.lgbtqRights', 'LGBTQ+ Rights')}</h2>
+          <LGBTQRightsIndicator rights={country.lgbtqRights} />
         </div>
 
         {/* Playbook */}
