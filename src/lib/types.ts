@@ -76,6 +76,7 @@ export interface Country {
   visa: CountryVisaInfo;
   costOfLiving: CountryCostOfLiving;
   qualityOfLife: CountryQualityOfLife;
+  lgbtqRights: LGBTQRights;
   lastUpdated: string;
   sources: string[];
 }
