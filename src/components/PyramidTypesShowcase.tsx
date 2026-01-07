@@ -59,7 +59,7 @@ const PYRAMID_CONFIGS: PyramidTypeConfig[] = [
     type: 'HYBRID_TRANSITION',
     color: 'pyramid-hybrid',
     icon: Shuffle,
-    examples: ['china', 'russia', 'brazil'],
+    examples: ['china', 'russia', 'brazil', 'india', 'turkey'],
     characteristics: ['contradictions', 'change', 'adaptation'],
   },
   {
@@ -67,7 +67,7 @@ const PYRAMID_CONFIGS: PyramidTypeConfig[] = [
     type: 'RESOURCE_EXTRACTION',
     color: 'pyramid-resource',
     icon: Gem,
-    examples: ['norway', 'qatar', 'saudi'],
+    examples: ['norway', 'qatar', 'saudi-arabia'],
     characteristics: ['resources', 'proximity', 'distribution'],
   },
 ];
