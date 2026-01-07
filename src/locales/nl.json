@@ -2,12 +2,19 @@
   "common": {
     "appName": "Pyramid Compass",
     "tagline": "Navigeer door het echte systeem",
-    "disclaimer": "Alleen analytisch hulpmiddel. Geen juridisch of financieel advies."
+    "disclaimer": "Alleen analytisch hulpmiddel. Geen juridisch of financieel advies.",
+    "yes": "Ja",
+    "no": "Nee",
+    "back": "Terug",
+    "years": "jaar"
   },
   "nav": {
     "start": "Start",
     "countries": "Landen",
     "profile": "Profiel",
+    "trajectory": "Traject",
+    "match": "Match",
+    "compare": "Vergelijk",
     "resources": "Bronnen"
   },
   "hero": {
@@ -16,7 +23,7 @@
     "titleHighlight": "Piramide",
     "title2": "Vind je pad",
     "subtitle": "Elk land heeft een verborgen systeem. Leer wat het echt beloont, waar jij past, en hoe je slim kunt overleven — of strategisch kunt ontsnappen.",
-    "discoverProfile": "Ontdek je profiel",
+    "discoverProfile": "Ontwerp je leven",
     "exploreCountries": "Verken landen"
   },
   "howItWorks": {
@@ -62,8 +69,8 @@
   },
   "cta": {
     "title": "Klaar om te navigeren?",
-    "subtitle": "Deze site oordeelt niet. Hij legt uit. Hij helpt je slim te overleven waar je bent en naar een systeem te bewegen dat beloont wat je bent.",
-    "button": "Begin je reis"
+    "subtitle": "Deze site oordeelt niet. Hij vertaalt. Hij helpt je jezelf te begrijpen en dan een plan te maken dat past bij jouw realiteit.",
+    "button": "Ontwerp je levenstraject"
   },
   "countries": {
     "title": "Landenintelligentie",
@@ -190,23 +197,38 @@
     "archetypes": {
       "ambitiousMeritocrat": {
         "name": "Ambitieuze meritocraat",
-        "description": "Je zoekt proportionele beloningen voor excellentie. Je bloeit waar competentie wint."
+        "description": "Je zoekt proportionele beloningen voor excellentie. Je bloeit waar competentie wint.",
+        "strengths": ["Resultaatgericht", "Sterke werkethiek"],
+        "vulnerabilities": ["Kan gefrustreerd raken door onrechtvaardigheid", "Burnout-risico"],
+        "redFlags": ["Systemen die connecties boven competentie belonen", "Zware herverdelingssystemen"]
       },
       "stabilitySeeker": {
         "name": "Stabiliteitszoeker",
-        "description": "Je waardeert voorspelbaarheid en bescherming. Je presteert het beste met een vangnet."
+        "description": "Je waardeert voorspelbaarheid en bescherming. Je presteert het beste met een vangnet.",
+        "strengths": ["Geduldig en methodisch", "Langetermijnplanner"],
+        "vulnerabilities": ["Kan groeikansen missen", "Te risicomijdend"],
+        "redFlags": ["Hoogrisico groeiomgevingen", "Systemen met zwakke sociale bescherming"]
       },
       "strategicSurvivor": {
         "name": "Strategische overlever",
-        "description": "Je weet hoe je zonder blootstelling moet navigeren. Je bouwt stil en beschermt winsten."
+        "description": "Je weet hoe je zonder blootstelling moet navigeren. Je bouwt stil en beschermt winsten.",
+        "strengths": ["Tactisch bewustzijn", "Risicomanagement"],
+        "vulnerabilities": ["Kan zichtbaarheid onder-benutten", "Kan te defensief worden"],
+        "redFlags": ["Systemen die publiek profiel vereisen", "Transparante meritocratieën"]
       },
       "growthConquistador": {
         "name": "Groei-conquistador",
-        "description": "Je jaagt op schaal en snelheid. Je bloeit in hoog-risico, hoge-beloning omgevingen."
+        "description": "Je jaagt op schaal en snelheid. Je bloeit in hoog-risico, hoge-beloning omgevingen.",
+        "strengths": ["Snelheid en aanpassingsvermogen", "Kansherkenning"],
+        "vulnerabilities": ["Kan stabiliteit verwaarlozen", "Burnout-risico"],
+        "redFlags": ["Trage bureaucratische systemen", "Hoge belasting op groei"]
       },
       "balancedNavigator": {
         "name": "Gebalanceerde navigator",
-        "description": "Je past je aan de context aan. Je kunt in veel systemen overleven maar optimaliseert voor geen."
+        "description": "Je past je aan de context aan. Je kunt in veel systemen overleven maar optimaliseert voor geen.",
+        "strengths": ["Flexibiliteit", "Brede tolerantie"],
+        "vulnerabilities": ["Kan aan sterke richting ontbreken", "Risico op afdrijven"],
+        "redFlags": ["Extreme systemen in elke richting"]
       }
     },
     "strengths": "Sterktes",
@@ -293,5 +315,470 @@
   },
   "language": {
     "select": "Taal"
+  },
+  "match": {
+    "title": "Jouw landen-matches",
+    "subtitle": "Gebaseerd op je profiel, hier zijn de landen die het beste passen bij je waarden en doelen.",
+    "noProfile": "Geen profiel gevonden",
+    "noProfileDesc": "Voltooi de profieltest voor gepersonaliseerde aanbevelingen.",
+    "takeTest": "Profieltest doen",
+    "topMatches": "Beste matches voor jou",
+    "avoidTitle": "Landen met voorzichtigheid te benaderen",
+    "compatibility": "compatibiliteit",
+    "exploreAll": "Alle landen verkennen",
+    "compareCountries": "Landen vergelijken",
+    "retakeTest": "Test opnieuw doen",
+    "shareResults": "Resultaten delen",
+    "copyLink": "Link kopiëren",
+    "linkCopied": "Link gekopieerd!",
+    "reasons": {
+      "ambitionGrowth": "Hoge ambitie past bij groeigericht systeem",
+      "ambitionFrustrated": "Hoge ambitie kan gefrustreerd worden door stabiliteitsfocus",
+      "meritCompetence": "Meritocratische waarden passen bij competentiegebaseerd systeem",
+      "meritConnection": "Meritocratische verwachtingen botsen met connectiegebaseerd systeem",
+      "riskGrowth": "Hoge risicotolerantie past bij groeiomgeving",
+      "lowRiskWarning": "Lage risicotolerantie vs hoge omgevingsrisico's",
+      "safetyMatch": "Veiligheidsbewust profiel past bij stabiel systeem",
+      "securityNet": "Veiligheidsbehoeften gedekt door sterk sociaal vangnet",
+      "securityUnmet": "Veiligheidsbehoeften mogelijk niet gedekt in groeisysteem",
+      "lowRiskEnvironment": "Lage juridische en veiligheidsrisico's bieden bescherming",
+      "bureaucracyWarning": "Lage bureaucratietolerantie vs zware bureaucratie",
+      "bureaucracyMatch": "Kan bureaucratische vereisten aan",
+      "innovationMatch": "Innovatiedrang past bij groeiomgeving",
+      "innovationSuppressed": "Innovatiedrang kan onderdrukt worden",
+      "discretionValuable": "Discretie is waardevol in dit systeem",
+      "visibilityRisk": "Zichtbaarheidsvoorkeur riskant in deze omgeving",
+      "corruptionChallenge": "Hoogcorrupte omgeving daagt meritgebaseerde aanpak uit",
+      "overallLowRisk": "Algeheel laagrisico-omgeving"
+    }
+  },
+  "compare": {
+    "title": "Landen vergelijken",
+    "subtitle": "Zij-aan-zij vergelijking voor weloverwogen beslissingen.",
+    "selectFirst": "Selecteer eerste land",
+    "selectSecond": "Selecteer tweede land",
+    "selectBoth": "Selecteer twee landen hierboven om ze te vergelijken.",
+    "keyMetrics": "Belangrijke statistieken",
+    "systemType": "Systeemtype",
+    "strategies": "Strategieën",
+    "shareComparison": "Vergelijking delen",
+    "copyLink": "Link kopiëren",
+    "linkCopied": "Link gekopieerd!",
+    "visaInfo": "Visum & Immigratie",
+    "costOfLiving": "Kosten van levensonderhoud",
+    "qualityOfLife": "Levenskwaliteit"
+  },
+  "visa": {
+    "workVisa": "Werkvisum",
+    "startupVisa": "Startup-visum",
+    "digitalNomadVisa": "Digital nomad visum",
+    "investmentVisa": "Investeringsvisum",
+    "citizenshipYears": "Jaren tot staatsburgerschap",
+    "easy": "Makkelijk",
+    "moderate": "Matig",
+    "difficult": "Moeilijk",
+    "available": "Beschikbaar",
+    "notAvailable": "Niet beschikbaar",
+    "minInvestment": "Min. investering"
+  },
+  "costOfLiving": {
+    "index": "Kostenindex",
+    "rentIndex": "Huurindex",
+    "monthlyBudgetSingle": "Maandelijks budget (alleenstaand)",
+    "monthlyBudgetFamily": "Maandelijks budget (gezin)"
+  },
+  "qualityOfLife": {
+    "healthcareRank": "Zorgranglijst",
+    "safetyIndex": "Veiligheidsindex",
+    "workLifeBalance": "Werk-privébalans",
+    "internetSpeed": "Internetsnelheid"
+  },
+  "lgbtqRights": {
+    "title": "LGBTQ+-rechten",
+    "index": "Rechtenindex",
+    "marriage": "Gelijk huwelijk",
+    "civilUnion": "Geregistreerd partnerschap",
+    "employmentProtection": "Arbeidsbescherming",
+    "safetyRating": "Veiligheidsniveau",
+    "safe": "Veilig",
+    "caution": "Voorzichtigheid",
+    "dangerous": "Gevaarlijk",
+    "notice": "LGBTQ+-rechten worden meegenomen in je landenaanbevelingen."
+  },
+  "lifeTrajectory": {
+    "title": "Levenstraject-diagnose",
+    "subtitle": "Het beroep is slechts een voertuig. Ontdek welk leven je wilt bouwen.",
+    "startButton": "Start diagnose",
+    "questionOf": "Vraag {{current}} van {{total}}",
+    "yes": "Ja",
+    "no": "Nee",
+    "back": "Terug",
+    "next": "Volgende",
+    "seeResults": "Bekijk mijn resultaten",
+    "selectToContinue": "Selecteer een antwoord om door te gaan",
+    "coreIdea": {
+      "title": "Het kernidee",
+      "text": "De meeste mensen zoeken niet \"een beroep\". Ze zoeken een leven. Het beroep is slechts een voertuig."
+    },
+    "questions": {
+      "timePreference": {
+        "question": "Geef je de voorkeur aan: twee zeer moeilijke jaren voor snelle vrijheid, of tien stabiele maar langzame jaren?",
+        "short": "2 intense jaren",
+        "shortDesc": "Snelle vrijheid, geconcentreerde inspanning",
+        "long": "10 stabiele jaren",
+        "longDesc": "Langzame maar zekere vooruitgang"
+      },
+      "incomeShock": {
+        "question": "Als je 30% van je inkomen verliest voor drie maanden, wat doe je concreet?",
+        "panic": "Ik raak in paniek, heb geen plan B",
+        "adapt": "Ik pas me aan, verminder uitgaven",
+        "prepared": "Ik heb reserves, het is beheersbaar"
+      },
+      "priority": {
+        "question": "Je prioriteit nummer 1 (slechts één keuze):",
+        "freedom": "🦅 Vrijheid",
+        "money": "💰 Geld",
+        "meaning": "💝 Betekenis",
+        "status": "👔 Status",
+        "family": "👨‍👩‍👧‍👦 Familie",
+        "calm": "🧘 Rust"
+      },
+      "intensity": {
+        "question": "Kun je 60 uur/week volhouden voor 6 maanden als het je leven verandert?"
+      },
+      "geographic": {
+        "question": "Is geografische vrijheid niet-onderhandelbaar voor jou?"
+      },
+      "uncertainty": {
+        "question": "Je comfortniveau met onzekerheid:",
+        "low": "Laag - Ik heb voorspelbaarheid nodig",
+        "medium": "Gemiddeld - Ik kan me aanpassen",
+        "high": "Hoog - Ik gedij in chaos"
+      },
+      "autonomy": {
+        "question": "Geef je de voorkeur aan begeleid of autonoom zijn?",
+        "structured": "Begeleid en gestructureerd",
+        "autonomous": "Autonoom en onafhankelijk"
+      },
+      "studies": {
+        "question": "Wil je lange studies vermijden?"
+      },
+      "selling": {
+        "question": "Ben je oké met verkopen (jezelf, diensten, producten, onderhandelen)?"
+      },
+      "contribute": {
+        "question": "Wil je bijdragen aan een zaak?"
+      },
+      "lgbtq": {
+        "question": "Zijn LGBTQ+-rechten belangrijk bij je bestemmingskeuze?"
+      }
+    },
+    "results": {
+      "title": "Je trajectprofiel",
+      "yourProfile": "Je motorprofiel",
+      "workRelation": "Relatie met werk",
+      "riskRelation": "Relatie met risico",
+      "whatWorks": "Wat echt werkt",
+      "trap": "De valkuil om te vermijden",
+      "trajectories": "Je 3 aanbevolen trajecten",
+      "choosePlan": "Kies het plan dat past bij je situatie",
+      "duration": "Duur",
+      "paths": "Geschikte paden",
+      "skills": "Te ontwikkelen vaardigheden",
+      "risks": "Te monitoren risico's",
+      "firstSteps": "Eerste stappen",
+      "retakeTest": "Test opnieuw doen",
+      "findCountries": "Compatibele landen vinden"
+    },
+    "planTypes": {
+      "safe": {
+        "label": "🛡️ Veilig Plan",
+        "description": "Voor wie verantwoordelijkheden, angsten of sterke behoefte aan zekerheid heeft. Stabiliteit + zekere progressie."
+      },
+      "hybrid": {
+        "label": "⚖️ Hybride Plan",
+        "description": "Voor de meerderheid. Stabiele baan + competentieontwikkeling + gestructureerd nevenproject."
+      },
+      "ambitious": {
+        "label": "🚀 Ambitieus Plan",
+        "description": "Voor wie energie en risicotolerantie heeft. Inkomensversnelling + groeistrategie."
+      }
+    }
+  },
+  "lifeProfiles": {
+    "lottery": {
+      "label": "Loterij / Gelukstreffer",
+      "description": "Je zoekt een onmiddellijke uitweg, een breuk met je huidige situatie, een snelkoppeling.",
+      "workRelation": "Laag - lange inspanning wordt als nutteloos ervaren.",
+      "riskRelation": "Hoog maar slecht gecontroleerd (onbewust risico).",
+      "whatWorks": "Strikt kader (budgetplafond) + solide plan B parallel (stabiel inkomen, nuttige competentie).",
+      "trap": "Wachten op \"het teken\", schulden maken, geloven dat een kans een strategie vervangt."
+    },
+    "comfort": {
+      "label": "Comfort & nul stress",
+      "description": "Je zoekt rust, routine, psychologische zekerheid.",
+      "workRelation": "Je wilt een kader, een structuur, duidelijke verwachtingen.",
+      "riskRelation": "Laag.",
+      "whatWorks": "Stabiliteit, langzame maar zekere progressie, automatisch sparen, voorspelbare baan.",
+      "trap": "Je vervelen, uitdoven, dan na een paar jaar exploderen."
+    },
+    "builder": {
+      "label": "Geduldige bouwer",
+      "description": "Je zoekt rijkdom + trots + gevoel van verdienste.",
+      "workRelation": "Bereid te werken, maar inspanning moet zin hebben en renderen.",
+      "riskRelation": "Matig, berekend.",
+      "whatWorks": "Eenvoudig bedrijf, zeldzame vaardigheden, discipline, langetermijninvestering.",
+      "trap": "Te vroeg te complex willen doen, je verspreiden."
+    },
+    "safeWealth": {
+      "label": "Groot geld zonder risico's",
+      "description": "Je zoekt hoog inkomen met maximale zekerheid.",
+      "workRelation": "Oké met werken, maar niet met jezelf in gevaar brengen.",
+      "riskRelation": "Laag tot matig.",
+      "whatWorks": "Inkomen verhogen via zeldzame competentie, verzekeren via diversificatie.",
+      "trap": "Interne tegenspraak (jackpot willen zonder tegenprestatie) → stagnatie."
+    },
+    "nomad": {
+      "label": "Nomade / Wereldreis",
+      "description": "Je zoekt geografische vrijheid en autonomie.",
+      "workRelation": "Je wilt overal kunnen werken.",
+      "riskRelation": "Variabel.",
+      "whatWorks": "Remote banen, inkomen in sterke valuta, begrip van visa en logistieke realiteiten.",
+      "trap": "Het administratieve onderschatten, isolatie, inkomensonregelmatigheid."
+    },
+    "purpose": {
+      "label": "Betekenis / Zelfopoffering",
+      "description": "Je zoekt nut, afstemming, bijdrage.",
+      "workRelation": "Werk wordt missie.",
+      "riskRelation": "Matig, maar emotie kan ertoe leiden jezelf te vergeten.",
+      "whatWorks": "Nuttige banen + duidelijke grenzen + anti-burnout systeem + levensstijl.",
+      "trap": "Jezelf opofferen, uitputten, waarde verwarren met lijden."
+    },
+    "status": {
+      "label": "Status / Prestige",
+      "description": "Je zoekt erkenning, respect, sociale identiteit.",
+      "workRelation": "De baan wordt de identiteit.",
+      "riskRelation": "Matig tot hoog afhankelijk van ego en competitie.",
+      "whatWorks": "Excellentie, selectiviteit, netwerk, storytelling, carrièrestrategie.",
+      "trap": "Giftige vergelijking, prestatieangst, fragiele identiteit als status daalt."
+    },
+    "recovery": {
+      "label": "Wraak / Post-trauma traject",
+      "description": "Je zoekt zekerheid, controle, herstel, emotionele stabiliteit, wederopbouw.",
+      "workRelation": "Behoefte aan meesterschap, soms angst voor instabiliteit.",
+      "riskRelation": "Eerst laag, dan stijgend als zekerheid terugkeert.",
+      "whatWorks": "Eerst stabiliseren (inkomen, kader, routine), dan progressieve opbouw.",
+      "trap": "Jezelf beoordelen, tien jaar in zes maanden willen inhalen, jezelf uitputten."
+    }
+  },
+  "plans": {
+    "lottery": {
+      "safe": {
+        "title": "Snelle stabilisatie",
+        "description": "Stabiele basis creëren voor elk risico.",
+        "paths": ["Stabiele deeltijdbaan", "Korte certificerende opleiding"],
+        "skills": ["Budgetbeheer", "Technische basiscompetentie"],
+        "risks": ["Ongeduld en opgeven"],
+        "steps": ["Strikt budget opstellen", "Opleiding van max. 3 maanden identificeren"]
+      },
+      "hybrid": {
+        "title": "Stabiliteit + experimenteren",
+        "description": "Stabiele baan parallel met ingekaderd nevenproject.",
+        "paths": ["Stabiele baan + beperkte side hustle", "Bijscholing"],
+        "skills": ["Tijdmanagement", "Basismarketing"],
+        "risks": ["Verspreiding van inspanningen"],
+        "steps": ["Stabiele baan vinden", "Nevenproject beperken tot 10u/week"]
+      },
+      "ambitious": {
+        "title": "Berekende transitie",
+        "description": "Methodische opbouw naar onafhankelijkheid.",
+        "paths": ["Freelance in gevraagd domein"],
+        "skills": ["Verkoop", "Spits-technische competentie"],
+        "risks": ["Ontmoediging", "Slecht financieel beheer"],
+        "steps": ["6 maanden uitgaven sparen", "Portfolio ontwikkelen"]
+      }
+    },
+    "comfort": {
+      "safe": {
+        "title": "Gestructureerde stabiele baan",
+        "description": "Voorspelbare en geruststellende omgeving vinden.",
+        "paths": ["Overheid", "Gevestigd groot bedrijf"],
+        "skills": ["Specialisatie in een domein"],
+        "risks": ["Langdurige verveling"],
+        "steps": ["Stabiele werkgevers identificeren", "Indien nodig examens voorbereiden"]
+      },
+      "hybrid": {
+        "title": "Stabiliteit + evolutie",
+        "description": "Stabiele positie met interne doorgroeimogelijkheden.",
+        "paths": ["Bedrijf met carrièreplan", "Stabiel groeiende sector"],
+        "skills": ["Management", "Evolutieve technische competentie"],
+        "risks": ["Glazen plafond"],
+        "steps": ["Ontwikkelingsplan onderhandelen", "Sleutelcompetenties identificeren"]
+      },
+      "ambitious": {
+        "title": "Erkende expert",
+        "description": "Referentie worden in een domein met behoud van stabiliteit.",
+        "paths": ["Senior technical expert"],
+        "skills": ["Spits-expertise", "Communicatie"],
+        "risks": ["Veroudering van competenties"],
+        "steps": ["Duurzame specialisatie kiezen", "Reputatie opbouwen"]
+      }
+    },
+    "builder": {
+      "safe": {
+        "title": "Zeldzame competentie + baan",
+        "description": "Zeldzame expertise ontwikkelen met stabiel inkomen.",
+        "paths": ["Baan + geavanceerde certificering", "Technische specialisatie"],
+        "skills": ["Zeldzame technische competentie", "Salarisonderhandeling"],
+        "risks": ["Verspreiding inspanningen"],
+        "steps": ["Gevraagde zeldzame competentie identificeren", "Certificering plannen"]
+      },
+      "hybrid": {
+        "title": "Baan + side business",
+        "description": "Bedrijf opbouwen parallel aan veilige baan.",
+        "paths": ["Parallel consulting", "Digitaal product"],
+        "skills": ["Verkoop", "Projectmanagement"],
+        "risks": ["Burnout"],
+        "steps": ["Idee valideren voor tijdsinvestering", "Duidelijke grenzen stellen"]
+      },
+      "ambitious": {
+        "title": "Volledige ondernemer",
+        "description": "Volledige transitie naar ondernemerschap met kapitaal.",
+        "paths": ["Schaalbaar bedrijf"],
+        "skills": ["Leiderschap", "Financiën"],
+        "risks": ["Financieel falen", "Isolatie"],
+        "steps": ["12 maanden runway opbouwen", "Markt valideren"]
+      }
+    },
+    "safeWealth": {
+      "safe": {
+        "title": "Hoog beloonde carrière",
+        "description": "Inkomen maximaliseren via erkende expertise.",
+        "paths": ["Goed betaald gereguleerd beroep", "Senior tech"],
+        "skills": ["Sectorale expertise"],
+        "risks": ["Inkomensstagnatie"],
+        "steps": ["Hoogloonsectoren onderzoeken", "Certificeringen plannen"]
+      },
+      "hybrid": {
+        "title": "Baan + investering",
+        "description": "Hoge inkomens + vermogensdiversificatie.",
+        "paths": ["Senior baan + vastgoed", "Aandelen en ETF's"],
+        "skills": ["Persoonlijke financiën", "Onderhandeling"],
+        "risks": ["Slechte investeringen"],
+        "steps": ["Sparen automatiseren", "Bijscholen in beleggen"]
+      },
+      "ambitious": {
+        "title": "Financiële onafhankelijkheid",
+        "description": "Vermogen opbouwen dat passief inkomen genereert.",
+        "paths": ["Gediversifieerde portfolio"],
+        "skills": ["Vermogensbeheer", "Fiscaliteit"],
+        "risks": ["Marktvolatiliteit"],
+        "steps": ["Onafhankelijkheidsdoel berekenen", "10-jarenplan opstellen"]
+      }
+    },
+    "nomad": {
+      "safe": {
+        "title": "Remote werknemer",
+        "description": "Stabiele remote baan met geografische flexibiliteit.",
+        "paths": ["Remote ontwikkelaar", "Internationale klantenservice"],
+        "skills": ["Digitale competentie", "Autonomie"],
+        "risks": ["Sociale isolatie"],
+        "steps": ["Remote-vriendelijke werkgever vinden", "Nomadenbestaan 1 maand testen"]
+      },
+      "hybrid": {
+        "title": "Freelance + basis",
+        "description": "Freelance met enkele stabiele klanten.",
+        "paths": ["Remote consultant", "Contentcreator"],
+        "skills": ["Verkoop", "Personal branding"],
+        "risks": ["Inkomensonregelmatigheid"],
+        "steps": ["2-3 terugkerende klanten binnenhalen", "Online aanwezigheid creëren"]
+      },
+      "ambitious": {
+        "title": "Locatie-onafhankelijk bedrijf",
+        "description": "100% online bedrijf met verspreid team.",
+        "paths": ["SaaS of remote bureau"],
+        "skills": ["Remote management", "Geautomatiseerde systemen"],
+        "risks": ["Internationale juridische complexiteit", "Burnout"],
+        "steps": ["Schaalbaar businessmodel kiezen", "Juridisch structureren"]
+      }
+    },
+    "purpose": {
+      "safe": {
+        "title": "Stabiele impactbaan",
+        "description": "Baan in nuttige sector met zekerheid.",
+        "paths": ["Gezondheid", "Onderwijs", "Sociaal"],
+        "skills": ["Specifieke beroepscompetentie"],
+        "risks": ["Burnout door overbetrokkenheid"],
+        "steps": ["Resonerende sector identificeren", "Duidelijke grenzen stellen"]
+      },
+      "hybrid": {
+        "title": "Impact + balans",
+        "description": "Bijdragen terwijl je eigen energie beschermt.",
+        "paths": ["NGO met gezonde structuur", "Sociaal ondernemerschap"],
+        "skills": ["Projectmanagement", "Communicatie"],
+        "risks": ["Onderbetaling"],
+        "steps": ["Gezonde voorwaarden onderhandelen", "Inkomen diversifiëren"]
+      },
+      "ambitious": {
+        "title": "Impactleider",
+        "description": "Organisatie met hoge impact oprichten of leiden.",
+        "paths": ["NGO- of sociale ondernemingoprichter"],
+        "skills": ["Leiderschap", "Fundraising"],
+        "risks": ["Totale uitputting"],
+        "steps": ["Echte impact valideren", "Solide team opbouwen"]
+      }
+    },
+    "status": {
+      "safe": {
+        "title": "Prestigieuze carrière",
+        "description": "Progressie in erkende omgeving.",
+        "paths": ["Gerenommeerd groot bedrijf", "Consultancy"],
+        "skills": ["Technische excellentie"],
+        "risks": ["Afhankelijkheid van andermans blik"],
+        "steps": ["Prestigieuze werkgevers targeten", "Solide CV opbouwen"]
+      },
+      "hybrid": {
+        "title": "Zichtbare expert",
+        "description": "Erkende referentie worden in je domein.",
+        "paths": ["Speaker", "Auteur", "Trainer"],
+        "skills": ["Personal branding", "Communicatie"],
+        "risks": ["Imposter syndroom"],
+        "steps": ["Regelmatig content creëren", "Op conferenties optreden"]
+      },
+      "ambitious": {
+        "title": "Industrieleider",
+        "description": "Top van hiërarchie of erkenning bereiken.",
+        "paths": ["Algemene directie", "Erkende oprichter"],
+        "skills": ["Strategie", "Bedrijfspolitiek"],
+        "risks": ["Fragiele identiteit bij falen", "Eenzaamheid aan de top"],
+        "steps": ["Invloedrijke mentoren identificeren", "Strategisch netwerk opbouwen"]
+      }
+    },
+    "recovery": {
+      "safe": {
+        "title": "Eerst stabiliseren",
+        "description": "Solide basis herbouwen zonder druk.",
+        "paths": ["Stabiele stressarme baan", "Deeltijd indien mogelijk"],
+        "skills": ["Stressmanagement"],
+        "risks": ["Jezelf te hard beoordelen"],
+        "steps": ["Accepteren langzaam te beginnen", "Gezonde routine creëren"]
+      },
+      "hybrid": {
+        "title": "Progressieve wederopbouw",
+        "description": "Geleidelijke en gecontroleerde opbouw.",
+        "paths": ["Progressieve opleiding", "Baan + persoonlijke ontwikkeling"],
+        "skills": ["Veerkracht", "Nieuwe competentie"],
+        "risks": ["Verloren tijd willen inhalen"],
+        "steps": ["Realistische doelen stellen", "Elke vooruitgang vieren"]
+      },
+      "ambitious": {
+        "title": "Complete wedergeboorte",
+        "description": "Beproeving transformeren tot kracht voor nieuw traject.",
+        "paths": ["Geslaagde omscholing", "Ervaring delen"],
+        "skills": ["Persoonlijke storytelling", "Verworven expertise"],
+        "risks": ["Compenserende overinvestering"],
+        "steps": ["Eigen traject documenteren", "Anderen in dezelfde situatie helpen"]
+      }
+    }
   }
 }
