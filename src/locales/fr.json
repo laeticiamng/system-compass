@@ -293,5 +293,28 @@
   },
   "language": {
     "select": "Langue"
+  },
+  "match": {
+    "title": "Tes correspondances pays",
+    "subtitle": "Basé sur ton profil, voici les pays les plus alignés avec tes valeurs et objectifs.",
+    "noProfile": "Aucun profil trouvé",
+    "noProfileDesc": "Complète le test de profil pour obtenir des recommandations pays personnalisées.",
+    "takeTest": "Faire le test de profil",
+    "topMatches": "Meilleures correspondances",
+    "avoidTitle": "Pays à aborder avec prudence",
+    "compatibility": "compatibilité",
+    "exploreAll": "Explorer tous les pays",
+    "compareCountries": "Comparer les pays",
+    "retakeTest": "Refaire le test"
+  },
+  "compare": {
+    "title": "Comparer les pays",
+    "subtitle": "Comparaison côte à côte pour t'aider à prendre des décisions éclairées.",
+    "selectFirst": "Sélectionner le premier pays",
+    "selectSecond": "Sélectionner le deuxième pays",
+    "selectBoth": "Sélectionne deux pays ci-dessus pour les comparer côte à côte.",
+    "keyMetrics": "Métriques clés",
+    "systemType": "Type de système",
+    "strategies": "Stratégies"
   }
 }

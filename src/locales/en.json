@@ -293,5 +293,28 @@
   },
   "language": {
     "select": "Language"
+  },
+  "match": {
+    "title": "Your Country Matches",
+    "subtitle": "Based on your profile, here are the countries most aligned with your values and goals.",
+    "noProfile": "No Profile Found",
+    "noProfileDesc": "Complete the profile test to get personalized country recommendations.",
+    "takeTest": "Take the Profile Test",
+    "topMatches": "Top Matches for You",
+    "avoidTitle": "Countries to Approach with Caution",
+    "compatibility": "match",
+    "exploreAll": "Explore All Countries",
+    "compareCountries": "Compare Countries",
+    "retakeTest": "Retake Test"
+  },
+  "compare": {
+    "title": "Compare Countries",
+    "subtitle": "Side-by-side comparison to help you make informed decisions.",
+    "selectFirst": "Select first country",
+    "selectSecond": "Select second country",
+    "selectBoth": "Select two countries above to compare them side by side.",
+    "keyMetrics": "Key Metrics",
+    "systemType": "System Type",
+    "strategies": "Strategies"
   }
 }

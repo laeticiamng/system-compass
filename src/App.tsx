@@ -8,6 +8,8 @@ import Index from "./pages/Index";
 import Countries from "./pages/Countries";
 import CountryDetail from "./pages/CountryDetail";
 import ProfileTest from "./pages/ProfileTest";
+import Match from "./pages/Match";
+import Compare from "./pages/Compare";
 import Resources from "./pages/Resources";
 import NotFound from "./pages/NotFound";
 
@@ -25,6 +27,8 @@ const App = () => (
           <Route path="/countries" element={<Countries />} />
           <Route path="/country/:id" element={<CountryDetail />} />
           <Route path="/profile-test" element={<ProfileTest />} />
+          <Route path="/match" element={<Match />} />
+          <Route path="/compare" element={<Compare />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
