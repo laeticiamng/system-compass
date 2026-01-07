@@ -1,0 +1,297 @@
+{
+  "common": {
+    "appName": "Pyramid Compass",
+    "tagline": "Navigate the real system",
+    "disclaimer": "Analytical tool only. Not legal or financial advice."
+  },
+  "nav": {
+    "start": "Start",
+    "countries": "Countries",
+    "profile": "Profile",
+    "resources": "Resources"
+  },
+  "hero": {
+    "badge": "Navigate the Real System",
+    "title1": "Understand Your",
+    "titleHighlight": "Pyramid",
+    "title2": "Find Your Path",
+    "subtitle": "Every country has a hidden system. Learn what it really rewards, where you fit, and how to survive intelligently — or escape strategically.",
+    "discoverProfile": "Discover Your Profile",
+    "exploreCountries": "Explore Countries"
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "A pragmatic framework to understand systems, not to fight them",
+    "understand": {
+      "title": "Understand the Pyramid",
+      "description": "Every country rewards something different. Learn what the system actually values — problems, stability, competence, or growth."
+    },
+    "profile": {
+      "title": "Know Your Profile",
+      "description": "Discover your values, risk tolerance, and ambitions. Find which systems align with who you are."
+    },
+    "playbook": {
+      "title": "Get Your Playbook",
+      "description": "Concrete strategies to survive where you are and build options toward where you want to be."
+    }
+  },
+  "pyramids": {
+    "title": "The Four Pyramids",
+    "subtitle": "Every system falls into one of these categories",
+    "problemRent": {
+      "label": "Problem Rent",
+      "description": "The dysfunction is the asset. Solving problems puts you at risk."
+    },
+    "stabilityRedis": {
+      "label": "Stability Redistribution",
+      "description": "The system rewards stability, protection, and redistribution."
+    },
+    "competenceTrust": {
+      "label": "Competence Trust",
+      "description": "The solution is the asset. Rigor and competence are rewarded."
+    },
+    "growthRisk": {
+      "label": "Growth Risk",
+      "description": "Growth is the asset. Speed, scalability, and capital are rewarded."
+    }
+  },
+  "featured": {
+    "title": "Explore Countries",
+    "subtitle": "Deep analysis of real systems, not fantasy rankings",
+    "viewAll": "View All"
+  },
+  "cta": {
+    "title": "Ready to Navigate?",
+    "subtitle": "This site doesn't judge. It explains. It helps you survive intelligently where you are and move toward a system that rewards what you are.",
+    "button": "Start Your Journey"
+  },
+  "countries": {
+    "title": "Country Intelligence",
+    "subtitle": "Deep analysis of national systems. Understand what each country really rewards, the risks, and your strategic options.",
+    "allSystems": "All Systems",
+    "noResults": "No countries match this filter.",
+    "explore": "Explore →",
+    "gdpCap": "GDP/cap",
+    "passport": "Passport",
+    "population": "Population"
+  },
+  "countryDetail": {
+    "notFound": "Country not found",
+    "backToCountries": "Back to Countries",
+    "snapshot": {
+      "gdpPerCapita": "GDP/Capita",
+      "population": "Population",
+      "passportRank": "Passport Rank",
+      "corruptionIndex": "Corruption Index",
+      "freedomIndex": "Freedom Index"
+    },
+    "systemPyramid": "System Pyramid",
+    "riskAssessment": "Risk Assessment",
+    "whoWinsLoses": "Who Wins / Who Loses",
+    "survivalPlaybook": "Survival Playbook",
+    "sourcesUpdates": "Sources & Updates",
+    "lastUpdated": "Last updated"
+  },
+  "pyramid": {
+    "top": "Top",
+    "institutions": "Institutions",
+    "gatekeepers": "Gatekeepers",
+    "valueCreators": "Value Creators",
+    "base": "Base",
+    "realAsset": "Real Asset"
+  },
+  "risks": {
+    "legal": "Legal Risk",
+    "safety": "Safety Risk",
+    "corruption": "Corruption",
+    "volatility": "Volatility",
+    "bureaucracy": "Bureaucracy",
+    "levels": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High",
+      "critical": "Critical"
+    }
+  },
+  "whoWins": {
+    "wins": "Who Wins",
+    "loses": "Who Loses"
+  },
+  "playbook": {
+    "do": "Do",
+    "dont": "Don't",
+    "survivalRoadmap": "Survival Roadmap",
+    "timeline": {
+      "days30": "0-30 Days",
+      "months12": "3-12 Months",
+      "years5": "1-5 Years"
+    },
+    "planB": "Plan B"
+  },
+  "profileTest": {
+    "questionOf": "Question {{current}} of {{total}}",
+    "questions": {
+      "ambition": {
+        "question": "How important is maximizing your income, impact, and career progression?",
+        "low": "Not important",
+        "high": "Essential"
+      },
+      "meritNeed": {
+        "question": "How much do you need effort and competence to be fairly rewarded?",
+        "low": "I adapt",
+        "high": "Non-negotiable"
+      },
+      "riskTolerance": {
+        "question": "Can you live without a social safety net if the upside potential is high?",
+        "low": "Need security",
+        "high": "Ready to risk"
+      },
+      "securityNeed": {
+        "question": "How much do you value stability, predictability, and protection?",
+        "low": "Flexible",
+        "high": "Essential"
+      },
+      "bureaucracyTolerance": {
+        "question": "Can you tolerate heavy procedures, paperwork, and slow processes?",
+        "low": "Hate it",
+        "high": "Can manage"
+      },
+      "innovationDrive": {
+        "question": "How driven are you to create new things and solve complex problems?",
+        "low": "Prefer routine",
+        "high": "Obsessed"
+      },
+      "discretionPreference": {
+        "question": "Do you prefer to operate discreetly rather than be publicly visible?",
+        "low": "Love spotlight",
+        "high": "Stay invisible"
+      },
+      "mobility": {
+        "question": "What is your mobility potential?",
+        "options": {
+          "low": {
+            "label": "Cannot move",
+            "description": "Stuck here for now"
+          },
+          "medium": {
+            "label": "1-3 years",
+            "description": "Can relocate mid-term"
+          },
+          "high": {
+            "label": "Anytime",
+            "description": "Ready to move"
+          }
+        }
+      }
+    },
+    "back": "Back",
+    "next": "Next",
+    "seeResults": "See Results",
+    "archetypes": {
+      "ambitiousMeritocrat": {
+        "name": "Ambitious Meritocrat",
+        "description": "You seek proportional rewards for excellence. You thrive where competence wins."
+      },
+      "stabilitySeeker": {
+        "name": "Stability Seeker",
+        "description": "You value predictability and protection. You perform best with a safety net."
+      },
+      "strategicSurvivor": {
+        "name": "Strategic Survivor",
+        "description": "You know how to navigate without exposure. You build quietly and protect gains."
+      },
+      "growthConquistador": {
+        "name": "Growth Conquistador",
+        "description": "You chase scale and speed. You thrive in high-stakes, high-reward environments."
+      },
+      "balancedNavigator": {
+        "name": "Balanced Navigator",
+        "description": "You adapt to context. You can survive many systems but may not optimize for any."
+      }
+    },
+    "strengths": "Strengths",
+    "vulnerabilities": "Vulnerabilities",
+    "compatibleSystems": "Compatible Systems",
+    "redFlags": "Red Flags — Avoid These",
+    "findCountries": "Find Compatible Countries",
+    "retakeTest": "Retake Test"
+  },
+  "resources": {
+    "title": "Resources",
+    "subtitle": "Practical tools and frameworks for building optionality. No fantasies—just actionable steps.",
+    "categories": {
+      "financial": {
+        "title": "Financial Independence",
+        "description": "Build your financial foundation regardless of location",
+        "items": {
+          "emergencyFund": { "name": "Emergency Fund Calculator", "description": "6-12 months of expenses minimum" },
+          "multipleIncome": { "name": "Multiple Income Streams", "description": "Never depend on one source" },
+          "offshoreBanking": { "name": "Offshore Banking Basics", "description": "Legitimate diversification strategies" },
+          "taxOptimization": { "name": "Tax Optimization", "description": "Legal structures for your situation" }
+        }
+      },
+      "skills": {
+        "title": "Exportable Skills",
+        "description": "Skills that transfer across borders and systems",
+        "items": {
+          "remote": { "name": "Remote-First Skills", "description": "Tech, writing, design, consulting" },
+          "certifications": { "name": "Certifications That Travel", "description": "Internationally recognized credentials" },
+          "languages": { "name": "Language Acquisition", "description": "Strategic language learning priorities" },
+          "digitalPresence": { "name": "Digital Presence", "description": "Build reputation that precedes you" }
+        }
+      },
+      "mobility": {
+        "title": "Mobility Preparation",
+        "description": "Ready yourself for movement when opportunity comes",
+        "items": {
+          "documents": { "name": "Document Security", "description": "Keep all papers organized and updated" },
+          "visaStrategy": { "name": "Visa Strategy Matrix", "description": "Know your options before you need them" },
+          "secondResidency": { "name": "Second Residency Options", "description": "Investment and skill-based paths" },
+          "digitalNomad": { "name": "Digital Nomad Frameworks", "description": "Test locations before committing" }
+        }
+      },
+      "security": {
+        "title": "Security & Discretion",
+        "description": "Protect yourself in high-risk environments",
+        "items": {
+          "opsec": { "name": "Operational Security Basics", "description": "Minimize your exposure profile" },
+          "digitalPrivacy": { "name": "Digital Privacy", "description": "Secure communications and data" },
+          "assetProtection": { "name": "Asset Protection", "description": "Structure to minimize seizure risk" },
+          "networkSafety": { "name": "Network Safety", "description": "Who to trust and how to verify" }
+        }
+      }
+    },
+    "checklists": {
+      "title": "Quick Checklists",
+      "survival30": {
+        "title": "30-Day Survival Kickstart",
+        "items": [
+          "Audit your current financial position",
+          "Identify your top exportable skill",
+          "Secure all identity documents",
+          "Start emergency fund (even $50/month)",
+          "Map your current network value",
+          "Research one potential destination"
+        ]
+      },
+      "preMove": {
+        "title": "Pre-Move Checklist",
+        "items": [
+          "Valid passport (6+ months remaining)",
+          "Clean digital footprint",
+          "Income source that travels",
+          "Bank account with international access",
+          "Health records and prescriptions",
+          "Power of attorney for home country affairs"
+        ]
+      }
+    },
+    "disclaimer": {
+      "title": "Important Disclaimer",
+      "text": "This site provides analytical frameworks only. It is not legal, financial, or immigration advice. Always consult qualified professionals for your specific situation. Every action has consequences—plan carefully and never take unnecessary risks."
+    }
+  },
+  "language": {
+    "select": "Language"
+  }
+}
