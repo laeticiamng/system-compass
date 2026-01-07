@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { countries } from '@/lib/countries-data';
-import { Country, UserProfile, PyramidType } from '@/lib/types';
+import { Country, UserProfile } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { ArrowRight, Target, AlertTriangle, MapPin, TrendingUp, Users, Shield } from 'lucide-react';
+import { ArrowRight, Target, AlertTriangle, MapPin, TrendingUp, Shield, Share2, DollarSign, Plane } from 'lucide-react';
+import { toast } from 'sonner';
 
 const PYRAMID_TYPE_LABELS: Record<string, string> = {
   PROBLEM_RENT: 'pyramids.problemRent.label',
@@ -176,6 +177,32 @@ export default function Match() {
     }
   }, []);
 
+  const shareResults = async () => {
+    const topCountries = matches.slice(0, 3).map(m => m.country.name).join(', ');
+    const text = `My top country matches: ${topCountries}. Find your best countries at ${window.location.origin}/profile-test`;
+    
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: 'My Country Matches',
+          text: text,
+          url: window.location.origin + '/profile-test',
+        });
+      } else {
+        await navigator.clipboard.writeText(text);
+        toast.success(t('match.linkCopied'));
+      }
+    } catch (e) {
+      // User cancelled share or error
+      try {
+        await navigator.clipboard.writeText(text);
+        toast.success(t('match.linkCopied'));
+      } catch {
+        toast.error('Failed to share');
+      }
+    }
+  };
+
   if (!profile) {
     return (
       <div className="min-h-screen pt-24 pb-16">
@@ -208,13 +235,17 @@ export default function Match() {
     <div className="min-h-screen pt-24 pb-16">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h1 className="font-display text-4xl font-bold mb-4">
               {t('match.title')}
             </h1>
-            <p className="text-muted-foreground max-w-xl mx-auto">
+            <p className="text-muted-foreground max-w-xl mx-auto mb-6">
               {t('match.subtitle')}
             </p>
+            <Button variant="outline" onClick={shareResults} className="gap-2">
+              <Share2 className="w-4 h-4" />
+              {t('match.shareResults')}
+            </Button>
           </div>
 
           {/* Top Matches */}
@@ -312,7 +343,7 @@ function MatchCard({ match, rank, isWarning }: { match: MatchedCountry; rank?: n
               {t(PYRAMID_TYPE_LABELS[country.pyramidType])}
             </span>
           </div>
-          <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
+          <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground mb-3">
             <span className="flex items-center gap-1">
               <MapPin className="w-3 h-3" />
               {country.region}
@@ -324,6 +355,14 @@ function MatchCard({ match, rank, isWarning }: { match: MatchedCountry; rank?: n
             <span className="flex items-center gap-1">
               <Shield className="w-3 h-3" />
               #{country.snapshot.passportRank}
+            </span>
+            <span className="flex items-center gap-1">
+              <DollarSign className="w-3 h-3" />
+              ${country.costOfLiving.monthlyBudgetSingle}/mo
+            </span>
+            <span className="flex items-center gap-1">
+              <Plane className="w-3 h-3" />
+              {t(`visa.${country.visa.workVisa}`)}
             </span>
           </div>
           
