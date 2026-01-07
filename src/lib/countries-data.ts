@@ -1555,3 +1555,7 @@ export const countries: Country[] = [
     sources: ['World Bank', 'Transparency International', 'Freedom House', 'Henley Passport Index', 'Numbeo'],
   },
 ];
+
+export function getCountryById(id: string): Country | undefined {
+  return countries.find(country => country.id === id);
+}
