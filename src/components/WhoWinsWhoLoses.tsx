@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
 import { TrendingUp, TrendingDown } from 'lucide-react';
 
@@ -8,6 +9,8 @@ interface WhoWinsWhoLosesProps {
 }
 
 export function WhoWinsWhoLoses({ wins, loses, className }: WhoWinsWhoLosesProps) {
+  const { t } = useTranslation();
+
   return (
     <div className={cn('grid md:grid-cols-2 gap-6', className)}>
       <div className="glass-card rounded-xl p-6">
@@ -15,7 +18,7 @@ export function WhoWinsWhoLoses({ wins, loses, className }: WhoWinsWhoLosesProps
           <div className="p-2 rounded-lg bg-risk-low/20">
             <TrendingUp className="w-4 h-4 text-risk-low" />
           </div>
-          <h4 className="font-display font-semibold text-foreground">Who Wins</h4>
+          <h4 className="font-display font-semibold text-foreground">{t('whoWins.wins')}</h4>
         </div>
         <ul className="space-y-3">
           {wins.map((item, i) => (
@@ -35,7 +38,7 @@ export function WhoWinsWhoLoses({ wins, loses, className }: WhoWinsWhoLosesProps
           <div className="p-2 rounded-lg bg-risk-critical/20">
             <TrendingDown className="w-4 h-4 text-risk-critical" />
           </div>
-          <h4 className="font-display font-semibold text-foreground">Who Loses</h4>
+          <h4 className="font-display font-semibold text-foreground">{t('whoWins.loses')}</h4>
         </div>
         <ul className="space-y-3">
           {loses.map((item, i) => (

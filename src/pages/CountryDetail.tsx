@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { getCountryById } from '@/lib/countries-data';
-import { PYRAMID_TYPE_INFO } from '@/lib/types';
 import { PyramidVisualization } from '@/components/PyramidVisualization';
 import { RiskBars } from '@/components/RiskBars';
 import { RuleOfGoldBanner } from '@/components/RuleOfGoldBanner';
@@ -9,23 +9,39 @@ import { PlaybookSection } from '@/components/PlaybookSection';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Calendar, ExternalLink } from 'lucide-react';
 
+const PYRAMID_TYPE_LABELS: Record<string, string> = {
+  PROBLEM_RENT: 'pyramids.problemRent.label',
+  STABILITY_REDIS: 'pyramids.stabilityRedis.label',
+  COMPETENCE_TRUST: 'pyramids.competenceTrust.label',
+  GROWTH_RISK: 'pyramids.growthRisk.label',
+};
+
+const PYRAMID_TYPE_COLORS: Record<string, string> = {
+  PROBLEM_RENT: 'pyramid-rent',
+  STABILITY_REDIS: 'pyramid-stability',
+  COMPETENCE_TRUST: 'pyramid-competence',
+  GROWTH_RISK: 'pyramid-growth',
+};
+
 export default function CountryDetail() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const country = getCountryById(id || '');
 
   if (!country) {
     return (
       <div className="min-h-screen pt-24 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Country not found</h1>
-          <Button onClick={() => navigate('/countries')}>Back to Countries</Button>
+          <h1 className="text-2xl font-bold mb-4">{t('countryDetail.notFound')}</h1>
+          <Button onClick={() => navigate('/countries')}>{t('countryDetail.backToCountries')}</Button>
         </div>
       </div>
     );
   }
 
-  const typeInfo = PYRAMID_TYPE_INFO[country.pyramidType];
+  const typeLabel = t(PYRAMID_TYPE_LABELS[country.pyramidType]);
+  const typeColor = PYRAMID_TYPE_COLORS[country.pyramidType];
 
   return (
     <div className="min-h-screen pt-24 pb-16">
@@ -37,7 +53,7 @@ export default function CountryDetail() {
           className="mb-8 gap-2 text-muted-foreground hover:text-foreground"
         >
           <ArrowLeft className="w-4 h-4" />
-          Back to Countries
+          {t('countryDetail.backToCountries')}
         </Button>
 
         {/* Header */}
@@ -49,11 +65,11 @@ export default function CountryDetail() {
               <span
                 className="px-3 py-1 rounded-full text-sm font-medium"
                 style={{
-                  backgroundColor: `hsl(var(--${typeInfo.color}) / 0.15)`,
-                  color: `hsl(var(--${typeInfo.color}))`,
+                  backgroundColor: `hsl(var(--${typeColor}) / 0.15)`,
+                  color: `hsl(var(--${typeColor}))`,
                 }}
               >
-                {typeInfo.label}
+                {typeLabel}
               </span>
             </div>
             <p className="text-muted-foreground">{country.region}</p>
@@ -62,11 +78,11 @@ export default function CountryDetail() {
 
         {/* Snapshot */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
-          <SnapshotCard label="GDP/Capita" value={`$${country.snapshot.gdpPerCapita.toLocaleString()}`} />
-          <SnapshotCard label="Population" value={formatPopulation(country.snapshot.population)} />
-          <SnapshotCard label="Passport Rank" value={`#${country.snapshot.passportRank}`} />
-          <SnapshotCard label="Corruption Index" value={`${country.snapshot.corruptionIndex}/100`} />
-          <SnapshotCard label="Freedom Index" value={`${country.snapshot.freedomIndex}/100`} />
+          <SnapshotCard label={t('countryDetail.snapshot.gdpPerCapita')} value={`$${country.snapshot.gdpPerCapita.toLocaleString()}`} />
+          <SnapshotCard label={t('countryDetail.snapshot.population')} value={formatPopulation(country.snapshot.population)} />
+          <SnapshotCard label={t('countryDetail.snapshot.passportRank')} value={`#${country.snapshot.passportRank}`} />
+          <SnapshotCard label={t('countryDetail.snapshot.corruptionIndex')} value={`${country.snapshot.corruptionIndex}/100`} />
+          <SnapshotCard label={t('countryDetail.snapshot.freedomIndex')} value={`${country.snapshot.freedomIndex}/100`} />
         </div>
 
         {/* Rule of Gold */}
@@ -76,13 +92,13 @@ export default function CountryDetail() {
         <div className="grid lg:grid-cols-2 gap-12 mb-12">
           {/* Pyramid */}
           <div>
-            <h2 className="font-display text-2xl font-bold mb-6">System Pyramid</h2>
+            <h2 className="font-display text-2xl font-bold mb-6">{t('countryDetail.systemPyramid')}</h2>
             <PyramidVisualization country={country} />
           </div>
 
           {/* Risk Assessment */}
           <div>
-            <h2 className="font-display text-2xl font-bold mb-6">Risk Assessment</h2>
+            <h2 className="font-display text-2xl font-bold mb-6">{t('countryDetail.riskAssessment')}</h2>
             <div className="glass-card rounded-xl p-6">
               <RiskBars risks={country.risks} />
             </div>
@@ -91,23 +107,23 @@ export default function CountryDetail() {
 
         {/* Who Wins / Who Loses */}
         <div className="mb-12">
-          <h2 className="font-display text-2xl font-bold mb-6">Who Wins / Who Loses</h2>
+          <h2 className="font-display text-2xl font-bold mb-6">{t('countryDetail.whoWinsLoses')}</h2>
           <WhoWinsWhoLoses wins={country.whoWins} loses={country.whoLoses} />
         </div>
 
         {/* Playbook */}
         <div className="mb-12">
-          <h2 className="font-display text-2xl font-bold mb-6">Survival Playbook</h2>
+          <h2 className="font-display text-2xl font-bold mb-6">{t('countryDetail.survivalPlaybook')}</h2>
           <PlaybookSection playbook={country.playbook} />
         </div>
 
         {/* Sources */}
         <div className="glass-card rounded-xl p-6">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-display font-semibold">Sources & Updates</h3>
+            <h3 className="font-display font-semibold">{t('countryDetail.sourcesUpdates')}</h3>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Calendar className="w-4 h-4" />
-              Last updated: {country.lastUpdated}
+              {t('countryDetail.lastUpdated')}: {country.lastUpdated}
             </div>
           </div>
           <div className="flex flex-wrap gap-2">

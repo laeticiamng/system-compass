@@ -1,71 +1,41 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
-import { UserProfile, ProfileResult, PYRAMID_TYPE_INFO, PyramidType } from '@/lib/types';
+import { UserProfile, ProfileResult, PyramidType } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { ArrowRight, ArrowLeft, User, Target, Shield, Zap, FileCheck, Lightbulb, Eye, Plane } from 'lucide-react';
 
-const questions = [
-  {
-    key: 'ambition',
-    icon: Target,
-    question: 'How important is maximizing your income, impact, and career progression?',
-    lowLabel: 'Not important',
-    highLabel: 'Essential',
-  },
-  {
-    key: 'meritNeed',
-    icon: Shield,
-    question: 'How much do you need effort and competence to be fairly rewarded?',
-    lowLabel: 'I adapt',
-    highLabel: 'Non-negotiable',
-  },
-  {
-    key: 'riskTolerance',
-    icon: Zap,
-    question: 'Can you live without a social safety net if the upside potential is high?',
-    lowLabel: 'Need security',
-    highLabel: 'Ready to risk',
-  },
-  {
-    key: 'securityNeed',
-    icon: Shield,
-    question: 'How much do you value stability, predictability, and protection?',
-    lowLabel: 'Flexible',
-    highLabel: 'Essential',
-  },
-  {
-    key: 'bureaucracyTolerance',
-    icon: FileCheck,
-    question: 'Can you tolerate heavy procedures, paperwork, and slow processes?',
-    lowLabel: 'Hate it',
-    highLabel: 'Can manage',
-  },
-  {
-    key: 'innovationDrive',
-    icon: Lightbulb,
-    question: 'How driven are you to create new things and solve complex problems?',
-    lowLabel: 'Prefer routine',
-    highLabel: 'Obsessed',
-  },
-  {
-    key: 'discretionPreference',
-    icon: Eye,
-    question: 'Do you prefer to operate discreetly rather than be publicly visible?',
-    lowLabel: 'Love spotlight',
-    highLabel: 'Stay invisible',
-  },
+const questionKeys = [
+  { key: 'ambition', icon: Target },
+  { key: 'meritNeed', icon: Shield },
+  { key: 'riskTolerance', icon: Zap },
+  { key: 'securityNeed', icon: Shield },
+  { key: 'bureaucracyTolerance', icon: FileCheck },
+  { key: 'innovationDrive', icon: Lightbulb },
+  { key: 'discretionPreference', icon: Eye },
 ] as const;
 
-const mobilityOptions = [
-  { value: 'low', label: 'Cannot move', description: 'Stuck here for now' },
-  { value: 'medium', label: '1-3 years', description: 'Can relocate mid-term' },
-  { value: 'high', label: 'Anytime', description: 'Ready to move' },
-] as const;
+const mobilityOptions = ['low', 'medium', 'high'] as const;
+
+const PYRAMID_TYPE_LABELS: Record<string, string> = {
+  PROBLEM_RENT: 'pyramids.problemRent.label',
+  STABILITY_REDIS: 'pyramids.stabilityRedis.label',
+  COMPETENCE_TRUST: 'pyramids.competenceTrust.label',
+  GROWTH_RISK: 'pyramids.growthRisk.label',
+};
+
+const PYRAMID_TYPE_COLORS: Record<string, string> = {
+  PROBLEM_RENT: 'pyramid-rent',
+  STABILITY_REDIS: 'pyramid-stability',
+  COMPETENCE_TRUST: 'pyramid-competence',
+  GROWTH_RISK: 'pyramid-growth',
+};
 
 export default function ProfileTest() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [step, setStep] = useState(0);
   const [profile, setProfile] = useState<UserProfile>({
     ambition: 5,
@@ -79,7 +49,7 @@ export default function ProfileTest() {
   });
   const [result, setResult] = useState<ProfileResult | null>(null);
 
-  const totalSteps = questions.length + 1; // +1 for mobility question
+  const totalSteps = questionKeys.length + 1; // +1 for mobility question
 
   const handleSliderChange = (key: keyof UserProfile, value: number[]) => {
     setProfile((prev) => ({ ...prev, [key]: value[0] }));
@@ -92,7 +62,6 @@ export default function ProfileTest() {
   const calculateResult = (): ProfileResult => {
     const { ambition, meritNeed, riskTolerance, securityNeed, innovationDrive, discretionPreference } = profile;
 
-    // Determine archetype
     let archetype = '';
     let description = '';
     const strengths: string[] = [];
@@ -101,36 +70,36 @@ export default function ProfileTest() {
     const redFlags: string[] = [];
 
     if (ambition > 7 && meritNeed > 7 && riskTolerance > 6) {
-      archetype = 'Ambitious Meritocrat';
-      description = 'You seek proportional rewards for excellence. You thrive where competence wins.';
-      strengths.push('High drive and resilience', 'Strong work ethic');
-      vulnerabilities.push('Frustrated by unfair systems', 'May burn out chasing fairness');
+      archetype = t('profileTest.archetypes.ambitiousMeritocrat.name');
+      description = t('profileTest.archetypes.ambitiousMeritocrat.description');
+      strengths.push(t('profileTest.archetypes.ambitiousMeritocrat.name'));
+      vulnerabilities.push(t('profileTest.archetypes.ambitiousMeritocrat.description'));
       compatibleTypes.push('COMPETENCE_TRUST', 'GROWTH_RISK');
       redFlags.push('Systems that reward connections over competence', 'Heavy redistribution systems');
     } else if (securityNeed > 7 && riskTolerance < 4) {
-      archetype = 'Stability Seeker';
-      description = 'You value predictability and protection. You perform best with a safety net.';
+      archetype = t('profileTest.archetypes.stabilitySeeker.name');
+      description = t('profileTest.archetypes.stabilitySeeker.description');
       strengths.push('Patient and methodical', 'Long-term planner');
       vulnerabilities.push('May miss high-growth opportunities', 'Risk-averse to a fault');
       compatibleTypes.push('STABILITY_REDIS', 'COMPETENCE_TRUST');
       redFlags.push('High-risk growth environments', 'Systems with weak social protections');
     } else if (discretionPreference > 7 && innovationDrive < 5) {
-      archetype = 'Strategic Survivor';
-      description = 'You know how to navigate without exposure. You build quietly and protect gains.';
+      archetype = t('profileTest.archetypes.strategicSurvivor.name');
+      description = t('profileTest.archetypes.strategicSurvivor.description');
       strengths.push('Tactical awareness', 'Risk management');
       vulnerabilities.push('May under-leverage visibility', 'Can become too defensive');
       compatibleTypes.push('PROBLEM_RENT', 'STABILITY_REDIS');
       redFlags.push('Systems requiring public profile', 'Transparent meritocracies');
     } else if (innovationDrive > 7 && riskTolerance > 6) {
-      archetype = 'Growth Conquistador';
-      description = 'You chase scale and speed. You thrive in high-stakes, high-reward environments.';
+      archetype = t('profileTest.archetypes.growthConquistador.name');
+      description = t('profileTest.archetypes.growthConquistador.description');
       strengths.push('Speed and adaptability', 'Opportunity recognition');
       vulnerabilities.push('May neglect stability', 'Burnout risk');
       compatibleTypes.push('GROWTH_RISK', 'COMPETENCE_TRUST');
       redFlags.push('Slow bureaucratic systems', 'Heavy taxation on growth');
     } else {
-      archetype = 'Balanced Navigator';
-      description = 'You adapt to context. You can survive many systems but may not optimize for any.';
+      archetype = t('profileTest.archetypes.balancedNavigator.name');
+      description = t('profileTest.archetypes.balancedNavigator.description');
       strengths.push('Flexibility', 'Broad tolerance');
       vulnerabilities.push('May lack strong direction', 'Risk of drift');
       compatibleTypes.push('STABILITY_REDIS', 'COMPETENCE_TRUST');
@@ -173,7 +142,7 @@ export default function ProfileTest() {
 
           <div className="grid md:grid-cols-2 gap-6 mb-12">
             <div className="glass-card rounded-xl p-6">
-              <h3 className="font-display font-semibold text-risk-low mb-4">Strengths</h3>
+              <h3 className="font-display font-semibold text-risk-low mb-4">{t('profileTest.strengths')}</h3>
               <ul className="space-y-2">
                 {result.strengths.map((s, i) => (
                   <li key={i} className="flex items-center gap-2 text-muted-foreground">
@@ -183,7 +152,7 @@ export default function ProfileTest() {
               </ul>
             </div>
             <div className="glass-card rounded-xl p-6">
-              <h3 className="font-display font-semibold text-risk-high mb-4">Vulnerabilities</h3>
+              <h3 className="font-display font-semibold text-risk-high mb-4">{t('profileTest.vulnerabilities')}</h3>
               <ul className="space-y-2">
                 {result.vulnerabilities.map((v, i) => (
                   <li key={i} className="flex items-center gap-2 text-muted-foreground">
@@ -195,20 +164,20 @@ export default function ProfileTest() {
           </div>
 
           <div className="glass-card rounded-xl p-6 mb-8">
-            <h3 className="font-display font-semibold mb-4">Compatible Systems</h3>
+            <h3 className="font-display font-semibold mb-4">{t('profileTest.compatibleSystems')}</h3>
             <div className="flex flex-wrap gap-3">
               {result.compatibleTypes.map((type) => {
-                const info = PYRAMID_TYPE_INFO[type];
+                const color = PYRAMID_TYPE_COLORS[type];
                 return (
                   <span
                     key={type}
                     className="px-4 py-2 rounded-lg text-sm font-medium"
                     style={{
-                      backgroundColor: `hsl(var(--${info.color}) / 0.15)`,
-                      color: `hsl(var(--${info.color}))`,
+                      backgroundColor: `hsl(var(--${color}) / 0.15)`,
+                      color: `hsl(var(--${color}))`,
                     }}
                   >
-                    {info.label}
+                    {t(PYRAMID_TYPE_LABELS[type])}
                   </span>
                 );
               })}
@@ -216,7 +185,7 @@ export default function ProfileTest() {
           </div>
 
           <div className="glass-card rounded-xl p-6 border-l-4 border-risk-critical mb-12">
-            <h3 className="font-display font-semibold mb-4">Red Flags — Avoid These</h3>
+            <h3 className="font-display font-semibold mb-4">{t('profileTest.redFlags')}</h3>
             <ul className="space-y-2">
               {result.redFlags.map((flag, i) => (
                 <li key={i} className="flex items-start gap-2 text-muted-foreground">
@@ -231,7 +200,7 @@ export default function ProfileTest() {
               onClick={() => navigate('/countries')}
               className="bg-primary text-primary-foreground gap-2"
             >
-              Find Compatible Countries
+              {t('profileTest.findCountries')}
               <ArrowRight className="w-4 h-4" />
             </Button>
             <Button
@@ -241,7 +210,7 @@ export default function ProfileTest() {
                 setStep(0);
               }}
             >
-              Retake Test
+              {t('profileTest.retakeTest')}
             </Button>
           </div>
         </div>
@@ -249,7 +218,7 @@ export default function ProfileTest() {
     );
   }
 
-  const currentQuestion = step < questions.length ? questions[step] : null;
+  const currentQuestion = step < questionKeys.length ? questionKeys[step] : null;
 
   return (
     <div className="min-h-screen pt-24 pb-16">
@@ -257,7 +226,7 @@ export default function ProfileTest() {
         {/* Progress */}
         <div className="mb-12">
           <div className="flex justify-between text-sm text-muted-foreground mb-2">
-            <span>Question {step + 1} of {totalSteps}</span>
+            <span>{t('profileTest.questionOf', { current: step + 1, total: totalSteps })}</span>
             <span>{Math.round(((step + 1) / totalSteps) * 100)}%</span>
           </div>
           <div className="h-2 bg-secondary rounded-full overflow-hidden">
@@ -277,7 +246,7 @@ export default function ProfileTest() {
                   <currentQuestion.icon className="w-6 h-6 text-primary" />
                 </div>
                 <h2 className="font-display text-xl font-semibold">
-                  {currentQuestion.question}
+                  {t(`profileTest.questions.${currentQuestion.key}.question`)}
                 </h2>
               </div>
 
@@ -293,11 +262,11 @@ export default function ProfileTest() {
                   className="py-4"
                 />
                 <div className="flex justify-between text-sm text-muted-foreground">
-                  <span>{currentQuestion.lowLabel}</span>
+                  <span>{t(`profileTest.questions.${currentQuestion.key}.low`)}</span>
                   <span className="font-semibold text-foreground">
                     {profile[currentQuestion.key as keyof UserProfile]}
                   </span>
-                  <span>{currentQuestion.highLabel}</span>
+                  <span>{t(`profileTest.questions.${currentQuestion.key}.high`)}</span>
                 </div>
               </div>
             </div>
@@ -308,24 +277,24 @@ export default function ProfileTest() {
                   <Plane className="w-6 h-6 text-primary" />
                 </div>
                 <h2 className="font-display text-xl font-semibold">
-                  What is your mobility potential?
+                  {t('profileTest.questions.mobility.question')}
                 </h2>
               </div>
 
               <div className="grid gap-4">
                 {mobilityOptions.map((option) => (
                   <button
-                    key={option.value}
-                    onClick={() => handleMobilityChange(option.value)}
+                    key={option}
+                    onClick={() => handleMobilityChange(option)}
                     className={cn(
                       'p-4 rounded-xl border text-left transition-all',
-                      profile.mobility === option.value
+                      profile.mobility === option
                         ? 'border-primary bg-primary/10'
                         : 'border-border hover:border-primary/50'
                     )}
                   >
-                    <div className="font-medium">{option.label}</div>
-                    <div className="text-sm text-muted-foreground">{option.description}</div>
+                    <div className="font-medium">{t(`profileTest.questions.mobility.options.${option}.label`)}</div>
+                    <div className="text-sm text-muted-foreground">{t(`profileTest.questions.mobility.options.${option}.description`)}</div>
                   </button>
                 ))}
               </div>
@@ -342,10 +311,10 @@ export default function ProfileTest() {
             className="gap-2"
           >
             <ArrowLeft className="w-4 h-4" />
-            Back
+            {t('profileTest.back')}
           </Button>
           <Button onClick={handleNext} className="gap-2 bg-primary text-primary-foreground">
-            {step === totalSteps - 1 ? 'See Results' : 'Next'}
+            {step === totalSteps - 1 ? t('profileTest.seeResults') : t('profileTest.next')}
             <ArrowRight className="w-4 h-4" />
           </Button>
         </div>
