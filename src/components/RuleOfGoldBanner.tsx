@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
 import { Sparkles } from 'lucide-react';
 
@@ -7,6 +8,8 @@ interface RuleOfGoldBannerProps {
 }
 
 export function RuleOfGoldBanner({ rule, className }: RuleOfGoldBannerProps) {
+  const { t } = useTranslation();
+
   return (
     <div
       className={cn(
@@ -23,7 +26,7 @@ export function RuleOfGoldBanner({ rule, className }: RuleOfGoldBannerProps) {
         </div>
         <div>
           <h3 className="font-display text-sm font-semibold text-primary uppercase tracking-wider mb-2">
-            Rule of Gold
+            {t('countryDetail.ruleOfGold', 'Rule of Gold')}
           </h3>
           <p className="text-lg font-medium text-foreground italic">"{rule}"</p>
         </div>
