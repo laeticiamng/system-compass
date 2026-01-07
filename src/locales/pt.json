@@ -85,6 +85,8 @@
   "countryDetail": {
     "notFound": "País não encontrado",
     "backToCountries": "Voltar aos países",
+    "ruleOfGold": "Regra de ouro",
+    "lgbtqRights": "Direitos LGBTQ+",
     "snapshot": {
       "gdpPerCapita": "PIB/Capita",
       "population": "População",
@@ -98,6 +100,18 @@
     "survivalPlaybook": "Playbook de sobrevivência",
     "sourcesUpdates": "Fontes & atualizações",
     "lastUpdated": "Última atualização"
+  },
+  "lgbtqRights": {
+    "title": "Direitos LGBTQ+",
+    "index": "Índice",
+    "marriage": "Casamento",
+    "civilUnion": "União civil",
+    "employmentProtection": "Proteção laboral",
+    "safety": {
+      "safe": "Seguro",
+      "caution": "Precaução recomendada",
+      "dangerous": "Perigoso"
+    }
   },
   "pyramid": {
     "top": "Topo",
@@ -778,6 +792,146 @@
         "skills": ["Storytelling pessoal", "Expertise adquirida"],
         "risks": ["Sobreinvestimento compensatório"],
         "steps": ["Documentar o próprio percurso", "Ajudar quem atravessa o mesmo"]
+      }
+    }
+  },
+  "countriesData": {
+    "cameroon": {
+      "name": "Camarões",
+      "region": "África Central",
+      "ruleOfGold": "Nunca resolvas um problema visível. Nunca te tornes indispensável. Nunca centralizes.",
+      "pyramid": {
+        "top": "Elites políticas e redes conectadas",
+        "institutions": "Aparelho estatal servindo interesses privados",
+        "gatekeepers": "Burocratas, intermediários e corretores informais",
+        "valueCreators": "Empreendedores, agricultores e trabalhadores informais",
+        "base": "População geral financiando o sistema",
+        "realAsset": "O problema em si — a disfunção é lucrativa"
+      },
+      "whoWins": ["Insiders conectados com acesso político", "Guardiões que controlam gargalos", "Quem monetiza a disfunção", "Atores internacionais extraindo recursos"],
+      "whoLoses": ["Pessoas competentes sem conexões", "Empreendedores transparentes", "Qualquer um que resolva problemas publicamente", "Jovens ambiciosos sem redes"],
+      "playbook": {
+        "do": ["Manter-se invisível, construir em silêncio", "Diversificar fontes de rendimento", "Desenvolver competências exportáveis", "Criar opções offshore progressivamente", "Fazer networking com a diáspora"],
+        "dont": ["Resolver publicamente problemas sistémicos", "Tornar-se visivelmente bem-sucedido sem proteção", "Centralizar ativos ou poder", "Confiar cegamente em instituições formais", "Moralizar ou criticar abertamente"],
+        "plan30Days": ["Assegurar documentos e papéis de identidade", "Iniciar fundo de emergência (mesmo pequeno)", "Identificar uma competência exportável para desenvolver", "Mapear o valor da tua rede atual"],
+        "plan12Months": ["Desenvolver fonte secundária de rendimento", "Construir conexões internacionais", "Aprender competências de trabalho remoto", "Criar primeira conta offshore se possível"],
+        "plan5Years": ["Estabelecer opção de residência no estrangeiro", "Diversificar ativos geograficamente", "Construir reputação em rede internacional", "Criar fluxos de rendimento passivo"],
+        "planB": "Foca-te em destinos francófonos com acesso de visto mais fácil (Marrocos, Senegal, França, Canadá-Quebec). Desenvolve competências digitais para trabalho remoto."
+      }
+    },
+    "france": {
+      "name": "França",
+      "region": "Europa Ocidental",
+      "ruleOfGold": "O sistema protege a estabilidade, não a explosão. Joga o longo prazo dentro das regras.",
+      "pyramid": {
+        "top": "Instituições estatais e modelo social",
+        "institutions": "Burocracia pesada assegurando redistribuição",
+        "gatekeepers": "Diplomas, certificações e procedimentos",
+        "valueCreators": "Trabalhadores, empreendedores (restringidos)",
+        "base": "Contribuintes financiando o contrato social",
+        "realAsset": "Estabilidade e previsibilidade"
+      },
+      "whoWins": ["Quem domina as regras do sistema", "Funcionários do setor público", "Quem tem os diplomas e redes certos", "Planeadores pacientes de longo prazo"],
+      "whoLoses": ["Perfis de alta ambição, baixa paciência", "Outsiders sem credenciais francesas", "Quem procura crescimento explosivo", "Não-conformistas e inovadores"],
+      "playbook": {
+        "do": ["Entender e usar o sistema", "Otimizar estrutura fiscal legalmente", "Construir múltiplas fontes de rendimento", "Desenvolver opções internacionais", "Investir em qualidade de vida"],
+        "dont": ["Depender de uma única fonte de rendimento", "Ignorar requisitos administrativos", "Esperar que só a meritocracia ganhe", "Queimar pontes com instituições", "Subestimar o tempo da burocracia"],
+        "plan30Days": ["Auditar a tua situação atual", "Entender o teu escalão fiscal", "Iniciar poupança automatizada", "Pesquisar opções de rendimento secundário"],
+        "plan12Months": ["Estabelecer rendimento secundário", "Otimizar a tua estrutura legal", "Construir certificações transferíveis", "Criar portfólio internacional"],
+        "plan5Years": ["Diversificação geográfica", "Construir rendimento independente de localização", "Estabelecer alternativas UE", "Criar riqueza fora do alcance do sistema"],
+        "planB": "A mobilidade UE é a tua vantagem. Considera Portugal, Espanha ou Países Baixos para menos fricção. Suíça para maior ambição. Mantém benefícios franceses enquanto constróis noutro lugar."
+      }
+    },
+    "switzerland": {
+      "name": "Suíça",
+      "region": "Europa Ocidental",
+      "ruleOfGold": "Excelência + regras + reputação = segurança. Sem atalhos, sem aproximações.",
+      "pyramid": {
+        "top": "Confiança, precisão e fiabilidade institucional",
+        "institutions": "Governação eficiente baseada em regras",
+        "gatekeepers": "Padrões de qualidade e requisitos profissionais",
+        "valueCreators": "Trabalhadores e empreendedores altamente qualificados",
+        "base": "Cidadãos investidos na manutenção do sistema",
+        "realAsset": "Competência e confiança coletiva"
+      },
+      "whoWins": ["Especialistas altamente competentes", "Seguidores de regras com excelência", "Construtores de reputação de longo prazo", "Quem valoriza a precisão"],
+      "whoLoses": ["Aproximadores e tomadores de atalhos", "Disruptores impacientes", "Quem sem credenciais reconhecidas", "Outsiders culturais que não se adaptam"],
+      "playbook": {
+        "do": ["Dominar o teu ofício até à excelência", "Seguir as regras precisamente", "Construir reputação ao longo do tempo", "Integrar-se culturalmente", "Investir em certificações"],
+        "dont": ["Tomar atalhos nunca", "Fazer batota ou dobrar regras", "Sobrevender ou exagerar", "Ignorar normas locais", "Apressar o processo de integração"],
+        "plan30Days": ["Pesquisar reconhecimento de credenciais", "Entender padrões profissionais locais", "Começar aprendizagem de língua a sério", "Mapear requisitos de integração"],
+        "plan12Months": ["Alcançar certificações requeridas", "Construir rede profissional local", "Demonstrar desempenho consistente", "Estabelecer estabilidade financeira"],
+        "plan5Years": ["Alcançar residência permanente/cidadania", "Tornar-se referência no teu campo", "Construir riqueza de longo prazo", "Integrar-se completamente mantendo opções"],
+        "planB": "Outros sistemas COMPETÊNCIA_CONFIANÇA: Alemanha, Países Baixos, Áustria, Singapura. Constrói credenciais que transferem entre estes sistemas."
+      }
+    },
+    "usa": {
+      "name": "Estados Unidos",
+      "region": "América do Norte",
+      "ruleOfGold": "Ganha rápido, assegura ganhos, diversifica. O sistema recompensa velocidade, não estabilidade.",
+      "pyramid": {
+        "top": "Capital e potencial de crescimento",
+        "institutions": "Mercados e estruturas de oportunidade",
+        "gatekeepers": "Acesso a capital e redes",
+        "valueCreators": "Empreendedores e alto desempenho",
+        "base": "Trabalhadores em ambiente competitivo",
+        "realAsset": "Crescimento e escalabilidade"
+      },
+      "whoWins": ["Empreendedores de alta velocidade", "Quem tem acesso a capital", "Proprietários de competências escaláveis", "Construtores de redes"],
+      "whoLoses": ["Procuradores de estabilidade", "Quem depende de rede social", "Tipos lentos e constantes", "Quem sem buffer saúde/riqueza"],
+      "playbook": {
+        "do": ["Mover-se rápido e escalar", "Construir múltiplas fontes de rendimento", "Assegurar redes de segurança privadas", "Fazer networking agressivamente", "Diversificar geograficamente"],
+        "dont": ["Depender de sistemas sociais", "Ficar numa única fonte de rendimento", "Ignorar seguro de saúde", "Esgotar-se sem plano de saída", "Assumir que estabilidade existe"],
+        "plan30Days": ["Assegurar cobertura de saúde", "Iniciar fundo de emergência", "Identificar oportunidades de crescimento", "Mapear o valor da tua rede"],
+        "plan12Months": ["Construir rendimento escalável", "Criar estratégia de investimento", "Estabelecer reputação profissional", "Construir buffers de segurança"],
+        "plan5Years": ["Alcançar independência financeira", "Diversificar internacionalmente", "Construir rendimentos passivos", "Criar opções de saída"],
+        "planB": "Considera Canadá para estabilidade com crescimento, Portugal para acesso UE, Dubai para otimização fiscal. Mantém rendimentos US enquanto constróis opções."
+      }
+    },
+    "germany": {
+      "name": "Alemanha",
+      "region": "Europa Ocidental",
+      "ruleOfGold": "Precisão, processo e paciência. O sistema recompensa quem domina as regras.",
+      "pyramid": {
+        "top": "Excelência industrial e confiança institucional",
+        "institutions": "Burocracia eficiente e sindicatos fortes",
+        "gatekeepers": "Qualificações profissionais e certificações",
+        "valueCreators": "Engenheiros, trabalhadores qualificados, empreendedores Mittelstand",
+        "base": "Contribuintes apoiando a economia social de mercado",
+        "realAsset": "Competência técnica e fiabilidade"
+      },
+      "whoWins": ["Especialistas técnicos e engenheiros", "Quem com qualificações reconhecidas", "Construtores pacientes de longo prazo", "Empreendedores Mittelstand"],
+      "whoLoses": ["Quem procura vitórias rápidas", "Outsiders sem credenciais alemãs", "Disruptores impacientes", "Quem resiste à burocracia"],
+      "playbook": {
+        "do": ["Fazer reconhecer as tuas qualificações", "Aprender alemão a sério", "Construir rede profissional metodicamente", "Abraçar processo e procedimento", "Pensar estabilidade de longo prazo"],
+        "dont": ["Apressar-se ou tomar atalhos", "Ignorar requisitos de papelada", "Subestimar importância da língua", "Esperar flexibilidade estilo americano", "Rejeitar sindicatos e direitos dos trabalhadores"],
+        "plan30Days": ["Pesquisar reconhecimento de qualificações", "Avaliar nível de alemão requerido", "Identificar empregadores potenciais", "Iniciar processo administrativo"],
+        "plan12Months": ["Alcançar nível B2 em alemão", "Fazer reconhecer qualificações", "Construir rede profissional", "Estabilizar situação legal"],
+        "plan5Years": ["Obter residência permanente", "Tornar-se especialista reconhecido no teu campo", "Construir estabilidade financeira", "Integrar-se completamente"],
+        "planB": "Outros sistemas similares: Áustria, Suíça, Países Baixos. As qualificações alemãs são altamente transferíveis na UE."
+      }
+    },
+    "uae": {
+      "name": "Emirados Árabes Unidos",
+      "region": "Médio Oriente",
+      "ruleOfGold": "Sê útil ao poder, mantém-te discreto, nunca local. Os teus ganhos pertencem-te enquanto seguires as regras.",
+      "pyramid": {
+        "top": "Famílias reinantes e os seus círculos próximos",
+        "institutions": "Estruturas estatais servindo a visão real",
+        "gatekeepers": "Patrocinadores, zonas francas e autorizações",
+        "valueCreators": "Expatriados qualificados e empreendedores",
+        "base": "Trabalhadores estrangeiros sem direitos permanentes",
+        "realAsset": "Acesso ao poder e utilidade para o sistema"
+      },
+      "whoWins": ["Especialistas úteis para o desenvolvimento", "Quem entende a discrição", "Empreendedores com capital", "Profissionais de alto valor"],
+      "whoLoses": ["Procuradores de cidadania permanente", "Trabalhadores pouco qualificados", "Quem fala de política", "Quem não consegue adaptar-se ao sistema de patrocínio"],
+      "playbook": {
+        "do": ["Ser excelente no teu campo", "Manter baixo perfil político", "Construir riqueza localmente, diversificar globalmente", "Desenvolver múltiplas opções de residência", "Networking com expats e locais estratégicos"],
+        "dont": ["Comentar sobre política", "Assumir que podes ficar para sempre", "Depender de um único empregador/patrocinador", "Ignorar requisitos legais", "Esquecer o plano B"],
+        "plan30Days": ["Entender completamente o teu visto e direitos", "Iniciar fundo de emergência", "Mapear a tua rede", "Identificar opções de diversificação"],
+        "plan12Months": ["Estabelecer fluxos de poupança", "Construir reputação profissional", "Criar conexões internacionais", "Explorar opções de residência alternativa"],
+        "plan5Years": ["Diversificação geográfica de ativos", "Múltiplas opções de residência", "Rendimentos passivos estabelecidos", "Plano de saída claro"],
+        "planB": "Considera Portugal (Golden Visa), Malta ou Chipre para residência UE. Singapura ou Hong Kong para Ásia. Mantém passaporte forte."
       }
     }
   }

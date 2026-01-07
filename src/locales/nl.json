@@ -85,6 +85,8 @@
   "countryDetail": {
     "notFound": "Land niet gevonden",
     "backToCountries": "Terug naar landen",
+    "ruleOfGold": "Gouden regel",
+    "lgbtqRights": "LGBTQ+ Rechten",
     "snapshot": {
       "gdpPerCapita": "BBP/Capita",
       "population": "Bevolking",
@@ -98,6 +100,18 @@
     "survivalPlaybook": "Overlevings-playbook",
     "sourcesUpdates": "Bronnen & updates",
     "lastUpdated": "Laatst bijgewerkt"
+  },
+  "lgbtqRights": {
+    "title": "LGBTQ+ Rechten",
+    "index": "Index",
+    "marriage": "Huwelijk",
+    "civilUnion": "Geregistreerd partnerschap",
+    "employmentProtection": "Arbeidsbescherming",
+    "safety": {
+      "safe": "Veilig",
+      "caution": "Voorzichtigheid geboden",
+      "dangerous": "Gevaarlijk"
+    }
   },
   "pyramid": {
     "top": "Top",
@@ -778,6 +792,146 @@
         "skills": ["Persoonlijke storytelling", "Verworven expertise"],
         "risks": ["Compenserende overinvestering"],
         "steps": ["Eigen traject documenteren", "Anderen in dezelfde situatie helpen"]
+      }
+    }
+  },
+  "countriesData": {
+    "cameroon": {
+      "name": "Kameroen",
+      "region": "Centraal-Afrika",
+      "ruleOfGold": "Los nooit een zichtbaar probleem op. Word nooit onmisbaar. Centraliseer nooit.",
+      "pyramid": {
+        "top": "Politieke elites en verbonden netwerken",
+        "institutions": "Staatsapparaat dat privébelangen dient",
+        "gatekeepers": "Bureaucraten, tussenpersonen en informele makelaars",
+        "valueCreators": "Ondernemers, boeren en informele werkers",
+        "base": "Algemene bevolking die het systeem financiert",
+        "realAsset": "Het probleem zelf — disfunctie is winstgevend"
+      },
+      "whoWins": ["Verbonden insiders met politieke toegang", "Poortwachters die knelpunten beheersen", "Wie disfunctie monetariseert", "Internationale actoren die grondstoffen extraheren"],
+      "whoLoses": ["Competente mensen zonder verbindingen", "Transparante ondernemers", "Iedereen die problemen publiekelijk oplost", "Ambitieuze jongeren zonder netwerken"],
+      "playbook": {
+        "do": ["Onzichtbaar blijven, stil opbouwen", "Inkomstenbronnen diversifiëren", "Exporteerbare vaardigheden ontwikkelen", "Offshore-opties progressief creëren", "Netwerken met diaspora"],
+        "dont": ["Publiekelijk systemische problemen oplossen", "Zichtbaar succesvol worden zonder bescherming", "Activa of macht centraliseren", "Blindelings formele instituties vertrouwen", "Openlijk moraliseren of bekritiseren"],
+        "plan30Days": ["Documenten en identiteitspapieren veiligstellen", "Noodfonds starten (ook klein)", "Eén exporteerbare vaardigheid identificeren om te ontwikkelen", "Waarde van je huidige netwerk in kaart brengen"],
+        "plan12Months": ["Secundaire inkomstenbron ontwikkelen", "Internationale verbindingen opbouwen", "Remote-werkvaardigheden leren", "Eerste offshore-rekening creëren indien mogelijk"],
+        "plan5Years": ["Verblijfsoptie in het buitenland vestigen", "Activa geografisch diversifiëren", "Reputatie in internationaal netwerk opbouwen", "Passieve inkomstenstromen creëren"],
+        "planB": "Focus op Franstalige bestemmingen met gemakkelijker visumtoegang (Marokko, Senegal, Frankrijk, Canada-Quebec). Ontwikkel digitale vaardigheden voor remote werk."
+      }
+    },
+    "france": {
+      "name": "Frankrijk",
+      "region": "West-Europa",
+      "ruleOfGold": "Het systeem beschermt stabiliteit, niet explosie. Speel het lange spel binnen de regels.",
+      "pyramid": {
+        "top": "Staatsinstellingen en sociaal model",
+        "institutions": "Zware bureaucratie die herverdeling verzekert",
+        "gatekeepers": "Diploma's, certificeringen en procedures",
+        "valueCreators": "Werkers, ondernemers (beperkt)",
+        "base": "Belastingbetalers die het sociaal contract financieren",
+        "realAsset": "Stabiliteit en voorspelbaarheid"
+      },
+      "whoWins": ["Wie de systeemregels beheerst", "Werknemers in de publieke sector", "Wie de juiste diploma's en netwerken heeft", "Geduldige langetermijnplanners"],
+      "whoLoses": ["Profielen met hoge ambitie, weinig geduld", "Buitenstaanders zonder Franse referenties", "Wie explosieve groei zoekt", "Non-conformisten en innovatoren"],
+      "playbook": {
+        "do": ["Het systeem begrijpen en gebruiken", "Belastingstructuur legaal optimaliseren", "Meerdere inkomstenbronnen opbouwen", "Internationale opties ontwikkelen", "In levenskwaliteit investeren"],
+        "dont": ["Afhankelijk zijn van één inkomstenbron", "Administratieve eisen negeren", "Verwachten dat alleen meritocratie wint", "Bruggen met instituties verbranden", "Bureaucratietijd onderschatten"],
+        "plan30Days": ["Huidige situatie auditen", "Je belastingschijf begrijpen", "Geautomatiseerd sparen starten", "Secundaire inkomensopties onderzoeken"],
+        "plan12Months": ["Secundair inkomen vestigen", "Je juridische structuur optimaliseren", "Overdraagbare certificeringen opbouwen", "Internationale portefeuille creëren"],
+        "plan5Years": ["Geografische diversificatie", "Locatie-onafhankelijk inkomen opbouwen", "EU-alternatieven vestigen", "Vermogen buiten systeembereik creëren"],
+        "planB": "EU-mobiliteit is je voordeel. Overweeg Portugal, Spanje of Nederland voor minder wrijving. Zwitserland voor hogere ambitie. Behoud Franse voordelen terwijl je elders opbouwt."
+      }
+    },
+    "switzerland": {
+      "name": "Zwitserland",
+      "region": "West-Europa",
+      "ruleOfGold": "Excellentie + regels + reputatie = veiligheid. Geen shortcuts, geen benaderingen.",
+      "pyramid": {
+        "top": "Vertrouwen, precisie en institutionele betrouwbaarheid",
+        "institutions": "Efficiënt, regelgebaseerd bestuur",
+        "gatekeepers": "Kwaliteitsstandaarden en professionele eisen",
+        "valueCreators": "Hoogopgeleide werkers en ondernemers",
+        "base": "Burgers geïnvesteerd in systeembehoud",
+        "realAsset": "Competentie en collectief vertrouwen"
+      },
+      "whoWins": ["Hoogcompetente specialisten", "Regelvolgers met excellentie", "Langetermijn-reputatieopbouwers", "Wie precisie waardeert"],
+      "whoLoses": ["Approximeerders en shortcut-nemers", "Ongeduldige disruptors", "Wie zonder erkende referenties", "Culturele buitenstaanders die zich niet aanpassen"],
+      "playbook": {
+        "do": ["Je vak tot excellentie beheersen", "Regels precies volgen", "Reputatie over tijd opbouwen", "Cultureel integreren", "In certificeringen investeren"],
+        "dont": ["Ooit shortcuts nemen", "Valsspelen of regels buigen", "Overdrijven of exaggereren", "Lokale normen negeren", "Integratieproces versnellen"],
+        "plan30Days": ["Referentie-erkenning onderzoeken", "Lokale professionele standaarden begrijpen", "Serieus met taalleren beginnen", "Integratie-eisen in kaart brengen"],
+        "plan12Months": ["Vereiste certificeringen behalen", "Lokaal professioneel netwerk opbouwen", "Consistente prestatie demonstreren", "Financiële stabiliteit vestigen"],
+        "plan5Years": ["Permanent verblijf/burgerschap behalen", "Referentie in je veld worden", "Langetermijnvermogen opbouwen", "Volledig integreren met behoud van opties"],
+        "planB": "Andere COMPETENTIE_VERTROUWEN-systemen: Duitsland, Nederland, Oostenrijk, Singapore. Bouw referenties die tussen deze systemen overdragen."
+      }
+    },
+    "usa": {
+      "name": "Verenigde Staten",
+      "region": "Noord-Amerika",
+      "ruleOfGold": "Snel winnen, winsten veiligstellen, diversifiëren. Het systeem beloont snelheid, niet stabiliteit.",
+      "pyramid": {
+        "top": "Kapitaal en groeipotentieel",
+        "institutions": "Markten en kansenstructuren",
+        "gatekeepers": "Toegang tot kapitaal en netwerken",
+        "valueCreators": "Ondernemers en toppresteerders",
+        "base": "Werkers in competitieve omgeving",
+        "realAsset": "Groei en schaalbaarheid"
+      },
+      "whoWins": ["Hogesnelheid-ondernemers", "Wie toegang tot kapitaal heeft", "Eigenaren van schaalbare vaardigheden", "Netwerkbouwers"],
+      "whoLoses": ["Stabiliteitszoekers", "Wie afhankelijk is van sociaal vangnet", "Langzame en gestage types", "Wie zonder gezondheids-/vermogensbuffer"],
+      "playbook": {
+        "do": ["Snel bewegen en schalen", "Meerdere inkomstenbronnen opbouwen", "Privé-vangnetwerken veiligstellen", "Agressief netwerken", "Geografisch diversifiëren"],
+        "dont": ["Op sociale systemen vertrouwen", "Bij één inkomstenbron blijven", "Ziektekostenverzekering negeren", "Opbranden zonder exitplan", "Aannemen dat stabiliteit bestaat"],
+        "plan30Days": ["Ziektekostenverzekering veiligstellen", "Noodfonds starten", "Groeikansen identificeren", "Netwerkwaarde in kaart brengen"],
+        "plan12Months": ["Schaalbaar inkomen opbouwen", "Investeringsstrategie creëren", "Professionele reputatie vestigen", "Veiligheidsbuffers opbouwen"],
+        "plan5Years": ["Financiële onafhankelijkheid bereiken", "Internationaal diversifiëren", "Passief inkomen opbouwen", "Exitopties creëren"],
+        "planB": "Overweeg Canada voor stabiliteit met groei, Portugal voor EU-toegang, Dubai voor belastingoptimalisatie. Behoud VS-inkomen terwijl je opties opbouwt."
+      }
+    },
+    "germany": {
+      "name": "Duitsland",
+      "region": "West-Europa",
+      "ruleOfGold": "Precisie, proces en geduld. Het systeem beloont wie de regels beheerst.",
+      "pyramid": {
+        "top": "Industriële excellentie en institutioneel vertrouwen",
+        "institutions": "Efficiënte bureaucratie en sterke vakbonden",
+        "gatekeepers": "Professionele kwalificaties en certificeringen",
+        "valueCreators": "Ingenieurs, geschoolde arbeiders, Mittelstand-ondernemers",
+        "base": "Belastingbetalers die de sociale markteconomie ondersteunen",
+        "realAsset": "Technische competentie en betrouwbaarheid"
+      },
+      "whoWins": ["Technische specialisten en ingenieurs", "Wie met erkende kwalificaties", "Geduldige langetermijnbouwers", "Mittelstand-ondernemers"],
+      "whoLoses": ["Wie snelle overwinningen zoekt", "Buitenstaanders zonder Duitse referenties", "Ongeduldige disruptors", "Wie bureaucratie weerstaat"],
+      "playbook": {
+        "do": ["Je kwalificaties laten erkennen", "Serieus Duits leren", "Professioneel netwerk methodisch opbouwen", "Proces en procedure omarmen", "Langetermijnstabiliteit denken"],
+        "dont": ["Haasten of shortcuts nemen", "Papierwerk-eisen negeren", "Taalbelang onderschatten", "Amerikaanse flexibiliteit verwachten", "Vakbonden en werknemersrechten afwijzen"],
+        "plan30Days": ["Kwalificatie-erkenning onderzoeken", "Vereist Duitsniveau evalueren", "Potentiële werkgevers identificeren", "Administratief proces starten"],
+        "plan12Months": ["Duitsniveau B2 bereiken", "Kwalificaties laten erkennen", "Professioneel netwerk opbouwen", "Juridische situatie stabiliseren"],
+        "plan5Years": ["Permanent verblijf verkrijgen", "Erkend expert in je veld worden", "Financiële stabiliteit opbouwen", "Volledig integreren"],
+        "planB": "Andere vergelijkbare systemen: Oostenrijk, Zwitserland, Nederland. Duitse kwalificaties zijn zeer overdraagbaar in de EU."
+      }
+    },
+    "uae": {
+      "name": "Verenigde Arabische Emiraten",
+      "region": "Midden-Oosten",
+      "ruleOfGold": "Wees nuttig voor de macht, blijf discreet, nooit lokaal. Je winsten zijn van jou zolang je de regels volgt.",
+      "pyramid": {
+        "top": "Heersende families en hun nauwe kringen",
+        "institutions": "Staatsstructuren die de koninklijke visie dienen",
+        "gatekeepers": "Sponsors, free zones en vergunningen",
+        "valueCreators": "Gekwalificeerde expats en ondernemers",
+        "base": "Buitenlandse werkers zonder permanente rechten",
+        "realAsset": "Toegang tot macht en nuttigheid voor het systeem"
+      },
+      "whoWins": ["Experts nuttig voor ontwikkeling", "Wie discretie begrijpt", "Ondernemers met kapitaal", "Hoogwaardige professionals"],
+      "whoLoses": ["Permanente burgerschapzoekers", "Laaggeschoolde werkers", "Wie over politiek praat", "Wie zich niet kan aanpassen aan sponsorsysteem"],
+      "playbook": {
+        "do": ["Excellent zijn in je veld", "Laag politiek profiel houden", "Lokaal vermogen opbouwen, globaal diversifiëren", "Meerdere verblijfsopties ontwikkelen", "Netwerken met expats en strategische locals"],
+        "dont": ["Over politiek commentaar geven", "Aannemen dat je voor altijd kunt blijven", "Afhankelijk zijn van één werkgever/sponsor", "Juridische eisen negeren", "Plan B vergeten"],
+        "plan30Days": ["Visum en rechten volledig begrijpen", "Noodfonds starten", "Netwerk in kaart brengen", "Diversificatie-opties identificeren"],
+        "plan12Months": ["Spaarstromen vestigen", "Professionele reputatie opbouwen", "Internationale verbindingen creëren", "Alternatieve verblijfsopties verkennen"],
+        "plan5Years": ["Geografische vermogensdiversificatie", "Meerdere verblijfsopties", "Gevestigde passieve inkomsten", "Duidelijk exitplan"],
+        "planB": "Overweeg Portugal (Golden Visa), Malta of Cyprus voor EU-verblijf. Singapore of Hongkong voor Azië. Behoud sterk paspoort."
       }
     }
   }

@@ -86,6 +86,7 @@
     "notFound": "Pays non trouvé",
     "backToCountries": "Retour aux pays",
     "ruleOfGold": "Règle d'or",
+    "lgbtqRights": "Droits LGBTQ+",
     "snapshot": {
       "gdpPerCapita": "PIB/Habitant",
       "population": "Population",
@@ -99,6 +100,18 @@
     "survivalPlaybook": "Playbook de survie",
     "sourcesUpdates": "Sources & mises à jour",
     "lastUpdated": "Dernière mise à jour"
+  },
+  "lgbtqRights": {
+    "title": "Droits LGBTQ+",
+    "index": "Indice",
+    "marriage": "Mariage",
+    "civilUnion": "Union civile",
+    "employmentProtection": "Protection emploi",
+    "safety": {
+      "safe": "Sûr",
+      "caution": "Prudence requise",
+      "dangerous": "Dangereux"
+    }
   },
 "pyramid": {
     "top": "Sommet",
