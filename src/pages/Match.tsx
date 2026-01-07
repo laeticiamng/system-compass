@@ -29,7 +29,7 @@ interface MatchedCountry {
   warnings: string[];
 }
 
-function calculateCompatibility(profile: UserProfile, country: Country): MatchedCountry {
+function calculateCompatibility(profile: UserProfile, country: Country, t: (key: string) => string): MatchedCountry {
   let score = 50; // Base score
   const reasons: string[] = [];
   const warnings: string[] = [];
@@ -40,10 +40,10 @@ function calculateCompatibility(profile: UserProfile, country: Country): Matched
   if (profile.ambition > 7) {
     if (pyramidType === 'GROWTH_RISK') {
       score += 15;
-      reasons.push('High ambition aligned with growth-focused system');
+      reasons.push(t('match.reasons.ambitionGrowth'));
     } else if (pyramidType === 'STABILITY_REDIS') {
       score -= 10;
-      warnings.push('High ambition may be frustrated by stability focus');
+      warnings.push(t('match.reasons.ambitionFrustrated'));
     }
   }
   
@@ -51,10 +51,10 @@ function calculateCompatibility(profile: UserProfile, country: Country): Matched
   if (profile.meritNeed > 7) {
     if (pyramidType === 'COMPETENCE_TRUST') {
       score += 15;
-      reasons.push('Meritocracy values aligned with competence-based system');
+      reasons.push(t('match.reasons.meritCompetence'));
     } else if (pyramidType === 'PROBLEM_RENT') {
       score -= 15;
-      warnings.push('Merit-based expectations clash with connection-based system');
+      warnings.push(t('match.reasons.meritConnection'));
     }
   }
   
@@ -62,7 +62,7 @@ function calculateCompatibility(profile: UserProfile, country: Country): Matched
   if (profile.riskTolerance > 7) {
     if (pyramidType === 'GROWTH_RISK') {
       score += 10;
-      reasons.push('High risk tolerance suits growth environment');
+      reasons.push(t('match.reasons.riskGrowth'));
     }
     if (risks.safety > 50 || risks.volatility > 50) {
       score += 5; // Can handle risky environments
@@ -70,11 +70,11 @@ function calculateCompatibility(profile: UserProfile, country: Country): Matched
   } else if (profile.riskTolerance < 4) {
     if (risks.safety > 50 || risks.volatility > 50) {
       score -= 15;
-      warnings.push('Low risk tolerance vs high environmental risks');
+      warnings.push(t('match.reasons.lowRiskWarning'));
     }
     if (pyramidType === 'STABILITY_REDIS' || pyramidType === 'COMPETENCE_TRUST') {
       score += 10;
-      reasons.push('Safety-conscious profile matches stable system');
+      reasons.push(t('match.reasons.safetyMatch'));
     }
   }
   
@@ -82,14 +82,14 @@ function calculateCompatibility(profile: UserProfile, country: Country): Matched
   if (profile.securityNeed > 7) {
     if (pyramidType === 'STABILITY_REDIS') {
       score += 15;
-      reasons.push('Security needs met by strong social safety net');
+      reasons.push(t('match.reasons.securityNet'));
     } else if (pyramidType === 'GROWTH_RISK') {
       score -= 10;
-      warnings.push('Security needs may not be met in growth-focused system');
+      warnings.push(t('match.reasons.securityUnmet'));
     }
     if (risks.legal < 30 && risks.safety < 30) {
       score += 10;
-      reasons.push('Low legal and safety risks provide security');
+      reasons.push(t('match.reasons.lowRiskEnvironment'));
     }
   }
   
@@ -97,12 +97,12 @@ function calculateCompatibility(profile: UserProfile, country: Country): Matched
   if (profile.bureaucracyTolerance < 4) {
     if (risks.bureaucracy > 60) {
       score -= 15;
-      warnings.push('Low bureaucracy tolerance vs heavy bureaucracy');
+      warnings.push(t('match.reasons.bureaucracyWarning'));
     }
   } else if (profile.bureaucracyTolerance > 7) {
     if (risks.bureaucracy > 60) {
       score += 5;
-      reasons.push('Can handle bureaucratic requirements');
+      reasons.push(t('match.reasons.bureaucracyMatch'));
     }
   }
   
@@ -110,10 +110,10 @@ function calculateCompatibility(profile: UserProfile, country: Country): Matched
   if (profile.innovationDrive > 7) {
     if (pyramidType === 'GROWTH_RISK') {
       score += 10;
-      reasons.push('Innovation drive matches growth environment');
+      reasons.push(t('match.reasons.innovationMatch'));
     } else if (pyramidType === 'PROBLEM_RENT') {
       score -= 10;
-      warnings.push('Innovation drive may be suppressed');
+      warnings.push(t('match.reasons.innovationSuppressed'));
     }
   }
   
@@ -121,26 +121,26 @@ function calculateCompatibility(profile: UserProfile, country: Country): Matched
   if (profile.discretionPreference > 7) {
     if (pyramidType === 'PROBLEM_RENT') {
       score += 10;
-      reasons.push('Discretion is valuable in this system');
+      reasons.push(t('match.reasons.discretionValuable'));
     }
   } else if (profile.discretionPreference < 4) {
     if (pyramidType === 'PROBLEM_RENT') {
       score -= 10;
-      warnings.push('Visibility preference risky in this environment');
+      warnings.push(t('match.reasons.visibilityRisk'));
     }
   }
   
   // Corruption penalty for rule-followers
   if (profile.meritNeed > 6 && risks.corruption > 60) {
     score -= 10;
-    warnings.push('High corruption environment challenges merit-based approach');
+    warnings.push(t('match.reasons.corruptionChallenge'));
   }
   
   // Bonus for low-risk environments
   const avgRisk = (risks.legal + risks.safety + risks.corruption + risks.volatility + risks.bureaucracy) / 5;
   if (avgRisk < 30) {
     score += 10;
-    reasons.push('Overall low-risk environment');
+    reasons.push(t('match.reasons.overallLowRisk'));
   } else if (avgRisk > 60) {
     score -= 5;
   }
@@ -165,9 +165,9 @@ export default function Match() {
         const parsed = JSON.parse(savedProfile);
         setProfile(parsed);
         
-        // Calculate matches
+        // Calculate matches - pass t function
         const matchedCountries = countries
-          .map(country => calculateCompatibility(parsed, country))
+          .map(country => calculateCompatibility(parsed, country, t))
           .sort((a, b) => b.score - a.score);
         
         setMatches(matchedCountries);
@@ -175,7 +175,7 @@ export default function Match() {
         console.error('Failed to parse profile', e);
       }
     }
-  }, []);
+  }, [t]);
 
   const shareResults = async () => {
     const topCountries = matches.slice(0, 3).map(m => m.country.name).join(', ');
