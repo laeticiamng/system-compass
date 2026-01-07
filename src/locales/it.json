@@ -2,12 +2,19 @@
   "common": {
     "appName": "Pyramid Compass",
     "tagline": "Naviga nel sistema reale",
-    "disclaimer": "Solo strumento analitico. Non è consulenza legale o finanziaria."
+    "disclaimer": "Solo strumento analitico. Non è consulenza legale o finanziaria.",
+    "yes": "Sì",
+    "no": "No",
+    "back": "Indietro",
+    "years": "anni"
   },
   "nav": {
     "start": "Inizio",
     "countries": "Paesi",
     "profile": "Profilo",
+    "trajectory": "Traiettoria",
+    "match": "Match",
+    "compare": "Confronta",
     "resources": "Risorse"
   },
   "hero": {
@@ -16,7 +23,7 @@
     "titleHighlight": "Piramide",
     "title2": "Trova il tuo percorso",
     "subtitle": "Ogni paese ha un sistema nascosto. Impara cosa ricompensa veramente, dove ti collochi, e come sopravvivere intelligentemente — o fuggire strategicamente.",
-    "discoverProfile": "Scopri il tuo profilo",
+    "discoverProfile": "Progetta la tua vita",
     "exploreCountries": "Esplora paesi"
   },
   "howItWorks": {
@@ -62,8 +69,8 @@
   },
   "cta": {
     "title": "Pronto a navigare?",
-    "subtitle": "Questo sito non giudica. Spiega. Ti aiuta a sopravvivere intelligentemente dove sei e a muoverti verso un sistema che ricompensa ciò che sei.",
-    "button": "Inizia il tuo viaggio"
+    "subtitle": "Questo sito non giudica. Traduce. Ti aiuta a capirti, poi a fare un piano che si adatti alla tua realtà.",
+    "button": "Progetta la tua traiettoria di vita"
   },
   "countries": {
     "title": "Intelligence paesi",
@@ -190,23 +197,38 @@
     "archetypes": {
       "ambitiousMeritocrat": {
         "name": "Meritocratico ambizioso",
-        "description": "Cerchi ricompense proporzionali all'eccellenza. Prosperi dove la competenza vince."
+        "description": "Cerchi ricompense proporzionali all'eccellenza. Prosperi dove la competenza vince.",
+        "strengths": ["Orientato ai risultati", "Forte etica lavorativa"],
+        "vulnerabilities": ["Può essere frustrato dall'ingiustizia", "Rischio burnout"],
+        "redFlags": ["Sistemi che premiano le connessioni sulla competenza", "Sistemi ad alta redistribuzione"]
       },
       "stabilitySeeker": {
         "name": "Cercatore di stabilità",
-        "description": "Apprezzi prevedibilità e protezione. Rendi meglio con una rete di sicurezza."
+        "description": "Apprezzi prevedibilità e protezione. Rendi meglio con una rete di sicurezza.",
+        "strengths": ["Paziente e metodico", "Pianificatore a lungo termine"],
+        "vulnerabilities": ["Può perdere opportunità di crescita", "Troppo avverso al rischio"],
+        "redFlags": ["Ambienti di crescita ad alto rischio", "Sistemi con debole protezione sociale"]
       },
       "strategicSurvivor": {
         "name": "Sopravvivente strategico",
-        "description": "Sai navigare senza esposizione. Costruisci in silenzio e proteggi i guadagni."
+        "description": "Sai navigare senza esposizione. Costruisci in silenzio e proteggi i guadagni.",
+        "strengths": ["Consapevolezza tattica", "Gestione del rischio"],
+        "vulnerabilities": ["Può sotto-sfruttare la visibilità", "Può diventare troppo difensivo"],
+        "redFlags": ["Sistemi che richiedono profilo pubblico", "Meritocrazie trasparenti"]
       },
       "growthConquistador": {
         "name": "Conquistador della crescita",
-        "description": "Insegui scala e velocità. Prosperi in ambienti ad alto rischio e alta ricompensa."
+        "description": "Insegui scala e velocità. Prosperi in ambienti ad alto rischio e alta ricompensa.",
+        "strengths": ["Velocità e adattabilità", "Riconoscimento opportunità"],
+        "vulnerabilities": ["Può trascurare la stabilità", "Rischio burnout"],
+        "redFlags": ["Sistemi burocratici lenti", "Alta tassazione sulla crescita"]
       },
       "balancedNavigator": {
         "name": "Navigatore equilibrato",
-        "description": "Ti adatti al contesto. Puoi sopravvivere in molti sistemi ma non ottimizzi per nessuno."
+        "description": "Ti adatti al contesto. Puoi sopravvivere in molti sistemi ma non ottimizzi per nessuno.",
+        "strengths": ["Flessibilità", "Ampia tolleranza"],
+        "vulnerabilities": ["Può mancare di direzione forte", "Rischio di deriva"],
+        "redFlags": ["Sistemi estremi in qualsiasi direzione"]
       }
     },
     "strengths": "Punti di forza",
@@ -293,5 +315,470 @@
   },
   "language": {
     "select": "Lingua"
+  },
+  "match": {
+    "title": "I tuoi match di paesi",
+    "subtitle": "Basato sul tuo profilo, ecco i paesi più allineati con i tuoi valori e obiettivi.",
+    "noProfile": "Profilo non trovato",
+    "noProfileDesc": "Completa il test del profilo per ottenere raccomandazioni personalizzate.",
+    "takeTest": "Fai il test del profilo",
+    "topMatches": "Migliori match per te",
+    "avoidTitle": "Paesi da approcciare con cautela",
+    "compatibility": "compatibilità",
+    "exploreAll": "Esplora tutti i paesi",
+    "compareCountries": "Confronta paesi",
+    "retakeTest": "Rifai il test",
+    "shareResults": "Condividi risultati",
+    "copyLink": "Copia link",
+    "linkCopied": "Link copiato!",
+    "reasons": {
+      "ambitionGrowth": "Alta ambizione allineata con sistema orientato alla crescita",
+      "ambitionFrustrated": "Alta ambizione può essere frustrata dal focus sulla stabilità",
+      "meritCompetence": "Valori meritocratici allineati con sistema basato su competenze",
+      "meritConnection": "Aspettative meritocratiche in conflitto con sistema basato su connessioni",
+      "riskGrowth": "Alta tolleranza al rischio adatta ad ambiente di crescita",
+      "lowRiskWarning": "Bassa tolleranza al rischio vs alti rischi ambientali",
+      "safetyMatch": "Profilo attento alla sicurezza compatibile con sistema stabile",
+      "securityNet": "Bisogni di sicurezza soddisfatti da forte rete sociale",
+      "securityUnmet": "Bisogni di sicurezza potrebbero non essere soddisfatti in sistema di crescita",
+      "lowRiskEnvironment": "Bassi rischi legali e di sicurezza forniscono sicurezza",
+      "bureaucracyWarning": "Bassa tolleranza alla burocrazia vs burocrazia pesante",
+      "bureaucracyMatch": "Può gestire requisiti burocratici",
+      "innovationMatch": "Spinta all'innovazione compatibile con ambiente di crescita",
+      "innovationSuppressed": "Spinta all'innovazione potrebbe essere soppressa",
+      "discretionValuable": "La discrezione è preziosa in questo sistema",
+      "visibilityRisk": "Preferenza per visibilità rischiosa in questo ambiente",
+      "corruptionChallenge": "Ambiente ad alta corruzione sfida approccio basato sul merito",
+      "overallLowRisk": "Ambiente complessivamente a basso rischio"
+    }
+  },
+  "compare": {
+    "title": "Confronta paesi",
+    "subtitle": "Confronto fianco a fianco per aiutarti a prendere decisioni informate.",
+    "selectFirst": "Seleziona il primo paese",
+    "selectSecond": "Seleziona il secondo paese",
+    "selectBoth": "Seleziona due paesi sopra per confrontarli fianco a fianco.",
+    "keyMetrics": "Metriche chiave",
+    "systemType": "Tipo di sistema",
+    "strategies": "Strategie",
+    "shareComparison": "Condividi confronto",
+    "copyLink": "Copia link",
+    "linkCopied": "Link copiato!",
+    "visaInfo": "Visto e immigrazione",
+    "costOfLiving": "Costo della vita",
+    "qualityOfLife": "Qualità della vita"
+  },
+  "visa": {
+    "workVisa": "Visto lavoro",
+    "startupVisa": "Visto startup",
+    "digitalNomadVisa": "Visto nomade digitale",
+    "investmentVisa": "Visto investimento",
+    "citizenshipYears": "Anni fino alla cittadinanza",
+    "easy": "Facile",
+    "moderate": "Moderato",
+    "difficult": "Difficile",
+    "available": "Disponibile",
+    "notAvailable": "Non disponibile",
+    "minInvestment": "Investimento min."
+  },
+  "costOfLiving": {
+    "index": "Indice costo",
+    "rentIndex": "Indice affitto",
+    "monthlyBudgetSingle": "Budget mensile (single)",
+    "monthlyBudgetFamily": "Budget mensile (famiglia)"
+  },
+  "qualityOfLife": {
+    "healthcareRank": "Ranking sanità",
+    "safetyIndex": "Indice sicurezza",
+    "workLifeBalance": "Equilibrio vita-lavoro",
+    "internetSpeed": "Velocità internet"
+  },
+  "lgbtqRights": {
+    "title": "Diritti LGBTQ+",
+    "index": "Indice diritti",
+    "marriage": "Matrimonio egualitario",
+    "civilUnion": "Unione civile",
+    "employmentProtection": "Protezione lavorativa",
+    "safetyRating": "Livello di sicurezza",
+    "safe": "Sicuro",
+    "caution": "Cautela",
+    "dangerous": "Pericoloso",
+    "notice": "I diritti LGBTQ+ sono considerati nelle tue raccomandazioni di paesi."
+  },
+  "lifeTrajectory": {
+    "title": "Diagnosi di traiettoria di vita",
+    "subtitle": "Il lavoro è solo un veicolo. Scopri quale vita vuoi costruire.",
+    "startButton": "Inizia la diagnosi",
+    "questionOf": "Domanda {{current}} di {{total}}",
+    "yes": "Sì",
+    "no": "No",
+    "back": "Indietro",
+    "next": "Avanti",
+    "seeResults": "Vedi i miei risultati",
+    "selectToContinue": "Seleziona una risposta per continuare",
+    "coreIdea": {
+      "title": "L'idea centrale",
+      "text": "La maggior parte delle persone non cerca \"un lavoro\". Cercano una vita. Il lavoro è solo un veicolo."
+    },
+    "questions": {
+      "timePreference": {
+        "question": "Preferisci: due anni molto difficili per libertà rapida, o dieci anni stabili ma lenti?",
+        "short": "2 anni intensi",
+        "shortDesc": "Libertà rapida, sforzo concentrato",
+        "long": "10 anni stabili",
+        "longDesc": "Progressione lenta ma sicura"
+      },
+      "incomeShock": {
+        "question": "Se perdi il 30% del tuo reddito per tre mesi, cosa fai concretamente?",
+        "panic": "Mi panico, non ho piano B",
+        "adapt": "Mi adatto, riduco le spese",
+        "prepared": "Ho riserve, è gestibile"
+      },
+      "priority": {
+        "question": "La tua priorità numero 1 (una sola scelta):",
+        "freedom": "🦅 Libertà",
+        "money": "💰 Soldi",
+        "meaning": "💝 Significato",
+        "status": "👔 Status",
+        "family": "👨‍👩‍👧‍👦 Famiglia",
+        "calm": "🧘 Calma"
+      },
+      "intensity": {
+        "question": "Puoi sopportare 60 ore/settimana per 6 mesi se cambia la tua vita?"
+      },
+      "geographic": {
+        "question": "La libertà geografica è non negoziabile per te?"
+      },
+      "uncertainty": {
+        "question": "Il tuo livello di comfort con l'incertezza:",
+        "low": "Basso - Ho bisogno di prevedibilità",
+        "medium": "Medio - Posso adattarmi",
+        "high": "Alto - Prospero nel caos"
+      },
+      "autonomy": {
+        "question": "Preferisci essere supervisionato o autonomo?",
+        "structured": "Supervisionato e strutturato",
+        "autonomous": "Autonomo e indipendente"
+      },
+      "studies": {
+        "question": "Vuoi evitare studi lunghi?"
+      },
+      "selling": {
+        "question": "Sei a tuo agio con il vendere (te stesso, servizi, prodotti, negoziare)?"
+      },
+      "contribute": {
+        "question": "Vuoi contribuire a una causa?"
+      },
+      "lgbtq": {
+        "question": "I diritti LGBTQ+ sono importanti nella tua scelta di destinazione?"
+      }
+    },
+    "results": {
+      "title": "Il tuo profilo di traiettoria",
+      "yourProfile": "Il tuo profilo motore",
+      "workRelation": "Rapporto con il lavoro",
+      "riskRelation": "Rapporto con il rischio",
+      "whatWorks": "Cosa funziona davvero",
+      "trap": "La trappola da evitare",
+      "trajectories": "Le tue 3 traiettorie raccomandate",
+      "choosePlan": "Scegli il piano che corrisponde alla tua situazione",
+      "duration": "Durata",
+      "paths": "Percorsi adatti",
+      "skills": "Competenze da sviluppare",
+      "risks": "Rischi da monitorare",
+      "firstSteps": "Primi passi",
+      "retakeTest": "Rifai il test",
+      "findCountries": "Trova paesi compatibili"
+    },
+    "planTypes": {
+      "safe": {
+        "label": "🛡️ Piano Sicuro",
+        "description": "Per chi ha responsabilità, ansia o forte bisogno di sicurezza. Stabilità + progressione sicura."
+      },
+      "hybrid": {
+        "label": "⚖️ Piano Ibrido",
+        "description": "Per la maggioranza. Lavoro stabile + sviluppo competenze + progetto parallelo strutturato."
+      },
+      "ambitious": {
+        "label": "🚀 Piano Ambizioso",
+        "description": "Per chi ha energia e tolleranza al rischio. Accelerazione reddito + strategia di crescita."
+      }
+    }
+  },
+  "lifeProfiles": {
+    "lottery": {
+      "label": "Lotteria / Colpo di fortuna",
+      "description": "Cerchi un'uscita immediata, una rottura con la situazione attuale, una scorciatoia.",
+      "workRelation": "Basso - lo sforzo lungo è vissuto come inutile.",
+      "riskRelation": "Alto ma mal controllato (rischio inconscio).",
+      "whatWorks": "Quadro rigido (budget massimo) + piano B solido in parallelo (reddito stabile, competenza utile).",
+      "trap": "Aspettare \"il segno\", indebitarsi, credere che un'opportunità sostituirà una strategia."
+    },
+    "comfort": {
+      "label": "Comfort e zero stress",
+      "description": "Cerchi tranquillità, routine, sicurezza psicologica.",
+      "workRelation": "Vuoi un quadro, una struttura, aspettative chiare.",
+      "riskRelation": "Basso.",
+      "whatWorks": "Stabilità, progressione lenta ma sicura, risparmio automatico, lavoro prevedibile.",
+      "trap": "Annoiarsi, spegnersi, poi esplodere dopo qualche anno."
+    },
+    "builder": {
+      "label": "Costruttore paziente",
+      "description": "Cerchi ricchezza + orgoglio + sensazione di merito.",
+      "workRelation": "Pronto a lavorare, ma lo sforzo deve avere senso e dare frutti.",
+      "riskRelation": "Moderato, calcolato.",
+      "whatWorks": "Business semplice, competenze rare, disciplina, investimento a lungo termine.",
+      "trap": "Voler fare troppo complesso troppo presto, disperdersi."
+    },
+    "safeWealth": {
+      "label": "Grandi soldi senza rischi",
+      "description": "Cerchi alti redditi con massima sicurezza.",
+      "workRelation": "OK con lavorare, ma non con metterti in pericolo.",
+      "riskRelation": "Basso a moderato.",
+      "whatWorks": "Aumentare reddito via competenza rara, assicurare via diversificazione.",
+      "trap": "Contraddizione interna (volere il jackpot senza contropartita) → stagnazione."
+    },
+    "nomad": {
+      "label": "Nomade / Giro del mondo",
+      "description": "Cerchi libertà geografica e autonomia.",
+      "workRelation": "Vuoi poter lavorare da qualsiasi luogo.",
+      "riskRelation": "Variabile.",
+      "whatWorks": "Lavori remote, redditi in valuta forte, comprensione di visti e realtà logistiche.",
+      "trap": "Sottovalutare l'amministrativo, l'isolamento, l'irregolarità dei redditi."
+    },
+    "purpose": {
+      "label": "Significato / Donazione di sé",
+      "description": "Cerchi utilità, allineamento, contributo.",
+      "workRelation": "Il lavoro diventa missione.",
+      "riskRelation": "Moderato, ma l'emozione può spingere a dimenticarsi di sé.",
+      "whatWorks": "Lavori utili + limiti chiari + sistema anti-burnout + igiene di vita.",
+      "trap": "Sacrificarsi, esaurirsi, confondere valore e sofferenza."
+    },
+    "status": {
+      "label": "Status / Prestigio",
+      "description": "Cerchi riconoscimento, rispetto, identità sociale.",
+      "workRelation": "Il lavoro diventa l'identità.",
+      "riskRelation": "Moderato a alto secondo l'ego e la competizione.",
+      "whatWorks": "Eccellenza, selettività, rete, storytelling, strategia di carriera.",
+      "trap": "Confronto tossico, ansia da prestazione, identità fragile se lo status scende."
+    },
+    "recovery": {
+      "label": "Rivincita / Traiettoria post-trauma",
+      "description": "Cerchi sicurezza, controllo, riparazione, stabilità emotiva, ricostruzione.",
+      "workRelation": "Bisogno di padronanza, a volte paura dell'instabilità.",
+      "riskRelation": "Basso all'inizio, poi aumenta se la sicurezza ritorna.",
+      "whatWorks": "Stabilizzare prima (reddito, quadro, routine), poi aumento progressivo.",
+      "trap": "Giudicarsi, voler recuperare dieci anni in sei mesi, esaurirsi."
+    }
+  },
+  "plans": {
+    "lottery": {
+      "safe": {
+        "title": "Stabilizzazione rapida",
+        "description": "Creare una base stabile prima di qualsiasi rischio.",
+        "paths": ["Lavoro part-time stabile", "Formazione breve certificante"],
+        "skills": ["Gestione budget", "Competenza tecnica base"],
+        "risks": ["Impazienza e abbandono"],
+        "steps": ["Stabilire budget rigoroso", "Identificare formazione di 3 mesi max"]
+      },
+      "hybrid": {
+        "title": "Stabilità + sperimentazione",
+        "description": "Lavoro stabile in parallelo con side project inquadrato.",
+        "paths": ["Lavoro stabile + side hustle limitato", "Formazione continua"],
+        "skills": ["Gestione del tempo", "Marketing base"],
+        "risks": ["Dispersione degli sforzi"],
+        "steps": ["Trovare lavoro stabile", "Limitare side project a 10h/settimana"]
+      },
+      "ambitious": {
+        "title": "Transizione calcolata",
+        "description": "Costruzione metodica verso l'indipendenza.",
+        "paths": ["Freelance in campo richiesto"],
+        "skills": ["Vendite", "Competenza tecnica avanzata"],
+        "risks": ["Scoraggiamento", "Cattiva gestione finanziaria"],
+        "steps": ["Risparmiare 6 mesi di spese", "Sviluppare portfolio"]
+      }
+    },
+    "comfort": {
+      "safe": {
+        "title": "Lavoro stabile strutturato",
+        "description": "Trovare ambiente prevedibile e rassicurante.",
+        "paths": ["Amministrazione pubblica", "Grande azienda consolidata"],
+        "skills": ["Specializzazione in un campo"],
+        "risks": ["Noia a lungo termine"],
+        "steps": ["Identificare datori di lavoro stabili", "Preparare concorsi se necessario"]
+      },
+      "hybrid": {
+        "title": "Stabilità + evoluzione",
+        "description": "Posizione stabile con opportunità di progressione interna.",
+        "paths": ["Azienda con piano carriera", "Settore in crescita stabile"],
+        "skills": ["Management", "Competenza tecnica evolutiva"],
+        "risks": ["Soffitto di vetro"],
+        "steps": ["Negoziare piano di sviluppo", "Identificare competenze chiave"]
+      },
+      "ambitious": {
+        "title": "Esperto riconosciuto",
+        "description": "Diventare riferimento in un campo mantenendo stabilità.",
+        "paths": ["Esperto tecnico senior"],
+        "skills": ["Expertise avanzata", "Comunicazione"],
+        "risks": ["Obsolescenza competenze"],
+        "steps": ["Scegliere specializzazione duratura", "Costruire reputazione"]
+      }
+    },
+    "builder": {
+      "safe": {
+        "title": "Competenza rara + lavoro",
+        "description": "Sviluppare expertise rara mantenendo reddito stabile.",
+        "paths": ["Lavoro + certificazione avanzata", "Specializzazione tecnica"],
+        "skills": ["Competenza tecnica rara", "Negoziazione salariale"],
+        "risks": ["Dispersione sforzi"],
+        "steps": ["Identificare competenza rara richiesta", "Pianificare certificazione"]
+      },
+      "hybrid": {
+        "title": "Lavoro + side business",
+        "description": "Costruire business in parallelo a lavoro sicuro.",
+        "paths": ["Consulting in parallelo", "Prodotto digitale"],
+        "skills": ["Vendite", "Gestione progetti"],
+        "risks": ["Burnout"],
+        "steps": ["Validare idea prima di investire tempo", "Fissare limiti chiari"]
+      },
+      "ambitious": {
+        "title": "Imprenditore completo",
+        "description": "Transizione completa all'imprenditoria con capitale.",
+        "paths": ["Business scalabile"],
+        "skills": ["Leadership", "Finanza"],
+        "risks": ["Fallimento finanziario", "Isolamento"],
+        "steps": ["Costituire 12 mesi di runway", "Validare mercato"]
+      }
+    },
+    "safeWealth": {
+      "safe": {
+        "title": "Carriera alta remunerazione",
+        "description": "Massimizzare redditi via expertise riconosciuta.",
+        "paths": ["Professione regolamentata ben pagata", "Tech senior"],
+        "skills": ["Expertise settoriale"],
+        "risks": ["Stagnazione redditi"],
+        "steps": ["Ricercare settori ad alti salari", "Pianificare certificazioni"]
+      },
+      "hybrid": {
+        "title": "Lavoro + investimento",
+        "description": "Alti redditi + diversificazione patrimoniale.",
+        "paths": ["Lavoro senior + immobiliare", "Azioni e ETF"],
+        "skills": ["Finanza personale", "Negoziazione"],
+        "risks": ["Cattivi investimenti"],
+        "steps": ["Automatizzare risparmio", "Formarsi sugli investimenti"]
+      },
+      "ambitious": {
+        "title": "Indipendenza finanziaria",
+        "description": "Costruire patrimonio che genera redditi passivi.",
+        "paths": ["Portfolio diversificato"],
+        "skills": ["Gestione patrimonio", "Fiscalità"],
+        "risks": ["Volatilità mercati"],
+        "steps": ["Calcolare obiettivo di indipendenza", "Costruire piano a 10 anni"]
+      }
+    },
+    "nomad": {
+      "safe": {
+        "title": "Remote dipendente",
+        "description": "Lavoro remote stabile con flessibilità geografica.",
+        "paths": ["Sviluppatore remote", "Supporto clienti internazionale"],
+        "skills": ["Competenza digitale", "Autonomia"],
+        "risks": ["Isolamento sociale"],
+        "steps": ["Trovare datore remote-friendly", "Testare nomadismo 1 mese"]
+      },
+      "hybrid": {
+        "title": "Freelance + basi",
+        "description": "Freelance con alcuni clienti stabili.",
+        "paths": ["Consulente remote", "Creatore di contenuti"],
+        "skills": ["Vendite", "Personal branding"],
+        "risks": ["Irregolarità redditi"],
+        "steps": ["Firmare 2-3 clienti ricorrenti", "Creare presenza online"]
+      },
+      "ambitious": {
+        "title": "Business location-independent",
+        "description": "Azienda 100% online con team distribuito.",
+        "paths": ["SaaS o agenzia remote"],
+        "skills": ["Management remote", "Sistemi automatizzati"],
+        "risks": ["Complessità legale internazionale", "Burnout"],
+        "steps": ["Scegliere modello business scalabile", "Strutturare legalmente"]
+      }
+    },
+    "purpose": {
+      "safe": {
+        "title": "Lavoro a impatto stabile",
+        "description": "Lavoro in settore utile con sicurezza.",
+        "paths": ["Sanità", "Educazione", "Sociale"],
+        "skills": ["Competenza professionale specifica"],
+        "risks": ["Burnout da sovra-coinvolgimento"],
+        "steps": ["Identificare settore che risuona", "Porre limiti chiari"]
+      },
+      "hybrid": {
+        "title": "Impatto + equilibrio",
+        "description": "Contribuire proteggendo la propria energia.",
+        "paths": ["ONG con struttura sana", "Imprenditoria sociale"],
+        "skills": ["Gestione progetti", "Comunicazione"],
+        "risks": ["Sotto-remunerazione"],
+        "steps": ["Negoziare condizioni sane", "Diversificare redditi"]
+      },
+      "ambitious": {
+        "title": "Leader di impatto",
+        "description": "Creare o dirigere organizzazione ad alto impatto.",
+        "paths": ["Fondatore ONG o impresa sociale"],
+        "skills": ["Leadership", "Fundraising"],
+        "risks": ["Esaurimento totale"],
+        "steps": ["Validare impatto reale", "Costruire team solido"]
+      }
+    },
+    "status": {
+      "safe": {
+        "title": "Carriera prestigiosa",
+        "description": "Progressione in ambiente riconosciuto.",
+        "paths": ["Grande azienda rinomata", "Consulenza"],
+        "skills": ["Eccellenza tecnica"],
+        "risks": ["Dipendenza dallo sguardo altrui"],
+        "steps": ["Puntare a datori prestigiosi", "Costruire CV solido"]
+      },
+      "hybrid": {
+        "title": "Esperto visibile",
+        "description": "Diventare riferimento riconosciuto nel proprio campo.",
+        "paths": ["Speaker", "Autore", "Formatore"],
+        "skills": ["Personal branding", "Comunicazione"],
+        "risks": ["Sindrome dell'impostore"],
+        "steps": ["Creare contenuti regolarmente", "Intervenire a conferenze"]
+      },
+      "ambitious": {
+        "title": "Leader di industria",
+        "description": "Raggiungere il vertice della gerarchia o del riconoscimento.",
+        "paths": ["Direzione generale", "Fondatore riconosciuto"],
+        "skills": ["Strategia", "Politica aziendale"],
+        "risks": ["Identità fragile in caso di fallimento", "Solitudine al vertice"],
+        "steps": ["Identificare mentori influenti", "Costruire rete strategica"]
+      }
+    },
+    "recovery": {
+      "safe": {
+        "title": "Stabilizzazione prima",
+        "description": "Ricostruire base solida senza pressione.",
+        "paths": ["Lavoro stabile poco stressante", "Part-time se possibile"],
+        "skills": ["Gestione stress"],
+        "risks": ["Giudicarsi troppo duramente"],
+        "steps": ["Accettare di iniziare piano", "Creare routine sana"]
+      },
+      "hybrid": {
+        "title": "Ricostruzione progressiva",
+        "description": "Aumento graduale e controllato.",
+        "paths": ["Formazione progressiva", "Lavoro + sviluppo personale"],
+        "skills": ["Resilienza", "Nuova competenza"],
+        "risks": ["Voler recuperare tempo perso"],
+        "steps": ["Fissare obiettivi realistici", "Celebrare ogni progresso"]
+      },
+      "ambitious": {
+        "title": "Rinascita completa",
+        "description": "Trasformare la prova in forza per nuova traiettoria.",
+        "paths": ["Riconversione riuscita", "Condivisione esperienza"],
+        "skills": ["Storytelling personale", "Expertise acquisita"],
+        "risks": ["Sovra-investimento compensatorio"],
+        "steps": ["Documentare il proprio percorso", "Aiutare chi attraversa lo stesso"]
+      }
+    }
   }
 }
