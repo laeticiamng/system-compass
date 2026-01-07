@@ -2,12 +2,16 @@
   "common": {
     "appName": "Pyramid Compass",
     "tagline": "Navigate the real system",
-    "disclaimer": "Analytical tool only. Not legal or financial advice."
+    "disclaimer": "Analytical tool only. Not legal or financial advice.",
+    "yes": "Yes",
+    "no": "No",
+    "back": "Back"
   },
   "nav": {
     "start": "Start",
     "countries": "Countries",
     "profile": "Profile",
+    "trajectory": "Trajectory",
     "match": "Match",
     "compare": "Compare",
     "resources": "Resources"
@@ -18,7 +22,7 @@
     "titleHighlight": "Pyramid",
     "title2": "Find Your Path",
     "subtitle": "Every country has a hidden system. Learn what it really rewards, where you fit, and how to survive intelligently — or escape strategically.",
-    "discoverProfile": "Discover Your Profile",
+    "discoverProfile": "Design Your Life",
     "exploreCountries": "Explore Countries"
   },
   "howItWorks": {
@@ -64,8 +68,8 @@
   },
   "cta": {
     "title": "Ready to Navigate?",
-    "subtitle": "This site doesn't judge. It explains. It helps you survive intelligently where you are and move toward a system that rewards what you are.",
-    "button": "Start Your Journey"
+    "subtitle": "This site doesn't judge. It translates. It helps you understand yourself, then make a plan that fits your reality.",
+    "button": "Design Your Life Trajectory"
   },
   "countries": {
     "title": "Country Intelligence",
@@ -352,5 +356,367 @@
     "safetyIndex": "Safety Index",
     "workLifeBalance": "Work-Life Balance",
     "internetSpeed": "Internet Speed"
+  },
+  "lifeTrajectory": {
+    "questionOf": "Question {{current}} of {{total}}",
+    "selectToContinue": "Select an answer to continue",
+    "questions": {
+      "timePreference": {
+        "question": "Do you prefer two difficult years for quick freedom, or ten stable but slow years?",
+        "short": "2 intense years",
+        "shortDesc": "Fast track with high effort",
+        "long": "10 stable years",
+        "longDesc": "Slow but steady progress"
+      },
+      "incomeShock": {
+        "question": "If you lose 30% of your income for 3 months, what do you do concretely?",
+        "panic": "I panic and struggle",
+        "adapt": "I adapt and find solutions",
+        "prepared": "I have reserves, no stress"
+      },
+      "priority": {
+        "question": "Your #1 priority (choose only one):",
+        "freedom": "🦅 Freedom",
+        "money": "💰 Money",
+        "meaning": "💝 Meaning",
+        "status": "👔 Status",
+        "family": "👨‍👩‍👧‍👦 Family",
+        "calm": "🧘 Calm"
+      },
+      "intensity": {
+        "question": "Can you handle 60 hours/week for 6 months if it changes your life?"
+      },
+      "geographic": {
+        "question": "Is geographic freedom non-negotiable for you?"
+      },
+      "uncertainty": {
+        "question": "Your comfort level with uncertainty:",
+        "low": "Low - I need predictability",
+        "medium": "Medium - I can adapt",
+        "high": "High - I thrive in chaos"
+      },
+      "autonomy": {
+        "question": "Do you prefer being supervised or autonomous?",
+        "structured": "Supervised & structured",
+        "autonomous": "Autonomous & independent"
+      },
+      "studies": {
+        "question": "Do you want to avoid long studies?"
+      },
+      "selling": {
+        "question": "Are you OK with selling (yourself, services, products, negotiating)?"
+      },
+      "contribute": {
+        "question": "Do you want to contribute to a cause?"
+      },
+      "lgbtq": {
+        "question": "Do you need LGBTQ+ friendly countries in your recommendations?"
+      }
+    },
+    "results": {
+      "workRelation": "Relationship with Work",
+      "riskRelation": "Relationship with Risk",
+      "whatWorks": "What Actually Works",
+      "trap": "Watch Out For",
+      "yourPlans": "Your 3 Trajectory Plans",
+      "findCountries": "Find Compatible Countries",
+      "exploreCountries": "Explore All Countries",
+      "retake": "Retake Test"
+    },
+    "lgbtq": {
+      "title": "LGBTQ+ Considerations",
+      "description": "We will prioritize countries with strong LGBTQ+ protections and safety in your recommendations. Countries with legal risks or social hostility will be flagged."
+    },
+    "planTypes": {
+      "safe": "🛡️ Safe Plan",
+      "hybrid": "⚖️ Hybrid Plan",
+      "ambitious": "🚀 Ambitious Plan"
+    },
+    "trajectory": {
+      "paths": "Career Paths",
+      "skills": "Skills to Develop",
+      "firstSteps": "First Steps"
+    },
+    "plans": {
+      "lottery": {
+        "safe": {
+          "title": "Stable Foundation First",
+          "description": "Build a solid income base before taking any risks",
+          "paths": { "0": "Quick certification (6 months)", "1": "Stable entry-level job" },
+          "skills": { "0": "One practical skill", "1": "Financial basics" },
+          "risks": { "0": "May feel slow initially" },
+          "steps": { "0": "Find a quick certification program", "1": "Build emergency fund" }
+        },
+        "hybrid": {
+          "title": "Job + Side Project",
+          "description": "Stable income with controlled risk-taking on the side",
+          "paths": { "0": "Day job for stability", "1": "Evening side project" },
+          "skills": { "0": "Time management", "1": "One marketable skill" },
+          "risks": { "0": "Requires discipline" },
+          "steps": { "0": "Secure any stable income first", "1": "Dedicate 10 hours/week to side project" }
+        },
+        "ambitious": {
+          "title": "Calculated High-Risk Move",
+          "description": "Go all-in but with clear exit criteria",
+          "paths": { "0": "High-growth opportunity with defined timeline" },
+          "skills": { "0": "Sales/negotiation", "1": "Networking" },
+          "risks": { "0": "May not work out", "1": "Need backup plan ready" },
+          "steps": { "0": "Define exact success criteria and timeline", "1": "Prepare Plan B in parallel" }
+        }
+      },
+      "comfort": {
+        "safe": {
+          "title": "Structured Career Path",
+          "description": "Clear progression in stable environment",
+          "paths": { "0": "Public sector or large company", "1": "Unionized industry" },
+          "skills": { "0": "Process mastery" },
+          "risks": { "0": "May feel limiting long-term" },
+          "steps": { "0": "Research stable employers in your area", "1": "Get necessary certifications" }
+        },
+        "hybrid": {
+          "title": "Stability + Side Growth",
+          "description": "Secure base with optional upside",
+          "paths": { "0": "Stable main job", "1": "Low-effort passive income" },
+          "skills": { "0": "Automation basics", "1": "Investment fundamentals" },
+          "risks": { "0": "Requires some initiative" },
+          "steps": { "0": "Secure stable employment first", "1": "Start automatic savings/investing" }
+        },
+        "ambitious": {
+          "title": "Expert Specialist",
+          "description": "Become irreplaceable in a stable field",
+          "paths": { "0": "Deep specialization in growing stable sector" },
+          "skills": { "0": "Advanced expertise", "1": "Professional network" },
+          "risks": { "0": "Requires continuous learning" },
+          "steps": { "0": "Identify stable but growing specialization", "1": "Begin advanced training" }
+        }
+      },
+      "builder": {
+        "safe": {
+          "title": "Skills Before Business",
+          "description": "Build expertise first, business later",
+          "paths": { "0": "Employment to learn", "1": "Save capital while employed" },
+          "skills": { "0": "Industry expertise", "1": "Financial management" },
+          "risks": { "0": "Takes patience" },
+          "steps": { "0": "Get hired in your target industry", "1": "Learn everything while saving 30%+" }
+        },
+        "hybrid": {
+          "title": "Employee + Side Business",
+          "description": "Keep income while building on the side",
+          "paths": { "0": "Job for stability", "1": "Weekend business development" },
+          "skills": { "0": "Time management", "1": "Basic business skills" },
+          "risks": { "0": "Can be exhausting" },
+          "steps": { "0": "Define your business idea clearly", "1": "Allocate specific hours weekly" }
+        },
+        "ambitious": {
+          "title": "Full Entrepreneurship",
+          "description": "All-in on building something valuable",
+          "paths": { "0": "Full-time business building" },
+          "skills": { "0": "Sales", "1": "Leadership" },
+          "risks": { "0": "High stress", "1": "Unpredictable income" },
+          "steps": { "0": "Save 12+ months runway", "1": "Launch MVP as fast as possible" }
+        }
+      },
+      "safeWealth": {
+        "safe": {
+          "title": "High-Income Career",
+          "description": "Traditional path to high earnings with security",
+          "paths": { "0": "Medicine, law, finance, engineering", "1": "Corporate leadership track" },
+          "skills": { "0": "Advanced credentials" },
+          "risks": { "0": "Long timeline" },
+          "steps": { "0": "Choose high-income profession path", "1": "Begin required education/training" }
+        },
+        "hybrid": {
+          "title": "Salary + Smart Investing",
+          "description": "High income job with aggressive saving",
+          "paths": { "0": "Well-paid profession", "1": "Long-term wealth building" },
+          "skills": { "0": "Negotiation", "1": "Investment knowledge" },
+          "risks": { "0": "Requires discipline" },
+          "steps": { "0": "Maximize earning potential", "1": "Invest 30-50% of income" }
+        },
+        "ambitious": {
+          "title": "Rare Skills Premium",
+          "description": "Become so good they can't ignore you",
+          "paths": { "0": "Top-tier specialization" },
+          "skills": { "0": "World-class expertise", "1": "Personal brand" },
+          "risks": { "0": "Extreme dedication required" },
+          "steps": { "0": "Identify rare high-value skill gap", "1": "Commit to deliberate practice" }
+        }
+      },
+      "nomad": {
+        "safe": {
+          "title": "Remote Job First",
+          "description": "Secure remote employment before traveling",
+          "paths": { "0": "Remote-friendly company job", "1": "Digital skills" },
+          "skills": { "0": "Remote communication", "1": "Self-discipline" },
+          "risks": { "0": "Less freedom initially" },
+          "steps": { "0": "Get remote-capable skills", "1": "Find remote-friendly employer" }
+        },
+        "hybrid": {
+          "title": "Freelance + Travel",
+          "description": "Build client base while exploring",
+          "paths": { "0": "Freelance services", "1": "Digital nomad visa countries" },
+          "skills": { "0": "Client management", "1": "Tax/visa knowledge" },
+          "risks": { "0": "Income variability" },
+          "steps": { "0": "Build 3+ stable clients", "1": "Research visa requirements" }
+        },
+        "ambitious": {
+          "title": "Location-Independent Business",
+          "description": "Build a business that runs from anywhere",
+          "paths": { "0": "Digital product or agency" },
+          "skills": { "0": "Online business", "1": "Team management" },
+          "risks": { "0": "Complex logistics", "1": "Isolation" },
+          "steps": { "0": "Validate business idea online", "1": "Set up proper legal structure" }
+        }
+      },
+      "purpose": {
+        "safe": {
+          "title": "Stable Impact Role",
+          "description": "Meaningful work in secure organization",
+          "paths": { "0": "NGO, public sector, education", "1": "Healthcare" },
+          "skills": { "0": "Domain expertise" },
+          "risks": { "0": "Lower pay potential" },
+          "steps": { "0": "Identify causes you care about", "1": "Find stable organizations in that space" }
+        },
+        "hybrid": {
+          "title": "Earn + Give",
+          "description": "High income to fund impact",
+          "paths": { "0": "High-paying job", "1": "Strategic philanthropy" },
+          "skills": { "0": "Both earning and giving skills" },
+          "risks": { "0": "Purpose delayed" },
+          "steps": { "0": "Maximize earning potential", "1": "Dedicate fixed % to causes" }
+        },
+        "ambitious": {
+          "title": "Create Impact Organization",
+          "description": "Build something that changes the world",
+          "paths": { "0": "Social enterprise or foundation" },
+          "skills": { "0": "Leadership", "1": "Fundraising" },
+          "risks": { "0": "Burnout risk" },
+          "steps": { "0": "Study successful impact organizations", "1": "Start small, prove model" }
+        }
+      },
+      "status": {
+        "safe": {
+          "title": "Prestigious Institution",
+          "description": "Traditional prestige path",
+          "paths": { "0": "Top university → elite career", "1": "Established profession" },
+          "skills": { "0": "Academic excellence" },
+          "risks": { "0": "Competitive stress" },
+          "steps": { "0": "Target prestigious institutions", "1": "Build credentials systematically" }
+        },
+        "hybrid": {
+          "title": "Excellence + Network",
+          "description": "Build both skills and connections",
+          "paths": { "0": "Quality career", "1": "Strategic networking" },
+          "skills": { "0": "Professional excellence", "1": "Personal brand" },
+          "risks": { "0": "Comparison trap" },
+          "steps": { "0": "Excel at current role", "1": "Build strategic relationships" }
+        },
+        "ambitious": {
+          "title": "Public Excellence",
+          "description": "Become recognized authority",
+          "paths": { "0": "Thought leadership, C-suite, politics" },
+          "skills": { "0": "Public speaking", "1": "Media/PR" },
+          "risks": { "0": "Public scrutiny", "1": "Identity tied to status" },
+          "steps": { "0": "Define your domain of excellence", "1": "Begin building public profile" }
+        }
+      },
+      "recovery": {
+        "safe": {
+          "title": "Stabilize First",
+          "description": "Focus on security and routine",
+          "paths": { "0": "Any stable income source", "1": "Structured environment" },
+          "skills": { "0": "One reliable skill" },
+          "risks": { "0": "May feel limiting" },
+          "steps": { "0": "Secure any stable income", "1": "Build strict routine" }
+        },
+        "hybrid": {
+          "title": "Gradual Rebuilding",
+          "description": "Stable base with progressive growth",
+          "paths": { "0": "Stable job", "1": "Skill building on side" },
+          "skills": { "0": "Core job skill", "1": "New growth skill" },
+          "risks": { "0": "Patience required" },
+          "steps": { "0": "Achieve basic stability", "1": "Add one new skill per year" }
+        },
+        "ambitious": {
+          "title": "Accelerated Comeback",
+          "description": "Use experience as fuel",
+          "paths": { "0": "Leverage unique perspective" },
+          "skills": { "0": "Resilience storytelling", "1": "Fast learning" },
+          "risks": { "0": "Rushing too fast" },
+          "steps": { "0": "Document your journey", "1": "Turn struggles into strengths" }
+        }
+      }
+    }
+  },
+  "lifeProfiles": {
+    "lottery": {
+      "label": "The Shortcut Seeker",
+      "description": "You want an immediate exit, a break from your current situation, a shortcut.",
+      "workRelation": "Low engagement with long-term work — effort feels pointless if slow.",
+      "riskRelation": "Often high but poorly controlled — unconscious risk-taking.",
+      "whatWorks": "Strict budgeting if gambling, parallel Plan B with stable income and useful skills.",
+      "trap": "Waiting for 'the sign', going into debt, believing opportunity replaces strategy."
+    },
+    "comfort": {
+      "label": "Comfort & Zero Stress",
+      "description": "You seek tranquility, routine, and psychological security.",
+      "workRelation": "You want structure, clear expectations, defined framework.",
+      "riskRelation": "Low — you avoid uncertainty.",
+      "whatWorks": "Stability, slow but certain progression, automatic savings, predictable job.",
+      "trap": "Getting bored, fading out, then exploding after a few years."
+    },
+    "builder": {
+      "label": "Patient Builder",
+      "description": "You want wealth + pride + the feeling of having earned it.",
+      "workRelation": "Ready to work, but effort must make sense and actually pay off.",
+      "riskRelation": "Moderate, calculated.",
+      "whatWorks": "Simple business, rare skills, discipline, long-term investing.",
+      "trap": "Going too complex too early, scattering, inventing sophisticated strategies before having the basics."
+    },
+    "safeWealth": {
+      "label": "Safe Wealth Builder",
+      "description": "You want high income with maximum security.",
+      "workRelation": "OK with working, but not with putting yourself at risk.",
+      "riskRelation": "Low to moderate.",
+      "whatWorks": "Increase income via rare skills, secure via diversification, insurance, long-term strategy.",
+      "trap": "Internal contradiction (wanting jackpot without trade-offs) → stagnation."
+    },
+    "nomad": {
+      "label": "Global Nomad",
+      "description": "You seek geographic freedom and autonomy.",
+      "workRelation": "You want to work from anywhere.",
+      "riskRelation": "Variable.",
+      "whatWorks": "Remote jobs, income in strong currency, understanding of visas, rules, and logistics.",
+      "trap": "Underestimating admin, isolation, income irregularity."
+    },
+    "purpose": {
+      "label": "Purpose-Driven",
+      "description": "You seek utility, alignment, contribution.",
+      "workRelation": "Work becomes mission.",
+      "riskRelation": "Often moderate, but emotion can push you to forget yourself.",
+      "whatWorks": "Useful jobs + clear limits + anti-burnout system + self-care + protection framework.",
+      "trap": "Sacrificing yourself, burning out, confusing value with suffering."
+    },
+    "status": {
+      "label": "Status Seeker",
+      "description": "You seek recognition, respect, social identity.",
+      "workRelation": "The job becomes your identity.",
+      "riskRelation": "Moderate to high depending on ego and competition.",
+      "whatWorks": "Excellence, selectivity, network, storytelling, career strategy.",
+      "trap": "Toxic comparison, performance anxiety, fragile identity if status drops."
+    },
+    "recovery": {
+      "label": "Recovery & Rebuilding",
+      "description": "You seek security, control, repair, emotional stability, reconstruction.",
+      "workRelation": "Need for mastery, sometimes fear of instability.",
+      "riskRelation": "Low at first, then increases as security returns.",
+      "whatWorks": "Stabilize first (income, framework, routine), then progressive ramp-up, clear plan, realistic goals.",
+      "trap": "Judging yourself, trying to catch up 10 years in 6 months, exhausting yourself."
+    }
+  },
+  "lgbtqRights": {
+    "safe": "LGBTQ+ Safe",
+    "caution": "Proceed with Caution",
+    "dangerous": "High Risk for LGBTQ+"
   }
 }
