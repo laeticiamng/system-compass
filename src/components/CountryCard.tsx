@@ -1,7 +1,22 @@
-import { Country, PYRAMID_TYPE_INFO } from '@/lib/types';
+import { useTranslation } from 'react-i18next';
+import { Country } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { useNavigate } from 'react-router-dom';
 import { MapPin, TrendingUp, Shield, Users } from 'lucide-react';
+
+const PYRAMID_TYPE_LABELS: Record<string, string> = {
+  PROBLEM_RENT: 'pyramids.problemRent.label',
+  STABILITY_REDIS: 'pyramids.stabilityRedis.label',
+  COMPETENCE_TRUST: 'pyramids.competenceTrust.label',
+  GROWTH_RISK: 'pyramids.growthRisk.label',
+};
+
+const PYRAMID_TYPE_COLORS: Record<string, string> = {
+  PROBLEM_RENT: 'pyramid-rent',
+  STABILITY_REDIS: 'pyramid-stability',
+  COMPETENCE_TRUST: 'pyramid-competence',
+  GROWTH_RISK: 'pyramid-growth',
+};
 
 interface CountryCardProps {
   country: Country;
@@ -10,7 +25,8 @@ interface CountryCardProps {
 
 export function CountryCard({ country, className }: CountryCardProps) {
   const navigate = useNavigate();
-  const typeInfo = PYRAMID_TYPE_INFO[country.pyramidType];
+  const { t } = useTranslation();
+  const typeColor = PYRAMID_TYPE_COLORS[country.pyramidType];
 
   return (
     <div
@@ -25,16 +41,13 @@ export function CountryCard({ country, className }: CountryCardProps) {
     >
       {/* Type Badge */}
       <div
-        className={cn(
-          'absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-medium',
-          `bg-${typeInfo.color}/20 text-${typeInfo.color}`
-        )}
+        className="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-medium"
         style={{
-          backgroundColor: `hsl(var(--${typeInfo.color}) / 0.15)`,
-          color: `hsl(var(--${typeInfo.color}))`,
+          backgroundColor: `hsl(var(--${typeColor}) / 0.15)`,
+          color: `hsl(var(--${typeColor}))`,
         }}
       >
-        {typeInfo.label}
+        {t(PYRAMID_TYPE_LABELS[country.pyramidType])}
       </div>
 
       {/* Country Info */}
@@ -53,7 +66,7 @@ export function CountryCard({ country, className }: CountryCardProps) {
 
       {/* Rule of Gold */}
       <p className="mt-4 text-sm text-muted-foreground italic line-clamp-2">
-        "{country.ruleOfGold}"
+        &quot;{country.ruleOfGold}&quot;
       </p>
 
       {/* Key Stats */}
@@ -63,27 +76,27 @@ export function CountryCard({ country, className }: CountryCardProps) {
             <TrendingUp className="w-3 h-3" />
           </div>
           <div className="text-sm font-semibold">${formatNumber(country.snapshot.gdpPerCapita)}</div>
-          <div className="text-xs text-muted-foreground">GDP/cap</div>
+          <div className="text-xs text-muted-foreground">{t('countries.gdpCap')}</div>
         </div>
         <div className="text-center">
           <div className="flex items-center justify-center gap-1 text-muted-foreground mb-1">
             <Shield className="w-3 h-3" />
           </div>
           <div className="text-sm font-semibold">#{country.snapshot.passportRank}</div>
-          <div className="text-xs text-muted-foreground">Passport</div>
+          <div className="text-xs text-muted-foreground">{t('countries.passport')}</div>
         </div>
         <div className="text-center">
           <div className="flex items-center justify-center gap-1 text-muted-foreground mb-1">
             <Users className="w-3 h-3" />
           </div>
           <div className="text-sm font-semibold">{formatPopulation(country.snapshot.population)}</div>
-          <div className="text-xs text-muted-foreground">Population</div>
+          <div className="text-xs text-muted-foreground">{t('countries.population')}</div>
         </div>
       </div>
 
       {/* Hover indicator */}
       <div className="absolute bottom-4 right-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-        <span className="text-sm font-medium">Explore →</span>
+        <span className="text-sm font-medium">{t('countries.explore')}</span>
       </div>
     </div>
   );

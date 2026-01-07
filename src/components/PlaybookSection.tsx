@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { CountryPlaybook } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { Check, X, Clock, Calendar, Milestone, Route } from 'lucide-react';
@@ -8,16 +9,18 @@ interface PlaybookSectionProps {
 }
 
 export function PlaybookSection({ playbook, className }: PlaybookSectionProps) {
+  const { t } = useTranslation();
+
   return (
     <div className={cn('space-y-8', className)}>
-      {/* Do and Don't */}
+      {/* Do and Dont */}
       <div className="grid md:grid-cols-2 gap-6">
         <div className="glass-card rounded-xl p-6">
           <div className="flex items-center gap-2 mb-4">
             <div className="p-2 rounded-lg bg-risk-low/20">
               <Check className="w-4 h-4 text-risk-low" />
             </div>
-            <h4 className="font-display font-semibold text-foreground">Do</h4>
+            <h4 className="font-display font-semibold text-foreground">{t('playbook.do')}</h4>
           </div>
           <ul className="space-y-3">
             {playbook.do.map((item, i) => (
@@ -34,7 +37,7 @@ export function PlaybookSection({ playbook, className }: PlaybookSectionProps) {
             <div className="p-2 rounded-lg bg-risk-critical/20">
               <X className="w-4 h-4 text-risk-critical" />
             </div>
-            <h4 className="font-display font-semibold text-foreground">Don't</h4>
+            <h4 className="font-display font-semibold text-foreground">{t('playbook.dont')}</h4>
           </div>
           <ul className="space-y-3">
             {playbook.dont.map((item, i) => (
@@ -51,25 +54,25 @@ export function PlaybookSection({ playbook, className }: PlaybookSectionProps) {
       <div className="space-y-4">
         <h4 className="font-display font-semibold text-foreground flex items-center gap-2">
           <Route className="w-5 h-5 text-primary" />
-          Survival Roadmap
+          {t('playbook.survivalRoadmap')}
         </h4>
 
         <div className="grid md:grid-cols-3 gap-4">
           <TimelineCard
             icon={<Clock className="w-4 h-4" />}
-            title="0-30 Days"
+            title={t('playbook.timeline.days30')}
             items={playbook.plan30Days}
             accentClass="bg-pyramid-stability/20 text-pyramid-stability"
           />
           <TimelineCard
             icon={<Calendar className="w-4 h-4" />}
-            title="3-12 Months"
+            title={t('playbook.timeline.months12')}
             items={playbook.plan12Months}
             accentClass="bg-pyramid-growth/20 text-pyramid-growth"
           />
           <TimelineCard
             icon={<Milestone className="w-4 h-4" />}
-            title="1-5 Years"
+            title={t('playbook.timeline.years5')}
             items={playbook.plan5Years}
             accentClass="bg-pyramid-competence/20 text-pyramid-competence"
           />
@@ -78,7 +81,7 @@ export function PlaybookSection({ playbook, className }: PlaybookSectionProps) {
 
       {/* Plan B */}
       <div className="glass-card rounded-xl p-6 border-l-4 border-primary">
-        <h4 className="font-display font-semibold text-foreground mb-2">Plan B</h4>
+        <h4 className="font-display font-semibold text-foreground mb-2">{t('playbook.planB')}</h4>
         <p className="text-sm text-muted-foreground">{playbook.planB}</p>
       </div>
     </div>
