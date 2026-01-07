@@ -28,6 +28,17 @@ export function CountryCard({ country, className }: CountryCardProps) {
   const { t } = useTranslation();
   const typeColor = PYRAMID_TYPE_COLORS[country.pyramidType];
 
+  // Get translated country data
+  const countryData = t(`countriesData.${country.id}`, { returnObjects: true }) as {
+    name?: string;
+    region?: string;
+    ruleOfGold?: string;
+  } | undefined;
+
+  const displayName = countryData?.name || country.name;
+  const displayRegion = countryData?.region || country.region;
+  const displayRuleOfGold = countryData?.ruleOfGold || country.ruleOfGold;
+
   return (
     <div
       onClick={() => navigate(`/country/${country.id}`)}
@@ -55,18 +66,18 @@ export function CountryCard({ country, className }: CountryCardProps) {
         <div className="text-4xl">{getFlagEmoji(country.iso2)}</div>
         <div className="flex-1 min-w-0">
           <h3 className="font-display text-xl font-semibold text-foreground mb-1">
-            {country.name}
+            {displayName}
           </h3>
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <MapPin className="w-3 h-3" />
-            {country.region}
+            {displayRegion}
           </div>
         </div>
       </div>
 
       {/* Rule of Gold */}
       <p className="mt-4 text-sm text-muted-foreground italic line-clamp-2">
-        &quot;{country.ruleOfGold}&quot;
+        &quot;{displayRuleOfGold}&quot;
       </p>
 
       {/* Key Stats */}

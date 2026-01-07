@@ -82,9 +82,10 @@
     "passport": "Passeport",
     "population": "Population"
   },
-  "countryDetail": {
+"countryDetail": {
     "notFound": "Pays non trouvé",
     "backToCountries": "Retour aux pays",
+    "ruleOfGold": "Règle d'or",
     "snapshot": {
       "gdpPerCapita": "PIB/Habitant",
       "population": "Population",
