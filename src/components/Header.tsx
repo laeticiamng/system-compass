@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
-import { Compass, Map, User, FileText } from 'lucide-react';
+import { Compass, Map, User, FileText, Target, Scale } from 'lucide-react';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
 export function Header() {
@@ -12,6 +12,8 @@ export function Header() {
     { href: '/', label: t('nav.start'), icon: Compass },
     { href: '/countries', label: t('nav.countries'), icon: Map },
     { href: '/profile-test', label: t('nav.profile'), icon: User },
+    { href: '/match', label: t('nav.match'), icon: Target },
+    { href: '/compare', label: t('nav.compare'), icon: Scale },
     { href: '/resources', label: t('nav.resources'), icon: FileText },
   ];
 
