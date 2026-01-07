@@ -43,8 +43,9 @@
     }
   },
   "pyramids": {
-    "title": "Le quattro piramidi",
+    "title": "Le sei piramidi",
     "subtitle": "Ogni sistema rientra in una di queste categorie",
+    "examples": "Esempi",
     "problemRent": {
       "label": "Rendita del problema",
       "description": "La disfunzione è l'asset. Risolvere problemi ti mette a rischio."
@@ -60,6 +61,34 @@
     "growthRisk": {
       "label": "Rischio crescita",
       "description": "La crescita è l'asset. Velocità, scalabilità e capitale sono ricompensati."
+    },
+    "hybridTransition": {
+      "label": "Ibrido transizione",
+      "description": "Più logiche coesistono. Naviga contraddizioni e cambiamenti rapidi."
+    },
+    "resourceExtraction": {
+      "label": "Estrazione risorse",
+      "description": "Le risorse naturali finanziano il sistema. La prossimità al flusso conta di più."
+    },
+    "characteristics": {
+      "corruption": "Corruzione",
+      "informality": "Informalità",
+      "networks": "Reti",
+      "bureaucracy": "Burocrazia",
+      "protection": "Protezione",
+      "redistribution": "Redistribuzione",
+      "precision": "Precisione",
+      "credentials": "Credenziali",
+      "trust": "Fiducia",
+      "speed": "Velocità",
+      "capital": "Capitale",
+      "scalability": "Scalabilità",
+      "contradictions": "Contraddizioni",
+      "change": "Cambiamento",
+      "adaptation": "Adattamento",
+      "resources": "Risorse",
+      "proximity": "Prossimità",
+      "distribution": "Distribuzione"
     }
   },
   "featured": {

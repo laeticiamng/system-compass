@@ -43,8 +43,9 @@
     }
   },
   "pyramids": {
-    "title": "As quatro pirâmides",
+    "title": "As seis pirâmides",
     "subtitle": "Cada sistema cai numa destas categorias",
+    "examples": "Exemplos",
     "problemRent": {
       "label": "Renda do problema",
       "description": "A disfunção é o ativo. Resolver problemas põe-te em risco."
@@ -60,6 +61,34 @@
     "growthRisk": {
       "label": "Risco crescimento",
       "description": "O crescimento é o ativo. Velocidade, escalabilidade e capital são recompensados."
+    },
+    "hybridTransition": {
+      "label": "Híbrido transição",
+      "description": "Múltiplas lógicas coexistem. Navega contradições e mudanças rápidas."
+    },
+    "resourceExtraction": {
+      "label": "Extração recursos",
+      "description": "Os recursos naturais financiam o sistema. A proximidade ao fluxo importa mais."
+    },
+    "characteristics": {
+      "corruption": "Corrupção",
+      "informality": "Informalidade",
+      "networks": "Redes",
+      "bureaucracy": "Burocracia",
+      "protection": "Proteção",
+      "redistribution": "Redistribuição",
+      "precision": "Precisão",
+      "credentials": "Credenciais",
+      "trust": "Confiança",
+      "speed": "Velocidade",
+      "capital": "Capital",
+      "scalability": "Escalabilidade",
+      "contradictions": "Contradições",
+      "change": "Mudança",
+      "adaptation": "Adaptação",
+      "resources": "Recursos",
+      "proximity": "Proximidade",
+      "distribution": "Distribuição"
     }
   },
   "featured": {

@@ -43,8 +43,9 @@
     }
   },
   "pyramids": {
-    "title": "The Four Pyramids",
+    "title": "The Six Pyramids",
     "subtitle": "Every system falls into one of these categories",
+    "examples": "Examples",
     "problemRent": {
       "label": "Problem Rent",
       "description": "The dysfunction is the asset. Solving problems puts you at risk."
@@ -60,6 +61,34 @@
     "growthRisk": {
       "label": "Growth Risk",
       "description": "Growth is the asset. Speed, scalability, and capital are rewarded."
+    },
+    "hybridTransition": {
+      "label": "Hybrid Transition",
+      "description": "Multiple logics coexist. Navigate contradictions and rapid changes."
+    },
+    "resourceExtraction": {
+      "label": "Resource Extraction",
+      "description": "Natural resources fund the system. Proximity to the flow matters most."
+    },
+    "characteristics": {
+      "corruption": "Corruption",
+      "informality": "Informality",
+      "networks": "Networks",
+      "bureaucracy": "Bureaucracy",
+      "protection": "Protection",
+      "redistribution": "Redistribution",
+      "precision": "Precision",
+      "credentials": "Credentials",
+      "trust": "Trust",
+      "speed": "Speed",
+      "capital": "Capital",
+      "scalability": "Scalability",
+      "contradictions": "Contradictions",
+      "change": "Change",
+      "adaptation": "Adaptation",
+      "resources": "Resources",
+      "proximity": "Proximity",
+      "distribution": "Distribution"
     }
   },
   "featured": {

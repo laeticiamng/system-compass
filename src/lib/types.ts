@@ -1,4 +1,4 @@
-export type PyramidType = 'PROBLEM_RENT' | 'STABILITY_REDIS' | 'COMPETENCE_TRUST' | 'GROWTH_RISK';
+export type PyramidType = 'PROBLEM_RENT' | 'STABILITY_REDIS' | 'COMPETENCE_TRUST' | 'GROWTH_RISK' | 'HYBRID_TRANSITION' | 'RESOURCE_EXTRACTION';
 
 export interface CountryRisks {
   legal: number;
@@ -121,6 +121,16 @@ export const PYRAMID_TYPE_INFO: Record<PyramidType, { label: string; description
     label: 'Growth Risk',
     description: 'Growth is the asset. Speed, scalability, and capital are rewarded.',
     color: 'pyramid-growth',
+  },
+  HYBRID_TRANSITION: {
+    label: 'Hybrid Transition',
+    description: 'Multiple logics coexist. Navigate contradictions and rapid changes.',
+    color: 'pyramid-hybrid',
+  },
+  RESOURCE_EXTRACTION: {
+    label: 'Resource Extraction',
+    description: 'Natural resources fund the system. Proximity to the flow matters most.',
+    color: 'pyramid-resource',
   },
 };
 
