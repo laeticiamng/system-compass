@@ -31,6 +31,13 @@ export function LGBTQRightsIndicator({ rights, className }: LGBTQRightsIndicator
   const config = SAFETY_CONFIG[rights.safetyRating];
   const SafetyIcon = config.icon;
 
+  // Fallback labels for safety ratings
+  const safetyLabels: Record<string, string> = {
+    safe: t('lgbtqRights.safety.safe', 'Safe'),
+    caution: t('lgbtqRights.safety.caution', 'Caution Advised'),
+    dangerous: t('lgbtqRights.safety.dangerous', 'Dangerous'),
+  };
+
   return (
     <div className={cn('glass-card rounded-xl p-6', className)}>
       <div className="flex items-center gap-3 mb-6">
@@ -43,10 +50,10 @@ export function LGBTQRightsIndicator({ rights, className }: LGBTQRightsIndicator
         <SafetyIcon className="w-8 h-8" />
         <div>
           <div className="font-semibold text-lg">
-            {t(`lgbtqRights.safety.${rights.safetyRating}`)}
+            {safetyLabels[rights.safetyRating]}
           </div>
           <div className="text-sm opacity-80">
-            {t('lgbtqRights.index')}: {rights.index}/100
+            {t('lgbtqRights.index', 'Index')}: {rights.index}/100
           </div>
         </div>
         <div className={cn('ml-auto px-3 py-1 rounded-full text-white text-sm font-medium', config.badgeClass)}>
@@ -57,15 +64,15 @@ export function LGBTQRightsIndicator({ rights, className }: LGBTQRightsIndicator
       {/* Rights Grid */}
       <div className="grid grid-cols-2 gap-3 mb-4">
         <RightItem 
-          label={t('lgbtqRights.marriage')} 
+          label={t('lgbtqRights.marriage', 'Marriage')} 
           value={rights.sameSecMarriage} 
         />
         <RightItem 
-          label={t('lgbtqRights.civilUnion')} 
+          label={t('lgbtqRights.civilUnion', 'Civil Union')} 
           value={rights.civilUnion} 
         />
         <RightItem 
-          label={t('lgbtqRights.employmentProtection')} 
+          label={t('lgbtqRights.employmentProtection', 'Employment Protection')} 
           value={rights.employmentProtection} 
           className="col-span-2"
         />
