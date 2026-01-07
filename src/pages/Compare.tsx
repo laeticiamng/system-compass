@@ -194,8 +194,8 @@ export default function Compare() {
               />
               <MetricRow
                 label={t('visa.citizenshipYears')}
-                value1={`${country1.visa.citizenshipYears} years`}
-                value2={`${country2.visa.citizenshipYears} years`}
+                value1={`${country1.visa.citizenshipYears} ${t('common.years')}`}
+                value2={`${country2.visa.citizenshipYears} ${t('common.years')}`}
                 better={country1.visa.citizenshipYears < country2.visa.citizenshipYears ? 1 : 2}
               />
             </ComparisonSection>

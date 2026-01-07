@@ -5,7 +5,8 @@
     "disclaimer": "Analytical tool only. Not legal or financial advice.",
     "yes": "Yes",
     "no": "No",
-    "back": "Back"
+    "back": "Back",
+    "years": "years"
   },
   "nav": {
     "start": "Start",
@@ -196,23 +197,38 @@
     "archetypes": {
       "ambitiousMeritocrat": {
         "name": "Ambitious Meritocrat",
-        "description": "You seek proportional rewards for excellence. You thrive where competence wins."
+        "description": "You seek proportional rewards for excellence. You thrive where competence wins.",
+        "strengths": ["Results-oriented", "Strong work ethic"],
+        "vulnerabilities": ["May be frustrated by unfairness", "Burnout risk"],
+        "redFlags": ["Systems that reward connections over competence", "Heavy redistribution systems"]
       },
       "stabilitySeeker": {
         "name": "Stability Seeker",
-        "description": "You value predictability and protection. You perform best with a safety net."
+        "description": "You value predictability and protection. You perform best with a safety net.",
+        "strengths": ["Patient and methodical", "Long-term planner"],
+        "vulnerabilities": ["May miss high-growth opportunities", "Risk-averse to a fault"],
+        "redFlags": ["High-risk growth environments", "Systems with weak social protections"]
       },
       "strategicSurvivor": {
         "name": "Strategic Survivor",
-        "description": "You know how to navigate without exposure. You build quietly and protect gains."
+        "description": "You know how to navigate without exposure. You build quietly and protect gains.",
+        "strengths": ["Tactical awareness", "Risk management"],
+        "vulnerabilities": ["May under-leverage visibility", "Can become too defensive"],
+        "redFlags": ["Systems requiring public profile", "Transparent meritocracies"]
       },
       "growthConquistador": {
         "name": "Growth Conquistador",
-        "description": "You chase scale and speed. You thrive in high-stakes, high-reward environments."
+        "description": "You chase scale and speed. You thrive in high-stakes, high-reward environments.",
+        "strengths": ["Speed and adaptability", "Opportunity recognition"],
+        "vulnerabilities": ["May neglect stability", "Burnout risk"],
+        "redFlags": ["Slow bureaucratic systems", "Heavy taxation on growth"]
       },
       "balancedNavigator": {
         "name": "Balanced Navigator",
-        "description": "You adapt to context. You can survive many systems but may not optimize for any."
+        "description": "You adapt to context. You can survive many systems but may not optimize for any.",
+        "strengths": ["Flexibility", "Broad tolerance"],
+        "vulnerabilities": ["May lack strong direction", "Risk of drift"],
+        "redFlags": ["Extreme systems in any direction"]
       }
     },
     "strengths": "Strengths",
@@ -314,7 +330,27 @@
     "retakeTest": "Retake Test",
     "shareResults": "Share Results",
     "copyLink": "Copy Link",
-    "linkCopied": "Link copied!"
+    "linkCopied": "Link copied!",
+    "reasons": {
+      "ambitionGrowth": "High ambition aligned with growth-focused system",
+      "ambitionFrustrated": "High ambition may be frustrated by stability focus",
+      "meritCompetence": "Meritocracy values aligned with competence-based system",
+      "meritConnection": "Merit-based expectations clash with connection-based system",
+      "riskGrowth": "High risk tolerance suits growth environment",
+      "lowRiskWarning": "Low risk tolerance vs high environmental risks",
+      "safetyMatch": "Safety-conscious profile matches stable system",
+      "securityNet": "Security needs met by strong social safety net",
+      "securityUnmet": "Security needs may not be met in growth-focused system",
+      "lowRiskEnvironment": "Low legal and safety risks provide security",
+      "bureaucracyWarning": "Low bureaucracy tolerance vs heavy bureaucracy",
+      "bureaucracyMatch": "Can handle bureaucratic requirements",
+      "innovationMatch": "Innovation drive matches growth environment",
+      "innovationSuppressed": "Innovation drive may be suppressed",
+      "discretionValuable": "Discretion is valuable in this system",
+      "visibilityRisk": "Visibility preference risky in this environment",
+      "corruptionChallenge": "High corruption environment challenges merit-based approach",
+      "overallLowRisk": "Overall low-risk environment"
+    }
   },
   "compare": {
     "title": "Compare Countries",

@@ -2,12 +2,17 @@
   "common": {
     "appName": "Pyramid Compass",
     "tagline": "Naviguer dans le vrai système",
-    "disclaimer": "Outil d'analyse uniquement. Pas de conseil juridique ou financier."
+    "disclaimer": "Outil d'analyse uniquement. Pas de conseil juridique ou financier.",
+    "yes": "Oui",
+    "no": "Non",
+    "back": "Retour",
+    "years": "ans"
   },
   "nav": {
     "start": "Accueil",
     "countries": "Pays",
     "profile": "Profil",
+    "trajectory": "Trajectoire",
     "match": "Match",
     "compare": "Comparer",
     "resources": "Ressources"
@@ -18,7 +23,7 @@
     "titleHighlight": "Pyramide",
     "title2": "Trouve ton chemin",
     "subtitle": "Chaque pays a un système caché. Apprends ce qu'il récompense vraiment, où tu te situes, et comment survivre intelligemment — ou t'échapper stratégiquement.",
-    "discoverProfile": "Découvre ton profil",
+    "discoverProfile": "Construis ta vie",
     "exploreCountries": "Explorer les pays"
   },
   "howItWorks": {
@@ -192,23 +197,38 @@
     "archetypes": {
       "ambitiousMeritocrat": {
         "name": "Méritocrate ambitieux",
-        "description": "Tu cherches des récompenses proportionnelles à l'excellence. Tu t'épanouis là où la compétence gagne."
+        "description": "Tu cherches des récompenses proportionnelles à l'excellence. Tu t'épanouis là où la compétence gagne.",
+        "strengths": ["Orienté résultats", "Forte éthique de travail"],
+        "vulnerabilities": ["Peut être frustré par l'injustice", "Risque de burnout"],
+        "redFlags": ["Systèmes qui récompensent les connexions plutôt que la compétence", "Systèmes de forte redistribution"]
       },
       "stabilitySeeker": {
         "name": "Chercheur de stabilité",
-        "description": "Tu valorises la prévisibilité et la protection. Tu performes mieux avec un filet de sécurité."
+        "description": "Tu valorises la prévisibilité et la protection. Tu performes mieux avec un filet de sécurité.",
+        "strengths": ["Patient et méthodique", "Planificateur à long terme"],
+        "vulnerabilities": ["Peut manquer les opportunités de croissance", "Trop averse au risque"],
+        "redFlags": ["Environnements de croissance à haut risque", "Systèmes avec faible protection sociale"]
       },
       "strategicSurvivor": {
         "name": "Survivant stratégique",
-        "description": "Tu sais naviguer sans t'exposer. Tu construis discrètement et protèges tes gains."
+        "description": "Tu sais naviguer sans t'exposer. Tu construis discrètement et protèges tes gains.",
+        "strengths": ["Conscience tactique", "Gestion des risques"],
+        "vulnerabilities": ["Peut sous-exploiter la visibilité", "Peut devenir trop défensif"],
+        "redFlags": ["Systèmes nécessitant un profil public", "Méritocraties transparentes"]
       },
       "growthConquistador": {
         "name": "Conquistador de croissance",
-        "description": "Tu poursuis l'échelle et la vitesse. Tu t'épanouis dans les environnements à hauts enjeux."
+        "description": "Tu poursuis l'échelle et la vitesse. Tu t'épanouis dans les environnements à hauts enjeux.",
+        "strengths": ["Vitesse et adaptabilité", "Reconnaissance des opportunités"],
+        "vulnerabilities": ["Peut négliger la stabilité", "Risque de burnout"],
+        "redFlags": ["Systèmes bureaucratiques lents", "Forte taxation sur la croissance"]
       },
       "balancedNavigator": {
         "name": "Navigateur équilibré",
-        "description": "Tu t'adaptes au contexte. Tu peux survivre dans de nombreux systèmes mais tu n'optimises pour aucun."
+        "description": "Tu t'adaptes au contexte. Tu peux survivre dans de nombreux systèmes mais tu n'optimises pour aucun.",
+        "strengths": ["Flexibilité", "Large tolérance"],
+        "vulnerabilities": ["Peut manquer de direction forte", "Risque de dérive"],
+        "redFlags": ["Systèmes extrêmes dans n'importe quelle direction"]
       }
     },
     "strengths": "Forces",
@@ -310,7 +330,27 @@
     "retakeTest": "Refaire le test",
     "shareResults": "Partager les résultats",
     "copyLink": "Copier le lien",
-    "linkCopied": "Lien copié !"
+    "linkCopied": "Lien copié !",
+    "reasons": {
+      "ambitionGrowth": "Ambition élevée alignée avec système orienté croissance",
+      "ambitionFrustrated": "L'ambition élevée peut être frustrée par le focus stabilité",
+      "meritCompetence": "Valeurs méritocratiques alignées avec système basé compétences",
+      "meritConnection": "Attentes méritocratiques incompatibles avec système basé connexions",
+      "riskGrowth": "Tolérance au risque élevée adaptée à l'environnement croissance",
+      "lowRiskWarning": "Faible tolérance au risque vs risques environnementaux élevés",
+      "safetyMatch": "Profil soucieux de sécurité compatible avec système stable",
+      "securityNet": "Besoins de sécurité satisfaits par filet social solide",
+      "securityUnmet": "Besoins de sécurité possiblement non satisfaits dans système croissance",
+      "lowRiskEnvironment": "Faibles risques légaux et sécuritaires assurent la sécurité",
+      "bureaucracyWarning": "Faible tolérance à la bureaucratie vs bureaucratie lourde",
+      "bureaucracyMatch": "Peut gérer les exigences bureaucratiques",
+      "innovationMatch": "Motivation innovation compatible avec environnement croissance",
+      "innovationSuppressed": "Motivation innovation peut être freinée",
+      "discretionValuable": "La discrétion est précieuse dans ce système",
+      "visibilityRisk": "Préférence pour la visibilité risquée dans cet environnement",
+      "corruptionChallenge": "Environnement corrompu défie l'approche basée mérite",
+      "overallLowRisk": "Environnement globalement à faible risque"
+    }
   },
   "compare": {
     "title": "Comparer les pays",

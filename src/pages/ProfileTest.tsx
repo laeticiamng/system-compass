@@ -62,49 +62,30 @@ export default function ProfileTest() {
   const calculateResult = (): ProfileResult => {
     const { ambition, meritNeed, riskTolerance, securityNeed, innovationDrive, discretionPreference } = profile;
 
-    let archetype = '';
-    let description = '';
-    const strengths: string[] = [];
-    const vulnerabilities: string[] = [];
+    let archetypeKey = 'balancedNavigator';
     const compatibleTypes: PyramidType[] = [];
-    const redFlags: string[] = [];
 
     if (ambition > 7 && meritNeed > 7 && riskTolerance > 6) {
-      archetype = t('profileTest.archetypes.ambitiousMeritocrat.name');
-      description = t('profileTest.archetypes.ambitiousMeritocrat.description');
-      strengths.push(t('profileTest.archetypes.ambitiousMeritocrat.name'));
-      vulnerabilities.push(t('profileTest.archetypes.ambitiousMeritocrat.description'));
+      archetypeKey = 'ambitiousMeritocrat';
       compatibleTypes.push('COMPETENCE_TRUST', 'GROWTH_RISK');
-      redFlags.push('Systems that reward connections over competence', 'Heavy redistribution systems');
     } else if (securityNeed > 7 && riskTolerance < 4) {
-      archetype = t('profileTest.archetypes.stabilitySeeker.name');
-      description = t('profileTest.archetypes.stabilitySeeker.description');
-      strengths.push('Patient and methodical', 'Long-term planner');
-      vulnerabilities.push('May miss high-growth opportunities', 'Risk-averse to a fault');
+      archetypeKey = 'stabilitySeeker';
       compatibleTypes.push('STABILITY_REDIS', 'COMPETENCE_TRUST');
-      redFlags.push('High-risk growth environments', 'Systems with weak social protections');
     } else if (discretionPreference > 7 && innovationDrive < 5) {
-      archetype = t('profileTest.archetypes.strategicSurvivor.name');
-      description = t('profileTest.archetypes.strategicSurvivor.description');
-      strengths.push('Tactical awareness', 'Risk management');
-      vulnerabilities.push('May under-leverage visibility', 'Can become too defensive');
+      archetypeKey = 'strategicSurvivor';
       compatibleTypes.push('PROBLEM_RENT', 'STABILITY_REDIS');
-      redFlags.push('Systems requiring public profile', 'Transparent meritocracies');
     } else if (innovationDrive > 7 && riskTolerance > 6) {
-      archetype = t('profileTest.archetypes.growthConquistador.name');
-      description = t('profileTest.archetypes.growthConquistador.description');
-      strengths.push('Speed and adaptability', 'Opportunity recognition');
-      vulnerabilities.push('May neglect stability', 'Burnout risk');
+      archetypeKey = 'growthConquistador';
       compatibleTypes.push('GROWTH_RISK', 'COMPETENCE_TRUST');
-      redFlags.push('Slow bureaucratic systems', 'Heavy taxation on growth');
     } else {
-      archetype = t('profileTest.archetypes.balancedNavigator.name');
-      description = t('profileTest.archetypes.balancedNavigator.description');
-      strengths.push('Flexibility', 'Broad tolerance');
-      vulnerabilities.push('May lack strong direction', 'Risk of drift');
       compatibleTypes.push('STABILITY_REDIS', 'COMPETENCE_TRUST');
-      redFlags.push('Extreme systems in any direction');
     }
+
+    const archetype = t(`profileTest.archetypes.${archetypeKey}.name`);
+    const description = t(`profileTest.archetypes.${archetypeKey}.description`);
+    const strengths = t(`profileTest.archetypes.${archetypeKey}.strengths`, { returnObjects: true }) as string[];
+    const vulnerabilities = t(`profileTest.archetypes.${archetypeKey}.vulnerabilities`, { returnObjects: true }) as string[];
+    const redFlags = t(`profileTest.archetypes.${archetypeKey}.redFlags`, { returnObjects: true }) as string[];
 
     return { archetype, description, strengths, vulnerabilities, compatibleTypes, redFlags };
   };
