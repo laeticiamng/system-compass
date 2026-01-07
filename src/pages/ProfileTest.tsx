@@ -112,6 +112,8 @@ export default function ProfileTest() {
   const handleComplete = () => {
     const calculatedResult = calculateResult();
     setResult(calculatedResult);
+    // Save profile to localStorage for matching
+    localStorage.setItem('userProfile', JSON.stringify(profile));
   };
 
   const handleNext = () => {
@@ -197,7 +199,7 @@ export default function ProfileTest() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
-              onClick={() => navigate('/countries')}
+              onClick={() => navigate('/match')}
               className="bg-primary text-primary-foreground gap-2"
             >
               {t('profileTest.findCountries')}
@@ -205,7 +207,20 @@ export default function ProfileTest() {
             </Button>
             <Button
               variant="outline"
+              onClick={() => navigate('/compare')}
+            >
+              {t('match.compareCountries')}
+            </Button>
+            <Button
+              variant="outline"
               onClick={() => {
+                setResult(null);
+                setStep(0);
+              }}
+            >
+              {t('profileTest.retakeTest')}
+            </Button>
+          </div>
                 setResult(null);
                 setStep(0);
               }}

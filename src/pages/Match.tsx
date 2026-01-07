@@ -1,0 +1,367 @@
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { countries } from '@/lib/countries-data';
+import { Country, UserProfile, PyramidType } from '@/lib/types';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { ArrowRight, Target, AlertTriangle, MapPin, TrendingUp, Users, Shield } from 'lucide-react';
+
+const PYRAMID_TYPE_LABELS: Record<string, string> = {
+  PROBLEM_RENT: 'pyramids.problemRent.label',
+  STABILITY_REDIS: 'pyramids.stabilityRedis.label',
+  COMPETENCE_TRUST: 'pyramids.competenceTrust.label',
+  GROWTH_RISK: 'pyramids.growthRisk.label',
+};
+
+const PYRAMID_TYPE_COLORS: Record<string, string> = {
+  PROBLEM_RENT: 'pyramid-rent',
+  STABILITY_REDIS: 'pyramid-stability',
+  COMPETENCE_TRUST: 'pyramid-competence',
+  GROWTH_RISK: 'pyramid-growth',
+};
+
+interface MatchedCountry {
+  country: Country;
+  score: number;
+  reasons: string[];
+  warnings: string[];
+}
+
+function calculateCompatibility(profile: UserProfile, country: Country): MatchedCountry {
+  let score = 50; // Base score
+  const reasons: string[] = [];
+  const warnings: string[] = [];
+  
+  const { pyramidType, risks } = country;
+  
+  // Ambition matching
+  if (profile.ambition > 7) {
+    if (pyramidType === 'GROWTH_RISK') {
+      score += 15;
+      reasons.push('High ambition aligned with growth-focused system');
+    } else if (pyramidType === 'STABILITY_REDIS') {
+      score -= 10;
+      warnings.push('High ambition may be frustrated by stability focus');
+    }
+  }
+  
+  // Merit need matching
+  if (profile.meritNeed > 7) {
+    if (pyramidType === 'COMPETENCE_TRUST') {
+      score += 15;
+      reasons.push('Meritocracy values aligned with competence-based system');
+    } else if (pyramidType === 'PROBLEM_RENT') {
+      score -= 15;
+      warnings.push('Merit-based expectations clash with connection-based system');
+    }
+  }
+  
+  // Risk tolerance matching
+  if (profile.riskTolerance > 7) {
+    if (pyramidType === 'GROWTH_RISK') {
+      score += 10;
+      reasons.push('High risk tolerance suits growth environment');
+    }
+    if (risks.safety > 50 || risks.volatility > 50) {
+      score += 5; // Can handle risky environments
+    }
+  } else if (profile.riskTolerance < 4) {
+    if (risks.safety > 50 || risks.volatility > 50) {
+      score -= 15;
+      warnings.push('Low risk tolerance vs high environmental risks');
+    }
+    if (pyramidType === 'STABILITY_REDIS' || pyramidType === 'COMPETENCE_TRUST') {
+      score += 10;
+      reasons.push('Safety-conscious profile matches stable system');
+    }
+  }
+  
+  // Security need matching
+  if (profile.securityNeed > 7) {
+    if (pyramidType === 'STABILITY_REDIS') {
+      score += 15;
+      reasons.push('Security needs met by strong social safety net');
+    } else if (pyramidType === 'GROWTH_RISK') {
+      score -= 10;
+      warnings.push('Security needs may not be met in growth-focused system');
+    }
+    if (risks.legal < 30 && risks.safety < 30) {
+      score += 10;
+      reasons.push('Low legal and safety risks provide security');
+    }
+  }
+  
+  // Bureaucracy tolerance
+  if (profile.bureaucracyTolerance < 4) {
+    if (risks.bureaucracy > 60) {
+      score -= 15;
+      warnings.push('Low bureaucracy tolerance vs heavy bureaucracy');
+    }
+  } else if (profile.bureaucracyTolerance > 7) {
+    if (risks.bureaucracy > 60) {
+      score += 5;
+      reasons.push('Can handle bureaucratic requirements');
+    }
+  }
+  
+  // Innovation drive
+  if (profile.innovationDrive > 7) {
+    if (pyramidType === 'GROWTH_RISK') {
+      score += 10;
+      reasons.push('Innovation drive matches growth environment');
+    } else if (pyramidType === 'PROBLEM_RENT') {
+      score -= 10;
+      warnings.push('Innovation drive may be suppressed');
+    }
+  }
+  
+  // Discretion preference
+  if (profile.discretionPreference > 7) {
+    if (pyramidType === 'PROBLEM_RENT') {
+      score += 10;
+      reasons.push('Discretion is valuable in this system');
+    }
+  } else if (profile.discretionPreference < 4) {
+    if (pyramidType === 'PROBLEM_RENT') {
+      score -= 10;
+      warnings.push('Visibility preference risky in this environment');
+    }
+  }
+  
+  // Corruption penalty for rule-followers
+  if (profile.meritNeed > 6 && risks.corruption > 60) {
+    score -= 10;
+    warnings.push('High corruption environment challenges merit-based approach');
+  }
+  
+  // Bonus for low-risk environments
+  const avgRisk = (risks.legal + risks.safety + risks.corruption + risks.volatility + risks.bureaucracy) / 5;
+  if (avgRisk < 30) {
+    score += 10;
+    reasons.push('Overall low-risk environment');
+  } else if (avgRisk > 60) {
+    score -= 5;
+  }
+  
+  // Clamp score
+  score = Math.max(0, Math.min(100, score));
+  
+  return { country, score, reasons, warnings };
+}
+
+export default function Match() {
+  const navigate = useNavigate();
+  const { t } = useTranslation();
+  const [profile, setProfile] = useState<UserProfile | null>(null);
+  const [matches, setMatches] = useState<MatchedCountry[]>([]);
+
+  useEffect(() => {
+    // Try to load profile from localStorage
+    const savedProfile = localStorage.getItem('userProfile');
+    if (savedProfile) {
+      try {
+        const parsed = JSON.parse(savedProfile);
+        setProfile(parsed);
+        
+        // Calculate matches
+        const matchedCountries = countries
+          .map(country => calculateCompatibility(parsed, country))
+          .sort((a, b) => b.score - a.score);
+        
+        setMatches(matchedCountries);
+      } catch (e) {
+        console.error('Failed to parse profile', e);
+      }
+    }
+  }, []);
+
+  if (!profile) {
+    return (
+      <div className="min-h-screen pt-24 pb-16">
+        <div className="container mx-auto px-4 max-w-2xl text-center">
+          <div className="glass-card rounded-xl p-12">
+            <Target className="w-16 h-16 text-primary mx-auto mb-6" />
+            <h1 className="font-display text-3xl font-bold mb-4">
+              {t('match.noProfile')}
+            </h1>
+            <p className="text-muted-foreground mb-8">
+              {t('match.noProfileDesc')}
+            </p>
+            <Button
+              onClick={() => navigate('/profile-test')}
+              className="bg-primary text-primary-foreground gap-2"
+            >
+              {t('match.takeTest')}
+              <ArrowRight className="w-4 h-4" />
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const topMatches = matches.slice(0, 5);
+  const avoidMatches = matches.slice(-3).reverse();
+
+  return (
+    <div className="min-h-screen pt-24 pb-16">
+      <div className="container mx-auto px-4">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="font-display text-4xl font-bold mb-4">
+              {t('match.title')}
+            </h1>
+            <p className="text-muted-foreground max-w-xl mx-auto">
+              {t('match.subtitle')}
+            </p>
+          </div>
+
+          {/* Top Matches */}
+          <div className="mb-12">
+            <h2 className="font-display text-2xl font-bold mb-6 flex items-center gap-2">
+              <Target className="w-6 h-6 text-primary" />
+              {t('match.topMatches')}
+            </h2>
+            <div className="space-y-4">
+              {topMatches.map((match, index) => (
+                <MatchCard key={match.country.id} match={match} rank={index + 1} />
+              ))}
+            </div>
+          </div>
+
+          {/* Countries to Avoid */}
+          <div className="mb-12">
+            <h2 className="font-display text-2xl font-bold mb-6 flex items-center gap-2">
+              <AlertTriangle className="w-6 h-6 text-risk-critical" />
+              {t('match.avoidTitle')}
+            </h2>
+            <div className="space-y-4">
+              {avoidMatches.map((match) => (
+                <MatchCard key={match.country.id} match={match} isWarning />
+              ))}
+            </div>
+          </div>
+
+          {/* Actions */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              onClick={() => navigate('/countries')}
+              className="bg-primary text-primary-foreground gap-2"
+            >
+              {t('match.exploreAll')}
+              <ArrowRight className="w-4 h-4" />
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => navigate('/compare')}
+            >
+              {t('match.compareCountries')}
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => navigate('/profile-test')}
+            >
+              {t('match.retakeTest')}
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MatchCard({ match, rank, isWarning }: { match: MatchedCountry; rank?: number; isWarning?: boolean }) {
+  const navigate = useNavigate();
+  const { t } = useTranslation();
+  const { country, score, reasons, warnings } = match;
+  const typeColor = PYRAMID_TYPE_COLORS[country.pyramidType];
+
+  const getScoreColor = (score: number) => {
+    if (score >= 70) return 'text-risk-low';
+    if (score >= 50) return 'text-risk-medium';
+    if (score >= 30) return 'text-risk-high';
+    return 'text-risk-critical';
+  };
+
+  return (
+    <div
+      onClick={() => navigate(`/country/${country.id}`)}
+      className={cn(
+        'glass-card rounded-xl p-6 cursor-pointer transition-all hover:scale-[1.01]',
+        isWarning && 'border-risk-critical/30'
+      )}
+    >
+      <div className="flex items-start gap-4">
+        {rank && (
+          <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center font-display font-bold text-primary">
+            {rank}
+          </div>
+        )}
+        <div className="text-4xl">{getFlagEmoji(country.iso2)}</div>
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-3 mb-1">
+            <h3 className="font-display text-xl font-semibold">{country.name}</h3>
+            <span
+              className="px-2 py-0.5 rounded-full text-xs font-medium"
+              style={{
+                backgroundColor: `hsl(var(--${typeColor}) / 0.15)`,
+                color: `hsl(var(--${typeColor}))`,
+              }}
+            >
+              {t(PYRAMID_TYPE_LABELS[country.pyramidType])}
+            </span>
+          </div>
+          <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
+            <span className="flex items-center gap-1">
+              <MapPin className="w-3 h-3" />
+              {country.region}
+            </span>
+            <span className="flex items-center gap-1">
+              <TrendingUp className="w-3 h-3" />
+              ${(country.snapshot.gdpPerCapita / 1000).toFixed(0)}k
+            </span>
+            <span className="flex items-center gap-1">
+              <Shield className="w-3 h-3" />
+              #{country.snapshot.passportRank}
+            </span>
+          </div>
+          
+          {reasons.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-2">
+              {reasons.slice(0, 2).map((reason, i) => (
+                <span key={i} className="text-xs px-2 py-1 rounded-full bg-risk-low/10 text-risk-low">
+                  ✓ {reason}
+                </span>
+              ))}
+            </div>
+          )}
+          
+          {warnings.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {warnings.slice(0, 2).map((warning, i) => (
+                <span key={i} className="text-xs px-2 py-1 rounded-full bg-risk-critical/10 text-risk-critical">
+                  ⚠ {warning}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+        <div className="text-right">
+          <div className={cn('font-display text-2xl font-bold', getScoreColor(score))}>
+            {score}%
+          </div>
+          <div className="text-xs text-muted-foreground">{t('match.compatibility')}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function getFlagEmoji(iso2: string): string {
+  const codePoints = iso2
+    .toUpperCase()
+    .split('')
+    .map((char) => 127397 + char.charCodeAt(0));
+  return String.fromCodePoint(...codePoints);
+}
