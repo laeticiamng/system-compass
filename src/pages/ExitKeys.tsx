@@ -1043,8 +1043,13 @@ export default function ExitKeys() {
                 initialProfessionId={professionId} 
               />
 
-              {/* Risk Prevention */}
-              <RiskPrevention />
+              {/* Risk Prevention - Contextualized based on user profile */}
+              <RiskPrevention 
+                currentCountryPyramidType={currentCountry?.pyramidType}
+                birthCountryPyramidType={birthCountry?.pyramidType}
+                currentCountryId={currentCountryId}
+                birthCountryId={birthCountryId}
+              />
 
               {/* Actions */}
               <div className="flex flex-wrap justify-center gap-4 pt-8">
