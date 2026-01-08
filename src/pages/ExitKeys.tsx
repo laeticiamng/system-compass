@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import { 
   ArrowLeft, Key, Compass, Target, Zap, 
   ChevronRight, MapPin, Heart, Shield,
-  AlertTriangle, CheckCircle, Save, RefreshCw
+  AlertTriangle, CheckCircle, Save, RefreshCw,
+  Filter, Clock, Scale
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
@@ -54,6 +55,10 @@ export default function ExitKeys() {
   const { user } = useAuth();
   const { profile: savedProfile, saveProfile, loading: profileLoading } = useExitKeysProfile();
   const [currentStep, setCurrentStep] = useState<Step>('origin');
+  
+  // Filters
+  const [difficultyFilter, setDifficultyFilter] = useState<string>('all');
+  const [durationFilter, setDurationFilter] = useState<string>('all');
   
   // User inputs
   const [birthCountryId, setBirthCountryId] = useState<string>('');
@@ -131,6 +136,28 @@ export default function ExitKeys() {
     if (!userContext) return [];
     return findCompatibleKeys(userContext);
   }, [userContext]);
+
+  // Filtered results
+  const filteredResults = useMemo(() => {
+    return exitKeyResults.filter(result => {
+      // Difficulty filter
+      if (difficultyFilter !== 'all' && result.key.difficulty !== difficultyFilter) {
+        return false;
+      }
+      
+      // Duration filter
+      if (durationFilter !== 'all') {
+        const timeMatch = result.key.timeframe.match(/(\d+)-?(\d+)?/);
+        const maxYears = timeMatch ? parseInt(timeMatch[2] || timeMatch[1]) : 5;
+        
+        if (durationFilter === 'short' && maxYears > 3) return false;
+        if (durationFilter === 'medium' && (maxYears <= 3 || maxYears > 7)) return false;
+        if (durationFilter === 'long' && maxYears <= 7) return false;
+      }
+      
+      return true;
+    });
+  }, [exitKeyResults, difficultyFilter, durationFilter]);
 
   const stepIndex = STEPS.indexOf(currentStep);
   const progress = ((stepIndex + 1) / STEPS.length) * 100;
@@ -550,17 +577,81 @@ export default function ExitKeys() {
                 </div>
               </div>
 
+              {/* Filters & Compare Link */}
+              <div className="flex flex-wrap items-center justify-between gap-4 bg-muted/30 rounded-xl p-4">
+                <div className="flex flex-wrap items-center gap-3">
+                  <div className="flex items-center gap-2">
+                    <Filter className="w-4 h-4 text-muted-foreground" />
+                    <span className="text-sm font-medium">Filtrer:</span>
+                  </div>
+                  
+                  {/* Difficulty Filter */}
+                  <Select value={difficultyFilter} onValueChange={setDifficultyFilter}>
+                    <SelectTrigger className="w-[140px] h-9">
+                      <SelectValue placeholder="Difficulté" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">Toutes</SelectItem>
+                      <SelectItem value="easy">Facile</SelectItem>
+                      <SelectItem value="moderate">Modéré</SelectItem>
+                      <SelectItem value="hard">Difficile</SelectItem>
+                      <SelectItem value="expert">Expert</SelectItem>
+                    </SelectContent>
+                  </Select>
+
+                  {/* Duration Filter */}
+                  <Select value={durationFilter} onValueChange={setDurationFilter}>
+                    <SelectTrigger className="w-[140px] h-9">
+                      <SelectValue placeholder="Durée" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">Toutes</SelectItem>
+                      <SelectItem value="short">1-3 ans</SelectItem>
+                      <SelectItem value="medium">3-7 ans</SelectItem>
+                      <SelectItem value="long">7+ ans</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <Link to="/exit-keys/compare">
+                  <Button variant="outline" size="sm" className="gap-2">
+                    <Scale className="w-4 h-4" />
+                    Comparer
+                  </Button>
+                </Link>
+              </div>
+
               {/* Exit Keys */}
               <div className="space-y-4">
-                {exitKeyResults.length > 0 ? (
-                  exitKeyResults.map((result, index) => (
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-muted-foreground">
+                    {filteredResults.length} stratégie{filteredResults.length > 1 ? 's' : ''} 
+                    {(difficultyFilter !== 'all' || durationFilter !== 'all') && ' (filtrées)'}
+                  </span>
+                  {(difficultyFilter !== 'all' || durationFilter !== 'all') && (
+                    <Button 
+                      variant="ghost" 
+                      size="sm"
+                      onClick={() => { setDifficultyFilter('all'); setDurationFilter('all'); }}
+                    >
+                      Réinitialiser
+                    </Button>
+                  )}
+                </div>
+
+                {filteredResults.length > 0 ? (
+                  filteredResults.map((result, index) => (
                     <ExitKeyCard key={result.key.id} result={result} rank={index + 1} />
                   ))
                 ) : (
                   <div className="text-center py-12 text-muted-foreground">
-                    <p>Aucune stratégie trouvée pour cette combinaison.</p>
-                    <Button variant="outline" onClick={() => setCurrentStep('origin')} className="mt-4">
-                      Modifier mes critères
+                    <p>Aucune stratégie ne correspond aux filtres.</p>
+                    <Button 
+                      variant="outline" 
+                      onClick={() => { setDifficultyFilter('all'); setDurationFilter('all'); }} 
+                      className="mt-4"
+                    >
+                      Réinitialiser les filtres
                     </Button>
                   </div>
                 )}
