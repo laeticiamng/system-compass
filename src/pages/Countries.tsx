@@ -106,13 +106,13 @@ export default function Countries() {
   ];
 
   return (
-    <div className="min-h-screen pt-24 pb-16">
+    <div className="min-h-screen pt-20 md:pt-24 pb-16">
       <div className="container mx-auto px-4">
-        <div className="max-w-2xl mb-12">
-          <h1 className="font-display text-4xl font-bold mb-4">
+        <div className="max-w-2xl mb-8 md:mb-12">
+          <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4">
             {t('countries.title')}
           </h1>
-          <p className="text-muted-foreground">
+          <p className="text-muted-foreground text-sm md:text-base">
             {t('countries.subtitle')}
           </p>
         </div>
@@ -182,7 +182,7 @@ export default function Countries() {
         </div>
 
         {/* Countries Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
           {paginatedCountries.map((country) => (
             <CountryCard key={country.id} country={country} />
           ))}
