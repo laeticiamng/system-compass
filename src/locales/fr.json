@@ -19,7 +19,8 @@
     "resources": "Ressources",
     "pyramids": "Pyramides",
     "quiz": "Quiz",
-    "exitKeys": "Clés de Sortie"
+    "exitKeys": "Clés de Sortie",
+    "dashboard": "Tableau de Bord"
   },
   "hero": {
     "badge": "Naviguer dans le vrai système",

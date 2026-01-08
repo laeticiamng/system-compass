@@ -19,6 +19,7 @@ import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
 import ExitKeys from "./pages/ExitKeys";
 import CompareExitKeys from "./pages/CompareExitKeys";
+import Dashboard from "./pages/Dashboard";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +45,7 @@ const App = () => (
             <Route path="/pyramid-quiz" element={<PyramidQuiz />} />
             <Route path="/exit-keys" element={<ExitKeys />} />
             <Route path="/exit-keys/compare" element={<CompareExitKeys />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
