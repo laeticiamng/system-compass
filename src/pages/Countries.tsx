@@ -2,16 +2,36 @@ import { useTranslation } from 'react-i18next';
 import { countries } from '@/lib/countries-data';
 import { CountryCard } from '@/components/CountryCard';
 import { PyramidType } from '@/lib/types';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
+const ITEMS_PER_PAGE = 12;
 
 export default function Countries() {
   const { t } = useTranslation();
   const [filter, setFilter] = useState<PyramidType | 'all'>('all');
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const filteredCountries = filter === 'all' 
-    ? countries 
-    : countries.filter(c => c.pyramidType === filter);
+  const filteredCountries = useMemo(() => {
+    return filter === 'all' 
+      ? countries 
+      : countries.filter(c => c.pyramidType === filter);
+  }, [filter]);
+
+  const totalPages = Math.ceil(filteredCountries.length / ITEMS_PER_PAGE);
+  
+  const paginatedCountries = useMemo(() => {
+    const start = (currentPage - 1) * ITEMS_PER_PAGE;
+    return filteredCountries.slice(start, start + ITEMS_PER_PAGE);
+  }, [filteredCountries, currentPage]);
+
+  // Reset to page 1 when filter changes
+  const handleFilterChange = (newFilter: PyramidType | 'all') => {
+    setFilter(newFilter);
+    setCurrentPage(1);
+  };
 
   const pyramidTypes: { key: PyramidType; labelKey: string; color: string }[] = [
     { key: 'PROBLEM_RENT', labelKey: 'pyramids.problemRent.label', color: 'pyramid-rent' },
@@ -36,7 +56,7 @@ export default function Countries() {
         <div className="flex flex-wrap gap-2 mb-8">
           <FilterButton
             active={filter === 'all'}
-            onClick={() => setFilter('all')}
+            onClick={() => handleFilterChange('all')}
           >
             {t('countries.allSystems')}
           </FilterButton>
@@ -44,7 +64,7 @@ export default function Countries() {
             <FilterButton
               key={type.key}
               active={filter === type.key}
-              onClick={() => setFilter(type.key)}
+              onClick={() => handleFilterChange(type.key)}
               colorClass={type.color}
             >
               {t(type.labelKey)}
@@ -52,9 +72,14 @@ export default function Countries() {
           ))}
         </div>
 
+        {/* Results count */}
+        <div className="text-sm text-muted-foreground mb-4">
+          {filteredCountries.length} {t('countries.results', { count: filteredCountries.length })}
+        </div>
+
         {/* Countries Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredCountries.map((country) => (
+          {paginatedCountries.map((country) => (
             <CountryCard key={country.id} country={country} />
           ))}
         </div>
@@ -62,6 +87,61 @@ export default function Countries() {
         {filteredCountries.length === 0 && (
           <div className="text-center py-16 text-muted-foreground">
             {t('countries.noResults')}
+          </div>
+        )}
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex items-center justify-center gap-2 mt-12">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+              disabled={currentPage === 1}
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </Button>
+            
+            <div className="flex items-center gap-1">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
+                // Show first, last, current, and adjacent pages
+                if (
+                  page === 1 ||
+                  page === totalPages ||
+                  (page >= currentPage - 1 && page <= currentPage + 1)
+                ) {
+                  return (
+                    <Button
+                      key={page}
+                      variant={currentPage === page ? 'default' : 'outline'}
+                      size="sm"
+                      onClick={() => setCurrentPage(page)}
+                      className="w-9"
+                    >
+                      {page}
+                    </Button>
+                  );
+                }
+                // Show ellipsis for gaps
+                if (page === currentPage - 2 || page === currentPage + 2) {
+                  return (
+                    <span key={page} className="px-2 text-muted-foreground">
+                      ...
+                    </span>
+                  );
+                }
+                return null;
+              })}
+            </div>
+            
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+              disabled={currentPage === totalPages}
+            >
+              <ChevronRight className="w-4 h-4" />
+            </Button>
           </div>
         )}
       </div>
