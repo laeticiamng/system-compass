@@ -36,6 +36,7 @@ import { DestinationCompare } from '@/components/DestinationCompare';
 import { VacationRecommendations } from '@/components/exit-keys/VacationRecommendations';
 import { RiskPrevention } from '@/components/RiskPrevention';
 import { SalaryCalculator } from '@/components/SalaryCalculator';
+import { JourneyProgressBar, getJourneyPhase } from '@/components/JourneyProgressBar';
 
 const STEPS = ['origin', 'current', 'profile', 'goals', 'results'] as const;
 type Step = typeof STEPS[number];
@@ -251,6 +252,13 @@ export default function ExitKeys() {
 
   return (
     <main className="min-h-screen bg-background pt-24 pb-16">
+      {/* Sticky Journey Progress Bar */}
+      <div className="sticky top-16 z-40 bg-background/95 backdrop-blur-sm border-b border-border/50 py-4 mb-8">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <JourneyProgressBar currentPhase={getJourneyPhase(currentStep)} />
+        </div>
+      </div>
+
       <div className="container mx-auto px-4 max-w-4xl">
         {/* Header */}
         <div className="mb-8">
@@ -279,14 +287,14 @@ export default function ExitKeys() {
             </div>
           </div>
 
-          {/* Progress */}
+          {/* Detailed step progress (below sticky bar) */}
           {currentStep !== 'results' && (
-            <div className="mt-6">
-              <div className="flex justify-between text-sm text-muted-foreground mb-2">
-                <span>Étape {stepIndex + 1} sur {STEPS.length - 1}</span>
+            <div className="mt-4 p-3 rounded-lg bg-muted/30 border border-border/50">
+              <div className="flex justify-between text-sm text-muted-foreground">
+                <span>Sous-étape {stepIndex + 1} sur {STEPS.length - 1}</span>
                 <span>{Math.round(progress)}%</span>
               </div>
-              <Progress value={progress} className="h-2" />
+              <Progress value={progress} className="h-1.5 mt-2" />
             </div>
           )}
         </div>
