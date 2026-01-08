@@ -2396,10 +2396,15 @@
     "score": "Score: {{score}} / {{target}}"
   },
   "rules": {
-    "title": "PYRAMIDS - Complete Rules",
+    "title": "PYRAMIDS — Complete Rules",
     "concept": {
       "title": "The Concept",
-      "description": "PYRAMIDS is a strategy game where you manage life trajectories. You don't choose your starting point: you draw characters with a birth country, traits, and aspirations. Each 'year' of play, you make decisions: work, study, heal, migrate, start a business, build your network, nurture relationships... The world moves, countries have their rules, and success depends on your ability to optimize under constraints."
+      "description": "PYRAMIDS is a strategy game where you manage life trajectories. You don't choose your starting point: you draw characters with a birth country, traits, and aspirations. Each 'year' of play, you make decisions: work, study, heal, migrate, start a business, build your network, nurture relationships... The world moves, countries have their rules, and success depends on your ability to optimize under constraints.",
+      "quote": "You win by managing your life better than others, with a system that stays realistic.",
+      "goal": "Goal: Maximize your life score",
+      "duration": "Duration: 20-40 turns (years)",
+      "players": "Players: 1 to 4",
+      "luck": "Luck: Moderate (events + dice)"
     },
     "pyramidsLife": {
       "title": "The 6 Life Pyramids",
@@ -2409,39 +2414,106 @@
       "career": "Career (status, progression, expertise)",
       "finances": "Finances (security, wealth)",
       "freedom": "Freedom (time, autonomy, choice)",
-      "meaning": "Meaning (alignment, purpose, creation)"
+      "meaning": "Meaning (alignment, purpose, creation)",
+      "warning": "Each level is worth more but costs more. Reaching level 5 is rare: it represents an 'exceptional life' in that domain."
     },
     "characters": {
       "title": "Characters",
-      "description": "Each character card contains: a birth country (your starting system), two positive traits and one constraint, two major aspirations and one minor, and a starting situation."
+      "description": "Each character card contains unique information that defines your starting point and objectives.",
+      "birthCountry": "Birth Country",
+      "birthCountryDesc": "Your starting system",
+      "traits": "2 Traits + 1 Constraint",
+      "traitsDesc": "Your advantages and limitations",
+      "aspirations": "2 Major + 1 Minor Aspirations",
+      "aspirationsDesc": "What counts for your score",
+      "startingResources": "Starting Resources",
+      "startingResourcesDesc": "Calculated based on traits and country"
     },
     "countries": {
       "title": "Countries as Systems",
-      "description": "Each country is a set of rules with 4 indices:",
-      "opportunities": "Opportunities: facilitates work/studies/entrepreneurship",
-      "safetyNets": "Safety Nets: protects against crises (health/finances)",
-      "mobility": "Mobility: makes migration easier",
-      "friction": "Friction: taxes, instability, bureaucracy, risks"
+      "description": "Each country is a set of rules with 4 indices that define how life works there:",
+      "opportunitiesLabel": "Opportunities",
+      "opportunities": "Facilitates work, studies and entrepreneurship",
+      "safetyNetsLabel": "Safety Nets",
+      "safetyNets": "Protects against crises (health/finances)",
+      "mobilityLabel": "Mobility",
+      "mobility": "Makes migration easier",
+      "frictionLabel": "Friction",
+      "friction": "Taxes, instability, bureaucracy, risks"
     },
     "resources": {
       "title": "Resources",
-      "description": "Resources enable you to act:",
+      "description": "Resources enable you to act. Each action costs and generates different resources.",
       "time": "Time: determines your capacity to take actions",
       "money": "Money: gives access to investments",
       "health": "Health: influences stability and protects from falls",
       "network": "Network: opens opportunities, protects, accelerates",
       "skills": "Skills: improve returns",
-      "mobilityRes": "Mobility: allows migration to another system"
+      "mobilityRes": "Mobility: allows migration to another system",
+      "tip": "The game is designed so you never have 'everything'. You choose what to sacrifice temporarily."
     },
     "actions": {
       "title": "Actions",
-      "major": "Major actions: Work, Study, Entrepreneur, Migrate, Contribute/Create",
-      "minor": "Minor actions: Network, Relationships, Heal, Rest",
-      "note": "No action is 'free'. The game rewards players who know when to act."
+      "majorTitle": "Major Actions (1 per turn)",
+      "majorDesc": "These are the big decisions that shape your life. You can only do one per year.",
+      "work": "Work", "study": "Study", "entrepreneur": "Entrepreneur", "migrate": "Migrate", "contribute": "Contribute / Create",
+      "minorTitle": "Minor Actions", "minorDesc": "Complementary actions that maintain life balance.",
+      "network": "Network", "relationships": "Relationships", "heal": "Heal", "rest": "Rest",
+      "shortcutsTitle": "Shortcuts (DANGEROUS)", "shortcutsDesc": "Risky actions that can pay off big... or destroy everything.",
+      "blackMarket": "Black Market", "fakeDocs": "Fake Documents", "corruption": "Corruption",
+      "note": "No action is 'free'. The game rewards players who know when to act and when to wait."
+    },
+    "turnFlow": {
+      "title": "Turn Flow", "description": "Each turn represents a year of life. Here are the 4 phases in order:",
+      "phase1Title": "Phase 1: World Event", "phase1Desc": "A global event affects all players. Economic crisis, pandemic, global opportunity... Adapt!",
+      "phase2Title": "Phase 2: Local Event", "phase2Desc": "An event specific to your country of residence.",
+      "phase3Title": "Phase 3: Action Selection", "phase3Desc": "Choose a major action and/or minor actions based on your available resources.",
+      "phase4Title": "Phase 4: Movement", "phase4Desc": "Roll the dice to advance on the board. Each square triggers effects."
+    },
+    "events": {
+      "title": "Events", "description": "Events add unpredictability to your life.",
+      "globalTitle": "World Events", "globalDesc": "These events affect ALL players simultaneously.",
+      "globalEx1": "Global economic crisis", "globalEx2": "Market recession", "globalEx3": "Worldwide pandemic",
+      "localTitle": "Local Events", "localDesc": "These events only affect players in a specific country.",
+      "localEx1": "Government reform", "localEx2": "New wealth tax", "localEx3": "Cultural festival (morale bonus)"
+    },
+    "risks": {
+      "title": "Risks and Shortcuts", "description": "Some actions are 'shortcuts': they promise quick gains but carry serious risks.",
+      "warningTitle": "Warning: Real Consequences", "warningDesc": "Shortcuts represent choices that millions make in real life. Catastrophic consequences reflect lived realities.",
+      "successTitle": "Success (40-60%)", "successDesc": "The action succeeds. You get the promised gains.",
+      "failureTitle": "Failure (30-40%)", "failureDesc": "The action fails. You lose invested resources.",
+      "catastropheTitle": "Catastrophe (10-20%)", "catastropheDesc": "Devastating consequences: prison, deportation, losing everything...",
+      "moral": "The game doesn't judge these choices. It shows that 'shortcuts' have a statistical price."
+    },
+    "board": {
+      "title": "The Game Board", "description": "The hexagonal board represents your life journey.",
+      "pyramidSquare": "Pyramid Square", "pyramidSquareDesc": "+2 points in this system type",
+      "questionSquare": "Question Square", "questionSquareDesc": "Answer a personality question",
+      "chanceSquare": "Chance Square", "chanceSquareDesc": "Random effect",
+      "trapSquare": "Trap Square", "trapSquareDesc": "Resource penalty",
+      "bonusSquare": "Bonus Square", "bonusSquareDesc": "Bonus resource gain",
+      "finishSquare": "Finish Square", "finishSquareDesc": "End of journey, final score"
+    },
+    "gameModes": {
+      "title": "Game Modes",
+      "soloTitle": "Solo", "soloDesc": "Play alone and try to achieve the best possible score.",
+      "raceTitle": "Race", "raceDesc": "2-4 players. First to reach the final square wins!",
+      "duelTitle": "Points Duel", "duelDesc": "2-4 players. Highest score at the end wins.",
+      "coopTitle": "Cooperative", "coopDesc": "2-4 players. Work together to reach a collective target score."
+    },
+    "victory": {
+      "title": "Victory Conditions", "description": "Victory depends on the chosen game mode.",
+      "soloTitle": "Solo", "soloDesc": "Reach the finish with the best possible score.",
+      "raceTitle": "Race", "raceDesc": "First player to reach the final square wins.",
+      "duelTitle": "Points Duel", "duelDesc": "Player with the most points wins.",
+      "coopTitle": "Cooperative", "coopDesc": "Team wins if collective score reaches the target."
     },
     "scoring": {
-      "title": "Scoring",
-      "description": "Each character has two major aspirations and one minor. Score is calculated from pyramid levels, with majors counting double. Penalties apply for unresolved crises, debts, burnouts."
+      "title": "Scoring", "description": "Your final score reflects the quality of life you built, weighted by your personal aspirations.",
+      "majorAspirations": "Major Aspirations", "minorAspiration": "Minor Aspiration",
+      "resourceBonus": "High resources bonus", "crisisPenalty": "Unresolved crises", "difficultyBonus": "Difficult country bonus",
+      "bonus": "Bonus", "penalty": "Penalty", "equity": "Equity",
+      "finalNote": "The score isn't just a number: it's the reflection of a life lived on your own terms."
     }
   },
   "resources": {
