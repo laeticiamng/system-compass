@@ -11,9 +11,18 @@ import {
   CharacterCard,
   ResourceType
 } from '@/lib/game-data';
+import { 
+  FamilyStatus, 
+  FamilyEvent, 
+  FamilyEventChoice,
+  getRandomFamilyEvent,
+  calculateFamilyMonthlyCosts,
+  FAMILY_STATUS_LABELS
+} from '@/lib/family-system';
 import { PyramidType } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import EventCard from './EventCard';
+import FamilyEventCard from './FamilyEventCard';
 import ResourceBar from './ResourceBar';
 import ActionPanel from './ActionPanel';
 import { 
@@ -22,12 +31,14 @@ import {
   Globe, 
   MapPin,
   ChevronRight,
-  AlertTriangle
+  AlertTriangle,
+  Home
 } from 'lucide-react';
 
 export type TurnPhase = 
   | 'global_event'
   | 'country_event' 
+  | 'family_event'
   | 'action_selection'
   | 'action_resolution'
   | 'board_move'
@@ -40,6 +51,7 @@ interface TurnManagerProps {
     character: CharacterCard;
     resources: GameResources;
     countryType: PyramidType;
+    familyStatus?: FamilyStatus;
   };
   turnNumber: number;
   onResourceChange: (playerId: number, resources: GameResources) => void;
@@ -48,6 +60,7 @@ interface TurnManagerProps {
   onTurnEnd: () => void;
   onTrackRisk?: (outcome: 'success' | 'failure' | 'catastrophic', moneyChange: number, healthChange: number) => void;
   onTrackAction?: (success: boolean) => void;
+  onFamilyStatusChange?: (playerId: number, newStatus: FamilyStatus) => void;
 }
 
 export default function TurnManager({
@@ -59,11 +72,13 @@ export default function TurnManager({
   onTurnEnd,
   onTrackRisk,
   onTrackAction,
+  onFamilyStatusChange,
 }: TurnManagerProps) {
   const { t } = useTranslation();
   const [phase, setPhase] = useState<TurnPhase>('global_event');
   const [globalEvent, setGlobalEvent] = useState<GameEvent | null>(null);
   const [countryEvent, setCountryEvent] = useState<GameEvent | null>(null);
+  const [familyEvent, setFamilyEvent] = useState<FamilyEvent | null>(null);
   const [eventApplied, setEventApplied] = useState(false);
   const [selectedAction, setSelectedAction] = useState<GameAction | null>(null);
   const [actionResult, setActionResult] = useState<'success' | 'failed' | null>(null);
@@ -81,6 +96,13 @@ export default function TurnManager({
     }
   }, [phase, countryEvent, currentPlayer.countryType]);
 
+  // Generate family event
+  useEffect(() => {
+    if (phase === 'family_event' && !familyEvent && currentPlayer.familyStatus) {
+      const event = getRandomFamilyEvent(currentPlayer.familyStatus);
+      setFamilyEvent(event);
+    }
+  }, [phase, familyEvent, currentPlayer.familyStatus]);
   const applyEventEffects = (event: GameEvent) => {
     const newResources = { ...currentPlayer.resources };
     
@@ -114,8 +136,57 @@ export default function TurnManager({
       applyEventEffects(countryEvent);
     }
     setEventApplied(false);
-    setPhase('action_selection');
+    // If player has family status, go to family event phase
+    if (currentPlayer.familyStatus) {
+      setPhase('family_event');
+    } else {
+      setPhase('action_selection');
+    }
     onPhaseComplete('country_event', countryEvent);
+  };
+
+  const handleFamilyEventChoice = (choice: FamilyEventChoice | null, effects: Partial<GameResources>) => {
+    const newResources = { ...currentPlayer.resources };
+    
+    // Apply family event effects
+    Object.entries(effects).forEach(([resource, change]) => {
+      const key = resource as ResourceType;
+      if (newResources[key] !== undefined) {
+        newResources[key] = Math.max(0, Math.min(10, newResources[key] + (change as number)));
+      }
+    });
+    
+    onResourceChange(currentPlayer.id, newResources);
+    
+    // Update family status if event changes it
+    if (familyEvent?.newStatus && onFamilyStatusChange) {
+      onFamilyStatusChange(currentPlayer.id, familyEvent.newStatus);
+    }
+    
+    setPhase('action_selection');
+    onPhaseComplete('family_event', { event: familyEvent, choice });
+    setFamilyEvent(null);
+  };
+
+  const handleSkipFamilyEvent = () => {
+    // Apply recurring family costs
+    if (currentPlayer.familyStatus) {
+      const costs = calculateFamilyMonthlyCosts(currentPlayer.familyStatus);
+      const newResources = { ...currentPlayer.resources };
+      
+      Object.entries(costs).forEach(([resource, cost]) => {
+        const key = resource as ResourceType;
+        if (newResources[key] !== undefined) {
+          newResources[key] = Math.max(0, newResources[key] - (cost as number));
+        }
+      });
+      
+      onResourceChange(currentPlayer.id, newResources);
+    }
+    
+    setPhase('action_selection');
+    onPhaseComplete('family_event', null);
+    setFamilyEvent(null);
   };
 
   const handleActionSelect = (action: GameAction) => {
@@ -191,11 +262,17 @@ export default function TurnManager({
     // Reset state for next turn
     setGlobalEvent(null);
     setCountryEvent(null);
+    setFamilyEvent(null);
     setSelectedAction(null);
     setActionResult(null);
     setPhase('global_event');
     onTurnEnd();
   };
+
+  // Define phases for progress indicator
+  const allPhases: TurnPhase[] = currentPlayer.familyStatus 
+    ? ['global_event', 'country_event', 'family_event', 'action_selection', 'board_move']
+    : ['global_event', 'country_event', 'action_selection', 'board_move'];
 
   return (
     <div className="space-y-6">
@@ -216,13 +293,13 @@ export default function TurnManager({
           
           {/* Phase progress */}
           <div className="flex gap-1">
-            {(['global_event', 'country_event', 'action_selection', 'board_move'] as TurnPhase[]).map((p, i) => (
+            {allPhases.map((p, i) => (
               <div
                 key={p}
                 className={cn(
                   "w-3 h-3 rounded-full transition-all",
                   phase === p ? "bg-primary scale-125" :
-                  i < ['global_event', 'country_event', 'action_selection', 'board_move'].indexOf(phase) 
+                  i < allPhases.indexOf(phase) 
                     ? "bg-primary/50" : "bg-muted"
                 )}
               />
@@ -269,6 +346,40 @@ export default function TurnManager({
             {t('turnManager.continue')}
             <ChevronRight className="w-4 h-4" />
           </Button>
+        </div>
+      )}
+
+      {/* Family Event Phase */}
+      {phase === 'family_event' && (
+        <div className="animate-scale-in">
+          <div className="flex items-center gap-2 mb-4">
+            <Home className="w-5 h-5 text-rose-500" />
+            <h3 className="font-semibold">{t('turnManager.familyEvent', 'Événement Familial')}</h3>
+            {currentPlayer.familyStatus && (
+              <span className="text-xs px-2 py-1 rounded-full bg-rose-500/20 text-rose-400">
+                {FAMILY_STATUS_LABELS[currentPlayer.familyStatus]?.icon} {t(FAMILY_STATUS_LABELS[currentPlayer.familyStatus]?.label, currentPlayer.familyStatus)}
+              </span>
+            )}
+          </div>
+          {familyEvent ? (
+            <FamilyEventCard 
+              event={familyEvent} 
+              onChoice={handleFamilyEventChoice}
+            />
+          ) : (
+            <div className="glass-card rounded-xl p-6 text-center">
+              <p className="text-muted-foreground mb-4">
+                {t('turnManager.noFamilyEvent', 'Pas d\'événement familial ce tour-ci.')}
+              </p>
+              <p className="text-sm text-muted-foreground mb-4">
+                {t('turnManager.familyCostsContinue', 'Les responsabilités familiales récurrentes sont appliquées.')}
+              </p>
+              <Button onClick={handleSkipFamilyEvent} className="gap-2">
+                {t('turnManager.continue')}
+                <ChevronRight className="w-4 h-4" />
+              </Button>
+            </div>
+          )}
         </div>
       )}
 
