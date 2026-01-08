@@ -2113,5 +2113,114 @@
     "safe": "LGBTQ+ Safe",
     "caution": "Proceed with Caution",
     "dangerous": "High Risk for LGBTQ+"
+  },
+  "pyramidQuiz": {
+    "title": "Pyramid Quiz",
+    "subtitle": "Discover which type of system best matches your personality and aspirations",
+    "questionOf": "Question {{current}} of {{total}}",
+    "back": "Back",
+    "modes": {
+      "online": {
+        "title": "Online Quiz",
+        "description": "Answer 8 questions to discover your ideal pyramid type. Quick, simple and effective.",
+        "cta": "Start the quiz"
+      },
+      "board": {
+        "title": "Board Game",
+        "description": "Monopoly style: roll the dice, move on the board and discover your profile while playing.",
+        "cta": "Play the board"
+      }
+    },
+    "questions": {
+      "priority": {
+        "question": "What is your main priority in life?",
+        "options": {
+          "security": "Security and stability",
+          "growth": "Growth and opportunities",
+          "freedom": "Freedom and independence",
+          "connections": "Networks and connections"
+        }
+      },
+      "riskTolerance": {
+        "question": "What is your relationship with risk?",
+        "options": {
+          "avoidRisk": "I prefer to avoid risks",
+          "calculatedRisk": "I take calculated risks",
+          "embraceRisk": "I embrace risk for growth",
+          "thriveInChaos": "I thrive in chaos"
+        }
+      },
+      "workStyle": {
+        "question": "What work style suits you best?",
+        "options": {
+          "stableJob": "Stable job with benefits",
+          "entrepreneur": "Entrepreneur with my own business",
+          "freelance": "Freelance / Independent consultant",
+          "opportunist": "Opportunist according to circumstances"
+        }
+      },
+      "valueSystem": {
+        "question": "Which value system suits you best?",
+        "options": {
+          "meritocracy": "Meritocracy and competence",
+          "socialProtection": "Social protection and equality",
+          "pragmatism": "Pragmatism and adaptation",
+          "wealth": "Wealth accumulation"
+        }
+      },
+      "networkStyle": {
+        "question": "How do you build your network?",
+        "options": {
+          "formalNetworks": "Formal professional networks",
+          "informalNetworks": "Informal connections and friends",
+          "businessNetworks": "Strategic business networks",
+          "minimalNetworks": "I prefer to stay discreet"
+        }
+      },
+      "futureVision": {
+        "question": "What is your geographic vision for the future?",
+        "options": {
+          "stayLocal": "Stay in my home country",
+          "goGlobal": "Go international",
+          "strategic": "Strategic mobility according to opportunities",
+          "opportunistic": "Where the money flows"
+        }
+      },
+      "moneyRelation": {
+        "question": "What is your relationship with money?",
+        "options": {
+          "saveSafely": "Save prudently",
+          "investGrowth": "Invest for growth",
+          "maximizeNow": "Maximize income now",
+          "diversify": "Diversify everywhere"
+        }
+      },
+      "rulesAttitude": {
+        "question": "What is your attitude towards rules?",
+        "options": {
+          "followStrictly": "Follow them strictly",
+          "useWisely": "Use them wisely",
+          "findLoopholes": "Find loopholes",
+          "createOwn": "Create my own rules"
+        }
+      }
+    },
+    "result": {
+      "title": "Your ideal pyramid type",
+      "subtitle": "Based on your answers, here is the system that suits you best",
+      "scores": "Your scores by type",
+      "playAgain": "Play again",
+      "learnMore": "Learn more"
+    },
+    "board": {
+      "instructions": "Roll the dice to advance. Each square gives you points towards different pyramid types.",
+      "rollDice": "Click on the dice to roll",
+      "landedPyramid": "+2 points for {{type}}",
+      "chanceCard": "Chance card! +3 points for {{type}}",
+      "trap": "Trap! -2 points on your dominant type",
+      "bonus": "Bonus! +1 point on all types",
+      "answeredQuestion": "Good answer!",
+      "victory": "Congratulations! You have reached the finish!"
+    }
   }
 }

@@ -1182,5 +1182,114 @@
         "planB": "Países UE vía programas de ciudadanía. Georgia, Serbia para entrada fácil. EAU para opción regional."
       }
     }
+  },
+  "pyramidQuiz": {
+    "title": "Quiz de Pirámides",
+    "subtitle": "Descubre qué tipo de sistema corresponde mejor a tu personalidad y aspiraciones",
+    "questionOf": "Pregunta {{current}} de {{total}}",
+    "back": "Volver",
+    "modes": {
+      "online": {
+        "title": "Quiz en línea",
+        "description": "Responde 8 preguntas para descubrir tu tipo de pirámide ideal. Rápido, simple y eficaz.",
+        "cta": "Comenzar el quiz"
+      },
+      "board": {
+        "title": "Juego de tablero",
+        "description": "Estilo Monopoly: lanza el dado, avanza en el tablero y descubre tu perfil jugando.",
+        "cta": "Jugar al tablero"
+      }
+    },
+    "questions": {
+      "priority": {
+        "question": "¿Cuál es tu prioridad principal en la vida?",
+        "options": {
+          "security": "Seguridad y estabilidad",
+          "growth": "Crecimiento y oportunidades",
+          "freedom": "Libertad e independencia",
+          "connections": "Redes y conexiones"
+        }
+      },
+      "riskTolerance": {
+        "question": "¿Cuál es tu relación con el riesgo?",
+        "options": {
+          "avoidRisk": "Prefiero evitar riesgos",
+          "calculatedRisk": "Tomo riesgos calculados",
+          "embraceRisk": "Abrazo el riesgo para crecer",
+          "thriveInChaos": "Prospero en el caos"
+        }
+      },
+      "workStyle": {
+        "question": "¿Qué estilo de trabajo te corresponde mejor?",
+        "options": {
+          "stableJob": "Empleo estable con beneficios",
+          "entrepreneur": "Emprendedor con mi propia empresa",
+          "freelance": "Freelance / Consultor independiente",
+          "opportunist": "Oportunista según las circunstancias"
+        }
+      },
+      "valueSystem": {
+        "question": "¿Qué sistema de valores te corresponde más?",
+        "options": {
+          "meritocracy": "Meritocracia y competencia",
+          "socialProtection": "Protección social e igualdad",
+          "pragmatism": "Pragmatismo y adaptación",
+          "wealth": "Acumulación de riqueza"
+        }
+      },
+      "networkStyle": {
+        "question": "¿Cómo construyes tu red?",
+        "options": {
+          "formalNetworks": "Redes profesionales formales",
+          "informalNetworks": "Conexiones informales y amigos",
+          "businessNetworks": "Redes de negocios estratégicas",
+          "minimalNetworks": "Prefiero mantenerme discreto"
+        }
+      },
+      "futureVision": {
+        "question": "¿Cuál es tu visión geográfica para el futuro?",
+        "options": {
+          "stayLocal": "Quedarme en mi país de origen",
+          "goGlobal": "Ir a lo internacional",
+          "strategic": "Movilidad estratégica según oportunidades",
+          "opportunistic": "Donde fluye el dinero"
+        }
+      },
+      "moneyRelation": {
+        "question": "¿Cuál es tu relación con el dinero?",
+        "options": {
+          "saveSafely": "Ahorrar prudentemente",
+          "investGrowth": "Invertir para crecer",
+          "maximizeNow": "Maximizar ingresos ahora",
+          "diversify": "Diversificar en todas partes"
+        }
+      },
+      "rulesAttitude": {
+        "question": "¿Cuál es tu actitud frente a las reglas?",
+        "options": {
+          "followStrictly": "Seguirlas estrictamente",
+          "useWisely": "Usarlas inteligentemente",
+          "findLoopholes": "Encontrar las lagunas",
+          "createOwn": "Crear mis propias reglas"
+        }
+      }
+    },
+    "result": {
+      "title": "Tu tipo de pirámide ideal",
+      "subtitle": "Basado en tus respuestas, aquí está el sistema que te corresponde mejor",
+      "scores": "Tus puntuaciones por tipo",
+      "playAgain": "Jugar de nuevo",
+      "learnMore": "Saber más"
+    },
+    "board": {
+      "instructions": "Lanza el dado para avanzar. Cada casilla te da puntos hacia diferentes tipos de pirámides.",
+      "rollDice": "Haz clic en el dado para lanzar",
+      "landedPyramid": "+2 puntos para {{type}}",
+      "chanceCard": "¡Carta de suerte! +3 puntos para {{type}}",
+      "trap": "¡Trampa! -2 puntos en tu tipo dominante",
+      "bonus": "¡Bonus! +1 punto en todos los tipos",
+      "answeredQuestion": "¡Buena respuesta!",
+      "victory": "¡Felicidades! ¡Has llegado a la meta!"
+    }
   }
 }

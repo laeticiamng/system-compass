@@ -2471,5 +2471,114 @@
         "planB": "EAU pour présence continue au Golfe, Singapour ou Europe pour l'étape suivante. Utiliser le capital accumulé pour acheter la résidence ailleurs."
       }
     }
+  },
+  "pyramidQuiz": {
+    "title": "Quiz des Pyramides",
+    "subtitle": "Découvre quel type de système correspond le mieux à ta personnalité et tes aspirations",
+    "questionOf": "Question {{current}} sur {{total}}",
+    "back": "Retour",
+    "modes": {
+      "online": {
+        "title": "Quiz en ligne",
+        "description": "Réponds à 8 questions pour découvrir ton type de pyramide idéal. Rapide, simple et efficace.",
+        "cta": "Commencer le quiz"
+      },
+      "board": {
+        "title": "Jeu de plateau",
+        "description": "Style Monopoly : lance le dé, avance sur le plateau et découvre ton profil en jouant.",
+        "cta": "Jouer au plateau"
+      }
+    },
+    "questions": {
+      "priority": {
+        "question": "Quelle est ta priorité principale dans la vie ?",
+        "options": {
+          "security": "Sécurité et stabilité",
+          "growth": "Croissance et opportunités",
+          "freedom": "Liberté et indépendance",
+          "connections": "Réseaux et connexions"
+        }
+      },
+      "riskTolerance": {
+        "question": "Quelle est ta relation au risque ?",
+        "options": {
+          "avoidRisk": "Je préfère éviter les risques",
+          "calculatedRisk": "Je prends des risques calculés",
+          "embraceRisk": "J'embrasse le risque pour croître",
+          "thriveInChaos": "Je prospère dans le chaos"
+        }
+      },
+      "workStyle": {
+        "question": "Quel style de travail te correspond le mieux ?",
+        "options": {
+          "stableJob": "Emploi stable avec avantages",
+          "entrepreneur": "Entrepreneur avec ma propre entreprise",
+          "freelance": "Freelance / Consultant indépendant",
+          "opportunist": "Opportuniste selon les circonstances"
+        }
+      },
+      "valueSystem": {
+        "question": "Quel système de valeurs te correspond le plus ?",
+        "options": {
+          "meritocracy": "Méritocratie et compétence",
+          "socialProtection": "Protection sociale et égalité",
+          "pragmatism": "Pragmatisme et adaptation",
+          "wealth": "Accumulation de richesse"
+        }
+      },
+      "networkStyle": {
+        "question": "Comment construis-tu ton réseau ?",
+        "options": {
+          "formalNetworks": "Réseaux professionnels formels",
+          "informalNetworks": "Connexions informelles et amis",
+          "businessNetworks": "Réseaux d'affaires stratégiques",
+          "minimalNetworks": "Je préfère rester discret"
+        }
+      },
+      "futureVision": {
+        "question": "Quelle est ta vision géographique pour l'avenir ?",
+        "options": {
+          "stayLocal": "Rester dans mon pays d'origine",
+          "goGlobal": "Partir à l'international",
+          "strategic": "Mobilité stratégique selon les opportunités",
+          "opportunistic": "Là où l'argent coule"
+        }
+      },
+      "moneyRelation": {
+        "question": "Quelle est ta relation à l'argent ?",
+        "options": {
+          "saveSafely": "Épargner prudemment",
+          "investGrowth": "Investir pour la croissance",
+          "maximizeNow": "Maximiser les revenus maintenant",
+          "diversify": "Diversifier partout"
+        }
+      },
+      "rulesAttitude": {
+        "question": "Quelle est ton attitude face aux règles ?",
+        "options": {
+          "followStrictly": "Les suivre scrupuleusement",
+          "useWisely": "Les utiliser intelligemment",
+          "findLoopholes": "Trouver les failles",
+          "createOwn": "Créer mes propres règles"
+        }
+      }
+    },
+    "result": {
+      "title": "Ton type de pyramide idéal",
+      "subtitle": "Basé sur tes réponses, voici le système qui te correspond le mieux",
+      "scores": "Tes scores par type",
+      "playAgain": "Rejouer",
+      "learnMore": "En savoir plus"
+    },
+    "board": {
+      "instructions": "Lance le dé pour avancer. Chaque case te rapporte des points vers différents types de pyramides.",
+      "rollDice": "Clique sur le dé pour lancer",
+      "landedPyramid": "+2 points pour {{type}}",
+      "chanceCard": "Carte chance ! +3 points pour {{type}}",
+      "trap": "Piège ! -2 points sur ton type dominant",
+      "bonus": "Bonus ! +1 point sur tous les types",
+      "answeredQuestion": "Bonne réponse !",
+      "victory": "Félicitations ! Tu as atteint l'arrivée !"
+    }
   }
 }

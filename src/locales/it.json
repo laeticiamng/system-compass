@@ -1172,5 +1172,114 @@
         "planB": "Paesi UE via programmi cittadinanza. Georgia, Serbia per ingresso facile. EAU per opzione regionale."
       }
     }
+  },
+  "pyramidQuiz": {
+    "title": "Quiz delle Piramidi",
+    "subtitle": "Scopri quale tipo di sistema corrisponde meglio alla tua personalità e alle tue aspirazioni",
+    "questionOf": "Domanda {{current}} di {{total}}",
+    "back": "Indietro",
+    "modes": {
+      "online": {
+        "title": "Quiz online",
+        "description": "Rispondi a 8 domande per scoprire il tuo tipo di piramide ideale. Veloce, semplice ed efficace.",
+        "cta": "Inizia il quiz"
+      },
+      "board": {
+        "title": "Gioco da tavolo",
+        "description": "Stile Monopoly: lancia il dado, avanza sul tabellone e scopri il tuo profilo giocando.",
+        "cta": "Gioca al tabellone"
+      }
+    },
+    "questions": {
+      "priority": {
+        "question": "Qual è la tua priorità principale nella vita?",
+        "options": {
+          "security": "Sicurezza e stabilità",
+          "growth": "Crescita e opportunità",
+          "freedom": "Libertà e indipendenza",
+          "connections": "Reti e connessioni"
+        }
+      },
+      "riskTolerance": {
+        "question": "Qual è il tuo rapporto con il rischio?",
+        "options": {
+          "avoidRisk": "Preferisco evitare i rischi",
+          "calculatedRisk": "Prendo rischi calcolati",
+          "embraceRisk": "Abbraccio il rischio per crescere",
+          "thriveInChaos": "Prospero nel caos"
+        }
+      },
+      "workStyle": {
+        "question": "Quale stile di lavoro ti corrisponde meglio?",
+        "options": {
+          "stableJob": "Lavoro stabile con benefici",
+          "entrepreneur": "Imprenditore con la mia azienda",
+          "freelance": "Freelance / Consulente indipendente",
+          "opportunist": "Opportunista secondo le circostanze"
+        }
+      },
+      "valueSystem": {
+        "question": "Quale sistema di valori ti corrisponde di più?",
+        "options": {
+          "meritocracy": "Meritocrazia e competenza",
+          "socialProtection": "Protezione sociale e uguaglianza",
+          "pragmatism": "Pragmatismo e adattamento",
+          "wealth": "Accumulo di ricchezza"
+        }
+      },
+      "networkStyle": {
+        "question": "Come costruisci la tua rete?",
+        "options": {
+          "formalNetworks": "Reti professionali formali",
+          "informalNetworks": "Connessioni informali e amici",
+          "businessNetworks": "Reti d'affari strategiche",
+          "minimalNetworks": "Preferisco restare discreto"
+        }
+      },
+      "futureVision": {
+        "question": "Qual è la tua visione geografica per il futuro?",
+        "options": {
+          "stayLocal": "Restare nel mio paese d'origine",
+          "goGlobal": "Andare a livello internazionale",
+          "strategic": "Mobilità strategica secondo le opportunità",
+          "opportunistic": "Dove scorre il denaro"
+        }
+      },
+      "moneyRelation": {
+        "question": "Qual è il tuo rapporto con il denaro?",
+        "options": {
+          "saveSafely": "Risparmiare prudentemente",
+          "investGrowth": "Investire per la crescita",
+          "maximizeNow": "Massimizzare i redditi ora",
+          "diversify": "Diversificare ovunque"
+        }
+      },
+      "rulesAttitude": {
+        "question": "Qual è il tuo atteggiamento verso le regole?",
+        "options": {
+          "followStrictly": "Seguirle scrupolosamente",
+          "useWisely": "Usarle intelligentemente",
+          "findLoopholes": "Trovare le falle",
+          "createOwn": "Creare le mie regole"
+        }
+      }
+    },
+    "result": {
+      "title": "Il tuo tipo di piramide ideale",
+      "subtitle": "Basato sulle tue risposte, ecco il sistema che ti corrisponde meglio",
+      "scores": "I tuoi punteggi per tipo",
+      "playAgain": "Rigiocare",
+      "learnMore": "Saperne di più"
+    },
+    "board": {
+      "instructions": "Lancia il dado per avanzare. Ogni casella ti dà punti verso diversi tipi di piramidi.",
+      "rollDice": "Clicca sul dado per lanciare",
+      "landedPyramid": "+2 punti per {{type}}",
+      "chanceCard": "Carta fortuna! +3 punti per {{type}}",
+      "trap": "Trappola! -2 punti sul tuo tipo dominante",
+      "bonus": "Bonus! +1 punto su tutti i tipi",
+      "answeredQuestion": "Buona risposta!",
+      "victory": "Congratulazioni! Hai raggiunto l'arrivo!"
+    }
   }
 }

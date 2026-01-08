@@ -13,6 +13,7 @@ import Match from "./pages/Match";
 import Compare from "./pages/Compare";
 import Resources from "./pages/Resources";
 import PyramidTypes from "./pages/PyramidTypes";
+import PyramidQuiz from "./pages/PyramidQuiz";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/compare" element={<Compare />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/pyramid-types" element={<PyramidTypes />} />
+          <Route path="/pyramid-quiz" element={<PyramidQuiz />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
