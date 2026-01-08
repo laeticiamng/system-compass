@@ -1613,7 +1613,8 @@
       "player": "Speler",
       "yourTurn": "Jouw beurt!",
       "gameOver": "Spel afgelopen!"
-    }
+    },
+    "gameLoaded": "Spel geladen!"
   },
   "auth": {
     "login": "Inloggen",
