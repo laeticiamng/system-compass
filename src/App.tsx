@@ -28,6 +28,7 @@ import CompareExitKeys from "./pages/CompareExitKeys";
 import Dashboard from "./pages/Dashboard";
 import About from "./pages/About";
 import Disclaimer from "./pages/Disclaimer";
+import SystemicMistakes from "./pages/SystemicMistakes";
 
 const queryClient = new QueryClient();
 
@@ -63,6 +64,7 @@ const App = () => (
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/about" element={<About />} />
                   <Route path="/disclaimer" element={<Disclaimer />} />
+                  <Route path="/systemic-mistakes" element={<SystemicMistakes />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>

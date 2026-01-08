@@ -16,7 +16,8 @@ import {
   Settings,
   BarChart3,
   Key,
-  BookOpen
+  BookOpen,
+  AlertTriangle
 } from 'lucide-react';
 
 export default function Index() {
@@ -220,6 +221,33 @@ export default function Index() {
               title={t('howItWorks.playbook.title')}
               description={t('howItWorks.playbook.description')}
             />
+          </div>
+        </div>
+      </section>
+
+      {/* Systemic Mistakes Teaser */}
+      <section className="py-12 md:py-16 border-t border-border/50 bg-destructive/5">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-6 md:gap-8">
+            <div className="p-4 rounded-xl bg-destructive/10 flex-shrink-0">
+              <AlertTriangle className="w-8 h-8 text-destructive" />
+            </div>
+            <div className="flex-1 text-center md:text-left">
+              <h2 className="font-display text-xl md:text-2xl font-bold mb-2">
+                Erreurs systémiques fréquentes
+              </h2>
+              <p className="text-muted-foreground text-sm md:text-base">
+                Comprends les décalages qui coûtent des années — pas des jugements, des patterns à éviter.
+              </p>
+            </div>
+            <Button
+              variant="outline"
+              onClick={() => navigate('/systemic-mistakes')}
+              className="gap-2 border-destructive/30 text-destructive hover:bg-destructive/10"
+            >
+              Voir les erreurs
+              <ArrowRight className="w-4 h-4" />
+            </Button>
           </div>
         </div>
       </section>
