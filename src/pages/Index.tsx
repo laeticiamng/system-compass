@@ -176,19 +176,19 @@ export default function Index() {
                 <XCircle className="w-5 h-5 text-destructive" />
               </div>
               <h2 className="font-display text-xl md:text-2xl font-bold">
-                Ce que cet outil ne fait PAS
+                {t('notDoes.title', 'Ce que cet outil ne fait PAS')}
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <NotDoItem text="Ne promet aucun résultat personnel garanti" />
-              <NotDoItem text="Ne donne pas de conseils juridiques, financiers ou médicaux" />
-              <NotDoItem text="Ne prédit pas l'avenir ni ta réussite" />
-              <NotDoItem text="Ne remplace pas un avocat, comptable ou médecin" />
-              <NotDoItem text="Ne garantit pas l'exactitude des données affichées" />
-              <NotDoItem text="Ne prend pas les décisions à ta place" />
+              <NotDoItem text={t('notDoes.noGuaranteedResults', 'Ne promet aucun résultat personnel garanti')} />
+              <NotDoItem text={t('notDoes.noLegalAdvice', 'Ne donne pas de conseils juridiques, financiers ou médicaux')} />
+              <NotDoItem text={t('notDoes.noPredictions', "Ne prédit pas l'avenir ni ta réussite")} />
+              <NotDoItem text={t('notDoes.noReplacement', 'Ne remplace pas un avocat, comptable ou médecin')} />
+              <NotDoItem text={t('notDoes.noAccuracyGuarantee', "Ne garantit pas l'exactitude des données affichées")} />
+              <NotDoItem text={t('notDoes.noDecisions', 'Ne prend pas les décisions à ta place')} />
             </div>
             <p className="text-sm text-muted-foreground mt-4 text-center">
-              Cet outil analyse les systèmes et simule les conséquences. La responsabilité des décisions reste la tienne.
+              {t('notDoes.footer', 'Cet outil analyse les systèmes et simule les conséquences. La responsabilité des décisions reste la tienne.')}
             </p>
           </div>
         </div>

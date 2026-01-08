@@ -19,6 +19,19 @@
     "confirm": "Confirm",
     "edit": "Edit"
   },
+  "header": {
+    "simulationDisclaimer": "Simulation only • Not legal, financial, or medical advice"
+  },
+  "notDoes": {
+    "title": "What this tool does NOT do",
+    "noGuaranteedResults": "Does not promise any guaranteed personal results",
+    "noLegalAdvice": "Does not provide legal, financial, or medical advice",
+    "noPredictions": "Does not predict the future or your success",
+    "noReplacement": "Does not replace a lawyer, accountant, or doctor",
+    "noAccuracyGuarantee": "Does not guarantee accuracy of displayed data",
+    "noDecisions": "Does not make decisions for you",
+    "footer": "This tool analyzes systems and simulates consequences. The responsibility for decisions remains yours."
+  },
   "dashboard": {
     "title": "My Dashboard",
     "subtitle": "Track your analyses and simulations",
