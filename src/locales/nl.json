@@ -16,7 +16,8 @@
     "match": "Match",
     "compare": "Vergelijk",
     "resources": "Bronnen",
-    "pyramids": "Piramides"
+    "pyramids": "Piramides",
+    "quiz": "Quiz"
   },
   "hero": {
     "badge": "Navigeer door het echte systeem",
@@ -1289,6 +1290,26 @@
       "player": "Speler",
       "yourTurn": "Jouw beurt!",
       "gameOver": "Spel afgelopen!"
+    }
+  },
+  "auth": {
+    "login": "Inloggen",
+    "signup": "Registreren",
+    "subtitle": "Log in om je spellen op te slaan en je profiel te maken",
+    "email": "E-mail",
+    "password": "Wachtwoord",
+    "displayName": "Weergavenaam",
+    "displayNamePlaceholder": "Hoe wil je genoemd worden?",
+    "loginButton": "Inloggen",
+    "signupButton": "Registreren",
+    "logout": "Uitloggen",
+    "errors": {
+      "invalidEmail": "Ongeldige e-mail",
+      "passwordTooShort": "Wachtwoord moet minimaal 6 tekens bevatten",
+      "nameRequired": "Weergavenaam is vereist",
+      "invalidCredentials": "Ongeldige e-mail of wachtwoord",
+      "alreadyRegistered": "Er bestaat al een account met dit e-mailadres",
+      "generic": "Er is een fout opgetreden"
     }
   }
 }

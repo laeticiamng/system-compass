@@ -1,0 +1,201 @@
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useAuth } from '@/hooks/useAuth';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { cn } from '@/lib/utils';
+import { Compass, LogIn, UserPlus, Loader2, AlertCircle } from 'lucide-react';
+import { z } from 'zod';
+
+const emailSchema = z.string().email();
+const passwordSchema = z.string().min(6);
+
+export default function Auth() {
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { user, loading, signUp, signIn } = useAuth();
+  
+  const [isLogin, setIsLogin] = useState(true);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [displayName, setDisplayName] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (user && !loading) {
+      navigate('/');
+    }
+  }, [user, loading, navigate]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+    setIsSubmitting(true);
+
+    // Validation
+    try {
+      emailSchema.parse(email);
+    } catch {
+      setError(t('auth.errors.invalidEmail'));
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      passwordSchema.parse(password);
+    } catch {
+      setError(t('auth.errors.passwordTooShort'));
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!isLogin && !displayName.trim()) {
+      setError(t('auth.errors.nameRequired'));
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      if (isLogin) {
+        const { error } = await signIn(email, password);
+        if (error) {
+          if (error.message.includes('Invalid login credentials')) {
+            setError(t('auth.errors.invalidCredentials'));
+          } else {
+            setError(error.message);
+          }
+        }
+      } else {
+        const { error } = await signUp(email, password, displayName);
+        if (error) {
+          if (error.message.includes('already registered')) {
+            setError(t('auth.errors.alreadyRegistered'));
+          } else {
+            setError(error.message);
+          }
+        }
+      }
+    } catch (err) {
+      setError(t('auth.errors.generic'));
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen pt-24 pb-16 flex items-center justify-center">
+      <div className="container mx-auto px-4 max-w-md">
+        <div className="text-center mb-8 animate-fade-in">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-4">
+            <Compass className="w-8 h-8" />
+          </div>
+          <h1 className="font-display text-3xl font-bold mb-2">
+            {isLogin ? t('auth.login') : t('auth.signup')}
+          </h1>
+          <p className="text-muted-foreground">{t('auth.subtitle')}</p>
+        </div>
+
+        <div className="glass-card rounded-xl p-8 animate-scale-in">
+          {/* Toggle */}
+          <div className="flex gap-2 mb-8">
+            <button
+              onClick={() => setIsLogin(true)}
+              className={cn(
+                "flex-1 py-2 rounded-lg font-medium transition-all",
+                isLogin ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground hover:text-foreground"
+              )}
+            >
+              <LogIn className="w-4 h-4 inline mr-2" />
+              {t('auth.login')}
+            </button>
+            <button
+              onClick={() => setIsLogin(false)}
+              className={cn(
+                "flex-1 py-2 rounded-lg font-medium transition-all",
+                !isLogin ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground hover:text-foreground"
+              )}
+            >
+              <UserPlus className="w-4 h-4 inline mr-2" />
+              {t('auth.signup')}
+            </button>
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {!isLogin && (
+              <div className="space-y-2 animate-fade-in">
+                <Label htmlFor="displayName">{t('auth.displayName')}</Label>
+                <Input
+                  id="displayName"
+                  type="text"
+                  value={displayName}
+                  onChange={(e) => setDisplayName(e.target.value)}
+                  placeholder={t('auth.displayNamePlaceholder')}
+                  className="bg-background"
+                />
+              </div>
+            )}
+
+            <div className="space-y-2">
+              <Label htmlFor="email">{t('auth.email')}</Label>
+              <Input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="email@example.com"
+                className="bg-background"
+                required
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="password">{t('auth.password')}</Label>
+              <Input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="••••••••"
+                className="bg-background"
+                required
+              />
+            </div>
+
+            {error && (
+              <div className="flex items-center gap-2 p-3 rounded-lg bg-destructive/10 text-destructive animate-fade-in">
+                <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                <span className="text-sm">{error}</span>
+              </div>
+            )}
+
+            <Button 
+              type="submit" 
+              className="w-full gap-2"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : isLogin ? (
+                <LogIn className="w-4 h-4" />
+              ) : (
+                <UserPlus className="w-4 h-4" />
+              )}
+              {isLogin ? t('auth.loginButton') : t('auth.signupButton')}
+            </Button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+}
