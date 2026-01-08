@@ -4192,5 +4192,35 @@
       "hard": "Difficile",
       "extreme": "Extrême"
     }
+  },
+  "onboarding": {
+    "skip": "Passer",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "start": "Commencer",
+    "step1": {
+      "title": "Bienvenue sur Pyramid Compass",
+      "description": "Votre boussole pour naviguer dans le système mondial. Comprenez les règles invisibles qui régissent chaque pays."
+    },
+    "step2": {
+      "title": "Trouvez votre Match",
+      "description": "Répondez à quelques questions et découvrez quels pays correspondent vraiment à votre profil et vos ambitions."
+    },
+    "step3": {
+      "title": "Calculateurs Intelligents",
+      "description": "Simulez votre salaire net, votre retraite et votre pouvoir d'achat dans n'importe quel pays."
+    },
+    "step4": {
+      "title": "Clés de Sortie",
+      "description": "Créez un plan d'action concret pour atteindre vos objectifs de vie, avec des étapes claires et un suivi personnalisé."
+    },
+    "step5": {
+      "title": "Le Jeu de la Vie",
+      "description": "Testez différentes trajectoires de vie dans un jeu de simulation éducatif. Apprenez les mécanismes du système sans risque."
+    }
+  },
+  "footer": {
+    "defaultCountry": "Pays par défaut",
+    "defaultCountryTooltip": "Les calculateurs utilisent ce pays par défaut. Changez-le dans les outils."
   }
 }

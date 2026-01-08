@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Compass, Github, Heart } from 'lucide-react';
+import { Compass, Heart } from 'lucide-react';
+import { CountryIndicator } from './CountryIndicator';
 
 export function Footer() {
   const { t } = useTranslation();
@@ -58,14 +59,21 @@ export function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="pt-8 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-muted-foreground">
-            © {currentYear} {t('common.appName')}. {t('common.disclaimer')}
-          </p>
-          <div className="flex items-center gap-4 text-sm text-muted-foreground">
-            <span className="flex items-center gap-1">
-              {t('footer.madeWith', 'Made with')} <Heart className="w-4 h-4 text-primary fill-primary" />
-            </span>
+        <div className="pt-8 border-t border-border/50 flex flex-col gap-4">
+          {/* Country indicator */}
+          <div className="flex justify-center">
+            <CountryIndicator />
+          </div>
+          
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-sm text-muted-foreground text-center md:text-left">
+              © {currentYear} {t('common.appName')}. {t('common.disclaimer')}
+            </p>
+            <div className="flex items-center gap-4 text-sm text-muted-foreground">
+              <span className="flex items-center gap-1">
+                {t('footer.madeWith', 'Made with')} <Heart className="w-4 h-4 text-primary fill-primary" />
+              </span>
+            </div>
           </div>
         </div>
       </div>
