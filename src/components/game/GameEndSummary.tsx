@@ -290,8 +290,11 @@ export default function GameEndSummary({
 
                 <div className="p-6 space-y-8">
                   {/* Verdict */}
-                  <div className="text-center p-6 rounded-xl bg-muted/30">
+                  <div className="text-center p-6 rounded-xl bg-muted/30 space-y-3">
                     <p className="text-lg">{t(`gameEnd.verdicts.${lifeScore.verdict}.description`)}</p>
+                    <p className="text-xs text-muted-foreground italic">
+                      {t('gameEnd.verdicts.disclaimer')}
+                    </p>
                   </div>
 
                   {/* Score Breakdown */}

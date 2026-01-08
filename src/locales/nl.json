@@ -8,8 +8,24 @@
     "back": "Terug",
     "years": "jaar"
   },
+  "simulationDisclaimer": {
+    "notPrediction": "Simulatie ≠ Voorspelling",
+    "inline": "Simulatie alleen voor informatieve doeleinden.",
+    "limits": "Beperkingen",
+    "compact": "Analysetool — geen advies.",
+    "learnMore": "Meer weten",
+    "minimal": "Scenarioverkenning",
+    "viewLimits": "Bekijk beperkingen",
+    "contextual": {
+      "default": "Resultaten zijn afhankelijk van jouw keuzes en echte context. Dit is geen voorspelling.",
+      "results": "Deze resultaten illustreren trends, niet jouw toekomst. Elke situatie is uniek.",
+      "trajectory": "Dit traject toont wat dit type keuze doorgaans impliceert, niet wat jou zal overkomen.",
+      "comparison": "Deze vergelijking weerspiegelt algemene gegevens, niet jouw persoonlijke situatie.",
+      "game": "Dit educatieve spel simuleert echte mechanismen, maar blijft een vereenvoudiging van de werkelijkheid."
+    }
+  },
   "header": {
-    "simulationDisclaimer": "Alleen simulatie • Geen juridisch, financieel of medisch advies"
+    "simulationDisclaimer": "Scenarioverkenning • Geen juridisch, financieel of medisch advies"
   },
   "notDoes": {
     "title": "Wat deze tool NIET doet",

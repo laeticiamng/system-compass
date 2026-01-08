@@ -8,8 +8,24 @@
     "back": "Indietro",
     "years": "anni"
   },
+  "simulationDisclaimer": {
+    "notPrediction": "Simulazione ≠ Previsione",
+    "inline": "Simulazione solo a scopo informativo.",
+    "limits": "Limiti",
+    "compact": "Strumento di analisi — non è consulenza.",
+    "learnMore": "Scopri di più",
+    "minimal": "Esplorazione di scenari",
+    "viewLimits": "Vedi limiti",
+    "contextual": {
+      "default": "I risultati dipendono dalle tue scelte e dal tuo contesto reale. Questa non è una previsione.",
+      "results": "Questi risultati illustrano tendenze, non il tuo futuro. Ogni situazione è unica.",
+      "trajectory": "Questa traiettoria mostra ciò che questo tipo di scelta tende a implicare, non ciò che ti accadrà.",
+      "comparison": "Questo confronto riflette dati generali, non la tua situazione personale.",
+      "game": "Questo gioco educativo simula meccanismi reali, ma rimane una semplificazione della realtà."
+    }
+  },
   "header": {
-    "simulationDisclaimer": "Solo simulazione • Nessuna consulenza legale, finanziaria o medica"
+    "simulationDisclaimer": "Esplorazione di scenari • Nessuna consulenza legale, finanziaria o medica"
   },
   "notDoes": {
     "title": "Cosa questo strumento NON fa",

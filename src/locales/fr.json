@@ -19,8 +19,24 @@
     "confirm": "Confirmer",
     "edit": "Modifier"
   },
+  "simulationDisclaimer": {
+    "notPrediction": "Simulation ≠ Prédiction",
+    "inline": "Simulation à but informatif uniquement.",
+    "limits": "Limites",
+    "compact": "Outil d'analyse — pas de conseil.",
+    "learnMore": "En savoir plus",
+    "minimal": "Exploration de scénarios",
+    "viewLimits": "Voir les limites",
+    "contextual": {
+      "default": "Les résultats dépendent de tes choix et de ton contexte réel. Ceci n'est pas une prédiction.",
+      "results": "Ces résultats illustrent des tendances, pas ton avenir. Chaque situation est unique.",
+      "trajectory": "Cette trajectoire montre ce que ce type de choix tend à impliquer, pas ce qui t'arrivera.",
+      "comparison": "Cette comparaison reflète des données générales, pas ta situation personnelle.",
+      "game": "Ce jeu éducatif simule des mécanismes réels, mais reste une simplification de la réalité."
+    }
+  },
   "header": {
-    "simulationDisclaimer": "Simulation uniquement • Pas de conseil juridique, financier ou médical"
+    "simulationDisclaimer": "Exploration de scénarios • Pas de conseil juridique, financier ou médical"
   },
   "notDoes": {
     "title": "Ce que cet outil ne fait PAS",
@@ -4038,25 +4054,26 @@
     "experiencesBySystem": "Expériences par système",
     "verdicts": {
       "exceptional": {
-        "label": "Vie Exceptionnelle",
-        "description": "Vous avez su naviguer le système avec brio et atteindre vos objectifs."
+        "label": "Trajectoire très favorable",
+        "description": "Ce scénario illustre ce qui tend à se produire quand les choix et le contexte s'alignent favorablement."
       },
       "successful": {
-        "label": "Vie Réussie",
-        "description": "Vous avez construit une vie stable avec de belles réalisations."
+        "label": "Trajectoire favorable",
+        "description": "Ce scénario montre ce qui se passe souvent avec des choix cohérents et un contexte plutôt porteur."
       },
       "average": {
-        "label": "Vie Ordinaire",
-        "description": "Des hauts et des bas, mais vous avez tenu bon."
+        "label": "Trajectoire mixte",
+        "description": "Ce scénario reflète des hauts et des bas — la réalité la plus courante pour beaucoup."
       },
       "struggling": {
-        "label": "Vie Difficile",
-        "description": "Le système n'a pas été clément. Beaucoup d'obstacles à surmonter."
+        "label": "Trajectoire contrainte",
+        "description": "Ce scénario illustre les obstacles que certains contextes de départ tendent à créer."
       },
       "critical": {
-        "label": "Survie",
-        "description": "Chaque jour a été un combat. Mais vous êtes toujours là."
-      }
+        "label": "Trajectoire de survie",
+        "description": "Ce scénario montre les défis extrêmes que certaines situations initiales impliquent souvent."
+      },
+      "disclaimer": "Rappel : ceci est une simulation éducative. Ton parcours réel dépendra de milliers de facteurs non modélisés ici."
     }
   },
   "tutorial": {

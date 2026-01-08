@@ -544,8 +544,12 @@ export default function LifeTrajectory() {
             <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4">
               {t(profileInfo.label)}
             </h1>
-            <p className="text-base md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
+            <p className="text-base md:text-xl text-muted-foreground max-w-2xl mx-auto px-4 mb-4">
               {t(profileInfo.description)}
+            </p>
+            {/* Anti-illusion micro-text */}
+            <p className="text-xs text-muted-foreground/60 max-w-xl mx-auto">
+              {t('simulationDisclaimer.contextual.trajectory')}
             </p>
           </div>
 

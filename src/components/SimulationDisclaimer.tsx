@@ -1,22 +1,54 @@
 import { Link } from 'react-router-dom';
-import { Info } from 'lucide-react';
+import { Info, AlertCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useTranslation } from 'react-i18next';
 
 interface SimulationDisclaimerProps {
-  variant?: 'minimal' | 'compact' | 'inline';
+  variant?: 'minimal' | 'compact' | 'inline' | 'contextual';
   className?: string;
+  context?: 'results' | 'trajectory' | 'comparison' | 'game' | 'default';
 }
+
+const CONTEXTUAL_MESSAGES = {
+  results: 'simulationDisclaimer.contextual.results',
+  trajectory: 'simulationDisclaimer.contextual.trajectory',
+  comparison: 'simulationDisclaimer.contextual.comparison',
+  game: 'simulationDisclaimer.contextual.game',
+  default: 'simulationDisclaimer.contextual.default',
+};
 
 export function SimulationDisclaimer({ 
   variant = 'minimal', 
-  className 
+  className,
+  context = 'default'
 }: SimulationDisclaimerProps) {
+  const { t } = useTranslation();
+
+  if (variant === 'contextual') {
+    return (
+      <div className={cn(
+        "flex items-start gap-2 text-xs text-muted-foreground/80 px-4 py-3 rounded-lg bg-muted/20 border border-border/20",
+        className
+      )}>
+        <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-muted-foreground/60" />
+        <div className="space-y-1">
+          <p className="font-medium text-muted-foreground/90">
+            {t('simulationDisclaimer.notPrediction')}
+          </p>
+          <p className="text-muted-foreground/70">
+            {t(CONTEXTUAL_MESSAGES[context])}
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   if (variant === 'inline') {
     return (
       <span className={cn("text-xs text-muted-foreground/60", className)}>
-        Simulation à but informatif uniquement.{' '}
+        {t('simulationDisclaimer.inline')}{' '}
         <Link to="/disclaimer" className="text-primary/60 hover:text-primary hover:underline">
-          Limites
+          {t('simulationDisclaimer.limits')}
         </Link>
       </span>
     );
@@ -30,9 +62,9 @@ export function SimulationDisclaimer({
       )}>
         <Info className="w-3 h-3 shrink-0" />
         <span>
-          Outil d'analyse — pas de conseil.{' '}
+          {t('simulationDisclaimer.compact')}{' '}
           <Link to="/disclaimer" className="text-primary/70 hover:text-primary hover:underline">
-            En savoir plus
+            {t('simulationDisclaimer.learnMore')}
           </Link>
         </span>
       </div>
@@ -42,9 +74,9 @@ export function SimulationDisclaimer({
   // minimal (default)
   return (
     <p className={cn("text-xs text-muted-foreground/50 text-center", className)}>
-      📊 Simulation uniquement • 
+      📊 {t('simulationDisclaimer.minimal')} • 
       <Link to="/disclaimer" className="text-primary/50 hover:text-primary hover:underline ml-1">
-        Voir les limites
+        {t('simulationDisclaimer.viewLimits')}
       </Link>
     </p>
   );

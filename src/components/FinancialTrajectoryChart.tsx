@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { SimulationDisclaimer } from '@/components/SimulationDisclaimer';
 import { 
   LineChart, 
   Line, 
@@ -403,6 +404,9 @@ export function FinancialTrajectoryChart({ className }: FinancialTrajectoryChart
             </div>
           ))}
         </div>
+        
+        {/* Anti-illusion disclaimer */}
+        <SimulationDisclaimer variant="contextual" context="trajectory" className="mt-4" />
       </CardContent>
     </Card>
   );

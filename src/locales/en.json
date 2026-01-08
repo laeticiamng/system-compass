@@ -19,8 +19,24 @@
     "confirm": "Confirm",
     "edit": "Edit"
   },
+  "simulationDisclaimer": {
+    "notPrediction": "Simulation ≠ Prediction",
+    "inline": "Simulation for informational purposes only.",
+    "limits": "Limits",
+    "compact": "Analysis tool — not advice.",
+    "learnMore": "Learn more",
+    "minimal": "Scenario exploration",
+    "viewLimits": "View limits",
+    "contextual": {
+      "default": "Results depend on your choices and real context. This is not a prediction.",
+      "results": "These results illustrate trends, not your future. Each situation is unique.",
+      "trajectory": "This trajectory shows what this type of choice tends to imply, not what will happen to you.",
+      "comparison": "This comparison reflects general data, not your personal situation.",
+      "game": "This educational game simulates real mechanisms, but remains a simplification of reality."
+    }
+  },
   "header": {
-    "simulationDisclaimer": "Simulation only • Not legal, financial, or medical advice"
+    "simulationDisclaimer": "Scenario exploration • No legal, financial or medical advice"
   },
   "notDoes": {
     "title": "What this tool does NOT do",
@@ -3630,25 +3646,26 @@
     "experiencesBySystem": "Experiences by system",
     "verdicts": {
       "exceptional": {
-        "label": "Exceptional Life",
-        "description": "You navigated the system brilliantly and achieved your goals."
+        "label": "Very favorable trajectory",
+        "description": "This scenario illustrates what tends to happen when choices and context align favorably."
       },
       "successful": {
-        "label": "Successful Life",
-        "description": "You built a stable life with great achievements."
+        "label": "Favorable trajectory",
+        "description": "This scenario shows what often happens with consistent choices and a supportive context."
       },
       "average": {
-        "label": "Ordinary Life",
-        "description": "Ups and downs, but you persevered."
+        "label": "Mixed trajectory",
+        "description": "This scenario reflects ups and downs — the most common reality for many."
       },
       "struggling": {
-        "label": "Difficult Life",
-        "description": "The system wasn't kind. Many obstacles to overcome."
+        "label": "Constrained trajectory",
+        "description": "This scenario illustrates obstacles that certain starting contexts tend to create."
       },
       "critical": {
-        "label": "Survival",
-        "description": "Every day was a fight. But you're still here."
-      }
+        "label": "Survival trajectory",
+        "description": "This scenario shows extreme challenges that certain initial situations often imply."
+      },
+      "disclaimer": "Reminder: this is an educational simulation. Your real path will depend on thousands of factors not modeled here."
     }
   },
   "tutorial": {
