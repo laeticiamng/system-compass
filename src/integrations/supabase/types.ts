@@ -14,6 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
+      dashboard_progress: {
+        Row: {
+          created_at: string
+          exit_key_id: string
+          id: string
+          phase_notes: Json
+          started_at: string
+          steps_progress: Json
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          exit_key_id: string
+          id?: string
+          phase_notes?: Json
+          started_at?: string
+          steps_progress?: Json
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          exit_key_id?: string
+          id?: string
+          phase_notes?: Json
+          started_at?: string
+          steps_progress?: Json
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           birth_country: string | null
