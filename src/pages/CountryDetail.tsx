@@ -8,6 +8,8 @@ import { WhoWinsWhoLoses } from '@/components/WhoWinsWhoLoses';
 import { PlaybookSection } from '@/components/PlaybookSection';
 import { LGBTQRightsIndicator } from '@/components/LGBTQRightsIndicator';
 import { CountryExitKeys } from '@/components/CountryExitKeys';
+import { NaturalRisksCard } from '@/components/NaturalRisksCard';
+import { HealthcareCard } from '@/components/HealthcareCard';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Calendar, ExternalLink } from 'lucide-react';
 
@@ -144,6 +146,18 @@ export default function CountryDetail() {
           <h2 className="font-display text-2xl font-bold mb-6">{t('countryDetail.lgbtqRights', 'LGBTQ+ Rights')}</h2>
           <LGBTQRightsIndicator rights={country.lgbtqRights} />
         </div>
+
+        {/* Natural Risks & Healthcare */}
+        {(country.naturalRisks || country.healthcare) && (
+          <div className="grid lg:grid-cols-2 gap-8 mb-12">
+            {country.naturalRisks && (
+              <NaturalRisksCard risks={country.naturalRisks} />
+            )}
+            {country.healthcare && (
+              <HealthcareCard healthcare={country.healthcare} />
+            )}
+          </div>
+        )}
 
         {/* Exit Keys - Personalized Strategies */}
         <div className="mb-12">
