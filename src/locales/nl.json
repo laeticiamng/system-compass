@@ -21,6 +21,27 @@
     "noDecisions": "Neemt geen beslissingen voor jou",
     "footer": "Deze tool analyseert systemen en simuleert gevolgen. De verantwoordelijkheid voor beslissingen blijft bij jou."
   },
+  "systemicMistakes": {
+    "title": "Veelvoorkomende systemische fouten",
+    "subtitle": "Wat systemen niet vergeven — en hoe ze te vermijden",
+    "intro": "Deze fouten zijn geen morele oordelen. Het zijn mismatches tussen de verwachtingen van een individu en de echte regels van een systeem.",
+    "introDetail": "Elke fout wordt geanalyseerd op context, betrokken piramides en typische gevolgen.",
+    "typicalContext": "Typische context",
+    "pyramidsConcerned": "Betrokken piramides",
+    "frequentConsequences": "Frequente gevolgen",
+    "time": "Tijd",
+    "energy": "Energie",
+    "money": "Geld",
+    "stagnation": "Stagnatie",
+    "exploreExitKeys": "Gerelateerde exit-keys verkennen",
+    "viewExitKeys": "Exit-keys bekijken",
+    "ctaTitle": "Deze fouten vermijden begint met het begrijpen van je systeem",
+    "ctaSubtitle": "Analyseer je huidige situatie, identificeer potentiële mismatches en verken strategieën die bij je profiel passen.",
+    "simulateTrajectory": "Mijn traject simuleren",
+    "understandPyramids": "De piramides begrijpen",
+    "teaser": "Begrijp de mismatches die jaren kosten — geen oordelen, patronen om te vermijden.",
+    "viewMistakes": "Fouten bekijken"
+  },
   "nav": {
     "start": "Start",
     "countries": "Landen",

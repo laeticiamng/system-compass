@@ -32,6 +32,110 @@
     "noDecisions": "Does not make decisions for you",
     "footer": "This tool analyzes systems and simulates consequences. The responsibility for decisions remains yours."
   },
+  "systemicMistakes": {
+    "title": "Common Systemic Mistakes",
+    "subtitle": "What systems don't forgive — and how to avoid them",
+    "intro": "These mistakes are not moral judgments. They are mismatches between an individual's expectations and a system's real rules.",
+    "introDetail": "Each mistake is analyzed in terms of context, relevant pyramids, and typical consequences.",
+    "typicalContext": "Typical context",
+    "pyramidsConcerned": "Pyramids concerned",
+    "frequentConsequences": "Frequent consequences",
+    "time": "Time",
+    "energy": "Energy",
+    "money": "Money",
+    "stagnation": "Stagnation",
+    "exploreExitKeys": "Explore related exit keys",
+    "viewExitKeys": "View exit keys",
+    "ctaTitle": "Avoiding these mistakes starts with understanding your system",
+    "ctaSubtitle": "Analyze your current situation, identify potential mismatches, and explore strategies suited to your profile.",
+    "simulateTrajectory": "Simulate my trajectory",
+    "understandPyramids": "Understand the pyramids",
+    "teaser": "Understand the mismatches that cost years — not judgments, patterns to avoid.",
+    "viewMistakes": "View mistakes",
+    "mistakes": {
+      "countryWithoutUnderstanding": {
+        "title": "Changing countries without understanding what the system rewards",
+        "description": "Immigrating thinking effort alone is enough, without analyzing the target country's real success mechanisms.",
+        "context": "Competent professional leaving a problem rent country for a stability-redistribution country, expecting to be rewarded for their added value alone.",
+        "time": "3-7 years of misaligned positioning",
+        "energy": "Exhaustion facing unanticipated obstacles",
+        "money": "Investment in wrong certifications or networks",
+        "stagnation": "Professional stagnation despite skills"
+      },
+      "diplomasInNetworkSystem": {
+        "title": "Accumulating diplomas in a network-based system",
+        "description": "Investing years and resources in formal education in a country where connections trump qualifications.",
+        "context": "Young graduate in a problem rent country accumulating masters and certifications without building a parallel network.",
+        "time": "4-8 years of undervalued studies",
+        "energy": "Frustration at effort/reward mismatch",
+        "money": "Cost of studies without proportional return",
+        "stagnation": "Overqualification without matching opportunities"
+      },
+      "stabilityInGrowthSystem": {
+        "title": "Seeking stability in a growth system",
+        "description": "Expecting strong social protections and predictable progression in a country that rewards risk and velocity.",
+        "context": "French professional emigrating to the US expecting a stable permanent contract with guaranteed health and retirement benefits.",
+        "time": "2-5 years discovering the real rules",
+        "energy": "Chronic anxiety facing instability",
+        "money": "Unexpected expenses (health, transitions)",
+        "stagnation": "Forced return or painful adaptation"
+      },
+      "growthInStabilitySystem": {
+        "title": "Seeking rapid growth in a stability system",
+        "description": "Trying to scale quickly or disrupt in a country that values prudence, processes, and protection of acquired rights.",
+        "context": "American tech entrepreneur launching a startup in France expecting the same velocity and flexibility as California.",
+        "time": "2-4 years of administrative friction",
+        "energy": "Frustration at perceived slowness",
+        "money": "Underestimated charges and taxes",
+        "stagnation": "Growth constrained by regulatory requirements"
+      },
+      "visibilityInRentSystem": {
+        "title": "Succeeding visibly without protection in a rent system",
+        "description": "Publicly displaying financial or professional success without having built necessary protections.",
+        "context": "Prosperous entrepreneur in a problem rent country showing success on social media without political network or protection.",
+        "time": "Variable, permanent risk",
+        "energy": "Constant stress and vigilance",
+        "money": "Extortion, forced corruption, seizure",
+        "stagnation": "Self-imposed ceiling or flight"
+      },
+      "bettingAgainstState": {
+        "title": "Betting against state direction in a hybrid system",
+        "description": "Investing or engaging in sectors the state has decided to control or discourage.",
+        "context": "Foreign investor betting on a growing sector in China without understanding incoming political restriction signals.",
+        "time": "Loss of years of investment",
+        "energy": "Forced restructuring and stress",
+        "money": "Significant or total losses",
+        "stagnation": "Market exclusion"
+      },
+      "expectingPermanenceExtraction": {
+        "title": "Expecting permanence in an extraction system",
+        "description": "Planning a permanent life in a resource country that only gives temporary contracts to foreigners.",
+        "context": "Expat in a Gulf country buying real estate and taking on debt hoping to stay permanently.",
+        "time": "10-20 years without possible citizenship",
+        "energy": "Permanent uncertainty about the long term",
+        "money": "Assets difficult to liquidate on departure",
+        "stagnation": "Neither belonging nor prepared plan B"
+      },
+      "ignoringLocalCredentials": {
+        "title": "Ignoring local credentials in a competence system",
+        "description": "Assuming your experience and foreign diplomas are enough in a country that values local certifications.",
+        "context": "Foreign doctor or lawyer in Switzerland or Germany refusing to retake local equivalencies.",
+        "time": "2-5 years of professional demotion",
+        "energy": "Frustration at non-recognition",
+        "money": "Salary below actual level",
+        "stagnation": "Invisible glass ceiling"
+      },
+      "singleIncomeSource": {
+        "title": "Depending on a single income source",
+        "description": "Putting all eggs in one professional basket without building alternatives.",
+        "context": "Senior executive relying only on their job without alternative income or exportable skills.",
+        "time": "Years of rebuilding after layoff",
+        "energy": "Anxiety and psychological dependence",
+        "money": "Sharp drop in case of job loss",
+        "stagnation": "Limited negotiating power"
+      }
+    }
+  },
   "dashboard": {
     "title": "My Dashboard",
     "subtitle": "Track your analyses and simulations",

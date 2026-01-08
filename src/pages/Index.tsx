@@ -234,10 +234,10 @@ export default function Index() {
             </div>
             <div className="flex-1 text-center md:text-left">
               <h2 className="font-display text-xl md:text-2xl font-bold mb-2">
-                Erreurs systémiques fréquentes
+                {t('systemicMistakes.title', 'Erreurs systémiques fréquentes')}
               </h2>
               <p className="text-muted-foreground text-sm md:text-base">
-                Comprends les décalages qui coûtent des années — pas des jugements, des patterns à éviter.
+                {t('systemicMistakes.teaser', 'Comprends les décalages qui coûtent des années — pas des jugements, des patterns à éviter.')}
               </p>
             </div>
             <Button
@@ -245,7 +245,7 @@ export default function Index() {
               onClick={() => navigate('/systemic-mistakes')}
               className="gap-2 border-destructive/30 text-destructive hover:bg-destructive/10"
             >
-              Voir les erreurs
+              {t('systemicMistakes.viewMistakes', 'Voir les erreurs')}
               <ArrowRight className="w-4 h-4" />
             </Button>
           </div>

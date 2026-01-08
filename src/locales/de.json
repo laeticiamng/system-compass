@@ -21,6 +21,27 @@
     "noDecisions": "Trifft keine Entscheidungen für dich",
     "footer": "Dieses Tool analysiert Systeme und simuliert Konsequenzen. Die Verantwortung für Entscheidungen bleibt bei dir."
   },
+  "systemicMistakes": {
+    "title": "Häufige systemische Fehler",
+    "subtitle": "Was Systeme nicht verzeihen — und wie man sie vermeidet",
+    "intro": "Diese Fehler sind keine moralischen Urteile. Es sind Diskrepanzen zwischen den Erwartungen einer Person und den tatsächlichen Regeln eines Systems.",
+    "introDetail": "Jeder Fehler wird hinsichtlich Kontext, betroffener Pyramiden und typischer Konsequenzen analysiert.",
+    "typicalContext": "Typischer Kontext",
+    "pyramidsConcerned": "Betroffene Pyramiden",
+    "frequentConsequences": "Häufige Konsequenzen",
+    "time": "Zeit",
+    "energy": "Energie",
+    "money": "Geld",
+    "stagnation": "Stagnation",
+    "exploreExitKeys": "Zugehörige Exit-Keys erkunden",
+    "viewExitKeys": "Exit-Keys anzeigen",
+    "ctaTitle": "Diese Fehler zu vermeiden beginnt mit dem Verständnis deines Systems",
+    "ctaSubtitle": "Analysiere deine aktuelle Situation, identifiziere potenzielle Diskrepanzen und erkunde Strategien, die zu deinem Profil passen.",
+    "simulateTrajectory": "Meine Trajektorie simulieren",
+    "understandPyramids": "Die Pyramiden verstehen",
+    "teaser": "Verstehe die Diskrepanzen, die Jahre kosten — keine Urteile, sondern Muster zum Vermeiden.",
+    "viewMistakes": "Fehler anzeigen"
+  },
   "nav": {
     "start": "Start",
     "countries": "Länder",
