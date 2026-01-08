@@ -73,12 +73,12 @@ const PYRAMID_CONFIGS: PyramidTypeConfig[] = [
   },
 ];
 
-const PyramidTypesShowcase = React.forwardRef<HTMLDivElement, object>(function PyramidTypesShowcase(_, ref) {
+export function PyramidTypesShowcase() {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
   return (
-    <div ref={ref} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       {PYRAMID_CONFIGS.map((config) => {
         const Icon = config.icon;
         
@@ -142,9 +142,7 @@ const PyramidTypesShowcase = React.forwardRef<HTMLDivElement, object>(function P
       })}
     </div>
   );
-});
-
-export { PyramidTypesShowcase };
+}
 
 function CountryFlag({ countryId }: { countryId: string }) {
   const countryIso: Record<string, string> = {
