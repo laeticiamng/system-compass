@@ -2757,7 +2757,12 @@
     "title": "PYRAMIDES — Règles complètes",
     "concept": {
       "title": "Le concept",
-      "description": "PYRAMIDES est un jeu de stratégie où tu gères des trajectoires de vie. Tu ne choisis pas ton point de départ : tu tires des personnages avec un pays de naissance, des traits, et des aspirations. À chaque 'année' de jeu, tu prends des décisions : travailler, étudier, soigner, migrer, entreprendre, construire ton réseau, nourrir tes relations... Le monde bouge, les pays ont leurs règles, et la réussite dépend de ta capacité à optimiser sous contrainte."
+      "description": "PYRAMIDES est un jeu de stratégie où tu gères des trajectoires de vie. Tu ne choisis pas ton point de départ : tu tires des personnages avec un pays de naissance, des traits, et des aspirations. À chaque 'année' de jeu, tu prends des décisions : travailler, étudier, soigner, migrer, entreprendre, construire ton réseau, nourrir tes relations... Le monde bouge, les pays ont leurs règles, et la réussite dépend de ta capacité à optimiser sous contrainte.",
+      "quote": "Tu gagnes en gérant ta vie mieux que les autres, avec un système qui reste réaliste.",
+      "goal": "Objectif : Maximiser ton score de vie",
+      "duration": "Durée : 20-40 tours (années)",
+      "players": "Joueurs : 1 à 4",
+      "luck": "Hasard : Modéré (événements + dés)"
     },
     "pyramidsLife": {
       "title": "Les 6 Pyramides de Vie",
@@ -2767,39 +2772,156 @@
       "career": "Carrière (statut, progression, expertise)",
       "finances": "Finances (sécurité, patrimoine)",
       "freedom": "Liberté (temps, autonomie, choix)",
-      "meaning": "Sens (alignement, utilité, création)"
+      "meaning": "Sens (alignement, utilité, création)",
+      "warning": "Chaque niveau vaut plus mais coûte plus. Atteindre le niveau 5 est rare : cela représente une 'vie exceptionnelle' dans ce domaine."
     },
     "characters": {
       "title": "Les personnages",
-      "description": "Chaque carte Personnage contient : un pays de naissance (ton système de départ), deux traits positifs et une contrainte, deux aspirations majeures et une mineure, et une situation initiale."
+      "description": "Chaque carte Personnage contient des informations uniques qui définissent ton point de départ et tes objectifs.",
+      "birthCountry": "Pays de naissance",
+      "birthCountryDesc": "Ton système de départ",
+      "traits": "2 Traits + 1 Contrainte",
+      "traitsDesc": "Tes avantages et limitations",
+      "aspirations": "2 Aspirations majeures + 1 mineure",
+      "aspirationsDesc": "Ce qui compte pour ton score",
+      "startingResources": "Ressources initiales",
+      "startingResourcesDesc": "Calculées selon tes traits et ton pays"
     },
     "countries": {
       "title": "Les pays comme systèmes",
-      "description": "Chaque pays est un ensemble de règles avec 4 indices :",
-      "opportunities": "Opportunités : facilite travail/études/entrepreneuriat",
-      "safetyNets": "Filets : protège contre les crises (santé/finances)",
-      "mobility": "Mobilité : rend la migration plus simple",
-      "friction": "Frictions : taxes, instabilité, lourdeur, risques"
+      "description": "Chaque pays est un ensemble de règles avec 4 indices qui définissent comment la vie fonctionne là-bas :",
+      "opportunitiesLabel": "Opportunités",
+      "opportunities": "Facilite travail, études et entrepreneuriat",
+      "safetyNetsLabel": "Filets de sécurité",
+      "safetyNets": "Protège contre les crises (santé/finances)",
+      "mobilityLabel": "Mobilité",
+      "mobility": "Rend la migration plus simple",
+      "frictionLabel": "Frictions",
+      "friction": "Taxes, instabilité, lourdeur, risques"
     },
     "resources": {
       "title": "Les ressources",
-      "description": "Les ressources te permettent d'agir :",
+      "description": "Les ressources te permettent d'agir. Chaque action coûte et rapporte des ressources différentes.",
       "time": "Temps : détermine ta capacité à faire des actions",
       "money": "Argent : donne accès aux investissements",
       "health": "Santé : influence ta stabilité et protège des chutes",
       "network": "Réseau : ouvre des opportunités, protège, accélère",
       "skills": "Compétences : améliorent les rendements",
-      "mobilityRes": "Mobilité : permet de migrer vers un autre système"
+      "mobilityRes": "Mobilité : permet de migrer vers un autre système",
+      "tip": "Le jeu est conçu pour que tu n'aies jamais 'tout'. Tu choisis ce que tu sacrifies temporairement."
     },
     "actions": {
       "title": "Les actions",
-      "major": "Actions majeures : Travailler, Étudier, Entreprendre, Migrer, Contribuer/Créer",
-      "minor": "Actions mineures : Réseau, Relations, Se soigner, Se reposer",
-      "note": "Aucune action n'est 'gratuite'. Le jeu récompense les joueurs qui savent quand agir."
+      "majorTitle": "Actions majeures (1 par tour)",
+      "majorDesc": "Ce sont les grandes décisions qui façonnent ta vie. Tu ne peux en faire qu'une par année.",
+      "work": "Travailler",
+      "study": "Étudier",
+      "entrepreneur": "Entreprendre",
+      "migrate": "Migrer",
+      "contribute": "Contribuer / Créer",
+      "minorTitle": "Actions mineures",
+      "minorDesc": "Actions complémentaires qui maintiennent l'équilibre de ta vie.",
+      "network": "Réseau",
+      "relationships": "Relations",
+      "heal": "Se soigner",
+      "rest": "Se reposer",
+      "shortcutsTitle": "Raccourcis (DANGEREUX)",
+      "shortcutsDesc": "Actions risquées qui peuvent rapporter gros... ou tout détruire.",
+      "blackMarket": "Marché noir",
+      "fakeDocs": "Faux documents",
+      "corruption": "Corruption",
+      "note": "Aucune action n'est 'gratuite'. Le jeu récompense les joueurs qui savent quand agir et quand attendre."
+    },
+    "turnFlow": {
+      "title": "Déroulement d'un tour",
+      "description": "Chaque tour représente une année de vie. Voici les 4 phases dans l'ordre :",
+      "phase1Title": "Phase 1 : Événement mondial",
+      "phase1Desc": "Un événement global affecte tous les joueurs. Crise économique, pandémie, opportunité mondiale... Adaptez-vous !",
+      "phase2Title": "Phase 2 : Événement local",
+      "phase2Desc": "Un événement spécifique à votre pays de résidence. Réforme fiscale, instabilité politique, boom économique...",
+      "phase3Title": "Phase 3 : Sélection d'action",
+      "phase3Desc": "Choisissez une action majeure et/ou des actions mineures selon vos ressources disponibles.",
+      "phase4Title": "Phase 4 : Déplacement",
+      "phase4Desc": "Lancez le dé pour avancer sur le plateau. Chaque case déclenche des effets : questions, bonus, pièges..."
+    },
+    "events": {
+      "title": "Les événements",
+      "description": "Les événements ajoutent de l'imprévisibilité à votre vie. Ils peuvent être positifs ou négatifs.",
+      "globalTitle": "Événements mondiaux",
+      "globalDesc": "Ces événements affectent TOUS les joueurs simultanément. Personne n'y échappe.",
+      "globalEx1": "Crise économique mondiale",
+      "globalEx2": "Récession des marchés",
+      "globalEx3": "Pandémie mondiale",
+      "localTitle": "Événements locaux",
+      "localDesc": "Ces événements n'affectent que les joueurs dans un pays spécifique.",
+      "localEx1": "Réforme gouvernementale",
+      "localEx2": "Nouvelle taxe sur la fortune",
+      "localEx3": "Festival culturel (bonus moral)"
+    },
+    "risks": {
+      "title": "Les risques et raccourcis",
+      "description": "Certaines actions sont des 'raccourcis' : elles promettent des gains rapides mais comportent des risques sérieux. Ces actions déclenchent un événement de risque.",
+      "warningTitle": "Attention : Conséquences réelles",
+      "warningDesc": "Les raccourcis dans le jeu représentent des choix que des millions de personnes font dans la vraie vie. Les conséquences catastrophiques du jeu reflètent des réalités vécues : prison, expulsion, ruine financière, destruction familiale.",
+      "successTitle": "Succès (40-60%)",
+      "successDesc": "L'action réussit. Vous obtenez les gains promis sans conséquence négative.",
+      "failureTitle": "Échec (30-40%)",
+      "failureDesc": "L'action échoue. Vous perdez les ressources investies et subissez une pénalité modérée.",
+      "catastropheTitle": "Catastrophe (10-20%)",
+      "catastropheDesc": "Conséquences dévastatrices : prison, expulsion, perte de tout votre argent, destruction de votre réseau, effondrement de votre santé mentale...",
+      "moral": "Le jeu ne juge pas ces choix. Il montre simplement que les 'raccourcis' ont un prix statistique que beaucoup sous-estiment."
+    },
+    "board": {
+      "title": "Le plateau de jeu",
+      "description": "Le plateau hexagonal représente votre parcours de vie. Chaque case a un effet différent.",
+      "pyramidSquare": "Case Pyramide",
+      "pyramidSquareDesc": "+2 points dans ce type de système",
+      "questionSquare": "Case Question",
+      "questionSquareDesc": "Répondez à une question de personnalité",
+      "chanceSquare": "Case Chance",
+      "chanceSquareDesc": "Effet aléatoire (positif ou négatif)",
+      "trapSquare": "Case Piège",
+      "trapSquareDesc": "Pénalité de ressources",
+      "bonusSquare": "Case Bonus",
+      "bonusSquareDesc": "Gain de ressources bonus",
+      "finishSquare": "Case Arrivée",
+      "finishSquareDesc": "Fin du parcours, calcul du score final"
+    },
+    "gameModes": {
+      "title": "Modes de jeu",
+      "soloTitle": "Solo",
+      "soloDesc": "Jouez seul et essayez d'atteindre le meilleur score possible. Parfait pour apprendre le jeu et optimiser vos stratégies.",
+      "raceTitle": "Course",
+      "raceDesc": "2-4 joueurs. Le premier à atteindre la case finale gagne ! Rapidité et prise de risque sont récompensées.",
+      "duelTitle": "Duel de points",
+      "duelDesc": "2-4 joueurs. Celui avec le plus de points à la fin gagne. Stratégie à long terme et gestion des ressources sont clés.",
+      "coopTitle": "Coopératif",
+      "coopDesc": "2-4 joueurs. Travaillez ensemble pour atteindre un score collectif cible. Les ressources peuvent être partagées."
+    },
+    "victory": {
+      "title": "Conditions de victoire",
+      "description": "La victoire dépend du mode de jeu choisi.",
+      "soloTitle": "Solo",
+      "soloDesc": "Atteignez l'arrivée avec le meilleur score possible. Comparez-vous à vous-même !",
+      "raceTitle": "Course",
+      "raceDesc": "Le premier joueur à atteindre la case finale gagne, quel que soit son score.",
+      "duelTitle": "Duel de points",
+      "duelDesc": "Quand tous les joueurs atteignent l'arrivée, celui avec le plus de points gagne.",
+      "coopTitle": "Coopératif",
+      "coopDesc": "L'équipe gagne si le score collectif atteint l'objectif fixé (variable selon la difficulté)."
     },
     "scoring": {
       "title": "Le score",
-      "description": "Chaque personnage a deux aspirations majeures et une mineure. Le score est calculé à partir des niveaux de pyramides, les majeures comptant double. Des pénalités s'appliquent pour les crises non résolues, dettes et burnouts."
+      "description": "Votre score final reflète la qualité de vie que vous avez construite, pondérée par vos aspirations personnelles.",
+      "majorAspirations": "Aspirations majeures",
+      "minorAspiration": "Aspiration mineure",
+      "resourceBonus": "Bonus ressources élevées",
+      "crisisPenalty": "Crises non résolues",
+      "difficultyBonus": "Bonus pays difficile",
+      "bonus": "Bonus",
+      "penalty": "Pénalité",
+      "equity": "Équité",
+      "finalNote": "Le score n'est pas qu'un chiffre : c'est le reflet d'une vie vécue selon vos propres termes."
     }
   },
   "resources": {
