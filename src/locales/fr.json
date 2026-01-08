@@ -2721,5 +2721,227 @@
       "title": "Le score",
       "description": "Chaque personnage a deux aspirations majeures et une mineure. Le score est calculé à partir des niveaux de pyramides, les majeures comptant double. Des pénalités s'appliquent pour les crises non résolues, dettes et burnouts."
     }
+  },
+  "resources": {
+    "time": "Temps",
+    "timeDesc": "Capacité à prendre des actions",
+    "money": "Argent",
+    "moneyDesc": "Accès aux investissements",
+    "health": "Santé",
+    "healthDesc": "Stabilité et protection",
+    "network": "Réseau",
+    "networkDesc": "Ouvre des opportunités",
+    "skills": "Compétences",
+    "skillsDesc": "Améliore les rendements",
+    "mobility": "Mobilité",
+    "mobilityDesc": "Permet la migration"
+  },
+  "actions": {
+    "majorTitle": "Actions majeures (1/tour)",
+    "minorTitle": "Actions mineures",
+    "used": "Utilisée",
+    "costs": "Coûts",
+    "gains": "Gains",
+    "confirm": "Confirmer",
+    "riskWarning": "Risque d'échec : {{chance}}%",
+    "work": {
+      "label": "Travailler",
+      "description": "Gagne de l'argent et de l'expérience, mais fatigue"
+    },
+    "study": {
+      "label": "Étudier",
+      "description": "Développe tes compétences pour l'avenir"
+    },
+    "entrepreneur": {
+      "label": "Entreprendre",
+      "description": "Très rentable si ça passe, risqué si ça rate"
+    },
+    "migrate": {
+      "label": "Migrer",
+      "description": "Change de système, coûte en mobilité et adaptation"
+    },
+    "contribute": {
+      "label": "Contribuer",
+      "description": "Augmente ton sens et ton réseau"
+    },
+    "networking": {
+      "label": "Réseauter",
+      "description": "Développe tes connexions"
+    },
+    "relationships": {
+      "label": "Relations",
+      "description": "Nourris tes proches et ta santé mentale"
+    },
+    "heal": {
+      "label": "Se soigner",
+      "description": "Récupère ta santé"
+    },
+    "rest": {
+      "label": "Se reposer",
+      "description": "Récupère du temps et de l'énergie"
+    }
+  },
+  "events": {
+    "globalEvent": "Événement mondial",
+    "countryEvent": "Événement pays",
+    "continue": "Continuer",
+    "global": {
+      "techBoom": {
+        "label": "Boom technologique",
+        "description": "Une révolution tech crée de nouvelles opportunités"
+      },
+      "economicCrisis": {
+        "label": "Crise économique",
+        "description": "Récession mondiale, l'argent se fait rare"
+      },
+      "pandemic": {
+        "label": "Pandémie",
+        "description": "Crise sanitaire mondiale, mobilité réduite"
+      },
+      "remoteWork": {
+        "label": "Ère du télétravail",
+        "description": "Le travail à distance devient la norme"
+      },
+      "inflation": {
+        "label": "Inflation",
+        "description": "Le coût de la vie augmente partout"
+      },
+      "openBorders": {
+        "label": "Ouverture des frontières",
+        "description": "La mobilité internationale s'améliore"
+      },
+      "aiRevolution": {
+        "label": "Révolution IA",
+        "description": "L'IA transforme le marché du travail"
+      },
+      "greenTransition": {
+        "label": "Transition verte",
+        "description": "Nouvelles régulations environnementales"
+      }
+    },
+    "country": {
+      "politicalInstability": {
+        "label": "Instabilité politique",
+        "description": "Tensions et incertitudes dans le pays"
+      },
+      "taxReform": {
+        "label": "Réforme fiscale",
+        "description": "Nouvelles taxes et prélèvements"
+      },
+      "startupFunding": {
+        "label": "Fonds startups",
+        "description": "Investissements massifs dans l'innovation"
+      },
+      "visaRestrictions": {
+        "label": "Restrictions visa",
+        "description": "L'immigration devient plus difficile"
+      },
+      "corruptionScandal": {
+        "label": "Scandale de corruption",
+        "description": "Les réseaux informels gagnent en importance"
+      },
+      "economicBoom": {
+        "label": "Boom économique",
+        "description": "L'économie locale explose"
+      }
+    }
+  },
+  "traits": {
+    "charismatic": {
+      "label": "Charismatique",
+      "description": "Facilité à créer des connexions"
+    },
+    "resilient": {
+      "label": "Résilient",
+      "description": "Récupère vite des épreuves"
+    },
+    "wealthyFamily": {
+      "label": "Famille aisée",
+      "description": "Départ financier avantageux"
+    },
+    "quickLearner": {
+      "label": "Apprenant rapide",
+      "description": "Acquiert vite de nouvelles compétences"
+    },
+    "wellConnected": {
+      "label": "Bien connecté",
+      "description": "Réseau initial solide"
+    },
+    "dualCitizenship": {
+      "label": "Double nationalité",
+      "description": "Mobilité internationale facilitée"
+    },
+    "efficient": {
+      "label": "Efficace",
+      "description": "Optimise son temps"
+    },
+    "streetSmart": {
+      "label": "Débrouillard",
+      "description": "Sait naviguer les systèmes informels"
+    },
+    "chronicIllness": {
+      "label": "Maladie chronique",
+      "description": "Santé fragile"
+    },
+    "poorBackground": {
+      "label": "Milieu modeste",
+      "description": "Peu de ressources au départ"
+    },
+    "sociallyAwkward": {
+      "label": "Introverti",
+      "description": "Difficulté à créer des connexions"
+    },
+    "visaRestricted": {
+      "label": "Visa restreint",
+      "description": "Mobilité internationale limitée"
+    },
+    "impulsive": {
+      "label": "Impulsif",
+      "description": "Décisions hâtives coûteuses"
+    },
+    "burnedOut": {
+      "label": "Épuisé",
+      "description": "Énergie et temps réduits"
+    }
+  },
+  "aspirations": {
+    "financialFreedom": {
+      "label": "Liberté financière",
+      "description": "Atteindre l'indépendance économique"
+    },
+    "stabilitySeeker": {
+      "label": "Quête de stabilité",
+      "description": "Construire une vie sûre et prévisible"
+    },
+    "worldExplorer": {
+      "label": "Explorateur du monde",
+      "description": "Vivre dans plusieurs pays"
+    },
+    "masterCraftsman": {
+      "label": "Maître artisan",
+      "description": "Excellence dans son domaine"
+    },
+    "influencer": {
+      "label": "Influenceur",
+      "description": "Avoir un impact sur les autres"
+    },
+    "empireBuilder": {
+      "label": "Bâtisseur d'empire",
+      "description": "Créer quelque chose de grand"
+    },
+    "balancedLife": {
+      "label": "Vie équilibrée",
+      "description": "Harmonie entre les domaines"
+    },
+    "socialClimber": {
+      "label": "Ascension sociale",
+      "description": "Gravir les échelons"
+    }
+  },
+  "character": {
+    "aspirations": "Aspirations",
+    "startingResources": "Ressources de départ",
+    "selectCharacter": "Choisis ton personnage",
+    "drawNew": "Tirer de nouveaux personnages"
   }
 }

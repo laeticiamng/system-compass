@@ -2363,5 +2363,227 @@
       "title": "Scoring",
       "description": "Each character has two major aspirations and one minor. Score is calculated from pyramid levels, with majors counting double. Penalties apply for unresolved crises, debts, burnouts."
     }
+  },
+  "resources": {
+    "time": "Time",
+    "timeDesc": "Capacity to take actions",
+    "money": "Money",
+    "moneyDesc": "Access to investments",
+    "health": "Health",
+    "healthDesc": "Stability and protection",
+    "network": "Network",
+    "networkDesc": "Opens opportunities",
+    "skills": "Skills",
+    "skillsDesc": "Improves returns",
+    "mobility": "Mobility",
+    "mobilityDesc": "Allows migration"
+  },
+  "actions": {
+    "majorTitle": "Major Actions (1/turn)",
+    "minorTitle": "Minor Actions",
+    "used": "Used",
+    "costs": "Costs",
+    "gains": "Gains",
+    "confirm": "Confirm",
+    "riskWarning": "Risk of failure: {{chance}}%",
+    "work": {
+      "label": "Work",
+      "description": "Earn money and experience, but get tired"
+    },
+    "study": {
+      "label": "Study",
+      "description": "Develop your skills for the future"
+    },
+    "entrepreneur": {
+      "label": "Entrepreneur",
+      "description": "Very profitable if it works, risky if it fails"
+    },
+    "migrate": {
+      "label": "Migrate",
+      "description": "Change system, costs mobility and adaptation"
+    },
+    "contribute": {
+      "label": "Contribute",
+      "description": "Increase your purpose and network"
+    },
+    "networking": {
+      "label": "Network",
+      "description": "Develop your connections"
+    },
+    "relationships": {
+      "label": "Relationships",
+      "description": "Nurture your loved ones and mental health"
+    },
+    "heal": {
+      "label": "Heal",
+      "description": "Recover your health"
+    },
+    "rest": {
+      "label": "Rest",
+      "description": "Recover time and energy"
+    }
+  },
+  "events": {
+    "globalEvent": "Global Event",
+    "countryEvent": "Country Event",
+    "continue": "Continue",
+    "global": {
+      "techBoom": {
+        "label": "Tech Boom",
+        "description": "A tech revolution creates new opportunities"
+      },
+      "economicCrisis": {
+        "label": "Economic Crisis",
+        "description": "Global recession, money becomes scarce"
+      },
+      "pandemic": {
+        "label": "Pandemic",
+        "description": "Global health crisis, reduced mobility"
+      },
+      "remoteWork": {
+        "label": "Remote Work Era",
+        "description": "Working from home becomes the norm"
+      },
+      "inflation": {
+        "label": "Inflation",
+        "description": "Cost of living increases everywhere"
+      },
+      "openBorders": {
+        "label": "Open Borders",
+        "description": "International mobility improves"
+      },
+      "aiRevolution": {
+        "label": "AI Revolution",
+        "description": "AI transforms the job market"
+      },
+      "greenTransition": {
+        "label": "Green Transition",
+        "description": "New environmental regulations"
+      }
+    },
+    "country": {
+      "politicalInstability": {
+        "label": "Political Instability",
+        "description": "Tensions and uncertainty in the country"
+      },
+      "taxReform": {
+        "label": "Tax Reform",
+        "description": "New taxes and levies"
+      },
+      "startupFunding": {
+        "label": "Startup Funding",
+        "description": "Massive investments in innovation"
+      },
+      "visaRestrictions": {
+        "label": "Visa Restrictions",
+        "description": "Immigration becomes more difficult"
+      },
+      "corruptionScandal": {
+        "label": "Corruption Scandal",
+        "description": "Informal networks gain importance"
+      },
+      "economicBoom": {
+        "label": "Economic Boom",
+        "description": "Local economy explodes"
+      }
+    }
+  },
+  "traits": {
+    "charismatic": {
+      "label": "Charismatic",
+      "description": "Easy to create connections"
+    },
+    "resilient": {
+      "label": "Resilient",
+      "description": "Recovers quickly from hardships"
+    },
+    "wealthyFamily": {
+      "label": "Wealthy Family",
+      "description": "Advantaged financial start"
+    },
+    "quickLearner": {
+      "label": "Quick Learner",
+      "description": "Quickly acquires new skills"
+    },
+    "wellConnected": {
+      "label": "Well Connected",
+      "description": "Solid initial network"
+    },
+    "dualCitizenship": {
+      "label": "Dual Citizenship",
+      "description": "Facilitated international mobility"
+    },
+    "efficient": {
+      "label": "Efficient",
+      "description": "Optimizes time usage"
+    },
+    "streetSmart": {
+      "label": "Street Smart",
+      "description": "Knows how to navigate informal systems"
+    },
+    "chronicIllness": {
+      "label": "Chronic Illness",
+      "description": "Fragile health"
+    },
+    "poorBackground": {
+      "label": "Poor Background",
+      "description": "Few resources at start"
+    },
+    "sociallyAwkward": {
+      "label": "Socially Awkward",
+      "description": "Difficulty creating connections"
+    },
+    "visaRestricted": {
+      "label": "Visa Restricted",
+      "description": "Limited international mobility"
+    },
+    "impulsive": {
+      "label": "Impulsive",
+      "description": "Hasty costly decisions"
+    },
+    "burnedOut": {
+      "label": "Burned Out",
+      "description": "Reduced energy and time"
+    }
+  },
+  "aspirations": {
+    "financialFreedom": {
+      "label": "Financial Freedom",
+      "description": "Achieve economic independence"
+    },
+    "stabilitySeeker": {
+      "label": "Stability Seeker",
+      "description": "Build a safe and predictable life"
+    },
+    "worldExplorer": {
+      "label": "World Explorer",
+      "description": "Live in multiple countries"
+    },
+    "masterCraftsman": {
+      "label": "Master Craftsman",
+      "description": "Excellence in your field"
+    },
+    "influencer": {
+      "label": "Influencer",
+      "description": "Have an impact on others"
+    },
+    "empireBuilder": {
+      "label": "Empire Builder",
+      "description": "Create something great"
+    },
+    "balancedLife": {
+      "label": "Balanced Life",
+      "description": "Harmony between domains"
+    },
+    "socialClimber": {
+      "label": "Social Climber",
+      "description": "Climb the ladder"
+    }
+  },
+  "character": {
+    "aspirations": "Aspirations",
+    "startingResources": "Starting Resources",
+    "selectCharacter": "Choose your character",
+    "drawNew": "Draw new characters"
   }
 }
