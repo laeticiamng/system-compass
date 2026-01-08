@@ -1172,5 +1172,114 @@
         "planB": "EU-landen via burgerschapsprogramma's. Georgië, Servië voor makkelijke toegang. VAE voor regionale optie."
       }
     }
+  },
+  "pyramidQuiz": {
+    "title": "Piramide Quiz",
+    "subtitle": "Ontdek welk type systeem het beste past bij je persoonlijkheid en aspiraties",
+    "questionOf": "Vraag {{current}} van {{total}}",
+    "back": "Terug",
+    "modes": {
+      "online": {
+        "title": "Online Quiz",
+        "description": "Beantwoord 8 vragen om je ideale piramidetype te ontdekken. Snel, eenvoudig en effectief.",
+        "cta": "Start de quiz"
+      },
+      "board": {
+        "title": "Bordspel",
+        "description": "Monopoly-stijl: gooi de dobbelsteen, beweeg op het bord en ontdek je profiel terwijl je speelt.",
+        "cta": "Speel het bord"
+      }
+    },
+    "questions": {
+      "priority": {
+        "question": "Wat is je belangrijkste prioriteit in het leven?",
+        "options": {
+          "security": "Zekerheid en stabiliteit",
+          "growth": "Groei en kansen",
+          "freedom": "Vrijheid en onafhankelijkheid",
+          "connections": "Netwerken en connecties"
+        }
+      },
+      "riskTolerance": {
+        "question": "Wat is je relatie met risico?",
+        "options": {
+          "avoidRisk": "Ik vermijd liever risico's",
+          "calculatedRisk": "Ik neem berekende risico's",
+          "embraceRisk": "Ik omarm risico voor groei",
+          "thriveInChaos": "Ik gedij in chaos"
+        }
+      },
+      "workStyle": {
+        "question": "Welke werkstijl past het beste bij jou?",
+        "options": {
+          "stableJob": "Stabiele baan met voordelen",
+          "entrepreneur": "Ondernemer met eigen bedrijf",
+          "freelance": "Freelance / Onafhankelijk consultant",
+          "opportunist": "Opportunist naar omstandigheden"
+        }
+      },
+      "valueSystem": {
+        "question": "Welk waardensysteem past het beste bij jou?",
+        "options": {
+          "meritocracy": "Meritocratie en competentie",
+          "socialProtection": "Sociale bescherming en gelijkheid",
+          "pragmatism": "Pragmatisme en aanpassing",
+          "wealth": "Vermogensopbouw"
+        }
+      },
+      "networkStyle": {
+        "question": "Hoe bouw je je netwerk?",
+        "options": {
+          "formalNetworks": "Formele professionele netwerken",
+          "informalNetworks": "Informele connecties en vrienden",
+          "businessNetworks": "Strategische zakelijke netwerken",
+          "minimalNetworks": "Ik blijf liever discreet"
+        }
+      },
+      "futureVision": {
+        "question": "Wat is je geografische visie voor de toekomst?",
+        "options": {
+          "stayLocal": "In mijn thuisland blijven",
+          "goGlobal": "Internationaal gaan",
+          "strategic": "Strategische mobiliteit naar kansen",
+          "opportunistic": "Waar het geld stroomt"
+        }
+      },
+      "moneyRelation": {
+        "question": "Wat is je relatie met geld?",
+        "options": {
+          "saveSafely": "Voorzichtig sparen",
+          "investGrowth": "Investeren voor groei",
+          "maximizeNow": "Inkomen nu maximaliseren",
+          "diversify": "Overal diversifiëren"
+        }
+      },
+      "rulesAttitude": {
+        "question": "Wat is je houding tegenover regels?",
+        "options": {
+          "followStrictly": "Strikt volgen",
+          "useWisely": "Verstandig gebruiken",
+          "findLoopholes": "Mazen vinden",
+          "createOwn": "Eigen regels maken"
+        }
+      }
+    },
+    "result": {
+      "title": "Je ideale piramidetype",
+      "subtitle": "Gebaseerd op je antwoorden, hier is het systeem dat het beste bij je past",
+      "scores": "Je scores per type",
+      "playAgain": "Opnieuw spelen",
+      "learnMore": "Meer leren"
+    },
+    "board": {
+      "instructions": "Gooi de dobbelsteen om vooruit te gaan. Elk veld geeft je punten voor verschillende piramidetypes.",
+      "rollDice": "Klik op de dobbelsteen om te gooien",
+      "landedPyramid": "+2 punten voor {{type}}",
+      "chanceCard": "Kanskaart! +3 punten voor {{type}}",
+      "trap": "Val! -2 punten op je dominante type",
+      "bonus": "Bonus! +1 punt op alle types",
+      "answeredQuestion": "Goed antwoord!",
+      "victory": "Gefeliciteerd! Je hebt de finish bereikt!"
+    }
   }
 }

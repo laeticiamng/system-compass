@@ -1172,5 +1172,114 @@
         "planB": "EU-Länder via Staatsbürgerschaftsprogramme. Georgien, Serbien für einfache Einreise. VAE für regionale Option."
       }
     }
+  },
+  "pyramidQuiz": {
+    "title": "Pyramiden-Quiz",
+    "subtitle": "Entdecke, welcher Systemtyp am besten zu deiner Persönlichkeit und deinen Bestrebungen passt",
+    "questionOf": "Frage {{current}} von {{total}}",
+    "back": "Zurück",
+    "modes": {
+      "online": {
+        "title": "Online-Quiz",
+        "description": "Beantworte 8 Fragen, um deinen idealen Pyramidentyp zu entdecken. Schnell, einfach und effektiv.",
+        "cta": "Quiz starten"
+      },
+      "board": {
+        "title": "Brettspiel",
+        "description": "Monopoly-Stil: Würfle, bewege dich auf dem Brett und entdecke dein Profil beim Spielen.",
+        "cta": "Brett spielen"
+      }
+    },
+    "questions": {
+      "priority": {
+        "question": "Was ist deine Hauptpriorität im Leben?",
+        "options": {
+          "security": "Sicherheit und Stabilität",
+          "growth": "Wachstum und Chancen",
+          "freedom": "Freiheit und Unabhängigkeit",
+          "connections": "Netzwerke und Verbindungen"
+        }
+      },
+      "riskTolerance": {
+        "question": "Was ist deine Beziehung zum Risiko?",
+        "options": {
+          "avoidRisk": "Ich bevorzuge, Risiken zu vermeiden",
+          "calculatedRisk": "Ich gehe kalkulierte Risiken ein",
+          "embraceRisk": "Ich umarme Risiko für Wachstum",
+          "thriveInChaos": "Ich gedeihe im Chaos"
+        }
+      },
+      "workStyle": {
+        "question": "Welcher Arbeitsstil passt am besten zu dir?",
+        "options": {
+          "stableJob": "Stabile Arbeit mit Vorteilen",
+          "entrepreneur": "Unternehmer mit eigenem Geschäft",
+          "freelance": "Freiberufler / Unabhängiger Berater",
+          "opportunist": "Opportunist je nach Umständen"
+        }
+      },
+      "valueSystem": {
+        "question": "Welches Wertesystem passt am besten zu dir?",
+        "options": {
+          "meritocracy": "Leistungsgesellschaft und Kompetenz",
+          "socialProtection": "Sozialschutz und Gleichheit",
+          "pragmatism": "Pragmatismus und Anpassung",
+          "wealth": "Vermögensaufbau"
+        }
+      },
+      "networkStyle": {
+        "question": "Wie baust du dein Netzwerk auf?",
+        "options": {
+          "formalNetworks": "Formelle professionelle Netzwerke",
+          "informalNetworks": "Informelle Verbindungen und Freunde",
+          "businessNetworks": "Strategische Geschäftsnetzwerke",
+          "minimalNetworks": "Ich bleibe lieber diskret"
+        }
+      },
+      "futureVision": {
+        "question": "Was ist deine geografische Vision für die Zukunft?",
+        "options": {
+          "stayLocal": "In meinem Heimatland bleiben",
+          "goGlobal": "International gehen",
+          "strategic": "Strategische Mobilität je nach Chancen",
+          "opportunistic": "Wo das Geld fließt"
+        }
+      },
+      "moneyRelation": {
+        "question": "Was ist deine Beziehung zu Geld?",
+        "options": {
+          "saveSafely": "Vorsichtig sparen",
+          "investGrowth": "Für Wachstum investieren",
+          "maximizeNow": "Einkommen jetzt maximieren",
+          "diversify": "Überall diversifizieren"
+        }
+      },
+      "rulesAttitude": {
+        "question": "Was ist deine Einstellung zu Regeln?",
+        "options": {
+          "followStrictly": "Streng befolgen",
+          "useWisely": "Intelligent nutzen",
+          "findLoopholes": "Schlupflöcher finden",
+          "createOwn": "Eigene Regeln erstellen"
+        }
+      }
+    },
+    "result": {
+      "title": "Dein idealer Pyramidentyp",
+      "subtitle": "Basierend auf deinen Antworten, hier ist das System, das am besten zu dir passt",
+      "scores": "Deine Punkte nach Typ",
+      "playAgain": "Nochmal spielen",
+      "learnMore": "Mehr erfahren"
+    },
+    "board": {
+      "instructions": "Würfle, um voranzukommen. Jedes Feld gibt dir Punkte für verschiedene Pyramidentypen.",
+      "rollDice": "Klicke auf den Würfel zum Werfen",
+      "landedPyramid": "+2 Punkte für {{type}}",
+      "chanceCard": "Ereigniskarte! +3 Punkte für {{type}}",
+      "trap": "Falle! -2 Punkte auf deinen dominanten Typ",
+      "bonus": "Bonus! +1 Punkt auf alle Typen",
+      "answeredQuestion": "Gute Antwort!",
+      "victory": "Herzlichen Glückwunsch! Du hast das Ziel erreicht!"
+    }
   }
 }
