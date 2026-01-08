@@ -20,6 +20,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Link, useNavigate } from 'react-router-dom';
 import { ProgressStats } from '@/components/dashboard/ProgressStats';
 import { DeadlineCalendar } from '@/components/dashboard/DeadlineCalendar';
+import { AchievementsPanel } from '@/components/game/AchievementsPanel';
 import { 
   CheckCircle2, 
   Circle, 
@@ -469,6 +470,13 @@ export default function Dashboard() {
               )}
             </CardContent>
           </Card>
+        )}
+
+        {/* Achievements Section */}
+        {stats.totalGamesPlayed > 0 && (
+          <div className="mb-6">
+            <AchievementsPanel />
+          </div>
         )}
 
         {/* Plan Selection or Current Plan */}
