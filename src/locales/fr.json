@@ -3896,5 +3896,136 @@
     "costOfLiving": "Coût Vie",
     "netMonthly": "Net mensuel",
     "taxes": "Prélèvements"
+  },
+  "lifeGame": {
+    "hero": {
+      "badge": "Simulation de vie réaliste",
+      "title1": "Le Jeu de",
+      "titleHighlight": "LA VIE",
+      "subtitle": "Tu ne choisis pas où tu nais. Tu choisis comment tu navigues. Simule des trajectoires de vie réelles à travers les systèmes du monde.",
+      "playCta": "Jouer maintenant",
+      "learnCta": "Comment ça marche",
+      "stats": {
+        "archetypes": "Personnages",
+        "systems": "Systèmes",
+        "possibilities": "Trajectoires"
+      }
+    },
+    "tagline": {
+      "quote": "Certains naissent sur la ligne d'arrivée. D'autres doivent courir un marathon avec des chaînes aux pieds. Ce jeu montre pourquoi.",
+      "author": "— La réalité, sans filtre"
+    },
+    "features": {
+      "title": "Ce qui rend ce jeu différent",
+      "subtitle": "Pas un jeu de hasard. Un miroir de la réalité systémique.",
+      "systems": {
+        "title": "6 Systèmes Mondiaux",
+        "description": "Chaque pays fonctionne différemment. Certains récompensent la compétence, d'autres les connexions, d'autres la prise de risque."
+      },
+      "characters": {
+        "title": "12+ Archétypes Réels",
+        "description": "Du fils de bonne famille au réfugié de guerre. Chaque personnage a des avantages et contraintes uniques."
+      },
+      "choices": {
+        "title": "Choix Conséquents",
+        "description": "Travailler, étudier, migrer, entreprendre... Chaque action a un coût et des conséquences en chaîne."
+      },
+      "risks": {
+        "title": "Raccourcis Dangereux",
+        "description": "Le marché noir, la corruption, les faux papiers. Gains rapides, mais risque de tout perdre."
+      }
+    },
+    "resources": {
+      "title": "6 Ressources à Gérer",
+      "subtitle": "Tu n'auras jamais tout. Choisis ce que tu sacrifies."
+    },
+    "archetypes": {
+      "title": "Qui seras-tu ?",
+      "subtitle": "Chaque personnage représente une réalité vécue par des millions de personnes.",
+      "seeAll": "Voir tous les personnages"
+    },
+    "difficulty": {
+      "easy": "Facile",
+      "medium": "Moyen",
+      "hard": "Difficile",
+      "extreme": "Extrême"
+    },
+    "warning": {
+      "title": "Avertissement",
+      "description": "Ce jeu aborde des réalités difficiles de façon ludique. Les raccourcis du jeu représentent des choix que des millions de personnes font par désespoir. Les conséquences catastrophiques reflètent des drames réels : prison, expulsion, destruction familiale.",
+      "topics": {
+        "migration": "Migration forcée",
+        "corruption": "Corruption systémique",
+        "inequality": "Inégalités de naissance",
+        "shortcuts": "Raccourcis dangereux"
+      }
+    },
+    "cta": {
+      "title": "Prêt à tester ta stratégie de vie ?",
+      "subtitle": "Découvre si tu aurais réussi avec une autre main de départ.",
+      "button": "Commencer ma vie"
+    }
+  },
+  "archetypes": {
+    "silverSpoon": {
+      "label": "L'Héritier",
+      "description": "Né dans une famille aisée avec un réseau déjà établi. La vie en mode facile.",
+      "example": "Fils/fille de PDG, avocat, médecin"
+    },
+    "techBro": {
+      "label": "Le Tech Bro",
+      "description": "Développeur autodidacte dans la Silicon Valley. Compétent mais socialement limité.",
+      "example": "Ingénieur GAFAM, startup founder"
+    },
+    "suburbanDreamer": {
+      "label": "Le Rêveur de Banlieue",
+      "description": "Classe moyenne qui rêve de stabilité et de maison avec jardin.",
+      "example": "Employé en CDI, fonctionnaire"
+    },
+    "ambitiousGraduate": {
+      "label": "Le Diplômé Ambitieux",
+      "description": "Premier de sa famille à faire des études supérieures. Tout à prouver.",
+      "example": "Étudiant boursier, stagiaire surqualifié"
+    },
+    "economicMigrant": {
+      "label": "Le Migrant Économique",
+      "description": "Quitte son pays pour offrir une vie meilleure à sa famille. Résilient mais invisible.",
+      "example": "Travailleur sans papiers, diaspora"
+    },
+    "warRefugee": {
+      "label": "Le Réfugié de Guerre",
+      "description": "A tout perdu sauf l'espoir. Reconstruit sa vie à partir de zéro.",
+      "example": "Réfugié syrien, ukrainien, afghan"
+    },
+    "selfMade": {
+      "label": "Le Self-Made",
+      "description": "Parti de rien, construit son empire à la force du poignet. Rusé et ambitieux.",
+      "example": "Entrepreneur des quartiers, immigrant success story"
+    },
+    "digitalNomad": {
+      "label": "Le Nomade Digital",
+      "description": "Travaille de partout, n'appartient à aucun système. Libre mais instable.",
+      "example": "Freelance remote, créateur de contenu"
+    },
+    "oligarchHeir": {
+      "label": "L'Héritier Oligarque",
+      "description": "Fortune immense mais passeport problématique. L'argent ne fait pas tout.",
+      "example": "Fils de milliardaire russe, chinois"
+    },
+    "stateDependent": {
+      "label": "Le Dépendant du Système",
+      "description": "Maladie chronique ou handicap. Dépend des filets de sécurité sociaux.",
+      "example": "Personne en invalidité, maladie longue durée"
+    },
+    "expatExecutive": {
+      "label": "L'Expat Cadre Sup",
+      "description": "Envoyé à l'étranger par sa boîte. Package doré mais burnout garanti.",
+      "example": "Directeur pays, VP régional"
+    },
+    "undergroundHustler": {
+      "label": "Le Hustler des Rues",
+      "description": "Débrouillard de l'économie informelle. Survit grâce à son réseau et sa ruse.",
+      "example": "Vendeur ambulant, économie grise"
+    }
   }
 }

@@ -3488,5 +3488,136 @@
     "costOfLiving": "Cost of Living",
     "netMonthly": "Monthly net",
     "taxes": "Deductions"
+  },
+  "lifeGame": {
+    "hero": {
+      "badge": "Realistic life simulation",
+      "title1": "The Game of",
+      "titleHighlight": "LIFE",
+      "subtitle": "You don't choose where you're born. You choose how you navigate. Simulate real life trajectories across world systems.",
+      "playCta": "Play now",
+      "learnCta": "How it works",
+      "stats": {
+        "archetypes": "Characters",
+        "systems": "Systems",
+        "possibilities": "Trajectories"
+      }
+    },
+    "tagline": {
+      "quote": "Some are born at the finish line. Others must run a marathon with chains on their feet. This game shows why.",
+      "author": "— Reality, unfiltered"
+    },
+    "features": {
+      "title": "What makes this game different",
+      "subtitle": "Not a game of chance. A mirror of systemic reality.",
+      "systems": {
+        "title": "6 World Systems",
+        "description": "Every country works differently. Some reward competence, others connections, others risk-taking."
+      },
+      "characters": {
+        "title": "12+ Real Archetypes",
+        "description": "From trust fund kids to war refugees. Each character has unique advantages and constraints."
+      },
+      "choices": {
+        "title": "Consequential Choices",
+        "description": "Work, study, migrate, start a business... Every action has costs and chain reactions."
+      },
+      "risks": {
+        "title": "Dangerous Shortcuts",
+        "description": "Black market, corruption, fake documents. Quick gains, but risk losing everything."
+      }
+    },
+    "resources": {
+      "title": "6 Resources to Manage",
+      "subtitle": "You'll never have everything. Choose what to sacrifice."
+    },
+    "archetypes": {
+      "title": "Who will you be?",
+      "subtitle": "Each character represents a reality lived by millions of people.",
+      "seeAll": "See all characters"
+    },
+    "difficulty": {
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard",
+      "extreme": "Extreme"
+    },
+    "warning": {
+      "title": "Warning",
+      "description": "This game addresses difficult realities in a playful way. The shortcuts in the game represent choices millions make out of desperation. The catastrophic consequences reflect real tragedies: prison, deportation, family destruction.",
+      "topics": {
+        "migration": "Forced migration",
+        "corruption": "Systemic corruption",
+        "inequality": "Birth inequality",
+        "shortcuts": "Dangerous shortcuts"
+      }
+    },
+    "cta": {
+      "title": "Ready to test your life strategy?",
+      "subtitle": "Discover if you would have succeeded with a different starting hand.",
+      "button": "Start my life"
+    }
+  },
+  "archetypes": {
+    "silverSpoon": {
+      "label": "The Heir",
+      "description": "Born into a wealthy family with an established network. Life on easy mode.",
+      "example": "CEO's son/daughter, lawyer, doctor"
+    },
+    "techBro": {
+      "label": "The Tech Bro",
+      "description": "Self-taught developer in Silicon Valley. Skilled but socially limited.",
+      "example": "FAANG engineer, startup founder"
+    },
+    "suburbanDreamer": {
+      "label": "The Suburban Dreamer",
+      "description": "Middle class dreaming of stability and a house with a garden.",
+      "example": "Corporate employee, civil servant"
+    },
+    "ambitiousGraduate": {
+      "label": "The Ambitious Graduate",
+      "description": "First in family to attend university. Everything to prove.",
+      "example": "Scholarship student, overqualified intern"
+    },
+    "economicMigrant": {
+      "label": "The Economic Migrant",
+      "description": "Leaves country to offer a better life to family. Resilient but invisible.",
+      "example": "Undocumented worker, diaspora"
+    },
+    "warRefugee": {
+      "label": "The War Refugee",
+      "description": "Lost everything but hope. Rebuilding life from zero.",
+      "example": "Syrian, Ukrainian, Afghan refugee"
+    },
+    "selfMade": {
+      "label": "The Self-Made",
+      "description": "Started from nothing, built an empire through sheer will. Cunning and ambitious.",
+      "example": "Hood entrepreneur, immigrant success story"
+    },
+    "digitalNomad": {
+      "label": "The Digital Nomad",
+      "description": "Works from anywhere, belongs to no system. Free but unstable.",
+      "example": "Remote freelancer, content creator"
+    },
+    "oligarchHeir": {
+      "label": "The Oligarch Heir",
+      "description": "Immense wealth but problematic passport. Money isn't everything.",
+      "example": "Russian, Chinese billionaire's child"
+    },
+    "stateDependent": {
+      "label": "The System Dependent",
+      "description": "Chronic illness or disability. Depends on social safety nets.",
+      "example": "Person on disability, long-term illness"
+    },
+    "expatExecutive": {
+      "label": "The Expat Executive",
+      "description": "Sent abroad by company. Golden package but burnout guaranteed.",
+      "example": "Country director, regional VP"
+    },
+    "undergroundHustler": {
+      "label": "The Street Hustler",
+      "description": "Informal economy survivor. Thrives through network and cunning.",
+      "example": "Street vendor, gray economy"
+    }
   }
 }
