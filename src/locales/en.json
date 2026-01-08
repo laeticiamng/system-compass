@@ -16,7 +16,8 @@
     "match": "Match",
     "compare": "Compare",
     "resources": "Resources",
-    "pyramids": "Pyramids"
+    "pyramids": "Pyramids",
+    "quiz": "Quiz"
   },
   "hero": {
     "badge": "Navigate the Real System",
@@ -2129,6 +2130,11 @@
         "title": "Board Game",
         "description": "Monopoly style: roll the dice, move on the board and discover your profile while playing.",
         "cta": "Play the board"
+      },
+      "multiplayer": {
+        "title": "Multiplayer",
+        "description": "Play with friends! Up to 4 players can compete turn by turn on the board.",
+        "cta": "Play together"
       }
     },
     "questions": {
@@ -2232,7 +2238,42 @@
       "gameOver": "Game over!"
     }
   },
-  "nav": {
-    "quiz": "Quiz"
+  "auth": {
+    "login": "Login",
+    "signup": "Sign up",
+    "subtitle": "Sign in to save your games and create your profile",
+    "email": "Email",
+    "password": "Password",
+    "displayName": "Display name",
+    "displayNamePlaceholder": "How do you want to be called?",
+    "loginButton": "Sign in",
+    "signupButton": "Sign up",
+    "logout": "Sign out",
+    "errors": {
+      "invalidEmail": "Invalid email",
+      "passwordTooShort": "Password must be at least 6 characters",
+      "nameRequired": "Display name is required",
+      "invalidCredentials": "Invalid email or password",
+      "alreadyRegistered": "An account already exists with this email",
+      "generic": "An error occurred"
+    }
+  },
+  "gameModes": {
+    "solo": {
+      "title": "Solo",
+      "description": "Play alone and discover your ideal pyramid type"
+    },
+    "race": {
+      "title": "Race",
+      "description": "First to finish wins! Race to the end"
+    },
+    "pointsDuel": {
+      "title": "Points Duel",
+      "description": "Accumulate the most points before reaching the end"
+    },
+    "cooperative": {
+      "title": "Cooperative",
+      "description": "Work together to maximize collective scores"
+    }
   }
 }

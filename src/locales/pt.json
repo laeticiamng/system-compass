@@ -16,7 +16,8 @@
     "match": "Match",
     "compare": "Comparar",
     "resources": "Recursos",
-    "pyramids": "Pirâmides"
+    "pyramids": "Pirâmides",
+    "quiz": "Quiz"
   },
   "hero": {
     "badge": "Navega pelo sistema real",
@@ -1289,6 +1290,26 @@
       "player": "Jogador",
       "yourTurn": "A tua vez!",
       "gameOver": "Jogo terminado!"
+    }
+  },
+  "auth": {
+    "login": "Entrar",
+    "signup": "Registar",
+    "subtitle": "Entra para guardar os teus jogos e criar o teu perfil",
+    "email": "Email",
+    "password": "Palavra-passe",
+    "displayName": "Nome de exibição",
+    "displayNamePlaceholder": "Como queres ser chamado?",
+    "loginButton": "Entrar",
+    "signupButton": "Registar",
+    "logout": "Sair",
+    "errors": {
+      "invalidEmail": "Email inválido",
+      "passwordTooShort": "A palavra-passe deve ter pelo menos 6 caracteres",
+      "nameRequired": "O nome de exibição é obrigatório",
+      "invalidCredentials": "Email ou palavra-passe inválidos",
+      "alreadyRegistered": "Já existe uma conta com este email",
+      "generic": "Ocorreu um erro"
     }
   }
 }

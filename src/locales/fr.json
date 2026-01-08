@@ -16,7 +16,8 @@
     "match": "Match",
     "compare": "Comparer",
     "resources": "Ressources",
-    "pyramids": "Pyramides"
+    "pyramids": "Pyramides",
+    "quiz": "Quiz"
   },
   "hero": {
     "badge": "Naviguer dans le vrai système",
@@ -2593,6 +2594,44 @@
       "player": "Joueur",
       "yourTurn": "C'est ton tour !",
       "gameOver": "Partie terminée !"
+    }
+  },
+  "auth": {
+    "login": "Connexion",
+    "signup": "Inscription",
+    "subtitle": "Connecte-toi pour sauvegarder tes parties et créer ton profil",
+    "email": "Email",
+    "password": "Mot de passe",
+    "displayName": "Nom d'affichage",
+    "displayNamePlaceholder": "Comment veux-tu être appelé ?",
+    "loginButton": "Se connecter",
+    "signupButton": "S'inscrire",
+    "logout": "Déconnexion",
+    "errors": {
+      "invalidEmail": "Email invalide",
+      "passwordTooShort": "Le mot de passe doit contenir au moins 6 caractères",
+      "nameRequired": "Le nom d'affichage est requis",
+      "invalidCredentials": "Email ou mot de passe incorrect",
+      "alreadyRegistered": "Un compte existe déjà avec cet email",
+      "generic": "Une erreur est survenue"
+    }
+  },
+  "gameModes": {
+    "solo": {
+      "title": "Solo",
+      "description": "Joue seul et découvre ton type de pyramide idéal"
+    },
+    "race": {
+      "title": "Course",
+      "description": "Premier arrivé gagne ! Course vers l'arrivée"
+    },
+    "pointsDuel": {
+      "title": "Duel de points",
+      "description": "Accumulez le plus de points possible avant l'arrivée"
+    },
+    "cooperative": {
+      "title": "Coopératif",
+      "description": "Travaillez ensemble pour maximiser les scores collectifs"
     }
   }
 }
