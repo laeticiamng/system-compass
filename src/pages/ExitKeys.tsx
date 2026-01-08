@@ -37,6 +37,7 @@ import { VacationRecommendations } from '@/components/exit-keys/VacationRecommen
 import { RiskPrevention } from '@/components/RiskPrevention';
 import { SalaryCalculator } from '@/components/SalaryCalculator';
 import { JourneyProgressBar, getJourneyPhase } from '@/components/JourneyProgressBar';
+import { SimulationDisclaimer } from '@/components/SimulationDisclaimer';
 
 const STEPS = ['origin', 'current', 'profile', 'goals', 'results'] as const;
 type Step = typeof STEPS[number];
@@ -281,9 +282,7 @@ export default function ExitKeys() {
               <p className="text-muted-foreground">
                 {t('exitKeys.subtitle', 'Simulez et analysez les stratégies adaptées à votre situation')}
               </p>
-              <p className="text-xs text-muted-foreground/70 mt-1">
-                {t('common.disclaimer')}
-              </p>
+              <SimulationDisclaimer variant="compact" className="mt-2" />
             </div>
           </div>
 

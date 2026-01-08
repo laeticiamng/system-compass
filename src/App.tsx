@@ -26,6 +26,7 @@ import ExitKeysCatalog from "./pages/ExitKeysCatalog";
 import CompareExitKeys from "./pages/CompareExitKeys";
 import Dashboard from "./pages/Dashboard";
 import About from "./pages/About";
+import Disclaimer from "./pages/Disclaimer";
 
 const queryClient = new QueryClient();
 
@@ -59,6 +60,7 @@ const App = () => (
                   <Route path="/exit-keys/compare" element={<CompareExitKeys />} />
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/about" element={<About />} />
+                  <Route path="/disclaimer" element={<Disclaimer />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>
