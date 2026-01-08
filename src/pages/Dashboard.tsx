@@ -402,7 +402,7 @@ export default function Dashboard() {
                       <Button 
                         size="sm" 
                         className="flex-1 gap-1"
-                        onClick={() => navigate(`/quiz?loadGame=${game.id}`)}
+                        onClick={() => navigate(`/pyramid-quiz?loadGame=${game.id}`)}
                       >
                         <Play className="w-3 h-3" />
                         {game.is_finished ? t('dashboard.replay', 'Rejouer') : t('dashboard.resume', 'Reprendre')}
@@ -423,7 +423,7 @@ export default function Dashboard() {
               </div>
               {savedGames.length > 6 && (
                 <div className="mt-4 text-center">
-                  <Button variant="outline" size="sm" onClick={() => navigate('/quiz')}>
+                  <Button variant="outline" size="sm" onClick={() => navigate('/pyramid-quiz')}>
                     {t('dashboard.viewAll')} ({savedGames.length})
                   </Button>
                 </div>

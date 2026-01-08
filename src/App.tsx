@@ -31,6 +31,7 @@ import Disclaimer from "./pages/Disclaimer";
 import SystemicMistakes from "./pages/SystemicMistakes";
 import HowToRead from "./pages/HowToRead";
 import AdminTranslations from "./pages/AdminTranslations";
+import MultiCompare from "./pages/MultiCompare";
 
 const queryClient = new QueryClient();
 
@@ -56,6 +57,7 @@ const App = () => (
                   <Route path="/life-trajectory" element={<LifeTrajectory />} />
                   <Route path="/match" element={<Match />} />
                   <Route path="/compare" element={<CompareUnified />} />
+                  <Route path="/multi-compare" element={<MultiCompare />} />
                   <Route path="/resources" element={<Resources />} />
                   <Route path="/pyramid-types" element={<PyramidTypes />} />
                   <Route path="/pyramid-quiz" element={<PyramidQuiz />} />
