@@ -19,8 +19,11 @@ const resourceItemKeys = {
 export default function Resources() {
   const { t } = useTranslation();
 
-  const survival30Items = t('resources.checklists.survival30.items', { returnObjects: true }) as string[];
-  const preMoveItems = t('resources.checklists.preMove.items', { returnObjects: true }) as string[];
+  const survival30ItemsRaw = t('resources.checklists.survival30.items', { returnObjects: true });
+  const preMoveItemsRaw = t('resources.checklists.preMove.items', { returnObjects: true });
+  
+  const survival30Items = Array.isArray(survival30ItemsRaw) ? survival30ItemsRaw : [];
+  const preMoveItems = Array.isArray(preMoveItemsRaw) ? preMoveItemsRaw : [];
 
   return (
     <div className="min-h-screen pt-24 pb-16">
