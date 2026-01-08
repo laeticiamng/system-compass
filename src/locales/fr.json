@@ -74,28 +74,30 @@
     "multiCompare": "Multi-Comparer"
   },
   "hero": {
-    "badge": "Naviguer dans le vrai système",
-    "title1": "Comprends ta",
-    "titleHighlight": "Pyramide",
-    "title2": "Trouve ton chemin",
-    "subtitle": "Chaque pays a un système caché. Apprends ce qu'il récompense vraiment, où tu te situes, et comment survivre intelligemment — ou t'échapper stratégiquement.",
-    "discoverProfile": "Construis ta vie",
-    "exploreCountries": "Explorer les pays"
+    "badge": "Avant de te tromper, teste ici",
+    "title1": "Trouve ton chemin",
+    "titleHighlight": "+ vite",
+    "title2": "",
+    "subtitle": "Évite de perdre des années de ta vie. Du vendeur de beignets à Dakar au cadre parisien, du retraité qui veut s'installer au soleil à l'étudiant qui choisit sa voie — teste tes choix ici avant de les vivre.",
+    "discoverProfile": "Teste ta trajectoire",
+    "exploreCountries": "Explore les systèmes",
+    "madeBy": "Créé par quelqu'un qui a perdu énormément de temps dans sa propre vie",
+    "forEveryone": "Pour tout le monde, partout"
   },
   "howItWorks": {
-    "title": "Comment ça marche",
-    "subtitle": "Un cadre pragmatique pour comprendre les systèmes, pas pour les combattre",
+    "title": "Évite les pièges avant qu'ils n'arrivent",
+    "subtitle": "Chaque choix a des conséquences. Mieux vaut les voir maintenant que dans 3 ans.",
     "understand": {
-      "title": "Comprendre la pyramide",
-      "description": "Chaque pays récompense quelque chose de différent. Apprends ce que le système valorise vraiment — problèmes, stabilité, compétence ou croissance."
+      "title": "Comprends où tu es",
+      "description": "Chaque pays fonctionne différemment. Apprends ce que le système récompense vraiment — avant de t'y engager à fond."
     },
     "profile": {
-      "title": "Connaître ton profil",
-      "description": "Découvre tes valeurs, ta tolérance au risque et tes ambitions. Trouve quels systèmes correspondent à qui tu es."
+      "title": "Connais ce que tu veux vraiment",
+      "description": "Tes valeurs, ta famille, ta tolérance au risque. Trouve ce qui te correspond, pas ce qu'on t'a dit de vouloir."
     },
     "playbook": {
-      "title": "Obtiens ton playbook",
-      "description": "Des stratégies concrètes pour survivre où tu es et construire des options vers où tu veux aller."
+      "title": "Simule avant de vivre",
+      "description": "Teste les conséquences de tes choix : diplôme, pays, relation, métier. Mieux vaut se tromper ici que dans la vraie vie."
     }
   },
   "pyramids": {

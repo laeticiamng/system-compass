@@ -1,5 +1,6 @@
 import { CharacterCard, GameResources, CharacterTrait, CharacterAspiration, POSITIVE_TRAITS, NEGATIVE_TRAITS, ASPIRATIONS } from './game-data';
 import { PyramidType } from './types';
+import { FamilyStatus } from './family-system';
 
 // Helper to find traits/aspirations by ID
 const findTrait = (id: string, list: CharacterTrait[]): CharacterTrait => 
@@ -18,6 +19,7 @@ export interface CharacterArchetype extends Omit<CharacterCard, 'id'> {
   archetypeIcon: string;
   difficulty: 'easy' | 'medium' | 'hard' | 'extreme';
   realWorldExample: string;
+  familyStatus?: FamilyStatus;
 }
 
 export const CHARACTER_ARCHETYPES: CharacterArchetype[] = [
@@ -29,6 +31,7 @@ export const CHARACTER_ARCHETYPES: CharacterArchetype[] = [
     archetypeIcon: '👑',
     difficulty: 'easy',
     realWorldExample: 'archetypes.silverSpoon.example',
+    familyStatus: 'single',
     name: 'Alexandre Dumont',
     birthCountry: 'france',
     traits: [
@@ -59,6 +62,7 @@ export const CHARACTER_ARCHETYPES: CharacterArchetype[] = [
     archetypeIcon: '💻',
     difficulty: 'easy',
     realWorldExample: 'archetypes.techBro.example',
+    familyStatus: 'single',
     name: 'Kevin Chen',
     birthCountry: 'usa',
     traits: [
