@@ -13,8 +13,7 @@ import CountryDetail from "./pages/CountryDetail";
 import ProfileTest from "./pages/ProfileTest";
 import LifeTrajectory from "./pages/LifeTrajectory";
 import Match from "./pages/Match";
-import Compare from "./pages/Compare";
-import MultiCompare from "./pages/MultiCompare";
+import CompareUnified from "./pages/CompareUnified";
 import Resources from "./pages/Resources";
 import PyramidTypes from "./pages/PyramidTypes";
 import PyramidQuiz from "./pages/PyramidQuiz";
@@ -46,8 +45,7 @@ const App = () => (
                   <Route path="/profile-test" element={<ProfileTest />} />
                   <Route path="/life-trajectory" element={<LifeTrajectory />} />
                   <Route path="/match" element={<Match />} />
-                  <Route path="/compare" element={<Compare />} />
-                  <Route path="/multi-compare" element={<MultiCompare />} />
+                  <Route path="/compare" element={<CompareUnified />} />
                   <Route path="/resources" element={<Resources />} />
                   <Route path="/pyramid-types" element={<PyramidTypes />} />
                   <Route path="/pyramid-quiz" element={<PyramidQuiz />} />
