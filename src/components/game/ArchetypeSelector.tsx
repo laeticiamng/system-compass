@@ -20,7 +20,8 @@ import {
   Clock,
   Users,
   GraduationCap,
-  Plane
+  Plane,
+  Home
 } from 'lucide-react';
 
 interface ArchetypeSelectorProps {
@@ -37,6 +38,7 @@ const RESOURCE_ICONS: Record<string, React.ReactNode> = {
   network: <Users className="w-3 h-3" />,
   skills: <GraduationCap className="w-3 h-3" />,
   mobility: <Plane className="w-3 h-3" />,
+  family: <Home className="w-3 h-3" />,
 };
 
 export default function ArchetypeSelector({ 
