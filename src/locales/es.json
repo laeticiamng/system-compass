@@ -2129,13 +2129,115 @@
     "saveFailed": "Error al guardar",
     "gameLoaded": "¡Partida cargada!"
   },
-  "achievements": {
-    "title": "Logros",
-    "unlocked": "desbloqueados",
-    "all": "Todos",
-    "exploration": "Exploración",
-    "risk": "Toma de riesgos",
-    "mastery": "Maestría",
-    "special": "Especial"
+  "onboarding": {
+    "skip": "Omitir",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "start": "Comenzar",
+    "step1": {
+      "title": "Bienvenido a Pyramid Compass",
+      "description": "Tu brújula para navegar el sistema global. Comprende las reglas invisibles que gobiernan cada país."
+    },
+    "step2": {
+      "title": "Encuentra tu Match",
+      "description": "Responde algunas preguntas y descubre qué países realmente coinciden con tu perfil y ambiciones."
+    },
+    "step3": {
+      "title": "Calculadoras Inteligentes",
+      "description": "Simula tu salario neto, jubilación y poder adquisitivo en cualquier país."
+    },
+    "step4": {
+      "title": "Claves de Salida",
+      "description": "Crea un plan de acción concreto para alcanzar tus metas de vida, con pasos claros y seguimiento personalizado."
+    },
+    "step5": {
+      "title": "El Juego de la Vida",
+      "description": "Prueba diferentes trayectorias de vida en un juego de simulación educativo. Aprende los mecanismos del sistema sin riesgo."
+    }
+  },
+  "howToRead": {
+    "title": "Cómo leer los resultados",
+    "subtitle": "Entender la diferencia entre simulación y predicción",
+    "whatSimulationIs": {
+      "title": "Lo que ES una SIMULACIÓN",
+      "point1": "Un modelo simplificado basado en datos generales",
+      "point2": "Una herramienta para explorar tendencias y patrones",
+      "point3": "Una ayuda para la reflexión y la perspectiva",
+      "point4": "Un punto de partida para tu propia investigación",
+      "point5": "Una representación de lo que TIENDE a ocurrir en ciertos contextos"
+    },
+    "whatSimulationIsNot": {
+      "title": "Lo que una simulación NO es",
+      "point1": "Una predicción de tu futuro personal",
+      "point2": "Asesoramiento legal, financiero o médico",
+      "point3": "Una garantía de resultados si sigues las recomendaciones",
+      "point4": "Una verdad absoluta aplicable a todos",
+      "point5": "Un juicio de valor sobre tus elecciones de vida"
+    },
+    "keyConcept": {
+      "title": "Concepto clave: Tendencia ≠ Certeza",
+      "explanation": "Cuando la herramienta dice 'este sistema tiende a favorecer X', significa que estadísticamente, en este tipo de contexto, X es más probable. Pero TU caso particular depende de miles de factores que la herramienta no conoce.",
+      "analogy": "Es como el clima: 'A menudo llueve en noviembre en París' es estadísticamente cierto, pero no predice si lloverá el 15 de noviembre cuando TÚ estés allí."
+    },
+    "examples": {
+      "title": "Ejemplos concretos de lectura correcta",
+      "wrongReading": "❌ Lectura incorrecta",
+      "correctReading": "✓ Lectura correcta",
+      "countryMatch": {
+        "title": "Resultado de compatibilidad de país",
+        "wrong": "La herramienta dice 85% de compatibilidad con Suiza, así que definitivamente tendré éxito allí.",
+        "correct": "Suiza parece alineada con mi perfil teórico. Investigaré más para ver si coincide con MI situación real."
+      },
+      "trajectory": {
+        "title": "Simulación de trayectoria financiera",
+        "wrong": "La herramienta muestra que tendré 50.000€ en ahorros en 10 años, eso es seguro.",
+        "correct": "Si mantengo estos parámetros y no ocurren imprevistos, esta cantidad es plausible. Necesito planificar márgenes."
+      },
+      "gameVerdict": {
+        "title": "Veredicto del modo educativo",
+        "wrong": "Obtuve 'trayectoria difícil' en el juego, así que mi vida real será un fracaso.",
+        "correct": "Esta simulación muestra obstáculos típicos para este contexto de partida. Puedo usarla para anticipar desafíos."
+      }
+    },
+    "limitations": {
+      "title": "Lo que la herramienta NO puede tener en cuenta",
+      "point1": "Tus habilidades únicas, red personal, suerte",
+      "point2": "Cambios geopolíticos, económicos o personales futuros",
+      "point3": "Matices culturales que solo la experiencia vivida permite entender",
+      "point4": "Oportunidades inesperadas que pueden cambiar todo"
+    },
+    "bestPractices": {
+      "title": "Cómo usar la herramienta inteligentemente",
+      "practice1": {
+        "title": "Úsala como punto de partida",
+        "description": "No como destino. Los resultados deben abrir vías de investigación, no cerrarlas."
+      },
+      "practice2": {
+        "title": "Cruza con otras fuentes",
+        "description": "Habla con personas que viven allí, lee testimonios, consulta profesionales."
+      },
+      "practice3": {
+        "title": "Adapta a TU situación",
+        "description": "Los promedios no aplican a todos. Tu camino único puede cambiar radicalmente las probabilidades."
+      },
+      "practice4": {
+        "title": "Revisa regularmente",
+        "description": "Tus parámetros cambian. Rehaz las simulaciones cuando tu situación evolucione."
+      }
+    },
+    "finalNote": {
+      "title": "En resumen",
+      "text": "Esta herramienta te ayuda a ver más claro, no a ver el futuro. Ilumina tendencias para que TÚ puedas decidir con conocimiento de causa. La decisión y la responsabilidad siempre son tuyas."
+    }
+  },
+  "footer": {
+    "explore": "Explorar",
+    "tools": "Herramientas",
+    "account": "Cuenta",
+    "profileTest": "Test de Perfil",
+    "madeWith": "Hecho con",
+    "about": "Acerca de",
+    "defaultCountry": "País predeterminado",
+    "defaultCountryTooltip": "Las calculadoras usan este país por defecto. Cámbialo en las herramientas."
   }
 }
