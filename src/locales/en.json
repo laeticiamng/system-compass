@@ -3343,5 +3343,41 @@
     "effectiveRate": "Effective rate",
     "monthlyNet": "Monthly net",
     "annualNet": "Annual net"
+  },
+  "retirement": {
+    "projectionTitle": "Retirement Projection 10-20 years",
+    "projectionDescription": "Simulate your retirement capital based on country and your parameters",
+    "currentAge": "Current age",
+    "grossSalary": "Annual gross salary",
+    "salaryGrowth": "Salary growth/year",
+    "privateContribution": "Private savings/year",
+    "retirementAge": "Retirement at",
+    "replacementRate": "Replacement rate",
+    "excellent": "Excellent",
+    "good": "Good",
+    "moderate": "Moderate",
+    "low": "Low",
+    "in20years": "In 20 years",
+    "capitalAccumulated": "Accumulated capital",
+    "estimatedPension": "Estimated pension",
+    "stateAndPrivate": "State + private",
+    "totalContributions": "Total contributions",
+    "over20years": "Over 20 years",
+    "noPensionWarning": "No public pension for expats",
+    "noPensionExplanation": "In this country, expats don't have access to the public pension system. Significant private savings are essential.",
+    "accumulated": "Accumulated capital",
+    "netSalary": "Annual net salary"
+  },
+  "trajectory": {
+    "title": "Comparative Financial Trajectory",
+    "description": "Compare purchasing power evolution over 10 years",
+    "addCountry": "Add",
+    "netSalary": "Net Salary",
+    "purchasingPower": "Purchasing Power",
+    "lowTaxes": "Taxation",
+    "healthcare": "Healthcare",
+    "costOfLiving": "Cost of Living",
+    "netMonthly": "Monthly net",
+    "taxes": "Deductions"
   }
 }
