@@ -14,8 +14,18 @@ import {
   SheetTrigger,
 } from './ui/sheet';
 
-// Pages that show simulation features
-const SIMULATION_PAGES = ['/exit-keys', '/life-game', '/compare', '/life-trajectory', '/country/', '/systemic-mistakes'];
+// Pages that show simulation features and need the anti-illusion reminder
+const SIMULATION_PAGES = [
+  '/exit-keys', 
+  '/life-game', 
+  '/compare', 
+  '/life-trajectory', 
+  '/country/', 
+  '/systemic-mistakes',
+  '/match',
+  '/profile-test',
+  '/pyramid-quiz'
+];
 const DISCLAIMER_DISMISSED_KEY = 'pyramid-disclaimer-dismissed';
 
 export function Header() {

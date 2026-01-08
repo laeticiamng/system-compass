@@ -4086,6 +4086,81 @@
       "description": "Test different life trajectories in an educational simulation game. Learn the system's mechanics risk-free."
     }
   },
+  "howToRead": {
+    "title": "How to Read Results",
+    "subtitle": "Understanding the difference between simulation and prediction",
+    "whatSimulationIs": {
+      "title": "What a SIMULATION is",
+      "point1": "A simplified model based on general data",
+      "point2": "A tool to explore trends and patterns",
+      "point3": "An aid for reflection and perspective",
+      "point4": "A starting point for your own research",
+      "point5": "A representation of what TENDS to happen in certain contexts"
+    },
+    "whatSimulationIsNot": {
+      "title": "What a simulation is NOT",
+      "point1": "A prediction of your personal future",
+      "point2": "Legal, financial, or medical advice",
+      "point3": "A guarantee of results if you follow recommendations",
+      "point4": "An absolute truth applicable to everyone",
+      "point5": "A value judgment on your life choices"
+    },
+    "keyConcept": {
+      "title": "Key concept: Trend ≠ Certainty",
+      "explanation": "When the tool says 'this system tends to favor X', it means statistically, in this type of context, X is more likely. But YOUR particular case depends on thousands of factors the tool doesn't know.",
+      "analogy": "It's like weather: 'It often rains in November in Paris' is statistically true, but it doesn't predict whether it will rain on November 15th when YOU are there."
+    },
+    "examples": {
+      "title": "Concrete examples of proper reading",
+      "wrongReading": "❌ Wrong reading",
+      "correctReading": "✓ Correct reading",
+      "countryMatch": {
+        "title": "Country compatibility result",
+        "wrong": "The tool says 85% compatibility with Switzerland, so I'll definitely succeed there.",
+        "correct": "Switzerland seems aligned with my theoretical profile. I'll dig deeper to see if it matches MY real situation."
+      },
+      "trajectory": {
+        "title": "Financial trajectory simulation",
+        "wrong": "The tool shows I'll have €50,000 in savings in 10 years, that's certain.",
+        "correct": "If I maintain these parameters and no unexpected events occur, this amount is plausible. I need to plan for margins."
+      },
+      "gameVerdict": {
+        "title": "Educational mode verdict",
+        "wrong": "I got 'difficult trajectory' in the game, so my real life will be a failure.",
+        "correct": "This simulation shows typical obstacles for this starting context. I can use it to anticipate challenges."
+      }
+    },
+    "limitations": {
+      "title": "What the tool CANNOT account for",
+      "point1": "Your unique skills, personal network, luck",
+      "point2": "Future geopolitical, economic, or personal changes",
+      "point3": "Cultural nuances that only lived experience allows understanding",
+      "point4": "Unexpected opportunities that can change everything"
+    },
+    "bestPractices": {
+      "title": "How to use the tool intelligently",
+      "practice1": {
+        "title": "Use it as a starting point",
+        "description": "Not as a destination. Results should open avenues of research, not close them."
+      },
+      "practice2": {
+        "title": "Cross-reference with other sources",
+        "description": "Talk to people who live there, read testimonials, consult professionals."
+      },
+      "practice3": {
+        "title": "Adapt to YOUR situation",
+        "description": "Averages don't apply to everyone. Your unique path can radically change probabilities."
+      },
+      "practice4": {
+        "title": "Review regularly",
+        "description": "Your parameters change. Redo simulations when your situation evolves."
+      }
+    },
+    "finalNote": {
+      "title": "In summary",
+      "text": "This tool helps you see more clearly, not see the future. It illuminates trends so that YOU can decide with full knowledge. The decision, and responsibility, always remain yours."
+    }
+  },
   "footer": {
     "defaultCountry": "Default country",
     "defaultCountryTooltip": "Calculators use this country by default. Change it in the tools."
