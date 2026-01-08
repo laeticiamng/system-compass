@@ -1,11 +1,19 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Compass, Heart } from 'lucide-react';
+import { Compass, Heart, RotateCcw } from 'lucide-react';
 import { CountryIndicator } from './CountryIndicator';
+import { useResetOnboarding } from './OnboardingDialog';
+import { Button } from './ui/button';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 export function Footer() {
   const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
+  const resetOnboarding = useResetOnboarding();
 
   return (
     <footer className="border-t border-border/50 bg-background/50 backdrop-blur-sm">
@@ -32,7 +40,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li><Link to="/countries" className="hover:text-foreground transition-colors">{t('nav.countries')}</Link></li>
               <li><Link to="/pyramid-types" className="hover:text-foreground transition-colors">{t('nav.pyramids')}</Link></li>
-              <li><Link to="/multi-compare" className="hover:text-foreground transition-colors">{t('nav.compare')}</Link></li>
+              <li><Link to="/compare" className="hover:text-foreground transition-colors">{t('nav.compare')}</Link></li>
               <li><Link to="/resources" className="hover:text-foreground transition-colors">{t('nav.resources')}</Link></li>
             </ul>
           </div>
@@ -60,9 +68,25 @@ export function Footer() {
 
         {/* Bottom */}
         <div className="pt-8 border-t border-border/50 flex flex-col gap-4">
-          {/* Country indicator */}
-          <div className="flex justify-center">
+          {/* Country indicator and tutorial reset */}
+          <div className="flex flex-wrap justify-center items-center gap-4">
             <CountryIndicator />
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button 
+                  variant="ghost" 
+                  size="sm"
+                  onClick={resetOnboarding}
+                  className="text-muted-foreground hover:text-foreground h-auto py-1.5"
+                >
+                  <RotateCcw className="w-3.5 h-3.5 mr-1.5" />
+                  <span className="text-sm">{t('footer.restartTutorial', 'Revoir le tutoriel')}</span>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{t('footer.restartTutorialTooltip', 'Relancer le tutoriel de bienvenue')}</p>
+              </TooltipContent>
+            </Tooltip>
           </div>
           
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">

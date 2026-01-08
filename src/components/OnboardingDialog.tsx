@@ -178,5 +178,13 @@ export function OnboardingDialog() {
 
 // Hook to reset onboarding (useful for testing)
 export function useResetOnboarding() {
-  return () => localStorage.removeItem(ONBOARDING_KEY);
+  return () => {
+    localStorage.removeItem(ONBOARDING_KEY);
+    window.location.reload();
+  };
+}
+
+// Check if onboarding was completed
+export function useOnboardingCompleted() {
+  return localStorage.getItem(ONBOARDING_KEY) === 'true';
 }
