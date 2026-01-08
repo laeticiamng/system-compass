@@ -1279,7 +1279,16 @@
       "trap": "Falle! -2 Punkte auf deinen dominanten Typ",
       "bonus": "Bonus! +1 Punkt auf alle Typen",
       "answeredQuestion": "Gute Antwort!",
-      "victory": "Herzlichen Glückwunsch! Du hast das Ziel erreicht!"
+      "victory": "Herzlichen Glückwunsch! Du hast das Ziel erreicht!",
+      "moving": "Bewege..."
+    },
+    "multiplayer": {
+      "setup": "Richte dein Mehrspieler-Spiel ein",
+      "selectPlayers": "Anzahl der Spieler",
+      "startGame": "Spiel starten",
+      "player": "Spieler",
+      "yourTurn": "Du bist dran!",
+      "gameOver": "Spiel beendet!"
     }
   }
 }

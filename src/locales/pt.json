@@ -1279,7 +1279,16 @@
       "trap": "Armadilha! -2 pontos no teu tipo dominante",
       "bonus": "Bónus! +1 ponto em todos os tipos",
       "answeredQuestion": "Boa resposta!",
-      "victory": "Parabéns! Chegaste à meta!"
+      "victory": "Parabéns! Chegaste à meta!",
+      "moving": "A mover..."
+    },
+    "multiplayer": {
+      "setup": "Configura o teu jogo multijogador",
+      "selectPlayers": "Número de jogadores",
+      "startGame": "Iniciar jogo",
+      "player": "Jogador",
+      "yourTurn": "A tua vez!",
+      "gameOver": "Jogo terminado!"
     }
   }
 }

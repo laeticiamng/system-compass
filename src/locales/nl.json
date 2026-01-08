@@ -1279,7 +1279,16 @@
       "trap": "Val! -2 punten op je dominante type",
       "bonus": "Bonus! +1 punt op alle types",
       "answeredQuestion": "Goed antwoord!",
-      "victory": "Gefeliciteerd! Je hebt de finish bereikt!"
+      "victory": "Gefeliciteerd! Je hebt de finish bereikt!",
+      "moving": "Beweegt..."
+    },
+    "multiplayer": {
+      "setup": "Stel je multiplayer spel in",
+      "selectPlayers": "Aantal spelers",
+      "startGame": "Start spel",
+      "player": "Speler",
+      "yourTurn": "Jouw beurt!",
+      "gameOver": "Spel afgelopen!"
     }
   }
 }

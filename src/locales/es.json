@@ -1289,7 +1289,16 @@
       "trap": "¡Trampa! -2 puntos en tu tipo dominante",
       "bonus": "¡Bonus! +1 punto en todos los tipos",
       "answeredQuestion": "¡Buena respuesta!",
-      "victory": "¡Felicidades! ¡Has llegado a la meta!"
+      "victory": "¡Felicidades! ¡Has llegado a la meta!",
+      "moving": "Moviendo..."
+    },
+    "multiplayer": {
+      "setup": "Configura tu partida multijugador",
+      "selectPlayers": "Número de jugadores",
+      "startGame": "Iniciar partida",
+      "player": "Jugador",
+      "yourTurn": "¡Tu turno!",
+      "gameOver": "¡Fin de partida!"
     }
   }
 }

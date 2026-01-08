@@ -2220,7 +2220,19 @@
       "trap": "Trap! -2 points on your dominant type",
       "bonus": "Bonus! +1 point on all types",
       "answeredQuestion": "Good answer!",
-      "victory": "Congratulations! You have reached the finish!"
+      "victory": "Congratulations! You have reached the finish!",
+      "moving": "Moving..."
+    },
+    "multiplayer": {
+      "setup": "Set up your multiplayer game",
+      "selectPlayers": "Number of players",
+      "startGame": "Start game",
+      "player": "Player",
+      "yourTurn": "Your turn!",
+      "gameOver": "Game over!"
     }
+  },
+  "nav": {
+    "quiz": "Quiz"
   }
 }

@@ -2487,6 +2487,11 @@
         "title": "Jeu de plateau",
         "description": "Style Monopoly : lance le dé, avance sur le plateau et découvre ton profil en jouant.",
         "cta": "Jouer au plateau"
+      },
+      "multiplayer": {
+        "title": "Multijoueur",
+        "description": "Jouez à plusieurs ! Jusqu'à 4 joueurs peuvent s'affronter tour à tour sur le plateau.",
+        "cta": "Jouer en groupe"
       }
     },
     "questions": {
@@ -2578,7 +2583,16 @@
       "trap": "Piège ! -2 points sur ton type dominant",
       "bonus": "Bonus ! +1 point sur tous les types",
       "answeredQuestion": "Bonne réponse !",
-      "victory": "Félicitations ! Tu as atteint l'arrivée !"
+      "victory": "Félicitations ! Tu as atteint l'arrivée !",
+      "moving": "En déplacement..."
+    },
+    "multiplayer": {
+      "setup": "Configurez votre partie multijoueur",
+      "selectPlayers": "Nombre de joueurs",
+      "startGame": "Lancer la partie",
+      "player": "Joueur",
+      "yourTurn": "C'est ton tour !",
+      "gameOver": "Partie terminée !"
     }
   }
 }
