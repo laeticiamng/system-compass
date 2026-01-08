@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
@@ -826,9 +827,16 @@ export default function PyramidQuiz() {
 
           {/* Clarification Banner */}
           <div className="glass-card rounded-xl p-4 md:p-6 max-w-2xl mx-auto mb-8 border-amber-500/30 bg-amber-500/5 animate-fade-in">
-            <p className="text-center text-amber-400 font-medium">
-              {t('pyramidQuiz.disclaimer', '⚠️ Tu vas incarner un personnage fictif au hasard. Ce n\'est pas ta vraie vie — c\'est un jeu éducatif !')}
+            <p className="text-center text-amber-400 font-medium mb-3">
+              {t('pyramidQuiz.disclaimer', "⚠️ Tu vas incarner un personnage fictif au hasard. Ce n'est pas ta vraie vie — c'est un jeu éducatif !")}
             </p>
+            <div className="text-center">
+              <Link to="/exit-keys" className="text-sm text-primary hover:underline inline-flex items-center gap-1">
+                {t('pyramidQuiz.realLifeLink', 'Tu veux planifier ta vraie vie ?')}
+                <ArrowRight className="w-3 h-3" />
+                <span className="font-medium">{t('nav.exitKeys', 'Clés de Sortie')}</span>
+              </Link>
+            </div>
           </div>
 
           <div className="flex justify-center gap-4 mb-8">
