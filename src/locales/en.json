@@ -3632,49 +3632,57 @@
   },
   "lifeGame": {
     "hero": {
-      "badge": "Realistic life simulation",
+      "badge": "🎮 Educational board game",
       "title1": "The Game of",
       "titleHighlight": "LIFE",
-      "subtitle": "You don't choose where you're born. You choose how you navigate. Simulate real life trajectories across world systems.",
-      "playCta": "Play now",
-      "learnCta": "How it works",
+      "subtitle": "A simulation game where you play a fictional character. Discover how the world works through random trajectories — this is NOT your real life!",
+      "playCta": "Start a game",
+      "learnCta": "Game rules",
       "stats": {
-        "archetypes": "Characters",
-        "systems": "Systems",
-        "possibilities": "Trajectories"
+        "archetypes": "Playable characters",
+        "systems": "World systems",
+        "possibilities": "Possible trajectories"
       }
+    },
+    "clarification": {
+      "title": "⚠️ This is NOT your real life",
+      "point1": "You receive a random fictional character (heir, refugee, entrepreneur...)",
+      "point2": "You explore world mechanisms with no real risk",
+      "point3": "This is an educational tool, not a prediction for you",
+      "realLife": "To plan your real life →",
+      "realLifeLink": "Exit Keys"
     },
     "tagline": {
       "quote": "Some are born at the finish line. Others must run a marathon with chains on their feet. This game shows why.",
       "author": "— Reality, unfiltered"
     },
     "features": {
-      "title": "What makes this game different",
-      "subtitle": "Not a game of chance. A mirror of systemic reality.",
+      "title": "How the game works",
+      "subtitle": "A board game where chance and strategy mix.",
       "systems": {
         "title": "6 World Systems",
-        "description": "Every country works differently. Some reward competence, others connections, others risk-taking."
+        "description": "Each country on the board works differently. Learn the invisible rules of each system."
       },
       "characters": {
-        "title": "12+ Real Archetypes",
-        "description": "From trust fund kids to war refugees. Each character has unique advantages and constraints."
+        "title": "12+ Playable Characters",
+        "description": "From trust fund kids to refugees. You don't always choose — sometimes fate decides for you."
       },
       "choices": {
-        "title": "Consequential Choices",
-        "description": "Work, study, migrate, start a business... Every action has costs and chain reactions."
+        "title": "Strategic Choices",
+        "description": "Work, study, migrate, start a business... Manage your resources like in a management game."
       },
       "risks": {
-        "title": "Dangerous Shortcuts",
-        "description": "Black market, corruption, fake documents. Quick gains, but risk losing everything."
+        "title": "Risky Shortcuts",
+        "description": "Black market, corruption. Quick gains at the risk of losing everything — just like in real life."
       }
     },
     "resources": {
       "title": "6 Resources to Manage",
-      "subtitle": "You'll never have everything. Choose what to sacrifice."
+      "subtitle": "In the game as in life, you'll never have everything."
     },
     "archetypes": {
-      "title": "Who will you be?",
-      "subtitle": "Each character represents a reality lived by millions of people.",
+      "title": "Who will you play as?",
+      "subtitle": "Each character has advantages and obstacles. Difficulty reflects real-world inequalities.",
       "seeAll": "See all characters"
     },
     "difficulty": {
@@ -3684,8 +3692,8 @@
       "extreme": "Extreme"
     },
     "warning": {
-      "title": "Warning",
-      "description": "This game addresses difficult realities in a playful way. The shortcuts in the game represent choices millions make out of desperation. The catastrophic consequences reflect real tragedies: prison, deportation, family destruction.",
+      "title": "Sensitive educational content",
+      "description": "This game addresses difficult realities in a playful way. Game situations are inspired by real experiences lived by millions.",
       "topics": {
         "migration": "Forced migration",
         "corruption": "Systemic corruption",
@@ -3694,9 +3702,9 @@
       }
     },
     "cta": {
-      "title": "Ready to test your life strategy?",
-      "subtitle": "Discover if you would have succeeded with a different starting hand.",
-      "button": "Start my life"
+      "title": "Ready to play?",
+      "subtitle": "Start a game and discover a random character. Can you navigate the system?",
+      "button": "Launch game"
     }
   },
   "archetypes": {
