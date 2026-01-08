@@ -5,14 +5,17 @@ import {
   ArrowLeft, Key, Compass, Target, Zap, 
   ChevronRight, MapPin, Heart, Shield,
   AlertTriangle, CheckCircle, Save, RefreshCw,
-  Filter, Clock, Scale, Flag, Globe, Plane, Map
+  Filter, Clock, Scale, Flag, Globe, Plane, Map,
+  GraduationCap, Briefcase
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
+  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
@@ -22,12 +25,14 @@ import { countries } from '@/lib/countries-data';
 import { PyramidType, PYRAMID_TYPE_INFO, LifeMotorProfile, LifePriority, LIFE_MOTOR_PROFILES } from '@/lib/types';
 import { findCompatibleKeys, UserContext, STRATEGIC_PRINCIPLES } from '@/lib/exit-keys-engine';
 import { getNationalityAdvantages, getPassportStrengthLabel, REGIONAL_BLOCS, getRecommendedDestinations, DestinationRecommendation } from '@/lib/nationality-advantages';
+import { EDUCATION_LEVELS, PROFESSIONS, PROFESSION_CATEGORY_LABELS, getProfession, type EducationLevel, type ProfessionCategory } from '@/lib/profession-data';
 import ExitKeyCard from '@/components/ExitKeyCard';
 import { cn } from '@/lib/utils';
 import { useExitKeysProfile } from '@/hooks/useExitKeysProfile';
 import { useAuth } from '@/hooks/useAuth';
 import { DestinationMap } from '@/components/DestinationMap';
 import { DestinationCompare } from '@/components/DestinationCompare';
+import { VacationRecommendations } from '@/components/exit-keys/VacationRecommendations';
 
 const STEPS = ['origin', 'current', 'profile', 'goals', 'results'] as const;
 type Step = typeof STEPS[number];
@@ -76,6 +81,8 @@ export default function ExitKeys() {
   const [hasNetwork, setHasNetwork] = useState(false);
   const [isLGBTQ, setIsLGBTQ] = useState(false);
   const [hasFamily, setHasFamily] = useState(false);
+  const [educationLevel, setEducationLevel] = useState<EducationLevel | undefined>();
+  const [professionId, setProfessionId] = useState<string | undefined>();
 
   // Load saved profile on mount
   useEffect(() => {
@@ -96,6 +103,8 @@ export default function ExitKeys() {
       setHasNetwork(savedProfile.hasNetwork);
       setIsLGBTQ(savedProfile.isLGBTQ);
       setHasFamily(savedProfile.hasFamily);
+      setEducationLevel(savedProfile.educationLevel);
+      setProfessionId(savedProfile.professionId);
       // If profile is complete, go to results
       if (savedProfile.birthCountryId && savedProfile.currentCountryId) {
         setCurrentStep('results');
@@ -118,6 +127,8 @@ export default function ExitKeys() {
       hasNetwork,
       isLGBTQ,
       hasFamily,
+      educationLevel,
+      professionId,
     });
   };
 
@@ -149,8 +160,20 @@ export default function ExitKeys() {
 
   const exitKeyResults = useMemo(() => {
     if (!userContext) return [];
-    return findCompatibleKeys(userContext);
-  }, [userContext]);
+    let results = findCompatibleKeys(userContext);
+    
+    // Filter by profession compatibility
+    if (professionId) {
+      const profession = getProfession(professionId);
+      if (profession && profession.compatibleExitKeys.length > 0) {
+        results = results.filter(r => 
+          profession.compatibleExitKeys.includes(r.key.id)
+        );
+      }
+    }
+    
+    return results;
+  }, [userContext, professionId]);
 
   // Nationality advantages
   const nationalityAdvantages = useMemo(() => {
@@ -501,8 +524,81 @@ export default function ExitKeys() {
                 <Heart className="w-12 h-12 text-primary mx-auto mb-4" />
                 <h2 className="text-2xl font-bold mb-2">Quel est votre profil ?</h2>
                 <p className="text-muted-foreground">
-                  Votre personnalité influence les stratégies qui vous correspondent
+                  Votre formation et métier déterminent les stratégies accessibles
                 </p>
+              </div>
+
+              {/* Education Level */}
+              <div className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <GraduationCap className="w-5 h-5 text-primary" />
+                  <Label className="text-sm font-medium">Niveau d'études</Label>
+                </div>
+                <Select value={educationLevel} onValueChange={(v) => setEducationLevel(v as EducationLevel)}>
+                  <SelectTrigger className="w-full h-12">
+                    <SelectValue placeholder="Sélectionnez votre niveau d'études" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {EDUCATION_LEVELS.map(level => (
+                      <SelectItem key={level.id} value={level.id}>
+                        <span className="flex items-center gap-2">
+                          <span>{level.icon}</span>
+                          <span>{level.label}</span>
+                          <span className="text-xs text-muted-foreground ml-2">({level.yearsOfStudy})</span>
+                        </span>
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Profession */}
+              <div className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <Briefcase className="w-5 h-5 text-primary" />
+                  <Label className="text-sm font-medium">Métier actuel</Label>
+                </div>
+                <Select value={professionId} onValueChange={setProfessionId}>
+                  <SelectTrigger className="w-full h-12">
+                    <SelectValue placeholder="Sélectionnez votre métier" />
+                  </SelectTrigger>
+                  <SelectContent className="max-h-[300px]">
+                    {Object.entries(
+                      PROFESSIONS.reduce((acc, prof) => {
+                        if (!acc[prof.category]) acc[prof.category] = [];
+                        acc[prof.category].push(prof);
+                        return acc;
+                      }, {} as Record<ProfessionCategory, typeof PROFESSIONS>)
+                    ).map(([category, profs]) => (
+                      <SelectGroup key={category}>
+                        <SelectLabel className="text-primary font-semibold">
+                          {PROFESSION_CATEGORY_LABELS[category as ProfessionCategory].icon} {PROFESSION_CATEGORY_LABELS[category as ProfessionCategory].label}
+                        </SelectLabel>
+                        {profs.map(prof => (
+                          <SelectItem key={prof.id} value={prof.id}>
+                            <span className="flex items-center gap-2">
+                              <span>{prof.name}</span>
+                              {prof.remoteWorkPossible && (
+                                <span className="text-xs bg-blue-500/20 text-blue-400 px-1.5 py-0.5 rounded">Remote</span>
+                              )}
+                              {prof.internationalDemand === 'very_high' && (
+                                <span className="text-xs bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded">🌍</span>
+                              )}
+                            </span>
+                          </SelectItem>
+                        ))}
+                      </SelectGroup>
+                    ))}
+                  </SelectContent>
+                </Select>
+                {professionId && (
+                  <p className="text-xs text-muted-foreground">
+                    {(() => {
+                      const prof = getProfession(professionId);
+                      return prof ? `${prof.compatibleExitKeys.length} stratégies compatibles avec ce métier` : '';
+                    })()}
+                  </p>
+                )}
               </div>
 
               {/* Motor Profile */}
@@ -787,6 +883,13 @@ export default function ExitKeys() {
                   />
                 </div>
               )}
+
+              {/* Vacation Recommendations with Purchasing Power */}
+              <VacationRecommendations
+                currentCountryId={currentCountryId}
+                nationalityIds={nationalityIds}
+                professionId={professionId}
+              />
 
               {/* Strategic Principles */}
               <div className="bg-accent/30 rounded-xl p-6">

@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Heart, GraduationCap, Briefcase } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { LIFE_MOTOR_PROFILES, type LifeMotorProfile } from '@/lib/types';
 import { EDUCATION_LEVELS, PROFESSIONS, PROFESSION_CATEGORY_LABELS, type EducationLevel, type ProfessionCategory } from '@/lib/profession-data';
 import { cn } from '@/lib/utils';
@@ -79,10 +79,70 @@ export function ProfileStep({
         <Heart className="w-12 h-12 text-primary mx-auto mb-4" />
         <h2 className="text-2xl font-bold mb-2">{t('exitKeys.profile.title', 'Quel est votre profil ?')}</h2>
         <p className="text-muted-foreground">
-          {t('exitKeys.profile.subtitle', 'Votre personnalité influence les stratégies qui vous correspondent')}
+          {t('exitKeys.profile.subtitle', 'Votre formation et métier influencent les stratégies disponibles')}
         </p>
       </div>
 
+      {/* Education Level */}
+      <div className="space-y-3">
+        <div className="flex items-center gap-2">
+          <GraduationCap className="w-5 h-5 text-primary" />
+          <Label className="text-sm font-medium">Niveau d'études</Label>
+        </div>
+        <Select value={educationLevel} onValueChange={(v) => onEducationChange?.(v as EducationLevel)}>
+          <SelectTrigger className="w-full h-12">
+            <SelectValue placeholder="Sélectionnez votre niveau d'études" />
+          </SelectTrigger>
+          <SelectContent>
+            {EDUCATION_LEVELS.map(level => (
+              <SelectItem key={level.id} value={level.id}>
+                <span className="flex items-center gap-2">
+                  <span>{level.icon}</span>
+                  <span>{level.label}</span>
+                  <span className="text-xs text-muted-foreground ml-2">({level.yearsOfStudy})</span>
+                </span>
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+
+      {/* Profession */}
+      <div className="space-y-3">
+        <div className="flex items-center gap-2">
+          <Briefcase className="w-5 h-5 text-primary" />
+          <Label className="text-sm font-medium">Métier actuel</Label>
+        </div>
+        <Select value={professionId} onValueChange={(v) => onProfessionChange?.(v)}>
+          <SelectTrigger className="w-full h-12">
+            <SelectValue placeholder="Sélectionnez votre métier" />
+          </SelectTrigger>
+          <SelectContent className="max-h-[300px]">
+            {Object.entries(groupedProfessions).map(([category, profs]) => (
+              <SelectGroup key={category}>
+                <SelectLabel className="text-primary font-semibold">
+                  {PROFESSION_CATEGORY_LABELS[category as ProfessionCategory].icon} {PROFESSION_CATEGORY_LABELS[category as ProfessionCategory].label}
+                </SelectLabel>
+                {profs.map(prof => (
+                  <SelectItem key={prof.id} value={prof.id}>
+                    <span className="flex items-center gap-2">
+                      <span>{prof.name}</span>
+                      {prof.remoteWorkPossible && (
+                        <span className="text-xs bg-blue-500/20 text-blue-400 px-1.5 py-0.5 rounded">Remote</span>
+                      )}
+                      {prof.internationalDemand === 'very_high' && (
+                        <span className="text-xs bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded">🌍 Forte demande</span>
+                      )}
+                    </span>
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+
+      {/* Motor Profile */}
       <div>
         <Label className="text-sm font-medium mb-3 block">{t('exitKeys.profile.lifeMotor', 'Votre moteur de vie')}</Label>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -104,6 +164,7 @@ export function ProfileStep({
         </div>
       </div>
 
+      {/* Risk Tolerance */}
       <div>
         <Label className="text-sm font-medium mb-3 block">{t('exitKeys.profile.riskTolerance', 'Tolérance au risque')}</Label>
         <div className="grid grid-cols-3 gap-3">
@@ -125,6 +186,7 @@ export function ProfileStep({
         </div>
       </div>
 
+      {/* Time Horizon */}
       <div>
         <Label className="text-sm font-medium mb-3 block">{t('exitKeys.profile.timeHorizon', 'Horizon temporel')}</Label>
         <div className="grid grid-cols-3 gap-3">
@@ -146,6 +208,7 @@ export function ProfileStep({
         </div>
       </div>
 
+      {/* Toggles */}
       <div className="space-y-4 pt-4 border-t">
         <div className="flex items-center justify-between">
           <Label htmlFor="capital">{t('exitKeys.profile.hasCapital', "J'ai du capital disponible (> 50k€)")}</Label>
