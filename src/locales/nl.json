@@ -1452,5 +1452,14 @@
       "alreadyRegistered": "Er bestaat al een account met dit e-mailadres",
       "generic": "Er is een fout opgetreden"
     }
+  },
+  "positivePoints": {
+    "title": "Positieve Punten",
+    "lifestyle": "Levensstijl",
+    "economy": "Economie",
+    "culture": "Cultuur",
+    "infrastructure": "Infrastructuur",
+    "opportunities": "Kansen",
+    "nature": "Natuur & Klimaat"
   }
 }

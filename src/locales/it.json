@@ -1452,5 +1452,14 @@
       "alreadyRegistered": "Esiste già un account con questa email",
       "generic": "Si è verificato un errore"
     }
+  },
+  "positivePoints": {
+    "title": "Punti Positivi",
+    "lifestyle": "Stile di Vita",
+    "economy": "Economia",
+    "culture": "Cultura",
+    "infrastructure": "Infrastruttura",
+    "opportunities": "Opportunità",
+    "nature": "Natura e Clima"
   }
 }

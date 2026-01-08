@@ -58,8 +58,43 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Check translations
+      - name: Check general translations
         run: node scripts/check-translations.js
+
+      - name: Verify country translations
+        run: |
+          echo "🗺️ Verifying all countries have translations..."
+          node -e "
+            const fs = require('fs');
+            const path = require('path');
+            
+            // Extract country IDs from countries-data.ts
+            const countriesData = fs.readFileSync('src/lib/countries-data.ts', 'utf-8');
+            const countryIds = [...new Set(countriesData.match(/id:\\s*['\"]([a-z-]+)['\"]/g)?.map(m => m.match(/['\"]([a-z-]+)['\"]/)[1]) || [])];
+            
+            console.log('Found ' + countryIds.length + ' countries in data');
+            
+            // Check each locale file
+            const locales = fs.readdirSync('src/locales').filter(f => f.endsWith('.json'));
+            let hasErrors = false;
+            
+            for (const locale of locales) {
+              const lang = locale.replace('.json', '');
+              const translations = JSON.parse(fs.readFileSync('src/locales/' + locale, 'utf-8'));
+              const countries = translations.countries || {};
+              
+              const missing = countryIds.filter(id => !countries[id]);
+              
+              if (missing.length > 0) {
+                console.log('❌ ' + lang.toUpperCase() + ': Missing ' + missing.length + ' countries: ' + missing.slice(0, 3).join(', ') + (missing.length > 3 ? '...' : ''));
+                hasErrors = true;
+              } else {
+                console.log('✅ ' + lang.toUpperCase() + ': All ' + countryIds.length + ' countries present');
+              }
+            }
+            
+            if (hasErrors) process.exit(1);
+          "
 
   coverage:
     name: Test Coverage
