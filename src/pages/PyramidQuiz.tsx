@@ -11,10 +11,10 @@ import {
 import { PyramidType, PYRAMID_TYPE_INFO } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import HexagonalBoard, { HEXAGONAL_BOARD } from '@/components/game/HexagonalBoard';
-import PlayerProfileSetup, { GamePlayerProfile } from '@/components/game/PlayerProfile';
+import { GamePlayerProfile } from '@/components/game/PlayerProfile';
 import SavedGamesDialog from '@/components/game/SavedGamesDialog';
 import RulesDialog from '@/components/game/RulesDialog';
-import LifeAssignment from '@/components/game/LifeAssignment';
+import ArchetypeSelector from '@/components/game/ArchetypeSelector';
 import ResourceBar from '@/components/game/ResourceBar';
 import EventCard from '@/components/game/EventCard';
 import TurnManager, { TurnPhase } from '@/components/game/TurnManager';
@@ -66,7 +66,7 @@ import { Database } from '@/integrations/supabase/types';
 
 type GameMode = 'online' | 'solo' | 'race' | 'points_duel' | 'cooperative' | null;
 type DbGameMode = Database['public']['Enums']['game_mode'];
-type SetupPhase = 'mode' | 'playerCount' | 'profiles' | 'tutorial' | 'draft' | 'playing';
+type SetupPhase = 'mode' | 'playerCount' | 'archetype' | 'tutorial' | 'draft' | 'playing';
 
 interface QuizQuestion {
   id: string;
@@ -591,12 +591,13 @@ export default function PyramidQuiz() {
     }
   };
 
-  const handleProfilesComplete = (profiles: GamePlayerProfile[]) => {
-    setPlayerProfiles(profiles);
-    // Skip tutorial if user has opted out
+  const handleArchetypeComplete = (characters: CharacterCardType[]) => {
+    // Skip tutorial if user has opted out, go directly to playing
     if (shouldSkipTutorial()) {
-      setSetupPhase('draft');
+      handleDraftComplete(characters);
     } else {
+      // Store characters for after tutorial
+      (window as any).__pendingCharacters = characters;
       setSetupPhase('tutorial');
     }
   };
@@ -785,7 +786,7 @@ export default function PyramidQuiz() {
 
             {/* Solo Board */}
             <button
-              onClick={() => { setMode('solo'); setPlayerCount(1); setSetupPhase('profiles'); }}
+              onClick={() => { setMode('solo'); setPlayerCount(1); setSetupPhase('archetype'); }}
               className="glass-card rounded-2xl p-8 text-left hover:border-blue-500/50 hover:scale-105 transition-all duration-300 group animate-fade-in"
               style={{ animationDelay: '0.1s' }}
             >
@@ -903,7 +904,7 @@ export default function PyramidQuiz() {
               ))}
             </div>
 
-            <Button onClick={() => setSetupPhase('profiles')} className="w-full gap-2">
+            <Button onClick={() => setSetupPhase('archetype')} className="w-full gap-2">
               {t('common.next') || 'Suivant'}
               <ArrowRight className="w-4 h-4" />
             </Button>
@@ -920,13 +921,13 @@ export default function PyramidQuiz() {
     );
   }
 
-  // Player profile setup
-  if (setupPhase === 'profiles') {
+  // Archetype selection phase
+  if (setupPhase === 'archetype') {
     return (
-      <PlayerProfileSetup
+      <ArchetypeSelector
         playerCount={playerCount}
         playerColors={PLAYER_COLORS}
-        onComplete={handleProfilesComplete}
+        onComplete={handleArchetypeComplete}
         onBack={() => setSetupPhase(playerCount > 1 ? 'playerCount' : 'mode')}
       />
     );
@@ -934,22 +935,21 @@ export default function PyramidQuiz() {
 
   // Tutorial phase
   if (setupPhase === 'tutorial') {
+    const handleTutorialComplete = () => {
+      // Use pending characters from archetype selection
+      const pendingChars = (window as any).__pendingCharacters as CharacterCardType[] | undefined;
+      if (pendingChars) {
+        delete (window as any).__pendingCharacters;
+        handleDraftComplete(pendingChars);
+      } else {
+        setSetupPhase('archetype');
+      }
+    };
+    
     return (
       <TutorialMode
-        onComplete={() => setSetupPhase('draft')}
-        onSkip={() => setSetupPhase('draft')}
-      />
-    );
-  }
-
-  // Life assignment phase (random like real life)
-  if (setupPhase === 'draft') {
-    return (
-      <LifeAssignment
-        playerCount={playerCount}
-        playerColors={PLAYER_COLORS}
-        onComplete={handleDraftComplete}
-        onBack={() => setSetupPhase('tutorial')}
+        onComplete={handleTutorialComplete}
+        onSkip={handleTutorialComplete}
       />
     );
   }
