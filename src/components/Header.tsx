@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
-import { Compass, Map, FileText, Scale, Triangle, Gamepad2, LogIn, LogOut, User, Key, LayoutDashboard, Menu, Play, Info } from 'lucide-react';
+import { Compass, Map, FileText, Scale, Triangle, Gamepad2, LogIn, LogOut, User, Key, LayoutDashboard, Menu, Play, Info, AlertCircle } from 'lucide-react';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { useAuth } from '@/hooks/useAuth';
 import { Button } from './ui/button';
@@ -13,6 +13,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from './ui/sheet';
+
+// Pages that show simulation features
+const SIMULATION_PAGES = ['/exit-keys', '/life-game', '/compare', '/life-trajectory', '/country/'];
 
 export function Header() {
   const location = useLocation();
@@ -44,9 +47,24 @@ export function Header() {
     setMobileMenuOpen(false);
   };
 
+  // Check if current page is a simulation page
+  const isSimulationPage = SIMULATION_PAGES.some(page => location.pathname.startsWith(page));
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 glass-card border-b border-border/50">
-      <div className="container mx-auto px-3 md:px-4 h-14 md:h-16 flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50">
+      {/* Compact disclaimer banner for simulation pages */}
+      {isSimulationPage && (
+        <div className="bg-amber-500/10 border-b border-amber-500/20 px-3 py-1.5">
+          <div className="container mx-auto flex items-center justify-center gap-2 text-xs text-amber-600 dark:text-amber-400">
+            <AlertCircle className="w-3 h-3 flex-shrink-0" />
+            <span className="text-center">
+              {t('header.simulationDisclaimer', 'Simulation uniquement • Pas de conseil juridique, financier ou médical')}
+            </span>
+          </div>
+        </div>
+      )}
+      <div className="glass-card border-b border-border/50">
+        <div className="container mx-auto px-3 md:px-4 h-14 md:h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 flex-shrink-0">
           <div className="p-1.5 md:p-2 rounded-lg bg-primary/10">
             <Compass className="w-4 h-4 md:w-5 md:h-5 text-primary" />
@@ -175,6 +193,7 @@ export function Header() {
               </nav>
             </SheetContent>
           </Sheet>
+        </div>
         </div>
       </div>
     </header>

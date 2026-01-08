@@ -8,6 +8,19 @@
     "back": "Terug",
     "years": "jaar"
   },
+  "header": {
+    "simulationDisclaimer": "Alleen simulatie • Geen juridisch, financieel of medisch advies"
+  },
+  "notDoes": {
+    "title": "Wat deze tool NIET doet",
+    "noGuaranteedResults": "Belooft geen gegarandeerde persoonlijke resultaten",
+    "noLegalAdvice": "Geeft geen juridisch, financieel of medisch advies",
+    "noPredictions": "Voorspelt niet de toekomst of jouw succes",
+    "noReplacement": "Vervangt geen advocaat, accountant of arts",
+    "noAccuracyGuarantee": "Garandeert niet de nauwkeurigheid van getoonde gegevens",
+    "noDecisions": "Neemt geen beslissingen voor jou",
+    "footer": "Deze tool analyseert systemen en simuleert gevolgen. De verantwoordelijkheid voor beslissingen blijft bij jou."
+  },
   "nav": {
     "start": "Start",
     "countries": "Landen",

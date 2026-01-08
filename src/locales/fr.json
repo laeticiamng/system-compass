@@ -19,6 +19,19 @@
     "confirm": "Confirmer",
     "edit": "Modifier"
   },
+  "header": {
+    "simulationDisclaimer": "Simulation uniquement • Pas de conseil juridique, financier ou médical"
+  },
+  "notDoes": {
+    "title": "Ce que cet outil ne fait PAS",
+    "noGuaranteedResults": "Ne promet aucun résultat personnel garanti",
+    "noLegalAdvice": "Ne donne pas de conseils juridiques, financiers ou médicaux",
+    "noPredictions": "Ne prédit pas l'avenir ni ta réussite",
+    "noReplacement": "Ne remplace pas un avocat, comptable ou médecin",
+    "noAccuracyGuarantee": "Ne garantit pas l'exactitude des données affichées",
+    "noDecisions": "Ne prend pas les décisions à ta place",
+    "footer": "Cet outil analyse les systèmes et simule les conséquences. La responsabilité des décisions reste la tienne."
+  },
   "dashboard": {
     "title": "Mon Tableau de Bord",
     "subtitle": "Suivi de vos analyses et simulations",

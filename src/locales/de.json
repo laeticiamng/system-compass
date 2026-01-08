@@ -8,6 +8,19 @@
     "back": "Zurück",
     "years": "Jahre"
   },
+  "header": {
+    "simulationDisclaimer": "Nur Simulation • Keine rechtliche, finanzielle oder medizinische Beratung"
+  },
+  "notDoes": {
+    "title": "Was dieses Tool NICHT macht",
+    "noGuaranteedResults": "Verspricht keine garantierten persönlichen Ergebnisse",
+    "noLegalAdvice": "Bietet keine rechtliche, finanzielle oder medizinische Beratung",
+    "noPredictions": "Sagt nicht die Zukunft oder deinen Erfolg voraus",
+    "noReplacement": "Ersetzt keinen Anwalt, Buchhalter oder Arzt",
+    "noAccuracyGuarantee": "Garantiert nicht die Genauigkeit der angezeigten Daten",
+    "noDecisions": "Trifft keine Entscheidungen für dich",
+    "footer": "Dieses Tool analysiert Systeme und simuliert Konsequenzen. Die Verantwortung für Entscheidungen bleibt bei dir."
+  },
   "nav": {
     "start": "Start",
     "countries": "Länder",
