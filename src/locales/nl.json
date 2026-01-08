@@ -331,22 +331,97 @@
     "disclaimer": {
       "title": "Belangrijke waarschuwing",
       "text": "Deze site biedt alleen analysekaders. Dit is geen juridisch, financieel of immigratieadvies. Raadpleeg altijd gekwalificeerde professionals voor jouw specifieke situatie. Elke actie heeft gevolgen — plan zorgvuldig en neem nooit onnodige risico's."
-    }
+    },
+    "time": "Tijd",
+    "timeDesc": "Capaciteit om acties te ondernemen",
+    "money": "Geld",
+    "moneyDesc": "Toegang tot investeringen",
+    "health": "Gezondheid",
+    "healthDesc": "Stabiliteitsbescherming",
+    "network": "Netwerk",
+    "networkDesc": "Opent kansen",
+    "skills": "Vaardigheden",
+    "skillsDesc": "Verbetert opbrengsten",
+    "mobility": "Mobiliteit",
+    "mobilityDesc": "Maakt migratie mogelijk",
+    "family": "Familie",
+    "familyDesc": "Familiebanden"
   },
   "lifeGame": {
-    "title": "Levensspel",
-    "subtitle": "Simuleer een heel leven — van geboorte tot strategische volwassenheid",
-    "description": "Dit spel is een educatief hulpmiddel. Je controleert de startvoorwaarden niet. Je leert te werken met wat je krijgt.",
-    "startGame": "Start spel",
-    "continueGame": "Spel hervatten",
-    "newGame": "Nieuw spel",
+    "hero": {
+      "badge": "🎮 Educatief bordspel",
+      "title1": "Het Spel van het",
+      "titleHighlight": "LEVEN",
+      "subtitle": "Een simulatiespel waarin je een fictief personage speelt. Ontdek hoe de wereld werkt via willekeurige trajecten — dit is niet je echte leven!",
+      "playCta": "Start spel",
+      "learnCta": "Spelregels",
+      "stats": {
+        "archetypes": "Speelbare personages",
+        "systems": "Wereldwijde systemen",
+        "possibilities": "Mogelijke trajecten"
+      }
+    },
+    "clarification": {
+      "title": "⚠️ Dit is NIET je echte leven",
+      "point1": "Je krijgt een willekeurig fictief personage (erfgenaam, vluchteling, ondernemer...)",
+      "point2": "Je verkent de mechanismen van de wereld zonder echt risico",
+      "point3": "Het is een educatief hulpmiddel, geen voorspelling voor jou",
+      "realLife": "Om je echte leven te plannen →",
+      "realLifeLink": "Exit-Sleutels"
+    },
+    "tagline": {
+      "quote": "Sommigen worden geboren op de finishlijn. Anderen moeten een marathon lopen met kettingen aan hun voeten. Dit spel laat zien waarom.",
+      "author": "— De realiteit, ongefilterd"
+    },
     "features": {
-      "randomStart": "Willekeurige start",
-      "randomStartDesc": "Je wordt geboren op een willekeurige plek, met willekeurige middelen",
-      "realSystems": "Echte systemen",
-      "realSystemsDesc": "Elk land heeft andere regels",
-      "consequences": "Gevolgen",
-      "consequencesDesc": "Je beslissingen hebben langetermijnimpact"
+      "title": "Hoe het spel werkt",
+      "subtitle": "Een bordspel waar toeval en strategie samenkomen.",
+      "systems": {
+        "title": "6 Wereldsystemen",
+        "description": "Elk land op het bord werkt anders. Leer de onzichtbare regels van elk systeem."
+      },
+      "characters": {
+        "title": "12+ Speelbare Personages",
+        "description": "Van de zoon uit een goede familie tot de vluchteling. Je kiest niet altijd — soms beslist het lot voor je."
+      },
+      "choices": {
+        "title": "Strategische Keuzes",
+        "description": "Werken, studeren, migreren, ondernemen... Beheer je middelen zoals in een managementspel."
+      },
+      "risks": {
+        "title": "Riskante Afkortingen",
+        "description": "De zwarte markt, corruptie. Snelle winsten met het risico alles te verliezen — zoals in het echte leven."
+      }
+    },
+    "resources": {
+      "title": "6 Te Beheren Middelen",
+      "subtitle": "In het spel zoals in het leven, zul je nooit alles hebben."
+    },
+    "archetypes": {
+      "title": "Wie zul je spelen?",
+      "subtitle": "Elk personage heeft zijn voordelen en obstakels. De moeilijkheidsgraad weerspiegelt de ongelijkheden van de echte wereld.",
+      "seeAll": "Alle personages bekijken"
+    },
+    "difficulty": {
+      "easy": "Gemakkelijk",
+      "medium": "Gemiddeld",
+      "hard": "Moeilijk",
+      "extreme": "Extreem"
+    },
+    "warning": {
+      "title": "Gevoelige educatieve inhoud",
+      "description": "Dit spel behandelt moeilijke realiteiten op een speelse manier. De spelsituaties zijn geïnspireerd op echte ervaringen van miljoenen mensen.",
+      "topics": {
+        "migration": "Gedwongen migratie",
+        "corruption": "Systemische corruptie",
+        "inequality": "Geboorteongelijkheden",
+        "shortcuts": "Gevaarlijke afkortingen"
+      }
+    },
+    "cta": {
+      "title": "Klaar om te spelen?",
+      "subtitle": "Start een spel en ontdek een willekeurig personage. Lukt het je om het systeem te navigeren?",
+      "button": "Start het spel"
     }
   },
   "footer": {

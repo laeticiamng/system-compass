@@ -1884,7 +1884,21 @@
     "disclaimer": {
       "title": "Important Disclaimer",
       "text": "This site provides analytical frameworks only. It is not legal, financial, or immigration advice. Always consult qualified professionals for your specific situation. Every action has consequences—plan carefully and never take unnecessary risks."
-    }
+    },
+    "time": "Time",
+    "timeDesc": "Capacity to take actions",
+    "money": "Money",
+    "moneyDesc": "Access to investments",
+    "health": "Health",
+    "healthDesc": "Stability protection",
+    "network": "Network",
+    "networkDesc": "Opens opportunities",
+    "skills": "Skills",
+    "skillsDesc": "Improves returns",
+    "mobility": "Mobility",
+    "mobilityDesc": "Allows migration",
+    "family": "Family",
+    "familyDesc": "Family bonds"
   },
   "language": {
     "select": "Language"

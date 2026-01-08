@@ -331,22 +331,97 @@
     "disclaimer": {
       "title": "Wichtiger Hinweis",
       "text": "Diese Seite bietet nur Analyserahmen. Dies ist keine rechtliche, finanzielle oder Einwanderungsberatung. Konsultiere immer qualifizierte Fachleute für deine spezifische Situation. Jede Handlung hat Konsequenzen — plane sorgfältig und gehe nie unnötige Risiken ein."
-    }
+    },
+    "time": "Zeit",
+    "timeDesc": "Kapazität für Aktionen",
+    "money": "Geld",
+    "moneyDesc": "Zugang zu Investitionen",
+    "health": "Gesundheit",
+    "healthDesc": "Stabilitätsschutz",
+    "network": "Netzwerk",
+    "networkDesc": "Eröffnet Möglichkeiten",
+    "skills": "Fähigkeiten",
+    "skillsDesc": "Verbessert Erträge",
+    "mobility": "Mobilität",
+    "mobilityDesc": "Ermöglicht Migration",
+    "family": "Familie",
+    "familyDesc": "Familienbande"
   },
   "lifeGame": {
-    "title": "Lebensspiel",
-    "subtitle": "Simuliere ein ganzes Leben — von Geburt an bis zum strategischen Erwachsenenalter",
-    "description": "Dieses Spiel ist ein pädagogisches Tool. Du steuerst nicht die Startbedingungen. Du lernst, mit dem zu arbeiten, was du bekommst.",
-    "startGame": "Spiel starten",
-    "continueGame": "Spiel fortsetzen",
-    "newGame": "Neues Spiel",
+    "hero": {
+      "badge": "🎮 Bildungsbrettspiel",
+      "title1": "Das Spiel des",
+      "titleHighlight": "LEBENS",
+      "subtitle": "Ein Simulationsspiel, bei dem du einen fiktiven Charakter verkörperst. Entdecke, wie die Welt durch zufällige Trajektorien funktioniert — das ist nicht dein echtes Leben!",
+      "playCta": "Spiel starten",
+      "learnCta": "Spielregeln",
+      "stats": {
+        "archetypes": "Spielbare Charaktere",
+        "systems": "Weltweite Systeme",
+        "possibilities": "Mögliche Trajektorien"
+      }
+    },
+    "clarification": {
+      "title": "⚠️ Das ist NICHT dein echtes Leben",
+      "point1": "Du erhältst einen zufälligen fiktiven Charakter (Erbe, Flüchtling, Unternehmer...)",
+      "point2": "Du erkundest die Mechanismen der Welt ohne echtes Risiko",
+      "point3": "Es ist ein Lernwerkzeug, keine Vorhersage für dich",
+      "realLife": "Um dein echtes Leben zu planen →",
+      "realLifeLink": "Exit-Schlüssel"
+    },
+    "tagline": {
+      "quote": "Manche werden an der Ziellinie geboren. Andere müssen einen Marathon mit Ketten an den Füßen laufen. Dieses Spiel zeigt warum.",
+      "author": "— Die Realität, ungefiltert"
+    },
     "features": {
-      "randomStart": "Zufälliger Start",
-      "randomStartDesc": "Geburt an einem zufälligen Ort, mit zufälligen Ressourcen",
-      "realSystems": "Echte Systeme",
-      "realSystemsDesc": "Jedes Land hat andere Regeln",
-      "consequences": "Konsequenzen",
-      "consequencesDesc": "Deine Entscheidungen haben langfristige Auswirkungen"
+      "title": "Wie das Spiel funktioniert",
+      "subtitle": "Ein Brettspiel, bei dem Zufall und Strategie sich vermischen.",
+      "systems": {
+        "title": "6 Weltsysteme",
+        "description": "Jedes Land auf dem Brett funktioniert anders. Lerne die unsichtbaren Regeln jedes Systems."
+      },
+      "characters": {
+        "title": "12+ Spielbare Charaktere",
+        "description": "Vom Sohn aus gutem Hause bis zum Flüchtling. Du wählst nicht immer — manchmal entscheidet das Schicksal für dich."
+      },
+      "choices": {
+        "title": "Strategische Entscheidungen",
+        "description": "Arbeiten, studieren, migrieren, gründen... Verwalte deine Ressourcen wie in einem Management-Spiel."
+      },
+      "risks": {
+        "title": "Riskante Abkürzungen",
+        "description": "Der Schwarzmarkt, die Korruption. Schnelle Gewinne auf die Gefahr hin, alles zu verlieren — wie im echten Leben."
+      }
+    },
+    "resources": {
+      "title": "6 Zu verwaltende Ressourcen",
+      "subtitle": "Im Spiel wie im Leben wirst du nie alles haben."
+    },
+    "archetypes": {
+      "title": "Wen wirst du verkörpern?",
+      "subtitle": "Jeder Charakter hat seine Vorteile und Hindernisse. Die Schwierigkeit spiegelt die Ungleichheiten der realen Welt wider.",
+      "seeAll": "Alle Charaktere sehen"
+    },
+    "difficulty": {
+      "easy": "Einfach",
+      "medium": "Mittel",
+      "hard": "Schwer",
+      "extreme": "Extrem"
+    },
+    "warning": {
+      "title": "Sensibler Bildungsinhalt",
+      "description": "Dieses Spiel behandelt schwierige Realitäten auf spielerische Weise. Die Spielsituationen sind von echten Erfahrungen inspiriert, die Millionen von Menschen gemacht haben.",
+      "topics": {
+        "migration": "Erzwungene Migration",
+        "corruption": "Systemische Korruption",
+        "inequality": "Geburtsungleichheiten",
+        "shortcuts": "Gefährliche Abkürzungen"
+      }
+    },
+    "cta": {
+      "title": "Bereit zu spielen?",
+      "subtitle": "Starte ein Spiel und entdecke einen zufälligen Charakter. Wirst du es schaffen, das System zu navigieren?",
+      "button": "Spiel starten"
     }
   },
   "footer": {
