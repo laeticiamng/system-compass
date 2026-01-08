@@ -11,6 +11,7 @@ import { CountryExitKeys } from '@/components/CountryExitKeys';
 import { NaturalRisksCard } from '@/components/NaturalRisksCard';
 import { HealthcareCard } from '@/components/HealthcareCard';
 import { PositivePointsCard } from '@/components/PositivePointsCard';
+import { CountryMusicPlayer } from '@/components/CountryMusicPlayer';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Calendar, ExternalLink } from 'lucide-react';
 
@@ -117,7 +118,15 @@ export default function CountryDetail() {
         </div>
 
         {/* Rule of Gold */}
-        <RuleOfGoldBanner rule={displayRuleOfGold} className="mb-12" />
+        <RuleOfGoldBanner rule={displayRuleOfGold} className="mb-8" />
+
+        {/* Music Player - Listen to the system */}
+        <CountryMusicPlayer
+          countryId={country.id}
+          countryName={displayName}
+          pyramidType={country.pyramidType}
+          className="mb-12"
+        />
 
         {/* Main Content Grid */}
         <div className="grid lg:grid-cols-2 gap-12 mb-12">

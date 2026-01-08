@@ -3205,5 +3205,14 @@
       "high": "High",
       "very_high": "Very High"
     }
+  },
+  "music": {
+    "listenTo": "Listen to {{country}}'s atmosphere",
+    "systemSoundscape": "System Soundscape",
+    "description": "The music represents this country's life system. It embodies the rhythm, tensions, and opportunities of the system.",
+    "error": "Unable to generate music",
+    "generating": "Generating...",
+    "play": "Play",
+    "pause": "Pause"
   }
 }

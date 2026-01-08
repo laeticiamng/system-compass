@@ -3563,5 +3563,14 @@
       "high": "Élevé",
       "very_high": "Très élevé"
     }
+  },
+  "music": {
+    "listenTo": "Écouter l'atmosphère de {{country}}",
+    "systemSoundscape": "Paysage sonore du système",
+    "description": "La musique représente le système de vie de ce pays. Elle incarne le rythme, les tensions et les opportunités du système.",
+    "error": "Impossible de générer la musique",
+    "generating": "Génération en cours...",
+    "play": "Jouer",
+    "pause": "Pause"
   }
 }
