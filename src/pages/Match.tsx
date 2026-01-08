@@ -243,8 +243,12 @@ export default function Match() {
             <h1 className="font-display text-4xl font-bold mb-4">
               {t('match.title')}
             </h1>
-            <p className="text-muted-foreground max-w-xl mx-auto mb-6">
+            <p className="text-muted-foreground max-w-xl mx-auto mb-4">
               {t('match.subtitle')}
+            </p>
+            {/* Anti-illusion micro-text */}
+            <p className="text-xs text-muted-foreground/60 max-w-lg mx-auto mb-6">
+              {t('simulationDisclaimer.contextual.results')}
             </p>
             <Button variant="outline" onClick={shareResults} className="gap-2">
               <Share2 className="w-4 h-4" />

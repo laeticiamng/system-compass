@@ -8,8 +8,24 @@
     "back": "Atrás",
     "years": "años"
   },
+  "simulationDisclaimer": {
+    "notPrediction": "Simulación ≠ Predicción",
+    "inline": "Simulación solo con fines informativos.",
+    "limits": "Límites",
+    "compact": "Herramienta de análisis — no es asesoramiento.",
+    "learnMore": "Saber más",
+    "minimal": "Exploración de escenarios",
+    "viewLimits": "Ver límites",
+    "contextual": {
+      "default": "Los resultados dependen de tus elecciones y contexto real. Esto no es una predicción.",
+      "results": "Estos resultados ilustran tendencias, no tu futuro. Cada situación es única.",
+      "trajectory": "Esta trayectoria muestra lo que este tipo de elección tiende a implicar, no lo que te sucederá.",
+      "comparison": "Esta comparación refleja datos generales, no tu situación personal.",
+      "game": "Este juego educativo simula mecanismos reales, pero sigue siendo una simplificación de la realidad."
+    }
+  },
   "header": {
-    "simulationDisclaimer": "Solo simulación • Sin asesoramiento legal, financiero o médico"
+    "simulationDisclaimer": "Exploración de escenarios • Sin asesoramiento legal, financiero o médico"
   },
   "notDoes": {
     "title": "Lo que esta herramienta NO hace",

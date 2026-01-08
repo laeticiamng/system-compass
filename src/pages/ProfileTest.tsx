@@ -124,7 +124,11 @@ export default function ProfileTest() {
               <User className="w-8 h-8" />
             </div>
             <h1 className="font-display text-4xl font-bold mb-4">{result.archetype}</h1>
-            <p className="text-xl text-muted-foreground">{result.description}</p>
+            <p className="text-xl text-muted-foreground mb-3">{result.description}</p>
+            {/* Anti-illusion micro-text */}
+            <p className="text-xs text-muted-foreground/60 max-w-lg mx-auto">
+              {t('simulationDisclaimer.contextual.results')}
+            </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 mb-12">
