@@ -33,28 +33,21 @@ describe('Exit Keys Engine', () => {
       EXIT_KEYS.forEach(key => {
         expect(key).toHaveProperty('id');
         expect(key).toHaveProperty('name');
-        expect(key).toHaveProperty('description');
-        expect(key).toHaveProperty('icon');
+        expect(key).toHaveProperty('unlocks');
+        expect(key).toHaveProperty('successCondition');
+        expect(key).toHaveProperty('mainRisk');
+        expect(key).toHaveProperty('rawTruth');
         expect(key).toHaveProperty('difficulty');
         expect(key).toHaveProperty('timeframe');
         expect(key).toHaveProperty('steps');
         expect(key).toHaveProperty('requirements');
-        expect(key).toHaveProperty('risks');
-        expect(key).toHaveProperty('successRate');
       });
     });
 
     it('should have valid difficulty levels', () => {
-      const validDifficulties = ['easy', 'moderate', 'hard', 'expert'];
+      const validDifficulties = ['accessible', 'exigeant', 'expert'];
       EXIT_KEYS.forEach(key => {
         expect(validDifficulties).toContain(key.difficulty);
-      });
-    });
-
-    it('should have success rates between 0 and 100', () => {
-      EXIT_KEYS.forEach(key => {
-        expect(key.successRate).toBeGreaterThanOrEqual(0);
-        expect(key.successRate).toBeLessThanOrEqual(100);
       });
     });
 
@@ -142,7 +135,6 @@ describe('Exit Keys Engine', () => {
       const lowRiskResults = findCompatibleKeys(lowRiskContext);
       const highRiskResults = findCompatibleKeys(highRiskContext);
       
-      // At minimum, the order or scores should differ
       expect(lowRiskResults.length).toBeGreaterThan(0);
       expect(highRiskResults.length).toBeGreaterThan(0);
     });
