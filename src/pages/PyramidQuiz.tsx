@@ -13,6 +13,7 @@ import { cn } from '@/lib/utils';
 import HexagonalBoard, { HEXAGONAL_BOARD } from '@/components/game/HexagonalBoard';
 import PlayerProfileSetup, { GamePlayerProfile } from '@/components/game/PlayerProfile';
 import SavedGamesDialog from '@/components/game/SavedGamesDialog';
+import RulesDialog from '@/components/game/RulesDialog';
 import { useSavedGames, SavedGame, SavedGameState } from '@/hooks/useSavedGames';
 import { useAuth } from '@/hooks/useAuth';
 import { 
@@ -558,11 +559,10 @@ export default function PyramidQuiz() {
             <p className="text-xl text-muted-foreground">{t('pyramidQuiz.subtitle')}</p>
           </div>
 
-          {user && (
-            <div className="flex justify-center mb-8">
-              <SavedGamesDialog onLoadGame={handleLoadGame} />
-            </div>
-          )}
+          <div className="flex justify-center gap-4 mb-8">
+            <RulesDialog />
+            {user && <SavedGamesDialog onLoadGame={handleLoadGame} />}
+          </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Online Quiz */}

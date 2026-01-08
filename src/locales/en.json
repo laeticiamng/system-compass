@@ -6,6 +6,7 @@
     "yes": "Yes",
     "no": "No",
     "back": "Back",
+    "next": "Next",
     "years": "years"
   },
   "nav": {
@@ -2274,6 +2275,93 @@
     "cooperative": {
       "title": "Cooperative",
       "description": "Work together to maximize collective scores"
+    }
+  },
+  "playerProfile": {
+    "title": "Create Your Profile",
+    "subtitle": "Define your story to personalize your journey",
+    "playerNumber": "Player {{number}}",
+    "name": "Your name",
+    "namePlaceholder": "What's your name?",
+    "birthCountry": "Birth country",
+    "currentCountry": "Current country",
+    "selectCountry": "Select a country",
+    "desiredLife": "Desired life",
+    "nextPlayer": "Next player",
+    "startGame": "Start game",
+    "goals": {
+      "stability": "Stability",
+      "growth": "Growth",
+      "freedom": "Freedom",
+      "wealth": "Wealth",
+      "meaning": "Meaning"
+    }
+  },
+  "savedGames": {
+    "title": "My Games",
+    "myGames": "My Games",
+    "noGames": "No saved games",
+    "finished": "Finished",
+    "save": "Save",
+    "saveGame": "Save Game",
+    "gameName": "Game name",
+    "nameRequired": "Name is required",
+    "saved": "Game saved!",
+    "saveFailed": "Failed to save game"
+  },
+  "pyramidQuiz.cooperative": {
+    "poolScore": "Collective Score",
+    "victory": "Collective Victory!",
+    "defeat": "Objective not reached",
+    "score": "Score: {{score}} / {{target}}"
+  },
+  "rules": {
+    "title": "PYRAMIDS - Complete Rules",
+    "concept": {
+      "title": "The Concept",
+      "description": "PYRAMIDS is a strategy game where you manage life trajectories. You don't choose your starting point: you draw characters with a birth country, traits, and aspirations. Each 'year' of play, you make decisions: work, study, heal, migrate, start a business, build your network, nurture relationships... The world moves, countries have their rules, and success depends on your ability to optimize under constraints."
+    },
+    "pyramidsLife": {
+      "title": "The 6 Life Pyramids",
+      "description": "The board represents 6 life domains, scaling from 0 to 5. Climbing a pyramid makes your life more 'successful' in that domain, but almost always at a cost elsewhere.",
+      "health": "Health (body and mind)",
+      "relationships": "Relationships (family, couple, friends, support)",
+      "career": "Career (status, progression, expertise)",
+      "finances": "Finances (security, wealth)",
+      "freedom": "Freedom (time, autonomy, choice)",
+      "meaning": "Meaning (alignment, purpose, creation)"
+    },
+    "characters": {
+      "title": "Characters",
+      "description": "Each character card contains: a birth country (your starting system), two positive traits and one constraint, two major aspirations and one minor, and a starting situation."
+    },
+    "countries": {
+      "title": "Countries as Systems",
+      "description": "Each country is a set of rules with 4 indices:",
+      "opportunities": "Opportunities: facilitates work/studies/entrepreneurship",
+      "safetyNets": "Safety Nets: protects against crises (health/finances)",
+      "mobility": "Mobility: makes migration easier",
+      "friction": "Friction: taxes, instability, bureaucracy, risks"
+    },
+    "resources": {
+      "title": "Resources",
+      "description": "Resources enable you to act:",
+      "time": "Time: determines your capacity to take actions",
+      "money": "Money: gives access to investments",
+      "health": "Health: influences stability and protects from falls",
+      "network": "Network: opens opportunities, protects, accelerates",
+      "skills": "Skills: improve returns",
+      "mobilityRes": "Mobility: allows migration to another system"
+    },
+    "actions": {
+      "title": "Actions",
+      "major": "Major actions: Work, Study, Entrepreneur, Migrate, Contribute/Create",
+      "minor": "Minor actions: Network, Relationships, Heal, Rest",
+      "note": "No action is 'free'. The game rewards players who know when to act."
+    },
+    "scoring": {
+      "title": "Scoring",
+      "description": "Each character has two major aspirations and one minor. Score is calculated from pyramid levels, with majors counting double. Penalties apply for unresolved crises, debts, burnouts."
     }
   }
 }

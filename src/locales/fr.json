@@ -6,6 +6,7 @@
     "yes": "Oui",
     "no": "Non",
     "back": "Retour",
+    "next": "Suivant",
     "years": "ans"
   },
   "nav": {
@@ -2671,5 +2672,54 @@
     "victory": "Victoire collective !",
     "defeat": "Objectif non atteint",
     "score": "Score : {{score}} / {{target}}"
+  },
+  "rules": {
+    "title": "PYRAMIDES — Règles complètes",
+    "concept": {
+      "title": "Le concept",
+      "description": "PYRAMIDES est un jeu de stratégie où tu gères des trajectoires de vie. Tu ne choisis pas ton point de départ : tu tires des personnages avec un pays de naissance, des traits, et des aspirations. À chaque 'année' de jeu, tu prends des décisions : travailler, étudier, soigner, migrer, entreprendre, construire ton réseau, nourrir tes relations... Le monde bouge, les pays ont leurs règles, et la réussite dépend de ta capacité à optimiser sous contrainte."
+    },
+    "pyramidsLife": {
+      "title": "Les 6 Pyramides de Vie",
+      "description": "Le plateau représente 6 domaines de vie, qui montent de 0 à 5. Monter une pyramide rend ta vie plus 'réussie' sur ce domaine, mais ça a presque toujours un coût ailleurs.",
+      "health": "Santé (corps et mental)",
+      "relationships": "Relations (famille, couple, amis, soutien)",
+      "career": "Carrière (statut, progression, expertise)",
+      "finances": "Finances (sécurité, patrimoine)",
+      "freedom": "Liberté (temps, autonomie, choix)",
+      "meaning": "Sens (alignement, utilité, création)"
+    },
+    "characters": {
+      "title": "Les personnages",
+      "description": "Chaque carte Personnage contient : un pays de naissance (ton système de départ), deux traits positifs et une contrainte, deux aspirations majeures et une mineure, et une situation initiale."
+    },
+    "countries": {
+      "title": "Les pays comme systèmes",
+      "description": "Chaque pays est un ensemble de règles avec 4 indices :",
+      "opportunities": "Opportunités : facilite travail/études/entrepreneuriat",
+      "safetyNets": "Filets : protège contre les crises (santé/finances)",
+      "mobility": "Mobilité : rend la migration plus simple",
+      "friction": "Frictions : taxes, instabilité, lourdeur, risques"
+    },
+    "resources": {
+      "title": "Les ressources",
+      "description": "Les ressources te permettent d'agir :",
+      "time": "Temps : détermine ta capacité à faire des actions",
+      "money": "Argent : donne accès aux investissements",
+      "health": "Santé : influence ta stabilité et protège des chutes",
+      "network": "Réseau : ouvre des opportunités, protège, accélère",
+      "skills": "Compétences : améliorent les rendements",
+      "mobilityRes": "Mobilité : permet de migrer vers un autre système"
+    },
+    "actions": {
+      "title": "Les actions",
+      "major": "Actions majeures : Travailler, Étudier, Entreprendre, Migrer, Contribuer/Créer",
+      "minor": "Actions mineures : Réseau, Relations, Se soigner, Se reposer",
+      "note": "Aucune action n'est 'gratuite'. Le jeu récompense les joueurs qui savent quand agir."
+    },
+    "scoring": {
+      "title": "Le score",
+      "description": "Chaque personnage a deux aspirations majeures et une mineure. Le score est calculé à partir des niveaux de pyramides, les majeures comptant double. Des pénalités s'appliquent pour les crises non résolues, dettes et burnouts."
+    }
   }
 }
