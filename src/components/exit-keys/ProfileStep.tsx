@@ -1,8 +1,10 @@
 import { useTranslation } from 'react-i18next';
-import { Heart } from 'lucide-react';
+import { Heart, GraduationCap, Briefcase } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { LIFE_MOTOR_PROFILES, type LifeMotorProfile } from '@/lib/types';
+import { EDUCATION_LEVELS, PROFESSIONS, PROFESSION_CATEGORY_LABELS, type EducationLevel, type ProfessionCategory } from '@/lib/profession-data';
 import { cn } from '@/lib/utils';
 
 interface ProfileStepProps {
@@ -14,6 +16,8 @@ interface ProfileStepProps {
   hasNetwork: boolean;
   hasFamily: boolean;
   isLGBTQ: boolean;
+  educationLevel?: EducationLevel;
+  professionId?: string;
   onMotorProfileChange: (profile: LifeMotorProfile) => void;
   onRiskToleranceChange: (risk: 'low' | 'medium' | 'high') => void;
   onTimeHorizonChange: (horizon: 'short' | 'medium' | 'long') => void;
@@ -22,6 +26,8 @@ interface ProfileStepProps {
   onNetworkChange: (value: boolean) => void;
   onFamilyChange: (value: boolean) => void;
   onLGBTQChange: (value: boolean) => void;
+  onEducationChange?: (level: EducationLevel) => void;
+  onProfessionChange?: (professionId: string) => void;
 }
 
 const riskOptions = [
@@ -36,6 +42,13 @@ const timeOptions = [
   { value: 'long', label: '7+ ans', description: 'Vision long terme' },
 ] as const;
 
+// Group professions by category for the select
+const groupedProfessions = PROFESSIONS.reduce((acc, prof) => {
+  if (!acc[prof.category]) acc[prof.category] = [];
+  acc[prof.category].push(prof);
+  return acc;
+}, {} as Record<ProfessionCategory, typeof PROFESSIONS>);
+
 export function ProfileStep({
   motorProfile,
   riskTolerance,
@@ -45,6 +58,8 @@ export function ProfileStep({
   hasNetwork,
   hasFamily,
   isLGBTQ,
+  educationLevel,
+  professionId,
   onMotorProfileChange,
   onRiskToleranceChange,
   onTimeHorizonChange,
@@ -53,6 +68,8 @@ export function ProfileStep({
   onNetworkChange,
   onFamilyChange,
   onLGBTQChange,
+  onEducationChange,
+  onProfessionChange,
 }: ProfileStepProps) {
   const { t } = useTranslation();
 
