@@ -40,7 +40,90 @@
     "simulateTrajectory": "Mijn traject simuleren",
     "understandPyramids": "De piramides begrijpen",
     "teaser": "Begrijp de mismatches die jaren kosten — geen oordelen, patronen om te vermijden.",
-    "viewMistakes": "Fouten bekijken"
+    "viewMistakes": "Fouten bekijken",
+    "mistakes": {
+      "countryWithoutUnderstanding": {
+        "title": "Van land veranderen zonder te begrijpen wat het systeem beloont",
+        "description": "Immigreren in de veronderstelling dat inspanning alleen voldoende is, zonder de echte succesmechanismen van het bestemmingsland te analyseren.",
+        "context": "Competente professional die een probleemrente-land verlaat voor een stabiliteits-herverdeling-land, verwachtend alleen voor zijn toegevoegde waarde beloond te worden.",
+        "time": "3-7 jaar ongepaste positionering",
+        "energy": "Uitputting door onvoorziene obstakels",
+        "money": "Investering in verkeerde certificeringen of netwerken",
+        "stagnation": "Professionele stagnatie ondanks competenties"
+      },
+      "diplomasInNetworkSystem": {
+        "title": "Diploma's verzamelen in een netwerksysteem",
+        "description": "Jaren en middelen investeren in formeel onderwijs in een land waar connecties belangrijker zijn dan kwalificaties.",
+        "context": "Jonge afgestudeerde in een probleemrente-land die masters en certificeringen verzamelt zonder parallel een netwerk op te bouwen.",
+        "time": "4-8 jaar weinig gewaardeerde studies",
+        "energy": "Frustratie door kloof tussen inspanning en beloning",
+        "money": "Studiekosten zonder proportioneel rendement",
+        "stagnation": "Overkwalificatie zonder bijpassende mogelijkheden"
+      },
+      "stabilityInGrowthSystem": {
+        "title": "Stabiliteit zoeken in een groeisysteem",
+        "description": "Sterke sociale bescherming en voorspelbare progressie verwachten in een land dat risico en snelheid beloont.",
+        "context": "Franse professional die naar de VS emigreert en een stabiel contract met ziekteverzekering en gegarandeerd pensioen verwacht.",
+        "time": "2-5 jaar om de echte regels te ontdekken",
+        "energy": "Chronische angst voor instabiliteit",
+        "money": "Onvoorziene uitgaven (gezondheid, transities)",
+        "stagnation": "Gedwongen terugkeer of pijnlijke aanpassing"
+      },
+      "growthInStabilitySystem": {
+        "title": "Snelle groei zoeken in een stabiliteitssysteem",
+        "description": "Proberen snel te schalen of te disrupteren in een land dat voorzichtigheid, processen en bescherming van verworvenheden waardeert.",
+        "context": "Amerikaanse tech-ondernemer die een startup in Frankrijk start en dezelfde snelheid en flexibiliteit als in Californië verwacht.",
+        "time": "2-4 jaar administratieve wrijving",
+        "energy": "Frustratie over waargenomen traagheid",
+        "money": "Onderschatte lasten en belastingen",
+        "stagnation": "Groei afgeremd door regelgevende beperkingen"
+      },
+      "visibilityInRentSystem": {
+        "title": "Zichtbaar succesvol zijn zonder bescherming in een rentesysteem",
+        "description": "Publiekelijk je financieel of professioneel succes tonen zonder de nodige bescherming te hebben opgebouwd.",
+        "context": "Succesvolle ondernemer in een probleemrente-land die zijn succes op sociale media toont zonder politiek netwerk of bescherming.",
+        "time": "Variabel, permanent risico",
+        "energy": "Constante stress en waakzaamheid",
+        "money": "Afpersing, gedwongen corruptie, beslaglegging",
+        "stagnation": "Zelfopgelegd plafond of vlucht"
+      },
+      "bettingAgainstState": {
+        "title": "Wedden tegen de staatsrichting in een hybride systeem",
+        "description": "Investeren of je inzetten in sectoren die de staat heeft besloten te controleren of te ontmoedigen.",
+        "context": "Buitenlandse investeerder die wedt op een groeiende sector in China zonder de politieke signalen van komende beperkingen te begrijpen.",
+        "time": "Verlies van investeringsjaren",
+        "energy": "Gedwongen herstructurering en stress",
+        "money": "Aanzienlijke of totale verliezen",
+        "stagnation": "Uitsluiting van de markt"
+      },
+      "expectingPermanenceExtraction": {
+        "title": "Permanentie verwachten in een extractiesysteem",
+        "description": "Een permanent leven plannen in een grondstoffenland dat alleen tijdelijke contracten aan buitenlanders geeft.",
+        "context": "Expat in een Golfstaat die een woning koopt en schulden maakt in de hoop er permanent te blijven.",
+        "time": "10-20 jaar zonder mogelijk staatsburgerschap",
+        "energy": "Permanente langetermijnonzekerheid",
+        "money": "Moeilijk te liquideren activa bij vertrek",
+        "stagnation": "Noch behoren noch voorbereid plan B"
+      },
+      "ignoringLocalCredentials": {
+        "title": "Lokale diploma's negeren in een competentiesysteem",
+        "description": "Aannemen dat je eigen ervaring en buitenlandse diploma's volstaan in een land dat lokale certificeringen waardeert.",
+        "context": "Buitenlandse arts of advocaat in Zwitserland of Duitsland die weigert de lokale equivalenties te behalen.",
+        "time": "2-5 jaar professionele declassering",
+        "energy": "Frustratie over niet-erkenning",
+        "money": "Salaris onder het werkelijke niveau",
+        "stagnation": "Onzichtbaar glazen plafond"
+      },
+      "singleIncomeSource": {
+        "title": "Afhankelijk zijn van één enkele inkomensbron",
+        "description": "Alle eieren in één professioneel mandje leggen zonder alternatieven op te bouwen.",
+        "context": "Senior manager die alleen op zijn baan rekent zonder alternatieve inkomsten of exporteerbare vaardigheden.",
+        "time": "Jaren van wederopbouw na ontslag",
+        "energy": "Angst en psychologische afhankelijkheid",
+        "money": "Brutale val bij baanverlies",
+        "stagnation": "Beperkte onderhandelingsmacht"
+      }
+    }
   },
   "nav": {
     "start": "Start",
@@ -51,7 +134,8 @@
     "compare": "Vergelijk",
     "resources": "Bronnen",
     "pyramids": "Piramides",
-    "quiz": "Quiz"
+    "quiz": "Quiz",
+    "systemicMistakes": "Fouten"
   },
   "hero": {
     "badge": "Navigeer door het echte systeem",

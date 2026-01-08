@@ -280,7 +280,8 @@
     "quiz": "Mode Éducatif",
     "exitKeys": "Clés de Sortie",
     "dashboard": "Tableau de Bord",
-    "multiCompare": "Multi-Analyse"
+    "multiCompare": "Multi-Analyse",
+    "systemicMistakes": "Erreurs"
   },
   "hero": {
     "badge": "Simulateur d'analyse",
