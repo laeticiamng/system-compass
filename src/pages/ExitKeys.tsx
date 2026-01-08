@@ -33,6 +33,8 @@ import { useAuth } from '@/hooks/useAuth';
 import { DestinationMap } from '@/components/DestinationMap';
 import { DestinationCompare } from '@/components/DestinationCompare';
 import { VacationRecommendations } from '@/components/exit-keys/VacationRecommendations';
+import { RiskPrevention } from '@/components/RiskPrevention';
+import { SalaryCalculator } from '@/components/SalaryCalculator';
 
 const STEPS = ['origin', 'current', 'profile', 'goals', 'results'] as const;
 type Step = typeof STEPS[number];
@@ -991,6 +993,15 @@ export default function ExitKeys() {
                   </div>
                 )}
               </div>
+
+              {/* Salary Calculator */}
+              <SalaryCalculator 
+                initialCountryId={currentCountryId} 
+                initialProfessionId={professionId} 
+              />
+
+              {/* Risk Prevention */}
+              <RiskPrevention />
 
               {/* Actions */}
               <div className="flex flex-wrap justify-center gap-4 pt-8">
