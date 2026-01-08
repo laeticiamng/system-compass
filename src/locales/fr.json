@@ -2943,5 +2943,34 @@
     "startingResources": "Ressources de départ",
     "selectCharacter": "Choisis ton personnage",
     "drawNew": "Tirer de nouveaux personnages"
+  },
+  "characterDraft": {
+    "title": "Joueur {{player}} - Choisis ton personnage",
+    "subtitle": "Sélectionne un personnage parmi les 4 proposés. Chaque personnage a des traits, des contraintes et des aspirations uniques.",
+    "reshuffle": "Remélanger",
+    "confirmNext": "Confirmer et suivant",
+    "startGame": "Commencer la partie",
+    "selectedCharacters": "Personnages sélectionnés"
+  },
+  "turnManager": {
+    "year": "Année {{year}}",
+    "phases": {
+      "global_event": "Événement mondial",
+      "country_event": "Événement pays",
+      "action_selection": "Choix d'action",
+      "action_resolution": "Résolution",
+      "board_move": "Déplacement",
+      "end_turn": "Fin de tour"
+    },
+    "globalEvent": "Événement mondial",
+    "countryEvent": "Événement pays",
+    "noCountryEvent": "Pas d'événement particulier dans votre pays cette année",
+    "continue": "Continuer",
+    "executeAction": "Exécuter l'action",
+    "actionSuccess": "Action réussie !",
+    "actionFailed": "Action échouée !",
+    "riskPenalty": "Pénalité de risque appliquée",
+    "continueToBoard": "Passer au plateau",
+    "rollDicePrompt": "Lancez le dé pour avancer sur le plateau"
   }
 }

@@ -2585,5 +2585,34 @@
     "startingResources": "Starting Resources",
     "selectCharacter": "Choose your character",
     "drawNew": "Draw new characters"
+  },
+  "characterDraft": {
+    "title": "Player {{player}} - Choose your character",
+    "subtitle": "Select a character from the 4 available. Each has unique traits, constraints and aspirations.",
+    "reshuffle": "Reshuffle",
+    "confirmNext": "Confirm and next",
+    "startGame": "Start game",
+    "selectedCharacters": "Selected characters"
+  },
+  "turnManager": {
+    "year": "Year {{year}}",
+    "phases": {
+      "global_event": "Global event",
+      "country_event": "Country event",
+      "action_selection": "Action selection",
+      "action_resolution": "Resolution",
+      "board_move": "Movement",
+      "end_turn": "End turn"
+    },
+    "globalEvent": "Global Event",
+    "countryEvent": "Country Event",
+    "noCountryEvent": "No particular event in your country this year",
+    "continue": "Continue",
+    "executeAction": "Execute action",
+    "actionSuccess": "Action successful!",
+    "actionFailed": "Action failed!",
+    "riskPenalty": "Risk penalty applied",
+    "continueToBoard": "Continue to board",
+    "rollDicePrompt": "Roll the dice to move on the board"
   }
 }
