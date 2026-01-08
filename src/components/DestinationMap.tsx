@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { MapPin, Globe, Plane, Info, Palmtree, Building2, ArrowRight } from 'lucide-react';
+import { MapPin, Globe, Plane, Info, Palmtree, Building2, ArrowRight, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { DestinationRecommendation, COUNTRY_NAMES } from '@/lib/nationality-advantages';
 import { DestinationInsights } from './DestinationInsights';
+import { InstallationTimeline } from './InstallationTimeline';
 
 interface DestinationMapProps {
   recommendations: DestinationRecommendation[];
@@ -90,6 +91,7 @@ export function DestinationMap({
   const [compareDests, setCompareDests] = useState<DestinationRecommendation[]>([]);
   const [viewMode, setViewMode] = useState<'vacation' | 'installation'>('vacation');
   const [showInsights, setShowInsights] = useState(false);
+  const [showTimeline, setShowTimeline] = useState(false);
 
   const handleDestClick = (dest: DestinationRecommendation) => {
     if (compareMode) {
@@ -252,14 +254,26 @@ export function DestinationMap({
                 </div>
               </div>
             </div>
-            <Button 
-              onClick={() => setShowInsights(true)}
-              className="gap-2"
-            >
-              <Info className="w-4 h-4" />
-              {viewMode === 'vacation' ? 'Guide Vacances' : 'Guide Installation'}
-              <ArrowRight className="w-4 h-4" />
-            </Button>
+            <div className="flex gap-2">
+              {viewMode === 'installation' && (
+                <Button 
+                  variant="outline"
+                  onClick={() => setShowTimeline(true)}
+                  className="gap-2"
+                >
+                  <Calendar className="w-4 h-4" />
+                  Timeline
+                </Button>
+              )}
+              <Button 
+                onClick={() => setShowInsights(true)}
+                className="gap-2"
+              >
+                <Info className="w-4 h-4" />
+                {viewMode === 'vacation' ? 'Guide Vacances' : 'Guide Installation'}
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </div>
           </div>
 
           {/* Mode-specific quick info */}
@@ -298,6 +312,19 @@ export function DestinationMap({
         </div>
       )}
 
+      {/* Installation Timeline Dialog */}
+      {showTimeline && selectedDest && (
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="w-full max-w-3xl">
+            <InstallationTimeline
+              destination={selectedDest}
+              aspiration={aspiration}
+              currentCountry={currentCountry}
+              onClose={() => setShowTimeline(false)}
+            />
+          </div>
+        </div>
+      )}
       {/* AI Insights Dialog */}
       {showInsights && selectedDest && (
         <DestinationInsights
