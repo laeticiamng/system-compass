@@ -40,7 +40,90 @@
     "simulateTrajectory": "Meine Trajektorie simulieren",
     "understandPyramids": "Die Pyramiden verstehen",
     "teaser": "Verstehe die Diskrepanzen, die Jahre kosten — keine Urteile, sondern Muster zum Vermeiden.",
-    "viewMistakes": "Fehler anzeigen"
+    "viewMistakes": "Fehler anzeigen",
+    "mistakes": {
+      "countryWithoutUnderstanding": {
+        "title": "Land wechseln ohne zu verstehen, was das System belohnt",
+        "description": "Einwandern in dem Glauben, dass Anstrengung allein ausreicht, ohne die echten Erfolgsmechanismen des Ziellandes zu analysieren.",
+        "context": "Kompetenter Fachmann, der ein Problemrenten-Land für ein Stabilitäts-Umverteilungs-Land verlässt und erwartet, allein für seinen Mehrwert belohnt zu werden.",
+        "time": "3-7 Jahre unangemessener Positionierung",
+        "energy": "Erschöpfung durch unvorhergesehene Hindernisse",
+        "money": "Investition in falsche Zertifizierungen oder Netzwerke",
+        "stagnation": "Berufliche Stagnation trotz Kompetenzen"
+      },
+      "diplomasInNetworkSystem": {
+        "title": "Diplome in einem Netzwerk-System anhäufen",
+        "description": "Jahre und Ressourcen in formale Bildung investieren in einem Land, wo Verbindungen wichtiger sind als Qualifikationen.",
+        "context": "Junger Absolvent in einem Problemrenten-Land, der Master und Zertifizierungen anhäuft, ohne parallel ein Netzwerk aufzubauen.",
+        "time": "4-8 Jahre wenig gewerteter Studien",
+        "energy": "Frustration durch Diskrepanz zwischen Aufwand und Belohnung",
+        "money": "Studienkosten ohne proportionale Rendite",
+        "stagnation": "Überqualifikation ohne entsprechende Möglichkeiten"
+      },
+      "stabilityInGrowthSystem": {
+        "title": "Stabilität in einem Wachstumssystem suchen",
+        "description": "Starken Sozialschutz und vorhersehbare Progression in einem Land erwarten, das Risiko und Geschwindigkeit belohnt.",
+        "context": "Französischer Fachmann, der in die USA auswandert und einen stabilen Arbeitsvertrag mit Krankenversicherung und garantierter Rente erwartet.",
+        "time": "2-5 Jahre, um die echten Regeln zu entdecken",
+        "energy": "Chronische Angst vor Instabilität",
+        "money": "Unvorhergesehene Ausgaben (Gesundheit, Übergänge)",
+        "stagnation": "Erzwungene Rückkehr oder schmerzhafte Anpassung"
+      },
+      "growthInStabilitySystem": {
+        "title": "Schnelles Wachstum in einem Stabilitätssystem suchen",
+        "description": "Versuchen, schnell zu skalieren oder zu disruptieren in einem Land, das Vorsicht, Prozesse und Besitzstandswahrung schätzt.",
+        "context": "Amerikanischer Tech-Unternehmer, der ein Startup in Frankreich startet und dieselbe Geschwindigkeit und Flexibilität wie in Kalifornien erwartet.",
+        "time": "2-4 Jahre administrativer Reibung",
+        "energy": "Frustration über wahrgenommene Langsamkeit",
+        "money": "Unterschätzte Abgaben und Steuern",
+        "stagnation": "Durch regulatorische Zwänge gebremste Wachstum"
+      },
+      "visibilityInRentSystem": {
+        "title": "Sichtbar erfolgreich sein ohne Schutz in einem Rentensystem",
+        "description": "Öffentlich seinen finanziellen oder beruflichen Erfolg zeigen, ohne den notwendigen Schutz aufgebaut zu haben.",
+        "context": "Erfolgreicher Unternehmer in einem Problemrenten-Land, der seinen Erfolg in sozialen Medien zeigt, ohne politisches Netzwerk oder Schutz.",
+        "time": "Variable, permanentes Risiko",
+        "energy": "Ständiger Stress und Wachsamkeit",
+        "money": "Erpressung, erzwungene Korruption, Beschlagnahme",
+        "stagnation": "Selbst auferlegte Deckelung oder Flucht"
+      },
+      "bettingAgainstState": {
+        "title": "Gegen die Staatsrichtung in einem Hybridsystem wetten",
+        "description": "In Sektoren investieren oder sich engagieren, die der Staat zu kontrollieren oder zu entmutigen beschlossen hat.",
+        "context": "Ausländischer Investor, der auf einen wachsenden Sektor in China setzt, ohne die politischen Signale kommender Einschränkungen zu verstehen.",
+        "time": "Verlust der Investitionsjahre",
+        "energy": "Erzwungene Umstrukturierung und Stress",
+        "money": "Signifikante oder totale Verluste",
+        "stagnation": "Ausschluss vom Markt"
+      },
+      "expectingPermanenceExtraction": {
+        "title": "Dauerhaftigkeit in einem Extraktionssystem erwarten",
+        "description": "Ein dauerhaftes Leben in einem Ressourcenland planen, das Ausländern nur temporäre Verträge gibt.",
+        "context": "Expatriate in einem Golfstaat, der eine Immobilie kauft und sich verschuldet in der Hoffnung, dort dauerhaft zu bleiben.",
+        "time": "10-20 Jahre ohne mögliche Staatsbürgerschaft",
+        "energy": "Permanente langfristige Unsicherheit",
+        "money": "Schwer zu liquidierende Vermögenswerte bei Abreise",
+        "stagnation": "Weder Zugehörigkeit noch vorbereiteter Plan B"
+      },
+      "ignoringLocalCredentials": {
+        "title": "Lokale Diplome in einem Kompetenzsystem ignorieren",
+        "description": "Annehmen, dass die eigene Erfahrung und ausländische Diplome in einem Land ausreichen, das lokale Zertifizierungen schätzt.",
+        "context": "Ausländischer Arzt oder Anwalt in der Schweiz oder Deutschland, der sich weigert, die lokalen Äquivalenzen nachzuholen.",
+        "time": "2-5 Jahre beruflicher Deklassierung",
+        "energy": "Frustration über Nicht-Anerkennung",
+        "money": "Gehalt unter dem tatsächlichen Niveau",
+        "stagnation": "Unsichtbare gläserne Decke"
+      },
+      "singleIncomeSource": {
+        "title": "Von einer einzigen Einkommensquelle abhängen",
+        "description": "Alle Eier in einen beruflichen Korb legen, ohne Alternativen aufzubauen.",
+        "context": "Leitender Angestellter, der nur auf seine Stelle zählt, ohne alternative Einkünfte oder exportierbare Fähigkeiten.",
+        "time": "Jahre des Wiederaufbaus nach Entlassung",
+        "energy": "Angst und psychologische Abhängigkeit",
+        "money": "Brutaler Absturz bei Jobverlust",
+        "stagnation": "Begrenzte Verhandlungsmacht"
+      }
+    }
   },
   "nav": {
     "start": "Start",
@@ -51,7 +134,8 @@
     "compare": "Vergleichen",
     "resources": "Ressourcen",
     "pyramids": "Pyramiden",
-    "quiz": "Quiz"
+    "quiz": "Quiz",
+    "systemicMistakes": "Fehler"
   },
   "hero": {
     "badge": "Navigiere durch das echte System",

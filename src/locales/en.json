@@ -280,7 +280,8 @@
     "quiz": "Educational Mode",
     "exitKeys": "Exit Keys",
     "dashboard": "Dashboard",
-    "multiCompare": "Multi-Analysis"
+    "multiCompare": "Multi-Analysis",
+    "systemicMistakes": "Mistakes"
   },
   "hero": {
     "badge": "Analysis Simulator",

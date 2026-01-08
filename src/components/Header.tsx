@@ -33,6 +33,7 @@ export function Header() {
     { href: '/', label: 'Accueil', icon: Compass },
     { href: '/countries', label: t('nav.countries'), icon: Map },
     { href: '/pyramid-types', label: t('nav.pyramids'), icon: Triangle },
+    { href: '/systemic-mistakes', label: t('nav.systemicMistakes', 'Erreurs'), icon: AlertCircle },
     { href: '/life-game', label: 'Mode éducatif', icon: Play },
     { href: '/exit-keys', label: t('nav.exitKeys'), icon: Key },
     { href: '/compare', label: t('nav.compare'), icon: Scale },

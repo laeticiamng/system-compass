@@ -40,7 +40,90 @@
     "simulateTrajectory": "Simula la mia traiettoria",
     "understandPyramids": "Comprendi le piramidi",
     "teaser": "Comprendi i disallineamenti che costano anni — non giudizi, schemi da evitare.",
-    "viewMistakes": "Vedi errori"
+    "viewMistakes": "Vedi errori",
+    "mistakes": {
+      "countryWithoutUnderstanding": {
+        "title": "Cambiare paese senza capire cosa il sistema ricompensa",
+        "description": "Immigrare pensando che lo sforzo da solo sia sufficiente, senza analizzare i meccanismi reali di successo del paese di destinazione.",
+        "context": "Professionista competente che lascia un paese di rendita problema per un paese di stabilità-redistribuzione, aspettandosi di essere ricompensato solo per il suo valore aggiunto.",
+        "time": "3-7 anni di posizionamento inadeguato",
+        "energy": "Esaurimento di fronte a ostacoli non previsti",
+        "money": "Investimento in certificazioni o reti sbagliate",
+        "stagnation": "Stagnazione professionale nonostante le competenze"
+      },
+      "diplomasInNetworkSystem": {
+        "title": "Accumulare diplomi in un sistema di rete",
+        "description": "Investire anni e risorse nell'istruzione formale in un paese dove le connessioni prevalgono sulle qualifiche.",
+        "context": "Giovane laureato in un paese di rendita problema che accumula master e certificazioni senza costruire una rete parallela.",
+        "time": "4-8 anni di studi poco valorizzati",
+        "energy": "Frustrazione per lo scarto tra sforzo e ricompensa",
+        "money": "Costo degli studi senza ritorno proporzionale",
+        "stagnation": "Sovraqualificazione senza sbocchi corrispondenti"
+      },
+      "stabilityInGrowthSystem": {
+        "title": "Cercare stabilità in un sistema di crescita",
+        "description": "Aspettarsi forti protezioni sociali e una progressione prevedibile in un paese che ricompensa il rischio e la velocità.",
+        "context": "Professionista francese che emigra negli Stati Uniti aspettandosi un contratto stabile con assicurazione sanitaria e pensione garantita.",
+        "time": "2-5 anni per scoprire le regole reali",
+        "energy": "Ansia cronica di fronte all'instabilità",
+        "money": "Spese impreviste (salute, transizioni)",
+        "stagnation": "Ritorno forzato o adattamento doloroso"
+      },
+      "growthInStabilitySystem": {
+        "title": "Cercare crescita rapida in un sistema di stabilità",
+        "description": "Tentare di scalare rapidamente o disrumpere in un paese che valorizza la prudenza, i processi e la protezione degli acquisiti.",
+        "context": "Imprenditore tech americano che lancia una startup in Francia aspettandosi la stessa velocità e flessibilità della California.",
+        "time": "2-4 anni di attrito amministrativo",
+        "energy": "Frustrazione per la lentezza percepita",
+        "money": "Oneri e tasse sottovalutati",
+        "stagnation": "Crescita frenata da vincoli regolamentari"
+      },
+      "visibilityInRentSystem": {
+        "title": "Avere successo visibile senza protezione in un sistema di rendita",
+        "description": "Mostrare pubblicamente il proprio successo finanziario o professionale senza aver costruito le protezioni necessarie.",
+        "context": "Imprenditore prospero in un paese di rendita problema che mostra il suo successo sui social media senza rete politica o protezione.",
+        "time": "Variabile, rischio permanente",
+        "energy": "Stress e vigilanza costanti",
+        "money": "Estorsione, corruzione forzata, sequestro",
+        "stagnation": "Tetto autoimposto o fuga"
+      },
+      "bettingAgainstState": {
+        "title": "Scommettere contro la direzione dello Stato in un sistema ibrido",
+        "description": "Investire o impegnarsi in settori che lo Stato ha deciso di controllare o scoraggiare.",
+        "context": "Investitore straniero che scommette su un settore in crescita in Cina senza capire i segnali politici di restrizione in arrivo.",
+        "time": "Perdita degli anni di investimento",
+        "energy": "Ristrutturazione forzata e stress",
+        "money": "Perdite significative o totali",
+        "stagnation": "Esclusione dal mercato"
+      },
+      "expectingPermanenceExtraction": {
+        "title": "Aspettarsi permanenza in un sistema di estrazione",
+        "description": "Pianificare una vita permanente in un paese di risorse che dà solo contratti temporanei agli stranieri.",
+        "context": "Espatriato in un paese del Golfo che compra una proprietà e si indebita sperando di restare definitivamente.",
+        "time": "10-20 anni senza cittadinanza possibile",
+        "energy": "Incertezza permanente a lungo termine",
+        "money": "Asset difficili da liquidare alla partenza",
+        "stagnation": "Né appartenenza né piano B preparato"
+      },
+      "ignoringLocalCredentials": {
+        "title": "Ignorare i diplomi locali in un sistema di competenza",
+        "description": "Supporre che la propria esperienza e diplomi stranieri bastino in un paese che valorizza le certificazioni locali.",
+        "context": "Medico o avvocato straniero in Svizzera o Germania che rifiuta di rifare le equivalenze locali.",
+        "time": "2-5 anni di declassamento professionale",
+        "energy": "Frustrazione per il non riconoscimento",
+        "money": "Stipendio inferiore al livello reale",
+        "stagnation": "Soffitto di vetro invisibile"
+      },
+      "singleIncomeSource": {
+        "title": "Dipendere da una sola fonte di reddito",
+        "description": "Mettere tutte le uova nello stesso paniere professionale senza costruire alternative.",
+        "context": "Dirigente che conta unicamente sul suo impiego senza redditi alternativi né competenze esportabili.",
+        "time": "Anni di ricostruzione dopo licenziamento",
+        "energy": "Ansia e dipendenza psicologica",
+        "money": "Crollo brutale in caso di perdita del lavoro",
+        "stagnation": "Potere negoziale limitato"
+      }
+    }
   },
   "nav": {
     "start": "Inizio",
@@ -51,7 +134,8 @@
     "compare": "Confronta",
     "resources": "Risorse",
     "pyramids": "Piramidi",
-    "quiz": "Quiz"
+    "quiz": "Quiz",
+    "systemicMistakes": "Errori"
   },
   "hero": {
     "badge": "Naviga nel sistema reale",
