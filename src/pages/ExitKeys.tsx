@@ -1073,10 +1073,31 @@ export default function ExitKeys() {
                   Recommencer
                 </Button>
               </div>
+
+              {/* Guest Mode CTA - Non-aggressive */}
               {!user && (
-                <p className="text-center text-sm text-muted-foreground mt-4">
-                  <Link to="/auth" className="text-primary hover:underline">Connectez-vous</Link> pour sauvegarder votre profil de façon permanente.
-                </p>
+                <div className="mt-8 p-6 rounded-xl bg-muted/30 border border-border/50 text-center max-w-xl mx-auto">
+                  <p className="text-sm text-muted-foreground mb-3">
+                    Votre simulation est sauvegardée localement sur cet appareil.
+                  </p>
+                  <p className="text-base font-medium text-foreground mb-4">
+                    Créez un compte gratuit pour :
+                  </p>
+                  <ul className="text-sm text-muted-foreground space-y-1 mb-5">
+                    <li>✓ Retrouver votre profil sur tous vos appareils</li>
+                    <li>✓ Sauvegarder plusieurs scénarios de comparaison</li>
+                    <li>✓ Accéder au tableau de bord de suivi</li>
+                    <li>✓ Recevoir des mises à jour personnalisées</li>
+                  </ul>
+                  <Link to="/auth">
+                    <Button variant="secondary" size="sm">
+                      Créer un compte gratuit
+                    </Button>
+                  </Link>
+                  <p className="text-xs text-muted-foreground/60 mt-3">
+                    Pas obligatoire. Continuez à explorer librement.
+                  </p>
+                </div>
               )}
             </div>
           )}

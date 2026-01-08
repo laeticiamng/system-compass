@@ -11,12 +11,11 @@ import {
   Gamepad2, 
   Heart,
   CheckCircle,
-  Sparkles,
-  UserPlus,
   Route,
   Settings,
   BarChart3,
-  Key
+  Key,
+  BookOpen
 } from 'lucide-react';
 
 export default function Index() {
@@ -110,8 +109,17 @@ export default function Index() {
               <span className="px-2 py-1 rounded-full bg-muted text-xs">👨‍👩‍👧 Parent diaspora</span>
             </div>
 
-            {/* Secondary CTA - Game Mode */}
-            <div className="px-4">
+            {/* Secondary CTAs */}
+            <div className="flex flex-wrap justify-center gap-3 px-4">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => navigate('/exit-keys/catalog')}
+                className="text-muted-foreground hover:text-foreground gap-2"
+              >
+                <BookOpen className="w-4 h-4" />
+                Voir toutes les clés de sortie
+              </Button>
               <Button
                 variant="ghost"
                 size="sm"
@@ -119,7 +127,7 @@ export default function Index() {
                 className="text-muted-foreground hover:text-foreground gap-2"
               >
                 <Gamepad2 className="w-4 h-4" />
-                Ou explorer le mode éducatif (personnage fictif)
+                Mode éducatif (personnage fictif)
               </Button>
             </div>
 
@@ -131,30 +139,20 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Account CTA - For non-logged users */}
+      {/* Guest Mode Banner - Non-aggressive, informative */}
       {!user && (
-        <section className="py-8 border-t border-border/50">
+        <section className="py-6 border-t border-border/50">
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto glass-card rounded-2xl p-4 md:p-6 border border-border/50">
-              <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
-                <div className="p-3 md:p-4 rounded-full bg-muted flex-shrink-0">
-                  <UserPlus className="w-6 h-6 md:w-8 md:h-8 text-muted-foreground" />
-                </div>
-                <div className="flex-1 text-center md:text-left">
-                  <h3 className="font-display text-lg md:text-xl font-bold mb-1 md:mb-2">
-                    Crée ton compte pour tout synchroniser
-                  </h3>
-                  <p className="text-muted-foreground text-xs md:text-sm">
-                    Ton profil, tes comparaisons, ta progression — tout interconnecté.
-                  </p>
-                </div>
-                <Link to="/auth" className="w-full md:w-auto">
-                  <Button variant="outline" size="lg" className="gap-2 w-full md:w-auto">
-                    <Sparkles className="w-4 h-4" />
-                    Créer mon compte
-                  </Button>
-                </Link>
-              </div>
+            <div className="max-w-4xl mx-auto p-4 md:p-5 rounded-xl bg-muted/30 border border-border/30 text-center">
+              <p className="text-sm text-muted-foreground mb-2">
+                🔓 <strong>Mode observation</strong> — Explorez librement sans compte
+              </p>
+              <p className="text-xs text-muted-foreground/80">
+                Toutes les simulations fonctionnent sans inscription. 
+                <Link to="/auth" className="text-primary hover:underline ml-1">
+                  Créez un compte
+                </Link> uniquement pour sauvegarder et synchroniser.
+              </p>
             </div>
           </div>
         </section>
