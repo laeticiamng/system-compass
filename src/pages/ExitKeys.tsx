@@ -1,10 +1,10 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { 
   ArrowLeft, Key, Compass, Target, Zap, 
   ChevronRight, MapPin, Heart, Shield,
-  AlertTriangle, CheckCircle
+  AlertTriangle, CheckCircle, Save, RefreshCw
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
@@ -22,6 +22,8 @@ import { PyramidType, PYRAMID_TYPE_INFO, LifeMotorProfile, LifePriority, LIFE_MO
 import { findCompatibleKeys, UserContext, STRATEGIC_PRINCIPLES } from '@/lib/exit-keys-engine';
 import ExitKeyCard from '@/components/ExitKeyCard';
 import { cn } from '@/lib/utils';
+import { useExitKeysProfile } from '@/hooks/useExitKeysProfile';
+import { useAuth } from '@/hooks/useAuth';
 
 const STEPS = ['origin', 'current', 'profile', 'goals', 'results'] as const;
 type Step = typeof STEPS[number];
@@ -49,6 +51,8 @@ const timeOptions = [
 
 export default function ExitKeys() {
   const { t } = useTranslation();
+  const { user } = useAuth();
+  const { profile: savedProfile, saveProfile, loading: profileLoading } = useExitKeysProfile();
   const [currentStep, setCurrentStep] = useState<Step>('origin');
   
   // User inputs
@@ -63,6 +67,44 @@ export default function ExitKeys() {
   const [hasNetwork, setHasNetwork] = useState(false);
   const [isLGBTQ, setIsLGBTQ] = useState(false);
   const [hasFamily, setHasFamily] = useState(false);
+
+  // Load saved profile on mount
+  useEffect(() => {
+    if (savedProfile && !profileLoading) {
+      setBirthCountryId(savedProfile.birthCountryId);
+      setCurrentCountryId(savedProfile.currentCountryId);
+      setMotorProfile(savedProfile.motorProfile);
+      setDesiredLife(savedProfile.desiredLife);
+      setRiskTolerance(savedProfile.riskTolerance);
+      setTimeHorizon(savedProfile.timeHorizon);
+      setHasCapital(savedProfile.hasCapital);
+      setHasCredentials(savedProfile.hasCredentials);
+      setHasNetwork(savedProfile.hasNetwork);
+      setIsLGBTQ(savedProfile.isLGBTQ);
+      setHasFamily(savedProfile.hasFamily);
+      // If profile is complete, go to results
+      if (savedProfile.birthCountryId && savedProfile.currentCountryId) {
+        setCurrentStep('results');
+      }
+    }
+  }, [savedProfile, profileLoading]);
+
+  // Save profile when reaching results
+  const handleSaveProfile = () => {
+    saveProfile({
+      birthCountryId,
+      currentCountryId,
+      motorProfile,
+      desiredLife,
+      riskTolerance,
+      timeHorizon,
+      hasCapital,
+      hasCredentials,
+      hasNetwork,
+      isLGBTQ,
+      hasFamily,
+    });
+  };
 
   // Derived data
   const birthCountry = countries.find(c => c.id === birthCountryId);
@@ -107,6 +149,10 @@ export default function ExitKeys() {
     const nextIndex = stepIndex + 1;
     if (nextIndex < STEPS.length) {
       setCurrentStep(STEPS[nextIndex]);
+      // Auto-save when reaching results
+      if (STEPS[nextIndex] === 'results') {
+        handleSaveProfile();
+      }
     }
   };
 
@@ -520,13 +566,22 @@ export default function ExitKeys() {
                 )}
               </div>
 
-              {/* Restart */}
-              <div className="text-center pt-8">
-                <Button variant="outline" onClick={() => setCurrentStep('origin')}>
-                  <ArrowLeft className="w-4 h-4 mr-2" />
-                  Recommencer avec d'autres critères
+              {/* Actions */}
+              <div className="flex flex-wrap justify-center gap-4 pt-8">
+                <Button variant="outline" onClick={handleSaveProfile}>
+                  <Save className="w-4 h-4 mr-2" />
+                  Sauvegarder mon profil
+                </Button>
+                <Button variant="ghost" onClick={() => setCurrentStep('origin')}>
+                  <RefreshCw className="w-4 h-4 mr-2" />
+                  Recommencer
                 </Button>
               </div>
+              {!user && (
+                <p className="text-center text-sm text-muted-foreground mt-4">
+                  <Link to="/auth" className="text-primary hover:underline">Connectez-vous</Link> pour sauvegarder votre profil de façon permanente.
+                </p>
+              )}
             </div>
           )}
         </div>
