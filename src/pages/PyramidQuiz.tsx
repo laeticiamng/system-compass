@@ -261,6 +261,38 @@ export default function PyramidQuiz() {
     healthLost: 0,
   });
 
+  // Update game stats
+  const updateStats = useCallback((update: Partial<GameStats>) => {
+    setGameStats(prev => ({
+      ...prev,
+      ...update,
+      countriesVisited: update.countriesVisited 
+        ? [...new Set([...prev.countriesVisited, ...update.countriesVisited])]
+        : prev.countriesVisited,
+    }));
+  }, []);
+
+  const trackRiskOutcome = useCallback((outcome: 'success' | 'failure' | 'catastrophic', moneyChange: number, healthChange: number) => {
+    setGameStats(prev => ({
+      ...prev,
+      risksTaken: prev.risksTaken + 1,
+      risksSucceeded: outcome === 'success' ? prev.risksSucceeded + 1 : prev.risksSucceeded,
+      risksFailed: outcome === 'failure' ? prev.risksFailed + 1 : prev.risksFailed,
+      risksCatastrophic: outcome === 'catastrophic' ? prev.risksCatastrophic + 1 : prev.risksCatastrophic,
+      totalMoneyEarned: moneyChange > 0 ? prev.totalMoneyEarned + moneyChange : prev.totalMoneyEarned,
+      totalMoneyLost: moneyChange < 0 ? prev.totalMoneyLost + Math.abs(moneyChange) : prev.totalMoneyLost,
+      healthLost: healthChange < 0 ? prev.healthLost + Math.abs(healthChange) : prev.healthLost,
+    }));
+  }, []);
+
+  const trackAction = useCallback((success: boolean) => {
+    setGameStats(prev => ({
+      ...prev,
+      actionsCompleted: success ? prev.actionsCompleted + 1 : prev.actionsCompleted,
+      actionsFailed: !success ? prev.actionsFailed + 1 : prev.actionsFailed,
+    }));
+  }, []);
+
   // Cooperative mode: shared score pool
   const [cooperativePool, setCooperativePool] = useState<Record<PyramidType, number>>(createEmptyScores());
 
