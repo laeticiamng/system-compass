@@ -13,7 +13,44 @@
     "load": "Charger",
     "loading": "Chargement...",
     "country": "Pays",
-    "metric": "Métrique"
+    "metric": "Métrique",
+    "delete": "Supprimer",
+    "confirm": "Confirmer",
+    "edit": "Modifier"
+  },
+  "dashboard": {
+    "title": "Mon Tableau de Bord",
+    "subtitle": "Suivez votre progression vers votre nouvelle vie",
+    "syncing": "Synchronisation...",
+    "synced": "Synchronisé",
+    "localOnly": "Local uniquement",
+    "connectToSync": "Connectez-vous pour synchroniser",
+    "localDataInfo": "Vos données sont sauvegardées localement. Connectez-vous pour les synchroniser dans le cloud.",
+    "signIn": "Se connecter",
+    "profileLabel": "Profil",
+    "viewKeys": "Voir mes clés",
+    "profileNotConfigured": "Profil non configuré",
+    "profileNotConfiguredDesc": "Créez votre profil pour obtenir des recommandations personnalisées",
+    "createProfile": "Créer mon profil",
+    "savedComparisons": "Comparaisons sauvegardées",
+    "savedComparisonsDesc": "Vos comparaisons de pays favorites",
+    "countries": "pays",
+    "viewAll": "Voir toutes",
+    "choosePlan": "Choisir un plan à suivre",
+    "choosePlanDesc": "Sélectionnez une clé de sortie pour commencer à suivre votre progression",
+    "selectExitKey": "Sélectionner une clé de sortie...",
+    "startedOn": "Démarré le",
+    "reset": "Réinitialiser",
+    "overallProgress": "Progression globale",
+    "planCompleted": "Plan complété ! Félicitations !",
+    "planStarted": "Plan démarré !",
+    "progressReset": "Progression réinitialisée",
+    "progressUpdated": "Progression mise à jour",
+    "deadlineSet": "Échéance définie",
+    "reminderUpdated": "Rappel mis à jour",
+    "noteSaved": "Note sauvegardée",
+    "deadlineToday": "Échéance aujourd'hui",
+    "deadlineIn": "Échéance dans {{days}} jour(s)"
   },
   "footer": {
     "explore": "Explorer",
@@ -33,7 +70,8 @@
     "pyramids": "Pyramides",
     "quiz": "Quiz",
     "exitKeys": "Clés de Sortie",
-    "dashboard": "Tableau de Bord"
+    "dashboard": "Tableau de Bord",
+    "multiCompare": "Multi-Comparer"
   },
   "hero": {
     "badge": "Naviguer dans le vrai système",
@@ -2765,6 +2803,8 @@
     }
   },
   "resources": {
+    "title": "Ressources & Outils",
+    "subtitle": "Tout ce dont tu as besoin pour naviguer intelligemment dans ton système et préparer ta sortie.",
     "time": "Temps",
     "timeDesc": "Capacité à prendre des actions",
     "money": "Argent",
@@ -2776,7 +2816,130 @@
     "skills": "Compétences",
     "skillsDesc": "Améliore les rendements",
     "mobility": "Mobilité",
-    "mobilityDesc": "Permet la migration"
+    "mobilityDesc": "Permet la migration",
+    "categories": {
+      "financial": {
+        "title": "Finances",
+        "description": "Sécurise ta base financière",
+        "items": {
+          "emergencyFund": {
+            "name": "Fonds d'urgence",
+            "description": "3-6 mois de dépenses en réserve"
+          },
+          "multipleIncome": {
+            "name": "Revenus multiples",
+            "description": "Diversifie tes sources de revenus"
+          },
+          "offshoreBanking": {
+            "name": "Compte international",
+            "description": "Accès à des devises stables"
+          },
+          "taxOptimization": {
+            "name": "Optimisation fiscale",
+            "description": "Structure légale optimale"
+          }
+        }
+      },
+      "skills": {
+        "title": "Compétences",
+        "description": "Développe des compétences exportables",
+        "items": {
+          "remote": {
+            "name": "Travail à distance",
+            "description": "Compétences pour travailler de n'importe où"
+          },
+          "certifications": {
+            "name": "Certifications",
+            "description": "Diplômes reconnus internationalement"
+          },
+          "languages": {
+            "name": "Langues",
+            "description": "Anglais + langue locale cible"
+          },
+          "digitalPresence": {
+            "name": "Présence digitale",
+            "description": "Portfolio et réputation en ligne"
+          }
+        }
+      },
+      "mobility": {
+        "title": "Mobilité",
+        "description": "Prépare ta liberté géographique",
+        "items": {
+          "documents": {
+            "name": "Documents",
+            "description": "Passeport, visas, actes d'état civil"
+          },
+          "visaStrategy": {
+            "name": "Stratégie visa",
+            "description": "Plan B et C pour résider ailleurs"
+          },
+          "secondResidency": {
+            "name": "Seconde résidence",
+            "description": "Option de résidence dans un autre pays"
+          },
+          "digitalNomad": {
+            "name": "Digital nomad",
+            "description": "Visas pour nomades numériques"
+          }
+        }
+      },
+      "security": {
+        "title": "Sécurité",
+        "description": "Protège tes actifs et ta vie privée",
+        "items": {
+          "opsec": {
+            "name": "Sécurité opérationnelle",
+            "description": "Discrétion et prudence"
+          },
+          "digitalPrivacy": {
+            "name": "Vie privée digitale",
+            "description": "VPN, encryption, comptes séparés"
+          },
+          "assetProtection": {
+            "name": "Protection des actifs",
+            "description": "Diversification géographique"
+          },
+          "networkSafety": {
+            "name": "Réseau sûr",
+            "description": "Contacts de confiance"
+          }
+        }
+      }
+    },
+    "checklists": {
+      "title": "Checklists de survie",
+      "survival30": {
+        "title": "Survie 30 jours",
+        "items": [
+          "Sécuriser tous les documents d'identité",
+          "Créer un fonds d'urgence (même petit)",
+          "Cartographier son réseau de valeur",
+          "Identifier une compétence exportable",
+          "Auditer sa situation actuelle",
+          "Comprendre sa tranche fiscale",
+          "Commencer l'épargne automatique",
+          "Rechercher des options de revenus secondaires"
+        ]
+      },
+      "preMove": {
+        "title": "Pré-déménagement",
+        "items": [
+          "Visa et permis de travail confirmés",
+          "Logement temporaire réservé",
+          "Compte bancaire local ouvert",
+          "Assurance santé en place",
+          "Numéro de téléphone local",
+          "Réseau de contacts initial",
+          "Documents traduits et légalisés",
+          "Plan B défini"
+        ]
+      }
+    },
+    "disclaimer": {
+      "title": "Avertissement",
+      "text": "Ces ressources sont fournies à titre informatif uniquement. Consultez des professionnels qualifiés (avocats, comptables, conseillers en immigration) avant de prendre des décisions importantes."
+    }
   },
   "actions": {
     "majorTitle": "Actions majeures (1/tour)",

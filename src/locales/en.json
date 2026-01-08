@@ -13,7 +13,44 @@
     "load": "Load",
     "loading": "Loading...",
     "country": "Country",
-    "metric": "Metric"
+    "metric": "Metric",
+    "delete": "Delete",
+    "confirm": "Confirm",
+    "edit": "Edit"
+  },
+  "dashboard": {
+    "title": "My Dashboard",
+    "subtitle": "Track your progress towards your new life",
+    "syncing": "Syncing...",
+    "synced": "Synced",
+    "localOnly": "Local only",
+    "connectToSync": "Sign in to sync",
+    "localDataInfo": "Your data is saved locally. Sign in to sync it to the cloud.",
+    "signIn": "Sign in",
+    "profileLabel": "Profile",
+    "viewKeys": "View my keys",
+    "profileNotConfigured": "Profile not configured",
+    "profileNotConfiguredDesc": "Create your profile to get personalized recommendations",
+    "createProfile": "Create my profile",
+    "savedComparisons": "Saved comparisons",
+    "savedComparisonsDesc": "Your favorite country comparisons",
+    "countries": "countries",
+    "viewAll": "View all",
+    "choosePlan": "Choose a plan to follow",
+    "choosePlanDesc": "Select an exit key to start tracking your progress",
+    "selectExitKey": "Select an exit key...",
+    "startedOn": "Started on",
+    "reset": "Reset",
+    "overallProgress": "Overall progress",
+    "planCompleted": "Plan completed! Congratulations!",
+    "planStarted": "Plan started!",
+    "progressReset": "Progress reset",
+    "progressUpdated": "Progress updated",
+    "deadlineSet": "Deadline set",
+    "reminderUpdated": "Reminder updated",
+    "noteSaved": "Note saved",
+    "deadlineToday": "Deadline today",
+    "deadlineIn": "Deadline in {{days}} day(s)"
   },
   "footer": {
     "explore": "Explore",
@@ -33,7 +70,8 @@
     "pyramids": "Pyramids",
     "quiz": "Quiz",
     "exitKeys": "Exit Keys",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "multiCompare": "Multi-Compare"
   },
   "hero": {
     "badge": "Navigate the Real System",
@@ -2407,6 +2445,8 @@
     }
   },
   "resources": {
+    "title": "Resources & Tools",
+    "subtitle": "Everything you need to navigate your system intelligently and prepare your exit.",
     "time": "Time",
     "timeDesc": "Capacity to take actions",
     "money": "Money",
@@ -2418,7 +2458,130 @@
     "skills": "Skills",
     "skillsDesc": "Improves returns",
     "mobility": "Mobility",
-    "mobilityDesc": "Allows migration"
+    "mobilityDesc": "Allows migration",
+    "categories": {
+      "financial": {
+        "title": "Finances",
+        "description": "Secure your financial base",
+        "items": {
+          "emergencyFund": {
+            "name": "Emergency Fund",
+            "description": "3-6 months expenses in reserve"
+          },
+          "multipleIncome": {
+            "name": "Multiple Income",
+            "description": "Diversify your income sources"
+          },
+          "offshoreBanking": {
+            "name": "International Account",
+            "description": "Access to stable currencies"
+          },
+          "taxOptimization": {
+            "name": "Tax Optimization",
+            "description": "Optimal legal structure"
+          }
+        }
+      },
+      "skills": {
+        "title": "Skills",
+        "description": "Develop exportable skills",
+        "items": {
+          "remote": {
+            "name": "Remote Work",
+            "description": "Skills to work from anywhere"
+          },
+          "certifications": {
+            "name": "Certifications",
+            "description": "Internationally recognized credentials"
+          },
+          "languages": {
+            "name": "Languages",
+            "description": "English + target local language"
+          },
+          "digitalPresence": {
+            "name": "Digital Presence",
+            "description": "Portfolio and online reputation"
+          }
+        }
+      },
+      "mobility": {
+        "title": "Mobility",
+        "description": "Prepare your geographic freedom",
+        "items": {
+          "documents": {
+            "name": "Documents",
+            "description": "Passport, visas, civil status records"
+          },
+          "visaStrategy": {
+            "name": "Visa Strategy",
+            "description": "Plan B and C to reside elsewhere"
+          },
+          "secondResidency": {
+            "name": "Second Residency",
+            "description": "Residence option in another country"
+          },
+          "digitalNomad": {
+            "name": "Digital Nomad",
+            "description": "Digital nomad visas"
+          }
+        }
+      },
+      "security": {
+        "title": "Security",
+        "description": "Protect your assets and privacy",
+        "items": {
+          "opsec": {
+            "name": "Operational Security",
+            "description": "Discretion and caution"
+          },
+          "digitalPrivacy": {
+            "name": "Digital Privacy",
+            "description": "VPN, encryption, separate accounts"
+          },
+          "assetProtection": {
+            "name": "Asset Protection",
+            "description": "Geographic diversification"
+          },
+          "networkSafety": {
+            "name": "Safe Network",
+            "description": "Trusted contacts"
+          }
+        }
+      }
+    },
+    "checklists": {
+      "title": "Survival Checklists",
+      "survival30": {
+        "title": "30-Day Survival",
+        "items": [
+          "Secure all identity documents",
+          "Create an emergency fund (even small)",
+          "Map your network value",
+          "Identify an exportable skill",
+          "Audit your current situation",
+          "Understand your tax bracket",
+          "Start automatic savings",
+          "Research secondary income options"
+        ]
+      },
+      "preMove": {
+        "title": "Pre-Move",
+        "items": [
+          "Visa and work permit confirmed",
+          "Temporary accommodation booked",
+          "Local bank account opened",
+          "Health insurance in place",
+          "Local phone number",
+          "Initial contact network",
+          "Documents translated and legalized",
+          "Plan B defined"
+        ]
+      }
+    },
+    "disclaimer": {
+      "title": "Disclaimer",
+      "text": "These resources are provided for informational purposes only. Consult qualified professionals (lawyers, accountants, immigration advisors) before making important decisions."
+    }
   },
   "actions": {
     "majorTitle": "Major Actions (1/turn)",
