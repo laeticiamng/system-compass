@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useExitKeysProfile } from '@/hooks/useExitKeysProfile';
 import { EXIT_KEYS, ExitKey, ExitKeyStep } from '@/lib/exit-keys-engine';
 import { LIFE_MOTOR_PROFILES } from '@/lib/types';
@@ -7,8 +7,10 @@ import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Separator } from '@/components/ui/separator';
+import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Link } from 'react-router-dom';
 import { 
   CheckCircle2, 
@@ -20,7 +22,14 @@ import {
   Key,
   ArrowRight,
   Bookmark,
-  Trophy
+  Trophy,
+  Bell,
+  BellOff,
+  MessageSquare,
+  ChevronDown,
+  Calendar,
+  Save,
+  X
 } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -29,22 +38,66 @@ interface StepProgress {
   actionIndex: number;
   completed: boolean;
   completedAt?: string;
+  deadline?: string;
+  reminderEnabled?: boolean;
+}
+
+interface PhaseNote {
+  phaseIndex: number;
+  note: string;
+  updatedAt: string;
 }
 
 interface PlanProgress {
   exitKeyId: string;
   startedAt: string;
   stepsProgress: StepProgress[];
-  notes?: string;
+  phaseNotes: PhaseNote[];
 }
 
 const DASHBOARD_STORAGE_KEY = 'exit_keys_dashboard';
+const REMINDERS_KEY = 'exit_keys_reminders';
+
+// Calculate suggested deadline based on phase duration
+function parseDuration(duration: string): number {
+  // Parse durations like "6-12 mois", "2-3 ans", "1-2 ans"
+  const match = duration.match(/(\d+)-?(\d+)?\s*(mois|ans|months|years)/i);
+  if (!match) return 180; // Default 6 months in days
+  
+  const minVal = parseInt(match[1]);
+  const unit = match[3].toLowerCase();
+  
+  if (unit === 'mois' || unit === 'months') {
+    return minVal * 30; // days
+  } else {
+    return minVal * 365; // days
+  }
+}
+
+function formatDate(date: Date): string {
+  return date.toISOString().split('T')[0];
+}
+
+function formatDisplayDate(dateStr: string): string {
+  const date = new Date(dateStr);
+  return date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+function getDaysRemaining(deadline: string): number {
+  const now = new Date();
+  const deadlineDate = new Date(deadline);
+  const diff = deadlineDate.getTime() - now.getTime();
+  return Math.ceil(diff / (1000 * 60 * 60 * 24));
+}
 
 export default function Dashboard() {
   const { profile, loading: profileLoading } = useExitKeysProfile();
   const [selectedKeyId, setSelectedKeyId] = useState<string | null>(null);
   const [progress, setProgress] = useState<PlanProgress | null>(null);
   const [loading, setLoading] = useState(true);
+  const [editingNote, setEditingNote] = useState<number | null>(null);
+  const [noteText, setNoteText] = useState('');
+  const [openPhases, setOpenPhases] = useState<Record<number, boolean>>({});
 
   // Load progress from localStorage
   useEffect(() => {
@@ -52,6 +105,10 @@ export default function Dashboard() {
     if (savedProgress) {
       try {
         const parsed = JSON.parse(savedProgress) as PlanProgress;
+        // Ensure phaseNotes exists for backward compatibility
+        if (!parsed.phaseNotes) {
+          parsed.phaseNotes = [];
+        }
         setProgress(parsed);
         setSelectedKeyId(parsed.exitKeyId);
       } catch (e) {
@@ -60,6 +117,38 @@ export default function Dashboard() {
     }
     setLoading(false);
   }, []);
+
+  // Check for upcoming deadlines and show notifications
+  useEffect(() => {
+    if (!progress) return;
+
+    const upcomingDeadlines = progress.stepsProgress.filter(step => {
+      if (!step.deadline || step.completed || !step.reminderEnabled) return false;
+      const daysRemaining = getDaysRemaining(step.deadline);
+      return daysRemaining <= 7 && daysRemaining >= 0;
+    });
+
+    if (upcomingDeadlines.length > 0) {
+      const selectedKey = EXIT_KEYS.find(k => k.id === progress.exitKeyId);
+      if (selectedKey) {
+        upcomingDeadlines.forEach(step => {
+          const phase = selectedKey.steps[step.phaseIndex];
+          const action = phase?.actions[step.actionIndex];
+          const daysRemaining = getDaysRemaining(step.deadline!);
+          
+          if (daysRemaining === 0) {
+            toast.warning(`Échéance aujourd'hui: ${action?.substring(0, 50)}...`, {
+              duration: 10000,
+            });
+          } else if (daysRemaining <= 3) {
+            toast.info(`Échéance dans ${daysRemaining} jour(s): ${action?.substring(0, 40)}...`, {
+              duration: 8000,
+            });
+          }
+        });
+      }
+    }
+  }, [progress]);
 
   const selectedKey = selectedKeyId 
     ? EXIT_KEYS.find(k => k.id === selectedKeyId) 
@@ -96,6 +185,26 @@ export default function Dashboard() {
     );
   };
 
+  // Get action step data
+  const getActionStep = (phaseIndex: number, actionIndex: number): StepProgress | undefined => {
+    if (!progress) return undefined;
+    return progress.stepsProgress.find(
+      s => s.phaseIndex === phaseIndex && s.actionIndex === actionIndex
+    );
+  };
+
+  // Get phase note
+  const getPhaseNote = (phaseIndex: number): string => {
+    if (!progress) return '';
+    const note = progress.phaseNotes.find(n => n.phaseIndex === phaseIndex);
+    return note?.note || '';
+  };
+
+  // Save progress to localStorage
+  const saveProgress = useCallback((newProgress: PlanProgress) => {
+    localStorage.setItem(DASHBOARD_STORAGE_KEY, JSON.stringify(newProgress));
+  }, []);
+
   // Toggle action completion
   const toggleAction = (phaseIndex: number, actionIndex: number) => {
     if (!selectedKey) return;
@@ -104,7 +213,6 @@ export default function Dashboard() {
       const now = new Date().toISOString();
       
       if (!prev) {
-        // Initialize progress
         const newProgress: PlanProgress = {
           exitKeyId: selectedKey.id,
           startedAt: now,
@@ -113,9 +221,10 @@ export default function Dashboard() {
             actionIndex,
             completed: true,
             completedAt: now
-          }]
+          }],
+          phaseNotes: []
         };
-        localStorage.setItem(DASHBOARD_STORAGE_KEY, JSON.stringify(newProgress));
+        saveProgress(newProgress);
         return newProgress;
       }
 
@@ -126,14 +235,12 @@ export default function Dashboard() {
       let newStepsProgress: StepProgress[];
       
       if (existingIndex >= 0) {
-        // Toggle existing
         newStepsProgress = prev.stepsProgress.map((s, i) => 
           i === existingIndex 
             ? { ...s, completed: !s.completed, completedAt: !s.completed ? now : undefined }
             : s
         );
       } else {
-        // Add new
         newStepsProgress = [...prev.stepsProgress, {
           phaseIndex,
           actionIndex,
@@ -147,11 +254,142 @@ export default function Dashboard() {
         stepsProgress: newStepsProgress
       };
       
-      localStorage.setItem(DASHBOARD_STORAGE_KEY, JSON.stringify(newProgress));
+      saveProgress(newProgress);
       return newProgress;
     });
 
     toast.success('Progression mise à jour');
+  };
+
+  // Set deadline for an action
+  const setDeadline = (phaseIndex: number, actionIndex: number, deadline: string) => {
+    if (!selectedKey || !progress) return;
+
+    setProgress(prev => {
+      if (!prev) return prev;
+
+      const existingIndex = prev.stepsProgress.findIndex(
+        s => s.phaseIndex === phaseIndex && s.actionIndex === actionIndex
+      );
+
+      let newStepsProgress: StepProgress[];
+      
+      if (existingIndex >= 0) {
+        newStepsProgress = prev.stepsProgress.map((s, i) => 
+          i === existingIndex 
+            ? { ...s, deadline, reminderEnabled: true }
+            : s
+        );
+      } else {
+        newStepsProgress = [...prev.stepsProgress, {
+          phaseIndex,
+          actionIndex,
+          completed: false,
+          deadline,
+          reminderEnabled: true
+        }];
+      }
+
+      const newProgress: PlanProgress = {
+        ...prev,
+        stepsProgress: newStepsProgress
+      };
+      
+      saveProgress(newProgress);
+      return newProgress;
+    });
+
+    toast.success('Échéance définie');
+  };
+
+  // Toggle reminder for an action
+  const toggleReminder = (phaseIndex: number, actionIndex: number) => {
+    if (!progress) return;
+
+    setProgress(prev => {
+      if (!prev) return prev;
+
+      const existingIndex = prev.stepsProgress.findIndex(
+        s => s.phaseIndex === phaseIndex && s.actionIndex === actionIndex
+      );
+
+      if (existingIndex < 0) return prev;
+
+      const newStepsProgress = prev.stepsProgress.map((s, i) => 
+        i === existingIndex 
+          ? { ...s, reminderEnabled: !s.reminderEnabled }
+          : s
+      );
+
+      const newProgress: PlanProgress = {
+        ...prev,
+        stepsProgress: newStepsProgress
+      };
+      
+      saveProgress(newProgress);
+      return newProgress;
+    });
+
+    toast.success('Rappel mis à jour');
+  };
+
+  // Save phase note
+  const savePhaseNote = (phaseIndex: number) => {
+    if (!progress) return;
+
+    setProgress(prev => {
+      if (!prev) return prev;
+
+      const existingIndex = prev.phaseNotes.findIndex(n => n.phaseIndex === phaseIndex);
+      let newPhaseNotes: PhaseNote[];
+
+      if (existingIndex >= 0) {
+        newPhaseNotes = prev.phaseNotes.map((n, i) => 
+          i === existingIndex 
+            ? { ...n, note: noteText, updatedAt: new Date().toISOString() }
+            : n
+        );
+      } else {
+        newPhaseNotes = [...prev.phaseNotes, {
+          phaseIndex,
+          note: noteText,
+          updatedAt: new Date().toISOString()
+        }];
+      }
+
+      const newProgress: PlanProgress = {
+        ...prev,
+        phaseNotes: newPhaseNotes
+      };
+      
+      saveProgress(newProgress);
+      return newProgress;
+    });
+
+    setEditingNote(null);
+    setNoteText('');
+    toast.success('Note sauvegardée');
+  };
+
+  // Start editing a note
+  const startEditingNote = (phaseIndex: number) => {
+    setNoteText(getPhaseNote(phaseIndex));
+    setEditingNote(phaseIndex);
+  };
+
+  // Get suggested deadline for a phase
+  const getSuggestedDeadline = (phaseIndex: number): string => {
+    if (!selectedKey || !progress) return formatDate(new Date());
+
+    // Calculate cumulative duration from start
+    let totalDays = 0;
+    for (let i = 0; i <= phaseIndex; i++) {
+      totalDays += parseDuration(selectedKey.steps[i].duration);
+    }
+
+    const startDate = new Date(progress.startedAt);
+    const suggestedDate = new Date(startDate.getTime() + totalDays * 24 * 60 * 60 * 1000);
+    return formatDate(suggestedDate);
   };
 
   // Start a new plan
@@ -162,12 +400,13 @@ export default function Dashboard() {
     const newProgress: PlanProgress = {
       exitKeyId: keyId,
       startedAt: new Date().toISOString(),
-      stepsProgress: []
+      stepsProgress: [],
+      phaseNotes: []
     };
 
     setProgress(newProgress);
     setSelectedKeyId(keyId);
-    localStorage.setItem(DASHBOARD_STORAGE_KEY, JSON.stringify(newProgress));
+    saveProgress(newProgress);
     toast.success(`Plan "${key.name}" démarré !`);
   };
 
@@ -297,6 +536,12 @@ export default function Dashboard() {
                         }>
                           {selectedKey.difficulty}
                         </Badge>
+                        {progress && (
+                          <Badge variant="outline">
+                            <Calendar className="w-3 h-3 mr-1" />
+                            Démarré le {formatDisplayDate(progress.startedAt)}
+                          </Badge>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -344,6 +589,8 @@ export default function Dashboard() {
                 const phasePercent = phaseProgress.total > 0 
                   ? Math.round((phaseProgress.completed / phaseProgress.total) * 100) 
                   : 0;
+                const phaseNote = getPhaseNote(phaseIndex);
+                const suggestedDeadline = getSuggestedDeadline(phaseIndex);
 
                 return (
                   <Card 
@@ -362,9 +609,15 @@ export default function Dashboard() {
                             <CardTitle className="text-lg">
                               Phase {phase.phase}: {phase.name}
                             </CardTitle>
-                            <CardDescription className="flex items-center gap-2 mt-1">
-                              <Clock className="w-4 h-4" />
-                              Durée estimée: {phase.duration}
+                            <CardDescription className="flex items-center gap-4 mt-1">
+                              <span className="flex items-center gap-1">
+                                <Clock className="w-4 h-4" />
+                                Durée: {phase.duration}
+                              </span>
+                              <span className="flex items-center gap-1 text-primary">
+                                <Target className="w-4 h-4" />
+                                Échéance suggérée: {formatDisplayDate(suggestedDeadline)}
+                              </span>
                             </CardDescription>
                           </div>
                         </div>
@@ -396,28 +649,188 @@ export default function Dashboard() {
                         </div>
                       )}
 
+                      {/* Phase Notes */}
+                      <Collapsible 
+                        open={openPhases[phaseIndex] || editingNote === phaseIndex}
+                        onOpenChange={(open) => setOpenPhases(prev => ({ ...prev, [phaseIndex]: open }))}
+                        className="mb-4"
+                      >
+                        <div className="flex items-center justify-between">
+                          <CollapsibleTrigger asChild>
+                            <Button variant="ghost" size="sm" className="gap-2">
+                              <MessageSquare className="w-4 h-4" />
+                              Notes personnelles
+                              {phaseNote && <Badge variant="secondary" className="ml-1">1</Badge>}
+                              <ChevronDown className="w-4 h-4" />
+                            </Button>
+                          </CollapsibleTrigger>
+                          {!editingNote && (
+                            <Button 
+                              variant="outline" 
+                              size="sm" 
+                              onClick={() => startEditingNote(phaseIndex)}
+                            >
+                              {phaseNote ? 'Modifier' : 'Ajouter une note'}
+                            </Button>
+                          )}
+                        </div>
+                        <CollapsibleContent className="mt-3">
+                          {editingNote === phaseIndex ? (
+                            <div className="space-y-3">
+                              <Textarea
+                                placeholder="Écrivez vos notes, observations, idées pour cette phase..."
+                                value={noteText}
+                                onChange={(e) => setNoteText(e.target.value)}
+                                rows={4}
+                                className="resize-none"
+                              />
+                              <div className="flex gap-2">
+                                <Button size="sm" onClick={() => savePhaseNote(phaseIndex)}>
+                                  <Save className="w-4 h-4 mr-1" />
+                                  Sauvegarder
+                                </Button>
+                                <Button 
+                                  size="sm" 
+                                  variant="ghost"
+                                  onClick={() => {
+                                    setEditingNote(null);
+                                    setNoteText('');
+                                  }}
+                                >
+                                  <X className="w-4 h-4 mr-1" />
+                                  Annuler
+                                </Button>
+                              </div>
+                            </div>
+                          ) : phaseNote ? (
+                            <div className="bg-muted/50 rounded-lg p-4">
+                              <p className="text-sm whitespace-pre-wrap">{phaseNote}</p>
+                              <p className="text-xs text-muted-foreground mt-2">
+                                Dernière modification: {formatDisplayDate(
+                                  progress?.phaseNotes.find(n => n.phaseIndex === phaseIndex)?.updatedAt || ''
+                                )}
+                              </p>
+                            </div>
+                          ) : (
+                            <p className="text-sm text-muted-foreground italic">
+                              Aucune note pour cette phase. Cliquez sur "Ajouter une note" pour commencer.
+                            </p>
+                          )}
+                        </CollapsibleContent>
+                      </Collapsible>
+
                       {/* Actions */}
                       <div className="space-y-3">
                         {phase.actions.map((action, actionIndex) => {
                           const completed = isActionCompleted(phaseIndex, actionIndex);
+                          const stepData = getActionStep(phaseIndex, actionIndex);
+                          const daysRemaining = stepData?.deadline ? getDaysRemaining(stepData.deadline) : null;
+                          
                           return (
                             <div 
                               key={actionIndex}
-                              className={`flex items-start gap-3 p-3 rounded-lg border transition-all cursor-pointer hover:bg-muted/50 ${
+                              className={`p-3 rounded-lg border transition-all ${
                                 completed ? 'bg-green-500/5 border-green-500/20' : 'border-border'
                               }`}
-                              onClick={() => toggleAction(phaseIndex, actionIndex)}
                             >
-                              <Checkbox 
-                                checked={completed}
-                                className="mt-0.5"
-                              />
-                              <span className={`flex-1 text-sm ${completed ? 'line-through text-muted-foreground' : ''}`}>
-                                {action}
-                              </span>
-                              {completed && (
-                                <CheckCircle2 className="w-4 h-4 text-green-500" />
-                              )}
+                              <div 
+                                className="flex items-start gap-3 cursor-pointer hover:bg-muted/30 rounded -m-1 p-1"
+                                onClick={() => toggleAction(phaseIndex, actionIndex)}
+                              >
+                                <Checkbox 
+                                  checked={completed}
+                                  className="mt-0.5"
+                                />
+                                <span className={`flex-1 text-sm ${completed ? 'line-through text-muted-foreground' : ''}`}>
+                                  {action}
+                                </span>
+                                {completed && (
+                                  <CheckCircle2 className="w-4 h-4 text-green-500" />
+                                )}
+                              </div>
+                              
+                              {/* Deadline & Reminder */}
+                              <div className="flex items-center gap-3 mt-2 ml-7">
+                                <Dialog>
+                                  <DialogTrigger asChild>
+                                    <Button variant="ghost" size="sm" className="h-7 text-xs gap-1">
+                                      <Calendar className="w-3 h-3" />
+                                      {stepData?.deadline 
+                                        ? formatDisplayDate(stepData.deadline)
+                                        : 'Définir échéance'
+                                      }
+                                    </Button>
+                                  </DialogTrigger>
+                                  <DialogContent className="sm:max-w-md">
+                                    <DialogHeader>
+                                      <DialogTitle>Définir l'échéance</DialogTitle>
+                                    </DialogHeader>
+                                    <div className="space-y-4">
+                                      <p className="text-sm text-muted-foreground">{action}</p>
+                                      <div className="space-y-2">
+                                        <label className="text-sm font-medium">Date d'échéance</label>
+                                        <input
+                                          type="date"
+                                          className="w-full px-3 py-2 border rounded-md bg-background"
+                                          defaultValue={stepData?.deadline || suggestedDeadline}
+                                          onChange={(e) => {
+                                            if (e.target.value) {
+                                              setDeadline(phaseIndex, actionIndex, e.target.value);
+                                            }
+                                          }}
+                                        />
+                                        <p className="text-xs text-muted-foreground">
+                                          Échéance suggérée basée sur la durée de la phase: {formatDisplayDate(suggestedDeadline)}
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </DialogContent>
+                                </Dialog>
+
+                                {stepData?.deadline && (
+                                  <>
+                                    <Button
+                                      variant="ghost"
+                                      size="sm"
+                                      className="h-7 text-xs gap-1"
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        toggleReminder(phaseIndex, actionIndex);
+                                      }}
+                                    >
+                                      {stepData.reminderEnabled ? (
+                                        <>
+                                          <Bell className="w-3 h-3 text-primary" />
+                                          Rappel actif
+                                        </>
+                                      ) : (
+                                        <>
+                                          <BellOff className="w-3 h-3" />
+                                          Rappel désactivé
+                                        </>
+                                      )}
+                                    </Button>
+
+                                    {!completed && daysRemaining !== null && (
+                                      <Badge 
+                                        variant={
+                                          daysRemaining < 0 ? 'destructive' :
+                                          daysRemaining <= 3 ? 'destructive' :
+                                          daysRemaining <= 7 ? 'secondary' : 'outline'
+                                        }
+                                        className="text-xs"
+                                      >
+                                        {daysRemaining < 0 
+                                          ? `En retard de ${Math.abs(daysRemaining)} j`
+                                          : daysRemaining === 0
+                                          ? "Aujourd'hui"
+                                          : `${daysRemaining} j restants`
+                                        }
+                                      </Badge>
+                                    )}
+                                  </>
+                                )}
+                              </div>
                             </div>
                           );
                         })}
