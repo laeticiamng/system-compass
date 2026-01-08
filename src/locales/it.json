@@ -1613,7 +1613,8 @@
       "player": "Giocatore",
       "yourTurn": "Tocca a te!",
       "gameOver": "Partita finita!"
-    }
+    },
+    "gameLoaded": "Partita caricata!"
   },
   "auth": {
     "login": "Accedi",

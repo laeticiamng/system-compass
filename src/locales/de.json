@@ -1613,7 +1613,8 @@
       "player": "Spieler",
       "yourTurn": "Du bist dran!",
       "gameOver": "Spiel beendet!"
-    }
+    },
+    "gameLoaded": "Spiel geladen!"
   },
   "auth": {
     "login": "Anmelden",
