@@ -1631,5 +1631,174 @@
       "title": "Samengevat",
       "text": "Deze tool helpt je helderder te zien, niet de toekomst te zien. Het belicht trends zodat JIJ weloverwogen kunt beslissen. De beslissing, en de verantwoordelijkheid, blijven altijd van jou."
     }
+  },
+  "lifeGame": {
+    "hero": {
+      "badge": "🎮 Educatief bordspel",
+      "title1": "Het Spel van",
+      "titleHighlight": "HET LEVEN",
+      "subtitle": "Een simulatiespel waarin je een fictief personage speelt. Ontdek hoe de wereld werkt via willekeurige trajecten — dit is NIET je echte leven!",
+      "playCta": "Start een spel",
+      "learnCta": "Spelregels",
+      "stats": {
+        "archetypes": "Speelbare personages",
+        "systems": "Wereldsystemen",
+        "possibilities": "Mogelijke trajecten"
+      }
+    },
+    "clarification": {
+      "title": "⚠️ Dit is NIET je echte leven",
+      "point1": "Je ontvangt willekeurig een fictief personage (erfgenaam, vluchteling, ondernemer...)",
+      "point2": "Je verkent wereldmechanismen zonder echt risico",
+      "point3": "Dit is een educatief hulpmiddel, geen voorspelling voor jou",
+      "realLife": "Om je echte leven te plannen →",
+      "realLifeLink": "Exit-Sleutels"
+    },
+    "tagline": {
+      "quote": "Sommigen worden bij de finish geboren. Anderen moeten een marathon lopen met kettingen aan hun voeten. Dit spel toont waarom.",
+      "author": "— De realiteit, ongefilterd"
+    },
+    "features": {
+      "title": "Hoe het spel werkt",
+      "subtitle": "Een bordspel waar toeval en strategie samenkomen.",
+      "systems": {
+        "title": "6 Wereldsystemen",
+        "description": "Elk land op het bord werkt anders. Leer de onzichtbare regels van elk systeem."
+      },
+      "characters": {
+        "title": "12+ Speelbare Personages",
+        "description": "Van erfgenamen tot vluchtelingen. Je kiest niet altijd — soms beslist het lot voor je."
+      },
+      "choices": {
+        "title": "Strategische Keuzes",
+        "description": "Werken, studeren, migreren, ondernemen... Beheer je middelen zoals in een managementspel."
+      },
+      "risks": {
+        "title": "Riskante Snelwegen",
+        "description": "Zwarte markt, corruptie. Snelle winst met het risico alles te verliezen — net als in het echte leven."
+      }
+    },
+    "resources": {
+      "title": "6 Middelen om te Beheren",
+      "subtitle": "In het spel zoals in het leven, zul je nooit alles hebben."
+    },
+    "archetypes": {
+      "title": "Wie ga je spelen?",
+      "subtitle": "Elk personage heeft voordelen en obstakels. Moeilijkheid weerspiegelt echte ongelijkheden.",
+      "seeAll": "Bekijk alle personages"
+    },
+    "difficulty": {
+      "easy": "Makkelijk",
+      "medium": "Gemiddeld",
+      "hard": "Moeilijk",
+      "extreme": "Extreem"
+    },
+    "warning": {
+      "title": "Gevoelige educatieve inhoud",
+      "description": "Dit spel behandelt moeilijke realiteiten op speelse wijze. Spelsituaties zijn geïnspireerd door echte ervaringen van miljoenen mensen.",
+      "topics": {
+        "migration": "Gedwongen migratie",
+        "corruption": "Systemische corruptie",
+        "inequality": "Geboorteongelijkheid",
+        "shortcuts": "Gevaarlijke snelwegen"
+      }
+    },
+    "cta": {
+      "title": "Klaar om te spelen?",
+      "subtitle": "Start een spel en ontdek een willekeurig personage. Kun je het systeem navigeren?",
+      "button": "Start het spel"
+    }
+  },
+  "archetypes": {
+    "silverSpoon": {
+      "label": "De Erfgenaam",
+      "description": "Geboren in een welgestelde familie met gevestigd netwerk. Leven op easy mode.",
+      "example": "Zoon/dochter van CEO, advocaat, arts"
+    },
+    "techBro": {
+      "label": "De Tech Bro",
+      "description": "Autodidactische ontwikkelaar in Silicon Valley. Bekwaam maar sociaal beperkt.",
+      "example": "FAANG-ingenieur, startup-oprichter"
+    },
+    "suburbanDreamer": {
+      "label": "De Voorstadsdromer",
+      "description": "Middenklasse die droomt van stabiliteit en een huis met tuin.",
+      "example": "Kantoormedewerker, ambtenaar"
+    },
+    "ambitiousGraduate": {
+      "label": "De Ambitieuze Afgestudeerde",
+      "description": "Eerste in de familie op de universiteit. Alles te bewijzen.",
+      "example": "Beursstudent, overgekwalificeerde stagiair"
+    },
+    "economicMigrant": {
+      "label": "De Economische Migrant",
+      "description": "Verlaat land om familie een beter leven te bieden. Veerkrachtig maar onzichtbaar.",
+      "example": "Ongedocumenteerde werker, diaspora"
+    },
+    "warRefugee": {
+      "label": "De Oorlogsvluchteling",
+      "description": "Verloor alles behalve hoop. Herbouwt leven vanaf nul.",
+      "example": "Syrische, Oekraïense, Afghaanse vluchteling"
+    },
+    "selfMade": {
+      "label": "De Self-Made",
+      "description": "Begon met niets, bouwde een imperium met pure wilskracht. Slim en ambitieus.",
+      "example": "Buurtondernemer, immigranten-succesverhaal"
+    },
+    "digitalNomad": {
+      "label": "De Digitale Nomade",
+      "description": "Werkt overal vandaan, hoort bij geen systeem. Vrij maar instabiel.",
+      "example": "Remote freelancer, content creator"
+    },
+    "oligarchHeir": {
+      "label": "De Oligarch Erfgenaam",
+      "description": "Immense rijkdom maar problematisch paspoort. Geld is niet alles.",
+      "example": "Kind van Russische, Chinese miljardair"
+    },
+    "stateDependent": {
+      "label": "De Systeemafhankelijke",
+      "description": "Chronische ziekte of handicap. Afhankelijk van sociale vangnetten.",
+      "example": "Persoon met handicap, langdurige ziekte"
+    },
+    "expatExecutive": {
+      "label": "De Expat Executive",
+      "description": "Door bedrijf naar buitenland gestuurd. Gouden pakket maar burn-out gegarandeerd.",
+      "example": "Landenmanager, regionale VP"
+    },
+    "undergroundHustler": {
+      "label": "De Straat Hustler",
+      "description": "Overlevende van de informele economie. Gedijt door netwerk en slimheid.",
+      "example": "Straatverkoper, grijze economie"
+    }
+  },
+  "archetypeSelector": {
+    "title": "Kies je Lot",
+    "subtitle": "Hoe wil je je personage definiëren?",
+    "chooseMode": "Mijn archetype kiezen",
+    "chooseModeDesc": "Blader door de 12 sociale archetypen en kies degene die je aanspreekt.",
+    "selectArchetype": "Selecteer",
+    "randomMode": "Laat het lot beslissen",
+    "randomModeDesc": "Het leven kiest niet. Ontvang een willekeurig archetype en ontdek de uitdagingen die je te wachten staan.",
+    "rollDice": "Gooi de dobbelstenen",
+    "playerSelect": "Speler {{player}} — Kies je leven",
+    "selectHint": "Elk archetype heeft voordelen en obstakels. Moeilijkheid weerspiegelt echte ongelijkheden.",
+    "randomOne": "Willekeurig",
+    "confirmNext": "Bevestig en volgende",
+    "startGame": "Start het spel",
+    "selectedPlayers": "Bevestigde spelers",
+    "difficulty": {
+      "easy": "Makkelijk",
+      "medium": "Gemiddeld",
+      "hard": "Moeilijk",
+      "extreme": "Extreem"
+    }
+  },
+  "resources": {
+    "time": "Tijd",
+    "money": "Geld",
+    "health": "Gezondheid",
+    "network": "Netwerk",
+    "skills": "Vaardigheden",
+    "mobility": "Mobiliteit"
   }
 }
