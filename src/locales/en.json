@@ -3016,6 +3016,15 @@
     "continueToBoard": "Continue to board",
     "rollDicePrompt": "Roll the dice to move on the board"
   },
+  "positivePoints": {
+    "title": "Positive Points",
+    "lifestyle": "Lifestyle",
+    "economy": "Economy",
+    "culture": "Culture",
+    "infrastructure": "Infrastructure",
+    "opportunities": "Opportunities",
+    "nature": "Nature & Climate"
+  },
   "gameEnd": {
     "title": "Game Over",
     "yearsSimulated": "{{count}} years of life simulated",

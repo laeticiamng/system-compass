@@ -10,6 +10,7 @@ import { LGBTQRightsIndicator } from '@/components/LGBTQRightsIndicator';
 import { CountryExitKeys } from '@/components/CountryExitKeys';
 import { NaturalRisksCard } from '@/components/NaturalRisksCard';
 import { HealthcareCard } from '@/components/HealthcareCard';
+import { PositivePointsCard } from '@/components/PositivePointsCard';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Calendar, ExternalLink } from 'lucide-react';
 
@@ -140,6 +141,13 @@ export default function CountryDetail() {
           <h2 className="font-display text-2xl font-bold mb-6">{t('countryDetail.whoWinsLoses')}</h2>
           <WhoWinsWhoLoses wins={displayWhoWins} loses={displayWhoLoses} />
         </div>
+
+        {/* Positive Points */}
+        {country.positivePoints && (
+          <div className="mb-12">
+            <PositivePointsCard positivePoints={country.positivePoints} />
+          </div>
+        )}
 
         {/* LGBTQ+ Rights */}
         <div className="mb-12">
