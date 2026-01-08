@@ -30,6 +30,7 @@ import About from "./pages/About";
 import Disclaimer from "./pages/Disclaimer";
 import SystemicMistakes from "./pages/SystemicMistakes";
 import HowToRead from "./pages/HowToRead";
+import AdminTranslations from "./pages/AdminTranslations";
 
 const queryClient = new QueryClient();
 
@@ -67,6 +68,7 @@ const App = () => (
                   <Route path="/disclaimer" element={<Disclaimer />} />
                   <Route path="/systemic-mistakes" element={<SystemicMistakes />} />
                   <Route path="/how-to-read" element={<HowToRead />} />
+                  <Route path="/admin/translations" element={<AdminTranslations />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>
