@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useExitKeysProfile } from '@/hooks/useExitKeysProfile';
 import { useDashboardProgress } from '@/hooks/useDashboardProgress';
 import { useSavedComparisons } from '@/hooks/useSavedComparisons';
@@ -74,6 +75,7 @@ function getDaysRemaining(deadline: string): number {
 }
 
 export default function Dashboard() {
+  const { t } = useTranslation();
   const { profile, loading: profileLoading } = useExitKeysProfile();
   const {
     progress,
@@ -118,11 +120,11 @@ export default function Dashboard() {
         const daysRemaining = getDaysRemaining(step.deadline!);
         
         if (daysRemaining === 0) {
-          toast.warning(`Échéance aujourd'hui: ${action?.substring(0, 50)}...`, {
+          toast.warning(`${t('dashboard.deadlineToday')}: ${action?.substring(0, 50)}...`, {
             duration: 10000,
           });
         } else if (daysRemaining <= 3) {
-          toast.info(`Échéance dans ${daysRemaining} jour(s): ${action?.substring(0, 40)}...`, {
+          toast.info(`${t('dashboard.deadlineIn', { days: daysRemaining })}: ${action?.substring(0, 40)}...`, {
             duration: 8000,
           });
         }
@@ -163,31 +165,31 @@ export default function Dashboard() {
   // Handle starting a new plan
   const handleStartPlan = async (keyId: string) => {
     await startPlan(keyId);
-    toast.success(`Plan démarré !`);
+    toast.success(t('dashboard.planStarted'));
   };
 
   // Handle reset
   const handleResetProgress = async () => {
     await resetProgress();
-    toast.success('Progression réinitialisée');
+    toast.success(t('dashboard.progressReset'));
   };
 
   // Handle toggle action
   const handleToggleAction = async (phaseIndex: number, actionIndex: number) => {
     await toggleAction(phaseIndex, actionIndex);
-    toast.success('Progression mise à jour');
+    toast.success(t('dashboard.progressUpdated'));
   };
 
   // Handle set deadline
   const handleSetDeadline = async (phaseIndex: number, actionIndex: number, deadline: string) => {
     await setDeadline(phaseIndex, actionIndex, deadline);
-    toast.success('Échéance définie');
+    toast.success(t('dashboard.deadlineSet'));
   };
 
   // Handle toggle reminder
   const handleToggleReminder = async (phaseIndex: number, actionIndex: number) => {
     await toggleReminder(phaseIndex, actionIndex);
-    toast.success('Rappel mis à jour');
+    toast.success(t('dashboard.reminderUpdated'));
   };
 
   // Handle save phase note
@@ -195,7 +197,7 @@ export default function Dashboard() {
     await savePhaseNote(phaseIndex, noteText);
     setEditingNote(null);
     setNoteText('');
-    toast.success('Note sauvegardée');
+    toast.success(t('dashboard.noteSaved'));
   };
 
   // Start editing a note
@@ -221,10 +223,10 @@ export default function Dashboard() {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-3xl font-bold text-foreground mb-2">
-              Mon Tableau de Bord
+              {t('dashboard.title')}
             </h1>
             <p className="text-muted-foreground">
-              Suivez votre progression vers votre nouvelle vie
+              {t('dashboard.subtitle')}
             </p>
           </div>
           
@@ -233,18 +235,18 @@ export default function Dashboard() {
             {syncing && (
               <Badge variant="secondary" className="gap-1">
                 <Loader2 className="w-3 h-3 animate-spin" />
-                Synchronisation...
+                {t('dashboard.syncing')}
               </Badge>
             )}
             {isLoggedIn ? (
               <Badge variant="outline" className="gap-1 text-green-600 border-green-600/30">
                 <Cloud className="w-3 h-3" />
-                Synchronisé
+                {t('dashboard.synced')}
               </Badge>
             ) : (
               <Badge variant="outline" className="gap-1 text-muted-foreground">
                 <CloudOff className="w-3 h-3" />
-                Local uniquement
+                {t('dashboard.localOnly')}
               </Badge>
             )}
           </div>
@@ -257,13 +259,13 @@ export default function Dashboard() {
               <div className="flex items-center gap-4">
                 <Cloud className="w-6 h-6 text-primary" />
                 <div className="flex-1">
-                  <p className="text-sm font-medium">Connectez-vous pour synchroniser</p>
+                  <p className="text-sm font-medium">{t('dashboard.connectToSync')}</p>
                   <p className="text-xs text-muted-foreground">
-                    Vos données sont sauvegardées localement. Connectez-vous pour les synchroniser dans le cloud.
+                    {t('dashboard.localDataInfo')}
                   </p>
                 </div>
                 <Link to="/auth">
-                  <Button size="sm">Se connecter</Button>
+                  <Button size="sm">{t('dashboard.signIn')}</Button>
                 </Link>
               </div>
             </CardContent>
@@ -277,13 +279,13 @@ export default function Dashboard() {
               <div className="flex items-center gap-4">
                 <div className="text-4xl">{motorProfile.icon}</div>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-lg">Profil: {motorProfile.label}</h3>
+                  <h3 className="font-semibold text-lg">{t('dashboard.profileLabel')}: {motorProfile.label}</h3>
                   <p className="text-sm text-muted-foreground">{motorProfile.description}</p>
                 </div>
                 <Link to="/exit-keys">
                   <Button variant="outline" size="sm">
                     <Key className="w-4 h-4 mr-2" />
-                    Voir mes clés
+                    {t('dashboard.viewKeys')}
                   </Button>
                 </Link>
               </div>
@@ -297,13 +299,13 @@ export default function Dashboard() {
               <div className="flex items-center gap-4">
                 <AlertTriangle className="w-8 h-8 text-amber-500" />
                 <div className="flex-1">
-                  <h3 className="font-semibold">Profil non configuré</h3>
+                  <h3 className="font-semibold">{t('dashboard.profileNotConfigured')}</h3>
                   <p className="text-sm text-muted-foreground">
-                    Créez votre profil pour obtenir des recommandations personnalisées
+                    {t('dashboard.profileNotConfiguredDesc')}
                   </p>
                 </div>
                 <Link to="/exit-keys">
-                  <Button>Créer mon profil</Button>
+                  <Button>{t('dashboard.createProfile')}</Button>
                 </Link>
               </div>
             </CardContent>
@@ -316,10 +318,10 @@ export default function Dashboard() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Map className="w-5 h-5" />
-                Comparaisons sauvegardées
+                {t('dashboard.savedComparisons')}
               </CardTitle>
               <CardDescription>
-                Vos comparaisons de pays favorites
+                {t('dashboard.savedComparisonsDesc')}
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -328,7 +330,7 @@ export default function Dashboard() {
                   <div key={comp.id} className="p-3 bg-secondary/50 rounded-lg flex items-center justify-between">
                     <Link to={`/multi-compare?countries=${comp.country_ids.join(',')}`} className="flex-1">
                       <p className="font-medium hover:text-primary transition-colors">{comp.name}</p>
-                      <p className="text-xs text-muted-foreground">{comp.country_ids.length} pays</p>
+                      <p className="text-xs text-muted-foreground">{comp.country_ids.length} {t('dashboard.countries')}</p>
                     </Link>
                     <Button 
                       variant="ghost" 
@@ -336,7 +338,7 @@ export default function Dashboard() {
                       onClick={(e) => {
                         e.preventDefault();
                         deleteComparison(comp.id);
-                        toast.success('Comparaison supprimée');
+                        toast.success(t('common.delete'));
                       }}
                     >
                       <X className="w-4 h-4" />
@@ -347,7 +349,7 @@ export default function Dashboard() {
               {comparisons.length > 6 && (
                 <Link to="/multi-compare" className="block mt-4 text-center">
                   <Button variant="outline" size="sm">
-                    Voir toutes ({comparisons.length})
+                    {t('dashboard.viewAll')} ({comparisons.length})
                   </Button>
                 </Link>
               )}
@@ -361,16 +363,16 @@ export default function Dashboard() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Bookmark className="w-5 h-5" />
-                Choisir un plan à suivre
+                {t('dashboard.choosePlan')}
               </CardTitle>
               <CardDescription>
-                Sélectionnez une clé de sortie pour commencer à suivre votre progression
+                {t('dashboard.choosePlanDesc')}
               </CardDescription>
             </CardHeader>
             <CardContent>
               <Select onValueChange={handleStartPlan}>
                 <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Sélectionner une clé de sortie..." />
+                  <SelectValue placeholder={t('dashboard.selectExitKey')} />
                 </SelectTrigger>
                 <SelectContent>
                   {EXIT_KEYS.map(key => (
@@ -411,7 +413,7 @@ export default function Dashboard() {
                         </Badge>
                         <Badge variant="outline">
                           <Calendar className="w-3 h-3 mr-1" />
-                          Démarré le {formatDisplayDate(progress.startedAt)}
+                          {t('dashboard.startedOn')} {formatDisplayDate(progress.startedAt)}
                         </Badge>
                       </div>
                     </div>
@@ -430,7 +432,7 @@ export default function Dashboard() {
                       </SelectContent>
                     </Select>
                     <Button variant="outline" size="sm" onClick={handleResetProgress}>
-                      Réinitialiser
+                      {t('dashboard.reset')}
                     </Button>
                   </div>
                 </div>
@@ -438,14 +440,14 @@ export default function Dashboard() {
                 {/* Overall Progress */}
                 <div className="space-y-2">
                   <div className="flex items-center justify-between text-sm">
-                    <span className="font-medium">Progression globale</span>
+                    <span className="font-medium">{t('dashboard.overallProgress')}</span>
                     <span className="text-primary font-bold">{overallProgress}%</span>
                   </div>
                   <Progress value={overallProgress} className="h-3" />
                   {overallProgress === 100 && (
                     <div className="flex items-center gap-2 text-green-500 mt-2">
                       <Trophy className="w-5 h-5" />
-                      <span className="font-semibold">Plan complété ! Félicitations !</span>
+                      <span className="font-semibold">{t('dashboard.planCompleted')}</span>
                     </div>
                   )}
                 </div>
