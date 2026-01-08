@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 import { countries } from '@/lib/countries-data';
 import { Country } from '@/lib/types';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { RiskBars } from '@/components/RiskBars';
 import { RadarCompareChart } from '@/components/RadarCompareChart';
+import { RiskStackedBarChart } from '@/components/RiskStackedBarChart';
+import { useSavedComparisons } from '@/hooks/useSavedComparisons';
 import { cn } from '@/lib/utils';
 import { 
-  Plus, X, Share2, Trash2,
+  Plus, X, Share2, Trash2, Save, Bookmark, FolderOpen,
   Plane, DollarSign, Heart, Wifi, TrendingUp, TrendingDown, Minus
 } from 'lucide-react';
 import {
@@ -26,6 +29,15 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+  DialogClose,
+} from '@/components/ui/dialog';
 import { toast } from 'sonner';
 
 const PYRAMID_TYPE_LABELS: Record<string, string> = {
@@ -73,6 +85,11 @@ export default function MultiCompare() {
     const ids = searchParams.get('countries')?.split(',').filter(Boolean) || [];
     return ids.slice(0, MAX_COUNTRIES);
   });
+  const [saveName, setSaveName] = useState('');
+  const [saveDialogOpen, setSaveDialogOpen] = useState(false);
+  const [loadDialogOpen, setLoadDialogOpen] = useState(false);
+
+  const { comparisons, loading: comparisonsLoading, isLoggedIn, saveComparison, deleteComparison } = useSavedComparisons();
 
   const selectedCountries = selectedIds
     .map(id => countries.find(c => c.id === id))
@@ -108,6 +125,31 @@ export default function MultiCompare() {
       toast.success(t('compare.linkCopied'));
     } catch {
       toast.error('Failed to copy link');
+    }
+  };
+
+  const handleSaveComparison = async () => {
+    if (!saveName.trim() || selectedIds.length < 2) return;
+    const result = await saveComparison(saveName.trim(), selectedIds);
+    if (result) {
+      toast.success(t('multiCompare.saved', 'Comparison saved!'));
+      setSaveName('');
+      setSaveDialogOpen(false);
+    } else {
+      toast.error(t('multiCompare.saveError', 'Failed to save comparison'));
+    }
+  };
+
+  const handleLoadComparison = (countryIds: string[]) => {
+    setSelectedIds(countryIds.slice(0, MAX_COUNTRIES));
+    setLoadDialogOpen(false);
+    toast.success(t('multiCompare.loaded', 'Comparison loaded!'));
+  };
+
+  const handleDeleteComparison = async (id: string) => {
+    const success = await deleteComparison(id);
+    if (success) {
+      toast.success(t('multiCompare.deleted', 'Comparison deleted'));
     }
   };
 
@@ -177,6 +219,104 @@ export default function MultiCompare() {
             </Select>
           )}
 
+          {selectedIds.length >= 2 && isLoggedIn && (
+            <>
+              {/* Save Dialog */}
+              <Dialog open={saveDialogOpen} onOpenChange={setSaveDialogOpen}>
+                <DialogTrigger asChild>
+                  <Button variant="outline" className="gap-2">
+                    <Save className="w-4 h-4" />
+                    {t('multiCompare.save', 'Save')}
+                  </Button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>{t('multiCompare.saveComparison', 'Save Comparison')}</DialogTitle>
+                  </DialogHeader>
+                  <div className="space-y-4 py-4">
+                    <Input
+                      placeholder={t('multiCompare.comparisonName', 'Comparison name...')}
+                      value={saveName}
+                      onChange={(e) => setSaveName(e.target.value)}
+                    />
+                    <div className="flex flex-wrap gap-2">
+                      {selectedCountries.map(c => (
+                        <span key={c.id} className="text-sm px-2 py-1 bg-secondary rounded">
+                          {getFlagEmoji(c.iso2)} {c.name}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <DialogFooter>
+                    <DialogClose asChild>
+                      <Button variant="outline">{t('common.cancel', 'Cancel')}</Button>
+                    </DialogClose>
+                    <Button onClick={handleSaveComparison} disabled={!saveName.trim()}>
+                      {t('common.save', 'Save')}
+                    </Button>
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
+
+              {/* Load Dialog */}
+              <Dialog open={loadDialogOpen} onOpenChange={setLoadDialogOpen}>
+                <DialogTrigger asChild>
+                  <Button variant="outline" className="gap-2">
+                    <FolderOpen className="w-4 h-4" />
+                    {t('multiCompare.load', 'Load')}
+                  </Button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>{t('multiCompare.savedComparisons', 'Saved Comparisons')}</DialogTitle>
+                  </DialogHeader>
+                  <div className="space-y-2 max-h-80 overflow-y-auto py-4">
+                    {comparisonsLoading ? (
+                      <p className="text-muted-foreground text-center py-4">{t('common.loading', 'Loading...')}</p>
+                    ) : comparisons.length === 0 ? (
+                      <p className="text-muted-foreground text-center py-4">{t('multiCompare.noSaved', 'No saved comparisons')}</p>
+                    ) : (
+                      comparisons.map(comp => (
+                        <div key={comp.id} className="flex items-center justify-between p-3 bg-secondary/50 rounded-lg">
+                          <div className="flex-1">
+                            <p className="font-medium">{comp.name}</p>
+                            <div className="flex flex-wrap gap-1 mt-1">
+                              {comp.country_ids.map(id => {
+                                const country = countries.find(c => c.id === id);
+                                return country ? (
+                                  <span key={id} className="text-xs text-muted-foreground">
+                                    {getFlagEmoji(country.iso2)}
+                                  </span>
+                                ) : null;
+                              })}
+                            </div>
+                          </div>
+                          <div className="flex gap-2">
+                            <Button size="sm" onClick={() => handleLoadComparison(comp.country_ids)}>
+                              {t('common.load', 'Load')}
+                            </Button>
+                            <Button size="sm" variant="ghost" onClick={() => handleDeleteComparison(comp.id)}>
+                              <Trash2 className="w-4 h-4 text-destructive" />
+                            </Button>
+                          </div>
+                        </div>
+                      ))
+                    )}
+                  </div>
+                </DialogContent>
+              </Dialog>
+            </>
+          )}
+
+          {selectedIds.length >= 2 && !isLoggedIn && (
+            <Link to="/auth">
+              <Button variant="outline" className="gap-2">
+                <Bookmark className="w-4 h-4" />
+                {t('multiCompare.loginToSave', 'Login to save')}
+              </Button>
+            </Link>
+          )}
+
           {selectedIds.length > 0 && (
             <>
               <Button variant="outline" onClick={shareComparison} className="gap-2">
@@ -218,8 +358,14 @@ export default function MultiCompare() {
         {/* Comparison Tables */}
         {selectedCountries.length >= 2 ? (
           <div className="space-y-8">
-            {/* Radar Chart */}
-            <RadarCompareChart countries={selectedCountries} />
+            {/* Charts Section */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {/* Radar Chart */}
+              <RadarCompareChart countries={selectedCountries} />
+              
+              {/* Risk Stacked Bar Chart */}
+              <RiskStackedBarChart countries={selectedCountries} />
+            </div>
 
             {/* Key Metrics */}
             <section className="glass-card rounded-xl overflow-hidden">

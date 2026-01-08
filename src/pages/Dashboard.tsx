@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useExitKeysProfile } from '@/hooks/useExitKeysProfile';
 import { useDashboardProgress } from '@/hooks/useDashboardProgress';
+import { useSavedComparisons } from '@/hooks/useSavedComparisons';
 import { EXIT_KEYS } from '@/lib/exit-keys-engine';
 import { LIFE_MOTOR_PROFILES } from '@/lib/types';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -39,7 +40,8 @@ import {
   ListChecks,
   Cloud,
   CloudOff,
-  Loader2
+  Loader2,
+  Map
 } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -89,6 +91,8 @@ export default function Dashboard() {
     getPhaseNote,
     getPhaseNoteUpdatedAt,
   } = useDashboardProgress();
+
+  const { comparisons, loading: comparisonsLoading, deleteComparison } = useSavedComparisons();
 
   const [editingNote, setEditingNote] = useState<number | null>(null);
   const [noteText, setNoteText] = useState('');
@@ -302,6 +306,51 @@ export default function Dashboard() {
                   <Button>Créer mon profil</Button>
                 </Link>
               </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Saved Comparisons Section */}
+        {isLoggedIn && comparisons.length > 0 && (
+          <Card className="mb-6">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Map className="w-5 h-5" />
+                Comparaisons sauvegardées
+              </CardTitle>
+              <CardDescription>
+                Vos comparaisons de pays favorites
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {comparisons.slice(0, 6).map(comp => (
+                  <div key={comp.id} className="p-3 bg-secondary/50 rounded-lg flex items-center justify-between">
+                    <Link to={`/multi-compare?countries=${comp.country_ids.join(',')}`} className="flex-1">
+                      <p className="font-medium hover:text-primary transition-colors">{comp.name}</p>
+                      <p className="text-xs text-muted-foreground">{comp.country_ids.length} pays</p>
+                    </Link>
+                    <Button 
+                      variant="ghost" 
+                      size="sm"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        deleteComparison(comp.id);
+                        toast.success('Comparaison supprimée');
+                      }}
+                    >
+                      <X className="w-4 h-4" />
+                    </Button>
+                  </div>
+                ))}
+              </div>
+              {comparisons.length > 6 && (
+                <Link to="/multi-compare" className="block mt-4 text-center">
+                  <Button variant="outline" size="sm">
+                    Voir toutes ({comparisons.length})
+                  </Button>
+                </Link>
+              )}
             </CardContent>
           </Card>
         )}

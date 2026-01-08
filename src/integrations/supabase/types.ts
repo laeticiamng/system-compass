@@ -77,6 +77,33 @@ export type Database = {
         }
         Relationships: []
       }
+      saved_comparisons: {
+        Row: {
+          country_ids: string[]
+          created_at: string
+          id: string
+          name: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          country_ids: string[]
+          created_at?: string
+          id?: string
+          name: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          country_ids?: string[]
+          created_at?: string
+          id?: string
+          name?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       saved_games: {
         Row: {
           created_at: string
