@@ -112,8 +112,11 @@ export default function Countries() {
           <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4">
             {t('countries.title')}
           </h1>
-          <p className="text-muted-foreground text-sm md:text-base">
+          <p className="text-muted-foreground text-sm md:text-base mb-3">
             {t('countries.subtitle')}
+          </p>
+          <p className="text-xs text-muted-foreground/70">
+            {t('common.disclaimer')}
           </p>
         </div>
 
