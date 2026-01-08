@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { RiskBars } from '@/components/RiskBars';
 import { RadarCompareChart } from '@/components/RadarCompareChart';
 import { RiskStackedBarChart } from '@/components/RiskStackedBarChart';
+import { FinancialTrajectoryChart } from '@/components/FinancialTrajectoryChart';
 import { useSavedComparisons } from '@/hooks/useSavedComparisons';
 import { cn } from '@/lib/utils';
 import { 
@@ -358,6 +359,9 @@ export default function MultiCompare() {
         {/* Comparison Tables */}
         {selectedCountries.length >= 2 ? (
           <div className="space-y-8">
+            {/* Financial Trajectory Chart */}
+            <FinancialTrajectoryChart />
+            
             {/* Charts Section */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Radar Chart */}

@@ -3701,5 +3701,41 @@
     "effectiveRate": "Taux effectif",
     "monthlyNet": "Net mensuel",
     "annualNet": "Net annuel"
+  },
+  "retirement": {
+    "projectionTitle": "Projection Retraite 10-20 ans",
+    "projectionDescription": "Simulez votre capital retraite selon le pays et vos paramètres",
+    "currentAge": "Âge actuel",
+    "grossSalary": "Salaire brut annuel",
+    "salaryGrowth": "Croissance salariale/an",
+    "privateContribution": "Épargne privée/an",
+    "retirementAge": "Retraite à",
+    "replacementRate": "Taux de remplacement",
+    "excellent": "Excellent",
+    "good": "Bon",
+    "moderate": "Modéré",
+    "low": "Faible",
+    "in20years": "Dans 20 ans",
+    "capitalAccumulated": "Capital accumulé",
+    "estimatedPension": "Pension estimée",
+    "stateAndPrivate": "État + privé",
+    "totalContributions": "Cotisations totales",
+    "over20years": "Sur 20 ans",
+    "noPensionWarning": "Pas de retraite publique pour expatriés",
+    "noPensionExplanation": "Dans ce pays, les expatriés n'ont pas accès au système de retraite public. Une épargne privée importante est essentielle.",
+    "accumulated": "Capital accumulé",
+    "netSalary": "Salaire net annuel"
+  },
+  "trajectory": {
+    "title": "Trajectoire Financière Comparée",
+    "description": "Comparez l'évolution du pouvoir d'achat sur 10 ans",
+    "addCountry": "Ajouter",
+    "netSalary": "Salaire Net",
+    "purchasingPower": "Pouvoir Achat",
+    "lowTaxes": "Fiscalité",
+    "healthcare": "Santé",
+    "costOfLiving": "Coût Vie",
+    "netMonthly": "Net mensuel",
+    "taxes": "Prélèvements"
   }
 }

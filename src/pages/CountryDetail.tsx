@@ -13,6 +13,7 @@ import { HealthcareCard } from '@/components/HealthcareCard';
 import { PositivePointsCard } from '@/components/PositivePointsCard';
 import { CountryMusicPlayer } from '@/components/CountryMusicPlayer';
 import { FiscalSalaryCalculator } from '@/components/FiscalSalaryCalculator';
+import { RetirementProjection } from '@/components/RetirementProjection';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Calendar, ExternalLink } from 'lucide-react';
 
@@ -181,6 +182,12 @@ export default function CountryDetail() {
         <div className="mb-12">
           <h2 className="font-display text-2xl font-bold mb-6">{t('fiscal.salaryCalculator', 'Calculateur de Salaire Net')}</h2>
           <FiscalSalaryCalculator initialCountryId={country.id} />
+        </div>
+
+        {/* Retirement Projection */}
+        <div className="mb-12">
+          <h2 className="font-display text-2xl font-bold mb-6">{t('retirement.projectionTitle', 'Projection Retraite')}</h2>
+          <RetirementProjection initialCountryId={country.id} />
         </div>
 
         {/* Exit Keys - Personalized Strategies */}
