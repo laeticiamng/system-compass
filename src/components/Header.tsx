@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
-import { Compass, Map, FileText, Target, Scale, Route, Triangle, Gamepad2, LogIn, LogOut, User } from 'lucide-react';
+import { Compass, Map, FileText, Target, Scale, Route, Triangle, Gamepad2, LogIn, LogOut, User, Key } from 'lucide-react';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { useAuth } from '@/hooks/useAuth';
 import { Button } from './ui/button';
@@ -20,6 +20,7 @@ export function Header() {
     { href: '/life-trajectory', label: t('nav.trajectory'), icon: Route },
     { href: '/match', label: t('nav.match'), icon: Target },
     { href: '/compare', label: t('nav.compare'), icon: Scale },
+    { href: '/exit-keys', label: t('nav.exitKeys'), icon: Key },
     { href: '/resources', label: t('nav.resources'), icon: FileText },
   ];
 

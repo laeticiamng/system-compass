@@ -18,7 +18,8 @@
     "compare": "Compare",
     "resources": "Resources",
     "pyramids": "Pyramids",
-    "quiz": "Quiz"
+    "quiz": "Quiz",
+    "exitKeys": "Exit Keys"
   },
   "hero": {
     "badge": "Navigate the Real System",
