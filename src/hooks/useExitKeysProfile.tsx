@@ -7,7 +7,7 @@ import { toast } from 'sonner';
 
 export interface ExitKeysProfile {
   birthCountryId: string;
-  nationalityId: string;
+  nationalityIds: string[];
   currentCountryId: string;
   motorProfile: LifeMotorProfile;
   desiredLife: LifePriority;
