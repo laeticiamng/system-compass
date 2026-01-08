@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
-import { Compass, Map, FileText, Scale, Triangle, Gamepad2, LogIn, LogOut, User, Key, LayoutDashboard, Menu, Play, Info, AlertCircle } from 'lucide-react';
+import { Compass, Map, FileText, Scale, Triangle, Gamepad2, LogIn, LogOut, User, Key, LayoutDashboard, Menu, Play, Info, AlertCircle, X } from 'lucide-react';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { useAuth } from '@/hooks/useAuth';
 import { Button } from './ui/button';
@@ -16,6 +16,7 @@ import {
 
 // Pages that show simulation features
 const SIMULATION_PAGES = ['/exit-keys', '/life-game', '/compare', '/life-trajectory', '/country/'];
+const DISCLAIMER_DISMISSED_KEY = 'pyramid-disclaimer-dismissed';
 
 export function Header() {
   const location = useLocation();
@@ -23,6 +24,9 @@ export function Header() {
   const { t } = useTranslation();
   const { user, signOut } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [disclaimerDismissed, setDisclaimerDismissed] = useState(() => {
+    return localStorage.getItem(DISCLAIMER_DISMISSED_KEY) === 'true';
+  });
 
   // Navigation simplifiée et claire
   const navItems = [
@@ -47,19 +51,32 @@ export function Header() {
     setMobileMenuOpen(false);
   };
 
+  const handleDismissDisclaimer = () => {
+    setDisclaimerDismissed(true);
+    localStorage.setItem(DISCLAIMER_DISMISSED_KEY, 'true');
+  };
+
   // Check if current page is a simulation page
   const isSimulationPage = SIMULATION_PAGES.some(page => location.pathname.startsWith(page));
+  const showDisclaimer = isSimulationPage && !disclaimerDismissed;
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       {/* Compact disclaimer banner for simulation pages */}
-      {isSimulationPage && (
+      {showDisclaimer && (
         <div className="bg-amber-500/10 border-b border-amber-500/20 px-3 py-1.5">
           <div className="container mx-auto flex items-center justify-center gap-2 text-xs text-amber-600 dark:text-amber-400">
             <AlertCircle className="w-3 h-3 flex-shrink-0" />
             <span className="text-center">
               {t('header.simulationDisclaimer', 'Simulation uniquement • Pas de conseil juridique, financier ou médical')}
             </span>
+            <button 
+              onClick={handleDismissDisclaimer}
+              className="ml-2 p-0.5 rounded hover:bg-amber-500/20 transition-colors"
+              aria-label="Fermer"
+            >
+              <X className="w-3 h-3" />
+            </button>
           </div>
         </div>
       )}
