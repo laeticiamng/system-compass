@@ -2673,6 +2673,46 @@
       "greenTransition": {
         "label": "Green Transition",
         "description": "New environmental regulations"
+      },
+      "currencyCollapse": {
+        "label": "Currency Collapse",
+        "description": "Local currencies lose value rapidly against major currencies"
+      },
+      "digitalSurveillance": {
+        "label": "Digital Surveillance",
+        "description": "Governments expand monitoring capabilities worldwide"
+      },
+      "tradeWar": {
+        "label": "Trade War",
+        "description": "International trade barriers disrupt global commerce"
+      },
+      "housingCrisis": {
+        "label": "Housing Crisis",
+        "description": "Real estate prices soar, making relocation difficult"
+      },
+      "educationReform": {
+        "label": "Education Reform",
+        "description": "New skills pathways open up opportunities"
+      },
+      "talentShortage": {
+        "label": "Global Talent Shortage",
+        "description": "High demand for skilled workers everywhere"
+      },
+      "debtCrisis": {
+        "label": "Debt Crisis",
+        "description": "Government debt affects public services and stability"
+      },
+      "geopoliticalTension": {
+        "label": "Geopolitical Tensions",
+        "description": "International conflicts affect travel and safety"
+      },
+      "healthcareBreakthrough": {
+        "label": "Healthcare Breakthrough",
+        "description": "Medical advances improve health outcomes globally"
+      },
+      "socialMediaRevolution": {
+        "label": "Social Media Revolution",
+        "description": "New platforms change how people connect and work"
       }
     },
     "country": {
@@ -2699,6 +2739,46 @@
       "economicBoom": {
         "label": "Economic Boom",
         "description": "Local economy explodes"
+      },
+      "minorityPersecution": {
+        "label": "Minority Persecution",
+        "description": "Certain groups face increased targeting. Detention camps, forced displacement, or worse."
+      },
+      "pressFreedomCrackdown": {
+        "label": "Press Freedom Crackdown",
+        "description": "Media censorship intensifies, information becomes controlled"
+      },
+      "wealthTax": {
+        "label": "Wealth Tax",
+        "description": "New taxes specifically target accumulated wealth"
+      },
+      "infrastructureCollapse": {
+        "label": "Infrastructure Collapse",
+        "description": "Bridges, roads, and utilities fail due to lack of maintenance"
+      },
+      "talentImmigrationWave": {
+        "label": "Talent Immigration Wave",
+        "description": "Country attracts skilled professionals from around the world"
+      },
+      "laborStrike": {
+        "label": "Labor Strike",
+        "description": "Widespread strikes disrupt economy and daily life"
+      },
+      "judicialReform": {
+        "label": "Judicial Reform",
+        "description": "Legal system changes create new opportunities or risks"
+      },
+      "resourceDiscovery": {
+        "label": "Resource Discovery",
+        "description": "New natural resources found, economy boosted"
+      },
+      "techHubEmergence": {
+        "label": "Tech Hub Emergence",
+        "description": "Region becomes a technology innovation center"
+      },
+      "diplomaticIsolation": {
+        "label": "Diplomatic Isolation",
+        "description": "Country faces sanctions or international exclusion"
       }
     },
     "risk": {

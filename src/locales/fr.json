@@ -3031,6 +3031,46 @@
       "greenTransition": {
         "label": "Transition verte",
         "description": "Nouvelles régulations environnementales"
+      },
+      "currencyCollapse": {
+        "label": "Effondrement monétaire",
+        "description": "Les monnaies locales perdent rapidement de la valeur"
+      },
+      "digitalSurveillance": {
+        "label": "Surveillance numérique",
+        "description": "Les gouvernements étendent leurs capacités de surveillance"
+      },
+      "tradeWar": {
+        "label": "Guerre commerciale",
+        "description": "Les barrières commerciales perturbent le commerce mondial"
+      },
+      "housingCrisis": {
+        "label": "Crise du logement",
+        "description": "Les prix immobiliers s'envolent, rendant la relocalisation difficile"
+      },
+      "educationReform": {
+        "label": "Réforme de l'éducation",
+        "description": "De nouvelles voies de compétences ouvrent des opportunités"
+      },
+      "talentShortage": {
+        "label": "Pénurie mondiale de talents",
+        "description": "Forte demande de travailleurs qualifiés partout"
+      },
+      "debtCrisis": {
+        "label": "Crise de la dette",
+        "description": "La dette publique affecte les services et la stabilité"
+      },
+      "geopoliticalTension": {
+        "label": "Tensions géopolitiques",
+        "description": "Les conflits internationaux affectent les voyages et la sécurité"
+      },
+      "healthcareBreakthrough": {
+        "label": "Percée médicale",
+        "description": "Les avancées médicales améliorent la santé mondiale"
+      },
+      "socialMediaRevolution": {
+        "label": "Révolution des réseaux sociaux",
+        "description": "De nouvelles plateformes changent les connexions et le travail"
       }
     },
     "country": {
@@ -3057,6 +3097,46 @@
       "economicBoom": {
         "label": "Boom économique",
         "description": "L'économie locale explose"
+      },
+      "minorityPersecution": {
+        "label": "Persécution des minorités",
+        "description": "Certains groupes font face à un ciblage accru. Camps de détention, déplacements forcés, ou pire."
+      },
+      "pressFreedomCrackdown": {
+        "label": "Répression de la presse",
+        "description": "La censure médiatique s'intensifie, l'information devient contrôlée"
+      },
+      "wealthTax": {
+        "label": "Impôt sur la fortune",
+        "description": "De nouvelles taxes ciblent spécifiquement le patrimoine accumulé"
+      },
+      "infrastructureCollapse": {
+        "label": "Effondrement des infrastructures",
+        "description": "Ponts, routes et services publics défaillent par manque d'entretien"
+      },
+      "talentImmigrationWave": {
+        "label": "Vague d'immigration de talents",
+        "description": "Le pays attire des professionnels qualifiés du monde entier"
+      },
+      "laborStrike": {
+        "label": "Grève générale",
+        "description": "Des grèves massives perturbent l'économie et la vie quotidienne"
+      },
+      "judicialReform": {
+        "label": "Réforme judiciaire",
+        "description": "Les changements du système juridique créent de nouvelles opportunités ou risques"
+      },
+      "resourceDiscovery": {
+        "label": "Découverte de ressources",
+        "description": "De nouvelles ressources naturelles trouvées, économie stimulée"
+      },
+      "techHubEmergence": {
+        "label": "Émergence d'un hub tech",
+        "description": "La région devient un centre d'innovation technologique"
+      },
+      "diplomaticIsolation": {
+        "label": "Isolement diplomatique",
+        "description": "Le pays fait face à des sanctions ou exclusion internationale"
       }
     },
     "risk": {
