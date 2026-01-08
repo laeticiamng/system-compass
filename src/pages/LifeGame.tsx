@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { SimulationDisclaimer } from '@/components/SimulationDisclaimer';
 import { Button } from '@/components/ui/button';
 import { 
   Gamepad2, 
@@ -127,12 +128,13 @@ export default function LifeGame() {
                 {t('lifeGame.clarification.point3')}
               </li>
             </ul>
-            <div className="mt-4 pt-3 border-t border-amber-500/20">
+            <div className="mt-4 pt-3 border-t border-amber-500/20 flex flex-col sm:flex-row items-center justify-between gap-3">
               <Link to="/exit-keys" className="text-sm text-primary hover:underline inline-flex items-center gap-1">
                 {t('lifeGame.clarification.realLife')}
                 <span className="font-medium">{t('lifeGame.clarification.realLifeLink')}</span>
                 <ArrowRight className="w-3 h-3" />
               </Link>
+              <SimulationDisclaimer variant="inline" />
             </div>
           </div>
 
