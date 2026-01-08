@@ -24,6 +24,8 @@ import TutorialMode, { shouldSkipTutorial } from '@/components/game/TutorialMode
 import TurnPhaseHelper from '@/components/game/TurnPhaseHelper';
 import DicePrompt from '@/components/game/DicePrompt';
 import { useSavedGames, SavedGame, SavedGameState } from '@/hooks/useSavedGames';
+import { useGameStatistics } from '@/hooks/useGameStatistics';
+import { getNewlyUnlockedAchievements } from '@/lib/achievements';
 import { useAuth } from '@/hooks/useAuth';
 import { 
   CharacterCard as CharacterCardType,
@@ -222,6 +224,12 @@ export default function PyramidQuiz() {
   const { t } = useTranslation();
   const { user } = useAuth();
   const { saveGame, loading: savingGame } = useSavedGames();
+  const { 
+    stats: persistedStats, 
+    trackGameCompleted, 
+    trackRiskEvent: trackPersistentRisk,
+    trackActionUsed: trackPersistentAction,
+  } = useGameStatistics();
   
   const [mode, setMode] = useState<GameMode>(null);
   const [setupPhase, setSetupPhase] = useState<SetupPhase>('mode');
@@ -288,15 +296,21 @@ export default function PyramidQuiz() {
       totalMoneyLost: moneyChange < 0 ? prev.totalMoneyLost + Math.abs(moneyChange) : prev.totalMoneyLost,
       healthLost: healthChange < 0 ? prev.healthLost + Math.abs(healthChange) : prev.healthLost,
     }));
-  }, []);
+    // Persist to cloud
+    trackPersistentRisk(outcome, moneyChange, healthChange);
+  }, [trackPersistentRisk]);
 
-  const trackAction = useCallback((success: boolean) => {
+  const trackAction = useCallback((success: boolean, actionId?: string) => {
     setGameStats(prev => ({
       ...prev,
       actionsCompleted: success ? prev.actionsCompleted + 1 : prev.actionsCompleted,
       actionsFailed: !success ? prev.actionsFailed + 1 : prev.actionsFailed,
     }));
-  }, []);
+    // Persist to cloud
+    if (actionId) {
+      trackPersistentAction(actionId, success);
+    }
+  }, [trackPersistentAction]);
 
   // Cooperative mode: shared score pool
   const [cooperativePool, setCooperativePool] = useState<Record<PyramidType, number>>(createEmptyScores());
@@ -335,6 +349,51 @@ export default function PyramidQuiz() {
     }
     return null;
   }, [mode, players]);
+
+  // Persist stats when game ends
+  useEffect(() => {
+    if (gameFinished && players.length > 0) {
+      const mainPlayer = players[0];
+      const totalScore = Object.values(mainPlayer.scores).reduce((a, b) => a + b, 0);
+      const archetypeId = mainPlayer.character?.id || 'unknown';
+      const countryId = mainPlayer.character?.birthCountry || 'unknown';
+      
+      // Track game completion
+      trackGameCompleted(
+        (mode as 'solo' | 'race' | 'points_duel' | 'cooperative') || 'solo',
+        totalScore,
+        archetypeId,
+        countryId,
+        turnNumber
+      );
+
+      // Show achievement unlocks
+      const newAchievements = getNewlyUnlockedAchievements(persistedStats, {
+        ...persistedStats,
+        totalGamesPlayed: persistedStats.totalGamesPlayed + 1,
+        totalTurnsPlayed: persistedStats.totalTurnsPlayed + turnNumber,
+        archetypesUsed: persistedStats.archetypesUsed.includes(archetypeId) 
+          ? persistedStats.archetypesUsed 
+          : [...persistedStats.archetypesUsed, archetypeId],
+        countriesVisited: persistedStats.countriesVisited.includes(countryId)
+          ? persistedStats.countriesVisited
+          : [...persistedStats.countriesVisited, countryId],
+        bestScoreSolo: mode === 'solo' && totalScore > persistedStats.bestScoreSolo 
+          ? totalScore : persistedStats.bestScoreSolo,
+        bestScoreRace: mode === 'race' && totalScore > persistedStats.bestScoreRace 
+          ? totalScore : persistedStats.bestScoreRace,
+      });
+
+      if (newAchievements.length > 0) {
+        newAchievements.forEach(achievement => {
+          toast.success(`🏆 Succès débloqué: ${achievement.name}`, {
+            description: achievement.description,
+            duration: 5000,
+          });
+        });
+      }
+    }
+  }, [gameFinished]);
 
   const handleAnswer = (optionScores: Partial<Record<PyramidType, number>>) => {
     const newScores = { ...scores };

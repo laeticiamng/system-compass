@@ -65,6 +65,15 @@
     "archetypesUsed": "Archétypes testés",
     "bestScore": "Meilleur score solo"
   },
+  "achievements": {
+    "title": "Succès",
+    "unlocked": "débloqués",
+    "all": "Tous",
+    "exploration": "Exploration",
+    "risk": "Prise de risque",
+    "mastery": "Maîtrise",
+    "special": "Spécial"
+  },
   "footer": {
     "explore": "Explorer",
     "tools": "Outils",
