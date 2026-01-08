@@ -20,6 +20,7 @@ export function Header() {
     { href: '/life-trajectory', label: t('nav.trajectory'), icon: Route },
     { href: '/match', label: t('nav.match'), icon: Target },
     { href: '/compare', label: t('nav.compare'), icon: Scale },
+    { href: '/multi-compare', label: t('nav.multiCompare', 'Multi-Compare'), icon: Scale },
     { href: '/exit-keys', label: t('nav.exitKeys'), icon: Key },
     { href: '/dashboard', label: t('nav.dashboard'), icon: LayoutDashboard },
     { href: '/resources', label: t('nav.resources'), icon: FileText },

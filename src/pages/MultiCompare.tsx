@@ -5,6 +5,7 @@ import { countries } from '@/lib/countries-data';
 import { Country } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import { RiskBars } from '@/components/RiskBars';
+import { RadarCompareChart } from '@/components/RadarCompareChart';
 import { cn } from '@/lib/utils';
 import { 
   Plus, X, Share2, Trash2,
@@ -217,6 +218,9 @@ export default function MultiCompare() {
         {/* Comparison Tables */}
         {selectedCountries.length >= 2 ? (
           <div className="space-y-8">
+            {/* Radar Chart */}
+            <RadarCompareChart countries={selectedCountries} />
+
             {/* Key Metrics */}
             <section className="glass-card rounded-xl overflow-hidden">
               <div className="p-4 border-b border-border bg-muted/30">
