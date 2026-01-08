@@ -1,6 +1,7 @@
 /**
  * i18n Completeness Checker
  * Vérifie que toutes les clés de traduction existent dans toutes les langues
+ * Inclut la vérification des traductions de pays
  */
 
 import fs from 'fs';
@@ -9,6 +10,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const LOCALES_DIR = path.join(__dirname, '../src/locales');
+const COUNTRIES_DATA_FILE = path.join(__dirname, '../src/lib/countries-data.ts');
 const REFERENCE_LANG = 'en';
 
 function getAllKeys(obj, prefix = '') {
@@ -33,6 +35,39 @@ function loadTranslations(lang) {
   return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 }
 
+function extractCountryIdsFromData() {
+  const content = fs.readFileSync(COUNTRIES_DATA_FILE, 'utf-8');
+  const countryIdRegex = /id:\s*['"]([a-z-]+)['"]/g;
+  const ids = [];
+  let match;
+  while ((match = countryIdRegex.exec(content)) !== null) {
+    ids.push(match[1]);
+  }
+  return [...new Set(ids)];
+}
+
+function checkCountryTranslations(translations, countryIds, lang) {
+  const missingCountries = [];
+  const countriesSection = translations.countries || {};
+  
+  for (const countryId of countryIds) {
+    if (!countriesSection[countryId]) {
+      missingCountries.push(countryId);
+    } else {
+      // Check for essential keys
+      const country = countriesSection[countryId];
+      const essentialKeys = ['name', 'region', 'ruleOfGold'];
+      for (const key of essentialKeys) {
+        if (!country[key]) {
+          missingCountries.push(`${countryId}.${key}`);
+        }
+      }
+    }
+  }
+  
+  return missingCountries;
+}
+
 function checkTranslations() {
   console.log('🌍 Checking translation completeness...\n');
   
@@ -49,8 +84,21 @@ function checkTranslations() {
   const referenceKeys = getAllKeys(reference);
   console.log(`Reference (${REFERENCE_LANG}): ${referenceKeys.length} keys\n`);
   
+  // Extract country IDs from countries-data.ts
+  let countryIds = [];
+  try {
+    countryIds = extractCountryIdsFromData();
+    console.log(`📊 Found ${countryIds.length} countries in countries-data.ts\n`);
+  } catch (e) {
+    console.warn('⚠️  Could not parse countries-data.ts:', e.message);
+  }
+  
   let hasErrors = false;
   const report = {};
+  
+  console.log('━'.repeat(50));
+  console.log('📝 GENERAL TRANSLATION CHECK');
+  console.log('━'.repeat(50));
   
   for (const lang of languages) {
     if (lang === REFERENCE_LANG) continue;
@@ -88,6 +136,32 @@ function checkTranslations() {
     }
     
     console.log('');
+  }
+  
+  // Check country translations
+  if (countryIds.length > 0) {
+    console.log('━'.repeat(50));
+    console.log('🗺️  COUNTRY TRANSLATION CHECK');
+    console.log('━'.repeat(50));
+    
+    for (const lang of languages) {
+      const translations = loadTranslations(lang);
+      if (!translations) continue;
+      
+      const missingCountries = checkCountryTranslations(translations, countryIds, lang);
+      
+      if (missingCountries.length > 0) {
+        hasErrors = true;
+        console.log(`❌ ${lang.toUpperCase()}: ${missingCountries.length} missing country translations`);
+        missingCountries.slice(0, 10).forEach(c => console.log(`   - ${c}`));
+        if (missingCountries.length > 10) {
+          console.log(`   ... and ${missingCountries.length - 10} more`);
+        }
+      } else {
+        console.log(`✅ ${lang.toUpperCase()}: All ${countryIds.length} countries have translations`);
+      }
+      console.log('');
+    }
   }
   
   console.log('\n📊 Summary:');
