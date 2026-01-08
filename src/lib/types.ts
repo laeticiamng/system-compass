@@ -80,6 +80,16 @@ export interface CountryHealthcare {
   notes?: string;
 }
 
+// Positive points and assets for each country
+export interface CountryPositivePoints {
+  lifestyle: string[];      // Quality of life advantages
+  economy: string[];        // Economic opportunities
+  culture: string[];        // Cultural richness
+  infrastructure: string[]; // Infrastructure benefits
+  opportunities: string[];  // Unique opportunities
+  nature: string[];         // Natural beauty/climate
+}
+
 export interface Country {
   id: string;
   name: string;
@@ -105,6 +115,7 @@ export interface Country {
   qualityOfLife: CountryQualityOfLife;
   naturalRisks?: CountryNaturalRisks;
   healthcare?: CountryHealthcare;
+  positivePoints?: CountryPositivePoints;
   lgbtqRights: LGBTQRights;
   lastUpdated: string;
   sources: string[];

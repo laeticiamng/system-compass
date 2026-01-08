@@ -3374,6 +3374,15 @@
     "continueToBoard": "Passer au plateau",
     "rollDicePrompt": "Lancez le dé pour avancer sur le plateau"
   },
+  "positivePoints": {
+    "title": "Points Positifs",
+    "lifestyle": "Qualité de Vie",
+    "economy": "Économie",
+    "culture": "Culture",
+    "infrastructure": "Infrastructure",
+    "opportunities": "Opportunités",
+    "nature": "Nature & Climat"
+  },
   "gameEnd": {
     "title": "Fin de Partie",
     "yearsSimulated": "{{count}} années de vie simulées",

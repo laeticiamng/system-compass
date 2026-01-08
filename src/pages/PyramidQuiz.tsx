@@ -1101,17 +1101,6 @@ export default function PyramidQuiz() {
             <span className="text-muted-foreground">{t('pyramidQuiz.multiplayer.yourTurn')}</span>
           </div>
 
-          {/* Current Player Resources */}
-          <div className="flex justify-center mb-6">
-            <div className="glass-card rounded-lg px-4 py-3">
-              <ResourceBar 
-                resources={currentPlayer.resources} 
-                showLabels={true}
-                size="md"
-              />
-            </div>
-          </div>
-
           {/* Player Stats Bar */}
           <div className="flex justify-center gap-4 mb-8 flex-wrap">
             {players.map((player, idx) => (
@@ -1131,65 +1120,118 @@ export default function PyramidQuiz() {
             ))}
           </div>
 
-          {/* Hexagonal Board */}
-          <HexagonalBoard
-            players={players.map(p => ({
-              id: p.id,
-              position: p.position,
-              color: p.color,
-              isMoving: isMoving && p.id === currentPlayer.id,
-            }))}
-            currentPlayerId={currentPlayer.id}
-          />
+          {/* Turn Manager - Phases: Events → Actions → Board */}
+          {turnPhase !== 'board_move' ? (
+            <TurnManager
+              currentPlayer={{
+                id: currentPlayer.id,
+                name: currentPlayer.name,
+                character: currentPlayer.character!,
+                resources: currentPlayer.resources,
+                countryType: currentPlayer.countryType,
+              }}
+              turnNumber={turnNumber}
+              onResourceChange={(playerId, newResources) => {
+                setPlayers(prev => prev.map(p => 
+                  p.id === playerId ? { ...p, resources: newResources } : p
+                ));
+              }}
+              onPyramidScoreChange={(playerId, pyramidChanges) => {
+                if (mode === 'cooperative') {
+                  setCooperativePool(prev => {
+                    const newPool = { ...prev };
+                    Object.entries(pyramidChanges).forEach(([type, change]) => {
+                      if (change) newPool[type as PyramidType] = (newPool[type as PyramidType] || 0) + change;
+                    });
+                    return newPool;
+                  });
+                } else {
+                  setPlayers(prev => prev.map(p => {
+                    if (p.id !== playerId) return p;
+                    const newScores = { ...p.scores };
+                    Object.entries(pyramidChanges).forEach(([type, change]) => {
+                      if (change) newScores[type as PyramidType] = (newScores[type as PyramidType] || 0) + change;
+                    });
+                    return { ...p, scores: newScores };
+                  }));
+                }
+              }}
+              onPhaseComplete={(phase, data) => {
+                if (phase === 'action_resolution') {
+                  setTurnPhase('board_move');
+                }
+              }}
+              onTurnEnd={() => {
+                setTurnNumber(prev => prev + 1);
+                setTurnPhase('global_event');
+                nextPlayer();
+              }}
+              onTrackRisk={trackRiskOutcome}
+              onTrackAction={trackAction}
+            />
+          ) : (
+            <>
+              {/* Hexagonal Board */}
+              <HexagonalBoard
+                players={players.map(p => ({
+                  id: p.id,
+                  position: p.position,
+                  color: p.color,
+                  isMoving: isMoving && p.id === currentPlayer.id,
+                }))}
+                currentPlayerId={currentPlayer.id}
+              />
 
-          {/* Game Message */}
-          {gameMessage && (
-            <div className="glass-card rounded-lg p-4 mt-6 text-center animate-fade-in">
-              <p className="font-medium">{gameMessage}</p>
-            </div>
-          )}
-
-          {/* Cooperative Score Display */}
-          {mode === 'cooperative' && (
-            <div className="glass-card rounded-lg p-4 mt-6">
-              <h4 className="text-sm font-semibold mb-2 text-center">{t('pyramidQuiz.cooperative.poolScore')}</h4>
-              <div className="flex flex-wrap justify-center gap-4">
-                {Object.entries(cooperativePool)
-                  .filter(([, score]) => score > 0)
-                  .sort(([, a], [, b]) => b - a)
-                  .map(([type, score]) => (
-                    <div key={type} className="flex items-center gap-2">
-                      <div className={cn("w-3 h-3 rounded", PYRAMID_COLORS[type as PyramidType].split(' ')[0])} />
-                      <span className="text-xs">{PYRAMID_TYPE_INFO[type as PyramidType].label.split(' ')[0]}</span>
-                      <span className="text-xs font-bold">{score}</span>
-                    </div>
-                  ))}
-              </div>
-            </div>
-          )}
-
-          {/* Dice and Controls */}
-          <div className="flex flex-col items-center gap-6 mt-8">
-            <button
-              ref={diceRef}
-              onClick={rollDice}
-              disabled={isRolling || isMoving || currentPlayer.position >= FINISH_POSITION}
-              className={cn(
-                "p-8 rounded-2xl bg-primary/10 hover:bg-primary/20 transition-all duration-300 hover:scale-110",
-                (isRolling || isMoving) && "pointer-events-none"
+              {/* Game Message */}
+              {gameMessage && (
+                <div className="glass-card rounded-lg p-4 mt-6 text-center animate-fade-in">
+                  <p className="font-medium">{gameMessage}</p>
+                </div>
               )}
-              style={{ transform: `rotate(${diceRotation}deg)` }}
-            >
-              <DiceIcon className={cn(
-                "w-16 h-16 text-primary transition-all",
-                isRolling && "animate-spin"
-              )} />
-            </button>
-            
-            <p className="text-muted-foreground">
-              {isMoving ? t('pyramidQuiz.board.moving') : t('pyramidQuiz.board.rollDice')}
-            </p>
-          </div>
+
+              {/* Cooperative Score Display */}
+              {mode === 'cooperative' && (
+                <div className="glass-card rounded-lg p-4 mt-6">
+                  <h4 className="text-sm font-semibold mb-2 text-center">{t('pyramidQuiz.cooperative.poolScore')}</h4>
+                  <div className="flex flex-wrap justify-center gap-4">
+                    {Object.entries(cooperativePool)
+                      .filter(([, score]) => score > 0)
+                      .sort(([, a], [, b]) => b - a)
+                      .map(([type, score]) => (
+                        <div key={type} className="flex items-center gap-2">
+                          <div className={cn("w-3 h-3 rounded", PYRAMID_COLORS[type as PyramidType].split(' ')[0])} />
+                          <span className="text-xs">{PYRAMID_TYPE_INFO[type as PyramidType].label.split(' ')[0]}</span>
+                          <span className="text-xs font-bold">{score}</span>
+                        </div>
+                      ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Dice and Controls */}
+              <div className="flex flex-col items-center gap-6 mt-8">
+                <button
+                  ref={diceRef}
+                  onClick={rollDice}
+                  disabled={isRolling || isMoving || currentPlayer.position >= FINISH_POSITION}
+                  className={cn(
+                    "p-8 rounded-2xl bg-primary/10 hover:bg-primary/20 transition-all duration-300 hover:scale-110",
+                    (isRolling || isMoving) && "pointer-events-none"
+                  )}
+                  style={{ transform: `rotate(${diceRotation}deg)` }}
+                >
+                  <DiceIcon className={cn(
+                    "w-16 h-16 text-primary transition-all",
+                    isRolling && "animate-spin"
+                  )} />
+                </button>
+                
+                <p className="text-muted-foreground">
+                  {isMoving ? t('pyramidQuiz.board.moving') : t('pyramidQuiz.board.rollDice')}
+                </p>
+              </div>
+            </>
+          )}
 
           {/* Action buttons */}
           <div className="flex gap-4 justify-center mt-8">
