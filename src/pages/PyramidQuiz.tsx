@@ -67,7 +67,7 @@ import {
 import { toast } from 'sonner';
 import { Database } from '@/integrations/supabase/types';
 
-type GameMode = 'online' | 'solo' | 'race' | 'points_duel' | 'cooperative' | null;
+type GameMode = 'solo' | 'race' | 'points_duel' | 'cooperative' | null;
 type DbGameMode = Database['public']['Enums']['game_mode'];
 type SetupPhase = 'mode' | 'playerCount' | 'archetype' | 'tutorial' | 'draft' | 'playing';
 
@@ -819,9 +819,16 @@ export default function PyramidQuiz() {
     return (
       <div className="min-h-screen pt-24 pb-16">
         <div className="container mx-auto px-4 max-w-5xl">
-          <div className="text-center mb-12 animate-fade-in">
+          <div className="text-center mb-8 animate-fade-in">
             <h1 className="font-display text-4xl font-bold mb-4">{t('pyramidQuiz.title')}</h1>
             <p className="text-xl text-muted-foreground">{t('pyramidQuiz.subtitle')}</p>
+          </div>
+
+          {/* Clarification Banner */}
+          <div className="glass-card rounded-xl p-4 md:p-6 max-w-2xl mx-auto mb-8 border-amber-500/30 bg-amber-500/5 animate-fade-in">
+            <p className="text-center text-amber-400 font-medium">
+              {t('pyramidQuiz.disclaimer', '⚠️ Tu vas incarner un personnage fictif au hasard. Ce n\'est pas ta vraie vie — c\'est un jeu éducatif !')}
+            </p>
           </div>
 
           <div className="flex justify-center gap-4 mb-8">
@@ -829,24 +836,7 @@ export default function PyramidQuiz() {
             {user && <SavedGamesDialog onLoadGame={handleLoadGame} />}
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Online Quiz */}
-            <button
-              onClick={() => setMode('online')}
-              className="glass-card rounded-2xl p-8 text-left hover:border-primary/50 hover:scale-105 transition-all duration-300 group animate-fade-in"
-            >
-              <div className="flex items-center gap-4 mb-6">
-                <div className="p-4 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-all">
-                  <Gamepad2 className="w-8 h-8 text-primary" />
-                </div>
-                <h2 className="font-display text-xl font-semibold">{t('pyramidQuiz.modes.online.title')}</h2>
-              </div>
-              <p className="text-muted-foreground mb-6 text-sm">{t('pyramidQuiz.modes.online.description')}</p>
-              <div className="flex items-center gap-2 text-primary font-medium">
-                {t('pyramidQuiz.modes.online.cta')}
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
-              </div>
-            </button>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
             {/* Solo Board */}
             <button
@@ -1017,114 +1007,6 @@ export default function PyramidQuiz() {
         onComplete={handleTutorialComplete}
         onSkip={handleTutorialComplete}
       />
-    );
-  }
-
-  // Online Quiz Mode
-  if (mode === 'online') {
-    if (quizResult) {
-      const info = PYRAMID_TYPE_INFO[quizResult];
-      return (
-        <div className="min-h-screen pt-24 pb-16">
-          <div className="container mx-auto px-4 max-w-2xl">
-            <div className="text-center mb-12 animate-scale-in">
-              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 text-primary mb-6 animate-bounce">
-                <Trophy className="w-10 h-10" />
-              </div>
-              <h1 className="font-display text-3xl font-bold mb-4">{t('pyramidQuiz.result.title')}</h1>
-              <p className="text-muted-foreground">{t('pyramidQuiz.result.subtitle')}</p>
-            </div>
-
-            <div className={cn(
-              "glass-card rounded-2xl p-8 mb-8 border-2 animate-fade-in",
-              PYRAMID_COLORS[quizResult]
-            )}>
-              <h2 className="font-display text-2xl font-bold mb-4">{info.label}</h2>
-              <p className="text-muted-foreground mb-6">{info.description}</p>
-              
-              <div className="space-y-4">
-                <h3 className="font-semibold">{t('pyramidQuiz.result.scores')}</h3>
-                {Object.entries(scores)
-                  .sort(([, a], [, b]) => b - a)
-                  .map(([type, score], index) => (
-                    <div key={type} className="flex items-center gap-4 animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                      <span className="text-sm w-40">{PYRAMID_TYPE_INFO[type as PyramidType].label}</span>
-                      <div className="flex-1 h-3 bg-secondary rounded-full overflow-hidden">
-                        <div 
-                          className={cn("h-full rounded-full transition-all duration-1000", PYRAMID_COLORS[type as PyramidType].split(' ')[0])}
-                          style={{ width: `${(score / 24) * 100}%`, transitionDelay: `${index * 0.1}s` }}
-                        />
-                      </div>
-                      <span className="text-sm font-mono w-8">{score}</span>
-                    </div>
-                  ))}
-              </div>
-            </div>
-
-            <div className="flex gap-4 justify-center">
-              <Button onClick={resetGame} variant="outline" className="gap-2">
-                <RotateCcw className="w-4 h-4" />
-                {t('pyramidQuiz.result.playAgain')}
-              </Button>
-              <Button onClick={() => window.location.href = `/pyramid-types`} className="gap-2">
-                {t('pyramidQuiz.result.learnMore')}
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-            </div>
-          </div>
-        </div>
-      );
-    }
-
-    const question = QUIZ_QUESTIONS[currentQuestion];
-    return (
-      <div className="min-h-screen pt-24 pb-16">
-        <div className="container mx-auto px-4 max-w-2xl">
-          {/* Progress */}
-          <div className="mb-8 animate-fade-in">
-            <div className="flex justify-between text-sm text-muted-foreground mb-2">
-              <span>{t('pyramidQuiz.questionOf', { current: currentQuestion + 1, total: QUIZ_QUESTIONS.length })}</span>
-              <span>{Math.round(((currentQuestion + 1) / QUIZ_QUESTIONS.length) * 100)}%</span>
-            </div>
-            <div className="h-2 bg-secondary rounded-full overflow-hidden">
-              <div
-                className="h-full bg-primary rounded-full transition-all duration-500 ease-out"
-                style={{ width: `${((currentQuestion + 1) / QUIZ_QUESTIONS.length) * 100}%` }}
-              />
-            </div>
-          </div>
-
-          {/* Question */}
-          <div className="glass-card rounded-xl p-8 mb-8 animate-scale-in" key={currentQuestion}>
-            <div className="flex items-center gap-4 mb-8">
-              <div className="p-3 rounded-lg bg-primary/10">
-                {question.icon}
-              </div>
-              <h2 className="font-display text-xl font-semibold">
-                {t(`pyramidQuiz.questions.${question.id}.question`)}
-              </h2>
-            </div>
-
-            <div className="grid gap-4">
-              {question.options.map((option, index) => (
-                <button
-                  key={index}
-                  onClick={() => handleAnswer(option.scores)}
-                  className="p-4 rounded-xl border border-border hover:border-primary/50 hover:bg-primary/5 hover:scale-[1.02] transition-all duration-200 text-left animate-fade-in"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  {t(`pyramidQuiz.questions.${question.id}.options.${option.text}`)}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <Button onClick={resetGame} variant="outline" className="gap-2">
-            <ArrowLeft className="w-4 h-4" />
-            {t('pyramidQuiz.back')}
-          </Button>
-        </div>
-      </div>
     );
   }
 
