@@ -2,6 +2,7 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
+// Import translations
 import en from './locales/en.json';
 import fr from './locales/fr.json';
 import nl from './locales/nl.json';
@@ -10,14 +11,15 @@ import es from './locales/es.json';
 import it from './locales/it.json';
 import pt from './locales/pt.json';
 
+// Supported languages with metadata
 export const SUPPORTED_LANGUAGES = [
-  { code: 'en', label: 'English', flag: '🇬🇧' },
-  { code: 'fr', label: 'Français', flag: '🇫🇷' },
-  { code: 'nl', label: 'Nederlands', flag: '🇳🇱' },
-  { code: 'de', label: 'Deutsch', flag: '🇩🇪' },
-  { code: 'es', label: 'Español', flag: '🇪🇸' },
-  { code: 'it', label: 'Italiano', flag: '🇮🇹' },
-  { code: 'pt', label: 'Português', flag: '🇵🇹' },
+  { code: 'en', label: 'English', flag: '🇬🇧', name: 'English' },
+  { code: 'fr', label: 'Français', flag: '🇫🇷', name: 'Français' },
+  { code: 'nl', label: 'Nederlands', flag: '🇳🇱', name: 'Nederlands' },
+  { code: 'de', label: 'Deutsch', flag: '🇩🇪', name: 'Deutsch' },
+  { code: 'es', label: 'Español', flag: '🇪🇸', name: 'Español' },
+  { code: 'it', label: 'Italiano', flag: '🇮🇹', name: 'Italiano' },
+  { code: 'pt', label: 'Português', flag: '🇵🇹', name: 'Português' },
 ] as const;
 
 export type SupportedLanguage = typeof SUPPORTED_LANGUAGES[number]['code'];
@@ -38,7 +40,6 @@ const customLanguageDetector = {
   lookup: () => {
     const storedLang = localStorage.getItem('app_lang');
     if (storedLang) {
-      // Map region codes to base language (fr-FR -> fr)
       const baseLang = storedLang.split('-')[0];
       const supported = SUPPORTED_LANGUAGES.map(l => l.code);
       if (supported.includes(baseLang as SupportedLanguage)) {
@@ -60,7 +61,6 @@ const customNavigatorDetector = {
     const supported = SUPPORTED_LANGUAGES.map(l => l.code);
     
     for (const lang of browserLangs) {
-      // Map region codes to base language (fr-FR -> fr)
       const baseLang = lang.split('-')[0];
       if (supported.includes(baseLang as SupportedLanguage)) {
         return baseLang;
@@ -80,13 +80,20 @@ i18n
   .init({
     resources,
     fallbackLng: 'en',
+    supportedLngs: SUPPORTED_LANGUAGES.map(l => l.code),
     interpolation: {
       escapeValue: false,
     },
     detection: {
-      // Priority order: localStorage first, then browser detection
       order: ['customLocalStorage', 'customNavigator', 'navigator'],
-      caches: [], // We handle caching manually
+      caches: [],
+    },
+    // Dev mode: warn about missing keys
+    saveMissing: import.meta.env.DEV,
+    missingKeyHandler: (_lngs, _ns, key) => {
+      if (import.meta.env.DEV) {
+        console.warn(`🌍 Missing translation key: ${key}`);
+      }
     },
   });
 
