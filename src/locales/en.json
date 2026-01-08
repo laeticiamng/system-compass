@@ -1,8 +1,9 @@
 {
   "common": {
     "appName": "Pyramid Compass",
-    "tagline": "Navigate the real system",
-    "disclaimer": "Analytical tool only. Not legal or financial advice.",
+    "tagline": "Decision simulator for real-world systems",
+    "positioningLine": "Analysis and simulation tool. You decide, we illuminate.",
+    "disclaimer": "Not legal, financial, or medical advice. You remain responsible for your decisions.",
     "yes": "Yes",
     "no": "No",
     "back": "Back",
@@ -20,7 +21,7 @@
   },
   "dashboard": {
     "title": "My Dashboard",
-    "subtitle": "Track your progress towards your new life",
+    "subtitle": "Track your analyses and simulations",
     "syncing": "Syncing...",
     "synced": "Synced",
     "localOnly": "Local only",
@@ -86,38 +87,38 @@
     "countries": "Countries",
     "profile": "Profile",
     "trajectory": "Trajectory",
-    "match": "Match",
+    "match": "Compatibility",
     "compare": "Compare",
     "resources": "Resources",
-    "pyramids": "Pyramids",
-    "quiz": "Life's Game",
+    "pyramids": "Systems",
+    "quiz": "Educational Mode",
     "exitKeys": "Exit Keys",
     "dashboard": "Dashboard",
-    "multiCompare": "Multi-Compare"
+    "multiCompare": "Multi-Analysis"
   },
   "hero": {
-    "badge": "Navigate the Real System",
-    "title1": "Understand Your",
-    "titleHighlight": "Pyramid",
-    "title2": "Find Your Path",
-    "subtitle": "Every country has a hidden system. Learn what it really rewards, where you fit, and how to survive intelligently — or escape strategically.",
-    "discoverProfile": "Design Your Life",
-    "exploreCountries": "Explore Countries"
+    "badge": "Strategic Simulator",
+    "title1": "Analyze your path",
+    "titleHighlight": "before you live it",
+    "title2": "",
+    "subtitle": "Simulate your decisions, analyze systems, understand consequences. From street vendor in Dakar to executive in Paris — test your options here before committing.",
+    "discoverProfile": "Simulate my trajectory",
+    "exploreCountries": "Analyze systems"
   },
   "howItWorks": {
-    "title": "How It Works",
-    "subtitle": "A pragmatic framework to understand systems, not to fight them",
+    "title": "Analyze, simulate, understand",
+    "subtitle": "A strategic analysis tool. No promises, no coaching — just clarity.",
     "understand": {
-      "title": "Understand the Pyramid",
-      "description": "Every country rewards something different. Learn what the system actually values — problems, stability, competence, or growth."
+      "title": "Analyze the system",
+      "description": "Every country works differently. Understand what the system really rewards before you commit."
     },
     "profile": {
-      "title": "Know Your Profile",
-      "description": "Discover your values, risk tolerance, and ambitions. Find which systems align with who you are."
+      "title": "Test your options",
+      "description": "Simulate different scenarios based on your values, family, risk tolerance. Compare possible trajectories."
     },
     "playbook": {
-      "title": "Get Your Playbook",
-      "description": "Concrete strategies to survive where you are and build options toward where you want to be."
+      "title": "Understand the consequences",
+      "description": "Visualize the impact of your potential choices: degree, country, career. Information, not prescription."
     }
   },
   "pyramids": {
@@ -170,8 +171,8 @@
     }
   },
   "pyramidTypes": {
-    "title": "The Six Pyramids",
-    "subtitle": "Understand the real system of each country to navigate intelligently. Each pyramid represents a different logic of power.",
+    "title": "The Six Systems",
+    "subtitle": "Analyze how each type of country really works. Each system has its own power logic.",
     "whoThrives": "Who Thrives",
     "whoPays": "Who Pays the Price",
     "survivalRules": "Survival Rules",
@@ -375,21 +376,21 @@
     }
   },
   "featured": {
-    "title": "Explore Countries",
-    "subtitle": "Deep analysis of real systems, not fantasy rankings",
+    "title": "Analyze Countries",
+    "subtitle": "Analysis of real systems, not fantasy rankings",
     "viewAll": "View All"
   },
   "cta": {
-    "title": "Ready to Navigate?",
-    "subtitle": "This site doesn't judge. It translates. It helps you understand yourself, then make a plan that fits your reality.",
-    "button": "Design Your Life Trajectory"
+    "title": "Ready to analyze your options?",
+    "subtitle": "This tool doesn't judge or advise. It analyzes, simulates, and helps you understand systems so YOU decide with full knowledge.",
+    "button": "Start the analysis"
   },
   "countries": {
-    "title": "Country Intelligence",
-    "subtitle": "Deep analysis of national systems. Understand what each country really rewards, the risks, and your strategic options.",
+    "title": "Country Analysis",
+    "subtitle": "In-depth analysis of national systems. Understand what each system rewards, the risks, and your options.",
     "allSystems": "All Systems",
     "noResults": "No countries match this filter.",
-    "explore": "Explore →",
+    "explore": "Analyze →",
     "gdpCap": "GDP/cap",
     "passport": "Passport",
     "population": "Population"
