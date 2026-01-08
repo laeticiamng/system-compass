@@ -202,7 +202,35 @@
     "exitKeys": "Exit-Sleutels",
     "dashboard": "Dashboard",
     "lifeGame": "Levensspel",
-    "systemicMistakes": "Fouten"
+    "systemicMistakes": "Fouten",
+    "catalog": "Catalogus"
+  },
+  "vacation": {
+    "title": "Vakantie-aanbevelingen op basis van koopkracht",
+    "subtitle": "Bestemmingen waar je salaris de beste prijs-kwaliteitverhouding biedt",
+    "noProfession": "Voer je beroep in om gepersonaliseerde vakantie-aanbevelingen te krijgen op basis van je koopkracht",
+    "purchasingPower": "Koopkracht",
+    "days": "d",
+    "withOneMonth": "met 1 maand",
+    "safety": "Veiligheid",
+    "budget": "Budget",
+    "perDay": "dag",
+    "perDayFull": "per dag",
+    "valueRatio": "Prijs-kwaliteitverhouding",
+    "aiGuide": "AI-gids",
+    "domestic": "Binnenlandse opties (niet ver reizen)",
+    "access": {
+      "visa_free": "Visumvrij",
+      "visa_on_arrival": "Visum bij aankomst",
+      "easy_visa": "E-visum",
+      "requires_visa": "Visum vereist"
+    },
+    "tabs": {
+      "bestValue": "Beste prijs",
+      "safest": "Veiligste",
+      "visaFree": "Visumvrij",
+      "hidden": "Verborgen parels"
+    }
   },
   "hero": {
     "badge": "Navigeer door het echte systeem",

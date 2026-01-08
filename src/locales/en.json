@@ -297,7 +297,36 @@
     "exitKeys": "Exit Keys",
     "dashboard": "Dashboard",
     "multiCompare": "Multi-Analysis",
-    "systemicMistakes": "Mistakes"
+    "systemicMistakes": "Mistakes",
+    "lifeGame": "Life Game",
+    "catalog": "Catalog"
+  },
+  "vacation": {
+    "title": "Vacation Recommendations by Purchasing Power",
+    "subtitle": "Destinations where your salary gives you the best value for money",
+    "noProfession": "Enter your profession to get personalized vacation recommendations based on your purchasing power",
+    "purchasingPower": "Purchasing power",
+    "days": "d",
+    "withOneMonth": "with 1 month",
+    "safety": "Safety",
+    "budget": "Budget",
+    "perDay": "day",
+    "perDayFull": "per day",
+    "valueRatio": "Value ratio",
+    "aiGuide": "AI Guide",
+    "domestic": "Domestic options (no long travel)",
+    "access": {
+      "visa_free": "Visa-free",
+      "visa_on_arrival": "Visa on arrival",
+      "easy_visa": "E-visa",
+      "requires_visa": "Visa required"
+    },
+    "tabs": {
+      "bestValue": "Best value",
+      "safest": "Safest",
+      "visaFree": "Visa-free",
+      "hidden": "Hidden gems"
+    }
   },
   "hero": {
     "badge": "Analysis Simulator",

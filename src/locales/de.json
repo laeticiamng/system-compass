@@ -202,7 +202,35 @@
     "exitKeys": "Exit-Schlüssel",
     "dashboard": "Dashboard",
     "lifeGame": "Lebensspiel",
-    "systemicMistakes": "Fehler"
+    "systemicMistakes": "Fehler",
+    "catalog": "Katalog"
+  },
+  "vacation": {
+    "title": "Urlaubsempfehlungen nach Kaufkraft",
+    "subtitle": "Reiseziele, wo Ihr Gehalt das beste Preis-Leistungs-Verhältnis bietet",
+    "noProfession": "Geben Sie Ihren Beruf ein, um personalisierte Urlaubsempfehlungen basierend auf Ihrer Kaufkraft zu erhalten",
+    "purchasingPower": "Kaufkraft",
+    "days": "T",
+    "withOneMonth": "mit 1 Monat",
+    "safety": "Sicherheit",
+    "budget": "Budget",
+    "perDay": "Tag",
+    "perDayFull": "pro Tag",
+    "valueRatio": "Preis-Leistungs-Verhältnis",
+    "aiGuide": "KI-Reiseführer",
+    "domestic": "Inlandsoptionen (keine weite Reise)",
+    "access": {
+      "visa_free": "Visumfrei",
+      "visa_on_arrival": "Visum bei Ankunft",
+      "easy_visa": "E-Visum",
+      "requires_visa": "Visum erforderlich"
+    },
+    "tabs": {
+      "bestValue": "Bester Preis",
+      "safest": "Sicherste",
+      "visaFree": "Visumfrei",
+      "hidden": "Geheimtipps"
+    }
   },
   "hero": {
     "badge": "Navigiere durch das echte System",

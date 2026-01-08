@@ -202,7 +202,35 @@
     "exitKeys": "Claves de Salida",
     "dashboard": "Panel",
     "lifeGame": "Juego de Vida",
-    "systemicMistakes": "Errores"
+    "systemicMistakes": "Errores",
+    "catalog": "Catálogo"
+  },
+  "vacation": {
+    "title": "Recomendaciones de vacaciones por poder adquisitivo",
+    "subtitle": "Destinos donde tu salario te ofrece la mejor relación calidad-precio",
+    "noProfession": "Ingresa tu profesión para obtener recomendaciones de vacaciones personalizadas basadas en tu poder adquisitivo",
+    "purchasingPower": "Poder adquisitivo",
+    "days": "d",
+    "withOneMonth": "con 1 mes",
+    "safety": "Seguridad",
+    "budget": "Presupuesto",
+    "perDay": "día",
+    "perDayFull": "por día",
+    "valueRatio": "Relación calidad/precio",
+    "aiGuide": "Guía IA",
+    "domestic": "Opciones domésticas (sin viajar lejos)",
+    "access": {
+      "visa_free": "Sin visa",
+      "visa_on_arrival": "Visa a la llegada",
+      "easy_visa": "E-visa",
+      "requires_visa": "Visa requerida"
+    },
+    "tabs": {
+      "bestValue": "Mejor precio",
+      "safest": "Más seguras",
+      "visaFree": "Sin visa",
+      "hidden": "Joyas ocultas"
+    }
   },
   "hero": {
     "badge": "Navega por el sistema real",
