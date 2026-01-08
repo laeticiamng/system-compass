@@ -59,6 +59,7 @@ export interface ExitKeyStep {
 export interface ExitKey {
   id: string;
   name: string;
+  icon: string;              // Icône distinctive (emoji)
   // PREMIUM FORMAT - Fixed structure
   unlocks: string;           // Ce que ça débloque (1 phrase)
   successCondition: string;  // Condition de réussite (objective, mesurable)
@@ -92,6 +93,7 @@ export const EXIT_KEYS: ExitKey[] = [
   {
     id: 'medical_ch_trajectory',
     name: 'Trajectoire Médicale Suisse',
+    icon: '🏥',
     unlocks: 'Revenu médical suisse (2-4x France) + fiscalité optimisée + qualité de vie.',
     successCondition: 'MEBEKO validé + 3 ans hospitalier + installation libérale rentable.',
     mainRisk: 'MEBEKO refusé ou retardé = plan bloqué pendant 1-2 ans.',
@@ -146,6 +148,7 @@ export const EXIT_KEYS: ExitKey[] = [
   {
     id: 'digital_nomad_escape',
     name: 'Sortie Nomade Digital',
+    icon: '🌍',
     unlocks: 'Revenus location-independent + liberté géographique + optimisation fiscale.',
     successCondition: 'Revenus stables > 6k€/mois en remote + résidence fiscale optimisée.',
     mainRisk: 'Revenus instables les 12-18 premiers mois. Pas de filet social.',
@@ -199,6 +202,7 @@ export const EXIT_KEYS: ExitKey[] = [
   {
     id: 'corporate_ladder_jump',
     name: 'Saut Corporate → Entrepreneuriat',
+    icon: '🚀',
     unlocks: 'Capital accumulé + réseau + compétences business → lancement entrepreneurial.',
     successCondition: 'Épargne > 100k€ + projet validé par le marché avant démission.',
     mainRisk: 'Golden handcuffs : trop confortable pour partir, fenêtre de tir ratée.',
@@ -241,6 +245,7 @@ export const EXIT_KEYS: ExitKey[] = [
   {
     id: 'education_arbitrage',
     name: 'Arbitrage Éducation',
+    icon: '🎓',
     unlocks: 'Credentials internationales + accès marché emploi pays cible + voie vers résidence.',
     successCondition: 'Diplôme reconnu + CDI local + visa de travail ou résidence permanente.',
     mainRisk: 'Coût élevé des études + visa non convertible + marché emploi difficile.',
@@ -283,6 +288,7 @@ export const EXIT_KEYS: ExitKey[] = [
   {
     id: 'diaspora_leverage',
     name: 'Levier Diaspora',
+    icon: '🌉',
     unlocks: 'Position d\'arbitrage entre deux marchés + revenus premium + expertise unique.',
     successCondition: 'Activité rentable exploitant les deux marchés + modèle reproductible.',
     mainRisk: 'Instabilité politique pays d\'origine + complexité logistique internationale.',
@@ -325,6 +331,7 @@ export const EXIT_KEYS: ExitKey[] = [
   {
     id: 'freelance_tech',
     name: 'Freelance Tech',
+    icon: '💻',
     unlocks: 'Liberté géographique + revenus > salariat + indépendance professionnelle.',
     successCondition: 'TJM > 500€ + carnet plein + 100% remote possible.',
     mainRisk: 'Instabilité entre missions + obsolescence rapide des compétences.',
@@ -377,6 +384,7 @@ export const EXIT_KEYS: ExitKey[] = [
   {
     id: 'real_estate_investor',
     name: 'Investisseur Immobilier',
+    icon: '🏠',
     unlocks: 'Revenus passifs récurrents + patrimoine croissant + effet de levier bancaire.',
     successCondition: 'Cash-flow positif sur 5+ lots + patrimoine > 500k€.',
     mainRisk: 'Vacance locative + impayés + retournement marché = cash drain.',
@@ -420,6 +428,7 @@ export const EXIT_KEYS: ExitKey[] = [
   {
     id: 'manual_trade_pivot',
     name: 'Reconversion Métier Manuel',
+    icon: '🔧',
     unlocks: 'Métier pénurique + demande garantie + qualité de vie + indépendance possible.',
     successCondition: 'Diplôme obtenu + 2 ans expérience + activité indépendante rentable.',
     mainRisk: 'Pénibilité physique long terme + investissement matériel important.',
@@ -471,6 +480,7 @@ export const EXIT_KEYS: ExitKey[] = [
   {
     id: 'resource_extraction_escape',
     name: 'Sortie Système Extractif',
+    icon: '🛡️',
     unlocks: 'Conversion actifs locaux en devise forte + nouvelle vie dans système stable.',
     successCondition: '2-3 ans de runway en devise forte + visa/résidence pays cible obtenu.',
     mainRisk: 'Obstacles légaux au départ + perte actifs restés + difficulté intégration.',

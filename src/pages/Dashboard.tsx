@@ -500,6 +500,7 @@ export default function Dashboard() {
                   {EXIT_KEYS.map(key => (
                     <SelectItem key={key.id} value={key.id}>
                       <span className="flex items-center gap-2">
+                        <span>{key.icon}</span>
                         <span>{key.name}</span>
                         <Badge variant="outline" className="ml-2">{key.difficulty}</Badge>
                       </span>
@@ -516,7 +517,7 @@ export default function Dashboard() {
               <CardContent className="p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-4">
-                    <div className="text-4xl">🔑</div>
+                    <div className="text-4xl">{selectedKey.icon}</div>
                     <div>
                       <h2 className="text-xl font-bold">{selectedKey.name}</h2>
                       <p className="text-sm text-muted-foreground">{selectedKey.unlocks}</p>
@@ -547,7 +548,7 @@ export default function Dashboard() {
                       <SelectContent>
                         {EXIT_KEYS.map(key => (
                           <SelectItem key={key.id} value={key.id}>
-                            🔑 {key.name}
+                            {key.icon} {key.name}
                           </SelectItem>
                         ))}
                       </SelectContent>
