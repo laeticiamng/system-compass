@@ -36,10 +36,24 @@ interface PlayerEndState {
   position: number;
 }
 
+interface GameStats {
+  risksTaken: number;
+  risksSucceeded: number;
+  risksFailed: number;
+  risksCatastrophic: number;
+  actionsCompleted: number;
+  actionsFailed: number;
+  countriesVisited: string[];
+  totalMoneyEarned: number;
+  totalMoneyLost: number;
+  healthLost: number;
+}
+
 interface GameEndSummaryProps {
   players: PlayerEndState[];
   turnCount: number;
   gameMode: 'solo' | 'race' | 'points_duel' | 'cooperative';
+  gameStats?: GameStats;
   onPlayAgain: () => void;
   onBackToMenu: () => void;
 }
@@ -200,6 +214,7 @@ export default function GameEndSummary({
   players,
   turnCount,
   gameMode,
+  gameStats,
   onPlayAgain,
   onBackToMenu
 }: GameEndSummaryProps) {
@@ -453,6 +468,89 @@ export default function GameEndSummary({
             );
           })}
         </div>
+
+        {/* Game Statistics */}
+        {gameStats && (gameStats.risksTaken > 0 || gameStats.actionsCompleted > 0) && (
+          <div className="glass-card rounded-2xl p-6 mt-8 animate-fade-in">
+            <h3 className="font-display text-xl font-bold mb-6 flex items-center gap-2">
+              📊 Statistiques de partie
+            </h3>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {/* Risks */}
+              {gameStats.risksTaken > 0 && (
+                <>
+                  <div className="p-4 rounded-lg bg-red-500/10 text-center">
+                    <div className="text-2xl mb-1">⚠️</div>
+                    <div className="text-2xl font-bold text-red-400">{gameStats.risksTaken}</div>
+                    <div className="text-xs text-muted-foreground">Risques pris</div>
+                  </div>
+                  <div className="p-4 rounded-lg bg-emerald-500/10 text-center">
+                    <div className="text-2xl mb-1">✅</div>
+                    <div className="text-2xl font-bold text-emerald-400">{gameStats.risksSucceeded}</div>
+                    <div className="text-xs text-muted-foreground">Réussites</div>
+                  </div>
+                  <div className="p-4 rounded-lg bg-amber-500/10 text-center">
+                    <div className="text-2xl mb-1">❌</div>
+                    <div className="text-2xl font-bold text-amber-400">{gameStats.risksFailed}</div>
+                    <div className="text-xs text-muted-foreground">Échecs</div>
+                  </div>
+                  <div className="p-4 rounded-lg bg-red-500/10 text-center">
+                    <div className="text-2xl mb-1">💀</div>
+                    <div className="text-2xl font-bold text-red-400">{gameStats.risksCatastrophic}</div>
+                    <div className="text-xs text-muted-foreground">Catastrophes</div>
+                  </div>
+                </>
+              )}
+              
+              {/* Actions */}
+              <div className="p-4 rounded-lg bg-blue-500/10 text-center">
+                <div className="text-2xl mb-1">🎯</div>
+                <div className="text-2xl font-bold text-blue-400">{gameStats.actionsCompleted}</div>
+                <div className="text-xs text-muted-foreground">Actions réussies</div>
+              </div>
+              <div className="p-4 rounded-lg bg-orange-500/10 text-center">
+                <div className="text-2xl mb-1">💸</div>
+                <div className="text-2xl font-bold text-orange-400">{gameStats.totalMoneyLost}</div>
+                <div className="text-xs text-muted-foreground">Argent perdu</div>
+              </div>
+              <div className="p-4 rounded-lg bg-rose-500/10 text-center">
+                <div className="text-2xl mb-1">💔</div>
+                <div className="text-2xl font-bold text-rose-400">{gameStats.healthLost}</div>
+                <div className="text-xs text-muted-foreground">Santé perdue</div>
+              </div>
+              
+              {/* Countries visited */}
+              {gameStats.countriesVisited.length > 0 && (
+                <div className="p-4 rounded-lg bg-purple-500/10 text-center col-span-2 md:col-span-1">
+                  <div className="text-2xl mb-1">🌍</div>
+                  <div className="text-2xl font-bold text-purple-400">{gameStats.countriesVisited.length}</div>
+                  <div className="text-xs text-muted-foreground">Pays traversés</div>
+                </div>
+              )}
+            </div>
+
+            {/* Risk Analysis */}
+            {gameStats.risksTaken > 0 && (
+              <div className="mt-6 p-4 rounded-lg bg-muted/30">
+                <h4 className="font-semibold mb-2 flex items-center gap-2">
+                  <AlertTriangle className="w-4 h-4 text-amber-400" />
+                  Analyse des risques
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  {gameStats.risksTaken === 0 
+                    ? "Vous avez joué prudemment, sans prendre de raccourcis dangereux."
+                    : gameStats.risksSucceeded > gameStats.risksFailed 
+                      ? "La chance était de votre côté, mais les raccourcis restent dangereux."
+                      : gameStats.risksCatastrophic > 0
+                        ? "Les raccourcis ont eu des conséquences graves. Dans la vraie vie, ces situations détruisent des familles."
+                        : "Les risques pris ont eu des conséquences. Chaque échec représente une réalité vécue par des milliers de personnes."
+                  }
+                </p>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Actions */}
         <div className="flex gap-4 mt-12 justify-center">

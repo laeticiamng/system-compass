@@ -18,6 +18,7 @@ import LifeAssignment from '@/components/game/LifeAssignment';
 import ResourceBar from '@/components/game/ResourceBar';
 import EventCard from '@/components/game/EventCard';
 import TurnManager, { TurnPhase } from '@/components/game/TurnManager';
+import GameEndSummary from '@/components/game/GameEndSummary';
 import { useSavedGames, SavedGame, SavedGameState } from '@/hooks/useSavedGames';
 import { useAuth } from '@/hooks/useAuth';
 import { 
@@ -84,6 +85,20 @@ interface Player {
   character?: CharacterCardType;
   resources: GameResources;
   countryType: PyramidType;
+}
+
+// Game statistics tracking
+interface GameStats {
+  risksTaken: number;
+  risksSucceeded: number;
+  risksFailed: number;
+  risksCatastrophic: number;
+  actionsCompleted: number;
+  actionsFailed: number;
+  countriesVisited: string[];
+  totalMoneyEarned: number;
+  totalMoneyLost: number;
+  healthLost: number;
 }
 
 const PLAYER_COLORS = [
@@ -231,6 +246,20 @@ export default function PyramidQuiz() {
   const [playerProfiles, setPlayerProfiles] = useState<GamePlayerProfile[]>([]);
 
   const diceRef = useRef<HTMLButtonElement>(null);
+
+  // Game statistics
+  const [gameStats, setGameStats] = useState<GameStats>({
+    risksTaken: 0,
+    risksSucceeded: 0,
+    risksFailed: 0,
+    risksCatastrophic: 0,
+    actionsCompleted: 0,
+    actionsFailed: 0,
+    countriesVisited: [],
+    totalMoneyEarned: 0,
+    totalMoneyLost: 0,
+    healthLost: 0,
+  });
 
   // Cooperative mode: shared score pool
   const [cooperativePool, setCooperativePool] = useState<Record<PyramidType, number>>(createEmptyScores());
@@ -631,6 +660,18 @@ export default function PyramidQuiz() {
     setCooperativePool(createEmptyScores());
     setCurrentGameId(null);
     setGameName('');
+    setGameStats({
+      risksTaken: 0,
+      risksSucceeded: 0,
+      risksFailed: 0,
+      risksCatastrophic: 0,
+      actionsCompleted: 0,
+      actionsFailed: 0,
+      countriesVisited: [],
+      totalMoneyEarned: 0,
+      totalMoneyLost: 0,
+      healthLost: 0,
+    });
   };
 
   // Mode selection
@@ -941,108 +982,24 @@ export default function PyramidQuiz() {
     const DiceIcon = diceValue ? DICE_ICONS[diceValue - 1] : Dice1;
     const currentPlayer = players[currentPlayerIndex];
 
-    // Game finished screen
+    // Game finished screen - Use GameEndSummary
     if (gameFinished) {
-      const sortedPlayers = [...players].sort((a, b) => {
-        if (mode === 'race') {
-          // First to finish wins
-          return (a.result ? 0 : 1) - (b.result ? 0 : 1);
-        }
-        // Otherwise by total score
-        const aTotal = Object.values(a.scores).reduce((sum, s) => sum + s, 0);
-        const bTotal = Object.values(b.scores).reduce((sum, s) => sum + s, 0);
-        return bTotal - aTotal;
-      });
-
-      const cooperativeTotal = Object.values(cooperativePool).reduce((sum, s) => sum + s, 0);
-      const cooperativeTarget = players.length * 30;
-      const cooperativeWin = cooperativeTotal >= cooperativeTarget;
-
       return (
-        <div className="min-h-screen pt-24 pb-16">
-          <div className="container mx-auto px-4 max-w-2xl">
-            <div className="text-center mb-12 animate-scale-in">
-              <div className={cn(
-                "inline-flex items-center justify-center w-20 h-20 rounded-full mb-6",
-                mode === 'cooperative' 
-                  ? cooperativeWin ? "bg-emerald-500/20 text-emerald-500" : "bg-rose-500/20 text-rose-500"
-                  : "bg-yellow-500/20 text-yellow-500"
-              )}>
-                {mode === 'cooperative' 
-                  ? <HandHeart className="w-10 h-10 animate-bounce" />
-                  : <Crown className="w-10 h-10 animate-bounce" />
-                }
-              </div>
-              <h1 className="font-display text-3xl font-bold mb-4">
-                {mode === 'cooperative' 
-                  ? (cooperativeWin ? t('pyramidQuiz.cooperative.victory') : t('pyramidQuiz.cooperative.defeat'))
-                  : t('pyramidQuiz.multiplayer.gameOver')
-                }
-              </h1>
-              {mode === 'cooperative' && (
-                <p className="text-xl text-muted-foreground">
-                  {t('pyramidQuiz.cooperative.score', { score: cooperativeTotal, target: cooperativeTarget })}
-                </p>
-              )}
-            </div>
-
-            {mode === 'cooperative' ? (
-              <div className="glass-card rounded-2xl p-6 mb-8 animate-fade-in">
-                <h3 className="font-semibold mb-4">{t('pyramidQuiz.result.scores')}</h3>
-                {Object.entries(cooperativePool)
-                  .sort(([, a], [, b]) => b - a)
-                  .map(([type, score]) => (
-                    <div key={type} className="flex items-center gap-4 mb-2">
-                      <span className="text-sm w-32">{PYRAMID_TYPE_INFO[type as PyramidType].label}</span>
-                      <div className="flex-1 h-2 bg-secondary rounded-full overflow-hidden">
-                        <div 
-                          className={cn("h-full rounded-full", PYRAMID_COLORS[type as PyramidType].split(' ')[0])}
-                          style={{ width: `${(score / 30) * 100}%` }}
-                        />
-                      </div>
-                      <span className="text-sm font-mono w-6">{score}</span>
-                    </div>
-                  ))}
-              </div>
-            ) : (
-              <div className="space-y-4 mb-8">
-                {sortedPlayers.map((player, index) => (
-                  <div 
-                    key={player.id} 
-                    className={cn(
-                      "glass-card rounded-xl p-6 animate-fade-in",
-                      index === 0 && "ring-2 ring-yellow-500"
-                    )}
-                    style={{ animationDelay: `${index * 0.2}s` }}
-                  >
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className={cn("w-8 h-8 rounded-full flex items-center justify-center text-white font-bold", player.color)}>
-                        {index + 1}
-                      </div>
-                      <span className="font-semibold text-lg">{player.name}</span>
-                      {index === 0 && <Crown className="w-5 h-5 text-yellow-500" />}
-                      <span className="ml-auto text-muted-foreground">
-                        {Object.values(player.scores).reduce((sum, s) => sum + s, 0)} pts
-                      </span>
-                    </div>
-                    {player.result && (
-                      <div className={cn("rounded-lg p-3", PYRAMID_COLORS[player.result])}>
-                        <span className="font-medium">{PYRAMID_TYPE_INFO[player.result].label}</span>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
-
-            <div className="flex gap-4 justify-center">
-              <Button onClick={resetGame} variant="outline" className="gap-2">
-                <RotateCcw className="w-4 h-4" />
-                {t('pyramidQuiz.result.playAgain')}
-              </Button>
-            </div>
-          </div>
-        </div>
+        <GameEndSummary
+          players={players.map(p => ({
+            id: p.id,
+            name: p.name,
+            character: p.character,
+            resources: p.resources,
+            scores: p.scores,
+            position: p.position,
+          }))}
+          turnCount={turnNumber}
+          gameMode={(mode || 'solo') as 'solo' | 'race' | 'points_duel' | 'cooperative'}
+          gameStats={gameStats}
+          onPlayAgain={resetGame}
+          onBackToMenu={resetGame}
+        />
       );
     }
 
