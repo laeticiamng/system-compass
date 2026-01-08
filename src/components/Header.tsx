@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
-import { Compass, Map, User, FileText, Target, Scale, Route, Triangle } from 'lucide-react';
+import { Compass, Map, FileText, Target, Scale, Route, Triangle, Gamepad2 } from 'lucide-react';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
 export function Header() {
@@ -12,6 +12,7 @@ export function Header() {
     { href: '/', label: t('nav.start'), icon: Compass },
     { href: '/countries', label: t('nav.countries'), icon: Map },
     { href: '/pyramid-types', label: t('nav.pyramids'), icon: Triangle },
+    { href: '/pyramid-quiz', label: t('nav.quiz'), icon: Gamepad2 },
     { href: '/life-trajectory', label: t('nav.trajectory'), icon: Route },
     { href: '/match', label: t('nav.match'), icon: Target },
     { href: '/compare', label: t('nav.compare'), icon: Scale },

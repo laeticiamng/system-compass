@@ -1279,7 +1279,16 @@
       "trap": "Trappola! -2 punti sul tuo tipo dominante",
       "bonus": "Bonus! +1 punto su tutti i tipi",
       "answeredQuestion": "Buona risposta!",
-      "victory": "Congratulazioni! Hai raggiunto l'arrivo!"
+      "victory": "Congratulazioni! Hai raggiunto l'arrivo!",
+      "moving": "In movimento..."
+    },
+    "multiplayer": {
+      "setup": "Configura la tua partita multiplayer",
+      "selectPlayers": "Numero di giocatori",
+      "startGame": "Inizia partita",
+      "player": "Giocatore",
+      "yourTurn": "Tocca a te!",
+      "gameOver": "Partita finita!"
     }
   }
 }
