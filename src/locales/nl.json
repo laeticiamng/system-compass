@@ -234,7 +234,120 @@
     "turnsPlayed": "Gespeelde rondes",
     "riskSuccess": "Risicosuccessen",
     "archetypesUsed": "Geteste archetypen",
-    "bestScore": "Beste soloscore"
+    "bestScore": "Beste soloscore",
+    "tabs": {
+      "plan": "Plan",
+      "stats": "Statistieken",
+      "calendar": "Kalender"
+    },
+    "phase": "Fase",
+    "duration": "Duur",
+    "suggestedDeadline": "Voorgestelde deadline",
+    "actions": "acties",
+    "objective": "Doel",
+    "criticalRule": "Kritische regel",
+    "personalNotes": "Persoonlijke notities",
+    "addNote": "Notitie toevoegen"
+  },
+  "achievements": {
+    "title": "Prestaties",
+    "unlocked": "ontgrendeld",
+    "all": "Alle",
+    "exploration": "Verkenning",
+    "risk": "Risiconeming",
+    "mastery": "Meesterschap",
+    "special": "Speciaal"
+  },
+  "resources": {
+    "title": "Bronnen",
+    "subtitle": "Praktische tools en kaders om optionaliteit op te bouwen. Geen fantasieën — alleen uitvoerbare stappen.",
+    "categories": {
+      "financial": {
+        "title": "Financiële onafhankelijkheid",
+        "description": "Bouw je financiële basis op, ongeacht je locatie",
+        "items": {
+          "emergencyFund": { "name": "Noodfonds-calculator", "description": "Minimaal 6-12 maanden uitgaven" },
+          "multipleIncome": { "name": "Meerdere inkomensbronnen", "description": "Nooit afhankelijk zijn van één bron" },
+          "offshoreBanking": { "name": "Offshore banking basics", "description": "Legitieme diversificatiestrategieën" },
+          "taxOptimization": { "name": "Fiscale optimalisatie", "description": "Legale structuren voor jouw situatie" }
+        }
+      },
+      "skills": {
+        "title": "Exporteerbare vaardigheden",
+        "description": "Vaardigheden die grenzen en systemen overschrijden",
+        "items": {
+          "remote": { "name": "Remote-first vaardigheden", "description": "Tech, schrijven, design, consultancy" },
+          "certifications": { "name": "Certificeringen die reizen", "description": "Internationaal erkende accreditaties" },
+          "languages": { "name": "Taalverwerving", "description": "Strategische leerprioriteiten" },
+          "digitalPresence": { "name": "Digitale aanwezigheid", "description": "Bouw een reputatie die je vooruitgaat" }
+        }
+      },
+      "mobility": {
+        "title": "Mobiliteitsvoorbereiding",
+        "description": "Bereid je voor om te verhuizen wanneer de kans zich voordoet",
+        "items": {
+          "documents": { "name": "Documentbeveiliging", "description": "Houd alle papieren georganiseerd en actueel" },
+          "visaStrategy": { "name": "Visum strategie matrix", "description": "Ken je opties voordat je ze nodig hebt" },
+          "secondResidency": { "name": "Tweede verblijfsopties", "description": "Wegen via investering en vaardigheden" },
+          "digitalNomad": { "name": "Digital nomad kaders", "description": "Test bestemmingen voordat je je vastlegt" }
+        }
+      },
+      "security": {
+        "title": "Veiligheid & discretie",
+        "description": "Bescherm jezelf in risicovolle omgevingen",
+        "items": {
+          "opsec": { "name": "Basics operationele veiligheid", "description": "Minimaliseer je blootstellingsprofiel" },
+          "digitalPrivacy": { "name": "Digitale privacy", "description": "Beveiligde communicatie en gegevens" },
+          "assetProtection": { "name": "Vermogensbescherming", "description": "Structuur om beslagleggingsrisico te minimaliseren" },
+          "networkSafety": { "name": "Netwerkveiligheid", "description": "Wie te vertrouwen en hoe te verifiëren" }
+        }
+      }
+    },
+    "checklists": {
+      "title": "Snelle checklists",
+      "survival30": {
+        "title": "30-dagen survival start",
+        "items": [
+          "Audit je huidige financiële positie",
+          "Identificeer je belangrijkste exporteerbare vaardigheid",
+          "Beveilig alle identiteitsdocumenten",
+          "Begin een noodfonds (zelfs €50/maand)",
+          "Breng de waarde van je huidige netwerk in kaart",
+          "Onderzoek een potentiële bestemming"
+        ]
+      },
+      "preMove": {
+        "title": "Pre-verhuizing checklist",
+        "items": [
+          "Geldig paspoort (6+ maanden resterend)",
+          "Schone digitale voetafdruk",
+          "Inkomensbron die reist",
+          "Bankrekening met internationale toegang",
+          "Medische dossiers en recepten",
+          "Volmacht voor thuisland zaken"
+        ]
+      }
+    },
+    "disclaimer": {
+      "title": "Belangrijke waarschuwing",
+      "text": "Deze site biedt alleen analysekaders. Dit is geen juridisch, financieel of immigratieadvies. Raadpleeg altijd gekwalificeerde professionals voor jouw specifieke situatie. Elke actie heeft gevolgen — plan zorgvuldig en neem nooit onnodige risico's."
+    }
+  },
+  "lifeGame": {
+    "title": "Levensspel",
+    "subtitle": "Simuleer een heel leven — van geboorte tot strategische volwassenheid",
+    "description": "Dit spel is een educatief hulpmiddel. Je controleert de startvoorwaarden niet. Je leert te werken met wat je krijgt.",
+    "startGame": "Start spel",
+    "continueGame": "Spel hervatten",
+    "newGame": "Nieuw spel",
+    "features": {
+      "randomStart": "Willekeurige start",
+      "randomStartDesc": "Je wordt geboren op een willekeurige plek, met willekeurige middelen",
+      "realSystems": "Echte systemen",
+      "realSystemsDesc": "Elk land heeft andere regels",
+      "consequences": "Gevolgen",
+      "consequencesDesc": "Je beslissingen hebben langetermijnimpact"
+    }
   },
   "footer": {
     "explore": "Verkennen",

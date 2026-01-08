@@ -234,7 +234,120 @@
     "turnsPlayed": "Gespielte Runden",
     "riskSuccess": "Risikoerfolge",
     "archetypesUsed": "Getestete Archetypen",
-    "bestScore": "Beste Solo-Punktzahl"
+    "bestScore": "Beste Solo-Punktzahl",
+    "tabs": {
+      "plan": "Plan",
+      "stats": "Statistiken",
+      "calendar": "Kalender"
+    },
+    "phase": "Phase",
+    "duration": "Dauer",
+    "suggestedDeadline": "Vorgeschlagene Frist",
+    "actions": "Aktionen",
+    "objective": "Ziel",
+    "criticalRule": "Kritische Regel",
+    "personalNotes": "Persönliche Notizen",
+    "addNote": "Notiz hinzufügen"
+  },
+  "achievements": {
+    "title": "Erfolge",
+    "unlocked": "freigeschaltet",
+    "all": "Alle",
+    "exploration": "Erkundung",
+    "risk": "Risikobereitschaft",
+    "mastery": "Meisterschaft",
+    "special": "Spezial"
+  },
+  "resources": {
+    "title": "Ressourcen",
+    "subtitle": "Praktische Werkzeuge und Rahmen zum Aufbau von Optionalität. Keine Fantasien — nur umsetzbare Schritte.",
+    "categories": {
+      "financial": {
+        "title": "Finanzielle Unabhängigkeit",
+        "description": "Baue deine finanzielle Basis auf, unabhängig von deinem Standort",
+        "items": {
+          "emergencyFund": { "name": "Notfall-Fonds-Rechner", "description": "Mindestens 6-12 Monate Ausgaben" },
+          "multipleIncome": { "name": "Mehrere Einkommensquellen", "description": "Nie von einer einzigen Quelle abhängen" },
+          "offshoreBanking": { "name": "Offshore-Banking-Grundlagen", "description": "Legitime Diversifikationsstrategien" },
+          "taxOptimization": { "name": "Steueroptimierung", "description": "Legale Strukturen für deine Situation" }
+        }
+      },
+      "skills": {
+        "title": "Exportierbare Fähigkeiten",
+        "description": "Fähigkeiten, die Grenzen und Systeme überschreiten",
+        "items": {
+          "remote": { "name": "Remote-First-Fähigkeiten", "description": "Tech, Schreiben, Design, Beratung" },
+          "certifications": { "name": "Zertifizierungen, die reisen", "description": "International anerkannte Akkreditierungen" },
+          "languages": { "name": "Spracherwerb", "description": "Strategische Lernprioritäten" },
+          "digitalPresence": { "name": "Digitale Präsenz", "description": "Baue einen Ruf auf, der dir vorausgeht" }
+        }
+      },
+      "mobility": {
+        "title": "Mobilitätsvorbereitung",
+        "description": "Bereite dich vor, wenn sich Gelegenheiten bieten",
+        "items": {
+          "documents": { "name": "Dokumentensicherheit", "description": "Alle Papiere organisiert und aktuell halten" },
+          "visaStrategy": { "name": "Visa-Strategie-Matrix", "description": "Kenne deine Optionen, bevor du sie brauchst" },
+          "secondResidency": { "name": "Zweitwohnsitz-Optionen", "description": "Wege durch Investition und Fähigkeiten" },
+          "digitalNomad": { "name": "Digital-Nomad-Rahmen", "description": "Teste Ziele, bevor du dich festlegst" }
+        }
+      },
+      "security": {
+        "title": "Sicherheit & Diskretion",
+        "description": "Schütze dich in Hochrisikoumgebungen",
+        "items": {
+          "opsec": { "name": "Grundlagen der operativen Sicherheit", "description": "Minimiere dein Expositionsprofil" },
+          "digitalPrivacy": { "name": "Digitale Privatsphäre", "description": "Sichere Kommunikation und Daten" },
+          "assetProtection": { "name": "Vermögensschutz", "description": "Struktur zur Minimierung des Beschlagnahmerisikos" },
+          "networkSafety": { "name": "Netzwerksicherheit", "description": "Wem vertrauen und wie verifizieren" }
+        }
+      }
+    },
+    "checklists": {
+      "title": "Schnelle Checklisten",
+      "survival30": {
+        "title": "30-Tage Survival-Start",
+        "items": [
+          "Prüfe deine aktuelle finanzielle Position",
+          "Identifiziere deine wichtigste exportierbare Fähigkeit",
+          "Sichere alle Identitätsdokumente",
+          "Beginne einen Notfall-Fonds (auch 50€/Monat)",
+          "Kartiere den Wert deines aktuellen Netzwerks",
+          "Recherchiere ein potenzielles Ziel"
+        ]
+      },
+      "preMove": {
+        "title": "Pre-Umzug Checkliste",
+        "items": [
+          "Gültiger Reisepass (6+ Monate verbleibend)",
+          "Sauberer digitaler Fußabdruck",
+          "Einkommensquelle, die reist",
+          "Bankkonto mit internationalem Zugang",
+          "Medizinische Unterlagen und Rezepte",
+          "Vollmacht für Heimatangelegenheiten"
+        ]
+      }
+    },
+    "disclaimer": {
+      "title": "Wichtiger Hinweis",
+      "text": "Diese Seite bietet nur Analyserahmen. Dies ist keine rechtliche, finanzielle oder Einwanderungsberatung. Konsultiere immer qualifizierte Fachleute für deine spezifische Situation. Jede Handlung hat Konsequenzen — plane sorgfältig und gehe nie unnötige Risiken ein."
+    }
+  },
+  "lifeGame": {
+    "title": "Lebensspiel",
+    "subtitle": "Simuliere ein ganzes Leben — von Geburt an bis zum strategischen Erwachsenenalter",
+    "description": "Dieses Spiel ist ein pädagogisches Tool. Du steuerst nicht die Startbedingungen. Du lernst, mit dem zu arbeiten, was du bekommst.",
+    "startGame": "Spiel starten",
+    "continueGame": "Spiel fortsetzen",
+    "newGame": "Neues Spiel",
+    "features": {
+      "randomStart": "Zufälliger Start",
+      "randomStartDesc": "Geburt an einem zufälligen Ort, mit zufälligen Ressourcen",
+      "realSystems": "Echte Systeme",
+      "realSystemsDesc": "Jedes Land hat andere Regeln",
+      "consequences": "Konsequenzen",
+      "consequencesDesc": "Deine Entscheidungen haben langfristige Auswirkungen"
+    }
   },
   "footer": {
     "explore": "Erkunden",

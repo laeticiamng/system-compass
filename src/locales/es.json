@@ -234,7 +234,120 @@
     "turnsPlayed": "Turnos jugados",
     "riskSuccess": "Éxitos de riesgo",
     "archetypesUsed": "Arquetipos probados",
-    "bestScore": "Mejor puntuación solo"
+    "bestScore": "Mejor puntuación solo",
+    "tabs": {
+      "plan": "Plan",
+      "stats": "Estadísticas",
+      "calendar": "Calendario"
+    },
+    "phase": "Fase",
+    "duration": "Duración",
+    "suggestedDeadline": "Fecha límite sugerida",
+    "actions": "acciones",
+    "objective": "Objetivo",
+    "criticalRule": "Regla crítica",
+    "personalNotes": "Notas personales",
+    "addNote": "Añadir nota"
+  },
+  "achievements": {
+    "title": "Logros",
+    "unlocked": "desbloqueados",
+    "all": "Todos",
+    "exploration": "Exploración",
+    "risk": "Toma de riesgos",
+    "mastery": "Maestría",
+    "special": "Especial"
+  },
+  "resources": {
+    "title": "Recursos",
+    "subtitle": "Herramientas prácticas y marcos para construir opcionalidad. Sin fantasías — solo pasos accionables.",
+    "categories": {
+      "financial": {
+        "title": "Independencia financiera",
+        "description": "Construye tu base financiera independientemente de tu ubicación",
+        "items": {
+          "emergencyFund": { "name": "Calculadora de fondo de emergencia", "description": "6-12 meses de gastos mínimo" },
+          "multipleIncome": { "name": "Múltiples fuentes de ingresos", "description": "Nunca depender de una sola fuente" },
+          "offshoreBanking": { "name": "Bases de banca offshore", "description": "Estrategias de diversificación legítimas" },
+          "taxOptimization": { "name": "Optimización fiscal", "description": "Estructuras legales para tu situación" }
+        }
+      },
+      "skills": {
+        "title": "Competencias exportables",
+        "description": "Habilidades que cruzan fronteras y sistemas",
+        "items": {
+          "remote": { "name": "Habilidades remote-first", "description": "Tech, escritura, diseño, consultoría" },
+          "certifications": { "name": "Certificaciones que viajan", "description": "Acreditaciones reconocidas internacionalmente" },
+          "languages": { "name": "Adquisición de idiomas", "description": "Prioridades de aprendizaje estratégicas" },
+          "digitalPresence": { "name": "Presencia digital", "description": "Construye una reputación que te preceda" }
+        }
+      },
+      "mobility": {
+        "title": "Preparación para la movilidad",
+        "description": "Prepárate para moverte cuando surja la oportunidad",
+        "items": {
+          "documents": { "name": "Seguridad de documentos", "description": "Mantén todos los papeles organizados y actualizados" },
+          "visaStrategy": { "name": "Matriz de estrategia de visas", "description": "Conoce tus opciones antes de necesitarlas" },
+          "secondResidency": { "name": "Opciones de segunda residencia", "description": "Caminos por inversión y competencias" },
+          "digitalNomad": { "name": "Marcos de nómada digital", "description": "Prueba destinos antes de comprometerte" }
+        }
+      },
+      "security": {
+        "title": "Seguridad y discreción",
+        "description": "Protégete en entornos de alto riesgo",
+        "items": {
+          "opsec": { "name": "Bases de seguridad operacional", "description": "Minimiza tu perfil de exposición" },
+          "digitalPrivacy": { "name": "Privacidad digital", "description": "Comunicaciones y datos seguros" },
+          "assetProtection": { "name": "Protección de activos", "description": "Estructura para minimizar el riesgo de confiscación" },
+          "networkSafety": { "name": "Seguridad de red", "description": "En quién confiar y cómo verificar" }
+        }
+      }
+    },
+    "checklists": {
+      "title": "Listas de verificación rápidas",
+      "survival30": {
+        "title": "Arranque de supervivencia 30 días",
+        "items": [
+          "Audita tu posición financiera actual",
+          "Identifica tu habilidad exportable principal",
+          "Asegura todos los documentos de identidad",
+          "Comienza un fondo de emergencia (aunque sean 50€/mes)",
+          "Mapea el valor de tu red actual",
+          "Investiga un destino potencial"
+        ]
+      },
+      "preMove": {
+        "title": "Lista de verificación pre-mudanza",
+        "items": [
+          "Pasaporte válido (6+ meses restantes)",
+          "Huella digital limpia",
+          "Fuente de ingresos que viaja",
+          "Cuenta bancaria con acceso internacional",
+          "Registros médicos y recetas",
+          "Poder notarial para asuntos del país de origen"
+        ]
+      }
+    },
+    "disclaimer": {
+      "title": "Advertencia importante",
+      "text": "Este sitio proporciona únicamente marcos de análisis. No es asesoramiento legal, financiero o de inmigración. Consulta siempre a profesionales cualificados para tu situación específica. Cada acción tiene consecuencias — planifica cuidadosamente y nunca tomes riesgos innecesarios."
+    }
+  },
+  "lifeGame": {
+    "title": "Juego de la vida",
+    "subtitle": "Simula una vida entera — desde el nacimiento hasta la edad adulta estratégica",
+    "description": "Este juego es una herramienta educativa. No controlas las condiciones de inicio. Aprendes a trabajar con lo que recibes.",
+    "startGame": "Iniciar juego",
+    "continueGame": "Continuar juego",
+    "newGame": "Nuevo juego",
+    "features": {
+      "randomStart": "Inicio aleatorio",
+      "randomStartDesc": "Naces en un lugar aleatorio, con recursos aleatorios",
+      "realSystems": "Sistemas reales",
+      "realSystemsDesc": "Cada país tiene reglas diferentes",
+      "consequences": "Consecuencias",
+      "consequencesDesc": "Tus decisiones tienen impactos a largo plazo"
+    }
   },
   "footer": {
     "explore": "Explorar",
