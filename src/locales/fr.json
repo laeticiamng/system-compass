@@ -3316,6 +3316,7 @@
   "tutorial": {
     "stepOf": "Étape {{current}} sur {{total}}",
     "skip": "Passer le tutoriel",
+    "dontShowAgain": "Ne plus afficher le tutoriel",
     "examples": "Exemples concrets",
     "realityCheck": "Réalité",
     "startGame": "Commencer à jouer",
