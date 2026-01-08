@@ -1,1 +1,10 @@
 project_id = "abysiagseykztutnbjtu"
+
+[functions.destination-insights]
+verify_jwt = false
+
+[functions.generate-country-music]
+verify_jwt = false
+
+[functions.generate-translations]
+verify_jwt = false
