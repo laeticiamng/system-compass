@@ -23,6 +23,7 @@ export function CountryExitKeys({ country }: CountryExitKeysProps) {
     
     const context: UserContext = {
       birthCountry: profile.birthCountryId ? country.pyramidType : country.pyramidType,
+      nationality: profile.nationalityId ? country.pyramidType : country.pyramidType,
       currentCountry: country.pyramidType,
       desiredLife: profile.desiredLife || 'freedom',
       motorProfile: profile.motorProfile || 'BUILDER',
