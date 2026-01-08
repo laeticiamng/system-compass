@@ -21,7 +21,7 @@ import { Label } from '@/components/ui/label';
 import { countries } from '@/lib/countries-data';
 import { PyramidType, PYRAMID_TYPE_INFO, LifeMotorProfile, LifePriority, LIFE_MOTOR_PROFILES } from '@/lib/types';
 import { findCompatibleKeys, UserContext, STRATEGIC_PRINCIPLES } from '@/lib/exit-keys-engine';
-import { getNationalityAdvantages, getPassportStrengthLabel, REGIONAL_BLOCS } from '@/lib/nationality-advantages';
+import { getNationalityAdvantages, getPassportStrengthLabel, REGIONAL_BLOCS, getRecommendedDestinations } from '@/lib/nationality-advantages';
 import ExitKeyCard from '@/components/ExitKeyCard';
 import { cn } from '@/lib/utils';
 import { useExitKeysProfile } from '@/hooks/useExitKeysProfile';
@@ -154,6 +154,11 @@ export default function ExitKeys() {
   const nationalityAdvantages = useMemo(() => {
     return getNationalityAdvantages(nationalityIds);
   }, [nationalityIds]);
+
+  // Destination recommendations based on nationalities + aspiration
+  const destinationRecommendations = useMemo(() => {
+    return getRecommendedDestinations(nationalityIds, desiredLife, currentCountryId);
+  }, [nationalityIds, desiredLife, currentCountryId]);
 
   // Filtered results
   const filteredResults = useMemo(() => {
@@ -756,6 +761,99 @@ export default function ExitKeys() {
                             {advantage.type === 'citizenship' && 'Citoyenneté'}
                           </span>
                         </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Destination Recommendations */}
+              {destinationRecommendations.length > 0 && (
+                <div className="glass-card rounded-xl p-6 border-2 border-emerald-500/20">
+                  <h3 className="font-semibold mb-4 flex items-center gap-2">
+                    <Target className="w-5 h-5 text-emerald-500" />
+                    Destinations Recommandées
+                    <span className="text-xs px-2 py-1 rounded-full bg-emerald-500/20 text-emerald-400">
+                      Basées sur vos nationalités + aspirations
+                    </span>
+                  </h3>
+                  
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Ces destinations combinent vos avantages de nationalité avec votre priorité : <strong>{priorityOptions.find(p => p.value === desiredLife)?.label}</strong>
+                  </p>
+
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {destinationRecommendations.map((dest, index) => (
+                      <div 
+                        key={dest.countryId}
+                        className={cn(
+                          "p-4 rounded-xl border transition-all hover:shadow-lg",
+                          index === 0 ? "bg-gradient-to-br from-emerald-500/10 to-primary/10 border-emerald-500/30" : "bg-muted/20 border-border"
+                        )}
+                      >
+                        <div className="flex items-center gap-3 mb-3">
+                          <span className="text-3xl">{dest.flag}</span>
+                          <div>
+                            <h4 className="font-bold">{dest.countryName}</h4>
+                            <div className="flex items-center gap-2">
+                              <div className={cn(
+                                "text-xs px-2 py-0.5 rounded-full",
+                                dest.accessType === 'visa_free' && "bg-emerald-500/20 text-emerald-400",
+                                dest.accessType === 'easy_visa' && "bg-green-500/20 text-green-400",
+                                dest.accessType === 'work_visa' && "bg-amber-500/20 text-amber-400",
+                                dest.accessType === 'requires_visa' && "bg-orange-500/20 text-orange-400",
+                              )}>
+                                {dest.accessType === 'visa_free' && '✓ Sans visa'}
+                                {dest.accessType === 'easy_visa' && '○ Visa facile'}
+                                {dest.accessType === 'work_visa' && '◐ Visa travail'}
+                                {dest.accessType === 'requires_visa' && '● Visa requis'}
+                              </div>
+                              {index === 0 && (
+                                <span className="text-xs px-2 py-0.5 rounded-full bg-primary/20 text-primary">
+                                  #1 Match
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                        
+                        {/* Score bar */}
+                        <div className="mb-3">
+                          <div className="flex justify-between text-xs mb-1">
+                            <span className="text-muted-foreground">Compatibilité</span>
+                            <span className="font-medium">{dest.score}%</span>
+                          </div>
+                          <div className="h-2 bg-muted rounded-full overflow-hidden">
+                            <div 
+                              className={cn(
+                                "h-full rounded-full transition-all",
+                                dest.score >= 70 ? "bg-emerald-500" : dest.score >= 50 ? "bg-amber-500" : "bg-orange-500"
+                              )}
+                              style={{ width: `${dest.score}%` }}
+                            />
+                          </div>
+                        </div>
+
+                        {/* Matched advantages */}
+                        {dest.matchedAdvantages.length > 0 && (
+                          <div className="flex flex-wrap gap-1 mb-2">
+                            {dest.matchedAdvantages.slice(0, 2).map((adv, i) => (
+                              <span key={i} className="text-xs px-2 py-0.5 bg-primary/10 rounded-full text-primary">
+                                {adv}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+
+                        {/* Reasons */}
+                        <ul className="text-xs text-muted-foreground space-y-1">
+                          {dest.reasons.slice(0, 3).map((reason, i) => (
+                            <li key={i} className="flex items-start gap-1">
+                              <CheckCircle className="w-3 h-3 text-emerald-500 mt-0.5 shrink-0" />
+                              <span>{reason}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     ))}
                   </div>
