@@ -22,6 +22,7 @@ import LifeGame from "./pages/LifeGame";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
 import ExitKeys from "./pages/ExitKeys";
+import ExitKeysCatalog from "./pages/ExitKeysCatalog";
 import CompareExitKeys from "./pages/CompareExitKeys";
 import Dashboard from "./pages/Dashboard";
 import About from "./pages/About";
@@ -54,6 +55,7 @@ const App = () => (
                   <Route path="/pyramid-quiz" element={<PyramidQuiz />} />
                   <Route path="/life-game" element={<LifeGame />} />
                   <Route path="/exit-keys" element={<ExitKeys />} />
+                  <Route path="/exit-keys/catalog" element={<ExitKeysCatalog />} />
                   <Route path="/exit-keys/compare" element={<CompareExitKeys />} />
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/about" element={<About />} />
