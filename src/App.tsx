@@ -8,6 +8,7 @@ import { FeatureFlagProvider } from "@/shared/components/FeatureFlag";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { OnboardingDialog } from "@/components/OnboardingDialog";
+import { DisclaimerConsentDialog } from "@/components/DisclaimerConsentDialog";
 import Index from "./pages/Index";
 import Countries from "./pages/Countries";
 import CountryDetail from "./pages/CountryDetail";
@@ -38,6 +39,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <DisclaimerConsentDialog />
             <OnboardingDialog />
             <div className="min-h-screen flex flex-col">
               <Header />
