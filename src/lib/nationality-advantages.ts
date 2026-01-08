@@ -562,7 +562,7 @@ const ASPIRATION_DESTINATIONS: Record<string, {
 };
 
 // Country display names
-const COUNTRY_NAMES: Record<string, { name: string; flag: string }> = {
+export const COUNTRY_NAMES: Record<string, { name: string; flag: string }> = {
   france: { name: 'France', flag: '🇫🇷' },
   germany: { name: 'Allemagne', flag: '🇩🇪' },
   switzerland: { name: 'Suisse', flag: '🇨🇭' },
