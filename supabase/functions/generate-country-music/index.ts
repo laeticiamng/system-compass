@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -88,21 +89,48 @@ serve(async (req) => {
 
   try {
     const SUNO_API_KEY = Deno.env.get("SUNO_API_KEY");
+    const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
+    const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
     
     if (!SUNO_API_KEY) {
       console.error("SUNO_API_KEY not configured");
       return new Response(
         JSON.stringify({ error: "Suno API key not configured" }),
-        { 
-          status: 500, 
-          headers: { ...corsHeaders, "Content-Type": "application/json" } 
-        }
+        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
     const { countryId, pyramidType, mood = 'narrative' }: MusicRequest = await req.json();
 
     console.log(`Generating music for ${countryId} (${pyramidType}), mood: ${mood}`);
+
+    // Check cache first
+    if (SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY) {
+      const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
+      
+      const { data: cached } = await supabase
+        .from('music_cache')
+        .select('audio_url, stream_url, task_id')
+        .eq('country_id', countryId)
+        .eq('pyramid_type', pyramidType)
+        .gt('expires_at', new Date().toISOString())
+        .maybeSingle();
+      
+      if (cached?.audio_url) {
+        console.log(`Cache hit for ${countryId}/${pyramidType}`);
+        return new Response(
+          JSON.stringify({ 
+            success: true,
+            audioUrl: cached.audio_url,
+            streamUrl: cached.stream_url,
+            countryId,
+            pyramidType,
+            cached: true
+          }),
+          { headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+    }
 
     // Build the music prompt
     const pyramidStyle = PYRAMID_MUSIC_STYLES[pyramidType] || PYRAMID_MUSIC_STYLES.HYBRID_TRANSITION;
@@ -111,14 +139,12 @@ serve(async (req) => {
       cultural: "Global fusion" 
     };
 
-    // Create descriptive style and title for custom mode
     const style = `${pyramidStyle.style}, ${countryStyle.cultural}`;
     const title = `${countryId.charAt(0).toUpperCase() + countryId.slice(1)} - System Sound`;
 
     console.log(`Style: ${style}`);
-    console.log(`Title: ${title}`);
 
-    // Call Suno API with custom mode (instrumental)
+    // Call Suno API
     const generateResponse = await fetch(
       "https://api.sunoapi.org/api/v1/generate",
       {
@@ -132,7 +158,7 @@ serve(async (req) => {
           instrumental: true,
           model: "V4_5ALL",
           callBackUrl: PLACEHOLDER_CALLBACK,
-          style: style.substring(0, 200), // V4 limit
+          style: style.substring(0, 200),
           title: title.substring(0, 80),
         }),
       }
@@ -143,50 +169,33 @@ serve(async (req) => {
       console.error("Suno API generate error:", errorText);
       return new Response(
         JSON.stringify({ error: "Failed to generate music", details: errorText }),
-        { 
-          status: generateResponse.status, 
-          headers: { ...corsHeaders, "Content-Type": "application/json" } 
-        }
+        { status: generateResponse.status, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
     const generateData = await generateResponse.json();
     console.log("Suno generate response:", JSON.stringify(generateData));
 
-    // Check for errors in response
     if (generateData.code !== 200) {
       console.error("Suno API error:", generateData.msg);
       return new Response(
-        JSON.stringify({ 
-          error: "Suno API error", 
-          details: generateData.msg 
-        }),
-        { 
-          status: 400, 
-          headers: { ...corsHeaders, "Content-Type": "application/json" } 
-        }
+        JSON.stringify({ error: "Suno API error", details: generateData.msg }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
-    // Check if we got task ID
-    if (!generateData.data || !generateData.data.taskId) {
+    if (!generateData.data?.taskId) {
       console.error("No task ID in response:", generateData);
       return new Response(
-        JSON.stringify({ 
-          error: "No task ID returned", 
-          response: generateData 
-        }),
-        { 
-          status: 500, 
-          headers: { ...corsHeaders, "Content-Type": "application/json" } 
-        }
+        JSON.stringify({ error: "No task ID returned", response: generateData }),
+        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
     const taskId = generateData.data.taskId;
     console.log(`Task ID: ${taskId}, starting polling...`);
 
-    // Poll for completion using record-info endpoint (max 90 seconds)
+    // Poll for completion (max 90 seconds)
     let audioUrl: string | null = null;
     let streamUrl: string | null = null;
     
@@ -199,15 +208,12 @@ serve(async (req) => {
         `https://api.sunoapi.org/api/v1/generate/record-info?taskId=${taskId}`,
         {
           method: "GET",
-          headers: {
-            "Authorization": `Bearer ${SUNO_API_KEY}`,
-          },
+          headers: { "Authorization": `Bearer ${SUNO_API_KEY}` },
         }
       );
 
       if (!statusResponse.ok) {
-        const errText = await statusResponse.text();
-        console.error(`Status check failed (${statusResponse.status}):`, errText);
+        console.error(`Status check failed (${statusResponse.status})`);
         continue;
       }
 
@@ -226,35 +232,42 @@ serve(async (req) => {
       } else if (status === "CREATE_TASK_FAILED" || status === "GENERATE_AUDIO_FAILED" || status === "SENSITIVE_WORD_ERROR") {
         console.error("Generation failed:", statusData.data?.errorMessage);
         return new Response(
-          JSON.stringify({ 
-            error: "Music generation failed", 
-            details: statusData.data?.errorMessage || status 
-          }),
-          { 
-            status: 500, 
-            headers: { ...corsHeaders, "Content-Type": "application/json" } 
-          }
+          JSON.stringify({ error: "Music generation failed", details: statusData.data?.errorMessage || status }),
+          { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
         );
       }
     }
 
     if (!audioUrl && !streamUrl) {
-      console.log("Generation timed out, returning task ID for later retrieval");
+      console.log("Generation timed out");
       return new Response(
         JSON.stringify({ 
           error: "Music generation timed out", 
           taskId: taskId,
           message: "Music is still being generated. Try again in a few minutes."
         }),
-        { 
-          status: 202, 
-          headers: { ...corsHeaders, "Content-Type": "application/json" } 
-        }
+        { status: 202, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
-    // Return the audio URL for the client to stream
-    console.log("Returning successful response with audio URL");
+    // Save to cache
+    if (SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY && audioUrl) {
+      const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
+      
+      await supabase.from('music_cache').upsert({
+        country_id: countryId,
+        pyramid_type: pyramidType,
+        audio_url: audioUrl,
+        stream_url: streamUrl,
+        task_id: taskId,
+        expires_at: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
+      }, {
+        onConflict: 'country_id,pyramid_type'
+      });
+      
+      console.log(`Cached music for ${countryId}/${pyramidType}`);
+    }
+
     return new Response(
       JSON.stringify({ 
         success: true,
@@ -264,9 +277,7 @@ serve(async (req) => {
         pyramidType: pyramidType,
         taskId: taskId
       }),
-      { 
-        headers: { ...corsHeaders, "Content-Type": "application/json" } 
-      }
+      { headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
 
   } catch (error: unknown) {
@@ -274,10 +285,7 @@ serve(async (req) => {
     console.error("Error generating music:", errorMessage);
     return new Response(
       JSON.stringify({ error: "Internal server error", details: errorMessage }),
-      { 
-        status: 500, 
-        headers: { ...corsHeaders, "Content-Type": "application/json" } 
-      }
+      { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   }
 });

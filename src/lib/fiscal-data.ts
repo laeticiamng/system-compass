@@ -881,6 +881,464 @@ export const FISCAL_SYSTEMS_EXTENDED: Record<string, CountryFiscalSystem> = {
       'Coût de vie modéré',
     ],
   },
+
+  // NEW COUNTRIES: Turkey, Brazil, Poland, Greece, Thailand, Vietnam, Australia
+  
+  turkey: {
+    countryId: 'turkey',
+    currency: 'TRY',
+    exchangeToEUR: 0.028,
+    incomeTax: {
+      brackets: [
+        { min: 0, max: 110000, rate: 15 },
+        { min: 110000, max: 230000, rate: 20 },
+        { min: 230000, max: 870000, rate: 27 },
+        { min: 870000, max: 3000000, rate: 35 },
+        { min: 3000000, max: null, rate: 40 },
+      ],
+      personalAllowance: 0,
+    },
+    socialContributions: {
+      healthInsurance: 5,
+      pension: 9,
+      unemployment: 1,
+      other: 0,
+      total: 15,
+      cap: 1500000,
+    },
+    employerContributions: {
+      total: 22.5,
+    },
+    healthcareCosts: {
+      publicCoverage: 'partial',
+      privateInsuranceNeeded: true,
+      avgMonthlyPremium: 100,
+      outOfPocketEstimate: 400,
+      qualityNote: 'Système public correct, privé abordable recommandé pour confort',
+    },
+    mandatoryCosts: {
+      otherTaxes: [],
+    },
+    costOfLivingMultiplier: 0.35,
+    notes: [
+      'Impôts progressifs modérés',
+      'Inflation élevée - salaires ajustés fréquemment',
+      'Coût de vie très attractif en EUR',
+      'Istanbul/Ankara plus chers',
+      'Excellente nourriture et culture',
+    ],
+  },
+
+  brazil: {
+    countryId: 'brazil',
+    currency: 'BRL',
+    exchangeToEUR: 0.17,
+    incomeTax: {
+      brackets: [
+        { min: 0, max: 26963, rate: 0 },
+        { min: 26963, max: 33919, rate: 7.5 },
+        { min: 33919, max: 45012, rate: 15 },
+        { min: 45012, max: 55976, rate: 22.5 },
+        { min: 55976, max: null, rate: 27.5 },
+      ],
+      personalAllowance: 26963,
+    },
+    socialContributions: {
+      healthInsurance: 0,
+      pension: 11, // INSS
+      unemployment: 0,
+      other: 3,
+      total: 14,
+      cap: 84000,
+    },
+    employerContributions: {
+      total: 28.8,
+    },
+    healthcareCosts: {
+      publicCoverage: 'partial',
+      privateInsuranceNeeded: true,
+      avgMonthlyPremium: 150,
+      outOfPocketEstimate: 600,
+      qualityNote: 'SUS gratuit mais lent, privé recommandé pour qualité',
+    },
+    mandatoryCosts: {
+      otherTaxes: [],
+    },
+    costOfLivingMultiplier: 0.40,
+    notes: [
+      'Impôt sur le revenu modéré (max 27.5%)',
+      'SUS (santé publique) existe mais qualité variable',
+      'Coût de vie bas mais sécurité variable',
+      'São Paulo/Rio plus chers',
+      'Culture riche et climat tropical',
+    ],
+  },
+
+  poland: {
+    countryId: 'poland',
+    currency: 'PLN',
+    exchangeToEUR: 0.23,
+    incomeTax: {
+      brackets: [
+        { min: 0, max: 30000, rate: 0 }, // Kwota wolna
+        { min: 30000, max: 120000, rate: 12 },
+        { min: 120000, max: null, rate: 32 },
+      ],
+      personalAllowance: 30000,
+    },
+    socialContributions: {
+      healthInsurance: 9,
+      pension: 9.76,
+      unemployment: 2.45,
+      other: 0,
+      total: 21.21,
+    },
+    employerContributions: {
+      total: 20.5,
+    },
+    healthcareCosts: {
+      publicCoverage: 'full',
+      privateInsuranceNeeded: false,
+      avgMonthlyPremium: 30,
+      outOfPocketEstimate: 200,
+      qualityNote: 'NFZ public correct, privé abordable pour moins attendre',
+    },
+    mandatoryCosts: {
+      otherTaxes: [],
+    },
+    costOfLivingMultiplier: 0.50,
+    notes: [
+      'Impôts récemment simplifiés (Polski Ład)',
+      'Croissance économique forte',
+      'Coût de vie modéré en Europe',
+      'Varsovie/Cracovie hub tech',
+      'Saisons marquées, hivers froids',
+    ],
+  },
+
+  greece: {
+    countryId: 'greece',
+    currency: 'EUR',
+    exchangeToEUR: 1,
+    incomeTax: {
+      brackets: [
+        { min: 0, max: 10000, rate: 9 },
+        { min: 10000, max: 20000, rate: 22 },
+        { min: 20000, max: 30000, rate: 28 },
+        { min: 30000, max: 40000, rate: 36 },
+        { min: 40000, max: null, rate: 44 },
+      ],
+      personalAllowance: 0,
+    },
+    socialContributions: {
+      healthInsurance: 4.55,
+      pension: 6.67,
+      unemployment: 1.23,
+      other: 0,
+      total: 12.45,
+    },
+    employerContributions: {
+      total: 22.29,
+    },
+    healthcareCosts: {
+      publicCoverage: 'partial',
+      privateInsuranceNeeded: false,
+      avgMonthlyPremium: 50,
+      outOfPocketEstimate: 400,
+      qualityNote: 'ESY public fonctionne, privé pour plus de confort',
+    },
+    mandatoryCosts: {
+      otherTaxes: [],
+    },
+    costOfLivingMultiplier: 0.70,
+    notes: [
+      'Impôts élevés mais baisse pour nomades numériques (50%)',
+      'Programme Golden Visa disponible',
+      'Qualité de vie méditerranéenne',
+      'Athènes affordable, îles plus chères',
+      'Climat excellent',
+    ],
+  },
+
+  thailand: {
+    countryId: 'thailand',
+    currency: 'THB',
+    exchangeToEUR: 0.026,
+    incomeTax: {
+      brackets: [
+        { min: 0, max: 150000, rate: 0 },
+        { min: 150000, max: 300000, rate: 5 },
+        { min: 300000, max: 500000, rate: 10 },
+        { min: 500000, max: 750000, rate: 15 },
+        { min: 750000, max: 1000000, rate: 20 },
+        { min: 1000000, max: 2000000, rate: 25 },
+        { min: 2000000, max: 5000000, rate: 30 },
+        { min: 5000000, max: null, rate: 35 },
+      ],
+      personalAllowance: 150000,
+    },
+    socialContributions: {
+      healthInsurance: 1.5,
+      pension: 3,
+      unemployment: 0.5,
+      other: 0,
+      total: 5,
+      cap: 180000,
+    },
+    employerContributions: {
+      total: 5,
+    },
+    healthcareCosts: {
+      publicCoverage: 'partial',
+      privateInsuranceNeeded: true,
+      avgMonthlyPremium: 80,
+      outOfPocketEstimate: 300,
+      qualityNote: 'Hôpitaux privés excellents à Bangkok, tourisme médical',
+    },
+    mandatoryCosts: {
+      otherTaxes: [],
+    },
+    costOfLivingMultiplier: 0.30,
+    notes: [
+      'Impôts bas si déclaré correctement',
+      'Visa nomade digital disponible',
+      'Coût de vie très bas',
+      'Bangkok hub majeur Asie',
+      'Attention aux règles de visa pour travail',
+    ],
+  },
+
+  vietnam: {
+    countryId: 'vietnam',
+    currency: 'VND',
+    exchangeToEUR: 0.000038,
+    incomeTax: {
+      brackets: [
+        { min: 0, max: 60000000, rate: 5 },
+        { min: 60000000, max: 120000000, rate: 10 },
+        { min: 120000000, max: 216000000, rate: 15 },
+        { min: 216000000, max: 384000000, rate: 20 },
+        { min: 384000000, max: 624000000, rate: 25 },
+        { min: 624000000, max: 960000000, rate: 30 },
+        { min: 960000000, max: null, rate: 35 },
+      ],
+      personalAllowance: 132000000,
+    },
+    socialContributions: {
+      healthInsurance: 1.5,
+      pension: 8,
+      unemployment: 1,
+      other: 0,
+      total: 10.5,
+    },
+    employerContributions: {
+      total: 21.5,
+    },
+    healthcareCosts: {
+      publicCoverage: 'partial',
+      privateInsuranceNeeded: true,
+      avgMonthlyPremium: 60,
+      outOfPocketEstimate: 250,
+      qualityNote: 'Hôpitaux internationaux à HCMC/Hanoi, éviter hôpitaux publics',
+    },
+    mandatoryCosts: {
+      otherTaxes: [],
+    },
+    costOfLivingMultiplier: 0.25,
+    notes: [
+      'Impôts progressifs mais bas en pratique',
+      'Croissance économique forte',
+      'Coût de vie très bas',
+      'Ho Chi Minh / Hanoi hubs tech',
+      'Visa de travail complexe',
+    ],
+  },
+
+  australia: {
+    countryId: 'australia',
+    currency: 'AUD',
+    exchangeToEUR: 0.60,
+    incomeTax: {
+      brackets: [
+        { min: 0, max: 18200, rate: 0 },
+        { min: 18200, max: 45000, rate: 19 },
+        { min: 45000, max: 120000, rate: 32.5 },
+        { min: 120000, max: 180000, rate: 37 },
+        { min: 180000, max: null, rate: 45 },
+      ],
+      personalAllowance: 18200,
+    },
+    socialContributions: {
+      healthInsurance: 2, // Medicare levy
+      pension: 0, // Super payé par employeur
+      unemployment: 0,
+      other: 0,
+      total: 2,
+    },
+    employerContributions: {
+      total: 11.5, // Superannuation
+    },
+    healthcareCosts: {
+      publicCoverage: 'full',
+      privateInsuranceNeeded: false,
+      avgMonthlyPremium: 120,
+      outOfPocketEstimate: 400,
+      qualityNote: 'Medicare excellent, privé recommandé pour éviter surcharge',
+    },
+    mandatoryCosts: {
+      otherTaxes: [],
+    },
+    costOfLivingMultiplier: 1.3,
+    notes: [
+      'Impôts modérés pour revenus moyens',
+      'Super (retraite) payé par employeur à 11.5%',
+      'Medicare excellent système public',
+      'Sydney/Melbourne très chers',
+      'Qualité de vie exceptionnelle',
+    ],
+  },
+
+  mexico: {
+    countryId: 'mexico',
+    currency: 'MXN',
+    exchangeToEUR: 0.052,
+    incomeTax: {
+      brackets: [
+        { min: 0, max: 8952, rate: 1.92 },
+        { min: 8952, max: 75984, rate: 6.4 },
+        { min: 75984, max: 133536, rate: 10.88 },
+        { min: 133536, max: 155232, rate: 16 },
+        { min: 155232, max: 185856, rate: 17.92 },
+        { min: 185856, max: 374856, rate: 21.36 },
+        { min: 374856, max: 590724, rate: 23.52 },
+        { min: 590724, max: 1127928, rate: 30 },
+        { min: 1127928, max: 1503864, rate: 32 },
+        { min: 1503864, max: 4511592, rate: 34 },
+        { min: 4511592, max: null, rate: 35 },
+      ],
+      personalAllowance: 0,
+    },
+    socialContributions: {
+      healthInsurance: 0.375,
+      pension: 1.125,
+      unemployment: 0,
+      other: 0.5,
+      total: 2,
+    },
+    employerContributions: {
+      total: 30,
+    },
+    healthcareCosts: {
+      publicCoverage: 'partial',
+      privateInsuranceNeeded: true,
+      avgMonthlyPremium: 100,
+      outOfPocketEstimate: 400,
+      qualityNote: 'IMSS public basique, privé excellent et abordable',
+    },
+    mandatoryCosts: {
+      otherTaxes: [],
+    },
+    costOfLivingMultiplier: 0.40,
+    notes: [
+      'Impôts progressifs modérés',
+      'Proche des USA, fuseau horaire compatible',
+      'Coût de vie bas avec bonne qualité',
+      'Mexico City / Guadalajara hubs tech',
+      'Visa nomade digital disponible',
+    ],
+  },
+
+  argentina: {
+    countryId: 'argentina',
+    currency: 'ARS',
+    exchangeToEUR: 0.001,
+    incomeTax: {
+      brackets: [
+        { min: 0, max: 419253, rate: 5 },
+        { min: 419253, max: 838506, rate: 9 },
+        { min: 838506, max: 1257759, rate: 12 },
+        { min: 1257759, max: 1677012, rate: 15 },
+        { min: 1677012, max: 2515518, rate: 19 },
+        { min: 2515518, max: 3354024, rate: 23 },
+        { min: 3354024, max: 5031036, rate: 27 },
+        { min: 5031036, max: 6708048, rate: 31 },
+        { min: 6708048, max: null, rate: 35 },
+      ],
+      personalAllowance: 3091035,
+    },
+    socialContributions: {
+      healthInsurance: 3,
+      pension: 11,
+      unemployment: 0,
+      other: 3,
+      total: 17,
+    },
+    employerContributions: {
+      total: 26.4,
+    },
+    healthcareCosts: {
+      publicCoverage: 'partial',
+      privateInsuranceNeeded: true,
+      avgMonthlyPremium: 80,
+      outOfPocketEstimate: 300,
+      qualityNote: 'Obra social liée au travail, privé abordable et bon',
+    },
+    mandatoryCosts: {
+      otherTaxes: [],
+    },
+    costOfLivingMultiplier: 0.30,
+    notes: [
+      'Inflation très élevée - paiement en USD préférable',
+      'Coût de vie très bas en devises fortes',
+      'Buenos Aires ville culturelle majeure',
+      'Instabilité économique chronique',
+      'Qualité de vie excellente si revenus étrangers',
+    ],
+  },
+
+  colombia: {
+    countryId: 'colombia',
+    currency: 'COP',
+    exchangeToEUR: 0.00023,
+    incomeTax: {
+      brackets: [
+        { min: 0, max: 46229, rate: 0 },
+        { min: 46229, max: 72121, rate: 19 },
+        { min: 72121, max: 171886, rate: 28 },
+        { min: 171886, max: 687544, rate: 33 },
+        { min: 687544, max: null, rate: 35 },
+      ],
+      personalAllowance: 46229,
+    },
+    socialContributions: {
+      healthInsurance: 4,
+      pension: 4,
+      unemployment: 0,
+      other: 0,
+      total: 8,
+    },
+    employerContributions: {
+      total: 20.5,
+    },
+    healthcareCosts: {
+      publicCoverage: 'partial',
+      privateInsuranceNeeded: true,
+      avgMonthlyPremium: 70,
+      outOfPocketEstimate: 300,
+      qualityNote: 'EPS public correct, prepagada (privé) excellent',
+    },
+    mandatoryCosts: {
+      otherTaxes: [],
+    },
+    costOfLivingMultiplier: 0.35,
+    notes: [
+      'Impôts modérés, visa nomade digital disponible',
+      'Medellín hub nomades digitaux',
+      'Coût de vie très attractif',
+      'Climat parfait (Medellín "eternal spring")',
+      'Sécurité améliorée mais vigilance requise',
+    ],
+  },
 };
 
 /**
