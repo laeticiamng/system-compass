@@ -2633,5 +2633,43 @@
       "title": "Coopératif",
       "description": "Travaillez ensemble pour maximiser les scores collectifs"
     }
+  },
+  "playerProfile": {
+    "title": "Créer ton profil",
+    "subtitle": "Définis ton histoire pour personnaliser ton parcours",
+    "playerNumber": "Joueur {{number}}",
+    "name": "Ton nom",
+    "namePlaceholder": "Comment t'appelles-tu ?",
+    "birthCountry": "Pays de naissance",
+    "currentCountry": "Pays actuel",
+    "selectCountry": "Sélectionne un pays",
+    "desiredLife": "Vie souhaitée",
+    "nextPlayer": "Joueur suivant",
+    "startGame": "Lancer la partie",
+    "goals": {
+      "stability": "Stabilité",
+      "growth": "Croissance",
+      "freedom": "Liberté",
+      "wealth": "Richesse",
+      "meaning": "Sens"
+    }
+  },
+  "savedGames": {
+    "title": "Mes parties",
+    "myGames": "Mes parties",
+    "noGames": "Aucune partie sauvegardée",
+    "finished": "Terminée",
+    "save": "Sauvegarder",
+    "saveGame": "Sauvegarder la partie",
+    "gameName": "Nom de la partie",
+    "nameRequired": "Le nom est requis",
+    "saved": "Partie sauvegardée !",
+    "saveFailed": "Échec de la sauvegarde"
+  },
+  "pyramidQuiz.cooperative": {
+    "poolScore": "Score collectif",
+    "victory": "Victoire collective !",
+    "defeat": "Objectif non atteint",
+    "score": "Score : {{score}} / {{target}}"
   }
 }
