@@ -1,10 +1,11 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DollarSign, TrendingUp, Globe, Briefcase, GraduationCap, Building, ArrowRight } from 'lucide-react';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { countries } from '@/lib/countries-data';
 import { PROFESSIONS, PROFESSION_CATEGORY_LABELS, getEstimatedSalary, EDUCATION_LEVELS, type ProfessionCategory, type EducationLevel } from '@/lib/profession-data';
 import { cn } from '@/lib/utils';
+import { useDefaultCountry } from '@/hooks/useDefaultCountry';
 
 interface SalaryCalculatorProps {
   initialCountryId?: string;
@@ -28,9 +29,19 @@ const getFlagEmoji = (iso2: string) => {
 
 export function SalaryCalculator({ initialCountryId, initialProfessionId }: SalaryCalculatorProps) {
   const { t } = useTranslation();
-  const [countryId, setCountryId] = useState(initialCountryId || '');
+  const { defaultCountryId, setDefaultCountry } = useDefaultCountry();
+  
+  // Utilise le pays initial si fourni, sinon le pays par défaut (Nigeria)
+  const [countryId, setCountryId] = useState(initialCountryId || defaultCountryId);
   const [professionId, setProfessionId] = useState(initialProfessionId || '');
   const [compareCountryId, setCompareCountryId] = useState<string>('');
+
+  // Mémoriser le pays sélectionné comme défaut
+  useEffect(() => {
+    if (countryId && countryId !== defaultCountryId) {
+      setDefaultCountry(countryId);
+    }
+  }, [countryId, defaultCountryId, setDefaultCountry]);
 
   const selectedCountry = countries.find(c => c.id === countryId);
   const selectedProfession = PROFESSIONS.find(p => p.id === professionId);

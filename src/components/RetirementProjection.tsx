@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -27,6 +27,7 @@ import {
 import { FISCAL_SYSTEMS_EXTENDED, calculateNetSalary } from '@/lib/fiscal-data';
 import { countries } from '@/lib/countries-data';
 import { cn } from '@/lib/utils';
+import { useDefaultCountry } from '@/hooks/useDefaultCountry';
 
 interface RetirementProjectionProps {
   initialCountryId?: string;
@@ -112,15 +113,31 @@ const getFlagEmoji = (iso2: string): string => {
 
 export function RetirementProjection({ initialCountryId, className }: RetirementProjectionProps) {
   const { t } = useTranslation();
+  const { defaultCountryId, setDefaultCountry } = useDefaultCountry();
   
   const fiscalCountryIds = Object.keys(FISCAL_SYSTEMS_EXTENDED);
   const fiscalCountries = countries.filter(c => fiscalCountryIds.includes(c.id));
   
-  const [selectedCountry, setSelectedCountry] = useState(initialCountryId || 'france');
+  // Déterminer le pays initial: props > défaut > nigeria (si disponible) > france
+  const getInitialCountry = () => {
+    if (initialCountryId && fiscalCountryIds.includes(initialCountryId)) return initialCountryId;
+    if (fiscalCountryIds.includes(defaultCountryId)) return defaultCountryId;
+    if (fiscalCountryIds.includes('nigeria')) return 'nigeria';
+    return 'france';
+  };
+  
+  const [selectedCountry, setSelectedCountry] = useState(getInitialCountry());
   const [currentAge, setCurrentAge] = useState([35]);
   const [grossAnnualSalary, setGrossAnnualSalary] = useState([50000]);
   const [salaryGrowthRate, setSalaryGrowthRate] = useState([2]); // % per year
   const [privateContributionRate, setPrivateContributionRate] = useState([5]); // % additional savings
+  
+  // Mémoriser le pays sélectionné comme défaut
+  useEffect(() => {
+    if (selectedCountry && selectedCountry !== defaultCountryId) {
+      setDefaultCountry(selectedCountry);
+    }
+  }, [selectedCountry, defaultCountryId, setDefaultCountry]);
   
   const fiscal = FISCAL_SYSTEMS_EXTENDED[selectedCountry];
   const retirementAge = RETIREMENT_AGES[selectedCountry] || 65;

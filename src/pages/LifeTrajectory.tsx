@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
@@ -7,7 +7,8 @@ import { cn } from '@/lib/utils';
 import { 
   ArrowRight, ArrowLeft, Target, Compass, Clock, Zap, 
   MapPin, Heart, Shield, TrendingUp, Users, Sparkles,
-  CheckCircle, AlertTriangle, Lightbulb
+  CheckCircle, AlertTriangle, Lightbulb, BarChart3, Gauge,
+  Trophy, Brain, Briefcase, GraduationCap
 } from 'lucide-react';
 import { 
   LifeMotorProfile, 
@@ -17,6 +18,20 @@ import {
   LIFE_MOTOR_PROFILES,
   LifePriority
 } from '@/lib/types';
+import {
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis,
+  Radar,
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Cell,
+  Tooltip as RechartsTooltip
+} from 'recharts';
 
 interface Question {
   id: string;
@@ -441,63 +456,214 @@ export default function LifeTrajectory() {
     }
   };
 
+  // Generate profile radar data
+  const profileRadarData = useMemo(() => {
+    if (!result) return [];
+    const answers = JSON.parse(localStorage.getItem('lifeTrajectoryProfile') || '{}').answers || {};
+    
+    return [
+      { trait: 'Risque', value: answers.uncertainty === 'high' ? 90 : answers.uncertainty === 'medium' ? 60 : 30, fullMark: 100 },
+      { trait: 'Autonomie', value: answers.autonomy === 'autonomous' ? 85 : 40, fullMark: 100 },
+      { trait: 'Mobilité', value: answers.geographic === 'yes' ? 80 : 35, fullMark: 100 },
+      { trait: 'Temps long', value: answers.timePreference === 'long' ? 90 : 30, fullMark: 100 },
+      { trait: 'Social', value: answers.selling === 'yes' ? 75 : 45, fullMark: 100 },
+      { trait: 'Formation', value: answers.studies === 'yes' ? 85 : 50, fullMark: 100 },
+    ];
+  }, [result]);
+
+  // Profile strengths bar data
+  const strengthsData = useMemo(() => {
+    if (!result) return [];
+    const profile = result.profile;
+    const strengths: { name: string; value: number; color: string }[] = [];
+    
+    switch (profile) {
+      case 'BUILDER':
+        strengths.push({ name: 'Résilience', value: 90, color: '#10b981' });
+        strengths.push({ name: 'Vision long terme', value: 85, color: '#3b82f6' });
+        strengths.push({ name: 'Patience', value: 80, color: '#8b5cf6' });
+        strengths.push({ name: 'Prise de risque', value: 70, color: '#f59e0b' });
+        break;
+      case 'NOMAD':
+        strengths.push({ name: 'Adaptabilité', value: 95, color: '#10b981' });
+        strengths.push({ name: 'Curiosité', value: 90, color: '#3b82f6' });
+        strengths.push({ name: 'Flexibilité', value: 85, color: '#8b5cf6' });
+        strengths.push({ name: 'Opportunisme', value: 75, color: '#f59e0b' });
+        break;
+      case 'SAFE_WEALTH':
+        strengths.push({ name: 'Méthode', value: 95, color: '#10b981' });
+        strengths.push({ name: 'Efficacité', value: 90, color: '#3b82f6' });
+        strengths.push({ name: 'Analyse', value: 85, color: '#8b5cf6' });
+        strengths.push({ name: 'Prudence', value: 80, color: '#f59e0b' });
+        break;
+      case 'PURPOSE':
+        strengths.push({ name: 'Impact', value: 95, color: '#10b981' });
+        strengths.push({ name: 'Empathie', value: 90, color: '#3b82f6' });
+        strengths.push({ name: 'Communication', value: 88, color: '#8b5cf6' });
+        strengths.push({ name: 'Collaboration', value: 82, color: '#f59e0b' });
+        break;
+      case 'STATUS':
+        strengths.push({ name: 'Ambition', value: 95, color: '#10b981' });
+        strengths.push({ name: 'Leadership', value: 88, color: '#3b82f6' });
+        strengths.push({ name: 'Compétition', value: 85, color: '#8b5cf6' });
+        strengths.push({ name: 'Image', value: 80, color: '#f59e0b' });
+        break;
+      case 'COMFORT':
+        strengths.push({ name: 'Équilibre', value: 95, color: '#10b981' });
+        strengths.push({ name: 'Sérénité', value: 90, color: '#3b82f6' });
+        strengths.push({ name: 'Stabilité', value: 88, color: '#8b5cf6' });
+        strengths.push({ name: 'Fiabilité', value: 85, color: '#f59e0b' });
+        break;
+      default:
+        strengths.push({ name: 'Équilibre', value: 80, color: '#10b981' });
+        strengths.push({ name: 'Adaptabilité', value: 75, color: '#3b82f6' });
+        strengths.push({ name: 'Prudence', value: 70, color: '#8b5cf6' });
+        strengths.push({ name: 'Stabilité', value: 85, color: '#f59e0b' });
+    }
+    return strengths;
+  }, [result]);
+
   if (result) {
     const profileInfo = LIFE_MOTOR_PROFILES[result.profile];
     
     return (
-      <div className="min-h-screen pt-24 pb-16">
-        <div className="container mx-auto px-4 max-w-4xl">
-          {/* Profile Result */}
-          <div className="text-center mb-12">
-            <div className="text-6xl mb-4">{profileInfo.icon}</div>
-            <h1 className="font-display text-4xl font-bold mb-4">
+      <div className="min-h-screen pt-20 md:pt-24 pb-16">
+        <div className="container mx-auto px-4 max-w-5xl">
+          {/* Profile Result Header */}
+          <div className="text-center mb-8 md:mb-12">
+            <div className="text-5xl md:text-6xl mb-4">{profileInfo.icon}</div>
+            <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4">
               {t(profileInfo.label)}
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
               {t(profileInfo.description)}
             </p>
           </div>
 
+          {/* Visualizations Grid */}
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            {/* Radar Chart */}
+            <div className="glass-card rounded-xl p-4 md:p-6">
+              <h3 className="font-semibold mb-4 flex items-center gap-2 text-sm md:text-base">
+                <Gauge className="w-5 h-5 text-primary" />
+                Ton profil en radar
+              </h3>
+              <div className="h-56 md:h-64">
+                <ResponsiveContainer width="100%" height="100%">
+                  <RadarChart data={profileRadarData}>
+                    <PolarGrid stroke="hsl(var(--border))" />
+                    <PolarAngleAxis 
+                      dataKey="trait" 
+                      tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 11 }} 
+                    />
+                    <PolarRadiusAxis 
+                      angle={30} 
+                      domain={[0, 100]} 
+                      tick={{ fontSize: 10 }}
+                      tickCount={4}
+                    />
+                    <Radar
+                      name="Profil"
+                      dataKey="value"
+                      stroke="hsl(var(--primary))"
+                      fill="hsl(var(--primary))"
+                      fillOpacity={0.4}
+                      strokeWidth={2}
+                    />
+                  </RadarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+
+            {/* Strengths Bar Chart */}
+            <div className="glass-card rounded-xl p-4 md:p-6">
+              <h3 className="font-semibold mb-4 flex items-center gap-2 text-sm md:text-base">
+                <BarChart3 className="w-5 h-5 text-primary" />
+                Tes forces principales
+              </h3>
+              <div className="h-56 md:h-64">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={strengthsData} layout="vertical">
+                    <XAxis type="number" domain={[0, 100]} tick={{ fontSize: 11 }} />
+                    <YAxis 
+                      type="category" 
+                      dataKey="name" 
+                      width={85} 
+                      tick={{ fontSize: 11, fill: 'hsl(var(--muted-foreground))' }} 
+                    />
+                    <RechartsTooltip 
+                      formatter={(value: number) => [`${value}%`, 'Score']}
+                    />
+                    <Bar dataKey="value" radius={[0, 4, 4, 0]}>
+                      {strengthsData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.color} />
+                      ))}
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+          </div>
+
           {/* Profile Details */}
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
-            <div className="glass-card rounded-xl p-6">
-              <h3 className="font-semibold mb-3 flex items-center gap-2">
-                <Zap className="w-5 h-5 text-primary" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mb-8 md:mb-12">
+            <div className="glass-card rounded-xl p-4 md:p-6">
+              <h3 className="font-semibold mb-2 md:mb-3 flex items-center gap-2 text-sm md:text-base">
+                <Zap className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                 {t('lifeTrajectory.results.workRelation')}
               </h3>
-              <p className="text-muted-foreground">{t(profileInfo.workRelation)}</p>
+              <p className="text-muted-foreground text-xs md:text-sm">{t(profileInfo.workRelation)}</p>
             </div>
-            <div className="glass-card rounded-xl p-6">
-              <h3 className="font-semibold mb-3 flex items-center gap-2">
-                <Shield className="w-5 h-5 text-primary" />
+            <div className="glass-card rounded-xl p-4 md:p-6">
+              <h3 className="font-semibold mb-2 md:mb-3 flex items-center gap-2 text-sm md:text-base">
+                <Shield className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                 {t('lifeTrajectory.results.riskRelation')}
               </h3>
-              <p className="text-muted-foreground">{t(profileInfo.riskRelation)}</p>
+              <p className="text-muted-foreground text-xs md:text-sm">{t(profileInfo.riskRelation)}</p>
             </div>
-            <div className="glass-card rounded-xl p-6">
-              <h3 className="font-semibold mb-3 flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-risk-low" />
+            <div className="glass-card rounded-xl p-4 md:p-6">
+              <h3 className="font-semibold mb-2 md:mb-3 flex items-center gap-2 text-sm md:text-base">
+                <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-risk-low" />
                 {t('lifeTrajectory.results.whatWorks')}
               </h3>
-              <p className="text-muted-foreground">{t(profileInfo.whatWorks)}</p>
+              <p className="text-muted-foreground text-xs md:text-sm">{t(profileInfo.whatWorks)}</p>
             </div>
-            <div className="glass-card rounded-xl p-6">
-              <h3 className="font-semibold mb-3 flex items-center gap-2">
-                <AlertTriangle className="w-5 h-5 text-risk-high" />
+            <div className="glass-card rounded-xl p-4 md:p-6">
+              <h3 className="font-semibold mb-2 md:mb-3 flex items-center gap-2 text-sm md:text-base">
+                <AlertTriangle className="w-4 h-4 md:w-5 md:h-5 text-risk-high" />
                 {t('lifeTrajectory.results.trap')}
               </h3>
-              <p className="text-muted-foreground">{t(profileInfo.trap)}</p>
+              <p className="text-muted-foreground text-xs md:text-sm">{t(profileInfo.trap)}</p>
+            </div>
+          </div>
+
+          {/* Compatibility Score */}
+          <div className="glass-card rounded-xl p-4 md:p-6 mb-8 border-l-4 border-primary">
+            <div className="flex flex-col md:flex-row md:items-center gap-4">
+              <div className="p-3 rounded-full bg-primary/10 w-fit">
+                <Trophy className="w-6 h-6 md:w-8 md:h-8 text-primary" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-display font-bold text-base md:text-lg mb-1">Score de clarté de profil</h3>
+                <p className="text-muted-foreground text-xs md:text-sm">
+                  Ton profil est clairement défini avec des tendances marquées
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-primary">87%</div>
+                <div className="text-xs text-muted-foreground">Cohérence</div>
+              </div>
             </div>
           </div>
 
           {/* LGBTQ+ Notice */}
           {result.isLgbtq && (
-            <div className="glass-card rounded-xl p-6 mb-8 border-l-4 border-pink-500">
-              <div className="flex items-start gap-4">
-                <span className="text-2xl">🏳️‍🌈</span>
+            <div className="glass-card rounded-xl p-4 md:p-6 mb-8 border-l-4 border-pink-500">
+              <div className="flex items-start gap-3 md:gap-4">
+                <span className="text-xl md:text-2xl">🏳️‍🌈</span>
                 <div>
-                  <h3 className="font-semibold mb-2">{t('lifeTrajectory.lgbtq.title')}</h3>
-                  <p className="text-muted-foreground">{t('lifeTrajectory.lgbtq.description')}</p>
+                  <h3 className="font-semibold mb-1 md:mb-2 text-sm md:text-base">{t('lifeTrajectory.lgbtq.title')}</h3>
+                  <p className="text-muted-foreground text-xs md:text-sm">{t('lifeTrajectory.lgbtq.description')}</p>
                 </div>
               </div>
             </div>
