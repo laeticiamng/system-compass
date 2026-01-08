@@ -24,6 +24,8 @@ const PYRAMID_TYPE_LABELS: Record<string, string> = {
   STABILITY_REDIS: 'pyramids.stabilityRedis.label',
   COMPETENCE_TRUST: 'pyramids.competenceTrust.label',
   GROWTH_RISK: 'pyramids.growthRisk.label',
+  HYBRID_TRANSITION: 'pyramids.hybridTransition.label',
+  RESOURCE_EXTRACTION: 'pyramids.resourceExtraction.label',
 };
 
 const PYRAMID_TYPE_COLORS: Record<string, string> = {
@@ -31,16 +33,37 @@ const PYRAMID_TYPE_COLORS: Record<string, string> = {
   STABILITY_REDIS: 'pyramid-stability',
   COMPETENCE_TRUST: 'pyramid-competence',
   GROWTH_RISK: 'pyramid-growth',
+  HYBRID_TRANSITION: 'pyramid-hybrid',
+  RESOURCE_EXTRACTION: 'pyramid-resource',
 };
+
+const ALL_PYRAMID_TYPES = [
+  'PROBLEM_RENT',
+  'STABILITY_REDIS', 
+  'COMPETENCE_TRUST',
+  'GROWTH_RISK',
+  'HYBRID_TRANSITION',
+  'RESOURCE_EXTRACTION',
+];
 
 export default function Compare() {
   const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
   const [country1Id, setCountry1Id] = useState<string>(searchParams.get('c1') || '');
   const [country2Id, setCountry2Id] = useState<string>(searchParams.get('c2') || '');
+  const [filter1, setFilter1] = useState<string>('all');
+  const [filter2, setFilter2] = useState<string>('all');
 
   const country1 = countries.find(c => c.id === country1Id);
   const country2 = countries.find(c => c.id === country2Id);
+
+  // Filter countries by pyramid type
+  const filteredCountries1 = filter1 === 'all' 
+    ? countries 
+    : countries.filter(c => c.pyramidType === filter1);
+  const filteredCountries2 = filter2 === 'all' 
+    ? countries 
+    : countries.filter(c => c.pyramidType === filter2);
 
   // Update URL when countries change
   useEffect(() => {
@@ -56,6 +79,9 @@ export default function Compare() {
     const temp = country1Id;
     setCountry1Id(country2Id);
     setCountry2Id(temp);
+    const tempFilter = filter1;
+    setFilter1(filter2);
+    setFilter2(tempFilter);
   };
 
   const shareComparison = async () => {
@@ -80,6 +106,57 @@ export default function Compare() {
           </p>
         </div>
 
+        {/* Pyramid Type Filters */}
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-4">
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-xs text-muted-foreground">{t('compare.filterByType')}</span>
+            <Select value={filter1} onValueChange={(val) => { setFilter1(val); setCountry1Id(''); }}>
+              <SelectTrigger className="w-full md:w-48">
+                <SelectValue placeholder={t('countries.allSystems')} />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">{t('countries.allSystems')}</SelectItem>
+                {ALL_PYRAMID_TYPES.map((type) => (
+                  <SelectItem key={type} value={type}>
+                    <span className="flex items-center gap-2">
+                      <span 
+                        className="w-2 h-2 rounded-full" 
+                        style={{ backgroundColor: `hsl(var(--${PYRAMID_TYPE_COLORS[type] || 'primary'}))` }}
+                      />
+                      {t(PYRAMID_TYPE_LABELS[type])}
+                    </span>
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div className="hidden md:block w-8" />
+
+          <div className="flex flex-col items-center gap-2">
+            <span className="text-xs text-muted-foreground">{t('compare.filterByType')}</span>
+            <Select value={filter2} onValueChange={(val) => { setFilter2(val); setCountry2Id(''); }}>
+              <SelectTrigger className="w-full md:w-48">
+                <SelectValue placeholder={t('countries.allSystems')} />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">{t('countries.allSystems')}</SelectItem>
+                {ALL_PYRAMID_TYPES.map((type) => (
+                  <SelectItem key={type} value={type}>
+                    <span className="flex items-center gap-2">
+                      <span 
+                        className="w-2 h-2 rounded-full" 
+                        style={{ backgroundColor: `hsl(var(--${PYRAMID_TYPE_COLORS[type] || 'primary'}))` }}
+                      />
+                      {t(PYRAMID_TYPE_LABELS[type])}
+                    </span>
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+
         {/* Country Selectors */}
         <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-8">
           <Select value={country1Id} onValueChange={setCountry1Id}>
@@ -87,9 +164,15 @@ export default function Compare() {
               <SelectValue placeholder={t('compare.selectFirst')} />
             </SelectTrigger>
             <SelectContent>
-              {countries.map((country) => (
+              {filteredCountries1.map((country) => (
                 <SelectItem key={country.id} value={country.id} disabled={country.id === country2Id}>
-                  {getFlagEmoji(country.iso2)} {country.name}
+                  <span className="flex items-center gap-2">
+                    <span 
+                      className="w-2 h-2 rounded-full" 
+                      style={{ backgroundColor: `hsl(var(--${PYRAMID_TYPE_COLORS[country.pyramidType] || 'primary'}))` }}
+                    />
+                    {getFlagEmoji(country.iso2)} {country.name}
+                  </span>
                 </SelectItem>
               ))}
             </SelectContent>
@@ -109,9 +192,15 @@ export default function Compare() {
               <SelectValue placeholder={t('compare.selectSecond')} />
             </SelectTrigger>
             <SelectContent>
-              {countries.map((country) => (
+              {filteredCountries2.map((country) => (
                 <SelectItem key={country.id} value={country.id} disabled={country.id === country1Id}>
-                  {getFlagEmoji(country.iso2)} {country.name}
+                  <span className="flex items-center gap-2">
+                    <span 
+                      className="w-2 h-2 rounded-full" 
+                      style={{ backgroundColor: `hsl(var(--${PYRAMID_TYPE_COLORS[country.pyramidType] || 'primary'}))` }}
+                    />
+                    {getFlagEmoji(country.iso2)} {country.name}
+                  </span>
                 </SelectItem>
               ))}
             </SelectContent>

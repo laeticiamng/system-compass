@@ -15,7 +15,8 @@
     "trajectory": "Trajektorie",
     "match": "Match",
     "compare": "Vergleichen",
-    "resources": "Ressourcen"
+    "resources": "Ressourcen",
+    "pyramids": "Pyramiden"
   },
   "hero": {
     "badge": "Navigiere durch das echte System",
@@ -409,7 +410,8 @@
     "linkCopied": "Link kopiert!",
     "visaInfo": "Visum & Einwanderung",
     "costOfLiving": "Lebenshaltungskosten",
-    "qualityOfLife": "Lebensqualität"
+    "qualityOfLife": "Lebensqualität",
+    "filterByType": "Nach Typ filtern"
   },
   "visa": {
     "workVisa": "Arbeitsvisum",

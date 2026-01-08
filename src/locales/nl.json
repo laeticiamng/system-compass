@@ -15,7 +15,8 @@
     "trajectory": "Traject",
     "match": "Match",
     "compare": "Vergelijk",
-    "resources": "Bronnen"
+    "resources": "Bronnen",
+    "pyramids": "Piramides"
   },
   "hero": {
     "badge": "Navigeer door het echte systeem",
@@ -409,7 +410,8 @@
     "linkCopied": "Link gekopieerd!",
     "visaInfo": "Visum & Immigratie",
     "costOfLiving": "Kosten van levensonderhoud",
-    "qualityOfLife": "Levenskwaliteit"
+    "qualityOfLife": "Levenskwaliteit",
+    "filterByType": "Filter op type"
   },
   "visa": {
     "workVisa": "Werkvisum",
