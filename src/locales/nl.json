@@ -962,6 +962,213 @@
         "plan5Years": ["Geografische vermogensdiversificatie", "Meerdere verblijfsopties", "Gevestigde passieve inkomsten", "Duidelijk exitplan"],
         "planB": "Overweeg Portugal (Golden Visa), Malta of Cyprus voor EU-verblijf. Singapore of Hongkong voor Azië. Behoud sterk paspoort."
       }
+    },
+    "china": {
+      "name": "China",
+      "region": "Oost-Azië",
+      "ruleOfGold": "Stem publiekelijk af met de Partij, bouw privé. Word nooit een politiek symbool.",
+      "pyramid": {
+        "top": "Communistische Partij en staatsafgestemd kapitaal",
+        "institutions": "Staatsapparaat dat controle en markt mengt",
+        "gatekeepers": "Partijverbindingen, guanxi-netwerken, regelgevende goedkeuringen",
+        "valueCreators": "Ondernemers die binnen politieke grenzen opereren",
+        "base": "Werknemers die snelle transformatie navigeren",
+        "realAsset": "Aanpassingssnelheid en politieke afstemming"
+      },
+      "whoWins": ["Wie politieke winden correct leest", "Staatsafgestemde ondernemers", "Tech-savvy aanpassers", "Wie sterke guanxi-netwerken heeft"],
+      "whoLoses": ["Politiek zichtbare critici", "Te snel te zichtbaar groeienden", "Van buitenland afhankelijke bedrijven", "Wie tegen staatsrichting wedt"],
+      "playbook": {
+        "do": ["Lokale regelgeving volledig beheersen", "Oprechte relaties met ambtenaren opbouwen", "Publiekelijk politiek neutraal blijven", "Discreet internationale opties ontwikkelen", "Investeren in wereldwijd overdraagbare vaardigheden"],
+        "dont": ["Het systeem publiekelijk bekritiseren", "Een zichtbaar symbool worden", "Alleen afhangen van China-gebaseerd inkomen", "Politieke signalen negeren", "Rijkdom pronken"],
+        "plan30Days": ["Huidige regelgevingslandschap bestuderen", "Guanxi-netwerk in kaart brengen", "Overdraagbare vaardigheden identificeren", "Internationaal bankieren opzetten"],
+        "plan12Months": ["Secundair inkomen in buitenland opbouwen", "VPN-onafhankelijke communicatie vestigen", "Internationaal professioneel profiel creëren", "Vermogensposities diversifiëren"],
+        "plan5Years": ["Tweede verblijf gevestigd", "Locatieonafhankelijke inkomstenstromen", "Internationaal netwerk opgebouwd", "Duidelijke exitstrategie"],
+        "planB": "Singapore, Japan of Taiwan voor vergelijkbare culturen. Portugal, Canada voor andere omgevingen."
+      }
+    },
+    "russia": {
+      "name": "Rusland",
+      "region": "Oost-Europa/Azië",
+      "ruleOfGold": "Daag de macht nooit publiekelijk uit. De staat geeft en de staat neemt.",
+      "pyramid": {
+        "top": "Politieke elite en staatsafgestemde oligarchen",
+        "institutions": "Staatsstructuren die machtsbehoud dienen",
+        "gatekeepers": "Verbonden bureaucraten en veiligheidsdiensten",
+        "valueCreators": "Ondernemers in de schaduw van de staat",
+        "base": "Burgers die onvoorspelbare regels navigeren",
+        "realAsset": "Loyaliteit aan macht en nuttige onzichtbaarheid"
+      },
+      "whoWins": ["Dicht bij macht zonder te bedreigen", "Veiligheidssector-insiders", "Staatsafhankelijke bedrijven", "Laag-profiel vermogensbouwers"],
+      "whoLoses": ["Onafhankelijke bedrijfsleiders", "Politieke stemmen", "Westers verbonden ondernemers", "Wie niet-gediversifieerde assets heeft"],
+      "playbook": {
+        "do": ["Publiekelijk volledig apolitiek blijven", "Internationaal werkende vaardigheden opbouwen", "Buitenlandse valutareserves aanhouden", "Exitopties stil ontwikkelen", "Met diaspora netwerken"],
+        "dont": ["Politiek commentaar geven", "Bedrijf afhankelijk van één sector bouwen", "Alle vermogen in Rusland houden", "Zichtbaar rijk worden", "Formele eigendomsrechten volledig vertrouwen"],
+        "plan30Days": ["Alle identiteitsdocumenten veiligstellen", "Indien mogelijk buitenlandse rekeningen vestigen", "Eén exporteerbare vaardigheid identificeren", "Vluchtroutes in kaart brengen"],
+        "plan12Months": ["Remote-capable inkomen ontwikkelen", "Andere taal leren", "Internationaal netwerk opbouwen", "Spaargeld geografisch diversifiëren"],
+        "plan5Years": ["Tweede staatsburgerschap of verblijf", "Meerdere inkomstenbronnen in buitenland", "Vermogen buiten Rusland", "Duidelijk verhuisplan klaar"],
+        "planB": "Georgië, Armenië, Servië voor makkelijke toegang. EU-landen op lange termijn."
+      }
+    },
+    "brazil": {
+      "name": "Brazilië",
+      "region": "Zuid-Amerika",
+      "ruleOfGold": "Navigeer het jeitinho - flexibiliteit, netwerken en geduld verslaan formele regels.",
+      "pyramid": {
+        "top": "Politieke klasse en grote zakenfamilies",
+        "institutions": "Complexe bureaucratie die formeel en informeel mengt",
+        "gatekeepers": "Verbindingen, despachantes en lokale kennis",
+        "valueCreators": "Ondernemers die systeemnavigatie beheersen",
+        "base": "Werknemers in formele en informele economieën",
+        "realAsset": "Relaties en adaptieve veerkracht"
+      },
+      "whoWins": ["Wie sterke netwerken heeft", "Flexibele aanpassers", "Wie bureaucratische navigatie beheerst", "Internationale verbinders"],
+      "whoLoses": ["Wie pure meritocratie verwacht", "Ongeduldige buitenlanders", "Wie geen lokale verbindingen heeft", "Starre regelvolgers"],
+      "playbook": {
+        "do": ["Oprechte lokale relaties opbouwen", "Portugees goed leren", "Dynamiek informele economie begrijpen", "Internationale inkomensopties ontwikkelen", "Fiscale en juridische complexiteit beheersen"],
+        "dont": ["Verwachten dat dingen werken zoals thuis", "Bureaucratische vereisten negeren", "Lokale competitie onderschatten", "Vermogen centraliseren", "Veiligheidsoverwegingen negeren"],
+        "plan30Days": ["CPF en basisdocumenten krijgen", "Portugees leren beginnen", "Lokale professionele netwerken in kaart brengen", "Visumvereisten begrijpen"],
+        "plan12Months": ["Lokale professionele reputatie opbouwen", "Meerdere inkomstenstromen vestigen", "Internationale backup-opties creëren", "Leren bureaucratie te navigeren"],
+        "plan5Years": ["Gediversifieerde Brazilië + internationale inkomsten", "Onroerend goed en vermogen geoptimaliseerd", "Sterk lokaal netwerk", "Internationale opties behouden"],
+        "planB": "Portugal voor taal/cultuur gelijkenis. Andere Latijns-Amerikaanse landen. VS of EU met juist visum."
+      }
+    },
+    "norway": {
+      "name": "Noorwegen",
+      "region": "Noord-Europa",
+      "ruleOfGold": "Het collectief komt eerst. Excellentie is goed maar nooit boven de groep.",
+      "pyramid": {
+        "top": "Democratische instituties en soeverein vermogen",
+        "institutions": "Sterke, transparante en goed gefinancierde staat",
+        "gatekeepers": "Onderwijs, taal en sociale normen",
+        "valueCreators": "Gekwalificeerde werknemers in gereguleerde omgeving",
+        "base": "Burgers met sterke sociale bescherming",
+        "realAsset": "Vertrouwen, gelijkheid en systemische stabiliteit"
+      },
+      "whoWins": ["Wie egalitaire waarden omarmt", "Geduldige langetermijnplanners", "Wie gevraagde vaardigheden heeft", "Integratoren die de taal leren"],
+      "whoLoses": ["Hoogambitieuze individualisten", "Wie snelle rijkdom zoekt", "Wie niet integreert", "Ondernemers die minimale regulering willen"],
+      "playbook": {
+        "do": ["Noors serieus leren", "Work-life balance cultuur omarmen", "Belasting- en uitkeringssysteem begrijpen", "Oprechte lokale vriendschappen opbouwen", "Egalitaire normen respecteren"],
+        "dont": ["Rijkdom of prestaties pronken", "Amerikaanse stijl ondernemerschap verwachten", "Sociale integratie negeren", "Winterduisternis onderschatten", "Noorse manier publiekelijk bekritiseren"],
+        "plan30Days": ["Noorse taallessen beginnen", "Verblijfsvereisten begrijpen", "Arbeidsmarkt in je veld onderzoeken", "Verbinden met expat-gemeenschappen"],
+        "plan12Months": ["Basis Noorse vloeiendheid bereiken", "Lokaal professioneel netwerk opbouwen", "Belastingoptimalisatie begrijpen", "Sociale verbindingen vestigen"],
+        "plan5Years": ["Volledige integratie bereikt", "Taalvaardigheid", "Stabiele carrière", "Permanent verblijf/staatsburgerschap overwegen"],
+        "planB": "Andere Scandinavische landen, Nederland, Duitsland voor vergelijkbare stabiliteit."
+      }
+    },
+    "qatar": {
+      "name": "Qatar",
+      "region": "Midden-Oosten",
+      "ruleOfGold": "Wees nuttig, blijf stil, plan je exit. Je bent een gast met houdbaarheidsdatum.",
+      "pyramid": {
+        "top": "Al Thani koninklijke familie en nabije kringen",
+        "institutions": "Staatsstructuren die visie en stabiliteit dienen",
+        "gatekeepers": "Kafala-sponsors en overheidsvergunningen",
+        "valueCreators": "Expert-expats die ontwikkeling dienen",
+        "base": "Buitenlandse werknemers met beperkte rechten",
+        "realAsset": "Nuttigheid voor staatsprojecten en discretie"
+      },
+      "whoWins": ["Hoogwaardige experts in prioriteitssectoren", "Discrete vermogensaccumulatoren", "Wie duidelijke exitstrategieën heeft", "Professionals in LNG en bouw"],
+      "whoLoses": ["Wie permanente belonging zoekt", "Laaggeschoolde werknemers", "Wie culturele normen negeert", "Langetermijnplanners zonder exitstrategie"],
+      "playbook": {
+        "do": ["Besparingen maximaliseren tijdens verblijf", "Lokale gebruiken volledig respecteren", "Draagbare vaardigheden en netwerken opbouwen", "Exit plannen vanaf dag één", "Netwerken met internationale professionals"],
+        "dont": ["Staatsburgerschap of permanent verblijf verwachten", "Overheid of religie bekritiseren", "Te comfortabel worden", "Alles lokaal uitgeven", "Van één werkgever afhangen"],
+        "plan30Days": ["Visum- en arbeidsrechten begrijpen", "Spaarsysteem opzetten", "Internationaal netwerk in kaart brengen", "Opties volgende bestemming onderzoeken"],
+        "plan12Months": ["Sterke spaarquote vestigen", "Reputatie in je veld opbouwen", "Internationale baanopties creëren", "Alternatieve verblijven verkennen"],
+        "plan5Years": ["Substantieel vermogen geaccumuleerd", "Volgende bestemming verzekerd", "Hoog overdraagbare vaardigheden", "Soepele exit uitgevoerd"],
+        "planB": "VAE voor vergelijkbare regio. Singapore voor Azië. Portugal, Malta voor EU-toegang."
+      }
+    },
+    "venezuela": {
+      "name": "Venezuela",
+      "region": "Zuid-Amerika",
+      "ruleOfGold": "Overleef, blijf onzichtbaar, bereid je exit voor. Het systeem beloont alleen de top.",
+      "pyramid": {
+        "top": "Politiek-militaire elite controleert middelen",
+        "institutions": "Uitgehold structuren die regime dienen",
+        "gatekeepers": "Partijloyalisten en verbonden operators",
+        "valueCreators": "Overlevenden in informele economie",
+        "base": "Bevolking navigeert instorting",
+        "realAsset": "Verbindingen en toegang tot vreemde valuta"
+      },
+      "whoWins": ["Regime-insiders", "Houders van vreemde valuta", "Wie internationale verbindingen heeft", "Operators informele economie"],
+      "whoLoses": ["Middenklasse", "Werknemers formele sector", "Wie geen verbindingen in buitenland heeft", "Zichtbare oppositie"],
+      "playbook": {
+        "do": ["Dringend vreemde valuta veiligstellen", "Remote-capable vaardigheden ontwikkelen", "Nu exitopties bouwen", "Documentatie klaar houden", "Verbinden met diaspora"],
+        "dont": ["Spaargeld in lokale valuta houden", "Politiek zichtbaar worden", "Wachten tot dingen verbeteren", "Op formele systemen vertrouwen", "Gezondheids-/veiligheidsrisico's negeren"],
+        "plan30Days": ["Alle identiteitsdocumenten veiligstellen", "Enig spaargeld in vreemde valuta vestigen", "Emigratiepaden identificeren", "Remote-work vaardigheden leren"],
+        "plan12Months": ["Buitenlandse inkomstenbron bouwen", "Emigratiedocumenten voorbereiden", "Met diaspora netwerken", "Exitplan uitvoeren als klaar"],
+        "plan5Years": ["Verhuisd naar stabiel land", "Geïntegreerd in nieuwe economie", "Familie gestabiliseerd", "Vermogen beschermd"],
+        "planB": "Colombia, Peru, Chili voor nabijheid. Spanje voor culturele banden. VS met juist visum."
+      }
+    },
+    "saudiArabia": {
+      "name": "Saoedi-Arabië",
+      "region": "Midden-Oosten",
+      "ruleOfGold": "Dien de visie, respecteer de waarden, ken je plaats. Hoge beloningen voor de nuttige, hoge risico's voor de zichtbare.",
+      "pyramid": {
+        "top": "Koninklijke familie en Vision 2030 architecten",
+        "institutions": "Snel transformerend staatsapparaat",
+        "gatekeepers": "Wasta-netwerken en overheidslicenties",
+        "valueCreators": "Internationale experts en lokale ondernemers",
+        "base": "Saudische burgers en buitenlandse werknemers",
+        "realAsset": "Afstemming met nationale transformatie"
+      },
+      "whoWins": ["Vision 2030 afgestemde professionals", "Hoogwaardige internationale experts", "Verbonden Saudische ondernemers", "Discrete vermogensbouwers"],
+      "whoLoses": ["Wie culturele normen uitdaagt", "Politiek actieve individuen", "Wie geen duidelijke waardepropositie heeft", "Kortetermijndenkers"],
+      "playbook": {
+        "do": ["Afstemmen met Vision 2030 prioriteiten", "Culturele en religieuze normen respecteren", "Oprechte lokale relaties opbouwen", "Agressief sparen", "Internationale opties behouden"],
+        "dont": ["Over politiek of religie commentaar geven", "Permanent verblijf aannemen", "Snelle veranderingsdynamiek negeren", "Bruggen verbranden", "Incompatibele levensstijl pronken"],
+        "plan30Days": ["Iqama en arbeidsrechten begrijpen", "Agressieve spaardoelen stellen", "Professioneel netwerk in kaart brengen", "Exitopties onderzoeken"],
+        "plan12Months": ["Sterke professionele reputatie opbouwen", "Inkomen diversifiëren indien mogelijk", "Internationale verbindingen creëren", "Tweede verblijfsoptie vestigen"],
+        "plan5Years": ["Significant vermogen geaccumuleerd", "Exitstrategie uitgevoerd", "Hoog draagbare vaardigheden", "Sterk internationaal netwerk"],
+        "planB": "VAE, Bahrein voor regionale opties. Portugal, Malta voor EU. Canada, Australië voor permanente opties."
+      }
+    },
+    "india": {
+      "name": "India",
+      "region": "Zuid-Azië",
+      "ruleOfGold": "Navigeer de paradox van oude systemen en explosieve groei. Relaties en veerkracht verslaan pure referenties.",
+      "pyramid": {
+        "top": "Politieke dynastieën en grote industriëlen",
+        "institutions": "Dichte bureaucratie die koloniaal erfgoed en digitale toekomst mengt",
+        "gatekeepers": "Netwerken, referenties en lokale kennis",
+        "valueCreators": "Ondernemers in formele en informele sectoren",
+        "base": "Massale arbeidskracht in transformatie",
+        "realAsset": "Adaptieve intelligentie en netwerkkracht"
+      },
+      "whoWins": ["Tech-savvy aanpassers", "Sterke netwerkbouwers", "Wie digitale transformatie berijdt", "Internationale verbinders"],
+      "whoLoses": ["Wie geen geduld heeft", "Starre alleen-formeel operators", "Wie relatiedynamiek negeert", "Puur referentie-afhankelijke individuen"],
+      "playbook": {
+        "do": ["Oprechte lokale netwerken bouwen", "Digitale kansen omarmen", "Regionale variaties begrijpen", "Internationale opties ontwikkelen", "Bureaucratische navigatie beheersen"],
+        "dont": ["Uniforme regels landelijk verwachten", "Relatiebuilding negeren", "Competitie onderschatten", "Alleen op formele systemen vertrouwen", "Gezondheids- en infrastructuurlimieten negeren"],
+        "plan30Days": ["Noodzakelijke registraties (PAN, etc) krijgen", "Lokaal netwerk bouwen beginnen", "Je sectordynamiek begrijpen", "Juist bankieren opzetten"],
+        "plan12Months": ["Professionele reputatie vestigen", "Meerdere inkomstenbronnen bouwen", "Internationale backup creëren", "Sectorexpertise ontwikkelen"],
+        "plan5Years": ["Gediversifieerde India + internationale inkomsten", "Sterk netwerk gevestigd", "Vermogen juist gestructureerd", "Globale opties behouden"],
+        "planB": "VAE, Singapore voor nabije opties. VS, VK, Canada voor ontwikkelde markten."
+      }
+    },
+    "turkey": {
+      "name": "Turkije",
+      "region": "Europa/Midden-Oosten",
+      "ruleOfGold": "Berijd de volatiliteit als je kunt, hedge als je moet. Politieke winden veranderen snel.",
+      "pyramid": {
+        "top": "Presidentiële kring en afgestemde bedrijfsgroepen",
+        "institutions": "Gecentraliseerde machtsstructuren in flux",
+        "gatekeepers": "Overheidsverbindingen en partij-afstemming",
+        "valueCreators": "Ondernemers die onzekerheid navigeren",
+        "base": "Burgers die valutavolatiliteit managen",
+        "realAsset": "Wendbaarheid en politieke neutraliteit"
+      },
+      "whoWins": ["Politiek slimme neutralen", "Harde valuta verdieners", "Internationale diversifieerders", "Wendbare aanpassers"],
+      "whoLoses": ["Politiek zichtbare critici", "Lira-afhankelijke spaarders", "Enkelvoudige markt bedrijven", "Wie stabiliteit verwacht"],
+      "playbook": {
+        "do": ["In harde valuta verdienen indien mogelijk", "Politiek onzichtbaar blijven", "Vermogen internationaal diversifiëren", "Exporteerbare vaardigheden bouwen", "Meerdere verblijfsopties behouden"],
+        "dont": ["Aan politiek discours deelnemen", "Spaargeld alleen in lira houden", "Van één inkomstenbron afhangen", "Valutarisico negeren", "Stabiliteitsretour aannemen"],
+        "plan30Days": ["Harde valuta inkomen/spaargeld vestigen", "Alle identiteitsdocumenten veiligstellen", "Exitopties in kaart brengen", "Overdraagbare vaardigheden identificeren"],
+        "plan12Months": ["Internationale inkomstenstroom bouwen", "Buitenlands bankieren vestigen", "Professioneel netwerk in buitenland creëren", "Verblijfsalternatieven verkennen"],
+        "plan5Years": ["Internationaal gediversifieerde inkomsten", "Tweede verblijf verzekerd", "Vermogen beschermd tegen volatiliteit", "Exitplan klaar"],
+        "planB": "EU-landen via burgerschapsprogramma's. Georgië, Servië voor makkelijke toegang. VAE voor regionale optie."
+      }
     }
   }
 }
