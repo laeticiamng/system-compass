@@ -1487,5 +1487,80 @@
     "infrastructure": "Infraestructura",
     "opportunities": "Oportunidades",
     "nature": "Naturaleza y Clima"
+  },
+  "howToRead": {
+    "title": "Cómo leer los resultados",
+    "subtitle": "Entender la diferencia entre simulación y predicción",
+    "whatSimulationIs": {
+      "title": "Lo que UNA SIMULACIÓN es",
+      "point1": "Un modelo simplificado basado en datos generales",
+      "point2": "Una herramienta para explorar tendencias y patrones",
+      "point3": "Una ayuda para la reflexión y la perspectiva",
+      "point4": "Un punto de partida para tus propias investigaciones",
+      "point5": "Una representación de lo que TIENDE a ocurrir en ciertos contextos"
+    },
+    "whatSimulationIsNot": {
+      "title": "Lo que una simulación NO es",
+      "point1": "Una predicción de tu futuro personal",
+      "point2": "Asesoramiento legal, financiero o médico",
+      "point3": "Una garantía de resultado si sigues las recomendaciones",
+      "point4": "Una verdad absoluta aplicable a todos",
+      "point5": "Un juicio de valor sobre tus elecciones de vida"
+    },
+    "keyConcept": {
+      "title": "El concepto clave: Tendencia ≠ Certeza",
+      "explanation": "Cuando la herramienta dice \"este sistema tiende a favorecer X\", significa que estadísticamente, en este tipo de contexto, X es más probable. Pero TU caso particular depende de miles de factores que la herramienta desconoce.",
+      "analogy": "Es como el clima: \"Llueve a menudo en noviembre en París\" es estadísticamente cierto, pero no predice si lloverá el 15 de noviembre cuando TÚ estés allí."
+    },
+    "examples": {
+      "title": "Ejemplos concretos de buena lectura",
+      "wrongReading": "❌ Mala lectura",
+      "correctReading": "✓ Buena lectura",
+      "countryMatch": {
+        "title": "Resultado de compatibilidad de país",
+        "wrong": "La herramienta dice 85% de compatibilidad con Suiza, así que seguramente tendré éxito allí.",
+        "correct": "Suiza parece alineada con mi perfil teórico. Voy a investigar para ver si corresponde a MI situación real."
+      },
+      "trajectory": {
+        "title": "Simulación de trayectoria financiera",
+        "wrong": "La herramienta muestra que tendré 50.000€ ahorrados en 10 años, es seguro.",
+        "correct": "Si mantengo estos parámetros y no surge ningún imprevisto, esta cantidad es plausible. Debo prever márgenes."
+      },
+      "gameVerdict": {
+        "title": "Veredicto del modo educativo",
+        "wrong": "Obtuve 'trayectoria difícil' en el juego, así que mi vida real será un fracaso.",
+        "correct": "Esta simulación muestra los obstáculos típicos de este contexto inicial. Puedo inspirarme para anticipar desafíos."
+      }
+    },
+    "limitations": {
+      "title": "Lo que la herramienta NO PUEDE tener en cuenta",
+      "point1": "Tus habilidades únicas, tu red personal, tu suerte",
+      "point2": "Los cambios geopolíticos, económicos o personales futuros",
+      "point3": "Los matices culturales que solo la experiencia local permite comprender",
+      "point4": "Las oportunidades imprevistas que pueden cambiarlo todo"
+    },
+    "bestPractices": {
+      "title": "Cómo usar la herramienta inteligentemente",
+      "practice1": {
+        "title": "Úsala como punto de partida",
+        "description": "No como destino. Los resultados deben abrir pistas de investigación, no cerrarlas."
+      },
+      "practice2": {
+        "title": "Cruza con otras fuentes",
+        "description": "Habla con personas que viven allí, lee testimonios, consulta a profesionales."
+      },
+      "practice3": {
+        "title": "Adapta a TU situación",
+        "description": "Los promedios no aplican a todos. Tu recorrido único puede cambiar radicalmente las probabilidades."
+      },
+      "practice4": {
+        "title": "Revisa regularmente",
+        "description": "Tus parámetros cambian. Repite las simulaciones cuando tu situación evolucione."
+      }
+    },
+    "finalNote": {
+      "title": "En resumen",
+      "text": "Esta herramienta te ayuda a ver más claro, no a ver el futuro. Ilumina tendencias para que TÚ puedas decidir con conocimiento de causa. La decisión, y la responsabilidad, siempre son tuyas."
+    }
   }
 }

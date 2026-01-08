@@ -1477,5 +1477,80 @@
     "infrastructure": "Infrastructuur",
     "opportunities": "Kansen",
     "nature": "Natuur & Klimaat"
+  },
+  "howToRead": {
+    "title": "Hoe resultaten te lezen",
+    "subtitle": "Het verschil begrijpen tussen simulatie en voorspelling",
+    "whatSimulationIs": {
+      "title": "Wat EEN SIMULATIE is",
+      "point1": "Een vereenvoudigd model gebaseerd op algemene gegevens",
+      "point2": "Een hulpmiddel om trends en patronen te verkennen",
+      "point3": "Een hulp voor reflectie en perspectief",
+      "point4": "Een startpunt voor je eigen onderzoek",
+      "point5": "Een weergave van wat in bepaalde contexten DOORGAANS gebeurt"
+    },
+    "whatSimulationIsNot": {
+      "title": "Wat een simulatie NIET is",
+      "point1": "Een voorspelling van je persoonlijke toekomst",
+      "point2": "Juridisch, financieel of medisch advies",
+      "point3": "Een garantie voor resultaat als je de aanbevelingen volgt",
+      "point4": "Een absolute waarheid die voor iedereen geldt",
+      "point5": "Een waardeoordeel over je levenskeuzes"
+    },
+    "keyConcept": {
+      "title": "Het sleutelbegrip: Trend ≠ Zekerheid",
+      "explanation": "Wanneer de tool zegt \"dit systeem neigt ertoe X te bevoordelen\", betekent dit dat statistisch gezien, in dit type context, X waarschijnlijker is. Maar JOUW specifieke geval hangt af van duizenden factoren die de tool niet kent.",
+      "analogy": "Het is als het weer: \"Het regent vaak in november in Parijs\" is statistisch waar, maar voorspelt niet of het op 15 november zal regenen wanneer JIJ daar bent."
+    },
+    "examples": {
+      "title": "Concrete voorbeelden van goed lezen",
+      "wrongReading": "❌ Verkeerd lezen",
+      "correctReading": "✓ Goed lezen",
+      "countryMatch": {
+        "title": "Land-compatibiliteitsresultaat",
+        "wrong": "De tool zegt 85% compatibiliteit met Zwitserland, dus ik zal daar zeker slagen.",
+        "correct": "Zwitserland lijkt overeen te komen met mijn theoretisch profiel. Ik ga onderzoeken of het past bij MIJN werkelijke situatie."
+      },
+      "trajectory": {
+        "title": "Financiële trajectorie-simulatie",
+        "wrong": "De tool toont dat ik over 10 jaar €50.000 gespaard zal hebben, dat is zeker.",
+        "correct": "Als ik deze parameters handhaaf en er geen onvoorziene gebeurtenissen optreden, is dit bedrag plausibel. Ik moet marges inbouwen."
+      },
+      "gameVerdict": {
+        "title": "Verdict in educatieve modus",
+        "wrong": "Ik kreeg 'moeilijk traject' in het spel, dus mijn echte leven zal een mislukking zijn.",
+        "correct": "Deze simulatie toont typische obstakels van deze startcontext. Ik kan me hierdoor laten inspireren om uitdagingen te anticiperen."
+      }
+    },
+    "limitations": {
+      "title": "Wat de tool NIET kan meenemen",
+      "point1": "Je unieke vaardigheden, je persoonlijke netwerk, je geluk",
+      "point2": "Toekomstige geopolitieke, economische of persoonlijke veranderingen",
+      "point3": "Culturele nuances die alleen lokale ervaring kan leren",
+      "point4": "Onvoorziene kansen die alles kunnen veranderen"
+    },
+    "bestPractices": {
+      "title": "Hoe de tool slim te gebruiken",
+      "practice1": {
+        "title": "Gebruik het als startpunt",
+        "description": "Niet als bestemming. De resultaten moeten onderzoekspaden openen, niet sluiten."
+      },
+      "practice2": {
+        "title": "Kruisverwijzing met andere bronnen",
+        "description": "Praat met mensen die ter plaatse wonen, lees ervaringen, raadpleeg professionals."
+      },
+      "practice3": {
+        "title": "Pas aan op JOUW situatie",
+        "description": "Gemiddelden gelden niet voor iedereen. Jouw unieke pad kan de kansen radicaal veranderen."
+      },
+      "practice4": {
+        "title": "Herzien regelmatig",
+        "description": "Je parameters veranderen. Herhaal de simulaties wanneer je situatie evolueert."
+      }
+    },
+    "finalNote": {
+      "title": "Samengevat",
+      "text": "Deze tool helpt je helderder te zien, niet de toekomst te zien. Het belicht trends zodat JIJ weloverwogen kunt beslissen. De beslissing, en de verantwoordelijkheid, blijven altijd van jou."
+    }
   }
 }
