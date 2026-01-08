@@ -87,17 +87,24 @@ export function CountryMusicPlayer({
             countryId,
             pyramidType,
             mood: 'narrative',
-            duration: 30,
           }),
         }
       );
 
       if (!response.ok) {
-        throw new Error(`Failed to generate music: ${response.status}`);
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || `Failed to generate music: ${response.status}`);
       }
 
-      const audioBlob = await response.blob();
-      const audioUrl = URL.createObjectURL(audioBlob);
+      const data = await response.json();
+      
+      // Check for timeout/pending response
+      if (response.status === 202 || !data.audioUrl) {
+        setError(t('music.generating', 'La musique est en cours de génération. Réessayez dans quelques minutes.'));
+        return;
+      }
+
+      const audioUrl = data.audioUrl;
       
       // Create or reuse audio element
       if (!audioRef.current) {
@@ -106,6 +113,7 @@ export function CountryMusicPlayer({
       
       audioRef.current.src = audioUrl;
       audioRef.current.volume = volume;
+      audioRef.current.crossOrigin = "anonymous";
       
       // Set up event listeners
       audioRef.current.onloadedmetadata = () => {
@@ -123,13 +131,18 @@ export function CountryMusicPlayer({
         setProgress(0);
       };
 
+      audioRef.current.onerror = () => {
+        setError(t('music.loadError', 'Erreur de chargement audio'));
+        setIsPlaying(false);
+      };
+
       await audioRef.current.play();
       setIsPlaying(true);
       setHasLoaded(true);
       
     } catch (err) {
       console.error('Error generating music:', err);
-      setError(t('music.error', 'Impossible de générer la musique'));
+      setError(err instanceof Error ? err.message : t('music.error', 'Impossible de générer la musique'));
     } finally {
       setIsLoading(false);
     }

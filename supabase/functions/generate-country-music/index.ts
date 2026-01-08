@@ -9,55 +9,72 @@ interface MusicRequest {
   countryId: string;
   pyramidType: string;
   mood?: 'exploratory' | 'narrative' | 'comparison';
-  duration?: number;
 }
 
-// Music prompt templates based on pyramid types
-const PYRAMID_MUSIC_PROMPTS: Record<string, string> = {
-  PROBLEM_RENT: "Tense, complex rhythms with minor keys. Mix of traditional instrumentation and industrial sounds. Unpredictable patterns, underlying anxiety but also resilience. African/Middle Eastern influences when applicable.",
-  STABILITY_REDIS: "Steady, reassuring tempo. Classical and orchestral elements. Structured, predictable progressions. European sophistication, bureaucratic precision but warmth underneath.",
-  COMPETENCE_TRUST: "Clean, precise, minimalist. Swiss/German precision. Electronic with organic touches. Efficient, reliable, trustworthy soundscape. Nordic or Central European feel.",
-  GROWTH_RISK: "Fast tempo, energetic, startup vibes. American pop-rock energy with electronic drops. Ambitious, risk-taking, opportunity-focused. Silicon Valley meets Wall Street.",
-  HYBRID_TRANSITION: "Eclectic mix of styles, unpredictable transitions. Emerging markets energy - traditional meets modern. Turkish, Brazilian, Indian influences. Chaos and opportunity intertwined.",
-  RESOURCE_EXTRACTION: "Rich, deep bass. Oil money aesthetic. Luxury with traditional roots. Gulf states or Russian oligarch vibes. Power, wealth, but also hidden tensions.",
+// Music style templates based on pyramid types
+const PYRAMID_MUSIC_STYLES: Record<string, { style: string; mood: string }> = {
+  PROBLEM_RENT: {
+    style: "World Music, Fusion, Dramatic Orchestral",
+    mood: "Tense, complex, unpredictable, resilient"
+  },
+  STABILITY_REDIS: {
+    style: "Classical, Orchestral, European Folk",
+    mood: "Steady, reassuring, structured, warm"
+  },
+  COMPETENCE_TRUST: {
+    style: "Minimal Electronic, Ambient, Nordic",
+    mood: "Clean, precise, efficient, trustworthy"
+  },
+  GROWTH_RISK: {
+    style: "Indie Rock, Electronic Pop, Upbeat",
+    mood: "Fast, energetic, ambitious, optimistic"
+  },
+  HYBRID_TRANSITION: {
+    style: "World Fusion, Eclectic, Progressive",
+    mood: "Dynamic, unpredictable, hopeful, chaotic"
+  },
+  RESOURCE_EXTRACTION: {
+    style: "Arabic, Deep Bass, Cinematic",
+    mood: "Rich, powerful, luxurious, mysterious"
+  },
 };
 
-// Country-specific cultural overlays
-const COUNTRY_CULTURAL_OVERLAYS: Record<string, string> = {
-  cameroon: "Central African rhythms, makossa and bikutsi influences, French-colonial undertones, tropical warmth",
-  france: "Chanson française elegance, café culture, intellectual depth, romantic undertones",
-  switzerland: "Alpine horns, precision clockwork rhythms, yodeling echoes, chocolate-box serenity",
-  usa: "Jazz-rock fusion, Hollywood grandeur, diverse cultural melting pot, entrepreneurial energy",
-  germany: "Kraftwerk electronic precision, classical heritage, industrial strength, beer hall warmth",
-  canada: "Folk-rock sincerity, multicultural mosaic, wilderness serenity, polite optimism",
-  uae: "Arabian oud and percussion, luxury lounge, futuristic ambition, desert mystery",
-  singapore: "Asian fusion, high-tech efficiency, multicultural harmony, tropical urban pulse",
-  japan: "Traditional shamisen meets J-pop, zen gardens and neon cities, precision and creativity",
-  uk: "British rock heritage, pub culture warmth, royal elegance, multicultural London energy",
-  india: "Bollywood grandeur, classical ragas, diverse regional sounds, spiritual depth",
-  southkorea: "K-pop energy, traditional gayageum, tech-forward, intense work culture rhythm",
-  mexico: "Mariachi passion, ancient Aztec echoes, tequila warmth, family celebration",
-  spain: "Flamenco fire, Mediterranean warmth, siesta rhythm, passionate expression",
-  italy: "Opera grandeur, Renaissance elegance, espresso intensity, la dolce vita",
-  thailand: "Buddhist temple serenity, tropical paradise, gentle Thai hospitality",
-  vietnam: "Traditional đàn bầu, French-colonial echoes, resilient spirit, street food bustle",
-  indonesia: "Gamelan orchestra, Islamic calls to prayer, island paradise diversity",
-  philippines: "Spanish-American influences, karaoke culture, tropical joy, family bonds",
-  colombia: "Cumbia and salsa passion, coffee culture, emerald beauty, cartel tension undertone",
-  argentina: "Tango passion, European elegance, football fervor, economic roller-coaster",
-  brazil: "Samba carnival, bossa nova sophistication, Amazon mystery, favela resilience",
-  netherlands: "Electronic DJ culture, windmill pastoral, tolerant liberalism, cycling rhythm",
-  morocco: "Gnawa spiritual trance, Berber traditions, medina bustle, desert mystery",
-  australia: "Outback vastness, beach culture, Aboriginal dreamtime, laid-back optimism",
-  china: "Ancient guzheng traditions, tech giant ambition, billion-strong collective rhythm",
-  russia: "Vast steppe melancholy, classical grandeur, vodka intensity, resilient strength",
-  norway: "Nordic noir, Viking heritage, oil wealth modernity, nature-inspired serenity",
-  qatar: "Gulf luxury, Islamic traditions, World Cup modernity, desert oasis",
-  saudiarabia: "Arabian Peninsula traditions, oil wealth, religious devotion, rapid modernization",
-  venezuela: "Caribbean salsa, oil boom nostalgia, political tension, diaspora longing",
-  turkey: "Ottoman grandeur, Sufi whirling, European-Asian bridge, political crossroads",
-  portugal: "Fado melancholy, maritime exploration, gentle Atlantic breeze, saudade feeling",
-  nigeria: "Afrobeats energy, oil wealth inequality, Nollywood drama, entrepreneurial hustle",
+// Country-specific cultural music styles
+const COUNTRY_MUSIC_STYLES: Record<string, { instruments: string; cultural: string }> = {
+  cameroon: { instruments: "African drums, balafon, talking drums", cultural: "Makossa, Bikutsi, Central African rhythms" },
+  france: { instruments: "Accordion, piano, violin", cultural: "Chanson française, café jazz, romantic" },
+  switzerland: { instruments: "Alpine horns, zither, bells", cultural: "Swiss folk, precision classical" },
+  usa: { instruments: "Electric guitar, brass, drums", cultural: "Jazz, rock, blues fusion" },
+  germany: { instruments: "Synthesizers, classical orchestra", cultural: "Electronic, Kraftwerk-inspired, classical" },
+  canada: { instruments: "Acoustic guitar, violin, piano", cultural: "Folk rock, multicultural blend" },
+  uae: { instruments: "Oud, qanun, percussion", cultural: "Arabian classical, luxury lounge" },
+  singapore: { instruments: "Chinese guzheng, gamelan, electronic", cultural: "Asian fusion, tech-forward" },
+  japan: { instruments: "Koto, shamisen, taiko drums, synths", cultural: "Traditional meets modern J-pop" },
+  uk: { instruments: "Electric guitar, keyboards, drums", cultural: "British rock, pub folk, orchestral" },
+  india: { instruments: "Sitar, tabla, harmonium, tanpura", cultural: "Classical raga, Bollywood" },
+  southkorea: { instruments: "Gayageum, electronic, drums", cultural: "K-pop energy, traditional Korean" },
+  mexico: { instruments: "Trumpet, violin, guitar, vihuela", cultural: "Mariachi, traditional Mexican" },
+  spain: { instruments: "Flamenco guitar, castanets, palmas", cultural: "Flamenco, Mediterranean passion" },
+  italy: { instruments: "Mandolin, accordion, opera vocals", cultural: "Opera, Mediterranean romance" },
+  thailand: { instruments: "Khim, ranad, temple bells", cultural: "Buddhist temple, Thai traditional" },
+  vietnam: { instruments: "Đàn bầu, đàn tranh, bamboo flute", cultural: "Vietnamese traditional, gentle" },
+  indonesia: { instruments: "Gamelan, angklung, kendang", cultural: "Javanese gamelan, Islamic" },
+  philippines: { instruments: "Kudyapi, kulintang, guitar", cultural: "OPM, Spanish-American influenced" },
+  colombia: { instruments: "Accordion, drums, guacharaca", cultural: "Cumbia, vallenato, salsa" },
+  argentina: { instruments: "Bandoneón, violin, piano", cultural: "Tango, passionate milonga" },
+  brazil: { instruments: "Surdo, tamborim, cavaquinho", cultural: "Samba, bossa nova, forró" },
+  netherlands: { instruments: "Electronic DJ, organ, synthesizers", cultural: "EDM, Dutch house" },
+  morocco: { instruments: "Oud, sintir, tbel drums", cultural: "Gnawa, Berber, Andalusian" },
+  australia: { instruments: "Didgeridoo, acoustic guitar", cultural: "Aboriginal, folk rock, beach vibes" },
+  china: { instruments: "Erhu, guzheng, pipa", cultural: "Chinese classical, cinematic" },
+  russia: { instruments: "Balalaika, bayan, orchestra", cultural: "Russian folk, dramatic classical" },
+  norway: { instruments: "Hardanger fiddle, synths, strings", cultural: "Nordic folk, ambient electronic" },
+  qatar: { instruments: "Oud, rebab, frame drums", cultural: "Gulf Arabic, luxury ambient" },
+  saudiarabia: { instruments: "Oud, tabla, mizmar", cultural: "Arabian Peninsula traditional" },
+  venezuela: { instruments: "Cuatro, maracas, harp", cultural: "Joropo, salsa, Caribbean" },
+  turkey: { instruments: "Saz, ney flute, kanun", cultural: "Ottoman classical, Sufi, Anatolian" },
+  portugal: { instruments: "Portuguese guitar, viola", cultural: "Fado, melancholic Atlantic" },
+  nigeria: { instruments: "Talking drums, shekere, bass", cultural: "Afrobeats, highlife, juju" },
 };
 
 serve(async (req) => {
@@ -67,11 +84,11 @@ serve(async (req) => {
   }
 
   try {
-    const ELEVENLABS_API_KEY = Deno.env.get("ELEVENLABS_API_KEY");
+    const SUNO_API_KEY = Deno.env.get("SUNO_API_KEY");
     
-    if (!ELEVENLABS_API_KEY) {
+    if (!SUNO_API_KEY) {
       return new Response(
-        JSON.stringify({ error: "ElevenLabs API key not configured" }),
+        JSON.stringify({ error: "Suno API key not configured" }),
         { 
           status: 500, 
           headers: { ...corsHeaders, "Content-Type": "application/json" } 
@@ -79,59 +96,141 @@ serve(async (req) => {
       );
     }
 
-    const { countryId, pyramidType, mood = 'narrative', duration = 30 }: MusicRequest = await req.json();
+    const { countryId, pyramidType, mood = 'narrative' }: MusicRequest = await req.json();
 
     // Build the music prompt
-    const pyramidPrompt = PYRAMID_MUSIC_PROMPTS[pyramidType] || PYRAMID_MUSIC_PROMPTS.HYBRID_TRANSITION;
-    const culturalOverlay = COUNTRY_CULTURAL_OVERLAYS[countryId] || "World music fusion, global perspective";
+    const pyramidStyle = PYRAMID_MUSIC_STYLES[pyramidType] || PYRAMID_MUSIC_STYLES.HYBRID_TRANSITION;
+    const countryStyle = COUNTRY_MUSIC_STYLES[countryId] || { 
+      instruments: "World music instruments", 
+      cultural: "Global fusion" 
+    };
     
-    const moodModifier = mood === 'exploratory' 
-      ? "Curious, open, inviting exploration"
+    const moodContext = mood === 'exploratory' 
+      ? "Curious and inviting exploration"
       : mood === 'comparison'
-      ? "Analytical, comparative, highlighting contrasts"
-      : "Narrative, storytelling, cinematic documentary feel";
+      ? "Analytical, highlighting contrasts"
+      : "Narrative, cinematic documentary";
 
-    const fullPrompt = `${pyramidPrompt}. ${culturalOverlay}. ${moodModifier}. Instrumental, no vocals. Suitable as background for documentary about life systems and migration. Ultra high resolution audio quality.`;
+    // Create a descriptive prompt for Suno
+    const prompt = `An instrumental ${pyramidStyle.style} piece. ${countryStyle.cultural} influences with ${countryStyle.instruments}. ${pyramidStyle.mood} feeling. ${moodContext}. Background music for a documentary about life and migration. No vocals.`;
 
-    console.log(`Generating music for ${countryId} (${pyramidType}): ${fullPrompt.substring(0, 100)}...`);
+    console.log(`Generating Suno music for ${countryId} (${pyramidType}): ${prompt.substring(0, 100)}...`);
 
-    // Call ElevenLabs Music API
-    const response = await fetch(
-      "https://api.elevenlabs.io/v1/music",
+    // Call Suno API to generate music
+    const generateResponse = await fetch(
+      "https://api.sunoapi.org/api/v1/generate",
       {
         method: "POST",
         headers: {
-          "xi-api-key": ELEVENLABS_API_KEY,
+          "Authorization": `Bearer ${SUNO_API_KEY}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          prompt: fullPrompt,
-          duration_seconds: Math.min(duration, 60), // Max 60 seconds
+          prompt: prompt,
+          customMode: false,
+          instrumental: true,
+          model: "V4",
         }),
       }
     );
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error("ElevenLabs API error:", errorText);
+    if (!generateResponse.ok) {
+      const errorText = await generateResponse.text();
+      console.error("Suno API generate error:", errorText);
       return new Response(
         JSON.stringify({ error: "Failed to generate music", details: errorText }),
         { 
-          status: response.status, 
+          status: generateResponse.status, 
           headers: { ...corsHeaders, "Content-Type": "application/json" } 
         }
       );
     }
 
-    const audioBuffer = await response.arrayBuffer();
+    const generateData = await generateResponse.json();
+    console.log("Suno generate response:", JSON.stringify(generateData));
 
-    return new Response(audioBuffer, {
-      headers: {
-        ...corsHeaders,
-        "Content-Type": "audio/mpeg",
-        "Content-Disposition": `inline; filename="${countryId}-${pyramidType}.mp3"`,
-      },
-    });
+    // Check if we got task IDs
+    if (!generateData.data || !generateData.data.taskId) {
+      return new Response(
+        JSON.stringify({ 
+          error: "No task ID returned", 
+          response: generateData 
+        }),
+        { 
+          status: 500, 
+          headers: { ...corsHeaders, "Content-Type": "application/json" } 
+        }
+      );
+    }
+
+    const taskId = generateData.data.taskId;
+
+    // Poll for completion (max 60 seconds)
+    let audioUrl: string | null = null;
+    for (let i = 0; i < 12; i++) {
+      await new Promise((resolve) => setTimeout(resolve, 5000));
+
+      const statusResponse = await fetch(
+        `https://api.sunoapi.org/api/v1/task/${taskId}`,
+        {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${SUNO_API_KEY}`,
+          },
+        }
+      );
+
+      if (!statusResponse.ok) {
+        console.error("Status check failed:", await statusResponse.text());
+        continue;
+      }
+
+      const statusData = await statusResponse.json();
+      console.log(`Poll ${i + 1}: Status = ${statusData.data?.status}`);
+
+      if (statusData.data?.status === "completed" && statusData.data?.clips) {
+        const clips = statusData.data.clips;
+        if (clips.length > 0 && clips[0].audioUrl) {
+          audioUrl = clips[0].audioUrl;
+          break;
+        }
+      } else if (statusData.data?.status === "failed") {
+        return new Response(
+          JSON.stringify({ error: "Music generation failed", details: statusData }),
+          { 
+            status: 500, 
+            headers: { ...corsHeaders, "Content-Type": "application/json" } 
+          }
+        );
+      }
+    }
+
+    if (!audioUrl) {
+      return new Response(
+        JSON.stringify({ 
+          error: "Music generation timed out", 
+          taskId: taskId,
+          message: "Music is still being generated. Try again in a few minutes."
+        }),
+        { 
+          status: 202, 
+          headers: { ...corsHeaders, "Content-Type": "application/json" } 
+        }
+      );
+    }
+
+    // Return the audio URL for the client to stream
+    return new Response(
+      JSON.stringify({ 
+        success: true,
+        audioUrl: audioUrl,
+        countryId: countryId,
+        pyramidType: pyramidType 
+      }),
+      { 
+        headers: { ...corsHeaders, "Content-Type": "application/json" } 
+      }
+    );
 
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : String(error);
