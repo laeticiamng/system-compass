@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
@@ -224,7 +224,8 @@ const FINISH_POSITION = 41;
 export default function PyramidQuiz() {
   const { t } = useTranslation();
   const { user } = useAuth();
-  const { saveGame, loading: savingGame } = useSavedGames();
+  const [searchParams] = useSearchParams();
+  const { saveGame, loadGame, loading: savingGame } = useSavedGames();
   const { 
     stats: persistedStats, 
     trackGameCompleted, 
@@ -315,6 +316,32 @@ export default function PyramidQuiz() {
 
   // Cooperative mode: shared score pool
   const [cooperativePool, setCooperativePool] = useState<Record<PyramidType, number>>(createEmptyScores());
+
+  // Load game from URL parameter (from Dashboard)
+  useEffect(() => {
+    const loadGameId = searchParams.get('loadGame');
+    if (loadGameId && user) {
+      loadGame(loadGameId).then(savedGame => {
+        if (savedGame) {
+          // Restore game state
+          setMode(savedGame.game_mode as GameMode);
+          setPlayers(savedGame.game_state.players.map((p) => ({
+            ...p,
+            resources: (p as any).resources || createDefaultResources(),
+            countryType: (p as any).countryType || 'STABILITY_REDIS' as PyramidType,
+          })) as Player[]);
+          setCurrentPlayerIndex(savedGame.game_state.currentPlayerIndex);
+          setDiceValue(savedGame.game_state.diceValue);
+          setGameMessage(savedGame.game_state.gameMessage || '');
+          setPlayerCount(savedGame.player_count);
+          setCurrentGameId(savedGame.id);
+          setGameFinished(savedGame.is_finished);
+          setSetupPhase('playing');
+          toast.success(t('pyramidQuiz.gameLoaded', 'Partie chargée !'));
+        }
+      });
+    }
+  }, [searchParams, user, loadGame, t]);
 
   // Game mode specific win conditions
   const checkWinCondition = useCallback(() => {
