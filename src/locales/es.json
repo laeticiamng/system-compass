@@ -2116,14 +2116,6 @@
       "extreme": "Extremo"
     }
   },
-  "resources": {
-    "time": "Tiempo",
-    "money": "Dinero",
-    "health": "Salud",
-    "network": "Red",
-    "skills": "Habilidades",
-    "mobility": "Movilidad"
-  },
   "savedGames": {
     "title": "Mis partidas",
     "myGames": "Mis partidas",

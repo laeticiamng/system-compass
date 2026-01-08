@@ -2106,14 +2106,6 @@
       "extreme": "Extreem"
     }
   },
-  "resources": {
-    "time": "Tijd",
-    "money": "Geld",
-    "health": "Gezondheid",
-    "network": "Netwerk",
-    "skills": "Vaardigheden",
-    "mobility": "Mobiliteit"
-  },
   "savedGames": {
     "title": "Mijn spellen",
     "myGames": "Mijn spellen",

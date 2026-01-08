@@ -2106,14 +2106,6 @@
       "extreme": "Extrem"
     }
   },
-  "resources": {
-    "time": "Zeit",
-    "money": "Geld",
-    "health": "Gesundheit",
-    "network": "Netzwerk",
-    "skills": "Fähigkeiten",
-    "mobility": "Mobilität"
-  },
   "savedGames": {
     "title": "Meine Spiele",
     "myGames": "Meine Spiele",
