@@ -9,6 +9,8 @@ import {
   archetypeToCharacterCard 
 } from '@/lib/character-archetypes';
 import { CharacterCard as CharacterCardType } from '@/lib/game-data';
+import { FamilyStatus } from '@/lib/family-system';
+import FamilyStatusSelector from './FamilyStatusSelector';
 import { 
   ArrowLeft, 
   ArrowRight, 
@@ -27,7 +29,7 @@ import {
 interface ArchetypeSelectorProps {
   playerCount: number;
   playerColors: { bg: string; ring: string; text: string }[];
-  onComplete: (characters: CharacterCardType[]) => void;
+  onComplete: (characters: CharacterCardType[], familyStatuses: FamilyStatus[]) => void;
   onBack: () => void;
 }
 
@@ -50,8 +52,11 @@ export default function ArchetypeSelector({
   const { t } = useTranslation();
   const [currentPlayer, setCurrentPlayer] = useState(0);
   const [selectedArchetypes, setSelectedArchetypes] = useState<CharacterArchetype[]>([]);
+  const [selectedFamilyStatuses, setSelectedFamilyStatuses] = useState<FamilyStatus[]>([]);
   const [currentSelection, setCurrentSelection] = useState<string | null>(null);
+  const [currentFamilyStatus, setCurrentFamilyStatus] = useState<FamilyStatus>('single');
   const [mode, setMode] = useState<'choose' | 'random' | null>(null);
+  const [step, setStep] = useState<'archetype' | 'family'>('archetype');
 
   const handleSelectArchetype = (archetypeId: string) => {
     setCurrentSelection(archetypeId);
@@ -72,18 +77,30 @@ export default function ArchetypeSelector({
     const archetype = CHARACTER_ARCHETYPES.find(a => a.archetypeId === currentSelection);
     if (!archetype) return;
 
+    if (step === 'archetype') {
+      // Go to family status selection
+      setCurrentFamilyStatus(archetype.familyStatus || 'single');
+      setStep('family');
+      return;
+    }
+
+    // Step is 'family', proceed to next player or finish
     const newSelected = [...selectedArchetypes, archetype];
+    const newFamilyStatuses = [...selectedFamilyStatuses, currentFamilyStatus];
     setSelectedArchetypes(newSelected);
+    setSelectedFamilyStatuses(newFamilyStatuses);
 
     if (currentPlayer < playerCount - 1) {
       setCurrentPlayer(currentPlayer + 1);
       setCurrentSelection(null);
+      setCurrentFamilyStatus('single');
+      setStep('archetype');
     } else {
       // Convert archetypes to character cards and complete
       const characters = newSelected.map((arch, idx) => 
         archetypeToCharacterCard(arch, `player_${idx}`)
       );
-      onComplete(characters);
+      onComplete(characters, newFamilyStatuses);
     }
   };
 
@@ -94,7 +111,9 @@ export default function ArchetypeSelector({
     const characters = selected.map((arch, idx) => 
       archetypeToCharacterCard(arch, `player_${idx}`)
     );
-    onComplete(characters);
+    // Random family statuses based on archetypes
+    const familyStatuses = selected.map(arch => arch.familyStatus || 'single');
+    onComplete(characters, familyStatuses);
   };
 
   // Available archetypes (not yet selected)
@@ -172,6 +191,63 @@ export default function ArchetypeSelector({
             <Button onClick={onBack} variant="outline" className="gap-2">
               <ArrowLeft className="w-4 h-4" />
               {t('common.back', 'Retour')}
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Family Status Selection Step
+  if (step === 'family') {
+    const selectedArchetype = CHARACTER_ARCHETYPES.find(a => a.archetypeId === currentSelection);
+    
+    return (
+      <div className="min-h-screen pt-24 pb-16">
+        <div className="container mx-auto px-4 max-w-4xl">
+          {/* Header */}
+          <div className="text-center mb-8 animate-fade-in">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className={cn(
+                "w-8 h-8 rounded-full flex items-center justify-center text-white font-bold",
+                playerColors[currentPlayer].bg
+              )}>
+                {currentPlayer + 1}
+              </div>
+              <h1 className="font-display text-3xl font-bold">
+                {t('familyStatus.title', 'Situation Familiale')}
+              </h1>
+            </div>
+            {selectedArchetype && (
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <span className="text-2xl">{selectedArchetype.archetypeIcon}</span>
+                <span className="font-medium">{t(selectedArchetype.archetypeLabel)}</span>
+              </div>
+            )}
+            <p className="text-muted-foreground">
+              {t('familyStatus.selectorDescription', 'Votre situation familiale impacte votre mobilité et vos ressources')}
+            </p>
+          </div>
+
+          {/* Family Status Selector */}
+          <FamilyStatusSelector
+            selectedStatus={currentFamilyStatus}
+            onSelect={setCurrentFamilyStatus}
+          />
+
+          {/* Actions */}
+          <div className="flex flex-wrap gap-4 justify-center mt-8">
+            <Button onClick={() => setStep('archetype')} variant="outline" className="gap-2">
+              <ArrowLeft className="w-4 h-4" />
+              {t('common.back', 'Retour')}
+            </Button>
+            
+            <Button onClick={handleConfirm} className="gap-2">
+              <Check className="w-4 h-4" />
+              {currentPlayer < playerCount - 1 
+                ? t('archetypeSelector.confirmNext', 'Valider et suivant')
+                : t('archetypeSelector.startGame', 'Commencer la partie')
+              }
             </Button>
           </div>
         </div>
@@ -311,11 +387,8 @@ export default function ArchetypeSelector({
             disabled={!currentSelection}
             className="gap-2"
           >
-            <Check className="w-4 h-4" />
-            {currentPlayer < playerCount - 1 
-              ? t('archetypeSelector.confirmNext', 'Valider et suivant')
-              : t('archetypeSelector.startGame', 'Commencer la partie')
-            }
+            <ArrowRight className="w-4 h-4" />
+            {t('archetypeSelector.chooseFamilyStatus', 'Choisir statut familial')}
           </Button>
         </div>
 
