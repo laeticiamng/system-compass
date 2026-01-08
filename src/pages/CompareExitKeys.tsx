@@ -45,10 +45,12 @@ export default function CompareExitKeys() {
     if (!profile) return null;
     const currentCountry = countries.find(c => c.id === profile.currentCountryId);
     const birthCountry = countries.find(c => c.id === profile.birthCountryId);
+    const nationalityCountry = countries.find(c => c.id === profile.nationalityId);
     if (!currentCountry) return null;
     
     return {
       birthCountry: birthCountry?.pyramidType || currentCountry.pyramidType,
+      nationality: nationalityCountry?.pyramidType || birthCountry?.pyramidType || currentCountry.pyramidType,
       currentCountry: currentCountry.pyramidType,
       desiredLife: profile.desiredLife,
       motorProfile: profile.motorProfile,

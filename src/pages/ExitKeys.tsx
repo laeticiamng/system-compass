@@ -5,7 +5,7 @@ import {
   ArrowLeft, Key, Compass, Target, Zap, 
   ChevronRight, MapPin, Heart, Shield,
   AlertTriangle, CheckCircle, Save, RefreshCw,
-  Filter, Clock, Scale
+  Filter, Clock, Scale, Flag
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
@@ -62,6 +62,7 @@ export default function ExitKeys() {
   
   // User inputs
   const [birthCountryId, setBirthCountryId] = useState<string>('');
+  const [nationalityId, setNationalityId] = useState<string>('');
   const [currentCountryId, setCurrentCountryId] = useState<string>('');
   const [motorProfile, setMotorProfile] = useState<LifeMotorProfile>('BUILDER');
   const [desiredLife, setDesiredLife] = useState<LifePriority>('freedom');
@@ -77,6 +78,7 @@ export default function ExitKeys() {
   useEffect(() => {
     if (savedProfile && !profileLoading) {
       setBirthCountryId(savedProfile.birthCountryId);
+      setNationalityId(savedProfile.nationalityId || savedProfile.birthCountryId);
       setCurrentCountryId(savedProfile.currentCountryId);
       setMotorProfile(savedProfile.motorProfile);
       setDesiredLife(savedProfile.desiredLife);
@@ -98,6 +100,7 @@ export default function ExitKeys() {
   const handleSaveProfile = () => {
     saveProfile({
       birthCountryId,
+      nationalityId,
       currentCountryId,
       motorProfile,
       desiredLife,
@@ -113,12 +116,14 @@ export default function ExitKeys() {
 
   // Derived data
   const birthCountry = countries.find(c => c.id === birthCountryId);
+  const nationalityCountry = countries.find(c => c.id === nationalityId);
   const currentCountry = countries.find(c => c.id === currentCountryId);
 
   const userContext: UserContext | null = useMemo(() => {
     if (!currentCountry) return null;
     return {
       birthCountry: birthCountry?.pyramidType || currentCountry.pyramidType,
+      nationality: nationalityCountry?.pyramidType || birthCountry?.pyramidType || currentCountry.pyramidType,
       currentCountry: currentCountry.pyramidType,
       desiredLife,
       motorProfile,
@@ -130,7 +135,7 @@ export default function ExitKeys() {
       isLGBTQ,
       hasFamily,
     };
-  }, [birthCountry, currentCountry, desiredLife, motorProfile, riskTolerance, timeHorizon, hasCapital, hasCredentials, hasNetwork, isLGBTQ, hasFamily]);
+  }, [birthCountry, nationalityCountry, currentCountry, desiredLife, motorProfile, riskTolerance, timeHorizon, hasCapital, hasCredentials, hasNetwork, isLGBTQ, hasFamily]);
 
   const exitKeyResults = useMemo(() => {
     if (!userContext) return [];
@@ -164,7 +169,7 @@ export default function ExitKeys() {
 
   const canProceed = () => {
     switch (currentStep) {
-      case 'origin': return !!birthCountryId;
+      case 'origin': return !!birthCountryId && !!nationalityId;
       case 'current': return !!currentCountryId;
       case 'profile': return true;
       case 'goals': return true;
@@ -241,48 +246,115 @@ export default function ExitKeys() {
         <div className="min-h-[400px]">
           {/* Step 1: Origin Country */}
           {currentStep === 'origin' && (
-            <div className="space-y-6">
-              <div className="text-center mb-8">
-                <MapPin className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h2 className="text-2xl font-bold mb-2">D'où venez-vous ?</h2>
-                <p className="text-muted-foreground">
-                  Votre pays de naissance influence votre point de départ dans le système
-                </p>
+            <div className="space-y-8">
+              {/* Birth Country */}
+              <div className="space-y-4">
+                <div className="text-center mb-6">
+                  <MapPin className="w-12 h-12 text-primary mx-auto mb-4" />
+                  <h2 className="text-2xl font-bold mb-2">D'où venez-vous ?</h2>
+                  <p className="text-muted-foreground">
+                    Votre pays de naissance influence votre point de départ dans le système
+                  </p>
+                </div>
+
+                <Label className="text-sm font-medium">Pays de naissance</Label>
+                <Select value={birthCountryId} onValueChange={(v) => {
+                  setBirthCountryId(v);
+                  if (!nationalityId) setNationalityId(v);
+                }}>
+                  <SelectTrigger className="w-full h-14 text-lg">
+                    <SelectValue placeholder="Sélectionnez votre pays de naissance" />
+                  </SelectTrigger>
+                  <SelectContent className="max-h-[300px]">
+                    {countries.map(country => (
+                      <SelectItem key={country.id} value={country.id}>
+                        <span className="flex items-center gap-3">
+                          <span className="text-xl">{getFlagEmoji(country.iso2)}</span>
+                          <span>{country.name}</span>
+                          <span className="text-xs text-muted-foreground ml-2">
+                            {PYRAMID_TYPE_INFO[country.pyramidType].label}
+                          </span>
+                        </span>
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
 
-              <Select value={birthCountryId} onValueChange={setBirthCountryId}>
-                <SelectTrigger className="w-full h-14 text-lg">
-                  <SelectValue placeholder="Sélectionnez votre pays de naissance" />
-                </SelectTrigger>
-                <SelectContent className="max-h-[300px]">
-                  {countries.map(country => (
-                    <SelectItem key={country.id} value={country.id}>
-                      <span className="flex items-center gap-3">
-                        <span className="text-xl">{getFlagEmoji(country.iso2)}</span>
-                        <span>{country.name}</span>
-                        <span className="text-xs text-muted-foreground ml-2">
-                          {PYRAMID_TYPE_INFO[country.pyramidType].label}
+              {/* Nationality */}
+              <div className="space-y-4">
+                <div className="flex items-center gap-2">
+                  <Flag className="w-5 h-5 text-primary" />
+                  <Label className="text-sm font-medium">Nationalité</Label>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  Votre nationalité détermine les visas et opportunités accessibles
+                </p>
+                
+                <Select value={nationalityId} onValueChange={setNationalityId}>
+                  <SelectTrigger className="w-full h-14 text-lg">
+                    <SelectValue placeholder="Sélectionnez votre nationalité" />
+                  </SelectTrigger>
+                  <SelectContent className="max-h-[300px]">
+                    {countries.map(country => (
+                      <SelectItem key={country.id} value={country.id}>
+                        <span className="flex items-center gap-3">
+                          <span className="text-xl">{getFlagEmoji(country.iso2)}</span>
+                          <span>{country.name}</span>
                         </span>
-                      </span>
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
 
-              {birthCountry && (
-                <div className="glass-card rounded-xl p-6 mt-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="text-3xl">{getFlagEmoji(birthCountry.iso2)}</span>
-                    <div>
-                      <h3 className="font-bold">{birthCountry.name}</h3>
-                      <p className="text-sm text-muted-foreground">
-                        {PYRAMID_TYPE_INFO[birthCountry.pyramidType].label}
-                      </p>
+                {birthCountryId && birthCountryId !== nationalityId && (
+                  <Button 
+                    variant="ghost" 
+                    size="sm"
+                    onClick={() => setNationalityId(birthCountryId)}
+                  >
+                    Même que pays de naissance
+                  </Button>
+                )}
+              </div>
+
+              {/* Country Info Cards */}
+              {(birthCountry || nationalityCountry) && (
+                <div className="grid gap-4 md:grid-cols-2">
+                  {birthCountry && (
+                    <div className="glass-card rounded-xl p-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <MapPin className="w-4 h-4 text-muted-foreground" />
+                        <span className="text-xs text-muted-foreground">Naissance</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <span className="text-2xl">{getFlagEmoji(birthCountry.iso2)}</span>
+                        <div>
+                          <h3 className="font-bold">{birthCountry.name}</h3>
+                          <p className="text-xs text-muted-foreground">
+                            {PYRAMID_TYPE_INFO[birthCountry.pyramidType].label}
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <p className="text-sm text-muted-foreground italic">
-                    "{birthCountry.ruleOfGold}"
-                  </p>
+                  )}
+                  {nationalityCountry && nationalityId !== birthCountryId && (
+                    <div className="glass-card rounded-xl p-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Flag className="w-4 h-4 text-muted-foreground" />
+                        <span className="text-xs text-muted-foreground">Nationalité</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <span className="text-2xl">{getFlagEmoji(nationalityCountry.iso2)}</span>
+                        <div>
+                          <h3 className="font-bold">{nationalityCountry.name}</h3>
+                          <p className="text-xs text-muted-foreground">
+                            {PYRAMID_TYPE_INFO[nationalityCountry.pyramidType].label}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
