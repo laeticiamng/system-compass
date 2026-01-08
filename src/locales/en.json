@@ -3284,5 +3284,64 @@
     "generating": "Generating...",
     "play": "Play",
     "pause": "Pause"
+  },
+  "fiscal": {
+    "title": "Fiscal System",
+    "salaryCalculator": "Net Salary Calculator",
+    "description": "Estimate your real net salary with taxes, social charges, and cost of living",
+    "grossAnnual": "Annual gross salary",
+    "grossMonthly": "Monthly gross",
+    "netMonthly": "Monthly net",
+    "netAnnual": "Annual net",
+    "purchasingPower": "Purchasing power",
+    "adjustedForCostOfLiving": "Adjusted for local cost of living",
+    "healthcareCost": "Healthcare cost/year",
+    "insuranceAndCopays": "Insurance + copays",
+    "deductionBreakdown": "Deduction breakdown",
+    "incomeTax": "Income tax",
+    "socialContributions": "Social contributions",
+    "healthInsurance": "Health insurance",
+    "pension": "Pension",
+    "totalDeductions": "Total deducted",
+    "compareWith": "Compare with another country",
+    "selectCountry": "Select a country",
+    "selectProfession": "Select a profession",
+    "emptyState": "Select a country and profession to calculate your net salary",
+    "analysis": "Comparative analysis",
+    "winner": "Best",
+    "demand": {
+      "very_high": "Very high international demand",
+      "high": "High international demand",
+      "medium": "Medium demand",
+      "low": "Local demand"
+    },
+    "taxLevel": {
+      "none": "No income tax",
+      "low": "Low taxes",
+      "moderate": "Moderate taxes",
+      "high": "High taxes"
+    },
+    "socialLevel": {
+      "low": "Low social charges",
+      "moderate": "Moderate social charges",
+      "high": "High social charges"
+    },
+    "healthcareType": {
+      "public": "Full public healthcare coverage",
+      "private": "Mandatory private insurance",
+      "mixed": "Mixed public/private system"
+    },
+    "costOfLiving": {
+      "veryLow": "Very low cost of living",
+      "low": "Low cost of living",
+      "moderate": "Moderate cost of living",
+      "high": "High cost of living",
+      "veryHigh": "Very high cost of living"
+    },
+    "remoteWork": "Remote work possible",
+    "onSiteRequired": "On-site required",
+    "effectiveRate": "Effective rate",
+    "monthlyNet": "Monthly net",
+    "annualNet": "Annual net"
   }
 }

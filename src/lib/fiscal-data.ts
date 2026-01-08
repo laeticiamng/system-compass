@@ -563,15 +563,336 @@ export const FISCAL_SYSTEMS: Record<string, CountryFiscalSystem> = {
   },
 };
 
+// Additional countries - Spain, Portugal, Italy, Morocco, Netherlands
+export const FISCAL_SYSTEMS_EXTENDED: Record<string, CountryFiscalSystem> = {
+  ...FISCAL_SYSTEMS,
+  
+  spain: {
+    countryId: 'spain',
+    currency: 'EUR',
+    exchangeToEUR: 1,
+    incomeTax: {
+      brackets: [
+        { min: 0, max: 12450, rate: 19 },
+        { min: 12450, max: 20200, rate: 24 },
+        { min: 20200, max: 35200, rate: 30 },
+        { min: 35200, max: 60000, rate: 37 },
+        { min: 60000, max: 300000, rate: 45 },
+        { min: 300000, max: null, rate: 47 },
+      ],
+      personalAllowance: 5550,
+      additionalDeductions: ['Impôt régional variable (+0-4%)'],
+    },
+    socialContributions: {
+      healthInsurance: 0,
+      pension: 4.7,
+      unemployment: 1.55,
+      other: 0.1,
+      total: 6.35,
+      cap: 56844,
+    },
+    employerContributions: {
+      total: 29.9,
+      notes: 'Charges patronales élevées',
+    },
+    healthcareCosts: {
+      publicCoverage: 'full',
+      privateInsuranceNeeded: false,
+      avgMonthlyPremium: 0,
+      outOfPocketEstimate: 200,
+      qualityNote: 'Excellent système public, temps d\'attente moyens',
+    },
+    mandatoryCosts: {
+      otherTaxes: [],
+    },
+    costOfLivingMultiplier: 0.75,
+    notes: [
+      'Impôts modérés + charges sociales basses (employé)',
+      'Système de santé public de qualité',
+      'Coût de vie attractif hors grandes villes',
+      'Régime beckham pour expats (flat tax 24%)',
+    ],
+  },
+  
+  portugal: {
+    countryId: 'portugal',
+    currency: 'EUR',
+    exchangeToEUR: 1,
+    incomeTax: {
+      brackets: [
+        { min: 0, max: 7703, rate: 14.5 },
+        { min: 7703, max: 11623, rate: 21 },
+        { min: 11623, max: 16472, rate: 26.5 },
+        { min: 16472, max: 21321, rate: 28.5 },
+        { min: 21321, max: 27146, rate: 35 },
+        { min: 27146, max: 39791, rate: 37 },
+        { min: 39791, max: 51997, rate: 43.5 },
+        { min: 51997, max: 81199, rate: 45 },
+        { min: 81199, max: null, rate: 48 },
+      ],
+      personalAllowance: 4104,
+      additionalDeductions: ['NHR régime (flat 20% pour professions qualifiées)'],
+    },
+    socialContributions: {
+      healthInsurance: 0,
+      pension: 11,
+      unemployment: 0,
+      other: 0,
+      total: 11,
+    },
+    employerContributions: {
+      total: 23.75,
+    },
+    healthcareCosts: {
+      publicCoverage: 'full',
+      privateInsuranceNeeded: false,
+      avgMonthlyPremium: 40,
+      outOfPocketEstimate: 300,
+      qualityNote: 'Système public correct, privé abordable et recommandé',
+    },
+    mandatoryCosts: {
+      otherTaxes: [],
+    },
+    costOfLivingMultiplier: 0.65,
+    notes: [
+      'Régime NHR très avantageux (20% flat pour qualifiés)',
+      'Coût de vie bas comparé à Europe occidentale',
+      'Retraites étrangères exonérées 10 ans (NHR)',
+      'Lisbonne/Porto plus chers que reste du pays',
+    ],
+  },
+  
+  italy: {
+    countryId: 'italy',
+    currency: 'EUR',
+    exchangeToEUR: 1,
+    incomeTax: {
+      brackets: [
+        { min: 0, max: 15000, rate: 23 },
+        { min: 15000, max: 28000, rate: 25 },
+        { min: 28000, max: 50000, rate: 35 },
+        { min: 50000, max: null, rate: 43 },
+      ],
+      personalAllowance: 0,
+      additionalDeductions: ['Additionnel régional (1-3%)', 'Additionnel communal (0-0.9%)'],
+    },
+    socialContributions: {
+      healthInsurance: 0,
+      pension: 9.19,
+      unemployment: 0,
+      other: 0.3,
+      total: 9.49,
+      cap: 113520,
+    },
+    employerContributions: {
+      total: 30,
+    },
+    healthcareCosts: {
+      publicCoverage: 'full',
+      privateInsuranceNeeded: false,
+      avgMonthlyPremium: 0,
+      outOfPocketEstimate: 250,
+      qualityNote: 'Système public de qualité, variable selon régions (Nord > Sud)',
+    },
+    mandatoryCosts: {
+      otherTaxes: [],
+    },
+    costOfLivingMultiplier: 0.85,
+    notes: [
+      'Impôts élevés mais système social complet',
+      'Nord plus développé et plus cher',
+      'Régime impatrié (-70% sur revenus étrangers)',
+      'Bureaucratie lourde',
+    ],
+  },
+  
+  morocco: {
+    countryId: 'morocco',
+    currency: 'MAD',
+    exchangeToEUR: 0.092,
+    incomeTax: {
+      brackets: [
+        { min: 0, max: 30000, rate: 0 },
+        { min: 30000, max: 50000, rate: 10 },
+        { min: 50000, max: 60000, rate: 20 },
+        { min: 60000, max: 80000, rate: 30 },
+        { min: 80000, max: 180000, rate: 34 },
+        { min: 180000, max: null, rate: 38 },
+      ],
+      personalAllowance: 30000,
+    },
+    socialContributions: {
+      healthInsurance: 2.26,
+      pension: 3.96,
+      unemployment: 0,
+      other: 0.57,
+      total: 6.79,
+    },
+    employerContributions: {
+      total: 18.5,
+    },
+    healthcareCosts: {
+      publicCoverage: 'partial',
+      privateInsuranceNeeded: true,
+      avgMonthlyPremium: 80,
+      outOfPocketEstimate: 500,
+      qualityNote: 'Cliniques privées de qualité à Casablanca/Rabat, public limité',
+    },
+    mandatoryCosts: {
+      otherTaxes: [],
+    },
+    costOfLivingMultiplier: 0.35,
+    notes: [
+      'Impôts modérés pour les salariés',
+      'Coût de vie très bas',
+      'Système de santé dual (privé recommandé)',
+      'Proche de l\'Europe, facile d\'accès',
+    ],
+  },
+  
+  netherlands: {
+    countryId: 'netherlands',
+    currency: 'EUR',
+    exchangeToEUR: 1,
+    incomeTax: {
+      brackets: [
+        { min: 0, max: 73031, rate: 36.93 },
+        { min: 73031, max: null, rate: 49.5 },
+      ],
+      personalAllowance: 0,
+      additionalDeductions: ['30% ruling pour expats (exonération 30% du salaire)'],
+    },
+    socialContributions: {
+      healthInsurance: 0,
+      pension: 17.9,
+      unemployment: 0,
+      other: 9.65,
+      total: 27.55,
+      cap: 66956,
+    },
+    employerContributions: {
+      total: 18,
+    },
+    healthcareCosts: {
+      publicCoverage: 'partial',
+      privateInsuranceNeeded: true,
+      avgMonthlyPremium: 130,
+      outOfPocketEstimate: 385,
+      qualityNote: 'Assurance obligatoire privée, excellent système',
+    },
+    mandatoryCosts: {
+      otherTaxes: [],
+    },
+    costOfLivingMultiplier: 1.1,
+    notes: [
+      '30% ruling très avantageux pour expats qualifiés',
+      'Assurance santé privée obligatoire',
+      'Impôts élevés mais infrastructures excellentes',
+      'Amsterdam très cher, autres villes plus abordables',
+    ],
+  },
+
+  senegal: {
+    countryId: 'senegal',
+    currency: 'XOF',
+    exchangeToEUR: 0.00152,
+    incomeTax: {
+      brackets: [
+        { min: 0, max: 630000, rate: 0 },
+        { min: 630000, max: 1500000, rate: 20 },
+        { min: 1500000, max: 4000000, rate: 30 },
+        { min: 4000000, max: 8000000, rate: 35 },
+        { min: 8000000, max: 13500000, rate: 37 },
+        { min: 13500000, max: null, rate: 40 },
+      ],
+      personalAllowance: 630000,
+    },
+    socialContributions: {
+      healthInsurance: 0,
+      pension: 5.6,
+      unemployment: 0,
+      other: 3,
+      total: 8.6,
+    },
+    employerContributions: {
+      total: 17.5,
+    },
+    healthcareCosts: {
+      publicCoverage: 'partial',
+      privateInsuranceNeeded: true,
+      avgMonthlyPremium: 60,
+      outOfPocketEstimate: 400,
+      qualityNote: 'Bonnes cliniques privées à Dakar, évacuation médicale conseillée',
+    },
+    mandatoryCosts: {
+      otherTaxes: [],
+    },
+    costOfLivingMultiplier: 0.30,
+    notes: [
+      'Fiscalité modérée pour l\'Afrique',
+      'Hub économique ouest-africain',
+      'Dakar relativement cher pour la région',
+      'Teranga (hospitalité) légendaire',
+    ],
+  },
+
+  cote_divoire: {
+    countryId: 'cote_divoire',
+    currency: 'XOF',
+    exchangeToEUR: 0.00152,
+    incomeTax: {
+      brackets: [
+        { min: 0, max: 300000, rate: 0 },
+        { min: 300000, max: 548000, rate: 10 },
+        { min: 548000, max: 979000, rate: 15 },
+        { min: 979000, max: 1519000, rate: 20 },
+        { min: 1519000, max: 2644000, rate: 25 },
+        { min: 2644000, max: 4669000, rate: 35 },
+        { min: 4669000, max: 10106000, rate: 45 },
+        { min: 10106000, max: null, rate: 60 },
+      ],
+      personalAllowance: 300000,
+    },
+    socialContributions: {
+      healthInsurance: 0,
+      pension: 6.3,
+      unemployment: 0,
+      other: 2.8,
+      total: 9.1,
+    },
+    employerContributions: {
+      total: 15.75,
+    },
+    healthcareCosts: {
+      publicCoverage: 'partial',
+      privateInsuranceNeeded: true,
+      avgMonthlyPremium: 70,
+      outOfPocketEstimate: 450,
+      qualityNote: 'Abidjan a de bonnes cliniques privées',
+    },
+    mandatoryCosts: {
+      otherTaxes: [],
+    },
+    costOfLivingMultiplier: 0.32,
+    notes: [
+      'Économie la plus dynamique d\'Afrique francophone',
+      'Impôts élevés sur hauts revenus',
+      'Abidjan = hub régional',
+      'Coût de vie modéré',
+    ],
+  },
+};
+
 /**
  * Calculate net salary with full breakdown
+ * Uses FISCAL_SYSTEMS_EXTENDED for more countries
  */
 export function calculateNetSalary(
   countryId: string,
   grossAnnualSalary: number,
   includeHealthcare: boolean = true
 ): NetSalaryResult | null {
-  const fiscal = FISCAL_SYSTEMS[countryId];
+  const fiscal = FISCAL_SYSTEMS_EXTENDED[countryId] || FISCAL_SYSTEMS[countryId];
   if (!fiscal) return null;
   
   const grossAnnual = grossAnnualSalary;
@@ -716,8 +1037,8 @@ export function compareSalaries(
   }
   
   // Healthcare comparison
-  const fiscal1 = FISCAL_SYSTEMS[country1Id];
-  const fiscal2 = FISCAL_SYSTEMS[country2Id];
+  const fiscal1 = FISCAL_SYSTEMS_EXTENDED[country1Id] || FISCAL_SYSTEMS[country1Id];
+  const fiscal2 = FISCAL_SYSTEMS_EXTENDED[country2Id] || FISCAL_SYSTEMS[country2Id];
   
   if (fiscal1 && fiscal2) {
     if (fiscal2.healthcareCosts.privateInsuranceNeeded && !fiscal1.healthcareCosts.privateInsuranceNeeded) {
@@ -744,7 +1065,7 @@ export function compareSalaries(
  * Get fiscal summary for a country
  */
 export function getFiscalSummary(countryId: string): string[] {
-  const fiscal = FISCAL_SYSTEMS[countryId];
+  const fiscal = FISCAL_SYSTEMS_EXTENDED[countryId] || FISCAL_SYSTEMS[countryId];
   if (!fiscal) return ['Données fiscales non disponibles'];
   
   const summary: string[] = [];

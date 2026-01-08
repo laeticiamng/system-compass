@@ -3642,5 +3642,64 @@
     "generating": "Génération en cours...",
     "play": "Jouer",
     "pause": "Pause"
+  },
+  "fiscal": {
+    "title": "Système Fiscal",
+    "salaryCalculator": "Calculateur de Salaire Net",
+    "description": "Estimez votre salaire net réel avec impôts, charges sociales et coût de la vie",
+    "grossAnnual": "Salaire brut annuel",
+    "grossMonthly": "Brut mensuel",
+    "netMonthly": "Net mensuel",
+    "netAnnual": "Net annuel",
+    "purchasingPower": "Pouvoir d'achat",
+    "adjustedForCostOfLiving": "Ajusté au coût de vie local",
+    "healthcareCost": "Coût santé/an",
+    "insuranceAndCopays": "Assurance + frais",
+    "deductionBreakdown": "Détail des prélèvements",
+    "incomeTax": "Impôt sur le revenu",
+    "socialContributions": "Cotisations sociales",
+    "healthInsurance": "Assurance maladie",
+    "pension": "Retraite",
+    "totalDeductions": "Total prélevé",
+    "compareWith": "Comparer avec un autre pays",
+    "selectCountry": "Sélectionner un pays",
+    "selectProfession": "Sélectionner une profession",
+    "emptyState": "Sélectionnez un pays et une profession pour calculer votre salaire net",
+    "analysis": "Analyse comparative",
+    "winner": "Meilleur",
+    "demand": {
+      "very_high": "Très demandé internationalement",
+      "high": "Demandé internationalement",
+      "medium": "Demande moyenne",
+      "low": "Demande locale"
+    },
+    "taxLevel": {
+      "none": "Pas d'impôt sur le revenu",
+      "low": "Impôts faibles",
+      "moderate": "Impôts modérés",
+      "high": "Impôts élevés"
+    },
+    "socialLevel": {
+      "low": "Charges sociales basses",
+      "moderate": "Charges sociales modérées",
+      "high": "Charges sociales élevées"
+    },
+    "healthcareType": {
+      "public": "Couverture santé publique complète",
+      "private": "Assurance privée obligatoire",
+      "mixed": "Système mixte public/privé"
+    },
+    "costOfLiving": {
+      "veryLow": "Coût de la vie très bas",
+      "low": "Coût de la vie bas",
+      "moderate": "Coût de la vie modéré",
+      "high": "Coût de la vie élevé",
+      "veryHigh": "Coût de la vie très élevé"
+    },
+    "remoteWork": "Télétravail possible",
+    "onSiteRequired": "Présentiel requis",
+    "effectiveRate": "Taux effectif",
+    "monthlyNet": "Net mensuel",
+    "annualNet": "Net annuel"
   }
 }
