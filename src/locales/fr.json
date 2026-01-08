@@ -4042,49 +4042,57 @@
   },
   "lifeGame": {
     "hero": {
-      "badge": "Simulation de vie réaliste",
+      "badge": "🎮 Jeu de plateau éducatif",
       "title1": "Le Jeu de",
       "titleHighlight": "LA VIE",
-      "subtitle": "Tu ne choisis pas où tu nais. Tu choisis comment tu navigues. Simule des trajectoires de vie réelles à travers les systèmes du monde.",
-      "playCta": "Jouer maintenant",
-      "learnCta": "Comment ça marche",
+      "subtitle": "Un jeu de simulation où tu incarnes un personnage fictif. Découvre comment fonctionne le monde à travers des trajectoires aléatoires — ce n'est pas ta vraie vie !",
+      "playCta": "Lancer une partie",
+      "learnCta": "Règles du jeu",
       "stats": {
-        "archetypes": "Personnages",
-        "systems": "Systèmes",
-        "possibilities": "Trajectoires"
+        "archetypes": "Personnages jouables",
+        "systems": "Systèmes mondiaux",
+        "possibilities": "Trajectoires possibles"
       }
+    },
+    "clarification": {
+      "title": "⚠️ Ce n'est PAS ta vraie vie",
+      "point1": "Tu reçois un personnage fictif au hasard (héritier, réfugié, entrepreneur...)",
+      "point2": "Tu explores les mécanismes du monde sans risque réel",
+      "point3": "C'est un outil pédagogique, pas une prédiction pour toi",
+      "realLife": "Pour planifier ta vraie vie →",
+      "realLifeLink": "Clés de Sortie"
     },
     "tagline": {
       "quote": "Certains naissent sur la ligne d'arrivée. D'autres doivent courir un marathon avec des chaînes aux pieds. Ce jeu montre pourquoi.",
       "author": "— La réalité, sans filtre"
     },
     "features": {
-      "title": "Ce qui rend ce jeu différent",
-      "subtitle": "Pas un jeu de hasard. Un miroir de la réalité systémique.",
+      "title": "Comment fonctionne le jeu",
+      "subtitle": "Un jeu de plateau où le hasard et la stratégie se mélangent.",
       "systems": {
         "title": "6 Systèmes Mondiaux",
-        "description": "Chaque pays fonctionne différemment. Certains récompensent la compétence, d'autres les connexions, d'autres la prise de risque."
+        "description": "Chaque pays du plateau fonctionne différemment. Apprends les règles invisibles de chaque système."
       },
       "characters": {
-        "title": "12+ Archétypes Réels",
-        "description": "Du fils de bonne famille au réfugié de guerre. Chaque personnage a des avantages et contraintes uniques."
+        "title": "12+ Personnages Jouables",
+        "description": "Du fils de bonne famille au réfugié. Tu ne choisis pas toujours — parfois le destin décide pour toi."
       },
       "choices": {
-        "title": "Choix Conséquents",
-        "description": "Travailler, étudier, migrer, entreprendre... Chaque action a un coût et des conséquences en chaîne."
+        "title": "Choix Stratégiques",
+        "description": "Travailler, étudier, migrer, entreprendre... Gère tes ressources comme dans un jeu de gestion."
       },
       "risks": {
-        "title": "Raccourcis Dangereux",
-        "description": "Le marché noir, la corruption, les faux papiers. Gains rapides, mais risque de tout perdre."
+        "title": "Raccourcis Risqués",
+        "description": "Le marché noir, la corruption. Gains rapides au risque de tout perdre — comme dans la vraie vie."
       }
     },
     "resources": {
       "title": "6 Ressources à Gérer",
-      "subtitle": "Tu n'auras jamais tout. Choisis ce que tu sacrifies."
+      "subtitle": "Dans le jeu comme dans la vie, tu n'auras jamais tout."
     },
     "archetypes": {
-      "title": "Qui seras-tu ?",
-      "subtitle": "Chaque personnage représente une réalité vécue par des millions de personnes.",
+      "title": "Qui incarneras-tu ?",
+      "subtitle": "Chaque personnage a ses avantages et ses obstacles. La difficulté reflète les inégalités du monde réel.",
       "seeAll": "Voir tous les personnages"
     },
     "difficulty": {
@@ -4094,8 +4102,8 @@
       "extreme": "Extrême"
     },
     "warning": {
-      "title": "Avertissement",
-      "description": "Ce jeu aborde des réalités difficiles de façon ludique. Les raccourcis du jeu représentent des choix que des millions de personnes font par désespoir. Les conséquences catastrophiques reflètent des drames réels : prison, expulsion, destruction familiale.",
+      "title": "Contenu éducatif sensible",
+      "description": "Ce jeu aborde des réalités difficiles de façon ludique. Les situations du jeu sont inspirées de vraies expériences vécues par des millions de personnes.",
       "topics": {
         "migration": "Migration forcée",
         "corruption": "Corruption systémique",
@@ -4104,9 +4112,9 @@
       }
     },
     "cta": {
-      "title": "Prêt à tester ta stratégie de vie ?",
-      "subtitle": "Découvre si tu aurais réussi avec une autre main de départ.",
-      "button": "Commencer ma vie"
+      "title": "Prêt à jouer ?",
+      "subtitle": "Lance une partie et découvre un personnage au hasard. Réussiras-tu à naviguer le système ?",
+      "button": "Lancer le jeu"
     }
   },
   "archetypes": {

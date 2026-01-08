@@ -104,9 +104,37 @@ export default function LifeGame() {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
             {t('lifeGame.hero.subtitle')}
           </p>
+
+          {/* Clarification Box */}
+          <div className="glass-card rounded-xl p-4 md:p-6 max-w-2xl mx-auto mb-8 border-amber-500/30 bg-amber-500/5 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <h3 className="font-semibold text-amber-400 mb-3 text-lg">
+              {t('lifeGame.clarification.title')}
+            </h3>
+            <ul className="text-sm text-muted-foreground space-y-2 text-left">
+              <li className="flex items-start gap-2">
+                <span className="text-amber-400">•</span>
+                {t('lifeGame.clarification.point1')}
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-amber-400">•</span>
+                {t('lifeGame.clarification.point2')}
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-amber-400">•</span>
+                {t('lifeGame.clarification.point3')}
+              </li>
+            </ul>
+            <div className="mt-4 pt-3 border-t border-amber-500/20">
+              <Link to="/exit-keys" className="text-sm text-primary hover:underline inline-flex items-center gap-1">
+                {t('lifeGame.clarification.realLife')}
+                <span className="font-medium">{t('lifeGame.clarification.realLifeLink')}</span>
+                <ArrowRight className="w-3 h-3" />
+              </Link>
+            </div>
+          </div>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style={{ animationDelay: '0.4s' }}>
