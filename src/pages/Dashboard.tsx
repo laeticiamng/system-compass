@@ -11,7 +11,10 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Link } from 'react-router-dom';
+import { ProgressStats } from '@/components/dashboard/ProgressStats';
+import { DeadlineCalendar } from '@/components/dashboard/DeadlineCalendar';
 import { 
   CheckCircle2, 
   Circle, 
@@ -29,7 +32,10 @@ import {
   ChevronDown,
   Calendar,
   Save,
-  X
+  X,
+  BarChart3,
+  CalendarDays,
+  ListChecks
 } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -581,8 +587,41 @@ export default function Dashboard() {
               </CardContent>
             </Card>
 
-            {/* Phases */}
-            <div className="space-y-6">
+            {/* Tabs for different views */}
+            <Tabs defaultValue="plan" className="w-full">
+              <TabsList className="grid w-full grid-cols-3 mb-6">
+                <TabsTrigger value="plan" className="gap-2">
+                  <ListChecks className="w-4 h-4" />
+                  <span className="hidden sm:inline">Plan</span>
+                </TabsTrigger>
+                <TabsTrigger value="stats" className="gap-2">
+                  <BarChart3 className="w-4 h-4" />
+                  <span className="hidden sm:inline">Statistiques</span>
+                </TabsTrigger>
+                <TabsTrigger value="calendar" className="gap-2">
+                  <CalendarDays className="w-4 h-4" />
+                  <span className="hidden sm:inline">Calendrier</span>
+                </TabsTrigger>
+              </TabsList>
+
+              {/* Stats Tab */}
+              <TabsContent value="stats">
+                {progress && (
+                  <ProgressStats progress={progress} exitKey={selectedKey} />
+                )}
+              </TabsContent>
+
+              {/* Calendar Tab */}
+              <TabsContent value="calendar">
+                {progress && (
+                  <DeadlineCalendar progress={progress} exitKey={selectedKey} />
+                )}
+              </TabsContent>
+
+              {/* Plan Tab */}
+              <TabsContent value="plan">
+                {/* Phases */}
+                <div className="space-y-6">
               {selectedKey.steps.map((phase, phaseIndex) => {
                 const phaseProgress = getPhaseProgress(phaseIndex);
                 const phaseComplete = phaseProgress.completed === phaseProgress.total && phaseProgress.total > 0;
@@ -881,6 +920,8 @@ export default function Dashboard() {
                 </CardContent>
               </Card>
             </div>
+              </TabsContent>
+            </Tabs>
           </>
         )}
       </div>
