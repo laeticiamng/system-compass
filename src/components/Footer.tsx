@@ -61,6 +61,7 @@ export function Footer() {
               <li><Link to="/life-trajectory" className="hover:text-foreground transition-colors">{t('nav.trajectory')}</Link></li>
               <li><Link to="/exit-keys" className="hover:text-foreground transition-colors">{t('nav.exitKeys')}</Link></li>
               <li><Link to="/pyramid-quiz" className="hover:text-foreground transition-colors">{t('nav.quiz')}</Link></li>
+              <li><Link to="/systemic-mistakes" className="hover:text-foreground transition-colors text-destructive/80 hover:text-destructive">⚠️ Erreurs fréquentes</Link></li>
             </ul>
           </div>
 
