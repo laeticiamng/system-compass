@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Compass, Heart, RotateCcw } from 'lucide-react';
+import { Compass, Heart, RotateCcw, RefreshCw } from 'lucide-react';
 import { CountryIndicator } from './CountryIndicator';
 import { useResetOnboarding } from './OnboardingDialog';
 import { Button } from './ui/button';
@@ -9,11 +9,19 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { toast } from 'sonner';
+
+const DISCLAIMER_DISMISSED_KEY = 'pyramid-disclaimer-dismissed';
 
 export function Footer() {
   const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
   const resetOnboarding = useResetOnboarding();
+
+  const resetDisclaimerBanner = () => {
+    localStorage.removeItem(DISCLAIMER_DISMISSED_KEY);
+    toast.success(t('footer.disclaimerReset', 'Bandeau disclaimer réinitialisé'));
+  };
 
   return (
     <footer className="border-t border-border/50 bg-background/50 backdrop-blur-sm">
@@ -87,6 +95,22 @@ export function Footer() {
               </TooltipTrigger>
               <TooltipContent>
                 <p>{t('footer.restartTutorialTooltip', 'Relancer le tutoriel de bienvenue')}</p>
+              </TooltipContent>
+            </Tooltip>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button 
+                  variant="ghost" 
+                  size="sm"
+                  onClick={resetDisclaimerBanner}
+                  className="text-muted-foreground/60 hover:text-foreground h-auto py-1.5 text-xs"
+                >
+                  <RefreshCw className="w-3 h-3 mr-1" />
+                  <span>{t('footer.resetDisclaimer', 'Réafficher avertissements')}</span>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{t('footer.resetDisclaimerTooltip', 'Réafficher le bandeau disclaimer sur les pages de simulation')}</p>
               </TooltipContent>
             </Tooltip>
           </div>
