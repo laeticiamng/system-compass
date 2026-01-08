@@ -1290,6 +1290,29 @@
         "plan5Years": ["Redditi diversificati internazionalmente", "Seconda residenza assicurata", "Asset protetti da volatilità", "Piano di uscita pronto"],
         "planB": "Paesi UE via programmi cittadinanza. Georgia, Serbia per ingresso facile. EAU per opzione regionale."
       }
+    },
+    "netherlands": {
+      "name": "Paesi Bassi",
+      "region": "Europa Occidentale",
+      "ruleOfGold": "Sii diretto, sii competente, sii integrato. Il sistema premia chi contribuisce.",
+      "pyramid": {
+        "top": "Istituzioni basate sul consenso e commercio",
+        "institutions": "Burocrazia efficiente e trasparente",
+        "gatekeepers": "Credenziali professionali e integrazione",
+        "valueCreators": "Professionisti qualificati, imprenditori, commercianti",
+        "base": "Forza lavoro ben protetta con diritti forti",
+        "realAsset": "Fiducia, efficienza e reti commerciali"
+      },
+      "whoWins": ["Professionisti altamente qualificati", "Lavoratori tech e imprenditori", "Chi si integra culturalmente", "Comunicatori diretti"],
+      "whoLoses": ["Chi evita l'integrazione", "Non parlanti olandese a lungo termine", "Personalità gerarchiche", "Chi cerca ottimizzazione fiscale"],
+      "playbook": {
+        "do": ["Ottenere la regola del 30% se idonei", "Imparare l'olandese gradualmente", "Integrarsi nella cultura locale", "Costruire rete professionale", "Adottare comunicazione diretta"],
+        "dont": ["Restare nella bolla expat a lungo termine", "Ignorare la lingua olandese", "Aspettarsi che la gerarchia funzioni", "Sottovalutare il mercato immobiliare", "Ignorare requisiti di integrazione"],
+        "plan30Days": ["Assicurare permesso di soggiorno/lavoro", "Richiedere la regola del 30%", "Registrarsi al gemeente", "Aprire conto bancario olandese"],
+        "plan12Months": ["Iniziare corso di olandese", "Costruire rete professionale", "Capire mercato immobiliare", "Integrarsi nella vita locale"],
+        "plan5Years": ["Raggiungere competenza in olandese", "Richiedere residenza permanente", "Considerare cittadinanza", "Costruire carriera a lungo termine"],
+        "planB": "I Paesi Bassi offrono hub UE con inglese. Considerare Germania per più opportunità, Belgio per costi inferiori, o UK per ambiente puramente anglofono."
+      }
     }
   },
   "pyramidQuiz": {

@@ -1290,6 +1290,29 @@
         "plan5Years": ["Internationaal gediversifieerde inkomsten", "Tweede verblijf verzekerd", "Vermogen beschermd tegen volatiliteit", "Exitplan klaar"],
         "planB": "EU-landen via burgerschapsprogramma's. Georgië, Servië voor makkelijke toegang. VAE voor regionale optie."
       }
+    },
+    "netherlands": {
+      "name": "Nederland",
+      "region": "West-Europa",
+      "ruleOfGold": "Wees direct, wees competent, wees geïntegreerd. Het systeem beloont wie bijdraagt.",
+      "pyramid": {
+        "top": "Op consensus gebaseerde instituties en handel",
+        "institutions": "Efficiënte, transparante bureaucratie",
+        "gatekeepers": "Professionele kwalificaties en integratie",
+        "valueCreators": "Gekwalificeerde professionals, ondernemers, handelaren",
+        "base": "Goed beschermde werknemers met sterke rechten",
+        "realAsset": "Vertrouwen, efficiëntie en handelsnetwerken"
+      },
+      "whoWins": ["Hoogopgeleide professionals", "Tech-werkers en ondernemers", "Cultureel geïntegreerden", "Directe communicators"],
+      "whoLoses": ["Wie integratie vermijdt", "Niet-Nederlands sprekenden op lange termijn", "Hiërarchische persoonlijkheden", "Wie belastingoptimalisatie zoekt"],
+      "playbook": {
+        "do": ["30%-regeling verkrijgen indien in aanmerking", "Nederlands leren uiteindelijk", "Integreren in lokale cultuur", "Professioneel netwerk bouwen", "Directe communicatie omarmen"],
+        "dont": ["Lang in expat-bubbel blijven", "Nederlandse taal negeren", "Verwachten dat hiërarchie werkt", "Woningmarkt onderschatten", "Integratie-eisen negeren"],
+        "plan30Days": ["Verblijfs-/werkvergunning veiligstellen", "30%-regeling aanvragen", "Registreren bij gemeente", "Nederlandse bankrekening openen"],
+        "plan12Months": ["Nederlandse cursus starten", "Professioneel netwerk bouwen", "Woningmarkt begrijpen", "Integreren in lokaal leven"],
+        "plan5Years": ["Nederlandse taalvaardigheid bereiken", "Permanent verblijf aanvragen", "Burgerschap overwegen", "Langetermijncarrière bouwen"],
+        "planB": "Nederland biedt EU-hub met Engels. Overweeg Duitsland voor meer kansen, België voor lagere kosten, of UK voor pure Engelse omgeving."
+      }
     }
   },
   "pyramidQuiz": {

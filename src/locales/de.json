@@ -1290,6 +1290,29 @@
         "plan5Years": ["International diversifizierte Einkommen", "Zweiter Wohnsitz gesichert", "Vermögenswerte vor Volatilität geschützt", "Ausstiegsplan bereit"],
         "planB": "EU-Länder via Staatsbürgerschaftsprogramme. Georgien, Serbien für einfache Einreise. VAE für regionale Option."
       }
+    },
+    "netherlands": {
+      "name": "Niederlande",
+      "region": "Westeuropa",
+      "ruleOfGold": "Sei direkt, sei kompetent, sei integriert. Das System belohnt die, die beitragen.",
+      "pyramid": {
+        "top": "Konsensbasierte Institutionen und Handel",
+        "institutions": "Effiziente, transparente Bürokratie",
+        "gatekeepers": "Berufliche Qualifikationen und Integration",
+        "valueCreators": "Qualifizierte Fachleute, Unternehmer, Händler",
+        "base": "Gut geschützte Arbeitskräfte mit starken Rechten",
+        "realAsset": "Vertrauen, Effizienz und Handelsnetzwerke"
+      },
+      "whoWins": ["Hochqualifizierte Fachleute", "Tech-Arbeiter und Unternehmer", "Kulturell Integrierte", "Direkte Kommunikatoren"],
+      "whoLoses": ["Integrations-Verweigerer", "Langfristig Nicht-Niederländisch-Sprechende", "Hierarchische Persönlichkeiten", "Steueroptimierung-Suchende"],
+      "playbook": {
+        "do": ["30%-Regelung nutzen falls berechtigt", "Niederländisch lernen", "In lokale Kultur integrieren", "Berufliches Netzwerk aufbauen", "Direkte Kommunikation annehmen"],
+        "dont": ["Langfristig in Expat-Blase bleiben", "Niederländische Sprache ignorieren", "Hierarchie erwarten", "Wohnungsmarkt unterschätzen", "Integrationsanforderungen ignorieren"],
+        "plan30Days": ["Aufenthalts-/Arbeitserlaubnis sichern", "30%-Regelung beantragen", "Bei Gemeinde registrieren", "Niederländisches Bankkonto eröffnen"],
+        "plan12Months": ["Niederländisch-Kurs beginnen", "Berufliches Netzwerk aufbauen", "Wohnungsmarkt verstehen", "In lokales Leben integrieren"],
+        "plan5Years": ["Niederländisch-Kenntnisse erreichen", "Daueraufenthalt beantragen", "Staatsbürgerschaft erwägen", "Langfristige Karriere aufbauen"],
+        "planB": "Niederlande bieten EU-Hub mit Englisch. Erwägen Sie Deutschland für mehr Möglichkeiten, Belgien für niedrigere Kosten, oder UK für rein englische Umgebung."
+      }
     }
   },
   "pyramidQuiz": {
