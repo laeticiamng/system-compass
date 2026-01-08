@@ -62,6 +62,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li><Link to="/dashboard" className="hover:text-foreground transition-colors">{t('nav.dashboard')}</Link></li>
               <li><Link to="/auth" className="hover:text-foreground transition-colors">{t('auth.login')}</Link></li>
+              <li><Link to="/about" className="hover:text-foreground transition-colors">{t('footer.about', 'À propos')}</Link></li>
             </ul>
           </div>
         </div>

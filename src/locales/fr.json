@@ -80,7 +80,49 @@
     "tools": "Outils",
     "account": "Compte",
     "profileTest": "Test de profil",
-    "madeWith": "Fait avec"
+    "madeWith": "Fait avec",
+    "about": "À propos"
+  },
+  "about": {
+    "badge": "Notre mission",
+    "title": "Outil de lucidité stratégique",
+    "subtitle": "Simulateur de décisions dans des systèmes réels. Outil d'analyse uniquement.",
+    "whatWeAre": {
+      "title": "Ce que nous sommes",
+      "point1": "Un simulateur pour tester des décisions avant de les vivre",
+      "point2": "Un outil d'analyse des systèmes (fiscaux, sociaux, migratoires)",
+      "point3": "Une grille de lecture pour comprendre comment fonctionne le monde",
+      "point4": "Un espace de réflexion stratégique, pas de jugement"
+    },
+    "whatWeAreNot": {
+      "title": "Ce que nous ne sommes PAS",
+      "point1": "Un cabinet de conseil juridique, fiscal ou médical",
+      "point2": "Un coach de vie ou un service de développement personnel",
+      "point3": "Une promesse de réussite ou de résultats garantis",
+      "point4": "Un outil qui te dit quoi faire — tu restes responsable de tes décisions"
+    },
+    "modes": {
+      "title": "Deux façons d'utiliser l'outil",
+      "simulation": {
+        "title": "Simulation personnelle",
+        "description": "Analyse TA situation réelle, teste TES options, comprends les conséquences de TES choix potentiels."
+      },
+      "game": {
+        "title": "Mode éducatif (jeu)",
+        "description": "Incarne un personnage FICTIF au hasard. Découvre les mécanismes du monde sans risque. C'est un jeu pédagogique."
+      }
+    },
+    "origin": {
+      "title": "Pourquoi cet outil existe",
+      "paragraph1": "Cet outil a été créé par quelqu'un qui a perdu des années à faire des choix sans comprendre le système dans lequel il évoluait.",
+      "paragraph2": "Mauvais pays, mauvaise carrière, mauvais timing — pas par manque d'intelligence, mais par manque de grille de lecture.",
+      "paragraph3": "Pyramid Compass est né de cette frustration : offrir à tous l'analyse que seuls les privilégiés reçoivent de leur entourage.",
+      "conclusion": "Ce n'est pas un outil qui te dit quoi faire. C'est un outil qui t'aide à VOIR — pour que TU décides en connaissance de cause."
+    },
+    "forEveryone": {
+      "title": "Pour tout le monde",
+      "subtitle": "Quel que soit ton point de départ, tu mérites d'avoir accès à l'information."
+    }
   },
   "nav": {
     "start": "Accueil",

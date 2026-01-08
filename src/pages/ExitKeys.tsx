@@ -271,7 +271,10 @@ export default function ExitKeys() {
                 {t('exitKeys.title', 'Trouvez Votre Clé de Sortie')}
               </h1>
               <p className="text-muted-foreground">
-                {t('exitKeys.subtitle', 'La stratégie optimale pour votre situation unique')}
+                {t('exitKeys.subtitle', 'Simulez et analysez les stratégies adaptées à votre situation')}
+              </p>
+              <p className="text-xs text-muted-foreground/70 mt-1">
+                {t('common.disclaimer')}
               </p>
             </div>
           </div>

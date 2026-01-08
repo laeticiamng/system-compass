@@ -24,6 +24,7 @@ import NotFound from "./pages/NotFound";
 import ExitKeys from "./pages/ExitKeys";
 import CompareExitKeys from "./pages/CompareExitKeys";
 import Dashboard from "./pages/Dashboard";
+import About from "./pages/About";
 
 const queryClient = new QueryClient();
 
@@ -55,6 +56,7 @@ const App = () => (
                   <Route path="/exit-keys" element={<ExitKeys />} />
                   <Route path="/exit-keys/compare" element={<CompareExitKeys />} />
                   <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/about" element={<About />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>

@@ -223,6 +223,9 @@ export default function CompareUnified() {
           <p className="text-muted-foreground max-w-xl mx-auto text-sm md:text-base">
             {t('compare.subtitle')}
           </p>
+          <p className="text-xs text-muted-foreground/70 mt-2 max-w-lg mx-auto">
+            {t('common.disclaimer')}
+          </p>
         </div>
 
         {/* Mode Switcher */}

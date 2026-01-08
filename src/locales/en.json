@@ -80,7 +80,49 @@
     "tools": "Tools",
     "account": "Account",
     "profileTest": "Profile Test",
-    "madeWith": "Made with"
+    "madeWith": "Made with",
+    "about": "About"
+  },
+  "about": {
+    "badge": "Our mission",
+    "title": "Strategic Clarity Tool",
+    "subtitle": "Decision simulator for real-world systems. Analysis tool only.",
+    "whatWeAre": {
+      "title": "What we are",
+      "point1": "A simulator to test decisions before you live them",
+      "point2": "An analysis tool for systems (fiscal, social, migration)",
+      "point3": "A framework for understanding how the world works",
+      "point4": "A space for strategic reflection, not judgment"
+    },
+    "whatWeAreNot": {
+      "title": "What we are NOT",
+      "point1": "A legal, tax, or medical advisory firm",
+      "point2": "A life coach or personal development service",
+      "point3": "A promise of success or guaranteed results",
+      "point4": "A tool that tells you what to do — you remain responsible for your decisions"
+    },
+    "modes": {
+      "title": "Two ways to use the tool",
+      "simulation": {
+        "title": "Personal Simulation",
+        "description": "Analyze YOUR real situation, test YOUR options, understand the consequences of YOUR potential choices."
+      },
+      "game": {
+        "title": "Educational Mode (game)",
+        "description": "Play a FICTIONAL character at random. Discover the mechanics of the world without risk. It's an educational game."
+      }
+    },
+    "origin": {
+      "title": "Why this tool exists",
+      "paragraph1": "This tool was created by someone who lost years making choices without understanding the system they were operating in.",
+      "paragraph2": "Wrong country, wrong career, wrong timing — not from lack of intelligence, but from lack of a framework.",
+      "paragraph3": "Pyramid Compass was born from this frustration: to give everyone the analysis that only the privileged receive from their network.",
+      "conclusion": "This is not a tool that tells you what to do. It's a tool that helps you SEE — so YOU decide with full knowledge."
+    },
+    "forEveryone": {
+      "title": "For everyone",
+      "subtitle": "Whatever your starting point, you deserve access to information."
+    }
   },
   "nav": {
     "start": "Start",
