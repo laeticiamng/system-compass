@@ -3064,7 +3064,8 @@
     "gameName": "Nom de la partie",
     "nameRequired": "Le nom est requis",
     "saved": "Partie sauvegardée !",
-    "saveFailed": "Échec de la sauvegarde"
+    "saveFailed": "Échec de la sauvegarde",
+    "gameLoaded": "Partie chargée !"
   },
   "pyramidQuiz.cooperative": {
     "poolScore": "Score collectif",

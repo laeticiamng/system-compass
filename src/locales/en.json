@@ -2706,7 +2706,8 @@
     "gameName": "Game name",
     "nameRequired": "Name is required",
     "saved": "Game saved!",
-    "saveFailed": "Failed to save game"
+    "saveFailed": "Failed to save game",
+    "gameLoaded": "Game loaded!"
   },
   "pyramidQuiz.cooperative": {
     "poolScore": "Collective Score",
