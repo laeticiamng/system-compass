@@ -490,7 +490,7 @@ export const COUNTRY_EVENTS: GameEvent[] = [
 
 // ============== RISK EVENTS (Realistic dangers) ==============
 export interface RiskEvent extends GameEvent {
-  riskType: 'trafficking' | 'scam' | 'exploitation' | 'illegal_crossing' | 'document_fraud';
+  riskType: 'trafficking' | 'scam' | 'exploitation' | 'illegal_crossing' | 'document_fraud' | 'natural_disaster' | 'climate' | 'political';
   survivalChance: number; // 0-1 chance of surviving without major loss
   potentialOutcomes: {
     success: { probability: number; effect: Partial<GameResources>; description: string };
@@ -834,7 +834,7 @@ export const RISK_EVENTS: RiskEvent[] = [
   {
     id: 'natural_disaster',
     type: 'country',
-    riskType: 'illegal_crossing',
+    riskType: 'natural_disaster',
     label: 'events.risk.naturalDisaster.label',
     description: 'events.risk.naturalDisaster.description',
     icon: '🌊',
@@ -856,6 +856,288 @@ export const RISK_EVENTS: RiskEvent[] = [
         probability: 0.2, 
         effect: { health: -8, money: -5 }, 
         description: 'events.risk.naturalDisaster.catastrophic' 
+      },
+    },
+  },
+  // === CLIMATE & NATURAL DISASTER EVENTS ===
+  {
+    id: 'earthquake',
+    type: 'country',
+    riskType: 'natural_disaster',
+    label: 'events.risk.earthquake.label',
+    description: 'events.risk.earthquake.description',
+    icon: '🏚️',
+    effect: { health: -4, money: -3, mobility: -2 },
+    survivalChance: 0.7,
+    countryTypes: ['COMPETENCE_TRUST', 'HYBRID_TRANSITION', 'GROWTH_RISK'],
+    potentialOutcomes: {
+      success: { 
+        probability: 0.4, 
+        effect: { network: 2 }, 
+        description: 'events.risk.earthquake.success' 
+      },
+      failure: { 
+        probability: 0.4, 
+        effect: { health: -4, money: -5, mobility: -2 }, 
+        description: 'events.risk.earthquake.failure' 
+      },
+      catastrophic: { 
+        probability: 0.2, 
+        effect: { health: -10, money: -8 }, 
+        description: 'events.risk.earthquake.catastrophic' 
+      },
+    },
+  },
+  {
+    id: 'monsoon_flooding',
+    type: 'country',
+    riskType: 'climate',
+    label: 'events.risk.monsoonFlooding.label',
+    description: 'events.risk.monsoonFlooding.description',
+    icon: '🌧️',
+    effect: { health: -2, money: -3, mobility: -3 },
+    survivalChance: 0.8,
+    countryTypes: ['PROBLEM_RENT', 'HYBRID_TRANSITION', 'RESOURCE_EXTRACTION'],
+    potentialOutcomes: {
+      success: { 
+        probability: 0.5, 
+        effect: { network: 1 }, 
+        description: 'events.risk.monsoonFlooding.success' 
+      },
+      failure: { 
+        probability: 0.35, 
+        effect: { health: -3, money: -4, mobility: -4 }, 
+        description: 'events.risk.monsoonFlooding.failure' 
+      },
+      catastrophic: { 
+        probability: 0.15, 
+        effect: { health: -6, money: -6, mobility: -5 }, 
+        description: 'events.risk.monsoonFlooding.catastrophic' 
+      },
+    },
+  },
+  {
+    id: 'extreme_heat',
+    type: 'country',
+    riskType: 'climate',
+    label: 'events.risk.extremeHeat.label',
+    description: 'events.risk.extremeHeat.description',
+    icon: '🔥',
+    effect: { health: -3, time: -2 },
+    survivalChance: 0.85,
+    countryTypes: ['RESOURCE_EXTRACTION', 'PROBLEM_RENT', 'HYBRID_TRANSITION'],
+    potentialOutcomes: {
+      success: { 
+        probability: 0.55, 
+        effect: { health: 1 }, 
+        description: 'events.risk.extremeHeat.success' 
+      },
+      failure: { 
+        probability: 0.35, 
+        effect: { health: -4, time: -3, money: -2 }, 
+        description: 'events.risk.extremeHeat.failure' 
+      },
+      catastrophic: { 
+        probability: 0.1, 
+        effect: { health: -8 }, 
+        description: 'events.risk.extremeHeat.catastrophic' 
+      },
+    },
+  },
+  {
+    id: 'tropical_cyclone',
+    type: 'country',
+    riskType: 'natural_disaster',
+    label: 'events.risk.tropicalCyclone.label',
+    description: 'events.risk.tropicalCyclone.description',
+    icon: '🌀',
+    effect: { health: -3, money: -4, mobility: -3 },
+    survivalChance: 0.75,
+    countryTypes: ['GROWTH_RISK', 'HYBRID_TRANSITION', 'RESOURCE_EXTRACTION'],
+    potentialOutcomes: {
+      success: { 
+        probability: 0.4, 
+        effect: { network: 1 }, 
+        description: 'events.risk.tropicalCyclone.success' 
+      },
+      failure: { 
+        probability: 0.4, 
+        effect: { health: -4, money: -5, mobility: -4 }, 
+        description: 'events.risk.tropicalCyclone.failure' 
+      },
+      catastrophic: { 
+        probability: 0.2, 
+        effect: { health: -8, money: -8, mobility: -5 }, 
+        description: 'events.risk.tropicalCyclone.catastrophic' 
+      },
+    },
+  },
+  {
+    id: 'drought_famine',
+    type: 'country',
+    riskType: 'climate',
+    label: 'events.risk.droughtFamine.label',
+    description: 'events.risk.droughtFamine.description',
+    icon: '🏜️',
+    effect: { health: -3, money: -2 },
+    survivalChance: 0.7,
+    countryTypes: ['PROBLEM_RENT', 'RESOURCE_EXTRACTION'],
+    potentialOutcomes: {
+      success: { 
+        probability: 0.35, 
+        effect: { network: 1, skills: 1 }, 
+        description: 'events.risk.droughtFamine.success' 
+      },
+      failure: { 
+        probability: 0.45, 
+        effect: { health: -4, money: -4, time: -2 }, 
+        description: 'events.risk.droughtFamine.failure' 
+      },
+      catastrophic: { 
+        probability: 0.2, 
+        effect: { health: -8, money: -5 }, 
+        description: 'events.risk.droughtFamine.catastrophic' 
+      },
+    },
+  },
+  {
+    id: 'volcanic_eruption',
+    type: 'country',
+    riskType: 'natural_disaster',
+    label: 'events.risk.volcanicEruption.label',
+    description: 'events.risk.volcanicEruption.description',
+    icon: '🌋',
+    effect: { health: -4, mobility: -4 },
+    survivalChance: 0.65,
+    countryTypes: ['HYBRID_TRANSITION', 'RESOURCE_EXTRACTION'],
+    potentialOutcomes: {
+      success: { 
+        probability: 0.3, 
+        effect: { network: 2 }, 
+        description: 'events.risk.volcanicEruption.success' 
+      },
+      failure: { 
+        probability: 0.45, 
+        effect: { health: -5, mobility: -5, money: -4 }, 
+        description: 'events.risk.volcanicEruption.failure' 
+      },
+      catastrophic: { 
+        probability: 0.25, 
+        effect: { health: -10, mobility: -8 }, 
+        description: 'events.risk.volcanicEruption.catastrophic' 
+      },
+    },
+  },
+  {
+    id: 'wildfire',
+    type: 'country',
+    riskType: 'climate',
+    label: 'events.risk.wildfire.label',
+    description: 'events.risk.wildfire.description',
+    icon: '🔥',
+    effect: { health: -2, money: -3 },
+    survivalChance: 0.8,
+    countryTypes: ['GROWTH_RISK', 'STABILITY_REDIS', 'COMPETENCE_TRUST'],
+    potentialOutcomes: {
+      success: { 
+        probability: 0.5, 
+        effect: { network: 1 }, 
+        description: 'events.risk.wildfire.success' 
+      },
+      failure: { 
+        probability: 0.35, 
+        effect: { health: -3, money: -5, mobility: -2 }, 
+        description: 'events.risk.wildfire.failure' 
+      },
+      catastrophic: { 
+        probability: 0.15, 
+        effect: { health: -6, money: -8 }, 
+        description: 'events.risk.wildfire.catastrophic' 
+      },
+    },
+  },
+  // === POLITICAL & SOCIAL RISK EVENTS ===
+  {
+    id: 'civil_unrest',
+    type: 'country',
+    riskType: 'political',
+    label: 'events.risk.civilUnrest.label',
+    description: 'events.risk.civilUnrest.description',
+    icon: '🔥',
+    effect: { health: -2, mobility: -3, network: -1 },
+    survivalChance: 0.75,
+    countryTypes: ['PROBLEM_RENT', 'HYBRID_TRANSITION'],
+    potentialOutcomes: {
+      success: { 
+        probability: 0.4, 
+        effect: { network: 2 }, 
+        description: 'events.risk.civilUnrest.success' 
+      },
+      failure: { 
+        probability: 0.45, 
+        effect: { health: -3, mobility: -4, money: -2 }, 
+        description: 'events.risk.civilUnrest.failure' 
+      },
+      catastrophic: { 
+        probability: 0.15, 
+        effect: { health: -6, mobility: -6 }, 
+        description: 'events.risk.civilUnrest.catastrophic' 
+      },
+    },
+  },
+  {
+    id: 'arbitrary_detention',
+    type: 'country',
+    riskType: 'political',
+    label: 'events.risk.arbitraryDetention.label',
+    description: 'events.risk.arbitraryDetention.description',
+    icon: '🔒',
+    effect: { mobility: -5, time: -4, network: -2 },
+    survivalChance: 0.6,
+    countryTypes: ['HYBRID_TRANSITION', 'PROBLEM_RENT'],
+    potentialOutcomes: {
+      success: { 
+        probability: 0.25, 
+        effect: { time: -1 }, 
+        description: 'events.risk.arbitraryDetention.success' 
+      },
+      failure: { 
+        probability: 0.5, 
+        effect: { mobility: -6, time: -5, network: -3, money: -3 }, 
+        description: 'events.risk.arbitraryDetention.failure' 
+      },
+      catastrophic: { 
+        probability: 0.25, 
+        effect: { health: -5, mobility: -10, time: -8 }, 
+        description: 'events.risk.arbitraryDetention.catastrophic' 
+      },
+    },
+  },
+  {
+    id: 'currency_crisis',
+    type: 'country',
+    riskType: 'scam',
+    label: 'events.risk.currencyCrisis.label',
+    description: 'events.risk.currencyCrisis.description',
+    icon: '💸',
+    effect: { money: -4 },
+    survivalChance: 0.8,
+    countryTypes: ['PROBLEM_RENT', 'HYBRID_TRANSITION', 'RESOURCE_EXTRACTION'],
+    potentialOutcomes: {
+      success: { 
+        probability: 0.35, 
+        effect: { money: 2, skills: 1 }, 
+        description: 'events.risk.currencyCrisis.success' 
+      },
+      failure: { 
+        probability: 0.5, 
+        effect: { money: -6 }, 
+        description: 'events.risk.currencyCrisis.failure' 
+      },
+      catastrophic: { 
+        probability: 0.15, 
+        effect: { money: -10 }, 
+        description: 'events.risk.currencyCrisis.catastrophic' 
       },
     },
   },

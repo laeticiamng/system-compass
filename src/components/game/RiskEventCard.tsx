@@ -33,6 +33,9 @@ const RISK_TYPE_ICONS: Record<RiskEvent['riskType'], string> = {
   exploitation: '⛓️',
   illegal_crossing: '🚢',
   document_fraud: '📄',
+  natural_disaster: '🌊',
+  climate: '🌡️',
+  political: '⚠️',
 };
 
 const RISK_TYPE_LABELS: Record<RiskEvent['riskType'], string> = {
@@ -41,6 +44,9 @@ const RISK_TYPE_LABELS: Record<RiskEvent['riskType'], string> = {
   exploitation: 'Exploitation',
   illegal_crossing: 'Passage clandestin',
   document_fraud: 'Fraude documentaire',
+  natural_disaster: 'Catastrophe naturelle',
+  climate: 'Risque climatique',
+  political: 'Risque politique',
 };
 
 export default function RiskEventCard({ 

@@ -2871,6 +2871,76 @@
         "success": "You survived without major injuries",
         "failure": "Injuries, loss of property, trauma",
         "catastrophic": "Serious or fatal consequences"
+      },
+      "earthquake": {
+        "label": "Earthquake",
+        "description": "Major seismic event. High risk in Japan, Turkey, Indonesia, Mexico and seismic zones.",
+        "success": "You reacted quickly, no injuries",
+        "failure": "Injuries, property destruction, psychological trauma",
+        "catastrophic": "Building collapse, serious injuries or death"
+      },
+      "monsoonFlooding": {
+        "label": "Monsoon Flooding",
+        "description": "Torrential rains and flash floods. High risk in Southeast Asia, India, Bangladesh.",
+        "success": "You evacuated in time",
+        "failure": "Significant property damage, temporary displacement",
+        "catastrophic": "Swept away by waters, total loss of possessions"
+      },
+      "extremeHeat": {
+        "label": "Extreme Heat Wave",
+        "description": "Deadly heat waves. Growing risk in Middle East, India, Sahel region.",
+        "success": "You protected yourself from the heat",
+        "failure": "Dehydration, heat stroke, unable to work",
+        "catastrophic": "Fatal heat stroke or permanent damage"
+      },
+      "tropicalCyclone": {
+        "label": "Tropical Cyclone",
+        "description": "Hurricane, typhoon or cyclone. Risk in Caribbean, Philippines, Japan, Bangladesh.",
+        "success": "You survived the cyclone safely",
+        "failure": "Home destruction, injuries, prolonged isolation",
+        "catastrophic": "Swept away by the storm, serious injuries or death"
+      },
+      "droughtFamine": {
+        "label": "Drought and Famine",
+        "description": "Prolonged water and food shortage. Risk in East Africa, Sahel, arid regions.",
+        "success": "You found alternative resources",
+        "failure": "Malnutrition, weakened health, forced migration",
+        "catastrophic": "Severe famine, fatal consequences"
+      },
+      "volcanicEruption": {
+        "label": "Volcanic Eruption",
+        "description": "Eruption and lava flows. Risk in Indonesia, Philippines, Italy, Iceland.",
+        "success": "Successful evacuation, no injuries",
+        "failure": "Forced displacement, property destruction, respiratory issues",
+        "catastrophic": "Caught in the eruption, fatal consequences"
+      },
+      "wildfire": {
+        "label": "Wildfire",
+        "description": "Uncontrolled fires. Risk in California, Australia, Portugal, Greece, Canada.",
+        "success": "Successful evacuation, minimal damage",
+        "failure": "Property destruction, toxic smoke, trauma",
+        "catastrophic": "Trapped in the flames, serious injuries or death"
+      },
+      "civilUnrest": {
+        "label": "Civil Unrest",
+        "description": "Violent protests, riots or social instability. Can occur anywhere.",
+        "success": "You avoided the conflict zones",
+        "failure": "Injured or arrested during unrest, reduced mobility",
+        "catastrophic": "Seriously injured or imprisoned"
+      },
+      "arbitraryDetention": {
+        "label": "Arbitrary Detention",
+        "description": "Arrest without legal grounds. Risk in authoritarian countries.",
+        "success": "Released quickly after questioning",
+        "failure": "Prolonged detention, loss of income and contacts",
+        "catastrophic": "Disappeared into the prison system, total isolation"
+      },
+      "currencyCrisis": {
+        "label": "Currency Crisis",
+        "description": "Local currency collapse. Risk in Argentina, Venezuela, Turkey, unstable countries.",
+        "success": "You had diversified savings, relative gain",
+        "failure": "Loss of savings value",
+        "catastrophic": "Financial ruin, savings became worthless"
       }
     },
     "riskEvent": "⚠️ Risk Event"

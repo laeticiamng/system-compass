@@ -3229,6 +3229,76 @@
         "success": "Vous avez survécu sans blessures majeures",
         "failure": "Blessures, perte de biens, traumatisme",
         "catastrophic": "Conséquences graves ou fatales"
+      },
+      "earthquake": {
+        "label": "Séisme",
+        "description": "Tremblement de terre. Risque élevé au Japon, Turquie, Indonésie, Mexique et zones sismiques.",
+        "success": "Vous avez réagi rapidement, pas de blessures",
+        "failure": "Blessures, destruction de biens, traumatisme psychologique",
+        "catastrophic": "Effondrement de bâtiment, blessures graves ou décès"
+      },
+      "monsoonFlooding": {
+        "label": "Inondations de mousson",
+        "description": "Pluies torrentielles et crues soudaines. Risque élevé en Asie du Sud-Est, Inde, Bangladesh.",
+        "success": "Vous avez évacué à temps",
+        "failure": "Dégâts matériels importants, déplacement temporaire",
+        "catastrophic": "Emporté par les eaux, perte totale des biens"
+      },
+      "extremeHeat": {
+        "label": "Canicule extrême",
+        "description": "Vagues de chaleur mortelles. Risque croissant au Moyen-Orient, Inde, Afrique sahélienne.",
+        "success": "Vous avez su vous protéger de la chaleur",
+        "failure": "Déshydratation, coup de chaleur, incapacité de travailler",
+        "catastrophic": "Coup de chaleur fatal ou séquelles permanentes"
+      },
+      "tropicalCyclone": {
+        "label": "Cyclone tropical",
+        "description": "Ouragan, typhon ou cyclone. Risque aux Caraïbes, Philippines, Japon, Bangladesh.",
+        "success": "Vous avez survécu au cyclone en sécurité",
+        "failure": "Destruction de logement, blessures, isolement prolongé",
+        "catastrophic": "Emporté par la tempête, blessures graves ou décès"
+      },
+      "droughtFamine": {
+        "label": "Sécheresse et famine",
+        "description": "Manque d'eau et de nourriture prolongé. Risque en Afrique de l'Est, Sahel, zones arides.",
+        "success": "Vous avez trouvé des ressources alternatives",
+        "failure": "Malnutrition, santé fragilisée, migration forcée",
+        "catastrophic": "Famine sévère, conséquences fatales"
+      },
+      "volcanicEruption": {
+        "label": "Éruption volcanique",
+        "description": "Eruption et coulées de lave. Risque en Indonésie, Philippines, Italie, Islande.",
+        "success": "Évacuation réussie, pas de blessures",
+        "failure": "Déplacement forcé, destruction de biens, problèmes respiratoires",
+        "catastrophic": "Pris dans l'éruption, conséquences fatales"
+      },
+      "wildfire": {
+        "label": "Incendie de forêt",
+        "description": "Feux incontrôlés. Risque en Californie, Australie, Portugal, Grèce, Canada.",
+        "success": "Évacuation réussie, peu de dégâts",
+        "failure": "Destruction de propriété, fumée toxique, traumatisme",
+        "catastrophic": "Piégé dans les flammes, blessures graves ou décès"
+      },
+      "civilUnrest": {
+        "label": "Troubles civils",
+        "description": "Manifestations violentes, émeutes ou instabilité sociale. Peut survenir n'importe où.",
+        "success": "Vous avez évité les zones de conflit",
+        "failure": "Blessé ou arrêté lors des troubles, mobilité réduite",
+        "catastrophic": "Gravement blessé ou emprisonné"
+      },
+      "arbitraryDetention": {
+        "label": "Détention arbitraire",
+        "description": "Arrestation sans motif légal. Risque dans les pays autoritaires.",
+        "success": "Libéré rapidement après interrogatoire",
+        "failure": "Détention prolongée, perte de revenus et contacts",
+        "catastrophic": "Disparition dans le système carcéral, isolement total"
+      },
+      "currencyCrisis": {
+        "label": "Crise monétaire",
+        "description": "Effondrement de la monnaie locale. Risque en Argentine, Venezuela, Turquie, pays instables.",
+        "success": "Vous aviez diversifié vos économies, gain relatif",
+        "failure": "Perte de valeur de vos économies",
+        "catastrophic": "Ruine financière, épargne devenue sans valeur"
       }
     },
     "riskEvent": "⚠️ Événement Risque"
