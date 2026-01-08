@@ -1,3 +1,4 @@
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { 
@@ -72,12 +73,12 @@ const PYRAMID_CONFIGS: PyramidTypeConfig[] = [
   },
 ];
 
-export function PyramidTypesShowcase() {
+const PyramidTypesShowcase = React.forwardRef<HTMLDivElement, object>(function PyramidTypesShowcase(_, ref) {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div ref={ref} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       {PYRAMID_CONFIGS.map((config) => {
         const Icon = config.icon;
         
@@ -141,7 +142,9 @@ export function PyramidTypesShowcase() {
       })}
     </div>
   );
-}
+});
+
+export { PyramidTypesShowcase };
 
 function CountryFlag({ countryId }: { countryId: string }) {
   const countryIso: Record<string, string> = {

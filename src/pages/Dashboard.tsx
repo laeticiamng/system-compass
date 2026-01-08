@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { useExitKeysProfile } from '@/hooks/useExitKeysProfile';
 import { useDashboardProgress } from '@/hooks/useDashboardProgress';
 import { useSavedComparisons } from '@/hooks/useSavedComparisons';
+import { useSavedGames } from '@/hooks/useSavedGames';
+import { useGameStatistics } from '@/hooks/useGameStatistics';
 import { EXIT_KEYS } from '@/lib/exit-keys-engine';
 import { LIFE_MOTOR_PROFILES } from '@/lib/types';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -15,7 +17,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ProgressStats } from '@/components/dashboard/ProgressStats';
 import { DeadlineCalendar } from '@/components/dashboard/DeadlineCalendar';
 import { 
@@ -42,7 +44,11 @@ import {
   Cloud,
   CloudOff,
   Loader2,
-  Map
+  Map,
+  Gamepad2,
+  Play,
+  Trash2,
+  Zap
 } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -76,6 +82,7 @@ function getDaysRemaining(deadline: string): number {
 
 export default function Dashboard() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const { profile, loading: profileLoading } = useExitKeysProfile();
   const {
     progress,
@@ -95,10 +102,19 @@ export default function Dashboard() {
   } = useDashboardProgress();
 
   const { comparisons, loading: comparisonsLoading, deleteComparison } = useSavedComparisons();
+  const { savedGames, loading: gamesLoading, fetchSavedGames, deleteGame } = useSavedGames();
+  const { stats, loading: statsLoading, riskSuccessRate, topActions } = useGameStatistics();
 
   const [editingNote, setEditingNote] = useState<number | null>(null);
   const [noteText, setNoteText] = useState('');
   const [openPhases, setOpenPhases] = useState<Record<number, boolean>>({});
+
+  // Fetch saved games when logged in
+  useEffect(() => {
+    if (isLoggedIn) {
+      fetchSavedGames();
+    }
+  }, [isLoggedIn, fetchSavedGames]);
 
   const selectedKeyId = progress?.exitKeyId || null;
   const selectedKey = selectedKeyId ? EXIT_KEYS.find(k => k.id === selectedKeyId) : null;
@@ -352,6 +368,104 @@ export default function Dashboard() {
                     {t('dashboard.viewAll')} ({comparisons.length})
                   </Button>
                 </Link>
+              )}
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Saved Games Section */}
+        {isLoggedIn && savedGames.length > 0 && (
+          <Card className="mb-6">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Gamepad2 className="w-5 h-5" />
+                {t('dashboard.savedGames', 'Parties sauvegardées')}
+              </CardTitle>
+              <CardDescription>
+                {t('dashboard.savedGamesDesc', 'Reprenez vos parties en cours')}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {savedGames.slice(0, 6).map(game => (
+                  <div key={game.id} className="p-4 bg-secondary/50 rounded-lg">
+                    <div className="flex items-center justify-between mb-2">
+                      <p className="font-medium">{game.game_name}</p>
+                      <Badge variant="outline">{game.game_mode}</Badge>
+                    </div>
+                    <p className="text-xs text-muted-foreground mb-3">
+                      {game.player_count} {t('dashboard.players', 'joueur(s)')} • 
+                      {game.is_finished ? t('dashboard.finished', ' Terminée') : t('dashboard.inProgress', ' En cours')}
+                    </p>
+                    <div className="flex gap-2">
+                      <Button 
+                        size="sm" 
+                        className="flex-1 gap-1"
+                        onClick={() => navigate(`/quiz?loadGame=${game.id}`)}
+                      >
+                        <Play className="w-3 h-3" />
+                        {game.is_finished ? t('dashboard.replay', 'Rejouer') : t('dashboard.resume', 'Reprendre')}
+                      </Button>
+                      <Button 
+                        variant="ghost" 
+                        size="sm"
+                        onClick={() => {
+                          deleteGame(game.id);
+                          toast.success(t('common.delete'));
+                        }}
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              {savedGames.length > 6 && (
+                <div className="mt-4 text-center">
+                  <Button variant="outline" size="sm" onClick={() => navigate('/quiz')}>
+                    {t('dashboard.viewAll')} ({savedGames.length})
+                  </Button>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Game Statistics Section */}
+        {stats.totalGamesPlayed > 0 && (
+          <Card className="mb-6 border-blue-500/20">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Zap className="w-5 h-5 text-blue-500" />
+                {t('dashboard.gameStats', 'Statistiques de jeu')}
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+                <div className="text-center p-3 bg-secondary/50 rounded-lg">
+                  <div className="text-2xl font-bold text-primary">{stats.totalGamesPlayed}</div>
+                  <div className="text-xs text-muted-foreground">{t('dashboard.gamesPlayed', 'Parties jouées')}</div>
+                </div>
+                <div className="text-center p-3 bg-secondary/50 rounded-lg">
+                  <div className="text-2xl font-bold text-blue-500">{stats.totalTurnsPlayed}</div>
+                  <div className="text-xs text-muted-foreground">{t('dashboard.turnsPlayed', 'Tours joués')}</div>
+                </div>
+                <div className="text-center p-3 bg-secondary/50 rounded-lg">
+                  <div className="text-2xl font-bold text-emerald-500">{riskSuccessRate}%</div>
+                  <div className="text-xs text-muted-foreground">{t('dashboard.riskSuccess', 'Risques réussis')}</div>
+                </div>
+                <div className="text-center p-3 bg-secondary/50 rounded-lg">
+                  <div className="text-2xl font-bold text-amber-500">{stats.archetypesUsed.length}</div>
+                  <div className="text-xs text-muted-foreground">{t('dashboard.archetypesUsed', 'Archétypes testés')}</div>
+                </div>
+              </div>
+              {stats.bestScoreSolo > 0 && (
+                <div className="flex items-center gap-2 p-3 bg-amber-500/10 rounded-lg border border-amber-500/20">
+                  <Trophy className="w-5 h-5 text-amber-500" />
+                  <span className="text-sm">
+                    {t('dashboard.bestScore', 'Meilleur score solo')}: <strong>{stats.bestScoreSolo}</strong>
+                  </span>
+                </div>
               )}
             </CardContent>
           </Card>

@@ -50,7 +50,20 @@
     "reminderUpdated": "Rappel mis à jour",
     "noteSaved": "Note sauvegardée",
     "deadlineToday": "Échéance aujourd'hui",
-    "deadlineIn": "Échéance dans {{days}} jour(s)"
+    "deadlineIn": "Échéance dans {{days}} jour(s)",
+    "savedGames": "Parties sauvegardées",
+    "savedGamesDesc": "Reprenez vos parties en cours",
+    "players": "joueur(s)",
+    "finished": "Terminée",
+    "inProgress": "En cours",
+    "resume": "Reprendre",
+    "replay": "Rejouer",
+    "gameStats": "Statistiques de jeu",
+    "gamesPlayed": "Parties jouées",
+    "turnsPlayed": "Tours joués",
+    "riskSuccess": "Risques réussis",
+    "archetypesUsed": "Archétypes testés",
+    "bestScore": "Meilleur score solo"
   },
   "footer": {
     "explore": "Explorer",

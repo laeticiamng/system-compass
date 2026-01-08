@@ -50,7 +50,20 @@
     "reminderUpdated": "Reminder updated",
     "noteSaved": "Note saved",
     "deadlineToday": "Deadline today",
-    "deadlineIn": "Deadline in {{days}} day(s)"
+    "deadlineIn": "Deadline in {{days}} day(s)",
+    "savedGames": "Saved games",
+    "savedGamesDesc": "Resume your games in progress",
+    "players": "player(s)",
+    "finished": "Finished",
+    "inProgress": "In progress",
+    "resume": "Resume",
+    "replay": "Replay",
+    "gameStats": "Game statistics",
+    "gamesPlayed": "Games played",
+    "turnsPlayed": "Turns played",
+    "riskSuccess": "Risk success",
+    "archetypesUsed": "Archetypes tested",
+    "bestScore": "Best solo score"
   },
   "footer": {
     "explore": "Explore",

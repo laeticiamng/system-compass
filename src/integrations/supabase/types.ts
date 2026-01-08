@@ -47,6 +47,66 @@ export type Database = {
         }
         Relationships: []
       }
+      game_statistics: {
+        Row: {
+          archetypes_used: Json | null
+          best_score_race: number | null
+          best_score_solo: number | null
+          countries_visited: string[] | null
+          created_at: string
+          favorite_actions: Json | null
+          id: string
+          risk_failures: number | null
+          risk_successes: number | null
+          total_games_played: number
+          total_health_lost: number | null
+          total_money_earned: number | null
+          total_money_lost: number | null
+          total_risk_events: number | null
+          total_turns_played: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          archetypes_used?: Json | null
+          best_score_race?: number | null
+          best_score_solo?: number | null
+          countries_visited?: string[] | null
+          created_at?: string
+          favorite_actions?: Json | null
+          id?: string
+          risk_failures?: number | null
+          risk_successes?: number | null
+          total_games_played?: number
+          total_health_lost?: number | null
+          total_money_earned?: number | null
+          total_money_lost?: number | null
+          total_risk_events?: number | null
+          total_turns_played?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          archetypes_used?: Json | null
+          best_score_race?: number | null
+          best_score_solo?: number | null
+          countries_visited?: string[] | null
+          created_at?: string
+          favorite_actions?: Json | null
+          id?: string
+          risk_failures?: number | null
+          risk_successes?: number | null
+          total_games_played?: number
+          total_health_lost?: number | null
+          total_money_earned?: number | null
+          total_money_lost?: number | null
+          total_risk_events?: number | null
+          total_turns_played?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       music_cache: {
         Row: {
           audio_url: string
@@ -87,7 +147,12 @@ export type Database = {
           current_country: string | null
           desired_life: string | null
           display_name: string | null
+          education_level: string | null
           id: string
+          motor_profile: string | null
+          nationalities: string[] | null
+          profession_id: string | null
+          risk_tolerance: string | null
           updated_at: string
         }
         Insert: {
@@ -96,7 +161,12 @@ export type Database = {
           current_country?: string | null
           desired_life?: string | null
           display_name?: string | null
+          education_level?: string | null
           id: string
+          motor_profile?: string | null
+          nationalities?: string[] | null
+          profession_id?: string | null
+          risk_tolerance?: string | null
           updated_at?: string
         }
         Update: {
@@ -105,7 +175,12 @@ export type Database = {
           current_country?: string | null
           desired_life?: string | null
           display_name?: string | null
+          education_level?: string | null
           id?: string
+          motor_profile?: string | null
+          nationalities?: string[] | null
+          profession_id?: string | null
+          risk_tolerance?: string | null
           updated_at?: string
         }
         Relationships: []
