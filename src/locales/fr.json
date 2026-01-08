@@ -3049,7 +3049,65 @@
         "label": "Boom économique",
         "description": "L'économie locale explose"
       }
-    }
+    },
+    "risk": {
+      "seaCrossing": {
+        "label": "Traversée maritime clandestine",
+        "description": "Tenter la traversée en bateau vers l'Europe. Risque mortel élevé.",
+        "success": "Arrivée réussie mais traumatisante",
+        "failure": "Interception par les gardes-côtes, retour forcé",
+        "catastrophic": "Naufrage - conséquences fatales"
+      },
+      "smugglerScam": {
+        "label": "Arnaque des passeurs",
+        "description": "Un passeur promet un passage sûr contre de l'argent. 90% sont des arnaques.",
+        "success": "Le passeur a tenu sa promesse",
+        "failure": "Argent volé, abandonné en chemin"
+      },
+      "laborExploitation": {
+        "label": "Exploitation au travail",
+        "description": "Promesse d'un bon travail qui se révèle être de l'exploitation.",
+        "success": "Vous avez réussi à vous échapper",
+        "failure": "Travail forcé, conditions inhumaines",
+        "catastrophic": "Piégé dans un réseau d'exploitation"
+      },
+      "trafficking": {
+        "label": "Réseau de traite humaine",
+        "description": "Risque de tomber dans un réseau de trafic d'êtres humains.",
+        "success": "Vous avez évité le piège",
+        "failure": "Exploitation et perte de liberté",
+        "catastrophic": "Disparition dans un réseau criminel"
+      },
+      "fakeDocuments": {
+        "label": "Faux documents",
+        "description": "Acheter de faux papiers pour voyager. Risque d'arrestation.",
+        "success": "Les documents passent le contrôle",
+        "failure": "Documents détectés, confiscation",
+        "catastrophic": "Arrestation et interdiction de territoire"
+      },
+      "desertCrossing": {
+        "label": "Traversée du désert",
+        "description": "Route migratoire à travers le Sahara. Extrêmement dangereux.",
+        "success": "Traversée difficile mais réussie",
+        "failure": "Perdu, déshydratation, retour forcé",
+        "catastrophic": "Conditions fatales dans le désert"
+      },
+      "visaOverstay": {
+        "label": "Dépassement de visa",
+        "description": "Rester après l'expiration du visa. Risque d'expulsion.",
+        "success": "Situation régularisée",
+        "failure": "Détection, obligation de quitter le territoire",
+        "catastrophic": "Expulsion avec interdiction de retour"
+      },
+      "marriageFraud": {
+        "label": "Mariage blanc",
+        "description": "Mariage de convenance pour obtenir des papiers. Illégal et risqué.",
+        "success": "Papiers obtenus, situation stable",
+        "failure": "Enquête, annulation, problèmes juridiques",
+        "catastrophic": "Condamnation et expulsion"
+      }
+    },
+    "riskEvent": "⚠️ Événement Risque"
   },
   "traits": {
     "charismatic": {

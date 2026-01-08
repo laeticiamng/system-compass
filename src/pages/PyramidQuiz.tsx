@@ -14,7 +14,7 @@ import HexagonalBoard, { HEXAGONAL_BOARD } from '@/components/game/HexagonalBoar
 import PlayerProfileSetup, { GamePlayerProfile } from '@/components/game/PlayerProfile';
 import SavedGamesDialog from '@/components/game/SavedGamesDialog';
 import RulesDialog from '@/components/game/RulesDialog';
-import CharacterDraft from '@/components/game/CharacterDraft';
+import LifeAssignment from '@/components/game/LifeAssignment';
 import ResourceBar from '@/components/game/ResourceBar';
 import EventCard from '@/components/game/EventCard';
 import TurnManager, { TurnPhase } from '@/components/game/TurnManager';
@@ -816,10 +816,10 @@ export default function PyramidQuiz() {
     );
   }
 
-  // Character draft phase
+  // Life assignment phase (random like real life)
   if (setupPhase === 'draft') {
     return (
-      <CharacterDraft
+      <LifeAssignment
         playerCount={playerCount}
         playerColors={PLAYER_COLORS}
         onComplete={handleDraftComplete}

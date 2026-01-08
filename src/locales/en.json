@@ -2691,7 +2691,65 @@
         "label": "Economic Boom",
         "description": "Local economy explodes"
       }
-    }
+    },
+    "risk": {
+      "seaCrossing": {
+        "label": "Illegal Sea Crossing",
+        "description": "Attempting to cross by boat to Europe. High mortality risk.",
+        "success": "Successful but traumatic arrival",
+        "failure": "Intercepted by coast guards, forced return",
+        "catastrophic": "Shipwreck - fatal consequences"
+      },
+      "smugglerScam": {
+        "label": "Smuggler Scam",
+        "description": "A smuggler promises safe passage for money. 90% are scams.",
+        "success": "The smuggler kept their promise",
+        "failure": "Money stolen, abandoned en route"
+      },
+      "laborExploitation": {
+        "label": "Labor Exploitation",
+        "description": "Promise of good work that turns out to be exploitation.",
+        "success": "You managed to escape",
+        "failure": "Forced labor, inhumane conditions",
+        "catastrophic": "Trapped in an exploitation network"
+      },
+      "trafficking": {
+        "label": "Human Trafficking Network",
+        "description": "Risk of falling into a human trafficking network.",
+        "success": "You avoided the trap",
+        "failure": "Exploitation and loss of freedom",
+        "catastrophic": "Disappeared into a criminal network"
+      },
+      "fakeDocuments": {
+        "label": "Fake Documents",
+        "description": "Buying fake papers to travel. Risk of arrest.",
+        "success": "Documents pass the check",
+        "failure": "Documents detected, confiscation",
+        "catastrophic": "Arrest and territory ban"
+      },
+      "desertCrossing": {
+        "label": "Desert Crossing",
+        "description": "Migration route through the Sahara. Extremely dangerous.",
+        "success": "Difficult but successful crossing",
+        "failure": "Lost, dehydration, forced return",
+        "catastrophic": "Fatal conditions in the desert"
+      },
+      "visaOverstay": {
+        "label": "Visa Overstay",
+        "description": "Staying after visa expiration. Risk of deportation.",
+        "success": "Situation regularized",
+        "failure": "Detection, obligation to leave territory",
+        "catastrophic": "Deportation with return ban"
+      },
+      "marriageFraud": {
+        "label": "Marriage Fraud",
+        "description": "Marriage of convenience for papers. Illegal and risky.",
+        "success": "Papers obtained, stable situation",
+        "failure": "Investigation, annulment, legal issues",
+        "catastrophic": "Conviction and deportation"
+      }
+    },
+    "riskEvent": "⚠️ Risk Event"
   },
   "traits": {
     "charismatic": {

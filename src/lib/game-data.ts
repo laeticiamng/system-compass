@@ -290,6 +290,269 @@ export const COUNTRY_EVENTS: GameEvent[] = [
   },
 ];
 
+// ============== RISK EVENTS (Realistic dangers) ==============
+export interface RiskEvent extends GameEvent {
+  riskType: 'trafficking' | 'scam' | 'exploitation' | 'illegal_crossing' | 'document_fraud';
+  survivalChance: number; // 0-1 chance of surviving without major loss
+  potentialOutcomes: {
+    success: { probability: number; effect: Partial<GameResources>; description: string };
+    failure: { probability: number; effect: Partial<GameResources>; description: string };
+    catastrophic?: { probability: number; effect: Partial<GameResources>; description: string };
+  };
+}
+
+export const RISK_EVENTS: RiskEvent[] = [
+  {
+    id: 'illegal_sea_crossing',
+    type: 'country',
+    riskType: 'illegal_crossing',
+    label: 'events.risk.seaCrossing.label',
+    description: 'events.risk.seaCrossing.description',
+    icon: '🚢',
+    effect: { health: -3, money: -3, mobility: -2 },
+    survivalChance: 0.7,
+    countryTypes: ['PROBLEM_RENT', 'HYBRID_TRANSITION'],
+    potentialOutcomes: {
+      success: { 
+        probability: 0.3, 
+        effect: { mobility: 3 }, 
+        description: 'events.risk.seaCrossing.success' 
+      },
+      failure: { 
+        probability: 0.5, 
+        effect: { money: -4, health: -2, mobility: -3 }, 
+        description: 'events.risk.seaCrossing.failure' 
+      },
+      catastrophic: { 
+        probability: 0.2, 
+        effect: { health: -10 }, 
+        description: 'events.risk.seaCrossing.catastrophic' 
+      },
+    },
+  },
+  {
+    id: 'smuggler_scam',
+    type: 'country',
+    riskType: 'scam',
+    label: 'events.risk.smugglerScam.label',
+    description: 'events.risk.smugglerScam.description',
+    icon: '🎭',
+    effect: { money: -5, network: -2 },
+    survivalChance: 0.9,
+    countryTypes: ['PROBLEM_RENT', 'HYBRID_TRANSITION', 'RESOURCE_EXTRACTION'],
+    potentialOutcomes: {
+      success: { 
+        probability: 0.1, 
+        effect: { mobility: 2 }, 
+        description: 'events.risk.smugglerScam.success' 
+      },
+      failure: { 
+        probability: 0.9, 
+        effect: { money: -5, network: -2, time: -2 }, 
+        description: 'events.risk.smugglerScam.failure' 
+      },
+    },
+  },
+  {
+    id: 'labor_exploitation',
+    type: 'country',
+    riskType: 'exploitation',
+    label: 'events.risk.laborExploitation.label',
+    description: 'events.risk.laborExploitation.description',
+    icon: '⛓️',
+    effect: { health: -2, time: -4, money: -2 },
+    survivalChance: 0.8,
+    countryTypes: ['RESOURCE_EXTRACTION', 'HYBRID_TRANSITION'],
+    potentialOutcomes: {
+      success: { 
+        probability: 0.2, 
+        effect: { money: 1 }, 
+        description: 'events.risk.laborExploitation.success' 
+      },
+      failure: { 
+        probability: 0.6, 
+        effect: { health: -3, time: -4, money: -2, mobility: -2 }, 
+        description: 'events.risk.laborExploitation.failure' 
+      },
+      catastrophic: { 
+        probability: 0.2, 
+        effect: { health: -5, mobility: -5, network: -3 }, 
+        description: 'events.risk.laborExploitation.catastrophic' 
+      },
+    },
+  },
+  {
+    id: 'trafficking_network',
+    type: 'country',
+    riskType: 'trafficking',
+    label: 'events.risk.trafficking.label',
+    description: 'events.risk.trafficking.description',
+    icon: '🚨',
+    effect: { health: -4, mobility: -5, network: -3 },
+    survivalChance: 0.6,
+    countryTypes: ['PROBLEM_RENT'],
+    potentialOutcomes: {
+      success: { 
+        probability: 0.1, 
+        effect: { mobility: 1 }, 
+        description: 'events.risk.trafficking.success' 
+      },
+      failure: { 
+        probability: 0.5, 
+        effect: { health: -4, mobility: -5, money: -3, network: -3 }, 
+        description: 'events.risk.trafficking.failure' 
+      },
+      catastrophic: { 
+        probability: 0.4, 
+        effect: { health: -8, mobility: -8, time: -5 }, 
+        description: 'events.risk.trafficking.catastrophic' 
+      },
+    },
+  },
+  {
+    id: 'fake_documents',
+    type: 'country',
+    riskType: 'document_fraud',
+    label: 'events.risk.fakeDocuments.label',
+    description: 'events.risk.fakeDocuments.description',
+    icon: '📄',
+    effect: { money: -3, mobility: -2 },
+    survivalChance: 0.85,
+    countryTypes: ['PROBLEM_RENT', 'HYBRID_TRANSITION'],
+    potentialOutcomes: {
+      success: { 
+        probability: 0.3, 
+        effect: { mobility: 2 }, 
+        description: 'events.risk.fakeDocuments.success' 
+      },
+      failure: { 
+        probability: 0.5, 
+        effect: { money: -4, mobility: -3, network: -2 }, 
+        description: 'events.risk.fakeDocuments.failure' 
+      },
+      catastrophic: { 
+        probability: 0.2, 
+        effect: { mobility: -8, money: -5 }, 
+        description: 'events.risk.fakeDocuments.catastrophic' 
+      },
+    },
+  },
+  {
+    id: 'desert_crossing',
+    type: 'country',
+    riskType: 'illegal_crossing',
+    label: 'events.risk.desertCrossing.label',
+    description: 'events.risk.desertCrossing.description',
+    icon: '🏜️',
+    effect: { health: -4, money: -2 },
+    survivalChance: 0.65,
+    countryTypes: ['PROBLEM_RENT', 'RESOURCE_EXTRACTION'],
+    potentialOutcomes: {
+      success: { 
+        probability: 0.35, 
+        effect: { mobility: 2 }, 
+        description: 'events.risk.desertCrossing.success' 
+      },
+      failure: { 
+        probability: 0.4, 
+        effect: { health: -4, money: -3, time: -2 }, 
+        description: 'events.risk.desertCrossing.failure' 
+      },
+      catastrophic: { 
+        probability: 0.25, 
+        effect: { health: -10 }, 
+        description: 'events.risk.desertCrossing.catastrophic' 
+      },
+    },
+  },
+  {
+    id: 'visa_overstay',
+    type: 'country',
+    riskType: 'document_fraud',
+    label: 'events.risk.visaOverstay.label',
+    description: 'events.risk.visaOverstay.description',
+    icon: '⏰',
+    effect: { mobility: -3, money: -1 },
+    survivalChance: 0.9,
+    countryTypes: ['STABILITY_REDIS', 'COMPETENCE_TRUST', 'GROWTH_RISK'],
+    potentialOutcomes: {
+      success: { 
+        probability: 0.4, 
+        effect: { time: 1 }, 
+        description: 'events.risk.visaOverstay.success' 
+      },
+      failure: { 
+        probability: 0.5, 
+        effect: { mobility: -4, money: -2 }, 
+        description: 'events.risk.visaOverstay.failure' 
+      },
+      catastrophic: { 
+        probability: 0.1, 
+        effect: { mobility: -8, money: -3 }, 
+        description: 'events.risk.visaOverstay.catastrophic' 
+      },
+    },
+  },
+  {
+    id: 'marriage_fraud',
+    type: 'country',
+    riskType: 'scam',
+    label: 'events.risk.marriageFraud.label',
+    description: 'events.risk.marriageFraud.description',
+    icon: '💍',
+    effect: { money: -4, network: -2, health: -1 },
+    survivalChance: 0.75,
+    countryTypes: ['STABILITY_REDIS', 'GROWTH_RISK'],
+    potentialOutcomes: {
+      success: { 
+        probability: 0.25, 
+        effect: { mobility: 3, network: 1 }, 
+        description: 'events.risk.marriageFraud.success' 
+      },
+      failure: { 
+        probability: 0.55, 
+        effect: { money: -5, network: -3, health: -2 }, 
+        description: 'events.risk.marriageFraud.failure' 
+      },
+      catastrophic: { 
+        probability: 0.2, 
+        effect: { mobility: -5, money: -6, network: -4 }, 
+        description: 'events.risk.marriageFraud.catastrophic' 
+      },
+    },
+  },
+];
+
+// Get random risk event for shortcuts
+export function getRandomRiskEvent(countryType: PyramidType): RiskEvent | null {
+  const validEvents = RISK_EVENTS.filter(e => 
+    !e.countryTypes || e.countryTypes.includes(countryType)
+  );
+  if (validEvents.length === 0) return null;
+  return validEvents[Math.floor(Math.random() * validEvents.length)];
+}
+
+// Resolve risk event outcome
+export function resolveRiskEvent(event: RiskEvent): {
+  outcome: 'success' | 'failure' | 'catastrophic';
+  effect: Partial<GameResources>;
+  description: string;
+} {
+  const roll = Math.random();
+  const { potentialOutcomes } = event;
+  
+  if (roll < potentialOutcomes.success.probability) {
+    return { outcome: 'success', ...potentialOutcomes.success };
+  }
+  
+  if (potentialOutcomes.catastrophic && 
+      roll > (1 - potentialOutcomes.catastrophic.probability)) {
+    return { outcome: 'catastrophic', ...potentialOutcomes.catastrophic };
+  }
+  
+  return { outcome: 'failure', ...potentialOutcomes.failure };
+}
+
 // ============== CHARACTER CARDS ==============
 export interface CharacterTrait {
   id: string;
