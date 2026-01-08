@@ -47,6 +47,39 @@ export type Database = {
         }
         Relationships: []
       }
+      music_cache: {
+        Row: {
+          audio_url: string
+          country_id: string
+          created_at: string
+          expires_at: string
+          id: string
+          pyramid_type: string
+          stream_url: string | null
+          task_id: string | null
+        }
+        Insert: {
+          audio_url: string
+          country_id: string
+          created_at?: string
+          expires_at?: string
+          id?: string
+          pyramid_type: string
+          stream_url?: string | null
+          task_id?: string | null
+        }
+        Update: {
+          audio_url?: string
+          country_id?: string
+          created_at?: string
+          expires_at?: string
+          id?: string
+          pyramid_type?: string
+          stream_url?: string | null
+          task_id?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           birth_country: string | null
