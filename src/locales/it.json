@@ -331,22 +331,97 @@
     "disclaimer": {
       "title": "Avviso importante",
       "text": "Questo sito fornisce solo framework di analisi. Non è consulenza legale, finanziaria o sull'immigrazione. Consulta sempre professionisti qualificati per la tua situazione specifica. Ogni azione ha conseguenze — pianifica con cura e non correre mai rischi inutili."
-    }
+    },
+    "time": "Tempo",
+    "timeDesc": "Capacità di intraprendere azioni",
+    "money": "Denaro",
+    "moneyDesc": "Accesso agli investimenti",
+    "health": "Salute",
+    "healthDesc": "Protezione della stabilità",
+    "network": "Rete",
+    "networkDesc": "Apre opportunità",
+    "skills": "Competenze",
+    "skillsDesc": "Migliora i rendimenti",
+    "mobility": "Mobilità",
+    "mobilityDesc": "Consente la migrazione",
+    "family": "Famiglia",
+    "familyDesc": "Legami familiari"
   },
   "lifeGame": {
-    "title": "Gioco della vita",
-    "subtitle": "Simula un'intera vita — dalla nascita all'età adulta strategica",
-    "description": "Questo gioco è uno strumento educativo. Non controlli le condizioni di partenza. Impari a lavorare con quello che ricevi.",
-    "startGame": "Inizia gioco",
-    "continueGame": "Continua gioco",
-    "newGame": "Nuovo gioco",
+    "hero": {
+      "badge": "🎮 Gioco da tavolo educativo",
+      "title1": "Il Gioco della",
+      "titleHighlight": "VITA",
+      "subtitle": "Un gioco di simulazione dove interpreti un personaggio fittizio. Scopri come funziona il mondo attraverso traiettorie casuali — questa non è la tua vera vita!",
+      "playCta": "Avvia partita",
+      "learnCta": "Regole del gioco",
+      "stats": {
+        "archetypes": "Personaggi giocabili",
+        "systems": "Sistemi mondiali",
+        "possibilities": "Traiettorie possibili"
+      }
+    },
+    "clarification": {
+      "title": "⚠️ Questa NON è la tua vera vita",
+      "point1": "Ricevi un personaggio fittizio a caso (erede, rifugiato, imprenditore...)",
+      "point2": "Esplori i meccanismi del mondo senza rischio reale",
+      "point3": "È uno strumento educativo, non una previsione per te",
+      "realLife": "Per pianificare la tua vera vita →",
+      "realLifeLink": "Chiavi di Uscita"
+    },
+    "tagline": {
+      "quote": "Alcuni nascono sul traguardo. Altri devono correre una maratona con le catene ai piedi. Questo gioco mostra perché.",
+      "author": "— La realtà, senza filtri"
+    },
     "features": {
-      "randomStart": "Inizio casuale",
-      "randomStartDesc": "Nasci in un luogo casuale, con risorse casuali",
-      "realSystems": "Sistemi reali",
-      "realSystemsDesc": "Ogni paese ha regole diverse",
-      "consequences": "Conseguenze",
-      "consequencesDesc": "Le tue decisioni hanno impatti a lungo termine"
+      "title": "Come funziona il gioco",
+      "subtitle": "Un gioco da tavolo dove caso e strategia si mescolano.",
+      "systems": {
+        "title": "6 Sistemi Mondiali",
+        "description": "Ogni paese sul tabellone funziona diversamente. Impara le regole invisibili di ogni sistema."
+      },
+      "characters": {
+        "title": "12+ Personaggi Giocabili",
+        "description": "Dal figlio di buona famiglia al rifugiato. Non scegli sempre tu — a volte il destino decide per te."
+      },
+      "choices": {
+        "title": "Scelte Strategiche",
+        "description": "Lavorare, studiare, migrare, intraprendere... Gestisci le tue risorse come in un gioco gestionale."
+      },
+      "risks": {
+        "title": "Scorciatoie Rischiose",
+        "description": "Il mercato nero, la corruzione. Guadagni rapidi a rischio di perdere tutto — come nella vita reale."
+      }
+    },
+    "resources": {
+      "title": "6 Risorse da Gestire",
+      "subtitle": "Nel gioco come nella vita, non avrai mai tutto."
+    },
+    "archetypes": {
+      "title": "Chi interpreterai?",
+      "subtitle": "Ogni personaggio ha i suoi vantaggi e ostacoli. La difficoltà riflette le disuguaglianze del mondo reale.",
+      "seeAll": "Vedi tutti i personaggi"
+    },
+    "difficulty": {
+      "easy": "Facile",
+      "medium": "Medio",
+      "hard": "Difficile",
+      "extreme": "Estremo"
+    },
+    "warning": {
+      "title": "Contenuto educativo sensibile",
+      "description": "Questo gioco affronta realtà difficili in modo ludico. Le situazioni di gioco sono ispirate a esperienze reali vissute da milioni di persone.",
+      "topics": {
+        "migration": "Migrazione forzata",
+        "corruption": "Corruzione sistemica",
+        "inequality": "Disuguaglianze di nascita",
+        "shortcuts": "Scorciatoie pericolose"
+      }
+    },
+    "cta": {
+      "title": "Pronto a giocare?",
+      "subtitle": "Avvia una partita e scopri un personaggio a caso. Riuscirai a navigare il sistema?",
+      "button": "Avvia il gioco"
     }
   },
   "footer": {

@@ -1884,7 +1884,21 @@
     "disclaimer": {
       "title": "Avertissement important",
       "text": "Ce site fournit uniquement des cadres d'analyse. Ce n'est pas un conseil juridique, financier ou d'immigration. Consultez toujours des professionnels qualifiés pour votre situation spécifique. Chaque action a des conséquences — planifiez soigneusement et ne prenez jamais de risques inutiles."
-    }
+    },
+    "time": "Temps",
+    "timeDesc": "Capacité à entreprendre des actions",
+    "money": "Argent",
+    "moneyDesc": "Accès aux investissements",
+    "health": "Santé",
+    "healthDesc": "Protection de la stabilité",
+    "network": "Réseau",
+    "networkDesc": "Ouvre des opportunités",
+    "skills": "Compétences",
+    "skillsDesc": "Améliore les retours",
+    "mobility": "Mobilité",
+    "mobilityDesc": "Permet la migration",
+    "family": "Famille",
+    "familyDesc": "Liens familiaux"
   },
   "language": {
     "select": "Langue"
