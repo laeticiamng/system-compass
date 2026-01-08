@@ -2220,7 +2220,9 @@
   },
   "pyramidQuiz": {
     "title": "Life's Game",
-    "subtitle": "Simulate your life trajectory across different world systems. Make choices, manage resources, and discover how to navigate the real world.",
+    "subtitle": "Simulate a life trajectory across different world systems. Play a fictional character, make choices, manage resources.",
+    "disclaimer": "⚠️ You will play a random fictional character. This is not your real life — it's an educational game!",
+    "realLifeLink": "Want to plan your real life?",
     "questionOf": "Question {{current}} of {{total}}",
     "back": "Back",
     "modes": {

@@ -1,6 +1,7 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useExitKeysProfile } from '@/hooks/useExitKeysProfile';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { cn } from '@/lib/utils';
@@ -416,6 +417,7 @@ function generateTrajectories(
 export default function LifeTrajectory() {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { profile: savedProfile, loading: profileLoading } = useExitKeysProfile();
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [result, setResult] = useState<{
@@ -423,6 +425,13 @@ export default function LifeTrajectory() {
     trajectories: TrajectoryRecommendation[];
     isLgbtq: boolean;
   } | null>(null);
+
+  // Redirect to ProfileTest if user has no profile
+  useEffect(() => {
+    if (!profileLoading && !savedProfile) {
+      navigate('/profile-test', { replace: true });
+    }
+  }, [profileLoading, savedProfile, navigate]);
 
   const currentQuestion = questions[step];
   const progress = ((step + 1) / questions.length) * 100;

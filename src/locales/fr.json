@@ -2580,7 +2580,9 @@
   },
   "pyramidQuiz": {
     "title": "Le Jeu de la Vie",
-    "subtitle": "Simule ta trajectoire de vie à travers différents systèmes mondiaux. Fais des choix, gère tes ressources, et découvre comment naviguer le vrai monde.",
+    "subtitle": "Simule une trajectoire de vie à travers différents systèmes mondiaux. Incarne un personnage fictif, fais des choix, gère ses ressources.",
+    "disclaimer": "⚠️ Tu vas incarner un personnage fictif au hasard. Ce n'est pas ta vraie vie — c'est un jeu éducatif !",
+    "realLifeLink": "Tu veux planifier ta vraie vie ?",
     "questionOf": "Question {{current}} sur {{total}}",
     "back": "Retour",
     "modes": {
