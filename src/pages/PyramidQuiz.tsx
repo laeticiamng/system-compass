@@ -9,6 +9,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { PyramidType, PYRAMID_TYPE_INFO } from '@/lib/types';
+import { FamilyStatus } from '@/lib/family-system';
 import { cn } from '@/lib/utils';
 import HexagonalBoard, { HEXAGONAL_BOARD } from '@/components/game/HexagonalBoard';
 import { GamePlayerProfile } from '@/components/game/PlayerProfile';
@@ -88,6 +89,7 @@ interface Player {
   character?: CharacterCardType;
   resources: GameResources;
   countryType: PyramidType;
+  familyStatus?: FamilyStatus;
 }
 
 // Game statistics tracking
@@ -591,22 +593,24 @@ export default function PyramidQuiz() {
     }
   };
 
-  const handleArchetypeComplete = (characters: CharacterCardType[]) => {
+  const handleArchetypeComplete = (characters: CharacterCardType[], familyStatuses: FamilyStatus[]) => {
     // Skip tutorial if user has opted out, go directly to playing
     if (shouldSkipTutorial()) {
-      handleDraftComplete(characters);
+      handleDraftComplete(characters, familyStatuses);
     } else {
-      // Store characters for after tutorial
+      // Store characters and family statuses for after tutorial
       (window as any).__pendingCharacters = characters;
+      (window as any).__pendingFamilyStatuses = familyStatuses;
       setSetupPhase('tutorial');
     }
   };
 
-  const handleDraftComplete = (characters: CharacterCardType[]) => {
+  const handleDraftComplete = (characters: CharacterCardType[], familyStatuses?: FamilyStatus[]) => {
     const newPlayers: Player[] = [];
     for (let i = 0; i < playerCount; i++) {
       const character = characters[i];
       const profile = playerProfiles[i];
+      const familyStatus = familyStatuses?.[i] || 'single';
       
       // Determine country type from character or default
       const countryType: PyramidType = character 
@@ -623,6 +627,7 @@ export default function PyramidQuiz() {
         character,
         resources: character?.startingResources || createDefaultResources(),
         countryType,
+        familyStatus,
       });
     }
     setPlayers(newPlayers);
@@ -936,11 +941,13 @@ export default function PyramidQuiz() {
   // Tutorial phase
   if (setupPhase === 'tutorial') {
     const handleTutorialComplete = () => {
-      // Use pending characters from archetype selection
+      // Use pending characters and family statuses from archetype selection
       const pendingChars = (window as any).__pendingCharacters as CharacterCardType[] | undefined;
+      const pendingFamilyStatuses = (window as any).__pendingFamilyStatuses as FamilyStatus[] | undefined;
       if (pendingChars) {
         delete (window as any).__pendingCharacters;
-        handleDraftComplete(pendingChars);
+        delete (window as any).__pendingFamilyStatuses;
+        handleDraftComplete(pendingChars, pendingFamilyStatuses);
       } else {
         setSetupPhase('archetype');
       }

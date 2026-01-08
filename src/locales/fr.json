@@ -3502,6 +3502,10 @@
     "familyDesc": "Liens avec conjoint, enfants, parents, proches à charge"
   },
   "familyStatus": {
+    "title": "Situation Familiale",
+    "selectorTitle": "Choisir votre situation familiale",
+    "selectorDescription": "Votre situation familiale impacte votre mobilité et vos ressources",
+    "constraints": "Contraintes:",
     "single": "Célibataire",
     "inRelationship": "En couple",
     "married": "Marié(e)",

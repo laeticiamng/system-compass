@@ -3092,6 +3092,10 @@
     "familyDesc": "Bonds with spouse, children, parents, dependents"
   },
   "familyStatus": {
+    "title": "Family Status",
+    "selectorTitle": "Choose your family status",
+    "selectorDescription": "Your family status impacts your mobility and resources",
+    "constraints": "Constraints:",
     "single": "Single",
     "inRelationship": "In a relationship",
     "married": "Married",
