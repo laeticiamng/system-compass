@@ -3086,6 +3086,43 @@
     "continueToBoard": "Continue to board",
     "rollDicePrompt": "Roll the dice to move on the board"
   },
+  "turnPhaseHelper": {
+    "currentPhase": "Current phase",
+    "allPhases": "All turn phases",
+    "now": "Now",
+    "phases": {
+      "global_event": {
+        "title": "World Event",
+        "description": "A global event affects all players. Read carefully and click Continue.",
+        "shortDescription": "Event affecting the entire world"
+      },
+      "country_event": {
+        "title": "Local Event",
+        "description": "An event specific to your country occurs. Adapt to the situation.",
+        "shortDescription": "Event specific to your system"
+      },
+      "action_selection": {
+        "title": "Action Selection",
+        "description": "Choose an action from the available options. Watch out for costs and risks!",
+        "shortDescription": "Choose your turn action"
+      },
+      "action_resolution": {
+        "title": "Action Resolution",
+        "description": "Your action is being resolved. Discover the outcome.",
+        "shortDescription": "Result of your action"
+      },
+      "board_move": {
+        "title": "Movement",
+        "description": "Roll the dice to advance on the board. Each square can trigger bonuses or questions.",
+        "shortDescription": "Roll and move forward"
+      }
+    }
+  },
+  "dicePrompt": {
+    "rollButton": "Roll the dice!",
+    "instruction": "Click the dice or button to advance on the game board.",
+    "finished": "You've reached the finish!"
+  },
   "positivePoints": {
     "title": "Positive Points",
     "lifestyle": "Lifestyle",

@@ -3444,6 +3444,43 @@
     "continueToBoard": "Passer au plateau",
     "rollDicePrompt": "Lancez le dé pour avancer sur le plateau"
   },
+  "turnPhaseHelper": {
+    "currentPhase": "Phase actuelle",
+    "allPhases": "Toutes les phases du tour",
+    "now": "En cours",
+    "phases": {
+      "global_event": {
+        "title": "Événement Mondial",
+        "description": "Un événement global affecte tous les joueurs. Lisez attentivement et cliquez sur Continuer.",
+        "shortDescription": "Événement affectant le monde entier"
+      },
+      "country_event": {
+        "title": "Événement Local",
+        "description": "Un événement spécifique à votre pays se produit. Adaptez-vous à la situation.",
+        "shortDescription": "Événement propre à votre système"
+      },
+      "action_selection": {
+        "title": "Sélection d'Action",
+        "description": "Choisissez une action parmi les options disponibles. Attention aux coûts et aux risques !",
+        "shortDescription": "Choisissez votre action du tour"
+      },
+      "action_resolution": {
+        "title": "Résolution d'Action",
+        "description": "Votre action est en cours de résolution. Découvrez le résultat.",
+        "shortDescription": "Résultat de votre action"
+      },
+      "board_move": {
+        "title": "Déplacement",
+        "description": "Lancez le dé pour avancer sur le plateau. Chaque case peut déclencher des bonus ou des questions.",
+        "shortDescription": "Lancez le dé et avancez"
+      }
+    }
+  },
+  "dicePrompt": {
+    "rollButton": "Lancer le dé !",
+    "instruction": "Cliquez sur le dé ou le bouton pour avancer sur le plateau de jeu.",
+    "finished": "Vous avez atteint l'arrivée !"
+  },
   "positivePoints": {
     "title": "Points Positifs",
     "lifestyle": "Qualité de Vie",

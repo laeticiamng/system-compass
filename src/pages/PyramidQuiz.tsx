@@ -20,6 +20,8 @@ import EventCard from '@/components/game/EventCard';
 import TurnManager, { TurnPhase } from '@/components/game/TurnManager';
 import GameEndSummary from '@/components/game/GameEndSummary';
 import TutorialMode, { shouldSkipTutorial } from '@/components/game/TutorialMode';
+import TurnPhaseHelper from '@/components/game/TurnPhaseHelper';
+import DicePrompt from '@/components/game/DicePrompt';
 import { useSavedGames, SavedGame, SavedGameState } from '@/hooks/useSavedGames';
 import { useAuth } from '@/hooks/useAuth';
 import { 
@@ -1155,6 +1157,9 @@ export default function PyramidQuiz() {
             ))}
           </div>
 
+          {/* Turn Phase Helper */}
+          <TurnPhaseHelper currentPhase={turnPhase} />
+
           {/* Turn Manager - Phases: Events → Actions → Board */}
           {turnPhase !== 'board_move' ? (
             <TurnManager
@@ -1243,28 +1248,15 @@ export default function PyramidQuiz() {
                 </div>
               )}
 
-              {/* Dice and Controls */}
-              <div className="flex flex-col items-center gap-6 mt-8">
-                <button
-                  ref={diceRef}
-                  onClick={rollDice}
-                  disabled={isRolling || isMoving || currentPlayer.position >= FINISH_POSITION}
-                  className={cn(
-                    "p-8 rounded-2xl bg-primary/10 hover:bg-primary/20 transition-all duration-300 hover:scale-110",
-                    (isRolling || isMoving) && "pointer-events-none"
-                  )}
-                  style={{ transform: `rotate(${diceRotation}deg)` }}
-                >
-                  <DiceIcon className={cn(
-                    "w-16 h-16 text-primary transition-all",
-                    isRolling && "animate-spin"
-                  )} />
-                </button>
-                
-                <p className="text-muted-foreground">
-                  {isMoving ? t('pyramidQuiz.board.moving') : t('pyramidQuiz.board.rollDice')}
-                </p>
-              </div>
+              {/* Dice Prompt with animated arrow */}
+              <DicePrompt
+                diceValue={diceValue}
+                isRolling={isRolling}
+                isMoving={isMoving}
+                isFinished={currentPlayer.position >= FINISH_POSITION}
+                diceRotation={diceRotation}
+                onRoll={rollDice}
+              />
             </>
           )}
 
