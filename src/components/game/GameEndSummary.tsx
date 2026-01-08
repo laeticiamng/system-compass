@@ -1,0 +1,471 @@
+import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Button } from '@/components/ui/button';
+import { Progress } from '@/components/ui/progress';
+import { 
+  CharacterCard, 
+  GameResources, 
+  RESOURCE_INFO,
+  ResourceType,
+  CharacterAspiration 
+} from '@/lib/game-data';
+import { PyramidType, PYRAMID_TYPE_INFO } from '@/lib/types';
+import { cn } from '@/lib/utils';
+import { 
+  Trophy, 
+  Target, 
+  Heart, 
+  Star,
+  TrendingUp,
+  TrendingDown,
+  Minus,
+  Award,
+  RotateCcw,
+  Share2,
+  CheckCircle,
+  XCircle,
+  AlertTriangle
+} from 'lucide-react';
+
+interface PlayerEndState {
+  id: number;
+  name: string;
+  character?: CharacterCard;
+  resources: GameResources;
+  scores: Record<PyramidType, number>;
+  position: number;
+}
+
+interface GameEndSummaryProps {
+  players: PlayerEndState[];
+  turnCount: number;
+  gameMode: 'solo' | 'race' | 'points_duel' | 'cooperative';
+  onPlayAgain: () => void;
+  onBackToMenu: () => void;
+}
+
+interface AspirationResult {
+  aspiration: CharacterAspiration;
+  achieved: boolean;
+  score: number;
+  maxScore: number;
+  progress: number;
+}
+
+function evaluateAspirations(
+  player: PlayerEndState,
+  scores: Record<PyramidType, number>
+): AspirationResult[] {
+  if (!player.character) return [];
+  
+  const results: AspirationResult[] = [];
+  const allAspirations = [
+    ...player.character.majorAspirations,
+    player.character.minorAspiration
+  ];
+
+  allAspirations.forEach(asp => {
+    let totalScore = 0;
+    let maxPossible = 0;
+    
+    asp.targetPyramids.forEach(pyramid => {
+      totalScore += scores[pyramid] || 0;
+      maxPossible += 20; // Arbitrary max per pyramid
+    });
+    
+    const progress = maxPossible > 0 ? (totalScore / maxPossible) * 100 : 0;
+    const achieved = progress >= 60; // 60% threshold for success
+    
+    results.push({
+      aspiration: asp,
+      achieved,
+      score: totalScore,
+      maxScore: maxPossible,
+      progress: Math.min(100, progress)
+    });
+  });
+
+  return results;
+}
+
+function calculateLifeScore(player: PlayerEndState): {
+  total: number;
+  breakdown: { category: string; score: number; max: number; icon: string }[];
+  verdict: 'exceptional' | 'successful' | 'average' | 'struggling' | 'critical';
+} {
+  const breakdown: { category: string; score: number; max: number; icon: string }[] = [];
+  
+  // Resources score (max 60)
+  const resourceTotal = Object.values(player.resources).reduce((a, b) => a + b, 0);
+  const resourceMax = 60;
+  breakdown.push({ 
+    category: 'Ressources finales', 
+    score: resourceTotal, 
+    max: resourceMax,
+    icon: '💎'
+  });
+
+  // Pyramid diversity (max 30)
+  const nonZeroPyramids = Object.values(player.scores).filter(s => s > 0).length;
+  const pyramidDiversity = nonZeroPyramids * 5;
+  breakdown.push({ 
+    category: 'Diversité des expériences', 
+    score: pyramidDiversity, 
+    max: 30,
+    icon: '🌍'
+  });
+
+  // Aspirations (max 40)
+  const aspirationResults = evaluateAspirations(player, player.scores);
+  const aspirationScore = aspirationResults.filter(a => a.achieved).length * 
+    (40 / Math.max(1, aspirationResults.length));
+  breakdown.push({ 
+    category: 'Objectifs atteints', 
+    score: Math.round(aspirationScore), 
+    max: 40,
+    icon: '🎯'
+  });
+
+  // Health bonus (max 20)
+  const healthScore = player.resources.health * 2;
+  breakdown.push({ 
+    category: 'Santé préservée', 
+    score: healthScore, 
+    max: 20,
+    icon: '❤️'
+  });
+
+  // Network bonus (max 20)
+  const networkScore = player.resources.network * 2;
+  breakdown.push({ 
+    category: 'Réseau développé', 
+    score: networkScore, 
+    max: 20,
+    icon: '🤝'
+  });
+
+  const total = breakdown.reduce((sum, b) => sum + b.score, 0);
+  const maxTotal = breakdown.reduce((sum, b) => sum + b.max, 0);
+  const percentage = (total / maxTotal) * 100;
+
+  let verdict: 'exceptional' | 'successful' | 'average' | 'struggling' | 'critical';
+  if (percentage >= 80) verdict = 'exceptional';
+  else if (percentage >= 60) verdict = 'successful';
+  else if (percentage >= 40) verdict = 'average';
+  else if (percentage >= 20) verdict = 'struggling';
+  else verdict = 'critical';
+
+  return { total, breakdown, verdict };
+}
+
+const VERDICT_INFO = {
+  exceptional: {
+    label: 'Vie Exceptionnelle',
+    description: 'Vous avez su naviguer le système avec brio et atteindre vos objectifs.',
+    color: 'text-emerald-400',
+    bg: 'bg-emerald-500/20',
+    icon: '🌟'
+  },
+  successful: {
+    label: 'Vie Réussie',
+    description: 'Vous avez construit une vie stable avec de belles réalisations.',
+    color: 'text-blue-400',
+    bg: 'bg-blue-500/20',
+    icon: '✨'
+  },
+  average: {
+    label: 'Vie Ordinaire',
+    description: 'Des hauts et des bas, mais vous avez tenu bon.',
+    color: 'text-amber-400',
+    bg: 'bg-amber-500/20',
+    icon: '🏠'
+  },
+  struggling: {
+    label: 'Vie Difficile',
+    description: 'Le système n\'a pas été clément. Beaucoup d\'obstacles à surmonter.',
+    color: 'text-orange-400',
+    bg: 'bg-orange-500/20',
+    icon: '💪'
+  },
+  critical: {
+    label: 'Survie',
+    description: 'Chaque jour a été un combat. Mais vous êtes toujours là.',
+    color: 'text-red-400',
+    bg: 'bg-red-500/20',
+    icon: '🔥'
+  }
+};
+
+export default function GameEndSummary({
+  players,
+  turnCount,
+  gameMode,
+  onPlayAgain,
+  onBackToMenu
+}: GameEndSummaryProps) {
+  const { t } = useTranslation();
+
+  // Calculate results for all players
+  const playerResults = useMemo(() => {
+    return players.map(player => ({
+      player,
+      lifeScore: calculateLifeScore(player),
+      aspirations: evaluateAspirations(player, player.scores)
+    }));
+  }, [players]);
+
+  // Sort by total score for ranking
+  const rankedResults = [...playerResults].sort(
+    (a, b) => b.lifeScore.total - a.lifeScore.total
+  );
+
+  const winner = rankedResults[0];
+
+  return (
+    <div className="min-h-screen pt-24 pb-16">
+      <div className="container mx-auto px-4 max-w-4xl">
+        {/* Header */}
+        <div className="text-center mb-12 animate-fade-in">
+          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 text-primary mb-6">
+            <Trophy className="w-10 h-10" />
+          </div>
+          <h1 className="font-display text-4xl font-bold mb-4">
+            Fin de Partie
+          </h1>
+          <p className="text-xl text-muted-foreground">
+            {turnCount} années de vie simulées
+          </p>
+        </div>
+
+        {/* Winner announcement for multiplayer */}
+        {players.length > 1 && gameMode !== 'cooperative' && (
+          <div className="glass-card rounded-2xl p-8 mb-8 text-center animate-scale-in border-2 border-primary/50">
+            <div className="text-4xl mb-4">👑</div>
+            <h2 className="font-display text-2xl font-bold mb-2">
+              Victoire de {winner.player.name} !
+            </h2>
+            <p className="text-muted-foreground">
+              Score de vie : {winner.lifeScore.total} points
+            </p>
+          </div>
+        )}
+
+        {/* Player Results */}
+        <div className="space-y-8">
+          {rankedResults.map((result, index) => {
+            const { player, lifeScore, aspirations } = result;
+            const verdictInfo = VERDICT_INFO[lifeScore.verdict];
+
+            return (
+              <div 
+                key={player.id}
+                className={cn(
+                  "glass-card rounded-2xl overflow-hidden animate-fade-in",
+                  index === 0 && players.length > 1 && "ring-2 ring-primary"
+                )}
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                {/* Player Header */}
+                <div className={cn("p-6", verdictInfo.bg)}>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      {players.length > 1 && (
+                        <div className={cn(
+                          "w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl",
+                          index === 0 ? "bg-primary text-primary-foreground" : "bg-muted"
+                        )}>
+                          #{index + 1}
+                        </div>
+                      )}
+                      <div>
+                        <h3 className="font-display text-xl font-bold">{player.name}</h3>
+                        {player.character && (
+                          <p className="text-sm text-muted-foreground">
+                            Né(e) en {player.character.birthCountry}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-3xl mb-1">{verdictInfo.icon}</div>
+                      <p className={cn("font-bold", verdictInfo.color)}>
+                        {verdictInfo.label}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-6 space-y-8">
+                  {/* Verdict */}
+                  <div className="text-center p-6 rounded-xl bg-muted/30">
+                    <p className="text-lg">{verdictInfo.description}</p>
+                  </div>
+
+                  {/* Score Breakdown */}
+                  <div>
+                    <h4 className="font-semibold mb-4 flex items-center gap-2">
+                      <Award className="w-5 h-5 text-primary" />
+                      Bilan de vie
+                    </h4>
+                    <div className="space-y-3">
+                      {lifeScore.breakdown.map(item => (
+                        <div key={item.category} className="space-y-1">
+                          <div className="flex items-center justify-between text-sm">
+                            <span className="flex items-center gap-2">
+                              <span>{item.icon}</span>
+                              {item.category}
+                            </span>
+                            <span className="font-mono">{item.score}/{item.max}</span>
+                          </div>
+                          <Progress 
+                            value={(item.score / item.max) * 100} 
+                            className="h-2" 
+                          />
+                        </div>
+                      ))}
+                      <div className="pt-3 border-t flex items-center justify-between font-bold">
+                        <span>Score Total</span>
+                        <span className="text-xl text-primary">{lifeScore.total}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Aspirations */}
+                  {aspirations.length > 0 && (
+                    <div>
+                      <h4 className="font-semibold mb-4 flex items-center gap-2">
+                        <Target className="w-5 h-5 text-primary" />
+                        Objectifs de vie
+                      </h4>
+                      <div className="grid gap-3">
+                        {aspirations.map(asp => (
+                          <div 
+                            key={asp.aspiration.id}
+                            className={cn(
+                              "p-4 rounded-lg border flex items-center gap-4",
+                              asp.achieved 
+                                ? "bg-emerald-500/10 border-emerald-500/30"
+                                : "bg-muted/30 border-border"
+                            )}
+                          >
+                            <div className="text-2xl">{asp.aspiration.icon}</div>
+                            <div className="flex-1">
+                              <div className="flex items-center gap-2">
+                                <span className="font-medium">
+                                  {t(asp.aspiration.label)}
+                                </span>
+                                {asp.achieved ? (
+                                  <CheckCircle className="w-4 h-4 text-emerald-400" />
+                                ) : (
+                                  <XCircle className="w-4 h-4 text-muted-foreground" />
+                                )}
+                              </div>
+                              <p className="text-xs text-muted-foreground">
+                                {t(asp.aspiration.description)}
+                              </p>
+                            </div>
+                            <div className="text-right">
+                              <Progress 
+                                value={asp.progress} 
+                                className="w-20 h-2" 
+                              />
+                              <span className="text-xs text-muted-foreground">
+                                {Math.round(asp.progress)}%
+                              </span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Final Resources */}
+                  <div>
+                    <h4 className="font-semibold mb-4 flex items-center gap-2">
+                      <Heart className="w-5 h-5 text-primary" />
+                      État final
+                    </h4>
+                    <div className="grid grid-cols-3 gap-3">
+                      {(Object.entries(player.resources) as [ResourceType, number][]).map(([res, val]) => {
+                        const info = RESOURCE_INFO[res];
+                        const level = val >= 7 ? 'high' : val >= 4 ? 'medium' : 'low';
+                        return (
+                          <div 
+                            key={res}
+                            className={cn(
+                              "p-3 rounded-lg text-center",
+                              level === 'high' && "bg-emerald-500/10",
+                              level === 'medium' && "bg-amber-500/10",
+                              level === 'low' && "bg-red-500/10"
+                            )}
+                          >
+                            <div className="text-2xl mb-1">{info.icon}</div>
+                            <div className="text-xs text-muted-foreground mb-1">
+                              {t(info.label)}
+                            </div>
+                            <div className={cn(
+                              "font-bold",
+                              level === 'high' && "text-emerald-400",
+                              level === 'medium' && "text-amber-400",
+                              level === 'low' && "text-red-400"
+                            )}>
+                              {val}/10
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Pyramid Scores */}
+                  <div>
+                    <h4 className="font-semibold mb-4 flex items-center gap-2">
+                      <Star className="w-5 h-5 text-primary" />
+                      Expériences par système
+                    </h4>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                      {(Object.entries(player.scores) as [PyramidType, number][])
+                        .sort(([, a], [, b]) => b - a)
+                        .map(([pyramid, score]) => {
+                          const info = PYRAMID_TYPE_INFO[pyramid];
+                          return (
+                            <div 
+                              key={pyramid}
+                              className="p-3 rounded-lg bg-muted/30 flex items-center gap-2"
+                            >
+                              <div 
+                                className="w-3 h-3 rounded-full"
+                                style={{ backgroundColor: info.color }}
+                              />
+                              <span className="text-xs flex-1 truncate">
+                                {info.label}
+                              </span>
+                              <span className="font-mono text-sm font-bold">
+                                {score}
+                              </span>
+                            </div>
+                          );
+                        })}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Actions */}
+        <div className="flex gap-4 mt-12 justify-center">
+          <Button variant="outline" onClick={onBackToMenu} className="gap-2">
+            <RotateCcw className="w-4 h-4" />
+            Menu principal
+          </Button>
+          <Button onClick={onPlayAgain} className="gap-2">
+            <Trophy className="w-4 h-4" />
+            Rejouer
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}

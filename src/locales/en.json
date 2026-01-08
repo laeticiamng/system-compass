@@ -2626,7 +2626,16 @@
     "rest": {
       "label": "Rest",
       "description": "Recover time and energy"
-    }
+    },
+    "shortcut": {
+      "label": "Take a shortcut",
+      "description": "Try a dangerous path to gain mobility quickly"
+    },
+    "shortcutTitle": "Dangerous shortcuts",
+    "dangerous": "Risky",
+    "shortcutWarning": "Warning: This will trigger a risk event",
+    "shortcutExplain": "Shortcuts can lead to scams, exploitation, or worse. Based on real situations.",
+    "takeRisk": "Take the risk"
   },
   "events": {
     "globalEvent": "Global Event",

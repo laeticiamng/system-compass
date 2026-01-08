@@ -2984,7 +2984,16 @@
     "rest": {
       "label": "Se reposer",
       "description": "Récupère du temps et de l'énergie"
-    }
+    },
+    "shortcut": {
+      "label": "Prendre un raccourci",
+      "description": "Tenter une voie dangereuse pour gagner en mobilité rapidement"
+    },
+    "shortcutTitle": "Raccourcis dangereux",
+    "dangerous": "Risqué",
+    "shortcutWarning": "Attention : Ceci déclenchera un événement à risque",
+    "shortcutExplain": "Les raccourcis peuvent mener à des arnaques, de l'exploitation ou pire. Basé sur des situations réelles.",
+    "takeRisk": "Prendre le risque"
   },
   "events": {
     "globalEvent": "Événement mondial",

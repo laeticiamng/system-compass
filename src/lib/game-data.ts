@@ -48,6 +48,7 @@ export interface GameAction {
   requirements?: Partial<GameResources>;
   riskChance?: number; // 0-1 chance of negative outcome
   riskPenalty?: Partial<GameResources>;
+  isShortcut?: boolean; // Flag to trigger risk events instead of normal failure
 }
 
 export const GAME_ACTIONS: GameAction[] = [
@@ -104,6 +105,21 @@ export const GAME_ACTIONS: GameAction[] = [
     costs: { time: 3 },
     gains: { network: 2, skills: 1 },
     pyramidEffect: { PROBLEM_RENT: 1, HYBRID_TRANSITION: 1 },
+  },
+  // SHORTCUT ACTION (Risky)
+  {
+    id: 'shortcut',
+    type: 'major',
+    label: 'actions.shortcut.label',
+    description: 'actions.shortcut.description',
+    icon: '⚡',
+    costs: { money: 2 },
+    gains: { mobility: 3 },
+    pyramidEffect: { PROBLEM_RENT: 2 },
+    riskChance: 0.7, // 70% chance of triggering a risk event
+    riskPenalty: { health: 3, money: 3, mobility: 2 },
+    requirements: { mobility: 1 },
+    isShortcut: true, // Flag to trigger risk events
   },
   // MINOR ACTIONS
   {
