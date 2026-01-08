@@ -123,7 +123,7 @@ export default function Index() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {countries.map((country) => (
+            {countries.slice(0, 4).map((country) => (
               <CountryCard key={country.id} country={country} />
             ))}
           </div>
@@ -151,16 +151,6 @@ export default function Index() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="py-8 border-t border-border/50">
-        <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-          <p>{t('common.appName')} — {t('common.tagline')}</p>
-          <p className="mt-2 text-xs">
-            {t('common.disclaimer')}
-          </p>
-        </div>
-      </footer>
     </div>
   );
 }

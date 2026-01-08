@@ -7,7 +7,20 @@
     "no": "No",
     "back": "Back",
     "next": "Next",
-    "years": "years"
+    "years": "years",
+    "save": "Save",
+    "cancel": "Cancel",
+    "load": "Load",
+    "loading": "Loading...",
+    "country": "Country",
+    "metric": "Metric"
+  },
+  "footer": {
+    "explore": "Explore",
+    "tools": "Tools",
+    "account": "Account",
+    "profileTest": "Profile Test",
+    "madeWith": "Made with"
   },
   "nav": {
     "start": "Start",
@@ -1523,6 +1536,33 @@
     "costOfLiving": "Cost of Living",
     "qualityOfLife": "Quality of Life",
     "filterByType": "Filter by type"
+  },
+  "multiCompare": {
+    "title": "Compare Multiple Countries",
+    "subtitle": "Select up to 5 countries to compare side-by-side",
+    "addCountry": "Add a country",
+    "clearAll": "Clear All",
+    "selectAtLeast": "Select at least 2 countries to compare",
+    "save": "Save",
+    "load": "Load",
+    "saveComparison": "Save Comparison",
+    "comparisonName": "Comparison name...",
+    "savedComparisons": "Saved Comparisons",
+    "noSaved": "No saved comparisons",
+    "saved": "Comparison saved!",
+    "saveError": "Failed to save comparison",
+    "loaded": "Comparison loaded!",
+    "deleted": "Comparison deleted",
+    "loginToSave": "Login to save",
+    "riskComparison": "Risk Comparison",
+    "riskChartNote": "Lower total score = lower overall risk"
+  },
+  "risks": {
+    "legal": "Legal",
+    "safety": "Safety",
+    "corruption": "Corruption",
+    "volatility": "Volatility",
+    "bureaucracy": "Bureaucracy"
   },
   "visa": {
     "workVisa": "Work Visa",

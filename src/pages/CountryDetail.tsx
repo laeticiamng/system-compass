@@ -16,6 +16,8 @@ const PYRAMID_TYPE_LABELS: Record<string, string> = {
   STABILITY_REDIS: 'pyramids.stabilityRedis.label',
   COMPETENCE_TRUST: 'pyramids.competenceTrust.label',
   GROWTH_RISK: 'pyramids.growthRisk.label',
+  HYBRID_TRANSITION: 'pyramids.hybridTransition.label',
+  RESOURCE_EXTRACTION: 'pyramids.resourceExtraction.label',
 };
 
 const PYRAMID_TYPE_COLORS: Record<string, string> = {
@@ -23,6 +25,8 @@ const PYRAMID_TYPE_COLORS: Record<string, string> = {
   STABILITY_REDIS: 'pyramid-stability',
   COMPETENCE_TRUST: 'pyramid-competence',
   GROWTH_RISK: 'pyramid-growth',
+  HYBRID_TRANSITION: 'pyramid-hybrid',
+  RESOURCE_EXTRACTION: 'pyramid-resource',
 };
 
 export default function CountryDetail() {
