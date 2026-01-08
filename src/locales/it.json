@@ -1631,5 +1631,174 @@
       "title": "In sintesi",
       "text": "Questo strumento ti aiuta a vedere più chiaro, non a vedere il futuro. Illumina tendenze perché TU possa decidere con cognizione di causa. La decisione, e la responsabilità, restano sempre tue."
     }
+  },
+  "lifeGame": {
+    "hero": {
+      "badge": "🎮 Gioco da tavolo educativo",
+      "title1": "Il Gioco della",
+      "titleHighlight": "VITA",
+      "subtitle": "Un gioco di simulazione in cui interpreti un personaggio fittizio. Scopri come funziona il mondo attraverso traiettorie casuali — NON è la tua vita reale!",
+      "playCta": "Inizia una partita",
+      "learnCta": "Regole del gioco",
+      "stats": {
+        "archetypes": "Personaggi giocabili",
+        "systems": "Sistemi mondiali",
+        "possibilities": "Traiettorie possibili"
+      }
+    },
+    "clarification": {
+      "title": "⚠️ Questa NON è la tua vita reale",
+      "point1": "Ricevi un personaggio fittizio casuale (erede, rifugiato, imprenditore...)",
+      "point2": "Esplori i meccanismi del mondo senza rischio reale",
+      "point3": "È uno strumento educativo, non una previsione per te",
+      "realLife": "Per pianificare la tua vita reale →",
+      "realLifeLink": "Chiavi di Uscita"
+    },
+    "tagline": {
+      "quote": "Alcuni nascono al traguardo. Altri devono correre una maratona con catene ai piedi. Questo gioco mostra perché.",
+      "author": "— La realtà, senza filtri"
+    },
+    "features": {
+      "title": "Come funziona il gioco",
+      "subtitle": "Un gioco da tavolo dove caso e strategia si mescolano.",
+      "systems": {
+        "title": "6 Sistemi Mondiali",
+        "description": "Ogni paese sulla plancia funziona diversamente. Impara le regole invisibili di ogni sistema."
+      },
+      "characters": {
+        "title": "12+ Personaggi Giocabili",
+        "description": "Dall'erede al rifugiato. Non sempre scegli — a volte il destino decide per te."
+      },
+      "choices": {
+        "title": "Scelte Strategiche",
+        "description": "Lavorare, studiare, migrare, intraprendere... Gestisci le tue risorse come in un gioco gestionale."
+      },
+      "risks": {
+        "title": "Scorciatoie Rischiose",
+        "description": "Mercato nero, corruzione. Guadagni rapidi con il rischio di perdere tutto — come nella vita reale."
+      }
+    },
+    "resources": {
+      "title": "6 Risorse da Gestire",
+      "subtitle": "Nel gioco come nella vita, non avrai mai tutto."
+    },
+    "archetypes": {
+      "title": "Chi interpreterai?",
+      "subtitle": "Ogni personaggio ha vantaggi e ostacoli. La difficoltà riflette le disuguaglianze del mondo reale.",
+      "seeAll": "Vedi tutti i personaggi"
+    },
+    "difficulty": {
+      "easy": "Facile",
+      "medium": "Medio",
+      "hard": "Difficile",
+      "extreme": "Estremo"
+    },
+    "warning": {
+      "title": "Contenuto educativo sensibile",
+      "description": "Questo gioco affronta realtà difficili in modo ludico. Le situazioni del gioco sono ispirate da esperienze reali vissute da milioni di persone.",
+      "topics": {
+        "migration": "Migrazione forzata",
+        "corruption": "Corruzione sistemica",
+        "inequality": "Disuguaglianza di nascita",
+        "shortcuts": "Scorciatoie pericolose"
+      }
+    },
+    "cta": {
+      "title": "Pronto a giocare?",
+      "subtitle": "Inizia una partita e scopri un personaggio casuale. Riuscirai a navigare il sistema?",
+      "button": "Avvia il gioco"
+    }
+  },
+  "archetypes": {
+    "silverSpoon": {
+      "label": "L'Erede",
+      "description": "Nato in una famiglia benestante con rete già stabilita. La vita in modalità facile.",
+      "example": "Figlio/a di CEO, avvocato, medico"
+    },
+    "techBro": {
+      "label": "Il Tech Bro",
+      "description": "Sviluppatore autodidatta nella Silicon Valley. Competente ma socialmente limitato.",
+      "example": "Ingegnere FAANG, fondatore di startup"
+    },
+    "suburbanDreamer": {
+      "label": "Il Sognatore Suburbano",
+      "description": "Classe media che sogna stabilità e casa con giardino.",
+      "example": "Impiegato aziendale, funzionario"
+    },
+    "ambitiousGraduate": {
+      "label": "Il Laureato Ambizioso",
+      "description": "Primo della famiglia all'università. Tutto da dimostrare.",
+      "example": "Studente borsista, stagista sovraqualificato"
+    },
+    "economicMigrant": {
+      "label": "Il Migrante Economico",
+      "description": "Lascia il paese per offrire una vita migliore alla famiglia. Resiliente ma invisibile.",
+      "example": "Lavoratore senza documenti, diaspora"
+    },
+    "warRefugee": {
+      "label": "Il Rifugiato di Guerra",
+      "description": "Ha perso tutto tranne la speranza. Ricostruisce la vita da zero.",
+      "example": "Rifugiato siriano, ucraino, afghano"
+    },
+    "selfMade": {
+      "label": "Il Self-Made",
+      "description": "Partito da nulla, ha costruito un impero con pura volontà. Astuto e ambizioso.",
+      "example": "Imprenditore di quartiere, storia di successo immigrata"
+    },
+    "digitalNomad": {
+      "label": "Il Nomade Digitale",
+      "description": "Lavora da ovunque, non appartiene a nessun sistema. Libero ma instabile.",
+      "example": "Freelance remoto, content creator"
+    },
+    "oligarchHeir": {
+      "label": "L'Erede dell'Oligarca",
+      "description": "Fortuna immensa ma passaporto problematico. I soldi non sono tutto.",
+      "example": "Figlio di miliardario russo, cinese"
+    },
+    "stateDependent": {
+      "label": "Il Dipendente dal Sistema",
+      "description": "Malattia cronica o disabilità. Dipende dalle reti di sicurezza sociale.",
+      "example": "Persona con disabilità, malattia di lunga durata"
+    },
+    "expatExecutive": {
+      "label": "L'Expat Manager",
+      "description": "Inviato all'estero dall'azienda. Pacchetto dorato ma burnout garantito.",
+      "example": "Direttore paese, VP regionale"
+    },
+    "undergroundHustler": {
+      "label": "L'Hustler di Strada",
+      "description": "Sopravvissuto dell'economia informale. Prospera grazie alla rete e all'astuzia.",
+      "example": "Venditore ambulante, economia grigia"
+    }
+  },
+  "archetypeSelector": {
+    "title": "Scegli il tuo Destino",
+    "subtitle": "Come vuoi definire il tuo personaggio?",
+    "chooseMode": "Scegliere il mio archetipo",
+    "chooseModeDesc": "Sfoglia i 12 archetipi sociali e scegli quello che ti risuona.",
+    "selectArchetype": "Seleziona",
+    "randomMode": "Lascia decidere il destino",
+    "randomModeDesc": "La vita non sceglie. Ricevi un archetipo casuale e scopri le sfide che ti attendono.",
+    "rollDice": "Tira i dadi",
+    "playerSelect": "Giocatore {{player}} — Scegli la tua vita",
+    "selectHint": "Ogni archetipo ha vantaggi e ostacoli. La difficoltà riflette le disuguaglianze del mondo reale.",
+    "randomOne": "Casuale",
+    "confirmNext": "Conferma e successivo",
+    "startGame": "Inizia il gioco",
+    "selectedPlayers": "Giocatori confermati",
+    "difficulty": {
+      "easy": "Facile",
+      "medium": "Medio",
+      "hard": "Difficile",
+      "extreme": "Estremo"
+    }
+  },
+  "resources": {
+    "time": "Tempo",
+    "money": "Denaro",
+    "health": "Salute",
+    "network": "Rete",
+    "skills": "Competenze",
+    "mobility": "Mobilità"
   }
 }
