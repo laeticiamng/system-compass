@@ -3298,5 +3298,131 @@
         "description": "Chaque jour a été un combat. Mais vous êtes toujours là."
       }
     }
+  },
+  "tutorial": {
+    "stepOf": "Étape {{current}} sur {{total}}",
+    "skip": "Passer le tutoriel",
+    "examples": "Exemples concrets",
+    "realityCheck": "Réalité",
+    "startGame": "Commencer à jouer",
+    "steps": {
+      "welcome": {
+        "title": "Bienvenue dans le Jeu de la Vie",
+        "content": "Ce jeu simule les réalités que vivent des millions de personnes à travers le monde. Ce n'est pas un jeu de fiction — c'est un miroir du monde réel, avec ses opportunités et ses dangers.",
+        "reality": "Chaque mécanique de ce jeu reflète une réalité vécue. Notre but est la prévention et la compréhension, pas la peur."
+      },
+      "lifeAssignment": {
+        "title": "Tu ne choisis pas ta vie de départ",
+        "content": "Comme dans la vraie vie, tu ne choisis pas où tu nais, ta situation économique de départ, ni tes contraintes initiales. Le jeu t'attribue une vie aléatoire — certaines plus faciles, d'autres très difficiles.",
+        "reality": "Naître dans un pays stable avec un bon passeport est un privilège. D'autres doivent lutter pour des droits que beaucoup considèrent acquis.",
+        "examples": [
+          "Un Suisse né à Genève vs un Nigérian né à Lagos — mêmes ambitions, opportunités très différentes",
+          "Une femme née en Arabie Saoudite vs une née au Canada — libertés fondamentales différentes",
+          "Un enfant né dans une famille riche vs une famille pauvre — même pays, trajectoires différentes"
+        ]
+      },
+      "resources": {
+        "title": "Tes ressources de vie",
+        "content": "Tu gères 6 ressources essentielles : Santé, Argent, Réseau, Sécurité, Éducation et Moral. Chaque décision les affecte. Si certaines tombent à zéro, les conséquences peuvent être graves.",
+        "reality": "Dans la vraie vie, perdre sa santé ou son réseau peut signifier la fin de toutes les opportunités. L'argent seul ne protège pas de tout.",
+        "examples": [
+          "Santé : une maladie chronique change tout le calcul de l'expatriation",
+          "Réseau : sans contacts, même les compétences ne suffisent pas",
+          "Sécurité : un passeport faible limite drastiquement les options"
+        ]
+      },
+      "pyramids": {
+        "title": "Chaque pays a son système",
+        "content": "Les 6 types de pyramides représentent comment chaque pays fonctionne vraiment. Certains récompensent la compétence, d'autres les connexions, d'autres encore l'extraction de ressources.",
+        "reality": "Comprendre le système d'un pays est crucial. Ce qui fonctionne en Allemagne peut être fatal au Cameroun, et vice versa."
+      },
+      "events": {
+        "title": "La vie t'envoie des événements",
+        "content": "Chaque tour, des événements mondiaux et locaux affectent tes ressources. Crises économiques, opportunités, catastrophes naturelles, changements politiques — tu dois t'adapter.",
+        "reality": "Personne ne contrôle tout. Les migrants qui ont tout planifié peuvent voir leurs plans détruits par un changement de politique du jour au lendemain.",
+        "examples": [
+          "Une crise économique mondiale peut effacer des années d'épargne",
+          "Un nouveau gouvernement peut fermer les frontières ou changer les règles du visa"
+        ]
+      },
+      "actions": {
+        "title": "Tes choix définissent ta trajectoire",
+        "content": "Chaque tour, tu peux travailler, étudier, réseauter, économiser ou prendre des risques. Les actions majeures ont plus d'impact mais comportent plus de risques.",
+        "reality": "Chaque choix a un coût d'opportunité. Étudier signifie moins d'argent immédiat. Travailler dur sans réseau peut ne mener nulle part."
+      },
+      "shortcuts": {
+        "title": "Les raccourcis dangereux",
+        "content": "Le jeu propose des 'raccourcis' — passage clandestin, travail illégal, faux documents. Ces options existent parce qu'elles existent dans la vraie vie. Les conséquences peuvent être catastrophiques.",
+        "reality": "Chaque année, des milliers de personnes meurent en tentant ces raccourcis. En Libye, le trafic d'êtres humains est une réalité. Ce jeu ne glorifie pas ces choix — il montre leurs vraies conséquences.",
+        "examples": [
+          "Traversée de la Méditerranée : risque réel de mort, interception, ou esclavage",
+          "Faux documents : emprisonnement, déportation, interdiction de retour",
+          "Travail au noir : exploitation, absence de protection, vulnérabilité totale"
+        ]
+      },
+      "aspirations": {
+        "title": "Tes objectifs personnels",
+        "content": "Ton personnage a des aspirations — devenir riche, vivre en sécurité, retrouver sa famille, ou simplement survivre. La réussite se mesure par rapport à TES objectifs, pas un standard universel.",
+        "reality": "La 'réussite' est relative. Un réfugié qui reconstruit sa vie a autant accompli qu'un entrepreneur qui devient millionnaire."
+      },
+      "endgame": {
+        "title": "Le bilan de vie",
+        "content": "À la fin, le jeu évalue si tu as atteint tes aspirations, préservé ta santé, et navigué le système. Il n'y a pas de 'bonne' façon de jouer — seulement des choix et leurs conséquences.",
+        "reality": "Ce jeu est un outil de compréhension. Qu'il t'aide à apprécier ta situation ou à mieux comprendre celle des autres, c'est sa vraie victoire."
+      }
+    }
+  },
+  "naturalRisks": {
+    "title": "Risques naturels",
+    "seismic": "Risque sismique",
+    "tsunami": "Risque de tsunami",
+    "flood": "Risque d'inondation",
+    "drought": "Risque de sécheresse",
+    "cyclone": "Risque cyclonique",
+    "volcano": "Risque volcanique",
+    "extremeHeat": "Chaleur extrême",
+    "extremeCold": "Froid extrême",
+    "levels": {
+      "none": "Aucun",
+      "low": "Faible",
+      "moderate": "Modéré",
+      "high": "Élevé",
+      "very_high": "Très élevé",
+      "rare": "Rare",
+      "occasional": "Occasionnel",
+      "frequent": "Fréquent",
+      "severe": "Sévère"
+    }
+  },
+  "healthcare": {
+    "title": "Système de santé",
+    "systemType": "Type de système",
+    "qualityScore": "Qualité des soins",
+    "accessScore": "Accès pour les étrangers",
+    "emergencyResponse": "Urgences",
+    "specialistAccess": "Accès aux spécialistes",
+    "chronicCare": "Soins chroniques",
+    "costForExpats": "Coût pour expatriés",
+    "insuranceRequired": "Assurance obligatoire",
+    "systemTypes": {
+      "universal": "Universel",
+      "mixed": "Mixte",
+      "private": "Privé",
+      "limited": "Limité"
+    },
+    "qualityLevels": {
+      "excellent": "Excellent",
+      "good": "Bon",
+      "adequate": "Adéquat",
+      "limited": "Limité",
+      "poor": "Insuffisant"
+    },
+    "costLevels": {
+      "free": "Gratuit",
+      "low": "Faible",
+      "moderate": "Modéré",
+      "high": "Élevé",
+      "very_high": "Très élevé"
+    }
   }
 }

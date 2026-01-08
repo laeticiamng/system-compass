@@ -19,6 +19,7 @@ import ResourceBar from '@/components/game/ResourceBar';
 import EventCard from '@/components/game/EventCard';
 import TurnManager, { TurnPhase } from '@/components/game/TurnManager';
 import GameEndSummary from '@/components/game/GameEndSummary';
+import TutorialMode from '@/components/game/TutorialMode';
 import { useSavedGames, SavedGame, SavedGameState } from '@/hooks/useSavedGames';
 import { useAuth } from '@/hooks/useAuth';
 import { 
@@ -63,7 +64,7 @@ import { Database } from '@/integrations/supabase/types';
 
 type GameMode = 'online' | 'solo' | 'race' | 'points_duel' | 'cooperative' | null;
 type DbGameMode = Database['public']['Enums']['game_mode'];
-type SetupPhase = 'mode' | 'playerCount' | 'profiles' | 'draft' | 'playing';
+type SetupPhase = 'mode' | 'playerCount' | 'profiles' | 'tutorial' | 'draft' | 'playing';
 
 interface QuizQuestion {
   id: string;
@@ -555,7 +556,7 @@ export default function PyramidQuiz() {
 
   const handleProfilesComplete = (profiles: GamePlayerProfile[]) => {
     setPlayerProfiles(profiles);
-    setSetupPhase('draft');
+    setSetupPhase('tutorial');
   };
 
   const handleDraftComplete = (characters: CharacterCardType[]) => {
@@ -889,6 +890,16 @@ export default function PyramidQuiz() {
     );
   }
 
+  // Tutorial phase
+  if (setupPhase === 'tutorial') {
+    return (
+      <TutorialMode
+        onComplete={() => setSetupPhase('draft')}
+        onSkip={() => setSetupPhase('draft')}
+      />
+    );
+  }
+
   // Life assignment phase (random like real life)
   if (setupPhase === 'draft') {
     return (
@@ -896,7 +907,7 @@ export default function PyramidQuiz() {
         playerCount={playerCount}
         playerColors={PLAYER_COLORS}
         onComplete={handleDraftComplete}
-        onBack={() => setSetupPhase('profiles')}
+        onBack={() => setSetupPhase('tutorial')}
       />
     );
   }
