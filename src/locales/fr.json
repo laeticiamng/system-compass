@@ -32,6 +32,110 @@
     "noDecisions": "Ne prend pas les décisions à ta place",
     "footer": "Cet outil analyse les systèmes et simule les conséquences. La responsabilité des décisions reste la tienne."
   },
+  "systemicMistakes": {
+    "title": "Erreurs systémiques fréquentes",
+    "subtitle": "Ce que les systèmes ne pardonnent pas — et comment les éviter",
+    "intro": "Ces erreurs ne sont pas des jugements moraux. Ce sont des décalages entre les attentes d'un individu et les règles réelles d'un système.",
+    "introDetail": "Chaque erreur est analysée en termes de contexte, pyramides concernées, et conséquences typiques.",
+    "typicalContext": "Contexte typique",
+    "pyramidsConcerned": "Pyramides concernées",
+    "frequentConsequences": "Conséquences fréquentes",
+    "time": "Temps",
+    "energy": "Énergie",
+    "money": "Argent",
+    "stagnation": "Stagnation",
+    "exploreExitKeys": "Explorer les clés de sortie associées",
+    "viewExitKeys": "Voir les clés de sortie",
+    "ctaTitle": "Éviter ces erreurs commence par comprendre ton système",
+    "ctaSubtitle": "Analyse ta situation actuelle, identifie les décalages potentiels, et explore les stratégies adaptées à ton profil.",
+    "simulateTrajectory": "Simuler ma trajectoire",
+    "understandPyramids": "Comprendre les pyramides",
+    "teaser": "Comprends les décalages qui coûtent des années — pas des jugements, des patterns à éviter.",
+    "viewMistakes": "Voir les erreurs",
+    "mistakes": {
+      "countryWithoutUnderstanding": {
+        "title": "Changer de pays sans comprendre ce que le système récompense",
+        "description": "Immigrer en pensant que l'effort seul suffit, sans analyser les mécanismes réels de réussite du pays cible.",
+        "context": "Professionnel compétent qui quitte un pays de rente problème pour un pays de stabilité-redistribution, s'attendant à être récompensé pour sa seule valeur ajoutée.",
+        "time": "3-7 ans de positionnement inadapté",
+        "energy": "Épuisement face aux obstacles non anticipés",
+        "money": "Investissement dans les mauvaises certifications ou réseaux",
+        "stagnation": "Stagnation professionnelle malgré les compétences"
+      },
+      "diplomasInNetworkSystem": {
+        "title": "Accumuler des diplômes dans un système de réseau",
+        "description": "Investir des années et des ressources dans l'éducation formelle dans un pays où les connexions priment sur les qualifications.",
+        "context": "Jeune diplômé dans un pays de rente problème qui accumule masters et certifications sans construire de réseau parallèle.",
+        "time": "4-8 ans d'études peu valorisées",
+        "energy": "Frustration face au décalage effort/récompense",
+        "money": "Coût des études sans retour proportionnel",
+        "stagnation": "Surqualification sans débouchés correspondants"
+      },
+      "stabilityInGrowthSystem": {
+        "title": "Chercher la stabilité dans un système de croissance",
+        "description": "Espérer des protections sociales fortes et une progression prévisible dans un pays qui récompense le risque et la vélocité.",
+        "context": "Professionnel français qui émigre aux États-Unis en s'attendant à un CDI stable avec protection maladie et retraite garantie.",
+        "time": "2-5 ans à découvrir les règles réelles",
+        "energy": "Anxiété chronique face à l'instabilité",
+        "money": "Dépenses imprévues (santé, transitions)",
+        "stagnation": "Retour contraint ou adaptation douloureuse"
+      },
+      "growthInStabilitySystem": {
+        "title": "Chercher la croissance rapide dans un système de stabilité",
+        "description": "Tenter de scaler rapidement ou de disruper dans un pays qui valorise la prudence, les processus et la protection des acquis.",
+        "context": "Entrepreneur tech américain qui lance une startup en France en espérant la même vélocité et flexibilité qu'en Californie.",
+        "time": "2-4 ans de friction administrative",
+        "energy": "Frustration face à la lenteur perçue",
+        "money": "Charges et taxes sous-estimées",
+        "stagnation": "Croissance bridée par les contraintes réglementaires"
+      },
+      "visibilityInRentSystem": {
+        "title": "Réussir visiblement sans protection dans un système de rente",
+        "description": "Afficher publiquement sa réussite financière ou professionnelle sans avoir construit les protections nécessaires.",
+        "context": "Entrepreneur prospère dans un pays de rente problème qui affiche son succès sur les réseaux sociaux sans réseau politique ou protection.",
+        "time": "Variable, risque permanent",
+        "energy": "Stress et vigilance constants",
+        "money": "Extorsion, corruption forcée, saisie",
+        "stagnation": "Plafonnement auto-imposé ou fuite"
+      },
+      "bettingAgainstState": {
+        "title": "Parier contre la direction de l'État dans un système hybride",
+        "description": "Investir ou s'engager dans des secteurs que l'État a décidé de contrôler ou de décourager.",
+        "context": "Investisseur étranger qui parie sur un secteur en croissance en Chine sans comprendre les signaux politiques de restriction à venir.",
+        "time": "Perte des années d'investissement",
+        "energy": "Restructuration forcée et stress",
+        "money": "Pertes significatives ou totales",
+        "stagnation": "Exclusion du marché"
+      },
+      "expectingPermanenceExtraction": {
+        "title": "S'attendre à la permanence dans un système d'extraction",
+        "description": "Planifier une vie permanente dans un pays de ressources qui ne donne que des contrats temporaires aux étrangers.",
+        "context": "Expatrié dans un pays du Golfe qui achète un bien immobilier et s'endette en espérant y rester définitivement.",
+        "time": "10-20 ans sans citoyenneté possible",
+        "energy": "Incertitude permanente sur le long terme",
+        "money": "Actifs difficiles à liquider au départ",
+        "stagnation": "Ni appartenance ni plan B préparé"
+      },
+      "ignoringLocalCredentials": {
+        "title": "Ignorer les diplômes locaux dans un système de compétence",
+        "description": "Supposer que son expérience et ses diplômes étrangers suffisent dans un pays qui valorise les certifications locales.",
+        "context": "Médecin ou avocat étranger en Suisse ou Allemagne qui refuse de repasser les équivalences locales.",
+        "time": "2-5 ans de déclassement professionnel",
+        "energy": "Frustration face au non-reconnaissance",
+        "money": "Salaire inférieur au niveau réel",
+        "stagnation": "Plafond de verre invisible"
+      },
+      "singleIncomeSource": {
+        "title": "Dépendre d'une seule source de revenus",
+        "description": "Mettre tous ses œufs dans le même panier professionnel sans construire d'alternatives.",
+        "context": "Cadre supérieur qui compte uniquement sur son emploi sans revenus alternatifs ni compétences exportables.",
+        "time": "Années de reconstruction après licenciement",
+        "energy": "Anxiété et dépendance psychologique",
+        "money": "Chute brutale en cas de perte d'emploi",
+        "stagnation": "Pouvoir de négociation limité"
+      }
+    }
+  },
   "dashboard": {
     "title": "Mon Tableau de Bord",
     "subtitle": "Suivi de vos analyses et simulations",

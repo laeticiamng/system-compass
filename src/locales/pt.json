@@ -21,6 +21,27 @@
     "noDecisions": "Não toma decisões por ti",
     "footer": "Esta ferramenta analisa sistemas e simula consequências. A responsabilidade das decisões permanece tua."
   },
+  "systemicMistakes": {
+    "title": "Erros sistémicos frequentes",
+    "subtitle": "O que os sistemas não perdoam — e como evitá-los",
+    "intro": "Estes erros não são julgamentos morais. São desajustes entre as expectativas de um indivíduo e as regras reais de um sistema.",
+    "introDetail": "Cada erro é analisado em termos de contexto, pirâmides afetadas e consequências típicas.",
+    "typicalContext": "Contexto típico",
+    "pyramidsConcerned": "Pirâmides afetadas",
+    "frequentConsequences": "Consequências frequentes",
+    "time": "Tempo",
+    "energy": "Energia",
+    "money": "Dinheiro",
+    "stagnation": "Estagnação",
+    "exploreExitKeys": "Explorar chaves de saída relacionadas",
+    "viewExitKeys": "Ver chaves de saída",
+    "ctaTitle": "Evitar estes erros começa por compreender o teu sistema",
+    "ctaSubtitle": "Analisa a tua situação atual, identifica desajustes potenciais e explora estratégias adequadas ao teu perfil.",
+    "simulateTrajectory": "Simular a minha trajetória",
+    "understandPyramids": "Compreender as pirâmides",
+    "teaser": "Compreende os desajustes que custam anos — não julgamentos, padrões a evitar.",
+    "viewMistakes": "Ver erros"
+  },
   "nav": {
     "start": "Início",
     "countries": "Países",

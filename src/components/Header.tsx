@@ -15,7 +15,7 @@ import {
 } from './ui/sheet';
 
 // Pages that show simulation features
-const SIMULATION_PAGES = ['/exit-keys', '/life-game', '/compare', '/life-trajectory', '/country/'];
+const SIMULATION_PAGES = ['/exit-keys', '/life-game', '/compare', '/life-trajectory', '/country/', '/systemic-mistakes'];
 const DISCLAIMER_DISMISSED_KEY = 'pyramid-disclaimer-dismissed';
 
 export function Header() {

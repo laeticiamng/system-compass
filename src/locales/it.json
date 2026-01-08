@@ -21,6 +21,27 @@
     "noDecisions": "Non prende decisioni al tuo posto",
     "footer": "Questo strumento analizza sistemi e simula conseguenze. La responsabilità delle decisioni rimane tua."
   },
+  "systemicMistakes": {
+    "title": "Errori sistemici frequenti",
+    "subtitle": "Cosa i sistemi non perdonano — e come evitarli",
+    "intro": "Questi errori non sono giudizi morali. Sono disallineamenti tra le aspettative di un individuo e le regole reali di un sistema.",
+    "introDetail": "Ogni errore è analizzato in termini di contesto, piramidi interessate e conseguenze tipiche.",
+    "typicalContext": "Contesto tipico",
+    "pyramidsConcerned": "Piramidi interessate",
+    "frequentConsequences": "Conseguenze frequenti",
+    "time": "Tempo",
+    "energy": "Energia",
+    "money": "Denaro",
+    "stagnation": "Stagnazione",
+    "exploreExitKeys": "Esplora le chiavi di uscita correlate",
+    "viewExitKeys": "Vedi chiavi di uscita",
+    "ctaTitle": "Evitare questi errori inizia dalla comprensione del tuo sistema",
+    "ctaSubtitle": "Analizza la tua situazione attuale, identifica potenziali disallineamenti ed esplora strategie adatte al tuo profilo.",
+    "simulateTrajectory": "Simula la mia traiettoria",
+    "understandPyramids": "Comprendi le piramidi",
+    "teaser": "Comprendi i disallineamenti che costano anni — non giudizi, schemi da evitare.",
+    "viewMistakes": "Vedi errori"
+  },
   "nav": {
     "start": "Inizio",
     "countries": "Paesi",
