@@ -19,7 +19,7 @@ import ResourceBar from '@/components/game/ResourceBar';
 import EventCard from '@/components/game/EventCard';
 import TurnManager, { TurnPhase } from '@/components/game/TurnManager';
 import GameEndSummary from '@/components/game/GameEndSummary';
-import TutorialMode from '@/components/game/TutorialMode';
+import TutorialMode, { shouldSkipTutorial } from '@/components/game/TutorialMode';
 import { useSavedGames, SavedGame, SavedGameState } from '@/hooks/useSavedGames';
 import { useAuth } from '@/hooks/useAuth';
 import { 
@@ -556,7 +556,12 @@ export default function PyramidQuiz() {
 
   const handleProfilesComplete = (profiles: GamePlayerProfile[]) => {
     setPlayerProfiles(profiles);
-    setSetupPhase('tutorial');
+    // Skip tutorial if user has opted out
+    if (shouldSkipTutorial()) {
+      setSetupPhase('draft');
+    } else {
+      setSetupPhase('tutorial');
+    }
   };
 
   const handleDraftComplete = (characters: CharacterCardType[]) => {
@@ -1090,10 +1095,21 @@ export default function PyramidQuiz() {
       <div className="min-h-screen pt-24 pb-16">
         <div className="container mx-auto px-4 max-w-6xl">
           {/* Current Player Indicator */}
-          <div className="flex items-center justify-center gap-4 mb-6 animate-fade-in">
+          <div className="flex items-center justify-center gap-4 mb-4 animate-fade-in">
             <div className={cn("w-8 h-8 rounded-full animate-pulse", currentPlayer.color)} />
             <span className="font-display text-2xl font-bold">{currentPlayer.name}</span>
             <span className="text-muted-foreground">{t('pyramidQuiz.multiplayer.yourTurn')}</span>
+          </div>
+
+          {/* Current Player Resources */}
+          <div className="flex justify-center mb-6">
+            <div className="glass-card rounded-lg px-4 py-3">
+              <ResourceBar 
+                resources={currentPlayer.resources} 
+                showLabels={true}
+                size="md"
+              />
+            </div>
           </div>
 
           {/* Player Stats Bar */}

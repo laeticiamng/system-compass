@@ -537,6 +537,146 @@ export const RISK_EVENTS: RiskEvent[] = [
       },
     },
   },
+  {
+    id: 'border_detention',
+    type: 'country',
+    riskType: 'illegal_crossing',
+    label: 'events.risk.borderDetention.label',
+    description: 'events.risk.borderDetention.description',
+    icon: '🚔',
+    effect: { mobility: -4, time: -3 },
+    survivalChance: 0.8,
+    countryTypes: ['STABILITY_REDIS', 'COMPETENCE_TRUST', 'GROWTH_RISK'],
+    potentialOutcomes: {
+      success: { 
+        probability: 0.3, 
+        effect: { time: -1 }, 
+        description: 'events.risk.borderDetention.success' 
+      },
+      failure: { 
+        probability: 0.5, 
+        effect: { mobility: -5, money: -3, time: -4 }, 
+        description: 'events.risk.borderDetention.failure' 
+      },
+      catastrophic: { 
+        probability: 0.2, 
+        effect: { mobility: -8, money: -5 }, 
+        description: 'events.risk.borderDetention.catastrophic' 
+      },
+    },
+  },
+  {
+    id: 'organ_trafficking',
+    type: 'country',
+    riskType: 'trafficking',
+    label: 'events.risk.organTrafficking.label',
+    description: 'events.risk.organTrafficking.description',
+    icon: '🏥',
+    effect: { health: -6, money: -4 },
+    survivalChance: 0.5,
+    countryTypes: ['PROBLEM_RENT', 'RESOURCE_EXTRACTION'],
+    potentialOutcomes: {
+      success: { 
+        probability: 0.15, 
+        effect: { money: 4 }, 
+        description: 'events.risk.organTrafficking.success' 
+      },
+      failure: { 
+        probability: 0.45, 
+        effect: { health: -4, money: -3, time: -3 }, 
+        description: 'events.risk.organTrafficking.failure' 
+      },
+      catastrophic: { 
+        probability: 0.4, 
+        effect: { health: -10, mobility: -5 }, 
+        description: 'events.risk.organTrafficking.catastrophic' 
+      },
+    },
+  },
+  {
+    id: 'investment_scam',
+    type: 'country',
+    riskType: 'scam',
+    label: 'events.risk.investmentScam.label',
+    description: 'events.risk.investmentScam.description',
+    icon: '📈',
+    effect: { money: -5 },
+    survivalChance: 0.85,
+    countryTypes: ['GROWTH_RISK', 'HYBRID_TRANSITION'],
+    potentialOutcomes: {
+      success: { 
+        probability: 0.25, 
+        effect: { money: 5 }, 
+        description: 'events.risk.investmentScam.success' 
+      },
+      failure: { 
+        probability: 0.6, 
+        effect: { money: -6, network: -2 }, 
+        description: 'events.risk.investmentScam.failure' 
+      },
+      catastrophic: { 
+        probability: 0.15, 
+        effect: { money: -10, network: -4 }, 
+        description: 'events.risk.investmentScam.catastrophic' 
+      },
+    },
+  },
+  {
+    id: 'work_camp',
+    type: 'country',
+    riskType: 'exploitation',
+    label: 'events.risk.workCamp.label',
+    description: 'events.risk.workCamp.description',
+    icon: '⛏️',
+    effect: { health: -4, time: -5, mobility: -3 },
+    survivalChance: 0.6,
+    countryTypes: ['PROBLEM_RENT', 'RESOURCE_EXTRACTION'],
+    potentialOutcomes: {
+      success: { 
+        probability: 0.2, 
+        effect: { money: 2 }, 
+        description: 'events.risk.workCamp.success' 
+      },
+      failure: { 
+        probability: 0.5, 
+        effect: { health: -5, time: -6, mobility: -4 }, 
+        description: 'events.risk.workCamp.failure' 
+      },
+      catastrophic: { 
+        probability: 0.3, 
+        effect: { health: -10, mobility: -8 }, 
+        description: 'events.risk.workCamp.catastrophic' 
+      },
+    },
+  },
+  {
+    id: 'natural_disaster',
+    type: 'country',
+    riskType: 'illegal_crossing',
+    label: 'events.risk.naturalDisaster.label',
+    description: 'events.risk.naturalDisaster.description',
+    icon: '🌊',
+    effect: { health: -3, money: -2, mobility: -2 },
+    survivalChance: 0.75,
+    countryTypes: ['PROBLEM_RENT', 'HYBRID_TRANSITION', 'RESOURCE_EXTRACTION'],
+    potentialOutcomes: {
+      success: { 
+        probability: 0.35, 
+        effect: { network: 1 }, 
+        description: 'events.risk.naturalDisaster.success' 
+      },
+      failure: { 
+        probability: 0.45, 
+        effect: { health: -3, money: -4, mobility: -3 }, 
+        description: 'events.risk.naturalDisaster.failure' 
+      },
+      catastrophic: { 
+        probability: 0.2, 
+        effect: { health: -8, money: -5 }, 
+        description: 'events.risk.naturalDisaster.catastrophic' 
+      },
+    },
+  },
 ];
 
 // Get random risk event for shortcuts

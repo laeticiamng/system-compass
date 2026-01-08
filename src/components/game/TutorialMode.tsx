@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
+import { Checkbox } from '@/components/ui/checkbox';
 import { cn } from '@/lib/utils';
 import { 
   ChevronRight, 
@@ -22,6 +23,18 @@ import {
   Trophy,
   Play
 } from 'lucide-react';
+
+const TUTORIAL_STORAGE_KEY = 'pyramidQuiz_skipTutorial';
+
+export function shouldSkipTutorial(): boolean {
+  if (typeof window === 'undefined') return false;
+  return localStorage.getItem(TUTORIAL_STORAGE_KEY) === 'true';
+}
+
+export function setSkipTutorial(skip: boolean): void {
+  if (typeof window === 'undefined') return;
+  localStorage.setItem(TUTORIAL_STORAGE_KEY, skip ? 'true' : 'false');
+}
 
 interface TutorialStep {
   id: string;
@@ -125,6 +138,7 @@ interface TutorialModeProps {
 export default function TutorialMode({ onComplete, onSkip }: TutorialModeProps) {
   const { t } = useTranslation();
   const [currentStep, setCurrentStep] = useState(0);
+  const [dontShowAgain, setDontShowAgain] = useState(false);
   
   const step = TUTORIAL_STEPS[currentStep];
   const progress = ((currentStep + 1) / TUTORIAL_STEPS.length) * 100;
@@ -133,6 +147,9 @@ export default function TutorialMode({ onComplete, onSkip }: TutorialModeProps) 
     if (currentStep < TUTORIAL_STEPS.length - 1) {
       setCurrentStep(currentStep + 1);
     } else {
+      if (dontShowAgain) {
+        setSkipTutorial(true);
+      }
       onComplete();
     }
   };
@@ -142,6 +159,13 @@ export default function TutorialMode({ onComplete, onSkip }: TutorialModeProps) 
       setCurrentStep(currentStep - 1);
     }
   };
+
+  const handleSkip = () => {
+    if (dontShowAgain) {
+      setSkipTutorial(true);
+    }
+    onSkip();
+  };
   
   return (
     <div className="min-h-screen pt-24 pb-16">
@@ -150,7 +174,7 @@ export default function TutorialMode({ onComplete, onSkip }: TutorialModeProps) 
         <div className="mb-8">
           <div className="flex justify-between text-sm text-muted-foreground mb-2">
             <span>{t('tutorial.stepOf', { current: currentStep + 1, total: TUTORIAL_STEPS.length })}</span>
-            <Button variant="ghost" size="sm" onClick={onSkip}>
+            <Button variant="ghost" size="sm" onClick={handleSkip}>
               {t('tutorial.skip')}
             </Button>
           </div>
@@ -237,8 +261,23 @@ export default function TutorialMode({ onComplete, onSkip }: TutorialModeProps) 
           </Button>
         </div>
 
+        {/* Don't show again checkbox */}
+        <div className="flex items-center justify-center gap-2 mt-6">
+          <Checkbox
+            id="dontShowAgain"
+            checked={dontShowAgain}
+            onCheckedChange={(checked) => setDontShowAgain(checked === true)}
+          />
+          <label 
+            htmlFor="dontShowAgain" 
+            className="text-sm text-muted-foreground cursor-pointer"
+          >
+            {t('tutorial.dontShowAgain')}
+          </label>
+        </div>
+
         {/* Step Indicators */}
-        <div className="flex justify-center gap-2 mt-6">
+        <div className="flex justify-center gap-2 mt-4">
           {TUTORIAL_STEPS.map((_, idx) => (
             <button
               key={idx}

@@ -2958,6 +2958,7 @@
   "tutorial": {
     "stepOf": "Step {{current}} of {{total}}",
     "skip": "Skip tutorial",
+    "dontShowAgain": "Don't show tutorial again",
     "examples": "Real examples",
     "realityCheck": "Reality check",
     "startGame": "Start playing",
