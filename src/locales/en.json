@@ -122,6 +122,33 @@
     "forEveryone": {
       "title": "For everyone",
       "subtitle": "Whatever your starting point, you deserve access to information."
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "q1": {
+        "question": "Can Pyramid Compass tell me which country to choose?",
+        "answer": "No. The tool analyzes systems and simulates scenarios, but the final decision is yours. We provide information, you make your own choices."
+      },
+      "q2": {
+        "question": "Is the data reliable?",
+        "answer": "We use public sources (corruption indices, tax data, passport rankings). This data is indicative and may change. Always verify with official sources before making important decisions."
+      },
+      "q3": {
+        "question": "What's the difference between \"My simulation\" and \"Educational mode\"?",
+        "answer": "\"My simulation\" (Exit Keys) analyzes YOUR real situation with YOUR parameters. \"Educational mode\" has you play a FICTIONAL random character to understand mechanics without personal involvement."
+      },
+      "q4": {
+        "question": "Is it free?",
+        "answer": "Yes, the tool is free. You can create an account to sync your data across devices, but it's not required."
+      },
+      "q5": {
+        "question": "Is my personal data protected?",
+        "answer": "Simulation data stays on your device or in your personal account. We don't sell your data and don't share it with anyone."
+      },
+      "q6": {
+        "question": "Can I use this tool for important decisions?",
+        "answer": "This tool is a starting point for your reflection, not an absolute source of truth. For important decisions (immigration, taxes, health), always consult qualified professionals."
+      }
     }
   },
   "nav": {

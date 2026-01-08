@@ -8,9 +8,17 @@ import {
   Users, 
   ArrowRight,
   Key,
-  Gamepad2
+  Gamepad2,
+  HelpCircle,
+  ChevronDown
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
 export default function About() {
   const { t } = useTranslation();
@@ -204,6 +212,74 @@ export default function About() {
             <span className="px-3 py-2 rounded-full bg-muted text-sm">🌍 Migrant</span>
             <span className="px-3 py-2 rounded-full bg-muted text-sm">💼 Cadre</span>
           </div>
+        </div>
+
+        {/* FAQ Section */}
+        <div className="max-w-4xl mx-auto mb-16">
+          <div className="flex items-center gap-3 mb-8 justify-center">
+            <div className="p-3 rounded-lg bg-primary/10">
+              <HelpCircle className="w-6 h-6 text-primary" />
+            </div>
+            <h2 className="font-display text-2xl font-bold">
+              {t('about.faq.title', 'Questions fréquentes')}
+            </h2>
+          </div>
+
+          <Accordion type="single" collapsible className="space-y-3">
+            <AccordionItem value="item-1" className="glass-card rounded-xl px-6 border-none">
+              <AccordionTrigger className="text-left hover:no-underline">
+                {t('about.faq.q1.question', 'Est-ce que Pyramid Compass peut me dire quel pays choisir ?')}
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                {t('about.faq.q1.answer', 'Non. L\'outil analyse les systèmes et simule des scénarios, mais la décision finale t\'appartient. Nous fournissons l\'information, tu fais tes propres choix.')}
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-2" className="glass-card rounded-xl px-6 border-none">
+              <AccordionTrigger className="text-left hover:no-underline">
+                {t('about.faq.q2.question', 'Les données sont-elles fiables ?')}
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                {t('about.faq.q2.answer', 'Nous utilisons des sources publiques (indices de corruption, données fiscales, classements passeports). Ces données sont indicatives et peuvent évoluer. Vérifie toujours auprès de sources officielles avant toute décision importante.')}
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-3" className="glass-card rounded-xl px-6 border-none">
+              <AccordionTrigger className="text-left hover:no-underline">
+                {t('about.faq.q3.question', 'Quelle différence entre "Ma simulation" et "Mode éducatif" ?')}
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                {t('about.faq.q3.answer', '"Ma simulation" (Clés de Sortie) analyse TA vraie situation avec TES paramètres. Le "Mode éducatif" te fait incarner un personnage FICTIF aléatoire pour comprendre les mécanismes sans t\'impliquer personnellement.')}
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-4" className="glass-card rounded-xl px-6 border-none">
+              <AccordionTrigger className="text-left hover:no-underline">
+                {t('about.faq.q4.question', 'Est-ce gratuit ?')}
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                {t('about.faq.q4.answer', 'Oui, l\'outil est gratuit. Tu peux créer un compte pour synchroniser tes données entre appareils, mais ce n\'est pas obligatoire.')}
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-5" className="glass-card rounded-xl px-6 border-none">
+              <AccordionTrigger className="text-left hover:no-underline">
+                {t('about.faq.q5.question', 'Mes données personnelles sont-elles protégées ?')}
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                {t('about.faq.q5.answer', 'Les données de simulation restent sur ton appareil ou dans ton compte personnel. Nous ne vendons pas tes données et ne les partageons avec personne.')}
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-6" className="glass-card rounded-xl px-6 border-none">
+              <AccordionTrigger className="text-left hover:no-underline">
+                {t('about.faq.q6.question', 'Puis-je utiliser cet outil pour des décisions importantes ?')}
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                {t('about.faq.q6.answer', 'Cet outil est un point de départ pour ta réflexion, pas une source de vérité absolue. Pour des décisions importantes (immigration, fiscalité, santé), consulte toujours des professionnels qualifiés.')}
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
 
         {/* Disclaimer */}

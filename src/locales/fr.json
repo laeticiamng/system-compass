@@ -122,6 +122,33 @@
     "forEveryone": {
       "title": "Pour tout le monde",
       "subtitle": "Quel que soit ton point de départ, tu mérites d'avoir accès à l'information."
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "q1": {
+        "question": "Est-ce que Pyramid Compass peut me dire quel pays choisir ?",
+        "answer": "Non. L'outil analyse les systèmes et simule des scénarios, mais la décision finale t'appartient. Nous fournissons l'information, tu fais tes propres choix."
+      },
+      "q2": {
+        "question": "Les données sont-elles fiables ?",
+        "answer": "Nous utilisons des sources publiques (indices de corruption, données fiscales, classements passeports). Ces données sont indicatives et peuvent évoluer. Vérifie toujours auprès de sources officielles avant toute décision importante."
+      },
+      "q3": {
+        "question": "Quelle différence entre \"Ma simulation\" et \"Mode éducatif\" ?",
+        "answer": "\"Ma simulation\" (Clés de Sortie) analyse TA vraie situation avec TES paramètres. Le \"Mode éducatif\" te fait incarner un personnage FICTIF aléatoire pour comprendre les mécanismes sans t'impliquer personnellement."
+      },
+      "q4": {
+        "question": "Est-ce gratuit ?",
+        "answer": "Oui, l'outil est gratuit. Tu peux créer un compte pour synchroniser tes données entre appareils, mais ce n'est pas obligatoire."
+      },
+      "q5": {
+        "question": "Mes données personnelles sont-elles protégées ?",
+        "answer": "Les données de simulation restent sur ton appareil ou dans ton compte personnel. Nous ne vendons pas tes données et ne les partageons avec personne."
+      },
+      "q6": {
+        "question": "Puis-je utiliser cet outil pour des décisions importantes ?",
+        "answer": "Cet outil est un point de départ pour ta réflexion, pas une source de vérité absolue. Pour des décisions importantes (immigration, fiscalité, santé), consulte toujours des professionnels qualifiés."
+      }
     }
   },
   "nav": {
