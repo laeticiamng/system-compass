@@ -9,6 +9,7 @@ interface CharacterCardProps {
   isSelected?: boolean;
   onClick?: () => void;
   showDetails?: boolean;
+  compact?: boolean;
   className?: string;
 }
 
@@ -17,9 +18,13 @@ export default function CharacterCard({
   isSelected,
   onClick,
   showDetails = true,
+  compact = false,
   className 
 }: CharacterCardProps) {
   const { t } = useTranslation();
+  
+  // If compact, override showDetails
+  const displayDetails = compact ? false : showDetails;
 
   const country = countries.find(c => c.id === character.birthCountry);
 
@@ -67,7 +72,7 @@ export default function CharacterCard({
       </div>
 
       {/* Aspirations */}
-      {showDetails && (
+      {displayDetails && (
         <div className="space-y-2 mb-4">
           <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
             {t('character.aspirations')}
@@ -90,7 +95,7 @@ export default function CharacterCard({
       )}
 
       {/* Starting Resources */}
-      {showDetails && (
+      {displayDetails && (
         <div className="pt-3 border-t border-border">
           <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">
             {t('character.startingResources')}

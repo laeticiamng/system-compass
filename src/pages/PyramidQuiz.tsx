@@ -14,8 +14,21 @@ import HexagonalBoard, { HEXAGONAL_BOARD } from '@/components/game/HexagonalBoar
 import PlayerProfileSetup, { GamePlayerProfile } from '@/components/game/PlayerProfile';
 import SavedGamesDialog from '@/components/game/SavedGamesDialog';
 import RulesDialog from '@/components/game/RulesDialog';
+import CharacterDraft from '@/components/game/CharacterDraft';
+import ResourceBar from '@/components/game/ResourceBar';
+import EventCard from '@/components/game/EventCard';
+import TurnManager, { TurnPhase } from '@/components/game/TurnManager';
 import { useSavedGames, SavedGame, SavedGameState } from '@/hooks/useSavedGames';
 import { useAuth } from '@/hooks/useAuth';
+import { 
+  CharacterCard as CharacterCardType,
+  GameResources,
+  createDefaultResources,
+  getRandomGlobalEvent,
+  getRandomCountryEvent,
+  GameEvent,
+  ResourceType,
+} from '@/lib/game-data';
 import { 
   Gamepad2, 
   ArrowRight, 
@@ -42,12 +55,14 @@ import {
   Flag,
   Save,
   Loader2,
+  Calendar,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { Database } from '@/integrations/supabase/types';
 
 type GameMode = 'online' | 'solo' | 'race' | 'points_duel' | 'cooperative' | null;
 type DbGameMode = Database['public']['Enums']['game_mode'];
+type SetupPhase = 'mode' | 'playerCount' | 'profiles' | 'draft' | 'playing';
 
 interface QuizQuestion {
   id: string;
@@ -66,6 +81,9 @@ interface Player {
   color: string;
   result?: PyramidType;
   profile?: GamePlayerProfile;
+  character?: CharacterCardType;
+  resources: GameResources;
+  countryType: PyramidType;
 }
 
 const PLAYER_COLORS = [
@@ -186,7 +204,7 @@ export default function PyramidQuiz() {
   const { saveGame, loading: savingGame } = useSavedGames();
   
   const [mode, setMode] = useState<GameMode>(null);
-  const [setupPhase, setSetupPhase] = useState<'mode' | 'playerCount' | 'profiles' | 'playing'>('mode');
+  const [setupPhase, setSetupPhase] = useState<SetupPhase>('mode');
   
   // Online quiz state
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -207,6 +225,10 @@ export default function PyramidQuiz() {
   const [currentGameId, setCurrentGameId] = useState<string | null>(null);
   const [saveDialogOpen, setSaveDialogOpen] = useState(false);
   const [gameName, setGameName] = useState('');
+  const [turnNumber, setTurnNumber] = useState(1);
+  const [turnPhase, setTurnPhase] = useState<TurnPhase>('global_event');
+  const [currentEvent, setCurrentEvent] = useState<GameEvent | null>(null);
+  const [playerProfiles, setPlayerProfiles] = useState<GamePlayerProfile[]>([]);
 
   const diceRef = useRef<HTMLButtonElement>(null);
 
@@ -470,6 +492,43 @@ export default function PyramidQuiz() {
     }
   };
 
+  const handleProfilesComplete = (profiles: GamePlayerProfile[]) => {
+    setPlayerProfiles(profiles);
+    setSetupPhase('draft');
+  };
+
+  const handleDraftComplete = (characters: CharacterCardType[]) => {
+    const newPlayers: Player[] = [];
+    for (let i = 0; i < playerCount; i++) {
+      const character = characters[i];
+      const profile = playerProfiles[i];
+      
+      // Determine country type from character or default
+      const countryType: PyramidType = character 
+        ? (getCountryType(character.birthCountry) || 'HYBRID_TRANSITION')
+        : 'HYBRID_TRANSITION';
+      
+      newPlayers.push({
+        id: i,
+        name: character?.name || profile?.name || `${t('pyramidQuiz.multiplayer.player')} ${i + 1}`,
+        position: 0,
+        scores: createEmptyScores(),
+        color: PLAYER_COLORS[i].bg,
+        profile,
+        character,
+        resources: character?.startingResources || createDefaultResources(),
+        countryType,
+      });
+    }
+    setPlayers(newPlayers);
+    setCurrentPlayerIndex(0);
+    setCooperativePool(createEmptyScores());
+    setTurnNumber(1);
+    setTurnPhase('global_event');
+    setSetupPhase('playing');
+    setGameFinished(false);
+  };
+
   const startGame = (profiles?: GamePlayerProfile[]) => {
     const newPlayers: Player[] = [];
     for (let i = 0; i < playerCount; i++) {
@@ -480,6 +539,8 @@ export default function PyramidQuiz() {
         scores: createEmptyScores(),
         color: PLAYER_COLORS[i].bg,
         profile: profiles?.[i],
+        resources: createDefaultResources(),
+        countryType: 'HYBRID_TRANSITION',
       });
     }
     setPlayers(newPlayers);
@@ -487,6 +548,23 @@ export default function PyramidQuiz() {
     setCooperativePool(createEmptyScores());
     setSetupPhase('playing');
     setGameFinished(false);
+  };
+
+  // Helper to get country type
+  const getCountryType = (countryId: string): PyramidType | null => {
+    const countryMap: Record<string, PyramidType> = {
+      'US': 'GROWTH_RISK',
+      'FR': 'STABILITY_REDIS',
+      'JP': 'COMPETENCE_TRUST',
+      'NG': 'PROBLEM_RENT',
+      'BR': 'HYBRID_TRANSITION',
+      'SA': 'RESOURCE_EXTRACTION',
+      'DE': 'COMPETENCE_TRUST',
+      'IN': 'GROWTH_RISK',
+      'RU': 'RESOURCE_EXTRACTION',
+      'CN': 'HYBRID_TRANSITION',
+    };
+    return countryMap[countryId] || null;
   };
 
   const handleSaveGame = async () => {
@@ -520,7 +598,13 @@ export default function PyramidQuiz() {
 
   const handleLoadGame = (game: SavedGame) => {
     setMode(game.game_mode as GameMode);
-    setPlayers(game.game_state.players);
+    // Add default values for new properties if loading old saves
+    const loadedPlayers = game.game_state.players.map((p: any) => ({
+      ...p,
+      resources: p.resources || createDefaultResources(),
+      countryType: p.countryType || 'HYBRID_TRANSITION' as PyramidType,
+    }));
+    setPlayers(loadedPlayers);
     setCurrentPlayerIndex(game.game_state.currentPlayerIndex);
     setDiceValue(game.game_state.diceValue);
     setGameMessage(game.game_state.gameMessage);
@@ -726,8 +810,20 @@ export default function PyramidQuiz() {
       <PlayerProfileSetup
         playerCount={playerCount}
         playerColors={PLAYER_COLORS}
-        onComplete={startGame}
+        onComplete={handleProfilesComplete}
         onBack={() => setSetupPhase(playerCount > 1 ? 'playerCount' : 'mode')}
+      />
+    );
+  }
+
+  // Character draft phase
+  if (setupPhase === 'draft') {
+    return (
+      <CharacterDraft
+        playerCount={playerCount}
+        playerColors={PLAYER_COLORS}
+        onComplete={handleDraftComplete}
+        onBack={() => setSetupPhase('profiles')}
       />
     );
   }
