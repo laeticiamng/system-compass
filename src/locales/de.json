@@ -1,12 +1,23 @@
 {
   "common": {
     "appName": "Pyramid Compass",
-    "tagline": "Navigiere durch das echte System",
-    "disclaimer": "Nur Analysetool. Keine rechtliche oder finanzielle Beratung.",
+    "tagline": "Entscheidungssimulator für reale Systeme",
+    "positioningLine": "Analyse- und Simulationstool. Du entscheidest, wir beleuchten.",
+    "disclaimer": "Keine rechtliche, finanzielle oder medizinische Beratung. Du bleibst für deine Entscheidungen verantwortlich.",
     "yes": "Ja",
     "no": "Nein",
     "back": "Zurück",
-    "years": "Jahre"
+    "next": "Weiter",
+    "years": "Jahre",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "load": "Laden",
+    "loading": "Laden...",
+    "country": "Land",
+    "metric": "Metrik",
+    "delete": "Löschen",
+    "confirm": "Bestätigen",
+    "edit": "Bearbeiten"
   },
   "simulationDisclaimer": {
     "notPrediction": "Simulation ≠ Vorhersage",
@@ -187,6 +198,82 @@
     "riskSuccess": "Risikoerfolge",
     "archetypesUsed": "Getestete Archetypen",
     "bestScore": "Beste Solo-Punktzahl"
+  },
+  "footer": {
+    "explore": "Erkunden",
+    "tools": "Werkzeuge",
+    "account": "Konto",
+    "profileTest": "Profil-Test",
+    "madeWith": "Erstellt mit",
+    "about": "Über uns"
+  },
+  "about": {
+    "badge": "Unsere Mission",
+    "title": "Werkzeug für strategische Klarheit",
+    "subtitle": "Entscheidungssimulator für reale Systeme. Nur Analysewerkzeug.",
+    "whatWeAre": {
+      "title": "Was wir sind",
+      "point1": "Ein Simulator zum Testen von Entscheidungen, bevor du sie lebst",
+      "point2": "Ein Analysewerkzeug für Systeme (steuerlich, sozial, migratorisch)",
+      "point3": "Ein Rahmen zum Verstehen, wie die Welt funktioniert",
+      "point4": "Ein Raum für strategische Reflexion, nicht für Urteile"
+    },
+    "whatWeAreNot": {
+      "title": "Was wir NICHT sind",
+      "point1": "Eine Rechts-, Steuer- oder Medizinberatungsfirma",
+      "point2": "Ein Life-Coach oder Personal-Development-Service",
+      "point3": "Ein Versprechen auf Erfolg oder garantierte Ergebnisse",
+      "point4": "Ein Werkzeug, das dir sagt, was du tun sollst — du bleibst für deine Entscheidungen verantwortlich"
+    },
+    "modes": {
+      "title": "Zwei Arten, das Werkzeug zu nutzen",
+      "simulation": {
+        "title": "Persönliche Simulation",
+        "description": "Analysiere DEINE echte Situation, teste DEINE Optionen, verstehe die Konsequenzen DEINER potenziellen Entscheidungen."
+      },
+      "game": {
+        "title": "Bildungsmodus (Spiel)",
+        "description": "Spiele einen FIKTIVEN zufälligen Charakter. Entdecke die Mechanismen der Welt ohne Risiko. Es ist ein Lernspiel."
+      }
+    },
+    "origin": {
+      "title": "Warum dieses Werkzeug existiert",
+      "paragraph1": "Dieses Werkzeug wurde von jemandem erstellt, der Jahre verloren hat, Entscheidungen zu treffen, ohne das System zu verstehen, in dem er operierte.",
+      "paragraph2": "Falsches Land, falsche Karriere, falsches Timing — nicht aus Mangel an Intelligenz, sondern aus Mangel an einem Rahmen.",
+      "paragraph3": "Pyramid Compass entstand aus dieser Frustration: jedem die Analyse zu geben, die nur Privilegierte von ihrem Netzwerk erhalten.",
+      "conclusion": "Dies ist kein Werkzeug, das dir sagt, was du tun sollst. Es ist ein Werkzeug, das dir hilft zu SEHEN — damit DU mit vollem Wissen entscheidest."
+    },
+    "forEveryone": {
+      "title": "Für jeden",
+      "subtitle": "Egal was dein Ausgangspunkt ist, du verdienst Zugang zu Informationen."
+    },
+    "faq": {
+      "title": "Häufig gestellte Fragen",
+      "q1": {
+        "question": "Kann Pyramid Compass mir sagen, welches Land ich wählen soll?",
+        "answer": "Nein. Das Werkzeug analysiert Systeme und simuliert Szenarien, aber die endgültige Entscheidung liegt bei dir. Wir liefern Informationen, du triffst deine eigenen Entscheidungen."
+      },
+      "q2": {
+        "question": "Sind die Daten zuverlässig?",
+        "answer": "Wir verwenden öffentliche Quellen (Korruptionsindizes, Steuerdaten, Passbewertungen). Diese Daten sind indikativ und können sich ändern. Überprüfe immer bei offiziellen Quellen, bevor du wichtige Entscheidungen triffst."
+      },
+      "q3": {
+        "question": "Was ist der Unterschied zwischen \"Meine Simulation\" und \"Bildungsmodus\"?",
+        "answer": "\"Meine Simulation\" (Exit-Schlüssel) analysiert DEINE echte Situation mit DEINEN Parametern. Der \"Bildungsmodus\" lässt dich einen FIKTIVEN zufälligen Charakter spielen, um Mechanismen ohne persönliche Beteiligung zu verstehen."
+      },
+      "q4": {
+        "question": "Ist es kostenlos?",
+        "answer": "Ja, das Werkzeug ist kostenlos. Du kannst ein Konto erstellen, um deine Daten zwischen Geräten zu synchronisieren, aber das ist nicht erforderlich."
+      },
+      "q5": {
+        "question": "Sind meine persönlichen Daten geschützt?",
+        "answer": "Simulationsdaten bleiben auf deinem Gerät oder in deinem persönlichen Konto. Wir verkaufen deine Daten nicht und teilen sie mit niemandem."
+      },
+      "q6": {
+        "question": "Kann ich dieses Werkzeug für wichtige Entscheidungen verwenden?",
+        "answer": "Dieses Werkzeug ist ein Ausgangspunkt für deine Reflexion, keine absolute Wahrheitsquelle. Für wichtige Entscheidungen (Immigration, Steuern, Gesundheit) konsultiere immer qualifizierte Fachleute."
+      }
+    }
   },
   "nav": {
     "start": "Start",
@@ -1800,5 +1887,27 @@
     "network": "Netzwerk",
     "skills": "Fähigkeiten",
     "mobility": "Mobilität"
+  },
+  "savedGames": {
+    "title": "Meine Spiele",
+    "myGames": "Meine Spiele",
+    "noGames": "Keine gespeicherten Spiele",
+    "finished": "Beendet",
+    "save": "Speichern",
+    "saveGame": "Spiel speichern",
+    "gameName": "Spielname",
+    "nameRequired": "Name ist erforderlich",
+    "saved": "Spiel gespeichert!",
+    "saveFailed": "Speichern fehlgeschlagen",
+    "gameLoaded": "Spiel geladen!"
+  },
+  "achievements": {
+    "title": "Erfolge",
+    "unlocked": "freigeschaltet",
+    "all": "Alle",
+    "exploration": "Erkundung",
+    "risk": "Risikobereitschaft",
+    "mastery": "Meisterschaft",
+    "special": "Spezial"
   }
 }

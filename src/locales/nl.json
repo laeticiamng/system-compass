@@ -1,12 +1,23 @@
 {
   "common": {
     "appName": "Pyramid Compass",
-    "tagline": "Navigeer door het echte systeem",
-    "disclaimer": "Alleen analytisch hulpmiddel. Geen juridisch of financieel advies.",
+    "tagline": "Beslissingssimulator voor echte systemen",
+    "positioningLine": "Analyse- en simulatietool. Jij beslist, wij verlichten.",
+    "disclaimer": "Geen juridisch, financieel of medisch advies. Je blijft verantwoordelijk voor je beslissingen.",
     "yes": "Ja",
     "no": "Nee",
     "back": "Terug",
-    "years": "jaar"
+    "next": "Volgende",
+    "years": "jaar",
+    "save": "Opslaan",
+    "cancel": "Annuleren",
+    "load": "Laden",
+    "loading": "Laden...",
+    "country": "Land",
+    "metric": "Metriek",
+    "delete": "Verwijderen",
+    "confirm": "Bevestigen",
+    "edit": "Bewerken"
   },
   "simulationDisclaimer": {
     "notPrediction": "Simulatie ≠ Voorspelling",
@@ -187,6 +198,82 @@
     "riskSuccess": "Risicosuccessen",
     "archetypesUsed": "Geteste archetypen",
     "bestScore": "Beste soloscore"
+  },
+  "footer": {
+    "explore": "Verkennen",
+    "tools": "Hulpmiddelen",
+    "account": "Account",
+    "profileTest": "Profieltest",
+    "madeWith": "Gemaakt met",
+    "about": "Over ons"
+  },
+  "about": {
+    "badge": "Onze missie",
+    "title": "Hulpmiddel voor strategische helderheid",
+    "subtitle": "Beslissingssimulator voor echte systemen. Alleen analysetool.",
+    "whatWeAre": {
+      "title": "Wat we zijn",
+      "point1": "Een simulator om beslissingen te testen voordat je ze leeft",
+      "point2": "Een analysetool voor systemen (fiscaal, sociaal, migratie)",
+      "point3": "Een kader om te begrijpen hoe de wereld werkt",
+      "point4": "Een ruimte voor strategische reflectie, niet voor oordelen"
+    },
+    "whatWeAreNot": {
+      "title": "Wat we NIET zijn",
+      "point1": "Een juridisch, fiscaal of medisch adviesbureau",
+      "point2": "Een levenscoach of persoonlijke ontwikkelingsdienst",
+      "point3": "Een belofte van succes of gegarandeerde resultaten",
+      "point4": "Een hulpmiddel dat je vertelt wat je moet doen — je blijft verantwoordelijk voor je beslissingen"
+    },
+    "modes": {
+      "title": "Twee manieren om het hulpmiddel te gebruiken",
+      "simulation": {
+        "title": "Persoonlijke simulatie",
+        "description": "Analyseer JOUW echte situatie, test JOUW opties, begrijp de gevolgen van JOUW mogelijke keuzes."
+      },
+      "game": {
+        "title": "Educatieve modus (spel)",
+        "description": "Speel een willekeurig FICTIEF personage. Ontdek de mechanismen van de wereld zonder risico. Het is een educatief spel."
+      }
+    },
+    "origin": {
+      "title": "Waarom dit hulpmiddel bestaat",
+      "paragraph1": "Dit hulpmiddel is gemaakt door iemand die jaren heeft verloren met het nemen van beslissingen zonder het systeem te begrijpen waarin hij opereerde.",
+      "paragraph2": "Verkeerd land, verkeerde carrière, verkeerde timing — niet door gebrek aan intelligentie, maar door gebrek aan een kader.",
+      "paragraph3": "Pyramid Compass is geboren uit deze frustratie: iedereen de analyse geven die alleen bevoorrechten van hun netwerk krijgen.",
+      "conclusion": "Dit is geen hulpmiddel dat je vertelt wat je moet doen. Het is een hulpmiddel dat je helpt te ZIEN — zodat JIJ met volledige kennis beslist."
+    },
+    "forEveryone": {
+      "title": "Voor iedereen",
+      "subtitle": "Wat je startpunt ook is, je verdient toegang tot informatie."
+    },
+    "faq": {
+      "title": "Veelgestelde vragen",
+      "q1": {
+        "question": "Kan Pyramid Compass me vertellen welk land ik moet kiezen?",
+        "answer": "Nee. Het hulpmiddel analyseert systemen en simuleert scenario's, maar de uiteindelijke beslissing is aan jou. Wij leveren informatie, jij maakt je eigen keuzes."
+      },
+      "q2": {
+        "question": "Zijn de gegevens betrouwbaar?",
+        "answer": "We gebruiken openbare bronnen (corruptie-indexen, fiscale gegevens, paspoortranglijsten). Deze gegevens zijn indicatief en kunnen veranderen. Controleer altijd bij officiële bronnen voordat je belangrijke beslissingen neemt."
+      },
+      "q3": {
+        "question": "Wat is het verschil tussen \"Mijn simulatie\" en \"Educatieve modus\"?",
+        "answer": "\"Mijn simulatie\" (Exit-sleutels) analyseert JOUW echte situatie met JOUW parameters. De \"Educatieve modus\" laat je een willekeurig FICTIEF personage spelen om mechanismen te begrijpen zonder persoonlijke betrokkenheid."
+      },
+      "q4": {
+        "question": "Is het gratis?",
+        "answer": "Ja, het hulpmiddel is gratis. Je kunt een account aanmaken om je gegevens tussen apparaten te synchroniseren, maar dat is niet verplicht."
+      },
+      "q5": {
+        "question": "Zijn mijn persoonlijke gegevens beschermd?",
+        "answer": "Simulatiegegevens blijven op je apparaat of in je persoonlijke account. We verkopen je gegevens niet en delen ze met niemand."
+      },
+      "q6": {
+        "question": "Kan ik dit hulpmiddel gebruiken voor belangrijke beslissingen?",
+        "answer": "Dit hulpmiddel is een startpunt voor je reflectie, geen absolute bron van waarheid. Voor belangrijke beslissingen (immigratie, belastingen, gezondheid) raadpleeg altijd gekwalificeerde professionals."
+      }
+    }
   },
   "nav": {
     "start": "Start",
@@ -1800,5 +1887,27 @@
     "network": "Netwerk",
     "skills": "Vaardigheden",
     "mobility": "Mobiliteit"
+  },
+  "savedGames": {
+    "title": "Mijn spellen",
+    "myGames": "Mijn spellen",
+    "noGames": "Geen opgeslagen spellen",
+    "finished": "Voltooid",
+    "save": "Opslaan",
+    "saveGame": "Spel opslaan",
+    "gameName": "Spelnaam",
+    "nameRequired": "Naam is vereist",
+    "saved": "Spel opgeslagen!",
+    "saveFailed": "Opslaan mislukt",
+    "gameLoaded": "Spel geladen!"
+  },
+  "achievements": {
+    "title": "Prestaties",
+    "unlocked": "ontgrendeld",
+    "all": "Alle",
+    "exploration": "Verkenning",
+    "risk": "Risico nemen",
+    "mastery": "Meesterschap",
+    "special": "Speciaal"
   }
 }
