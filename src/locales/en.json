@@ -2756,6 +2756,41 @@
         "success": "Papers obtained, stable situation",
         "failure": "Investigation, annulment, legal issues",
         "catastrophic": "Conviction and deportation"
+      },
+      "borderDetention": {
+        "label": "Border Detention",
+        "description": "Arrest at the border. Risk of prolonged detention.",
+        "success": "Released with warning",
+        "failure": "Administrative detention, deportation procedure",
+        "catastrophic": "Long-term detention, criminal record"
+      },
+      "organTrafficking": {
+        "label": "Organ Trafficking",
+        "description": "Promise of easy money in exchange for an organ. Reality in the poorest countries.",
+        "success": "You refused in time",
+        "failure": "Forced operation, serious consequences",
+        "catastrophic": "Fatal consequences or permanent disability"
+      },
+      "investmentScam": {
+        "label": "Investment Scam",
+        "description": "Miracle investment opportunity. Pyramid scheme or fraud.",
+        "success": "The investment worked",
+        "failure": "Total loss of investment",
+        "catastrophic": "Financial ruin, significant debt"
+      },
+      "workCamp": {
+        "label": "Work Camp",
+        "description": "Risk of ending up in a forced labor camp. Reality in some authoritarian countries.",
+        "success": "You managed to escape",
+        "failure": "Forced labor, isolation, surveillance",
+        "catastrophic": "Disappeared into the system, total loss of freedom"
+      },
+      "naturalDisaster": {
+        "label": "Natural Disaster",
+        "description": "Earthquake, tsunami, cyclone or flood. Natural risks vary by country.",
+        "success": "You survived without major injuries",
+        "failure": "Injuries, loss of property, trauma",
+        "catastrophic": "Serious or fatal consequences"
       }
     },
     "riskEvent": "⚠️ Risk Event"

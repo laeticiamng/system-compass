@@ -3114,6 +3114,41 @@
         "success": "Papiers obtenus, situation stable",
         "failure": "Enquête, annulation, problèmes juridiques",
         "catastrophic": "Condamnation et expulsion"
+      },
+      "borderDetention": {
+        "label": "Détention à la frontière",
+        "description": "Arrestation lors du passage de frontière. Risque de rétention prolongée.",
+        "success": "Libération avec avertissement",
+        "failure": "Rétention administrative, procédure d'expulsion",
+        "catastrophic": "Détention longue durée, casier judiciaire"
+      },
+      "organTrafficking": {
+        "label": "Trafic d'organes",
+        "description": "Promesse d'argent facile en échange d'un organe. Réalité des pays les plus pauvres.",
+        "success": "Vous avez refusé à temps",
+        "failure": "Opération forcée, séquelles graves",
+        "catastrophic": "Conséquences fatales ou handicap permanent"
+      },
+      "investmentScam": {
+        "label": "Arnaque à l'investissement",
+        "description": "Opportunité d'investissement miracle. Schéma pyramidal ou fraude.",
+        "success": "L'investissement a fonctionné",
+        "failure": "Perte totale de l'investissement",
+        "catastrophic": "Ruine financière, dettes importantes"
+      },
+      "workCamp": {
+        "label": "Camp de travail",
+        "description": "Risque de se retrouver dans un camp de travail forcé. Réalité dans certains pays autoritaires.",
+        "success": "Vous avez réussi à vous échapper",
+        "failure": "Travail forcé, isolement, surveillance",
+        "catastrophic": "Disparition dans le système, perte de liberté totale"
+      },
+      "naturalDisaster": {
+        "label": "Catastrophe naturelle",
+        "description": "Séisme, tsunami, cyclone ou inondation. Les risques naturels varient selon les pays.",
+        "success": "Vous avez survécu sans blessures majeures",
+        "failure": "Blessures, perte de biens, traumatisme",
+        "catastrophic": "Conséquences graves ou fatales"
       }
     },
     "riskEvent": "⚠️ Événement Risque"
