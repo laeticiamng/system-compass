@@ -199,6 +199,26 @@ export default function Disclaimer() {
 
           <Separator />
 
+          {/* Link to How to Read */}
+          <div className="glass-card rounded-xl p-6 text-center">
+            <Info className="w-8 h-8 text-primary mx-auto mb-4" />
+            <p className="text-lg font-medium text-foreground mb-2">
+              Besoin de plus de contexte ?
+            </p>
+            <p className="text-muted-foreground max-w-2xl mx-auto mb-4">
+              Découvrez comment interpréter correctement les résultats de simulation avec des exemples concrets.
+            </p>
+            <Link 
+              to="/how-to-read"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors font-medium"
+            >
+              Comment lire les résultats
+              <ArrowLeft className="w-4 h-4 rotate-180" />
+            </Link>
+          </div>
+
+          <Separator />
+
           {/* Final statement */}
           <div className="text-center py-8">
             <Heart className="w-8 h-8 text-primary mx-auto mb-4" />

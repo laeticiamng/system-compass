@@ -4494,6 +4494,81 @@
       "description": "Testez différentes trajectoires de vie dans un jeu de simulation éducatif. Apprenez les mécanismes du système sans risque."
     }
   },
+  "howToRead": {
+    "title": "Comment lire les résultats",
+    "subtitle": "Comprendre la différence entre simulation et prédiction",
+    "whatSimulationIs": {
+      "title": "Ce qu'UNE SIMULATION est",
+      "point1": "Un modèle simplifié basé sur des données générales",
+      "point2": "Un outil pour explorer des tendances et des patterns",
+      "point3": "Une aide à la réflexion et à la prise de recul",
+      "point4": "Un point de départ pour tes propres recherches",
+      "point5": "Une représentation de ce qui TEND à se produire dans certains contextes"
+    },
+    "whatSimulationIsNot": {
+      "title": "Ce qu'une simulation N'EST PAS",
+      "point1": "Une prédiction de ton avenir personnel",
+      "point2": "Un conseil juridique, financier ou médical",
+      "point3": "Une garantie de résultat si tu suis les recommandations",
+      "point4": "Une vérité absolue applicable à tous",
+      "point5": "Un jugement de valeur sur tes choix de vie"
+    },
+    "keyConcept": {
+      "title": "Le concept clé : Tendance ≠ Certitude",
+      "explanation": "Quand l'outil dit \"ce système tend à favoriser X\", cela signifie que statistiquement, dans ce type de contexte, X est plus probable. Mais TON cas particulier dépend de milliers de facteurs que l'outil ne connaît pas.",
+      "analogy": "C'est comme une météo : \"Il pleut souvent en novembre à Paris\" est vrai statistiquement, mais ça ne prédit pas s'il pleuvra le 15 novembre prochain quand TU y seras."
+    },
+    "examples": {
+      "title": "Exemples concrets de bonne lecture",
+      "wrongReading": "❌ Mauvaise lecture",
+      "correctReading": "✓ Bonne lecture",
+      "countryMatch": {
+        "title": "Résultat de compatibilité pays",
+        "wrong": "L'outil dit 85% de compatibilité avec la Suisse, donc je vais forcément réussir là-bas.",
+        "correct": "La Suisse semble alignée avec mon profil théorique. Je vais creuser pour voir si ça correspond à MA situation réelle."
+      },
+      "trajectory": {
+        "title": "Simulation de trajectoire financière",
+        "wrong": "L'outil montre que j'aurai 50 000€ d'épargne dans 10 ans, c'est certain.",
+        "correct": "Si je maintiens ces paramètres et qu'aucun imprévu ne survient, ce montant est plausible. Je dois prévoir des marges."
+      },
+      "gameVerdict": {
+        "title": "Verdict du mode éducatif",
+        "wrong": "J'ai eu 'trajectoire difficile' dans le jeu, donc ma vraie vie sera un échec.",
+        "correct": "Cette simulation montre les obstacles typiques de ce contexte de départ. Je peux m'en inspirer pour anticiper des défis."
+      }
+    },
+    "limitations": {
+      "title": "Ce que l'outil NE PEUT PAS prendre en compte",
+      "point1": "Tes compétences uniques, ton réseau personnel, ta chance",
+      "point2": "Les changements géopolitiques, économiques ou personnels futurs",
+      "point3": "Les nuances culturelles que seul un vécu local permet de comprendre",
+      "point4": "Les opportunités imprévues qui peuvent tout changer"
+    },
+    "bestPractices": {
+      "title": "Comment utiliser l'outil intelligemment",
+      "practice1": {
+        "title": "Utilise-le comme point de départ",
+        "description": "Pas comme destination. Les résultats doivent ouvrir des pistes de recherche, pas les fermer."
+      },
+      "practice2": {
+        "title": "Croise avec d'autres sources",
+        "description": "Parle à des gens qui vivent sur place, lis des témoignages, consulte des professionnels."
+      },
+      "practice3": {
+        "title": "Adapte à TA situation",
+        "description": "Les moyennes ne s'appliquent pas à tous. Ton parcours unique peut changer radicalement les probabilités."
+      },
+      "practice4": {
+        "title": "Révise régulièrement",
+        "description": "Tes paramètres changent. Refais les simulations quand ta situation évolue."
+      }
+    },
+    "finalNote": {
+      "title": "En résumé",
+      "text": "Cet outil t'aide à voir plus clair, pas à voir le futur. Il éclaire des tendances pour que TU puisses décider en connaissance de cause. La décision, et la responsabilité, restent toujours les tiennes."
+    }
+  },
   "footer": {
     "defaultCountry": "Pays par défaut",
     "defaultCountryTooltip": "Les calculateurs utilisent ce pays par défaut. Changez-le dans les outils."

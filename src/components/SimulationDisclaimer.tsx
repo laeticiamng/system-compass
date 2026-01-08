@@ -36,7 +36,10 @@ export function SimulationDisclaimer({
             {t('simulationDisclaimer.notPrediction')}
           </p>
           <p className="text-muted-foreground/70">
-            {t(CONTEXTUAL_MESSAGES[context])}
+            {t(CONTEXTUAL_MESSAGES[context])}{' '}
+            <Link to="/how-to-read" className="text-primary/70 hover:text-primary underline">
+              {t('simulationDisclaimer.learnMore')}
+            </Link>
           </p>
         </div>
       </div>
