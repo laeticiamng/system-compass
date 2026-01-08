@@ -533,6 +533,34 @@ export default function PyramidQuiz() {
     setTimeout(nextPlayer, 1000);
   };
 
+  // Auto-save function
+  const autoSaveGame = useCallback(async () => {
+    if (!user || !mode || players.length === 0) return;
+    
+    const gameState: SavedGameState = {
+      players,
+      currentPlayerIndex,
+      diceValue,
+      gameMessage,
+    };
+
+    const dbMode: DbGameMode = mode === 'race' ? 'race' 
+      : mode === 'points_duel' ? 'points_duel' 
+      : mode === 'cooperative' ? 'cooperative' 
+      : 'solo';
+
+    const autoSaveName = currentGameId 
+      ? gameName || `Auto-save ${new Date().toLocaleDateString()}`
+      : `Auto-save ${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}`;
+
+    const savedId = await saveGame(autoSaveName, dbMode, gameState, currentGameId || undefined);
+    
+    if (savedId && !currentGameId) {
+      setCurrentGameId(savedId);
+      setGameName(autoSaveName);
+    }
+  }, [user, mode, players, currentPlayerIndex, diceValue, gameMessage, currentGameId, gameName, saveGame]);
+
   const nextPlayer = () => {
     // Check win condition first
     checkWinCondition();
@@ -549,8 +577,15 @@ export default function PyramidQuiz() {
     if (attempts >= players.length) {
       setGameFinished(true);
     } else {
+      // Increment turn number when returning to first player
+      if (nextIdx <= currentPlayerIndex) {
+        setTurnNumber(prev => prev + 1);
+      }
       setCurrentPlayerIndex(nextIdx);
       setGameMessage('');
+      
+      // Auto-save at end of each turn
+      autoSaveGame();
     }
   };
 
