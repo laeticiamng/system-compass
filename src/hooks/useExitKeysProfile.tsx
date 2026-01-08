@@ -4,6 +4,7 @@ import { useAuth } from './useAuth';
 import { UserContext } from '@/lib/exit-keys-engine';
 import { LifeMotorProfile, LifePriority } from '@/lib/types';
 import { toast } from 'sonner';
+import { EducationLevel, ProfessionCategory } from '@/lib/profession-data';
 
 export interface ExitKeysProfile {
   birthCountryId: string;
@@ -18,6 +19,9 @@ export interface ExitKeysProfile {
   hasNetwork: boolean;
   isLGBTQ: boolean;
   hasFamily: boolean;
+  // NEW: Education and profession for better matching
+  educationLevel?: EducationLevel;
+  professionId?: string;
 }
 
 const STORAGE_KEY = 'exit_keys_profile';
