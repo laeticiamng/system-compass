@@ -74,7 +74,7 @@ export default function Index() {
                 className="w-full h-14 md:h-16 text-base md:text-lg bg-primary text-primary-foreground hover:bg-primary/90 gap-3 glow-gold"
               >
                 <Route className="w-5 h-5 md:w-6 md:h-6" />
-                Simuler ma trajectoire
+                {t('hero.discoverProfile')}
                 <ArrowRight className="w-5 h-5" />
               </Button>
             </div>
@@ -84,39 +84,39 @@ export default function Index() {
               <StepIndicator 
                 number={1}
                 icon={<Settings className="w-4 h-4" />}
-                title="Ton profil"
-                description="Situation, nationalité, ressources"
+                title={t('steps.profile', 'Ton profil')}
+                description={t('steps.profileDesc', 'Situation, nationalité, ressources')}
               />
               <StepIndicator 
                 number={2}
                 icon={<BarChart3 className="w-4 h-4" />}
-                title="Analyse"
-                description="Systèmes, contraintes, options"
+                title={t('steps.analysis', 'Analyse')}
+                description={t('steps.analysisDesc', 'Systèmes, contraintes, options')}
               />
               <StepIndicator 
                 number={3}
                 icon={<Key className="w-4 h-4" />}
-                title="Conséquences"
-                description="Risques, coûts, conditions"
+                title={t('steps.consequences', 'Conséquences')}
+                description={t('steps.consequencesDesc', 'Risques, coûts, conditions')}
               />
             </div>
 
             {/* RESPONSIBILITY STATEMENT - Clear and prominent */}
             <div className="max-w-xl mx-auto px-4 mb-6">
               <p className="text-sm text-center text-muted-foreground bg-muted/30 rounded-lg px-4 py-2 border border-border/30">
-                <strong className="text-foreground">Tu restes responsable de tes décisions.</strong>{' '}
-                Cet outil t'aide à comprendre le système — pas à décider à ta place.
+                <strong className="text-foreground">{t('responsibility.title', 'Tu restes responsable de tes décisions.')}</strong>{' '}
+                {t('responsibility.description', "Cet outil t'aide à comprendre le système — pas à décider à ta place.")}
               </p>
             </div>
 
             {/* For everyone badge */}
             <div className="flex flex-wrap justify-center gap-2 mb-6 px-4">
-              <span className="px-2 py-1 rounded-full bg-muted text-xs">🥖 Boulanger</span>
-              <span className="px-2 py-1 rounded-full bg-muted text-xs">🏭 Ouvrier</span>
-              <span className="px-2 py-1 rounded-full bg-muted text-xs">🎓 Étudiant</span>
-              <span className="px-2 py-1 rounded-full bg-muted text-xs">🌴 Retraité</span>
-              <span className="px-2 py-1 rounded-full bg-muted text-xs">🚀 Entrepreneur</span>
-              <span className="px-2 py-1 rounded-full bg-muted text-xs">👨‍👩‍👧 Parent diaspora</span>
+              <span className="px-2 py-1 rounded-full bg-muted text-xs">🥖 {t('profiles.baker', 'Boulanger')}</span>
+              <span className="px-2 py-1 rounded-full bg-muted text-xs">🏭 {t('profiles.worker', 'Ouvrier')}</span>
+              <span className="px-2 py-1 rounded-full bg-muted text-xs">🎓 {t('profiles.student', 'Étudiant')}</span>
+              <span className="px-2 py-1 rounded-full bg-muted text-xs">🌴 {t('profiles.retiree', 'Retraité')}</span>
+              <span className="px-2 py-1 rounded-full bg-muted text-xs">🚀 {t('profiles.entrepreneur', 'Entrepreneur')}</span>
+              <span className="px-2 py-1 rounded-full bg-muted text-xs">👨‍👩‍👧 {t('profiles.diaspora', 'Parent diaspora')}</span>
             </div>
 
             {/* Secondary CTAs */}
@@ -128,7 +128,7 @@ export default function Index() {
                 className="text-muted-foreground hover:text-foreground gap-2"
               >
                 <BookOpen className="w-4 h-4" />
-                Voir toutes les clés de sortie
+                {t('cta.viewAllKeys', 'Voir toutes les clés de sortie')}
               </Button>
               <Button
                 variant="ghost"
@@ -137,7 +137,7 @@ export default function Index() {
                 className="text-muted-foreground hover:text-foreground gap-2"
               >
                 <Gamepad2 className="w-4 h-4" />
-                Mode éducatif (personnage fictif)
+                {t('cta.educationalMode', 'Mode éducatif (personnage fictif)')}
               </Button>
             </div>
 
@@ -155,13 +155,13 @@ export default function Index() {
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto p-4 md:p-5 rounded-xl bg-muted/30 border border-border/30 text-center">
               <p className="text-sm text-muted-foreground mb-2">
-                🔓 <strong>Mode observation</strong> — Explorez librement sans compte
+                🔓 <strong>{t('guestMode.title', 'Mode observation')}</strong> — {t('guestMode.subtitle', 'Explorez librement sans compte')}
               </p>
               <p className="text-xs text-muted-foreground/80">
-                Toutes les simulations fonctionnent sans inscription. 
+                {t('guestMode.description', 'Toutes les simulations fonctionnent sans inscription.')}{' '}
                 <Link to="/auth" className="text-primary hover:underline ml-1">
-                  Créez un compte
-                </Link> uniquement pour sauvegarder et synchroniser.
+                  {t('guestMode.createAccount', 'Créez un compte')}
+                </Link> {t('guestMode.toSync', 'uniquement pour sauvegarder et synchroniser.')}
               </p>
             </div>
           </div>
@@ -286,10 +286,10 @@ export default function Index() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center glass-card rounded-2xl p-8 md:p-12 glow-gold">
             <h2 className="font-display text-2xl md:text-3xl font-bold mb-3 md:mb-4">
-              Prêt à éviter des erreurs coûteuses ?
+              {t('finalCta.title', 'Prêt à éviter des erreurs coûteuses ?')}
             </h2>
             <p className="text-muted-foreground mb-6 md:mb-8 text-sm md:text-base">
-              Cet outil ne promet rien. Il analyse les systèmes et simule les conséquences pour que tu comprennes les règles réelles avant de t'engager.
+              {t('finalCta.description', "Cet outil ne promet rien. Il analyse les systèmes et simule les conséquences pour que tu comprennes les règles réelles avant de t'engager.")}
             </p>
             <Button
               size="lg"
@@ -297,13 +297,13 @@ export default function Index() {
               className="bg-primary text-primary-foreground hover:bg-primary/90 gap-2 w-full sm:w-auto"
             >
               <Route className="w-5 h-5" />
-              Analyser ma situation
+              {t('finalCta.button', 'Analyser ma situation')}
               <ArrowRight className="w-4 h-4" />
             </Button>
 
             {/* Final disclaimer */}
             <p className="text-xs text-muted-foreground/60 mt-6">
-              Outil d'analyse uniquement. Tu restes responsable de tes décisions.
+              {t('finalCta.disclaimer', 'Outil d\'analyse uniquement. Tu restes responsable de tes décisions.')}
             </p>
           </div>
         </div>

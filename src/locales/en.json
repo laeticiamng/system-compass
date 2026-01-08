@@ -19,6 +19,43 @@
     "confirm": "Confirm",
     "edit": "Edit"
   },
+  "steps": {
+    "profile": "Your profile",
+    "profileDesc": "Situation, nationality, resources",
+    "analysis": "Analysis",
+    "analysisDesc": "Systems, constraints, options",
+    "consequences": "Consequences",
+    "consequencesDesc": "Risks, costs, conditions"
+  },
+  "responsibility": {
+    "title": "You remain responsible for your decisions.",
+    "description": "This tool helps you understand the system — it doesn't decide for you."
+  },
+  "profiles": {
+    "baker": "Baker",
+    "worker": "Worker",
+    "student": "Student",
+    "retiree": "Retiree",
+    "entrepreneur": "Entrepreneur",
+    "diaspora": "Diaspora parent"
+  },
+  "cta": {
+    "viewAllKeys": "View all exit keys",
+    "educationalMode": "Educational mode (fictional character)"
+  },
+  "guestMode": {
+    "title": "Observation mode",
+    "subtitle": "Explore freely without an account",
+    "description": "All simulations work without registration.",
+    "createAccount": "Create an account",
+    "toSync": "only to save and sync."
+  },
+  "finalCta": {
+    "title": "Ready to avoid costly mistakes?",
+    "description": "This tool promises nothing. It analyzes systems and simulates consequences so you understand the real rules before committing.",
+    "button": "Analyze my situation",
+    "disclaimer": "Analysis tool only. You remain responsible for your decisions."
+  },
   "simulationDisclaimer": {
     "notPrediction": "Simulation ≠ Prediction",
     "inline": "Simulation for informational purposes only.",
@@ -197,7 +234,20 @@
     "turnsPlayed": "Turns played",
     "riskSuccess": "Risk success",
     "archetypesUsed": "Archetypes tested",
-    "bestScore": "Best solo score"
+    "bestScore": "Best solo score",
+    "tabs": {
+      "plan": "Plan",
+      "stats": "Statistics",
+      "calendar": "Calendar"
+    },
+    "phase": "Phase",
+    "duration": "Duration",
+    "suggestedDeadline": "Suggested deadline",
+    "actions": "actions",
+    "objective": "Objective",
+    "criticalRule": "Critical rule",
+    "personalNotes": "Personal notes",
+    "addNote": "Add a note"
   },
   "achievements": {
     "title": "Achievements",

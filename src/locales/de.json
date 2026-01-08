@@ -19,6 +19,43 @@
     "confirm": "Bestätigen",
     "edit": "Bearbeiten"
   },
+  "steps": {
+    "profile": "Dein Profil",
+    "profileDesc": "Situation, Nationalität, Ressourcen",
+    "analysis": "Analyse",
+    "analysisDesc": "Systeme, Einschränkungen, Optionen",
+    "consequences": "Konsequenzen",
+    "consequencesDesc": "Risiken, Kosten, Bedingungen"
+  },
+  "responsibility": {
+    "title": "Du bleibst für deine Entscheidungen verantwortlich.",
+    "description": "Dieses Tool hilft dir, das System zu verstehen — es entscheidet nicht für dich."
+  },
+  "profiles": {
+    "baker": "Bäcker",
+    "worker": "Arbeiter",
+    "student": "Student",
+    "retiree": "Rentner",
+    "entrepreneur": "Unternehmer",
+    "diaspora": "Diaspora-Elternteil"
+  },
+  "cta": {
+    "viewAllKeys": "Alle Exit-Keys anzeigen",
+    "educationalMode": "Bildungsmodus (fiktiver Charakter)"
+  },
+  "guestMode": {
+    "title": "Beobachtungsmodus",
+    "subtitle": "Frei erkunden ohne Konto",
+    "description": "Alle Simulationen funktionieren ohne Registrierung.",
+    "createAccount": "Konto erstellen",
+    "toSync": "nur zum Speichern und Synchronisieren."
+  },
+  "finalCta": {
+    "title": "Bereit, kostspielige Fehler zu vermeiden?",
+    "description": "Dieses Tool verspricht nichts. Es analysiert Systeme und simuliert Konsequenzen, damit du die echten Regeln verstehst, bevor du dich verpflichtest.",
+    "button": "Meine Situation analysieren",
+    "disclaimer": "Nur Analysewerkzeug. Du bleibst für deine Entscheidungen verantwortlich."
+  },
   "simulationDisclaimer": {
     "notPrediction": "Simulation ≠ Vorhersage",
     "inline": "Simulation nur zu Informationszwecken.",

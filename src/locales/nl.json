@@ -19,6 +19,43 @@
     "confirm": "Bevestigen",
     "edit": "Bewerken"
   },
+  "steps": {
+    "profile": "Jouw profiel",
+    "profileDesc": "Situatie, nationaliteit, middelen",
+    "analysis": "Analyse",
+    "analysisDesc": "Systemen, beperkingen, opties",
+    "consequences": "Gevolgen",
+    "consequencesDesc": "Risico's, kosten, voorwaarden"
+  },
+  "responsibility": {
+    "title": "Je blijft verantwoordelijk voor je beslissingen.",
+    "description": "Deze tool helpt je het systeem te begrijpen — hij beslist niet voor je."
+  },
+  "profiles": {
+    "baker": "Bakker",
+    "worker": "Arbeider",
+    "student": "Student",
+    "retiree": "Gepensioneerde",
+    "entrepreneur": "Ondernemer",
+    "diaspora": "Diaspora-ouder"
+  },
+  "cta": {
+    "viewAllKeys": "Alle exit-sleutels bekijken",
+    "educationalMode": "Educatieve modus (fictief personage)"
+  },
+  "guestMode": {
+    "title": "Observatiemodus",
+    "subtitle": "Verken vrij zonder account",
+    "description": "Alle simulaties werken zonder registratie.",
+    "createAccount": "Account aanmaken",
+    "toSync": "alleen om op te slaan en te synchroniseren."
+  },
+  "finalCta": {
+    "title": "Klaar om kostbare fouten te vermijden?",
+    "description": "Deze tool belooft niets. Hij analyseert systemen en simuleert gevolgen zodat je de echte regels begrijpt voordat je je vastlegt.",
+    "button": "Mijn situatie analyseren",
+    "disclaimer": "Alleen analysetool. Je blijft verantwoordelijk voor je beslissingen."
+  },
   "simulationDisclaimer": {
     "notPrediction": "Simulatie ≠ Voorspelling",
     "inline": "Simulatie alleen voor informatieve doeleinden.",
