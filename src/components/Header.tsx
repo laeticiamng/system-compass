@@ -26,9 +26,9 @@ export function Header() {
     { href: '/', label: 'Accueil', icon: Compass },
     { href: '/countries', label: t('nav.countries'), icon: Map },
     { href: '/pyramid-types', label: t('nav.pyramids'), icon: Triangle },
-    { href: '/life-game', label: 'Jouer', icon: Play },
+    { href: '/life-game', label: 'Mode éducatif', icon: Play },
     { href: '/exit-keys', label: t('nav.exitKeys'), icon: Key },
-    { href: '/compare', label: 'Comparer', icon: Scale },
+    { href: '/compare', label: t('nav.compare'), icon: Scale },
     { href: '/dashboard', label: t('nav.dashboard'), icon: LayoutDashboard },
     { href: '/resources', label: t('nav.resources'), icon: FileText },
   ];

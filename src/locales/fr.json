@@ -1,8 +1,9 @@
 {
   "common": {
     "appName": "Pyramid Compass",
-    "tagline": "Naviguer dans le vrai système",
-    "disclaimer": "Outil d'analyse uniquement. Pas de conseil juridique ou financier.",
+    "tagline": "Simulateur de décisions dans des systèmes réels",
+    "positioningLine": "Outil d'analyse et de simulation. Tu décides, nous éclairons.",
+    "disclaimer": "Pas de conseil juridique, financier ou médical. Tu restes responsable de tes décisions.",
     "yes": "Oui",
     "no": "Non",
     "back": "Retour",
@@ -20,7 +21,7 @@
   },
   "dashboard": {
     "title": "Mon Tableau de Bord",
-    "subtitle": "Suivez votre progression vers votre nouvelle vie",
+    "subtitle": "Suivi de vos analyses et simulations",
     "syncing": "Synchronisation...",
     "synced": "Synchronisé",
     "localOnly": "Local uniquement",
@@ -86,40 +87,40 @@
     "countries": "Pays",
     "profile": "Profil",
     "trajectory": "Trajectoire",
-    "match": "Match",
+    "match": "Compatibilité",
     "compare": "Comparer",
     "resources": "Ressources",
-    "pyramids": "Pyramides",
-    "quiz": "Le Jeu de la Vie",
+    "pyramids": "Systèmes",
+    "quiz": "Mode Éducatif",
     "exitKeys": "Clés de Sortie",
     "dashboard": "Tableau de Bord",
-    "multiCompare": "Multi-Comparer"
+    "multiCompare": "Multi-Analyse"
   },
   "hero": {
-    "badge": "Avant de te tromper, teste ici",
-    "title1": "Trouve ton chemin",
-    "titleHighlight": "+ vite",
+    "badge": "Simulateur stratégique",
+    "title1": "Analyse ton chemin",
+    "titleHighlight": "avant de le vivre",
     "title2": "",
-    "subtitle": "Évite de perdre des années de ta vie. Du vendeur de beignets à Dakar au cadre parisien, du retraité qui veut s'installer au soleil à l'étudiant qui choisit sa voie — teste tes choix ici avant de les vivre.",
-    "discoverProfile": "Teste ta trajectoire",
-    "exploreCountries": "Explore les systèmes",
+    "subtitle": "Simule tes décisions, analyse les systèmes, comprends les conséquences. Du vendeur de beignets à Dakar au cadre parisien — teste tes options ici avant de t'engager.",
+    "discoverProfile": "Simuler ma trajectoire",
+    "exploreCountries": "Analyser les systèmes",
     "madeBy": "Créé par quelqu'un qui a perdu énormément de temps dans sa propre vie",
     "forEveryone": "Pour tout le monde, partout"
   },
   "howItWorks": {
-    "title": "Évite les pièges avant qu'ils n'arrivent",
-    "subtitle": "Chaque choix a des conséquences. Mieux vaut les voir maintenant que dans 3 ans.",
+    "title": "Analyse, simule, comprends",
+    "subtitle": "Un outil d'analyse stratégique. Pas de promesses, pas de coaching — juste de la lucidité.",
     "understand": {
-      "title": "Comprends où tu es",
-      "description": "Chaque pays fonctionne différemment. Apprends ce que le système récompense vraiment — avant de t'y engager à fond."
+      "title": "Analyse le système",
+      "description": "Chaque pays fonctionne différemment. Comprends ce que le système récompense vraiment avant de t'engager."
     },
     "profile": {
-      "title": "Connais ce que tu veux vraiment",
-      "description": "Tes valeurs, ta famille, ta tolérance au risque. Trouve ce qui te correspond, pas ce qu'on t'a dit de vouloir."
+      "title": "Teste tes options",
+      "description": "Simule différents scénarios selon tes valeurs, ta famille, ta tolérance au risque. Compare les trajectoires possibles."
     },
     "playbook": {
-      "title": "Simule avant de vivre",
-      "description": "Teste les conséquences de tes choix : diplôme, pays, relation, métier. Mieux vaut se tromper ici que dans la vraie vie."
+      "title": "Comprends les conséquences",
+      "description": "Visualise l'impact de tes choix potentiels : diplôme, pays, métier. Information, pas prescription."
     }
   },
   "pyramids": {
@@ -172,8 +173,8 @@
     }
   },
   "pyramidTypes": {
-    "title": "Les Six Pyramides",
-    "subtitle": "Comprendre le système réel de chaque pays pour naviguer intelligemment. Chaque pyramide représente une logique de pouvoir différente.",
+    "title": "Les Six Systèmes",
+    "subtitle": "Analyse le fonctionnement réel de chaque type de pays. Chaque système a sa propre logique de pouvoir.",
     "whoThrives": "Qui prospère",
     "whoPays": "Qui paie le prix",
     "survivalRules": "Règles de survie",
@@ -377,21 +378,21 @@
     }
   },
   "featured": {
-    "title": "Explorer les pays",
-    "subtitle": "Analyse approfondie des vrais systèmes, pas des classements fantaisistes",
+    "title": "Analyser les pays",
+    "subtitle": "Analyse des systèmes réels, pas de classements fantaisistes",
     "viewAll": "Voir tout"
   },
   "cta": {
-    "title": "Prêt à naviguer ?",
-    "subtitle": "Ce site ne juge pas. Il explique. Il t'aide à survivre intelligemment là où tu es et à te rapprocher d'un système qui récompense ce que tu es.",
-    "button": "Commence ton voyage"
+    "title": "Prêt à analyser tes options ?",
+    "subtitle": "Cet outil ne juge pas et ne conseille pas. Il analyse, simule et t'aide à comprendre les systèmes pour que TU décides en connaissance de cause.",
+    "button": "Commencer l'analyse"
   },
   "countries": {
-    "title": "Intelligence pays",
-    "subtitle": "Analyse approfondie des systèmes nationaux. Comprends ce que chaque pays récompense vraiment, les risques et tes options stratégiques.",
+    "title": "Analyse des Pays",
+    "subtitle": "Analyse approfondie des systèmes nationaux. Comprends ce que chaque système récompense, les risques et tes options.",
     "allSystems": "Tous les systèmes",
     "noResults": "Aucun pays ne correspond à ce filtre.",
-    "explore": "Explorer →",
+    "explore": "Analyser →",
     "gdpCap": "PIB/hab",
     "passport": "Passeport",
     "population": "Population"

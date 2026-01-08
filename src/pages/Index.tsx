@@ -44,7 +44,7 @@ export default function Index() {
             {/* Creator badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 text-amber-500 text-xs md:text-sm font-medium mb-4">
               <Heart className="w-3 h-3 md:w-4 md:h-4" />
-              <span className="line-clamp-1">{t('hero.madeBy', 'Créé par quelqu\'un qui a perdu énormément de temps dans sa propre vie')}</span>
+              <span className="line-clamp-1">{t('hero.madeBy', "Créé par quelqu'un qui a perdu énormément de temps dans sa propre vie")}</span>
             </div>
 
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs md:text-sm font-medium mb-6 md:mb-8">
@@ -62,6 +62,11 @@ export default function Index() {
                 </>
               )}
             </h1>
+
+            {/* Positioning tagline - Premium & Clear */}
+            <p className="text-sm md:text-base font-medium text-primary/80 mb-3">
+              {t('common.positioningLine', 'Outil d\'analyse et de simulation. Tu décides, nous éclairons.')}
+            </p>
             
             <p className="text-base md:text-xl text-muted-foreground max-w-3xl mx-auto mb-4 md:mb-6 text-balance px-4">
               {t('hero.subtitle')}
@@ -84,9 +89,9 @@ export default function Index() {
                 <div className="p-3 rounded-full bg-primary/10 w-fit mx-auto mb-4">
                   <User className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="font-display font-bold text-lg mb-2">Pour ma vraie vie</h3>
+                <h3 className="font-display font-bold text-lg mb-2">Simuler ma vraie vie</h3>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Simule TA trajectoire personnelle, trouve TA clé de sortie
+                  Analyse TA trajectoire personnelle, teste TES options
                 </p>
                 <Button
                   size="lg"
@@ -99,14 +104,14 @@ export default function Index() {
                 </Button>
               </div>
 
-              {/* Path 2: Game Mode */}
+              {/* Path 2: Game Mode - ONLY place for "jeu" */}
               <div className="glass-card rounded-xl p-6 border-2 border-blue-500/30 hover:border-blue-500/50 transition-colors">
                 <div className="p-3 rounded-full bg-blue-500/10 w-fit mx-auto mb-4">
                   <Dice5 className="w-6 h-6 text-blue-500" />
                 </div>
-                <h3 className="font-display font-bold text-lg mb-2">Jouer au Jeu de la Vie</h3>
+                <h3 className="font-display font-bold text-lg mb-2">Mode Éducatif</h3>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Personnage aléatoire, choix stratégiques, conséquences
+                  Personnage fictif aléatoire, découvre les mécanismes
                 </p>
                 <Button
                   size="lg"
@@ -114,11 +119,16 @@ export default function Index() {
                   className="w-full bg-blue-500 hover:bg-blue-600 gap-2"
                 >
                   <Gamepad2 className="w-5 h-5" />
-                  Jouer
+                  Explorer le jeu
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </div>
             </div>
+
+            {/* Micro-disclaimer */}
+            <p className="text-xs text-muted-foreground/70 mt-6 max-w-lg mx-auto">
+              {t('common.disclaimer', 'Pas de conseil juridique, financier ou médical. Tu restes responsable de tes décisions.')}
+            </p>
           </div>
         </div>
       </section>
@@ -159,22 +169,22 @@ export default function Index() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
               <ValueCard
                 icon={<Clock className="w-5 h-5 md:w-6 md:h-6" />}
-                title="Gagne des années"
-                description="Évite de passer 3 ans dans une voie qui ne te correspond pas. Teste avant de t'engager."
+                title="Simule avant de t'engager"
+                description="Teste différents scénarios. Comprends les systèmes avant d'y entrer."
                 color="text-amber-500"
                 bgColor="bg-amber-500/10"
               />
               <ValueCard
                 icon={<AlertTriangle className="w-5 h-5 md:w-6 md:h-6" />}
-                title="Évite les pièges"
-                description="Les faux passeurs, les arnaques, les mauvais choix de carrière — mieux vaut les voir venir."
+                title="Analyse les risques"
+                description="Identifie les pièges potentiels, les contraintes de chaque système."
                 color="text-rose-500"
                 bgColor="bg-rose-500/10"
               />
               <ValueCard
                 icon={<CheckCircle className="w-5 h-5 md:w-6 md:h-6" />}
-                title="Fais les bons choix"
-                description="Chaque décision a des conséquences. Simule-les ici avant de les vivre."
+                title="Comprends les conséquences"
+                description="Chaque décision a un impact. Visualise-le avant de le vivre."
                 color="text-emerald-500"
                 bgColor="bg-emerald-500/10"
               />
@@ -255,16 +265,14 @@ export default function Index() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="py-16 md:py-24 border-t border-border/50">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center glass-card rounded-2xl p-8 md:p-12 glow-gold">
             <h2 className="font-display text-2xl md:text-3xl font-bold mb-3 md:mb-4">
-              Mieux vaut se tromper ici que dans la vraie vie
+              {t('cta.title', 'Prêt à analyser tes options ?')}
             </h2>
             <p className="text-muted-foreground mb-6 md:mb-8 text-sm md:text-base">
-              Teste tes choix, simule ta trajectoire, découvre les pièges avant d'y tomber. 
-              Gratuit, sans jugement, pour tout le monde.
+              {t('cta.subtitle', 'Cet outil ne juge pas et ne conseille pas. Il analyse, simule et t\'aide à comprendre les systèmes pour que TU décides en connaissance de cause.')}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4">
               <Button
@@ -273,7 +281,7 @@ export default function Index() {
                 className="bg-primary text-primary-foreground hover:bg-primary/90 gap-2 w-full sm:w-auto"
               >
                 <Key className="w-5 h-5" />
-                Trouve ta clé de sortie
+                Simuler ma trajectoire
                 <ArrowRight className="w-4 h-4" />
               </Button>
               <Button
@@ -283,9 +291,14 @@ export default function Index() {
                 className="gap-2 w-full sm:w-auto"
               >
                 <Gamepad2 className="w-5 h-5" />
-                Jouer au Jeu de la Vie
+                Mode éducatif
               </Button>
             </div>
+
+            {/* Final disclaimer */}
+            <p className="text-xs text-muted-foreground/60 mt-6">
+              {t('common.disclaimer')}
+            </p>
           </div>
         </div>
       </section>
