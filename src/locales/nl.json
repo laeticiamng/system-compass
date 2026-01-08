@@ -2119,13 +2119,115 @@
     "saveFailed": "Opslaan mislukt",
     "gameLoaded": "Spel geladen!"
   },
-  "achievements": {
-    "title": "Prestaties",
-    "unlocked": "ontgrendeld",
-    "all": "Alle",
-    "exploration": "Verkenning",
-    "risk": "Risico nemen",
-    "mastery": "Meesterschap",
-    "special": "Speciaal"
+  "onboarding": {
+    "skip": "Overslaan",
+    "previous": "Vorige",
+    "next": "Volgende",
+    "start": "Aan de slag",
+    "step1": {
+      "title": "Welkom bij Pyramid Compass",
+      "description": "Je kompas om door het wereldwijde systeem te navigeren. Begrijp de onzichtbare regels die elk land besturen."
+    },
+    "step2": {
+      "title": "Vind je Match",
+      "description": "Beantwoord een paar vragen en ontdek welke landen echt bij je profiel en ambities passen."
+    },
+    "step3": {
+      "title": "Slimme Rekenmachines",
+      "description": "Simuleer je nettosalaris, pensioen en koopkracht in elk land."
+    },
+    "step4": {
+      "title": "Exit-Keys",
+      "description": "Maak een concreet actieplan om je levensdoelen te bereiken, met duidelijke stappen en gepersonaliseerde tracking."
+    },
+    "step5": {
+      "title": "Het Levensspel",
+      "description": "Test verschillende levenstrajectorieën in een educatief simulatiespel. Leer de mechanismen van het systeem zonder risico."
+    }
+  },
+  "howToRead": {
+    "title": "Hoe de resultaten te lezen",
+    "subtitle": "Het verschil tussen simulatie en voorspelling begrijpen",
+    "whatSimulationIs": {
+      "title": "Wat een SIMULATIE is",
+      "point1": "Een vereenvoudigd model gebaseerd op algemene gegevens",
+      "point2": "Een hulpmiddel om trends en patronen te verkennen",
+      "point3": "Een hulp voor reflectie en perspectief",
+      "point4": "Een startpunt voor je eigen onderzoek",
+      "point5": "Een weergave van wat GENEIGD is te gebeuren in bepaalde contexten"
+    },
+    "whatSimulationIsNot": {
+      "title": "Wat een simulatie NIET is",
+      "point1": "Een voorspelling van jouw persoonlijke toekomst",
+      "point2": "Juridisch, financieel of medisch advies",
+      "point3": "Een garantie voor resultaten als je aanbevelingen volgt",
+      "point4": "Een absolute waarheid die voor iedereen geldt",
+      "point5": "Een waardeoordeel over jouw levenskeuzes"
+    },
+    "keyConcept": {
+      "title": "Sleutelbegrip: Trend ≠ Zekerheid",
+      "explanation": "Wanneer het hulpmiddel zegt 'dit systeem neigt X te bevoordelen', betekent dit statistisch dat X waarschijnlijker is in dit type context. Maar JOUW specifieke geval hangt af van duizenden factoren die het hulpmiddel niet kent.",
+      "analogy": "Het is als het weer: 'Het regent vaak in november in Parijs' is statistisch waar, maar het voorspelt niet of het op 15 november zal regenen wanneer JIJ daar bent."
+    },
+    "examples": {
+      "title": "Concrete voorbeelden van correct lezen",
+      "wrongReading": "❌ Verkeerde lezing",
+      "correctReading": "✓ Correcte lezing",
+      "countryMatch": {
+        "title": "Landcompatibiliteitsresultaat",
+        "wrong": "Het hulpmiddel zegt 85% compatibiliteit met Zwitserland, dus ik zal daar zeker succesvol zijn.",
+        "correct": "Zwitserland lijkt afgestemd op mijn theoretische profiel. Ik zal dieper graven om te zien of het past bij MIJN echte situatie."
+      },
+      "trajectory": {
+        "title": "Financiële trajectsimulatie",
+        "wrong": "Het hulpmiddel toont dat ik over 10 jaar €50.000 spaargeld zal hebben, dat is zeker.",
+        "correct": "Als ik deze parameters handhaaf en er geen onverwachte gebeurtenissen plaatsvinden, is dit bedrag plausibel. Ik moet marges inplannen."
+      },
+      "gameVerdict": {
+        "title": "Educatieve modus-oordeel",
+        "wrong": "Ik kreeg 'moeilijk traject' in het spel, dus mijn echte leven zal een mislukking zijn.",
+        "correct": "Deze simulatie toont typische obstakels voor deze startcontext. Ik kan het gebruiken om uitdagingen te voorzien."
+      }
+    },
+    "limitations": {
+      "title": "Wat het hulpmiddel NIET kan meenemen",
+      "point1": "Jouw unieke vaardigheden, persoonlijk netwerk, geluk",
+      "point2": "Toekomstige geopolitieke, economische of persoonlijke veranderingen",
+      "point3": "Culturele nuances die alleen geleefde ervaring kan begrijpen",
+      "point4": "Onverwachte kansen die alles kunnen veranderen"
+    },
+    "bestPractices": {
+      "title": "Hoe het hulpmiddel slim te gebruiken",
+      "practice1": {
+        "title": "Gebruik het als startpunt",
+        "description": "Niet als bestemming. Resultaten moeten onderzoekspaden openen, niet sluiten."
+      },
+      "practice2": {
+        "title": "Vergelijk met andere bronnen",
+        "description": "Praat met mensen die daar wonen, lees getuigenissen, raadpleeg professionals."
+      },
+      "practice3": {
+        "title": "Pas aan aan JOUW situatie",
+        "description": "Gemiddelden gelden niet voor iedereen. Jouw unieke pad kan kansen radicaal veranderen."
+      },
+      "practice4": {
+        "title": "Herzien regelmatig",
+        "description": "Jouw parameters veranderen. Herhaal simulaties wanneer je situatie evolueert."
+      }
+    },
+    "finalNote": {
+      "title": "Samengevat",
+      "text": "Dit hulpmiddel helpt je duidelijker te zien, niet de toekomst te zien. Het verlicht trends zodat JIJ geïnformeerd kunt beslissen. De beslissing en verantwoordelijkheid blijven altijd bij jou."
+    }
+  },
+  "footer": {
+    "explore": "Verkennen",
+    "tools": "Hulpmiddelen",
+    "account": "Account",
+    "profileTest": "Profieltest",
+    "madeWith": "Gemaakt met",
+    "about": "Over ons",
+    "defaultCountry": "Standaardland",
+    "defaultCountryTooltip": "Rekenmachines gebruiken dit land standaard. Wijzig het in de tools."
   }
 }
