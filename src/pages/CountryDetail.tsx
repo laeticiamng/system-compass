@@ -12,6 +12,7 @@ import { NaturalRisksCard } from '@/components/NaturalRisksCard';
 import { HealthcareCard } from '@/components/HealthcareCard';
 import { PositivePointsCard } from '@/components/PositivePointsCard';
 import { CountryMusicPlayer } from '@/components/CountryMusicPlayer';
+import { SalaryCalculator } from '@/components/SalaryCalculator';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Calendar, ExternalLink } from 'lucide-react';
 
@@ -175,6 +176,12 @@ export default function CountryDetail() {
             )}
           </div>
         )}
+
+        {/* Salary Calculator */}
+        <div className="mb-12">
+          <h2 className="font-display text-2xl font-bold mb-6">{t('salaryCalculator.title', 'Calculateur de Salaire Net')}</h2>
+          <SalaryCalculator initialCountryId={country.id} />
+        </div>
 
         {/* Exit Keys - Personalized Strategies */}
         <div className="mb-12">
