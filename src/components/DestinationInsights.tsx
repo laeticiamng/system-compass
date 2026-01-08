@@ -1,0 +1,204 @@
+import { useState, useEffect, useRef } from 'react';
+import { X, Loader2, Palmtree, Building2, AlertTriangle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { DestinationRecommendation, COUNTRY_NAMES } from '@/lib/nationality-advantages';
+
+interface DestinationInsightsProps {
+  destination: DestinationRecommendation;
+  nationalities: string[];
+  aspiration: string;
+  currentCountry: string;
+  mode: 'vacation' | 'installation';
+  onClose: () => void;
+}
+
+export function DestinationInsights({
+  destination,
+  nationalities,
+  aspiration,
+  currentCountry,
+  mode,
+  onClose,
+}: DestinationInsightsProps) {
+  const [content, setContent] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const fetchInsights = async () => {
+      setIsLoading(true);
+      setError(null);
+      setContent('');
+
+      try {
+        const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/destination-insights`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+          },
+          body: JSON.stringify({
+            destination: {
+              id: destination.countryId,
+              name: destination.countryName,
+              accessType: destination.accessType,
+            },
+            nationalities: nationalities.map(id => COUNTRY_NAMES[id]?.name || id),
+            aspiration,
+            mode,
+            currentCountry: COUNTRY_NAMES[currentCountry]?.name || currentCountry,
+          }),
+        });
+
+        if (!response.ok) {
+          if (response.status === 429) {
+            throw new Error('Trop de requêtes. Veuillez réessayer dans quelques instants.');
+          }
+          if (response.status === 402) {
+            throw new Error('Crédits IA insuffisants.');
+          }
+          throw new Error('Erreur lors de la génération des insights.');
+        }
+
+        const reader = response.body?.getReader();
+        if (!reader) throw new Error('Stream not available');
+
+        const decoder = new TextDecoder();
+        let buffer = '';
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          buffer += decoder.decode(value, { stream: true });
+
+          let newlineIndex: number;
+          while ((newlineIndex = buffer.indexOf('\n')) !== -1) {
+            const line = buffer.slice(0, newlineIndex).trim();
+            buffer = buffer.slice(newlineIndex + 1);
+
+            if (line.startsWith(':') || line === '') continue;
+            if (!line.startsWith('data: ')) continue;
+
+            const jsonStr = line.slice(6).trim();
+            if (jsonStr === '[DONE]') break;
+
+            try {
+              const parsed = JSON.parse(jsonStr);
+              const delta = parsed.choices?.[0]?.delta?.content;
+              if (delta) {
+                setContent(prev => prev + delta);
+              }
+            } catch {
+              // Partial JSON, continue
+            }
+          }
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Erreur inconnue');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchInsights();
+  }, [destination, nationalities, aspiration, currentCountry, mode]);
+
+  // Auto-scroll
+  useEffect(() => {
+    if (contentRef.current) {
+      contentRef.current.scrollTop = contentRef.current.scrollHeight;
+    }
+  }, [content]);
+
+  return (
+    <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+      <div className="bg-background rounded-2xl w-full max-w-2xl max-h-[80vh] flex flex-col shadow-2xl border">
+        {/* Header */}
+        <div className="flex items-center justify-between p-4 border-b">
+          <div className="flex items-center gap-3">
+            <span className="text-3xl">{destination.flag}</span>
+            <div>
+              <h2 className="font-bold text-lg">{destination.countryName}</h2>
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                {mode === 'vacation' ? (
+                  <><Palmtree className="w-4 h-4 text-emerald-500" /> Guide Vacances</>
+                ) : (
+                  <><Building2 className="w-4 h-4 text-blue-500" /> Guide Installation</>
+                )}
+              </div>
+            </div>
+          </div>
+          <Button variant="ghost" size="icon" onClick={onClose}>
+            <X className="w-5 h-5" />
+          </Button>
+        </div>
+
+        {/* Content */}
+        <div ref={contentRef} className="flex-1 overflow-auto p-6">
+          {error ? (
+            <div className="flex flex-col items-center justify-center py-12 text-center">
+              <AlertTriangle className="w-12 h-12 text-destructive mb-4" />
+              <p className="text-destructive font-medium">{error}</p>
+              <Button variant="outline" className="mt-4" onClick={onClose}>
+                Fermer
+              </Button>
+            </div>
+          ) : (
+            <div className="prose prose-sm dark:prose-invert max-w-none">
+              {isLoading && !content && (
+                <div className="flex items-center justify-center py-12">
+                  <Loader2 className="w-8 h-8 animate-spin text-primary" />
+                  <span className="ml-3 text-muted-foreground">Génération des insights personnalisés...</span>
+                </div>
+              )}
+              
+              {content && (
+                <div className="whitespace-pre-wrap leading-relaxed">
+                  {content.split('\n').map((line, i) => {
+                    // Handle markdown-like formatting
+                    if (line.startsWith('## ') || line.startsWith('**') && line.endsWith('**')) {
+                      return (
+                        <h3 key={i} className="text-primary font-bold mt-6 mb-2 first:mt-0">
+                          {line.replace(/^##\s*/, '').replace(/\*\*/g, '')}
+                        </h3>
+                      );
+                    }
+                    if (line.startsWith('- ') || line.startsWith('• ')) {
+                      return (
+                        <li key={i} className="ml-4">
+                          {line.slice(2)}
+                        </li>
+                      );
+                    }
+                    if (line.match(/^\d+\.\s/)) {
+                      return (
+                        <div key={i} className="font-semibold text-foreground mt-4 mb-2">
+                          {line}
+                        </div>
+                      );
+                    }
+                    return line ? <p key={i} className="mb-2">{line}</p> : <br key={i} />;
+                  })}
+                  {isLoading && <span className="inline-block w-2 h-4 bg-primary animate-pulse ml-1" />}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+
+        {/* Footer */}
+        <div className="p-4 border-t bg-muted/30 flex items-center justify-between">
+          <p className="text-xs text-muted-foreground">
+            Conseils générés par IA • Vérifiez toujours les informations officielles
+          </p>
+          <Button variant="outline" onClick={onClose}>
+            Fermer
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}
