@@ -3244,5 +3244,59 @@
     "riskPenalty": "Pénalité de risque appliquée",
     "continueToBoard": "Passer au plateau",
     "rollDicePrompt": "Lancez le dé pour avancer sur le plateau"
+  },
+  "gameEnd": {
+    "title": "Fin de Partie",
+    "yearsSimulated": "{{count}} années de vie simulées",
+    "victory": "Victoire de {{name}} !",
+    "lifeScore": "Score de vie : {{score}} points",
+    "statistics": "Statistiques de partie",
+    "risksTaken": "Risques pris",
+    "risksSucceeded": "Réussites",
+    "risksFailed": "Échecs",
+    "risksCatastrophic": "Catastrophes",
+    "actionsCompleted": "Actions réussies",
+    "moneyLost": "Argent perdu",
+    "healthLost": "Santé perdue",
+    "countriesVisited": "Pays traversés",
+    "riskAnalysis": "Analyse des risques",
+    "prudentPlay": "Vous avez joué prudemment, sans prendre de raccourcis dangereux.",
+    "luckyRisks": "La chance était de votre côté, mais les raccourcis restent dangereux.",
+    "catastrophicRisks": "Les raccourcis ont eu des conséquences graves. Dans la vraie vie, ces situations détruisent des familles.",
+    "riskyConsequences": "Les risques pris ont eu des conséquences. Chaque échec représente une réalité vécue par des milliers de personnes.",
+    "mainMenu": "Menu principal",
+    "playAgain": "Rejouer",
+    "lifeReport": "Bilan de vie",
+    "finalResources": "Ressources finales",
+    "experienceDiversity": "Diversité des expériences",
+    "goalsAchieved": "Objectifs atteints",
+    "healthPreserved": "Santé préservée",
+    "networkDeveloped": "Réseau développé",
+    "totalScore": "Score Total",
+    "lifeGoals": "Objectifs de vie",
+    "finalState": "État final",
+    "experiencesBySystem": "Expériences par système",
+    "verdicts": {
+      "exceptional": {
+        "label": "Vie Exceptionnelle",
+        "description": "Vous avez su naviguer le système avec brio et atteindre vos objectifs."
+      },
+      "successful": {
+        "label": "Vie Réussie",
+        "description": "Vous avez construit une vie stable avec de belles réalisations."
+      },
+      "average": {
+        "label": "Vie Ordinaire",
+        "description": "Des hauts et des bas, mais vous avez tenu bon."
+      },
+      "struggling": {
+        "label": "Vie Difficile",
+        "description": "Le système n'a pas été clément. Beaucoup d'obstacles à surmonter."
+      },
+      "critical": {
+        "label": "Survie",
+        "description": "Chaque jour a été un combat. Mais vous êtes toujours là."
+      }
+    }
   }
 }

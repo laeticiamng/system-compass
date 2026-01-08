@@ -172,42 +172,20 @@ function calculateLifeScore(player: PlayerEndState): {
   return { total, breakdown, verdict };
 }
 
-const VERDICT_INFO = {
-  exceptional: {
-    label: 'Vie Exceptionnelle',
-    description: 'Vous avez su naviguer le système avec brio et atteindre vos objectifs.',
-    color: 'text-emerald-400',
-    bg: 'bg-emerald-500/20',
-    icon: '🌟'
-  },
-  successful: {
-    label: 'Vie Réussie',
-    description: 'Vous avez construit une vie stable avec de belles réalisations.',
-    color: 'text-blue-400',
-    bg: 'bg-blue-500/20',
-    icon: '✨'
-  },
-  average: {
-    label: 'Vie Ordinaire',
-    description: 'Des hauts et des bas, mais vous avez tenu bon.',
-    color: 'text-amber-400',
-    bg: 'bg-amber-500/20',
-    icon: '🏠'
-  },
-  struggling: {
-    label: 'Vie Difficile',
-    description: 'Le système n\'a pas été clément. Beaucoup d\'obstacles à surmonter.',
-    color: 'text-orange-400',
-    bg: 'bg-orange-500/20',
-    icon: '💪'
-  },
-  critical: {
-    label: 'Survie',
-    description: 'Chaque jour a été un combat. Mais vous êtes toujours là.',
-    color: 'text-red-400',
-    bg: 'bg-red-500/20',
-    icon: '🔥'
-  }
+const VERDICT_ICONS = {
+  exceptional: '🌟',
+  successful: '✨',
+  average: '🏠',
+  struggling: '💪',
+  critical: '🔥'
+};
+
+const VERDICT_COLORS = {
+  exceptional: { color: 'text-emerald-400', bg: 'bg-emerald-500/20' },
+  successful: { color: 'text-blue-400', bg: 'bg-blue-500/20' },
+  average: { color: 'text-amber-400', bg: 'bg-amber-500/20' },
+  struggling: { color: 'text-orange-400', bg: 'bg-orange-500/20' },
+  critical: { color: 'text-red-400', bg: 'bg-red-500/20' }
 };
 
 export default function GameEndSummary({
@@ -245,10 +223,10 @@ export default function GameEndSummary({
             <Trophy className="w-10 h-10" />
           </div>
           <h1 className="font-display text-4xl font-bold mb-4">
-            Fin de Partie
+            {t('gameEnd.title')}
           </h1>
           <p className="text-xl text-muted-foreground">
-            {turnCount} années de vie simulées
+            {t('gameEnd.yearsSimulated', { count: turnCount })}
           </p>
         </div>
 
@@ -257,10 +235,10 @@ export default function GameEndSummary({
           <div className="glass-card rounded-2xl p-8 mb-8 text-center animate-scale-in border-2 border-primary/50">
             <div className="text-4xl mb-4">👑</div>
             <h2 className="font-display text-2xl font-bold mb-2">
-              Victoire de {winner.player.name} !
+              {t('gameEnd.victory', { name: winner.player.name })}
             </h2>
             <p className="text-muted-foreground">
-              Score de vie : {winner.lifeScore.total} points
+              {t('gameEnd.lifeScore', { score: winner.lifeScore.total })}
             </p>
           </div>
         )}
@@ -269,10 +247,10 @@ export default function GameEndSummary({
         <div className="space-y-8">
           {rankedResults.map((result, index) => {
             const { player, lifeScore, aspirations } = result;
-            const verdictInfo = VERDICT_INFO[lifeScore.verdict];
+            const verdictColors = VERDICT_COLORS[lifeScore.verdict];
 
             return (
-              <div 
+              <div
                 key={player.id}
                 className={cn(
                   "glass-card rounded-2xl overflow-hidden animate-fade-in",
@@ -281,7 +259,7 @@ export default function GameEndSummary({
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {/* Player Header */}
-                <div className={cn("p-6", verdictInfo.bg)}>
+                <div className={cn("p-6", verdictColors.bg)}>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
                       {players.length > 1 && (
@@ -296,15 +274,15 @@ export default function GameEndSummary({
                         <h3 className="font-display text-xl font-bold">{player.name}</h3>
                         {player.character && (
                           <p className="text-sm text-muted-foreground">
-                            Né(e) en {player.character.birthCountry}
+                            {player.character.birthCountry}
                           </p>
                         )}
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-3xl mb-1">{verdictInfo.icon}</div>
-                      <p className={cn("font-bold", verdictInfo.color)}>
-                        {verdictInfo.label}
+                      <div className="text-3xl mb-1">{VERDICT_ICONS[lifeScore.verdict]}</div>
+                      <p className={cn("font-bold", verdictColors.color)}>
+                        {t(`gameEnd.verdicts.${lifeScore.verdict}.label`)}
                       </p>
                     </div>
                   </div>
@@ -313,14 +291,14 @@ export default function GameEndSummary({
                 <div className="p-6 space-y-8">
                   {/* Verdict */}
                   <div className="text-center p-6 rounded-xl bg-muted/30">
-                    <p className="text-lg">{verdictInfo.description}</p>
+                    <p className="text-lg">{t(`gameEnd.verdicts.${lifeScore.verdict}.description`)}</p>
                   </div>
 
                   {/* Score Breakdown */}
                   <div>
                     <h4 className="font-semibold mb-4 flex items-center gap-2">
                       <Award className="w-5 h-5 text-primary" />
-                      Bilan de vie
+                      {t('gameEnd.lifeReport')}
                     </h4>
                     <div className="space-y-3">
                       {lifeScore.breakdown.map(item => (
@@ -339,7 +317,7 @@ export default function GameEndSummary({
                         </div>
                       ))}
                       <div className="pt-3 border-t flex items-center justify-between font-bold">
-                        <span>Score Total</span>
+                        <span>{t('gameEnd.totalScore')}</span>
                         <span className="text-xl text-primary">{lifeScore.total}</span>
                       </div>
                     </div>
@@ -350,7 +328,7 @@ export default function GameEndSummary({
                     <div>
                       <h4 className="font-semibold mb-4 flex items-center gap-2">
                         <Target className="w-5 h-5 text-primary" />
-                        Objectifs de vie
+                        {t('gameEnd.lifeGoals')}
                       </h4>
                       <div className="grid gap-3">
                         {aspirations.map(asp => (
@@ -398,7 +376,7 @@ export default function GameEndSummary({
                   <div>
                     <h4 className="font-semibold mb-4 flex items-center gap-2">
                       <Heart className="w-5 h-5 text-primary" />
-                      État final
+                      {t('gameEnd.finalState')}
                     </h4>
                     <div className="grid grid-cols-3 gap-3">
                       {(Object.entries(player.resources) as [ResourceType, number][]).map(([res, val]) => {
@@ -436,7 +414,7 @@ export default function GameEndSummary({
                   <div>
                     <h4 className="font-semibold mb-4 flex items-center gap-2">
                       <Star className="w-5 h-5 text-primary" />
-                      Expériences par système
+                      {t('gameEnd.experiencesBySystem')}
                     </h4>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                       {(Object.entries(player.scores) as [PyramidType, number][])
@@ -473,7 +451,7 @@ export default function GameEndSummary({
         {gameStats && (gameStats.risksTaken > 0 || gameStats.actionsCompleted > 0) && (
           <div className="glass-card rounded-2xl p-6 mt-8 animate-fade-in">
             <h3 className="font-display text-xl font-bold mb-6 flex items-center gap-2">
-              📊 Statistiques de partie
+              📊 {t('gameEnd.statistics')}
             </h3>
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -483,22 +461,22 @@ export default function GameEndSummary({
                   <div className="p-4 rounded-lg bg-red-500/10 text-center">
                     <div className="text-2xl mb-1">⚠️</div>
                     <div className="text-2xl font-bold text-red-400">{gameStats.risksTaken}</div>
-                    <div className="text-xs text-muted-foreground">Risques pris</div>
+                    <div className="text-xs text-muted-foreground">{t('gameEnd.risksTaken')}</div>
                   </div>
                   <div className="p-4 rounded-lg bg-emerald-500/10 text-center">
                     <div className="text-2xl mb-1">✅</div>
                     <div className="text-2xl font-bold text-emerald-400">{gameStats.risksSucceeded}</div>
-                    <div className="text-xs text-muted-foreground">Réussites</div>
+                    <div className="text-xs text-muted-foreground">{t('gameEnd.risksSucceeded')}</div>
                   </div>
                   <div className="p-4 rounded-lg bg-amber-500/10 text-center">
                     <div className="text-2xl mb-1">❌</div>
                     <div className="text-2xl font-bold text-amber-400">{gameStats.risksFailed}</div>
-                    <div className="text-xs text-muted-foreground">Échecs</div>
+                    <div className="text-xs text-muted-foreground">{t('gameEnd.risksFailed')}</div>
                   </div>
                   <div className="p-4 rounded-lg bg-red-500/10 text-center">
                     <div className="text-2xl mb-1">💀</div>
                     <div className="text-2xl font-bold text-red-400">{gameStats.risksCatastrophic}</div>
-                    <div className="text-xs text-muted-foreground">Catastrophes</div>
+                    <div className="text-xs text-muted-foreground">{t('gameEnd.risksCatastrophic')}</div>
                   </div>
                 </>
               )}
@@ -507,17 +485,17 @@ export default function GameEndSummary({
               <div className="p-4 rounded-lg bg-blue-500/10 text-center">
                 <div className="text-2xl mb-1">🎯</div>
                 <div className="text-2xl font-bold text-blue-400">{gameStats.actionsCompleted}</div>
-                <div className="text-xs text-muted-foreground">Actions réussies</div>
+                <div className="text-xs text-muted-foreground">{t('gameEnd.actionsCompleted')}</div>
               </div>
               <div className="p-4 rounded-lg bg-orange-500/10 text-center">
                 <div className="text-2xl mb-1">💸</div>
                 <div className="text-2xl font-bold text-orange-400">{gameStats.totalMoneyLost}</div>
-                <div className="text-xs text-muted-foreground">Argent perdu</div>
+                <div className="text-xs text-muted-foreground">{t('gameEnd.moneyLost')}</div>
               </div>
               <div className="p-4 rounded-lg bg-rose-500/10 text-center">
                 <div className="text-2xl mb-1">💔</div>
                 <div className="text-2xl font-bold text-rose-400">{gameStats.healthLost}</div>
-                <div className="text-xs text-muted-foreground">Santé perdue</div>
+                <div className="text-xs text-muted-foreground">{t('gameEnd.healthLost')}</div>
               </div>
               
               {/* Countries visited */}
@@ -525,7 +503,7 @@ export default function GameEndSummary({
                 <div className="p-4 rounded-lg bg-purple-500/10 text-center col-span-2 md:col-span-1">
                   <div className="text-2xl mb-1">🌍</div>
                   <div className="text-2xl font-bold text-purple-400">{gameStats.countriesVisited.length}</div>
-                  <div className="text-xs text-muted-foreground">Pays traversés</div>
+                  <div className="text-xs text-muted-foreground">{t('gameEnd.countriesVisited')}</div>
                 </div>
               )}
             </div>
@@ -535,16 +513,16 @@ export default function GameEndSummary({
               <div className="mt-6 p-4 rounded-lg bg-muted/30">
                 <h4 className="font-semibold mb-2 flex items-center gap-2">
                   <AlertTriangle className="w-4 h-4 text-amber-400" />
-                  Analyse des risques
+                  {t('gameEnd.riskAnalysis')}
                 </h4>
                 <p className="text-sm text-muted-foreground">
                   {gameStats.risksTaken === 0 
-                    ? "Vous avez joué prudemment, sans prendre de raccourcis dangereux."
+                    ? t('gameEnd.prudentPlay')
                     : gameStats.risksSucceeded > gameStats.risksFailed 
-                      ? "La chance était de votre côté, mais les raccourcis restent dangereux."
+                      ? t('gameEnd.luckyRisks')
                       : gameStats.risksCatastrophic > 0
-                        ? "Les raccourcis ont eu des conséquences graves. Dans la vraie vie, ces situations détruisent des familles."
-                        : "Les risques pris ont eu des conséquences. Chaque échec représente une réalité vécue par des milliers de personnes."
+                        ? t('gameEnd.catastrophicRisks')
+                        : t('gameEnd.riskyConsequences')
                   }
                 </p>
               </div>
@@ -556,11 +534,11 @@ export default function GameEndSummary({
         <div className="flex gap-4 mt-12 justify-center">
           <Button variant="outline" onClick={onBackToMenu} className="gap-2">
             <RotateCcw className="w-4 h-4" />
-            Menu principal
+            {t('gameEnd.mainMenu')}
           </Button>
           <Button onClick={onPlayAgain} className="gap-2">
             <Trophy className="w-4 h-4" />
-            Rejouer
+            {t('gameEnd.playAgain')}
           </Button>
         </div>
       </div>

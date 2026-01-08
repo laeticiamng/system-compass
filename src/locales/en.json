@@ -2886,5 +2886,59 @@
     "riskPenalty": "Risk penalty applied",
     "continueToBoard": "Continue to board",
     "rollDicePrompt": "Roll the dice to move on the board"
+  },
+  "gameEnd": {
+    "title": "Game Over",
+    "yearsSimulated": "{{count}} years of life simulated",
+    "victory": "{{name}} wins!",
+    "lifeScore": "Life score: {{score}} points",
+    "statistics": "Game Statistics",
+    "risksTaken": "Risks taken",
+    "risksSucceeded": "Successes",
+    "risksFailed": "Failures",
+    "risksCatastrophic": "Catastrophes",
+    "actionsCompleted": "Actions completed",
+    "moneyLost": "Money lost",
+    "healthLost": "Health lost",
+    "countriesVisited": "Countries visited",
+    "riskAnalysis": "Risk Analysis",
+    "prudentPlay": "You played it safe, without taking dangerous shortcuts.",
+    "luckyRisks": "Luck was on your side, but shortcuts remain dangerous.",
+    "catastrophicRisks": "The shortcuts had severe consequences. In real life, these situations destroy families.",
+    "riskyConsequences": "The risks taken had consequences. Each failure represents a reality lived by thousands of people.",
+    "mainMenu": "Main menu",
+    "playAgain": "Play again",
+    "lifeReport": "Life Report",
+    "finalResources": "Final Resources",
+    "experienceDiversity": "Experience diversity",
+    "goalsAchieved": "Goals achieved",
+    "healthPreserved": "Health preserved",
+    "networkDeveloped": "Network developed",
+    "totalScore": "Total Score",
+    "lifeGoals": "Life Goals",
+    "finalState": "Final State",
+    "experiencesBySystem": "Experiences by system",
+    "verdicts": {
+      "exceptional": {
+        "label": "Exceptional Life",
+        "description": "You navigated the system brilliantly and achieved your goals."
+      },
+      "successful": {
+        "label": "Successful Life",
+        "description": "You built a stable life with great achievements."
+      },
+      "average": {
+        "label": "Ordinary Life",
+        "description": "Ups and downs, but you persevered."
+      },
+      "struggling": {
+        "label": "Difficult Life",
+        "description": "The system wasn't kind. Many obstacles to overcome."
+      },
+      "critical": {
+        "label": "Survival",
+        "description": "Every day was a fight. But you're still here."
+      }
+    }
   }
 }
