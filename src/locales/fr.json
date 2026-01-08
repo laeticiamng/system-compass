@@ -3499,6 +3499,119 @@
     "family": "Famille",
     "familyDesc": "Liens avec conjoint, enfants, parents, proches à charge"
   },
+  "familyStatus": {
+    "single": "Célibataire",
+    "inRelationship": "En couple",
+    "married": "Marié(e)",
+    "parentYoung": "Parent (enfants en bas âge)",
+    "parentSchool": "Parent (enfants scolarisés)",
+    "parentAdult": "Parent (enfants adultes)",
+    "caregiver": "Aidant familial",
+    "sandwich": "Génération sandwich",
+    "diaspora": "Diaspora"
+  },
+  "familyConstraints": {
+    "youngChildren": {
+      "label": "Enfants en bas âge",
+      "description": "Besoin de stabilité et soins constants. Déménagement très difficile."
+    },
+    "schoolChildren": {
+      "label": "Enfants scolarisés",
+      "description": "École, amis, activités. Déménager signifie tout reconstruire."
+    },
+    "sickParent": {
+      "label": "Parent malade",
+      "description": "Responsabilité de soins. Difficile de s'éloigner."
+    },
+    "familyAbroad": {
+      "label": "Famille au pays",
+      "description": "Envoie de l'argent régulièrement. Pression financière."
+    },
+    "spouseCareer": {
+      "label": "Carrière du conjoint",
+      "description": "Le/la partenaire a sa propre carrière à considérer."
+    },
+    "disabledSibling": {
+      "label": "Proche handicapé",
+      "description": "Responsabilité envers un frère/sœur ou proche handicapé."
+    },
+    "sandwichGeneration": {
+      "label": "Génération sandwich",
+      "description": "Entre enfants à charge et parents vieillissants."
+    }
+  },
+  "familyResponsibilities": {
+    "remittance": {
+      "label": "Envoi d'argent",
+      "description": "Transfert mensuel à la famille au pays"
+    },
+    "childEducation": {
+      "label": "Éducation des enfants",
+      "description": "Frais de scolarité, activités, fournitures"
+    },
+    "elderlyCare": {
+      "label": "Soins aux parents",
+      "description": "Aide et accompagnement des parents âgés"
+    },
+    "childcare": {
+      "label": "Garde d'enfants",
+      "description": "Temps et coûts liés aux jeunes enfants"
+    },
+    "spouseSupport": {
+      "label": "Soutien conjugal",
+      "description": "Investissement dans la relation de couple"
+    }
+  },
+  "familyEvents": {
+    "childBirth": {
+      "label": "Naissance d'un enfant",
+      "description": "Un nouveau membre rejoint la famille"
+    },
+    "marriage": {
+      "label": "Mariage",
+      "description": "Union officielle avec votre partenaire"
+    },
+    "familyReunion": {
+      "label": "Retrouvailles familiales",
+      "description": "Visite de la famille après une longue séparation"
+    },
+    "childGraduation": {
+      "label": "Diplôme de l'enfant",
+      "description": "Votre enfant obtient son diplôme"
+    },
+    "parentIllness": {
+      "label": "Maladie d'un parent",
+      "description": "Un de vos parents tombe gravement malade"
+    },
+    "parentDeath": {
+      "label": "Décès d'un parent",
+      "description": "Perte d'un parent"
+    },
+    "divorce": {
+      "label": "Divorce",
+      "description": "Séparation d'avec votre conjoint(e)"
+    },
+    "childIllness": {
+      "label": "Maladie de l'enfant",
+      "description": "Votre enfant est malade"
+    },
+    "familyConflict": {
+      "label": "Conflit familial",
+      "description": "Tensions au sein de la famille"
+    },
+    "familyNeedsMoney": {
+      "label": "La famille a besoin d'argent",
+      "description": "Demande urgente de soutien financier"
+    },
+    "spouseOpportunity": {
+      "label": "Opportunité du conjoint",
+      "description": "Votre partenaire a une opportunité professionnelle ailleurs"
+    },
+    "elderlyParentAlone": {
+      "label": "Parent âgé seul",
+      "description": "Votre parent vieillissant se retrouve seul"
+    }
+  },
   "aspirations": {
     "financialFreedom": {
       "label": "Liberté financière",

@@ -3091,6 +3091,119 @@
     "family": "Family",
     "familyDesc": "Bonds with spouse, children, parents, dependents"
   },
+  "familyStatus": {
+    "single": "Single",
+    "inRelationship": "In a relationship",
+    "married": "Married",
+    "parentYoung": "Parent (young children)",
+    "parentSchool": "Parent (school-age children)",
+    "parentAdult": "Parent (adult children)",
+    "caregiver": "Caregiver",
+    "sandwich": "Sandwich generation",
+    "diaspora": "Diaspora"
+  },
+  "familyConstraints": {
+    "youngChildren": {
+      "label": "Young children",
+      "description": "Need stability and constant care. Relocation very difficult."
+    },
+    "schoolChildren": {
+      "label": "School-age children",
+      "description": "School, friends, activities. Moving means rebuilding everything."
+    },
+    "sickParent": {
+      "label": "Sick parent",
+      "description": "Caregiving responsibility. Hard to move away."
+    },
+    "familyAbroad": {
+      "label": "Family back home",
+      "description": "Sending money regularly. Financial pressure."
+    },
+    "spouseCareer": {
+      "label": "Spouse's career",
+      "description": "Partner has their own career to consider."
+    },
+    "disabledSibling": {
+      "label": "Disabled relative",
+      "description": "Responsibility for a sibling or relative with disability."
+    },
+    "sandwichGeneration": {
+      "label": "Sandwich generation",
+      "description": "Between children and aging parents."
+    }
+  },
+  "familyResponsibilities": {
+    "remittance": {
+      "label": "Remittances",
+      "description": "Monthly transfer to family back home"
+    },
+    "childEducation": {
+      "label": "Child education",
+      "description": "School fees, activities, supplies"
+    },
+    "elderlyCare": {
+      "label": "Elderly care",
+      "description": "Care and support for aging parents"
+    },
+    "childcare": {
+      "label": "Childcare",
+      "description": "Time and costs for young children"
+    },
+    "spouseSupport": {
+      "label": "Spousal support",
+      "description": "Investment in the relationship"
+    }
+  },
+  "familyEvents": {
+    "childBirth": {
+      "label": "Child birth",
+      "description": "A new family member joins"
+    },
+    "marriage": {
+      "label": "Marriage",
+      "description": "Official union with your partner"
+    },
+    "familyReunion": {
+      "label": "Family reunion",
+      "description": "Visiting family after long separation"
+    },
+    "childGraduation": {
+      "label": "Child's graduation",
+      "description": "Your child graduates"
+    },
+    "parentIllness": {
+      "label": "Parent's illness",
+      "description": "One of your parents falls seriously ill"
+    },
+    "parentDeath": {
+      "label": "Parent's death",
+      "description": "Loss of a parent"
+    },
+    "divorce": {
+      "label": "Divorce",
+      "description": "Separation from spouse"
+    },
+    "childIllness": {
+      "label": "Child's illness",
+      "description": "Your child is sick"
+    },
+    "familyConflict": {
+      "label": "Family conflict",
+      "description": "Tensions within the family"
+    },
+    "familyNeedsMoney": {
+      "label": "Family needs money",
+      "description": "Urgent request for financial support"
+    },
+    "spouseOpportunity": {
+      "label": "Spouse's opportunity",
+      "description": "Your partner has a job opportunity elsewhere"
+    },
+    "elderlyParentAlone": {
+      "label": "Elderly parent alone",
+      "description": "Your aging parent is now alone"
+    }
+  },
   "aspirations": {
     "financialFreedom": {
       "label": "Financial Freedom",
