@@ -3495,7 +3495,9 @@
     "skills": "Compétences",
     "skillsDesc": "Améliorent les retours sur actions",
     "mobility": "Mobilité",
-    "mobilityDesc": "Permet de migrer vers d'autres systèmes"
+    "mobilityDesc": "Permet de migrer vers d'autres systèmes",
+    "family": "Famille",
+    "familyDesc": "Liens avec conjoint, enfants, parents, proches à charge"
   },
   "aspirations": {
     "financialFreedom": {

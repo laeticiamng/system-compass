@@ -48,6 +48,7 @@ export const CHARACTER_ARCHETYPES: CharacterArchetype[] = [
       network: 7,
       skills: 4,
       mobility: 8,
+      family: 7, // Supportive wealthy family
     },
   },
   
@@ -77,6 +78,7 @@ export const CHARACTER_ARCHETYPES: CharacterArchetype[] = [
       network: 3,
       skills: 7,
       mobility: 7,
+      family: 3, // Distant from family, focused on work
     },
   },
 
@@ -107,6 +109,7 @@ export const CHARACTER_ARCHETYPES: CharacterArchetype[] = [
       network: 4,
       skills: 5,
       mobility: 5,
+      family: 8, // Married with kids, limits mobility
     },
   },
 
@@ -136,6 +139,7 @@ export const CHARACTER_ARCHETYPES: CharacterArchetype[] = [
       network: 4,
       skills: 6,
       mobility: 5,
+      family: 4, // Supportive but modest family
     },
   },
 
@@ -166,6 +170,7 @@ export const CHARACTER_ARCHETYPES: CharacterArchetype[] = [
       network: 3,
       skills: 4,
       mobility: 1,
+      family: 6, // Family back home to support
     },
   },
 
@@ -195,6 +200,7 @@ export const CHARACTER_ARCHETYPES: CharacterArchetype[] = [
       network: 1,
       skills: 3,
       mobility: 0,
+      family: 3, // Family lost or scattered
     },
   },
 
@@ -224,6 +230,7 @@ export const CHARACTER_ARCHETYPES: CharacterArchetype[] = [
       network: 4,
       skills: 3,
       mobility: 3,
+      family: 5, // Supportive but demanding family
     },
   },
 
@@ -254,6 +261,7 @@ export const CHARACTER_ARCHETYPES: CharacterArchetype[] = [
       network: 5,
       skills: 6,
       mobility: 8,
+      family: 2, // Solo, no family ties
     },
   },
 
@@ -283,6 +291,7 @@ export const CHARACTER_ARCHETYPES: CharacterArchetype[] = [
       network: 8,
       skills: 4,
       mobility: 3,
+      family: 6, // Complex family politics
     },
   },
 
@@ -312,6 +321,7 @@ export const CHARACTER_ARCHETYPES: CharacterArchetype[] = [
       network: 5,
       skills: 5,
       mobility: 2,
+      family: 7, // Relies on family support
     },
   },
 
@@ -341,6 +351,7 @@ export const CHARACTER_ARCHETYPES: CharacterArchetype[] = [
       network: 8,
       skills: 7,
       mobility: 9,
+      family: 4, // Family left behind in home country
     },
   },
 
@@ -370,6 +381,7 @@ export const CHARACTER_ARCHETYPES: CharacterArchetype[] = [
       network: 6,
       skills: 2,
       mobility: 1,
+      family: 4, // Street family, informal ties
     },
   },
 ];

@@ -8,6 +8,7 @@ export interface GameResources {
   network: number;   // 0-10: Opens opportunities
   skills: number;    // 0-10: Improves returns
   mobility: number;  // 0-10: Allows migration
+  family: number;    // 0-10: Family bonds (spouse, children, parents, siblings)
 }
 
 export const createDefaultResources = (): GameResources => ({
@@ -17,6 +18,7 @@ export const createDefaultResources = (): GameResources => ({
   network: 2,
   skills: 3,
   mobility: 4,
+  family: 5,
 });
 
 export type ResourceType = keyof GameResources;
@@ -33,6 +35,7 @@ export const RESOURCE_INFO: Record<ResourceType, {
   network: { label: 'resources.network', icon: '🤝', color: 'text-purple-400', description: 'resources.networkDesc' },
   skills: { label: 'resources.skills', icon: '🎓', color: 'text-emerald-400', description: 'resources.skillsDesc' },
   mobility: { label: 'resources.mobility', icon: '✈️', color: 'text-blue-400', description: 'resources.mobilityDesc' },
+  family: { label: 'resources.family', icon: '👨‍👩‍👧‍👦', color: 'text-pink-400', description: 'resources.familyDesc' },
 };
 
 // ============== ACTIONS ==============

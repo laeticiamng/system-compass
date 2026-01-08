@@ -3087,7 +3087,9 @@
     "skills": "Skills",
     "skillsDesc": "Improve returns on actions",
     "mobility": "Mobility",
-    "mobilityDesc": "Allows migration to other systems"
+    "mobilityDesc": "Allows migration to other systems",
+    "family": "Family",
+    "familyDesc": "Bonds with spouse, children, parents, dependents"
   },
   "aspirations": {
     "financialFreedom": {
