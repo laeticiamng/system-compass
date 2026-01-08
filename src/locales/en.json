@@ -68,7 +68,7 @@
     "compare": "Compare",
     "resources": "Resources",
     "pyramids": "Pyramids",
-    "quiz": "Quiz",
+    "quiz": "Life's Game",
     "exitKeys": "Exit Keys",
     "dashboard": "Dashboard",
     "multiCompare": "Multi-Compare"
@@ -2197,24 +2197,24 @@
     "dangerous": "High Risk for LGBTQ+"
   },
   "pyramidQuiz": {
-    "title": "Pyramid Quiz",
-    "subtitle": "Discover which type of system best matches your personality and aspirations",
+    "title": "Life's Game",
+    "subtitle": "Simulate your life trajectory across different world systems. Make choices, manage resources, and discover how to navigate the real world.",
     "questionOf": "Question {{current}} of {{total}}",
     "back": "Back",
     "modes": {
       "online": {
-        "title": "Online Quiz",
-        "description": "Answer 8 questions to discover your ideal pyramid type. Quick, simple and effective.",
-        "cta": "Start the quiz"
+        "title": "Profile Quiz",
+        "description": "Answer 8 questions to discover which world system suits you. Quick and revealing.",
+        "cta": "Discover my profile"
       },
       "board": {
-        "title": "Board Game",
-        "description": "Monopoly style: roll the dice, move on the board and discover your profile while playing.",
-        "cta": "Play the board"
+        "title": "Adventure Mode",
+        "description": "Live an entire life: make choices, face events, manage resources and build your destiny.",
+        "cta": "Start my life"
       },
       "multiplayer": {
         "title": "Multiplayer",
-        "description": "Play with friends! Up to 4 players can compete turn by turn on the board.",
+        "description": "Play up to 4! Compare life trajectories and see who navigates the system best.",
         "cta": "Play together"
       }
     },
@@ -2396,7 +2396,7 @@
     "score": "Score: {{score}} / {{target}}"
   },
   "rules": {
-    "title": "PYRAMIDS — Complete Rules",
+    "title": "LIFE'S GAME — Complete Rules",
     "concept": {
       "title": "The Concept",
       "description": "PYRAMIDS is a strategy game where you manage life trajectories. You don't choose your starting point: you draw characters with a birth country, traits, and aspirations. Each 'year' of play, you make decisions: work, study, heal, migrate, start a business, build your network, nurture relationships... The world moves, countries have their rules, and success depends on your ability to optimize under constraints.",

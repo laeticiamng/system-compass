@@ -68,7 +68,7 @@
     "compare": "Comparer",
     "resources": "Ressources",
     "pyramids": "Pyramides",
-    "quiz": "Quiz",
+    "quiz": "Le Jeu de la Vie",
     "exitKeys": "Clés de Sortie",
     "dashboard": "Tableau de Bord",
     "multiCompare": "Multi-Comparer"
@@ -2555,25 +2555,25 @@
     }
   },
   "pyramidQuiz": {
-    "title": "Quiz des Pyramides",
-    "subtitle": "Découvre quel type de système correspond le mieux à ta personnalité et tes aspirations",
+    "title": "Le Jeu de la Vie",
+    "subtitle": "Simule ta trajectoire de vie à travers différents systèmes mondiaux. Fais des choix, gère tes ressources, et découvre comment naviguer le vrai monde.",
     "questionOf": "Question {{current}} sur {{total}}",
     "back": "Retour",
     "modes": {
       "online": {
-        "title": "Quiz en ligne",
-        "description": "Réponds à 8 questions pour découvrir ton type de pyramide idéal. Rapide, simple et efficace.",
-        "cta": "Commencer le quiz"
+        "title": "Quiz Profil",
+        "description": "Réponds à 8 questions pour découvrir quel système mondial te correspond. Rapide et révélateur.",
+        "cta": "Découvrir mon profil"
       },
       "board": {
-        "title": "Jeu de plateau",
-        "description": "Style Monopoly : lance le dé, avance sur le plateau et découvre ton profil en jouant.",
-        "cta": "Jouer au plateau"
+        "title": "Mode Aventure",
+        "description": "Vis une vie entière : fais des choix, affronte des événements, gère tes ressources et construis ton destin.",
+        "cta": "Commencer ma vie"
       },
       "multiplayer": {
         "title": "Multijoueur",
-        "description": "Jouez à plusieurs ! Jusqu'à 4 joueurs peuvent s'affronter tour à tour sur le plateau.",
-        "cta": "Jouer en groupe"
+        "description": "Jouez jusqu'à 4 ! Comparez vos trajectoires de vie et voyez qui navigue le mieux dans le système.",
+        "cta": "Jouer ensemble"
       }
     },
     "questions": {
@@ -2754,7 +2754,7 @@
     "score": "Score : {{score}} / {{target}}"
   },
   "rules": {
-    "title": "PYRAMIDES — Règles complètes",
+    "title": "LE JEU DE LA VIE — Règles complètes",
     "concept": {
       "title": "Le concept",
       "description": "PYRAMIDES est un jeu de stratégie où tu gères des trajectoires de vie. Tu ne choisis pas ton point de départ : tu tires des personnages avec un pays de naissance, des traits, et des aspirations. À chaque 'année' de jeu, tu prends des décisions : travailler, étudier, soigner, migrer, entreprendre, construire ton réseau, nourrir tes relations... Le monde bouge, les pays ont leurs règles, et la réussite dépend de ta capacité à optimiser sous contrainte.",
