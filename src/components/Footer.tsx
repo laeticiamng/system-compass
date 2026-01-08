@@ -49,6 +49,7 @@ export function Footer() {
               <li><Link to="/countries" className="hover:text-foreground transition-colors">{t('nav.countries')}</Link></li>
               <li><Link to="/pyramid-types" className="hover:text-foreground transition-colors">{t('nav.pyramids')}</Link></li>
               <li><Link to="/compare" className="hover:text-foreground transition-colors">{t('nav.compare')}</Link></li>
+              <li><Link to="/multi-compare" className="hover:text-foreground transition-colors">{t('nav.multiCompare', 'Multi-Compare')}</Link></li>
               <li><Link to="/resources" className="hover:text-foreground transition-colors">{t('nav.resources')}</Link></li>
             </ul>
           </div>
@@ -59,9 +60,11 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li><Link to="/profile-test" className="hover:text-foreground transition-colors">{t('footer.profileTest', 'Profile Test')}</Link></li>
               <li><Link to="/life-trajectory" className="hover:text-foreground transition-colors">{t('nav.trajectory')}</Link></li>
-              <li><Link to="/exit-keys" className="hover:text-foreground transition-colors">{t('nav.exitKeys')}</Link></li>
+              <li><Link to="/exit-keys" className="hover:text-foreground transition-colors">{t('nav.exitKeys', 'Clés de Sortie')}</Link></li>
+              <li><Link to="/exit-keys/catalog" className="hover:text-foreground transition-colors">{t('exitKeys.catalog', 'Catalogue des Clés')}</Link></li>
               <li><Link to="/pyramid-quiz" className="hover:text-foreground transition-colors">{t('nav.quiz')}</Link></li>
-              <li><Link to="/systemic-mistakes" className="hover:text-foreground transition-colors text-destructive/80 hover:text-destructive">⚠️ Erreurs fréquentes</Link></li>
+              <li><Link to="/life-game" className="hover:text-foreground transition-colors">{t('nav.lifeGame', 'Jeu de Vie')}</Link></li>
+              <li><Link to="/systemic-mistakes" className="hover:text-foreground transition-colors text-destructive/80 hover:text-destructive">⚠️ {t('nav.systemicMistakes', 'Erreurs fréquentes')}</Link></li>
             </ul>
           </div>
 
