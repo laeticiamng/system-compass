@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   Select,
   SelectContent,
@@ -867,31 +868,73 @@ export default function ExitKeys() {
                 </div>
               )}
 
-              {/* Interactive Destination Map */}
+              {/* Installation vs Vacation Tabs */}
               {destinationRecommendations.length > 0 && (
-                <div className="glass-card rounded-xl p-6 border-2 border-emerald-500/20">
-                  <h3 className="font-semibold mb-4 flex items-center gap-2">
-                    <Map className="w-5 h-5 text-emerald-500" />
-                    Carte des Destinations
-                    <span className="text-xs px-2 py-1 rounded-full bg-emerald-500/20 text-emerald-400">
-                      Vacances & Installation
-                    </span>
-                  </h3>
-                  <DestinationMap
-                    recommendations={destinationRecommendations}
-                    nationalities={nationalityIds}
-                    aspiration={desiredLife}
-                    currentCountry={currentCountryId}
-                  />
+                <div className="glass-card rounded-xl p-6 border-2 border-primary/20">
+                  <Tabs defaultValue="installation" className="w-full">
+                    <TabsList className="grid w-full grid-cols-2 mb-6">
+                      <TabsTrigger value="installation" className="gap-2">
+                        <MapPin className="w-4 h-4" />
+                        Installation
+                      </TabsTrigger>
+                      <TabsTrigger value="vacances" className="gap-2">
+                        <Plane className="w-4 h-4" />
+                        Vacances
+                      </TabsTrigger>
+                    </TabsList>
+
+                    <TabsContent value="installation">
+                      <div className="space-y-4">
+                        <div className="flex items-center gap-2 mb-4">
+                          <Map className="w-5 h-5 text-emerald-500" />
+                          <h3 className="font-semibold">Destinations d'Installation</h3>
+                          <span className="text-xs px-2 py-1 rounded-full bg-emerald-500/20 text-emerald-400">
+                            Optimisées pour votre profil
+                          </span>
+                        </div>
+                        <p className="text-sm text-muted-foreground mb-4">
+                          Pays où vous pouvez vous installer durablement selon vos nationalités, aspirations et contraintes.
+                        </p>
+                        <DestinationMap
+                          recommendations={destinationRecommendations}
+                          nationalities={nationalityIds}
+                          aspiration={desiredLife}
+                          currentCountry={currentCountryId}
+                        />
+                      </div>
+                    </TabsContent>
+
+                    <TabsContent value="vacances">
+                      <div className="space-y-4">
+                        <div className="flex items-center gap-2 mb-4">
+                          <Plane className="w-5 h-5 text-blue-500" />
+                          <h3 className="font-semibold">Recommandations Vacances</h3>
+                          <span className="text-xs px-2 py-1 rounded-full bg-blue-500/20 text-blue-400">
+                            Par pouvoir d'achat
+                          </span>
+                        </div>
+                        <p className="text-sm text-muted-foreground mb-4">
+                          Destinations où votre salaire vous permet de profiter sans exploser votre budget, tout en progressant vers vos objectifs.
+                        </p>
+                        <VacationRecommendations
+                          currentCountryId={currentCountryId}
+                          nationalityIds={nationalityIds}
+                          professionId={professionId}
+                        />
+                      </div>
+                    </TabsContent>
+                  </Tabs>
                 </div>
               )}
 
-              {/* Vacation Recommendations with Purchasing Power */}
-              <VacationRecommendations
-                currentCountryId={currentCountryId}
-                nationalityIds={nationalityIds}
-                professionId={professionId}
-              />
+              {/* Vacation fallback if no destination recommendations */}
+              {destinationRecommendations.length === 0 && (
+                <VacationRecommendations
+                  currentCountryId={currentCountryId}
+                  nationalityIds={nationalityIds}
+                  professionId={professionId}
+                />
+              )}
 
               {/* Strategic Principles */}
               <div className="bg-accent/30 rounded-xl p-6">
