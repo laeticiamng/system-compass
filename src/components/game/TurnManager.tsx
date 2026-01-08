@@ -272,6 +272,7 @@ export default function TurnManager({
         <div className="animate-scale-in">
           <ActionPanel
             resources={currentPlayer.resources}
+            countryType={currentPlayer.countryType}
             onSelectAction={(action, success) => {
               setSelectedAction(action);
               setActionResult(success ? 'success' : 'failed');
@@ -298,6 +299,20 @@ export default function TurnManager({
               onResourceChange(currentPlayer.id, newResources);
               setPhase('action_resolution');
               onPhaseComplete('action_selection', { action, success });
+            }}
+            onRiskEvent={(event, outcome, effects) => {
+              // Apply risk event effects
+              const newResources = { ...currentPlayer.resources };
+              Object.entries(effects).forEach(([resource, change]) => {
+                newResources[resource as ResourceType] = Math.max(0, Math.min(10, 
+                  newResources[resource as ResourceType] + (change as number)
+                ));
+              });
+              
+              onResourceChange(currentPlayer.id, newResources);
+              setActionResult(outcome === 'success' ? 'success' : 'failed');
+              setPhase('action_resolution');
+              onPhaseComplete('action_selection', { event, outcome });
             }}
             usedMajorAction={selectedAction?.type === 'major'}
             usedMinorActions={0}
