@@ -5,7 +5,7 @@ import {
   ArrowLeft, Key, Compass, Target, Zap, 
   ChevronRight, MapPin, Heart, Shield,
   AlertTriangle, CheckCircle, Save, RefreshCw,
-  Filter, Clock, Scale, Flag
+  Filter, Clock, Scale, Flag, Globe, Plane
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
@@ -21,6 +21,7 @@ import { Label } from '@/components/ui/label';
 import { countries } from '@/lib/countries-data';
 import { PyramidType, PYRAMID_TYPE_INFO, LifeMotorProfile, LifePriority, LIFE_MOTOR_PROFILES } from '@/lib/types';
 import { findCompatibleKeys, UserContext, STRATEGIC_PRINCIPLES } from '@/lib/exit-keys-engine';
+import { getNationalityAdvantages, getPassportStrengthLabel, REGIONAL_BLOCS } from '@/lib/nationality-advantages';
 import ExitKeyCard from '@/components/ExitKeyCard';
 import { cn } from '@/lib/utils';
 import { useExitKeysProfile } from '@/hooks/useExitKeysProfile';
@@ -62,7 +63,7 @@ export default function ExitKeys() {
   
   // User inputs
   const [birthCountryId, setBirthCountryId] = useState<string>('');
-  const [nationalityId, setNationalityId] = useState<string>('');
+  const [nationalityIds, setNationalityIds] = useState<string[]>([]);
   const [currentCountryId, setCurrentCountryId] = useState<string>('');
   const [motorProfile, setMotorProfile] = useState<LifeMotorProfile>('BUILDER');
   const [desiredLife, setDesiredLife] = useState<LifePriority>('freedom');
@@ -78,7 +79,11 @@ export default function ExitKeys() {
   useEffect(() => {
     if (savedProfile && !profileLoading) {
       setBirthCountryId(savedProfile.birthCountryId);
-      setNationalityId(savedProfile.nationalityId || savedProfile.birthCountryId);
+      // Handle migration from old nationalityId to new nationalityIds
+      const savedNationalities = savedProfile.nationalityIds || 
+        (savedProfile as any).nationalityId ? [(savedProfile as any).nationalityId] : 
+        [savedProfile.birthCountryId];
+      setNationalityIds(savedNationalities.filter(Boolean));
       setCurrentCountryId(savedProfile.currentCountryId);
       setMotorProfile(savedProfile.motorProfile);
       setDesiredLife(savedProfile.desiredLife);
@@ -100,7 +105,7 @@ export default function ExitKeys() {
   const handleSaveProfile = () => {
     saveProfile({
       birthCountryId,
-      nationalityId,
+      nationalityIds,
       currentCountryId,
       motorProfile,
       desiredLife,
@@ -116,14 +121,17 @@ export default function ExitKeys() {
 
   // Derived data
   const birthCountry = countries.find(c => c.id === birthCountryId);
-  const nationalityCountry = countries.find(c => c.id === nationalityId);
+  const nationalityCountries = nationalityIds.map(id => countries.find(c => c.id === id)).filter(Boolean) as typeof countries;
   const currentCountry = countries.find(c => c.id === currentCountryId);
 
   const userContext: UserContext | null = useMemo(() => {
     if (!currentCountry) return null;
+    const nationalities = nationalityCountries.length > 0 
+      ? nationalityCountries.map(c => c.pyramidType)
+      : [birthCountry?.pyramidType || currentCountry.pyramidType];
     return {
       birthCountry: birthCountry?.pyramidType || currentCountry.pyramidType,
-      nationality: nationalityCountry?.pyramidType || birthCountry?.pyramidType || currentCountry.pyramidType,
+      nationalities,
       currentCountry: currentCountry.pyramidType,
       desiredLife,
       motorProfile,
@@ -135,12 +143,17 @@ export default function ExitKeys() {
       isLGBTQ,
       hasFamily,
     };
-  }, [birthCountry, nationalityCountry, currentCountry, desiredLife, motorProfile, riskTolerance, timeHorizon, hasCapital, hasCredentials, hasNetwork, isLGBTQ, hasFamily]);
+  }, [birthCountry, nationalityCountries, currentCountry, desiredLife, motorProfile, riskTolerance, timeHorizon, hasCapital, hasCredentials, hasNetwork, isLGBTQ, hasFamily]);
 
   const exitKeyResults = useMemo(() => {
     if (!userContext) return [];
     return findCompatibleKeys(userContext);
   }, [userContext]);
+
+  // Nationality advantages
+  const nationalityAdvantages = useMemo(() => {
+    return getNationalityAdvantages(nationalityIds);
+  }, [nationalityIds]);
 
   // Filtered results
   const filteredResults = useMemo(() => {
@@ -169,7 +182,7 @@ export default function ExitKeys() {
 
   const canProceed = () => {
     switch (currentStep) {
-      case 'origin': return !!birthCountryId && !!nationalityId;
+      case 'origin': return !!birthCountryId && nationalityIds.length > 0;
       case 'current': return !!currentCountryId;
       case 'profile': return true;
       case 'goals': return true;
@@ -260,7 +273,7 @@ export default function ExitKeys() {
                 <Label className="text-sm font-medium">Pays de naissance</Label>
                 <Select value={birthCountryId} onValueChange={(v) => {
                   setBirthCountryId(v);
-                  if (!nationalityId) setNationalityId(v);
+                  if (nationalityIds.length === 0) setNationalityIds([v]);
                 }}>
                   <SelectTrigger className="w-full h-14 text-lg">
                     <SelectValue placeholder="Sélectionnez votre pays de naissance" />
@@ -281,22 +294,56 @@ export default function ExitKeys() {
                 </Select>
               </div>
 
-              {/* Nationality */}
+              {/* Nationalities - Multi-select */}
               <div className="space-y-4">
                 <div className="flex items-center gap-2">
                   <Flag className="w-5 h-5 text-primary" />
-                  <Label className="text-sm font-medium">Nationalité</Label>
+                  <Label className="text-sm font-medium">Nationalité(s)</Label>
+                  <span className="text-xs text-muted-foreground">(multi-nationalité supportée)</span>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Votre nationalité détermine les visas et opportunités accessibles
+                  Vos nationalités déterminent les visas et opportunités accessibles
                 </p>
                 
-                <Select value={nationalityId} onValueChange={setNationalityId}>
+                {/* Selected nationalities */}
+                {nationalityIds.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    {nationalityIds.map(natId => {
+                      const natCountry = countries.find(c => c.id === natId);
+                      if (!natCountry) return null;
+                      return (
+                        <div 
+                          key={natId}
+                          className="flex items-center gap-2 px-3 py-2 bg-primary/10 border border-primary/20 rounded-lg"
+                        >
+                          <span className="text-lg">{getFlagEmoji(natCountry.iso2)}</span>
+                          <span className="text-sm font-medium">{natCountry.name}</span>
+                          <button
+                            onClick={() => setNationalityIds(nationalityIds.filter(id => id !== natId))}
+                            className="ml-1 text-muted-foreground hover:text-destructive transition-colors"
+                          >
+                            ×
+                          </button>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+
+                {/* Add nationality */}
+                <Select 
+                  value="" 
+                  onValueChange={(v) => {
+                    if (v && !nationalityIds.includes(v)) {
+                      setNationalityIds([...nationalityIds, v]);
+                    }
+                  }}
+                >
                   <SelectTrigger className="w-full h-14 text-lg">
-                    <SelectValue placeholder="Sélectionnez votre nationalité" />
+                    <SelectValue placeholder={nationalityIds.length > 0 ? "Ajouter une autre nationalité" : "Sélectionnez votre nationalité"} />
                   </SelectTrigger>
                   <SelectContent className="max-h-[300px]">
-                    {countries.map(country => (
+                    {countries.filter(c => !nationalityIds.includes(c.id)).map(country => (
                       <SelectItem key={country.id} value={country.id}>
                         <span className="flex items-center gap-3">
                           <span className="text-xl">{getFlagEmoji(country.iso2)}</span>
@@ -307,25 +354,25 @@ export default function ExitKeys() {
                   </SelectContent>
                 </Select>
 
-                {birthCountryId && birthCountryId !== nationalityId && (
+                {birthCountryId && !nationalityIds.includes(birthCountryId) && (
                   <Button 
                     variant="ghost" 
                     size="sm"
-                    onClick={() => setNationalityId(birthCountryId)}
+                    onClick={() => setNationalityIds([...nationalityIds, birthCountryId])}
                   >
-                    Même que pays de naissance
+                    Ajouter nationalité du pays de naissance
                   </Button>
                 )}
               </div>
 
               {/* Country Info Cards */}
-              {(birthCountry || nationalityCountry) && (
-                <div className="grid gap-4 md:grid-cols-2">
+              {(birthCountry || nationalityCountries.length > 0) && (
+                <div className="space-y-4">
                   {birthCountry && (
                     <div className="glass-card rounded-xl p-4">
                       <div className="flex items-center gap-2 mb-2">
                         <MapPin className="w-4 h-4 text-muted-foreground" />
-                        <span className="text-xs text-muted-foreground">Naissance</span>
+                        <span className="text-xs text-muted-foreground">Pays de naissance</span>
                       </div>
                       <div className="flex items-center gap-3">
                         <span className="text-2xl">{getFlagEmoji(birthCountry.iso2)}</span>
@@ -338,20 +385,20 @@ export default function ExitKeys() {
                       </div>
                     </div>
                   )}
-                  {nationalityCountry && nationalityId !== birthCountryId && (
+                  
+                  {nationalityCountries.length > 0 && nationalityCountries.some(nc => nc.id !== birthCountryId) && (
                     <div className="glass-card rounded-xl p-4">
                       <div className="flex items-center gap-2 mb-2">
                         <Flag className="w-4 h-4 text-muted-foreground" />
-                        <span className="text-xs text-muted-foreground">Nationalité</span>
+                        <span className="text-xs text-muted-foreground">Nationalité(s)</span>
                       </div>
-                      <div className="flex items-center gap-3">
-                        <span className="text-2xl">{getFlagEmoji(nationalityCountry.iso2)}</span>
-                        <div>
-                          <h3 className="font-bold">{nationalityCountry.name}</h3>
-                          <p className="text-xs text-muted-foreground">
-                            {PYRAMID_TYPE_INFO[nationalityCountry.pyramidType].label}
-                          </p>
-                        </div>
+                      <div className="flex flex-wrap gap-3">
+                        {nationalityCountries.filter(nc => nc.id !== birthCountryId).map(nc => (
+                          <div key={nc.id} className="flex items-center gap-2">
+                            <span className="text-xl">{getFlagEmoji(nc.iso2)}</span>
+                            <span className="text-sm font-medium">{nc.name}</span>
+                          </div>
+                        ))}
                       </div>
                     </div>
                   )}
@@ -627,6 +674,93 @@ export default function ExitKeys() {
                   </div>
                 </div>
               </div>
+
+              {/* Nationality Advantages */}
+              {nationalityAdvantages.uniqueAdvantages.length > 0 && (
+                <div className="glass-card rounded-xl p-6 border-2 border-primary/20">
+                  <h3 className="font-semibold mb-4 flex items-center gap-2">
+                    <Globe className="w-5 h-5 text-primary" />
+                    Avantages de vos Nationalités
+                    {nationalityAdvantages.strongestPassport && (
+                      <span className={cn(
+                        "text-xs px-2 py-1 rounded-full bg-primary/10",
+                        getPassportStrengthLabel(nationalityAdvantages.strongestPassport.passportStrength).color
+                      )}>
+                        {getPassportStrengthLabel(nationalityAdvantages.strongestPassport.passportStrength).label}
+                      </span>
+                    )}
+                  </h3>
+                  
+                  {/* Passport stats */}
+                  <div className="flex flex-wrap gap-4 mb-4 p-3 bg-muted/30 rounded-lg">
+                    <div className="flex items-center gap-2">
+                      <Plane className="w-4 h-4 text-primary" />
+                      <span className="text-sm">
+                        <strong>{nationalityAdvantages.totalVisaFree}</strong> pays sans visa
+                      </span>
+                    </div>
+                    {nationalityAdvantages.combinedBlocs.length > 0 && (
+                      <div className="flex items-center gap-2">
+                        <Flag className="w-4 h-4 text-primary" />
+                        <span className="text-sm">
+                          Membre de: {nationalityAdvantages.combinedBlocs.map(b => REGIONAL_BLOCS[b]?.icon).join(' ')}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Regional blocs */}
+                  {nationalityAdvantages.combinedBlocs.length > 0 && (
+                    <div className="mb-4">
+                      <p className="text-xs text-muted-foreground mb-2">Blocs régionaux</p>
+                      <div className="flex flex-wrap gap-2">
+                        {nationalityAdvantages.combinedBlocs.map(blocId => {
+                          const bloc = REGIONAL_BLOCS[blocId];
+                          if (!bloc) return null;
+                          return (
+                            <div key={blocId} className="flex items-center gap-2 px-3 py-2 bg-primary/10 rounded-lg">
+                              <span className="text-lg">{bloc.icon}</span>
+                              <div>
+                                <span className="text-sm font-medium">{bloc.name}</span>
+                                <p className="text-xs text-muted-foreground">{bloc.description}</p>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Advantages list */}
+                  <div className="grid md:grid-cols-2 gap-3">
+                    {nationalityAdvantages.uniqueAdvantages.slice(0, 6).map(advantage => (
+                      <div key={advantage.id} className="flex items-start gap-3 p-3 bg-muted/20 rounded-lg">
+                        <span className="text-xl">{advantage.icon}</span>
+                        <div>
+                          <p className="font-medium text-sm">{advantage.name}</p>
+                          <p className="text-xs text-muted-foreground">{advantage.description}</p>
+                          <span className={cn(
+                            "text-xs px-2 py-0.5 rounded mt-1 inline-block",
+                            advantage.type === 'visa_free' && 'bg-emerald-500/20 text-emerald-400',
+                            advantage.type === 'regional_access' && 'bg-blue-500/20 text-blue-400',
+                            advantage.type === 'work_permit' && 'bg-amber-500/20 text-amber-400',
+                            advantage.type === 'tax_benefit' && 'bg-purple-500/20 text-purple-400',
+                            advantage.type === 'residency' && 'bg-cyan-500/20 text-cyan-400',
+                            advantage.type === 'citizenship' && 'bg-rose-500/20 text-rose-400',
+                          )}>
+                            {advantage.type === 'visa_free' && 'Visa-free'}
+                            {advantage.type === 'regional_access' && 'Accès régional'}
+                            {advantage.type === 'work_permit' && 'Travail'}
+                            {advantage.type === 'tax_benefit' && 'Fiscal'}
+                            {advantage.type === 'residency' && 'Résidence'}
+                            {advantage.type === 'citizenship' && 'Citoyenneté'}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {/* Strategic Principles */}
               <div className="bg-accent/30 rounded-xl p-6">

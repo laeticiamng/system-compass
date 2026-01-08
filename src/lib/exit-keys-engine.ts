@@ -730,7 +730,7 @@ export const EXIT_KEYS: ExitKey[] = [
 
 export interface UserContext {
   birthCountry: PyramidType;
-  nationality: PyramidType;
+  nationalities: PyramidType[];
   currentCountry: PyramidType;
   desiredLife: LifePriority;
   motorProfile: LifeMotorProfile;
