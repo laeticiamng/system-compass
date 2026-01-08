@@ -1300,6 +1300,29 @@
         "plan5Years": ["Ingresos diversificados internacionalmente", "Segunda residencia asegurada", "Activos protegidos de volatilidad", "Plan de salida listo"],
         "planB": "Países UE vía programas de ciudadanía. Georgia, Serbia para entrada fácil. EAU para opción regional."
       }
+    },
+    "netherlands": {
+      "name": "Países Bajos",
+      "region": "Europa Occidental",
+      "ruleOfGold": "Sé directo, sé competente, sé integrado. El sistema recompensa a quienes contribuyen.",
+      "pyramid": {
+        "top": "Instituciones basadas en consenso y comercio",
+        "institutions": "Burocracia eficiente y transparente",
+        "gatekeepers": "Credenciales profesionales e integración",
+        "valueCreators": "Profesionales cualificados, emprendedores, comerciantes",
+        "base": "Fuerza laboral bien protegida con derechos fuertes",
+        "realAsset": "Confianza, eficiencia y redes comerciales"
+      },
+      "whoWins": ["Profesionales altamente cualificados", "Trabajadores tech y emprendedores", "Quienes se integran culturalmente", "Comunicadores directos"],
+      "whoLoses": ["Quienes evitan la integración", "No hablantes de neerlandés a largo plazo", "Personalidades jerárquicas", "Quienes buscan optimización fiscal"],
+      "playbook": {
+        "do": ["Obtener la regla del 30% si es elegible", "Aprender neerlandés eventualmente", "Integrarse en la cultura local", "Construir red profesional", "Adoptar comunicación directa"],
+        "dont": ["Quedarse en burbuja expat a largo plazo", "Ignorar el idioma neerlandés", "Esperar que la jerarquía funcione", "Subestimar el mercado inmobiliario", "Ignorar requisitos de integración"],
+        "plan30Days": ["Asegurar permiso de residencia/trabajo", "Solicitar la regla del 30%", "Registrarse en gemeente", "Abrir cuenta bancaria neerlandesa"],
+        "plan12Months": ["Empezar curso de neerlandés", "Construir red profesional", "Entender mercado inmobiliario", "Integrarse en la vida local"],
+        "plan5Years": ["Alcanzar competencia en neerlandés", "Solicitar residencia permanente", "Considerar ciudadanía", "Construir carrera a largo plazo"],
+        "planB": "Los Países Bajos ofrecen hub UE con inglés. Considere Alemania para más oportunidades, Bélgica para costos más bajos, o UK para ambiente puramente anglófono."
+      }
     }
   },
   "pyramidQuiz": {

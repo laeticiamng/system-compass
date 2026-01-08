@@ -1523,6 +1523,66 @@
         ],
         "planB": "Nouvelle-Zélande pour un accès plus facile, Canada pour un système similaire, Singapour pour l'Asie-Pacifique. L'Australie offre une excellente qualité de vie."
       }
+    },
+    "netherlands": {
+      "name": "Pays-Bas",
+      "region": "Europe de l'Ouest",
+      "ruleOfGold": "Sois direct, sois compétent, sois intégré. Le système récompense ceux qui contribuent.",
+      "pyramid": {
+        "top": "Institutions basées sur le consensus et commerce",
+        "institutions": "Bureaucratie efficace et transparente",
+        "gatekeepers": "Diplômes professionnels et intégration",
+        "valueCreators": "Professionnels qualifiés, entrepreneurs, commerçants",
+        "base": "Main-d'œuvre bien protégée avec droits solides",
+        "realAsset": "Confiance, efficacité et réseaux commerciaux"
+      },
+      "whoWins": [
+        "Professionnels hautement qualifiés",
+        "Travailleurs tech et entrepreneurs",
+        "Ceux qui s'intègrent culturellement",
+        "Communicateurs directs"
+      ],
+      "whoLoses": [
+        "Ceux qui évitent l'intégration",
+        "Non-néerlandophones à long terme",
+        "Personnalités hiérarchiques",
+        "Ceux cherchant l'optimisation fiscale"
+      ],
+      "playbook": {
+        "do": [
+          "Obtenir la règle des 30% si éligible",
+          "Apprendre le néerlandais progressivement",
+          "S'intégrer à la culture locale",
+          "Construire un réseau professionnel",
+          "Adopter la communication directe"
+        ],
+        "dont": [
+          "Rester dans la bulle expat à long terme",
+          "Ignorer la langue néerlandaise",
+          "S'attendre à ce que la hiérarchie fonctionne",
+          "Sous-estimer le marché immobilier",
+          "Ignorer les exigences d'intégration"
+        ],
+        "plan30Days": [
+          "Sécuriser le permis de séjour/travail",
+          "Demander la règle des 30%",
+          "S'inscrire à la gemeente",
+          "Ouvrir un compte bancaire néerlandais"
+        ],
+        "plan12Months": [
+          "Commencer un cours de néerlandais",
+          "Construire un réseau professionnel",
+          "Comprendre le marché immobilier",
+          "S'intégrer à la vie locale"
+        ],
+        "plan5Years": [
+          "Atteindre la maîtrise du néerlandais",
+          "Demander la résidence permanente",
+          "Envisager la citoyenneté",
+          "Construire une carrière à long terme"
+        ],
+        "planB": "Les Pays-Bas offrent un hub UE anglophone. Considérez l'Allemagne pour plus d'opportunités, la Belgique pour des coûts plus bas, ou le UK pour un environnement 100% anglophone."
+      }
     }
   },
   "risks": {

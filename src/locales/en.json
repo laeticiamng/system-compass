@@ -1523,6 +1523,66 @@
         ],
         "planB": "New Zealand for easier access, Canada for similar system, Singapore for Asia-Pacific. Australia offers excellent quality of life."
       }
+    },
+    "netherlands": {
+      "name": "Netherlands",
+      "region": "Western Europe",
+      "ruleOfGold": "Be direct, be competent, be integrated. The system rewards those who contribute.",
+      "pyramid": {
+        "top": "Consensus-driven institutions and trade",
+        "institutions": "Efficient, transparent bureaucracy",
+        "gatekeepers": "Professional credentials and integration",
+        "valueCreators": "Skilled professionals, entrepreneurs, traders",
+        "base": "Well-protected workforce with strong rights",
+        "realAsset": "Trust, efficiency, and trade networks"
+      },
+      "whoWins": [
+        "Highly skilled professionals",
+        "Tech workers and entrepreneurs",
+        "Those who integrate culturally",
+        "Direct communicators"
+      ],
+      "whoLoses": [
+        "Those avoiding integration",
+        "Non-Dutch speakers long-term",
+        "Hierarchical personalities",
+        "Those seeking tax optimization"
+      ],
+      "playbook": {
+        "do": [
+          "Get 30% ruling if eligible",
+          "Learn Dutch eventually",
+          "Integrate into local culture",
+          "Build professional network",
+          "Embrace direct communication"
+        ],
+        "dont": [
+          "Stay in expat bubble long-term",
+          "Ignore Dutch language",
+          "Expect hierarchy to work",
+          "Underestimate housing market",
+          "Ignore integration requirements"
+        ],
+        "plan30Days": [
+          "Secure residence/work permit",
+          "Apply for 30% ruling",
+          "Register with gemeente",
+          "Open Dutch bank account"
+        ],
+        "plan12Months": [
+          "Start Dutch language course",
+          "Build professional network",
+          "Understand housing market",
+          "Integrate into local life"
+        ],
+        "plan5Years": [
+          "Achieve Dutch proficiency",
+          "Apply for permanent residence",
+          "Consider citizenship",
+          "Build long-term career"
+        ],
+        "planB": "Netherlands offers EU hub with English. Consider Germany for more opportunities, Belgium for lower costs, or UK for pure English environment."
+      }
     }
   },
   "risks": {
