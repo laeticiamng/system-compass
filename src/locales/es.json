@@ -1,12 +1,23 @@
 {
   "common": {
     "appName": "Pyramid Compass",
-    "tagline": "Navega por el sistema real",
-    "disclaimer": "Solo herramienta analítica. No es asesoramiento legal ni financiero.",
+    "tagline": "Simulador de decisiones para sistemas reales",
+    "positioningLine": "Herramienta de análisis y simulación. Tú decides, nosotros iluminamos.",
+    "disclaimer": "Sin asesoramiento legal, financiero o médico. Sigues siendo responsable de tus decisiones.",
     "yes": "Sí",
     "no": "No",
     "back": "Atrás",
-    "years": "años"
+    "next": "Siguiente",
+    "years": "años",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "load": "Cargar",
+    "loading": "Cargando...",
+    "country": "País",
+    "metric": "Métrica",
+    "delete": "Eliminar",
+    "confirm": "Confirmar",
+    "edit": "Editar"
   },
   "simulationDisclaimer": {
     "notPrediction": "Simulación ≠ Predicción",
@@ -187,6 +198,82 @@
     "riskSuccess": "Éxitos de riesgo",
     "archetypesUsed": "Arquetipos probados",
     "bestScore": "Mejor puntuación solo"
+  },
+  "footer": {
+    "explore": "Explorar",
+    "tools": "Herramientas",
+    "account": "Cuenta",
+    "profileTest": "Test de perfil",
+    "madeWith": "Hecho con",
+    "about": "Acerca de"
+  },
+  "about": {
+    "badge": "Nuestra misión",
+    "title": "Herramienta de claridad estratégica",
+    "subtitle": "Simulador de decisiones para sistemas reales. Solo herramienta de análisis.",
+    "whatWeAre": {
+      "title": "Lo que somos",
+      "point1": "Un simulador para probar decisiones antes de vivirlas",
+      "point2": "Una herramienta de análisis de sistemas (fiscales, sociales, migratorios)",
+      "point3": "Un marco para entender cómo funciona el mundo",
+      "point4": "Un espacio de reflexión estratégica, no de juicio"
+    },
+    "whatWeAreNot": {
+      "title": "Lo que NO somos",
+      "point1": "Una firma de asesoría legal, fiscal o médica",
+      "point2": "Un coach de vida o servicio de desarrollo personal",
+      "point3": "Una promesa de éxito o resultados garantizados",
+      "point4": "Una herramienta que te dice qué hacer — sigues siendo responsable de tus decisiones"
+    },
+    "modes": {
+      "title": "Dos formas de usar la herramienta",
+      "simulation": {
+        "title": "Simulación personal",
+        "description": "Analiza TU situación real, prueba TUS opciones, comprende las consecuencias de TUS posibles elecciones."
+      },
+      "game": {
+        "title": "Modo educativo (juego)",
+        "description": "Interpreta un personaje FICTICIO al azar. Descubre los mecanismos del mundo sin riesgo. Es un juego educativo."
+      }
+    },
+    "origin": {
+      "title": "Por qué existe esta herramienta",
+      "paragraph1": "Esta herramienta fue creada por alguien que perdió años tomando decisiones sin entender el sistema en el que operaba.",
+      "paragraph2": "País equivocado, carrera equivocada, timing equivocado — no por falta de inteligencia, sino por falta de un marco.",
+      "paragraph3": "Pyramid Compass nació de esta frustración: dar a todos el análisis que solo los privilegiados reciben de su red.",
+      "conclusion": "Esta no es una herramienta que te dice qué hacer. Es una herramienta que te ayuda a VER — para que TÚ decidas con pleno conocimiento."
+    },
+    "forEveryone": {
+      "title": "Para todos",
+      "subtitle": "Sea cual sea tu punto de partida, mereces acceso a la información."
+    },
+    "faq": {
+      "title": "Preguntas frecuentes",
+      "q1": {
+        "question": "¿Puede Pyramid Compass decirme qué país elegir?",
+        "answer": "No. La herramienta analiza sistemas y simula escenarios, pero la decisión final es tuya. Proporcionamos información, tú tomas tus propias decisiones."
+      },
+      "q2": {
+        "question": "¿Son fiables los datos?",
+        "answer": "Usamos fuentes públicas (índices de corrupción, datos fiscales, rankings de pasaportes). Estos datos son indicativos y pueden cambiar. Siempre verifica con fuentes oficiales antes de tomar decisiones importantes."
+      },
+      "q3": {
+        "question": "¿Cuál es la diferencia entre \"Mi simulación\" y \"Modo educativo\"?",
+        "answer": "\"Mi simulación\" (Claves de Salida) analiza TU situación real con TUS parámetros. El \"Modo educativo\" te hace interpretar un personaje FICTICIO aleatorio para entender mecanismos sin implicación personal."
+      },
+      "q4": {
+        "question": "¿Es gratis?",
+        "answer": "Sí, la herramienta es gratuita. Puedes crear una cuenta para sincronizar tus datos entre dispositivos, pero no es obligatorio."
+      },
+      "q5": {
+        "question": "¿Están protegidos mis datos personales?",
+        "answer": "Los datos de simulación permanecen en tu dispositivo o en tu cuenta personal. No vendemos tus datos ni los compartimos con nadie."
+      },
+      "q6": {
+        "question": "¿Puedo usar esta herramienta para decisiones importantes?",
+        "answer": "Esta herramienta es un punto de partida para tu reflexión, no una fuente de verdad absoluta. Para decisiones importantes (inmigración, impuestos, salud), consulta siempre a profesionales cualificados."
+      }
+    }
   },
   "nav": {
     "start": "Inicio",
@@ -1810,5 +1897,27 @@
     "network": "Red",
     "skills": "Habilidades",
     "mobility": "Movilidad"
+  },
+  "savedGames": {
+    "title": "Mis partidas",
+    "myGames": "Mis partidas",
+    "noGames": "Sin partidas guardadas",
+    "finished": "Terminada",
+    "save": "Guardar",
+    "saveGame": "Guardar partida",
+    "gameName": "Nombre de la partida",
+    "nameRequired": "El nombre es obligatorio",
+    "saved": "¡Partida guardada!",
+    "saveFailed": "Error al guardar",
+    "gameLoaded": "¡Partida cargada!"
+  },
+  "achievements": {
+    "title": "Logros",
+    "unlocked": "desbloqueados",
+    "all": "Todos",
+    "exploration": "Exploración",
+    "risk": "Toma de riesgos",
+    "mastery": "Maestría",
+    "special": "Especial"
   }
 }
