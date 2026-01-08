@@ -3619,5 +3619,27 @@
       "description": "Informal economy survivor. Thrives through network and cunning.",
       "example": "Street vendor, gray economy"
     }
+  },
+  "archetypeSelector": {
+    "title": "Choose Your Destiny",
+    "subtitle": "How do you want to define your character?",
+    "chooseMode": "Choose my archetype",
+    "chooseModeDesc": "Browse through 12 social archetypes and choose the one that resonates with you.",
+    "selectArchetype": "Select",
+    "randomMode": "Let fate decide",
+    "randomModeDesc": "Life doesn't choose. Receive a random archetype and discover the challenges ahead.",
+    "rollDice": "Roll the dice",
+    "playerSelect": "Player {{player}} — Choose your life",
+    "selectHint": "Each archetype has its advantages and obstacles. Difficulty reflects real-world inequalities.",
+    "randomOne": "Random",
+    "confirmNext": "Confirm and next",
+    "startGame": "Start the game",
+    "selectedPlayers": "Confirmed players",
+    "difficulty": {
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard",
+      "extreme": "Extreme"
+    }
   }
 }

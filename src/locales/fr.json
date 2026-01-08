@@ -4027,5 +4027,27 @@
       "description": "Débrouillard de l'économie informelle. Survit grâce à son réseau et sa ruse.",
       "example": "Vendeur ambulant, économie grise"
     }
+  },
+  "archetypeSelector": {
+    "title": "Choisissez votre Destin",
+    "subtitle": "Comment voulez-vous définir votre personnage ?",
+    "chooseMode": "Choisir mon archétype",
+    "chooseModeDesc": "Parcourez les 12 archétypes sociaux et choisissez celui qui vous correspond ou vous intrigue.",
+    "selectArchetype": "Sélectionner",
+    "randomMode": "Laisser le destin décider",
+    "randomModeDesc": "La vie ne choisit pas. Recevez un archétype aléatoire et découvrez les défis qui vous attendent.",
+    "rollDice": "Tirer au sort",
+    "playerSelect": "Joueur {{player}} — Choisissez votre vie",
+    "selectHint": "Chaque archétype a ses avantages et ses obstacles. La difficulté reflète les inégalités du monde réel.",
+    "randomOne": "Aléatoire",
+    "confirmNext": "Valider et suivant",
+    "startGame": "Commencer la partie",
+    "selectedPlayers": "Joueurs confirmés",
+    "difficulty": {
+      "easy": "Facile",
+      "medium": "Moyen",
+      "hard": "Difficile",
+      "extreme": "Extrême"
+    }
   }
 }
