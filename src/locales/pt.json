@@ -19,6 +19,43 @@
     "confirm": "Confirmar",
     "edit": "Editar"
   },
+  "steps": {
+    "profile": "O teu perfil",
+    "profileDesc": "Situação, nacionalidade, recursos",
+    "analysis": "Análise",
+    "analysisDesc": "Sistemas, restrições, opções",
+    "consequences": "Consequências",
+    "consequencesDesc": "Riscos, custos, condições"
+  },
+  "responsibility": {
+    "title": "Continuas responsável pelas tuas decisões.",
+    "description": "Esta ferramenta ajuda-te a entender o sistema — não decide por ti."
+  },
+  "profiles": {
+    "baker": "Padeiro",
+    "worker": "Operário",
+    "student": "Estudante",
+    "retiree": "Aposentado",
+    "entrepreneur": "Empreendedor",
+    "diaspora": "Pai da diáspora"
+  },
+  "cta": {
+    "viewAllKeys": "Ver todas as chaves de saída",
+    "educationalMode": "Modo educativo (personagem fictício)"
+  },
+  "guestMode": {
+    "title": "Modo observação",
+    "subtitle": "Explora livremente sem conta",
+    "description": "Todas as simulações funcionam sem registo.",
+    "createAccount": "Criar conta",
+    "toSync": "apenas para guardar e sincronizar."
+  },
+  "finalCta": {
+    "title": "Pronto para evitar erros dispendiosos?",
+    "description": "Esta ferramenta não promete nada. Analisa sistemas e simula consequências para que entendas as regras reais antes de te comprometeres.",
+    "button": "Analisar a minha situação",
+    "disclaimer": "Apenas ferramenta de análise. Continuas responsável pelas tuas decisões."
+  },
   "simulationDisclaimer": {
     "notPrediction": "Simulação ≠ Previsão",
     "inline": "Simulação apenas para fins informativos.",

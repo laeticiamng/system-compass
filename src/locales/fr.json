@@ -19,6 +19,43 @@
     "confirm": "Confirmer",
     "edit": "Modifier"
   },
+  "steps": {
+    "profile": "Ton profil",
+    "profileDesc": "Situation, nationalité, ressources",
+    "analysis": "Analyse",
+    "analysisDesc": "Systèmes, contraintes, options",
+    "consequences": "Conséquences",
+    "consequencesDesc": "Risques, coûts, conditions"
+  },
+  "responsibility": {
+    "title": "Tu restes responsable de tes décisions.",
+    "description": "Cet outil t'aide à comprendre le système — pas à décider à ta place."
+  },
+  "profiles": {
+    "baker": "Boulanger",
+    "worker": "Ouvrier",
+    "student": "Étudiant",
+    "retiree": "Retraité",
+    "entrepreneur": "Entrepreneur",
+    "diaspora": "Parent diaspora"
+  },
+  "cta": {
+    "viewAllKeys": "Voir toutes les clés de sortie",
+    "educationalMode": "Mode éducatif (personnage fictif)"
+  },
+  "guestMode": {
+    "title": "Mode observation",
+    "subtitle": "Explorez librement sans compte",
+    "description": "Toutes les simulations fonctionnent sans inscription.",
+    "createAccount": "Créez un compte",
+    "toSync": "uniquement pour sauvegarder et synchroniser."
+  },
+  "finalCta": {
+    "title": "Prêt à éviter des erreurs coûteuses ?",
+    "description": "Cet outil ne promet rien. Il analyse les systèmes et simule les conséquences pour que tu comprennes les règles réelles avant de t'engager.",
+    "button": "Analyser ma situation",
+    "disclaimer": "Outil d'analyse uniquement. Tu restes responsable de tes décisions."
+  },
   "simulationDisclaimer": {
     "notPrediction": "Simulation ≠ Prédiction",
     "inline": "Simulation à but informatif uniquement.",
@@ -197,7 +234,20 @@
     "turnsPlayed": "Tours joués",
     "riskSuccess": "Risques réussis",
     "archetypesUsed": "Archétypes testés",
-    "bestScore": "Meilleur score solo"
+    "bestScore": "Meilleur score solo",
+    "tabs": {
+      "plan": "Plan",
+      "stats": "Statistiques",
+      "calendar": "Calendrier"
+    },
+    "phase": "Phase",
+    "duration": "Durée",
+    "suggestedDeadline": "Échéance suggérée",
+    "actions": "actions",
+    "objective": "Objectif",
+    "criticalRule": "Règle critique",
+    "personalNotes": "Notes personnelles",
+    "addNote": "Ajouter une note"
   },
   "achievements": {
     "title": "Succès",

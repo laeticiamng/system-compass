@@ -40,16 +40,16 @@ export function Header() {
 
   // Navigation simplifiée et claire
   const navItems = [
-    { href: '/', label: 'Accueil', icon: Compass },
+    { href: '/', label: t('nav.start'), icon: Compass },
     { href: '/countries', label: t('nav.countries'), icon: Map },
     { href: '/pyramid-types', label: t('nav.pyramids'), icon: Triangle },
-    { href: '/systemic-mistakes', label: t('nav.systemicMistakes', 'Erreurs'), icon: AlertCircle },
-    { href: '/life-game', label: 'Mode éducatif', icon: Play },
+    { href: '/systemic-mistakes', label: t('nav.systemicMistakes'), icon: AlertCircle },
+    { href: '/life-game', label: t('nav.lifeGame'), icon: Play },
     { href: '/exit-keys', label: t('nav.exitKeys'), icon: Key },
     { href: '/compare', label: t('nav.compare'), icon: Scale },
     { href: '/dashboard', label: t('nav.dashboard'), icon: LayoutDashboard },
     { href: '/resources', label: t('nav.resources'), icon: FileText },
-    { href: '/about', label: t('footer.about', 'À propos'), icon: Info },
+    { href: '/about', label: t('footer.about'), icon: Info },
   ];
 
   const handleSignOut = async () => {

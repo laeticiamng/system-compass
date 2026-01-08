@@ -581,15 +581,15 @@ export default function Dashboard() {
               <TabsList className="grid w-full grid-cols-3 mb-6">
                 <TabsTrigger value="plan" className="gap-2">
                   <ListChecks className="w-4 h-4" />
-                  <span className="hidden sm:inline">Plan</span>
+                  <span className="hidden sm:inline">{t('dashboard.tabs.plan', 'Plan')}</span>
                 </TabsTrigger>
                 <TabsTrigger value="stats" className="gap-2">
                   <BarChart3 className="w-4 h-4" />
-                  <span className="hidden sm:inline">Statistiques</span>
+                  <span className="hidden sm:inline">{t('dashboard.tabs.stats', 'Statistiques')}</span>
                 </TabsTrigger>
                 <TabsTrigger value="calendar" className="gap-2">
                   <CalendarDays className="w-4 h-4" />
-                  <span className="hidden sm:inline">Calendrier</span>
+                  <span className="hidden sm:inline">{t('dashboard.tabs.calendar', 'Calendrier')}</span>
                 </TabsTrigger>
               </TabsList>
 
@@ -631,16 +631,16 @@ export default function Dashboard() {
                               )}
                               <div>
                                 <CardTitle className="text-lg">
-                                  Phase {phase.phase}: {phase.name}
+                                  {t('dashboard.phase', 'Phase')} {phase.phase}: {phase.name}
                                 </CardTitle>
                                 <CardDescription className="flex items-center gap-4 mt-1">
                                   <span className="flex items-center gap-1">
                                     <Clock className="w-4 h-4" />
-                                    Durée: {phase.duration}
+                                    {t('dashboard.duration', 'Durée')}: {phase.duration}
                                   </span>
                                   <span className="flex items-center gap-1 text-primary">
                                     <Target className="w-4 h-4" />
-                                    Échéance suggérée: {formatDisplayDate(suggestedDeadline)}
+                                    {t('dashboard.suggestedDeadline', 'Échéance suggérée')}: {formatDisplayDate(suggestedDeadline)}
                                   </span>
                                 </CardDescription>
                               </div>
@@ -648,7 +648,7 @@ export default function Dashboard() {
                             <div className="text-right">
                               <div className="text-2xl font-bold text-primary">{phasePercent}%</div>
                               <div className="text-xs text-muted-foreground">
-                                {phaseProgress.completed}/{phaseProgress.total} actions
+                                {phaseProgress.completed}/{phaseProgress.total} {t('dashboard.actions', 'actions')}
                               </div>
                             </div>
                           </div>
@@ -659,7 +659,7 @@ export default function Dashboard() {
                           <div className="bg-primary/10 rounded-lg p-3 mb-4">
                             <div className="flex items-center gap-2 text-sm font-medium text-primary">
                               <Target className="w-4 h-4" />
-                              Objectif: {phase.milestone}
+                              {t('dashboard.objective', 'Objectif')}: {phase.milestone}
                             </div>
                           </div>
 
@@ -668,7 +668,7 @@ export default function Dashboard() {
                             <div className="bg-amber-500/10 rounded-lg p-3 mb-4 border border-amber-500/20">
                               <div className="flex items-center gap-2 text-sm text-amber-600 dark:text-amber-400">
                                 <AlertTriangle className="w-4 h-4" />
-                                <span className="font-medium">Règle critique:</span> {phase.criticalRule}
+                                <span className="font-medium">{t('dashboard.criticalRule', 'Règle critique')}:</span> {phase.criticalRule}
                               </div>
                             </div>
                           )}
@@ -683,7 +683,7 @@ export default function Dashboard() {
                               <CollapsibleTrigger asChild>
                                 <Button variant="ghost" size="sm" className="gap-2">
                                   <MessageSquare className="w-4 h-4" />
-                                  Notes personnelles
+                                  {t('dashboard.personalNotes', 'Notes personnelles')}
                                   {currentPhaseNote && <Badge variant="secondary" className="ml-1">1</Badge>}
                                   <ChevronDown className="w-4 h-4" />
                                 </Button>
@@ -694,7 +694,7 @@ export default function Dashboard() {
                                   size="sm" 
                                   onClick={() => startEditingNote(phaseIndex)}
                                 >
-                                  {currentPhaseNote ? 'Modifier' : 'Ajouter une note'}
+                                  {currentPhaseNote ? t('common.edit') : t('dashboard.addNote', 'Ajouter une note')}
                                 </Button>
                               )}
                             </div>
