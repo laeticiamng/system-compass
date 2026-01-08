@@ -56,13 +56,14 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Account */}
+          {/* Account & Legal */}
           <div>
             <h4 className="font-semibold mb-4">{t('footer.account', 'Account')}</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li><Link to="/dashboard" className="hover:text-foreground transition-colors">{t('nav.dashboard')}</Link></li>
               <li><Link to="/auth" className="hover:text-foreground transition-colors">{t('auth.login')}</Link></li>
               <li><Link to="/about" className="hover:text-foreground transition-colors">{t('footer.about', 'À propos')}</Link></li>
+              <li><Link to="/disclaimer" className="hover:text-foreground transition-colors text-amber-500/80 hover:text-amber-500">⚠️ Avertissements</Link></li>
             </ul>
           </div>
         </div>
@@ -91,9 +92,15 @@ export function Footer() {
           </div>
           
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-muted-foreground text-center md:text-left">
-              © {currentYear} {t('common.appName')}. {t('common.disclaimer')}
-            </p>
+            <div className="text-center md:text-left">
+              <p className="text-sm text-muted-foreground">
+                © {currentYear} {t('common.appName')}
+              </p>
+              <p className="text-xs text-muted-foreground/70 mt-1">
+                Outil d'analyse et simulation. Pas de conseil juridique, financier ou médical. 
+                <Link to="/disclaimer" className="text-primary hover:underline ml-1">En savoir plus</Link>
+              </p>
+            </div>
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
               <span className="flex items-center gap-1">
                 {t('footer.madeWith', 'Made with')} <Heart className="w-4 h-4 text-primary fill-primary" />

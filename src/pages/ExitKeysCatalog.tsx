@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { EXIT_KEYS, ExitKey } from '@/lib/exit-keys-engine';
 import { PyramidType } from '@/lib/types';
+import { SimulationDisclaimer } from '@/components/SimulationDisclaimer';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -79,9 +80,10 @@ export default function ExitKeysCatalog() {
               Catalogue des Clés de Sortie
             </h1>
           </div>
-          <p className="text-muted-foreground max-w-2xl">
+          <p className="text-muted-foreground max-w-2xl mb-3">
             Stratégies structurées pour changer de système. Chaque clé est une trajectoire mesurable, sans promesse vague.
           </p>
+          <SimulationDisclaimer variant="compact" />
         </div>
 
         {/* Filters */}
