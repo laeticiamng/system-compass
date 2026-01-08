@@ -1,6 +1,7 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useExitKeysProfile } from '@/hooks/useExitKeysProfile';
-import { EXIT_KEYS, ExitKey, ExitKeyStep } from '@/lib/exit-keys-engine';
+import { useDashboardProgress } from '@/hooks/useDashboardProgress';
+import { EXIT_KEYS } from '@/lib/exit-keys-engine';
 import { LIFE_MOTOR_PROFILES } from '@/lib/types';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -35,49 +36,23 @@ import {
   X,
   BarChart3,
   CalendarDays,
-  ListChecks
+  ListChecks,
+  Cloud,
+  CloudOff,
+  Loader2
 } from 'lucide-react';
 import { toast } from 'sonner';
 
-interface StepProgress {
-  phaseIndex: number;
-  actionIndex: number;
-  completed: boolean;
-  completedAt?: string;
-  deadline?: string;
-  reminderEnabled?: boolean;
-}
-
-interface PhaseNote {
-  phaseIndex: number;
-  note: string;
-  updatedAt: string;
-}
-
-interface PlanProgress {
-  exitKeyId: string;
-  startedAt: string;
-  stepsProgress: StepProgress[];
-  phaseNotes: PhaseNote[];
-}
-
-const DASHBOARD_STORAGE_KEY = 'exit_keys_dashboard';
-const REMINDERS_KEY = 'exit_keys_reminders';
-
-// Calculate suggested deadline based on phase duration
+// Helper functions
 function parseDuration(duration: string): number {
-  // Parse durations like "6-12 mois", "2-3 ans", "1-2 ans"
   const match = duration.match(/(\d+)-?(\d+)?\s*(mois|ans|months|years)/i);
-  if (!match) return 180; // Default 6 months in days
-  
+  if (!match) return 180;
   const minVal = parseInt(match[1]);
   const unit = match[3].toLowerCase();
-  
   if (unit === 'mois' || unit === 'months') {
-    return minVal * 30; // days
-  } else {
-    return minVal * 365; // days
+    return minVal * 30;
   }
+  return minVal * 365;
 }
 
 function formatDate(date: Date): string {
@@ -98,35 +73,33 @@ function getDaysRemaining(deadline: string): number {
 
 export default function Dashboard() {
   const { profile, loading: profileLoading } = useExitKeysProfile();
-  const [selectedKeyId, setSelectedKeyId] = useState<string | null>(null);
-  const [progress, setProgress] = useState<PlanProgress | null>(null);
-  const [loading, setLoading] = useState(true);
+  const {
+    progress,
+    loading,
+    syncing,
+    isLoggedIn,
+    startPlan,
+    toggleAction,
+    setDeadline,
+    toggleReminder,
+    savePhaseNote,
+    resetProgress,
+    isActionCompleted,
+    getActionStep,
+    getPhaseNote,
+    getPhaseNoteUpdatedAt,
+  } = useDashboardProgress();
+
   const [editingNote, setEditingNote] = useState<number | null>(null);
   const [noteText, setNoteText] = useState('');
   const [openPhases, setOpenPhases] = useState<Record<number, boolean>>({});
 
-  // Load progress from localStorage
-  useEffect(() => {
-    const savedProgress = localStorage.getItem(DASHBOARD_STORAGE_KEY);
-    if (savedProgress) {
-      try {
-        const parsed = JSON.parse(savedProgress) as PlanProgress;
-        // Ensure phaseNotes exists for backward compatibility
-        if (!parsed.phaseNotes) {
-          parsed.phaseNotes = [];
-        }
-        setProgress(parsed);
-        setSelectedKeyId(parsed.exitKeyId);
-      } catch (e) {
-        console.error('Error parsing dashboard progress:', e);
-      }
-    }
-    setLoading(false);
-  }, []);
+  const selectedKeyId = progress?.exitKeyId || null;
+  const selectedKey = selectedKeyId ? EXIT_KEYS.find(k => k.id === selectedKeyId) : null;
 
   // Check for upcoming deadlines and show notifications
   useEffect(() => {
-    if (!progress) return;
+    if (!progress || !selectedKey) return;
 
     const upcomingDeadlines = progress.stepsProgress.filter(step => {
       if (!step.deadline || step.completed || !step.reminderEnabled) return false;
@@ -135,243 +108,87 @@ export default function Dashboard() {
     });
 
     if (upcomingDeadlines.length > 0) {
-      const selectedKey = EXIT_KEYS.find(k => k.id === progress.exitKeyId);
-      if (selectedKey) {
-        upcomingDeadlines.forEach(step => {
-          const phase = selectedKey.steps[step.phaseIndex];
-          const action = phase?.actions[step.actionIndex];
-          const daysRemaining = getDaysRemaining(step.deadline!);
-          
-          if (daysRemaining === 0) {
-            toast.warning(`Échéance aujourd'hui: ${action?.substring(0, 50)}...`, {
-              duration: 10000,
-            });
-          } else if (daysRemaining <= 3) {
-            toast.info(`Échéance dans ${daysRemaining} jour(s): ${action?.substring(0, 40)}...`, {
-              duration: 8000,
-            });
-          }
-        });
-      }
+      upcomingDeadlines.forEach(step => {
+        const phase = selectedKey.steps[step.phaseIndex];
+        const action = phase?.actions[step.actionIndex];
+        const daysRemaining = getDaysRemaining(step.deadline!);
+        
+        if (daysRemaining === 0) {
+          toast.warning(`Échéance aujourd'hui: ${action?.substring(0, 50)}...`, {
+            duration: 10000,
+          });
+        } else if (daysRemaining <= 3) {
+          toast.info(`Échéance dans ${daysRemaining} jour(s): ${action?.substring(0, 40)}...`, {
+            duration: 8000,
+          });
+        }
+      });
     }
-  }, [progress]);
-
-  const selectedKey = selectedKeyId 
-    ? EXIT_KEYS.find(k => k.id === selectedKeyId) 
-    : null;
+  }, [progress, selectedKey]);
 
   // Calculate overall progress
-  const calculateOverallProgress = (): number => {
+  const overallProgress = useMemo(() => {
     if (!progress || !selectedKey) return 0;
-    
     const totalActions = selectedKey.steps.reduce((acc, step) => acc + step.actions.length, 0);
     const completedActions = progress.stepsProgress.filter(s => s.completed).length;
-    
     return totalActions > 0 ? Math.round((completedActions / totalActions) * 100) : 0;
-  };
+  }, [progress, selectedKey]);
 
   // Get phase progress
   const getPhaseProgress = (phaseIndex: number): { completed: number; total: number } => {
     if (!progress || !selectedKey) return { completed: 0, total: 0 };
-    
     const phase = selectedKey.steps[phaseIndex];
     if (!phase) return { completed: 0, total: 0 };
-    
     const phaseActions = progress.stepsProgress.filter(s => s.phaseIndex === phaseIndex);
     const completed = phaseActions.filter(s => s.completed).length;
-    
     return { completed, total: phase.actions.length };
   };
 
-  // Check if action is completed
-  const isActionCompleted = (phaseIndex: number, actionIndex: number): boolean => {
-    if (!progress) return false;
-    return progress.stepsProgress.some(
-      s => s.phaseIndex === phaseIndex && s.actionIndex === actionIndex && s.completed
-    );
+  // Get suggested deadline for a phase
+  const getSuggestedDeadline = (phaseIndex: number): string => {
+    if (!selectedKey || !progress) return formatDate(new Date());
+    let totalDays = 0;
+    for (let i = 0; i <= phaseIndex; i++) {
+      totalDays += parseDuration(selectedKey.steps[i].duration);
+    }
+    const startDate = new Date(progress.startedAt);
+    const suggestedDate = new Date(startDate.getTime() + totalDays * 24 * 60 * 60 * 1000);
+    return formatDate(suggestedDate);
   };
 
-  // Get action step data
-  const getActionStep = (phaseIndex: number, actionIndex: number): StepProgress | undefined => {
-    if (!progress) return undefined;
-    return progress.stepsProgress.find(
-      s => s.phaseIndex === phaseIndex && s.actionIndex === actionIndex
-    );
+  // Handle starting a new plan
+  const handleStartPlan = async (keyId: string) => {
+    await startPlan(keyId);
+    toast.success(`Plan démarré !`);
   };
 
-  // Get phase note
-  const getPhaseNote = (phaseIndex: number): string => {
-    if (!progress) return '';
-    const note = progress.phaseNotes.find(n => n.phaseIndex === phaseIndex);
-    return note?.note || '';
+  // Handle reset
+  const handleResetProgress = async () => {
+    await resetProgress();
+    toast.success('Progression réinitialisée');
   };
 
-  // Save progress to localStorage
-  const saveProgress = useCallback((newProgress: PlanProgress) => {
-    localStorage.setItem(DASHBOARD_STORAGE_KEY, JSON.stringify(newProgress));
-  }, []);
-
-  // Toggle action completion
-  const toggleAction = (phaseIndex: number, actionIndex: number) => {
-    if (!selectedKey) return;
-
-    setProgress(prev => {
-      const now = new Date().toISOString();
-      
-      if (!prev) {
-        const newProgress: PlanProgress = {
-          exitKeyId: selectedKey.id,
-          startedAt: now,
-          stepsProgress: [{
-            phaseIndex,
-            actionIndex,
-            completed: true,
-            completedAt: now
-          }],
-          phaseNotes: []
-        };
-        saveProgress(newProgress);
-        return newProgress;
-      }
-
-      const existingIndex = prev.stepsProgress.findIndex(
-        s => s.phaseIndex === phaseIndex && s.actionIndex === actionIndex
-      );
-
-      let newStepsProgress: StepProgress[];
-      
-      if (existingIndex >= 0) {
-        newStepsProgress = prev.stepsProgress.map((s, i) => 
-          i === existingIndex 
-            ? { ...s, completed: !s.completed, completedAt: !s.completed ? now : undefined }
-            : s
-        );
-      } else {
-        newStepsProgress = [...prev.stepsProgress, {
-          phaseIndex,
-          actionIndex,
-          completed: true,
-          completedAt: now
-        }];
-      }
-
-      const newProgress: PlanProgress = {
-        ...prev,
-        stepsProgress: newStepsProgress
-      };
-      
-      saveProgress(newProgress);
-      return newProgress;
-    });
-
+  // Handle toggle action
+  const handleToggleAction = async (phaseIndex: number, actionIndex: number) => {
+    await toggleAction(phaseIndex, actionIndex);
     toast.success('Progression mise à jour');
   };
 
-  // Set deadline for an action
-  const setDeadline = (phaseIndex: number, actionIndex: number, deadline: string) => {
-    if (!selectedKey || !progress) return;
-
-    setProgress(prev => {
-      if (!prev) return prev;
-
-      const existingIndex = prev.stepsProgress.findIndex(
-        s => s.phaseIndex === phaseIndex && s.actionIndex === actionIndex
-      );
-
-      let newStepsProgress: StepProgress[];
-      
-      if (existingIndex >= 0) {
-        newStepsProgress = prev.stepsProgress.map((s, i) => 
-          i === existingIndex 
-            ? { ...s, deadline, reminderEnabled: true }
-            : s
-        );
-      } else {
-        newStepsProgress = [...prev.stepsProgress, {
-          phaseIndex,
-          actionIndex,
-          completed: false,
-          deadline,
-          reminderEnabled: true
-        }];
-      }
-
-      const newProgress: PlanProgress = {
-        ...prev,
-        stepsProgress: newStepsProgress
-      };
-      
-      saveProgress(newProgress);
-      return newProgress;
-    });
-
+  // Handle set deadline
+  const handleSetDeadline = async (phaseIndex: number, actionIndex: number, deadline: string) => {
+    await setDeadline(phaseIndex, actionIndex, deadline);
     toast.success('Échéance définie');
   };
 
-  // Toggle reminder for an action
-  const toggleReminder = (phaseIndex: number, actionIndex: number) => {
-    if (!progress) return;
-
-    setProgress(prev => {
-      if (!prev) return prev;
-
-      const existingIndex = prev.stepsProgress.findIndex(
-        s => s.phaseIndex === phaseIndex && s.actionIndex === actionIndex
-      );
-
-      if (existingIndex < 0) return prev;
-
-      const newStepsProgress = prev.stepsProgress.map((s, i) => 
-        i === existingIndex 
-          ? { ...s, reminderEnabled: !s.reminderEnabled }
-          : s
-      );
-
-      const newProgress: PlanProgress = {
-        ...prev,
-        stepsProgress: newStepsProgress
-      };
-      
-      saveProgress(newProgress);
-      return newProgress;
-    });
-
+  // Handle toggle reminder
+  const handleToggleReminder = async (phaseIndex: number, actionIndex: number) => {
+    await toggleReminder(phaseIndex, actionIndex);
     toast.success('Rappel mis à jour');
   };
 
-  // Save phase note
-  const savePhaseNote = (phaseIndex: number) => {
-    if (!progress) return;
-
-    setProgress(prev => {
-      if (!prev) return prev;
-
-      const existingIndex = prev.phaseNotes.findIndex(n => n.phaseIndex === phaseIndex);
-      let newPhaseNotes: PhaseNote[];
-
-      if (existingIndex >= 0) {
-        newPhaseNotes = prev.phaseNotes.map((n, i) => 
-          i === existingIndex 
-            ? { ...n, note: noteText, updatedAt: new Date().toISOString() }
-            : n
-        );
-      } else {
-        newPhaseNotes = [...prev.phaseNotes, {
-          phaseIndex,
-          note: noteText,
-          updatedAt: new Date().toISOString()
-        }];
-      }
-
-      const newProgress: PlanProgress = {
-        ...prev,
-        phaseNotes: newPhaseNotes
-      };
-      
-      saveProgress(newProgress);
-      return newProgress;
-    });
-
+  // Handle save phase note
+  const handleSavePhaseNote = async (phaseIndex: number) => {
+    await savePhaseNote(phaseIndex, noteText);
     setEditingNote(null);
     setNoteText('');
     toast.success('Note sauvegardée');
@@ -383,48 +200,6 @@ export default function Dashboard() {
     setEditingNote(phaseIndex);
   };
 
-  // Get suggested deadline for a phase
-  const getSuggestedDeadline = (phaseIndex: number): string => {
-    if (!selectedKey || !progress) return formatDate(new Date());
-
-    // Calculate cumulative duration from start
-    let totalDays = 0;
-    for (let i = 0; i <= phaseIndex; i++) {
-      totalDays += parseDuration(selectedKey.steps[i].duration);
-    }
-
-    const startDate = new Date(progress.startedAt);
-    const suggestedDate = new Date(startDate.getTime() + totalDays * 24 * 60 * 60 * 1000);
-    return formatDate(suggestedDate);
-  };
-
-  // Start a new plan
-  const startPlan = (keyId: string) => {
-    const key = EXIT_KEYS.find(k => k.id === keyId);
-    if (!key) return;
-
-    const newProgress: PlanProgress = {
-      exitKeyId: keyId,
-      startedAt: new Date().toISOString(),
-      stepsProgress: [],
-      phaseNotes: []
-    };
-
-    setProgress(newProgress);
-    setSelectedKeyId(keyId);
-    saveProgress(newProgress);
-    toast.success(`Plan "${key.name}" démarré !`);
-  };
-
-  // Reset progress
-  const resetProgress = () => {
-    setProgress(null);
-    setSelectedKeyId(null);
-    localStorage.removeItem(DASHBOARD_STORAGE_KEY);
-    toast.success('Progression réinitialisée');
-  };
-
-  const overallProgress = calculateOverallProgress();
   const motorProfile = profile?.motorProfile ? LIFE_MOTOR_PROFILES[profile.motorProfile] : null;
 
   if (loading || profileLoading) {
@@ -439,14 +214,57 @@ export default function Dashboard() {
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8 pt-24">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2">
-            Mon Tableau de Bord
-          </h1>
-          <p className="text-muted-foreground">
-            Suivez votre progression vers votre nouvelle vie
-          </p>
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h1 className="text-3xl font-bold text-foreground mb-2">
+              Mon Tableau de Bord
+            </h1>
+            <p className="text-muted-foreground">
+              Suivez votre progression vers votre nouvelle vie
+            </p>
+          </div>
+          
+          {/* Sync Status */}
+          <div className="flex items-center gap-2">
+            {syncing && (
+              <Badge variant="secondary" className="gap-1">
+                <Loader2 className="w-3 h-3 animate-spin" />
+                Synchronisation...
+              </Badge>
+            )}
+            {isLoggedIn ? (
+              <Badge variant="outline" className="gap-1 text-green-600 border-green-600/30">
+                <Cloud className="w-3 h-3" />
+                Synchronisé
+              </Badge>
+            ) : (
+              <Badge variant="outline" className="gap-1 text-muted-foreground">
+                <CloudOff className="w-3 h-3" />
+                Local uniquement
+              </Badge>
+            )}
+          </div>
         </div>
+
+        {/* Login prompt for guests */}
+        {!isLoggedIn && (
+          <Card className="mb-6 border-primary/20 bg-primary/5">
+            <CardContent className="p-4">
+              <div className="flex items-center gap-4">
+                <Cloud className="w-6 h-6 text-primary" />
+                <div className="flex-1">
+                  <p className="text-sm font-medium">Connectez-vous pour synchroniser</p>
+                  <p className="text-xs text-muted-foreground">
+                    Vos données sont sauvegardées localement. Connectez-vous pour les synchroniser dans le cloud.
+                  </p>
+                </div>
+                <Link to="/auth">
+                  <Button size="sm">Se connecter</Button>
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+        )}
 
         {/* Profile Summary */}
         {profile && motorProfile && (
@@ -501,7 +319,7 @@ export default function Dashboard() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <Select onValueChange={startPlan}>
+              <Select onValueChange={handleStartPlan}>
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Sélectionner une clé de sortie..." />
                 </SelectTrigger>
@@ -519,7 +337,7 @@ export default function Dashboard() {
               </Select>
             </CardContent>
           </Card>
-        ) : selectedKey && (
+        ) : selectedKey && progress && (
           <>
             {/* Current Plan Header */}
             <Card className="mb-6 border-primary/30">
@@ -538,21 +356,19 @@ export default function Dashboard() {
                         <Badge variant={
                           selectedKey.difficulty === 'easy' ? 'default' :
                           selectedKey.difficulty === 'moderate' ? 'secondary' :
-                          selectedKey.difficulty === 'hard' ? 'destructive' : 'destructive'
+                          'destructive'
                         }>
                           {selectedKey.difficulty}
                         </Badge>
-                        {progress && (
-                          <Badge variant="outline">
-                            <Calendar className="w-3 h-3 mr-1" />
-                            Démarré le {formatDisplayDate(progress.startedAt)}
-                          </Badge>
-                        )}
+                        <Badge variant="outline">
+                          <Calendar className="w-3 h-3 mr-1" />
+                          Démarré le {formatDisplayDate(progress.startedAt)}
+                        </Badge>
                       </div>
                     </div>
                   </div>
                   <div className="flex gap-2">
-                    <Select value={selectedKeyId} onValueChange={startPlan}>
+                    <Select value={selectedKeyId} onValueChange={handleStartPlan}>
                       <SelectTrigger className="w-48">
                         <SelectValue />
                       </SelectTrigger>
@@ -564,7 +380,7 @@ export default function Dashboard() {
                         ))}
                       </SelectContent>
                     </Select>
-                    <Button variant="outline" size="sm" onClick={resetProgress}>
+                    <Button variant="outline" size="sm" onClick={handleResetProgress}>
                       Réinitialiser
                     </Button>
                   </div>
@@ -606,320 +422,316 @@ export default function Dashboard() {
 
               {/* Stats Tab */}
               <TabsContent value="stats">
-                {progress && (
-                  <ProgressStats progress={progress} exitKey={selectedKey} />
-                )}
+                <ProgressStats progress={progress} exitKey={selectedKey} />
               </TabsContent>
 
               {/* Calendar Tab */}
               <TabsContent value="calendar">
-                {progress && (
-                  <DeadlineCalendar progress={progress} exitKey={selectedKey} />
-                )}
+                <DeadlineCalendar progress={progress} exitKey={selectedKey} />
               </TabsContent>
 
               {/* Plan Tab */}
               <TabsContent value="plan">
                 {/* Phases */}
                 <div className="space-y-6">
-              {selectedKey.steps.map((phase, phaseIndex) => {
-                const phaseProgress = getPhaseProgress(phaseIndex);
-                const phaseComplete = phaseProgress.completed === phaseProgress.total && phaseProgress.total > 0;
-                const phasePercent = phaseProgress.total > 0 
-                  ? Math.round((phaseProgress.completed / phaseProgress.total) * 100) 
-                  : 0;
-                const phaseNote = getPhaseNote(phaseIndex);
-                const suggestedDeadline = getSuggestedDeadline(phaseIndex);
+                  {selectedKey.steps.map((phase, phaseIndex) => {
+                    const phaseProgress = getPhaseProgress(phaseIndex);
+                    const phaseComplete = phaseProgress.completed === phaseProgress.total && phaseProgress.total > 0;
+                    const phasePercent = phaseProgress.total > 0 
+                      ? Math.round((phaseProgress.completed / phaseProgress.total) * 100) 
+                      : 0;
+                    const currentPhaseNote = getPhaseNote(phaseIndex);
+                    const suggestedDeadline = getSuggestedDeadline(phaseIndex);
 
-                return (
-                  <Card 
-                    key={phaseIndex} 
-                    className={`transition-all ${phaseComplete ? 'border-green-500/30 bg-green-500/5' : ''}`}
-                  >
-                    <CardHeader>
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          {phaseComplete ? (
-                            <CheckCircle2 className="w-6 h-6 text-green-500" />
-                          ) : (
-                            <Circle className="w-6 h-6 text-muted-foreground" />
-                          )}
-                          <div>
-                            <CardTitle className="text-lg">
-                              Phase {phase.phase}: {phase.name}
-                            </CardTitle>
-                            <CardDescription className="flex items-center gap-4 mt-1">
-                              <span className="flex items-center gap-1">
-                                <Clock className="w-4 h-4" />
-                                Durée: {phase.duration}
-                              </span>
-                              <span className="flex items-center gap-1 text-primary">
-                                <Target className="w-4 h-4" />
-                                Échéance suggérée: {formatDisplayDate(suggestedDeadline)}
-                              </span>
-                            </CardDescription>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <div className="text-2xl font-bold text-primary">{phasePercent}%</div>
-                          <div className="text-xs text-muted-foreground">
-                            {phaseProgress.completed}/{phaseProgress.total} actions
-                          </div>
-                        </div>
-                      </div>
-                      <Progress value={phasePercent} className="h-2 mt-3" />
-                    </CardHeader>
-                    <CardContent>
-                      {/* Milestone */}
-                      <div className="bg-primary/10 rounded-lg p-3 mb-4">
-                        <div className="flex items-center gap-2 text-sm font-medium text-primary">
-                          <Target className="w-4 h-4" />
-                          Objectif: {phase.milestone}
-                        </div>
-                      </div>
-
-                      {/* Critical Rule */}
-                      {phase.criticalRule && (
-                        <div className="bg-amber-500/10 rounded-lg p-3 mb-4 border border-amber-500/20">
-                          <div className="flex items-center gap-2 text-sm text-amber-600 dark:text-amber-400">
-                            <AlertTriangle className="w-4 h-4" />
-                            <span className="font-medium">Règle critique:</span> {phase.criticalRule}
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Phase Notes */}
-                      <Collapsible 
-                        open={openPhases[phaseIndex] || editingNote === phaseIndex}
-                        onOpenChange={(open) => setOpenPhases(prev => ({ ...prev, [phaseIndex]: open }))}
-                        className="mb-4"
+                    return (
+                      <Card 
+                        key={phaseIndex} 
+                        className={`transition-all ${phaseComplete ? 'border-green-500/30 bg-green-500/5' : ''}`}
                       >
-                        <div className="flex items-center justify-between">
-                          <CollapsibleTrigger asChild>
-                            <Button variant="ghost" size="sm" className="gap-2">
-                              <MessageSquare className="w-4 h-4" />
-                              Notes personnelles
-                              {phaseNote && <Badge variant="secondary" className="ml-1">1</Badge>}
-                              <ChevronDown className="w-4 h-4" />
-                            </Button>
-                          </CollapsibleTrigger>
-                          {!editingNote && (
-                            <Button 
-                              variant="outline" 
-                              size="sm" 
-                              onClick={() => startEditingNote(phaseIndex)}
-                            >
-                              {phaseNote ? 'Modifier' : 'Ajouter une note'}
-                            </Button>
+                        <CardHeader>
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-3">
+                              {phaseComplete ? (
+                                <CheckCircle2 className="w-6 h-6 text-green-500" />
+                              ) : (
+                                <Circle className="w-6 h-6 text-muted-foreground" />
+                              )}
+                              <div>
+                                <CardTitle className="text-lg">
+                                  Phase {phase.phase}: {phase.name}
+                                </CardTitle>
+                                <CardDescription className="flex items-center gap-4 mt-1">
+                                  <span className="flex items-center gap-1">
+                                    <Clock className="w-4 h-4" />
+                                    Durée: {phase.duration}
+                                  </span>
+                                  <span className="flex items-center gap-1 text-primary">
+                                    <Target className="w-4 h-4" />
+                                    Échéance suggérée: {formatDisplayDate(suggestedDeadline)}
+                                  </span>
+                                </CardDescription>
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <div className="text-2xl font-bold text-primary">{phasePercent}%</div>
+                              <div className="text-xs text-muted-foreground">
+                                {phaseProgress.completed}/{phaseProgress.total} actions
+                              </div>
+                            </div>
+                          </div>
+                          <Progress value={phasePercent} className="h-2 mt-3" />
+                        </CardHeader>
+                        <CardContent>
+                          {/* Milestone */}
+                          <div className="bg-primary/10 rounded-lg p-3 mb-4">
+                            <div className="flex items-center gap-2 text-sm font-medium text-primary">
+                              <Target className="w-4 h-4" />
+                              Objectif: {phase.milestone}
+                            </div>
+                          </div>
+
+                          {/* Critical Rule */}
+                          {phase.criticalRule && (
+                            <div className="bg-amber-500/10 rounded-lg p-3 mb-4 border border-amber-500/20">
+                              <div className="flex items-center gap-2 text-sm text-amber-600 dark:text-amber-400">
+                                <AlertTriangle className="w-4 h-4" />
+                                <span className="font-medium">Règle critique:</span> {phase.criticalRule}
+                              </div>
+                            </div>
                           )}
-                        </div>
-                        <CollapsibleContent className="mt-3">
-                          {editingNote === phaseIndex ? (
-                            <div className="space-y-3">
-                              <Textarea
-                                placeholder="Écrivez vos notes, observations, idées pour cette phase..."
-                                value={noteText}
-                                onChange={(e) => setNoteText(e.target.value)}
-                                rows={4}
-                                className="resize-none"
-                              />
-                              <div className="flex gap-2">
-                                <Button size="sm" onClick={() => savePhaseNote(phaseIndex)}>
-                                  <Save className="w-4 h-4 mr-1" />
-                                  Sauvegarder
+
+                          {/* Phase Notes */}
+                          <Collapsible 
+                            open={openPhases[phaseIndex] || editingNote === phaseIndex}
+                            onOpenChange={(open) => setOpenPhases(prev => ({ ...prev, [phaseIndex]: open }))}
+                            className="mb-4"
+                          >
+                            <div className="flex items-center justify-between">
+                              <CollapsibleTrigger asChild>
+                                <Button variant="ghost" size="sm" className="gap-2">
+                                  <MessageSquare className="w-4 h-4" />
+                                  Notes personnelles
+                                  {currentPhaseNote && <Badge variant="secondary" className="ml-1">1</Badge>}
+                                  <ChevronDown className="w-4 h-4" />
                                 </Button>
+                              </CollapsibleTrigger>
+                              {editingNote !== phaseIndex && (
                                 <Button 
+                                  variant="outline" 
                                   size="sm" 
-                                  variant="ghost"
-                                  onClick={() => {
-                                    setEditingNote(null);
-                                    setNoteText('');
-                                  }}
+                                  onClick={() => startEditingNote(phaseIndex)}
                                 >
-                                  <X className="w-4 h-4 mr-1" />
-                                  Annuler
+                                  {currentPhaseNote ? 'Modifier' : 'Ajouter une note'}
                                 </Button>
-                              </div>
+                              )}
                             </div>
-                          ) : phaseNote ? (
-                            <div className="bg-muted/50 rounded-lg p-4">
-                              <p className="text-sm whitespace-pre-wrap">{phaseNote}</p>
-                              <p className="text-xs text-muted-foreground mt-2">
-                                Dernière modification: {formatDisplayDate(
-                                  progress?.phaseNotes.find(n => n.phaseIndex === phaseIndex)?.updatedAt || ''
-                                )}
-                              </p>
-                            </div>
-                          ) : (
-                            <p className="text-sm text-muted-foreground italic">
-                              Aucune note pour cette phase. Cliquez sur "Ajouter une note" pour commencer.
-                            </p>
-                          )}
-                        </CollapsibleContent>
-                      </Collapsible>
-
-                      {/* Actions */}
-                      <div className="space-y-3">
-                        {phase.actions.map((action, actionIndex) => {
-                          const completed = isActionCompleted(phaseIndex, actionIndex);
-                          const stepData = getActionStep(phaseIndex, actionIndex);
-                          const daysRemaining = stepData?.deadline ? getDaysRemaining(stepData.deadline) : null;
-                          
-                          return (
-                            <div 
-                              key={actionIndex}
-                              className={`p-3 rounded-lg border transition-all ${
-                                completed ? 'bg-green-500/5 border-green-500/20' : 'border-border'
-                              }`}
-                            >
-                              <div 
-                                className="flex items-start gap-3 cursor-pointer hover:bg-muted/30 rounded -m-1 p-1"
-                                onClick={() => toggleAction(phaseIndex, actionIndex)}
-                              >
-                                <Checkbox 
-                                  checked={completed}
-                                  className="mt-0.5"
-                                />
-                                <span className={`flex-1 text-sm ${completed ? 'line-through text-muted-foreground' : ''}`}>
-                                  {action}
-                                </span>
-                                {completed && (
-                                  <CheckCircle2 className="w-4 h-4 text-green-500" />
-                                )}
-                              </div>
-                              
-                              {/* Deadline & Reminder */}
-                              <div className="flex items-center gap-3 mt-2 ml-7">
-                                <Dialog>
-                                  <DialogTrigger asChild>
-                                    <Button variant="ghost" size="sm" className="h-7 text-xs gap-1">
-                                      <Calendar className="w-3 h-3" />
-                                      {stepData?.deadline 
-                                        ? formatDisplayDate(stepData.deadline)
-                                        : 'Définir échéance'
-                                      }
+                            <CollapsibleContent className="mt-3">
+                              {editingNote === phaseIndex ? (
+                                <div className="space-y-3">
+                                  <Textarea
+                                    placeholder="Écrivez vos notes, observations, idées pour cette phase..."
+                                    value={noteText}
+                                    onChange={(e) => setNoteText(e.target.value)}
+                                    rows={4}
+                                    className="resize-none"
+                                  />
+                                  <div className="flex gap-2">
+                                    <Button size="sm" onClick={() => handleSavePhaseNote(phaseIndex)}>
+                                      <Save className="w-4 h-4 mr-1" />
+                                      Sauvegarder
                                     </Button>
-                                  </DialogTrigger>
-                                  <DialogContent className="sm:max-w-md">
-                                    <DialogHeader>
-                                      <DialogTitle>Définir l'échéance</DialogTitle>
-                                    </DialogHeader>
-                                    <div className="space-y-4">
-                                      <p className="text-sm text-muted-foreground">{action}</p>
-                                      <div className="space-y-2">
-                                        <label className="text-sm font-medium">Date d'échéance</label>
-                                        <input
-                                          type="date"
-                                          className="w-full px-3 py-2 border rounded-md bg-background"
-                                          defaultValue={stepData?.deadline || suggestedDeadline}
-                                          onChange={(e) => {
-                                            if (e.target.value) {
-                                              setDeadline(phaseIndex, actionIndex, e.target.value);
-                                            }
-                                          }}
-                                        />
-                                        <p className="text-xs text-muted-foreground">
-                                          Échéance suggérée basée sur la durée de la phase: {formatDisplayDate(suggestedDeadline)}
-                                        </p>
-                                      </div>
-                                    </div>
-                                  </DialogContent>
-                                </Dialog>
-
-                                {stepData?.deadline && (
-                                  <>
-                                    <Button
+                                    <Button 
+                                      size="sm" 
                                       variant="ghost"
-                                      size="sm"
-                                      className="h-7 text-xs gap-1"
-                                      onClick={(e) => {
-                                        e.stopPropagation();
-                                        toggleReminder(phaseIndex, actionIndex);
+                                      onClick={() => {
+                                        setEditingNote(null);
+                                        setNoteText('');
                                       }}
                                     >
-                                      {stepData.reminderEnabled ? (
-                                        <>
-                                          <Bell className="w-3 h-3 text-primary" />
-                                          Rappel actif
-                                        </>
-                                      ) : (
-                                        <>
-                                          <BellOff className="w-3 h-3" />
-                                          Rappel désactivé
-                                        </>
-                                      )}
+                                      <X className="w-4 h-4 mr-1" />
+                                      Annuler
                                     </Button>
+                                  </div>
+                                </div>
+                              ) : currentPhaseNote ? (
+                                <div className="bg-muted/50 rounded-lg p-4">
+                                  <p className="text-sm whitespace-pre-wrap">{currentPhaseNote}</p>
+                                  {getPhaseNoteUpdatedAt(phaseIndex) && (
+                                    <p className="text-xs text-muted-foreground mt-2">
+                                      Dernière modification: {formatDisplayDate(getPhaseNoteUpdatedAt(phaseIndex)!)}
+                                    </p>
+                                  )}
+                                </div>
+                              ) : (
+                                <p className="text-sm text-muted-foreground italic">
+                                  Aucune note pour cette phase. Cliquez sur "Ajouter une note" pour commencer.
+                                </p>
+                              )}
+                            </CollapsibleContent>
+                          </Collapsible>
 
-                                    {!completed && daysRemaining !== null && (
-                                      <Badge 
-                                        variant={
-                                          daysRemaining < 0 ? 'destructive' :
-                                          daysRemaining <= 3 ? 'destructive' :
-                                          daysRemaining <= 7 ? 'secondary' : 'outline'
-                                        }
-                                        className="text-xs"
-                                      >
-                                        {daysRemaining < 0 
-                                          ? `En retard de ${Math.abs(daysRemaining)} j`
-                                          : daysRemaining === 0
-                                          ? "Aujourd'hui"
-                                          : `${daysRemaining} j restants`
-                                        }
-                                      </Badge>
+                          {/* Actions */}
+                          <div className="space-y-3">
+                            {phase.actions.map((action, actionIndex) => {
+                              const completed = isActionCompleted(phaseIndex, actionIndex);
+                              const stepData = getActionStep(phaseIndex, actionIndex);
+                              const daysRemaining = stepData?.deadline ? getDaysRemaining(stepData.deadline) : null;
+                              
+                              return (
+                                <div 
+                                  key={actionIndex}
+                                  className={`p-3 rounded-lg border transition-all ${
+                                    completed ? 'bg-green-500/5 border-green-500/20' : 'border-border'
+                                  }`}
+                                >
+                                  <div 
+                                    className="flex items-start gap-3 cursor-pointer hover:bg-muted/30 rounded -m-1 p-1"
+                                    onClick={() => handleToggleAction(phaseIndex, actionIndex)}
+                                  >
+                                    <Checkbox 
+                                      checked={completed}
+                                      className="mt-0.5"
+                                    />
+                                    <span className={`flex-1 text-sm ${completed ? 'line-through text-muted-foreground' : ''}`}>
+                                      {action}
+                                    </span>
+                                    {completed && (
+                                      <CheckCircle2 className="w-4 h-4 text-green-500" />
                                     )}
-                                  </>
-                                )}
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
+                                  </div>
+                                  
+                                  {/* Deadline & Reminder */}
+                                  <div className="flex items-center gap-3 mt-2 ml-7">
+                                    <Dialog>
+                                      <DialogTrigger asChild>
+                                        <Button variant="ghost" size="sm" className="h-7 text-xs gap-1">
+                                          <Calendar className="w-3 h-3" />
+                                          {stepData?.deadline 
+                                            ? formatDisplayDate(stepData.deadline)
+                                            : 'Définir échéance'
+                                          }
+                                        </Button>
+                                      </DialogTrigger>
+                                      <DialogContent className="sm:max-w-md">
+                                        <DialogHeader>
+                                          <DialogTitle>Définir l'échéance</DialogTitle>
+                                        </DialogHeader>
+                                        <div className="space-y-4">
+                                          <p className="text-sm text-muted-foreground">{action}</p>
+                                          <div className="space-y-2">
+                                            <label className="text-sm font-medium">Date d'échéance</label>
+                                            <input
+                                              type="date"
+                                              className="w-full px-3 py-2 border rounded-md bg-background"
+                                              defaultValue={stepData?.deadline || suggestedDeadline}
+                                              onChange={(e) => {
+                                                if (e.target.value) {
+                                                  handleSetDeadline(phaseIndex, actionIndex, e.target.value);
+                                                }
+                                              }}
+                                            />
+                                            <p className="text-xs text-muted-foreground">
+                                              Échéance suggérée: {formatDisplayDate(suggestedDeadline)}
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </DialogContent>
+                                    </Dialog>
+
+                                    {stepData?.deadline && (
+                                      <>
+                                        <Button
+                                          variant="ghost"
+                                          size="sm"
+                                          className="h-7 text-xs gap-1"
+                                          onClick={(e) => {
+                                            e.stopPropagation();
+                                            handleToggleReminder(phaseIndex, actionIndex);
+                                          }}
+                                        >
+                                          {stepData.reminderEnabled ? (
+                                            <>
+                                              <Bell className="w-3 h-3 text-primary" />
+                                              Rappel actif
+                                            </>
+                                          ) : (
+                                            <>
+                                              <BellOff className="w-3 h-3" />
+                                              Rappel désactivé
+                                            </>
+                                          )}
+                                        </Button>
+
+                                        {!completed && daysRemaining !== null && (
+                                          <Badge 
+                                            variant={
+                                              daysRemaining < 0 ? 'destructive' :
+                                              daysRemaining <= 3 ? 'destructive' :
+                                              daysRemaining <= 7 ? 'secondary' : 'outline'
+                                            }
+                                            className="text-xs"
+                                          >
+                                            {daysRemaining < 0 
+                                              ? `En retard de ${Math.abs(daysRemaining)} j`
+                                              : daysRemaining === 0
+                                              ? "Aujourd'hui"
+                                              : `${daysRemaining} j restants`
+                                            }
+                                          </Badge>
+                                        )}
+                                      </>
+                                    )}
+                                  </div>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </CardContent>
+                      </Card>
+                    );
+                  })}
+                </div>
+
+                {/* Risks & Requirements */}
+                <div className="grid md:grid-cols-2 gap-6 mt-8">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="text-lg flex items-center gap-2">
+                        <TrendingUp className="w-5 h-5" />
+                        Prérequis
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-2">
+                        {selectedKey.requirements.map((req, i) => (
+                          <li key={i} className="flex items-start gap-2 text-sm">
+                            <ArrowRight className="w-4 h-4 text-primary mt-0.5" />
+                            {req}
+                          </li>
+                        ))}
+                      </ul>
                     </CardContent>
                   </Card>
-                );
-              })}
-            </div>
 
-            {/* Risks & Requirements */}
-            <div className="grid md:grid-cols-2 gap-6 mt-8">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg flex items-center gap-2">
-                    <TrendingUp className="w-5 h-5" />
-                    Prérequis
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    {selectedKey.requirements.map((req, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm">
-                        <ArrowRight className="w-4 h-4 text-primary mt-0.5" />
-                        {req}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg flex items-center gap-2">
-                    <AlertTriangle className="w-5 h-5 text-amber-500" />
-                    Risques à surveiller
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    {selectedKey.risks.map((risk, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                        <AlertTriangle className="w-4 h-4 text-amber-500 mt-0.5" />
-                        {risk}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="text-lg flex items-center gap-2">
+                        <AlertTriangle className="w-5 h-5 text-amber-500" />
+                        Risques à surveiller
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-2">
+                        {selectedKey.risks.map((risk, i) => (
+                          <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                            <AlertTriangle className="w-4 h-4 text-amber-500 mt-0.5" />
+                            {risk}
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </div>
               </TabsContent>
             </Tabs>
           </>
