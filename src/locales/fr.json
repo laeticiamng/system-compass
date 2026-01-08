@@ -297,7 +297,36 @@
     "exitKeys": "Clés de Sortie",
     "dashboard": "Tableau de Bord",
     "multiCompare": "Multi-Analyse",
-    "systemicMistakes": "Erreurs"
+    "systemicMistakes": "Erreurs",
+    "lifeGame": "Jeu de la Vie",
+    "catalog": "Catalogue"
+  },
+  "vacation": {
+    "title": "Recommandations Vacances par Pouvoir d'Achat",
+    "subtitle": "Destinations où votre salaire vous offre le meilleur rapport qualité/prix",
+    "noProfession": "Renseignez votre métier pour obtenir des recommandations vacances personnalisées basées sur votre pouvoir d'achat",
+    "purchasingPower": "Pouvoir d'achat",
+    "days": "j",
+    "withOneMonth": "avec 1 mois",
+    "safety": "Sécurité",
+    "budget": "Budget",
+    "perDay": "jour",
+    "perDayFull": "par jour",
+    "valueRatio": "Rapport qualité/prix",
+    "aiGuide": "Guide IA",
+    "domestic": "Options domestiques (sans voyager loin)",
+    "access": {
+      "visa_free": "Sans visa",
+      "visa_on_arrival": "Visa à l'arrivée",
+      "easy_visa": "E-visa",
+      "requires_visa": "Visa requis"
+    },
+    "tabs": {
+      "bestValue": "Meilleur prix",
+      "safest": "Sûres",
+      "visaFree": "Sans visa",
+      "hidden": "Pépites"
+    }
   },
   "hero": {
     "badge": "Simulateur d'analyse",
