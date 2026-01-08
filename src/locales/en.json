@@ -166,28 +166,30 @@
     "multiCompare": "Multi-Analysis"
   },
   "hero": {
-    "badge": "Strategic Simulator",
-    "title1": "Analyze your path",
-    "titleHighlight": "before you live it",
+    "badge": "Analysis Simulator",
+    "title1": "Avoid costly mistakes",
+    "titleHighlight": "before committing",
     "title2": "",
-    "subtitle": "Simulate your decisions, analyze systems, understand consequences. From street vendor in Dakar to executive in Paris — test your options here before committing.",
+    "subtitle": "Understand the real rules of the system. Simulate consequences before deciding. From street vendor in Dakar to executive in Paris — analyze your options here.",
     "discoverProfile": "Simulate my trajectory",
-    "exploreCountries": "Analyze systems"
+    "exploreCountries": "Analyze systems",
+    "madeBy": "Created by someone who lost years not understanding the system",
+    "forEveryone": "For everyone, everywhere"
   },
   "howItWorks": {
     "title": "Analyze, simulate, understand",
-    "subtitle": "A strategic analysis tool. No promises, no coaching — just clarity.",
+    "subtitle": "An analysis tool. No promises, no coaching — information to avoid costly mistakes.",
     "understand": {
-      "title": "Analyze the system",
-      "description": "Every country works differently. Understand what the system really rewards before you commit."
+      "title": "Understand the rules",
+      "description": "Every system has its real rules (often hidden). Analyze what is really rewarded or punished."
     },
     "profile": {
-      "title": "Test your options",
-      "description": "Simulate different scenarios based on your values, family, risk tolerance. Compare possible trajectories."
+      "title": "Simulate consequences",
+      "description": "Test different scenarios before committing. Compare trajectories, risks, real costs."
     },
     "playbook": {
-      "title": "Understand the consequences",
-      "description": "Visualize the impact of your potential choices: degree, country, career. Information, not prescription."
+      "title": "Identify mistakes",
+      "description": "Spot common systemic errors: wrong timing, wrong country, wrong structure. Factual information."
     }
   },
   "pyramids": {

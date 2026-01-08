@@ -77,26 +77,34 @@ export default function Index() {
               </Button>
             </div>
 
-            {/* 3 STEP MINI EXPLANATION */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto px-4 mb-8">
+            {/* 3 STEP MINI EXPLANATION - Factual */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto px-4 mb-6">
               <StepIndicator 
                 number={1}
                 icon={<Settings className="w-4 h-4" />}
                 title="Ton profil"
-                description="Situation, nationalité, profession"
+                description="Situation, nationalité, ressources"
               />
               <StepIndicator 
                 number={2}
                 icon={<BarChart3 className="w-4 h-4" />}
-                title="Tes options"
-                description="Pays compatibles, opportunités"
+                title="Analyse"
+                description="Systèmes, contraintes, options"
               />
               <StepIndicator 
                 number={3}
                 icon={<Key className="w-4 h-4" />}
-                title="Tes clés"
-                description="Actions concrètes, conséquences"
+                title="Conséquences"
+                description="Risques, coûts, conditions"
               />
+            </div>
+
+            {/* RESPONSIBILITY STATEMENT - Clear and prominent */}
+            <div className="max-w-xl mx-auto px-4 mb-6">
+              <p className="text-sm text-center text-muted-foreground bg-muted/30 rounded-lg px-4 py-2 border border-border/30">
+                <strong className="text-foreground">Tu restes responsable de tes décisions.</strong>{' '}
+                Cet outil t'aide à comprendre le système — pas à décider à ta place.
+              </p>
             </div>
 
             {/* For everyone badge */}
@@ -222,10 +230,10 @@ export default function Index() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center glass-card rounded-2xl p-8 md:p-12 glow-gold">
             <h2 className="font-display text-2xl md:text-3xl font-bold mb-3 md:mb-4">
-              {t('cta.title', 'Prêt à analyser tes options ?')}
+              Prêt à éviter des erreurs coûteuses ?
             </h2>
             <p className="text-muted-foreground mb-6 md:mb-8 text-sm md:text-base">
-              {t('cta.subtitle', 'Cet outil ne juge pas et ne conseille pas. Il analyse, simule et t\'aide à comprendre les systèmes pour que TU décides en connaissance de cause.')}
+              Cet outil ne promet rien. Il analyse les systèmes et simule les conséquences pour que tu comprennes les règles réelles avant de t'engager.
             </p>
             <Button
               size="lg"
@@ -233,13 +241,13 @@ export default function Index() {
               className="bg-primary text-primary-foreground hover:bg-primary/90 gap-2 w-full sm:w-auto"
             >
               <Route className="w-5 h-5" />
-              Simuler ma trajectoire
+              Analyser ma situation
               <ArrowRight className="w-4 h-4" />
             </Button>
 
             {/* Final disclaimer */}
             <p className="text-xs text-muted-foreground/60 mt-6">
-              {t('common.disclaimer')}
+              Outil d'analyse uniquement. Tu restes responsable de tes décisions.
             </p>
           </div>
         </div>

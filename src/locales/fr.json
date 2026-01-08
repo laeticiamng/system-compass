@@ -166,30 +166,30 @@
     "multiCompare": "Multi-Analyse"
   },
   "hero": {
-    "badge": "Simulateur stratégique",
-    "title1": "Analyse ton chemin",
-    "titleHighlight": "avant de le vivre",
+    "badge": "Simulateur d'analyse",
+    "title1": "Évite les erreurs coûteuses",
+    "titleHighlight": "avant de t'engager",
     "title2": "",
-    "subtitle": "Simule tes décisions, analyse les systèmes, comprends les conséquences. Du vendeur de beignets à Dakar au cadre parisien — teste tes options ici avant de t'engager.",
+    "subtitle": "Comprends les règles réelles du système. Simule les conséquences avant de décider. Du vendeur de beignets à Dakar au cadre parisien — analyse tes options ici.",
     "discoverProfile": "Simuler ma trajectoire",
     "exploreCountries": "Analyser les systèmes",
-    "madeBy": "Créé par quelqu'un qui a perdu énormément de temps dans sa propre vie",
+    "madeBy": "Créé par quelqu'un qui a perdu des années sans comprendre le système",
     "forEveryone": "Pour tout le monde, partout"
   },
   "howItWorks": {
     "title": "Analyse, simule, comprends",
-    "subtitle": "Un outil d'analyse stratégique. Pas de promesses, pas de coaching — juste de la lucidité.",
+    "subtitle": "Un outil d'analyse. Pas de promesses, pas de coaching — de l'information pour éviter des erreurs coûteuses.",
     "understand": {
-      "title": "Analyse le système",
-      "description": "Chaque pays fonctionne différemment. Comprends ce que le système récompense vraiment avant de t'engager."
+      "title": "Comprends les règles",
+      "description": "Chaque système a ses règles réelles (souvent cachées). Analyse ce qui est vraiment récompensé ou sanctionné."
     },
     "profile": {
-      "title": "Teste tes options",
-      "description": "Simule différents scénarios selon tes valeurs, ta famille, ta tolérance au risque. Compare les trajectoires possibles."
+      "title": "Simule les conséquences",
+      "description": "Teste différents scénarios avant de t'engager. Compare les trajectoires, les risques, les coûts réels."
     },
     "playbook": {
-      "title": "Comprends les conséquences",
-      "description": "Visualise l'impact de tes choix potentiels : diplôme, pays, métier. Information, pas prescription."
+      "title": "Identifie les erreurs",
+      "description": "Repère les erreurs systémiques courantes : mauvais timing, mauvais pays, mauvaise structure. Information factuelle."
     }
   },
   "pyramids": {
