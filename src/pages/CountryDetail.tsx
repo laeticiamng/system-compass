@@ -9,7 +9,9 @@ import { PlaybookSection } from '@/components/PlaybookSection';
 import { LGBTQRightsIndicator } from '@/components/LGBTQRightsIndicator';
 import { CountryExitKeys } from '@/components/CountryExitKeys';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Calendar, ExternalLink } from 'lucide-react';
+import { ArrowLeft, Calendar, ExternalLink, FileDown } from 'lucide-react';
+import { exportCountryToPDF } from '@/lib/pdf-export';
+import { toast } from 'sonner';
 
 const PYRAMID_TYPE_LABELS: Record<string, string> = {
   PROBLEM_RENT: 'pyramids.problemRent.label',
@@ -69,18 +71,38 @@ export default function CountryDetail() {
   const displayWhoLoses = countryData?.whoLoses || country.whoLoses;
   const displayPlaybook = countryData?.playbook || country.playbook;
 
+  const handleExportPDF = async () => {
+    try {
+      await exportCountryToPDF({
+        country,
+        translatedData: countryData,
+        t,
+      });
+      toast.success(t('common.pdfExported', 'PDF exporté avec succès'));
+    } catch (error) {
+      toast.error(t('common.pdfError', 'Erreur lors de l\'export PDF'));
+    }
+  };
+
   return (
     <div className="min-h-screen pt-24 pb-16">
       <div className="container mx-auto px-4">
         {/* Back Button */}
-        <Button
-          variant="ghost"
-          onClick={() => navigate('/countries')}
-          className="mb-8 gap-2 text-muted-foreground hover:text-foreground"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          {t('countryDetail.backToCountries')}
-        </Button>
+        <div className="flex items-center justify-between mb-8">
+          <Button
+            variant="ghost"
+            onClick={() => navigate('/countries')}
+            className="gap-2 text-muted-foreground hover:text-foreground"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            {t('countryDetail.backToCountries')}
+          </Button>
+          
+          <Button onClick={handleExportPDF} variant="outline" className="gap-2">
+            <FileDown className="w-4 h-4" />
+            {t('common.exportPDF', 'Export PDF')}
+          </Button>
+        </div>
 
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-start gap-6 mb-12">
