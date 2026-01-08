@@ -1,23 +1,36 @@
 import { useTranslation } from 'react-i18next';
 import { countries } from '@/lib/countries-data';
 import { CountryCard } from '@/components/CountryCard';
-import { PyramidType } from '@/lib/types';
+import { PyramidType, Country } from '@/lib/types';
 import { useState, useMemo } from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { ChevronLeft, ChevronRight, Search, X } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { ChevronLeft, ChevronRight, Search, X, ArrowUpDown } from 'lucide-react';
 
 const ITEMS_PER_PAGE = 12;
+
+type SortOption = 'name-asc' | 'name-desc' | 'risk-asc' | 'risk-desc' | 'cost-asc' | 'cost-desc';
+
+const calculateAverageRisk = (country: Country): number => {
+  const { risks } = country;
+  return (risks.legal + risks.safety + risks.corruption + risks.volatility + risks.bureaucracy) / 5;
+};
+
+const getCostOfLiving = (country: Country): number => {
+  return country.costOfLiving?.monthlyBudgetSingle ?? 0;
+};
 
 export default function Countries() {
   const { t } = useTranslation();
   const [filter, setFilter] = useState<PyramidType | 'all'>('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [sortBy, setSortBy] = useState<SortOption>('name-asc');
   const [currentPage, setCurrentPage] = useState(1);
 
-  const filteredCountries = useMemo(() => {
-    let result = countries;
+  const filteredAndSortedCountries = useMemo(() => {
+    let result = [...countries];
     
     // Filter by pyramid type
     if (filter !== 'all') {
@@ -34,17 +47,37 @@ export default function Countries() {
       );
     }
     
+    // Sort
+    result.sort((a, b) => {
+      switch (sortBy) {
+        case 'name-asc':
+          return a.name.localeCompare(b.name);
+        case 'name-desc':
+          return b.name.localeCompare(a.name);
+        case 'risk-asc':
+          return calculateAverageRisk(a) - calculateAverageRisk(b);
+        case 'risk-desc':
+          return calculateAverageRisk(b) - calculateAverageRisk(a);
+        case 'cost-asc':
+          return getCostOfLiving(a) - getCostOfLiving(b);
+        case 'cost-desc':
+          return getCostOfLiving(b) - getCostOfLiving(a);
+        default:
+          return 0;
+      }
+    });
+    
     return result;
-  }, [filter, searchQuery]);
+  }, [filter, searchQuery, sortBy]);
 
-  const totalPages = Math.ceil(filteredCountries.length / ITEMS_PER_PAGE);
+  const totalPages = Math.ceil(filteredAndSortedCountries.length / ITEMS_PER_PAGE);
   
   const paginatedCountries = useMemo(() => {
     const start = (currentPage - 1) * ITEMS_PER_PAGE;
-    return filteredCountries.slice(start, start + ITEMS_PER_PAGE);
-  }, [filteredCountries, currentPage]);
+    return filteredAndSortedCountries.slice(start, start + ITEMS_PER_PAGE);
+  }, [filteredAndSortedCountries, currentPage]);
 
-  // Reset to page 1 when filter or search changes
+  // Reset to page 1 when filter, search, or sort changes
   const handleFilterChange = (newFilter: PyramidType | 'all') => {
     setFilter(newFilter);
     setCurrentPage(1);
@@ -52,6 +85,11 @@ export default function Countries() {
 
   const handleSearchChange = (value: string) => {
     setSearchQuery(value);
+    setCurrentPage(1);
+  };
+
+  const handleSortChange = (value: SortOption) => {
+    setSortBy(value);
     setCurrentPage(1);
   };
 
@@ -119,9 +157,28 @@ export default function Countries() {
           ))}
         </div>
 
-        {/* Results count */}
-        <div className="text-sm text-muted-foreground mb-4">
-          {filteredCountries.length} {t('countries.results', { count: filteredCountries.length })}
+        {/* Sort and Results */}
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+          <div className="text-sm text-muted-foreground">
+            {filteredAndSortedCountries.length} {t('countries.results', { count: filteredAndSortedCountries.length })}
+          </div>
+          
+          <div className="flex items-center gap-2">
+            <ArrowUpDown className="w-4 h-4 text-muted-foreground" />
+            <Select value={sortBy} onValueChange={(v) => handleSortChange(v as SortOption)}>
+              <SelectTrigger className="w-[200px]">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="name-asc">{t('countries.sort.nameAsc', 'Nom (A-Z)')}</SelectItem>
+                <SelectItem value="name-desc">{t('countries.sort.nameDesc', 'Nom (Z-A)')}</SelectItem>
+                <SelectItem value="risk-asc">{t('countries.sort.riskAsc', 'Risque (↑)')}</SelectItem>
+                <SelectItem value="risk-desc">{t('countries.sort.riskDesc', 'Risque (↓)')}</SelectItem>
+                <SelectItem value="cost-asc">{t('countries.sort.costAsc', 'Coût de vie (↑)')}</SelectItem>
+                <SelectItem value="cost-desc">{t('countries.sort.costDesc', 'Coût de vie (↓)')}</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
         </div>
 
         {/* Countries Grid */}
@@ -131,7 +188,7 @@ export default function Countries() {
           ))}
         </div>
 
-        {filteredCountries.length === 0 && (
+        {filteredAndSortedCountries.length === 0 && (
           <div className="text-center py-16 text-muted-foreground">
             {t('countries.noResults')}
           </div>
