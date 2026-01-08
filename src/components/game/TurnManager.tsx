@@ -46,6 +46,8 @@ interface TurnManagerProps {
   onPyramidScoreChange: (playerId: number, pyramidChanges: Partial<Record<PyramidType, number>>) => void;
   onPhaseComplete: (phase: TurnPhase, data?: any) => void;
   onTurnEnd: () => void;
+  onTrackRisk?: (outcome: 'success' | 'failure' | 'catastrophic', moneyChange: number, healthChange: number) => void;
+  onTrackAction?: (success: boolean) => void;
 }
 
 export default function TurnManager({
@@ -55,6 +57,8 @@ export default function TurnManager({
   onPyramidScoreChange,
   onPhaseComplete,
   onTurnEnd,
+  onTrackRisk,
+  onTrackAction,
 }: TurnManagerProps) {
   const { t } = useTranslation();
   const [phase, setPhase] = useState<TurnPhase>('global_event');
@@ -277,15 +281,25 @@ export default function TurnManager({
               setSelectedAction(action);
               setActionResult(success ? 'success' : 'failed');
               
+              // Track the action
+              onTrackAction?.(success);
+              
               // Apply action effects
               const newResources = { ...currentPlayer.resources };
+              let moneyChange = 0;
+              let healthChange = 0;
+              
               Object.entries(action.costs).forEach(([resource, cost]) => {
                 newResources[resource as ResourceType] = Math.max(0, newResources[resource as ResourceType] - cost);
+                if (resource === 'money') moneyChange -= cost;
+                if (resource === 'health') healthChange -= cost;
               });
               
               if (success) {
                 Object.entries(action.gains).forEach(([resource, gain]) => {
                   newResources[resource as ResourceType] = Math.min(10, newResources[resource as ResourceType] + gain);
+                  if (resource === 'money') moneyChange += gain;
+                  if (resource === 'health') healthChange += gain;
                 });
                 if (action.pyramidEffect) {
                   onPyramidScoreChange(currentPlayer.id, action.pyramidEffect);
@@ -293,6 +307,8 @@ export default function TurnManager({
               } else if (action.riskPenalty) {
                 Object.entries(action.riskPenalty).forEach(([resource, penalty]) => {
                   newResources[resource as ResourceType] = Math.max(0, newResources[resource as ResourceType] - penalty);
+                  if (resource === 'money') moneyChange -= penalty;
+                  if (resource === 'health') healthChange -= penalty;
                 });
               }
               
@@ -301,13 +317,22 @@ export default function TurnManager({
               onPhaseComplete('action_selection', { action, success });
             }}
             onRiskEvent={(event, outcome, effects) => {
+              // Calculate money and health changes for tracking
+              let moneyChange = 0;
+              let healthChange = 0;
+              
               // Apply risk event effects
               const newResources = { ...currentPlayer.resources };
               Object.entries(effects).forEach(([resource, change]) => {
                 newResources[resource as ResourceType] = Math.max(0, Math.min(10, 
                   newResources[resource as ResourceType] + (change as number)
                 ));
+                if (resource === 'money') moneyChange = change as number;
+                if (resource === 'health') healthChange = change as number;
               });
+              
+              // Track the risk outcome
+              onTrackRisk?.(outcome, moneyChange, healthChange);
               
               onResourceChange(currentPlayer.id, newResources);
               setActionResult(outcome === 'success' ? 'success' : 'failed');

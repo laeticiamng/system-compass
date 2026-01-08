@@ -54,6 +54,32 @@ export interface CountryQualityOfLife {
   internetSpeed: number; // Mbps average
 }
 
+// Natural disaster and climate risks
+export interface CountryNaturalRisks {
+  seismicRisk: 'none' | 'low' | 'moderate' | 'high' | 'very_high'; // Earthquake risk
+  tsunamiRisk: 'none' | 'low' | 'moderate' | 'high';
+  floodRisk: 'low' | 'moderate' | 'high';
+  droughtRisk: 'low' | 'moderate' | 'high';
+  cycloneRisk: 'none' | 'low' | 'moderate' | 'high';
+  volcanoRisk: 'none' | 'low' | 'moderate' | 'high';
+  extremeHeat: 'rare' | 'occasional' | 'frequent' | 'severe';
+  extremeCold: 'rare' | 'occasional' | 'frequent' | 'severe';
+  climateNotes?: string;
+}
+
+// Healthcare system quality
+export interface CountryHealthcare {
+  systemType: 'universal' | 'mixed' | 'private' | 'limited';
+  qualityScore: number; // 1-100
+  accessScore: number; // 1-100, how easy to access for non-citizens
+  emergencyResponse: 'excellent' | 'good' | 'adequate' | 'poor';
+  specialistAccess: 'excellent' | 'good' | 'limited' | 'poor';
+  chronicCareQuality: 'excellent' | 'good' | 'adequate' | 'poor';
+  costForExpats: 'free' | 'low' | 'moderate' | 'high' | 'very_high';
+  insuranceRequired: boolean;
+  notes?: string;
+}
+
 export interface Country {
   id: string;
   name: string;
@@ -77,6 +103,8 @@ export interface Country {
   visa: CountryVisaInfo;
   costOfLiving: CountryCostOfLiving;
   qualityOfLife: CountryQualityOfLife;
+  naturalRisks?: CountryNaturalRisks;
+  healthcare?: CountryHealthcare;
   lgbtqRights: LGBTQRights;
   lastUpdated: string;
   sources: string[];

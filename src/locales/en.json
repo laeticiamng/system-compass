@@ -2940,5 +2940,131 @@
         "description": "Every day was a fight. But you're still here."
       }
     }
+  },
+  "tutorial": {
+    "stepOf": "Step {{current}} of {{total}}",
+    "skip": "Skip tutorial",
+    "examples": "Real examples",
+    "realityCheck": "Reality check",
+    "startGame": "Start playing",
+    "steps": {
+      "welcome": {
+        "title": "Welcome to the Game of Life",
+        "content": "This game simulates the realities that millions of people experience around the world. This is not fiction — it's a mirror of the real world, with its opportunities and dangers.",
+        "reality": "Every mechanic in this game reflects a lived reality. Our goal is prevention and understanding, not fear."
+      },
+      "lifeAssignment": {
+        "title": "You don't choose your starting life",
+        "content": "Like in real life, you don't choose where you're born, your starting economic situation, or your initial constraints. The game assigns you a random life — some easier, some very difficult.",
+        "reality": "Being born in a stable country with a good passport is a privilege. Others must fight for rights that many take for granted.",
+        "examples": [
+          "A Swiss born in Geneva vs a Nigerian born in Lagos — same ambitions, very different opportunities",
+          "A woman born in Saudi Arabia vs one born in Canada — fundamentally different freedoms",
+          "A child born into a wealthy family vs a poor one — same country, different trajectories"
+        ]
+      },
+      "resources": {
+        "title": "Your life resources",
+        "content": "You manage 6 essential resources: Health, Money, Network, Security, Education and Morale. Every decision affects them. If some drop to zero, consequences can be severe.",
+        "reality": "In real life, losing your health or network can mean the end of all opportunities. Money alone doesn't protect from everything.",
+        "examples": [
+          "Health: a chronic illness changes the entire expatriation calculation",
+          "Network: without contacts, even skills aren't enough",
+          "Security: a weak passport drastically limits options"
+        ]
+      },
+      "pyramids": {
+        "title": "Every country has its system",
+        "content": "The 6 pyramid types represent how each country actually works. Some reward competence, others connections, others resource extraction.",
+        "reality": "Understanding a country's system is crucial. What works in Germany can be fatal in Cameroon, and vice versa."
+      },
+      "events": {
+        "title": "Life sends you events",
+        "content": "Each turn, global and local events affect your resources. Economic crises, opportunities, natural disasters, political changes — you must adapt.",
+        "reality": "Nobody controls everything. Migrants who planned everything can see their plans destroyed by a policy change overnight.",
+        "examples": [
+          "A global economic crisis can wipe out years of savings",
+          "A new government can close borders or change visa rules"
+        ]
+      },
+      "actions": {
+        "title": "Your choices define your trajectory",
+        "content": "Each turn, you can work, study, network, save, or take risks. Major actions have more impact but carry more risk.",
+        "reality": "Every choice has an opportunity cost. Studying means less immediate money. Working hard without a network may lead nowhere."
+      },
+      "shortcuts": {
+        "title": "Dangerous shortcuts",
+        "content": "The game offers 'shortcuts' — illegal crossing, undocumented work, fake documents. These options exist because they exist in real life. Consequences can be catastrophic.",
+        "reality": "Every year, thousands of people die attempting these shortcuts. In Libya, human trafficking is a reality. This game doesn't glorify these choices — it shows their real consequences.",
+        "examples": [
+          "Mediterranean crossing: real risk of death, interception, or slavery",
+          "Fake documents: imprisonment, deportation, permanent ban",
+          "Undocumented work: exploitation, no protection, total vulnerability"
+        ]
+      },
+      "aspirations": {
+        "title": "Your personal goals",
+        "content": "Your character has aspirations — becoming wealthy, living safely, reuniting with family, or simply surviving. Success is measured against YOUR goals, not a universal standard.",
+        "reality": "'Success' is relative. A refugee who rebuilds their life has accomplished as much as an entrepreneur who becomes a millionaire."
+      },
+      "endgame": {
+        "title": "Life summary",
+        "content": "At the end, the game evaluates whether you achieved your aspirations, preserved your health, and navigated the system. There's no 'right' way to play — only choices and their consequences.",
+        "reality": "This game is a tool for understanding. Whether it helps you appreciate your situation or better understand others', that's its real victory."
+      }
+    }
+  },
+  "naturalRisks": {
+    "title": "Natural Risks",
+    "seismic": "Seismic Risk",
+    "tsunami": "Tsunami Risk",
+    "flood": "Flood Risk",
+    "drought": "Drought Risk",
+    "cyclone": "Cyclone Risk",
+    "volcano": "Volcano Risk",
+    "extremeHeat": "Extreme Heat",
+    "extremeCold": "Extreme Cold",
+    "levels": {
+      "none": "None",
+      "low": "Low",
+      "moderate": "Moderate",
+      "high": "High",
+      "very_high": "Very High",
+      "rare": "Rare",
+      "occasional": "Occasional",
+      "frequent": "Frequent",
+      "severe": "Severe"
+    }
+  },
+  "healthcare": {
+    "title": "Healthcare System",
+    "systemType": "System Type",
+    "qualityScore": "Care Quality",
+    "accessScore": "Access for Foreigners",
+    "emergencyResponse": "Emergency Services",
+    "specialistAccess": "Specialist Access",
+    "chronicCare": "Chronic Care",
+    "costForExpats": "Cost for Expats",
+    "insuranceRequired": "Insurance Required",
+    "systemTypes": {
+      "universal": "Universal",
+      "mixed": "Mixed",
+      "private": "Private",
+      "limited": "Limited"
+    },
+    "qualityLevels": {
+      "excellent": "Excellent",
+      "good": "Good",
+      "adequate": "Adequate",
+      "limited": "Limited",
+      "poor": "Poor"
+    },
+    "costLevels": {
+      "free": "Free",
+      "low": "Low",
+      "moderate": "Moderate",
+      "high": "High",
+      "very_high": "Very High"
+    }
   }
 }
