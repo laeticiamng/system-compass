@@ -5,20 +5,37 @@ import { PyramidType } from '@/lib/types';
 import { useState, useMemo } from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { ChevronLeft, ChevronRight, Search, X } from 'lucide-react';
 
 const ITEMS_PER_PAGE = 12;
 
 export default function Countries() {
   const { t } = useTranslation();
   const [filter, setFilter] = useState<PyramidType | 'all'>('all');
+  const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
 
   const filteredCountries = useMemo(() => {
-    return filter === 'all' 
-      ? countries 
-      : countries.filter(c => c.pyramidType === filter);
-  }, [filter]);
+    let result = countries;
+    
+    // Filter by pyramid type
+    if (filter !== 'all') {
+      result = result.filter(c => c.pyramidType === filter);
+    }
+    
+    // Filter by search query
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase().trim();
+      result = result.filter(c => 
+        c.name.toLowerCase().includes(query) ||
+        c.nameLocal?.toLowerCase().includes(query) ||
+        c.region.toLowerCase().includes(query)
+      );
+    }
+    
+    return result;
+  }, [filter, searchQuery]);
 
   const totalPages = Math.ceil(filteredCountries.length / ITEMS_PER_PAGE);
   
@@ -27,9 +44,19 @@ export default function Countries() {
     return filteredCountries.slice(start, start + ITEMS_PER_PAGE);
   }, [filteredCountries, currentPage]);
 
-  // Reset to page 1 when filter changes
+  // Reset to page 1 when filter or search changes
   const handleFilterChange = (newFilter: PyramidType | 'all') => {
     setFilter(newFilter);
+    setCurrentPage(1);
+  };
+
+  const handleSearchChange = (value: string) => {
+    setSearchQuery(value);
+    setCurrentPage(1);
+  };
+
+  const clearSearch = () => {
+    setSearchQuery('');
     setCurrentPage(1);
   };
 
@@ -50,6 +77,26 @@ export default function Countries() {
           <p className="text-muted-foreground">
             {t('countries.subtitle')}
           </p>
+        </div>
+
+        {/* Search Bar */}
+        <div className="relative max-w-md mb-6">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+          <Input
+            type="text"
+            placeholder={t('countries.searchPlaceholder', 'Rechercher un pays...')}
+            value={searchQuery}
+            onChange={(e) => handleSearchChange(e.target.value)}
+            className="pl-10 pr-10"
+          />
+          {searchQuery && (
+            <button
+              onClick={clearSearch}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          )}
         </div>
 
         {/* Filters */}
