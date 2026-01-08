@@ -500,7 +500,6 @@ export default function Dashboard() {
                   {EXIT_KEYS.map(key => (
                     <SelectItem key={key.id} value={key.id}>
                       <span className="flex items-center gap-2">
-                        <span>{key.icon}</span>
                         <span>{key.name}</span>
                         <Badge variant="outline" className="ml-2">{key.difficulty}</Badge>
                       </span>
@@ -517,18 +516,18 @@ export default function Dashboard() {
               <CardContent className="p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-4">
-                    <div className="text-4xl">{selectedKey.icon}</div>
+                    <div className="text-4xl">🔑</div>
                     <div>
                       <h2 className="text-xl font-bold">{selectedKey.name}</h2>
-                      <p className="text-sm text-muted-foreground">{selectedKey.description}</p>
+                      <p className="text-sm text-muted-foreground">{selectedKey.unlocks}</p>
                       <div className="flex items-center gap-3 mt-2">
                         <Badge variant="secondary">
                           <Clock className="w-3 h-3 mr-1" />
                           {selectedKey.timeframe}
                         </Badge>
                         <Badge variant={
-                          selectedKey.difficulty === 'easy' ? 'default' :
-                          selectedKey.difficulty === 'moderate' ? 'secondary' :
+                          selectedKey.difficulty === 'accessible' ? 'default' :
+                          selectedKey.difficulty === 'exigeant' ? 'secondary' :
                           'destructive'
                         }>
                           {selectedKey.difficulty}
@@ -548,7 +547,7 @@ export default function Dashboard() {
                       <SelectContent>
                         {EXIT_KEYS.map(key => (
                           <SelectItem key={key.id} value={key.id}>
-                            {key.icon} {key.name}
+                            🔑 {key.name}
                           </SelectItem>
                         ))}
                       </SelectContent>
@@ -890,18 +889,14 @@ export default function Dashboard() {
                     <CardHeader>
                       <CardTitle className="text-lg flex items-center gap-2">
                         <AlertTriangle className="w-5 h-5 text-amber-500" />
-                        Risques à surveiller
+                        Risque principal
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <ul className="space-y-2">
-                        {selectedKey.risks.map((risk, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                            <AlertTriangle className="w-4 h-4 text-amber-500 mt-0.5" />
-                            {risk}
-                          </li>
-                        ))}
-                      </ul>
+                      <p className="text-sm text-muted-foreground flex items-start gap-2">
+                        <AlertTriangle className="w-4 h-4 text-amber-500 mt-0.5 shrink-0" />
+                        {selectedKey.mainRisk}
+                      </p>
                     </CardContent>
                   </Card>
                 </div>
