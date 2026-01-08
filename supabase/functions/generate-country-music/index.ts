@@ -77,6 +77,9 @@ const COUNTRY_MUSIC_STYLES: Record<string, { instruments: string; cultural: stri
   nigeria: { instruments: "Talking drums, shekere, bass", cultural: "Afrobeats, highlife, juju" },
 };
 
+// Placeholder callback URL - Suno requires it but we use polling
+const PLACEHOLDER_CALLBACK = "https://sunoapi.org/webhook-placeholder";
+
 serve(async (req) => {
   // Handle CORS preflight
   if (req.method === "OPTIONS") {
@@ -87,6 +90,7 @@ serve(async (req) => {
     const SUNO_API_KEY = Deno.env.get("SUNO_API_KEY");
     
     if (!SUNO_API_KEY) {
+      console.error("SUNO_API_KEY not configured");
       return new Response(
         JSON.stringify({ error: "Suno API key not configured" }),
         { 
@@ -98,25 +102,23 @@ serve(async (req) => {
 
     const { countryId, pyramidType, mood = 'narrative' }: MusicRequest = await req.json();
 
+    console.log(`Generating music for ${countryId} (${pyramidType}), mood: ${mood}`);
+
     // Build the music prompt
     const pyramidStyle = PYRAMID_MUSIC_STYLES[pyramidType] || PYRAMID_MUSIC_STYLES.HYBRID_TRANSITION;
     const countryStyle = COUNTRY_MUSIC_STYLES[countryId] || { 
       instruments: "World music instruments", 
       cultural: "Global fusion" 
     };
-    
-    const moodContext = mood === 'exploratory' 
-      ? "Curious and inviting exploration"
-      : mood === 'comparison'
-      ? "Analytical, highlighting contrasts"
-      : "Narrative, cinematic documentary";
 
-    // Create a descriptive prompt for Suno
-    const prompt = `An instrumental ${pyramidStyle.style} piece. ${countryStyle.cultural} influences with ${countryStyle.instruments}. ${pyramidStyle.mood} feeling. ${moodContext}. Background music for a documentary about life and migration. No vocals.`;
+    // Create descriptive style and title for custom mode
+    const style = `${pyramidStyle.style}, ${countryStyle.cultural}`;
+    const title = `${countryId.charAt(0).toUpperCase() + countryId.slice(1)} - System Sound`;
 
-    console.log(`Generating Suno music for ${countryId} (${pyramidType}): ${prompt.substring(0, 100)}...`);
+    console.log(`Style: ${style}`);
+    console.log(`Title: ${title}`);
 
-    // Call Suno API to generate music
+    // Call Suno API with custom mode (instrumental)
     const generateResponse = await fetch(
       "https://api.sunoapi.org/api/v1/generate",
       {
@@ -126,10 +128,12 @@ serve(async (req) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          prompt: prompt,
-          customMode: false,
+          customMode: true,
           instrumental: true,
-          model: "V4",
+          model: "V4_5ALL",
+          callBackUrl: PLACEHOLDER_CALLBACK,
+          style: style.substring(0, 200), // V4 limit
+          title: title.substring(0, 80),
         }),
       }
     );
@@ -149,8 +153,24 @@ serve(async (req) => {
     const generateData = await generateResponse.json();
     console.log("Suno generate response:", JSON.stringify(generateData));
 
-    // Check if we got task IDs
+    // Check for errors in response
+    if (generateData.code !== 200) {
+      console.error("Suno API error:", generateData.msg);
+      return new Response(
+        JSON.stringify({ 
+          error: "Suno API error", 
+          details: generateData.msg 
+        }),
+        { 
+          status: 400, 
+          headers: { ...corsHeaders, "Content-Type": "application/json" } 
+        }
+      );
+    }
+
+    // Check if we got task ID
     if (!generateData.data || !generateData.data.taskId) {
+      console.error("No task ID in response:", generateData);
       return new Response(
         JSON.stringify({ 
           error: "No task ID returned", 
@@ -164,14 +184,19 @@ serve(async (req) => {
     }
 
     const taskId = generateData.data.taskId;
+    console.log(`Task ID: ${taskId}, starting polling...`);
 
-    // Poll for completion (max 60 seconds)
+    // Poll for completion using record-info endpoint (max 90 seconds)
     let audioUrl: string | null = null;
-    for (let i = 0; i < 12; i++) {
+    let streamUrl: string | null = null;
+    
+    for (let i = 0; i < 18; i++) {
       await new Promise((resolve) => setTimeout(resolve, 5000));
 
+      console.log(`Poll attempt ${i + 1}/18...`);
+
       const statusResponse = await fetch(
-        `https://api.sunoapi.org/api/v1/task/${taskId}`,
+        `https://api.sunoapi.org/api/v1/generate/record-info?taskId=${taskId}`,
         {
           method: "GET",
           headers: {
@@ -181,22 +206,30 @@ serve(async (req) => {
       );
 
       if (!statusResponse.ok) {
-        console.error("Status check failed:", await statusResponse.text());
+        const errText = await statusResponse.text();
+        console.error(`Status check failed (${statusResponse.status}):`, errText);
         continue;
       }
 
       const statusData = await statusResponse.json();
-      console.log(`Poll ${i + 1}: Status = ${statusData.data?.status}`);
+      const status = statusData.data?.status;
+      console.log(`Poll ${i + 1}: Status = ${status}`);
 
-      if (statusData.data?.status === "completed" && statusData.data?.clips) {
-        const clips = statusData.data.clips;
-        if (clips.length > 0 && clips[0].audioUrl) {
-          audioUrl = clips[0].audioUrl;
+      if (status === "SUCCESS" || status === "FIRST_SUCCESS") {
+        const sunoData = statusData.data?.response?.sunoData;
+        if (sunoData && sunoData.length > 0) {
+          audioUrl = sunoData[0].audioUrl;
+          streamUrl = sunoData[0].streamAudioUrl;
+          console.log(`Audio URL found: ${audioUrl}`);
           break;
         }
-      } else if (statusData.data?.status === "failed") {
+      } else if (status === "CREATE_TASK_FAILED" || status === "GENERATE_AUDIO_FAILED" || status === "SENSITIVE_WORD_ERROR") {
+        console.error("Generation failed:", statusData.data?.errorMessage);
         return new Response(
-          JSON.stringify({ error: "Music generation failed", details: statusData }),
+          JSON.stringify({ 
+            error: "Music generation failed", 
+            details: statusData.data?.errorMessage || status 
+          }),
           { 
             status: 500, 
             headers: { ...corsHeaders, "Content-Type": "application/json" } 
@@ -205,7 +238,8 @@ serve(async (req) => {
       }
     }
 
-    if (!audioUrl) {
+    if (!audioUrl && !streamUrl) {
+      console.log("Generation timed out, returning task ID for later retrieval");
       return new Response(
         JSON.stringify({ 
           error: "Music generation timed out", 
@@ -220,12 +254,15 @@ serve(async (req) => {
     }
 
     // Return the audio URL for the client to stream
+    console.log("Returning successful response with audio URL");
     return new Response(
       JSON.stringify({ 
         success: true,
-        audioUrl: audioUrl,
+        audioUrl: audioUrl || streamUrl,
+        streamUrl: streamUrl,
         countryId: countryId,
-        pyramidType: pyramidType 
+        pyramidType: pyramidType,
+        taskId: taskId
       }),
       { 
         headers: { ...corsHeaders, "Content-Type": "application/json" } 
