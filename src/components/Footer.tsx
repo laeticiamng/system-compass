@@ -72,6 +72,7 @@ export function Footer() {
               <li><Link to="/dashboard" className="hover:text-foreground transition-colors">{t('nav.dashboard')}</Link></li>
               <li><Link to="/auth" className="hover:text-foreground transition-colors">{t('auth.login')}</Link></li>
               <li><Link to="/about" className="hover:text-foreground transition-colors">{t('footer.about', 'À propos')}</Link></li>
+              <li><Link to="/how-to-read" className="hover:text-foreground transition-colors">📖 {t('howToRead.title', 'Comment lire les résultats')}</Link></li>
               <li><Link to="/disclaimer" className="hover:text-foreground transition-colors text-amber-500/80 hover:text-amber-500">⚠️ Avertissements</Link></li>
             </ul>
           </div>

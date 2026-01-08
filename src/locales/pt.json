@@ -1477,5 +1477,80 @@
     "infrastructure": "Infraestrutura",
     "opportunities": "Oportunidades",
     "nature": "Natureza e Clima"
+  },
+  "howToRead": {
+    "title": "Como ler os resultados",
+    "subtitle": "Compreender a diferença entre simulação e previsão",
+    "whatSimulationIs": {
+      "title": "O que UMA SIMULAÇÃO é",
+      "point1": "Um modelo simplificado baseado em dados gerais",
+      "point2": "Uma ferramenta para explorar tendências e padrões",
+      "point3": "Uma ajuda para reflexão e perspetiva",
+      "point4": "Um ponto de partida para as tuas próprias pesquisas",
+      "point5": "Uma representação do que TENDE a acontecer em certos contextos"
+    },
+    "whatSimulationIsNot": {
+      "title": "O que uma simulação NÃO é",
+      "point1": "Uma previsão do teu futuro pessoal",
+      "point2": "Aconselhamento jurídico, financeiro ou médico",
+      "point3": "Uma garantia de resultado se seguires as recomendações",
+      "point4": "Uma verdade absoluta aplicável a todos",
+      "point5": "Um julgamento de valor sobre as tuas escolhas de vida"
+    },
+    "keyConcept": {
+      "title": "O conceito-chave: Tendência ≠ Certeza",
+      "explanation": "Quando a ferramenta diz \"este sistema tende a favorecer X\", significa que estatisticamente, neste tipo de contexto, X é mais provável. Mas o TEU caso particular depende de milhares de fatores que a ferramenta desconhece.",
+      "analogy": "É como o tempo: \"Chove frequentemente em novembro em Paris\" é estatisticamente verdade, mas não prevê se vai chover a 15 de novembro quando TU lá estiveres."
+    },
+    "examples": {
+      "title": "Exemplos concretos de boa leitura",
+      "wrongReading": "❌ Má leitura",
+      "correctReading": "✓ Boa leitura",
+      "countryMatch": {
+        "title": "Resultado de compatibilidade de país",
+        "wrong": "A ferramenta diz 85% de compatibilidade com a Suíça, então vou certamente ter sucesso lá.",
+        "correct": "A Suíça parece alinhada com o meu perfil teórico. Vou investigar para ver se corresponde à MINHA situação real."
+      },
+      "trajectory": {
+        "title": "Simulação de trajetória financeira",
+        "wrong": "A ferramenta mostra que terei 50.000€ poupados em 10 anos, é certo.",
+        "correct": "Se mantiver estes parâmetros e não surgir nenhum imprevisto, este montante é plausível. Devo prever margens."
+      },
+      "gameVerdict": {
+        "title": "Veredicto do modo educativo",
+        "wrong": "Obtive 'trajetória difícil' no jogo, então a minha vida real será um fracasso.",
+        "correct": "Esta simulação mostra os obstáculos típicos deste contexto inicial. Posso inspirar-me para antecipar desafios."
+      }
+    },
+    "limitations": {
+      "title": "O que a ferramenta NÃO PODE ter em conta",
+      "point1": "As tuas competências únicas, a tua rede pessoal, a tua sorte",
+      "point2": "As mudanças geopolíticas, económicas ou pessoais futuras",
+      "point3": "As nuances culturais que só a experiência local permite compreender",
+      "point4": "As oportunidades imprevistas que podem mudar tudo"
+    },
+    "bestPractices": {
+      "title": "Como usar a ferramenta de forma inteligente",
+      "practice1": {
+        "title": "Usa-a como ponto de partida",
+        "description": "Não como destino. Os resultados devem abrir pistas de investigação, não fechá-las."
+      },
+      "practice2": {
+        "title": "Cruza com outras fontes",
+        "description": "Fala com pessoas que vivem no local, lê testemunhos, consulta profissionais."
+      },
+      "practice3": {
+        "title": "Adapta à TUA situação",
+        "description": "As médias não se aplicam a todos. O teu percurso único pode mudar radicalmente as probabilidades."
+      },
+      "practice4": {
+        "title": "Revê regularmente",
+        "description": "Os teus parâmetros mudam. Refaz as simulações quando a tua situação evoluir."
+      }
+    },
+    "finalNote": {
+      "title": "Em resumo",
+      "text": "Esta ferramenta ajuda-te a ver mais claro, não a ver o futuro. Ilumina tendências para que TU possas decidir com conhecimento de causa. A decisão, e a responsabilidade, permanecem sempre tuas."
+    }
   }
 }
