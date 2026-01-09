@@ -37,6 +37,8 @@ import { InteractiveDecisionGraph } from './InteractiveDecisionGraph';
 import { TraceOSDashboard } from './TraceOSDashboard';
 import { TagManager } from './TagManager';
 import { TraceOSCollaboration } from './TraceOSCollaboration';
+import { DecisionAuditLog } from './DecisionAuditLog';
+import { WorkflowMetrics } from './WorkflowMetrics';
 import { useSubscription } from '@/hooks/useSubscription';
 import { useTraceOSDecisions } from '@/hooks/useTraceOSDecisions';
 import { useTraceOSTags } from '@/hooks/useTraceOSTags';
@@ -433,9 +435,13 @@ export function TraceOS() {
               />
             </div>
             {selectedDecision && showComments && (
-              <div className="lg:col-span-1">
+              <div className="lg:col-span-1 space-y-4">
                 <DecisionComments 
                   decisionId={selectedDecision.id} 
+                  decisionTitle={selectedDecision.title}
+                />
+                <DecisionAuditLog 
+                  decisionId={selectedDecision.id}
                   decisionTitle={selectedDecision.title}
                 />
               </div>
@@ -463,22 +469,25 @@ export function TraceOS() {
         </TabsContent>
 
         <TabsContent value="integrations">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <GitBranch className="w-5 h-5" />
-                {t('traceOS.integrations.title', 'Webhooks & Workflows')}
-              </CardTitle>
-              <CardDescription>
-                {t('traceOS.integrations.desc', 'Configurez les intégrations externes et les workflows d\'approbation.')}
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground mb-4">
-                {t('traceOS.integrations.info', 'Connectez TraceOS à Slack, Teams ou Notion pour recevoir des notifications automatiques.')}
-              </p>
-            </CardContent>
-          </Card>
+          <div className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <GitBranch className="w-5 h-5" />
+                  {t('traceOS.integrations.title', 'Webhooks & Workflows')}
+                </CardTitle>
+                <CardDescription>
+                  {t('traceOS.integrations.desc', 'Configurez les intégrations externes et les workflows d\'approbation.')}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-4">
+                  {t('traceOS.integrations.info', 'Connectez TraceOS à Slack, Teams ou Notion pour recevoir des notifications automatiques.')}
+                </p>
+              </CardContent>
+            </Card>
+            <WorkflowMetrics />
+          </div>
         </TabsContent>
 
         <TabsContent value="review">
