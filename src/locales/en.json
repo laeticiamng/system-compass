@@ -4538,7 +4538,7 @@
     "radarNote": "Values normalized to 0-100 for comparison. Higher is better.",
     "tagsRadar": "Intelligence Tags Comparison",
     "tagsNote": "Tags scored 1-5. Higher values indicate stronger presence of the characteristic.",
-    "noTagsData": "Intelligence tags data not available for selected countries. Available for: France, USA, Germany, Switzerland, UK, UAE, Canada, Portugal, Spain, Japan, Singapore, Australia.",
+    "noTagsData": "Intelligence tags data not available for selected countries. Available for 29 countries including: France, USA, Germany, Switzerland, UK, UAE, Canada, Portugal, Spain, Japan, Singapore, Australia, Brazil, Netherlands, Argentina, Belgium, Chile, Colombia, etc.",
     "tagsTable": "Tags Table",
     "tagsTableNote": "Detailed comparison of systemic characteristics"
   },
