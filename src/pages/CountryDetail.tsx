@@ -17,10 +17,12 @@ import { RetirementProjection } from '@/components/RetirementProjection';
 import { LGBTQRightsIndicator } from '@/components/LGBTQRightsIndicator';
 import { PlaybookSection } from '@/components/PlaybookSection';
 import { CountryTagsRadar } from '@/components/country/CountryTagsRadar';
+import { CountryPdfExport } from '@/components/CountryPdfExport';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ArrowLeft, Calendar, ExternalLink, Layers, Map, Target, Brain, Loader2 } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
+import { useUserHistory } from '@/hooks/useUserHistory';
 
 const PYRAMID_TYPE_LABELS: Record<string, string> = {
   PROBLEM_RENT: 'pyramids.problemRent.label',
@@ -44,9 +46,17 @@ export default function CountryDetail() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { trackCountryView } = useUserHistory();
   const country = getCountryById(id || '');
   const extendedMeta = !country && id ? getExtendedCountryMeta(id) : null;
   const isExtended = !country && extendedMeta !== null;
+
+  // Track country view
+  useEffect(() => {
+    if (id && (country || extendedMeta)) {
+      trackCountryView(id, country?.name || extendedMeta?.name || id);
+    }
+  }, [id, country, extendedMeta, trackCountryView]);
 
   // For extended countries, we need to fetch tags from DB
   const [extendedTags, setExtendedTags] = useState<any>(null);
@@ -217,6 +227,7 @@ export default function CountryDetail() {
             <ArrowLeft className="w-4 h-4" />
             {t('countryDetail.backToCountries')}
           </Button>
+          <CountryPdfExport country={country} />
         </div>
 
         {/* Header */}
