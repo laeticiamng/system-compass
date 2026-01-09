@@ -17,7 +17,8 @@ import {
   BarChart3,
   Key,
   BookOpen,
-  AlertTriangle
+  AlertTriangle,
+  Shield
 } from 'lucide-react';
 
 export default function Index() {
@@ -67,7 +68,7 @@ export default function Index() {
             </p>
 
             {/* SINGLE DOMINANT CTA */}
-            <div className="max-w-md mx-auto px-4 mb-8">
+            <div className="max-w-md mx-auto px-4 mb-4">
               <Button
                 size="lg"
                 onClick={() => navigate('/exit-keys')}
@@ -76,6 +77,20 @@ export default function Index() {
                 <Route className="w-5 h-5 md:w-6 md:h-6" />
                 {t('hero.discoverProfile')}
                 <ArrowRight className="w-5 h-5" />
+              </Button>
+            </div>
+
+            {/* PREVENTION FILTER CTA - Prominent secondary */}
+            <div className="max-w-md mx-auto px-4 mb-8">
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={() => navigate('/prevention-filter')}
+                className="w-full h-12 text-base gap-2 border-amber-500/30 bg-amber-500/10 text-amber-600 hover:bg-amber-500/20 hover:text-amber-700"
+              >
+                <Shield className="w-5 h-5" />
+                {t('hero.preventionFilter', 'Passer une décision au filtre')}
+                <ArrowRight className="w-4 h-4" />
               </Button>
             </div>
 

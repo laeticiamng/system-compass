@@ -32,6 +32,7 @@ import SystemicMistakes from "./pages/SystemicMistakes";
 import HowToRead from "./pages/HowToRead";
 import AdminTranslations from "./pages/AdminTranslations";
 import MultiCompare from "./pages/MultiCompare";
+import PreventionFilter from "./pages/PreventionFilter";
 
 const queryClient = new QueryClient();
 
@@ -71,6 +72,7 @@ const App = () => (
                   <Route path="/systemic-mistakes" element={<SystemicMistakes />} />
                   <Route path="/how-to-read" element={<HowToRead />} />
                   <Route path="/admin/translations" element={<AdminTranslations />} />
+                  <Route path="/prevention-filter" element={<PreventionFilter />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>

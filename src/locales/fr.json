@@ -4511,5 +4511,30 @@
   "footer": {
     "defaultCountry": "Pays par défaut",
     "defaultCountryTooltip": "Les calculateurs utilisent ce pays par défaut. Changez-le dans les outils."
+  },
+  "nav": {
+    "preventionFilter": "Filtre"
+  },
+  "hero": {
+    "preventionFilter": "Passer une décision au filtre"
+  },
+  "preventionFilter": {
+    "badge": "Filtre de prévention",
+    "title": "Passer une décision au filtre",
+    "subtitle": "Avant une décision importante, révèle les risques, points aveugles et conséquences probables en moins de 60 secondes.",
+    "decisionType": "Type de décision",
+    "horizon": "Horizon temporel",
+    "riskTolerance": "Tolérance au risque",
+    "constraint": "Contrainte dominante",
+    "analyze": "Analyser cette décision",
+    "disclaimer": "Simulation ≠ prédiction. Outil d'analyse uniquement. Tu restes responsable de ta décision.",
+    "newAnalysis": "Nouvelle analyse",
+    "saveSimulation": "Sauvegarder cette simulation",
+    "results": {
+      "implications": "Ce que ce choix implique souvent",
+      "blindSpots": "Points aveugles fréquents",
+      "risks": "Risques probables",
+      "exitKeys": "Clés de sortie possibles"
+    }
   }
 }
