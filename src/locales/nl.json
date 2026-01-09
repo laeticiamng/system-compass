@@ -2381,5 +2381,87 @@
         "energyCost": "Kloof tussen aspiraties en dagelijks leven"
       }
     }
+  },
+  "quickTest": {
+    "title": "Snelle test",
+    "subtitle": "Ontdek in 60 seconden het systeem dat op jouw situatie lijkt",
+    "badge": "60 seconden",
+    "situation": "Je huidige situatie",
+    "priority": "Je belangrijkste prioriteit",
+    "riskTolerance": "Je risicotolerantie",
+    "mainConstraint": "Je dominante beperking",
+    "situations": {
+      "employee": "Werknemer",
+      "freelance": "Freelancer",
+      "student": "Student",
+      "transition": "In transitie"
+    },
+    "priorities": {
+      "money": "Geld",
+      "freedom": "Vrijheid",
+      "security": "Zekerheid",
+      "meaning": "Betekenis"
+    },
+    "riskLevels": {
+      "low": "Laag",
+      "medium": "Gemiddeld",
+      "high": "Hoog"
+    },
+    "constraints": {
+      "time": "Tijd",
+      "money": "Geld",
+      "energy": "Energie",
+      "family": "Familie"
+    },
+    "result": {
+      "systemLooksLike": "Het systeem lijkt vaak op...",
+      "blindSpots": "3 frequente blinde vlekken",
+      "exitKey": "1 uitgangssleutel om te overwegen",
+      "deepDive": "Verdiepen",
+      "compareScenarios": "Vergelijk 2 scenario's",
+      "viewExitKeys": "Bekijk uitgangssleutels"
+    },
+    "blindSpots": {
+      "stability": {
+        "slow": "Het inkomen groeit langzaam maar gestaag",
+        "mobility": "Geografische mobiliteit wordt ontmoedigd",
+        "rulesChange": "Het systeem kan regels met terugwerkende kracht wijzigen"
+      },
+      "growth": {
+        "safetyNet": "Het vangnet is minimaal",
+        "survivors": "Winnaars zijn zeer zichtbaar, verliezers onzichtbaar",
+        "capital": "Toegang tot kapitaal bepaalt veel"
+      },
+      "rent": {
+        "dysfunction": "Disfunctie is het bezit — het oplossen is riskant",
+        "network": "Netwerk is belangrijker dan competentie",
+        "reform": "Hervormingen worden geblokkeerd door degenen die profiteren"
+      },
+      "competence": {
+        "credentials": "Lokale certificeringen zijn verplicht",
+        "slow": "Vooruitgang is langzaam maar voorspelbaar",
+        "outsider": "Buitenstaanders hebben moeite om erkend te worden"
+      },
+      "hybrid": {
+        "rules": "Regels veranderen vaak",
+        "contradictions": "Meerdere logica's bestaan naast elkaar en zijn tegenstrijdig",
+        "timing": "Timing is cruciaal — te vroeg of te laat is kostbaar"
+      },
+      "resource": {
+        "temporary": "Contracten zijn tijdelijk van aard",
+        "volatility": "Inkomen hangt af van grondstofprijzen",
+        "dependency": "Geen permanente integratie mogelijk"
+      }
+    },
+    "exitKeys": {
+      "stability": "Ontwikkel overdraagbare vaardigheden",
+      "growth": "Bouw een persoonlijk vangnet",
+      "rent": "Creëer inkomen buiten het lokale systeem",
+      "competence": "Verkrijg lokale certificeringen",
+      "hybrid": "Houd meerdere opties open",
+      "resource": "Bereid een geografisch Plan B voor"
+    },
+    "restart": "Opnieuw starten",
+    "disclaimer": "Simulatie ≠ voorspelling. Alleen verkenning."
   }
 }

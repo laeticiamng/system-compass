@@ -4253,5 +4253,87 @@
         "energyCost": "Gap between aspirations and daily life"
       }
     }
+  },
+  "quickTest": {
+    "title": "Quick Test",
+    "subtitle": "In 60 seconds, discover the system that resembles your situation",
+    "badge": "60 seconds",
+    "situation": "Your current situation",
+    "priority": "Your main priority",
+    "riskTolerance": "Your risk tolerance",
+    "mainConstraint": "Your dominant constraint",
+    "situations": {
+      "employee": "Employee",
+      "freelance": "Freelance",
+      "student": "Student",
+      "transition": "In transition"
+    },
+    "priorities": {
+      "money": "Money",
+      "freedom": "Freedom",
+      "security": "Security",
+      "meaning": "Meaning"
+    },
+    "riskLevels": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    },
+    "constraints": {
+      "time": "Time",
+      "money": "Money",
+      "energy": "Energy",
+      "family": "Family"
+    },
+    "result": {
+      "systemLooksLike": "The system often looks like...",
+      "blindSpots": "3 frequent blind spots",
+      "exitKey": "1 exit key to consider",
+      "deepDive": "Deep dive",
+      "compareScenarios": "Compare 2 scenarios",
+      "viewExitKeys": "View exit keys"
+    },
+    "blindSpots": {
+      "stability": {
+        "slow": "Income grows slowly but steadily",
+        "mobility": "Geographic mobility is discouraged",
+        "rulesChange": "The system can change rules retroactively"
+      },
+      "growth": {
+        "safetyNet": "The safety net is minimal",
+        "survivors": "Winners are very visible, losers are invisible",
+        "capital": "Access to capital determines a lot"
+      },
+      "rent": {
+        "dysfunction": "Dysfunction is the asset — solving it is risky",
+        "network": "Network matters more than competence",
+        "reform": "Reforms are blocked by those who benefit"
+      },
+      "competence": {
+        "credentials": "Local certifications are mandatory",
+        "slow": "Progress is slow but predictable",
+        "outsider": "Outsiders struggle to be recognized"
+      },
+      "hybrid": {
+        "rules": "Rules change frequently",
+        "contradictions": "Multiple logics coexist and contradict",
+        "timing": "Timing is crucial — too early or too late is costly"
+      },
+      "resource": {
+        "temporary": "Contracts are temporary by design",
+        "volatility": "Income depends on commodity prices",
+        "dependency": "No permanent integration possible"
+      }
+    },
+    "exitKeys": {
+      "stability": "Develop portable skills",
+      "growth": "Build a personal safety net",
+      "rent": "Create income outside the local system",
+      "competence": "Obtain local certifications",
+      "hybrid": "Keep multiple options open",
+      "resource": "Prepare a geographic Plan B"
+    },
+    "restart": "Restart",
+    "disclaimer": "Simulation ≠ prediction. Exploration only."
   }
 }

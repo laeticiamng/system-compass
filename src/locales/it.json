@@ -2381,5 +2381,87 @@
         "energyCost": "Divario tra aspirazioni e vita quotidiana"
       }
     }
+  },
+  "quickTest": {
+    "title": "Test rapido",
+    "subtitle": "In 60 secondi, scopri il sistema che assomiglia alla tua situazione",
+    "badge": "60 secondi",
+    "situation": "La tua situazione attuale",
+    "priority": "La tua priorità principale",
+    "riskTolerance": "La tua tolleranza al rischio",
+    "mainConstraint": "Il tuo vincolo dominante",
+    "situations": {
+      "employee": "Dipendente",
+      "freelance": "Libero professionista",
+      "student": "Studente",
+      "transition": "In transizione"
+    },
+    "priorities": {
+      "money": "Denaro",
+      "freedom": "Libertà",
+      "security": "Sicurezza",
+      "meaning": "Senso"
+    },
+    "riskLevels": {
+      "low": "Bassa",
+      "medium": "Media",
+      "high": "Alta"
+    },
+    "constraints": {
+      "time": "Tempo",
+      "money": "Denaro",
+      "energy": "Energia",
+      "family": "Famiglia"
+    },
+    "result": {
+      "systemLooksLike": "Il sistema spesso assomiglia a...",
+      "blindSpots": "3 punti ciechi frequenti",
+      "exitKey": "1 chiave di uscita da considerare",
+      "deepDive": "Approfondire",
+      "compareScenarios": "Confronta 2 scenari",
+      "viewExitKeys": "Vedi chiavi di uscita"
+    },
+    "blindSpots": {
+      "stability": {
+        "slow": "Il reddito cresce lentamente ma costantemente",
+        "mobility": "La mobilità geografica è scoraggiata",
+        "rulesChange": "Il sistema può cambiare le regole retroattivamente"
+      },
+      "growth": {
+        "safetyNet": "La rete di sicurezza è minima",
+        "survivors": "I vincitori sono molto visibili, i perdenti invisibili",
+        "capital": "L'accesso al capitale determina molto"
+      },
+      "rent": {
+        "dysfunction": "La disfunzione è l'asset — risolverla è rischioso",
+        "network": "La rete conta più della competenza",
+        "reform": "Le riforme sono bloccate da chi ne beneficia"
+      },
+      "competence": {
+        "credentials": "Le certificazioni locali sono obbligatorie",
+        "slow": "Il progresso è lento ma prevedibile",
+        "outsider": "Gli esterni faticano a essere riconosciuti"
+      },
+      "hybrid": {
+        "rules": "Le regole cambiano frequentemente",
+        "contradictions": "Più logiche coesistono e si contraddicono",
+        "timing": "Il timing è cruciale — troppo presto o tardi è costoso"
+      },
+      "resource": {
+        "temporary": "I contratti sono temporanei per design",
+        "volatility": "Il reddito dipende dai prezzi delle materie prime",
+        "dependency": "Nessuna integrazione permanente possibile"
+      }
+    },
+    "exitKeys": {
+      "stability": "Sviluppare competenze trasferibili",
+      "growth": "Costruire una rete di sicurezza personale",
+      "rent": "Creare reddito fuori dal sistema locale",
+      "competence": "Ottenere certificazioni locali",
+      "hybrid": "Mantenere più opzioni aperte",
+      "resource": "Preparare un Piano B geografico"
+    },
+    "restart": "Ricomincia",
+    "disclaimer": "Simulazione ≠ previsione. Solo esplorazione."
   }
 }
