@@ -55,8 +55,7 @@ export function Header() {
     { href: '/compare', label: t('nav.compare'), icon: Scale },
     { href: '/dashboard', label: t('nav.dashboard'), icon: LayoutDashboard },
     { href: '/pricing', label: t('nav.pricing', 'Tarifs'), icon: CreditCard },
-    { href: '/institutions', label: t('nav.institutions', 'Institutions'), icon: Building2, highlight: true },
-    { href: '/ovi', label: t('nav.ovi', 'OVI'), icon: Eye, highlight: true },
+    { href: '/b2b', label: t('nav.b2b', 'B2B'), icon: Building2, highlight: true },
     { href: '/resources', label: t('nav.resources'), icon: FileText },
     { href: '/about', label: t('footer.about'), icon: Info },
   ];
