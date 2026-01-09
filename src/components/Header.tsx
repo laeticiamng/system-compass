@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
-import { Compass, Map, FileText, Scale, Triangle, Gamepad2, LogIn, LogOut, User, Key, LayoutDashboard, Menu, Play, Info, AlertCircle, X, Shield, BookOpen, CreditCard } from 'lucide-react';
+import { Compass, Map, FileText, Scale, Triangle, Gamepad2, LogIn, LogOut, User, Key, LayoutDashboard, Menu, Play, Info, AlertCircle, X, Shield, BookOpen, CreditCard, Globe, Settings } from 'lucide-react';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { useAuth } from '@/hooks/useAuth';
 import { Button } from './ui/button';
@@ -54,6 +54,12 @@ export function Header() {
     { href: '/pricing', label: t('nav.pricing', 'Tarifs'), icon: CreditCard },
     { href: '/resources', label: t('nav.resources'), icon: FileText },
     { href: '/about', label: t('footer.about'), icon: Info },
+  ];
+
+  // Admin navigation items (only show for authenticated users)
+  const adminItems = [
+    { href: '/admin/country-generator', label: 'Country Generator', icon: Globe },
+    { href: '/admin/analytics', label: 'Analytics', icon: Settings },
   ];
 
   const handleSignOut = async () => {
@@ -206,7 +212,7 @@ export function Header() {
                 
                 <div className="border-t border-border my-4" />
                 
-                {user ? (
+{user ? (
                   <>
                     <div className="px-4 py-2 flex items-center gap-2">
                       <SubscriptionBadge />
@@ -215,6 +221,32 @@ export function Header() {
                       <User className="w-4 h-4 inline mr-2" />
                       {user.user_metadata?.display_name || user.email?.split('@')[0]}
                     </div>
+                    
+                    {/* Admin Links */}
+                    <div className="border-t border-border my-4" />
+                    <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">Admin</div>
+                    {adminItems.map((item) => {
+                      const Icon = item.icon;
+                      const isActive = location.pathname === item.href;
+                      return (
+                        <Link
+                          key={item.href}
+                          to={item.href}
+                          onClick={handleNavClick}
+                          className={cn(
+                            'flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors',
+                            isActive
+                              ? 'bg-primary/10 text-primary'
+                              : 'text-muted-foreground hover:text-foreground hover:bg-accent'
+                          )}
+                        >
+                          <Icon className="w-5 h-5" />
+                          {item.label}
+                        </Link>
+                      );
+                    })}
+                    
+                    <div className="border-t border-border my-4" />
                     <Button 
                       variant="outline" 
                       onClick={handleSignOut}
