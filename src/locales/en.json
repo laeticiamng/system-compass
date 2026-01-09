@@ -4341,5 +4341,62 @@
     },
     "restart": "Restart",
     "disclaimer": "Simulation ≠ prediction. Exploration only."
+  },
+  "subscription": {
+    "successTitle": "Subscription Activated!",
+    "successDescription": "Thank you for subscribing! You now have access to all premium features.",
+    "exploreCountries": "Explore Countries",
+    "managePlan": "Manage Subscription",
+    "yourPlan": "Your Plan",
+    "upgrade": "Upgrade",
+    "subscribe": "Subscribe"
+  },
+  "pyramidBehaviors": {
+    "title": "Typical Behaviors",
+    "rewards": "The system rewards",
+    "punishes": "The system punishes",
+    "stability": {
+      "rewards": ["Patience and seniority", "Following procedures", "Institutional loyalty", "Recognized diplomas"],
+      "punishes": ["Impatience and shortcuts", "Excessive risk-taking", "Frequent job changes", "Lack of credentials"]
+    },
+    "growth": {
+      "rewards": ["Initiative and risk-taking", "Measurable value creation", "Quick adaptability", "Professional network"],
+      "punishes": ["Passive waiting", "Refusal to innovate", "Employer dependency", "Professional isolation"]
+    },
+    "rent": {
+      "rewards": ["Access to power circles", "Ability to maintain status quo", "Family connections", "Discretion about income"],
+      "punishes": ["Excessive transparency", "Reform attempts", "Lack of network", "Naive meritocracy"]
+    },
+    "competence": {
+      "rewards": ["Sharp technical expertise", "Recognized certifications", "Methodological rigor", "Continuous training"],
+      "punishes": ["Approximation", "Lack of certification", "Field changes", "Unvalidated self-teaching"]
+    },
+    "hybrid": {
+      "rewards": ["Strategic flexibility", "Reading signals", "Precise timing", "Dual competence"],
+      "punishes": ["Rigidity", "Premature commitment", "Code misunderstanding", "Single system choice"]
+    },
+    "resource": {
+      "rewards": ["Sector expertise", "Geographic mobility", "Well-negotiated short contracts", "Massive savings"],
+      "punishes": ["Local rooting", "Long-term projects", "Local system dependency", "High living expenses"]
+    }
+  },
+  "countryDetail": {
+    "tabs": {
+      "tronc": "Core Analysis",
+      "variant": "Country Variant",
+      "project": "Project Analysis"
+    },
+    "tronc": {
+      "title": "Structural Analysis",
+      "subtitle": "What the system rewards and punishes"
+    },
+    "variant": {
+      "title": "Local Specifics",
+      "subtitle": "What surprises newcomers"
+    },
+    "project": {
+      "title": "Personalized Analysis",
+      "subtitle": "Based on your project and profile"
+    }
   }
 }
