@@ -401,15 +401,15 @@ export default function PreventionFilter() {
     setIsSaving(true);
     try {
       const { error } = await supabase
-        .from('saved_analyses' as 'profiles')
-        .insert({
+        .from('saved_analyses')
+        .insert([{
           user_id: user.id,
           decision_type: formData.decisionType,
           horizon: formData.horizon,
           risk_tolerance: formData.riskTolerance,
           constraint_type: formData.constraint,
-          results: results,
-        } as unknown as { id: string });
+          results: JSON.parse(JSON.stringify(results)),
+        }]);
 
       if (error) throw error;
       toast.success(t('preventionFilter.saved', 'Analyse sauvegardée !'));

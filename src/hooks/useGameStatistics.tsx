@@ -158,7 +158,7 @@ export function useGameStatistics() {
     countryId: string,
     turnsPlayed: number
   ) => {
-    const newStats = {
+    const newStats: GameStatistics = {
       ...stats,
       totalGamesPlayed: stats.totalGamesPlayed + 1,
       totalTurnsPlayed: stats.totalTurnsPlayed + turnsPlayed,
@@ -168,13 +168,16 @@ export function useGameStatistics() {
       countriesVisited: stats.countriesVisited.includes(countryId)
         ? stats.countriesVisited
         : [...stats.countriesVisited, countryId],
+      bestScoreSolo: mode === 'solo' && score > stats.bestScoreSolo ? score : stats.bestScoreSolo,
+      bestScoreRace: mode === 'race' && score > stats.bestScoreRace ? score : stats.bestScoreRace,
+      totalRiskEvents: stats.totalRiskEvents,
+      riskSuccesses: stats.riskSuccesses,
+      riskFailures: stats.riskFailures,
+      totalMoneyEarned: stats.totalMoneyEarned,
+      totalMoneyLost: stats.totalMoneyLost,
+      totalHealthLost: stats.totalHealthLost,
+      favoriteActions: stats.favoriteActions,
     };
-
-    if (mode === 'solo' && score > stats.bestScoreSolo) {
-      newStats.bestScoreSolo = score;
-    } else if (mode === 'race' && score > stats.bestScoreRace) {
-      newStats.bestScoreRace = score;
-    }
 
     await saveStats(newStats);
   }, [stats, saveStats]);
