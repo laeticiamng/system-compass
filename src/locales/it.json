@@ -912,6 +912,7 @@
     "backToCountries": "Torna ai paesi",
     "ruleOfGold": "Regola d'oro",
     "lgbtqRights": "Diritti LGBTQ+",
+    "exportPdf": "Esporta PDF",
     "snapshot": {
       "gdpPerCapita": "PIL/Capita",
       "population": "Popolazione",
@@ -925,7 +926,29 @@
     "survivalPlaybook": "Playbook di sopravvivenza",
     "sourcesUpdates": "Fonti & aggiornamenti",
     "lastUpdated": "Ultimo aggiornamento",
-    "extendedNote": "Questo paese ha dati del layer Intelligence completi nel database"
+    "extendedNote": "Questo paese ha dati del layer Intelligence completi nel database",
+    "tabs": {
+      "tronc": "Analisi centrale",
+      "variant": "Variante paese",
+      "project": "Analisi progetto",
+      "intelligence": "Intelligence"
+    },
+    "tronc": {
+      "badge": "Tronco comune — Accesso gratuito",
+      "title": "Analisi strutturale",
+      "subtitle": "Cosa il sistema premia e punisce",
+      "systemRewards": "Cosa il sistema premia",
+      "systemPunishes": "Cosa il sistema punisce",
+      "frequentErrors": "Errori frequenti"
+    },
+    "variant": {
+      "title": "Particolarità locali",
+      "subtitle": "Cosa sorprende i nuovi arrivati"
+    },
+    "project": {
+      "title": "Analisi personalizzata",
+      "subtitle": "In base al tuo progetto e profilo"
+    }
   },
   "lgbtqRights": {
     "title": "Diritti LGBTQ+",
@@ -2860,20 +2883,4 @@
       "punishes": ["Radicamento locale", "Progetti a lungo termine", "Dipendenza dal sistema locale", "Spese di vita elevate"]
     }
   },
-  "countryDetailExtra": {
-    "tabs": {
-      "tronc": "Analisi centrale",
-      "variant": "Variante paese",
-      "project": "Analisi progetto",
-      "intelligence": "Intelligence"
-    },
-    "tronc": {
-      "badge": "Tronco comune — Accesso gratuito",
-      "title": "Analisi strutturale",
-      "subtitle": "Cosa il sistema premia e punisce",
-      "systemRewards": "Cosa il sistema premia",
-      "systemPunishes": "Cosa il sistema punisce",
-      "frequentErrors": "Errori frequenti"
-    }
-  }
 }

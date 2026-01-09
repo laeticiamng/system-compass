@@ -912,6 +912,7 @@
     "backToCountries": "Zurück zu Ländern",
     "ruleOfGold": "Goldene Regel",
     "lgbtqRights": "LGBTQ+ Rechte",
+    "exportPdf": "PDF exportieren",
     "snapshot": {
       "gdpPerCapita": "BIP/Kopf",
       "population": "Bevölkerung",
@@ -925,7 +926,29 @@
     "survivalPlaybook": "Überlebens-Playbook",
     "sourcesUpdates": "Quellen & Updates",
     "lastUpdated": "Zuletzt aktualisiert",
-    "extendedNote": "Dieses Land hat vollständige Intelligence Layer-Daten in der Datenbank"
+    "extendedNote": "Dieses Land hat vollständige Intelligence Layer-Daten in der Datenbank",
+    "tabs": {
+      "tronc": "Kernanalyse",
+      "variant": "Ländervariante",
+      "project": "Projektanalyse",
+      "intelligence": "Intelligence"
+    },
+    "tronc": {
+      "badge": "Gemeinsamer Kern — Kostenloser Zugang",
+      "title": "Strukturanalyse",
+      "subtitle": "Was das System belohnt und bestraft",
+      "systemRewards": "Was das System belohnt",
+      "systemPunishes": "Was das System bestraft",
+      "frequentErrors": "Häufige Fehler"
+    },
+    "variant": {
+      "title": "Lokale Besonderheiten",
+      "subtitle": "Was Neuankömmlinge überrascht"
+    },
+    "project": {
+      "title": "Personalisierte Analyse",
+      "subtitle": "Basierend auf Ihrem Projekt und Profil"
+    }
   },
   "lgbtqRights": {
     "title": "LGBTQ+ Rechte",
@@ -2860,20 +2883,4 @@
       "punishes": ["Lokale Verwurzelung", "Langfristige Projekte", "Abhängigkeit vom lokalen System", "Hohe Lebenshaltungskosten"]
     }
   },
-  "countryDetailExtra": {
-    "tabs": {
-      "tronc": "Kernanalyse",
-      "variant": "Ländervariante",
-      "project": "Projektanalyse",
-      "intelligence": "Intelligence"
-    },
-    "tronc": {
-      "badge": "Gemeinsamer Kern — Kostenloser Zugang",
-      "title": "Strukturanalyse",
-      "subtitle": "Was das System belohnt und bestraft",
-      "systemRewards": "Was das System belohnt",
-      "systemPunishes": "Was das System bestraft",
-      "frequentErrors": "Häufige Fehler"
-    }
-  }
 }

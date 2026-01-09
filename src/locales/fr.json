@@ -764,6 +764,7 @@
     "backToCountries": "Retour aux pays",
     "ruleOfGold": "Règle d'or",
     "lgbtqRights": "Droits LGBTQ+",
+    "exportPdf": "Exporter PDF",
     "snapshot": {
       "gdpPerCapita": "PIB/Habitant",
       "population": "Population",
@@ -777,7 +778,29 @@
     "survivalPlaybook": "Playbook de survie",
     "sourcesUpdates": "Sources & mises à jour",
     "lastUpdated": "Dernière mise à jour",
-    "extendedNote": "Ce pays dispose de données Intelligence Layer. Profil complet à venir."
+    "extendedNote": "Ce pays dispose de données Intelligence Layer. Profil complet à venir.",
+    "tabs": {
+      "tronc": "Tronc commun",
+      "variant": "Variante pays",
+      "project": "Analyse projet",
+      "intelligence": "Intelligence"
+    },
+    "tronc": {
+      "badge": "Tronc commun — Accès gratuit",
+      "title": "Analyse structurelle",
+      "subtitle": "Ce que le système récompense et punit",
+      "systemRewards": "Ce que le système récompense",
+      "systemPunishes": "Ce que le système punit",
+      "frequentErrors": "Erreurs fréquentes"
+    },
+    "variant": {
+      "title": "Spécificités locales",
+      "subtitle": "Ce qui surprend les nouveaux arrivants"
+    },
+    "project": {
+      "title": "Analyse personnalisée",
+      "subtitle": "Selon votre projet et votre profil"
+    }
   },
   "lgbtqRights": {
     "title": "Droits LGBTQ+",
@@ -4856,29 +4879,6 @@
     "resource": {
       "rewards": ["L'expertise sectorielle", "La mobilité géographique", "Les contrats courts bien négociés", "L'épargne massive"],
       "punishes": ["L'enracinement local", "Les projets long terme", "La dépendance au système local", "Les dépenses de vie élevées"]
-    }
-  },
-  "countryDetail": {
-    "tabs": {
-      "tronc": "Tronc commun",
-      "variant": "Variante pays",
-      "project": "Analyse projet"
-    },
-    "tronc": {
-      "title": "Analyse structurelle",
-      "subtitle": "Ce que le système récompense et punit",
-      "badge": "Tronc commun — Accès gratuit",
-      "systemRewards": "Ce que le système récompense",
-      "systemPunishes": "Ce que le système punit",
-      "frequentErrors": "Erreurs fréquentes"
-    },
-    "variant": {
-      "title": "Spécificités locales",
-      "subtitle": "Ce qui surprend les nouveaux arrivants"
-    },
-    "project": {
-      "title": "Analyse personnalisée",
-    "subtitle": "Selon votre projet et votre profil"
     }
   },
   "intelligence": {

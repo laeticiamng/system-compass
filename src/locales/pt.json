@@ -912,6 +912,7 @@
     "backToCountries": "Voltar aos países",
     "ruleOfGold": "Regra de ouro",
     "lgbtqRights": "Direitos LGBTQ+",
+    "exportPdf": "Exportar PDF",
     "snapshot": {
       "gdpPerCapita": "PIB/Capita",
       "population": "População",
@@ -925,7 +926,29 @@
     "survivalPlaybook": "Playbook de sobrevivência",
     "sourcesUpdates": "Fontes & atualizações",
     "lastUpdated": "Última atualização",
-    "extendedNote": "Este país tem dados de camada Intelligence completos na base de dados"
+    "extendedNote": "Este país tem dados de camada Intelligence completos na base de dados",
+    "tabs": {
+      "tronc": "Análise central",
+      "variant": "Variante país",
+      "project": "Análise de projeto",
+      "intelligence": "Intelligence"
+    },
+    "tronc": {
+      "badge": "Tronco comum — Acesso gratuito",
+      "title": "Análise estrutural",
+      "subtitle": "O que o sistema recompensa e pune",
+      "systemRewards": "O que o sistema recompensa",
+      "systemPunishes": "O que o sistema pune",
+      "frequentErrors": "Erros frequentes"
+    },
+    "variant": {
+      "title": "Particularidades locais",
+      "subtitle": "O que surpreende os recém-chegados"
+    },
+    "project": {
+      "title": "Análise personalizada",
+      "subtitle": "Com base no seu projeto e perfil"
+    }
   },
   "lgbtqRights": {
     "title": "Direitos LGBTQ+",
@@ -2860,20 +2883,4 @@
       "punishes": ["Enraizamento local", "Projetos de longo prazo", "Dependência do sistema local", "Despesas de vida elevadas"]
     }
   },
-  "countryDetailExtra": {
-    "tabs": {
-      "tronc": "Análise central",
-      "variant": "Variante país",
-      "project": "Análise de projeto",
-      "intelligence": "Intelligence"
-    },
-    "tronc": {
-      "badge": "Tronco comum — Acesso gratuito",
-      "title": "Análise estrutural",
-      "subtitle": "O que o sistema recompensa e pune",
-      "systemRewards": "O que o sistema recompensa",
-      "systemPunishes": "O que o sistema pune",
-      "frequentErrors": "Erros frequentes"
-    }
-  }
 }
