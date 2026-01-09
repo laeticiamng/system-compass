@@ -197,10 +197,25 @@ export function WorldMap({
       {/* SVG Map */}
       <svg
         viewBox="0 0 100 80"
-        className="w-full h-[500px] cursor-grab active:cursor-grabbing"
+        className="w-full h-[400px] md:h-[500px] cursor-grab active:cursor-grabbing touch-pan-x touch-pan-y"
         style={{
           transform: `scale(${zoom}) translate(${pan.x}px, ${pan.y}px)`,
           transformOrigin: 'center center',
+        }}
+        onTouchStart={(e) => {
+          if (e.touches.length === 1) {
+            const touch = e.touches[0];
+            setPan(prev => ({ ...prev, startX: touch.clientX, startY: touch.clientY }));
+          }
+        }}
+        onTouchMove={(e) => {
+          if (e.touches.length === 2 && interactive) {
+            // Pinch zoom
+            const touch1 = e.touches[0];
+            const touch2 = e.touches[1];
+            const dist = Math.hypot(touch2.clientX - touch1.clientX, touch2.clientY - touch1.clientY);
+            setZoom(z => Math.min(Math.max(dist / 200, 0.5), 3));
+          }
         }}
       >
         {/* Background - Ocean */}
