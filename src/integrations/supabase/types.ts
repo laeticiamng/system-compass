@@ -914,6 +914,42 @@ export type Database = {
           },
         ]
       }
+      traceos_export_schedules: {
+        Row: {
+          created_at: string
+          frequency: string
+          id: string
+          include_history: boolean
+          is_active: boolean
+          last_export_at: string | null
+          next_export_at: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          frequency?: string
+          id?: string
+          include_history?: boolean
+          is_active?: boolean
+          last_export_at?: string | null
+          next_export_at?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          frequency?: string
+          id?: string
+          include_history?: boolean
+          is_active?: boolean
+          last_export_at?: string | null
+          next_export_at?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       traceos_tags: {
         Row: {
           color: string

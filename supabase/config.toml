@@ -29,3 +29,6 @@ verify_jwt = false
 
 [functions.traceos-webhooks]
 verify_jwt = false
+
+[functions.traceos-auto-export]
+verify_jwt = false
