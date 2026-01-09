@@ -677,6 +677,44 @@ export type Database = {
         }
         Relationships: []
       }
+      traceos_comments: {
+        Row: {
+          author_name: string
+          content: string
+          created_at: string
+          decision_id: string
+          id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          author_name: string
+          content: string
+          created_at?: string
+          decision_id: string
+          id?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          author_name?: string
+          content?: string
+          created_at?: string
+          decision_id?: string
+          id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "traceos_comments_decision_id_fkey"
+            columns: ["decision_id"]
+            isOneToOne: false
+            referencedRelation: "traceos_decisions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       traceos_decisions: {
         Row: {
           abandoned_branches: Json

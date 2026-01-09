@@ -10,7 +10,10 @@ import {
   GitBranch,
   History,
   Eye,
-  Loader2
+  Loader2,
+  LayoutGrid,
+  FileText,
+  MessageSquare
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -18,12 +21,16 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { DecisionTree } from './DecisionTree';
 import { CreateDecisionForm } from './CreateDecisionForm';
 import { DecisionNode, DecisionNodeData } from './DecisionNode';
 import { TraceOSFiltersPanel, TraceOSFilters, filterDecisions, extractFilterOptions } from './TraceOSFilters';
 import { TraceOSExport } from './TraceOSExport';
 import { TraceOSNotifications } from './TraceOSNotifications';
+import { DecisionTemplates, DecisionTemplate } from './DecisionTemplates';
+import { DecisionComments } from './DecisionComments';
+import { InteractiveDecisionGraph } from './InteractiveDecisionGraph';
 import { useSubscription } from '@/hooks/useSubscription';
 import { useTraceOSDecisions } from '@/hooks/useTraceOSDecisions';
 import { PremiumPaywall } from '@/components/PremiumPaywall';
@@ -134,6 +141,8 @@ export function TraceOS() {
   const [isCreating, setIsCreating] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [templateData, setTemplateData] = useState<DecisionTemplate['template'] | null>(null);
+  const [showComments, setShowComments] = useState(false);
   const [filters, setFilters] = useState<TraceOSFilters>({
     status: [],
     scope: [],
@@ -141,6 +150,12 @@ export function TraceOS() {
     dateFrom: '',
     dateTo: ''
   });
+
+  // Handle template selection
+  const handleSelectTemplate = (template: DecisionTemplate['template']) => {
+    setTemplateData(template);
+    setIsCreating(true);
+  };
 
   // Use demo data if not logged in, else use real data
   const baseDecisions = isLoggedIn && decisions.length > 0 ? decisions : DEMO_DECISIONS;
@@ -284,12 +299,21 @@ export function TraceOS() {
         />
       </div>
 
+      {/* Templates Panel */}
+      {!isCreating && (
+        <DecisionTemplates onSelectTemplate={handleSelectTemplate} />
+      )}
+
       {/* Create Form */}
       {isCreating && (
         <CreateDecisionForm
           onSubmit={handleCreateDecision}
-          onCancel={() => setIsCreating(false)}
+          onCancel={() => {
+            setIsCreating(false);
+            setTemplateData(null);
+          }}
           isLoading={isSaving}
+          initialData={templateData || undefined}
         />
       )}
 
@@ -302,10 +326,14 @@ export function TraceOS() {
 
       {/* Decision Tree */}
       <Tabs defaultValue="tree" className="space-y-4">
-        <TabsList>
+        <TabsList className="flex flex-wrap h-auto gap-1">
           <TabsTrigger value="tree" className="gap-2">
             <GitBranch className="w-4 h-4" />
             {t('traceOS.tabs.tree', 'Arbre')}
+          </TabsTrigger>
+          <TabsTrigger value="graph" className="gap-2">
+            <LayoutGrid className="w-4 h-4" />
+            {t('traceOS.tabs.graph', 'Graphe')}
           </TabsTrigger>
           <TabsTrigger value="review" className="gap-2">
             <History className="w-4 h-4" />
@@ -318,11 +346,45 @@ export function TraceOS() {
         </TabsList>
 
         <TabsContent value="tree">
-          <DecisionTree
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <div className="lg:col-span-2">
+              <DecisionTree
+                decisions={displayDecisions}
+                onSelectDecision={(d) => {
+                  setSelectedDecision(d);
+                  setShowComments(true);
+                }}
+                selectedDecisionId={selectedDecision?.id}
+              />
+            </div>
+            {selectedDecision && showComments && (
+              <div className="lg:col-span-1">
+                <DecisionComments 
+                  decisionId={selectedDecision.id} 
+                  decisionTitle={selectedDecision.title}
+                />
+              </div>
+            )}
+          </div>
+        </TabsContent>
+
+        <TabsContent value="graph">
+          <InteractiveDecisionGraph
             decisions={displayDecisions}
-            onSelectDecision={setSelectedDecision}
+            onSelectDecision={(d) => {
+              setSelectedDecision(d);
+              setShowComments(true);
+            }}
             selectedDecisionId={selectedDecision?.id}
           />
+          {selectedDecision && showComments && (
+            <div className="mt-4">
+              <DecisionComments 
+                decisionId={selectedDecision.id} 
+                decisionTitle={selectedDecision.title}
+              />
+            </div>
+          )}
         </TabsContent>
 
         <TabsContent value="review">
