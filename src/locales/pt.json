@@ -679,6 +679,211 @@
       "distribution": "Distribuição"
     }
   },
+  "pyramidTypes": {
+    "title": "Os seis sistemas",
+    "subtitle": "Analisa como cada tipo de país realmente funciona. Cada sistema tem a sua própria lógica de poder.",
+    "whoThrives": "Quem prospera",
+    "whoPays": "Quem paga o preço",
+    "survivalRules": "Regras de sobrevivência",
+    "opportunities": "Oportunidades ocultas",
+    "warningSigns": "Sinais de alerta",
+    "exampleCountries": "Países exemplo",
+    "noExamples": "Exemplos em breve",
+    "details": {
+      "problemRent": {
+        "whoThrives": [
+          "Insiders conectados com acesso político",
+          "Guardiões que controlam gargalos",
+          "Quem monetiza a disfunção",
+          "Intermediários e corretores informais"
+        ],
+        "whoPays": [
+          "Pessoas competentes sem conexões",
+          "Empreendedores transparentes e honestos",
+          "Jovens ambiciosos sem redes",
+          "Quem tenta resolver problemas publicamente"
+        ],
+        "survivalRules": [
+          "Permanecer invisível, construir em silêncio",
+          "Diversificar fontes de renda",
+          "Desenvolver competências exportáveis",
+          "Nunca se tornar publicamente indispensável"
+        ],
+        "opportunities": [
+          "Arbitragem entre formal e informal",
+          "Serviços à diáspora internacional",
+          "Trabalho remoto para clientes estrangeiros",
+          "Intermediação discreta e eficiente"
+        ],
+        "warningSigns": [
+          "Sucesso visível sem proteção",
+          "Crítica aberta ao sistema",
+          "Dependência de uma única rede",
+          "Centralização de ativos"
+        ]
+      },
+      "stabilityRedis": {
+        "whoThrives": [
+          "Quem domina as regras do sistema",
+          "Funcionários do setor público",
+          "Planeadores pacientes de longo prazo",
+          "Quem tem os diplomas e certificações certos"
+        ],
+        "whoPays": [
+          "Perfis de alta ambição, baixa paciência",
+          "Outsiders sem credenciais locais",
+          "Empreendedores buscando crescimento explosivo",
+          "Não-conformistas e inovadores disruptivos"
+        ],
+        "survivalRules": [
+          "Entender e usar o sistema",
+          "Otimizar estrutura fiscal legalmente",
+          "Construir múltiplas fontes de renda",
+          "Nunca subestimar a burocracia"
+        ],
+        "opportunities": [
+          "Segurança e previsibilidade a longo prazo",
+          "Acesso a sólidas redes de segurança social",
+          "Qualidade de vida e equilíbrio trabalho-vida",
+          "Mobilidade europeia (se UE)"
+        ],
+        "warningSigns": [
+          "Dependência de uma única fonte de renda",
+          "Ignorar requisitos administrativos",
+          "Queimar pontes com instituições",
+          "Esperar meritocracia pura"
+        ]
+      },
+      "competenceTrust": {
+        "whoThrives": [
+          "Especialistas altamente competentes",
+          "Quem segue regras com excelência",
+          "Construtores de reputação a longo prazo",
+          "Profissionais com certificações reconhecidas"
+        ],
+        "whoPays": [
+          "Aproximadores e tomadores de atalhos",
+          "Disruptores impacientes",
+          "Quem sem credenciais reconhecidas",
+          "Outsiders culturais que se recusam a adaptar"
+        ],
+        "survivalRules": [
+          "Dominar o ofício até à excelência",
+          "Seguir regras com precisão",
+          "Construir reputação ao longo do tempo",
+          "Integrar-se cultural e linguisticamente"
+        ],
+        "opportunities": [
+          "Máxima estabilidade e segurança",
+          "Alta qualidade de vida",
+          "Respeito profissional duradouro",
+          "Instituições fiáveis e transparentes"
+        ],
+        "warningSigns": [
+          "Tomar atalhos",
+          "Exagerar ou sobrevender competências",
+          "Ignorar normas locais",
+          "Apressar o processo de integração"
+        ]
+      },
+      "growthRisk": {
+        "whoThrives": [
+          "Empreendedores de alta velocidade",
+          "Quem tem acesso ao capital",
+          "Proprietários de competências escaláveis",
+          "Construtores de redes agressivos"
+        ],
+        "whoPays": [
+          "Buscadores de estabilidade",
+          "Quem depende das redes de segurança social",
+          "Tipos lentos e constantes",
+          "Quem sem almofada saúde/riqueza"
+        ],
+        "survivalRules": [
+          "Mover-se rápido e escalar rapidamente",
+          "Garantir redes de segurança privadas",
+          "Fazer networking agressivamente",
+          "Diversificar geograficamente"
+        ],
+        "opportunities": [
+          "Potencial de crescimento explosivo",
+          "Abundante acesso ao capital",
+          "Meritocracia relativa",
+          "Ecossistema empreendedor maduro"
+        ],
+        "warningSigns": [
+          "Confiar em sistemas sociais",
+          "Ignorar seguro de saúde",
+          "Esgotar-se sem plano de saída",
+          "Assumir que a estabilidade existe"
+        ]
+      },
+      "hybridTransition": {
+        "whoThrives": [
+          "Quem lê sinais políticos",
+          "Adaptadores rápidos à mudança",
+          "Empreendedores em zonas cinzentas",
+          "Quem com diversificação internacional"
+        ],
+        "whoPays": [
+          "Politicamente visíveis ou críticos",
+          "Quem cresce demasiado rápido visivelmente",
+          "Dependentes de um único setor ou patrono",
+          "Quem aposta contra a direção do Estado"
+        ],
+        "survivalRules": [
+          "Entender sinais políticos profundamente",
+          "Manter neutralidade política pública",
+          "Desenvolver opções internacionais discretamente",
+          "Nunca se tornar politicamente proeminente"
+        ],
+        "opportunities": [
+          "Crescimento rápido em setores certos",
+          "Arbitragem entre lógicas concorrentes",
+          "Acesso a mercados em transformação",
+          "Oportunidades na economia digital"
+        ],
+        "warningSigns": [
+          "Tornar-se politicamente visível",
+          "Criticar o sistema publicamente",
+          "Depender de um único setor",
+          "Mostrar riqueza ostensivamente"
+        ]
+      },
+      "resourceExtraction": {
+        "whoThrives": [
+          "Profissionais do setor energético",
+          "Quem perto dos fluxos de recursos",
+          "Expatriados de alto valor",
+          "Quem abraça valores locais"
+        ],
+        "whoPays": [
+          "Quem busca pertença permanente",
+          "Trabalhadores pouco qualificados",
+          "Quem desafia costumes locais",
+          "Planeadores de longo prazo sem estratégia de saída"
+        ],
+        "survivalRules": [
+          "Maximizar renda e poupar agressivamente",
+          "Planear a saída desde o primeiro dia",
+          "Respeitar costumes locais publicamente",
+          "Desenvolver competências portáteis"
+        ],
+        "opportunities": [
+          "Potencial de renda muito alto",
+          "Tributação favorável (frequentemente)",
+          "Acumulação rápida de capital",
+          "Redes internacionais de qualidade"
+        ],
+        "warningSigns": [
+          "Esperar residência ou cidadania permanente",
+          "Criticar governo ou cultura",
+          "Gastar toda a renda localmente",
+          "Depender de um único empregador"
+        ]
+      }
+    }
+  },
   "featured": {
     "title": "Explorar países",
     "subtitle": "Análise profunda de sistemas reais, não rankings de fantasia",

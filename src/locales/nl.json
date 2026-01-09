@@ -679,6 +679,211 @@
       "distribution": "Distributie"
     }
   },
+  "pyramidTypes": {
+    "title": "De zes systemen",
+    "subtitle": "Analyseer hoe elk landtype echt werkt. Elk systeem heeft zijn eigen machtslogica.",
+    "whoThrives": "Wie gedijt",
+    "whoPays": "Wie betaalt de prijs",
+    "survivalRules": "Overlevingsregels",
+    "opportunities": "Verborgen kansen",
+    "warningSigns": "Waarschuwingssignalen",
+    "exampleCountries": "Voorbeeldlanden",
+    "noExamples": "Voorbeelden volgen",
+    "details": {
+      "problemRent": {
+        "whoThrives": [
+          "Verbonden insiders met politieke toegang",
+          "Poortwachters die knelpunten controleren",
+          "Degenen die disfunctie monetariseren",
+          "Informele makelaars en tussenpersonen"
+        ],
+        "whoPays": [
+          "Competente mensen zonder verbindingen",
+          "Transparante en eerlijke ondernemers",
+          "Ambitieuze jongeren zonder netwerken",
+          "Degenen die problemen publiekelijk proberen op te lossen"
+        ],
+        "survivalRules": [
+          "Onzichtbaar blijven, stil bouwen",
+          "Inkomstenbronnen diversifiëren",
+          "Exporteerbare vaardigheden ontwikkelen",
+          "Nooit publiekelijk onmisbaar worden"
+        ],
+        "opportunities": [
+          "Arbitrage tussen formeel en informeel",
+          "Diensten aan internationale diaspora",
+          "Remote werk voor buitenlandse klanten",
+          "Discrete en efficiënte bemiddeling"
+        ],
+        "warningSigns": [
+          "Zichtbaar succes zonder bescherming",
+          "Open kritiek op het systeem",
+          "Afhankelijkheid van een enkel netwerk",
+          "Vermogenscentralisatie"
+        ]
+      },
+      "stabilityRedis": {
+        "whoThrives": [
+          "Degenen die systeemregels beheersen",
+          "Werknemers in de publieke sector",
+          "Geduldige langetermijnplanners",
+          "Degenen met de juiste diploma's en certificeringen"
+        ],
+        "whoPays": [
+          "Profielen met hoge ambitie, weinig geduld",
+          "Buitenstaanders zonder lokale referenties",
+          "Ondernemers die explosieve groei zoeken",
+          "Non-conformisten en disruptieve innovators"
+        ],
+        "survivalRules": [
+          "Het systeem begrijpen en gebruiken",
+          "Belastingstructuur legaal optimaliseren",
+          "Meerdere inkomstenbronnen opbouwen",
+          "Bureaucratie nooit onderschatten"
+        ],
+        "opportunities": [
+          "Langetermijnzekerheid en voorspelbaarheid",
+          "Toegang tot solide sociale vangnetten",
+          "Levenskwaliteit en werk-privébalans",
+          "Europese mobiliteit (indien EU)"
+        ],
+        "warningSigns": [
+          "Afhankelijkheid van één inkomstenbron",
+          "Administratieve vereisten negeren",
+          "Bruggen met instellingen verbranden",
+          "Pure meritocratie verwachten"
+        ]
+      },
+      "competenceTrust": {
+        "whoThrives": [
+          "Hoogcompetente specialisten",
+          "Degenen die regels met excellentie volgen",
+          "Langetermijn-reputatiebouwers",
+          "Professionals met erkende certificeringen"
+        ],
+        "whoPays": [
+          "Approximeerders en sluipwegnemers",
+          "Ongeduldige disruptors",
+          "Degenen zonder erkende referenties",
+          "Culturele buitenstaanders die weigeren zich aan te passen"
+        ],
+        "survivalRules": [
+          "Je vak tot excellentie beheersen",
+          "Regels nauwkeurig volgen",
+          "Reputatie opbouwen in de tijd",
+          "Cultureel en taalkundig integreren"
+        ],
+        "opportunities": [
+          "Maximale stabiliteit en zekerheid",
+          "Hoge levenskwaliteit",
+          "Duurzaam professioneel respect",
+          "Betrouwbare en transparante instellingen"
+        ],
+        "warningSigns": [
+          "Sluipwegen nemen",
+          "Vaardigheden overdrijven of opblazen",
+          "Lokale normen negeren",
+          "Het integratieproces overhaasten"
+        ]
+      },
+      "growthRisk": {
+        "whoThrives": [
+          "Hogesnelheidsondernemers",
+          "Degenen met toegang tot kapitaal",
+          "Eigenaren van schaalbare vaardigheden",
+          "Agressieve netwerkbouwers"
+        ],
+        "whoPays": [
+          "Stabiliteitszoekers",
+          "Degenen die afhankelijk zijn van sociale vangnetten",
+          "Langzame en gestage types",
+          "Degenen zonder gezondheids-/vermogensbuffer"
+        ],
+        "survivalRules": [
+          "Snel bewegen en snel schalen",
+          "Privé-vangnetten verzekeren",
+          "Agressief netwerken",
+          "Geografisch diversifiëren"
+        ],
+        "opportunities": [
+          "Explosief groeipotentieel",
+          "Overvloedige toegang tot kapitaal",
+          "Relatieve meritocratie",
+          "Volwassen ondernemersecosysteem"
+        ],
+        "warningSigns": [
+          "Vertrouwen op sociale systemen",
+          "Ziektekostenverzekering negeren",
+          "Opbranden zonder exitplan",
+          "Aannemen dat stabiliteit bestaat"
+        ]
+      },
+      "hybridTransition": {
+        "whoThrives": [
+          "Degenen die politieke signalen lezen",
+          "Snelle aanpassers aan verandering",
+          "Ondernemers in grijze zones",
+          "Degenen met internationale diversificatie"
+        ],
+        "whoPays": [
+          "Politiek zichtbaar of kritisch",
+          "Degenen die te snel zichtbaar groeien",
+          "Afhankelijk van een enkele sector of patroon",
+          "Degenen die tegen de staatsrichting wedden"
+        ],
+        "survivalRules": [
+          "Politieke signalen diep begrijpen",
+          "Publieke politieke neutraliteit behouden",
+          "Internationale opties discreet ontwikkelen",
+          "Nooit politiek prominent worden"
+        ],
+        "opportunities": [
+          "Snelle groei in juiste sectoren",
+          "Arbitrage tussen concurrerende logica's",
+          "Toegang tot transformerende markten",
+          "Digitale economie-kansen"
+        ],
+        "warningSigns": [
+          "Politiek zichtbaar worden",
+          "Systeem publiekelijk bekritiseren",
+          "Afhankelijk zijn van één sector",
+          "Rijkdom ostentatief tonen"
+        ]
+      },
+      "resourceExtraction": {
+        "whoThrives": [
+          "Professionals in de energiesector",
+          "Degenen dicht bij grondstofstromen",
+          "Hoogwaardige expats",
+          "Degenen die lokale waarden omarmen"
+        ],
+        "whoPays": [
+          "Degenen die permanente verbondenheid zoeken",
+          "Laaggeschoolde werknemers",
+          "Degenen die lokale gewoonten uitdagen",
+          "Langetermijnplanners zonder exitstrategie"
+        ],
+        "survivalRules": [
+          "Inkomen maximaliseren en agressief sparen",
+          "Je exit plannen vanaf dag één",
+          "Lokale gewoonten publiekelijk respecteren",
+          "Draagbare vaardigheden ontwikkelen"
+        ],
+        "opportunities": [
+          "Zeer hoog inkomstenpotentieel",
+          "Gunstige belastingen (vaak)",
+          "Snelle kapitaalaccumulatie",
+          "Kwaliteit internationale netwerken"
+        ],
+        "warningSigns": [
+          "Permanent verblijf of staatsburgerschap verwachten",
+          "Regering of cultuur bekritiseren",
+          "Alle inkomsten lokaal uitgeven",
+          "Afhankelijk zijn van één werkgever"
+        ]
+      }
+    }
+  },
   "featured": {
     "title": "Verken landen",
     "subtitle": "Diepgaande analyse van echte systemen, geen fantasie-ranglijsten",
