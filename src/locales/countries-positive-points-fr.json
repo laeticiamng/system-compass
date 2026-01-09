@@ -1,0 +1,917 @@
+{
+  "countries": {
+    "cameroon": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Valeurs familiales et communautaires fortes",
+          "2": "Vie sociale dynamique",
+          "3": "Traditions culinaires diversifiées"
+        },
+        "economy": {
+          "1": "Coût de la vie bas",
+          "2": "Scène tech startup émergente",
+          "3": "Position stratégique pour le commerce africain"
+        },
+        "culture": {
+          "1": "Riche diversité culturelle avec 250+ groupes ethniques",
+          "2": "Bilingue (Français/Anglais)",
+          "3": "Scène musicale célèbre (Makossa, Bikutsi)"
+        },
+        "infrastructure": {
+          "1": "Bonne couverture téléphone mobile",
+          "2": "Port de Douala - hub d'Afrique Centrale"
+        },
+        "opportunities": {
+          "1": "Marchés inexploités",
+          "2": "Potentiel agricole",
+          "3": "Porte d'entrée commerciale régionale"
+        },
+        "nature": {
+          "1": "Mont Cameroun (volcan actif)",
+          "2": "Belles plages à Kribi",
+          "3": "Paysages diversifiés de la forêt tropicale à la savane"
+        }
+      }
+    },
+    "france": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Semaine de 35 heures",
+          "2": "Équilibre vie-travail exceptionnel",
+          "3": "5 semaines de congés payés",
+          "4": "Gastronomie de renommée mondiale"
+        },
+        "economy": {
+          "1": "Fortes protections sociales",
+          "2": "Éducation gratuite jusqu'à l'université",
+          "3": "Excellent système de santé public",
+          "4": "Nombreux sièges de multinationales"
+        },
+        "culture": {
+          "1": "Art, musées et patrimoine de classe mondiale",
+          "2": "Mode et luxe",
+          "3": "Diversité régionale riche",
+          "4": "Cafés et vie intellectuelle"
+        },
+        "infrastructure": {
+          "1": "Excellent réseau de transports publics",
+          "2": "TGV reliant les grandes villes",
+          "3": "Garde d'enfants subventionnée",
+          "4": "Réseau nucléaire (énergie stable)"
+        },
+        "opportunities": {
+          "1": "Écosystème tech en croissance (Paris)",
+          "2": "Programmes de soutien aux startups",
+          "3": "Accès au marché européen",
+          "4": "Recherche et développement solides"
+        },
+        "nature": {
+          "1": "Alpes et Pyrénées pour le ski",
+          "2": "Côte d'Azur (Méditerranée)",
+          "3": "Campagne diversifiée",
+          "4": "Régions viticoles (Bordeaux, Bourgogne)"
+        }
+      }
+    },
+    "switzerland": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Sécurité et sûreté exceptionnelles",
+          "2": "Villes propres",
+          "3": "Services publics remarquables",
+          "4": "Éducation de classe mondiale"
+        },
+        "economy": {
+          "1": "Salaires les plus élevés d'Europe",
+          "2": "Impôts très bas",
+          "3": "Secteur bancaire solide",
+          "4": "Hub d'innovation"
+        },
+        "culture": {
+          "1": "Quatre langues nationales",
+          "2": "Arts et festivals renommés",
+          "3": "Tradition horlogère",
+          "4": "Patrimoine montagnard"
+        },
+        "infrastructure": {
+          "1": "Transports publics parmi les meilleurs au monde",
+          "2": "Internet ultra-rapide",
+          "3": "Système de santé de qualité",
+          "4": "Tunnels alpins efficaces"
+        },
+        "opportunities": {
+          "1": "Hub pharma et biotech",
+          "2": "Finance et fintech",
+          "3": "Organisations internationales",
+          "4": "Opportunités de trading de matières premières"
+        },
+        "nature": {
+          "1": "Alpes spectaculaires",
+          "2": "Lacs cristallins",
+          "3": "Domaines skiables de classe mondiale",
+          "4": "Sentiers de randonnée pittoresques"
+        }
+      }
+    },
+    "usa": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Liberté entrepreneuriale",
+          "2": "Culture de l'innovation",
+          "3": "Communautés diversifiées",
+          "4": "Divertissement de classe mondiale"
+        },
+        "economy": {
+          "1": "Plus grande économie du monde",
+          "2": "Hub tech de la Silicon Valley",
+          "3": "Accès au capital-risque",
+          "4": "Fort potentiel de revenus"
+        },
+        "culture": {
+          "1": "Hollywood et industrie du divertissement",
+          "2": "Scène musicale diversifiée",
+          "3": "Culture sportive (NFL, NBA, MLB)",
+          "4": "Caractère multiculturel des grandes villes"
+        },
+        "infrastructure": {
+          "1": "Meilleures universités du monde",
+          "2": "Réseau routier étendu",
+          "3": "Aéroports majeurs partout",
+          "4": "Innovation dans les soins de santé"
+        },
+        "opportunities": {
+          "1": "Hub mondial des startups",
+          "2": "Opportunités de carrière diverses",
+          "3": "Centres de recherche",
+          "4": "Programmes d'accélérateurs"
+        },
+        "nature": {
+          "1": "Parcs nationaux (Yellowstone, Grand Canyon)",
+          "2": "Plages diverses (Californie, Floride)",
+          "3": "Montagnes pour le ski (Colorado, Utah)",
+          "4": "Vastes paysages variés"
+        }
+      }
+    },
+    "germany": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Excellent équilibre vie-travail",
+          "2": "Fort filet de sécurité sociale",
+          "3": "Culture de la bière",
+          "4": "Orienté famille"
+        },
+        "economy": {
+          "1": "Base industrielle solide",
+          "2": "Entreprises Mittelstand",
+          "3": "Faible chômage",
+          "4": "Éducation universitaire gratuite"
+        },
+        "culture": {
+          "1": "Patrimoine classique musical riche",
+          "2": "Châteaux et architecture historique",
+          "3": "Marchés de Noël",
+          "4": "Oktoberfest et traditions régionales"
+        },
+        "infrastructure": {
+          "1": "Autobahn efficace",
+          "2": "Réseau ferroviaire étendu (Deutsche Bahn)",
+          "3": "Villes propres et bien planifiées",
+          "4": "Système de santé de qualité"
+        },
+        "opportunities": {
+          "1": "Hub d'ingénierie et de manufacturing",
+          "2": "Scène tech en croissance (Berlin)",
+          "3": "Leader de la transition énergétique",
+          "4": "Leadership dans l'industrie automobile"
+        },
+        "nature": {
+          "1": "Forêt-Noire",
+          "2": "Alpes bavaroises",
+          "3": "Vallée du Rhin",
+          "4": "Côte de la mer Baltique"
+        }
+      }
+    },
+    "canada": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Société multiculturelle",
+          "2": "Sûre et accueillante",
+          "3": "Mode de vie en plein air",
+          "4": "Excellent équilibre vie-travail"
+        },
+        "economy": {
+          "1": "Économie stable",
+          "2": "Favorable à l'immigration",
+          "3": "Fort secteur tech",
+          "4": "Bon marché de l'emploi pour les travailleurs qualifiés"
+        },
+        "culture": {
+          "1": "Société bilingue (Anglais/Français)",
+          "2": "Patrimoine autochtone des Premières Nations",
+          "3": "Scène artistique dynamique",
+          "4": "Culture sportive (hockey, sports d'hiver)"
+        },
+        "infrastructure": {
+          "1": "Système de santé universel",
+          "2": "Éducation publique de qualité",
+          "3": "Bon transport public dans les grandes villes",
+          "4": "Connectivité internet fiable"
+        },
+        "opportunities": {
+          "1": "Programmes d'immigration (Entrée Express)",
+          "2": "Soutien aux startups",
+          "3": "Centres de recherche",
+          "4": "Secteur des ressources naturelles"
+        },
+        "nature": {
+          "1": "Montagnes Rocheuses",
+          "2": "Chutes du Niagara",
+          "3": "Vastes forêts et lacs",
+          "4": "Aurores boréales"
+        }
+      }
+    },
+    "uae": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Revenu exonéré d'impôt",
+          "2": "Environnement sûr",
+          "3": "Options de vie luxueuses",
+          "4": "Équipements modernes"
+        },
+        "economy": {
+          "1": "Pas d'impôt sur le revenu",
+          "2": "Réglementations favorables aux entreprises",
+          "3": "Écosystème startup en croissance",
+          "4": "Emplacement stratégique"
+        },
+        "culture": {
+          "1": "Communauté expat diversifiée",
+          "2": "Patrimoine arabe",
+          "3": "Scène gastronomique internationale",
+          "4": "Shopping et divertissement de classe mondiale"
+        },
+        "infrastructure": {
+          "1": "Architecture ultra-moderne",
+          "2": "Hub aéroportuaire de classe mondiale (Dubaï)",
+          "3": "Transports publics modernes",
+          "4": "Excellents soins de santé"
+        },
+        "opportunities": {
+          "1": "Zones franches pour les entreprises",
+          "2": "Hub du commerce international",
+          "3": "Croissance des secteurs tech et finance",
+          "4": "Hub immobilier et de construction"
+        },
+        "nature": {
+          "1": "Plages du désert",
+          "2": "Montagnes (Fujairah, Ras Al Khaimah)",
+          "3": "Safaris dans le désert",
+          "4": "Eaux de plongée claires"
+        }
+      }
+    },
+    "singapore": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Très sûr et propre",
+          "2": "Services publics efficaces",
+          "3": "Scène culinaire multiculturelle",
+          "4": "Équipements modernes"
+        },
+        "economy": {
+          "1": "Impôts bas",
+          "2": "Favorable aux entreprises",
+          "3": "Système juridique solide",
+          "4": "Hub financier majeur"
+        },
+        "culture": {
+          "1": "Mélange de cultures (Chinoise, Malaise, Indienne)",
+          "2": "Paradis culinaire",
+          "3": "Architecture moderne et coloniale",
+          "4": "Festivals tout au long de l'année"
+        },
+        "infrastructure": {
+          "1": "Meilleur aéroport du monde (Changi)",
+          "2": "MRT efficace et propre",
+          "3": "Excellents soins de santé",
+          "4": "Internet ultra-rapide"
+        },
+        "opportunities": {
+          "1": "Hub fintech et tech",
+          "2": "Porte d'entrée vers l'Asie",
+          "3": "Écosystème startup",
+          "4": "Centres de recherche et développement"
+        },
+        "nature": {
+          "1": "Gardens by the Bay",
+          "2": "Réserves naturelles (Bukit Timah)",
+          "3": "Île de Sentosa",
+          "4": "Côte est et plages"
+        }
+      }
+    },
+    "portugal": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Excellent climat",
+          "2": "Rythme de vie détendu",
+          "3": "Cuisine délicieuse",
+          "4": "Communauté expat accueillante"
+        },
+        "economy": {
+          "1": "Régime fiscal favorable (NHR)",
+          "2": "Coût de la vie abordable",
+          "3": "Scène tech en croissance",
+          "4": "Golden Visa"
+        },
+        "culture": {
+          "1": "Riche patrimoine historique",
+          "2": "Musique Fado",
+          "3": "Architecture azulejos",
+          "4": "Tradition viticole (Porto, Douro)"
+        },
+        "infrastructure": {
+          "1": "Bon système de santé",
+          "2": "Internet fiable",
+          "3": "Transports en commun à Lisbonne",
+          "4": "Aéroport international bien connecté"
+        },
+        "opportunities": {
+          "1": "Hub digital nomad",
+          "2": "Écosystème startup (Web Summit)",
+          "3": "Tourisme en croissance",
+          "4": "Énergies renouvelables"
+        },
+        "nature": {
+          "1": "Côte de l'Algarve",
+          "2": "Vallée du Douro",
+          "3": "Archipel de Madère",
+          "4": "Açores sauvages"
+        }
+      }
+    },
+    "nigeria": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Vie sociale dynamique",
+          "2": "Scène musicale (Afrobeats)",
+          "3": "Hospitalité chaleureuse",
+          "4": "Culture entrepreneuriale"
+        },
+        "economy": {
+          "1": "Plus grande économie d'Afrique",
+          "2": "Scène tech croissante",
+          "3": "Grand marché de consommateurs",
+          "4": "Ressources naturelles abondantes"
+        },
+        "culture": {
+          "1": "Nollywood (2e industrie cinématographique)",
+          "2": "Richesse ethnique diversifiée",
+          "3": "Mode vibrante",
+          "4": "Littérature riche"
+        },
+        "infrastructure": {
+          "1": "Connectivité mobile en croissance",
+          "2": "Hubs tech (Lagos)",
+          "3": "Ports en développement",
+          "4": "Zones économiques spéciales"
+        },
+        "opportunities": {
+          "1": "Hub fintech africain",
+          "2": "E-commerce en croissance",
+          "3": "Jeune population dynamique",
+          "4": "Potentiel agricole"
+        },
+        "nature": {
+          "1": "Plages de Lagos",
+          "2": "Parc national de Yankari",
+          "3": "Collines d'Obudu",
+          "4": "Delta du Niger"
+        }
+      }
+    },
+    "japan": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Société sûre",
+          "2": "Propreté et ordre",
+          "3": "Services efficaces",
+          "4": "Expériences culturelles riches"
+        },
+        "economy": {
+          "1": "Fort secteur tech",
+          "2": "Faible chômage",
+          "3": "Leader de l'innovation",
+          "4": "Yen fort comme monnaie de réserve"
+        },
+        "culture": {
+          "1": "Patrimoine unique (temples, jardins)",
+          "2": "Anime et manga",
+          "3": "Cuisine traditionnelle",
+          "4": "Arts martiaux et traditions"
+        },
+        "infrastructure": {
+          "1": "Shinkansen (trains à grande vitesse)",
+          "2": "Transports publics exemplaires",
+          "3": "Technologie de pointe",
+          "4": "Soins de santé avancés"
+        },
+        "opportunities": {
+          "1": "Robotique et IA",
+          "2": "Gaming et divertissement",
+          "3": "Recherche scientifique",
+          "4": "Manufacturing de précision"
+        },
+        "nature": {
+          "1": "Mont Fuji",
+          "2": "Cerisiers en fleurs",
+          "3": "Sources thermales (onsen)",
+          "4": "Alpes japonaises"
+        }
+      }
+    },
+    "brazil": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Culture sociale vibrante",
+          "2": "Belles plages",
+          "3": "Samba et Carnaval",
+          "4": "Hospitalité chaleureuse"
+        },
+        "economy": {
+          "1": "Grand marché de consommateurs",
+          "2": "Ressources naturelles abondantes",
+          "3": "Classe moyenne en croissance",
+          "4": "Fort secteur agricole"
+        },
+        "culture": {
+          "1": "Football et passion sportive",
+          "2": "Musique diverse (Bossa Nova, Samba, Funk)",
+          "3": "Carnaval de Rio",
+          "4": "Diversité ethnique"
+        },
+        "infrastructure": {
+          "1": "Aéroports internationaux majeurs",
+          "2": "Métro dans les grandes villes",
+          "3": "Leader en énergies renouvelables",
+          "4": "Système bancaire développé"
+        },
+        "opportunities": {
+          "1": "Agro-industrie",
+          "2": "Tourisme en croissance",
+          "3": "Startups tech (São Paulo)",
+          "4": "Énergies vertes"
+        },
+        "nature": {
+          "1": "Forêt amazonienne",
+          "2": "Plages paradisiaques",
+          "3": "Chutes d'Iguazu",
+          "4": "Pantanal (zones humides)"
+        }
+      }
+    },
+    "netherlands": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Excellent équilibre vie-travail",
+          "2": "Culture du vélo",
+          "3": "Société libérale et tolérante",
+          "4": "Haute qualité de vie"
+        },
+        "economy": {
+          "1": "Fort secteur tech",
+          "2": "Hub commercial européen majeur",
+          "3": "Port de Rotterdam (plus grand d'Europe)",
+          "4": "Écosystème startup innovant"
+        },
+        "culture": {
+          "1": "Maîtres de la peinture (Van Gogh, Rembrandt)",
+          "2": "Architecture des canaux",
+          "3": "Tulipes et moulins",
+          "4": "Scène musicale électronique"
+        },
+        "infrastructure": {
+          "1": "Excellents transports publics",
+          "2": "Pistes cyclables partout",
+          "3": "Schiphol (aéroport hub)",
+          "4": "Internet ultra-rapide"
+        },
+        "opportunities": {
+          "1": "Quartier général européen de multinationales",
+          "2": "Hub fintech et tech",
+          "3": "Agriculture innovante",
+          "4": "Logistique et commerce"
+        },
+        "nature": {
+          "1": "Champs de tulipes",
+          "2": "Côte de la mer du Nord",
+          "3": "Parcs nationaux",
+          "4": "Canaux pittoresques"
+        }
+      }
+    },
+    "morocco": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Riches traditions culinaires",
+          "2": "Hospitalité chaleureuse",
+          "3": "Belle architecture traditionnelle",
+          "4": "Vie abordable"
+        },
+        "economy": {
+          "1": "Secteur touristique en croissance",
+          "2": "Hub manufacturing émergent",
+          "3": "Pont stratégique Afrique-Europe",
+          "4": "Accords de libre-échange"
+        },
+        "culture": {
+          "1": "Médinas historiques",
+          "2": "Artisanat traditionnel",
+          "3": "Musique gnawa",
+          "4": "Patrimoine berbère"
+        },
+        "infrastructure": {
+          "1": "TGV (train à grande vitesse)",
+          "2": "Aéroports modernes",
+          "3": "Port Tanger Med",
+          "4": "Télécoms en développement"
+        },
+        "opportunities": {
+          "1": "Tourisme et hôtellerie",
+          "2": "Énergies renouvelables",
+          "3": "Hub automobile africain",
+          "4": "Délocalisation de services"
+        },
+        "nature": {
+          "1": "Montagnes de l'Atlas",
+          "2": "Désert du Sahara",
+          "3": "Côtes atlantique et méditerranéenne",
+          "4": "Vallées verdoyantes"
+        }
+      }
+    },
+    "australia": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Mode de vie en plein air (plage et nature)",
+          "2": "Excellent climat toute l'année",
+          "3": "Société sûre et accueillante",
+          "4": "Équilibre vie-travail"
+        },
+        "economy": {
+          "1": "Fort secteur minier",
+          "2": "Économie stable",
+          "3": "Salaire minimum élevé",
+          "4": "Bon marché de l'emploi pour les qualifiés"
+        },
+        "culture": {
+          "1": "Société multiculturelle",
+          "2": "Patrimoine aborigène indigène",
+          "3": "Culture du café (Melbourne)",
+          "4": "Culture sportive (AFL, cricket)"
+        },
+        "infrastructure": {
+          "1": "Villes modernes",
+          "2": "Système de santé universel (Medicare)",
+          "3": "Bon système éducatif",
+          "4": "Services fiables"
+        },
+        "opportunities": {
+          "1": "Programmes d'immigration",
+          "2": "Programmes pour travailleurs qualifiés",
+          "3": "Secteur tech en croissance",
+          "4": "Institutions de recherche"
+        },
+        "nature": {
+          "1": "Grande Barrière de Corail",
+          "2": "Uluru et l'Outback",
+          "3": "Faune unique (kangourous, koalas)",
+          "4": "Plages magnifiques"
+        }
+      }
+    },
+    "china": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Services numériques avancés",
+          "2": "Vie quotidienne pratique",
+          "3": "Cuisine régionale diverse",
+          "4": "Transports efficaces"
+        },
+        "economy": {
+          "1": "Deuxième économie mondiale",
+          "2": "Manufacturing de pointe",
+          "3": "Marché de consommateurs massif",
+          "4": "Investissements en R&D"
+        },
+        "culture": {
+          "1": "5000 ans d'histoire",
+          "2": "Patrimoine culturel riche",
+          "3": "Arts martiaux traditionnels",
+          "4": "Calligraphie et philosophie"
+        },
+        "infrastructure": {
+          "1": "Réseau TGV le plus étendu",
+          "2": "Villes intelligentes",
+          "3": "E-commerce développé",
+          "4": "5G déployée massivement"
+        },
+        "opportunities": {
+          "1": "Tech et IA",
+          "2": "Énergies renouvelables",
+          "3": "Startups tech",
+          "4": "Commerce international"
+        },
+        "nature": {
+          "1": "Grande Muraille",
+          "2": "Montagnes spectaculaires",
+          "3": "Rivières et vallées",
+          "4": "Pandas et réserves naturelles"
+        }
+      }
+    },
+    "russia": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Coût de la vie abordable",
+          "2": "Vie culturelle riche",
+          "3": "Forte tradition éducative",
+          "4": "Communauté chaleureuse"
+        },
+        "economy": {
+          "1": "Ressources naturelles abondantes",
+          "2": "Fort secteur tech",
+          "3": "Industrie spatiale",
+          "4": "Main-d'œuvre qualifiée"
+        },
+        "culture": {
+          "1": "Ballet et opéra de classe mondiale",
+          "2": "Littérature classique",
+          "3": "Architecture historique",
+          "4": "Musées (Hermitage)"
+        },
+        "infrastructure": {
+          "1": "Métro de Moscou (chef-d'œuvre)",
+          "2": "Transports publics abordables",
+          "3": "Système éducatif solide",
+          "4": "Internet fiable"
+        },
+        "opportunities": {
+          "1": "IT et programmation",
+          "2": "Sciences et recherche",
+          "3": "Secteur énergétique",
+          "4": "Industrie spatiale"
+        },
+        "nature": {
+          "1": "Lac Baïkal",
+          "2": "Sibérie sauvage",
+          "3": "Montagnes du Caucase",
+          "4": "Aurores boréales"
+        }
+      }
+    },
+    "norway": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Meilleur équilibre vie-travail",
+          "2": "Société égalitaire",
+          "3": "Nature accessible",
+          "4": "Sécurité exceptionnelle"
+        },
+        "economy": {
+          "1": "Salaires très élevés",
+          "2": "Fonds souverain le plus riche",
+          "3": "Faible chômage",
+          "4": "Économie diversifiée"
+        },
+        "culture": {
+          "1": "Patrimoine viking",
+          "2": "Design scandinave",
+          "3": "Traditions friluftsliv (vie en plein air)",
+          "4": "Arts et musique"
+        },
+        "infrastructure": {
+          "1": "Excellent système de santé",
+          "2": "Transports publics de qualité",
+          "3": "Éducation gratuite",
+          "4": "Leader des véhicules électriques"
+        },
+        "opportunities": {
+          "1": "Secteur pétrolier et gazier",
+          "2": "Énergies renouvelables",
+          "3": "Maritime et aquaculture",
+          "4": "Tech et innovation"
+        },
+        "nature": {
+          "1": "Fjords spectaculaires",
+          "2": "Aurores boréales",
+          "3": "Soleil de minuit",
+          "4": "Montagnes et glaciers"
+        }
+      }
+    },
+    "qatar": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Revenu exonéré d'impôt",
+          "2": "Très sûr",
+          "3": "Vie de luxe accessible",
+          "4": "Services modernes"
+        },
+        "economy": {
+          "1": "Pas d'impôt sur le revenu",
+          "2": "PIB par habitant élevé",
+          "3": "Investissements massifs",
+          "4": "Économie stable"
+        },
+        "culture": {
+          "1": "Mélange tradition et modernité",
+          "2": "Musées de classe mondiale",
+          "3": "Événements sportifs internationaux",
+          "4": "Cuisine internationale"
+        },
+        "infrastructure": {
+          "1": "Aéroport ultra-moderne (Hamad)",
+          "2": "Métro récent",
+          "3": "Hôpitaux de pointe",
+          "4": "Villes intelligentes"
+        },
+        "opportunities": {
+          "1": "Secteur gazier",
+          "2": "Finance et banque",
+          "3": "Construction et immobilier",
+          "4": "Événements et tourisme"
+        },
+        "nature": {
+          "1": "Désert et dunes",
+          "2": "Côte du golfe Persique",
+          "3": "Mer intérieure (Khor Al Adaid)",
+          "4": "Réserves marines"
+        }
+      }
+    },
+    "saudi-arabia": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Revenus exonérés d'impôt",
+          "2": "Environnement sûr",
+          "3": "Modernisation rapide",
+          "4": "Nouvelles options de divertissement"
+        },
+        "economy": {
+          "1": "Pas d'impôt sur le revenu",
+          "2": "Vision 2030 (diversification)",
+          "3": "Investissements massifs",
+          "4": "Opportunités d'emploi"
+        },
+        "culture": {
+          "1": "Patrimoine islamique riche",
+          "2": "Sites historiques (AlUla)",
+          "3": "Hospitalité arabe",
+          "4": "Nouvelles expériences culturelles"
+        },
+        "infrastructure": {
+          "1": "Projets méga (NEOM)",
+          "2": "Nouveaux aéroports",
+          "3": "Transport en développement",
+          "4": "Villes intelligentes"
+        },
+        "opportunities": {
+          "1": "Secteur énergétique",
+          "2": "Tourisme en expansion",
+          "3": "Tech et innovation",
+          "4": "Divertissement et événements"
+        },
+        "nature": {
+          "1": "Mer Rouge (plongée)",
+          "2": "Déserts spectaculaires",
+          "3": "Montagnes d'Asir",
+          "4": "Oasis historiques"
+        }
+      }
+    },
+    "venezuela": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Hospitalité chaleureuse",
+          "2": "Vie sociale riche",
+          "3": "Culture festive",
+          "4": "Coût de la vie très bas"
+        },
+        "economy": {
+          "1": "Réserves pétrolières importantes",
+          "2": "Potentiel agricole",
+          "3": "Ressources minières",
+          "4": "Main-d'œuvre qualifiée disponible"
+        },
+        "culture": {
+          "1": "Musique et danse (salsa, joropo)",
+          "2": "Passion du baseball",
+          "3": "Concours de beauté",
+          "4": "Art et littérature"
+        },
+        "infrastructure": {
+          "1": "Télécoms en zones urbaines",
+          "2": "Universités reconnues",
+          "3": "Ports stratégiques",
+          "4": "Réseau routier urbain"
+        },
+        "opportunities": {
+          "1": "Pétrole (avec stabilisation)",
+          "2": "Tourisme (potentiel)",
+          "3": "Agriculture",
+          "4": "Énergie renouvelable"
+        },
+        "nature": {
+          "1": "Chutes Angel (plus hautes du monde)",
+          "2": "Plages des Caraïbes",
+          "3": "Andes vénézuéliennes",
+          "4": "Delta de l'Orénoque"
+        }
+      }
+    },
+    "india": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Coût de la vie abordable",
+          "2": "Richesse spirituelle",
+          "3": "Cuisine diverse",
+          "4": "Vie communautaire forte"
+        },
+        "economy": {
+          "1": "Croissance économique rapide",
+          "2": "Hub IT mondial",
+          "3": "Grand marché de consommateurs",
+          "4": "Jeune population active"
+        },
+        "culture": {
+          "1": "Diversité culturelle immense",
+          "2": "Bollywood",
+          "3": "Patrimoine millénaire",
+          "4": "Festivals colorés"
+        },
+        "infrastructure": {
+          "1": "Connectivité internet en croissance",
+          "2": "Métros dans les grandes villes",
+          "3": "Aéroports modernes",
+          "4": "Startups tech"
+        },
+        "opportunities": {
+          "1": "Hub tech et IT",
+          "2": "Startups unicornes",
+          "3": "Services aux entreprises",
+          "4": "Pharma et biotech"
+        },
+        "nature": {
+          "1": "Himalaya",
+          "2": "Plages de Goa",
+          "3": "Kerala (backwaters)",
+          "4": "Désert du Rajasthan"
+        }
+      }
+    },
+    "turkey": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Coût de la vie abordable",
+          "2": "Climat méditerranéen",
+          "3": "Hospitalité turque",
+          "4": "Cuisine délicieuse"
+        },
+        "economy": {
+          "1": "Économie diversifiée",
+          "2": "Secteur manufacturier",
+          "3": "Tourisme important",
+          "4": "Position stratégique Europe-Asie"
+        },
+        "culture": {
+          "1": "Patrimoine ottoman et byzantin",
+          "2": "Bazars historiques",
+          "3": "Hammams traditionnels",
+          "4": "Arts et artisanat"
+        },
+        "infrastructure": {
+          "1": "Nouvel aéroport d'Istanbul",
+          "2": "Métros en expansion",
+          "3": "Hôpitaux modernes",
+          "4": "Internet fiable"
+        },
+        "opportunities": {
+          "1": "Tourisme et hôtellerie",
+          "2": "E-commerce",
+          "3": "Textile et mode",
+          "4": "Construction"
+        },
+        "nature": {
+          "1": "Cappadoce",
+          "2": "Côte turquoise",
+          "3": "Pamukkale",
+          "4": "Mont Ararat"
+        }
+      }
+    }
+  }
+}
