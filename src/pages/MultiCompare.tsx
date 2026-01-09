@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { RiskBars } from '@/components/RiskBars';
 import { RadarCompareChart } from '@/components/RadarCompareChart';
 import { RiskStackedBarChart } from '@/components/RiskStackedBarChart';
+import { TagsRadarCompare } from '@/components/TagsRadarCompare';
 import { FinancialTrajectoryChart } from '@/components/FinancialTrajectoryChart';
 import { useSavedComparisons } from '@/hooks/useSavedComparisons';
 import { cn } from '@/lib/utils';
@@ -370,6 +371,14 @@ export default function MultiCompare() {
               {/* Risk Stacked Bar Chart */}
               <RiskStackedBarChart countries={selectedCountries} />
             </div>
+
+            {/* Intelligence Tags Radar */}
+            <TagsRadarCompare 
+              countryIds={selectedIds}
+              countryNames={Object.fromEntries(
+                selectedCountries.map(c => [c.id, { name: c.name, iso2: c.iso2 }])
+              )}
+            />
 
             {/* Key Metrics */}
             <section className="glass-card rounded-xl overflow-hidden">
