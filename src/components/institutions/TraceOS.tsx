@@ -39,6 +39,7 @@ import { TagManager } from './TagManager';
 import { TraceOSCollaboration } from './TraceOSCollaboration';
 import { DecisionAuditLog } from './DecisionAuditLog';
 import { WorkflowMetrics } from './WorkflowMetrics';
+import { AutoExportManager } from './AutoExportManager';
 import { useSubscription } from '@/hooks/useSubscription';
 import { useTraceOSDecisions } from '@/hooks/useTraceOSDecisions';
 import { useTraceOSTags } from '@/hooks/useTraceOSTags';
@@ -486,7 +487,10 @@ export function TraceOS() {
                 </p>
               </CardContent>
             </Card>
-            <WorkflowMetrics />
+            <div className="grid lg:grid-cols-2 gap-6">
+              <WorkflowMetrics />
+              <AutoExportManager />
+            </div>
           </div>
         </TabsContent>
 
