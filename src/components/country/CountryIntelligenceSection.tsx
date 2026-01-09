@@ -7,6 +7,13 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
+import { CountryTagsRadar } from './CountryTagsRadar';
+import { 
+  translateIntelligenceValue, 
+  getMobilitySpeedColor, 
+  getMentalCostColor, 
+  getCycleStatusColor 
+} from '@/lib/intelligence-translations';
 import { 
   Crown, 
   Network, 
@@ -163,6 +170,9 @@ export function CountryIntelligenceSection({ countryId, countryName }: Props) {
           {t('intelligence.disclaimer', 'Outil d\'analyse : pas de conseil. Simulation ≠ prédiction. Tendances générales, variations individuelles possibles.')}
         </p>
       </div>
+
+      {/* Tags Radar Chart */}
+      {tags && <CountryTagsRadar tags={tags} countryName={countryName} />}
 
       {/* Tags Overview */}
       {tags && <TagsOverview tags={tags} />}
@@ -483,24 +493,6 @@ function StrategiesSection({ intelligence }: { intelligence: CountryIntelligence
 function MobilitySection({ intelligence }: { intelligence: CountryIntelligence }) {
   const { t } = useTranslation();
 
-  const speedColors: Record<string, string> = {
-    slow: 'text-red-500',
-    medium: 'text-amber-500',
-    fast: 'text-green-500',
-    lente: 'text-red-500',
-    moyenne: 'text-amber-500',
-    rapide: 'text-green-500',
-  };
-
-  const costColors: Record<string, string> = {
-    low: 'text-green-500',
-    medium: 'text-amber-500',
-    high: 'text-red-500',
-    faible: 'text-green-500',
-    moyen: 'text-amber-500',
-    élevé: 'text-red-500',
-  };
-
   return (
     <div className="space-y-4">
       <Card>
@@ -526,10 +518,10 @@ function MobilitySection({ intelligence }: { intelligence: CountryIntelligence }
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className={`text-xl font-bold mb-2 ${speedColors[intelligence.mobility_speed?.toLowerCase() || ''] || ''}`}>
-              {intelligence.mobility_speed}
-            </div>
-            <p className="text-sm text-muted-foreground">{intelligence.mobility_speed_reason}</p>
+            <Badge className={getMobilitySpeedColor(intelligence.mobility_speed)}>
+              {translateIntelligenceValue('mobility_speed', intelligence.mobility_speed)}
+            </Badge>
+            <p className="text-sm text-muted-foreground mt-2">{intelligence.mobility_speed_reason}</p>
           </CardContent>
         </Card>
 
@@ -540,10 +532,10 @@ function MobilitySection({ intelligence }: { intelligence: CountryIntelligence }
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className={`text-xl font-bold mb-2 ${costColors[intelligence.mental_cost?.toLowerCase() || ''] || ''}`}>
-              {intelligence.mental_cost}
-            </div>
-            <p className="text-sm text-muted-foreground">{intelligence.mental_cost_reason}</p>
+            <Badge className={getMentalCostColor(intelligence.mental_cost)}>
+              {translateIntelligenceValue('mental_cost', intelligence.mental_cost)}
+            </Badge>
+            <p className="text-sm text-muted-foreground mt-2">{intelligence.mental_cost_reason}</p>
           </CardContent>
         </Card>
       </div>
@@ -622,12 +614,6 @@ function PsychoSection({ intelligence }: { intelligence: CountryIntelligence }) 
 function GeopoliticsSection({ intelligence }: { intelligence: CountryIntelligence }) {
   const { t } = useTranslation();
 
-  const cycleColors: Record<string, string> = {
-    stable: 'bg-green-500',
-    transition: 'bg-amber-500',
-    volatile: 'bg-red-500',
-  };
-
   return (
     <div className="space-y-4">
       <Card>
@@ -653,10 +639,9 @@ function GeopoliticsSection({ intelligence }: { intelligence: CountryIntelligenc
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="flex items-center gap-3">
-              <div className={`w-3 h-3 rounded-full ${cycleColors[intelligence.cycle_status?.toLowerCase() || ''] || 'bg-muted'}`} />
-              <span className="font-medium">{intelligence.cycle_status}</span>
-            </div>
+            <Badge className={getCycleStatusColor(intelligence.cycle_status)}>
+              {translateIntelligenceValue('cycle_status', intelligence.cycle_status)}
+            </Badge>
           </CardContent>
         </Card>
 
