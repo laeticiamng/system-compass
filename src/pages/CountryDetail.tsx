@@ -1,12 +1,9 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getCountryById } from '@/lib/countries-data';
-import { PyramidVisualization } from '@/components/PyramidVisualization';
-import { RiskBars } from '@/components/RiskBars';
-import { RuleOfGoldBanner } from '@/components/RuleOfGoldBanner';
-import { WhoWinsWhoLoses } from '@/components/WhoWinsWhoLoses';
-import { PlaybookSection } from '@/components/PlaybookSection';
-import { LGBTQRightsIndicator } from '@/components/LGBTQRightsIndicator';
+import { CountryTroncSection } from '@/components/country/CountryTroncSection';
+import { CountryVariantSection } from '@/components/country/CountryVariantSection';
+import { CountryProjectAnalysis } from '@/components/country/CountryProjectAnalysis';
 import { CountryExitKeys } from '@/components/CountryExitKeys';
 import { NaturalRisksCard } from '@/components/NaturalRisksCard';
 import { HealthcareCard } from '@/components/HealthcareCard';
@@ -14,8 +11,11 @@ import { PositivePointsCard } from '@/components/PositivePointsCard';
 import { CountryMusicPlayer } from '@/components/CountryMusicPlayer';
 import { FiscalSalaryCalculator } from '@/components/FiscalSalaryCalculator';
 import { RetirementProjection } from '@/components/RetirementProjection';
+import { LGBTQRightsIndicator } from '@/components/LGBTQRightsIndicator';
+import { PlaybookSection } from '@/components/PlaybookSection';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Calendar, ExternalLink } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { ArrowLeft, Calendar, ExternalLink, Layers, Map, Target } from 'lucide-react';
 
 const PYRAMID_TYPE_LABELS: Record<string, string> = {
   PROBLEM_RENT: 'pyramids.problemRent.label',
@@ -55,7 +55,6 @@ export default function CountryDetail() {
   const typeLabel = t(PYRAMID_TYPE_LABELS[country.pyramidType]);
   const typeColor = PYRAMID_TYPE_COLORS[country.pyramidType];
 
-  // Get translated country data
   const countryData = t(`countriesData.${country.id}`, { returnObjects: true }) as {
     name: string;
     region: string;
@@ -66,7 +65,6 @@ export default function CountryDetail() {
     playbook: { do: string[]; dont: string[]; plan30Days: string[]; plan12Months: string[]; plan5Years: string[]; planB: string };
   };
 
-  // Fallback to original data if translation not available
   const displayName = countryData?.name || country.name;
   const displayRegion = countryData?.region || country.region;
   const displayRuleOfGold = countryData?.ruleOfGold || country.ruleOfGold;
@@ -91,7 +89,7 @@ export default function CountryDetail() {
         </div>
 
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-start gap-6 mb-12">
+        <div className="flex flex-col md:flex-row md:items-start gap-6 mb-8">
           <div className="text-6xl">{getFlagEmoji(country.iso2)}</div>
           <div className="flex-1">
             <div className="flex flex-wrap items-center gap-3 mb-2">
@@ -111,7 +109,7 @@ export default function CountryDetail() {
         </div>
 
         {/* Snapshot */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
           <SnapshotCard label={t('countryDetail.snapshot.gdpPerCapita')} value={`$${country.snapshot.gdpPerCapita.toLocaleString()}`} />
           <SnapshotCard label={t('countryDetail.snapshot.population')} value={formatPopulation(country.snapshot.population)} />
           <SnapshotCard label={t('countryDetail.snapshot.passportRank')} value={`#${country.snapshot.passportRank}`} />
@@ -119,84 +117,87 @@ export default function CountryDetail() {
           <SnapshotCard label={t('countryDetail.snapshot.freedomIndex')} value={`${country.snapshot.freedomIndex}/100`} />
         </div>
 
-        {/* Rule of Gold */}
-        <RuleOfGoldBanner rule={displayRuleOfGold} className="mb-8" />
-
-        {/* Music Player - Listen to the system */}
+        {/* Music Player */}
         <CountryMusicPlayer
           countryId={country.id}
           countryName={displayName}
           pyramidType={country.pyramidType}
-          className="mb-12"
+          className="mb-8"
         />
 
-        {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-12 mb-12">
-          {/* Pyramid */}
-          <div>
-            <h2 className="font-display text-2xl font-bold mb-6">{t('countryDetail.systemPyramid')}</h2>
-            <PyramidVisualization country={country} translatedPyramid={displayPyramid} />
-          </div>
+        {/* 3-Layer Tabs */}
+        <Tabs defaultValue="tronc" className="mb-12">
+          <TabsList className="grid w-full grid-cols-3 mb-8">
+            <TabsTrigger value="tronc" className="gap-2">
+              <Layers className="w-4 h-4" />
+              <span className="hidden sm:inline">{t('countryDetail.tabs.tronc', 'Tronc Pyramide')}</span>
+              <span className="sm:hidden">Tronc</span>
+            </TabsTrigger>
+            <TabsTrigger value="variant" className="gap-2">
+              <Map className="w-4 h-4" />
+              <span className="hidden sm:inline">{t('countryDetail.tabs.variant', 'Variante Pays')}</span>
+              <span className="sm:hidden">Variante</span>
+            </TabsTrigger>
+            <TabsTrigger value="project" className="gap-2">
+              <Target className="w-4 h-4" />
+              <span className="hidden sm:inline">{t('countryDetail.tabs.project', 'Analyse Projet')}</span>
+              <span className="sm:hidden">Projet</span>
+            </TabsTrigger>
+          </TabsList>
 
-          {/* Risk Assessment */}
-          <div>
-            <h2 className="font-display text-2xl font-bold mb-6">{t('countryDetail.riskAssessment')}</h2>
-            <div className="glass-card rounded-xl p-6">
-              <RiskBars risks={country.risks} />
-            </div>
-          </div>
-        </div>
+          <TabsContent value="tronc">
+            <CountryTroncSection
+              country={country}
+              displayPyramid={displayPyramid}
+              displayRuleOfGold={displayRuleOfGold}
+              displayWhoWins={displayWhoWins}
+              displayWhoLoses={displayWhoLoses}
+            />
+          </TabsContent>
 
-        {/* Who Wins / Who Loses */}
-        <div className="mb-12">
-          <h2 className="font-display text-2xl font-bold mb-6">{t('countryDetail.whoWinsLoses')}</h2>
-          <WhoWinsWhoLoses wins={displayWhoWins} loses={displayWhoLoses} />
-        </div>
+          <TabsContent value="variant">
+            <CountryVariantSection countryId={country.id} countryName={displayName} />
+          </TabsContent>
 
-        {/* Positive Points */}
+          <TabsContent value="project">
+            <CountryProjectAnalysis countryId={country.id} countryName={displayName} />
+          </TabsContent>
+        </Tabs>
+
+        {/* Additional Sections */}
         {country.positivePoints && (
           <div className="mb-12">
             <PositivePointsCard positivePoints={country.positivePoints} countryId={country.id} />
           </div>
         )}
 
-        {/* LGBTQ+ Rights */}
         <div className="mb-12">
           <h2 className="font-display text-2xl font-bold mb-6">{t('countryDetail.lgbtqRights', 'LGBTQ+ Rights')}</h2>
           <LGBTQRightsIndicator rights={country.lgbtqRights} />
         </div>
 
-        {/* Natural Risks & Healthcare */}
         {(country.naturalRisks || country.healthcare) && (
           <div className="grid lg:grid-cols-2 gap-8 mb-12">
-            {country.naturalRisks && (
-              <NaturalRisksCard risks={country.naturalRisks} />
-            )}
-            {country.healthcare && (
-              <HealthcareCard healthcare={country.healthcare} />
-            )}
+            {country.naturalRisks && <NaturalRisksCard risks={country.naturalRisks} />}
+            {country.healthcare && <HealthcareCard healthcare={country.healthcare} />}
           </div>
         )}
 
-        {/* Fiscal Salary Calculator */}
         <div className="mb-12">
           <h2 className="font-display text-2xl font-bold mb-6">{t('fiscal.salaryCalculator', 'Calculateur de Salaire Net')}</h2>
           <FiscalSalaryCalculator initialCountryId={country.id} />
         </div>
 
-        {/* Retirement Projection */}
         <div className="mb-12">
           <h2 className="font-display text-2xl font-bold mb-6">{t('retirement.projectionTitle', 'Projection Retraite')}</h2>
           <RetirementProjection initialCountryId={country.id} />
         </div>
 
-        {/* Exit Keys - Personalized Strategies */}
         <div className="mb-12">
           <h2 className="font-display text-2xl font-bold mb-6">{t('exitKeys.title', 'Clés de Sortie')}</h2>
           <CountryExitKeys country={country} />
         </div>
 
-        {/* Playbook */}
         <div className="mb-12">
           <h2 className="font-display text-2xl font-bold mb-6">{t('countryDetail.survivalPlaybook')}</h2>
           <PlaybookSection playbook={displayPlaybook} />
@@ -213,10 +214,7 @@ export default function CountryDetail() {
           </div>
           <div className="flex flex-wrap gap-2">
             {country.sources.map((source, i) => (
-              <span
-                key={i}
-                className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-secondary text-sm text-muted-foreground"
-              >
+              <span key={i} className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-secondary text-sm text-muted-foreground">
                 <ExternalLink className="w-3 h-3" />
                 {source}
               </span>
@@ -238,10 +236,7 @@ function SnapshotCard({ label, value }: { label: string; value: string }) {
 }
 
 function getFlagEmoji(iso2: string): string {
-  const codePoints = iso2
-    .toUpperCase()
-    .split('')
-    .map((char) => 127397 + char.charCodeAt(0));
+  const codePoints = iso2.toUpperCase().split('').map((char) => 127397 + char.charCodeAt(0));
   return String.fromCodePoint(...codePoints);
 }
 
