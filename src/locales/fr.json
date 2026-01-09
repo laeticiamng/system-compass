@@ -5185,6 +5185,39 @@
       "oldPendingMsg": "Cette décision est en attente depuis {{days}} jours",
       "pendingReminder": "Rappel de décision",
       "pendingReminderMsg": "Décision en attente depuis {{days}} jours"
+    },
+    "comments": {
+      "title": "Commentaires",
+      "added": "Commentaire ajouté",
+      "updated": "Commentaire modifié",
+      "deleted": "Commentaire supprimé",
+      "error": "Erreur lors de l'opération",
+      "empty": "Aucun commentaire",
+      "placeholder": "Ajouter un commentaire..."
+    },
+    "templates": {
+      "title": "Templates de décision",
+      "description": "Utilisez un template pour accélérer la création de votre décision",
+      "use": "Utiliser",
+      "categories": {
+        "rh": "RH",
+        "it": "IT",
+        "strategy": "Stratégie",
+        "finance": "Finance",
+        "legal": "Juridique",
+        "operations": "Opérations"
+      }
+    },
+    "graph": {
+      "title": "Vue graphique interactive",
+      "instructions": "Glissez pour déplacer les nœuds, scroll pour zoomer",
+      "empty": "Aucune décision à afficher"
+    },
+    "tabs": {
+      "tree": "Arbre",
+      "graph": "Graphe",
+      "review": "Relecture",
+      "governance": "Gouvernance"
     }
   },
   "b2b": {

@@ -22,25 +22,35 @@ import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { DecisionNodeData } from './DecisionNode';
 
+interface InitialFormData {
+  title?: string;
+  context?: string;
+  mainHypothesis?: string;
+  alternativeHypotheses?: string[];
+  constraints?: string[];
+  scope?: string;
+}
+
 interface CreateDecisionFormProps {
   onSubmit: (decision: Omit<DecisionNodeData, 'id' | 'children'>) => void;
   onCancel: () => void;
   parentDecision?: DecisionNodeData;
   isLoading?: boolean;
+  initialData?: InitialFormData;
 }
 
-export function CreateDecisionForm({ onSubmit, onCancel, parentDecision, isLoading }: CreateDecisionFormProps) {
+export function CreateDecisionForm({ onSubmit, onCancel, parentDecision, isLoading, initialData }: CreateDecisionFormProps) {
   const { t } = useTranslation();
   
   const [formData, setFormData] = useState({
-    title: '',
-    context: '',
-    mainHypothesis: '',
-    alternativeHypotheses: [''],
-    constraints: [''],
+    title: initialData?.title || '',
+    context: initialData?.context || '',
+    mainHypothesis: initialData?.mainHypothesis || '',
+    alternativeHypotheses: initialData?.alternativeHypotheses?.length ? initialData.alternativeHypotheses : [''],
+    constraints: initialData?.constraints?.length ? initialData.constraints : [''],
     decision: '',
     author: '',
-    scope: '',
+    scope: initialData?.scope || '',
     date: new Date().toISOString().split('T')[0],
     status: 'pending' as const
   });
