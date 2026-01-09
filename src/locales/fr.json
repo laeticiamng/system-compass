@@ -4946,7 +4946,7 @@
     "radarNote": "Valeurs normalisées de 0 à 100 pour comparaison. Plus c'est haut, mieux c'est.",
     "tagsRadar": "Comparaison des tags d'intelligence",
     "tagsNote": "Tags notés de 1 à 5. Des valeurs plus élevées indiquent une présence plus forte de la caractéristique.",
-    "noTagsData": "Données d'intelligence non disponibles pour les pays sélectionnés. Disponibles pour : France, USA, Allemagne, Suisse, UK, EAU, Canada, Portugal, Espagne.",
+    "noTagsData": "Données d'intelligence non disponibles pour les pays sélectionnés. Disponibles pour 29 pays dont : France, USA, Allemagne, Suisse, UK, EAU, Canada, Portugal, Espagne, Japon, Singapour, Australie, Brésil, Pays-Bas, Argentine, Belgique, etc.",
     "tagsTable": "Tableau des tags",
     "tagsTableNote": "Comparaison détaillée des caractéristiques systémiques"
   }
