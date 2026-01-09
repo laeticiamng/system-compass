@@ -677,6 +677,66 @@ export type Database = {
         }
         Relationships: []
       }
+      traceos_approvals: {
+        Row: {
+          approved_at: string | null
+          approver_id: string | null
+          approver_name: string | null
+          comment: string | null
+          created_at: string
+          decision_id: string
+          id: string
+          signature_hash: string | null
+          status: string
+          step_name: string
+          step_order: number
+          workflow_id: string | null
+        }
+        Insert: {
+          approved_at?: string | null
+          approver_id?: string | null
+          approver_name?: string | null
+          comment?: string | null
+          created_at?: string
+          decision_id: string
+          id?: string
+          signature_hash?: string | null
+          status?: string
+          step_name: string
+          step_order?: number
+          workflow_id?: string | null
+        }
+        Update: {
+          approved_at?: string | null
+          approver_id?: string | null
+          approver_name?: string | null
+          comment?: string | null
+          created_at?: string
+          decision_id?: string
+          id?: string
+          signature_hash?: string | null
+          status?: string
+          step_name?: string
+          step_order?: number
+          workflow_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "traceos_approvals_decision_id_fkey"
+            columns: ["decision_id"]
+            isOneToOne: false
+            referencedRelation: "traceos_decisions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "traceos_approvals_workflow_id_fkey"
+            columns: ["workflow_id"]
+            isOneToOne: false
+            referencedRelation: "traceos_workflows"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       traceos_comments: {
         Row: {
           author_name: string
@@ -708,6 +768,44 @@ export type Database = {
         Relationships: [
           {
             foreignKeyName: "traceos_comments_decision_id_fkey"
+            columns: ["decision_id"]
+            isOneToOne: false
+            referencedRelation: "traceos_decisions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      traceos_decision_history: {
+        Row: {
+          action: string
+          author_name: string
+          changes: Json
+          created_at: string
+          decision_id: string
+          id: string
+          user_id: string
+        }
+        Insert: {
+          action: string
+          author_name: string
+          changes?: Json
+          created_at?: string
+          decision_id: string
+          id?: string
+          user_id: string
+        }
+        Update: {
+          action?: string
+          author_name?: string
+          changes?: Json
+          created_at?: string
+          decision_id?: string
+          id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "traceos_decision_history_decision_id_fkey"
             columns: ["decision_id"]
             isOneToOne: false
             referencedRelation: "traceos_decisions"
@@ -836,6 +934,81 @@ export type Database = {
           created_at?: string
           id?: string
           name?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      traceos_webhooks: {
+        Row: {
+          created_at: string
+          events: Json
+          headers: Json | null
+          id: string
+          is_active: boolean
+          last_triggered_at: string | null
+          name: string
+          platform: string
+          updated_at: string
+          url: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          events?: Json
+          headers?: Json | null
+          id?: string
+          is_active?: boolean
+          last_triggered_at?: string | null
+          name: string
+          platform?: string
+          updated_at?: string
+          url: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          events?: Json
+          headers?: Json | null
+          id?: string
+          is_active?: boolean
+          last_triggered_at?: string | null
+          name?: string
+          platform?: string
+          updated_at?: string
+          url?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      traceos_workflows: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          is_active: boolean
+          name: string
+          steps: Json
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean
+          name: string
+          steps?: Json
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean
+          name?: string
+          steps?: Json
+          updated_at?: string
           user_id?: string
         }
         Relationships: []
