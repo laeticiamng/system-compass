@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
 import { FeatureFlagProvider } from "@/shared/components/FeatureFlag";
+import { SubscriptionProvider } from "@/hooks/useSubscription";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { OnboardingDialog } from "@/components/OnboardingDialog";
@@ -37,58 +38,62 @@ import PreventionFilter from "./pages/PreventionFilter";
 import UniversalErrors from "./pages/UniversalErrors";
 import UniversalErrorDetail from "./pages/UniversalErrorDetail";
 import QuickTest from "./pages/QuickTest";
+import SubscriptionSuccess from "./pages/SubscriptionSuccess";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <AuthProvider>
-      <FeatureFlagProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <DisclaimerConsentDialog />
-            <OnboardingDialog />
-            <div className="min-h-screen flex flex-col">
-              <Header />
-              <main className="flex-1">
-                <Routes>
-                  <Route path="/" element={<Index />} />
-                  <Route path="/auth" element={<Auth />} />
-                  <Route path="/countries" element={<Countries />} />
-                  <Route path="/country/:id" element={<CountryDetail />} />
-                  <Route path="/profile-test" element={<ProfileTest />} />
-                  <Route path="/life-trajectory" element={<LifeTrajectory />} />
-                  <Route path="/match" element={<Match />} />
-                  <Route path="/compare" element={<CompareUnified />} />
-                  <Route path="/multi-compare" element={<MultiCompare />} />
-                  <Route path="/resources" element={<Resources />} />
-                  <Route path="/pyramid-types" element={<PyramidTypes />} />
-                  <Route path="/pyramid-quiz" element={<PyramidQuiz />} />
-                  <Route path="/life-game" element={<LifeGame />} />
-                  <Route path="/exit-keys" element={<ExitKeys />} />
-                  <Route path="/exit-keys/catalog" element={<ExitKeysCatalog />} />
-                  <Route path="/exit-keys/compare" element={<CompareExitKeys />} />
-                  <Route path="/dashboard" element={<Dashboard />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/disclaimer" element={<Disclaimer />} />
-                  <Route path="/systemic-mistakes" element={<SystemicMistakes />} />
-                  <Route path="/how-to-read" element={<HowToRead />} />
-                  <Route path="/admin/translations" element={<AdminTranslations />} />
-                  <Route path="/admin/analytics" element={<AdminAnalytics />} />
-                  <Route path="/prevention-filter" element={<PreventionFilter />} />
-                  <Route path="/universal-errors" element={<UniversalErrors />} />
-                  <Route path="/universal-errors/:id" element={<UniversalErrorDetail />} />
-                  <Route path="/quick-test" element={<QuickTest />} />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </main>
-              <Footer />
-            </div>
-          </BrowserRouter>
-        </TooltipProvider>
-      </FeatureFlagProvider>
+      <SubscriptionProvider>
+        <FeatureFlagProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <DisclaimerConsentDialog />
+              <OnboardingDialog />
+              <div className="min-h-screen flex flex-col">
+                <Header />
+                <main className="flex-1">
+                  <Routes>
+                    <Route path="/" element={<Index />} />
+                    <Route path="/auth" element={<Auth />} />
+                    <Route path="/countries" element={<Countries />} />
+                    <Route path="/country/:id" element={<CountryDetail />} />
+                    <Route path="/profile-test" element={<ProfileTest />} />
+                    <Route path="/life-trajectory" element={<LifeTrajectory />} />
+                    <Route path="/match" element={<Match />} />
+                    <Route path="/compare" element={<CompareUnified />} />
+                    <Route path="/multi-compare" element={<MultiCompare />} />
+                    <Route path="/resources" element={<Resources />} />
+                    <Route path="/pyramid-types" element={<PyramidTypes />} />
+                    <Route path="/pyramid-quiz" element={<PyramidQuiz />} />
+                    <Route path="/life-game" element={<LifeGame />} />
+                    <Route path="/exit-keys" element={<ExitKeys />} />
+                    <Route path="/exit-keys/catalog" element={<ExitKeysCatalog />} />
+                    <Route path="/exit-keys/compare" element={<CompareExitKeys />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/disclaimer" element={<Disclaimer />} />
+                    <Route path="/systemic-mistakes" element={<SystemicMistakes />} />
+                    <Route path="/how-to-read" element={<HowToRead />} />
+                    <Route path="/admin/translations" element={<AdminTranslations />} />
+                    <Route path="/admin/analytics" element={<AdminAnalytics />} />
+                    <Route path="/prevention-filter" element={<PreventionFilter />} />
+                    <Route path="/universal-errors" element={<UniversalErrors />} />
+                    <Route path="/universal-errors/:id" element={<UniversalErrorDetail />} />
+                    <Route path="/quick-test" element={<QuickTest />} />
+                    <Route path="/subscription-success" element={<SubscriptionSuccess />} />
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </main>
+                <Footer />
+              </div>
+            </BrowserRouter>
+          </TooltipProvider>
+        </FeatureFlagProvider>
+      </SubscriptionProvider>
     </AuthProvider>
   </QueryClientProvider>
 );

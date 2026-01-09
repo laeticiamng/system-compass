@@ -4749,5 +4749,62 @@
     },
     "restart": "Recommencer",
     "disclaimer": "Simulation ≠ prédiction. Exploration uniquement."
+  },
+  "subscription": {
+    "successTitle": "Abonnement activé !",
+    "successDescription": "Merci pour votre abonnement ! Vous avez maintenant accès à toutes les fonctionnalités premium.",
+    "exploreCountries": "Explorer les pays",
+    "managePlan": "Gérer mon abonnement",
+    "yourPlan": "Votre plan",
+    "upgrade": "Passer au niveau supérieur",
+    "subscribe": "S'abonner"
+  },
+  "pyramidBehaviors": {
+    "title": "Comportements typiques",
+    "rewards": "Le système récompense",
+    "punishes": "Le système punit",
+    "stability": {
+      "rewards": ["La patience et l'ancienneté", "Le respect des procédures", "La loyauté institutionnelle", "Les diplômes reconnus"],
+      "punishes": ["L'impatience et les raccourcis", "La prise de risque excessive", "Le changement fréquent d'employeur", "L'absence de diplôme"]
+    },
+    "growth": {
+      "rewards": ["L'initiative et la prise de risque", "La création de valeur mesurable", "L'adaptabilité rapide", "Le réseau professionnel"],
+      "punishes": ["L'attente passive", "Le refus d'innover", "La dépendance à un employeur", "L'isolement professionnel"]
+    },
+    "rent": {
+      "rewards": ["L'accès aux cercles de pouvoir", "La capacité à maintenir le statu quo", "Les relations familiales", "La discrétion sur les revenus"],
+      "punishes": ["La transparence excessive", "Les tentatives de réforme", "L'absence de réseau", "La méritocratie naïve"]
+    },
+    "competence": {
+      "rewards": ["L'expertise technique pointue", "Les certifications reconnues", "La rigueur méthodologique", "La formation continue"],
+      "punishes": ["L'approximation", "L'absence de certification", "Le changement de domaine", "L'autodidaxie non validée"]
+    },
+    "hybrid": {
+      "rewards": ["La flexibilité stratégique", "La lecture des signaux", "Le timing précis", "La double compétence"],
+      "punishes": ["La rigidité", "L'engagement trop précoce", "L'incompréhension des codes", "Le choix d'un seul système"]
+    },
+    "resource": {
+      "rewards": ["L'expertise sectorielle", "La mobilité géographique", "Les contrats courts bien négociés", "L'épargne massive"],
+      "punishes": ["L'enracinement local", "Les projets long terme", "La dépendance au système local", "Les dépenses de vie élevées"]
+    }
+  },
+  "countryDetail": {
+    "tabs": {
+      "tronc": "Tronc commun",
+      "variant": "Variante pays",
+      "project": "Analyse projet"
+    },
+    "tronc": {
+      "title": "Analyse structurelle",
+      "subtitle": "Ce que le système récompense et punit"
+    },
+    "variant": {
+      "title": "Spécificités locales",
+      "subtitle": "Ce qui surprend les nouveaux arrivants"
+    },
+    "project": {
+      "title": "Analyse personnalisée",
+      "subtitle": "Selon votre projet et votre profil"
+    }
   }
 }
