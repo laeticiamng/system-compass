@@ -349,7 +349,9 @@
     "multiCompare": "Multi-Analyse",
     "systemicMistakes": "Erreurs",
     "lifeGame": "Jeu de la Vie",
-    "catalog": "Catalogue"
+    "catalog": "Catalogue",
+    "preventionFilter": "Filtre",
+    "universalErrors": "Erreurs"
   },
   "vacation": {
     "title": "Recommandations Vacances par Pouvoir d'Achat",
@@ -4512,10 +4514,6 @@
   "footer": {
     "defaultCountry": "Pays par défaut",
     "defaultCountryTooltip": "Les calculateurs utilisent ce pays par défaut. Changez-le dans les outils."
-  },
-  "nav": {
-    "preventionFilter": "Filtre",
-    "universalErrors": "Erreurs"
   },
   "preventionFilter": {
     "badge": "Filtre de prévention",

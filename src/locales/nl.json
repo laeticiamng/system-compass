@@ -515,7 +515,9 @@
     "dashboard": "Dashboard",
     "lifeGame": "Levensspel",
     "systemicMistakes": "Fouten",
-    "catalog": "Catalogus"
+    "catalog": "Catalogus",
+    "preventionFilter": "Filter",
+    "universalErrors": "Fouten"
   },
   "vacation": {
     "title": "Vakantie-aanbevelingen op basis van koopkracht",
@@ -2232,10 +2234,6 @@
     "about": "Over ons",
     "defaultCountry": "Standaardland",
     "defaultCountryTooltip": "Rekenmachines gebruiken dit land standaard. Wijzig het in de tools."
-  },
-  "nav": {
-    "preventionFilter": "Filter",
-    "universalErrors": "Fouten"
   },
   "preventionFilter": {
     "badge": "Preventiefilter",

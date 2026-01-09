@@ -515,7 +515,9 @@
     "dashboard": "Dashboard",
     "lifeGame": "Lebensspiel",
     "systemicMistakes": "Fehler",
-    "catalog": "Katalog"
+    "catalog": "Katalog",
+    "preventionFilter": "Filter",
+    "universalErrors": "Fehler"
   },
   "vacation": {
     "title": "Urlaubsempfehlungen nach Kaufkraft",
@@ -2232,10 +2234,6 @@
     "about": "Über uns",
     "defaultCountry": "Standardland",
     "defaultCountryTooltip": "Rechner verwenden dieses Land standardmäßig. Ändere es in den Tools."
-  },
-  "nav": {
-    "preventionFilter": "Filter",
-    "universalErrors": "Fehler"
   },
   "preventionFilter": {
     "badge": "Präventionsfilter",

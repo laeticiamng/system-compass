@@ -515,7 +515,9 @@
     "dashboard": "Painel",
     "lifeGame": "Jogo da Vida",
     "systemicMistakes": "Erros",
-    "catalog": "Catálogo"
+    "catalog": "Catálogo",
+    "preventionFilter": "Filtro",
+    "universalErrors": "Erros"
   },
   "vacation": {
     "title": "Recomendações de férias por poder de compra",
@@ -2232,10 +2234,6 @@
     "about": "Sobre nós",
     "defaultCountry": "País predefinido",
     "defaultCountryTooltip": "As calculadoras usam este país por defeito. Altera-o nas ferramentas."
-  },
-  "nav": {
-    "preventionFilter": "Filtro",
-    "universalErrors": "Erros"
   },
   "preventionFilter": {
     "badge": "Filtro de prevenção",
