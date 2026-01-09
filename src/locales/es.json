@@ -641,7 +641,10 @@
     "explore": "Explorar →",
     "gdpCap": "PIB/cap",
     "passport": "Pasaporte",
-    "population": "Población"
+    "population": "Población",
+    "extendedDb": "+15 Intelligence",
+    "dbOnly": "Capa Intelligence DB",
+    "intelligenceAvailable": "Capa Intelligence disponible"
   },
   "countryDetail": {
     "notFound": "País no encontrado",
@@ -660,7 +663,8 @@
     "whoWinsLoses": "Quién gana / Quién pierde",
     "survivalPlaybook": "Playbook de supervivencia",
     "sourcesUpdates": "Fuentes & actualizaciones",
-    "lastUpdated": "Última actualización"
+    "lastUpdated": "Última actualización",
+    "extendedNote": "Este país tiene datos de capa Intelligence completos en la base de datos"
   },
   "lgbtqRights": {
     "title": "Derechos LGBTQ+",
@@ -2471,5 +2475,32 @@
     },
     "restart": "Reiniciar",
     "disclaimer": "Simulación ≠ predicción. Solo exploración."
+  },
+  "profileMatcher": {
+    "title": "Coincidencia de perfil",
+    "subtitle": "Encuentra países que coincidan con tu perfil",
+    "description": "Configura tus preferencias y ve qué países se alinean mejor con tu estilo",
+    "yourProfile": "Tu perfil",
+    "matchResults": "Resultados de coincidencia",
+    "compatibility": "Compatibilidad",
+    "frictions": "Fricciones potenciales",
+    "strengths": "Fortalezas",
+    "noFrictions": "No se detectaron fricciones significativas",
+    "highMatch": "Alta coincidencia",
+    "mediumMatch": "Coincidencia media",
+    "lowMatch": "Baja coincidencia",
+    "preferences": {
+      "networkImportance": "¿Qué tan importantes son las redes personales para ti?",
+      "diplomaImportance": "¿Cuánto dependes de las credenciales?",
+      "riskAppetite": "¿Cuál es tu apetito por el riesgo?",
+      "needForSpeed": "¿Cuánto valoras los procesos rápidos?",
+      "hierarchyComfort": "¿Qué tan cómodo estás con la jerarquía?",
+      "stabilityNeed": "¿Cuánta estabilidad necesitas?",
+      "low": "Bajo",
+      "medium": "Medio",
+      "high": "Alto"
+    },
+    "analyze": "Analizar coincidencias",
+    "reset": "Reiniciar"
   }
 }

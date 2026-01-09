@@ -2,13 +2,15 @@ import { useState, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { supabase } from '@/integrations/supabase/client';
 import { countries } from '@/lib/countries-data';
+import { getExtendedCountryMeta } from '@/lib/countries-extended';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Loader2, Target, AlertTriangle, CheckCircle, RotateCcw } from 'lucide-react';
+import { Loader2, Target, AlertTriangle, CheckCircle, RotateCcw, TrendingUp, Shield, Zap } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Link } from 'react-router-dom';
 
 interface CountryTag {
   country_id: string;
@@ -40,6 +42,8 @@ interface MatchResult {
   score: number;
   frictions: string[];
   strengths: string[];
+  mobilityScore: number;
+  frictionScore: number;
 }
 
 function getFlagEmoji(iso2: string): string {
@@ -85,8 +89,14 @@ export function ProfileCountryMatcher() {
     if (tags.length === 0) return [];
 
     return tags.map(tag => {
+      // Get country info - first check main countries, then extended
       const country = countries.find(c => c.id === tag.country_id);
-      if (!country) return null;
+      const extendedMeta = getExtendedCountryMeta(tag.country_id);
+      
+      if (!country && !extendedMeta) return null;
+      
+      const countryName = country?.name || extendedMeta?.name || tag.country_id;
+      const iso2 = country?.iso2 || extendedMeta?.iso2 || '';
 
       const frictions: string[] = [];
       const strengths: string[] = [];
@@ -177,11 +187,13 @@ export function ProfileCountryMatcher() {
 
       return {
         countryId: tag.country_id,
-        countryName: country.name,
-        iso2: country.iso2,
+        countryName,
+        iso2,
         score: Math.max(0, Math.min(100, score)),
         frictions,
         strengths,
+        mobilityScore: tag.social_mobility,
+        frictionScore: tag.mental_friction,
       };
     }).filter((r): r is MatchResult => r !== null)
       .sort((a, b) => b.score - a.score);
@@ -196,10 +208,10 @@ export function ProfileCountryMatcher() {
     setShowResults(false);
   };
 
-  const getMatchLevel = (score: number): { label: string; color: string } => {
-    if (score >= 75) return { label: t('profileMatcher.highMatch', 'High Match'), color: 'text-risk-low' };
-    if (score >= 50) return { label: t('profileMatcher.mediumMatch', 'Medium Match'), color: 'text-yellow-500' };
-    return { label: t('profileMatcher.lowMatch', 'Low Match'), color: 'text-risk-high' };
+  const getMatchLevel = (score: number): { label: string; color: string; icon: typeof TrendingUp } => {
+    if (score >= 75) return { label: t('profileMatcher.highMatch', 'High Match'), color: 'text-risk-low', icon: TrendingUp };
+    if (score >= 50) return { label: t('profileMatcher.mediumMatch', 'Medium Match'), color: 'text-yellow-500', icon: Shield };
+    return { label: t('profileMatcher.lowMatch', 'Low Match'), color: 'text-risk-high', icon: AlertTriangle };
   };
 
   if (loading) {
@@ -209,6 +221,8 @@ export function ProfileCountryMatcher() {
       </div>
     );
   }
+
+  const topMatches = matchResults.slice(0, 10);
 
   return (
     <div className="glass-card rounded-xl p-6">
@@ -220,6 +234,9 @@ export function ProfileCountryMatcher() {
         <p className="text-muted-foreground text-sm mt-1">
           {t('profileMatcher.description', 'Set your preferences and see which countries align best')}
         </p>
+        <Badge variant="outline" className="mt-2">
+          {tags.length} {t('common.country', 'countries')} {t('countries.intelligenceAvailable', 'available')}
+        </Badge>
       </div>
 
       <div className="grid md:grid-cols-2 gap-8">
@@ -230,17 +247,17 @@ export function ProfileCountryMatcher() {
           </h4>
 
           {[
-            { key: 'networkImportance', label: t('profileMatcher.preferences.networkImportance', 'Network importance') },
-            { key: 'diplomaImportance', label: t('profileMatcher.preferences.diplomaImportance', 'Credential reliance') },
-            { key: 'riskAppetite', label: t('profileMatcher.preferences.riskAppetite', 'Risk appetite') },
-            { key: 'needForSpeed', label: t('profileMatcher.preferences.needForSpeed', 'Need for fast processes') },
-            { key: 'hierarchyComfort', label: t('profileMatcher.preferences.hierarchyComfort', 'Hierarchy comfort') },
-            { key: 'stabilityNeed', label: t('profileMatcher.preferences.stabilityNeed', 'Stability need') },
-          ].map(({ key, label }) => (
+            { key: 'networkImportance', label: t('profileMatcher.preferences.networkImportance', 'Network importance'), icon: '🤝' },
+            { key: 'diplomaImportance', label: t('profileMatcher.preferences.diplomaImportance', 'Credential reliance'), icon: '🎓' },
+            { key: 'riskAppetite', label: t('profileMatcher.preferences.riskAppetite', 'Risk appetite'), icon: '🎲' },
+            { key: 'needForSpeed', label: t('profileMatcher.preferences.needForSpeed', 'Need for fast processes'), icon: '⚡' },
+            { key: 'hierarchyComfort', label: t('profileMatcher.preferences.hierarchyComfort', 'Hierarchy comfort'), icon: '📊' },
+            { key: 'stabilityNeed', label: t('profileMatcher.preferences.stabilityNeed', 'Stability need'), icon: '🛡️' },
+          ].map(({ key, label, icon }) => (
             <div key={key} className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span>{label}</span>
-                <span className="text-muted-foreground">{profile[key as keyof UserProfile]}/5</span>
+                <span>{icon} {label}</span>
+                <Badge variant="secondary" className="text-xs">{profile[key as keyof UserProfile]}/5</Badge>
               </div>
               <Slider
                 value={[profile[key as keyof UserProfile]]}
@@ -259,6 +276,7 @@ export function ProfileCountryMatcher() {
 
           <div className="flex gap-2 pt-4">
             <Button onClick={() => setShowResults(true)} className="flex-1">
+              <Zap className="w-4 h-4 mr-2" />
               {t('profileMatcher.analyze', 'Analyze Matches')}
             </Button>
             <Button variant="outline" onClick={handleReset}>
@@ -271,6 +289,7 @@ export function ProfileCountryMatcher() {
         <div className="space-y-4">
           <h4 className="font-medium text-sm text-muted-foreground uppercase tracking-wide">
             {t('profileMatcher.matchResults', 'Match Results')}
+            {showResults && <span className="ml-2 text-xs font-normal">({topMatches.length} top)</span>}
           </h4>
 
           {!showResults ? (
@@ -281,49 +300,64 @@ export function ProfileCountryMatcher() {
             </div>
           ) : (
             <div className="space-y-3 max-h-[500px] overflow-y-auto pr-2">
-              {matchResults.map((result) => {
+              {topMatches.map((result, index) => {
                 const matchLevel = getMatchLevel(result.score);
+                const MatchIcon = matchLevel.icon;
                 return (
-                  <Card key={result.countryId} className="overflow-hidden">
-                    <CardHeader className="p-3 pb-2">
-                      <div className="flex items-center justify-between">
-                        <CardTitle className="text-sm font-medium flex items-center gap-2">
-                          {getFlagEmoji(result.iso2)} {result.countryName}
-                        </CardTitle>
-                        <Badge variant="outline" className={matchLevel.color}>
-                          {result.score}%
-                        </Badge>
-                      </div>
-                      <Progress value={result.score} className="h-1.5 mt-1" />
-                    </CardHeader>
-                    <CardContent className="p-3 pt-0 space-y-2">
-                      {result.strengths.length > 0 && (
-                        <div className="flex flex-wrap gap-1">
-                          {result.strengths.slice(0, 3).map((s, i) => (
-                            <span key={i} className="text-xs px-1.5 py-0.5 bg-risk-low/10 text-risk-low rounded flex items-center gap-1">
-                              <CheckCircle className="w-3 h-3" />
-                              {s}
-                            </span>
-                          ))}
+                  <Link to={`/country/${result.countryId}`} key={result.countryId}>
+                    <Card className="overflow-hidden hover:border-primary/50 transition-colors cursor-pointer">
+                      <CardHeader className="p-3 pb-2">
+                        <div className="flex items-center justify-between">
+                          <CardTitle className="text-sm font-medium flex items-center gap-2">
+                            <span className="text-xs text-muted-foreground">#{index + 1}</span>
+                            {result.iso2 && getFlagEmoji(result.iso2)} {result.countryName}
+                          </CardTitle>
+                          <Badge variant="outline" className={cn("flex items-center gap-1", matchLevel.color)}>
+                            <MatchIcon className="w-3 h-3" />
+                            {result.score}%
+                          </Badge>
                         </div>
-                      )}
-                      {result.frictions.length > 0 && (
-                        <div className="space-y-1">
-                          {result.frictions.slice(0, 2).map((f, i) => (
-                            <p key={i} className="text-xs text-risk-high flex items-start gap-1">
-                              <AlertTriangle className="w-3 h-3 mt-0.5 flex-shrink-0" />
-                              {f}
-                            </p>
-                          ))}
+                        <Progress value={result.score} className="h-1.5 mt-1" />
+                      </CardHeader>
+                      <CardContent className="p-3 pt-0 space-y-2">
+                        {result.strengths.length > 0 && (
+                          <div className="flex flex-wrap gap-1">
+                            {result.strengths.slice(0, 3).map((s, i) => (
+                              <span key={i} className="text-xs px-1.5 py-0.5 bg-risk-low/10 text-risk-low rounded flex items-center gap-1">
+                                <CheckCircle className="w-3 h-3" />
+                                {s}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                        {result.frictions.length > 0 && (
+                          <div className="space-y-1">
+                            {result.frictions.slice(0, 2).map((f, i) => (
+                              <p key={i} className="text-xs text-risk-high flex items-start gap-1">
+                                <AlertTriangle className="w-3 h-3 mt-0.5 flex-shrink-0" />
+                                {f}
+                              </p>
+                            ))}
+                          </div>
+                        )}
+                        {result.frictions.length === 0 && (
+                          <p className="text-xs text-muted-foreground">
+                            {t('profileMatcher.noFrictions', 'No significant frictions detected')}
+                          </p>
+                        )}
+                        
+                        {/* Extra metrics */}
+                        <div className="flex gap-2 pt-1 border-t">
+                          <span className="text-xs text-muted-foreground">
+                            📈 {t('tags.socialMobility', 'Mobility')}: {result.mobilityScore}/5
+                          </span>
+                          <span className="text-xs text-muted-foreground">
+                            🧠 {t('tags.mentalFriction', 'Friction')}: {result.frictionScore}/5
+                          </span>
                         </div>
-                      )}
-                      {result.frictions.length === 0 && (
-                        <p className="text-xs text-muted-foreground">
-                          {t('profileMatcher.noFrictions', 'No significant frictions detected')}
-                        </p>
-                      )}
-                    </CardContent>
-                  </Card>
+                      </CardContent>
+                    </Card>
+                  </Link>
                 );
               })}
             </div>

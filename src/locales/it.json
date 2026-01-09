@@ -641,7 +641,10 @@
     "explore": "Esplora →",
     "gdpCap": "PIL/cap",
     "passport": "Passaporto",
-    "population": "Popolazione"
+    "population": "Popolazione",
+    "extendedDb": "+15 Intelligence",
+    "dbOnly": "Layer Intelligence DB",
+    "intelligenceAvailable": "Layer Intelligence disponibile"
   },
   "countryDetail": {
     "notFound": "Paese non trovato",
@@ -660,7 +663,8 @@
     "whoWinsLoses": "Chi vince / Chi perde",
     "survivalPlaybook": "Playbook di sopravvivenza",
     "sourcesUpdates": "Fonti & aggiornamenti",
-    "lastUpdated": "Ultimo aggiornamento"
+    "lastUpdated": "Ultimo aggiornamento",
+    "extendedNote": "Questo paese ha dati del layer Intelligence completi nel database"
   },
   "lgbtqRights": {
     "title": "Diritti LGBTQ+",
@@ -2461,5 +2465,32 @@
     },
     "restart": "Ricomincia",
     "disclaimer": "Simulazione ≠ previsione. Solo esplorazione."
+  },
+  "profileMatcher": {
+    "title": "Corrispondenza profilo",
+    "subtitle": "Trova paesi che corrispondono al tuo profilo",
+    "description": "Imposta le tue preferenze e vedi quali paesi si allineano meglio al tuo stile",
+    "yourProfile": "Il tuo profilo",
+    "matchResults": "Risultati di corrispondenza",
+    "compatibility": "Compatibilità",
+    "frictions": "Frizioni potenziali",
+    "strengths": "Punti di forza",
+    "noFrictions": "Nessuna frizione significativa rilevata",
+    "highMatch": "Alta corrispondenza",
+    "mediumMatch": "Corrispondenza media",
+    "lowMatch": "Bassa corrispondenza",
+    "preferences": {
+      "networkImportance": "Quanto sono importanti le reti personali per te?",
+      "diplomaImportance": "Quanto fai affidamento sulle credenziali?",
+      "riskAppetite": "Qual è la tua propensione al rischio?",
+      "needForSpeed": "Quanto apprezzi i processi veloci?",
+      "hierarchyComfort": "Quanto sei a tuo agio con la gerarchia?",
+      "stabilityNeed": "Quanta stabilità ti serve?",
+      "low": "Basso",
+      "medium": "Medio",
+      "high": "Alto"
+    },
+    "analyze": "Analizza corrispondenze",
+    "reset": "Reimposta"
   }
 }

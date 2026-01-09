@@ -641,7 +641,10 @@
     "explore": "Erkunden →",
     "gdpCap": "BIP/Kopf",
     "passport": "Reisepass",
-    "population": "Bevölkerung"
+    "population": "Bevölkerung",
+    "extendedDb": "+15 Intelligence",
+    "dbOnly": "DB Intelligence Layer",
+    "intelligenceAvailable": "Intelligence Layer verfügbar"
   },
   "countryDetail": {
     "notFound": "Land nicht gefunden",
@@ -660,7 +663,8 @@
     "whoWinsLoses": "Wer gewinnt / Wer verliert",
     "survivalPlaybook": "Überlebens-Playbook",
     "sourcesUpdates": "Quellen & Updates",
-    "lastUpdated": "Zuletzt aktualisiert"
+    "lastUpdated": "Zuletzt aktualisiert",
+    "extendedNote": "Dieses Land hat vollständige Intelligence Layer-Daten in der Datenbank"
   },
   "lgbtqRights": {
     "title": "LGBTQ+ Rechte",
@@ -2461,5 +2465,32 @@
     },
     "restart": "Neustart",
     "disclaimer": "Simulation ≠ Vorhersage. Nur zur Erkundung."
+  },
+  "profileMatcher": {
+    "title": "Profil-Matcher",
+    "subtitle": "Finde Länder, die zu deinem Profil passen",
+    "description": "Setze deine Präferenzen und sieh, welche Länder am besten zu deinem Stil passen",
+    "yourProfile": "Dein Profil",
+    "matchResults": "Match-Ergebnisse",
+    "compatibility": "Kompatibilität",
+    "frictions": "Potenzielle Reibungen",
+    "strengths": "Stärken",
+    "noFrictions": "Keine signifikanten Reibungen erkannt",
+    "highMatch": "Hohe Übereinstimmung",
+    "mediumMatch": "Mittlere Übereinstimmung",
+    "lowMatch": "Niedrige Übereinstimmung",
+    "preferences": {
+      "networkImportance": "Wie wichtig sind persönliche Netzwerke für dich?",
+      "diplomaImportance": "Wie sehr verlässt du dich auf Qualifikationen?",
+      "riskAppetite": "Was ist deine Risikobereitschaft?",
+      "needForSpeed": "Wie sehr schätzt du schnelle Prozesse?",
+      "hierarchyComfort": "Wie wohl fühlst du dich mit Hierarchie?",
+      "stabilityNeed": "Wie sehr brauchst du Stabilität?",
+      "low": "Niedrig",
+      "medium": "Mittel",
+      "high": "Hoch"
+    },
+    "analyze": "Matches analysieren",
+    "reset": "Zurücksetzen"
   }
 }
