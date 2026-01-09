@@ -2255,6 +2255,16 @@
       "blindSpots": "Häufige blinde Flecken",
       "risks": "Wahrscheinliche Risiken",
       "exitKeys": "Mögliche Exit-Keys"
+    },
+    "reversibility": {
+      "reversible": "Reversibel",
+      "semi": "Semi-reversibel",
+      "irreversible": "Irreversibel"
+    },
+    "irreversibleWarning": {
+      "title": "Entscheidung mit hohem Engagement",
+      "message": "Bei irreversiblen Entscheidungen empfehlen wir, mindestens 2 verschiedene Szenarien zu testen.",
+      "testAlternative": "Ein alternatives Szenario testen"
     }
   }
 }
