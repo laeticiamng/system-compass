@@ -1,3 +1,4 @@
+// Main Application Router
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -40,6 +41,7 @@ import UniversalErrorDetail from "./pages/UniversalErrorDetail";
 import QuickTest from "./pages/QuickTest";
 import SubscriptionSuccess from "./pages/SubscriptionSuccess";
 import Pricing from "./pages/Pricing";
+import ProfileMatcher from "./pages/ProfileMatcher";
 
 const queryClient = new QueryClient();
 
@@ -87,7 +89,7 @@ const App = () => (
                     <Route path="/quick-test" element={<QuickTest />} />
                     <Route path="/subscription-success" element={<SubscriptionSuccess />} />
                     <Route path="/pricing" element={<Pricing />} />
-                    <Route path="*" element={<NotFound />} />
+                    <Route path="/profile-matcher" element={<ProfileMatcher />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </main>
