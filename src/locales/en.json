@@ -703,7 +703,7 @@
       "costDesc": "Cost of living (↓)"
     }
   },
-"countryDetail": {
+  "countryDetail": {
     "notFound": "Country not found",
     "backToCountries": "Back to Countries",
     "ruleOfGold": "Rule of Gold",
@@ -720,7 +720,8 @@
     "whoWinsLoses": "Who Wins / Who Loses",
     "survivalPlaybook": "Survival Playbook",
     "sourcesUpdates": "Sources & Updates",
-    "lastUpdated": "Last updated"
+    "lastUpdated": "Last updated",
+    "extendedNote": "This country has Intelligence Layer data. Full profile coming soon."
   },
   "lgbtqRights": {
     "title": "LGBTQ+ Rights",
