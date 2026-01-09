@@ -4671,5 +4671,669 @@
     "hoursAgo_other": "{{count}} hours ago",
     "daysAgo_one": "{{count}} day ago",
     "daysAgo_other": "{{count}} days ago"
+  },
+  "institutions": {
+    "badge": "Business & Institutions",
+    "title": "Institutional Decision Support",
+    "subtitle": "An analysis tool to clarify trade-offs, identify blind spots, and prevent costly mistakes — without prescription or prediction.",
+    "illuminate": "Illuminate",
+    "structure": "Structure",
+    "prevent": "Prevent",
+    "tabs": {
+      "intro": "Introduction",
+      "useCases": "Use Cases",
+      "collective": "Collective Decision",
+      "traceability": "Traceability",
+      "disclaimer": "Limits"
+    },
+    "whatItIs": {
+      "title": "What Pyramid Compass Does",
+      "illuminate": "Illuminates options",
+      "illuminateDesc": "Makes visible variables, uncertainty zones, and hidden costs",
+      "structure": "Structures decisions",
+      "structureDesc": "Helps clarify a trade-off before it becomes irreversible",
+      "blindspots": "Identifies blind spots",
+      "blindspotsDesc": "Highlights what could be overlooked or underestimated",
+      "scenarios": "Compares scenarios",
+      "scenariosDesc": "Allows visualization of multiple possible trajectories without recommending one"
+    },
+    "whatItDoesNot": {
+      "title": "What Pyramid Compass Does NOT Do",
+      "noRecommendation": "Does not recommend",
+      "noRecommendationDesc": "No option is presented as \"the right decision\"",
+      "noPrediction": "Does not predict",
+      "noPredictionDesc": "Simulation ≠ prediction. Results depend on actual context.",
+      "noResponsibility": "Does not discharge",
+      "noResponsibilityDesc": "Decision responsibility remains entirely human.",
+      "noAdvice": "Does not advise",
+      "noAdviceDesc": "No legal, financial, HR, or strategic advice."
+    },
+    "principles": {
+      "title": "Core Principles",
+      "simulation": "Simulation ≠ Prediction",
+      "responsibility": "Responsibility ≠ Delegation",
+      "illumination": "The tool illuminates, the decision-maker decides"
+    },
+    "cta": {
+      "explore": "Explore use cases"
+    },
+    "useCases": {
+      "title": "Institutional Use Cases",
+      "subtitle": "Dedicated templates for complex organizational decisions",
+      "variables": "Explicit variables",
+      "uncertainties": "Uncertainty zones",
+      "hiddenCosts": "Hidden costs",
+      "blindSpots": "Blind spots",
+      "scenarios": "Comparative scenarios",
+      "noRecommendation": "These scenarios are presented without recommendation. The tool illuminates, it does not prescribe.",
+      "strategic": {
+        "title": "Strategic Arbitration",
+        "desc": "Investments, priorities, resource allocation",
+        "var1": "Investment amount and horizon",
+        "var2": "Expected return vs acceptable risk",
+        "var3": "Internal execution capacity",
+        "var4": "External dependencies (market, regulation)",
+        "unc1": "Market evolution at horizon X",
+        "unc2": "Competitor reactions",
+        "unc3": "Internal adoption of change",
+        "cost1": "Opportunity cost of options not taken",
+        "cost2": "Transition time and learning curve",
+        "cost3": "Impact on existing projects",
+        "blind1": "Implicit assumptions about growth",
+        "blind2": "Overestimation of absorption capacity",
+        "blind3": "Neglect of weak signals",
+        "scen1": { "name": "Scenario A", "desc": "Progressive investment with milestones" },
+        "scen2": { "name": "Scenario B", "desc": "Massive and rapid investment" },
+        "scen3": { "name": "Scenario C", "desc": "Wait and observe the market" }
+      },
+      "hr": {
+        "title": "Sensitive HR Decisions",
+        "desc": "Mobility, organization, restructuring",
+        "var1": "Number of people affected",
+        "var2": "Key skills to preserve",
+        "var3": "Legal and conventional deadlines",
+        "var4": "Budget available for support",
+        "unc1": "Team reactions and social climate",
+        "unc2": "Critical talent retention",
+        "unc3": "Productivity during transition",
+        "cost1": "Loss of tacit knowledge",
+        "cost2": "Future recruitment cost",
+        "cost3": "Impact on employer brand",
+        "blind1": "Underestimation of emotional attachment",
+        "blind2": "Informal skills networks",
+        "blind3": "Effect on non-affected employees",
+        "scen1": { "name": "Scenario A", "desc": "Progressive restructuring with redeployment" },
+        "scen2": { "name": "Scenario B", "desc": "Partial outsourcing of functions" },
+        "scen3": { "name": "Scenario C", "desc": "Reorganization without position cuts" }
+      },
+      "project": {
+        "title": "Project Launch / Stop",
+        "desc": "Go/No-go, pivot, abandon",
+        "var1": "Investment already made (sunk cost)",
+        "var2": "Remaining investment needed",
+        "var3": "Estimated probability of success",
+        "var4": "Value in case of success",
+        "unc1": "Evolution of market needs",
+        "unc2": "Ability to meet deadlines",
+        "unc3": "Unidentified technical risks",
+        "cost1": "Internal communication cost of stopping",
+        "cost2": "Team demotivation",
+        "cost3": "Loss of sponsor credibility",
+        "blind1": "Commitment bias (sunk cost fallacy)",
+        "blind2": "Optimism in estimates",
+        "blind3": "Social pressure to continue",
+        "scen1": { "name": "Scenario A", "desc": "Continuation with scope reduction" },
+        "scen2": { "name": "Scenario B", "desc": "Pivot to new target" },
+        "scen3": { "name": "Scenario C", "desc": "Clean stop with capitalization" }
+      },
+      "crisis": {
+        "title": "Crisis Management",
+        "desc": "Complex, urgent, or sensitive situations",
+        "var1": "Nature and severity of crisis",
+        "var2": "Impacted stakeholders",
+        "var3": "Time before point of no return",
+        "var4": "Immediately mobilizable resources",
+        "unc1": "Situation evolution",
+        "unc2": "Media / public reaction",
+        "unc3": "Stakeholder behavior",
+        "cost1": "Long-term reputational damage",
+        "cost2": "Team exhaustion",
+        "cost3": "Legal precedents created",
+        "blind1": "Focus on symptom vs cause",
+        "blind2": "Neglected secondary victims",
+        "blind3": "Effect on internal trust",
+        "scen1": { "name": "Scenario A", "desc": "Proactive and transparent communication" },
+        "scen2": { "name": "Scenario B", "desc": "Containment and internal management" },
+        "scen3": { "name": "Scenario C", "desc": "Escalation to competent authorities" }
+      },
+      "longterm": {
+        "title": "Long-term Orientation",
+        "desc": "Growth, transformation, repositioning",
+        "var1": "5-10 year vision",
+        "var2": "Structural sector trends",
+        "var3": "Capabilities to develop",
+        "var4": "Possible strategic partnerships",
+        "unc1": "Technological evolutions",
+        "unc2": "Regulatory changes",
+        "unc3": "Evolution of societal expectations",
+        "cost1": "Organizational inertia",
+        "cost2": "Resistance to change",
+        "cost3": "Loss of short-term focus",
+        "blind1": "Projection of current trends",
+        "blind2": "Underestimation of disruptions",
+        "blind3": "Strategic confirmation bias",
+        "scen1": { "name": "Scenario A", "desc": "Accelerated digital transformation" },
+        "scen2": { "name": "Scenario B", "desc": "Diversification to new markets" },
+        "scen3": { "name": "Scenario C", "desc": "Consolidation and operational excellence" }
+      }
+    },
+    "collective": {
+      "title": "Collective Decision Mode",
+      "subtitle": "Simulate a decision from multiple viewpoints to highlight divergences, consensus, and implicit assumptions.",
+      "principle": "Cognitive alignment tool, not a vote. The goal is to understand, not to decide.",
+      "perspectives": {
+        "title": "Viewpoints to simulate",
+        "desc": "Add the different actors or roles involved in the decision"
+      },
+      "roles": {
+        "direction": "General Management",
+        "operations": "Operations"
+      },
+      "example": {
+        "assumption1": "The market will continue to grow",
+        "assumption2": "Teams can absorb the workload",
+        "priority1": "Short-term profitability",
+        "priority2": "Process stability",
+        "concern1": "Shareholder pressure",
+        "concern2": "Team fatigue"
+      },
+      "addRole": "Add a role (e.g., Finance, HR, Legal...)",
+      "assumptions": "Assumptions from this viewpoint",
+      "assumptionsPlaceholder": "What assumptions does this role make implicitly?",
+      "priorities": "Priorities",
+      "prioritiesPlaceholder": "What matters most to this role",
+      "concerns": "Concerns",
+      "concernsPlaceholder": "What worries this role",
+      "analyze": "Analyze perspectives",
+      "analysis": {
+        "consensusTitle": "Consensus zones",
+        "consensus1": "Need to act quickly",
+        "consensus2": "Importance of internal communication",
+        "divergencesTitle": "Perception divergences",
+        "div1": {
+          "topic": "Time horizon",
+          "dir": "Quarterly results",
+          "ops": "2-3 year vision"
+        },
+        "div2": {
+          "topic": "Risk tolerance",
+          "dir": "Willing to bet big",
+          "ops": "Preference for caution"
+        },
+        "implicitTitle": "Detected implicit assumptions",
+        "implicitDesc": "What nobody explicitly mentioned but underlies positions",
+        "implicit1": "Everyone assumes current resources will suffice",
+        "implicit2": "No one mentioned legal constraints",
+        "implicit3": "Customer impact was not explicitly discussed"
+      },
+      "newAnalysis": "New analysis",
+      "disclaimer": "This analysis highlights patterns. It makes no judgment and recommends no position. Final alignment remains a human decision."
+    },
+    "traceability": {
+      "title": "Traceability & Prevention",
+      "subtitle": "Simulation history and visualization of retained hypotheses to avoid retrospective biases.",
+      "purpose1": {
+        "title": "Avoid retrospective biases",
+        "desc": "Document what was known at decision time, not after the fact."
+      },
+      "purpose2": {
+        "title": "Document the reasoning",
+        "desc": "Trace the thought process, not just the final decision."
+      },
+      "history": "Simulation history",
+      "participants": "Participants",
+      "hypotheses": "Retained hypotheses",
+      "scenarios": "Explored scenarios",
+      "blindSpots": "Identified blind spots",
+      "selectSimulation": "Select a simulation to see details",
+      "noHistory": "No recorded simulations",
+      "export": "Export",
+      "status": {
+        "draft": "Draft",
+        "reviewed": "Validated",
+        "archived": "Archived"
+      },
+      "example1": {
+        "title": "APAC market expansion",
+        "hyp1": "Asian market growth of 8%/year",
+        "hyp2": "Local recruitment capacity available",
+        "hyp3": "Reliable distribution partner identified",
+        "scen1": "Entry via subsidiary",
+        "scen2": "Entry via joint-venture",
+        "scen3": "Entry via acquisition",
+        "blind1": "Unquantified geopolitical risks",
+        "blind2": "Underestimated cultural barriers"
+      },
+      "example2": {
+        "title": "Product team reorganization",
+        "hyp1": "No major voluntary departures",
+        "hyp2": "Internal training sufficient",
+        "scen1": "Team merger",
+        "scen2": "Creation of a cross-functional team",
+        "blind1": "Impact on motivation not measured"
+      },
+      "disclaimer": "The history documents the reasoning, not the decision. It helps understand the initial context without retrospective judgment."
+    },
+    "disclaimer": {
+      "title": "Institutional Disclaimer",
+      "subtitle": "Limits and responsibilities",
+      "noReplacement": "Does not replace a human decision",
+      "noReplacementDesc": "Pyramid Compass is a reflection support tool. It does not and should not make decisions in place of those responsible.",
+      "noPrediction": "Is not a prediction tool",
+      "noPredictionDesc": "Simulations explore possible scenarios. They do not predict the future or guarantee a result.",
+      "noAdvice": "Provides no recommendation",
+      "noAdviceDesc": "No option, no scenario is presented as \"the right decision\". The tool offers no opinion.",
+      "responsibility": "The decision-maker remains responsible",
+      "responsibilityDesc": "Using Pyramid Compass transfers no responsibility. Each decision commits those who make it.",
+      "summary": "The tool illuminates, the decision-maker remains responsible.",
+      "summaryDesc": "Pyramid Compass is designed to support reflection, not to substitute for human judgment."
+    },
+    "finalCta": {
+      "title": "Ready to structure your decisions?",
+      "description": "Explore the existing Pyramid Compass tools, already adapted to decision analysis.",
+      "filter": "Prevention Filter",
+      "compare": "Compare scenarios"
+    }
+  },
+  "ovi": {
+    "badge": "Premium • Think Tank",
+    "fullName": "Observatory of Invisible Variables",
+    "subtitle": "A space for perspective, a thought laboratory. Not another tool — a framework for better decisions.",
+    "value1": "Thinking frameworks",
+    "value2": "Reading grids",
+    "value3": "Empowerment",
+    "ethics": {
+      "noPromise": "No promise",
+      "noMiracle": "No miracle solution",
+      "noRecipe": "No recipe",
+      "responsibility": "Maximum empowerment"
+    },
+    "tabs": {
+      "intro": "Introduction",
+      "frameworks": "Frameworks",
+      "grids": "Grids",
+      "connection": "Connections"
+    },
+    "paywall": {
+      "feature": "OVI - Observatory of Invisible Variables",
+      "description": "Access thinking frameworks, reading grids, and premium content to enrich your decision-making."
+    },
+    "preview": {
+      "title": "Content preview"
+    },
+    "intro": {
+      "title": "What is OVI?",
+      "p1": "The Observatory of Invisible Variables is not another tool. It's a space for perspective — a thought laboratory integrated into Pyramid Compass.",
+      "observe": {
+        "title": "Observe",
+        "desc": "Identify what escapes immediate view: biases, implicit assumptions, blind spots."
+      },
+      "structure": {
+        "title": "Structure",
+        "desc": "Offer thinking frameworks, not answers. Grids, not recipes."
+      },
+      "decide": {
+        "title": "Decide",
+        "desc": "Nourish reflection so you decide better — never deciding for you."
+      },
+      "philosophy": {
+        "title": "Philosophy",
+        "p1": "Important decisions are often made without an explicit framework. We act fast, react, follow intuition — sometimes rightly, sometimes wrongly.",
+        "p2": "OVI proposes slowing down. Not to hesitate, but to see what wasn't visible. To name what remained implicit. To distinguish what depends on you from what depends on the system.",
+        "p3": "It's not an oracle. It's a mirror."
+      },
+      "cta": "Explore thinking frameworks"
+    },
+    "frameworks": {
+      "title": "Thinking Frameworks",
+      "subtitle": "Short, structuring articles. No opinion, frameworks for thinking.",
+      "read": "Read",
+      "disclaimer": "These frameworks are thinking tools, not absolute truths. They aim to structure thought, not replace it. Each situation deserves its own analysis.",
+      "bias": {
+        "title": "Cognitive Biases",
+        "subtitle": "The invisible filters of our decisions",
+        "preview": "Our brains are equipped with shortcuts that save time — and sometimes cost clarity. This framework explores the main biases affecting important decisions."
+      },
+      "irreversible": {
+        "title": "Irreversible Decisions",
+        "subtitle": "Distinguishing what can be undone from what cannot",
+        "preview": "Not all decisions are equal. Some can be cancelled or adjusted; others commit definitively. This framework proposes a method to distinguish them."
+      },
+      "control": {
+        "title": "Illusion of Control",
+        "subtitle": "What really depends on us",
+        "preview": "We often overestimate our influence on events. This framework helps map what falls under our action and what depends on external forces."
+      },
+      "speed": {
+        "title": "Speed vs Haste",
+        "subtitle": "Acting fast is not acting in urgency",
+        "preview": "Speed can be a strategic asset. Haste is always a risk. This framework offers criteria to distinguish one from the other."
+      },
+      "individual": {
+        "title": "Individual vs System",
+        "subtitle": "Personal responsibility and structural constraints",
+        "preview": "Where does individual responsibility end? Where does systemic constraint begin? This framework explores this blurry but crucial boundary."
+      }
+    },
+    "grids": {
+      "title": "Reading Grids",
+      "subtitle": "Cross-cutting grids applicable to personal life, career, organization, and complex projects.",
+      "questions": "Questions to ask yourself",
+      "usage": {
+        "title": "How to use these grids",
+        "desc": "These grids are not magic formulas. They are lenses — ways of looking at a situation from a different angle. Use them to question, not to conclude."
+      },
+      "reversibility": {
+        "title": "Reversible / Irreversible",
+        "desc": "Distinguish what can be undone from what commits definitively",
+        "left": "Reversible",
+        "right": "Irreversible",
+        "q1": "Can this decision be cancelled or adjusted later?",
+        "q2": "What is the real cost of going back?",
+        "q3": "Am I confusing 'difficult to undo' with 'impossible to undo'?",
+        "personal": {
+          "left1": "Changing cities", "right1": "Having a child",
+          "left2": "Trying a new hobby", "right2": "Burning a relationship bridge"
+        },
+        "career": {
+          "left1": "Taking a sabbatical", "right1": "Leaving with a scene",
+          "left2": "Testing a side-project", "right2": "Losing a certification"
+        },
+        "org": {
+          "left1": "Reorganizing a team", "right1": "Firing a key expert",
+          "left2": "Testing a new process", "right2": "Merging entities"
+        },
+        "project": {
+          "left1": "Changing tech stack", "right1": "Signing an exclusive contract",
+          "left2": "Postponing a launch", "right2": "Publishing an announcement"
+        }
+      },
+      "agency": {
+        "title": "Me / System",
+        "desc": "Map what depends on our action and what exceeds us",
+        "left": "Depends on me",
+        "right": "Depends on the system",
+        "q1": "What do I really have control over in this situation?",
+        "q2": "Am I over or underestimating my power of action?",
+        "q3": "Which systemic constraints must I accept as given?",
+        "personal": {
+          "left1": "My daily effort", "right1": "The housing market",
+          "left2": "My time management", "right2": "Social norms"
+        },
+        "career": {
+          "left1": "My skills", "right1": "Economic conditions",
+          "left2": "My interview prep", "right2": "Internal politics"
+        },
+        "org": {
+          "left1": "The quality of my management", "right1": "Group decisions",
+          "left2": "The culture I create", "right2": "Regulations"
+        },
+        "project": {
+          "left1": "Execution", "right1": "Market adoption",
+          "left2": "Partner choices", "right2": "Administrative delays"
+        }
+      },
+      "visibility": {
+        "title": "Visible / Invisible",
+        "desc": "Identify what is apparent and what remains hidden",
+        "left": "Visible today",
+        "right": "Invisible today",
+        "q1": "What am I not seeing yet in this situation?",
+        "q2": "What costs or benefits will only appear later?",
+        "q3": "Am I relying only on what is measurable?",
+        "personal": {
+          "left1": "Current salary", "right1": "Relationship wear",
+          "left2": "Material comfort", "right2": "Opportunity cost"
+        },
+        "career": {
+          "left1": "Job title", "right1": "Actual learning",
+          "left2": "Compensation", "right2": "Health impact"
+        },
+        "org": {
+          "left1": "KPIs", "right1": "Team morale",
+          "left2": "Revenue", "right2": "Technical debt"
+        },
+        "project": {
+          "left1": "The MVP", "right1": "Maintenance complexity",
+          "left2": "First customers", "right2": "Real product-market fit"
+        }
+      }
+    },
+    "domains": {
+      "personal": "Personal life",
+      "career": "Career",
+      "organization": "Organization",
+      "projects": "Complex projects"
+    },
+    "tags": {
+      "psychology": "Psychology",
+      "decision": "Decision",
+      "strategy": "Strategy",
+      "risk": "Risk",
+      "philosophy": "Philosophy",
+      "systems": "Systems",
+      "execution": "Execution",
+      "timing": "Timing",
+      "sociology": "Sociology",
+      "responsibility": "Responsibility"
+    },
+    "readTime": "{{min}} min",
+    "connection": {
+      "title": "Connection with Pyramid Compass",
+      "subtitle": "OVI enriches your simulations without influencing them",
+      "intro": "When you run a simulation in Pyramid Compass, OVI can suggest relevant readings. The goal: nourish your reflection, not orient your decision.",
+      "ex1": {
+        "sim": "Career trajectory simulation",
+        "sug1": "Framework: Irreversible Decisions",
+        "sug2": "Grid: What depends on me / on the system"
+      },
+      "ex2": {
+        "sim": "Country comparison",
+        "sug1": "Framework: Illusion of Control",
+        "sug2": "Grid: Visible / Invisible today"
+      },
+      "warning": {
+        "title": "Non-influence principle",
+        "desc": "OVI suggestions are always optional. They appear after the simulation, never during. The goal is to enrich post-decision reflection, not bias the process."
+      }
+    },
+    "quickLinks": {
+      "filter": "Prevention Filter",
+      "filterDesc": "Analyze a decision",
+      "compare": "Compare",
+      "compareDesc": "Explore scenarios",
+      "institutions": "Institutions",
+      "institutionsDesc": "Collective decisions"
+    },
+    "quote": "\"Clarity comes not from what we know, but from what we accept to look at.\"",
+    "quoteAuthor": "OVI Principle",
+    "articles": {
+      "keyTakeaways": "Key Takeaways",
+      "backToFrameworks": "Back to frameworks",
+      "bias": {
+        "title": "Cognitive Biases",
+        "subtitle": "The invisible filters of our decisions",
+        "s1": {
+          "title": "Introduction",
+          "p1": "Our brain is an extraordinary machine, capable of processing millions of pieces of information per second. To achieve this, it uses shortcuts — heuristics that allow us to decide quickly.",
+          "p2": "These shortcuts are valuable in daily life. But they can become traps in important decisions, where nuance matters."
+        },
+        "s2": {
+          "title": "The most common biases",
+          "i1": "Confirmation bias: seeking information that confirms what we already believe",
+          "i2": "Anchoring bias: giving too much importance to the first information received",
+          "i3": "Availability bias: overestimating what is easily memorable",
+          "i4": "Survivorship bias: seeing only successes, not silent failures",
+          "i5": "Status quo bias: preferring not to change, even when suboptimal",
+          "i6": "Loss aversion: fearing loss more than desiring gain"
+        },
+        "s3": {
+          "title": "Why it's hard to see",
+          "p1": "Biases are invisible precisely because they are part of how we think. We can't 'step out' of our brain to observe it from outside.",
+          "p2": "That's why thinking frameworks, reading grids, and dialogue with other perspectives are so important. They create distance — a space to see what escapes us."
+        },
+        "quote": "The first step toward clarity is not eliminating biases — it's admitting we have them.",
+        "s4": {
+          "title": "What to do?",
+          "p1": "It's not about eliminating biases — that's impossible. It's about creating conditions where they have less grip on important decisions.",
+          "p2": "Slow down. Write. Question certainties. Seek divergent opinions. Distinguish what we know from what we assume."
+        },
+        "key1": "Biases are useful shortcuts — except in complex decisions",
+        "key2": "We can't eliminate them, but we can create distance",
+        "key3": "Methodical doubt is a tool, not a weakness"
+      },
+      "irreversible": {
+        "title": "Irreversible Decisions",
+        "subtitle": "Distinguishing what can be undone from what cannot",
+        "s1": {
+          "title": "The uniformity trap",
+          "p1": "We tend to treat all decisions the same way. Yet some can be cancelled with a few clicks; others commit for years, or forever.",
+          "p2": "Confusing the two means either hesitating too long on what doesn't matter, or committing too fast on what does."
+        },
+        "s2": {
+          "title": "A simple typology",
+          "i1": "Type 1: Irreversible. Once crossed, no return. Examples: having a child, revealing a secret, destroying a relationship.",
+          "i2": "Type 2: Reversible with cost. We can go back, but it costs (time, money, energy). Examples: changing countries, leaving a job, buying property.",
+          "i3": "Type 3: Easily reversible. Few consequences to cancel. Examples: testing a tool, modifying a document, postponing a meeting."
+        },
+        "warning": "Caution: we often underestimate the cost of reversibility. \"I can always go back\" is sometimes a comfortable illusion.",
+        "s3": {
+          "title": "Adapting your method",
+          "p1": "The more irreversible a decision, the more it deserves time, reflection, and multiple perspectives.",
+          "p2": "Type 1 decisions require a real pause. Not sterile hesitation — but time to see what we don't see yet."
+        },
+        "key1": "Not all decisions deserve the same investment",
+        "key2": "The cost of reversibility is often underestimated",
+        "key3": "The more irreversible, the more it deserves time"
+      },
+      "control": {
+        "title": "Illusion of Control",
+        "subtitle": "What really depends on us",
+        "s1": {
+          "title": "The myth of \"anything is possible\"",
+          "p1": "Contemporary culture values agency: \"if you want it, you can do it\". Sometimes true. Sometimes a cruel lie.",
+          "p2": "We evolve in systems — economic, social, institutional — that constrain our possibilities. Ignoring them is preparing for disappointment."
+        },
+        "s2": {
+          "title": "Three zones to distinguish",
+          "i1": "Control zone: what depends entirely on me (my actions, my reactions, my effort)",
+          "i2": "Influence zone: what I can act on, but without guarantee (my relationships, certain opportunities)",
+          "i3": "Acceptance zone: what escapes me (the market, others' decisions, chance)"
+        },
+        "s3": {
+          "title": "Why it matters",
+          "p1": "Confusing these zones generates either frustration (when we fail to control the uncontrollable), or passivity (when we give up acting where we can).",
+          "p2": "Clarity consists of investing energy where it has grip, and accepting the rest — not by resignation, but by realism."
+        },
+        "key1": "Not everything is under our control — and that's normal",
+        "key2": "Distinguishing control, influence, and acceptance saves energy",
+        "key3": "Clarity is not resignation"
+      },
+      "speed": {
+        "title": "Speed vs Haste",
+        "subtitle": "Acting fast is not acting in urgency",
+        "s1": {
+          "title": "Two ways to go fast",
+          "p1": "Speed can be a strategic advantage. Acting before others, seizing an opportunity, iterating quickly — all this has value.",
+          "p2": "But there's a difference between deliberate speed and haste. One is chosen; the other is suffered."
+        },
+        "s2": {
+          "title": "Signs of haste",
+          "i1": "No time to ask \"is this really urgent?\"",
+          "i2": "Ignoring doubts because we must move forward",
+          "i3": "Justifying haste by fear of missing out",
+          "i4": "Unable to clearly explain why now"
+        },
+        "s3": {
+          "title": "The real question",
+          "p1": "Before acting fast, ask yourself: \"Am I choosing this speed, or am I suffering it?\"",
+          "p2": "Chosen speed is powerful. Suffered haste is dangerous."
+        },
+        "key1": "Speed can be an asset — if chosen",
+        "key2": "Haste is often a symptom, not a strategy",
+        "key3": "Taking 5 minutes to ask the question can avoid 5 months of regret"
+      },
+      "individual": {
+        "title": "Individual vs System",
+        "subtitle": "Personal responsibility and structural constraints",
+        "s1": {
+          "title": "A false dilemma",
+          "p1": "On one side, the \"anything is possible if you believe\" discourse. On the other, systemic fatalism: \"the system is against you\".",
+          "p2": "Both are true — and false. Reality is more nuanced: we act in systems that constrain us AND offer possibilities."
+        },
+        "s2": {
+          "title": "What the system does",
+          "p1": "A system defines rules, incentives, obstacles. It rewards certain behaviors and punishes others. It creates easy paths and dead ends.",
+          "p2": "Ignoring the system means fighting invisible forces. Understanding it means knowing where to place your efforts."
+        },
+        "s3": {
+          "title": "What remains for the individual",
+          "p1": "Even in the most constraining systems, margins remain. Choices. Ways to navigate.",
+          "p2": "Individual responsibility is not about controlling everything — it's about doing the maximum with what is under our control."
+        },
+        "key1": "Neither all-powerful, nor powerless",
+        "key2": "Understanding the system helps navigate it better",
+        "key3": "Responsibility applies to what depends on us, not the rest"
+      }
+    },
+    "suggestions": {
+      "title": "Suggested readings from OVI",
+      "subtitle": "Enrich your reflection with relevant frameworks",
+      "viewMore": "View in OVI",
+      "relevantTo": "Relevant to your analysis"
+    }
+  },
+  "b2b": {
+    "badge": "Business Solutions",
+    "title": "For Organizations & Decision-Makers",
+    "subtitle": "Premium tools for institutional decision support and strategic reflection.",
+    "intro": "Pyramid Compass offers dedicated modules for organizations seeking to structure their decision-making without delegating responsibility.",
+    "modules": {
+      "institutions": {
+        "title": "Institutions & Organizations",
+        "desc": "Clarify trade-offs, identify blind spots, prevent costly mistakes",
+        "features": ["Institutional use cases", "Collective decision mode", "Traceability & prevention"]
+      },
+      "ovi": {
+        "title": "OVI Think Tank",
+        "desc": "Thinking frameworks and reading grids for complex decisions",
+        "features": ["Cognitive bias frameworks", "Decision reversibility analysis", "System vs individual mapping"]
+      }
+    },
+    "principles": {
+      "title": "Our Principles",
+      "p1": {
+        "title": "Illuminate, don't prescribe",
+        "desc": "We clarify options without recommending one"
+      },
+      "p2": {
+        "title": "Simulation ≠ Prediction",
+        "desc": "We explore scenarios, not predict outcomes"
+      },
+      "p3": {
+        "title": "Empower, don't delegate",
+        "desc": "Responsibility always remains with the decision-maker"
+      }
+    },
+    "cta": {
+      "institutions": "Explore Institutions",
+      "ovi": "Explore OVI",
+      "contact": "Contact us"
+    }
+  },
+  "nav": {
+    "institutions": "Institutions",
+    "ovi": "OVI",
+    "b2b": "B2B Solutions"
   }
 }
