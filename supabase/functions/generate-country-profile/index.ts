@@ -218,19 +218,44 @@ serve(async (req) => {
   }
 
   try {
-    const { job_id, country } = await req.json() as { job_id: string; country: CountryInput };
+    const body = await req.json();
+    
+    // Support both formats: {job_id, country} or direct {countryId, countryName, ...}
+    let job_id = body.job_id;
+    let country: CountryInput;
+    
+    if (body.country) {
+      country = body.country;
+    } else {
+      // Direct format from manual testing
+      country = {
+        country_id: body.countryId || body.country_id,
+        country_name: body.countryName || body.country_name,
+        iso2: body.iso2,
+        region: body.region,
+        primary_pyramid: body.primaryPyramid || body.primary_pyramid,
+      };
+    }
+
+    console.log("Received request for country:", country.country_name);
 
     if (!LOVABLE_API_KEY) {
       throw new Error("LOVABLE_API_KEY not configured");
     }
 
+    if (!country.country_name || !country.iso2) {
+      throw new Error("Missing required fields: country_name and iso2");
+    }
+
     const supabase = createClient(SUPABASE_URL!, SUPABASE_SERVICE_ROLE_KEY!);
 
-    // Update job status to running
-    await supabase
-      .from("country_generation_jobs")
-      .update({ status: "running", started_at: new Date().toISOString() })
-      .eq("id", job_id);
+    // Update job status to running (only if job_id exists)
+    if (job_id) {
+      await supabase
+        .from("country_generation_jobs")
+        .update({ status: "running", started_at: new Date().toISOString() })
+        .eq("id", job_id);
+    }
 
     console.log(`Starting generation for ${country.country_name}`);
 
@@ -243,11 +268,13 @@ serve(async (req) => {
       throw new Error("Failed to parse generated JSON");
     }
 
-    // Update status to validating
-    await supabase
-      .from("country_generation_jobs")
-      .update({ status: "validating" })
-      .eq("id", job_id);
+    // Update status to validating (only if job_id exists)
+    if (job_id) {
+      await supabase
+        .from("country_generation_jobs")
+        .update({ status: "validating" })
+        .eq("id", job_id);
+    }
 
     // Step 2: Validate and clean the content
     const validationPrompt = `Voici le JSON à auditer et corriger :\n\n${JSON.stringify(generatedJSON, null, 2)}`;
@@ -267,18 +294,20 @@ serve(async (req) => {
     // Sync to country_tags table
     await syncToCountryTags(supabase, country.country_id, validatedJSON as any);
 
-    // Update job with results
-    await supabase
-      .from("country_generation_jobs")
-      .update({
-        status: "done",
-        json_payload: validatedJSON,
-        specificity_score: specificityScore,
-        confidence_score: confidenceScore,
-        stereotype_flag: stereotypeFlag,
-        completed_at: new Date().toISOString(),
-      })
-      .eq("id", job_id);
+    // Update job with results (only if job_id exists)
+    if (job_id) {
+      await supabase
+        .from("country_generation_jobs")
+        .update({
+          status: "done",
+          json_payload: validatedJSON,
+          specificity_score: specificityScore,
+          confidence_score: confidenceScore,
+          stereotype_flag: stereotypeFlag,
+          completed_at: new Date().toISOString(),
+        })
+        .eq("id", job_id);
+    }
 
     console.log(`Completed generation and sync for ${country.country_name}`);
 
