@@ -6,9 +6,15 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { SimulationDisclaimer } from '@/components/SimulationDisclaimer';
 import { UNIVERSAL_ERRORS } from '@/lib/universal-errors-data';
+import { useAnalytics } from '@/hooks/useAnalytics';
 
 export default function UniversalErrors() {
   const { t } = useTranslation();
+  const { trackUniversalErrorsClicked } = useAnalytics();
+
+  const handleErrorClick = (errorId: string) => {
+    trackUniversalErrorsClicked();
+  };
 
   const getColorClasses = (color: string) => {
     const colors: Record<string, { bg: string; border: string; text: string }> = {
@@ -101,7 +107,7 @@ export default function UniversalErrors() {
                   </div>
 
                   <div className="flex gap-2 pt-2">
-                    <Button asChild variant="outline" size="sm" className="flex-1">
+                    <Button asChild variant="outline" size="sm" className="flex-1" onClick={() => handleErrorClick(error.id)}>
                       <Link to={`/universal-errors/${error.id}`}>
                         {t('universalErrors.learnMore', 'En savoir plus')}
                         <ArrowRight className="w-4 h-4 ml-2" />

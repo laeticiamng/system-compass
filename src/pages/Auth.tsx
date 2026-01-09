@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '@/hooks/useAuth';
+import { useAnalytics } from '@/hooks/useAnalytics';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -16,6 +17,7 @@ export default function Auth() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { user, loading, signUp, signIn } = useAuth();
+  const { trackAccountCreated } = useAnalytics();
   
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
@@ -76,6 +78,8 @@ export default function Auth() {
           } else {
             setError(error.message);
           }
+        } else {
+          trackAccountCreated();
         }
       }
     } catch (err) {

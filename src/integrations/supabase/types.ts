@@ -14,6 +14,66 @@ export type Database = {
   }
   public: {
     Tables: {
+      analytics_events: {
+        Row: {
+          created_at: string
+          event_category: string
+          event_name: string
+          id: string
+          metadata: Json | null
+          page_path: string | null
+          session_id: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          event_category: string
+          event_name: string
+          id?: string
+          metadata?: Json | null
+          page_path?: string | null
+          session_id: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          event_category?: string
+          event_name?: string
+          id?: string
+          metadata?: Json | null
+          page_path?: string | null
+          session_id?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      analytics_sessions: {
+        Row: {
+          first_seen_at: string
+          id: string
+          last_seen_at: string
+          session_id: string
+          user_id: string | null
+          visit_count: number
+        }
+        Insert: {
+          first_seen_at?: string
+          id?: string
+          last_seen_at?: string
+          session_id: string
+          user_id?: string | null
+          visit_count?: number
+        }
+        Update: {
+          first_seen_at?: string
+          id?: string
+          last_seen_at?: string
+          session_id?: string
+          user_id?: string | null
+          visit_count?: number
+        }
+        Relationships: []
+      }
       dashboard_progress: {
         Row: {
           created_at: string
@@ -289,7 +349,16 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      analytics_daily_stats: {
+        Row: {
+          date: string | null
+          event_category: string | null
+          event_count: number | null
+          event_name: string | null
+          unique_sessions: number | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       [_ in never]: never
