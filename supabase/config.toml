@@ -26,3 +26,6 @@ verify_jwt = false
 
 [functions.traceos-email-alerts]
 verify_jwt = false
+
+[functions.traceos-webhooks]
+verify_jwt = false

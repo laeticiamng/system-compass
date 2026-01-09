@@ -402,6 +402,10 @@ export function TraceOS() {
             <Tag className="w-4 h-4" />
             {t('traceOS.tabs.tags', 'Tags')}
           </TabsTrigger>
+          <TabsTrigger value="integrations" className="gap-2">
+            <GitBranch className="w-4 h-4" />
+            {t('traceOS.tabs.integrations', 'Intégrations')}
+          </TabsTrigger>
           <TabsTrigger value="review" className="gap-2">
             <History className="w-4 h-4" />
             {t('traceOS.tabs.review', 'Relecture')}
@@ -456,6 +460,25 @@ export function TraceOS() {
               />
             </div>
           )}
+        </TabsContent>
+
+        <TabsContent value="integrations">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <GitBranch className="w-5 h-5" />
+                {t('traceOS.integrations.title', 'Webhooks & Workflows')}
+              </CardTitle>
+              <CardDescription>
+                {t('traceOS.integrations.desc', 'Configurez les intégrations externes et les workflows d\'approbation.')}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground mb-4">
+                {t('traceOS.integrations.info', 'Connectez TraceOS à Slack, Teams ou Notion pour recevoir des notifications automatiques.')}
+              </p>
+            </CardContent>
+          </Card>
         </TabsContent>
 
         <TabsContent value="review">
