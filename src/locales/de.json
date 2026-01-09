@@ -2602,5 +2602,28 @@
     "load": "Laden",
     "tagsRadar": "Intelligenz-Tags Vergleich",
     "noTagsData": "Intelligenz-Daten nicht verfügbar. Verfügbar für 29 Länder."
+  },
+  "search": {
+    "title": "Globale Suche",
+    "placeholder": "Suchen...",
+    "inputPlaceholder": "Land, Exit-Key oder Fehler suchen...",
+    "startTyping": "Tippen zum Suchen",
+    "noResults": "Keine Ergebnisse gefunden",
+    "hint": "↑↓ navigieren, Enter auswählen",
+    "close": "zum Schließen",
+    "typeCountry": "Land",
+    "typeExitKey": "Exit-Key",
+    "typeError": "Fehler",
+    "typePage": "Seite"
+  },
+  "notifications": {
+    "title": "Benachrichtigungen",
+    "empty": "Keine Benachrichtigungen",
+    "markAllRead": "Alle gelesen",
+    "clearAll": "Alle löschen",
+    "enable": "Benachrichtigungen aktivieren",
+    "deadlines": "Deadline-Erinnerungen",
+    "achievements": "Erfolge",
+    "justNow": "Gerade eben"
   }
 }

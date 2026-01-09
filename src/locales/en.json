@@ -4638,5 +4638,34 @@
     },
     "analyze": "Analyze Matches",
     "reset": "Reset"
+  },
+  "search": {
+    "title": "Global Search",
+    "placeholder": "Search...",
+    "inputPlaceholder": "Search for a country, exit key, error...",
+    "startTyping": "Start typing to search",
+    "noResults": "No results found",
+    "hint": "Use ↑↓ to navigate, Enter to select",
+    "close": "to close",
+    "typeCountry": "Country",
+    "typeExitKey": "Exit Key",
+    "typeError": "Error",
+    "typePage": "Page"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "empty": "No notifications",
+    "markAllRead": "Mark all read",
+    "clearAll": "Clear all notifications",
+    "enable": "Enable notifications",
+    "deadlines": "Deadline reminders",
+    "achievements": "Achievements",
+    "justNow": "Just now",
+    "minutesAgo_one": "{{count}} minute ago",
+    "minutesAgo_other": "{{count}} minutes ago",
+    "hoursAgo_one": "{{count}} hour ago",
+    "hoursAgo_other": "{{count}} hours ago",
+    "daysAgo_one": "{{count}} day ago",
+    "daysAgo_other": "{{count}} days ago"
   }
 }
