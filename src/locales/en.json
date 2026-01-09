@@ -4129,6 +4129,16 @@
       "blindSpots": "Common blind spots",
       "risks": "Likely risks",
       "exitKeys": "Possible exit keys"
+    },
+    "reversibility": {
+      "reversible": "Reversible",
+      "semi": "Semi-reversible",
+      "irreversible": "Irreversible"
+    },
+    "irreversibleWarning": {
+      "title": "High-commitment decision",
+      "message": "For irreversible decisions, we recommend testing at least 2 different scenarios.",
+      "testAlternative": "Test an alternative scenario"
     }
   }
 }

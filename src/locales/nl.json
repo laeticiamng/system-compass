@@ -2255,6 +2255,16 @@
       "blindSpots": "Veelvoorkomende blinde vlekken",
       "risks": "Waarschijnlijke risico's",
       "exitKeys": "Mogelijke exit-keys"
+    },
+    "reversibility": {
+      "reversible": "Omkeerbaar",
+      "semi": "Semi-omkeerbaar",
+      "irreversible": "Onomkeerbaar"
+    },
+    "irreversibleWarning": {
+      "title": "Beslissing met hoge betrokkenheid",
+      "message": "Voor onomkeerbare beslissingen raden we aan om minimaal 2 verschillende scenario's te testen.",
+      "testAlternative": "Een alternatief scenario testen"
     }
   }
 }

@@ -38,6 +38,7 @@ type DecisionType = 'country' | 'studies' | 'career' | 'business' | 'investment'
 type Horizon = '3months' | '1year' | '3years' | '10years';
 type RiskTolerance = 'low' | 'medium' | 'high';
 type Constraint = 'money' | 'time' | 'energy' | 'family' | 'status' | 'security';
+type Reversibility = 'reversible' | 'semi' | 'irreversible';
 
 interface FilterFormData {
   decisionType: DecisionType | null;
@@ -51,7 +52,59 @@ interface FilterResult {
   blindSpots: string[];
   risks: string[];
   exitKeys: { label: string; href: string }[];
+  reversibility: Reversibility;
 }
+
+// Calculate reversibility based on decision type and horizon
+function calculateReversibility(decisionType: DecisionType, horizon: Horizon): Reversibility {
+  // Base reversibility by decision type
+  const baseReversibility: Record<DecisionType, Reversibility> = {
+    'country': 'semi',
+    'studies': 'semi',
+    'career': 'reversible',
+    'business': 'semi',
+    'investment': 'semi',
+    'relationship': 'reversible',
+    'other': 'reversible',
+  };
+
+  // Decisions that become irreversible with long horizons
+  const becomesIrreversible: DecisionType[] = ['country', 'business', 'investment', 'relationship'];
+  
+  // Short horizons make things more reversible
+  if (horizon === '3months') {
+    return 'reversible';
+  }
+  
+  // Long horizons can make decisions irreversible
+  if (horizon === '10years' && becomesIrreversible.includes(decisionType)) {
+    return 'irreversible';
+  }
+  
+  if (horizon === '3years' && ['country', 'business'].includes(decisionType)) {
+    return 'irreversible';
+  }
+
+  return baseReversibility[decisionType];
+}
+
+const REVERSIBILITY_CONFIG: Record<Reversibility, { label: string; color: string; icon: string }> = {
+  'reversible': { 
+    label: 'Réversible', 
+    color: 'bg-green-500/20 text-green-700 border-green-500/40',
+    icon: '↩️'
+  },
+  'semi': { 
+    label: 'Semi-réversible', 
+    color: 'bg-amber-500/20 text-amber-700 border-amber-500/40',
+    icon: '⚠️'
+  },
+  'irreversible': { 
+    label: 'Irréversible', 
+    color: 'bg-red-500/20 text-red-700 border-red-500/40',
+    icon: '🔒'
+  },
+};
 
 const DECISION_TYPES: { value: DecisionType; label: string; icon: React.ReactNode }[] = [
   { value: 'country', label: 'Pays', icon: <Globe className="w-4 h-4" /> },
@@ -93,6 +146,9 @@ function generateResults(formData: FilterFormData): FilterResult {
   const blindSpots: string[] = [];
   const risks: string[] = [];
   const exitKeys: { label: string; href: string }[] = [];
+  
+  // Calculate reversibility
+  const reversibility = calculateReversibility(decisionType!, horizon!);
 
   // Decision type specific content
   switch (decisionType) {
@@ -289,6 +345,7 @@ function generateResults(formData: FilterFormData): FilterResult {
     blindSpots: [...new Set(blindSpots)],
     risks: [...new Set(risks)],
     exitKeys: uniqueExitKeys.slice(0, 4),
+    reversibility,
   };
 }
 
@@ -510,6 +567,19 @@ export default function PreventionFilter() {
         ) : (
           /* Results */
           <div className="space-y-6">
+            {/* Reversibility Badge - Prominent display */}
+            {results && (
+              <div className="flex justify-center">
+                <div className={cn(
+                  "inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 font-medium",
+                  REVERSIBILITY_CONFIG[results.reversibility].color
+                )}>
+                  <span>{REVERSIBILITY_CONFIG[results.reversibility].icon}</span>
+                  <span>{t(`preventionFilter.reversibility.${results.reversibility}`, REVERSIBILITY_CONFIG[results.reversibility].label)}</span>
+                </div>
+              </div>
+            )}
+
             {/* Summary badges */}
             <div className="flex flex-wrap justify-center gap-2 mb-6">
               <Badge variant="outline" className="gap-1">
@@ -528,6 +598,42 @@ export default function PreventionFilter() {
                 <span className="ml-1">{CONSTRAINTS.find(c => c.value === formData.constraint)?.label}</span>
               </Badge>
             </div>
+
+            {/* Irreversible Warning & Alternative Scenario CTA */}
+            {results?.reversibility === 'irreversible' && (
+              <Card className="border-red-500/40 bg-red-500/5">
+                <CardContent className="pt-6">
+                  <div className="flex flex-col items-center text-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center">
+                      <Shield className="w-6 h-6 text-red-600" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-foreground mb-1">
+                        {t('preventionFilter.irreversibleWarning.title', 'Décision à fort engagement')}
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        {t('preventionFilter.irreversibleWarning.message', 'Pour les décisions irréversibles, on recommande de tester au moins 2 scénarios différents.')}
+                      </p>
+                    </div>
+                    <Button
+                      variant="outline"
+                      onClick={() => {
+                        // Pre-fill with alternative parameters
+                        const alternativeHorizon = formData.horizon === '10years' ? '3years' : 
+                                                   formData.horizon === '3years' ? '1year' : '3months';
+                        setFormData({ ...formData, horizon: alternativeHorizon as Horizon });
+                        setShowResults(false);
+                        setResults(null);
+                      }}
+                      className="gap-2 border-red-500/40 hover:bg-red-500/10"
+                    >
+                      <RefreshCw className="w-4 h-4" />
+                      {t('preventionFilter.irreversibleWarning.testAlternative', 'Tester un scénario alternatif')}
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
 
             {results && (
               <>

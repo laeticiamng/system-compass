@@ -4537,6 +4537,16 @@
       "blindSpots": "Points aveugles fréquents",
       "risks": "Risques probables",
       "exitKeys": "Clés de sortie possibles"
+    },
+    "reversibility": {
+      "reversible": "Réversible",
+      "semi": "Semi-réversible",
+      "irreversible": "Irréversible"
+    },
+    "irreversibleWarning": {
+      "title": "Décision à fort engagement",
+      "message": "Pour les décisions irréversibles, on recommande de tester au moins 2 scénarios différents.",
+      "testAlternative": "Tester un scénario alternatif"
     }
   }
 }

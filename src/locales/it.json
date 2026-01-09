@@ -2255,6 +2255,16 @@
       "blindSpots": "Punti ciechi frequenti",
       "risks": "Rischi probabili",
       "exitKeys": "Chiavi di uscita possibili"
+    },
+    "reversibility": {
+      "reversible": "Reversibile",
+      "semi": "Semi-reversibile",
+      "irreversible": "Irreversibile"
+    },
+    "irreversibleWarning": {
+      "title": "Decisione ad alto impegno",
+      "message": "Per decisioni irreversibili, raccomandiamo di testare almeno 2 scenari diversi.",
+      "testAlternative": "Testare uno scenario alternativo"
     }
   }
 }
