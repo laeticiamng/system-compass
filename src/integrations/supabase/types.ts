@@ -677,6 +677,71 @@ export type Database = {
         }
         Relationships: []
       }
+      traceos_decisions: {
+        Row: {
+          abandoned_branches: Json
+          alternative_hypotheses: Json
+          author: string
+          constraints: Json
+          context: string
+          created_at: string
+          decision: string
+          decision_date: string
+          id: string
+          main_hypothesis: string
+          parent_id: string | null
+          scope: string
+          status: string
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          abandoned_branches?: Json
+          alternative_hypotheses?: Json
+          author: string
+          constraints?: Json
+          context: string
+          created_at?: string
+          decision: string
+          decision_date?: string
+          id?: string
+          main_hypothesis: string
+          parent_id?: string | null
+          scope: string
+          status?: string
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          abandoned_branches?: Json
+          alternative_hypotheses?: Json
+          author?: string
+          constraints?: Json
+          context?: string
+          created_at?: string
+          decision?: string
+          decision_date?: string
+          id?: string
+          main_hypothesis?: string
+          parent_id?: string | null
+          scope?: string
+          status?: string
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "traceos_decisions_parent_id_fkey"
+            columns: ["parent_id"]
+            isOneToOne: false
+            referencedRelation: "traceos_decisions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_project_analyses: {
         Row: {
           alternative_scenarios: Json

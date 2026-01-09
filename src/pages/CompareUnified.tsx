@@ -10,6 +10,7 @@ import { RadarCompareChart } from '@/components/RadarCompareChart';
 import { RiskStackedBarChart } from '@/components/RiskStackedBarChart';
 import { FinancialTrajectoryChart } from '@/components/FinancialTrajectoryChart';
 import { useSavedComparisons } from '@/hooks/useSavedComparisons';
+import { OVISuggestions } from '@/components/ovi/OVISuggestions';
 import { cn } from '@/lib/utils';
 import { 
   Plus, X, Share2, Trash2, Save, Bookmark, FolderOpen,
@@ -609,6 +610,9 @@ export default function CompareUnified() {
                 ))}
               </div>
             </section>
+
+            {/* OVI Suggestions */}
+            <OVISuggestions context="compare" />
           </div>
         ) : (
           <div className="text-center py-16 glass-card rounded-xl">

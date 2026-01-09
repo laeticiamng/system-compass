@@ -5052,5 +5052,149 @@
     "hoursAgo_other": "Il y a {{count}} heures",
     "daysAgo_one": "Il y a {{count}} jour",
     "daysAgo_other": "Il y a {{count}} jours"
+  },
+  "traceOS": {
+    "badge": "TraceOS - Mémoire Décisionnelle",
+    "title": "Traçabilité Intellectuelle",
+    "subtitle": "Mémoire stratégique de votre organisation",
+    "export": "Exporter",
+    "newDecision": "Nouvelle décision",
+    "searchPlaceholder": "Rechercher une décision...",
+    "disclaimer": "TraceOS est un outil de documentation et de traçabilité. Il ne remplace pas le jugement humain ni le processus de décision.",
+    "paywall": {
+      "title": "Fonctionnalité Pro",
+      "description": "Accédez à TraceOS, le module de traçabilité décisionnelle pour les organisations."
+    },
+    "values": {
+      "tree": {
+        "title": "Arbre décisionnel",
+        "desc": "Visualisez les enchaînements"
+      },
+      "memory": {
+        "title": "Mémoire stratégique",
+        "desc": "Conservez les hypothèses"
+      },
+      "branches": {
+        "title": "Branches abandonnées",
+        "desc": "Gardez trace des alternatives"
+      },
+      "governance": {
+        "title": "Gouvernance",
+        "desc": "Historique non modifiable"
+      }
+    },
+    "tabs": {
+      "tree": "Arbre",
+      "review": "Relecture",
+      "governance": "Gouvernance"
+    },
+    "tree": {
+      "viewTree": "Arbre",
+      "viewTimeline": "Timeline",
+      "decisions": "décisions",
+      "validated": "validées",
+      "pending": "en attente"
+    },
+    "timeline": {
+      "subDecision": "sous-décision"
+    },
+    "status": {
+      "pending": "En attente",
+      "validated": "Validée",
+      "abandoned": "Abandonnée"
+    },
+    "node": {
+      "context": "Contexte",
+      "mainHypothesis": "Hypothèse principale",
+      "alternativeHypotheses": "Hypothèses alternatives",
+      "constraints": "Contraintes identifiées",
+      "decisionTaken": "Décision prise",
+      "abandonedBranches": "Branches abandonnées"
+    },
+    "form": {
+      "title": "Nouvelle décision",
+      "titleSub": "Nouvelle sous-décision",
+      "parentDecision": "Rattachée à",
+      "decisionTitle": "Intitulé de la décision",
+      "titlePlaceholder": "Ex: Choix du nouveau CRM",
+      "context": "Contexte",
+      "contextPlaceholder": "Décrivez le contexte qui a mené à cette décision...",
+      "mainHypothesis": "Hypothèse principale",
+      "hypothesisPlaceholder": "L'hypothèse sur laquelle repose cette décision...",
+      "alternativeHypotheses": "Hypothèses alternatives",
+      "alternativePlaceholder": "Une autre hypothèse envisagée...",
+      "addAlternative": "Ajouter une hypothèse",
+      "constraints": "Contraintes identifiées",
+      "constraintPlaceholder": "Ex: Budget limité, Deadline serrée...",
+      "addConstraint": "Ajouter une contrainte",
+      "decisionTaken": "Décision prise",
+      "decisionPlaceholder": "La décision finale retenue...",
+      "author": "Auteur",
+      "authorPlaceholder": "Nom ou rôle",
+      "scope": "Périmètre",
+      "scopePlaceholder": "Sélectionner...",
+      "scopeStrategic": "Stratégique",
+      "scopeOperational": "Opérationnel",
+      "scopeTactical": "Tactique",
+      "scopeProject": "Projet",
+      "date": "Date",
+      "save": "Enregistrer la décision"
+    },
+    "review": {
+      "title": "Relecture stratégique",
+      "desc": "Analysez l'enchaînement des décisions et identifiez les moments de rupture.",
+      "selectDecision": "Sélectionnez une décision dans l'arbre pour lancer une relecture."
+    },
+    "governance": {
+      "title": "Gouvernance & Accès",
+      "desc": "Gérez les droits d'accès et la traçabilité des modifications.",
+      "appendOnly": "Append-only",
+      "appendOnlyDesc": "L'historique est non modifiable",
+      "roles": "Gestion des rôles",
+      "rolesDesc": "Lecture / Écriture par utilisateur"
+    }
+  },
+  "b2b": {
+    "badge": "Solutions B2B",
+    "title": "Pour les Organisations & Décideurs",
+    "subtitle": "Outils premium d'aide à la décision institutionnelle et de réflexion stratégique.",
+    "intro": "Pyramid Compass propose des modules dédiés aux organisations cherchant à structurer leur prise de décision sans déléguer la responsabilité.",
+    "tabs": {
+      "modules": "Modules",
+      "traceos": "TraceOS"
+    },
+    "modules": {
+      "institutions": {
+        "title": "Institutions & Organisations",
+        "desc": "Clarifier les arbitrages, identifier les angles morts, prévenir les erreurs coûteuses",
+        "features": ["Cas d'usage institutionnels", "Mode décision collective", "Traçabilité & prévention"]
+      },
+      "ovi": {
+        "title": "OVI Think Tank",
+        "desc": "Cadres de réflexion et grilles de lecture pour les décisions complexes",
+        "features": ["Cadres sur les biais cognitifs", "Analyse de réversibilité des décisions", "Cartographie système vs individu"]
+      }
+    },
+    "principles": {
+      "title": "Nos principes",
+      "p1": {
+        "title": "Éclairer, pas prescrire",
+        "desc": "Nous clarifions les options sans en recommander une"
+      },
+      "p2": {
+        "title": "Simulation ≠ Prédiction",
+        "desc": "Nous explorons des scénarios, pas des résultats"
+      },
+      "p3": {
+        "title": "Responsabiliser, pas déléguer",
+        "desc": "La responsabilité reste toujours au décideur"
+      }
+    },
+    "cta": {
+      "institutions": "Explorer Institutions",
+      "ovi": "Explorer OVI",
+      "ready": "Prêt à structurer vos décisions institutionnelles ?",
+      "desc": "Explorez nos outils dédiés ou contactez-nous pour des solutions personnalisées."
+    }
   }
 }
