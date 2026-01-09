@@ -1,6 +1,8 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useState, useEffect } from 'react';
 import { getCountryById } from '@/lib/countries-data';
+import { isExtendedCountry, getExtendedCountryMeta } from '@/lib/countries-extended';
 import { CountryTroncSection } from '@/components/country/CountryTroncSection';
 import { CountryVariantSection } from '@/components/country/CountryVariantSection';
 import { CountryProjectAnalysis } from '@/components/country/CountryProjectAnalysis';
@@ -14,9 +16,11 @@ import { FiscalSalaryCalculator } from '@/components/FiscalSalaryCalculator';
 import { RetirementProjection } from '@/components/RetirementProjection';
 import { LGBTQRightsIndicator } from '@/components/LGBTQRightsIndicator';
 import { PlaybookSection } from '@/components/PlaybookSection';
+import { CountryTagsRadar } from '@/components/country/CountryTagsRadar';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { ArrowLeft, Calendar, ExternalLink, Layers, Map, Target, Brain } from 'lucide-react';
+import { ArrowLeft, Calendar, ExternalLink, Layers, Map, Target, Brain, Loader2 } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
 
 const PYRAMID_TYPE_LABELS: Record<string, string> = {
   PROBLEM_RENT: 'pyramids.problemRent.label',
@@ -41,8 +45,26 @@ export default function CountryDetail() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const country = getCountryById(id || '');
+  const extendedMeta = !country && id ? getExtendedCountryMeta(id) : null;
+  const isExtended = !country && extendedMeta !== null;
 
-  if (!country) {
+  // For extended countries, we need to fetch tags from DB
+  const [extendedTags, setExtendedTags] = useState<any>(null);
+  const [loadingExtended, setLoadingExtended] = useState(isExtended);
+
+  useEffect(() => {
+    if (isExtended && id) {
+      Promise.all([
+        supabase.from('country_tags').select('*').eq('country_id', id).single(),
+      ]).then(([tagsRes]) => {
+        if (tagsRes.data) setExtendedTags(tagsRes.data);
+        setLoadingExtended(false);
+      });
+    }
+  }, [isExtended, id]);
+
+  // Not found for both regular and extended
+  if (!country && !isExtended) {
     return (
       <div className="min-h-screen pt-24 flex items-center justify-center">
         <div className="text-center">
@@ -52,6 +74,114 @@ export default function CountryDetail() {
       </div>
     );
   }
+
+  // Extended country view (DB-only)
+  if (isExtended && extendedMeta) {
+    const typeLabel = t(PYRAMID_TYPE_LABELS[extendedMeta.pyramidType] || 'pyramids.hybridTransition.label');
+    const typeColor = PYRAMID_TYPE_COLORS[extendedMeta.pyramidType] || 'pyramid-hybrid';
+
+    if (loadingExtended) {
+      return (
+        <div className="min-h-screen pt-24 flex items-center justify-center">
+          <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
+        </div>
+      );
+    }
+
+    return (
+      <div className="min-h-screen pt-24 pb-16">
+        <div className="container mx-auto px-4">
+          {/* Back Button */}
+          <div className="flex items-center justify-between mb-8">
+            <Button
+              variant="ghost"
+              onClick={() => navigate('/countries')}
+              className="gap-2 text-muted-foreground hover:text-foreground"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              {t('countryDetail.backToCountries')}
+            </Button>
+          </div>
+
+          {/* Header */}
+          <div className="flex flex-col md:flex-row md:items-start gap-6 mb-8">
+            <div className="text-6xl">{getFlagEmoji(extendedMeta.iso2)}</div>
+            <div className="flex-1">
+              <div className="flex flex-wrap items-center gap-3 mb-2">
+                <h1 className="font-display text-4xl font-bold">{extendedMeta.name}</h1>
+                <span
+                  className="px-3 py-1 rounded-full text-sm font-medium"
+                  style={{
+                    backgroundColor: `hsl(var(--${typeColor}) / 0.15)`,
+                    color: `hsl(var(--${typeColor}))`,
+                  }}
+                >
+                  {typeLabel}
+                </span>
+              </div>
+              <p className="text-muted-foreground">{extendedMeta.region}</p>
+            </div>
+          </div>
+
+          {/* Music Player */}
+          <CountryMusicPlayer
+            countryId={id!}
+            countryName={extendedMeta.name}
+            pyramidType={extendedMeta.pyramidType as any}
+            className="mb-8"
+          />
+
+          {/* Tags Radar */}
+          {extendedTags && (
+            <div className="mb-8">
+              <CountryTagsRadar tags={extendedTags} countryName={extendedMeta.name} />
+            </div>
+          )}
+
+          {/* Intelligence Layer */}
+          <Tabs defaultValue="intelligence" className="mb-12">
+            <TabsList className="grid w-full grid-cols-3 mb-8">
+              <TabsTrigger value="intelligence" className="gap-2">
+                <Brain className="w-4 h-4" />
+                <span className="hidden sm:inline">{t('countryDetail.tabs.intelligence', 'Intelligence')}</span>
+                <span className="sm:hidden">Intel</span>
+              </TabsTrigger>
+              <TabsTrigger value="variant" className="gap-2">
+                <Map className="w-4 h-4" />
+                <span className="hidden sm:inline">{t('countryDetail.tabs.variant', 'Variante Pays')}</span>
+                <span className="sm:hidden">Variante</span>
+              </TabsTrigger>
+              <TabsTrigger value="project" className="gap-2">
+                <Target className="w-4 h-4" />
+                <span className="hidden sm:inline">{t('countryDetail.tabs.project', 'Analyse Projet')}</span>
+                <span className="sm:hidden">Projet</span>
+              </TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="intelligence">
+              <CountryIntelligenceSection countryId={id!} countryName={extendedMeta.name} />
+            </TabsContent>
+
+            <TabsContent value="variant">
+              <CountryVariantSection countryId={id!} countryName={extendedMeta.name} />
+            </TabsContent>
+
+            <TabsContent value="project">
+              <CountryProjectAnalysis countryId={id!} countryName={extendedMeta.name} />
+            </TabsContent>
+          </Tabs>
+
+          {/* Note about extended country */}
+          <div className="glass-card rounded-xl p-6 text-center text-muted-foreground">
+            <p>{t('countryDetail.extendedNote', 'This country has intelligence layer data. Full profile data coming soon.')}</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Regular country view
+  if (!country) return null;
 
   const typeLabel = t(PYRAMID_TYPE_LABELS[country.pyramidType]);
   const typeColor = PYRAMID_TYPE_COLORS[country.pyramidType];

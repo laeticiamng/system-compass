@@ -123,7 +123,7 @@ export function TagsRadarCompare({ countryIds, countryNames }: TagsRadarCompareP
           {t('multiCompare.tagsRadar', 'Intelligence Tags Comparison')}
         </h3>
         <p className="text-muted-foreground text-center py-8">
-          {t('multiCompare.noTagsData', 'Intelligence tags data not available for selected countries. Available for: France, USA, Germany, Switzerland, UK, UAE.')}
+          {t('multiCompare.noTagsData', 'Intelligence tags data not available for selected countries. Available for 29 countries including: Argentina, Australia, Austria, Belgium, Brazil, Canada, Chile, China, Colombia, Cuba, Denmark, France, Germany, India, Italy, Japan, Mexico, Netherlands, Peru, Poland, Portugal, Singapore, South Africa, Spain, Sweden, Switzerland, UAE, UK, USA.')}
         </p>
       </div>
     );
