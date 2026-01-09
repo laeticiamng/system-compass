@@ -551,7 +551,10 @@
     "title2": "Encontra o teu caminho",
     "subtitle": "Cada país tem um sistema oculto. Aprende o que realmente recompensa, onde te encaixas, e como sobreviver inteligentemente — ou escapar estrategicamente.",
     "discoverProfile": "Projeta a tua vida",
-    "exploreCountries": "Explorar países"
+    "exploreCountries": "Explorar países",
+    "preventionFilter": "Passar uma decisão pelo filtro",
+    "madeBy": "Criado por alguém que perdeu anos sem entender o sistema",
+    "forEveryone": "Para todos, em todo lugar"
   },
   "howItWorks": {
     "title": "Como funciona",
@@ -2232,9 +2235,6 @@
   },
   "nav": {
     "preventionFilter": "Filtro"
-  },
-  "hero": {
-    "preventionFilter": "Passar uma decisão pelo filtro"
   },
   "preventionFilter": {
     "badge": "Filtro de prevenção",

@@ -551,7 +551,10 @@
     "title2": "Finde deinen Weg",
     "subtitle": "Jedes Land hat ein verstecktes System. Lerne, was es wirklich belohnt, wo du hineinpasst und wie du intelligent überleben kannst — oder strategisch entkommen.",
     "discoverProfile": "Gestalte dein Leben",
-    "exploreCountries": "Länder erkunden"
+    "exploreCountries": "Länder erkunden",
+    "preventionFilter": "Eine Entscheidung durch den Filter prüfen",
+    "madeBy": "Erstellt von jemandem, der Jahre verloren hat, ohne das System zu verstehen",
+    "forEveryone": "Für jeden, überall"
   },
   "howItWorks": {
     "title": "Wie es funktioniert",
@@ -2232,9 +2235,6 @@
   },
   "nav": {
     "preventionFilter": "Filter"
-  },
-  "hero": {
-    "preventionFilter": "Eine Entscheidung durch den Filter prüfen"
   },
   "preventionFilter": {
     "badge": "Präventionsfilter",
