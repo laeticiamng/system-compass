@@ -1,0 +1,390 @@
+import { useState, useMemo } from "react";
+import { useTranslation } from "react-i18next";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { Badge } from "@/components/ui/badge";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
+import { toast } from "sonner";
+import { ArrowLeft, Languages, Play, CheckCircle2, XCircle, Loader2, AlertTriangle, Copy, Download } from "lucide-react";
+import { Link } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+
+// Import translation files
+import en from "@/locales/en.json";
+import fr from "@/locales/fr.json";
+import de from "@/locales/de.json";
+import es from "@/locales/es.json";
+import it from "@/locales/it.json";
+import nl from "@/locales/nl.json";
+import pt from "@/locales/pt.json";
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type LocaleData = Record<string, any>;
+
+const LANGUAGES: { code: string; name: string; flag: string; data: LocaleData }[] = [
+  { code: "en", name: "English", flag: "🇬🇧", data: en },
+  { code: "fr", name: "Français", flag: "🇫🇷", data: fr },
+  { code: "de", name: "Deutsch", flag: "🇩🇪", data: de },
+  { code: "es", name: "Español", flag: "🇪🇸", data: es },
+  { code: "it", name: "Italiano", flag: "🇮🇹", data: it },
+  { code: "nl", name: "Nederlands", flag: "🇳🇱", data: nl },
+  { code: "pt", name: "Português", flag: "🇵🇹", data: pt },
+];
+
+interface TranslationResult {
+  countryId: string;
+  status: "pending" | "translating" | "success" | "error";
+  error?: string;
+  translation?: Record<string, unknown>;
+}
+
+const AdminGenerateTranslations = () => {
+  const { t } = useTranslation();
+  const [targetLang, setTargetLang] = useState<string>("");
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [results, setResults] = useState<TranslationResult[]>([]);
+  const [selectedCountries, setSelectedCountries] = useState<Set<string>>(new Set());
+  const [generatedTranslations, setGeneratedTranslations] = useState<Record<string, Record<string, unknown>>>({});
+
+  // Get source countries from English
+  const sourceCountries = useMemo((): Record<string, { name: string; region: string; ruleOfGold: string; pyramid: Record<string, string>; whoWins: string[]; whoLoses: string[]; playbook: Record<string, unknown> }> => {
+    return (en.countriesData || {}) as Record<string, { name: string; region: string; ruleOfGold: string; pyramid: Record<string, string>; whoWins: string[]; whoLoses: string[]; playbook: Record<string, unknown> }>;
+  }, []);
+
+  const countryIds = useMemo(() => Object.keys(sourceCountries), [sourceCountries]);
+
+  // Find missing countries for target language
+  const missingCountries = useMemo(() => {
+    if (!targetLang) return [];
+    const targetData = LANGUAGES.find(l => l.code === targetLang)?.data;
+    if (!targetData) return countryIds;
+    
+    const targetCountries = targetData.countriesData || {};
+    return countryIds.filter(id => !targetCountries[id]);
+  }, [targetLang, countryIds]);
+
+  const progress = useMemo(() => {
+    if (results.length === 0) return 0;
+    const completed = results.filter(r => r.status === "success" || r.status === "error").length;
+    return (completed / results.length) * 100;
+  }, [results]);
+
+  const toggleCountry = (countryId: string) => {
+    const newSelected = new Set(selectedCountries);
+    if (newSelected.has(countryId)) {
+      newSelected.delete(countryId);
+    } else {
+      newSelected.add(countryId);
+    }
+    setSelectedCountries(newSelected);
+  };
+
+  const selectAllMissing = () => {
+    setSelectedCountries(new Set(missingCountries));
+  };
+
+  const clearSelection = () => {
+    setSelectedCountries(new Set());
+  };
+
+  const generateTranslations = async () => {
+    if (!targetLang || selectedCountries.size === 0) {
+      toast.error("Sélectionnez une langue cible et au moins un pays");
+      return;
+    }
+
+    setIsGenerating(true);
+    const countriesToTranslate = Array.from(selectedCountries);
+    
+    // Initialize results
+    setResults(countriesToTranslate.map(id => ({
+      countryId: id,
+      status: "pending"
+    })));
+
+    const newTranslations: Record<string, Record<string, unknown>> = {};
+    
+    // Process sequentially to avoid rate limits
+    for (let i = 0; i < countriesToTranslate.length; i++) {
+      const countryId = countriesToTranslate[i];
+      const sourceCountry = sourceCountries[countryId as keyof typeof sourceCountries];
+      
+      if (!sourceCountry) continue;
+
+      // Update status to translating
+      setResults(prev => prev.map(r => 
+        r.countryId === countryId ? { ...r, status: "translating" as const } : r
+      ));
+
+      try {
+        const { data, error } = await supabase.functions.invoke("generate-country-translations", {
+          body: {
+            countryId,
+            sourceCountry,
+            targetLang
+          }
+        });
+
+        if (error) throw error;
+
+        if (data.error) {
+          throw new Error(data.error);
+        }
+
+        newTranslations[countryId] = data.translation;
+        
+        setResults(prev => prev.map(r => 
+          r.countryId === countryId ? { 
+            ...r, 
+            status: "success" as const,
+            translation: data.translation 
+          } : r
+        ));
+
+        // Small delay between requests to avoid rate limiting
+        if (i < countriesToTranslate.length - 1) {
+          await new Promise(resolve => setTimeout(resolve, 1000));
+        }
+
+      } catch (error) {
+        console.error(`Error translating ${countryId}:`, error);
+        setResults(prev => prev.map(r => 
+          r.countryId === countryId ? { 
+            ...r, 
+            status: "error" as const,
+            error: error instanceof Error ? error.message : "Unknown error"
+          } : r
+        ));
+      }
+    }
+
+    setGeneratedTranslations(prev => ({ ...prev, ...newTranslations }));
+    setIsGenerating(false);
+    
+    const successCount = Object.keys(newTranslations).length;
+    if (successCount > 0) {
+      toast.success(`${successCount} traduction(s) générée(s) avec succès`);
+    }
+  };
+
+  const copyToClipboard = () => {
+    const output = JSON.stringify(generatedTranslations, null, 2);
+    navigator.clipboard.writeText(output);
+    toast.success("Traductions copiées dans le presse-papier");
+  };
+
+  const downloadTranslations = () => {
+    const output = JSON.stringify(generatedTranslations, null, 2);
+    const blob = new Blob([output], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `countriesData-${targetLang}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    toast.success("Fichier téléchargé");
+  };
+
+  const getStatusIcon = (status: TranslationResult["status"]) => {
+    switch (status) {
+      case "pending": return <div className="w-4 h-4 rounded-full bg-muted" />;
+      case "translating": return <Loader2 className="w-4 h-4 animate-spin text-primary" />;
+      case "success": return <CheckCircle2 className="w-4 h-4 text-green-500" />;
+      case "error": return <XCircle className="w-4 h-4 text-destructive" />;
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-background">
+      <div className="container mx-auto px-4 py-8 max-w-6xl">
+        <div className="mb-6">
+          <Link to="/admin/translations" className="text-muted-foreground hover:text-foreground flex items-center gap-2">
+            <ArrowLeft className="w-4 h-4" />
+            Retour aux traductions
+          </Link>
+        </div>
+
+        <div className="flex items-center gap-3 mb-8">
+          <Languages className="w-8 h-8 text-primary" />
+          <div>
+            <h1 className="text-3xl font-bold">Générateur de traductions</h1>
+            <p className="text-muted-foreground">
+              Génère automatiquement les traductions manquantes des pays avec l'IA
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Configuration */}
+          <Card className="lg:col-span-1">
+            <CardHeader>
+              <CardTitle>Configuration</CardTitle>
+              <CardDescription>Sélectionnez la langue cible et les pays à traduire</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Langue cible</label>
+                <Select value={targetLang} onValueChange={setTargetLang}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Sélectionner une langue" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {LANGUAGES.filter(l => l.code !== "en").map(lang => (
+                      <SelectItem key={lang.code} value={lang.code}>
+                        {lang.flag} {lang.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {targetLang && (
+                <>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-medium">Pays manquants</span>
+                    <Badge variant={missingCountries.length > 0 ? "destructive" : "default"}>
+                      {missingCountries.length}
+                    </Badge>
+                  </div>
+
+                  <div className="flex gap-2">
+                    <Button size="sm" variant="outline" onClick={selectAllMissing}>
+                      Sélectionner manquants
+                    </Button>
+                    <Button size="sm" variant="ghost" onClick={clearSelection}>
+                      Effacer
+                    </Button>
+                  </div>
+
+                  <ScrollArea className="h-[300px] border rounded-md p-2">
+                    <div className="space-y-2">
+                      {countryIds.map(countryId => {
+                        const isMissing = missingCountries.includes(countryId);
+                        const countryName = sourceCountries[countryId as keyof typeof sourceCountries]?.name || countryId;
+                        
+                        return (
+                          <div key={countryId} className="flex items-center gap-2">
+                            <Checkbox
+                              checked={selectedCountries.has(countryId)}
+                              onCheckedChange={() => toggleCountry(countryId)}
+                              disabled={isGenerating}
+                            />
+                            <span className={`text-sm ${isMissing ? "text-destructive" : "text-muted-foreground"}`}>
+                              {countryName}
+                            </span>
+                            {isMissing && (
+                              <AlertTriangle className="w-3 h-3 text-destructive" />
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </ScrollArea>
+
+                  <Button
+                    className="w-full"
+                    onClick={generateTranslations}
+                    disabled={isGenerating || selectedCountries.size === 0}
+                  >
+                    {isGenerating ? (
+                      <>
+                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        Génération en cours...
+                      </>
+                    ) : (
+                      <>
+                        <Play className="w-4 h-4 mr-2" />
+                        Générer {selectedCountries.size} traduction(s)
+                      </>
+                    )}
+                  </Button>
+                </>
+              )}
+            </CardContent>
+          </Card>
+
+          {/* Progress & Results */}
+          <Card className="lg:col-span-2">
+            <CardHeader>
+              <CardTitle>Progression</CardTitle>
+              {isGenerating && (
+                <Progress value={progress} className="mt-2" />
+              )}
+            </CardHeader>
+            <CardContent>
+              {results.length === 0 ? (
+                <div className="text-center py-12 text-muted-foreground">
+                  <Languages className="w-12 h-12 mx-auto mb-4 opacity-50" />
+                  <p>Sélectionnez des pays et lancez la génération</p>
+                </div>
+              ) : (
+                <ScrollArea className="h-[400px]">
+                  <div className="space-y-2">
+                    {results.map(result => (
+                      <div
+                        key={result.countryId}
+                        className="flex items-center justify-between p-3 bg-muted/50 rounded-lg"
+                      >
+                        <div className="flex items-center gap-3">
+                          {getStatusIcon(result.status)}
+                          <span className="font-medium">
+                            {sourceCountries[result.countryId as keyof typeof sourceCountries]?.name || result.countryId}
+                          </span>
+                        </div>
+                        {result.error && (
+                          <span className="text-sm text-destructive">{result.error}</span>
+                        )}
+                        {result.status === "success" && (
+                          <Badge variant="outline" className="text-green-600">
+                            Traduit
+                          </Badge>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </ScrollArea>
+              )}
+
+              {Object.keys(generatedTranslations).length > 0 && (
+                <div className="mt-4 pt-4 border-t flex gap-2">
+                  <Button variant="outline" onClick={copyToClipboard}>
+                    <Copy className="w-4 h-4 mr-2" />
+                    Copier JSON
+                  </Button>
+                  <Button variant="outline" onClick={downloadTranslations}>
+                    <Download className="w-4 h-4 mr-2" />
+                    Télécharger
+                  </Button>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Preview */}
+        {Object.keys(generatedTranslations).length > 0 && (
+          <Card className="mt-6">
+            <CardHeader>
+              <CardTitle>Aperçu des traductions générées</CardTitle>
+              <CardDescription>
+                Copiez ce JSON dans le fichier de traduction correspondant
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ScrollArea className="h-[300px]">
+                <pre className="text-xs bg-muted p-4 rounded-lg overflow-x-auto">
+                  {JSON.stringify(generatedTranslations, null, 2)}
+                </pre>
+              </ScrollArea>
+            </CardContent>
+          </Card>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default AdminGenerateTranslations;

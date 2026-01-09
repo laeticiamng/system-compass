@@ -44,6 +44,7 @@ import SubscriptionSuccess from "./pages/SubscriptionSuccess";
 import Pricing from "./pages/Pricing";
 import ProfileMatcher from "./pages/ProfileMatcher";
 import AdminCountryGenerator from "./pages/AdminCountryGenerator";
+import AdminGenerateTranslations from "./pages/AdminGenerateTranslations";
 import WorldMapExplorer from "./pages/WorldMapExplorer";
 
 const queryClient = new QueryClient();
@@ -95,6 +96,7 @@ const App = () => (
                     <Route path="/pricing" element={<Pricing />} />
                     <Route path="/profile-matcher" element={<ProfileMatcher />} />
                     <Route path="/admin/country-generator" element={<AdminCountryGenerator />} />
+                    <Route path="/admin/generate-translations" element={<AdminGenerateTranslations />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </main>
