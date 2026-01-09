@@ -138,6 +138,32 @@ export function Header() {
                 </Link>
               );
             })}
+            
+            {/* Admin links for desktop - only show for authenticated users */}
+            {user && (
+              <>
+                <div className="w-px h-4 bg-border mx-1" />
+                {adminItems.map((item) => {
+                  const Icon = item.icon;
+                  const isActive = location.pathname === item.href;
+                  return (
+                    <Link
+                      key={item.href}
+                      to={item.href}
+                      className={cn(
+                        'flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-colors',
+                        isActive
+                          ? 'bg-primary/10 text-primary'
+                          : 'text-orange-600 hover:text-orange-700 hover:bg-orange-500/10'
+                      )}
+                    >
+                      <Icon className="w-3.5 h-3.5" />
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </>
+            )}
           </nav>
 
           <LanguageSwitcher />
