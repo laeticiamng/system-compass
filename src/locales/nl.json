@@ -2492,5 +2492,59 @@
     },
     "analyze": "Matches analyseren",
     "reset": "Resetten"
+  },
+  "intelligence": {
+    "title": "Systeemintelligentie",
+    "subtitle": "Machtsdynamiek en sociale strategieën",
+    "disclaimer": "Analysetool: geen advies. Simulatie ≠ voorspelling.",
+    "tabs": {
+      "powerMap": "Machtskaart",
+      "socialOS": "Sociaal systeem",
+      "strategies": "Strategieën",
+      "mobility": "Sociale mobiliteit",
+      "psychoSocio": "Psycho/Socio",
+      "geopolitics": "Geopolitiek",
+      "historical": "Historische erfenis"
+    },
+    "powerMap": {
+      "title": "Machtskaart",
+      "formal": "Formele macht",
+      "informal": "Informele macht",
+      "keys": "Wat deuren opent"
+    },
+    "mobility": {
+      "elevators": "Sociale liften",
+      "speed": "Mobiliteitssnelheid",
+      "mentalCost": "Mentale kosten"
+    },
+    "strategies": {
+      "rewarded": "Vaak beloond",
+      "punished": "Vaak gestraft",
+      "newcomerMistakes": "Nieuwkomersfouten"
+    }
+  },
+  "tags": {
+    "title": "Intelligentie-tags",
+    "subtitle": "Vergelijkbare kenmerken tussen landen",
+    "networkWeight": "Netwerkgewicht",
+    "diplomaWeight": "Diplomagewicht",
+    "riskTolerance": "Risicotolerantie",
+    "adminSpeed": "Admin-snelheid",
+    "authorityVerticality": "Autoritaire verticaliteit",
+    "mentalFriction": "Mentale wrijving",
+    "socialMobility": "Sociale mobiliteit",
+    "predictability": "Voorspelbaarheid",
+    "reputationRequirement": "Reputatievereiste",
+    "complianceSensitivity": "Nalevingsgevoeligheid"
+  },
+  "multiCompare": {
+    "title": "Vergelijk meerdere landen",
+    "subtitle": "Selecteer tot 5 landen om te vergelijken",
+    "addCountry": "Land toevoegen",
+    "clearAll": "Alles wissen",
+    "save": "Opslaan",
+    "load": "Laden",
+    "tagsRadar": "Intelligentie-tags vergelijking",
+    "noTagsData": "Intelligentiegegevens niet beschikbaar. Beschikbaar voor 29 landen."
   }
 }

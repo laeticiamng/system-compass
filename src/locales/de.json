@@ -2492,5 +2492,59 @@
     },
     "analyze": "Matches analysieren",
     "reset": "Zurücksetzen"
+  },
+  "intelligence": {
+    "title": "System-Intelligenz",
+    "subtitle": "Machtdynamiken und soziale Strategien",
+    "disclaimer": "Analysewerkzeug: keine Beratung. Simulation ≠ Vorhersage.",
+    "tabs": {
+      "powerMap": "Machtkarte",
+      "socialOS": "Soziales System",
+      "strategies": "Strategien",
+      "mobility": "Soziale Mobilität",
+      "psychoSocio": "Psycho/Sozio",
+      "geopolitics": "Geopolitik",
+      "historical": "Historisches Erbe"
+    },
+    "powerMap": {
+      "title": "Machtkarte",
+      "formal": "Formelle Macht",
+      "informal": "Informelle Macht",
+      "keys": "Was Türen öffnet"
+    },
+    "mobility": {
+      "elevators": "Soziale Aufzüge",
+      "speed": "Mobilitätsgeschwindigkeit",
+      "mentalCost": "Mentale Kosten"
+    },
+    "strategies": {
+      "rewarded": "Oft belohnt",
+      "punished": "Oft bestraft",
+      "newcomerMistakes": "Anfängerfehler"
+    }
+  },
+  "tags": {
+    "title": "Intelligenz-Tags",
+    "subtitle": "Vergleichbare Merkmale zwischen Ländern",
+    "networkWeight": "Netzwerk-Gewicht",
+    "diplomaWeight": "Diplom-Gewicht",
+    "riskTolerance": "Risikobereitschaft",
+    "adminSpeed": "Admin-Geschwindigkeit",
+    "authorityVerticality": "Autoritäts-Vertikalität",
+    "mentalFriction": "Mentale Reibung",
+    "socialMobility": "Soziale Mobilität",
+    "predictability": "Vorhersagbarkeit",
+    "reputationRequirement": "Reputationsanforderung",
+    "complianceSensitivity": "Compliance-Sensitivität"
+  },
+  "multiCompare": {
+    "title": "Mehrere Länder vergleichen",
+    "subtitle": "Wähle bis zu 5 Länder für einen Vergleich",
+    "addCountry": "Land hinzufügen",
+    "clearAll": "Alle löschen",
+    "save": "Speichern",
+    "load": "Laden",
+    "tagsRadar": "Intelligenz-Tags Vergleich",
+    "noTagsData": "Intelligenz-Daten nicht verfügbar. Verfügbar für 29 Länder."
   }
 }

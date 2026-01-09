@@ -2492,5 +2492,59 @@
     },
     "analyze": "Analisar correspondências",
     "reset": "Reiniciar"
+  },
+  "intelligence": {
+    "title": "Inteligência de Sistema",
+    "subtitle": "Dinâmicas de poder e estratégias sociais",
+    "disclaimer": "Ferramenta de análise: não é aconselhamento. Simulação ≠ previsão.",
+    "tabs": {
+      "powerMap": "Mapa de poder",
+      "socialOS": "Sistema social",
+      "strategies": "Estratégias",
+      "mobility": "Mobilidade social",
+      "psychoSocio": "Psico/Socio",
+      "geopolitics": "Geopolítica",
+      "historical": "Legado histórico"
+    },
+    "powerMap": {
+      "title": "Mapa de poder",
+      "formal": "Poder formal",
+      "informal": "Poder informal",
+      "keys": "O que abre portas"
+    },
+    "mobility": {
+      "elevators": "Elevadores sociais",
+      "speed": "Velocidade de mobilidade",
+      "mentalCost": "Custo mental"
+    },
+    "strategies": {
+      "rewarded": "Frequentemente recompensado",
+      "punished": "Frequentemente punido",
+      "newcomerMistakes": "Erros de novatos"
+    }
+  },
+  "tags": {
+    "title": "Tags de inteligência",
+    "subtitle": "Características comparáveis entre países",
+    "networkWeight": "Peso de redes",
+    "diplomaWeight": "Peso de diplomas",
+    "riskTolerance": "Tolerância ao risco",
+    "adminSpeed": "Velocidade administrativa",
+    "authorityVerticality": "Verticalidade de autoridade",
+    "mentalFriction": "Fricção mental",
+    "socialMobility": "Mobilidade social",
+    "predictability": "Previsibilidade",
+    "reputationRequirement": "Requisito reputacional",
+    "complianceSensitivity": "Sensibilidade à conformidade"
+  },
+  "multiCompare": {
+    "title": "Comparar vários países",
+    "subtitle": "Seleciona até 5 países para comparar",
+    "addCountry": "Adicionar país",
+    "clearAll": "Limpar tudo",
+    "save": "Guardar",
+    "load": "Carregar",
+    "tagsRadar": "Comparação de tags de inteligência",
+    "noTagsData": "Dados de inteligência não disponíveis. Disponíveis para 29 países."
   }
 }

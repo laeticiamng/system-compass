@@ -2502,5 +2502,59 @@
     },
     "analyze": "Analizar coincidencias",
     "reset": "Reiniciar"
+  },
+  "intelligence": {
+    "title": "Inteligencia de Sistema",
+    "subtitle": "Dinámicas de poder y estrategias sociales",
+    "disclaimer": "Herramienta de análisis: no es asesoramiento. Simulación ≠ predicción.",
+    "tabs": {
+      "powerMap": "Mapa de poder",
+      "socialOS": "Sistema social",
+      "strategies": "Estrategias",
+      "mobility": "Movilidad social",
+      "psychoSocio": "Psico/Socio",
+      "geopolitics": "Geopolítica",
+      "historical": "Legado histórico"
+    },
+    "powerMap": {
+      "title": "Mapa de poder",
+      "formal": "Poder formal",
+      "informal": "Poder informal",
+      "keys": "Lo que abre puertas"
+    },
+    "mobility": {
+      "elevators": "Ascensores sociales",
+      "speed": "Velocidad de movilidad",
+      "mentalCost": "Coste mental"
+    },
+    "strategies": {
+      "rewarded": "A menudo recompensado",
+      "punished": "A menudo castigado",
+      "newcomerMistakes": "Errores de novatos"
+    }
+  },
+  "tags": {
+    "title": "Tags de inteligencia",
+    "subtitle": "Características comparables entre países",
+    "networkWeight": "Peso de redes",
+    "diplomaWeight": "Peso de diplomas",
+    "riskTolerance": "Tolerancia al riesgo",
+    "adminSpeed": "Velocidad administrativa",
+    "authorityVerticality": "Verticalidad de autoridad",
+    "mentalFriction": "Fricción mental",
+    "socialMobility": "Movilidad social",
+    "predictability": "Previsibilidad",
+    "reputationRequirement": "Exigencia reputacional",
+    "complianceSensitivity": "Sensibilidad al cumplimiento"
+  },
+  "multiCompare": {
+    "title": "Comparar varios países",
+    "subtitle": "Selecciona hasta 5 países para comparar",
+    "addCountry": "Añadir país",
+    "clearAll": "Borrar todo",
+    "save": "Guardar",
+    "load": "Cargar",
+    "tagsRadar": "Comparación de tags de inteligencia",
+    "noTagsData": "Datos de inteligencia no disponibles. Disponibles para 29 países."
   }
 }

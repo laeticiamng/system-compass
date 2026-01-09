@@ -2492,5 +2492,59 @@
     },
     "analyze": "Analizza corrispondenze",
     "reset": "Reimposta"
+  },
+  "intelligence": {
+    "title": "Intelligence di Sistema",
+    "subtitle": "Dinamiche di potere e strategie sociali",
+    "disclaimer": "Strumento di analisi: non consulenza. Simulazione ≠ previsione.",
+    "tabs": {
+      "powerMap": "Mappa del potere",
+      "socialOS": "Sistema sociale",
+      "strategies": "Strategie",
+      "mobility": "Mobilità sociale",
+      "psychoSocio": "Psico/Socio",
+      "geopolitics": "Geopolitica",
+      "historical": "Eredità storica"
+    },
+    "powerMap": {
+      "title": "Mappa del potere",
+      "formal": "Potere formale",
+      "informal": "Potere informale",
+      "keys": "Cosa apre le porte"
+    },
+    "mobility": {
+      "elevators": "Ascensori sociali",
+      "speed": "Velocità di mobilità",
+      "mentalCost": "Costo mentale"
+    },
+    "strategies": {
+      "rewarded": "Spesso premiato",
+      "punished": "Spesso punito",
+      "newcomerMistakes": "Errori dei nuovi arrivati"
+    }
+  },
+  "tags": {
+    "title": "Tag di intelligence",
+    "subtitle": "Caratteristiche comparabili tra paesi",
+    "networkWeight": "Peso delle reti",
+    "diplomaWeight": "Peso dei diplomi",
+    "riskTolerance": "Tolleranza al rischio",
+    "adminSpeed": "Velocità amministrativa",
+    "authorityVerticality": "Verticalità dell'autorità",
+    "mentalFriction": "Frizione mentale",
+    "socialMobility": "Mobilità sociale",
+    "predictability": "Prevedibilità",
+    "reputationRequirement": "Requisito reputazionale",
+    "complianceSensitivity": "Sensibilità alla conformità"
+  },
+  "multiCompare": {
+    "title": "Confronta più paesi",
+    "subtitle": "Seleziona fino a 5 paesi per il confronto",
+    "addCountry": "Aggiungi paese",
+    "clearAll": "Cancella tutto",
+    "save": "Salva",
+    "load": "Carica",
+    "tagsRadar": "Confronto tag di intelligence",
+    "noTagsData": "Dati di intelligence non disponibili. Disponibili per 29 paesi."
   }
 }
