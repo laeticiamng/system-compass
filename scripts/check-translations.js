@@ -71,7 +71,8 @@ function extractCountryIdsFromData() {
 
 function checkCountryTranslations(translations, countryIds, lang) {
   const issues = [];
-  const countriesSection = translations.countries || {};
+  // Country translations are in "countriesData" key, not "countries"
+  const countriesSection = translations.countriesData || {};
   
   for (const countryId of countryIds) {
     if (!countriesSection[countryId]) {
