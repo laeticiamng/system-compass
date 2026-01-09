@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
-import { Compass, Map, FileText, Scale, Triangle, Gamepad2, LogIn, LogOut, User, Key, LayoutDashboard, Menu, Play, Info, AlertCircle, X, Shield, BookOpen, CreditCard, Globe, Settings, Building2 } from 'lucide-react';
+import { Compass, Map, FileText, Scale, Triangle, Gamepad2, LogIn, LogOut, User, Key, LayoutDashboard, Menu, Play, Info, AlertCircle, X, Shield, BookOpen, CreditCard, Globe, Settings, Building2, Eye } from 'lucide-react';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { GlobalSearch } from './GlobalSearch';
 import { useAuth } from '@/hooks/useAuth';
@@ -56,6 +56,7 @@ export function Header() {
     { href: '/dashboard', label: t('nav.dashboard'), icon: LayoutDashboard },
     { href: '/pricing', label: t('nav.pricing', 'Tarifs'), icon: CreditCard },
     { href: '/institutions', label: t('nav.institutions', 'Institutions'), icon: Building2, highlight: true },
+    { href: '/ovi', label: t('nav.ovi', 'OVI'), icon: Eye, highlight: true },
     { href: '/resources', label: t('nav.resources'), icon: FileText },
     { href: '/about', label: t('footer.about'), icon: Info },
   ];

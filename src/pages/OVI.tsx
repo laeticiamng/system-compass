@@ -31,7 +31,7 @@ import { OVIArticle } from '@/components/ovi/OVIArticle';
 
 export default function OVI() {
   const { t } = useTranslation();
-  const { isPro } = useSubscription();
+  const { canAccessPro } = useSubscription();
   const [activeTab, setActiveTab] = useState('introduction');
   const [selectedArticle, setSelectedArticle] = useState<string | null>(null);
 
@@ -123,11 +123,12 @@ export default function OVI() {
       {/* Main Content */}
       <section className="py-12">
         <div className="container mx-auto px-4">
-          {!isPro ? (
+          {!canAccessPro ? (
             <div className="max-w-2xl mx-auto">
               <PremiumPaywall 
-                feature={t('ovi.paywall.feature', 'OVI - Observatoire des Variables Invisibles')}
+                title={t('ovi.paywall.feature', 'OVI - Observatoire des Variables Invisibles')}
                 description={t('ovi.paywall.description', 'Accédez aux cadres de réflexion, grilles de lecture et contenus premium pour enrichir votre prise de décision.')}
+                tier="pro"
               />
               
               {/* Preview of what's inside */}
