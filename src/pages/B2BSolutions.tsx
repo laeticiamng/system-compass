@@ -11,12 +11,17 @@ import {
   Brain,
   Grid3X3,
   Shield,
-  Sparkles
+  Sparkles,
+  GitBranch,
+  History,
+  Lock
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { TraceOS } from '@/components/institutions/TraceOS';
 
 export default function B2BSolutions() {
   const { t } = useTranslation();
@@ -47,72 +52,91 @@ export default function B2BSolutions() {
         </div>
       </section>
 
-      {/* Modules Section */}
+      {/* Tabs for B2B Modules */}
       <section className="py-12 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Institutions Module */}
-              <Card className="border-2 hover:border-primary/30 transition-all group">
-                <CardHeader>
-                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                    <Building2 className="w-7 h-7 text-primary" />
-                  </div>
-                  <CardTitle className="text-2xl">
-                    {t('b2b.modules.institutions.title', 'Institutions & Organizations')}
-                  </CardTitle>
-                  <CardDescription className="text-base">
-                    {t('b2b.modules.institutions.desc', 'Clarify trade-offs, identify blind spots, prevent costly mistakes')}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <ul className="space-y-3">
-                    <FeatureItem icon={Users} text={t('b2b.modules.institutions.features.0', 'Institutional use cases')} />
-                    <FeatureItem icon={Scale} text={t('b2b.modules.institutions.features.1', 'Collective decision mode')} />
-                    <FeatureItem icon={Shield} text={t('b2b.modules.institutions.features.2', 'Traceability & prevention')} />
-                  </ul>
-                  <Separator />
-                  <Link to="/institutions">
-                    <Button className="w-full gap-2 group-hover:bg-primary transition-colors">
-                      {t('b2b.cta.institutions', 'Explore Institutions')}
-                      <ArrowRight className="w-4 h-4" />
-                    </Button>
-                  </Link>
-                </CardContent>
-              </Card>
+          <div className="max-w-6xl mx-auto">
+            <Tabs defaultValue="modules" className="space-y-8">
+              <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
+                <TabsTrigger value="modules" className="gap-2">
+                  <Building2 className="w-4 h-4" />
+                  {t('b2b.tabs.modules', 'Modules')}
+                </TabsTrigger>
+                <TabsTrigger value="traceos" className="gap-2">
+                  <Brain className="w-4 h-4" />
+                  TraceOS
+                </TabsTrigger>
+              </TabsList>
 
-              {/* OVI Module */}
-              <Card className="border-2 hover:border-amber-500/30 transition-all group">
-                <CardHeader>
-                  <div className="w-14 h-14 rounded-xl bg-amber-500/10 flex items-center justify-center mb-4 group-hover:bg-amber-500/20 transition-colors">
-                    <Eye className="w-7 h-7 text-amber-600" />
-                  </div>
-                  <Badge variant="outline" className="w-fit mb-2 border-amber-500/30 text-amber-600">
-                    Premium
-                  </Badge>
-                  <CardTitle className="text-2xl">
-                    {t('b2b.modules.ovi.title', 'OVI Think Tank')}
-                  </CardTitle>
-                  <CardDescription className="text-base">
-                    {t('b2b.modules.ovi.desc', 'Thinking frameworks and reading grids for complex decisions')}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <ul className="space-y-3">
-                    <FeatureItem icon={Brain} text={t('b2b.modules.ovi.features.0', 'Cognitive bias frameworks')} />
-                    <FeatureItem icon={Lightbulb} text={t('b2b.modules.ovi.features.1', 'Decision reversibility analysis')} />
-                    <FeatureItem icon={Grid3X3} text={t('b2b.modules.ovi.features.2', 'System vs individual mapping')} />
-                  </ul>
-                  <Separator />
-                  <Link to="/ovi">
-                    <Button variant="outline" className="w-full gap-2 border-amber-500/30 hover:bg-amber-500/10 hover:text-amber-600">
-                      {t('b2b.cta.ovi', 'Explore OVI')}
-                      <ArrowRight className="w-4 h-4" />
-                    </Button>
-                  </Link>
-                </CardContent>
-              </Card>
-            </div>
+              <TabsContent value="modules">
+                <div className="grid md:grid-cols-2 gap-8">
+                  {/* Institutions Module */}
+                  <Card className="border-2 hover:border-primary/30 transition-all group">
+                    <CardHeader>
+                      <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                        <Building2 className="w-7 h-7 text-primary" />
+                      </div>
+                      <CardTitle className="text-2xl">
+                        {t('b2b.modules.institutions.title', 'Institutions & Organizations')}
+                      </CardTitle>
+                      <CardDescription className="text-base">
+                        {t('b2b.modules.institutions.desc', 'Clarify trade-offs, identify blind spots, prevent costly mistakes')}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <ul className="space-y-3">
+                        <FeatureItem icon={Users} text={t('b2b.modules.institutions.features.0', 'Institutional use cases')} />
+                        <FeatureItem icon={Scale} text={t('b2b.modules.institutions.features.1', 'Collective decision mode')} />
+                        <FeatureItem icon={Shield} text={t('b2b.modules.institutions.features.2', 'Traceability & prevention')} />
+                      </ul>
+                      <Separator />
+                      <Link to="/institutions">
+                        <Button className="w-full gap-2 group-hover:bg-primary transition-colors">
+                          {t('b2b.cta.institutions', 'Explore Institutions')}
+                          <ArrowRight className="w-4 h-4" />
+                        </Button>
+                      </Link>
+                    </CardContent>
+                  </Card>
+
+                  {/* OVI Module */}
+                  <Card className="border-2 hover:border-amber-500/30 transition-all group">
+                    <CardHeader>
+                      <div className="w-14 h-14 rounded-xl bg-amber-500/10 flex items-center justify-center mb-4 group-hover:bg-amber-500/20 transition-colors">
+                        <Eye className="w-7 h-7 text-amber-600" />
+                      </div>
+                      <Badge variant="outline" className="w-fit mb-2 border-amber-500/30 text-amber-600">
+                        Premium
+                      </Badge>
+                      <CardTitle className="text-2xl">
+                        {t('b2b.modules.ovi.title', 'OVI Think Tank')}
+                      </CardTitle>
+                      <CardDescription className="text-base">
+                        {t('b2b.modules.ovi.desc', 'Thinking frameworks and reading grids for complex decisions')}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <ul className="space-y-3">
+                        <FeatureItem icon={Brain} text={t('b2b.modules.ovi.features.0', 'Cognitive bias frameworks')} />
+                        <FeatureItem icon={Lightbulb} text={t('b2b.modules.ovi.features.1', 'Decision reversibility analysis')} />
+                        <FeatureItem icon={Grid3X3} text={t('b2b.modules.ovi.features.2', 'System vs individual mapping')} />
+                      </ul>
+                      <Separator />
+                      <Link to="/ovi">
+                        <Button variant="outline" className="w-full gap-2 border-amber-500/30 hover:bg-amber-500/10 hover:text-amber-600">
+                          {t('b2b.cta.ovi', 'Explore OVI')}
+                          <ArrowRight className="w-4 h-4" />
+                        </Button>
+                      </Link>
+                    </CardContent>
+                  </Card>
+                </div>
+              </TabsContent>
+
+              <TabsContent value="traceos">
+                <TraceOS />
+              </TabsContent>
+            </Tabs>
           </div>
         </div>
       </section>
