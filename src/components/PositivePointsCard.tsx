@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { CountryPositivePoints } from '@/lib/types';
+import { POSITIVE_POINTS_KEYS } from '@/lib/positive-points-translations';
 import { 
   Sun, 
   Briefcase, 
@@ -12,6 +13,7 @@ import { cn } from '@/lib/utils';
 
 interface PositivePointsCardProps {
   positivePoints: CountryPositivePoints;
+  countryId: string;
   className?: string;
 }
 
@@ -54,7 +56,7 @@ const CATEGORY_CONFIG = {
   },
 };
 
-export function PositivePointsCard({ positivePoints, className }: PositivePointsCardProps) {
+export function PositivePointsCard({ positivePoints, countryId, className }: PositivePointsCardProps) {
   const { t } = useTranslation();
 
   const categories = Object.entries(positivePoints).filter(
@@ -62,6 +64,9 @@ export function PositivePointsCard({ positivePoints, className }: PositivePoints
   ) as [keyof CountryPositivePoints, string[]][];
 
   if (categories.length === 0) return null;
+
+  // Get translation keys for this country
+  const translationKeys = POSITIVE_POINTS_KEYS[countryId];
 
   return (
     <div className={cn("glass-card rounded-xl p-6", className)}>
@@ -74,6 +79,7 @@ export function PositivePointsCard({ positivePoints, className }: PositivePoints
         {categories.map(([category, points]) => {
           const config = CATEGORY_CONFIG[category];
           const Icon = config.icon;
+          const categoryKeys = translationKeys?.[category] || [];
           
           return (
             <div key={category} className="space-y-2">
@@ -84,12 +90,18 @@ export function PositivePointsCard({ positivePoints, className }: PositivePoints
                 </span>
               </div>
               <ul className="space-y-1 pl-2">
-                {points.map((point, idx) => (
-                  <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
-                    <span>{point}</span>
-                  </li>
-                ))}
+                {points.map((point, idx) => {
+                  // Use translation key if available, otherwise fallback to original text
+                  const translationKey = categoryKeys[idx];
+                  const displayText = translationKey ? t(translationKey, point) : point;
+                  
+                  return (
+                    <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2">
+                      <span className="text-primary mt-1">•</span>
+                      <span>{displayText}</span>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           );

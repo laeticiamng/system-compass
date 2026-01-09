@@ -156,7 +156,7 @@ export default function CountryDetail() {
         {/* Positive Points */}
         {country.positivePoints && (
           <div className="mb-12">
-            <PositivePointsCard positivePoints={country.positivePoints} />
+            <PositivePointsCard positivePoints={country.positivePoints} countryId={country.id} />
           </div>
         )}
 
