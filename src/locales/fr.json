@@ -688,7 +688,20 @@
     "explore": "Analyser →",
     "gdpCap": "PIB/hab",
     "passport": "Passeport",
-    "population": "Population"
+    "population": "Population",
+    "extendedDb": "+15 Intelligence",
+    "dbOnly": "Couche Intelligence DB",
+    "intelligenceAvailable": "Couche Intelligence disponible",
+    "searchPlaceholder": "Rechercher un pays...",
+    "results": "résultat(s)",
+    "sort": {
+      "nameAsc": "Nom (A-Z)",
+      "nameDesc": "Nom (Z-A)",
+      "riskAsc": "Risque (↑)",
+      "riskDesc": "Risque (↓)",
+      "costAsc": "Coût de vie (↑)",
+      "costDesc": "Coût de vie (↓)"
+    }
   },
 "countryDetail": {
     "notFound": "Pays non trouvé",
@@ -707,7 +720,8 @@
     "whoWinsLoses": "Qui gagne / Qui perd",
     "survivalPlaybook": "Playbook de survie",
     "sourcesUpdates": "Sources & mises à jour",
-    "lastUpdated": "Dernière mise à jour"
+    "lastUpdated": "Dernière mise à jour",
+    "extendedNote": "Ce pays dispose de données Intelligence Layer. Profil complet à venir."
   },
   "lgbtqRights": {
     "title": "Droits LGBTQ+",

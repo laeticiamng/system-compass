@@ -688,7 +688,20 @@
     "explore": "Analyze →",
     "gdpCap": "GDP/cap",
     "passport": "Passport",
-    "population": "Population"
+    "population": "Population",
+    "extendedDb": "+15 Intelligence",
+    "dbOnly": "DB Intelligence Layer",
+    "intelligenceAvailable": "Intelligence Layer available",
+    "searchPlaceholder": "Search a country...",
+    "results": "result(s)",
+    "sort": {
+      "nameAsc": "Name (A-Z)",
+      "nameDesc": "Name (Z-A)",
+      "riskAsc": "Risk (↑)",
+      "riskDesc": "Risk (↓)",
+      "costAsc": "Cost of living (↑)",
+      "costDesc": "Cost of living (↓)"
+    }
   },
 "countryDetail": {
     "notFound": "Country not found",
