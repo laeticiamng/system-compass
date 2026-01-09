@@ -12,7 +12,8 @@ import {
   GitBranch,
   History,
   Eye,
-  Sparkles
+  Sparkles,
+  Loader2
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -24,6 +25,7 @@ import { DecisionTree } from './DecisionTree';
 import { CreateDecisionForm } from './CreateDecisionForm';
 import { DecisionNode, DecisionNodeData } from './DecisionNode';
 import { useSubscription } from '@/hooks/useSubscription';
+import { useTraceOSDecisions } from '@/hooks/useTraceOSDecisions';
 import { PremiumPaywall } from '@/components/PremiumPaywall';
 
 // Demo data for the decision tree
@@ -121,18 +123,31 @@ const DEMO_DECISIONS: DecisionNodeData[] = [
 export function TraceOS() {
   const { t } = useTranslation();
   const { canAccessPro } = useSubscription();
-  const [decisions, setDecisions] = useState<DecisionNodeData[]>(DEMO_DECISIONS);
+  const { 
+    decisions, 
+    loading, 
+    createDecision, 
+    isLoggedIn 
+  } = useTraceOSDecisions();
+  
   const [selectedDecision, setSelectedDecision] = useState<DecisionNodeData | null>(null);
   const [isCreating, setIsCreating] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const handleCreateDecision = (newDecision: Omit<DecisionNodeData, 'id' | 'children'>) => {
-    const decision: DecisionNodeData = {
-      ...newDecision,
-      id: `dec-${Date.now()}`,
-      children: []
-    };
-    setDecisions(prev => [...prev, decision]);
+  // Use demo data if not logged in, else use real data
+  const displayDecisions = isLoggedIn && decisions.length > 0 ? decisions : DEMO_DECISIONS;
+
+  const handleCreateDecision = async (newDecision: Omit<DecisionNodeData, 'id' | 'children'>) => {
+    if (!isLoggedIn) {
+      // Demo mode - just add locally
+      setIsCreating(false);
+      return;
+    }
+    
+    setIsSaving(true);
+    await createDecision(newDecision);
+    setIsSaving(false);
     setIsCreating(false);
   };
 
@@ -189,12 +204,21 @@ export function TraceOS() {
             <Download className="w-4 h-4" />
             {t('traceOS.export', 'Exporter')}
           </Button>
-          <Button onClick={() => setIsCreating(true)} className="gap-2">
+          <Button onClick={() => setIsCreating(true)} className="gap-2" disabled={!isLoggedIn}>
             <Plus className="w-4 h-4" />
             {t('traceOS.newDecision', 'Nouvelle décision')}
           </Button>
         </div>
       </div>
+
+      {/* Login notice for demo mode */}
+      {!isLoggedIn && (
+        <div className="p-3 rounded-lg bg-amber-500/10 border border-amber-500/30 text-center">
+          <p className="text-sm text-amber-700">
+            {t('traceOS.demoMode', 'Mode démo. Connectez-vous pour sauvegarder vos décisions.')}
+          </p>
+        </div>
+      )}
 
       {/* Value Props */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -243,7 +267,15 @@ export function TraceOS() {
         <CreateDecisionForm
           onSubmit={handleCreateDecision}
           onCancel={() => setIsCreating(false)}
+          isLoading={isSaving}
         />
+      )}
+
+      {/* Loading state */}
+      {loading && (
+        <div className="flex items-center justify-center py-12">
+          <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
+        </div>
       )}
 
       {/* Decision Tree */}
@@ -265,7 +297,7 @@ export function TraceOS() {
 
         <TabsContent value="tree">
           <DecisionTree
-            decisions={decisions}
+            decisions={displayDecisions}
             onSelectDecision={setSelectedDecision}
             selectedDecisionId={selectedDecision?.id}
           />
