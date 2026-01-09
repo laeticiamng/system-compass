@@ -4103,5 +4103,30 @@
   "footer": {
     "defaultCountry": "Default country",
     "defaultCountryTooltip": "Calculators use this country by default. Change it in the tools."
+  },
+  "nav": {
+    "preventionFilter": "Filter"
+  },
+  "hero": {
+    "preventionFilter": "Run a decision through the filter"
+  },
+  "preventionFilter": {
+    "badge": "Prevention filter",
+    "title": "Run a decision through the filter",
+    "subtitle": "Before an important decision, reveal risks, blind spots and likely consequences in under 60 seconds.",
+    "decisionType": "Decision type",
+    "horizon": "Time horizon",
+    "riskTolerance": "Risk tolerance",
+    "constraint": "Main constraint",
+    "analyze": "Analyze this decision",
+    "disclaimer": "Simulation ≠ prediction. Analysis tool only. You remain responsible for your decision.",
+    "newAnalysis": "New analysis",
+    "saveSimulation": "Save this simulation",
+    "results": {
+      "implications": "What this choice often implies",
+      "blindSpots": "Common blind spots",
+      "risks": "Likely risks",
+      "exitKeys": "Possible exit keys"
+    }
   }
 }

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
-import { Compass, Map, FileText, Scale, Triangle, Gamepad2, LogIn, LogOut, User, Key, LayoutDashboard, Menu, Play, Info, AlertCircle, X } from 'lucide-react';
+import { Compass, Map, FileText, Scale, Triangle, Gamepad2, LogIn, LogOut, User, Key, LayoutDashboard, Menu, Play, Info, AlertCircle, X, Shield } from 'lucide-react';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { useAuth } from '@/hooks/useAuth';
 import { Button } from './ui/button';
@@ -41,6 +41,7 @@ export function Header() {
   // Navigation simplifiée et claire
   const navItems = [
     { href: '/', label: t('nav.start'), icon: Compass },
+    { href: '/prevention-filter', label: t('nav.preventionFilter', 'Filtre'), icon: Shield, highlight: true },
     { href: '/countries', label: t('nav.countries'), icon: Map },
     { href: '/pyramid-types', label: t('nav.pyramids'), icon: Triangle },
     { href: '/systemic-mistakes', label: t('nav.systemicMistakes'), icon: AlertCircle },
@@ -109,6 +110,7 @@ export function Header() {
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = location.pathname === item.href;
+              const isHighlight = 'highlight' in item && item.highlight;
               return (
                 <Link
                   key={item.href}
@@ -117,7 +119,9 @@ export function Header() {
                     'flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-colors',
                     isActive
                       ? 'bg-primary/10 text-primary'
-                      : 'text-muted-foreground hover:text-foreground hover:bg-accent'
+                      : isHighlight
+                        ? 'bg-amber-500/10 text-amber-600 hover:bg-amber-500/20 border border-amber-500/30'
+                        : 'text-muted-foreground hover:text-foreground hover:bg-accent'
                   )}
                 >
                   <Icon className="w-3.5 h-3.5" />
@@ -175,6 +179,7 @@ export function Header() {
                 {navItems.map((item) => {
                   const Icon = item.icon;
                   const isActive = location.pathname === item.href;
+                  const isHighlight = 'highlight' in item && item.highlight;
                   return (
                     <Link
                       key={item.href}
@@ -184,7 +189,9 @@ export function Header() {
                         'flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors',
                         isActive
                           ? 'bg-primary/10 text-primary'
-                          : 'text-muted-foreground hover:text-foreground hover:bg-accent'
+                          : isHighlight
+                            ? 'bg-amber-500/10 text-amber-600 border border-amber-500/30'
+                            : 'text-muted-foreground hover:text-foreground hover:bg-accent'
                       )}
                     >
                       <Icon className="w-5 h-5" />
