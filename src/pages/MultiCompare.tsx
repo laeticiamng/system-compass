@@ -10,6 +10,7 @@ import { RadarCompareChart } from '@/components/RadarCompareChart';
 import { RiskStackedBarChart } from '@/components/RiskStackedBarChart';
 import { TagsRadarCompare } from '@/components/TagsRadarCompare';
 import { TagsCompareTable } from '@/components/TagsCompareTable';
+import { ProfileCountryMatcher } from '@/components/ProfileCountryMatcher';
 import { FinancialTrajectoryChart } from '@/components/FinancialTrajectoryChart';
 import { useSavedComparisons } from '@/hooks/useSavedComparisons';
 import { cn } from '@/lib/utils';
@@ -737,12 +738,20 @@ export default function MultiCompare() {
                 </Table>
               </div>
             </section>
+
+            {/* Profile Country Matcher */}
+            <ProfileCountryMatcher />
           </div>
         ) : (
-          <div className="text-center py-16 glass-card rounded-xl">
-            <p className="text-muted-foreground text-lg">
-              {t('multiCompare.selectAtLeast', 'Select at least 2 countries to compare')}
-            </p>
+          <div className="space-y-8">
+            {/* Show Profile Matcher even without countries selected */}
+            <ProfileCountryMatcher />
+            
+            <div className="text-center py-8 glass-card rounded-xl">
+              <p className="text-muted-foreground text-lg">
+                {t('multiCompare.selectAtLeast', 'Select at least 2 countries to compare')}
+              </p>
+            </div>
           </div>
         )}
       </div>
