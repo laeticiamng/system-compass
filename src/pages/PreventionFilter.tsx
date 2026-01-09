@@ -34,6 +34,7 @@ import {
   Lock
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { OVISuggestions } from '@/components/ovi/OVISuggestions';
 
 type DecisionType = 'country' | 'studies' | 'career' | 'business' | 'investment' | 'relationship' | 'other';
 type Horizon = '3months' | '1year' | '3years' | '10years';
@@ -734,6 +735,9 @@ export default function PreventionFilter() {
                     </div>
                   </CardContent>
                 </Card>
+
+                {/* OVI Suggestions */}
+                <OVISuggestions context="prevention-filter" decisionType={formData.decisionType || undefined} />
               </>
             )}
 
