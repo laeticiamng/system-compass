@@ -1,9 +1,11 @@
+import { useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { countries } from '@/lib/countries-data';
 import { Button } from '@/components/ui/button';
 import { CountryCard } from '@/components/CountryCard';
 import { useAuth } from '@/hooks/useAuth';
+import { useAnalytics } from '@/hooks/useAnalytics';
 import { 
   ArrowRight, 
   Compass, 
@@ -26,6 +28,11 @@ export default function Index() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { user } = useAuth();
+  const { trackHomeOpened, trackFilterClicked, trackExitKeysClicked, trackUniversalErrorsClicked } = useAnalytics();
+
+  useEffect(() => {
+    trackHomeOpened();
+  }, [trackHomeOpened]);
 
   return (
     <div className="min-h-screen pt-16">
@@ -72,7 +79,7 @@ export default function Index() {
             <div className="max-w-md mx-auto px-4 mb-4">
               <Button
                 size="lg"
-                onClick={() => navigate('/exit-keys')}
+                onClick={() => { trackExitKeysClicked(); navigate('/exit-keys'); }}
                 className="w-full h-14 md:h-16 text-base md:text-lg bg-primary text-primary-foreground hover:bg-primary/90 gap-3 glow-gold"
               >
                 <Route className="w-5 h-5 md:w-6 md:h-6" />
@@ -86,7 +93,7 @@ export default function Index() {
               <Button
                 variant="outline"
                 size="lg"
-                onClick={() => navigate('/prevention-filter')}
+                onClick={() => { trackFilterClicked(); navigate('/prevention-filter'); }}
                 className="w-full h-12 text-base gap-2 border-amber-500/30 bg-amber-500/10 text-amber-600 hover:bg-amber-500/20 hover:text-amber-700"
               >
                 <Shield className="w-5 h-5" />

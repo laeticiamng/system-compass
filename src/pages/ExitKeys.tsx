@@ -31,6 +31,7 @@ import ExitKeyCard from '@/components/ExitKeyCard';
 import { cn } from '@/lib/utils';
 import { useExitKeysProfile } from '@/hooks/useExitKeysProfile';
 import { useAuth } from '@/hooks/useAuth';
+import { useAnalytics } from '@/hooks/useAnalytics';
 import { DestinationMap } from '@/components/DestinationMap';
 import { DestinationCompare } from '@/components/DestinationCompare';
 import { VacationRecommendations } from '@/components/exit-keys/VacationRecommendations';

@@ -31,6 +31,7 @@ import Disclaimer from "./pages/Disclaimer";
 import SystemicMistakes from "./pages/SystemicMistakes";
 import HowToRead from "./pages/HowToRead";
 import AdminTranslations from "./pages/AdminTranslations";
+import AdminAnalytics from "./pages/AdminAnalytics";
 import MultiCompare from "./pages/MultiCompare";
 import PreventionFilter from "./pages/PreventionFilter";
 import UniversalErrors from "./pages/UniversalErrors";
@@ -75,6 +76,7 @@ const App = () => (
                   <Route path="/systemic-mistakes" element={<SystemicMistakes />} />
                   <Route path="/how-to-read" element={<HowToRead />} />
                   <Route path="/admin/translations" element={<AdminTranslations />} />
+                  <Route path="/admin/analytics" element={<AdminAnalytics />} />
                   <Route path="/prevention-filter" element={<PreventionFilter />} />
                   <Route path="/universal-errors" element={<UniversalErrors />} />
                   <Route path="/universal-errors/:id" element={<UniversalErrorDetail />} />

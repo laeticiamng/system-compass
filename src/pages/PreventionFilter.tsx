@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '@/hooks/useAuth';
+import { useAnalytics } from '@/hooks/useAnalytics';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
@@ -353,6 +354,7 @@ export default function PreventionFilter() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { user } = useAuth();
+  const { trackSimulationStarted, trackSimulationCompleted, trackSimulationDropped } = useAnalytics();
   
   const [formData, setFormData] = useState<FilterFormData>({
     decisionType: null,
@@ -363,6 +365,7 @@ export default function PreventionFilter() {
   const [showResults, setShowResults] = useState(false);
   const [results, setResults] = useState<FilterResult | null>(null);
   const [isSaving, setIsSaving] = useState(false);
+  const [startTime] = useState(Date.now());
 
   const isFormComplete = formData.decisionType && formData.horizon && formData.riskTolerance && formData.constraint;
 
@@ -371,10 +374,17 @@ export default function PreventionFilter() {
       const generatedResults = generateResults(formData);
       setResults(generatedResults);
       setShowResults(true);
+      const duration = Math.round((Date.now() - startTime) / 1000);
+      trackSimulationCompleted('prevention_filter', duration);
     }
   };
 
   const handleReset = () => {
+    if (showResults) {
+      trackSimulationDropped('prevention_filter', 'reset_after_results');
+    } else if (formData.decisionType || formData.horizon || formData.riskTolerance || formData.constraint) {
+      trackSimulationDropped('prevention_filter', 'reset_during_form');
+    }
     setFormData({
       decisionType: null,
       horizon: null,
