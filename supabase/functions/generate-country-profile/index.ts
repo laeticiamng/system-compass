@@ -122,6 +122,96 @@ function extractJSON(text: string): object | null {
   return null;
 }
 
+// Sync generated JSON to country_intelligence table
+async function syncToCountryIntelligence(supabase: any, countryId: string, json: any) {
+  try {
+    const layers = json.layers?.intelligence_premium_plus || {};
+    const powerMap = layers.A_power_map || {};
+    const socialOS = layers.B_social_operating_system || {};
+    const strategies = layers.C_social_strategies_descriptive || {};
+    const mobility = layers.D_mobility_social_elevators || {};
+    const psycho = layers.E_psycho_socio_system_effects || {};
+    const geo = layers.F_geopolitics_and_flows || {};
+    const history = layers.G_historical_inheritance || {};
+
+    const data = {
+      country_id: countryId,
+      is_complete: true,
+      power_formal: powerMap.formal_power_3 || [],
+      power_informal: powerMap.informal_power_3 || [],
+      power_keys_ranking: powerMap.door_openers_ranked_1_to_5?.reduce((acc: any, item: any) => {
+        if (item.factor && item.rank) acc[item.factor] = item.rank;
+        return acc;
+      }, {}) || {},
+      social_norms: socialOS.norms_conformity_vs_differentiation || "",
+      authority_relation: socialOS.relation_to_authority || "",
+      risk_attitude: socialOS.risk_relationship || "",
+      conflict_approach: socialOS.conflict_style || "",
+      strategies_rewarded: strategies.often_rewarded_3 || [],
+      strategies_punished: strategies.often_punished_3 || [],
+      newcomer_mistakes: strategies.newcomer_traps_3 || [],
+      mobility_elevators: mobility.real_elevators || [],
+      mobility_speed: mobility.mobility_speed || "moyenne",
+      mobility_speed_reason: mobility.short_justification || "",
+      mental_cost: mobility.mental_cost || "moyen",
+      mental_cost_reason: mobility.short_justification || "",
+      system_produces: psycho.system_induced_traits || [],
+      adaptive_behaviors: psycho.adaptive_behaviors_3 || [],
+      backfiring_behaviors: psycho.backfire_behaviors_3 || [],
+      dependencies: geo.macro_dependencies || [],
+      cycle_status: geo.cycle_state || "stable",
+      macro_risks: geo.macro_risks_simple || [],
+      historical_traces: history.historical_traces_2_to_4 || [],
+      legacy_implications: history.implications_for_trust_rules_merit_risk || {},
+    };
+
+    const { error } = await supabase
+      .from("country_intelligence")
+      .upsert(data, { onConflict: "country_id" });
+
+    if (error) {
+      console.error("Error syncing to country_intelligence:", error);
+    } else {
+      console.log(`Synced country_intelligence for ${countryId}`);
+    }
+  } catch (e) {
+    console.error("Error in syncToCountryIntelligence:", e);
+  }
+}
+
+// Sync generated JSON to country_tags table
+async function syncToCountryTags(supabase: any, countryId: string, json: any) {
+  try {
+    const tags = json.tags_1_to_5 || {};
+
+    const data = {
+      country_id: countryId,
+      network_weight: tags.network_weight || 3,
+      diploma_weight: tags.degree_weight || 3,
+      risk_tolerance: tags.risk_tolerance_system || 3,
+      admin_speed: tags.admin_speed || 3,
+      authority_verticality: tags.authority_verticality || 3,
+      mental_friction: tags.mental_friction_cost || 3,
+      social_mobility: tags.social_mobility || 3,
+      predictability: tags.predictability || 3,
+      reputation_requirement: tags.reputation_sensitivity || 3,
+      compliance_sensitivity: tags.rule_compliance_pressure || 3,
+    };
+
+    const { error } = await supabase
+      .from("country_tags")
+      .upsert(data, { onConflict: "country_id" });
+
+    if (error) {
+      console.error("Error syncing to country_tags:", error);
+    } else {
+      console.log(`Synced country_tags for ${countryId}`);
+    }
+  } catch (e) {
+    console.error("Error in syncToCountryTags:", e);
+  }
+}
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -171,6 +261,12 @@ serve(async (req) => {
     const confidenceScore = quality.confidence_0_to_100 || 0;
     const stereotypeFlag = quality.stereotype_risk_flag || false;
 
+    // Sync to country_intelligence table
+    await syncToCountryIntelligence(supabase, country.country_id, validatedJSON as any);
+
+    // Sync to country_tags table
+    await syncToCountryTags(supabase, country.country_id, validatedJSON as any);
+
     // Update job with results
     await supabase
       .from("country_generation_jobs")
@@ -184,10 +280,10 @@ serve(async (req) => {
       })
       .eq("id", job_id);
 
-    console.log(`Completed generation for ${country.country_name}`);
+    console.log(`Completed generation and sync for ${country.country_name}`);
 
     return new Response(
-      JSON.stringify({ success: true, country_id: country.country_id }),
+      JSON.stringify({ success: true, country_id: country.country_id, synced: true }),
       { headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   } catch (error) {
