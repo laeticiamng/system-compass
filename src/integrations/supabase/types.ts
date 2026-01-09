@@ -74,6 +74,108 @@ export type Database = {
         }
         Relationships: []
       }
+      country_generation_batches: {
+        Row: {
+          completed_at: string | null
+          completed_countries: number
+          concurrency: number
+          created_at: string
+          created_by: string | null
+          failed_countries: number
+          id: string
+          name: string
+          status: string
+          total_countries: number
+          updated_at: string
+        }
+        Insert: {
+          completed_at?: string | null
+          completed_countries?: number
+          concurrency?: number
+          created_at?: string
+          created_by?: string | null
+          failed_countries?: number
+          id?: string
+          name: string
+          status?: string
+          total_countries?: number
+          updated_at?: string
+        }
+        Update: {
+          completed_at?: string | null
+          completed_countries?: number
+          concurrency?: number
+          created_at?: string
+          created_by?: string | null
+          failed_countries?: number
+          id?: string
+          name?: string
+          status?: string
+          total_countries?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      country_generation_jobs: {
+        Row: {
+          completed_at: string | null
+          confidence_score: number | null
+          country_id: string
+          country_name: string
+          created_at: string
+          error_message: string | null
+          id: string
+          iso2: string
+          json_payload: Json | null
+          primary_pyramid: string
+          region: string
+          specificity_score: number | null
+          started_at: string | null
+          status: string
+          stereotype_flag: boolean | null
+          updated_at: string
+          version: number
+        }
+        Insert: {
+          completed_at?: string | null
+          confidence_score?: number | null
+          country_id: string
+          country_name: string
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          iso2: string
+          json_payload?: Json | null
+          primary_pyramid: string
+          region: string
+          specificity_score?: number | null
+          started_at?: string | null
+          status?: string
+          stereotype_flag?: boolean | null
+          updated_at?: string
+          version?: number
+        }
+        Update: {
+          completed_at?: string | null
+          confidence_score?: number | null
+          country_id?: string
+          country_name?: string
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          iso2?: string
+          json_payload?: Json | null
+          primary_pyramid?: string
+          region?: string
+          specificity_score?: number | null
+          started_at?: string | null
+          status?: string
+          stereotype_flag?: boolean | null
+          updated_at?: string
+          version?: number
+        }
+        Relationships: []
+      }
       country_intelligence: {
         Row: {
           adaptive_behaviors: Json
