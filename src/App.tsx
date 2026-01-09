@@ -42,6 +42,7 @@ import QuickTest from "./pages/QuickTest";
 import SubscriptionSuccess from "./pages/SubscriptionSuccess";
 import Pricing from "./pages/Pricing";
 import ProfileMatcher from "./pages/ProfileMatcher";
+import AdminCountryGenerator from "./pages/AdminCountryGenerator";
 
 const queryClient = new QueryClient();
 
@@ -90,6 +91,7 @@ const App = () => (
                     <Route path="/subscription-success" element={<SubscriptionSuccess />} />
                     <Route path="/pricing" element={<Pricing />} />
                     <Route path="/profile-matcher" element={<ProfileMatcher />} />
+                    <Route path="/admin/country-generator" element={<AdminCountryGenerator />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </main>
