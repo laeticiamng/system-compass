@@ -2266,5 +2266,119 @@
       "message": "Bei irreversiblen Entscheidungen empfehlen wir, mindestens 2 verschiedene Szenarien zu testen.",
       "testAlternative": "Ein alternatives Szenario testen"
     }
+  },
+  "universalErrors": {
+    "title": "Bibliothek der universellen Fehler",
+    "subtitle": "Die 10 kostspieligsten Entscheidungsfehler. Keine Moral, nur Fakten und Werkzeuge, um sie zu vermeiden.",
+    "intro": "Diese Fehler sind keine moralischen Verfehlungen. Es sind wiederkehrende Muster, die Zeit, Geld und Energie kosten. Sie zu erkennen ermöglicht es, sie vorherzusehen.",
+    "backToLibrary": "Zurück zur Bibliothek",
+    "learnMore": "Mehr erfahren",
+    "simulate": "Simulieren",
+    "errorNumber": "Fehler",
+    "definition": "Definition",
+    "whyItHappens": "Warum es passiert",
+    "consequences": "Häufige Konsequenzen",
+    "timeCost": "Zeit",
+    "moneyCost": "Geld",
+    "energyCost": "Energie",
+    "relatedPyramids": "Betroffene Pyramiden",
+    "exitKeys": "Mögliche Exit-Keys",
+    "simulateCta": "Einen konkreten Fall simulieren",
+    "simulateDescription": "Teste eine Entscheidung im Zusammenhang mit diesem Fehler, um Risiken vor der Verpflichtung zu identifizieren.",
+    "simulateCase": "Fall simulieren",
+    "ctaTitle": "Erkennst du einen dieser Fehler?",
+    "ctaDescription": "Prüfe deine Entscheidung mit dem Präventionsfilter, um Risiken zu erkennen, bevor es zu spät ist.",
+    "errors": {
+      "systemError": {
+        "name": "Systemfehler",
+        "shortDescription": "Die realen Regeln des Systems ignorieren, in dem man operiert.",
+        "definition": "Nach persönlichen Erwartungen handeln statt nach den tatsächlichen Regeln des Systems (Steuer, Recht, Soziales), dem man unterliegt.",
+        "whyItHappens": "Wir projizieren oft Regeln aus unserem Heimatland oder vertrauten Umfeld auf einen neuen Kontext. Zuverlässige Informationen sind schwer zu finden und Systeme sind komplex.",
+        "timeCost": "6 Monate bis 2 Jahre Verfahren oder Anpassung",
+        "moneyCost": "Bußgelder, Nachzahlungen, verpasste Chancen",
+        "energyCost": "Chronischer administrativer Stress, permanente Unsicherheit"
+      },
+      "metricError": {
+        "name": "Metrikfehler",
+        "shortDescription": "Den falschen Indikator optimieren oder nur messen, was beruhigt.",
+        "definition": "Sich auf oberflächliche Indikatoren konzentrieren (Bruttogehalt, Prestige) und dabei Metriken ignorieren, die wirklich zählen (Lebensqualität, reale Kosten, Fortschritt).",
+        "whyItHappens": "Sichtbare Metriken sind leicht zu kommunizieren und zu vergleichen. Wichtige Metriken sind oft unsichtbar oder unangenehm zu messen.",
+        "timeCost": "Jahre, die dem falschen Ziel nachjagen",
+        "moneyCost": "Investitionen in Bereiche, die nichts bringen",
+        "energyCost": "Erschöpfung ohne echten Fortschritt"
+      },
+      "timingError": {
+        "name": "Timing-Fehler",
+        "shortDescription": "Zu früh, zu spät handeln oder Systemzyklen ignorieren.",
+        "definition": "Wirtschaftliche, saisonale oder institutionelle Zyklen nicht berücksichtigen, die den Erfolg einer Aktion bestimmen.",
+        "whyItHappens": "Ungeduld drängt zu sofortigem Handeln. Lange Zyklen sind schwer wahrzunehmen, wenn man darin steckt.",
+        "timeCost": "Verpasste Chancen, von vorne anfangen",
+        "moneyCost": "Hoch kaufen, niedrig verkaufen",
+        "energyCost": "Frustration, gegen den Strom zu schwimmen"
+      },
+      "irreversibilityError": {
+        "name": "Irreversibilitätsfehler",
+        "shortDescription": "Sich auf eine schwer zu korrigierende Entscheidung festlegen, ohne sie zu testen.",
+        "definition": "Eine Entscheidung mit hohem Engagement treffen (Heirat, Immobilienkauf, dauerhafte Auswanderung) ohne Testphase oder Rückzugsmöglichkeit.",
+        "whyItHappens": "Sozialer Druck schätzt totales Engagement. Vor dem Festlegen zu testen wird manchmal als Vertrauensmangel gesehen.",
+        "timeCost": "Jahre, einen Fehler zu korrigieren oder damit zu leben",
+        "moneyCost": "Sehr hohe Ausstiegskosten (Scheidung, Verkauf mit Verlust)",
+        "energyCost": "Chronisches Bedauern und mentale Last"
+      },
+      "hiddenCostError": {
+        "name": "Versteckte-Kosten-Fehler",
+        "shortDescription": "Die realen Kosten jenseits des angezeigten Preises unterschätzen.",
+        "definition": "Nur sichtbare Kosten sehen (Preis, Gehalt) und versteckte Kosten ignorieren (Wartung, Stress, Zeit, verpasste Chancen).",
+        "whyItHappens": "Verkäufer und Systeme minimieren versteckte Kosten. Unser Gehirn bevorzugt einfache Zahlen gegenüber komplexen Berechnungen.",
+        "timeCost": "Unsichtbare Stunden für Wartung und Management",
+        "moneyCost": "Systematische Budgetüberschreitungen",
+        "energyCost": "Unvorhergesehene mentale Belastung"
+      },
+      "egoError": {
+        "name": "Ego-Fehler",
+        "shortDescription": "Status oder Image wirtschaftliche Entscheidungen leiten lassen.",
+        "definition": "Entscheidungen basierend auf dem treffen, was man projizieren möchte, statt auf dem, was man wirklich braucht.",
+        "whyItHappens": "Sozialer Status ist ein grundlegendes menschliches Bedürfnis. Die Wahrnehmung anderer beeinflusst unsere Entscheidungen mehr als wir zugeben.",
+        "timeCost": "Energie, die für die Aufrechterhaltung eines Images aufgewendet wird",
+        "moneyCost": "Statuskäufe auf Kosten der Sicherheit",
+        "energyCost": "Angst, den Schein zu wahren"
+      },
+      "environmentError": {
+        "name": "Umgebungsfehler",
+        "shortDescription": "Den Einfluss der Umgebung auf die eigenen Ergebnisse ignorieren.",
+        "definition": "Glauben, dass Erfolg nur von persönlicher Anstrengung abhängt, während man die Rolle des Kontexts ignoriert (Land, Netzwerk, Ära, Sektor).",
+        "whyItHappens": "Meritokratie ist eine dominante Erzählung. Die Rolle der Umgebung anzuerkennen kann erscheinen, als würde man die eigenen Verdienste schmälern.",
+        "timeCost": "Jahre der Stagnation in der falschen Umgebung",
+        "moneyCost": "Ungenutztes Potenzial durch schlechte Positionierung",
+        "energyCost": "Frustration und Gefühl der Ungerechtigkeit"
+      },
+      "narrativeError": {
+        "name": "Narrativfehler",
+        "shortDescription": "Eine inspirierende Geschichte mit einer anwendbaren Strategie verwechseln.",
+        "definition": "Einem Narrativ folgen (Erfolgsgeschichte, Guru-Rat) ohne zu prüfen, ob es auf die eigene Situation zutrifft.",
+        "whyItHappens": "Geschichten sind einprägsamer als Statistiken. Der Survivorship-Bias macht Erfolge sichtbarer als Misserfolge.",
+        "timeCost": "Jahre, einem ungeeigneten Fahrplan zu folgen",
+        "moneyCost": "Investitionen in irrelevante Schulungen oder Beratung",
+        "energyCost": "Selbstzweifel, wenn versprochene Ergebnisse ausbleiben"
+      },
+      "sunkCost": {
+        "name": "Versunkene Kosten",
+        "shortDescription": "Weiter investieren, weil man schon zu viel investiert hat.",
+        "definition": "Eine ungünstige Aktion fortsetzen, weil man bereits Zeit, Geld oder Energie aufgewendet hat, die man nicht verlieren möchte.",
+        "whyItHappens": "Unser Gehirn hasst Verluste. Einen vergangenen Fehler zuzugeben ist schmerzhaft. Wir hoffen, dass sich die Situation verbessert.",
+        "timeCost": "Zusätzliche Jahre in einer Sackgasse",
+        "moneyCost": "Zusätzliche Investitionen, um frühere zu rechtfertigen",
+        "energyCost": "Erschöpfung, etwas aufrechtzuerhalten, das nicht funktioniert"
+      },
+      "socialProofError": {
+        "name": "Social-Proof-Fehler",
+        "shortDescription": "Andere imitieren, ohne zu prüfen, ob deren Situation auf die eigene zutrifft.",
+        "definition": "Dem Verhalten der Mehrheit oder bewunderter Personen folgen, ohne zu analysieren, ob deren Einschränkungen und Ziele dieselben sind.",
+        "whyItHappens": "Der Gruppe zu folgen reduziert Unsicherheit. Wenn andere es so machen, muss es die richtige Methode sein.",
+        "timeCost": "Jahre, einem Weg zu folgen, der nicht der eigene ist",
+        "moneyCost": "Investitionen in ungeeignete Trends",
+        "energyCost": "Kluft zwischen Bestrebungen und Alltag"
+      }
+    }
   }
 }

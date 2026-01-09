@@ -4140,5 +4140,119 @@
       "message": "For irreversible decisions, we recommend testing at least 2 different scenarios.",
       "testAlternative": "Test an alternative scenario"
     }
+  },
+  "universalErrors": {
+    "title": "Universal Errors Library",
+    "subtitle": "The 10 most costly decision errors. No moralizing, just facts and tools to avoid them.",
+    "intro": "These errors are not moral failings. They are recurring patterns that cost time, money, and energy. Recognizing them allows you to anticipate them.",
+    "backToLibrary": "Back to library",
+    "learnMore": "Learn more",
+    "simulate": "Simulate",
+    "errorNumber": "Error",
+    "definition": "Definition",
+    "whyItHappens": "Why it happens",
+    "consequences": "Common consequences",
+    "timeCost": "Time",
+    "moneyCost": "Money",
+    "energyCost": "Energy",
+    "relatedPyramids": "Related pyramids",
+    "exitKeys": "Possible exit keys",
+    "simulateCta": "Simulate a concrete case",
+    "simulateDescription": "Test a decision related to this error to identify risks before committing.",
+    "simulateCase": "Simulate a case",
+    "ctaTitle": "Do you recognize one of these errors?",
+    "ctaDescription": "Run your decision through the prevention filter to identify risks before it's too late.",
+    "errors": {
+      "systemError": {
+        "name": "System Error",
+        "shortDescription": "Ignoring the real rules of the system you operate in.",
+        "definition": "Acting according to personal expectations rather than the actual rules of the system (tax, legal, social) you're subject to.",
+        "whyItHappens": "We often project rules from our home country or familiar environment onto a new context. Reliable information is hard to find and systems are complex.",
+        "timeCost": "6 months to 2 years of procedures or adaptation",
+        "moneyCost": "Fines, regularizations, lost opportunities",
+        "energyCost": "Chronic administrative stress, permanent uncertainty"
+      },
+      "metricError": {
+        "name": "Metric Error",
+        "shortDescription": "Optimizing the wrong indicator or measuring only what reassures.",
+        "definition": "Focusing on superficial indicators (gross salary, prestige) while ignoring metrics that truly matter (quality of life, real cost, progress).",
+        "whyItHappens": "Visible metrics are easy to communicate and compare. Important metrics are often invisible or uncomfortable to measure.",
+        "timeCost": "Years spent chasing the wrong goal",
+        "moneyCost": "Investments in areas that bring nothing",
+        "energyCost": "Exhaustion without real progress"
+      },
+      "timingError": {
+        "name": "Timing Error",
+        "shortDescription": "Acting too early, too late, or ignoring system cycles.",
+        "definition": "Not accounting for economic, seasonal, or institutional cycles that determine an action's success.",
+        "whyItHappens": "Impatience pushes for immediate action. Long cycles are hard to perceive when you're in them.",
+        "timeCost": "Missed opportunities, starting over",
+        "moneyCost": "Buying high, selling low",
+        "energyCost": "Frustration of swimming against the current"
+      },
+      "irreversibilityError": {
+        "name": "Irreversibility Error",
+        "shortDescription": "Committing to a hard-to-correct decision without testing it.",
+        "definition": "Making a high-commitment decision (marriage, property purchase, permanent expatriation) without a test phase or possible withdrawal.",
+        "whyItHappens": "Social pressure values total commitment. Testing before committing is sometimes seen as lack of confidence.",
+        "timeCost": "Years correcting a mistake or living with it",
+        "moneyCost": "Very high exit costs (divorce, selling at a loss)",
+        "energyCost": "Chronic regret and mental load"
+      },
+      "hiddenCostError": {
+        "name": "Hidden Cost Error",
+        "shortDescription": "Underestimating real costs beyond the displayed price.",
+        "definition": "Only seeing visible costs (price, salary) while ignoring hidden costs (maintenance, stress, time, lost opportunities).",
+        "whyItHappens": "Sellers and systems minimize hidden costs. Our brain prefers simple numbers to complex calculations.",
+        "timeCost": "Invisible hours of maintenance and management",
+        "moneyCost": "Systematic budget overruns",
+        "energyCost": "Unanticipated mental load"
+      },
+      "egoError": {
+        "name": "Ego Error",
+        "shortDescription": "Letting status or image guide economic decisions.",
+        "definition": "Making decisions based on what you want to project rather than what you actually need.",
+        "whyItHappens": "Social status is a fundamental human need. Others' perceptions influence our choices more than we admit.",
+        "timeCost": "Energy spent maintaining an image",
+        "moneyCost": "Status purchases at the expense of security",
+        "energyCost": "Anxiety related to keeping up appearances"
+      },
+      "environmentError": {
+        "name": "Environment Error",
+        "shortDescription": "Ignoring the environment's influence on your results.",
+        "definition": "Believing success depends only on personal effort while ignoring the role of context (country, network, era, sector).",
+        "whyItHappens": "Meritocracy is a dominant narrative. Acknowledging the environment's role can seem to diminish one's merits.",
+        "timeCost": "Years stagnating in the wrong environment",
+        "moneyCost": "Unrealized potential due to poor positioning",
+        "energyCost": "Frustration and sense of injustice"
+      },
+      "narrativeError": {
+        "name": "Narrative Error",
+        "shortDescription": "Confusing an inspiring story with an applicable strategy.",
+        "definition": "Following a narrative (success story, guru advice) without verifying if it applies to your own situation.",
+        "whyItHappens": "Stories are more memorable than statistics. Survivorship bias makes successes more visible than failures.",
+        "timeCost": "Years following an unsuitable roadmap",
+        "moneyCost": "Investments in irrelevant training or advice",
+        "energyCost": "Self-doubt when promised results don't arrive"
+      },
+      "sunkCost": {
+        "name": "Sunk Cost",
+        "shortDescription": "Continuing to invest because you've already invested too much.",
+        "definition": "Pursuing an unfavorable action because you've already committed time, money, or energy you don't want to lose.",
+        "whyItHappens": "Our brain hates losses. Admitting a past mistake is painful. We hope the situation will improve.",
+        "timeCost": "Additional years in a dead end",
+        "moneyCost": "Additional investments to justify previous ones",
+        "energyCost": "Exhaustion maintaining something that doesn't work"
+      },
+      "socialProofError": {
+        "name": "Social Proof Error",
+        "shortDescription": "Imitating others without checking if their situation applies to yours.",
+        "definition": "Following the majority's or admired figures' behavior without analyzing if their constraints and goals are the same.",
+        "whyItHappens": "Following the group reduces uncertainty. If others do it this way, it must be the right method.",
+        "timeCost": "Years following a path that isn't yours",
+        "moneyCost": "Investments in unsuitable trends",
+        "energyCost": "Gap between aspirations and daily life"
+      }
+    }
   }
 }

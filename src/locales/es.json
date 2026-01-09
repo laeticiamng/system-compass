@@ -2276,5 +2276,119 @@
       "message": "Para decisiones irreversibles, recomendamos probar al menos 2 escenarios diferentes.",
       "testAlternative": "Probar un escenario alternativo"
     }
+  },
+  "universalErrors": {
+    "title": "Biblioteca de errores universales",
+    "subtitle": "Los 10 errores de decisión más costosos. Sin moralizar, solo hechos y herramientas para evitarlos.",
+    "intro": "Estos errores no son fallos morales. Son patrones recurrentes que cuestan tiempo, dinero y energía. Reconocerlos permite anticiparlos.",
+    "backToLibrary": "Volver a la biblioteca",
+    "learnMore": "Saber más",
+    "simulate": "Simular",
+    "errorNumber": "Error",
+    "definition": "Definición",
+    "whyItHappens": "Por qué sucede",
+    "consequences": "Consecuencias comunes",
+    "timeCost": "Tiempo",
+    "moneyCost": "Dinero",
+    "energyCost": "Energía",
+    "relatedPyramids": "Pirámides relacionadas",
+    "exitKeys": "Claves de salida posibles",
+    "simulateCta": "Simular un caso concreto",
+    "simulateDescription": "Prueba una decisión relacionada con este error para identificar riesgos antes de comprometerte.",
+    "simulateCase": "Simular un caso",
+    "ctaTitle": "¿Reconoces uno de estos errores?",
+    "ctaDescription": "Pasa tu decisión por el filtro de prevención para identificar riesgos antes de que sea demasiado tarde.",
+    "errors": {
+      "systemError": {
+        "name": "Error de sistema",
+        "shortDescription": "Ignorar las reglas reales del sistema en el que operas.",
+        "definition": "Actuar según expectativas personales en lugar de las reglas reales del sistema (fiscal, legal, social) al que estás sujeto.",
+        "whyItHappens": "A menudo proyectamos reglas de nuestro país de origen o entorno familiar a un nuevo contexto. La información fiable es difícil de encontrar y los sistemas son complejos.",
+        "timeCost": "6 meses a 2 años de procedimientos o adaptación",
+        "moneyCost": "Multas, regularizaciones, oportunidades perdidas",
+        "energyCost": "Estrés administrativo crónico, incertidumbre permanente"
+      },
+      "metricError": {
+        "name": "Error de métrica",
+        "shortDescription": "Optimizar el indicador equivocado o medir solo lo que tranquiliza.",
+        "definition": "Centrarse en indicadores superficiales (salario bruto, prestigio) ignorando métricas que realmente importan (calidad de vida, coste real, progreso).",
+        "whyItHappens": "Las métricas visibles son fáciles de comunicar y comparar. Las métricas importantes son a menudo invisibles o incómodas de medir.",
+        "timeCost": "Años persiguiendo el objetivo equivocado",
+        "moneyCost": "Inversiones en áreas que no aportan nada",
+        "energyCost": "Agotamiento sin progreso real"
+      },
+      "timingError": {
+        "name": "Error de timing",
+        "shortDescription": "Actuar demasiado pronto, tarde, o ignorar los ciclos del sistema.",
+        "definition": "No tener en cuenta los ciclos económicos, estacionales o institucionales que determinan el éxito de una acción.",
+        "whyItHappens": "La impaciencia empuja a actuar de inmediato. Los ciclos largos son difíciles de percibir cuando estás en ellos.",
+        "timeCost": "Oportunidades perdidas, empezar de nuevo",
+        "moneyCost": "Comprar alto, vender bajo",
+        "energyCost": "Frustración de nadar contra corriente"
+      },
+      "irreversibilityError": {
+        "name": "Error de irreversibilidad",
+        "shortDescription": "Comprometerse con una decisión difícil de corregir sin probarla.",
+        "definition": "Tomar una decisión de alto compromiso (matrimonio, compra de propiedad, expatriación permanente) sin fase de prueba o posibilidad de retiro.",
+        "whyItHappens": "La presión social valora el compromiso total. Probar antes de comprometerse a veces se ve como falta de confianza.",
+        "timeCost": "Años corrigiendo un error o viviendo con él",
+        "moneyCost": "Costes de salida muy altos (divorcio, venta con pérdidas)",
+        "energyCost": "Arrepentimiento crónico y carga mental"
+      },
+      "hiddenCostError": {
+        "name": "Error de coste oculto",
+        "shortDescription": "Subestimar los costes reales más allá del precio visible.",
+        "definition": "Ver solo costes visibles (precio, salario) ignorando costes ocultos (mantenimiento, estrés, tiempo, oportunidades perdidas).",
+        "whyItHappens": "Vendedores y sistemas minimizan los costes ocultos. Nuestro cerebro prefiere números simples a cálculos complejos.",
+        "timeCost": "Horas invisibles de mantenimiento y gestión",
+        "moneyCost": "Desviaciones presupuestarias sistemáticas",
+        "energyCost": "Carga mental no anticipada"
+      },
+      "egoError": {
+        "name": "Error de ego",
+        "shortDescription": "Dejar que el estatus o la imagen guíen decisiones económicas.",
+        "definition": "Tomar decisiones basadas en lo que quieres proyectar en lugar de lo que realmente necesitas.",
+        "whyItHappens": "El estatus social es una necesidad humana fundamental. La percepción de los demás influye en nuestras decisiones más de lo que admitimos.",
+        "timeCost": "Energía gastada manteniendo una imagen",
+        "moneyCost": "Compras de estatus a costa de la seguridad",
+        "energyCost": "Ansiedad relacionada con mantener las apariencias"
+      },
+      "environmentError": {
+        "name": "Error de entorno",
+        "shortDescription": "Ignorar la influencia del entorno en tus resultados.",
+        "definition": "Creer que el éxito depende solo del esfuerzo personal ignorando el papel del contexto (país, red, época, sector).",
+        "whyItHappens": "La meritocracia es una narrativa dominante. Reconocer el papel del entorno puede parecer disminuir los propios méritos.",
+        "timeCost": "Años estancado en el entorno equivocado",
+        "moneyCost": "Potencial no realizado por mal posicionamiento",
+        "energyCost": "Frustración y sensación de injusticia"
+      },
+      "narrativeError": {
+        "name": "Error de narrativa",
+        "shortDescription": "Confundir una historia inspiradora con una estrategia aplicable.",
+        "definition": "Seguir una narrativa (historia de éxito, consejo de gurú) sin verificar si aplica a tu propia situación.",
+        "whyItHappens": "Las historias son más memorables que las estadísticas. El sesgo del superviviente hace los éxitos más visibles que los fracasos.",
+        "timeCost": "Años siguiendo una hoja de ruta inadecuada",
+        "moneyCost": "Inversiones en formación o consejos irrelevantes",
+        "energyCost": "Dudas sobre uno mismo cuando los resultados prometidos no llegan"
+      },
+      "sunkCost": {
+        "name": "Coste hundido",
+        "shortDescription": "Seguir invirtiendo porque ya has invertido demasiado.",
+        "definition": "Continuar una acción desfavorable porque ya has comprometido tiempo, dinero o energía que no quieres perder.",
+        "whyItHappens": "Nuestro cerebro odia las pérdidas. Admitir un error pasado es doloroso. Esperamos que la situación mejore.",
+        "timeCost": "Años adicionales en un callejón sin salida",
+        "moneyCost": "Inversiones adicionales para justificar las anteriores",
+        "energyCost": "Agotamiento manteniendo algo que no funciona"
+      },
+      "socialProofError": {
+        "name": "Error de prueba social",
+        "shortDescription": "Imitar a otros sin verificar si su situación aplica a la tuya.",
+        "definition": "Seguir el comportamiento de la mayoría o de figuras admiradas sin analizar si sus restricciones y objetivos son los mismos.",
+        "whyItHappens": "Seguir al grupo reduce la incertidumbre. Si los demás lo hacen así, debe ser el método correcto.",
+        "timeCost": "Años siguiendo un camino que no es el tuyo",
+        "moneyCost": "Inversiones en tendencias inadecuadas",
+        "energyCost": "Brecha entre aspiraciones y vida diaria"
+      }
+    }
   }
 }
