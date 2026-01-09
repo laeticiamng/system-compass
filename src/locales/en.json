@@ -349,7 +349,9 @@
     "multiCompare": "Multi-Analysis",
     "systemicMistakes": "Mistakes",
     "lifeGame": "Life Game",
-    "catalog": "Catalog"
+    "catalog": "Catalog",
+    "preventionFilter": "Filter",
+    "universalErrors": "Errors"
   },
   "vacation": {
     "title": "Vacation Recommendations by Purchasing Power",
@@ -4104,10 +4106,6 @@
   "footer": {
     "defaultCountry": "Default country",
     "defaultCountryTooltip": "Calculators use this country by default. Change it in the tools."
-  },
-  "nav": {
-    "preventionFilter": "Filter",
-    "universalErrors": "Errors"
   },
   "preventionFilter": {
     "badge": "Prevention filter",
