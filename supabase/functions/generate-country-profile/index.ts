@@ -84,29 +84,70 @@ Schéma JSON attendu :
 }`;
 }
 
-async function callLLM(systemPrompt: string, userPrompt: string): Promise<string> {
-  const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${LOVABLE_API_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      model: "google/gemini-2.5-pro",
-      messages: [
-        { role: "system", content: systemPrompt },
-        { role: "user", content: userPrompt },
-      ],
-    }),
-  });
+async function callLLMWithRetry(
+  systemPrompt: string, 
+  userPrompt: string, 
+  maxRetries = 3,
+  baseDelay = 2000
+): Promise<string> {
+  let lastError: Error | null = null;
+  
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      console.log(`LLM call attempt ${attempt}/${maxRetries}`);
+      
+      const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${LOVABLE_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "google/gemini-2.5-pro",
+          messages: [
+            { role: "system", content: systemPrompt },
+            { role: "user", content: userPrompt },
+          ],
+        }),
+      });
 
-  if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(`LLM API error: ${response.status} - ${errorText}`);
+      if (!response.ok) {
+        const errorText = await response.text();
+        const status = response.status;
+        
+        // Check if error is retryable (5xx errors, 429 rate limit)
+        if (status >= 500 || status === 429) {
+          lastError = new Error(`LLM API error: ${status} - ${errorText}`);
+          console.warn(`Retryable error on attempt ${attempt}: ${lastError.message}`);
+          
+          if (attempt < maxRetries) {
+            const delay = baseDelay * Math.pow(2, attempt - 1); // Exponential backoff
+            console.log(`Waiting ${delay}ms before retry...`);
+            await new Promise(resolve => setTimeout(resolve, delay));
+            continue;
+          }
+        } else {
+          // Non-retryable error (4xx except 429)
+          throw new Error(`LLM API error: ${status} - ${errorText}`);
+        }
+      } else {
+        const data = await response.json();
+        console.log(`LLM call successful on attempt ${attempt}`);
+        return data.choices[0].message.content;
+      }
+    } catch (error) {
+      lastError = error instanceof Error ? error : new Error(String(error));
+      console.warn(`Error on attempt ${attempt}: ${lastError.message}`);
+      
+      if (attempt < maxRetries) {
+        const delay = baseDelay * Math.pow(2, attempt - 1);
+        console.log(`Waiting ${delay}ms before retry...`);
+        await new Promise(resolve => setTimeout(resolve, delay));
+      }
+    }
   }
-
-  const data = await response.json();
-  return data.choices[0].message.content;
+  
+  throw lastError || new Error("All LLM retry attempts failed");
 }
 
 function extractJSON(text: string): object | null {
@@ -261,7 +302,7 @@ serve(async (req) => {
 
     // Step 1: Generate the country profile
     const generationPrompt = createGenerationPrompt(country);
-    const generatedContent = await callLLM(SYSTEM_PROMPT, generationPrompt);
+    const generatedContent = await callLLMWithRetry(SYSTEM_PROMPT, generationPrompt);
 
     const generatedJSON = extractJSON(generatedContent);
     if (!generatedJSON) {
@@ -278,7 +319,7 @@ serve(async (req) => {
 
     // Step 2: Validate and clean the content
     const validationPrompt = `Voici le JSON à auditer et corriger :\n\n${JSON.stringify(generatedJSON, null, 2)}`;
-    const validatedContent = await callLLM(VALIDATOR_PROMPT, validationPrompt);
+    const validatedContent = await callLLMWithRetry(VALIDATOR_PROMPT, validationPrompt);
 
     const validatedJSON = extractJSON(validatedContent) || generatedJSON;
 
