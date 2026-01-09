@@ -13,10 +13,11 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { toast } from "sonner";
 import { 
   Loader2, Play, RefreshCw, CheckCircle, XCircle, Clock, 
-  AlertTriangle, Globe, Zap, ChevronDown, ChevronRight
+  AlertTriangle, Globe, Zap, ChevronDown, ChevronRight, Bell
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { useGenerationNotifications } from "@/hooks/useGenerationNotifications";
 
 interface GenerationJob {
   id: string;
@@ -86,6 +87,9 @@ export default function AdminCountryGenerator() {
   const [concurrency, setConcurrency] = useState(5);
   const [batchName, setBatchName] = useState("");
   const [showJobs, setShowJobs] = useState(true);
+  
+  // Real-time notifications hook
+  const { activeJobs, activeBatch } = useGenerationNotifications();
 
   useEffect(() => {
     fetchData();
