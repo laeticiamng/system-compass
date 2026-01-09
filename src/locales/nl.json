@@ -517,7 +517,63 @@
     "systemicMistakes": "Fouten",
     "catalog": "Catalogus",
     "preventionFilter": "Filter",
-    "universalErrors": "Fouten"
+    "universalErrors": "Fouten",
+    "worldMap": "Kaart",
+    "pricing": "Prijzen"
+  },
+  "worldMap": {
+    "badge": "Wereldwijde verkenning",
+    "title": "Systeemkaart",
+    "subtitle": "Verken visueel de 29 geanalyseerde landen en hun piramidetypen",
+    "search": "Zoek een land...",
+    "results": "landen",
+    "viewDetails": "Details bekijken",
+    "tabs": {
+      "map": "Kaart",
+      "stats": "Statistieken"
+    },
+    "stats": {
+      "total": "Geanalyseerde landen",
+      "intelligence": "Intelligence Layer",
+      "pyramids": "Piramidetypen",
+      "languages": "Talen"
+    },
+    "pyramidDistribution": "Verdeling per type",
+    "countryList": "Landenlijst",
+    "info": {
+      "title": "Hoe lees je de kaart?",
+      "colors": "Kleuren vertegenwoordigen piramidetypen",
+      "size": "Grotere punten duiden landen met Intelligence Layer aan",
+      "click": "Klik op een land voor details",
+      "zoom": "Gebruik de bedieningselementen om te zoomen"
+    }
+  },
+  "history": {
+    "title": "Geschiedenis",
+    "description": "Uw recente raadplegingen en simulaties",
+    "mostViewed": "Meest bezochte landen",
+    "recent": "Recente activiteit",
+    "clear": "Wissen",
+    "empty": "Geen recente activiteit"
+  },
+  "export": {
+    "pdf": "PDF exporteren",
+    "title": "Analyse exporteren",
+    "description": "Selecteer secties om op te nemen in de PDF",
+    "overview": "Overzicht",
+    "risks": "Risico's",
+    "playbook": "Playbook",
+    "intelligence": "Intelligence Layer",
+    "variants": "Varianten",
+    "tags": "Tags/Indicatoren",
+    "notAvailable": "niet beschikbaar",
+    "generate": "PDF genereren",
+    "generating": "Genereren...",
+    "complete": "Voltooid!",
+    "success": "Export geslaagd",
+    "downloaded": "PDF is gedownload",
+    "error": "Exportfout",
+    "errorDesc": "Kon PDF niet genereren"
   },
   "vacation": {
     "title": "Vakantie-aanbevelingen op basis van koopkracht",

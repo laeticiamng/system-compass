@@ -359,7 +359,63 @@
     "lifeGame": "Life Game",
     "catalog": "Catalog",
     "preventionFilter": "Filter",
-    "universalErrors": "Errors"
+    "universalErrors": "Errors",
+    "worldMap": "Map",
+    "pricing": "Pricing"
+  },
+  "worldMap": {
+    "badge": "Global exploration",
+    "title": "Systems Map",
+    "subtitle": "Visually explore the 29 analyzed countries and their pyramid types",
+    "search": "Search a country...",
+    "results": "countries",
+    "viewDetails": "View details",
+    "tabs": {
+      "map": "Map",
+      "stats": "Statistics"
+    },
+    "stats": {
+      "total": "Countries analyzed",
+      "intelligence": "Intelligence Layer",
+      "pyramids": "Pyramid types",
+      "languages": "Languages"
+    },
+    "pyramidDistribution": "Distribution by type",
+    "countryList": "Country list",
+    "info": {
+      "title": "How to read the map?",
+      "colors": "Colors represent pyramid types",
+      "size": "Larger dots indicate countries with Intelligence Layer",
+      "click": "Click on a country to see its details",
+      "zoom": "Use controls to zoom and navigate"
+    }
+  },
+  "history": {
+    "title": "History",
+    "description": "Your recent consultations and simulations",
+    "mostViewed": "Most viewed countries",
+    "recent": "Recent activity",
+    "clear": "Clear",
+    "empty": "No recent activity"
+  },
+  "export": {
+    "pdf": "Export PDF",
+    "title": "Export analysis",
+    "description": "Select sections to include in the PDF",
+    "overview": "Overview",
+    "risks": "Risks",
+    "playbook": "Playbook",
+    "intelligence": "Intelligence Layer",
+    "variants": "Variants",
+    "tags": "Tags/Indicators",
+    "notAvailable": "not available",
+    "generate": "Generate PDF",
+    "generating": "Generating...",
+    "complete": "Complete!",
+    "success": "Export successful",
+    "downloaded": "PDF has been downloaded",
+    "error": "Export error",
+    "errorDesc": "Unable to generate PDF"
   },
   "vacation": {
     "title": "Vacation Recommendations by Purchasing Power",

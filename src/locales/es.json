@@ -517,7 +517,63 @@
     "systemicMistakes": "Errores",
     "catalog": "Catálogo",
     "preventionFilter": "Filtro",
-    "universalErrors": "Errores"
+    "universalErrors": "Errores",
+    "worldMap": "Mapa",
+    "pricing": "Precios"
+  },
+  "worldMap": {
+    "badge": "Exploración mundial",
+    "title": "Mapa de Sistemas",
+    "subtitle": "Explore visualmente los 29 países analizados y sus tipos de pirámides",
+    "search": "Buscar un país...",
+    "results": "países",
+    "viewDetails": "Ver detalles",
+    "tabs": {
+      "map": "Mapa",
+      "stats": "Estadísticas"
+    },
+    "stats": {
+      "total": "Países analizados",
+      "intelligence": "Intelligence Layer",
+      "pyramids": "Tipos de pirámides",
+      "languages": "Idiomas"
+    },
+    "pyramidDistribution": "Distribución por tipo",
+    "countryList": "Lista de países",
+    "info": {
+      "title": "¿Cómo leer el mapa?",
+      "colors": "Los colores representan tipos de pirámides",
+      "size": "Los puntos más grandes indican países con Intelligence Layer",
+      "click": "Haga clic en un país para ver sus detalles",
+      "zoom": "Use los controles para hacer zoom"
+    }
+  },
+  "history": {
+    "title": "Historial",
+    "description": "Sus consultas y simulaciones recientes",
+    "mostViewed": "Países más visitados",
+    "recent": "Actividad reciente",
+    "clear": "Borrar",
+    "empty": "Sin actividad reciente"
+  },
+  "export": {
+    "pdf": "Exportar PDF",
+    "title": "Exportar análisis",
+    "description": "Seleccione las secciones a incluir en el PDF",
+    "overview": "Resumen",
+    "risks": "Riesgos",
+    "playbook": "Playbook",
+    "intelligence": "Intelligence Layer",
+    "variants": "Variantes",
+    "tags": "Tags/Indicadores",
+    "notAvailable": "no disponible",
+    "generate": "Generar PDF",
+    "generating": "Generando...",
+    "complete": "¡Completado!",
+    "success": "Exportación exitosa",
+    "downloaded": "PDF descargado",
+    "error": "Error de exportación",
+    "errorDesc": "No se pudo generar el PDF"
   },
   "vacation": {
     "title": "Recomendaciones de vacaciones por poder adquisitivo",

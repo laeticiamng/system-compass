@@ -359,7 +359,63 @@
     "lifeGame": "Jeu de la Vie",
     "catalog": "Catalogue",
     "preventionFilter": "Filtre",
-    "universalErrors": "Erreurs"
+    "universalErrors": "Erreurs",
+    "worldMap": "Carte",
+    "pricing": "Tarifs"
+  },
+  "worldMap": {
+    "badge": "Exploration mondiale",
+    "title": "Carte des Systèmes",
+    "subtitle": "Explorez visuellement les 29 pays analysés et leurs types de pyramides",
+    "search": "Rechercher un pays...",
+    "results": "pays",
+    "viewDetails": "Voir les détails",
+    "tabs": {
+      "map": "Carte",
+      "stats": "Statistiques"
+    },
+    "stats": {
+      "total": "Pays analysés",
+      "intelligence": "Intelligence Layer",
+      "pyramids": "Types de pyramides",
+      "languages": "Langues"
+    },
+    "pyramidDistribution": "Distribution par type",
+    "countryList": "Liste des pays",
+    "info": {
+      "title": "Comment lire la carte ?",
+      "colors": "Les couleurs représentent les types de pyramides",
+      "size": "Les points plus grands indiquent des pays avec Intelligence Layer",
+      "click": "Cliquez sur un pays pour voir ses détails",
+      "zoom": "Utilisez les contrôles pour zoomer et naviguer"
+    }
+  },
+  "history": {
+    "title": "Historique",
+    "description": "Vos dernières consultations et simulations",
+    "mostViewed": "Pays les plus consultés",
+    "recent": "Activité récente",
+    "clear": "Effacer",
+    "empty": "Aucune activité récente"
+  },
+  "export": {
+    "pdf": "Export PDF",
+    "title": "Exporter l'analyse",
+    "description": "Sélectionnez les sections à inclure dans le PDF",
+    "overview": "Vue d'ensemble",
+    "risks": "Risques",
+    "playbook": "Playbook",
+    "intelligence": "Intelligence Layer",
+    "variants": "Variants",
+    "tags": "Tags/Indicateurs",
+    "notAvailable": "non disponible",
+    "generate": "Générer le PDF",
+    "generating": "Génération...",
+    "complete": "Terminé!",
+    "success": "Export réussi",
+    "downloaded": "Le PDF a été téléchargé",
+    "error": "Erreur d'export",
+    "errorDesc": "Impossible de générer le PDF"
   },
   "vacation": {
     "title": "Recommandations Vacances par Pouvoir d'Achat",
