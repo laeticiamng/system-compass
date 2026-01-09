@@ -764,6 +764,7 @@
     "backToCountries": "Back to Countries",
     "ruleOfGold": "Rule of Gold",
     "lgbtqRights": "LGBTQ+ Rights",
+    "exportPdf": "Export PDF",
     "snapshot": {
       "gdpPerCapita": "GDP/Capita",
       "population": "Population",
@@ -777,7 +778,29 @@
     "survivalPlaybook": "Survival Playbook",
     "sourcesUpdates": "Sources & Updates",
     "lastUpdated": "Last updated",
-    "extendedNote": "This country has Intelligence Layer data. Full profile coming soon."
+    "extendedNote": "This country has Intelligence Layer data. Full profile coming soon.",
+    "tabs": {
+      "tronc": "Core Analysis",
+      "variant": "Country Variant",
+      "project": "Project Analysis",
+      "intelligence": "Intelligence"
+    },
+    "tronc": {
+      "badge": "Common Core — Free Access",
+      "title": "Structural Analysis",
+      "subtitle": "What the system rewards and punishes",
+      "systemRewards": "What the system rewards",
+      "systemPunishes": "What the system punishes",
+      "frequentErrors": "Frequent errors"
+    },
+    "variant": {
+      "title": "Local Specifics",
+      "subtitle": "What surprises newcomers"
+    },
+    "project": {
+      "title": "Personalized Analysis",
+      "subtitle": "Based on your project and profile"
+    }
   },
   "lgbtqRights": {
     "title": "LGBTQ+ Rights",
@@ -4448,29 +4471,6 @@
     "resource": {
       "rewards": ["Sector expertise", "Geographic mobility", "Well-negotiated short contracts", "Massive savings"],
       "punishes": ["Local rooting", "Long-term projects", "Local system dependency", "High living expenses"]
-    }
-  },
-  "countryDetail": {
-    "tabs": {
-      "tronc": "Core Analysis",
-      "variant": "Country Variant",
-      "project": "Project Analysis"
-    },
-    "tronc": {
-      "title": "Structural Analysis",
-      "subtitle": "What the system rewards and punishes",
-      "badge": "Common Core — Free Access",
-      "systemRewards": "What the system rewards",
-      "systemPunishes": "What the system punishes",
-      "frequentErrors": "Frequent errors"
-    },
-    "variant": {
-      "title": "Local Specifics",
-      "subtitle": "What surprises newcomers"
-    },
-    "project": {
-      "title": "Personalized Analysis",
-    "subtitle": "Based on your project and profile"
     }
   },
   "intelligence": {

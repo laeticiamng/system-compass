@@ -912,6 +912,7 @@
     "backToCountries": "Terug naar landen",
     "ruleOfGold": "Gouden regel",
     "lgbtqRights": "LGBTQ+ Rechten",
+    "exportPdf": "PDF exporteren",
     "snapshot": {
       "gdpPerCapita": "BBP/Capita",
       "population": "Bevolking",
@@ -925,7 +926,29 @@
     "survivalPlaybook": "Overlevings-playbook",
     "sourcesUpdates": "Bronnen & updates",
     "lastUpdated": "Laatst bijgewerkt",
-    "extendedNote": "Dit land heeft volledige Intelligence Layer-gegevens in de database"
+    "extendedNote": "Dit land heeft volledige Intelligence Layer-gegevens in de database",
+    "tabs": {
+      "tronc": "Kernanalyse",
+      "variant": "Landvariant",
+      "project": "Projectanalyse",
+      "intelligence": "Intelligence"
+    },
+    "tronc": {
+      "badge": "Gemeenschappelijke kern — Gratis toegang",
+      "title": "Structurele analyse",
+      "subtitle": "Wat het systeem beloont en bestraft",
+      "systemRewards": "Wat het systeem beloont",
+      "systemPunishes": "Wat het systeem bestraft",
+      "frequentErrors": "Veelvoorkomende fouten"
+    },
+    "variant": {
+      "title": "Lokale bijzonderheden",
+      "subtitle": "Wat nieuwkomers verrast"
+    },
+    "project": {
+      "title": "Gepersonaliseerde analyse",
+      "subtitle": "Op basis van uw project en profiel"
+    }
   },
   "lgbtqRights": {
     "title": "LGBTQ+ Rechten",
@@ -2860,20 +2883,4 @@
       "punishes": ["Lokale verankering", "Langetermijnprojecten", "Afhankelijkheid van lokaal systeem", "Hoge kosten van levensonderhoud"]
     }
   },
-  "countryDetailExtra": {
-    "tabs": {
-      "tronc": "Kernanalyse",
-      "variant": "Landvariant",
-      "project": "Projectanalyse",
-      "intelligence": "Intelligence"
-    },
-    "tronc": {
-      "badge": "Gemeenschappelijke kern — Gratis toegang",
-      "title": "Structurele analyse",
-      "subtitle": "Wat het systeem beloont en bestraft",
-      "systemRewards": "Wat het systeem beloont",
-      "systemPunishes": "Wat het systeem bestraft",
-      "frequentErrors": "Veelvoorkomende fouten"
-    }
-  }
 }

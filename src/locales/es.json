@@ -912,6 +912,7 @@
     "backToCountries": "Volver a países",
     "ruleOfGold": "Regla de oro",
     "lgbtqRights": "Derechos LGBTQ+",
+    "exportPdf": "Exportar PDF",
     "snapshot": {
       "gdpPerCapita": "PIB/Cápita",
       "population": "Población",
@@ -925,7 +926,29 @@
     "survivalPlaybook": "Playbook de supervivencia",
     "sourcesUpdates": "Fuentes & actualizaciones",
     "lastUpdated": "Última actualización",
-    "extendedNote": "Este país tiene datos de capa Intelligence completos en la base de datos"
+    "extendedNote": "Este país tiene datos de capa Intelligence completos en la base de datos",
+    "tabs": {
+      "tronc": "Análisis central",
+      "variant": "Variante país",
+      "project": "Análisis de proyecto",
+      "intelligence": "Intelligence"
+    },
+    "tronc": {
+      "badge": "Tronco común — Acceso gratuito",
+      "title": "Análisis estructural",
+      "subtitle": "Lo que el sistema recompensa y castiga",
+      "systemRewards": "Lo que el sistema recompensa",
+      "systemPunishes": "Lo que el sistema castiga",
+      "frequentErrors": "Errores frecuentes"
+    },
+    "variant": {
+      "title": "Particularidades locales",
+      "subtitle": "Lo que sorprende a los recién llegados"
+    },
+    "project": {
+      "title": "Análisis personalizado",
+      "subtitle": "Según tu proyecto y perfil"
+    }
   },
   "lgbtqRights": {
     "title": "Derechos LGBTQ+",
@@ -2870,20 +2893,4 @@
       "punishes": ["Arraigo local", "Proyectos a largo plazo", "Dependencia del sistema local", "Gastos de vida elevados"]
     }
   },
-  "countryDetailExtra": {
-    "tabs": {
-      "tronc": "Análisis central",
-      "variant": "Variante país",
-      "project": "Análisis de proyecto",
-      "intelligence": "Intelligence"
-    },
-    "tronc": {
-      "badge": "Tronco común — Acceso gratuito",
-      "title": "Análisis estructural",
-      "subtitle": "Lo que el sistema recompensa y castiga",
-      "systemRewards": "Lo que el sistema recompensa",
-      "systemPunishes": "Lo que el sistema castiga",
-      "frequentErrors": "Errores frecuentes"
-    }
-  }
 }
