@@ -2625,5 +2625,50 @@
     "deadlines": "Promemoria scadenze",
     "achievements": "Obiettivi",
     "justNow": "Proprio ora"
+  },
+  "pyramidBehaviors": {
+    "title": "Comportamenti tipici",
+    "rewards": "Il sistema premia",
+    "punishes": "Il sistema punisce",
+    "stability": {
+      "rewards": ["Pazienza e anzianità", "Seguire le procedure", "Lealtà istituzionale", "Diplomi riconosciuti"],
+      "punishes": ["Impazienza e scorciatoie", "Assunzione di rischi eccessiva", "Cambi frequenti di lavoro", "Mancanza di credenziali"]
+    },
+    "growth": {
+      "rewards": ["Iniziativa e assunzione di rischi", "Creazione di valore misurabile", "Adattabilità rapida", "Rete professionale"],
+      "punishes": ["Attesa passiva", "Rifiuto di innovare", "Dipendenza dal datore di lavoro", "Isolamento professionale"]
+    },
+    "rent": {
+      "rewards": ["Accesso ai circoli di potere", "Capacità di mantenere lo status quo", "Connessioni familiari", "Discrezione sui redditi"],
+      "punishes": ["Trasparenza eccessiva", "Tentativi di riforma", "Mancanza di rete", "Meritocrazia ingenua"]
+    },
+    "competence": {
+      "rewards": ["Expertise tecnica affinata", "Certificazioni riconosciute", "Rigore metodologico", "Formazione continua"],
+      "punishes": ["Approssimazione", "Mancanza di certificazione", "Cambi di campo", "Autodidattismo non validato"]
+    },
+    "hybrid": {
+      "rewards": ["Flessibilità strategica", "Leggere i segnali", "Timing preciso", "Doppia competenza"],
+      "punishes": ["Rigidità", "Impegno prematuro", "Incomprensione dei codici", "Scelta di sistema unico"]
+    },
+    "resource": {
+      "rewards": ["Expertise settoriale", "Mobilità geografica", "Contratti brevi ben negoziati", "Risparmio massiccio"],
+      "punishes": ["Radicamento locale", "Progetti a lungo termine", "Dipendenza dal sistema locale", "Spese di vita elevate"]
+    }
+  },
+  "countryDetailExtra": {
+    "tabs": {
+      "tronc": "Analisi centrale",
+      "variant": "Variante paese",
+      "project": "Analisi progetto",
+      "intelligence": "Intelligence"
+    },
+    "tronc": {
+      "badge": "Tronco comune — Accesso gratuito",
+      "title": "Analisi strutturale",
+      "subtitle": "Cosa il sistema premia e punisce",
+      "systemRewards": "Cosa il sistema premia",
+      "systemPunishes": "Cosa il sistema punisce",
+      "frequentErrors": "Errori frequenti"
+    }
   }
 }

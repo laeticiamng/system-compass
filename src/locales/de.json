@@ -2625,5 +2625,50 @@
     "deadlines": "Deadline-Erinnerungen",
     "achievements": "Erfolge",
     "justNow": "Gerade eben"
+  },
+  "pyramidBehaviors": {
+    "title": "Typische Verhaltensweisen",
+    "rewards": "Das System belohnt",
+    "punishes": "Das System bestraft",
+    "stability": {
+      "rewards": ["Geduld und Seniorität", "Prozesstreue", "Institutionelle Loyalität", "Anerkannte Diplome"],
+      "punishes": ["Ungeduld und Abkürzungen", "Übermäßige Risikobereitschaft", "Häufige Arbeitgeberwechsel", "Fehlende Qualifikationen"]
+    },
+    "growth": {
+      "rewards": ["Initiative und Risikobereitschaft", "Messbare Wertschöpfung", "Schnelle Anpassungsfähigkeit", "Berufliches Netzwerk"],
+      "punishes": ["Passives Warten", "Innovationsverweigerung", "Arbeitgeberabhängigkeit", "Berufliche Isolation"]
+    },
+    "rent": {
+      "rewards": ["Zugang zu Machtkreisen", "Fähigkeit den Status quo zu erhalten", "Familienverbindungen", "Diskretion über Einkommen"],
+      "punishes": ["Übermäßige Transparenz", "Reformversuche", "Fehlendes Netzwerk", "Naive Meritokratie"]
+    },
+    "competence": {
+      "rewards": ["Spitzenexpertise", "Anerkannte Zertifizierungen", "Methodische Strenge", "Kontinuierliche Weiterbildung"],
+      "punishes": ["Approximation", "Fehlende Zertifizierung", "Branchenwechsel", "Nicht validierte Autodidaktik"]
+    },
+    "hybrid": {
+      "rewards": ["Strategische Flexibilität", "Signale lesen", "Präzises Timing", "Doppelkompetenz"],
+      "punishes": ["Starrheit", "Zu frühe Festlegung", "Code-Missverständnis", "Einseitige Systemwahl"]
+    },
+    "resource": {
+      "rewards": ["Branchenexpertise", "Geografische Mobilität", "Gut verhandelte Kurzverträge", "Massives Sparen"],
+      "punishes": ["Lokale Verwurzelung", "Langfristige Projekte", "Abhängigkeit vom lokalen System", "Hohe Lebenshaltungskosten"]
+    }
+  },
+  "countryDetailExtra": {
+    "tabs": {
+      "tronc": "Kernanalyse",
+      "variant": "Ländervariante",
+      "project": "Projektanalyse",
+      "intelligence": "Intelligence"
+    },
+    "tronc": {
+      "badge": "Gemeinsamer Kern — Kostenloser Zugang",
+      "title": "Strukturanalyse",
+      "subtitle": "Was das System belohnt und bestraft",
+      "systemRewards": "Was das System belohnt",
+      "systemPunishes": "Was das System bestraft",
+      "frequentErrors": "Häufige Fehler"
+    }
   }
 }

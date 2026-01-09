@@ -15,110 +15,14 @@ interface CountryTroncSectionProps {
   displayWhoLoses: string[];
 }
 
-// Pyramid type to common behaviors mapping
-const PYRAMID_BEHAVIORS = {
-  PROBLEM_RENT: {
-    rewards: [
-      'pyramidBehaviors.problemRent.rewards.0',
-      'pyramidBehaviors.problemRent.rewards.1',
-      'pyramidBehaviors.problemRent.rewards.2',
-    ],
-    punishes: [
-      'pyramidBehaviors.problemRent.punishes.0',
-      'pyramidBehaviors.problemRent.punishes.1',
-      'pyramidBehaviors.problemRent.punishes.2',
-    ],
-    errors: [
-      'pyramidBehaviors.problemRent.errors.0',
-      'pyramidBehaviors.problemRent.errors.1',
-      'pyramidBehaviors.problemRent.errors.2',
-    ],
-  },
-  STABILITY_REDIS: {
-    rewards: [
-      'pyramidBehaviors.stabilityRedis.rewards.0',
-      'pyramidBehaviors.stabilityRedis.rewards.1',
-      'pyramidBehaviors.stabilityRedis.rewards.2',
-    ],
-    punishes: [
-      'pyramidBehaviors.stabilityRedis.punishes.0',
-      'pyramidBehaviors.stabilityRedis.punishes.1',
-      'pyramidBehaviors.stabilityRedis.punishes.2',
-    ],
-    errors: [
-      'pyramidBehaviors.stabilityRedis.errors.0',
-      'pyramidBehaviors.stabilityRedis.errors.1',
-      'pyramidBehaviors.stabilityRedis.errors.2',
-    ],
-  },
-  COMPETENCE_TRUST: {
-    rewards: [
-      'pyramidBehaviors.competenceTrust.rewards.0',
-      'pyramidBehaviors.competenceTrust.rewards.1',
-      'pyramidBehaviors.competenceTrust.rewards.2',
-    ],
-    punishes: [
-      'pyramidBehaviors.competenceTrust.punishes.0',
-      'pyramidBehaviors.competenceTrust.punishes.1',
-      'pyramidBehaviors.competenceTrust.punishes.2',
-    ],
-    errors: [
-      'pyramidBehaviors.competenceTrust.errors.0',
-      'pyramidBehaviors.competenceTrust.errors.1',
-      'pyramidBehaviors.competenceTrust.errors.2',
-    ],
-  },
-  GROWTH_RISK: {
-    rewards: [
-      'pyramidBehaviors.growthRisk.rewards.0',
-      'pyramidBehaviors.growthRisk.rewards.1',
-      'pyramidBehaviors.growthRisk.rewards.2',
-    ],
-    punishes: [
-      'pyramidBehaviors.growthRisk.punishes.0',
-      'pyramidBehaviors.growthRisk.punishes.1',
-      'pyramidBehaviors.growthRisk.punishes.2',
-    ],
-    errors: [
-      'pyramidBehaviors.growthRisk.errors.0',
-      'pyramidBehaviors.growthRisk.errors.1',
-      'pyramidBehaviors.growthRisk.errors.2',
-    ],
-  },
-  HYBRID_TRANSITION: {
-    rewards: [
-      'pyramidBehaviors.hybridTransition.rewards.0',
-      'pyramidBehaviors.hybridTransition.rewards.1',
-      'pyramidBehaviors.hybridTransition.rewards.2',
-    ],
-    punishes: [
-      'pyramidBehaviors.hybridTransition.punishes.0',
-      'pyramidBehaviors.hybridTransition.punishes.1',
-      'pyramidBehaviors.hybridTransition.punishes.2',
-    ],
-    errors: [
-      'pyramidBehaviors.hybridTransition.errors.0',
-      'pyramidBehaviors.hybridTransition.errors.1',
-      'pyramidBehaviors.hybridTransition.errors.2',
-    ],
-  },
-  RESOURCE_EXTRACTION: {
-    rewards: [
-      'pyramidBehaviors.resourceExtraction.rewards.0',
-      'pyramidBehaviors.resourceExtraction.rewards.1',
-      'pyramidBehaviors.resourceExtraction.rewards.2',
-    ],
-    punishes: [
-      'pyramidBehaviors.resourceExtraction.punishes.0',
-      'pyramidBehaviors.resourceExtraction.punishes.1',
-      'pyramidBehaviors.resourceExtraction.punishes.2',
-    ],
-    errors: [
-      'pyramidBehaviors.resourceExtraction.errors.0',
-      'pyramidBehaviors.resourceExtraction.errors.1',
-      'pyramidBehaviors.resourceExtraction.errors.2',
-    ],
-  },
+// Mapping pyramid types to translation keys (using the short keys from translations)
+const PYRAMID_TYPE_TO_KEY: Record<string, string> = {
+  PROBLEM_RENT: 'rent',
+  STABILITY_REDIS: 'stability',
+  COMPETENCE_TRUST: 'competence',
+  GROWTH_RISK: 'growth',
+  HYBRID_TRANSITION: 'hybrid',
+  RESOURCE_EXTRACTION: 'resource',
 };
 
 export function CountryTroncSection({
@@ -129,7 +33,13 @@ export function CountryTroncSection({
   displayWhoLoses,
 }: CountryTroncSectionProps) {
   const { t } = useTranslation();
-  const behaviors = PYRAMID_BEHAVIORS[country.pyramidType as keyof typeof PYRAMID_BEHAVIORS] || PYRAMID_BEHAVIORS.STABILITY_REDIS;
+  
+  // Get the translation key for the pyramid type
+  const behaviorKey = PYRAMID_TYPE_TO_KEY[country.pyramidType] || 'stability';
+  
+  // Get behaviors as arrays from translations
+  const rewards = t(`pyramidBehaviors.${behaviorKey}.rewards`, { returnObjects: true }) as string[];
+  const punishes = t(`pyramidBehaviors.${behaviorKey}.punishes`, { returnObjects: true }) as string[];
 
   return (
     <div className="space-y-8">
@@ -170,10 +80,10 @@ export function CountryTroncSection({
             {t('countryDetail.tronc.systemRewards', 'Ce que le système récompense')}
           </h3>
           <ul className="space-y-2 text-sm text-muted-foreground">
-            {behaviors.rewards.map((key, i) => (
+            {Array.isArray(rewards) && rewards.slice(0, 4).map((item, i) => (
               <li key={i} className="flex items-start gap-2">
                 <span className="text-green-500 mt-0.5">•</span>
-                {t(key)}
+                {item}
               </li>
             ))}
           </ul>
@@ -186,28 +96,40 @@ export function CountryTroncSection({
             {t('countryDetail.tronc.systemPunishes', 'Ce que le système punit')}
           </h3>
           <ul className="space-y-2 text-sm text-muted-foreground">
-            {behaviors.punishes.map((key, i) => (
+            {Array.isArray(punishes) && punishes.slice(0, 4).map((item, i) => (
               <li key={i} className="flex items-start gap-2">
                 <span className="text-red-500 mt-0.5">•</span>
-                {t(key)}
+                {item}
               </li>
             ))}
           </ul>
         </div>
 
-        {/* Frequent errors */}
+        {/* Frequent errors - from pyramidTypes details */}
         <div className="glass-card rounded-xl p-5 border-l-4 border-amber-500">
           <h3 className="font-semibold mb-3 flex items-center gap-2 text-amber-600">
             <AlertTriangle className="w-5 h-5" />
             {t('countryDetail.tronc.frequentErrors', 'Erreurs fréquentes')}
           </h3>
           <ul className="space-y-2 text-sm text-muted-foreground">
-            {behaviors.errors.map((key, i) => (
-              <li key={i} className="flex items-start gap-2">
-                <span className="text-amber-500 mt-0.5">•</span>
-                {t(key)}
-              </li>
-            ))}
+            {(() => {
+              // Map to pyramidTypes format for warning signs
+              const pyramidTypeKey = behaviorKey === 'stability' ? 'stabilityRedis' 
+                : behaviorKey === 'rent' ? 'problemRent'
+                : behaviorKey === 'competence' ? 'competenceTrust'
+                : behaviorKey === 'growth' ? 'growthRisk'
+                : behaviorKey === 'hybrid' ? 'hybridTransition'
+                : 'resourceExtraction';
+              
+              const warningSigns = t(`pyramidTypes.details.${pyramidTypeKey}.warningSigns`, { returnObjects: true }) as string[];
+              
+              return Array.isArray(warningSigns) && warningSigns.slice(0, 4).map((item, i) => (
+                <li key={i} className="flex items-start gap-2">
+                  <span className="text-amber-500 mt-0.5">•</span>
+                  {item}
+                </li>
+              ));
+            })()}
           </ul>
         </div>
       </div>
