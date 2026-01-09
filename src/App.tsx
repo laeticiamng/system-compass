@@ -35,6 +35,7 @@ import MultiCompare from "./pages/MultiCompare";
 import PreventionFilter from "./pages/PreventionFilter";
 import UniversalErrors from "./pages/UniversalErrors";
 import UniversalErrorDetail from "./pages/UniversalErrorDetail";
+import QuickTest from "./pages/QuickTest";
 
 const queryClient = new QueryClient();
 
@@ -77,6 +78,7 @@ const App = () => (
                   <Route path="/prevention-filter" element={<PreventionFilter />} />
                   <Route path="/universal-errors" element={<UniversalErrors />} />
                   <Route path="/universal-errors/:id" element={<UniversalErrorDetail />} />
+                  <Route path="/quick-test" element={<QuickTest />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>

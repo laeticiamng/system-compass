@@ -18,7 +18,8 @@ import {
   Key,
   BookOpen,
   AlertTriangle,
-  Shield
+  Shield,
+  Zap
 } from 'lucide-react';
 
 export default function Index() {
@@ -81,7 +82,7 @@ export default function Index() {
             </div>
 
             {/* PREVENTION FILTER CTA - Prominent secondary */}
-            <div className="max-w-md mx-auto px-4 mb-8">
+            <div className="max-w-md mx-auto px-4 mb-4">
               <Button
                 variant="outline"
                 size="lg"
@@ -90,6 +91,20 @@ export default function Index() {
               >
                 <Shield className="w-5 h-5" />
                 {t('hero.preventionFilter', 'Passer une décision au filtre')}
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </div>
+
+            {/* QUICK TEST CTA */}
+            <div className="max-w-md mx-auto px-4 mb-8">
+              <Button
+                variant="ghost"
+                size="lg"
+                onClick={() => navigate('/quick-test')}
+                className="w-full h-10 text-sm gap-2 text-primary hover:bg-primary/10"
+              >
+                <Zap className="w-4 h-4" />
+                {t('hero.quickTest', 'Test rapide (60 sec)')}
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </div>
