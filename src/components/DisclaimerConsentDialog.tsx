@@ -63,6 +63,13 @@ export function DisclaimerConsentDialog() {
         </DialogHeader>
 
         <div className="py-4 space-y-4">
+          {/* Anti-authority warning */}
+          <div className="p-3 rounded-lg bg-amber-500/10 border border-amber-500/30">
+            <p className="text-xs text-muted-foreground">
+              <strong className="text-amber-600">⚠️ Important :</strong> Aucun résultat affiché n'est un diagnostic, une recommandation, ni un avis professionnel. Cet outil ne remplace aucun conseil spécialisé.
+            </p>
+          </div>
+
           {/* Key points */}
           <div className="space-y-3">
             <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/50">
@@ -70,7 +77,7 @@ export function DisclaimerConsentDialog() {
               <div>
                 <p className="text-sm font-medium">Outil d'analyse et simulation</p>
                 <p className="text-xs text-muted-foreground">
-                  Pyramid Compass est un outil éducatif, pas un service de conseil.
+                  Pyramid Compass est un outil éducatif, pas un service de conseil. Simulation ≠ prédiction.
                 </p>
               </div>
             </div>
@@ -80,7 +87,7 @@ export function DisclaimerConsentDialog() {
               <div>
                 <p className="text-sm font-medium">Pas de conseil professionnel</p>
                 <p className="text-xs text-muted-foreground">
-                  Aucun conseil juridique, financier ou médical n'est fourni.
+                  Aucun conseil juridique, financier ou médical n'est fourni. Aucun verdict, aucun score de réussite.
                 </p>
               </div>
             </div>
@@ -88,9 +95,9 @@ export function DisclaimerConsentDialog() {
             <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/50">
               <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 shrink-0" />
               <div>
-                <p className="text-sm font-medium">Vous restez responsable</p>
+                <p className="text-sm font-medium">Tu restes responsable</p>
                 <p className="text-xs text-muted-foreground">
-                  Vos décisions vous appartiennent. Vérifiez toute information.
+                  Tes décisions t'appartiennent. Les résultats dépendent de ton contexte réel.
                 </p>
               </div>
             </div>

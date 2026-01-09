@@ -650,21 +650,17 @@ export default function LifeTrajectory() {
             </div>
           </div>
 
-          {/* Compatibility Score */}
-          <div className="glass-card rounded-xl p-4 md:p-6 mb-8 border-l-4 border-primary">
-            <div className="flex flex-col md:flex-row md:items-center gap-4">
-              <div className="p-3 rounded-full bg-primary/10 w-fit">
-                <Trophy className="w-6 h-6 md:w-8 md:h-8 text-primary" />
-              </div>
-              <div className="flex-1">
-                <h3 className="font-display font-bold text-base md:text-lg mb-1">Score de clarté de profil</h3>
-                <p className="text-muted-foreground text-xs md:text-sm">
-                  Ton profil est clairement défini avec des tendances marquées
+          {/* Anti-authority disclaimer before trajectory plans */}
+          <div className="p-4 rounded-lg bg-amber-500/10 border border-amber-500/30 mb-8">
+            <div className="flex items-start gap-3">
+              <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+              <div>
+                <p className="text-sm font-medium text-foreground mb-1">
+                  {t('simulationDisclaimer.notPrediction')}
                 </p>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-primary">87%</div>
-                <div className="text-xs text-muted-foreground">Cohérence</div>
+                <p className="text-xs text-muted-foreground">
+                  {t('simulationDisclaimer.contextual.trajectory')} Ces plans illustrent des tendances — pas des certitudes. Ton contexte réel déterminera les résultats.
+                </p>
               </div>
             </div>
           </div>
