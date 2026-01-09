@@ -551,7 +551,10 @@
     "title2": "Vind je pad",
     "subtitle": "Elk land heeft een verborgen systeem. Leer wat het echt beloont, waar jij past, en hoe je slim kunt overleven — of strategisch kunt ontsnappen.",
     "discoverProfile": "Ontwerp je leven",
-    "exploreCountries": "Verken landen"
+    "exploreCountries": "Verken landen",
+    "preventionFilter": "Een beslissing door de filter halen",
+    "madeBy": "Gemaakt door iemand die jaren verloren heeft zonder het systeem te begrijpen",
+    "forEveryone": "Voor iedereen, overal"
   },
   "howItWorks": {
     "title": "Hoe het werkt",
@@ -2232,9 +2235,6 @@
   },
   "nav": {
     "preventionFilter": "Filter"
-  },
-  "hero": {
-    "preventionFilter": "Een beslissing door de filter halen"
   },
   "preventionFilter": {
     "badge": "Preventiefilter",

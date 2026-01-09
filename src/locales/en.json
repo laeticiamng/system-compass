@@ -387,7 +387,8 @@
     "discoverProfile": "Simulate my trajectory",
     "exploreCountries": "Analyze systems",
     "madeBy": "Created by someone who lost years not understanding the system",
-    "forEveryone": "For everyone, everywhere"
+    "forEveryone": "For everyone, everywhere",
+    "preventionFilter": "Run a decision through the filter"
   },
   "howItWorks": {
     "title": "Analyze, simulate, understand",
@@ -4106,9 +4107,6 @@
   },
   "nav": {
     "preventionFilter": "Filter"
-  },
-  "hero": {
-    "preventionFilter": "Run a decision through the filter"
   },
   "preventionFilter": {
     "badge": "Prevention filter",
