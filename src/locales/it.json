@@ -2234,7 +2234,8 @@
     "defaultCountryTooltip": "I calcolatori usano questo paese di default. Cambialo negli strumenti."
   },
   "nav": {
-    "preventionFilter": "Filtro"
+    "preventionFilter": "Filtro",
+    "universalErrors": "Errori"
   },
   "preventionFilter": {
     "badge": "Filtro di prevenzione",

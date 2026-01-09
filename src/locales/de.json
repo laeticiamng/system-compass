@@ -2234,7 +2234,8 @@
     "defaultCountryTooltip": "Rechner verwenden dieses Land standardmäßig. Ändere es in den Tools."
   },
   "nav": {
-    "preventionFilter": "Filter"
+    "preventionFilter": "Filter",
+    "universalErrors": "Fehler"
   },
   "preventionFilter": {
     "badge": "Präventionsfilter",

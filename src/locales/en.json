@@ -4106,7 +4106,8 @@
     "defaultCountryTooltip": "Calculators use this country by default. Change it in the tools."
   },
   "nav": {
-    "preventionFilter": "Filter"
+    "preventionFilter": "Filter",
+    "universalErrors": "Errors"
   },
   "preventionFilter": {
     "badge": "Prevention filter",
