@@ -8,7 +8,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "sonner";
-import { ArrowLeft, Languages, Play, CheckCircle2, XCircle, Loader2, AlertTriangle, Copy, Download } from "lucide-react";
+import { ArrowLeft, Languages, Play, CheckCircle2, XCircle, Loader2, AlertTriangle, Copy, Download, Merge, FileJson } from "lucide-react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -188,6 +188,48 @@ const AdminGenerateTranslations = () => {
     toast.success("Fichier téléchargé");
   };
 
+  // Generate merged full file ready to replace the existing one
+  const getMergedFullFile = useMemo(() => {
+    if (!targetLang || Object.keys(generatedTranslations).length === 0) return null;
+    
+    const targetLangData = LANGUAGES.find(l => l.code === targetLang)?.data;
+    if (!targetLangData) return null;
+
+    // Deep clone the target language data
+    const merged = JSON.parse(JSON.stringify(targetLangData)) as LocaleData;
+    
+    // Merge generated translations into countriesData
+    if (!merged.countriesData) {
+      merged.countriesData = {};
+    }
+    
+    for (const [countryId, translation] of Object.entries(generatedTranslations)) {
+      merged.countriesData[countryId] = translation;
+    }
+
+    return merged;
+  }, [targetLang, generatedTranslations]);
+
+  const copyMergedToClipboard = () => {
+    if (!getMergedFullFile) return;
+    const output = JSON.stringify(getMergedFullFile, null, 2);
+    navigator.clipboard.writeText(output);
+    toast.success(`Fichier ${targetLang}.json complet copié (${Object.keys(getMergedFullFile.countriesData || {}).length} pays)`);
+  };
+
+  const downloadMergedFile = () => {
+    if (!getMergedFullFile) return;
+    const output = JSON.stringify(getMergedFullFile, null, 2);
+    const blob = new Blob([output], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${targetLang}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    toast.success(`Fichier ${targetLang}.json téléchargé - remplacez src/locales/${targetLang}.json`);
+  };
+
   const getStatusIcon = (status: TranslationResult["status"]) => {
     switch (status) {
       case "pending": return <div className="w-4 h-4 rounded-full bg-muted" />;
@@ -349,15 +391,40 @@ const AdminGenerateTranslations = () => {
               )}
 
               {Object.keys(generatedTranslations).length > 0 && (
-                <div className="mt-4 pt-4 border-t flex gap-2">
-                  <Button variant="outline" onClick={copyToClipboard}>
-                    <Copy className="w-4 h-4 mr-2" />
-                    Copier JSON
-                  </Button>
-                  <Button variant="outline" onClick={downloadTranslations}>
-                    <Download className="w-4 h-4 mr-2" />
-                    Télécharger
-                  </Button>
+                <div className="mt-4 pt-4 border-t space-y-4">
+                  <div className="flex gap-2 flex-wrap">
+                    <Button variant="outline" size="sm" onClick={copyToClipboard}>
+                      <Copy className="w-4 h-4 mr-2" />
+                      Copier nouvelles traductions
+                    </Button>
+                    <Button variant="outline" size="sm" onClick={downloadTranslations}>
+                      <Download className="w-4 h-4 mr-2" />
+                      Télécharger partielles
+                    </Button>
+                  </div>
+
+                  {getMergedFullFile && (
+                    <div className="p-4 bg-primary/10 rounded-lg border border-primary/20">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Merge className="w-5 h-5 text-primary" />
+                        <span className="font-semibold">Fichier fusionné prêt à l'emploi</span>
+                      </div>
+                      <p className="text-sm text-muted-foreground mb-3">
+                        Fichier complet avec toutes les traductions existantes + nouvelles. 
+                        Remplacez directement <code className="bg-muted px-1 rounded">src/locales/{targetLang}.json</code>
+                      </p>
+                      <div className="flex gap-2">
+                        <Button onClick={copyMergedToClipboard}>
+                          <FileJson className="w-4 h-4 mr-2" />
+                          Copier fichier complet
+                        </Button>
+                        <Button variant="secondary" onClick={downloadMergedFile}>
+                          <Download className="w-4 h-4 mr-2" />
+                          Télécharger {targetLang}.json
+                        </Button>
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
             </CardContent>
@@ -368,9 +435,9 @@ const AdminGenerateTranslations = () => {
         {Object.keys(generatedTranslations).length > 0 && (
           <Card className="mt-6">
             <CardHeader>
-              <CardTitle>Aperçu des traductions générées</CardTitle>
+              <CardTitle>Aperçu des nouvelles traductions</CardTitle>
               <CardDescription>
-                Copiez ce JSON dans le fichier de traduction correspondant
+                Nouveaux pays traduits ({Object.keys(generatedTranslations).length})
               </CardDescription>
             </CardHeader>
             <CardContent>
