@@ -5019,5 +5019,34 @@
     "noTagsData": "Données d'intelligence non disponibles pour les pays sélectionnés. Disponibles pour 29 pays dont : France, USA, Allemagne, Suisse, UK, EAU, Canada, Portugal, Espagne, Japon, Singapour, Australie, Brésil, Pays-Bas, Argentine, Belgique, etc.",
     "tagsTable": "Tableau des tags",
     "tagsTableNote": "Comparaison détaillée des caractéristiques systémiques"
+  },
+  "search": {
+    "title": "Recherche globale",
+    "placeholder": "Rechercher...",
+    "inputPlaceholder": "Rechercher un pays, une clé de sortie, une erreur...",
+    "startTyping": "Commencez à taper pour rechercher",
+    "noResults": "Aucun résultat trouvé",
+    "hint": "Utilisez ↑↓ pour naviguer, Entrée pour sélectionner",
+    "close": "pour fermer",
+    "typeCountry": "Pays",
+    "typeExitKey": "Clé de sortie",
+    "typeError": "Erreur",
+    "typePage": "Page"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "empty": "Aucune notification",
+    "markAllRead": "Tout lire",
+    "clearAll": "Effacer toutes les notifications",
+    "enable": "Activer les notifications",
+    "deadlines": "Rappels deadlines",
+    "achievements": "Achievements",
+    "justNow": "À l'instant",
+    "minutesAgo_one": "Il y a {{count}} minute",
+    "minutesAgo_other": "Il y a {{count}} minutes",
+    "hoursAgo_one": "Il y a {{count}} heure",
+    "hoursAgo_other": "Il y a {{count}} heures",
+    "daysAgo_one": "Il y a {{count}} jour",
+    "daysAgo_other": "Il y a {{count}} jours"
   }
 }

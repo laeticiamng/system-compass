@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
 import { Compass, Map, FileText, Scale, Triangle, Gamepad2, LogIn, LogOut, User, Key, LayoutDashboard, Menu, Play, Info, AlertCircle, X, Shield, BookOpen, CreditCard, Globe, Settings } from 'lucide-react';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { GlobalSearch } from './GlobalSearch';
 import { useAuth } from '@/hooks/useAuth';
 import { Button } from './ui/button';
 import { SubscriptionBadge } from './SubscriptionBadge';
@@ -168,6 +169,7 @@ export function Header() {
             )}
           </nav>
 
+          <GlobalSearch />
           <UserHistoryPanel />
           <LanguageSwitcher />
 

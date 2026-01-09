@@ -2602,5 +2602,28 @@
     "load": "Laden",
     "tagsRadar": "Intelligentie-tags vergelijking",
     "noTagsData": "Intelligentiegegevens niet beschikbaar. Beschikbaar voor 29 landen."
+  },
+  "search": {
+    "title": "Globaal zoeken",
+    "placeholder": "Zoeken...",
+    "inputPlaceholder": "Zoek een land, exit-sleutel of fout...",
+    "startTyping": "Begin te typen om te zoeken",
+    "noResults": "Geen resultaten gevonden",
+    "hint": "↑↓ om te navigeren, Enter om te selecteren",
+    "close": "om te sluiten",
+    "typeCountry": "Land",
+    "typeExitKey": "Exit-sleutel",
+    "typeError": "Fout",
+    "typePage": "Pagina"
+  },
+  "notifications": {
+    "title": "Meldingen",
+    "empty": "Geen meldingen",
+    "markAllRead": "Alles gelezen",
+    "clearAll": "Alles wissen",
+    "enable": "Meldingen inschakelen",
+    "deadlines": "Deadline-herinneringen",
+    "achievements": "Prestaties",
+    "justNow": "Net nu"
   }
 }

@@ -2602,5 +2602,28 @@
     "load": "Carregar",
     "tagsRadar": "Comparação de tags de inteligência",
     "noTagsData": "Dados de inteligência não disponíveis. Disponíveis para 29 países."
+  },
+  "search": {
+    "title": "Pesquisa global",
+    "placeholder": "Pesquisar...",
+    "inputPlaceholder": "Pesquisar um país, chave de saída ou erro...",
+    "startTyping": "Comece a escrever para pesquisar",
+    "noResults": "Nenhum resultado encontrado",
+    "hint": "↑↓ para navegar, Enter para selecionar",
+    "close": "para fechar",
+    "typeCountry": "País",
+    "typeExitKey": "Chave de saída",
+    "typeError": "Erro",
+    "typePage": "Página"
+  },
+  "notifications": {
+    "title": "Notificações",
+    "empty": "Sem notificações",
+    "markAllRead": "Marcar tudo como lido",
+    "clearAll": "Limpar tudo",
+    "enable": "Ativar notificações",
+    "deadlines": "Lembretes de prazos",
+    "achievements": "Conquistas",
+    "justNow": "Agora mesmo"
   }
 }
