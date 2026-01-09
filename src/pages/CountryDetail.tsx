@@ -4,6 +4,7 @@ import { getCountryById } from '@/lib/countries-data';
 import { CountryTroncSection } from '@/components/country/CountryTroncSection';
 import { CountryVariantSection } from '@/components/country/CountryVariantSection';
 import { CountryProjectAnalysis } from '@/components/country/CountryProjectAnalysis';
+import { CountryIntelligenceSection } from '@/components/country/CountryIntelligenceSection';
 import { CountryExitKeys } from '@/components/CountryExitKeys';
 import { NaturalRisksCard } from '@/components/NaturalRisksCard';
 import { HealthcareCard } from '@/components/HealthcareCard';
@@ -15,7 +16,7 @@ import { LGBTQRightsIndicator } from '@/components/LGBTQRightsIndicator';
 import { PlaybookSection } from '@/components/PlaybookSection';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { ArrowLeft, Calendar, ExternalLink, Layers, Map, Target } from 'lucide-react';
+import { ArrowLeft, Calendar, ExternalLink, Layers, Map, Target, Brain } from 'lucide-react';
 
 const PYRAMID_TYPE_LABELS: Record<string, string> = {
   PROBLEM_RENT: 'pyramids.problemRent.label',
@@ -125,9 +126,9 @@ export default function CountryDetail() {
           className="mb-8"
         />
 
-        {/* 3-Layer Tabs */}
+        {/* 4-Layer Tabs */}
         <Tabs defaultValue="tronc" className="mb-12">
-          <TabsList className="grid w-full grid-cols-3 mb-8">
+          <TabsList className="grid w-full grid-cols-4 mb-8">
             <TabsTrigger value="tronc" className="gap-2">
               <Layers className="w-4 h-4" />
               <span className="hidden sm:inline">{t('countryDetail.tabs.tronc', 'Tronc Pyramide')}</span>
@@ -137,6 +138,11 @@ export default function CountryDetail() {
               <Map className="w-4 h-4" />
               <span className="hidden sm:inline">{t('countryDetail.tabs.variant', 'Variante Pays')}</span>
               <span className="sm:hidden">Variante</span>
+            </TabsTrigger>
+            <TabsTrigger value="intelligence" className="gap-2">
+              <Brain className="w-4 h-4" />
+              <span className="hidden sm:inline">{t('countryDetail.tabs.intelligence', 'Intelligence')}</span>
+              <span className="sm:hidden">Intel</span>
             </TabsTrigger>
             <TabsTrigger value="project" className="gap-2">
               <Target className="w-4 h-4" />
@@ -157,6 +163,10 @@ export default function CountryDetail() {
 
           <TabsContent value="variant">
             <CountryVariantSection countryId={country.id} countryName={displayName} />
+          </TabsContent>
+
+          <TabsContent value="intelligence">
+            <CountryIntelligenceSection countryId={country.id} countryName={displayName} />
           </TabsContent>
 
           <TabsContent value="project">

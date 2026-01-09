@@ -74,6 +74,150 @@ export type Database = {
         }
         Relationships: []
       }
+      country_intelligence: {
+        Row: {
+          adaptive_behaviors: Json
+          authority_relation: string | null
+          backfiring_behaviors: Json
+          conflict_approach: string | null
+          country_id: string
+          created_at: string
+          cycle_status: string | null
+          dependencies: Json
+          historical_traces: Json
+          id: string
+          is_complete: boolean
+          legacy_implications: Json
+          macro_risks: Json
+          mental_cost: string | null
+          mental_cost_reason: string | null
+          mobility_elevators: Json
+          mobility_speed: string | null
+          mobility_speed_reason: string | null
+          newcomer_mistakes: Json
+          power_formal: Json
+          power_informal: Json
+          power_keys_ranking: Json
+          risk_attitude: string | null
+          social_norms: string | null
+          strategies_punished: Json
+          strategies_rewarded: Json
+          system_produces: Json
+          updated_at: string
+        }
+        Insert: {
+          adaptive_behaviors?: Json
+          authority_relation?: string | null
+          backfiring_behaviors?: Json
+          conflict_approach?: string | null
+          country_id: string
+          created_at?: string
+          cycle_status?: string | null
+          dependencies?: Json
+          historical_traces?: Json
+          id?: string
+          is_complete?: boolean
+          legacy_implications?: Json
+          macro_risks?: Json
+          mental_cost?: string | null
+          mental_cost_reason?: string | null
+          mobility_elevators?: Json
+          mobility_speed?: string | null
+          mobility_speed_reason?: string | null
+          newcomer_mistakes?: Json
+          power_formal?: Json
+          power_informal?: Json
+          power_keys_ranking?: Json
+          risk_attitude?: string | null
+          social_norms?: string | null
+          strategies_punished?: Json
+          strategies_rewarded?: Json
+          system_produces?: Json
+          updated_at?: string
+        }
+        Update: {
+          adaptive_behaviors?: Json
+          authority_relation?: string | null
+          backfiring_behaviors?: Json
+          conflict_approach?: string | null
+          country_id?: string
+          created_at?: string
+          cycle_status?: string | null
+          dependencies?: Json
+          historical_traces?: Json
+          id?: string
+          is_complete?: boolean
+          legacy_implications?: Json
+          macro_risks?: Json
+          mental_cost?: string | null
+          mental_cost_reason?: string | null
+          mobility_elevators?: Json
+          mobility_speed?: string | null
+          mobility_speed_reason?: string | null
+          newcomer_mistakes?: Json
+          power_formal?: Json
+          power_informal?: Json
+          power_keys_ranking?: Json
+          risk_attitude?: string | null
+          social_norms?: string | null
+          strategies_punished?: Json
+          strategies_rewarded?: Json
+          system_produces?: Json
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      country_tags: {
+        Row: {
+          admin_speed: number
+          authority_verticality: number
+          compliance_sensitivity: number
+          country_id: string
+          created_at: string
+          diploma_weight: number
+          id: string
+          mental_friction: number
+          network_weight: number
+          predictability: number
+          reputation_requirement: number
+          risk_tolerance: number
+          social_mobility: number
+          updated_at: string
+        }
+        Insert: {
+          admin_speed?: number
+          authority_verticality?: number
+          compliance_sensitivity?: number
+          country_id: string
+          created_at?: string
+          diploma_weight?: number
+          id?: string
+          mental_friction?: number
+          network_weight?: number
+          predictability?: number
+          reputation_requirement?: number
+          risk_tolerance?: number
+          social_mobility?: number
+          updated_at?: string
+        }
+        Update: {
+          admin_speed?: number
+          authority_verticality?: number
+          compliance_sensitivity?: number
+          country_id?: string
+          created_at?: string
+          diploma_weight?: number
+          id?: string
+          mental_friction?: number
+          network_weight?: number
+          predictability?: number
+          reputation_requirement?: number
+          risk_tolerance?: number
+          social_mobility?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
       country_variants: {
         Row: {
           country_id: string
