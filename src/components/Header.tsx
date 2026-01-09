@@ -7,6 +7,7 @@ import { LanguageSwitcher } from './LanguageSwitcher';
 import { useAuth } from '@/hooks/useAuth';
 import { Button } from './ui/button';
 import { SubscriptionBadge } from './SubscriptionBadge';
+import { UserHistoryPanel } from './UserHistoryPanel';
 import {
   Sheet,
   SheetContent,
@@ -166,6 +167,7 @@ export function Header() {
             )}
           </nav>
 
+          <UserHistoryPanel />
           <LanguageSwitcher />
 
           {/* Auth button - Desktop */}
