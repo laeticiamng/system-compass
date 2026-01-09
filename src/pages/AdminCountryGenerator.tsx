@@ -89,7 +89,7 @@ export default function AdminCountryGenerator() {
   const [showJobs, setShowJobs] = useState(true);
   
   // Real-time notifications hook
-  const { activeJobs, activeBatch } = useGenerationNotifications();
+  const { activeJobs, activeBatch, connectionStatus, lastUpdate } = useGenerationNotifications();
 
   useEffect(() => {
     fetchData();
@@ -243,13 +243,45 @@ export default function AdminCountryGenerator() {
     <div className="min-h-screen pt-24 pb-16">
       <div className="container mx-auto px-4">
         <div className="mb-8">
-          <h1 className="font-display text-3xl font-bold mb-2 flex items-center gap-3">
-            <Zap className="w-8 h-8" />
-            Country Intelligence Generator
-          </h1>
-          <p className="text-muted-foreground">
-            Génération automatisée des fiches pays Premium via IA (Tronc + Variante + Intelligence A→G + Tags)
-          </p>
+          <div className="flex items-center justify-between flex-wrap gap-4">
+            <div>
+              <h1 className="font-display text-3xl font-bold mb-2 flex items-center gap-3">
+                <Zap className="w-8 h-8" />
+                Country Intelligence Generator
+              </h1>
+              <p className="text-muted-foreground">
+                Génération automatisée des fiches pays Premium via IA (Tronc + Variante + Intelligence A→G + Tags)
+              </p>
+            </div>
+            
+            {/* Real-time connection indicator */}
+            <div className="flex items-center gap-3">
+              <div className={cn(
+                "flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium",
+                connectionStatus === 'connected' && "bg-risk-low/10 text-risk-low",
+                connectionStatus === 'connecting' && "bg-yellow-500/10 text-yellow-500",
+                connectionStatus === 'disconnected' && "bg-muted text-muted-foreground",
+                connectionStatus === 'error' && "bg-risk-high/10 text-risk-high"
+              )}>
+                <span className={cn(
+                  "w-2 h-2 rounded-full",
+                  connectionStatus === 'connected' && "bg-risk-low animate-pulse",
+                  connectionStatus === 'connecting' && "bg-yellow-500 animate-pulse",
+                  connectionStatus === 'disconnected' && "bg-muted-foreground",
+                  connectionStatus === 'error' && "bg-risk-high"
+                )} />
+                {connectionStatus === 'connected' && 'Temps réel actif'}
+                {connectionStatus === 'connecting' && 'Connexion...'}
+                {connectionStatus === 'disconnected' && 'Déconnecté'}
+                {connectionStatus === 'error' && 'Erreur connexion'}
+              </div>
+              {lastUpdate && (
+                <span className="text-xs text-muted-foreground">
+                  Dernière MAJ: {lastUpdate.toLocaleTimeString()}
+                </span>
+              )}
+            </div>
+          </div>
         </div>
 
         {/* Stats Overview */}

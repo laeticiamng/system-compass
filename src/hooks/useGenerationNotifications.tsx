@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
+import { RealtimeChannel } from '@supabase/supabase-js';
 
 interface GenerationJob {
   id: string;
@@ -19,9 +20,13 @@ interface BatchStatus {
   total_countries: number;
 }
 
+export type ConnectionStatus = 'connecting' | 'connected' | 'disconnected' | 'error';
+
 export function useGenerationNotifications() {
   const [activeJobs, setActiveJobs] = useState<GenerationJob[]>([]);
   const [activeBatch, setActiveBatch] = useState<BatchStatus | null>(null);
+  const [connectionStatus, setConnectionStatus] = useState<ConnectionStatus>('connecting');
+  const [lastUpdate, setLastUpdate] = useState<Date | null>(null);
 
   const fetchActiveData = useCallback(async () => {
     // Fetch active batch
@@ -49,6 +54,8 @@ export function useGenerationNotifications() {
     if (jobsData) {
       setActiveJobs(jobsData as GenerationJob[]);
     }
+    
+    setLastUpdate(new Date());
   }, []);
 
   useEffect(() => {
@@ -67,6 +74,7 @@ export function useGenerationNotifications() {
         (payload) => {
           const newRecord = payload.new as GenerationJob;
           const eventType = payload.eventType;
+          setLastUpdate(new Date());
 
           if (eventType === 'UPDATE' && newRecord) {
             // Show toast for status changes
@@ -97,8 +105,25 @@ export function useGenerationNotifications() {
             });
           }
         }
-      )
-      .subscribe();
+      );
+
+    // Track connection status
+    jobsChannel.on('system', { event: '*' }, (payload) => {
+      console.log('Realtime system event:', payload);
+    });
+
+    jobsChannel.subscribe((status) => {
+      console.log('Jobs channel status:', status);
+      if (status === 'SUBSCRIBED') {
+        setConnectionStatus('connected');
+      } else if (status === 'CHANNEL_ERROR') {
+        setConnectionStatus('error');
+      } else if (status === 'CLOSED') {
+        setConnectionStatus('disconnected');
+      } else {
+        setConnectionStatus('connecting');
+      }
+    });
 
     // Subscribe to batch changes
     const batchChannel = supabase
@@ -112,6 +137,7 @@ export function useGenerationNotifications() {
         },
         (payload) => {
           const newRecord = payload.new as BatchStatus;
+          setLastUpdate(new Date());
           
           if (newRecord) {
             setActiveBatch(prev => {
@@ -143,6 +169,8 @@ export function useGenerationNotifications() {
   return {
     activeJobs,
     activeBatch,
+    connectionStatus,
+    lastUpdate,
     refetch: fetchActiveData
   };
 }
