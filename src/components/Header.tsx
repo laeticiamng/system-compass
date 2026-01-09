@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
-import { Compass, Map, FileText, Scale, Triangle, Gamepad2, LogIn, LogOut, User, Key, LayoutDashboard, Menu, Play, Info, AlertCircle, X, Shield } from 'lucide-react';
+import { Compass, Map, FileText, Scale, Triangle, Gamepad2, LogIn, LogOut, User, Key, LayoutDashboard, Menu, Play, Info, AlertCircle, X, Shield, BookOpen } from 'lucide-react';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { useAuth } from '@/hooks/useAuth';
 import { Button } from './ui/button';
@@ -42,6 +42,7 @@ export function Header() {
   const navItems = [
     { href: '/', label: t('nav.start'), icon: Compass },
     { href: '/prevention-filter', label: t('nav.preventionFilter', 'Filtre'), icon: Shield, highlight: true },
+    { href: '/universal-errors', label: t('nav.universalErrors', 'Erreurs'), icon: BookOpen },
     { href: '/countries', label: t('nav.countries'), icon: Map },
     { href: '/pyramid-types', label: t('nav.pyramids'), icon: Triangle },
     { href: '/systemic-mistakes', label: t('nav.systemicMistakes'), icon: AlertCircle },

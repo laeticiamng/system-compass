@@ -2234,7 +2234,8 @@
     "defaultCountryTooltip": "Rekenmachines gebruiken dit land standaard. Wijzig het in de tools."
   },
   "nav": {
-    "preventionFilter": "Filter"
+    "preventionFilter": "Filter",
+    "universalErrors": "Fouten"
   },
   "preventionFilter": {
     "badge": "Preventiefilter",

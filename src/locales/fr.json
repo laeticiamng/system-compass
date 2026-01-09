@@ -4514,7 +4514,8 @@
     "defaultCountryTooltip": "Les calculateurs utilisent ce pays par défaut. Changez-le dans les outils."
   },
   "nav": {
-    "preventionFilter": "Filtre"
+    "preventionFilter": "Filtre",
+    "universalErrors": "Erreurs"
   },
   "preventionFilter": {
     "badge": "Filtre de prévention",
