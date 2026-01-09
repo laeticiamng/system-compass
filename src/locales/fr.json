@@ -5252,6 +5252,22 @@
       "topContributors": "Principaux contributeurs",
       "noData": "Aucune donnée disponible",
       "noContributors": "Aucun contributeur"
+    },
+    "email": {
+      "sendAlerts": "Envoyer les alertes par email",
+      "sent": "Alerte envoyée par email",
+      "noPending": "Aucune décision en attente depuis plus de 7 jours",
+      "error": "Erreur lors de l'envoi de l'alerte",
+      "noEmail": "Email non disponible"
+    },
+    "collaboration": {
+      "online": "en ligne",
+      "you": "Vous",
+      "editing": "Édite",
+      "viewing": "Consulte"
+    },
+    "filters": {
+      "tags": "Tags"
     }
   },
   "b2b": {

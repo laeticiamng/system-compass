@@ -9,7 +9,8 @@ import {
   Clock,
   CheckCircle2,
   GitBranch,
-  RotateCcw
+  RotateCcw,
+  Tag
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -28,6 +29,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { Tag as TagType } from '@/hooks/useTraceOSTags';
 
 export interface TraceOSFilters {
   status: ('pending' | 'validated' | 'abandoned')[];
@@ -35,6 +37,7 @@ export interface TraceOSFilters {
   author: string;
   dateFrom: string;
   dateTo: string;
+  tags: string[];
 }
 
 interface TraceOSFiltersProps {
@@ -42,6 +45,7 @@ interface TraceOSFiltersProps {
   onFiltersChange: (filters: TraceOSFilters) => void;
   availableScopes: string[];
   availableAuthors: string[];
+  availableTags?: TagType[];
 }
 
 const DEFAULT_FILTERS: TraceOSFilters = {
@@ -49,14 +53,16 @@ const DEFAULT_FILTERS: TraceOSFilters = {
   scope: [],
   author: '',
   dateFrom: '',
-  dateTo: ''
+  dateTo: '',
+  tags: []
 };
 
 export function TraceOSFiltersPanel({ 
   filters, 
   onFiltersChange, 
   availableScopes,
-  availableAuthors 
+  availableAuthors,
+  availableTags = []
 }: TraceOSFiltersProps) {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
@@ -66,8 +72,16 @@ export function TraceOSFiltersPanel({
     filters.scope.length > 0,
     filters.author !== '',
     filters.dateFrom !== '',
-    filters.dateTo !== ''
+    filters.dateTo !== '',
+    filters.tags.length > 0
   ].filter(Boolean).length;
+
+  const handleTagToggle = (tagId: string) => {
+    const newTags = filters.tags.includes(tagId)
+      ? filters.tags.filter(t => t !== tagId)
+      : [...filters.tags, tagId];
+    onFiltersChange({ ...filters, tags: newTags });
+  };
 
   const handleStatusToggle = (status: 'pending' | 'validated' | 'abandoned') => {
     const newStatus = filters.status.includes(status)
@@ -242,6 +256,36 @@ export function TraceOSFiltersPanel({
               </div>
             </div>
           </div>
+
+          {/* Tags Filter */}
+          {availableTags.length > 0 && (
+            <div className="space-y-2">
+              <Label className="text-sm flex items-center gap-2">
+                <Tag className="w-3.5 h-3.5" />
+                {t('traceOS.filters.tags', 'Tags')}
+              </Label>
+              <div className="flex flex-wrap gap-2 max-h-24 overflow-y-auto">
+                {availableTags.map((tag) => {
+                  const isSelected = filters.tags.includes(tag.id);
+                  return (
+                    <Badge
+                      key={tag.id}
+                      variant="outline"
+                      className={`cursor-pointer transition-all ${isSelected ? 'opacity-100' : 'opacity-50'}`}
+                      style={{
+                        backgroundColor: isSelected ? `${tag.color}20` : 'transparent',
+                        borderColor: tag.color,
+                        color: tag.color
+                      }}
+                      onClick={() => handleTagToggle(tag.id)}
+                    >
+                      {tag.name}
+                    </Badge>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
       </PopoverContent>
     </Popover>
@@ -252,7 +296,8 @@ export function TraceOSFiltersPanel({
 export function filterDecisions(
   decisions: any[],
   filters: TraceOSFilters,
-  searchQuery: string
+  searchQuery: string,
+  decisionTags?: Map<string, string[]>
 ): any[] {
   return decisions.filter(decision => {
     // Search query
@@ -292,6 +337,13 @@ export function filterDecisions(
       const decisionDate = new Date(decision.date);
       const toDate = new Date(filters.dateTo);
       if (decisionDate > toDate) return false;
+    }
+
+    // Tags filter
+    if (filters.tags.length > 0 && decisionTags) {
+      const tagsForDecision = decisionTags.get(decision.id) || [];
+      const hasMatchingTag = filters.tags.some(tagId => tagsForDecision.includes(tagId));
+      if (!hasMatchingTag) return false;
     }
 
     return true;

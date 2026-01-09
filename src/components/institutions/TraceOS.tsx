@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { 
   Brain,
@@ -15,7 +15,8 @@ import {
   FileText,
   MessageSquare,
   BarChart3,
-  Tag
+  Tag,
+  Mail
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -35,9 +36,14 @@ import { DecisionComments } from './DecisionComments';
 import { InteractiveDecisionGraph } from './InteractiveDecisionGraph';
 import { TraceOSDashboard } from './TraceOSDashboard';
 import { TagManager } from './TagManager';
+import { TraceOSCollaboration } from './TraceOSCollaboration';
 import { useSubscription } from '@/hooks/useSubscription';
 import { useTraceOSDecisions } from '@/hooks/useTraceOSDecisions';
+import { useTraceOSTags } from '@/hooks/useTraceOSTags';
+import { useAuth } from '@/hooks/useAuth';
 import { PremiumPaywall } from '@/components/PremiumPaywall';
+import { supabase } from '@/integrations/supabase/client';
+import { toast } from 'sonner';
 
 // Demo data for the decision tree
 const DEMO_DECISIONS: DecisionNodeData[] = [
@@ -134,31 +140,67 @@ const DEMO_DECISIONS: DecisionNodeData[] = [
 export function TraceOS() {
   const { t } = useTranslation();
   const { canAccessPro } = useSubscription();
+  const { user } = useAuth();
   const { 
     decisions, 
     loading, 
     createDecision, 
     isLoggedIn 
   } = useTraceOSDecisions();
+  const { tags } = useTraceOSTags();
   
+  const containerRef = useRef<HTMLDivElement>(null);
   const [selectedDecision, setSelectedDecision] = useState<DecisionNodeData | null>(null);
   const [isCreating, setIsCreating] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [templateData, setTemplateData] = useState<DecisionTemplate['template'] | null>(null);
   const [showComments, setShowComments] = useState(false);
+  const [isSendingAlerts, setIsSendingAlerts] = useState(false);
   const [filters, setFilters] = useState<TraceOSFilters>({
     status: [],
     scope: [],
     author: '',
     dateFrom: '',
-    dateTo: ''
+    dateTo: '',
+    tags: []
   });
 
   // Handle template selection
   const handleSelectTemplate = (template: DecisionTemplate['template']) => {
     setTemplateData(template);
     setIsCreating(true);
+  };
+
+  // Send email alerts for pending decisions
+  const handleSendEmailAlerts = async () => {
+    if (!user?.email) {
+      toast.error(t('traceOS.email.noEmail', 'Email non disponible'));
+      return;
+    }
+    
+    setIsSendingAlerts(true);
+    try {
+      const { data, error } = await supabase.functions.invoke('traceos-email-alerts', {
+        body: {
+          user_email: user.email,
+          user_name: user.user_metadata?.display_name || user.email.split('@')[0]
+        }
+      });
+      
+      if (error) throw error;
+      
+      if (data.message === 'No pending decisions to alert') {
+        toast.info(t('traceOS.email.noPending', 'Aucune décision en attente depuis plus de 7 jours'));
+      } else {
+        toast.success(t('traceOS.email.sent', 'Alerte envoyée par email'));
+      }
+    } catch (err) {
+      console.error('Error sending email alerts:', err);
+      toast.error(t('traceOS.email.error', 'Erreur lors de l\'envoi de l\'alerte'));
+    } finally {
+      setIsSendingAlerts(false);
+    }
   };
 
   // Use demo data if not logged in, else use real data
@@ -234,8 +276,20 @@ export function TraceOS() {
         </div>
 
         <div className="flex items-center gap-2">
+          {isLoggedIn && (
+            <TraceOSCollaboration channelName="main" containerRef={containerRef} />
+          )}
+          <Button 
+            variant="outline" 
+            size="icon"
+            onClick={handleSendEmailAlerts}
+            disabled={!isLoggedIn || isSendingAlerts}
+            title={t('traceOS.email.sendAlerts', 'Envoyer les alertes par email')}
+          >
+            <Mail className={`w-4 h-4 ${isSendingAlerts ? 'animate-pulse' : ''}`} />
+          </Button>
           <TraceOSNotifications 
-            decisions={baseDecisions} 
+            decisions={baseDecisions}
             onNavigateToDecision={(id) => {
               const decision = displayDecisions.find(d => d.id === id);
               if (decision) setSelectedDecision(decision);
@@ -300,6 +354,7 @@ export function TraceOS() {
           onFiltersChange={setFilters}
           availableScopes={filterOptions.scopes}
           availableAuthors={filterOptions.authors}
+          availableTags={tags}
         />
       </div>
 
