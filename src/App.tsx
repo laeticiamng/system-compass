@@ -39,6 +39,7 @@ import UniversalErrors from "./pages/UniversalErrors";
 import UniversalErrorDetail from "./pages/UniversalErrorDetail";
 import QuickTest from "./pages/QuickTest";
 import SubscriptionSuccess from "./pages/SubscriptionSuccess";
+import Pricing from "./pages/Pricing";
 
 const queryClient = new QueryClient();
 
@@ -85,6 +86,8 @@ const App = () => (
                     <Route path="/universal-errors/:id" element={<UniversalErrorDetail />} />
                     <Route path="/quick-test" element={<QuickTest />} />
                     <Route path="/subscription-success" element={<SubscriptionSuccess />} />
+                    <Route path="/pricing" element={<Pricing />} />
+                    <Route path="*" element={<NotFound />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </main>
