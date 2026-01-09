@@ -2635,5 +2635,50 @@
     "deadlines": "Recordatorios de plazos",
     "achievements": "Logros",
     "justNow": "Ahora mismo"
+  },
+  "pyramidBehaviors": {
+    "title": "Comportamientos típicos",
+    "rewards": "El sistema recompensa",
+    "punishes": "El sistema castiga",
+    "stability": {
+      "rewards": ["Paciencia y antigüedad", "Seguir procedimientos", "Lealtad institucional", "Diplomas reconocidos"],
+      "punishes": ["Impaciencia y atajos", "Toma de riesgos excesiva", "Cambios frecuentes de empleo", "Falta de credenciales"]
+    },
+    "growth": {
+      "rewards": ["Iniciativa y toma de riesgos", "Creación de valor medible", "Adaptabilidad rápida", "Red profesional"],
+      "punishes": ["Espera pasiva", "Rechazo a innovar", "Dependencia del empleador", "Aislamiento profesional"]
+    },
+    "rent": {
+      "rewards": ["Acceso a círculos de poder", "Capacidad de mantener el statu quo", "Conexiones familiares", "Discreción sobre ingresos"],
+      "punishes": ["Transparencia excesiva", "Intentos de reforma", "Falta de red", "Meritocracia ingenua"]
+    },
+    "competence": {
+      "rewards": ["Expertise técnica aguda", "Certificaciones reconocidas", "Rigor metodológico", "Formación continua"],
+      "punishes": ["Aproximación", "Falta de certificación", "Cambios de campo", "Autodidactismo no validado"]
+    },
+    "hybrid": {
+      "rewards": ["Flexibilidad estratégica", "Leer señales", "Timing preciso", "Doble competencia"],
+      "punishes": ["Rigidez", "Compromiso prematuro", "Incomprensión de códigos", "Elección de sistema único"]
+    },
+    "resource": {
+      "rewards": ["Expertise sectorial", "Movilidad geográfica", "Contratos cortos bien negociados", "Ahorro masivo"],
+      "punishes": ["Arraigo local", "Proyectos a largo plazo", "Dependencia del sistema local", "Gastos de vida elevados"]
+    }
+  },
+  "countryDetailExtra": {
+    "tabs": {
+      "tronc": "Análisis central",
+      "variant": "Variante país",
+      "project": "Análisis de proyecto",
+      "intelligence": "Intelligence"
+    },
+    "tronc": {
+      "badge": "Tronco común — Acceso gratuito",
+      "title": "Análisis estructural",
+      "subtitle": "Lo que el sistema recompensa y castiga",
+      "systemRewards": "Lo que el sistema recompensa",
+      "systemPunishes": "Lo que el sistema castiga",
+      "frequentErrors": "Errores frecuentes"
+    }
   }
 }

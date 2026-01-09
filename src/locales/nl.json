@@ -2625,5 +2625,50 @@
     "deadlines": "Deadline-herinneringen",
     "achievements": "Prestaties",
     "justNow": "Net nu"
+  },
+  "pyramidBehaviors": {
+    "title": "Typische gedragingen",
+    "rewards": "Het systeem beloont",
+    "punishes": "Het systeem bestraft",
+    "stability": {
+      "rewards": ["Geduld en senioriteit", "Procedures volgen", "Institutionele loyaliteit", "Erkende diploma's"],
+      "punishes": ["Ongeduld en kortere wegen", "Overmatige risicobereidheid", "Frequente werkgeverwisselingen", "Gebrek aan kwalificaties"]
+    },
+    "growth": {
+      "rewards": ["Initiatief en risicobereidheid", "Meetbare waardecreatie", "Snelle aanpassingsvermogen", "Professioneel netwerk"],
+      "punishes": ["Passief wachten", "Weigering om te innoveren", "Werkgeversafhankelijkheid", "Professionele isolatie"]
+    },
+    "rent": {
+      "rewards": ["Toegang tot machtkringen", "Vermogen om de status quo te handhaven", "Familieconnecties", "Discretie over inkomen"],
+      "punishes": ["Overmatige transparantie", "Hervormingspogingen", "Gebrek aan netwerk", "Naïeve meritocratie"]
+    },
+    "competence": {
+      "rewards": ["Scherpe technische expertise", "Erkende certificeringen", "Methodologische strengheid", "Continue bijscholing"],
+      "punishes": ["Benadering", "Gebrek aan certificering", "Branchewijzigingen", "Niet-gevalideerde autodidactiek"]
+    },
+    "hybrid": {
+      "rewards": ["Strategische flexibiliteit", "Signalen lezen", "Precieze timing", "Dubbele competentie"],
+      "punishes": ["Starheid", "Voortijdige toewijding", "Code-misverstand", "Eenzijdige systeemkeuze"]
+    },
+    "resource": {
+      "rewards": ["Sector-expertise", "Geografische mobiliteit", "Goed onderhandelde kortetermijncontracten", "Massaal sparen"],
+      "punishes": ["Lokale verankering", "Langetermijnprojecten", "Afhankelijkheid van lokaal systeem", "Hoge kosten van levensonderhoud"]
+    }
+  },
+  "countryDetailExtra": {
+    "tabs": {
+      "tronc": "Kernanalyse",
+      "variant": "Landvariant",
+      "project": "Projectanalyse",
+      "intelligence": "Intelligence"
+    },
+    "tronc": {
+      "badge": "Gemeenschappelijke kern — Gratis toegang",
+      "title": "Structurele analyse",
+      "subtitle": "Wat het systeem beloont en bestraft",
+      "systemRewards": "Wat het systeem beloont",
+      "systemPunishes": "Wat het systeem bestraft",
+      "frequentErrors": "Veelvoorkomende fouten"
+    }
   }
 }

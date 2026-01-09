@@ -4458,7 +4458,11 @@
     },
     "tronc": {
       "title": "Structural Analysis",
-      "subtitle": "What the system rewards and punishes"
+      "subtitle": "What the system rewards and punishes",
+      "badge": "Common Core — Free Access",
+      "systemRewards": "What the system rewards",
+      "systemPunishes": "What the system punishes",
+      "frequentErrors": "Frequent errors"
     },
     "variant": {
       "title": "Local Specifics",
