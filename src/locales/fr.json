@@ -5152,6 +5152,39 @@
       "appendOnlyDesc": "L'historique est non modifiable",
       "roles": "Gestion des rôles",
       "rolesDesc": "Lecture / Écriture par utilisateur"
+    },
+    "filters": {
+      "title": "Filtres",
+      "reset": "Réinitialiser",
+      "status": "Statut",
+      "scope": "Périmètre",
+      "author": "Auteur",
+      "allAuthors": "Tous les auteurs",
+      "dateRange": "Période",
+      "from": "Du",
+      "to": "Au"
+    },
+    "export": {
+      "button": "Exporter",
+      "format": "Format d'export",
+      "pdf": "Document PDF",
+      "json": "Données JSON",
+      "pdfSuccess": "Export PDF réussi",
+      "jsonSuccess": "Export JSON réussi",
+      "error": "Erreur lors de l'export"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "on": "On",
+      "off": "Off",
+      "disabled": "Notifications désactivées",
+      "empty": "Aucune notification",
+      "allGood": "Tout est à jour !",
+      "markAllRead": "Tout marquer comme lu",
+      "oldPending": "Décision en attente depuis longtemps",
+      "oldPendingMsg": "Cette décision est en attente depuis {{days}} jours",
+      "pendingReminder": "Rappel de décision",
+      "pendingReminderMsg": "Décision en attente depuis {{days}} jours"
     }
   },
   "b2b": {

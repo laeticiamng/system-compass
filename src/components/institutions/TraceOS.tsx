@@ -1,18 +1,15 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { 
   Brain,
   Plus,
   Search,
-  Filter,
-  Download,
   Shield,
   Lock,
   Users,
   GitBranch,
   History,
   Eye,
-  Sparkles,
   Loader2
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -24,6 +21,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { DecisionTree } from './DecisionTree';
 import { CreateDecisionForm } from './CreateDecisionForm';
 import { DecisionNode, DecisionNodeData } from './DecisionNode';
+import { TraceOSFiltersPanel, TraceOSFilters, filterDecisions, extractFilterOptions } from './TraceOSFilters';
+import { TraceOSExport } from './TraceOSExport';
+import { TraceOSNotifications } from './TraceOSNotifications';
 import { useSubscription } from '@/hooks/useSubscription';
 import { useTraceOSDecisions } from '@/hooks/useTraceOSDecisions';
 import { PremiumPaywall } from '@/components/PremiumPaywall';
@@ -134,9 +134,24 @@ export function TraceOS() {
   const [isCreating, setIsCreating] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [filters, setFilters] = useState<TraceOSFilters>({
+    status: [],
+    scope: [],
+    author: '',
+    dateFrom: '',
+    dateTo: ''
+  });
 
   // Use demo data if not logged in, else use real data
-  const displayDecisions = isLoggedIn && decisions.length > 0 ? decisions : DEMO_DECISIONS;
+  const baseDecisions = isLoggedIn && decisions.length > 0 ? decisions : DEMO_DECISIONS;
+
+  // Extract filter options from decisions
+  const filterOptions = useMemo(() => extractFilterOptions(baseDecisions), [baseDecisions]);
+
+  // Apply filters and search
+  const displayDecisions = useMemo(() => {
+    return filterDecisions(baseDecisions, filters, searchQuery);
+  }, [baseDecisions, filters, searchQuery]);
 
   const handleCreateDecision = async (newDecision: Omit<DecisionNodeData, 'id' | 'children'>) => {
     if (!isLoggedIn) {
@@ -200,10 +215,14 @@ export function TraceOS() {
         </div>
 
         <div className="flex items-center gap-2">
-          <Button variant="outline" size="sm" className="gap-2">
-            <Download className="w-4 h-4" />
-            {t('traceOS.export', 'Exporter')}
-          </Button>
+          <TraceOSNotifications 
+            decisions={baseDecisions} 
+            onNavigateToDecision={(id) => {
+              const decision = displayDecisions.find(d => d.id === id);
+              if (decision) setSelectedDecision(decision);
+            }}
+          />
+          <TraceOSExport decisions={displayDecisions} />
           <Button onClick={() => setIsCreating(true)} className="gap-2" disabled={!isLoggedIn}>
             <Plus className="w-4 h-4" />
             {t('traceOS.newDecision', 'Nouvelle décision')}
@@ -257,9 +276,12 @@ export function TraceOS() {
             className="pl-9"
           />
         </div>
-        <Button variant="outline" size="icon">
-          <Filter className="w-4 h-4" />
-        </Button>
+        <TraceOSFiltersPanel
+          filters={filters}
+          onFiltersChange={setFilters}
+          availableScopes={filterOptions.scopes}
+          availableAuthors={filterOptions.authors}
+        />
       </div>
 
       {/* Create Form */}
