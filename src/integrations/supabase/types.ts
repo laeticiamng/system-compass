@@ -464,6 +464,39 @@ export type Database = {
         }
         Relationships: []
       }
+      generated_translations: {
+        Row: {
+          country_id: string
+          created_at: string
+          created_by: string | null
+          id: string
+          is_approved: boolean | null
+          target_lang: string
+          translation: Json
+          updated_at: string
+        }
+        Insert: {
+          country_id: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          is_approved?: boolean | null
+          target_lang: string
+          translation: Json
+          updated_at?: string
+        }
+        Update: {
+          country_id?: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          is_approved?: boolean | null
+          target_lang?: string
+          translation?: Json
+          updated_at?: string
+        }
+        Relationships: []
+      }
       music_cache: {
         Row: {
           audio_url: string
