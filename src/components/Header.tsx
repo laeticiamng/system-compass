@@ -44,6 +44,7 @@ export function Header() {
   const navItems = [
     { href: '/', label: t('nav.start'), icon: Compass },
     { href: '/prevention-filter', label: t('nav.preventionFilter', 'Filtre'), icon: Shield, highlight: true },
+    { href: '/world-map', label: t('nav.worldMap', 'Carte'), icon: Globe, highlight: true },
     { href: '/universal-errors', label: t('nav.universalErrors', 'Erreurs'), icon: BookOpen },
     { href: '/countries', label: t('nav.countries'), icon: Map },
     { href: '/pyramid-types', label: t('nav.pyramids'), icon: Triangle },

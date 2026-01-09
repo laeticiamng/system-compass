@@ -517,7 +517,63 @@
     "systemicMistakes": "Errori",
     "catalog": "Catalogo",
     "preventionFilter": "Filtro",
-    "universalErrors": "Errori"
+    "universalErrors": "Errori",
+    "worldMap": "Mappa",
+    "pricing": "Prezzi"
+  },
+  "worldMap": {
+    "badge": "Esplorazione mondiale",
+    "title": "Mappa dei Sistemi",
+    "subtitle": "Esplora visivamente i 29 paesi analizzati e i loro tipi di piramide",
+    "search": "Cerca un paese...",
+    "results": "paesi",
+    "viewDetails": "Vedi dettagli",
+    "tabs": {
+      "map": "Mappa",
+      "stats": "Statistiche"
+    },
+    "stats": {
+      "total": "Paesi analizzati",
+      "intelligence": "Intelligence Layer",
+      "pyramids": "Tipi di piramide",
+      "languages": "Lingue"
+    },
+    "pyramidDistribution": "Distribuzione per tipo",
+    "countryList": "Lista dei paesi",
+    "info": {
+      "title": "Come leggere la mappa?",
+      "colors": "I colori rappresentano i tipi di piramide",
+      "size": "I punti più grandi indicano paesi con Intelligence Layer",
+      "click": "Clicca su un paese per vedere i dettagli",
+      "zoom": "Usa i controlli per zoomare"
+    }
+  },
+  "history": {
+    "title": "Cronologia",
+    "description": "Le tue consultazioni e simulazioni recenti",
+    "mostViewed": "Paesi più visitati",
+    "recent": "Attività recente",
+    "clear": "Cancella",
+    "empty": "Nessuna attività recente"
+  },
+  "export": {
+    "pdf": "Esporta PDF",
+    "title": "Esporta analisi",
+    "description": "Seleziona le sezioni da includere nel PDF",
+    "overview": "Panoramica",
+    "risks": "Rischi",
+    "playbook": "Playbook",
+    "intelligence": "Intelligence Layer",
+    "variants": "Varianti",
+    "tags": "Tag/Indicatori",
+    "notAvailable": "non disponibile",
+    "generate": "Genera PDF",
+    "generating": "Generazione...",
+    "complete": "Completato!",
+    "success": "Esportazione riuscita",
+    "downloaded": "PDF scaricato",
+    "error": "Errore di esportazione",
+    "errorDesc": "Impossibile generare il PDF"
   },
   "vacation": {
     "title": "Raccomandazioni vacanze per potere d'acquisto",

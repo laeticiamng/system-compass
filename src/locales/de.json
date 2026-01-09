@@ -517,7 +517,63 @@
     "systemicMistakes": "Fehler",
     "catalog": "Katalog",
     "preventionFilter": "Filter",
-    "universalErrors": "Fehler"
+    "universalErrors": "Fehler",
+    "worldMap": "Karte",
+    "pricing": "Preise"
+  },
+  "worldMap": {
+    "badge": "Weltweite Erkundung",
+    "title": "Systemkarte",
+    "subtitle": "Erkunden Sie visuell die 29 analysierten Länder und ihre Pyramidentypen",
+    "search": "Land suchen...",
+    "results": "Länder",
+    "viewDetails": "Details anzeigen",
+    "tabs": {
+      "map": "Karte",
+      "stats": "Statistiken"
+    },
+    "stats": {
+      "total": "Analysierte Länder",
+      "intelligence": "Intelligence Layer",
+      "pyramids": "Pyramidentypen",
+      "languages": "Sprachen"
+    },
+    "pyramidDistribution": "Verteilung nach Typ",
+    "countryList": "Länderliste",
+    "info": {
+      "title": "Wie liest man die Karte?",
+      "colors": "Farben repräsentieren Pyramidentypen",
+      "size": "Größere Punkte zeigen Länder mit Intelligence Layer",
+      "click": "Klicken Sie auf ein Land für Details",
+      "zoom": "Nutzen Sie die Steuerelemente zum Zoomen"
+    }
+  },
+  "history": {
+    "title": "Verlauf",
+    "description": "Ihre letzten Konsultationen und Simulationen",
+    "mostViewed": "Meistbesuchte Länder",
+    "recent": "Letzte Aktivität",
+    "clear": "Löschen",
+    "empty": "Keine aktuelle Aktivität"
+  },
+  "export": {
+    "pdf": "PDF exportieren",
+    "title": "Analyse exportieren",
+    "description": "Wählen Sie die Abschnitte für das PDF",
+    "overview": "Übersicht",
+    "risks": "Risiken",
+    "playbook": "Playbook",
+    "intelligence": "Intelligence Layer",
+    "variants": "Varianten",
+    "tags": "Tags/Indikatoren",
+    "notAvailable": "nicht verfügbar",
+    "generate": "PDF generieren",
+    "generating": "Generierung...",
+    "complete": "Fertig!",
+    "success": "Export erfolgreich",
+    "downloaded": "PDF wurde heruntergeladen",
+    "error": "Exportfehler",
+    "errorDesc": "PDF konnte nicht generiert werden"
   },
   "vacation": {
     "title": "Urlaubsempfehlungen nach Kaufkraft",

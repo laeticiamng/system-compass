@@ -517,7 +517,63 @@
     "systemicMistakes": "Erros",
     "catalog": "Catálogo",
     "preventionFilter": "Filtro",
-    "universalErrors": "Erros"
+    "universalErrors": "Erros",
+    "worldMap": "Mapa",
+    "pricing": "Preços"
+  },
+  "worldMap": {
+    "badge": "Exploração mundial",
+    "title": "Mapa de Sistemas",
+    "subtitle": "Explore visualmente os 29 países analisados e seus tipos de pirâmide",
+    "search": "Buscar um país...",
+    "results": "países",
+    "viewDetails": "Ver detalhes",
+    "tabs": {
+      "map": "Mapa",
+      "stats": "Estatísticas"
+    },
+    "stats": {
+      "total": "Países analisados",
+      "intelligence": "Intelligence Layer",
+      "pyramids": "Tipos de pirâmide",
+      "languages": "Idiomas"
+    },
+    "pyramidDistribution": "Distribuição por tipo",
+    "countryList": "Lista de países",
+    "info": {
+      "title": "Como ler o mapa?",
+      "colors": "As cores representam tipos de pirâmide",
+      "size": "Pontos maiores indicam países com Intelligence Layer",
+      "click": "Clique em um país para ver detalhes",
+      "zoom": "Use os controles para zoom"
+    }
+  },
+  "history": {
+    "title": "Histórico",
+    "description": "Suas consultas e simulações recentes",
+    "mostViewed": "Países mais visitados",
+    "recent": "Atividade recente",
+    "clear": "Limpar",
+    "empty": "Nenhuma atividade recente"
+  },
+  "export": {
+    "pdf": "Exportar PDF",
+    "title": "Exportar análise",
+    "description": "Selecione as seções a incluir no PDF",
+    "overview": "Visão geral",
+    "risks": "Riscos",
+    "playbook": "Playbook",
+    "intelligence": "Intelligence Layer",
+    "variants": "Variantes",
+    "tags": "Tags/Indicadores",
+    "notAvailable": "não disponível",
+    "generate": "Gerar PDF",
+    "generating": "Gerando...",
+    "complete": "Concluído!",
+    "success": "Exportação bem-sucedida",
+    "downloaded": "PDF baixado",
+    "error": "Erro de exportação",
+    "errorDesc": "Não foi possível gerar o PDF"
   },
   "vacation": {
     "title": "Recomendações de férias por poder de compra",
