@@ -9,6 +9,7 @@ import { RiskBars } from '@/components/RiskBars';
 import { RadarCompareChart } from '@/components/RadarCompareChart';
 import { RiskStackedBarChart } from '@/components/RiskStackedBarChart';
 import { TagsRadarCompare } from '@/components/TagsRadarCompare';
+import { TagsCompareTable } from '@/components/TagsCompareTable';
 import { FinancialTrajectoryChart } from '@/components/FinancialTrajectoryChart';
 import { useSavedComparisons } from '@/hooks/useSavedComparisons';
 import { cn } from '@/lib/utils';
@@ -374,6 +375,14 @@ export default function MultiCompare() {
 
             {/* Intelligence Tags Radar */}
             <TagsRadarCompare 
+              countryIds={selectedIds}
+              countryNames={Object.fromEntries(
+                selectedCountries.map(c => [c.id, { name: c.name, iso2: c.iso2 }])
+              )}
+            />
+
+            {/* Intelligence Tags Table */}
+            <TagsCompareTable
               countryIds={selectedIds}
               countryNames={Object.fromEntries(
                 selectedCountries.map(c => [c.id, { name: c.name, iso2: c.iso2 }])
