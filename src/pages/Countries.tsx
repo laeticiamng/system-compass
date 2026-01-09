@@ -103,6 +103,8 @@ export default function Countries() {
     { key: 'STABILITY_REDIS', labelKey: 'pyramids.stabilityRedis.label', color: 'pyramid-stability' },
     { key: 'COMPETENCE_TRUST', labelKey: 'pyramids.competenceTrust.label', color: 'pyramid-competence' },
     { key: 'GROWTH_RISK', labelKey: 'pyramids.growthRisk.label', color: 'pyramid-growth' },
+    { key: 'HYBRID_TRANSITION', labelKey: 'pyramids.hybridTransition.label', color: 'pyramid-hybrid' },
+    { key: 'RESOURCE_EXTRACTION', labelKey: 'pyramids.resourceExtraction.label', color: 'pyramid-resource' },
   ];
 
   return (
