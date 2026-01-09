@@ -183,6 +183,73 @@ export function getCycleStatusColor(status: string | null | undefined): string {
   return 'bg-muted text-muted-foreground';
 }
 
+// Section headers for Intelligence Layer
+export const INTELLIGENCE_SECTION_LABELS = {
+  power: {
+    en: 'Power Map',
+    fr: 'Carte du pouvoir',
+    de: 'Machtstruktur',
+    es: 'Mapa del poder',
+    it: 'Mappa del potere',
+    pt: 'Mapa do poder',
+    nl: 'Machtskaart'
+  },
+  social: {
+    en: 'Social System',
+    fr: 'Système social',
+    de: 'Sozialsystem',
+    es: 'Sistema social',
+    it: 'Sistema sociale',
+    pt: 'Sistema social',
+    nl: 'Sociaal systeem'
+  },
+  strategies: {
+    en: 'Strategies',
+    fr: 'Stratégies',
+    de: 'Strategien',
+    es: 'Estrategias',
+    it: 'Strategie',
+    pt: 'Estratégias',
+    nl: 'Strategieën'
+  },
+  mobility: {
+    en: 'Mobility',
+    fr: 'Mobilité',
+    de: 'Mobilität',
+    es: 'Movilidad',
+    it: 'Mobilità',
+    pt: 'Mobilidade',
+    nl: 'Mobiliteit'
+  },
+  psycho: {
+    en: 'Psychology',
+    fr: 'Psychologie',
+    de: 'Psychologie',
+    es: 'Psicología',
+    it: 'Psicologia',
+    pt: 'Psicologia',
+    nl: 'Psychologie'
+  },
+  geo: {
+    en: 'Geopolitics',
+    fr: 'Géopolitique',
+    de: 'Geopolitik',
+    es: 'Geopolítica',
+    it: 'Geopolitica',
+    pt: 'Geopolítica',
+    nl: 'Geopolitiek'
+  },
+  history: {
+    en: 'Historical Legacy',
+    fr: 'Héritage historique',
+    de: 'Historisches Erbe',
+    es: 'Legado histórico',
+    it: 'Eredità storica',
+    pt: 'Legado histórico',
+    nl: 'Historische erfenis'
+  }
+} as const;
+
 // Tag labels with translations
 export const TAG_LABELS = {
   network_weight: {
