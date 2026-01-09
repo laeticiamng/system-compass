@@ -641,7 +641,10 @@
     "explore": "Explorar →",
     "gdpCap": "PIB/cap",
     "passport": "Passaporte",
-    "population": "População"
+    "population": "População",
+    "extendedDb": "+15 Intelligence",
+    "dbOnly": "Camada Intelligence DB",
+    "intelligenceAvailable": "Camada Intelligence disponível"
   },
   "countryDetail": {
     "notFound": "País não encontrado",
@@ -660,7 +663,8 @@
     "whoWinsLoses": "Quem ganha / Quem perde",
     "survivalPlaybook": "Playbook de sobrevivência",
     "sourcesUpdates": "Fontes & atualizações",
-    "lastUpdated": "Última atualização"
+    "lastUpdated": "Última atualização",
+    "extendedNote": "Este país tem dados de camada Intelligence completos na base de dados"
   },
   "lgbtqRights": {
     "title": "Direitos LGBTQ+",
@@ -2461,5 +2465,32 @@
     },
     "restart": "Recomeçar",
     "disclaimer": "Simulação ≠ previsão. Apenas exploração."
+  },
+  "profileMatcher": {
+    "title": "Correspondência de perfil",
+    "subtitle": "Encontra países que correspondem ao teu perfil",
+    "description": "Define as tuas preferências e vê quais países se alinham melhor com o teu estilo",
+    "yourProfile": "O teu perfil",
+    "matchResults": "Resultados de correspondência",
+    "compatibility": "Compatibilidade",
+    "frictions": "Fricções potenciais",
+    "strengths": "Pontos fortes",
+    "noFrictions": "Nenhuma fricção significativa detetada",
+    "highMatch": "Alta correspondência",
+    "mediumMatch": "Correspondência média",
+    "lowMatch": "Baixa correspondência",
+    "preferences": {
+      "networkImportance": "Quão importantes são as redes pessoais para ti?",
+      "diplomaImportance": "Quanto dependes de credenciais?",
+      "riskAppetite": "Qual é o teu apetite pelo risco?",
+      "needForSpeed": "Quanto valorizas processos rápidos?",
+      "hierarchyComfort": "Quão confortável estás com hierarquia?",
+      "stabilityNeed": "Quanta estabilidade precisas?",
+      "low": "Baixo",
+      "medium": "Médio",
+      "high": "Alto"
+    },
+    "analyze": "Analisar correspondências",
+    "reset": "Reiniciar"
   }
 }

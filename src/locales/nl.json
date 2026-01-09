@@ -641,7 +641,10 @@
     "explore": "Verkennen →",
     "gdpCap": "BBP/cap",
     "passport": "Paspoort",
-    "population": "Bevolking"
+    "population": "Bevolking",
+    "extendedDb": "+15 Intelligence",
+    "dbOnly": "DB Intelligence Layer",
+    "intelligenceAvailable": "Intelligence Layer beschikbaar"
   },
   "countryDetail": {
     "notFound": "Land niet gevonden",
@@ -660,7 +663,8 @@
     "whoWinsLoses": "Wie wint / Wie verliest",
     "survivalPlaybook": "Overlevings-playbook",
     "sourcesUpdates": "Bronnen & updates",
-    "lastUpdated": "Laatst bijgewerkt"
+    "lastUpdated": "Laatst bijgewerkt",
+    "extendedNote": "Dit land heeft volledige Intelligence Layer-gegevens in de database"
   },
   "lgbtqRights": {
     "title": "LGBTQ+ Rechten",
@@ -2461,5 +2465,32 @@
     },
     "restart": "Opnieuw starten",
     "disclaimer": "Simulatie ≠ voorspelling. Alleen verkenning."
+  },
+  "profileMatcher": {
+    "title": "Profielmatcher",
+    "subtitle": "Vind landen die bij je profiel passen",
+    "description": "Stel je voorkeuren in en zie welke landen het beste bij je stijl passen",
+    "yourProfile": "Jouw profiel",
+    "matchResults": "Matchresultaten",
+    "compatibility": "Compatibiliteit",
+    "frictions": "Mogelijke wrijvingen",
+    "strengths": "Sterke punten",
+    "noFrictions": "Geen significante wrijvingen gedetecteerd",
+    "highMatch": "Hoge match",
+    "mediumMatch": "Gemiddelde match",
+    "lowMatch": "Lage match",
+    "preferences": {
+      "networkImportance": "Hoe belangrijk zijn persoonlijke netwerken voor jou?",
+      "diplomaImportance": "Hoeveel vertrouw je op diploma's?",
+      "riskAppetite": "Wat is je risicobereidheid?",
+      "needForSpeed": "Hoeveel waardeer je snelle processen?",
+      "hierarchyComfort": "Hoe comfortabel ben je met hiërarchie?",
+      "stabilityNeed": "Hoeveel stabiliteit heb je nodig?",
+      "low": "Laag",
+      "medium": "Gemiddeld",
+      "high": "Hoog"
+    },
+    "analyze": "Matches analyseren",
+    "reset": "Resetten"
   }
 }
