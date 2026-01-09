@@ -74,6 +74,57 @@ export type Database = {
         }
         Relationships: []
       }
+      country_variants: {
+        Row: {
+          country_id: string
+          created_at: string
+          daily_life: Json
+          entrepreneurship: Json
+          example_trajectories: Json
+          id: string
+          institutions: Json
+          is_complete: boolean
+          labor_market: Json
+          networks: Json
+          profiles_struggle: Json
+          profiles_succeed: Json
+          surprises: Json
+          updated_at: string
+        }
+        Insert: {
+          country_id: string
+          created_at?: string
+          daily_life?: Json
+          entrepreneurship?: Json
+          example_trajectories?: Json
+          id?: string
+          institutions?: Json
+          is_complete?: boolean
+          labor_market?: Json
+          networks?: Json
+          profiles_struggle?: Json
+          profiles_succeed?: Json
+          surprises?: Json
+          updated_at?: string
+        }
+        Update: {
+          country_id?: string
+          created_at?: string
+          daily_life?: Json
+          entrepreneurship?: Json
+          example_trajectories?: Json
+          id?: string
+          institutions?: Json
+          is_complete?: boolean
+          labor_market?: Json
+          networks?: Json
+          profiles_struggle?: Json
+          profiles_succeed?: Json
+          surprises?: Json
+          updated_at?: string
+        }
+        Relationships: []
+      }
       dashboard_progress: {
         Row: {
           created_at: string
@@ -342,6 +393,93 @@ export type Database = {
           id?: string
           is_finished?: boolean
           player_count?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_project_analyses: {
+        Row: {
+          alternative_scenarios: Json
+          blind_spots: Json
+          constraints: Json
+          country_id: string
+          created_at: string
+          frequent_risks: Json
+          horizon: string
+          id: string
+          project_type: string
+          relevant_exit_keys: Json
+          risk_tolerance: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          alternative_scenarios?: Json
+          blind_spots?: Json
+          constraints?: Json
+          country_id: string
+          created_at?: string
+          frequent_risks?: Json
+          horizon: string
+          id?: string
+          project_type: string
+          relevant_exit_keys?: Json
+          risk_tolerance: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          alternative_scenarios?: Json
+          blind_spots?: Json
+          constraints?: Json
+          country_id?: string
+          created_at?: string
+          frequent_risks?: Json
+          horizon?: string
+          id?: string
+          project_type?: string
+          relevant_exit_keys?: Json
+          risk_tolerance?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_subscriptions: {
+        Row: {
+          created_at: string
+          current_period_end: string | null
+          current_period_start: string | null
+          id: string
+          status: string
+          stripe_customer_id: string | null
+          stripe_subscription_id: string | null
+          subscription_tier: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          current_period_end?: string | null
+          current_period_start?: string | null
+          id?: string
+          status?: string
+          stripe_customer_id?: string | null
+          stripe_subscription_id?: string | null
+          subscription_tier?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          current_period_end?: string | null
+          current_period_start?: string | null
+          id?: string
+          status?: string
+          stripe_customer_id?: string | null
+          stripe_subscription_id?: string | null
+          subscription_tier?: string
           updated_at?: string
           user_id?: string
         }
