@@ -2266,5 +2266,119 @@
       "message": "Voor onomkeerbare beslissingen raden we aan om minimaal 2 verschillende scenario's te testen.",
       "testAlternative": "Een alternatief scenario testen"
     }
+  },
+  "universalErrors": {
+    "title": "Bibliotheek van universele fouten",
+    "subtitle": "De 10 duurste beslissingsfouten. Geen moraal, alleen feiten en hulpmiddelen om ze te vermijden.",
+    "intro": "Deze fouten zijn geen morele tekortkomingen. Het zijn terugkerende patronen die tijd, geld en energie kosten. Ze herkennen stelt je in staat ze te anticiperen.",
+    "backToLibrary": "Terug naar bibliotheek",
+    "learnMore": "Meer informatie",
+    "simulate": "Simuleren",
+    "errorNumber": "Fout",
+    "definition": "Definitie",
+    "whyItHappens": "Waarom het gebeurt",
+    "consequences": "Veelvoorkomende gevolgen",
+    "timeCost": "Tijd",
+    "moneyCost": "Geld",
+    "energyCost": "Energie",
+    "relatedPyramids": "Gerelateerde piramides",
+    "exitKeys": "Mogelijke exit-keys",
+    "simulateCta": "Simuleer een concreet geval",
+    "simulateDescription": "Test een beslissing gerelateerd aan deze fout om risico's te identificeren voordat je je verbindt.",
+    "simulateCase": "Simuleer een geval",
+    "ctaTitle": "Herken je een van deze fouten?",
+    "ctaDescription": "Haal je beslissing door de preventiefilter om risico's te identificeren voordat het te laat is.",
+    "errors": {
+      "systemError": {
+        "name": "Systeemfout",
+        "shortDescription": "De echte regels van het systeem waarin je opereert negeren.",
+        "definition": "Handelen volgens persoonlijke verwachtingen in plaats van de werkelijke regels van het systeem (fiscaal, juridisch, sociaal) waaraan je onderworpen bent.",
+        "whyItHappens": "We projecteren vaak regels van ons thuisland of vertrouwde omgeving op een nieuwe context. Betrouwbare informatie is moeilijk te vinden en systemen zijn complex.",
+        "timeCost": "6 maanden tot 2 jaar procedures of aanpassing",
+        "moneyCost": "Boetes, regularisaties, gemiste kansen",
+        "energyCost": "Chronische administratieve stress, permanente onzekerheid"
+      },
+      "metricError": {
+        "name": "Metriekfout",
+        "shortDescription": "De verkeerde indicator optimaliseren of alleen meten wat geruststelt.",
+        "definition": "Focussen op oppervlakkige indicatoren (bruto salaris, prestige) terwijl je metrics negeert die echt belangrijk zijn (levenskwaliteit, werkelijke kosten, vooruitgang).",
+        "whyItHappens": "Zichtbare metrics zijn makkelijk te communiceren en vergelijken. Belangrijke metrics zijn vaak onzichtbaar of oncomfortabel om te meten.",
+        "timeCost": "Jaren achter het verkeerde doel aanjagen",
+        "moneyCost": "Investeringen in gebieden die niets opleveren",
+        "energyCost": "Uitputting zonder echte vooruitgang"
+      },
+      "timingError": {
+        "name": "Timingfout",
+        "shortDescription": "Te vroeg, te laat handelen, of systeemcycli negeren.",
+        "definition": "Geen rekening houden met economische, seizoens- of institutionele cycli die het succes van een actie bepalen.",
+        "whyItHappens": "Ongeduld drijft tot onmiddellijke actie. Lange cycli zijn moeilijk waar te nemen als je erin zit.",
+        "timeCost": "Gemiste kansen, opnieuw beginnen",
+        "moneyCost": "Hoog kopen, laag verkopen",
+        "energyCost": "Frustratie van tegen de stroom in zwemmen"
+      },
+      "irreversibilityError": {
+        "name": "Onomkeerbaarheidsfout",
+        "shortDescription": "Je committeren aan een moeilijk te corrigeren beslissing zonder te testen.",
+        "definition": "Een beslissing met hoge betrokkenheid nemen (huwelijk, vastgoedaankoop, permanente emigratie) zonder testfase of mogelijkheid tot terugtrekking.",
+        "whyItHappens": "Sociale druk waardeert totale betrokkenheid. Testen voor je je committeert wordt soms gezien als gebrek aan vertrouwen.",
+        "timeCost": "Jaren om een fout te corrigeren of ermee te leven",
+        "moneyCost": "Zeer hoge uitstapkosten (scheiding, verkoop met verlies)",
+        "energyCost": "Chronische spijt en mentale last"
+      },
+      "hiddenCostError": {
+        "name": "Verborgen kostenfout",
+        "shortDescription": "De werkelijke kosten voorbij de getoonde prijs onderschatten.",
+        "definition": "Alleen zichtbare kosten zien (prijs, salaris) terwijl je verborgen kosten negeert (onderhoud, stress, tijd, gemiste kansen).",
+        "whyItHappens": "Verkopers en systemen minimaliseren verborgen kosten. Ons brein geeft de voorkeur aan eenvoudige getallen boven complexe berekeningen.",
+        "timeCost": "Onzichtbare uren onderhoud en beheer",
+        "moneyCost": "Systematische budgetoverschrijdingen",
+        "energyCost": "Onverwachte mentale last"
+      },
+      "egoError": {
+        "name": "Egofout",
+        "shortDescription": "Status of imago economische beslissingen laten leiden.",
+        "definition": "Beslissingen nemen op basis van wat je wilt uitstralen in plaats van wat je werkelijk nodig hebt.",
+        "whyItHappens": "Sociale status is een fundamentele menselijke behoefte. De perceptie van anderen beïnvloedt onze keuzes meer dan we toegeven.",
+        "timeCost": "Energie besteed aan het onderhouden van een imago",
+        "moneyCost": "Statusaankopen ten koste van veiligheid",
+        "energyCost": "Angst om de schijn op te houden"
+      },
+      "environmentError": {
+        "name": "Omgevingsfout",
+        "shortDescription": "De invloed van de omgeving op je resultaten negeren.",
+        "definition": "Geloven dat succes alleen afhangt van persoonlijke inspanning terwijl je de rol van de context negeert (land, netwerk, tijdperk, sector).",
+        "whyItHappens": "Meritocratie is een dominant verhaal. De rol van de omgeving erkennen kan lijken alsof je je eigen verdiensten vermindert.",
+        "timeCost": "Jaren stagneren in de verkeerde omgeving",
+        "moneyCost": "Ongerealiseerd potentieel door slechte positionering",
+        "energyCost": "Frustratie en gevoel van onrechtvaardigheid"
+      },
+      "narrativeError": {
+        "name": "Narratieve fout",
+        "shortDescription": "Een inspirerend verhaal verwarren met een toepasbare strategie.",
+        "definition": "Een narratief volgen (succesverhaal, guru-advies) zonder te verifiëren of het op je eigen situatie van toepassing is.",
+        "whyItHappens": "Verhalen zijn memorabeler dan statistieken. Survivorship bias maakt successen zichtbaarder dan mislukkingen.",
+        "timeCost": "Jaren een ongeschikte routekaart volgen",
+        "moneyCost": "Investeringen in irrelevante training of advies",
+        "energyCost": "Zelftwijfel wanneer beloofde resultaten uitblijven"
+      },
+      "sunkCost": {
+        "name": "Verzonken kosten",
+        "shortDescription": "Blijven investeren omdat je al te veel hebt geïnvesteerd.",
+        "definition": "Een ongunstige actie voortzetten omdat je al tijd, geld of energie hebt geïnvesteerd die je niet wilt verliezen.",
+        "whyItHappens": "Ons brein haat verliezen. Een eerdere fout toegeven is pijnlijk. We hopen dat de situatie verbetert.",
+        "timeCost": "Extra jaren in een doodlopende straat",
+        "moneyCost": "Extra investeringen om eerdere te rechtvaardigen",
+        "energyCost": "Uitputting om iets te onderhouden dat niet werkt"
+      },
+      "socialProofError": {
+        "name": "Social proof fout",
+        "shortDescription": "Anderen imiteren zonder te controleren of hun situatie op de jouwe van toepassing is.",
+        "definition": "Het gedrag van de meerderheid of bewonderde figuren volgen zonder te analyseren of hun beperkingen en doelen hetzelfde zijn.",
+        "whyItHappens": "De groep volgen vermindert onzekerheid. Als anderen het zo doen, moet het de juiste methode zijn.",
+        "timeCost": "Jaren een pad volgen dat niet het jouwe is",
+        "moneyCost": "Investeringen in ongeschikte trends",
+        "energyCost": "Kloof tussen aspiraties en dagelijks leven"
+      }
+    }
   }
 }
