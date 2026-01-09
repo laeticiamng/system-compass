@@ -21,7 +21,10 @@ import {
   BookOpen,
   AlertTriangle,
   Shield,
-  Zap
+  Zap,
+  Sparkles,
+  Crown,
+  Check
 } from 'lucide-react';
 
 export default function Index() {
@@ -341,6 +344,96 @@ export default function Index() {
             {countries.slice(0, 4).map((country) => (
               <CountryCard key={country.id} country={country} />
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Premium Plans Section */}
+      <section className="py-16 md:py-24 border-t border-border/50 bg-gradient-to-b from-purple-500/5 via-amber-500/5 to-transparent">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-10 md:mb-12">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 text-amber-600 text-xs md:text-sm font-medium mb-4">
+              <Sparkles className="w-4 h-4" />
+              {t('pricing.unlock', 'Débloquez plus de fonctionnalités')}
+            </div>
+            <h2 className="font-display text-2xl md:text-3xl font-bold mb-3">
+              {t('pricing.homepageTitle', 'Allez plus loin dans votre analyse')}
+            </h2>
+            <p className="text-muted-foreground max-w-xl mx-auto text-sm md:text-base">
+              {t('pricing.homepageSubtitle', 'Accédez à des analyses de pays plus détaillées et des recommandations personnalisées')}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-8">
+            {/* Premium Card */}
+            <div className="glass-card rounded-xl p-6 border-amber-500/30 hover:border-amber-500/50 transition-colors">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 rounded-lg bg-amber-500/10">
+                  <Sparkles className="w-5 h-5 text-amber-500" />
+                </div>
+                <div>
+                  <h3 className="font-semibold">Premium</h3>
+                  <p className="text-sm text-muted-foreground">7,99€ / {t('pricing.perMonth', 'mois')}</p>
+                </div>
+              </div>
+              <ul className="space-y-2 mb-6">
+                <li className="flex items-center gap-2 text-sm">
+                  <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                  {t('pricing.premiumFeature1', 'Variantes pays spécifiques')}
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                  {t('pricing.premiumFeature2', 'Profils qui réussissent/souffrent')}
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                  {t('pricing.premiumFeature3', 'Ce qui surprend les nouveaux')}
+                </li>
+              </ul>
+            </div>
+
+            {/* Pro Card */}
+            <div className="glass-card rounded-xl p-6 border-purple-500/30 hover:border-purple-500/50 transition-colors relative">
+              <div className="absolute -top-3 right-4">
+                <span className="px-2 py-1 rounded-full bg-purple-500 text-white text-xs font-medium">
+                  {t('pricing.recommended', 'Recommandé')}
+                </span>
+              </div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 rounded-lg bg-purple-500/10">
+                  <Crown className="w-5 h-5 text-purple-500" />
+                </div>
+                <div>
+                  <h3 className="font-semibold">Pro</h3>
+                  <p className="text-sm text-muted-foreground">19,99€ / {t('pricing.perMonth', 'mois')}</p>
+                </div>
+              </div>
+              <ul className="space-y-2 mb-6">
+                <li className="flex items-center gap-2 text-sm">
+                  <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                  {t('pricing.proFeature1', 'Tout le contenu Premium')}
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                  {t('pricing.proFeature2', 'Analyse projet personnalisée')}
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                  {t('pricing.proFeature3', 'Clés de sortie personnalisées')}
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <Button
+              onClick={() => navigate('/pricing')}
+              className="gap-2"
+            >
+              <Sparkles className="w-4 h-4" />
+              {t('pricing.viewPlans', 'Voir tous les plans')}
+              <ArrowRight className="w-4 h-4" />
+            </Button>
           </div>
         </div>
       </section>
