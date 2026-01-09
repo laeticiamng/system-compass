@@ -185,6 +185,42 @@ export type Database = {
         }
         Relationships: []
       }
+      saved_analyses: {
+        Row: {
+          constraint_type: string
+          created_at: string
+          decision_type: string
+          horizon: string
+          id: string
+          results: Json
+          risk_tolerance: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          constraint_type: string
+          created_at?: string
+          decision_type: string
+          horizon: string
+          id?: string
+          results: Json
+          risk_tolerance: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          constraint_type?: string
+          created_at?: string
+          decision_type?: string
+          horizon?: string
+          id?: string
+          results?: Json
+          risk_tolerance?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       saved_comparisons: {
         Row: {
           country_ids: string[]

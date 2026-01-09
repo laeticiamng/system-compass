@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '@/hooks/useAuth';
+import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
+import { toast } from 'sonner';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { 
@@ -303,6 +305,7 @@ export default function PreventionFilter() {
   });
   const [showResults, setShowResults] = useState(false);
   const [results, setResults] = useState<FilterResult | null>(null);
+  const [isSaving, setIsSaving] = useState(false);
 
   const isFormComplete = formData.decisionType && formData.horizon && formData.riskTolerance && formData.constraint;
 
@@ -323,6 +326,32 @@ export default function PreventionFilter() {
     });
     setShowResults(false);
     setResults(null);
+  };
+
+  const handleSave = async () => {
+    if (!user || !results || !formData.decisionType || !formData.horizon || !formData.riskTolerance || !formData.constraint) return;
+    
+    setIsSaving(true);
+    try {
+      const { error } = await supabase
+        .from('saved_analyses' as 'profiles')
+        .insert({
+          user_id: user.id,
+          decision_type: formData.decisionType,
+          horizon: formData.horizon,
+          risk_tolerance: formData.riskTolerance,
+          constraint_type: formData.constraint,
+          results: results,
+        } as unknown as { id: string });
+
+      if (error) throw error;
+      toast.success(t('preventionFilter.saved', 'Analyse sauvegardée !'));
+    } catch (error) {
+      console.error('Error saving analysis:', error);
+      toast.error(t('preventionFilter.saveError', 'Erreur lors de la sauvegarde'));
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   return (
@@ -608,7 +637,20 @@ export default function PreventionFilter() {
                 {t('preventionFilter.newAnalysis', 'Nouvelle analyse')}
               </Button>
               
-              {!user && (
+              {user ? (
+                <Button
+                  variant="secondary"
+                  onClick={handleSave}
+                  disabled={isSaving}
+                  className="flex-1 gap-2"
+                >
+                  <Save className="w-4 h-4" />
+                  {isSaving 
+                    ? t('common.loading', 'Chargement...')
+                    : t('preventionFilter.saveSimulation', 'Sauvegarder cette simulation')
+                  }
+                </Button>
+              ) : (
                 <Button
                   variant="secondary"
                   onClick={() => navigate('/auth')}

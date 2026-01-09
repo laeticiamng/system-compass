@@ -2229,5 +2229,32 @@
     "about": "Over ons",
     "defaultCountry": "Standaardland",
     "defaultCountryTooltip": "Rekenmachines gebruiken dit land standaard. Wijzig het in de tools."
+  },
+  "nav": {
+    "preventionFilter": "Filter"
+  },
+  "hero": {
+    "preventionFilter": "Een beslissing door de filter halen"
+  },
+  "preventionFilter": {
+    "badge": "Preventiefilter",
+    "title": "Een beslissing door de filter halen",
+    "subtitle": "Ontdek vóór een belangrijke beslissing de risico's, blinde vlekken en waarschijnlijke gevolgen in minder dan 60 seconden.",
+    "decisionType": "Type beslissing",
+    "horizon": "Tijdshorizon",
+    "riskTolerance": "Risicotolerantie",
+    "constraint": "Belangrijkste beperking",
+    "analyze": "Deze beslissing analyseren",
+    "disclaimer": "Simulatie ≠ voorspelling. Alleen analysetool. Je blijft verantwoordelijk voor je beslissing.",
+    "newAnalysis": "Nieuwe analyse",
+    "saveSimulation": "Deze simulatie opslaan",
+    "saved": "Analyse opgeslagen!",
+    "saveError": "Fout bij opslaan",
+    "results": {
+      "implications": "Wat deze keuze vaak inhoudt",
+      "blindSpots": "Veelvoorkomende blinde vlekken",
+      "risks": "Waarschijnlijke risico's",
+      "exitKeys": "Mogelijke exit-keys"
+    }
   }
 }

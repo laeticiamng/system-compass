@@ -2229,5 +2229,32 @@
     "about": "Über uns",
     "defaultCountry": "Standardland",
     "defaultCountryTooltip": "Rechner verwenden dieses Land standardmäßig. Ändere es in den Tools."
+  },
+  "nav": {
+    "preventionFilter": "Filter"
+  },
+  "hero": {
+    "preventionFilter": "Eine Entscheidung durch den Filter prüfen"
+  },
+  "preventionFilter": {
+    "badge": "Präventionsfilter",
+    "title": "Eine Entscheidung durch den Filter prüfen",
+    "subtitle": "Vor einer wichtigen Entscheidung: Risiken, blinde Flecken und wahrscheinliche Folgen in unter 60 Sekunden aufdecken.",
+    "decisionType": "Entscheidungstyp",
+    "horizon": "Zeithorizont",
+    "riskTolerance": "Risikobereitschaft",
+    "constraint": "Hauptbeschränkung",
+    "analyze": "Diese Entscheidung analysieren",
+    "disclaimer": "Simulation ≠ Vorhersage. Nur Analysewerkzeug. Du bleibst für deine Entscheidung verantwortlich.",
+    "newAnalysis": "Neue Analyse",
+    "saveSimulation": "Diese Simulation speichern",
+    "saved": "Analyse gespeichert!",
+    "saveError": "Fehler beim Speichern",
+    "results": {
+      "implications": "Was diese Wahl oft bedeutet",
+      "blindSpots": "Häufige blinde Flecken",
+      "risks": "Wahrscheinliche Risiken",
+      "exitKeys": "Mögliche Exit-Keys"
+    }
   }
 }

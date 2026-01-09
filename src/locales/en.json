@@ -4122,6 +4122,8 @@
     "disclaimer": "Simulation ≠ prediction. Analysis tool only. You remain responsible for your decision.",
     "newAnalysis": "New analysis",
     "saveSimulation": "Save this simulation",
+    "saved": "Analysis saved!",
+    "saveError": "Error saving",
     "results": {
       "implications": "What this choice often implies",
       "blindSpots": "Common blind spots",

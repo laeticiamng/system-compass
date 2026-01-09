@@ -2229,5 +2229,32 @@
     "about": "Sobre nós",
     "defaultCountry": "País predefinido",
     "defaultCountryTooltip": "As calculadoras usam este país por defeito. Altera-o nas ferramentas."
+  },
+  "nav": {
+    "preventionFilter": "Filtro"
+  },
+  "hero": {
+    "preventionFilter": "Passar uma decisão pelo filtro"
+  },
+  "preventionFilter": {
+    "badge": "Filtro de prevenção",
+    "title": "Passar uma decisão pelo filtro",
+    "subtitle": "Antes de uma decisão importante, revela riscos, pontos cegos e consequências prováveis em menos de 60 segundos.",
+    "decisionType": "Tipo de decisão",
+    "horizon": "Horizonte temporal",
+    "riskTolerance": "Tolerância ao risco",
+    "constraint": "Restrição principal",
+    "analyze": "Analisar esta decisão",
+    "disclaimer": "Simulação ≠ previsão. Apenas ferramenta de análise. Continuas responsável pela tua decisão.",
+    "newAnalysis": "Nova análise",
+    "saveSimulation": "Guardar esta simulação",
+    "saved": "Análise guardada!",
+    "saveError": "Erro ao guardar",
+    "results": {
+      "implications": "O que esta escolha geralmente implica",
+      "blindSpots": "Pontos cegos frequentes",
+      "risks": "Riscos prováveis",
+      "exitKeys": "Chaves de saída possíveis"
+    }
   }
 }
