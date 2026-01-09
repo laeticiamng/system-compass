@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
-import { Compass, Map, FileText, Scale, Triangle, Gamepad2, LogIn, LogOut, User, Key, LayoutDashboard, Menu, Play, Info, AlertCircle, X, Shield, BookOpen } from 'lucide-react';
+import { Compass, Map, FileText, Scale, Triangle, Gamepad2, LogIn, LogOut, User, Key, LayoutDashboard, Menu, Play, Info, AlertCircle, X, Shield, BookOpen, CreditCard } from 'lucide-react';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { useAuth } from '@/hooks/useAuth';
 import { Button } from './ui/button';
+import { SubscriptionBadge } from './SubscriptionBadge';
 import {
   Sheet,
   SheetContent,
@@ -50,6 +51,7 @@ export function Header() {
     { href: '/exit-keys', label: t('nav.exitKeys'), icon: Key },
     { href: '/compare', label: t('nav.compare'), icon: Scale },
     { href: '/dashboard', label: t('nav.dashboard'), icon: LayoutDashboard },
+    { href: '/pricing', label: t('nav.pricing', 'Tarifs'), icon: CreditCard },
     { href: '/resources', label: t('nav.resources'), icon: FileText },
     { href: '/about', label: t('footer.about'), icon: Info },
   ];
@@ -135,7 +137,8 @@ export function Header() {
           <LanguageSwitcher />
 
           {/* Auth button - Desktop */}
-          <div className="hidden md:flex items-center">
+          <div className="hidden md:flex items-center gap-2">
+            {user && <SubscriptionBadge />}
             {user ? (
               <div className="flex items-center gap-2">
                 <span className="text-xs text-muted-foreground max-w-[100px] truncate">
@@ -205,6 +208,9 @@ export function Header() {
                 
                 {user ? (
                   <>
+                    <div className="px-4 py-2 flex items-center gap-2">
+                      <SubscriptionBadge />
+                    </div>
                     <div className="px-4 py-2 text-sm text-muted-foreground">
                       <User className="w-4 h-4 inline mr-2" />
                       {user.user_metadata?.display_name || user.email?.split('@')[0]}
