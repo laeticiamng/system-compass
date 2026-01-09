@@ -4530,6 +4530,8 @@
     "disclaimer": "Simulation ≠ prédiction. Outil d'analyse uniquement. Tu restes responsable de ta décision.",
     "newAnalysis": "Nouvelle analyse",
     "saveSimulation": "Sauvegarder cette simulation",
+    "saved": "Analyse sauvegardée !",
+    "saveError": "Erreur lors de la sauvegarde",
     "results": {
       "implications": "Ce que ce choix implique souvent",
       "blindSpots": "Points aveugles fréquents",
