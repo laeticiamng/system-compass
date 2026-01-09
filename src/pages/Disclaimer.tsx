@@ -105,6 +105,15 @@ export default function Disclaimer() {
                   <strong className="text-amber-600">Important :</strong> Les conditions réelles varient selon les situations individuelles, les changements législatifs, les contextes économiques et de nombreux facteurs imprévisibles. Toute simulation doit être considérée comme un <strong>point de départ pour la réflexion</strong>, jamais comme un plan d'action définitif.
                 </p>
               </div>
+              <div className="p-4 rounded-lg bg-primary/5 border border-primary/20 mt-4">
+                <p className="text-sm font-medium text-foreground mb-2">Formulations utilisées dans l'outil :</p>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>• <em>"tend à favoriser"</em> — pas "garantit"</li>
+                  <li>• <em>"implique souvent"</em> — pas "toujours"</li>
+                  <li>• <em>"risques fréquents"</em> — pas "certains"</li>
+                  <li>• <em>"dépend de ton contexte réel"</em> — pas de vérité universelle</li>
+                </ul>
+              </div>
             </CardContent>
           </Card>
 
@@ -117,6 +126,12 @@ export default function Disclaimer() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
+              <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/30 mb-4">
+                <p className="text-sm font-semibold text-red-600 mb-2">⚠️ Avertissement essentiel</p>
+                <p className="text-sm text-muted-foreground">
+                  <strong className="text-foreground">Aucun résultat affiché n'est un diagnostic, une recommandation, ni un avis professionnel.</strong> Cet outil ne remplace aucun conseil spécialisé (juridique, fiscal, médical, ou autre).
+                </p>
+              </div>
               <p className="text-muted-foreground">
                 Cet outil <strong className="text-foreground">ne fournit aucun conseil</strong> de nature :
               </p>

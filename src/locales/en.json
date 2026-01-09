@@ -70,6 +70,14 @@
       "trajectory": "This trajectory shows what this type of choice tends to imply, not what will happen to you.",
       "comparison": "This comparison reflects general data, not your personal situation.",
       "game": "This educational game simulates real mechanisms, but remains a simplification of reality."
+    },
+    "antiAuthority": {
+      "notPrediction": "Simulation ≠ prediction",
+      "dependsOnContext": "Depends on your real context",
+      "analysisOnly": "Analysis tool only",
+      "youDecide": "You decide, we illuminate",
+      "noDiagnosis": "No result is a diagnosis, recommendation, or professional advice. This does not replace any specialized counsel.",
+      "tendsTo": "tends to • not certain"
     }
   },
   "header": {

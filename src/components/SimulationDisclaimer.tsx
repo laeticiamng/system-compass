@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import { Info, AlertCircle } from 'lucide-react';
+import { Info, AlertCircle, AlertTriangle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useTranslation } from 'react-i18next';
 
 interface SimulationDisclaimerProps {
-  variant?: 'minimal' | 'compact' | 'inline' | 'contextual';
+  variant?: 'minimal' | 'compact' | 'inline' | 'contextual' | 'prominent';
   className?: string;
   context?: 'results' | 'trajectory' | 'comparison' | 'game' | 'default';
 }
@@ -17,12 +17,45 @@ const CONTEXTUAL_MESSAGES = {
   default: 'simulationDisclaimer.contextual.default',
 };
 
+// Micro-textes anti-autorité à afficher de manière aléatoire
+const ANTI_AUTHORITY_MICROTEXTS = [
+  'simulationDisclaimer.antiAuthority.notPrediction',
+  'simulationDisclaimer.antiAuthority.dependsOnContext',
+  'simulationDisclaimer.antiAuthority.analysisOnly',
+  'simulationDisclaimer.antiAuthority.youDecide',
+];
+
 export function SimulationDisclaimer({ 
   variant = 'minimal', 
   className,
   context = 'default'
 }: SimulationDisclaimerProps) {
   const { t } = useTranslation();
+
+  // Affiche un micro-texte aléatoire pour varier les messages
+  const randomMicrotext = ANTI_AUTHORITY_MICROTEXTS[Math.floor(Math.random() * ANTI_AUTHORITY_MICROTEXTS.length)];
+
+  if (variant === 'prominent') {
+    return (
+      <div className={cn(
+        "flex items-start gap-3 text-sm px-4 py-4 rounded-lg bg-amber-500/10 border border-amber-500/30",
+        className
+      )}>
+        <AlertTriangle className="w-5 h-5 shrink-0 mt-0.5 text-amber-600" />
+        <div className="space-y-2">
+          <p className="font-semibold text-foreground">
+            {t('simulationDisclaimer.notPrediction')}
+          </p>
+          <p className="text-muted-foreground text-xs">
+            {t('simulationDisclaimer.antiAuthority.noDiagnosis')}{' '}
+            <Link to="/disclaimer" className="text-primary hover:underline">
+              {t('simulationDisclaimer.learnMore')}
+            </Link>
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   if (variant === 'contextual') {
     return (
@@ -49,7 +82,7 @@ export function SimulationDisclaimer({
   if (variant === 'inline') {
     return (
       <span className={cn("text-xs text-muted-foreground/60", className)}>
-        {t('simulationDisclaimer.inline')}{' '}
+        {t(randomMicrotext)}{' '}
         <Link to="/disclaimer" className="text-primary/60 hover:text-primary hover:underline">
           {t('simulationDisclaimer.limits')}
         </Link>
@@ -82,5 +115,19 @@ export function SimulationDisclaimer({
         {t('simulationDisclaimer.viewLimits')}
       </Link>
     </p>
+  );
+}
+
+// Composant de micro-badge anti-autorité à utiliser dans les résultats
+export function AntiAuthorityBadge({ className }: { className?: string }) {
+  const { t } = useTranslation();
+  return (
+    <span className={cn(
+      "inline-flex items-center gap-1 text-[10px] text-muted-foreground/60 px-2 py-0.5 rounded-full bg-muted/40",
+      className
+    )}>
+      <Info className="w-2.5 h-2.5" />
+      {t('simulationDisclaimer.antiAuthority.tendsTo')}
+    </span>
   );
 }

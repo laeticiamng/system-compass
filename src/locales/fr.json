@@ -70,6 +70,14 @@
       "trajectory": "Cette trajectoire montre ce que ce type de choix tend à impliquer, pas ce qui t'arrivera.",
       "comparison": "Cette comparaison reflète des données générales, pas ta situation personnelle.",
       "game": "Ce jeu éducatif simule des mécanismes réels, mais reste une simplification de la réalité."
+    },
+    "antiAuthority": {
+      "notPrediction": "Simulation ≠ prédiction",
+      "dependsOnContext": "Dépend de ton contexte réel",
+      "analysisOnly": "Outil d'analyse uniquement",
+      "youDecide": "Tu décides, nous éclairons",
+      "noDiagnosis": "Aucun résultat n'est un diagnostic, une recommandation, ni un avis professionnel. Cela ne remplace aucun conseil spécialisé.",
+      "tendsTo": "tend à • pas certain"
     }
   },
   "header": {

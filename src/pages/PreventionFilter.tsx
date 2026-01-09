@@ -652,7 +652,8 @@ export default function PreventionFilter() {
                   <CardHeader className="pb-3">
                     <CardTitle className="text-base flex items-center gap-2">
                       <Lightbulb className="w-4 h-4 text-amber-500" />
-                      {t('preventionFilter.results.implications', 'Ce que ce choix implique souvent')}
+                      {t('preventionFilter.results.implications', 'Ce que ce choix tend à impliquer')}
+                      <span className="text-[10px] text-muted-foreground/60 ml-auto font-normal">(souvent, pas toujours)</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -693,7 +694,8 @@ export default function PreventionFilter() {
                     <CardHeader className="pb-3">
                       <CardTitle className="text-base flex items-center gap-2">
                         <AlertTriangle className="w-4 h-4 text-destructive" />
-                        {t('preventionFilter.results.risks', 'Risques probables')}
+                        {t('preventionFilter.results.risks', 'Risques fréquents dans ce type de situation')}
+                        <span className="text-[10px] text-muted-foreground/60 ml-auto font-normal">(pas certains)</span>
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -714,7 +716,7 @@ export default function PreventionFilter() {
                   <CardHeader className="pb-3">
                     <CardTitle className="text-base flex items-center gap-2">
                       <Key className="w-4 h-4 text-primary" />
-                      {t('preventionFilter.results.exitKeys', 'Clés de sortie possibles')}
+                      {t('preventionFilter.results.exitKeys', 'Pistes d\'exploration possibles')}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -735,10 +737,13 @@ export default function PreventionFilter() {
               </>
             )}
 
-            {/* Disclaimer */}
-            <div className="p-4 rounded-lg bg-muted/50 border border-border text-center">
-              <p className="text-sm text-muted-foreground">
-                {t('preventionFilter.disclaimer', "Simulation ≠ prédiction. Outil d'analyse uniquement. Tu restes responsable de ta décision.")}
+            {/* Disclaimer prominent */}
+            <div className="p-4 rounded-lg bg-amber-500/10 border border-amber-500/30 text-center">
+              <p className="text-sm font-medium text-foreground mb-1">
+                ⚠️ {t('simulationDisclaimer.notPrediction')}
+              </p>
+              <p className="text-xs text-muted-foreground">
+                {t('simulationDisclaimer.antiAuthority.noDiagnosis', "Aucun résultat n'est un diagnostic, une recommandation, ni un avis professionnel. Cela ne remplace aucun conseil spécialisé.")}
               </p>
             </div>
 
