@@ -47,6 +47,7 @@ import AdminCountryGenerator from "./pages/AdminCountryGenerator";
 import AdminGenerateTranslations from "./pages/AdminGenerateTranslations";
 import WorldMapExplorer from "./pages/WorldMapExplorer";
 import Institutions from "./pages/Institutions";
+import OVI from "./pages/OVI";
 
 const queryClient = new QueryClient();
 
@@ -99,6 +100,7 @@ const App = () => (
                     <Route path="/admin/country-generator" element={<AdminCountryGenerator />} />
                     <Route path="/admin/generate-translations" element={<AdminGenerateTranslations />} />
                     <Route path="/institutions" element={<Institutions />} />
+                    <Route path="/ovi" element={<OVI />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </main>
