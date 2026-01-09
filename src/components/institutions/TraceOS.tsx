@@ -13,7 +13,9 @@ import {
   Loader2,
   LayoutGrid,
   FileText,
-  MessageSquare
+  MessageSquare,
+  BarChart3,
+  Tag
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -31,6 +33,8 @@ import { TraceOSNotifications } from './TraceOSNotifications';
 import { DecisionTemplates, DecisionTemplate } from './DecisionTemplates';
 import { DecisionComments } from './DecisionComments';
 import { InteractiveDecisionGraph } from './InteractiveDecisionGraph';
+import { TraceOSDashboard } from './TraceOSDashboard';
+import { TagManager } from './TagManager';
 import { useSubscription } from '@/hooks/useSubscription';
 import { useTraceOSDecisions } from '@/hooks/useTraceOSDecisions';
 import { PremiumPaywall } from '@/components/PremiumPaywall';
@@ -327,6 +331,10 @@ export function TraceOS() {
       {/* Decision Tree */}
       <Tabs defaultValue="tree" className="space-y-4">
         <TabsList className="flex flex-wrap h-auto gap-1">
+          <TabsTrigger value="dashboard" className="gap-2">
+            <BarChart3 className="w-4 h-4" />
+            {t('traceOS.tabs.dashboard', 'Dashboard')}
+          </TabsTrigger>
           <TabsTrigger value="tree" className="gap-2">
             <GitBranch className="w-4 h-4" />
             {t('traceOS.tabs.tree', 'Arbre')}
@@ -334,6 +342,10 @@ export function TraceOS() {
           <TabsTrigger value="graph" className="gap-2">
             <LayoutGrid className="w-4 h-4" />
             {t('traceOS.tabs.graph', 'Graphe')}
+          </TabsTrigger>
+          <TabsTrigger value="tags" className="gap-2">
+            <Tag className="w-4 h-4" />
+            {t('traceOS.tabs.tags', 'Tags')}
           </TabsTrigger>
           <TabsTrigger value="review" className="gap-2">
             <History className="w-4 h-4" />
@@ -344,6 +356,10 @@ export function TraceOS() {
             {t('traceOS.tabs.governance', 'Gouvernance')}
           </TabsTrigger>
         </TabsList>
+
+        <TabsContent value="dashboard">
+          <TraceOSDashboard decisions={displayDecisions} />
+        </TabsContent>
 
         <TabsContent value="tree">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
@@ -403,6 +419,23 @@ export function TraceOS() {
                 <Eye className="w-12 h-12 mx-auto mb-4 opacity-20" />
                 <p>{t('traceOS.review.selectDecision', 'Sélectionnez une décision dans l\'arbre pour lancer une relecture.')}</p>
               </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="tags">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Tag className="w-5 h-5" />
+                {t('traceOS.tags.management', 'Gestion des tags')}
+              </CardTitle>
+              <CardDescription>
+                {t('traceOS.tags.managementDesc', 'Créez et organisez vos étiquettes pour catégoriser vos décisions.')}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <TagManager />
             </CardContent>
           </Card>
         </TabsContent>

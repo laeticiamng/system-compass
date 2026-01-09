@@ -715,6 +715,42 @@ export type Database = {
           },
         ]
       }
+      traceos_decision_tags: {
+        Row: {
+          created_at: string
+          decision_id: string
+          id: string
+          tag_id: string
+        }
+        Insert: {
+          created_at?: string
+          decision_id: string
+          id?: string
+          tag_id: string
+        }
+        Update: {
+          created_at?: string
+          decision_id?: string
+          id?: string
+          tag_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "traceos_decision_tags_decision_id_fkey"
+            columns: ["decision_id"]
+            isOneToOne: false
+            referencedRelation: "traceos_decisions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "traceos_decision_tags_tag_id_fkey"
+            columns: ["tag_id"]
+            isOneToOne: false
+            referencedRelation: "traceos_tags"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       traceos_decisions: {
         Row: {
           abandoned_branches: Json
@@ -779,6 +815,30 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      traceos_tags: {
+        Row: {
+          color: string
+          created_at: string
+          id: string
+          name: string
+          user_id: string
+        }
+        Insert: {
+          color?: string
+          created_at?: string
+          id?: string
+          name: string
+          user_id: string
+        }
+        Update: {
+          color?: string
+          created_at?: string
+          id?: string
+          name?: string
+          user_id?: string
+        }
+        Relationships: []
       }
       user_project_analyses: {
         Row: {

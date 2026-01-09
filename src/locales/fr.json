@@ -5214,10 +5214,44 @@
       "empty": "Aucune décision à afficher"
     },
     "tabs": {
+      "dashboard": "Dashboard",
       "tree": "Arbre",
       "graph": "Graphe",
+      "tags": "Tags",
       "review": "Relecture",
       "governance": "Gouvernance"
+    },
+    "tags": {
+      "title": "Tags",
+      "manage": "Tags",
+      "management": "Gestion des tags",
+      "managementDesc": "Créez et organisez vos étiquettes pour catégoriser vos décisions.",
+      "new": "Nouveau",
+      "create": "Créer le tag",
+      "namePlaceholder": "Nom du tag",
+      "empty": "Aucun tag créé",
+      "added": "Tag ajouté",
+      "deleted": "Tag supprimé",
+      "error": "Erreur lors de l'opération"
+    },
+    "dashboard": {
+      "title": "Tableau de bord analytique",
+      "subtitle": "Vue d'ensemble de vos décisions",
+      "totalDecisions": "Total décisions",
+      "validated": "Validées",
+      "pending": "En attente",
+      "abandoned": "Abandonnées",
+      "abandonedBranches": "Branches abandonnées",
+      "documentedAlternatives": "Alternatives documentées",
+      "maxDepth": "Profondeur max",
+      "decisionLevels": "niveaux de décision",
+      "authors": "Contributeurs",
+      "uniqueAuthors": "auteurs uniques",
+      "timeline": "Évolution (6 derniers mois)",
+      "byScope": "Par périmètre",
+      "topContributors": "Principaux contributeurs",
+      "noData": "Aucune donnée disponible",
+      "noContributors": "Aucun contributeur"
     }
   },
   "b2b": {
