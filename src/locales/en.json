@@ -267,6 +267,21 @@
       "stats": "Statistics",
       "calendar": "Calendar"
     },
+    "progress": {
+      "actionsCompleted": "Actions completed",
+      "ofPlan": "of plan",
+      "daysElapsed": "Days elapsed",
+      "sinceStart": "Since start",
+      "avgVelocity": "Average velocity",
+      "actionsPerWeek": "Actions/week",
+      "estimatedEnd": "Estimated end",
+      "inDays": "In ~{{days}} days",
+      "notEnoughData": "Not enough data",
+      "overallProgress": "Overall progress",
+      "progressByPhase": "Progress by phase",
+      "completionVelocity": "Completion velocity",
+      "timePerPhase": "Time per phase"
+    },
     "phase": "Phase",
     "duration": "Duration",
     "suggestedDeadline": "Suggested deadline",
