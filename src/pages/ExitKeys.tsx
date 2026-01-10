@@ -35,6 +35,7 @@ import { useAnalytics } from '@/hooks/useAnalytics';
 import { DestinationMap } from '@/components/DestinationMap';
 import { DestinationCompare } from '@/components/DestinationCompare';
 import { VacationRecommendations } from '@/components/exit-keys/VacationRecommendations';
+import { RiskContextsSection } from '@/components/exit-keys/RiskContextsSection';
 import { RiskPrevention } from '@/components/RiskPrevention';
 import { SalaryCalculator } from '@/components/SalaryCalculator';
 import { JourneyProgressBar, getJourneyPhase } from '@/components/JourneyProgressBar';
@@ -290,9 +291,7 @@ export default function ExitKeys() {
           {/* Central Philosophy Message */}
           <div className="mb-8 p-4 rounded-xl bg-gradient-to-r from-primary/5 to-amber-500/5 border border-primary/20">
             <p className="text-sm text-center text-muted-foreground">
-              <strong className="text-foreground">Rappel :</strong> Pyramid Compass structure la lucidité. 
-              Si l'analyse révèle que votre option est trop risquée ou irréaliste, 
-              nous vous aiderons à explorer des alternatives : rester et entreprendre, migrer autrement, se former d'abord, ou changer d'objectif.
+              <strong className="text-foreground">{t('exitKeys.reminder', 'Rappel')} :</strong> {t('exitKeys.lucidityMessage', 'Pyramid Compass structure la lucidité. Si l\'analyse révèle que votre option est trop risquée ou irréaliste, nous vous aiderons à explorer des alternatives : rester et entreprendre, migrer autrement, se former d\'abord, ou changer d\'objectif.')}
             </p>
           </div>
 
@@ -1062,6 +1061,9 @@ export default function ExitKeys() {
                 initialCountryId={currentCountryId} 
                 initialProfessionId={professionId} 
               />
+
+              {/* Risk Contexts Section */}
+              <RiskContextsSection />
 
               {/* Risk Prevention - Contextualized based on user profile */}
               <RiskPrevention 

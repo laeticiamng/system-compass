@@ -5313,7 +5313,87 @@
       "desc": "Explorez nos outils dédiés ou contactez-nous pour des solutions personnalisées."
     }
   },
+  "riskContexts": {
+    "title": "Contextes à risque",
+    "subtitle": "Ce que beaucoup ne vous diront pas — mais que vous devez savoir",
+    "intro": "Avant d'engager votre argent, votre temps ou votre vie dans une trajectoire internationale, il est crucial de distinguer les fantasmes des réalités, et les opportunités légales des impasses dangereuses.",
+    "examples": "Exemples fréquents",
+    "consequences": "Conséquences",
+    "dangerousRoutes": {
+      "title": "Routes dangereuses",
+      "desc": "Trajectoires physiquement périlleuses souvent minimisées par ceux qui en profitent",
+      "examples": {
+        "0": "Traversées maritimes via passeurs non fiables",
+        "1": "Trajets terrestres à travers des zones de conflit",
+        "2": "Surcharge de véhicules, absence de secours médical"
+      },
+      "consequences": {
+        "0": "Risque vital réel et sous-estimé",
+        "1": "Traumatismes physiques et psychologiques durables",
+        "2": "Perte de tout capital investi sans garantie d'arrivée"
+      }
+    },
+    "scams": {
+      "title": "Arnaques fréquentes",
+      "desc": "Schémas d'escroquerie qui ciblent les personnes en quête de mobilité",
+      "examples": {
+        "0": "Faux contrats de travail à l'étranger",
+        "1": "Visas 'garantis' vendus par des agences non agréées",
+        "2": "Promesses d'hébergement ou d'emploi inexistants"
+      },
+      "consequences": {
+        "0": "Perte financière totale (économies de plusieurs années)",
+        "1": "Situation irrégulière à l'arrivée",
+        "2": "Exploitation ou travail forcé"
+      }
+    },
+    "fakeIntermediaries": {
+      "title": "Faux intermédiaires",
+      "desc": "Personnes ou organisations qui se présentent comme facilitateurs légitimes",
+      "examples": {
+        "0": "'Consultants en immigration' sans accréditation",
+        "1": "Réseaux de 'placement' à l'étranger",
+        "2": "Contacts sur réseaux sociaux promettant des raccourcis"
+      },
+      "consequences": {
+        "0": "Documents frauduleux menant à l'expulsion",
+        "1": "Dépendance et vulnérabilité accrues",
+        "2": "Impossibilité de recours légal"
+      }
+    },
+    "hiddenCosts": {
+      "title": "Coûts cachés",
+      "desc": "Les vrais prix que personne ne mentionne avant le départ",
+      "examples": {
+        "0": "Coût de la vie réel vs. salaires locaux",
+        "1": "Frais administratifs récurrents (renouvellement, taxes)",
+        "2": "Temps d'intégration réel (langue, réseau, emploi)"
+      },
+      "consequences": {
+        "0": "Précarité prolongée malgré le 'succès' du départ",
+        "1": "Impossibilité d'aider la famille restée",
+        "2": "Retour contraint après épuisement des ressources"
+      }
+    },
+    "warningTitle": "Ce que Pyramid Compass peut faire pour vous",
+    "warningDesc": "La plateforme ne promet rien et n'oriente pas vers l'illégal. Elle structure la lucidité pour que vous puissiez prendre des décisions éclairées. Parfois, la meilleure décision est de ne pas partir — ou de partir autrement.",
+    "alternatives": {
+      "stayBuild": "Rester et entreprendre",
+      "migrateLater": "Migrer plus tard",
+      "migrateOther": "Migrer autrement",
+      "trainFirst": "Se former d'abord",
+      "changeGoal": "Changer d'objectif"
+    },
+    "cta": {
+      "errors": "Voir les erreurs fréquentes",
+      "prevention": "Filtrer mes risques"
+    }
+  },
   "orientationHub": {
+    "noPromise": "Pas de promesse",
+    "noLegalAdvice": "Pas de conseil juridique",
+    "noDreamSold": "Pas de rêve vendu",
+    "structuredLucidity": "Lucidité structurée",
     "badge": "Hub d'Orientation",
     "title": "Par où commencer ?",
     "subtitle": "Pyramid Compass t'aide à comprendre tes vraies options avant toute décision. Pas de promesse, pas de raccourci — juste de la clarté.",
