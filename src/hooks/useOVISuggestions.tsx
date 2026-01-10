@@ -39,111 +39,111 @@ const SIMULATION_TO_OVI_MAP: Record<SimulationType, { frameworks: string[]; grid
   }
 };
 
-// Framework details
+// Framework details - using existing translation keys
 const FRAMEWORKS: Record<string, { icon: string; titleKey: string; descKey: string }> = {
   cognitive_bias: { 
     icon: '🧠', 
-    titleKey: 'ovi.frameworks.cognitiveBias.title',
-    descKey: 'ovi.frameworks.cognitiveBias.desc'
+    titleKey: 'ovi.frameworks.bias.title',
+    descKey: 'ovi.frameworks.bias.preview'
   },
   irreversible_decisions: {
     icon: '🔒',
     titleKey: 'ovi.frameworks.irreversible.title',
-    descKey: 'ovi.frameworks.irreversible.desc'
+    descKey: 'ovi.frameworks.irreversible.preview'
   },
   control_illusion: {
     icon: '🎭',
-    titleKey: 'ovi.frameworks.controlIllusion.title',
-    descKey: 'ovi.frameworks.controlIllusion.desc'
+    titleKey: 'ovi.frameworks.control.title',
+    descKey: 'ovi.frameworks.control.preview'
   },
   hidden_costs: {
     icon: '👁️‍🗨️',
-    titleKey: 'ovi.frameworks.hiddenCosts.title',
-    descKey: 'ovi.frameworks.hiddenCosts.desc'
+    titleKey: 'ovi.grids.visibility.title',
+    descKey: 'ovi.grids.visibility.desc'
   },
   timing_error: {
     icon: '⏰',
-    titleKey: 'ovi.frameworks.timingError.title',
-    descKey: 'ovi.frameworks.timingError.desc'
+    titleKey: 'ovi.frameworks.speed.title',
+    descKey: 'ovi.frameworks.speed.preview'
   },
   system_bias: {
     icon: '⚙️',
-    titleKey: 'ovi.frameworks.systemBias.title',
-    descKey: 'ovi.frameworks.systemBias.desc'
+    titleKey: 'ovi.frameworks.individual.title',
+    descKey: 'ovi.frameworks.individual.preview'
   },
   cultural_blind_spots: {
     icon: '🌍',
-    titleKey: 'ovi.frameworks.culturalBlindSpots.title',
-    descKey: 'ovi.frameworks.culturalBlindSpots.desc'
+    titleKey: 'ovi.grids.visibility.title',
+    descKey: 'ovi.grids.visibility.desc'
   },
   comparison_fallacy: {
     icon: '⚖️',
-    titleKey: 'ovi.frameworks.comparisonFallacy.title',
-    descKey: 'ovi.frameworks.comparisonFallacy.desc'
+    titleKey: 'ovi.grids.agency.title',
+    descKey: 'ovi.grids.agency.desc'
   },
   opportunity_cost: {
     icon: '💡',
-    titleKey: 'ovi.frameworks.opportunityCost.title',
-    descKey: 'ovi.frameworks.opportunityCost.desc'
+    titleKey: 'ovi.grids.visibility.title',
+    descKey: 'ovi.grids.visibility.desc'
   },
   sunk_cost: {
     icon: '⚓',
-    titleKey: 'ovi.frameworks.sunkCost.title',
-    descKey: 'ovi.frameworks.sunkCost.desc'
+    titleKey: 'ovi.frameworks.irreversible.title',
+    descKey: 'ovi.frameworks.irreversible.preview'
   },
   confirmation_bias: {
     icon: '✅',
-    titleKey: 'ovi.frameworks.confirmationBias.title',
-    descKey: 'ovi.frameworks.confirmationBias.desc'
+    titleKey: 'ovi.frameworks.bias.title',
+    descKey: 'ovi.frameworks.bias.preview'
   },
   overconfidence: {
     icon: '🎯',
-    titleKey: 'ovi.frameworks.overconfidence.title',
-    descKey: 'ovi.frameworks.overconfidence.desc'
+    titleKey: 'ovi.frameworks.control.title',
+    descKey: 'ovi.frameworks.control.preview'
   },
   planning_fallacy: {
     icon: '📅',
-    titleKey: 'ovi.frameworks.planningFallacy.title',
-    descKey: 'ovi.frameworks.planningFallacy.desc'
+    titleKey: 'ovi.frameworks.speed.title',
+    descKey: 'ovi.frameworks.speed.preview'
   }
 };
 
-// Grid details
+// Grid details - using existing translation keys
 const GRIDS: Record<string, { icon: string; titleKey: string; descKey: string }> = {
   visible_invisible: {
     icon: '👁️',
-    titleKey: 'ovi.grids.visibleInvisible.title',
-    descKey: 'ovi.grids.visibleInvisible.desc'
+    titleKey: 'ovi.grids.visibility.title',
+    descKey: 'ovi.grids.visibility.desc'
   },
   me_system: {
     icon: '🔄',
-    titleKey: 'ovi.grids.meSystem.title',
-    descKey: 'ovi.grids.meSystem.desc'
+    titleKey: 'ovi.grids.agency.title',
+    descKey: 'ovi.grids.agency.desc'
   },
   reversible_irreversible: {
     icon: '↩️',
-    titleKey: 'ovi.grids.reversibleIrreversible.title',
-    descKey: 'ovi.grids.reversibleIrreversible.desc'
+    titleKey: 'ovi.grids.reversibility.title',
+    descKey: 'ovi.grids.reversibility.desc'
   },
   short_long_term: {
     icon: '📊',
-    titleKey: 'ovi.grids.shortLongTerm.title',
-    descKey: 'ovi.grids.shortLongTerm.desc'
+    titleKey: 'ovi.grids.title',
+    descKey: 'ovi.grids.subtitle'
   },
   controllable_uncontrollable: {
     icon: '🎮',
-    titleKey: 'ovi.grids.controllableUncontrollable.title',
-    descKey: 'ovi.grids.controllableUncontrollable.desc'
+    titleKey: 'ovi.grids.agency.title',
+    descKey: 'ovi.grids.agency.desc'
   },
   certain_uncertain: {
     icon: '❓',
-    titleKey: 'ovi.grids.certainUncertain.title',
-    descKey: 'ovi.grids.certainUncertain.desc'
+    titleKey: 'ovi.grids.visibility.title',
+    descKey: 'ovi.grids.visibility.desc'
   },
   urgent_important: {
     icon: '🚨',
-    titleKey: 'ovi.grids.urgentImportant.title',
-    descKey: 'ovi.grids.urgentImportant.desc'
+    titleKey: 'ovi.grids.title',
+    descKey: 'ovi.grids.subtitle'
   }
 };
 
