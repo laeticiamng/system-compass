@@ -58,6 +58,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Check duplicate JSON keys
+        run: node scripts/check-duplicate-keys.js
+
       - name: Check translation patterns
         run: node scripts/check-translation-patterns.js
 
