@@ -263,7 +263,8 @@
     "advancedModulesDesc": "Outils de réflexion et de documentation avancés",
     "latentDesc": "Identifiez les zones de tension non encore critiques",
     "irreversaDesc": "Documentez les seuils irréversibles franchis",
-    "institutionsDesc": "Aide à la décision collective et traçabilité"
+    "institutionsDesc": "Aide à la décision collective et traçabilité",
+    "usageDesc": "Suivez votre utilisation IA et vos ressources"
   },
   "achievements": {
     "title": "Succès",
@@ -389,7 +390,8 @@
     "orientationHub": "Orientation",
     "errorsIllusions": "Erreurs & Illusions",
     "b2b": "B2B Solutions",
-    "about": "À Propos"
+    "about": "À Propos",
+    "usage": "Consommation"
   },
   "worldMap": {
     "badge": "Exploration mondiale",

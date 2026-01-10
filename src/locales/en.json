@@ -263,7 +263,8 @@
     "advancedModulesDesc": "Advanced reflection and documentation tools",
     "latentDesc": "Identify tension zones not yet critical",
     "irreversaDesc": "Document crossed irreversible thresholds",
-    "institutionsDesc": "Collective decision-making and traceability"
+    "institutionsDesc": "Collective decision-making and traceability",
+    "usageDesc": "Track your AI usage and resources"
   },
   "achievements": {
     "title": "Achievements",
@@ -389,7 +390,8 @@
     "orientationHub": "Orientation",
     "errorsIllusions": "Errors & Illusions",
     "b2b": "B2B Solutions",
-    "about": "About"
+    "about": "About",
+    "usage": "Usage"
   },
   "worldMap": {
     "badge": "Global exploration",

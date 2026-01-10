@@ -44,7 +44,7 @@ export function Header() {
   // Navigation simplifiée et claire
   const navItems = [
     { href: '/', label: t('nav.start'), icon: Compass },
-    { href: '/about', label: t('nav.about', 'À propos'), icon: Compass, highlight: true },
+    { href: '/about', label: t('nav.about', 'À propos'), icon: Info },
     { href: '/prevention-filter', label: t('nav.preventionFilter', 'Filtre'), icon: Shield },
     { href: '/world-map', label: t('nav.worldMap', 'Carte'), icon: Globe },
     { href: '/errors-illusions', label: t('nav.errorsIllusions', 'Erreurs'), icon: BookOpen },
@@ -54,11 +54,11 @@ export function Header() {
     { href: '/exit-keys', label: t('nav.exitKeys'), icon: Key },
     { href: '/compare', label: t('nav.compare'), icon: Scale },
     { href: '/dashboard', label: t('nav.dashboard'), icon: LayoutDashboard },
+    { href: '/usage', label: t('nav.usage', 'Consommation'), icon: Settings },
     { href: '/pricing', label: t('nav.pricing', 'Tarifs'), icon: CreditCard },
-    { href: '/partners', label: t('nav.partners', 'Partenaires'), icon: Users, highlight: true },
+    { href: '/partners', label: t('nav.partners', 'Partenaires'), icon: Users },
     { href: '/b2b', label: t('nav.b2b', 'B2B'), icon: Building2 },
     { href: '/resources', label: t('nav.resources'), icon: FileText },
-    { href: '/about', label: t('nav.about', 'À Propos'), icon: Info },
   ];
 
   // Admin navigation items (only show for authenticated users)

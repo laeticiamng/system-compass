@@ -65,6 +65,7 @@ export function Footer() {
               <li><Link to="/latent" className="hover:text-foreground transition-colors">🔍 {t('footer.potentialZones')}</Link></li>
               <li><Link to="/irreversa" className="hover:text-foreground transition-colors">🔒 {t('footer.thresholdProtocol')}</Link></li>
               <li><Link to="/institutions" className="hover:text-foreground transition-colors">🏛️ {t('footer.businessInstitutions')}</Link></li>
+              <li><Link to="/usage" className="hover:text-foreground transition-colors">📊 {t('nav.usage', 'Consommation')}</Link></li>
             </ul>
           </div>
 
