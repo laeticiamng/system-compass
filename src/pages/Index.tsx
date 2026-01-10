@@ -374,7 +374,7 @@ export default function Index() {
                 </div>
                 <div>
                   <h3 className="font-semibold">Premium</h3>
-                  <p className="text-sm text-muted-foreground">7,99€ / {t('pricing.perMonth', 'mois')}</p>
+                  <p className="text-sm text-muted-foreground">7,99€ {t('pricing.perMonth', '/ mois')}</p>
                 </div>
               </div>
               <ul className="space-y-2 mb-6">
@@ -406,7 +406,7 @@ export default function Index() {
                 </div>
                 <div>
                   <h3 className="font-semibold">Pro</h3>
-                  <p className="text-sm text-muted-foreground">19,99€ / {t('pricing.perMonth', 'mois')}</p>
+                  <p className="text-sm text-muted-foreground">19,99€ {t('pricing.perMonth', '/ mois')}</p>
                 </div>
               </div>
               <ul className="space-y-2 mb-6">
