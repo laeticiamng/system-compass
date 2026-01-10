@@ -11,6 +11,27 @@ import es from './locales/es.json';
 import it from './locales/it.json';
 import pt from './locales/pt.json';
 
+// Import positive points translations
+import countriesPositivePointsFr from './locales/countries-positive-points-fr.json';
+import countriesPositivePointsEn from './locales/countries-positive-points-en.json';
+
+// Merge function for deep merging objects
+function deepMerge(target: Record<string, unknown>, source: Record<string, unknown>): Record<string, unknown> {
+  const result = { ...target };
+  for (const key of Object.keys(source)) {
+    if (source[key] && typeof source[key] === 'object' && !Array.isArray(source[key])) {
+      result[key] = deepMerge((result[key] || {}) as Record<string, unknown>, source[key] as Record<string, unknown>);
+    } else {
+      result[key] = source[key];
+    }
+  }
+  return result;
+}
+
+// Merge positive points translations into main translations
+const mergedFr = deepMerge(fr as Record<string, unknown>, countriesPositivePointsFr as Record<string, unknown>) as typeof fr;
+const mergedEn = deepMerge(en as Record<string, unknown>, countriesPositivePointsEn as Record<string, unknown>) as typeof en;
+
 // Supported languages with metadata
 export const SUPPORTED_LANGUAGES = [
   { code: 'en', label: 'English', flag: '🇬🇧', name: 'English' },
@@ -25,8 +46,8 @@ export const SUPPORTED_LANGUAGES = [
 export type SupportedLanguage = typeof SUPPORTED_LANGUAGES[number]['code'];
 
 const resources = {
-  en: { translation: en },
-  fr: { translation: fr },
+  en: { translation: mergedEn },
+  fr: { translation: mergedFr },
   nl: { translation: nl },
   de: { translation: de },
   es: { translation: es },
