@@ -44,40 +44,40 @@ export function Footer() {
 
           {/* Navigation */}
           <div>
-            <h4 className="font-semibold mb-4">{t('footer.explore', 'Explore')}</h4>
+            <h4 className="font-semibold mb-4">{t('footer.explore')}</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li><Link to="/countries" className="hover:text-foreground transition-colors">{t('nav.countries')}</Link></li>
               <li><Link to="/pyramid-types" className="hover:text-foreground transition-colors">{t('nav.pyramids')}</Link></li>
               <li><Link to="/compare" className="hover:text-foreground transition-colors">{t('nav.compare')}</Link></li>
-              <li><Link to="/multi-compare" className="hover:text-foreground transition-colors">{t('nav.multiCompare', 'Multi-Compare')}</Link></li>
+              <li><Link to="/multi-compare" className="hover:text-foreground transition-colors">{t('nav.multiCompare')}</Link></li>
               <li><Link to="/resources" className="hover:text-foreground transition-colors">{t('nav.resources')}</Link></li>
             </ul>
           </div>
 
           {/* Tools */}
           <div>
-            <h4 className="font-semibold mb-4">{t('footer.tools', 'Tools')}</h4>
+            <h4 className="font-semibold mb-4">{t('footer.tools')}</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link to="/exit-keys" className="hover:text-foreground transition-colors">{t('nav.exitKeys', 'Clés de Sortie')}</Link></li>
-              <li><Link to="/exit-keys/catalog" className="hover:text-foreground transition-colors">{t('exitKeys.catalog.title', 'Catalogue des Clés')}</Link></li>
-              <li><Link to="/prevention-filter" className="hover:text-foreground transition-colors">{t('nav.preventionFilter', 'Filtre')}</Link></li>
-              <li><Link to="/life-game" className="hover:text-foreground transition-colors">{t('nav.lifeGame', 'Jeu de Vie')}</Link></li>
-              <li><Link to="/latent" className="hover:text-foreground transition-colors">🔍 {t('latent.title', 'Zones Latentes')}</Link></li>
-              <li><Link to="/irreversa" className="hover:text-foreground transition-colors">🔒 {t('irreversa.title', 'Irreversa')}</Link></li>
-              <li><Link to="/institutions" className="hover:text-foreground transition-colors">🏛️ {t('institutions.badge', 'Institutions')}</Link></li>
+              <li><Link to="/exit-keys" className="hover:text-foreground transition-colors">{t('nav.exitKeys')}</Link></li>
+              <li><Link to="/exit-keys/catalog" className="hover:text-foreground transition-colors">{t('footer.exitKeysCatalog')}</Link></li>
+              <li><Link to="/prevention-filter" className="hover:text-foreground transition-colors">{t('nav.preventionFilter')}</Link></li>
+              <li><Link to="/life-game" className="hover:text-foreground transition-colors">{t('nav.lifeGame')}</Link></li>
+              <li><Link to="/latent" className="hover:text-foreground transition-colors">🔍 {t('footer.potentialZones')}</Link></li>
+              <li><Link to="/irreversa" className="hover:text-foreground transition-colors">🔒 {t('footer.thresholdProtocol')}</Link></li>
+              <li><Link to="/institutions" className="hover:text-foreground transition-colors">🏛️ {t('footer.businessInstitutions')}</Link></li>
             </ul>
           </div>
 
           {/* Account & Legal */}
           <div>
-            <h4 className="font-semibold mb-4">{t('footer.account', 'Account')}</h4>
+            <h4 className="font-semibold mb-4">{t('footer.account')}</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li><Link to="/dashboard" className="hover:text-foreground transition-colors">{t('nav.dashboard')}</Link></li>
-              <li><Link to="/pricing" className="hover:text-foreground transition-colors font-medium text-primary">💎 {t('nav.pricing', 'Tarifs')}</Link></li>
+              <li><Link to="/pricing" className="hover:text-foreground transition-colors font-medium text-primary">💎 {t('nav.pricing')}</Link></li>
               <li><Link to="/auth" className="hover:text-foreground transition-colors">{t('auth.login')}</Link></li>
-              <li><Link to="/about" className="hover:text-foreground transition-colors">{t('footer.about', 'À propos')}</Link></li>
-              <li><Link to="/how-to-read" className="hover:text-foreground transition-colors">📖 {t('howToRead.title', 'Comment lire les résultats')}</Link></li>
-              <li><Link to="/disclaimer" className="hover:text-foreground transition-colors text-amber-500/80 hover:text-amber-500">⚠️ Avertissements</Link></li>
+              <li><Link to="/about" className="hover:text-foreground transition-colors">{t('footer.about')}</Link></li>
+              <li><Link to="/how-to-read" className="hover:text-foreground transition-colors">📖 {t('footer.howToRead')}</Link></li>
+              <li><Link to="/disclaimer" className="hover:text-foreground transition-colors text-amber-500/80 hover:text-amber-500">⚠️ {t('footer.warnings')}</Link></li>
             </ul>
           </div>
         </div>
@@ -127,8 +127,8 @@ export function Footer() {
                 © {currentYear} {t('common.appName')}
               </p>
               <p className="text-xs text-muted-foreground/70 mt-1">
-                Outil d'analyse et simulation. Pas de conseil juridique, financier ou médical. 
-                <Link to="/disclaimer" className="text-primary hover:underline ml-1">En savoir plus</Link>
+                {t('footer.disclaimer')}
+                <Link to="/disclaimer" className="text-primary hover:underline ml-1">{t('footer.learnMore')}</Link>
               </p>
             </div>
             <div className="flex items-center gap-4 text-sm text-muted-foreground">

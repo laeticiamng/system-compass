@@ -280,7 +280,22 @@
     "account": "Account",
     "profileTest": "Profile Test",
     "madeWith": "Made with",
-    "about": "About"
+    "about": "About",
+    "exitKeysCatalog": "Exit Keys Catalog",
+    "potentialZones": "Potential Zones",
+    "thresholdProtocol": "Threshold Protocol",
+    "businessInstitutions": "Business & Institutions",
+    "howToRead": "How to Read Results",
+    "warnings": "Warnings",
+    "disclaimer": "Analysis and simulation tool. No legal, financial or medical advice.",
+    "learnMore": "Learn more",
+    "restartTutorial": "Restart tutorial",
+    "restartTutorialTooltip": "Restart the welcome tutorial",
+    "resetDisclaimer": "Show warnings again",
+    "resetDisclaimerTooltip": "Show disclaimer banner on simulation pages again",
+    "disclaimerReset": "Disclaimer banner reset",
+    "defaultCountry": "Default country",
+    "defaultCountryTooltip": "Calculators use this country by default. Change it in tools."
   },
   "about": {
     "badge": "Our mission",
