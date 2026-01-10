@@ -530,6 +530,129 @@ export type Database = {
         }
         Relationships: []
       }
+      partner_applications: {
+        Row: {
+          company_name: string | null
+          created_at: string
+          ethics_charter_accepted: boolean
+          ethics_charter_accepted_at: string | null
+          id: string
+          motivation: string
+          partner_type: Database["public"]["Enums"]["partner_type"]
+          platform_experience: string | null
+          professional_profile: string | null
+          review_notes: string | null
+          reviewed_at: string | null
+          reviewed_by: string | null
+          status: Database["public"]["Enums"]["partner_application_status"]
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          company_name?: string | null
+          created_at?: string
+          ethics_charter_accepted?: boolean
+          ethics_charter_accepted_at?: string | null
+          id?: string
+          motivation: string
+          partner_type: Database["public"]["Enums"]["partner_type"]
+          platform_experience?: string | null
+          professional_profile?: string | null
+          review_notes?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: Database["public"]["Enums"]["partner_application_status"]
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          company_name?: string | null
+          created_at?: string
+          ethics_charter_accepted?: boolean
+          ethics_charter_accepted_at?: string | null
+          id?: string
+          motivation?: string
+          partner_type?: Database["public"]["Enums"]["partner_type"]
+          platform_experience?: string | null
+          professional_profile?: string | null
+          review_notes?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: Database["public"]["Enums"]["partner_application_status"]
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      partner_benefits: {
+        Row: {
+          active: boolean
+          awarded_at: string
+          benefit_type: string
+          description: string
+          expires_at: string | null
+          id: string
+          user_id: string
+        }
+        Insert: {
+          active?: boolean
+          awarded_at?: string
+          benefit_type: string
+          description: string
+          expires_at?: string | null
+          id?: string
+          user_id: string
+        }
+        Update: {
+          active?: boolean
+          awarded_at?: string
+          benefit_type?: string
+          description?: string
+          expires_at?: string | null
+          id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      partner_contributions: {
+        Row: {
+          contribution_type: string
+          created_at: string
+          credits_awarded: number | null
+          description: string
+          id: string
+          impact_metric: string | null
+          user_id: string
+          verified: boolean
+          verified_at: string | null
+          verified_by: string | null
+        }
+        Insert: {
+          contribution_type: string
+          created_at?: string
+          credits_awarded?: number | null
+          description: string
+          id?: string
+          impact_metric?: string | null
+          user_id: string
+          verified?: boolean
+          verified_at?: string | null
+          verified_by?: string | null
+        }
+        Update: {
+          contribution_type?: string
+          created_at?: string
+          credits_awarded?: number | null
+          description?: string
+          id?: string
+          impact_metric?: string | null
+          user_id?: string
+          verified?: boolean
+          verified_at?: string | null
+          verified_by?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           birth_country: string | null
@@ -1154,6 +1277,12 @@ export type Database = {
     }
     Enums: {
       game_mode: "solo" | "race" | "points_duel" | "cooperative"
+      partner_application_status:
+        | "pending"
+        | "approved"
+        | "rejected"
+        | "suspended"
+      partner_type: "ambassador" | "b2b_partner"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -1282,6 +1411,13 @@ export const Constants = {
   public: {
     Enums: {
       game_mode: ["solo", "race", "points_duel", "cooperative"],
+      partner_application_status: [
+        "pending",
+        "approved",
+        "rejected",
+        "suspended",
+      ],
+      partner_type: ["ambassador", "b2b_partner"],
     },
   },
 } as const
