@@ -6015,5 +6015,29 @@
       "updatedAt": "Updated at",
       "tensionsCount": "Tensions count"
     }
+  },
+  "irreversa": {
+    "title": "Threshold Protocol",
+    "subtitle": "Identify and cross strategic irreversibility points",
+    "paywall": { "title": "IRREVERSA - Enterprise", "description": "B2B module for irreversible decisions" },
+    "status": { "detected": "Detected", "marked": "Marked", "validated": "Validated", "sealed": "Sealed" },
+    "domain": { "strategic": "Strategic", "financial": "Financial", "organizational": "Organizational", "legal": "Legal", "ethical": "Ethical" },
+    "nature": { "resource_commitment": "Resource commitment", "contractual": "Contractual", "reputational": "Reputational", "structural": "Structural", "temporal": "Temporal" },
+    "source": { "compass_analysis": "Compass Analysis", "manual": "Manual", "external_signal": "External signal" },
+    "role": { "ceo": "CEO", "board": "Board", "founder": "Founder", "director": "Director", "comex": "COMEX" },
+    "fields": { "title": "Title", "context": "Context", "domain": "Domain", "detectionSource": "Detection source", "nature": "Threshold nature", "irreversibilityReason": "Irreversibility reason", "frozenAlternatives": "Frozen alternatives", "validator": "Validator", "validatorRole": "Validator role", "organization": "Organization", "detectionDate": "Detection date", "validationStatement": "Validation statement", "actorName": "Actor name", "actorRole": "Actor role" },
+    "placeholders": { "title": "Ex: Merger with CompanyX", "context": "Describe the strategic context...", "irreversibilityReason": "Why is this threshold irreversible?", "alternative": "Abandoned alternative...", "validator": "Validator's full name", "organization": "Organization name", "validationStatement": "I confirm understanding the implications...", "actorName": "Your full name" },
+    "hints": { "alternatives": "List the alternatives that will be definitively abandoned" },
+    "actions": { "newThreshold": "New threshold", "detect": "Detect threshold", "mark": "Mark", "validate": "Validate", "seal": "Seal permanently", "view": "View details", "addAlternative": "Add alternative" },
+    "warning": { "title": "Irreversibility protocol", "noCancellation": "No cancellation possible", "noEdit": "No retroactive editing", "noScoring": "No scoring", "noRecommendation": "No recommendation" },
+    "create": { "title": "Detect irreversibility threshold", "warning": "This form engages the validator's moral responsibility" },
+    "sealed": { "title": "Permanently sealed threshold", "description": "This threshold has been sealed and can no longer be modified.", "notice": "Sealed on", "timestamp": "Timestamp" },
+    "tabs": { "details": "Details", "witnesses": "Witnesses", "audit": "Audit" },
+    "witnesses": { "empty": "No witnesses recorded" },
+    "audit": { "empty": "No audit entries", "action": { "created": "Threshold created", "marked": "Threshold marked", "witness_added": "Witness added", "validated": "Threshold validated", "sealed": "Threshold sealed" } },
+    "dialog": { "mark": { "title": "Mark threshold", "description": "Confirm the marking of this point of no return" }, "validate": { "title": "Validate threshold", "description": "Provide an explicit validation statement" }, "seal": { "title": "Seal permanently", "description": "This action is IRREVERSIBLE", "warning": "Once sealed, this threshold can NEVER be modified or cancelled." } },
+    "toast": { "created": "Threshold detected successfully", "marked": "Threshold marked", "validated": "Threshold validated", "sealed": "Threshold permanently sealed" },
+    "empty": { "title": "No irreversibility thresholds", "description": "Identify strategic points of no return" },
+    "demoMode": "Log in to use IRREVERSA"
   }
 }

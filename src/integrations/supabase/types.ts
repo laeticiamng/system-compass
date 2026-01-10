@@ -497,6 +497,154 @@ export type Database = {
         }
         Relationships: []
       }
+      irreversa_audit_log: {
+        Row: {
+          action: string
+          actor_name: string
+          actor_role: string
+          created_at: string
+          details: Json
+          id: string
+          ip_hash: string | null
+          threshold_id: string
+        }
+        Insert: {
+          action: string
+          actor_name: string
+          actor_role: string
+          created_at?: string
+          details?: Json
+          id?: string
+          ip_hash?: string | null
+          threshold_id: string
+        }
+        Update: {
+          action?: string
+          actor_name?: string
+          actor_role?: string
+          created_at?: string
+          details?: Json
+          id?: string
+          ip_hash?: string | null
+          threshold_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "irreversa_audit_log_threshold_id_fkey"
+            columns: ["threshold_id"]
+            isOneToOne: false
+            referencedRelation: "irreversa_thresholds"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      irreversa_thresholds: {
+        Row: {
+          alternatives_before: Json
+          compass_country_id: string | null
+          context: string
+          created_at: string
+          detection_date: string
+          detection_source: string
+          domain: string
+          id: string
+          irreversibility_reason: string
+          organization_name: string | null
+          sealed_at: string | null
+          status: string
+          threshold_nature: string
+          title: string
+          updated_at: string
+          user_id: string
+          validated_by: string
+          validation_date: string | null
+          validation_statement: string | null
+          validator_role: string
+        }
+        Insert: {
+          alternatives_before?: Json
+          compass_country_id?: string | null
+          context: string
+          created_at?: string
+          detection_date?: string
+          detection_source: string
+          domain: string
+          id?: string
+          irreversibility_reason: string
+          organization_name?: string | null
+          sealed_at?: string | null
+          status?: string
+          threshold_nature: string
+          title: string
+          updated_at?: string
+          user_id: string
+          validated_by: string
+          validation_date?: string | null
+          validation_statement?: string | null
+          validator_role: string
+        }
+        Update: {
+          alternatives_before?: Json
+          compass_country_id?: string | null
+          context?: string
+          created_at?: string
+          detection_date?: string
+          detection_source?: string
+          domain?: string
+          id?: string
+          irreversibility_reason?: string
+          organization_name?: string | null
+          sealed_at?: string | null
+          status?: string
+          threshold_nature?: string
+          title?: string
+          updated_at?: string
+          user_id?: string
+          validated_by?: string
+          validation_date?: string | null
+          validation_statement?: string | null
+          validator_role?: string
+        }
+        Relationships: []
+      }
+      irreversa_witnesses: {
+        Row: {
+          id: string
+          signature_hash: string | null
+          threshold_id: string
+          witness_name: string
+          witness_role: string
+          witness_statement: string | null
+          witnessed_at: string
+        }
+        Insert: {
+          id?: string
+          signature_hash?: string | null
+          threshold_id: string
+          witness_name: string
+          witness_role: string
+          witness_statement?: string | null
+          witnessed_at?: string
+        }
+        Update: {
+          id?: string
+          signature_hash?: string | null
+          threshold_id?: string
+          witness_name?: string
+          witness_role?: string
+          witness_statement?: string | null
+          witnessed_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "irreversa_witnesses_threshold_id_fkey"
+            columns: ["threshold_id"]
+            isOneToOne: false
+            referencedRelation: "irreversa_thresholds"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       latent_zone_history: {
         Row: {
           action: string
