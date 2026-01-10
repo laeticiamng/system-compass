@@ -500,6 +500,45 @@
       }
     }
   },
+  "errorsIllusions": {
+    "badge": "Erros e Ilusões",
+    "title": "Erros e Ilusões",
+    "subtitle": "O que os sistemas não perdoam — e como evitá-los",
+    "intro": "Não são julgamentos morais. São desajustes entre expectativas e as regras reais de um sistema.",
+    "centralMessage": "Estes erros não são faltas morais.",
+    "centralMessageDesc": "São desajustes entre as expectativas de um indivíduo e as regras reais de um sistema. Reconhecê-los permite antecipá-los — não julgá-los.",
+    "cognitiveIntro": "Os 10 erros de decisão mais dispendiosos. Padrões recorrentes que custam tempo, dinheiro e energia.",
+    "systemicIntro": "Estes erros são específicos dos tipos de pirâmide. Ocorrem quando aplicas as regras de um sistema num sistema que funciona de forma diferente.",
+    "ctaTitle": "Reconheces um destes erros?",
+    "ctaDescription": "Passa a tua decisão pelo filtro de prevenção para identificar riscos antes que seja tarde demais.",
+    "goToHub": "Encontrar a ferramenta certa",
+    "tabs": {
+      "cognitive": "Erros cognitivos",
+      "systemic": "Erros sistémicos"
+    },
+    "cognitive": {
+      "title": "Erros Cognitivos Universais",
+      "subtitle": "Padrões recorrentes que custam anos, independentemente da nacionalidade ou destino",
+      "intro": "Estes erros não são julgamentos. São padrões observáveis que levam sistematicamente a más decisões.",
+      "categories": {
+        "perception": "Erros de Percepção",
+        "planning": "Erros de Planeamento",
+        "social": "Erros Sociais",
+        "financial": "Erros Financeiros"
+      }
+    },
+    "systemic": {
+      "title": "Erros Sistémicos",
+      "subtitle": "O que os sistemas não perdoam — e como evitá-los",
+      "intro": "Estes erros são desajustes entre as expectativas de um indivíduo e as regras reais de um sistema."
+    },
+    "cta": {
+      "title": "Evitar estes erros começa por compreender o teu sistema",
+      "subtitle": "Analisa a tua situação atual, identifica desajustes potenciais e explora estratégias adaptadas ao teu perfil.",
+      "simulateTrajectory": "Simular a minha trajetória",
+      "viewExitKeys": "Ver Chaves de Saída"
+    }
+  },
   "nav": {
     "start": "Início",
     "countries": "Países",
@@ -519,7 +558,10 @@
     "preventionFilter": "Filtro",
     "universalErrors": "Erros",
     "worldMap": "Mapa",
-    "pricing": "Preços"
+    "pricing": "Preços",
+    "errorsIllusions": "Erros e Ilusões",
+    "orientationHub": "Orientação",
+    "partners": "Parceiros"
   },
   "worldMap": {
     "badge": "Exploração mundial",
