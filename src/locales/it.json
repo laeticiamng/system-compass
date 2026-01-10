@@ -72,6 +72,21 @@
     "button": "Analizzare la mia situazione",
     "disclaimer": "Solo strumento di analisi. Rimani responsabile delle tue decisioni."
   },
+  "disclaimerConsent": {
+    "title": "Prima di iniziare",
+    "subtitle": "Alcune informazioni importanti su questo strumento",
+    "important": "Importante",
+    "warning": "Nessun risultato mostrato è una diagnosi, raccomandazione o consiglio professionale.",
+    "analysisToolTitle": "Strumento di analisi e simulazione",
+    "analysisToolDesc": "Pyramid Compass è uno strumento educativo, non un servizio di consulenza.",
+    "noAdviceTitle": "Nessun consiglio professionale",
+    "noAdviceDesc": "Non viene fornita consulenza legale, finanziaria o medica.",
+    "responsibleTitle": "Rimani responsabile",
+    "responsibleDesc": "Le tue decisioni ti appartengono.",
+    "checkbox": "Capisco che questo strumento è informativo e che rimango responsabile delle mie decisioni.",
+    "seeDetails": "Vedi dettagli completi",
+    "accept": "Capisco, continua"
+  },
   "simulationDisclaimer": {
     "notPrediction": "Simulazione ≠ Previsione",
     "inline": "Simulazione solo a scopo informativo.",
