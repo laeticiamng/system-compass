@@ -31,14 +31,13 @@ import CompareExitKeys from "./pages/CompareExitKeys";
 import Dashboard from "./pages/Dashboard";
 import About from "./pages/About";
 import Disclaimer from "./pages/Disclaimer";
-import SystemicMistakes from "./pages/SystemicMistakes";
 import HowToRead from "./pages/HowToRead";
 import AdminTranslations from "./pages/AdminTranslations";
 import AdminAnalytics from "./pages/AdminAnalytics";
 import MultiCompare from "./pages/MultiCompare";
 import PreventionFilter from "./pages/PreventionFilter";
-import UniversalErrors from "./pages/UniversalErrors";
 import UniversalErrorDetail from "./pages/UniversalErrorDetail";
+import { Navigate } from "react-router-dom";
 import QuickTest from "./pages/QuickTest";
 import ErrorsAndIllusions from "./pages/ErrorsAndIllusions";
 import OrientationHub from "./pages/OrientationHub";
@@ -92,12 +91,13 @@ const App = () => (
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/disclaimer" element={<Disclaimer />} />
-                    <Route path="/systemic-mistakes" element={<SystemicMistakes />} />
+                    <Route path="/systemic-mistakes" element={<Navigate to="/errors-illusions" replace />} />
                     <Route path="/how-to-read" element={<HowToRead />} />
                     <Route path="/admin/translations" element={<AdminTranslations />} />
                     <Route path="/admin/analytics" element={<AdminAnalytics />} />
                     <Route path="/prevention-filter" element={<PreventionFilter />} />
-                    <Route path="/universal-errors" element={<UniversalErrors />} />
+                    <Route path="/universal-errors" element={<Navigate to="/errors-illusions" replace />} />
+                    <Route path="/systemic-mistakes" element={<Navigate to="/errors-illusions" replace />} />
                     <Route path="/universal-errors/:id" element={<UniversalErrorDetail />} />
                     <Route path="/errors-illusions" element={<ErrorsAndIllusions />} />
                     <Route path="/orientation-hub" element={<OrientationHub />} />
