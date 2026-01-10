@@ -113,7 +113,7 @@ function calculateLifeScore(player: PlayerEndState): {
   const resourceTotal = Object.values(player.resources).reduce((a, b) => a + b, 0);
   const resourceMax = 60;
   breakdown.push({ 
-    category: 'Ressources finales', 
+    category: 'gameEnd.finalResources', 
     score: resourceTotal, 
     max: resourceMax,
     icon: '💎'
@@ -123,7 +123,7 @@ function calculateLifeScore(player: PlayerEndState): {
   const nonZeroPyramids = Object.values(player.scores).filter(s => s > 0).length;
   const pyramidDiversity = nonZeroPyramids * 5;
   breakdown.push({ 
-    category: 'Diversité des expériences', 
+    category: 'gameEnd.experienceDiversity', 
     score: pyramidDiversity, 
     max: 30,
     icon: '🌍'
@@ -134,7 +134,7 @@ function calculateLifeScore(player: PlayerEndState): {
   const aspirationScore = aspirationResults.filter(a => a.achieved).length * 
     (40 / Math.max(1, aspirationResults.length));
   breakdown.push({ 
-    category: 'Objectifs atteints', 
+    category: 'gameEnd.goalsAchieved', 
     score: Math.round(aspirationScore), 
     max: 40,
     icon: '🎯'
@@ -143,7 +143,7 @@ function calculateLifeScore(player: PlayerEndState): {
   // Health bonus (max 20)
   const healthScore = player.resources.health * 2;
   breakdown.push({ 
-    category: 'Santé préservée', 
+    category: 'gameEnd.healthPreserved', 
     score: healthScore, 
     max: 20,
     icon: '❤️'
@@ -152,7 +152,7 @@ function calculateLifeScore(player: PlayerEndState): {
   // Network bonus (max 20)
   const networkScore = player.resources.network * 2;
   breakdown.push({ 
-    category: 'Réseau développé', 
+    category: 'gameEnd.networkDeveloped', 
     score: networkScore, 
     max: 20,
     icon: '🤝'
@@ -309,7 +309,7 @@ export default function GameEndSummary({
                           <div className="flex items-center justify-between text-sm">
                             <span className="flex items-center gap-2">
                               <span>{item.icon}</span>
-                              {item.category}
+                              {t(item.category)}
                             </span>
                             <span className="font-mono">{item.score}/{item.max}</span>
                           </div>

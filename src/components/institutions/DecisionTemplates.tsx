@@ -260,13 +260,16 @@ const categoryColors: Record<string, string> = {
   operations: 'bg-cyan-500/10 text-cyan-600 border-cyan-500/20'
 };
 
-const categoryLabels: Record<string, string> = {
-  rh: 'RH',
-  it: 'IT',
-  strategy: 'Stratégie',
-  finance: 'Finance',
-  legal: 'Juridique',
-  operations: 'Opérations'
+const getCategoryLabel = (category: string, t: ReturnType<typeof useTranslation>['t']): string => {
+  const labels: Record<string, string> = {
+    rh: t('traceOS.categories.hr', 'RH'),
+    it: t('traceOS.categories.it', 'IT'),
+    strategy: t('traceOS.categories.strategy', 'Stratégie'),
+    finance: t('traceOS.categories.finance', 'Finance'),
+    legal: t('traceOS.categories.legal', 'Juridique'),
+    operations: t('traceOS.categories.operations', 'Opérations')
+  };
+  return labels[category] || category;
 };
 
 interface DecisionTemplatesProps {
@@ -301,7 +304,7 @@ export function DecisionTemplates({ onSelectTemplate }: DecisionTemplatesProps) 
               <div key={category} className="space-y-3">
                 <div className="flex items-center gap-2">
                   <Badge variant="outline" className={categoryColors[category]}>
-                    {categoryLabels[category]}
+                    {getCategoryLabel(category, t)}
                   </Badge>
                 </div>
                 <div className="grid gap-3">

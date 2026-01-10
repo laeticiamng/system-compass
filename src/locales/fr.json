@@ -5290,6 +5290,19 @@
     }
   },
   "traceOS": {
+    "categories": {
+      "hr": "RH",
+      "it": "IT",
+      "strategy": "Stratégie",
+      "finance": "Finance",
+      "legal": "Juridique",
+      "operations": "Opérations"
+    },
+    "metrics": {
+      "outOfTotal": "sur {{count}} total",
+      "approvalsCount": "{{count}} approbations",
+      "stepsCount": "{{count}} étapes"
+    },
     "badge": "TraceOS - Mémoire Décisionnelle",
     "title": "Traçabilité Intellectuelle",
     "subtitle": "Mémoire stratégique de votre organisation",

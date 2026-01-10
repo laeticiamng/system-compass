@@ -6222,6 +6222,19 @@
     }
   },
   "traceOS": {
+    "categories": {
+      "hr": "HR",
+      "it": "IT",
+      "strategy": "Strategy",
+      "finance": "Finance",
+      "legal": "Legal",
+      "operations": "Operations"
+    },
+    "metrics": {
+      "outOfTotal": "out of {{count}} total",
+      "approvalsCount": "{{count}} approvals",
+      "stepsCount": "{{count}} steps"
+    },
     "autoExport": {
       "schedule": "Export schedule",
       "scheduleDesc": "Automatically archive your decisions",
