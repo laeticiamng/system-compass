@@ -182,31 +182,31 @@ export function CountryIntelligenceSection({ countryId, countryName }: Props) {
         <TabsList className="grid grid-cols-4 lg:grid-cols-7 h-auto gap-1 bg-muted/30 p-1">
           <TabsTrigger value="power" className="text-xs gap-1">
             <Crown className="w-3 h-3" />
-            <span className="hidden sm:inline">{t('intelligence.power', 'Pouvoir')}</span>
+            <span className="hidden sm:inline">{t('intelligence.tabs.powerMap', 'Pouvoir')}</span>
           </TabsTrigger>
           <TabsTrigger value="social" className="text-xs gap-1">
             <Users className="w-3 h-3" />
-            <span className="hidden sm:inline">{t('intelligence.social', 'Social')}</span>
+            <span className="hidden sm:inline">{t('intelligence.tabs.socialOS', 'Social')}</span>
           </TabsTrigger>
           <TabsTrigger value="strategies" className="text-xs gap-1">
             <Zap className="w-3 h-3" />
-            <span className="hidden sm:inline">{t('intelligence.strategies', 'Stratégies')}</span>
+            <span className="hidden sm:inline">{t('intelligence.tabs.strategies', 'Stratégies')}</span>
           </TabsTrigger>
           <TabsTrigger value="mobility" className="text-xs gap-1">
             <TrendingUp className="w-3 h-3" />
-            <span className="hidden sm:inline">{t('intelligence.mobility', 'Mobilité')}</span>
+            <span className="hidden sm:inline">{t('intelligence.tabs.mobility', 'Mobilité')}</span>
           </TabsTrigger>
           <TabsTrigger value="psycho" className="text-xs gap-1">
             <Brain className="w-3 h-3" />
-            <span className="hidden sm:inline">{t('intelligence.psycho', 'Psycho')}</span>
+            <span className="hidden sm:inline">{t('intelligence.tabs.psychoSocio', 'Psycho')}</span>
           </TabsTrigger>
           <TabsTrigger value="geo" className="text-xs gap-1">
             <Globe className="w-3 h-3" />
-            <span className="hidden sm:inline">{t('intelligence.geo', 'Géo')}</span>
+            <span className="hidden sm:inline">{t('intelligence.tabs.geopolitics', 'Géo')}</span>
           </TabsTrigger>
           <TabsTrigger value="history" className="text-xs gap-1">
             <History className="w-3 h-3" />
-            <span className="hidden sm:inline">{t('intelligence.history', 'Histoire')}</span>
+            <span className="hidden sm:inline">{t('intelligence.tabs.historical', 'Histoire')}</span>
           </TabsTrigger>
         </TabsList>
 
@@ -388,24 +388,24 @@ function SocialSystemSection({ intelligence }: { intelligence: CountryIntelligen
 
   const aspects = [
     { 
-      label: t('social.norms', 'Normes'), 
+      label: t('intelligence.socialOS.norms', 'Normes'), 
       value: intelligence.social_norms,
-      desc: t('social.normsDesc', 'Conformité vs différenciation')
+      desc: t('intelligence.socialOS.normsDesc', 'Conformité vs différenciation')
     },
     { 
-      label: t('social.authority', 'Relation à l\'autorité'), 
+      label: t('intelligence.socialOS.authority', 'Relation à l\'autorité'), 
       value: intelligence.authority_relation,
-      desc: t('social.authorityDesc', 'Verticalité / négociation / contournement')
+      desc: t('intelligence.socialOS.authorityDesc', 'Verticalité / négociation / contournement')
     },
     { 
-      label: t('social.risk', 'Rapport au risque'), 
+      label: t('intelligence.socialOS.risk', 'Rapport au risque'), 
       value: intelligence.risk_attitude,
-      desc: t('social.riskDesc', 'Toléré / puni / encadré')
+      desc: t('intelligence.socialOS.riskDesc', 'Toléré / puni / encadré')
     },
     { 
-      label: t('social.conflict', 'Rapport au conflit'), 
+      label: t('intelligence.socialOS.conflict', 'Rapport au conflit'), 
       value: intelligence.conflict_approach,
-      desc: t('social.conflictDesc', 'Frontal / indirect / juridique / relationnel')
+      desc: t('intelligence.socialOS.conflictDesc', 'Frontal / indirect / juridique / relationnel')
     },
   ];
 
@@ -436,7 +436,7 @@ function StrategiesSection({ intelligence }: { intelligence: CountryIntelligence
         <CardHeader className="pb-2">
           <CardTitle className="text-sm flex items-center gap-2">
             <ArrowUpRight className="w-4 h-4 text-green-500" />
-            {t('strategies.rewarded', 'Souvent récompensées')}
+            {t('intelligence.strategies.rewarded', 'Souvent récompensées')}
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -454,7 +454,7 @@ function StrategiesSection({ intelligence }: { intelligence: CountryIntelligence
         <CardHeader className="pb-2">
           <CardTitle className="text-sm flex items-center gap-2">
             <ArrowDownRight className="w-4 h-4 text-red-500" />
-            {t('strategies.punished', 'Souvent punies')}
+            {t('intelligence.strategies.punished', 'Souvent punies')}
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -472,7 +472,7 @@ function StrategiesSection({ intelligence }: { intelligence: CountryIntelligence
         <CardHeader className="pb-2">
           <CardTitle className="text-sm flex items-center gap-2">
             <AlertTriangle className="w-4 h-4 text-amber-500" />
-            {t('strategies.mistakes', 'Erreurs des nouveaux')}
+            {t('intelligence.strategies.newcomerMistakes', 'Erreurs des nouveaux')}
           </CardTitle>
         </CardHeader>
         <CardContent>
