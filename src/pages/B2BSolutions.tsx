@@ -192,6 +192,12 @@ export default function B2BSolutions() {
                 {t('b2b.cta.ovi', 'Explore OVI')}
               </Button>
             </Link>
+            <Link to="/partners">
+              <Button size="lg" variant="outline" className="gap-2 border-amber-500/30 hover:bg-amber-500/10">
+                <Users className="w-4 h-4" />
+                {t('b2b.cta.partners', 'Programme Partenaires')}
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
