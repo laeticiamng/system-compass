@@ -112,7 +112,7 @@ export default function WorldMapExplorer() {
             {t('worldMap.title', 'Carte des Systèmes')}
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            {t('worldMap.subtitle', 'Explorez visuellement les 29 pays analysés et leurs types de pyramides')}
+            {t('worldMap.subtitle', 'Explorez visuellement les {{count}} pays analysés et leurs types de pyramides', { count: stats.total })}
           </p>
         </div>
 
