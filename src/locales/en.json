@@ -5920,6 +5920,54 @@
       "additionalContext": "Additional context (optional)",
       "contextPlaceholder": "Add context for the decision team...",
       "notice": "The zone will be exported as a decision draft in TraceOS. Identified tensions will be included in the context."
+    },
+    "history": {
+      "title": "Zone Evolution",
+      "subtitle": "Non-linear timeline of transformations",
+      "empty": "No history available",
+      "selectZone": "Select a zone",
+      "selectToView": "Select a zone to view its history",
+      "action": {
+        "created": "Zone created",
+        "status_changed": "Status change",
+        "transformed": "Transformation",
+        "merged": "Merge",
+        "put_to_sleep": "Put to sleep",
+        "archived": "Archived"
+      }
+    },
+    "interconnections": {
+      "title": "Interconnections",
+      "subtitle": "Links between zones based on shared tensions",
+      "empty": "No zones to display",
+      "found": "{{count}} connections found"
+    },
+    "merge": {
+      "title": "Merge zones",
+      "button": "Merge",
+      "stepSelect": "Select zones to merge (minimum 2)",
+      "stepConfigure": "Configure the new merged zone",
+      "stepTensions": "Choose tensions to preserve",
+      "step1": "Selection",
+      "step2": "Configuration",
+      "step3": "Tensions",
+      "newTitle": "Merged zone title",
+      "titlePlaceholder": "A new open title...",
+      "newDescription": "Merged description",
+      "descriptionPlaceholder": "Combined description...",
+      "descriptionHint": "Source zone descriptions have been combined",
+      "zonesIncluded": "Included zones:",
+      "tensionsCount": "{{selected}}/{{total}} tensions selected",
+      "selectAll": "Select all",
+      "deselectAll": "Deselect all",
+      "noTensions": "No tensions to preserve",
+      "confirm": "Merge"
+    },
+    "tabs": {
+      "zones": "Potential zones",
+      "philosophy": "Philosophy",
+      "graph": "Graph",
+      "history": "History"
     }
   }
 }

@@ -6,7 +6,10 @@ import {
   Lock, 
   Info,
   Loader2,
-  Filter
+  Filter,
+  GitMerge,
+  Link2,
+  History
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -19,11 +22,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { useLatentZones, ZoneStatus, TensionType, HistoryAction } from '@/hooks/useLatentZones';
+import { useLatentZones, ZoneStatus, TensionType, HistoryAction, LatentZone } from '@/hooks/useLatentZones';
 import { useSubscription } from '@/hooks/useSubscription';
 import { ZoneCard } from './ZoneCard';
 import { CreateZoneForm } from './CreateZoneForm';
 import { LatentOnboarding } from './LatentOnboarding';
+import { ZoneInterconnections } from './ZoneInterconnections';
+import { ZoneMergeDialog } from './ZoneMergeDialog';
+import { ZoneHistoryTimeline } from './ZoneHistoryTimeline';
 import { PremiumPaywall } from '@/components/PremiumPaywall';
 import { toast } from 'sonner';
 
@@ -39,12 +45,15 @@ export function Latent() {
     addTension,
     removeTension,
     evolveZone,
-    deleteZone
+    deleteZone,
+    mergeZones
   } = useLatentZones();
   
   const [isCreating, setIsCreating] = useState(false);
   const [isCreatingZone, setIsCreatingZone] = useState(false);
   const [statusFilter, setStatusFilter] = useState<ZoneStatus | 'all'>('all');
+  const [isMergeOpen, setIsMergeOpen] = useState(false);
+  const [selectedZoneForHistory, setSelectedZoneForHistory] = useState<LatentZone | null>(null);
 
   const handleCreateZone = async (title: string, description?: string) => {
     setIsCreatingZone(true);
@@ -88,7 +97,21 @@ export function Latent() {
     }
   };
 
-  const filteredZones = statusFilter === 'all' 
+  const handleMerge = async (
+    sourceZoneIds: string[], 
+    newTitle: string, 
+    newDescription: string, 
+    tensionsToKeep: string[]
+  ) => {
+    const result = await mergeZones(sourceZoneIds, newTitle, newDescription, tensionsToKeep);
+    return result !== null;
+  };
+
+  const handleSelectZoneForHistory = (zone: LatentZone) => {
+    setSelectedZoneForHistory(zone);
+  };
+
+  const filteredZones = statusFilter === 'all'
     ? zones 
     : zones.filter(z => z.status === statusFilter);
 
@@ -149,6 +172,17 @@ export function Latent() {
         </div>
 
         <div className="flex items-center gap-2">
+          {zones.length >= 2 && (
+            <Button 
+              variant="outline"
+              onClick={() => setIsMergeOpen(true)} 
+              className="gap-2" 
+              disabled={!isLoggedIn}
+            >
+              <GitMerge className="w-4 h-4" />
+              {t('latent.merge.button', 'Fusionner')}
+            </Button>
+          )}
           <Button 
             onClick={() => setIsCreating(true)} 
             className="gap-2" 
@@ -159,6 +193,14 @@ export function Latent() {
           </Button>
         </div>
       </div>
+
+      {/* Merge Dialog */}
+      <ZoneMergeDialog
+        zones={zones}
+        isOpen={isMergeOpen}
+        onClose={() => setIsMergeOpen(false)}
+        onMerge={handleMerge}
+      />
 
       {/* Login notice */}
       {!isLoggedIn && (
@@ -172,10 +214,18 @@ export function Latent() {
       <Separator />
 
       <Tabs defaultValue="zones" className="space-y-4">
-        <TabsList>
+        <TabsList className="flex flex-wrap h-auto gap-1">
           <TabsTrigger value="zones" className="gap-2">
             <Moon className="w-4 h-4" />
             {t('latent.tabs.zones')}
+          </TabsTrigger>
+          <TabsTrigger value="graph" className="gap-2">
+            <Link2 className="w-4 h-4" />
+            {t('latent.tabs.graph', 'Graphe')}
+          </TabsTrigger>
+          <TabsTrigger value="history" className="gap-2">
+            <History className="w-4 h-4" />
+            {t('latent.tabs.history', 'Historique')}
           </TabsTrigger>
           <TabsTrigger value="onboarding" className="gap-2">
             <Info className="w-4 h-4" />
@@ -261,6 +311,78 @@ export function Latent() {
               </Button>
             </div>
           )}
+        </TabsContent>
+
+        <TabsContent value="graph">
+          <ZoneInterconnections 
+            zones={zones} 
+            onSelectZone={handleSelectZoneForHistory}
+          />
+        </TabsContent>
+
+        <TabsContent value="history">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Zone Selector */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-2">
+                <History className="w-4 h-4 text-muted-foreground" />
+                <Select 
+                  value={selectedZoneForHistory?.id || ''} 
+                  onValueChange={(v) => {
+                    const zone = zones.find(z => z.id === v);
+                    setSelectedZoneForHistory(zone || null);
+                  }}
+                >
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder={t('latent.history.selectZone', 'Sélectionner une zone')} />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {zones.map(zone => (
+                      <SelectItem key={zone.id} value={zone.id}>
+                        {zone.title}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Zone cards list for quick selection */}
+              <div className="space-y-2 max-h-[500px] overflow-y-auto">
+                {zones.map(zone => (
+                  <div 
+                    key={zone.id}
+                    className={`p-3 rounded-lg border cursor-pointer transition-all ${
+                      selectedZoneForHistory?.id === zone.id 
+                        ? 'border-primary bg-primary/5' 
+                        : 'hover:border-muted-foreground/50'
+                    }`}
+                    onClick={() => setSelectedZoneForHistory(zone)}
+                  >
+                    <p className="font-medium text-sm">{zone.title}</p>
+                    <div className="flex items-center gap-2 mt-1">
+                      <Badge variant="outline" className="text-xs">
+                        {t(`latent.status.${zone.status}`)}
+                      </Badge>
+                      <span className="text-xs text-muted-foreground">
+                        {(zone.tensions?.length || 0)} tensions
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Timeline */}
+            {selectedZoneForHistory ? (
+              <ZoneHistoryTimeline zone={selectedZoneForHistory} />
+            ) : (
+              <div className="flex items-center justify-center h-64 bg-muted/20 rounded-lg">
+                <p className="text-muted-foreground text-sm">
+                  {t('latent.history.selectToView', 'Sélectionnez une zone pour voir son historique')}
+                </p>
+              </div>
+            )}
+          </div>
         </TabsContent>
 
         <TabsContent value="onboarding">
