@@ -2085,7 +2085,13 @@
     "safety": "Sécurité",
     "corruption": "Corruption",
     "volatility": "Volatilité",
-    "bureaucracy": "Bureaucratie"
+    "bureaucracy": "Bureaucratie",
+    "levels": {
+      "low": "Faible",
+      "medium": "Modéré",
+      "high": "Élevé",
+      "critical": "Critique"
+    }
   },
   "visa": {
     "workVisa": "Visa travail",
