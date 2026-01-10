@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Dialog, 
@@ -18,31 +17,21 @@ import {
   CheckCircle,
   ExternalLink
 } from 'lucide-react';
-
-const CONSENT_KEY = 'pyramid-compass-disclaimer-accepted';
+import { useState } from 'react';
+import { useDialogCoordinator } from './DialogCoordinator';
 
 export function DisclaimerConsentDialog() {
-  const [isOpen, setIsOpen] = useState(false);
+  const { shouldShowDisclaimer, completeDisclaimer } = useDialogCoordinator();
   const [hasRead, setHasRead] = useState(false);
-
-  useEffect(() => {
-    const hasAccepted = localStorage.getItem(CONSENT_KEY);
-    if (!hasAccepted) {
-      // Small delay for better UX after page load
-      const timer = setTimeout(() => setIsOpen(true), 800);
-      return () => clearTimeout(timer);
-    }
-  }, []);
 
   const handleAccept = () => {
     if (hasRead) {
-      localStorage.setItem(CONSENT_KEY, 'true');
-      setIsOpen(false);
+      completeDisclaimer();
     }
   };
 
   return (
-    <Dialog open={isOpen} onOpenChange={() => {}}>
+    <Dialog open={shouldShowDisclaimer} onOpenChange={() => {}}>
       <DialogContent 
         className="sm:max-w-lg"
         onPointerDownOutside={(e) => e.preventDefault()}
@@ -102,38 +91,33 @@ export function DisclaimerConsentDialog() {
               </div>
             </div>
           </div>
-
-          {/* Checkbox */}
-          <div className="flex items-start gap-3 pt-2 border-t">
-            <Checkbox 
-              id="consent" 
-              checked={hasRead}
-              onCheckedChange={(checked) => setHasRead(checked === true)}
-            />
-            <Label 
-              htmlFor="consent" 
-              className="text-sm leading-relaxed cursor-pointer"
-            >
-              J'ai compris que cet outil est informatif et que je reste responsable de mes décisions.
-            </Label>
-          </div>
         </div>
 
-        <DialogFooter className="flex flex-col sm:flex-row gap-2">
+        <div className="flex items-start gap-3 py-2">
+          <Checkbox 
+            id="disclaimer-read" 
+            checked={hasRead}
+            onCheckedChange={(checked) => setHasRead(checked === true)}
+          />
+          <Label 
+            htmlFor="disclaimer-read" 
+            className="text-sm text-muted-foreground cursor-pointer leading-relaxed"
+          >
+            J'ai compris que cet outil est informatif et que je reste responsable de mes décisions.
+          </Label>
+        </div>
+
+        <DialogFooter className="flex-row justify-between sm:justify-between">
           <Link 
             to="/disclaimer" 
-            className="text-xs text-muted-foreground hover:text-primary flex items-center gap-1 sm:mr-auto"
-            onClick={() => {
-              localStorage.setItem(CONSENT_KEY, 'true');
-              setIsOpen(false);
-            }}
+            className="text-sm text-muted-foreground hover:text-foreground flex items-center gap-1"
+            onClick={() => completeDisclaimer()}
           >
             Voir les détails complets
             <ExternalLink className="w-3 h-3" />
           </Link>
-          
           <Button 
-            onClick={handleAccept} 
+            onClick={handleAccept}
             disabled={!hasRead}
             className="gap-2"
           >
@@ -144,17 +128,4 @@ export function DisclaimerConsentDialog() {
       </DialogContent>
     </Dialog>
   );
-}
-
-// Hook to check if consent was given
-export function useDisclaimerConsent() {
-  return localStorage.getItem(CONSENT_KEY) === 'true';
-}
-
-// Hook to reset consent (for testing)
-export function useResetDisclaimerConsent() {
-  return () => {
-    localStorage.removeItem(CONSENT_KEY);
-    window.location.reload();
-  };
 }

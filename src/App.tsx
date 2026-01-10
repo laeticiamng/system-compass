@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-// App Router - v1.0.1
+// App Router - v1.0.2
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
 import { FeatureFlagProvider } from "@/shared/components/FeatureFlag";
@@ -12,6 +12,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { OnboardingDialog } from "@/components/OnboardingDialog";
 import { DisclaimerConsentDialog } from "@/components/DisclaimerConsentDialog";
+import { DialogCoordinatorProvider } from "@/components/DialogCoordinator";
 import Index from "./pages/Index";
 import Countries from "./pages/Countries";
 import CountryDetail from "./pages/CountryDetail";
@@ -65,8 +66,9 @@ const App = () => (
             <Toaster />
             <Sonner />
             <BrowserRouter>
-              <DisclaimerConsentDialog />
-              <OnboardingDialog />
+              <DialogCoordinatorProvider>
+                <DisclaimerConsentDialog />
+                <OnboardingDialog />
               <div className="min-h-screen flex flex-col">
                 <Header />
                 <main className="flex-1">
@@ -119,6 +121,7 @@ const App = () => (
                 </main>
                 <Footer />
               </div>
+              </DialogCoordinatorProvider>
             </BrowserRouter>
           </TooltipProvider>
         </FeatureFlagProvider>

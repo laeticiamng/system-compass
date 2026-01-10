@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Compass, Heart, RotateCcw, RefreshCw } from 'lucide-react';
 import { CountryIndicator } from './CountryIndicator';
-import { useResetOnboarding } from './OnboardingDialog';
+import { useResetOnboarding } from './DialogCoordinator';
 import { Button } from './ui/button';
 import {
   Tooltip,
