@@ -2924,5 +2924,112 @@
       "rewards": ["Branchenexpertise", "Geografische Mobilität", "Gut verhandelte Kurzverträge", "Massives Sparen"],
       "punishes": ["Lokale Verwurzelung", "Langfristige Projekte", "Abhängigkeit vom lokalen System", "Hohe Lebenshaltungskosten"]
     }
+  },
+  "latent": {
+    "title": "Potenzialzonen",
+    "subtitle": "Ein Raum für das, was noch nicht bereit ist zu existieren",
+    "newZone": "Neue Zone",
+    "demoMode": "Demo-Modus. Melden Sie sich an, um Ihre Potenzialzonen zu speichern.",
+    "updated": "Aktualisiert",
+    "paywall": {
+      "title": "LATENT Modul - B2B",
+      "description": "Greifen Sie auf LATENT zu, um unformulierte Potenziale zu kartieren und zu pflegen, ohne Transformationsverpflichtung."
+    },
+    "tabs": {
+      "zones": "Potenzialzonen",
+      "philosophy": "Philosophie"
+    },
+    "filter": {
+      "all": "Alle Status"
+    },
+    "status": {
+      "dormant": "Ruhend",
+      "emergent": "Aufkommend",
+      "fragile": "Fragil",
+      "blocked": "Blockiert"
+    },
+    "tension": {
+      "nourishing": "Nährende Kräfte",
+      "blocking": "Blockierende Kräfte",
+      "fragility": "Fragilität",
+      "prematureCrushing": "Risiko vorzeitiger Zerstörung"
+    },
+    "tensions": {
+      "title": "Spannungsfelder",
+      "add": "Spannung hinzufügen",
+      "placeholder": "Diese Spannung beschreiben..."
+    },
+    "actions": {
+      "transform": "Transformieren (ohne zu entscheiden)",
+      "merge": "Mit einer anderen Zone zusammenführen",
+      "sleep": "In Ruhe versetzen",
+      "archive": "Ohne Abschluss archivieren"
+    },
+    "create": {
+      "title": "Potenzialzone erstellen",
+      "subtitle": "Benennen Sie, was entsteht, ohne es einzufrieren",
+      "labelTitle": "Offener Titel",
+      "placeholderTitle": "Was beginnt zu entstehen...",
+      "hintTitle": "Ein nicht abschließender Titel, der Raum offen lässt",
+      "labelDescription": "Absichtlich vage Beschreibung",
+      "placeholderDescription": "Eindrücke, mögliche Richtungen, noch keine Gewissheiten...",
+      "hintDescription": "Respektieren Sie die Unschärfe. Keine quantifizierten Ziele.",
+      "submit": "Diese Zone erstellen"
+    },
+    "empty": {
+      "title": "Keine Potenzialzonen",
+      "description": "Erstellen Sie Ihren ersten Raum für das, was noch nicht bereit ist.",
+      "cta": "Meine erste Zone erstellen"
+    },
+    "toast": {
+      "created": "Potenzialzone erstellt",
+      "statusUpdated": "Status aktualisiert",
+      "tensionAdded": "Spannung hinzugefügt",
+      "deleted": "Zone gelöscht",
+      "archived": "Zone ohne Abschluss archiviert",
+      "put_to_sleep": "Zone in Ruhe versetzt",
+      "transformed": "Transformation aufgezeichnet",
+      "merged": "Zusammenführung aufgezeichnet"
+    },
+    "export": {
+      "title": "Zu TraceOS exportieren",
+      "description": "Diese Zone als Entscheidungsentwurf exportieren",
+      "success": "Zone erfolgreich zu TraceOS exportiert",
+      "button": "Zu TraceOS exportieren"
+    },
+    "onboarding": {
+      "badge": "Strategischer Anti-Beschleuniger",
+      "title": "Willkommen bei LATENT",
+      "subtitle": "Ein sicherer Raum für das, was noch nicht bereit ist zu existieren. Hier wird Unschärfe respektiert.",
+      "notTitle": "Was LATENT NICHT ist",
+      "not": {
+        "idea": "Kein Ideation-Tool",
+        "project": "Kein Projektmanager",
+        "objective": "Keine Zieleboard",
+        "decision": "Kein Entscheidungstool"
+      },
+      "isTitle": "Was LATENT IST",
+      "isDescription": "Ein vorgelagertes Modul, entwickelt um vorzeitige Kristallisation zu verhindern.",
+      "is": {
+        "potential": "Ein Raum für unformulierte Potenziale",
+        "noDeadline": "Keine Frist- oder Ergebnisverpflichtung",
+        "safe": "Schutz vor Entscheidungsdruck",
+        "respect": "Respekt für echte Komplexität"
+      },
+      "principles": {
+        "dormancy": {
+          "title": "Ruhe ist ein Zustand",
+          "desc": "Ruhen lassen ist nicht aufgeben. Es ist die Zeit des Potenzials respektieren."
+        },
+        "noTimeline": {
+          "title": "Keine Timeline",
+          "desc": "Keine Fristen, keine KPIs, keine aufdringlichen Benachrichtigungen."
+        },
+        "noForcing": {
+          "title": "Keine Verpflichtung",
+          "desc": "Transformieren, zusammenführen, archivieren... aber niemals Konkretisierung erzwingen."
+        }
+      }
+    }
   }
 }

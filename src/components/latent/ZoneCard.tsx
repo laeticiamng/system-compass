@@ -39,7 +39,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { LatentZone, ZoneStatus, TensionType } from '@/hooks/useLatentZones';
-
+import { ExportToTraceOS } from './ExportToTraceOS';
 interface ZoneCardProps {
   zone: LatentZone;
   onStatusChange: (zoneId: string, status: ZoneStatus) => void;
@@ -294,10 +294,13 @@ export function ZoneCard({
           </CollapsibleContent>
         </Collapsible>
 
-        {/* Timestamp */}
-        <p className="text-xs text-muted-foreground mt-3 pt-2 border-t">
-          {t('latent.updated')}: {new Date(zone.updated_at).toLocaleDateString()}
-        </p>
+        {/* Export & Timestamp */}
+        <div className="flex items-center justify-between mt-3 pt-2 border-t">
+          <p className="text-xs text-muted-foreground">
+            {t('latent.updated')}: {new Date(zone.updated_at).toLocaleDateString()}
+          </p>
+          <ExportToTraceOS zone={zone} />
+        </div>
       </CardContent>
     </Card>
   );

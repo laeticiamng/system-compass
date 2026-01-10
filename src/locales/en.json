@@ -5905,6 +5905,21 @@
           "desc": "Transform, merge, archive... but never force concretization."
         }
       }
+    },
+    "export": {
+      "title": "Export to TraceOS",
+      "description": "Export this zone as a decision draft",
+      "success": "Zone successfully exported to TraceOS",
+      "button": "Export to TraceOS",
+      "hypothesis": "This potential zone is ready to be explored as a potential decision.",
+      "alt1": "Keep in potential zone for continued observation",
+      "alt2": "Merge with other related zones before deciding",
+      "constraint1": "Preserve reflection without premature crystallization",
+      "constraint2": "Respect maturation time",
+      "pendingDecision": "Pending formulation - exported from LATENT",
+      "additionalContext": "Additional context (optional)",
+      "contextPlaceholder": "Add context for the decision team...",
+      "notice": "The zone will be exported as a decision draft in TraceOS. Identified tensions will be included in the context."
     }
   }
 }
