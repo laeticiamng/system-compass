@@ -58,6 +58,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Check translation patterns
+        run: node scripts/check-translation-patterns.js
+
+      - name: Check translation keys
+        run: node scripts/check-translation-keys.js
+
       - name: Check all translations (general + countries)
         run: node scripts/check-translations.js
 
