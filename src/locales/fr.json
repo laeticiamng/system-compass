@@ -255,7 +255,12 @@
     "objective": "Objectif",
     "criticalRule": "Règle critique",
     "personalNotes": "Notes personnelles",
-    "addNote": "Ajouter une note"
+    "addNote": "Ajouter une note",
+    "advancedModules": "Modules avancés",
+    "advancedModulesDesc": "Outils de réflexion et de documentation avancés",
+    "latentDesc": "Identifiez les zones de tension non encore critiques",
+    "irreversaDesc": "Documentez les seuils irréversibles franchis",
+    "institutionsDesc": "Aide à la décision collective et traçabilité"
   },
   "achievements": {
     "title": "Succès",
