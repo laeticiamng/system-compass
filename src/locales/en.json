@@ -391,7 +391,9 @@
     "errorsIllusions": "Errors & Illusions",
     "b2b": "B2B Solutions",
     "about": "About",
-    "usage": "Usage"
+    "usage": "Usage",
+    "institutions": "Institutions",
+    "ovi": "OVI"
   },
   "worldMap": {
     "badge": "Global exploration",
@@ -5680,14 +5682,6 @@
       "simulateTrajectory": "Simulate my trajectory",
       "viewExitKeys": "View Exit Keys"
     }
-  },
-  "nav": {
-    "institutions": "Institutions",
-    "ovi": "OVI",
-    "b2b": "B2B Solutions",
-    "partners": "Partners",
-    "orientationHub": "Orientation",
-    "errorsIllusions": "Errors & Illusions"
   },
   "exitKeys": {
     "title": "Find Your Exit Key",
