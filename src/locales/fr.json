@@ -361,7 +361,10 @@
     "preventionFilter": "Filtre",
     "universalErrors": "Erreurs",
     "worldMap": "Carte",
-    "pricing": "Tarifs"
+    "pricing": "Tarifs",
+    "partners": "Partenaires",
+    "orientationHub": "Orientation",
+    "errorsIllusions": "Erreurs & Illusions"
   },
   "worldMap": {
     "badge": "Exploration mondiale",
@@ -5534,11 +5537,6 @@
       "simulateTrajectory": "Simuler ma trajectoire",
       "viewExitKeys": "Voir les Clés de Sortie"
     }
-  },
-  "nav": {
-    "partners": "Partenaires",
-    "orientationHub": "Orientation",
-    "errorsIllusions": "Erreurs & Illusions"
   },
   "exitKeys": {
     "title": "Trouvez Votre Clé de Sortie",
