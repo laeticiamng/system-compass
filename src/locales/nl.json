@@ -500,6 +500,45 @@
       }
     }
   },
+  "errorsIllusions": {
+    "badge": "Fouten & Illusies",
+    "title": "Fouten & Illusies",
+    "subtitle": "Wat systemen niet vergeven — en hoe ze te vermijden",
+    "intro": "Dit zijn geen morele oordelen. Het zijn mismatches tussen verwachtingen en de echte regels van een systeem.",
+    "centralMessage": "Deze fouten zijn geen morele tekortkomingen.",
+    "centralMessageDesc": "Het zijn mismatches tussen de verwachtingen van een individu en de echte regels van een systeem. Ze herkennen maakt het mogelijk ze te anticiperen — niet te oordelen.",
+    "cognitiveIntro": "De 10 duurste beslissingsfouten. Terugkerende patronen die tijd, geld en energie kosten.",
+    "systemicIntro": "Deze fouten zijn specifiek voor piramidetypen. Ze treden op wanneer je de regels van het ene systeem toepast in een systeem dat anders werkt.",
+    "ctaTitle": "Herken je een van deze fouten?",
+    "ctaDescription": "Laat je beslissing door het preventiefilter lopen om risico's te identificeren voordat het te laat is.",
+    "goToHub": "Het juiste hulpmiddel vinden",
+    "tabs": {
+      "cognitive": "Cognitieve fouten",
+      "systemic": "Systemische fouten"
+    },
+    "cognitive": {
+      "title": "Universele Cognitieve Fouten",
+      "subtitle": "Terugkerende patronen die jaren kosten, ongeacht nationaliteit of bestemming",
+      "intro": "Deze fouten zijn geen oordelen. Het zijn waarneembare patronen die systematisch tot slechte beslissingen leiden.",
+      "categories": {
+        "perception": "Waarnemingsfouten",
+        "planning": "Planningsfouten",
+        "social": "Sociale Fouten",
+        "financial": "Financiële Fouten"
+      }
+    },
+    "systemic": {
+      "title": "Systemische Fouten",
+      "subtitle": "Wat systemen niet vergeven — en hoe ze te vermijden",
+      "intro": "Deze fouten zijn mismatches tussen de verwachtingen van een individu en de echte regels van een systeem."
+    },
+    "cta": {
+      "title": "Het vermijden van deze fouten begint met het begrijpen van je systeem",
+      "subtitle": "Analyseer je huidige situatie, identificeer potentiële mismatches en verken strategieën die bij je profiel passen.",
+      "simulateTrajectory": "Mijn traject simuleren",
+      "viewExitKeys": "Exit-Sleutels bekijken"
+    }
+  },
   "nav": {
     "start": "Start",
     "countries": "Landen",
@@ -519,7 +558,10 @@
     "preventionFilter": "Filter",
     "universalErrors": "Fouten",
     "worldMap": "Kaart",
-    "pricing": "Prijzen"
+    "pricing": "Prijzen",
+    "errorsIllusions": "Fouten & Illusies",
+    "orientationHub": "Oriëntatie",
+    "partners": "Partners"
   },
   "worldMap": {
     "badge": "Wereldwijde verkenning",

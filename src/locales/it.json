@@ -500,6 +500,45 @@
       }
     }
   },
+  "errorsIllusions": {
+    "badge": "Errori e Illusioni",
+    "title": "Errori e Illusioni",
+    "subtitle": "Cosa i sistemi non perdonano — e come evitarli",
+    "intro": "Non sono giudizi morali. Sono disallineamenti tra aspettative e le regole reali di un sistema.",
+    "centralMessage": "Questi errori non sono colpe morali.",
+    "centralMessageDesc": "Sono disallineamenti tra le aspettative di un individuo e le regole reali di un sistema. Riconoscerli permette di anticiparli — non giudicarli.",
+    "cognitiveIntro": "I 10 errori decisionali più costosi. Pattern ricorrenti che costano tempo, denaro ed energia.",
+    "systemicIntro": "Questi errori sono specifici dei tipi di piramide. Si verificano quando applichi le regole di un sistema in un sistema che funziona diversamente.",
+    "ctaTitle": "Riconosci uno di questi errori?",
+    "ctaDescription": "Passa la tua decisione attraverso il filtro di prevenzione per identificare i rischi prima che sia troppo tardi.",
+    "goToHub": "Trovare lo strumento giusto",
+    "tabs": {
+      "cognitive": "Errori cognitivi",
+      "systemic": "Errori sistemici"
+    },
+    "cognitive": {
+      "title": "Errori Cognitivi Universali",
+      "subtitle": "Pattern ricorrenti che costano anni, indipendentemente dalla nazionalità o destinazione",
+      "intro": "Questi errori non sono giudizi. Sono pattern osservabili che portano sistematicamente a cattive decisioni.",
+      "categories": {
+        "perception": "Errori di Percezione",
+        "planning": "Errori di Pianificazione",
+        "social": "Errori Sociali",
+        "financial": "Errori Finanziari"
+      }
+    },
+    "systemic": {
+      "title": "Errori Sistemici",
+      "subtitle": "Cosa i sistemi non perdonano — e come evitarli",
+      "intro": "Questi errori sono disallineamenti tra le aspettative di un individuo e le regole reali di un sistema."
+    },
+    "cta": {
+      "title": "Evitare questi errori inizia capendo il tuo sistema",
+      "subtitle": "Analizza la tua situazione attuale, identifica potenziali disallineamenti ed esplora strategie adatte al tuo profilo.",
+      "simulateTrajectory": "Simula la mia traiettoria",
+      "viewExitKeys": "Vedi Chiavi di Uscita"
+    }
+  },
   "nav": {
     "start": "Inizio",
     "countries": "Paesi",
@@ -519,7 +558,10 @@
     "preventionFilter": "Filtro",
     "universalErrors": "Errori",
     "worldMap": "Mappa",
-    "pricing": "Prezzi"
+    "pricing": "Prezzi",
+    "errorsIllusions": "Errori e Illusioni",
+    "orientationHub": "Orientamento",
+    "partners": "Partner"
   },
   "worldMap": {
     "badge": "Esplorazione mondiale",

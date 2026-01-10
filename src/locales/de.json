@@ -500,6 +500,45 @@
       }
     }
   },
+  "errorsIllusions": {
+    "badge": "Fehler & Illusionen",
+    "title": "Fehler & Illusionen",
+    "subtitle": "Was Systeme nicht verzeihen — und wie man sie vermeidet",
+    "intro": "Dies sind keine moralischen Urteile. Es sind Diskrepanzen zwischen Erwartungen und den tatsächlichen Regeln eines Systems.",
+    "centralMessage": "Diese Fehler sind keine moralischen Verfehlungen.",
+    "centralMessageDesc": "Es sind Diskrepanzen zwischen den Erwartungen einer Person und den tatsächlichen Regeln eines Systems. Sie zu erkennen ermöglicht es, sie zu antizipieren — nicht zu verurteilen.",
+    "cognitiveIntro": "Die 10 kostspieligsten Entscheidungsfehler. Wiederkehrende Muster, die Zeit, Geld und Energie kosten.",
+    "systemicIntro": "Diese Fehler sind spezifisch für Pyramidentypen. Sie treten auf, wenn man die Regeln eines Systems in einem System anwendet, das anders funktioniert.",
+    "ctaTitle": "Erkennen Sie einen dieser Fehler?",
+    "ctaDescription": "Lassen Sie Ihre Entscheidung durch den Präventionsfilter laufen, um Risiken zu identifizieren, bevor es zu spät ist.",
+    "goToHub": "Das richtige Werkzeug finden",
+    "tabs": {
+      "cognitive": "Kognitive Fehler",
+      "systemic": "Systemische Fehler"
+    },
+    "cognitive": {
+      "title": "Universelle kognitive Fehler",
+      "subtitle": "Wiederkehrende Muster, die Jahre kosten, unabhängig von Nationalität oder Ziel",
+      "intro": "Diese Fehler sind keine Urteile. Es sind beobachtbare Muster, die systematisch zu schlechten Entscheidungen führen.",
+      "categories": {
+        "perception": "Wahrnehmungsfehler",
+        "planning": "Planungsfehler",
+        "social": "Soziale Fehler",
+        "financial": "Finanzielle Fehler"
+      }
+    },
+    "systemic": {
+      "title": "Systemische Fehler",
+      "subtitle": "Was Systeme nicht verzeihen — und wie man sie vermeidet",
+      "intro": "Diese Fehler sind Diskrepanzen zwischen den Erwartungen einer Person und den tatsächlichen Regeln eines Systems."
+    },
+    "cta": {
+      "title": "Diese Fehler zu vermeiden beginnt damit, dein System zu verstehen",
+      "subtitle": "Analysiere deine aktuelle Situation, identifiziere mögliche Diskrepanzen und erkunde auf dein Profil zugeschnittene Strategien.",
+      "simulateTrajectory": "Meine Trajektorie simulieren",
+      "viewExitKeys": "Exit-Keys anzeigen"
+    }
+  },
   "nav": {
     "start": "Start",
     "countries": "Länder",
@@ -519,7 +558,10 @@
     "preventionFilter": "Filter",
     "universalErrors": "Fehler",
     "worldMap": "Karte",
-    "pricing": "Preise"
+    "pricing": "Preise",
+    "errorsIllusions": "Fehler & Illusionen",
+    "orientationHub": "Orientierung",
+    "partners": "Partner"
   },
   "worldMap": {
     "badge": "Weltweite Erkundung",

@@ -500,6 +500,45 @@
       }
     }
   },
+  "errorsIllusions": {
+    "badge": "Errores e Ilusiones",
+    "title": "Errores e Ilusiones",
+    "subtitle": "Lo que los sistemas no perdonan — y cómo evitarlos",
+    "intro": "No son juicios morales. Son desajustes entre expectativas y las reglas reales de un sistema.",
+    "centralMessage": "Estos errores no son faltas morales.",
+    "centralMessageDesc": "Son desajustes entre las expectativas de un individuo y las reglas reales de un sistema. Reconocerlos permite anticiparlos — no juzgarlos.",
+    "cognitiveIntro": "Los 10 errores de decisión más costosos. Patrones recurrentes que cuestan tiempo, dinero y energía.",
+    "systemicIntro": "Estos errores son específicos de los tipos de pirámide. Ocurren cuando aplicas las reglas de un sistema en un sistema que funciona de manera diferente.",
+    "ctaTitle": "¿Reconoces uno de estos errores?",
+    "ctaDescription": "Pasa tu decisión por el filtro de prevención para identificar riesgos antes de que sea demasiado tarde.",
+    "goToHub": "Encontrar la herramienta correcta",
+    "tabs": {
+      "cognitive": "Errores cognitivos",
+      "systemic": "Errores sistémicos"
+    },
+    "cognitive": {
+      "title": "Errores Cognitivos Universales",
+      "subtitle": "Patrones recurrentes que cuestan años, independientemente de la nacionalidad o destino",
+      "intro": "Estos errores no son juicios. Son patrones observables que llevan sistemáticamente a malas decisiones.",
+      "categories": {
+        "perception": "Errores de Percepción",
+        "planning": "Errores de Planificación",
+        "social": "Errores Sociales",
+        "financial": "Errores Financieros"
+      }
+    },
+    "systemic": {
+      "title": "Errores Sistémicos",
+      "subtitle": "Lo que los sistemas no perdonan — y cómo evitarlos",
+      "intro": "Estos errores son desajustes entre las expectativas de un individuo y las reglas reales de un sistema."
+    },
+    "cta": {
+      "title": "Evitar estos errores comienza por entender tu sistema",
+      "subtitle": "Analiza tu situación actual, identifica desajustes potenciales y explora estrategias adaptadas a tu perfil.",
+      "simulateTrajectory": "Simular mi trayectoria",
+      "viewExitKeys": "Ver Claves de Salida"
+    }
+  },
   "nav": {
     "start": "Inicio",
     "countries": "Países",
@@ -519,7 +558,10 @@
     "preventionFilter": "Filtro",
     "universalErrors": "Errores",
     "worldMap": "Mapa",
-    "pricing": "Precios"
+    "pricing": "Precios",
+    "errorsIllusions": "Errores e Ilusiones",
+    "orientationHub": "Orientación",
+    "partners": "Socios"
   },
   "worldMap": {
     "badge": "Exploración mundial",
