@@ -6065,6 +6065,17 @@
     "demoMode": "Log in to use IRREVERSA"
   },
   "pricing": {
+    "unlock": "Unlock more features",
+    "homepageTitle": "Go further in your analysis",
+    "homepageSubtitle": "Access more detailed country analyses and personalized recommendations",
+    "viewPlans": "View all plans",
+    "recommended": "Recommended",
+    "premiumFeature1": "Country-specific variants",
+    "premiumFeature2": "Success/struggle profiles",
+    "premiumFeature3": "What surprises newcomers",
+    "proFeature1": "All Premium content",
+    "proFeature2": "Personalized project analysis",
+    "proFeature3": "Personalized exit keys",
     "badge": "Transparent pricing",
     "title": "Choose your plan",
     "subtitle": "Unlock deeper analyses and personalized recommendations",
