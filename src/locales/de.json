@@ -2618,6 +2618,34 @@
     "saveSimulation": "Diese Simulation speichern",
     "saved": "Analyse gespeichert!",
     "saveError": "Fehler beim Speichern",
+    "types": {
+      "country": "Land",
+      "studies": "Studium",
+      "career": "Beruf",
+      "business": "Geschäft",
+      "investment": "Investition",
+      "relationship": "Beziehung",
+      "other": "Andere"
+    },
+    "horizons": {
+      "3months": "3 Monate",
+      "1year": "1 Jahr",
+      "3years": "3 Jahre",
+      "10years": "10 Jahre"
+    },
+    "risks": {
+      "low": "Niedrig",
+      "medium": "Mittel",
+      "high": "Hoch"
+    },
+    "constraints": {
+      "money": "Geld",
+      "time": "Zeit",
+      "energy": "Energie",
+      "family": "Familie",
+      "status": "Status",
+      "security": "Sicherheit"
+    },
     "results": {
       "implications": "Was diese Wahl oft bedeutet",
       "blindSpots": "Häufige blinde Flecken",

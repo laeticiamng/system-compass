@@ -2618,6 +2618,34 @@
     "saveSimulation": "Deze simulatie opslaan",
     "saved": "Analyse opgeslagen!",
     "saveError": "Fout bij opslaan",
+    "types": {
+      "country": "Land",
+      "studies": "Studies",
+      "career": "Carrière",
+      "business": "Business",
+      "investment": "Investering",
+      "relationship": "Relatie",
+      "other": "Ander"
+    },
+    "horizons": {
+      "3months": "3 maanden",
+      "1year": "1 jaar",
+      "3years": "3 jaar",
+      "10years": "10 jaar"
+    },
+    "risks": {
+      "low": "Laag",
+      "medium": "Gemiddeld",
+      "high": "Hoog"
+    },
+    "constraints": {
+      "money": "Geld",
+      "time": "Tijd",
+      "energy": "Energie",
+      "family": "Familie",
+      "status": "Status",
+      "security": "Veiligheid"
+    },
     "results": {
       "implications": "Wat deze keuze vaak inhoudt",
       "blindSpots": "Veelvoorkomende blinde vlekken",
