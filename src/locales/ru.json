@@ -25,7 +25,8 @@
     "optional": "необязательно",
     "description": "Описание",
     "submit": "Отправить",
-    "sending": "Отправка..."
+    "sending": "Отправка...",
+    "loginRequired": "Требуется авторизация"
   },
   "errors": {
     "rateLimited": "Слишком много запросов. Пожалуйста, попробуйте позже.",
@@ -109,7 +110,9 @@
     "forgotPassword": "Забыли пароль?",
     "noAccount": "Нет аккаунта?",
     "hasAccount": "Уже есть аккаунт?",
-    "orContinueWith": "Или продолжить с"
+    "orContinueWith": "Или продолжить с",
+    "signInWithGoogle": "Войти через Google",
+    "signUpWithGoogle": "Зарегистрироваться через Google"
   },
   "countries": {
     "title": "Страны",
@@ -129,6 +132,7 @@
     "risks": "Риски",
     "opportunities": "Возможности",
     "intelligence": "Слой интеллекта",
+    "translating": "Перевод...",
     "variant": {
       "title": "Вариант системы",
       "laborMarket": "Рынок труда",
@@ -149,5 +153,41 @@
     "GROWTH_RISK": "Рост-Риск",
     "HYBRID_TRANSITION": "Гибрид-Переход",
     "RESOURCE_EXTRACTION": "Добыча-Ресурсов"
+  },
+  "dashboard": {
+    "title": "Моя панель",
+    "subtitle": "Отслеживайте свои анализы и симуляции",
+    "syncing": "Синхронизация...",
+    "synced": "Синхронизировано",
+    "localOnly": "Только локально",
+    "connectToSync": "Войдите для синхронизации"
+  },
+  "latent": {
+    "title": "Скрытые зоны",
+    "subtitle": "Определите зоны напряжённости, ещё не ставшие критическими",
+    "newZone": "Новая зона",
+    "status": {
+      "dormant": "Спящий",
+      "emergent": "Возникающий",
+      "fragile": "Хрупкий",
+      "blocked": "Заблокированный"
+    }
+  },
+  "irreversa": {
+    "title": "Необратимые пороги",
+    "subtitle": "Документируйте пройденные необратимые пороги",
+    "status": {
+      "detected": "Обнаружен",
+      "marked": "Отмечен",
+      "validated": "Подтверждён",
+      "sealed": "Запечатан"
+    }
+  },
+  "pricing": {
+    "title": "Цены",
+    "subtitle": "Выберите подходящий план",
+    "free": "Бесплатно",
+    "pro": "Про",
+    "enterprise": "Корпоративный"
   }
 }

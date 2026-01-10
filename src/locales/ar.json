@@ -25,7 +25,8 @@
     "optional": "اختياري",
     "description": "الوصف",
     "submit": "إرسال",
-    "sending": "جاري الإرسال..."
+    "sending": "جاري الإرسال...",
+    "loginRequired": "يتطلب تسجيل الدخول"
   },
   "errors": {
     "rateLimited": "طلبات كثيرة جداً. يرجى المحاولة لاحقاً.",
@@ -109,7 +110,9 @@
     "forgotPassword": "نسيت كلمة المرور؟",
     "noAccount": "ليس لديك حساب؟",
     "hasAccount": "لديك حساب بالفعل؟",
-    "orContinueWith": "أو تابع باستخدام"
+    "orContinueWith": "أو تابع باستخدام",
+    "signInWithGoogle": "تسجيل الدخول بـ Google",
+    "signUpWithGoogle": "التسجيل بـ Google"
   },
   "countries": {
     "title": "البلدان",
@@ -129,6 +132,7 @@
     "risks": "المخاطر",
     "opportunities": "الفرص",
     "intelligence": "طبقة الذكاء",
+    "translating": "جاري الترجمة...",
     "variant": {
       "title": "متغير النظام",
       "laborMarket": "سوق العمل",
@@ -149,5 +153,41 @@
     "GROWTH_RISK": "نمو-مخاطرة",
     "HYBRID_TRANSITION": "هجين-انتقالي",
     "RESOURCE_EXTRACTION": "استخراج-موارد"
+  },
+  "dashboard": {
+    "title": "لوحة التحكم الخاصة بي",
+    "subtitle": "تتبع تحليلاتك ومحاكاتك",
+    "syncing": "جاري المزامنة...",
+    "synced": "تمت المزامنة",
+    "localOnly": "محلي فقط",
+    "connectToSync": "سجل الدخول للمزامنة"
+  },
+  "latent": {
+    "title": "المناطق الكامنة",
+    "subtitle": "حدد مناطق التوتر غير الحرجة بعد",
+    "newZone": "منطقة جديدة",
+    "status": {
+      "dormant": "خامل",
+      "emergent": "ناشئ",
+      "fragile": "هش",
+      "blocked": "محظور"
+    }
+  },
+  "irreversa": {
+    "title": "العتبات اللارجعية",
+    "subtitle": "وثّق العتبات اللارجعية التي تم تجاوزها",
+    "status": {
+      "detected": "مكتشف",
+      "marked": "مُعلّم",
+      "validated": "مُصادق عليه",
+      "sealed": "مختوم"
+    }
+  },
+  "pricing": {
+    "title": "التسعير",
+    "subtitle": "اختر الخطة المناسبة لك",
+    "free": "مجاني",
+    "pro": "احترافي",
+    "enterprise": "للشركات"
   }
 }

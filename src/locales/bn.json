@@ -25,7 +25,8 @@
     "optional": "ঐচ্ছিক",
     "description": "বিবরণ",
     "submit": "জমা দিন",
-    "sending": "পাঠানো হচ্ছে..."
+    "sending": "পাঠানো হচ্ছে...",
+    "loginRequired": "লগইন প্রয়োজন"
   },
   "errors": {
     "rateLimited": "অনেক বেশি অনুরোধ। অনুগ্রহ করে একটু পরে আবার চেষ্টা করুন।",
@@ -109,7 +110,9 @@
     "forgotPassword": "পাসওয়ার্ড ভুলে গেছেন?",
     "noAccount": "অ্যাকাউন্ট নেই?",
     "hasAccount": "ইতিমধ্যে অ্যাকাউন্ট আছে?",
-    "orContinueWith": "অথবা এর সাথে চালিয়ে যান"
+    "orContinueWith": "অথবা এর সাথে চালিয়ে যান",
+    "signInWithGoogle": "Google দিয়ে সাইন ইন",
+    "signUpWithGoogle": "Google দিয়ে সাইন আপ"
   },
   "countries": {
     "title": "দেশসমূহ",
@@ -129,6 +132,7 @@
     "risks": "ঝুঁকি",
     "opportunities": "সুযোগ",
     "intelligence": "ইন্টেলিজেন্স লেয়ার",
+    "translating": "অনুবাদ করা হচ্ছে...",
     "variant": {
       "title": "সিস্টেম ভ্যারিয়েন্ট",
       "laborMarket": "শ্রম বাজার",
@@ -149,5 +153,41 @@
     "GROWTH_RISK": "বৃদ্ধি-ঝুঁকি",
     "HYBRID_TRANSITION": "হাইব্রিড-রূপান্তর",
     "RESOURCE_EXTRACTION": "সম্পদ-নিষ্কাশন"
+  },
+  "dashboard": {
+    "title": "আমার ড্যাশবোর্ড",
+    "subtitle": "আপনার বিশ্লেষণ এবং সিমুলেশন ট্র্যাক করুন",
+    "syncing": "সিঙ্ক হচ্ছে...",
+    "synced": "সিঙ্ক হয়েছে",
+    "localOnly": "শুধুমাত্র স্থানীয়",
+    "connectToSync": "সিঙ্ক করতে সাইন ইন করুন"
+  },
+  "latent": {
+    "title": "সুপ্ত অঞ্চল",
+    "subtitle": "এখনও গুরুতর নয় এমন উত্তেজনা অঞ্চল চিহ্নিত করুন",
+    "newZone": "নতুন অঞ্চল",
+    "status": {
+      "dormant": "সুপ্ত",
+      "emergent": "উদীয়মান",
+      "fragile": "ভঙ্গুর",
+      "blocked": "অবরুদ্ধ"
+    }
+  },
+  "irreversa": {
+    "title": "অপরিবর্তনীয় সীমা",
+    "subtitle": "অতিক্রান্ত অপরিবর্তনীয় সীমা নথিভুক্ত করুন",
+    "status": {
+      "detected": "সনাক্ত",
+      "marked": "চিহ্নিত",
+      "validated": "বৈধ",
+      "sealed": "সিলযুক্ত"
+    }
+  },
+  "pricing": {
+    "title": "মূল্য",
+    "subtitle": "আপনার জন্য সঠিক প্ল্যান বেছে নিন",
+    "free": "বিনামূল্যে",
+    "pro": "প্রো",
+    "enterprise": "এন্টারপ্রাইজ"
   }
 }

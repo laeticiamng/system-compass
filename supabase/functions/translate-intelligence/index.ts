@@ -13,6 +13,12 @@ const LANGUAGE_NAMES: Record<string, string> = {
   it: "Italian",
   nl: "Dutch",
   pt: "Portuguese",
+  zh: "Mandarin Chinese",
+  hi: "Hindi",
+  ar: "Arabic",
+  bn: "Bengali",
+  ru: "Russian",
+  ur: "Urdu",
 };
 
 serve(async (req) => {

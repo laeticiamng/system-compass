@@ -25,7 +25,8 @@
     "optional": "可选",
     "description": "描述",
     "submit": "提交",
-    "sending": "发送中..."
+    "sending": "发送中...",
+    "loginRequired": "需要登录"
   },
   "errors": {
     "rateLimited": "请求过多。请稍后再试。",
@@ -109,7 +110,9 @@
     "forgotPassword": "忘记密码？",
     "noAccount": "没有账户？",
     "hasAccount": "已有账户？",
-    "orContinueWith": "或继续使用"
+    "orContinueWith": "或继续使用",
+    "signInWithGoogle": "使用Google登录",
+    "signUpWithGoogle": "使用Google注册"
   },
   "countries": {
     "title": "国家",
@@ -129,6 +132,7 @@
     "risks": "风险",
     "opportunities": "机会",
     "intelligence": "智能层",
+    "translating": "翻译中...",
     "variant": {
       "title": "系统变体",
       "laborMarket": "劳动市场",
@@ -149,5 +153,41 @@
     "GROWTH_RISK": "增长-风险",
     "HYBRID_TRANSITION": "混合-过渡",
     "RESOURCE_EXTRACTION": "资源-开采"
+  },
+  "dashboard": {
+    "title": "我的仪表板",
+    "subtitle": "跟踪您的分析和模拟",
+    "syncing": "同步中...",
+    "synced": "已同步",
+    "localOnly": "仅本地",
+    "connectToSync": "登录以同步"
+  },
+  "latent": {
+    "title": "潜在区域",
+    "subtitle": "识别尚未关键的张力区域",
+    "newZone": "新建区域",
+    "status": {
+      "dormant": "休眠",
+      "emergent": "新兴",
+      "fragile": "脆弱",
+      "blocked": "阻塞"
+    }
+  },
+  "irreversa": {
+    "title": "不可逆阈值",
+    "subtitle": "记录已跨越的不可逆阈值",
+    "status": {
+      "detected": "已检测",
+      "marked": "已标记",
+      "validated": "已验证",
+      "sealed": "已密封"
+    }
+  },
+  "pricing": {
+    "title": "定价",
+    "subtitle": "选择适合您的计划",
+    "free": "免费",
+    "pro": "专业版",
+    "enterprise": "企业版"
   }
 }

@@ -25,7 +25,8 @@
     "optional": "वैकल्पिक",
     "description": "विवरण",
     "submit": "जमा करें",
-    "sending": "भेजा जा रहा है..."
+    "sending": "भेजा जा रहा है...",
+    "loginRequired": "लॉगिन आवश्यक"
   },
   "errors": {
     "rateLimited": "बहुत अधिक अनुरोध। कृपया कुछ देर बाद पुनः प्रयास करें।",
@@ -109,7 +110,9 @@
     "forgotPassword": "पासवर्ड भूल गए?",
     "noAccount": "खाता नहीं है?",
     "hasAccount": "पहले से खाता है?",
-    "orContinueWith": "या जारी रखें"
+    "orContinueWith": "या जारी रखें",
+    "signInWithGoogle": "Google से साइन इन करें",
+    "signUpWithGoogle": "Google से साइन अप करें"
   },
   "countries": {
     "title": "देश",
@@ -129,6 +132,7 @@
     "risks": "जोखिम",
     "opportunities": "अवसर",
     "intelligence": "इंटेलिजेंस लेयर",
+    "translating": "अनुवाद हो रहा है...",
     "variant": {
       "title": "सिस्टम वेरिएंट",
       "laborMarket": "श्रम बाजार",
@@ -149,5 +153,41 @@
     "GROWTH_RISK": "विकास-जोखिम",
     "HYBRID_TRANSITION": "हाइब्रिड-संक्रमण",
     "RESOURCE_EXTRACTION": "संसाधन-निष्कर्षण"
+  },
+  "dashboard": {
+    "title": "मेरा डैशबोर्ड",
+    "subtitle": "अपने विश्लेषण और सिमुलेशन को ट्रैक करें",
+    "syncing": "सिंक हो रहा है...",
+    "synced": "सिंक हो गया",
+    "localOnly": "केवल स्थानीय",
+    "connectToSync": "सिंक करने के लिए साइन इन करें"
+  },
+  "latent": {
+    "title": "अव्यक्त क्षेत्र",
+    "subtitle": "अभी तक गंभीर नहीं हुए तनाव क्षेत्रों की पहचान करें",
+    "newZone": "नया क्षेत्र",
+    "status": {
+      "dormant": "निष्क्रिय",
+      "emergent": "उभरता हुआ",
+      "fragile": "नाजुक",
+      "blocked": "अवरुद्ध"
+    }
+  },
+  "irreversa": {
+    "title": "अपरिवर्तनीय सीमाएं",
+    "subtitle": "पार की गई अपरिवर्तनीय सीमाओं का दस्तावेज़ीकरण करें",
+    "status": {
+      "detected": "पता लगाया",
+      "marked": "चिह्नित",
+      "validated": "मान्य",
+      "sealed": "मुहरबंद"
+    }
+  },
+  "pricing": {
+    "title": "मूल्य निर्धारण",
+    "subtitle": "अपने लिए सही योजना चुनें",
+    "free": "मुफ्त",
+    "pro": "प्रो",
+    "enterprise": "एंटरप्राइज"
   }
 }
