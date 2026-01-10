@@ -57,10 +57,14 @@ export default function B2BSolutions() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <Tabs defaultValue="modules" className="space-y-8">
-              <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
+              <TabsList className="grid w-full max-w-lg mx-auto grid-cols-3">
                 <TabsTrigger value="modules" className="gap-2">
                   <Building2 className="w-4 h-4" />
                   {t('b2b.tabs.modules', 'Modules')}
+                </TabsTrigger>
+                <TabsTrigger value="latent" className="gap-2">
+                  <Lightbulb className="w-4 h-4" />
+                  LATENT
                 </TabsTrigger>
                 <TabsTrigger value="traceos" className="gap-2">
                   <Brain className="w-4 h-4" />
@@ -131,6 +135,37 @@ export default function B2BSolutions() {
                     </CardContent>
                   </Card>
                 </div>
+              </TabsContent>
+
+              <TabsContent value="latent">
+                <Card className="border-2 hover:border-purple-500/30 transition-all">
+                  <CardHeader className="text-center">
+                    <div className="w-14 h-14 rounded-xl bg-purple-500/10 flex items-center justify-center mx-auto mb-4">
+                      <Lightbulb className="w-7 h-7 text-purple-600" />
+                    </div>
+                    <Badge variant="outline" className="w-fit mx-auto mb-2 border-purple-500/30 text-purple-600">
+                      {t('b2b.modules.latent.badge', 'Anti-Accélérateur')}
+                    </Badge>
+                    <CardTitle className="text-2xl">LATENT</CardTitle>
+                    <CardDescription className="text-base max-w-xl mx-auto">
+                      {t('b2b.modules.latent.desc', 'Cartographiez et maintenez des potentiels non formulés, sans obligation de transformation.')}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4 max-w-md mx-auto">
+                    <ul className="space-y-3">
+                      <FeatureItem icon={Lightbulb} text={t('b2b.modules.latent.features.0', 'Zones de potentiel non finalisées')} />
+                      <FeatureItem icon={Shield} text={t('b2b.modules.latent.features.1', 'Protection contre la cristallisation prématurée')} />
+                      <FeatureItem icon={History} text={t('b2b.modules.latent.features.2', 'Évolution sans obligation de résultat')} />
+                    </ul>
+                    <Separator />
+                    <Link to="/latent">
+                      <Button className="w-full gap-2">
+                        {t('b2b.cta.latent', 'Explorer LATENT')}
+                        <ArrowRight className="w-4 h-4" />
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
               </TabsContent>
 
               <TabsContent value="traceos">
