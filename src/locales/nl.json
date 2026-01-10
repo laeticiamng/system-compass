@@ -2995,41 +2995,110 @@
       "title": "Exporteren naar TraceOS",
       "description": "Exporteer deze zone als beslissingsconcept",
       "success": "Zone succesvol geëxporteerd naar TraceOS",
-      "button": "Exporteren naar TraceOS"
+      "button": "Exporteren naar TraceOS",
+      "hypothesis": "Deze potentieelzone is klaar om verkend te worden als potentiële beslissing.",
+      "alt1": "In potentieelzone houden voor voortdurende observatie",
+      "alt2": "Samenvoegen met andere gerelateerde zones voor het beslissen",
+      "constraint1": "Reflectie behouden zonder voortijdige kristallisatie",
+      "constraint2": "Rijpingstijd respecteren",
+      "pendingDecision": "In afwachting van formulering - geëxporteerd uit LATENT",
+      "additionalContext": "Aanvullende context (optioneel)",
+      "contextPlaceholder": "Voeg context toe voor het beslissingsteam...",
+      "notice": "De zone wordt geëxporteerd als beslissingsconcept in TraceOS. Geïdentificeerde spanningen worden opgenomen in de context."
     },
-    "onboarding": {
-      "badge": "Strategische anti-versneller",
-      "title": "Welkom bij LATENT",
-      "subtitle": "Een veilige ruimte voor wat nog niet klaar is om te bestaan. Hier wordt vaagheid gerespecteerd.",
-      "notTitle": "Wat LATENT NIET is",
-      "not": {
-        "idea": "Geen ideatietool",
-        "project": "Geen projectmanager",
-        "objective": "Geen doelenbord",
-        "decision": "Geen beslissingstool"
-      },
-      "isTitle": "Wat LATENT WEL is",
-      "isDescription": "Een upstream module, ontworpen om voortijdige kristallisatie te voorkomen.",
-      "is": {
-        "potential": "Een ruimte voor ongeformuleerde potentiëlen",
-        "noDeadline": "Geen deadline- of resultaatverplichting",
-        "safe": "Bescherming tegen beslissingsdruk",
-        "respect": "Respect voor echte complexiteit"
-      },
-      "principles": {
-        "dormancy": {
-          "title": "Sluimering is een toestand",
-          "desc": "Laten rusten is niet opgeven. Het is de tijd van potentieel respecteren."
-        },
-        "noTimeline": {
-          "title": "Geen tijdlijn",
-          "desc": "Geen deadlines, geen KPI's, geen opdringerige meldingen."
-        },
-        "noForcing": {
-          "title": "Geen verplichting",
-          "desc": "Transformeren, samenvoegen, archiveren... maar nooit concretisering forceren."
-        }
+    "history": {
+      "title": "Zone-evolutie",
+      "subtitle": "Niet-lineaire tijdlijn van transformaties",
+      "empty": "Geen geschiedenis beschikbaar",
+      "selectZone": "Selecteer een zone",
+      "selectToView": "Selecteer een zone om de geschiedenis te bekijken",
+      "action": {
+        "created": "Zone gemaakt",
+        "status_changed": "Statuswijziging",
+        "transformed": "Transformatie",
+        "merged": "Samenvoeging",
+        "put_to_sleep": "In rust gebracht",
+        "archived": "Gearchiveerd"
       }
+    },
+    "interconnections": {
+      "title": "Verbindingen",
+      "subtitle": "Links tussen zones op basis van gedeelde spanningen",
+      "empty": "Geen zones om weer te geven",
+      "found": "{{count}} verbindingen gevonden"
+    },
+    "merge": {
+      "title": "Zones samenvoegen",
+      "button": "Samenvoegen",
+      "stepSelect": "Selecteer zones om samen te voegen (minimaal 2)",
+      "stepConfigure": "Configureer de nieuwe samengevoegde zone",
+      "stepTensions": "Kies spanningen om te behouden",
+      "step1": "Selectie",
+      "step2": "Configuratie",
+      "step3": "Spanningen",
+      "newTitle": "Titel van samengevoegde zone",
+      "titlePlaceholder": "Een nieuwe open titel...",
+      "newDescription": "Samengevoegde beschrijving",
+      "descriptionPlaceholder": "Gecombineerde beschrijving...",
+      "descriptionHint": "De beschrijvingen van de bronzones zijn gecombineerd",
+      "zonesIncluded": "Opgenomen zones:",
+      "tensionsCount": "{{selected}}/{{total}} spanningen geselecteerd",
+      "selectAll": "Alles selecteren",
+      "deselectAll": "Alles deselecteren",
+      "noTensions": "Geen spanningen om te behouden",
+      "confirm": "Samenvoegen"
+    },
+    "tabs": {
+      "zones": "Potentieelzones",
+      "philosophy": "Filosofie",
+      "graph": "Grafiek",
+      "history": "Geschiedenis"
+    },
+    "status": {
+      "title": "Status",
+      "dormant": "Slapend",
+      "emergent": "Opkomend",
+      "fragile": "Fragiel",
+      "blocked": "Geblokkeerd"
+    },
+    "search": {
+      "placeholder": "Zones zoeken...",
+      "noResults": "Geen zones gevonden"
+    },
+    "sort": {
+      "label": "Sorteren",
+      "newest": "Nieuwste eerst",
+      "oldest": "Oudste eerst",
+      "alphabetical": "Alfabetisch",
+      "tensions": "Op spanningen"
+    },
+    "stats": {
+      "total": "Totaal",
+      "dormant": "Slapend",
+      "emergent": "Opkomend",
+      "fragile": "Fragiel",
+      "blocked": "Geblokkeerd",
+      "avgTensions": "Ø Spanningen"
+    },
+    "edit": {
+      "title": "Zone bewerken",
+      "save": "Opslaan",
+      "success": "Zone succesvol bijgewerkt"
+    },
+    "delete": {
+      "title": "Zone verwijderen",
+      "description": "Weet u zeker dat u deze zone wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt.",
+      "confirm": "Ja, verwijderen"
+    },
+    "duplicate": {
+      "button": "Dupliceren",
+      "success": "Zone gedupliceerd"
+    },
+    "detail": {
+      "title": "Zone-details",
+      "createdAt": "Gemaakt op",
+      "updatedAt": "Bijgewerkt op",
+      "tensionsCount": "Aantal spanningen"
     }
   }
 }

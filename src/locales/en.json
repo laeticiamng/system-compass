@@ -5968,6 +5968,52 @@
       "philosophy": "Philosophy",
       "graph": "Graph",
       "history": "History"
+    },
+    "status": {
+      "title": "Statuses",
+      "dormant": "Dormant",
+      "emergent": "Emergent",
+      "fragile": "Fragile",
+      "blocked": "Blocked"
+    },
+    "search": {
+      "placeholder": "Search zones...",
+      "noResults": "No zones found"
+    },
+    "sort": {
+      "label": "Sort",
+      "newest": "Newest first",
+      "oldest": "Oldest first",
+      "alphabetical": "Alphabetical",
+      "tensions": "By tensions"
+    },
+    "stats": {
+      "total": "Total",
+      "dormant": "Dormant",
+      "emergent": "Emergent",
+      "fragile": "Fragile",
+      "blocked": "Blocked",
+      "avgTensions": "Avg tensions"
+    },
+    "edit": {
+      "title": "Edit zone",
+      "save": "Save",
+      "success": "Zone updated successfully"
+    },
+    "delete": {
+      "title": "Delete zone",
+      "description": "Are you sure you want to delete this zone? This action cannot be undone.",
+      "confirm": "Yes, delete"
+    },
+    "duplicate": {
+      "button": "Duplicate",
+      "success": "Zone duplicated"
+    },
+    "detail": {
+      "title": "Zone details",
+      "createdAt": "Created at",
+      "updatedAt": "Updated at",
+      "tensionsCount": "Tensions count"
     }
   }
 }

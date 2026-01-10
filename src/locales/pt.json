@@ -2995,41 +2995,110 @@
       "title": "Exportar para TraceOS",
       "description": "Exportar esta zona como rascunho de decisão",
       "success": "Zona exportada com sucesso para TraceOS",
-      "button": "Exportar para TraceOS"
+      "button": "Exportar para TraceOS",
+      "hypothesis": "Esta zona de potencial está pronta para ser explorada como uma decisão potencial.",
+      "alt1": "Manter em zona de potencial para observação contínua",
+      "alt2": "Fundir com outras zonas relacionadas antes de decidir",
+      "constraint1": "Preservar a reflexão sem cristalização prematura",
+      "constraint2": "Respeitar o tempo de maturação",
+      "pendingDecision": "Pendente de formulação - exportado do LATENT",
+      "additionalContext": "Contexto adicional (opcional)",
+      "contextPlaceholder": "Adicione contexto para a equipe de decisão...",
+      "notice": "A zona será exportada como rascunho de decisão no TraceOS. As tensões identificadas serão incluídas no contexto."
     },
-    "onboarding": {
-      "badge": "Anti-acelerador estratégico",
-      "title": "Bem-vindo ao LATENT",
-      "subtitle": "Um espaço seguro para o que ainda não está pronto para existir. Aqui, a vagueza é respeitada.",
-      "notTitle": "O que LATENT NÃO é",
-      "not": {
-        "idea": "Não é uma ferramenta de ideação",
-        "project": "Não é um gerenciador de projetos",
-        "objective": "Não é um quadro de objetivos",
-        "decision": "Não é uma ferramenta de decisão"
-      },
-      "isTitle": "O que LATENT É",
-      "isDescription": "Um módulo a montante, projetado para prevenir a cristalização prematura.",
-      "is": {
-        "potential": "Um espaço para potenciais não formulados",
-        "noDeadline": "Sem obrigação de prazo ou resultado",
-        "safe": "Proteção contra a pressão de decidir",
-        "respect": "Respeito pela complexidade real"
-      },
-      "principles": {
-        "dormancy": {
-          "title": "A dormência é um estado",
-          "desc": "Deixar descansar não é abandonar. É respeitar o tempo do potencial."
-        },
-        "noTimeline": {
-          "title": "Sem cronograma",
-          "desc": "Sem prazos, sem KPIs, sem notificações intrusivas."
-        },
-        "noForcing": {
-          "title": "Sem obrigação",
-          "desc": "Transformar, fundir, arquivar... mas nunca forçar a concretização."
-        }
+    "history": {
+      "title": "Evolução da zona",
+      "subtitle": "Linha do tempo não linear das transformações",
+      "empty": "Nenhum histórico disponível",
+      "selectZone": "Selecionar uma zona",
+      "selectToView": "Selecione uma zona para ver seu histórico",
+      "action": {
+        "created": "Zona criada",
+        "status_changed": "Mudança de status",
+        "transformed": "Transformação",
+        "merged": "Fusão",
+        "put_to_sleep": "Colocada em repouso",
+        "archived": "Arquivada"
       }
+    },
+    "interconnections": {
+      "title": "Interconexões",
+      "subtitle": "Links entre zonas baseados em tensões compartilhadas",
+      "empty": "Nenhuma zona para exibir",
+      "found": "{{count}} conexões encontradas"
+    },
+    "merge": {
+      "title": "Fundir zonas",
+      "button": "Fundir",
+      "stepSelect": "Selecione zonas para fundir (mínimo 2)",
+      "stepConfigure": "Configure a nova zona fundida",
+      "stepTensions": "Escolha as tensões a preservar",
+      "step1": "Seleção",
+      "step2": "Configuração",
+      "step3": "Tensões",
+      "newTitle": "Título da zona fundida",
+      "titlePlaceholder": "Um novo título aberto...",
+      "newDescription": "Descrição fundida",
+      "descriptionPlaceholder": "Descrição combinada...",
+      "descriptionHint": "As descrições das zonas de origem foram combinadas",
+      "zonesIncluded": "Zonas incluídas:",
+      "tensionsCount": "{{selected}}/{{total}} tensões selecionadas",
+      "selectAll": "Selecionar tudo",
+      "deselectAll": "Desmarcar tudo",
+      "noTensions": "Nenhuma tensão para preservar",
+      "confirm": "Fundir"
+    },
+    "tabs": {
+      "zones": "Zonas de potencial",
+      "philosophy": "Filosofia",
+      "graph": "Gráfico",
+      "history": "Histórico"
+    },
+    "status": {
+      "title": "Status",
+      "dormant": "Dormente",
+      "emergent": "Emergente",
+      "fragile": "Frágil",
+      "blocked": "Bloqueado"
+    },
+    "search": {
+      "placeholder": "Pesquisar zonas...",
+      "noResults": "Nenhuma zona encontrada"
+    },
+    "sort": {
+      "label": "Ordenar",
+      "newest": "Mais recentes primeiro",
+      "oldest": "Mais antigas primeiro",
+      "alphabetical": "Alfabeticamente",
+      "tensions": "Por tensões"
+    },
+    "stats": {
+      "total": "Total",
+      "dormant": "Dormentes",
+      "emergent": "Emergentes",
+      "fragile": "Frágeis",
+      "blocked": "Bloqueadas",
+      "avgTensions": "Ø Tensões"
+    },
+    "edit": {
+      "title": "Editar zona",
+      "save": "Salvar",
+      "success": "Zona atualizada com sucesso"
+    },
+    "delete": {
+      "title": "Excluir zona",
+      "description": "Tem certeza de que deseja excluir esta zona? Esta ação não pode ser desfeita.",
+      "confirm": "Sim, excluir"
+    },
+    "duplicate": {
+      "button": "Duplicar",
+      "success": "Zona duplicada"
+    },
+    "detail": {
+      "title": "Detalhes da zona",
+      "createdAt": "Criada em",
+      "updatedAt": "Atualizada em",
+      "tensionsCount": "Número de tensões"
     }
   }
 }

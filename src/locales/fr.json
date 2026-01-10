@@ -5947,6 +5947,52 @@
       "philosophy": "Philosophie",
       "graph": "Graphe",
       "history": "Historique"
+    },
+    "status": {
+      "title": "Statuts",
+      "dormant": "Dormant",
+      "emergent": "Émergent",
+      "fragile": "Fragile",
+      "blocked": "Bloqué"
+    },
+    "search": {
+      "placeholder": "Rechercher des zones...",
+      "noResults": "Aucune zone trouvée"
+    },
+    "sort": {
+      "label": "Trier",
+      "newest": "Plus récentes d'abord",
+      "oldest": "Plus anciennes d'abord",
+      "alphabetical": "Alphabétique",
+      "tensions": "Par tensions"
+    },
+    "stats": {
+      "total": "Total",
+      "dormant": "Dormantes",
+      "emergent": "Émergentes",
+      "fragile": "Fragiles",
+      "blocked": "Bloquées",
+      "avgTensions": "Ø Tensions"
+    },
+    "edit": {
+      "title": "Modifier la zone",
+      "save": "Enregistrer",
+      "success": "Zone mise à jour avec succès"
+    },
+    "delete": {
+      "title": "Supprimer la zone",
+      "description": "Êtes-vous sûr de vouloir supprimer cette zone ? Cette action est irréversible.",
+      "confirm": "Oui, supprimer"
+    },
+    "duplicate": {
+      "button": "Dupliquer",
+      "success": "Zone dupliquée"
+    },
+    "detail": {
+      "title": "Détails de la zone",
+      "createdAt": "Créée le",
+      "updatedAt": "Mise à jour le",
+      "tensionsCount": "Nombre de tensions"
     }
   }
 }

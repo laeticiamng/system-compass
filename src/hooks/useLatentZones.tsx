@@ -282,6 +282,88 @@ export function useLatentZones() {
     }
   };
 
+  const updateZone = async (zoneId: string, title: string, description?: string): Promise<boolean> => {
+    if (!user) return false;
+
+    try {
+      const { error } = await supabase
+        .from('latent_zones')
+        .update({ 
+          title, 
+          description: description || null,
+          updated_at: new Date().toISOString()
+        })
+        .eq('id', zoneId);
+
+      if (error) throw error;
+
+      setZones(prev => prev.map(z => 
+        z.id === zoneId ? { ...z, title, description: description || null, updated_at: new Date().toISOString() } : z
+      ));
+      return true;
+    } catch (err) {
+      console.error('Error updating zone:', err);
+      toast.error('Erreur lors de la mise à jour de la zone');
+      return false;
+    }
+  };
+
+  const duplicateZone = async (zoneId: string): Promise<LatentZone | null> => {
+    if (!user) return null;
+
+    const zone = zones.find(z => z.id === zoneId);
+    if (!zone) return null;
+
+    try {
+      // Create duplicate zone
+      const { data, error } = await supabase
+        .from('latent_zones')
+        .insert({
+          user_id: user.id,
+          title: `${zone.title} (copie)`,
+          description: zone.description,
+          status: zone.status
+        })
+        .select()
+        .single();
+
+      if (error) throw error;
+
+      // Duplicate tensions
+      if (zone.tensions && zone.tensions.length > 0) {
+        const tensionInserts = zone.tensions.map(t => ({
+          zone_id: data.id,
+          tension_type: t.tension_type,
+          content: t.content
+        }));
+        await supabase.from('latent_zone_tensions').insert(tensionInserts);
+      }
+
+      // Create history entry
+      await supabase.from('latent_zone_history').insert({
+        zone_id: data.id,
+        action: 'created',
+        new_status: zone.status,
+        notes: `Dupliquée depuis: ${zone.title}`,
+        user_id: user.id
+      });
+
+      // Fetch tensions for new zone
+      const { data: tensions } = await supabase
+        .from('latent_zone_tensions')
+        .select('*')
+        .eq('zone_id', data.id);
+
+      const newZone = { ...data, tensions: tensions || [] } as LatentZone;
+      setZones(prev => [newZone, ...prev]);
+      return newZone;
+    } catch (err) {
+      console.error('Error duplicating zone:', err);
+      toast.error('Erreur lors de la duplication de la zone');
+      return null;
+    }
+  };
+
   const mergeZones = async (
     sourceZoneIds: string[], 
     newTitle: string, 
@@ -377,11 +459,13 @@ export function useLatentZones() {
     error,
     isLoggedIn,
     createZone,
+    updateZone,
     updateZoneStatus,
     addTension,
     removeTension,
     evolveZone,
     deleteZone,
+    duplicateZone,
     getZoneHistory,
     mergeZones,
     refetch: fetchZones
