@@ -568,14 +568,14 @@
     "countries": "Países",
     "profile": "Perfil",
     "trajectory": "Trajetória",
-    "match": "Match",
+    "match": "Compatibilidade",
     "compare": "Comparar",
-    "multiCompare": "Multi-Comparar",
+    "multiCompare": "Multi-Análise",
     "resources": "Recursos",
-    "pyramids": "Pirâmides",
-    "quiz": "Quiz",
+    "pyramids": "Sistemas",
+    "quiz": "Modo Educativo",
     "exitKeys": "Chaves de Saída",
-    "dashboard": "Painel",
+    "dashboard": "Painel de Controlo",
     "lifeGame": "Jogo da Vida",
     "systemicMistakes": "Erros",
     "catalog": "Catálogo",
@@ -587,7 +587,10 @@
     "orientationHub": "Orientação",
     "partners": "Parceiros",
     "b2b": "Soluções B2B",
-    "about": "Sobre nós"
+    "about": "Sobre nós",
+    "usage": "Consumo",
+    "institutions": "Instituições",
+    "ovi": "OVI"
   },
   "worldMap": {
     "badge": "Exploração mundial",
@@ -2580,16 +2583,6 @@
       "title": "Em resumo",
       "text": "Esta ferramenta ajuda-te a ver mais claramente, não a ver o futuro. Ilumina tendências para que TU possas decidir com conhecimento de causa. A decisão e a responsabilidade permanecem sempre tuas."
     }
-  },
-  "footer": {
-    "explore": "Explorar",
-    "tools": "Ferramentas",
-    "account": "Conta",
-    "profileTest": "Teste de Perfil",
-    "madeWith": "Feito com",
-    "about": "Sobre nós",
-    "defaultCountry": "País predefinido",
-    "defaultCountryTooltip": "As calculadoras usam este país por defeito. Altera-o nas ferramentas."
   },
   "preventionFilter": {
     "badge": "Filtro de prevenção",

@@ -4242,10 +4242,6 @@
       "text": "This tool helps you see more clearly, not see the future. It illuminates trends so that YOU can decide with full knowledge. The decision, and responsibility, always remain yours."
     }
   },
-  "footer": {
-    "defaultCountry": "Default country",
-    "defaultCountryTooltip": "Calculators use this country by default. Change it in the tools."
-  },
   "preventionFilter": {
     "badge": "Prevention filter",
     "title": "Run a decision through the filter",
