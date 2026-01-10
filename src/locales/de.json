@@ -2995,41 +2995,110 @@
       "title": "Zu TraceOS exportieren",
       "description": "Diese Zone als Entscheidungsentwurf exportieren",
       "success": "Zone erfolgreich zu TraceOS exportiert",
-      "button": "Zu TraceOS exportieren"
+      "button": "Zu TraceOS exportieren",
+      "hypothesis": "Diese Potenzialzone ist bereit, als potenzielle Entscheidung erkundet zu werden.",
+      "alt1": "In Potenzialzone zur weiteren Beobachtung halten",
+      "alt2": "Mit anderen verwandten Zonen vor der Entscheidung zusammenführen",
+      "constraint1": "Reflexion ohne vorzeitige Kristallisation bewahren",
+      "constraint2": "Reifezeit respektieren",
+      "pendingDecision": "Ausstehende Formulierung - aus LATENT exportiert",
+      "additionalContext": "Zusätzlicher Kontext (optional)",
+      "contextPlaceholder": "Kontext für das Entscheidungsteam hinzufügen...",
+      "notice": "Die Zone wird als Entscheidungsentwurf in TraceOS exportiert. Identifizierte Spannungen werden im Kontext enthalten sein."
     },
-    "onboarding": {
-      "badge": "Strategischer Anti-Beschleuniger",
-      "title": "Willkommen bei LATENT",
-      "subtitle": "Ein sicherer Raum für das, was noch nicht bereit ist zu existieren. Hier wird Unschärfe respektiert.",
-      "notTitle": "Was LATENT NICHT ist",
-      "not": {
-        "idea": "Kein Ideation-Tool",
-        "project": "Kein Projektmanager",
-        "objective": "Keine Zieleboard",
-        "decision": "Kein Entscheidungstool"
-      },
-      "isTitle": "Was LATENT IST",
-      "isDescription": "Ein vorgelagertes Modul, entwickelt um vorzeitige Kristallisation zu verhindern.",
-      "is": {
-        "potential": "Ein Raum für unformulierte Potenziale",
-        "noDeadline": "Keine Frist- oder Ergebnisverpflichtung",
-        "safe": "Schutz vor Entscheidungsdruck",
-        "respect": "Respekt für echte Komplexität"
-      },
-      "principles": {
-        "dormancy": {
-          "title": "Ruhe ist ein Zustand",
-          "desc": "Ruhen lassen ist nicht aufgeben. Es ist die Zeit des Potenzials respektieren."
-        },
-        "noTimeline": {
-          "title": "Keine Timeline",
-          "desc": "Keine Fristen, keine KPIs, keine aufdringlichen Benachrichtigungen."
-        },
-        "noForcing": {
-          "title": "Keine Verpflichtung",
-          "desc": "Transformieren, zusammenführen, archivieren... aber niemals Konkretisierung erzwingen."
-        }
+    "history": {
+      "title": "Zonenentwicklung",
+      "subtitle": "Nicht-lineare Zeitleiste der Transformationen",
+      "empty": "Kein Verlauf verfügbar",
+      "selectZone": "Zone auswählen",
+      "selectToView": "Wählen Sie eine Zone aus, um ihren Verlauf anzuzeigen",
+      "action": {
+        "created": "Zone erstellt",
+        "status_changed": "Statusänderung",
+        "transformed": "Transformation",
+        "merged": "Zusammenführung",
+        "put_to_sleep": "In Ruhe versetzt",
+        "archived": "Archiviert"
       }
+    },
+    "interconnections": {
+      "title": "Verbindungen",
+      "subtitle": "Verbindungen zwischen Zonen basierend auf gemeinsamen Spannungen",
+      "empty": "Keine Zonen anzuzeigen",
+      "found": "{{count}} Verbindungen gefunden"
+    },
+    "merge": {
+      "title": "Zonen zusammenführen",
+      "button": "Zusammenführen",
+      "stepSelect": "Wählen Sie Zonen zum Zusammenführen (mindestens 2)",
+      "stepConfigure": "Neue zusammengeführte Zone konfigurieren",
+      "stepTensions": "Zu erhaltende Spannungen auswählen",
+      "step1": "Auswahl",
+      "step2": "Konfiguration",
+      "step3": "Spannungen",
+      "newTitle": "Titel der zusammengeführten Zone",
+      "titlePlaceholder": "Ein neuer offener Titel...",
+      "newDescription": "Zusammengeführte Beschreibung",
+      "descriptionPlaceholder": "Kombinierte Beschreibung...",
+      "descriptionHint": "Die Beschreibungen der Quellzonen wurden kombiniert",
+      "zonesIncluded": "Enthaltene Zonen:",
+      "tensionsCount": "{{selected}}/{{total}} Spannungen ausgewählt",
+      "selectAll": "Alle auswählen",
+      "deselectAll": "Alle abwählen",
+      "noTensions": "Keine Spannungen zu erhalten",
+      "confirm": "Zusammenführen"
+    },
+    "tabs": {
+      "zones": "Potenzialzonen",
+      "philosophy": "Philosophie",
+      "graph": "Graph",
+      "history": "Verlauf"
+    },
+    "status": {
+      "title": "Status",
+      "dormant": "Ruhend",
+      "emergent": "Aufkommend",
+      "fragile": "Fragil",
+      "blocked": "Blockiert"
+    },
+    "search": {
+      "placeholder": "Zonen suchen...",
+      "noResults": "Keine Zonen gefunden"
+    },
+    "sort": {
+      "label": "Sortieren",
+      "newest": "Neueste zuerst",
+      "oldest": "Älteste zuerst",
+      "alphabetical": "Alphabetisch",
+      "tensions": "Nach Spannungen"
+    },
+    "stats": {
+      "total": "Gesamt",
+      "dormant": "Ruhend",
+      "emergent": "Aufkommend",
+      "fragile": "Fragil",
+      "blocked": "Blockiert",
+      "avgTensions": "Ø Spannungen"
+    },
+    "edit": {
+      "title": "Zone bearbeiten",
+      "save": "Speichern",
+      "success": "Zone erfolgreich aktualisiert"
+    },
+    "delete": {
+      "title": "Zone löschen",
+      "description": "Sind Sie sicher, dass Sie diese Zone löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+      "confirm": "Ja, löschen"
+    },
+    "duplicate": {
+      "button": "Duplizieren",
+      "success": "Zone dupliziert"
+    },
+    "detail": {
+      "title": "Zonendetails",
+      "createdAt": "Erstellt am",
+      "updatedAt": "Aktualisiert am",
+      "tensionsCount": "Anzahl Spannungen"
     }
   }
 }

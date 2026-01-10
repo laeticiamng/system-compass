@@ -17,7 +17,10 @@ import {
   Archive,
   Pause,
   GitMerge,
-  RefreshCw
+  RefreshCw,
+  Edit,
+  Copy,
+  Eye
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -40,13 +43,19 @@ import {
 } from '@/components/ui/select';
 import { LatentZone, ZoneStatus, TensionType } from '@/hooks/useLatentZones';
 import { ExportToTraceOS } from './ExportToTraceOS';
+import { ZoneEditDialog } from './ZoneEditDialog';
+import { ZoneDeleteDialog } from './ZoneDeleteDialog';
+import { ZoneDetailDialog } from './ZoneDetailDialog';
+
 interface ZoneCardProps {
   zone: LatentZone;
   onStatusChange: (zoneId: string, status: ZoneStatus) => void;
   onAddTension: (zoneId: string, type: TensionType, content: string) => void;
   onRemoveTension: (tensionId: string, zoneId: string) => void;
   onEvolve: (zoneId: string, action: 'archived' | 'put_to_sleep' | 'transformed' | 'merged') => void;
-  onDelete: (zoneId: string) => void;
+  onDelete: (zoneId: string) => Promise<boolean>;
+  onEdit?: (zoneId: string, title: string, description?: string) => Promise<boolean>;
+  onDuplicate?: (zoneId: string) => void;
 }
 
 const STATUS_CONFIG: Record<ZoneStatus, { icon: typeof Moon; color: string; bgColor: string }> = {
@@ -69,13 +78,18 @@ export function ZoneCard({
   onAddTension,
   onRemoveTension,
   onEvolve,
-  onDelete
+  onDelete,
+  onEdit,
+  onDuplicate
 }: ZoneCardProps) {
   const { t } = useTranslation();
   const [isExpanded, setIsExpanded] = useState(false);
   const [newTensionType, setNewTensionType] = useState<TensionType>('nourishing');
   const [newTensionContent, setNewTensionContent] = useState('');
   const [isAddingTension, setIsAddingTension] = useState(false);
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  const [isDetailOpen, setIsDetailOpen] = useState(false);
 
   const StatusIcon = STATUS_CONFIG[zone.status].icon;
   const statusColor = STATUS_CONFIG[zone.status].color;
@@ -131,6 +145,23 @@ export function ZoneCard({
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
+                <DropdownMenuItem onClick={() => setIsDetailOpen(true)}>
+                  <Eye className="w-4 h-4 mr-2" />
+                  {t('latent.detail.title')}
+                </DropdownMenuItem>
+                {onEdit && (
+                  <DropdownMenuItem onClick={() => setIsEditOpen(true)}>
+                    <Edit className="w-4 h-4 mr-2" />
+                    {t('latent.edit.title')}
+                  </DropdownMenuItem>
+                )}
+                {onDuplicate && (
+                  <DropdownMenuItem onClick={() => onDuplicate(zone.id)}>
+                    <Copy className="w-4 h-4 mr-2" />
+                    {t('latent.duplicate.button')}
+                  </DropdownMenuItem>
+                )}
+                <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={() => onEvolve(zone.id, 'transformed')}>
                   <RefreshCw className="w-4 h-4 mr-2" />
                   {t('latent.actions.transform')}
@@ -149,7 +180,7 @@ export function ZoneCard({
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem 
-                  onClick={() => onDelete(zone.id)}
+                  onClick={() => setIsDeleteOpen(true)}
                   className="text-destructive focus:text-destructive"
                 >
                   <X className="w-4 h-4 mr-2" />
@@ -294,7 +325,6 @@ export function ZoneCard({
           </CollapsibleContent>
         </Collapsible>
 
-        {/* Export & Timestamp */}
         <div className="flex items-center justify-between mt-3 pt-2 border-t">
           <p className="text-xs text-muted-foreground">
             {t('latent.updated')}: {new Date(zone.updated_at).toLocaleDateString()}
@@ -302,6 +332,27 @@ export function ZoneCard({
           <ExportToTraceOS zone={zone} />
         </div>
       </CardContent>
+
+      {/* Dialogs */}
+      {onEdit && (
+        <ZoneEditDialog
+          zone={zone}
+          isOpen={isEditOpen}
+          onClose={() => setIsEditOpen(false)}
+          onSave={onEdit}
+        />
+      )}
+      <ZoneDeleteDialog
+        zone={zone}
+        isOpen={isDeleteOpen}
+        onClose={() => setIsDeleteOpen(false)}
+        onConfirm={onDelete}
+      />
+      <ZoneDetailDialog
+        zone={zone}
+        isOpen={isDetailOpen}
+        onClose={() => setIsDetailOpen(false)}
+      />
     </Card>
   );
 }
