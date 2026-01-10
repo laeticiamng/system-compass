@@ -435,7 +435,22 @@
     "account": "Konto",
     "profileTest": "Profil-Test",
     "madeWith": "Erstellt mit",
-    "about": "Über uns"
+    "about": "Über uns",
+    "exitKeysCatalog": "Schlüsselkatalog",
+    "potentialZones": "Potenzialzonen",
+    "thresholdProtocol": "Schwellenprotokoll",
+    "businessInstitutions": "Business & Institutionen",
+    "howToRead": "Ergebnisse lesen",
+    "warnings": "Warnungen",
+    "disclaimer": "Analyse- und Simulationswerkzeug. Keine rechtliche, finanzielle oder medizinische Beratung.",
+    "learnMore": "Mehr erfahren",
+    "restartTutorial": "Tutorial neu starten",
+    "restartTutorialTooltip": "Willkommens-Tutorial neu starten",
+    "resetDisclaimer": "Warnungen erneut anzeigen",
+    "resetDisclaimerTooltip": "Disclaimer-Banner auf Simulationsseiten erneut anzeigen",
+    "disclaimerReset": "Disclaimer-Banner zurückgesetzt",
+    "defaultCountry": "Standardland",
+    "defaultCountryTooltip": "Rechner verwenden dieses Land standardmäßig. Ändern Sie es in den Tools."
   },
   "about": {
     "badge": "Unsere Mission",

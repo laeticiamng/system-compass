@@ -435,7 +435,22 @@
     "account": "Account",
     "profileTest": "Profieltest",
     "madeWith": "Gemaakt met",
-    "about": "Over ons"
+    "about": "Over ons",
+    "exitKeysCatalog": "Sleutelcatalogus",
+    "potentialZones": "Potentiële Zones",
+    "thresholdProtocol": "Drempelprotocol",
+    "businessInstitutions": "Bedrijven & Instellingen",
+    "howToRead": "Hoe resultaten te lezen",
+    "warnings": "Waarschuwingen",
+    "disclaimer": "Analyse- en simulatietool. Geen juridisch, financieel of medisch advies.",
+    "learnMore": "Meer weten",
+    "restartTutorial": "Tutorial opnieuw starten",
+    "restartTutorialTooltip": "Welkom-tutorial opnieuw starten",
+    "resetDisclaimer": "Waarschuwingen opnieuw tonen",
+    "resetDisclaimerTooltip": "Disclaimer-banner op simulatiepagina's opnieuw tonen",
+    "disclaimerReset": "Disclaimer-banner gereset",
+    "defaultCountry": "Standaard land",
+    "defaultCountryTooltip": "Rekenmachines gebruiken dit land standaard. Wijzig het in de tools."
   },
   "about": {
     "badge": "Onze missie",

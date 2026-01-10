@@ -435,7 +435,22 @@
     "account": "Conta",
     "profileTest": "Teste de perfil",
     "madeWith": "Feito com",
-    "about": "Sobre"
+    "about": "Sobre",
+    "exitKeysCatalog": "Catálogo de Chaves",
+    "potentialZones": "Zonas de Potencial",
+    "thresholdProtocol": "Protocolo de Limiar",
+    "businessInstitutions": "Negócios & Instituições",
+    "howToRead": "Como ler os resultados",
+    "warnings": "Avisos",
+    "disclaimer": "Ferramenta de análise e simulação. Sem aconselhamento legal, financeiro ou médico.",
+    "learnMore": "Saber mais",
+    "restartTutorial": "Reiniciar tutorial",
+    "restartTutorialTooltip": "Reiniciar o tutorial de boas-vindas",
+    "resetDisclaimer": "Mostrar avisos novamente",
+    "resetDisclaimerTooltip": "Mostrar o banner de aviso nas páginas de simulação novamente",
+    "disclaimerReset": "Banner de aviso reiniciado",
+    "defaultCountry": "País padrão",
+    "defaultCountryTooltip": "As calculadoras usam este país por padrão. Altere-o nas ferramentas."
   },
   "about": {
     "badge": "A nossa missão",
