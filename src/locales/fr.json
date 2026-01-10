@@ -6167,6 +6167,17 @@
     "demoMode": "Connectez-vous pour utiliser IRREVERSA"
   },
   "pricing": {
+    "unlock": "Débloquez plus de fonctionnalités",
+    "homepageTitle": "Allez plus loin dans votre analyse",
+    "homepageSubtitle": "Accédez à des analyses de pays plus détaillées et des recommandations personnalisées",
+    "viewPlans": "Voir tous les plans",
+    "recommended": "Recommandé",
+    "premiumFeature1": "Variantes pays spécifiques",
+    "premiumFeature2": "Profils qui réussissent/souffrent",
+    "premiumFeature3": "Ce qui surprend les nouveaux",
+    "proFeature1": "Tout le contenu Premium",
+    "proFeature2": "Analyse projet personnalisée",
+    "proFeature3": "Clés de sortie personnalisées",
     "badge": "Tarification transparente",
     "title": "Choisissez votre plan",
     "subtitle": "Débloquez des analyses plus profondes et des recommandations personnalisées",

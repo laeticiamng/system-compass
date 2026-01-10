@@ -3233,6 +3233,17 @@
     }
   },
   "pricing": {
+    "unlock": "Ontgrendel meer functies",
+    "homepageTitle": "Ga verder in je analyse",
+    "homepageSubtitle": "Krijg toegang tot gedetailleerdere landenanalyses en gepersonaliseerde aanbevelingen",
+    "viewPlans": "Bekijk alle plannen",
+    "recommended": "Aanbevolen",
+    "premiumFeature1": "Landspecifieke varianten",
+    "premiumFeature2": "Succes-/moeiteprofielen",
+    "premiumFeature3": "Wat nieuwkomers verrast",
+    "proFeature1": "Alle Premium-inhoud",
+    "proFeature2": "Gepersonaliseerde projectanalyse",
+    "proFeature3": "Gepersonaliseerde exit-keys",
     "badge": "Transparante prijzen",
     "title": "Kies je plan",
     "subtitle": "Ontgrendel diepere analyses en gepersonaliseerde aanbevelingen",

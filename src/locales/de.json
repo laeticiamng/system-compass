@@ -3233,6 +3233,17 @@
     }
   },
   "pricing": {
+    "unlock": "Mehr Funktionen freischalten",
+    "homepageTitle": "Gehen Sie weiter in Ihrer Analyse",
+    "homepageSubtitle": "Zugang zu detaillierteren Länderanalysen und personalisierten Empfehlungen",
+    "viewPlans": "Alle Pläne anzeigen",
+    "recommended": "Empfohlen",
+    "premiumFeature1": "Länderspezifische Varianten",
+    "premiumFeature2": "Erfolgs-/Problemprofile",
+    "premiumFeature3": "Was Neuankömmlinge überrascht",
+    "proFeature1": "Alle Premium-Inhalte",
+    "proFeature2": "Personalisierte Projektanalyse",
+    "proFeature3": "Personalisierte Exit-Keys",
     "badge": "Transparente Preise",
     "title": "Wählen Sie Ihren Plan",
     "subtitle": "Schalten Sie tiefere Analysen und personalisierte Empfehlungen frei",
