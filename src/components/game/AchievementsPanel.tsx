@@ -26,7 +26,7 @@ export function AchievementsPanel() {
       <Card>
         <CardContent className="p-6">
           <div className="animate-pulse text-muted-foreground text-center">
-            Chargement...
+            {t('common.loading', 'Loading...')}
           </div>
         </CardContent>
       </Card>
@@ -74,7 +74,7 @@ export function AchievementsPanel() {
               className="cursor-pointer"
               onClick={() => setSelectedCategory(cat)}
             >
-              {cat === 'all' ? 'Tous' : getCategoryLabel(cat as Achievement['category'])}
+              {cat === 'all' ? t('common.all', 'All') : getCategoryLabel(cat as Achievement['category'])}
             </Badge>
           ))}
         </div>
@@ -83,11 +83,11 @@ export function AchievementsPanel() {
           <TabsList className="grid w-full grid-cols-2 mb-4">
             <TabsTrigger value="unlocked" className="gap-2">
               <CheckCircle2 className="w-4 h-4" />
-              Débloqués ({filterByCategory(unlockedAchievements).length})
+              {t('achievements.unlocked', 'Unlocked')} ({filterByCategory(unlockedAchievements).length})
             </TabsTrigger>
             <TabsTrigger value="locked" className="gap-2">
               <Lock className="w-4 h-4" />
-              À débloquer ({filterByCategory(lockedAchievements).length})
+              {t('achievements.locked', 'Locked')} ({filterByCategory(lockedAchievements).length})
             </TabsTrigger>
           </TabsList>
 
@@ -95,7 +95,7 @@ export function AchievementsPanel() {
             <div className="grid gap-3">
               {filterByCategory(unlockedAchievements).length === 0 ? (
                 <div className="text-center text-muted-foreground py-8">
-                  Aucun succès débloqué dans cette catégorie
+                  {t('achievements.noneInCategory', 'No achievements unlocked in this category')}
                 </div>
               ) : (
                 filterByCategory(unlockedAchievements).map(achievement => (
@@ -114,7 +114,7 @@ export function AchievementsPanel() {
             <div className="grid gap-3">
               {filterByCategory(lockedAchievements).length === 0 ? (
                 <div className="text-center text-muted-foreground py-8">
-                  Tous les succès de cette catégorie sont débloqués ! 🎉
+                  {t('achievements.allUnlocked', 'All achievements in this category are unlocked! 🎉')}
                 </div>
               ) : (
                 filterByCategory(lockedAchievements).map(achievement => (
@@ -143,6 +143,7 @@ function AchievementCard({
   unlocked: boolean;
   stats: ReturnType<typeof useGameStatistics>['stats'];
 }) {
+  const { t } = useTranslation();
   const progress = achievement.progress?.(stats);
 
   return (
@@ -171,10 +172,10 @@ function AchievementCard({
           <p className="text-sm text-muted-foreground mb-2">
             {achievement.description}
           </p>
-          {progress && !unlocked && (
+            {progress && !unlocked && (
             <div className="space-y-1">
               <div className="flex justify-between text-xs text-muted-foreground">
-                <span>Progression</span>
+                <span>{t('achievements.progress', 'Progress')}</span>
                 <span>{progress.current}/{progress.target}</span>
               </div>
               <Progress 

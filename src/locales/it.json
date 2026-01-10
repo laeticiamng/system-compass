@@ -257,11 +257,15 @@
   "achievements": {
     "title": "Traguardi",
     "unlocked": "sbloccati",
+    "locked": "Da sbloccare",
     "all": "Tutti",
     "exploration": "Esplorazione",
     "risk": "Presa di rischio",
     "mastery": "Maestria",
-    "special": "Speciale"
+    "special": "Speciale",
+    "progress": "Progresso",
+    "noneInCategory": "Nessun traguardo sbloccato in questa categoria",
+    "allUnlocked": "Tutti i traguardi di questa categoria sono sbloccati! 🎉"
   },
   "resources": {
     "title": "Risorse",

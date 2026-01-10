@@ -12,8 +12,8 @@ type FeatureFlags = {
 const defaultFlags: FeatureFlags = {
   game: true,
   advancedFilters: true,
-  pdfExport: false,
-  aiRecommendations: false,
+  pdfExport: true,
+  aiRecommendations: true,
   multiNationality: true,
   destinationInsights: true,
 };

@@ -269,11 +269,15 @@
   "achievements": {
     "title": "Succès",
     "unlocked": "débloqués",
+    "locked": "À débloquer",
     "all": "Tous",
     "exploration": "Exploration",
     "risk": "Prise de risque",
     "mastery": "Maîtrise",
-    "special": "Spécial"
+    "special": "Spécial",
+    "progress": "Progression",
+    "noneInCategory": "Aucun succès débloqué dans cette catégorie",
+    "allUnlocked": "Tous les succès de cette catégorie sont débloqués ! 🎉"
   },
   "footer": {
     "explore": "Explorer",
