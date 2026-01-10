@@ -21,7 +21,11 @@
     "previewMode": "Preview mode",
     "all": "All",
     "total": "Total",
-    "close": "Close"
+    "close": "Close",
+    "optional": "optional",
+    "description": "Description",
+    "submit": "Submit",
+    "sending": "Sending..."
   },
   "errors": {
     "rateLimited": "Too many requests. Please try again in a moment.",

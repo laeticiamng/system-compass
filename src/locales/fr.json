@@ -21,7 +21,11 @@
     "previewMode": "Mode aperçu",
     "all": "Tous",
     "total": "Total",
-    "close": "Fermer"
+    "close": "Fermer",
+    "optional": "optionnel",
+    "description": "Description",
+    "submit": "Soumettre",
+    "sending": "Envoi..."
   },
   "errors": {
     "rateLimited": "Trop de requêtes. Veuillez réessayer dans quelques instants.",
