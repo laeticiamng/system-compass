@@ -168,6 +168,34 @@ export const ACHIEVEMENTS: Achievement[] = [
     progress: (stats) => ({ current: Math.min(stats.archetypesUsed.length, 10), target: 10 }),
   },
   
+  // SOCIAL
+  {
+    id: 'team_player',
+    name: 'Joueur d\'équipe',
+    description: 'Jouer 5 parties en mode coopératif',
+    icon: '🤝',
+    category: 'social',
+    rarity: 'rare',
+    condition: (stats) => {
+      const coopGames = stats.favoriteActions?.cooperative || 0;
+      return coopGames >= 5;
+    },
+    progress: (stats) => ({ current: Math.min(stats.favoriteActions?.cooperative || 0, 5), target: 5 }),
+  },
+  {
+    id: 'racer',
+    name: 'Coureur',
+    description: 'Jouer 10 parties en mode course',
+    icon: '🏎️',
+    category: 'social',
+    rarity: 'rare',
+    condition: (stats) => {
+      const raceGames = stats.favoriteActions?.race || 0;
+      return raceGames >= 10;
+    },
+    progress: (stats) => ({ current: Math.min(stats.favoriteActions?.race || 0, 10), target: 10 }),
+  },
+  
   // SPECIAL
   {
     id: 'millionaire',
