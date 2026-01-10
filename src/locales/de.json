@@ -568,13 +568,13 @@
     "countries": "Länder",
     "profile": "Profil",
     "trajectory": "Trajektorie",
-    "match": "Match",
+    "match": "Kompatibilität",
     "compare": "Vergleichen",
-    "multiCompare": "Multi-Vergleich",
+    "multiCompare": "Multi-Analyse",
     "resources": "Ressourcen",
-    "pyramids": "Pyramiden",
-    "quiz": "Quiz",
-    "exitKeys": "Exit-Schlüssel",
+    "pyramids": "Systeme",
+    "quiz": "Bildungsmodus",
+    "exitKeys": "Exit-Keys",
     "dashboard": "Dashboard",
     "lifeGame": "Lebensspiel",
     "systemicMistakes": "Fehler",
@@ -587,7 +587,10 @@
     "orientationHub": "Orientierung",
     "partners": "Partner",
     "b2b": "B2B-Lösungen",
-    "about": "Über uns"
+    "about": "Über uns",
+    "usage": "Verbrauch",
+    "institutions": "Institutionen",
+    "ovi": "OVI"
   },
   "worldMap": {
     "badge": "Weltweite Erkundung",
@@ -2580,16 +2583,6 @@
       "title": "Zusammenfassend",
       "text": "Dieses Tool hilft dir, klarer zu sehen, nicht die Zukunft zu sehen. Es beleuchtet Trends, damit DU informiert entscheiden kannst. Die Entscheidung und Verantwortung bleiben immer bei dir."
     }
-  },
-  "footer": {
-    "explore": "Erkunden",
-    "tools": "Werkzeuge",
-    "account": "Konto",
-    "profileTest": "Profiltest",
-    "madeWith": "Gemacht mit",
-    "about": "Über uns",
-    "defaultCountry": "Standardland",
-    "defaultCountryTooltip": "Rechner verwenden dieses Land standardmäßig. Ändere es in den Tools."
   },
   "preventionFilter": {
     "badge": "Präventionsfilter",

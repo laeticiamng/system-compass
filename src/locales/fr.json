@@ -4650,10 +4650,6 @@
       "text": "Cet outil t'aide à voir plus clair, pas à voir le futur. Il éclaire des tendances pour que TU puisses décider en connaissance de cause. La décision, et la responsabilité, restent toujours les tiennes."
     }
   },
-  "footer": {
-    "defaultCountry": "Pays par défaut",
-    "defaultCountryTooltip": "Les calculateurs utilisent ce pays par défaut. Changez-le dans les outils."
-  },
   "preventionFilter": {
     "badge": "Filtre de prévention",
     "title": "Passer une décision au filtre",

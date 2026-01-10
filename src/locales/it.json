@@ -568,12 +568,12 @@
     "countries": "Paesi",
     "profile": "Profilo",
     "trajectory": "Traiettoria",
-    "match": "Match",
+    "match": "Compatibilità",
     "compare": "Confronta",
-    "multiCompare": "Multi-Confronto",
+    "multiCompare": "Multi-Analisi",
     "resources": "Risorse",
-    "pyramids": "Piramidi",
-    "quiz": "Quiz",
+    "pyramids": "Sistemi",
+    "quiz": "Modalità Educativa",
     "exitKeys": "Chiavi di Uscita",
     "dashboard": "Dashboard",
     "lifeGame": "Gioco della Vita",
@@ -587,7 +587,10 @@
     "orientationHub": "Orientamento",
     "partners": "Partner",
     "b2b": "Soluzioni B2B",
-    "about": "Chi siamo"
+    "about": "Chi siamo",
+    "usage": "Consumo",
+    "institutions": "Istituzioni",
+    "ovi": "OVI"
   },
   "worldMap": {
     "badge": "Esplorazione mondiale",
@@ -2580,16 +2583,6 @@
       "title": "In sintesi",
       "text": "Questo strumento ti aiuta a vedere più chiaramente, non a vedere il futuro. Illumina le tendenze affinché TU possa decidere con cognizione di causa. La decisione e la responsabilità restano sempre tue."
     }
-  },
-  "footer": {
-    "explore": "Esplora",
-    "tools": "Strumenti",
-    "account": "Account",
-    "profileTest": "Test del Profilo",
-    "madeWith": "Fatto con",
-    "about": "Chi siamo",
-    "defaultCountry": "Paese predefinito",
-    "defaultCountryTooltip": "I calcolatori usano questo paese di default. Cambialo negli strumenti."
   },
   "preventionFilter": {
     "badge": "Filtro di prevenzione",

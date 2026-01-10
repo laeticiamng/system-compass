@@ -568,13 +568,13 @@
     "countries": "Landen",
     "profile": "Profiel",
     "trajectory": "Traject",
-    "match": "Match",
-    "compare": "Vergelijk",
-    "multiCompare": "Multi-Vergelijking",
+    "match": "Compatibiliteit",
+    "compare": "Vergelijken",
+    "multiCompare": "Multi-Analyse",
     "resources": "Bronnen",
-    "pyramids": "Piramides",
-    "quiz": "Quiz",
-    "exitKeys": "Exit-Sleutels",
+    "pyramids": "Systemen",
+    "quiz": "Educatieve Modus",
+    "exitKeys": "Exit-Keys",
     "dashboard": "Dashboard",
     "lifeGame": "Levensspel",
     "systemicMistakes": "Fouten",
@@ -587,7 +587,10 @@
     "orientationHub": "Oriëntatie",
     "partners": "Partners",
     "b2b": "B2B-Oplossingen",
-    "about": "Over ons"
+    "about": "Over ons",
+    "usage": "Verbruik",
+    "institutions": "Instellingen",
+    "ovi": "OVI"
   },
   "worldMap": {
     "badge": "Wereldwijde verkenning",
@@ -2580,16 +2583,6 @@
       "title": "Samengevat",
       "text": "Dit hulpmiddel helpt je duidelijker te zien, niet de toekomst te zien. Het verlicht trends zodat JIJ geïnformeerd kunt beslissen. De beslissing en verantwoordelijkheid blijven altijd bij jou."
     }
-  },
-  "footer": {
-    "explore": "Verkennen",
-    "tools": "Hulpmiddelen",
-    "account": "Account",
-    "profileTest": "Profieltest",
-    "madeWith": "Gemaakt met",
-    "about": "Over ons",
-    "defaultCountry": "Standaardland",
-    "defaultCountryTooltip": "Rekenmachines gebruiken dit land standaard. Wijzig het in de tools."
   },
   "preventionFilter": {
     "badge": "Preventiefilter",
