@@ -404,6 +404,42 @@ export type Database = {
         }
         Relationships: []
       }
+      exit_keys_history: {
+        Row: {
+          compatibility_score: number | null
+          country_id: string | null
+          created_at: string | null
+          exit_key_id: string
+          id: string
+          notes: string | null
+          status: string | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          compatibility_score?: number | null
+          country_id?: string | null
+          created_at?: string | null
+          exit_key_id: string
+          id?: string
+          notes?: string | null
+          status?: string | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          compatibility_score?: number | null
+          country_id?: string | null
+          created_at?: string | null
+          exit_key_id?: string
+          id?: string
+          notes?: string | null
+          status?: string | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       game_statistics: {
         Row: {
           archetypes_used: Json | null
@@ -494,6 +530,36 @@ export type Database = {
           target_lang?: string
           translation?: Json
           updated_at?: string
+        }
+        Relationships: []
+      }
+      i18n_coverage_alerts: {
+        Row: {
+          alert_sent: boolean | null
+          coverage_percentage: number
+          created_at: string | null
+          id: string
+          languages_data: Json | null
+          missing_keys_count: number
+          sent_at: string | null
+        }
+        Insert: {
+          alert_sent?: boolean | null
+          coverage_percentage: number
+          created_at?: string | null
+          id?: string
+          languages_data?: Json | null
+          missing_keys_count: number
+          sent_at?: string | null
+        }
+        Update: {
+          alert_sent?: boolean | null
+          coverage_percentage?: number
+          created_at?: string | null
+          id?: string
+          languages_data?: Json | null
+          missing_keys_count?: number
+          sent_at?: string | null
         }
         Relationships: []
       }
@@ -778,6 +844,81 @@ export type Database = {
           pyramid_type?: string
           stream_url?: string | null
           task_id?: string | null
+        }
+        Relationships: []
+      }
+      notification_settings: {
+        Row: {
+          created_at: string | null
+          deadline_reminder_days: number | null
+          email_enabled: boolean | null
+          id: string
+          push_enabled: boolean | null
+          slack_webhook_url: string | null
+          updated_at: string | null
+          user_id: string
+          weekly_digest: boolean | null
+        }
+        Insert: {
+          created_at?: string | null
+          deadline_reminder_days?: number | null
+          email_enabled?: boolean | null
+          id?: string
+          push_enabled?: boolean | null
+          slack_webhook_url?: string | null
+          updated_at?: string | null
+          user_id: string
+          weekly_digest?: boolean | null
+        }
+        Update: {
+          created_at?: string | null
+          deadline_reminder_days?: number | null
+          email_enabled?: boolean | null
+          id?: string
+          push_enabled?: boolean | null
+          slack_webhook_url?: string | null
+          updated_at?: string | null
+          user_id?: string
+          weekly_digest?: boolean | null
+        }
+        Relationships: []
+      }
+      ovi_suggestions: {
+        Row: {
+          created_at: string | null
+          dismissed: boolean | null
+          id: string
+          relevance_score: number | null
+          simulation_context: Json
+          simulation_type: string
+          suggested_frameworks: string[] | null
+          suggested_grids: string[] | null
+          user_id: string | null
+          viewed_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          dismissed?: boolean | null
+          id?: string
+          relevance_score?: number | null
+          simulation_context: Json
+          simulation_type: string
+          suggested_frameworks?: string[] | null
+          suggested_grids?: string[] | null
+          user_id?: string | null
+          viewed_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          dismissed?: boolean | null
+          id?: string
+          relevance_score?: number | null
+          simulation_context?: Json
+          simulation_type?: string
+          suggested_frameworks?: string[] | null
+          suggested_grids?: string[] | null
+          user_id?: string | null
+          viewed_at?: string | null
         }
         Relationships: []
       }
