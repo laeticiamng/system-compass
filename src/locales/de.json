@@ -247,7 +247,12 @@
     "objective": "Ziel",
     "criticalRule": "Kritische Regel",
     "personalNotes": "Persönliche Notizen",
-    "addNote": "Notiz hinzufügen"
+    "addNote": "Notiz hinzufügen",
+    "advancedModules": "Erweiterte Module",
+    "advancedModulesDesc": "Erweiterte Reflexions- und Dokumentationswerkzeuge",
+    "latentDesc": "Identifizieren Sie noch nicht kritische Spannungszonen",
+    "irreversaDesc": "Dokumentieren Sie überschrittene irreversible Schwellen",
+    "institutionsDesc": "Kollektive Entscheidungshilfe und Rückverfolgbarkeit"
   },
   "achievements": {
     "title": "Erfolge",

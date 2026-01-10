@@ -247,7 +247,12 @@
     "objective": "Objetivo",
     "criticalRule": "Regra crítica",
     "personalNotes": "Notas pessoais",
-    "addNote": "Adicionar nota"
+    "addNote": "Adicionar nota",
+    "advancedModules": "Módulos avançados",
+    "advancedModulesDesc": "Ferramentas avançadas de reflexão e documentação",
+    "latentDesc": "Identifique zonas de tensão ainda não críticas",
+    "irreversaDesc": "Documente os limiares irreversíveis ultrapassados",
+    "institutionsDesc": "Apoio à decisão coletiva e rastreabilidade"
   },
   "achievements": {
     "title": "Conquistas",
