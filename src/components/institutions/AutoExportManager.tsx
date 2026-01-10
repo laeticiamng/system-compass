@@ -52,7 +52,7 @@ export function AutoExportManager() {
     return (
       <Card>
         <CardContent className="p-6 text-center text-muted-foreground">
-          <p>{t('traceos.export.loginRequired', 'Connectez-vous pour gérer les exports')}</p>
+          <p>{t('traceOS.export.loginRequired', 'Connectez-vous pour gérer les exports')}</p>
         </CardContent>
       </Card>
     );
@@ -71,20 +71,20 @@ export function AutoExportManager() {
         <CardHeader className="pb-3">
           <CardTitle className="flex items-center gap-2 text-base">
             <Clock className="h-4 w-4" />
-            {t('traceos.autoExport.schedule', 'Planification d\'export')}
+            {t('traceOS.autoExport.schedule', 'Planification d\'export')}
           </CardTitle>
           <CardDescription>
-            {t('traceos.autoExport.scheduleDesc', 'Archivez automatiquement vos décisions')}
+            {t('traceOS.autoExport.scheduleDesc', 'Archivez automatiquement vos décisions')}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex items-center justify-between">
             <div className="space-y-1">
-              <Label>Export automatique</Label>
+              <Label>{t('traceOS.autoExport.autoExport', 'Export automatique')}</Label>
               <p className="text-xs text-muted-foreground">
                 {schedule?.is_active 
-                  ? `Prochain export: ${schedule.next_export_at ? format(new Date(schedule.next_export_at), 'PPP', { locale: fr }) : 'Non planifié'}`
-                  : 'Désactivé'}
+                  ? `${t('traceOS.autoExport.nextExport', 'Prochain export')}: ${schedule.next_export_at ? format(new Date(schedule.next_export_at), 'PPP', { locale: fr }) : t('traceOS.autoExport.notScheduled', 'Non planifié')}`
+                  : t('traceOS.autoExport.disabled', 'Désactivé')}
               </p>
             </div>
             <Switch
@@ -101,7 +101,7 @@ export function AutoExportManager() {
 
           <div className="flex items-center gap-4">
             <div className="flex-1 space-y-2">
-              <Label>Fréquence</Label>
+              <Label>{t('traceOS.autoExport.frequency', 'Fréquence')}</Label>
               <Select
                 value={selectedFrequency}
                 onValueChange={(value) => {
@@ -115,9 +115,9 @@ export function AutoExportManager() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="daily">Quotidien</SelectItem>
-                  <SelectItem value="weekly">Hebdomadaire</SelectItem>
-                  <SelectItem value="monthly">Mensuel</SelectItem>
+                  <SelectItem value="daily">{t('traceOS.autoExport.daily', 'Quotidien')}</SelectItem>
+                  <SelectItem value="weekly">{t('traceOS.autoExport.weekly', 'Hebdomadaire')}</SelectItem>
+                  <SelectItem value="monthly">{t('traceOS.autoExport.monthly', 'Mensuel')}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -134,7 +134,7 @@ export function AutoExportManager() {
                 ) : (
                   <Archive className="h-4 w-4" />
                 )}
-                Exporter maintenant
+                {t('traceOS.autoExport.exportNow', 'Exporter maintenant')}
               </Button>
             </div>
           </div>
@@ -142,7 +142,7 @@ export function AutoExportManager() {
           {schedule?.last_export_at && (
             <p className="text-xs text-muted-foreground flex items-center gap-1">
               <Calendar className="h-3 w-3" />
-              Dernier export: {format(new Date(schedule.last_export_at), 'PPpp', { locale: fr })}
+              {t('traceOS.autoExport.lastExport', 'Dernier export')}: {format(new Date(schedule.last_export_at), 'PPpp', { locale: fr })}
             </p>
           )}
         </CardContent>
@@ -154,7 +154,7 @@ export function AutoExportManager() {
           <div className="flex items-center justify-between">
             <CardTitle className="flex items-center gap-2 text-base">
               <HardDrive className="h-4 w-4" />
-              {t('traceos.autoExport.history', 'Archives disponibles')}
+              {t('traceOS.autoExport.history', 'Archives disponibles')}
             </CardTitle>
             <Button variant="ghost" size="icon" onClick={refreshExports}>
               <RefreshCw className="h-4 w-4" />
@@ -169,8 +169,8 @@ export function AutoExportManager() {
           ) : exports.length === 0 ? (
             <div className="text-center py-8 text-muted-foreground">
               <Archive className="h-12 w-12 mx-auto mb-4 opacity-20" />
-              <p className="text-sm">Aucun export disponible</p>
-              <p className="text-xs mt-1">Cliquez sur "Exporter maintenant" pour créer votre premier export</p>
+              <p className="text-sm">{t('traceOS.autoExport.noExports', 'Aucun export disponible')}</p>
+              <p className="text-xs mt-1">{t('traceOS.autoExport.noExportsHint', 'Cliquez sur "Exporter maintenant" pour créer votre premier export')}</p>
             </div>
           ) : (
             <ScrollArea className="h-[300px]">
@@ -229,10 +229,9 @@ export function AutoExportManager() {
           <div className="flex items-start gap-3">
             <HardDrive className="h-5 w-5 text-muted-foreground mt-0.5" />
             <div className="text-sm text-muted-foreground">
-              <p className="font-medium">Stockage sécurisé</p>
+              <p className="font-medium">{t('traceOS.autoExport.secureStorage', 'Stockage sécurisé')}</p>
               <p className="text-xs mt-1">
-                Vos exports sont stockés de manière sécurisée et ne sont accessibles qu'à vous.
-                Les fichiers sont conservés indéfiniment.
+                {t('traceOS.autoExport.secureStorageDesc', 'Vos exports sont stockés de manière sécurisée et ne sont accessibles qu\'à vous.')}
               </p>
             </div>
           </div>
