@@ -1,19 +1,35 @@
+#!/usr/bin/env node
+
 /**
  * Generate Missing Translations Script
  * Uses Lovable AI via edge function to translate missing content
  * 
  * Usage: 
- *   node scripts/generate-missing-translations.js [--dry-run] [--lang=de,es]
+ *   npm run generate-translations                    # Process all languages
+ *   npm run generate-translations -- --dry-run      # Preview without changes
+ *   npm run generate-translations -- --lang=de,es   # Only specific languages
+ *   npm run generate-translations -- --keys=common,nav  # Only specific namespaces
  * 
  * Options:
  *   --dry-run    Show what would be translated without making changes
  *   --lang=XX    Only process specific languages (comma-separated)
  *   --keys=XX    Only translate specific top-level keys (comma-separated)
+ *   --verbose    Show detailed output for each translation
+ * 
+ * Environment Variables (via .env):
+ *   VITE_SUPABASE_URL           - Your Supabase project URL
+ *   VITE_SUPABASE_PUBLISHABLE_KEY - Your Supabase anon key
+ * 
+ * Note: Make sure the generate-translations edge function is deployed!
  */
 
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { config } from 'dotenv';
+
+// Load environment variables from .env file
+config();
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const LOCALES_DIR = path.join(__dirname, '../src/locales');
@@ -22,16 +38,29 @@ const REFERENCE_LANG = 'en';
 // Parse command line arguments
 const args = process.argv.slice(2);
 const isDryRun = args.includes('--dry-run');
+const isVerbose = args.includes('--verbose');
 const langArg = args.find(a => a.startsWith('--lang='));
 const keysArg = args.find(a => a.startsWith('--keys='));
 const targetLangs = langArg ? langArg.replace('--lang=', '').split(',') : null;
 const targetKeys = keysArg ? keysArg.replace('--keys=', '').split(',') : null;
 
-// Edge function URL (you need to set this)
-const EDGE_FUNCTION_URL = process.env.SUPABASE_URL 
-  ? `${process.env.SUPABASE_URL}/functions/v1/generate-translations`
+// Edge function URL from environment
+const SUPABASE_URL = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL;
+const EDGE_FUNCTION_URL = SUPABASE_URL 
+  ? `${SUPABASE_URL}/functions/v1/generate-translations`
   : null;
-const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
+const SUPABASE_ANON_KEY = process.env.VITE_SUPABASE_PUBLISHABLE_KEY || process.env.SUPABASE_ANON_KEY;
+
+// Language display names for better logging
+const LANG_NAMES = {
+  de: '🇩🇪 German',
+  es: '🇪🇸 Spanish',
+  it: '🇮🇹 Italian',
+  nl: '🇳🇱 Dutch',
+  pt: '🇵🇹 Portuguese',
+  fr: '🇫🇷 French',
+  en: '🇬🇧 English'
+};
 
 function getAllKeys(obj, prefix = '') {
   let keys = [];
@@ -147,8 +176,23 @@ function deepMerge(target, source) {
 }
 
 async function main() {
-  console.log('🌍 Missing Translation Generator\n');
+  console.log('\n🌍 Missing Translation Generator');
   console.log('═'.repeat(60));
+  
+  // Check configuration
+  if (!EDGE_FUNCTION_URL) {
+    console.error('\n❌ Error: Supabase URL not configured');
+    console.error('   Set VITE_SUPABASE_URL in your .env file\n');
+    process.exit(1);
+  }
+  
+  if (!SUPABASE_ANON_KEY) {
+    console.error('\n❌ Error: Supabase anon key not configured');
+    console.error('   Set VITE_SUPABASE_PUBLISHABLE_KEY in your .env file\n');
+    process.exit(1);
+  }
+  
+  console.log(`\n📡 Edge function: ${EDGE_FUNCTION_URL}\n`);
   
   if (isDryRun) {
     console.log('🔍 DRY RUN MODE - No files will be modified\n');
@@ -160,7 +204,9 @@ async function main() {
     process.exit(1);
   }
   
-  const files = fs.readdirSync(LOCALES_DIR).filter(f => f.endsWith('.json'));
+  // Exclude positive points files (they have their own translation system)
+  const files = fs.readdirSync(LOCALES_DIR)
+    .filter(f => f.endsWith('.json') && !f.includes('positive-points'));
   const languages = files.map(f => f.replace('.json', '')).filter(l => l !== REFERENCE_LANG);
   
   // Filter languages if specified
@@ -168,12 +214,15 @@ async function main() {
     ? languages.filter(l => targetLangs.includes(l))
     : languages;
   
-  console.log(`Reference: ${REFERENCE_LANG}`);
-  console.log(`Languages to process: ${langsToProcess.join(', ')}\n`);
+  console.log(`📚 Reference: ${LANG_NAMES[REFERENCE_LANG] || REFERENCE_LANG}`);
+  console.log(`🎯 Languages: ${langsToProcess.map(l => LANG_NAMES[l] || l).join(', ')}\n`);
+  
+  let totalMissing = 0;
+  let totalTranslated = 0;
   
   for (const lang of langsToProcess) {
     console.log('─'.repeat(60));
-    console.log(`📝 Processing ${lang.toUpperCase()}`);
+    console.log(`📝 Processing ${LANG_NAMES[lang] || lang.toUpperCase()}`);
     console.log('─'.repeat(60));
     
     const translations = loadTranslations(lang);
@@ -252,8 +301,18 @@ async function main() {
     console.log(`   ✅ Saved ${lang}.json`);
   }
   
+    totalMissing += missingCount;
+    totalTranslated += Object.keys(translatedTotal).length;
+  }
+  
   console.log('\n' + '═'.repeat(60));
-  console.log('✅ Translation generation complete!\n');
+  console.log('\n📊 Summary:');
+  console.log(`   Missing keys found: ${totalMissing}`);
+  console.log(`   Keys translated: ${totalTranslated}`);
+  console.log('\n✅ Translation generation complete!\n');
 }
 
-main().catch(console.error);
+main().catch(err => {
+  console.error('\n❌ Script failed:', err.message);
+  process.exit(1);
+});
