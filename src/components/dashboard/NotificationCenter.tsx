@@ -105,10 +105,10 @@ export function NotificationCenter({
     const hours = Math.floor(diff / 3600000);
     const days = Math.floor(diff / 86400000);
 
-    if (minutes < 1) return t('notifications.justNow', 'À l\'instant');
-    if (minutes < 60) return t('notifications.minutesAgo', { count: minutes });
-    if (hours < 24) return t('notifications.hoursAgo', { count: hours });
-    return t('notifications.daysAgo', { count: days });
+    if (minutes < 1) return t('notifications.justNow', 'Just now');
+    if (minutes < 60) return t('notifications.minutesAgo', '{{count}} min ago', { count: minutes });
+    if (hours < 24) return t('notifications.hoursAgo', '{{count}}h ago', { count: hours });
+    return t('notifications.daysAgo', '{{count}}d ago', { count: days });
   };
 
   return (
