@@ -17,7 +17,23 @@
     "metric": "Metrik",
     "delete": "Löschen",
     "confirm": "Bestätigen",
-    "edit": "Bearbeiten"
+    "edit": "Bearbeiten",
+    "close": "Schließen"
+  },
+  "errors": {
+    "rateLimited": "Zu viele Anfragen. Bitte versuchen Sie es später erneut.",
+    "insufficientCredits": "Nicht genügend KI-Guthaben.",
+    "generationFailed": "Fehler bei der Generierung.",
+    "networkError": "Netzwerkfehler. Überprüfen Sie Ihre Verbindung.",
+    "unauthorized": "Sie müssen angemeldet sein.",
+    "notFound": "Ressource nicht gefunden.",
+    "serverError": "Serverfehler. Bitte versuchen Sie es erneut."
+  },
+  "insights": {
+    "vacationGuide": "Urlaubsführer",
+    "installationGuide": "Installationsführer",
+    "generating": "Personalisierte Einblicke werden generiert...",
+    "disclaimer": "KI-generierte Ratschläge • Überprüfen Sie immer offizielle Informationen"
   },
   "steps": {
     "profile": "Dein Profil",

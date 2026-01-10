@@ -20,7 +20,23 @@
     "edit": "Modifier",
     "previewMode": "Mode aperçu",
     "all": "Tous",
-    "total": "Total"
+    "total": "Total",
+    "close": "Fermer"
+  },
+  "errors": {
+    "rateLimited": "Trop de requêtes. Veuillez réessayer dans quelques instants.",
+    "insufficientCredits": "Crédits IA insuffisants.",
+    "generationFailed": "Erreur lors de la génération.",
+    "networkError": "Erreur réseau. Vérifiez votre connexion.",
+    "unauthorized": "Vous devez être connecté.",
+    "notFound": "Ressource non trouvée.",
+    "serverError": "Erreur serveur. Veuillez réessayer."
+  },
+  "insights": {
+    "vacationGuide": "Guide Vacances",
+    "installationGuide": "Guide Installation",
+    "generating": "Génération des insights personnalisés...",
+    "disclaimer": "Conseils générés par IA • Vérifiez toujours les informations officielles"
   },
   "steps": {
     "profile": "Ton profil",

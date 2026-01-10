@@ -17,7 +17,23 @@
     "metric": "Métrica",
     "delete": "Eliminar",
     "confirm": "Confirmar",
-    "edit": "Editar"
+    "edit": "Editar",
+    "close": "Fechar"
+  },
+  "errors": {
+    "rateLimited": "Demasiados pedidos. Por favor, tente novamente em instantes.",
+    "insufficientCredits": "Créditos de IA insuficientes.",
+    "generationFailed": "Erro ao gerar conteúdo.",
+    "networkError": "Erro de rede. Verifique a sua ligação.",
+    "unauthorized": "Tem de estar autenticado.",
+    "notFound": "Recurso não encontrado.",
+    "serverError": "Erro do servidor. Por favor, tente novamente."
+  },
+  "insights": {
+    "vacationGuide": "Guia de férias",
+    "installationGuide": "Guia de instalação",
+    "generating": "A gerar insights personalizados...",
+    "disclaimer": "Conselhos gerados por IA • Verifique sempre as informações oficiais"
   },
   "steps": {
     "profile": "O teu perfil",

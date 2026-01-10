@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { X, Loader2, Palmtree, Building2, AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { DestinationRecommendation, COUNTRY_NAMES } from '@/lib/nationality-advantages';
+import { toast } from 'sonner';
 
 interface DestinationInsightsProps {
   destination: DestinationRecommendation;
@@ -21,6 +23,7 @@ export function DestinationInsights({
   mode,
   onClose,
 }: DestinationInsightsProps) {
+  const { t } = useTranslation();
   const [content, setContent] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -54,12 +57,16 @@ export function DestinationInsights({
 
         if (!response.ok) {
           if (response.status === 429) {
-            throw new Error('Trop de requêtes. Veuillez réessayer dans quelques instants.');
+            const errorMsg = t('errors.rateLimited', 'Trop de requêtes. Veuillez réessayer dans quelques instants.');
+            toast.error(errorMsg);
+            throw new Error(errorMsg);
           }
           if (response.status === 402) {
-            throw new Error('Crédits IA insuffisants.');
+            const errorMsg = t('errors.insufficientCredits', 'Crédits IA insuffisants.');
+            toast.error(errorMsg);
+            throw new Error(errorMsg);
           }
-          throw new Error('Erreur lors de la génération des insights.');
+          throw new Error(t('errors.generationFailed', 'Erreur lors de la génération des insights.'));
         }
 
         const reader = response.body?.getReader();
@@ -124,9 +131,9 @@ export function DestinationInsights({
               <h2 className="font-bold text-lg">{destination.countryName}</h2>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 {mode === 'vacation' ? (
-                  <><Palmtree className="w-4 h-4 text-emerald-500" /> Guide Vacances</>
+                  <><Palmtree className="w-4 h-4 text-emerald-500" /> {t('insights.vacationGuide', 'Guide Vacances')}</>
                 ) : (
-                  <><Building2 className="w-4 h-4 text-blue-500" /> Guide Installation</>
+                  <><Building2 className="w-4 h-4 text-blue-500" /> {t('insights.installationGuide', 'Guide Installation')}</>
                 )}
               </div>
             </div>
@@ -143,7 +150,7 @@ export function DestinationInsights({
               <AlertTriangle className="w-12 h-12 text-destructive mb-4" />
               <p className="text-destructive font-medium">{error}</p>
               <Button variant="outline" className="mt-4" onClick={onClose}>
-                Fermer
+                {t('common.close', 'Fermer')}
               </Button>
             </div>
           ) : (
@@ -151,7 +158,7 @@ export function DestinationInsights({
               {isLoading && !content && (
                 <div className="flex items-center justify-center py-12">
                   <Loader2 className="w-8 h-8 animate-spin text-primary" />
-                  <span className="ml-3 text-muted-foreground">Génération des insights personnalisés...</span>
+                  <span className="ml-3 text-muted-foreground">{t('insights.generating', 'Génération des insights personnalisés...')}</span>
                 </div>
               )}
               
@@ -192,10 +199,10 @@ export function DestinationInsights({
         {/* Footer */}
         <div className="p-4 border-t bg-muted/30 flex items-center justify-between">
           <p className="text-xs text-muted-foreground">
-            Conseils générés par IA • Vérifiez toujours les informations officielles
+            {t('insights.disclaimer', 'Conseils générés par IA • Vérifiez toujours les informations officielles')}
           </p>
           <Button variant="outline" onClick={onClose}>
-            Fermer
+            {t('common.close', 'Fermer')}
           </Button>
         </div>
       </div>
