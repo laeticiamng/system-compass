@@ -4708,7 +4708,11 @@
     "hoursAgo_one": "{{count}} hour ago",
     "hoursAgo_other": "{{count}} hours ago",
     "daysAgo_one": "{{count}} day ago",
-    "daysAgo_other": "{{count}} days ago"
+    "daysAgo_other": "{{count}} days ago",
+    "deadlineToday": "It's today!",
+    "deadlineTomorrow": "It's tomorrow!",
+    "deadlineInDays": "In {{count}} days",
+    "achievementUnlocked": "Achievement unlocked!"
   },
   "ovi": {
     "title": "OVI - Inner Vision Tools",

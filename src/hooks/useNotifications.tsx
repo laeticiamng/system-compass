@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from './useAuth';
 
 interface Notification {
@@ -17,6 +18,7 @@ const MAX_NOTIFICATIONS = 50;
 
 export function useNotifications() {
   const { user } = useAuth();
+  const { t } = useTranslation();
   const [notifications, setNotifications] = useState<Notification[]>([]);
 
   // Load notifications from localStorage
@@ -59,14 +61,18 @@ export function useNotifications() {
     return newNotification.id;
   }, [saveNotifications]);
 
-  // Add deadline notification
+  // Add deadline notification with i18n
   const addDeadlineNotification = useCallback((title: string, daysRemaining: number, actionUrl?: string) => {
     const priority = daysRemaining <= 1 ? 'high' : daysRemaining <= 3 ? 'medium' : 'low';
-    const message = daysRemaining === 0 
-      ? "C'est aujourd'hui !" 
-      : daysRemaining === 1 
-        ? "C'est demain !"
-        : `Dans ${daysRemaining} jours`;
+    
+    let message: string;
+    if (daysRemaining === 0) {
+      message = t('notifications.deadlineToday', "C'est aujourd'hui !");
+    } else if (daysRemaining === 1) {
+      message = t('notifications.deadlineTomorrow', "C'est demain !");
+    } else {
+      message = t('notifications.deadlineInDays', { count: daysRemaining, defaultValue: `Dans ${daysRemaining} jours` });
+    }
 
     return addNotification({
       type: 'deadline',
@@ -75,15 +81,40 @@ export function useNotifications() {
       priority,
       actionUrl,
     });
+  }, [addNotification, t]);
+
+  // Add reminder notification with i18n
+  const addReminderNotification = useCallback((title: string, message: string, actionUrl?: string) => {
+    return addNotification({
+      type: 'reminder',
+      title,
+      message,
+      priority: 'medium',
+      actionUrl,
+    });
   }, [addNotification]);
 
-  // Add achievement notification
-  const addAchievementNotification = useCallback((title: string, message: string) => {
+  // Add achievement notification with i18n
+  const addAchievementNotification = useCallback((achievementKey: string, achievementName?: string) => {
+    const title = t('notifications.achievementUnlocked', 'Succès débloqué !');
+    const message = achievementName || t(`achievements.${achievementKey}`, achievementKey);
+    
     return addNotification({
       type: 'achievement',
       title,
       message,
       priority: 'low',
+    });
+  }, [addNotification, t]);
+
+  // Add info notification
+  const addInfoNotification = useCallback((title: string, message: string, actionUrl?: string) => {
+    return addNotification({
+      type: 'info',
+      title,
+      message,
+      priority: 'low',
+      actionUrl,
     });
   }, [addNotification]);
 
@@ -120,6 +151,16 @@ export function useNotifications() {
     localStorage.removeItem(STORAGE_KEY);
   }, []);
 
+  // Get notifications by type
+  const getNotificationsByType = useCallback((type: Notification['type']) => {
+    return notifications.filter(n => n.type === type);
+  }, [notifications]);
+
+  // Get high priority notifications
+  const getHighPriorityNotifications = useCallback(() => {
+    return notifications.filter(n => n.priority === 'high' && !n.read);
+  }, [notifications]);
+
   // Get unread count
   const unreadCount = notifications.filter(n => !n.read).length;
 
@@ -128,10 +169,14 @@ export function useNotifications() {
     unreadCount,
     addNotification,
     addDeadlineNotification,
+    addReminderNotification,
     addAchievementNotification,
+    addInfoNotification,
     markAsRead,
     markAllAsRead,
     clearNotification,
     clearAllNotifications,
+    getNotificationsByType,
+    getHighPriorityNotifications,
   };
 }
