@@ -139,10 +139,10 @@ Deno.serve(async (req) => {
 
     if (uploadError) throw uploadError;
 
-    // Get public URL
-    const { data: urlData } = supabase.storage
+    // Get signed URL for private bucket (valid for 7 days)
+    const { data: signedUrlData, error: signedUrlError } = await supabase.storage
       .from('traceos-exports')
-      .getPublicUrl(filename);
+      .createSignedUrl(filename, 60 * 60 * 24 * 7);
 
     // Update schedule if this was a scheduled export
     if (scheduled) {
@@ -186,7 +186,7 @@ Deno.serve(async (req) => {
       JSON.stringify({
         success: true,
         filename,
-        url: urlData.publicUrl,
+        url: signedUrlData?.signedUrl || null,
         summary: exportData.summary,
       }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }

@@ -32,3 +32,9 @@ verify_jwt = false
 
 [functions.traceos-auto-export]
 verify_jwt = false
+
+[functions.i18n-coverage-slack]
+verify_jwt = false
+
+[functions.generate-country-translations]
+verify_jwt = false

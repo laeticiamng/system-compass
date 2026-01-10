@@ -77,79 +77,100 @@ ${JSON.stringify(sourceCountry, null, 2)}`;
 
     console.log(`Translating ${countryId} to ${targetLang}...`);
 
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${OPENAI_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "gpt-4o-mini",
-        messages: [
-          { role: "system", content: systemPrompt },
-          { role: "user", content: userPrompt }
-        ],
-        temperature: 0.3,
-      }),
-    });
+    // Retry logic with exponential backoff
+    const maxRetries = 3;
+    let lastError: Error | null = null;
 
-    if (!response.ok) {
-      if (response.status === 429) {
+    for (let attempt = 0; attempt < maxRetries; attempt++) {
+      try {
+        if (attempt > 0) {
+          const delay = Math.pow(2, attempt) * 1000;
+          await new Promise(resolve => setTimeout(resolve, delay));
+          console.log(`Retry attempt ${attempt + 1} for ${countryId} to ${targetLang}...`);
+        }
+
+        const response = await fetch("https://api.openai.com/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${OPENAI_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            model: "gpt-4o-mini",
+            messages: [
+              { role: "system", content: systemPrompt },
+              { role: "user", content: userPrompt }
+            ],
+            temperature: 0.3,
+          }),
+        });
+
+        if (!response.ok) {
+          if (response.status === 429) {
+            lastError = new Error("Rate limit exceeded");
+            continue; // Retry
+          }
+          if (response.status === 402) {
+            return new Response(JSON.stringify({ 
+              error: "Payment required - please check your OpenAI credits",
+              retryable: false 
+            }), {
+              status: 402,
+              headers: { ...corsHeaders, "Content-Type": "application/json" },
+            });
+          }
+          const errorText = await response.text();
+          console.error("OpenAI API error:", response.status, errorText);
+          throw new Error(`OpenAI API error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const content = data.choices?.[0]?.message?.content;
+
+        if (!content) {
+          throw new Error("No translation received from AI");
+        }
+
+        // Extract JSON from response (handle markdown code blocks)
+        let jsonContent = content;
+        const jsonMatch = content.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
+        if (jsonMatch) {
+          jsonContent = jsonMatch[1];
+        }
+
+        // Clean and parse JSON
+        const cleanJson = jsonContent.trim();
+        const parsed: CountryData = JSON.parse(cleanJson);
+
+        // Validate structure
+        const requiredFields = ['name', 'region', 'ruleOfGold', 'pyramid', 'playbook'];
+        for (const field of requiredFields) {
+          if (!(field in parsed)) {
+            throw new Error(`Missing required field in translation: ${field}`);
+          }
+        }
+
+        console.log(`Successfully translated ${countryId} to ${targetLang}`);
+
         return new Response(JSON.stringify({ 
-          error: "Rate limit exceeded", 
-          retryable: true 
+          countryId,
+          targetLang,
+          translation: parsed 
         }), {
-          status: 429,
           headers: { ...corsHeaders, "Content-Type": "application/json" },
         });
-      }
-      if (response.status === 402) {
-        return new Response(JSON.stringify({ 
-          error: "Payment required - please check your OpenAI credits",
-          retryable: false 
-        }), {
-          status: 402,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        });
-      }
-      const errorText = await response.text();
-      console.error("OpenAI API error:", response.status, errorText);
-      throw new Error(`OpenAI API error: ${response.status}`);
-    }
-
-    const data = await response.json();
-    const content = data.choices?.[0]?.message?.content;
-
-    if (!content) {
-      throw new Error("No translation received from AI");
-    }
-
-    // Extract JSON from response (handle markdown code blocks)
-    let jsonContent = content;
-    const jsonMatch = content.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
-    if (jsonMatch) {
-      jsonContent = jsonMatch[1];
-    }
-
-    // Clean and parse JSON
-    const cleanJson = jsonContent.trim();
-    const parsed: CountryData = JSON.parse(cleanJson);
-
-    // Validate structure
-    const requiredFields = ['name', 'region', 'ruleOfGold', 'pyramid', 'playbook'];
-    for (const field of requiredFields) {
-      if (!(field in parsed)) {
-        throw new Error(`Missing required field in translation: ${field}`);
+      } catch (err) {
+        lastError = err instanceof Error ? err : new Error(String(err));
+        console.error(`Attempt ${attempt + 1} failed:`, lastError.message);
       }
     }
 
-    console.log(`Successfully translated ${countryId} to ${targetLang}`);
-
+    // All retries failed
     return new Response(JSON.stringify({ 
-      countryId,
-      targetLang,
-      translation: parsed 
+      error: lastError?.message || "Translation failed after retries",
+      retryable: true 
     }), {
+      status: 500,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
 
