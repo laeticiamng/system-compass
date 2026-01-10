@@ -72,6 +72,21 @@
     "button": "Mijn situatie analyseren",
     "disclaimer": "Alleen analysetool. Je blijft verantwoordelijk voor je beslissingen."
   },
+  "disclaimerConsent": {
+    "title": "Voordat je begint",
+    "subtitle": "Belangrijke informatie over deze tool",
+    "important": "Belangrijk",
+    "warning": "Geen enkel resultaat is een diagnose, aanbeveling of professioneel advies.",
+    "analysisToolTitle": "Analyse- en simulatietool",
+    "analysisToolDesc": "Pyramid Compass is een educatieve tool, geen adviesdienst.",
+    "noAdviceTitle": "Geen professioneel advies",
+    "noAdviceDesc": "Er wordt geen juridisch, financieel of medisch advies gegeven.",
+    "responsibleTitle": "Je blijft verantwoordelijk",
+    "responsibleDesc": "Je beslissingen zijn van jou.",
+    "checkbox": "Ik begrijp dat deze tool informatief is en dat ik verantwoordelijk blijf voor mijn beslissingen.",
+    "seeDetails": "Bekijk volledige details",
+    "accept": "Ik begrijp het, doorgaan"
+  },
   "simulationDisclaimer": {
     "notPrediction": "Simulatie ≠ Voorspelling",
     "inline": "Simulatie alleen voor informatieve doeleinden.",

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { 
   Dialog, 
   DialogContent, 
@@ -21,6 +22,7 @@ import { useState } from 'react';
 import { useDialogCoordinator } from './DialogCoordinator';
 
 export function DisclaimerConsentDialog() {
+  const { t } = useTranslation();
   const { shouldShowDisclaimer, completeDisclaimer } = useDialogCoordinator();
   const [hasRead, setHasRead] = useState(false);
 
@@ -44,10 +46,10 @@ export function DisclaimerConsentDialog() {
             </div>
           </div>
           <DialogTitle className="text-xl">
-            Avant de commencer
+            {t('disclaimerConsent.title', 'Avant de commencer')}
           </DialogTitle>
           <DialogDescription className="text-base mt-2">
-            Quelques informations importantes sur cet outil
+            {t('disclaimerConsent.subtitle', 'Quelques informations importantes sur cet outil')}
           </DialogDescription>
         </DialogHeader>
 
@@ -55,7 +57,7 @@ export function DisclaimerConsentDialog() {
           {/* Anti-authority warning */}
           <div className="p-3 rounded-lg bg-amber-500/10 border border-amber-500/30">
             <p className="text-xs text-muted-foreground">
-              <strong className="text-amber-600">⚠️ Important :</strong> Aucun résultat affiché n'est un diagnostic, une recommandation, ni un avis professionnel. Cet outil ne remplace aucun conseil spécialisé.
+              <strong className="text-amber-600">⚠️ {t('disclaimerConsent.important', 'Important')} :</strong> {t('disclaimerConsent.warning', "Aucun résultat affiché n'est un diagnostic, une recommandation, ni un avis professionnel. Cet outil ne remplace aucun conseil spécialisé.")}
             </p>
           </div>
 
@@ -64,9 +66,9 @@ export function DisclaimerConsentDialog() {
             <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/50">
               <Shield className="w-5 h-5 text-primary mt-0.5 shrink-0" />
               <div>
-                <p className="text-sm font-medium">Outil d'analyse et simulation</p>
+                <p className="text-sm font-medium">{t('disclaimerConsent.analysisToolTitle', 'Outil d\'analyse et simulation')}</p>
                 <p className="text-xs text-muted-foreground">
-                  Pyramid Compass est un outil éducatif, pas un service de conseil. Simulation ≠ prédiction.
+                  {t('disclaimerConsent.analysisToolDesc', 'Pyramid Compass est un outil éducatif, pas un service de conseil. Simulation ≠ prédiction.')}
                 </p>
               </div>
             </div>
@@ -74,9 +76,9 @@ export function DisclaimerConsentDialog() {
             <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/50">
               <AlertTriangle className="w-5 h-5 text-amber-500 mt-0.5 shrink-0" />
               <div>
-                <p className="text-sm font-medium">Pas de conseil professionnel</p>
+                <p className="text-sm font-medium">{t('disclaimerConsent.noAdviceTitle', 'Pas de conseil professionnel')}</p>
                 <p className="text-xs text-muted-foreground">
-                  Aucun conseil juridique, financier ou médical n'est fourni. Aucun verdict, aucun score de réussite.
+                  {t('disclaimerConsent.noAdviceDesc', 'Aucun conseil juridique, financier ou médical n\'est fourni. Aucun verdict, aucun score de réussite.')}
                 </p>
               </div>
             </div>
@@ -84,9 +86,9 @@ export function DisclaimerConsentDialog() {
             <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/50">
               <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 shrink-0" />
               <div>
-                <p className="text-sm font-medium">Tu restes responsable</p>
+                <p className="text-sm font-medium">{t('disclaimerConsent.responsibleTitle', 'Tu restes responsable')}</p>
                 <p className="text-xs text-muted-foreground">
-                  Tes décisions t'appartiennent. Les résultats dépendent de ton contexte réel.
+                  {t('disclaimerConsent.responsibleDesc', 'Tes décisions t\'appartiennent. Les résultats dépendent de ton contexte réel.')}
                 </p>
               </div>
             </div>
@@ -103,7 +105,7 @@ export function DisclaimerConsentDialog() {
             htmlFor="disclaimer-read" 
             className="text-sm text-muted-foreground cursor-pointer leading-relaxed"
           >
-            J'ai compris que cet outil est informatif et que je reste responsable de mes décisions.
+            {t('disclaimerConsent.checkbox', 'J\'ai compris que cet outil est informatif et que je reste responsable de mes décisions.')}
           </Label>
         </div>
 
@@ -113,7 +115,7 @@ export function DisclaimerConsentDialog() {
             className="text-sm text-muted-foreground hover:text-foreground flex items-center gap-1"
             onClick={() => completeDisclaimer()}
           >
-            Voir les détails complets
+            {t('disclaimerConsent.seeDetails', 'Voir les détails complets')}
             <ExternalLink className="w-3 h-3" />
           </Link>
           <Button 
@@ -122,7 +124,7 @@ export function DisclaimerConsentDialog() {
             className="gap-2"
           >
             <CheckCircle className="w-4 h-4" />
-            J'ai compris, continuer
+            {t('disclaimerConsent.accept', 'J\'ai compris, continuer')}
           </Button>
         </DialogFooter>
       </DialogContent>
