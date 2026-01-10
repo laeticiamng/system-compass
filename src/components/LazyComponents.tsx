@@ -27,39 +27,43 @@ export const LazyRetirementProjection = lazy(() =>
   import('@/components/RetirementProjection').then(m => ({ default: m.RetirementProjection }))
 );
 
-// Loading fallback components
-export function MapLoadingFallback() {
+// Loading fallback components with i18n support
+interface FallbackProps {
+  message?: string;
+}
+
+export function MapLoadingFallback({ message }: FallbackProps) {
   return (
     <div className="w-full h-[400px] rounded-xl bg-muted/50 flex items-center justify-center">
       <div className="text-center space-y-4">
         <Skeleton className="w-16 h-16 rounded-full mx-auto" />
         <Skeleton className="w-32 h-4 mx-auto" />
-        <p className="text-sm text-muted-foreground">Chargement de la carte...</p>
+        <p className="text-sm text-muted-foreground">{message || 'Loading map...'}</p>
       </div>
     </div>
   );
 }
 
-export function ChartLoadingFallback() {
+export function ChartLoadingFallback({ message }: FallbackProps) {
   return (
     <div className="w-full h-[300px] rounded-xl bg-muted/50 flex items-center justify-center">
       <div className="text-center space-y-4">
         <Skeleton className="w-full h-8 mb-2" />
         <Skeleton className="w-3/4 h-4 mx-auto" />
         <Skeleton className="w-1/2 h-4 mx-auto" />
-        <p className="text-sm text-muted-foreground">Chargement du graphique...</p>
+        <p className="text-sm text-muted-foreground">{message || 'Loading chart...'}</p>
       </div>
     </div>
   );
 }
 
-export function GameLoadingFallback() {
+export function GameLoadingFallback({ message }: FallbackProps) {
   return (
     <div className="w-full h-[500px] rounded-xl bg-muted/50 flex items-center justify-center">
       <div className="text-center space-y-4">
         <Skeleton className="w-24 h-24 rounded-full mx-auto" />
         <Skeleton className="w-40 h-4 mx-auto" />
-        <p className="text-sm text-muted-foreground">Chargement du jeu...</p>
+        <p className="text-sm text-muted-foreground">{message || 'Loading game...'}</p>
       </div>
     </div>
   );

@@ -257,11 +257,15 @@
   "achievements": {
     "title": "Conquistas",
     "unlocked": "desbloqueadas",
+    "locked": "A desbloquear",
     "all": "Todas",
     "exploration": "Exploração",
     "risk": "Tomada de risco",
     "mastery": "Mestria",
-    "special": "Especial"
+    "special": "Especial",
+    "progress": "Progresso",
+    "noneInCategory": "Nenhuma conquista desbloqueada nesta categoria",
+    "allUnlocked": "Todas as conquistas desta categoria estão desbloqueadas! 🎉"
   },
   "resources": {
     "title": "Recursos",

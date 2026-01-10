@@ -257,11 +257,15 @@
   "achievements": {
     "title": "Logros",
     "unlocked": "desbloqueados",
+    "locked": "Por desbloquear",
     "all": "Todos",
     "exploration": "Exploración",
     "risk": "Toma de riesgos",
     "mastery": "Maestría",
-    "special": "Especial"
+    "special": "Especial",
+    "progress": "Progreso",
+    "noneInCategory": "Ningún logro desbloqueado en esta categoría",
+    "allUnlocked": "¡Todos los logros de esta categoría están desbloqueados! 🎉"
   },
   "resources": {
     "title": "Recursos",

@@ -257,11 +257,15 @@
   "achievements": {
     "title": "Erfolge",
     "unlocked": "freigeschaltet",
+    "locked": "Zu entsperren",
     "all": "Alle",
     "exploration": "Erkundung",
     "risk": "Risikobereitschaft",
     "mastery": "Meisterschaft",
-    "special": "Spezial"
+    "special": "Spezial",
+    "progress": "Fortschritt",
+    "noneInCategory": "Keine Erfolge in dieser Kategorie freigeschaltet",
+    "allUnlocked": "Alle Erfolge dieser Kategorie sind freigeschaltet! 🎉"
   },
   "resources": {
     "title": "Ressourcen",

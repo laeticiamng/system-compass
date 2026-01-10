@@ -33,15 +33,26 @@ export function useUserRoles() {
         .select('*')
         .eq('user_id', user.id);
 
-      if (error) throw error;
+      if (error) {
+        // Table might not exist or access denied - fail gracefully
+        console.warn('Could not fetch user roles:', error.message);
+        setRoles(['user']);
+        setIsAdmin(false);
+        setIsModerator(false);
+        setIsLoading(false);
+        return;
+      }
 
       const userRoles = (data || []).map((r) => r.role as UserRole);
-      setRoles(userRoles);
-      setIsAdmin(userRoles.includes('admin'));
-      setIsModerator(userRoles.includes('moderator') || userRoles.includes('admin'));
+      // Default to 'user' role if no roles found
+      const effectiveRoles = userRoles.length > 0 ? userRoles : ['user' as UserRole];
+      setRoles(effectiveRoles);
+      setIsAdmin(effectiveRoles.includes('admin'));
+      setIsModerator(effectiveRoles.includes('moderator') || effectiveRoles.includes('admin'));
     } catch (err) {
       console.error('Error fetching user roles:', err);
-      setRoles([]);
+      // Fail gracefully with default user role
+      setRoles(['user']);
       setIsAdmin(false);
       setIsModerator(false);
     } finally {

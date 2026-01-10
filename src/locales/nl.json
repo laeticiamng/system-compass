@@ -257,11 +257,15 @@
   "achievements": {
     "title": "Prestaties",
     "unlocked": "ontgrendeld",
+    "locked": "Te ontgrendelen",
     "all": "Alle",
     "exploration": "Verkenning",
     "risk": "Risiconeming",
     "mastery": "Meesterschap",
-    "special": "Speciaal"
+    "special": "Speciaal",
+    "progress": "Voortgang",
+    "noneInCategory": "Geen prestaties ontgrendeld in deze categorie",
+    "allUnlocked": "Alle prestaties in deze categorie zijn ontgrendeld! 🎉"
   },
   "resources": {
     "title": "Bronnen",

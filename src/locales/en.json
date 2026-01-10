@@ -269,11 +269,15 @@
   "achievements": {
     "title": "Achievements",
     "unlocked": "unlocked",
+    "locked": "Locked",
     "all": "All",
     "exploration": "Exploration",
     "risk": "Risk taking",
     "mastery": "Mastery",
-    "special": "Special"
+    "special": "Special",
+    "progress": "Progress",
+    "noneInCategory": "No achievements unlocked in this category",
+    "allUnlocked": "All achievements in this category are unlocked! 🎉"
   },
   "footer": {
     "explore": "Explore",
