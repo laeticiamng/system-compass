@@ -3385,5 +3385,57 @@
     "exported": "PDF-export gestart",
     "regenerate": "Opnieuw genereren",
     "disclaimer": "Dit rapport is een analysetool. Het vormt geen juridisch, financieel of fiscaal advies."
+  },
+  "orientationHub": {
+    "noPromise": "Geen belofte",
+    "noLegalAdvice": "Geen juridisch advies",
+    "noDreamSold": "Geen verkochte dromen",
+    "structuredLucidity": "Gestructureerde helderheid",
+    "philosophy": "Pyramid Compass is een oriëntatieplatform vóór beslissingen.",
+    "philosophyDesc": "Iedereen in staat stellen om duidelijk zijn echte opties, risico's, kosten en alternatieven te begrijpen, voordat hij zijn geld, leven of toekomst inzet.",
+    "quickTitle": "Snelle toegang op basis van je behoefte",
+    "toolsTitle": "Alle oriëntatietools",
+    "bestFor": "Ideaal voor",
+    "startTool": "Starten",
+    "situations": {
+      "country": "Ik wil van land veranderen",
+      "decision": "Ik heb een belangrijke beslissing te nemen",
+      "understand": "Ik wil systemen begrijpen",
+      "fit": "Ik wil weten of een land bij mij past",
+      "plan": "Ik wil mijn traject plannen",
+      "compare": "Ik wil meerdere landen vergelijken"
+    },
+    "tools": {
+      "preventionFilter": {
+        "title": "Preventiefilter",
+        "description": "Identificeer risico's en obstakels voordat je je vastlegt op een beslissing",
+        "bestFor": ["Een belangrijke beslissing valideren", "Verborgen obstakels anticiperen"]
+      },
+      "exitKeys": {
+        "title": "Uitgangssleutels",
+        "description": "Gepersonaliseerde routekaarten op basis van je situatie, doelen en beperkingen",
+        "bestFor": ["Een levensovergang plannen", "Een mobiliteitsproject structureren"]
+      },
+      "lifeTrajectory": {
+        "title": "Levenstraject",
+        "description": "Simuleer de evolutie van je situatie over 10-30 jaar op basis van je keuzes",
+        "bestFor": ["Langetermijngevolgen visualiseren", "Levensscenario's vergelijken"]
+      },
+      "profileTest": {
+        "title": "Profieltest",
+        "description": "Begrijp je profiel, nationaliteitsvoordelen en systeemcompatibiliteit",
+        "bestFor": ["Je archetype ontdekken", "Sterktes en zwaktes identificeren"]
+      },
+      "lifeGame": {
+        "title": "Levensspel",
+        "description": "Educatief spel om te begrijpen hoe levensbeslissingen werken in verschillende systemen",
+        "bestFor": ["Al spelend leren", "Strategieën zonder risico testen"]
+      },
+      "errorsIllusions": {
+        "title": "Fouten & Illusies",
+        "description": "Identificeer cognitieve vooroordelen en systemische fouten die jaren kosten",
+        "bestFor": ["Veelgemaakte fouten vermijden", "Cognitieve vooroordelen begrijpen"]
+      }
+    }
   }
 }
