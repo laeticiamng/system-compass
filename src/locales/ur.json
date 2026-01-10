@@ -25,7 +25,8 @@
     "optional": "اختیاری",
     "description": "تفصیل",
     "submit": "جمع کرائیں",
-    "sending": "بھیجا جا رہا ہے..."
+    "sending": "بھیجا جا رہا ہے...",
+    "loginRequired": "لاگ ان درکار ہے"
   },
   "errors": {
     "rateLimited": "بہت زیادہ درخواستیں۔ براہ کرم تھوڑی دیر بعد دوبارہ کوشش کریں۔",
@@ -109,7 +110,9 @@
     "forgotPassword": "پاس ورڈ بھول گئے؟",
     "noAccount": "اکاؤنٹ نہیں ہے؟",
     "hasAccount": "پہلے سے اکاؤنٹ ہے؟",
-    "orContinueWith": "یا جاری رکھیں"
+    "orContinueWith": "یا جاری رکھیں",
+    "signInWithGoogle": "Google سے سائن ان کریں",
+    "signUpWithGoogle": "Google سے سائن اپ کریں"
   },
   "countries": {
     "title": "ممالک",
@@ -129,6 +132,7 @@
     "risks": "خطرات",
     "opportunities": "مواقع",
     "intelligence": "انٹیلیجنس لیئر",
+    "translating": "ترجمہ ہو رہا ہے...",
     "variant": {
       "title": "سسٹم ویریئنٹ",
       "laborMarket": "لیبر مارکیٹ",
@@ -149,5 +153,41 @@
     "GROWTH_RISK": "ترقی-خطرہ",
     "HYBRID_TRANSITION": "ہائبرڈ-منتقلی",
     "RESOURCE_EXTRACTION": "وسائل-نکالنا"
+  },
+  "dashboard": {
+    "title": "میرا ڈیش بورڈ",
+    "subtitle": "اپنے تجزیوں اور سمیلیشنز کو ٹریک کریں",
+    "syncing": "سنک ہو رہا ہے...",
+    "synced": "سنک ہو گیا",
+    "localOnly": "صرف مقامی",
+    "connectToSync": "سنک کرنے کے لیے سائن ان کریں"
+  },
+  "latent": {
+    "title": "پوشیدہ زونز",
+    "subtitle": "ابھی تک سنگین نہیں ہونے والے تناؤ کے زونز کی شناخت کریں",
+    "newZone": "نیا زون",
+    "status": {
+      "dormant": "غیر فعال",
+      "emergent": "ابھرتا ہوا",
+      "fragile": "نازک",
+      "blocked": "بلاک"
+    }
+  },
+  "irreversa": {
+    "title": "ناقابل واپسی حدود",
+    "subtitle": "عبور شدہ ناقابل واپسی حدود کی دستاویز کریں",
+    "status": {
+      "detected": "پتہ چلا",
+      "marked": "نشان زد",
+      "validated": "توثیق شدہ",
+      "sealed": "مہر بند"
+    }
+  },
+  "pricing": {
+    "title": "قیمت",
+    "subtitle": "اپنے لیے صحیح پلان چنیں",
+    "free": "مفت",
+    "pro": "پرو",
+    "enterprise": "انٹرپرائز"
   }
 }

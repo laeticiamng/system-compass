@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { useEffect } from 'react';
 import { SUPPORTED_LANGUAGES } from '@/i18n';
 import {
   DropdownMenu,
@@ -15,6 +16,14 @@ export function LanguageSwitcher({ className }: { className?: string }) {
 
   const currentLang = SUPPORTED_LANGUAGES.find(l => l.code === i18n.language) 
     || SUPPORTED_LANGUAGES[0];
+
+  // Handle RTL languages
+  useEffect(() => {
+    const lang = SUPPORTED_LANGUAGES.find(l => l.code === i18n.language);
+    const dir = lang && 'dir' in lang && lang.dir === 'rtl' ? 'rtl' : 'ltr';
+    document.documentElement.dir = dir;
+    document.documentElement.lang = i18n.language;
+  }, [i18n.language]);
 
   const handleLanguageChange = (langCode: string) => {
     i18n.changeLanguage(langCode);
