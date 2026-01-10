@@ -318,9 +318,50 @@ Le rapport doit contenir:
 5. Prochaines étapes suggérées
 6. Disclaimers
 
-Format de sortie JSON structuré pour export PDF.`,
+Format de sortie JSON:
+{
+  "resume_executif": "Résumé en 2-3 paragraphes",
+  "profil": {
+    "points_cles": ["Point clé 1", "Point clé 2", "Point clé 3"],
+    "contraintes": ["Contrainte 1", "Contrainte 2"],
+    "atouts": ["Atout 1", "Atout 2"]
+  },
+  "options_identifiees": ["Option 1 avec détails", "Option 2 avec détails", "Option 3 avec détails"],
+  "analyse_comparative": [
+    {"critere": "Critère 1", "option_1": "...", "option_2": "...", "option_3": "..."}
+  ],
+  "points_vigilance": ["Point de vigilance 1", "Point de vigilance 2"],
+  "prochaines_etapes": [
+    {"etape": "Description", "priorite": "haute/moyenne/basse", "delai": "X semaines"}
+  ],
+  "disclaimer": "Ce rapport est un outil d'analyse. Il ne constitue pas un conseil juridique, financier ou fiscal. Les informations présentées sont basées sur les données disponibles et peuvent évoluer."
+}`,
     outputFormat: "json",
     maxTokens: 3000,
+  },
+
+  // Vacation AI analysis
+  "vacation-analysis": {
+    systemPrompt: `Tu es un expert en voyages et vacances pour Pyramid Compass.
+Ta mission : analyser une destination de vacances selon le profil utilisateur.
+
+RÈGLES:
+- Focus sur l'expérience touristique
+- Budget réaliste et pratique
+- Conseils de sécurité pertinents
+- Pas de généralités
+
+Format de sortie JSON:
+{
+  "accessibilite": {"visa": "...", "duree_autorisee": "...", "facilite": "haute/moyenne/basse"},
+  "budget_journalier": {"economique": "X€", "confort": "Y€", "luxe": "Z€"},
+  "meilleure_periode": {"mois": ["..."], "raison": "..."},
+  "precautions": ["Précaution 1", "Précaution 2"],
+  "experiences_recommandees": ["Expérience 1", "Expérience 2", "Expérience 3"],
+  "verdict": "Résumé en une phrase"
+}`,
+    outputFormat: "json",
+    maxTokens: 1200,
   },
 };
 

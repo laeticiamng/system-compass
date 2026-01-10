@@ -5089,7 +5089,11 @@
     "hoursAgo_one": "Il y a {{count}} heure",
     "hoursAgo_other": "Il y a {{count}} heures",
     "daysAgo_one": "Il y a {{count}} jour",
-    "daysAgo_other": "Il y a {{count}} jours"
+    "daysAgo_other": "Il y a {{count}} jours",
+    "deadlineToday": "C'est aujourd'hui !",
+    "deadlineTomorrow": "C'est demain !",
+    "deadlineInDays": "Dans {{count}} jours",
+    "achievementUnlocked": "Succès débloqué !"
   },
   "ovi": {
     "title": "OVI - Outils de Vision Intérieure",
