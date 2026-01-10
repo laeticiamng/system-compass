@@ -5899,6 +5899,54 @@
       "additionalContext": "Contexte additionnel (optionnel)",
       "contextPlaceholder": "Ajoutez du contexte pour l'équipe décisionnelle...",
       "notice": "La zone sera exportée comme brouillon de décision dans TraceOS. Les tensions identifiées seront incluses dans le contexte."
+    },
+    "history": {
+      "title": "Évolution de la zone",
+      "subtitle": "Timeline non-linéaire des transformations",
+      "empty": "Aucun historique disponible",
+      "selectZone": "Sélectionner une zone",
+      "selectToView": "Sélectionnez une zone pour voir son historique",
+      "action": {
+        "created": "Zone créée",
+        "status_changed": "Changement de statut",
+        "transformed": "Transformation",
+        "merged": "Fusion",
+        "put_to_sleep": "Mise en sommeil",
+        "archived": "Archivage"
+      }
+    },
+    "interconnections": {
+      "title": "Interconnexions",
+      "subtitle": "Liens entre zones basés sur les tensions partagées",
+      "empty": "Aucune zone à visualiser",
+      "found": "{{count}} connexions identifiées"
+    },
+    "merge": {
+      "title": "Fusionner des zones",
+      "button": "Fusionner",
+      "stepSelect": "Sélectionnez les zones à fusionner (minimum 2)",
+      "stepConfigure": "Configurez la nouvelle zone fusionnée",
+      "stepTensions": "Choisissez les tensions à préserver",
+      "step1": "Sélection",
+      "step2": "Configuration",
+      "step3": "Tensions",
+      "newTitle": "Titre de la zone fusionnée",
+      "titlePlaceholder": "Un nouveau titre ouvert...",
+      "newDescription": "Description fusionnée",
+      "descriptionPlaceholder": "Description combinée...",
+      "descriptionHint": "Les descriptions des zones sources ont été combinées",
+      "zonesIncluded": "Zones incluses :",
+      "tensionsCount": "{{selected}}/{{total}} tensions sélectionnées",
+      "selectAll": "Tout sélectionner",
+      "deselectAll": "Tout désélectionner",
+      "noTensions": "Aucune tension à préserver",
+      "confirm": "Fusionner"
+    },
+    "tabs": {
+      "zones": "Zones de potentiel",
+      "philosophy": "Philosophie",
+      "graph": "Graphe",
+      "history": "Historique"
     }
   }
 }

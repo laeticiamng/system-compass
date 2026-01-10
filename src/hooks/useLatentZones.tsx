@@ -282,6 +282,95 @@ export function useLatentZones() {
     }
   };
 
+  const mergeZones = async (
+    sourceZoneIds: string[], 
+    newTitle: string, 
+    newDescription: string, 
+    tensionIdsToKeep: string[]
+  ): Promise<LatentZone | null> => {
+    if (!user || sourceZoneIds.length < 2) return null;
+
+    try {
+      // 1. Create the new merged zone
+      const { data: newZone, error: createError } = await supabase
+        .from('latent_zones')
+        .insert({
+          user_id: user.id,
+          title: newTitle,
+          description: newDescription,
+          status: 'emergent' as ZoneStatus // Merged zones start as emergent
+        })
+        .select()
+        .single();
+
+      if (createError) throw createError;
+
+      // 2. Copy selected tensions to the new zone
+      const sourceZones = zones.filter(z => sourceZoneIds.includes(z.id));
+      const allTensions = sourceZones.flatMap(z => z.tensions || []);
+      const tensionsToKeep = allTensions.filter(t => tensionIdsToKeep.includes(t.id));
+
+      if (tensionsToKeep.length > 0) {
+        const tensionInserts = tensionsToKeep.map(t => ({
+          zone_id: newZone.id,
+          tension_type: t.tension_type,
+          content: t.content
+        }));
+
+        await supabase.from('latent_zone_tensions').insert(tensionInserts);
+      }
+
+      // 3. Create history entry for the new zone
+      await supabase.from('latent_zone_history').insert({
+        zone_id: newZone.id,
+        action: 'created',
+        new_status: 'emergent',
+        notes: `Fusionnée à partir de: ${sourceZones.map(z => z.title).join(', ')}`,
+        user_id: user.id
+      });
+
+      // 4. Mark source zones as merged (archive them)
+      for (const sourceId of sourceZoneIds) {
+        await supabase.from('latent_zone_history').insert({
+          zone_id: sourceId,
+          action: 'merged',
+          notes: `Fusionnée dans: ${newTitle}`,
+          user_id: user.id
+        });
+
+        await supabase
+          .from('latent_zones')
+          .update({ status: 'dormant' as ZoneStatus })
+          .eq('id', sourceId);
+      }
+
+      // 5. Fetch the new zone with its tensions
+      const { data: tensions } = await supabase
+        .from('latent_zone_tensions')
+        .select('*')
+        .eq('zone_id', newZone.id);
+
+      const mergedZone = { ...newZone, tensions: tensions || [] } as LatentZone;
+
+      // 6. Update local state
+      setZones(prev => [
+        mergedZone,
+        ...prev.map(z => 
+          sourceZoneIds.includes(z.id) 
+            ? { ...z, status: 'dormant' as ZoneStatus }
+            : z
+        )
+      ]);
+
+      toast.success('Zones fusionnées avec succès');
+      return mergedZone;
+    } catch (err) {
+      console.error('Error merging zones:', err);
+      toast.error('Erreur lors de la fusion des zones');
+      return null;
+    }
+  };
+
   return {
     zones,
     loading,
@@ -294,6 +383,7 @@ export function useLatentZones() {
     evolveZone,
     deleteZone,
     getZoneHistory,
+    mergeZones,
     refetch: fetchZones
   };
 }
