@@ -6377,5 +6377,48 @@
     "exported": "PDF export started",
     "regenerate": "Regenerate",
     "disclaimer": "This report is an analysis tool. It does not constitute legal, financial or tax advice."
+  },
+  "partners": {
+    "contributions": {
+      "referral": "User referral",
+      "feedback": "Quality feedback",
+      "content": "Content creation",
+      "event": "Presentation / Event",
+      "b2bIntro": "B2B introduction",
+      "other": "Other contribution"
+    },
+    "badge": {
+      "ambassador": "Compass Ambassador",
+      "b2bPartner": "B2B Partner"
+    },
+    "stats": {
+      "creditsEarned": "Credits earned",
+      "verifiedContributions": "Verified contributions",
+      "pending": "Pending"
+    },
+    "tabs": {
+      "contributions": "Contributions",
+      "benefits": "Benefits",
+      "charter": "Charter"
+    },
+    "myContributions": "My contributions",
+    "newContribution": "New contribution",
+    "declareContribution": "Declare a contribution",
+    "declareContributionDesc": "Describe your contribution. It will be reviewed by our team.",
+    "contributionType": "Contribution type",
+    "selectType": "Select a type",
+    "describeContribution": "Describe your contribution in detail...",
+    "measurableImpact": "Measurable impact",
+    "impactExample": "e.g., 5 new users, 3 quality feedbacks...",
+    "noContributions": "No contributions yet",
+    "startContributing": "Start contributing to earn credits and benefits.",
+    "verified": "Verified",
+    "pending": "Pending",
+    "impact": "Impact",
+    "credits": "credits",
+    "activeBenefits": "My active benefits",
+    "noActiveBenefits": "No active benefits",
+    "benefitsBasedOnContributions": "Benefits are granted based on your verified contributions.",
+    "expiresOn": "Expires on"
   }
 }
