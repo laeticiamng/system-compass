@@ -6095,7 +6095,21 @@
       "audit": "Audit"
     },
     "witnesses": {
-      "empty": "Aucun témoin enregistré"
+      "title": "Témoins",
+      "add": "Ajouter un témoin",
+      "name": "Nom du témoin",
+      "role": "Rôle du témoin",
+      "statement": "Déclaration",
+      "empty": "Aucun témoin enregistré",
+      "added": "Témoin ajouté avec succès"
+    },
+    "witnessRole": {
+      "executive": "Cadre dirigeant",
+      "board_member": "Membre du conseil",
+      "legal_counsel": "Conseil juridique",
+      "external_advisor": "Conseiller externe",
+      "auditor": "Auditeur",
+      "stakeholder": "Partie prenante"
     },
     "audit": {
       "empty": "Aucune entrée d'audit",

@@ -3098,7 +3098,127 @@
       "title": "Zonendetails",
       "createdAt": "Erstellt am",
       "updatedAt": "Aktualisiert am",
-      "tensionsCount": "Anzahl Spannungen"
+    "tensionsCount": "Anzahl Spannungen"
+    }
+  },
+  "irreversa": {
+    "title": "IRREVERSA Schwellenprotokoll",
+    "subtitle": "Strategische Unumkehrbarkeit identifizieren, markieren und durchqueren",
+    "paywall": {
+      "title": "Enterprise-Funktion",
+      "description": "IRREVERSA ist für Enterprise/Executive-Ebenen verfügbar"
+    },
+    "warning": {
+      "title": "Schwellenprotokoll-Regeln",
+      "noCancellation": "Keine Stornierung möglich",
+      "noEdit": "Keine rückwirkende Bearbeitung",
+      "noScoring": "Keine Punktevergabe",
+      "noRecommendation": "Keine Empfehlung"
+    },
+    "demoMode": "Melden Sie sich an, um Schwellenwerte zu erstellen und zu verwalten",
+    "status": {
+      "detected": "Erkannt",
+      "marked": "Markiert",
+      "validated": "Validiert",
+      "sealed": "Versiegelt"
+    },
+    "actions": {
+      "newThreshold": "Neuer Schwellenwert",
+      "mark": "Markieren",
+      "validate": "Validieren",
+      "seal": "Versiegeln"
+    },
+    "fields": {
+      "title": "Titel",
+      "context": "Kontext",
+      "domain": "Bereich",
+      "nature": "Art",
+      "source": "Erkennungsquelle",
+      "irreversibilityReason": "Unumkehrbarkeitsgrund",
+      "alternatives": "Alternativen zuvor",
+      "validatedBy": "Validiert durch",
+      "validatorRole": "Rolle",
+      "organization": "Organisation",
+      "actorName": "Akteurname",
+      "actorRole": "Akteurrolle",
+      "validationStatement": "Validierungserklärung"
+    },
+    "placeholders": {
+      "title": "Schwellenwerttitel eingeben",
+      "context": "Entscheidungskontext beschreiben",
+      "actorName": "Vollständiger Name",
+      "validationStatement": "Ihre offizielle Erklärung"
+    },
+    "domain": {
+      "strategic": "Strategisch",
+      "financial": "Finanziell",
+      "organizational": "Organisatorisch",
+      "legal": "Rechtlich",
+      "ethical": "Ethisch"
+    },
+    "nature": {
+      "resource_commitment": "Ressourcenzusage",
+      "contractual": "Vertraglich",
+      "reputational": "Reputation",
+      "structural": "Strukturell",
+      "temporal": "Zeitlich"
+    },
+    "source": {
+      "compass_analysis": "Compass-Analyse",
+      "manual": "Manuelle Erkennung",
+      "external_signal": "Externes Signal"
+    },
+    "role": {
+      "ceo": "CEO",
+      "board": "Vorstand",
+      "founder": "Gründer",
+      "director": "Direktor",
+      "comex": "COMEX"
+    },
+    "dialog": {
+      "mark": {
+        "title": "Schwellenwert als markiert kennzeichnen",
+        "description": "Bestätigen Sie den Übergang zur Markierungsphase"
+      },
+      "validate": {
+        "title": "Schwellenwert validieren",
+        "description": "Geben Sie Ihre offizielle Validierung ab"
+      },
+      "seal": {
+        "title": "Schwellenwert versiegeln",
+        "description": "Diese Aktion ist ENDGÜLTIG und UNUMKEHRBAR",
+        "warning": "Diese Aktion kann nicht rückgängig gemacht werden. Der Schwellenwert wird dauerhaft versiegelt."
+      }
+    },
+    "toast": {
+      "created": "Schwellenwert erstellt",
+      "marked": "Schwellenwert markiert",
+      "validated": "Schwellenwert validiert",
+      "sealed": "Schwellenwert versiegelt"
+    },
+    "empty": {
+      "title": "Keine Schwellenwerte",
+      "description": "Erstellen Sie Ihren ersten Unumkehrbarkeitsschwellenwert"
+    },
+    "witnesses": {
+      "title": "Zeugen",
+      "add": "Zeuge hinzufügen",
+      "name": "Zeugenname",
+      "role": "Zeugenrolle",
+      "statement": "Erklärung",
+      "empty": "Noch keine Zeugen",
+      "added": "Zeuge hinzugefügt"
+    },
+    "witnessRole": {
+      "executive": "Führungskraft",
+      "board_member": "Vorstandsmitglied",
+      "legal_counsel": "Rechtsberater",
+      "external_advisor": "Externer Berater",
+      "auditor": "Wirtschaftsprüfer",
+      "stakeholder": "Interessenvertreter"
+    },
+    "audit": {
+      "title": "Prüfprotokoll"
     }
   }
 }

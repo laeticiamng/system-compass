@@ -3107,8 +3107,128 @@
     "detail": {
       "title": "Detalles de la zona",
       "createdAt": "Creada el",
-      "updatedAt": "Actualizada el",
-      "tensionsCount": "Número de tensiones"
+    "updatedAt": "Actualizada el",
+    "tensionsCount": "Número de tensiones"
+    }
+  },
+  "irreversa": {
+    "title": "Protocolo de Umbral IRREVERSA",
+    "subtitle": "Identificar, marcar y atravesar la irreversibilidad estratégica",
+    "paywall": {
+      "title": "Función Enterprise",
+      "description": "IRREVERSA está disponible para niveles Enterprise/Executive"
+    },
+    "warning": {
+      "title": "Reglas del Protocolo de Umbral",
+      "noCancellation": "Sin cancelación posible",
+      "noEdit": "Sin edición retroactiva",
+      "noScoring": "Sin puntuación",
+      "noRecommendation": "Sin recomendación"
+    },
+    "demoMode": "Inicie sesión para crear y gestionar umbrales",
+    "status": {
+      "detected": "Detectado",
+      "marked": "Marcado",
+      "validated": "Validado",
+      "sealed": "Sellado"
+    },
+    "actions": {
+      "newThreshold": "Nuevo umbral",
+      "mark": "Marcar",
+      "validate": "Validar",
+      "seal": "Sellar"
+    },
+    "fields": {
+      "title": "Título",
+      "context": "Contexto",
+      "domain": "Dominio",
+      "nature": "Naturaleza",
+      "source": "Fuente de detección",
+      "irreversibilityReason": "Razón de irreversibilidad",
+      "alternatives": "Alternativas previas",
+      "validatedBy": "Validado por",
+      "validatorRole": "Rol",
+      "organization": "Organización",
+      "actorName": "Nombre del actor",
+      "actorRole": "Rol del actor",
+      "validationStatement": "Declaración de validación"
+    },
+    "placeholders": {
+      "title": "Introduzca el título del umbral",
+      "context": "Describa el contexto de la decisión",
+      "actorName": "Nombre completo",
+      "validationStatement": "Su declaración oficial"
+    },
+    "domain": {
+      "strategic": "Estratégico",
+      "financial": "Financiero",
+      "organizational": "Organizacional",
+      "legal": "Legal",
+      "ethical": "Ético"
+    },
+    "nature": {
+      "resource_commitment": "Compromiso de recursos",
+      "contractual": "Contractual",
+      "reputational": "Reputacional",
+      "structural": "Estructural",
+      "temporal": "Temporal"
+    },
+    "source": {
+      "compass_analysis": "Análisis Compass",
+      "manual": "Detección manual",
+      "external_signal": "Señal externa"
+    },
+    "role": {
+      "ceo": "CEO",
+      "board": "Junta",
+      "founder": "Fundador",
+      "director": "Director",
+      "comex": "COMEX"
+    },
+    "dialog": {
+      "mark": {
+        "title": "Marcar umbral como marcado",
+        "description": "Confirme la transición a la fase de marcado"
+      },
+      "validate": {
+        "title": "Validar umbral",
+        "description": "Proporcione su validación oficial"
+      },
+      "seal": {
+        "title": "Sellar umbral",
+        "description": "Esta acción es FINAL e IRREVERSIBLE",
+        "warning": "Esta acción no se puede deshacer. El umbral quedará sellado permanentemente."
+      }
+    },
+    "toast": {
+      "created": "Umbral creado",
+      "marked": "Umbral marcado",
+      "validated": "Umbral validado",
+      "sealed": "Umbral sellado"
+    },
+    "empty": {
+      "title": "Sin umbrales",
+      "description": "Cree su primer umbral de irreversibilidad"
+    },
+    "witnesses": {
+      "title": "Testigos",
+      "add": "Agregar testigo",
+      "name": "Nombre del testigo",
+      "role": "Rol del testigo",
+      "statement": "Declaración",
+      "empty": "Aún no hay testigos",
+      "added": "Testigo agregado"
+    },
+    "witnessRole": {
+      "executive": "Ejecutivo",
+      "board_member": "Miembro de la junta",
+      "legal_counsel": "Asesor legal",
+      "external_advisor": "Asesor externo",
+      "auditor": "Auditor",
+      "stakeholder": "Parte interesada"
+    },
+    "audit": {
+      "title": "Registro de auditoría"
     }
   }
 }
