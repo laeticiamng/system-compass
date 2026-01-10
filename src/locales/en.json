@@ -5503,11 +5503,18 @@
   "errorsIllusions": {
     "badge": "Errors & Illusions",
     "title": "Errors & Illusions",
-    "subtitle": "Understand the mismatches that cost years — not judgments, patterns to avoid",
+    "subtitle": "What systems don't forgive — and how to avoid them",
     "intro": "These are not moral judgments. They are mismatches between expectations and a system's real rules.",
+    "centralMessage": "These errors are not moral faults.",
+    "centralMessageDesc": "They are mismatches between an individual's expectations and a system's real rules. Recognizing them allows anticipating them — not judging them.",
+    "cognitiveIntro": "The 10 most costly decision errors. Recurring patterns that cost time, money, and energy.",
+    "systemicIntro": "These errors are specific to pyramid types. They occur when you apply the rules of one system in a system that works differently.",
+    "ctaTitle": "Do you recognize one of these errors?",
+    "ctaDescription": "Run your decision through the prevention filter to identify risks before it's too late.",
+    "goToHub": "Find the right tool",
     "tabs": {
-      "cognitive": "Cognitive Errors",
-      "systemic": "Systemic Errors"
+      "cognitive": "Cognitive errors",
+      "systemic": "Systemic errors"
     },
     "cognitive": {
       "title": "Universal Cognitive Errors",

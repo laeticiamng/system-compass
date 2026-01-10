@@ -5485,11 +5485,18 @@
   "errorsIllusions": {
     "badge": "Erreurs & Illusions",
     "title": "Erreurs & Illusions",
-    "subtitle": "Comprends les décalages qui coûtent des années — pas des jugements, des patterns à éviter",
+    "subtitle": "Ce que les systèmes ne pardonnent pas — et comment les éviter",
     "intro": "Ce ne sont pas des jugements moraux. Ce sont des décalages entre les attentes et les règles réelles d'un système.",
+    "centralMessage": "Ces erreurs ne sont pas des fautes morales.",
+    "centralMessageDesc": "Ce sont des décalages entre les attentes d'un individu et les règles réelles d'un système. Les reconnaître permet de les anticiper — pas de les juger.",
+    "cognitiveIntro": "Les 10 erreurs de décision les plus coûteuses. Des patterns récurrents qui coûtent du temps, de l'argent et de l'énergie.",
+    "systemicIntro": "Ces erreurs sont spécifiques aux types de pyramides. Elles se produisent quand on applique les règles d'un système dans un système qui fonctionne autrement.",
+    "ctaTitle": "Vous reconnaissez une de ces erreurs ?",
+    "ctaDescription": "Passez votre décision au filtre de prévention pour identifier les risques avant qu'il ne soit trop tard.",
+    "goToHub": "Trouver le bon outil",
     "tabs": {
-      "cognitive": "Erreurs Cognitives",
-      "systemic": "Erreurs Systémiques"
+      "cognitive": "Erreurs cognitives",
+      "systemic": "Erreurs systémiques"
     },
     "cognitive": {
       "title": "Erreurs Cognitives Universelles",
