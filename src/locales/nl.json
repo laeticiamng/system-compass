@@ -247,7 +247,12 @@
     "objective": "Doel",
     "criticalRule": "Kritische regel",
     "personalNotes": "Persoonlijke notities",
-    "addNote": "Notitie toevoegen"
+    "addNote": "Notitie toevoegen",
+    "advancedModules": "Geavanceerde modules",
+    "advancedModulesDesc": "Geavanceerde reflectie- en documentatietools",
+    "latentDesc": "Identificeer spanningszones die nog niet kritiek zijn",
+    "irreversaDesc": "Documenteer overschreden onomkeerbare drempels",
+    "institutionsDesc": "Collectieve besluitvorming en traceerbaarheid"
   },
   "achievements": {
     "title": "Prestaties",
