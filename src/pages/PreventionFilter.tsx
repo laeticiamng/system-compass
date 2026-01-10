@@ -90,54 +90,54 @@ function calculateReversibility(decisionType: DecisionType, horizon: Horizon): R
   return baseReversibility[decisionType];
 }
 
-const REVERSIBILITY_CONFIG: Record<Reversibility, { label: string; color: string; icon: string }> = {
+const REVERSIBILITY_CONFIG: Record<Reversibility, { labelKey: string; color: string; icon: string }> = {
   'reversible': { 
-    label: 'Réversible', 
+    labelKey: 'preventionFilter.reversibility.reversible', 
     color: 'bg-green-500/20 text-green-700 border-green-500/40',
     icon: '↩️'
   },
   'semi': { 
-    label: 'Semi-réversible', 
+    labelKey: 'preventionFilter.reversibility.semi', 
     color: 'bg-amber-500/20 text-amber-700 border-amber-500/40',
     icon: '⚠️'
   },
   'irreversible': { 
-    label: 'Irréversible', 
+    labelKey: 'preventionFilter.reversibility.irreversible', 
     color: 'bg-red-500/20 text-red-700 border-red-500/40',
     icon: '🔒'
   },
 };
 
-const DECISION_TYPES: { value: DecisionType; label: string; icon: React.ReactNode }[] = [
-  { value: 'country', label: 'Pays', icon: <Globe className="w-4 h-4" /> },
-  { value: 'studies', label: 'Études', icon: <GraduationCap className="w-4 h-4" /> },
-  { value: 'career', label: 'Métier', icon: <Briefcase className="w-4 h-4" /> },
-  { value: 'business', label: 'Business', icon: <Building2 className="w-4 h-4" /> },
-  { value: 'investment', label: 'Investissement', icon: <TrendingUp className="w-4 h-4" /> },
-  { value: 'relationship', label: 'Relation', icon: <Heart className="w-4 h-4" /> },
-  { value: 'other', label: 'Autre', icon: <HelpCircle className="w-4 h-4" /> },
+const DECISION_TYPES: { value: DecisionType; labelKey: string; icon: React.ReactNode }[] = [
+  { value: 'country', labelKey: 'preventionFilter.types.country', icon: <Globe className="w-4 h-4" /> },
+  { value: 'studies', labelKey: 'preventionFilter.types.studies', icon: <GraduationCap className="w-4 h-4" /> },
+  { value: 'career', labelKey: 'preventionFilter.types.career', icon: <Briefcase className="w-4 h-4" /> },
+  { value: 'business', labelKey: 'preventionFilter.types.business', icon: <Building2 className="w-4 h-4" /> },
+  { value: 'investment', labelKey: 'preventionFilter.types.investment', icon: <TrendingUp className="w-4 h-4" /> },
+  { value: 'relationship', labelKey: 'preventionFilter.types.relationship', icon: <Heart className="w-4 h-4" /> },
+  { value: 'other', labelKey: 'preventionFilter.types.other', icon: <HelpCircle className="w-4 h-4" /> },
 ];
 
-const HORIZONS: { value: Horizon; label: string }[] = [
-  { value: '3months', label: '3 mois' },
-  { value: '1year', label: '1 an' },
-  { value: '3years', label: '3 ans' },
-  { value: '10years', label: '10 ans' },
+const HORIZONS: { value: Horizon; labelKey: string }[] = [
+  { value: '3months', labelKey: 'preventionFilter.horizons.3months' },
+  { value: '1year', labelKey: 'preventionFilter.horizons.1year' },
+  { value: '3years', labelKey: 'preventionFilter.horizons.3years' },
+  { value: '10years', labelKey: 'preventionFilter.horizons.10years' },
 ];
 
-const RISK_TOLERANCES: { value: RiskTolerance; label: string; color: string }[] = [
-  { value: 'low', label: 'Faible', color: 'bg-green-500/20 text-green-600 border-green-500/30' },
-  { value: 'medium', label: 'Moyenne', color: 'bg-amber-500/20 text-amber-600 border-amber-500/30' },
-  { value: 'high', label: 'Élevée', color: 'bg-red-500/20 text-red-600 border-red-500/30' },
+const RISK_TOLERANCES: { value: RiskTolerance; labelKey: string; color: string }[] = [
+  { value: 'low', labelKey: 'preventionFilter.risks.low', color: 'bg-green-500/20 text-green-600 border-green-500/30' },
+  { value: 'medium', labelKey: 'preventionFilter.risks.medium', color: 'bg-amber-500/20 text-amber-600 border-amber-500/30' },
+  { value: 'high', labelKey: 'preventionFilter.risks.high', color: 'bg-red-500/20 text-red-600 border-red-500/30' },
 ];
 
-const CONSTRAINTS: { value: Constraint; label: string; icon: React.ReactNode }[] = [
-  { value: 'money', label: 'Argent', icon: <DollarSign className="w-4 h-4" /> },
-  { value: 'time', label: 'Temps', icon: <Clock className="w-4 h-4" /> },
-  { value: 'energy', label: 'Énergie', icon: <Battery className="w-4 h-4" /> },
-  { value: 'family', label: 'Famille', icon: <Users className="w-4 h-4" /> },
-  { value: 'status', label: 'Statut', icon: <Award className="w-4 h-4" /> },
-  { value: 'security', label: 'Sécurité', icon: <Lock className="w-4 h-4" /> },
+const CONSTRAINTS: { value: Constraint; labelKey: string; icon: React.ReactNode }[] = [
+  { value: 'money', labelKey: 'preventionFilter.constraints.money', icon: <DollarSign className="w-4 h-4" /> },
+  { value: 'time', labelKey: 'preventionFilter.constraints.time', icon: <Clock className="w-4 h-4" /> },
+  { value: 'energy', labelKey: 'preventionFilter.constraints.energy', icon: <Battery className="w-4 h-4" /> },
+  { value: 'family', labelKey: 'preventionFilter.constraints.family', icon: <Users className="w-4 h-4" /> },
+  { value: 'status', labelKey: 'preventionFilter.constraints.status', icon: <Award className="w-4 h-4" /> },
+  { value: 'security', labelKey: 'preventionFilter.constraints.security', icon: <Lock className="w-4 h-4" /> },
 ];
 
 // Generate contextual results based on form inputs
@@ -464,7 +464,7 @@ export default function PreventionFilter() {
                       )}
                     >
                       {type.icon}
-                      {type.label}
+                      {t(type.labelKey)}
                     </button>
                   ))}
                 </div>
@@ -492,7 +492,7 @@ export default function PreventionFilter() {
                           : "bg-card hover:bg-accent border-border"
                       )}
                     >
-                      {horizon.label}
+                      {t(horizon.labelKey)}
                     </button>
                   ))}
                 </div>
@@ -520,7 +520,7 @@ export default function PreventionFilter() {
                           : "bg-card hover:bg-accent border-border"
                       )}
                     >
-                      {risk.label}
+                      {t(risk.labelKey)}
                     </button>
                   ))}
                 </div>
@@ -549,7 +549,7 @@ export default function PreventionFilter() {
                       )}
                     >
                       {constraint.icon}
-                      {constraint.label}
+                      {t(constraint.labelKey)}
                     </button>
                   ))}
                 </div>
@@ -586,7 +586,7 @@ export default function PreventionFilter() {
                   REVERSIBILITY_CONFIG[results.reversibility].color
                 )}>
                   <span>{REVERSIBILITY_CONFIG[results.reversibility].icon}</span>
-                  <span>{t(`preventionFilter.reversibility.${results.reversibility}`, REVERSIBILITY_CONFIG[results.reversibility].label)}</span>
+                  <span>{t(REVERSIBILITY_CONFIG[results.reversibility].labelKey)}</span>
                 </div>
               </div>
             )}
@@ -595,18 +595,18 @@ export default function PreventionFilter() {
             <div className="flex flex-wrap justify-center gap-2 mb-6">
               <Badge variant="outline" className="gap-1">
                 {DECISION_TYPES.find(d => d.value === formData.decisionType)?.icon}
-                {DECISION_TYPES.find(d => d.value === formData.decisionType)?.label}
+                {t(DECISION_TYPES.find(d => d.value === formData.decisionType)?.labelKey || '')}
               </Badge>
               <Badge variant="outline">
                 <Clock className="w-3 h-3 mr-1" />
-                {HORIZONS.find(h => h.value === formData.horizon)?.label}
+                {t(HORIZONS.find(h => h.value === formData.horizon)?.labelKey || '')}
               </Badge>
               <Badge variant="outline" className={RISK_TOLERANCES.find(r => r.value === formData.riskTolerance)?.color}>
-                {RISK_TOLERANCES.find(r => r.value === formData.riskTolerance)?.label}
+                {t(RISK_TOLERANCES.find(r => r.value === formData.riskTolerance)?.labelKey || '')}
               </Badge>
               <Badge variant="outline">
                 {CONSTRAINTS.find(c => c.value === formData.constraint)?.icon}
-                <span className="ml-1">{CONSTRAINTS.find(c => c.value === formData.constraint)?.label}</span>
+                <span className="ml-1">{t(CONSTRAINTS.find(c => c.value === formData.constraint)?.labelKey || '')}</span>
               </Badge>
             </div>
 

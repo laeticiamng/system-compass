@@ -4338,6 +4338,34 @@
     "saveSimulation": "Save this simulation",
     "saved": "Analysis saved!",
     "saveError": "Error saving",
+    "types": {
+      "country": "Country",
+      "studies": "Studies",
+      "career": "Career",
+      "business": "Business",
+      "investment": "Investment",
+      "relationship": "Relationship",
+      "other": "Other"
+    },
+    "horizons": {
+      "3months": "3 months",
+      "1year": "1 year",
+      "3years": "3 years",
+      "10years": "10 years"
+    },
+    "risks": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    },
+    "constraints": {
+      "money": "Money",
+      "time": "Time",
+      "energy": "Energy",
+      "family": "Family",
+      "status": "Status",
+      "security": "Security"
+    },
     "results": {
       "implications": "What this choice often implies",
       "blindSpots": "Common blind spots",
