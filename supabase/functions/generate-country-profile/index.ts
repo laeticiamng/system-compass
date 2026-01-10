@@ -1,3 +1,4 @@
+import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
@@ -6,7 +7,7 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
+const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY");
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
 
@@ -96,18 +97,20 @@ async function callLLMWithRetry(
     try {
       console.log(`LLM call attempt ${attempt}/${maxRetries}`);
       
-      const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+      const response = await fetch("https://api.openai.com/v1/chat/completions", {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${LOVABLE_API_KEY}`,
+          Authorization: `Bearer ${OPENAI_API_KEY}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          model: "google/gemini-2.5-pro",
+          model: "gpt-4o",
           messages: [
             { role: "system", content: systemPrompt },
             { role: "user", content: userPrompt },
           ],
+          temperature: 0.7,
+          max_tokens: 8000,
         }),
       });
 
@@ -117,7 +120,7 @@ async function callLLMWithRetry(
         
         // Check if error is retryable (5xx errors, 429 rate limit)
         if (status >= 500 || status === 429) {
-          lastError = new Error(`LLM API error: ${status} - ${errorText}`);
+          lastError = new Error(`OpenAI API error: ${status} - ${errorText}`);
           console.warn(`Retryable error on attempt ${attempt}: ${lastError.message}`);
           
           if (attempt < maxRetries) {
@@ -128,7 +131,7 @@ async function callLLMWithRetry(
           }
         } else {
           // Non-retryable error (4xx except 429)
-          throw new Error(`LLM API error: ${status} - ${errorText}`);
+          throw new Error(`OpenAI API error: ${status} - ${errorText}`);
         }
       } else {
         const data = await response.json();
@@ -280,8 +283,8 @@ serve(async (req) => {
 
     console.log("Received request for country:", country.country_name);
 
-    if (!LOVABLE_API_KEY) {
-      throw new Error("LOVABLE_API_KEY not configured");
+    if (!OPENAI_API_KEY) {
+      throw new Error("OPENAI_API_KEY not configured");
     }
 
     if (!country.country_name || !country.iso2) {
