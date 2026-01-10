@@ -3098,7 +3098,127 @@
       "title": "Detalhes da zona",
       "createdAt": "Criada em",
       "updatedAt": "Atualizada em",
-      "tensionsCount": "Número de tensões"
+    "tensionsCount": "Número de tensões"
+    }
+  },
+  "irreversa": {
+    "title": "Protocolo de Limite IRREVERSA",
+    "subtitle": "Identificar, marcar e atravessar a irreversibilidade estratégica",
+    "paywall": {
+      "title": "Funcionalidade Enterprise",
+      "description": "IRREVERSA está disponível para níveis Enterprise/Executive"
+    },
+    "warning": {
+      "title": "Regras do Protocolo de Limite",
+      "noCancellation": "Sem cancelamento possível",
+      "noEdit": "Sem edição retroativa",
+      "noScoring": "Sem pontuação",
+      "noRecommendation": "Sem recomendação"
+    },
+    "demoMode": "Faça login para criar e gerenciar limites",
+    "status": {
+      "detected": "Detectado",
+      "marked": "Marcado",
+      "validated": "Validado",
+      "sealed": "Selado"
+    },
+    "actions": {
+      "newThreshold": "Novo limite",
+      "mark": "Marcar",
+      "validate": "Validar",
+      "seal": "Selar"
+    },
+    "fields": {
+      "title": "Título",
+      "context": "Contexto",
+      "domain": "Domínio",
+      "nature": "Natureza",
+      "source": "Fonte de detecção",
+      "irreversibilityReason": "Razão de irreversibilidade",
+      "alternatives": "Alternativas anteriores",
+      "validatedBy": "Validado por",
+      "validatorRole": "Função",
+      "organization": "Organização",
+      "actorName": "Nome do ator",
+      "actorRole": "Função do ator",
+      "validationStatement": "Declaração de validação"
+    },
+    "placeholders": {
+      "title": "Digite o título do limite",
+      "context": "Descreva o contexto da decisão",
+      "actorName": "Nome completo",
+      "validationStatement": "Sua declaração oficial"
+    },
+    "domain": {
+      "strategic": "Estratégico",
+      "financial": "Financeiro",
+      "organizational": "Organizacional",
+      "legal": "Legal",
+      "ethical": "Ético"
+    },
+    "nature": {
+      "resource_commitment": "Comprometimento de recursos",
+      "contractual": "Contratual",
+      "reputational": "Reputacional",
+      "structural": "Estrutural",
+      "temporal": "Temporal"
+    },
+    "source": {
+      "compass_analysis": "Análise Compass",
+      "manual": "Detecção manual",
+      "external_signal": "Sinal externo"
+    },
+    "role": {
+      "ceo": "CEO",
+      "board": "Conselho",
+      "founder": "Fundador",
+      "director": "Diretor",
+      "comex": "COMEX"
+    },
+    "dialog": {
+      "mark": {
+        "title": "Marcar limite como marcado",
+        "description": "Confirme a transição para a fase de marcação"
+      },
+      "validate": {
+        "title": "Validar limite",
+        "description": "Forneça sua validação oficial"
+      },
+      "seal": {
+        "title": "Selar limite",
+        "description": "Esta ação é FINAL e IRREVERSÍVEL",
+        "warning": "Esta ação não pode ser desfeita. O limite será selado permanentemente."
+      }
+    },
+    "toast": {
+      "created": "Limite criado",
+      "marked": "Limite marcado",
+      "validated": "Limite validado",
+      "sealed": "Limite selado"
+    },
+    "empty": {
+      "title": "Sem limites",
+      "description": "Crie seu primeiro limite de irreversibilidade"
+    },
+    "witnesses": {
+      "title": "Testemunhas",
+      "add": "Adicionar testemunha",
+      "name": "Nome da testemunha",
+      "role": "Função da testemunha",
+      "statement": "Declaração",
+      "empty": "Nenhuma testemunha ainda",
+      "added": "Testemunha adicionada"
+    },
+    "witnessRole": {
+      "executive": "Executivo",
+      "board_member": "Membro do conselho",
+      "legal_counsel": "Consultor jurídico",
+      "external_advisor": "Consultor externo",
+      "auditor": "Auditor",
+      "stakeholder": "Parte interessada"
+    },
+    "audit": {
+      "title": "Registro de auditoria"
     }
   }
 }

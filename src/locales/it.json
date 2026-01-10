@@ -3098,7 +3098,127 @@
       "title": "Dettagli della zona",
       "createdAt": "Creata il",
       "updatedAt": "Aggiornata il",
-      "tensionsCount": "Numero di tensioni"
+    "tensionsCount": "Numero di tensioni"
+    }
+  },
+  "irreversa": {
+    "title": "Protocollo Soglia IRREVERSA",
+    "subtitle": "Identificare, contrassegnare e attraversare l'irreversibilità strategica",
+    "paywall": {
+      "title": "Funzione Enterprise",
+      "description": "IRREVERSA è disponibile per i livelli Enterprise/Executive"
+    },
+    "warning": {
+      "title": "Regole del Protocollo Soglia",
+      "noCancellation": "Nessuna cancellazione possibile",
+      "noEdit": "Nessuna modifica retroattiva",
+      "noScoring": "Nessun punteggio",
+      "noRecommendation": "Nessuna raccomandazione"
+    },
+    "demoMode": "Accedi per creare e gestire le soglie",
+    "status": {
+      "detected": "Rilevato",
+      "marked": "Contrassegnato",
+      "validated": "Validato",
+      "sealed": "Sigillato"
+    },
+    "actions": {
+      "newThreshold": "Nuova soglia",
+      "mark": "Contrassegna",
+      "validate": "Valida",
+      "seal": "Sigilla"
+    },
+    "fields": {
+      "title": "Titolo",
+      "context": "Contesto",
+      "domain": "Dominio",
+      "nature": "Natura",
+      "source": "Fonte di rilevamento",
+      "irreversibilityReason": "Motivo di irreversibilità",
+      "alternatives": "Alternative precedenti",
+      "validatedBy": "Validato da",
+      "validatorRole": "Ruolo",
+      "organization": "Organizzazione",
+      "actorName": "Nome dell'attore",
+      "actorRole": "Ruolo dell'attore",
+      "validationStatement": "Dichiarazione di validazione"
+    },
+    "placeholders": {
+      "title": "Inserisci il titolo della soglia",
+      "context": "Descrivi il contesto della decisione",
+      "actorName": "Nome completo",
+      "validationStatement": "La tua dichiarazione ufficiale"
+    },
+    "domain": {
+      "strategic": "Strategico",
+      "financial": "Finanziario",
+      "organizational": "Organizzativo",
+      "legal": "Legale",
+      "ethical": "Etico"
+    },
+    "nature": {
+      "resource_commitment": "Impegno di risorse",
+      "contractual": "Contrattuale",
+      "reputational": "Reputazionale",
+      "structural": "Strutturale",
+      "temporal": "Temporale"
+    },
+    "source": {
+      "compass_analysis": "Analisi Compass",
+      "manual": "Rilevamento manuale",
+      "external_signal": "Segnale esterno"
+    },
+    "role": {
+      "ceo": "CEO",
+      "board": "Consiglio",
+      "founder": "Fondatore",
+      "director": "Direttore",
+      "comex": "COMEX"
+    },
+    "dialog": {
+      "mark": {
+        "title": "Contrassegna soglia come marcata",
+        "description": "Conferma la transizione alla fase di marcatura"
+      },
+      "validate": {
+        "title": "Valida soglia",
+        "description": "Fornisci la tua validazione ufficiale"
+      },
+      "seal": {
+        "title": "Sigilla soglia",
+        "description": "Questa azione è FINALE e IRREVERSIBILE",
+        "warning": "Questa azione non può essere annullata. La soglia sarà sigillata permanentemente."
+      }
+    },
+    "toast": {
+      "created": "Soglia creata",
+      "marked": "Soglia contrassegnata",
+      "validated": "Soglia validata",
+      "sealed": "Soglia sigillata"
+    },
+    "empty": {
+      "title": "Nessuna soglia",
+      "description": "Crea la tua prima soglia di irreversibilità"
+    },
+    "witnesses": {
+      "title": "Testimoni",
+      "add": "Aggiungi testimone",
+      "name": "Nome del testimone",
+      "role": "Ruolo del testimone",
+      "statement": "Dichiarazione",
+      "empty": "Nessun testimone ancora",
+      "added": "Testimone aggiunto"
+    },
+    "witnessRole": {
+      "executive": "Dirigente",
+      "board_member": "Membro del consiglio",
+      "legal_counsel": "Consulente legale",
+      "external_advisor": "Consulente esterno",
+      "auditor": "Revisore",
+      "stakeholder": "Stakeholder"
+    },
+    "audit": {
+      "title": "Registro di audit"
     }
   }
 }

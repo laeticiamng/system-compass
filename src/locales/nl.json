@@ -3098,7 +3098,127 @@
       "title": "Zone-details",
       "createdAt": "Gemaakt op",
       "updatedAt": "Bijgewerkt op",
-      "tensionsCount": "Aantal spanningen"
+    "tensionsCount": "Aantal spanningen"
+    }
+  },
+  "irreversa": {
+    "title": "IRREVERSA Drempelprotocol",
+    "subtitle": "Strategische onomkeerbaarheid identificeren, markeren en doorkruisen",
+    "paywall": {
+      "title": "Enterprise-functie",
+      "description": "IRREVERSA is beschikbaar voor Enterprise/Executive-niveaus"
+    },
+    "warning": {
+      "title": "Drempelprotocolregels",
+      "noCancellation": "Geen annulering mogelijk",
+      "noEdit": "Geen retroactieve bewerking",
+      "noScoring": "Geen scoring",
+      "noRecommendation": "Geen aanbeveling"
+    },
+    "demoMode": "Log in om drempels te maken en beheren",
+    "status": {
+      "detected": "Gedetecteerd",
+      "marked": "Gemarkeerd",
+      "validated": "Gevalideerd",
+      "sealed": "Verzegeld"
+    },
+    "actions": {
+      "newThreshold": "Nieuwe drempel",
+      "mark": "Markeren",
+      "validate": "Valideren",
+      "seal": "Verzegelen"
+    },
+    "fields": {
+      "title": "Titel",
+      "context": "Context",
+      "domain": "Domein",
+      "nature": "Aard",
+      "source": "Detectiebron",
+      "irreversibilityReason": "Reden onomkeerbaarheid",
+      "alternatives": "Alternatieven eerder",
+      "validatedBy": "Gevalideerd door",
+      "validatorRole": "Rol",
+      "organization": "Organisatie",
+      "actorName": "Naam actor",
+      "actorRole": "Rol actor",
+      "validationStatement": "Validatieverklaring"
+    },
+    "placeholders": {
+      "title": "Voer drempeltitel in",
+      "context": "Beschrijf de beslissingscontext",
+      "actorName": "Volledige naam",
+      "validationStatement": "Uw officiële verklaring"
+    },
+    "domain": {
+      "strategic": "Strategisch",
+      "financial": "Financieel",
+      "organizational": "Organisatorisch",
+      "legal": "Juridisch",
+      "ethical": "Ethisch"
+    },
+    "nature": {
+      "resource_commitment": "Middelentoezegging",
+      "contractual": "Contractueel",
+      "reputational": "Reputatie",
+      "structural": "Structureel",
+      "temporal": "Tijdelijk"
+    },
+    "source": {
+      "compass_analysis": "Compass-analyse",
+      "manual": "Handmatige detectie",
+      "external_signal": "Extern signaal"
+    },
+    "role": {
+      "ceo": "CEO",
+      "board": "Bestuur",
+      "founder": "Oprichter",
+      "director": "Directeur",
+      "comex": "COMEX"
+    },
+    "dialog": {
+      "mark": {
+        "title": "Drempel als gemarkeerd markeren",
+        "description": "Bevestig de overgang naar de markeringsfase"
+      },
+      "validate": {
+        "title": "Drempel valideren",
+        "description": "Geef uw officiële validatie"
+      },
+      "seal": {
+        "title": "Drempel verzegelen",
+        "description": "Deze actie is DEFINITIEF en ONOMKEERBAAR",
+        "warning": "Deze actie kan niet ongedaan worden gemaakt. De drempel wordt permanent verzegeld."
+      }
+    },
+    "toast": {
+      "created": "Drempel aangemaakt",
+      "marked": "Drempel gemarkeerd",
+      "validated": "Drempel gevalideerd",
+      "sealed": "Drempel verzegeld"
+    },
+    "empty": {
+      "title": "Geen drempels",
+      "description": "Maak uw eerste onomkeerbare drempel"
+    },
+    "witnesses": {
+      "title": "Getuigen",
+      "add": "Getuige toevoegen",
+      "name": "Naam getuige",
+      "role": "Rol getuige",
+      "statement": "Verklaring",
+      "empty": "Nog geen getuigen",
+      "added": "Getuige toegevoegd"
+    },
+    "witnessRole": {
+      "executive": "Leidinggevende",
+      "board_member": "Bestuurslid",
+      "legal_counsel": "Juridisch adviseur",
+      "external_advisor": "Externe adviseur",
+      "auditor": "Accountant",
+      "stakeholder": "Belanghebbende"
+    },
+    "audit": {
+      "title": "Auditlogboek"
     }
   }
 }
