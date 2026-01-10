@@ -17,7 +17,23 @@
     "metric": "Metriek",
     "delete": "Verwijderen",
     "confirm": "Bevestigen",
-    "edit": "Bewerken"
+    "edit": "Bewerken",
+    "close": "Sluiten"
+  },
+  "errors": {
+    "rateLimited": "Te veel verzoeken. Probeer het later opnieuw.",
+    "insufficientCredits": "Onvoldoende AI-credits.",
+    "generationFailed": "Fout bij het genereren.",
+    "networkError": "Netwerkfout. Controleer je verbinding.",
+    "unauthorized": "Je moet ingelogd zijn.",
+    "notFound": "Bron niet gevonden.",
+    "serverError": "Serverfout. Probeer het opnieuw."
+  },
+  "insights": {
+    "vacationGuide": "Vakantiegids",
+    "installationGuide": "Installatiegids",
+    "generating": "Gepersonaliseerde inzichten genereren...",
+    "disclaimer": "AI-gegenereerde adviezen • Controleer altijd officiële informatie"
   },
   "steps": {
     "profile": "Jouw profiel",

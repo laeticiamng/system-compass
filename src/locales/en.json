@@ -20,7 +20,23 @@
     "edit": "Edit",
     "previewMode": "Preview mode",
     "all": "All",
-    "total": "Total"
+    "total": "Total",
+    "close": "Close"
+  },
+  "errors": {
+    "rateLimited": "Too many requests. Please try again in a moment.",
+    "insufficientCredits": "Insufficient AI credits.",
+    "generationFailed": "Error generating content.",
+    "networkError": "Network error. Please check your connection.",
+    "unauthorized": "You must be logged in.",
+    "notFound": "Resource not found.",
+    "serverError": "Server error. Please try again."
+  },
+  "insights": {
+    "vacationGuide": "Vacation Guide",
+    "installationGuide": "Installation Guide",
+    "generating": "Generating personalized insights...",
+    "disclaimer": "AI-generated advice • Always verify official information"
   },
   "steps": {
     "profile": "Your profile",
