@@ -73,6 +73,7 @@ export function Footer() {
             <h4 className="font-semibold mb-4">{t('footer.account', 'Account')}</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li><Link to="/dashboard" className="hover:text-foreground transition-colors">{t('nav.dashboard')}</Link></li>
+              <li><Link to="/pricing" className="hover:text-foreground transition-colors font-medium text-primary">💎 {t('nav.pricing', 'Tarifs')}</Link></li>
               <li><Link to="/auth" className="hover:text-foreground transition-colors">{t('auth.login')}</Link></li>
               <li><Link to="/about" className="hover:text-foreground transition-colors">{t('footer.about', 'À propos')}</Link></li>
               <li><Link to="/how-to-read" className="hover:text-foreground transition-colors">📖 {t('howToRead.title', 'Comment lire les résultats')}</Link></li>
