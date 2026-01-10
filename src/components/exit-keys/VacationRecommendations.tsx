@@ -68,7 +68,7 @@ function VacationCard({
       </div>
       
       <div className="text-xs text-muted-foreground mb-2">
-        <p>{t('vacation.budget', 'Budget')}: <strong>~{destination.dailyBudgetLocal}€/{t('vacation.perDay', 'jour')}</strong></p>
+        <p>{t('vacation.budget', 'Budget')}: <strong>~{destination.dailyBudgetLocal}€{t('vacation.perDay', '/jour')}</strong></p>
       </div>
       
       {destination.warnings.length > 0 && (
