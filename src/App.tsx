@@ -52,6 +52,7 @@ import Institutions from "./pages/Institutions";
 import OVI from "./pages/OVI";
 import B2BSolutions from "./pages/B2BSolutions";
 import Partners from "./pages/Partners";
+import LatentModule from "./pages/LatentModule";
 
 const queryClient = new QueryClient();
 
@@ -109,6 +110,7 @@ const App = () => (
                     <Route path="/ovi" element={<OVI />} />
                     <Route path="/b2b" element={<B2BSolutions />} />
                     <Route path="/partners" element={<Partners />} />
+                    <Route path="/latent" element={<LatentModule />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </main>

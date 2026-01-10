@@ -5805,5 +5805,106 @@
       "HYBRID_TRANSITION": "Hybrid Transition",
       "RESOURCE_EXTRACTION": "Resource Extraction"
     }
+  },
+  "latent": {
+    "title": "Potential Zones",
+    "subtitle": "A space for what is not yet ready to exist",
+    "newZone": "New zone",
+    "demoMode": "Demo mode. Log in to save your potential zones.",
+    "updated": "Updated",
+    "paywall": {
+      "title": "LATENT Module - B2B",
+      "description": "Access LATENT to map and maintain unformulated potentials, with no obligation to transform."
+    },
+    "tabs": {
+      "zones": "Potential zones",
+      "philosophy": "Philosophy"
+    },
+    "filter": {
+      "all": "All statuses"
+    },
+    "status": {
+      "dormant": "Dormant",
+      "emergent": "Emergent",
+      "fragile": "Fragile",
+      "blocked": "Blocked"
+    },
+    "tension": {
+      "nourishing": "Nourishing forces",
+      "blocking": "Blocking forces",
+      "fragility": "Fragilities",
+      "prematureCrushing": "Risk of premature crushing"
+    },
+    "tensions": {
+      "title": "Tension fields",
+      "add": "Add a tension",
+      "placeholder": "Describe this tension..."
+    },
+    "actions": {
+      "transform": "Transform (without deciding)",
+      "merge": "Merge with another zone",
+      "sleep": "Put to sleep",
+      "archive": "Archive without closure"
+    },
+    "create": {
+      "title": "Create a potential zone",
+      "subtitle": "Name what emerges without freezing it",
+      "labelTitle": "Open title",
+      "placeholderTitle": "What's starting to emerge...",
+      "hintTitle": "A non-conclusive title that leaves space open",
+      "labelDescription": "Deliberately vague description",
+      "placeholderDescription": "Impressions, possible directions, not certainties yet...",
+      "hintDescription": "Respect the vagueness. No quantified objectives.",
+      "submit": "Create this zone"
+    },
+    "empty": {
+      "title": "No potential zones",
+      "description": "Create your first space to welcome what is not yet ready.",
+      "cta": "Create my first zone"
+    },
+    "toast": {
+      "created": "Potential zone created",
+      "statusUpdated": "Status updated",
+      "tensionAdded": "Tension added",
+      "deleted": "Zone deleted",
+      "archived": "Zone archived without closure",
+      "put_to_sleep": "Zone put to sleep",
+      "transformed": "Transformation recorded",
+      "merged": "Merge recorded"
+    },
+    "onboarding": {
+      "badge": "Strategic anti-accelerator",
+      "title": "Welcome to LATENT",
+      "subtitle": "A safe space for what is not yet ready to exist. Here, vagueness is respected.",
+      "notTitle": "What LATENT is NOT",
+      "not": {
+        "idea": "Not an ideation tool",
+        "project": "Not a project manager",
+        "objective": "Not an objectives board",
+        "decision": "Not a decision tool"
+      },
+      "isTitle": "What LATENT IS",
+      "isDescription": "An upstream module, designed to prevent premature crystallization.",
+      "is": {
+        "potential": "A space for unformulated potentials",
+        "noDeadline": "No deadline or result obligation",
+        "safe": "Protection against pressure to decide",
+        "respect": "Respect for real complexity"
+      },
+      "principles": {
+        "dormancy": {
+          "title": "Dormancy is a state",
+          "desc": "Letting rest is not abandoning. It's respecting the time of potential."
+        },
+        "noTimeline": {
+          "title": "No timeline",
+          "desc": "No deadlines, no KPIs, no intrusive notifications."
+        },
+        "noForcing": {
+          "title": "No obligation",
+          "desc": "Transform, merge, archive... but never force concretization."
+        }
+      }
+    }
   }
 }

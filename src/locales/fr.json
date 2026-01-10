@@ -5784,5 +5784,106 @@
       "HYBRID_TRANSITION": "Transition Hybride",
       "RESOURCE_EXTRACTION": "Extraction Ressources"
     }
+  },
+  "latent": {
+    "title": "Zones de Potentiel",
+    "subtitle": "Un espace pour ce qui n'est pas encore prêt à exister",
+    "newZone": "Nouvelle zone",
+    "demoMode": "Mode démo. Connectez-vous pour sauvegarder vos zones de potentiel.",
+    "updated": "Mis à jour",
+    "paywall": {
+      "title": "Module LATENT - B2B",
+      "description": "Accédez à LATENT pour cartographier et maintenir des potentiels non formulés, sans obligation de transformation."
+    },
+    "tabs": {
+      "zones": "Zones de potentiel",
+      "philosophy": "Philosophie"
+    },
+    "filter": {
+      "all": "Tous les statuts"
+    },
+    "status": {
+      "dormant": "Dormant",
+      "emergent": "Émergent",
+      "fragile": "Fragile",
+      "blocked": "Bloqué"
+    },
+    "tension": {
+      "nourishing": "Forces nourricières",
+      "blocking": "Forces bloquantes",
+      "fragility": "Fragilités",
+      "prematureCrushing": "Risque d'écrasement prématuré"
+    },
+    "tensions": {
+      "title": "Champs de tension",
+      "add": "Ajouter une tension",
+      "placeholder": "Décrire cette tension..."
+    },
+    "actions": {
+      "transform": "Transformer (sans décider)",
+      "merge": "Fusionner avec une autre zone",
+      "sleep": "Mettre en sommeil",
+      "archive": "Archiver sans clôture"
+    },
+    "create": {
+      "title": "Créer une zone de potentiel",
+      "subtitle": "Nommez ce qui émerge sans le figer",
+      "labelTitle": "Intitulé libre",
+      "placeholderTitle": "Ce qui commence à émerger...",
+      "hintTitle": "Un intitulé non conclusif, qui laisse l'espace ouvert",
+      "labelDescription": "Description volontairement floue",
+      "placeholderDescription": "Des impressions, des directions possibles, pas encore des certitudes...",
+      "hintDescription": "Respectez le flou. Pas d'objectifs chiffrés.",
+      "submit": "Créer cette zone"
+    },
+    "empty": {
+      "title": "Aucune zone de potentiel",
+      "description": "Créez votre premier espace pour accueillir ce qui n'est pas encore prêt.",
+      "cta": "Créer ma première zone"
+    },
+    "toast": {
+      "created": "Zone de potentiel créée",
+      "statusUpdated": "Statut mis à jour",
+      "tensionAdded": "Tension ajoutée",
+      "deleted": "Zone supprimée",
+      "archived": "Zone archivée sans clôture",
+      "put_to_sleep": "Zone mise en sommeil",
+      "transformed": "Transformation enregistrée",
+      "merged": "Fusion enregistrée"
+    },
+    "onboarding": {
+      "badge": "Anti-accélérateur stratégique",
+      "title": "Bienvenue dans LATENT",
+      "subtitle": "Un espace sécurisé pour ce qui n'est pas encore prêt à exister. Ici, le flou est respecté.",
+      "notTitle": "Ce que LATENT n'est PAS",
+      "not": {
+        "idea": "Pas un outil d'idéation",
+        "project": "Pas un gestionnaire de projets",
+        "objective": "Pas un tableau d'objectifs",
+        "decision": "Pas un outil de décision"
+      },
+      "isTitle": "Ce que LATENT EST",
+      "isDescription": "Un module amont, conçu pour éviter la cristallisation prématurée.",
+      "is": {
+        "potential": "Un espace pour les potentiels non formulés",
+        "noDeadline": "Aucune obligation de délai ou de résultat",
+        "safe": "Protection contre la pression à décider",
+        "respect": "Respect de la complexité réelle"
+      },
+      "principles": {
+        "dormancy": {
+          "title": "La dormance est un état",
+          "desc": "Laisser reposer n'est pas abandonner. C'est respecter le temps du potentiel."
+        },
+        "noTimeline": {
+          "title": "Pas de timeline",
+          "desc": "Aucune date butoir, aucun KPI, aucune notification intrusive."
+        },
+        "noForcing": {
+          "title": "Aucune obligation",
+          "desc": "Transformer, fusionner, archiver... mais jamais forcer la concrétisation."
+        }
+      }
+    }
   }
 }

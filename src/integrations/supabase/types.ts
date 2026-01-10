@@ -497,6 +497,109 @@ export type Database = {
         }
         Relationships: []
       }
+      latent_zone_history: {
+        Row: {
+          action: string
+          created_at: string
+          id: string
+          new_status: string | null
+          notes: string | null
+          previous_status: string | null
+          user_id: string
+          zone_id: string
+        }
+        Insert: {
+          action: string
+          created_at?: string
+          id?: string
+          new_status?: string | null
+          notes?: string | null
+          previous_status?: string | null
+          user_id: string
+          zone_id: string
+        }
+        Update: {
+          action?: string
+          created_at?: string
+          id?: string
+          new_status?: string | null
+          notes?: string | null
+          previous_status?: string | null
+          user_id?: string
+          zone_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "latent_zone_history_zone_id_fkey"
+            columns: ["zone_id"]
+            isOneToOne: false
+            referencedRelation: "latent_zones"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      latent_zone_tensions: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          tension_type: string
+          zone_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          tension_type: string
+          zone_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          tension_type?: string
+          zone_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "latent_zone_tensions_zone_id_fkey"
+            columns: ["zone_id"]
+            isOneToOne: false
+            referencedRelation: "latent_zones"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      latent_zones: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          status: string
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          status?: string
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          status?: string
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       music_cache: {
         Row: {
           audio_url: string
