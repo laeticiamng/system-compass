@@ -4637,6 +4637,12 @@
     "subtitle": "Power dynamics and social strategies",
     "disclaimer": "Analysis tool: not advice. Simulation ≠ prediction.",
     "disclaimerVariations": "General trends, individual variations possible.",
+    "translating": "Translating...",
+    "paywallTitle": "System Intelligence",
+    "paywallDesc": "Access power dynamics, social strategies and historical legacies of this country.",
+    "comingSoon": "System Intelligence coming soon",
+    "comingSoonDesc": "We're working on the in-depth analysis of this country. Come back soon.",
+    "tagsTitle": "System indicators (1-5)",
     "tabs": {
       "powerMap": "Power Map",
       "socialOS": "Social OS",

@@ -2906,10 +2906,12 @@
     "subtitle": "Dinamiche di potere e strategie sociali",
     "disclaimer": "Strumento di analisi: non consulenza. Simulazione ≠ previsione.",
     "disclaimerVariations": "Tendenze generali, variazioni individuali possibili.",
+    "translating": "Traduzione in corso...",
     "paywallTitle": "Intelligence di Sistema",
     "paywallDesc": "Accedi alle dinamiche di potere, strategie sociali e eredità storica di questo paese.",
     "comingSoon": "Intelligence di Sistema presto disponibile",
     "comingSoonDesc": "Stiamo lavorando all'analisi approfondita di questo paese. Torna presto.",
+    "tagsTitle": "Indicatori di sistema (1-5)",
     "tabs": {
       "powerMap": "Mappa del potere",
       "socialOS": "Sistema sociale",

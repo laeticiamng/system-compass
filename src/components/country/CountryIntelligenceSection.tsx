@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
 import { CountryTagsRadar } from './CountryTagsRadar';
+import { useTranslatedIntelligence } from '@/hooks/useTranslatedIntelligence';
 import { 
   translateIntelligenceValue, 
   getMobilitySpeedColor, 
@@ -30,7 +31,8 @@ import {
   XCircle,
   ArrowUpRight,
   ArrowDownRight,
-  Minus
+  Minus,
+  Loader2
 } from 'lucide-react';
 
 interface CountryIntelligence {
@@ -80,11 +82,17 @@ interface Props {
 }
 
 export function CountryIntelligenceSection({ countryId, countryName }: Props) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { canAccessPro } = useSubscription();
-  const [intelligence, setIntelligence] = useState<CountryIntelligence | null>(null);
+  const [originalIntelligence, setOriginalIntelligence] = useState<CountryIntelligence | null>(null);
   const [tags, setTags] = useState<CountryTags | null>(null);
   const [loading, setLoading] = useState(true);
+
+  // Use the translation hook
+  const { translatedData: intelligence, isTranslating } = useTranslatedIntelligence(
+    countryId,
+    originalIntelligence as any
+  );
 
   useEffect(() => {
     async function fetchData() {
@@ -104,7 +112,7 @@ export function CountryIntelligenceSection({ countryId, countryName }: Props) {
       ]);
 
       if (intelligenceRes.data) {
-        setIntelligence(intelligenceRes.data as unknown as CountryIntelligence);
+        setOriginalIntelligence(intelligenceRes.data as unknown as CountryIntelligence);
       }
       if (tagsRes.data) {
         setTags(tagsRes.data as unknown as CountryTags);
@@ -126,9 +134,17 @@ export function CountryIntelligenceSection({ countryId, countryName }: Props) {
     );
   }
 
-  if (loading) {
+  if (loading || isTranslating) {
     return (
       <div className="space-y-4">
+        {isTranslating && (
+          <div className="flex items-center justify-center gap-2 p-4 bg-muted/30 rounded-lg">
+            <Loader2 className="w-4 h-4 animate-spin" />
+            <span className="text-sm text-muted-foreground">
+              {t('intelligence.translating', 'Traduction en cours...')}
+            </span>
+          </div>
+        )}
         {[1, 2, 3].map(i => (
           <Card key={i} className="animate-pulse">
             <CardHeader>
@@ -146,7 +162,7 @@ export function CountryIntelligenceSection({ countryId, countryName }: Props) {
     );
   }
 
-  if (!intelligence || !intelligence.is_complete) {
+  if (!originalIntelligence || !originalIntelligence.is_complete || !intelligence) {
     return (
       <Card className="border-amber-500/30 bg-amber-500/5">
         <CardContent className="p-8 text-center">
@@ -161,6 +177,9 @@ export function CountryIntelligenceSection({ countryId, countryName }: Props) {
       </Card>
     );
   }
+
+  // Cast translated data to the expected type
+  const displayData = intelligence as unknown as CountryIntelligence;
 
   return (
     <div className="space-y-6">
@@ -212,37 +231,37 @@ export function CountryIntelligenceSection({ countryId, countryName }: Props) {
 
         {/* A. Power Map */}
         <TabsContent value="power" className="space-y-4 mt-4">
-          <PowerMapSection intelligence={intelligence} />
+          <PowerMapSection intelligence={displayData} />
         </TabsContent>
 
         {/* B. Social Operating System */}
         <TabsContent value="social" className="space-y-4 mt-4">
-          <SocialSystemSection intelligence={intelligence} />
+          <SocialSystemSection intelligence={displayData} />
         </TabsContent>
 
         {/* C. Strategies */}
         <TabsContent value="strategies" className="space-y-4 mt-4">
-          <StrategiesSection intelligence={intelligence} />
+          <StrategiesSection intelligence={displayData} />
         </TabsContent>
 
         {/* D. Mobility */}
         <TabsContent value="mobility" className="space-y-4 mt-4">
-          <MobilitySection intelligence={intelligence} />
+          <MobilitySection intelligence={displayData} />
         </TabsContent>
 
         {/* E. Psycho/Socio */}
         <TabsContent value="psycho" className="space-y-4 mt-4">
-          <PsychoSection intelligence={intelligence} />
+          <PsychoSection intelligence={displayData} />
         </TabsContent>
 
         {/* F. Geopolitics */}
         <TabsContent value="geo" className="space-y-4 mt-4">
-          <GeopoliticsSection intelligence={intelligence} />
+          <GeopoliticsSection intelligence={displayData} />
         </TabsContent>
 
         {/* G. Historical Legacy */}
         <TabsContent value="history" className="space-y-4 mt-4">
-          <HistorySection intelligence={intelligence} />
+          <HistorySection intelligence={displayData} />
         </TabsContent>
       </Tabs>
     </div>
