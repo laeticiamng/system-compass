@@ -83,21 +83,21 @@ export default function CompareExitKeys() {
         <div className="mb-8">
           <Link to="/exit-keys" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-6">
             <ArrowLeft className="w-4 h-4" />
-            Retour aux Clés de Sortie
+            {t('exitKeys.compare.backToKeys', 'Retour aux Clés de Sortie')}
           </Link>
           <div className="flex items-center gap-4 mb-4">
             <div className="p-3 rounded-xl bg-primary/20">
               <Key className="w-8 h-8 text-primary" />
             </div>
             <div>
-              <h1 className="font-display text-3xl md:text-4xl font-bold">Comparer les Stratégies</h1>
-              <p className="text-muted-foreground">Analysez jusqu'à 3 clés de sortie côte à côte</p>
+              <h1 className="font-display text-3xl md:text-4xl font-bold">{t('exitKeys.compare.title', 'Comparer les Stratégies')}</h1>
+              <p className="text-muted-foreground">{t('exitKeys.compare.subtitle', "Analysez jusqu'à 3 clés de sortie côte à côte")}</p>
             </div>
           </div>
         </div>
 
         <div className="glass-card rounded-xl p-6 mb-8">
-          <h2 className="font-semibold mb-4">Sélectionner les stratégies à comparer</h2>
+          <h2 className="font-semibold mb-4">{t('exitKeys.compare.selectStrategies', 'Sélectionner les stratégies à comparer')}</h2>
           <div className="flex flex-wrap gap-4">
             {selectedExitKeys.map(key => (
               <div key={key.id} className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 border border-primary/30">
@@ -111,7 +111,7 @@ export default function CompareExitKeys() {
             {selectedKeys.length < 3 && (
               <Select onValueChange={addKey}>
                 <SelectTrigger className="w-[250px]">
-                  <SelectValue placeholder={<span className="flex items-center gap-2"><Plus className="w-4 h-4" />Ajouter une stratégie</span>} />
+                  <SelectValue placeholder={<span className="flex items-center gap-2"><Plus className="w-4 h-4" />{t('exitKeys.compare.addStrategy', 'Ajouter une stratégie')}</span>} />
                 </SelectTrigger>
                 <SelectContent>
                   {availableKeys.map(key => (
@@ -145,7 +145,7 @@ export default function CompareExitKeys() {
                     {userContext && compatibilityMap[key.id] !== undefined && (
                       <div className="mt-4">
                         <div className="flex items-center justify-between text-sm mb-1">
-                          <span className="text-muted-foreground">Compatibilité</span>
+                          <span className="text-muted-foreground">{t('exitKeys.compare.compatibility', 'Compatibilité')}</span>
                           <span className="font-semibold text-primary">{compatibilityMap[key.id]}%</span>
                         </div>
                         <Progress value={compatibilityMap[key.id]} className="h-2" />
@@ -160,33 +160,33 @@ export default function CompareExitKeys() {
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-border/50">
-                    <th className="text-left p-4 font-semibold bg-muted/30">Critère</th>
+                    <th className="text-left p-4 font-semibold bg-muted/30">{t('exitKeys.compare.criterion', 'Critère')}</th>
                     {selectedExitKeys.map(key => (<th key={key.id} className="text-left p-4 font-semibold bg-muted/30">{key.name}</th>))}
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-b border-border/30">
-                    <td className="p-4 font-medium">Difficulté</td>
+                    <td className="p-4 font-medium">{t('exitKeys.compare.difficulty', 'Difficulté')}</td>
                     {selectedExitKeys.map(key => (<td key={key.id} className="p-4"><Badge className={difficultyConfig[key.difficulty].color}>{difficultyConfig[key.difficulty].label}</Badge></td>))}
                   </tr>
                   <tr className="border-b border-border/30">
-                    <td className="p-4 font-medium"><Clock className="w-4 h-4 inline mr-2" />Durée</td>
+                    <td className="p-4 font-medium"><Clock className="w-4 h-4 inline mr-2" />{t('exitKeys.compare.duration', 'Durée')}</td>
                     {selectedExitKeys.map(key => (<td key={key.id} className="p-4">{key.timeframe}</td>))}
                   </tr>
                   <tr className="border-b border-border/30">
-                    <td className="p-4 font-medium"><Target className="w-4 h-4 inline mr-2" />Phases</td>
-                    {selectedExitKeys.map(key => (<td key={key.id} className="p-4">{key.steps.length} phases</td>))}
+                    <td className="p-4 font-medium"><Target className="w-4 h-4 inline mr-2" />{t('exitKeys.compare.phases', 'Phases')}</td>
+                    {selectedExitKeys.map(key => (<td key={key.id} className="p-4">{t('exitKeys.compare.phasesCount', '{{count}} phases', { count: key.steps.length })}</td>))}
                   </tr>
                   <tr className="border-b border-border/30">
-                    <td className="p-4 font-medium">Prérequis</td>
-                    {selectedExitKeys.map(key => (<td key={key.id} className="p-4">{key.requirements.length} critères</td>))}
+                    <td className="p-4 font-medium">{t('exitKeys.compare.prerequisites', 'Prérequis')}</td>
+                    {selectedExitKeys.map(key => (<td key={key.id} className="p-4">{t('exitKeys.compare.criteriaCount', '{{count}} critères', { count: key.requirements.length })}</td>))}
                   </tr>
                 </tbody>
               </table>
             </div>
 
             <div className="glass-card rounded-xl p-6">
-              <h3 className="font-semibold mb-4 flex items-center gap-2"><CheckCircle className="w-5 h-5 text-primary" />Prérequis Détaillés</h3>
+              <h3 className="font-semibold mb-4 flex items-center gap-2"><CheckCircle className="w-5 h-5 text-primary" />{t('exitKeys.compare.detailedPrerequisites', 'Prérequis Détaillés')}</h3>
               <div className={cn("grid gap-6", selectedExitKeys.length === 1 && "grid-cols-1", selectedExitKeys.length >= 2 && "grid-cols-1 md:grid-cols-2", selectedExitKeys.length === 3 && "md:grid-cols-3")}>
                 {selectedExitKeys.map(key => (
                   <div key={key.id}>
@@ -201,15 +201,15 @@ export default function CompareExitKeys() {
 
             {userContext && selectedExitKeys.length > 1 && (
               <div className="glass-card rounded-xl p-6 bg-gradient-to-br from-primary/5 to-primary/10">
-                <h3 className="font-semibold mb-4 flex items-center gap-2"><Zap className="w-5 h-5 text-primary" />Recommandation pour Votre Profil</h3>
+                <h3 className="font-semibold mb-4 flex items-center gap-2"><Zap className="w-5 h-5 text-primary" />{t('exitKeys.compare.recommendationTitle', 'Recommandation pour Votre Profil')}</h3>
                 {(() => {
                   const bestKey = selectedExitKeys.reduce((best, key) => (compatibilityMap[key.id] || 0) > (compatibilityMap[best.id] || 0) ? key : best);
                   return (
                     <div className="flex items-center gap-4">
                       <Key className="w-8 h-8 text-primary" />
                       <div>
-                        <p className="font-medium"><span className="text-primary">{bestKey.name}</span> est la meilleure option pour vous</p>
-                        <p className="text-sm text-muted-foreground">Avec {compatibilityMap[bestKey.id]}% de compatibilité</p>
+                        <p className="font-medium"><span className="text-primary">{bestKey.name}</span> {t('exitKeys.compare.bestOption', '{{name}} est la meilleure option pour vous', { name: '' }).replace('{{name}}', '')}</p>
+                        <p className="text-sm text-muted-foreground">{t('exitKeys.compare.withCompatibility', 'Avec {{percent}}% de compatibilité', { percent: compatibilityMap[bestKey.id] })}</p>
                       </div>
                     </div>
                   );
@@ -220,9 +220,9 @@ export default function CompareExitKeys() {
         ) : (
           <div className="text-center py-16">
             <Key className="w-16 h-16 text-muted-foreground mx-auto mb-4 opacity-50" />
-            <h3 className="text-xl font-semibold mb-2">Sélectionnez des stratégies</h3>
-            <p className="text-muted-foreground mb-6">Choisissez jusqu'à 3 clés de sortie pour les comparer</p>
-            <Link to="/exit-keys"><Button variant="outline" className="gap-2">Voir toutes les clés</Button></Link>
+            <h3 className="text-xl font-semibold mb-2">{t('exitKeys.compare.selectStrategiesToCompare', 'Sélectionnez des stratégies')}</h3>
+            <p className="text-muted-foreground mb-6">{t('exitKeys.compare.chooseUpTo3', "Choisissez jusqu'à 3 clés de sortie pour les comparer")}</p>
+            <Link to="/exit-keys"><Button variant="outline" className="gap-2">{t('exitKeys.compare.viewAllKeys', 'Voir toutes les clés')}</Button></Link>
           </div>
         )}
       </div>
