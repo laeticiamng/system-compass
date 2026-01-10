@@ -1,0 +1,153 @@
+{
+  "common": {
+    "appName": "पिरामिड कम्पास",
+    "tagline": "वास्तविक दुनिया प्रणालियों के लिए निर्णय सिम्युलेटर",
+    "positioningLine": "विश्लेषण और अनुकरण उपकरण। आप तय करें, हम रोशनी डालें।",
+    "disclaimer": "कानूनी, वित्तीय या चिकित्सा सलाह नहीं। आप अपने निर्णयों के लिए जिम्मेदार हैं।",
+    "yes": "हाँ",
+    "no": "नहीं",
+    "back": "वापस",
+    "next": "अगला",
+    "years": "वर्ष",
+    "save": "सहेजें",
+    "cancel": "रद्द करें",
+    "load": "लोड करें",
+    "loading": "लोड हो रहा है...",
+    "country": "देश",
+    "metric": "मापदंड",
+    "delete": "हटाएं",
+    "confirm": "पुष्टि करें",
+    "edit": "संपादित करें",
+    "previewMode": "पूर्वावलोकन मोड",
+    "all": "सभी",
+    "total": "कुल",
+    "close": "बंद करें",
+    "optional": "वैकल्पिक",
+    "description": "विवरण",
+    "submit": "जमा करें",
+    "sending": "भेजा जा रहा है..."
+  },
+  "errors": {
+    "rateLimited": "बहुत अधिक अनुरोध। कृपया कुछ देर बाद पुनः प्रयास करें।",
+    "insufficientCredits": "अपर्याप्त AI क्रेडिट।",
+    "generationFailed": "सामग्री उत्पन्न करने में त्रुटि।",
+    "networkError": "नेटवर्क त्रुटि। कृपया अपना कनेक्शन जांचें।",
+    "unauthorized": "आपको लॉग इन होना चाहिए।",
+    "notFound": "संसाधन नहीं मिला।",
+    "serverError": "सर्वर त्रुटि। कृपया पुनः प्रयास करें।"
+  },
+  "journey": {
+    "profile": "आपकी प्रोफ़ाइल",
+    "options": "आपके विकल्प",
+    "keys": "आपकी चाबियाँ"
+  },
+  "header": {
+    "simulationDisclaimer": "परिदृश्य अन्वेषण • कोई कानूनी, वित्तीय या चिकित्सा सलाह नहीं"
+  },
+  "footer": {
+    "explore": "अन्वेषण करें",
+    "tools": "उपकरण",
+    "account": "खाता",
+    "profileTest": "प्रोफ़ाइल परीक्षण",
+    "madeWith": "प्यार से बनाया",
+    "about": "के बारे में",
+    "exitKeysCatalog": "एक्जिट कीज़ कैटलॉग",
+    "potentialZones": "संभावित क्षेत्र",
+    "thresholdProtocol": "थ्रेशोल्ड प्रोटोकॉल",
+    "businessInstitutions": "व्यवसाय और संस्थान",
+    "howToRead": "परिणाम कैसे पढ़ें",
+    "warnings": "चेतावनियाँ",
+    "disclaimer": "विश्लेषण और अनुकरण उपकरण। कोई कानूनी, वित्तीय या चिकित्सा सलाह नहीं।",
+    "learnMore": "और जानें"
+  },
+  "nav": {
+    "home": "होम",
+    "countries": "देश",
+    "compare": "तुलना करें",
+    "exitKeys": "एक्जिट कीज़",
+    "lifeGame": "जीवन का खेल",
+    "dashboard": "डैशबोर्ड",
+    "profile": "प्रोफ़ाइल",
+    "signIn": "साइन इन",
+    "signOut": "साइन आउट",
+    "worldMap": "विश्व मानचित्र"
+  },
+  "worldMap": {
+    "badge": "वैश्विक अन्वेषण",
+    "title": "सिस्टम मैप",
+    "subtitle": "{{count}} विश्लेषित देशों और उनके पिरामिड प्रकारों का दृश्य अन्वेषण करें",
+    "search": "देश खोजें...",
+    "results": "देश",
+    "tabs": {
+      "map": "मानचित्र",
+      "stats": "आंकड़े"
+    },
+    "stats": {
+      "total": "विश्लेषित देश",
+      "intelligence": "इंटेलिजेंस लेयर",
+      "pyramids": "पिरामिड प्रकार",
+      "languages": "भाषाएँ"
+    },
+    "viewDetails": "विवरण देखें",
+    "pyramidDistribution": "प्रकार के अनुसार वितरण",
+    "countryList": "देशों की सूची",
+    "info": {
+      "title": "मानचित्र कैसे पढ़ें?",
+      "colors": "रंग पिरामिड प्रकारों को दर्शाते हैं",
+      "size": "बड़े बिंदु इंटेलिजेंस लेयर वाले देशों को इंगित करते हैं",
+      "click": "विवरण देखने के लिए किसी देश पर क्लिक करें",
+      "zoom": "ज़ूम और नेविगेट करने के लिए नियंत्रणों का उपयोग करें"
+    }
+  },
+  "auth": {
+    "signIn": "साइन इन",
+    "signUp": "साइन अप",
+    "signOut": "साइन आउट",
+    "email": "ईमेल",
+    "password": "पासवर्ड",
+    "confirmPassword": "पासवर्ड की पुष्टि करें",
+    "forgotPassword": "पासवर्ड भूल गए?",
+    "noAccount": "खाता नहीं है?",
+    "hasAccount": "पहले से खाता है?",
+    "orContinueWith": "या जारी रखें"
+  },
+  "countries": {
+    "title": "देश",
+    "subtitle": "विभिन्न देशों की प्रणाली संरचनाओं का अन्वेषण करें",
+    "searchPlaceholder": "देश खोजें...",
+    "noResults": "कोई देश नहीं मिला",
+    "viewDetails": "विवरण देखें",
+    "filters": {
+      "all": "सभी",
+      "region": "क्षेत्र",
+      "pyramidType": "पिरामिड प्रकार"
+    }
+  },
+  "countryDetail": {
+    "overview": "अवलोकन",
+    "system": "प्रणाली",
+    "risks": "जोखिम",
+    "opportunities": "अवसर",
+    "intelligence": "इंटेलिजेंस लेयर",
+    "variant": {
+      "title": "सिस्टम वेरिएंट",
+      "laborMarket": "श्रम बाजार",
+      "entrepreneurship": "उद्यमिता",
+      "dailyLife": "दैनिक जीवन",
+      "institutions": "संस्थान",
+      "networks": "नेटवर्क",
+      "profilesSucceed": "सफल प्रोफ़ाइल",
+      "profilesStruggle": "संघर्षरत प्रोफ़ाइल",
+      "surprises": "आश्चर्य",
+      "trajectories": "उदाहरण प्रक्षेपवक्र"
+    }
+  },
+  "pyramidTypes": {
+    "PROBLEM_RENT": "समस्या-किराया",
+    "STABILITY_REDIS": "स्थिरता-पुनर्वितरण",
+    "COMPETENCE_TRUST": "योग्यता-विश्वास",
+    "GROWTH_RISK": "विकास-जोखिम",
+    "HYBRID_TRANSITION": "हाइब्रिड-संक्रमण",
+    "RESOURCE_EXTRACTION": "संसाधन-निष्कर्षण"
+  }
+}

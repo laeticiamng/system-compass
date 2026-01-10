@@ -132,13 +132,13 @@ export default function WorldMapExplorer() {
           </Card>
           <Card>
             <CardContent className="pt-6 text-center">
-              <div className="text-3xl font-bold text-amber-500 mb-1">6</div>
+              <div className="text-3xl font-bold text-amber-500 mb-1">{PYRAMID_TYPES.length - 1}</div>
               <div className="text-sm text-muted-foreground">{t('worldMap.stats.pyramids', 'Types de pyramides')}</div>
             </CardContent>
           </Card>
           <Card>
             <CardContent className="pt-6 text-center">
-              <div className="text-3xl font-bold text-blue-500 mb-1">7</div>
+              <div className="text-3xl font-bold text-blue-500 mb-1">13</div>
               <div className="text-sm text-muted-foreground">{t('worldMap.stats.languages', 'Langues')}</div>
             </CardContent>
           </Card>
