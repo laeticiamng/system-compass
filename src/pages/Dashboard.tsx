@@ -54,7 +54,11 @@ import {
   CreditCard,
   Crown,
   Sparkles,
-  Settings
+  Settings,
+  Eye,
+  Lock,
+  Building2,
+  Layers
 } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -533,6 +537,56 @@ export default function Dashboard() {
             <AchievementsPanel />
           </div>
         )}
+
+        {/* Advanced Modules Section */}
+        <Card className="mb-6">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Layers className="w-5 h-5" />
+              {t('dashboard.advancedModules', 'Modules avancés')}
+            </CardTitle>
+            <CardDescription>
+              {t('dashboard.advancedModulesDesc', 'Outils de réflexion et de documentation avancés')}
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <Link to="/latent">
+                <div className="p-4 rounded-lg border border-primary/20 bg-primary/5 hover:bg-primary/10 transition-colors cursor-pointer">
+                  <div className="flex items-center gap-3 mb-2">
+                    <Eye className="w-5 h-5 text-primary" />
+                    <span className="font-medium">{t('latent.title', 'Zones Latentes')}</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    {t('dashboard.latentDesc', 'Identifiez les zones de tension non encore critiques')}
+                  </p>
+                </div>
+              </Link>
+              <Link to="/irreversa">
+                <div className="p-4 rounded-lg border border-destructive/20 bg-destructive/5 hover:bg-destructive/10 transition-colors cursor-pointer">
+                  <div className="flex items-center gap-3 mb-2">
+                    <Lock className="w-5 h-5 text-destructive" />
+                    <span className="font-medium">{t('irreversa.title', 'Irreversa')}</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    {t('dashboard.irreversaDesc', 'Documentez les seuils irréversibles franchis')}
+                  </p>
+                </div>
+              </Link>
+              <Link to="/institutions">
+                <div className="p-4 rounded-lg border border-amber-500/20 bg-amber-500/5 hover:bg-amber-500/10 transition-colors cursor-pointer">
+                  <div className="flex items-center gap-3 mb-2">
+                    <Building2 className="w-5 h-5 text-amber-600" />
+                    <span className="font-medium">{t('institutions.badge', 'Institutions')}</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    {t('dashboard.institutionsDesc', 'Aide à la décision collective et traçabilité')}
+                  </p>
+                </div>
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Plan Selection or Current Plan */}
         {!selectedKeyId ? (

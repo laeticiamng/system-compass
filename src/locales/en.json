@@ -255,7 +255,12 @@
     "objective": "Objective",
     "criticalRule": "Critical rule",
     "personalNotes": "Personal notes",
-    "addNote": "Add a note"
+    "addNote": "Add a note",
+    "advancedModules": "Advanced modules",
+    "advancedModulesDesc": "Advanced reflection and documentation tools",
+    "latentDesc": "Identify tension zones not yet critical",
+    "irreversaDesc": "Document crossed irreversible thresholds",
+    "institutionsDesc": "Collective decision-making and traceability"
   },
   "achievements": {
     "title": "Achievements",
@@ -361,7 +366,12 @@
     "preventionFilter": "Filter",
     "universalErrors": "Errors",
     "worldMap": "Map",
-    "pricing": "Pricing"
+    "pricing": "Pricing",
+    "partners": "Partners",
+    "orientationHub": "Orientation",
+    "errorsIllusions": "Errors & Illusions",
+    "b2b": "B2B Solutions",
+    "about": "About"
   },
   "worldMap": {
     "badge": "Global exploration",
