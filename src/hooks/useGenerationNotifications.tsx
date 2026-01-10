@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
-import { RealtimeChannel } from '@supabase/supabase-js';
+import { useAuth } from './useAuth';
 
 interface GenerationJob {
   id: string;
@@ -20,11 +20,23 @@ interface BatchStatus {
   total_countries: number;
 }
 
+interface GenerationNotification {
+  id: string;
+  notification_type: string;
+  message: string;
+  job_id: string | null;
+  batch_id: string | null;
+  read: boolean;
+  created_at: string;
+}
+
 export type ConnectionStatus = 'connecting' | 'connected' | 'disconnected' | 'error';
 
 export function useGenerationNotifications() {
+  const { user } = useAuth();
   const [activeJobs, setActiveJobs] = useState<GenerationJob[]>([]);
   const [activeBatch, setActiveBatch] = useState<BatchStatus | null>(null);
+  const [notifications, setNotifications] = useState<GenerationNotification[]>([]);
   const [connectionStatus, setConnectionStatus] = useState<ConnectionStatus>('connecting');
   const [lastUpdate, setLastUpdate] = useState<Date | null>(null);
 
@@ -58,8 +70,81 @@ export function useGenerationNotifications() {
     setLastUpdate(new Date());
   }, []);
 
+  // Fetch notifications for current user
+  const fetchNotifications = useCallback(async () => {
+    if (!user) return;
+
+    const { data } = await supabase
+      .from('generation_notifications')
+      .select('*')
+      .eq('user_id', user.id)
+      .order('created_at', { ascending: false })
+      .limit(50);
+
+    if (data) {
+      setNotifications(data as GenerationNotification[]);
+    }
+  }, [user]);
+
+  // Mark notification as read
+  const markAsRead = useCallback(async (notificationId: string) => {
+    if (!user) return;
+
+    await supabase
+      .from('generation_notifications')
+      .update({ read: true })
+      .eq('id', notificationId)
+      .eq('user_id', user.id);
+
+    setNotifications(prev => 
+      prev.map(n => n.id === notificationId ? { ...n, read: true } : n)
+    );
+  }, [user]);
+
+  // Mark all as read
+  const markAllAsRead = useCallback(async () => {
+    if (!user) return;
+
+    await supabase
+      .from('generation_notifications')
+      .update({ read: true })
+      .eq('user_id', user.id)
+      .eq('read', false);
+
+    setNotifications(prev => prev.map(n => ({ ...n, read: true })));
+  }, [user]);
+
+  // Clear notification
+  const clearNotification = useCallback(async (notificationId: string) => {
+    if (!user) return;
+
+    await supabase
+      .from('generation_notifications')
+      .delete()
+      .eq('id', notificationId)
+      .eq('user_id', user.id);
+
+    setNotifications(prev => prev.filter(n => n.id !== notificationId));
+  }, [user]);
+
+  // Clear all notifications
+  const clearAllNotifications = useCallback(async () => {
+    if (!user) return;
+
+    await supabase
+      .from('generation_notifications')
+      .delete()
+      .eq('user_id', user.id);
+
+    setNotifications([]);
+  }, [user]);
+
+  // Get unread count
+  const unreadCount = notifications.filter(n => !n.read).length;
+
   useEffect(() => {
     fetchActiveData();
+    fetchNotifications();
 
     // Subscribe to job changes
     const jobsChannel = supabase
@@ -160,17 +245,49 @@ export function useGenerationNotifications() {
       )
       .subscribe();
 
+    // Subscribe to user notifications (if logged in)
+    let notifChannel: any = null;
+    if (user) {
+      notifChannel = supabase
+        .channel('user-notifications')
+        .on(
+          'postgres_changes',
+          {
+            event: 'INSERT',
+            schema: 'public',
+            table: 'generation_notifications',
+            filter: `user_id=eq.${user.id}`
+          },
+          (payload) => {
+            const newNotif = payload.new as GenerationNotification;
+            setNotifications(prev => [newNotif, ...prev]);
+            toast.info(newNotif.message);
+          }
+        )
+        .subscribe();
+    }
+
     return () => {
       supabase.removeChannel(jobsChannel);
       supabase.removeChannel(batchChannel);
+      if (notifChannel) {
+        supabase.removeChannel(notifChannel);
+      }
     };
-  }, [fetchActiveData]);
+  }, [fetchActiveData, fetchNotifications, user]);
 
   return {
     activeJobs,
     activeBatch,
+    notifications,
+    unreadCount,
     connectionStatus,
     lastUpdate,
-    refetch: fetchActiveData
+    markAsRead,
+    markAllAsRead,
+    clearNotification,
+    clearAllNotifications,
+    refetch: fetchActiveData,
+    refetchNotifications: fetchNotifications
   };
 }
