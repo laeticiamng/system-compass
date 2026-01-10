@@ -6521,7 +6521,20 @@
     "atLimit": "Limit reached",
     "atLimitDesc": "AI actions are temporarily blocked. Top up your account.",
     "upgrade": "Upgrade",
-    "topUp": "Top up"
+    "topUp": "Top up",
+    "actions": {
+      "clarifyObjective": "Objective clarification",
+      "proposeTrajectories": "Trajectory proposal",
+      "generateChecklist": "Checklist generation",
+      "generateSynthesis": "Exportable synthesis",
+      "compareCountries": "Country comparison",
+      "summarizeCountry": "Country summary",
+      "identifyRisks": "Risk identification",
+      "suggestNextStep": "Next step",
+      "planTimeline": "Timeline planning",
+      "suggestReminders": "Suggested reminders",
+      "buildReport": "B2B Report"
+    }
   },
   "report": {
     "title": "B2B Report Generator",

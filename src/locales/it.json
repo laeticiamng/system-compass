@@ -3480,5 +3480,97 @@
         "bestFor": ["Evitare errori comuni", "Comprendere i bias cognitivi"]
       }
     }
+  },
+  "partners": {
+    "contributions": {
+      "referral": "Raccomandazione utente",
+      "feedback": "Feedback qualitativo",
+      "content": "Creazione contenuti",
+      "event": "Presentazione / Evento",
+      "b2bIntro": "Introduzione B2B",
+      "other": "Altro contributo"
+    },
+    "badge": {
+      "ambassador": "Ambasciatore Compass",
+      "b2bPartner": "Partner B2B"
+    },
+    "stats": {
+      "creditsEarned": "Crediti guadagnati",
+      "verifiedContributions": "Contributi verificati",
+      "pending": "In attesa"
+    },
+    "tabs": {
+      "contributions": "Contributi",
+      "benefits": "Vantaggi",
+      "charter": "Carta"
+    },
+    "myContributions": "I miei contributi",
+    "newContribution": "Nuovo contributo",
+    "declareContribution": "Dichiarare un contributo",
+    "declareContributionDesc": "Descrivi il tuo contributo. Sarà verificato dal nostro team.",
+    "contributionType": "Tipo di contributo",
+    "selectType": "Seleziona un tipo",
+    "describeContribution": "Descrivi il tuo contributo in dettaglio...",
+    "measurableImpact": "Impatto misurabile",
+    "impactExample": "es., 5 nuovi utenti, 3 feedback qualitativi...",
+    "noContributions": "Nessun contributo ancora",
+    "startContributing": "Inizia a contribuire per guadagnare crediti e vantaggi.",
+    "verified": "Verificato",
+    "pending": "In attesa",
+    "impact": "Impatto",
+    "credits": "crediti",
+    "activeBenefits": "I miei vantaggi attivi",
+    "noActiveBenefits": "Nessun vantaggio attivo",
+    "benefitsBasedOnContributions": "I vantaggi vengono assegnati in base ai tuoi contributi verificati.",
+    "expiresOn": "Scade il"
+  },
+  "b2b": {
+    "badge": "Soluzioni Business",
+    "title": "Per Organizzazioni e Decisori",
+    "subtitle": "Strumenti premium per il supporto decisionale istituzionale e la riflessione strategica.",
+    "intro": "Pyramid Compass offre moduli dedicati per le organizzazioni che cercano di strutturare il loro processo decisionale senza delegare la responsabilità.",
+    "tabs": {
+      "modules": "Moduli"
+    },
+    "modules": {
+      "institutions": {
+        "title": "Istituzioni e Organizzazioni",
+        "desc": "Chiarisci i compromessi, identifica i punti ciechi, previeni errori costosi",
+        "features": ["Casi d'uso istituzionali", "Modalità decisione collettiva", "Tracciabilità e prevenzione"]
+      },
+      "ovi": {
+        "title": "OVI Think Tank",
+        "desc": "Framework di pensiero e griglie di lettura per decisioni complesse",
+        "features": ["Framework sui bias cognitivi", "Analisi della reversibilità delle decisioni", "Mappatura sistema vs. individuo"]
+      },
+      "latent": {
+        "badge": "Anti-Acceleratore",
+        "desc": "Mappa e mantieni potenziali non formulati senza obbligo di trasformazione.",
+        "features": ["Zone di potenziale non finalizzate", "Protezione dalla cristallizzazione prematura", "Evoluzione senza obbligo di risultato"]
+      }
+    },
+    "principles": {
+      "title": "I Nostri Principi",
+      "p1": {
+        "title": "Illuminare, non prescrivere",
+        "desc": "Chiarisci le opzioni senza raccomandarne una"
+      },
+      "p2": {
+        "title": "Simulazione ≠ Previsione",
+        "desc": "Esploriamo scenari, non prevediamo risultati"
+      },
+      "p3": {
+        "title": "Potenziare, non delegare",
+        "desc": "La responsabilità rimane sempre al decisore"
+      }
+    },
+    "cta": {
+      "institutions": "Esplora Istituzioni",
+      "ovi": "Esplora OVI",
+      "latent": "Esplora LATENT",
+      "partners": "Programma Partner",
+      "ready": "Pronto a strutturare le tue decisioni istituzionali?",
+      "desc": "Esplora i nostri strumenti dedicati o contattaci per soluzioni personalizzate."
+    }
   }
 }

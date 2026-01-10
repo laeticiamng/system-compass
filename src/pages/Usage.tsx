@@ -26,7 +26,7 @@ import { useSubscription } from '@/hooks/useSubscription';
 import { cn } from '@/lib/utils';
 
 export default function Usage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { user } = useAuth();
   const { tier } = useSubscription();
   const { 
@@ -38,6 +38,8 @@ export default function Usage() {
     isAtLimit, 
     stats 
   } = useAiUsage();
+  
+  const currentLocale = i18n.language;
 
   if (!user) {
     return (
@@ -238,10 +240,10 @@ export default function Usage() {
                         </div>
                         <div>
                           <p className="font-medium text-sm">
-                            {formatActionType(entry.action_type)}
+                            {formatActionType(entry.action_type, t)}
                           </p>
                           <p className="text-xs text-muted-foreground">
-                            {entry.module} • {formatDate(entry.created_at)}
+                            {entry.module} • {formatDate(entry.created_at, currentLocale)}
                           </p>
                         </div>
                       </div>
@@ -284,25 +286,34 @@ function StatCard({ icon, label, value }: { icon: React.ReactNode; label: string
   );
 }
 
-function formatActionType(type: string): string {
+function formatActionType(type: string, t: (key: string, fallback: string) => string): string {
   const map: Record<string, string> = {
-    'clarify-objective': 'Clarification objectif',
-    'propose-trajectories': 'Proposition trajectoires',
-    'generate-checklist': 'Génération checklist',
-    'generate-synthesis': 'Synthèse exportable',
-    'compare-countries': 'Comparaison pays',
-    'summarize-country': 'Résumé pays',
-    'identify-risks': 'Identification risques',
-    'suggest-next-step': 'Prochain pas',
-    'plan-timeline': 'Planification',
-    'suggest-reminders': 'Rappels suggérés',
-    'build-report': 'Rapport B2B',
+    'clarify-objective': t('usage.actions.clarifyObjective', 'Clarification objectif'),
+    'propose-trajectories': t('usage.actions.proposeTrajectories', 'Proposition trajectoires'),
+    'generate-checklist': t('usage.actions.generateChecklist', 'Génération checklist'),
+    'generate-synthesis': t('usage.actions.generateSynthesis', 'Synthèse exportable'),
+    'compare-countries': t('usage.actions.compareCountries', 'Comparaison pays'),
+    'summarize-country': t('usage.actions.summarizeCountry', 'Résumé pays'),
+    'identify-risks': t('usage.actions.identifyRisks', 'Identification risques'),
+    'suggest-next-step': t('usage.actions.suggestNextStep', 'Prochain pas'),
+    'plan-timeline': t('usage.actions.planTimeline', 'Planification'),
+    'suggest-reminders': t('usage.actions.suggestReminders', 'Rappels suggérés'),
+    'build-report': t('usage.actions.buildReport', 'Rapport B2B'),
   };
   return map[type] || type;
 }
 
-function formatDate(dateStr: string): string {
-  return new Date(dateStr).toLocaleString('fr-FR', {
+function formatDate(dateStr: string, locale: string): string {
+  const localeMap: Record<string, string> = {
+    'fr': 'fr-FR',
+    'en': 'en-US',
+    'de': 'de-DE',
+    'es': 'es-ES',
+    'it': 'it-IT',
+    'nl': 'nl-NL',
+    'pt': 'pt-PT',
+  };
+  return new Date(dateStr).toLocaleString(localeMap[locale] || 'fr-FR', {
     day: 'numeric',
     month: 'short',
     hour: '2-digit',

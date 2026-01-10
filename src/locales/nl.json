@@ -3480,5 +3480,97 @@
         "bestFor": ["Veelgemaakte fouten vermijden", "Cognitieve vooroordelen begrijpen"]
       }
     }
+  },
+  "partners": {
+    "contributions": {
+      "referral": "Gebruikersaanbeveling",
+      "feedback": "Kwalitatieve feedback",
+      "content": "Content creatie",
+      "event": "Presentatie / Evenement",
+      "b2bIntro": "B2B-introductie",
+      "other": "Andere bijdrage"
+    },
+    "badge": {
+      "ambassador": "Compass Ambassadeur",
+      "b2bPartner": "B2B-Partner"
+    },
+    "stats": {
+      "creditsEarned": "Verdiende credits",
+      "verifiedContributions": "Geverifieerde bijdragen",
+      "pending": "In behandeling"
+    },
+    "tabs": {
+      "contributions": "Bijdragen",
+      "benefits": "Voordelen",
+      "charter": "Charter"
+    },
+    "myContributions": "Mijn bijdragen",
+    "newContribution": "Nieuwe bijdrage",
+    "declareContribution": "Een bijdrage melden",
+    "declareContributionDesc": "Beschrijf je bijdrage. Deze wordt door ons team beoordeeld.",
+    "contributionType": "Type bijdrage",
+    "selectType": "Selecteer een type",
+    "describeContribution": "Beschrijf je bijdrage in detail...",
+    "measurableImpact": "Meetbare impact",
+    "impactExample": "bijv., 5 nieuwe gebruikers, 3 kwalitatieve feedbacks...",
+    "noContributions": "Nog geen bijdragen",
+    "startContributing": "Begin met bijdragen om credits en voordelen te verdienen.",
+    "verified": "Geverifieerd",
+    "pending": "In behandeling",
+    "impact": "Impact",
+    "credits": "credits",
+    "activeBenefits": "Mijn actieve voordelen",
+    "noActiveBenefits": "Geen actieve voordelen",
+    "benefitsBasedOnContributions": "Voordelen worden toegekend op basis van je geverifieerde bijdragen.",
+    "expiresOn": "Verloopt op"
+  },
+  "b2b": {
+    "badge": "Bedrijfsoplossingen",
+    "title": "Voor Organisaties & Besluitvormers",
+    "subtitle": "Premium tools voor institutionele beslissingsondersteuning en strategische reflectie.",
+    "intro": "Pyramid Compass biedt speciale modules voor organisaties die hun besluitvorming willen structureren zonder verantwoordelijkheid te delegeren.",
+    "tabs": {
+      "modules": "Modules"
+    },
+    "modules": {
+      "institutions": {
+        "title": "Instellingen & Organisaties",
+        "desc": "Verduidelijk afwegingen, identificeer blinde vlekken, voorkom kostbare fouten",
+        "features": ["Institutionele use cases", "Collectieve beslissingsmodus", "Traceerbaarheid & preventie"]
+      },
+      "ovi": {
+        "title": "OVI Think Tank",
+        "desc": "Denkraamwerken en leesrasters voor complexe beslissingen",
+        "features": ["Cognitieve bias frameworks", "Analyse van beslissingsomkeerbaarheid", "Systeem vs. individu mapping"]
+      },
+      "latent": {
+        "badge": "Anti-Versneller",
+        "desc": "Breng niet-geformuleerde potentiëlen in kaart en onderhoud ze zonder transformatieverplichting.",
+        "features": ["Niet-gefinaliseerde potentieelzones", "Bescherming tegen voortijdige kristallisatie", "Evolutie zonder resultaatverplichting"]
+      }
+    },
+    "principles": {
+      "title": "Onze Principes",
+      "p1": {
+        "title": "Verlichten, niet voorschrijven",
+        "desc": "We verduidelijken opties zonder er een aan te bevelen"
+      },
+      "p2": {
+        "title": "Simulatie ≠ Voorspelling",
+        "desc": "We verkennen scenario's, we voorspellen geen uitkomsten"
+      },
+      "p3": {
+        "title": "Empoweren, niet delegeren",
+        "desc": "Verantwoordelijkheid blijft altijd bij de beslisser"
+      }
+    },
+    "cta": {
+      "institutions": "Instellingen Verkennen",
+      "ovi": "OVI Verkennen",
+      "latent": "LATENT Verkennen",
+      "partners": "Partnerprogramma",
+      "ready": "Klaar om je institutionele beslissingen te structureren?",
+      "desc": "Verken onze speciale tools of neem contact op voor aangepaste oplossingen."
+    }
   }
 }

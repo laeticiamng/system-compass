@@ -3490,5 +3490,97 @@
         "bestFor": ["Evitar errores comunes", "Comprender sesgos cognitivos"]
       }
     }
+  },
+  "partners": {
+    "contributions": {
+      "referral": "Recomendación de usuario",
+      "feedback": "Comentario cualitativo",
+      "content": "Creación de contenido",
+      "event": "Presentación / Evento",
+      "b2bIntro": "Introducción B2B",
+      "other": "Otra contribución"
+    },
+    "badge": {
+      "ambassador": "Embajador Compass",
+      "b2bPartner": "Socio B2B"
+    },
+    "stats": {
+      "creditsEarned": "Créditos ganados",
+      "verifiedContributions": "Contribuciones verificadas",
+      "pending": "Pendiente"
+    },
+    "tabs": {
+      "contributions": "Contribuciones",
+      "benefits": "Beneficios",
+      "charter": "Carta"
+    },
+    "myContributions": "Mis contribuciones",
+    "newContribution": "Nueva contribución",
+    "declareContribution": "Declarar una contribución",
+    "declareContributionDesc": "Describe tu contribución. Será revisada por nuestro equipo.",
+    "contributionType": "Tipo de contribución",
+    "selectType": "Selecciona un tipo",
+    "describeContribution": "Describe tu contribución en detalle...",
+    "measurableImpact": "Impacto medible",
+    "impactExample": "ej., 5 nuevos usuarios, 3 comentarios cualitativos...",
+    "noContributions": "Sin contribuciones aún",
+    "startContributing": "Comienza a contribuir para ganar créditos y beneficios.",
+    "verified": "Verificado",
+    "pending": "Pendiente",
+    "impact": "Impacto",
+    "credits": "créditos",
+    "activeBenefits": "Mis beneficios activos",
+    "noActiveBenefits": "Sin beneficios activos",
+    "benefitsBasedOnContributions": "Los beneficios se otorgan según tus contribuciones verificadas.",
+    "expiresOn": "Expira el"
+  },
+  "b2b": {
+    "badge": "Soluciones Empresariales",
+    "title": "Para Organizaciones y Tomadores de Decisiones",
+    "subtitle": "Herramientas premium para soporte de decisiones institucionales y reflexión estratégica.",
+    "intro": "Pyramid Compass ofrece módulos dedicados para organizaciones que buscan estructurar su toma de decisiones sin delegar responsabilidad.",
+    "tabs": {
+      "modules": "Módulos"
+    },
+    "modules": {
+      "institutions": {
+        "title": "Instituciones y Organizaciones",
+        "desc": "Clarifica compromisos, identifica puntos ciegos, previene errores costosos",
+        "features": ["Casos de uso institucional", "Modo de decisión colectiva", "Trazabilidad y prevención"]
+      },
+      "ovi": {
+        "title": "OVI Think Tank",
+        "desc": "Marcos de pensamiento y rejillas de lectura para decisiones complejas",
+        "features": ["Marcos de sesgos cognitivos", "Análisis de reversibilidad de decisiones", "Mapeo sistema vs. individual"]
+      },
+      "latent": {
+        "badge": "Anti-Acelerador",
+        "desc": "Mapea y mantén potenciales no formulados sin obligación de transformación.",
+        "features": ["Zonas de potencial no finalizadas", "Protección contra cristalización prematura", "Evolución sin obligación de resultado"]
+      }
+    },
+    "principles": {
+      "title": "Nuestros Principios",
+      "p1": {
+        "title": "Iluminar, no prescribir",
+        "desc": "Clarificamos opciones sin recomendar una"
+      },
+      "p2": {
+        "title": "Simulación ≠ Predicción",
+        "desc": "Exploramos escenarios, no predecimos resultados"
+      },
+      "p3": {
+        "title": "Empoderar, no delegar",
+        "desc": "La responsabilidad siempre permanece con el tomador de decisiones"
+      }
+    },
+    "cta": {
+      "institutions": "Explorar Instituciones",
+      "ovi": "Explorar OVI",
+      "latent": "Explorar LATENT",
+      "partners": "Programa de Socios",
+      "ready": "¿Listo para estructurar tus decisiones institucionales?",
+      "desc": "Explora nuestras herramientas dedicadas o contáctanos para soluciones personalizadas."
+    }
   }
 }

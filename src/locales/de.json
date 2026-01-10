@@ -3480,5 +3480,97 @@
         "bestFor": ["Häufige Fehler vermeiden", "Kognitive Verzerrungen verstehen"]
       }
     }
+  },
+  "partners": {
+    "contributions": {
+      "referral": "Benutzerempfehlung",
+      "feedback": "Qualitatives Feedback",
+      "content": "Inhaltserstellung",
+      "event": "Präsentation / Veranstaltung",
+      "b2bIntro": "B2B-Einführung",
+      "other": "Sonstiger Beitrag"
+    },
+    "badge": {
+      "ambassador": "Compass Botschafter",
+      "b2bPartner": "B2B-Partner"
+    },
+    "stats": {
+      "creditsEarned": "Verdiente Credits",
+      "verifiedContributions": "Verifizierte Beiträge",
+      "pending": "Ausstehend"
+    },
+    "tabs": {
+      "contributions": "Beiträge",
+      "benefits": "Vorteile",
+      "charter": "Charta"
+    },
+    "myContributions": "Meine Beiträge",
+    "newContribution": "Neuer Beitrag",
+    "declareContribution": "Beitrag melden",
+    "declareContributionDesc": "Beschreiben Sie Ihren Beitrag. Er wird von unserem Team überprüft.",
+    "contributionType": "Beitragsart",
+    "selectType": "Typ auswählen",
+    "describeContribution": "Beschreiben Sie Ihren Beitrag im Detail...",
+    "measurableImpact": "Messbarer Einfluss",
+    "impactExample": "z.B. 5 neue Benutzer, 3 qualitative Rückmeldungen...",
+    "noContributions": "Noch keine Beiträge",
+    "startContributing": "Beginnen Sie zu beitragen, um Credits und Vorteile zu erhalten.",
+    "verified": "Verifiziert",
+    "pending": "Ausstehend",
+    "impact": "Einfluss",
+    "credits": "Credits",
+    "activeBenefits": "Meine aktiven Vorteile",
+    "noActiveBenefits": "Keine aktiven Vorteile",
+    "benefitsBasedOnContributions": "Vorteile werden basierend auf Ihren verifizierten Beiträgen gewährt.",
+    "expiresOn": "Läuft ab am"
+  },
+  "b2b": {
+    "badge": "Business-Lösungen",
+    "title": "Für Organisationen & Entscheidungsträger",
+    "subtitle": "Premium-Tools für institutionelle Entscheidungsunterstützung und strategische Reflexion.",
+    "intro": "Pyramid Compass bietet dedizierte Module für Organisationen, die ihre Entscheidungsfindung strukturieren möchten, ohne Verantwortung zu delegieren.",
+    "tabs": {
+      "modules": "Module"
+    },
+    "modules": {
+      "institutions": {
+        "title": "Institutionen & Organisationen",
+        "desc": "Klären Sie Kompromisse, identifizieren Sie blinde Flecken, verhindern Sie kostspielige Fehler",
+        "features": ["Institutionelle Anwendungsfälle", "Kollektiver Entscheidungsmodus", "Rückverfolgbarkeit & Prävention"]
+      },
+      "ovi": {
+        "title": "OVI Think Tank",
+        "desc": "Denkrahmen und Leseraster für komplexe Entscheidungen",
+        "features": ["Kognitive Bias-Frameworks", "Analyse der Entscheidungsumkehrbarkeit", "System vs. Individual-Mapping"]
+      },
+      "latent": {
+        "badge": "Anti-Beschleuniger",
+        "desc": "Kartieren und pflegen Sie unformulierte Potenziale ohne Transformationspflicht.",
+        "features": ["Nicht finalisierte Potenzialzonen", "Schutz vor vorzeitiger Kristallisierung", "Entwicklung ohne Ergebnispflicht"]
+      }
+    },
+    "principles": {
+      "title": "Unsere Prinzipien",
+      "p1": {
+        "title": "Beleuchten, nicht vorschreiben",
+        "desc": "Wir klären Optionen, ohne eine zu empfehlen"
+      },
+      "p2": {
+        "title": "Simulation ≠ Vorhersage",
+        "desc": "Wir erkunden Szenarien, sagen aber keine Ergebnisse voraus"
+      },
+      "p3": {
+        "title": "Befähigen, nicht delegieren",
+        "desc": "Die Verantwortung bleibt immer beim Entscheidungsträger"
+      }
+    },
+    "cta": {
+      "institutions": "Institutionen erkunden",
+      "ovi": "OVI erkunden",
+      "latent": "LATENT erkunden",
+      "partners": "Partnerprogramm",
+      "ready": "Bereit, Ihre institutionellen Entscheidungen zu strukturieren?",
+      "desc": "Erkunden Sie unsere dedizierten Tools oder kontaktieren Sie uns für maßgeschneiderte Lösungen."
+    }
   }
 }

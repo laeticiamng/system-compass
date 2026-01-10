@@ -6654,7 +6654,20 @@
     "atLimit": "Limite atteinte",
     "atLimitDesc": "Les actions IA sont temporairement bloquées. Rechargez votre compte.",
     "upgrade": "Augmenter",
-    "topUp": "Recharger"
+    "topUp": "Recharger",
+    "actions": {
+      "clarifyObjective": "Clarification objectif",
+      "proposeTrajectories": "Proposition trajectoires",
+      "generateChecklist": "Génération checklist",
+      "generateSynthesis": "Synthèse exportable",
+      "compareCountries": "Comparaison pays",
+      "summarizeCountry": "Résumé pays",
+      "identifyRisks": "Identification risques",
+      "suggestNextStep": "Prochain pas",
+      "planTimeline": "Planification",
+      "suggestReminders": "Rappels suggérés",
+      "buildReport": "Rapport B2B"
+    }
   },
   "report": {
     "title": "Générateur de Rapport B2B",
