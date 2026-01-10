@@ -414,8 +414,8 @@ export default function PyramidQuiz() {
 
       if (newAchievements.length > 0) {
         newAchievements.forEach(achievement => {
-          toast.success(`🏆 Succès débloqué: ${achievement.name}`, {
-            description: achievement.description,
+          toast.success(`🏆 ${t('achievements.unlocked', 'Achievement unlocked')}: ${t(`achievements.${achievement.id}.name`, achievement.name)}`, {
+            description: t(`achievements.${achievement.id}.description`, achievement.description),
             duration: 5000,
           });
         });

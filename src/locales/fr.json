@@ -5475,6 +5475,14 @@
           "description": "Investir dans des compétences transférables"
         }
       },
+      "list": {
+        "stay": "Rester et entreprendre localement",
+        "later": "Migrer plus tard, mieux préparé",
+        "differently": "Migrer autrement (autre pays, autre voie)",
+        "train": "Se former d'abord",
+        "changeGoal": "Changer d'objectif initial",
+        "diversify": "Diversifier les sources de revenus"
+      },
       "cta": "Explorer les stratégies de prévention"
     },
     "cta": {

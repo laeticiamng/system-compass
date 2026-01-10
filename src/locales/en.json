@@ -5493,6 +5493,14 @@
           "description": "Invest in transferable skills"
         }
       },
+      "list": {
+        "stay": "Stay and start a business locally",
+        "later": "Migrate later, better prepared",
+        "differently": "Migrate differently (other country, other path)",
+        "train": "Train first",
+        "changeGoal": "Change the initial goal",
+        "diversify": "Diversify income sources"
+      },
       "cta": "Explore prevention strategies"
     },
     "cta": {

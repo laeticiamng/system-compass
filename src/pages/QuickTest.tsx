@@ -115,31 +115,13 @@ const PYRAMID_BLIND_SPOTS: Record<PyramidType, string[]> = {
 };
 
 // Exit keys per pyramid type
-const PYRAMID_EXIT_KEYS: Record<PyramidType, { labelKey: string; description: string }> = {
-  STABILITY_REDIS: {
-    labelKey: 'quickTest.exitKeys.stability',
-    description: 'Développer des compétences portables'
-  },
-  GROWTH_RISK: {
-    labelKey: 'quickTest.exitKeys.growth',
-    description: 'Construire un filet de sécurité personnel'
-  },
-  PROBLEM_RENT: {
-    labelKey: 'quickTest.exitKeys.rent',
-    description: 'Créer des revenus hors du système local'
-  },
-  COMPETENCE_TRUST: {
-    labelKey: 'quickTest.exitKeys.competence',
-    description: 'Obtenir les certifications locales'
-  },
-  HYBRID_TRANSITION: {
-    labelKey: 'quickTest.exitKeys.hybrid',
-    description: 'Maintenir plusieurs options ouvertes'
-  },
-  RESOURCE_EXTRACTION: {
-    labelKey: 'quickTest.exitKeys.resource',
-    description: 'Préparer un plan B géographique'
-  }
+const PYRAMID_EXIT_KEYS: Record<PyramidType, string> = {
+  STABILITY_REDIS: 'quickTest.exitKeys.stability',
+  GROWTH_RISK: 'quickTest.exitKeys.growth',
+  PROBLEM_RENT: 'quickTest.exitKeys.rent',
+  COMPETENCE_TRUST: 'quickTest.exitKeys.competence',
+  HYBRID_TRANSITION: 'quickTest.exitKeys.hybrid',
+  RESOURCE_EXTRACTION: 'quickTest.exitKeys.resource'
 };
 
 export default function QuickTest() {
@@ -183,7 +165,7 @@ export default function QuickTest() {
 
   if (showResults && pyramidType && pyramidInfo) {
     const blindSpots = PYRAMID_BLIND_SPOTS[pyramidType];
-    const exitKey = PYRAMID_EXIT_KEYS[pyramidType];
+    const exitKey = pyramidType ? PYRAMID_EXIT_KEYS[pyramidType] : null;
 
     return (
       <div className="min-h-screen pt-20 pb-16">
@@ -237,7 +219,7 @@ export default function QuickTest() {
                 {t('quickTest.result.exitKey', '1 clé de sortie à considérer')}
               </h3>
               <p className="text-sm text-muted-foreground mb-3">
-                {t(exitKey.labelKey, exitKey.description)}
+                {exitKey && t(exitKey)}
               </p>
               <Button
                 variant="ghost"

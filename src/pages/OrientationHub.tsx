@@ -330,19 +330,19 @@ export default function OrientationHub() {
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {[
-                { label: 'Rester et entreprendre localement', icon: '🏠' },
-                { label: 'Migrer plus tard, mieux préparé', icon: '⏰' },
-                { label: 'Migrer autrement (autre pays, autre voie)', icon: '🔄' },
-                { label: 'Se former d\'abord', icon: '📚' },
-                { label: 'Changer d\'objectif initial', icon: '🎯' },
-                { label: 'Diversifier les sources de revenus', icon: '💼' }
-              ].map((alt, i) => (
+                { key: 'stay', icon: '🏠' },
+                { key: 'later', icon: '⏰' },
+                { key: 'differently', icon: '🔄' },
+                { key: 'train', icon: '📚' },
+                { key: 'changeGoal', icon: '🎯' },
+                { key: 'diversify', icon: '💼' }
+              ].map((alt) => (
                 <div 
-                  key={i}
+                  key={alt.key}
                   className="flex items-center gap-3 p-3 rounded-lg bg-background border border-border/50"
                 >
                   <span className="text-2xl">{alt.icon}</span>
-                  <span className="text-sm font-medium">{t(`orientationHub.alternatives.options.${i}`, alt.label)}</span>
+                  <span className="text-sm font-medium">{t(`orientationHub.alternatives.list.${alt.key}`)}</span>
                 </div>
               ))}
             </div>
