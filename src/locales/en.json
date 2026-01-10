@@ -4706,6 +4706,100 @@
     "daysAgo_one": "{{count}} day ago",
     "daysAgo_other": "{{count}} days ago"
   },
+  "ovi": {
+    "title": "OVI - Inner Vision Tools",
+    "subtitle": "Thinking frameworks for complex decisions",
+    "frameworks": {
+      "cognitiveBias": {
+        "title": "Cognitive Biases",
+        "desc": "Identify the thinking distortions that influence your decisions"
+      },
+      "irreversible": {
+        "title": "Irreversible Decisions",
+        "desc": "Assess what can truly be undone and what cannot"
+      },
+      "controlIllusion": {
+        "title": "Illusion of Control",
+        "desc": "Distinguish what you actually control from what escapes you"
+      },
+      "hiddenCosts": {
+        "title": "Hidden Costs",
+        "desc": "Reveal the invisible costs of your choices"
+      },
+      "timingError": {
+        "title": "Timing Error",
+        "desc": "Analyze if the timing is really right"
+      },
+      "systemBias": {
+        "title": "Systemic Bias",
+        "desc": "Understand how the system influences your options"
+      },
+      "culturalBlindSpots": {
+        "title": "Cultural Blind Spots",
+        "desc": "Identify what your culture prevents you from seeing"
+      },
+      "comparisonFallacy": {
+        "title": "Comparison Fallacy",
+        "desc": "Avoid comparisons that distort your judgment"
+      },
+      "opportunityCost": {
+        "title": "Opportunity Cost",
+        "desc": "Assess what you sacrifice by choosing this option"
+      },
+      "sunkCost": {
+        "title": "Sunk Costs",
+        "desc": "Don't let the past dictate your future decisions"
+      },
+      "confirmationBias": {
+        "title": "Confirmation Bias",
+        "desc": "Actively seek what contradicts your hypothesis"
+      },
+      "overconfidence": {
+        "title": "Overconfidence",
+        "desc": "Calibrate your certainty with reality"
+      },
+      "planningFallacy": {
+        "title": "Planning Fallacy",
+        "desc": "Anticipate time and budget overruns"
+      }
+    },
+    "grids": {
+      "visibleInvisible": {
+        "title": "Visible / Invisible",
+        "desc": "What is easily seen vs what remains hidden"
+      },
+      "meSystem": {
+        "title": "Me / System",
+        "desc": "What depends on you vs what depends on context"
+      },
+      "reversibleIrreversible": {
+        "title": "Reversible / Irreversible",
+        "desc": "What can be undone vs what is final"
+      },
+      "shortLongTerm": {
+        "title": "Short term / Long term",
+        "desc": "Immediate gains vs future consequences"
+      },
+      "controllableUncontrollable": {
+        "title": "Controllable / Uncontrollable",
+        "desc": "What you can influence vs what escapes you"
+      },
+      "certainUncertain": {
+        "title": "Certain / Uncertain",
+        "desc": "What we know vs what we assume"
+      },
+      "urgentImportant": {
+        "title": "Urgent / Important",
+        "desc": "What is pressing vs what truly matters"
+      }
+    },
+    "suggestions": {
+      "title": "OVI Suggestions",
+      "basedOn": "Based on your simulation",
+      "explore": "Explore this framework",
+      "dismiss": "Dismiss"
+    }
+  },
   "institutions": {
     "badge": "Business & Institutions",
     "title": "Institutional Decision Support",

@@ -1,5 +1,7 @@
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { supabase } from '@/integrations/supabase/client';
+import { useAuth } from './useAuth';
 
 export type SimulationType = 'country_view' | 'comparison' | 'exit_key' | 'prevention_filter' | 'project_analysis';
 
@@ -147,7 +149,33 @@ const GRIDS: Record<string, { icon: string; titleKey: string; descKey: string }>
 
 export function useOVISuggestions() {
   const { t } = useTranslation();
+  const { user } = useAuth();
   const [dismissedSuggestions, setDismissedSuggestions] = useState<Set<string>>(new Set());
+  const [loading, setLoading] = useState(false);
+
+  // Load dismissed suggestions from database on mount
+  useEffect(() => {
+    const loadDismissed = async () => {
+      if (!user) return;
+      
+      try {
+        const { data } = await supabase
+          .from('ovi_suggestions')
+          .select('id')
+          .eq('user_id', user.id)
+          .eq('dismissed', true);
+        
+        if (data) {
+          const ids = new Set(data.map(d => d.id));
+          setDismissedSuggestions(ids);
+        }
+      } catch (err) {
+        console.error('Failed to load OVI dismissed suggestions:', err);
+      }
+    };
+    
+    loadDismissed();
+  }, [user]);
 
   const getSuggestionsForSimulation = useCallback((
     simulationType: SimulationType,
@@ -203,24 +231,74 @@ export function useOVISuggestions() {
     return suggestions.sort((a, b) => b.relevanceScore - a.relevanceScore);
   }, [t, dismissedSuggestions]);
 
-  const dismissSuggestion = useCallback((suggestionId: string) => {
+  const dismissSuggestion = useCallback(async (suggestionId: string) => {
     setDismissedSuggestions(prev => new Set([...prev, suggestionId]));
-  }, []);
+    
+    // Save to database if user is logged in
+    if (user) {
+      try {
+        await supabase
+          .from('ovi_suggestions')
+          .upsert({
+            id: suggestionId,
+            user_id: user.id,
+            simulation_type: 'general',
+            simulation_context: {},
+            dismissed: true
+          }, { onConflict: 'id' });
+      } catch (err) {
+        console.error('Failed to save dismissed suggestion:', err);
+      }
+    }
+  }, [user]);
 
-  const resetDismissed = useCallback(() => {
+  const resetDismissed = useCallback(async () => {
     setDismissedSuggestions(new Set());
-  }, []);
+    
+    // Clear from database if user is logged in
+    if (user) {
+      try {
+        await supabase
+          .from('ovi_suggestions')
+          .update({ dismissed: false })
+          .eq('user_id', user.id);
+      } catch (err) {
+        console.error('Failed to reset dismissed suggestions:', err);
+      }
+    }
+  }, [user]);
 
   const getTopSuggestion = useCallback((simulationType: SimulationType): OVISuggestion | null => {
     const suggestions = getSuggestionsForSimulation(simulationType);
     return suggestions[0] || null;
   }, [getSuggestionsForSimulation]);
 
+  // Track suggestion view
+  const trackSuggestionView = useCallback(async (suggestionId: string, simulationType: SimulationType) => {
+    if (!user) return;
+    
+    try {
+      await supabase
+        .from('ovi_suggestions')
+        .upsert({
+          id: suggestionId,
+          user_id: user.id,
+          simulation_type: simulationType,
+          simulation_context: {},
+          viewed_at: new Date().toISOString()
+        }, { onConflict: 'id' });
+    } catch (err) {
+      console.error('Failed to track suggestion view:', err);
+    }
+  }, [user]);
+
   return {
     getSuggestionsForSimulation,
     dismissSuggestion,
     resetDismissed,
     getTopSuggestion,
-    dismissedCount: dismissedSuggestions.size
+    trackSuggestionView,
+    dismissedCount: dismissedSuggestions.size,
+    loading
   };
 }
