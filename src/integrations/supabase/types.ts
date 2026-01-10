@@ -14,6 +14,126 @@ export type Database = {
   }
   public: {
     Tables: {
+      ai_activity_log: {
+        Row: {
+          action_type: string
+          completed_at: string | null
+          context: Json | null
+          created_at: string
+          id: string
+          model_used: string | null
+          module: string
+          processing_time_ms: number | null
+          request_summary: string | null
+          response_summary: string | null
+          session_id: string | null
+          status: string
+          tokens_used: number | null
+          units_consumed: number | null
+          user_decision: string | null
+          user_id: string | null
+        }
+        Insert: {
+          action_type: string
+          completed_at?: string | null
+          context?: Json | null
+          created_at?: string
+          id?: string
+          model_used?: string | null
+          module: string
+          processing_time_ms?: number | null
+          request_summary?: string | null
+          response_summary?: string | null
+          session_id?: string | null
+          status?: string
+          tokens_used?: number | null
+          units_consumed?: number | null
+          user_decision?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          action_type?: string
+          completed_at?: string | null
+          context?: Json | null
+          created_at?: string
+          id?: string
+          model_used?: string | null
+          module?: string
+          processing_time_ms?: number | null
+          request_summary?: string | null
+          response_summary?: string | null
+          session_id?: string | null
+          status?: string
+          tokens_used?: number | null
+          units_consumed?: number | null
+          user_decision?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      ai_usage_metering: {
+        Row: {
+          agent_runs_count: number | null
+          ai_actions_count: number | null
+          ai_tokens_used: number | null
+          alert_100_sent: boolean | null
+          alert_70_sent: boolean | null
+          alert_90_sent: boolean | null
+          created_at: string
+          dossier_items_added: number | null
+          dossiers_created: number | null
+          exports_generated: number | null
+          id: string
+          period_end: string
+          period_start: string
+          quota_limit: number | null
+          total_case_units: number | null
+          updated_at: string
+          user_id: string
+          workspace_id: string | null
+        }
+        Insert: {
+          agent_runs_count?: number | null
+          ai_actions_count?: number | null
+          ai_tokens_used?: number | null
+          alert_100_sent?: boolean | null
+          alert_70_sent?: boolean | null
+          alert_90_sent?: boolean | null
+          created_at?: string
+          dossier_items_added?: number | null
+          dossiers_created?: number | null
+          exports_generated?: number | null
+          id?: string
+          period_end: string
+          period_start: string
+          quota_limit?: number | null
+          total_case_units?: number | null
+          updated_at?: string
+          user_id: string
+          workspace_id?: string | null
+        }
+        Update: {
+          agent_runs_count?: number | null
+          ai_actions_count?: number | null
+          ai_tokens_used?: number | null
+          alert_100_sent?: boolean | null
+          alert_70_sent?: boolean | null
+          alert_90_sent?: boolean | null
+          created_at?: string
+          dossier_items_added?: number | null
+          dossiers_created?: number | null
+          exports_generated?: number | null
+          id?: string
+          period_end?: string
+          period_start?: string
+          quota_limit?: number | null
+          total_case_units?: number | null
+          updated_at?: string
+          user_id?: string
+          workspace_id?: string | null
+        }
+        Relationships: []
+      }
       analytics_events: {
         Row: {
           created_at: string
@@ -1762,6 +1882,15 @@ export type Database = {
     }
     Functions: {
       has_role: { Args: { _role: string; _user_id: string }; Returns: boolean }
+      increment_ai_usage: {
+        Args: {
+          p_action_type: string
+          p_tokens?: number
+          p_units?: number
+          p_user_id: string
+        }
+        Returns: undefined
+      }
     }
     Enums: {
       game_mode: "solo" | "race" | "points_duel" | "cooperative"

@@ -38,3 +38,6 @@ verify_jwt = false
 
 [functions.generate-country-translations]
 verify_jwt = false
+
+[functions.ai-assist]
+verify_jwt = false
