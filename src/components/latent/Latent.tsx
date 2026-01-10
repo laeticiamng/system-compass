@@ -90,11 +90,12 @@ export function Latent() {
     }
   };
 
-  const handleDelete = async (zoneId: string) => {
+  const handleDelete = async (zoneId: string): Promise<boolean> => {
     const success = await deleteZone(zoneId);
     if (success) {
       toast.success(t('latent.toast.deleted'));
     }
+    return success;
   };
 
   const handleMerge = async (
