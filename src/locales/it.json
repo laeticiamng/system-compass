@@ -3385,5 +3385,57 @@
     "exported": "Esportazione PDF avviata",
     "regenerate": "Rigenera",
     "disclaimer": "Questo report è uno strumento di analisi. Non costituisce consulenza legale, finanziaria o fiscale."
+  },
+  "orientationHub": {
+    "noPromise": "Nessuna promessa",
+    "noLegalAdvice": "Nessuna consulenza legale",
+    "noDreamSold": "Nessun sogno venduto",
+    "structuredLucidity": "Lucidità strutturata",
+    "philosophy": "Pyramid Compass è una piattaforma di orientamento prima delle decisioni.",
+    "philosophyDesc": "Permettere a ogni persona di comprendere chiaramente le sue opzioni reali, rischi, costi e alternative, prima di impegnare denaro, vita o futuro.",
+    "quickTitle": "Accesso rapido in base alle tue esigenze",
+    "toolsTitle": "Tutti gli strumenti di orientamento",
+    "bestFor": "Ideale per",
+    "startTool": "Inizia",
+    "situations": {
+      "country": "Voglio cambiare paese",
+      "decision": "Ho una decisione importante da prendere",
+      "understand": "Voglio capire i sistemi",
+      "fit": "Voglio sapere se un paese fa per me",
+      "plan": "Voglio pianificare la mia traiettoria",
+      "compare": "Voglio confrontare diversi paesi"
+    },
+    "tools": {
+      "preventionFilter": {
+        "title": "Filtro di Prevenzione",
+        "description": "Identifica rischi e ostacoli prima di impegnarti in una decisione",
+        "bestFor": ["Validare una decisione importante", "Anticipare ostacoli nascosti"]
+      },
+      "exitKeys": {
+        "title": "Chiavi di Uscita",
+        "description": "Mappe stradali personalizzate basate sulla tua situazione, obiettivi e vincoli",
+        "bestFor": ["Pianificare una transizione di vita", "Strutturare un progetto di mobilità"]
+      },
+      "lifeTrajectory": {
+        "title": "Traiettoria di Vita",
+        "description": "Simula l'evoluzione della tua situazione in 10-30 anni in base alle tue scelte",
+        "bestFor": ["Visualizzare conseguenze a lungo termine", "Confrontare scenari di vita"]
+      },
+      "profileTest": {
+        "title": "Test del Profilo",
+        "description": "Comprendi il tuo profilo, vantaggi della nazionalità e compatibilità con i sistemi",
+        "bestFor": ["Scoprire il tuo archetipo", "Identificare punti di forza e debolezza"]
+      },
+      "lifeGame": {
+        "title": "Gioco della Vita",
+        "description": "Gioco educativo per capire come funzionano le decisioni di vita in diversi sistemi",
+        "bestFor": ["Imparare giocando", "Testare strategie senza rischio"]
+      },
+      "errorsIllusions": {
+        "title": "Errori e Illusioni",
+        "description": "Identifica i bias cognitivi e gli errori sistemici che costano anni",
+        "bestFor": ["Evitare errori comuni", "Comprendere i bias cognitivi"]
+      }
+    }
   }
 }
