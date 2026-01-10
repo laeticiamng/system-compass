@@ -67,6 +67,48 @@ jobs:
       - name: Check all translations (general + countries)
         run: node scripts/check-translations.js
 
+      - name: Generate i18n coverage report
+        run: node scripts/generate-i18n-coverage.js
+
+      - name: Upload coverage badges
+        uses: actions/upload-artifact@v4
+        with:
+          name: i18n-badges
+          path: .github/badges/
+          retention-days: 30
+
+  update-badges:
+    name: Update i18n Badges
+    runs-on: ubuntu-latest
+    needs: i18n-check
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate i18n coverage
+        run: node scripts/generate-i18n-coverage.js
+
+      - name: Commit badge updates
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .github/badges/
+          git diff --staged --quiet || git commit -m "chore: update i18n coverage badges [skip ci]"
+          git push
+
   coverage:
     name: Test Coverage
     runs-on: ubuntu-latest
