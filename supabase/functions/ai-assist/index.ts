@@ -1,0 +1,536 @@
+import "https://deno.land/x/xhr@0.1.0/mod.ts";
+import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+};
+
+const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
+const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
+
+// Policy Guard: Filter and sanitize AI outputs for sensitive content
+const FORBIDDEN_PATTERNS = [
+  /tu dois/gi,
+  /il faut/gi,
+  /vous devez/gi,
+  /you must/gi,
+  /you should/gi,
+  /guaranteed/gi,
+  /garanti/gi,
+  /100%\s*(success|réussite)/gi,
+  /contourne/gi,
+  /bypass/gi,
+  /illegal/gi,
+  /illégal/gi,
+  /evade/gi,
+  /échapper.*loi/gi,
+  /tax evasion/gi,
+  /évasion fiscale/gi,
+];
+
+const PRESCRIPTIVE_REPLACEMENTS: [RegExp, string][] = [
+  [/tu dois/gi, "une option serait de"],
+  [/il faut/gi, "il peut être utile de"],
+  [/vous devez/gi, "vous pourriez envisager de"],
+  [/you must/gi, "you might consider"],
+  [/you should/gi, "one option is to"],
+];
+
+function applyPolicyGuard(text: string): { safe: boolean; filtered: string; warnings: string[] } {
+  const warnings: string[] = [];
+  let filtered = text;
+
+  // Check for forbidden patterns
+  for (const pattern of FORBIDDEN_PATTERNS) {
+    if (pattern.test(text)) {
+      warnings.push(`Contenu sensible détecté: ${pattern.source}`);
+    }
+  }
+
+  // Apply replacements for prescriptive language
+  for (const [pattern, replacement] of PRESCRIPTIVE_REPLACEMENTS) {
+    filtered = filtered.replace(pattern, replacement);
+  }
+
+  return {
+    safe: warnings.length === 0,
+    filtered,
+    warnings,
+  };
+}
+
+// Action handlers configuration
+interface ActionConfig {
+  systemPrompt: string;
+  outputFormat: "json" | "text" | "structured";
+  maxTokens: number;
+}
+
+const ACTION_CONFIGS: Record<string, ActionConfig> = {
+  // Exit Keys actions
+  "clarify-objective": {
+    systemPrompt: `Tu es un assistant d'analyse stratégique pour Pyramid Compass.
+Ta mission : reformuler l'objectif de l'utilisateur en version claire + critères implicites.
+
+RÈGLES ABSOLUES:
+- Style descriptif, JAMAIS prescriptif (interdit "tu dois", "il faut")
+- Aucun conseil juridique/financier/immigration
+- Pas de promesse, pas de garantie
+- Formule en "pourrait", "une option serait", "tend à"
+- Inclure les nuances et incertitudes
+
+Format de sortie JSON:
+{
+  "objectif_reformule": "Version claire de l'objectif",
+  "criteres_implicites": ["critère 1", "critère 2", "critère 3"],
+  "points_attention": ["attention 1", "attention 2"],
+  "disclaimer": "Analyse uniquement - vérifiez les informations officielles"
+}`,
+    outputFormat: "json",
+    maxTokens: 1000,
+  },
+
+  "propose-trajectories": {
+    systemPrompt: `Tu es un simulateur de trajectoires pour Pyramid Compass.
+Ta mission : générer 3 trajectoires possibles basées sur le profil utilisateur.
+
+RÈGLES ABSOLUES:
+- Descriptions, pas de prescriptions
+- Chaque trajectoire avec avantages/risques/coûts/conditions
+- Pas de promesse de succès
+- Mentionner les incertitudes
+- "simulation ≠ prédiction"
+
+Format de sortie JSON:
+{
+  "trajectoires": [
+    {
+      "nom": "Nom de la trajectoire",
+      "resume": "Description courte",
+      "avantages": ["avantage 1", "avantage 2"],
+      "risques": ["risque 1", "risque 2"],
+      "cout_estime": "Estimation des coûts",
+      "conditions": ["condition 1", "condition 2"],
+      "duree_estimee": "X-Y mois/années",
+      "compatibilite": 75
+    }
+  ],
+  "disclaimer": "Simulation basée sur les données fournies - variations individuelles possibles"
+}`,
+    outputFormat: "json",
+    maxTokens: 2000,
+  },
+
+  "generate-checklist": {
+    systemPrompt: `Tu es un assistant de planification pour Pyramid Compass.
+Ta mission : convertir une trajectoire en étapes concrètes.
+
+RÈGLES ABSOLUES:
+- Propositions, pas d'injonctions
+- "voici une proposition d'étapes" pas "tu dois"
+- Ordre logique avec jalons
+- Mentionner les dépendances entre étapes
+
+Format de sortie JSON:
+{
+  "phases": [
+    {
+      "nom": "Phase 1 - Préparation",
+      "duree": "1-2 mois",
+      "etapes": [
+        {"action": "Description de l'action", "priorite": "haute/moyenne/basse"}
+      ]
+    }
+  ],
+  "jalons_cles": ["Jalon 1", "Jalon 2"],
+  "disclaimer": "Proposition d'étapes - à adapter selon votre situation"
+}`,
+    outputFormat: "json",
+    maxTokens: 1500,
+  },
+
+  "generate-synthesis": {
+    systemPrompt: `Tu es un rédacteur de synthèses pour Pyramid Compass.
+Ta mission : produire une synthèse courte basée uniquement sur les données fournies.
+
+RÈGLES:
+- Format rapport interne, professionnel
+- Neutre et factuel
+- Pas de recommandations directes
+- Structuré et scannable
+
+Format de sortie JSON:
+{
+  "titre": "Synthèse du dossier",
+  "resume_executif": "Résumé en 2-3 phrases",
+  "profil": {"points_cles": ["point 1", "point 2"]},
+  "objectifs": {"principal": "...", "secondaires": ["..."]},
+  "options_identifiees": ["option 1", "option 2"],
+  "points_vigilance": ["point 1", "point 2"],
+  "prochaines_etapes_possibles": ["étape 1", "étape 2"]
+}`,
+    outputFormat: "json",
+    maxTokens: 1500,
+  },
+
+  // Country Analysis actions
+  "compare-countries": {
+    systemPrompt: `Tu es un analyste comparatif pour Pyramid Compass.
+Ta mission : comparer deux pays selon le profil utilisateur.
+
+RÈGLES:
+- Analyse objective, pas de verdict
+- Trade-offs clairs
+- Points d'attention spécifiques au profil
+- Pas de "meilleur" choix, juste des différences
+
+Format de sortie JSON:
+{
+  "comparaison": {
+    "pays_1": {"nom": "...", "avantages_profil": ["..."], "defis_profil": ["..."]},
+    "pays_2": {"nom": "...", "avantages_profil": ["..."], "defis_profil": ["..."]}
+  },
+  "trade_offs": [{"critere": "...", "pays_1": "...", "pays_2": "..."}],
+  "points_attention": ["..."],
+  "facteurs_decisifs_pour_profil": ["..."]
+}`,
+    outputFormat: "json",
+    maxTokens: 1500,
+  },
+
+  "summarize-country": {
+    systemPrompt: `Tu es un analyste pays pour Pyramid Compass.
+Ta mission : résumer un pays selon les contraintes spécifiques de l'utilisateur.
+
+RÈGLES:
+- Focus sur ce qui compte pour CE profil
+- Pas de généralités
+- Mentionner ce qui pourrait bloquer ou faciliter
+
+Format de sortie JSON:
+{
+  "resume_contextuel": "Résumé focalisé sur le profil",
+  "atouts_pour_vous": ["..."],
+  "defis_pour_vous": ["..."],
+  "elements_neutres": ["..."],
+  "questions_a_approfondir": ["..."]
+}`,
+    outputFormat: "json",
+    maxTokens: 1200,
+  },
+
+  "identify-risks": {
+    systemPrompt: `Tu es un analyste de risques pour Pyramid Compass.
+Ta mission : identifier les risques/contraintes qui pourraient compromettre une trajectoire.
+
+RÈGLES:
+- Factuel, pas alarmiste
+- Risques concrets, pas hypothétiques extrêmes
+- Mentionner les mitigations possibles (sans garantie)
+
+Format de sortie JSON:
+{
+  "risques_identifies": [
+    {"type": "...", "description": "...", "severite": "haute/moyenne/basse", "mitigation_possible": "..."}
+  ],
+  "contraintes_structurelles": ["..."],
+  "elements_incertains": ["..."],
+  "disclaimer": "Analyse des risques potentiels - situation individuelle peut varier"
+}`,
+    outputFormat: "json",
+    maxTokens: 1200,
+  },
+
+  // Dashboard actions
+  "suggest-next-step": {
+    systemPrompt: `Tu es un assistant de suivi pour Pyramid Compass.
+Ta mission : proposer le prochain pas logique basé sur la progression actuelle.
+
+RÈGLES:
+- Basé sur ce qui est déjà fait
+- Cohérent avec la trajectoire choisie
+- Proposition, pas injonction
+
+Format de sortie JSON:
+{
+  "prochain_pas": {"action": "...", "raison": "...", "priorite": "..."},
+  "alternatives": [{"action": "...", "contexte": "..."}],
+  "dependances": ["Ce qui doit être fait avant"]
+}`,
+    outputFormat: "json",
+    maxTokens: 800,
+  },
+
+  "plan-timeline": {
+    systemPrompt: `Tu es un planificateur pour Pyramid Compass.
+Ta mission : proposer un plan par phases (30/90 jours).
+
+RÈGLES:
+- Jalons réalistes
+- Neutre, pas de pression
+- Adaptable
+
+Format de sortie JSON:
+{
+  "plan_30_jours": {"objectif": "...", "actions": ["..."], "jalon": "..."},
+  "plan_90_jours": {"objectif": "...", "actions": ["..."], "jalon": "..."},
+  "points_flexibilite": ["Ce qui peut être ajusté"],
+  "disclaimer": "Plan indicatif - à adapter selon votre rythme"
+}`,
+    outputFormat: "json",
+    maxTokens: 1000,
+  },
+
+  "suggest-reminders": {
+    systemPrompt: `Tu es un assistant de rappels pour Pyramid Compass.
+Ta mission : suggérer des rappels non-intrusifs basés sur l'avancement.
+
+Format de sortie JSON:
+{
+  "rappels_suggeres": [
+    {"titre": "...", "quand": "...", "importance": "haute/moyenne/basse", "optionnel": true}
+  ],
+  "note": "Rappels optionnels - activez uniquement ceux qui vous sont utiles"
+}`,
+    outputFormat: "json",
+    maxTokens: 600,
+  },
+
+  // B2B Report Builder - Multi-step agent
+  "build-report": {
+    systemPrompt: `Tu es un générateur de rapports B2B pour Pyramid Compass.
+Ta mission : produire un rapport structuré et professionnel.
+
+RÈGLES ABSOLUES:
+- Aucune promesse, aucune garantie
+- Aucun conseil juridique/financier/immigration
+- Mentionner les sources internes utilisées
+- Format professionnel exportable
+
+Le rapport doit contenir:
+1. Résumé exécutif
+2. Profil client
+3. Analyse comparative des options
+4. Points d'attention
+5. Prochaines étapes suggérées
+6. Disclaimers
+
+Format de sortie JSON structuré pour export PDF.`,
+    outputFormat: "json",
+    maxTokens: 3000,
+  },
+};
+
+// Main handler
+serve(async (req) => {
+  if (req.method === "OPTIONS") {
+    return new Response(null, { headers: corsHeaders });
+  }
+
+  const startTime = Date.now();
+
+  try {
+    const { action, context, userId, sessionId } = await req.json();
+
+    if (!action || !ACTION_CONFIGS[action]) {
+      return new Response(
+        JSON.stringify({ error: `Action non supportée: ${action}` }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    if (!LOVABLE_API_KEY) {
+      return new Response(
+        JSON.stringify({ error: "LOVABLE_API_KEY non configurée" }),
+        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    const config = ACTION_CONFIGS[action];
+    const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
+
+    // Log the request
+    const logEntry = {
+      user_id: userId || null,
+      session_id: sessionId || crypto.randomUUID(),
+      action_type: action,
+      module: context?.module || "unknown",
+      context: context || {},
+      request_summary: JSON.stringify(context).substring(0, 500),
+      status: "processing",
+      model_used: "google/gemini-3-flash-preview",
+    };
+
+    let logId: string | null = null;
+    if (userId) {
+      const { data: logData } = await supabase
+        .from("ai_activity_log")
+        .insert(logEntry)
+        .select("id")
+        .single();
+      logId = logData?.id || null;
+    }
+
+    // Build user prompt from context
+    const userPrompt = buildUserPrompt(action, context);
+
+    // Call Lovable AI Gateway
+    const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${LOVABLE_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: "google/gemini-3-flash-preview",
+        messages: [
+          { role: "system", content: config.systemPrompt },
+          { role: "user", content: userPrompt },
+        ],
+        max_tokens: config.maxTokens,
+        temperature: 0.7,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorStatus = response.status;
+      if (errorStatus === 429) {
+        return new Response(
+          JSON.stringify({ error: "Limite de requêtes atteinte. Réessayez dans quelques instants." }),
+          { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+      if (errorStatus === 402) {
+        return new Response(
+          JSON.stringify({ error: "Crédits IA insuffisants. Veuillez recharger votre compte." }),
+          { status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+      const errorText = await response.text();
+      console.error("AI Gateway error:", errorStatus, errorText);
+      throw new Error(`Erreur API IA: ${errorStatus}`);
+    }
+
+    const data = await response.json();
+    let content = data.choices?.[0]?.message?.content || "";
+    const tokensUsed = data.usage?.total_tokens || 0;
+
+    // Apply Policy Guard
+    const policyResult = applyPolicyGuard(content);
+    if (!policyResult.safe) {
+      console.warn("Policy Guard warnings:", policyResult.warnings);
+    }
+    content = policyResult.filtered;
+
+    // Parse JSON if expected
+    let parsedContent: any = content;
+    if (config.outputFormat === "json") {
+      try {
+        // Extract JSON from potential markdown code blocks
+        const jsonMatch = content.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
+        const jsonStr = jsonMatch ? jsonMatch[1] : content;
+        parsedContent = JSON.parse(jsonStr.trim());
+      } catch (e) {
+        console.error("Failed to parse JSON response:", e);
+        parsedContent = { raw: content, error: "Format de réponse invalide" };
+      }
+    }
+
+    const processingTime = Date.now() - startTime;
+
+    // Update log entry
+    if (logId && userId) {
+      await supabase
+        .from("ai_activity_log")
+        .update({
+          status: "completed",
+          response_summary: JSON.stringify(parsedContent).substring(0, 1000),
+          tokens_used: tokensUsed,
+          processing_time_ms: processingTime,
+          completed_at: new Date().toISOString(),
+        })
+        .eq("id", logId);
+
+      // Increment usage metering
+      await supabase.rpc("increment_ai_usage", {
+        p_user_id: userId,
+        p_action_type: action,
+        p_units: 1,
+        p_tokens: tokensUsed,
+      });
+    }
+
+    return new Response(
+      JSON.stringify({
+        success: true,
+        action,
+        result: parsedContent,
+        policyWarnings: policyResult.warnings,
+        meta: {
+          processingTime,
+          tokensUsed,
+        },
+      }),
+      { headers: { ...corsHeaders, "Content-Type": "application/json" } }
+    );
+  } catch (error) {
+    console.error("ai-assist error:", error);
+    return new Response(
+      JSON.stringify({ error: error instanceof Error ? error.message : "Erreur inconnue" }),
+      { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+    );
+  }
+});
+
+// Build user prompt from context
+function buildUserPrompt(action: string, context: any): string {
+  const parts: string[] = [];
+
+  if (context.profile) {
+    parts.push(`Profil utilisateur:
+- Pays de naissance: ${context.profile.birthCountry || "Non spécifié"}
+- Nationalités: ${context.profile.nationalities?.join(", ") || "Non spécifié"}
+- Pays actuel: ${context.profile.currentCountry || "Non spécifié"}
+- Profil moteur: ${context.profile.motorProfile || "Non spécifié"}
+- Objectif de vie: ${context.profile.desiredLife || "Non spécifié"}
+- Tolérance au risque: ${context.profile.riskTolerance || "moyenne"}
+- Horizon temporel: ${context.profile.timeHorizon || "moyen"}
+- Capital disponible: ${context.profile.hasCapital ? "Oui" : "Non"}
+- Diplômes reconnus: ${context.profile.hasCredentials ? "Oui" : "Non"}
+- Réseau professionnel: ${context.profile.hasNetwork ? "Oui" : "Non"}
+- Famille: ${context.profile.hasFamily ? "Oui" : "Non"}`);
+  }
+
+  if (context.objective) {
+    parts.push(`Objectif à clarifier: ${context.objective}`);
+  }
+
+  if (context.trajectory) {
+    parts.push(`Trajectoire sélectionnée: ${JSON.stringify(context.trajectory)}`);
+  }
+
+  if (context.countries) {
+    parts.push(`Pays à comparer: ${context.countries.join(", ")}`);
+  }
+
+  if (context.country) {
+    parts.push(`Pays analysé: ${JSON.stringify(context.country)}`);
+  }
+
+  if (context.progress) {
+    parts.push(`Progression actuelle: ${JSON.stringify(context.progress)}`);
+  }
+
+  if (context.dossier) {
+    parts.push(`Dossier complet: ${JSON.stringify(context.dossier)}`);
+  }
+
+  if (context.additionalInfo) {
+    parts.push(`Informations supplémentaires: ${context.additionalInfo}`);
+  }
+
+  return parts.join("\n\n");
+}
