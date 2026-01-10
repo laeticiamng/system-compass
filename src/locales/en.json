@@ -5664,6 +5664,78 @@
       "status": "Status",
       "family": "Family",
       "calm": "Serenity"
+    },
+    "results": {
+      "title": "Your Exit Keys",
+      "strategiesFound": "{{count}} strategies identified for your situation",
+      "nationalityAdvantages": "Your Nationality Advantages",
+      "visaFreeCountries": "visa-free countries",
+      "memberOf": "Member of",
+      "regionalBlocs": "Regional blocs",
+      "installationTab": "Installation",
+      "vacationTab": "Vacation",
+      "installationDestinations": "Installation Destinations",
+      "optimizedForProfile": "Optimized for your profile",
+      "installationDescription": "Countries where you can settle long-term based on your nationalities, aspirations, and constraints.",
+      "vacationRecommendations": "Vacation Recommendations",
+      "byPurchasingPower": "By purchasing power",
+      "vacationDescription": "Destinations where your salary lets you enjoy without breaking your budget, while progressing toward your goals.",
+      "strategicPrinciples": "Key Strategic Principles",
+      "filter": "Filter",
+      "compare": "Compare",
+      "strategiesCount": "{{count}} strategy",
+      "strategiesCountPlural": "{{count}} strategies",
+      "filtered": "(filtered)",
+      "reset": "Reset",
+      "noStrategies": "No strategies match the filters.",
+      "resetFilters": "Reset filters",
+      "saveProfile": "Save my profile",
+      "restart": "Start over"
+    },
+    "summary": {
+      "title": "Your profile summary",
+      "origin": "Origin",
+      "current": "Current",
+      "profile": "Profile",
+      "priority": "Priority"
+    },
+    "guestCta": {
+      "localSaved": "Your simulation is saved locally on this device.",
+      "createAccount": "Create a free account to:",
+      "benefit1": "Access your profile on all your devices",
+      "benefit2": "Save multiple comparison scenarios",
+      "benefit3": "Access the tracking dashboard",
+      "benefit4": "Receive personalized updates",
+      "createAccountBtn": "Create free account",
+      "notRequired": "Not required. Keep exploring freely."
+    },
+    "navigation": {
+      "previous": "Previous",
+      "next": "Next",
+      "viewKeys": "View my keys"
+    },
+    "filters": {
+      "label": "Filters",
+      "difficulty": "Difficulty",
+      "allDifficulties": "All",
+      "easy": "Easy",
+      "moderate": "Moderate",
+      "hard": "Hard",
+      "expert": "Expert",
+      "duration": "Duration",
+      "allDurations": "All",
+      "shortTerm": "1-3 years",
+      "mediumTerm": "3-7 years",
+      "longTerm": "7+ years",
+      "strategies": "strategies"
+    },
+    "advantageTypes": {
+      "visaFree": "Visa-free",
+      "regionalAccess": "Regional access",
+      "workPermit": "Work",
+      "taxBenefit": "Tax",
+      "residency": "Residency",
+      "citizenship": "Citizenship"
     }
   }
 }

@@ -746,22 +746,22 @@ export default function ExitKeys() {
 
               {/* Summary */}
               <div className="glass-card rounded-xl p-6 mt-8">
-                <h3 className="font-semibold mb-4">Résumé de votre profil</h3>
+                <h3 className="font-semibold mb-4">{t('exitKeys.summary.title', 'Résumé de votre profil')}</h3>
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <span className="text-muted-foreground">Origine:</span>
+                    <span className="text-muted-foreground">{t('exitKeys.summary.origin', 'Origine')}:</span>
                     <span className="ml-2 font-medium">{birthCountry?.name}</span>
                   </div>
                   <div>
-                    <span className="text-muted-foreground">Actuel:</span>
+                    <span className="text-muted-foreground">{t('exitKeys.summary.current', 'Actuel')}:</span>
                     <span className="ml-2 font-medium">{currentCountry?.name}</span>
                   </div>
                   <div>
-                    <span className="text-muted-foreground">Profil:</span>
+                    <span className="text-muted-foreground">{t('exitKeys.summary.profile', 'Profil')}:</span>
                     <span className="ml-2 font-medium">{LIFE_MOTOR_PROFILES[motorProfile].icon}</span>
                   </div>
                   <div>
-                    <span className="text-muted-foreground">Priorité:</span>
+                    <span className="text-muted-foreground">{t('exitKeys.summary.priority', 'Priorité')}:</span>
                     <span className="ml-2 font-medium">{priorityOptions.find(p => p.value === desiredLife)?.icon}</span>
                   </div>
                 </div>
@@ -774,9 +774,9 @@ export default function ExitKeys() {
             <div className="space-y-8">
               <div className="text-center mb-8">
                 <Zap className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h2 className="text-2xl font-bold mb-2">Vos Clés de Sortie</h2>
+                <h2 className="text-2xl font-bold mb-2">{t('exitKeys.results.title', 'Vos Clés de Sortie')}</h2>
                 <p className="text-muted-foreground">
-                  {exitKeyResults.length} stratégies identifiées pour votre situation
+                  {t('exitKeys.results.strategiesFound', '{{count}} stratégies identifiées pour votre situation', { count: exitKeyResults.length })}
                 </p>
               </div>
 
@@ -805,7 +805,7 @@ export default function ExitKeys() {
                 <div className="glass-card rounded-xl p-6 border-2 border-primary/20">
                   <h3 className="font-semibold mb-4 flex items-center gap-2">
                     <Globe className="w-5 h-5 text-primary" />
-                    Avantages de vos Nationalités
+                    {t('exitKeys.results.nationalityAdvantages', 'Avantages de vos Nationalités')}
                     {nationalityAdvantages.strongestPassport && (
                       <span className={cn(
                         "text-xs px-2 py-1 rounded-full bg-primary/10",
@@ -821,14 +821,14 @@ export default function ExitKeys() {
                     <div className="flex items-center gap-2">
                       <Plane className="w-4 h-4 text-primary" />
                       <span className="text-sm">
-                        <strong>{nationalityAdvantages.totalVisaFree}</strong> pays sans visa
+                        <strong>{nationalityAdvantages.totalVisaFree}</strong> {t('exitKeys.results.visaFreeCountries', 'pays sans visa')}
                       </span>
                     </div>
                     {nationalityAdvantages.combinedBlocs.length > 0 && (
                       <div className="flex items-center gap-2">
                         <Flag className="w-4 h-4 text-primary" />
                         <span className="text-sm">
-                          Membre de: {nationalityAdvantages.combinedBlocs.map(b => REGIONAL_BLOCS[b]?.icon).join(' ')}
+                          {t('exitKeys.results.memberOf', 'Membre de')}: {nationalityAdvantages.combinedBlocs.map(b => REGIONAL_BLOCS[b]?.icon).join(' ')}
                         </span>
                       </div>
                     )}
@@ -837,7 +837,7 @@ export default function ExitKeys() {
                   {/* Regional blocs */}
                   {nationalityAdvantages.combinedBlocs.length > 0 && (
                     <div className="mb-4">
-                      <p className="text-xs text-muted-foreground mb-2">Blocs régionaux</p>
+                      <p className="text-xs text-muted-foreground mb-2">{t('exitKeys.results.regionalBlocs', 'Blocs régionaux')}</p>
                       <div className="flex flex-wrap gap-2">
                         {nationalityAdvantages.combinedBlocs.map(blocId => {
                           const bloc = REGIONAL_BLOCS[blocId];
@@ -864,7 +864,7 @@ export default function ExitKeys() {
                         <div>
                           <p className="font-medium text-sm">{advantage.name}</p>
                           <p className="text-xs text-muted-foreground">{advantage.description}</p>
-                          <span className={cn(
+                        <span className={cn(
                             "text-xs px-2 py-0.5 rounded mt-1 inline-block",
                             advantage.type === 'visa_free' && 'bg-emerald-500/20 text-emerald-400',
                             advantage.type === 'regional_access' && 'bg-blue-500/20 text-blue-400',
@@ -873,12 +873,12 @@ export default function ExitKeys() {
                             advantage.type === 'residency' && 'bg-cyan-500/20 text-cyan-400',
                             advantage.type === 'citizenship' && 'bg-rose-500/20 text-rose-400',
                           )}>
-                            {advantage.type === 'visa_free' && 'Visa-free'}
-                            {advantage.type === 'regional_access' && 'Accès régional'}
-                            {advantage.type === 'work_permit' && 'Travail'}
-                            {advantage.type === 'tax_benefit' && 'Fiscal'}
-                            {advantage.type === 'residency' && 'Résidence'}
-                            {advantage.type === 'citizenship' && 'Citoyenneté'}
+                            {advantage.type === 'visa_free' && t('exitKeys.advantageTypes.visaFree', 'Visa-free')}
+                            {advantage.type === 'regional_access' && t('exitKeys.advantageTypes.regionalAccess', 'Accès régional')}
+                            {advantage.type === 'work_permit' && t('exitKeys.advantageTypes.workPermit', 'Travail')}
+                            {advantage.type === 'tax_benefit' && t('exitKeys.advantageTypes.taxBenefit', 'Fiscal')}
+                            {advantage.type === 'residency' && t('exitKeys.advantageTypes.residency', 'Résidence')}
+                            {advantage.type === 'citizenship' && t('exitKeys.advantageTypes.citizenship', 'Citoyenneté')}
                           </span>
                         </div>
                       </div>
@@ -894,11 +894,11 @@ export default function ExitKeys() {
                     <TabsList className="grid w-full grid-cols-2 mb-6">
                       <TabsTrigger value="installation" className="gap-2">
                         <MapPin className="w-4 h-4" />
-                        Installation
+                        {t('exitKeys.results.installationTab', 'Installation')}
                       </TabsTrigger>
                       <TabsTrigger value="vacances" className="gap-2">
                         <Plane className="w-4 h-4" />
-                        Vacances
+                        {t('exitKeys.results.vacationTab', 'Vacances')}
                       </TabsTrigger>
                     </TabsList>
 
@@ -906,13 +906,13 @@ export default function ExitKeys() {
                       <div className="space-y-4">
                         <div className="flex items-center gap-2 mb-4">
                           <Map className="w-5 h-5 text-emerald-500" />
-                          <h3 className="font-semibold">Destinations d'Installation</h3>
+                          <h3 className="font-semibold">{t('exitKeys.results.installationDestinations', "Destinations d'Installation")}</h3>
                           <span className="text-xs px-2 py-1 rounded-full bg-emerald-500/20 text-emerald-400">
-                            Optimisées pour votre profil
+                            {t('exitKeys.results.optimizedForProfile', 'Optimisées pour votre profil')}
                           </span>
                         </div>
                         <p className="text-sm text-muted-foreground mb-4">
-                          Pays où vous pouvez vous installer durablement selon vos nationalités, aspirations et contraintes.
+                          {t('exitKeys.results.installationDescription', 'Pays où vous pouvez vous installer durablement selon vos nationalités, aspirations et contraintes.')}
                         </p>
                         <DestinationMap
                           recommendations={destinationRecommendations}
@@ -927,13 +927,13 @@ export default function ExitKeys() {
                       <div className="space-y-4">
                         <div className="flex items-center gap-2 mb-4">
                           <Plane className="w-5 h-5 text-blue-500" />
-                          <h3 className="font-semibold">Recommandations Vacances</h3>
+                          <h3 className="font-semibold">{t('exitKeys.results.vacationRecommendations', 'Recommandations Vacances')}</h3>
                           <span className="text-xs px-2 py-1 rounded-full bg-blue-500/20 text-blue-400">
-                            Par pouvoir d'achat
+                            {t('exitKeys.results.byPurchasingPower', "Par pouvoir d'achat")}
                           </span>
                         </div>
                         <p className="text-sm text-muted-foreground mb-4">
-                          Destinations où votre salaire vous permet de profiter sans exploser votre budget, tout en progressant vers vos objectifs.
+                          {t('exitKeys.results.vacationDescription', 'Destinations où votre salaire vous permet de profiter sans exploser votre budget, tout en progressant vers vos objectifs.')}
                         </p>
                         <VacationRecommendations
                           currentCountryId={currentCountryId}
@@ -959,7 +959,7 @@ export default function ExitKeys() {
               <div className="bg-accent/30 rounded-xl p-6">
                 <h3 className="font-semibold mb-4 flex items-center gap-2">
                   <Shield className="w-5 h-5 text-primary" />
-                  Principes Stratégiques Clés
+                  {t('exitKeys.results.strategicPrinciples', 'Principes Stratégiques Clés')}
                 </h3>
                 <div className="grid md:grid-cols-2 gap-4">
                   {STRATEGIC_PRINCIPLES.filter(p => 
@@ -981,33 +981,33 @@ export default function ExitKeys() {
                 <div className="flex flex-wrap items-center gap-3">
                   <div className="flex items-center gap-2">
                     <Filter className="w-4 h-4 text-muted-foreground" />
-                    <span className="text-sm font-medium">Filtrer:</span>
+                    <span className="text-sm font-medium">{t('exitKeys.results.filter', 'Filtrer')}:</span>
                   </div>
                   
                   {/* Difficulty Filter */}
                   <Select value={difficultyFilter} onValueChange={setDifficultyFilter}>
                     <SelectTrigger className="w-[140px] h-9">
-                      <SelectValue placeholder="Difficulté" />
+                      <SelectValue placeholder={t('exitKeys.filters.difficulty', 'Difficulté')} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="all">Toutes</SelectItem>
-                      <SelectItem value="easy">Facile</SelectItem>
-                      <SelectItem value="moderate">Modéré</SelectItem>
-                      <SelectItem value="hard">Difficile</SelectItem>
-                      <SelectItem value="expert">Expert</SelectItem>
+                      <SelectItem value="all">{t('exitKeys.filters.allDifficulties', 'Toutes')}</SelectItem>
+                      <SelectItem value="easy">{t('exitKeys.filters.easy', 'Facile')}</SelectItem>
+                      <SelectItem value="moderate">{t('exitKeys.filters.moderate', 'Modéré')}</SelectItem>
+                      <SelectItem value="hard">{t('exitKeys.filters.hard', 'Difficile')}</SelectItem>
+                      <SelectItem value="expert">{t('exitKeys.filters.expert', 'Expert')}</SelectItem>
                     </SelectContent>
                   </Select>
 
                   {/* Duration Filter */}
                   <Select value={durationFilter} onValueChange={setDurationFilter}>
                     <SelectTrigger className="w-[140px] h-9">
-                      <SelectValue placeholder="Durée" />
+                      <SelectValue placeholder={t('exitKeys.filters.duration', 'Durée')} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="all">Toutes</SelectItem>
-                      <SelectItem value="short">1-3 ans</SelectItem>
-                      <SelectItem value="medium">3-7 ans</SelectItem>
-                      <SelectItem value="long">7+ ans</SelectItem>
+                      <SelectItem value="all">{t('exitKeys.filters.allDurations', 'Toutes')}</SelectItem>
+                      <SelectItem value="short">{t('exitKeys.filters.shortTerm', '1-3 ans')}</SelectItem>
+                      <SelectItem value="medium">{t('exitKeys.filters.mediumTerm', '3-7 ans')}</SelectItem>
+                      <SelectItem value="long">{t('exitKeys.filters.longTerm', '7+ ans')}</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -1015,7 +1015,7 @@ export default function ExitKeys() {
                 <Link to="/exit-keys/compare">
                   <Button variant="outline" size="sm" className="gap-2">
                     <Scale className="w-4 h-4" />
-                    Comparer
+                    {t('exitKeys.results.compare', 'Comparer')}
                   </Button>
                 </Link>
               </div>
@@ -1024,8 +1024,10 @@ export default function ExitKeys() {
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-muted-foreground">
-                    {filteredResults.length} stratégie{filteredResults.length > 1 ? 's' : ''} 
-                    {(difficultyFilter !== 'all' || durationFilter !== 'all') && ' (filtrées)'}
+                    {filteredResults.length > 1 
+                      ? t('exitKeys.results.strategiesCountPlural', '{{count}} stratégies', { count: filteredResults.length })
+                      : t('exitKeys.results.strategiesCount', '{{count}} stratégie', { count: filteredResults.length })}
+                    {(difficultyFilter !== 'all' || durationFilter !== 'all') && ` ${t('exitKeys.results.filtered', '(filtrées)')}`}
                   </span>
                   {(difficultyFilter !== 'all' || durationFilter !== 'all') && (
                     <Button 
@@ -1033,7 +1035,7 @@ export default function ExitKeys() {
                       size="sm"
                       onClick={() => { setDifficultyFilter('all'); setDurationFilter('all'); }}
                     >
-                      Réinitialiser
+                      {t('exitKeys.results.reset', 'Réinitialiser')}
                     </Button>
                   )}
                 </div>
@@ -1044,13 +1046,13 @@ export default function ExitKeys() {
                   ))
                 ) : (
                   <div className="text-center py-12 text-muted-foreground">
-                    <p>Aucune stratégie ne correspond aux filtres.</p>
+                    <p>{t('exitKeys.results.noStrategies', 'Aucune stratégie ne correspond aux filtres.')}</p>
                     <Button 
                       variant="outline" 
                       onClick={() => { setDifficultyFilter('all'); setDurationFilter('all'); }} 
                       className="mt-4"
                     >
-                      Réinitialiser les filtres
+                      {t('exitKeys.results.resetFilters', 'Réinitialiser les filtres')}
                     </Button>
                   </div>
                 )}
@@ -1077,11 +1079,11 @@ export default function ExitKeys() {
               <div className="flex flex-wrap justify-center gap-4 pt-8">
                 <Button variant="outline" onClick={handleSaveProfile}>
                   <Save className="w-4 h-4 mr-2" />
-                  Sauvegarder mon profil
+                  {t('exitKeys.results.saveProfile', 'Sauvegarder mon profil')}
                 </Button>
                 <Button variant="ghost" onClick={() => setCurrentStep('origin')}>
                   <RefreshCw className="w-4 h-4 mr-2" />
-                  Recommencer
+                  {t('exitKeys.results.restart', 'Recommencer')}
                 </Button>
               </div>
 
@@ -1089,24 +1091,24 @@ export default function ExitKeys() {
               {!user && (
                 <div className="mt-8 p-6 rounded-xl bg-muted/30 border border-border/50 text-center max-w-xl mx-auto">
                   <p className="text-sm text-muted-foreground mb-3">
-                    Votre simulation est sauvegardée localement sur cet appareil.
+                    {t('exitKeys.guestCta.localSaved', 'Votre simulation est sauvegardée localement sur cet appareil.')}
                   </p>
                   <p className="text-base font-medium text-foreground mb-4">
-                    Créez un compte gratuit pour :
+                    {t('exitKeys.guestCta.createAccount', 'Créez un compte gratuit pour :')}
                   </p>
                   <ul className="text-sm text-muted-foreground space-y-1 mb-5">
-                    <li>✓ Retrouver votre profil sur tous vos appareils</li>
-                    <li>✓ Sauvegarder plusieurs scénarios de comparaison</li>
-                    <li>✓ Accéder au tableau de bord de suivi</li>
-                    <li>✓ Recevoir des mises à jour personnalisées</li>
+                    <li>✓ {t('exitKeys.guestCta.benefit1', 'Retrouver votre profil sur tous vos appareils')}</li>
+                    <li>✓ {t('exitKeys.guestCta.benefit2', 'Sauvegarder plusieurs scénarios de comparaison')}</li>
+                    <li>✓ {t('exitKeys.guestCta.benefit3', 'Accéder au tableau de bord de suivi')}</li>
+                    <li>✓ {t('exitKeys.guestCta.benefit4', 'Recevoir des mises à jour personnalisées')}</li>
                   </ul>
                   <Link to="/auth">
                     <Button variant="secondary" size="sm">
-                      Créer un compte gratuit
+                      {t('exitKeys.guestCta.createAccountBtn', 'Créer un compte gratuit')}
                     </Button>
                   </Link>
                   <p className="text-xs text-muted-foreground/60 mt-3">
-                    Pas obligatoire. Continuez à explorer librement.
+                    {t('exitKeys.guestCta.notRequired', 'Pas obligatoire. Continuez à explorer librement.')}
                   </p>
                 </div>
               )}
@@ -1123,13 +1125,13 @@ export default function ExitKeys() {
               disabled={stepIndex === 0}
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
-              Précédent
+              {t('exitKeys.navigation.previous', 'Précédent')}
             </Button>
             <Button
               onClick={nextStep}
               disabled={!canProceed()}
             >
-              {stepIndex === STEPS.length - 2 ? 'Voir mes clés' : 'Suivant'}
+              {stepIndex === STEPS.length - 2 ? t('exitKeys.navigation.viewKeys', 'Voir mes clés') : t('exitKeys.navigation.next', 'Suivant')}
               <ChevronRight className="w-4 h-4 ml-2" />
             </Button>
           </div>
