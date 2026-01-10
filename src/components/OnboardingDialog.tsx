@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
@@ -14,8 +14,7 @@ import {
   CheckCircle2,
   Sparkles
 } from 'lucide-react';
-
-const ONBOARDING_KEY = 'pyramid-compass-onboarding-complete';
+import { useDialogCoordinator } from './DialogCoordinator';
 
 interface OnboardingStep {
   icon: React.ReactNode;
@@ -59,26 +58,15 @@ const steps: OnboardingStep[] = [
 
 export function OnboardingDialog() {
   const { t } = useTranslation();
-  const [isOpen, setIsOpen] = useState(false);
+  const { shouldShowOnboarding, completeOnboarding } = useDialogCoordinator();
   const [currentStep, setCurrentStep] = useState(0);
 
-  useEffect(() => {
-    const hasCompletedOnboarding = localStorage.getItem(ONBOARDING_KEY);
-    if (!hasCompletedOnboarding) {
-      // Delay slightly for better UX
-      const timer = setTimeout(() => setIsOpen(true), 500);
-      return () => clearTimeout(timer);
-    }
-  }, []);
-
   const handleComplete = () => {
-    localStorage.setItem(ONBOARDING_KEY, 'true');
-    setIsOpen(false);
+    completeOnboarding();
   };
 
   const handleSkip = () => {
-    localStorage.setItem(ONBOARDING_KEY, 'true');
-    setIsOpen(false);
+    completeOnboarding();
   };
 
   const handleNext = () => {
@@ -99,7 +87,7 @@ export function OnboardingDialog() {
   const step = steps[currentStep];
 
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+    <Dialog open={shouldShowOnboarding} onOpenChange={handleSkip}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader className="text-center">
           <div className="flex justify-center mb-4">
@@ -123,7 +111,7 @@ export function OnboardingDialog() {
         </div>
 
         {/* Step indicators */}
-        <div className="flex justify-center gap-2 mb-4">
+        <div className="flex justify-center gap-2 pb-2">
           {steps.map((_, index) => (
             <button
               key={index}
@@ -139,32 +127,34 @@ export function OnboardingDialog() {
           ))}
         </div>
 
-        <DialogFooter className="flex flex-col sm:flex-row gap-2">
-          <Button 
-            variant="ghost" 
+        <DialogFooter className="flex-row justify-between sm:justify-between">
+          <Button
+            variant="ghost"
             onClick={handleSkip}
-            className="sm:mr-auto"
+            className="text-muted-foreground"
           >
-            {t('onboarding.skip', 'Passer')}
+            {t('common.skip', 'Skip')}
           </Button>
           
           <div className="flex gap-2">
             {currentStep > 0 && (
-              <Button variant="outline" onClick={handlePrevious}>
-                <ArrowLeft className="w-4 h-4 mr-1" />
-                {t('onboarding.previous', 'Précédent')}
+              <Button
+                variant="outline"
+                onClick={handlePrevious}
+                size="icon"
+              >
+                <ArrowLeft className="w-4 h-4" />
               </Button>
             )}
-            
             <Button onClick={handleNext} className="gap-2">
               {currentStep === steps.length - 1 ? (
                 <>
-                  <CheckCircle2 className="w-4 h-4" />
-                  {t('onboarding.start', 'Commencer')}
+                  <Sparkles className="w-4 h-4" />
+                  {t('common.start', 'Start')}
                 </>
               ) : (
                 <>
-                  {t('onboarding.next', 'Suivant')}
+                  {t('common.next', 'Next')}
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}
@@ -174,17 +164,4 @@ export function OnboardingDialog() {
       </DialogContent>
     </Dialog>
   );
-}
-
-// Hook to reset onboarding (useful for testing)
-export function useResetOnboarding() {
-  return () => {
-    localStorage.removeItem(ONBOARDING_KEY);
-    window.location.reload();
-  };
-}
-
-// Check if onboarding was completed
-export function useOnboardingCompleted() {
-  return localStorage.getItem(ONBOARDING_KEY) === 'true';
 }
