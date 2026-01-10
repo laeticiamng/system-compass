@@ -5629,9 +5629,19 @@
     "badge": "Orientation Hub",
     "title": "Where to start?",
     "subtitle": "Pyramid Compass helps you understand your real options before any decision. No promises, no shortcuts — just clarity.",
-    "philosophy": {
-      "title": "Our philosophy",
-      "message": "Lucidity is spread through real usage, understanding and responsibility. This platform structures clarity, even when the conclusion is: this option is too risky, unrealistic or destructive."
+    "philosophy": "Pyramid Compass is an orientation platform before decision.",
+    "philosophyDesc": "Enabling everyone to clearly understand their real options, risks, costs, and alternatives, before committing their money, life, or future.",
+    "quickTitle": "Quick access based on your need",
+    "toolsTitle": "All orientation tools",
+    "bestFor": "Best for",
+    "startTool": "Start",
+    "situations": {
+      "country": "I want to change country",
+      "decision": "I have an important decision to make",
+      "understand": "I want to understand systems",
+      "fit": "I want to know if a country fits me",
+      "plan": "I want to plan my trajectory",
+      "compare": "I want to compare several countries"
     },
     "quickSituations": {
       "title": "Your situation",
@@ -5660,25 +5670,39 @@
     },
     "tools": {
       "title": "Available tools",
-      "profileTest": {
-        "title": "Profile Test",
-        "description": "Understand your profile, nationality advantages, and system compatibility"
+      "preventionFilter": {
+        "title": "Prevention Filter",
+        "description": "Identify risks and obstacles before committing to a decision",
+        "bestFor": ["Validate an important decision", "Anticipate hidden obstacles"]
       },
       "exitKeys": {
         "title": "Exit Keys",
-        "description": "Personalized roadmaps based on your situation, goals and constraints"
+        "description": "Personalized roadmaps based on your situation, goals and constraints",
+        "bestFor": ["Plan a life transition", "Structure a mobility project"]
+      },
+      "lifeTrajectory": {
+        "title": "Life Trajectory",
+        "description": "Simulate the evolution of your situation over 10-30 years based on your choices",
+        "bestFor": ["Visualize long-term consequences", "Compare life scenarios"]
+      },
+      "profileTest": {
+        "title": "Profile Test",
+        "description": "Understand your profile, nationality advantages, and system compatibility",
+        "bestFor": ["Discover your archetype", "Identify your strengths and weaknesses"]
+      },
+      "lifeGame": {
+        "title": "Life Game",
+        "description": "Educational game to understand how life decisions work in different systems",
+        "bestFor": ["Learn by playing", "Test strategies without risk"]
+      },
+      "errorsIllusions": {
+        "title": "Errors & Illusions",
+        "description": "Identify the cognitive biases and systemic mistakes that cost years",
+        "bestFor": ["Avoid common mistakes", "Understand cognitive biases"]
       },
       "compare": {
         "title": "Compare",
         "description": "Compare countries, systems and costs to find your best options"
-      },
-      "errorsIllusions": {
-        "title": "Errors & Illusions",
-        "description": "Identify the cognitive biases and systemic mistakes that cost years"
-      },
-      "lifeGame": {
-        "title": "Life Game",
-        "description": "Educational game to understand how life decisions work in different systems"
       },
       "worldMap": {
         "title": "World Map",
