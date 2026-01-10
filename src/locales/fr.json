@@ -5518,5 +5518,131 @@
     "partners": "Partenaires",
     "orientationHub": "Orientation",
     "errorsIllusions": "Erreurs & Illusions"
+  },
+  "exitKeys": {
+    "title": "Trouvez Votre Clé de Sortie",
+    "subtitle": "Simulez et analysez les stratégies adaptées à votre situation",
+    "reminder": "Rappel",
+    "lucidityMessage": "Pyramid Compass structure la lucidité. Si l'analyse révèle que votre option est trop risquée ou irréaliste, nous vous aiderons à explorer des alternatives : rester et entreprendre, migrer autrement, se former d'abord, ou changer d'objectif.",
+    "steps": {
+      "substep": "Sous-étape",
+      "of": "sur"
+    },
+    "origin": {
+      "title": "D'où venez-vous ?",
+      "subtitle": "Votre pays de naissance influence votre point de départ dans le système",
+      "birthCountry": "Pays de naissance",
+      "selectBirthCountry": "Sélectionnez votre pays de naissance",
+      "nationality": "Nationalité(s)",
+      "multiNationalitySupported": "(multi-nationalité supportée)",
+      "nationalityExplain": "Vos nationalités déterminent les visas et opportunités accessibles",
+      "addNationality": "Ajouter une autre nationalité",
+      "selectNationality": "Sélectionnez votre nationalité",
+      "addBirthNationality": "Ajouter nationalité du pays de naissance"
+    },
+    "current": {
+      "title": "Où êtes-vous maintenant ?",
+      "subtitle": "Votre pays actuel détermine les contraintes et opportunités disponibles",
+      "selectCountry": "Sélectionnez votre pays actuel",
+      "sameAsBirth": "Même pays que naissance",
+      "whoWins": "Qui gagne ici",
+      "whoLoses": "Qui perd ici"
+    },
+    "profile": {
+      "title": "Quel est votre profil ?",
+      "subtitle": "Votre formation et métier déterminent les stratégies accessibles",
+      "educationLevel": "Niveau d'études",
+      "selectEducation": "Sélectionnez votre niveau d'études",
+      "profession": "Métier actuel",
+      "selectProfession": "Sélectionnez votre métier",
+      "compatibleStrategies": "stratégies compatibles avec ce métier",
+      "motorProfile": "Votre moteur de vie",
+      "riskTolerance": "Tolérance au risque",
+      "timeHorizon": "Horizon temporel",
+      "hasCapital": "J'ai du capital disponible (> 50k€)",
+      "hasCredentials": "J'ai des diplômes/certifications reconnus",
+      "hasNetwork": "J'ai un réseau professionnel solide",
+      "hasFamily": "J'ai une famille à considérer",
+      "isLGBTQ": "Je suis LGBTQ+"
+    },
+    "goals": {
+      "title": "Que recherchez-vous ?",
+      "subtitle": "Votre priorité de vie oriente la destination idéale",
+      "profileSummary": "Résumé de votre profil",
+      "origin": "Origine",
+      "current": "Actuel",
+      "profile": "Profil",
+      "priority": "Priorité"
+    },
+    "results": {
+      "title": "Vos Clés de Sortie",
+      "strategiesFound": "stratégies identifiées pour votre situation",
+      "nationalityAdvantages": "Avantages de vos Nationalités",
+      "visaFreeCountries": "pays sans visa",
+      "memberOf": "Membre de",
+      "regionalBlocs": "Blocs régionaux",
+      "installation": "Installation",
+      "vacation": "Vacances"
+    },
+    "filters": {
+      "title": "Filtrer les stratégies",
+      "difficulty": "Difficulté",
+      "duration": "Durée",
+      "all": "Toutes",
+      "accessible": "Accessible",
+      "demanding": "Exigeant",
+      "expert": "Expert",
+      "short": "Court terme",
+      "medium": "Moyen terme",
+      "long": "Long terme",
+      "resetFilters": "Réinitialiser les filtres"
+    },
+    "principles": {
+      "title": "Principes Stratégiques",
+      "subtitle": "Règles d'or à garder en tête dans votre trajectoire"
+    },
+    "actions": {
+      "saveProfile": "Sauvegarder mon profil",
+      "restart": "Recommencer",
+      "seeMyKeys": "Voir mes clés",
+      "previous": "Précédent",
+      "next": "Suivant"
+    },
+    "guest": {
+      "savedLocally": "Votre simulation est sauvegardée localement sur cet appareil.",
+      "createAccount": "Créez un compte gratuit pour :",
+      "benefits": {
+        "sync": "Retrouver votre profil sur tous vos appareils",
+        "scenarios": "Sauvegarder plusieurs scénarios de comparaison",
+        "dashboard": "Accéder au tableau de bord de suivi",
+        "updates": "Recevoir des mises à jour personnalisées"
+      },
+      "createFreeAccount": "Créer un compte gratuit",
+      "notRequired": "Pas obligatoire. Continuez à explorer librement."
+    },
+    "risk": {
+      "prudent": "Prudent",
+      "prudentDesc": "Je préfère la sécurité",
+      "balanced": "Équilibré",
+      "balancedDesc": "Risques calculés",
+      "bold": "Audacieux",
+      "boldDesc": "Je vise haut"
+    },
+    "time": {
+      "short": "1-3 ans",
+      "shortDesc": "Résultats rapides",
+      "medium": "3-7 ans",
+      "mediumDesc": "Progression stable",
+      "long": "7+ ans",
+      "longDesc": "Vision long terme"
+    },
+    "priorities": {
+      "freedom": "Liberté",
+      "money": "Argent",
+      "meaning": "Sens",
+      "status": "Statut",
+      "family": "Famille",
+      "calm": "Sérénité"
+    }
   }
 }

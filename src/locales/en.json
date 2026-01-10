@@ -5539,5 +5539,131 @@
     "partners": "Partners",
     "orientationHub": "Orientation",
     "errorsIllusions": "Errors & Illusions"
+  },
+  "exitKeys": {
+    "title": "Find Your Exit Key",
+    "subtitle": "Simulate and analyze strategies suited to your situation",
+    "reminder": "Reminder",
+    "lucidityMessage": "Pyramid Compass structures lucidity. If the analysis reveals your option is too risky or unrealistic, we'll help you explore alternatives: stay and build, migrate differently, train first, or change your goal.",
+    "steps": {
+      "substep": "Sub-step",
+      "of": "of"
+    },
+    "origin": {
+      "title": "Where are you from?",
+      "subtitle": "Your birth country influences your starting point in the system",
+      "birthCountry": "Birth country",
+      "selectBirthCountry": "Select your birth country",
+      "nationality": "Nationality(ies)",
+      "multiNationalitySupported": "(multi-nationality supported)",
+      "nationalityExplain": "Your nationalities determine accessible visas and opportunities",
+      "addNationality": "Add another nationality",
+      "selectNationality": "Select your nationality",
+      "addBirthNationality": "Add birth country nationality"
+    },
+    "current": {
+      "title": "Where are you now?",
+      "subtitle": "Your current country determines available constraints and opportunities",
+      "selectCountry": "Select your current country",
+      "sameAsBirth": "Same as birth country",
+      "whoWins": "Who wins here",
+      "whoLoses": "Who loses here"
+    },
+    "profile": {
+      "title": "What's your profile?",
+      "subtitle": "Your education and profession determine accessible strategies",
+      "educationLevel": "Education level",
+      "selectEducation": "Select your education level",
+      "profession": "Current profession",
+      "selectProfession": "Select your profession",
+      "compatibleStrategies": "strategies compatible with this profession",
+      "motorProfile": "Your life driver",
+      "riskTolerance": "Risk tolerance",
+      "timeHorizon": "Time horizon",
+      "hasCapital": "I have available capital (> €50k)",
+      "hasCredentials": "I have recognized diplomas/certifications",
+      "hasNetwork": "I have a solid professional network",
+      "hasFamily": "I have a family to consider",
+      "isLGBTQ": "I am LGBTQ+"
+    },
+    "goals": {
+      "title": "What are you looking for?",
+      "subtitle": "Your life priority guides the ideal destination",
+      "profileSummary": "Your profile summary",
+      "origin": "Origin",
+      "current": "Current",
+      "profile": "Profile",
+      "priority": "Priority"
+    },
+    "results": {
+      "title": "Your Exit Keys",
+      "strategiesFound": "strategies identified for your situation",
+      "nationalityAdvantages": "Your Nationality Advantages",
+      "visaFreeCountries": "visa-free countries",
+      "memberOf": "Member of",
+      "regionalBlocs": "Regional blocs",
+      "installation": "Installation",
+      "vacation": "Vacation"
+    },
+    "filters": {
+      "title": "Filter strategies",
+      "difficulty": "Difficulty",
+      "duration": "Duration",
+      "all": "All",
+      "accessible": "Accessible",
+      "demanding": "Demanding",
+      "expert": "Expert",
+      "short": "Short term",
+      "medium": "Medium term",
+      "long": "Long term",
+      "resetFilters": "Reset filters"
+    },
+    "principles": {
+      "title": "Strategic Principles",
+      "subtitle": "Golden rules to keep in mind in your trajectory"
+    },
+    "actions": {
+      "saveProfile": "Save my profile",
+      "restart": "Start over",
+      "seeMyKeys": "See my keys",
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "guest": {
+      "savedLocally": "Your simulation is saved locally on this device.",
+      "createAccount": "Create a free account to:",
+      "benefits": {
+        "sync": "Access your profile on all your devices",
+        "scenarios": "Save multiple comparison scenarios",
+        "dashboard": "Access the tracking dashboard",
+        "updates": "Receive personalized updates"
+      },
+      "createFreeAccount": "Create free account",
+      "notRequired": "Not required. Continue exploring freely."
+    },
+    "risk": {
+      "prudent": "Prudent",
+      "prudentDesc": "I prefer safety",
+      "balanced": "Balanced",
+      "balancedDesc": "Calculated risks",
+      "bold": "Bold",
+      "boldDesc": "I aim high"
+    },
+    "time": {
+      "short": "1-3 years",
+      "shortDesc": "Quick results",
+      "medium": "3-7 years",
+      "mediumDesc": "Stable progression",
+      "long": "7+ years",
+      "longDesc": "Long-term vision"
+    },
+    "priorities": {
+      "freedom": "Freedom",
+      "money": "Money",
+      "meaning": "Meaning",
+      "status": "Status",
+      "family": "Family",
+      "calm": "Serenity"
+    }
   }
 }
