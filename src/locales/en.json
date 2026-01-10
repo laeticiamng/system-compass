@@ -6311,5 +6311,40 @@
       "softReminders": "Suggested reminders",
       "softRemindersDesc": "Reminder recommendations based on progress"
     }
+  },
+  "usage": {
+    "title": "Usage",
+    "subtitle": "Track your AI usage and resources",
+    "loginRequired": "Login required",
+    "loginDescription": "Log in to see your usage.",
+    "currentPeriod": "Current period",
+    "noData": "No data",
+    "caseUnits": "Case Units",
+    "aiActions": "AI Actions",
+    "agentRuns": "Agent runs",
+    "dossiers": "Dossiers",
+    "exports": "Exports",
+    "tokensUsed": "Tokens used",
+    "activityLog": "Activity log",
+    "activityLogDesc": "Your last 50 AI actions",
+    "noActivity": "No AI activity recorded",
+    "nearLimit": "Approaching limit",
+    "nearLimitDesc": "You have used {percent}% of your monthly quota.",
+    "atLimit": "Limit reached",
+    "atLimitDesc": "AI actions are temporarily blocked. Top up your account.",
+    "upgrade": "Upgrade",
+    "topUp": "Top up"
+  },
+  "report": {
+    "title": "B2B Report Generator",
+    "description": "Generate a structured, exportable report for your clients",
+    "generating": "Generating...",
+    "generated": "Report generated successfully",
+    "error": "Generation error",
+    "generate": "Generate report",
+    "exportPdf": "Export PDF",
+    "exported": "PDF export started",
+    "regenerate": "Regenerate",
+    "disclaimer": "This report is an analysis tool. It does not constitute legal, financial or tax advice."
   }
 }
