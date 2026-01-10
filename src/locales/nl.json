@@ -2906,10 +2906,12 @@
     "subtitle": "Machtsdynamiek en sociale strategieën",
     "disclaimer": "Analysetool: geen advies. Simulatie ≠ voorspelling.",
     "disclaimerVariations": "Algemene trends, individuele variaties mogelijk.",
+    "translating": "Vertaling bezig...",
     "paywallTitle": "Systeemintelligentie",
     "paywallDesc": "Toegang tot machtsdynamiek, sociale strategieën en historische erfenis van dit land.",
     "comingSoon": "Systeemintelligentie binnenkort beschikbaar",
     "comingSoonDesc": "We werken aan de grondige analyse van dit land. Kom snel terug.",
+    "tagsTitle": "Systeemindicatoren (1-5)",
     "tabs": {
       "powerMap": "Machtskaart",
       "socialOS": "Sociaal systeem",

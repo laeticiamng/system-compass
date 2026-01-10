@@ -5045,6 +5045,12 @@
     "subtitle": "Dynamiques de pouvoir et stratégies sociales",
     "disclaimer": "Outil d'analyse : pas de conseil. Simulation ≠ prédiction.",
     "disclaimerVariations": "Tendances générales, variations individuelles possibles.",
+    "translating": "Traduction en cours...",
+    "paywallTitle": "Intelligence Système",
+    "paywallDesc": "Accédez aux dynamiques de pouvoir, stratégies sociales et héritages historiques de ce pays.",
+    "comingSoon": "Intelligence Système bientôt disponible",
+    "comingSoonDesc": "Nous travaillons sur l'analyse approfondie de ce pays. Revenez bientôt.",
+    "tagsTitle": "Indicateurs système (1-5)",
     "tabs": {
       "powerMap": "Carte du pouvoir",
       "socialOS": "Système social",

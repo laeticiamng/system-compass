@@ -2906,10 +2906,12 @@
     "subtitle": "Machtdynamiken und soziale Strategien",
     "disclaimer": "Analysewerkzeug: keine Beratung. Simulation ≠ Vorhersage.",
     "disclaimerVariations": "Allgemeine Trends, individuelle Variationen möglich.",
+    "translating": "Übersetzung läuft...",
     "paywallTitle": "System-Intelligenz",
     "paywallDesc": "Zugang zu Machtdynamiken, sozialen Strategien und historischem Erbe dieses Landes.",
     "comingSoon": "System-Intelligenz bald verfügbar",
     "comingSoonDesc": "Wir arbeiten an einer eingehenden Analyse dieses Landes. Kommen Sie bald wieder.",
+    "tagsTitle": "Systemindikatoren (1-5)",
     "tabs": {
       "powerMap": "Machtkarte",
       "socialOS": "Soziales System",
