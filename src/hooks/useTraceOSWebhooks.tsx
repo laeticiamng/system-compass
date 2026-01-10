@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
+import { useToast } from '@/hooks/use-toast';
 import { toast } from 'sonner';
 
 type WebhookEvent = 'decision_created' | 'decision_updated' | 'decision_validated' | 'decision_abandoned';
@@ -183,6 +184,40 @@ export function useTraceOSWebhooks() {
     }
   }, [user, webhooks]);
 
+  // Trigger webhooks for a specific event
+  const triggerWebhooksForEvent = useCallback(async (
+    event: WebhookEvent,
+    payload: Record<string, unknown>
+  ): Promise<boolean> => {
+    if (!user) return false;
+
+    try {
+      const { error } = await supabase.functions.invoke('traceos-webhooks', {
+        body: {
+          userId: user.id,
+          event,
+          payload,
+        },
+      });
+
+      if (error) throw error;
+      return true;
+    } catch (err) {
+      console.error('Error triggering webhooks:', err);
+      return false;
+    }
+  }, [user]);
+
+  // Get webhooks for a specific event
+  const getWebhooksForEvent = useCallback((event: WebhookEvent): Webhook[] => {
+    return webhooks.filter(w => w.is_active && w.events.includes(event));
+  }, [webhooks]);
+
+  // Check if there are active webhooks for an event
+  const hasWebhooksForEvent = useCallback((event: WebhookEvent): boolean => {
+    return webhooks.some(w => w.is_active && w.events.includes(event));
+  }, [webhooks]);
+
   useEffect(() => {
     fetchWebhooks();
   }, [fetchWebhooks]);
@@ -194,11 +229,14 @@ export function useTraceOSWebhooks() {
     updateWebhook,
     deleteWebhook,
     testWebhook,
+    triggerWebhooksForEvent,
+    getWebhooksForEvent,
+    hasWebhooksForEvent,
     refreshWebhooks: fetchWebhooks,
   };
 }
 
-// Utility to trigger webhooks for an event
+// Utility to trigger webhooks for an event (standalone function)
 export async function triggerWebhooks(
   userId: string,
   event: WebhookEvent,

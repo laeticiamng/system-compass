@@ -533,6 +533,54 @@ export type Database = {
         }
         Relationships: []
       }
+      generation_notifications: {
+        Row: {
+          batch_id: string | null
+          created_at: string | null
+          id: string
+          job_id: string | null
+          message: string
+          notification_type: string
+          read: boolean | null
+          user_id: string
+        }
+        Insert: {
+          batch_id?: string | null
+          created_at?: string | null
+          id?: string
+          job_id?: string | null
+          message: string
+          notification_type: string
+          read?: boolean | null
+          user_id: string
+        }
+        Update: {
+          batch_id?: string | null
+          created_at?: string | null
+          id?: string
+          job_id?: string | null
+          message?: string
+          notification_type?: string
+          read?: boolean | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "generation_notifications_batch_id_fkey"
+            columns: ["batch_id"]
+            isOneToOne: false
+            referencedRelation: "country_generation_batches"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "generation_notifications_job_id_fkey"
+            columns: ["job_id"]
+            isOneToOne: false
+            referencedRelation: "country_generation_jobs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       i18n_coverage_alerts: {
         Row: {
           alert_sent: boolean | null
@@ -1612,6 +1660,27 @@ export type Database = {
         }
         Relationships: []
       }
+      user_roles: {
+        Row: {
+          created_at: string | null
+          id: string
+          role: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          role: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          role?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_subscriptions: {
         Row: {
           created_at: string
@@ -1651,6 +1720,33 @@ export type Database = {
         }
         Relationships: []
       }
+      vacation_recommendations: {
+        Row: {
+          created_at: string | null
+          destinations: Json
+          id: string
+          origin_country: string
+          preferences: Json | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          destinations?: Json
+          id?: string
+          origin_country: string
+          preferences?: Json | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          destinations?: Json
+          id?: string
+          origin_country?: string
+          preferences?: Json | null
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       analytics_daily_stats: {
@@ -1665,7 +1761,7 @@ export type Database = {
       }
     }
     Functions: {
-      [_ in never]: never
+      has_role: { Args: { _role: string; _user_id: string }; Returns: boolean }
     }
     Enums: {
       game_mode: "solo" | "race" | "points_duel" | "cooperative"
