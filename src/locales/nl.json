@@ -3330,5 +3330,40 @@
       "noCommitment": "Geen verplichting",
       "instantAccess": "Directe toegang"
     }
+  },
+  "usage": {
+    "title": "Verbruik",
+    "subtitle": "Volg je AI-gebruik en bronnen",
+    "loginRequired": "Inloggen vereist",
+    "loginDescription": "Log in om je verbruik te zien.",
+    "currentPeriod": "Huidige periode",
+    "noData": "Geen gegevens",
+    "caseUnits": "Case-eenheden",
+    "aiActions": "AI-acties",
+    "agentRuns": "Agent-runs",
+    "dossiers": "Dossiers",
+    "exports": "Exports",
+    "tokensUsed": "Gebruikte tokens",
+    "activityLog": "Activiteitenlogboek",
+    "activityLogDesc": "Je laatste 50 AI-acties",
+    "noActivity": "Geen AI-activiteit geregistreerd",
+    "nearLimit": "Limiet nadert",
+    "nearLimitDesc": "Je hebt {percent}% van je maandelijkse quota gebruikt.",
+    "atLimit": "Limiet bereikt",
+    "atLimitDesc": "AI-acties zijn tijdelijk geblokkeerd. Laad je account op.",
+    "upgrade": "Upgraden",
+    "topUp": "Opwaarderen"
+  },
+  "report": {
+    "title": "B2B-rapportgenerator",
+    "description": "Genereer een gestructureerd, exporteerbaar rapport voor je klanten",
+    "generating": "Genereren...",
+    "generated": "Rapport succesvol gegenereerd",
+    "error": "Generatiefout",
+    "generate": "Rapport genereren",
+    "exportPdf": "PDF exporteren",
+    "exported": "PDF-export gestart",
+    "regenerate": "Opnieuw genereren",
+    "disclaimer": "Dit rapport is een analysetool. Het vormt geen juridisch, financieel of fiscaal advies."
   }
 }

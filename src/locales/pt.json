@@ -3330,5 +3330,40 @@
       "noCommitment": "Sem compromisso",
       "instantAccess": "Acesso imediato"
     }
+  },
+  "usage": {
+    "title": "Consumo",
+    "subtitle": "Acompanhe seu uso de IA e recursos",
+    "loginRequired": "Login necessário",
+    "loginDescription": "Faça login para ver seu consumo.",
+    "currentPeriod": "Período atual",
+    "noData": "Sem dados",
+    "caseUnits": "Unidades Case",
+    "aiActions": "Ações IA",
+    "agentRuns": "Execuções de agentes",
+    "dossiers": "Dossiês",
+    "exports": "Exportações",
+    "tokensUsed": "Tokens utilizados",
+    "activityLog": "Registro de atividades",
+    "activityLogDesc": "Suas últimas 50 ações IA",
+    "noActivity": "Nenhuma atividade IA registrada",
+    "nearLimit": "Aproximando do limite",
+    "nearLimitDesc": "Você usou {percent}% da sua cota mensal.",
+    "atLimit": "Limite atingido",
+    "atLimitDesc": "Ações IA estão temporariamente bloqueadas. Recarregue sua conta.",
+    "upgrade": "Atualizar",
+    "topUp": "Recarregar"
+  },
+  "report": {
+    "title": "Gerador de relatórios B2B",
+    "description": "Gere um relatório estruturado e exportável para seus clientes",
+    "generating": "Gerando...",
+    "generated": "Relatório gerado com sucesso",
+    "error": "Erro de geração",
+    "generate": "Gerar relatório",
+    "exportPdf": "Exportar PDF",
+    "exported": "Exportação PDF iniciada",
+    "regenerate": "Regenerar",
+    "disclaimer": "Este relatório é uma ferramenta de análise. Não constitui aconselhamento jurídico, financeiro ou fiscal."
   }
 }
