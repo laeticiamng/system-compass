@@ -5994,5 +5994,144 @@
       "updatedAt": "Mise à jour le",
       "tensionsCount": "Nombre de tensions"
     }
+  },
+  "irreversa": {
+    "title": "Protocole de Seuil",
+    "subtitle": "Identifier et traverser les points d'irréversibilité stratégique",
+    "paywall": {
+      "title": "IRREVERSA - Enterprise",
+      "description": "Module B2B pour les décisions irréversibles"
+    },
+    "status": {
+      "detected": "Détecté",
+      "marked": "Marqué",
+      "validated": "Validé",
+      "sealed": "Scellé"
+    },
+    "domain": {
+      "strategic": "Stratégique",
+      "financial": "Financier",
+      "organizational": "Organisationnel",
+      "legal": "Juridique",
+      "ethical": "Éthique"
+    },
+    "nature": {
+      "resource_commitment": "Engagement de ressources",
+      "contractual": "Contractuel",
+      "reputational": "Réputationnel",
+      "structural": "Structurel",
+      "temporal": "Temporel"
+    },
+    "source": {
+      "compass_analysis": "Analyse Compass",
+      "manual": "Manuel",
+      "external_signal": "Signal externe"
+    },
+    "role": {
+      "ceo": "CEO",
+      "board": "Conseil d'administration",
+      "founder": "Fondateur",
+      "director": "Directeur",
+      "comex": "COMEX"
+    },
+    "fields": {
+      "title": "Titre",
+      "context": "Contexte",
+      "domain": "Domaine",
+      "detectionSource": "Source de détection",
+      "nature": "Nature du seuil",
+      "irreversibilityReason": "Raison de l'irréversibilité",
+      "frozenAlternatives": "Alternatives gelées",
+      "validator": "Validateur",
+      "validatorRole": "Rôle du validateur",
+      "organization": "Organisation",
+      "detectionDate": "Date de détection",
+      "validationStatement": "Déclaration de validation",
+      "actorName": "Nom de l'acteur",
+      "actorRole": "Rôle de l'acteur"
+    },
+    "placeholders": {
+      "title": "Ex: Fusion avec CompanyX",
+      "context": "Décrivez le contexte stratégique...",
+      "irreversibilityReason": "Pourquoi ce seuil est-il irréversible ?",
+      "alternative": "Alternative abandonnée...",
+      "validator": "Nom complet du validateur",
+      "organization": "Nom de l'organisation",
+      "validationStatement": "Je confirme avoir compris les implications...",
+      "actorName": "Votre nom complet"
+    },
+    "hints": {
+      "alternatives": "Listez les alternatives qui seront définitivement abandonnées"
+    },
+    "actions": {
+      "newThreshold": "Nouveau seuil",
+      "detect": "Détecter le seuil",
+      "mark": "Marquer",
+      "validate": "Valider",
+      "seal": "Sceller définitivement",
+      "view": "Voir détails",
+      "addAlternative": "Ajouter une alternative"
+    },
+    "warning": {
+      "title": "Protocole d'irréversibilité",
+      "noCancellation": "Pas d'annulation possible",
+      "noEdit": "Pas d'édition rétroactive",
+      "noScoring": "Pas de scoring",
+      "noRecommendation": "Pas de recommandation"
+    },
+    "create": {
+      "title": "Détecter un seuil d'irréversibilité",
+      "warning": "Ce formulaire engage la responsabilité morale du validateur"
+    },
+    "sealed": {
+      "title": "Seuil scellé définitivement",
+      "description": "Ce seuil a été scellé et ne peut plus être modifié.",
+      "notice": "Scellé le",
+      "timestamp": "Horodatage"
+    },
+    "tabs": {
+      "details": "Détails",
+      "witnesses": "Témoins",
+      "audit": "Audit"
+    },
+    "witnesses": {
+      "empty": "Aucun témoin enregistré"
+    },
+    "audit": {
+      "empty": "Aucune entrée d'audit",
+      "action": {
+        "created": "Seuil créé",
+        "marked": "Seuil marqué",
+        "witness_added": "Témoin ajouté",
+        "validated": "Seuil validé",
+        "sealed": "Seuil scellé"
+      }
+    },
+    "dialog": {
+      "mark": {
+        "title": "Marquer le seuil",
+        "description": "Confirmez le marquage de ce point de non-retour"
+      },
+      "validate": {
+        "title": "Valider le seuil",
+        "description": "Fournissez une déclaration de validation explicite"
+      },
+      "seal": {
+        "title": "Sceller définitivement",
+        "description": "Cette action est IRRÉVERSIBLE",
+        "warning": "Une fois scellé, ce seuil ne pourra JAMAIS être modifié ou annulé."
+      }
+    },
+    "toast": {
+      "created": "Seuil détecté avec succès",
+      "marked": "Seuil marqué",
+      "validated": "Seuil validé",
+      "sealed": "Seuil scellé définitivement"
+    },
+    "empty": {
+      "title": "Aucun seuil d'irréversibilité",
+      "description": "Identifiez les points de non-retour stratégiques"
+    },
+    "demoMode": "Connectez-vous pour utiliser IRREVERSA"
   }
 }
