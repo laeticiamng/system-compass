@@ -1,4 +1,5 @@
 import { Check, User, BarChart3, Key } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
 
 export type JourneyPhase = 'profile' | 'options' | 'keys';
@@ -9,12 +10,13 @@ interface JourneyProgressBarProps {
 }
 
 const PHASES = [
-  { id: 'profile' as const, label: 'Ton profil', icon: User },
-  { id: 'options' as const, label: 'Tes options', icon: BarChart3 },
-  { id: 'keys' as const, label: 'Tes clés', icon: Key },
+  { id: 'profile' as const, labelKey: 'journey.profile', icon: User },
+  { id: 'options' as const, labelKey: 'journey.options', icon: BarChart3 },
+  { id: 'keys' as const, labelKey: 'journey.keys', icon: Key },
 ];
 
 export function JourneyProgressBar({ currentPhase, className }: JourneyProgressBarProps) {
+  const { t } = useTranslation();
   const currentIndex = PHASES.findIndex(p => p.id === currentPhase);
   
   return (
@@ -66,7 +68,7 @@ export function JourneyProgressBar({ currentPhase, className }: JourneyProgressB
                   isPending && "text-muted-foreground"
                 )}
               >
-                {phase.label}
+                {t(phase.labelKey)}
               </span>
             </div>
           );
