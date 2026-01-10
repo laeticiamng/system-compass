@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
-import { Compass, Map, FileText, Scale, Triangle, Gamepad2, LogIn, LogOut, User, Key, LayoutDashboard, Menu, Play, Info, AlertCircle, X, Shield, BookOpen, CreditCard, Globe, Settings, Building2, Eye } from 'lucide-react';
+import { Compass, Map, FileText, Scale, Triangle, Gamepad2, LogIn, LogOut, User, Key, LayoutDashboard, Menu, Play, Info, AlertCircle, X, Shield, BookOpen, CreditCard, Globe, Settings, Building2, Eye, Users } from 'lucide-react';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { GlobalSearch } from './GlobalSearch';
 import { useAuth } from '@/hooks/useAuth';
@@ -44,18 +44,19 @@ export function Header() {
   // Navigation simplifiée et claire
   const navItems = [
     { href: '/', label: t('nav.start'), icon: Compass },
-    { href: '/prevention-filter', label: t('nav.preventionFilter', 'Filtre'), icon: Shield, highlight: true },
-    { href: '/world-map', label: t('nav.worldMap', 'Carte'), icon: Globe, highlight: true },
-    { href: '/universal-errors', label: t('nav.universalErrors', 'Erreurs'), icon: BookOpen },
+    { href: '/orientation-hub', label: t('nav.orientationHub', 'Orientation'), icon: Compass, highlight: true },
+    { href: '/prevention-filter', label: t('nav.preventionFilter', 'Filtre'), icon: Shield },
+    { href: '/world-map', label: t('nav.worldMap', 'Carte'), icon: Globe },
+    { href: '/errors-illusions', label: t('nav.errorsIllusions', 'Erreurs'), icon: BookOpen },
     { href: '/countries', label: t('nav.countries'), icon: Map },
     { href: '/pyramid-types', label: t('nav.pyramids'), icon: Triangle },
-    { href: '/systemic-mistakes', label: t('nav.systemicMistakes'), icon: AlertCircle },
     { href: '/life-game', label: t('nav.lifeGame'), icon: Play },
     { href: '/exit-keys', label: t('nav.exitKeys'), icon: Key },
     { href: '/compare', label: t('nav.compare'), icon: Scale },
     { href: '/dashboard', label: t('nav.dashboard'), icon: LayoutDashboard },
     { href: '/pricing', label: t('nav.pricing', 'Tarifs'), icon: CreditCard },
-    { href: '/b2b', label: t('nav.b2b', 'B2B'), icon: Building2, highlight: true },
+    { href: '/partners', label: t('nav.partners', 'Partenaires'), icon: Users, highlight: true },
+    { href: '/b2b', label: t('nav.b2b', 'B2B'), icon: Building2 },
     { href: '/resources', label: t('nav.resources'), icon: FileText },
     { href: '/about', label: t('footer.about'), icon: Info },
   ];

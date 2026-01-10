@@ -40,6 +40,8 @@ import PreventionFilter from "./pages/PreventionFilter";
 import UniversalErrors from "./pages/UniversalErrors";
 import UniversalErrorDetail from "./pages/UniversalErrorDetail";
 import QuickTest from "./pages/QuickTest";
+import ErrorsAndIllusions from "./pages/ErrorsAndIllusions";
+import OrientationHub from "./pages/OrientationHub";
 import SubscriptionSuccess from "./pages/SubscriptionSuccess";
 import Pricing from "./pages/Pricing";
 import ProfileMatcher from "./pages/ProfileMatcher";
@@ -95,6 +97,8 @@ const App = () => (
                     <Route path="/prevention-filter" element={<PreventionFilter />} />
                     <Route path="/universal-errors" element={<UniversalErrors />} />
                     <Route path="/universal-errors/:id" element={<UniversalErrorDetail />} />
+                    <Route path="/errors-illusions" element={<ErrorsAndIllusions />} />
+                    <Route path="/orientation-hub" element={<OrientationHub />} />
                     <Route path="/quick-test" element={<QuickTest />} />
                     <Route path="/subscription-success" element={<SubscriptionSuccess />} />
                     <Route path="/pricing" element={<Pricing />} />

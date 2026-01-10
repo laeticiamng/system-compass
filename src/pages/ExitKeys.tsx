@@ -287,6 +287,15 @@ export default function ExitKeys() {
             </div>
           </div>
 
+          {/* Central Philosophy Message */}
+          <div className="mb-8 p-4 rounded-xl bg-gradient-to-r from-primary/5 to-amber-500/5 border border-primary/20">
+            <p className="text-sm text-center text-muted-foreground">
+              <strong className="text-foreground">Rappel :</strong> Pyramid Compass structure la lucidité. 
+              Si l'analyse révèle que votre option est trop risquée ou irréaliste, 
+              nous vous aiderons à explorer des alternatives : rester et entreprendre, migrer autrement, se former d'abord, ou changer d'objectif.
+            </p>
+          </div>
+
           {/* Detailed step progress (below sticky bar) */}
           {currentStep !== 'results' && (
             <div className="mt-4 p-3 rounded-lg bg-muted/30 border border-border/50">
