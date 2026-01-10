@@ -41,3 +41,6 @@ verify_jwt = false
 
 [functions.ai-assist]
 verify_jwt = false
+
+[functions.dashboard-reminders]
+verify_jwt = false
