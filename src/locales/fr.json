@@ -6413,5 +6413,225 @@
       "softReminders": "Rappels suggérés",
       "softRemindersDesc": "Recommandations de rappels basées sur l'avancement"
     }
+  },
+  "usage": {
+    "title": "Consommation",
+    "subtitle": "Suivi de votre utilisation IA et ressources",
+    "loginRequired": "Connexion requise",
+    "loginDescription": "Connectez-vous pour voir votre consommation.",
+    "currentPeriod": "Période en cours",
+    "noData": "Aucune donnée",
+    "caseUnits": "Unités Case",
+    "aiActions": "Actions IA",
+    "agentRuns": "Agents exécutés",
+    "dossiers": "Dossiers",
+    "exports": "Exports",
+    "tokensUsed": "Tokens utilisés",
+    "activityLog": "Historique d'activité",
+    "activityLogDesc": "Vos 50 dernières actions IA",
+    "noActivity": "Aucune activité IA enregistrée",
+    "nearLimit": "Vous approchez de votre limite",
+    "nearLimitDesc": "Vous avez utilisé {percent}% de votre quota mensuel.",
+    "atLimit": "Limite atteinte",
+    "atLimitDesc": "Les actions IA sont temporairement bloquées. Rechargez votre compte.",
+    "upgrade": "Augmenter",
+    "topUp": "Recharger"
+  },
+  "report": {
+    "title": "Générateur de Rapport B2B",
+    "description": "Générez un rapport structuré et exportable pour vos clients",
+    "sections": {
+      "executive": "Résumé exécutif",
+      "profile": "Profil client",
+      "analysis": "Analyse comparative",
+      "risks": "Points d'attention",
+      "nextSteps": "Prochaines étapes",
+      "compliance": "Vérification conformité"
+    },
+    "generating": "Génération en cours...",
+    "generated": "Rapport généré avec succès",
+    "error": "Erreur lors de la génération",
+    "preview": "Aperçu du rapport",
+    "disclaimer": "Ce rapport est un outil d'analyse. Il ne constitue pas un conseil juridique, financier ou fiscal.",
+    "generate": "Générer le rapport",
+    "exportPdf": "Exporter PDF",
+    "exported": "Export PDF lancé",
+    "regenerate": "Régénérer"
+  },
+  "latent": {
+    "title": "Zones Latentes",
+    "subtitle": "Identifiez et surveillez les zones de votre vie qui sont en tension mais pas encore en crise.",
+    "badge": "Module Latent",
+    "newZone": "Nouvelle zone",
+    "tabs": {
+      "zones": "Zones",
+      "graph": "Graphe",
+      "history": "Historique",
+      "philosophy": "Philosophie"
+    },
+    "status": {
+      "dormant": "Dormante",
+      "emergent": "Émergente",
+      "fragile": "Fragile",
+      "blocked": "Bloquée"
+    },
+    "filter": {
+      "all": "Toutes"
+    },
+    "search": {
+      "placeholder": "Rechercher une zone..."
+    },
+    "sort": {
+      "newest": "Plus récentes",
+      "oldest": "Plus anciennes",
+      "alphabetical": "Alphabétique",
+      "tensions": "Par tensions"
+    },
+    "tension": {
+      "nourishing": "Nourricière",
+      "blocking": "Bloquante",
+      "fragility": "Fragilité",
+      "premature_crushing": "Écrasement prématuré"
+    },
+    "toast": {
+      "created": "Zone créée",
+      "statusUpdated": "Statut mis à jour",
+      "tensionAdded": "Tension ajoutée",
+      "deleted": "Zone supprimée",
+      "transformed": "Zone transformée",
+      "merged": "Zones fusionnées",
+      "archived": "Zone archivée",
+      "put_to_sleep": "Zone mise en veille"
+    },
+    "edit": {
+      "success": "Zone modifiée"
+    },
+    "duplicate": {
+      "success": "Zone dupliquée"
+    },
+    "merge": {
+      "button": "Fusionner"
+    },
+    "demoMode": "Mode démo - connectez-vous pour sauvegarder vos zones",
+    "paywall": {
+      "title": "Module Latent Pro",
+      "description": "Accédez au module complet pour cartographier vos zones de tension"
+    },
+    "preview": {
+      "description": "Découvrez le module Latent avec des exemples. Passez à Pro pour créer vos propres zones."
+    },
+    "demo": {
+      "zone1": {
+        "title": "Tensions familiales non-dites",
+        "desc": "Désaccords latents sur les priorités de vie"
+      },
+      "zone2": {
+        "title": "Repositionnement professionnel",
+        "desc": "Envie de changement mais contraintes financières"
+      },
+      "zone3": {
+        "title": "Relation avec le pays d'origine",
+        "desc": "Attentes familiales vs choix de vie"
+      }
+    },
+    "disclaimer": {
+      "title": "Outil de réflexion personnelle",
+      "text": "Ce module vous aide à cartographier vos zones de tension. Il ne remplace pas un accompagnement professionnel."
+    }
+  },
+  "irreversa": {
+    "title": "Seuils Irréversibles",
+    "subtitle": "Documentez et scellez les moments où une situation devient irréversible.",
+    "badge": "Module Irreversa",
+    "status": {
+      "detected": "Détecté",
+      "marked": "Marqué",
+      "validated": "Validé",
+      "sealed": "Scellé"
+    },
+    "role": {
+      "ceo": "CEO",
+      "board": "Conseil",
+      "founder": "Fondateur",
+      "director": "Directeur",
+      "comex": "Comex"
+    },
+    "domain": {
+      "strategic": "Stratégique",
+      "financial": "Financier",
+      "organizational": "Organisationnel",
+      "legal": "Légal",
+      "ethical": "Éthique",
+      "hr": "RH",
+      "operations": "Opérations",
+      "finance": "Finance"
+    },
+    "actions": {
+      "newThreshold": "Nouveau seuil"
+    },
+    "warning": {
+      "title": "Attention - Module de traçabilité",
+      "noCancellation": "Aucune annulation possible après scellement",
+      "noEdit": "Aucune modification après validation",
+      "noScoring": "Aucune note ou score",
+      "noRecommendation": "Aucune recommandation"
+    },
+    "toast": {
+      "created": "Seuil créé",
+      "marked": "Seuil marqué",
+      "validated": "Seuil validé",
+      "sealed": "Seuil scellé"
+    },
+    "dialog": {
+      "mark": {
+        "title": "Marquer ce seuil",
+        "description": "Confirmer que ce seuil a été identifié"
+      },
+      "validate": {
+        "title": "Valider ce seuil",
+        "description": "Confirmer la validation de ce seuil irréversible"
+      },
+      "seal": {
+        "title": "Sceller ce seuil",
+        "description": "Le scellement est définitif et irréversible"
+      }
+    },
+    "fields": {
+      "actorName": "Nom de l'acteur",
+      "actorRole": "Rôle de l'acteur"
+    },
+    "placeholders": {
+      "actorName": "Nom complet..."
+    },
+    "empty": {
+      "title": "Aucun seuil documenté",
+      "description": "Commencez par documenter un seuil irréversible"
+    },
+    "demoMode": "Mode démo - connectez-vous pour sauvegarder vos seuils",
+    "paywall": {
+      "title": "Module Irreversa Pro",
+      "description": "Accédez au module complet pour documenter vos seuils irréversibles"
+    },
+    "preview": {
+      "description": "Découvrez le module Irreversa avec des exemples. Passez à Pro pour documenter vos propres seuils."
+    },
+    "demo": {
+      "threshold1": {
+        "title": "Décision de licenciement collectif",
+        "context": "Restructuration suite à perte de marché majeur"
+      },
+      "threshold2": {
+        "title": "Cession de filiale stratégique",
+        "context": "Recentrage sur le cœur de métier"
+      },
+      "threshold3": {
+        "title": "Fermeture site de production",
+        "context": "Délocalisation vers zone à moindre coût"
+      }
+    },
+    "disclaimer": {
+      "title": "Outil de documentation",
+      "text": "Ce module vous aide à documenter les seuils franchis. Il a une valeur de clarification personnelle, pas légale."
+    }
   }
 }

@@ -52,6 +52,7 @@ import B2BSolutions from "./pages/B2BSolutions";
 import Partners from "./pages/Partners";
 import LatentModule from "./pages/LatentModule";
 import IrreversaModule from "./pages/IrreversaModule";
+import Usage from "./pages/Usage";
 
 const queryClient = new QueryClient();
 
@@ -112,6 +113,7 @@ const App = () => (
                     <Route path="/partners" element={<Partners />} />
                     <Route path="/latent" element={<LatentModule />} />
                     <Route path="/irreversa" element={<IrreversaModule />} />
+                    <Route path="/usage" element={<Usage />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </main>
