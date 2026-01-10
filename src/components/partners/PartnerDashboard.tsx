@@ -14,20 +14,22 @@ import {
   FileText, Loader2
 } from "lucide-react";
 import { usePartnerProgram } from "@/hooks/usePartnerProgram";
+import { useTranslation } from "react-i18next";
 import { EthicsCharter } from "./EthicsCharter";
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
 
-const CONTRIBUTION_TYPES = [
-  { value: "referral", label: "Recommandation d'utilisateur" },
-  { value: "feedback", label: "Retour qualitatif" },
-  { value: "content", label: "Création de contenu" },
-  { value: "event", label: "Présentation / Événement" },
-  { value: "b2b_intro", label: "Mise en relation B2B" },
-  { value: "other", label: "Autre contribution" }
+const getContributionTypes = (t: any) => [
+  { value: "referral", label: t('partners.contributions.referral', 'User referral') },
+  { value: "feedback", label: t('partners.contributions.feedback', 'Quality feedback') },
+  { value: "content", label: t('partners.contributions.content', 'Content creation') },
+  { value: "event", label: t('partners.contributions.event', 'Presentation / Event') },
+  { value: "b2b_intro", label: t('partners.contributions.b2bIntro', 'B2B introduction') },
+  { value: "other", label: t('partners.contributions.other', 'Other contribution') }
 ];
 
 export function PartnerDashboard() {
+  const { t } = useTranslation();
   const { 
     applications, 
     contributions, 
@@ -37,6 +39,8 @@ export function PartnerDashboard() {
     getTotalCredits,
     isApprovedPartner
   } = usePartnerProgram();
+  
+  const CONTRIBUTION_TYPES = getContributionTypes(t);
 
   const [newContribOpen, setNewContribOpen] = useState(false);
   const [contribType, setContribType] = useState("");
@@ -86,13 +90,13 @@ export function PartnerDashboard() {
         {isAmbassador && (
           <Badge className="bg-primary/10 text-primary border-primary/20 gap-1">
             <Users className="h-3 w-3" />
-            Ambassadeur Compass
+            {t('partners.badge.ambassador', 'Compass Ambassador')}
           </Badge>
         )}
         {isB2BPartner && (
           <Badge className="bg-blue-500/10 text-blue-600 border-blue-500/20 gap-1">
             <Building2 className="h-3 w-3" />
-            Partenaire B2B
+            {t('partners.badge.b2bPartner', 'B2B Partner')}
           </Badge>
         )}
       </div>
@@ -103,7 +107,7 @@ export function PartnerDashboard() {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Crédits obtenus</p>
+                <p className="text-sm text-muted-foreground">{t('partners.stats.creditsEarned', 'Credits earned')}</p>
                 <p className="text-2xl font-bold">{totalCredits}</p>
               </div>
               <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
@@ -117,7 +121,7 @@ export function PartnerDashboard() {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Contributions vérifiées</p>
+                <p className="text-sm text-muted-foreground">{t('partners.stats.verifiedContributions', 'Verified contributions')}</p>
                 <p className="text-2xl font-bold">{verifiedContribs}</p>
               </div>
               <div className="h-12 w-12 rounded-full bg-green-500/10 flex items-center justify-center">
@@ -131,7 +135,7 @@ export function PartnerDashboard() {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">En attente</p>
+                <p className="text-sm text-muted-foreground">{t('partners.stats.pending', 'Pending')}</p>
                 <p className="text-2xl font-bold">{pendingContribs}</p>
               </div>
               <div className="h-12 w-12 rounded-full bg-amber-500/10 flex items-center justify-center">
@@ -147,41 +151,41 @@ export function PartnerDashboard() {
         <TabsList>
           <TabsTrigger value="contributions" className="gap-2">
             <TrendingUp className="h-4 w-4" />
-            Contributions
+            {t('partners.tabs.contributions', 'Contributions')}
           </TabsTrigger>
           <TabsTrigger value="benefits" className="gap-2">
             <Gift className="h-4 w-4" />
-            Avantages
+            {t('partners.tabs.benefits', 'Benefits')}
           </TabsTrigger>
           <TabsTrigger value="charter" className="gap-2">
             <FileText className="h-4 w-4" />
-            Charte
+            {t('partners.tabs.charter', 'Charter')}
           </TabsTrigger>
         </TabsList>
 
         <TabsContent value="contributions" className="space-y-4">
           <div className="flex justify-between items-center">
-            <h3 className="font-medium">Mes contributions</h3>
+            <h3 className="font-medium">{t('partners.myContributions', 'My contributions')}</h3>
             <Dialog open={newContribOpen} onOpenChange={setNewContribOpen}>
               <DialogTrigger asChild>
                 <Button size="sm">
                   <Plus className="h-4 w-4 mr-2" />
-                  Nouvelle contribution
+                  {t('partners.newContribution', 'New contribution')}
                 </Button>
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
-                  <DialogTitle>Déclarer une contribution</DialogTitle>
+                  <DialogTitle>{t('partners.declareContribution', 'Declare a contribution')}</DialogTitle>
                   <DialogDescription>
-                    Décrivez votre contribution. Elle sera vérifiée par notre équipe.
+                    {t('partners.declareContributionDesc', 'Describe your contribution. It will be reviewed by our team.')}
                   </DialogDescription>
                 </DialogHeader>
                 <div className="space-y-4 pt-4">
                   <div className="space-y-2">
-                    <Label>Type de contribution</Label>
+                    <Label>{t('partners.contributionType', 'Contribution type')}</Label>
                     <Select value={contribType} onValueChange={setContribType}>
                       <SelectTrigger>
-                        <SelectValue placeholder="Sélectionnez un type" />
+                        <SelectValue placeholder={t('partners.selectType', 'Select a type')} />
                       </SelectTrigger>
                       <SelectContent>
                         {CONTRIBUTION_TYPES.map(type => (
@@ -193,20 +197,20 @@ export function PartnerDashboard() {
                     </Select>
                   </div>
                   <div className="space-y-2">
-                    <Label>Description</Label>
+                    <Label>{t('common.description', 'Description')}</Label>
                     <Textarea
                       value={contribDesc}
                       onChange={(e) => setContribDesc(e.target.value)}
-                      placeholder="Décrivez votre contribution en détail..."
+                      placeholder={t('partners.describeContribution', 'Describe your contribution in detail...')}
                       rows={4}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label>Impact mesurable (optionnel)</Label>
+                    <Label>{t('partners.measurableImpact', 'Measurable impact')} ({t('common.optional', 'optional')})</Label>
                     <Input
                       value={contribImpact}
                       onChange={(e) => setContribImpact(e.target.value)}
-                      placeholder="Ex: 5 nouveaux utilisateurs, 3 retours qualitatifs..."
+                      placeholder={t('partners.impactExample', 'e.g., 5 new users, 3 quality feedbacks...')}
                     />
                   </div>
                   <Button 
@@ -217,10 +221,10 @@ export function PartnerDashboard() {
                     {submitting ? (
                       <>
                         <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                        Envoi...
+                        {t('common.sending', 'Sending...')}
                       </>
                     ) : (
-                      "Soumettre"
+                      t('common.submit', 'Submit')
                     )}
                   </Button>
                 </div>
@@ -232,9 +236,9 @@ export function PartnerDashboard() {
             <Card>
               <CardContent className="py-12 text-center">
                 <Trophy className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-                <p className="text-muted-foreground">Aucune contribution encore</p>
+                <p className="text-muted-foreground">{t('partners.noContributions', 'No contributions yet')}</p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Commencez à contribuer pour obtenir des crédits et avantages.
+                  {t('partners.startContributing', 'Start contributing to earn credits and benefits.')}
                 </p>
               </CardContent>
             </Card>
@@ -252,19 +256,19 @@ export function PartnerDashboard() {
                           {contrib.verified ? (
                             <Badge className="bg-green-500/10 text-green-600 text-xs gap-1">
                               <CheckCircle2 className="h-3 w-3" />
-                              Vérifiée
+                              {t('partners.verified', 'Verified')}
                             </Badge>
                           ) : (
                             <Badge variant="secondary" className="text-xs gap-1">
                               <Clock className="h-3 w-3" />
-                              En attente
+                              {t('partners.pending', 'Pending')}
                             </Badge>
                           )}
                         </div>
                         <p className="text-sm">{contrib.description}</p>
                         {contrib.impact_metric && (
                           <p className="text-xs text-muted-foreground mt-1">
-                            Impact: {contrib.impact_metric}
+                            {t('partners.impact', 'Impact')}: {contrib.impact_metric}
                           </p>
                         )}
                         <p className="text-xs text-muted-foreground mt-2">
@@ -274,7 +278,7 @@ export function PartnerDashboard() {
                       {contrib.verified && contrib.credits_awarded > 0 && (
                         <div className="text-right">
                           <Badge className="bg-primary/10 text-primary">
-                            +{contrib.credits_awarded} crédits
+                            +{contrib.credits_awarded} {t('partners.credits', 'credits')}
                           </Badge>
                         </div>
                       )}
@@ -287,15 +291,15 @@ export function PartnerDashboard() {
         </TabsContent>
 
         <TabsContent value="benefits" className="space-y-4">
-          <h3 className="font-medium">Mes avantages actifs</h3>
+          <h3 className="font-medium">{t('partners.activeBenefits', 'My active benefits')}</h3>
           
           {benefits.length === 0 ? (
             <Card>
               <CardContent className="py-12 text-center">
                 <Gift className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-                <p className="text-muted-foreground">Aucun avantage actif</p>
+                <p className="text-muted-foreground">{t('partners.noActiveBenefits', 'No active benefits')}</p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Les avantages sont accordés en fonction de vos contributions vérifiées.
+                  {t('partners.benefitsBasedOnContributions', 'Benefits are granted based on your verified contributions.')}
                 </p>
               </CardContent>
             </Card>
@@ -314,7 +318,7 @@ export function PartnerDashboard() {
                       </div>
                       {benefit.expires_at && (
                         <Badge variant="outline" className="text-xs">
-                          Expire le {format(new Date(benefit.expires_at), "d MMM yyyy", { locale: fr })}
+                          {t('partners.expiresOn', 'Expires on')} {format(new Date(benefit.expires_at), "d MMM yyyy", { locale: fr })}
                         </Badge>
                       )}
                     </div>

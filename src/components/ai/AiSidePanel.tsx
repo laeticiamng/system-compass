@@ -127,16 +127,36 @@ export function AiSidePanel({
         },
       });
 
-      if (error) throw error;
+      if (error) {
+        // Handle specific error codes
+        const errorMessage = error?.message || '';
+        if (errorMessage.includes('429') || errorMessage.includes('rate limit')) {
+          toast.error(t('errors.rateLimited', 'Rate limit exceeded. Please try again later.'));
+          return;
+        }
+        if (errorMessage.includes('402') || errorMessage.includes('insufficient')) {
+          toast.error(t('errors.insufficientCredits', 'Insufficient credits. Please top up.'));
+          return;
+        }
+        throw error;
+      }
 
       setResult(data);
       
       if (data.policyWarnings?.length > 0) {
         toast.warning(t('ai.policyWarning', 'Contenu ajusté pour conformité'));
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('AI action error:', error);
-      toast.error(t('ai.error', 'Erreur lors de la génération'));
+      // Check for rate limit or payment errors in catch
+      const errorMessage = error?.message || '';
+      if (errorMessage.includes('429')) {
+        toast.error(t('errors.rateLimited', 'Rate limit exceeded. Please try again later.'));
+      } else if (errorMessage.includes('402')) {
+        toast.error(t('errors.insufficientCredits', 'Insufficient credits. Please top up.'));
+      } else {
+        toast.error(t('ai.error', 'Erreur lors de la génération'));
+      }
     } finally {
       setLoading(false);
     }

@@ -17,6 +17,7 @@ import {
   Legend
 } from 'recharts';
 import { TrendingUp, Clock, Target, Zap, Calendar } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { ExitKey } from '@/lib/exit-keys-engine';
 
 interface StepProgress {
@@ -43,6 +44,8 @@ interface ProgressStatsProps {
 const COLORS = ['hsl(var(--primary))', 'hsl(var(--muted))', 'hsl(142, 76%, 36%)', 'hsl(38, 92%, 50%)', 'hsl(0, 84%, 60%)'];
 
 export function ProgressStats({ progress, exitKey }: ProgressStatsProps) {
+  const { t } = useTranslation();
+  
   // Calculate stats per phase
   const phaseStats = useMemo(() => {
     return exitKey.steps.map((phase, phaseIndex) => {
@@ -171,13 +174,13 @@ export function ProgressStats({ progress, exitKey }: ProgressStatsProps) {
           <CardContent className="p-4">
             <div className="flex items-center gap-2 text-muted-foreground text-sm mb-1">
               <Target className="w-4 h-4" />
-              Actions complétées
+              {t('dashboard.progress.actionsCompleted', 'Actions completed')}
             </div>
             <div className="text-2xl font-bold">
               {completedActions}/{totalActions}
             </div>
             <div className="text-xs text-muted-foreground">
-              {Math.round((completedActions / totalActions) * 100)}% du plan
+              {Math.round((completedActions / totalActions) * 100)}% {t('dashboard.progress.ofPlan', 'of plan')}
             </div>
           </CardContent>
         </Card>
@@ -186,11 +189,11 @@ export function ProgressStats({ progress, exitKey }: ProgressStatsProps) {
           <CardContent className="p-4">
             <div className="flex items-center gap-2 text-muted-foreground text-sm mb-1">
               <Calendar className="w-4 h-4" />
-              Jours écoulés
+              {t('dashboard.progress.daysElapsed', 'Days elapsed')}
             </div>
             <div className="text-2xl font-bold">{daysSinceStart}</div>
             <div className="text-xs text-muted-foreground">
-              Depuis le début
+              {t('dashboard.progress.sinceStart', 'Since start')}
             </div>
           </CardContent>
         </Card>
@@ -199,11 +202,11 @@ export function ProgressStats({ progress, exitKey }: ProgressStatsProps) {
           <CardContent className="p-4">
             <div className="flex items-center gap-2 text-muted-foreground text-sm mb-1">
               <Zap className="w-4 h-4" />
-              Vélocité moyenne
+              {t('dashboard.progress.avgVelocity', 'Average velocity')}
             </div>
             <div className="text-2xl font-bold">{avgVelocity}</div>
             <div className="text-xs text-muted-foreground">
-              Actions/semaine
+              {t('dashboard.progress.actionsPerWeek', 'Actions/week')}
             </div>
           </CardContent>
         </Card>
@@ -212,13 +215,15 @@ export function ProgressStats({ progress, exitKey }: ProgressStatsProps) {
           <CardContent className="p-4">
             <div className="flex items-center gap-2 text-muted-foreground text-sm mb-1">
               <TrendingUp className="w-4 h-4" />
-              Fin estimée
+              {t('dashboard.progress.estimatedEnd', 'Estimated end')}
             </div>
             <div className="text-2xl font-bold">
               {estimatedCompletion ? estimatedCompletion.date : '—'}
             </div>
             <div className="text-xs text-muted-foreground">
-              {estimatedCompletion ? `Dans ~${estimatedCompletion.days} jours` : 'Pas assez de données'}
+              {estimatedCompletion 
+                ? t('dashboard.progress.inDays', 'In ~{{days}} days', { days: estimatedCompletion.days }) 
+                : t('dashboard.progress.notEnoughData', 'Not enough data')}
             </div>
           </CardContent>
         </Card>
@@ -229,7 +234,7 @@ export function ProgressStats({ progress, exitKey }: ProgressStatsProps) {
         {/* Completion Pie Chart */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-base">Progression globale</CardTitle>
+            <CardTitle className="text-base">{t('dashboard.progress.overallProgress', 'Overall progress')}</CardTitle>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={200}>
@@ -273,7 +278,7 @@ export function ProgressStats({ progress, exitKey }: ProgressStatsProps) {
         {/* Phase Progress Bar Chart */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-base">Progression par phase</CardTitle>
+            <CardTitle className="text-base">{t('dashboard.progress.progressByPhase', 'Progress by phase')}</CardTitle>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={200}>
@@ -304,7 +309,7 @@ export function ProgressStats({ progress, exitKey }: ProgressStatsProps) {
       {velocityData.length > 0 && (
         <Card>
           <CardHeader>
-            <CardTitle className="text-base">Vélocité de complétion</CardTitle>
+            <CardTitle className="text-base">{t('dashboard.progress.completionVelocity', 'Completion velocity')}</CardTitle>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={250}>
@@ -345,7 +350,7 @@ export function ProgressStats({ progress, exitKey }: ProgressStatsProps) {
       {/* Time per Phase */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Temps passé par phase</CardTitle>
+          <CardTitle className="text-base">{t('dashboard.progress.timePerPhase', 'Time per phase')}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">

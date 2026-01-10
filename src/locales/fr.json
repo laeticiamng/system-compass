@@ -21,7 +21,11 @@
     "previewMode": "Mode aperçu",
     "all": "Tous",
     "total": "Total",
-    "close": "Fermer"
+    "close": "Fermer",
+    "optional": "optionnel",
+    "description": "Description",
+    "submit": "Soumettre",
+    "sending": "Envoi..."
   },
   "errors": {
     "rateLimited": "Trop de requêtes. Veuillez réessayer dans quelques instants.",
@@ -266,6 +270,21 @@
       "plan": "Plan",
       "stats": "Statistiques",
       "calendar": "Calendrier"
+    },
+    "progress": {
+      "actionsCompleted": "Actions complétées",
+      "ofPlan": "du plan",
+      "daysElapsed": "Jours écoulés",
+      "sinceStart": "Depuis le début",
+      "avgVelocity": "Vélocité moyenne",
+      "actionsPerWeek": "Actions/semaine",
+      "estimatedEnd": "Fin estimée",
+      "inDays": "Dans ~{{days}} jours",
+      "notEnoughData": "Pas assez de données",
+      "overallProgress": "Progression globale",
+      "progressByPhase": "Progression par phase",
+      "completionVelocity": "Vélocité de complétion",
+      "timePerPhase": "Temps par phase"
     },
     "phase": "Phase",
     "duration": "Durée",
@@ -6657,5 +6676,48 @@
       "title": "Outil de documentation",
       "text": "Ce module vous aide à documenter les seuils franchis. Il a une valeur de clarification personnelle, pas légale."
     }
+  },
+  "partners": {
+    "contributions": {
+      "referral": "Recommandation d'utilisateur",
+      "feedback": "Retour qualitatif",
+      "content": "Création de contenu",
+      "event": "Présentation / Événement",
+      "b2bIntro": "Mise en relation B2B",
+      "other": "Autre contribution"
+    },
+    "badge": {
+      "ambassador": "Ambassadeur Compass",
+      "b2bPartner": "Partenaire B2B"
+    },
+    "stats": {
+      "creditsEarned": "Crédits obtenus",
+      "verifiedContributions": "Contributions vérifiées",
+      "pending": "En attente"
+    },
+    "tabs": {
+      "contributions": "Contributions",
+      "benefits": "Avantages",
+      "charter": "Charte"
+    },
+    "myContributions": "Mes contributions",
+    "newContribution": "Nouvelle contribution",
+    "declareContribution": "Déclarer une contribution",
+    "declareContributionDesc": "Décrivez votre contribution. Elle sera vérifiée par notre équipe.",
+    "contributionType": "Type de contribution",
+    "selectType": "Sélectionnez un type",
+    "describeContribution": "Décrivez votre contribution en détail...",
+    "measurableImpact": "Impact mesurable",
+    "impactExample": "Ex: 5 nouveaux utilisateurs, 3 retours qualitatifs...",
+    "noContributions": "Aucune contribution encore",
+    "startContributing": "Commencez à contribuer pour obtenir des crédits et avantages.",
+    "verified": "Vérifiée",
+    "pending": "En attente",
+    "impact": "Impact",
+    "credits": "crédits",
+    "activeBenefits": "Mes avantages actifs",
+    "noActiveBenefits": "Aucun avantage actif",
+    "benefitsBasedOnContributions": "Les avantages sont accordés en fonction de vos contributions vérifiées.",
+    "expiresOn": "Expire le"
   }
 }
