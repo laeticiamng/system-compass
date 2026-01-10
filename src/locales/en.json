@@ -6221,6 +6221,30 @@
       "tensionsCount": "Tensions count"
     }
   },
+  "traceOS": {
+    "autoExport": {
+      "schedule": "Export schedule",
+      "scheduleDesc": "Automatically archive your decisions",
+      "autoExport": "Automatic export",
+      "nextExport": "Next export",
+      "notScheduled": "Not scheduled",
+      "disabled": "Disabled",
+      "frequency": "Frequency",
+      "daily": "Daily",
+      "weekly": "Weekly",
+      "monthly": "Monthly",
+      "exportNow": "Export now",
+      "lastExport": "Last export",
+      "history": "Available archives",
+      "noExports": "No exports available",
+      "noExportsHint": "Click \"Export now\" to create your first export",
+      "secureStorage": "Secure storage",
+      "secureStorageDesc": "Your exports are securely stored and only accessible to you."
+    },
+    "export": {
+      "loginRequired": "Log in to manage exports"
+    }
+  },
   "irreversa": {
     "title": "Threshold Protocol",
     "subtitle": "Identify and cross strategic irreversibility points",

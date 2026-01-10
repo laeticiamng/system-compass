@@ -5407,7 +5407,27 @@
       "json": "Données JSON",
       "pdfSuccess": "Export PDF réussi",
       "jsonSuccess": "Export JSON réussi",
-      "error": "Erreur lors de l'export"
+      "error": "Erreur lors de l'export",
+      "loginRequired": "Connectez-vous pour gérer les exports"
+    },
+    "autoExport": {
+      "schedule": "Planification d'export",
+      "scheduleDesc": "Archivez automatiquement vos décisions",
+      "autoExport": "Export automatique",
+      "nextExport": "Prochain export",
+      "notScheduled": "Non planifié",
+      "disabled": "Désactivé",
+      "frequency": "Fréquence",
+      "daily": "Quotidien",
+      "weekly": "Hebdomadaire",
+      "monthly": "Mensuel",
+      "exportNow": "Exporter maintenant",
+      "lastExport": "Dernier export",
+      "history": "Archives disponibles",
+      "noExports": "Aucun export disponible",
+      "noExportsHint": "Cliquez sur \"Exporter maintenant\" pour créer votre premier export",
+      "secureStorage": "Stockage sécurisé",
+      "secureStorageDesc": "Vos exports sont stockés de manière sécurisée et ne sont accessibles qu'à vous."
     },
     "notifications": {
       "title": "Notifications",
