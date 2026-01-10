@@ -204,7 +204,7 @@ export function WorkflowMetrics({ allApprovals = [] }: WorkflowMetricsProps) {
               <Clock className="w-8 h-8 text-amber-500/20" />
             </div>
             <p className="mt-2 text-xs text-muted-foreground">
-              sur {metrics.totalApprovals} total
+              {t('traceOS.metrics.outOfTotal', 'sur {{count}} total', { count: metrics.totalApprovals })}
             </p>
           </CardContent>
         </Card>
@@ -285,7 +285,7 @@ export function WorkflowMetrics({ allApprovals = [] }: WorkflowMetricsProps) {
                     <span className="font-medium text-sm">{approver.name}</span>
                   </div>
                   <div className="flex items-center gap-3 text-sm">
-                    <Badge variant="secondary">{approver.count} approbations</Badge>
+                    <Badge variant="secondary">{t('traceOS.metrics.approvalsCount', '{{count}} approbations', { count: approver.count })}</Badge>
                     <span className="text-xs text-muted-foreground">
                       ~{formatTime(approver.avgTime)}
                     </span>
@@ -311,7 +311,7 @@ export function WorkflowMetrics({ allApprovals = [] }: WorkflowMetricsProps) {
                 <Badge key={workflow.id} variant="outline" className="gap-1">
                   {workflow.name}
                   <span className="text-muted-foreground">
-                    ({workflow.steps.length} étapes)
+                    ({t('traceOS.metrics.stepsCount', '{{count}} étapes', { count: workflow.steps.length })})
                   </span>
                 </Badge>
               ))}
