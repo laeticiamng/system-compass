@@ -5643,6 +5643,78 @@
       "status": "Statut",
       "family": "Famille",
       "calm": "Sérénité"
+    },
+    "results": {
+      "title": "Vos Clés de Sortie",
+      "strategiesFound": "{{count}} stratégies identifiées pour votre situation",
+      "nationalityAdvantages": "Avantages de vos Nationalités",
+      "visaFreeCountries": "pays sans visa",
+      "memberOf": "Membre de",
+      "regionalBlocs": "Blocs régionaux",
+      "installationTab": "Installation",
+      "vacationTab": "Vacances",
+      "installationDestinations": "Destinations d'Installation",
+      "optimizedForProfile": "Optimisées pour votre profil",
+      "installationDescription": "Pays où vous pouvez vous installer durablement selon vos nationalités, aspirations et contraintes.",
+      "vacationRecommendations": "Recommandations Vacances",
+      "byPurchasingPower": "Par pouvoir d'achat",
+      "vacationDescription": "Destinations où votre salaire vous permet de profiter sans exploser votre budget, tout en progressant vers vos objectifs.",
+      "strategicPrinciples": "Principes Stratégiques Clés",
+      "filter": "Filtrer",
+      "compare": "Comparer",
+      "strategiesCount": "{{count}} stratégie",
+      "strategiesCountPlural": "{{count}} stratégies",
+      "filtered": "(filtrées)",
+      "reset": "Réinitialiser",
+      "noStrategies": "Aucune stratégie ne correspond aux filtres.",
+      "resetFilters": "Réinitialiser les filtres",
+      "saveProfile": "Sauvegarder mon profil",
+      "restart": "Recommencer"
+    },
+    "summary": {
+      "title": "Résumé de votre profil",
+      "origin": "Origine",
+      "current": "Actuel",
+      "profile": "Profil",
+      "priority": "Priorité"
+    },
+    "guestCta": {
+      "localSaved": "Votre simulation est sauvegardée localement sur cet appareil.",
+      "createAccount": "Créez un compte gratuit pour :",
+      "benefit1": "Retrouver votre profil sur tous vos appareils",
+      "benefit2": "Sauvegarder plusieurs scénarios de comparaison",
+      "benefit3": "Accéder au tableau de bord de suivi",
+      "benefit4": "Recevoir des mises à jour personnalisées",
+      "createAccountBtn": "Créer un compte gratuit",
+      "notRequired": "Pas obligatoire. Continuez à explorer librement."
+    },
+    "navigation": {
+      "previous": "Précédent",
+      "next": "Suivant",
+      "viewKeys": "Voir mes clés"
+    },
+    "filters": {
+      "label": "Filtres",
+      "difficulty": "Difficulté",
+      "allDifficulties": "Toutes",
+      "easy": "Facile",
+      "moderate": "Modéré",
+      "hard": "Difficile",
+      "expert": "Expert",
+      "duration": "Durée",
+      "allDurations": "Toutes",
+      "shortTerm": "1-3 ans",
+      "mediumTerm": "3-7 ans",
+      "longTerm": "7+ ans",
+      "strategies": "stratégies"
+    },
+    "advantageTypes": {
+      "visaFree": "Visa-free",
+      "regionalAccess": "Accès régional",
+      "workPermit": "Travail",
+      "taxBenefit": "Fiscal",
+      "residency": "Résidence",
+      "citizenship": "Citoyenneté"
     }
   }
 }
