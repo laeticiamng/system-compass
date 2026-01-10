@@ -26,7 +26,17 @@
     "description": "描述",
     "submit": "提交",
     "sending": "发送中...",
-    "loginRequired": "需要登录"
+    "loginRequired": "需要登录",
+    "search": "搜索",
+    "filter": "筛选",
+    "sort": "排序",
+    "view": "查看",
+    "create": "创建",
+    "update": "更新",
+    "success": "成功",
+    "error": "错误",
+    "warning": "警告",
+    "info": "信息"
   },
   "errors": {
     "rateLimited": "请求过多。请稍后再试。",
@@ -71,7 +81,38 @@
     "profile": "个人资料",
     "signIn": "登录",
     "signOut": "退出",
-    "worldMap": "世界地图"
+    "worldMap": "世界地图",
+    "about": "关于",
+    "pricing": "定价",
+    "resources": "资源"
+  },
+  "hero": {
+    "badge": "分析模拟器",
+    "title1": "在承诺之前",
+    "titleHighlight": "避免代价高昂的错误",
+    "title2": "",
+    "subtitle": "了解系统的真实规则。在决定之前模拟后果。从达喀尔的街头小贩到巴黎的高管——在这里分析您的选择。",
+    "discoverProfile": "模拟我的轨迹",
+    "exploreCountries": "分析系统",
+    "madeBy": "由一个花费数年才理解系统的人创建",
+    "forEveryone": "为每个人，在任何地方",
+    "preventionFilter": "通过过滤器运行决策"
+  },
+  "howItWorks": {
+    "title": "分析、模拟、理解",
+    "subtitle": "一个分析工具。没有承诺，没有指导——只有避免代价高昂错误的信息。",
+    "understand": {
+      "title": "理解规则",
+      "description": "每个系统都有其真实规则（通常是隐藏的）。分析真正被奖励或惩罚的内容。"
+    },
+    "profile": {
+      "title": "模拟后果",
+      "description": "在承诺之前测试不同的场景。比较轨迹、风险、实际成本。"
+    },
+    "playbook": {
+      "title": "识别错误",
+      "description": "发现常见的系统性错误：错误的时机、错误的国家、错误的结构。事实信息。"
+    }
   },
   "worldMap": {
     "badge": "全球探索",
@@ -112,29 +153,69 @@
     "hasAccount": "已有账户？",
     "orContinueWith": "或继续使用",
     "signInWithGoogle": "使用Google登录",
-    "signUpWithGoogle": "使用Google注册"
+    "signUpWithGoogle": "使用Google注册",
+    "resetPassword": "重置密码",
+    "updatePassword": "更新密码",
+    "emailSent": "邮件已发送",
+    "checkEmail": "请检查您的邮箱"
   },
   "countries": {
-    "title": "国家",
-    "subtitle": "探索不同国家的系统结构",
+    "title": "国家分析",
+    "subtitle": "深入分析国家系统。了解每个系统奖励什么、风险和您的选择。",
     "searchPlaceholder": "搜索国家...",
-    "noResults": "未找到国家",
+    "noResults": "没有符合此过滤器的国家。",
     "viewDetails": "查看详情",
+    "explore": "分析 →",
+    "gdpCap": "人均GDP",
+    "passport": "护照",
+    "population": "人口",
+    "intelligenceAvailable": "智能层可用",
+    "results": "结果",
+    "allSystems": "所有系统",
     "filters": {
       "all": "全部",
       "region": "地区",
       "pyramidType": "金字塔类型"
+    },
+    "sort": {
+      "nameAsc": "名称 (A-Z)",
+      "nameDesc": "名称 (Z-A)",
+      "riskAsc": "风险 (↑)",
+      "riskDesc": "风险 (↓)"
     }
   },
   "countryDetail": {
+    "notFound": "未找到国家",
+    "backToCountries": "返回国家列表",
+    "ruleOfGold": "黄金法则",
+    "lgbtqRights": "LGBTQ+ 权利",
+    "exportPdf": "导出PDF",
     "overview": "概览",
     "system": "系统",
     "risks": "风险",
     "opportunities": "机会",
     "intelligence": "智能层",
     "translating": "翻译中...",
+    "snapshot": {
+      "gdpPerCapita": "人均GDP",
+      "population": "人口",
+      "passportRank": "护照排名",
+      "corruptionIndex": "腐败指数",
+      "freedomIndex": "自由指数"
+    },
+    "systemPyramid": "系统金字塔",
+    "riskAssessment": "风险评估",
+    "whoWinsLoses": "谁赢/谁输",
+    "survivalPlaybook": "生存策略",
+    "tabs": {
+      "tronc": "核心分析",
+      "variant": "国家变体",
+      "project": "项目分析",
+      "intelligence": "智能"
+    },
     "variant": {
-      "title": "系统变体",
+      "title": "本地特色",
+      "subtitle": "让新来者惊讶的内容",
       "laborMarket": "劳动市场",
       "entrepreneurship": "创业",
       "dailyLife": "日常生活",
@@ -146,13 +227,104 @@
       "trajectories": "示例轨迹"
     }
   },
+  "pyramids": {
+    "title": "六种金字塔",
+    "subtitle": "每个系统都属于这些类别之一",
+    "examples": "例子",
+    "problemRent": {
+      "label": "问题租金",
+      "description": "功能障碍是资产。解决问题会让您面临风险。"
+    },
+    "stabilityRedis": {
+      "label": "稳定再分配",
+      "description": "系统奖励稳定、保护和再分配。"
+    },
+    "competenceTrust": {
+      "label": "能力信任",
+      "description": "解决方案是资产。严谨和能力会得到奖励。"
+    },
+    "growthRisk": {
+      "label": "增长风险",
+      "description": "增长是资产。速度、可扩展性和资本会得到奖励。"
+    },
+    "hybridTransition": {
+      "label": "混合过渡",
+      "description": "多种逻辑共存。应对矛盾和快速变化。"
+    },
+    "resourceExtraction": {
+      "label": "资源开采",
+      "description": "自然资源为系统提供资金。接近资源流最重要。"
+    }
+  },
   "pyramidTypes": {
     "PROBLEM_RENT": "问题-租金",
     "STABILITY_REDIS": "稳定-再分配",
     "COMPETENCE_TRUST": "能力-信任",
     "GROWTH_RISK": "增长-风险",
     "HYBRID_TRANSITION": "混合-过渡",
-    "RESOURCE_EXTRACTION": "资源-开采"
+    "RESOURCE_EXTRACTION": "资源-开采",
+    "title": "六种系统",
+    "subtitle": "分析每种类型的国家如何真正运作。每个系统都有自己的权力逻辑。",
+    "whoThrives": "谁成功",
+    "whoPays": "谁付出代价",
+    "survivalRules": "生存规则",
+    "opportunities": "隐藏机会",
+    "warningSigns": "警告信号",
+    "exampleCountries": "示例国家"
+  },
+  "compare": {
+    "title": "比较国家",
+    "subtitle": "并排分析两个或更多系统。找到最适合您个人资料的系统。",
+    "selectCountries": "选择要比较的国家",
+    "addCountry": "添加国家",
+    "removeCountry": "移除国家",
+    "noSelection": "选择至少两个国家开始比较",
+    "compareNow": "立即比较",
+    "radar": "雷达图",
+    "table": "表格",
+    "tags": "标签",
+    "saveComparison": "保存比较",
+    "loadComparison": "加载比较"
+  },
+  "exitKeys": {
+    "title": "出口钥匙",
+    "subtitle": "策略性退出方案和行动计划",
+    "badge": "策略目录",
+    "catalog": "浏览所有策略",
+    "viewDetails": "查看详情",
+    "compatibility": "兼容性",
+    "duration": "持续时间",
+    "difficulty": "难度",
+    "cost": "成本",
+    "steps": "步骤",
+    "requirements": "要求",
+    "risks": "风险",
+    "timeline": "时间线"
+  },
+  "lifeGame": {
+    "title": "人生游戏",
+    "subtitle": "模拟不同人生轨迹和决策",
+    "badge": "互动模拟器",
+    "newGame": "新游戏",
+    "loadGame": "加载游戏",
+    "saveGame": "保存游戏",
+    "rules": "规则",
+    "turn": "回合",
+    "player": "玩家",
+    "score": "分数",
+    "health": "健康",
+    "money": "金钱",
+    "happiness": "幸福",
+    "reputation": "声誉",
+    "actions": "行动",
+    "events": "事件",
+    "endGame": "结束游戏",
+    "modes": {
+      "solo": "单人模式",
+      "race": "竞速模式",
+      "cooperative": "合作模式",
+      "duel": "对决模式"
+    }
   },
   "dashboard": {
     "title": "我的仪表板",
@@ -160,27 +332,240 @@
     "syncing": "同步中...",
     "synced": "已同步",
     "localOnly": "仅本地",
-    "connectToSync": "登录以同步"
+    "connectToSync": "登录以同步",
+    "localDataInfo": "您的数据保存在本地。登录以同步到云端。",
+    "signIn": "登录",
+    "profileLabel": "个人资料",
+    "viewKeys": "查看我的钥匙",
+    "profileNotConfigured": "个人资料未配置",
+    "profileNotConfiguredDesc": "创建您的个人资料以获得个性化推荐",
+    "createProfile": "创建我的个人资料",
+    "savedComparisons": "已保存的比较",
+    "savedComparisonsDesc": "您最喜欢的国家比较",
+    "countries": "国家",
+    "viewAll": "查看全部",
+    "overallProgress": "总体进度",
+    "savedGames": "已保存的游戏",
+    "savedGamesDesc": "继续您正在进行的游戏",
+    "players": "玩家",
+    "finished": "已完成",
+    "inProgress": "进行中",
+    "resume": "继续",
+    "replay": "重玩",
+    "advancedModules": "高级模块",
+    "advancedModulesDesc": "高级反思和文档工具",
+    "latentDesc": "识别尚未关键的张力区域",
+    "irreversaDesc": "记录已跨越的不可逆阈值",
+    "institutionsDesc": "集体决策和可追溯性",
+    "usageDesc": "跟踪您的AI使用情况和资源",
+    "tabs": {
+      "plan": "计划",
+      "stats": "统计",
+      "calendar": "日历"
+    }
   },
   "latent": {
     "title": "潜在区域",
-    "subtitle": "识别尚未关键的张力区域",
+    "subtitle": "识别尚未关键的张力区域。预防和清醒的工具。",
+    "badge": "潜在模块",
     "newZone": "新建区域",
+    "demoMode": "演示模式。登录以保存您的区域。",
     "status": {
       "dormant": "休眠",
       "emergent": "新兴",
       "fragile": "脆弱",
       "blocked": "阻塞"
+    },
+    "tabs": {
+      "zones": "区域",
+      "graph": "图表",
+      "history": "历史",
+      "philosophy": "哲学"
+    },
+    "filter": {
+      "all": "全部"
+    },
+    "sort": {
+      "newest": "最新",
+      "oldest": "最旧",
+      "alphabetical": "字母顺序",
+      "tensions": "张力"
+    },
+    "search": {
+      "placeholder": "搜索区域..."
+    },
+    "stats": {
+      "total": "总计",
+      "dormant": "休眠",
+      "emergent": "新兴",
+      "fragile": "脆弱",
+      "blocked": "阻塞",
+      "avgTensions": "平均张力"
+    },
+    "toast": {
+      "created": "区域已创建",
+      "statusUpdated": "状态已更新",
+      "tensionAdded": "张力已添加",
+      "deleted": "区域已删除"
+    },
+    "empty": {
+      "title": "还没有区域",
+      "description": "创建您的第一个潜在区域以开始"
+    },
+    "tensions": {
+      "types": {
+        "relational": "关系型",
+        "financial": "财务型",
+        "existential": "存在型",
+        "professional": "职业型",
+        "health": "健康型",
+        "identity": "身份型"
+      }
+    },
+    "merge": {
+      "button": "合并"
+    },
+    "edit": {
+      "success": "编辑成功"
+    },
+    "duplicate": {
+      "success": "复制成功"
+    },
+    "delete": {
+      "title": "删除区域",
+      "description": "您确定要删除此区域吗？此操作无法撤消。",
+      "confirm": "删除"
+    },
+    "paywall": {
+      "title": "专业版功能",
+      "description": "升级到专业版以访问潜在模块并创建您自己的区域。"
+    },
+    "preview": {
+      "description": "使用示例发现潜在模块。升级到专业版以创建您自己的区域。"
+    },
+    "disclaimer": {
+      "title": "个人反思工具",
+      "text": "此模块帮助您绘制张力区域。它不能替代专业陪伴。"
     }
   },
   "irreversa": {
     "title": "不可逆阈值",
-    "subtitle": "记录已跨越的不可逆阈值",
+    "subtitle": "记录已跨越的不可逆阈值。清晰和可追溯性的工具。",
+    "badge": "Irreversa 模块",
     "status": {
       "detected": "已检测",
       "marked": "已标记",
       "validated": "已验证",
       "sealed": "已密封"
+    },
+    "actions": {
+      "newThreshold": "新阈值"
+    },
+    "warning": {
+      "title": "此模块用于记录不可逆决策",
+      "noCancellation": "没有取消",
+      "noEdit": "没有编辑",
+      "noScoring": "没有评分",
+      "noRecommendation": "没有建议"
+    },
+    "demoMode": "演示模式。登录以记录您的阈值。",
+    "empty": {
+      "title": "还没有阈值",
+      "description": "记录您的第一个不可逆阈值以开始"
+    },
+    "toast": {
+      "created": "阈值已创建",
+      "marked": "阈值已标记",
+      "validated": "阈值已验证",
+      "sealed": "阈值已密封"
+    },
+    "fields": {
+      "actorName": "执行者姓名",
+      "actorRole": "执行者角色"
+    },
+    "placeholders": {
+      "actorName": "输入姓名"
+    },
+    "role": {
+      "ceo": "首席执行官",
+      "board": "董事会",
+      "founder": "创始人",
+      "director": "总监",
+      "comex": "执行委员会"
+    },
+    "domain": {
+      "hr": "人力资源",
+      "finance": "财务",
+      "operations": "运营",
+      "strategy": "战略",
+      "legal": "法务"
+    },
+    "dialog": {
+      "mark": {
+        "title": "标记阈值",
+        "description": "确认此阈值已被识别和标记。"
+      },
+      "validate": {
+        "title": "验证阈值",
+        "description": "验证此阈值已被适当记录。"
+      },
+      "seal": {
+        "title": "密封阈值",
+        "description": "永久密封此阈值。此操作无法撤消。"
+      }
+    },
+    "paywall": {
+      "title": "专业版功能",
+      "description": "升级到专业版以访问 Irreversa 模块。"
+    },
+    "preview": {
+      "description": "使用示例发现 Irreversa 模块。升级到专业版以记录您自己的阈值。"
+    }
+  },
+  "traceOS": {
+    "badge": "TraceOS - 决策记忆",
+    "title": "智力可追溯性",
+    "subtitle": "记录您的战略决策，保存假设记忆，可视化分叉。",
+    "newDecision": "新决策",
+    "demoMode": "演示模式。登录以保存您的决策。",
+    "searchPlaceholder": "搜索决策...",
+    "values": {
+      "tree": {
+        "title": "决策树",
+        "desc": "可视化链接"
+      },
+      "memory": {
+        "title": "战略记忆",
+        "desc": "保存假设"
+      },
+      "branches": {
+        "title": "放弃的分支",
+        "desc": "跟踪替代方案"
+      },
+      "governance": {
+        "title": "治理",
+        "desc": "不可修改的历史"
+      }
+    },
+    "tabs": {
+      "dashboard": "仪表板",
+      "tree": "树",
+      "graph": "图表",
+      "tags": "标签",
+      "integrations": "集成",
+      "review": "审查",
+      "governance": "治理"
+    },
+    "paywall": {
+      "title": "专业版功能",
+      "description": "访问 TraceOS，组织决策可追溯性模块。"
+    },
+    "email": {
+      "noEmail": "邮箱不可用",
+      "noPending": "没有超过7天的待处理决策",
+      "sent": "警报已通过电子邮件发送",
+      "error": "发送警报时出错",
+      "sendAlerts": "通过电子邮件发送警报"
     }
   },
   "pricing": {
@@ -188,6 +573,118 @@
     "subtitle": "选择适合您的计划",
     "free": "免费",
     "pro": "专业版",
-    "enterprise": "企业版"
+    "enterprise": "企业版",
+    "monthly": "每月",
+    "yearly": "每年",
+    "perMonth": "/月",
+    "perYear": "/年",
+    "mostPopular": "最受欢迎",
+    "currentPlan": "当前计划",
+    "upgrade": "升级",
+    "startFree": "免费开始",
+    "contactSales": "联系销售",
+    "features": {
+      "freeFeatures": "免费功能",
+      "proFeatures": "专业版功能",
+      "enterpriseFeatures": "企业版功能"
+    }
+  },
+  "about": {
+    "badge": "我们的使命",
+    "title": "战略清晰工具",
+    "subtitle": "帮助人们了解真实系统规则的工具",
+    "mission": {
+      "title": "使命",
+      "description": "在承诺之前提供清晰度。分析系统，模拟后果，避免代价高昂的错误。"
+    }
+  },
+  "risks": {
+    "legal": "法律风险",
+    "safety": "安全风险",
+    "corruption": "腐败",
+    "volatility": "波动性",
+    "bureaucracy": "官僚主义",
+    "levels": {
+      "low": "低",
+      "medium": "中",
+      "high": "高",
+      "critical": "危急"
+    }
+  },
+  "whoWins": {
+    "wins": "谁赢",
+    "loses": "谁输"
+  },
+  "playbook": {
+    "do": "做",
+    "dont": "不做",
+    "survivalRoadmap": "生存路线图",
+    "timeline": {
+      "days30": "0-30天",
+      "months12": "3-12个月",
+      "years5": "1-5年"
+    },
+    "planB": "B计划"
+  },
+  "achievements": {
+    "title": "成就",
+    "unlocked": "已解锁",
+    "locked": "已锁定",
+    "all": "全部",
+    "exploration": "探索",
+    "risk": "冒险",
+    "mastery": "精通",
+    "social": "社交",
+    "special": "特殊",
+    "progress": "进度"
+  },
+  "disclaimerConsent": {
+    "title": "开始之前",
+    "subtitle": "关于此工具的一些重要信息",
+    "important": "重要",
+    "warning": "显示的任何结果都不是诊断、建议或专业意见。此工具不能替代专业建议。",
+    "analysisToolTitle": "分析和模拟工具",
+    "analysisToolDesc": "金字塔指南针是一个教育工具，不是咨询服务。模拟 ≠ 预测。",
+    "noAdviceTitle": "无专业建议",
+    "noAdviceDesc": "不提供法律、财务或医疗建议。没有判决，没有成功评分。",
+    "responsibleTitle": "您负责",
+    "responsibleDesc": "您的决定是您的。结果取决于您的实际情况。",
+    "checkbox": "我理解此工具仅供参考，我对自己的决定负责。",
+    "seeDetails": "查看完整详情",
+    "accept": "我理解，继续"
+  },
+  "simulationDisclaimer": {
+    "notPrediction": "模拟 ≠ 预测",
+    "inline": "仅供参考的模拟。",
+    "limits": "限制",
+    "compact": "分析工具——非建议。",
+    "learnMore": "了解更多",
+    "minimal": "场景探索",
+    "viewLimits": "查看限制"
+  },
+  "ovi": {
+    "title": "OVI - 视觉智能",
+    "subtitle": "通过视觉网格和框架进行引导反思",
+    "badge": "阅读框架"
+  },
+  "institutions": {
+    "title": "机构解决方案",
+    "subtitle": "企业和机构的集体决策工具",
+    "badge": "B2B"
+  },
+  "usage": {
+    "title": "AI 使用情况",
+    "subtitle": "跟踪您的 AI 使用情况和可用资源",
+    "currentPeriod": "当前期间",
+    "unitsUsed": "已使用单位",
+    "unitsRemaining": "剩余单位",
+    "resetDate": "重置日期"
+  },
+  "partners": {
+    "title": "合作伙伴计划",
+    "subtitle": "加入我们的合作伙伴网络",
+    "apply": "申请",
+    "benefits": "福利",
+    "requirements": "要求"
   }
 }
