@@ -518,6 +518,33 @@ export type Database = {
         }
         Relationships: []
       }
+      country_variants_translations: {
+        Row: {
+          country_id: string
+          created_at: string
+          id: string
+          language: string
+          translated_data: Json
+          updated_at: string
+        }
+        Insert: {
+          country_id: string
+          created_at?: string
+          id?: string
+          language: string
+          translated_data: Json
+          updated_at?: string
+        }
+        Update: {
+          country_id?: string
+          created_at?: string
+          id?: string
+          language?: string
+          translated_data?: Json
+          updated_at?: string
+        }
+        Relationships: []
+      }
       dashboard_progress: {
         Row: {
           created_at: string
