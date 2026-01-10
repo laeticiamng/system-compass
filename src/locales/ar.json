@@ -26,7 +26,17 @@
     "description": "الوصف",
     "submit": "إرسال",
     "sending": "جاري الإرسال...",
-    "loginRequired": "يتطلب تسجيل الدخول"
+    "loginRequired": "يتطلب تسجيل الدخول",
+    "search": "بحث",
+    "filter": "تصفية",
+    "sort": "ترتيب",
+    "view": "عرض",
+    "create": "إنشاء",
+    "update": "تحديث",
+    "success": "نجاح",
+    "error": "خطأ",
+    "warning": "تحذير",
+    "info": "معلومات"
   },
   "errors": {
     "rateLimited": "طلبات كثيرة جداً. يرجى المحاولة لاحقاً.",
@@ -71,7 +81,38 @@
     "profile": "الملف الشخصي",
     "signIn": "تسجيل الدخول",
     "signOut": "تسجيل الخروج",
-    "worldMap": "خريطة العالم"
+    "worldMap": "خريطة العالم",
+    "about": "حول",
+    "pricing": "التسعير",
+    "resources": "الموارد"
+  },
+  "hero": {
+    "badge": "محاكي التحليل",
+    "title1": "قبل الالتزام",
+    "titleHighlight": "تجنب الأخطاء المكلفة",
+    "title2": "",
+    "subtitle": "افهم القواعد الحقيقية للنظام. محاكاة العواقب قبل اتخاذ القرار. من بائع متجول في داكار إلى مدير تنفيذي في باريس — حلل خياراتك هنا.",
+    "discoverProfile": "محاكاة مساري",
+    "exploreCountries": "تحليل الأنظمة",
+    "madeBy": "صنعه شخص قضى سنوات في فهم النظام",
+    "forEveryone": "للجميع، في كل مكان",
+    "preventionFilter": "تشغيل قرار عبر الفلتر"
+  },
+  "howItWorks": {
+    "title": "حلل، محاكي، افهم",
+    "subtitle": "أداة تحليل. لا وعود، لا تدريب — معلومات لتجنب الأخطاء المكلفة.",
+    "understand": {
+      "title": "افهم القواعد",
+      "description": "لكل نظام قواعده الحقيقية (غالباً مخفية). حلل ما يُكافأ أو يُعاقب فعلاً."
+    },
+    "profile": {
+      "title": "محاكاة العواقب",
+      "description": "اختبر سيناريوهات مختلفة قبل الالتزام. قارن المسارات، المخاطر، التكاليف الحقيقية."
+    },
+    "playbook": {
+      "title": "تحديد الأخطاء",
+      "description": "اكتشف الأخطاء النظامية الشائعة: توقيت خاطئ، بلد خاطئ، هيكل خاطئ. معلومات واقعية."
+    }
   },
   "worldMap": {
     "badge": "استكشاف عالمي",
@@ -112,29 +153,69 @@
     "hasAccount": "لديك حساب بالفعل؟",
     "orContinueWith": "أو تابع باستخدام",
     "signInWithGoogle": "تسجيل الدخول بـ Google",
-    "signUpWithGoogle": "التسجيل بـ Google"
+    "signUpWithGoogle": "التسجيل بـ Google",
+    "resetPassword": "إعادة تعيين كلمة المرور",
+    "updatePassword": "تحديث كلمة المرور",
+    "emailSent": "تم إرسال البريد الإلكتروني",
+    "checkEmail": "يرجى التحقق من بريدك الإلكتروني"
   },
   "countries": {
-    "title": "البلدان",
-    "subtitle": "استكشف هياكل أنظمة البلدان المختلفة",
+    "title": "تحليل البلدان",
+    "subtitle": "تحليل معمق للأنظمة الوطنية. افهم ما يكافئه كل نظام، المخاطر، وخياراتك.",
     "searchPlaceholder": "ابحث عن بلد...",
-    "noResults": "لم يتم العثور على بلدان",
+    "noResults": "لا توجد بلدان تطابق هذا الفلتر.",
     "viewDetails": "عرض التفاصيل",
+    "explore": "تحليل ←",
+    "gdpCap": "الناتج المحلي/فرد",
+    "passport": "جواز السفر",
+    "population": "السكان",
+    "intelligenceAvailable": "طبقة الذكاء متاحة",
+    "results": "نتائج",
+    "allSystems": "جميع الأنظمة",
     "filters": {
       "all": "الكل",
       "region": "المنطقة",
       "pyramidType": "نوع الهرم"
+    },
+    "sort": {
+      "nameAsc": "الاسم (أ-ي)",
+      "nameDesc": "الاسم (ي-أ)",
+      "riskAsc": "المخاطر (↑)",
+      "riskDesc": "المخاطر (↓)"
     }
   },
   "countryDetail": {
+    "notFound": "البلد غير موجود",
+    "backToCountries": "العودة إلى البلدان",
+    "ruleOfGold": "القاعدة الذهبية",
+    "lgbtqRights": "حقوق LGBTQ+",
+    "exportPdf": "تصدير PDF",
     "overview": "نظرة عامة",
     "system": "النظام",
     "risks": "المخاطر",
     "opportunities": "الفرص",
     "intelligence": "طبقة الذكاء",
     "translating": "جاري الترجمة...",
+    "snapshot": {
+      "gdpPerCapita": "الناتج المحلي/فرد",
+      "population": "السكان",
+      "passportRank": "ترتيب جواز السفر",
+      "corruptionIndex": "مؤشر الفساد",
+      "freedomIndex": "مؤشر الحرية"
+    },
+    "systemPyramid": "هرم النظام",
+    "riskAssessment": "تقييم المخاطر",
+    "whoWinsLoses": "من يفوز / من يخسر",
+    "survivalPlaybook": "دليل البقاء",
+    "tabs": {
+      "tronc": "التحليل الأساسي",
+      "variant": "متغير البلد",
+      "project": "تحليل المشروع",
+      "intelligence": "الذكاء"
+    },
     "variant": {
-      "title": "متغير النظام",
+      "title": "الخصائص المحلية",
+      "subtitle": "ما يفاجئ الوافدين الجدد",
       "laborMarket": "سوق العمل",
       "entrepreneurship": "ريادة الأعمال",
       "dailyLife": "الحياة اليومية",
@@ -146,13 +227,104 @@
       "trajectories": "مسارات مثالية"
     }
   },
+  "pyramids": {
+    "title": "الأهرام الستة",
+    "subtitle": "كل نظام يندرج ضمن إحدى هذه الفئات",
+    "examples": "أمثلة",
+    "problemRent": {
+      "label": "ريع المشكلة",
+      "description": "الخلل هو الأصل. حل المشاكل يعرضك للخطر."
+    },
+    "stabilityRedis": {
+      "label": "استقرار إعادة التوزيع",
+      "description": "النظام يكافئ الاستقرار، الحماية، وإعادة التوزيع."
+    },
+    "competenceTrust": {
+      "label": "كفاءة ثقة",
+      "description": "الحل هو الأصل. الدقة والكفاءة تُكافأ."
+    },
+    "growthRisk": {
+      "label": "نمو مخاطرة",
+      "description": "النمو هو الأصل. السرعة، قابلية التوسع، ورأس المال تُكافأ."
+    },
+    "hybridTransition": {
+      "label": "هجين انتقالي",
+      "description": "منطق متعدد يتعايش. تنقل عبر التناقضات والتغييرات السريعة."
+    },
+    "resourceExtraction": {
+      "label": "استخراج الموارد",
+      "description": "الموارد الطبيعية تمول النظام. القرب من التدفق هو الأهم."
+    }
+  },
   "pyramidTypes": {
     "PROBLEM_RENT": "مشكلة-ريع",
     "STABILITY_REDIS": "استقرار-إعادة توزيع",
     "COMPETENCE_TRUST": "كفاءة-ثقة",
     "GROWTH_RISK": "نمو-مخاطرة",
     "HYBRID_TRANSITION": "هجين-انتقالي",
-    "RESOURCE_EXTRACTION": "استخراج-موارد"
+    "RESOURCE_EXTRACTION": "استخراج-موارد",
+    "title": "الأنظمة الستة",
+    "subtitle": "حلل كيف يعمل كل نوع من البلدان فعلياً. لكل نظام منطق قوته الخاص.",
+    "whoThrives": "من ينجح",
+    "whoPays": "من يدفع الثمن",
+    "survivalRules": "قواعد البقاء",
+    "opportunities": "الفرص المخفية",
+    "warningSigns": "علامات التحذير",
+    "exampleCountries": "بلدان مثالية"
+  },
+  "compare": {
+    "title": "مقارنة البلدان",
+    "subtitle": "تحليل نظامين أو أكثر جنباً إلى جنب. ابحث عن الأنسب لملفك الشخصي.",
+    "selectCountries": "اختر البلدان للمقارنة",
+    "addCountry": "إضافة بلد",
+    "removeCountry": "إزالة بلد",
+    "noSelection": "اختر بلدين على الأقل لبدء المقارنة",
+    "compareNow": "قارن الآن",
+    "radar": "مخطط الرادار",
+    "table": "جدول",
+    "tags": "العلامات",
+    "saveComparison": "حفظ المقارنة",
+    "loadComparison": "تحميل المقارنة"
+  },
+  "exitKeys": {
+    "title": "مفاتيح الخروج",
+    "subtitle": "سيناريوهات الخروج الاستراتيجية وخطط العمل",
+    "badge": "كتالوج الاستراتيجيات",
+    "catalog": "تصفح جميع الاستراتيجيات",
+    "viewDetails": "عرض التفاصيل",
+    "compatibility": "التوافق",
+    "duration": "المدة",
+    "difficulty": "الصعوبة",
+    "cost": "التكلفة",
+    "steps": "الخطوات",
+    "requirements": "المتطلبات",
+    "risks": "المخاطر",
+    "timeline": "الجدول الزمني"
+  },
+  "lifeGame": {
+    "title": "لعبة الحياة",
+    "subtitle": "محاكاة مسارات الحياة والقرارات المختلفة",
+    "badge": "محاكي تفاعلي",
+    "newGame": "لعبة جديدة",
+    "loadGame": "تحميل لعبة",
+    "saveGame": "حفظ اللعبة",
+    "rules": "القواعد",
+    "turn": "الدور",
+    "player": "اللاعب",
+    "score": "النتيجة",
+    "health": "الصحة",
+    "money": "المال",
+    "happiness": "السعادة",
+    "reputation": "السمعة",
+    "actions": "الإجراءات",
+    "events": "الأحداث",
+    "endGame": "إنهاء اللعبة",
+    "modes": {
+      "solo": "الوضع الفردي",
+      "race": "وضع السباق",
+      "cooperative": "الوضع التعاوني",
+      "duel": "وضع المبارزة"
+    }
   },
   "dashboard": {
     "title": "لوحة التحكم الخاصة بي",
@@ -160,27 +332,171 @@
     "syncing": "جاري المزامنة...",
     "synced": "تمت المزامنة",
     "localOnly": "محلي فقط",
-    "connectToSync": "سجل الدخول للمزامنة"
+    "connectToSync": "سجل الدخول للمزامنة",
+    "localDataInfo": "بياناتك محفوظة محلياً. سجل الدخول لمزامنتها مع السحابة.",
+    "signIn": "تسجيل الدخول",
+    "profileLabel": "الملف الشخصي",
+    "viewKeys": "عرض مفاتيحي",
+    "profileNotConfigured": "الملف الشخصي غير مكتمل",
+    "profileNotConfiguredDesc": "أنشئ ملفك الشخصي للحصول على توصيات مخصصة",
+    "createProfile": "إنشاء ملفي الشخصي",
+    "savedComparisons": "المقارنات المحفوظة",
+    "savedComparisonsDesc": "مقارنات البلدان المفضلة لديك",
+    "countries": "بلدان",
+    "viewAll": "عرض الكل",
+    "overallProgress": "التقدم العام",
+    "savedGames": "الألعاب المحفوظة",
+    "savedGamesDesc": "استئنف ألعابك الجارية",
+    "players": "لاعبين",
+    "finished": "منتهية",
+    "inProgress": "قيد التقدم",
+    "resume": "استئناف",
+    "replay": "إعادة اللعب",
+    "advancedModules": "الوحدات المتقدمة",
+    "advancedModulesDesc": "أدوات التفكير والتوثيق المتقدمة",
+    "latentDesc": "حدد مناطق التوتر غير الحرجة بعد",
+    "irreversaDesc": "وثّق العتبات اللارجعية التي تم تجاوزها",
+    "institutionsDesc": "اتخاذ القرار الجماعي والتتبع",
+    "usageDesc": "تتبع استخدام AI والموارد المتاحة",
+    "tabs": {
+      "plan": "الخطة",
+      "stats": "الإحصائيات",
+      "calendar": "التقويم"
+    }
   },
   "latent": {
     "title": "المناطق الكامنة",
-    "subtitle": "حدد مناطق التوتر غير الحرجة بعد",
+    "subtitle": "حدد مناطق التوتر غير الحرجة بعد. أداة للوقاية والوضوح.",
+    "badge": "وحدة كامنة",
     "newZone": "منطقة جديدة",
+    "demoMode": "وضع العرض. سجل الدخول لحفظ مناطقك.",
     "status": {
       "dormant": "خامل",
       "emergent": "ناشئ",
       "fragile": "هش",
       "blocked": "محظور"
+    },
+    "tabs": {
+      "zones": "المناطق",
+      "graph": "الرسم البياني",
+      "history": "التاريخ",
+      "philosophy": "الفلسفة"
+    },
+    "filter": {
+      "all": "الكل"
+    },
+    "sort": {
+      "newest": "الأحدث",
+      "oldest": "الأقدم",
+      "alphabetical": "أبجدي",
+      "tensions": "التوترات"
+    },
+    "search": {
+      "placeholder": "ابحث عن منطقة..."
+    },
+    "stats": {
+      "total": "المجموع",
+      "dormant": "خامل",
+      "emergent": "ناشئ",
+      "fragile": "هش",
+      "blocked": "محظور",
+      "avgTensions": "متوسط التوترات"
+    },
+    "toast": {
+      "created": "تم إنشاء المنطقة",
+      "statusUpdated": "تم تحديث الحالة",
+      "tensionAdded": "تم إضافة التوتر",
+      "deleted": "تم حذف المنطقة"
+    },
+    "empty": {
+      "title": "لا توجد مناطق بعد",
+      "description": "أنشئ أول منطقة كامنة للبدء"
+    },
+    "tensions": {
+      "types": {
+        "relational": "علاقاتي",
+        "financial": "مالي",
+        "existential": "وجودي",
+        "professional": "مهني",
+        "health": "صحي",
+        "identity": "هوياتي"
+      }
+    },
+    "merge": {
+      "button": "دمج"
+    },
+    "edit": {
+      "success": "نجح التعديل"
+    },
+    "duplicate": {
+      "success": "نجح النسخ"
+    },
+    "delete": {
+      "title": "حذف المنطقة",
+      "description": "هل أنت متأكد أنك تريد حذف هذه المنطقة؟ لا يمكن التراجع عن هذا الإجراء.",
+      "confirm": "حذف"
+    },
+    "paywall": {
+      "title": "ميزة احترافية",
+      "description": "الترقية إلى Pro للوصول إلى وحدة Latent وإنشاء مناطقك الخاصة."
+    },
+    "preview": {
+      "description": "اكتشف وحدة Latent بالأمثلة. الترقية إلى Pro لإنشاء مناطقك الخاصة."
+    },
+    "disclaimer": {
+      "title": "أداة تفكير شخصية",
+      "text": "هذه الوحدة تساعدك على رسم خريطة مناطق التوتر. لا تحل محل المرافقة المهنية."
     }
   },
   "irreversa": {
     "title": "العتبات اللارجعية",
-    "subtitle": "وثّق العتبات اللارجعية التي تم تجاوزها",
+    "subtitle": "وثّق العتبات اللارجعية التي تم تجاوزها. أداة للوضوح والتتبع.",
+    "badge": "وحدة Irreversa",
     "status": {
       "detected": "مكتشف",
       "marked": "مُعلّم",
       "validated": "مُصادق عليه",
       "sealed": "مختوم"
+    },
+    "actions": {
+      "newThreshold": "عتبة جديدة"
+    },
+    "warning": {
+      "title": "هذه الوحدة لتوثيق القرارات اللارجعية",
+      "noCancellation": "لا إلغاء",
+      "noEdit": "لا تعديل",
+      "noScoring": "لا تسجيل نقاط",
+      "noRecommendation": "لا توصيات"
+    },
+    "demoMode": "وضع العرض. سجل الدخول لتوثيق عتباتك.",
+    "empty": {
+      "title": "لا توجد عتبات بعد",
+      "description": "وثّق أول عتبة لارجعية للبدء"
+    },
+    "toast": {
+      "created": "تم إنشاء العتبة",
+      "marked": "تم تعليم العتبة",
+      "validated": "تم التصديق على العتبة",
+      "sealed": "تم ختم العتبة"
+    },
+    "paywall": {
+      "title": "ميزة احترافية",
+      "description": "الترقية إلى Pro للوصول إلى وحدة Irreversa."
+    },
+    "preview": {
+      "description": "اكتشف وحدة Irreversa بالأمثلة. الترقية إلى Pro لتوثيق عتباتك الخاصة."
+    }
+  },
+  "traceOS": {
+    "badge": "TraceOS - ذاكرة القرارات",
+    "title": "التتبع الفكري",
+    "subtitle": "وثّق قراراتك الاستراتيجية، احفظ ذاكرة الفرضيات، تصور التفرعات.",
+    "newDecision": "قرار جديد",
+    "demoMode": "وضع العرض. سجل الدخول لحفظ قراراتك.",
+    "searchPlaceholder": "ابحث عن قرار...",
+    "paywall": {
+      "title": "ميزة احترافية",
+      "description": "الوصول إلى TraceOS، وحدة تتبع قرارات المؤسسات."
     }
   },
   "pricing": {
@@ -188,6 +504,99 @@
     "subtitle": "اختر الخطة المناسبة لك",
     "free": "مجاني",
     "pro": "احترافي",
-    "enterprise": "للشركات"
+    "enterprise": "للشركات",
+    "monthly": "شهرياً",
+    "yearly": "سنوياً",
+    "perMonth": "/شهر",
+    "perYear": "/سنة",
+    "mostPopular": "الأكثر شعبية",
+    "currentPlan": "الخطة الحالية",
+    "upgrade": "ترقية",
+    "startFree": "ابدأ مجاناً",
+    "contactSales": "تواصل مع المبيعات"
+  },
+  "about": {
+    "badge": "مهمتنا",
+    "title": "أداة الوضوح الاستراتيجي",
+    "subtitle": "أداة تساعد الناس على فهم قواعد الأنظمة الحقيقية"
+  },
+  "risks": {
+    "legal": "المخاطر القانونية",
+    "safety": "مخاطر السلامة",
+    "corruption": "الفساد",
+    "volatility": "التقلب",
+    "bureaucracy": "البيروقراطية",
+    "levels": {
+      "low": "منخفض",
+      "medium": "متوسط",
+      "high": "مرتفع",
+      "critical": "حرج"
+    }
+  },
+  "whoWins": {
+    "wins": "من يفوز",
+    "loses": "من يخسر"
+  },
+  "playbook": {
+    "do": "افعل",
+    "dont": "لا تفعل",
+    "survivalRoadmap": "خريطة البقاء",
+    "timeline": {
+      "days30": "0-30 يوم",
+      "months12": "3-12 شهر",
+      "years5": "1-5 سنوات"
+    },
+    "planB": "الخطة ب"
+  },
+  "achievements": {
+    "title": "الإنجازات",
+    "unlocked": "مفتوح",
+    "locked": "مقفل",
+    "all": "الكل",
+    "exploration": "استكشاف",
+    "risk": "مخاطرة",
+    "mastery": "إتقان",
+    "social": "اجتماعي",
+    "special": "خاص",
+    "progress": "التقدم"
+  },
+  "disclaimerConsent": {
+    "title": "قبل البدء",
+    "subtitle": "بعض المعلومات المهمة عن هذه الأداة",
+    "important": "مهم",
+    "warning": "أي نتيجة معروضة ليست تشخيصاً أو توصية أو نصيحة مهنية. هذه الأداة لا تحل محل الاستشارة المتخصصة.",
+    "checkbox": "أفهم أن هذه الأداة للمعلومات فقط وأنني مسؤول عن قراراتي.",
+    "accept": "أفهم، استمر"
+  },
+  "simulationDisclaimer": {
+    "notPrediction": "المحاكاة ≠ التنبؤ",
+    "inline": "محاكاة للأغراض المعلوماتية فقط.",
+    "limits": "الحدود",
+    "compact": "أداة تحليل — ليست نصيحة."
+  },
+  "ovi": {
+    "title": "OVI - الذكاء البصري",
+    "subtitle": "تفكير موجه عبر الشبكات والأطر البصرية",
+    "badge": "أطر القراءة"
+  },
+  "institutions": {
+    "title": "حلول مؤسسية",
+    "subtitle": "أدوات اتخاذ القرار الجماعي للشركات والمؤسسات",
+    "badge": "B2B"
+  },
+  "usage": {
+    "title": "استخدام AI",
+    "subtitle": "تتبع استخدام AI والموارد المتاحة",
+    "currentPeriod": "الفترة الحالية",
+    "unitsUsed": "الوحدات المستخدمة",
+    "unitsRemaining": "الوحدات المتبقية",
+    "resetDate": "تاريخ إعادة التعيين"
+  },
+  "partners": {
+    "title": "برنامج الشركاء",
+    "subtitle": "انضم إلى شبكة شركائنا",
+    "apply": "تقديم طلب",
+    "benefits": "المزايا",
+    "requirements": "المتطلبات"
   }
 }
