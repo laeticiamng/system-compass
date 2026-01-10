@@ -2934,5 +2934,112 @@
       "rewards": ["Expertise sectorial", "Movilidad geográfica", "Contratos cortos bien negociados", "Ahorro masivo"],
       "punishes": ["Arraigo local", "Proyectos a largo plazo", "Dependencia del sistema local", "Gastos de vida elevados"]
     }
+  },
+  "latent": {
+    "title": "Zonas de Potencial",
+    "subtitle": "Un espacio para lo que aún no está listo para existir",
+    "newZone": "Nueva zona",
+    "demoMode": "Modo demo. Inicie sesión para guardar sus zonas de potencial.",
+    "updated": "Actualizado",
+    "paywall": {
+      "title": "Módulo LATENT - B2B",
+      "description": "Acceda a LATENT para mapear y mantener potenciales no formulados, sin obligación de transformación."
+    },
+    "tabs": {
+      "zones": "Zonas de potencial",
+      "philosophy": "Filosofía"
+    },
+    "filter": {
+      "all": "Todos los estados"
+    },
+    "status": {
+      "dormant": "Latente",
+      "emergent": "Emergente",
+      "fragile": "Frágil",
+      "blocked": "Bloqueado"
+    },
+    "tension": {
+      "nourishing": "Fuerzas nutritivas",
+      "blocking": "Fuerzas bloqueantes",
+      "fragility": "Fragilidades",
+      "prematureCrushing": "Riesgo de aplastamiento prematuro"
+    },
+    "tensions": {
+      "title": "Campos de tensión",
+      "add": "Agregar una tensión",
+      "placeholder": "Describir esta tensión..."
+    },
+    "actions": {
+      "transform": "Transformar (sin decidir)",
+      "merge": "Fusionar con otra zona",
+      "sleep": "Poner en reposo",
+      "archive": "Archivar sin cierre"
+    },
+    "create": {
+      "title": "Crear una zona de potencial",
+      "subtitle": "Nombrar lo que emerge sin congelarlo",
+      "labelTitle": "Título abierto",
+      "placeholderTitle": "Lo que está empezando a emerger...",
+      "hintTitle": "Un título no conclusivo que deja espacio abierto",
+      "labelDescription": "Descripción deliberadamente vaga",
+      "placeholderDescription": "Impresiones, direcciones posibles, no certezas todavía...",
+      "hintDescription": "Respete la vaguedad. Sin objetivos cuantificados.",
+      "submit": "Crear esta zona"
+    },
+    "empty": {
+      "title": "Sin zonas de potencial",
+      "description": "Cree su primer espacio para acoger lo que aún no está listo.",
+      "cta": "Crear mi primera zona"
+    },
+    "toast": {
+      "created": "Zona de potencial creada",
+      "statusUpdated": "Estado actualizado",
+      "tensionAdded": "Tensión agregada",
+      "deleted": "Zona eliminada",
+      "archived": "Zona archivada sin cierre",
+      "put_to_sleep": "Zona puesta en reposo",
+      "transformed": "Transformación registrada",
+      "merged": "Fusión registrada"
+    },
+    "export": {
+      "title": "Exportar a TraceOS",
+      "description": "Exportar esta zona como borrador de decisión",
+      "success": "Zona exportada exitosamente a TraceOS",
+      "button": "Exportar a TraceOS"
+    },
+    "onboarding": {
+      "badge": "Anti-acelerador estratégico",
+      "title": "Bienvenido a LATENT",
+      "subtitle": "Un espacio seguro para lo que aún no está listo para existir. Aquí, la vaguedad se respeta.",
+      "notTitle": "Lo que LATENT NO es",
+      "not": {
+        "idea": "No es una herramienta de ideación",
+        "project": "No es un gestor de proyectos",
+        "objective": "No es un tablero de objetivos",
+        "decision": "No es una herramienta de decisión"
+      },
+      "isTitle": "Lo que LATENT SÍ es",
+      "isDescription": "Un módulo previo, diseñado para prevenir la cristalización prematura.",
+      "is": {
+        "potential": "Un espacio para potenciales no formulados",
+        "noDeadline": "Sin obligación de plazo o resultado",
+        "safe": "Protección contra la presión de decidir",
+        "respect": "Respeto por la complejidad real"
+      },
+      "principles": {
+        "dormancy": {
+          "title": "La latencia es un estado",
+          "desc": "Dejar reposar no es abandonar. Es respetar el tiempo del potencial."
+        },
+        "noTimeline": {
+          "title": "Sin cronograma",
+          "desc": "Sin plazos, sin KPIs, sin notificaciones intrusivas."
+        },
+        "noForcing": {
+          "title": "Sin obligación",
+          "desc": "Transformar, fusionar, archivar... pero nunca forzar la concretización."
+        }
+      }
+    }
   }
 }

@@ -5884,6 +5884,21 @@
           "desc": "Transformer, fusionner, archiver... mais jamais forcer la concrétisation."
         }
       }
+    },
+    "export": {
+      "title": "Exporter vers TraceOS",
+      "description": "Exporter cette zone comme brouillon de décision",
+      "success": "Zone exportée vers TraceOS avec succès",
+      "button": "Exporter vers TraceOS",
+      "hypothesis": "Cette zone de potentiel est prête à être explorée en tant que décision potentielle.",
+      "alt1": "Maintenir en zone de potentiel pour observation continue",
+      "alt2": "Fusionner avec d'autres zones connexes avant de décider",
+      "constraint1": "Préserver la réflexion sans cristallisation prématurée",
+      "constraint2": "Respecter le temps de maturation",
+      "pendingDecision": "En attente de formulation - exporté depuis LATENT",
+      "additionalContext": "Contexte additionnel (optionnel)",
+      "contextPlaceholder": "Ajoutez du contexte pour l'équipe décisionnelle...",
+      "notice": "La zone sera exportée comme brouillon de décision dans TraceOS. Les tensions identifiées seront incluses dans le contexte."
     }
   }
 }

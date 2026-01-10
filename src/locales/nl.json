@@ -2924,5 +2924,112 @@
       "rewards": ["Sector-expertise", "Geografische mobiliteit", "Goed onderhandelde kortetermijncontracten", "Massaal sparen"],
       "punishes": ["Lokale verankering", "Langetermijnprojecten", "Afhankelijkheid van lokaal systeem", "Hoge kosten van levensonderhoud"]
     }
+  },
+  "latent": {
+    "title": "Potentieelzones",
+    "subtitle": "Een ruimte voor wat nog niet klaar is om te bestaan",
+    "newZone": "Nieuwe zone",
+    "demoMode": "Demo-modus. Log in om je potentieelzones op te slaan.",
+    "updated": "Bijgewerkt",
+    "paywall": {
+      "title": "LATENT Module - B2B",
+      "description": "Toegang tot LATENT om ongeformuleerde potentiëlen in kaart te brengen en te onderhouden, zonder transformatieverplichting."
+    },
+    "tabs": {
+      "zones": "Potentieelzones",
+      "philosophy": "Filosofie"
+    },
+    "filter": {
+      "all": "Alle statussen"
+    },
+    "status": {
+      "dormant": "Slapend",
+      "emergent": "Opkomend",
+      "fragile": "Fragiel",
+      "blocked": "Geblokkeerd"
+    },
+    "tension": {
+      "nourishing": "Voedende krachten",
+      "blocking": "Blokkerende krachten",
+      "fragility": "Fragiliteiten",
+      "prematureCrushing": "Risico op voortijdige verplettering"
+    },
+    "tensions": {
+      "title": "Spanningsvelden",
+      "add": "Spanning toevoegen",
+      "placeholder": "Deze spanning beschrijven..."
+    },
+    "actions": {
+      "transform": "Transformeren (zonder te beslissen)",
+      "merge": "Samenvoegen met een andere zone",
+      "sleep": "In rust brengen",
+      "archive": "Archiveren zonder afsluiting"
+    },
+    "create": {
+      "title": "Een potentieelzone maken",
+      "subtitle": "Benoem wat opkomt zonder het te bevriezen",
+      "labelTitle": "Open titel",
+      "placeholderTitle": "Wat begint te ontstaan...",
+      "hintTitle": "Een niet-conclusieve titel die ruimte openlaat",
+      "labelDescription": "Opzettelijk vage beschrijving",
+      "placeholderDescription": "Indrukken, mogelijke richtingen, nog geen zekerheden...",
+      "hintDescription": "Respecteer de vaagheid. Geen gekwantificeerde doelen.",
+      "submit": "Deze zone maken"
+    },
+    "empty": {
+      "title": "Geen potentieelzones",
+      "description": "Maak je eerste ruimte om te verwelkomen wat nog niet klaar is.",
+      "cta": "Mijn eerste zone maken"
+    },
+    "toast": {
+      "created": "Potentieelzone gemaakt",
+      "statusUpdated": "Status bijgewerkt",
+      "tensionAdded": "Spanning toegevoegd",
+      "deleted": "Zone verwijderd",
+      "archived": "Zone gearchiveerd zonder afsluiting",
+      "put_to_sleep": "Zone in rust gebracht",
+      "transformed": "Transformatie geregistreerd",
+      "merged": "Samenvoeging geregistreerd"
+    },
+    "export": {
+      "title": "Exporteren naar TraceOS",
+      "description": "Exporteer deze zone als beslissingsconcept",
+      "success": "Zone succesvol geëxporteerd naar TraceOS",
+      "button": "Exporteren naar TraceOS"
+    },
+    "onboarding": {
+      "badge": "Strategische anti-versneller",
+      "title": "Welkom bij LATENT",
+      "subtitle": "Een veilige ruimte voor wat nog niet klaar is om te bestaan. Hier wordt vaagheid gerespecteerd.",
+      "notTitle": "Wat LATENT NIET is",
+      "not": {
+        "idea": "Geen ideatietool",
+        "project": "Geen projectmanager",
+        "objective": "Geen doelenbord",
+        "decision": "Geen beslissingstool"
+      },
+      "isTitle": "Wat LATENT WEL is",
+      "isDescription": "Een upstream module, ontworpen om voortijdige kristallisatie te voorkomen.",
+      "is": {
+        "potential": "Een ruimte voor ongeformuleerde potentiëlen",
+        "noDeadline": "Geen deadline- of resultaatverplichting",
+        "safe": "Bescherming tegen beslissingsdruk",
+        "respect": "Respect voor echte complexiteit"
+      },
+      "principles": {
+        "dormancy": {
+          "title": "Sluimering is een toestand",
+          "desc": "Laten rusten is niet opgeven. Het is de tijd van potentieel respecteren."
+        },
+        "noTimeline": {
+          "title": "Geen tijdlijn",
+          "desc": "Geen deadlines, geen KPI's, geen opdringerige meldingen."
+        },
+        "noForcing": {
+          "title": "Geen verplichting",
+          "desc": "Transformeren, samenvoegen, archiveren... maar nooit concretisering forceren."
+        }
+      }
+    }
   }
 }
