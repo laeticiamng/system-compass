@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { 
   Calendar, Clock, CheckCircle, Circle, ChevronDown, ChevronUp,
   Plane, FileText, Home, Briefcase, Heart, GraduationCap,
@@ -351,6 +352,7 @@ export function InstallationTimeline({
   currentCountry,
   onClose
 }: InstallationTimelineProps) {
+  const { t } = useTranslation();
   const [expandedPhases, setExpandedPhases] = useState<string[]>(['preparation']);
   const [completedSteps, setCompletedSteps] = useState<string[]>([]);
 
@@ -412,7 +414,7 @@ export function InstallationTimeline({
           <div className="flex items-center gap-3">
             <span className="text-4xl">{destination.flag}</span>
             <div>
-              <h2 className="text-xl font-bold">Timeline d'installation</h2>
+              <h2 className="text-xl font-bold">{t('installation.title', 'Installation Timeline')}</h2>
               <p className="text-muted-foreground">{destination.countryName}</p>
             </div>
           </div>
@@ -426,8 +428,8 @@ export function InstallationTimeline({
         {/* Progress */}
         <div className="space-y-2">
           <div className="flex justify-between text-sm">
-            <span className="text-muted-foreground">Progression globale</span>
-            <span className="font-medium">{completedCount}/{totalSteps} étapes</span>
+            <span className="text-muted-foreground">{t('installation.overallProgress', 'Overall progress')}</span>
+            <span className="font-medium">{t('installation.stepsCount', '{{completed}}/{{total}} steps', { completed: completedCount, total: totalSteps })}</span>
           </div>
           <Progress value={progressPercent} className="h-3" />
         </div>
@@ -436,7 +438,7 @@ export function InstallationTimeline({
         <div className="mt-4 p-3 bg-primary/10 rounded-lg">
           <div className="flex items-center gap-2 mb-2">
             <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium">Focus pour votre aspiration</span>
+            <span className="text-sm font-medium">{t('installation.aspirationFocus', 'Focus for your aspiration')}</span>
           </div>
           <ul className="text-xs text-muted-foreground space-y-1">
             {aspirationFocus.tips.slice(0, 2).map((tip, i) => (

@@ -36,6 +36,11 @@
     "notFound": "Ressource non trouvée.",
     "serverError": "Erreur serveur. Veuillez réessayer."
   },
+  "journey": {
+    "profile": "Ton profil",
+    "options": "Tes options",
+    "keys": "Tes clés"
+  },
   "insights": {
     "vacationGuide": "Guide Vacances",
     "installationGuide": "Guide Installation",
@@ -5866,6 +5871,12 @@
       "regionalBlocs": "Blocs régionaux",
       "installation": "Installation",
       "vacation": "Vacances"
+    },
+    "installation": {
+      "title": "Timeline d'installation",
+      "overallProgress": "Progression globale",
+      "stepsCount": "{{completed}}/{{total}} étapes",
+      "aspirationFocus": "Focus pour votre aspiration"
     },
     "filters": {
       "title": "Filtrer les stratégies",

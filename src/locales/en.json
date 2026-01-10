@@ -36,6 +36,11 @@
     "notFound": "Resource not found.",
     "serverError": "Server error. Please try again."
   },
+  "journey": {
+    "profile": "Your profile",
+    "options": "Your options",
+    "keys": "Your keys"
+  },
   "insights": {
     "vacationGuide": "Vacation Guide",
     "installationGuide": "Installation Guide",
@@ -5824,6 +5829,12 @@
       "regionalBlocs": "Regional blocs",
       "installation": "Installation",
       "vacation": "Vacation"
+    },
+    "installation": {
+      "title": "Installation Timeline",
+      "overallProgress": "Overall progress",
+      "stepsCount": "{{completed}}/{{total}} steps",
+      "aspirationFocus": "Focus for your aspiration"
     },
     "filters": {
       "title": "Filter strategies",
