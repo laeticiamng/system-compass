@@ -38,7 +38,7 @@ export function AchievementsPanel() {
   const totalAchievements = ACHIEVEMENTS.length;
   const progressPercent = Math.round((unlockedAchievements.length / totalAchievements) * 100);
 
-  const categories = ['all', 'exploration', 'risk', 'mastery', 'special'];
+  const categories = ['all', 'exploration', 'risk', 'mastery', 'social', 'special'];
 
   const filterByCategory = (achievements: Achievement[]) => {
     if (selectedCategory === 'all') return achievements;
@@ -164,13 +164,13 @@ function AchievementCard({
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
-            <h4 className="font-semibold">{achievement.name}</h4>
+            <h4 className="font-semibold">{t(`achievements.${achievement.id}.name`, achievement.name)}</h4>
             {unlocked && (
               <CheckCircle2 className="w-4 h-4 text-emerald-500" />
             )}
           </div>
           <p className="text-sm text-muted-foreground mb-2">
-            {achievement.description}
+            {t(`achievements.${achievement.id}.description`, achievement.description)}
           </p>
             {progress && !unlocked && (
             <div className="space-y-1">

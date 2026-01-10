@@ -309,10 +309,47 @@
     "exploration": "Exploration",
     "risk": "Prise de risque",
     "mastery": "Maîtrise",
+    "social": "Social",
     "special": "Spécial",
     "progress": "Progression",
     "noneInCategory": "Aucun succès débloqué dans cette catégorie",
-    "allUnlocked": "Tous les succès de cette catégorie sont débloqués ! 🎉"
+    "allUnlocked": "Tous les succès de cette catégorie sont débloqués ! 🎉",
+    "world_explorer": {
+      "name": "Explorateur du monde",
+      "description": "Visiter 5 pays différents"
+    },
+    "risk_taker": {
+      "name": "Preneur de risques",
+      "description": "Réussir 10 événements à risque"
+    },
+    "veteran": {
+      "name": "Vétéran",
+      "description": "Jouer 10 parties complètes"
+    },
+    "globetrotter": {
+      "name": "Globe-trotter",
+      "description": "Visiter 15 pays différents"
+    },
+    "survivor": {
+      "name": "Survivant",
+      "description": "Survivre à 5 événements à haut risque de suite"
+    },
+    "strategist": {
+      "name": "Stratège",
+      "description": "Atteindre 50 tours joués au total"
+    },
+    "perfectionist": {
+      "name": "Perfectionniste",
+      "description": "Terminer une partie avec un score de 100%"
+    },
+    "team_player": {
+      "name": "Joueur d'équipe",
+      "description": "Gagner une partie coopérative"
+    },
+    "racer": {
+      "name": "Coureur",
+      "description": "Gagner une partie en mode course"
+    }
   },
   "footer": {
     "explore": "Explorer",
@@ -486,7 +523,8 @@
     "success": "Export réussi",
     "downloaded": "Le PDF a été téléchargé",
     "error": "Erreur d'export",
-    "errorDesc": "Impossible de générer le PDF"
+    "errorDesc": "Impossible de générer le PDF",
+    "footer": "Généré par Pyramid Compass | {{date}} | Simulation uniquement"
   },
   "vacation": {
     "title": "Recommandations Vacances par Pouvoir d'Achat",
@@ -5072,6 +5110,33 @@
     "reputationRequirementDesc": "Importance de l'image",
     "complianceSensitivity": "Sensibilité conformité",
     "complianceSensitivityDesc": "Importance des règles"
+  },
+  "profileMatcher": {
+    "title": "Profile Matcher",
+    "subtitle": "Trouvez les pays qui correspondent à votre profil",
+    "description": "Définissez vos préférences et voyez quels pays s'alignent le mieux",
+    "yourProfile": "Votre Profil",
+    "matchResults": "Résultats",
+    "compatibility": "Compatibilité",
+    "frictions": "Frictions potentielles",
+    "strengths": "Forces",
+    "noFrictions": "Aucune friction significative détectée",
+    "highMatch": "Haute compatibilité",
+    "mediumMatch": "Compatibilité moyenne",
+    "lowMatch": "Faible compatibilité",
+    "preferences": {
+      "networkImportance": "Importance des réseaux personnels",
+      "diplomaImportance": "Importance des diplômes/certifications",
+      "riskAppetite": "Appétit pour le risque",
+      "needForSpeed": "Besoin de processus rapides",
+      "hierarchyComfort": "Confort avec la hiérarchie",
+      "stabilityNeed": "Besoin de stabilité",
+      "low": "Faible",
+      "medium": "Moyen",
+      "high": "Élevé"
+    },
+    "analyze": "Analyser",
+    "reset": "Réinitialiser"
   },
   "multiCompare": {
     "title": "Comparer plusieurs pays",
