@@ -572,9 +572,9 @@ export default function Dashboard() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <Link to="/latent">
-                <div className="p-4 rounded-lg border border-primary/20 bg-primary/5 hover:bg-primary/10 transition-colors cursor-pointer">
+                <div className="p-4 rounded-lg border border-primary/20 bg-primary/5 hover:bg-primary/10 transition-colors cursor-pointer h-full">
                   <div className="flex items-center gap-3 mb-2">
                     <Eye className="w-5 h-5 text-primary" />
                     <span className="font-medium">{t('latent.title', 'Zones Latentes')}</span>
@@ -585,7 +585,7 @@ export default function Dashboard() {
                 </div>
               </Link>
               <Link to="/irreversa">
-                <div className="p-4 rounded-lg border border-destructive/20 bg-destructive/5 hover:bg-destructive/10 transition-colors cursor-pointer">
+                <div className="p-4 rounded-lg border border-destructive/20 bg-destructive/5 hover:bg-destructive/10 transition-colors cursor-pointer h-full">
                   <div className="flex items-center gap-3 mb-2">
                     <Lock className="w-5 h-5 text-destructive" />
                     <span className="font-medium">{t('irreversa.title', 'Irreversa')}</span>
@@ -596,13 +596,24 @@ export default function Dashboard() {
                 </div>
               </Link>
               <Link to="/institutions">
-                <div className="p-4 rounded-lg border border-amber-500/20 bg-amber-500/5 hover:bg-amber-500/10 transition-colors cursor-pointer">
+                <div className="p-4 rounded-lg border border-amber-500/20 bg-amber-500/5 hover:bg-amber-500/10 transition-colors cursor-pointer h-full">
                   <div className="flex items-center gap-3 mb-2">
                     <Building2 className="w-5 h-5 text-amber-600" />
                     <span className="font-medium">{t('institutions.badge', 'Institutions')}</span>
                   </div>
                   <p className="text-xs text-muted-foreground">
                     {t('dashboard.institutionsDesc', 'Aide à la décision collective et traçabilité')}
+                  </p>
+                </div>
+              </Link>
+              <Link to="/usage">
+                <div className="p-4 rounded-lg border border-purple-500/20 bg-purple-500/5 hover:bg-purple-500/10 transition-colors cursor-pointer h-full">
+                  <div className="flex items-center gap-3 mb-2">
+                    <TrendingUp className="w-5 h-5 text-purple-600" />
+                    <span className="font-medium">{t('usage.title', 'Consommation')}</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    {t('dashboard.usageDesc', 'Suivez votre utilisation IA et vos ressources')}
                   </p>
                 </div>
               </Link>
