@@ -61,7 +61,7 @@ export function Footer() {
               <li><Link to="/profile-test" className="hover:text-foreground transition-colors">{t('footer.profileTest', 'Profile Test')}</Link></li>
               <li><Link to="/life-trajectory" className="hover:text-foreground transition-colors">{t('nav.trajectory')}</Link></li>
               <li><Link to="/exit-keys" className="hover:text-foreground transition-colors">{t('nav.exitKeys', 'Clés de Sortie')}</Link></li>
-              <li><Link to="/exit-keys/catalog" className="hover:text-foreground transition-colors">{t('exitKeys.catalog', 'Catalogue des Clés')}</Link></li>
+              <li><Link to="/exit-keys/catalog" className="hover:text-foreground transition-colors">{t('exitKeys.catalog.title', 'Catalogue des Clés')}</Link></li>
               <li><Link to="/pyramid-quiz" className="hover:text-foreground transition-colors">{t('nav.quiz')}</Link></li>
               <li><Link to="/life-game" className="hover:text-foreground transition-colors">{t('nav.lifeGame', 'Jeu de Vie')}</Link></li>
               <li><Link to="/systemic-mistakes" className="hover:text-foreground transition-colors text-destructive/80 hover:text-destructive">⚠️ {t('nav.systemicMistakes', 'Erreurs fréquentes')}</Link></li>
