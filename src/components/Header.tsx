@@ -58,7 +58,7 @@ export function Header() {
     { href: '/partners', label: t('nav.partners', 'Partenaires'), icon: Users, highlight: true },
     { href: '/b2b', label: t('nav.b2b', 'B2B'), icon: Building2 },
     { href: '/resources', label: t('nav.resources'), icon: FileText },
-    { href: '/about', label: t('footer.about'), icon: Info },
+    { href: '/about', label: t('nav.about', 'À Propos'), icon: Info },
   ];
 
   // Admin navigation items (only show for authenticated users)
