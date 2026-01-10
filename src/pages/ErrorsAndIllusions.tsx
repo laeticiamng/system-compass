@@ -408,7 +408,7 @@ export default function ErrorsAndIllusions() {
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg">
-                <Link to="/orientation-hub" className="gap-2">
+                <Link to="/about" className="gap-2">
                   {t('errorsIllusions.goToHub', 'Trouver le bon outil')}
                   <ArrowRight className="w-5 h-5" />
                 </Link>

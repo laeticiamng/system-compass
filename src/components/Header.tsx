@@ -44,7 +44,7 @@ export function Header() {
   // Navigation simplifiée et claire
   const navItems = [
     { href: '/', label: t('nav.start'), icon: Compass },
-    { href: '/orientation-hub', label: t('nav.orientationHub', 'Orientation'), icon: Compass, highlight: true },
+    { href: '/about', label: t('nav.about', 'À propos'), icon: Compass, highlight: true },
     { href: '/prevention-filter', label: t('nav.preventionFilter', 'Filtre'), icon: Shield },
     { href: '/world-map', label: t('nav.worldMap', 'Carte'), icon: Globe },
     { href: '/errors-illusions', label: t('nav.errorsIllusions', 'Erreurs'), icon: BookOpen },
