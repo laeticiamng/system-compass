@@ -3330,5 +3330,40 @@
       "noCommitment": "Keine Verpflichtung",
       "instantAccess": "Sofortiger Zugang"
     }
+  },
+  "usage": {
+    "title": "Verbrauch",
+    "subtitle": "Verfolgen Sie Ihre KI-Nutzung und Ressourcen",
+    "loginRequired": "Anmeldung erforderlich",
+    "loginDescription": "Melden Sie sich an, um Ihren Verbrauch zu sehen.",
+    "currentPeriod": "Aktuelle Periode",
+    "noData": "Keine Daten",
+    "caseUnits": "Case-Einheiten",
+    "aiActions": "KI-Aktionen",
+    "agentRuns": "Agent-Läufe",
+    "dossiers": "Dossiers",
+    "exports": "Exporte",
+    "tokensUsed": "Verbrauchte Tokens",
+    "activityLog": "Aktivitätsprotokoll",
+    "activityLogDesc": "Ihre letzten 50 KI-Aktionen",
+    "noActivity": "Keine KI-Aktivität aufgezeichnet",
+    "nearLimit": "Grenze erreicht",
+    "nearLimitDesc": "Sie haben {percent}% Ihres monatlichen Kontingents verbraucht.",
+    "atLimit": "Limit erreicht",
+    "atLimitDesc": "KI-Aktionen sind vorübergehend blockiert. Laden Sie Ihr Konto auf.",
+    "upgrade": "Upgraden",
+    "topUp": "Aufladen"
+  },
+  "report": {
+    "title": "B2B-Berichtsgenerator",
+    "description": "Erstellen Sie einen strukturierten, exportierbaren Bericht für Ihre Kunden",
+    "generating": "Generiere...",
+    "generated": "Bericht erfolgreich erstellt",
+    "error": "Generierungsfehler",
+    "generate": "Bericht erstellen",
+    "exportPdf": "PDF exportieren",
+    "exported": "PDF-Export gestartet",
+    "regenerate": "Neu generieren",
+    "disclaimer": "Dieser Bericht ist ein Analysetool. Er stellt keine rechtliche, finanzielle oder steuerliche Beratung dar."
   }
 }
