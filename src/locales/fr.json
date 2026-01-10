@@ -5312,5 +5312,131 @@
       "ready": "Prêt à structurer vos décisions institutionnelles ?",
       "desc": "Explorez nos outils dédiés ou contactez-nous pour des solutions personnalisées."
     }
+  },
+  "orientationHub": {
+    "badge": "Hub d'Orientation",
+    "title": "Par où commencer ?",
+    "subtitle": "Pyramid Compass t'aide à comprendre tes vraies options avant toute décision. Pas de promesse, pas de raccourci — juste de la clarté.",
+    "philosophy": {
+      "title": "Notre philosophie",
+      "message": "La lucidité se diffuse par l'usage réel, la compréhension et la responsabilité. Cette plateforme structure la clarté, même quand la conclusion est : cette option est trop risquée, irréaliste ou destructrice."
+    },
+    "quickSituations": {
+      "title": "Ta situation",
+      "options": {
+        "understand": {
+          "title": "Je veux comprendre d'où je pars",
+          "description": "Analyse ton profil, tes ressources, tes contraintes",
+          "cta": "Test de profil"
+        },
+        "compare": {
+          "title": "Je veux comparer mes options",
+          "description": "Compare les pays, systèmes, trajectoires",
+          "cta": "Comparer"
+        },
+        "avoid": {
+          "title": "Je veux éviter les erreurs courantes",
+          "description": "Comprends les erreurs qui coûtent des années",
+          "cta": "Erreurs & Illusions"
+        },
+        "plan": {
+          "title": "Je veux planifier mes prochaines étapes",
+          "description": "Structure un plan d'action réaliste",
+          "cta": "Clés de Sortie"
+        }
+      }
+    },
+    "tools": {
+      "title": "Outils disponibles",
+      "profileTest": {
+        "title": "Test de Profil",
+        "description": "Comprends ton profil, les avantages de ta nationalité, et la compatibilité avec les systèmes"
+      },
+      "exitKeys": {
+        "title": "Clés de Sortie",
+        "description": "Feuilles de route personnalisées selon ta situation, tes objectifs et tes contraintes"
+      },
+      "compare": {
+        "title": "Comparer",
+        "description": "Compare les pays, systèmes et coûts pour trouver tes meilleures options"
+      },
+      "errorsIllusions": {
+        "title": "Erreurs & Illusions",
+        "description": "Identifie les biais cognitifs et erreurs systémiques qui coûtent des années"
+      },
+      "lifeGame": {
+        "title": "Jeu de la Vie",
+        "description": "Jeu éducatif pour comprendre comment les décisions de vie fonctionnent dans différents systèmes"
+      },
+      "worldMap": {
+        "title": "Carte du Monde",
+        "description": "Explore les 29 pays analysés et leurs types de pyramides"
+      }
+    },
+    "alternatives": {
+      "title": "Des alternatives existent",
+      "subtitle": "Avant tout choix irréversible, explore toutes tes options",
+      "message": "Pyramid Compass montre qu'il existe parfois d'autres trajectoires : rester et entreprendre, migrer plus tard, migrer autrement, se former, changer d'objectif initial.",
+      "options": {
+        "stay": {
+          "title": "Rester et construire",
+          "description": "Parfois la meilleure opportunité est là où tu es déjà"
+        },
+        "later": {
+          "title": "Migrer plus tard",
+          "description": "Mieux se préparer, partir au bon moment"
+        },
+        "differently": {
+          "title": "Migrer autrement",
+          "description": "Voies légales, options réalistes"
+        },
+        "train": {
+          "title": "Se former et se qualifier",
+          "description": "Investir dans des compétences transférables"
+        }
+      },
+      "cta": "Explorer les stratégies de prévention"
+    },
+    "cta": {
+      "startAnalysis": "Commencer mon analyse",
+      "exploreTools": "Explorer les outils"
+    }
+  },
+  "errorsIllusions": {
+    "badge": "Erreurs & Illusions",
+    "title": "Erreurs & Illusions",
+    "subtitle": "Comprends les décalages qui coûtent des années — pas des jugements, des patterns à éviter",
+    "intro": "Ce ne sont pas des jugements moraux. Ce sont des décalages entre les attentes et les règles réelles d'un système.",
+    "tabs": {
+      "cognitive": "Erreurs Cognitives",
+      "systemic": "Erreurs Systémiques"
+    },
+    "cognitive": {
+      "title": "Erreurs Cognitives Universelles",
+      "subtitle": "Patterns récurrents qui coûtent des années, quelle que soit la nationalité ou la destination",
+      "intro": "Ces erreurs ne sont pas des jugements. Ce sont des patterns observables qui mènent systématiquement à de mauvaises décisions.",
+      "categories": {
+        "perception": "Erreurs de Perception",
+        "planning": "Erreurs de Planification",
+        "social": "Erreurs Sociales",
+        "financial": "Erreurs Financières"
+      }
+    },
+    "systemic": {
+      "title": "Erreurs Systémiques",
+      "subtitle": "Ce que les systèmes ne pardonnent pas — et comment les éviter",
+      "intro": "Ces erreurs sont des décalages entre les attentes d'un individu et les règles réelles d'un système."
+    },
+    "cta": {
+      "title": "Éviter ces erreurs commence par comprendre ton système",
+      "subtitle": "Analyse ta situation actuelle, identifie les décalages potentiels, et explore les stratégies adaptées à ton profil.",
+      "simulateTrajectory": "Simuler ma trajectoire",
+      "viewExitKeys": "Voir les Clés de Sortie"
+    }
+  },
+  "nav": {
+    "partners": "Partenaires",
+    "orientationHub": "Orientation",
+    "errorsIllusions": "Erreurs & Illusions"
   }
 }

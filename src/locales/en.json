@@ -5331,9 +5331,133 @@
       "contact": "Contact us"
     }
   },
+  "orientationHub": {
+    "badge": "Orientation Hub",
+    "title": "Where to start?",
+    "subtitle": "Pyramid Compass helps you understand your real options before any decision. No promises, no shortcuts — just clarity.",
+    "philosophy": {
+      "title": "Our philosophy",
+      "message": "Lucidity is spread through real usage, understanding and responsibility. This platform structures clarity, even when the conclusion is: this option is too risky, unrealistic or destructive."
+    },
+    "quickSituations": {
+      "title": "Your situation",
+      "options": {
+        "understand": {
+          "title": "I want to understand where I'm starting from",
+          "description": "Analyze your profile, your resources, your constraints",
+          "cta": "Profile test"
+        },
+        "compare": {
+          "title": "I want to compare my options",
+          "description": "Compare countries, systems, trajectories",
+          "cta": "Compare"
+        },
+        "avoid": {
+          "title": "I want to avoid common mistakes",
+          "description": "Understand the errors that cost years",
+          "cta": "Errors & Illusions"
+        },
+        "plan": {
+          "title": "I want to plan my next steps",
+          "description": "Structure a realistic action plan",
+          "cta": "Exit Keys"
+        }
+      }
+    },
+    "tools": {
+      "title": "Available tools",
+      "profileTest": {
+        "title": "Profile Test",
+        "description": "Understand your profile, nationality advantages, and system compatibility"
+      },
+      "exitKeys": {
+        "title": "Exit Keys",
+        "description": "Personalized roadmaps based on your situation, goals and constraints"
+      },
+      "compare": {
+        "title": "Compare",
+        "description": "Compare countries, systems and costs to find your best options"
+      },
+      "errorsIllusions": {
+        "title": "Errors & Illusions",
+        "description": "Identify the cognitive biases and systemic mistakes that cost years"
+      },
+      "lifeGame": {
+        "title": "Life Game",
+        "description": "Educational game to understand how life decisions work in different systems"
+      },
+      "worldMap": {
+        "title": "World Map",
+        "description": "Explore the 29 analyzed countries and their pyramid types"
+      }
+    },
+    "alternatives": {
+      "title": "Alternatives exist",
+      "subtitle": "Before any irreversible choice, explore all your options",
+      "message": "Pyramid Compass shows that there are sometimes other trajectories: staying and starting a business, migrating later, migrating differently, training, changing the initial goal.",
+      "options": {
+        "stay": {
+          "title": "Stay and build",
+          "description": "Sometimes the best opportunity is where you already are"
+        },
+        "later": {
+          "title": "Migrate later",
+          "description": "Prepare better, leave at the right time"
+        },
+        "differently": {
+          "title": "Migrate differently",
+          "description": "Legal pathways, realistic options"
+        },
+        "train": {
+          "title": "Train and qualify",
+          "description": "Invest in transferable skills"
+        }
+      },
+      "cta": "Explore prevention strategies"
+    },
+    "cta": {
+      "startAnalysis": "Start my analysis",
+      "exploreTools": "Explore tools"
+    }
+  },
+  "errorsIllusions": {
+    "badge": "Errors & Illusions",
+    "title": "Errors & Illusions",
+    "subtitle": "Understand the mismatches that cost years — not judgments, patterns to avoid",
+    "intro": "These are not moral judgments. They are mismatches between expectations and a system's real rules.",
+    "tabs": {
+      "cognitive": "Cognitive Errors",
+      "systemic": "Systemic Errors"
+    },
+    "cognitive": {
+      "title": "Universal Cognitive Errors",
+      "subtitle": "Recurring patterns that cost years, regardless of nationality or destination",
+      "intro": "These errors are not judgments. They are observable patterns that systematically lead to poor decisions.",
+      "categories": {
+        "perception": "Perception Errors",
+        "planning": "Planning Errors",
+        "social": "Social Errors",
+        "financial": "Financial Errors"
+      }
+    },
+    "systemic": {
+      "title": "Systemic Errors",
+      "subtitle": "What systems don't forgive — and how to avoid them",
+      "intro": "These mistakes are mismatches between an individual's expectations and a system's real rules."
+    },
+    "cta": {
+      "title": "Avoiding these mistakes starts with understanding your system",
+      "subtitle": "Analyze your current situation, identify potential mismatches, and explore strategies suited to your profile.",
+      "simulateTrajectory": "Simulate my trajectory",
+      "viewExitKeys": "View Exit Keys"
+    }
+  },
   "nav": {
     "institutions": "Institutions",
     "ovi": "OVI",
-    "b2b": "B2B Solutions"
+    "b2b": "B2B Solutions",
+    "partners": "Partners",
+    "orientationHub": "Orientation",
+    "errorsIllusions": "Errors & Illusions"
   }
 }
