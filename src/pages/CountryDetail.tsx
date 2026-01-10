@@ -20,9 +20,12 @@ import { CountryTagsRadar } from '@/components/country/CountryTagsRadar';
 import { CountryPdfExport } from '@/components/CountryPdfExport';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { ArrowLeft, Calendar, ExternalLink, Layers, Map, Target, Brain, Loader2 } from 'lucide-react';
+import { ArrowLeft, Calendar, ExternalLink, Layers, Map, Target, Brain, Loader2, Sparkles } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useUserHistory } from '@/hooks/useUserHistory';
+import { useExitKeysProfile } from '@/hooks/useExitKeysProfile';
+import { AiHelpButton } from '@/components/ai/AiHelpButton';
+import { AiAction, AiContext } from '@/components/ai/AiSidePanel';
 
 const PYRAMID_TYPE_LABELS: Record<string, string> = {
   PROBLEM_RENT: 'pyramids.problemRent.label',
@@ -47,6 +50,7 @@ export default function CountryDetail() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { trackCountryView } = useUserHistory();
+  const { profile } = useExitKeysProfile();
   const country = getCountryById(id || '');
   const extendedMeta = !country && id ? getExtendedCountryMeta(id) : null;
   const isExtended = !country && extendedMeta !== null;
@@ -248,6 +252,28 @@ export default function CountryDetail() {
             </div>
             <p className="text-muted-foreground">{displayRegion}</p>
           </div>
+          <AiHelpButton
+            title={t('ai.countryAnalysisAssistant', 'Assistant Analyse Pays')}
+            actions={[
+              { id: 'compare_countries', label: t('ai.actions.compareCountries', 'Comparer avec un autre pays'), description: t('ai.actions.compareCountriesDesc', 'Critères et trade-offs selon votre profil') },
+              { id: 'summarize_for_profile', label: t('ai.actions.summarizeForProfile', 'Résumer selon mes contraintes'), description: t('ai.actions.summarizeForProfileDesc', 'Résumé focalisé sur ce qui compte pour vous') },
+              { id: 'attention_points', label: t('ai.actions.attentionPoints', 'Points d\'attention'), description: t('ai.actions.attentionPointsDesc', 'Risques et contraintes pouvant casser une trajectoire') },
+            ]}
+            context={{
+              module: 'country-analysis',
+              country: {
+                id: country.id,
+                name: displayName,
+                region: displayRegion,
+                pyramidType: country.pyramidType,
+                snapshot: country.snapshot,
+                ruleOfGold: displayRuleOfGold,
+              },
+              profile: profile || undefined,
+            }}
+            variant="secondary"
+            size="default"
+          />
         </div>
 
         {/* Snapshot */}

@@ -17,8 +17,8 @@ export interface AiAction {
   id: string;
   label: string;
   description: string;
-  icon: React.ReactNode;
-  action: string;
+  icon?: React.ReactNode;
+  action?: string;
 }
 
 export interface AiContext {
@@ -31,6 +31,7 @@ export interface AiContext {
   progress?: any;
   dossier?: any;
   additionalInfo?: string;
+  [key: string]: any; // Allow additional dynamic properties
 }
 
 interface AiSidePanelProps {

@@ -6,7 +6,7 @@ import {
   ChevronRight, MapPin, Heart, Shield,
   AlertTriangle, CheckCircle, Save, RefreshCw,
   Filter, Clock, Scale, Flag, Globe, Plane, Map,
-  GraduationCap, Briefcase
+  GraduationCap, Briefcase, Sparkles
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
@@ -40,6 +40,8 @@ import { RiskPrevention } from '@/components/RiskPrevention';
 import { SalaryCalculator } from '@/components/SalaryCalculator';
 import { JourneyProgressBar, getJourneyPhase } from '@/components/JourneyProgressBar';
 import { SimulationDisclaimer } from '@/components/SimulationDisclaimer';
+import { AiHelpButton } from '@/components/ai/AiHelpButton';
+import { AiAction, AiContext } from '@/components/ai/AiSidePanel';
 
 const STEPS = ['origin', 'current', 'profile', 'goals', 'results'] as const;
 type Step = typeof STEPS[number];
@@ -273,11 +275,11 @@ export default function ExitKeys() {
             {t('common.back', 'Retour')}
           </Link>
           
-          <div className="flex items-center gap-4 mb-4">
+          <div className="flex items-start gap-4 mb-4">
             <div className="p-3 rounded-xl bg-primary/20">
               <Key className="w-8 h-8 text-primary" />
             </div>
-            <div>
+            <div className="flex-1">
               <h1 className="font-display text-3xl md:text-4xl font-bold">
                 {t('exitKeys.title', 'Trouvez Votre Clé de Sortie')}
               </h1>
@@ -286,6 +288,41 @@ export default function ExitKeys() {
               </p>
               <SimulationDisclaimer variant="compact" className="mt-2" />
             </div>
+            {currentStep === 'results' && userContext && (
+              <AiHelpButton
+                title={t('ai.exitKeysAssistant', 'Assistant Clés de Sortie')}
+                actions={[
+                  { id: 'clarify_objective', label: t('ai.actions.clarifyObjective', 'Clarifier mon objectif'), description: t('ai.actions.clarifyObjectiveDesc', 'Reformuler votre objectif en version claire avec critères implicites') },
+                  { id: 'suggest_trajectories', label: t('ai.actions.suggestTrajectories', 'Proposer 3 trajectoires'), description: t('ai.actions.suggestTrajectoriesDesc', 'Générer trois options structurées avec avantages/risques/coûts') },
+                  { id: 'execution_checklist', label: t('ai.actions.executionChecklist', 'Check-list d\'exécution'), description: t('ai.actions.executionChecklistDesc', 'Convertir une trajectoire en étapes concrètes ordonnées') },
+                  { id: 'exportable_summary', label: t('ai.actions.exportableSummary', 'Synthèse exportable'), description: t('ai.actions.exportableSummaryDesc', 'Produire une synthèse courte basée sur vos données') },
+                ]}
+                context={{
+                  module: 'exit-keys',
+                  profile: {
+                    birthCountry: birthCountry?.name,
+                    nationalities: nationalityCountries.map(c => c.name),
+                    currentCountry: currentCountry?.name,
+                    motorProfile: motorProfile,
+                    desiredLife: desiredLife,
+                    riskTolerance: riskTolerance,
+                    timeHorizon: timeHorizon,
+                    hasCapital,
+                    hasCredentials,
+                    hasNetwork,
+                    isLGBTQ,
+                    hasFamily,
+                    educationLevel,
+                    professionId,
+                  },
+                  trajectory: {
+                    topResults: filteredResults.slice(0, 5).map(r => ({ name: r.key.name, compatibility: r.compatibility })),
+                  },
+                }}
+                variant="secondary"
+                size="default"
+              />
+            )}
           </div>
 
           {/* Central Philosophy Message */}
