@@ -3227,5 +3227,85 @@
     "audit": {
       "title": "Prüfprotokoll"
     }
+  },
+  "pricing": {
+    "badge": "Transparente Preise",
+    "title": "Wählen Sie Ihren Plan",
+    "subtitle": "Schalten Sie tiefere Analysen und personalisierte Empfehlungen frei",
+    "freeName": "Kostenlos",
+    "premiumName": "Premium",
+    "proName": "Pro",
+    "forever": "für immer",
+    "perMonth": "/ Monat",
+    "freeDescription": "Zugang zu Grundfunktionen",
+    "premiumDescription": "Zugang zu länderspezifischen Varianten",
+    "proDescription": "Personalisierte Projektanalyse",
+    "currentPlan": "Aktueller Plan",
+    "subscribe": "Abonnieren",
+    "popular": "Beliebt",
+    "includedInYourPlan": "Enthalten",
+    "managePlan": "Mein Abo verwalten",
+    "guarantee": "Jederzeit kündbar. Keine Verpflichtung.",
+    "limitations": {
+      "noVariants": "Keine Ländervarianten",
+      "noProfiles": "Keine Erfolgsprofile",
+      "noAnalysis": "Keine Projektanalyse",
+      "noLatent": "Kein Latent-Modul",
+      "noIrreversa": "Kein Irreversa-Modul",
+      "noTraceOS": "Kein TraceOS"
+    },
+    "enterprise": {
+      "title": "Enterprise",
+      "subtitle": "Für große Organisationen",
+      "cta": "Kontaktieren Sie uns",
+      "customPricing": "Individuelle Preise",
+      "multiUser": "Multi-User-Zugang",
+      "customAnalysis": "Individuelle Analysen",
+      "apiAccess": "API-Zugang",
+      "dedicatedSupport": "Dedizierter Support",
+      "sla": "Garantierte SLA",
+      "whiteLabel": "White-Label verfügbar"
+    },
+    "comparison": {
+      "title": "Funktionen vergleichen",
+      "feature": "Funktion"
+    },
+    "feature": {
+      "basicCountries": "Basis-Länderprofile",
+      "riskIndicators": "Risikoindikatoren",
+      "pyramidCommon": "Pyramiden-Grundlagen",
+      "countryVariants": "Länderspezifische Varianten",
+      "profilesSuccess": "Erfolgsprofile",
+      "surprises": "Was Neulinge überrascht",
+      "projectAnalysis": "Personalisierte Projektanalyse",
+      "blindSpots": "Spezifische blinde Flecken",
+      "latentModule": "Latent-Modul",
+      "irreversaModule": "Irreversa-Modul",
+      "traceOS": "TraceOS"
+    },
+    "faq": {
+      "title": "Häufig gestellte Fragen",
+      "cancel": {
+        "q": "Kann ich jederzeit kündigen?",
+        "a": "Ja, Sie können Ihr Abonnement jederzeit kündigen. Sie behalten den Zugang bis zum Ende Ihrer Abrechnungsperiode."
+      },
+      "payment": {
+        "q": "Welche Zahlungsmethoden akzeptieren Sie?",
+        "a": "Wir akzeptieren Kreditkarten (Visa, Mastercard, American Express) über Stripe. Die Zahlung ist sicher und verschlüsselt."
+      },
+      "upgrade": {
+        "q": "Kann ich meinen Plan ändern?",
+        "a": "Ja, Sie können jederzeit auf einen höheren Plan upgraden. Die Differenz wird anteilig berechnet."
+      },
+      "refund": {
+        "q": "Gibt es eine Geld-zurück-Garantie?",
+        "a": "Wir bieten eine 14-tägige Geld-zurück-Garantie. Kontaktieren Sie uns für eine Rückerstattung."
+      }
+    },
+    "trust": {
+      "secure": "Sichere Zahlung",
+      "noCommitment": "Keine Verpflichtung",
+      "instantAccess": "Sofortiger Zugang"
+    }
   }
 }

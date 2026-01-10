@@ -17,7 +17,10 @@
     "metric": "Métrique",
     "delete": "Supprimer",
     "confirm": "Confirmer",
-    "edit": "Modifier"
+    "edit": "Modifier",
+    "previewMode": "Mode aperçu",
+    "all": "Tous",
+    "total": "Total"
   },
   "steps": {
     "profile": "Ton profil",
@@ -6158,5 +6161,85 @@
       "description": "Identifiez les points de non-retour stratégiques"
     },
     "demoMode": "Connectez-vous pour utiliser IRREVERSA"
+  },
+  "pricing": {
+    "badge": "Tarification transparente",
+    "title": "Choisissez votre plan",
+    "subtitle": "Débloquez des analyses plus profondes et des recommandations personnalisées",
+    "freeName": "Gratuit",
+    "premiumName": "Premium",
+    "proName": "Pro",
+    "forever": "pour toujours",
+    "perMonth": "/ mois",
+    "freeDescription": "Accès aux fonctionnalités de base",
+    "premiumDescription": "Accès aux variantes pays spécifiques",
+    "proDescription": "Analyse projet personnalisée",
+    "currentPlan": "Plan actuel",
+    "subscribe": "S'abonner",
+    "popular": "Populaire",
+    "includedInYourPlan": "Inclus",
+    "managePlan": "Gérer mon abonnement",
+    "guarantee": "Annulation possible à tout moment. Pas d'engagement.",
+    "limitations": {
+      "noVariants": "Pas de variantes pays",
+      "noProfiles": "Pas de profils qui réussissent",
+      "noAnalysis": "Pas d'analyse projet",
+      "noLatent": "Pas d'accès module Latent",
+      "noIrreversa": "Pas d'accès module Irreversa",
+      "noTraceOS": "Pas d'accès TraceOS"
+    },
+    "enterprise": {
+      "title": "Enterprise",
+      "subtitle": "Pour les grandes organisations",
+      "cta": "Nous contacter",
+      "customPricing": "Tarification sur mesure",
+      "multiUser": "Accès multi-utilisateurs",
+      "customAnalysis": "Analyses personnalisées",
+      "apiAccess": "Accès API",
+      "dedicatedSupport": "Support dédié",
+      "sla": "SLA garantis",
+      "whiteLabel": "White-label possible"
+    },
+    "comparison": {
+      "title": "Comparer les fonctionnalités",
+      "feature": "Fonctionnalité"
+    },
+    "feature": {
+      "basicCountries": "Fiches pays basiques",
+      "riskIndicators": "Indicateurs de risque",
+      "pyramidCommon": "Tronc commun pyramide",
+      "countryVariants": "Variantes pays spécifiques",
+      "profilesSuccess": "Profils qui réussissent",
+      "surprises": "Ce qui surprend les nouveaux",
+      "projectAnalysis": "Analyse projet personnalisée",
+      "blindSpots": "Points aveugles spécifiques",
+      "latentModule": "Module Latent",
+      "irreversaModule": "Module Irreversa",
+      "traceOS": "TraceOS"
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "cancel": {
+        "q": "Puis-je annuler à tout moment ?",
+        "a": "Oui, vous pouvez annuler votre abonnement à tout moment. Vous conserverez l'accès jusqu'à la fin de votre période de facturation."
+      },
+      "payment": {
+        "q": "Quels moyens de paiement acceptez-vous ?",
+        "a": "Nous acceptons les cartes bancaires (Visa, Mastercard, American Express) via Stripe. Le paiement est sécurisé et crypté."
+      },
+      "upgrade": {
+        "q": "Puis-je changer de plan ?",
+        "a": "Oui, vous pouvez passer à un plan supérieur à tout moment. La différence sera calculée au prorata. Pour passer à un plan inférieur, attendez la fin de votre période de facturation."
+      },
+      "refund": {
+        "q": "Y a-t-il une garantie satisfait ou remboursé ?",
+        "a": "Nous offrons une garantie de remboursement de 14 jours si vous n'êtes pas satisfait. Contactez-nous pour en bénéficier."
+      }
+    },
+    "trust": {
+      "secure": "Paiement sécurisé",
+      "noCommitment": "Sans engagement",
+      "instantAccess": "Accès immédiat"
+    }
   }
 }

@@ -3227,5 +3227,85 @@
     "audit": {
       "title": "Registro di audit"
     }
+  },
+  "pricing": {
+    "badge": "Prezzi trasparenti",
+    "title": "Scegli il tuo piano",
+    "subtitle": "Sblocca analisi più approfondite e raccomandazioni personalizzate",
+    "freeName": "Gratuito",
+    "premiumName": "Premium",
+    "proName": "Pro",
+    "forever": "per sempre",
+    "perMonth": "/ mese",
+    "freeDescription": "Accesso alle funzionalità di base",
+    "premiumDescription": "Accesso alle varianti specifiche per paese",
+    "proDescription": "Analisi progetto personalizzata",
+    "currentPlan": "Piano attuale",
+    "subscribe": "Abbonati",
+    "popular": "Popolare",
+    "includedInYourPlan": "Incluso",
+    "managePlan": "Gestisci abbonamento",
+    "guarantee": "Cancella quando vuoi. Nessun impegno.",
+    "limitations": {
+      "noVariants": "Nessuna variante paese",
+      "noProfiles": "Nessun profilo di successo",
+      "noAnalysis": "Nessuna analisi progetto",
+      "noLatent": "Nessun modulo Latent",
+      "noIrreversa": "Nessun modulo Irreversa",
+      "noTraceOS": "Nessun TraceOS"
+    },
+    "enterprise": {
+      "title": "Enterprise",
+      "subtitle": "Per grandi organizzazioni",
+      "cta": "Contattaci",
+      "customPricing": "Prezzi personalizzati",
+      "multiUser": "Accesso multi-utente",
+      "customAnalysis": "Analisi personalizzate",
+      "apiAccess": "Accesso API",
+      "dedicatedSupport": "Supporto dedicato",
+      "sla": "SLA garantiti",
+      "whiteLabel": "White-label disponibile"
+    },
+    "comparison": {
+      "title": "Confronta funzionalità",
+      "feature": "Funzionalità"
+    },
+    "feature": {
+      "basicCountries": "Profili paese base",
+      "riskIndicators": "Indicatori di rischio",
+      "pyramidCommon": "Nucleo comune piramide",
+      "countryVariants": "Varianti specifiche paese",
+      "profilesSuccess": "Profili di successo",
+      "surprises": "Cosa sorprende i nuovi arrivati",
+      "projectAnalysis": "Analisi progetto personalizzata",
+      "blindSpots": "Punti ciechi specifici",
+      "latentModule": "Modulo Latent",
+      "irreversaModule": "Modulo Irreversa",
+      "traceOS": "TraceOS"
+    },
+    "faq": {
+      "title": "Domande frequenti",
+      "cancel": {
+        "q": "Posso cancellare in qualsiasi momento?",
+        "a": "Sì, puoi cancellare l'abbonamento in qualsiasi momento. Manterrai l'accesso fino alla fine del periodo di fatturazione."
+      },
+      "payment": {
+        "q": "Quali metodi di pagamento accettate?",
+        "a": "Accettiamo carte di credito (Visa, Mastercard, American Express) tramite Stripe. Il pagamento è sicuro e crittografato."
+      },
+      "upgrade": {
+        "q": "Posso cambiare piano?",
+        "a": "Sì, puoi passare a un piano superiore in qualsiasi momento. La differenza sarà calcolata proporzionalmente."
+      },
+      "refund": {
+        "q": "C'è una garanzia di rimborso?",
+        "a": "Offriamo una garanzia di rimborso di 14 giorni. Contattaci per richiedere un rimborso."
+      }
+    },
+    "trust": {
+      "secure": "Pagamento sicuro",
+      "noCommitment": "Nessun impegno",
+      "instantAccess": "Accesso immediato"
+    }
   }
 }

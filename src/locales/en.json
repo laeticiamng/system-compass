@@ -17,7 +17,10 @@
     "metric": "Metric",
     "delete": "Delete",
     "confirm": "Confirm",
-    "edit": "Edit"
+    "edit": "Edit",
+    "previewMode": "Preview mode",
+    "all": "All",
+    "total": "Total"
   },
   "steps": {
     "profile": "Your profile",
@@ -6056,5 +6059,85 @@
     "toast": { "created": "Threshold detected successfully", "marked": "Threshold marked", "validated": "Threshold validated", "sealed": "Threshold permanently sealed" },
     "empty": { "title": "No irreversibility thresholds", "description": "Identify strategic points of no return" },
     "demoMode": "Log in to use IRREVERSA"
+  },
+  "pricing": {
+    "badge": "Transparent pricing",
+    "title": "Choose your plan",
+    "subtitle": "Unlock deeper analyses and personalized recommendations",
+    "freeName": "Free",
+    "premiumName": "Premium",
+    "proName": "Pro",
+    "forever": "forever",
+    "perMonth": "/ month",
+    "freeDescription": "Access to basic features",
+    "premiumDescription": "Access to country-specific variants",
+    "proDescription": "Personalized project analysis",
+    "currentPlan": "Current plan",
+    "subscribe": "Subscribe",
+    "popular": "Popular",
+    "includedInYourPlan": "Included",
+    "managePlan": "Manage my subscription",
+    "guarantee": "Cancel anytime. No commitment.",
+    "limitations": {
+      "noVariants": "No country variants",
+      "noProfiles": "No success profiles",
+      "noAnalysis": "No project analysis",
+      "noLatent": "No Latent module access",
+      "noIrreversa": "No Irreversa module access",
+      "noTraceOS": "No TraceOS access"
+    },
+    "enterprise": {
+      "title": "Enterprise",
+      "subtitle": "For large organizations",
+      "cta": "Contact us",
+      "customPricing": "Custom pricing",
+      "multiUser": "Multi-user access",
+      "customAnalysis": "Custom analyses",
+      "apiAccess": "API access",
+      "dedicatedSupport": "Dedicated support",
+      "sla": "Guaranteed SLA",
+      "whiteLabel": "White-label available"
+    },
+    "comparison": {
+      "title": "Compare features",
+      "feature": "Feature"
+    },
+    "feature": {
+      "basicCountries": "Basic country profiles",
+      "riskIndicators": "Risk indicators",
+      "pyramidCommon": "Pyramid common core",
+      "countryVariants": "Country-specific variants",
+      "profilesSuccess": "Success profiles",
+      "surprises": "What surprises newcomers",
+      "projectAnalysis": "Personalized project analysis",
+      "blindSpots": "Specific blind spots",
+      "latentModule": "Latent Module",
+      "irreversaModule": "Irreversa Module",
+      "traceOS": "TraceOS"
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "cancel": {
+        "q": "Can I cancel anytime?",
+        "a": "Yes, you can cancel your subscription at any time. You will retain access until the end of your billing period."
+      },
+      "payment": {
+        "q": "What payment methods do you accept?",
+        "a": "We accept credit cards (Visa, Mastercard, American Express) via Stripe. Payment is secure and encrypted."
+      },
+      "upgrade": {
+        "q": "Can I change my plan?",
+        "a": "Yes, you can upgrade to a higher plan at any time. The difference will be prorated. To downgrade, wait until the end of your billing period."
+      },
+      "refund": {
+        "q": "Is there a money-back guarantee?",
+        "a": "We offer a 14-day money-back guarantee if you're not satisfied. Contact us to request a refund."
+      }
+    },
+    "trust": {
+      "secure": "Secure payment",
+      "noCommitment": "No commitment",
+      "instantAccess": "Instant access"
+    }
   }
 }

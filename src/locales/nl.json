@@ -3227,5 +3227,85 @@
     "audit": {
       "title": "Auditlogboek"
     }
+  },
+  "pricing": {
+    "badge": "Transparante prijzen",
+    "title": "Kies je plan",
+    "subtitle": "Ontgrendel diepere analyses en gepersonaliseerde aanbevelingen",
+    "freeName": "Gratis",
+    "premiumName": "Premium",
+    "proName": "Pro",
+    "forever": "voor altijd",
+    "perMonth": "/ maand",
+    "freeDescription": "Toegang tot basisfuncties",
+    "premiumDescription": "Toegang tot landspecifieke varianten",
+    "proDescription": "Gepersonaliseerde projectanalyse",
+    "currentPlan": "Huidig plan",
+    "subscribe": "Abonneren",
+    "popular": "Populair",
+    "includedInYourPlan": "Inbegrepen",
+    "managePlan": "Beheer abonnement",
+    "guarantee": "Op elk moment opzeggen. Geen verplichting.",
+    "limitations": {
+      "noVariants": "Geen landvarianten",
+      "noProfiles": "Geen succesprofielen",
+      "noAnalysis": "Geen projectanalyse",
+      "noLatent": "Geen Latent-module",
+      "noIrreversa": "Geen Irreversa-module",
+      "noTraceOS": "Geen TraceOS"
+    },
+    "enterprise": {
+      "title": "Enterprise",
+      "subtitle": "Voor grote organisaties",
+      "cta": "Neem contact op",
+      "customPricing": "Aangepaste prijzen",
+      "multiUser": "Multi-gebruiker toegang",
+      "customAnalysis": "Aangepaste analyses",
+      "apiAccess": "API-toegang",
+      "dedicatedSupport": "Toegewijde support",
+      "sla": "Gegarandeerde SLA",
+      "whiteLabel": "White-label beschikbaar"
+    },
+    "comparison": {
+      "title": "Functies vergelijken",
+      "feature": "Functie"
+    },
+    "feature": {
+      "basicCountries": "Basis landprofielen",
+      "riskIndicators": "Risico-indicatoren",
+      "pyramidCommon": "Piramide basiskern",
+      "countryVariants": "Landspecifieke varianten",
+      "profilesSuccess": "Succesprofielen",
+      "surprises": "Wat nieuwkomers verrast",
+      "projectAnalysis": "Gepersonaliseerde projectanalyse",
+      "blindSpots": "Specifieke blinde vlekken",
+      "latentModule": "Latent Module",
+      "irreversaModule": "Irreversa Module",
+      "traceOS": "TraceOS"
+    },
+    "faq": {
+      "title": "Veelgestelde vragen",
+      "cancel": {
+        "q": "Kan ik op elk moment opzeggen?",
+        "a": "Ja, je kunt je abonnement op elk moment opzeggen. Je behoudt toegang tot het einde van je factureringsperiode."
+      },
+      "payment": {
+        "q": "Welke betaalmethoden accepteren jullie?",
+        "a": "We accepteren creditcards (Visa, Mastercard, American Express) via Stripe. De betaling is veilig en versleuteld."
+      },
+      "upgrade": {
+        "q": "Kan ik van plan wisselen?",
+        "a": "Ja, je kunt op elk moment upgraden naar een hoger plan. Het verschil wordt pro rata berekend."
+      },
+      "refund": {
+        "q": "Is er een geld-terug-garantie?",
+        "a": "We bieden een 14-dagen geld-terug-garantie. Neem contact met ons op voor een terugbetaling."
+      }
+    },
+    "trust": {
+      "secure": "Veilige betaling",
+      "noCommitment": "Geen verplichting",
+      "instantAccess": "Directe toegang"
+    }
   }
 }
