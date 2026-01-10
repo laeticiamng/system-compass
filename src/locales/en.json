@@ -5331,7 +5331,87 @@
       "contact": "Contact us"
     }
   },
+  "riskContexts": {
+    "title": "Risk Contexts",
+    "subtitle": "What many won't tell you — but you need to know",
+    "intro": "Before committing your money, time, or life to an international trajectory, it's crucial to distinguish fantasies from realities, and legal opportunities from dangerous dead-ends.",
+    "examples": "Common examples",
+    "consequences": "Consequences",
+    "dangerousRoutes": {
+      "title": "Dangerous Routes",
+      "desc": "Physically perilous trajectories often minimized by those who profit from them",
+      "examples": {
+        "0": "Sea crossings via unreliable smugglers",
+        "1": "Land routes through conflict zones",
+        "2": "Overloaded vehicles, no medical backup"
+      },
+      "consequences": {
+        "0": "Real and underestimated vital risk",
+        "1": "Lasting physical and psychological trauma",
+        "2": "Loss of all invested capital with no arrival guarantee"
+      }
+    },
+    "scams": {
+      "title": "Common Scams",
+      "desc": "Fraud schemes targeting people seeking mobility",
+      "examples": {
+        "0": "Fake work contracts abroad",
+        "1": "'Guaranteed' visas sold by unlicensed agencies",
+        "2": "Promises of non-existent housing or jobs"
+      },
+      "consequences": {
+        "0": "Total financial loss (years of savings)",
+        "1": "Irregular status upon arrival",
+        "2": "Exploitation or forced labor"
+      }
+    },
+    "fakeIntermediaries": {
+      "title": "Fake Intermediaries",
+      "desc": "People or organizations posing as legitimate facilitators",
+      "examples": {
+        "0": "Unaccredited 'immigration consultants'",
+        "1": "'Placement' networks abroad",
+        "2": "Social media contacts promising shortcuts"
+      },
+      "consequences": {
+        "0": "Fraudulent documents leading to deportation",
+        "1": "Increased dependency and vulnerability",
+        "2": "No legal recourse"
+      }
+    },
+    "hiddenCosts": {
+      "title": "Hidden Costs",
+      "desc": "The real prices no one mentions before departure",
+      "examples": {
+        "0": "Real cost of living vs. local salaries",
+        "1": "Recurring administrative fees (renewals, taxes)",
+        "2": "Real integration time (language, network, job)"
+      },
+      "consequences": {
+        "0": "Prolonged precarity despite 'successful' departure",
+        "1": "Inability to help family back home",
+        "2": "Forced return after exhausting resources"
+      }
+    },
+    "warningTitle": "What Pyramid Compass can do for you",
+    "warningDesc": "The platform promises nothing and doesn't guide toward illegal options. It structures lucidity so you can make informed decisions. Sometimes, the best decision is not to leave — or to leave differently.",
+    "alternatives": {
+      "stayBuild": "Stay and build locally",
+      "migrateLater": "Migrate later",
+      "migrateOther": "Migrate differently",
+      "trainFirst": "Train first",
+      "changeGoal": "Change your goal"
+    },
+    "cta": {
+      "errors": "See common errors",
+      "prevention": "Filter my risks"
+    }
+  },
   "orientationHub": {
+    "noPromise": "No promise",
+    "noLegalAdvice": "No legal advice",
+    "noDreamSold": "No dream sold",
+    "structuredLucidity": "Structured lucidity",
     "badge": "Orientation Hub",
     "title": "Where to start?",
     "subtitle": "Pyramid Compass helps you understand your real options before any decision. No promises, no shortcuts — just clarity.",

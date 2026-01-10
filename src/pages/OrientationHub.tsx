@@ -192,16 +192,16 @@ export default function OrientationHub() {
             </blockquote>
             <div className="flex flex-wrap justify-center gap-4 mt-6 text-sm text-muted-foreground">
               <span className="flex items-center gap-1">
-                <span className="text-red-500">✕</span> Pas de promesse
+                <span className="text-red-500">✕</span> {t('orientationHub.noPromise', 'Pas de promesse')}
               </span>
               <span className="flex items-center gap-1">
-                <span className="text-red-500">✕</span> Pas de conseil juridique
+                <span className="text-red-500">✕</span> {t('orientationHub.noLegalAdvice', 'Pas de conseil juridique')}
               </span>
               <span className="flex items-center gap-1">
-                <span className="text-red-500">✕</span> Pas de rêve vendu
+                <span className="text-red-500">✕</span> {t('orientationHub.noDreamSold', 'Pas de rêve vendu')}
               </span>
               <span className="flex items-center gap-1">
-                <span className="text-green-500">✓</span> Lucidité structurée
+                <span className="text-green-500">✓</span> {t('orientationHub.structuredLucidity', 'Lucidité structurée')}
               </span>
             </div>
           </CardContent>
