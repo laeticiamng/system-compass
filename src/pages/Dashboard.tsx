@@ -60,6 +60,8 @@ import {
   Building2,
   Layers
 } from 'lucide-react';
+import { AiHelpButton } from '@/components/ai/AiHelpButton';
+import { AiAction, AiContext } from '@/components/ai/AiSidePanel';
 import { toast } from 'sonner';
 
 // Helper functions
@@ -257,8 +259,28 @@ export default function Dashboard() {
             </p>
           </div>
           
-          {/* Sync Status */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
+            {/* AI Help Button */}
+            {selectedKey && (
+              <AiHelpButton
+                title={t('ai.dashboardAssistant', 'Assistant Tableau de Bord')}
+                actions={[
+                  { id: 'next_logical_step', label: t('ai.actions.nextLogicalStep', 'Prochain pas logique'), description: t('ai.actions.nextLogicalStepDesc', 'Proposition du prochain pas le plus cohérent') },
+                  { id: 'plan_30_90', label: t('ai.actions.plan3090', 'Planifier 30/90 jours'), description: t('ai.actions.plan3090Desc', 'Proposition de plan par phases et jalons') },
+                  { id: 'soft_reminders', label: t('ai.actions.softReminders', 'Rappels suggérés'), description: t('ai.actions.softRemindersDesc', 'Recommandations de rappels basées sur l\'avancement') },
+                ]}
+                context={{
+                  module: 'dashboard',
+                  progress: progress,
+                  trajectory: selectedKey ? { id: selectedKey.id, name: selectedKey.name } : undefined,
+                  profile: profile || undefined,
+                }}
+                variant="secondary"
+                size="default"
+              />
+            )}
+            
+            {/* Sync Status */}
             {syncing && (
               <Badge variant="secondary" className="gap-1">
                 <Loader2 className="w-3 h-3 animate-spin" />
