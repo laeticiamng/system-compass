@@ -1,0 +1,797 @@
+{
+  "countries": {
+    "cameroon": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Sterke familie- en gemeenschapswaarden",
+          "2": "Levendig sociaal leven",
+          "3": "Diverse culinaire tradities"
+        },
+        "economy": {
+          "1": "Lage kosten van levensonderhoud",
+          "2": "Opkomende tech startup scene",
+          "3": "Strategische positie voor Afrikaanse handel"
+        },
+        "culture": {
+          "1": "Rijke culturele diversiteit met 250+ etnische groepen",
+          "2": "Tweetalig (Frans/Engels)",
+          "3": "Beroemde muziekscene (Makossa, Bikutsi)"
+        },
+        "infrastructure": {
+          "1": "Goede mobiele telefoonbereik",
+          "2": "Haven van Douala - Centraal-Afrika hub"
+        },
+        "opportunities": {
+          "1": "Onontgonnen markten",
+          "2": "Landbouwpotentieel",
+          "3": "Regionale handelspoort"
+        },
+        "nature": {
+          "1": "Mount Cameroon (actieve vulkaan)",
+          "2": "Mooie stranden in Kribi",
+          "3": "Diverse landschappen van regenwoud tot savanne"
+        }
+      }
+    },
+    "france": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "35-urige werkweek",
+          "2": "Uitzonderlijke werk-privébalans",
+          "3": "5 weken betaald verlof",
+          "4": "Wereldberoemde gastronomie"
+        },
+        "economy": {
+          "1": "Sterke sociale bescherming",
+          "2": "Gratis onderwijs tot universiteit",
+          "3": "Uitstekend openbaar gezondheidssysteem",
+          "4": "Veel hoofdkantoren van multinationals"
+        },
+        "culture": {
+          "1": "Wereldklasse kunst, musea en erfgoed",
+          "2": "Mode en luxe",
+          "3": "Rijke regionale diversiteit",
+          "4": "Cafés en intellectueel leven"
+        },
+        "infrastructure": {
+          "1": "Uitstekend openbaar vervoersnetwerk",
+          "2": "TGV verbindt grote steden",
+          "3": "Gesubsidieerde kinderopvang",
+          "4": "Nucleair netwerk (stabiele energie)"
+        },
+        "opportunities": {
+          "1": "Groeiend tech ecosysteem (Parijs)",
+          "2": "Startup ondersteuningsprogramma's",
+          "3": "Toegang tot Europese markt",
+          "4": "Sterke R&D"
+        },
+        "nature": {
+          "1": "Alpen en Pyreneeën voor skiën",
+          "2": "Côte d'Azur (Middellandse Zee)",
+          "3": "Divers platteland",
+          "4": "Wijnregio's (Bordeaux, Bourgogne)"
+        }
+      }
+    },
+    "switzerland": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Uitzonderlijke veiligheid",
+          "2": "Schone steden",
+          "3": "Opmerkelijke publieke diensten",
+          "4": "Wereldklasse onderwijs"
+        },
+        "economy": {
+          "1": "Hoogste salarissen in Europa",
+          "2": "Zeer lage belastingen",
+          "3": "Sterke banksector",
+          "4": "Innovatiehub"
+        },
+        "culture": {
+          "1": "Vier nationale talen",
+          "2": "Gerenommeerde kunst en festivals",
+          "3": "Horlogemakersraditie",
+          "4": "Alpijns erfgoed"
+        },
+        "infrastructure": {
+          "1": "Beste openbaar vervoer ter wereld",
+          "2": "Ultrasnel internet",
+          "3": "Kwaliteitsgezondheidszorg",
+          "4": "Efficiënte Alpentunnels"
+        },
+        "opportunities": {
+          "1": "Pharma en biotech hub",
+          "2": "Financiën en fintech",
+          "3": "Internationale organisaties",
+          "4": "Grondstoffenhandel"
+        },
+        "nature": {
+          "1": "Spectaculaire Alpen",
+          "2": "Kristalheldere meren",
+          "3": "Wereldklasse skigebieden",
+          "4": "Pittoreske wandelpaden"
+        }
+      }
+    },
+    "usa": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Ondernemersvrijheid",
+          "2": "Innovatiecultuur",
+          "3": "Diverse gemeenschappen",
+          "4": "Wereldklasse entertainment"
+        },
+        "economy": {
+          "1": "Grootste economie ter wereld",
+          "2": "Silicon Valley tech hub",
+          "3": "Toegang tot durfkapitaal",
+          "4": "Hoog inkomenspotentieel"
+        },
+        "culture": {
+          "1": "Hollywood en entertainmentindustrie",
+          "2": "Diverse muziekscene",
+          "3": "Sportcultuur (NFL, NBA, MLB)",
+          "4": "Multicultureel karakter van grote steden"
+        },
+        "infrastructure": {
+          "1": "Beste universiteiten ter wereld",
+          "2": "Uitgebreid wegennet",
+          "3": "Grote luchthavens overal",
+          "4": "Innovatie in gezondheidszorg"
+        },
+        "opportunities": {
+          "1": "Globale startup hub",
+          "2": "Diverse carrièremogelijkheden",
+          "3": "Onderzoekscentra",
+          "4": "Acceleratorprogramma's"
+        },
+        "nature": {
+          "1": "Nationale parken (Yellowstone, Grand Canyon)",
+          "2": "Diverse stranden (Californië, Florida)",
+          "3": "Bergen voor skiën (Colorado, Utah)",
+          "4": "Uitgestrekte gevarieerde landschappen"
+        }
+      }
+    },
+    "germany": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Uitstekende werk-privébalans",
+          "2": "Sterk sociaal vangnet",
+          "3": "Biercultuur",
+          "4": "Familiegericht"
+        },
+        "economy": {
+          "1": "Sterke industriële basis",
+          "2": "Mittelstand bedrijven",
+          "3": "Lage werkloosheid",
+          "4": "Gratis universitair onderwijs"
+        },
+        "culture": {
+          "1": "Rijk klassiek muzikaal erfgoed",
+          "2": "Kastelen en historische architectuur",
+          "3": "Kerstmarkten",
+          "4": "Oktoberfest en regionale tradities"
+        },
+        "infrastructure": {
+          "1": "Efficiënte Autobahn",
+          "2": "Uitgebreid spoornetwerk (Deutsche Bahn)",
+          "3": "Schone en goed geplande steden",
+          "4": "Kwaliteitsgezondheidszorg"
+        },
+        "opportunities": {
+          "1": "Engineering en manufacturing hub",
+          "2": "Groeiende tech scene (Berlijn)",
+          "3": "Leider in energietransitie",
+          "4": "Leiderschap in auto-industrie"
+        },
+        "nature": {
+          "1": "Zwarte Woud",
+          "2": "Beierse Alpen",
+          "3": "Rijndal",
+          "4": "Oostzeekust"
+        }
+      }
+    },
+    "canada": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Multiculturele samenleving",
+          "2": "Veilig en gastvrij",
+          "3": "Outdoor levensstijl",
+          "4": "Uitstekende werk-privébalans"
+        },
+        "economy": {
+          "1": "Stabiele economie",
+          "2": "Immigratievriendelijk",
+          "3": "Sterke tech sector",
+          "4": "Goede arbeidsmarkt voor geschoolde werknemers"
+        },
+        "culture": {
+          "1": "Tweetalige samenleving (Engels/Frans)",
+          "2": "First Nations erfgoed",
+          "3": "Levendige kunstscene",
+          "4": "Sportcultuur (hockey, wintersporten)"
+        },
+        "infrastructure": {
+          "1": "Universele gezondheidszorg",
+          "2": "Kwaliteit openbaar onderwijs",
+          "3": "Goed openbaar vervoer in grote steden",
+          "4": "Betrouwbare internetverbinding"
+        },
+        "opportunities": {
+          "1": "Immigratieprogramma's (Express Entry)",
+          "2": "Startup ondersteuning",
+          "3": "Onderzoekscentra",
+          "4": "Natuurlijke hulpbronnensector"
+        },
+        "nature": {
+          "1": "Rocky Mountains",
+          "2": "Niagarawatervallen",
+          "3": "Uitgestrekte bossen en meren",
+          "4": "Noorderlicht"
+        }
+      }
+    },
+    "uae": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Belastingvrij inkomen",
+          "2": "Veilige omgeving",
+          "3": "Luxe woonopties",
+          "4": "Moderne voorzieningen"
+        },
+        "economy": {
+          "1": "Geen inkomstenbelasting",
+          "2": "Bedrijfsvriendelijke regelgeving",
+          "3": "Groeiend startup ecosysteem",
+          "4": "Strategische locatie"
+        },
+        "culture": {
+          "1": "Diverse expat gemeenschap",
+          "2": "Arabisch erfgoed",
+          "3": "Internationale gastronomie scene",
+          "4": "Wereldklasse shopping en entertainment"
+        },
+        "infrastructure": {
+          "1": "Ultramoderne architectuur",
+          "2": "Wereldklasse luchthaven hub (Dubai)",
+          "3": "Modern openbaar vervoer",
+          "4": "Uitstekende gezondheidszorg"
+        },
+        "opportunities": {
+          "1": "Vrijhandelszones voor bedrijven",
+          "2": "Internationale handelshub",
+          "3": "Groeiende tech en financiële sectoren",
+          "4": "Vastgoed en bouw hub"
+        },
+        "nature": {
+          "1": "Woestijnstranden",
+          "2": "Bergen (Fujairah, Ras Al Khaimah)",
+          "3": "Woestijnsafari's",
+          "4": "Helder duikwater"
+        }
+      }
+    },
+    "singapore": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Zeer veilig en schoon",
+          "2": "Efficiënte publieke diensten",
+          "3": "Multiculturele gastronomie scene",
+          "4": "Moderne voorzieningen"
+        },
+        "economy": {
+          "1": "Lage belastingen",
+          "2": "Bedrijfsvriendelijk",
+          "3": "Sterk rechtssysteem",
+          "4": "Belangrijk financieel centrum"
+        },
+        "culture": {
+          "1": "Mix van culturen (Chinees, Maleis, Indisch)",
+          "2": "Culinair paradijs",
+          "3": "Moderne en koloniale architectuur",
+          "4": "Festivals het hele jaar door"
+        },
+        "infrastructure": {
+          "1": "Beste luchthaven ter wereld (Changi)",
+          "2": "Efficiënte en schone MRT",
+          "3": "Uitstekende gezondheidszorg",
+          "4": "Ultrasnel internet"
+        },
+        "opportunities": {
+          "1": "Fintech en tech hub",
+          "2": "Poort naar Azië",
+          "3": "Startup ecosysteem",
+          "4": "R&D centra"
+        },
+        "nature": {
+          "1": "Gardens by the Bay",
+          "2": "Natuurreservaten (Bukit Timah)",
+          "3": "Sentosa Island",
+          "4": "Oostkust en stranden"
+        }
+      }
+    },
+    "portugal": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Uitstekend klimaat",
+          "2": "Ontspannen levenstempo",
+          "3": "Heerlijke keuken",
+          "4": "Gastvrije expat gemeenschap"
+        },
+        "economy": {
+          "1": "Gunstig belastingregime (NHR)",
+          "2": "Betaalbare kosten van levensonderhoud",
+          "3": "Groeiende tech scene",
+          "4": "Golden Visa"
+        },
+        "culture": {
+          "1": "Rijk historisch erfgoed",
+          "2": "Fado muziek",
+          "3": "Azulejo architectuur",
+          "4": "Wijntraditie (Porto, Douro)"
+        },
+        "infrastructure": {
+          "1": "Goed gezondheidssysteem",
+          "2": "Betrouwbaar internet",
+          "3": "Openbaar vervoer in Lissabon",
+          "4": "Goed verbonden internationale luchthaven"
+        },
+        "opportunities": {
+          "1": "Digital nomad hub",
+          "2": "Startup ecosysteem (Web Summit)",
+          "3": "Groeiend toerisme",
+          "4": "Hernieuwbare energie"
+        },
+        "nature": {
+          "1": "Algarve kust",
+          "2": "Douro vallei",
+          "3": "Madeira archipel",
+          "4": "Wilde Azoren"
+        }
+      }
+    },
+    "nigeria": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Levendig sociaal leven",
+          "2": "Muziekscene (Afrobeats)",
+          "3": "Warme gastvrijheid",
+          "4": "Ondernemerscultuur"
+        },
+        "economy": {
+          "1": "Grootste economie van Afrika",
+          "2": "Groeiende tech scene",
+          "3": "Grote consumentenmarkt",
+          "4": "Overvloedige natuurlijke hulpbronnen"
+        },
+        "culture": {
+          "1": "Nollywood (2e filmindustrie)",
+          "2": "Diverse etnische rijkdom",
+          "3": "Levendige mode",
+          "4": "Rijke literatuur"
+        },
+        "infrastructure": {
+          "1": "Groeiende mobiele connectiviteit",
+          "2": "Tech hubs (Lagos)",
+          "3": "Ontwikkelende havens",
+          "4": "Speciale economische zones"
+        },
+        "opportunities": {
+          "1": "Afrikaanse fintech hub",
+          "2": "Groeiende e-commerce",
+          "3": "Dynamische jonge bevolking",
+          "4": "Landbouwpotentieel"
+        },
+        "nature": {
+          "1": "Stranden van Lagos",
+          "2": "Yankari National Park",
+          "3": "Obudu heuvels",
+          "4": "Niger Delta"
+        }
+      }
+    },
+    "japan": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Veilige samenleving",
+          "2": "Netheid en orde",
+          "3": "Efficiënte diensten",
+          "4": "Rijke culturele ervaringen"
+        },
+        "economy": {
+          "1": "Sterke tech sector",
+          "2": "Lage werkloosheid",
+          "3": "Innovatieleider",
+          "4": "Sterke yen als reservevaluta"
+        },
+        "culture": {
+          "1": "Uniek erfgoed (tempels, tuinen)",
+          "2": "Anime en manga",
+          "3": "Traditionele keuken",
+          "4": "Martial arts en tradities"
+        },
+        "infrastructure": {
+          "1": "Shinkansen (hogesnelheidstreinen)",
+          "2": "Voorbeeldig openbaar vervoer",
+          "3": "Geavanceerde technologie",
+          "4": "Geavanceerde gezondheidszorg"
+        },
+        "opportunities": {
+          "1": "Robotica en AI",
+          "2": "Gaming en entertainment",
+          "3": "Wetenschappelijk onderzoek",
+          "4": "Precisieproductie"
+        },
+        "nature": {
+          "1": "Mount Fuji",
+          "2": "Kersenbloesems",
+          "3": "Warmwaterbronnen (onsen)",
+          "4": "Japanse Alpen"
+        }
+      }
+    },
+    "brazil": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Levendige sociale cultuur",
+          "2": "Mooie stranden",
+          "3": "Samba en Carnaval",
+          "4": "Warme gastvrijheid"
+        },
+        "economy": {
+          "1": "Grote consumentenmarkt",
+          "2": "Overvloedige natuurlijke hulpbronnen",
+          "3": "Groeiende middenklasse",
+          "4": "Sterke landbouwsector"
+        },
+        "culture": {
+          "1": "Voetbal en sportpassie",
+          "2": "Diverse muziek (Bossa Nova, Samba, Funk)",
+          "3": "Rio Carnaval",
+          "4": "Etnische diversiteit"
+        },
+        "infrastructure": {
+          "1": "Grote internationale luchthavens",
+          "2": "Metro in grote steden",
+          "3": "Leider in hernieuwbare energie",
+          "4": "Ontwikkeld banksysteem"
+        },
+        "opportunities": {
+          "1": "Agribusiness",
+          "2": "Groeiend toerisme",
+          "3": "Tech startups (São Paulo)",
+          "4": "Groene energie"
+        },
+        "nature": {
+          "1": "Amazoneregenwoud",
+          "2": "Paradijselijke stranden",
+          "3": "Iguazú watervallen",
+          "4": "Pantanal (wetlands)"
+        }
+      }
+    },
+    "netherlands": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Uitstekende werk-privébalans",
+          "2": "Fietscultuur",
+          "3": "Liberale en tolerante samenleving",
+          "4": "Hoge levenskwaliteit"
+        },
+        "economy": {
+          "1": "Sterke tech sector",
+          "2": "Belangrijke Europese handelshub",
+          "3": "Haven van Rotterdam (grootste van Europa)",
+          "4": "Innovatief startup ecosysteem"
+        },
+        "culture": {
+          "1": "Meesters van de schilderkunst (Van Gogh, Rembrandt)",
+          "2": "Grachtenarchitectuur",
+          "3": "Tulpen en molens",
+          "4": "Elektronische muziekscene"
+        },
+        "infrastructure": {
+          "1": "Uitstekend openbaar vervoer",
+          "2": "Fietspaden overal",
+          "3": "Schiphol (luchthaven hub)",
+          "4": "Ultrasnel internet"
+        },
+        "opportunities": {
+          "1": "Tech en financiële hub",
+          "2": "Internationale bedrijfshoofkantoren",
+          "3": "Agritech innovatie",
+          "4": "Creatieve industrieën"
+        },
+        "nature": {
+          "1": "Tulpenvelden",
+          "2": "Noordzeekust",
+          "3": "Friese meren",
+          "4": "Natuurgebieden (Veluwe)"
+        }
+      }
+    },
+    "morocco": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Rijke tradities",
+          "2": "Betaalbare kosten van levensonderhoud",
+          "3": "Warm klimaat",
+          "4": "Levendige medina's"
+        },
+        "economy": {
+          "1": "Groeiend toerisme",
+          "2": "Nabijheid van Europa",
+          "3": "Vrijhandelsovereenkomsten",
+          "4": "Opkomende industrieën"
+        },
+        "culture": {
+          "1": "Fascinerende architectuur",
+          "2": "Berbers erfgoed",
+          "3": "Verfijnde keuken",
+          "4": "Traditioneel handwerk"
+        },
+        "infrastructure": {
+          "1": "TGV hogesnelheidstrein",
+          "2": "Moderne luchthavens",
+          "3": "Verbeterend wegennet",
+          "4": "Uitbreiding hernieuwbare energie"
+        },
+        "opportunities": {
+          "1": "Offshoring hub",
+          "2": "Investeringen in hernieuwbare energie",
+          "3": "Groeiende tech sector",
+          "4": "Poort naar Afrika"
+        },
+        "nature": {
+          "1": "Saharawoestijn",
+          "2": "Atlasgebergte",
+          "3": "Middellandse en Atlantische kusten",
+          "4": "Oases en palmboomgebieden"
+        }
+      }
+    },
+    "australia": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Outdoor levensstijl",
+          "2": "Hoge levenskwaliteit",
+          "3": "Multiculturele samenleving",
+          "4": "Ontspannen sfeer"
+        },
+        "economy": {
+          "1": "Stabiele economie",
+          "2": "Lage werkloosheid",
+          "3": "Hoge lonen",
+          "4": "Sterke mijnbouwsector"
+        },
+        "culture": {
+          "1": "Strandcultuur",
+          "2": "Aboriginal erfgoed",
+          "3": "Levendige kunstscene",
+          "4": "Sportpassie (Cricket, Rugby, AFL)"
+        },
+        "infrastructure": {
+          "1": "Kwaliteitsgezondheidszorg",
+          "2": "Goede onderwijsinstellingen",
+          "3": "Moderne steden",
+          "4": "Goed verbonden luchthavens"
+        },
+        "opportunities": {
+          "1": "Tech startup scene",
+          "2": "Skilled Migration Visa",
+          "3": "Mijnbouw en grondstoffen",
+          "4": "Landbouwexport"
+        },
+        "nature": {
+          "1": "Great Barrier Reef",
+          "2": "Outback",
+          "3": "Tasmaanse wildernis",
+          "4": "Iconische stranden (Bondi, Gold Coast)"
+        }
+      }
+    },
+    "china": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Dynamische steden",
+          "2": "Betaalbare diensten",
+          "3": "Rijke culinaire diversiteit",
+          "4": "Technologisch geavanceerde samenleving"
+        },
+        "economy": {
+          "1": "Op één na grootste economie",
+          "2": "Enorme consumentenmarkt",
+          "3": "Productiecentrum",
+          "4": "Groeiende tech sector"
+        },
+        "culture": {
+          "1": "Duizenden jaren geschiedenis",
+          "2": "Traditionele kunsten",
+          "3": "Regionale keukens",
+          "4": "Festivals en tradities"
+        },
+        "infrastructure": {
+          "1": "Hogesnelheidstreinnetwerk",
+          "2": "Moderne metro's",
+          "3": "Digitale betalingssystemen",
+          "4": "5G dekking"
+        },
+        "opportunities": {
+          "1": "Tech giganten (Alibaba, Tencent)",
+          "2": "E-commerce mogelijkheden",
+          "3": "Productie",
+          "4": "Groeiende middenklasse"
+        },
+        "nature": {
+          "1": "Chinese Muur",
+          "2": "Karstbergen van Guilin",
+          "3": "Yangtze rivier",
+          "4": "Tibetaans plateau"
+        }
+      }
+    },
+    "uk": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Rijke geschiedenis",
+          "2": "Multiculturele steden",
+          "3": "Divers entertainment",
+          "4": "Traditionele pubs"
+        },
+        "economy": {
+          "1": "Wereldwijd financieel centrum (City of London)",
+          "2": "Sterke tech sector",
+          "3": "Gerenommeerde universiteiten",
+          "4": "Creatieve industrieën"
+        },
+        "culture": {
+          "1": "Wereldberoemde muziek (Beatles, Adele)",
+          "2": "Premier League voetbal",
+          "3": "Theater (West End)",
+          "4": "Koninklijke tradities"
+        },
+        "infrastructure": {
+          "1": "Londense Underground (oudste ter wereld)",
+          "2": "NHS gezondheidszorg",
+          "3": "Internationale luchthavens",
+          "4": "Hogesnelheidstreinen"
+        },
+        "opportunities": {
+          "1": "Fintech hub",
+          "2": "Startup ecosysteem",
+          "3": "Onderzoekscentra",
+          "4": "Creatieve industrieën"
+        },
+        "nature": {
+          "1": "Schotse Hooglanden",
+          "2": "Lake District",
+          "3": "Kust van Cornwall",
+          "4": "Welsh gebergte"
+        }
+      }
+    },
+    "india": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Rijke spirituele tradities",
+          "2": "Familiegericht",
+          "3": "Diverse keuken",
+          "4": "Levendige festivals"
+        },
+        "economy": {
+          "1": "Snelgroeiende economie",
+          "2": "IT en tech hub",
+          "3": "Grote talentenpool",
+          "4": "Startup boom"
+        },
+        "culture": {
+          "1": "Bollywood",
+          "2": "Klassieke dans en muziek",
+          "3": "Oude tradities",
+          "4": "Yoga en Ayurveda"
+        },
+        "infrastructure": {
+          "1": "Groeiend metronetwerk",
+          "2": "Digitale betalingssystemen (UPI)",
+          "3": "Technische instituten (IITs)",
+          "4": "Uitbreidende luchthavens"
+        },
+        "opportunities": {
+          "1": "Tech startup hub (Bangalore)",
+          "2": "Offshoring centrum",
+          "3": "Farmaceutische industrie",
+          "4": "E-commerce groei"
+        },
+        "nature": {
+          "1": "Himalaya",
+          "2": "Stranden van Goa en Kerala",
+          "3": "Rajasthan woestijn",
+          "4": "Tijgerreservaten"
+        }
+      }
+    },
+    "senegal": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Teranga (gastvrijheid)",
+          "2": "Levendige muziek (Mbalax)",
+          "3": "Sterke gemeenschapswaarden",
+          "4": "Ontspannen levenstempo"
+        },
+        "economy": {
+          "1": "Stabiele democratie",
+          "2": "Groeiend toerisme",
+          "3": "Opkomende tech sector",
+          "4": "Regionaal financieel centrum"
+        },
+        "culture": {
+          "1": "Rijke muziek (Youssou N'Dour)",
+          "2": "Traditioneel handwerk",
+          "3": "Senegalese keuken",
+          "4": "Koloniale geschiedenis (Saint-Louis)"
+        },
+        "infrastructure": {
+          "1": "Nieuwe luchthaven Blaise Diagne",
+          "2": "Groeiend wegennet",
+          "3": "Mobiel betalen",
+          "4": "Verbeterd internet"
+        },
+        "opportunities": {
+          "1": "West-Afrikaanse tech hub",
+          "2": "Investeringen in hernieuwbare energie",
+          "3": "Landbouwsector",
+          "4": "Visserij en export"
+        },
+        "nature": {
+          "1": "Lac Rose (Roze Meer)",
+          "2": "Niokolo-Koba Nationaal Park",
+          "3": "Casamance stranden",
+          "4": "Mangroven en vogelreservaten"
+        }
+      }
+    },
+    "belgium": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Gezellige sfeer",
+          "2": "Bier- en chocoladecultuur",
+          "3": "Korte pendeltijden",
+          "4": "Hoge levenskwaliteit"
+        },
+        "economy": {
+          "1": "EU-instellingen (Brussel)",
+          "2": "Sterke farmaceutische sector",
+          "3": "Logistieke hub",
+          "4": "Internationale bedrijven"
+        },
+        "culture": {
+          "1": "Surrealistisch erfgoed (Magritte)",
+          "2": "Stripcultuur (Kuifje)",
+          "3": "Middeleeuwse steden (Brugge, Gent)",
+          "4": "Festivals en carnaval"
+        },
+        "infrastructure": {
+          "1": "Dicht spoornetwerk",
+          "2": "Uitstekend gezondheidszorgsysteem",
+          "3": "Goede scholen",
+          "4": "Centrale locatie in Europa"
+        },
+        "opportunities": {
+          "1": "EU en NAVO hoofdkwartier",
+          "2": "Multinationale ondernemingen",
+          "3": "Onderzoekscentra",
+          "4": "Groeiende startup scene"
+        },
+        "nature": {
+          "1": "Ardense bossen",
+          "2": "Noordzeekust",
+          "3": "Pittoreske dorpen",
+          "4": "Fietsroutes door het land"
+        }
+      }
+    }
+  }
+}

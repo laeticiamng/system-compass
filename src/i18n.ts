@@ -14,6 +14,11 @@ import pt from './locales/pt.json';
 // Import positive points translations
 import countriesPositivePointsFr from './locales/countries-positive-points-fr.json';
 import countriesPositivePointsEn from './locales/countries-positive-points-en.json';
+import countriesPositivePointsDe from './locales/countries-positive-points-de.json';
+import countriesPositivePointsEs from './locales/countries-positive-points-es.json';
+import countriesPositivePointsIt from './locales/countries-positive-points-it.json';
+import countriesPositivePointsNl from './locales/countries-positive-points-nl.json';
+import countriesPositivePointsPt from './locales/countries-positive-points-pt.json';
 
 // Merge function for deep merging objects
 function deepMerge(target: Record<string, unknown>, source: Record<string, unknown>): Record<string, unknown> {
