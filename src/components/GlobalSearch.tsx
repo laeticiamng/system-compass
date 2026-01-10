@@ -22,12 +22,14 @@ interface SearchResult {
 }
 
 const PAGES = [
+  { id: 'about', title: 'À propos & Orientation', path: '/about', icon: <BookOpen className="w-4 h-4" /> },
   { id: 'world-map', title: 'Carte mondiale', path: '/world-map', icon: <Globe className="w-4 h-4" /> },
   { id: 'prevention-filter', title: 'Filtre de prévention', path: '/prevention-filter', icon: <AlertTriangle className="w-4 h-4" /> },
   { id: 'compare', title: 'Comparer des pays', path: '/compare', icon: <Map className="w-4 h-4" /> },
   { id: 'pyramid-types', title: 'Types de pyramides', path: '/pyramid-types', icon: <BookOpen className="w-4 h-4" /> },
   { id: 'life-game', title: 'Jeu de vie', path: '/life-game', icon: <BookOpen className="w-4 h-4" /> },
   { id: 'dashboard', title: 'Tableau de bord', path: '/dashboard', icon: <BookOpen className="w-4 h-4" /> },
+  { id: 'errors-illusions', title: 'Erreurs & Illusions', path: '/errors-illusions', icon: <AlertTriangle className="w-4 h-4" /> },
 ];
 
 export function GlobalSearch() {
