@@ -36,6 +36,11 @@ function deepMerge(target: Record<string, unknown>, source: Record<string, unkno
 // Merge positive points translations into main translations
 const mergedFr = deepMerge(fr as Record<string, unknown>, countriesPositivePointsFr as Record<string, unknown>) as typeof fr;
 const mergedEn = deepMerge(en as Record<string, unknown>, countriesPositivePointsEn as Record<string, unknown>) as typeof en;
+const mergedDe = deepMerge(de as Record<string, unknown>, countriesPositivePointsDe as Record<string, unknown>) as typeof de;
+const mergedEs = deepMerge(es as Record<string, unknown>, countriesPositivePointsEs as Record<string, unknown>) as typeof es;
+const mergedIt = deepMerge(it as Record<string, unknown>, countriesPositivePointsIt as Record<string, unknown>) as typeof it;
+const mergedNl = deepMerge(nl as Record<string, unknown>, countriesPositivePointsNl as Record<string, unknown>) as typeof nl;
+const mergedPt = deepMerge(pt as Record<string, unknown>, countriesPositivePointsPt as Record<string, unknown>) as typeof pt;
 
 // Supported languages with metadata
 export const SUPPORTED_LANGUAGES = [
@@ -53,11 +58,11 @@ export type SupportedLanguage = typeof SUPPORTED_LANGUAGES[number]['code'];
 const resources = {
   en: { translation: mergedEn },
   fr: { translation: mergedFr },
-  nl: { translation: nl },
-  de: { translation: de },
-  es: { translation: es },
-  it: { translation: it },
-  pt: { translation: pt },
+  nl: { translation: mergedNl },
+  de: { translation: mergedDe },
+  es: { translation: mergedEs },
+  it: { translation: mergedIt },
+  pt: { translation: mergedPt },
 };
 
 // Custom language detector that checks localStorage first
