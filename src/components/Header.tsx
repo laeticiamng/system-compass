@@ -172,7 +172,7 @@ export function Header() {
           </nav>
 
           <GlobalSearch />
-          <UserHistoryPanel />
+          {user && <UserHistoryPanel />}
           <LanguageSwitcher />
 
           {/* Auth button - Desktop */}
