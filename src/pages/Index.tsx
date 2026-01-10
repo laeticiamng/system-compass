@@ -265,56 +265,57 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Universal Errors Library Teaser */}
-      <section className="py-12 md:py-16 border-t border-border/50 bg-primary/5">
+      {/* Errors & Illusions Teaser - Combined Section */}
+      <section className="py-12 md:py-16 border-t border-border/50 bg-gradient-to-r from-primary/5 via-destructive/5 to-amber-500/5">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-6 md:gap-8">
-            <div className="p-4 rounded-xl bg-primary/10 flex-shrink-0">
-              <BookOpen className="w-8 h-8 text-primary" />
+          <div className="max-w-4xl mx-auto">
+            <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8 mb-6">
+              <div className="flex gap-3">
+                <div className="p-3 rounded-xl bg-primary/10">
+                  <BookOpen className="w-6 h-6 text-primary" />
+                </div>
+                <div className="p-3 rounded-xl bg-destructive/10">
+                  <AlertTriangle className="w-6 h-6 text-destructive" />
+                </div>
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <h2 className="font-display text-xl md:text-2xl font-bold mb-2">
+                  {t('errorsIllusions.title', 'Erreurs & Illusions')}
+                </h2>
+                <p className="text-muted-foreground text-sm md:text-base">
+                  {t('errorsIllusions.homeTeaser', 'Erreurs cognitives et systémiques qui coûtent du temps, de l\'argent et de l\'énergie — factuelles, non moralisatrices.')}
+                </p>
+              </div>
+              <Button
+                variant="outline"
+                onClick={() => { trackUniversalErrorsClicked(); navigate('/errors-illusions'); }}
+                className="gap-2 border-primary/30 text-primary hover:bg-primary/10"
+              >
+                {t('errorsIllusions.explore', 'Explorer les erreurs')}
+                <ArrowRight className="w-4 h-4" />
+              </Button>
             </div>
-            <div className="flex-1 text-center md:text-left">
-              <h2 className="font-display text-xl md:text-2xl font-bold mb-2">
-                {t('universalErrors.title', 'Erreurs universelles')}
-              </h2>
-              <p className="text-muted-foreground text-sm md:text-base">
-                {t('universalErrors.teaser', '10 erreurs de décision qui coûtent du temps, de l\'argent et de l\'énergie — factuelles, non moralisatrices.')}
-              </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="glass-card rounded-lg p-4 border-primary/20">
+                <h3 className="font-semibold text-sm mb-1 flex items-center gap-2">
+                  <BookOpen className="w-4 h-4 text-primary" />
+                  {t('errorsIllusions.tabs.cognitive', 'Erreurs cognitives')}
+                </h3>
+                <p className="text-xs text-muted-foreground">
+                  {t('errorsIllusions.cognitiveShort', '10 patterns de décision coûteux à reconnaître')}
+                </p>
+              </div>
+              <div className="glass-card rounded-lg p-4 border-destructive/20">
+                <h3 className="font-semibold text-sm mb-1 flex items-center gap-2">
+                  <AlertTriangle className="w-4 h-4 text-destructive" />
+                  {t('errorsIllusions.tabs.systemic', 'Erreurs systémiques')}
+                </h3>
+                <p className="text-xs text-muted-foreground">
+                  {t('errorsIllusions.systemicShort', 'Décalages entre attentes et règles des systèmes')}
+                </p>
+              </div>
             </div>
-            <Button
-              variant="outline"
-              onClick={() => navigate('/universal-errors')}
-              className="gap-2 border-primary/30 text-primary hover:bg-primary/10"
-            >
-              {t('universalErrors.viewErrors', 'Voir les erreurs')}
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Systemic Mistakes Teaser */}
-      <section className="py-12 md:py-16 border-t border-border/50 bg-destructive/5">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-6 md:gap-8">
-            <div className="p-4 rounded-xl bg-destructive/10 flex-shrink-0">
-              <AlertTriangle className="w-8 h-8 text-destructive" />
-            </div>
-            <div className="flex-1 text-center md:text-left">
-              <h2 className="font-display text-xl md:text-2xl font-bold mb-2">
-                {t('systemicMistakes.title', 'Erreurs systémiques fréquentes')}
-              </h2>
-              <p className="text-muted-foreground text-sm md:text-base">
-                {t('systemicMistakes.teaser', 'Comprends les décalages qui coûtent des années — pas des jugements, des patterns à éviter.')}
-              </p>
-            </div>
-            <Button
-              variant="outline"
-              onClick={() => navigate('/systemic-mistakes')}
-              className="gap-2 border-destructive/30 text-destructive hover:bg-destructive/10"
-            >
-              {t('systemicMistakes.viewMistakes', 'Voir les erreurs')}
-              <ArrowRight className="w-4 h-4" />
-            </Button>
           </div>
         </div>
       </section>
