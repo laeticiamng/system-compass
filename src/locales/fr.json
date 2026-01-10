@@ -5671,9 +5671,19 @@
     "badge": "Hub d'Orientation",
     "title": "Par où commencer ?",
     "subtitle": "Pyramid Compass t'aide à comprendre tes vraies options avant toute décision. Pas de promesse, pas de raccourci — juste de la clarté.",
-    "philosophy": {
-      "title": "Notre philosophie",
-      "message": "La lucidité se diffuse par l'usage réel, la compréhension et la responsabilité. Cette plateforme structure la clarté, même quand la conclusion est : cette option est trop risquée, irréaliste ou destructrice."
+    "philosophy": "Pyramid Compass est une plateforme d'orientation avant décision.",
+    "philosophyDesc": "Permettre à chaque personne de comprendre clairement ses options réelles, leurs risques, leurs coûts et leurs alternatives, avant d'engager son argent, sa vie ou son avenir.",
+    "quickTitle": "Accès rapide selon votre besoin",
+    "toolsTitle": "Tous les outils d'orientation",
+    "bestFor": "Idéal pour",
+    "startTool": "Commencer",
+    "situations": {
+      "country": "Je veux changer de pays",
+      "decision": "J'ai une décision importante à prendre",
+      "understand": "Je veux comprendre les systèmes",
+      "fit": "Je veux savoir si un pays me correspond",
+      "plan": "Je veux planifier ma trajectoire",
+      "compare": "Je veux comparer plusieurs pays"
     },
     "quickSituations": {
       "title": "Ta situation",
@@ -5702,25 +5712,39 @@
     },
     "tools": {
       "title": "Outils disponibles",
-      "profileTest": {
-        "title": "Test de Profil",
-        "description": "Comprends ton profil, les avantages de ta nationalité, et la compatibilité avec les systèmes"
+      "preventionFilter": {
+        "title": "Filtre de Prévention",
+        "description": "Identifie les risques et obstacles avant de t'engager dans une décision",
+        "bestFor": ["Valider une décision importante", "Anticiper les obstacles cachés"]
       },
       "exitKeys": {
         "title": "Clés de Sortie",
-        "description": "Feuilles de route personnalisées selon ta situation, tes objectifs et tes contraintes"
+        "description": "Feuilles de route personnalisées selon ta situation, tes objectifs et tes contraintes",
+        "bestFor": ["Planifier une transition de vie", "Structurer un projet de mobilité"]
+      },
+      "lifeTrajectory": {
+        "title": "Trajectoire de Vie",
+        "description": "Simule l'évolution de ta situation sur 10-30 ans selon tes choix",
+        "bestFor": ["Visualiser les conséquences long terme", "Comparer des scénarios de vie"]
+      },
+      "profileTest": {
+        "title": "Test de Profil",
+        "description": "Comprends ton profil, les avantages de ta nationalité, et la compatibilité avec les systèmes",
+        "bestFor": ["Découvrir ton archétype", "Identifier tes forces et faiblesses"]
+      },
+      "lifeGame": {
+        "title": "Jeu de la Vie",
+        "description": "Jeu éducatif pour comprendre comment les décisions de vie fonctionnent dans différents systèmes",
+        "bestFor": ["Apprendre en jouant", "Tester des stratégies sans risque"]
+      },
+      "errorsIllusions": {
+        "title": "Erreurs & Illusions",
+        "description": "Identifie les biais cognitifs et erreurs systémiques qui coûtent des années",
+        "bestFor": ["Éviter les erreurs courantes", "Comprendre les biais cognitifs"]
       },
       "compare": {
         "title": "Comparer",
         "description": "Compare les pays, systèmes et coûts pour trouver tes meilleures options"
-      },
-      "errorsIllusions": {
-        "title": "Erreurs & Illusions",
-        "description": "Identifie les biais cognitifs et erreurs systémiques qui coûtent des années"
-      },
-      "lifeGame": {
-        "title": "Jeu de la Vie",
-        "description": "Jeu éducatif pour comprendre comment les décisions de vie fonctionnent dans différents systèmes"
       },
       "worldMap": {
         "title": "Carte du Monde",
