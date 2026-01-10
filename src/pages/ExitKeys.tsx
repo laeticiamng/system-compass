@@ -44,25 +44,25 @@ import { SimulationDisclaimer } from '@/components/SimulationDisclaimer';
 const STEPS = ['origin', 'current', 'profile', 'goals', 'results'] as const;
 type Step = typeof STEPS[number];
 
-const priorityOptions: { value: LifePriority; label: string; icon: string }[] = [
-  { value: 'freedom', label: 'Liberté', icon: '🦅' },
-  { value: 'money', label: 'Argent', icon: '💰' },
-  { value: 'meaning', label: 'Sens', icon: '💫' },
-  { value: 'status', label: 'Statut', icon: '👔' },
-  { value: 'family', label: 'Famille', icon: '👨‍👩‍👧' },
-  { value: 'calm', label: 'Sérénité', icon: '🧘' },
+const priorityOptions: { value: LifePriority; labelKey: string; icon: string }[] = [
+  { value: 'freedom', labelKey: 'exitKeys.priorities.freedom', icon: '🦅' },
+  { value: 'money', labelKey: 'exitKeys.priorities.money', icon: '💰' },
+  { value: 'meaning', labelKey: 'exitKeys.priorities.meaning', icon: '💫' },
+  { value: 'status', labelKey: 'exitKeys.priorities.status', icon: '👔' },
+  { value: 'family', labelKey: 'exitKeys.priorities.family', icon: '👨‍👩‍👧' },
+  { value: 'calm', labelKey: 'exitKeys.priorities.calm', icon: '🧘' },
 ];
 
 const riskOptions = [
-  { value: 'low', label: 'Prudent', description: 'Je préfère la sécurité' },
-  { value: 'medium', label: 'Équilibré', description: 'Risques calculés' },
-  { value: 'high', label: 'Audacieux', description: 'Je vise haut' },
+  { value: 'low', labelKey: 'exitKeys.risk.prudent', descKey: 'exitKeys.risk.prudentDesc' },
+  { value: 'medium', labelKey: 'exitKeys.risk.balanced', descKey: 'exitKeys.risk.balancedDesc' },
+  { value: 'high', labelKey: 'exitKeys.risk.bold', descKey: 'exitKeys.risk.boldDesc' },
 ];
 
 const timeOptions = [
-  { value: 'short', label: '1-3 ans', description: 'Résultats rapides' },
-  { value: 'medium', label: '3-7 ans', description: 'Progression stable' },
-  { value: 'long', label: '7+ ans', description: 'Vision long terme' },
+  { value: 'short', labelKey: 'exitKeys.time.short', descKey: 'exitKeys.time.shortDesc' },
+  { value: 'medium', labelKey: 'exitKeys.time.medium', descKey: 'exitKeys.time.mediumDesc' },
+  { value: 'long', labelKey: 'exitKeys.time.long', descKey: 'exitKeys.time.longDesc' },
 ];
 
 export default function ExitKeys() {
@@ -299,7 +299,7 @@ export default function ExitKeys() {
           {currentStep !== 'results' && (
             <div className="mt-4 p-3 rounded-lg bg-muted/30 border border-border/50">
               <div className="flex justify-between text-sm text-muted-foreground">
-                <span>Sous-étape {stepIndex + 1} sur {STEPS.length - 1}</span>
+                <span>{t('exitKeys.steps.substep', 'Sous-étape')} {stepIndex + 1} {t('exitKeys.steps.of', 'sur')} {STEPS.length - 1}</span>
                 <span>{Math.round(progress)}%</span>
               </div>
               <Progress value={progress} className="h-1.5 mt-2" />
@@ -316,19 +316,19 @@ export default function ExitKeys() {
               <div className="space-y-4">
                 <div className="text-center mb-6">
                   <MapPin className="w-12 h-12 text-primary mx-auto mb-4" />
-                  <h2 className="text-2xl font-bold mb-2">D'où venez-vous ?</h2>
+                  <h2 className="text-2xl font-bold mb-2">{t('exitKeys.origin.title', "D'où venez-vous ?")}</h2>
                   <p className="text-muted-foreground">
-                    Votre pays de naissance influence votre point de départ dans le système
+                    {t('exitKeys.origin.subtitle', 'Votre pays de naissance influence votre point de départ dans le système')}
                   </p>
                 </div>
 
-                <Label className="text-sm font-medium">Pays de naissance</Label>
+                <Label className="text-sm font-medium">{t('exitKeys.origin.birthCountry', 'Pays de naissance')}</Label>
                 <Select value={birthCountryId} onValueChange={(v) => {
                   setBirthCountryId(v);
                   if (nationalityIds.length === 0) setNationalityIds([v]);
                 }}>
                   <SelectTrigger className="w-full h-14 text-lg">
-                    <SelectValue placeholder="Sélectionnez votre pays de naissance" />
+                    <SelectValue placeholder={t('exitKeys.origin.selectBirthCountry', 'Sélectionnez votre pays de naissance')} />
                   </SelectTrigger>
                   <SelectContent className="max-h-[300px]">
                     {countries.map(country => (
@@ -350,11 +350,11 @@ export default function ExitKeys() {
               <div className="space-y-4">
                 <div className="flex items-center gap-2">
                   <Flag className="w-5 h-5 text-primary" />
-                  <Label className="text-sm font-medium">Nationalité(s)</Label>
-                  <span className="text-xs text-muted-foreground">(multi-nationalité supportée)</span>
+                  <Label className="text-sm font-medium">{t('exitKeys.origin.nationality', 'Nationalité(s)')}</Label>
+                  <span className="text-xs text-muted-foreground">{t('exitKeys.origin.multiNationalitySupported', '(multi-nationalité supportée)')}</span>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Vos nationalités déterminent les visas et opportunités accessibles
+                  {t('exitKeys.origin.nationalityExplain', 'Vos nationalités déterminent les visas et opportunités accessibles')}
                 </p>
                 
                 {/* Selected nationalities */}
@@ -392,7 +392,7 @@ export default function ExitKeys() {
                   }}
                 >
                   <SelectTrigger className="w-full h-14 text-lg">
-                    <SelectValue placeholder={nationalityIds.length > 0 ? "Ajouter une autre nationalité" : "Sélectionnez votre nationalité"} />
+                    <SelectValue placeholder={nationalityIds.length > 0 ? t('exitKeys.origin.addNationality', 'Ajouter une autre nationalité') : t('exitKeys.origin.selectNationality', 'Sélectionnez votre nationalité')} />
                   </SelectTrigger>
                   <SelectContent className="max-h-[300px]">
                     {countries.filter(c => !nationalityIds.includes(c.id)).map(country => (
@@ -464,15 +464,15 @@ export default function ExitKeys() {
             <div className="space-y-6">
               <div className="text-center mb-8">
                 <Compass className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h2 className="text-2xl font-bold mb-2">Où êtes-vous maintenant ?</h2>
+                <h2 className="text-2xl font-bold mb-2">{t('exitKeys.current.title', 'Où êtes-vous maintenant ?')}</h2>
                 <p className="text-muted-foreground">
-                  Votre pays actuel détermine les contraintes et opportunités disponibles
+                  {t('exitKeys.current.subtitle', 'Votre pays actuel détermine les contraintes et opportunités disponibles')}
                 </p>
               </div>
 
               <Select value={currentCountryId} onValueChange={setCurrentCountryId}>
                 <SelectTrigger className="w-full h-14 text-lg">
-                  <SelectValue placeholder="Sélectionnez votre pays actuel" />
+                  <SelectValue placeholder={t('exitKeys.current.selectCountry', 'Sélectionnez votre pays actuel')} />
                 </SelectTrigger>
                 <SelectContent className="max-h-[300px]">
                   {countries.map(country => (
@@ -495,7 +495,7 @@ export default function ExitKeys() {
                 onClick={() => setCurrentCountryId(birthCountryId)}
                 disabled={!birthCountryId}
               >
-                Même pays que naissance
+                {t('exitKeys.current.sameAsBirth', 'Même pays que naissance')}
               </Button>
 
               {currentCountry && (
@@ -512,7 +512,7 @@ export default function ExitKeys() {
                   
                   <div className="grid grid-cols-2 gap-4 mt-4">
                     <div>
-                      <p className="text-xs text-muted-foreground mb-1">Qui gagne ici</p>
+                      <p className="text-xs text-muted-foreground mb-1">{t('exitKeys.current.whoWins', 'Qui gagne ici')}</p>
                       <ul className="text-sm space-y-1">
                         {currentCountry.whoWins.slice(0, 2).map((item, i) => (
                           <li key={i} className="flex items-center gap-1">
@@ -523,7 +523,7 @@ export default function ExitKeys() {
                       </ul>
                     </div>
                     <div>
-                      <p className="text-xs text-muted-foreground mb-1">Qui perd ici</p>
+                      <p className="text-xs text-muted-foreground mb-1">{t('exitKeys.current.whoLoses', 'Qui perd ici')}</p>
                       <ul className="text-sm space-y-1">
                         {currentCountry.whoLoses.slice(0, 2).map((item, i) => (
                           <li key={i} className="flex items-center gap-1">
@@ -544,9 +544,9 @@ export default function ExitKeys() {
             <div className="space-y-6">
               <div className="text-center mb-8">
                 <Heart className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h2 className="text-2xl font-bold mb-2">Quel est votre profil ?</h2>
+                <h2 className="text-2xl font-bold mb-2">{t('exitKeys.profile.title', 'Quel est votre profil ?')}</h2>
                 <p className="text-muted-foreground">
-                  Votre formation et métier déterminent les stratégies accessibles
+                  {t('exitKeys.profile.subtitle', 'Votre formation et métier déterminent les stratégies accessibles')}
                 </p>
               </div>
 
@@ -647,7 +647,7 @@ export default function ExitKeys() {
 
               {/* Risk Tolerance */}
               <div>
-                <Label className="text-sm font-medium mb-3 block">Tolérance au risque</Label>
+                <Label className="text-sm font-medium mb-3 block">{t('exitKeys.profile.riskTolerance', 'Tolérance au risque')}</Label>
                 <div className="grid grid-cols-3 gap-3">
                   {riskOptions.map(option => (
                     <button
@@ -660,8 +660,8 @@ export default function ExitKeys() {
                           : "border-border hover:border-primary/50"
                       )}
                     >
-                      <span className="font-medium block">{option.label}</span>
-                      <span className="text-xs text-muted-foreground">{option.description}</span>
+                      <span className="font-medium block">{t(option.labelKey)}</span>
+                      <span className="text-xs text-muted-foreground">{t(option.descKey)}</span>
                     </button>
                   ))}
                 </div>
@@ -669,7 +669,7 @@ export default function ExitKeys() {
 
               {/* Time Horizon */}
               <div>
-                <Label className="text-sm font-medium mb-3 block">Horizon temporel</Label>
+                <Label className="text-sm font-medium mb-3 block">{t('exitKeys.profile.timeHorizon', 'Horizon temporel')}</Label>
                 <div className="grid grid-cols-3 gap-3">
                   {timeOptions.map(option => (
                     <button
@@ -682,8 +682,8 @@ export default function ExitKeys() {
                           : "border-border hover:border-primary/50"
                       )}
                     >
-                      <span className="font-medium block">{option.label}</span>
-                      <span className="text-xs text-muted-foreground">{option.description}</span>
+                      <span className="font-medium block">{t(option.labelKey)}</span>
+                      <span className="text-xs text-muted-foreground">{t(option.descKey)}</span>
                     </button>
                   ))}
                 </div>
@@ -692,23 +692,23 @@ export default function ExitKeys() {
               {/* Toggles */}
               <div className="space-y-4 pt-4 border-t">
                 <div className="flex items-center justify-between">
-                  <Label htmlFor="capital">J'ai du capital disponible (&gt; 50k€)</Label>
+                  <Label htmlFor="capital">{t('exitKeys.profile.hasCapital', "J'ai du capital disponible (> 50k€)")}</Label>
                   <Switch id="capital" checked={hasCapital} onCheckedChange={setHasCapital} />
                 </div>
                 <div className="flex items-center justify-between">
-                  <Label htmlFor="credentials">J'ai des diplômes/certifications reconnus</Label>
+                  <Label htmlFor="credentials">{t('exitKeys.profile.hasCredentials', "J'ai des diplômes/certifications reconnus")}</Label>
                   <Switch id="credentials" checked={hasCredentials} onCheckedChange={setHasCredentials} />
                 </div>
                 <div className="flex items-center justify-between">
-                  <Label htmlFor="network">J'ai un réseau professionnel solide</Label>
+                  <Label htmlFor="network">{t('exitKeys.profile.hasNetwork', "J'ai un réseau professionnel solide")}</Label>
                   <Switch id="network" checked={hasNetwork} onCheckedChange={setHasNetwork} />
                 </div>
                 <div className="flex items-center justify-between">
-                  <Label htmlFor="family">J'ai une famille à considérer</Label>
+                  <Label htmlFor="family">{t('exitKeys.profile.hasFamily', "J'ai une famille à considérer")}</Label>
                   <Switch id="family" checked={hasFamily} onCheckedChange={setHasFamily} />
                 </div>
                 <div className="flex items-center justify-between">
-                  <Label htmlFor="lgbtq">Je suis LGBTQ+</Label>
+                  <Label htmlFor="lgbtq">{t('exitKeys.profile.isLGBTQ', 'Je suis LGBTQ+')}</Label>
                   <Switch id="lgbtq" checked={isLGBTQ} onCheckedChange={setIsLGBTQ} />
                 </div>
               </div>
@@ -720,9 +720,9 @@ export default function ExitKeys() {
             <div className="space-y-6">
               <div className="text-center mb-8">
                 <Target className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h2 className="text-2xl font-bold mb-2">Que recherchez-vous ?</h2>
+                <h2 className="text-2xl font-bold mb-2">{t('exitKeys.goals.title', 'Que recherchez-vous ?')}</h2>
                 <p className="text-muted-foreground">
-                  Votre priorité de vie oriente la destination idéale
+                  {t('exitKeys.goals.subtitle', 'Votre priorité de vie oriente la destination idéale')}
                 </p>
               </div>
 
@@ -739,7 +739,7 @@ export default function ExitKeys() {
                     )}
                   >
                     <span className="text-4xl block mb-2">{option.icon}</span>
-                    <span className="font-medium">{option.label}</span>
+                    <span className="font-medium">{t(option.labelKey)}</span>
                   </button>
                 ))}
               </div>
@@ -795,7 +795,7 @@ export default function ExitKeys() {
                   <ChevronRight className="w-4 h-4 text-muted-foreground" />
                   <div className="flex items-center gap-2">
                     <span className="text-xl">{priorityOptions.find(p => p.value === desiredLife)?.icon}</span>
-                    <span>{priorityOptions.find(p => p.value === desiredLife)?.label}</span>
+                    <span>{t(priorityOptions.find(p => p.value === desiredLife)?.labelKey || '')}</span>
                   </div>
                 </div>
               </div>
