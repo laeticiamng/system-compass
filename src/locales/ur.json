@@ -1,0 +1,153 @@
+{
+  "common": {
+    "appName": "پرامڈ کمپاس",
+    "tagline": "حقیقی دنیا کے نظاموں کے لیے فیصلہ سمیلیٹر",
+    "positioningLine": "تجزیہ اور سمیلیشن ٹول۔ آپ فیصلہ کریں، ہم روشنی دکھائیں۔",
+    "disclaimer": "قانونی، مالیاتی یا طبی مشورہ نہیں۔ آپ اپنے فیصلوں کے ذمہ دار ہیں۔",
+    "yes": "ہاں",
+    "no": "نہیں",
+    "back": "واپس",
+    "next": "اگلا",
+    "years": "سال",
+    "save": "محفوظ کریں",
+    "cancel": "منسوخ",
+    "load": "لوڈ کریں",
+    "loading": "لوڈ ہو رہا ہے...",
+    "country": "ملک",
+    "metric": "پیمانہ",
+    "delete": "حذف کریں",
+    "confirm": "تصدیق کریں",
+    "edit": "ترمیم",
+    "previewMode": "پیش نظارہ موڈ",
+    "all": "تمام",
+    "total": "کل",
+    "close": "بند کریں",
+    "optional": "اختیاری",
+    "description": "تفصیل",
+    "submit": "جمع کرائیں",
+    "sending": "بھیجا جا رہا ہے..."
+  },
+  "errors": {
+    "rateLimited": "بہت زیادہ درخواستیں۔ براہ کرم تھوڑی دیر بعد دوبارہ کوشش کریں۔",
+    "insufficientCredits": "AI کریڈٹ ناکافی ہیں۔",
+    "generationFailed": "مواد بنانے میں خرابی۔",
+    "networkError": "نیٹ ورک خرابی۔ براہ کرم اپنا کنکشن چیک کریں۔",
+    "unauthorized": "آپ کو لاگ ان ہونا ضروری ہے۔",
+    "notFound": "وسائل نہیں ملے۔",
+    "serverError": "سرور خرابی۔ براہ کرم دوبارہ کوشش کریں۔"
+  },
+  "journey": {
+    "profile": "آپ کا پروفائل",
+    "options": "آپ کے اختیارات",
+    "keys": "آپ کی چابیاں"
+  },
+  "header": {
+    "simulationDisclaimer": "منظرنامے کی تلاش • کوئی قانونی، مالیاتی یا طبی مشورہ نہیں"
+  },
+  "footer": {
+    "explore": "تلاش کریں",
+    "tools": "ٹولز",
+    "account": "اکاؤنٹ",
+    "profileTest": "پروفائل ٹیسٹ",
+    "madeWith": "محبت سے بنایا گیا",
+    "about": "کے بارے میں",
+    "exitKeysCatalog": "ایگزٹ کیز کیٹلاگ",
+    "potentialZones": "ممکنہ زونز",
+    "thresholdProtocol": "حد پروٹوکول",
+    "businessInstitutions": "کاروبار اور ادارے",
+    "howToRead": "نتائج کیسے پڑھیں",
+    "warnings": "انتباہات",
+    "disclaimer": "تجزیہ اور سمیلیشن ٹول۔ کوئی قانونی، مالیاتی یا طبی مشورہ نہیں۔",
+    "learnMore": "مزید جانیں"
+  },
+  "nav": {
+    "home": "ہوم",
+    "countries": "ممالک",
+    "compare": "موازنہ کریں",
+    "exitKeys": "ایگزٹ کیز",
+    "lifeGame": "لائف گیم",
+    "dashboard": "ڈیش بورڈ",
+    "profile": "پروفائل",
+    "signIn": "سائن ان",
+    "signOut": "سائن آؤٹ",
+    "worldMap": "عالمی نقشہ"
+  },
+  "worldMap": {
+    "badge": "عالمی تلاش",
+    "title": "سسٹم نقشہ",
+    "subtitle": "{{count}} تجزیہ شدہ ممالک اور ان کے پرامڈ اقسام کو بصری طور پر دریافت کریں",
+    "search": "ملک تلاش کریں...",
+    "results": "ممالک",
+    "tabs": {
+      "map": "نقشہ",
+      "stats": "اعداد و شمار"
+    },
+    "stats": {
+      "total": "تجزیہ شدہ ممالک",
+      "intelligence": "انٹیلیجنس لیئر",
+      "pyramids": "پرامڈ اقسام",
+      "languages": "زبانیں"
+    },
+    "viewDetails": "تفصیلات دیکھیں",
+    "pyramidDistribution": "قسم کے لحاظ سے تقسیم",
+    "countryList": "ممالک کی فہرست",
+    "info": {
+      "title": "نقشہ کیسے پڑھیں؟",
+      "colors": "رنگ پرامڈ اقسام کی نمائندگی کرتے ہیں",
+      "size": "بڑے نقطے انٹیلیجنس لیئر والے ممالک کی نشاندہی کرتے ہیں",
+      "click": "تفصیلات دیکھنے کے لیے کسی ملک پر کلک کریں",
+      "zoom": "زوم اور نیویگیٹ کرنے کے لیے کنٹرولز استعمال کریں"
+    }
+  },
+  "auth": {
+    "signIn": "سائن ان",
+    "signUp": "سائن اپ",
+    "signOut": "سائن آؤٹ",
+    "email": "ای میل",
+    "password": "پاس ورڈ",
+    "confirmPassword": "پاس ورڈ کی تصدیق کریں",
+    "forgotPassword": "پاس ورڈ بھول گئے؟",
+    "noAccount": "اکاؤنٹ نہیں ہے؟",
+    "hasAccount": "پہلے سے اکاؤنٹ ہے؟",
+    "orContinueWith": "یا جاری رکھیں"
+  },
+  "countries": {
+    "title": "ممالک",
+    "subtitle": "مختلف ممالک کے نظام ڈھانچے دریافت کریں",
+    "searchPlaceholder": "ملک تلاش کریں...",
+    "noResults": "کوئی ممالک نہیں ملے",
+    "viewDetails": "تفصیلات دیکھیں",
+    "filters": {
+      "all": "تمام",
+      "region": "خطہ",
+      "pyramidType": "پرامڈ قسم"
+    }
+  },
+  "countryDetail": {
+    "overview": "جائزہ",
+    "system": "نظام",
+    "risks": "خطرات",
+    "opportunities": "مواقع",
+    "intelligence": "انٹیلیجنس لیئر",
+    "variant": {
+      "title": "سسٹم ویریئنٹ",
+      "laborMarket": "لیبر مارکیٹ",
+      "entrepreneurship": "کاروباری",
+      "dailyLife": "روزمرہ زندگی",
+      "institutions": "ادارے",
+      "networks": "نیٹ ورکس",
+      "profilesSucceed": "کامیاب پروفائلز",
+      "profilesStruggle": "مشکل میں پروفائلز",
+      "surprises": "حیرتیں",
+      "trajectories": "مثالی رفتار"
+    }
+  },
+  "pyramidTypes": {
+    "PROBLEM_RENT": "مسئلہ-کرایہ",
+    "STABILITY_REDIS": "استحکام-تقسیم نو",
+    "COMPETENCE_TRUST": "اہلیت-اعتماد",
+    "GROWTH_RISK": "ترقی-خطرہ",
+    "HYBRID_TRANSITION": "ہائبرڈ-منتقلی",
+    "RESOURCE_EXTRACTION": "وسائل-نکالنا"
+  }
+}

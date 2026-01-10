@@ -1,0 +1,153 @@
+{
+  "common": {
+    "appName": "金字塔指南针",
+    "tagline": "真实世界系统的决策模拟器",
+    "positioningLine": "分析和模拟工具。您决定，我们照亮。",
+    "disclaimer": "非法律、财务或医疗建议。您对自己的决定负责。",
+    "yes": "是",
+    "no": "否",
+    "back": "返回",
+    "next": "下一步",
+    "years": "年",
+    "save": "保存",
+    "cancel": "取消",
+    "load": "加载",
+    "loading": "加载中...",
+    "country": "国家",
+    "metric": "指标",
+    "delete": "删除",
+    "confirm": "确认",
+    "edit": "编辑",
+    "previewMode": "预览模式",
+    "all": "全部",
+    "total": "总计",
+    "close": "关闭",
+    "optional": "可选",
+    "description": "描述",
+    "submit": "提交",
+    "sending": "发送中..."
+  },
+  "errors": {
+    "rateLimited": "请求过多。请稍后再试。",
+    "insufficientCredits": "AI积分不足。",
+    "generationFailed": "生成内容时出错。",
+    "networkError": "网络错误。请检查您的连接。",
+    "unauthorized": "您必须登录。",
+    "notFound": "资源未找到。",
+    "serverError": "服务器错误。请重试。"
+  },
+  "journey": {
+    "profile": "您的个人资料",
+    "options": "您的选择",
+    "keys": "您的钥匙"
+  },
+  "header": {
+    "simulationDisclaimer": "场景探索 • 无法律、财务或医疗建议"
+  },
+  "footer": {
+    "explore": "探索",
+    "tools": "工具",
+    "account": "账户",
+    "profileTest": "个人资料测试",
+    "madeWith": "用心制作",
+    "about": "关于",
+    "exitKeysCatalog": "出口钥匙目录",
+    "potentialZones": "潜在区域",
+    "thresholdProtocol": "阈值协议",
+    "businessInstitutions": "商业与机构",
+    "howToRead": "如何阅读结果",
+    "warnings": "警告",
+    "disclaimer": "分析和模拟工具。无法律、财务或医疗建议。",
+    "learnMore": "了解更多"
+  },
+  "nav": {
+    "home": "首页",
+    "countries": "国家",
+    "compare": "比较",
+    "exitKeys": "出口钥匙",
+    "lifeGame": "人生游戏",
+    "dashboard": "仪表板",
+    "profile": "个人资料",
+    "signIn": "登录",
+    "signOut": "退出",
+    "worldMap": "世界地图"
+  },
+  "worldMap": {
+    "badge": "全球探索",
+    "title": "系统地图",
+    "subtitle": "可视化探索{{count}}个已分析国家及其金字塔类型",
+    "search": "搜索国家...",
+    "results": "国家",
+    "tabs": {
+      "map": "地图",
+      "stats": "统计"
+    },
+    "stats": {
+      "total": "已分析国家",
+      "intelligence": "智能层",
+      "pyramids": "金字塔类型",
+      "languages": "语言"
+    },
+    "viewDetails": "查看详情",
+    "pyramidDistribution": "按类型分布",
+    "countryList": "国家列表",
+    "info": {
+      "title": "如何阅读地图？",
+      "colors": "颜色代表金字塔类型",
+      "size": "较大的点表示具有智能层的国家",
+      "click": "点击国家查看详情",
+      "zoom": "使用控件缩放和导航"
+    }
+  },
+  "auth": {
+    "signIn": "登录",
+    "signUp": "注册",
+    "signOut": "退出",
+    "email": "电子邮件",
+    "password": "密码",
+    "confirmPassword": "确认密码",
+    "forgotPassword": "忘记密码？",
+    "noAccount": "没有账户？",
+    "hasAccount": "已有账户？",
+    "orContinueWith": "或继续使用"
+  },
+  "countries": {
+    "title": "国家",
+    "subtitle": "探索不同国家的系统结构",
+    "searchPlaceholder": "搜索国家...",
+    "noResults": "未找到国家",
+    "viewDetails": "查看详情",
+    "filters": {
+      "all": "全部",
+      "region": "地区",
+      "pyramidType": "金字塔类型"
+    }
+  },
+  "countryDetail": {
+    "overview": "概览",
+    "system": "系统",
+    "risks": "风险",
+    "opportunities": "机会",
+    "intelligence": "智能层",
+    "variant": {
+      "title": "系统变体",
+      "laborMarket": "劳动市场",
+      "entrepreneurship": "创业",
+      "dailyLife": "日常生活",
+      "institutions": "机构",
+      "networks": "网络",
+      "profilesSucceed": "成功的人物画像",
+      "profilesStruggle": "困难的人物画像",
+      "surprises": "惊喜",
+      "trajectories": "示例轨迹"
+    }
+  },
+  "pyramidTypes": {
+    "PROBLEM_RENT": "问题-租金",
+    "STABILITY_REDIS": "稳定-再分配",
+    "COMPETENCE_TRUST": "能力-信任",
+    "GROWTH_RISK": "增长-风险",
+    "HYBRID_TRANSITION": "混合-过渡",
+    "RESOURCE_EXTRACTION": "资源-开采"
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "common": {
+    "appName": "بوصلة الهرم",
+    "tagline": "محاكي القرارات للأنظمة الواقعية",
+    "positioningLine": "أداة تحليل ومحاكاة. أنت تقرر، ونحن نضيء.",
+    "disclaimer": "ليست نصيحة قانونية أو مالية أو طبية. أنت مسؤول عن قراراتك.",
+    "yes": "نعم",
+    "no": "لا",
+    "back": "رجوع",
+    "next": "التالي",
+    "years": "سنوات",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "load": "تحميل",
+    "loading": "جاري التحميل...",
+    "country": "البلد",
+    "metric": "المقياس",
+    "delete": "حذف",
+    "confirm": "تأكيد",
+    "edit": "تعديل",
+    "previewMode": "وضع المعاينة",
+    "all": "الكل",
+    "total": "المجموع",
+    "close": "إغلاق",
+    "optional": "اختياري",
+    "description": "الوصف",
+    "submit": "إرسال",
+    "sending": "جاري الإرسال..."
+  },
+  "errors": {
+    "rateLimited": "طلبات كثيرة جداً. يرجى المحاولة لاحقاً.",
+    "insufficientCredits": "رصيد AI غير كافٍ.",
+    "generationFailed": "خطأ في إنشاء المحتوى.",
+    "networkError": "خطأ في الشبكة. يرجى التحقق من اتصالك.",
+    "unauthorized": "يجب تسجيل الدخول.",
+    "notFound": "المورد غير موجود.",
+    "serverError": "خطأ في الخادم. يرجى المحاولة مرة أخرى."
+  },
+  "journey": {
+    "profile": "ملفك الشخصي",
+    "options": "خياراتك",
+    "keys": "مفاتيحك"
+  },
+  "header": {
+    "simulationDisclaimer": "استكشاف السيناريوهات • لا نصائح قانونية أو مالية أو طبية"
+  },
+  "footer": {
+    "explore": "استكشف",
+    "tools": "الأدوات",
+    "account": "الحساب",
+    "profileTest": "اختبار الملف الشخصي",
+    "madeWith": "صنع بـ",
+    "about": "حول",
+    "exitKeysCatalog": "كتالوج مفاتيح الخروج",
+    "potentialZones": "المناطق المحتملة",
+    "thresholdProtocol": "بروتوكول العتبة",
+    "businessInstitutions": "الأعمال والمؤسسات",
+    "howToRead": "كيف تقرأ النتائج",
+    "warnings": "تحذيرات",
+    "disclaimer": "أداة تحليل ومحاكاة. لا نصائح قانونية أو مالية أو طبية.",
+    "learnMore": "اعرف المزيد"
+  },
+  "nav": {
+    "home": "الرئيسية",
+    "countries": "البلدان",
+    "compare": "قارن",
+    "exitKeys": "مفاتيح الخروج",
+    "lifeGame": "لعبة الحياة",
+    "dashboard": "لوحة التحكم",
+    "profile": "الملف الشخصي",
+    "signIn": "تسجيل الدخول",
+    "signOut": "تسجيل الخروج",
+    "worldMap": "خريطة العالم"
+  },
+  "worldMap": {
+    "badge": "استكشاف عالمي",
+    "title": "خريطة الأنظمة",
+    "subtitle": "استكشف بصرياً {{count}} دولة تم تحليلها وأنواع أهراماتها",
+    "search": "ابحث عن بلد...",
+    "results": "بلدان",
+    "tabs": {
+      "map": "الخريطة",
+      "stats": "الإحصائيات"
+    },
+    "stats": {
+      "total": "البلدان المحللة",
+      "intelligence": "طبقة الذكاء",
+      "pyramids": "أنواع الأهرام",
+      "languages": "اللغات"
+    },
+    "viewDetails": "عرض التفاصيل",
+    "pyramidDistribution": "التوزيع حسب النوع",
+    "countryList": "قائمة البلدان",
+    "info": {
+      "title": "كيف تقرأ الخريطة؟",
+      "colors": "الألوان تمثل أنواع الأهرام",
+      "size": "النقاط الأكبر تشير إلى البلدان ذات طبقة الذكاء",
+      "click": "انقر على بلد لعرض التفاصيل",
+      "zoom": "استخدم أدوات التحكم للتكبير والتنقل"
+    }
+  },
+  "auth": {
+    "signIn": "تسجيل الدخول",
+    "signUp": "إنشاء حساب",
+    "signOut": "تسجيل الخروج",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "forgotPassword": "نسيت كلمة المرور؟",
+    "noAccount": "ليس لديك حساب؟",
+    "hasAccount": "لديك حساب بالفعل؟",
+    "orContinueWith": "أو تابع باستخدام"
+  },
+  "countries": {
+    "title": "البلدان",
+    "subtitle": "استكشف هياكل أنظمة البلدان المختلفة",
+    "searchPlaceholder": "ابحث عن بلد...",
+    "noResults": "لم يتم العثور على بلدان",
+    "viewDetails": "عرض التفاصيل",
+    "filters": {
+      "all": "الكل",
+      "region": "المنطقة",
+      "pyramidType": "نوع الهرم"
+    }
+  },
+  "countryDetail": {
+    "overview": "نظرة عامة",
+    "system": "النظام",
+    "risks": "المخاطر",
+    "opportunities": "الفرص",
+    "intelligence": "طبقة الذكاء",
+    "variant": {
+      "title": "متغير النظام",
+      "laborMarket": "سوق العمل",
+      "entrepreneurship": "ريادة الأعمال",
+      "dailyLife": "الحياة اليومية",
+      "institutions": "المؤسسات",
+      "networks": "الشبكات",
+      "profilesSucceed": "الملفات الناجحة",
+      "profilesStruggle": "الملفات المتعثرة",
+      "surprises": "المفاجآت",
+      "trajectories": "مسارات مثالية"
+    }
+  },
+  "pyramidTypes": {
+    "PROBLEM_RENT": "مشكلة-ريع",
+    "STABILITY_REDIS": "استقرار-إعادة توزيع",
+    "COMPETENCE_TRUST": "كفاءة-ثقة",
+    "GROWTH_RISK": "نمو-مخاطرة",
+    "HYBRID_TRANSITION": "هجين-انتقالي",
+    "RESOURCE_EXTRACTION": "استخراج-موارد"
+  }
+}

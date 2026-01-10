@@ -1,0 +1,153 @@
+{
+  "common": {
+    "appName": "পিরামিড কম্পাস",
+    "tagline": "বাস্তব বিশ্ব সিস্টেমের জন্য সিদ্ধান্ত সিমুলেটর",
+    "positioningLine": "বিশ্লেষণ এবং সিমুলেশন টুল। আপনি সিদ্ধান্ত নিন, আমরা আলো দেখাই।",
+    "disclaimer": "আইনি, আর্থিক বা চিকিৎসা পরামর্শ নয়। আপনি আপনার সিদ্ধান্তের জন্য দায়ী।",
+    "yes": "হ্যাঁ",
+    "no": "না",
+    "back": "ফিরে যান",
+    "next": "পরবর্তী",
+    "years": "বছর",
+    "save": "সংরক্ষণ",
+    "cancel": "বাতিল",
+    "load": "লোড",
+    "loading": "লোড হচ্ছে...",
+    "country": "দেশ",
+    "metric": "মেট্রিক",
+    "delete": "মুছুন",
+    "confirm": "নিশ্চিত করুন",
+    "edit": "সম্পাদনা",
+    "previewMode": "প্রিভিউ মোড",
+    "all": "সব",
+    "total": "মোট",
+    "close": "বন্ধ",
+    "optional": "ঐচ্ছিক",
+    "description": "বিবরণ",
+    "submit": "জমা দিন",
+    "sending": "পাঠানো হচ্ছে..."
+  },
+  "errors": {
+    "rateLimited": "অনেক বেশি অনুরোধ। অনুগ্রহ করে একটু পরে আবার চেষ্টা করুন।",
+    "insufficientCredits": "AI ক্রেডিট অপর্যাপ্ত।",
+    "generationFailed": "কন্টেন্ট তৈরিতে ত্রুটি।",
+    "networkError": "নেটওয়ার্ক ত্রুটি। অনুগ্রহ করে আপনার সংযোগ পরীক্ষা করুন।",
+    "unauthorized": "আপনাকে লগ ইন করতে হবে।",
+    "notFound": "রিসোর্স পাওয়া যায়নি।",
+    "serverError": "সার্ভার ত্রুটি। অনুগ্রহ করে আবার চেষ্টা করুন।"
+  },
+  "journey": {
+    "profile": "আপনার প্রোফাইল",
+    "options": "আপনার অপশন",
+    "keys": "আপনার চাবি"
+  },
+  "header": {
+    "simulationDisclaimer": "দৃশ্যপট অন্বেষণ • কোনো আইনি, আর্থিক বা চিকিৎসা পরামর্শ নয়"
+  },
+  "footer": {
+    "explore": "অন্বেষণ",
+    "tools": "টুলস",
+    "account": "অ্যাকাউন্ট",
+    "profileTest": "প্রোফাইল টেস্ট",
+    "madeWith": "ভালোবাসায় তৈরি",
+    "about": "সম্পর্কে",
+    "exitKeysCatalog": "এক্সিট কীজ ক্যাটালগ",
+    "potentialZones": "সম্ভাব্য অঞ্চল",
+    "thresholdProtocol": "থ্রেশহোল্ড প্রোটোকল",
+    "businessInstitutions": "ব্যবসা ও প্রতিষ্ঠান",
+    "howToRead": "ফলাফল কীভাবে পড়বেন",
+    "warnings": "সতর্কতা",
+    "disclaimer": "বিশ্লেষণ এবং সিমুলেশন টুল। কোনো আইনি, আর্থিক বা চিকিৎসা পরামর্শ নয়।",
+    "learnMore": "আরও জানুন"
+  },
+  "nav": {
+    "home": "হোম",
+    "countries": "দেশসমূহ",
+    "compare": "তুলনা",
+    "exitKeys": "এক্সিট কীজ",
+    "lifeGame": "লাইফ গেম",
+    "dashboard": "ড্যাশবোর্ড",
+    "profile": "প্রোফাইল",
+    "signIn": "সাইন ইন",
+    "signOut": "সাইন আউট",
+    "worldMap": "বিশ্ব মানচিত্র"
+  },
+  "worldMap": {
+    "badge": "বৈশ্বিক অন্বেষণ",
+    "title": "সিস্টেম ম্যাপ",
+    "subtitle": "{{count}}টি বিশ্লেষিত দেশ এবং তাদের পিরামিড প্রকার দৃশ্যত অন্বেষণ করুন",
+    "search": "দেশ খুঁজুন...",
+    "results": "দেশ",
+    "tabs": {
+      "map": "ম্যাপ",
+      "stats": "পরিসংখ্যান"
+    },
+    "stats": {
+      "total": "বিশ্লেষিত দেশ",
+      "intelligence": "ইন্টেলিজেন্স লেয়ার",
+      "pyramids": "পিরামিড প্রকার",
+      "languages": "ভাষা"
+    },
+    "viewDetails": "বিস্তারিত দেখুন",
+    "pyramidDistribution": "প্রকার অনুযায়ী বিতরণ",
+    "countryList": "দেশের তালিকা",
+    "info": {
+      "title": "ম্যাপ কীভাবে পড়বেন?",
+      "colors": "রঙ পিরামিড প্রকার উপস্থাপন করে",
+      "size": "বড় বিন্দু ইন্টেলিজেন্স লেয়ার সহ দেশ নির্দেশ করে",
+      "click": "বিস্তারিত দেখতে একটি দেশে ক্লিক করুন",
+      "zoom": "জুম এবং নেভিগেট করতে কন্ট্রোল ব্যবহার করুন"
+    }
+  },
+  "auth": {
+    "signIn": "সাইন ইন",
+    "signUp": "সাইন আপ",
+    "signOut": "সাইন আউট",
+    "email": "ইমেইল",
+    "password": "পাসওয়ার্ড",
+    "confirmPassword": "পাসওয়ার্ড নিশ্চিত করুন",
+    "forgotPassword": "পাসওয়ার্ড ভুলে গেছেন?",
+    "noAccount": "অ্যাকাউন্ট নেই?",
+    "hasAccount": "ইতিমধ্যে অ্যাকাউন্ট আছে?",
+    "orContinueWith": "অথবা এর সাথে চালিয়ে যান"
+  },
+  "countries": {
+    "title": "দেশসমূহ",
+    "subtitle": "বিভিন্ন দেশের সিস্টেম কাঠামো অন্বেষণ করুন",
+    "searchPlaceholder": "দেশ খুঁজুন...",
+    "noResults": "কোনো দেশ পাওয়া যায়নি",
+    "viewDetails": "বিস্তারিত দেখুন",
+    "filters": {
+      "all": "সব",
+      "region": "অঞ্চল",
+      "pyramidType": "পিরামিড প্রকার"
+    }
+  },
+  "countryDetail": {
+    "overview": "সারসংক্ষেপ",
+    "system": "সিস্টেম",
+    "risks": "ঝুঁকি",
+    "opportunities": "সুযোগ",
+    "intelligence": "ইন্টেলিজেন্স লেয়ার",
+    "variant": {
+      "title": "সিস্টেম ভ্যারিয়েন্ট",
+      "laborMarket": "শ্রম বাজার",
+      "entrepreneurship": "উদ্যোক্তা",
+      "dailyLife": "দৈনন্দিন জীবন",
+      "institutions": "প্রতিষ্ঠান",
+      "networks": "নেটওয়ার্ক",
+      "profilesSucceed": "সফল প্রোফাইল",
+      "profilesStruggle": "সংগ্রামী প্রোফাইল",
+      "surprises": "আশ্চর্য",
+      "trajectories": "উদাহরণ ট্র্যাজেক্টরি"
+    }
+  },
+  "pyramidTypes": {
+    "PROBLEM_RENT": "সমস্যা-ভাড়া",
+    "STABILITY_REDIS": "স্থিতিশীলতা-পুনর্বন্টন",
+    "COMPETENCE_TRUST": "দক্ষতা-বিশ্বাস",
+    "GROWTH_RISK": "বৃদ্ধি-ঝুঁকি",
+    "HYBRID_TRANSITION": "হাইব্রিড-রূপান্তর",
+    "RESOURCE_EXTRACTION": "সম্পদ-নিষ্কাশন"
+  }
+}

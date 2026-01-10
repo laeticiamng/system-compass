@@ -10,6 +10,12 @@ import de from './locales/de.json';
 import es from './locales/es.json';
 import it from './locales/it.json';
 import pt from './locales/pt.json';
+import zh from './locales/zh.json';
+import hi from './locales/hi.json';
+import ar from './locales/ar.json';
+import bn from './locales/bn.json';
+import ru from './locales/ru.json';
+import ur from './locales/ur.json';
 
 // Import positive points translations
 import countriesPositivePointsFr from './locales/countries-positive-points-fr.json';
@@ -41,16 +47,29 @@ const mergedEs = deepMerge(es as Record<string, unknown>, countriesPositivePoint
 const mergedIt = deepMerge(it as Record<string, unknown>, countriesPositivePointsIt as Record<string, unknown>) as typeof it;
 const mergedNl = deepMerge(nl as Record<string, unknown>, countriesPositivePointsNl as Record<string, unknown>) as typeof nl;
 const mergedPt = deepMerge(pt as Record<string, unknown>, countriesPositivePointsPt as Record<string, unknown>) as typeof pt;
+// New languages use English positive points as fallback until translations are available
+const mergedZh = deepMerge(zh as Record<string, unknown>, countriesPositivePointsEn as Record<string, unknown>) as typeof zh;
+const mergedHi = deepMerge(hi as Record<string, unknown>, countriesPositivePointsEn as Record<string, unknown>) as typeof hi;
+const mergedAr = deepMerge(ar as Record<string, unknown>, countriesPositivePointsEn as Record<string, unknown>) as typeof ar;
+const mergedBn = deepMerge(bn as Record<string, unknown>, countriesPositivePointsEn as Record<string, unknown>) as typeof bn;
+const mergedRu = deepMerge(ru as Record<string, unknown>, countriesPositivePointsEn as Record<string, unknown>) as typeof ru;
+const mergedUr = deepMerge(ur as Record<string, unknown>, countriesPositivePointsEn as Record<string, unknown>) as typeof ur;
 
 // Supported languages with metadata
 export const SUPPORTED_LANGUAGES = [
   { code: 'en', label: 'English', flag: '🇬🇧', name: 'English' },
-  { code: 'fr', label: 'Français', flag: '🇫🇷', name: 'Français' },
-  { code: 'nl', label: 'Nederlands', flag: '🇳🇱', name: 'Nederlands' },
-  { code: 'de', label: 'Deutsch', flag: '🇩🇪', name: 'Deutsch' },
+  { code: 'zh', label: '中文', flag: '🇨🇳', name: '中文 (Mandarin)' },
+  { code: 'hi', label: 'हिंदी', flag: '🇮🇳', name: 'हिंदी (Hindi)' },
   { code: 'es', label: 'Español', flag: '🇪🇸', name: 'Español' },
+  { code: 'ar', label: 'العربية', flag: '🇸🇦', name: 'العربية (Arabic)', dir: 'rtl' },
+  { code: 'fr', label: 'Français', flag: '🇫🇷', name: 'Français' },
+  { code: 'bn', label: 'বাংলা', flag: '🇧🇩', name: 'বাংলা (Bengali)' },
+  { code: 'pt', label: 'Português', flag: '🇧🇷', name: 'Português' },
+  { code: 'ru', label: 'Русский', flag: '🇷🇺', name: 'Русский' },
+  { code: 'ur', label: 'اردو', flag: '🇵🇰', name: 'اردو (Urdu)', dir: 'rtl' },
+  { code: 'de', label: 'Deutsch', flag: '🇩🇪', name: 'Deutsch' },
   { code: 'it', label: 'Italiano', flag: '🇮🇹', name: 'Italiano' },
-  { code: 'pt', label: 'Português', flag: '🇵🇹', name: 'Português' },
+  { code: 'nl', label: 'Nederlands', flag: '🇳🇱', name: 'Nederlands' },
 ] as const;
 
 export type SupportedLanguage = typeof SUPPORTED_LANGUAGES[number]['code'];
@@ -63,6 +82,12 @@ const resources = {
   es: { translation: mergedEs },
   it: { translation: mergedIt },
   pt: { translation: mergedPt },
+  zh: { translation: mergedZh },
+  hi: { translation: mergedHi },
+  ar: { translation: mergedAr },
+  bn: { translation: mergedBn },
+  ru: { translation: mergedRu },
+  ur: { translation: mergedUr },
 };
 
 // Custom language detector that checks localStorage first
