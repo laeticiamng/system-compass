@@ -14,6 +14,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   Select,
   SelectContent,
@@ -120,6 +121,62 @@ export function Irreversa() {
     sealed: thresholds.filter(t => t.status === 'sealed').length,
   };
 
+  // Demo thresholds for preview mode
+  const demoThresholds = [
+    {
+      id: 'demo-1',
+      title: t('irreversa.demo.threshold1.title', 'Décision de licenciement collectif'),
+      context: t('irreversa.demo.threshold1.context', 'Restructuration suite à perte de marché majeur'),
+      threshold_nature: 'organizational',
+      domain: 'hr',
+      status: 'validated' as ThresholdStatus,
+      irreversibility_reason: 'Engagements légaux et communication externe',
+      detection_source: 'comex',
+      detection_date: new Date().toISOString(),
+      validated_by: 'DRH',
+      validator_role: 'director' as ValidatorRole,
+      alternatives_before: ['Chômage partiel', 'Redéploiement interne'],
+      user_id: 'demo',
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    {
+      id: 'demo-2',
+      title: t('irreversa.demo.threshold2.title', 'Cession de filiale stratégique'),
+      context: t('irreversa.demo.threshold2.context', 'Recentrage sur le cœur de métier'),
+      threshold_nature: 'strategic',
+      domain: 'finance',
+      status: 'sealed' as ThresholdStatus,
+      irreversibility_reason: 'Contrat de vente signé, annonce publique faite',
+      detection_source: 'board',
+      detection_date: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString(),
+      validated_by: 'CEO',
+      validator_role: 'ceo' as ValidatorRole,
+      alternatives_before: ['Joint-venture', 'Spin-off partiel'],
+      sealed_at: new Date().toISOString(),
+      user_id: 'demo',
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    {
+      id: 'demo-3',
+      title: t('irreversa.demo.threshold3.title', 'Fermeture site de production'),
+      context: t('irreversa.demo.threshold3.context', 'Délocalisation vers zone à moindre coût'),
+      threshold_nature: 'operational',
+      domain: 'operations',
+      status: 'detected' as ThresholdStatus,
+      irreversibility_reason: 'Bail non renouvelable, équipements vendus',
+      detection_source: 'director',
+      detection_date: new Date().toISOString(),
+      validated_by: '',
+      validator_role: 'director' as ValidatorRole,
+      alternatives_before: ['Modernisation', 'Sous-traitance partielle'],
+      user_id: 'demo',
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+  ];
+
   if (!canAccessPro) {
     return (
       <div className="space-y-8">
@@ -134,6 +191,62 @@ export function Irreversa() {
           <p className="text-muted-foreground max-w-2xl mx-auto">
             {t('irreversa.subtitle')}
           </p>
+        </div>
+
+        {/* Preview Mode Banner */}
+        <div className="p-4 rounded-lg bg-gradient-to-r from-red-500/10 to-amber-500/10 border border-red-500/20 text-center">
+          <Badge variant="outline" className="mb-2">
+            <Eye className="w-3 h-3 mr-1" />
+            {t('common.previewMode', 'Mode aperçu')}
+          </Badge>
+          <p className="text-sm text-muted-foreground">
+            {t('irreversa.preview.description', 'Découvrez le module Irreversa avec des exemples. Passez à Pro pour documenter vos propres seuils.')}
+          </p>
+        </div>
+
+        {/* Demo Thresholds Preview */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {demoThresholds.map(threshold => {
+            const statusIcons = {
+              detected: Eye,
+              marked: AlertTriangle,
+              validated: CheckCircle2,
+              sealed: Lock
+            };
+            const StatusIcon = statusIcons[threshold.status];
+            const statusColors = {
+              detected: 'text-amber-500 border-amber-500/30',
+              marked: 'text-orange-500 border-orange-500/30',
+              validated: 'text-blue-500 border-blue-500/30',
+              sealed: 'text-red-500 border-red-500/30'
+            };
+
+            return (
+              <Card key={threshold.id} className="relative overflow-hidden opacity-80">
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent z-10 pointer-events-none" />
+                <CardHeader className="pb-2">
+                  <div className="flex items-center justify-between">
+                    <Badge variant="outline" className={`text-xs ${statusColors[threshold.status]}`}>
+                      <StatusIcon className="w-3 h-3 mr-1" />
+                      {t(`irreversa.status.${threshold.status}`)}
+                    </Badge>
+                    <Lock className="w-4 h-4 text-muted-foreground" />
+                  </div>
+                  <CardTitle className="text-base">{threshold.title}</CardTitle>
+                  <CardDescription className="text-xs line-clamp-2">
+                    {threshold.context}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="pb-4">
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <Badge variant="secondary" className="text-xs">
+                      {t(`irreversa.domain.${threshold.domain}`, threshold.domain)}
+                    </Badge>
+                  </div>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
 
         <PremiumPaywall 

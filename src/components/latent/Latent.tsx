@@ -11,12 +11,14 @@ import {
   Link2,
   History,
   Search,
-  ArrowUpDown
+  ArrowUpDown,
+  Eye
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   Select,
@@ -25,6 +27,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { cn } from '@/lib/utils';
 import { useLatentZones, ZoneStatus, TensionType, HistoryAction, LatentZone } from '@/hooks/useLatentZones';
 import { useSubscription } from '@/hooks/useSubscription';
 import { ZoneCard } from './ZoneCard';
@@ -178,6 +181,45 @@ export function Latent() {
     blocked: zones.filter(z => z.status === 'blocked').length
   };
 
+  // Demo zones for preview mode
+  const demoZones = [
+    {
+      id: 'demo-1',
+      title: t('latent.demo.zone1.title', 'Tensions familiales non-dites'),
+      description: t('latent.demo.zone1.desc', 'Désaccords latents sur les priorités de vie'),
+      status: 'emergent' as ZoneStatus,
+      tensions: [
+        { id: 't1', content: 'Différences de vision sur l\'éducation des enfants', tension_type: 'relational' as TensionType, zone_id: 'demo-1', created_at: new Date().toISOString() },
+        { id: 't2', content: 'Attentes implicites sur les finances', tension_type: 'financial' as TensionType, zone_id: 'demo-1', created_at: new Date().toISOString() },
+      ],
+      user_id: 'demo',
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    {
+      id: 'demo-2',
+      title: t('latent.demo.zone2.title', 'Repositionnement professionnel'),
+      description: t('latent.demo.zone2.desc', 'Envie de changement mais contraintes financières'),
+      status: 'fragile' as ZoneStatus,
+      tensions: [
+        { id: 't3', content: 'Perte de sens au travail actuel', tension_type: 'existential' as TensionType, zone_id: 'demo-2', created_at: new Date().toISOString() },
+      ],
+      user_id: 'demo',
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    {
+      id: 'demo-3',
+      title: t('latent.demo.zone3.title', 'Relation avec le pays d\'origine'),
+      description: t('latent.demo.zone3.desc', 'Attentes familiales vs choix de vie'),
+      status: 'dormant' as ZoneStatus,
+      tensions: [],
+      user_id: 'demo',
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+  ];
+
   if (!canAccessPro) {
     return (
       <div className="space-y-8">
@@ -192,6 +234,48 @@ export function Latent() {
           <p className="text-muted-foreground max-w-2xl mx-auto">
             {t('latent.subtitle')}
           </p>
+        </div>
+
+        {/* Preview Mode Banner */}
+        <div className="p-4 rounded-lg bg-gradient-to-r from-purple-500/10 to-slate-500/10 border border-purple-500/20 text-center">
+          <Badge variant="outline" className="mb-2">
+            <Eye className="w-3 h-3 mr-1" />
+            {t('common.previewMode', 'Mode aperçu')}
+          </Badge>
+          <p className="text-sm text-muted-foreground">
+            {t('latent.preview.description', 'Découvrez le module Latent avec des exemples. Passez à Pro pour créer vos propres zones.')}
+          </p>
+        </div>
+
+        {/* Demo Zones Preview */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {demoZones.map(zone => (
+            <Card key={zone.id} className="relative overflow-hidden opacity-80">
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent z-10 pointer-events-none" />
+              <CardHeader className="pb-2">
+                <div className="flex items-center justify-between">
+                  <Badge variant="outline" className={cn(
+                    "text-xs",
+                    zone.status === 'dormant' && "border-slate-500/30 text-slate-500",
+                    zone.status === 'emergent' && "border-amber-500/30 text-amber-500",
+                    zone.status === 'fragile' && "border-red-500/30 text-red-500"
+                  )}>
+                    {t(`latent.status.${zone.status}`)}
+                  </Badge>
+                  <Lock className="w-4 h-4 text-muted-foreground" />
+                </div>
+                <CardTitle className="text-base">{zone.title}</CardTitle>
+                <CardDescription className="text-xs line-clamp-2">
+                  {zone.description}
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="pb-4">
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <span>{zone.tensions.length} tensions</span>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
 
         <PremiumPaywall 
