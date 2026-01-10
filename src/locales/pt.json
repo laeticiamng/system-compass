@@ -2905,6 +2905,11 @@
     "title": "Inteligência de Sistema",
     "subtitle": "Dinâmicas de poder e estratégias sociais",
     "disclaimer": "Ferramenta de análise: não é aconselhamento. Simulação ≠ previsão.",
+    "disclaimerVariations": "Tendências gerais, variações individuais possíveis.",
+    "paywallTitle": "Inteligência de Sistema",
+    "paywallDesc": "Acesse as dinâmicas de poder, estratégias sociais e legado histórico deste país.",
+    "comingSoon": "Inteligência de Sistema em breve",
+    "comingSoonDesc": "Estamos trabalhando na análise aprofundada deste país. Volte em breve.",
     "tabs": {
       "powerMap": "Mapa de poder",
       "socialOS": "Sistema social",
@@ -2917,18 +2922,82 @@
     "powerMap": {
       "title": "Mapa de poder",
       "formal": "Poder formal",
+      "formalDesc": "Instituições e regras visíveis",
       "informal": "Poder informal",
-      "keys": "O que abre portas"
+      "informalDesc": "Redes, reputação, guardiões",
+      "keys": "O que abre portas",
+      "keysDesc": "Ranking das alavancas de poder",
+      "diplomas": "Diplomas",
+      "networks": "Redes",
+      "capital": "Capital",
+      "visibility": "Visibilidade",
+      "conformity": "Conformidade"
     },
-    "mobility": {
-      "elevators": "Elevadores sociais",
-      "speed": "Velocidade de mobilidade",
-      "mentalCost": "Custo mental"
+    "socialOS": {
+      "title": "Regras sociais implícitas",
+      "norms": "Normas sociais",
+      "normsDesc": "Conformidade vs diferenciação",
+      "authority": "Relação com autoridade",
+      "authorityDesc": "Verticalidade, negociação, contorno",
+      "risk": "Atitude em relação ao risco",
+      "riskDesc": "Tolerado, punido, regulado",
+      "conflict": "Atitude em relação ao conflito",
+      "conflictDesc": "Direto, indireto, legal, relacional"
     },
     "strategies": {
+      "title": "Estratégias vencedoras",
       "rewarded": "Frequentemente recompensado",
+      "rewardedDesc": "O que tende a funcionar",
       "punished": "Frequentemente punido",
-      "newcomerMistakes": "Erros de novatos"
+      "punishedDesc": "O que tende a falhar",
+      "newcomerMistakes": "Erros de novatos",
+      "newcomerMistakesDesc": "Armadilhas comuns a evitar"
+    },
+    "mobility": {
+      "title": "Mobilidade social",
+      "elevators": "Elevadores sociais",
+      "elevatorsDesc": "Caminhos possíveis para avançar",
+      "speed": "Velocidade de mobilidade",
+      "speedDesc": "Tempo necessário para progredir",
+      "mentalCost": "Custo mental",
+      "mentalCostDesc": "Atrito administrativo e pressão social",
+      "slow": "Lenta",
+      "medium": "Média",
+      "fast": "Rápida",
+      "low": "Baixo",
+      "high": "Alto"
+    },
+    "psychoSocio": {
+      "title": "Psicologia social",
+      "systemProduces": "O que o sistema produz",
+      "systemProducesDesc": "Comportamentos induzidos em indivíduos",
+      "adaptive": "Comportamentos adaptativos",
+      "adaptiveDesc": "O que ajuda a integrar-se",
+      "backfiring": "Comportamentos contraproducentes",
+      "backfiringDesc": "O que se volta contra você"
+    },
+    "geopolitics": {
+      "title": "Geopolítica e fluxos",
+      "dependencies": "Dependências",
+      "dependenciesDesc": "Energia, finanças, turismo, etc.",
+      "cycle": "Ciclo atual",
+      "cycleDesc": "Estável, transição, volátil",
+      "risks": "Riscos macro",
+      "risksDesc": "Inflação, emprego, instabilidade",
+      "stable": "Estável",
+      "transition": "Transição",
+      "volatile": "Volátil"
+    },
+    "historical": {
+      "title": "Legado histórico",
+      "traces": "Traços históricos",
+      "tracesDesc": "O que explica as regras atuais",
+      "implications": "Implicações atuais",
+      "implicationsDesc": "Impacto em confiança, instituições, mérito, risco",
+      "trust": "Confiança",
+      "institutions": "Instituições",
+      "merit": "Mérito",
+      "risk": "Risco"
     }
   },
   "tags": {

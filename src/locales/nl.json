@@ -2905,6 +2905,11 @@
     "title": "Systeemintelligentie",
     "subtitle": "Machtsdynamiek en sociale strategieën",
     "disclaimer": "Analysetool: geen advies. Simulatie ≠ voorspelling.",
+    "disclaimerVariations": "Algemene trends, individuele variaties mogelijk.",
+    "paywallTitle": "Systeemintelligentie",
+    "paywallDesc": "Toegang tot machtsdynamiek, sociale strategieën en historische erfenis van dit land.",
+    "comingSoon": "Systeemintelligentie binnenkort beschikbaar",
+    "comingSoonDesc": "We werken aan de grondige analyse van dit land. Kom snel terug.",
     "tabs": {
       "powerMap": "Machtskaart",
       "socialOS": "Sociaal systeem",
@@ -2917,18 +2922,82 @@
     "powerMap": {
       "title": "Machtskaart",
       "formal": "Formele macht",
+      "formalDesc": "Zichtbare instellingen en regels",
       "informal": "Informele macht",
-      "keys": "Wat deuren opent"
+      "informalDesc": "Netwerken, reputatie, poortwachters",
+      "keys": "Wat deuren opent",
+      "keysDesc": "Ranking van machtshefbomen",
+      "diplomas": "Diploma's",
+      "networks": "Netwerken",
+      "capital": "Kapitaal",
+      "visibility": "Zichtbaarheid",
+      "conformity": "Conformiteit"
     },
-    "mobility": {
-      "elevators": "Sociale liften",
-      "speed": "Mobiliteitssnelheid",
-      "mentalCost": "Mentale kosten"
+    "socialOS": {
+      "title": "Impliciete sociale regels",
+      "norms": "Sociale normen",
+      "normsDesc": "Conformiteit vs differentiatie",
+      "authority": "Relatie met autoriteit",
+      "authorityDesc": "Verticaliteit, onderhandeling, omzeiling",
+      "risk": "Houding tegenover risico",
+      "riskDesc": "Getolereerd, bestraft, gereguleerd",
+      "conflict": "Houding tegenover conflict",
+      "conflictDesc": "Direct, indirect, juridisch, relationeel"
     },
     "strategies": {
+      "title": "Winnende strategieën",
       "rewarded": "Vaak beloond",
+      "rewardedDesc": "Wat meestal werkt",
       "punished": "Vaak gestraft",
-      "newcomerMistakes": "Nieuwkomersfouten"
+      "punishedDesc": "Wat meestal faalt",
+      "newcomerMistakes": "Nieuwkomersfouten",
+      "newcomerMistakesDesc": "Veelvoorkomende valkuilen te vermijden"
+    },
+    "mobility": {
+      "title": "Sociale mobiliteit",
+      "elevators": "Sociale liften",
+      "elevatorsDesc": "Mogelijke wegen voor vooruitgang",
+      "speed": "Mobiliteitssnelheid",
+      "speedDesc": "Benodigde tijd om vooruit te komen",
+      "mentalCost": "Mentale kosten",
+      "mentalCostDesc": "Administratieve wrijving en sociale druk",
+      "slow": "Langzaam",
+      "medium": "Gemiddeld",
+      "fast": "Snel",
+      "low": "Laag",
+      "high": "Hoog"
+    },
+    "psychoSocio": {
+      "title": "Sociale psychologie",
+      "systemProduces": "Wat het systeem produceert",
+      "systemProducesDesc": "Gedragingen geïnduceerd bij individuen",
+      "adaptive": "Adaptieve gedragingen",
+      "adaptiveDesc": "Wat helpt bij integratie",
+      "backfiring": "Contraproductieve gedragingen",
+      "backfiringDesc": "Wat zich tegen je keert"
+    },
+    "geopolitics": {
+      "title": "Geopolitiek en stromen",
+      "dependencies": "Afhankelijkheden",
+      "dependenciesDesc": "Energie, financiën, toerisme, enz.",
+      "cycle": "Huidige cyclus",
+      "cycleDesc": "Stabiel, transitie, volatiel",
+      "risks": "Macro-risico's",
+      "risksDesc": "Inflatie, werkgelegenheid, instabiliteit",
+      "stable": "Stabiel",
+      "transition": "Transitie",
+      "volatile": "Volatiel"
+    },
+    "historical": {
+      "title": "Historische erfenis",
+      "traces": "Historische sporen",
+      "tracesDesc": "Wat de huidige regels verklaart",
+      "implications": "Huidige implicaties",
+      "implicationsDesc": "Impact op vertrouwen, instellingen, verdienste, risico",
+      "trust": "Vertrouwen",
+      "institutions": "Instellingen",
+      "merit": "Verdienste",
+      "risk": "Risico"
     }
   },
   "tags": {
