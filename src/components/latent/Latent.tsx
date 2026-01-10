@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { 
   Moon, 
@@ -9,10 +9,13 @@ import {
   Filter,
   GitMerge,
   Link2,
-  History
+  History,
+  Search,
+  ArrowUpDown
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
@@ -30,8 +33,11 @@ import { LatentOnboarding } from './LatentOnboarding';
 import { ZoneInterconnections } from './ZoneInterconnections';
 import { ZoneMergeDialog } from './ZoneMergeDialog';
 import { ZoneHistoryTimeline } from './ZoneHistoryTimeline';
+import { ZoneStatsBar } from './ZoneStatsBar';
 import { PremiumPaywall } from '@/components/PremiumPaywall';
 import { toast } from 'sonner';
+
+type SortOption = 'newest' | 'oldest' | 'alphabetical' | 'tensions';
 
 export function Latent() {
   const { t } = useTranslation();
@@ -41,11 +47,13 @@ export function Latent() {
     loading, 
     isLoggedIn,
     createZone,
+    updateZone,
     updateZoneStatus,
     addTension,
     removeTension,
     evolveZone,
     deleteZone,
+    duplicateZone,
     mergeZones
   } = useLatentZones();
   
@@ -54,6 +62,8 @@ export function Latent() {
   const [statusFilter, setStatusFilter] = useState<ZoneStatus | 'all'>('all');
   const [isMergeOpen, setIsMergeOpen] = useState(false);
   const [selectedZoneForHistory, setSelectedZoneForHistory] = useState<LatentZone | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [sortOption, setSortOption] = useState<SortOption>('newest');
 
   const handleCreateZone = async (title: string, description?: string) => {
     setIsCreatingZone(true);
@@ -108,13 +118,57 @@ export function Latent() {
     return result !== null;
   };
 
+  const handleEdit = async (zoneId: string, title: string, description?: string): Promise<boolean> => {
+    const success = await updateZone(zoneId, title, description);
+    if (success) {
+      toast.success(t('latent.edit.success'));
+    }
+    return success;
+  };
+
+  const handleDuplicate = async (zoneId: string) => {
+    const result = await duplicateZone(zoneId);
+    if (result) {
+      toast.success(t('latent.duplicate.success'));
+    }
+  };
+
   const handleSelectZoneForHistory = (zone: LatentZone) => {
     setSelectedZoneForHistory(zone);
   };
 
-  const filteredZones = statusFilter === 'all'
-    ? zones 
-    : zones.filter(z => z.status === statusFilter);
+  // Filtered and sorted zones
+  const filteredAndSortedZones = useMemo(() => {
+    let result = zones;
+    
+    // Apply status filter
+    if (statusFilter !== 'all') {
+      result = result.filter(z => z.status === statusFilter);
+    }
+    
+    // Apply search filter
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase();
+      result = result.filter(z => 
+        z.title.toLowerCase().includes(query) ||
+        (z.description?.toLowerCase().includes(query))
+      );
+    }
+    
+    // Apply sorting
+    switch (sortOption) {
+      case 'newest':
+        return [...result].sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime());
+      case 'oldest':
+        return [...result].sort((a, b) => new Date(a.updated_at).getTime() - new Date(b.updated_at).getTime());
+      case 'alphabetical':
+        return [...result].sort((a, b) => a.title.localeCompare(b.title));
+      case 'tensions':
+        return [...result].sort((a, b) => (b.tensions?.length || 0) - (a.tensions?.length || 0));
+      default:
+        return result;
+    }
+  }, [zones, statusFilter, searchQuery, sortOption]);
 
   const zoneCounts = {
     all: zones.length,
@@ -235,34 +289,70 @@ export function Latent() {
         </TabsList>
 
         <TabsContent value="zones" className="space-y-4">
-          {/* Status Filter */}
-          <div className="flex items-center gap-2">
-            <Filter className="w-4 h-4 text-muted-foreground" />
-            <Select 
-              value={statusFilter} 
-              onValueChange={(v) => setStatusFilter(v as ZoneStatus | 'all')}
-            >
-              <SelectTrigger className="w-48">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">
-                  {t('latent.filter.all')} ({zoneCounts.all})
-                </SelectItem>
-                <SelectItem value="dormant">
-                  {t('latent.status.dormant')} ({zoneCounts.dormant})
-                </SelectItem>
-                <SelectItem value="emergent">
-                  {t('latent.status.emergent')} ({zoneCounts.emergent})
-                </SelectItem>
-                <SelectItem value="fragile">
-                  {t('latent.status.fragile')} ({zoneCounts.fragile})
-                </SelectItem>
-                <SelectItem value="blocked">
-                  {t('latent.status.blocked')} ({zoneCounts.blocked})
-                </SelectItem>
-              </SelectContent>
-            </Select>
+          {/* Stats Bar */}
+          <ZoneStatsBar zones={zones} />
+
+          {/* Search, Filter, Sort */}
+          <div className="flex flex-wrap items-center gap-3">
+            {/* Search */}
+            <div className="relative flex-1 min-w-[200px] max-w-sm">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <Input
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder={t('latent.search.placeholder')}
+                className="pl-9"
+              />
+            </div>
+
+            {/* Status Filter */}
+            <div className="flex items-center gap-2">
+              <Filter className="w-4 h-4 text-muted-foreground" />
+              <Select 
+                value={statusFilter} 
+                onValueChange={(v) => setStatusFilter(v as ZoneStatus | 'all')}
+              >
+                <SelectTrigger className="w-40">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">
+                    {t('latent.filter.all')} ({zoneCounts.all})
+                  </SelectItem>
+                  <SelectItem value="dormant">
+                    {t('latent.status.dormant')} ({zoneCounts.dormant})
+                  </SelectItem>
+                  <SelectItem value="emergent">
+                    {t('latent.status.emergent')} ({zoneCounts.emergent})
+                  </SelectItem>
+                  <SelectItem value="fragile">
+                    {t('latent.status.fragile')} ({zoneCounts.fragile})
+                  </SelectItem>
+                  <SelectItem value="blocked">
+                    {t('latent.status.blocked')} ({zoneCounts.blocked})
+                  </SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Sort */}
+            <div className="flex items-center gap-2">
+              <ArrowUpDown className="w-4 h-4 text-muted-foreground" />
+              <Select 
+                value={sortOption} 
+                onValueChange={(v) => setSortOption(v as SortOption)}
+              >
+                <SelectTrigger className="w-44">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="newest">{t('latent.sort.newest')}</SelectItem>
+                  <SelectItem value="oldest">{t('latent.sort.oldest')}</SelectItem>
+                  <SelectItem value="alphabetical">{t('latent.sort.alphabetical')}</SelectItem>
+                  <SelectItem value="tensions">{t('latent.sort.tensions')}</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
 
           {/* Create Form */}
@@ -284,7 +374,7 @@ export function Latent() {
           {/* Zones Grid */}
           {!loading && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {filteredZones.map(zone => (
+              {filteredAndSortedZones.map(zone => (
                 <ZoneCard
                   key={zone.id}
                   zone={zone}
@@ -293,23 +383,29 @@ export function Latent() {
                   onRemoveTension={handleRemoveTension}
                   onEvolve={handleEvolve}
                   onDelete={handleDelete}
+                  onEdit={handleEdit}
+                  onDuplicate={handleDuplicate}
                 />
               ))}
             </div>
           )}
 
           {/* Empty State */}
-          {!loading && filteredZones.length === 0 && !isCreating && (
+          {!loading && filteredAndSortedZones.length === 0 && !isCreating && (
             <div className="text-center py-12 bg-muted/20 rounded-lg">
               <Moon className="w-12 h-12 mx-auto text-muted-foreground/50 mb-4" />
-              <h3 className="font-medium mb-2">{t('latent.empty.title')}</h3>
+              <h3 className="font-medium mb-2">
+                {searchQuery ? t('latent.search.noResults') : t('latent.empty.title')}
+              </h3>
               <p className="text-sm text-muted-foreground mb-4">
-                {t('latent.empty.description')}
+                {!searchQuery && t('latent.empty.description')}
               </p>
-              <Button onClick={() => setIsCreating(true)} disabled={!isLoggedIn}>
-                <Plus className="w-4 h-4 mr-2" />
-                {t('latent.empty.cta')}
-              </Button>
+              {!searchQuery && (
+                <Button onClick={() => setIsCreating(true)} disabled={!isLoggedIn}>
+                  <Plus className="w-4 h-4 mr-2" />
+                  {t('latent.empty.cta')}
+                </Button>
+              )}
             </div>
           )}
         </TabsContent>
