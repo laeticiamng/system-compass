@@ -4596,12 +4596,28 @@
   },
   "subscription": {
     "successTitle": "Subscription Activated!",
-    "successDescription": "Thank you for subscribing! You now have access to all premium features.",
+    "successSubtitle": "Welcome to the complete experience",
+    "successDescription": "Thank you for your trust! You now have access to all premium features.",
     "exploreCountries": "Explore Countries",
     "managePlan": "Manage Subscription",
     "yourPlan": "Your Plan",
     "upgrade": "Upgrade",
-    "subscribe": "Subscribe"
+    "subscribe": "Subscribe",
+    "featuresUnlocked": "Features Unlocked",
+    "whatNext": "What's next?",
+    "startAnalysis": "Start Analysis",
+    "goToDashboard": "Go to Dashboard",
+    "disclaimer": "Your subscription is secure and can be canceled at any time from your dashboard.",
+    "nextSteps": {
+      "countries": "Explore Countries",
+      "countriesDesc": "Discover the country variants now unlocked",
+      "exitKeys": "Exit Keys",
+      "exitKeysDesc": "Find strategies adapted to your profile",
+      "dashboard": "Dashboard",
+      "dashboardDesc": "Track your progress and goals",
+      "learn": "Reading Guide",
+      "learnDesc": "Learn to interpret the data"
+    }
   },
   "pyramidBehaviors": {
     "title": "Typical Behaviors",

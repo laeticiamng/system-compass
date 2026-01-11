@@ -338,6 +338,21 @@ export function CountryVariantSection({ countryId, countryName }: CountryVariant
 
   const displayData = variant || originalVariant;
 
+  // Double-check displayData is valid before rendering
+  if (!displayData) {
+    return (
+      <div className="glass-card rounded-xl p-8 text-center">
+        <Lightbulb className="w-12 h-12 text-amber-500 mx-auto mb-4" />
+        <h3 className="font-display text-xl font-bold mb-2">
+          {t('countryDetail.variant.noData', 'Données non disponibles')}
+        </h3>
+        <p className="text-muted-foreground max-w-md mx-auto">
+          {t('countryDetail.variant.noDataDesc', 'Les données pour ce pays ne sont pas encore disponibles.')}
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6">
       {/* Premium Badge */}

@@ -5214,12 +5214,28 @@
   },
   "subscription": {
     "successTitle": "Abonnement activé !",
-    "successDescription": "Merci pour votre abonnement ! Vous avez maintenant accès à toutes les fonctionnalités premium.",
+    "successSubtitle": "Bienvenue dans l'expérience complète",
+    "successDescription": "Merci pour votre confiance ! Vous avez maintenant accès à toutes les fonctionnalités premium.",
     "exploreCountries": "Explorer les pays",
     "managePlan": "Gérer mon abonnement",
     "yourPlan": "Votre plan",
     "upgrade": "Passer au niveau supérieur",
-    "subscribe": "S'abonner"
+    "subscribe": "S'abonner",
+    "featuresUnlocked": "Fonctionnalités débloquées",
+    "whatNext": "Et maintenant ?",
+    "startAnalysis": "Commencer l'analyse",
+    "goToDashboard": "Aller au tableau de bord",
+    "disclaimer": "Votre abonnement est sécurisé et peut être annulé à tout moment depuis votre tableau de bord.",
+    "nextSteps": {
+      "countries": "Explorer les pays",
+      "countriesDesc": "Découvrez les variantes pays maintenant débloquées",
+      "exitKeys": "Clés de sortie",
+      "exitKeysDesc": "Trouvez les stratégies adaptées à votre profil",
+      "dashboard": "Tableau de bord",
+      "dashboardDesc": "Suivez votre progression et vos objectifs",
+      "learn": "Guide de lecture",
+      "learnDesc": "Apprenez à interpréter les données"
+    }
   },
   "pyramidBehaviors": {
     "title": "Comportements typiques",

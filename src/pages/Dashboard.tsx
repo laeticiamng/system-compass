@@ -411,6 +411,13 @@ export default function Dashboard() {
           </Card>
         )}
 
+        {/* AI Usage Stats - Show for subscribed users */}
+        {isLoggedIn && (tier === 'premium' || tier === 'pro') && (
+          <div className="mb-6">
+            <AiUsageStats compact={false} showActivity={false} />
+          </div>
+        )}
+
         {/* Saved Comparisons Section */}
         {isLoggedIn && comparisons.length > 0 && (
           <Card className="mb-6">
