@@ -57,6 +57,7 @@ import IrreversaModule from "./pages/IrreversaModule";
 import Usage from "./pages/Usage";
 import NotificationSettings from "./pages/NotificationSettings";
 import AdminPartners from "./pages/AdminPartners";
+import CaseDetail from "./pages/CaseDetail";
 
 const queryClient = new QueryClient();
 
@@ -122,6 +123,7 @@ const App = () => (
                     <Route path="/usage" element={<Usage />} />
                     <Route path="/settings/notifications" element={<NotificationSettings />} />
                     <Route path="/admin/partners" element={<AdminPartners />} />
+                    <Route path="/cases/:id" element={<CaseDetail />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </main>
