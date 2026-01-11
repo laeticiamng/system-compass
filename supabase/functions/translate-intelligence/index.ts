@@ -19,6 +19,12 @@ const LANGUAGE_NAMES: Record<string, string> = {
   bn: "Bengali",
   ru: "Russian",
   ur: "Urdu",
+  ja: "Japanese",
+  ko: "Korean",
+  tr: "Turkish",
+  pl: "Polish",
+  vi: "Vietnamese",
+  th: "Thai",
 };
 
 serve(async (req) => {
