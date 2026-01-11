@@ -25,6 +25,7 @@ import { ArrowLeft, Calendar, ExternalLink, Layers, Map, Target, Brain, Loader2,
 import { supabase } from '@/integrations/supabase/client';
 import { useUserHistory } from '@/hooks/useUserHistory';
 import { useExitKeysProfile } from '@/hooks/useExitKeysProfile';
+import { useCountryGovernance } from '@/hooks/useCountryGovernance';
 import { AiHelpButton } from '@/components/ai/AiHelpButton';
 import { AiAction, AiContext } from '@/components/ai/AiSidePanel';
 
@@ -198,6 +199,9 @@ export default function CountryDetail() {
   // Regular country view
   if (!country) return null;
 
+  // Fetch governance data for PDF export
+  const { governance: governanceData } = useCountryGovernance(country.id, country.pyramidType);
+
   const typeLabel = t(PYRAMID_TYPE_LABELS[country.pyramidType]);
   const typeColor = PYRAMID_TYPE_COLORS[country.pyramidType];
 
@@ -232,7 +236,10 @@ export default function CountryDetail() {
             <ArrowLeft className="w-4 h-4" />
             {t('countryDetail.backToCountries')}
           </Button>
-          <CountryPdfExport country={country} />
+          <CountryPdfExport 
+            country={country} 
+            governanceData={governanceData}
+          />
         </div>
 
         {/* Header */}

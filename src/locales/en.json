@@ -7061,5 +7061,166 @@
     "noActiveBenefits": "No active benefits",
     "benefitsBasedOnContributions": "Benefits are granted based on your verified contributions.",
     "expiresOn": "Expires on"
+  },
+  "terrainGovernance": {
+    "title": "Governance & Terrain",
+    "description": "Assess the operational and institutional environment of the target country",
+    "tabs": {
+      "overview": "Overview",
+      "stateOfArt": "State of Art",
+      "attractiveness": "Attractiveness",
+      "competition": "Competition",
+      "friction": "Friction Risks",
+      "fiscal": "Fiscal",
+      "customs": "Customs & Logistics",
+      "partners": "Partner Reliability",
+      "poc": "POC Planner",
+      "timeline": "Timeline",
+      "stakeholders": "Key Stakeholders"
+    },
+    "scores": {
+      "stability": "Institutional Stability",
+      "stabilityDesc": "Predictability of rules and policy continuity",
+      "friction": "Friction Score",
+      "frictionDesc": "Administrative complexity and operational obstacles",
+      "operational": "Operational Score",
+      "operationalDesc": "Day-to-day execution ease",
+      "captureRisk": "Capture Risk",
+      "captureRiskDesc": "Probability of forced dependency or interference",
+      "ecosystem": "Ecosystem",
+      "ecosystemDesc": "Quality of actor network and available services"
+    },
+    "stateOfArt": {
+      "title": "State of Art",
+      "description": "Pre-engagement terrain knowledge checklist",
+      "items": {
+        "legal": "Legal framework mastered",
+        "market": "Market study completed",
+        "culture": "Cultural codes identified",
+        "admin": "Administrative processes mapped",
+        "network": "Local network activated",
+        "risks": "Terrain risks documented"
+      }
+    },
+    "attractiveness": {
+      "title": "Terrain Attractiveness",
+      "description": "Assess the real market potential",
+      "demand": "Local Demand",
+      "easeOfDoing": "Ease of Establishment",
+      "marketAccess": "Market Access",
+      "localDynamics": "Local Dynamics",
+      "signals": "Key Signals",
+      "addSignal": "Add signal"
+    },
+    "competition": {
+      "title": "Competitive Analysis",
+      "description": "Map the present actors",
+      "addCompetitor": "Add competitor",
+      "name": "Name",
+      "type": "Type",
+      "implantation": "Implantation",
+      "maturity": "Maturity",
+      "types": {
+        "local": "Local",
+        "international": "International",
+        "stateOwned": "State-owned",
+        "informal": "Informal"
+      }
+    },
+    "frictionRisks": {
+      "title": "Friction Risks",
+      "description": "Potential blocking points",
+      "redFlags": "Red Flags",
+      "protections": "Protections in place",
+      "addFlag": "Add red flag",
+      "severity": {
+        "low": "Low",
+        "medium": "Medium",
+        "high": "High"
+      }
+    },
+    "fiscal": {
+      "title": "Fiscal Checklist",
+      "description": "Critical fiscal points to verify",
+      "critical": "Critical",
+      "items": {
+        "taxRegime": "Tax regime identified",
+        "vat": "VAT / Indirect taxes verified",
+        "treaties": "Applicable tax treaties",
+        "transferPricing": "Transfer pricing documented",
+        "localTaxes": "Local taxes identified",
+        "compliance": "Filing obligations known"
+      }
+    },
+    "customs": {
+      "title": "Customs & Logistics",
+      "description": "Import/export related risks",
+      "riskLevel": "Risk Level",
+      "items": {
+        "importCodes": "Customs codes verified",
+        "delays": "Average delays confirmed",
+        "dependencies": "Logistics dependencies identified",
+        "certifications": "Required certifications obtained",
+        "storage": "Storage solutions validated"
+      }
+    },
+    "partners": {
+      "title": "Partner Reliability",
+      "description": "Assess your local partners",
+      "addPartner": "Add partner",
+      "criteria": {
+        "terrain": "Terrain presence",
+        "references": "Verifiable references",
+        "transparency": "Transparency",
+        "alignment": "Interest alignment",
+        "capacity": "Execution capacity"
+      },
+      "status": {
+        "unverified": "Unverified",
+        "inProgress": "In Progress",
+        "verified": "Verified"
+      }
+    },
+    "poc": {
+      "title": "POC Planner",
+      "description": "Plan your proof of concept",
+      "hypothesis": "Main hypothesis",
+      "maxBudget": "Maximum budget",
+      "duration": "Estimated duration",
+      "successCriteria": "Success criteria",
+      "stopCriteria": "Stop criteria",
+      "addCriterion": "Add criterion"
+    },
+    "timeline": {
+      "title": "Timeline Scenarios",
+      "description": "Estimate delays under different scenarios",
+      "optimistic": "Optimistic",
+      "realistic": "Realistic",
+      "pessimistic": "Pessimistic",
+      "buffer": "Safety buffer",
+      "cashflowRisks": "Cashflow risks"
+    },
+    "stakeholders": {
+      "title": "Stakeholder Mapping",
+      "description": "Identify key actors and their powers",
+      "addStakeholder": "Add stakeholder",
+      "name": "Name",
+      "role": "Role",
+      "level": {
+        "official": "Official",
+        "influential": "Influential",
+        "blocking": "Blocking"
+      },
+      "power": {
+        "sign": "Can sign",
+        "block": "Can block",
+        "access": "Gives access"
+      },
+      "reliability": "Reliability",
+      "redFlag": "Red Flag"
+    },
+    "export": {
+      "governance": "Governance & Terrain (B2B)"
+    }
   }
 }
