@@ -73,35 +73,20 @@ export function useTranslatedIntelligence(
           .select('translated_data')
           .eq('country_id', countryId)
           .eq('language', currentLang)
-          .single();
+          .maybeSingle();
 
-        if (cached) {
+        if (cached?.translated_data) {
           setTranslatedData(cached.translated_data as unknown as CountryIntelligence);
           setIsTranslating(false);
           return;
         }
 
-        // Call translation edge function
-        const response = await supabase.functions.invoke('translate-intelligence', {
-          body: {
-            countryId,
-            targetLang: currentLang,
-            intelligenceData: originalData,
-          },
-        });
-
-        if (response.error) {
-          throw new Error(response.error.message);
-        }
-
-        if (response.data?.translatedData) {
-          setTranslatedData(response.data.translatedData);
-        } else {
-          // Fallback to original if translation fails
-          setTranslatedData(originalData);
-        }
+        // No cached translation - use original data (English) as fallback
+        // Don't call edge function to avoid blocking UI
+        console.debug(`No ${currentLang} translation for ${countryId}, using original data`);
+        setTranslatedData(originalData);
       } catch (err) {
-        console.error('Translation error:', err);
+        console.error('Translation lookup error:', err);
         setError(err instanceof Error ? err.message : 'Translation failed');
         // Fallback to original data
         setTranslatedData(originalData);
