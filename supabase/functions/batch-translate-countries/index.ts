@@ -29,17 +29,36 @@ const LANGUAGE_NAMES: Record<string, string> = {
   pl: "Polish",
 };
 
-async function translateData(data: Record<string, unknown>, targetLang: string): Promise<Record<string, unknown>> {
+function cleanJsonResponse(content: string): string {
+  let cleaned = content
+    .replace(/```json\s*/g, "")
+    .replace(/```\s*/g, "")
+    .trim();
+  
+  // Fix common JSON issues from AI responses
+  // Remove trailing commas before } or ]
+  cleaned = cleaned.replace(/,\s*([}\]])/g, '$1');
+  
+  // Fix unescaped quotes in strings (basic fix)
+  // This is a simple heuristic - replace \" that might be broken
+  cleaned = cleaned.replace(/([^\\])\\([^"\\nrtbfu])/g, '$1\\\\$2');
+  
+  return cleaned;
+}
+
+async function translateData(data: Record<string, unknown>, targetLang: string, retryCount = 0): Promise<Record<string, unknown>> {
   const targetLanguageName = LANGUAGE_NAMES[targetLang] || targetLang;
   
   const systemPrompt = `You are a professional translator specializing in socio-economic country analysis.
 Translate the following JSON content from English to ${targetLanguageName}.
 CRITICAL RULES:
-- Preserve ALL JSON structure exactly
+- Preserve ALL JSON structure exactly - same keys, same nesting
 - Translate ONLY string values, never keys
 - Keep technical terms accurate
 - Maintain the analytical, informative tone
-- Return ONLY valid JSON, no explanations or markdown`;
+- Escape all quotes inside strings with backslash
+- Return ONLY valid JSON, no explanations, no markdown code blocks
+- Double-check your JSON is valid before returning`;
 
   const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
     method: "POST",
@@ -67,12 +86,23 @@ CRITICAL RULES:
     throw new Error("No translation content received");
   }
 
-  const cleanedContent = translatedContent
-    .replace(/```json\s*/g, "")
-    .replace(/```\s*/g, "")
-    .trim();
+  const cleanedContent = cleanJsonResponse(translatedContent);
   
-  return JSON.parse(cleanedContent);
+  try {
+    return JSON.parse(cleanedContent);
+  } catch (parseError) {
+    console.error(`JSON parse error for ${targetLang}, attempt ${retryCount + 1}:`, parseError);
+    console.error(`Content preview: ${cleanedContent.substring(0, 200)}...`);
+    
+    // Retry up to 2 times
+    if (retryCount < 2) {
+      console.log(`Retrying translation for ${targetLang}...`);
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      return translateData(data, targetLang, retryCount + 1);
+    }
+    
+    throw new Error(`JSON parse failed after ${retryCount + 1} attempts: ${parseError instanceof Error ? parseError.message : 'Unknown'}`);
+  }
 }
 
 serve(async (req) => {
