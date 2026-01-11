@@ -115,8 +115,10 @@ async function processJobsInBackground(batchId: string, jobs: any[], concurrency
     
     const promises = chunk.map(async (job) => {
       try {
-        // Call the single country generation function
-        const response = await fetch(`${SUPABASE_URL}/functions/v1/generate-country-profile`, {
+        console.log(`Processing country: ${job.country_name} (${job.country_id})`);
+        
+        // Step 1: Generate base country profile
+        const profileResponse = await fetch(`${SUPABASE_URL}/functions/v1/generate-country-profile`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -134,11 +136,61 @@ async function processJobsInBackground(batchId: string, jobs: any[], concurrency
           }),
         });
 
-        if (response.ok) {
-          completed++;
-        } else {
+        if (!profileResponse.ok) {
+          console.error(`Profile generation failed for ${job.country_name}`);
           failed++;
+          return;
         }
+
+        console.log(`Profile generated for ${job.country_name}, generating variants...`);
+
+        // Step 2: Generate detailed variants (practical daily life content)
+        const variantsResponse = await fetch(`${SUPABASE_URL}/functions/v1/generate-country-variants`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
+          },
+          body: JSON.stringify({
+            country_id: job.country_id,
+            country_name: job.country_name,
+            region: job.region,
+            primary_pyramid: job.primary_pyramid,
+          }),
+        });
+
+        if (!variantsResponse.ok) {
+          console.error(`Variants generation failed for ${job.country_name}`);
+          // Continue anyway, don't fail the whole job
+        } else {
+          console.log(`Variants generated for ${job.country_name}, generating intelligence...`);
+        }
+
+        // Step 3: Generate deep intelligence (strategic insider knowledge)
+        const intelligenceResponse = await fetch(`${SUPABASE_URL}/functions/v1/generate-country-intelligence`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
+          },
+          body: JSON.stringify({
+            country_id: job.country_id,
+            country_name: job.country_name,
+            region: job.region,
+            primary_pyramid: job.primary_pyramid,
+          }),
+        });
+
+        if (!intelligenceResponse.ok) {
+          console.error(`Intelligence generation failed for ${job.country_name}`);
+          // Continue anyway, don't fail the whole job
+        } else {
+          console.log(`Intelligence generated for ${job.country_name}`);
+        }
+
+        completed++;
+        console.log(`✅ Full generation completed for ${job.country_name}`);
+        
       } catch (error) {
         console.error(`Error processing job ${job.id}:`, error);
         failed++;
