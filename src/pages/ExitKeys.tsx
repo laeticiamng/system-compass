@@ -1119,6 +1119,8 @@ export default function ExitKeys() {
                 birthCountryPyramidType={birthCountry?.pyramidType}
                 currentCountryId={currentCountryId}
                 birthCountryId={birthCountryId}
+                originCountryName={birthCountry?.name}
+                destinationCountryName={currentCountry?.name}
               />
 
               {/* Actions */}
