@@ -1,0 +1,214 @@
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { 
+  Users, 
+  Plus, 
+  Building2, 
+  Globe, 
+  TrendingUp,
+  AlertCircle
+} from 'lucide-react';
+
+interface Competitor {
+  id: string;
+  name: string;
+  type: 'local' | 'international' | 'hybrid';
+  scope: string;
+  implantation: 'strong' | 'moderate' | 'weak';
+  projects: string;
+  maturity: 'established' | 'growing' | 'emerging';
+}
+
+interface TerrainCompetitionProps {
+  countryId: string;
+  countryName: string;
+  projectType?: string;
+}
+
+const TYPE_LABELS: Record<string, { label: string; color: string }> = {
+  local: { label: 'Local', color: 'bg-blue-500/20 text-blue-700' },
+  international: { label: 'International', color: 'bg-purple-500/20 text-purple-700' },
+  hybrid: { label: 'Hybride', color: 'bg-amber-500/20 text-amber-700' },
+};
+
+const IMPLANTATION_LABELS: Record<string, { label: string; color: string }> = {
+  strong: { label: 'Forte', color: 'text-red-600' },
+  moderate: { label: 'Modérée', color: 'text-amber-600' },
+  weak: { label: 'Faible', color: 'text-green-600' },
+};
+
+const MATURITY_LABELS: Record<string, string> = {
+  established: 'Établi',
+  growing: 'En croissance',
+  emerging: 'Émergent',
+};
+
+export function TerrainCompetition({ countryId, countryName, projectType }: TerrainCompetitionProps) {
+  const { t } = useTranslation();
+  const [competitors, setCompetitors] = useState<Competitor[]>([
+    {
+      id: '1',
+      name: 'Exemple Acteur Local',
+      type: 'local',
+      scope: 'Services B2B',
+      implantation: 'strong',
+      projects: 'Projets gouvernementaux, PME locales',
+      maturity: 'established',
+    },
+    {
+      id: '2',
+      name: 'Groupe International',
+      type: 'international',
+      scope: 'Solutions entreprises',
+      implantation: 'moderate',
+      projects: 'Grandes entreprises, multinationales',
+      maturity: 'growing',
+    },
+  ]);
+
+  const [showAddForm, setShowAddForm] = useState(false);
+  const [newCompetitor, setNewCompetitor] = useState<Partial<Competitor>>({});
+
+  const handleAdd = () => {
+    if (newCompetitor.name) {
+      setCompetitors(prev => [...prev, {
+        id: Date.now().toString(),
+        name: newCompetitor.name || '',
+        type: (newCompetitor.type as Competitor['type']) || 'local',
+        scope: newCompetitor.scope || '',
+        implantation: (newCompetitor.implantation as Competitor['implantation']) || 'moderate',
+        projects: newCompetitor.projects || '',
+        maturity: (newCompetitor.maturity as Competitor['maturity']) || 'growing',
+      }]);
+      setNewCompetitor({});
+      setShowAddForm(false);
+    }
+  };
+
+  return (
+    <Card className="border-purple-500/20">
+      <CardHeader>
+        <div className="flex items-center justify-between">
+          <CardTitle className="flex items-center gap-2 text-lg">
+            <Users className="w-5 h-5 text-purple-600" />
+            {t('governance.competition.title', 'Concurrence réelle')}
+          </CardTitle>
+          <Button 
+            variant="outline" 
+            size="sm" 
+            onClick={() => setShowAddForm(!showAddForm)}
+            className="gap-1"
+          >
+            <Plus className="w-4 h-4" />
+            {t('common.add', 'Ajouter')}
+          </Button>
+        </div>
+        <p className="text-sm text-muted-foreground">
+          {t('governance.competition.description', 'Cartographie des acteurs sur')} {countryName}
+        </p>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        {/* Add Form */}
+        {showAddForm && (
+          <div className="p-4 bg-muted/50 rounded-lg space-y-3 border-2 border-dashed border-primary/30">
+            <Input
+              placeholder="Nom de l'acteur"
+              value={newCompetitor.name || ''}
+              onChange={(e) => setNewCompetitor(prev => ({ ...prev, name: e.target.value }))}
+            />
+            <div className="grid grid-cols-2 gap-2">
+              <Input
+                placeholder="Périmètre"
+                value={newCompetitor.scope || ''}
+                onChange={(e) => setNewCompetitor(prev => ({ ...prev, scope: e.target.value }))}
+              />
+              <Input
+                placeholder="Types de projets"
+                value={newCompetitor.projects || ''}
+                onChange={(e) => setNewCompetitor(prev => ({ ...prev, projects: e.target.value }))}
+              />
+            </div>
+            <div className="flex gap-2">
+              <Button size="sm" onClick={handleAdd}>
+                {t('common.save', 'Sauvegarder')}
+              </Button>
+              <Button size="sm" variant="ghost" onClick={() => setShowAddForm(false)}>
+                {t('common.cancel', 'Annuler')}
+              </Button>
+            </div>
+          </div>
+        )}
+
+        {/* Competitors List */}
+        <div className="space-y-3">
+          {competitors.map(competitor => (
+            <div 
+              key={competitor.id} 
+              className="p-4 bg-muted/50 rounded-lg space-y-3 hover:bg-muted/80 transition-colors"
+            >
+              <div className="flex items-start justify-between">
+                <div className="flex items-center gap-2">
+                  <Building2 className="w-5 h-5 text-muted-foreground" />
+                  <span className="font-medium">{competitor.name}</span>
+                </div>
+                <div className="flex gap-2">
+                  <Badge className={TYPE_LABELS[competitor.type]?.color}>
+                    {TYPE_LABELS[competitor.type]?.label}
+                  </Badge>
+                  <Badge variant="outline">
+                    {MATURITY_LABELS[competitor.maturity]}
+                  </Badge>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-4 text-sm">
+                <div>
+                  <span className="text-muted-foreground">Périmètre :</span>
+                  <p>{competitor.scope}</p>
+                </div>
+                <div>
+                  <span className="text-muted-foreground">Projets :</span>
+                  <p>{competitor.projects}</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2 text-sm">
+                <TrendingUp className="w-4 h-4" />
+                <span className="text-muted-foreground">Implantation :</span>
+                <span className={IMPLANTATION_LABELS[competitor.implantation]?.color}>
+                  {IMPLANTATION_LABELS[competitor.implantation]?.label}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {competitors.length === 0 && (
+          <div className="text-center py-8 text-muted-foreground">
+            <AlertCircle className="w-8 h-8 mx-auto mb-2 opacity-50" />
+            <p>{t('governance.competition.empty', 'Aucun concurrent identifié')}</p>
+            <p className="text-sm">{t('governance.competition.addPrompt', 'Ajoutez les acteurs que vous avez identifiés')}</p>
+          </div>
+        )}
+
+        {/* Analysis */}
+        {competitors.length > 0 && (
+          <div className="mt-4 p-4 bg-purple-500/10 rounded-lg">
+            <h4 className="font-medium text-sm mb-2">
+              {t('governance.competition.analysis', 'Analyse rapide')}
+            </h4>
+            <ul className="text-sm text-muted-foreground space-y-1">
+              <li>• {competitors.filter(c => c.implantation === 'strong').length} acteur(s) fortement implanté(s)</li>
+              <li>• Dominance : {competitors.filter(c => c.type === 'local').length > competitors.filter(c => c.type === 'international').length ? 'Locale' : 'Internationale'}</li>
+              <li>• Opportunité : segments sous-servis possibles</li>
+            </ul>
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
