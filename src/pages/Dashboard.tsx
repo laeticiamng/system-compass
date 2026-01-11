@@ -62,6 +62,7 @@ import {
 } from 'lucide-react';
 import { AiHelpButton } from '@/components/ai/AiHelpButton';
 import { AiAction, AiContext } from '@/components/ai/AiSidePanel';
+import { AiUsageStats } from '@/components/dashboard/AiUsageStats';
 import { toast } from 'sonner';
 
 // Helper functions

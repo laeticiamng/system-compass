@@ -185,6 +185,36 @@ export function CountryPdfExport({
         }
       }
 
+      // Variants
+      if (options.includeVariants && variantsData) {
+        addSectionTitle(t('variants.title', 'Réalités du terrain'));
+        
+        if (variantsData.profiles_succeed?.length) {
+          addText('Profils qui réussissent:', 10, true, '#22c55e');
+          addBulletList(variantsData.profiles_succeed.slice(0, 5));
+        }
+        
+        if (variantsData.profiles_struggle?.length) {
+          addText('Profils en difficulté:', 10, true, '#ef4444');
+          addBulletList(variantsData.profiles_struggle.slice(0, 5));
+        }
+        
+        if (variantsData.surprises?.length) {
+          addText('Surprises courantes:', 10, true, '#f59e0b');
+          addBulletList(variantsData.surprises.slice(0, 5));
+        }
+
+        if (variantsData.daily_life?.length) {
+          addText('Vie quotidienne:', 10, true);
+          addBulletList(variantsData.daily_life.slice(0, 4));
+        }
+
+        if (variantsData.labor_market?.length) {
+          addText('Marché du travail:', 10, true);
+          addBulletList(variantsData.labor_market.slice(0, 4));
+        }
+      }
+
       // Tags
       if (options.includeTags && tagsData) {
         addSectionTitle(t('tags.title', 'Indicateurs clés'));
