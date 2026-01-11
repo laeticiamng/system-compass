@@ -33,6 +33,7 @@ import {
   Cell,
   Tooltip as RechartsTooltip
 } from 'recharts';
+import { OVISuggestionsWidget } from '@/components/ovi/OVISuggestionsWidget';
 
 interface Question {
   id: string;
@@ -684,10 +685,17 @@ export default function LifeTrajectory() {
             {t('lifeTrajectory.results.yourPlans')}
           </h2>
 
-          <div className="grid gap-6 mb-12">
+          <div className="grid gap-6 mb-8">
             {result.trajectories.map((trajectory) => (
               <TrajectoryCard key={trajectory.plan} trajectory={trajectory} />
             ))}
+          </div>
+
+          {/* OVI Suggestions */}
+          <div className="mb-12">
+            <OVISuggestionsWidget 
+              simulationType="trajectory" 
+            />
           </div>
 
           {/* Actions */}

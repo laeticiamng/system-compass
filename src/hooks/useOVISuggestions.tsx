@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from './useAuth';
 
-export type SimulationType = 'country_view' | 'comparison' | 'exit_key' | 'prevention_filter' | 'project_analysis';
+export type SimulationType = 'country_view' | 'comparison' | 'exit_key' | 'prevention_filter' | 'project_analysis' | 'matching' | 'trajectory';
 
 export interface OVISuggestion {
   id: string;
@@ -36,6 +36,14 @@ const SIMULATION_TO_OVI_MAP: Record<SimulationType, { frameworks: string[]; grid
   project_analysis: {
     frameworks: ['planning_fallacy', 'hidden_costs', 'irreversible_decisions'],
     grids: ['short_long_term', 'reversible_irreversible', 'me_system']
+  },
+  matching: {
+    frameworks: ['comparison_fallacy', 'cognitive_bias', 'confirmation_bias'],
+    grids: ['visible_invisible', 'me_system', 'controllable_uncontrollable']
+  },
+  trajectory: {
+    frameworks: ['planning_fallacy', 'irreversible_decisions', 'timing_error'],
+    grids: ['short_long_term', 'reversible_irreversible', 'urgent_important']
   }
 };
 
