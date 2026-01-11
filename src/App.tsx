@@ -4,7 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // App Router - v1.0.3
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
 import { FeatureFlagProvider } from "@/shared/components/FeatureFlag";
 import { SubscriptionProvider } from "@/hooks/useSubscription";
@@ -35,10 +35,8 @@ import Disclaimer from "./pages/Disclaimer";
 import HowToRead from "./pages/HowToRead";
 import AdminTranslations from "./pages/AdminTranslations";
 import AdminAnalytics from "./pages/AdminAnalytics";
-import MultiCompare from "./pages/MultiCompare";
 import PreventionFilter from "./pages/PreventionFilter";
 import UniversalErrorDetail from "./pages/UniversalErrorDetail";
-import { Navigate } from "react-router-dom";
 import QuickTest from "./pages/QuickTest";
 import ErrorsAndIllusions from "./pages/ErrorsAndIllusions";
 import SubscriptionSuccess from "./pages/SubscriptionSuccess";
@@ -86,7 +84,7 @@ const App = () => (
                     <Route path="/life-trajectory" element={<LifeTrajectory />} />
                     <Route path="/match" element={<Match />} />
                     <Route path="/compare" element={<CompareUnified />} />
-                    <Route path="/multi-compare" element={<MultiCompare />} />
+                    <Route path="/multi-compare" element={<Navigate to="/compare?mode=multi" replace />} />
                     <Route path="/resources" element={<Resources />} />
                     <Route path="/pyramid-types" element={<PyramidTypes />} />
                     <Route path="/pyramid-quiz" element={<PyramidQuiz />} />

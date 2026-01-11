@@ -4619,6 +4619,37 @@
       "learnDesc": "Learn to interpret the data"
     }
   },
+  "dashboard": {
+    "emptyState": {
+      "title": "Welcome to Pyramid Compass",
+      "subtitle": "Start your exploration in a few simple steps",
+      "continueTest": "Take the quick test",
+      "startProfile": "Create my profile"
+    },
+    "quickStart": {
+      "profile": {
+        "title": "Create Your Profile",
+        "desc": "Define your goals and constraints for personalized recommendations"
+      },
+      "test": {
+        "title": "Quick Test (60 seconds)",
+        "desc": "Discover the system that matches your situation"
+      },
+      "countries": {
+        "title": "Explore Countries",
+        "desc": "Analyze systems from over 25 countries"
+      },
+      "exitKeys": {
+        "title": "Exit Keys Catalog",
+        "desc": "Discover mobility and evolution strategies"
+      }
+    }
+  },
+  "match": {
+    "shareText": "My country matches: {{countries}}. Find your best countries at {{url}}",
+    "shareTitle": "My Country Matches",
+    "linkCopied": "Link copied to clipboard"
+  },
   "pyramidBehaviors": {
     "title": "Typical Behaviors",
     "rewards": "The system rewards",

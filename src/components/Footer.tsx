@@ -49,7 +49,7 @@ export function Footer() {
               <li><Link to="/countries" className="hover:text-foreground transition-colors">{t('nav.countries')}</Link></li>
               <li><Link to="/pyramid-types" className="hover:text-foreground transition-colors">{t('nav.pyramids')}</Link></li>
               <li><Link to="/compare" className="hover:text-foreground transition-colors">{t('nav.compare')}</Link></li>
-              <li><Link to="/multi-compare" className="hover:text-foreground transition-colors">{t('nav.multiCompare')}</Link></li>
+              <li><Link to="/compare?mode=multi" className="hover:text-foreground transition-colors">{t('nav.multiCompare')}</Link></li>
               <li><Link to="/resources" className="hover:text-foreground transition-colors">{t('nav.resources')}</Link></li>
             </ul>
           </div>

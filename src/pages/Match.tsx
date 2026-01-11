@@ -184,27 +184,34 @@ export default function Match() {
 
   const shareResults = async () => {
     const topCountries = matches.slice(0, 3).map(m => m.country.name).join(', ');
-    const text = `My top country matches: ${topCountries}. Find your best countries at ${window.location.origin}/profile-test`;
+    const shareUrl = `${window.location.origin}/profile-test`;
+    const text = t('match.shareText', { countries: topCountries, url: shareUrl });
     
-    try {
-      if (navigator.share) {
-        await navigator.share({
-          title: 'My Country Matches',
-          text: text,
-          url: window.location.origin + '/profile-test',
-        });
-      } else {
-        await navigator.clipboard.writeText(text);
-        toast.success(t('match.linkCopied'));
-      }
-    } catch (e) {
-      // User cancelled share or error
+    // Always try clipboard first for reliability
+    const copyToClipboard = async () => {
       try {
         await navigator.clipboard.writeText(text);
-        toast.success(t('match.linkCopied'));
+        toast.success(t('match.linkCopied', 'Lien copié dans le presse-papier'));
+        return true;
       } catch {
-        toast.error('Failed to share');
+        return false;
       }
+    };
+    
+    // Try native share on mobile, fallback to clipboard
+    if (navigator.share && /Mobi|Android/i.test(navigator.userAgent)) {
+      try {
+        await navigator.share({
+          title: t('match.shareTitle', 'Mes correspondances pays'),
+          text: text,
+          url: shareUrl,
+        });
+      } catch (e) {
+        // User cancelled or error - try clipboard
+        await copyToClipboard();
+      }
+    } else {
+      await copyToClipboard();
     }
   };
 
