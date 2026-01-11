@@ -68,7 +68,7 @@ export function RadarCompareChart({ countries }: RadarCompareChartProps) {
       { 
         key: 'corruptionIndex', 
         label: t('countryDetail.snapshot.corruptionIndex'),
-        getValue: (c: Country) => c.snapshot.corruptionIndex,
+        getValue: (c: Country) => 100 - c.snapshot.corruptionIndex,
         min: 0, max: 100, invert: false 
       },
       { 

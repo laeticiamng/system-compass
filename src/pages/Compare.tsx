@@ -250,8 +250,8 @@ export default function Compare() {
               />
               <MetricRow
                 label={t('countryDetail.snapshot.corruptionIndex')}
-                value1={`${country1.snapshot.corruptionIndex}/100`}
-                value2={`${country2.snapshot.corruptionIndex}/100`}
+                value1={`${100 - country1.snapshot.corruptionIndex}/100`}
+                value2={`${100 - country2.snapshot.corruptionIndex}/100`}
                 better={country1.snapshot.corruptionIndex > country2.snapshot.corruptionIndex ? 1 : 2}
               />
               <MetricRow
