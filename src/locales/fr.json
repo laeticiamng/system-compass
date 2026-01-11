@@ -2356,6 +2356,216 @@
         "label": "Plan Ambitieux",
         "description": "Pour ceux qui ont l'énergie et la tolérance au risque. Accélération des revenus + stratégie de croissance."
       }
+    },
+    "plans": {
+      "lottery": {
+        "safe": {
+          "title": "Stabilisation rapide",
+          "description": "Créer une base stable avant toute prise de risque.",
+          "paths": { "0": "Emploi à temps partiel stable", "1": "Formation courte certifiante" },
+          "skills": { "0": "Gestion budgétaire", "1": "Compétence technique de base" },
+          "risks": { "0": "Impatience et abandon" },
+          "steps": { "0": "Établir un budget strict", "1": "Identifier une formation de 3 mois max" }
+        },
+        "hybrid": {
+          "title": "Stabilité + expérimentation",
+          "description": "Job stable en parallèle d'un side project encadré.",
+          "paths": { "0": "Emploi stable + side hustle limité", "1": "Formation continue" },
+          "skills": { "0": "Gestion du temps", "1": "Marketing de base" },
+          "risks": { "0": "Éparpillement des efforts" },
+          "steps": { "0": "Trouver un emploi stable", "1": "Limiter le side project à 10h/semaine" }
+        },
+        "ambitious": {
+          "title": "Transition calculée",
+          "description": "Construction méthodique vers l'indépendance.",
+          "paths": { "0": "Freelance dans un domaine demandé" },
+          "skills": { "0": "Vente", "1": "Compétence technique pointue" },
+          "risks": { "0": "Découragement", "1": "Mauvaise gestion financière" },
+          "steps": { "0": "Épargner 6 mois de dépenses", "1": "Développer un portfolio" }
+        }
+      },
+      "comfort": {
+        "safe": {
+          "title": "Emploi stable structuré",
+          "description": "Trouver un environnement prévisible et rassurant.",
+          "paths": { "0": "Administration publique", "1": "Grande entreprise établie" },
+          "skills": { "0": "Spécialisation dans un domaine" },
+          "risks": { "0": "Ennui à long terme" },
+          "steps": { "0": "Identifier les employeurs stables", "1": "Préparer les concours si nécessaire" }
+        },
+        "hybrid": {
+          "title": "Stabilité + évolution",
+          "description": "Poste stable avec des opportunités de progression interne.",
+          "paths": { "0": "Entreprise avec plan de carrière", "1": "Secteur en croissance stable" },
+          "skills": { "0": "Management", "1": "Compétence technique évolutive" },
+          "risks": { "0": "Plafond de verre" },
+          "steps": { "0": "Négocier un plan de développement", "1": "Identifier les compétences clés" }
+        },
+        "ambitious": {
+          "title": "Expert reconnu",
+          "description": "Devenir référence dans un domaine tout en gardant la stabilité.",
+          "paths": { "0": "Expert technique senior" },
+          "skills": { "0": "Expertise pointue", "1": "Communication" },
+          "risks": { "0": "Obsolescence des compétences" },
+          "steps": { "0": "Choisir une spécialisation pérenne", "1": "Construire sa réputation" }
+        }
+      },
+      "builder": {
+        "safe": {
+          "title": "Compétence rare + emploi",
+          "description": "Développer une expertise rare tout en gardant un revenu stable.",
+          "paths": { "0": "Emploi + certification avancée", "1": "Spécialisation technique" },
+          "skills": { "0": "Compétence technique rare", "1": "Négociation salariale" },
+          "risks": { "0": "Dispersion des efforts" },
+          "steps": { "0": "Identifier la compétence rare demandée", "1": "Planifier la certification" }
+        },
+        "hybrid": {
+          "title": "Emploi + side business",
+          "description": "Construire un business en parallèle d'un emploi sécurisé.",
+          "paths": { "0": "Consulting en parallèle", "1": "Produit digital" },
+          "skills": { "0": "Vente", "1": "Gestion de projet" },
+          "risks": { "0": "Burnout" },
+          "steps": { "0": "Valider l'idée avant d'investir du temps", "1": "Fixer des limites claires" }
+        },
+        "ambitious": {
+          "title": "Entrepreneur complet",
+          "description": "Transition complète vers l'entrepreneuriat avec capital.",
+          "paths": { "0": "Business scalable" },
+          "skills": { "0": "Leadership", "1": "Finance" },
+          "risks": { "0": "Échec financier", "1": "Isolement" },
+          "steps": { "0": "Constituer 12 mois de runway", "1": "Valider le marché" }
+        }
+      },
+      "safeWealth": {
+        "safe": {
+          "title": "Carrière haute rémunération",
+          "description": "Maximiser les revenus via une expertise reconnue.",
+          "paths": { "0": "Profession réglementée bien payée", "1": "Tech senior" },
+          "skills": { "0": "Expertise sectorielle" },
+          "risks": { "0": "Plafonnement des revenus" },
+          "steps": { "0": "Rechercher les secteurs à hauts salaires", "1": "Planifier les certifications" }
+        },
+        "hybrid": {
+          "title": "Emploi + investissement",
+          "description": "Hauts revenus + diversification patrimoniale.",
+          "paths": { "0": "Emploi senior + immobilier locatif", "1": "Actions et ETF" },
+          "skills": { "0": "Finance personnelle", "1": "Négociation" },
+          "risks": { "0": "Mauvais investissements" },
+          "steps": { "0": "Automatiser l'épargne", "1": "Se former à l'investissement" }
+        },
+        "ambitious": {
+          "title": "Indépendance financière",
+          "description": "Construire un patrimoine générant des revenus passifs.",
+          "paths": { "0": "Portefeuille diversifié" },
+          "skills": { "0": "Gestion de patrimoine", "1": "Fiscalité" },
+          "risks": { "0": "Volatilité des marchés" },
+          "steps": { "0": "Calculer son objectif d'indépendance", "1": "Construire un plan sur 10 ans" }
+        }
+      },
+      "nomad": {
+        "safe": {
+          "title": "Remote salarié",
+          "description": "Emploi remote stable avec flexibilité géographique.",
+          "paths": { "0": "Développeur remote", "1": "Support client international" },
+          "skills": { "0": "Compétence digitale", "1": "Autonomie" },
+          "risks": { "0": "Isolement social" },
+          "steps": { "0": "Trouver un employeur remote-friendly", "1": "Tester le nomadisme 1 mois" }
+        },
+        "hybrid": {
+          "title": "Freelance + bases",
+          "description": "Freelance avec quelques clients stables.",
+          "paths": { "0": "Consultant remote", "1": "Créateur de contenu" },
+          "skills": { "0": "Vente", "1": "Personal branding" },
+          "risks": { "0": "Irrégularité des revenus" },
+          "steps": { "0": "Signer 2-3 clients récurrents", "1": "Créer une présence en ligne" }
+        },
+        "ambitious": {
+          "title": "Business location-independent",
+          "description": "Entreprise 100% en ligne avec équipe distribuée.",
+          "paths": { "0": "SaaS ou agence remote" },
+          "skills": { "0": "Management remote", "1": "Systèmes automatisés" },
+          "risks": { "0": "Complexité légale internationale", "1": "Burnout" },
+          "steps": { "0": "Choisir un business model scalable", "1": "Structurer légalement" }
+        }
+      },
+      "purpose": {
+        "safe": {
+          "title": "Métier à impact stable",
+          "description": "Emploi dans un secteur utile avec sécurité.",
+          "paths": { "0": "Santé", "1": "Éducation, Social" },
+          "skills": { "0": "Compétence métier spécifique" },
+          "risks": { "0": "Burnout par sur-engagement" },
+          "steps": { "0": "Identifier le secteur qui résonne", "1": "Poser des limites claires" }
+        },
+        "hybrid": {
+          "title": "Impact + équilibre",
+          "description": "Contribuer tout en protégeant son énergie.",
+          "paths": { "0": "ONG avec structure saine", "1": "Entrepreneuriat social" },
+          "skills": { "0": "Gestion de projet", "1": "Communication" },
+          "risks": { "0": "Sous-rémunération" },
+          "steps": { "0": "Négocier des conditions saines", "1": "Diversifier les revenus" }
+        },
+        "ambitious": {
+          "title": "Leader d'impact",
+          "description": "Créer ou diriger une organisation à fort impact.",
+          "paths": { "0": "Fondateur d'ONG ou entreprise sociale" },
+          "skills": { "0": "Leadership", "1": "Fundraising" },
+          "risks": { "0": "Épuisement total" },
+          "steps": { "0": "Valider l'impact réel", "1": "Construire une équipe solide" }
+        }
+      },
+      "status": {
+        "safe": {
+          "title": "Carrière prestigieuse",
+          "description": "Progression dans un environnement reconnu.",
+          "paths": { "0": "Grande entreprise réputée", "1": "Cabinet conseil" },
+          "skills": { "0": "Excellence technique" },
+          "risks": { "0": "Dépendance au regard des autres" },
+          "steps": { "0": "Cibler les employeurs prestigieux", "1": "Construire un CV solide" }
+        },
+        "hybrid": {
+          "title": "Expert visible",
+          "description": "Devenir une référence reconnue dans son domaine.",
+          "paths": { "0": "Speaker", "1": "Auteur, Formateur" },
+          "skills": { "0": "Personal branding", "1": "Communication" },
+          "risks": { "0": "Syndrome de l'imposteur" },
+          "steps": { "0": "Créer du contenu régulièrement", "1": "Intervenir dans des conférences" }
+        },
+        "ambitious": {
+          "title": "Leader d'industrie",
+          "description": "Atteindre le sommet de la hiérarchie ou de la reconnaissance.",
+          "paths": { "0": "Direction générale, Fondateur reconnu" },
+          "skills": { "0": "Stratégie", "1": "Politique d'entreprise" },
+          "risks": { "0": "Identité fragile si échec", "1": "Solitude au sommet" },
+          "steps": { "0": "Identifier les mentors influents", "1": "Construire un réseau stratégique" }
+        }
+      },
+      "recovery": {
+        "safe": {
+          "title": "Stabilisation d'abord",
+          "description": "Reconstruire une base solide sans pression.",
+          "paths": { "0": "Emploi stable peu stressant", "1": "Temps partiel si possible" },
+          "skills": { "0": "Gestion du stress" },
+          "risks": { "0": "Se juger trop durement" },
+          "steps": { "0": "Accepter de commencer doucement", "1": "Créer une routine saine" }
+        },
+        "hybrid": {
+          "title": "Reconstruction progressive",
+          "description": "Montée en puissance graduelle et contrôlée.",
+          "paths": { "0": "Formation progressive", "1": "Emploi + développement personnel" },
+          "skills": { "0": "Résilience", "1": "Nouvelle compétence" },
+          "risks": { "0": "Vouloir rattraper le temps perdu" },
+          "steps": { "0": "Fixer des objectifs réalistes", "1": "Célébrer chaque progrès" }
+        },
+        "ambitious": {
+          "title": "Renaissance complète",
+          "description": "Transformer l'épreuve en force pour une nouvelle trajectoire.",
+          "paths": { "0": "Reconversion réussie, Partage d'expérience" },
+          "skills": { "0": "Storytelling personnel", "1": "Expertise acquise" },
+          "risks": { "0": "Surinvestissement compensatoire" },
+          "steps": { "0": "Documenter son parcours", "1": "Aider ceux qui traversent la même chose" }
+        }
+      }
     }
   },
   "lifeProfiles": {
