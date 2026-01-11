@@ -229,6 +229,9 @@ export function CountryVariantSection({ countryId, countryName }: CountryVariant
   const { canAccessPremium, loading: subscriptionLoading } = useSubscription();
   const [originalVariant, setOriginalVariant] = useState<CountryVariant | null>(null);
   const [loading, setLoading] = useState(true);
+  const [fetchError, setFetchError] = useState<string | null>(null);
+
+  console.log('[CountryVariantSection] Rendering:', { countryId, countryName, canAccessPremium, subscriptionLoading, loading });
 
   const { translatedData: variant, isTranslating } = useTranslatedVariants(
     countryId,
@@ -243,16 +246,19 @@ export function CountryVariantSection({ countryId, countryName }: CountryVariant
       }
 
       try {
+        console.log('[CountryVariantSection] Fetching variant for:', countryId);
         const { data, error } = await supabase
           .from('country_variants')
           .select('*')
           .eq('country_id', countryId)
           .maybeSingle();
 
+        console.log('[CountryVariantSection] Fetch result:', { data: !!data, error, is_complete: data?.is_complete });
+
         if (error) throw error;
         
         if (data) {
-          setOriginalVariant({
+          const parsed = {
             institutions: parseToStringArray(data.institutions),
             networks: parseToStringArray(data.networks),
             labor_market: parseToStringArray(data.labor_market),
@@ -272,10 +278,19 @@ export function CountryVariantSection({ countryId, countryName }: CountryVariant
             real_costs_breakdown: parseRealCosts(data.real_costs_breakdown),
             success_timeline_months: parseSuccessTimeline(data.success_timeline_months),
             expat_communities: parseExpatCommunities(data.expat_communities),
+          };
+          console.log('[CountryVariantSection] Parsed data:', { 
+            institutions: parsed.institutions.length,
+            labor_market: parsed.labor_market.length,
+            is_complete: parsed.is_complete
           });
+          setOriginalVariant(parsed);
+        } else {
+          console.log('[CountryVariantSection] No data found for:', countryId);
         }
       } catch (err) {
-        console.error('Failed to fetch country variant:', err);
+        console.error('[CountryVariantSection] Failed to fetch:', err);
+        setFetchError(err instanceof Error ? err.message : 'Unknown error');
       } finally {
         setLoading(false);
       }
