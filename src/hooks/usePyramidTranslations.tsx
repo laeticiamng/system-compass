@@ -4,33 +4,33 @@ import { PyramidType } from '@/lib/types';
 // Map pyramid types to translation keys
 const PYRAMID_TRANSLATION_KEYS: Record<PyramidType, { labelKey: string; descKey: string; detailsKey: string }> = {
   PROBLEM_RENT: { 
-    labelKey: 'pyramids.problemRent', 
-    descKey: 'pyramids.problemRentDesc',
+    labelKey: 'pyramids.problemRent.label', 
+    descKey: 'pyramids.problemRent.description',
     detailsKey: 'problemRent' 
   },
   STABILITY_REDIS: { 
-    labelKey: 'pyramids.stabilityRedistribution', 
-    descKey: 'pyramids.stabilityRedistributionDesc',
+    labelKey: 'pyramids.stabilityRedis.label', 
+    descKey: 'pyramids.stabilityRedis.description',
     detailsKey: 'stabilityRedis' 
   },
   COMPETENCE_TRUST: { 
-    labelKey: 'pyramids.competenceTrust', 
-    descKey: 'pyramids.competenceTrustDesc',
+    labelKey: 'pyramids.competenceTrust.label', 
+    descKey: 'pyramids.competenceTrust.description',
     detailsKey: 'competenceTrust' 
   },
   GROWTH_RISK: { 
-    labelKey: 'pyramids.growthRisk', 
-    descKey: 'pyramids.growthRiskDesc',
+    labelKey: 'pyramids.growthRisk.label', 
+    descKey: 'pyramids.growthRisk.description',
     detailsKey: 'growthRisk' 
   },
   HYBRID_TRANSITION: { 
-    labelKey: 'pyramids.hybridTransition', 
-    descKey: 'pyramids.hybridTransitionDesc',
+    labelKey: 'pyramids.hybridTransition.label', 
+    descKey: 'pyramids.hybridTransition.description',
     detailsKey: 'hybridTransition' 
   },
   RESOURCE_EXTRACTION: { 
-    labelKey: 'pyramids.resourceExtraction', 
-    descKey: 'pyramids.resourceExtractionDesc',
+    labelKey: 'pyramids.resourceExtraction.label', 
+    descKey: 'pyramids.resourceExtraction.description',
     detailsKey: 'resourceExtraction' 
   },
 };

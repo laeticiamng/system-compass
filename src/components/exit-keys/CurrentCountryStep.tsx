@@ -27,12 +27,12 @@ function getFlagEmoji(iso2: string) {
 
 // Map pyramid types to translation keys
 const PYRAMID_TYPE_TRANSLATION_KEYS: Record<PyramidType, { label: string; detailsKey: string }> = {
-  PROBLEM_RENT: { label: 'pyramids.problemRent', detailsKey: 'problemRent' },
-  STABILITY_REDIS: { label: 'pyramids.stabilityRedistribution', detailsKey: 'stabilityRedis' },
-  COMPETENCE_TRUST: { label: 'pyramids.competenceTrust', detailsKey: 'competenceTrust' },
-  GROWTH_RISK: { label: 'pyramids.growthRisk', detailsKey: 'growthRisk' },
-  HYBRID_TRANSITION: { label: 'pyramids.hybridTransition', detailsKey: 'hybridTransition' },
-  RESOURCE_EXTRACTION: { label: 'pyramids.resourceExtraction', detailsKey: 'resourceExtraction' },
+  PROBLEM_RENT: { label: 'pyramids.problemRent.label', detailsKey: 'problemRent' },
+  STABILITY_REDIS: { label: 'pyramids.stabilityRedis.label', detailsKey: 'stabilityRedis' },
+  COMPETENCE_TRUST: { label: 'pyramids.competenceTrust.label', detailsKey: 'competenceTrust' },
+  GROWTH_RISK: { label: 'pyramids.growthRisk.label', detailsKey: 'growthRisk' },
+  HYBRID_TRANSITION: { label: 'pyramids.hybridTransition.label', detailsKey: 'hybridTransition' },
+  RESOURCE_EXTRACTION: { label: 'pyramids.resourceExtraction.label', detailsKey: 'resourceExtraction' },
 };
 
 export function CurrentCountryStep({
