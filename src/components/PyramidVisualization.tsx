@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Country, PYRAMID_TYPE_INFO } from '@/lib/types';
 import { cn } from '@/lib/utils';
+import { usePyramidTranslations } from '@/hooks/usePyramidTranslations';
 
 interface PyramidVisualizationProps {
   country: Country;

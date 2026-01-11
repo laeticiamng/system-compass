@@ -8,6 +8,7 @@ import {
   Filter, Clock, Scale, Flag, Globe, Plane, Map,
   GraduationCap, Briefcase, Sparkles
 } from 'lucide-react';
+import { usePyramidTranslations } from '@/hooks/usePyramidTranslations';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -69,6 +70,7 @@ const timeOptions = [
 
 export default function ExitKeys() {
   const { t } = useTranslation();
+  const { getPyramidLabel } = usePyramidTranslations();
   const { user } = useAuth();
   const { profile: savedProfile, saveProfile, loading: profileLoading } = useExitKeysProfile();
   const [currentStep, setCurrentStep] = useState<Step>('origin');
@@ -374,7 +376,7 @@ export default function ExitKeys() {
                           <span className="text-xl">{getFlagEmoji(country.iso2)}</span>
                           <span>{country.name}</span>
                           <span className="text-xs text-muted-foreground ml-2">
-                            {PYRAMID_TYPE_INFO[country.pyramidType].label}
+                            {getPyramidLabel(country.pyramidType)}
                           </span>
                         </span>
                       </SelectItem>
