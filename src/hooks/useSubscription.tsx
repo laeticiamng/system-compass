@@ -58,7 +58,7 @@ export const SUBSCRIPTION_TIERS = {
 };
 
 export function SubscriptionProvider({ children }: { children: ReactNode }) {
-  const { user, loading: authLoading } = useAuth();
+  const { user, loading: authLoading, isTestMode } = useAuth();
   const [state, setState] = useState<SubscriptionState>({
     tier: 'free',
     subscribed: false,
@@ -70,6 +70,19 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
   const checkSubscription = useCallback(async () => {
     if (!user) {
       setState(prev => ({ ...prev, tier: 'free', subscribed: false, loading: false }));
+      return;
+    }
+
+    // In test mode, grant full Pro access without calling the edge function
+    if (isTestMode) {
+      console.log('🧪 Mode test - Accès Pro accordé automatiquement');
+      setState({
+        tier: 'pro',
+        subscribed: true,
+        subscriptionEnd: null,
+        loading: false,
+        error: null,
+      });
       return;
     }
 
@@ -95,7 +108,7 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
         error: err instanceof Error ? err.message : 'Failed to check subscription',
       }));
     }
-  }, [user]);
+  }, [user, isTestMode]);
 
   const createCheckout = useCallback(async (tier: 'premium' | 'pro') => {
     if (!user) {
