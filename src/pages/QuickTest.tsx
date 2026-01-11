@@ -251,11 +251,11 @@ export default function QuickTest() {
             </Button>
             <Button
               variant="outline"
-              onClick={() => navigate('/multi-compare')}
+              onClick={() => navigate('/compare?mode=multi')}
               className="flex-1 gap-2"
             >
               <GitCompare className="w-4 h-4" />
-              {t('quickTest.result.compareScenarios', 'Comparer 2 scénarios')}
+              {t('quickTest.result.compareScenarios', 'Comparer des scénarios')}
             </Button>
           </div>
 

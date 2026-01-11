@@ -63,6 +63,7 @@ import {
 import { AiHelpButton } from '@/components/ai/AiHelpButton';
 import { AiAction, AiContext } from '@/components/ai/AiSidePanel';
 import { AiUsageStats } from '@/components/dashboard/AiUsageStats';
+import { EmptyDashboardState } from '@/components/dashboard/EmptyDashboardState';
 import { toast } from 'sonner';
 
 // Helper functions
@@ -322,6 +323,13 @@ export default function Dashboard() {
           </Card>
         )}
 
+        {/* Empty State for New Users - show when no profile and no progress */}
+        {!profile && !selectedKeyId && !loading && (
+          <div className="mb-6">
+            <EmptyDashboardState hasProfile={!!profile} hasExitKey={!!selectedKeyId} />
+          </div>
+        )}
+
         {/* Profile Summary */}
         {profile && motorProfile && (
           <Card className="mb-6 border-primary/20">
@@ -434,7 +442,7 @@ export default function Dashboard() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {comparisons.slice(0, 6).map(comp => (
                   <div key={comp.id} className="p-3 bg-secondary/50 rounded-lg flex items-center justify-between">
-                    <Link to={`/multi-compare?countries=${comp.country_ids.join(',')}`} className="flex-1">
+                    <Link to={`/compare?mode=multi&countries=${comp.country_ids.join(',')}`} className="flex-1">
                       <p className="font-medium hover:text-primary transition-colors">{comp.name}</p>
                       <p className="text-xs text-muted-foreground">{comp.country_ids.length} {t('dashboard.countries')}</p>
                     </Link>
@@ -453,7 +461,7 @@ export default function Dashboard() {
                 ))}
               </div>
               {comparisons.length > 6 && (
-                <Link to="/multi-compare" className="block mt-4 text-center">
+                <Link to="/compare?mode=multi" className="block mt-4 text-center">
                   <Button variant="outline" size="sm">
                     {t('dashboard.viewAll')} ({comparisons.length})
                   </Button>
