@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { 
@@ -37,6 +37,7 @@ export default function NotificationSettings() {
     saving, 
     updateSettings, 
     requestPushPermission,
+    refetch,
     isLoggedIn 
   } = useNotificationSettings();
 
@@ -49,7 +50,7 @@ export default function NotificationSettings() {
   });
 
   // Sync local state when settings load
-  useState(() => {
+  useEffect(() => {
     if (settings) {
       setLocalSettings({
         email_enabled: settings.email_enabled ?? true,
@@ -59,11 +60,12 @@ export default function NotificationSettings() {
         weekly_digest: settings.weekly_digest ?? true,
       });
     }
-  });
+  }, [settings]);
 
   const handleSave = async () => {
     const success = await updateSettings(localSettings);
     if (success) {
+      await refetch();
       toast.success(t('notifications.saved', 'Paramètres sauvegardés'));
     } else {
       toast.error(t('notifications.error', 'Erreur lors de la sauvegarde'));
