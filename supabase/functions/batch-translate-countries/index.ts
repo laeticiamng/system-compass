@@ -85,15 +85,15 @@ serve(async (req) => {
     
     const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
-    // Get all countries with their data
+    // Get all countries with their data - ALL fields
     const { data: variants } = await supabase
       .from('country_variants')
-      .select('country_id, daily_life, entrepreneurship, labor_market, institutions, networks, profiles_succeed, profiles_struggle, surprises, example_trajectories, typical_day, real_costs_breakdown, cultural_shocks, expat_communities, hidden_admin_steps, year_one_reality, success_timeline_months, common_mistakes_timeline')
+      .select('*')
       .range(offset, offset + limit - 1);
 
     const { data: intelligence } = await supabase
       .from('country_intelligence')
-      .select('country_id, power_formal, power_informal, power_keys_ranking, strategies_rewarded, strategies_punished, adaptive_behaviors, backfiring_behaviors, newcomer_mistakes, mobility_elevators, dependencies, historical_traces, legacy_implications, macro_risks, system_produces, negotiation_styles, unspoken_rules, trust_signals, distrust_signals, taboo_topics, hidden_hierarchies, time_perception, decision_making_patterns, career_ceiling_by_profile, exit_difficulty')
+      .select('*')
       .range(offset, offset + limit - 1);
 
     if (!variants?.length) {
