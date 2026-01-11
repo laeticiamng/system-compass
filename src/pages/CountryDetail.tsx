@@ -289,8 +289,8 @@ export default function CountryDetail() {
           <SnapshotCard label={t('countryDetail.snapshot.gdpPerCapita')} value={`$${country.snapshot.gdpPerCapita.toLocaleString()}`} />
           <SnapshotCard label={t('countryDetail.snapshot.population')} value={formatPopulation(country.snapshot.population)} />
           <SnapshotCard label={t('countryDetail.snapshot.passportRank')} value={`#${country.snapshot.passportRank}`} />
-          <SnapshotCard label={t('countryDetail.snapshot.corruptionIndex')} value={`${country.snapshot.corruptionIndex}/100`} />
-          <SnapshotCard label={t('countryDetail.snapshot.freedomIndex')} value={`${country.snapshot.freedomIndex}/100`} />
+          <SnapshotCard label={t('countryDetail.snapshot.corruptionIndex')} value={`${country.snapshot.corruptionIndex}/100`} colorClass={getCorruptionColor(country.snapshot.corruptionIndex)} />
+          <SnapshotCard label={t('countryDetail.snapshot.freedomIndex')} value={`${country.snapshot.freedomIndex}/100`} colorClass={getFreedomColor(country.snapshot.freedomIndex)} />
         </div>
 
         {/* Music Player */}
@@ -425,13 +425,29 @@ export default function CountryDetail() {
   );
 }
 
-function SnapshotCard({ label, value }: { label: string; value: string }) {
+function SnapshotCard({ label, value, colorClass }: { label: string; value: string; colorClass?: string }) {
   return (
     <div className="glass-card rounded-xl p-4 text-center">
       <div className="text-sm text-muted-foreground mb-1">{label}</div>
-      <div className="font-display font-semibold text-lg">{value}</div>
+      <div className={`font-display font-semibold text-lg ${colorClass || ''}`}>{value}</div>
     </div>
   );
+}
+
+function getCorruptionColor(index: number): string {
+  // TI scale: 100 = clean, 0 = corrupt
+  // Visual inversion: show red for corrupt (low score), green for clean (high score)
+  if (index >= 70) return 'text-green-500';
+  if (index >= 50) return 'text-yellow-500';
+  if (index >= 30) return 'text-orange-500';
+  return 'text-red-500';
+}
+
+function getFreedomColor(index: number): string {
+  if (index >= 70) return 'text-green-500';
+  if (index >= 50) return 'text-yellow-500';
+  if (index >= 30) return 'text-orange-500';
+  return 'text-red-500';
 }
 
 function getFlagEmoji(iso2: string): string {
