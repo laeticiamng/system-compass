@@ -5925,7 +5925,250 @@
     "descUnstable": "Cette section n'est pas là pour faire peur, mais pour informer et protéger. Les chemins officiels sont plus longs mais infiniment plus sûrs.",
     "descDynamic": "Risques spécifiques pour un trajet {{origin}} → {{destination}}.",
     "infoProtection": "Information = Protection",
-    "noJudgment": "Aucun jugement, que de la prévention"
+    "noJudgment": "Aucun jugement, que de la prévention",
+    "realStats": "Chiffres réels",
+    "warningSignals": "Signaux d'alerte",
+    "howToProtect": "Comment se protéger",
+    "resourcesAndHelp": "Ressources et aide",
+    "goldenRule": {
+      "title": "Règle d'Or",
+      "quote": "\"Si une offre semble trop belle pour être vraie, elle l'est probablement.\"",
+      "explanation": "Les vrais emplois légaux ne demandent jamais de payer à l'avance. Les vrais visas passent par les voies officielles. Les vraies opportunités vous laissent le temps de réfléchir."
+    },
+    "closingTitleStable": "Préparez-vous bien, profitez pleinement",
+    "closingTitleUnstable": "Chaque vie compte",
+    "closingDescStable": "Une bonne préparation vous permettra de profiter pleinement de votre expérience à l'étranger. Anticipez les défis pour mieux les surmonter.",
+    "closingDescUnstable": "Si vous connaissez quelqu'un qui envisage de prendre des risques, partagez cette information. Il existe toujours des alternatives légales, même si elles demandent plus de patience. Votre vie vaut plus que n'importe quel raccourci.",
+    "resources": {
+      "traffickingHotline": "Hotline traite des êtres humains France",
+      "iom": "Organisation Internationale pour les Migrations",
+      "cimade": "La Cimade",
+      "unhcr": "HCR - Agence des Nations Unies pour les réfugiés",
+      "sosMed": "SOS Méditerranée",
+      "laborInspection": "Inspection du travail France",
+      "ccem": "Comité contre l'esclavage moderne",
+      "franceDiplomatie": "France Diplomatie - Visas",
+      "signalArnaques": "Signal-Arnaques",
+      "mouvementNid": "Mouvement du Nid",
+      "alcNice": "Association ALC Nice",
+      "victimHotline": "Numéro national d'aide aux victimes",
+      "ameli": "Ameli - Droits à l'étranger",
+      "cleiss": "Cleiss - Protection sociale",
+      "diplomatie": "France Diplomatie - Retraite à l'étranger",
+      "ufe": "Union des Français de l'Étranger",
+      "francaisDuMonde": "Français du Monde",
+      "autoEntrepreneur": "Portail Auto-Entrepreneur"
+    },
+    "categories": {
+      "humanTrafficking": {
+        "title": "Traite des êtres humains",
+        "description": "Le trafic d'êtres humains touche plus de 40 millions de personnes dans le monde. Les victimes sont souvent recrutées via de fausses promesses de travail ou d'études à l'étranger.",
+        "stats": {
+          "1": "Plus de 50 000 personnes victimes de traite identifiées en Europe chaque année",
+          "2": "71% des victimes de traite sont des femmes et des filles",
+          "3": "Le trafic humain génère 150 milliards de dollars par an pour les trafiquants",
+          "4": "Les victimes perdent en moyenne 5-10 années de leur vie"
+        },
+        "warnings": {
+          "1": "On vous demande de remettre vos documents d'identité",
+          "2": "Promesses irréalistes de salaire ou de conditions de vie",
+          "3": "Demande de paiement initial pour un \"visa\" ou \"contrat de travail\"",
+          "4": "Isolement de votre famille et amis",
+          "5": "Contrat uniquement oral ou dans une langue que vous ne comprenez pas",
+          "6": "Transport organisé par des inconnus"
+        },
+        "prevention": {
+          "1": "Vérifiez TOUJOURS l'existence légale de l'employeur ou l'agence",
+          "2": "Gardez TOUJOURS vos documents d'identité avec vous",
+          "3": "Informez votre famille de vos plans de voyage avec tous les détails",
+          "4": "Utilisez les voies légales d'immigration même si elles sont plus longues",
+          "5": "Méfiez-vous des offres \"trop belles pour être vraies\""
+        }
+      },
+      "fakeSmugglers": {
+        "title": "Faux passeurs et traversées dangereuses",
+        "description": "Chaque année, des milliers de personnes meurent en tentant des traversées clandestines. Les passeurs ne garantissent rien et profitent de la détresse des migrants.",
+        "stats": {
+          "1": "Plus de 2000 personnes meurent chaque année en Méditerranée",
+          "2": "Le coût moyen d'un passage clandestin : 3000-8000€ sans garantie",
+          "3": "60% des migrants clandestins subissent des violences pendant le voyage",
+          "4": "Beaucoup sont abandonnés en route après avoir payé"
+        },
+        "warnings": {
+          "1": "Demande de paiement en espèces uniquement",
+          "2": "Promesses de voyage \"100% sûr\" ou \"garanti\"",
+          "3": "Aucun contrat ou reçu fourni",
+          "4": "On vous demande de mentir aux autorités",
+          "5": "Départ précipité sans préparation"
+        },
+        "prevention": {
+          "1": "Les voies légales sont TOUJOURS plus sûres, même si plus longues",
+          "2": "Documentez-vous sur les vraies options de visa de votre pays",
+          "3": "Les bourses d'études existent - cherchez les voies officielles",
+          "4": "Parlez à des associations d'aide aux migrants avant tout projet"
+        }
+      },
+      "exploitationWork": {
+        "title": "Exploitation au travail",
+        "description": "Des travailleurs migrants se retrouvent piégés dans des situations d'exploitation : salaires non payés, conditions indignes, séquestration de documents.",
+        "stats": {
+          "1": "25 millions de personnes victimes de travail forcé dans le monde",
+          "2": "Secteurs à risque : agriculture, construction, travail domestique, restauration",
+          "3": "De nombreuses victimes travaillent 12-16h par jour sans repos"
+        },
+        "warnings": {
+          "1": "Employeur qui demande de garder vos papiers \"en sécurité\"",
+          "2": "Logement fourni sur le lieu de travail sans alternative",
+          "3": "Déductions surprises sur votre salaire",
+          "4": "Interdiction de contacter votre famille",
+          "5": "Menaces si vous voulez partir"
+        },
+        "prevention": {
+          "1": "Faites des recherches sur l'employeur avant d'accepter",
+          "2": "Exigez un contrat écrit dans votre langue",
+          "3": "Connaissez vos droits dans le pays de destination",
+          "4": "Gardez les coordonnées de votre ambassade",
+          "5": "Ne remettez jamais vos papiers"
+        }
+      },
+      "scamImmigration": {
+        "title": "Arnaques à l'immigration",
+        "description": "De faux avocats, agences ou \"facilitateurs\" promettent des visas garantis contre paiement. Ces escroqueries coûtent des milliers d'euros et n'aboutissent jamais.",
+        "stats": {
+          "1": "Pertes moyennes par victime : 2000-15000€",
+          "2": "Faux sites d'ambassades et de gouvernements très sophistiqués",
+          "3": "Arnaques aux mariages blancs : risque pénal en plus des pertes financières"
+        },
+        "warnings": {
+          "1": "\"Visa garanti\" - aucun visa n'est garanti",
+          "2": "Demande de paiement avant toute démarche officielle",
+          "3": "Communication uniquement par réseaux sociaux",
+          "4": "Urgence artificielle : \"dernières places disponibles\"",
+          "5": "Prix très différent des frais officiels"
+        },
+        "prevention": {
+          "1": "Consultez TOUJOURS le site officiel de l'ambassade",
+          "2": "Les vrais frais de visa sont publics et fixes",
+          "3": "Les avocats certifiés sont vérifiables",
+          "4": "Ne payez jamais à l'avance pour un \"résultat garanti\"",
+          "5": "Méfiez-vous des témoignages non vérifiables"
+        }
+      },
+      "sexualExploitation": {
+        "title": "Exploitation sexuelle",
+        "description": "Des femmes et jeunes filles sont trompées par des promesses de travail en Europe et finissent exploitées dans des réseaux de prostitution. C'est un crime.",
+        "stats": {
+          "1": "Principale forme de traite en Europe (45% des cas)",
+          "2": "Victimes souvent du Nigeria, Roumanie, Albanie, Chine",
+          "3": "Les victimes contractent des \"dettes\" impossibles à rembourser",
+          "4": "Amsterdam, Paris, Rome : principales destinations d'exploitation"
+        },
+        "warnings": {
+          "1": "Offre de travail comme \"mannequin\" ou \"hôtesse\" sans expérience requise",
+          "2": "\"Sponsor\" qui paie votre voyage en échange de \"remboursement\"",
+          "3": "On vous demande de garder secret votre départ",
+          "4": "Promesses vagues sur le type exact de travail"
+        },
+        "prevention": {
+          "1": "Vérifiez l'existence réelle de l'agence ou employeur",
+          "2": "Un vrai employeur ne vous demandera jamais de \"rembourser\" votre voyage",
+          "3": "Parlez de TOUTE offre à votre famille et vos amis",
+          "4": "Si ça semble trop beau, c'est probablement une arnaque"
+        }
+      },
+      "healthcareAbroad": {
+        "title": "Santé et couverture médicale à l'étranger",
+        "description": "S'installer à l'étranger sans anticiper les frais de santé peut être désastreux. Les systèmes de santé varient énormément d'un pays à l'autre.",
+        "stats": {
+          "1": "Une hospitalisation aux USA peut coûter 50 000€+ sans assurance",
+          "2": "De nombreux pays n'ont pas de système de santé public",
+          "3": "Les maladies chroniques sont souvent exclues des assurances voyages",
+          "4": "Le rapatriement sanitaire coûte entre 10 000 et 100 000€"
+        },
+        "warnings": {
+          "1": "Partir sans assurance santé internationale",
+          "2": "Ne pas vérifier les accords de sécurité sociale entre pays",
+          "3": "Oublier de déclarer ses maladies préexistantes",
+          "4": "Sous-estimer les coûts de santé dans le pays de destination"
+        },
+        "prevention": {
+          "1": "Souscrivez une assurance santé internationale AVANT de partir",
+          "2": "Vérifiez les conventions de sécurité sociale bilatérales",
+          "3": "Conservez un \"fonds d'urgence santé\" accessible",
+          "4": "Renseignez-vous sur le système de santé local avant de partir",
+          "5": "Gardez vos médicaments essentiels en quantité suffisante"
+        }
+      },
+      "retirementAbroad": {
+        "title": "Retraite à l'étranger",
+        "description": "Prendre sa retraite dans un pays au coût de la vie plus bas est tentant, mais comporte des risques souvent sous-estimés.",
+        "stats": {
+          "1": "De nombreux retraités français vivent au Maroc, Portugal, Thaïlande",
+          "2": "Les pensions peuvent être imposées différemment selon les conventions",
+          "3": "L'accès aux soins peut devenir critique avec l'âge",
+          "4": "Les fluctuations monétaires peuvent réduire significativement le pouvoir d'achat"
+        },
+        "warnings": {
+          "1": "Ne pas vérifier la fiscalité de sa pension à l'étranger",
+          "2": "Sous-estimer le mal du pays et l'isolement",
+          "3": "Ignorer l'évolution possible de sa santé",
+          "4": "Ne pas prévoir de solution pour revenir si nécessaire"
+        },
+        "prevention": {
+          "1": "Testez avec des séjours prolongés avant de vous installer",
+          "2": "Conservez une adresse et des liens en France",
+          "3": "Prévoyez un budget \"retour d'urgence\"",
+          "4": "Vérifiez les conventions fiscales et de sécurité sociale",
+          "5": "Gardez une partie de votre épargne en euros accessible"
+        }
+      },
+      "expatBubble": {
+        "title": "Piège de la bulle expatriée",
+        "description": "Vivre entre expatriés sans s'intégrer peut mener à l'isolement, des coûts de vie élevés et une expérience superficielle.",
+        "stats": {
+          "1": "De nombreux expatriés restent entre eux et ne parlent pas la langue locale",
+          "2": "Le coût de vie \"expatrié\" peut être 2-3x celui des locaux",
+          "3": "L'isolement culturel augmente le risque de retour prématuré",
+          "4": "Les enfants peuvent avoir du mal à s'adapter à leur retour"
+        },
+        "warnings": {
+          "1": "Vivre uniquement dans des quartiers \"expat\"",
+          "2": "Ne pas apprendre la langue locale",
+          "3": "Fréquenter uniquement des compatriotes",
+          "4": "Reproduire exactement son mode de vie d'origine"
+        },
+        "prevention": {
+          "1": "Apprenez au moins les bases de la langue locale",
+          "2": "Sortez des zones expatriées pour découvrir le \"vrai\" pays",
+          "3": "Créez des liens avec la population locale",
+          "4": "Adaptez votre mode de vie au contexte local",
+          "5": "Inscrivez-vous à des activités locales, pas juste expatriées"
+        }
+      },
+      "digitalNomadReality": {
+        "title": "Réalité du nomadisme digital",
+        "description": "Le lifestyle \"digital nomad\" est souvent idéalisé. La réalité implique des défis fiscaux, sociaux et professionnels.",
+        "stats": {
+          "1": "Beaucoup de \"nomades\" retournent à une vie sédentaire après 1-2 ans",
+          "2": "Les questions fiscales sont complexes et souvent ignorées",
+          "3": "L'absence de droits sociaux peut être problématique",
+          "4": "La solitude est le problème #1 cité par les digital nomads"
+        },
+        "warnings": {
+          "1": "Ne pas se renseigner sur ses obligations fiscales",
+          "2": "Ignorer les questions de visa de travail",
+          "3": "Sous-estimer le besoin de stabilité et de routine",
+          "4": "Ne pas prévoir de couverture santé internationale"
+        },
+        "prevention": {
+          "1": "Clarifiez votre situation fiscale AVANT de partir",
+          "2": "Vérifiez les visas \"digital nomad\" qui existent dans certains pays",
+          "3": "Prévoyez des périodes de stabilité entre vos déplacements",
+          "4": "Créez des routines et maintenez des liens sociaux forts",
+          "5": "Ayez une assurance santé internationale complète"
+        }
+      }
+    }
   },
   "orientationHub": {
     "noPromise": "Pas de promesse",
