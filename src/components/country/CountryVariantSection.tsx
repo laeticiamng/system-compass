@@ -435,12 +435,19 @@ export function CountryVariantSection({ countryId, countryName }: CountryVariant
 
 // Overview Section (original content)
 function OverviewSection({ displayData, t }: { displayData: CountryVariant; t: any }) {
+  // Safely access arrays with fallback to empty arrays
+  const institutions = displayData?.institutions || [];
+  const networks = displayData?.networks || [];
+  const labor_market = displayData?.labor_market || [];
+  const entrepreneurship = displayData?.entrepreneurship || [];
+  const daily_life = displayData?.daily_life || [];
+
   const sections = [
-    { icon: Building2, title: t('countryDetail.variant.institutions', 'Institutions & Administration'), data: displayData.institutions, color: 'text-blue-500' },
-    { icon: Users, title: t('countryDetail.variant.networks', 'Réseaux & Réputation'), data: displayData.networks, color: 'text-purple-500' },
-    { icon: Briefcase, title: t('countryDetail.variant.laborMarket', 'Marché du Travail'), data: displayData.labor_market, color: 'text-green-500' },
-    { icon: Rocket, title: t('countryDetail.variant.entrepreneurship', 'Entrepreneuriat'), data: displayData.entrepreneurship, color: 'text-orange-500' },
-    { icon: Coffee, title: t('countryDetail.variant.dailyLife', 'Vie Quotidienne'), data: displayData.daily_life, color: 'text-pink-500' },
+    { icon: Building2, title: t('countryDetail.variant.institutions', 'Institutions & Administration'), data: institutions, color: 'text-blue-500' },
+    { icon: Users, title: t('countryDetail.variant.networks', 'Réseaux & Réputation'), data: networks, color: 'text-purple-500' },
+    { icon: Briefcase, title: t('countryDetail.variant.laborMarket', 'Marché du Travail'), data: labor_market, color: 'text-green-500' },
+    { icon: Rocket, title: t('countryDetail.variant.entrepreneurship', 'Entrepreneuriat'), data: entrepreneurship, color: 'text-orange-500' },
+    { icon: Coffee, title: t('countryDetail.variant.dailyLife', 'Vie Quotidienne'), data: daily_life, color: 'text-pink-500' },
   ];
 
   return (
@@ -470,7 +477,7 @@ function OverviewSection({ displayData, t }: { displayData: CountryVariant; t: a
 
       {/* Profiles Grid */}
       <div className="grid md:grid-cols-2 gap-4">
-        {displayData.profiles_succeed.length > 0 && (
+        {(displayData?.profiles_succeed?.length || 0) > 0 && (
           <Card className="border-green-500/30">
             <CardHeader className="pb-2">
               <CardTitle className="text-sm flex items-center gap-2 text-green-600">
@@ -480,7 +487,7 @@ function OverviewSection({ displayData, t }: { displayData: CountryVariant; t: a
             </CardHeader>
             <CardContent>
               <ul className="space-y-2">
-                {displayData.profiles_succeed.map((item, i) => (
+                {(displayData?.profiles_succeed || []).map((item, i) => (
                   <li key={i} className="text-sm flex items-start gap-2 text-muted-foreground">
                     <span className="text-green-500">✓</span>
                     {item}
@@ -491,7 +498,7 @@ function OverviewSection({ displayData, t }: { displayData: CountryVariant; t: a
           </Card>
         )}
 
-        {displayData.profiles_struggle.length > 0 && (
+        {(displayData?.profiles_struggle?.length || 0) > 0 && (
           <Card className="border-red-500/30">
             <CardHeader className="pb-2">
               <CardTitle className="text-sm flex items-center gap-2 text-red-600">
@@ -501,7 +508,7 @@ function OverviewSection({ displayData, t }: { displayData: CountryVariant; t: a
             </CardHeader>
             <CardContent>
               <ul className="space-y-2">
-                {displayData.profiles_struggle.map((item, i) => (
+                {(displayData?.profiles_struggle || []).map((item, i) => (
                   <li key={i} className="text-sm flex items-start gap-2 text-muted-foreground">
                     <span className="text-red-500">⚠</span>
                     {item}
@@ -514,7 +521,7 @@ function OverviewSection({ displayData, t }: { displayData: CountryVariant; t: a
       </div>
 
       {/* Trajectories */}
-      {displayData.example_trajectories?.length > 0 && (
+      {(displayData?.example_trajectories?.length || 0) > 0 && (
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-sm flex items-center gap-2">
@@ -524,10 +531,10 @@ function OverviewSection({ displayData, t }: { displayData: CountryVariant; t: a
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              {displayData.example_trajectories.map((traj, i) => (
+              {(displayData?.example_trajectories || []).map((traj, i) => (
                 <div key={i} className="p-3 bg-muted/30 rounded-lg">
-                  <div className="font-medium text-sm text-primary mb-1">{traj.profile}</div>
-                  <p className="text-sm text-muted-foreground">{traj.outcome}</p>
+                  <div className="font-medium text-sm text-primary mb-1">{traj?.profile || ''}</div>
+                  <p className="text-sm text-muted-foreground">{traj?.outcome || ''}</p>
                 </div>
               ))}
             </div>
