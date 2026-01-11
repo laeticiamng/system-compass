@@ -58,35 +58,20 @@ export function useTranslatedVariants(
           .select('translated_data')
           .eq('country_id', countryId)
           .eq('language', currentLang)
-          .single();
+          .maybeSingle();
 
-        if (cached) {
+        if (cached?.translated_data) {
           setTranslatedData(cached.translated_data as unknown as CountryVariants);
           setIsTranslating(false);
           return;
         }
 
-        // Call translation edge function
-        const response = await supabase.functions.invoke('translate-variants', {
-          body: {
-            countryId,
-            targetLang: currentLang,
-            variantsData: originalData,
-          },
-        });
-
-        if (response.error) {
-          throw new Error(response.error.message);
-        }
-
-        if (response.data?.translatedData) {
-          setTranslatedData(response.data.translatedData);
-        } else {
-          // Fallback to original if translation fails
-          setTranslatedData(originalData);
-        }
+        // No cached translation - use original data (English) as fallback
+        // Don't call edge function to avoid blocking UI
+        console.debug(`No ${currentLang} variant translation for ${countryId}, using original data`);
+        setTranslatedData(originalData);
       } catch (err) {
-        console.error('Variants translation error:', err);
+        console.error('Variants translation lookup error:', err);
         setError(err instanceof Error ? err.message : 'Translation failed');
         // Fallback to original data
         setTranslatedData(originalData);
