@@ -5710,10 +5710,17 @@
       }
     },
     "suggestions": {
-      "title": "Suggestions OVI",
+      "title": "Lectures OVI suggérées",
+      "subtitle": "Ces ressources peuvent enrichir votre réflexion après cette simulation.",
       "basedOn": "Basé sur votre simulation",
       "explore": "Explorer ce cadre",
-      "dismiss": "Ignorer"
+      "dismiss": "Ignorer",
+      "unlockPro": "Débloquer avec Pro",
+      "viewAll": "Voir tous les contenus OVI"
+    },
+    "type": {
+      "framework": "Cadre",
+      "grid": "Grille"
     }
   },
   "traceOS": {

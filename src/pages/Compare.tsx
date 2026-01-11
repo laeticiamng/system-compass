@@ -10,6 +10,7 @@ import {
   ArrowLeftRight, Check, X, Scale, Share2, Copy, CheckCircle,
   Plane, DollarSign, Heart, Wifi
 } from 'lucide-react';
+import { OVISuggestionsWidget } from '@/components/ovi/OVISuggestionsWidget';
 import {
   Select,
   SelectContent,
@@ -426,6 +427,13 @@ export default function Compare() {
                 </div>
               </div>
             </ComparisonSection>
+
+            {/* OVI Suggestions Widget */}
+            <OVISuggestionsWidget 
+              simulationType="comparison" 
+              context={{ countryIds: [country1Id, country2Id] }}
+              className="mt-8"
+            />
           </div>
         ) : (
           <div className="text-center py-16 glass-card rounded-xl">

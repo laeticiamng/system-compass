@@ -5092,10 +5092,17 @@
       }
     },
     "suggestions": {
-      "title": "OVI Suggestions",
+      "title": "Suggested OVI readings",
+      "subtitle": "These resources can enrich your reflection after this simulation.",
       "basedOn": "Based on your simulation",
       "explore": "Explore this framework",
-      "dismiss": "Dismiss"
+      "dismiss": "Dismiss",
+      "unlockPro": "Unlock with Pro",
+      "viewAll": "View all OVI content"
+    },
+    "type": {
+      "framework": "Framework",
+      "grid": "Grid"
     }
   },
   "institutions": {
