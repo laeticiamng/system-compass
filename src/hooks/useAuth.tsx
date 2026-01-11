@@ -2,33 +2,18 @@ import { useState, useEffect, createContext, useContext, ReactNode } from 'react
 import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
 
-// Check if test mode is enabled via URL parameter
+// SÉCURITÉ: Mode test désactivé en production
+// Pour réactiver le mode test en développement uniquement, 
+// décommenter et ajouter une vérification d'environnement
 const isTestMode = () => {
-  if (typeof window !== 'undefined') {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('test') === 'true';
-  }
+  // Mode test désactivé pour des raisons de sécurité
+  // Ne pas activer en production!
   return false;
 };
 
-// Mock user for test mode
-const TEST_USER: User = {
-  id: 'test-user-id-12345',
-  email: 'testeur@pyramidcompass.com',
-  app_metadata: {},
-  user_metadata: { display_name: 'Testeur' },
-  aud: 'authenticated',
-  created_at: new Date().toISOString(),
-};
-
-const TEST_SESSION: Session = {
-  access_token: 'test-access-token',
-  refresh_token: 'test-refresh-token',
-  expires_in: 3600,
-  expires_at: Math.floor(Date.now() / 1000) + 3600,
-  token_type: 'bearer',
-  user: TEST_USER,
-};
+// Ces constantes ne sont plus utilisées mais conservées pour référence
+const TEST_USER: User | null = null;
+const TEST_SESSION: Session | null = null;
 
 interface AuthContextType {
   user: User | null;

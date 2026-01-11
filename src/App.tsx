@@ -55,6 +55,7 @@ import Partners from "./pages/Partners";
 import LatentModule from "./pages/LatentModule";
 import IrreversaModule from "./pages/IrreversaModule";
 import Usage from "./pages/Usage";
+import NotificationSettings from "./pages/NotificationSettings";
 
 const queryClient = new QueryClient();
 
@@ -118,6 +119,7 @@ const App = () => (
                     <Route path="/latent" element={<LatentModule />} />
                     <Route path="/irreversa" element={<IrreversaModule />} />
                     <Route path="/usage" element={<Usage />} />
+                    <Route path="/settings/notifications" element={<NotificationSettings />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </main>
