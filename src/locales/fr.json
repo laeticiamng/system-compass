@@ -5052,6 +5052,16 @@
     "comingSoonDesc": "Nous travaillons sur l'analyse approfondie de ce pays. Revenez bientôt.",
     "tagsTitle": "Indicateurs système (1-5)",
     "tabs": {
+      "power": "Pouvoir",
+      "social": "Social",
+      "unspoken": "Non-dits",
+      "negotiation": "Négociation",
+      "trust": "Confiance",
+      "careers": "Plafonds",
+      "exit": "Sortie",
+      "time": "Temps",
+      "geo": "Géopolitique",
+      "history": "Histoire",
       "powerMap": "Carte du pouvoir",
       "socialOS": "Système social",
       "strategies": "Stratégies",
@@ -5059,6 +5069,76 @@
       "psychoSocio": "Psycho/Socio",
       "geopolitics": "Géopolitique",
       "historical": "Héritage historique"
+    },
+    "unspokenRules": {
+      "title": "Règles non-dites",
+      "subtitle": "Ce qui n'est jamais dit mais toujours attendu",
+      "rule": "Règle implicite",
+      "consequence": "Conséquence si ignorée",
+      "howToKnow": "Comment le savoir",
+      "noData": "Données non disponibles pour ce pays"
+    },
+    "negotiationStyles": {
+      "title": "Styles de négociation",
+      "subtitle": "Comment les choses se négocient vraiment",
+      "context": "Contexte",
+      "style": "Style attendu",
+      "taboo": "Tabou à éviter",
+      "noData": "Données non disponibles pour ce pays"
+    },
+    "trustSignals": {
+      "title": "Signaux de confiance",
+      "subtitle": "Ce qui inspire confiance dans ce système",
+      "trust": "Ce qui inspire confiance",
+      "distrust": "Ce qui éveille la méfiance",
+      "noData": "Données non disponibles pour ce pays"
+    },
+    "exitDifficulty": {
+      "title": "Difficulté de sortie",
+      "subtitle": "Comment et à quel coût on quitte le système",
+      "scenario": "Scénario",
+      "difficulty": "Difficulté",
+      "timeline": "Délai",
+      "hiddenCosts": "Coûts cachés",
+      "noData": "Données non disponibles pour ce pays"
+    },
+    "careerCeiling": {
+      "title": "Plafonds de carrière",
+      "subtitle": "Les limites invisibles selon les profils",
+      "profile": "Profil",
+      "ceiling": "Plafond",
+      "workaround": "Contournement possible",
+      "noData": "Données non disponibles pour ce pays"
+    },
+    "hiddenHierarchies": {
+      "title": "Hiérarchies cachées",
+      "subtitle": "Les structures de pouvoir invisibles",
+      "hierarchy": "Hiérarchie",
+      "howItWorks": "Comment ça fonctionne",
+      "accessMethod": "Comment y accéder",
+      "noData": "Données non disponibles pour ce pays"
+    },
+    "tabooTopics": {
+      "title": "Sujets tabous",
+      "subtitle": "Ce qu'il ne faut jamais aborder",
+      "noData": "Données non disponibles pour ce pays"
+    },
+    "decisionMaking": {
+      "title": "Prise de décision",
+      "subtitle": "Qui décide vraiment et comment",
+      "context": "Contexte",
+      "whoDecides": "Qui décide",
+      "howLong": "Combien de temps",
+      "influenceMethod": "Comment influencer",
+      "noData": "Données non disponibles pour ce pays"
+    },
+    "timePerception": {
+      "title": "Perception du temps",
+      "subtitle": "Comment le temps est perçu localement",
+      "aspect": "Aspect",
+      "localNorm": "Norme locale",
+      "foreignerTrap": "Piège pour étrangers",
+      "noData": "Données non disponibles pour ce pays"
     },
     "powerMap": {
       "title": "Carte du pouvoir",
@@ -5139,6 +5219,89 @@
       "institutions": "Institutions",
       "merit": "Mérite",
       "risk": "Risque"
+    }
+  },
+  "variant": {
+    "tabs": {
+      "overview": "Aperçu",
+      "typicalDay": "Journée type",
+      "yearOne": "Année 1",
+      "mistakes": "Erreurs",
+      "admin": "Admin",
+      "costs": "Coûts",
+      "culture": "Culture",
+      "communities": "Communautés"
+    },
+    "typicalDay": {
+      "title": "Journée type",
+      "subtitle": "À quoi ressemble une journée typique",
+      "time": "Heure",
+      "activity": "Activité",
+      "culturalNote": "Note culturelle",
+      "noData": "Données non disponibles pour ce pays"
+    },
+    "yearOne": {
+      "title": "Réalité de la première année",
+      "subtitle": "Ce qui vous attend vraiment",
+      "month": "Mois",
+      "milestone": "Étape clé",
+      "difficulty": "Difficulté",
+      "tip": "Conseil",
+      "noData": "Données non disponibles pour ce pays"
+    },
+    "successTimeline": {
+      "title": "Chronologie réaliste du succès",
+      "subtitle": "Objectifs réalistes par période",
+      "monthRange": "Période",
+      "realisticGoal": "Objectif réaliste",
+      "warning": "Attention",
+      "noData": "Données non disponibles"
+    },
+    "mistakes": {
+      "title": "Erreurs courantes par phase",
+      "subtitle": "Ce que les nouveaux arrivants font mal",
+      "phase": "Phase",
+      "mistake": "Erreur",
+      "consequence": "Conséquence",
+      "prevention": "Prévention",
+      "noData": "Données non disponibles pour ce pays"
+    },
+    "admin": {
+      "title": "Étapes administratives cachées",
+      "subtitle": "Ce que personne ne vous dit",
+      "step": "Étape",
+      "timeEstimate": "Délai estimé",
+      "difficulty": "Difficulté",
+      "insiderTip": "Conseil d'initié",
+      "noData": "Données non disponibles pour ce pays"
+    },
+    "costs": {
+      "title": "Coûts réels",
+      "subtitle": "Budget officiel vs réalité",
+      "category": "Catégorie",
+      "officialCost": "Coût officiel",
+      "realCost": "Coût réel",
+      "notes": "Notes",
+      "noData": "Données non disponibles pour ce pays"
+    },
+    "culture": {
+      "title": "Chocs culturels",
+      "subtitle": "Ce qui surprend les étrangers",
+      "shock": "Choc culturel",
+      "explanation": "Explication",
+      "adaptationTime": "Temps d'adaptation",
+      "surprises": "Surprises locales",
+      "noData": "Données non disponibles pour ce pays"
+    },
+    "communities": {
+      "title": "Communautés d'expatriés",
+      "subtitle": "Où trouver du soutien",
+      "name": "Nom",
+      "location": "Localisation",
+      "size": "Taille",
+      "focus": "Focus",
+      "entryDifficulty": "Difficulté d'accès",
+      "noData": "Données non disponibles pour ce pays"
     }
   },
   "tags": {

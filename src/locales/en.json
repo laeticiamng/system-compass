@@ -4644,6 +4644,16 @@
     "comingSoonDesc": "We're working on the in-depth analysis of this country. Come back soon.",
     "tagsTitle": "System indicators (1-5)",
     "tabs": {
+      "power": "Power",
+      "social": "Social",
+      "unspoken": "Unspoken",
+      "negotiation": "Negotiation",
+      "trust": "Trust",
+      "careers": "Ceilings",
+      "exit": "Exit",
+      "time": "Time",
+      "geo": "Geopolitics",
+      "history": "History",
       "powerMap": "Power Map",
       "socialOS": "Social OS",
       "strategies": "Strategies",
@@ -4651,6 +4661,76 @@
       "psychoSocio": "Psycho/Socio",
       "geopolitics": "Geopolitics",
       "historical": "Historical Legacy"
+    },
+    "unspokenRules": {
+      "title": "Unspoken Rules",
+      "subtitle": "What is never said but always expected",
+      "rule": "Implicit Rule",
+      "consequence": "Consequence if Ignored",
+      "howToKnow": "How to Know",
+      "noData": "Data not available for this country"
+    },
+    "negotiationStyles": {
+      "title": "Negotiation Styles",
+      "subtitle": "How things are really negotiated",
+      "context": "Context",
+      "style": "Expected Style",
+      "taboo": "Taboo to Avoid",
+      "noData": "Data not available for this country"
+    },
+    "trustSignals": {
+      "title": "Trust Signals",
+      "subtitle": "What inspires trust in this system",
+      "trust": "What Inspires Trust",
+      "distrust": "What Raises Suspicion",
+      "noData": "Data not available for this country"
+    },
+    "exitDifficulty": {
+      "title": "Exit Difficulty",
+      "subtitle": "How and at what cost one leaves the system",
+      "scenario": "Scenario",
+      "difficulty": "Difficulty",
+      "timeline": "Timeline",
+      "hiddenCosts": "Hidden Costs",
+      "noData": "Data not available for this country"
+    },
+    "careerCeiling": {
+      "title": "Career Ceilings",
+      "subtitle": "Invisible limits by profile",
+      "profile": "Profile",
+      "ceiling": "Ceiling",
+      "workaround": "Possible Workaround",
+      "noData": "Data not available for this country"
+    },
+    "hiddenHierarchies": {
+      "title": "Hidden Hierarchies",
+      "subtitle": "Invisible power structures",
+      "hierarchy": "Hierarchy",
+      "howItWorks": "How It Works",
+      "accessMethod": "How to Access",
+      "noData": "Data not available for this country"
+    },
+    "tabooTopics": {
+      "title": "Taboo Topics",
+      "subtitle": "What you should never bring up",
+      "noData": "Data not available for this country"
+    },
+    "decisionMaking": {
+      "title": "Decision Making",
+      "subtitle": "Who really decides and how",
+      "context": "Context",
+      "whoDecides": "Who Decides",
+      "howLong": "How Long",
+      "influenceMethod": "How to Influence",
+      "noData": "Data not available for this country"
+    },
+    "timePerception": {
+      "title": "Time Perception",
+      "subtitle": "How time is perceived locally",
+      "aspect": "Aspect",
+      "localNorm": "Local Norm",
+      "foreignerTrap": "Foreigner Trap",
+      "noData": "Data not available for this country"
     },
     "powerMap": {
       "title": "Power Map",
@@ -4731,6 +4811,89 @@
       "institutions": "Institutions",
       "merit": "Merit",
       "risk": "Risk"
+    }
+  },
+  "variant": {
+    "tabs": {
+      "overview": "Overview",
+      "typicalDay": "Typical Day",
+      "yearOne": "Year One",
+      "mistakes": "Mistakes",
+      "admin": "Admin",
+      "costs": "Costs",
+      "culture": "Culture",
+      "communities": "Communities"
+    },
+    "typicalDay": {
+      "title": "Typical Day",
+      "subtitle": "What a typical day looks like",
+      "time": "Time",
+      "activity": "Activity",
+      "culturalNote": "Cultural Note",
+      "noData": "Data not available for this country"
+    },
+    "yearOne": {
+      "title": "Year One Reality",
+      "subtitle": "What really awaits you",
+      "month": "Month",
+      "milestone": "Key Milestone",
+      "difficulty": "Difficulty",
+      "tip": "Tip",
+      "noData": "Data not available for this country"
+    },
+    "successTimeline": {
+      "title": "Realistic Success Timeline",
+      "subtitle": "Realistic goals by period",
+      "monthRange": "Period",
+      "realisticGoal": "Realistic Goal",
+      "warning": "Warning",
+      "noData": "Data not available"
+    },
+    "mistakes": {
+      "title": "Common Mistakes by Phase",
+      "subtitle": "What newcomers get wrong",
+      "phase": "Phase",
+      "mistake": "Mistake",
+      "consequence": "Consequence",
+      "prevention": "Prevention",
+      "noData": "Data not available for this country"
+    },
+    "admin": {
+      "title": "Hidden Admin Steps",
+      "subtitle": "What nobody tells you",
+      "step": "Step",
+      "timeEstimate": "Time Estimate",
+      "difficulty": "Difficulty",
+      "insiderTip": "Insider Tip",
+      "noData": "Data not available for this country"
+    },
+    "costs": {
+      "title": "Real Costs",
+      "subtitle": "Official budget vs reality",
+      "category": "Category",
+      "officialCost": "Official Cost",
+      "realCost": "Real Cost",
+      "notes": "Notes",
+      "noData": "Data not available for this country"
+    },
+    "culture": {
+      "title": "Culture Shocks",
+      "subtitle": "What surprises foreigners",
+      "shock": "Culture Shock",
+      "explanation": "Explanation",
+      "adaptationTime": "Adaptation Time",
+      "surprises": "Local Surprises",
+      "noData": "Data not available for this country"
+    },
+    "communities": {
+      "title": "Expat Communities",
+      "subtitle": "Where to find support",
+      "name": "Name",
+      "location": "Location",
+      "size": "Size",
+      "focus": "Focus",
+      "entryDifficulty": "Entry Difficulty",
+      "noData": "Data not available for this country"
     }
   },
   "tags": {
