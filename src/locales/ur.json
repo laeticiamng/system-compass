@@ -472,29 +472,52 @@
     }
   },
   "pyramids": {
-    "familial": {
-      "name": "خاندانی",
-      "description": "خاندان اور برادری کے رشتوں سے چلنے والا معاشرہ"
+    "title": "چھ اہرام",
+    "subtitle": "ہر نظام ان میں سے ایک زمرے میں آتا ہے",
+    "examples": "مثالیں",
+    "problemRent": {
+      "label": "مسئلہ کرایہ",
+      "description": "خرابی ہی اثاثہ ہے۔ مسائل حل کرنا آپ کو خطرے میں ڈالتا ہے۔"
     },
-    "communautaire": {
-      "name": "کمیونٹی",
-      "description": "کمیونٹی اور اجتماعی اقدار پر مبنی معاشرہ"
+    "stabilityRedis": {
+      "label": "استحکام تقسیم",
+      "description": "نظام استحکام، تحفظ اور تقسیم نو کو انعام دیتا ہے۔"
     },
-    "etatique": {
-      "name": "ریاستی",
-      "description": "مضبوط ریاست اور ادارہ جاتی ڈھانچوں سے منظم معاشرہ"
+    "competenceTrust": {
+      "label": "قابلیت اعتماد",
+      "description": "حل ہی اثاثہ ہے۔ سختی اور قابلیت کو انعام دیا جاتا ہے۔"
     },
-    "marche": {
-      "name": "مارکیٹ",
-      "description": "معاشی آزادی اور مسابقت سے چلنے والا معاشرہ"
+    "growthRisk": {
+      "label": "نمو خطرہ",
+      "description": "نمو ہی اثاثہ ہے۔ رفتار، پیمانہ بندی اور سرمایہ کو انعام دیا جاتا ہے۔"
     },
-    "religieux": {
-      "name": "مذہبی",
-      "description": "مذہبی اقدار اور روایات سے تشکیل پانے والا معاشرہ"
+    "hybridTransition": {
+      "label": "ہائبرڈ منتقلی",
+      "description": "متعدد منطقیں ایک ساتھ موجود ہیں۔ تضادات اور تیز تبدیلیوں کو نیویگیٹ کریں۔"
     },
-    "technocratique": {
-      "name": "ٹیکنوکریٹک",
-      "description": "ٹیکنالوجی اور ماہرانہ علم سے چلنے والا معاشرہ"
+    "resourceExtraction": {
+      "label": "وسائل نکالنا",
+      "description": "قدرتی وسائل نظام کی مالی معاونت کرتے ہیں۔ بہاؤ کے قریب ہونا سب سے اہم ہے۔"
+    },
+    "characteristics": {
+      "corruption": "کرپشن",
+      "informality": "غیر رسمیت",
+      "networks": "نیٹ ورکس",
+      "bureaucracy": "بیوروکریسی",
+      "protection": "تحفظ",
+      "redistribution": "تقسیم نو",
+      "precision": "درستگی",
+      "credentials": "اسناد",
+      "trust": "اعتماد",
+      "speed": "رفتار",
+      "capital": "سرمایہ",
+      "scalability": "پیمانہ بندی",
+      "contradictions": "تضادات",
+      "change": "تبدیلی",
+      "adaptation": "موافقت",
+      "resources": "وسائل",
+      "proximity": "قربت",
+      "distribution": "تقسیم"
     }
   },
   "dashboard": {
