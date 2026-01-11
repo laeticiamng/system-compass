@@ -296,6 +296,75 @@ export type Database = {
         }
         Relationships: []
       }
+      country_governance: {
+        Row: {
+          attractiveness: Json | null
+          capture_risk_notes: string | null
+          capture_risk_score: number
+          competition: Json | null
+          country_id: string
+          created_at: string
+          customs_logistics: Json | null
+          ecosystem_notes: string | null
+          ecosystem_score: number
+          fiscal_checklist: Json | null
+          friction_notes: string | null
+          friction_risks: Json | null
+          friction_score: number
+          id: string
+          operational_notes: string | null
+          operational_score: number
+          stability_notes: string | null
+          stability_score: number
+          state_of_art: Json | null
+          updated_at: string
+        }
+        Insert: {
+          attractiveness?: Json | null
+          capture_risk_notes?: string | null
+          capture_risk_score?: number
+          competition?: Json | null
+          country_id: string
+          created_at?: string
+          customs_logistics?: Json | null
+          ecosystem_notes?: string | null
+          ecosystem_score?: number
+          fiscal_checklist?: Json | null
+          friction_notes?: string | null
+          friction_risks?: Json | null
+          friction_score?: number
+          id?: string
+          operational_notes?: string | null
+          operational_score?: number
+          stability_notes?: string | null
+          stability_score?: number
+          state_of_art?: Json | null
+          updated_at?: string
+        }
+        Update: {
+          attractiveness?: Json | null
+          capture_risk_notes?: string | null
+          capture_risk_score?: number
+          competition?: Json | null
+          country_id?: string
+          created_at?: string
+          customs_logistics?: Json | null
+          ecosystem_notes?: string | null
+          ecosystem_score?: number
+          fiscal_checklist?: Json | null
+          friction_notes?: string | null
+          friction_risks?: Json | null
+          friction_score?: number
+          id?: string
+          operational_notes?: string | null
+          operational_score?: number
+          stability_notes?: string | null
+          stability_score?: number
+          state_of_art?: Json | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       country_intelligence: {
         Row: {
           adaptive_behaviors: Json
@@ -1835,6 +1904,48 @@ export type Database = {
           is_active?: boolean
           name?: string
           steps?: Json
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_governance_notes: {
+        Row: {
+          country_id: string
+          created_at: string
+          governance_map: Json | null
+          id: string
+          notes: string | null
+          partner_reliability: Json | null
+          poc_plan: Json | null
+          risk_register: Json | null
+          timeline_scenarios: Json | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          country_id: string
+          created_at?: string
+          governance_map?: Json | null
+          id?: string
+          notes?: string | null
+          partner_reliability?: Json | null
+          poc_plan?: Json | null
+          risk_register?: Json | null
+          timeline_scenarios?: Json | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          country_id?: string
+          created_at?: string
+          governance_map?: Json | null
+          id?: string
+          notes?: string | null
+          partner_reliability?: Json | null
+          poc_plan?: Json | null
+          risk_register?: Json | null
+          timeline_scenarios?: Json | null
           updated_at?: string
           user_id?: string
         }

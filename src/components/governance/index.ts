@@ -1,4 +1,5 @@
 // Governance & Terrain Components - Barrel Export
+// Governance Terrain Components
 export { TerrainStateOfArt } from './TerrainStateOfArt';
 export { TerrainAttractiveness } from './TerrainAttractiveness';
 export { TerrainFrictionRisks } from './TerrainFrictionRisks';
@@ -11,3 +12,6 @@ export { TerrainPOCPlanner } from './TerrainPOCPlanner';
 export { TerrainTimeline } from './TerrainTimeline';
 export { GovernanceMap } from './GovernanceMap';
 export { CountryGovernanceScore } from './CountryGovernanceScore';
+
+// Types
+export type { GovernanceScore, UserGovernanceNotes } from '@/hooks/useCountryGovernance';
