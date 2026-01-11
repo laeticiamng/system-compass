@@ -21,6 +21,7 @@ interface CountryPdfExportProps {
   intelligenceData?: any;
   variantsData?: any;
   tagsData?: any;
+  governanceData?: any;
 }
 
 interface ExportOptions {
@@ -30,6 +31,7 @@ interface ExportOptions {
   includeIntelligence: boolean;
   includeVariants: boolean;
   includeTags: boolean;
+  includeGovernance: boolean;
 }
 
 export function CountryPdfExport({
@@ -37,6 +39,7 @@ export function CountryPdfExport({
   intelligenceData,
   variantsData,
   tagsData,
+  governanceData,
 }: CountryPdfExportProps) {
   const { t } = useTranslation();
   const { toast } = useToast();
@@ -49,6 +52,7 @@ export function CountryPdfExport({
     includeIntelligence: !!intelligenceData,
     includeVariants: !!variantsData,
     includeTags: !!tagsData,
+    includeGovernance: !!governanceData,
   });
 
   const generatePdf = async () => {
@@ -241,6 +245,98 @@ export function CountryPdfExport({
         });
       }
 
+      // Governance (B2B)
+      if (options.includeGovernance && governanceData) {
+        addSectionTitle(t('governance.title', 'Gouvernance & Terrain'));
+        
+        // Scores
+        const scoreLabels: Record<string, string> = {
+          stability_score: 'Stabilité institutionnelle',
+          friction_score: 'Friction opérationnelle',
+          operational_score: 'Score opérationnel',
+          capture_risk_score: 'Risque de capture',
+          ecosystem_score: 'Écosystème',
+        };
+
+        Object.entries(scoreLabels).forEach(([key, label]) => {
+          const value = governanceData[key];
+          if (typeof value === 'number') {
+            const barWidth = (value / 5) * (contentWidth - 50);
+            const color = value >= 4 ? [34, 197, 94] : value >= 3 ? [245, 158, 11] : [239, 68, 68];
+            pdf.setFillColor(color[0], color[1], color[2]);
+            pdf.rect(margin, yPos - 3, barWidth, 5, 'F');
+            pdf.setFontSize(9);
+            pdf.text(`${label}: ${value}/5`, margin + barWidth + 5, yPos);
+            yPos += 8;
+          }
+        });
+
+        // State of Art checklist
+        if (governanceData.state_of_art?.length) {
+          yPos += 3;
+          addText('État de l\'art:', 10, true);
+          governanceData.state_of_art.slice(0, 6).forEach((item: any) => {
+            const status = item.checked ? '✓' : '○';
+            addText(`${status} ${item.label}`, 9);
+          });
+        }
+
+        // Attractiveness
+        if (governanceData.attractiveness) {
+          yPos += 3;
+          addText('Attractivité terrain:', 10, true);
+          const attr = governanceData.attractiveness;
+          if (attr.demand) addText(`• Demande: ${attr.demand}/5`, 9);
+          if (attr.easeOfDoing) addText(`• Facilité d'implantation: ${attr.easeOfDoing}/5`, 9);
+          if (attr.marketAccess) addText(`• Accès marché: ${attr.marketAccess}/5`, 9);
+          if (attr.signals?.length) {
+            addText('Signaux clés:', 9, true);
+            attr.signals.slice(0, 3).forEach((s: string) => addText(`• ${s}`, 9));
+          }
+        }
+
+        // Competition
+        if (governanceData.competition?.length) {
+          yPos += 3;
+          addText('Concurrence identifiée:', 10, true);
+          governanceData.competition.slice(0, 4).forEach((comp: any) => {
+            addText(`• ${comp.name} (${comp.type}) - ${comp.implantation}`, 9);
+          });
+        }
+
+        // Friction Risks
+        if (governanceData.friction_risks?.redFlags?.length) {
+          yPos += 3;
+          addText('Points de vigilance:', 10, true, '#ef4444');
+          governanceData.friction_risks.redFlags.slice(0, 4).forEach((rf: any) => {
+            const severity = rf.severity === 'high' ? '🔴' : rf.severity === 'medium' ? '🟠' : '🟡';
+            addText(`${severity} ${rf.label}`, 9);
+          });
+        }
+
+        // Fiscal Checklist
+        if (governanceData.fiscal_checklist?.length) {
+          yPos += 3;
+          addText('Checklist fiscale:', 10, true);
+          governanceData.fiscal_checklist.slice(0, 5).forEach((item: any) => {
+            const status = item.checked ? '✓' : '○';
+            const critical = item.critical ? ' (critique)' : '';
+            addText(`${status} ${item.label}${critical}`, 9);
+          });
+        }
+
+        // Customs & Logistics
+        if (governanceData.customs_logistics?.length) {
+          yPos += 3;
+          addText('Douanes & Logistique:', 10, true);
+          governanceData.customs_logistics.slice(0, 4).forEach((item: any) => {
+            const status = item.checked ? '✓' : '○';
+            const risk = item.riskLevel === 'high' ? '⚠️' : '';
+            addText(`${status} ${item.label} ${risk}`, 9);
+          });
+        }
+      }
+
       // Footer
       const footerY = pdf.internal.pageSize.getHeight() - 15;
       pdf.setFontSize(8);
@@ -298,6 +394,7 @@ export function CountryPdfExport({
             { key: 'includeIntelligence', label: t('export.intelligence', 'Intelligence Layer'), always: false, available: !!intelligenceData },
             { key: 'includeVariants', label: t('export.variants', 'Variants'), always: false, available: !!variantsData },
             { key: 'includeTags', label: t('export.tags', 'Tags/Indicateurs'), always: false, available: !!tagsData },
+            { key: 'includeGovernance', label: t('export.governance', 'Gouvernance & Terrain (B2B)'), always: false, available: !!governanceData },
           ].map(item => (
             <div key={item.key} className="flex items-center space-x-2">
               <Checkbox

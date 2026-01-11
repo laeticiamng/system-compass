@@ -7589,5 +7589,166 @@
     "noActiveBenefits": "Aucun avantage actif",
     "benefitsBasedOnContributions": "Les avantages sont accordés en fonction de vos contributions vérifiées.",
     "expiresOn": "Expire le"
+  },
+  "terrainGovernance": {
+    "title": "Gouvernance & Terrain",
+    "description": "Évaluez l'environnement opérationnel et institutionnel du pays cible",
+    "tabs": {
+      "overview": "Vue d'ensemble",
+      "stateOfArt": "État de l'art",
+      "attractiveness": "Attractivité",
+      "competition": "Concurrence",
+      "friction": "Risques friction",
+      "fiscal": "Fiscalité",
+      "customs": "Douanes & Logistique",
+      "partners": "Fiabilité partenaires",
+      "poc": "POC Planner",
+      "timeline": "Timeline",
+      "stakeholders": "Acteurs clés"
+    },
+    "scores": {
+      "stability": "Stabilité institutionnelle",
+      "stabilityDesc": "Prévisibilité des règles et continuité des politiques publiques",
+      "friction": "Score de friction",
+      "frictionDesc": "Complexité administrative et obstacles opérationnels",
+      "operational": "Score opérationnel",
+      "operationalDesc": "Facilité d'exécution au quotidien",
+      "captureRisk": "Risque de capture",
+      "captureRiskDesc": "Probabilité de dépendance forcée ou d'interférences",
+      "ecosystem": "Écosystème",
+      "ecosystemDesc": "Qualité du réseau d'acteurs et services disponibles"
+    },
+    "stateOfArt": {
+      "title": "État de l'art",
+      "description": "Checklist de la connaissance terrain avant engagement",
+      "items": {
+        "legal": "Cadre juridique maîtrisé",
+        "market": "Étude de marché réalisée",
+        "culture": "Codes culturels identifiés",
+        "admin": "Processus administratifs cartographiés",
+        "network": "Réseau local activé",
+        "risks": "Risques terrain documentés"
+      }
+    },
+    "attractiveness": {
+      "title": "Attractivité terrain",
+      "description": "Évaluez le potentiel réel du marché",
+      "demand": "Demande locale",
+      "easeOfDoing": "Facilité d'implantation",
+      "marketAccess": "Accès au marché",
+      "localDynamics": "Dynamiques locales",
+      "signals": "Signaux clés",
+      "addSignal": "Ajouter un signal"
+    },
+    "competition": {
+      "title": "Analyse concurrentielle",
+      "description": "Cartographiez les acteurs présents",
+      "addCompetitor": "Ajouter un concurrent",
+      "name": "Nom",
+      "type": "Type",
+      "implantation": "Implantation",
+      "maturity": "Maturité",
+      "types": {
+        "local": "Local",
+        "international": "International",
+        "stateOwned": "Étatique",
+        "informal": "Informel"
+      }
+    },
+    "frictionRisks": {
+      "title": "Risques de friction",
+      "description": "Points de blocage potentiels",
+      "redFlags": "Red Flags",
+      "protections": "Protections en place",
+      "addFlag": "Ajouter un red flag",
+      "severity": {
+        "low": "Faible",
+        "medium": "Moyen",
+        "high": "Élevé"
+      }
+    },
+    "fiscal": {
+      "title": "Checklist fiscale",
+      "description": "Points fiscaux critiques à vérifier",
+      "critical": "Critique",
+      "items": {
+        "taxRegime": "Régime fiscal identifié",
+        "vat": "TVA / Taxes indirectes vérifiées",
+        "treaties": "Conventions fiscales applicables",
+        "transferPricing": "Prix de transfert documentés",
+        "localTaxes": "Taxes locales identifiées",
+        "compliance": "Obligations déclaratives connues"
+      }
+    },
+    "customs": {
+      "title": "Douanes & Logistique",
+      "description": "Risques liés à l'import/export",
+      "riskLevel": "Niveau de risque",
+      "items": {
+        "importCodes": "Codes douaniers vérifiés",
+        "delays": "Délais moyens confirmés",
+        "dependencies": "Dépendances logistiques identifiées",
+        "certifications": "Certifications requises obtenues",
+        "storage": "Solutions de stockage validées"
+      }
+    },
+    "partners": {
+      "title": "Fiabilité des partenaires",
+      "description": "Évaluez vos partenaires locaux",
+      "addPartner": "Ajouter un partenaire",
+      "criteria": {
+        "terrain": "Présence terrain",
+        "references": "Références vérifiables",
+        "transparency": "Transparence",
+        "alignment": "Alignement intérêts",
+        "capacity": "Capacité d'exécution"
+      },
+      "status": {
+        "unverified": "Non vérifié",
+        "inProgress": "En cours",
+        "verified": "Vérifié"
+      }
+    },
+    "poc": {
+      "title": "POC Planner",
+      "description": "Planifiez votre preuve de concept",
+      "hypothesis": "Hypothèse principale",
+      "maxBudget": "Budget maximum",
+      "duration": "Durée estimée",
+      "successCriteria": "Critères de succès",
+      "stopCriteria": "Critères d'arrêt",
+      "addCriterion": "Ajouter un critère"
+    },
+    "timeline": {
+      "title": "Scénarios timeline",
+      "description": "Estimez les délais selon différents scénarios",
+      "optimistic": "Optimiste",
+      "realistic": "Réaliste",
+      "pessimistic": "Pessimiste",
+      "buffer": "Marge de sécurité",
+      "cashflowRisks": "Risques cashflow"
+    },
+    "stakeholders": {
+      "title": "Cartographie des acteurs",
+      "description": "Identifiez les acteurs clés et leurs pouvoirs",
+      "addStakeholder": "Ajouter un acteur",
+      "name": "Nom",
+      "role": "Rôle",
+      "level": {
+        "official": "Officiel",
+        "influential": "Influent",
+        "blocking": "Bloquant"
+      },
+      "power": {
+        "sign": "Peut signer",
+        "block": "Peut bloquer",
+        "access": "Donne accès"
+      },
+      "reliability": "Fiabilité",
+      "redFlag": "Red Flag"
+    },
+    "export": {
+      "governance": "Gouvernance & Terrain (B2B)"
+    }
   }
 }
