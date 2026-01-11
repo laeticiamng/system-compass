@@ -5760,6 +5760,7 @@
   "riskContexts": {
     "title": "Risk Contexts",
     "subtitle": "What many won't tell you — but you need to know",
+    "subtitleDynamic": "Specific risks for a {{origin}} → {{destination}} journey",
     "intro": "Before committing your money, time, or life to an international trajectory, it's crucial to distinguish fantasies from realities, and legal opportunities from dangerous dead-ends.",
     "examples": "Common examples",
     "consequences": "Consequences",
@@ -5817,6 +5818,48 @@
         "0": "Prolonged precarity despite 'successful' departure",
         "1": "Inability to help family back home",
         "2": "Forced return after exhausting resources"
+      }
+    },
+    "healthcareAbroad": {
+      "title": "Healthcare Abroad",
+      "desc": "Healthcare systems vary enormously — anticipation is essential",
+      "examples": {
+        "0": "Hospitalization without insurance = bills of tens of thousands of euros",
+        "1": "Chronic diseases excluded from travel insurance",
+        "2": "Medical repatriation costing €10,000 to €100,000"
+      },
+      "consequences": {
+        "0": "Financial ruin in case of medical emergency",
+        "1": "Inability to access necessary care",
+        "2": "Forced return for health reasons"
+      }
+    },
+    "culturalShock": {
+      "title": "Culture Shock",
+      "desc": "Adaptation is often longer and harder than anticipated",
+      "examples": {
+        "0": "Very different social and professional codes",
+        "1": "Isolation and loneliness in the first months",
+        "2": "Confusion with local administrative systems"
+      },
+      "consequences": {
+        "0": "Depression, burnout and emotional exhaustion",
+        "1": "Professional failure despite skills",
+        "2": "Premature return and feeling of failure"
+      }
+    },
+    "fiscalComplexity": {
+      "title": "Tax Complexity",
+      "desc": "Tax rules between countries are often misunderstood",
+      "examples": {
+        "0": "Unexpected double taxation",
+        "1": "Reporting obligations in country of origin maintained",
+        "2": "Advantageous tax statuses with hidden conditions"
+      },
+      "consequences": {
+        "0": "Tax reassessment and significant penalties",
+        "1": "Loss of social rights (pension, unemployment)",
+        "2": "Freezing of bank accounts or assets"
       }
     },
     "warningTitle": "What Pyramid Compass can do for you",

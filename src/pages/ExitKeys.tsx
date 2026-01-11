@@ -1103,8 +1103,15 @@ export default function ExitKeys() {
                 initialProfessionId={professionId} 
               />
 
-              {/* Risk Contexts Section */}
-              <RiskContextsSection />
+              {/* Risk Contexts Section - Dynamic based on origin/destination */}
+              <RiskContextsSection 
+                originCountryId={birthCountryId}
+                originCountryName={birthCountry?.name}
+                originPyramidType={birthCountry?.pyramidType}
+                destinationCountryId={currentCountryId}
+                destinationCountryName={currentCountry?.name}
+                destinationPyramidType={currentCountry?.pyramidType}
+              />
 
               {/* Risk Prevention - Contextualized based on user profile */}
               <RiskPrevention 
