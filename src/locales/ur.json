@@ -26,7 +26,53 @@
     "description": "تفصیل",
     "submit": "جمع کرائیں",
     "sending": "بھیجا جا رہا ہے...",
-    "loginRequired": "لاگ ان درکار ہے"
+    "loginRequired": "لاگ ان درکار ہے",
+    "search": "تلاش",
+    "filter": "فلٹر",
+    "reset": "ری سیٹ",
+    "apply": "لاگو کریں",
+    "view": "دیکھیں",
+    "download": "ڈاؤنلوڈ",
+    "export": "برآمد",
+    "import": "درآمد",
+    "share": "شیئر",
+    "copy": "کاپی",
+    "copied": "کاپی ہو گیا!",
+    "add": "شامل کریں",
+    "remove": "ہٹائیں",
+    "clear": "صاف کریں",
+    "noData": "کوئی ڈیٹا نہیں",
+    "error": "خرابی",
+    "success": "کامیاب",
+    "warning": "انتباہ",
+    "info": "معلومات",
+    "name": "نام",
+    "email": "ای میل",
+    "password": "پاس ورڈ",
+    "status": "حیثیت",
+    "actions": "کارروائیاں",
+    "details": "تفصیلات",
+    "settings": "ترتیبات",
+    "profile": "پروفائل",
+    "help": "مدد",
+    "logout": "لاگ آؤٹ",
+    "login": "لاگ ان",
+    "signup": "سائن اپ",
+    "home": "ہوم",
+    "about": "بارے میں",
+    "contact": "رابطہ",
+    "privacy": "رازداری",
+    "terms": "شرائط",
+    "language": "زبان",
+    "theme": "تھیم",
+    "dark": "گہرا",
+    "light": "ہلکا",
+    "active": "فعال",
+    "inactive": "غیر فعال",
+    "completed": "مکمل",
+    "pending": "زیر التواء",
+    "failed": "ناکام",
+    "processing": "پروسیسنگ"
   },
   "errors": {
     "rateLimited": "بہت زیادہ درخواستیں۔ براہ کرم تھوڑی دیر بعد دوبارہ کوشش کریں۔",
@@ -35,15 +81,31 @@
     "networkError": "نیٹ ورک خرابی۔ براہ کرم اپنا کنکشن چیک کریں۔",
     "unauthorized": "آپ کو لاگ ان ہونا ضروری ہے۔",
     "notFound": "وسائل نہیں ملے۔",
-    "serverError": "سرور خرابی۔ براہ کرم دوبارہ کوشش کریں۔"
+    "serverError": "سرور خرابی۔ براہ کرم دوبارہ کوشش کریں۔",
+    "validationError": "توثیق کی خرابی",
+    "invalidInput": "غلط ان پٹ",
+    "timeout": "وقت ختم"
   },
   "journey": {
     "profile": "آپ کا پروفائل",
     "options": "آپ کے اختیارات",
-    "keys": "آپ کی چابیاں"
+    "keys": "آپ کی چابیاں",
+    "notStarted": "شروع نہیں ہوا",
+    "inProgress": "جاری ہے",
+    "completed": "مکمل"
   },
   "header": {
-    "simulationDisclaimer": "منظرنامے کی تلاش • کوئی قانونی، مالیاتی یا طبی مشورہ نہیں"
+    "simulationDisclaimer": "منظرنامے کی تلاش • کوئی قانونی، مالیاتی یا طبی مشورہ نہیں",
+    "compass": "کمپاس",
+    "subtitle": "اپنی اگلی زندگی کے لیے اندرونی کمپاس",
+    "home": "ہوم",
+    "countries": "ممالک",
+    "compare": "موازنہ",
+    "exitKeys": "ایگزٹ کیز",
+    "dashboard": "ڈیش بورڈ",
+    "about": "بارے میں",
+    "signIn": "سائن ان",
+    "signOut": "سائن آؤٹ"
   },
   "footer": {
     "explore": "تلاش کریں",
@@ -59,7 +121,11 @@
     "howToRead": "نتائج کیسے پڑھیں",
     "warnings": "انتباہات",
     "disclaimer": "تجزیہ اور سمیلیشن ٹول۔ کوئی قانونی، مالیاتی یا طبی مشورہ نہیں۔",
-    "learnMore": "مزید جانیں"
+    "learnMore": "مزید جانیں",
+    "contact": "رابطہ",
+    "privacy": "رازداری کی پالیسی",
+    "terms": "استعمال کی شرائط",
+    "copyright": "© {{year}} کمپاس۔ جملہ حقوق محفوظ ہیں۔"
   },
   "nav": {
     "home": "ہوم",
@@ -71,7 +137,13 @@
     "profile": "پروفائل",
     "signIn": "سائن ان",
     "signOut": "سائن آؤٹ",
-    "worldMap": "عالمی نقشہ"
+    "worldMap": "عالمی نقشہ",
+    "pyramidTypes": "اہرام کی اقسام",
+    "howToRead": "کیسے پڑھیں",
+    "about": "بارے میں",
+    "institutions": "ادارے",
+    "resources": "وسائل",
+    "pricing": "قیمتیں"
   },
   "worldMap": {
     "badge": "عالمی تلاش",
@@ -98,7 +170,13 @@
       "size": "بڑے نقطے انٹیلیجنس لیئر والے ممالک کی نشاندہی کرتے ہیں",
       "click": "تفصیلات دیکھنے کے لیے کسی ملک پر کلک کریں",
       "zoom": "زوم اور نیویگیٹ کرنے کے لیے کنٹرولز استعمال کریں"
-    }
+    },
+    "noData": "اس ملک کے لیے ڈیٹا دستیاب نہیں",
+    "loading": "نقشہ لوڈ ہو رہا ہے...",
+    "error": "نقشہ لوڈ کرنے میں ناکام",
+    "reset": "منظر ری سیٹ کریں",
+    "legend": "لیجنڈ",
+    "filters": "فلٹرز"
   },
   "auth": {
     "signIn": "سائن ان",
@@ -112,7 +190,14 @@
     "hasAccount": "پہلے سے اکاؤنٹ ہے؟",
     "orContinueWith": "یا جاری رکھیں",
     "signInWithGoogle": "Google سے سائن ان کریں",
-    "signUpWithGoogle": "Google سے سائن اپ کریں"
+    "signUpWithGoogle": "Google سے سائن اپ کریں",
+    "resetPassword": "پاس ورڈ ری سیٹ کریں",
+    "createAccount": "اکاؤنٹ بنائیں",
+    "welcome": "خوش آمدید",
+    "welcomeBack": "دوبارہ خوش آمدید",
+    "loginSuccess": "کامیابی سے لاگ ان ہوئے",
+    "logoutSuccess": "کامیابی سے لاگ آؤٹ ہوئے",
+    "signupSuccess": "اکاؤنٹ کامیابی سے بنایا گیا"
   },
   "countries": {
     "title": "ممالک",
@@ -124,7 +209,15 @@
       "all": "تمام",
       "region": "خطہ",
       "pyramidType": "پرامڈ قسم"
-    }
+    },
+    "explore": "دریافت کریں",
+    "search": "ممالک تلاش کریں...",
+    "filter": "فلٹر",
+    "sort": "ترتیب دیں",
+    "loading": "ممالک لوڈ ہو رہے ہیں...",
+    "compare": "موازنہ کریں",
+    "region": "علاقہ",
+    "population": "آبادی"
   },
   "countryDetail": {
     "overview": "جائزہ",
@@ -144,7 +237,21 @@
       "profilesStruggle": "مشکل میں پروفائلز",
       "surprises": "حیرتیں",
       "trajectories": "مثالی رفتار"
-    }
+    },
+    "pyramidType": "اہرام کی قسم",
+    "culture": "ثقافت",
+    "economy": "معیشت",
+    "quality": "زندگی کا معیار",
+    "safety": "تحفظ",
+    "healthcare": "صحت کی دیکھ بھال",
+    "education": "تعلیم",
+    "environment": "ماحولیات",
+    "infrastructure": "بنیادی ڈھانچہ",
+    "positivePoints": "مثبت نکات",
+    "negativePoints": "منفی نکات",
+    "exitKeys": "ایگزٹ کیز",
+    "variants": "ویریئنٹس",
+    "tags": "ٹیگز"
   },
   "pyramidTypes": {
     "PROBLEM_RENT": "مسئلہ-کرایہ",
@@ -152,7 +259,42 @@
     "COMPETENCE_TRUST": "اہلیت-اعتماد",
     "GROWTH_RISK": "ترقی-خطرہ",
     "HYBRID_TRANSITION": "ہائبرڈ-منتقلی",
-    "RESOURCE_EXTRACTION": "وسائل-نکالنا"
+    "RESOURCE_EXTRACTION": "وسائل-نکالنا",
+    "title": "اہرام کی اقسام",
+    "subtitle": "نظامی ڈھانچوں کو سمجھیں",
+    "explore": "تمام اقسام دریافت کریں",
+    "characteristics": "خصوصیات",
+    "examples": "مثالیں",
+    "strengths": "طاقتیں",
+    "weaknesses": "کمزوریاں",
+    "description": "تفصیل",
+    "countries": "اس قسم کے ممالک"
+  },
+  "pyramids": {
+    "familial": {
+      "name": "خاندانی",
+      "description": "خاندان اور برادری کے رشتوں سے چلنے والا معاشرہ"
+    },
+    "communautaire": {
+      "name": "کمیونٹی",
+      "description": "کمیونٹی اور اجتماعی اقدار پر مبنی معاشرہ"
+    },
+    "etatique": {
+      "name": "ریاستی",
+      "description": "مضبوط ریاست اور ادارہ جاتی ڈھانچوں سے منظم معاشرہ"
+    },
+    "marche": {
+      "name": "مارکیٹ",
+      "description": "معاشی آزادی اور مسابقت سے چلنے والا معاشرہ"
+    },
+    "religieux": {
+      "name": "مذہبی",
+      "description": "مذہبی اقدار اور روایات سے تشکیل پانے والا معاشرہ"
+    },
+    "technocratique": {
+      "name": "ٹیکنوکریٹک",
+      "description": "ٹیکنالوجی اور ماہرانہ علم سے چلنے والا معاشرہ"
+    }
   },
   "dashboard": {
     "title": "میرا ڈیش بورڈ",
@@ -160,7 +302,21 @@
     "syncing": "سنک ہو رہا ہے...",
     "synced": "سنک ہو گیا",
     "localOnly": "صرف مقامی",
-    "connectToSync": "سنک کرنے کے لیے سائن ان کریں"
+    "connectToSync": "سنک کرنے کے لیے سائن ان کریں",
+    "welcome": "خوش آمدید",
+    "overview": "جائزہ",
+    "progress": "پیش رفت",
+    "savedItems": "محفوظ آئٹمز",
+    "recentActivity": "حالیہ سرگرمی",
+    "statistics": "اعداد و شمار",
+    "notifications": "اطلاعات",
+    "settings": "ترتیبات",
+    "profile": "پروفائل",
+    "noProgress": "ابھی تک کوئی پیش رفت نہیں",
+    "startJourney": "اپنا سفر شروع کریں",
+    "completedSteps": "مکمل مراحل",
+    "totalSteps": "کل مراحل",
+    "percentComplete": "{{percent}}% مکمل"
   },
   "latent": {
     "title": "پوشیدہ زونز",
@@ -171,7 +327,18 @@
       "emergent": "ابھرتا ہوا",
       "fragile": "نازک",
       "blocked": "بلاک"
-    }
+    },
+    "createZone": "نیا زون بنائیں",
+    "editZone": "زون میں ترمیم کریں",
+    "deleteZone": "زون حذف کریں",
+    "awakening": "بیداری",
+    "active": "فعال",
+    "integrated": "مربوط",
+    "tensions": "تناؤ",
+    "history": "تاریخ",
+    "connections": "روابط",
+    "noZones": "ابھی تک کوئی زونز نہیں بنائے گئے",
+    "createFirst": "اپنا پہلا پوشیدہ زون بنائیں"
   },
   "irreversa": {
     "title": "ناقابل واپسی حدود",
@@ -181,13 +348,197 @@
       "marked": "نشان زد",
       "validated": "توثیق شدہ",
       "sealed": "مہر بند"
-    }
+    },
+    "createThreshold": "نئی حد بنائیں",
+    "pending": "زیر التواء",
+    "witnesses": "گواہان",
+    "addWitness": "گواہ شامل کریں",
+    "validation": "توثیق",
+    "auditLog": "آڈٹ لاگ",
+    "noThresholds": "ابھی تک کوئی حدیں نہیں بنائی گئیں",
+    "createFirst": "اپنی پہلی ناقابل واپسی حد دستاویز کریں"
   },
   "pricing": {
     "title": "قیمت",
     "subtitle": "اپنے لیے صحیح پلان چنیں",
     "free": "مفت",
     "pro": "پرو",
-    "enterprise": "انٹرپرائز"
+    "enterprise": "انٹرپرائز",
+    "monthly": "ماہانہ",
+    "yearly": "سالانہ",
+    "currentPlan": "موجودہ پلان",
+    "upgrade": "اپ گریڈ",
+    "downgrade": "ڈاؤن گریڈ",
+    "features": "خصوصیات",
+    "perMonth": "/ماہ",
+    "perYear": "/سال",
+    "startTrial": "مفت ٹرائل شروع کریں",
+    "contactSales": "سیلز سے رابطہ کریں"
+  },
+  "hero": {
+    "title": "اپنی اگلی زندگی کے لیے اندرونی کمپاس",
+    "subtitle": "سماجی نقل و حرکت اور نظامی خطرات کی نایاب سمجھ کے لیے دنیا دریافت کریں",
+    "cta": "نقشہ دریافت کریں",
+    "secondaryCta": "اہرام کی اقسام دریافت کریں"
+  },
+  "howItWorks": {
+    "title": "یہ کیسے کام کرتا ہے",
+    "step1": {
+      "title": "اپنی پروفائل متعین کریں",
+      "description": "اپنا پس منظر، اہداف اور رکاوٹیں شیئر کریں"
+    },
+    "step2": {
+      "title": "منزلیں دریافت کریں",
+      "description": "مطابقت کے اسکور اور گہری بصیرت حاصل کریں"
+    },
+    "step3": {
+      "title": "اپنا راستہ طے کریں",
+      "description": "ایک حقیقت پسندانہ سفر کا روڈ میپ بنائیں"
+    }
+  },
+  "compare": {
+    "title": "ممالک کا موازنہ کریں",
+    "subtitle": "متعدد منزلوں کا ساتھ ساتھ تجزیہ",
+    "addCountry": "ملک شامل کریں",
+    "removeCountry": "ملک ہٹائیں",
+    "noCountries": "موازنہ کے لیے ممالک شامل کریں",
+    "selectMetric": "میٹرک منتخب کریں",
+    "radarView": "ریڈار منظر",
+    "tableView": "جدول منظر",
+    "saveComparison": "موازنہ محفوظ کریں",
+    "loadComparison": "موازنہ لوڈ کریں",
+    "exportPdf": "PDF برآمد"
+  },
+  "exitKeys": {
+    "title": "ایگزٹ کیز",
+    "subtitle": "آپ کی تبدیلی کے لیے اسٹریٹجک راستے",
+    "start": "تشخیص شروع کریں",
+    "results": "نتائج",
+    "compatibility": "مطابقت",
+    "steps": "مراحل",
+    "timeline": "ٹائم لائن",
+    "requirements": "ضروریات",
+    "risks": "خطرات",
+    "opportunities": "مواقع",
+    "noKeys": "ابھی تک کوئی ایگزٹ کیز نہیں بنائی گئیں",
+    "generateKeys": "ایگزٹ کیز بنائیں",
+    "keyDetails": "کی تفصیلات",
+    "phases": "مراحل",
+    "playbook": "پلے بک"
+  },
+  "lifeGame": {
+    "title": "لائف گیم",
+    "subtitle": "سمولیشن کے ذریعے فیصلوں میں نیویگیٹ کریں",
+    "start": "کھیل شروع کریں",
+    "continue": "کھیل جاری رکھیں",
+    "newGame": "نیا کھیل",
+    "loadGame": "کھیل لوڈ کریں",
+    "saveGame": "کھیل محفوظ کریں",
+    "settings": "ترتیبات",
+    "rules": "قواعد",
+    "turn": "باری",
+    "score": "اسکور",
+    "health": "صحت",
+    "money": "پیسے",
+    "reputation": "ساکھ",
+    "network": "نیٹ ورک",
+    "actions": "کارروائیاں",
+    "events": "واقعات",
+    "achievements": "کامیابیاں"
+  },
+  "traceOS": {
+    "title": "TraceOS",
+    "subtitle": "فیصلہ سازی کا ٹریسیبلٹی سسٹم",
+    "decisions": "فیصلے",
+    "createDecision": "نیا فیصلہ بنائیں",
+    "editDecision": "فیصلہ میں ترمیم کریں",
+    "deleteDecision": "فیصلہ حذف کریں",
+    "history": "تاریخ",
+    "audit": "آڈٹ لاگ",
+    "workflows": "ورک فلو",
+    "tags": "ٹیگز",
+    "export": "برآمد",
+    "import": "درآمد",
+    "noDecisions": "ابھی تک کوئی فیصلے ریکارڈ نہیں کیے گئے"
+  },
+  "about": {
+    "title": "بارے میں",
+    "mission": "مشن",
+    "vision": "ویژن",
+    "team": "ٹیم",
+    "methodology": "طریقہ کار",
+    "sources": "ذرائع",
+    "contact": "رابطہ"
+  },
+  "risks": {
+    "title": "خطرات کا تجزیہ",
+    "categories": {
+      "political": "سیاسی",
+      "economic": "معاشی",
+      "social": "سماجی",
+      "environmental": "ماحولیاتی",
+      "health": "صحت",
+      "security": "سیکیورٹی"
+    },
+    "level": {
+      "low": "کم",
+      "medium": "درمیانہ",
+      "high": "زیادہ",
+      "critical": "تنقیدی"
+    }
+  },
+  "playbook": {
+    "title": "پلے بک",
+    "phases": "مراحل",
+    "actions": "کارروائیاں",
+    "timeline": "ٹائم لائن",
+    "resources": "وسائل",
+    "checkpoints": "چیک پوائنٹس"
+  },
+  "achievements": {
+    "title": "کامیابیاں",
+    "unlocked": "کھولا گیا",
+    "locked": "مقفل",
+    "progress": "پیش رفت",
+    "rare": "نایاب",
+    "common": "عام",
+    "epic": "مہاکاوی"
+  },
+  "disclaimerConsent": {
+    "title": "اہم دستبرداری",
+    "content": "یہ ٹول صرف تعلیمی اور معلوماتی مقاصد کے لیے ہے۔ یہ پیشہ ورانہ مشورے کی جگہ نہیں لیتا۔",
+    "accept": "میں سمجھتا ہوں اور قبول کرتا ہوں",
+    "decline": "انکار"
+  },
+  "simulationDisclaimer": {
+    "title": "سمولیشن دستبرداری",
+    "content": "یہ سمولیشنز تعلیمی مقاصد کے لیے بنائے گئے ہیں۔ حقیقی فیصلے پیشہ ورانہ مشورے کی بنیاد پر کیے جائیں۔"
+  },
+  "ovi": {
+    "title": "OVI - گہرا مطالعہ",
+    "subtitle": "اعلی تجزیاتی فریم ورکس",
+    "grids": "پڑھنے کی گرڈز",
+    "frameworks": "تفکراتی فریم ورکس",
+    "suggestions": "تجاویز"
+  },
+  "institutions": {
+    "title": "ادارہ جاتی حل",
+    "subtitle": "تنظیموں کے لیے ٹولز",
+    "useCases": "استعمال کے کیسز",
+    "features": "خصوصیات",
+    "pricing": "قیمتیں"
+  },
+  "usage": {
+    "title": "استعمال",
+    "credits": "کریڈٹس",
+    "remaining": "باقی",
+    "used": "استعمال شدہ",
+    "limit": "حد"
+  },
+  "partners": {
+    "title": "پارٹنر پروگرام",
+    "apply": "درخواست دیں",
+    "benefits": "فوائد",
+    "requirements": "ضروریات"
   }
 }

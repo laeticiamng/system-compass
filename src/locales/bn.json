@@ -26,7 +26,53 @@
     "description": "বিবরণ",
     "submit": "জমা দিন",
     "sending": "পাঠানো হচ্ছে...",
-    "loginRequired": "লগইন প্রয়োজন"
+    "loginRequired": "লগইন প্রয়োজন",
+    "search": "অনুসন্ধান",
+    "filter": "ফিল্টার",
+    "reset": "রিসেট",
+    "apply": "প্রয়োগ",
+    "view": "দেখুন",
+    "download": "ডাউনলোড",
+    "export": "এক্সপোর্ট",
+    "import": "ইম্পোর্ট",
+    "share": "শেয়ার",
+    "copy": "কপি",
+    "copied": "কপি করা হয়েছে!",
+    "add": "যোগ করুন",
+    "remove": "সরান",
+    "clear": "পরিষ্কার",
+    "noData": "কোন ডেটা নেই",
+    "error": "ত্রুটি",
+    "success": "সফল",
+    "warning": "সতর্কতা",
+    "info": "তথ্য",
+    "name": "নাম",
+    "email": "ইমেল",
+    "password": "পাসওয়ার্ড",
+    "status": "অবস্থা",
+    "actions": "কার্যক্রম",
+    "details": "বিবরণ",
+    "settings": "সেটিংস",
+    "profile": "প্রোফাইল",
+    "help": "সাহায্য",
+    "logout": "লগআউট",
+    "login": "লগইন",
+    "signup": "সাইনআপ",
+    "home": "হোম",
+    "about": "সম্পর্কে",
+    "contact": "যোগাযোগ",
+    "privacy": "গোপনীয়তা",
+    "terms": "শর্তাবলী",
+    "language": "ভাষা",
+    "theme": "থিম",
+    "dark": "গাঢ়",
+    "light": "হালকা",
+    "active": "সক্রিয়",
+    "inactive": "নিষ্ক্রিয়",
+    "completed": "সম্পন্ন",
+    "pending": "মুলতুবি",
+    "failed": "ব্যর্থ",
+    "processing": "প্রক্রিয়াকরণ"
   },
   "errors": {
     "rateLimited": "অনেক বেশি অনুরোধ। অনুগ্রহ করে একটু পরে আবার চেষ্টা করুন।",
@@ -35,15 +81,31 @@
     "networkError": "নেটওয়ার্ক ত্রুটি। অনুগ্রহ করে আপনার সংযোগ পরীক্ষা করুন।",
     "unauthorized": "আপনাকে লগ ইন করতে হবে।",
     "notFound": "রিসোর্স পাওয়া যায়নি।",
-    "serverError": "সার্ভার ত্রুটি। অনুগ্রহ করে আবার চেষ্টা করুন।"
+    "serverError": "সার্ভার ত্রুটি। অনুগ্রহ করে আবার চেষ্টা করুন।",
+    "validationError": "বৈধতা ত্রুটি",
+    "invalidInput": "অবৈধ ইনপুট",
+    "timeout": "সময় শেষ"
   },
   "journey": {
     "profile": "আপনার প্রোফাইল",
     "options": "আপনার অপশন",
-    "keys": "আপনার চাবি"
+    "keys": "আপনার চাবি",
+    "notStarted": "শুরু হয়নি",
+    "inProgress": "প্রক্রিয়াধীন",
+    "completed": "সম্পন্ন"
   },
   "header": {
-    "simulationDisclaimer": "দৃশ্যপট অন্বেষণ • কোনো আইনি, আর্থিক বা চিকিৎসা পরামর্শ নয়"
+    "simulationDisclaimer": "দৃশ্যপট অন্বেষণ • কোনো আইনি, আর্থিক বা চিকিৎসা পরামর্শ নয়",
+    "compass": "কম্পাস",
+    "subtitle": "আপনার পরবর্তী জীবনের জন্য অভ্যন্তরীণ কম্পাস",
+    "home": "হোম",
+    "countries": "দেশসমূহ",
+    "compare": "তুলনা",
+    "exitKeys": "এক্সিট কী",
+    "dashboard": "ড্যাশবোর্ড",
+    "about": "সম্পর্কে",
+    "signIn": "সাইন ইন",
+    "signOut": "সাইন আউট"
   },
   "footer": {
     "explore": "অন্বেষণ",
@@ -59,7 +121,11 @@
     "howToRead": "ফলাফল কীভাবে পড়বেন",
     "warnings": "সতর্কতা",
     "disclaimer": "বিশ্লেষণ এবং সিমুলেশন টুল। কোনো আইনি, আর্থিক বা চিকিৎসা পরামর্শ নয়।",
-    "learnMore": "আরও জানুন"
+    "learnMore": "আরও জানুন",
+    "contact": "যোগাযোগ",
+    "privacy": "গোপনীয়তা নীতি",
+    "terms": "ব্যবহারের শর্তাবলী",
+    "copyright": "© {{year}} কম্পাস। সমস্ত অধিকার সংরক্ষিত।"
   },
   "nav": {
     "home": "হোম",
@@ -71,7 +137,13 @@
     "profile": "প্রোফাইল",
     "signIn": "সাইন ইন",
     "signOut": "সাইন আউট",
-    "worldMap": "বিশ্ব মানচিত্র"
+    "worldMap": "বিশ্ব মানচিত্র",
+    "pyramidTypes": "পিরামিড ধরন",
+    "howToRead": "কিভাবে পড়বেন",
+    "about": "সম্পর্কে",
+    "institutions": "প্রতিষ্ঠান",
+    "resources": "সম্পদ",
+    "pricing": "মূল্য"
   },
   "worldMap": {
     "badge": "বৈশ্বিক অন্বেষণ",
@@ -98,7 +170,13 @@
       "size": "বড় বিন্দু ইন্টেলিজেন্স লেয়ার সহ দেশ নির্দেশ করে",
       "click": "বিস্তারিত দেখতে একটি দেশে ক্লিক করুন",
       "zoom": "জুম এবং নেভিগেট করতে কন্ট্রোল ব্যবহার করুন"
-    }
+    },
+    "noData": "এই দেশের জন্য ডেটা পাওয়া যায়নি",
+    "loading": "মানচিত্র লোড হচ্ছে...",
+    "error": "মানচিত্র লোড করতে ব্যর্থ",
+    "reset": "দৃশ্য রিসেট করুন",
+    "legend": "লেজেন্ড",
+    "filters": "ফিল্টার"
   },
   "auth": {
     "signIn": "সাইন ইন",
@@ -112,7 +190,14 @@
     "hasAccount": "ইতিমধ্যে অ্যাকাউন্ট আছে?",
     "orContinueWith": "অথবা এর সাথে চালিয়ে যান",
     "signInWithGoogle": "Google দিয়ে সাইন ইন",
-    "signUpWithGoogle": "Google দিয়ে সাইন আপ"
+    "signUpWithGoogle": "Google দিয়ে সাইন আপ",
+    "resetPassword": "পাসওয়ার্ড রিসেট করুন",
+    "createAccount": "অ্যাকাউন্ট তৈরি করুন",
+    "welcome": "স্বাগতম",
+    "welcomeBack": "আবার স্বাগতম",
+    "loginSuccess": "সফলভাবে লগইন হয়েছে",
+    "logoutSuccess": "সফলভাবে লগআউট হয়েছে",
+    "signupSuccess": "অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে"
   },
   "countries": {
     "title": "দেশসমূহ",
@@ -124,7 +209,15 @@
       "all": "সব",
       "region": "অঞ্চল",
       "pyramidType": "পিরামিড প্রকার"
-    }
+    },
+    "explore": "অন্বেষণ করুন",
+    "search": "দেশ অনুসন্ধান...",
+    "filter": "ফিল্টার",
+    "sort": "সাজান",
+    "loading": "দেশ লোড হচ্ছে...",
+    "compare": "তুলনা করুন",
+    "region": "অঞ্চল",
+    "population": "জনসংখ্যা"
   },
   "countryDetail": {
     "overview": "সারসংক্ষেপ",
@@ -144,7 +237,21 @@
       "profilesStruggle": "সংগ্রামী প্রোফাইল",
       "surprises": "আশ্চর্য",
       "trajectories": "উদাহরণ ট্র্যাজেক্টরি"
-    }
+    },
+    "pyramidType": "পিরামিড ধরন",
+    "culture": "সংস্কৃতি",
+    "economy": "অর্থনীতি",
+    "quality": "জীবনযাত্রার মান",
+    "safety": "নিরাপত্তা",
+    "healthcare": "স্বাস্থ্যসেবা",
+    "education": "শিক্ষা",
+    "environment": "পরিবেশ",
+    "infrastructure": "অবকাঠামো",
+    "positivePoints": "ইতিবাচক পয়েন্ট",
+    "negativePoints": "নেতিবাচক পয়েন্ট",
+    "exitKeys": "এক্সিট কী",
+    "variants": "ভেরিয়েন্ট",
+    "tags": "ট্যাগ"
   },
   "pyramidTypes": {
     "PROBLEM_RENT": "সমস্যা-ভাড়া",
@@ -152,7 +259,42 @@
     "COMPETENCE_TRUST": "দক্ষতা-বিশ্বাস",
     "GROWTH_RISK": "বৃদ্ধি-ঝুঁকি",
     "HYBRID_TRANSITION": "হাইব্রিড-রূপান্তর",
-    "RESOURCE_EXTRACTION": "সম্পদ-নিষ্কাশন"
+    "RESOURCE_EXTRACTION": "সম্পদ-নিষ্কাশন",
+    "title": "পিরামিড ধরন",
+    "subtitle": "সিস্টেমিক কাঠামো বুঝুন",
+    "explore": "সব ধরন অন্বেষণ করুন",
+    "characteristics": "বৈশিষ্ট্য",
+    "examples": "উদাহরণ",
+    "strengths": "শক্তি",
+    "weaknesses": "দুর্বলতা",
+    "description": "বিবরণ",
+    "countries": "এই ধরনের দেশসমূহ"
+  },
+  "pyramids": {
+    "familial": {
+      "name": "পারিবারিক",
+      "description": "পরিবার এবং সম্প্রদায়ের বন্ধন দ্বারা শাসিত সমাজ"
+    },
+    "communautaire": {
+      "name": "সাম্প্রদায়িক",
+      "description": "সম্প্রদায় এবং যৌথ মূল্যবোধ কেন্দ্রিক সমাজ"
+    },
+    "etatique": {
+      "name": "রাষ্ট্রীয়",
+      "description": "শক্তিশালী রাষ্ট্র এবং প্রাতিষ্ঠানিক কাঠামো দ্বারা সংগঠিত সমাজ"
+    },
+    "marche": {
+      "name": "বাজার",
+      "description": "অর্থনৈতিক স্বাধীনতা এবং প্রতিযোগিতা দ্বারা চালিত সমাজ"
+    },
+    "religieux": {
+      "name": "ধর্মীয়",
+      "description": "ধর্মীয় মূল্যবোধ এবং ঐতিহ্য দ্বারা গঠিত সমাজ"
+    },
+    "technocratique": {
+      "name": "প্রযুক্তিতান্ত্রিক",
+      "description": "প্রযুক্তি এবং বিশেষজ্ঞ জ্ঞান দ্বারা পরিচালিত সমাজ"
+    }
   },
   "dashboard": {
     "title": "আমার ড্যাশবোর্ড",
@@ -160,7 +302,21 @@
     "syncing": "সিঙ্ক হচ্ছে...",
     "synced": "সিঙ্ক হয়েছে",
     "localOnly": "শুধুমাত্র স্থানীয়",
-    "connectToSync": "সিঙ্ক করতে সাইন ইন করুন"
+    "connectToSync": "সিঙ্ক করতে সাইন ইন করুন",
+    "welcome": "স্বাগতম",
+    "overview": "সারসংক্ষেপ",
+    "progress": "অগ্রগতি",
+    "savedItems": "সংরক্ষিত আইটেম",
+    "recentActivity": "সাম্প্রতিক কার্যকলাপ",
+    "statistics": "পরিসংখ্যান",
+    "notifications": "বিজ্ঞপ্তি",
+    "settings": "সেটিংস",
+    "profile": "প্রোফাইল",
+    "noProgress": "এখনো কোন অগ্রগতি নেই",
+    "startJourney": "আপনার যাত্রা শুরু করুন",
+    "completedSteps": "সম্পন্ন পদক্ষেপ",
+    "totalSteps": "মোট পদক্ষেপ",
+    "percentComplete": "{{percent}}% সম্পন্ন"
   },
   "latent": {
     "title": "সুপ্ত অঞ্চল",
@@ -171,7 +327,18 @@
       "emergent": "উদীয়মান",
       "fragile": "ভঙ্গুর",
       "blocked": "অবরুদ্ধ"
-    }
+    },
+    "createZone": "নতুন অঞ্চল তৈরি করুন",
+    "editZone": "অঞ্চল সম্পাদনা করুন",
+    "deleteZone": "অঞ্চল মুছুন",
+    "awakening": "জাগরণ",
+    "active": "সক্রিয়",
+    "integrated": "সংহত",
+    "tensions": "উত্তেজনা",
+    "history": "ইতিহাস",
+    "connections": "সংযোগ",
+    "noZones": "এখনো কোন অঞ্চল তৈরি হয়নি",
+    "createFirst": "আপনার প্রথম সুপ্ত অঞ্চল তৈরি করুন"
   },
   "irreversa": {
     "title": "অপরিবর্তনীয় সীমা",
@@ -181,13 +348,197 @@
       "marked": "চিহ্নিত",
       "validated": "বৈধ",
       "sealed": "সিলযুক্ত"
-    }
+    },
+    "createThreshold": "নতুন সীমা তৈরি করুন",
+    "pending": "মুলতুবি",
+    "witnesses": "সাক্ষী",
+    "addWitness": "সাক্ষী যোগ করুন",
+    "validation": "বৈধতা",
+    "auditLog": "অডিট লগ",
+    "noThresholds": "এখনো কোন সীমা তৈরি হয়নি",
+    "createFirst": "আপনার প্রথম অপরিবর্তনীয় সীমা নথিভুক্ত করুন"
   },
   "pricing": {
     "title": "মূল্য",
     "subtitle": "আপনার জন্য সঠিক প্ল্যান বেছে নিন",
     "free": "বিনামূল্যে",
     "pro": "প্রো",
-    "enterprise": "এন্টারপ্রাইজ"
+    "enterprise": "এন্টারপ্রাইজ",
+    "monthly": "মাসিক",
+    "yearly": "বার্ষিক",
+    "currentPlan": "বর্তমান পরিকল্পনা",
+    "upgrade": "আপগ্রেড",
+    "downgrade": "ডাউনগ্রেড",
+    "features": "বৈশিষ্ট্য",
+    "perMonth": "/মাস",
+    "perYear": "/বছর",
+    "startTrial": "বিনামূল্যে ট্রায়াল শুরু করুন",
+    "contactSales": "বিক্রয়ের সাথে যোগাযোগ করুন"
+  },
+  "hero": {
+    "title": "আপনার পরবর্তী জীবনের জন্য অভ্যন্তরীণ কম্পাস",
+    "subtitle": "সামাজিক গতিশীলতা এবং সিস্টেমিক ঝুঁকি সম্পর্কে বিরল বোঝার জন্য বিশ্ব অন্বেষণ করুন",
+    "cta": "মানচিত্র অন্বেষণ করুন",
+    "secondaryCta": "পিরামিড ধরন আবিষ্কার করুন"
+  },
+  "howItWorks": {
+    "title": "কিভাবে কাজ করে",
+    "step1": {
+      "title": "আপনার প্রোফাইল সংজ্ঞায়িত করুন",
+      "description": "আপনার পটভূমি, লক্ষ্য এবং সীমাবদ্ধতা শেয়ার করুন"
+    },
+    "step2": {
+      "title": "গন্তব্য অন্বেষণ করুন",
+      "description": "সামঞ্জস্য স্কোর এবং গভীর অন্তর্দৃষ্টি পান"
+    },
+    "step3": {
+      "title": "আপনার পথ পরিকল্পনা করুন",
+      "description": "একটি বাস্তবসম্মত যাত্রা পথ তৈরি করুন"
+    }
+  },
+  "compare": {
+    "title": "দেশ তুলনা করুন",
+    "subtitle": "একাধিক গন্তব্যের পাশাপাশি বিশ্লেষণ",
+    "addCountry": "দেশ যোগ করুন",
+    "removeCountry": "দেশ সরান",
+    "noCountries": "তুলনা করতে দেশ যোগ করুন",
+    "selectMetric": "মেট্রিক নির্বাচন করুন",
+    "radarView": "রাডার দৃশ্য",
+    "tableView": "টেবিল দৃশ্য",
+    "saveComparison": "তুলনা সংরক্ষণ করুন",
+    "loadComparison": "তুলনা লোড করুন",
+    "exportPdf": "PDF এক্সপোর্ট"
+  },
+  "exitKeys": {
+    "title": "এক্সিট কী",
+    "subtitle": "আপনার পরিবর্তনের জন্য কৌশলগত পথ",
+    "start": "মূল্যায়ন শুরু করুন",
+    "results": "ফলাফল",
+    "compatibility": "সামঞ্জস্যতা",
+    "steps": "পদক্ষেপ",
+    "timeline": "সময়রেখা",
+    "requirements": "প্রয়োজনীয়তা",
+    "risks": "ঝুঁকি",
+    "opportunities": "সুযোগ",
+    "noKeys": "এখনো কোন এক্সিট কী তৈরি হয়নি",
+    "generateKeys": "এক্সিট কী তৈরি করুন",
+    "keyDetails": "কী বিবরণ",
+    "phases": "পর্যায়সমূহ",
+    "playbook": "প্লেবুক"
+  },
+  "lifeGame": {
+    "title": "লাইফ গেম",
+    "subtitle": "সিমুলেশনের মাধ্যমে সিদ্ধান্ত নেভিগেট করুন",
+    "start": "খেলা শুরু করুন",
+    "continue": "খেলা চালিয়ে যান",
+    "newGame": "নতুন খেলা",
+    "loadGame": "খেলা লোড করুন",
+    "saveGame": "খেলা সংরক্ষণ করুন",
+    "settings": "সেটিংস",
+    "rules": "নিয়মাবলী",
+    "turn": "পালা",
+    "score": "স্কোর",
+    "health": "স্বাস্থ্য",
+    "money": "অর্থ",
+    "reputation": "সুনাম",
+    "network": "নেটওয়ার্ক",
+    "actions": "কার্যক্রম",
+    "events": "ইভেন্ট",
+    "achievements": "অর্জন"
+  },
+  "traceOS": {
+    "title": "TraceOS",
+    "subtitle": "সিদ্ধান্ত সনাক্তযোগ্যতা সিস্টেম",
+    "decisions": "সিদ্ধান্ত",
+    "createDecision": "নতুন সিদ্ধান্ত তৈরি করুন",
+    "editDecision": "সিদ্ধান্ত সম্পাদনা করুন",
+    "deleteDecision": "সিদ্ধান্ত মুছুন",
+    "history": "ইতিহাস",
+    "audit": "অডিট লগ",
+    "workflows": "ওয়ার্কফ্লো",
+    "tags": "ট্যাগ",
+    "export": "এক্সপোর্ট",
+    "import": "ইম্পোর্ট",
+    "noDecisions": "এখনো কোন সিদ্ধান্ত রেকর্ড করা হয়নি"
+  },
+  "about": {
+    "title": "সম্পর্কে",
+    "mission": "মিশন",
+    "vision": "ভিশন",
+    "team": "দল",
+    "methodology": "পদ্ধতি",
+    "sources": "উৎস",
+    "contact": "যোগাযোগ"
+  },
+  "risks": {
+    "title": "ঝুঁকি বিশ্লেষণ",
+    "categories": {
+      "political": "রাজনৈতিক",
+      "economic": "অর্থনৈতিক",
+      "social": "সামাজিক",
+      "environmental": "পরিবেশগত",
+      "health": "স্বাস্থ্য",
+      "security": "নিরাপত্তা"
+    },
+    "level": {
+      "low": "নিম্ন",
+      "medium": "মাঝারি",
+      "high": "উচ্চ",
+      "critical": "জটিল"
+    }
+  },
+  "playbook": {
+    "title": "প্লেবুক",
+    "phases": "পর্যায়সমূহ",
+    "actions": "কার্যক্রম",
+    "timeline": "সময়রেখা",
+    "resources": "সম্পদ",
+    "checkpoints": "চেকপয়েন্ট"
+  },
+  "achievements": {
+    "title": "অর্জন",
+    "unlocked": "আনলক করা হয়েছে",
+    "locked": "লক করা আছে",
+    "progress": "অগ্রগতি",
+    "rare": "বিরল",
+    "common": "সাধারণ",
+    "epic": "মহাকাব্যিক"
+  },
+  "disclaimerConsent": {
+    "title": "গুরুত্বপূর্ণ দাবিত্যাগ",
+    "content": "এই সরঞ্জামটি কেবল শিক্ষামূলক এবং তথ্যমূলক উদ্দেশ্যে। এটি পেশাদার পরামর্শ প্রতিস্থাপন করে না।",
+    "accept": "আমি বুঝেছি এবং স্বীকার করছি",
+    "decline": "প্রত্যাখ্যান"
+  },
+  "simulationDisclaimer": {
+    "title": "সিমুলেশন দাবিত্যাগ",
+    "content": "এই সিমুলেশনগুলি শিক্ষামূলক উদ্দেশ্যে তৈরি। বাস্তব সিদ্ধান্তগুলি পেশাদার পরামর্শের ভিত্তিতে নেওয়া উচিত।"
+  },
+  "ovi": {
+    "title": "OVI - গভীর পড়া",
+    "subtitle": "উন্নত বিশ্লেষণ ফ্রেমওয়ার্ক",
+    "grids": "পড়ার গ্রিড",
+    "frameworks": "প্রতিফলন ফ্রেমওয়ার্ক",
+    "suggestions": "পরামর্শ"
+  },
+  "institutions": {
+    "title": "প্রাতিষ্ঠানিক সমাধান",
+    "subtitle": "সংস্থার জন্য সরঞ্জাম",
+    "useCases": "ব্যবহারের ক্ষেত্র",
+    "features": "বৈশিষ্ট্য",
+    "pricing": "মূল্য"
+  },
+  "usage": {
+    "title": "ব্যবহার",
+    "credits": "ক্রেডিট",
+    "remaining": "অবশিষ্ট",
+    "used": "ব্যবহৃত",
+    "limit": "সীমা"
+  },
+  "partners": {
+    "title": "অংশীদার প্রোগ্রাম",
+    "apply": "আবেদন করুন",
+    "benefits": "সুবিধা",
+    "requirements": "প্রয়োজনীয়তা"
   }
 }
