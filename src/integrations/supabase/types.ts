@@ -194,6 +194,72 @@ export type Database = {
         }
         Relationships: []
       }
+      b2b_usage_metering: {
+        Row: {
+          alert_100_sent: boolean | null
+          alert_80_sent: boolean | null
+          cases_active: number | null
+          cases_created: number | null
+          cases_quota: number | null
+          created_at: string
+          exports_deep: number | null
+          exports_light: number | null
+          exports_quota: number | null
+          governance_actors: number | null
+          id: string
+          milestones_created: number | null
+          partners_vetted: number | null
+          period_end: string
+          period_start: string
+          risk_register_items: number | null
+          updated_at: string
+          user_id: string
+          workspace_id: string | null
+        }
+        Insert: {
+          alert_100_sent?: boolean | null
+          alert_80_sent?: boolean | null
+          cases_active?: number | null
+          cases_created?: number | null
+          cases_quota?: number | null
+          created_at?: string
+          exports_deep?: number | null
+          exports_light?: number | null
+          exports_quota?: number | null
+          governance_actors?: number | null
+          id?: string
+          milestones_created?: number | null
+          partners_vetted?: number | null
+          period_end: string
+          period_start: string
+          risk_register_items?: number | null
+          updated_at?: string
+          user_id: string
+          workspace_id?: string | null
+        }
+        Update: {
+          alert_100_sent?: boolean | null
+          alert_80_sent?: boolean | null
+          cases_active?: number | null
+          cases_created?: number | null
+          cases_quota?: number | null
+          created_at?: string
+          exports_deep?: number | null
+          exports_light?: number | null
+          exports_quota?: number | null
+          governance_actors?: number | null
+          id?: string
+          milestones_created?: number | null
+          partners_vetted?: number | null
+          period_end?: string
+          period_start?: string
+          risk_register_items?: number | null
+          updated_at?: string
+          user_id?: string
+          workspace_id?: string | null
+        }
+        Relationships: []
+      }
       country_generation_batches: {
         Row: {
           completed_at: string | null
@@ -1909,6 +1975,99 @@ export type Database = {
         }
         Relationships: []
       }
+      user_cases: {
+        Row: {
+          admin_checklist: Json | null
+          anti_copy_checklist: Json | null
+          budget_buffer_percent: number | null
+          cash_reality: Json | null
+          clarifications_done: Json | null
+          clarifications_pending: Json | null
+          country_id: string
+          created_at: string
+          estimated_start_date: string | null
+          governance_map: Json | null
+          id: string
+          intention: string
+          milestones: Json | null
+          notes: string | null
+          partners_vetted: Json | null
+          poc_budget: number | null
+          poc_duration: string | null
+          poc_hypothesis: string | null
+          poc_stop_criteria: Json | null
+          poc_success_criteria: Json | null
+          red_flags_acknowledged: Json | null
+          risk_register: Json | null
+          status: string
+          target_completion_date: string | null
+          timeline_scenario: string | null
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          admin_checklist?: Json | null
+          anti_copy_checklist?: Json | null
+          budget_buffer_percent?: number | null
+          cash_reality?: Json | null
+          clarifications_done?: Json | null
+          clarifications_pending?: Json | null
+          country_id: string
+          created_at?: string
+          estimated_start_date?: string | null
+          governance_map?: Json | null
+          id?: string
+          intention: string
+          milestones?: Json | null
+          notes?: string | null
+          partners_vetted?: Json | null
+          poc_budget?: number | null
+          poc_duration?: string | null
+          poc_hypothesis?: string | null
+          poc_stop_criteria?: Json | null
+          poc_success_criteria?: Json | null
+          red_flags_acknowledged?: Json | null
+          risk_register?: Json | null
+          status?: string
+          target_completion_date?: string | null
+          timeline_scenario?: string | null
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          admin_checklist?: Json | null
+          anti_copy_checklist?: Json | null
+          budget_buffer_percent?: number | null
+          cash_reality?: Json | null
+          clarifications_done?: Json | null
+          clarifications_pending?: Json | null
+          country_id?: string
+          created_at?: string
+          estimated_start_date?: string | null
+          governance_map?: Json | null
+          id?: string
+          intention?: string
+          milestones?: Json | null
+          notes?: string | null
+          partners_vetted?: Json | null
+          poc_budget?: number | null
+          poc_duration?: string | null
+          poc_hypothesis?: string | null
+          poc_stop_criteria?: Json | null
+          poc_success_criteria?: Json | null
+          red_flags_acknowledged?: Json | null
+          risk_register?: Json | null
+          status?: string
+          target_completion_date?: string | null
+          timeline_scenario?: string | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_governance_notes: {
         Row: {
           country_id: string
@@ -2144,6 +2303,10 @@ export type Database = {
           p_units?: number
           p_user_id: string
         }
+        Returns: undefined
+      }
+      increment_b2b_usage: {
+        Args: { p_increment?: number; p_metric: string; p_user_id: string }
         Returns: undefined
       }
     }
