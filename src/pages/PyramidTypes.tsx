@@ -4,6 +4,7 @@ import { ArrowLeft, AlertTriangle, CheckCircle, XCircle, Target, TrendingUp, Shi
 import { PYRAMID_TYPE_INFO, PyramidType } from '@/lib/types';
 import { countries } from '@/lib/countries-data';
 import { cn } from '@/lib/utils';
+import { usePyramidTranslations } from '@/hooks/usePyramidTranslations';
 
 const getFlagEmoji = (iso2: string) => {
   return iso2
@@ -89,6 +90,7 @@ const PYRAMID_DETAILS: Record<PyramidType, {
 
 export default function PyramidTypes() {
   const { t } = useTranslation();
+  const { getPyramidLabel, getPyramidDescription, getWhoThrives, getWhoPays, getSurvivalRules, getOpportunities, getWarningSigns } = usePyramidTranslations();
 
   const pyramidTypes = Object.entries(PYRAMID_TYPE_INFO) as [PyramidType, typeof PYRAMID_TYPE_INFO[PyramidType]][];
 
@@ -144,11 +146,11 @@ export default function PyramidTypes() {
                       <div className="flex items-center gap-3 mb-2">
                         <span className="text-sm font-mono text-muted-foreground">#{index + 1}</span>
                         <h2 className="font-display text-2xl md:text-3xl font-bold">
-                          {t(`pyramids.${details.caseStudyKey}.label`, info.label)}
+                          {getPyramidLabel(type)}
                         </h2>
                       </div>
                       <p className="text-lg text-muted-foreground">
-                        {t(`pyramids.${details.caseStudyKey}.description`, info.description)}
+                        {getPyramidDescription(type)}
                       </p>
                     </div>
                   </div>
@@ -174,7 +176,7 @@ export default function PyramidTypes() {
                         <h3 className="font-semibold text-lg">{t('pyramidTypes.whoThrives', 'Qui prospère')}</h3>
                       </div>
                       <ul className="space-y-2">
-                        {(t(`pyramidTypes.details.${details.whoThrivesKey}.whoThrives`, { returnObjects: true }) as string[] || []).map((item, i) => (
+                        {getWhoThrives(type).map((item, i) => (
                           <li key={i} className="flex items-start gap-2 text-muted-foreground">
                             <span className="text-emerald-500 mt-1">•</span>
                             {item}
@@ -190,7 +192,7 @@ export default function PyramidTypes() {
                         <h3 className="font-semibold text-lg">{t('pyramidTypes.whoPays', 'Qui paie le prix')}</h3>
                       </div>
                       <ul className="space-y-2">
-                        {(t(`pyramidTypes.details.${details.whoPaysKey}.whoPays`, { returnObjects: true }) as string[] || []).map((item, i) => (
+                        {getWhoPays(type).map((item, i) => (
                           <li key={i} className="flex items-start gap-2 text-muted-foreground">
                             <span className="text-destructive mt-1">•</span>
                             {item}
@@ -206,7 +208,7 @@ export default function PyramidTypes() {
                         <h3 className="font-semibold text-lg">{t('pyramidTypes.survivalRules', 'Règles de survie')}</h3>
                       </div>
                       <ul className="space-y-2">
-                        {(t(`pyramidTypes.details.${details.survivalRulesKey}.survivalRules`, { returnObjects: true }) as string[] || []).map((item, i) => (
+                        {getSurvivalRules(type).map((item, i) => (
                           <li key={i} className="flex items-start gap-2 text-muted-foreground">
                             <span className="text-primary mt-1">→</span>
                             {item}
@@ -222,7 +224,7 @@ export default function PyramidTypes() {
                         <h3 className="font-semibold text-lg">{t('pyramidTypes.opportunities', 'Opportunités cachées')}</h3>
                       </div>
                       <ul className="space-y-2">
-                        {(t(`pyramidTypes.details.${details.opportunitiesKey}.opportunities`, { returnObjects: true }) as string[] || []).map((item, i) => (
+                        {getOpportunities(type).map((item, i) => (
                           <li key={i} className="flex items-start gap-2 text-muted-foreground">
                             <span className="text-amber-500 mt-1">★</span>
                             {item}
@@ -239,7 +241,7 @@ export default function PyramidTypes() {
                       <h3 className="font-semibold text-lg">{t('pyramidTypes.warningSigns', 'Signaux d\'alerte')}</h3>
                     </div>
                     <ul className="grid md:grid-cols-2 gap-2">
-                      {(t(`pyramidTypes.details.${details.warningSignsKey}.warningSigns`, { returnObjects: true }) as string[] || []).map((item, i) => (
+                      {getWarningSigns(type).map((item, i) => (
                         <li key={i} className="flex items-start gap-2 text-muted-foreground">
                           <span className="text-destructive mt-1">⚠</span>
                           {item}

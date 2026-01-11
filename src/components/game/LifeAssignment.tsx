@@ -14,6 +14,7 @@ import {
 } from '@/lib/game-data';
 import { PyramidType, PYRAMID_TYPE_INFO } from '@/lib/types';
 import { countries } from '@/lib/countries-data';
+import { usePyramidTranslations } from '@/hooks/usePyramidTranslations';
 import { PROFESSIONS, EDUCATION_LEVELS, type EducationLevel, type Profession } from '@/lib/profession-data';
 import { Shuffle, Dices, Flag, Briefcase, GraduationCap, Heart, Target, AlertTriangle, Play, RotateCcw, Info } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -273,6 +274,7 @@ export default function LifeAssignment({
   onBack 
 }: LifeAssignmentProps) {
   const { t } = useTranslation();
+  const { getPyramidLabel } = usePyramidTranslations();
   const [profiles, setProfiles] = useState<RandomProfile[]>(() => 
     Array.from({ length: playerCount }, () => generateRandomLife())
   );
@@ -401,7 +403,7 @@ export default function LifeAssignment({
                       <div>
                         <p className="font-bold">{profile.countryName}</p>
                         <p className="text-xs text-muted-foreground">
-                          {PYRAMID_TYPE_INFO[profile.pyramidType].label}
+                          {getPyramidLabel(profile.pyramidType)}
                         </p>
                       </div>
                       <div className="ml-auto text-right">
