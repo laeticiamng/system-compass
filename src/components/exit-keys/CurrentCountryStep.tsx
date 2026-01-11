@@ -9,7 +9,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { countries } from '@/lib/countries-data';
-import { PYRAMID_TYPE_INFO } from '@/lib/types';
+import { PyramidType } from '@/lib/types';
 
 interface CurrentCountryStepProps {
   birthCountryId: string;
@@ -25,6 +25,16 @@ function getFlagEmoji(iso2: string) {
     .join('');
 }
 
+// Map pyramid types to translation keys
+const PYRAMID_TYPE_TRANSLATION_KEYS: Record<PyramidType, { label: string; detailsKey: string }> = {
+  PROBLEM_RENT: { label: 'pyramids.problemRent', detailsKey: 'problemRent' },
+  STABILITY_REDIS: { label: 'pyramids.stabilityRedistribution', detailsKey: 'stabilityRedis' },
+  COMPETENCE_TRUST: { label: 'pyramids.competenceTrust', detailsKey: 'competenceTrust' },
+  GROWTH_RISK: { label: 'pyramids.growthRisk', detailsKey: 'growthRisk' },
+  HYBRID_TRANSITION: { label: 'pyramids.hybridTransition', detailsKey: 'hybridTransition' },
+  RESOURCE_EXTRACTION: { label: 'pyramids.resourceExtraction', detailsKey: 'resourceExtraction' },
+};
+
 export function CurrentCountryStep({
   birthCountryId,
   currentCountryId,
@@ -32,6 +42,31 @@ export function CurrentCountryStep({
 }: CurrentCountryStepProps) {
   const { t } = useTranslation();
   const currentCountry = countries.find(c => c.id === currentCountryId);
+
+  // Get translated pyramid label
+  const getPyramidLabel = (pyramidType: PyramidType) => {
+    const key = PYRAMID_TYPE_TRANSLATION_KEYS[pyramidType];
+    return t(key.label, pyramidType);
+  };
+
+  // Get translated whoThrives/whoPays from pyramidTypes.details
+  const getWhoThrives = (pyramidType: PyramidType): string[] => {
+    const key = PYRAMID_TYPE_TRANSLATION_KEYS[pyramidType].detailsKey;
+    const translated = t(`pyramidTypes.details.${key}.whoThrives`, { returnObjects: true });
+    if (Array.isArray(translated)) {
+      return translated.filter((item): item is string => typeof item === 'string');
+    }
+    return [];
+  };
+
+  const getWhoPays = (pyramidType: PyramidType): string[] => {
+    const key = PYRAMID_TYPE_TRANSLATION_KEYS[pyramidType].detailsKey;
+    const translated = t(`pyramidTypes.details.${key}.whoPays`, { returnObjects: true });
+    if (Array.isArray(translated)) {
+      return translated.filter((item): item is string => typeof item === 'string');
+    }
+    return [];
+  };
 
   return (
     <div className="space-y-6">
@@ -54,7 +89,7 @@ export function CurrentCountryStep({
                 <span className="text-xl">{getFlagEmoji(country.iso2)}</span>
                 <span>{country.name}</span>
                 <span className="text-xs text-muted-foreground ml-2">
-                  {PYRAMID_TYPE_INFO[country.pyramidType].label}
+                  {getPyramidLabel(country.pyramidType)}
                 </span>
               </span>
             </SelectItem>
@@ -78,7 +113,7 @@ export function CurrentCountryStep({
             <div>
               <h3 className="font-bold">{currentCountry.name}</h3>
               <p className="text-sm text-muted-foreground">
-                {PYRAMID_TYPE_INFO[currentCountry.pyramidType].label}
+                {getPyramidLabel(currentCountry.pyramidType)}
               </p>
             </div>
           </div>
@@ -87,9 +122,9 @@ export function CurrentCountryStep({
             <div>
               <p className="text-xs text-muted-foreground mb-1">{t('exitKeys.current.whoWins', 'Qui gagne ici')}</p>
               <ul className="text-sm space-y-1">
-                {currentCountry.whoWins.slice(0, 2).map((item, i) => (
+                {getWhoThrives(currentCountry.pyramidType).slice(0, 2).map((item, i) => (
                   <li key={i} className="flex items-center gap-1">
-                    <CheckCircle className="w-3 h-3 text-emerald-500" />
+                    <CheckCircle className="w-3 h-3 text-emerald-500 shrink-0" />
                     <span className="truncate">{item}</span>
                   </li>
                 ))}
@@ -98,9 +133,9 @@ export function CurrentCountryStep({
             <div>
               <p className="text-xs text-muted-foreground mb-1">{t('exitKeys.current.whoLoses', 'Qui perd ici')}</p>
               <ul className="text-sm space-y-1">
-                {currentCountry.whoLoses.slice(0, 2).map((item, i) => (
+                {getWhoPays(currentCountry.pyramidType).slice(0, 2).map((item, i) => (
                   <li key={i} className="flex items-center gap-1">
-                    <AlertTriangle className="w-3 h-3 text-destructive" />
+                    <AlertTriangle className="w-3 h-3 text-destructive shrink-0" />
                     <span className="truncate">{item}</span>
                   </li>
                 ))}
