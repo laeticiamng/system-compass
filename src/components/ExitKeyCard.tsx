@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/collapsible';
 import { ExitKeyResult } from '@/lib/exit-keys-engine';
 import { cn } from '@/lib/utils';
-import { PYRAMID_TYPE_INFO } from '@/lib/types';
+import { usePyramidTranslations } from '@/hooks/usePyramidTranslations';
 
 interface ExitKeyCardProps {
   result: ExitKeyResult;
@@ -41,6 +41,7 @@ export default function ExitKeyCard({ result, rank }: ExitKeyCardProps) {
   const [isOpen, setIsOpen] = useState(rank === 1);
   const { key, compatibility, personalizedSteps, warnings, accelerators, planB } = result;
   const difficulty = difficultyConfig[key.difficulty];
+  const { getPyramidLabel } = usePyramidTranslations();
 
   return (
     <Collapsible open={isOpen} onOpenChange={setIsOpen}>
@@ -129,13 +130,13 @@ export default function ExitKeyCard({ result, rank }: ExitKeyCardProps) {
               <div className="flex flex-wrap gap-1.5">
                 {key.linkedPyramids.map(p => (
                   <span key={p} className="text-xs px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
-                    {PYRAMID_TYPE_INFO[p].label}
+                    {getPyramidLabel(p)}
                   </span>
                 ))}
                 <span className="text-xs text-muted-foreground">→</span>
                 {key.targetPyramids.map(p => (
                   <span key={p} className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary">
-                    {PYRAMID_TYPE_INFO[p].label}
+                    {getPyramidLabel(p)}
                   </span>
                 ))}
               </div>
