@@ -111,45 +111,69 @@ serve(async (req) => {
   }
 
   try {
-    const { languages = LANGUAGES, limit = 5, offset = 0 } = await req.json();
+    const { languages = LANGUAGES, limit = 5, offset = 0, intelligenceOnly = false, countryIds = null } = await req.json();
     
     const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
-    // Get all countries with their data - ALL fields
-    const { data: variants } = await supabase
-      .from('country_variants')
-      .select('*')
-      .range(offset, offset + limit - 1);
+    // If specific country IDs provided, use them; otherwise paginate
+    let variants, intelligence;
+    
+    if (countryIds && countryIds.length > 0) {
+      const { data: v } = await supabase
+        .from('country_variants')
+        .select('*')
+        .in('country_id', countryIds);
+      variants = v;
+      
+      const { data: i } = await supabase
+        .from('country_intelligence')
+        .select('*')
+        .in('country_id', countryIds);
+      intelligence = i;
+    } else {
+      const { data: v } = await supabase
+        .from('country_variants')
+        .select('*')
+        .range(offset, offset + limit - 1);
+      variants = v;
+      
+      const { data: i } = await supabase
+        .from('country_intelligence')
+        .select('*')
+        .range(offset, offset + limit - 1);
+      intelligence = i;
+    }
 
-    const { data: intelligence } = await supabase
-      .from('country_intelligence')
-      .select('*')
-      .range(offset, offset + limit - 1);
+    // For intelligenceOnly mode, use intelligence list as base
+    const baseList = intelligenceOnly ? intelligence : variants;
 
-    if (!variants?.length) {
+    if (!baseList?.length) {
       return new Response(
         JSON.stringify({ success: true, message: "No more countries to translate" }),
         { headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
-    console.log(`Processing ${variants.length} countries for ${languages.length} languages`);
+    console.log(`Processing ${baseList.length} countries for ${languages.length} languages (intelligenceOnly: ${intelligenceOnly})`);
 
     const results: Record<string, unknown>[] = [];
 
-    for (const variant of variants) {
-      const countryId = variant.country_id;
-      const intel = intelligence?.find(i => i.country_id === countryId);
+    for (const item of baseList) {
+      const countryId = item.country_id;
+      const variant = intelligenceOnly ? variants?.find(v => v.country_id === countryId) : item;
+      const intel = intelligenceOnly ? item : intelligence?.find(i => i.country_id === countryId);
 
       for (const lang of languages) {
         try {
           // Check if translations already exist
-          const { data: existingVariant } = await supabase
-            .from('country_variants_translations')
-            .select('id')
-            .eq('country_id', countryId)
-            .eq('language', lang)
-            .single();
+          const { data: existingVariant } = intelligenceOnly 
+            ? { data: { id: 'skip' } } // Skip variant check in intelligenceOnly mode
+            : await supabase
+                .from('country_variants_translations')
+                .select('id')
+                .eq('country_id', countryId)
+                .eq('language', lang)
+                .single();
 
           const { data: existingIntel } = await supabase
             .from('country_intelligence_translations')
@@ -158,7 +182,7 @@ serve(async (req) => {
             .eq('language', lang)
             .single();
 
-          if (existingVariant && existingIntel) {
+          if ((intelligenceOnly && existingIntel) || (!intelligenceOnly && existingVariant && existingIntel)) {
             console.log(`Skipping ${countryId}/${lang} - already translated`);
             results.push({ countryId, lang, status: 'skipped' });
             continue;
@@ -212,7 +236,7 @@ serve(async (req) => {
     return new Response(
       JSON.stringify({ 
         success: true, 
-        countriesProcessed: variants.length,
+        countriesProcessed: baseList.length,
         languagesProcessed: languages.length,
         results 
       }),
