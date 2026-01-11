@@ -1,4 +1,9 @@
 // Governance & Terrain Components - Barrel Export
+
+// LIGHT (B2C Relocation) & DEEP (B2B Entrepreneurship)
+export { GovernanceLight } from './GovernanceLight';
+export { GovernanceDeep } from './GovernanceDeep';
+
 // Governance Terrain Components
 export { TerrainStateOfArt } from './TerrainStateOfArt';
 export { TerrainAttractiveness } from './TerrainAttractiveness';
