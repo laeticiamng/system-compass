@@ -5883,7 +5883,250 @@
     "descUnstable": "This section is not here to scare, but to inform and protect. Official paths are longer but infinitely safer.",
     "descDynamic": "Specific risks for a {{origin}} → {{destination}} journey.",
     "infoProtection": "Information = Protection",
-    "noJudgment": "No judgment, only prevention"
+    "noJudgment": "No judgment, only prevention",
+    "realStats": "Real statistics",
+    "warningSignals": "Warning signals",
+    "howToProtect": "How to protect yourself",
+    "resourcesAndHelp": "Resources and help",
+    "goldenRule": {
+      "title": "Golden Rule",
+      "quote": "\"If an offer seems too good to be true, it probably is.\"",
+      "explanation": "Real legal jobs never ask for upfront payment. Real visas go through official channels. Real opportunities give you time to think."
+    },
+    "closingTitleStable": "Prepare well, enjoy fully",
+    "closingTitleUnstable": "Every life matters",
+    "closingDescStable": "Good preparation will allow you to fully enjoy your experience abroad. Anticipate challenges to better overcome them.",
+    "closingDescUnstable": "If you know someone who is considering taking risks, share this information. There are always legal alternatives, even if they require more patience. Your life is worth more than any shortcut.",
+    "resources": {
+      "traffickingHotline": "Human Trafficking Hotline France",
+      "iom": "International Organization for Migration",
+      "cimade": "La Cimade",
+      "unhcr": "UNHCR - UN Refugee Agency",
+      "sosMed": "SOS Mediterranean",
+      "laborInspection": "Labor Inspection France",
+      "ccem": "Committee Against Modern Slavery",
+      "franceDiplomatie": "France Diplomatie - Visas",
+      "signalArnaques": "Signal-Arnaques",
+      "mouvementNid": "Mouvement du Nid",
+      "alcNice": "ALC Nice Association",
+      "victimHotline": "National Victim Support Hotline",
+      "ameli": "Ameli - Rights Abroad",
+      "cleiss": "Cleiss - Social Protection",
+      "diplomatie": "France Diplomatie - Retirement Abroad",
+      "ufe": "Union of French Abroad",
+      "francaisDuMonde": "French in the World",
+      "autoEntrepreneur": "Auto-Entrepreneur Portal"
+    },
+    "categories": {
+      "humanTrafficking": {
+        "title": "Human trafficking",
+        "description": "Human trafficking affects over 40 million people worldwide. Victims are often recruited through false promises of work or study abroad.",
+        "stats": {
+          "1": "Over 50,000 trafficking victims identified in Europe each year",
+          "2": "71% of trafficking victims are women and girls",
+          "3": "Human trafficking generates $150 billion per year for traffickers",
+          "4": "Victims lose an average of 5-10 years of their lives"
+        },
+        "warnings": {
+          "1": "You're asked to hand over your identity documents",
+          "2": "Unrealistic promises of salary or living conditions",
+          "3": "Request for upfront payment for a \"visa\" or \"work contract\"",
+          "4": "Isolation from your family and friends",
+          "5": "Contract only oral or in a language you don't understand",
+          "6": "Transport organized by strangers"
+        },
+        "prevention": {
+          "1": "ALWAYS verify the legal existence of the employer or agency",
+          "2": "ALWAYS keep your identity documents with you",
+          "3": "Inform your family of your travel plans with all details",
+          "4": "Use legal immigration routes even if they take longer",
+          "5": "Be wary of offers that seem \"too good to be true\""
+        }
+      },
+      "fakeSmugglers": {
+        "title": "Fake smugglers and dangerous crossings",
+        "description": "Every year, thousands of people die attempting clandestine crossings. Smugglers guarantee nothing and profit from migrants' desperation.",
+        "stats": {
+          "1": "Over 2,000 people die each year in the Mediterranean",
+          "2": "Average cost of illegal crossing: €3,000-8,000 with no guarantee",
+          "3": "60% of illegal migrants experience violence during the journey",
+          "4": "Many are abandoned en route after paying"
+        },
+        "warnings": {
+          "1": "Cash-only payment request",
+          "2": "Promises of \"100% safe\" or \"guaranteed\" travel",
+          "3": "No contract or receipt provided",
+          "4": "You're asked to lie to authorities",
+          "5": "Rushed departure without preparation"
+        },
+        "prevention": {
+          "1": "Legal routes are ALWAYS safer, even if longer",
+          "2": "Research the real visa options from your country",
+          "3": "Scholarships exist - look for official channels",
+          "4": "Talk to migrant aid associations before any project"
+        }
+      },
+      "exploitationWork": {
+        "title": "Work exploitation",
+        "description": "Migrant workers find themselves trapped in exploitation situations: unpaid wages, undignified conditions, document confiscation.",
+        "stats": {
+          "1": "25 million people victims of forced labor worldwide",
+          "2": "At-risk sectors: agriculture, construction, domestic work, restaurants",
+          "3": "Many victims work 12-16 hours a day without rest"
+        },
+        "warnings": {
+          "1": "Employer asking to keep your papers \"safe\"",
+          "2": "Housing provided at the workplace with no alternative",
+          "3": "Surprise deductions from your salary",
+          "4": "Prohibition from contacting your family",
+          "5": "Threats if you want to leave"
+        },
+        "prevention": {
+          "1": "Research the employer before accepting",
+          "2": "Demand a written contract in your language",
+          "3": "Know your rights in the destination country",
+          "4": "Keep your embassy's contact information",
+          "5": "Never hand over your papers"
+        }
+      },
+      "scamImmigration": {
+        "title": "Immigration scams",
+        "description": "Fake lawyers, agencies or \"facilitators\" promise guaranteed visas for payment. These scams cost thousands of euros and never succeed.",
+        "stats": {
+          "1": "Average losses per victim: €2,000-15,000",
+          "2": "Fake embassy and government websites are very sophisticated",
+          "3": "Sham marriage scams: criminal risk in addition to financial losses"
+        },
+        "warnings": {
+          "1": "\"Guaranteed visa\" - no visa is guaranteed",
+          "2": "Payment request before any official process",
+          "3": "Communication only through social media",
+          "4": "Artificial urgency: \"last spots available\"",
+          "5": "Price very different from official fees"
+        },
+        "prevention": {
+          "1": "ALWAYS consult the official embassy website",
+          "2": "Real visa fees are public and fixed",
+          "3": "Certified lawyers are verifiable",
+          "4": "Never pay in advance for a \"guaranteed result\"",
+          "5": "Be wary of unverifiable testimonials"
+        }
+      },
+      "sexualExploitation": {
+        "title": "Sexual exploitation",
+        "description": "Women and young girls are deceived by promises of work in Europe and end up exploited in prostitution networks. This is a crime.",
+        "stats": {
+          "1": "Main form of trafficking in Europe (45% of cases)",
+          "2": "Victims often from Nigeria, Romania, Albania, China",
+          "3": "Victims contract impossible \"debts\" to repay",
+          "4": "Amsterdam, Paris, Rome: main exploitation destinations"
+        },
+        "warnings": {
+          "1": "Job offer as \"model\" or \"hostess\" with no experience required",
+          "2": "\"Sponsor\" who pays for your trip in exchange for \"repayment\"",
+          "3": "You're asked to keep your departure secret",
+          "4": "Vague promises about the exact type of work"
+        },
+        "prevention": {
+          "1": "Verify the actual existence of the agency or employer",
+          "2": "A real employer will never ask you to \"repay\" your trip",
+          "3": "Talk about ANY offer to your family and friends",
+          "4": "If it seems too good to be true, it's probably a scam"
+        }
+      },
+      "healthcareAbroad": {
+        "title": "Healthcare abroad",
+        "description": "Settling abroad without anticipating healthcare costs can be disastrous. Healthcare systems vary enormously between countries.",
+        "stats": {
+          "1": "A hospitalization in the USA can cost €50,000+ without insurance",
+          "2": "Many countries don't have a public healthcare system",
+          "3": "Chronic illnesses are often excluded from travel insurance",
+          "4": "Medical repatriation costs between €10,000 and €100,000"
+        },
+        "warnings": {
+          "1": "Leaving without international health insurance",
+          "2": "Not checking social security agreements between countries",
+          "3": "Forgetting to declare pre-existing conditions",
+          "4": "Underestimating healthcare costs in the destination country"
+        },
+        "prevention": {
+          "1": "Get international health insurance BEFORE leaving",
+          "2": "Check bilateral social security agreements",
+          "3": "Keep an accessible \"health emergency fund\"",
+          "4": "Learn about the local healthcare system before leaving",
+          "5": "Keep sufficient quantities of essential medications"
+        }
+      },
+      "retirementAbroad": {
+        "title": "Retirement abroad",
+        "description": "Retiring in a country with a lower cost of living is tempting, but carries often underestimated risks.",
+        "stats": {
+          "1": "Many French retirees live in Morocco, Portugal, Thailand",
+          "2": "Pensions may be taxed differently depending on agreements",
+          "3": "Access to care can become critical with age",
+          "4": "Currency fluctuations can significantly reduce purchasing power"
+        },
+        "warnings": {
+          "1": "Not checking the taxation of your pension abroad",
+          "2": "Underestimating homesickness and isolation",
+          "3": "Ignoring possible health evolution",
+          "4": "Not planning a solution to return if necessary"
+        },
+        "prevention": {
+          "1": "Test with extended stays before settling",
+          "2": "Keep an address and ties in France",
+          "3": "Plan an \"emergency return\" budget",
+          "4": "Check tax and social security agreements",
+          "5": "Keep part of your savings in accessible euros"
+        }
+      },
+      "expatBubble": {
+        "title": "Expat bubble trap",
+        "description": "Living among expats without integrating can lead to isolation, high living costs, and a superficial experience.",
+        "stats": {
+          "1": "Many expats stay among themselves and don't speak the local language",
+          "2": "\"Expat\" cost of living can be 2-3x that of locals",
+          "3": "Cultural isolation increases the risk of premature return",
+          "4": "Children may struggle to adapt when they return"
+        },
+        "warnings": {
+          "1": "Living only in \"expat\" neighborhoods",
+          "2": "Not learning the local language",
+          "3": "Only spending time with compatriots",
+          "4": "Exactly reproducing your original lifestyle"
+        },
+        "prevention": {
+          "1": "Learn at least the basics of the local language",
+          "2": "Leave expat areas to discover the \"real\" country",
+          "3": "Create connections with the local population",
+          "4": "Adapt your lifestyle to the local context",
+          "5": "Sign up for local activities, not just expat ones"
+        }
+      },
+      "digitalNomadReality": {
+        "title": "Digital nomad reality",
+        "description": "The \"digital nomad\" lifestyle is often idealized. Reality involves fiscal, social, and professional challenges.",
+        "stats": {
+          "1": "Many \"nomads\" return to a sedentary life after 1-2 years",
+          "2": "Tax issues are complex and often ignored",
+          "3": "Lack of social rights can be problematic",
+          "4": "Loneliness is the #1 problem cited by digital nomads"
+        },
+        "warnings": {
+          "1": "Not researching your tax obligations",
+          "2": "Ignoring work visa issues",
+          "3": "Underestimating the need for stability and routine",
+          "4": "Not planning for international health coverage"
+        },
+        "prevention": {
+          "1": "Clarify your tax situation BEFORE leaving",
+          "2": "Check \"digital nomad\" visas that exist in some countries",
+          "3": "Plan periods of stability between your moves",
+          "4": "Create routines and maintain strong social ties",
+          "5": "Have comprehensive international health insurance"
+        }
+      }
+    }
   },
   "orientationHub": {
     "noPromise": "No promise",
