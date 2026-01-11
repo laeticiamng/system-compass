@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { countries } from '@/lib/countries-data';
 import { Country, UserProfile } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { ArrowRight, Target, AlertTriangle, MapPin, TrendingUp, Shield, Share2, DollarSign, Plane, Lightbulb, Save, Cloud } from 'lucide-react';
+import { ArrowRight, Target, AlertTriangle, MapPin, TrendingUp, Shield, Share2, DollarSign, Plane } from 'lucide-react';
 import { toast } from 'sonner';
-import { useAuth } from '@/hooks/useAuth';
-import { supabase } from '@/integrations/supabase/client';
 import { OVISuggestionsWidget } from '@/components/ovi/OVISuggestionsWidget';
 
 const PYRAMID_TYPE_LABELS: Record<string, string> = {
