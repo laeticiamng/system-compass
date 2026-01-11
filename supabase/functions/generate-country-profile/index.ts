@@ -7,30 +7,29 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY");
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
 
-const SYSTEM_PROMPT = `Tu es un moteur d'analyse socio-économique pour une application appelée Pyramid Compass.
-Tu dois produire une fiche pays structurée en 3 couches (Tronc, Variante, Intelligence Système A→G) + des tags 1–5.
-Contraintes absolues :
-- Style descriptif, jamais prescriptif : interdit d'écrire "tu dois", "il faut", "la meilleure option est".
-- Interdit de donner du conseil juridique/financier/immigration/médical. Outil d'analyse uniquement.
-- Interdit de faire des généralisations stigmatisantes sur des peuples : parler de systèmes, institutions, incitations, règles implicites.
-- Si une information est incertaine : écrire "unknown" ou formuler en "tend à" + baisser la confiance.
-- Toujours inclure les disclaimers : "simulation ≠ prédiction", "outil d'analyse", "variations individuelles possibles".
-- Sortie JSON STRICTE uniquement, conforme au schéma fourni.
-Objectif : maximiser la spécificité pays (éviter copier-coller de la pyramide).`;
+const SYSTEM_PROMPT = `Tu es un moteur d'analyse socio-économique pour Pyramid Compass.
+Tu produis une fiche pays TRONC COMMUN ultra-complète et spécifique.
 
-const VALIDATOR_PROMPT = `Tu es un auditeur de sécurité et qualité pour Pyramid Compass.
-Entrée : un JSON de fiche pays.
-Ta mission :
-1) Détecter et supprimer toute injonction ("tu dois", "il faut", recommandations directes).
-2) Détecter les phrases qui ressemblent à du conseil juridique/financier/immigration/médical : les neutraliser.
-3) Détecter tout stéréotype ou jugement sur des peuples : reformuler en dynamique de systèmes / incitations.
-4) Vérifier que la fiche n'est pas un copier-coller générique de la pyramide : augmenter la spécificité pays si trop vague.
-5) Vérifier présence disclaimers.
-Sortie : JSON corrigé strictement au même schéma, sans texte hors JSON.`;
+CONTRAINTES ABSOLUES :
+- Style descriptif JAMAIS prescriptif : interdit "tu dois", "il faut", "la meilleure option"
+- Interdit conseil juridique/financier/immigration/médical
+- Interdit généralisations stigmatisantes sur des peuples : parle de systèmes, institutions, incitations
+- Si incertain : "tend à" + baisse confiance
+- JSON STRICT uniquement
+
+OBJECTIF : Maximiser la SPÉCIFICITÉ pays. Chaque phrase doit être UNIQUE à ce pays.`;
+
+const VALIDATOR_PROMPT = `Tu es un auditeur qualité pour Pyramid Compass.
+Mission :
+1) Supprimer toute injonction ("tu dois", recommandations directes)
+2) Neutraliser tout conseil juridique/financier/immigration/médical
+3) Reformuler stéréotypes en dynamiques de systèmes
+4) AUGMENTER la spécificité si trop générique
+5) Vérifier disclaimers présents
+Sortie : JSON corrigé strictement au même schéma.`;
 
 interface CountryInput {
   country_id: string;
@@ -41,48 +40,194 @@ interface CountryInput {
 }
 
 function createGenerationPrompt(country: CountryInput): string {
-  return `Génère la fiche JSON pour le pays suivant :
+  return `Génère la fiche TRONC COMMUN ENRICHIE pour :
 
-Country:
-- name: ${country.country_name}
-- iso2: ${country.iso2}
-- region: ${country.region}
-- primary_pyramid: ${country.primary_pyramid}
+Pays: ${country.country_name} (${country.iso2})
+Région: ${country.region}
+Type pyramide: ${country.primary_pyramid}
 
-Exigences :
-1) Couche Tronc (gratuit) : 6-10 lignes + 3 rewards + 3 punishes + 3 erreurs fréquentes.
-2) Couche Variante pays (premium) : informations réellement spécifiques au pays (institutions, marché travail, réseaux, friction quotidienne, surprises, profils qui réussissent/qui souffrent).
-3) Couche Intelligence A→G (premium+) : Power map, OS social, stratégies descriptives, mobilité, psycho/socio, géopolitique, héritage historique utile.
-4) Tags 1–5 : attribue des scores cohérents avec justification implicite.
-5) Ajoute une section "sources.public_sources" avec 2–6 sources publiques.
-6) Remplis quality.specificity_score, confidence_0_to_100, et flags.
+STRUCTURE JSON REQUISE (TOUTES les sections obligatoires) :
 
-Rappels :
-- Pas de conseil. Pas de verdict. Pas d'injonction.
-- Parle de dynamiques de pouvoir et de stratégies sociales sans stéréotypes.
-- JSON strict uniquement.
-
-Schéma JSON attendu :
 {
-  "country": { "name": "", "iso2": "", "region": "", "primary_pyramid": "", "last_updated": "YYYY-MM-DD" },
-  "disclaimer": { "analysis_only": true, "no_advice": true, "simulation_not_prediction": true, "variability_note": "" },
-  "layers": {
-    "tronc_free": { "system_summary_6_10_lines": "", "rewards_3": [], "punishes_3": [], "common_mistakes_3": [] },
-    "variant_premium": { "institutions_admin_3": [], "networks_reputation_degrees_3": [], "labor_market_3": [], "entrepreneurship_3": [], "daily_life_friction_3": [], "what_surprises_newcomers_5": [], "profiles_often_thrive_3": [], "profiles_often_struggle_3": [] },
-    "intelligence_premium_plus": {
-      "A_power_map": { "formal_power_3": [], "informal_power_3": [], "door_openers_ranked_1_to_5": [] },
-      "B_social_operating_system": { "norms_conformity_vs_differentiation": "", "relation_to_authority": "", "risk_relationship": "", "conflict_style": "" },
-      "C_social_strategies_descriptive": { "often_rewarded_3": [], "often_punished_3": [], "newcomer_traps_3": [] },
-      "D_mobility_social_elevators": { "real_elevators": [], "mobility_speed": "", "mental_cost": "", "short_justification": "" },
-      "E_psycho_socio_system_effects": { "system_induced_traits": [], "adaptive_behaviors_3": [], "backfire_behaviors_3": [] },
-      "F_geopolitics_and_flows": { "macro_dependencies": [], "cycle_state": "", "macro_risks_simple": [] },
-      "G_historical_inheritance": { "historical_traces_2_to_4": [], "implications_for_trust_rules_merit_risk": [] }
+  "country": {
+    "name": "${country.country_name}",
+    "iso2": "${country.iso2}",
+    "region": "${country.region}",
+    "primary_pyramid": "${country.primary_pyramid}",
+    "last_updated": "YYYY-MM-DD"
+  },
+  
+  "disclaimer": {
+    "analysis_only": true,
+    "no_advice": true,
+    "simulation_not_prediction": true,
+    "variability_note": "Les situations individuelles varient considérablement"
+  },
+  
+  "core_analysis": {
+    "system_summary": "Description de 8-12 phrases du fonctionnement réel du pays",
+    "rule_of_gold": "La règle d'or unique pour naviguer ce système (1 phrase percutante)",
+    
+    "pyramid_structure": {
+      "top": "Qui détient vraiment le pouvoir au sommet",
+      "institutions": "Rôle réel des institutions (vs rôle officiel)",
+      "gatekeepers": "Qui contrôle les accès et comment",
+      "value_creators": "Qui crée de la valeur et comment ils sont traités",
+      "base": "La masse et son rapport au système",
+      "real_asset": "Ce qui a vraiment de la valeur dans ce système"
+    },
+    
+    "who_wins": [
+      "Profil 1 qui prospère (avec explication WHY)",
+      "Profil 2 qui prospère (avec explication WHY)",
+      "Profil 3 qui prospère (avec explication WHY)",
+      "Profil 4 qui prospère (avec explication WHY)"
+    ],
+    
+    "who_loses": [
+      "Profil 1 qui souffre (avec explication WHY)",
+      "Profil 2 qui souffre (avec explication WHY)",
+      "Profil 3 qui souffre (avec explication WHY)",
+      "Profil 4 qui souffre (avec explication WHY)"
+    ],
+    
+    "risks_scores": {
+      "legal": 0,
+      "safety": 0,
+      "corruption": 0,
+      "volatility": 0,
+      "bureaucracy": 0
     }
   },
-  "tags_1_to_5": { "network_weight": 0, "degree_weight": 0, "risk_tolerance_system": 0, "admin_speed": 0, "authority_verticality": 0, "mental_friction_cost": 0, "social_mobility": 0, "predictability": 0, "reputation_sensitivity": 0, "rule_compliance_pressure": 0 },
-  "quality": { "specificity_score_0_to_100": 0, "anti_advice_passed": true, "stereotype_risk_flag": false, "confidence_0_to_100": 0 },
-  "sources": { "public_sources": [], "notes": "" }
-}`;
+  
+  "integration_timeline": {
+    "week_1": {
+      "phase": "Arrivée",
+      "key_tasks": ["Tâche 1", "Tâche 2", "Tâche 3"],
+      "typical_blockers": ["Blocage 1", "Blocage 2"],
+      "estimated_cost_usd": 0
+    },
+    "month_1": {
+      "phase": "Installation",
+      "key_tasks": ["Tâche 1", "Tâche 2", "Tâche 3", "Tâche 4"],
+      "typical_blockers": ["Blocage 1", "Blocage 2"],
+      "estimated_cost_usd": 0
+    },
+    "month_3": {
+      "phase": "Stabilisation",
+      "key_tasks": ["Tâche 1", "Tâche 2"],
+      "typical_blockers": ["Blocage 1"],
+      "estimated_cost_usd": 0
+    },
+    "month_6": {
+      "phase": "Intégration",
+      "key_tasks": ["Tâche 1", "Tâche 2"],
+      "success_indicators": ["Indicateur 1", "Indicateur 2"],
+      "estimated_cost_usd": 0
+    },
+    "year_1": {
+      "phase": "Établissement",
+      "milestones": ["Milestone 1", "Milestone 2"],
+      "warning_if_not_reached": "Signal d'alerte si non atteint"
+    }
+  },
+  
+  "hidden_costs": {
+    "administrative": {
+      "description": "Frais administratifs cachés",
+      "items": [
+        {"name": "Frais 1", "amount_usd": 0, "frequency": "once/monthly/yearly"},
+        {"name": "Frais 2", "amount_usd": 0, "frequency": "once"}
+      ]
+    },
+    "social": {
+      "description": "Coûts sociaux implicites",
+      "items": [
+        {"name": "Coût social 1", "amount_usd": 0, "frequency": "monthly"},
+        {"name": "Coût social 2", "amount_usd": 0, "frequency": "yearly"}
+      ]
+    },
+    "opportunity": {
+      "description": "Coûts d'opportunité spécifiques au système",
+      "items": ["Coût opp 1", "Coût opp 2"]
+    },
+    "total_first_year_estimate_usd": 0
+  },
+  
+  "red_flags": {
+    "personal_fit": [
+      "Si vous êtes [profil], ce pays n'est probablement pas pour vous parce que...",
+      "Si vous avez [caractéristique], attention à...",
+      "Si votre priorité est [X], considérez que..."
+    ],
+    "timing_warnings": [
+      "N'arrivez pas pendant [période] parce que...",
+      "Évitez de [action] avant d'avoir [condition]"
+    ],
+    "deal_breakers": [
+      "Ce pays n'est pas viable pour vous si...",
+      "Partez immédiatement si..."
+    ]
+  },
+  
+  "playbook": {
+    "do": [
+      "Action recommandée 1 avec contexte",
+      "Action recommandée 2 avec contexte",
+      "Action recommandée 3 avec contexte",
+      "Action recommandée 4 avec contexte",
+      "Action recommandée 5 avec contexte"
+    ],
+    "dont": [
+      "Erreur à éviter 1 avec conséquence",
+      "Erreur à éviter 2 avec conséquence",
+      "Erreur à éviter 3 avec conséquence",
+      "Erreur à éviter 4 avec conséquence",
+      "Erreur à éviter 5 avec conséquence"
+    ],
+    "plan_30_days": [
+      "Étape 1 avec détail",
+      "Étape 2 avec détail",
+      "Étape 3 avec détail",
+      "Étape 4 avec détail"
+    ],
+    "plan_12_months": [
+      "Objectif 1 avec critères de succès",
+      "Objectif 2 avec critères de succès",
+      "Objectif 3 avec critères de succès",
+      "Objectif 4 avec critères de succès"
+    ],
+    "plan_5_years": [
+      "Vision 1",
+      "Vision 2",
+      "Vision 3"
+    ],
+    "plan_b": "Alternative détaillée si le plan principal échoue"
+  },
+  
+  "comparison_context": {
+    "similar_countries": ["Pays similaire 1", "Pays similaire 2"],
+    "key_differences": [
+      "Différence 1 avec implications",
+      "Différence 2 avec implications"
+    ],
+    "often_confused_with": "Pays avec lequel on confond souvent",
+    "why_different": "Explication de la différence fondamentale"
+  },
+  
+  "quality": {
+    "specificity_score": 0,
+    "confidence": 0,
+    "stereotype_risk": false,
+    "sources_count": 0
+  }
+}
+
+RAPPELS CRITIQUES :
+- Chaque élément doit être SPÉCIFIQUE à ${country.country_name}
+- Pas de phrases génériques applicables à n'importe quel pays
+- Coûts en USD pour comparabilité
+- Scores de 0 à 100`;
 }
 
 async function callLLMWithRetry(
@@ -91,26 +236,30 @@ async function callLLMWithRetry(
   maxRetries = 3,
   baseDelay = 2000
 ): Promise<string> {
+  const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
+  
+  if (!LOVABLE_API_KEY) {
+    throw new Error("LOVABLE_API_KEY is not configured");
+  }
+  
   let lastError: Error | null = null;
   
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
       console.log(`LLM call attempt ${attempt}/${maxRetries}`);
       
-      const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${OPENAI_API_KEY}`,
+          Authorization: `Bearer ${LOVABLE_API_KEY}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          model: "gpt-4o",
+          model: "google/gemini-2.5-pro",
           messages: [
             { role: "system", content: systemPrompt },
             { role: "user", content: userPrompt },
           ],
-          temperature: 0.7,
-          max_tokens: 8000,
         }),
       });
 
@@ -118,20 +267,18 @@ async function callLLMWithRetry(
         const errorText = await response.text();
         const status = response.status;
         
-        // Check if error is retryable (5xx errors, 429 rate limit)
         if (status >= 500 || status === 429) {
-          lastError = new Error(`OpenAI API error: ${status} - ${errorText}`);
+          lastError = new Error(`AI API error: ${status} - ${errorText}`);
           console.warn(`Retryable error on attempt ${attempt}: ${lastError.message}`);
           
           if (attempt < maxRetries) {
-            const delay = baseDelay * Math.pow(2, attempt - 1); // Exponential backoff
+            const delay = baseDelay * Math.pow(2, attempt - 1);
             console.log(`Waiting ${delay}ms before retry...`);
             await new Promise(resolve => setTimeout(resolve, delay));
             continue;
           }
         } else {
-          // Non-retryable error (4xx except 429)
-          throw new Error(`OpenAI API error: ${status} - ${errorText}`);
+          throw new Error(`AI API error: ${status} - ${errorText}`);
         }
       } else {
         const data = await response.json();
@@ -154,8 +301,12 @@ async function callLLMWithRetry(
 }
 
 function extractJSON(text: string): object | null {
-  // Try to find JSON in the response
-  const jsonMatch = text.match(/\{[\s\S]*\}/);
+  const cleanedText = text
+    .replace(/```json\s*/g, "")
+    .replace(/```\s*/g, "")
+    .trim();
+  
+  const jsonMatch = cleanedText.match(/\{[\s\S]*\}/);
   if (jsonMatch) {
     try {
       return JSON.parse(jsonMatch[0]);
@@ -166,7 +317,6 @@ function extractJSON(text: string): object | null {
   return null;
 }
 
-// Sync generated JSON to country_intelligence table
 async function syncToCountryIntelligence(supabase: any, countryId: string, json: any) {
   try {
     const layers = json.layers?.intelligence_premium_plus || {};
@@ -223,7 +373,6 @@ async function syncToCountryIntelligence(supabase: any, countryId: string, json:
   }
 }
 
-// Sync generated JSON to country_tags table
 async function syncToCountryTags(supabase: any, countryId: string, json: any) {
   try {
     const tags = json.tags_1_to_5 || {};
@@ -264,14 +413,12 @@ serve(async (req) => {
   try {
     const body = await req.json();
     
-    // Support both formats: {job_id, country} or direct {countryId, countryName, ...}
     let job_id = body.job_id;
     let country: CountryInput;
     
     if (body.country) {
       country = body.country;
     } else {
-      // Direct format from manual testing
       country = {
         country_id: body.countryId || body.country_id,
         country_name: body.countryName || body.country_name,
@@ -283,17 +430,12 @@ serve(async (req) => {
 
     console.log("Received request for country:", country.country_name);
 
-    if (!OPENAI_API_KEY) {
-      throw new Error("OPENAI_API_KEY not configured");
-    }
-
     if (!country.country_name || !country.iso2) {
       throw new Error("Missing required fields: country_name and iso2");
     }
 
     const supabase = createClient(SUPABASE_URL!, SUPABASE_SERVICE_ROLE_KEY!);
 
-    // Update job status to running (only if job_id exists)
     if (job_id) {
       await supabase
         .from("country_generation_jobs")
@@ -301,9 +443,9 @@ serve(async (req) => {
         .eq("id", job_id);
     }
 
-    console.log(`Starting generation for ${country.country_name}`);
+    console.log(`Starting ENRICHED generation for ${country.country_name}`);
 
-    // Step 1: Generate the country profile
+    // Step 1: Generate the enriched country profile
     const generationPrompt = createGenerationPrompt(country);
     const generatedContent = await callLLMWithRetry(SYSTEM_PROMPT, generationPrompt);
 
@@ -312,7 +454,6 @@ serve(async (req) => {
       throw new Error("Failed to parse generated JSON");
     }
 
-    // Update status to validating (only if job_id exists)
     if (job_id) {
       await supabase
         .from("country_generation_jobs")
@@ -326,19 +467,15 @@ serve(async (req) => {
 
     const validatedJSON = extractJSON(validatedContent) || generatedJSON;
 
-    // Extract quality metrics
     const quality = (validatedJSON as any).quality || {};
-    const specificityScore = quality.specificity_score_0_to_100 || 0;
-    const confidenceScore = quality.confidence_0_to_100 || 0;
-    const stereotypeFlag = quality.stereotype_risk_flag || false;
+    const specificityScore = quality.specificity_score || 0;
+    const confidenceScore = quality.confidence || 0;
+    const stereotypeFlag = quality.stereotype_risk || false;
 
-    // Sync to country_intelligence table
+    // Sync to related tables
     await syncToCountryIntelligence(supabase, country.country_id, validatedJSON as any);
-
-    // Sync to country_tags table
     await syncToCountryTags(supabase, country.country_id, validatedJSON as any);
 
-    // Update job with results (only if job_id exists)
     if (job_id) {
       await supabase
         .from("country_generation_jobs")
@@ -353,7 +490,7 @@ serve(async (req) => {
         .eq("id", job_id);
     }
 
-    console.log(`Completed generation and sync for ${country.country_name}`);
+    console.log(`Completed ENRICHED generation for ${country.country_name}`);
 
     return new Response(
       JSON.stringify({ success: true, country_id: country.country_id, synced: true }),
@@ -362,7 +499,6 @@ serve(async (req) => {
   } catch (error) {
     console.error("Generation error:", error);
 
-    // Try to update job status to failed
     try {
       const { job_id } = await req.clone().json();
       if (job_id) {

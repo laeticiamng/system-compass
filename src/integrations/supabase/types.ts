@@ -301,11 +301,16 @@ export type Database = {
           adaptive_behaviors: Json
           authority_relation: string | null
           backfiring_behaviors: Json
+          career_ceiling_by_profile: Json | null
           conflict_approach: string | null
           country_id: string
           created_at: string
           cycle_status: string | null
+          decision_making_patterns: Json | null
           dependencies: Json
+          distrust_signals: Json | null
+          exit_difficulty: Json | null
+          hidden_hierarchies: Json | null
           historical_traces: Json
           id: string
           is_complete: boolean
@@ -316,6 +321,7 @@ export type Database = {
           mobility_elevators: Json
           mobility_speed: string | null
           mobility_speed_reason: string | null
+          negotiation_styles: Json | null
           newcomer_mistakes: Json
           power_formal: Json
           power_informal: Json
@@ -325,17 +331,26 @@ export type Database = {
           strategies_punished: Json
           strategies_rewarded: Json
           system_produces: Json
+          taboo_topics: Json | null
+          time_perception: Json | null
+          trust_signals: Json | null
+          unspoken_rules: Json | null
           updated_at: string
         }
         Insert: {
           adaptive_behaviors?: Json
           authority_relation?: string | null
           backfiring_behaviors?: Json
+          career_ceiling_by_profile?: Json | null
           conflict_approach?: string | null
           country_id: string
           created_at?: string
           cycle_status?: string | null
+          decision_making_patterns?: Json | null
           dependencies?: Json
+          distrust_signals?: Json | null
+          exit_difficulty?: Json | null
+          hidden_hierarchies?: Json | null
           historical_traces?: Json
           id?: string
           is_complete?: boolean
@@ -346,6 +361,7 @@ export type Database = {
           mobility_elevators?: Json
           mobility_speed?: string | null
           mobility_speed_reason?: string | null
+          negotiation_styles?: Json | null
           newcomer_mistakes?: Json
           power_formal?: Json
           power_informal?: Json
@@ -355,17 +371,26 @@ export type Database = {
           strategies_punished?: Json
           strategies_rewarded?: Json
           system_produces?: Json
+          taboo_topics?: Json | null
+          time_perception?: Json | null
+          trust_signals?: Json | null
+          unspoken_rules?: Json | null
           updated_at?: string
         }
         Update: {
           adaptive_behaviors?: Json
           authority_relation?: string | null
           backfiring_behaviors?: Json
+          career_ceiling_by_profile?: Json | null
           conflict_approach?: string | null
           country_id?: string
           created_at?: string
           cycle_status?: string | null
+          decision_making_patterns?: Json | null
           dependencies?: Json
+          distrust_signals?: Json | null
+          exit_difficulty?: Json | null
+          hidden_hierarchies?: Json | null
           historical_traces?: Json
           id?: string
           is_complete?: boolean
@@ -376,6 +401,7 @@ export type Database = {
           mobility_elevators?: Json
           mobility_speed?: string | null
           mobility_speed_reason?: string | null
+          negotiation_styles?: Json | null
           newcomer_mistakes?: Json
           power_formal?: Json
           power_informal?: Json
@@ -385,6 +411,10 @@ export type Database = {
           strategies_punished?: Json
           strategies_rewarded?: Json
           system_produces?: Json
+          taboo_topics?: Json | null
+          time_perception?: Json | null
+          trust_signals?: Json | null
+          unspoken_rules?: Json | null
           updated_at?: string
         }
         Relationships: []
@@ -469,11 +499,15 @@ export type Database = {
       }
       country_variants: {
         Row: {
+          common_mistakes_timeline: Json | null
           country_id: string
           created_at: string
+          cultural_shocks: Json | null
           daily_life: Json
           entrepreneurship: Json
           example_trajectories: Json
+          expat_communities: Json | null
+          hidden_admin_steps: Json | null
           id: string
           institutions: Json
           is_complete: boolean
@@ -481,15 +515,23 @@ export type Database = {
           networks: Json
           profiles_struggle: Json
           profiles_succeed: Json
+          real_costs_breakdown: Json | null
+          success_timeline_months: Json | null
           surprises: Json
+          typical_day: Json | null
           updated_at: string
+          year_one_reality: Json | null
         }
         Insert: {
+          common_mistakes_timeline?: Json | null
           country_id: string
           created_at?: string
+          cultural_shocks?: Json | null
           daily_life?: Json
           entrepreneurship?: Json
           example_trajectories?: Json
+          expat_communities?: Json | null
+          hidden_admin_steps?: Json | null
           id?: string
           institutions?: Json
           is_complete?: boolean
@@ -497,15 +539,23 @@ export type Database = {
           networks?: Json
           profiles_struggle?: Json
           profiles_succeed?: Json
+          real_costs_breakdown?: Json | null
+          success_timeline_months?: Json | null
           surprises?: Json
+          typical_day?: Json | null
           updated_at?: string
+          year_one_reality?: Json | null
         }
         Update: {
+          common_mistakes_timeline?: Json | null
           country_id?: string
           created_at?: string
+          cultural_shocks?: Json | null
           daily_life?: Json
           entrepreneurship?: Json
           example_trajectories?: Json
+          expat_communities?: Json | null
+          hidden_admin_steps?: Json | null
           id?: string
           institutions?: Json
           is_complete?: boolean
@@ -513,8 +563,12 @@ export type Database = {
           networks?: Json
           profiles_struggle?: Json
           profiles_succeed?: Json
+          real_costs_breakdown?: Json | null
+          success_timeline_months?: Json | null
           surprises?: Json
+          typical_day?: Json | null
           updated_at?: string
+          year_one_reality?: Json | null
         }
         Relationships: []
       }
