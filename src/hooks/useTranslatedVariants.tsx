@@ -12,6 +12,16 @@ interface CountryVariants {
   profiles_struggle: string[];
   surprises: string[];
   example_trajectories: { profile: string; outcome: string }[];
+  is_complete?: boolean;
+  // New enriched fields
+  typical_day?: { time: string; activity: string; cultural_note: string }[];
+  year_one_reality?: { month: string; milestone: string; difficulty: string; tip: string }[];
+  common_mistakes_timeline?: { phase: string; mistake: string; consequence: string; prevention: string }[];
+  hidden_admin_steps?: { step: string; time_estimate: string; difficulty: string; insider_tip: string }[];
+  cultural_shocks?: { shock: string; explanation: string; adaptation_time: string }[];
+  real_costs_breakdown?: { category: string; official_cost: string; real_cost: string; notes: string }[];
+  success_timeline_months?: { month_range: string; realistic_goal: string; warning: string }[];
+  expat_communities?: { name: string; location: string; size: string; focus: string; entry_difficulty: string }[];
 }
 
 export function useTranslatedVariants(

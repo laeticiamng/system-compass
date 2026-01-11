@@ -26,6 +26,17 @@ interface CountryIntelligence {
   macro_risks: any[];
   historical_traces: any[];
   legacy_implications: any;
+  // New enriched fields
+  unspoken_rules?: { rule: string; consequence: string; how_to_know: string }[];
+  negotiation_styles?: { context: string; style: string; taboo: string }[];
+  trust_signals?: string[];
+  distrust_signals?: string[];
+  exit_difficulty?: { scenario: string; difficulty: string; timeline: string; hidden_costs: string }[];
+  career_ceiling_by_profile?: { profile: string; ceiling: string; workaround: string }[];
+  hidden_hierarchies?: { hierarchy: string; how_it_works: string; access_method: string }[];
+  taboo_topics?: string[];
+  decision_making_patterns?: { context: string; who_decides: string; how_long: string; influence_method: string }[];
+  time_perception?: { aspect: string; local_norm: string; foreigner_trap: string }[];
 }
 
 export function useTranslatedIntelligence(
