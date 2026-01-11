@@ -46,6 +46,7 @@ import Pricing from "./pages/Pricing";
 import ProfileMatcher from "./pages/ProfileMatcher";
 import AdminCountryGenerator from "./pages/AdminCountryGenerator";
 import AdminGenerateTranslations from "./pages/AdminGenerateTranslations";
+import AdminDatabaseTranslations from "./pages/AdminDatabaseTranslations";
 import WorldMapExplorer from "./pages/WorldMapExplorer";
 import Institutions from "./pages/Institutions";
 import OVI from "./pages/OVI";
@@ -109,6 +110,7 @@ const App = () => (
                     <Route path="/profile-matcher" element={<ProfileMatcher />} />
                     <Route path="/admin/country-generator" element={<AdminCountryGenerator />} />
                     <Route path="/admin/generate-translations" element={<AdminGenerateTranslations />} />
+                    <Route path="/admin/database-translations" element={<AdminDatabaseTranslations />} />
                     <Route path="/institutions" element={<Institutions />} />
                     <Route path="/ovi" element={<OVI />} />
                     <Route path="/b2b" element={<B2BSolutions />} />
