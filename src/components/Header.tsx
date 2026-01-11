@@ -9,6 +9,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { Button } from './ui/button';
 import { SubscriptionBadge } from './SubscriptionBadge';
 import { UserHistoryPanel } from './UserHistoryPanel';
+import { NotificationBell } from './dashboard/NotificationBell';
 import {
   Sheet,
   SheetContent,
@@ -65,6 +66,7 @@ export function Header() {
   const adminItems = [
     { href: '/admin/country-generator', label: 'Country Generator', icon: Globe },
     { href: '/admin/analytics', label: 'Analytics', icon: Settings },
+    { href: '/admin/partners', label: 'Partners', icon: Users },
   ];
 
   const handleSignOut = async () => {
@@ -172,6 +174,7 @@ export function Header() {
           </nav>
 
           <GlobalSearch />
+          {user && <NotificationBell />}
           {user && <UserHistoryPanel />}
           <LanguageSwitcher />
 

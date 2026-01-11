@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { 
   Bell, 
-  Check, 
   CheckCheck,
   Trash2,
   ExternalLink,
@@ -11,7 +10,8 @@ import {
   AlertCircle,
   Info,
   CheckCircle2,
-  Calendar
+  Calendar,
+  Trophy
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -22,46 +22,53 @@ import {
 } from '@/components/ui/popover';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
-import { usePersistedNotifications, UserNotification } from '@/hooks/usePersistedNotifications';
+import { usePersistedNotifications, PersistedNotification } from '@/hooks/usePersistedNotifications';
+import { useAuth } from '@/hooks/useAuth';
 import { cn } from '@/lib/utils';
 import { formatDistanceToNow } from 'date-fns';
 import { fr } from 'date-fns/locale';
 
 const notificationIcons: Record<string, React.ReactNode> = {
   deadline: <Calendar className="w-4 h-4 text-amber-500" />,
-  success: <CheckCircle2 className="w-4 h-4 text-green-500" />,
-  warning: <AlertCircle className="w-4 h-4 text-amber-500" />,
-  error: <AlertCircle className="w-4 h-4 text-red-500" />,
+  achievement: <Trophy className="w-4 h-4 text-yellow-500" />,
+  reminder: <Bell className="w-4 h-4 text-blue-500" />,
   info: <Info className="w-4 h-4 text-blue-500" />,
+};
+
+const priorityColors: Record<string, string> = {
+  high: 'bg-red-500',
+  medium: 'bg-amber-500',
+  low: 'bg-gray-400',
 };
 
 export function NotificationBell() {
   const { t, i18n } = useTranslation();
+  const { user } = useAuth();
   const {
     notifications,
     unreadCount,
     loading,
     markAsRead,
     markAllAsRead,
-    deleteNotification,
-    isLoggedIn,
+    clearNotification,
   } = usePersistedNotifications();
 
   const [isOpen, setIsOpen] = useState(false);
 
-  if (!isLoggedIn) {
+  // Don't render if not logged in
+  if (!user) {
     return null;
   }
 
-  const handleMarkAsRead = async (notification: UserNotification) => {
-    if (!notification.is_read) {
+  const handleMarkAsRead = async (notification: PersistedNotification) => {
+    if (!notification.read) {
       await markAsRead(notification.id);
     }
   };
 
   const handleDelete = async (e: React.MouseEvent, notificationId: string) => {
     e.stopPropagation();
-    await deleteNotification(notificationId);
+    await clearNotification(notificationId);
   };
 
   const handleMarkAllAsRead = async () => {
@@ -71,10 +78,10 @@ export function NotificationBell() {
   return (
     <Popover open={isOpen} onOpenChange={setIsOpen}>
       <PopoverTrigger asChild>
-        <Button variant="ghost" size="icon" className="relative">
-          <Bell className="w-5 h-5" />
+        <Button variant="ghost" size="icon" className="relative h-8 w-8">
+          <Bell className="w-4 h-4" />
           {unreadCount > 0 && (
-            <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
+            <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center">
               {unreadCount > 9 ? '9+' : unreadCount}
             </span>
           )}
@@ -82,21 +89,21 @@ export function NotificationBell() {
       </PopoverTrigger>
       <PopoverContent className="w-80 p-0" align="end">
         <div className="flex items-center justify-between p-3 border-b">
-          <h4 className="font-semibold">{t('notifications.title', 'Notifications')}</h4>
+          <h4 className="font-semibold text-sm">{t('notifications.title', 'Notifications')}</h4>
           {unreadCount > 0 && (
             <Button 
               variant="ghost" 
               size="sm" 
-              className="text-xs gap-1"
+              className="text-xs gap-1 h-7"
               onClick={handleMarkAllAsRead}
             >
               <CheckCheck className="w-3 h-3" />
-              {t('notifications.markAllRead', 'Tout marquer lu')}
+              {t('notifications.markAllRead', 'Tout lire')}
             </Button>
           )}
         </div>
 
-        <ScrollArea className="h-80">
+        <ScrollArea className="h-72">
           {loading ? (
             <div className="flex items-center justify-center py-8">
               <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" />
@@ -115,7 +122,7 @@ export function NotificationBell() {
                   key={notification.id}
                   className={cn(
                     "p-3 hover:bg-muted/50 transition-colors cursor-pointer",
-                    !notification.is_read && "bg-primary/5"
+                    !notification.read && "bg-primary/5"
                   )}
                   onClick={() => handleMarkAsRead(notification)}
                 >
@@ -125,23 +132,28 @@ export function NotificationBell() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-start justify-between gap-2">
-                        <p className={cn(
-                          "text-sm font-medium line-clamp-1",
-                          !notification.is_read && "text-foreground",
-                          notification.is_read && "text-muted-foreground"
-                        )}>
-                          {notification.title}
-                        </p>
+                        <div className="flex items-center gap-2">
+                          <p className={cn(
+                            "text-sm font-medium line-clamp-1",
+                            !notification.read ? "text-foreground" : "text-muted-foreground"
+                          )}>
+                            {notification.title}
+                          </p>
+                          <span className={cn(
+                            "w-2 h-2 rounded-full flex-shrink-0",
+                            priorityColors[notification.priority] || priorityColors.low
+                          )} />
+                        </div>
                         <div className="flex items-center gap-1 flex-shrink-0">
-                          {!notification.is_read && (
-                            <Badge variant="secondary" className="h-5 px-1.5 text-[10px]">
+                          {!notification.read && (
+                            <Badge variant="secondary" className="h-4 px-1 text-[9px]">
                               {t('common.new', 'Nouveau')}
                             </Badge>
                           )}
                           <Button
                             variant="ghost"
                             size="icon"
-                            className="h-6 w-6"
+                            className="h-5 w-5"
                             onClick={(e) => handleDelete(e, notification.id)}
                           >
                             <Trash2 className="w-3 h-3 text-muted-foreground" />
@@ -151,16 +163,16 @@ export function NotificationBell() {
                       <p className="text-xs text-muted-foreground line-clamp-2 mt-0.5">
                         {notification.message}
                       </p>
-                      <div className="flex items-center justify-between mt-2">
+                      <div className="flex items-center justify-between mt-1.5">
                         <span className="text-[10px] text-muted-foreground">
-                          {formatDistanceToNow(new Date(notification.created_at), {
+                          {formatDistanceToNow(notification.timestamp, {
                             addSuffix: true,
                             locale: i18n.language === 'fr' ? fr : undefined,
                           })}
                         </span>
-                        {notification.link && (
+                        {notification.actionUrl && (
                           <Link 
-                            to={notification.link}
+                            to={notification.actionUrl}
                             onClick={(e) => e.stopPropagation()}
                             className="text-[10px] text-primary hover:underline flex items-center gap-1"
                           >
