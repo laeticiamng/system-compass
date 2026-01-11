@@ -134,7 +134,7 @@ export function TerrainStability({ countryId, countryName, snapshot }: TerrainSt
             {snapshot.corruptionIndex && (
               <div>
                 <div className="text-xs text-muted-foreground mb-1">Indice Corruption (TI)</div>
-                <div className="text-lg font-bold">{snapshot.corruptionIndex}/100</div>
+                <div className="text-lg font-bold">{100 - snapshot.corruptionIndex}/100</div>
               </div>
             )}
             {snapshot.freedomIndex && (

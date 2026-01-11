@@ -289,7 +289,7 @@ export default function CountryDetail() {
           <SnapshotCard label={t('countryDetail.snapshot.gdpPerCapita')} value={`$${country.snapshot.gdpPerCapita.toLocaleString()}`} />
           <SnapshotCard label={t('countryDetail.snapshot.population')} value={formatPopulation(country.snapshot.population)} />
           <SnapshotCard label={t('countryDetail.snapshot.passportRank')} value={`#${country.snapshot.passportRank}`} />
-          <SnapshotCard label={t('countryDetail.snapshot.corruptionIndex')} value={`${country.snapshot.corruptionIndex}/100`} colorClass={getCorruptionColor(country.snapshot.corruptionIndex)} />
+          <SnapshotCard label={t('countryDetail.snapshot.corruptionIndex')} value={`${100 - country.snapshot.corruptionIndex}/100`} colorClass={getCorruptionColor(country.snapshot.corruptionIndex)} />
           <SnapshotCard label={t('countryDetail.snapshot.freedomIndex')} value={`${country.snapshot.freedomIndex}/100`} colorClass={getFreedomColor(country.snapshot.freedomIndex)} />
         </div>
 
@@ -436,10 +436,11 @@ function SnapshotCard({ label, value, colorClass }: { label: string; value: stri
 
 function getCorruptionColor(index: number): string {
   // TI scale: 100 = clean, 0 = corrupt
-  // Visual inversion: show red for corrupt (low score), green for clean (high score)
-  if (index >= 70) return 'text-green-500';
-  if (index >= 50) return 'text-yellow-500';
-  if (index >= 30) return 'text-orange-500';
+  // We display inverted (100 - index), so color based on inverted value
+  const inverted = 100 - index;
+  if (inverted <= 30) return 'text-green-500';
+  if (inverted <= 50) return 'text-yellow-500';
+  if (inverted <= 70) return 'text-orange-500';
   return 'text-red-500';
 }
 

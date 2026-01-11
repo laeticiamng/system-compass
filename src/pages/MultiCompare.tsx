@@ -442,9 +442,9 @@ export default function MultiCompare() {
                       {selectedCountries.map(c => (
                         <TableCell key={c.id} className="text-center">
                           {renderValueCell(
-                            c.snapshot.corruptionIndex,
-                            selectedCountries.map(x => x.snapshot.corruptionIndex),
-                            true,
+                            100 - c.snapshot.corruptionIndex,
+                            selectedCountries.map(x => 100 - x.snapshot.corruptionIndex),
+                            false,
                             v => `${v}/100`
                           )}
                         </TableCell>
