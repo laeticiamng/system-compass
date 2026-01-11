@@ -5918,6 +5918,15 @@
       "prevention": "Filtrer mes risques"
     }
   },
+  "riskPrevention": {
+    "titleStable": "⚠️ Points de Vigilance pour Votre Projet",
+    "titleUnstable": "⚠️ Risques des Raccourcis",
+    "descStable": "Votre situation privilégiée vous protège de certains risques, mais d'autres défis vous attendent. Voici ce qu'il faut anticiper.",
+    "descUnstable": "Cette section n'est pas là pour faire peur, mais pour informer et protéger. Les chemins officiels sont plus longs mais infiniment plus sûrs.",
+    "descDynamic": "Risques spécifiques pour un trajet {{origin}} → {{destination}}.",
+    "infoProtection": "Information = Protection",
+    "noJudgment": "Aucun jugement, que de la prévention"
+  },
   "orientationHub": {
     "noPromise": "Pas de promesse",
     "noLegalAdvice": "Pas de conseil juridique",

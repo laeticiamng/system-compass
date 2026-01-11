@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { AlertTriangle, Shield, Phone, ExternalLink, Heart, XCircle, CheckCircle, Info } from 'lucide-react';
+import { AlertTriangle, Shield, Phone, ExternalLink, Heart, XCircle, CheckCircle, Info, MapPin } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
@@ -11,6 +11,9 @@ interface RiskPreventionProps {
   birthCountryPyramidType?: PyramidType;
   currentCountryId?: string;
   birthCountryId?: string;
+  // New props for dynamic display
+  originCountryName?: string;
+  destinationCountryName?: string;
 }
 
 interface RiskCategory {
@@ -397,8 +400,12 @@ export function RiskPrevention({
   currentCountryPyramidType,
   birthCountryPyramidType,
   currentCountryId,
-  birthCountryId 
+  birthCountryId,
+  originCountryName,
+  destinationCountryName
 }: RiskPreventionProps) {
+  const { t } = useTranslation();
+  
   const relevantRisks = useMemo(() => {
     return getRelevantRisks(
       currentCountryPyramidType,
@@ -416,6 +423,15 @@ export function RiskPrevention({
   // Determine the primary context for the header message
   const isFromStableCountry = birthCountryPyramidType && 
     ['STABILITY_REDIS', 'COMPETENCE_TRUST'].includes(birthCountryPyramidType);
+
+  // Dynamic header based on countries
+  const headerTitle = isFromStableCountry 
+    ? t('riskPrevention.titleStable', '⚠️ Points de Vigilance pour Votre Projet')
+    : t('riskPrevention.titleUnstable', '⚠️ Risques des Raccourcis');
+
+  const headerDesc = isFromStableCountry 
+    ? t('riskPrevention.descStable', 'Votre situation privilégiée vous protège de certains risques, mais d\'autres défis vous attendent. Voici ce qu\'il faut anticiper.')
+    : t('riskPrevention.descUnstable', 'Cette section n\'est pas là pour faire peur, mais pour informer et protéger. Les chemins officiels sont plus longs mais infiniment plus sûrs.');
 
   return (
     <div className="space-y-8">
@@ -436,27 +452,36 @@ export function RiskPrevention({
               isFromStableCountry ? "text-amber-400" : "text-red-400"
             )} />
           </div>
-          <div>
-            <h2 className="text-2xl font-bold mb-2">
-              {isFromStableCountry 
-                ? '⚠️ Points de Vigilance pour Votre Projet'
-                : '⚠️ Risques des Raccourcis'
-              }
-            </h2>
+          <div className="flex-1">
+            <div className="flex flex-wrap items-center gap-2 mb-2">
+              <h2 className="text-2xl font-bold">
+                {headerTitle}
+              </h2>
+              {originCountryName && destinationCountryName && (
+                <span className="flex items-center gap-1 text-xs bg-muted px-2 py-1 rounded-full">
+                  <MapPin className="w-3 h-3" />
+                  {originCountryName} → {destinationCountryName}
+                </span>
+              )}
+            </div>
             <p className="text-muted-foreground mb-4">
-              {isFromStableCountry 
-                ? 'Votre situation privilégiée vous protège de certains risques, mais d\'autres défis vous attendent. Voici ce qu\'il faut anticiper.'
-                : 'Cette section n\'est pas là pour faire peur, mais pour informer et protéger. Les chemins officiels sont plus longs mais infiniment plus sûrs.'
+              {originCountryName && destinationCountryName 
+                ? t('riskPrevention.descDynamic', {
+                    origin: originCountryName,
+                    destination: destinationCountryName,
+                    defaultValue: `Risques spécifiques pour un trajet ${originCountryName} → ${destinationCountryName}. ${headerDesc}`
+                  })
+                : headerDesc
               }
             </p>
             <div className="flex flex-wrap gap-4 text-sm">
               <div className="flex items-center gap-2">
                 <Shield className="w-4 h-4 text-emerald-400" />
-                <span>Information = Protection</span>
+                <span>{t('riskPrevention.infoProtection', 'Information = Protection')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Heart className="w-4 h-4 text-rose-400" />
-                <span>Aucun jugement, que de la prévention</span>
+                <span>{t('riskPrevention.noJudgment', 'Aucun jugement, que de la prévention')}</span>
               </div>
             </div>
           </div>

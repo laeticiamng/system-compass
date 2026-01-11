@@ -5876,6 +5876,15 @@
       "prevention": "Filter my risks"
     }
   },
+  "riskPrevention": {
+    "titleStable": "⚠️ Vigilance Points for Your Project",
+    "titleUnstable": "⚠️ Risks of Shortcuts",
+    "descStable": "Your privileged situation protects you from certain risks, but other challenges await you. Here's what to anticipate.",
+    "descUnstable": "This section is not here to scare, but to inform and protect. Official paths are longer but infinitely safer.",
+    "descDynamic": "Specific risks for a {{origin}} → {{destination}} journey.",
+    "infoProtection": "Information = Protection",
+    "noJudgment": "No judgment, only prevention"
+  },
   "orientationHub": {
     "noPromise": "No promise",
     "noLegalAdvice": "No legal advice",
