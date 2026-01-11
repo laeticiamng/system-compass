@@ -134,7 +134,7 @@ function generateAnalysis(formData: FormData, countryId: string): AnalysisResult
         'Échec statistique plus élevé pour les étrangers',
         'Dépendance aux réseaux locaux'
       );
-      exitKeys.push({ label: 'Erreurs systémiques à éviter', href: '/systemic-mistakes' });
+      exitKeys.push({ label: 'Erreurs systémiques à éviter', href: '/errors-illusions' });
       break;
     case 'investment':
       blindSpots.push(

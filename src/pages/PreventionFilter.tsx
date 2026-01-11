@@ -183,7 +183,7 @@ function generateResults(formData: FilterFormData): FilterResult {
       );
       exitKeys.push(
         { label: "Analyser les trajectoires", href: "/life-trajectory" },
-        { label: "Erreurs systémiques", href: "/systemic-mistakes" }
+        { label: "Erreurs systémiques", href: "/errors-illusions" }
       );
       break;
     case 'career':
@@ -219,7 +219,7 @@ function generateResults(formData: FilterFormData): FilterResult {
       );
       exitKeys.push(
         { label: "Stratégies entrepreneuriales", href: "/exit-keys" },
-        { label: "Éviter les erreurs courantes", href: "/systemic-mistakes" }
+        { label: "Éviter les erreurs courantes", href: "/errors-illusions" }
       );
       break;
     case 'investment':
@@ -254,7 +254,7 @@ function generateResults(formData: FilterFormData): FilterResult {
         "Coût de sortie sous-estimé (émotionnel, logistique, financier)"
       );
       exitKeys.push(
-        { label: "Prévention des risques", href: "/systemic-mistakes" }
+        { label: "Prévention des risques", href: "/errors-illusions" }
       );
       break;
     default:
