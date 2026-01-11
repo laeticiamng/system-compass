@@ -1,11 +1,22 @@
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { 
   AlertTriangle, Skull, DollarSign, Clock, Users, 
-  Shield, ArrowRight, AlertCircle, Ban
+  Shield, ArrowRight, AlertCircle, Ban, MapPin
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { PyramidType } from '@/lib/types';
+
+interface RiskContextsSectionProps {
+  originCountryId?: string;
+  originCountryName?: string;
+  originPyramidType?: PyramidType;
+  destinationCountryId?: string;
+  destinationCountryName?: string;
+  destinationPyramidType?: PyramidType;
+}
 
 interface RiskCategory {
   id: string;
@@ -20,9 +31,18 @@ interface RiskCategory {
   };
   examples: string[];
   consequences: string[];
+  // Relevance criteria
+  relevantFor?: {
+    fromPyramids?: PyramidType[];
+    toPyramids?: PyramidType[];
+    fromCountries?: string[];
+    toCountries?: string[];
+  };
 }
 
-const RISK_CATEGORIES: RiskCategory[] = [
+// All possible risk categories with relevance criteria
+const ALL_RISK_CATEGORIES: RiskCategory[] = [
+  // Critical risks - primarily for migrations from unstable to stable
   {
     id: 'dangerous-routes',
     titleKey: 'riskContexts.dangerousRoutes.title',
@@ -43,7 +63,12 @@ const RISK_CATEGORIES: RiskCategory[] = [
       'riskContexts.dangerousRoutes.consequences.0',
       'riskContexts.dangerousRoutes.consequences.1',
       'riskContexts.dangerousRoutes.consequences.2'
-    ]
+    ],
+    relevantFor: {
+      fromPyramids: ['PROBLEM_RENT', 'RESOURCE_EXTRACTION'],
+      toPyramids: ['STABILITY_REDIS', 'COMPETENCE_TRUST'],
+      fromCountries: ['nigeria', 'senegal', 'mali', 'morocco', 'algeria', 'tunisia', 'libya', 'eritrea', 'sudan', 'syria', 'afghanistan', 'iraq', 'somalia', 'south-sudan']
+    }
   },
   {
     id: 'scams',
@@ -65,7 +90,11 @@ const RISK_CATEGORIES: RiskCategory[] = [
       'riskContexts.scams.consequences.0',
       'riskContexts.scams.consequences.1',
       'riskContexts.scams.consequences.2'
-    ]
+    ],
+    // Universal - relevant for most migrations
+    relevantFor: {
+      fromPyramids: ['PROBLEM_RENT', 'RESOURCE_EXTRACTION', 'HYBRID_TRANSITION', 'GROWTH_RISK']
+    }
   },
   {
     id: 'fake-intermediaries',
@@ -87,7 +116,10 @@ const RISK_CATEGORIES: RiskCategory[] = [
       'riskContexts.fakeIntermediaries.consequences.0',
       'riskContexts.fakeIntermediaries.consequences.1',
       'riskContexts.fakeIntermediaries.consequences.2'
-    ]
+    ],
+    relevantFor: {
+      fromPyramids: ['PROBLEM_RENT', 'RESOURCE_EXTRACTION', 'HYBRID_TRANSITION']
+    }
   },
   {
     id: 'hidden-costs',
@@ -109,9 +141,154 @@ const RISK_CATEGORIES: RiskCategory[] = [
       'riskContexts.hiddenCosts.consequences.0',
       'riskContexts.hiddenCosts.consequences.1',
       'riskContexts.hiddenCosts.consequences.2'
-    ]
+    ],
+    // Universal - always relevant
+  },
+  // Risks for stable → unstable migrations
+  {
+    id: 'healthcare-abroad',
+    titleKey: 'riskContexts.healthcareAbroad.title',
+    descKey: 'riskContexts.healthcareAbroad.desc',
+    icon: Shield,
+    colorClass: {
+      border: 'border-emerald-500/30',
+      bg: 'bg-emerald-500/5',
+      iconBg: 'bg-emerald-500/10',
+      iconText: 'text-emerald-500'
+    },
+    examples: [
+      'riskContexts.healthcareAbroad.examples.0',
+      'riskContexts.healthcareAbroad.examples.1',
+      'riskContexts.healthcareAbroad.examples.2'
+    ],
+    consequences: [
+      'riskContexts.healthcareAbroad.consequences.0',
+      'riskContexts.healthcareAbroad.consequences.1',
+      'riskContexts.healthcareAbroad.consequences.2'
+    ],
+    relevantFor: {
+      fromPyramids: ['STABILITY_REDIS', 'COMPETENCE_TRUST'],
+      toPyramids: ['GROWTH_RISK', 'RESOURCE_EXTRACTION', 'PROBLEM_RENT']
+    }
+  },
+  {
+    id: 'cultural-shock',
+    titleKey: 'riskContexts.culturalShock.title',
+    descKey: 'riskContexts.culturalShock.desc',
+    icon: AlertTriangle,
+    colorClass: {
+      border: 'border-purple-500/30',
+      bg: 'bg-purple-500/5',
+      iconBg: 'bg-purple-500/10',
+      iconText: 'text-purple-500'
+    },
+    examples: [
+      'riskContexts.culturalShock.examples.0',
+      'riskContexts.culturalShock.examples.1',
+      'riskContexts.culturalShock.examples.2'
+    ],
+    consequences: [
+      'riskContexts.culturalShock.consequences.0',
+      'riskContexts.culturalShock.consequences.1',
+      'riskContexts.culturalShock.consequences.2'
+    ],
+    relevantFor: {
+      fromPyramids: ['STABILITY_REDIS', 'COMPETENCE_TRUST']
+    }
+  },
+  // Tax/admin risks for stable country residents
+  {
+    id: 'fiscal-complexity',
+    titleKey: 'riskContexts.fiscalComplexity.title',
+    descKey: 'riskContexts.fiscalComplexity.desc',
+    icon: DollarSign,
+    colorClass: {
+      border: 'border-cyan-500/30',
+      bg: 'bg-cyan-500/5',
+      iconBg: 'bg-cyan-500/10',
+      iconText: 'text-cyan-500'
+    },
+    examples: [
+      'riskContexts.fiscalComplexity.examples.0',
+      'riskContexts.fiscalComplexity.examples.1',
+      'riskContexts.fiscalComplexity.examples.2'
+    ],
+    consequences: [
+      'riskContexts.fiscalComplexity.consequences.0',
+      'riskContexts.fiscalComplexity.consequences.1',
+      'riskContexts.fiscalComplexity.consequences.2'
+    ],
+    relevantFor: {
+      fromPyramids: ['STABILITY_REDIS', 'COMPETENCE_TRUST'],
+      toCountries: ['usa', 'switzerland', 'uae', 'singapore', 'portugal', 'spain']
+    }
   }
 ];
+
+// Determine relevant risks based on origin and destination
+function getRelevantRisks(
+  originPyramid?: PyramidType,
+  destinationPyramid?: PyramidType,
+  originCountryId?: string,
+  destinationCountryId?: string
+): RiskCategory[] {
+  // If no context, return default universal risks
+  if (!originPyramid && !destinationPyramid) {
+    return ALL_RISK_CATEGORIES.filter(r => 
+      r.id === 'scams' || r.id === 'hidden-costs' || r.id === 'fake-intermediaries'
+    );
+  }
+
+  const relevantRisks = ALL_RISK_CATEGORIES.filter(risk => {
+    // Always include hidden-costs as it's universal
+    if (risk.id === 'hidden-costs') return true;
+
+    const { relevantFor } = risk;
+    if (!relevantFor) return true; // No criteria = always relevant
+
+    let isRelevant = false;
+
+    // Check if origin country matches
+    if (relevantFor.fromCountries?.length && originCountryId) {
+      if (relevantFor.fromCountries.includes(originCountryId)) {
+        isRelevant = true;
+      }
+    }
+
+    // Check if destination country matches
+    if (relevantFor.toCountries?.length && destinationCountryId) {
+      if (relevantFor.toCountries.includes(destinationCountryId)) {
+        isRelevant = true;
+      }
+    }
+
+    // Check if origin pyramid type matches
+    if (relevantFor.fromPyramids?.length && originPyramid) {
+      if (relevantFor.fromPyramids.includes(originPyramid)) {
+        // Also check destination pyramid if specified
+        if (relevantFor.toPyramids?.length) {
+          if (destinationPyramid && relevantFor.toPyramids.includes(destinationPyramid)) {
+            isRelevant = true;
+          }
+        } else {
+          isRelevant = true;
+        }
+      }
+    }
+
+    // Check if only destination pyramid is specified
+    if (relevantFor.toPyramids?.length && !relevantFor.fromPyramids?.length && destinationPyramid) {
+      if (relevantFor.toPyramids.includes(destinationPyramid)) {
+        isRelevant = true;
+      }
+    }
+
+    return isRelevant;
+  });
+
+  // Limit to 4 most relevant risks
+  return relevantRisks.slice(0, 4);
+}
 
 const ALTERNATIVES = [
   { icon: '🏠', labelKey: 'riskContexts.alternatives.stayBuild' },
@@ -121,8 +298,36 @@ const ALTERNATIVES = [
   { icon: '🎯', labelKey: 'riskContexts.alternatives.changeGoal' }
 ];
 
-export function RiskContextsSection() {
+export function RiskContextsSection({ 
+  originCountryId,
+  originCountryName,
+  originPyramidType,
+  destinationCountryId,
+  destinationCountryName,
+  destinationPyramidType
+}: RiskContextsSectionProps) {
   const { t } = useTranslation();
+
+  const relevantRisks = useMemo(() => {
+    return getRelevantRisks(
+      originPyramidType,
+      destinationPyramidType,
+      originCountryId,
+      destinationCountryId
+    );
+  }, [originPyramidType, destinationPyramidType, originCountryId, destinationCountryId]);
+
+  // Generate dynamic subtitle based on countries
+  const dynamicSubtitle = useMemo(() => {
+    if (originCountryName && destinationCountryName) {
+      return t('riskContexts.subtitleDynamic', {
+        origin: originCountryName,
+        destination: destinationCountryName,
+        defaultValue: `Risques spécifiques pour un trajet ${originCountryName} → ${destinationCountryName}`
+      });
+    }
+    return t('riskContexts.subtitle', 'Ce que beaucoup ne vous diront pas — mais que vous devez savoir');
+  }, [originCountryName, destinationCountryName, t]);
 
   return (
     <div className="space-y-4 sm:space-y-6">
@@ -137,8 +342,14 @@ export function RiskContextsSection() {
               <CardTitle className="text-lg sm:text-xl">
                 {t('riskContexts.title', 'Contextes à risque')}
               </CardTitle>
-              <CardDescription className="text-sm">
-                {t('riskContexts.subtitle', 'Ce que beaucoup ne vous diront pas — mais que vous devez savoir')}
+              <CardDescription className="text-sm flex items-center gap-2">
+                {originCountryName && destinationCountryName && (
+                  <span className="flex items-center gap-1 text-xs bg-muted px-2 py-0.5 rounded-full">
+                    <MapPin className="w-3 h-3" />
+                    {originCountryName} → {destinationCountryName}
+                  </span>
+                )}
+                <span>{dynamicSubtitle}</span>
               </CardDescription>
             </div>
           </div>
@@ -152,7 +363,7 @@ export function RiskContextsSection() {
 
       {/* Risk Categories Grid - Responsive */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-        {RISK_CATEGORIES.map((category) => {
+        {relevantRisks.map((category) => {
           const Icon = category.icon;
           return (
             <Card 

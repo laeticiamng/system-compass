@@ -5802,6 +5802,7 @@
   "riskContexts": {
     "title": "Contextes à risque",
     "subtitle": "Ce que beaucoup ne vous diront pas — mais que vous devez savoir",
+    "subtitleDynamic": "Risques spécifiques pour un trajet {{origin}} → {{destination}}",
     "intro": "Avant d'engager votre argent, votre temps ou votre vie dans une trajectoire internationale, il est crucial de distinguer les fantasmes des réalités, et les opportunités légales des impasses dangereuses.",
     "examples": "Exemples fréquents",
     "consequences": "Conséquences",
@@ -5859,6 +5860,48 @@
         "0": "Précarité prolongée malgré le 'succès' du départ",
         "1": "Impossibilité d'aider la famille restée",
         "2": "Retour contraint après épuisement des ressources"
+      }
+    },
+    "healthcareAbroad": {
+      "title": "Santé à l'étranger",
+      "desc": "Les systèmes de santé varient énormément — anticiper est essentiel",
+      "examples": {
+        "0": "Hospitalisation sans assurance = factures de dizaines de milliers d'euros",
+        "1": "Maladies chroniques exclues des assurances voyage",
+        "2": "Rapatriement sanitaire coûtant 10 000 à 100 000€"
+      },
+      "consequences": {
+        "0": "Ruine financière en cas d'urgence médicale",
+        "1": "Impossibilité d'accéder aux soins nécessaires",
+        "2": "Retour forcé pour raisons de santé"
+      }
+    },
+    "culturalShock": {
+      "title": "Choc culturel",
+      "desc": "L'adaptation est souvent plus longue et difficile qu'anticipé",
+      "examples": {
+        "0": "Codes sociaux et professionnels très différents",
+        "1": "Isolement et solitude dans les premiers mois",
+        "2": "Incompréhension des systèmes administratifs locaux"
+      },
+      "consequences": {
+        "0": "Dépression, burnout et épuisement émotionnel",
+        "1": "Échec professionnel malgré les compétences",
+        "2": "Retour prématuré et sentiment d'échec"
+      }
+    },
+    "fiscalComplexity": {
+      "title": "Complexité fiscale",
+      "desc": "Les règles fiscales entre pays sont souvent mal comprises",
+      "examples": {
+        "0": "Double imposition non anticipée",
+        "1": "Obligations déclaratives dans le pays d'origine maintenues",
+        "2": "Statuts fiscaux avantageux avec conditions cachées"
+      },
+      "consequences": {
+        "0": "Redressement fiscal et pénalités importantes",
+        "1": "Perte de droits sociaux (retraite, chômage)",
+        "2": "Blocage de comptes bancaires ou actifs"
       }
     },
     "warningTitle": "Ce que Pyramid Compass peut faire pour vous",
