@@ -450,12 +450,17 @@ export function CountryVariantSection({ countryId, countryName }: CountryVariant
 
 // Overview Section (original content)
 function OverviewSection({ displayData, t }: { displayData: CountryVariant; t: any }) {
-  // Safely access arrays with fallback to empty arrays
-  const institutions = displayData?.institutions || [];
-  const networks = displayData?.networks || [];
-  const labor_market = displayData?.labor_market || [];
-  const entrepreneurship = displayData?.entrepreneurship || [];
-  const daily_life = displayData?.daily_life || [];
+  // Safely ensure arrays - handle both null/undefined and non-array values
+  const ensureArray = (val: unknown): string[] => {
+    if (Array.isArray(val)) return val;
+    return [];
+  };
+
+  const institutions = ensureArray(displayData?.institutions);
+  const networks = ensureArray(displayData?.networks);
+  const labor_market = ensureArray(displayData?.labor_market);
+  const entrepreneurship = ensureArray(displayData?.entrepreneurship);
+  const daily_life = ensureArray(displayData?.daily_life);
 
   const sections = [
     { icon: Building2, title: t('countryDetail.variant.institutions', 'Institutions & Administration'), data: institutions, color: 'text-blue-500' },
@@ -465,10 +470,24 @@ function OverviewSection({ displayData, t }: { displayData: CountryVariant; t: a
     { icon: Coffee, title: t('countryDetail.variant.dailyLife', 'Vie Quotidienne'), data: daily_life, color: 'text-pink-500' },
   ];
 
+  // Filter sections that have data
+  const sectionsWithData = sections.filter(s => s.data.length > 0);
+
+  if (sectionsWithData.length === 0) {
+    return (
+      <Card className="border-amber-500/30 bg-amber-500/5">
+        <CardContent className="p-8 text-center">
+          <Building2 className="w-12 h-12 text-amber-500 mx-auto mb-4" />
+          <p className="text-muted-foreground">{t('variant.noData', 'Données bientôt disponibles')}</p>
+        </CardContent>
+      </Card>
+    );
+  }
+
   return (
     <>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {sections.map(({ icon: Icon, title, data, color }) => (
+        {sectionsWithData.map(({ icon: Icon, title, data, color }) => (
           <Card key={title}>
             <CardHeader className="pb-2">
               <CardTitle className={`text-sm flex items-center gap-2 ${color}`}>
@@ -492,7 +511,7 @@ function OverviewSection({ displayData, t }: { displayData: CountryVariant; t: a
 
       {/* Profiles Grid */}
       <div className="grid md:grid-cols-2 gap-4">
-        {(displayData?.profiles_succeed?.length || 0) > 0 && (
+        {Array.isArray(displayData?.profiles_succeed) && displayData.profiles_succeed.length > 0 && (
           <Card className="border-green-500/30">
             <CardHeader className="pb-2">
               <CardTitle className="text-sm flex items-center gap-2 text-green-600">
@@ -502,7 +521,7 @@ function OverviewSection({ displayData, t }: { displayData: CountryVariant; t: a
             </CardHeader>
             <CardContent>
               <ul className="space-y-2">
-                {(displayData?.profiles_succeed || []).map((item, i) => (
+                {displayData.profiles_succeed.map((item, i) => (
                   <li key={i} className="text-sm flex items-start gap-2 text-muted-foreground">
                     <span className="text-green-500">✓</span>
                     {item}
@@ -513,7 +532,7 @@ function OverviewSection({ displayData, t }: { displayData: CountryVariant; t: a
           </Card>
         )}
 
-        {(displayData?.profiles_struggle?.length || 0) > 0 && (
+        {Array.isArray(displayData?.profiles_struggle) && displayData.profiles_struggle.length > 0 && (
           <Card className="border-red-500/30">
             <CardHeader className="pb-2">
               <CardTitle className="text-sm flex items-center gap-2 text-red-600">
@@ -523,7 +542,7 @@ function OverviewSection({ displayData, t }: { displayData: CountryVariant; t: a
             </CardHeader>
             <CardContent>
               <ul className="space-y-2">
-                {(displayData?.profiles_struggle || []).map((item, i) => (
+                {displayData.profiles_struggle.map((item, i) => (
                   <li key={i} className="text-sm flex items-start gap-2 text-muted-foreground">
                     <span className="text-red-500">⚠</span>
                     {item}
@@ -536,7 +555,7 @@ function OverviewSection({ displayData, t }: { displayData: CountryVariant; t: a
       </div>
 
       {/* Trajectories */}
-      {(displayData?.example_trajectories?.length || 0) > 0 && (
+      {Array.isArray(displayData?.example_trajectories) && displayData.example_trajectories.length > 0 && (
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-sm flex items-center gap-2">
@@ -546,7 +565,7 @@ function OverviewSection({ displayData, t }: { displayData: CountryVariant; t: a
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              {(displayData?.example_trajectories || []).map((traj, i) => (
+              {displayData.example_trajectories.map((traj, i) => (
                 <div key={i} className="p-3 bg-muted/30 rounded-lg">
                   <div className="font-medium text-sm text-primary mb-1">{traj?.profile || ''}</div>
                   <p className="text-sm text-muted-foreground">{traj?.outcome || ''}</p>
