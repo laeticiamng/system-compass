@@ -9,6 +9,7 @@ const corsHeaders = {
 interface ReminderRequest {
   userId?: string;
   checkAll?: boolean;
+  testSlack?: boolean;
 }
 
 interface DeadlineInfo {
@@ -22,9 +23,63 @@ interface DeadlineInfo {
   actionIndex: number;
 }
 
+interface UserDeadlinesGroup {
+  userId: string;
+  userEmail: string;
+  deadlines: DeadlineInfo[];
+}
+
 const logStep = (step: string, details?: unknown) => {
   const detailsStr = details ? ` - ${JSON.stringify(details)}` : '';
   console.log(`[DASHBOARD-REMINDERS] ${step}${detailsStr}`);
+};
+
+const formatDeadlineSummary = (deadlines: DeadlineInfo[]) => {
+  const urgentDeadlines = deadlines.filter(d => d.daysRemaining <= 3);
+  const upcomingDeadlines = deadlines.filter(d => d.daysRemaining > 3);
+
+  const urgentText = urgentDeadlines.length > 0
+    ? `*Échéances urgentes (${urgentDeadlines.length})*\n${urgentDeadlines.map(d => `• ${d.actionText} — ${d.daysRemaining === 0 ? "Aujourd'hui" : `dans ${d.daysRemaining} jour${d.daysRemaining > 1 ? 's' : ''}`}`).join('\n')}`
+    : '';
+
+  const upcomingText = upcomingDeadlines.length > 0
+    ? `*À venir cette semaine (${upcomingDeadlines.length})*\n${upcomingDeadlines.map(d => `• ${d.actionText} — dans ${d.daysRemaining} jours`).join('\n')}`
+    : '';
+
+  return [urgentText, upcomingText].filter(Boolean).join('\n\n');
+};
+
+const buildSlackBlocks = (deadlines: DeadlineInfo[], title: string) => {
+  const summary = formatDeadlineSummary(deadlines);
+  return [
+    {
+      type: "header",
+      text: {
+        type: "plain_text",
+        text: title,
+        emoji: true
+      }
+    },
+    {
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text: summary || "Aucune échéance imminente."
+      }
+    },
+    {
+      type: "divider"
+    },
+    {
+      type: "context",
+      elements: [
+        {
+          type: "mrkdwn",
+          text: `📅 ${new Date().toLocaleString("fr-FR", { timeZone: "Europe/Paris" })}`
+        }
+      ]
+    }
+  ];
 };
 
 serve(async (req) => {
@@ -47,9 +102,69 @@ serve(async (req) => {
     const canSendEmail = !!resendApiKey;
 
     const body: ReminderRequest = await req.json().catch(() => ({}));
-    const { userId, checkAll = false } = body;
+    const { userId, checkAll = false, testSlack = false } = body;
 
     logStep("Processing request", { userId, checkAll });
+
+    if (testSlack) {
+      if (!userId) {
+        return new Response(JSON.stringify({ error: "Missing userId for Slack test" }), {
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+          status: 400,
+        });
+      }
+
+      const { data: slackSettings, error: slackSettingsError } = await supabase
+        .from('notification_settings')
+        .select('slack_webhook_url')
+        .eq('user_id', userId)
+        .single();
+
+      if (slackSettingsError) {
+        throw new Error(`Failed to fetch Slack settings: ${slackSettingsError.message}`);
+      }
+
+      if (!slackSettings?.slack_webhook_url) {
+        return new Response(JSON.stringify({ error: "Slack webhook URL not configured" }), {
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+          status: 400,
+        });
+      }
+
+      const slackMessage = {
+        blocks: buildSlackBlocks(
+          [
+            {
+              userId,
+              userEmail: "",
+              exitKeyName: "",
+              actionText: "Phase 1, Action 1",
+              deadline: new Date().toISOString(),
+              daysRemaining: 3,
+              phaseIndex: 0,
+              actionIndex: 0,
+            }
+          ],
+          "✅ Test - Rappel d'échéance (Boussole Stratégique)"
+        )
+      };
+
+      const slackResponse = await fetch(slackSettings.slack_webhook_url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(slackMessage)
+      });
+
+      if (!slackResponse.ok) {
+        const errorText = await slackResponse.text();
+        throw new Error(`Slack API error: ${slackResponse.status} ${errorText}`);
+      }
+
+      return new Response(JSON.stringify({ success: true, message: "Notification Slack test envoyée" }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+        status: 200,
+      });
+    }
 
     // Fetch dashboard progress with upcoming deadlines
     let query = supabase
@@ -118,19 +233,23 @@ serve(async (req) => {
     const errors: string[] = [];
 
     // Group by user for email batching
-    const userDeadlines = new Map<string, DeadlineInfo[]>();
+    const userDeadlines = new Map<string, UserDeadlinesGroup>();
     for (const deadline of upcomingDeadlines) {
-      const existing = userDeadlines.get(deadline.userEmail) || [];
-      existing.push(deadline);
-      userDeadlines.set(deadline.userEmail, existing);
+      const existing = userDeadlines.get(deadline.userId) || {
+        userId: deadline.userId,
+        userEmail: deadline.userEmail,
+        deadlines: [],
+      };
+      existing.deadlines.push(deadline);
+      userDeadlines.set(deadline.userId, existing);
     }
 
     // Send emails if Resend is configured
     if (canSendEmail && resendApiKey) {
-      for (const [email, deadlines] of userDeadlines) {
+      for (const [, group] of userDeadlines) {
         try {
-          const urgentDeadlines = deadlines.filter(d => d.daysRemaining <= 3);
-          const upcomingList = deadlines.filter(d => d.daysRemaining > 3);
+          const urgentDeadlines = group.deadlines.filter(d => d.daysRemaining <= 3);
+          const upcomingList = group.deadlines.filter(d => d.daysRemaining > 3);
 
           const emailHtml = `
             <!DOCTYPE html>
@@ -199,10 +318,10 @@ serve(async (req) => {
             },
             body: JSON.stringify({
               from: "Boussole Stratégique <notifications@resend.dev>",
-              to: [email],
+              to: [group.userEmail],
               subject: urgentDeadlines.length > 0 
                 ? `⚠️ ${urgentDeadlines.length} échéance(s) urgente(s) - Action requise`
-                : `📅 ${deadlines.length} échéance(s) à venir cette semaine`,
+                : `📅 ${group.deadlines.length} échéance(s) à venir cette semaine`,
               html: emailHtml,
             }),
           });
@@ -211,31 +330,58 @@ serve(async (req) => {
             throw new Error(`Email API error: ${emailResponse.status}`);
           }
 
-          notificationsSent.push(email);
-          logStep("Email sent", { email, deadlineCount: deadlines.length });
+          notificationsSent.push(group.userEmail);
+          logStep("Email sent", { email: group.userEmail, deadlineCount: group.deadlines.length });
         } catch (emailError) {
           const errorMsg = emailError instanceof Error ? emailError.message : String(emailError);
-          errors.push(`Failed to send to ${email}: ${errorMsg}`);
-          logStep("Email error", { email, error: errorMsg });
+          errors.push(`Failed to send to ${group.userEmail}: ${errorMsg}`);
+          logStep("Email error", { email: group.userEmail, error: errorMsg });
         }
       }
     } else {
       logStep("Resend not configured, skipping emails");
     }
 
-    // Store notifications in database for push notifications
-    for (const deadline of upcomingDeadlines) {
-      // Check notification settings
+    // Notify Slack and push notifications
+    for (const [, group] of userDeadlines) {
       const { data: settings } = await supabase
         .from('notification_settings')
-        .select('push_enabled')
-        .eq('user_id', deadline.userId)
+        .select('push_enabled, slack_webhook_url')
+        .eq('user_id', group.userId)
         .single();
 
       if (settings?.push_enabled) {
         // Here you would trigger push notification
         // For now, we log it for the client to poll
-        logStep("Push notification queued", { userId: deadline.userId });
+        logStep("Push notification queued", { userId: group.userId });
+      }
+
+      if (settings?.slack_webhook_url) {
+        try {
+          const slackMessage = {
+            blocks: buildSlackBlocks(
+              group.deadlines,
+              "📅 Rappels d'échéances (Boussole Stratégique)"
+            )
+          };
+
+          const slackResponse = await fetch(settings.slack_webhook_url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(slackMessage)
+          });
+
+          if (!slackResponse.ok) {
+            const errorText = await slackResponse.text();
+            throw new Error(`Slack API error: ${slackResponse.status} ${errorText}`);
+          }
+
+          logStep("Slack notification sent", { userId: group.userId, deadlineCount: group.deadlines.length });
+        } catch (slackError) {
+          const errorMsg = slackError instanceof Error ? slackError.message : String(slackError);
+          errors.push(`Failed Slack for ${group.userEmail}: ${errorMsg}`);
+          logStep("Slack error", { userId: group.userId, error: errorMsg });
+        }
       }
     }
 

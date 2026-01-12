@@ -27,6 +27,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { useNotificationSettings } from '@/hooks/useNotificationSettings';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
+import { supabase } from '@/integrations/supabase/client';
 
 export default function NotificationSettings() {
   const { t } = useTranslation();
@@ -40,6 +41,7 @@ export default function NotificationSettings() {
     isLoggedIn 
   } = useNotificationSettings();
 
+  const [slackTesting, setSlackTesting] = useState(false);
   const [localSettings, setLocalSettings] = useState({
     email_enabled: settings?.email_enabled ?? true,
     push_enabled: settings?.push_enabled ?? false,
@@ -77,6 +79,32 @@ export default function NotificationSettings() {
       toast.success(t('notifications.pushEnabled', 'Notifications push activées'));
     } else {
       toast.error(t('notifications.pushDenied', 'Permission refusée'));
+    }
+  };
+
+  const handleSlackTest = async () => {
+    if (!user?.id) return;
+    if (!localSettings.slack_webhook_url) {
+      toast.error(t('notifications.slack.testMissingUrl', 'Ajoutez une URL de webhook Slack avant le test.'));
+      return;
+    }
+
+    setSlackTesting(true);
+    try {
+      const { error } = await supabase.functions.invoke('dashboard-reminders', {
+        body: { userId: user.id, testSlack: true }
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      toast.success(t('notifications.slack.testSuccess', 'Notification test envoyée sur Slack.'));
+    } catch (err) {
+      console.error('Slack test error:', err);
+      toast.error(t('notifications.slack.testError', 'Impossible d\'envoyer la notification test.'));
+    } finally {
+      setSlackTesting(false);
     }
   };
 
@@ -275,6 +303,25 @@ export default function NotificationSettings() {
                     setLocalSettings(prev => ({ ...prev, slack_webhook_url: e.target.value }))
                   }
                 />
+              </div>
+              <div className="flex items-center justify-between gap-4">
+                <p className="text-sm text-muted-foreground">
+                  {t('notifications.slack.testHint', 'Envoyez un message de test pour valider la configuration.')}
+                </p>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleSlackTest}
+                  disabled={slackTesting || !localSettings.slack_webhook_url}
+                  className="gap-2"
+                >
+                  {slackTesting ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : (
+                    <MessageSquare className="w-4 h-4" />
+                  )}
+                  {t('notifications.slack.testButton', 'Envoyer une notification test')}
+                </Button>
               </div>
               <Alert>
                 <Info className="w-4 h-4" />
