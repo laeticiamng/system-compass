@@ -46,37 +46,37 @@ export default function OVI() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20 pt-20 md:pt-24">
+    <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20 pt-16 sm:pt-20 md:pt-24">
       {/* Hero Section */}
-      <section className="py-12 md:py-20">
-        <div className="container mx-auto px-4">
+      <section className="py-8 sm:py-12 md:py-20">
+        <div className="container mx-auto px-3 sm:px-4">
           <div className="max-w-4xl mx-auto text-center">
             {/* Premium Badge */}
-            <Badge className="mb-4 px-4 py-1.5 bg-gradient-to-r from-amber-500/20 to-amber-600/20 text-amber-600 border-amber-500/30">
-              <Sparkles className="w-3.5 h-3.5 mr-2" />
+            <Badge className="mb-3 sm:mb-4 px-3 sm:px-4 py-1 sm:py-1.5 bg-gradient-to-r from-amber-500/20 to-amber-600/20 text-amber-600 border-amber-500/30 text-xs sm:text-sm">
+              <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 mr-1.5 sm:mr-2" />
               {t('ovi.badge', 'Premium • Think Tank')}
             </Badge>
 
             {/* Logo/Title */}
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 flex items-center justify-center">
-                <Eye className="w-8 h-8 text-primary" />
+            <div className="flex items-center justify-center gap-3 mb-4 sm:mb-6">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 flex items-center justify-center">
+                <Eye className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
               </div>
             </div>
             
-            <h1 className="font-display text-3xl md:text-5xl font-bold mb-3">
+            <h1 className="font-display text-2xl sm:text-3xl md:text-5xl font-bold mb-2 sm:mb-3">
               <span className="text-primary">OVI</span>
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-2">
+            <p className="text-base sm:text-xl md:text-2xl text-muted-foreground mb-1 sm:mb-2">
               {t('ovi.fullName', 'Observatoire des Variables Invisibles')}
             </p>
             
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-sm sm:text-lg text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto px-2">
               {t('ovi.subtitle', 'Un espace de recul, un laboratoire de pensée. Pas un outil de plus — un cadre pour mieux décider.')}
             </p>
 
             {/* Core Values */}
-            <div className="flex flex-wrap justify-center gap-3 mb-10">
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-6 sm:mb-10 px-2">
               <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-muted text-sm font-medium">
                 <Brain className="w-4 h-4 text-primary" />
                 {t('ovi.value1', 'Cadres de pensée')}

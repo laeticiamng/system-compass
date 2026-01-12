@@ -158,16 +158,16 @@ export default function Countries() {
   const isShowingExtended = filter === 'extended';
 
   return (
-    <div className="min-h-screen pt-20 md:pt-24 pb-16">
-      <div className="container mx-auto px-4">
-        <div className="max-w-2xl mb-8 md:mb-12">
-          <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4">
+    <div className="min-h-screen pt-16 sm:pt-20 md:pt-24 pb-12 sm:pb-16">
+      <div className="container mx-auto px-3 sm:px-4">
+        <div className="max-w-2xl mb-6 sm:mb-8 md:mb-12">
+          <h1 className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3 md:mb-4">
             {t('countries.title')}
           </h1>
-          <p className="text-muted-foreground text-sm md:text-base mb-3">
+          <p className="text-muted-foreground text-xs sm:text-sm md:text-base mb-2 sm:mb-3">
             {t('countries.subtitle')}
           </p>
-          <p className="text-xs text-muted-foreground/70">
+          <p className="text-[10px] sm:text-xs text-muted-foreground/70">
             {t('common.disclaimer')}
           </p>
         </div>
@@ -193,7 +193,7 @@ export default function Countries() {
         </div>
 
         {/* Filters */}
-        <div className="flex flex-wrap gap-2 mb-8">
+        <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-8">
           <FilterButton
             active={filter === 'all'}
             onClick={() => handleFilterChange('all')}
@@ -221,7 +221,7 @@ export default function Countries() {
         </div>
 
         {/* Sort and Results */}
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+        <div className="flex flex-wrap items-center justify-between gap-2 sm:gap-4 mb-4 sm:mb-6">
           <div className="text-sm text-muted-foreground">
             {filteredAndSortedCountries.length} {t('countries.results', { count: filteredAndSortedCountries.length })}
             {isShowingExtended && (

@@ -121,36 +121,36 @@ export default function About() {
   const { t } = useTranslation();
 
   return (
-    <div className="min-h-screen bg-background pt-20">
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
+    <div className="min-h-screen bg-background pt-16 sm:pt-20">
+      <div className="container mx-auto px-3 sm:px-4 py-6 sm:py-8 max-w-6xl">
         {/* Back link */}
         <Link 
           to="/" 
-          className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-6 transition-colors"
+          className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-4 sm:mb-6 transition-colors text-sm"
         >
           <ArrowLeft className="w-4 h-4" />
           {t('common.back')}
         </Link>
 
         {/* Hero */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-4">
-            <Compass className="w-5 h-5" />
+        <div className="text-center mb-8 sm:mb-12">
+          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 text-primary mb-3 sm:mb-4 text-sm">
+            <Compass className="w-4 h-4 sm:w-5 sm:h-5" />
             <span className="font-medium">{t('about.badge', 'Notre mission')}</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 px-2">
             {t('about.title', 'Outil de lucidité stratégique')}
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-4">
+          <p className="text-base sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-3 sm:mb-4 px-4">
             {t('about.subtitle', 'Simulateur de décisions dans des systèmes réels. Outil d\'analyse uniquement.')}
           </p>
-          <p className="text-primary font-medium">
+          <p className="text-primary font-medium text-sm sm:text-base">
             {t('common.positioningLine', 'Tu décides, nous éclairons.')}
           </p>
         </div>
 
         {/* Central Philosophy Message */}
-        <Card className="mb-12 border-primary/30 bg-gradient-to-r from-primary/5 via-background to-amber-500/5">
+        <Card className="mb-6 sm:mb-12 border-primary/30 bg-gradient-to-r from-primary/5 via-background to-amber-500/5">
           <CardContent className="pt-8 pb-8">
             <div className="flex items-center justify-center gap-4 mb-4">
               <Lightbulb className="w-10 h-10 text-primary" />
@@ -184,7 +184,7 @@ export default function About() {
         <SimulationDisclaimer variant="compact" className="mb-8" />
 
         {/* What we are / What we are NOT */}
-        <div className="grid md:grid-cols-2 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-12">
           <Card className="border-l-4 border-emerald-500">
             <CardHeader>
               <div className="flex items-center gap-3">
@@ -249,12 +249,12 @@ export default function About() {
         </div>
 
         {/* Two modes */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold text-center mb-6">
+        <div className="mb-8 sm:mb-12">
+          <h2 className="text-xl sm:text-2xl font-bold text-center mb-4 sm:mb-6">
             {t('about.modes.title', 'Deux façons d\'utiliser l\'outil')}
           </h2>
           
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             <Card className="border-2 border-primary/30 hover:border-primary/50 transition-colors">
               <CardHeader>
                 <div className="p-3 rounded-full bg-primary/10 w-fit">
@@ -298,11 +298,11 @@ export default function About() {
         </div>
 
         {/* Quick Situations */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold mb-6 text-center">
+        <div className="mb-8 sm:mb-12">
+          <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center">
             {t('orientationHub.quickTitle', 'Accès rapide selon votre besoin')}
           </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             {QUICK_SITUATIONS.map((situation, index) => {
               const Icon = situation.icon;
               return (

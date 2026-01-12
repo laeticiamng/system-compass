@@ -96,28 +96,28 @@ export default function PyramidTypes() {
   const pyramidTypes = Object.entries(PYRAMID_TYPE_INFO) as [PyramidType, typeof PYRAMID_TYPE_INFO[PyramidType]][];
 
   return (
-    <main className="min-h-screen bg-background pt-24 pb-16">
-      <div className="container mx-auto px-4">
+    <main className="min-h-screen bg-background pt-16 sm:pt-24 pb-12 sm:pb-16">
+      <div className="container mx-auto px-3 sm:px-4">
         {/* Header */}
-        <div className="mb-12">
+        <div className="mb-8 sm:mb-12">
           <Link 
             to="/" 
-            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-6"
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-4 sm:mb-6 text-sm"
           >
             <ArrowLeft className="w-4 h-4" />
             {t('common.back', 'Retour')}
           </Link>
           
-          <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">
+          <h1 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
             {t('pyramidTypes.title', 'Les Six Pyramides')}
           </h1>
-          <p className="text-lg text-muted-foreground max-w-3xl">
+          <p className="text-sm sm:text-lg text-muted-foreground max-w-3xl">
             {t('pyramidTypes.subtitle', 'Comprendre le système réel de chaque pays pour naviguer intelligemment. Chaque pyramide représente une logique de pouvoir différente.')}
           </p>
         </div>
 
         {/* Pyramid Types Grid */}
-        <div className="space-y-16">
+        <div className="space-y-10 sm:space-y-16">
           {pyramidTypes.map(([type, info], index) => {
             const Icon = PYRAMID_ICONS[type];
             const details = PYRAMID_DETAILS[type];
@@ -127,41 +127,41 @@ export default function PyramidTypes() {
               <section 
                 key={type} 
                 id={type.toLowerCase()}
-                className="scroll-mt-24"
+                className="scroll-mt-20 sm:scroll-mt-24"
               >
                 <div className={cn(
-                  "glass-card rounded-2xl p-8 border-l-4",
+                  "glass-card rounded-xl sm:rounded-2xl p-4 sm:p-8 border-l-4",
                   `border-l-${info.color}`
                 )} style={{ borderLeftColor: `hsl(var(--${info.color}))` }}>
                   
                   {/* Header */}
-                  <div className="flex flex-col md:flex-row md:items-start gap-6 mb-8">
+                  <div className="flex flex-col md:flex-row md:items-start gap-4 sm:gap-6 mb-6 sm:mb-8">
                     <div className={cn(
-                      "p-4 rounded-xl shrink-0",
+                      "p-3 sm:p-4 rounded-lg sm:rounded-xl shrink-0 w-fit",
                       `bg-${info.color}/20`
                     )} style={{ backgroundColor: `hsl(var(--${info.color}) / 0.15)` }}>
-                      <Icon className="w-8 h-8" style={{ color: `hsl(var(--${info.color}))` }} />
+                      <Icon className="w-6 h-6 sm:w-8 sm:h-8" style={{ color: `hsl(var(--${info.color}))` }} />
                     </div>
                     
                     <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
-                        <span className="text-sm font-mono text-muted-foreground">#{index + 1}</span>
-                        <h2 className="font-display text-2xl md:text-3xl font-bold">
+                      <div className="flex items-center gap-2 sm:gap-3 mb-2">
+                        <span className="text-xs sm:text-sm font-mono text-muted-foreground">#{index + 1}</span>
+                        <h2 className="font-display text-xl sm:text-2xl md:text-3xl font-bold">
                           {getPyramidLabel(type)}
                         </h2>
                       </div>
-                      <p className="text-lg text-muted-foreground">
+                      <p className="text-sm sm:text-lg text-muted-foreground">
                         {getPyramidDescription(type)}
                       </p>
                     </div>
                   </div>
 
                   {/* Characteristics Tags */}
-                  <div className="flex flex-wrap gap-2 mb-8">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-8">
                     {details.characteristics.map(char => (
                       <span 
                         key={char}
-                        className="px-3 py-1 rounded-full text-sm font-medium bg-accent/50 text-accent-foreground"
+                        className="px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-medium bg-accent/50 text-accent-foreground"
                       >
                         {t(`pyramids.characteristics.${char}`, char)}
                       </span>
@@ -169,7 +169,7 @@ export default function PyramidTypes() {
                   </div>
 
                   {/* Content Grid */}
-                  <div className="grid md:grid-cols-2 gap-8 mb-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 mb-6 sm:mb-8">
                     {/* Who Thrives */}
                     <div className="space-y-4">
                       <div className="flex items-center gap-2">

@@ -168,18 +168,18 @@ export default function QuickTest() {
     const exitKey = pyramidType ? PYRAMID_EXIT_KEYS[pyramidType] : null;
 
     return (
-      <div className="min-h-screen pt-20 pb-16">
-        <div className="container mx-auto px-4 max-w-2xl">
+      <div className="min-h-screen pt-16 sm:pt-20 pb-12 sm:pb-16">
+        <div className="container mx-auto px-3 sm:px-4 max-w-2xl">
           {/* Timer badge */}
-          <div className="flex justify-center mb-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium">
-              <Clock className="w-4 h-4" />
+          <div className="flex justify-center mb-4 sm:mb-6">
+            <div className="inline-flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium">
+              <Clock className="w-3 h-3 sm:w-4 sm:h-4" />
               {elapsedTime} {t('common.seconds', 'secondes')}
             </div>
           </div>
 
           {/* Main result card */}
-          <div className="glass-card rounded-2xl p-6 md:p-8 mb-6">
+          <div className="glass-card rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6">
             <p className="text-sm text-muted-foreground mb-3">
               {t('quickTest.result.systemLooksLike', 'Le système ressemble souvent à...')}
             </p>
@@ -282,18 +282,18 @@ export default function QuickTest() {
   }
 
   return (
-    <div className="min-h-screen pt-20 pb-16">
-      <div className="container mx-auto px-4 max-w-2xl">
+    <div className="min-h-screen pt-16 sm:pt-20 pb-12 sm:pb-16">
+      <div className="container mx-auto px-3 sm:px-4 max-w-2xl">
         {/* Header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            <Zap className="w-4 h-4" />
+        <div className="text-center mb-6 sm:mb-8">
+          <div className="inline-flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium mb-3 sm:mb-4">
+            <Zap className="w-3 h-3 sm:w-4 sm:h-4" />
             {t('quickTest.badge', '60 secondes')}
           </div>
-          <h1 className="font-display text-2xl md:text-3xl font-bold mb-2">
+          <h1 className="font-display text-xl sm:text-2xl md:text-3xl font-bold mb-2">
             {t('quickTest.title', 'Test rapide')}
           </h1>
-          <p className="text-muted-foreground text-sm md:text-base">
+          <p className="text-muted-foreground text-xs sm:text-sm md:text-base">
             {t('quickTest.subtitle', 'En 60 secondes, découvre le système qui ressemble à ta situation')}
           </p>
         </div>
@@ -385,21 +385,21 @@ interface QuestionBlockProps {
 
 function QuestionBlock({ title, selected, onSelect, options }: QuestionBlockProps) {
   return (
-    <div className="glass-card rounded-xl p-4">
-      <h3 className="font-medium text-sm mb-3">{title}</h3>
-      <div className={`grid gap-2 ${options.length === 3 ? 'grid-cols-3' : 'grid-cols-2 sm:grid-cols-4'}`}>
+    <div className="glass-card rounded-xl p-3 sm:p-4">
+      <h3 className="font-medium text-xs sm:text-sm mb-2 sm:mb-3">{title}</h3>
+      <div className={`grid gap-1.5 sm:gap-2 ${options.length === 3 ? 'grid-cols-3' : 'grid-cols-2'}`}>
         {options.map((option) => (
           <button
             key={option.value}
             onClick={() => onSelect(option.value)}
-            className={`flex flex-col items-center gap-1.5 p-3 rounded-lg border transition-all ${
+            className={`flex flex-col items-center gap-1 sm:gap-1.5 p-2 sm:p-3 rounded-lg border transition-all touch-manipulation active:scale-[0.98] ${
               selected === option.value
                 ? 'bg-primary/10 border-primary text-primary'
                 : 'bg-muted/30 border-border/50 hover:bg-muted/50 hover:border-border'
             }`}
           >
-            {option.icon}
-            <span className="text-xs font-medium">{option.label}</span>
+            <span className="[&>svg]:w-4 [&>svg]:h-4 sm:[&>svg]:w-5 sm:[&>svg]:h-5">{option.icon}</span>
+            <span className="text-[10px] sm:text-xs font-medium text-center leading-tight">{option.label}</span>
           </button>
         ))}
       </div>
