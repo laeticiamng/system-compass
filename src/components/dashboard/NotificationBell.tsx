@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { 
@@ -22,6 +22,7 @@ import {
 } from '@/components/ui/popover';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { usePersistedNotifications, PersistedNotification } from '@/hooks/usePersistedNotifications';
 import { useAuth } from '@/hooks/useAuth';
 import { cn } from '@/lib/utils';
@@ -41,6 +42,12 @@ const priorityColors: Record<string, string> = {
   low: 'bg-gray-400',
 };
 
+const priorityOrder: Record<PersistedNotification['priority'], number> = {
+  high: 3,
+  medium: 2,
+  low: 1,
+};
+
 export function NotificationBell() {
   const { t, i18n } = useTranslation();
   const { user } = useAuth();
@@ -54,6 +61,9 @@ export function NotificationBell() {
   } = usePersistedNotifications();
 
   const [isOpen, setIsOpen] = useState(false);
+  const [statusFilter, setStatusFilter] = useState<'all' | 'unread' | 'read'>('all');
+  const [typeFilter, setTypeFilter] = useState<'all' | PersistedNotification['type']>('all');
+  const [sortBy, setSortBy] = useState<'newest' | 'oldest' | 'priority'>('newest');
 
   // Don't render if not logged in
   if (!user) {
@@ -74,6 +84,27 @@ export function NotificationBell() {
   const handleMarkAllAsRead = async () => {
     await markAllAsRead();
   };
+
+  const displayedNotifications = useMemo(() => {
+    const filtered = notifications.filter((notification) => {
+      if (statusFilter === 'read' && !notification.read) return false;
+      if (statusFilter === 'unread' && notification.read) return false;
+      if (typeFilter !== 'all' && notification.type !== typeFilter) return false;
+      return true;
+    });
+
+    return [...filtered].sort((a, b) => {
+      if (sortBy === 'newest') {
+        return b.timestamp.getTime() - a.timestamp.getTime();
+      }
+      if (sortBy === 'oldest') {
+        return a.timestamp.getTime() - b.timestamp.getTime();
+      }
+      const priorityDiff = priorityOrder[b.priority] - priorityOrder[a.priority];
+      if (priorityDiff !== 0) return priorityDiff;
+      return b.timestamp.getTime() - a.timestamp.getTime();
+    });
+  }, [notifications, sortBy, statusFilter, typeFilter]);
 
   return (
     <Popover open={isOpen} onOpenChange={setIsOpen}>
@@ -103,12 +134,49 @@ export function NotificationBell() {
           )}
         </div>
 
+        <div className="grid gap-2 border-b p-3">
+          <div className="grid grid-cols-3 gap-2">
+            <Select value={statusFilter} onValueChange={(value) => setStatusFilter(value as typeof statusFilter)}>
+              <SelectTrigger className="h-8 text-xs">
+                <SelectValue placeholder={t('notifications.filters.status', 'Statut')} />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">{t('common.all', 'Tous')}</SelectItem>
+                <SelectItem value="unread">{t('notifications.filters.unread', 'Non lus')}</SelectItem>
+                <SelectItem value="read">{t('notifications.filters.read', 'Lus')}</SelectItem>
+              </SelectContent>
+            </Select>
+            <Select value={typeFilter} onValueChange={(value) => setTypeFilter(value as typeof typeFilter)}>
+              <SelectTrigger className="h-8 text-xs">
+                <SelectValue placeholder={t('notifications.filters.type', 'Type')} />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">{t('common.all', 'Tous')}</SelectItem>
+                <SelectItem value="deadline">{t('notifications.types.deadline', 'Deadline')}</SelectItem>
+                <SelectItem value="reminder">{t('notifications.types.reminder', 'Rappel')}</SelectItem>
+                <SelectItem value="achievement">{t('notifications.types.achievement', 'Succès')}</SelectItem>
+                <SelectItem value="info">{t('notifications.types.info', 'Info')}</SelectItem>
+              </SelectContent>
+            </Select>
+            <Select value={sortBy} onValueChange={(value) => setSortBy(value as typeof sortBy)}>
+              <SelectTrigger className="h-8 text-xs">
+                <SelectValue placeholder={t('notifications.filters.sort', 'Tri')} />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="newest">{t('notifications.sort.newest', 'Plus récents')}</SelectItem>
+                <SelectItem value="oldest">{t('notifications.sort.oldest', 'Plus anciens')}</SelectItem>
+                <SelectItem value="priority">{t('notifications.sort.priority', 'Priorité')}</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+
         <ScrollArea className="h-72">
           {loading ? (
             <div className="flex items-center justify-center py-8">
               <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" />
             </div>
-          ) : notifications.length === 0 ? (
+          ) : displayedNotifications.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-8 text-center px-4">
               <Bell className="w-10 h-10 text-muted-foreground/50 mb-2" />
               <p className="text-sm text-muted-foreground">
@@ -117,7 +185,7 @@ export function NotificationBell() {
             </div>
           ) : (
             <div className="divide-y">
-              {notifications.map((notification) => (
+              {displayedNotifications.map((notification) => (
                 <div
                   key={notification.id}
                   className={cn(
