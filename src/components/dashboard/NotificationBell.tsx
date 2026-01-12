@@ -259,7 +259,7 @@ export function NotificationBell() {
 
         <Separator />
         <div className="p-2">
-          <Link to="/settings/notifications" onClick={() => setIsOpen(false)}>
+          <Link to="/notification-settings" onClick={() => setIsOpen(false)}>
             <Button variant="ghost" size="sm" className="w-full text-xs">
               {t('notifications.settings', 'Paramètres de notifications')}
             </Button>

@@ -1258,6 +1258,54 @@ export type Database = {
         }
         Relationships: []
       }
+      music_generation_tasks: {
+        Row: {
+          attempts: number | null
+          audio_url: string | null
+          country_id: string
+          created_at: string
+          error_message: string | null
+          external_task_id: string | null
+          id: string
+          mood: string | null
+          pyramid_type: string
+          status: string
+          stream_url: string | null
+          suno_task_id: string | null
+          updated_at: string
+        }
+        Insert: {
+          attempts?: number | null
+          audio_url?: string | null
+          country_id: string
+          created_at?: string
+          error_message?: string | null
+          external_task_id?: string | null
+          id?: string
+          mood?: string | null
+          pyramid_type: string
+          status?: string
+          stream_url?: string | null
+          suno_task_id?: string | null
+          updated_at?: string
+        }
+        Update: {
+          attempts?: number | null
+          audio_url?: string | null
+          country_id?: string
+          created_at?: string
+          error_message?: string | null
+          external_task_id?: string | null
+          id?: string
+          mood?: string | null
+          pyramid_type?: string
+          status?: string
+          stream_url?: string | null
+          suno_task_id?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       notification_settings: {
         Row: {
           created_at: string | null
@@ -1630,6 +1678,54 @@ export type Database = {
           player_count?: number
           updated_at?: string
           user_id?: string
+        }
+        Relationships: []
+      }
+      subscription_plans: {
+        Row: {
+          active: boolean | null
+          created_at: string
+          description: string | null
+          features: Json | null
+          id: string
+          limits: Json | null
+          name: string
+          price_monthly: number | null
+          price_yearly: number | null
+          stripe_price_id: string | null
+          stripe_price_id_yearly: string | null
+          tier: string
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean | null
+          created_at?: string
+          description?: string | null
+          features?: Json | null
+          id?: string
+          limits?: Json | null
+          name: string
+          price_monthly?: number | null
+          price_yearly?: number | null
+          stripe_price_id?: string | null
+          stripe_price_id_yearly?: string | null
+          tier: string
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean | null
+          created_at?: string
+          description?: string | null
+          features?: Json | null
+          id?: string
+          limits?: Json | null
+          name?: string
+          price_monthly?: number | null
+          price_yearly?: number | null
+          stripe_price_id?: string | null
+          stripe_price_id_yearly?: string | null
+          tier?: string
+          updated_at?: string
         }
         Relationships: []
       }

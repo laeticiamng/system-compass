@@ -25,7 +25,9 @@
     "optional": "optionnel",
     "description": "Description",
     "submit": "Soumettre",
-    "sending": "Envoi..."
+    "sending": "Envoi...",
+    "new": "Nouveau",
+    "view": "Voir"
   },
   "errors": {
     "rateLimited": "Trop de requêtes. Veuillez réessayer dans quelques instants.",
