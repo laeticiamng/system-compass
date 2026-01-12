@@ -224,17 +224,19 @@ export default function CountryDetail() {
   const displayPlaybook = countryData?.playbook || country.playbook;
 
   return (
-    <div className="min-h-screen pt-24 pb-16">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen pt-20 sm:pt-24 pb-16">
+      <div className="container mx-auto px-3 sm:px-4">
         {/* Back Button */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-4 sm:mb-8 gap-2">
           <Button
             variant="ghost"
+            size="sm"
             onClick={() => navigate('/countries')}
-            className="gap-2 text-muted-foreground hover:text-foreground"
+            className="gap-1 sm:gap-2 text-muted-foreground hover:text-foreground text-xs sm:text-sm px-2 sm:px-3"
           >
-            <ArrowLeft className="w-4 h-4" />
-            {t('countryDetail.backToCountries')}
+            <ArrowLeft className="w-3 h-3 sm:w-4 sm:h-4" />
+            <span className="hidden sm:inline">{t('countryDetail.backToCountries')}</span>
+            <span className="sm:hidden">Retour</span>
           </Button>
           <CountryPdfExport 
             country={country} 
@@ -243,49 +245,53 @@ export default function CountryDetail() {
         </div>
 
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-start gap-6 mb-8">
-          <div className="text-6xl">{getFlagEmoji(country.iso2)}</div>
-          <div className="flex-1">
-            <div className="flex flex-wrap items-center gap-3 mb-2">
-              <h1 className="font-display text-4xl font-bold">{displayName}</h1>
-              <span
-                className="px-3 py-1 rounded-full text-sm font-medium"
-                style={{
-                  backgroundColor: `hsl(var(--${typeColor}) / 0.15)`,
-                  color: `hsl(var(--${typeColor}))`,
-                }}
-              >
-                {typeLabel}
-              </span>
+        <div className="flex flex-col gap-4 sm:gap-6 mb-6 sm:mb-8">
+          <div className="flex items-start gap-3 sm:gap-4">
+            <div className="text-4xl sm:text-6xl">{getFlagEmoji(country.iso2)}</div>
+            <div className="flex-1 min-w-0">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
+                <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold">{displayName}</h1>
+                <span
+                  className="px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-medium"
+                  style={{
+                    backgroundColor: `hsl(var(--${typeColor}) / 0.15)`,
+                    color: `hsl(var(--${typeColor}))`,
+                  }}
+                >
+                  {typeLabel}
+                </span>
+              </div>
+              <p className="text-sm sm:text-base text-muted-foreground">{displayRegion}</p>
             </div>
-            <p className="text-muted-foreground">{displayRegion}</p>
           </div>
-          <AiHelpButton
-            title={t('ai.countryAnalysisAssistant', 'Assistant Analyse Pays')}
-            actions={[
-              { id: 'compare_countries', label: t('ai.actions.compareCountries', 'Comparer avec un autre pays'), description: t('ai.actions.compareCountriesDesc', 'Critères et trade-offs selon votre profil') },
-              { id: 'summarize_for_profile', label: t('ai.actions.summarizeForProfile', 'Résumer selon mes contraintes'), description: t('ai.actions.summarizeForProfileDesc', 'Résumé focalisé sur ce qui compte pour vous') },
-              { id: 'attention_points', label: t('ai.actions.attentionPoints', 'Points d\'attention'), description: t('ai.actions.attentionPointsDesc', 'Risques et contraintes pouvant casser une trajectoire') },
-            ]}
-            context={{
-              module: 'country-analysis',
-              country: {
-                id: country.id,
-                name: displayName,
-                region: displayRegion,
-                pyramidType: country.pyramidType,
-                snapshot: country.snapshot,
-                ruleOfGold: displayRuleOfGold,
-              },
-              profile: profile || undefined,
-            }}
-            variant="secondary"
-            size="default"
-          />
+          <div className="flex justify-end">
+            <AiHelpButton
+              title={t('ai.countryAnalysisAssistant', 'Assistant Analyse Pays')}
+              actions={[
+                { id: 'compare_countries', label: t('ai.actions.compareCountries', 'Comparer avec un autre pays'), description: t('ai.actions.compareCountriesDesc', 'Critères et trade-offs selon votre profil') },
+                { id: 'summarize_for_profile', label: t('ai.actions.summarizeForProfile', 'Résumer selon mes contraintes'), description: t('ai.actions.summarizeForProfileDesc', 'Résumé focalisé sur ce qui compte pour vous') },
+                { id: 'attention_points', label: t('ai.actions.attentionPoints', 'Points d\'attention'), description: t('ai.actions.attentionPointsDesc', 'Risques et contraintes pouvant casser une trajectoire') },
+              ]}
+              context={{
+                module: 'country-analysis',
+                country: {
+                  id: country.id,
+                  name: displayName,
+                  region: displayRegion,
+                  pyramidType: country.pyramidType,
+                  snapshot: country.snapshot,
+                  ruleOfGold: displayRuleOfGold,
+                },
+                profile: profile || undefined,
+              }}
+              variant="secondary"
+              size="sm"
+            />
+          </div>
         </div>
 
         {/* Snapshot */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 sm:gap-4 mb-6 sm:mb-8">
           <SnapshotCard label={t('countryDetail.snapshot.gdpPerCapita')} value={`$${country.snapshot.gdpPerCapita.toLocaleString()}`} />
           <SnapshotCard label={t('countryDetail.snapshot.population')} value={formatPopulation(country.snapshot.population)} />
           <SnapshotCard label={t('countryDetail.snapshot.passportRank')} value={`#${country.snapshot.passportRank}`} />
@@ -302,32 +308,32 @@ export default function CountryDetail() {
         />
 
         {/* 5-Layer Tabs */}
-        <Tabs defaultValue="tronc" className="mb-12">
-          <TabsList className="grid w-full grid-cols-5 mb-8">
-            <TabsTrigger value="tronc" className="gap-2">
-              <Layers className="w-4 h-4" />
-              <span className="hidden sm:inline">{t('countryDetail.tabs.tronc', 'Tronc Pyramide')}</span>
-              <span className="sm:hidden">Tronc</span>
+        <Tabs defaultValue="tronc" className="mb-8 sm:mb-12">
+          <TabsList className="grid w-full grid-cols-5 mb-4 sm:mb-8 h-auto p-1">
+            <TabsTrigger value="tronc" className="gap-1 py-2 text-[10px] sm:text-xs md:text-sm flex-col sm:flex-row">
+              <Layers className="w-3 h-3 sm:w-4 sm:h-4" />
+              <span className="hidden md:inline">{t('countryDetail.tabs.tronc', 'Tronc Pyramide')}</span>
+              <span className="md:hidden">Tronc</span>
             </TabsTrigger>
-            <TabsTrigger value="variant" className="gap-2">
-              <Map className="w-4 h-4" />
-              <span className="hidden sm:inline">{t('countryDetail.tabs.variant', 'Variante Pays')}</span>
-              <span className="sm:hidden">Variante</span>
+            <TabsTrigger value="variant" className="gap-1 py-2 text-[10px] sm:text-xs md:text-sm flex-col sm:flex-row">
+              <Map className="w-3 h-3 sm:w-4 sm:h-4" />
+              <span className="hidden md:inline">{t('countryDetail.tabs.variant', 'Variante')}</span>
+              <span className="md:hidden">Var.</span>
             </TabsTrigger>
-            <TabsTrigger value="intelligence" className="gap-2">
-              <Brain className="w-4 h-4" />
-              <span className="hidden sm:inline">{t('countryDetail.tabs.intelligence', 'Intelligence')}</span>
-              <span className="sm:hidden">Intel</span>
+            <TabsTrigger value="intelligence" className="gap-1 py-2 text-[10px] sm:text-xs md:text-sm flex-col sm:flex-row">
+              <Brain className="w-3 h-3 sm:w-4 sm:h-4" />
+              <span className="hidden md:inline">{t('countryDetail.tabs.intelligence', 'Intelligence')}</span>
+              <span className="md:hidden">Intel</span>
             </TabsTrigger>
-            <TabsTrigger value="governance" className="gap-2">
-              <Shield className="w-4 h-4" />
-              <span className="hidden sm:inline">{t('countryDetail.tabs.governance', 'Gouvernance')}</span>
-              <span className="sm:hidden">Gouv.</span>
+            <TabsTrigger value="governance" className="gap-1 py-2 text-[10px] sm:text-xs md:text-sm flex-col sm:flex-row">
+              <Shield className="w-3 h-3 sm:w-4 sm:h-4" />
+              <span className="hidden md:inline">{t('countryDetail.tabs.governance', 'Gouvernance')}</span>
+              <span className="md:hidden">Gouv.</span>
             </TabsTrigger>
-            <TabsTrigger value="project" className="gap-2">
-              <Target className="w-4 h-4" />
-              <span className="hidden sm:inline">{t('countryDetail.tabs.project', 'Analyse Projet')}</span>
-              <span className="sm:hidden">Projet</span>
+            <TabsTrigger value="project" className="gap-1 py-2 text-[10px] sm:text-xs md:text-sm flex-col sm:flex-row">
+              <Target className="w-3 h-3 sm:w-4 sm:h-4" />
+              <span className="hidden md:inline">{t('countryDetail.tabs.project', 'Projet')}</span>
+              <span className="md:hidden">Proj.</span>
             </TabsTrigger>
           </TabsList>
 

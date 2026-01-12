@@ -246,33 +246,33 @@ export default function Match() {
   const avoidMatches = matches.slice(-3).reverse();
 
   return (
-    <div className="min-h-screen pt-24 pb-16">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen pt-20 sm:pt-24 pb-16">
+      <div className="container mx-auto px-3 sm:px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-8">
-            <h1 className="font-display text-4xl font-bold mb-4">
+          <div className="text-center mb-6 sm:mb-8">
+            <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4">
               {t('match.title')}
             </h1>
-            <p className="text-muted-foreground max-w-xl mx-auto mb-4">
+            <p className="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto mb-3 sm:mb-4 px-2">
               {t('match.subtitle')}
             </p>
             {/* Anti-illusion micro-text */}
-            <p className="text-xs text-muted-foreground/60 max-w-lg mx-auto mb-6">
+            <p className="text-xs text-muted-foreground/60 max-w-lg mx-auto mb-4 sm:mb-6 px-2">
               {t('simulationDisclaimer.contextual.results')}
             </p>
-            <Button variant="outline" onClick={shareResults} className="gap-2">
+            <Button variant="outline" onClick={shareResults} className="gap-2 text-sm">
               <Share2 className="w-4 h-4" />
               {t('match.shareResults')}
             </Button>
           </div>
 
           {/* Top Matches */}
-          <div className="mb-12">
-            <h2 className="font-display text-2xl font-bold mb-6 flex items-center gap-2">
-              <Target className="w-6 h-6 text-primary" />
+          <div className="mb-8 sm:mb-12">
+            <h2 className="font-display text-xl sm:text-2xl font-bold mb-4 sm:mb-6 flex items-center gap-2">
+              <Target className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
               {t('match.topMatches')}
             </h2>
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {topMatches.map((match, index) => (
                 <MatchCard key={match.country.id} match={match} rank={index + 1} />
               ))}
@@ -280,12 +280,12 @@ export default function Match() {
           </div>
 
           {/* Countries to Avoid */}
-          <div className="mb-12">
-            <h2 className="font-display text-2xl font-bold mb-6 flex items-center gap-2">
-              <AlertTriangle className="w-6 h-6 text-risk-critical" />
+          <div className="mb-8 sm:mb-12">
+            <h2 className="font-display text-xl sm:text-2xl font-bold mb-4 sm:mb-6 flex items-center gap-2">
+              <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 text-risk-critical" />
               {t('match.avoidTitle')}
             </h2>
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {avoidMatches.map((match) => (
                 <MatchCard key={match.country.id} match={match} isWarning />
               ))}
@@ -345,22 +345,22 @@ function MatchCard({ match, rank, isWarning }: { match: MatchedCountry; rank?: n
     <div
       onClick={() => navigate(`/country/${country.id}`)}
       className={cn(
-        'glass-card rounded-xl p-6 cursor-pointer transition-all hover:scale-[1.01]',
+        'glass-card rounded-xl p-4 sm:p-6 cursor-pointer transition-all hover:scale-[1.01] active:scale-[0.99]',
         isWarning && 'border-risk-critical/30'
       )}
     >
-      <div className="flex items-start gap-4">
+      <div className="flex items-start gap-2 sm:gap-4">
         {rank && (
-          <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center font-display font-bold text-primary">
+          <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary/10 flex items-center justify-center font-display font-bold text-primary text-sm sm:text-base">
             {rank}
           </div>
         )}
-        <div className="text-4xl">{getFlagEmoji(country.iso2)}</div>
+        <div className="text-2xl sm:text-4xl">{getFlagEmoji(country.iso2)}</div>
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-3 mb-1">
-            <h3 className="font-display text-xl font-semibold">{country.name}</h3>
+          <div className="flex flex-wrap items-center gap-2 mb-1">
+            <h3 className="font-display text-base sm:text-xl font-semibold">{country.name}</h3>
             <span
-              className="px-2 py-0.5 rounded-full text-xs font-medium"
+              className="px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-medium"
               style={{
                 backgroundColor: `hsl(var(--${typeColor}) / 0.15)`,
                 color: `hsl(var(--${typeColor}))`,
@@ -369,12 +369,12 @@ function MatchCard({ match, rank, isWarning }: { match: MatchedCountry; rank?: n
               {t(PYRAMID_TYPE_LABELS[country.pyramidType])}
             </span>
           </div>
-          <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground mb-3">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs sm:text-sm text-muted-foreground mb-2 sm:mb-3">
             <span className="flex items-center gap-1">
               <MapPin className="w-3 h-3" />
               {country.region}
             </span>
-            <span className="flex items-center gap-1">
+            <span className="hidden sm:flex items-center gap-1">
               <TrendingUp className="w-3 h-3" />
               ${(country.snapshot.gdpPerCapita / 1000).toFixed(0)}k
             </span>
@@ -382,20 +382,16 @@ function MatchCard({ match, rank, isWarning }: { match: MatchedCountry; rank?: n
               <Shield className="w-3 h-3" />
               #{country.snapshot.passportRank}
             </span>
-            <span className="flex items-center gap-1">
+            <span className="hidden sm:flex items-center gap-1">
               <DollarSign className="w-3 h-3" />
               ${country.costOfLiving.monthlyBudgetSingle}/mo
-            </span>
-            <span className="flex items-center gap-1">
-              <Plane className="w-3 h-3" />
-              {t(`visa.${country.visa.workVisa}`)}
             </span>
           </div>
           
           {reasons.length > 0 && (
-            <div className="flex flex-wrap gap-2 mb-2">
+            <div className="flex flex-wrap gap-1 sm:gap-2 mb-2">
               {reasons.slice(0, 2).map((reason, i) => (
-                <span key={i} className="text-xs px-2 py-1 rounded-full bg-risk-low/10 text-risk-low">
+                <span key={i} className="text-[10px] sm:text-xs px-2 py-0.5 sm:py-1 rounded-full bg-risk-low/10 text-risk-low">
                   ✓ {reason}
                 </span>
               ))}
@@ -403,20 +399,20 @@ function MatchCard({ match, rank, isWarning }: { match: MatchedCountry; rank?: n
           )}
           
           {warnings.length > 0 && (
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1 sm:gap-2">
               {warnings.slice(0, 2).map((warning, i) => (
-                <span key={i} className="text-xs px-2 py-1 rounded-full bg-risk-critical/10 text-risk-critical">
+                <span key={i} className="text-[10px] sm:text-xs px-2 py-0.5 sm:py-1 rounded-full bg-risk-critical/10 text-risk-critical">
                   ⚠ {warning}
                 </span>
               ))}
             </div>
           )}
         </div>
-        <div className="text-right">
-          <div className={cn('font-display text-2xl font-bold', getScoreColor(score))}>
+        <div className="text-right flex-shrink-0">
+          <div className={cn('font-display text-xl sm:text-2xl font-bold', getScoreColor(score))}>
             {score}%
           </div>
-          <div className="text-xs text-muted-foreground">{t('match.compatibility')}</div>
+          <div className="text-[10px] sm:text-xs text-muted-foreground">{t('match.compatibility')}</div>
         </div>
       </div>
     </div>

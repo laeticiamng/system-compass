@@ -133,27 +133,27 @@ export default function ErrorsAndIllusions() {
   };
 
   return (
-    <div className="min-h-screen bg-background pt-20">
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
+    <div className="min-h-screen bg-background pt-16 sm:pt-20">
+      <div className="container mx-auto px-3 sm:px-4 py-6 sm:py-8 max-w-6xl">
         {/* Header */}
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <Link 
             to="/" 
-            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-4"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-3 sm:mb-4"
           >
             <ArrowLeft className="w-4 h-4" />
             {t('common.backToHome', 'Retour')}
           </Link>
           
-          <div className="flex items-center gap-3 mb-4">
-            <div className="p-3 rounded-xl bg-destructive/10">
-              <AlertTriangle className="w-8 h-8 text-destructive" />
+          <div className="flex items-start gap-3 mb-4">
+            <div className="p-2 sm:p-3 rounded-xl bg-destructive/10 flex-shrink-0">
+              <AlertTriangle className="w-6 h-6 sm:w-8 sm:h-8 text-destructive" />
             </div>
-            <div>
-              <h1 className="text-3xl md:text-4xl font-bold">
+            <div className="min-w-0">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">
                 {t('errorsIllusions.title', 'Erreurs & Illusions')}
               </h1>
-              <p className="text-muted-foreground">
+              <p className="text-sm sm:text-base text-muted-foreground">
                 {t('errorsIllusions.subtitle', 'Ce que les systèmes ne pardonnent pas — et comment les éviter')}
               </p>
             </div>
@@ -180,15 +180,17 @@ export default function ErrorsAndIllusions() {
         </Card>
 
         {/* Tabs */}
-        <Tabs defaultValue="cognitive" className="space-y-8">
-          <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
-            <TabsTrigger value="cognitive" className="gap-2">
-              <Brain className="w-4 h-4" />
-              {t('errorsIllusions.tabs.cognitive', 'Erreurs cognitives')}
+        <Tabs defaultValue="cognitive" className="space-y-6 sm:space-y-8">
+          <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 h-auto p-1">
+            <TabsTrigger value="cognitive" className="gap-1 sm:gap-2 py-2 text-xs sm:text-sm">
+              <Brain className="w-3 h-3 sm:w-4 sm:h-4" />
+              <span className="hidden sm:inline">{t('errorsIllusions.tabs.cognitive', 'Erreurs cognitives')}</span>
+              <span className="sm:hidden">Cognitives</span>
             </TabsTrigger>
-            <TabsTrigger value="systemic" className="gap-2">
-              <AlertTriangle className="w-4 h-4" />
-              {t('errorsIllusions.tabs.systemic', 'Erreurs systémiques')}
+            <TabsTrigger value="systemic" className="gap-1 sm:gap-2 py-2 text-xs sm:text-sm">
+              <AlertTriangle className="w-3 h-3 sm:w-4 sm:h-4" />
+              <span className="hidden sm:inline">{t('errorsIllusions.tabs.systemic', 'Erreurs systémiques')}</span>
+              <span className="sm:hidden">Systémiques</span>
             </TabsTrigger>
           </TabsList>
 
