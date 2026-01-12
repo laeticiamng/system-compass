@@ -46,16 +46,59 @@ export function CountryMusicPlayer({
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
   const [error, setError] = useState<string | null>(null);
+  const isMountedRef = useRef(true);
+
+  const pollIntervalMs = 5000;
+  const maxPollAttempts = 12;
+  const maxAutoRetries = 1;
 
   // Clean up audio on unmount
   useEffect(() => {
     return () => {
+      isMountedRef.current = false;
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current.src = '';
       }
     };
   }, []);
+
+  const pollTaskStatus = async (taskId: string) => {
+    for (let attempt = 0; attempt < maxPollAttempts; attempt++) {
+      if (!isMountedRef.current) {
+        return null;
+      }
+
+      await new Promise((resolve) => setTimeout(resolve, pollIntervalMs));
+
+      const statusResponse = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/music-task-status?taskId=${taskId}`,
+        {
+          method: "GET",
+          headers: {
+            apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
+            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+          },
+        }
+      );
+
+      if (!statusResponse.ok) {
+        continue;
+      }
+
+      const statusData = await statusResponse.json();
+
+      if (statusData.status === 'completed' && statusData.audioUrl) {
+        return statusData;
+      }
+
+      if (statusData.status === 'failed') {
+        return statusData;
+      }
+    }
+
+    return null;
+  };
 
   const generateAndPlayMusic = async () => {
     if (hasLoaded && audioRef.current) {
@@ -74,72 +117,97 @@ export function CountryMusicPlayer({
     setError(null);
 
     try {
-      const response = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/generate-country-music`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
-            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-          },
-          body: JSON.stringify({
-            countryId,
-            pyramidType,
-            mood: 'narrative',
-          }),
+      let attempts = 0;
+      let finalError: string | null = null;
+
+      while (attempts <= maxAutoRetries) {
+        const response = await fetch(
+          `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/generate-country-music`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
+              Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+            },
+            body: JSON.stringify({
+              countryId,
+              pyramidType,
+              mood: 'narrative',
+            }),
+          }
+        );
+
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({}));
+          throw new Error(errorData.error || `Failed to generate music: ${response.status}`);
         }
-      );
 
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error || `Failed to generate music: ${response.status}`);
-      }
+        const data = await response.json();
+        let audioUrl = (data.audioUrl as string | undefined) || (data.streamUrl as string | undefined);
+        let streamUrl = data.streamUrl as string | undefined;
 
-      const data = await response.json();
-      
-      // Check for timeout/pending response
-      if (response.status === 202 || !data.audioUrl) {
-        setError(t('music.generating', 'La musique est en cours de génération. Réessayez dans quelques minutes.'));
-        return;
-      }
+        if (response.status === 202 || !audioUrl) {
+          if (data.taskId) {
+            const statusData = await pollTaskStatus(data.taskId as string);
+            audioUrl = statusData?.audioUrl || statusData?.streamUrl;
+            streamUrl = statusData?.streamUrl;
 
-      const audioUrl = data.audioUrl;
-      
-      // Create or reuse audio element
-      if (!audioRef.current) {
-        audioRef.current = new Audio();
-      }
-      
-      audioRef.current.src = audioUrl;
-      audioRef.current.volume = volume;
-      audioRef.current.crossOrigin = "anonymous";
-      
-      // Set up event listeners
-      audioRef.current.onloadedmetadata = () => {
-        setDuration(audioRef.current?.duration || 0);
-      };
-      
-      audioRef.current.ontimeupdate = () => {
-        if (audioRef.current) {
-          setProgress(audioRef.current.currentTime);
+            if (statusData?.status === 'failed') {
+              finalError = statusData.errorMessage || t('music.error', 'Impossible de générer la musique');
+            }
+          } else {
+            finalError = t('music.generating', 'La musique est en cours de génération. Réessayez dans quelques minutes.');
+          }
         }
-      };
-      
-      audioRef.current.onended = () => {
-        setIsPlaying(false);
-        setProgress(0);
-      };
 
-      audioRef.current.onerror = () => {
-        setError(t('music.loadError', 'Erreur de chargement audio'));
-        setIsPlaying(false);
-      };
+        if (audioUrl) {
+          // Create or reuse audio element
+          if (!audioRef.current) {
+            audioRef.current = new Audio();
+          }
+          
+          audioRef.current.src = audioUrl;
+          audioRef.current.volume = volume;
+          audioRef.current.crossOrigin = "anonymous";
+          
+          // Set up event listeners
+          audioRef.current.onloadedmetadata = () => {
+            setDuration(audioRef.current?.duration || 0);
+          };
+          
+          audioRef.current.ontimeupdate = () => {
+            if (audioRef.current) {
+              setProgress(audioRef.current.currentTime);
+            }
+          };
+          
+          audioRef.current.onended = () => {
+            setIsPlaying(false);
+            setProgress(0);
+          };
 
-      await audioRef.current.play();
-      setIsPlaying(true);
-      setHasLoaded(true);
-      
+          audioRef.current.onerror = () => {
+            setError(t('music.loadError', 'Erreur de chargement audio'));
+            setIsPlaying(false);
+          };
+
+          await audioRef.current.play();
+          setIsPlaying(true);
+          setHasLoaded(true);
+          return;
+        }
+
+        attempts += 1;
+
+        if (attempts <= maxAutoRetries) {
+          await new Promise((resolve) => setTimeout(resolve, 1500));
+        }
+      }
+
+      setError(finalError || t('music.generating', 'La musique est en cours de génération. Réessayez dans quelques minutes.'));
+      return;
+
     } catch (err) {
       console.error('Error generating music:', err);
       setError(err instanceof Error ? err.message : t('music.error', 'Impossible de générer la musique'));
