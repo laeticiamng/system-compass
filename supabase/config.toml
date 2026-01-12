@@ -24,6 +24,9 @@ verify_jwt = false
 [functions.batch-generate-countries]
 verify_jwt = false
 
+[functions.batch-generate-translations]
+verify_jwt = false
+
 [functions.traceos-email-alerts]
 verify_jwt = false
 

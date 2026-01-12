@@ -896,6 +896,51 @@ export type Database = {
         }
         Relationships: []
       }
+      translation_jobs: {
+        Row: {
+          completed_at: string | null
+          country_id: string
+          created_at: string
+          created_by: string | null
+          error_message: string | null
+          id: string
+          logs: Json
+          retries: number
+          started_at: string | null
+          status: string
+          target_lang: string
+          updated_at: string
+        }
+        Insert: {
+          completed_at?: string | null
+          country_id: string
+          created_at?: string
+          created_by?: string | null
+          error_message?: string | null
+          id?: string
+          logs?: Json
+          retries?: number
+          started_at?: string | null
+          status?: string
+          target_lang: string
+          updated_at?: string
+        }
+        Update: {
+          completed_at?: string | null
+          country_id?: string
+          created_at?: string
+          created_by?: string | null
+          error_message?: string | null
+          id?: string
+          logs?: Json
+          retries?: number
+          started_at?: string | null
+          status?: string
+          target_lang?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       generation_notifications: {
         Row: {
           batch_id: string | null
