@@ -68,16 +68,16 @@ export const CountryCard = forwardRef<HTMLDivElement, CountryCardProps>(
         ref={ref}
         onClick={() => navigate(`/country/${country.id}`)}
         className={cn(
-          'group relative p-6 rounded-xl cursor-pointer',
+          'group relative p-4 sm:p-6 rounded-xl cursor-pointer',
           'glass-card glow-subtle',
-          'transition-all duration-300 hover:scale-[1.02]',
-          'hover:border-primary/30',
+          'transition-all duration-300 active:scale-[0.98] sm:hover:scale-[1.02]',
+          'hover:border-primary/30 touch-manipulation',
           className
         )}
       >
         {/* Type Badge */}
         <div
-          className="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-medium"
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium max-w-[45%] truncate"
           style={{
             backgroundColor: `hsl(var(--${typeColor}) / 0.15)`,
             color: `hsl(var(--${typeColor}))`,
@@ -87,51 +87,51 @@ export const CountryCard = forwardRef<HTMLDivElement, CountryCardProps>(
         </div>
 
         {/* Country Info */}
-        <div className="flex items-start gap-4">
-          <div className="text-4xl">{getFlagEmoji(country.iso2)}</div>
-          <div className="flex-1 min-w-0">
-            <h3 className="font-display text-xl font-semibold text-foreground mb-1">
+        <div className="flex items-start gap-3 sm:gap-4">
+          <div className="text-3xl sm:text-4xl flex-shrink-0">{getFlagEmoji(country.iso2)}</div>
+          <div className="flex-1 min-w-0 pr-16 sm:pr-20">
+            <h3 className="font-display text-lg sm:text-xl font-semibold text-foreground mb-1 truncate">
               {displayName}
             </h3>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <MapPin className="w-3 h-3" />
-              {displayRegion}
+            <div className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
+              <MapPin className="w-3 h-3 flex-shrink-0" />
+              <span className="truncate">{displayRegion}</span>
             </div>
           </div>
         </div>
 
         {/* Rule of Gold */}
-        <p className="mt-4 text-sm text-muted-foreground italic line-clamp-2">
+        <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-muted-foreground italic line-clamp-2">
           &quot;{displayRuleOfGold}&quot;
         </p>
 
         {/* Key Stats */}
-        <div className="mt-6 grid grid-cols-3 gap-4">
+        <div className="mt-4 sm:mt-6 grid grid-cols-3 gap-2 sm:gap-4">
           <div className="text-center">
-            <div className="flex items-center justify-center gap-1 text-muted-foreground mb-1">
+            <div className="flex items-center justify-center gap-1 text-muted-foreground mb-0.5 sm:mb-1">
               <TrendingUp className="w-3 h-3" />
             </div>
-            <div className="text-sm font-semibold">${formatNumber(country.snapshot.gdpPerCapita)}</div>
-            <div className="text-xs text-muted-foreground">{t('countries.gdpCap')}</div>
+            <div className="text-xs sm:text-sm font-semibold">${formatNumber(country.snapshot.gdpPerCapita)}</div>
+            <div className="text-[10px] sm:text-xs text-muted-foreground">{t('countries.gdpCap')}</div>
           </div>
           <div className="text-center">
-            <div className="flex items-center justify-center gap-1 text-muted-foreground mb-1">
+            <div className="flex items-center justify-center gap-1 text-muted-foreground mb-0.5 sm:mb-1">
               <Shield className="w-3 h-3" />
             </div>
-            <div className="text-sm font-semibold">#{country.snapshot.passportRank}</div>
-            <div className="text-xs text-muted-foreground">{t('countries.passport')}</div>
+            <div className="text-xs sm:text-sm font-semibold">#{country.snapshot.passportRank}</div>
+            <div className="text-[10px] sm:text-xs text-muted-foreground">{t('countries.passport')}</div>
           </div>
           <div className="text-center">
-            <div className="flex items-center justify-center gap-1 text-muted-foreground mb-1">
+            <div className="flex items-center justify-center gap-1 text-muted-foreground mb-0.5 sm:mb-1">
               <Users className="w-3 h-3" />
             </div>
-            <div className="text-sm font-semibold">{formatPopulation(country.snapshot.population)}</div>
-            <div className="text-xs text-muted-foreground">{t('countries.population')}</div>
+            <div className="text-xs sm:text-sm font-semibold">{formatPopulation(country.snapshot.population)}</div>
+            <div className="text-[10px] sm:text-xs text-muted-foreground">{t('countries.population')}</div>
           </div>
         </div>
 
-        {/* Hover indicator */}
-        <div className="absolute bottom-4 right-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+        {/* Hover indicator - hidden on mobile */}
+        <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 text-primary opacity-0 sm:group-hover:opacity-100 transition-opacity hidden sm:block">
           <span className="text-sm font-medium">{t('countries.explore')}</span>
         </div>
       </div>
