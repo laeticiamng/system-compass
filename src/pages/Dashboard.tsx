@@ -320,8 +320,8 @@ export default function Dashboard() {
           </Card>
         )}
 
-        {/* Empty State for New Users - show when no profile and no progress */}
-        {!profile && !selectedKeyId && !loading && (
+        {/* Empty State for New Users - show when no profile OR no exit key started */}
+        {(!profile || !selectedKeyId) && !loading && (
           <div className="mb-6">
             <EmptyDashboardState hasProfile={!!profile} hasExitKey={!!selectedKeyId} />
           </div>

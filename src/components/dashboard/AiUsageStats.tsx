@@ -27,8 +27,14 @@ export function AiUsageStats({ compact = false, showActivity = false }: AiUsageS
     isNearLimit, 
     isAtLimit, 
     activityLog,
-    loading 
+    loading,
+    isLoggedIn
   } = useAiUsage();
+
+  // Don't render if not logged in or no data
+  if (!isLoggedIn) {
+    return null;
+  }
 
   if (loading) {
     return (
