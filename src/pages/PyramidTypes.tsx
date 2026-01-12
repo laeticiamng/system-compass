@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, AlertTriangle, CheckCircle, XCircle, Target, TrendingUp, Shield, Zap, Shuffle, Pickaxe } from 'lucide-react';
 import { PYRAMID_TYPE_INFO, PyramidType } from '@/lib/types';
-import { countries } from '@/lib/countries-data';
+import { useCountries } from '@/lib/countries-data';
 import { cn } from '@/lib/utils';
 import { usePyramidTranslations } from '@/hooks/usePyramidTranslations';
 
@@ -90,6 +90,7 @@ const PYRAMID_DETAILS: Record<PyramidType, {
 
 export default function PyramidTypes() {
   const { t } = useTranslation();
+  const { countries } = useCountries();
   const { getPyramidLabel, getPyramidDescription, getWhoThrives, getWhoPays, getSurvivalRules, getOpportunities, getWarningSigns } = usePyramidTranslations();
 
   const pyramidTypes = Object.entries(PYRAMID_TYPE_INFO) as [PyramidType, typeof PYRAMID_TYPE_INFO[PyramidType]][];

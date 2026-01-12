@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { CharacterCard as CharacterCardType, RESOURCE_INFO, ResourceType } from '@/lib/game-data';
 import { cn } from '@/lib/utils';
-import { countries } from '@/lib/countries-data';
+import { useCountries } from '@/lib/countries-data';
 import ResourceBar from './ResourceBar';
 
 interface CharacterCardProps {
@@ -22,6 +22,7 @@ export default function CharacterCard({
   className 
 }: CharacterCardProps) {
   const { t } = useTranslation();
+  const { countries } = useCountries();
   
   // If compact, override showDetails
   const displayDetails = compact ? false : showDetails;

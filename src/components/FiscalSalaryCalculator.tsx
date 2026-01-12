@@ -27,7 +27,7 @@ import {
   type NetSalaryResult 
 } from '@/lib/fiscal-data';
 import { PROFESSIONS, getProfession, PROFESSION_CATEGORY_LABELS, type ProfessionCategory } from '@/lib/profession-data';
-import { countries } from '@/lib/countries-data';
+import { useCountries } from '@/lib/countries-data';
 import { cn } from '@/lib/utils';
 
 interface FiscalSalaryCalculatorProps {
@@ -79,6 +79,7 @@ export function FiscalSalaryCalculator({
   className 
 }: FiscalSalaryCalculatorProps) {
   const { t } = useTranslation();
+  const { countries } = useCountries();
   
   // Only show countries with fiscal data
   const fiscalCountryIds = Object.keys(FISCAL_SYSTEMS_EXTENDED);

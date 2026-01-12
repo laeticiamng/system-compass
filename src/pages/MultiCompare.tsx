@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams, Link } from 'react-router-dom';
-import { countries } from '@/lib/countries-data';
+import { useCountries } from '@/lib/countries-data';
 import { Country } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -84,6 +84,7 @@ function getVisaDifficultyScore(difficulty: string): number {
 
 export default function MultiCompare() {
   const { t } = useTranslation();
+  const { countries } = useCountries();
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedIds, setSelectedIds] = useState<string[]>(() => {
     const ids = searchParams.get('countries')?.split(',').filter(Boolean) || [];

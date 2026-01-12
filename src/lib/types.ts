@@ -97,6 +97,8 @@ export interface Country {
   iso2: string;
   region: string;
   pyramidType: PyramidType;
+  version?: number;
+  tags?: string[];
   ruleOfGold: string;
   pyramid: CountryPyramid;
   risks: CountryRisks;

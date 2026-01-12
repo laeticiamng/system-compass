@@ -30,7 +30,7 @@ import {
   X
 } from 'lucide-react';
 import { FISCAL_SYSTEMS_EXTENDED, calculateNetSalary, type NetSalaryResult } from '@/lib/fiscal-data';
-import { countries } from '@/lib/countries-data';
+import { useCountries } from '@/lib/countries-data';
 import { cn } from '@/lib/utils';
 
 interface FinancialTrajectoryChartProps {
@@ -64,6 +64,7 @@ const BASE_SALARIES: Record<string, number> = {
 };
 
 export function FinancialTrajectoryChart({ className }: FinancialTrajectoryChartProps) {
+  const { countries } = useCountries();
   const { t } = useTranslation();
   
   const fiscalCountryIds = Object.keys(FISCAL_SYSTEMS_EXTENDED);
@@ -132,7 +133,7 @@ export function FinancialTrajectoryChart({ className }: FinancialTrajectoryChart
         costOfLiving: fiscal?.costOfLivingMultiplier || 1,
       };
     });
-  }, [selectedCountries]);
+  }, [countries, selectedCountries]);
   
   // Radar data for multi-dimensional comparison
   const radarData = useMemo(() => {

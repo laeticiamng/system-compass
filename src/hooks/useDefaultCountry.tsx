@@ -1,10 +1,11 @@
 import { useState, useEffect, useCallback } from 'react';
-import { countries } from '@/lib/countries-data';
+import { useCountries } from '@/lib/countries-data';
 
 const STORAGE_KEY = 'pyramid-compass-default-country';
 const DEFAULT_COUNTRY_ID = 'nigeria'; // Nigeria par défaut
 
 export function useDefaultCountry() {
+  const { countries } = useCountries();
   const [defaultCountryId, setDefaultCountryId] = useState<string>(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem(STORAGE_KEY) || DEFAULT_COUNTRY_ID;
@@ -25,11 +26,11 @@ export function useDefaultCountry() {
     if (exists) {
       setDefaultCountryId(countryId);
     }
-  }, []);
+  }, [countries]);
 
   const getDefaultCountry = useCallback(() => {
     return countries.find(c => c.id === defaultCountryId) || countries.find(c => c.id === DEFAULT_COUNTRY_ID);
-  }, [defaultCountryId]);
+  }, [countries, defaultCountryId]);
 
   return {
     defaultCountryId,

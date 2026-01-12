@@ -10,7 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { countries } from '@/lib/countries-data';
+import { useCountries } from '@/lib/countries-data';
 import { Globe, MapPin, Star, User } from 'lucide-react';
 
 export interface GamePlayerProfile {
@@ -44,6 +44,7 @@ export default function PlayerProfileSetup({
   onBack 
 }: PlayerProfileSetupProps) {
   const { t } = useTranslation();
+  const { countries } = useCountries();
   const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
   const [profiles, setProfiles] = useState<Partial<GamePlayerProfile>[]>(
     Array.from({ length: playerCount }, (_, i) => ({

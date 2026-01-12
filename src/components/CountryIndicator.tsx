@@ -1,7 +1,7 @@
 import { useDefaultCountry } from '@/hooks/useDefaultCountry';
 import { useTranslation } from 'react-i18next';
 import { MapPin, ChevronDown, Check } from 'lucide-react';
-import { countries } from '@/lib/countries-data';
+import { useCountries } from '@/lib/countries-data';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -25,6 +25,7 @@ function getFlagEmoji(iso2: string): string {
 export function CountryIndicator() {
   const { t } = useTranslation();
   const { defaultCountryId, setDefaultCountry, getDefaultCountry } = useDefaultCountry();
+  const { countries } = useCountries();
   const country = getDefaultCountry();
 
   if (!country) return null;

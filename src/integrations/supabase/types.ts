@@ -260,6 +260,36 @@ export type Database = {
         }
         Relationships: []
       }
+      countries: {
+        Row: {
+          country_id: string
+          created_at: string
+          data: Json
+          id: string
+          tags: string[]
+          updated_at: string
+          version: number
+        }
+        Insert: {
+          country_id: string
+          created_at?: string
+          data: Json
+          id?: string
+          tags?: string[]
+          updated_at?: string
+          version?: number
+        }
+        Update: {
+          country_id?: string
+          created_at?: string
+          data?: Json
+          id?: string
+          tags?: string[]
+          updated_at?: string
+          version?: number
+        }
+        Relationships: []
+      }
       country_generation_batches: {
         Row: {
           completed_at: string | null

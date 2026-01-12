@@ -1,9 +1,9 @@
 import { describe, it, expect } from 'vitest';
-import { countries } from '../countries-data';
+import { countriesSeed } from '../countries-data';
 
 describe('countries-data validation', () => {
   it('should have no duplicate country IDs', () => {
-    const ids = countries.map(c => c.id);
+    const ids = countriesSeed.map(c => c.id);
     const uniqueIds = new Set(ids);
     
     const duplicates = ids.filter((id, index) => ids.indexOf(id) !== index);
@@ -13,7 +13,7 @@ describe('countries-data validation', () => {
   });
 
   it('should have no duplicate ISO2 codes', () => {
-    const iso2s = countries.map(c => c.iso2);
+    const iso2s = countriesSeed.map(c => c.iso2);
     const uniqueIso2s = new Set(iso2s);
     
     const duplicates = iso2s.filter((iso, index) => iso2s.indexOf(iso) !== index);
@@ -32,13 +32,13 @@ describe('countries-data validation', () => {
       'RESOURCE_EXTRACTION',
     ];
 
-    countries.forEach(country => {
+    countriesSeed.forEach(country => {
       expect(validPyramidTypes).toContain(country.pyramidType);
     });
   });
 
   it('should have all required fields for each country', () => {
-    countries.forEach(country => {
+    countriesSeed.forEach(country => {
       expect(country.id).toBeDefined();
       expect(country.name).toBeDefined();
       expect(country.iso2).toBeDefined();
@@ -52,7 +52,7 @@ describe('countries-data validation', () => {
   });
 
   it('should have valid risk values (0-100) for all countries', () => {
-    countries.forEach(country => {
+    countriesSeed.forEach(country => {
       const { risks } = country;
       
       expect(risks.legal).toBeGreaterThanOrEqual(0);
@@ -75,13 +75,13 @@ describe('countries-data validation', () => {
   it('should have valid ISO2 codes (2 uppercase letters)', () => {
     const iso2Regex = /^[A-Z]{2}$/;
     
-    countries.forEach(country => {
+    countriesSeed.forEach(country => {
       expect(country.iso2).toMatch(iso2Regex);
     });
   });
 
   it('should have non-empty arrays in playbook', () => {
-    countries.forEach(country => {
+    countriesSeed.forEach(country => {
       expect(country.playbook.do.length).toBeGreaterThan(0);
       expect(country.playbook.dont.length).toBeGreaterThan(0);
       expect(country.playbook.plan30Days.length).toBeGreaterThan(0);
@@ -93,7 +93,7 @@ describe('countries-data validation', () => {
   it('should have valid LGBTQ safety ratings', () => {
     const validRatings = ['safe', 'caution', 'dangerous'];
     
-    countries.forEach(country => {
+    countriesSeed.forEach(country => {
       if (country.lgbtqRights) {
         expect(validRatings).toContain(country.lgbtqRights.safetyRating);
       }
@@ -101,6 +101,6 @@ describe('countries-data validation', () => {
   });
 
   it('should have minimum number of countries', () => {
-    expect(countries.length).toBeGreaterThanOrEqual(10);
+    expect(countriesSeed.length).toBeGreaterThanOrEqual(10);
   });
 });

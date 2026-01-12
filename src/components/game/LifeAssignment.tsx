@@ -12,8 +12,8 @@ import {
   CharacterAspiration,
   ResourceType,
 } from '@/lib/game-data';
-import { PyramidType, PYRAMID_TYPE_INFO } from '@/lib/types';
-import { countries } from '@/lib/countries-data';
+import { PyramidType, PYRAMID_TYPE_INFO, type Country } from '@/lib/types';
+import { useCountries } from '@/lib/countries-data';
 import { usePyramidTranslations } from '@/hooks/usePyramidTranslations';
 import { PROFESSIONS, EDUCATION_LEVELS, type EducationLevel, type Profession } from '@/lib/profession-data';
 import { Shuffle, Dices, Flag, Briefcase, GraduationCap, Heart, Target, AlertTriangle, Play, RotateCcw, Info } from 'lucide-react';
@@ -113,7 +113,7 @@ function getFlagEmoji(iso2: string): string {
     .join('');
 }
 
-function generateRandomLife(): RandomProfile {
+function generateRandomLife(countries: Country[]): RandomProfile {
   // 1. Random country (weighted by population)
   const countryId = weightedRandom(
     COUNTRY_WEIGHTS.map(c => ({ item: c.id, weight: c.weight }))
@@ -275,8 +275,9 @@ export default function LifeAssignment({
 }: LifeAssignmentProps) {
   const { t } = useTranslation();
   const { getPyramidLabel } = usePyramidTranslations();
+  const { countries } = useCountries();
   const [profiles, setProfiles] = useState<RandomProfile[]>(() => 
-    Array.from({ length: playerCount }, () => generateRandomLife())
+    Array.from({ length: playerCount }, () => generateRandomLife(countries))
   );
   const [revealed, setRevealed] = useState<boolean[]>(() => 
     Array(playerCount).fill(false)
@@ -285,12 +286,12 @@ export default function LifeAssignment({
 
   const handleReroll = (index: number) => {
     const newProfiles = [...profiles];
-    newProfiles[index] = generateRandomLife();
+    newProfiles[index] = generateRandomLife(countries);
     setProfiles(newProfiles);
   };
 
   const handleRerollAll = () => {
-    setProfiles(Array.from({ length: playerCount }, () => generateRandomLife()));
+    setProfiles(Array.from({ length: playerCount }, () => generateRandomLife(countries)));
     setRevealed(Array(playerCount).fill(false));
     setAllRevealed(false);
   };

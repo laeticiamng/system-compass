@@ -9,7 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { countries } from '@/lib/countries-data';
+import { useCountries } from '@/lib/countries-data';
 import { PYRAMID_TYPE_INFO, type Country } from '@/lib/types';
 
 interface OriginStepProps {
@@ -36,6 +36,7 @@ export function OriginStep({
   onNationalityRemove,
 }: OriginStepProps) {
   const { t } = useTranslation();
+  const { countries } = useCountries();
   const birthCountry = countries.find(c => c.id === birthCountryId);
   const nationalityCountries = nationalityIds
     .map(id => countries.find(c => c.id === id))

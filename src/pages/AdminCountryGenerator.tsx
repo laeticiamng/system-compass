@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { supabase } from "@/integrations/supabase/client";
-import { countries } from "@/lib/countries-data";
+import { useCountries } from "@/lib/countries-data";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -79,6 +79,7 @@ function getFlagEmoji(iso2: string): string {
 
 export default function AdminCountryGenerator() {
   const { t } = useTranslation();
+  const { countries } = useCountries();
   const [jobs, setJobs] = useState<GenerationJob[]>([]);
   const [batches, setBatches] = useState<GenerationBatch[]>([]);
   const [loading, setLoading] = useState(true);

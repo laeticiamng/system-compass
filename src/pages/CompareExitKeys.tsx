@@ -18,7 +18,8 @@ import {
 } from '@/components/ui/select';
 import { EXIT_KEYS, ExitKey, findCompatibleKeys, UserContext } from '@/lib/exit-keys-engine';
 import { useExitKeysProfile } from '@/hooks/useExitKeysProfile';
-import { countries } from '@/lib/countries-data';
+import { useCountries } from '@/lib/countries-data';
+import type { Country } from '@/lib/types';
 import { cn } from '@/lib/utils';
 
 const difficultyConfig = {
@@ -29,6 +30,7 @@ const difficultyConfig = {
 
 export default function CompareExitKeys() {
   const { t } = useTranslation();
+  const { countries } = useCountries();
   const { profile } = useExitKeysProfile();
   const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
 
@@ -36,7 +38,9 @@ export default function CompareExitKeys() {
     if (!profile) return null;
     const currentCountry = countries.find(c => c.id === profile.currentCountryId);
     const birthCountry = countries.find(c => c.id === profile.birthCountryId);
-    const nationalityCountries = (profile.nationalityIds || []).map(id => countries.find(c => c.id === id)).filter(Boolean);
+    const nationalityCountries = (profile.nationalityIds || [])
+      .map(id => countries.find(c => c.id === id))
+      .filter(Boolean) as Country[];
     if (!currentCountry) return null;
     
     const nationalities = nationalityCountries.length > 0 

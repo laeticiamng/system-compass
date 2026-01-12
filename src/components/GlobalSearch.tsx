@@ -6,7 +6,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
-import { countries } from '@/lib/countries-data';
+import { useCountries } from '@/lib/countries-data';
 import { EXIT_KEYS } from '@/lib/exit-keys-engine';
 import { UNIVERSAL_ERRORS } from '@/lib/universal-errors-data';
 import { DB_COMPLETE_COUNTRY_IDS, EXTENDED_COUNTRY_META } from '@/lib/countries-extended';
@@ -35,6 +35,7 @@ const PAGES = [
 export function GlobalSearch() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { countries } = useCountries();
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
 
@@ -147,7 +148,7 @@ export function GlobalSearch() {
 
     // Sort by score
     return results.sort((a, b) => b.score - a.score).slice(0, 10);
-  }, [query, t]);
+  }, [countries, query, t]);
 
   const handleSelect = (result: SearchResult) => {
     navigate(result.path);
