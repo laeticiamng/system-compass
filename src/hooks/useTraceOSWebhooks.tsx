@@ -4,10 +4,10 @@ import { useAuth } from '@/hooks/useAuth';
 import { useToast } from '@/hooks/use-toast';
 import { toast } from 'sonner';
 
-type WebhookEvent = 'decision_created' | 'decision_updated' | 'decision_validated' | 'decision_abandoned';
-type WebhookPlatform = 'slack' | 'teams' | 'notion' | 'custom';
+export type WebhookEvent = 'decision_created' | 'decision_updated' | 'decision_validated' | 'decision_abandoned';
+export type WebhookPlatform = 'slack' | 'teams' | 'notion' | 'custom';
 
-interface Webhook {
+export interface Webhook {
   id: string;
   user_id: string;
   name: string;

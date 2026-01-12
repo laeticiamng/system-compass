@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
+import { useTraceOSWebhooks } from '@/hooks/useTraceOSWebhooks';
 import { toast } from 'sonner';
 import { DecisionNodeData } from '@/components/institutions/DecisionNode';
 
@@ -70,8 +71,20 @@ function buildDecisionTree(decisions: DBDecision[]): DecisionNodeData[] {
   return rootDecisions;
 }
 
+function findDecisionById(decisions: DecisionNodeData[], id: string): DecisionNodeData | undefined {
+  for (const decision of decisions) {
+    if (decision.id === id) return decision;
+    if (decision.children) {
+      const match = findDecisionById(decision.children, id);
+      if (match) return match;
+    }
+  }
+  return undefined;
+}
+
 export function useTraceOSDecisions() {
   const { user } = useAuth();
+  const { triggerWebhooksForEvent } = useTraceOSWebhooks();
   const [decisions, setDecisions] = useState<DecisionNodeData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -140,7 +153,11 @@ export function useTraceOSDecisions() {
 
       await fetchDecisions();
       toast.success('Décision enregistrée');
-      return dbToUIDecision(data as DBDecision);
+      const createdDecision = dbToUIDecision(data as DBDecision);
+      await triggerWebhooksForEvent('decision_created', {
+        decision: createdDecision,
+      });
+      return createdDecision;
     } catch (err) {
       console.error('Error creating decision:', err);
       toast.error('Erreur lors de la création de la décision');
@@ -156,6 +173,8 @@ export function useTraceOSDecisions() {
     if (!user) return false;
 
     try {
+      const previousDecision = findDecisionById(decisions, id);
+      const previousStatus = previousDecision?.status;
       const updateData: Record<string, unknown> = {};
       if (updates.title) updateData.title = updates.title;
       if (updates.context) updateData.context = updates.context;
@@ -179,13 +198,28 @@ export function useTraceOSDecisions() {
 
       await fetchDecisions();
       toast.success('Décision mise à jour');
+
+      await triggerWebhooksForEvent('decision_updated', {
+        id,
+        updates,
+        previousStatus,
+      });
+
+      if (updates.status === 'validated' && previousStatus !== 'validated') {
+        await triggerWebhooksForEvent('decision_validated', {
+          id,
+          title: updates.title ?? previousDecision?.title,
+          status: updates.status,
+        });
+      }
+
       return true;
     } catch (err) {
       console.error('Error updating decision:', err);
       toast.error('Erreur lors de la mise à jour');
       return false;
     }
-  }, [user, fetchDecisions]);
+  }, [user, decisions, fetchDecisions, triggerWebhooksForEvent]);
 
   // Delete a decision
   const deleteDecision = useCallback(async (id: string): Promise<boolean> => {
