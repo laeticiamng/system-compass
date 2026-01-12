@@ -21,6 +21,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Link, useNavigate } from 'react-router-dom';
 import { ProgressStats } from '@/components/dashboard/ProgressStats';
 import { DeadlineCalendar } from '@/components/dashboard/DeadlineCalendar';
+import { NotificationBell } from '@/components/dashboard/NotificationBell';
 import { AchievementsPanel } from '@/components/game/AchievementsPanel';
 import {
   CheckCircle2,
@@ -259,6 +260,9 @@ export default function Dashboard() {
           </div>
           
           <div className="flex items-center gap-3">
+            {/* Notification Bell */}
+            <NotificationBell />
+            
             {/* AI Help Button */}
             {selectedKey && (
               <AiHelpButton
