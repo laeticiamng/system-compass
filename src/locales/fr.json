@@ -8003,6 +8003,378 @@
       "text": "Ces informations sont fournies à titre indicatif et doivent être confirmées auprès de sources officielles avant tout engagement."
     }
   },
+  "ovi": {
+    "badge": "Premium • Think Tank",
+    "fullName": "Observatoire des Variables Invisibles",
+    "subtitle": "Un espace de recul, un laboratoire de pensée. Pas un outil de plus — un cadre pour mieux décider.",
+    "value1": "Cadres de pensée",
+    "value2": "Grilles de lecture",
+    "value3": "Responsabilisation",
+    "ethics": {
+      "noPromise": "Pas de promesse",
+      "noMiracle": "Pas de solution miracle",
+      "noRecipe": "Pas de recette",
+      "responsibility": "Responsabilisation maximale"
+    },
+    "tabs": {
+      "intro": "Introduction",
+      "frameworks": "Cadres",
+      "grids": "Grilles",
+      "connection": "Connexions"
+    },
+    "paywall": {
+      "feature": "OVI - Observatoire des Variables Invisibles",
+      "description": "Accédez aux cadres de réflexion, grilles de lecture et contenus premium pour enrichir votre prise de décision."
+    },
+    "preview": {
+      "title": "Aperçu du contenu"
+    },
+    "intro": {
+      "title": "Qu'est-ce que l'OVI ?",
+      "p1": "L'Observatoire des Variables Invisibles n'est pas un outil supplémentaire. C'est un espace de recul — un laboratoire de pensée intégré à Pyramid Compass.",
+      "observe": {
+        "title": "Observer",
+        "desc": "Identifier ce qui échappe au regard immédiat : biais, hypothèses implicites, angles morts."
+      },
+      "structure": {
+        "title": "Structurer",
+        "desc": "Proposer des cadres de pensée, pas des réponses. Des grilles, pas des recettes."
+      },
+      "decide": {
+        "title": "Décider",
+        "desc": "Nourrir la réflexion pour que vous décidiez mieux — sans jamais décider à votre place."
+      },
+      "philosophy": {
+        "title": "Philosophie",
+        "p1": "Les décisions importantes se prennent souvent sans cadre explicite. On agit vite, on réagit, on suit l'intuition — parfois à raison, parfois à tort.",
+        "p2": "L'OVI propose de ralentir. Non pas pour hésiter, mais pour voir ce qui n'était pas visible. Pour nommer ce qui restait implicite. Pour distinguer ce qui dépend de vous de ce qui dépend du système.",
+        "p3": "Ce n'est pas un oracle. C'est un miroir."
+      },
+      "cta": "Explorer les cadres de réflexion"
+    },
+    "frameworks": {
+      "title": "Cadres de réflexion",
+      "subtitle": "Articles courts et structurants. Pas d'opinion, des cadres pour penser.",
+      "read": "Lire",
+      "disclaimer": "Ces cadres sont des outils de réflexion, pas des vérités absolues. Ils visent à structurer la pensée, pas à la remplacer. Chaque situation mérite sa propre analyse.",
+      "bias": {
+        "title": "Biais cognitifs",
+        "subtitle": "Les filtres invisibles de nos décisions",
+        "preview": "Nos cerveaux sont équipés de raccourcis qui nous font gagner du temps — et parfois nous font perdre en lucidité. Ce cadre explore les principaux biais qui affectent nos décisions importantes."
+      },
+      "irreversible": {
+        "title": "Décisions irréversibles",
+        "subtitle": "Distinguer ce qui peut être défait de ce qui ne peut pas l'être",
+        "preview": "Toutes les décisions ne se valent pas. Certaines peuvent être annulées ou ajustées ; d'autres engagent définitivement. Ce cadre propose une méthode pour les distinguer."
+      },
+      "control": {
+        "title": "Illusion de contrôle",
+        "subtitle": "Ce qui dépend vraiment de nous",
+        "preview": "Nous surestimons souvent notre influence sur les événements. Ce cadre aide à cartographier ce qui relève de notre action et ce qui dépend de forces extérieures."
+      },
+      "speed": {
+        "title": "Vitesse vs Précipitation",
+        "subtitle": "Agir vite n'est pas agir dans l'urgence",
+        "preview": "La vitesse peut être un atout stratégique. La précipitation est toujours un risque. Ce cadre propose des critères pour distinguer l'une de l'autre."
+      },
+      "individual": {
+        "title": "Individu vs Système",
+        "subtitle": "Responsabilité personnelle et contraintes structurelles",
+        "preview": "Où s'arrête la responsabilité individuelle ? Où commence la contrainte systémique ? Ce cadre explore cette frontière floue mais cruciale."
+      }
+    },
+    "grids": {
+      "title": "Grilles de lecture",
+      "subtitle": "Grilles transversales applicables à la vie personnelle, carrière, organisation et projets complexes.",
+      "questions": "Questions à se poser",
+      "usage": {
+        "title": "Comment utiliser ces grilles",
+        "desc": "Ces grilles ne sont pas des formules magiques. Elles sont des lentilles — des façons de regarder une situation sous un angle différent. Utilisez-les pour questionner, pas pour conclure."
+      },
+      "reversibility": {
+        "title": "Réversible / Irréversible",
+        "desc": "Distinguer ce qui peut être défait de ce qui engage définitivement",
+        "left": "Réversible",
+        "right": "Irréversible",
+        "q1": "Cette décision peut-elle être annulée ou ajustée plus tard ?",
+        "q2": "Quel est le coût réel d'un retour en arrière ?",
+        "q3": "Suis-je en train de confondre \"difficile à défaire\" et \"impossible à défaire\" ?",
+        "personal": {
+          "left1": "Changer de ville",
+          "right1": "Avoir un enfant",
+          "left2": "Essayer un nouveau hobby",
+          "right2": "Brûler un pont relationnel"
+        },
+        "career": {
+          "left1": "Prendre un congé sabbatique",
+          "right1": "Quitter avec éclat",
+          "left2": "Tester un side-project",
+          "right2": "Perdre une certification"
+        },
+        "org": {
+          "left1": "Réorganiser une équipe",
+          "right1": "Licencier un expert clé",
+          "left2": "Tester un nouveau process",
+          "right2": "Fusionner des entités"
+        },
+        "project": {
+          "left1": "Changer de stack technique",
+          "right1": "Signer un contrat exclusif",
+          "left2": "Reporter un lancement",
+          "right2": "Publier une annonce"
+        }
+      },
+      "agency": {
+        "title": "Moi / Système",
+        "desc": "Cartographier ce qui dépend de notre action et ce qui nous dépasse",
+        "left": "Dépend de moi",
+        "right": "Dépend du système",
+        "q1": "Sur quoi ai-je vraiment prise dans cette situation ?",
+        "q2": "Est-ce que je surestime ou sous-estime mon pouvoir d'action ?",
+        "q3": "Quelles contraintes systémiques dois-je accepter comme données ?",
+        "personal": {
+          "left1": "Mon effort quotidien",
+          "right1": "Le marché immobilier",
+          "left2": "Ma gestion du temps",
+          "right2": "Les normes sociales"
+        },
+        "career": {
+          "left1": "Mes compétences",
+          "right1": "La conjoncture économique",
+          "left2": "Ma préparation aux entretiens",
+          "right2": "La politique interne"
+        },
+        "org": {
+          "left1": "La qualité de mon management",
+          "right1": "Les décisions du groupe",
+          "left2": "La culture que je crée",
+          "right2": "La réglementation"
+        },
+        "project": {
+          "left1": "L'exécution",
+          "right1": "L'adoption par le marché",
+          "left2": "Le choix des partenaires",
+          "right2": "Les délais administratifs"
+        }
+      },
+      "visibility": {
+        "title": "Visible / Invisible",
+        "desc": "Identifier ce qui est apparent et ce qui reste caché",
+        "left": "Visible aujourd'hui",
+        "right": "Invisible aujourd'hui",
+        "q1": "Qu'est-ce que je ne vois pas encore dans cette situation ?",
+        "q2": "Quels coûts ou bénéfices n'apparaîtront que plus tard ?",
+        "q3": "Suis-je en train de me fier uniquement à ce qui est mesurable ?",
+        "personal": {
+          "left1": "Le salaire actuel",
+          "right1": "L'usure relationnelle",
+          "left2": "Le confort matériel",
+          "right2": "Le coût d'opportunité"
+        },
+        "career": {
+          "left1": "Le titre du poste",
+          "right1": "L'apprentissage réel",
+          "left2": "La rémunération",
+          "right2": "L'impact sur la santé"
+        },
+        "org": {
+          "left1": "Les KPIs",
+          "right1": "Le moral des équipes",
+          "left2": "Le chiffre d'affaires",
+          "right2": "La dette technique"
+        },
+        "project": {
+          "left1": "Le MVP",
+          "right1": "La complexité de la maintenance",
+          "left2": "Les premiers clients",
+          "right2": "Le product-market fit réel"
+        }
+      }
+    },
+    "domains": {
+      "personal": "Vie personnelle",
+      "career": "Carrière",
+      "organization": "Organisation",
+      "projects": "Projets complexes"
+    },
+    "tags": {
+      "psychology": "Psychologie",
+      "decision": "Décision",
+      "strategy": "Stratégie",
+      "risk": "Risque",
+      "philosophy": "Philosophie",
+      "systems": "Systèmes",
+      "execution": "Exécution",
+      "timing": "Timing",
+      "sociology": "Sociologie",
+      "responsibility": "Responsabilité"
+    },
+    "readTime": "{{min}} min",
+    "connection": {
+      "title": "Connexion avec Pyramid Compass",
+      "subtitle": "L'OVI enrichit vos simulations sans les influencer",
+      "intro": "Lorsque vous effectuez une simulation dans Pyramid Compass, l'OVI peut suggérer des lectures pertinentes. L'objectif : nourrir votre réflexion, pas orienter votre décision.",
+      "ex1": {
+        "sim": "Simulation de trajectoire professionnelle",
+        "sug1": "Cadre : Décisions irréversibles",
+        "sug2": "Grille : Ce qui dépend de moi / du système"
+      },
+      "ex2": {
+        "sim": "Comparaison de pays",
+        "sug1": "Cadre : Illusion de contrôle",
+        "sug2": "Grille : Visible / Invisible aujourd'hui"
+      },
+      "warning": {
+        "title": "Principe de non-influence",
+        "desc": "Les suggestions OVI sont toujours optionnelles. Elles apparaissent après la simulation, jamais pendant. L'objectif est d'enrichir votre réflexion post-décision, pas de biaiser le processus."
+      }
+    },
+    "quickLinks": {
+      "filter": "Filtre de prévention",
+      "filterDesc": "Analyser une décision",
+      "compare": "Comparer",
+      "compareDesc": "Explorer des scénarios",
+      "institutions": "Institutions",
+      "institutionsDesc": "Décisions collectives"
+    },
+    "quote": "\"La clarté ne vient pas de ce qu'on sait, mais de ce qu'on accepte de regarder.\"",
+    "quoteAuthor": "Principe OVI",
+    "articles": {
+      "keyTakeaways": "Points clés",
+      "backToFrameworks": "Retour aux cadres",
+      "bias": {
+        "title": "Biais cognitifs",
+        "subtitle": "Les filtres invisibles de nos décisions",
+        "s1": {
+          "title": "Introduction",
+          "p1": "Notre cerveau est une machine extraordinaire, capable de traiter des millions d'informations par seconde. Pour y parvenir, il utilise des raccourcis — des heuristiques qui nous permettent de décider vite.",
+          "p2": "Ces raccourcis sont précieux dans la vie quotidienne. Mais ils peuvent devenir des pièges dans les décisions importantes, là où la nuance compte."
+        },
+        "s2": {
+          "title": "Les biais les plus courants",
+          "i1": "Biais de confirmation : chercher les informations qui confirment ce qu'on croit déjà",
+          "i2": "Biais d'ancrage : accorder trop d'importance à la première information reçue",
+          "i3": "Biais de disponibilité : surestimer ce qui est facilement mémorisable",
+          "i4": "Biais du survivant : ne voir que les succès, pas les échecs silencieux",
+          "i5": "Biais de statu quo : préférer ne rien changer, même quand c'est sous-optimal",
+          "i6": "Aversion à la perte : craindre de perdre plus qu'on désire gagner"
+        },
+        "s3": {
+          "title": "Pourquoi c'est difficile à voir",
+          "p1": "Les biais sont invisibles précisément parce qu'ils font partie de notre façon de penser. On ne peut pas \"sortir\" de son cerveau pour l'observer de l'extérieur.",
+          "p2": "C'est pourquoi les cadres de réflexion, les grilles de lecture et le dialogue avec d'autres perspectives sont si importants. Ils créent une distance — un espace pour voir ce qui nous échappe."
+        },
+        "quote": "Le premier pas vers la lucidité n'est pas de supprimer ses biais — c'est d'admettre qu'on en a.",
+        "s4": {
+          "title": "Que faire ?",
+          "p1": "Il ne s'agit pas d'éliminer les biais — c'est impossible. Il s'agit de créer des conditions où ils ont moins de prise sur nos décisions importantes.",
+          "p2": "Ralentir. Écrire. Questionner ses certitudes. Chercher des avis divergents. Distinguer ce qu'on sait de ce qu'on suppose."
+        },
+        "key1": "Les biais sont des raccourcis utiles — sauf dans les décisions complexes",
+        "key2": "On ne peut pas les supprimer, mais on peut créer de la distance",
+        "key3": "Le doute méthodique est un outil, pas une faiblesse"
+      },
+      "irreversible": {
+        "title": "Décisions irréversibles",
+        "subtitle": "Distinguer ce qui peut être défait de ce qui ne peut pas l'être",
+        "s1": {
+          "title": "Le piège de l'uniformité",
+          "p1": "Nous avons tendance à traiter toutes les décisions de la même façon. Pourtant, certaines peuvent être annulées en quelques clics ; d'autres engagent pour des années, voire pour toujours.",
+          "p2": "Confondre les deux, c'est soit hésiter trop longtemps sur ce qui n'est pas grave, soit s'engager trop vite sur ce qui l'est."
+        },
+        "s2": {
+          "title": "Une typologie simple",
+          "i1": "Type 1 : Irréversibles. Une fois franchies, pas de retour. Exemples : avoir un enfant, révéler un secret, détruire une relation.",
+          "i2": "Type 2 : Réversibles avec coût. On peut revenir en arrière, mais ça coûte (temps, argent, énergie). Exemples : changer de pays, quitter un emploi, acheter un bien.",
+          "i3": "Type 3 : Facilement réversibles. Peu de conséquences à annuler. Exemples : tester un outil, modifier un document, reporter une réunion."
+        },
+        "warning": "Attention : nous sous-estimons souvent le coût de réversibilité. \"Je pourrai toujours revenir\" est parfois une illusion confortable.",
+        "s3": {
+          "title": "Adapter sa méthode",
+          "p1": "Plus une décision est irréversible, plus elle mérite du temps, de la réflexion et des perspectives multiples.",
+          "p2": "Les décisions de Type 1 demandent une vraie pause. Pas de l'hésitation stérile — mais du temps pour voir ce qu'on ne voit pas encore."
+        },
+        "key1": "Toutes les décisions ne méritent pas le même investissement",
+        "key2": "Le coût de réversibilité est souvent sous-estimé",
+        "key3": "Plus c'est irréversible, plus ça mérite du temps"
+      },
+      "control": {
+        "title": "Illusion de contrôle",
+        "subtitle": "Ce qui dépend vraiment de nous",
+        "s1": {
+          "title": "Le mythe du \"tout est possible\"",
+          "p1": "La culture contemporaine valorise l'agentivité : \"si tu veux, tu peux\". C'est parfois vrai. C'est parfois un mensonge cruel.",
+          "p2": "Nous évoluons dans des systèmes — économiques, sociaux, institutionnels — qui contraignent nos possibilités. Les ignorer, c'est se préparer à des déceptions."
+        },
+        "s2": {
+          "title": "Trois zones à distinguer",
+          "i1": "Zone de contrôle : ce qui dépend entièrement de moi (mes actions, mes réactions, mon effort)",
+          "i2": "Zone d'influence : ce sur quoi je peux agir, mais sans garantie (mes relations, certaines opportunités)",
+          "i3": "Zone d'acceptation : ce qui m'échappe (le marché, les décisions des autres, le hasard)"
+        },
+        "s3": {
+          "title": "Pourquoi ça compte",
+          "p1": "Confondre ces zones génère soit de la frustration (quand on échoue à contrôler l'incontrôlable), soit de la passivité (quand on renonce à agir là où on le peut).",
+          "p2": "La lucidité consiste à investir son énergie là où elle a prise, et à accepter le reste — non par résignation, mais par réalisme."
+        },
+        "key1": "Tout n'est pas sous notre contrôle — et c'est normal",
+        "key2": "Distinguer contrôle, influence et acceptation économise de l'énergie",
+        "key3": "La lucidité n'est pas la résignation"
+      },
+      "speed": {
+        "title": "Vitesse vs Précipitation",
+        "subtitle": "Agir vite n'est pas agir dans l'urgence",
+        "s1": {
+          "title": "Deux façons d'aller vite",
+          "p1": "La vitesse peut être un avantage stratégique. Agir avant les autres, saisir une opportunité, itérer rapidement — tout cela a de la valeur.",
+          "p2": "Mais il y a une différence entre la vitesse délibérée et la précipitation. L'une est choisie ; l'autre est subie."
+        },
+        "s2": {
+          "title": "Signaux de précipitation",
+          "i1": "On n'a pas le temps de poser la question \"est-ce vraiment urgent ?\"",
+          "i2": "On ignore les doutes parce qu'il faut avancer",
+          "i3": "On justifie la hâte par la peur de manquer quelque chose",
+          "i4": "On ne peut pas expliquer clairement pourquoi maintenant"
+        },
+        "s3": {
+          "title": "La vraie question",
+          "p1": "Avant d'agir vite, demandez-vous : \"Est-ce que je choisis cette vitesse, ou est-ce que je la subis ?\"",
+          "p2": "La vitesse choisie est puissante. La précipitation subie est dangereuse."
+        },
+        "key1": "La vitesse peut être un atout — si elle est choisie",
+        "key2": "La précipitation est souvent un symptôme, pas une stratégie",
+        "key3": "Prendre 5 minutes pour se poser la question peut éviter 5 mois de regrets"
+      },
+      "individual": {
+        "title": "Individu vs Système",
+        "subtitle": "Responsabilité personnelle et contraintes structurelles",
+        "s1": {
+          "title": "Un faux dilemme",
+          "p1": "D'un côté, le discours du \"tout est possible si tu y crois\". De l'autre, le fatalisme systémique : \"le système est contre toi\".",
+          "p2": "Les deux sont vrais — et faux. La réalité est plus nuancée : nous agissons dans des systèmes qui nous contraignent ET nous offrent des possibilités."
+        },
+        "s2": {
+          "title": "Ce que le système fait",
+          "p1": "Un système définit des règles, des incitations, des obstacles. Il récompense certains comportements et en punit d'autres. Il crée des chemins faciles et des impasses.",
+          "p2": "Ignorer le système, c'est se battre contre des forces invisibles. Le comprendre, c'est savoir où placer ses efforts."
+        },
+        "s3": {
+          "title": "Ce qui reste à l'individu",
+          "p1": "Même dans les systèmes les plus contraignants, il reste des marges. Des choix. Des façons de naviguer.",
+          "p2": "La responsabilité individuelle n'est pas de tout contrôler — c'est de faire le maximum avec ce qui est sous notre contrôle."
+        },
+        "key1": "Ni tout-puissant, ni impuissant",
+        "key2": "Comprendre le système aide à mieux y naviguer",
+        "key3": "La responsabilité porte sur ce qui dépend de nous, pas sur le reste"
+      }
+    },
+    "suggestions": {
+      "title": "Lectures suggérées de l'OVI",
+      "subtitle": "Enrichissez votre réflexion avec des cadres pertinents",
+      "viewMore": "Voir dans l'OVI",
+      "relevantTo": "Pertinent pour votre analyse"
+    }
+  },
   "music": {
     "systemSoundscape": "Paysage sonore",
     "listenTo": "Écouter l'ambiance de {{country}}",
