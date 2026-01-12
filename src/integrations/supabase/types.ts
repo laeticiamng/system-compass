@@ -260,6 +260,204 @@ export type Database = {
         }
         Relationships: []
       }
+      case_delays_reality: {
+        Row: {
+          case_id: string
+          cashflow_implications: string | null
+          confidence_score: number | null
+          created_at: string
+          delay_risk_signals: string[] | null
+          id: string
+          is_ai_generated: boolean | null
+          official_timeframe: string | null
+          optimistic_timeframe: string | null
+          pessimistic_timeframe: string | null
+          process_name: string
+          realistic_timeframe: string | null
+          sources: Json | null
+          updated_at: string
+        }
+        Insert: {
+          case_id: string
+          cashflow_implications?: string | null
+          confidence_score?: number | null
+          created_at?: string
+          delay_risk_signals?: string[] | null
+          id?: string
+          is_ai_generated?: boolean | null
+          official_timeframe?: string | null
+          optimistic_timeframe?: string | null
+          pessimistic_timeframe?: string | null
+          process_name: string
+          realistic_timeframe?: string | null
+          sources?: Json | null
+          updated_at?: string
+        }
+        Update: {
+          case_id?: string
+          cashflow_implications?: string | null
+          confidence_score?: number | null
+          created_at?: string
+          delay_risk_signals?: string[] | null
+          id?: string
+          is_ai_generated?: boolean | null
+          official_timeframe?: string | null
+          optimistic_timeframe?: string | null
+          pessimistic_timeframe?: string | null
+          process_name?: string
+          realistic_timeframe?: string | null
+          sources?: Json | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      case_governance_actors: {
+        Row: {
+          actor_type: string
+          case_id: string
+          confidence_score: number | null
+          country_code: string
+          created_at: string
+          formality_level: string | null
+          id: string
+          is_ai_generated: boolean | null
+          label: string
+          notes: string | null
+          power_types: string[] | null
+          reliability_status: string | null
+          sector: string | null
+          sources: Json | null
+          updated_at: string
+        }
+        Insert: {
+          actor_type: string
+          case_id: string
+          confidence_score?: number | null
+          country_code: string
+          created_at?: string
+          formality_level?: string | null
+          id?: string
+          is_ai_generated?: boolean | null
+          label: string
+          notes?: string | null
+          power_types?: string[] | null
+          reliability_status?: string | null
+          sector?: string | null
+          sources?: Json | null
+          updated_at?: string
+        }
+        Update: {
+          actor_type?: string
+          case_id?: string
+          confidence_score?: number | null
+          country_code?: string
+          created_at?: string
+          formality_level?: string | null
+          id?: string
+          is_ai_generated?: boolean | null
+          label?: string
+          notes?: string | null
+          power_types?: string[] | null
+          reliability_status?: string | null
+          sector?: string | null
+          sources?: Json | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      case_governance_partners: {
+        Row: {
+          case_id: string
+          confidence_score: number | null
+          created_at: string
+          description: string | null
+          due_diligence_checklist: string[] | null
+          id: string
+          is_ai_generated: boolean | null
+          is_mandatory: boolean | null
+          notes: string | null
+          partner_type: string
+          risk_flags: string[] | null
+          sources: Json | null
+          updated_at: string
+        }
+        Insert: {
+          case_id: string
+          confidence_score?: number | null
+          created_at?: string
+          description?: string | null
+          due_diligence_checklist?: string[] | null
+          id?: string
+          is_ai_generated?: boolean | null
+          is_mandatory?: boolean | null
+          notes?: string | null
+          partner_type: string
+          risk_flags?: string[] | null
+          sources?: Json | null
+          updated_at?: string
+        }
+        Update: {
+          case_id?: string
+          confidence_score?: number | null
+          created_at?: string
+          description?: string | null
+          due_diligence_checklist?: string[] | null
+          id?: string
+          is_ai_generated?: boolean | null
+          is_mandatory?: boolean | null
+          notes?: string | null
+          partner_type?: string
+          risk_flags?: string[] | null
+          sources?: Json | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      case_intermediation_patterns: {
+        Row: {
+          case_id: string
+          confidence_score: number | null
+          created_at: string
+          description_neutral: string
+          id: string
+          is_ai_generated: boolean | null
+          pattern_type: string
+          protections: string[] | null
+          risk_level: string | null
+          signals: string[] | null
+          sources: Json | null
+          updated_at: string
+        }
+        Insert: {
+          case_id: string
+          confidence_score?: number | null
+          created_at?: string
+          description_neutral: string
+          id?: string
+          is_ai_generated?: boolean | null
+          pattern_type: string
+          protections?: string[] | null
+          risk_level?: string | null
+          signals?: string[] | null
+          sources?: Json | null
+          updated_at?: string
+        }
+        Update: {
+          case_id?: string
+          confidence_score?: number | null
+          created_at?: string
+          description_neutral?: string
+          id?: string
+          is_ai_generated?: boolean | null
+          pattern_type?: string
+          protections?: string[] | null
+          risk_level?: string | null
+          signals?: string[] | null
+          sources?: Json | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       country_generation_batches: {
         Row: {
           completed_at: string | null
@@ -943,6 +1141,60 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      gov_intel_runs: {
+        Row: {
+          actors_count: number | null
+          case_id: string
+          completed_at: string | null
+          country_code: string
+          created_at: string
+          delays_count: number | null
+          error_message: string | null
+          id: string
+          intention: string | null
+          partners_count: number | null
+          patterns_count: number | null
+          project_type: string | null
+          sector: string | null
+          status: string | null
+          user_id: string
+        }
+        Insert: {
+          actors_count?: number | null
+          case_id: string
+          completed_at?: string | null
+          country_code: string
+          created_at?: string
+          delays_count?: number | null
+          error_message?: string | null
+          id?: string
+          intention?: string | null
+          partners_count?: number | null
+          patterns_count?: number | null
+          project_type?: string | null
+          sector?: string | null
+          status?: string | null
+          user_id: string
+        }
+        Update: {
+          actors_count?: number | null
+          case_id?: string
+          completed_at?: string | null
+          country_code?: string
+          created_at?: string
+          delays_count?: number | null
+          error_message?: string | null
+          id?: string
+          intention?: string | null
+          partners_count?: number | null
+          patterns_count?: number | null
+          project_type?: string | null
+          sector?: string | null
+          status?: string | null
+          user_id?: string
+        }
+        Relationships: []
       }
       i18n_coverage_alerts: {
         Row: {
