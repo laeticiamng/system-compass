@@ -31,10 +31,13 @@ export function AiUsageStats({ compact = false, showActivity = false }: AiUsageS
     isLoggedIn
   } = useAiUsage();
 
-  // Don't render if not logged in or no data
+  // Don't render if not logged in
   if (!isLoggedIn) {
     return null;
   }
+
+  // Show empty state message if no usage data yet
+  const hasNoUsage = !stats.aiActions && !stats.tokensUsed && !stats.dossiers && !stats.exports;
 
   if (loading) {
     return (
@@ -84,13 +87,19 @@ export function AiUsageStats({ compact = false, showActivity = false }: AiUsageS
               <Brain className="w-5 h-5 text-primary" />
               {t('ai.usage.title', 'Utilisation AI')}
             </div>
-            {isAtLimit && (
+            {hasNoUsage && (
+              <Badge variant="secondary" className="gap-1">
+                <CheckCircle2 className="w-3 h-3" />
+                {t('ai.usage.ready', 'Prêt à utiliser')}
+              </Badge>
+            )}
+            {!hasNoUsage && isAtLimit && (
               <Badge variant="destructive" className="gap-1">
                 <AlertTriangle className="w-3 h-3" />
                 {t('ai.usage.limitReached', 'Limite atteinte')}
               </Badge>
             )}
-            {isNearLimit && !isAtLimit && (
+            {!hasNoUsage && isNearLimit && !isAtLimit && (
               <Badge variant="secondary" className="gap-1 text-amber-600 border-amber-500/30">
                 <TrendingUp className="w-3 h-3" />
                 {t('ai.usage.nearLimit', 'Proche de la limite')}
@@ -99,52 +108,65 @@ export function AiUsageStats({ compact = false, showActivity = false }: AiUsageS
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          {/* Progress bar */}
-          <div>
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-muted-foreground">
-                {t('ai.usage.period', 'Période actuelle')}
-              </span>
-              <span className="text-sm font-medium">
-                {stats.caseUnits} / {stats.quotaLimit} {t('ai.usage.units', 'unités')}
-              </span>
+          {/* Empty state message */}
+          {hasNoUsage && (
+            <div className="text-center py-4 text-muted-foreground">
+              <Brain className="w-10 h-10 mx-auto mb-2 opacity-30" />
+              <p className="text-sm">{t('ai.usage.noUsageYet', "Vous n'avez pas encore utilisé les fonctionnalités AI.")}</p>
+              <p className="text-xs mt-1">{t('ai.usage.startUsing', 'Commencez à utiliser les outils AI pour voir vos statistiques.')}</p>
             </div>
-            <Progress 
-              value={usagePercentage} 
-              className={cn(
-                "h-3",
-                isAtLimit && "[&>div]:bg-red-500",
-                isNearLimit && !isAtLimit && "[&>div]:bg-amber-500"
-              )}
-            />
-            <p className="text-xs text-muted-foreground mt-1 text-right">
-              {usagePercentage}% {t('ai.usage.used', 'utilisé')}
-            </p>
-          </div>
+          )}
+          
+          {/* Progress bar - only show if has usage */}
+          {!hasNoUsage && (
+            <>
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm text-muted-foreground">
+                    {t('ai.usage.period', 'Période actuelle')}
+                  </span>
+                  <span className="text-sm font-medium">
+                    {stats.caseUnits} / {stats.quotaLimit} {t('ai.usage.units', 'unités')}
+                  </span>
+                </div>
+                <Progress 
+                  value={usagePercentage} 
+                  className={cn(
+                    "h-3",
+                    isAtLimit && "[&>div]:bg-red-500",
+                    isNearLimit && !isAtLimit && "[&>div]:bg-amber-500"
+                  )}
+                />
+                <p className="text-xs text-muted-foreground mt-1 text-right">
+                  {usagePercentage}% {t('ai.usage.used', 'utilisé')}
+                </p>
+              </div>
 
-          {/* Stats grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            <StatItem 
-              icon={<Zap className="w-4 h-4" />}
-              label={t('ai.usage.actions', 'Actions AI')}
-              value={stats.aiActions}
-            />
-            <StatItem 
-              icon={<Brain className="w-4 h-4" />}
-              label={t('ai.usage.tokens', 'Tokens')}
-              value={stats.tokensUsed.toLocaleString()}
-            />
-            <StatItem 
-              icon={<FileText className="w-4 h-4" />}
-              label={t('ai.usage.dossiers', 'Dossiers')}
-              value={stats.dossiers}
-            />
-            <StatItem 
-              icon={<Download className="w-4 h-4" />}
-              label={t('ai.usage.exports', 'Exports')}
-              value={stats.exports}
-            />
-          </div>
+              {/* Stats grid */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <StatItem 
+                  icon={<Zap className="w-4 h-4" />}
+                  label={t('ai.usage.actions', 'Actions AI')}
+                  value={stats.aiActions}
+                />
+                <StatItem 
+                  icon={<Brain className="w-4 h-4" />}
+                  label={t('ai.usage.tokens', 'Tokens')}
+                  value={stats.tokensUsed.toLocaleString()}
+                />
+                <StatItem 
+                  icon={<FileText className="w-4 h-4" />}
+                  label={t('ai.usage.dossiers', 'Dossiers')}
+                  value={stats.dossiers}
+                />
+                <StatItem 
+                  icon={<Download className="w-4 h-4" />}
+                  label={t('ai.usage.exports', 'Exports')}
+                  value={stats.exports}
+                />
+              </div>
+            </>
+          )}
         </CardContent>
       </Card>
 

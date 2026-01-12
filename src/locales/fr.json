@@ -36,6 +36,27 @@
     "notFound": "Ressource non trouvée.",
     "serverError": "Erreur serveur. Veuillez réessayer."
   },
+  "ai": {
+    "usage": {
+      "title": "Utilisation AI",
+      "credits": "Crédits AI",
+      "period": "Période actuelle",
+      "units": "unités",
+      "used": "utilisé",
+      "actions": "Actions AI",
+      "tokens": "Tokens",
+      "dossiers": "Dossiers",
+      "exports": "Exports",
+      "limitReached": "Limite atteinte",
+      "nearLimit": "Proche de la limite",
+      "ready": "Prêt à utiliser",
+      "noUsageYet": "Vous n'avez pas encore utilisé les fonctionnalités AI.",
+      "startUsing": "Commencez à utiliser les outils AI pour voir vos statistiques."
+    },
+    "activity": {
+      "title": "Activité récente"
+    }
+  },
   "journey": {
     "profile": "Ton profil",
     "options": "Tes options",
@@ -319,7 +340,31 @@
     "latentDesc": "Identifiez les zones de tension non encore critiques",
     "irreversaDesc": "Documentez les seuils irréversibles franchis",
     "institutionsDesc": "Aide à la décision collective et traçabilité",
-    "usageDesc": "Suivez votre utilisation IA et vos ressources"
+    "usageDesc": "Suivez votre utilisation IA et vos ressources",
+    "emptyState": {
+      "title": "Bienvenue sur Pyramid Compass",
+      "subtitle": "Commencez votre exploration en quelques étapes simples",
+      "continueTest": "Faire le test rapide",
+      "startProfile": "Créer mon profil"
+    },
+    "quickStart": {
+      "profile": {
+        "title": "Créer votre profil",
+        "desc": "Définissez vos objectifs et contraintes pour des recommandations personnalisées"
+      },
+      "test": {
+        "title": "Test rapide (60 secondes)",
+        "desc": "Découvrez le système qui correspond à votre situation"
+      },
+      "countries": {
+        "title": "Explorer les pays",
+        "desc": "Analysez les systèmes de plus de 25 pays"
+      },
+      "exitKeys": {
+        "title": "Catalogue des clés de sortie",
+        "desc": "Découvrez les stratégies de mobilité et d'évolution"
+      }
+    }
   },
   "achievements": {
     "title": "Succès",
@@ -5235,32 +5280,6 @@
       "dashboardDesc": "Suivez votre progression et vos objectifs",
       "learn": "Guide de lecture",
       "learnDesc": "Apprenez à interpréter les données"
-    }
-  },
-  "dashboard": {
-    "emptyState": {
-      "title": "Bienvenue sur Pyramid Compass",
-      "subtitle": "Commencez votre exploration en quelques étapes simples",
-      "continueTest": "Faire le test rapide",
-      "startProfile": "Créer mon profil"
-    },
-    "quickStart": {
-      "profile": {
-        "title": "Créer votre profil",
-        "desc": "Définissez vos objectifs et contraintes pour des recommandations personnalisées"
-      },
-      "test": {
-        "title": "Test rapide (60 secondes)",
-        "desc": "Découvrez le système qui correspond à votre situation"
-      },
-      "countries": {
-        "title": "Explorer les pays",
-        "desc": "Analysez les systèmes de plus de 25 pays"
-      },
-      "exitKeys": {
-        "title": "Catalogue des clés de sortie",
-        "desc": "Découvrez les stratégies de mobilité et d'évolution"
-      }
     }
   },
   "match": {
