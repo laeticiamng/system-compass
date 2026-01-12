@@ -6059,7 +6059,7 @@
     }
   },
   "b2b": {
-    "badge": "Solutions B2B",
+    "badge": "Solutions Business",
     "title": "Pour les Organisations & Décideurs",
     "subtitle": "Outils premium d'aide à la décision institutionnelle et de réflexion stratégique.",
     "intro": "Pyramid Compass propose des modules dédiés aux organisations cherchant à structurer leur prise de décision sans déléguer la responsabilité.",
@@ -6077,6 +6077,11 @@
         "title": "OVI Think Tank",
         "desc": "Cadres de réflexion et grilles de lecture pour les décisions complexes",
         "features": ["Cadres sur les biais cognitifs", "Analyse de réversibilité des décisions", "Cartographie système vs individu"]
+      },
+      "latent": {
+        "badge": "Anti-Accélérateur",
+        "desc": "Cartographiez et maintenez des potentiels non formulés, sans obligation de transformation.",
+        "features": ["Zones de potentiel non finalisées", "Protection contre la cristallisation prématurée", "Évolution sans obligation de résultat"]
       }
     },
     "principles": {
@@ -6097,6 +6102,8 @@
     "cta": {
       "institutions": "Explorer Institutions",
       "ovi": "Explorer OVI",
+      "latent": "Explorer LATENT",
+      "partners": "Programme Partenaires",
       "ready": "Prêt à structurer vos décisions institutionnelles ?",
       "desc": "Explorez nos outils dédiés ou contactez-nous pour des solutions personnalisées."
     }

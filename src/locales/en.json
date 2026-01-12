@@ -5816,6 +5816,10 @@
     "title": "For Organizations & Decision-Makers",
     "subtitle": "Premium tools for institutional decision support and strategic reflection.",
     "intro": "Pyramid Compass offers dedicated modules for organizations seeking to structure their decision-making without delegating responsibility.",
+    "tabs": {
+      "modules": "Modules",
+      "traceos": "TraceOS"
+    },
     "modules": {
       "institutions": {
         "title": "Institutions & Organizations",
@@ -5826,6 +5830,11 @@
         "title": "OVI Think Tank",
         "desc": "Thinking frameworks and reading grids for complex decisions",
         "features": ["Cognitive bias frameworks", "Decision reversibility analysis", "System vs individual mapping"]
+      },
+      "latent": {
+        "badge": "Anti-Accelerator",
+        "desc": "Map and maintain unformulated potentials, with no obligation to transform.",
+        "features": ["Unfinalized potential zones", "Protection against premature crystallization", "Evolution without obligation of results"]
       }
     },
     "principles": {
@@ -5846,7 +5855,10 @@
     "cta": {
       "institutions": "Explore Institutions",
       "ovi": "Explore OVI",
-      "contact": "Contact us"
+      "latent": "Explore LATENT",
+      "partners": "Partners Program",
+      "ready": "Ready to structure your institutional decisions?",
+      "desc": "Explore our dedicated tools or get in touch for customized solutions."
     }
   },
   "riskContexts": {

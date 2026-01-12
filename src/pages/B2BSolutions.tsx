@@ -4,7 +4,6 @@ import {
   Building2, 
   Eye, 
   ArrowRight, 
-  CheckCircle2,
   Lightbulb,
   Scale,
   Users,
@@ -12,9 +11,7 @@ import {
   Grid3X3,
   Shield,
   Sparkles,
-  GitBranch,
-  History,
-  Lock
+  History
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -34,19 +31,19 @@ export default function B2BSolutions() {
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-4 px-4 py-1.5 bg-gradient-to-r from-primary/20 to-amber-500/20 border-primary/30">
               <Sparkles className="w-3.5 h-3.5 mr-2" />
-              {t('b2b.badge', 'Business Solutions')}
+              {t('b2b.badge')}
             </Badge>
 
             <h1 className="font-display text-4xl md:text-6xl font-bold mb-6">
-              {t('b2b.title', 'For Organizations & Decision-Makers')}
+              {t('b2b.title')}
             </h1>
 
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              {t('b2b.subtitle', 'Premium tools for institutional decision support and strategic reflection.')}
+              {t('b2b.subtitle')}
             </p>
 
             <p className="text-muted-foreground max-w-3xl mx-auto">
-              {t('b2b.intro', 'Pyramid Compass offers dedicated modules for organizations seeking to structure their decision-making without delegating responsibility.')}
+              {t('b2b.intro')}
             </p>
           </div>
         </div>
@@ -60,7 +57,7 @@ export default function B2BSolutions() {
               <TabsList className="grid w-full max-w-lg mx-auto grid-cols-3">
                 <TabsTrigger value="modules" className="gap-2">
                   <Building2 className="w-4 h-4" />
-                  {t('b2b.tabs.modules', 'Modules')}
+                  {t('b2b.tabs.modules')}
                 </TabsTrigger>
                 <TabsTrigger value="latent" className="gap-2">
                   <Lightbulb className="w-4 h-4" />
@@ -81,22 +78,22 @@ export default function B2BSolutions() {
                         <Building2 className="w-7 h-7 text-primary" />
                       </div>
                       <CardTitle className="text-2xl">
-                        {t('b2b.modules.institutions.title', 'Institutions & Organizations')}
+                        {t('b2b.modules.institutions.title')}
                       </CardTitle>
                       <CardDescription className="text-base">
-                        {t('b2b.modules.institutions.desc', 'Clarify trade-offs, identify blind spots, prevent costly mistakes')}
+                        {t('b2b.modules.institutions.desc')}
                       </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <ul className="space-y-3">
-                        <FeatureItem icon={Users} text={t('b2b.modules.institutions.features.0', 'Institutional use cases')} />
-                        <FeatureItem icon={Scale} text={t('b2b.modules.institutions.features.1', 'Collective decision mode')} />
-                        <FeatureItem icon={Shield} text={t('b2b.modules.institutions.features.2', 'Traceability & prevention')} />
+                        <FeatureItem icon={Users} text={t('b2b.modules.institutions.features.0')} />
+                        <FeatureItem icon={Scale} text={t('b2b.modules.institutions.features.1')} />
+                        <FeatureItem icon={Shield} text={t('b2b.modules.institutions.features.2')} />
                       </ul>
                       <Separator />
                       <Link to="/institutions">
                         <Button className="w-full gap-2 group-hover:bg-primary transition-colors">
-                          {t('b2b.cta.institutions', 'Explore Institutions')}
+                          {t('b2b.cta.institutions')}
                           <ArrowRight className="w-4 h-4" />
                         </Button>
                       </Link>
@@ -113,22 +110,22 @@ export default function B2BSolutions() {
                         Premium
                       </Badge>
                       <CardTitle className="text-2xl">
-                        {t('b2b.modules.ovi.title', 'OVI Think Tank')}
+                        {t('b2b.modules.ovi.title')}
                       </CardTitle>
                       <CardDescription className="text-base">
-                        {t('b2b.modules.ovi.desc', 'Thinking frameworks and reading grids for complex decisions')}
+                        {t('b2b.modules.ovi.desc')}
                       </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <ul className="space-y-3">
-                        <FeatureItem icon={Brain} text={t('b2b.modules.ovi.features.0', 'Cognitive bias frameworks')} />
-                        <FeatureItem icon={Lightbulb} text={t('b2b.modules.ovi.features.1', 'Decision reversibility analysis')} />
-                        <FeatureItem icon={Grid3X3} text={t('b2b.modules.ovi.features.2', 'System vs individual mapping')} />
+                        <FeatureItem icon={Brain} text={t('b2b.modules.ovi.features.0')} />
+                        <FeatureItem icon={Lightbulb} text={t('b2b.modules.ovi.features.1')} />
+                        <FeatureItem icon={Grid3X3} text={t('b2b.modules.ovi.features.2')} />
                       </ul>
                       <Separator />
                       <Link to="/ovi">
                         <Button variant="outline" className="w-full gap-2 border-amber-500/30 hover:bg-amber-500/10 hover:text-amber-600">
-                          {t('b2b.cta.ovi', 'Explore OVI')}
+                          {t('b2b.cta.ovi')}
                           <ArrowRight className="w-4 h-4" />
                         </Button>
                       </Link>
@@ -144,23 +141,23 @@ export default function B2BSolutions() {
                       <Lightbulb className="w-7 h-7 text-purple-600" />
                     </div>
                     <Badge variant="outline" className="w-fit mx-auto mb-2 border-purple-500/30 text-purple-600">
-                      {t('b2b.modules.latent.badge', 'Anti-Accélérateur')}
+                      {t('b2b.modules.latent.badge')}
                     </Badge>
                     <CardTitle className="text-2xl">LATENT</CardTitle>
                     <CardDescription className="text-base max-w-xl mx-auto">
-                      {t('b2b.modules.latent.desc', 'Cartographiez et maintenez des potentiels non formulés, sans obligation de transformation.')}
+                      {t('b2b.modules.latent.desc')}
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4 max-w-md mx-auto">
                     <ul className="space-y-3">
-                      <FeatureItem icon={Lightbulb} text={t('b2b.modules.latent.features.0', 'Zones de potentiel non finalisées')} />
-                      <FeatureItem icon={Shield} text={t('b2b.modules.latent.features.1', 'Protection contre la cristallisation prématurée')} />
-                      <FeatureItem icon={History} text={t('b2b.modules.latent.features.2', 'Évolution sans obligation de résultat')} />
+                      <FeatureItem icon={Lightbulb} text={t('b2b.modules.latent.features.0')} />
+                      <FeatureItem icon={Shield} text={t('b2b.modules.latent.features.1')} />
+                      <FeatureItem icon={History} text={t('b2b.modules.latent.features.2')} />
                     </ul>
                     <Separator />
                     <Link to="/latent">
                       <Button className="w-full gap-2">
-                        {t('b2b.cta.latent', 'Explorer LATENT')}
+                        {t('b2b.cta.latent')}
                         <ArrowRight className="w-4 h-4" />
                       </Button>
                     </Link>
@@ -181,24 +178,24 @@ export default function B2BSolutions() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="font-display text-2xl md:text-3xl font-bold text-center mb-12">
-              {t('b2b.principles.title', 'Our Principles')}
+              {t('b2b.principles.title')}
             </h2>
 
             <div className="grid md:grid-cols-3 gap-8">
               <PrincipleCard 
                 icon={<Lightbulb className="w-6 h-6" />}
-                title={t('b2b.principles.p1.title', "Illuminate, don't prescribe")}
-                description={t('b2b.principles.p1.desc', 'We clarify options without recommending one')}
+                title={t('b2b.principles.p1.title')}
+                description={t('b2b.principles.p1.desc')}
               />
               <PrincipleCard 
                 icon={<Scale className="w-6 h-6" />}
-                title={t('b2b.principles.p2.title', 'Simulation ≠ Prediction')}
-                description={t('b2b.principles.p2.desc', 'We explore scenarios, not predict outcomes')}
+                title={t('b2b.principles.p2.title')}
+                description={t('b2b.principles.p2.desc')}
               />
               <PrincipleCard 
                 icon={<Shield className="w-6 h-6" />}
-                title={t('b2b.principles.p3.title', "Empower, don't delegate")}
-                description={t('b2b.principles.p3.desc', 'Responsibility always remains with the decision-maker')}
+                title={t('b2b.principles.p3.title')}
+                description={t('b2b.principles.p3.desc')}
               />
             </div>
           </div>
@@ -209,28 +206,28 @@ export default function B2BSolutions() {
       <section className="py-16 bg-gradient-to-br from-primary/5 to-amber-500/5 border-t">
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-display text-2xl font-bold mb-4">
-            {t('b2b.cta.ready', 'Ready to structure your institutional decisions?')}
+            {t('b2b.cta.ready')}
           </h2>
           <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-            {t('b2b.cta.desc', 'Explore our dedicated tools or get in touch for customized solutions.')}
+            {t('b2b.cta.desc')}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/institutions">
               <Button size="lg" className="gap-2">
                 <Building2 className="w-4 h-4" />
-                {t('b2b.cta.institutions', 'Explore Institutions')}
+                {t('b2b.cta.institutions')}
               </Button>
             </Link>
             <Link to="/ovi">
               <Button size="lg" variant="outline" className="gap-2">
                 <Eye className="w-4 h-4" />
-                {t('b2b.cta.ovi', 'Explore OVI')}
+                {t('b2b.cta.ovi')}
               </Button>
             </Link>
             <Link to="/partners">
               <Button size="lg" variant="outline" className="gap-2 border-amber-500/30 hover:bg-amber-500/10">
                 <Users className="w-4 h-4" />
-                {t('b2b.cta.partners', 'Programme Partenaires')}
+                {t('b2b.cta.partners')}
               </Button>
             </Link>
           </div>
