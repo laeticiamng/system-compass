@@ -1,12 +1,10 @@
 import { useEffect, useMemo, useState, useSyncExternalStore } from 'react';
-import { supabase } from '@/integrations/supabase/client';
 import type { Country } from './types';
 import { countriesSeed } from './countries-seed';
 
 const listeners = new Set<() => void>();
 let countriesCache: Country[] = countriesSeed;
 let hasLoaded = false;
-let loadingPromise: Promise<void> | null = null;
 
 function notifyListeners() {
   listeners.forEach(listener => listener());
@@ -22,42 +20,12 @@ export function subscribeCountries(listener: () => void): () => void {
 }
 
 export async function loadCountries(): Promise<void> {
-  if (loadingPromise) {
-    return loadingPromise;
-  }
-
-  loadingPromise = (async () => {
-    const { data, error } = await supabase
-      .from('countries')
-      .select('country_id, data, tags, version')
-      .order('country_id', { ascending: true });
-
-    if (error) {
-      throw error;
-    }
-
-    if (data && data.length > 0) {
-      countriesCache = data
-        .map(row => {
-          const payload = (row.data || {}) as Country;
-          return {
-            ...payload,
-            id: row.country_id || payload.id,
-            tags: row.tags || payload.tags,
-            version: row.version ?? payload.version,
-          };
-        })
-        .filter(country => country.id);
-    }
-
+  // Use local seed data - no database table exists for countries
+  // The countries are defined in countries-seed.ts
+  if (!hasLoaded) {
+    countriesCache = countriesSeed;
     hasLoaded = true;
     notifyListeners();
-  })();
-
-  try {
-    await loadingPromise;
-  } finally {
-    loadingPromise = null;
   }
 }
 
