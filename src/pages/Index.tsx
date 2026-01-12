@@ -39,151 +39,152 @@ export default function Index() {
   }, [trackHomeOpened]);
 
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen pt-12 sm:pt-14 md:pt-16">
       {/* Hero Section - SINGLE CLEAR PATH */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
-        <div className="absolute top-20 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-slow" />
-        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-pyramid-competence/10 rounded-full blur-3xl" />
+        <div className="absolute top-20 left-1/4 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-slow" />
+        <div className="absolute bottom-0 right-1/4 w-32 sm:w-48 md:w-64 h-32 sm:h-48 md:h-64 bg-pyramid-competence/10 rounded-full blur-3xl" />
         
-        <div className="container mx-auto px-4 py-16 md:py-24 relative">
+        <div className="container mx-auto px-3 sm:px-4 py-8 sm:py-12 md:py-24 relative">
           <div className="max-w-4xl mx-auto text-center">
             {/* Creator badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 text-amber-500 text-xs md:text-sm font-medium mb-4">
-              <Heart className="w-3 h-3 md:w-4 md:h-4" />
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-amber-500/10 text-amber-500 text-[10px] sm:text-xs md:text-sm font-medium mb-3 sm:mb-4">
+              <Heart className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" />
               <span className="line-clamp-1">{t('hero.madeBy', "Créé par quelqu'un qui a perdu énormément de temps dans sa propre vie")}</span>
             </div>
 
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs md:text-sm font-medium mb-6 md:mb-8">
-              <Compass className="w-3 h-3 md:w-4 md:h-4" />
-              {t('hero.badge')}
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-primary/10 text-primary text-[10px] sm:text-xs md:text-sm font-medium mb-4 sm:mb-6 md:mb-8">
+              <Compass className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" />
+              <span className="truncate">{t('hero.badge')}</span>
             </div>
             
-            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 md:mb-6 leading-tight">
+            <h1 className="font-display text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight px-2">
               {t('hero.title1')}{' '}
               <span className="gold-text">{t('hero.titleHighlight')}</span>
               {t('hero.title2') && (
                 <>
-                  <br />
+                  <br className="hidden sm:block" />
+                  <span className="sm:hidden"> </span>
                   {t('hero.title2')}
                 </>
               )}
             </h1>
 
             {/* Positioning tagline */}
-            <p className="text-sm md:text-base font-medium text-primary/80 mb-3">
+            <p className="text-xs sm:text-sm md:text-base font-medium text-primary/80 mb-2 sm:mb-3 px-4">
               {t('common.positioningLine', 'Outil d\'analyse et de simulation. Tu décides, nous éclairons.')}
             </p>
             
-            <p className="text-base md:text-xl text-muted-foreground max-w-3xl mx-auto mb-6 md:mb-8 text-balance px-4">
+            <p className="text-sm sm:text-base md:text-xl text-muted-foreground max-w-3xl mx-auto mb-4 sm:mb-6 md:mb-8 text-balance px-4">
               {t('hero.subtitle')}
             </p>
 
             {/* SINGLE DOMINANT CTA */}
-            <div className="max-w-md mx-auto px-4 mb-4">
+            <div className="max-w-md mx-auto px-3 sm:px-4 mb-3 sm:mb-4">
               <Button
                 size="lg"
                 onClick={() => { trackExitKeysClicked(); navigate('/exit-keys'); }}
-                className="w-full h-14 md:h-16 text-base md:text-lg bg-primary text-primary-foreground hover:bg-primary/90 gap-3 glow-gold"
+                className="w-full h-12 sm:h-14 md:h-16 text-sm sm:text-base md:text-lg bg-primary text-primary-foreground hover:bg-primary/90 gap-2 sm:gap-3 glow-gold touch-manipulation"
               >
-                <Route className="w-5 h-5 md:w-6 md:h-6" />
-                {t('hero.discoverProfile')}
-                <ArrowRight className="w-5 h-5" />
+                <Route className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+                <span className="truncate">{t('hero.discoverProfile')}</span>
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
               </Button>
             </div>
 
             {/* PREVENTION FILTER CTA - Prominent secondary */}
-            <div className="max-w-md mx-auto px-4 mb-4">
+            <div className="max-w-md mx-auto px-3 sm:px-4 mb-3 sm:mb-4">
               <Button
                 variant="outline"
                 size="lg"
                 onClick={() => { trackFilterClicked(); navigate('/prevention-filter'); }}
-                className="w-full h-12 text-base gap-2 border-amber-500/30 bg-amber-500/10 text-amber-600 hover:bg-amber-500/20 hover:text-amber-700"
+                className="w-full h-10 sm:h-12 text-sm sm:text-base gap-2 border-amber-500/30 bg-amber-500/10 text-amber-600 hover:bg-amber-500/20 hover:text-amber-700 touch-manipulation"
               >
-                <Shield className="w-5 h-5" />
-                {t('hero.preventionFilter', 'Passer une décision au filtre')}
-                <ArrowRight className="w-4 h-4" />
+                <Shield className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+                <span className="truncate">{t('hero.preventionFilter', 'Passer une décision au filtre')}</span>
+                <ArrowRight className="w-4 h-4 flex-shrink-0" />
               </Button>
             </div>
 
             {/* QUICK TEST CTA */}
-            <div className="max-w-md mx-auto px-4 mb-8">
+            <div className="max-w-md mx-auto px-3 sm:px-4 mb-6 sm:mb-8">
               <Button
                 variant="ghost"
                 size="lg"
                 onClick={() => navigate('/quick-test')}
-                className="w-full h-10 text-sm gap-2 text-primary hover:bg-primary/10"
+                className="w-full h-9 sm:h-10 text-xs sm:text-sm gap-2 text-primary hover:bg-primary/10 touch-manipulation"
               >
-                <Zap className="w-4 h-4" />
+                <Zap className="w-3 h-3 sm:w-4 sm:h-4" />
                 {t('hero.quickTest', 'Test rapide (60 sec)')}
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
               </Button>
             </div>
 
             {/* 3 STEP MINI EXPLANATION - Factual */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto px-4 mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-3xl mx-auto px-3 sm:px-4 mb-4 sm:mb-6">
               <StepIndicator 
                 number={1}
-                icon={<Settings className="w-4 h-4" />}
+                icon={<Settings className="w-3 h-3 sm:w-4 sm:h-4" />}
                 title={t('steps.profile', 'Ton profil')}
                 description={t('steps.profileDesc', 'Situation, nationalité, ressources')}
               />
               <StepIndicator 
                 number={2}
-                icon={<BarChart3 className="w-4 h-4" />}
+                icon={<BarChart3 className="w-3 h-3 sm:w-4 sm:h-4" />}
                 title={t('steps.analysis', 'Analyse')}
                 description={t('steps.analysisDesc', 'Systèmes, contraintes, options')}
               />
               <StepIndicator 
                 number={3}
-                icon={<Key className="w-4 h-4" />}
+                icon={<Key className="w-3 h-3 sm:w-4 sm:h-4" />}
                 title={t('steps.consequences', 'Conséquences')}
                 description={t('steps.consequencesDesc', 'Risques, coûts, conditions')}
               />
             </div>
 
             {/* RESPONSIBILITY STATEMENT - Clear and prominent */}
-            <div className="max-w-xl mx-auto px-4 mb-6">
-              <p className="text-sm text-center text-muted-foreground bg-muted/30 rounded-lg px-4 py-2 border border-border/30">
+            <div className="max-w-xl mx-auto px-3 sm:px-4 mb-4 sm:mb-6">
+              <p className="text-xs sm:text-sm text-center text-muted-foreground bg-muted/30 rounded-lg px-3 sm:px-4 py-2 border border-border/30">
                 <strong className="text-foreground">{t('responsibility.title', 'Tu restes responsable de tes décisions.')}</strong>{' '}
-                {t('responsibility.description', "Cet outil t'aide à comprendre le système — pas à décider à ta place.")}
+                <span className="hidden sm:inline">{t('responsibility.description', "Cet outil t'aide à comprendre le système — pas à décider à ta place.")}</span>
               </p>
             </div>
 
             {/* For everyone badge */}
-            <div className="flex flex-wrap justify-center gap-2 mb-6 px-4">
-              <span className="px-2 py-1 rounded-full bg-muted text-xs">🥖 {t('profiles.baker', 'Boulanger')}</span>
-              <span className="px-2 py-1 rounded-full bg-muted text-xs">🏭 {t('profiles.worker', 'Ouvrier')}</span>
-              <span className="px-2 py-1 rounded-full bg-muted text-xs">🎓 {t('profiles.student', 'Étudiant')}</span>
-              <span className="px-2 py-1 rounded-full bg-muted text-xs">🌴 {t('profiles.retiree', 'Retraité')}</span>
-              <span className="px-2 py-1 rounded-full bg-muted text-xs">🚀 {t('profiles.entrepreneur', 'Entrepreneur')}</span>
-              <span className="px-2 py-1 rounded-full bg-muted text-xs">👨‍👩‍👧 {t('profiles.diaspora', 'Parent diaspora')}</span>
+            <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2 mb-4 sm:mb-6 px-3 sm:px-4">
+              <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full bg-muted text-[10px] sm:text-xs">🥖 {t('profiles.baker', 'Boulanger')}</span>
+              <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full bg-muted text-[10px] sm:text-xs">🏭 {t('profiles.worker', 'Ouvrier')}</span>
+              <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full bg-muted text-[10px] sm:text-xs">🎓 {t('profiles.student', 'Étudiant')}</span>
+              <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full bg-muted text-[10px] sm:text-xs">🌴 {t('profiles.retiree', 'Retraité')}</span>
+              <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full bg-muted text-[10px] sm:text-xs">🚀 {t('profiles.entrepreneur', 'Entrepreneur')}</span>
+              <span className="hidden sm:inline px-2 py-1 rounded-full bg-muted text-xs">👨‍👩‍👧 {t('profiles.diaspora', 'Parent diaspora')}</span>
             </div>
 
             {/* Secondary CTAs */}
-            <div className="flex flex-wrap justify-center gap-3 px-4">
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-2 sm:gap-3 px-3 sm:px-4">
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => navigate('/exit-keys/catalog')}
-                className="text-muted-foreground hover:text-foreground gap-2"
+                className="text-muted-foreground hover:text-foreground gap-2 text-xs sm:text-sm h-9 touch-manipulation"
               >
-                <BookOpen className="w-4 h-4" />
+                <BookOpen className="w-3 h-3 sm:w-4 sm:h-4" />
                 {t('cta.viewAllKeys', 'Voir toutes les clés de sortie')}
               </Button>
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => navigate('/life-game')}
-                className="text-muted-foreground hover:text-foreground gap-2"
+                className="text-muted-foreground hover:text-foreground gap-2 text-xs sm:text-sm h-9 touch-manipulation"
               >
-                <Gamepad2 className="w-4 h-4" />
+                <Gamepad2 className="w-3 h-3 sm:w-4 sm:h-4" />
                 {t('cta.educationalMode', 'Mode éducatif (personnage fictif)')}
               </Button>
             </div>
 
             {/* Micro-disclaimer */}
-            <p className="text-xs text-muted-foreground/70 mt-6 max-w-lg mx-auto">
+            <p className="text-[10px] sm:text-xs text-muted-foreground/70 mt-4 sm:mt-6 max-w-lg mx-auto px-4">
               {t('common.disclaimer', 'Pas de conseil juridique, financier ou médical. Tu restes responsable de tes décisions.')}
             </p>
           </div>

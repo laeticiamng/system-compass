@@ -108,19 +108,19 @@ export function Header() {
           </div>
         </div>
       )}
-      <div className="glass-card border-b border-border/50">
-        <div className="container mx-auto px-3 md:px-4 h-14 md:h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 flex-shrink-0">
-          <div className="p-1.5 md:p-2 rounded-lg bg-primary/10">
+      <div className="glass-card border-b border-border/50 safe-area-inset">
+        <div className="container mx-auto px-2 sm:px-3 md:px-4 h-12 sm:h-14 md:h-16 flex items-center justify-between gap-1 sm:gap-2">
+        <Link to="/" className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0 min-w-0">
+          <div className="p-1 sm:p-1.5 md:p-2 rounded-lg bg-primary/10 flex-shrink-0">
             <Compass className="w-4 h-4 md:w-5 md:h-5 text-primary" />
           </div>
-          <span className="font-display font-bold text-base md:text-lg">
-            <span className="hidden sm:inline">Pyramid </span>
+          <span className="font-display font-bold text-sm sm:text-base md:text-lg truncate">
+            <span className="hidden xs:inline">Pyramid </span>
             <span className="gold-text">Compass</span>
           </span>
         </Link>
 
-        <div className="flex items-center gap-1 md:gap-2">
+        <div className="flex items-center gap-0.5 sm:gap-1 md:gap-2 min-w-0 flex-1 justify-end">
           {/* Desktop Nav - hide on smaller screens */}
           <nav className="hidden xl:flex items-center gap-0.5">
             {navItems.map((item) => {
@@ -173,9 +173,11 @@ export function Header() {
             )}
           </nav>
 
-          <GlobalSearch />
+          <div className="hidden sm:block">
+            <GlobalSearch />
+          </div>
           {user && <NotificationBell />}
-          {user && <UserHistoryPanel />}
+          {user && <span className="hidden sm:inline"><UserHistoryPanel /></span>}
           <LanguageSwitcher />
 
           {/* Auth button - Desktop */}
@@ -210,11 +212,11 @@ export function Header() {
           {/* Mobile Menu */}
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="xl:hidden h-8 w-8">
+              <Button variant="ghost" size="icon" className="xl:hidden h-9 w-9 sm:h-8 sm:w-8 flex-shrink-0">
                 <Menu className="w-5 h-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-72 sm:w-80">
+            <SheetContent side="right" className="w-[85vw] max-w-80 p-4 sm:p-6 overflow-y-auto">
               <SheetHeader>
                 <SheetTitle className="flex items-center gap-2">
                   <Compass className="w-5 h-5 text-primary" />
