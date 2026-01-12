@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -13,8 +13,15 @@ import {
   Unlock, 
   AlertTriangle,
   Eye,
-  Trash2
+  Trash2,
+  Loader2,
+  Download,
+  Upload
 } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
+import { useAuth } from '@/hooks/useAuth';
+import { Json } from '@/integrations/supabase/types';
+import { toast } from 'sonner';
 
 interface Stakeholder {
   id: string;
@@ -54,9 +61,14 @@ const RELIABILITY_CONFIG = {
 
 export function GovernanceMap({ countryId, countryName, onExport }: GovernanceMapProps) {
   const { t } = useTranslation();
+  const { user } = useAuth();
   const [stakeholders, setStakeholders] = useState<Stakeholder[]>([]);
   const [showAddForm, setShowAddForm] = useState(false);
   const [newStakeholder, setNewStakeholder] = useState<Partial<Stakeholder>>({});
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const hasLoadedRef = useRef(false);
 
   const addStakeholder = () => {
     if (newStakeholder.name && newStakeholder.role) {
@@ -77,6 +89,154 @@ export function GovernanceMap({ countryId, countryName, onExport }: GovernanceMa
   const deleteStakeholder = (id: string) => {
     setStakeholders(prev => prev.filter(s => s.id !== id));
   };
+
+  const normalizeStakeholders = (payload: Json | null): Stakeholder[] => {
+    if (!payload || !Array.isArray(payload)) return [];
+
+    return payload
+      .map((item) => {
+        if (typeof item !== 'object' || item === null) return null;
+        const obj = item as Record<string, unknown>;
+        const levelValue = typeof obj.level === 'string' ? obj.level : 'official';
+        const powerValue = typeof obj.power === 'string' ? obj.power : 'advise';
+        const reliabilityValue = typeof obj.reliability === 'string' ? obj.reliability : 'unknown';
+
+        return {
+          id: String(obj.id || crypto.randomUUID()),
+          name: String(obj.name || ''),
+          role: String(obj.role || ''),
+          level: (['official', 'influential', 'blocker'] as Stakeholder['level'][]).includes(
+            levelValue as Stakeholder['level']
+          )
+            ? (levelValue as Stakeholder['level'])
+            : 'official',
+          power: (['sign', 'block', 'access', 'advise'] as Stakeholder['power'][]).includes(
+            powerValue as Stakeholder['power']
+          )
+            ? (powerValue as Stakeholder['power'])
+            : 'advise',
+          reliability: (['unknown', 'low', 'medium', 'high'] as Stakeholder['reliability'][]).includes(
+            reliabilityValue as Stakeholder['reliability']
+          )
+            ? (reliabilityValue as Stakeholder['reliability'])
+            : 'unknown',
+          notes: String(obj.notes || ''),
+        } as Stakeholder;
+      })
+      .filter((item): item is Stakeholder => !!item && Boolean(item.name) && Boolean(item.role));
+  };
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const loadStakeholders = async () => {
+      hasLoadedRef.current = false;
+      if (!user) {
+        setIsLoading(false);
+        return;
+      }
+
+      setIsLoading(true);
+      const { data, error } = await supabase
+        .from('governance_stakeholders')
+        .select('payload')
+        .eq('user_id', user.id)
+        .eq('country_id', countryId)
+        .maybeSingle();
+
+      if (!isMounted) return;
+
+      if (error) {
+        toast.error(t('governance.map.loadError', 'Erreur lors du chargement'));
+      } else if (data?.payload) {
+        setStakeholders(normalizeStakeholders(data.payload));
+      } else {
+        setStakeholders([]);
+      }
+
+      setIsLoading(false);
+      hasLoadedRef.current = true;
+    };
+
+    loadStakeholders();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [countryId, t, user]);
+
+  useEffect(() => {
+    if (!user || !hasLoadedRef.current) return;
+
+    const saveTimeout = window.setTimeout(async () => {
+      setIsSaving(true);
+      if (stakeholders.length === 0) {
+        await supabase
+          .from('governance_stakeholders')
+          .delete()
+          .eq('user_id', user.id)
+          .eq('country_id', countryId);
+      } else {
+        await supabase
+          .from('governance_stakeholders')
+          .upsert(
+            {
+              user_id: user.id,
+              country_id: countryId,
+              payload: stakeholders,
+            },
+            { onConflict: 'user_id,country_id' }
+          );
+      }
+      setIsSaving(false);
+    }, 800);
+
+    return () => window.clearTimeout(saveTimeout);
+  }, [countryId, stakeholders, user]);
+
+  const handleExport = () => {
+    if (stakeholders.length === 0) return;
+    const payload = JSON.stringify(stakeholders, null, 2);
+    const blob = new Blob([payload], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `governance-map-${countryName || countryId}.json`;
+    link.click();
+    URL.revokeObjectURL(url);
+    onExport?.(stakeholders);
+  };
+
+  const handleImportClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleImportFile = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    try {
+      const text = await file.text();
+      const parsed = JSON.parse(text) as Json;
+      const imported = normalizeStakeholders(parsed);
+      if (imported.length === 0) {
+        toast.error(t('governance.map.importEmpty', 'Aucun acteur valide dans ce fichier'));
+        return;
+      }
+      setStakeholders(imported);
+      setShowAddForm(false);
+      toast.success(t('governance.map.importSuccess', 'Import réussi'));
+    } catch {
+      toast.error(t('governance.map.importError', 'Fichier invalide'));
+    } finally {
+      event.target.value = '';
+    }
+  };
+
+  const sortedStakeholders = useMemo(
+    () => stakeholders.slice().sort((a, b) => a.name.localeCompare(b.name)),
+    [stakeholders]
+  );
 
   // Red flags analysis
   const redFlags = [];
@@ -99,15 +259,40 @@ export function GovernanceMap({ countryId, countryName, onExport }: GovernanceMa
               <Plus className="w-4 h-4 mr-1" />
               Ajouter
             </Button>
+            <Button variant="outline" size="sm" onClick={handleImportClick}>
+              <Upload className="w-4 h-4 mr-1" />
+              Importer
+            </Button>
             {stakeholders.length > 0 && (
-              <Button size="sm" onClick={() => onExport?.(stakeholders)}>
+              <Button size="sm" onClick={handleExport}>
+                <Download className="w-4 h-4 mr-1" />
                 Exporter
               </Button>
             )}
           </div>
         </div>
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="application/json"
+          className="hidden"
+          onChange={handleImportFile}
+        />
       </CardHeader>
       <CardContent className="space-y-4">
+        {isLoading && (
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <Loader2 className="w-4 h-4 animate-spin" />
+            <span>{t('governance.map.loading', 'Chargement...')}</span>
+          </div>
+        )}
+        {!isLoading && isSaving && (
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <Loader2 className="w-4 h-4 animate-spin" />
+            <span>{t('governance.map.saving', 'Sauvegarde...')}</span>
+          </div>
+        )}
+
         {/* Red Flags */}
         {redFlags.length > 0 && (
           <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
@@ -157,7 +342,7 @@ export function GovernanceMap({ countryId, countryName, onExport }: GovernanceMa
 
         {/* Stakeholders List */}
         <div className="space-y-2">
-          {stakeholders.map(s => (
+          {sortedStakeholders.map(s => (
             <div key={s.id} className="p-3 bg-muted/50 rounded-lg flex items-center justify-between">
               <div className="flex-1">
                 <div className="flex items-center gap-2">

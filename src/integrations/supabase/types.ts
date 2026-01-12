@@ -431,6 +431,30 @@ export type Database = {
         }
         Relationships: []
       }
+      governance_stakeholders: {
+        Row: {
+          country_id: string
+          created_at: string
+          payload: Json
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          country_id: string
+          created_at?: string
+          payload?: Json
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          country_id?: string
+          created_at?: string
+          payload?: Json
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       country_intelligence: {
         Row: {
           adaptive_behaviors: Json
