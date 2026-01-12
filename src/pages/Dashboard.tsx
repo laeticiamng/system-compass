@@ -5,7 +5,7 @@ import { useDashboardProgress } from '@/hooks/useDashboardProgress';
 import { useSavedComparisons } from '@/hooks/useSavedComparisons';
 import { useSavedGames } from '@/hooks/useSavedGames';
 import { useGameStatistics } from '@/hooks/useGameStatistics';
-import { useSubscription, SUBSCRIPTION_TIERS } from '@/hooks/useSubscription';
+import { useSubscription } from '@/hooks/useSubscription';
 import { EXIT_KEYS } from '@/lib/exit-keys-engine';
 import { LIFE_MOTOR_PROFILES } from '@/lib/types';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -22,12 +22,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ProgressStats } from '@/components/dashboard/ProgressStats';
 import { DeadlineCalendar } from '@/components/dashboard/DeadlineCalendar';
 import { AchievementsPanel } from '@/components/game/AchievementsPanel';
-import { 
-  CheckCircle2, 
-  Circle, 
-  Clock, 
-  Target, 
-  TrendingUp, 
+import {
+  CheckCircle2,
+  Circle,
+  Clock,
+  Target,
+  TrendingUp,
   AlertTriangle,
   Key,
   ArrowRight,
@@ -51,19 +51,16 @@ import {
   Play,
   Trash2,
   Zap,
-  CreditCard,
-  Crown,
-  Sparkles,
-  Settings,
   Eye,
   Lock,
   Building2,
-  Layers
+  Layers,
 } from 'lucide-react';
 import { AiHelpButton } from '@/components/ai/AiHelpButton';
 import { AiAction, AiContext } from '@/components/ai/AiSidePanel';
 import { AiUsageStats } from '@/components/dashboard/AiUsageStats';
 import { EmptyDashboardState } from '@/components/dashboard/EmptyDashboardState';
+import { SubscriptionStatus } from '@/components/SubscriptionStatus';
 import { toast } from 'sonner';
 
 // Helper functions
@@ -118,7 +115,7 @@ export default function Dashboard() {
   const { comparisons, loading: comparisonsLoading, deleteComparison } = useSavedComparisons();
   const { savedGames, loading: gamesLoading, fetchSavedGames, deleteGame } = useSavedGames();
   const { stats, loading: statsLoading, riskSuccessRate, topActions } = useGameStatistics();
-  const { tier, subscribed, openCustomerPortal, loading: subscriptionLoading } = useSubscription();
+  const { tier } = useSubscription();
 
   const [editingNote, setEditingNote] = useState<number | null>(null);
   const [noteText, setNoteText] = useState('');
@@ -371,53 +368,7 @@ export default function Dashboard() {
         )}
 
         {/* Subscription Management */}
-        {isLoggedIn && (
-          <Card className="mb-6 border-purple-500/20">
-            <CardContent className="p-6">
-              <div className="flex items-center gap-4">
-                <div className={`p-3 rounded-full ${tier === 'pro' ? 'bg-purple-500/10' : tier === 'premium' ? 'bg-amber-500/10' : 'bg-muted'}`}>
-                  {tier === 'pro' ? (
-                    <Crown className="w-6 h-6 text-purple-500" />
-                  ) : tier === 'premium' ? (
-                    <Sparkles className="w-6 h-6 text-amber-500" />
-                  ) : (
-                    <CreditCard className="w-6 h-6 text-muted-foreground" />
-                  )}
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-semibold text-lg">
-                    {t('dashboard.subscriptionTitle', 'Mon abonnement')}: {SUBSCRIPTION_TIERS[tier].name}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {subscribed 
-                      ? t('dashboard.subscriptionActive', 'Votre abonnement est actif')
-                      : t('dashboard.subscriptionFree', 'Passez à Premium pour débloquer plus de fonctionnalités')}
-                  </p>
-                </div>
-                <div className="flex gap-2">
-                  {subscribed ? (
-                    <Button 
-                      variant="outline" 
-                      size="sm"
-                      onClick={() => openCustomerPortal()}
-                      disabled={subscriptionLoading}
-                    >
-                      <Settings className="w-4 h-4 mr-2" />
-                      {t('dashboard.manageSubscription', 'Gérer mon abonnement')}
-                    </Button>
-                  ) : (
-                    <Link to="/pricing">
-                      <Button size="sm">
-                        <Sparkles className="w-4 h-4 mr-2" />
-                        {t('dashboard.upgradePlan', 'Passer à Premium')}
-                      </Button>
-                    </Link>
-                  )}
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        )}
+        <SubscriptionStatus isLoggedIn={isLoggedIn} />
 
         {/* AI Usage Stats - Show for subscribed users */}
         {isLoggedIn && (tier === 'premium' || tier === 'pro') && (

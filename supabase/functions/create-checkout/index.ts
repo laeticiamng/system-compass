@@ -7,18 +7,6 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-// Stripe product/price configuration
-const SUBSCRIPTION_TIERS = {
-  premium: {
-    priceId: "price_1SnecEDFa5Y9NR1IjYEILvEh",
-    productId: "prod_TlAy1Ohjpt09BM",
-  },
-  pro: {
-    priceId: "price_1SnecYDFa5Y9NR1Isyw5mEyQ",
-    productId: "prod_TlAyzPHIXdTjt7",
-  },
-};
-
 const logStep = (step: string, details?: unknown) => {
   const detailsStr = details ? ` - ${JSON.stringify(details)}` : '';
   console.log(`[CREATE-CHECKOUT] ${step}${detailsStr}`);
@@ -38,7 +26,7 @@ serve(async (req) => {
     logStep("Function started");
 
     const { tier } = await req.json();
-    if (!tier || !SUBSCRIPTION_TIERS[tier as keyof typeof SUBSCRIPTION_TIERS]) {
+    if (!tier || (tier !== "premium" && tier !== "pro")) {
       throw new Error(`Invalid tier: ${tier}. Valid tiers are: premium, pro`);
     }
 
@@ -61,7 +49,16 @@ serve(async (req) => {
       logStep("Found existing customer", { customerId });
     }
 
-    const tierConfig = SUBSCRIPTION_TIERS[tier as keyof typeof SUBSCRIPTION_TIERS];
+    const { data: planData, error: planError } = await supabaseClient
+      .from("subscription_plans")
+      .select("stripe_price_id")
+      .eq("tier", tier)
+      .eq("active", true)
+      .maybeSingle();
+
+    if (planError || !planData?.stripe_price_id) {
+      throw new Error(`Subscription plan not found for tier: ${tier}`);
+    }
 
     // Create checkout session
     const session = await stripe.checkout.sessions.create({
@@ -69,7 +66,7 @@ serve(async (req) => {
       customer_email: customerId ? undefined : user.email,
       line_items: [
         {
-          price: tierConfig.priceId,
+          price: planData.stripe_price_id,
           quantity: 1,
         },
       ],
