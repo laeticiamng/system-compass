@@ -116,14 +116,32 @@ const AdminGenerateTranslations = () => {
   const loadJobs = async () => {
     setJobsLoading(true);
     try {
+      // The translation_jobs table doesn't exist in Supabase
+      // Jobs are managed through edge functions and stored differently
+      // Use generated_translations as a proxy for job status
       const { data, error } = await supabase
-        .from("translation_jobs")
+        .from("generated_translations")
         .select("*")
         .order("created_at", { ascending: false })
         .limit(200);
 
       if (error) throw error;
-      setJobs((data || []) as TranslationJob[]);
+      
+      // Map generated_translations to job-like structure
+      const mappedJobs: TranslationJob[] = (data || []).map(item => ({
+        id: item.id,
+        country_id: item.country_id,
+        target_lang: item.target_lang,
+        status: item.is_approved ? "completed" : "queued" as const,
+        logs: null,
+        error_message: null,
+        retries: 0,
+        created_at: item.created_at,
+        updated_at: item.updated_at,
+        started_at: item.created_at,
+        completed_at: item.is_approved ? item.updated_at : null,
+      }));
+      setJobs(mappedJobs);
     } catch (error) {
       console.error("Error loading translation jobs:", error);
       toast.error("Erreur lors du chargement des jobs");

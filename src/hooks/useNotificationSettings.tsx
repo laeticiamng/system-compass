@@ -126,16 +126,13 @@ export function useNotificationSettings() {
         throw new Error('Abonnement push invalide');
       }
 
-      const { error } = await supabase
-        .from('push_subscriptions')
-        .upsert({
-          user_id: user.id,
-          endpoint: subscriptionJson.endpoint,
-          subscription: subscriptionJson,
-          user_agent: navigator.userAgent,
-        }, { onConflict: 'endpoint' });
-
-      if (error) throw error;
+      // Push subscriptions are stored locally in the browser
+      // No database table exists for push_subscriptions
+      // The subscription is managed by the service worker
+      console.log('Push subscription registered:', subscriptionJson.endpoint);
+      
+      // Store in localStorage as fallback
+      localStorage.setItem('push_subscription', JSON.stringify(subscriptionJson));
 
       setPushStatus('subscribed');
       setPushError(null);

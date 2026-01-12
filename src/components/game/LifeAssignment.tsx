@@ -13,7 +13,7 @@ import {
   ResourceType,
 } from '@/lib/game-data';
 import { PyramidType, PYRAMID_TYPE_INFO, type Country } from '@/lib/types';
-import { useCountries } from '@/lib/countries-data';
+import { useCountries, getCountriesSnapshot } from '@/lib/countries-data';
 import { usePyramidTranslations } from '@/hooks/usePyramidTranslations';
 import { PROFESSIONS, EDUCATION_LEVELS, type EducationLevel, type Profession } from '@/lib/profession-data';
 import { Shuffle, Dices, Flag, Briefcase, GraduationCap, Heart, Target, AlertTriangle, Play, RotateCcw, Info } from 'lucide-react';
@@ -200,7 +200,7 @@ function profileToCharacter(profile: RandomProfile, id: string, name: string): C
   const resources = createDefaultResources();
   
   // Country influence
-  const country = countries.find(c => c.id === profile.countryId);
+  const country = getCountriesSnapshot().find(c => c.id === profile.countryId);
   if (country) {
     if (country.pyramidType === 'GROWTH_RISK') resources.money += 1;
     if (country.pyramidType === 'STABILITY_REDIS') resources.health += 1;
