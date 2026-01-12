@@ -6,6 +6,8 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
+const MAX_CONCURRENT_TASKS = 3;
+
 interface MusicRequest {
   countryId: string;
   pyramidType: string;
@@ -104,10 +106,12 @@ serve(async (req) => {
 
     console.log(`Generating music for ${countryId} (${pyramidType}), mood: ${mood}`);
 
+    const supabase = SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY
+      ? createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY)
+      : null;
+
     // Check cache first
-    if (SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY) {
-      const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
-      
+    if (supabase) {
       const { data: cached } = await supabase
         .from('music_cache')
         .select('audio_url, stream_url, task_id')
@@ -132,6 +136,24 @@ serve(async (req) => {
       }
     }
 
+    let existingTask: { id: string; status: string } | null = null;
+
+    if (supabase) {
+      const { data: existingTaskData } = await supabase
+        .from('music_generation_tasks')
+        .select('id, status')
+        .eq('country_id', countryId)
+        .eq('pyramid_type', pyramidType)
+        .eq('mood', mood)
+        .in('status', ['queued', 'in_progress'])
+        .order('updated_at', { ascending: false })
+        .maybeSingle();
+
+      if (existingTaskData) {
+        existingTask = existingTaskData;
+      }
+    }
+
     // Build the music prompt
     const pyramidStyle = PYRAMID_MUSIC_STYLES[pyramidType] || PYRAMID_MUSIC_STYLES.HYBRID_TRANSITION;
     const countryStyle = COUNTRY_MUSIC_STYLES[countryId] || { 
@@ -143,6 +165,47 @@ serve(async (req) => {
     const title = `${countryId.charAt(0).toUpperCase() + countryId.slice(1)} - System Sound`;
 
     console.log(`Style: ${style}`);
+
+    let taskRowId: string | null = null;
+    let taskAttempts = 0;
+
+    if (supabase) {
+      const { data: taskRow } = await supabase
+        .from('music_generation_tasks')
+        .upsert({
+          country_id: countryId,
+          pyramid_type: pyramidType,
+          mood,
+          status: 'queued',
+          updated_at: new Date().toISOString(),
+        }, { onConflict: 'country_id,pyramid_type,mood' })
+        .select('id, attempts')
+        .single();
+
+      if (taskRow) {
+        taskRowId = taskRow.id;
+        taskAttempts = taskRow.attempts ?? 0;
+      }
+
+      const { count: activeCount } = await supabase
+        .from('music_generation_tasks')
+        .select('*', { count: 'exact', head: true })
+        .in('status', ['in_progress']);
+
+      if (existingTask?.status === 'in_progress' || (activeCount ?? 0) >= MAX_CONCURRENT_TASKS) {
+        return new Response(
+          JSON.stringify({
+            success: true,
+            status: existingTask?.status ?? 'queued',
+            taskId: existingTask?.id ?? taskRowId,
+            message: existingTask?.status === 'in_progress'
+              ? "Music generation already in progress."
+              : "Music generation queued."
+          }),
+          { status: 202, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+    }
 
     // Call Suno API
     const generateResponse = await fetch(
@@ -167,6 +230,16 @@ serve(async (req) => {
     if (!generateResponse.ok) {
       const errorText = await generateResponse.text();
       console.error("Suno API generate error:", errorText);
+      if (supabase && taskRowId) {
+        await supabase
+          .from('music_generation_tasks')
+          .update({
+            status: 'failed',
+            error_message: errorText,
+            updated_at: new Date().toISOString(),
+          })
+          .eq('id', taskRowId);
+      }
       return new Response(
         JSON.stringify({ error: "Failed to generate music", details: errorText }),
         { status: generateResponse.status, headers: { ...corsHeaders, "Content-Type": "application/json" } }
@@ -178,6 +251,16 @@ serve(async (req) => {
 
     if (generateData.code !== 200) {
       console.error("Suno API error:", generateData.msg);
+      if (supabase && taskRowId) {
+        await supabase
+          .from('music_generation_tasks')
+          .update({
+            status: 'failed',
+            error_message: generateData.msg,
+            updated_at: new Date().toISOString(),
+          })
+          .eq('id', taskRowId);
+      }
       return new Response(
         JSON.stringify({ error: "Suno API error", details: generateData.msg }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
@@ -186,6 +269,16 @@ serve(async (req) => {
 
     if (!generateData.data?.taskId) {
       console.error("No task ID in response:", generateData);
+      if (supabase && taskRowId) {
+        await supabase
+          .from('music_generation_tasks')
+          .update({
+            status: 'failed',
+            error_message: 'No task ID returned',
+            updated_at: new Date().toISOString(),
+          })
+          .eq('id', taskRowId);
+      }
       return new Response(
         JSON.stringify({ error: "No task ID returned", response: generateData }),
         { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
@@ -194,6 +287,18 @@ serve(async (req) => {
 
     const taskId = generateData.data.taskId;
     console.log(`Task ID: ${taskId}, starting polling...`);
+
+    if (supabase && taskRowId) {
+      await supabase
+        .from('music_generation_tasks')
+        .update({
+          status: 'in_progress',
+          external_task_id: taskId,
+          attempts: taskAttempts + 1,
+          updated_at: new Date().toISOString(),
+        })
+        .eq('id', taskRowId);
+    }
 
     // Poll for completion (max 90 seconds)
     let audioUrl: string | null = null;
@@ -227,10 +332,31 @@ serve(async (req) => {
           audioUrl = sunoData[0].audioUrl;
           streamUrl = sunoData[0].streamAudioUrl;
           console.log(`Audio URL found: ${audioUrl}`);
+          if (supabase && taskRowId) {
+            await supabase
+              .from('music_generation_tasks')
+              .update({
+                status: 'completed',
+                audio_url: audioUrl,
+                stream_url: streamUrl,
+                updated_at: new Date().toISOString(),
+              })
+              .eq('id', taskRowId);
+          }
           break;
         }
       } else if (status === "CREATE_TASK_FAILED" || status === "GENERATE_AUDIO_FAILED" || status === "SENSITIVE_WORD_ERROR") {
         console.error("Generation failed:", statusData.data?.errorMessage);
+        if (supabase && taskRowId) {
+          await supabase
+            .from('music_generation_tasks')
+            .update({
+              status: 'failed',
+              error_message: statusData.data?.errorMessage || status,
+              updated_at: new Date().toISOString(),
+            })
+            .eq('id', taskRowId);
+        }
         return new Response(
           JSON.stringify({ error: "Music generation failed", details: statusData.data?.errorMessage || status }),
           { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
@@ -240,6 +366,15 @@ serve(async (req) => {
 
     if (!audioUrl && !streamUrl) {
       console.log("Generation timed out");
+      if (supabase && taskRowId) {
+        await supabase
+          .from('music_generation_tasks')
+          .update({
+            status: 'in_progress',
+            updated_at: new Date().toISOString(),
+          })
+          .eq('id', taskRowId);
+      }
       return new Response(
         JSON.stringify({ 
           error: "Music generation timed out", 
@@ -251,9 +386,7 @@ serve(async (req) => {
     }
 
     // Save to cache
-    if (SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY && audioUrl) {
-      const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
-      
+    if (supabase && audioUrl) {
       await supabase.from('music_cache').upsert({
         country_id: countryId,
         pyramid_type: pyramidType,
