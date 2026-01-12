@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { 
   Bell, 
@@ -15,12 +15,21 @@ import { Badge } from '@/components/ui/badge';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
+import { supabase } from '@/integrations/supabase/client';
+import { useAuth } from '@/hooks/useAuth';
 import { DecisionNodeData } from './DecisionNode';
 import { differenceInDays, parseISO, format } from 'date-fns';
 import { fr } from 'date-fns/locale';
@@ -32,9 +41,16 @@ interface Notification {
   message: string;
   decisionId: string;
   decisionTitle: string;
+  actionUrl: string;
   date: Date;
   read: boolean;
 }
+
+type NotificationFilter = 'all' | Notification['type'];
+type ReadFilter = 'all' | 'read' | 'unread';
+type SortOrder = 'newest' | 'oldest' | 'title';
+
+const TRACEOS_NOTIFICATION_TYPES: Notification['type'][] = ['pending_reminder', 'old_pending', 'deadline_soon'];
 
 interface TraceOSNotificationsProps {
   decisions: DecisionNodeData[];
@@ -43,12 +59,17 @@ interface TraceOSNotificationsProps {
 
 export function TraceOSNotifications({ decisions, onNavigateToDecision }: TraceOSNotificationsProps) {
   const { t } = useTranslation();
+  const { user } = useAuth();
   const [notifications, setNotifications] = useState<Notification[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [notificationsEnabled, setNotificationsEnabled] = useState(() => {
     const stored = localStorage.getItem('traceos_notifications_enabled');
     return stored !== 'false';
   });
   const [isOpen, setIsOpen] = useState(false);
+  const [typeFilter, setTypeFilter] = useState<NotificationFilter>('all');
+  const [readFilter, setReadFilter] = useState<ReadFilter>('all');
+  const [sortOrder, setSortOrder] = useState<SortOrder>('newest');
 
   // Flatten decisions to get all including children
   const flattenDecisions = (nodes: DecisionNodeData[]): DecisionNodeData[] => {
@@ -62,11 +83,12 @@ export function TraceOSNotifications({ decisions, onNavigateToDecision }: TraceO
     return result;
   };
 
-  // Generate notifications based on decisions
-  useEffect(() => {
+  const buildNotificationKey = (decisionId: string, type: Notification['type']) =>
+    `traceos://decision/${decisionId}?type=${type}`;
+
+  const buildNotifications = () => {
     if (!notificationsEnabled) {
-      setNotifications([]);
-      return;
+      return [];
     }
 
     const allDecisions = flattenDecisions(decisions);
@@ -79,52 +101,181 @@ export function TraceOSNotifications({ decisions, onNavigateToDecision }: TraceO
       const decisionDate = parseISO(decision.date);
       const daysSince = differenceInDays(now, decisionDate);
 
-      // Notification for pending decisions older than 30 days
       if (daysSince > 30) {
+        const actionUrl = buildNotificationKey(decision.id, 'old_pending');
         newNotifications.push({
-          id: `old-pending-${decision.id}`,
+          id: actionUrl,
           type: 'old_pending',
           title: t('traceOS.notifications.oldPending', 'Décision en attente depuis longtemps'),
           message: t('traceOS.notifications.oldPendingMsg', 'Cette décision est en attente depuis {{days}} jours', { days: daysSince }),
           decisionId: decision.id,
           decisionTitle: decision.title,
+          actionUrl,
           date: now,
           read: false
         });
-      }
-      // Reminder for pending decisions between 7-30 days
-      else if (daysSince >= 7) {
+      } else if (daysSince >= 7) {
+        const actionUrl = buildNotificationKey(decision.id, 'pending_reminder');
         newNotifications.push({
-          id: `reminder-${decision.id}`,
+          id: actionUrl,
           type: 'pending_reminder',
           title: t('traceOS.notifications.pendingReminder', 'Rappel de décision'),
           message: t('traceOS.notifications.pendingReminderMsg', 'Décision en attente depuis {{days}} jours', { days: daysSince }),
           decisionId: decision.id,
           decisionTitle: decision.title,
+          actionUrl,
           date: now,
           read: false
         });
       }
     });
 
-    // Sort by date descending
     newNotifications.sort((a, b) => b.date.getTime() - a.date.getTime());
-    setNotifications(newNotifications);
-  }, [decisions, notificationsEnabled, t]);
+    return newNotifications;
+  };
+
+  // Generate notifications based on decisions
+  useEffect(() => {
+    let isActive = true;
+    const syncNotifications = async () => {
+      if (!notificationsEnabled) {
+        setNotifications([]);
+        setIsLoading(false);
+        return;
+      }
+
+      const derived = buildNotifications();
+      if (!user || derived.length === 0) {
+        setNotifications(derived);
+        setIsLoading(false);
+        return;
+      }
+
+      setIsLoading(true);
+      try {
+        const actionUrls = derived.map(notification => notification.actionUrl);
+        const { data: existingData, error } = await supabase
+          .from('user_notifications')
+          .select('*')
+          .eq('user_id', user.id)
+          .in('type', TRACEOS_NOTIFICATION_TYPES.map(type => `traceos_${type}`))
+          .in('action_url', actionUrls);
+
+        if (error) {
+          console.error('Error loading TraceOS notifications:', error);
+        }
+
+        const existingByAction = new Map(
+          (existingData ?? []).map(entry => [entry.action_url ?? entry.id, entry])
+        );
+
+        const missing = derived.filter(notification => !existingByAction.has(notification.actionUrl));
+        if (missing.length > 0) {
+          const { data: inserted, error: insertError } = await supabase
+            .from('user_notifications')
+            .insert(
+              missing.map(notification => ({
+                user_id: user.id,
+                type: `traceos_${notification.type}`,
+                title: notification.title,
+                message: notification.message,
+                priority: notification.type === 'old_pending' ? 'high' : 'medium',
+                action_url: notification.actionUrl,
+              }))
+            )
+            .select();
+
+          if (insertError) {
+            console.error('Error persisting TraceOS notifications:', insertError);
+          } else {
+            (inserted ?? []).forEach(entry => {
+              if (entry.action_url) {
+                existingByAction.set(entry.action_url, entry);
+              }
+            });
+          }
+        }
+
+        const merged = derived.map(notification => {
+          const persisted = existingByAction.get(notification.actionUrl);
+          return {
+            ...notification,
+            id: persisted?.id ?? notification.id,
+            read: persisted?.read ?? false,
+            date: persisted ? new Date(persisted.created_at) : notification.date,
+          };
+        });
+
+        merged.sort((a, b) => b.date.getTime() - a.date.getTime());
+        if (isActive) {
+          setNotifications(merged);
+        }
+      } finally {
+        if (isActive) {
+          setIsLoading(false);
+        }
+      }
+    };
+
+    syncNotifications();
+
+    return () => {
+      isActive = false;
+    };
+  }, [decisions, notificationsEnabled, t, user]);
 
   const unreadCount = notifications.filter(n => !n.read).length;
 
-  const handleMarkAsRead = (id: string) => {
-    setNotifications(prev => 
-      prev.map(n => n.id === id ? { ...n, read: true } : n)
-    );
+  const handleMarkAsRead = async (id: string) => {
+    if (user && !id.startsWith('traceos://')) {
+      try {
+        await supabase
+          .from('user_notifications')
+          .update({ read: true })
+          .eq('id', id)
+          .eq('user_id', user.id);
+      } catch (error) {
+        console.error('Error updating TraceOS notification:', error);
+      }
+    }
+
+    setNotifications(prev => prev.map(n => n.id === id ? { ...n, read: true } : n));
   };
 
-  const handleMarkAllRead = () => {
+  const handleMarkAllRead = async () => {
+    if (user) {
+      try {
+        const actionUrls = notifications.map(notification => notification.actionUrl);
+        if (actionUrls.length > 0) {
+          await supabase
+            .from('user_notifications')
+            .update({ read: true })
+            .eq('user_id', user.id)
+            .in('type', TRACEOS_NOTIFICATION_TYPES.map(type => `traceos_${type}`))
+            .in('action_url', actionUrls)
+            .eq('read', false);
+        }
+      } catch (error) {
+        console.error('Error updating TraceOS notifications:', error);
+      }
+    }
+
     setNotifications(prev => prev.map(n => ({ ...n, read: true })));
   };
 
-  const handleDismiss = (id: string) => {
+  const handleDismiss = async (id: string) => {
+    if (user && !id.startsWith('traceos://')) {
+      try {
+        await supabase
+          .from('user_notifications')
+          .delete()
+          .eq('id', id)
+          .eq('user_id', user.id);
+      } catch (error) {
+        console.error('Error deleting TraceOS notification:', error);
+      }
+    }
+
     setNotifications(prev => prev.filter(n => n.id !== id));
   };
 
@@ -151,6 +302,31 @@ export function TraceOSNotifications({ decisions, onNavigateToDecision }: TraceO
         return <Bell className="w-4 h-4" />;
     }
   };
+
+  const filteredNotifications = useMemo(() => {
+    let items = [...notifications];
+    if (typeFilter !== 'all') {
+      items = items.filter(notification => notification.type === typeFilter);
+    }
+    if (readFilter === 'read') {
+      items = items.filter(notification => notification.read);
+    }
+    if (readFilter === 'unread') {
+      items = items.filter(notification => !notification.read);
+    }
+
+    items.sort((a, b) => {
+      if (sortOrder === 'title') {
+        return a.decisionTitle.localeCompare(b.decisionTitle, 'fr');
+      }
+      if (sortOrder === 'oldest') {
+        return a.date.getTime() - b.date.getTime();
+      }
+      return b.date.getTime() - a.date.getTime();
+    });
+
+    return items;
+  }, [notifications, readFilter, sortOrder, typeFilter]);
 
   return (
     <Popover open={isOpen} onOpenChange={setIsOpen}>
@@ -205,6 +381,38 @@ export function TraceOSNotifications({ decisions, onNavigateToDecision }: TraceO
           )}
 
           <Separator />
+          <div className="grid grid-cols-3 gap-2">
+            <Select value={typeFilter} onValueChange={(value) => setTypeFilter(value as NotificationFilter)}>
+              <SelectTrigger className="h-8 text-xs">
+                <SelectValue placeholder={t('traceOS.notifications.filterType', 'Type')} />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">{t('traceOS.notifications.filterAll', 'Tous')}</SelectItem>
+                <SelectItem value="pending_reminder">{t('traceOS.notifications.pendingReminder', 'Rappel de décision')}</SelectItem>
+                <SelectItem value="old_pending">{t('traceOS.notifications.oldPending', 'Décision en attente depuis longtemps')}</SelectItem>
+              </SelectContent>
+            </Select>
+            <Select value={readFilter} onValueChange={(value) => setReadFilter(value as ReadFilter)}>
+              <SelectTrigger className="h-8 text-xs">
+                <SelectValue placeholder={t('traceOS.notifications.filterRead', 'Lecture')} />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">{t('traceOS.notifications.filterAll', 'Tous')}</SelectItem>
+                <SelectItem value="unread">{t('traceOS.notifications.filterUnread', 'Non lus')}</SelectItem>
+                <SelectItem value="read">{t('traceOS.notifications.filterReadLabel', 'Lus')}</SelectItem>
+              </SelectContent>
+            </Select>
+            <Select value={sortOrder} onValueChange={(value) => setSortOrder(value as SortOrder)}>
+              <SelectTrigger className="h-8 text-xs">
+                <SelectValue placeholder={t('traceOS.notifications.sort', 'Tri')} />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="newest">{t('traceOS.notifications.sortNewest', 'Récents')}</SelectItem>
+                <SelectItem value="oldest">{t('traceOS.notifications.sortOldest', 'Anciens')}</SelectItem>
+                <SelectItem value="title">{t('traceOS.notifications.sortTitle', 'Titre')}</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
 
           {/* Notifications List */}
           <ScrollArea className="h-64">
@@ -213,15 +421,27 @@ export function TraceOSNotifications({ decisions, onNavigateToDecision }: TraceO
                 <BellOff className="w-8 h-8 mx-auto mb-2 opacity-50" />
                 <p className="text-sm">{t('traceOS.notifications.disabled', 'Notifications désactivées')}</p>
               </div>
+            ) : isLoading && notifications.length === 0 ? (
+              <div className="text-center py-8 text-muted-foreground">
+                <Bell className="w-8 h-8 mx-auto mb-2 opacity-50" />
+                <p className="text-sm">{t('traceOS.notifications.loading', 'Chargement...')}</p>
+              </div>
             ) : notifications.length === 0 ? (
               <div className="text-center py-8 text-muted-foreground">
                 <Bell className="w-8 h-8 mx-auto mb-2 opacity-50" />
                 <p className="text-sm">{t('traceOS.notifications.empty', 'Aucune notification')}</p>
                 <p className="text-xs mt-1">{t('traceOS.notifications.allGood', 'Tout est à jour !')}</p>
               </div>
+            ) : filteredNotifications.length === 0 ? (
+              <div className="text-center py-8 text-muted-foreground">
+                <Bell className="w-8 h-8 mx-auto mb-2 opacity-50" />
+                <p className="text-sm">
+                  {t('traceOS.notifications.noResults', 'Aucune notification pour ce filtre')}
+                </p>
+              </div>
             ) : (
               <div className="space-y-2">
-                {notifications.map((notification) => (
+                {filteredNotifications.map((notification) => (
                   <div
                     key={notification.id}
                     className={`p-3 rounded-lg border transition-colors cursor-pointer hover:bg-muted/50 ${
@@ -252,6 +472,9 @@ export function TraceOSNotifications({ decisions, onNavigateToDecision }: TraceO
                         </div>
                         <p className="text-xs text-muted-foreground mt-0.5">
                           {notification.message}
+                        </p>
+                        <p className="text-[10px] text-muted-foreground mt-1">
+                          {format(notification.date, 'dd MMM yyyy', { locale: fr })}
                         </p>
                       </div>
                     </div>
