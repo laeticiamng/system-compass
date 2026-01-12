@@ -7,12 +7,6 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-// Map product IDs to tiers
-const PRODUCT_TO_TIER: Record<string, string> = {
-  "prod_TlAy1Ohjpt09BM": "premium",
-  "prod_TlAyzPHIXdTjt7": "pro",
-};
-
 const logStep = (step: string, details?: unknown) => {
   const detailsStr = details ? ` - ${JSON.stringify(details)}` : '';
   console.log(`[CHECK-SUBSCRIPTION] ${step}${detailsStr}`);
@@ -97,7 +91,22 @@ serve(async (req) => {
       const subscription = subscriptions.data[0];
       subscriptionEnd = new Date(subscription.current_period_end * 1000).toISOString();
       const productId = subscription.items.data[0].price.product as string;
-      tier = PRODUCT_TO_TIER[productId] || "premium";
+      const { data: planData, error: planError } = await supabaseClient
+        .from("subscription_plans")
+        .select("tier")
+        .eq("stripe_product_id", productId)
+        .eq("active", true)
+        .maybeSingle();
+
+      if (planError) {
+        logStep("Plan lookup error", { productId, error: planError.message });
+        tier = "premium";
+      } else if (planData?.tier) {
+        tier = planData.tier;
+      } else {
+        logStep("Plan mapping missing", { productId });
+        tier = "premium";
+      }
       logStep("Active subscription found", { tier, subscriptionEnd });
     } else {
       logStep("No active subscription found");
