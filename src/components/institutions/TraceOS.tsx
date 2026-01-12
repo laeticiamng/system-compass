@@ -16,7 +16,8 @@ import {
   MessageSquare,
   BarChart3,
   Tag,
-  Mail
+  Mail,
+  Link2
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -40,6 +41,7 @@ import { TraceOSCollaboration } from './TraceOSCollaboration';
 import { DecisionAuditLog } from './DecisionAuditLog';
 import { WorkflowMetrics } from './WorkflowMetrics';
 import { AutoExportManager } from './AutoExportManager';
+import { TraceOSWebhooks } from './TraceOSWebhooks';
 import { useSubscription } from '@/hooks/useSubscription';
 import { useTraceOSDecisions } from '@/hooks/useTraceOSDecisions';
 import { useTraceOSTags } from '@/hooks/useTraceOSTags';
@@ -405,6 +407,10 @@ export function TraceOS() {
             <Tag className="w-4 h-4" />
             {t('traceOS.tabs.tags', 'Tags')}
           </TabsTrigger>
+          <TabsTrigger value="webhooks" className="gap-2">
+            <Link2 className="w-4 h-4" />
+            {t('traceOS.tabs.webhooks', 'Webhooks')}
+          </TabsTrigger>
           <TabsTrigger value="integrations" className="gap-2">
             <GitBranch className="w-4 h-4" />
             {t('traceOS.tabs.integrations', 'Intégrations')}
@@ -529,6 +535,10 @@ export function TraceOS() {
               <TagManager />
             </CardContent>
           </Card>
+        </TabsContent>
+
+        <TabsContent value="webhooks">
+          <TraceOSWebhooks />
         </TabsContent>
 
         <TabsContent value="governance">
