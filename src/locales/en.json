@@ -36,6 +36,27 @@
     "notFound": "Resource not found.",
     "serverError": "Server error. Please try again."
   },
+  "ai": {
+    "usage": {
+      "title": "AI Usage",
+      "credits": "AI Credits",
+      "period": "Current period",
+      "units": "units",
+      "used": "used",
+      "actions": "AI Actions",
+      "tokens": "Tokens",
+      "dossiers": "Dossiers",
+      "exports": "Exports",
+      "limitReached": "Limit reached",
+      "nearLimit": "Near limit",
+      "ready": "Ready to use",
+      "noUsageYet": "You haven't used the AI features yet.",
+      "startUsing": "Start using AI tools to see your statistics."
+    },
+    "activity": {
+      "title": "Recent activity"
+    }
+  },
   "journey": {
     "profile": "Your profile",
     "options": "Your options",
@@ -319,7 +340,31 @@
     "latentDesc": "Identify tension zones not yet critical",
     "irreversaDesc": "Document crossed irreversible thresholds",
     "institutionsDesc": "Collective decision-making and traceability",
-    "usageDesc": "Track your AI usage and resources"
+    "usageDesc": "Track your AI usage and resources",
+    "emptyState": {
+      "title": "Welcome to Pyramid Compass",
+      "subtitle": "Start your exploration in a few simple steps",
+      "continueTest": "Take the quick test",
+      "startProfile": "Create my profile"
+    },
+    "quickStart": {
+      "profile": {
+        "title": "Create Your Profile",
+        "desc": "Define your goals and constraints for personalized recommendations"
+      },
+      "test": {
+        "title": "Quick Test (60 seconds)",
+        "desc": "Discover the system that matches your situation"
+      },
+      "countries": {
+        "title": "Explore Countries",
+        "desc": "Analyze systems from over 25 countries"
+      },
+      "exitKeys": {
+        "title": "Exit Keys Catalog",
+        "desc": "Discover mobility and evolution strategies"
+      }
+    }
   },
   "achievements": {
     "title": "Achievements",
@@ -4617,32 +4662,6 @@
       "dashboardDesc": "Track your progress and goals",
       "learn": "Reading Guide",
       "learnDesc": "Learn to interpret the data"
-    }
-  },
-  "dashboard": {
-    "emptyState": {
-      "title": "Welcome to Pyramid Compass",
-      "subtitle": "Start your exploration in a few simple steps",
-      "continueTest": "Take the quick test",
-      "startProfile": "Create my profile"
-    },
-    "quickStart": {
-      "profile": {
-        "title": "Create Your Profile",
-        "desc": "Define your goals and constraints for personalized recommendations"
-      },
-      "test": {
-        "title": "Quick Test (60 seconds)",
-        "desc": "Discover the system that matches your situation"
-      },
-      "countries": {
-        "title": "Explore Countries",
-        "desc": "Analyze systems from over 25 countries"
-      },
-      "exitKeys": {
-        "title": "Exit Keys Catalog",
-        "desc": "Discover mobility and evolution strategies"
-      }
     }
   },
   "match": {
