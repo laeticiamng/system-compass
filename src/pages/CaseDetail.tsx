@@ -11,6 +11,7 @@ import { MarketStudyWizard } from '@/components/cases/MarketStudyWizard';
 import { ActorsMap } from '@/components/cases/ActorsMap';
 import { RiskRegisterEnhanced } from '@/components/cases/RiskRegisterEnhanced';
 import { StructuralRulesSection } from '@/components/cases/StructuralRulesSection';
+import { CaseAIGenerator } from '@/components/cases/CaseAIGenerator';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -154,6 +155,14 @@ export default function CaseDetail() {
             </span>
           </div>
         </div>
+
+        {/* AI Generator */}
+        <CaseAIGenerator
+          caseData={caseData}
+          countryName={countryName}
+          pyramidType={pyramidType}
+          onUpdateCase={(updates) => updateCase(updates)}
+        />
 
         {/* Main Content Tabs */}
         <Tabs defaultValue="governance" className="space-y-6">

@@ -8013,5 +8013,17 @@
     "play": "Jouer",
     "pause": "Pause",
     "volume": "Volume"
+  },
+  "ai": {
+    "caseGenerator": "Génération IA",
+    "caseGeneratorDesc": "Générer automatiquement le contenu de votre dossier",
+    "progress": "Progression",
+    "generateAll": "Générer tout le dossier",
+    "generatingComplete": "Génération complète en cours...",
+    "completeGeneration": "Dossier complet généré !",
+    "generationSuccess": "Contenu généré avec succès",
+    "disclaimer": "Contenu généré par IA - à vérifier et compléter manuellement",
+    "rateLimitError": "Limite de requêtes atteinte. Réessayez dans quelques instants.",
+    "creditsError": "Crédits IA insuffisants. Veuillez recharger votre compte."
   }
 }
