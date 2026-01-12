@@ -697,7 +697,7 @@ function UnspokenRulesSection({ intelligence }: { intelligence: CountryIntellige
           <CardHeader className="pb-2">
             <CardTitle className="text-sm flex items-center gap-2 text-red-600">
               <Ban className="w-4 h-4" />
-              {t('intelligence.tabooTopics', 'Sujets tabous')}
+              {t('intelligence.tabooTopics.title', 'Sujets tabous')}
             </CardTitle>
           </CardHeader>
           <CardContent>
