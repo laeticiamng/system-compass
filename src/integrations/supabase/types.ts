@@ -1294,6 +1294,42 @@ export type Database = {
         }
         Relationships: []
       }
+      push_subscriptions: {
+        Row: {
+          auth: string | null
+          created_at: string | null
+          endpoint: string
+          expires_at: string | null
+          id: string
+          p256dh: string | null
+          revoked_at: string | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          auth?: string | null
+          created_at?: string | null
+          endpoint: string
+          expires_at?: string | null
+          id?: string
+          p256dh?: string | null
+          revoked_at?: string | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          auth?: string | null
+          created_at?: string | null
+          endpoint?: string
+          expires_at?: string | null
+          id?: string
+          p256dh?: string | null
+          revoked_at?: string | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       ovi_suggestions: {
         Row: {
           created_at: string | null

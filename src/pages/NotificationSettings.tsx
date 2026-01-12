@@ -36,7 +36,8 @@ export default function NotificationSettings() {
     loading, 
     saving, 
     updateSettings, 
-    requestPushPermission,
+    enablePushNotifications,
+    disablePushNotifications,
     isLoggedIn 
   } = useNotificationSettings();
 
@@ -71,12 +72,22 @@ export default function NotificationSettings() {
   };
 
   const handleEnablePush = async () => {
-    const success = await requestPushPermission();
+    const success = await enablePushNotifications();
     if (success) {
       setLocalSettings(prev => ({ ...prev, push_enabled: true }));
       toast.success(t('notifications.pushEnabled', 'Notifications push activées'));
     } else {
       toast.error(t('notifications.pushDenied', 'Permission refusée'));
+    }
+  };
+
+  const handleDisablePush = async () => {
+    const success = await disablePushNotifications();
+    if (success) {
+      setLocalSettings(prev => ({ ...prev, push_enabled: false }));
+      toast.success(t('notifications.pushDisabled', 'Notifications push désactivées'));
+    } else {
+      toast.error(t('notifications.pushDisableError', 'Impossible de désactiver les notifications push'));
     }
   };
 
@@ -197,10 +208,15 @@ export default function NotificationSettings() {
                   </p>
                 </div>
                 {localSettings.push_enabled ? (
-                  <Badge variant="outline" className="gap-1 text-green-600 border-green-600/30">
-                    <CheckCircle2 className="w-3 h-3" />
-                    {t('common.active', 'Actif')}
-                  </Badge>
+                  <div className="flex items-center gap-2">
+                    <Badge variant="outline" className="gap-1 text-green-600 border-green-600/30">
+                      <CheckCircle2 className="w-3 h-3" />
+                      {t('common.active', 'Actif')}
+                    </Badge>
+                    <Button variant="ghost" size="sm" onClick={handleDisablePush}>
+                      {t('notifications.push.disable', 'Désactiver')}
+                    </Button>
+                  </div>
                 ) : (
                   <Button variant="outline" size="sm" onClick={handleEnablePush}>
                     {t('notifications.push.activate', 'Activer')}
