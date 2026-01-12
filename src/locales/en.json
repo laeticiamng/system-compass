@@ -25,7 +25,9 @@
     "optional": "optional",
     "description": "Description",
     "submit": "Submit",
-    "sending": "Sending..."
+    "sending": "Sending...",
+    "new": "New",
+    "view": "View"
   },
   "errors": {
     "rateLimited": "Too many requests. Please try again in a moment.",

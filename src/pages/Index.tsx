@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, forwardRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useCountries } from '@/lib/countries-data';
@@ -498,17 +498,13 @@ function StepIndicator({
   );
 }
 
-function FeatureCard({
-  icon,
-  title,
-  description,
-}: {
+const FeatureCard = forwardRef<HTMLDivElement, {
   icon: React.ReactNode;
   title: string;
   description: string;
-}) {
+}>(function FeatureCard({ icon, title, description }, ref) {
   return (
-    <div className="glass-card rounded-xl p-5 md:p-6 text-center">
+    <div ref={ref} className="glass-card rounded-xl p-5 md:p-6 text-center">
       <div className="inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-lg bg-primary/10 text-primary mb-3 md:mb-4">
         {icon}
       </div>
@@ -516,7 +512,7 @@ function FeatureCard({
       <p className="text-xs md:text-sm text-muted-foreground">{description}</p>
     </div>
   );
-}
+});
 
 function NotDoItem({ text }: { text: string }) {
   return (
