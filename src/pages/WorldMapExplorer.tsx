@@ -101,52 +101,52 @@ export default function WorldMapExplorer() {
     : null;
 
   return (
-    <div className="min-h-screen pt-24 pb-16">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen pt-16 sm:pt-24 pb-12 sm:pb-16">
+      <div className="container mx-auto px-3 sm:px-4">
         {/* Header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            <Globe className="w-4 h-4" />
+        <div className="text-center mb-6 sm:mb-8">
+          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium mb-3 sm:mb-4">
+            <Globe className="w-3 h-3 sm:w-4 sm:h-4" />
             {t('worldMap.badge', 'Exploration mondiale')}
           </div>
-          <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">
+          <h1 className="font-display text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
             {t('worldMap.title', 'Carte des Systèmes')}
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-sm sm:text-xl text-muted-foreground max-w-2xl mx-auto px-2">
             {t('worldMap.subtitle', 'Explorez visuellement les {{count}} pays analysés et leurs types de pyramides', { count: stats.total })}
           </p>
         </div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 mb-6 sm:mb-8">
           <Card>
-            <CardContent className="pt-6 text-center">
-              <div className="text-3xl font-bold text-primary mb-1">{stats.total}</div>
-              <div className="text-sm text-muted-foreground">{t('worldMap.stats.total', 'Pays analysés')}</div>
+            <CardContent className="pt-4 sm:pt-6 text-center">
+              <div className="text-xl sm:text-3xl font-bold text-primary mb-1">{stats.total}</div>
+              <div className="text-xs sm:text-sm text-muted-foreground">{t('worldMap.stats.total', 'Pays analysés')}</div>
             </CardContent>
           </Card>
           <Card>
-            <CardContent className="pt-6 text-center">
-              <div className="text-3xl font-bold text-emerald-500 mb-1">{stats.withIntelligence}</div>
-              <div className="text-sm text-muted-foreground">{t('worldMap.stats.intelligence', 'Intelligence Layer')}</div>
+            <CardContent className="pt-4 sm:pt-6 text-center">
+              <div className="text-xl sm:text-3xl font-bold text-emerald-500 mb-1">{stats.withIntelligence}</div>
+              <div className="text-xs sm:text-sm text-muted-foreground">{t('worldMap.stats.intelligence', 'Intelligence Layer')}</div>
             </CardContent>
           </Card>
           <Card>
-            <CardContent className="pt-6 text-center">
-              <div className="text-3xl font-bold text-amber-500 mb-1">{PYRAMID_TYPES.length - 1}</div>
-              <div className="text-sm text-muted-foreground">{t('worldMap.stats.pyramids', 'Types de pyramides')}</div>
+            <CardContent className="pt-4 sm:pt-6 text-center">
+              <div className="text-xl sm:text-3xl font-bold text-amber-500 mb-1">{PYRAMID_TYPES.length - 1}</div>
+              <div className="text-xs sm:text-sm text-muted-foreground">{t('worldMap.stats.pyramids', 'Types de pyramides')}</div>
             </CardContent>
           </Card>
           <Card>
-            <CardContent className="pt-6 text-center">
-              <div className="text-3xl font-bold text-blue-500 mb-1">13</div>
-              <div className="text-sm text-muted-foreground">{t('worldMap.stats.languages', 'Langues')}</div>
+            <CardContent className="pt-4 sm:pt-6 text-center">
+              <div className="text-xl sm:text-3xl font-bold text-blue-500 mb-1">13</div>
+              <div className="text-xs sm:text-sm text-muted-foreground">{t('worldMap.stats.languages', 'Langues')}</div>
             </CardContent>
           </Card>
         </div>
 
         {/* Filters */}
-        <div className="glass-card rounded-xl p-4 mb-6">
+        <div className="glass-card rounded-xl p-3 sm:p-4 mb-4 sm:mb-6">
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex items-center gap-2 flex-1 min-w-[200px]">
               <Search className="w-4 h-4 text-muted-foreground" />

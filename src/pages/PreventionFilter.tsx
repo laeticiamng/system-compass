@@ -423,18 +423,18 @@ export default function PreventionFilter() {
   };
 
   return (
-    <div className="min-h-screen pt-20 pb-16">
-      <div className="container mx-auto px-4 max-w-4xl">
+    <div className="min-h-screen pt-16 sm:pt-20 pb-12 sm:pb-16">
+      <div className="container mx-auto px-3 sm:px-4 max-w-4xl">
         {/* Header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            <Shield className="w-4 h-4" />
+        <div className="text-center mb-6 sm:mb-8">
+          <div className="inline-flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium mb-3 sm:mb-4">
+            <Shield className="w-3 h-3 sm:w-4 sm:h-4" />
             {t('preventionFilter.badge', 'Filtre de prévention')}
           </div>
-          <h1 className="font-display text-3xl md:text-4xl font-bold mb-3">
+          <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3">
             {t('preventionFilter.title', 'Passer une décision au filtre')}
           </h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-2">
             {t('preventionFilter.subtitle', 'Avant une décision importante, révèle les risques, points aveugles et conséquences probables en moins de 60 secondes.')}
           </p>
         </div>
@@ -451,7 +451,7 @@ export default function PreventionFilter() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                <div className="grid grid-cols-2 gap-2">
                   {DECISION_TYPES.map((type) => (
                     <button
                       key={type.value}

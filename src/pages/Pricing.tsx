@@ -116,22 +116,22 @@ const Pricing = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-24">
+    <div className="container mx-auto px-3 sm:px-4 pt-20 sm:pt-24 pb-12">
       {/* Hero Section */}
-      <div className="text-center mb-16">
-        <Badge className="mb-4 px-4 py-1.5">
+      <div className="text-center mb-8 sm:mb-16">
+        <Badge className="mb-3 sm:mb-4 px-3 sm:px-4 py-1 sm:py-1.5 text-xs sm:text-sm">
           {t('pricing.badge', 'Tarification transparente')}
         </Badge>
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+        <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
           {t('pricing.title', 'Choisissez votre plan')}
         </h1>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-sm sm:text-lg text-muted-foreground max-w-2xl mx-auto px-2">
           {t('pricing.subtitle', 'Débloquez des analyses plus profondes et des recommandations personnalisées')}
         </p>
       </div>
 
       {/* Plans Grid */}
-      <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8 max-w-5xl mx-auto mb-8 sm:mb-16">
         {plans.map((plan) => {
           const Icon = plan.icon;
           const isCurrent = isCurrentPlan(plan.id);
@@ -176,9 +176,9 @@ const Pricing = () => {
               </CardHeader>
 
               <CardContent className="flex-1">
-                <div className="text-center mb-6">
-                  <span className="text-4xl font-bold">{plan.price}</span>
-                  <span className="text-muted-foreground ml-1">{plan.period}</span>
+                <div className="text-center mb-4 sm:mb-6">
+                  <span className="text-3xl sm:text-4xl font-bold">{plan.price}</span>
+                  <span className="text-muted-foreground ml-1 text-sm sm:text-base">{plan.period}</span>
                 </div>
 
                 {/* Features */}
@@ -231,7 +231,7 @@ const Pricing = () => {
       </div>
 
       {/* Enterprise Section */}
-      <div className="max-w-4xl mx-auto mb-16">
+      <div className="max-w-4xl mx-auto mb-8 sm:mb-16">
         <Card className="bg-gradient-to-br from-slate-900 to-slate-800 text-white border-none">
           <CardContent className="p-8">
             <div className="flex flex-col md:flex-row md:items-center gap-6">
@@ -273,8 +273,8 @@ const Pricing = () => {
       </div>
 
       {/* Comparison Table */}
-      <div className="max-w-4xl mx-auto mb-16">
-        <h2 className="text-2xl font-bold text-center mb-8">
+      <div className="max-w-4xl mx-auto mb-8 sm:mb-16">
+        <h2 className="text-xl sm:text-2xl font-bold text-center mb-4 sm:mb-8">
           {t('pricing.comparison.title', 'Comparer les fonctionnalités')}
         </h2>
         

@@ -182,22 +182,22 @@ export default function Resources() {
   const preMoveItems = Array.isArray(preMoveItemsRaw) ? preMoveItemsRaw : [];
 
   return (
-    <div className="min-h-screen pt-24 pb-16">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen pt-20 sm:pt-24 pb-12 sm:pb-16">
+      <div className="container mx-auto px-3 sm:px-4">
         {/* Header */}
-        <div className="max-w-3xl mb-12">
-          <Badge className="mb-4 px-3 py-1" variant="outline">
-            <BookOpen className="w-3 h-3 mr-2" />
+        <div className="max-w-3xl mb-8 sm:mb-12">
+          <Badge className="mb-3 sm:mb-4 px-2 sm:px-3 py-1 text-xs sm:text-sm" variant="outline">
+            <BookOpen className="w-3 h-3 mr-1 sm:mr-2" />
             {t('resources.badge', 'Ressources & Guides')}
           </Badge>
-          <h1 className="font-display text-4xl font-bold mb-4">{t('resources.title')}</h1>
-          <p className="text-lg text-muted-foreground">
+          <h1 className="font-display text-2xl sm:text-4xl font-bold mb-3 sm:mb-4">{t('resources.title')}</h1>
+          <p className="text-sm sm:text-lg text-muted-foreground">
             {t('resources.subtitle')}
           </p>
         </div>
 
         {/* Quick Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 mb-8 sm:mb-12">
           {categoryKeys.map((catKey) => {
             const Icon = categoryIcons[catKey];
             const itemCount = resourceItemKeys[catKey].length;
@@ -216,9 +216,9 @@ export default function Resources() {
         </div>
 
         {/* Resource Categories with Accordion */}
-        <div className="mb-16">
-          <h2 className="font-display text-2xl font-bold mb-6 flex items-center gap-2">
-            <FileText className="w-6 h-6 text-primary" />
+        <div className="mb-8 sm:mb-16">
+          <h2 className="font-display text-xl sm:text-2xl font-bold mb-4 sm:mb-6 flex items-center gap-2">
+            <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
             {t('resources.categoriesTitle', 'Catégories de ressources')}
           </h2>
           
@@ -277,15 +277,15 @@ export default function Resources() {
         </div>
 
         {/* Interactive Checklists */}
-        <div className="mb-16">
-          <h2 className="font-display text-2xl font-bold mb-6 flex items-center gap-2">
-            <CheckCircle className="w-6 h-6 text-emerald-500" />
+        <div className="mb-8 sm:mb-16">
+          <h2 className="font-display text-xl sm:text-2xl font-bold mb-4 sm:mb-6 flex items-center gap-2">
+            <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-500" />
             {t('resources.checklists.title')}
           </h2>
-          <p className="text-muted-foreground mb-6">
+          <p className="text-muted-foreground mb-4 sm:mb-6 text-sm sm:text-base">
             {t('resources.checklists.subtitle', 'Cochez les éléments au fur et à mesure de votre progression. Votre avancement est sauvegardé automatiquement.')}
           </p>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             <InteractiveChecklist 
               titleKey="resources.checklists.survival30.title" 
               items={survival30Items} 
@@ -300,12 +300,12 @@ export default function Resources() {
         </div>
 
         {/* Related Tools */}
-        <div className="mb-16">
-          <h2 className="font-display text-2xl font-bold mb-6 flex items-center gap-2">
-            <Lightbulb className="w-6 h-6 text-amber-500" />
+        <div className="mb-8 sm:mb-16">
+          <h2 className="font-display text-xl sm:text-2xl font-bold mb-4 sm:mb-6 flex items-center gap-2">
+            <Lightbulb className="w-5 h-5 sm:w-6 sm:h-6 text-amber-500" />
             {t('resources.relatedTools', 'Outils complémentaires')}
           </h2>
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
             <Link to="/exit-keys">
               <Card className="h-full hover:border-primary/30 transition-colors cursor-pointer group">
                 <CardContent className="p-6 flex items-center gap-4">

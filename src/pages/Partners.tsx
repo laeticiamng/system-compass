@@ -29,26 +29,26 @@ export default function Partners() {
   const hasApprovedApplication = isApprovedPartner('ambassador') || isApprovedPartner('b2b_partner');
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pt-16 sm:pt-20">
       {/* Hero Section */}
-      <section className="relative py-16 md:py-24 overflow-hidden">
+      <section className="relative py-8 sm:py-16 md:py-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5" />
-        <div className="container mx-auto px-4 relative">
+        <div className="container mx-auto px-3 sm:px-4 relative">
           <div className="max-w-3xl mx-auto text-center">
-            <Badge variant="outline" className="mb-4">
+            <Badge variant="outline" className="mb-3 sm:mb-4 text-xs sm:text-sm">
               <Sparkles className="h-3 w-3 mr-1" />
               Programme Partenaires
             </Badge>
-            <h1 className="text-3xl md:text-5xl font-bold mb-6">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 sm:mb-6">
               Compass Partners
             </h1>
-            <p className="text-lg text-muted-foreground mb-8">
+            <p className="text-sm sm:text-lg text-muted-foreground mb-6 sm:mb-8">
               Diffusion responsable de Pyramid Compass
             </p>
             
-            <div className="bg-card border rounded-xl p-6 text-left max-w-xl mx-auto">
-              <Quote className="h-8 w-8 text-primary/30 mb-2" />
-              <p className="text-lg italic text-foreground/80">
+            <div className="bg-card border rounded-xl p-4 sm:p-6 text-left max-w-xl mx-auto">
+              <Quote className="h-6 w-6 sm:h-8 sm:w-8 text-primary/30 mb-2" />
+              <p className="text-sm sm:text-lg italic text-foreground/80">
                 Pyramid Compass reconnaît les personnes qui contribuent à diffuser la lucidité,
                 par l'usage, la compréhension et la responsabilité.
               </p>
@@ -57,14 +57,14 @@ export default function Partners() {
         </div>
       </section>
 
-      <div className="container mx-auto px-4 pb-16">
-        <Tabs value={selectedTab} onValueChange={setSelectedTab} className="space-y-8">
+      <div className="container mx-auto px-3 sm:px-4 pb-12 sm:pb-16">
+        <Tabs value={selectedTab} onValueChange={setSelectedTab} className="space-y-6 sm:space-y-8">
           <div className="flex justify-center">
-            <TabsList className="grid grid-cols-2 md:grid-cols-4 w-full max-w-2xl">
-              <TabsTrigger value="info">Présentation</TabsTrigger>
-              <TabsTrigger value="ambassador">Ambassadeur</TabsTrigger>
-              <TabsTrigger value="b2b">Partenaire B2B</TabsTrigger>
-              {user && <TabsTrigger value="dashboard">Mon espace</TabsTrigger>}
+            <TabsList className="grid grid-cols-2 md:grid-cols-4 w-full max-w-2xl h-auto gap-1 p-1">
+              <TabsTrigger value="info" className="text-xs sm:text-sm py-2">Présentation</TabsTrigger>
+              <TabsTrigger value="ambassador" className="text-xs sm:text-sm py-2">Ambassadeur</TabsTrigger>
+              <TabsTrigger value="b2b" className="text-xs sm:text-sm py-2">B2B</TabsTrigger>
+              {user && <TabsTrigger value="dashboard" className="text-xs sm:text-sm py-2">Mon espace</TabsTrigger>}
             </TabsList>
           </div>
 
@@ -96,7 +96,7 @@ export default function Partners() {
             </Card>
 
             {/* Two positions */}
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
               <Card className="group hover:border-primary/50 transition-colors">
                 <CardHeader>
                   <div className="flex items-center gap-3">
