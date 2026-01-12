@@ -1,6 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
+import {
+  serializePushSubscription,
+  subscribeToPushNotifications,
+} from '@/lib/pushNotifications';
 
 export interface NotificationSettings {
   id: string;
@@ -93,6 +97,24 @@ export function useNotificationSettings() {
 
     const permission = await Notification.requestPermission();
     if (permission === 'granted') {
+      try {
+        const subscription = await subscribeToPushNotifications();
+        const payload = serializePushSubscription(subscription);
+
+        const { error } = await supabase.functions.invoke('push-subscribe', {
+          body: {
+            subscription: payload,
+            userAgent: navigator.userAgent,
+          },
+        });
+
+        if (error) {
+          throw error;
+        }
+      } catch (error) {
+        console.error('Failed to register push subscription:', error);
+        return false;
+      }
       await updateSettings({ push_enabled: true });
       return true;
     }

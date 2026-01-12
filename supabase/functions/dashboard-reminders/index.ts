@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.2";
+import webpush from "npm:web-push@3.6.7";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -22,6 +23,13 @@ interface DeadlineInfo {
   actionIndex: number;
 }
 
+interface PushSubscriptionRecord {
+  id: string;
+  endpoint: string;
+  p256dh: string;
+  auth: string;
+}
+
 const logStep = (step: string, details?: unknown) => {
   const detailsStr = details ? ` - ${JSON.stringify(details)}` : '';
   console.log(`[DASHBOARD-REMINDERS] ${step}${detailsStr}`);
@@ -38,6 +46,9 @@ serve(async (req) => {
     const supabaseUrl = Deno.env.get("SUPABASE_URL");
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
     const resendApiKey = Deno.env.get("RESEND_API_KEY");
+    const vapidPublicKey = Deno.env.get("VAPID_PUBLIC_KEY");
+    const vapidPrivateKey = Deno.env.get("VAPID_PRIVATE_KEY");
+    const vapidSubject = Deno.env.get("VAPID_SUBJECT") ?? "mailto:notifications@example.com";
 
     if (!supabaseUrl || !supabaseServiceKey) {
       throw new Error("Missing Supabase configuration");
@@ -45,6 +56,11 @@ serve(async (req) => {
 
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
     const canSendEmail = !!resendApiKey;
+    const canSendPush = !!vapidPublicKey && !!vapidPrivateKey;
+
+    if (canSendPush && vapidPublicKey && vapidPrivateKey) {
+      webpush.setVapidDetails(vapidSubject, vapidPublicKey, vapidPrivateKey);
+    }
 
     const body: ReminderRequest = await req.json().catch(() => ({}));
     const { userId, checkAll = false } = body;
@@ -72,6 +88,13 @@ serve(async (req) => {
     const now = new Date();
 
     for (const record of progressRecords || []) {
+      const { data: settings } = await supabase
+        .from('notification_settings')
+        .select('deadline_reminder_days')
+        .eq('user_id', record.user_id)
+        .maybeSingle();
+
+      const reminderDays = settings?.deadline_reminder_days ?? 3;
       const stepsProgress = record.steps_progress as Array<{
         phaseIndex: number;
         actionIndex: number;
@@ -95,8 +118,8 @@ serve(async (req) => {
         const diffTime = deadlineDate.getTime() - now.getTime();
         const daysRemaining = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-        // Only include deadlines within 7 days
-        if (daysRemaining >= 0 && daysRemaining <= 7) {
+        // Only include deadlines within the user-configured reminder window
+        if (daysRemaining >= 0 && daysRemaining <= reminderDays) {
           upcomingDeadlines.push({
             userId: record.user_id,
             userEmail,
@@ -124,6 +147,30 @@ serve(async (req) => {
       existing.push(deadline);
       userDeadlines.set(deadline.userEmail, existing);
     }
+
+    const logDelivery = async (payload: {
+      userId: string;
+      channel: string;
+      status: string;
+      destination: string;
+      messageId?: string | null;
+      error?: string | null;
+      payload?: Record<string, unknown>;
+    }) => {
+      const { error } = await supabase.from('notification_delivery_logs').insert({
+        user_id: payload.userId,
+        channel: payload.channel,
+        status: payload.status,
+        destination: payload.destination,
+        message_id: payload.messageId ?? null,
+        error: payload.error ?? null,
+        payload: payload.payload ?? {},
+      });
+
+      if (error) {
+        logStep("Failed to log delivery", { error: error.message });
+      }
+    };
 
     // Send emails if Resend is configured
     if (canSendEmail && resendApiKey) {
@@ -213,30 +260,142 @@ serve(async (req) => {
 
           notificationsSent.push(email);
           logStep("Email sent", { email, deadlineCount: deadlines.length });
+          await logDelivery({
+            userId: deadlines[0]?.userId ?? '',
+            channel: 'email',
+            status: 'sent',
+            destination: email,
+            payload: {
+              deadlineCount: deadlines.length,
+              urgentCount: urgentDeadlines.length,
+            },
+          });
         } catch (emailError) {
           const errorMsg = emailError instanceof Error ? emailError.message : String(emailError);
           errors.push(`Failed to send to ${email}: ${errorMsg}`);
           logStep("Email error", { email, error: errorMsg });
+          await logDelivery({
+            userId: deadlines[0]?.userId ?? '',
+            channel: 'email',
+            status: 'failed',
+            destination: email,
+            error: errorMsg,
+            payload: { deadlineCount: deadlines.length },
+          });
         }
       }
     } else {
       logStep("Resend not configured, skipping emails");
     }
 
-    // Store notifications in database for push notifications
+    // Store notifications in database for clients
     for (const deadline of upcomingDeadlines) {
-      // Check notification settings
-      const { data: settings } = await supabase
-        .from('notification_settings')
-        .select('push_enabled')
-        .eq('user_id', deadline.userId)
-        .single();
+      const title = `Échéance ${deadline.daysRemaining === 0 ? "aujourd'hui" : `dans ${deadline.daysRemaining} jour${deadline.daysRemaining > 1 ? 's' : ''}`}`;
+      const message = `${deadline.actionText} arrive ${deadline.daysRemaining === 0 ? "aujourd'hui" : `dans ${deadline.daysRemaining} jour${deadline.daysRemaining > 1 ? 's' : ''}`}.`;
 
-      if (settings?.push_enabled) {
-        // Here you would trigger push notification
-        // For now, we log it for the client to poll
-        logStep("Push notification queued", { userId: deadline.userId });
+      const { error: notificationError } = await supabase
+        .from('user_notifications')
+        .insert({
+          user_id: deadline.userId,
+          type: 'deadline',
+          title,
+          message,
+          priority: deadline.daysRemaining <= 1 ? 'high' : 'medium',
+          action_url: '/dashboard',
+        });
+
+      if (notificationError) {
+        logStep("Failed to store notification", { error: notificationError.message });
       }
+    }
+
+    // Send push notifications if configured
+    if (canSendPush && vapidPublicKey && vapidPrivateKey) {
+      const deadlinesByUser = new Map<string, DeadlineInfo[]>();
+      for (const deadline of upcomingDeadlines) {
+        const existing = deadlinesByUser.get(deadline.userId) ?? [];
+        existing.push(deadline);
+        deadlinesByUser.set(deadline.userId, existing);
+      }
+
+      for (const [userId, deadlines] of deadlinesByUser.entries()) {
+        const { data: settings } = await supabase
+          .from('notification_settings')
+          .select('push_enabled')
+          .eq('user_id', userId)
+          .maybeSingle();
+
+        if (!settings?.push_enabled) {
+          continue;
+        }
+
+        const { data: subscriptions } = await supabase
+          .from('push_subscriptions')
+          .select('id, endpoint, p256dh, auth')
+          .eq('user_id', userId);
+
+        if (!subscriptions || subscriptions.length === 0) {
+          logStep("No push subscriptions", { userId });
+          continue;
+        }
+
+        const urgentDeadlines = deadlines.filter(d => d.daysRemaining <= 1);
+        const title = urgentDeadlines.length > 0
+          ? `⚠️ ${urgentDeadlines.length} échéance(s) urgente(s)`
+          : `📅 ${deadlines.length} échéance(s) à venir`;
+        const bodyText = urgentDeadlines.length > 0
+          ? `${urgentDeadlines[0].actionText} arrive ${urgentDeadlines[0].daysRemaining === 0 ? "aujourd'hui" : "demain"}.`
+          : `${deadlines[0].actionText} arrive dans ${deadlines[0].daysRemaining} jour${deadlines[0].daysRemaining > 1 ? 's' : ''}.`;
+
+        const payload = JSON.stringify({
+          title,
+          body: bodyText,
+          data: {
+            url: '/dashboard',
+            deadlines: deadlines.map((deadline) => ({
+              actionText: deadline.actionText,
+              daysRemaining: deadline.daysRemaining,
+            })),
+          },
+        });
+
+        for (const subscription of subscriptions as PushSubscriptionRecord[]) {
+          try {
+            await webpush.sendNotification(
+              {
+                endpoint: subscription.endpoint,
+                keys: {
+                  p256dh: subscription.p256dh,
+                  auth: subscription.auth,
+                },
+              },
+              payload,
+            );
+
+            logStep("Push notification sent", { userId, subscriptionId: subscription.id });
+            await logDelivery({
+              userId,
+              channel: 'push',
+              status: 'sent',
+              destination: subscription.endpoint,
+              payload: { deadlineCount: deadlines.length },
+            });
+          } catch (pushError) {
+            const errorMsg = pushError instanceof Error ? pushError.message : String(pushError);
+            logStep("Push notification failed", { userId, error: errorMsg });
+            await logDelivery({
+              userId,
+              channel: 'push',
+              status: 'failed',
+              destination: subscription.endpoint,
+              error: errorMsg,
+              payload: { deadlineCount: deadlines.length },
+            });
+          }
+        }
+      }
+    } else {
+      logStep("VAPID not configured, skipping push notifications");
     }
 
     const response = {
