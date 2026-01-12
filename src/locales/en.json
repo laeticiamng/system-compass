@@ -5068,7 +5068,26 @@
     "deadlineToday": "It's today!",
     "deadlineTomorrow": "It's tomorrow!",
     "deadlineInDays": "In {{count}} days",
-    "achievementUnlocked": "Achievement unlocked!"
+    "achievementUnlocked": "Achievement unlocked!",
+    "settings": "Notification settings",
+    "filters": {
+      "status": "Status",
+      "type": "Type",
+      "sort": "Sort",
+      "unread": "Unread",
+      "read": "Read"
+    },
+    "types": {
+      "deadline": "Deadline",
+      "reminder": "Reminder",
+      "achievement": "Achievement",
+      "info": "Info"
+    },
+    "sort": {
+      "newest": "Newest",
+      "oldest": "Oldest",
+      "priority": "Priority"
+    }
   },
   "ovi": {
     "title": "OVI - Inner Vision Tools",

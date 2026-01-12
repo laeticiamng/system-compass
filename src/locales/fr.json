@@ -5686,7 +5686,26 @@
     "deadlineToday": "C'est aujourd'hui !",
     "deadlineTomorrow": "C'est demain !",
     "deadlineInDays": "Dans {{count}} jours",
-    "achievementUnlocked": "Succès débloqué !"
+    "achievementUnlocked": "Succès débloqué !",
+    "settings": "Paramètres de notifications",
+    "filters": {
+      "status": "Statut",
+      "type": "Type",
+      "sort": "Tri",
+      "unread": "Non lus",
+      "read": "Lus"
+    },
+    "types": {
+      "deadline": "Deadline",
+      "reminder": "Rappel",
+      "achievement": "Succès",
+      "info": "Info"
+    },
+    "sort": {
+      "newest": "Plus récents",
+      "oldest": "Plus anciens",
+      "priority": "Priorité"
+    }
   },
   "ovi": {
     "title": "OVI - Outils de Vision Intérieure",
