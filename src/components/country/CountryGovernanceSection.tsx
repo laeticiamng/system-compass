@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useCountryGovernance, useUserGovernanceNotes } from '@/hooks/useCountryGovernance';
-import { useAuth } from '@/hooks/useAuth';
+import { useCountryGovernance } from '@/hooks/useCountryGovernance';
 import { Loader2, Shield, Briefcase, Users, AlertTriangle, MapPin, Clock } from 'lucide-react';
 import {
   CountryGovernanceScore,
@@ -32,9 +31,7 @@ export function CountryGovernanceSection({
   snapshot 
 }: CountryGovernanceSectionProps) {
   const { t } = useTranslation();
-  const { user } = useAuth();
-  const { governance, isLoading, averageScore } = useCountryGovernance(countryId, pyramidType);
-  const { notes, saveNotes, isSaving } = useUserGovernanceNotes(countryId);
+  const { governance, isLoading } = useCountryGovernance(countryId, pyramidType);
 
   if (isLoading) {
     return (
