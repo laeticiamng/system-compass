@@ -260,36 +260,6 @@ export type Database = {
         }
         Relationships: []
       }
-      countries: {
-        Row: {
-          country_id: string
-          created_at: string
-          data: Json
-          id: string
-          tags: string[]
-          updated_at: string
-          version: number
-        }
-        Insert: {
-          country_id: string
-          created_at?: string
-          data: Json
-          id?: string
-          tags?: string[]
-          updated_at?: string
-          version?: number
-        }
-        Update: {
-          country_id?: string
-          created_at?: string
-          data?: Json
-          id?: string
-          tags?: string[]
-          updated_at?: string
-          version?: number
-        }
-        Relationships: []
-      }
       country_generation_batches: {
         Row: {
           completed_at: string | null
@@ -926,51 +896,6 @@ export type Database = {
         }
         Relationships: []
       }
-      translation_jobs: {
-        Row: {
-          completed_at: string | null
-          country_id: string
-          created_at: string
-          created_by: string | null
-          error_message: string | null
-          id: string
-          logs: Json
-          retries: number
-          started_at: string | null
-          status: string
-          target_lang: string
-          updated_at: string
-        }
-        Insert: {
-          completed_at?: string | null
-          country_id: string
-          created_at?: string
-          created_by?: string | null
-          error_message?: string | null
-          id?: string
-          logs?: Json
-          retries?: number
-          started_at?: string | null
-          status?: string
-          target_lang: string
-          updated_at?: string
-        }
-        Update: {
-          completed_at?: string | null
-          country_id?: string
-          created_at?: string
-          created_by?: string | null
-          error_message?: string | null
-          id?: string
-          logs?: Json
-          retries?: number
-          started_at?: string | null
-          status?: string
-          target_lang?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
       generation_notifications: {
         Row: {
           batch_id: string | null
@@ -1333,51 +1258,6 @@ export type Database = {
         }
         Relationships: []
       }
-      music_generation_tasks: {
-        Row: {
-          audio_url: string | null
-          attempts: number
-          country_id: string
-          created_at: string
-          error_message: string | null
-          external_task_id: string | null
-          id: string
-          mood: string
-          pyramid_type: string
-          status: string
-          stream_url: string | null
-          updated_at: string
-        }
-        Insert: {
-          audio_url?: string | null
-          attempts?: number
-          country_id: string
-          created_at?: string
-          error_message?: string | null
-          external_task_id?: string | null
-          id?: string
-          mood?: string
-          pyramid_type: string
-          status?: string
-          stream_url?: string | null
-          updated_at?: string
-        }
-        Update: {
-          audio_url?: string | null
-          attempts?: number
-          country_id?: string
-          created_at?: string
-          error_message?: string | null
-          external_task_id?: string | null
-          id?: string
-          mood?: string
-          pyramid_type?: string
-          status?: string
-          stream_url?: string | null
-          updated_at?: string
-        }
-        Relationships: []
-      }
       notification_settings: {
         Row: {
           created_at: string | null
@@ -1411,36 +1291,6 @@ export type Database = {
           updated_at?: string | null
           user_id?: string
           weekly_digest?: boolean | null
-        }
-        Relationships: []
-      }
-      push_subscriptions: {
-        Row: {
-          created_at: string | null
-          endpoint: string
-          id: string
-          subscription: Json
-          updated_at: string | null
-          user_agent: string | null
-          user_id: string
-        }
-        Insert: {
-          created_at?: string | null
-          endpoint: string
-          id?: string
-          subscription: Json
-          updated_at?: string | null
-          user_agent?: string | null
-          user_id: string
-        }
-        Update: {
-          created_at?: string | null
-          endpoint?: string
-          id?: string
-          subscription?: Json
-          updated_at?: string | null
-          user_agent?: string | null
-          user_id?: string
         }
         Relationships: []
       }
