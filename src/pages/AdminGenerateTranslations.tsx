@@ -1,5 +1,4 @@
 import { useState, useMemo, useEffect } from "react";
-import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -8,11 +7,27 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "sonner";
-import { ArrowLeft, Languages, Play, CheckCircle2, XCircle, Loader2, AlertTriangle, Copy, Download, Merge, FileJson, Database, RefreshCw, Save } from "lucide-react";
+import {
+  ArrowLeft,
+  Languages,
+  Play,
+  CheckCircle2,
+  XCircle,
+  Loader2,
+  AlertTriangle,
+  Copy,
+  Download,
+  Merge,
+  FileJson,
+  Database,
+  RefreshCw,
+  Clock,
+  Check,
+  ListChecks,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import type { Json } from "@/integrations/supabase/types";
 
 // Import translation files
 import en from "@/locales/en.json";
@@ -35,6 +50,26 @@ interface SavedTranslation {
   is_approved: boolean;
 }
 
+interface TranslationJobLog {
+  timestamp: string;
+  level: string;
+  message: string;
+}
+
+interface TranslationJob {
+  id: string;
+  country_id: string;
+  target_lang: string;
+  status: "queued" | "running" | "completed" | "failed";
+  logs: TranslationJobLog[] | null;
+  error_message: string | null;
+  retries: number;
+  created_at: string;
+  updated_at: string;
+  started_at: string | null;
+  completed_at: string | null;
+}
+
 const LANGUAGES: { code: string; name: string; flag: string; data: LocaleData }[] = [
   { code: "en", name: "English", flag: "🇬🇧", data: en },
   { code: "fr", name: "Français", flag: "🇫🇷", data: fr },
@@ -45,24 +80,18 @@ const LANGUAGES: { code: string; name: string; flag: string; data: LocaleData }[
   { code: "pt", name: "Português", flag: "🇵🇹", data: pt },
 ];
 
-interface TranslationResult {
-  countryId: string;
-  status: "pending" | "translating" | "success" | "error";
-  error?: string;
-  translation?: Record<string, unknown>;
-}
-
 const AdminGenerateTranslations = () => {
-  const { t } = useTranslation();
   const [targetLang, setTargetLang] = useState<string>("");
   const [isGenerating, setIsGenerating] = useState(false);
-  const [isSaving, setIsSaving] = useState(false);
   const [isLoadingDb, setIsLoadingDb] = useState(false);
-  const [results, setResults] = useState<TranslationResult[]>([]);
+  const [jobsLoading, setJobsLoading] = useState(false);
   const [selectedCountries, setSelectedCountries] = useState<Set<string>>(new Set());
-  const [generatedTranslations, setGeneratedTranslations] = useState<Record<string, Record<string, unknown>>>({});
   const [savedTranslations, setSavedTranslations] = useState<SavedTranslation[]>([]);
+  const [jobs, setJobs] = useState<TranslationJob[]>([]);
   const [activeTab, setActiveTab] = useState("generate");
+  const [savedLangFilter, setSavedLangFilter] = useState<string>("all");
+  const [showPendingOnly, setShowPendingOnly] = useState(true);
+  const [selectedApprovals, setSelectedApprovals] = useState<Set<string>>(new Set());
 
   // Load saved translations from database
   const loadSavedTranslations = async () => {
@@ -74,7 +103,7 @@ const AdminGenerateTranslations = () => {
         .order("created_at", { ascending: false });
 
       if (error) throw error;
-      
+
       setSavedTranslations((data || []) as SavedTranslation[]);
     } catch (error) {
       console.error("Error loading translations:", error);
@@ -84,92 +113,150 @@ const AdminGenerateTranslations = () => {
     }
   };
 
-  // Load on mount
-  useEffect(() => {
-    loadSavedTranslations();
-  }, []);
-
-  // Save generated translations to database
-  const saveToDatabase = async () => {
-    if (Object.keys(generatedTranslations).length === 0 || !targetLang) {
-      toast.error("Aucune traduction à sauvegarder");
-      return;
-    }
-
-    setIsSaving(true);
+  const loadJobs = async () => {
+    setJobsLoading(true);
     try {
-      const entries = Object.entries(generatedTranslations);
-      
-      for (const [countryId, translation] of entries) {
-        // Check if translation exists
-        const { data: existing } = await supabase
-          .from("generated_translations")
-          .select("id")
-          .eq("country_id", countryId)
-          .eq("target_lang", targetLang)
-          .maybeSingle();
+      const { data, error } = await supabase
+        .from("translation_jobs")
+        .select("*")
+        .order("created_at", { ascending: false })
+        .limit(200);
 
-        if (existing) {
-          // Update existing
-          const { error } = await supabase
-            .from("generated_translations")
-            .update({ translation: translation as Json })
-            .eq("id", existing.id);
-          if (error) throw error;
-        } else {
-          // Insert new
-          const { error } = await supabase
-            .from("generated_translations")
-            .insert([{
-              country_id: countryId,
-              target_lang: targetLang,
-              translation: translation as Json
-            }]);
-          if (error) throw error;
-        }
-      }
-
-      toast.success(`${entries.length} traduction(s) sauvegardée(s) en base`);
-      await loadSavedTranslations();
+      if (error) throw error;
+      setJobs((data || []) as TranslationJob[]);
     } catch (error) {
-      console.error("Error saving translations:", error);
-      toast.error("Erreur lors de la sauvegarde");
+      console.error("Error loading translation jobs:", error);
+      toast.error("Erreur lors du chargement des jobs");
     } finally {
-      setIsSaving(false);
+      setJobsLoading(false);
     }
   };
 
-  // Get source countries from English
-  const sourceCountries = useMemo((): Record<string, { name: string; region: string; ruleOfGold: string; pyramid: Record<string, string>; whoWins: string[]; whoLoses: string[]; playbook: Record<string, unknown> }> => {
-    return (en.countriesData || {}) as Record<string, { name: string; region: string; ruleOfGold: string; pyramid: Record<string, string>; whoWins: string[]; whoLoses: string[]; playbook: Record<string, unknown> }>;
+  // Load on mount
+  useEffect(() => {
+    loadSavedTranslations();
+    loadJobs();
   }, []);
+
+  useEffect(() => {
+    const channel = supabase
+      .channel("translation-jobs")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "translation_jobs" },
+        payload => {
+          setJobs(prev => {
+            const next = [...prev];
+            if (payload.eventType === "DELETE") {
+              return next.filter(job => job.id !== payload.old.id);
+            }
+            const updated = payload.new as TranslationJob;
+            const index = next.findIndex(job => job.id === updated.id);
+            if (index >= 0) {
+              next[index] = updated;
+              return next;
+            }
+            return [updated, ...next];
+          });
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, []);
+
+  // Get source countries from English
+  const sourceCountries = useMemo(
+    (): Record<
+      string,
+      {
+        name: string;
+        region: string;
+        ruleOfGold: string;
+        pyramid: Record<string, string>;
+        whoWins: string[];
+        whoLoses: string[];
+        playbook: Record<string, unknown>;
+      }
+    > => {
+      return (en.countriesData || {}) as Record<
+        string,
+        {
+          name: string;
+          region: string;
+          ruleOfGold: string;
+          pyramid: Record<string, string>;
+          whoWins: string[];
+          whoLoses: string[];
+          playbook: Record<string, unknown>;
+        }
+      >;
+    },
+    []
+  );
 
   const countryIds = useMemo(() => Object.keys(sourceCountries), [sourceCountries]);
 
   // Get saved translations stats by language
   const savedStatsByLang = useMemo(() => {
     const stats: Record<string, number> = {};
-    for (const t of savedTranslations) {
-      stats[t.target_lang] = (stats[t.target_lang] || 0) + 1;
+    for (const saved of savedTranslations) {
+      stats[saved.target_lang] = (stats[saved.target_lang] || 0) + 1;
     }
     return stats;
   }, [savedTranslations]);
+
+  const jobsForTargetLang = useMemo(() => {
+    if (!targetLang) return jobs;
+    return jobs.filter(job => job.target_lang === targetLang);
+  }, [jobs, targetLang]);
+
+  const pendingTranslations = useMemo(() => {
+    return savedTranslations.filter(saved => !saved.is_approved);
+  }, [savedTranslations]);
+
+  const filteredSavedTranslations = useMemo(() => {
+    let list = savedTranslations;
+    if (savedLangFilter !== "all") {
+      list = list.filter(saved => saved.target_lang === savedLangFilter);
+    }
+    if (showPendingOnly) {
+      list = list.filter(saved => !saved.is_approved);
+    }
+    return list;
+  }, [savedTranslations, savedLangFilter, showPendingOnly]);
+
+  const approvalCandidates = useMemo(() => {
+    return filteredSavedTranslations.filter(saved => !saved.is_approved);
+  }, [filteredSavedTranslations]);
 
   // Find missing countries for target language
   const missingCountries = useMemo(() => {
     if (!targetLang) return [];
     const targetData = LANGUAGES.find(l => l.code === targetLang)?.data;
     if (!targetData) return countryIds;
-    
+
     const targetCountries = targetData.countriesData || {};
     return countryIds.filter(id => !targetCountries[id]);
   }, [targetLang, countryIds]);
 
   const progress = useMemo(() => {
-    if (results.length === 0) return 0;
-    const completed = results.filter(r => r.status === "success" || r.status === "error").length;
-    return (completed / results.length) * 100;
-  }, [results]);
+    if (jobsForTargetLang.length === 0) return 0;
+    const completed = jobsForTargetLang.filter(job => job.status === "completed" || job.status === "failed").length;
+    return (completed / jobsForTargetLang.length) * 100;
+  }, [jobsForTargetLang]);
+
+  const selectedTranslationsByCountry = useMemo(() => {
+    if (!targetLang) return {};
+    return savedTranslations
+      .filter(saved => saved.target_lang === targetLang)
+      .reduce((acc, saved) => {
+        acc[saved.country_id] = saved.translation;
+        return acc;
+      }, {} as Record<string, Record<string, unknown>>);
+  }, [savedTranslations, targetLang]);
 
   const toggleCountry = (countryId: string) => {
     const newSelected = new Set(selectedCountries);
@@ -196,87 +283,49 @@ const AdminGenerateTranslations = () => {
     }
 
     setIsGenerating(true);
-    const countriesToTranslate = Array.from(selectedCountries);
-    
-    // Initialize results
-    setResults(countriesToTranslate.map(id => ({
-      countryId: id,
-      status: "pending"
-    })));
 
-    const newTranslations: Record<string, Record<string, unknown>> = {};
-    
-    // Process sequentially to avoid rate limits
-    for (let i = 0; i < countriesToTranslate.length; i++) {
-      const countryId = countriesToTranslate[i];
-      const sourceCountry = sourceCountries[countryId as keyof typeof sourceCountries];
-      
-      if (!sourceCountry) continue;
+    try {
+      const countriesToTranslate = Array.from(selectedCountries).map(countryId => ({
+        countryId,
+        sourceCountry: sourceCountries[countryId as keyof typeof sourceCountries],
+      }));
 
-      // Update status to translating
-      setResults(prev => prev.map(r => 
-        r.countryId === countryId ? { ...r, status: "translating" as const } : r
-      ));
+      const { data, error } = await supabase.functions.invoke("batch-generate-translations", {
+        body: {
+          targetLang,
+          countries: countriesToTranslate,
+        },
+      });
 
-      try {
-        const { data, error } = await supabase.functions.invoke("generate-country-translations", {
-          body: {
-            countryId,
-            sourceCountry,
-            targetLang
-          }
-        });
+      if (error) throw error;
 
-        if (error) throw error;
-
-        if (data.error) {
-          throw new Error(data.error);
-        }
-
-        newTranslations[countryId] = data.translation;
-        
-        setResults(prev => prev.map(r => 
-          r.countryId === countryId ? { 
-            ...r, 
-            status: "success" as const,
-            translation: data.translation 
-          } : r
-        ));
-
-        // Small delay between requests to avoid rate limiting
-        if (i < countriesToTranslate.length - 1) {
-          await new Promise(resolve => setTimeout(resolve, 1000));
-        }
-
-      } catch (error) {
-        console.error(`Error translating ${countryId}:`, error);
-        setResults(prev => prev.map(r => 
-          r.countryId === countryId ? { 
-            ...r, 
-            status: "error" as const,
-            error: error instanceof Error ? error.message : "Unknown error"
-          } : r
-        ));
-      }
-    }
-
-    setGeneratedTranslations(prev => ({ ...prev, ...newTranslations }));
-    setIsGenerating(false);
-    
-    const successCount = Object.keys(newTranslations).length;
-    if (successCount > 0) {
-      toast.success(`${successCount} traduction(s) générée(s) avec succès`);
+      toast.success(`${data?.jobsCreated ?? countriesToTranslate.length} job(s) lancé(s)`);
+      setSelectedCountries(new Set());
+      loadJobs();
+    } catch (error) {
+      console.error("Error launching translation batch:", error);
+      toast.error("Erreur lors du lancement de la génération");
+    } finally {
+      setIsGenerating(false);
     }
   };
 
   const copyToClipboard = () => {
-    const output = JSON.stringify(generatedTranslations, null, 2);
+    if (!targetLang || Object.keys(selectedTranslationsByCountry).length === 0) {
+      toast.error("Aucune traduction à copier");
+      return;
+    }
+    const output = JSON.stringify(selectedTranslationsByCountry, null, 2);
     navigator.clipboard.writeText(output);
     toast.success("Traductions copiées dans le presse-papier");
   };
 
   const downloadTranslations = () => {
-    const output = JSON.stringify(generatedTranslations, null, 2);
+    if (!targetLang || Object.keys(selectedTranslationsByCountry).length === 0) {
+      toast.error("Aucune traduction à télécharger");
+      return;
+    }
+    const output = JSON.stringify(selectedTranslationsByCountry, null, 2);
     const blob = new Blob([output], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -289,31 +338,31 @@ const AdminGenerateTranslations = () => {
 
   // Generate merged full file ready to replace the existing one
   const getMergedFullFile = useMemo(() => {
-    if (!targetLang || Object.keys(generatedTranslations).length === 0) return null;
-    
+    if (!targetLang || Object.keys(selectedTranslationsByCountry).length === 0) return null;
+
     const targetLangData = LANGUAGES.find(l => l.code === targetLang)?.data;
     if (!targetLangData) return null;
 
-    // Deep clone the target language data
     const merged = JSON.parse(JSON.stringify(targetLangData)) as LocaleData;
-    
-    // Merge generated translations into countriesData
+
     if (!merged.countriesData) {
       merged.countriesData = {};
     }
-    
-    for (const [countryId, translation] of Object.entries(generatedTranslations)) {
+
+    for (const [countryId, translation] of Object.entries(selectedTranslationsByCountry)) {
       merged.countriesData[countryId] = translation;
     }
 
     return merged;
-  }, [targetLang, generatedTranslations]);
+  }, [targetLang, selectedTranslationsByCountry]);
 
   const copyMergedToClipboard = () => {
     if (!getMergedFullFile) return;
     const output = JSON.stringify(getMergedFullFile, null, 2);
     navigator.clipboard.writeText(output);
-    toast.success(`Fichier ${targetLang}.json complet copié (${Object.keys(getMergedFullFile.countriesData || {}).length} pays)`);
+    toast.success(
+      `Fichier ${targetLang}.json complet copié (${Object.keys(getMergedFullFile.countriesData || {}).length} pays)`
+    );
   };
 
   const downloadMergedFile = () => {
@@ -329,13 +378,82 @@ const AdminGenerateTranslations = () => {
     toast.success(`Fichier ${targetLang}.json téléchargé - remplacez src/locales/${targetLang}.json`);
   };
 
-  const getStatusIcon = (status: TranslationResult["status"]) => {
-    switch (status) {
-      case "pending": return <div className="w-4 h-4 rounded-full bg-muted" />;
-      case "translating": return <Loader2 className="w-4 h-4 animate-spin text-primary" />;
-      case "success": return <CheckCircle2 className="w-4 h-4 text-green-500" />;
-      case "error": return <XCircle className="w-4 h-4 text-destructive" />;
+  const toggleApprovalSelection = (id: string) => {
+    setSelectedApprovals(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+      }
+      return next;
+    });
+  };
+
+  const selectAllPendingApprovals = () => {
+    setSelectedApprovals(new Set(approvalCandidates.map(item => item.id)));
+  };
+
+  const clearApprovalSelection = () => {
+    setSelectedApprovals(new Set());
+  };
+
+  const approveSelected = async () => {
+    if (selectedApprovals.size === 0) {
+      toast.error("Sélectionnez au moins une traduction");
+      return;
     }
+
+    try {
+      const { error } = await supabase
+        .from("generated_translations")
+        .update({ is_approved: true })
+        .in("id", Array.from(selectedApprovals));
+
+      if (error) throw error;
+
+      toast.success(`${selectedApprovals.size} traduction(s) approuvée(s)`);
+      setSelectedApprovals(new Set());
+      loadSavedTranslations();
+    } catch (error) {
+      console.error("Approval error:", error);
+      toast.error("Erreur lors de la validation");
+    }
+  };
+
+  const getStatusIcon = (status: TranslationJob["status"]) => {
+    switch (status) {
+      case "queued":
+        return <Clock className="w-4 h-4 text-muted-foreground" />;
+      case "running":
+        return <Loader2 className="w-4 h-4 animate-spin text-primary" />;
+      case "completed":
+        return <CheckCircle2 className="w-4 h-4 text-green-500" />;
+      case "failed":
+        return <XCircle className="w-4 h-4 text-destructive" />;
+    }
+  };
+
+  const getStatusBadge = (status: TranslationJob["status"]) => {
+    switch (status) {
+      case "queued":
+        return "bg-muted text-muted-foreground";
+      case "running":
+        return "bg-primary/10 text-primary";
+      case "completed":
+        return "bg-green-500/10 text-green-600";
+      case "failed":
+        return "bg-destructive/10 text-destructive";
+      default:
+        return "bg-muted text-muted-foreground";
+    }
+  };
+
+  const getLatestLog = (job: TranslationJob) => {
+    if (!job.logs || !Array.isArray(job.logs) || job.logs.length === 0) return null;
+    const lastLog = job.logs[job.logs.length - 1];
+    if (!lastLog || typeof lastLog !== "object") return null;
+    return (lastLog as TranslationJobLog).message || null;
   };
 
   return (
@@ -353,7 +471,7 @@ const AdminGenerateTranslations = () => {
           <div>
             <h1 className="text-3xl font-bold">Générateur de traductions</h1>
             <p className="text-muted-foreground">
-              Génère automatiquement les traductions manquantes des pays avec l'IA
+              Génère automatiquement les traductions manquantes des pays avec l&apos;IA
             </p>
           </div>
         </div>
@@ -388,7 +506,7 @@ const AdminGenerateTranslations = () => {
                       <SelectContent>
                         {LANGUAGES.filter(l => l.code !== "en").map(lang => (
                           <SelectItem key={lang.code} value={lang.code}>
-                            {lang.flag} {lang.name} 
+                            {lang.flag} {lang.name}
                             {savedStatsByLang[lang.code] && (
                               <span className="ml-2 text-xs text-muted-foreground">
                                 ({savedStatsByLang[lang.code]} en base)
@@ -423,7 +541,7 @@ const AdminGenerateTranslations = () => {
                           {countryIds.map(countryId => {
                             const isMissing = missingCountries.includes(countryId);
                             const countryName = sourceCountries[countryId as keyof typeof sourceCountries]?.name || countryId;
-                            
+
                             return (
                               <div key={countryId} className="flex items-center gap-2">
                                 <Checkbox
@@ -434,9 +552,7 @@ const AdminGenerateTranslations = () => {
                                 <span className={`text-sm ${isMissing ? "text-destructive" : "text-muted-foreground"}`}>
                                   {countryName}
                                 </span>
-                                {isMissing && (
-                                  <AlertTriangle className="w-3 h-3 text-destructive" />
-                                )}
+                                {isMissing && <AlertTriangle className="w-3 h-3 text-destructive" />}
                               </div>
                             );
                           })}
@@ -451,84 +567,89 @@ const AdminGenerateTranslations = () => {
                         {isGenerating ? (
                           <>
                             <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                            Génération en cours...
+                            Lancement en cours...
                           </>
                         ) : (
                           <>
                             <Play className="w-4 h-4 mr-2" />
-                            Générer {selectedCountries.size} traduction(s)
+                            Lancer {selectedCountries.size} job(s)
                           </>
                         )}
                       </Button>
+                      <p className="text-xs text-muted-foreground">
+                        Les traductions sont générées en arrière-plan. Suivez l&apos;avancement en temps réel.
+                      </p>
                     </>
                   )}
                 </CardContent>
               </Card>
 
-              {/* Progress & Results */}
+              {/* Progress & Jobs */}
               <Card className="lg:col-span-2">
                 <CardHeader>
-                  <CardTitle>Progression</CardTitle>
-                  {isGenerating && (
-                    <Progress value={progress} className="mt-2" />
-                  )}
+                  <div className="flex items-center justify-between">
+                    <CardTitle>Progression</CardTitle>
+                    <Button variant="ghost" size="sm" onClick={loadJobs} disabled={jobsLoading}>
+                      {jobsLoading ? (
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                      ) : (
+                        <RefreshCw className="w-4 h-4" />
+                      )}
+                    </Button>
+                  </div>
+                  {jobsForTargetLang.length > 0 && <Progress value={progress} className="mt-2" />}
                 </CardHeader>
                 <CardContent>
-                  {results.length === 0 ? (
+                  {jobsForTargetLang.length === 0 ? (
                     <div className="text-center py-12 text-muted-foreground">
                       <Languages className="w-12 h-12 mx-auto mb-4 opacity-50" />
-                      <p>Sélectionnez des pays et lancez la génération</p>
+                      <p>Aucun job pour cette langue</p>
                     </div>
                   ) : (
-                    <ScrollArea className="h-[400px]">
+                    <ScrollArea className="h-[420px]">
                       <div className="space-y-2">
-                        {results.map(result => (
-                          <div
-                            key={result.countryId}
-                            className="flex items-center justify-between p-3 bg-muted/50 rounded-lg"
-                          >
-                            <div className="flex items-center gap-3">
-                              {getStatusIcon(result.status)}
-                              <span className="font-medium">
-                                {sourceCountries[result.countryId as keyof typeof sourceCountries]?.name || result.countryId}
-                              </span>
+                        {jobsForTargetLang.map(job => {
+                          const countryName = sourceCountries[job.country_id as keyof typeof sourceCountries]?.name ||
+                            job.country_id;
+                          const latestLog = getLatestLog(job);
+                          return (
+                            <div
+                              key={job.id}
+                              className="flex items-center justify-between p-3 bg-muted/50 rounded-lg"
+                            >
+                              <div className="flex items-center gap-3">
+                                {getStatusIcon(job.status)}
+                                <div>
+                                  <span className="font-medium">{countryName}</span>
+                                  <div className="text-xs text-muted-foreground">
+                                    {new Date(job.updated_at).toLocaleString()} · {job.retries} retry(s)
+                                  </div>
+                                  {latestLog && (
+                                    <div className="text-xs text-muted-foreground mt-1">{latestLog}</div>
+                                  )}
+                                  {job.error_message && (
+                                    <div className="text-xs text-destructive mt-1">{job.error_message}</div>
+                                  )}
+                                </div>
+                              </div>
+                              <Badge className={getStatusBadge(job.status)}>{job.status}</Badge>
                             </div>
-                            {result.error && (
-                              <span className="text-sm text-destructive">{result.error}</span>
-                            )}
-                            {result.status === "success" && (
-                              <Badge variant="outline" className="text-green-600">
-                                Traduit
-                              </Badge>
-                            )}
-                          </div>
-                        ))}
+                          );
+                        })}
                       </div>
                     </ScrollArea>
                   )}
 
-                  {Object.keys(generatedTranslations).length > 0 && (
+                  {Object.keys(selectedTranslationsByCountry).length > 0 && (
                     <div className="mt-4 pt-4 border-t space-y-4">
                       <div className="flex gap-2 flex-wrap">
                         <Button variant="outline" size="sm" onClick={copyToClipboard}>
                           <Copy className="w-4 h-4 mr-2" />
-                          Copier nouvelles traductions
+                          Copier traductions en base
                         </Button>
                         <Button variant="outline" size="sm" onClick={downloadTranslations}>
                           <Download className="w-4 h-4 mr-2" />
                           Télécharger partielles
-                        </Button>
-                        <Button 
-                          size="sm" 
-                          onClick={saveToDatabase}
-                          disabled={isSaving}
-                        >
-                          {isSaving ? (
-                            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                          ) : (
-                            <Save className="w-4 h-4 mr-2" />
-                          )}
-                          Sauvegarder en base
                         </Button>
                       </div>
 
@@ -536,11 +657,11 @@ const AdminGenerateTranslations = () => {
                         <div className="p-4 bg-primary/10 rounded-lg border border-primary/20">
                           <div className="flex items-center gap-2 mb-2">
                             <Merge className="w-5 h-5 text-primary" />
-                            <span className="font-semibold">Fichier fusionné prêt à l'emploi</span>
+                            <span className="font-semibold">Fichier fusionné prêt à l&apos;emploi</span>
                           </div>
                           <p className="text-sm text-muted-foreground mb-3">
-                            Fichier complet avec toutes les traductions existantes + nouvelles. 
-                            Remplacez directement <code className="bg-muted px-1 rounded">src/locales/{targetLang}.json</code>
+                            Fichier complet avec toutes les traductions existantes. Remplacez directement
+                            <code className="bg-muted px-1 rounded">src/locales/{targetLang}.json</code>
                           </p>
                           <div className="flex gap-2">
                             <Button onClick={copyMergedToClipboard}>
@@ -559,44 +680,40 @@ const AdminGenerateTranslations = () => {
                 </CardContent>
               </Card>
             </div>
-
-            {/* Preview */}
-            {Object.keys(generatedTranslations).length > 0 && (
-              <Card className="mt-6">
-                <CardHeader>
-                  <CardTitle>Aperçu des nouvelles traductions</CardTitle>
-                  <CardDescription>
-                    Nouveaux pays traduits ({Object.keys(generatedTranslations).length})
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ScrollArea className="h-[300px]">
-                    <pre className="text-xs bg-muted p-4 rounded-lg overflow-x-auto">
-                      {JSON.stringify(generatedTranslations, null, 2)}
-                    </pre>
-                  </ScrollArea>
-                </CardContent>
-              </Card>
-            )}
           </TabsContent>
 
           <TabsContent value="saved">
             <Card>
               <CardHeader>
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between gap-4 flex-wrap">
                   <div>
                     <CardTitle>Traductions sauvegardées</CardTitle>
                     <CardDescription>
                       {savedTranslations.length} traduction(s) en base de données
                     </CardDescription>
                   </div>
-                  <Button variant="outline" size="sm" onClick={loadSavedTranslations} disabled={isLoadingDb}>
-                    {isLoadingDb ? (
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                    ) : (
-                      <RefreshCw className="w-4 h-4" />
-                    )}
-                  </Button>
+                  <div className="flex items-center gap-2">
+                    <Select value={savedLangFilter} onValueChange={value => setSavedLangFilter(value)}>
+                      <SelectTrigger className="w-[180px]">
+                        <SelectValue placeholder="Toutes langues" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">Toutes langues</SelectItem>
+                        {LANGUAGES.filter(l => l.code !== "en").map(lang => (
+                          <SelectItem key={lang.code} value={lang.code}>
+                            {lang.flag} {lang.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <Button variant="outline" size="sm" onClick={loadSavedTranslations} disabled={isLoadingDb}>
+                      {isLoadingDb ? (
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                      ) : (
+                        <RefreshCw className="w-4 h-4" />
+                      )}
+                    </Button>
+                  </div>
                 </div>
               </CardHeader>
               <CardContent>
@@ -604,52 +721,91 @@ const AdminGenerateTranslations = () => {
                   <div className="text-center py-12 text-muted-foreground">
                     <Database className="w-12 h-12 mx-auto mb-4 opacity-50" />
                     <p>Aucune traduction sauvegardée</p>
-                    <p className="text-sm">Générez des traductions et cliquez sur "Sauvegarder en base"</p>
+                    <p className="text-sm">Lancez un batch pour générer des traductions</p>
                   </div>
                 ) : (
                   <>
-                    {/* Stats by language */}
-                    <div className="flex gap-2 flex-wrap mb-4">
-                      {LANGUAGES.filter(l => l.code !== "en").map(lang => {
-                        const count = savedStatsByLang[lang.code] || 0;
-                        return (
-                          <Badge 
-                            key={lang.code} 
-                            variant={count > 0 ? "default" : "outline"}
-                            className="gap-1"
-                          >
-                            {lang.flag} {count} pays
-                          </Badge>
-                        );
-                      })}
+                    <div className="flex flex-col gap-4 mb-4">
+                      <div className="flex gap-2 flex-wrap">
+                        {LANGUAGES.filter(l => l.code !== "en").map(lang => {
+                          const count = savedStatsByLang[lang.code] || 0;
+                          return (
+                            <Badge key={lang.code} variant={count > 0 ? "default" : "outline"} className="gap-1">
+                              {lang.flag} {count} pays
+                            </Badge>
+                          );
+                        })}
+                      </div>
+                      <div className="flex items-center gap-3 flex-wrap">
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <ListChecks className="w-4 h-4" />
+                          <span>{pendingTranslations.length} traductions en attente</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Checkbox
+                            checked={showPendingOnly}
+                            onCheckedChange={value => setShowPendingOnly(Boolean(value))}
+                          />
+                          <span className="text-sm">Afficher uniquement en attente</span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={selectAllPendingApprovals}
+                          disabled={approvalCandidates.length === 0}
+                        >
+                          Tout sélectionner
+                        </Button>
+                        <Button size="sm" variant="ghost" onClick={clearApprovalSelection}>
+                          Effacer
+                        </Button>
+                        <Button size="sm" onClick={approveSelected} disabled={selectedApprovals.size === 0}>
+                          <Check className="w-4 h-4 mr-2" />
+                          Approuver la sélection ({selectedApprovals.size})
+                        </Button>
+                      </div>
                     </div>
 
-                    <ScrollArea className="h-[500px]">
+                    <ScrollArea className="h-[520px]">
                       <div className="space-y-2">
-                        {savedTranslations.map(t => {
-                          const lang = LANGUAGES.find(l => l.code === t.target_lang);
-                          const countryName = sourceCountries[t.country_id as keyof typeof sourceCountries]?.name || t.country_id;
-                          
+                        {filteredSavedTranslations.map(saved => {
+                          const lang = LANGUAGES.find(l => l.code === saved.target_lang);
+                          const countryName = sourceCountries[saved.country_id as keyof typeof sourceCountries]?.name ||
+                            saved.country_id;
+
                           return (
                             <div
-                              key={t.id}
+                              key={saved.id}
                               className="flex items-center justify-between p-3 bg-muted/50 rounded-lg"
                             >
                               <div className="flex items-center gap-3">
+                                {!saved.is_approved && (
+                                  <Checkbox
+                                    checked={selectedApprovals.has(saved.id)}
+                                    onCheckedChange={() => toggleApprovalSelection(saved.id)}
+                                  />
+                                )}
                                 <span className="text-lg">{lang?.flag || "🌍"}</span>
                                 <div>
                                   <span className="font-medium">{countryName}</span>
                                   <span className="text-sm text-muted-foreground ml-2">→ {lang?.name}</span>
+                                  <div className="text-xs text-muted-foreground">
+                                    {new Date(saved.created_at).toLocaleDateString()}
+                                  </div>
                                 </div>
                               </div>
                               <div className="flex items-center gap-2">
-                                <span className="text-xs text-muted-foreground">
-                                  {new Date(t.created_at).toLocaleDateString()}
-                                </span>
-                                {t.is_approved && (
+                                {saved.is_approved ? (
                                   <Badge variant="outline" className="text-green-600">
                                     <CheckCircle2 className="w-3 h-3 mr-1" />
                                     Approuvé
+                                  </Badge>
+                                ) : (
+                                  <Badge variant="outline" className="text-orange-500">
+                                    <AlertTriangle className="w-3 h-3 mr-1" />
+                                    En attente
                                   </Badge>
                                 )}
                               </div>
