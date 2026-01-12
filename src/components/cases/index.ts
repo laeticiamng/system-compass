@@ -12,3 +12,4 @@ export { ActorsMap } from './ActorsMap';
 export { RiskRegisterEnhanced } from './RiskRegisterEnhanced';
 export { StructuralRulesSection } from './StructuralRulesSection';
 export { CaseAIGenerator } from './CaseAIGenerator';
+export { GovernanceAdvanced } from './GovernanceAdvanced';
