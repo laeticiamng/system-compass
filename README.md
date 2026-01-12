@@ -1,7 +1,7 @@
 # Exit Keys Platform
 
-[![Tests](https://github.com/YOUR_USERNAME/YOUR_REPO/actions/workflows/test.yml/badge.svg)](https://github.com/YOUR_USERNAME/YOUR_REPO/actions/workflows/test.yml)
-[![i18n Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/.github/badges/i18n-coverage.json)](https://github.com/YOUR_USERNAME/YOUR_REPO/blob/main/.github/badges/I18N_COVERAGE.md)
+[![Tests](https://github.com/system-compass/system-compass/actions/workflows/test.yml/badge.svg)](https://github.com/system-compass/system-compass/actions/workflows/test.yml)
+[![i18n Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/system-compass/system-compass/main/.github/badges/i18n-coverage.json)](https://github.com/system-compass/system-compass/blob/main/.github/badges/I18N_COVERAGE.md)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue.svg)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-18.3-61dafb.svg)](https://reactjs.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38bdf8.svg)](https://tailwindcss.com/)
@@ -66,7 +66,7 @@ src/
 
 ## Deployment
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share → Publish.
+Simply open [Lovable](https://lovable.dev/projects/abysiagseykztutnbjtu) and click on Share → Publish.
 
 ## Custom Domain
 
