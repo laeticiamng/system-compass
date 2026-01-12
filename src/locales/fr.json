@@ -8397,5 +8397,277 @@
     "disclaimer": "Contenu généré par IA - à vérifier et compléter manuellement",
     "rateLimitError": "Limite de requêtes atteinte. Réessayez dans quelques instants.",
     "creditsError": "Crédits IA insuffisants. Veuillez recharger votre compte."
+  },
+  "institutions": {
+    "badge": "Entreprises & Institutions",
+    "title": "Aide à la décision institutionnelle",
+    "subtitle": "Un outil d'analyse pour clarifier les arbitrages, identifier les angles morts et prévenir les erreurs coûteuses — sans prescription ni prédiction.",
+    "illuminate": "Éclairer",
+    "structure": "Structurer",
+    "prevent": "Prévenir",
+    "tabs": {
+      "intro": "Introduction",
+      "useCases": "Cas d'usage",
+      "collective": "Décision collective",
+      "traceability": "Traçabilité",
+      "disclaimer": "Limites"
+    },
+    "whatItIs": {
+      "title": "Ce que fait Pyramid Compass",
+      "illuminate": "Éclaire les options",
+      "illuminateDesc": "Rend visibles les variables, zones d'incertitude et coûts cachés",
+      "structure": "Structure les décisions",
+      "structureDesc": "Aide à clarifier un arbitrage avant qu'il ne devienne irréversible",
+      "blindspots": "Identifie les angles morts",
+      "blindspotsDesc": "Met en évidence ce qui pourrait être négligé ou sous-estimé",
+      "scenarios": "Compare des scénarios",
+      "scenariosDesc": "Permet de visualiser plusieurs trajectoires possibles sans en recommander une"
+    },
+    "whatItDoesNot": {
+      "title": "Ce que Pyramid Compass ne fait PAS",
+      "noRecommendation": "Ne recommande pas",
+      "noRecommendationDesc": "Aucune option n'est présentée comme \"la bonne décision\"",
+      "noPrediction": "Ne prédit pas",
+      "noPredictionDesc": "Simulation ≠ prédiction. Les résultats dépendent du contexte réel.",
+      "noResponsibility": "Ne décharge pas",
+      "noResponsibilityDesc": "La responsabilité de la décision reste entièrement humaine.",
+      "noAdvice": "Ne conseille pas",
+      "noAdviceDesc": "Pas de conseil juridique, financier, RH ou stratégique."
+    },
+    "principles": {
+      "title": "Principes fondamentaux",
+      "simulation": "Simulation ≠ Prédiction",
+      "responsibility": "Responsabilité ≠ Délégation",
+      "illumination": "L'outil éclaire, le décideur tranche"
+    },
+    "cta": {
+      "explore": "Explorer les cas d'usage"
+    },
+    "disclaimer": {
+      "title": "Disclaimer institutionnel",
+      "subtitle": "Limites et responsabilités",
+      "noReplacement": "Ne remplace pas une décision humaine",
+      "noReplacementDesc": "Pyramid Compass est un outil d'aide à la réflexion. Il ne prend pas et ne doit pas prendre de décision à la place des responsables.",
+      "noPrediction": "N'est pas un outil de prédiction",
+      "noPredictionDesc": "Les simulations explorent des scénarios possibles. Elles ne prédisent pas l'avenir ni ne garantissent un résultat.",
+      "noAdvice": "Ne fournit aucune recommandation",
+      "noAdviceDesc": "Aucune option, aucun scénario n'est présenté comme \"la bonne décision\". L'outil n'émet pas d'avis.",
+      "responsibility": "Le décideur reste responsable",
+      "responsibilityDesc": "L'utilisation de Pyramid Compass ne transfère aucune responsabilité. Chaque décision engage ceux qui la prennent.",
+      "summary": "L'outil éclaire, le décideur reste responsable.",
+      "summaryDesc": "Pyramid Compass est conçu pour accompagner la réflexion, pas pour se substituer au jugement humain."
+    },
+    "finalCta": {
+      "title": "Prêt à structurer vos décisions ?",
+      "description": "Explorez les outils existants de Pyramid Compass, déjà adaptés à l'analyse décisionnelle.",
+      "filter": "Filtre de prévention",
+      "compare": "Comparer des scénarios"
+    },
+    "useCases": {
+      "title": "Cas d'usage institutionnels",
+      "subtitle": "Templates dédiés pour les décisions organisationnelles complexes",
+      "variables": "Variables explicites",
+      "uncertainties": "Zones d'incertitude",
+      "hiddenCosts": "Coûts cachés",
+      "blindSpots": "Angles morts",
+      "scenarios": "Scénarios comparatifs",
+      "strategic": {
+        "title": "Arbitrage stratégique",
+        "desc": "Investissements, priorités, allocation de ressources",
+        "var1": "Montant et horizon d'investissement",
+        "var2": "Retour attendu vs risque acceptable",
+        "var3": "Capacité d'exécution interne",
+        "var4": "Dépendances externes (marché, réglementation)",
+        "unc1": "Évolution du marché à horizon X",
+        "unc2": "Réaction des concurrents",
+        "unc3": "Adoption interne du changement",
+        "cost1": "Coût d'opportunité des options non prises",
+        "cost2": "Temps de transition et courbe d'apprentissage",
+        "cost3": "Impact sur les projets existants",
+        "blind1": "Hypothèses implicites sur la croissance",
+        "blind2": "Surestimation de la capacité d'absorption",
+        "blind3": "Négligence des signaux faibles",
+        "scen1": { "name": "Scénario A", "desc": "Investissement progressif avec jalons" },
+        "scen2": { "name": "Scénario B", "desc": "Investissement massif et rapide" },
+        "scen3": { "name": "Scénario C", "desc": "Attente et observation du marché" }
+      },
+      "hr": {
+        "title": "Décisions RH sensibles",
+        "desc": "Mobilité, organisation, restructuration",
+        "var1": "Nombre de personnes concernées",
+        "var2": "Compétences clés à préserver",
+        "var3": "Délais légaux et conventionnels",
+        "var4": "Budget disponible pour accompagnement",
+        "unc1": "Réaction des équipes et du climat social",
+        "unc2": "Rétention des talents critiques",
+        "unc3": "Productivité pendant la transition",
+        "cost1": "Perte de savoir tacite",
+        "cost2": "Coût de recrutement futur",
+        "cost3": "Impact sur la marque employeur",
+        "blind1": "Sous-estimation de l'attachement émotionnel",
+        "blind2": "Réseaux informels de compétences",
+        "blind3": "Effet sur les non-concernés",
+        "scen1": { "name": "Scénario A", "desc": "Restructuration progressive avec reclassement" },
+        "scen2": { "name": "Scénario B", "desc": "Externalisation partielle des fonctions" },
+        "scen3": { "name": "Scénario C", "desc": "Réorganisation sans suppression de poste" }
+      },
+      "project": {
+        "title": "Lancement / arrêt de projets",
+        "desc": "Go/No-go, pivot, abandon",
+        "var1": "Investissement déjà réalisé (sunk cost)",
+        "var2": "Investissement restant nécessaire",
+        "var3": "Probabilité de succès estimée",
+        "var4": "Valeur en cas de succès",
+        "unc1": "Évolution des besoins du marché",
+        "unc2": "Capacité à tenir les délais",
+        "unc3": "Risques techniques non identifiés",
+        "cost1": "Coût de communication interne de l'arrêt",
+        "cost2": "Démotivation des équipes",
+        "cost3": "Perte de crédibilité du sponsor",
+        "blind1": "Biais d'engagement (sunk cost fallacy)",
+        "blind2": "Optimisme sur les estimations",
+        "blind3": "Pression sociale pour continuer",
+        "scen1": { "name": "Scénario A", "desc": "Poursuite avec réduction de périmètre" },
+        "scen2": { "name": "Scénario B", "desc": "Pivot vers une nouvelle cible" },
+        "scen3": { "name": "Scénario C", "desc": "Arrêt propre avec capitalisation" }
+      },
+      "crisis": {
+        "title": "Gestion de crise",
+        "desc": "Situations complexes, urgentes ou sensibles",
+        "var1": "Nature et gravité de la crise",
+        "var2": "Parties prenantes impactées",
+        "var3": "Délai avant point de non-retour",
+        "var4": "Ressources mobilisables immédiatement",
+        "unc1": "Évolution de la situation",
+        "unc2": "Réaction des médias / opinion",
+        "unc3": "Comportement des parties prenantes",
+        "cost1": "Dommages réputationnels à long terme",
+        "cost2": "Épuisement des équipes",
+        "cost3": "Précédents juridiques créés",
+        "blind1": "Focalisation sur le symptôme vs la cause",
+        "blind2": "Victimes secondaires négligées",
+        "blind3": "Effet sur la confiance interne",
+        "scen1": { "name": "Scénario A", "desc": "Communication proactive et transparente" },
+        "scen2": { "name": "Scénario B", "desc": "Confinement et gestion en interne" },
+        "scen3": { "name": "Scénario C", "desc": "Escalade vers les autorités compétentes" }
+      },
+      "longterm": {
+        "title": "Orientation long terme",
+        "desc": "Croissance, transformation, repositionnement",
+        "var1": "Vision à 5-10 ans",
+        "var2": "Tendances structurelles du secteur",
+        "var3": "Capacités à développer",
+        "var4": "Partenariats stratégiques possibles",
+        "unc1": "Évolutions technologiques",
+        "unc2": "Changements réglementaires",
+        "unc3": "Évolution des attentes sociétales",
+        "cost1": "Inertie organisationnelle",
+        "cost2": "Résistance au changement",
+        "cost3": "Perte de focus sur le court terme",
+        "blind1": "Projection des tendances actuelles",
+        "blind2": "Sous-estimation des disruptions",
+        "blind3": "Biais de confirmation stratégique",
+        "scen1": { "name": "Scénario A", "desc": "Transformation digitale accélérée" },
+        "scen2": { "name": "Scénario B", "desc": "Diversification vers de nouveaux marchés" },
+        "scen3": { "name": "Scénario C", "desc": "Consolidation et excellence opérationnelle" }
+      }
+    },
+    "collective": {
+      "title": "Mode \"Décision collective\"",
+      "subtitle": "Simuler une décision à plusieurs points de vue pour mettre en évidence divergences, consensus et hypothèses implicites.",
+      "principle": "Outil d'alignement cognitif, pas de vote. L'objectif est de comprendre, pas de trancher.",
+      "roles": {
+        "direction": "Direction générale",
+        "operations": "Opérations"
+      },
+      "example": {
+        "assumption1": "Le marché va continuer à croître",
+        "assumption2": "Les équipes peuvent absorber la charge",
+        "priority1": "Rentabilité à court terme",
+        "priority2": "Stabilité des processus",
+        "concern1": "Pression des actionnaires",
+        "concern2": "Fatigue des équipes"
+      },
+      "perspectives": {
+        "title": "Points de vue à simuler",
+        "desc": "Ajoutez les différents acteurs ou rôles impliqués dans la décision"
+      },
+      "addRole": "Ajouter un rôle (ex: Finance, RH, Juridique...)",
+      "assumptions": "Hypothèses de ce point de vue",
+      "assumptionsPlaceholder": "Quelles hypothèses ce rôle fait-il implicitement ?",
+      "priorities": "Priorités",
+      "prioritiesPlaceholder": "Ce qui compte le plus pour ce rôle",
+      "concerns": "Préoccupations",
+      "concernsPlaceholder": "Ce qui inquiète ce rôle",
+      "analyze": "Analyser les perspectives",
+      "analysis": {
+        "consensusTitle": "Zones de consensus",
+        "consensus1": "Besoin d'agir rapidement",
+        "consensus2": "Importance de la communication interne",
+        "divergencesTitle": "Divergences de perception",
+        "div1": {
+          "topic": "Horizon temporel",
+          "dir": "Résultats trimestriels",
+          "ops": "Vision à 2-3 ans"
+        },
+        "div2": {
+          "topic": "Tolérance au risque",
+          "dir": "Prêt à parier gros",
+          "ops": "Préférence pour la prudence"
+        },
+        "implicitTitle": "Hypothèses implicites détectées",
+        "implicitDesc": "Ce que personne n'a explicitement mentionné mais qui sous-tend les positions",
+        "implicit1": "Tous supposent que les ressources actuelles suffiront",
+        "implicit2": "Aucun n'a mentionné les contraintes légales",
+        "implicit3": "L'impact client n'a pas été explicitement discuté"
+      },
+      "newAnalysis": "Nouvelle analyse",
+      "disclaimer": "Cette analyse met en lumière des patterns. Elle n'émet aucun jugement et ne recommande aucune position. L'alignement final reste une décision humaine."
+    },
+    "traceability": {
+      "title": "Traçabilité & Prévention",
+      "subtitle": "Historique des simulations et visualisation des hypothèses retenues pour éviter les biais rétrospectifs.",
+      "purpose1": {
+        "title": "Éviter les biais rétrospectifs",
+        "desc": "Documenter ce qui était connu au moment de la décision, pas après coup."
+      },
+      "purpose2": {
+        "title": "Documenter le raisonnement",
+        "desc": "Tracer le processus de réflexion, pas seulement la décision finale."
+      },
+      "history": "Historique des simulations",
+      "status": {
+        "draft": "Brouillon",
+        "reviewed": "Validé",
+        "archived": "Archivé"
+      },
+      "noHistory": "Aucune simulation enregistrée",
+      "export": "Exporter",
+      "participants": "Participants",
+      "hypotheses": "Hypothèses retenues",
+      "scenarios": "Scénarios explorés",
+      "blindSpots": "Angles morts identifiés",
+      "selectSimulation": "Sélectionnez une simulation pour voir les détails",
+      "disclaimer": "L'historique documente le raisonnement, pas la décision. Il permet de comprendre le contexte initial sans jugement rétrospectif.",
+      "example1": {
+        "title": "Expansion marché APAC",
+        "hyp1": "Croissance du marché asiatique de 8%/an",
+        "hyp2": "Capacité de recrutement local disponible",
+        "hyp3": "Partenaire distributeur fiable identifié",
+        "scen1": "Entrée via filiale",
+        "scen2": "Entrée via joint-venture",
+        "scen3": "Entrée via acquisition",
+        "blind1": "Risques géopolitiques non quantifiés",
+        "blind2": "Barrières culturelles sous-estimées"
+      },
+      "example2": {
+        "title": "Réorganisation équipe produit",
+        "hyp1": "Pas de départs volontaires majeurs",
+        "hyp2": "Formation interne suffisante",
+        "scen1": "Fusion des équipes",
+        "scen2": "Création d'une équipe transverse",
+        "blind1": "Impact sur la motivation non mesuré"
+      }
+    }
   }
 }
