@@ -1,3 +1,4 @@
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -14,6 +15,9 @@ import {
   Shield,
   FileText
 } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
+import type { Database, Json } from '@/integrations/supabase/types';
+import { toast } from 'sonner';
 
 interface DecisionTemplate {
   id: string;
@@ -31,225 +35,62 @@ interface DecisionTemplate {
   };
 }
 
-const templates: DecisionTemplate[] = [
-  // RH Templates
-  {
-    id: 'rh-recruitment',
-    category: 'rh',
-    icon: Users,
-    title: 'Recrutement stratégique',
-    description: 'Décision de recrutement pour un poste clé',
-    template: {
-      title: 'Recrutement [Poste]',
-      context: 'Besoin identifié suite à [croissance/départ/réorganisation]. Impact sur [équipe/projet].',
-      mainHypothesis: 'Recruter un profil [junior/senior] avec expertise en [domaine]',
-      alternativeHypotheses: [
-        'Promotion interne d\'un collaborateur existant',
-        'Externalisation de la fonction',
-        'Réorganisation des responsabilités actuelles'
-      ],
-      constraints: [
-        'Budget alloué : [montant]',
-        'Délai de recrutement : [durée]',
-        'Disponibilité du manager pour intégration'
-      ],
-      scope: 'RH / Direction'
-    }
-  },
-  {
-    id: 'rh-reorganization',
-    category: 'rh',
-    icon: Building2,
-    title: 'Réorganisation d\'équipe',
-    description: 'Restructuration ou fusion d\'équipes',
-    template: {
-      title: 'Réorganisation [Département]',
-      context: 'Contexte de [transformation/optimisation/croissance] nécessitant une revue de l\'organisation.',
-      mainHypothesis: 'Fusionner les équipes [A] et [B] sous une direction unique',
-      alternativeHypotheses: [
-        'Maintenir la structure actuelle avec coordination renforcée',
-        'Créer une structure matricielle',
-        'Externaliser certaines fonctions'
-      ],
-      constraints: [
-        'Préserver les compétences clés',
-        'Respecter les obligations sociales',
-        'Limiter l\'impact sur les projets en cours'
-      ],
-      scope: 'Direction Générale'
-    }
-  },
-  // IT Templates
-  {
-    id: 'it-migration',
-    category: 'it',
-    icon: Monitor,
-    title: 'Migration technologique',
-    description: 'Changement d\'infrastructure ou de stack',
-    template: {
-      title: 'Migration vers [Technologie/Plateforme]',
-      context: 'Obsolescence de [système actuel] / Besoin de [scalabilité/performance/sécurité].',
-      mainHypothesis: 'Migrer vers [nouvelle solution] avec approche [big bang/progressive]',
-      alternativeHypotheses: [
-        'Moderniser le système existant',
-        'Adopter une solution hybride',
-        'Externaliser vers un service managé'
-      ],
-      constraints: [
-        'Budget projet : [montant]',
-        'Fenêtre de migration : [période]',
-        'Continuité de service requise',
-        'Formation des équipes'
-      ],
-      scope: 'DSI / Direction'
-    }
-  },
-  {
-    id: 'it-security',
-    category: 'it',
-    icon: Shield,
-    title: 'Politique de sécurité',
-    description: 'Renforcement ou révision sécuritaire',
-    template: {
-      title: 'Renforcement sécurité [Périmètre]',
-      context: 'Suite à [audit/incident/nouvelle réglementation], nécessité de renforcer la posture sécurité.',
-      mainHypothesis: 'Implémenter [solution/politique] pour adresser [risque identifié]',
-      alternativeHypotheses: [
-        'Accepter le risque avec mesures compensatoires',
-        'Transférer le risque (assurance)',
-        'Éviter le risque en abandonnant l\'activité concernée'
-      ],
-      constraints: [
-        'Conformité réglementaire (RGPD, NIS2...)',
-        'Impact utilisateurs acceptable',
-        'Budget sécurité disponible'
-      ],
-      scope: 'RSSI / DSI'
-    }
-  },
-  // Strategy Templates
-  {
-    id: 'strategy-market',
-    category: 'strategy',
-    icon: Target,
-    title: 'Entrée sur un marché',
-    description: 'Expansion géographique ou sectorielle',
-    template: {
-      title: 'Expansion [Marché/Segment]',
-      context: 'Opportunité identifiée sur [marché]. Potentiel estimé à [valeur]. Concurrence : [analyse].',
-      mainHypothesis: 'Lancer une offre [produit/service] sur [marché] via [canal]',
-      alternativeHypotheses: [
-        'Partenariat avec acteur local établi',
-        'Acquisition d\'un concurrent local',
-        'Test en mode pilote avant déploiement'
-      ],
-      constraints: [
-        'Investissement initial : [montant]',
-        'ROI attendu : [horizon]',
-        'Ressources humaines disponibles',
-        'Risques réglementaires locaux'
-      ],
-      scope: 'Comité Stratégique'
-    }
-  },
-  {
-    id: 'strategy-pivot',
-    category: 'strategy',
-    icon: Briefcase,
-    title: 'Pivot stratégique',
-    description: 'Réorientation du modèle d\'affaires',
-    template: {
-      title: 'Pivot vers [Nouveau modèle]',
-      context: 'Évolution du marché nécessitant une adaptation. [Menaces/Opportunités] identifiées.',
-      mainHypothesis: 'Réorienter l\'offre vers [nouveau positionnement] en [horizon]',
-      alternativeHypotheses: [
-        'Diversification de l\'offre actuelle',
-        'Consolidation sur le cœur de métier',
-        'Recherche de nouveaux canaux de distribution'
-      ],
-      constraints: [
-        'Préserver la base clients existante',
-        'Capacité de financement de la transition',
-        'Compétences à acquérir ou développer'
-      ],
-      scope: 'Direction Générale / Board'
-    }
-  },
-  // Finance Templates
-  {
-    id: 'finance-investment',
-    category: 'finance',
-    icon: DollarSign,
-    title: 'Décision d\'investissement',
-    description: 'Allocation de capital importante',
-    template: {
-      title: 'Investissement [Projet/Asset]',
-      context: 'Opportunité d\'investissement de [montant] dans [projet]. VAN estimée : [valeur]. TRI : [%].',
-      mainHypothesis: 'Approuver l\'investissement avec [conditions]',
-      alternativeHypotheses: [
-        'Reporter l\'investissement à [date]',
-        'Investissement partiel en phase 1',
-        'Recherche de co-investisseurs'
-      ],
-      constraints: [
-        'Capacité de financement disponible',
-        'Impact sur les ratios financiers',
-        'Cohérence avec la stratégie groupe',
-        'Risques de marché'
-      ],
-      scope: 'CFO / Comité Financier'
-    }
-  },
-  {
-    id: 'finance-cost',
-    category: 'finance',
-    icon: Scale,
-    title: 'Optimisation des coûts',
-    description: 'Plan de réduction ou rationalisation',
-    template: {
-      title: 'Plan d\'optimisation [Périmètre]',
-      context: 'Objectif de réduction de [X%] des coûts [opérationnels/structurels] sur [horizon].',
-      mainHypothesis: 'Implémenter le plan [A] ciblant [postes de coûts]',
-      alternativeHypotheses: [
-        'Approche progressive par phases',
-        'Focus sur l\'amélioration des revenus plutôt que réduction',
-        'Externalisation de fonctions non-core'
-      ],
-      constraints: [
-        'Maintenir la qualité de service',
-        'Respecter les engagements contractuels',
-        'Préserver les talents clés',
-        'Timeline de mise en œuvre'
-      ],
-      scope: 'Direction Financière'
-    }
-  },
-  // Legal Templates
-  {
-    id: 'legal-compliance',
-    category: 'legal',
-    icon: FileText,
-    title: 'Mise en conformité',
-    description: 'Adaptation réglementaire',
-    template: {
-      title: 'Conformité [Réglementation]',
-      context: 'Nouvelle réglementation [nom] applicable au [date]. Écart de conformité identifié sur [périmètre].',
-      mainHypothesis: 'Plan de mise en conformité en [X] phases d\'ici [date]',
-      alternativeHypotheses: [
-        'Demande de dérogation ou délai supplémentaire',
-        'Externalisation de la fonction concernée',
-        'Cessation de l\'activité non-conforme'
-      ],
-      constraints: [
-        'Deadline réglementaire non négociable',
-        'Sanctions en cas de non-conformité',
-        'Budget compliance limité',
-        'Ressources expertes requises'
-      ],
-      scope: 'Direction Juridique'
-    }
+type TraceOSTemplateRow = Database['public']['Tables']['traceos_templates']['Row'];
+
+interface LocalizedItem {
+  key: string | null;
+  fallback: string | null;
+}
+
+const iconMap: Record<string, DecisionTemplate['icon']> = {
+  Users,
+  Monitor,
+  Target,
+  DollarSign,
+  Scale,
+  Building2,
+  Briefcase,
+  Shield,
+  FileText
+};
+
+const resolveText = (
+  key: string | null,
+  fallback: string | null,
+  t: ReturnType<typeof useTranslation>['t']
+) => {
+  if (key) {
+    return t(key, fallback ?? '');
   }
-];
+  return fallback ?? '';
+};
+
+const parseLocalizedItem = (value: Json): LocalizedItem | null => {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    return null;
+  }
+  const record = value as Record<string, Json>;
+  const key = typeof record.key === 'string' ? record.key : null;
+  const fallback = typeof record.default === 'string' ? record.default : null;
+  if (!key && !fallback) {
+    return null;
+  }
+  return { key, fallback };
+};
+
+const resolveList = (
+  value: Json | null,
+  t: ReturnType<typeof useTranslation>['t']
+): string[] => {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+  return value
+    .map((item) => parseLocalizedItem(item))
+    .filter((item): item is LocalizedItem => Boolean(item))
+    .map((item) => resolveText(item.key, item.fallback, t))
+    .filter((item) => item.trim().length > 0);
+};
 
 const categoryColors: Record<string, string> = {
   rh: 'bg-blue-500/10 text-blue-600 border-blue-500/20',
@@ -262,12 +103,12 @@ const categoryColors: Record<string, string> = {
 
 const getCategoryLabel = (category: string, t: ReturnType<typeof useTranslation>['t']): string => {
   const labels: Record<string, string> = {
-    rh: t('traceOS.categories.hr', 'RH'),
-    it: t('traceOS.categories.it', 'IT'),
-    strategy: t('traceOS.categories.strategy', 'Stratégie'),
-    finance: t('traceOS.categories.finance', 'Finance'),
-    legal: t('traceOS.categories.legal', 'Juridique'),
-    operations: t('traceOS.categories.operations', 'Opérations')
+    rh: t('traceos.templates.categories.rh', 'RH'),
+    it: t('traceos.templates.categories.it', 'IT'),
+    strategy: t('traceos.templates.categories.strategy', 'Stratégie'),
+    finance: t('traceos.templates.categories.finance', 'Finance'),
+    legal: t('traceos.templates.categories.legal', 'Juridique'),
+    operations: t('traceos.templates.categories.operations', 'Opérations')
   };
   return labels[category] || category;
 };
@@ -277,9 +118,65 @@ interface DecisionTemplatesProps {
 }
 
 export function DecisionTemplates({ onSelectTemplate }: DecisionTemplatesProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [templates, setTemplates] = useState<TraceOSTemplateRow[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const groupedTemplates = templates.reduce((acc, template) => {
+  useEffect(() => {
+    let mounted = true;
+
+    const fetchTemplates = async () => {
+      setLoading(true);
+      const { data, error } = await supabase
+        .from('traceos_templates')
+        .select('*')
+        .eq('is_active', true)
+        .order('sort_order', { ascending: true })
+        .order('created_at', { ascending: true });
+
+      if (!mounted) {
+        return;
+      }
+
+      if (error) {
+        console.error('Error fetching TraceOS templates:', error);
+        toast.error(t('traceos.templates.error', 'Erreur lors du chargement des templates'));
+        setTemplates([]);
+      } else {
+        setTemplates(data ?? []);
+      }
+      setLoading(false);
+    };
+
+    fetchTemplates();
+
+    return () => {
+      mounted = false;
+    };
+  }, [t]);
+
+  const displayTemplates = useMemo(() => {
+    return templates.map<DecisionTemplate>((template) => {
+      const icon = iconMap[template.icon] ?? FileText;
+      return {
+        id: template.template_key,
+        category: template.category as DecisionTemplate['category'],
+        icon,
+        title: resolveText(template.title_key, template.title_default, t),
+        description: resolveText(template.description_key, template.description_default, t),
+        template: {
+          title: resolveText(template.template_title_key, template.template_title_default, t),
+          context: resolveText(template.context_key, template.context_default, t),
+          mainHypothesis: resolveText(template.main_hypothesis_key, template.main_hypothesis_default, t),
+          alternativeHypotheses: resolveList(template.alternative_hypotheses, t),
+          constraints: resolveList(template.constraints, t),
+          scope: resolveText(template.scope_key, template.scope_default, t)
+        }
+      };
+    });
+  }, [i18n.language, t, templates]);
+
+  const groupedTemplates = displayTemplates.reduce((acc, template) => {
     if (!acc[template.category]) {
       acc[template.category] = [];
     }
@@ -299,43 +196,53 @@ export function DecisionTemplates({ onSelectTemplate }: DecisionTemplatesProps) 
       </CardHeader>
       <CardContent>
         <ScrollArea className="h-96 pr-4">
-          <div className="space-y-6">
-            {Object.entries(groupedTemplates).map(([category, categoryTemplates]) => (
-              <div key={category} className="space-y-3">
-                <div className="flex items-center gap-2">
-                  <Badge variant="outline" className={categoryColors[category]}>
-                    {getCategoryLabel(category, t)}
-                  </Badge>
-                </div>
-                <div className="grid gap-3">
-                  {categoryTemplates.map((template) => (
-                    <Card 
-                      key={template.id}
-                      className="cursor-pointer hover:border-primary/50 transition-colors"
-                      onClick={() => onSelectTemplate(template.template)}
-                    >
-                      <CardContent className="p-4">
-                        <div className="flex items-start gap-3">
-                          <div className={`p-2 rounded-lg ${categoryColors[template.category]}`}>
-                            <template.icon className="h-4 w-4" />
+          {loading ? (
+            <div className="flex items-center justify-center py-8 text-sm text-muted-foreground">
+              {t('traceos.templates.loading', 'Chargement des templates...')}
+            </div>
+          ) : displayTemplates.length === 0 ? (
+            <div className="flex items-center justify-center py-8 text-sm text-muted-foreground">
+              {t('traceos.templates.empty', 'Aucun template disponible pour le moment.')}
+            </div>
+          ) : (
+            <div className="space-y-6">
+              {Object.entries(groupedTemplates).map(([category, categoryTemplates]) => (
+                <div key={category} className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <Badge variant="outline" className={categoryColors[category]}>
+                      {getCategoryLabel(category, t)}
+                    </Badge>
+                  </div>
+                  <div className="grid gap-3">
+                    {categoryTemplates.map((template) => (
+                      <Card 
+                        key={template.id}
+                        className="cursor-pointer hover:border-primary/50 transition-colors"
+                        onClick={() => onSelectTemplate(template.template)}
+                      >
+                        <CardContent className="p-4">
+                          <div className="flex items-start gap-3">
+                            <div className={`p-2 rounded-lg ${categoryColors[template.category]}`}>
+                              <template.icon className="h-4 w-4" />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h4 className="font-medium text-sm">{template.title}</h4>
+                              <p className="text-xs text-muted-foreground mt-1">
+                                {template.description}
+                              </p>
+                            </div>
+                            <Button size="sm" variant="ghost">
+                              {t('traceos.templates.use', 'Utiliser')}
+                            </Button>
                           </div>
-                          <div className="flex-1 min-w-0">
-                            <h4 className="font-medium text-sm">{template.title}</h4>
-                            <p className="text-xs text-muted-foreground mt-1">
-                              {template.description}
-                            </p>
-                          </div>
-                          <Button size="sm" variant="ghost">
-                            {t('traceos.templates.use', 'Utiliser')}
-                          </Button>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </ScrollArea>
       </CardContent>
     </Card>

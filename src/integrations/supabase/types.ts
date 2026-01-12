@@ -1975,6 +1975,81 @@ export type Database = {
         }
         Relationships: []
       }
+      traceos_templates: {
+        Row: {
+          alternative_hypotheses: Json
+          category: string
+          constraints: Json
+          context_default: string
+          context_key: string
+          created_at: string
+          description_default: string
+          description_key: string
+          icon: string
+          id: string
+          is_active: boolean
+          main_hypothesis_default: string
+          main_hypothesis_key: string
+          scope_default: string
+          scope_key: string
+          sort_order: number
+          template_key: string
+          template_title_default: string
+          template_title_key: string
+          title_default: string
+          title_key: string
+          updated_at: string
+        }
+        Insert: {
+          alternative_hypotheses?: Json
+          category: string
+          constraints?: Json
+          context_default: string
+          context_key: string
+          created_at?: string
+          description_default: string
+          description_key: string
+          icon: string
+          id?: string
+          is_active?: boolean
+          main_hypothesis_default: string
+          main_hypothesis_key: string
+          scope_default: string
+          scope_key: string
+          sort_order?: number
+          template_key: string
+          template_title_default: string
+          template_title_key: string
+          title_default: string
+          title_key: string
+          updated_at?: string
+        }
+        Update: {
+          alternative_hypotheses?: Json
+          category?: string
+          constraints?: Json
+          context_default?: string
+          context_key?: string
+          created_at?: string
+          description_default?: string
+          description_key?: string
+          icon?: string
+          id?: string
+          is_active?: boolean
+          main_hypothesis_default?: string
+          main_hypothesis_key?: string
+          scope_default?: string
+          scope_key?: string
+          sort_order?: number
+          template_key?: string
+          template_title_default?: string
+          template_title_key?: string
+          title_default?: string
+          title_key?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       user_cases: {
         Row: {
           admin_checklist: Json | null

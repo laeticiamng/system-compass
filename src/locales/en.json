@@ -7078,6 +7078,259 @@
     "benefitsBasedOnContributions": "Benefits are granted based on your verified contributions.",
     "expiresOn": "Expires on"
   },
+  "traceos": {
+    "templates": {
+      "title": "Decision templates",
+      "description": "Use a template to speed up your decision creation",
+      "use": "Use",
+      "loading": "Loading templates...",
+      "empty": "No template available at the moment.",
+      "error": "Error while loading templates",
+      "categories": {
+        "rh": "HR",
+        "it": "IT",
+        "strategy": "Strategy",
+        "finance": "Finance",
+        "legal": "Legal",
+        "operations": "Operations"
+      },
+      "admin": {
+        "title": "TraceOS Templates",
+        "description": "Create and update the templates used in TraceOS.",
+        "listTitle": "Existing templates",
+        "listDescription": "Select a template to edit.",
+        "formTitle": "Template editor",
+        "formDescription": "Fill in i18n keys and default values.",
+        "new": "New",
+        "save": "Save",
+        "delete": "Delete",
+        "saved": "Template saved.",
+        "deleted": "Template deleted.",
+        "empty": "No templates recorded.",
+        "fetchError": "Error while loading templates.",
+        "saveError": "Error while saving.",
+        "deleteError": "Error while deleting.",
+        "confirmDelete": "Delete this template?",
+        "noAccessTitle": "Restricted access",
+        "noAccessDescription": "You must be an administrator to manage TraceOS templates.",
+        "fields": {
+          "key": "Template key",
+          "category": "Category",
+          "icon": "Icon",
+          "sortOrder": "Order",
+          "active": "Active",
+          "titleKey": "Title key",
+          "titleDefault": "Title (default)",
+          "descriptionKey": "Description key",
+          "descriptionDefault": "Description (default)",
+          "templateTitleKey": "Template title key",
+          "templateTitleDefault": "Template title (default)",
+          "contextKey": "Context key",
+          "contextDefault": "Context (default)",
+          "mainHypothesisKey": "Main hypothesis key",
+          "mainHypothesisDefault": "Main hypothesis (default)",
+          "scopeKey": "Scope key",
+          "scopeDefault": "Scope (default)",
+          "alternatives": "Alternative hypotheses",
+          "constraints": "Constraints",
+          "keyPlaceholder": "i18n key",
+          "defaultPlaceholder": "Default value",
+          "addAlternative": "Add an alternative",
+          "addConstraint": "Add a constraint"
+        },
+        "validation": {
+          "key": "template_key is required."
+        }
+      },
+      "items": {
+        "rh-recruitment": {
+          "title": "Strategic recruitment",
+          "description": "Hiring decision for a key role",
+          "template": {
+            "title": "Recruitment [Role]",
+            "context": "Need identified after [growth/departure/reorganization]. Impact on [team/project].",
+            "mainHypothesis": "Hire a [junior/senior] profile with expertise in [domain]",
+            "alternativeHypotheses": [
+              "Internal promotion of an existing employee",
+              "Outsource the function",
+              "Reorganize current responsibilities"
+            ],
+            "constraints": [
+              "Allocated budget: [amount]",
+              "Recruitment timeline: [duration]",
+              "Manager availability for onboarding"
+            ],
+            "scope": "HR / Leadership"
+          }
+        },
+        "rh-reorganization": {
+          "title": "Team reorganization",
+          "description": "Restructuring or merging teams",
+          "template": {
+            "title": "Reorganization [Department]",
+            "context": "Context of [transformation/optimization/growth] requiring an organizational review.",
+            "mainHypothesis": "Merge teams [A] and [B] under a single leadership",
+            "alternativeHypotheses": [
+              "Maintain the current structure with reinforced coordination",
+              "Create a matrix organization",
+              "Outsource certain functions"
+            ],
+            "constraints": [
+              "Preserve key competencies",
+              "Respect social obligations",
+              "Limit impact on ongoing projects"
+            ],
+            "scope": "Executive leadership"
+          }
+        },
+        "it-migration": {
+          "title": "Technology migration",
+          "description": "Infrastructure or stack change",
+          "template": {
+            "title": "Migration to [Technology/Platform]",
+            "context": "Obsolescence of [current system] / Need for [scalability/performance/security].",
+            "mainHypothesis": "Migrate to [new solution] with a [big bang/phased] approach",
+            "alternativeHypotheses": [
+              "Modernize the existing system",
+              "Adopt a hybrid solution",
+              "Outsource to a managed service"
+            ],
+            "constraints": [
+              "Project budget: [amount]",
+              "Migration window: [period]",
+              "Service continuity required",
+              "Team training"
+            ],
+            "scope": "CIO / Leadership"
+          }
+        },
+        "it-security": {
+          "title": "Security policy",
+          "description": "Security reinforcement or review",
+          "template": {
+            "title": "Security reinforcement [Scope]",
+            "context": "Following [audit/incident/new regulation], need to strengthen the security posture.",
+            "mainHypothesis": "Implement [solution/policy] to address [identified risk]",
+            "alternativeHypotheses": [
+              "Accept the risk with compensating measures",
+              "Transfer the risk (insurance)",
+              "Avoid the risk by stopping the affected activity"
+            ],
+            "constraints": [
+              "Regulatory compliance (GDPR, NIS2...)",
+              "Acceptable user impact",
+              "Available security budget"
+            ],
+            "scope": "CISO / CIO"
+          }
+        },
+        "strategy-market": {
+          "title": "Market entry",
+          "description": "Geographic or sector expansion",
+          "template": {
+            "title": "Expansion [Market/Segment]",
+            "context": "Opportunity identified in [market]. Estimated potential: [value]. Competition: [analysis].",
+            "mainHypothesis": "Launch a [product/service] offer in [market] via [channel]",
+            "alternativeHypotheses": [
+              "Partner with an established local player",
+              "Acquire a local competitor",
+              "Pilot before full deployment"
+            ],
+            "constraints": [
+              "Initial investment: [amount]",
+              "Expected ROI: [horizon]",
+              "Available human resources",
+              "Local regulatory risks"
+            ],
+            "scope": "Strategy committee"
+          }
+        },
+        "strategy-pivot": {
+          "title": "Strategic pivot",
+          "description": "Business model reorientation",
+          "template": {
+            "title": "Pivot to [New model]",
+            "context": "Market evolution requires adaptation. [Threats/Opportunities] identified.",
+            "mainHypothesis": "Reposition the offer toward [new positioning] within [horizon]",
+            "alternativeHypotheses": [
+              "Diversify the current offer",
+              "Consolidate on the core business",
+              "Explore new distribution channels"
+            ],
+            "constraints": [
+              "Preserve the existing customer base",
+              "Ability to finance the transition",
+              "Skills to acquire or develop"
+            ],
+            "scope": "Executive leadership / Board"
+          }
+        },
+        "finance-investment": {
+          "title": "Investment decision",
+          "description": "Major capital allocation",
+          "template": {
+            "title": "Investment [Project/Asset]",
+            "context": "Investment opportunity of [amount] in [project]. NPV estimated: [value]. IRR: [%].",
+            "mainHypothesis": "Approve the investment with [conditions]",
+            "alternativeHypotheses": [
+              "Postpone the investment to [date]",
+              "Partial investment in phase 1",
+              "Seek co-investors"
+            ],
+            "constraints": [
+              "Available financing capacity",
+              "Impact on financial ratios",
+              "Alignment with group strategy",
+              "Market risks"
+            ],
+            "scope": "CFO / Finance committee"
+          }
+        },
+        "finance-cost": {
+          "title": "Cost optimization",
+          "description": "Reduction or rationalization plan",
+          "template": {
+            "title": "Optimization plan [Scope]",
+            "context": "Goal to reduce [X%] of [operational/structural] costs over [horizon].",
+            "mainHypothesis": "Implement plan [A] targeting [cost areas]",
+            "alternativeHypotheses": [
+              "Progressive approach by phases",
+              "Focus on revenue improvement instead of reduction",
+              "Outsource non-core functions"
+            ],
+            "constraints": [
+              "Maintain service quality",
+              "Respect contractual commitments",
+              "Preserve key talent",
+              "Implementation timeline"
+            ],
+            "scope": "Finance leadership"
+          }
+        },
+        "legal-compliance": {
+          "title": "Compliance update",
+          "description": "Regulatory adaptation",
+          "template": {
+            "title": "Compliance [Regulation]",
+            "context": "New regulation [name] applicable on [date]. Compliance gap identified on [scope].",
+            "mainHypothesis": "Compliance plan in [X] phases by [date]",
+            "alternativeHypotheses": [
+              "Request an exemption or extension",
+              "Outsource the function",
+              "Stop the non-compliant activity"
+            ],
+            "constraints": [
+              "Non-negotiable regulatory deadline",
+              "Sanctions for non-compliance",
+              "Limited compliance budget",
+              "Expert resources required"
+            ],
+            "scope": "Legal leadership"
+          }
+        }
+      }
+    }
+  },
   "terrainGovernance": {
     "title": "Governance & Terrain",
     "description": "Assess the operational and institutional environment of the target country",

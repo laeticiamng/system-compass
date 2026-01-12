@@ -67,6 +67,7 @@ export function Header() {
     { href: '/admin/country-generator', label: 'Country Generator', icon: Globe },
     { href: '/admin/analytics', label: 'Analytics', icon: Settings },
     { href: '/admin/partners', label: 'Partners', icon: Users },
+    { href: '/admin/traceos-templates', label: 'TraceOS Templates', icon: FileText },
   ];
 
   const handleSignOut = async () => {
