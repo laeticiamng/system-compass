@@ -7,6 +7,9 @@ import { getExtendedCountryMeta } from '@/lib/countries-extended';
 import { GovernanceLight, GovernanceDeep } from '@/components/governance';
 import { CasePdfExport } from '@/components/cases/CasePdfExport';
 import { CaseMilestones } from '@/components/cases/CaseMilestones';
+import { MarketStudyWizard } from '@/components/cases/MarketStudyWizard';
+import { ActorsMap } from '@/components/cases/ActorsMap';
+import { RiskRegisterEnhanced } from '@/components/cases/RiskRegisterEnhanced';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -17,7 +20,8 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { 
   ArrowLeft, Home, Briefcase, Shield, Target, FileText, 
-  Clock, Calendar, AlertTriangle, CheckCircle2, Loader2 
+  Clock, Calendar, AlertTriangle, CheckCircle2, Loader2,
+  TrendingUp, Users, BarChart3
 } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { fr } from 'date-fns/locale';
@@ -152,7 +156,7 @@ export default function CaseDetail() {
 
         {/* Main Content Tabs */}
         <Tabs defaultValue="governance" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className={`grid w-full ${isDeep ? 'grid-cols-7' : 'grid-cols-4'}`}>
             <TabsTrigger value="governance" className="gap-2">
               <Shield className="w-4 h-4" />
               <span className="hidden sm:inline">
@@ -162,6 +166,22 @@ export default function CaseDetail() {
                 }
               </span>
             </TabsTrigger>
+            {isDeep && (
+              <>
+                <TabsTrigger value="market" className="gap-2">
+                  <TrendingUp className="w-4 h-4" />
+                  <span className="hidden sm:inline">{t('cases.tabs.market', 'Marché')}</span>
+                </TabsTrigger>
+                <TabsTrigger value="actors" className="gap-2">
+                  <Users className="w-4 h-4" />
+                  <span className="hidden sm:inline">{t('cases.tabs.actors', 'Acteurs')}</span>
+                </TabsTrigger>
+                <TabsTrigger value="risks" className="gap-2">
+                  <AlertTriangle className="w-4 h-4" />
+                  <span className="hidden sm:inline">{t('cases.tabs.risks', 'Risques')}</span>
+                </TabsTrigger>
+              </>
+            )}
             <TabsTrigger value="milestones" className="gap-2">
               <Target className="w-4 h-4" />
               <span className="hidden sm:inline">{t('cases.tabs.milestones', 'Jalons')}</span>
@@ -213,6 +233,37 @@ export default function CaseDetail() {
               </Card>
             )}
           </TabsContent>
+
+          {/* Market Study Tab (DEEP only) */}
+          {isDeep && (
+            <TabsContent value="market">
+              <MarketStudyWizard
+                caseData={caseData}
+                onUpdateCase={(updates) => updateCase(updates)}
+                countryName={countryName}
+              />
+            </TabsContent>
+          )}
+
+          {/* Actors Map Tab (DEEP only) */}
+          {isDeep && (
+            <TabsContent value="actors">
+              <ActorsMap
+                caseData={caseData}
+                onUpdateCase={(updates) => updateCase(updates)}
+              />
+            </TabsContent>
+          )}
+
+          {/* Risk Register Tab (DEEP only) */}
+          {isDeep && (
+            <TabsContent value="risks">
+              <RiskRegisterEnhanced
+                caseData={caseData}
+                onUpdateCase={(updates) => updateCase(updates)}
+              />
+            </TabsContent>
+          )}
 
           {/* Milestones Tab */}
           <TabsContent value="milestones">
