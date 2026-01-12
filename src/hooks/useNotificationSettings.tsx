@@ -126,12 +126,24 @@ export function useNotificationSettings() {
         throw new Error('Abonnement push invalide');
       }
 
-      // Push subscriptions are stored locally in the browser
-      // No database table exists for push_subscriptions
-      // The subscription is managed by the service worker
+      // Save push subscription to database
+      const { error: upsertError } = await supabase
+        .from('push_subscriptions')
+        .upsert({
+          user_id: user.id,
+          endpoint: subscriptionJson.endpoint,
+          p256dh: subscriptionJson.keys.p256dh,
+          auth: subscriptionJson.keys.auth,
+        }, { onConflict: 'user_id,endpoint' });
+
+      if (upsertError) {
+        console.error('Failed to save push subscription:', upsertError);
+        throw new Error('Erreur lors de l\'enregistrement');
+      }
+
       console.log('Push subscription registered:', subscriptionJson.endpoint);
       
-      // Store in localStorage as fallback
+      // Also store in localStorage as fallback
       localStorage.setItem('push_subscription', JSON.stringify(subscriptionJson));
 
       setPushStatus('subscribed');
