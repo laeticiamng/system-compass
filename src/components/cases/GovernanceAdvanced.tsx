@@ -24,6 +24,7 @@ import { UserCase } from '@/hooks/useUserCases';
 import { formatDistanceToNow } from 'date-fns';
 import { fr, enUS } from 'date-fns/locale';
 import { toast } from 'sonner';
+import { GovernanceAdvancedPdfExport } from './GovernanceAdvancedPdfExport';
 
 interface GovernanceAdvancedProps {
   caseData: UserCase;
@@ -154,11 +155,20 @@ export function GovernanceAdvanced({ caseData, countryName, countryCode }: Gover
                   {aiItems} IA
                 </Badge>
               )}
+              <GovernanceAdvancedPdfExport
+                caseName={caseData.title}
+                countryName={countryName}
+                countryCode={countryCode}
+                actors={actors}
+                patterns={patterns}
+                partners={partners}
+                delays={delays}
+              />
               <Dialog open={showFrameworkDialog} onOpenChange={setShowFrameworkDialog}>
                 <DialogTrigger asChild>
                   <Button variant="outline" size="sm" className="gap-1">
                     <Info className="w-4 h-4" />
-                    {t('governanceAdvanced.framework', 'Framework')}
+                    {t('governanceAdvanced.frameworkBtn', 'Framework')}
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
