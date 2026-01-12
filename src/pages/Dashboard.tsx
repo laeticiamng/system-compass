@@ -338,8 +338,8 @@ export default function Dashboard() {
               <div className="flex items-center gap-4">
                 <div className="text-4xl">{motorProfile.icon}</div>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-lg">{t('dashboard.profileLabel')}: {motorProfile.label}</h3>
-                  <p className="text-sm text-muted-foreground">{motorProfile.description}</p>
+                  <h3 className="font-semibold text-lg">{t('dashboard.profileLabel')}: {t(motorProfile.label)}</h3>
+                  <p className="text-sm text-muted-foreground">{t(motorProfile.description)}</p>
                 </div>
                 <Link to="/exit-keys">
                   <Button variant="outline" size="sm">
