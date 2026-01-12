@@ -12,6 +12,7 @@ import { ActorsMap } from '@/components/cases/ActorsMap';
 import { RiskRegisterEnhanced } from '@/components/cases/RiskRegisterEnhanced';
 import { StructuralRulesSection } from '@/components/cases/StructuralRulesSection';
 import { CaseAIGenerator } from '@/components/cases/CaseAIGenerator';
+import { GovernanceAdvanced } from '@/components/cases/GovernanceAdvanced';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -23,7 +24,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { 
   ArrowLeft, Home, Briefcase, Shield, Target, FileText, 
   Clock, Calendar, AlertTriangle, CheckCircle2, Loader2,
-  TrendingUp, Users, BarChart3, FileCheck
+  TrendingUp, Users, BarChart3, FileCheck, Map
 } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { fr } from 'date-fns/locale';
@@ -166,7 +167,7 @@ export default function CaseDetail() {
 
         {/* Main Content Tabs */}
         <Tabs defaultValue="governance" className="space-y-6">
-          <TabsList className={`grid w-full ${isDeep ? 'grid-cols-8' : 'grid-cols-4'}`}>
+          <TabsList className={`grid w-full ${isDeep ? 'grid-cols-9' : 'grid-cols-4'}`}>
             <TabsTrigger value="governance" className="gap-2">
               <Shield className="w-4 h-4" />
               <span className="hidden sm:inline">
@@ -178,6 +179,10 @@ export default function CaseDetail() {
             </TabsTrigger>
             {isDeep && (
               <>
+                <TabsTrigger value="gov-advanced" className="gap-2">
+                  <Map className="w-4 h-4" />
+                  <span className="hidden sm:inline">{t('cases.tabs.govAdvanced', 'Terrain')}</span>
+                </TabsTrigger>
                 <TabsTrigger value="market" className="gap-2">
                   <TrendingUp className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('cases.tabs.market', 'Marché')}</span>
@@ -247,6 +252,17 @@ export default function CaseDetail() {
               </Card>
             )}
           </TabsContent>
+
+          {/* Governance Advanced Tab (DEEP only) */}
+          {isDeep && (
+            <TabsContent value="gov-advanced">
+              <GovernanceAdvanced
+                caseData={caseData}
+                countryName={countryName}
+                countryCode={caseData.country_id}
+              />
+            </TabsContent>
+          )}
 
           {/* Market Study Tab (DEEP only) */}
           {isDeep && (
