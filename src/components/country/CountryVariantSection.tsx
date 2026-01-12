@@ -450,9 +450,14 @@ export function CountryVariantSection({ countryId, countryName }: CountryVariant
 
 // Overview Section (original content)
 function OverviewSection({ displayData, t }: { displayData: CountryVariant; t: any }) {
-  // Safely ensure arrays - handle both null/undefined and non-array values
+  // Safely ensure arrays - handle arrays, objects with items property, or null/undefined
   const ensureArray = (val: unknown): string[] => {
     if (Array.isArray(val)) return val;
+    // Handle objects with { title, items } structure from database
+    if (val && typeof val === 'object' && 'items' in val) {
+      const items = (val as { items?: unknown }).items;
+      if (Array.isArray(items)) return items;
+    }
     return [];
   };
 
