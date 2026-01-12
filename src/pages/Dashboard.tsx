@@ -247,19 +247,19 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8 pt-24">
+      <div className="container mx-auto px-3 sm:px-4 py-6 sm:py-8 pt-20 sm:pt-24">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 sm:mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-foreground mb-2">
+            <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-1 sm:mb-2">
               {t('dashboard.title')}
             </h1>
-            <p className="text-muted-foreground">
+            <p className="text-sm sm:text-base text-muted-foreground">
               {t('dashboard.subtitle')}
             </p>
           </div>
           
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
             {/* Notification Bell */}
             <NotificationBell />
             
@@ -279,26 +279,26 @@ export default function Dashboard() {
                   profile: profile || undefined,
                 }}
                 variant="secondary"
-                size="default"
+                size="sm"
               />
             )}
             
             {/* Sync Status */}
             {syncing && (
-              <Badge variant="secondary" className="gap-1">
+              <Badge variant="secondary" className="gap-1 text-xs">
                 <Loader2 className="w-3 h-3 animate-spin" />
-                {t('dashboard.syncing')}
+                <span className="hidden sm:inline">{t('dashboard.syncing')}</span>
               </Badge>
             )}
             {isLoggedIn ? (
-              <Badge variant="outline" className="gap-1 text-green-600 border-green-600/30">
+              <Badge variant="outline" className="gap-1 text-xs text-green-600 border-green-600/30">
                 <Cloud className="w-3 h-3" />
-                {t('dashboard.synced')}
+                <span className="hidden sm:inline">{t('dashboard.synced')}</span>
               </Badge>
             ) : (
-              <Badge variant="outline" className="gap-1 text-muted-foreground">
+              <Badge variant="outline" className="gap-1 text-xs text-muted-foreground">
                 <CloudOff className="w-3 h-3" />
-                {t('dashboard.localOnly')}
+                <span className="hidden sm:inline">{t('dashboard.localOnly')}</span>
               </Badge>
             )}
           </div>
