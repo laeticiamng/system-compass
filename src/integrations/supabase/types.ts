@@ -1694,6 +1694,7 @@ export type Database = {
           price_yearly: number | null
           stripe_price_id: string | null
           stripe_price_id_yearly: string | null
+          stripe_product_id: string | null
           tier: string
           updated_at: string
         }
@@ -1709,6 +1710,7 @@ export type Database = {
           price_yearly?: number | null
           stripe_price_id?: string | null
           stripe_price_id_yearly?: string | null
+          stripe_product_id?: string | null
           tier: string
           updated_at?: string
         }
@@ -1724,6 +1726,7 @@ export type Database = {
           price_yearly?: number | null
           stripe_price_id?: string | null
           stripe_price_id_yearly?: string | null
+          stripe_product_id?: string | null
           tier?: string
           updated_at?: string
         }

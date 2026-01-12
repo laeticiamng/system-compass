@@ -7321,5 +7321,16 @@
     "export": {
       "governance": "Governance & Terrain (B2B)"
     }
+  },
+  "music": {
+    "systemSoundscape": "System Soundscape",
+    "listenTo": "Listen to {{country}}'s ambiance",
+    "description": "The music represents this country's life system. It embodies the rhythm, tensions, and opportunities of the system.",
+    "generating": "Music is being generated. Please try again in a few minutes.",
+    "error": "Unable to generate music",
+    "loadError": "Audio loading error",
+    "play": "Play",
+    "pause": "Pause",
+    "volume": "Volume"
   }
 }

@@ -91,20 +91,41 @@ serve(async (req) => {
       const subscription = subscriptions.data[0];
       subscriptionEnd = new Date(subscription.current_period_end * 1000).toISOString();
       const productId = subscription.items.data[0].price.product as string;
-      const { data: planData, error: planError } = await supabaseClient
+      const priceId = subscription.items.data[0].price.id as string;
+      
+      // Try to find plan by stripe_product_id first, then by stripe_price_id
+      let planData = null;
+      let planError = null;
+      
+      const productResult = await supabaseClient
         .from("subscription_plans")
         .select("tier")
         .eq("stripe_product_id", productId)
         .eq("active", true)
         .maybeSingle();
+      
+      if (productResult.data?.tier) {
+        planData = productResult.data;
+      } else {
+        // Fallback to price_id lookup
+        const priceResult = await supabaseClient
+          .from("subscription_plans")
+          .select("tier")
+          .eq("stripe_price_id", priceId)
+          .eq("active", true)
+          .maybeSingle();
+        
+        planData = priceResult.data;
+        planError = priceResult.error;
+      }
 
       if (planError) {
-        logStep("Plan lookup error", { productId, error: planError.message });
+        logStep("Plan lookup error", { productId, priceId, error: planError.message });
         tier = "premium";
       } else if (planData?.tier) {
         tier = planData.tier;
       } else {
-        logStep("Plan mapping missing", { productId });
+        logStep("Plan mapping missing", { productId, priceId });
         tier = "premium";
       }
       logStep("Active subscription found", { tier, subscriptionEnd });
