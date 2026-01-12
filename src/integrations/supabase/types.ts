@@ -1258,6 +1258,51 @@ export type Database = {
         }
         Relationships: []
       }
+      music_tasks: {
+        Row: {
+          audio_url: string | null
+          country_id: string
+          created_at: string
+          error_message: string | null
+          id: string
+          mood: string
+          pyramid_type: string
+          status: string
+          stream_url: string | null
+          suno_status: string | null
+          task_id: string
+          updated_at: string
+        }
+        Insert: {
+          audio_url?: string | null
+          country_id: string
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          mood?: string
+          pyramid_type: string
+          status?: string
+          stream_url?: string | null
+          suno_status?: string | null
+          task_id: string
+          updated_at?: string
+        }
+        Update: {
+          audio_url?: string | null
+          country_id?: string
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          mood?: string
+          pyramid_type?: string
+          status?: string
+          stream_url?: string | null
+          suno_status?: string | null
+          task_id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       notification_settings: {
         Row: {
           created_at: string | null

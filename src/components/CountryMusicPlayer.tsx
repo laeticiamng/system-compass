@@ -19,6 +19,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { supabase } from '@/integrations/supabase/client';
 
 interface CountryMusicPlayerProps {
   countryId: string;
@@ -37,15 +38,22 @@ export function CountryMusicPlayer({
 }: CountryMusicPlayerProps) {
   const { t } = useTranslation();
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const activeRequestId = useRef(0);
   
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isGenerating, setIsGenerating] = useState(false);
   const [hasLoaded, setHasLoaded] = useState(false);
   const [volume, setVolume] = useState(0.5);
   const [isMuted, setIsMuted] = useState(false);
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
   const [error, setError] = useState<string | null>(null);
+  const mood = 'narrative';
+
+  const cacheKey = `${countryId}:${pyramidType}:${mood}`;
+  const taskCacheKey = `music-task:${cacheKey}`;
+  const audioCacheKey = `music-audio:${cacheKey}`;
 
   // Clean up audio on unmount
   useEffect(() => {
@@ -56,6 +64,92 @@ export function CountryMusicPlayer({
       }
     };
   }, []);
+
+  const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  const loadAndPlayAudio = async (audioUrl: string, streamUrl?: string | null) => {
+    if (!audioRef.current) {
+      audioRef.current = new Audio();
+    }
+
+    audioRef.current.src = audioUrl;
+    audioRef.current.volume = volume;
+    audioRef.current.crossOrigin = "anonymous";
+
+    audioRef.current.onloadedmetadata = () => {
+      setDuration(audioRef.current?.duration || 0);
+    };
+
+    audioRef.current.ontimeupdate = () => {
+      if (audioRef.current) {
+        setProgress(audioRef.current.currentTime);
+      }
+    };
+
+    audioRef.current.onended = () => {
+      setIsPlaying(false);
+      setProgress(0);
+    };
+
+    audioRef.current.onerror = () => {
+      setError(t('music.loadError', 'Erreur de chargement audio'));
+      setIsPlaying(false);
+    };
+
+    sessionStorage.setItem(
+      audioCacheKey,
+      JSON.stringify({ audioUrl, streamUrl: streamUrl ?? null })
+    );
+
+    await audioRef.current.play();
+    setIsPlaying(true);
+    setHasLoaded(true);
+  };
+
+  const pollTaskStatus = async (taskId: string, requestId: number) => {
+    setIsGenerating(true);
+    setError(null);
+
+    for (let attempt = 0; attempt < 24; attempt++) {
+      if (activeRequestId.current !== requestId) {
+        return;
+      }
+
+      const { data, error: fetchError } = await supabase
+        .from('music_tasks')
+        .select('status, audio_url, stream_url, error_message')
+        .eq('task_id', taskId)
+        .maybeSingle();
+
+      if (fetchError) {
+        console.error('Error fetching music task:', fetchError);
+      }
+
+      if (data?.status === 'completed' && (data.audio_url || data.stream_url)) {
+        setIsGenerating(false);
+        sessionStorage.removeItem(taskCacheKey);
+        await loadAndPlayAudio(data.audio_url || data.stream_url || '', data.stream_url);
+        return;
+      }
+
+      if (data?.status === 'failed') {
+        setIsGenerating(false);
+        setError(
+          data.error_message ||
+            t('music.error', 'Impossible de générer la musique')
+        );
+        sessionStorage.removeItem(taskCacheKey);
+        return;
+      }
+
+      await delay(5000);
+    }
+
+    setIsGenerating(false);
+    setError(
+      t('music.generating', 'La musique est en cours de génération. Réessayez dans quelques minutes.')
+    );
+  };
 
   const generateAndPlayMusic = async () => {
     if (hasLoaded && audioRef.current) {
@@ -68,6 +162,38 @@ export function CountryMusicPlayer({
         setIsPlaying(true);
       }
       return;
+    }
+
+    if (isLoading || isGenerating) {
+      return;
+    }
+
+    const cachedAudio = sessionStorage.getItem(audioCacheKey);
+    if (cachedAudio) {
+      try {
+        const parsed = JSON.parse(cachedAudio) as { audioUrl: string; streamUrl?: string | null };
+        if (parsed.audioUrl) {
+          await loadAndPlayAudio(parsed.audioUrl, parsed.streamUrl);
+          return;
+        }
+      } catch {
+        sessionStorage.removeItem(audioCacheKey);
+      }
+    }
+
+    const cachedTask = sessionStorage.getItem(taskCacheKey);
+    if (cachedTask) {
+      const requestId = Date.now();
+      activeRequestId.current = requestId;
+      try {
+        const parsed = JSON.parse(cachedTask) as { taskId: string };
+        if (parsed.taskId) {
+          await pollTaskStatus(parsed.taskId, requestId);
+          return;
+        }
+      } catch {
+        sessionStorage.removeItem(taskCacheKey);
+      }
     }
 
     setIsLoading(true);
@@ -86,59 +212,38 @@ export function CountryMusicPlayer({
           body: JSON.stringify({
             countryId,
             pyramidType,
-            mood: 'narrative',
+            mood,
           }),
         }
       );
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
+        if (errorData.code === 'missing_suno_api_key') {
+          throw new Error(
+            t('music.apiKeyMissing', 'La clé API Suno est absente. Contactez un administrateur.')
+          );
+        }
         throw new Error(errorData.error || `Failed to generate music: ${response.status}`);
       }
 
       const data = await response.json();
       
       // Check for timeout/pending response
-      if (response.status === 202 || !data.audioUrl) {
+      if (response.status === 202 || data.pending || !data.audioUrl) {
+        if (data.taskId) {
+          sessionStorage.setItem(taskCacheKey, JSON.stringify({ taskId: data.taskId }));
+          const requestId = Date.now();
+          activeRequestId.current = requestId;
+          await pollTaskStatus(data.taskId, requestId);
+          return;
+        }
         setError(t('music.generating', 'La musique est en cours de génération. Réessayez dans quelques minutes.'));
         return;
       }
 
       const audioUrl = data.audioUrl;
-      
-      // Create or reuse audio element
-      if (!audioRef.current) {
-        audioRef.current = new Audio();
-      }
-      
-      audioRef.current.src = audioUrl;
-      audioRef.current.volume = volume;
-      audioRef.current.crossOrigin = "anonymous";
-      
-      // Set up event listeners
-      audioRef.current.onloadedmetadata = () => {
-        setDuration(audioRef.current?.duration || 0);
-      };
-      
-      audioRef.current.ontimeupdate = () => {
-        if (audioRef.current) {
-          setProgress(audioRef.current.currentTime);
-        }
-      };
-      
-      audioRef.current.onended = () => {
-        setIsPlaying(false);
-        setProgress(0);
-      };
-
-      audioRef.current.onerror = () => {
-        setError(t('music.loadError', 'Erreur de chargement audio'));
-        setIsPlaying(false);
-      };
-
-      await audioRef.current.play();
-      setIsPlaying(true);
-      setHasLoaded(true);
+      await loadAndPlayAudio(audioUrl, data.streamUrl);
       
     } catch (err) {
       console.error('Error generating music:', err);
@@ -195,10 +300,10 @@ export function CountryMusicPlayer({
               variant="outline"
               size="icon"
               onClick={togglePlay}
-              disabled={isLoading}
+              disabled={isLoading || isGenerating}
               className={cn("relative", className)}
             >
-              {isLoading ? (
+              {isLoading || isGenerating ? (
                 <Loader2 className="w-4 h-4 animate-spin" />
               ) : isPlaying ? (
                 <Pause className="w-4 h-4" />
@@ -226,10 +331,10 @@ export function CountryMusicPlayer({
           variant="outline"
           size="icon"
           onClick={togglePlay}
-          disabled={isLoading}
+          disabled={isLoading || isGenerating}
           className="h-12 w-12 rounded-full shrink-0"
         >
-          {isLoading ? (
+          {isLoading || isGenerating ? (
             <Loader2 className="w-5 h-5 animate-spin" />
           ) : isPlaying ? (
             <Pause className="w-5 h-5" />
@@ -269,6 +374,12 @@ export function CountryMusicPlayer({
               </div>
               <span>{formatTime(duration)}</span>
             </div>
+          )}
+
+          {isGenerating && !hasLoaded && (
+            <p className="text-xs text-muted-foreground">
+              {t('music.generating', 'La musique est en cours de génération. Réessayez dans quelques minutes.')}
+            </p>
           )}
 
           {error && (

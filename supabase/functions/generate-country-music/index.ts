@@ -78,7 +78,7 @@ const COUNTRY_MUSIC_STYLES: Record<string, { instruments: string; cultural: stri
   nigeria: { instruments: "Talking drums, shekere, bass", cultural: "Afrobeats, highlife, juju" },
 };
 
-// Placeholder callback URL - Suno requires it but we use polling
+// Placeholder callback URL - Suno requires it but we prefer a real webhook when possible
 const PLACEHOLDER_CALLBACK = "https://sunoapi.org/webhook-placeholder";
 
 serve(async (req) => {
@@ -91,11 +91,12 @@ serve(async (req) => {
     const SUNO_API_KEY = Deno.env.get("SUNO_API_KEY");
     const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
     const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+    const CALLBACK_OVERRIDE = Deno.env.get("SUNO_CALLBACK_URL");
     
     if (!SUNO_API_KEY) {
       console.error("SUNO_API_KEY not configured");
       return new Response(
-        JSON.stringify({ error: "Suno API key not configured" }),
+        JSON.stringify({ error: "Suno API key not configured", code: "missing_suno_api_key" }),
         { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
@@ -104,32 +105,77 @@ serve(async (req) => {
 
     console.log(`Generating music for ${countryId} (${pyramidType}), mood: ${mood}`);
 
+    if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
+      console.error("Supabase env vars not configured");
+      return new Response(
+        JSON.stringify({ error: "Supabase configuration missing" }),
+        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
+
     // Check cache first
-    if (SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY) {
-      const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
-      
-      const { data: cached } = await supabase
-        .from('music_cache')
-        .select('audio_url, stream_url, task_id')
-        .eq('country_id', countryId)
-        .eq('pyramid_type', pyramidType)
-        .gt('expires_at', new Date().toISOString())
-        .maybeSingle();
-      
-      if (cached?.audio_url) {
-        console.log(`Cache hit for ${countryId}/${pyramidType}`);
-        return new Response(
-          JSON.stringify({ 
-            success: true,
-            audioUrl: cached.audio_url,
-            streamUrl: cached.stream_url,
-            countryId,
-            pyramidType,
-            cached: true
-          }),
-          { headers: { ...corsHeaders, "Content-Type": "application/json" } }
-        );
-      }
+    const { data: cached } = await supabase
+      .from('music_cache')
+      .select('audio_url, stream_url, task_id')
+      .eq('country_id', countryId)
+      .eq('pyramid_type', pyramidType)
+      .gt('expires_at', new Date().toISOString())
+      .maybeSingle();
+
+    if (cached?.audio_url) {
+      console.log(`Cache hit for ${countryId}/${pyramidType}`);
+      return new Response(
+        JSON.stringify({ 
+          success: true,
+          audioUrl: cached.audio_url,
+          streamUrl: cached.stream_url,
+          countryId,
+          pyramidType,
+          cached: true
+        }),
+        { headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    const { data: existingTask } = await supabase
+      .from('music_tasks')
+      .select('task_id, status, audio_url, stream_url')
+      .eq('country_id', countryId)
+      .eq('pyramid_type', pyramidType)
+      .eq('mood', mood)
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .maybeSingle();
+
+    if (existingTask?.audio_url || existingTask?.stream_url) {
+      return new Response(
+        JSON.stringify({
+          success: true,
+          audioUrl: existingTask.audio_url || existingTask.stream_url,
+          streamUrl: existingTask.stream_url,
+          countryId,
+          pyramidType,
+          taskId: existingTask.task_id,
+          cached: false
+        }),
+        { headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    if (existingTask?.task_id && ['queued', 'processing'].includes(existingTask.status)) {
+      return new Response(
+        JSON.stringify({
+          success: true,
+          pending: true,
+          taskId: existingTask.task_id,
+          status: existingTask.status,
+          countryId,
+          pyramidType
+        }),
+        { status: 202, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
     }
 
     // Build the music prompt
@@ -144,6 +190,8 @@ serve(async (req) => {
 
     console.log(`Style: ${style}`);
 
+    const callbackUrl = CALLBACK_OVERRIDE || (SUPABASE_URL ? `${SUPABASE_URL}/functions/v1/suno-webhook` : PLACEHOLDER_CALLBACK);
+
     // Call Suno API
     const generateResponse = await fetch(
       "https://api.sunoapi.org/api/v1/generate",
@@ -157,7 +205,7 @@ serve(async (req) => {
           customMode: true,
           instrumental: true,
           model: "V4_5ALL",
-          callBackUrl: PLACEHOLDER_CALLBACK,
+          callBackUrl: callbackUrl,
           style: style.substring(0, 200),
           title: title.substring(0, 80),
         }),
@@ -193,91 +241,28 @@ serve(async (req) => {
     }
 
     const taskId = generateData.data.taskId;
-    console.log(`Task ID: ${taskId}, starting polling...`);
+    console.log(`Task ID: ${taskId}, storing in music_tasks...`);
 
-    // Poll for completion (max 90 seconds)
-    let audioUrl: string | null = null;
-    let streamUrl: string | null = null;
-    
-    for (let i = 0; i < 18; i++) {
-      await new Promise((resolve) => setTimeout(resolve, 5000));
-
-      console.log(`Poll attempt ${i + 1}/18...`);
-
-      const statusResponse = await fetch(
-        `https://api.sunoapi.org/api/v1/generate/record-info?taskId=${taskId}`,
-        {
-          method: "GET",
-          headers: { "Authorization": `Bearer ${SUNO_API_KEY}` },
-        }
-      );
-
-      if (!statusResponse.ok) {
-        console.error(`Status check failed (${statusResponse.status})`);
-        continue;
-      }
-
-      const statusData = await statusResponse.json();
-      const status = statusData.data?.status;
-      console.log(`Poll ${i + 1}: Status = ${status}`);
-
-      if (status === "SUCCESS" || status === "FIRST_SUCCESS") {
-        const sunoData = statusData.data?.response?.sunoData;
-        if (sunoData && sunoData.length > 0) {
-          audioUrl = sunoData[0].audioUrl;
-          streamUrl = sunoData[0].streamAudioUrl;
-          console.log(`Audio URL found: ${audioUrl}`);
-          break;
-        }
-      } else if (status === "CREATE_TASK_FAILED" || status === "GENERATE_AUDIO_FAILED" || status === "SENSITIVE_WORD_ERROR") {
-        console.error("Generation failed:", statusData.data?.errorMessage);
-        return new Response(
-          JSON.stringify({ error: "Music generation failed", details: statusData.data?.errorMessage || status }),
-          { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-        );
-      }
-    }
-
-    if (!audioUrl && !streamUrl) {
-      console.log("Generation timed out");
-      return new Response(
-        JSON.stringify({ 
-          error: "Music generation timed out", 
-          taskId: taskId,
-          message: "Music is still being generated. Try again in a few minutes."
-        }),
-        { status: 202, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
-    }
-
-    // Save to cache
-    if (SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY && audioUrl) {
-      const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
-      
-      await supabase.from('music_cache').upsert({
-        country_id: countryId,
-        pyramid_type: pyramidType,
-        audio_url: audioUrl,
-        stream_url: streamUrl,
-        task_id: taskId,
-        expires_at: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
-      }, {
-        onConflict: 'country_id,pyramid_type'
-      });
-      
-      console.log(`Cached music for ${countryId}/${pyramidType}`);
-    }
+    await supabase.from('music_tasks').insert({
+      country_id: countryId,
+      pyramid_type: pyramidType,
+      mood,
+      task_id: taskId,
+      status: 'queued',
+      suno_status: 'SUBMITTED',
+      updated_at: new Date().toISOString()
+    });
 
     return new Response(
       JSON.stringify({ 
         success: true,
-        audioUrl: audioUrl || streamUrl,
-        streamUrl: streamUrl,
         countryId: countryId,
         pyramidType: pyramidType,
-        taskId: taskId
+        taskId: taskId,
+        pending: true,
+        status: 'queued'
       }),
-      { headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      { status: 202, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
 
   } catch (error: unknown) {
