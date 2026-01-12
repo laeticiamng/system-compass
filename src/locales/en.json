@@ -7319,8 +7319,22 @@
       "redFlag": "Red Flag"
     },
     "export": {
-      "governance": "Governance & Terrain (B2B)"
+      "governance": "Governance & Terrain (B2B)",
+      "newSections": "New B2B sections",
+      "legacySections": "Existing sections"
     }
+  },
+  "marketStudy": {
+    "title": "Market Study"
+  },
+  "actorsMap": {
+    "title": "Actors Mapping"
+  },
+  "riskRegister": {
+    "title": "Risk Register"
+  },
+  "structuralRules": {
+    "title": "Structural Rules"
   },
   "music": {
     "systemSoundscape": "System Soundscape",

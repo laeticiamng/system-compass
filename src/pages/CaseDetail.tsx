@@ -10,6 +10,7 @@ import { CaseMilestones } from '@/components/cases/CaseMilestones';
 import { MarketStudyWizard } from '@/components/cases/MarketStudyWizard';
 import { ActorsMap } from '@/components/cases/ActorsMap';
 import { RiskRegisterEnhanced } from '@/components/cases/RiskRegisterEnhanced';
+import { StructuralRulesSection } from '@/components/cases/StructuralRulesSection';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -21,7 +22,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { 
   ArrowLeft, Home, Briefcase, Shield, Target, FileText, 
   Clock, Calendar, AlertTriangle, CheckCircle2, Loader2,
-  TrendingUp, Users, BarChart3
+  TrendingUp, Users, BarChart3, FileCheck
 } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { fr } from 'date-fns/locale';
@@ -156,7 +157,7 @@ export default function CaseDetail() {
 
         {/* Main Content Tabs */}
         <Tabs defaultValue="governance" className="space-y-6">
-          <TabsList className={`grid w-full ${isDeep ? 'grid-cols-7' : 'grid-cols-4'}`}>
+          <TabsList className={`grid w-full ${isDeep ? 'grid-cols-8' : 'grid-cols-4'}`}>
             <TabsTrigger value="governance" className="gap-2">
               <Shield className="w-4 h-4" />
               <span className="hidden sm:inline">
@@ -179,6 +180,10 @@ export default function CaseDetail() {
                 <TabsTrigger value="risks" className="gap-2">
                   <AlertTriangle className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('cases.tabs.risks', 'Risques')}</span>
+                </TabsTrigger>
+                <TabsTrigger value="rules" className="gap-2">
+                  <FileCheck className="w-4 h-4" />
+                  <span className="hidden sm:inline">{t('cases.tabs.rules', 'Règles')}</span>
                 </TabsTrigger>
               </>
             )}
@@ -261,6 +266,17 @@ export default function CaseDetail() {
               <RiskRegisterEnhanced
                 caseData={caseData}
                 onUpdateCase={(updates) => updateCase(updates)}
+              />
+            </TabsContent>
+          )}
+
+          {/* Structural Rules Tab (DEEP only) */}
+          {isDeep && (
+            <TabsContent value="rules">
+              <StructuralRulesSection
+                caseData={caseData}
+                onUpdateCase={(updates) => updateCase(updates)}
+                countryName={countryName}
               />
             </TabsContent>
           )}
