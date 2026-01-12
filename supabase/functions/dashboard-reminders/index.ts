@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.2";
+import webpush from "https://esm.sh/web-push@3.6.7?target=deno";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -22,6 +23,19 @@ interface DeadlineInfo {
   actionIndex: number;
 }
 
+interface PushSubscriptionRecord {
+  user_id: string;
+  endpoint: string;
+  subscription: {
+    endpoint: string;
+    expirationTime?: number | null;
+    keys: {
+      p256dh: string;
+      auth: string;
+    };
+  };
+}
+
 const logStep = (step: string, details?: unknown) => {
   const detailsStr = details ? ` - ${JSON.stringify(details)}` : '';
   console.log(`[DASHBOARD-REMINDERS] ${step}${detailsStr}`);
@@ -38,6 +52,9 @@ serve(async (req) => {
     const supabaseUrl = Deno.env.get("SUPABASE_URL");
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
     const resendApiKey = Deno.env.get("RESEND_API_KEY");
+    const vapidPublicKey = Deno.env.get("VAPID_PUBLIC_KEY");
+    const vapidPrivateKey = Deno.env.get("VAPID_PRIVATE_KEY");
+    const vapidSubject = Deno.env.get("VAPID_SUBJECT") ?? "mailto:notifications@boussole.app";
 
     if (!supabaseUrl || !supabaseServiceKey) {
       throw new Error("Missing Supabase configuration");
@@ -45,6 +62,12 @@ serve(async (req) => {
 
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
     const canSendEmail = !!resendApiKey;
+    const canSendPush = !!(vapidPublicKey && vapidPrivateKey);
+    const baseAppUrl = supabaseUrl.replace('.supabase.co', '.lovable.app');
+
+    if (canSendPush) {
+      webpush.setVapidDetails(vapidSubject, vapidPublicKey!, vapidPrivateKey!);
+    }
 
     const body: ReminderRequest = await req.json().catch(() => ({}));
     const { userId, checkAll = false } = body;
@@ -123,6 +146,13 @@ serve(async (req) => {
       const existing = userDeadlines.get(deadline.userEmail) || [];
       existing.push(deadline);
       userDeadlines.set(deadline.userEmail, existing);
+    }
+
+    const userDeadlinesById = new Map<string, DeadlineInfo[]>();
+    for (const deadline of upcomingDeadlines) {
+      const existing = userDeadlinesById.get(deadline.userId) || [];
+      existing.push(deadline);
+      userDeadlinesById.set(deadline.userId, existing);
     }
 
     // Send emails if Resend is configured
@@ -223,19 +253,121 @@ serve(async (req) => {
       logStep("Resend not configured, skipping emails");
     }
 
-    // Store notifications in database for push notifications
-    for (const deadline of upcomingDeadlines) {
-      // Check notification settings
-      const { data: settings } = await supabase
-        .from('notification_settings')
-        .select('push_enabled')
-        .eq('user_id', deadline.userId)
-        .single();
+    const userIds = Array.from(userDeadlinesById.keys());
+    const settingsByUserId = new Map<string, { push_enabled: boolean; slack_webhook_url: string | null }>();
 
-      if (settings?.push_enabled) {
-        // Here you would trigger push notification
-        // For now, we log it for the client to poll
-        logStep("Push notification queued", { userId: deadline.userId });
+    if (userIds.length > 0) {
+      const { data: settingsData, error: settingsError } = await supabase
+        .from('notification_settings')
+        .select('user_id, push_enabled, slack_webhook_url')
+        .in('user_id', userIds);
+
+      if (settingsError) {
+        throw new Error(`Failed to fetch notification settings: ${settingsError.message}`);
+      }
+
+      for (const setting of settingsData || []) {
+        settingsByUserId.set(setting.user_id, {
+          push_enabled: !!setting.push_enabled,
+          slack_webhook_url: setting.slack_webhook_url,
+        });
+      }
+    }
+
+    let pushSentCount = 0;
+    let slackSentCount = 0;
+
+    if (canSendPush && userIds.length > 0) {
+      const { data: subscriptionsData, error: subscriptionsError } = await supabase
+        .from('push_subscriptions')
+        .select('user_id, endpoint, subscription')
+        .in('user_id', userIds);
+
+      if (subscriptionsError) {
+        throw new Error(`Failed to fetch push subscriptions: ${subscriptionsError.message}`);
+      }
+
+      const subscriptionsByUserId = new Map<string, PushSubscriptionRecord[]>();
+      for (const subscription of (subscriptionsData ?? []) as PushSubscriptionRecord[]) {
+        const existing = subscriptionsByUserId.get(subscription.user_id) || [];
+        existing.push(subscription);
+        subscriptionsByUserId.set(subscription.user_id, existing);
+      }
+
+      for (const [userId, deadlines] of userDeadlinesById) {
+        const settings = settingsByUserId.get(userId);
+        if (!settings?.push_enabled) continue;
+
+        const subscriptions = subscriptionsByUserId.get(userId) || [];
+        if (subscriptions.length === 0) continue;
+
+        const urgentCount = deadlines.filter(d => d.daysRemaining <= 3).length;
+        const body = deadlines.length === 1
+          ? `${deadlines[0].actionText} - ${deadlines[0].daysRemaining === 0 ? "Aujourd'hui" : `J-${deadlines[0].daysRemaining}`}`
+          : `${deadlines.length} échéance(s) à venir${urgentCount > 0 ? ` dont ${urgentCount} urgente(s)` : ''}.`;
+
+        const payload = JSON.stringify({
+          title: "📅 Rappel d'échéances",
+          body,
+          data: {
+            url: `${baseAppUrl}/dashboard`,
+            total: deadlines.length,
+            urgent: urgentCount,
+          },
+        });
+
+        for (const subscription of subscriptions) {
+          try {
+            await webpush.sendNotification(subscription.subscription, payload);
+            pushSentCount += 1;
+          } catch (pushError) {
+            const errorMessage = pushError instanceof Error ? pushError.message : String(pushError);
+            const statusCode = (pushError as { statusCode?: number }).statusCode;
+
+            if (statusCode === 404 || statusCode === 410) {
+              await supabase.from('push_subscriptions').delete().eq('endpoint', subscription.endpoint);
+            }
+
+            errors.push(`Push notification failed for ${userId}: ${errorMessage}`);
+            logStep("Push error", { userId, error: errorMessage });
+          }
+        }
+      }
+    } else if (!canSendPush) {
+      logStep("Web Push not configured, skipping push notifications");
+    }
+
+    for (const [userId, deadlines] of userDeadlinesById) {
+      const settings = settingsByUserId.get(userId);
+      if (!settings?.slack_webhook_url) continue;
+
+      const slackText = [
+        "📅 Rappels d'échéances - Dashboard",
+        ...deadlines.map(deadline => (
+          `• ${deadline.actionText} - ${deadline.daysRemaining === 0 ? "Aujourd'hui" : `J-${deadline.daysRemaining}`}`
+        )),
+        `➡️ ${baseAppUrl}/dashboard`,
+      ].join('\n');
+
+      try {
+        const slackResponse = await fetch(settings.slack_webhook_url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ text: slackText }),
+        });
+
+        if (!slackResponse.ok) {
+          throw new Error(`Slack webhook error: ${slackResponse.status}`);
+        }
+
+        slackSentCount += 1;
+        logStep("Slack notification sent", { userId, count: deadlines.length });
+      } catch (slackError) {
+        const errorMessage = slackError instanceof Error ? slackError.message : String(slackError);
+        errors.push(`Slack notification failed for ${userId}: ${errorMessage}`);
+        logStep("Slack error", { userId, error: errorMessage });
       }
     }
 
@@ -243,6 +375,8 @@ serve(async (req) => {
       success: true,
       processed: upcomingDeadlines.length,
       emailsSent: notificationsSent.length,
+      pushSent: pushSentCount,
+      slackSent: slackSentCount,
       errors: errors.length > 0 ? errors : undefined,
       summary: {
         totalDeadlines: upcomingDeadlines.length,

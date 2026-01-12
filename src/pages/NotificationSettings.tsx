@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { 
@@ -37,6 +37,8 @@ export default function NotificationSettings() {
     saving, 
     updateSettings, 
     requestPushPermission,
+    pushStatus,
+    pushError,
     isLoggedIn 
   } = useNotificationSettings();
 
@@ -49,7 +51,7 @@ export default function NotificationSettings() {
   });
 
   // Sync local state when settings load
-  useState(() => {
+  useEffect(() => {
     if (settings) {
       setLocalSettings({
         email_enabled: settings.email_enabled ?? true,
@@ -59,7 +61,54 @@ export default function NotificationSettings() {
         weekly_digest: settings.weekly_digest ?? true,
       });
     }
-  });
+  }, [settings]);
+
+  const pushStatusContent = useMemo(() => {
+    switch (pushStatus) {
+      case 'unsupported':
+        return {
+          variant: 'destructive' as const,
+          icon: AlertTriangle,
+          message: t('notifications.push.unsupported', 'Les notifications push ne sont pas prises en charge sur ce navigateur.'),
+        };
+      case 'denied':
+        return {
+          variant: 'destructive' as const,
+          icon: AlertTriangle,
+          message: t('notifications.push.denied', 'Les permissions de notifications ont été refusées.'),
+        };
+      case 'subscribed':
+        return {
+          variant: 'default' as const,
+          icon: CheckCircle2,
+          message: t('notifications.push.ready', 'Abonnement push enregistré.'),
+        };
+      case 'saving':
+        return {
+          variant: 'default' as const,
+          icon: Loader2,
+          message: t('notifications.push.registering', 'Enregistrement de l’abonnement push...'),
+        };
+      case 'error':
+        return {
+          variant: 'destructive' as const,
+          icon: AlertTriangle,
+          message: t('notifications.push.error', 'Erreur lors de la configuration des notifications push.'),
+        };
+      case 'granted':
+        return {
+          variant: 'default' as const,
+          icon: Info,
+          message: t('notifications.push.granted', 'Permission accordée, prêt à enregistrer un abonnement.'),
+        };
+      default:
+        return {
+          variant: 'default' as const,
+          icon: Info,
+          message: t('notifications.push.idle', 'Activez les notifications pour recevoir des alertes en temps réel.'),
+        };
+    }
+  }, [pushStatus, t]);
 
   const handleSave = async () => {
     const success = await updateSettings(localSettings);
@@ -207,6 +256,14 @@ export default function NotificationSettings() {
                   </Button>
                 )}
               </div>
+              <Separator className="my-4" />
+              <Alert variant={pushStatusContent.variant}>
+                <pushStatusContent.icon className={`w-4 h-4 ${pushStatus === 'saving' ? 'animate-spin' : ''}`} />
+                <AlertDescription>
+                  {pushStatusContent.message}
+                  {pushError ? ` (${pushError})` : ''}
+                </AlertDescription>
+              </Alert>
             </CardContent>
           </Card>
 
