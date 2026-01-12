@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { countries } from '@/lib/countries-data';
+import { useCountries } from '@/lib/countries-data';
 import { EXTENDED_COUNTRY_META } from '@/lib/countries-extended';
 import { CountryCard } from '@/components/CountryCard';
 import { PyramidType, Country } from '@/lib/types';
@@ -48,6 +48,7 @@ const extendedCountries: ExtendedCountryInfo[] = Object.entries(EXTENDED_COUNTRY
 
 export default function Countries() {
   const { t } = useTranslation();
+  const { countries } = useCountries();
   const [filter, setFilter] = useState<PyramidType | 'all' | 'extended'>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<SortOption>('name-asc');
@@ -115,7 +116,7 @@ export default function Countries() {
     });
     
     return result;
-  }, [filter, searchQuery, sortBy]);
+  }, [countries, filter, searchQuery, sortBy]);
 
   const totalPages = Math.ceil(filteredAndSortedCountries.length / ITEMS_PER_PAGE);
   

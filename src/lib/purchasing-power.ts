@@ -5,7 +5,7 @@
  * based on user's salary and destination's cost of living
  */
 
-import { countries } from './countries-data';
+import { getCountriesSnapshot } from './countries-data';
 import { getEstimatedSalary, getProfession } from './profession-data';
 import { getNationalityAdvantages, REGIONAL_BLOCS, COUNTRY_NAMES, DestinationRecommendation, NATIONALITY_PROFILES } from './nationality-advantages';
 
@@ -228,7 +228,7 @@ export function getVacationRecommendations(
     reasons.push(`Meilleure période: ${costData.bestSeason}`);
     
     // Find country safety data
-    const countryData = countries.find(c => c.id === destId);
+    const countryData = getCountriesSnapshot().find(c => c.id === destId);
     const safetyScore = countryData?.qualityOfLife?.safetyIndex || 50;
     
     destinations.push({

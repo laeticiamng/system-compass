@@ -23,8 +23,8 @@ import {
 } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
-import { countries } from '@/lib/countries-data';
-import { PyramidType, PYRAMID_TYPE_INFO, LifeMotorProfile, LifePriority, LIFE_MOTOR_PROFILES } from '@/lib/types';
+import { useCountries } from '@/lib/countries-data';
+import { PyramidType, PYRAMID_TYPE_INFO, LifeMotorProfile, LifePriority, LIFE_MOTOR_PROFILES, type Country } from '@/lib/types';
 import { findCompatibleKeys, UserContext, STRATEGIC_PRINCIPLES } from '@/lib/exit-keys-engine';
 import { getNationalityAdvantages, getPassportStrengthLabel, REGIONAL_BLOCS, getRecommendedDestinations, DestinationRecommendation } from '@/lib/nationality-advantages';
 import { EDUCATION_LEVELS, PROFESSIONS, PROFESSION_CATEGORY_LABELS, getProfession, type EducationLevel, type ProfessionCategory } from '@/lib/profession-data';
@@ -73,6 +73,7 @@ export default function ExitKeys() {
   const { getPyramidLabel } = usePyramidTranslations();
   const { user } = useAuth();
   const { profile: savedProfile, saveProfile, loading: profileLoading } = useExitKeysProfile();
+  const { countries } = useCountries();
   const [currentStep, setCurrentStep] = useState<Step>('origin');
   
   // Filters
@@ -145,7 +146,9 @@ export default function ExitKeys() {
 
   // Derived data
   const birthCountry = countries.find(c => c.id === birthCountryId);
-  const nationalityCountries = nationalityIds.map(id => countries.find(c => c.id === id)).filter(Boolean) as typeof countries;
+  const nationalityCountries = nationalityIds
+    .map(id => countries.find(c => c.id === id))
+    .filter(Boolean) as Country[];
   const currentCountry = countries.find(c => c.id === currentCountryId);
 
   const userContext: UserContext | null = useMemo(() => {

@@ -25,7 +25,7 @@ import {
   Target
 } from 'lucide-react';
 import { FISCAL_SYSTEMS_EXTENDED, calculateNetSalary } from '@/lib/fiscal-data';
-import { countries } from '@/lib/countries-data';
+import { useCountries } from '@/lib/countries-data';
 import { cn } from '@/lib/utils';
 import { useDefaultCountry } from '@/hooks/useDefaultCountry';
 
@@ -112,6 +112,7 @@ const getFlagEmoji = (iso2: string): string => {
 };
 
 export function RetirementProjection({ initialCountryId, className }: RetirementProjectionProps) {
+  const { countries } = useCountries();
   const { t } = useTranslation();
   const { defaultCountryId, setDefaultCountry } = useDefaultCountry();
   

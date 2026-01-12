@@ -8,7 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { countries } from '@/lib/countries-data';
+import { useCountries } from '@/lib/countries-data';
 import { PyramidType } from '@/lib/types';
 
 interface CurrentCountryStepProps {
@@ -41,6 +41,7 @@ export function CurrentCountryStep({
   onCurrentCountryChange,
 }: CurrentCountryStepProps) {
   const { t } = useTranslation();
+  const { countries } = useCountries();
   const currentCountry = countries.find(c => c.id === currentCountryId);
 
   // Get translated pyramid label

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { countries } from '@/lib/countries-data';
+import { useCountries } from '@/lib/countries-data';
 import { Button } from '@/components/ui/button';
 import { CountryCard } from '@/components/CountryCard';
 import { useAuth } from '@/hooks/useAuth';
@@ -32,6 +32,7 @@ export default function Index() {
   const { t } = useTranslation();
   const { user } = useAuth();
   const { trackHomeOpened, trackFilterClicked, trackExitKeysClicked, trackUniversalErrorsClicked } = useAnalytics();
+  const { countries } = useCountries();
 
   useEffect(() => {
     trackHomeOpened();

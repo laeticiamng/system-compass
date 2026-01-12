@@ -9,7 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { countries } from '@/lib/countries-data';
+import { useCountries } from '@/lib/countries-data';
 import { DB_COMPLETE_COUNTRY_IDS, EXTENDED_COUNTRY_META } from '@/lib/countries-extended';
 import { cn } from '@/lib/utils';
 
@@ -36,6 +36,7 @@ const REGIONS = [
 export default function WorldMapExplorer() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { countries } = useCountries();
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
   const [pyramidFilter, setPyramidFilter] = useState('all');
   const [regionFilter, setRegionFilter] = useState('all');
@@ -64,7 +65,7 @@ export default function WorldMapExplorer() {
       }));
 
     return [...fromData, ...fromExtended];
-  }, []);
+  }, [countries]);
 
   // Filter countries
   const filteredCountries = useMemo(() => {

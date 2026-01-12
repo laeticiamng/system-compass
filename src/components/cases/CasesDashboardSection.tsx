@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useUserCases, isDeepMode } from '@/hooks/useUserCases';
 import { CreateCaseDialog } from './CreateCaseDialog';
-import { getCountryById } from '@/lib/countries-data';
+import { useCountries } from '@/lib/countries-data';
 import { getExtendedCountryMeta } from '@/lib/countries-extended';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -30,6 +30,7 @@ export function CasesDashboardSection({ countryId, limit = 5 }: CasesDashboardSe
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const { cases, isLoading } = useUserCases();
+  const { countries } = useCountries();
 
   const filteredCases = countryId 
     ? cases.filter(c => c.country_id === countryId)
@@ -113,7 +114,7 @@ export function CasesDashboardSection({ countryId, limit = 5 }: CasesDashboardSe
               const isDeep = isDeepMode(caseData.intention);
               const progress = getProgress(caseData);
               const pendingCount = getPendingCount(caseData);
-              const country = getCountryById(caseData.country_id);
+              const country = countries.find(item => item.id === caseData.country_id);
               const extendedMeta = !country ? getExtendedCountryMeta(caseData.country_id) : null;
               const countryIso2 = country?.iso2 || extendedMeta?.iso2 || '';
 

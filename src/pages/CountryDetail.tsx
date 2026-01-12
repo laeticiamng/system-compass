@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
-import { getCountryById } from '@/lib/countries-data';
+import { useCountryById } from '@/lib/countries-data';
 import { isExtendedCountry, getExtendedCountryMeta } from '@/lib/countries-extended';
 import { CountryTroncSection } from '@/components/country/CountryTroncSection';
 import { CountryVariantSection } from '@/components/country/CountryVariantSection';
@@ -53,7 +53,7 @@ export default function CountryDetail() {
   const { t } = useTranslation();
   const { trackCountryView } = useUserHistory();
   const { profile } = useExitKeysProfile();
-  const country = getCountryById(id || '');
+  const { country } = useCountryById(id);
   const extendedMeta = !country && id ? getExtendedCountryMeta(id) : null;
   const isExtended = !country && extendedMeta !== null;
 

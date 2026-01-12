@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
-import { countries } from '@/lib/countries-data';
+import { useCountries } from '@/lib/countries-data';
 import { Country } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import { RiskBars } from '@/components/RiskBars';
@@ -49,6 +49,7 @@ const ALL_PYRAMID_TYPES = [
 
 export default function Compare() {
   const { t } = useTranslation();
+  const { countries } = useCountries();
   const [searchParams, setSearchParams] = useSearchParams();
   const [country1Id, setCountry1Id] = useState<string>(searchParams.get('c1') || '');
   const [country2Id, setCountry2Id] = useState<string>(searchParams.get('c2') || '');

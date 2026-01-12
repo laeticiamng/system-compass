@@ -5,7 +5,7 @@ import { ZoomIn, ZoomOut, RotateCcw, Info, TrendingUp, Shield, Globe } from 'luc
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
-import { countries } from '@/lib/countries-data';
+import { useCountries } from '@/lib/countries-data';
 import { DB_COMPLETE_COUNTRY_IDS, EXTENDED_COUNTRY_META, isExtendedCountry } from '@/lib/countries-extended';
 
 interface CountryPosition {
@@ -99,6 +99,7 @@ export function WorldMap({
 }: WorldMapProps) {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { countries } = useCountries();
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [hoveredCountry, setHoveredCountry] = useState<string | null>(null);
@@ -124,7 +125,7 @@ export function WorldMap({
       }));
 
     return [...fromData, ...fromExtended];
-  }, []);
+  }, [countries]);
 
   const handleCountryClick = (countryId: string) => {
     if (!interactive) return;

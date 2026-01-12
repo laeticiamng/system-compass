@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { countries } from '@/lib/countries-data';
+import { useCountries } from '@/lib/countries-data';
 import { Country, UserProfile } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -159,10 +159,12 @@ function calculateCompatibility(profile: UserProfile, country: Country, t: (key:
 export default function Match() {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { countries } = useCountries();
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [matches, setMatches] = useState<MatchedCountry[]>([]);
 
   useEffect(() => {
+    if (countries.length === 0) return;
     // Try to load profile from localStorage
     const savedProfile = localStorage.getItem('userProfile');
     if (savedProfile) {
@@ -180,7 +182,7 @@ export default function Match() {
         console.error('Failed to parse profile', e);
       }
     }
-  }, [t]);
+  }, [countries, t]);
 
   const shareResults = async () => {
     const topCountries = matches.slice(0, 3).map(m => m.country.name).join(', ');

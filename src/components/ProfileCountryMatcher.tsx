@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { supabase } from '@/integrations/supabase/client';
-import { countries } from '@/lib/countries-data';
+import { useCountries } from '@/lib/countries-data';
 import { getExtendedCountryMeta } from '@/lib/countries-extended';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
@@ -65,6 +65,7 @@ const DEFAULT_PROFILE: UserProfile = {
 
 export function ProfileCountryMatcher() {
   const { t } = useTranslation();
+  const { countries } = useCountries();
   const [tags, setTags] = useState<CountryTag[]>([]);
   const [loading, setLoading] = useState(true);
   const [profile, setProfile] = useState<UserProfile>(DEFAULT_PROFILE);
@@ -197,7 +198,7 @@ export function ProfileCountryMatcher() {
       };
     }).filter((r): r is MatchResult => r !== null)
       .sort((a, b) => b.score - a.score);
-  }, [tags, profile, t]);
+  }, [countries, tags, profile, t]);
 
   const handleSliderChange = (key: keyof UserProfile, value: number[]) => {
     setProfile(prev => ({ ...prev, [key]: value[0] }));

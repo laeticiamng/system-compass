@@ -2,7 +2,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useUserCase, isDeepMode, CaseIntention } from '@/hooks/useUserCases';
 import { useCountryGovernance } from '@/hooks/useCountryGovernance';
-import { getCountryById } from '@/lib/countries-data';
+import { useCountryById } from '@/lib/countries-data';
 import { getExtendedCountryMeta } from '@/lib/countries-extended';
 import { GovernanceLight, GovernanceDeep } from '@/components/governance';
 import { CasePdfExport } from '@/components/cases/CasePdfExport';
@@ -34,7 +34,7 @@ export default function CaseDetail() {
   const { caseData, isLoading, updateCase, isUpdating } = useUserCase(id || '');
 
   // Get country info
-  const country = caseData ? getCountryById(caseData.country_id) : null;
+  const { country } = useCountryById(caseData?.country_id);
   const extendedMeta = caseData && !country ? getExtendedCountryMeta(caseData.country_id) : null;
   const countryName = country?.name || extendedMeta?.name || caseData?.country_id || '';
   const countryIso2 = country?.iso2 || extendedMeta?.iso2 || '';
