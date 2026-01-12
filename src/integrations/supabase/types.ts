@@ -1876,6 +1876,47 @@ export type Database = {
         }
         Relationships: []
       }
+      traceos_notifications: {
+        Row: {
+          created_at: string
+          days_since: number
+          decision_id: string
+          decision_title: string
+          id: string
+          notification_type: string
+          read: boolean
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          days_since: number
+          decision_id: string
+          decision_title: string
+          id?: string
+          notification_type: string
+          read?: boolean
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          days_since?: number
+          decision_id?: string
+          decision_title?: string
+          id?: string
+          notification_type?: string
+          read?: boolean
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "traceos_notifications_decision_id_fkey"
+            columns: ["decision_id"]
+            isOneToOne: false
+            referencedRelation: "traceos_decisions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       traceos_tags: {
         Row: {
           color: string

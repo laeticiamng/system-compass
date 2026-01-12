@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { 
   Bell, 
@@ -22,8 +22,8 @@ import {
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
 import { DecisionNodeData } from './DecisionNode';
-import { differenceInDays, parseISO, format } from 'date-fns';
-import { fr } from 'date-fns/locale';
+import { differenceInDays, parseISO } from 'date-fns';
+import { supabase } from '@/integrations/supabase/client';
 
 interface Notification {
   id: string;
@@ -49,6 +49,9 @@ export function TraceOSNotifications({ decisions, onNavigateToDecision }: TraceO
     return stored !== 'false';
   });
   const [isOpen, setIsOpen] = useState(false);
+  const [isOffline, setIsOffline] = useState(() => (
+    typeof navigator !== 'undefined' ? !navigator.onLine : false
+  ));
 
   // Flatten decisions to get all including children
   const flattenDecisions = (nodes: DecisionNodeData[]): DecisionNodeData[] => {
@@ -62,11 +65,44 @@ export function TraceOSNotifications({ decisions, onNavigateToDecision }: TraceO
     return result;
   };
 
-  // Generate notifications based on decisions
   useEffect(() => {
+    const handleOnline = () => setIsOffline(false);
+    const handleOffline = () => setIsOffline(true);
+
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+
+    return () => {
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
+  }, []);
+
+  const getNotificationContent = useCallback((type: Notification['type'], days: number) => {
+    switch (type) {
+      case 'old_pending':
+        return {
+          title: t('traceOS.notifications.oldPending', 'Décision en attente depuis longtemps'),
+          message: t('traceOS.notifications.oldPendingMsg', 'Cette décision est en attente depuis {{days}} jours', { days })
+        };
+      case 'pending_reminder':
+        return {
+          title: t('traceOS.notifications.pendingReminder', 'Rappel de décision'),
+          message: t('traceOS.notifications.pendingReminderMsg', 'Décision en attente depuis {{days}} jours', { days })
+        };
+      case 'deadline_soon':
+        return {
+          title: t('traceOS.notifications.deadlineSoon', 'Deadline à venir'),
+          message: t('traceOS.notifications.deadlineSoonMsg', 'Une échéance approche bientôt.')
+        };
+      default:
+        return { title: '', message: '' };
+    }
+  }, [t]);
+
+  const generateLocalNotifications = useCallback(() => {
     if (!notificationsEnabled) {
-      setNotifications([]);
-      return;
+      return [];
     }
 
     const allDecisions = flattenDecisions(decisions);
@@ -81,11 +117,12 @@ export function TraceOSNotifications({ decisions, onNavigateToDecision }: TraceO
 
       // Notification for pending decisions older than 30 days
       if (daysSince > 30) {
+        const content = getNotificationContent('old_pending', daysSince);
         newNotifications.push({
           id: `old-pending-${decision.id}`,
           type: 'old_pending',
-          title: t('traceOS.notifications.oldPending', 'Décision en attente depuis longtemps'),
-          message: t('traceOS.notifications.oldPendingMsg', 'Cette décision est en attente depuis {{days}} jours', { days: daysSince }),
+          title: content.title,
+          message: content.message,
           decisionId: decision.id,
           decisionTitle: decision.title,
           date: now,
@@ -94,11 +131,12 @@ export function TraceOSNotifications({ decisions, onNavigateToDecision }: TraceO
       }
       // Reminder for pending decisions between 7-30 days
       else if (daysSince >= 7) {
+        const content = getNotificationContent('pending_reminder', daysSince);
         newNotifications.push({
           id: `reminder-${decision.id}`,
           type: 'pending_reminder',
-          title: t('traceOS.notifications.pendingReminder', 'Rappel de décision'),
-          message: t('traceOS.notifications.pendingReminderMsg', 'Décision en attente depuis {{days}} jours', { days: daysSince }),
+          title: content.title,
+          message: content.message,
           decisionId: decision.id,
           decisionTitle: decision.title,
           date: now,
@@ -109,23 +147,109 @@ export function TraceOSNotifications({ decisions, onNavigateToDecision }: TraceO
 
     // Sort by date descending
     newNotifications.sort((a, b) => b.date.getTime() - a.date.getTime());
-    setNotifications(newNotifications);
-  }, [decisions, notificationsEnabled, t]);
+    return newNotifications;
+  }, [decisions, getNotificationContent, notificationsEnabled]);
+
+  const loadNotifications = useCallback(async () => {
+    if (!notificationsEnabled) {
+      setNotifications([]);
+      return;
+    }
+
+    if (isOffline) {
+      setNotifications(generateLocalNotifications());
+      return;
+    }
+
+    const { data: sessionData } = await supabase.auth.getSession();
+    if (!sessionData.session?.user) {
+      setNotifications(generateLocalNotifications());
+      return;
+    }
+
+    const { data, error } = await supabase
+      .from('traceos_notifications')
+      .select('id, decision_id, decision_title, notification_type, days_since, read, created_at')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.error('Error loading TraceOS notifications:', error);
+      setNotifications(generateLocalNotifications());
+      return;
+    }
+
+    const mapped = (data || []).map((notification) => {
+      const content = getNotificationContent(
+        notification.notification_type as Notification['type'],
+        notification.days_since
+      );
+
+      return {
+        id: notification.id,
+        type: notification.notification_type as Notification['type'],
+        title: content.title,
+        message: content.message,
+        decisionId: notification.decision_id,
+        decisionTitle: notification.decision_title,
+        date: new Date(notification.created_at),
+        read: notification.read
+      };
+    });
+
+    setNotifications(mapped);
+  }, [generateLocalNotifications, getNotificationContent, isOffline, notificationsEnabled]);
+
+  useEffect(() => {
+    void loadNotifications();
+  }, [decisions, isOffline, loadNotifications]);
 
   const unreadCount = notifications.filter(n => !n.read).length;
 
-  const handleMarkAsRead = (id: string) => {
-    setNotifications(prev => 
+  const handleMarkAsRead = async (id: string) => {
+    setNotifications(prev =>
       prev.map(n => n.id === id ? { ...n, read: true } : n)
     );
+
+    if (isOffline) return;
+
+    const { error } = await supabase
+      .from('traceos_notifications')
+      .update({ read: true })
+      .eq('id', id);
+
+    if (error) {
+      console.error('Error updating TraceOS notification:', error);
+    }
   };
 
-  const handleMarkAllRead = () => {
+  const handleMarkAllRead = async () => {
     setNotifications(prev => prev.map(n => ({ ...n, read: true })));
+
+    if (isOffline) return;
+
+    const { error } = await supabase
+      .from('traceos_notifications')
+      .update({ read: true })
+      .eq('read', false);
+
+    if (error) {
+      console.error('Error updating TraceOS notifications:', error);
+    }
   };
 
-  const handleDismiss = (id: string) => {
+  const handleDismiss = async (id: string) => {
     setNotifications(prev => prev.filter(n => n.id !== id));
+
+    if (isOffline) return;
+
+    const { error } = await supabase
+      .from('traceos_notifications')
+      .delete()
+      .eq('id', id);
+
+    if (error) {
+      console.error('Error deleting TraceOS notification:', error);
+    }
   };
 
   const handleNotificationClick = (notification: Notification) => {
