@@ -56,6 +56,7 @@ import Usage from "./pages/Usage";
 import NotificationSettings from "./pages/NotificationSettings";
 import AdminPartners from "./pages/AdminPartners";
 import CaseDetail from "./pages/CaseDetail";
+import { RequireAdmin } from "@/components/RequireAdmin";
 
 const queryClient = new QueryClient();
 
@@ -97,8 +98,8 @@ const App = () => (
                     <Route path="/disclaimer" element={<Disclaimer />} />
                     <Route path="/systemic-mistakes" element={<Navigate to="/errors-illusions" replace />} />
                     <Route path="/how-to-read" element={<HowToRead />} />
-                    <Route path="/admin/translations" element={<AdminTranslations />} />
-                    <Route path="/admin/analytics" element={<AdminAnalytics />} />
+                    <Route path="/admin/translations" element={<RequireAdmin><AdminTranslations /></RequireAdmin>} />
+                    <Route path="/admin/analytics" element={<RequireAdmin><AdminAnalytics /></RequireAdmin>} />
                     <Route path="/prevention-filter" element={<PreventionFilter />} />
                     <Route path="/universal-errors" element={<Navigate to="/errors-illusions" replace />} />
                     <Route path="/systemic-mistakes" element={<Navigate to="/errors-illusions" replace />} />
@@ -109,9 +110,9 @@ const App = () => (
                     <Route path="/subscription-success" element={<SubscriptionSuccess />} />
                     <Route path="/pricing" element={<Pricing />} />
                     <Route path="/profile-matcher" element={<ProfileMatcher />} />
-                    <Route path="/admin/country-generator" element={<AdminCountryGenerator />} />
-                    <Route path="/admin/generate-translations" element={<AdminGenerateTranslations />} />
-                    <Route path="/admin/database-translations" element={<AdminDatabaseTranslations />} />
+                    <Route path="/admin/country-generator" element={<RequireAdmin><AdminCountryGenerator /></RequireAdmin>} />
+                    <Route path="/admin/generate-translations" element={<RequireAdmin><AdminGenerateTranslations /></RequireAdmin>} />
+                    <Route path="/admin/database-translations" element={<RequireAdmin><AdminDatabaseTranslations /></RequireAdmin>} />
                     <Route path="/institutions" element={<Institutions />} />
                     <Route path="/ovi" element={<OVI />} />
                     <Route path="/b2b" element={<B2BSolutions />} />
@@ -120,7 +121,7 @@ const App = () => (
                     <Route path="/irreversa" element={<IrreversaModule />} />
                     <Route path="/usage" element={<Usage />} />
                     <Route path="/settings/notifications" element={<NotificationSettings />} />
-                    <Route path="/admin/partners" element={<AdminPartners />} />
+                    <Route path="/admin/partners" element={<RequireAdmin><AdminPartners /></RequireAdmin>} />
                     <Route path="/cases/:id" element={<CaseDetail />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
