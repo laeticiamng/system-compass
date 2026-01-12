@@ -25,16 +25,18 @@ export function usePersistedNotifications() {
   useEffect(() => {
     const loadNotifications = async () => {
       setLoading(true);
+      let localNotifications: PersistedNotification[] = [];
 
       // First load from localStorage for immediate display
       const stored = localStorage.getItem(LOCAL_STORAGE_KEY);
       if (stored) {
         try {
           const parsed = JSON.parse(stored);
-          setNotifications(parsed.map((n: any) => ({
+          localNotifications = parsed.map((n: any) => ({
             ...n,
             timestamp: new Date(n.timestamp),
-          })));
+          }));
+          setNotifications(localNotifications);
         } catch (e) {
           console.error('Failed to parse notifications from localStorage');
           setNotifications([]);
@@ -65,7 +67,7 @@ export function usePersistedNotifications() {
 
             // Merge with localStorage (DB takes precedence)
             const localIds = new Set(dbNotifications.map(n => n.id));
-            const localNotifs = notifications.filter(n => !localIds.has(n.id) && !n.id.startsWith('notif-'));
+            const localNotifs = localNotifications.filter(n => !localIds.has(n.id));
             
             const merged = [...dbNotifications, ...localNotifs].slice(0, MAX_NOTIFICATIONS);
             setNotifications(merged);
@@ -111,6 +113,7 @@ export function usePersistedNotifications() {
             message: notification.message,
             priority: notification.priority,
             action_url: notification.actionUrl,
+            read: false,
           }])
           .select()
           .single();
