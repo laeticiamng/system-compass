@@ -7842,7 +7842,165 @@
       "redFlag": "Red Flag"
     },
     "export": {
-      "governance": "Gouvernance & Terrain (B2B)"
+      "governance": "Gouvernance & Terrain (B2B)",
+      "newSections": "Nouvelles sections B2B",
+      "legacySections": "Sections existantes"
+    }
+  },
+  "marketStudy": {
+    "title": "Étude de marché",
+    "problem": {
+      "statement": "Quel problème résolvez-vous ?",
+      "placeholder": "Décrivez le problème que votre offre résout...",
+      "value": "Proposition de valeur",
+      "valuePlaceholder": "En quoi votre solution est-elle unique ?"
+    },
+    "customers": {
+      "segments": "Segments clients",
+      "addSegment": "Ajouter un segment...",
+      "paying": "Qui paye ?",
+      "endUser": "Qui utilise ?"
+    },
+    "competition": {
+      "title": "Concurrence",
+      "name": "Nom",
+      "scope": "Périmètre",
+      "strengths": "Points forts",
+      "local": "Local",
+      "regional": "Régional",
+      "national": "National",
+      "international": "International",
+      "empty": "Aucun concurrent ajouté"
+    },
+    "diff": {
+      "why": "Pourquoi vous ?",
+      "placeholder": "Qu'est-ce qui vous différencie réellement ?",
+      "timing": "Pourquoi maintenant ?",
+      "timingPlaceholder": "Quel facteur rend ce moment propice ?"
+    },
+    "regulation": {
+      "list": "Réglementations applicables",
+      "add": "Ajouter une réglementation...",
+      "constraints": "Contraintes identifiées",
+      "addConstraint": "Ajouter une contrainte..."
+    },
+    "gtm": {
+      "strategy": "Stratégie d'entrée",
+      "placeholder": "Comment allez-vous atteindre vos premiers clients ?",
+      "channels": "Canaux de distribution",
+      "addChannel": "Ajouter un canal..."
+    },
+    "economics": {
+      "title": "Économie unitaire",
+      "cost": "Coût unitaire (€)",
+      "price": "Prix unitaire (€)",
+      "margin": "Marge (%)",
+      "breakeven": "Point mort"
+    },
+    "operations": {
+      "title": "Opérations",
+      "placeholder": "Décrivez vos opérations...",
+      "logistics": "Logistique",
+      "customs": "Notes douanes"
+    },
+    "risks": {
+      "title": "Risques clés",
+      "add": "Ajouter un risque..."
+    },
+    "conclusion": {
+      "title": "Conclusion",
+      "feasibility": "Faisabilité",
+      "conditions": "Conditions à valider",
+      "addCondition": "Ajouter une condition..."
+    }
+  },
+  "actorsMap": {
+    "title": "Cartographie des acteurs",
+    "description": "Identifiez les parties prenantes clés de votre projet",
+    "add": "Ajouter",
+    "actors": "acteurs",
+    "verified": "vérifiés",
+    "redFlags": "alertes",
+    "highDep": "dépendance élevée",
+    "empty": "Aucun acteur cartographié",
+    "emptyHint": "Cliquez sur \"Ajouter\" pour commencer",
+    "namePlaceholder": "Nom / Organisation",
+    "notesPlaceholder": "Notes sur cet acteur...",
+    "proofs": "Preuves / Références",
+    "addProof": "Ajouter une preuve...",
+    "markRedFlag": "Drapeau rouge",
+    "status": {
+      "official": "Officiel",
+      "influential": "Influence"
+    },
+    "dep": {
+      "low": "Dép. faible",
+      "medium": "Dép. moyenne",
+      "high": "Dép. élevée"
+    },
+    "reliability": {
+      "unverified": "Non vérifié",
+      "inProgress": "En cours",
+      "verified": "Vérifié"
+    },
+    "notice": {
+      "title": "Important",
+      "text": "Cette cartographie documente les risques d'opacité et de dépendance comme outils de prévention."
+    }
+  },
+  "riskRegister": {
+    "title": "Registre des risques",
+    "description": "Identifiez, évaluez et protégez-vous des risques projet",
+    "templates": "Modèles",
+    "add": "Ajouter",
+    "open": "ouverts",
+    "high": "critiques",
+    "mitigated": "atténués",
+    "selectTemplate": "Sélectionner un modèle de risque",
+    "empty": "Aucun risque documenté",
+    "emptyHint": "Utilisez les modèles pour commencer rapidement",
+    "description": "Description",
+    "probability": "Probabilité",
+    "impact": "Impact",
+    "signals": "Signaux d'alerte",
+    "addSignal": "Ajouter un signal...",
+    "protections": "Mesures de protection",
+    "addProtection": "Ajouter une protection...",
+    "statusOpen": "Ouvert",
+    "statusMitigated": "Atténué",
+    "statusAccepted": "Accepté"
+  },
+  "structuralRules": {
+    "title": "Règles structurantes",
+    "description": "Règles légales et réglementaires à vérifier pour {{country}}",
+    "templates": "Modèles",
+    "add": "Ajouter",
+    "rules": "règles",
+    "verified": "vérifiées",
+    "pending": "à vérifier",
+    "selectTemplate": "Types de règles courants",
+    "empty": "Aucune règle documentée",
+    "emptyHint": "Utilisez les modèles pour documenter les règles à vérifier",
+    "ruleTitle": "Titre de la règle",
+    "titlePlaceholder": "Ex: Obligation de JV à 51%",
+    "ruleType": "Type",
+    "ruleDescription": "Description détaillée",
+    "descPlaceholder": "Décrivez la règle et ses implications...",
+    "sourceRef": "Source / Référence",
+    "sourcePlaceholder": "Ex: Code des investissements Art. 12",
+    "sourceUrl": "URL de la source",
+    "source": "Source",
+    "notes": "Notes",
+    "notesPlaceholder": "Notes de vérification, contacts, observations...",
+    "markVerified": "Marquer vérifié",
+    "status": {
+      "unverified": "Non vérifié",
+      "inProgress": "En vérification",
+      "verified": "Vérifié"
+    },
+    "notice": {
+      "title": "⚠️ Note de prudence",
+      "text": "Ces informations sont fournies à titre indicatif et doivent être confirmées auprès de sources officielles avant tout engagement."
     }
   },
   "music": {

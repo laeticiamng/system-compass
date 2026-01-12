@@ -10,3 +10,4 @@ export { CasesDashboardSection } from './CasesDashboardSection';
 export { MarketStudyWizard } from './MarketStudyWizard';
 export { ActorsMap } from './ActorsMap';
 export { RiskRegisterEnhanced } from './RiskRegisterEnhanced';
+export { StructuralRulesSection } from './StructuralRulesSection';
