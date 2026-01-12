@@ -7346,5 +7346,17 @@
     "play": "Play",
     "pause": "Pause",
     "volume": "Volume"
+  },
+  "ai": {
+    "caseGenerator": "AI Generation",
+    "caseGeneratorDesc": "Automatically generate your case content",
+    "progress": "Progress",
+    "generateAll": "Generate complete case",
+    "generatingComplete": "Complete generation in progress...",
+    "completeGeneration": "Complete case generated!",
+    "generationSuccess": "Content generated successfully",
+    "disclaimer": "AI-generated content - review and complete manually",
+    "rateLimitError": "Rate limit reached. Please try again shortly.",
+    "creditsError": "Insufficient AI credits. Please top up your account."
   }
 }
