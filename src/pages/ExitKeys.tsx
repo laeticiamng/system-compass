@@ -6,7 +6,7 @@ import {
   ChevronRight, MapPin, Heart, Shield,
   AlertTriangle, CheckCircle, Save, RefreshCw,
   Filter, Clock, Scale, Flag, Globe, Plane, Map,
-  GraduationCap, Briefcase, Sparkles
+  GraduationCap, Briefcase, Sparkles, Check
 } from 'lucide-react';
 import { usePyramidTranslations } from '@/hooks/usePyramidTranslations';
 import { Button } from '@/components/ui/button';
@@ -75,6 +75,7 @@ export default function ExitKeys() {
   const { profile: savedProfile, saveProfile, loading: profileLoading } = useExitKeysProfile();
   const { countries } = useCountries();
   const [currentStep, setCurrentStep] = useState<Step>('origin');
+  const [isTransitioning, setIsTransitioning] = useState(false);
   
   // Filters
   const [difficultyFilter, setDifficultyFilter] = useState<string>('all');
@@ -237,18 +238,26 @@ export default function ExitKeys() {
   const nextStep = () => {
     const nextIndex = stepIndex + 1;
     if (nextIndex < STEPS.length) {
-      setCurrentStep(STEPS[nextIndex]);
-      // Auto-save when reaching results
-      if (STEPS[nextIndex] === 'results') {
-        handleSaveProfile();
-      }
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrentStep(STEPS[nextIndex]);
+        setIsTransitioning(false);
+        // Auto-save when reaching results
+        if (STEPS[nextIndex] === 'results') {
+          handleSaveProfile();
+        }
+      }, 200);
     }
   };
 
   const prevStep = () => {
     const prevIndex = stepIndex - 1;
     if (prevIndex >= 0) {
-      setCurrentStep(STEPS[prevIndex]);
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrentStep(STEPS[prevIndex]);
+        setIsTransitioning(false);
+      }, 200);
     }
   };
 
@@ -262,130 +271,177 @@ export default function ExitKeys() {
 
   return (
     <main className="min-h-screen bg-background pt-24 pb-16">
+      {/* Animated Background Gradient */}
+      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-radial from-primary/5 via-transparent to-transparent animate-pulse" style={{ animationDuration: '8s' }} />
+        <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-radial from-amber-500/5 via-transparent to-transparent animate-pulse" style={{ animationDuration: '10s', animationDelay: '2s' }} />
+      </div>
+
       {/* Sticky Journey Progress Bar */}
-      <div className="sticky top-16 z-40 bg-background/95 backdrop-blur-sm border-b border-border/50 py-4 mb-8">
-        <div className="container mx-auto px-4 max-w-4xl">
+      <div className="sticky top-16 z-40 bg-background/80 backdrop-blur-xl border-b border-border/30 py-4 mb-8 shadow-sm">
+        <div className="container mx-auto px-4 max-w-5xl">
           <JourneyProgressBar currentPhase={getJourneyPhase(currentStep)} />
         </div>
       </div>
 
-      <div className="container mx-auto px-4 max-w-4xl">
-        {/* Header */}
-        <div className="mb-8">
+      <div className="container mx-auto px-4 max-w-5xl">
+        {/* Hero Header */}
+        <div className="mb-10">
           <Link 
             to="/" 
-            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-6"
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-6 group"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             {t('common.back', 'Retour')}
           </Link>
           
-          <div className="flex items-start gap-4 mb-4">
-            <div className="p-3 rounded-xl bg-primary/20">
-              <Key className="w-8 h-8 text-primary" />
-            </div>
-            <div className="flex-1">
-              <h1 className="font-display text-3xl md:text-4xl font-bold">
-                {t('exitKeys.title', 'Trouvez Votre Clé de Sortie')}
-              </h1>
-              <p className="text-muted-foreground">
-                {t('exitKeys.subtitle', 'Simulez et analysez les stratégies adaptées à votre situation')}
-              </p>
-              <SimulationDisclaimer variant="compact" className="mt-2" />
-            </div>
-            {currentStep === 'results' && userContext && (
-              <AiHelpButton
-                title={t('ai.exitKeysAssistant', 'Assistant Clés de Sortie')}
-                actions={[
-                  { id: 'clarify_objective', label: t('ai.actions.clarifyObjective', 'Clarifier mon objectif'), description: t('ai.actions.clarifyObjectiveDesc', 'Reformuler votre objectif en version claire avec critères implicites') },
-                  { id: 'suggest_trajectories', label: t('ai.actions.suggestTrajectories', 'Proposer 3 trajectoires'), description: t('ai.actions.suggestTrajectoriesDesc', 'Générer trois options structurées avec avantages/risques/coûts') },
-                  { id: 'execution_checklist', label: t('ai.actions.executionChecklist', 'Check-list d\'exécution'), description: t('ai.actions.executionChecklistDesc', 'Convertir une trajectoire en étapes concrètes ordonnées') },
-                  { id: 'exportable_summary', label: t('ai.actions.exportableSummary', 'Synthèse exportable'), description: t('ai.actions.exportableSummaryDesc', 'Produire une synthèse courte basée sur vos données') },
-                ]}
-                context={{
-                  module: 'exit-keys',
-                  profile: {
-                    birthCountry: birthCountry?.name,
-                    nationalities: nationalityCountries.map(c => c.name),
-                    currentCountry: currentCountry?.name,
-                    motorProfile: motorProfile,
-                    desiredLife: desiredLife,
-                    riskTolerance: riskTolerance,
-                    timeHorizon: timeHorizon,
-                    hasCapital,
-                    hasCredentials,
-                    hasNetwork,
-                    isLGBTQ,
-                    hasFamily,
-                    educationLevel,
-                    professionId,
-                  },
-                  trajectory: {
-                    topResults: filteredResults.slice(0, 5).map(r => ({ name: r.key.name, compatibility: r.compatibility })),
-                  },
-                }}
-                variant="secondary"
-                size="default"
-              />
-            )}
-          </div>
-
-          {/* Central Philosophy Message */}
-          <div className="mb-8 p-4 rounded-xl bg-gradient-to-r from-primary/5 to-amber-500/5 border border-primary/20">
-            <p className="text-sm text-center text-muted-foreground">
-              <strong className="text-foreground">{t('exitKeys.reminder', 'Rappel')} :</strong> {t('exitKeys.lucidityMessage', 'Pyramid Compass structure la lucidité. Si l\'analyse révèle que votre option est trop risquée ou irréaliste, nous vous aiderons à explorer des alternatives : rester et entreprendre, migrer autrement, se former d\'abord, ou changer d\'objectif.')}
-            </p>
-          </div>
-
-          {/* Detailed step progress (below sticky bar) */}
-          {currentStep !== 'results' && (
-            <div className="mt-4 p-3 rounded-lg bg-muted/30 border border-border/50">
-              <div className="flex justify-between text-sm text-muted-foreground">
-                <span>{t('exitKeys.steps.substep', 'Sous-étape')} {stepIndex + 1} {t('exitKeys.steps.of', 'sur')} {STEPS.length - 1}</span>
-                <span>{Math.round(progress)}%</span>
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 via-background to-amber-500/10 border border-primary/20 p-8 mb-8">
+            {/* Decorative elements */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-radial from-primary/20 to-transparent blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-radial from-amber-500/20 to-transparent blur-3xl" />
+            
+            <div className="relative flex flex-col md:flex-row items-start gap-6">
+              <div className="p-4 rounded-2xl bg-gradient-to-br from-primary to-primary/80 shadow-lg shadow-primary/25">
+                <Key className="w-10 h-10 text-primary-foreground" />
               </div>
-              <Progress value={progress} className="h-1.5 mt-2" />
+              <div className="flex-1">
+                <h1 className="font-display text-3xl md:text-5xl font-bold bg-gradient-to-r from-foreground via-foreground to-primary bg-clip-text text-transparent mb-3">
+                  {t('exitKeys.title', 'Trouvez Votre Clé de Sortie')}
+                </h1>
+                <p className="text-lg text-muted-foreground max-w-2xl">
+                  {t('exitKeys.subtitle', 'Simulez et analysez les stratégies adaptées à votre situation')}
+                </p>
+                <div className="mt-4 flex flex-wrap gap-3">
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-500 text-sm font-medium">
+                    <Sparkles className="w-4 h-4" />
+                    {t('exitKeys.badge.personalized', 'Analyse personnalisée')}
+                  </span>
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 text-blue-500 text-sm font-medium">
+                    <Globe className="w-4 h-4" />
+                    {t('exitKeys.badge.global', '190+ pays analysés')}
+                  </span>
+                </div>
+              </div>
+              {currentStep === 'results' && userContext && (
+                <AiHelpButton
+                  title={t('ai.exitKeysAssistant', 'Assistant Clés de Sortie')}
+                  actions={[
+                    { id: 'clarify_objective', label: t('ai.actions.clarifyObjective', 'Clarifier mon objectif'), description: t('ai.actions.clarifyObjectiveDesc', 'Reformuler votre objectif en version claire avec critères implicites') },
+                    { id: 'suggest_trajectories', label: t('ai.actions.suggestTrajectories', 'Proposer 3 trajectoires'), description: t('ai.actions.suggestTrajectoriesDesc', 'Générer trois options structurées avec avantages/risques/coûts') },
+                    { id: 'execution_checklist', label: t('ai.actions.executionChecklist', 'Check-list d\'exécution'), description: t('ai.actions.executionChecklistDesc', 'Convertir une trajectoire en étapes concrètes ordonnées') },
+                    { id: 'exportable_summary', label: t('ai.actions.exportableSummary', 'Synthèse exportable'), description: t('ai.actions.exportableSummaryDesc', 'Produire une synthèse courte basée sur vos données') },
+                  ]}
+                  context={{
+                    module: 'exit-keys',
+                    profile: {
+                      birthCountry: birthCountry?.name,
+                      nationalities: nationalityCountries.map(c => c.name),
+                      currentCountry: currentCountry?.name,
+                      motorProfile: motorProfile,
+                      desiredLife: desiredLife,
+                      riskTolerance: riskTolerance,
+                      timeHorizon: timeHorizon,
+                      hasCapital,
+                      hasCredentials,
+                      hasNetwork,
+                      isLGBTQ,
+                      hasFamily,
+                      educationLevel,
+                      professionId,
+                    },
+                    trajectory: {
+                      topResults: filteredResults.slice(0, 5).map(r => ({ name: r.key.name, compatibility: r.compatibility })),
+                    },
+                  }}
+                  variant="secondary"
+                  size="default"
+                />
+              )}
+            </div>
+            <SimulationDisclaimer variant="compact" className="mt-6" />
+          </div>
+
+          {/* Philosophy Banner */}
+          <div className="relative overflow-hidden rounded-xl bg-gradient-to-r from-amber-500/5 via-primary/5 to-emerald-500/5 border border-border/50 p-5 mb-6">
+            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNiIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS1vcGFjaXR5PSIuMDUiLz48L2c+PC9zdmc+')] opacity-50" />
+            <div className="relative flex items-center gap-4">
+              <div className="p-2 rounded-lg bg-amber-500/10">
+                <Shield className="w-5 h-5 text-amber-500" />
+              </div>
+              <p className="text-sm text-muted-foreground">
+                <strong className="text-foreground">{t('exitKeys.reminder', 'Rappel')} :</strong> {t('exitKeys.lucidityMessage', 'Pyramid Compass structure la lucidité. Si l\'analyse révèle que votre option est trop risquée ou irréaliste, nous vous aiderons à explorer des alternatives : rester et entreprendre, migrer autrement, se former d\'abord, ou changer d\'objectif.')}
+              </p>
+            </div>
+          </div>
+
+          {/* Step progress indicator */}
+          {currentStep !== 'results' && (
+            <div className="p-4 rounded-xl bg-card/50 backdrop-blur border border-border/50">
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-sm font-medium text-foreground">
+                  {t('exitKeys.steps.substep', 'Sous-étape')} {stepIndex + 1} {t('exitKeys.steps.of', 'sur')} {STEPS.length - 1}
+                </span>
+                <span className="text-sm font-bold text-primary">{Math.round(progress)}%</span>
+              </div>
+              <div className="relative h-2 bg-muted rounded-full overflow-hidden">
+                <div 
+                  className="absolute inset-y-0 left-0 bg-gradient-to-r from-primary to-primary/80 rounded-full transition-all duration-500 ease-out"
+                  style={{ width: `${progress}%` }}
+                />
+              </div>
             </div>
           )}
         </div>
 
         {/* Step Content */}
-        <div className="min-h-[400px]">
+        <div className={cn(
+          "min-h-[400px] transition-all duration-300",
+          isTransitioning && "opacity-50 translate-y-2"
+        )}>
           {/* Step 1: Origin Country */}
           {currentStep === 'origin' && (
-            <div className="space-y-8">
+            <div className="space-y-8 animate-fade-in">
               {/* Birth Country */}
               <div className="space-y-4">
-                <div className="text-center mb-6">
-                  <MapPin className="w-12 h-12 text-primary mx-auto mb-4" />
-                  <h2 className="text-2xl font-bold mb-2">{t('exitKeys.origin.title', "D'où venez-vous ?")}</h2>
-                  <p className="text-muted-foreground">
+                <div className="text-center mb-8">
+                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 mb-6">
+                    <MapPin className="w-10 h-10 text-primary" />
+                  </div>
+                  <h2 className="text-3xl font-bold mb-3 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+                    {t('exitKeys.origin.title', "D'où venez-vous ?")}
+                  </h2>
+                  <p className="text-muted-foreground max-w-md mx-auto">
                     {t('exitKeys.origin.subtitle', 'Votre pays de naissance influence votre point de départ dans le système')}
                   </p>
                 </div>
 
-                <Label className="text-sm font-medium">{t('exitKeys.origin.birthCountry', 'Pays de naissance')}</Label>
-                <Select value={birthCountryId} onValueChange={(v) => {
-                  setBirthCountryId(v);
-                  if (nationalityIds.length === 0) setNationalityIds([v]);
-                }}>
-                  <SelectTrigger className="w-full h-14 text-lg">
-                    <SelectValue placeholder={t('exitKeys.origin.selectBirthCountry', 'Sélectionnez votre pays de naissance')} />
-                  </SelectTrigger>
-                  <SelectContent className="max-h-[300px]">
-                    {countries.map(country => (
-                      <SelectItem key={country.id} value={country.id}>
-                        <span className="flex items-center gap-3">
-                          <span className="text-xl">{getFlagEmoji(country.iso2)}</span>
-                          <span>{country.name}</span>
-                          <span className="text-xs text-muted-foreground ml-2">
-                            {getPyramidLabel(country.pyramidType)}
+                <div className="relative">
+                  <Label className="text-sm font-medium flex items-center gap-2 mb-3">
+                    <MapPin className="w-4 h-4 text-primary" />
+                    {t('exitKeys.origin.birthCountry', 'Pays de naissance')}
+                  </Label>
+                  <Select value={birthCountryId} onValueChange={(v) => {
+                    setBirthCountryId(v);
+                    if (nationalityIds.length === 0) setNationalityIds([v]);
+                  }}>
+                    <SelectTrigger className="w-full h-16 text-lg bg-card/50 backdrop-blur border-2 border-border hover:border-primary/50 transition-colors rounded-xl">
+                      <SelectValue placeholder={t('exitKeys.origin.selectBirthCountry', 'Sélectionnez votre pays de naissance')} />
+                    </SelectTrigger>
+                    <SelectContent className="max-h-[300px]">
+                      {countries.map(country => (
+                        <SelectItem key={country.id} value={country.id}>
+                          <span className="flex items-center gap-3">
+                            <span className="text-xl">{getFlagEmoji(country.iso2)}</span>
+                            <span>{country.name}</span>
+                            <span className="text-xs text-muted-foreground ml-2">
+                              {getPyramidLabel(country.pyramidType)}
+                            </span>
                           </span>
-                        </span>
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
               </div>
 
               {/* Nationalities - Multi-select */}
@@ -503,77 +559,94 @@ export default function ExitKeys() {
 
           {/* Step 2: Current Country */}
           {currentStep === 'current' && (
-            <div className="space-y-6">
+            <div className="space-y-6 animate-fade-in">
               <div className="text-center mb-8">
-                <Compass className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h2 className="text-2xl font-bold mb-2">{t('exitKeys.current.title', 'Où êtes-vous maintenant ?')}</h2>
-                <p className="text-muted-foreground">
+                <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500/20 to-blue-500/5 border border-blue-500/20 mb-6">
+                  <Compass className="w-10 h-10 text-blue-500" />
+                </div>
+                <h2 className="text-3xl font-bold mb-3 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+                  {t('exitKeys.current.title', 'Où êtes-vous maintenant ?')}
+                </h2>
+                <p className="text-muted-foreground max-w-md mx-auto">
                   {t('exitKeys.current.subtitle', 'Votre pays actuel détermine les contraintes et opportunités disponibles')}
                 </p>
               </div>
 
-              <Select value={currentCountryId} onValueChange={setCurrentCountryId}>
-                <SelectTrigger className="w-full h-14 text-lg">
-                  <SelectValue placeholder={t('exitKeys.current.selectCountry', 'Sélectionnez votre pays actuel')} />
-                </SelectTrigger>
-                <SelectContent className="max-h-[300px]">
-                  {countries.map(country => (
-                    <SelectItem key={country.id} value={country.id}>
-                      <span className="flex items-center gap-3">
-                        <span className="text-xl">{getFlagEmoji(country.iso2)}</span>
-                        <span>{country.name}</span>
-                        <span className="text-xs text-muted-foreground ml-2">
-                          {PYRAMID_TYPE_INFO[country.pyramidType].label}
+              <div className="space-y-4">
+                <Select value={currentCountryId} onValueChange={setCurrentCountryId}>
+                  <SelectTrigger className="w-full h-16 text-lg bg-card/50 backdrop-blur border-2 border-border hover:border-blue-500/50 transition-colors rounded-xl">
+                    <SelectValue placeholder={t('exitKeys.current.selectCountry', 'Sélectionnez votre pays actuel')} />
+                  </SelectTrigger>
+                  <SelectContent className="max-h-[300px]">
+                    {countries.map(country => (
+                      <SelectItem key={country.id} value={country.id}>
+                        <span className="flex items-center gap-3">
+                          <span className="text-xl">{getFlagEmoji(country.iso2)}</span>
+                          <span>{country.name}</span>
+                          <span className="text-xs text-muted-foreground ml-2">
+                            {PYRAMID_TYPE_INFO[country.pyramidType].label}
+                          </span>
                         </span>
-                      </span>
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
 
-              <Button 
-                variant="ghost" 
-                className="w-full" 
-                onClick={() => setCurrentCountryId(birthCountryId)}
-                disabled={!birthCountryId}
-              >
-                {t('exitKeys.current.sameAsBirth', 'Même pays que naissance')}
-              </Button>
+                <Button 
+                  variant="outline" 
+                  className="w-full h-12 border-dashed border-2 hover:border-blue-500/50 hover:bg-blue-500/5 transition-all" 
+                  onClick={() => setCurrentCountryId(birthCountryId)}
+                  disabled={!birthCountryId}
+                >
+                  <MapPin className="w-4 h-4 mr-2" />
+                  {t('exitKeys.current.sameAsBirth', 'Même pays que naissance')}
+                </Button>
+              </div>
 
               {currentCountry && (
-                <div className="glass-card rounded-xl p-6 mt-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="text-3xl">{getFlagEmoji(currentCountry.iso2)}</span>
-                    <div>
-                      <h3 className="font-bold">{currentCountry.name}</h3>
-                      <p className="text-sm text-muted-foreground">
-                        {PYRAMID_TYPE_INFO[currentCountry.pyramidType].label}
-                      </p>
+                <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-500/5 via-card to-card border-2 border-blue-500/20 p-6 mt-6">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-radial from-blue-500/10 to-transparent blur-2xl" />
+                  <div className="relative">
+                    <div className="flex items-center gap-4 mb-6">
+                      <span className="text-4xl">{getFlagEmoji(currentCountry.iso2)}</span>
+                      <div>
+                        <h3 className="text-xl font-bold">{currentCountry.name}</h3>
+                        <p className="text-sm text-muted-foreground flex items-center gap-2">
+                          <span className="w-2 h-2 rounded-full bg-blue-500" />
+                          {PYRAMID_TYPE_INFO[currentCountry.pyramidType].label}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-4 mt-4">
-                    <div>
-                      <p className="text-xs text-muted-foreground mb-1">{t('exitKeys.current.whoWins', 'Qui gagne ici')}</p>
-                      <ul className="text-sm space-y-1">
-                        {currentCountry.whoWins.slice(0, 2).map((item, i) => (
-                          <li key={i} className="flex items-center gap-1">
-                            <CheckCircle className="w-3 h-3 text-emerald-500" />
-                            <span className="truncate">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <p className="text-xs text-muted-foreground mb-1">{t('exitKeys.current.whoLoses', 'Qui perd ici')}</p>
-                      <ul className="text-sm space-y-1">
-                        {currentCountry.whoLoses.slice(0, 2).map((item, i) => (
-                          <li key={i} className="flex items-center gap-1">
-                            <AlertTriangle className="w-3 h-3 text-destructive" />
-                            <span className="truncate">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    
+                    <div className="grid grid-cols-2 gap-6">
+                      <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/20">
+                        <p className="text-xs font-medium text-emerald-500 mb-3 flex items-center gap-2">
+                          <CheckCircle className="w-4 h-4" />
+                          {t('exitKeys.current.whoWins', 'Qui gagne ici')}
+                        </p>
+                        <ul className="text-sm space-y-2">
+                          {currentCountry.whoWins.slice(0, 2).map((item, i) => (
+                            <li key={i} className="flex items-start gap-2">
+                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 shrink-0" />
+                              <span className="text-foreground/80">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="p-4 rounded-xl bg-destructive/5 border border-destructive/20">
+                        <p className="text-xs font-medium text-destructive mb-3 flex items-center gap-2">
+                          <AlertTriangle className="w-4 h-4" />
+                          {t('exitKeys.current.whoLoses', 'Qui perd ici')}
+                        </p>
+                        <ul className="text-sm space-y-2">
+                          {currentCountry.whoLoses.slice(0, 2).map((item, i) => (
+                            <li key={i} className="flex items-start gap-2">
+                              <span className="w-1.5 h-1.5 rounded-full bg-destructive mt-1.5 shrink-0" />
+                              <span className="text-foreground/80">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -583,176 +656,196 @@ export default function ExitKeys() {
 
           {/* Step 3: Profile */}
           {currentStep === 'profile' && (
-            <div className="space-y-6">
+            <div className="space-y-8 animate-fade-in">
               <div className="text-center mb-8">
-                <Heart className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h2 className="text-2xl font-bold mb-2">{t('exitKeys.profile.title', 'Quel est votre profil ?')}</h2>
-                <p className="text-muted-foreground">
+                <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-rose-500/20 to-rose-500/5 border border-rose-500/20 mb-6">
+                  <Heart className="w-10 h-10 text-rose-500" />
+                </div>
+                <h2 className="text-3xl font-bold mb-3 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+                  {t('exitKeys.profile.title', 'Quel est votre profil ?')}
+                </h2>
+                <p className="text-muted-foreground max-w-md mx-auto">
                   {t('exitKeys.profile.subtitle', 'Votre formation et métier déterminent les stratégies accessibles')}
                 </p>
               </div>
 
-              {/* Education Level */}
-              <div className="space-y-3">
-                <div className="flex items-center gap-2">
-                  <GraduationCap className="w-5 h-5 text-primary" />
-                  <Label className="text-sm font-medium">Niveau d'études</Label>
+              {/* Education & Profession Grid */}
+              <div className="grid md:grid-cols-2 gap-6">
+                {/* Education Level */}
+                <div className="p-5 rounded-2xl bg-card/50 backdrop-blur border border-border/50">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2 rounded-lg bg-gradient-to-br from-amber-500/20 to-amber-500/5">
+                      <GraduationCap className="w-5 h-5 text-amber-500" />
+                    </div>
+                    <Label className="text-sm font-semibold">Niveau d'études</Label>
+                  </div>
+                  <Select value={educationLevel} onValueChange={(v) => setEducationLevel(v as EducationLevel)}>
+                    <SelectTrigger className="w-full h-14 bg-background/50 border-2 hover:border-amber-500/50 transition-colors rounded-xl">
+                      <SelectValue placeholder="Sélectionnez votre niveau" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {EDUCATION_LEVELS.map(level => (
+                        <SelectItem key={level.id} value={level.id}>
+                          <span className="flex items-center gap-2">
+                            <span>{level.icon}</span>
+                            <span>{level.label}</span>
+                            <span className="text-xs text-muted-foreground ml-2">({level.yearsOfStudy})</span>
+                          </span>
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </div>
-                <Select value={educationLevel} onValueChange={(v) => setEducationLevel(v as EducationLevel)}>
-                  <SelectTrigger className="w-full h-12">
-                    <SelectValue placeholder="Sélectionnez votre niveau d'études" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {EDUCATION_LEVELS.map(level => (
-                      <SelectItem key={level.id} value={level.id}>
-                        <span className="flex items-center gap-2">
-                          <span>{level.icon}</span>
-                          <span>{level.label}</span>
-                          <span className="text-xs text-muted-foreground ml-2">({level.yearsOfStudy})</span>
-                        </span>
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
 
-              {/* Profession */}
-              <div className="space-y-3">
-                <div className="flex items-center gap-2">
-                  <Briefcase className="w-5 h-5 text-primary" />
-                  <Label className="text-sm font-medium">Métier actuel</Label>
+                {/* Profession */}
+                <div className="p-5 rounded-2xl bg-card/50 backdrop-blur border border-border/50">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2 rounded-lg bg-gradient-to-br from-blue-500/20 to-blue-500/5">
+                      <Briefcase className="w-5 h-5 text-blue-500" />
+                    </div>
+                    <Label className="text-sm font-semibold">Métier actuel</Label>
+                  </div>
+                  <Select value={professionId} onValueChange={setProfessionId}>
+                    <SelectTrigger className="w-full h-14 bg-background/50 border-2 hover:border-blue-500/50 transition-colors rounded-xl">
+                      <SelectValue placeholder="Sélectionnez votre métier" />
+                    </SelectTrigger>
+                    <SelectContent className="max-h-[300px]">
+                      {Object.entries(
+                        PROFESSIONS.reduce((acc, prof) => {
+                          if (!acc[prof.category]) acc[prof.category] = [];
+                          acc[prof.category].push(prof);
+                          return acc;
+                        }, {} as Record<ProfessionCategory, typeof PROFESSIONS>)
+                      ).map(([category, profs]) => (
+                        <SelectGroup key={category}>
+                          <SelectLabel className="text-primary font-semibold">
+                            {PROFESSION_CATEGORY_LABELS[category as ProfessionCategory].icon} {PROFESSION_CATEGORY_LABELS[category as ProfessionCategory].label}
+                          </SelectLabel>
+                          {profs.map(prof => (
+                            <SelectItem key={prof.id} value={prof.id}>
+                              <span className="flex items-center gap-2">
+                                <span>{prof.name}</span>
+                                {prof.remoteWorkPossible && (
+                                  <span className="text-xs bg-blue-500/20 text-blue-400 px-1.5 py-0.5 rounded">Remote</span>
+                                )}
+                                {prof.internationalDemand === 'very_high' && (
+                                  <span className="text-xs bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded">🌍</span>
+                                )}
+                              </span>
+                            </SelectItem>
+                          ))}
+                        </SelectGroup>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  {professionId && (
+                    <p className="text-xs text-emerald-500 mt-2 flex items-center gap-1">
+                      <CheckCircle className="w-3 h-3" />
+                      {(() => {
+                        const prof = getProfession(professionId);
+                        return prof ? `${prof.compatibleExitKeys.length} stratégies compatibles` : '';
+                      })()}
+                    </p>
+                  )}
                 </div>
-                <Select value={professionId} onValueChange={setProfessionId}>
-                  <SelectTrigger className="w-full h-12">
-                    <SelectValue placeholder="Sélectionnez votre métier" />
-                  </SelectTrigger>
-                  <SelectContent className="max-h-[300px]">
-                    {Object.entries(
-                      PROFESSIONS.reduce((acc, prof) => {
-                        if (!acc[prof.category]) acc[prof.category] = [];
-                        acc[prof.category].push(prof);
-                        return acc;
-                      }, {} as Record<ProfessionCategory, typeof PROFESSIONS>)
-                    ).map(([category, profs]) => (
-                      <SelectGroup key={category}>
-                        <SelectLabel className="text-primary font-semibold">
-                          {PROFESSION_CATEGORY_LABELS[category as ProfessionCategory].icon} {PROFESSION_CATEGORY_LABELS[category as ProfessionCategory].label}
-                        </SelectLabel>
-                        {profs.map(prof => (
-                          <SelectItem key={prof.id} value={prof.id}>
-                            <span className="flex items-center gap-2">
-                              <span>{prof.name}</span>
-                              {prof.remoteWorkPossible && (
-                                <span className="text-xs bg-blue-500/20 text-blue-400 px-1.5 py-0.5 rounded">Remote</span>
-                              )}
-                              {prof.internationalDemand === 'very_high' && (
-                                <span className="text-xs bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded">🌍</span>
-                              )}
-                            </span>
-                          </SelectItem>
-                        ))}
-                      </SelectGroup>
-                    ))}
-                  </SelectContent>
-                </Select>
-                {professionId && (
-                  <p className="text-xs text-muted-foreground">
-                    {(() => {
-                      const prof = getProfession(professionId);
-                      return prof ? `${prof.compatibleExitKeys.length} stratégies compatibles avec ce métier` : '';
-                    })()}
-                  </p>
-                )}
               </div>
 
               {/* Motor Profile */}
-              <div>
-                <Label className="text-sm font-medium mb-3 block">Votre moteur de vie</Label>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <div className="p-6 rounded-2xl bg-gradient-to-br from-primary/5 via-card to-card border border-border/50">
+                <Label className="text-sm font-semibold mb-4 block flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-primary" />
+                  Votre moteur de vie
+                </Label>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {Object.entries(LIFE_MOTOR_PROFILES).map(([key, profile]) => (
                     <button
                       key={key}
                       onClick={() => setMotorProfile(key as LifeMotorProfile)}
                       className={cn(
-                        "p-3 rounded-lg border text-center transition-all",
+                        "group relative p-4 rounded-xl border-2 text-center transition-all duration-300",
                         motorProfile === key 
-                          ? "border-primary bg-primary/10" 
-                          : "border-border hover:border-primary/50"
+                          ? "border-primary bg-primary/10 shadow-lg shadow-primary/10" 
+                          : "border-border/50 hover:border-primary/30 hover:bg-primary/5"
                       )}
                     >
-                      <span className="text-2xl block mb-1">{profile.icon}</span>
+                      <span className="text-3xl block mb-2 transition-transform group-hover:scale-110">{profile.icon}</span>
                       <span className="text-xs font-medium">{t(profile.label)}</span>
+                      {motorProfile === key && (
+                        <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-primary flex items-center justify-center">
+                          <Check className="w-3 h-3 text-primary-foreground" />
+                        </div>
+                      )}
                     </button>
                   ))}
                 </div>
               </div>
 
-              {/* Risk Tolerance */}
-              <div>
-                <Label className="text-sm font-medium mb-3 block">{t('exitKeys.profile.riskTolerance', 'Tolérance au risque')}</Label>
-                <div className="grid grid-cols-3 gap-3">
-                  {riskOptions.map(option => (
-                    <button
-                      key={option.value}
-                      onClick={() => setRiskTolerance(option.value as 'low' | 'medium' | 'high')}
-                      className={cn(
-                        "p-4 rounded-lg border text-center transition-all",
-                        riskTolerance === option.value 
-                          ? "border-primary bg-primary/10" 
-                          : "border-border hover:border-primary/50"
-                      )}
-                    >
-                      <span className="font-medium block">{t(option.labelKey)}</span>
-                      <span className="text-xs text-muted-foreground">{t(option.descKey)}</span>
-                    </button>
-                  ))}
+              {/* Risk & Time Grid */}
+              <div className="grid md:grid-cols-2 gap-6">
+                {/* Risk Tolerance */}
+                <div className="p-5 rounded-2xl bg-card/50 backdrop-blur border border-border/50">
+                  <Label className="text-sm font-semibold mb-4 block flex items-center gap-2">
+                    <Shield className="w-4 h-4 text-amber-500" />
+                    {t('exitKeys.profile.riskTolerance', 'Tolérance au risque')}
+                  </Label>
+                  <div className="grid grid-cols-3 gap-2">
+                    {riskOptions.map(option => (
+                      <button
+                        key={option.value}
+                        onClick={() => setRiskTolerance(option.value as 'low' | 'medium' | 'high')}
+                        className={cn(
+                          "p-3 rounded-xl border-2 text-center transition-all",
+                          riskTolerance === option.value 
+                            ? "border-amber-500 bg-amber-500/10" 
+                            : "border-border/50 hover:border-amber-500/30"
+                        )}
+                      >
+                        <span className="font-medium block text-sm">{t(option.labelKey)}</span>
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              {/* Time Horizon */}
-              <div>
-                <Label className="text-sm font-medium mb-3 block">{t('exitKeys.profile.timeHorizon', 'Horizon temporel')}</Label>
-                <div className="grid grid-cols-3 gap-3">
-                  {timeOptions.map(option => (
-                    <button
-                      key={option.value}
-                      onClick={() => setTimeHorizon(option.value as 'short' | 'medium' | 'long')}
-                      className={cn(
-                        "p-4 rounded-lg border text-center transition-all",
-                        timeHorizon === option.value 
-                          ? "border-primary bg-primary/10" 
-                          : "border-border hover:border-primary/50"
-                      )}
-                    >
-                      <span className="font-medium block">{t(option.labelKey)}</span>
-                      <span className="text-xs text-muted-foreground">{t(option.descKey)}</span>
-                    </button>
-                  ))}
+                {/* Time Horizon */}
+                <div className="p-5 rounded-2xl bg-card/50 backdrop-blur border border-border/50">
+                  <Label className="text-sm font-semibold mb-4 block flex items-center gap-2">
+                    <Clock className="w-4 h-4 text-emerald-500" />
+                    {t('exitKeys.profile.timeHorizon', 'Horizon temporel')}
+                  </Label>
+                  <div className="grid grid-cols-3 gap-2">
+                    {timeOptions.map(option => (
+                      <button
+                        key={option.value}
+                        onClick={() => setTimeHorizon(option.value as 'short' | 'medium' | 'long')}
+                        className={cn(
+                          "p-3 rounded-xl border-2 text-center transition-all",
+                          timeHorizon === option.value 
+                            ? "border-emerald-500 bg-emerald-500/10" 
+                            : "border-border/50 hover:border-emerald-500/30"
+                        )}
+                      >
+                        <span className="font-medium block text-sm">{t(option.labelKey)}</span>
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
 
               {/* Toggles */}
-              <div className="space-y-4 pt-4 border-t">
-                <div className="flex items-center justify-between">
-                  <Label htmlFor="capital">{t('exitKeys.profile.hasCapital', "J'ai du capital disponible (> 50k€)")}</Label>
-                  <Switch id="capital" checked={hasCapital} onCheckedChange={setHasCapital} />
-                </div>
-                <div className="flex items-center justify-between">
-                  <Label htmlFor="credentials">{t('exitKeys.profile.hasCredentials', "J'ai des diplômes/certifications reconnus")}</Label>
-                  <Switch id="credentials" checked={hasCredentials} onCheckedChange={setHasCredentials} />
-                </div>
-                <div className="flex items-center justify-between">
-                  <Label htmlFor="network">{t('exitKeys.profile.hasNetwork', "J'ai un réseau professionnel solide")}</Label>
-                  <Switch id="network" checked={hasNetwork} onCheckedChange={setHasNetwork} />
-                </div>
-                <div className="flex items-center justify-between">
-                  <Label htmlFor="family">{t('exitKeys.profile.hasFamily', "J'ai une famille à considérer")}</Label>
-                  <Switch id="family" checked={hasFamily} onCheckedChange={setHasFamily} />
-                </div>
-                <div className="flex items-center justify-between">
-                  <Label htmlFor="lgbtq">{t('exitKeys.profile.isLGBTQ', 'Je suis LGBTQ+')}</Label>
-                  <Switch id="lgbtq" checked={isLGBTQ} onCheckedChange={setIsLGBTQ} />
-                </div>
+              <div className="p-6 rounded-2xl bg-card/50 backdrop-blur border border-border/50 space-y-4">
+                <Label className="text-sm font-semibold mb-2 block">Ressources & Situation</Label>
+                {[
+                  { id: 'capital', label: t('exitKeys.profile.hasCapital', "J'ai du capital disponible (> 50k€)"), checked: hasCapital, onChange: setHasCapital },
+                  { id: 'credentials', label: t('exitKeys.profile.hasCredentials', "J'ai des diplômes/certifications reconnus"), checked: hasCredentials, onChange: setHasCredentials },
+                  { id: 'network', label: t('exitKeys.profile.hasNetwork', "J'ai un réseau professionnel solide"), checked: hasNetwork, onChange: setHasNetwork },
+                  { id: 'family', label: t('exitKeys.profile.hasFamily', "J'ai une famille à considérer"), checked: hasFamily, onChange: setHasFamily },
+                  { id: 'lgbtq', label: t('exitKeys.profile.isLGBTQ', 'Je suis LGBTQ+'), checked: isLGBTQ, onChange: setIsLGBTQ },
+                ].map(toggle => (
+                  <div key={toggle.id} className="flex items-center justify-between p-3 rounded-xl bg-background/50 hover:bg-background transition-colors">
+                    <Label htmlFor={toggle.id} className="cursor-pointer">{toggle.label}</Label>
+                    <Switch id={toggle.id} checked={toggle.checked} onCheckedChange={toggle.onChange} />
+                  </div>
+                ))}
               </div>
             </div>
           )}
