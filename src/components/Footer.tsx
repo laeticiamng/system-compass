@@ -50,6 +50,7 @@ export function Footer() {
               <li><Link to="/world-map" className="hover:text-foreground transition-colors block py-0.5">{t('nav.worldMap', 'Carte monde')}</Link></li>
               <li><Link to="/pyramid-types" className="hover:text-foreground transition-colors block py-0.5">{t('nav.pyramids')}</Link></li>
               <li><Link to="/compare" className="hover:text-foreground transition-colors block py-0.5">{t('nav.compare')}</Link></li>
+              <li><Link to="/terrain/france" className="hover:text-foreground transition-colors block py-0.5">🗺️ {t('nav.terrainRealities', 'Réalités Terrain')}</Link></li>
               <li><Link to="/errors-illusions" className="hover:text-foreground transition-colors block py-0.5">{t('nav.errorsIllusions', 'Erreurs')}</Link></li>
               <li><Link to="/resources" className="hover:text-foreground transition-colors block py-0.5">{t('nav.resources')}</Link></li>
             </ul>
