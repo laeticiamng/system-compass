@@ -2,15 +2,18 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { 
-  GameEvent, 
   GameResources, 
   GameAction, 
   GAME_ACTIONS,
-  getRandomGlobalEvent,
-  getRandomCountryEvent,
   CharacterCard,
   ResourceType
 } from '@/lib/game-data';
+import { 
+  getRandomGlobalEventWithChoices,
+  getRandomCountryEventWithChoices,
+  GameEventWithChoices,
+  EventChoice,
+} from '@/lib/game-events-with-choices';
 import { 
   FamilyStatus, 
   FamilyEvent, 
@@ -21,7 +24,7 @@ import {
 } from '@/lib/family-system';
 import { PyramidType } from '@/lib/types';
 import { cn } from '@/lib/utils';
-import EventCard from './EventCard';
+import EventCardWithChoices from './EventCardWithChoices';
 import FamilyEventCard from './FamilyEventCard';
 import ResourceBar from './ResourceBar';
 import ActionPanel from './ActionPanel';
@@ -76,23 +79,22 @@ export default function TurnManager({
 }: TurnManagerProps) {
   const { t } = useTranslation();
   const [phase, setPhase] = useState<TurnPhase>('global_event');
-  const [globalEvent, setGlobalEvent] = useState<GameEvent | null>(null);
-  const [countryEvent, setCountryEvent] = useState<GameEvent | null>(null);
+  const [globalEvent, setGlobalEvent] = useState<GameEventWithChoices | null>(null);
+  const [countryEvent, setCountryEvent] = useState<GameEventWithChoices | null>(null);
   const [familyEvent, setFamilyEvent] = useState<FamilyEvent | null>(null);
-  const [eventApplied, setEventApplied] = useState(false);
   const [selectedAction, setSelectedAction] = useState<GameAction | null>(null);
   const [actionResult, setActionResult] = useState<'success' | 'failed' | null>(null);
 
   // Generate events at start of turn
   useEffect(() => {
     if (phase === 'global_event' && !globalEvent) {
-      setGlobalEvent(getRandomGlobalEvent());
+      setGlobalEvent(getRandomGlobalEventWithChoices());
     }
   }, [phase, globalEvent]);
 
   useEffect(() => {
     if (phase === 'country_event' && !countryEvent) {
-      setCountryEvent(getRandomCountryEvent(currentPlayer.countryType));
+      setCountryEvent(getRandomCountryEventWithChoices(currentPlayer.countryType));
     }
   }, [phase, countryEvent, currentPlayer.countryType]);
 
@@ -103,46 +105,54 @@ export default function TurnManager({
       setFamilyEvent(event);
     }
   }, [phase, familyEvent, currentPlayer.familyStatus]);
-  const applyEventEffects = (event: GameEvent) => {
+
+  const applyEffects = (effects: Partial<GameResources>) => {
     const newResources = { ...currentPlayer.resources };
     
-    // Apply resource changes
-    Object.entries(event.effect).forEach(([resource, change]) => {
+    Object.entries(effects).forEach(([resource, change]) => {
       const key = resource as ResourceType;
-      newResources[key] = Math.max(0, Math.min(10, newResources[key] + change));
+      if (typeof change === 'number') {
+        newResources[key] = Math.max(0, Math.min(10, newResources[key] + change));
+      }
     });
     
     onResourceChange(currentPlayer.id, newResources);
-    
-    // Apply pyramid changes
-    if (event.pyramidEffect) {
-      onPyramidScoreChange(currentPlayer.id, event.pyramidEffect);
-    }
-    
-    setEventApplied(true);
   };
 
-  const handleGlobalEventContinue = () => {
-    if (globalEvent && !eventApplied) {
-      applyEventEffects(globalEvent);
+  const handleGlobalEventChoice = (
+    choice: EventChoice | null, 
+    result: 'success' | 'failure' | 'skip', 
+    appliedEffect: Partial<GameResources>
+  ) => {
+    applyEffects(appliedEffect);
+    
+    // Apply pyramid effects if success and event has them
+    if (result === 'success' && globalEvent?.pyramidEffect) {
+      onPyramidScoreChange(currentPlayer.id, globalEvent.pyramidEffect);
     }
-    setEventApplied(false);
+    
     setPhase('country_event');
-    onPhaseComplete('global_event', globalEvent);
+    onPhaseComplete('global_event', { event: globalEvent, choice, result });
   };
 
-  const handleCountryEventContinue = () => {
-    if (countryEvent && !eventApplied) {
-      applyEventEffects(countryEvent);
+  const handleCountryEventChoice = (
+    choice: EventChoice | null, 
+    result: 'success' | 'failure' | 'skip', 
+    appliedEffect: Partial<GameResources>
+  ) => {
+    applyEffects(appliedEffect);
+    
+    if (result === 'success' && countryEvent?.pyramidEffect) {
+      onPyramidScoreChange(currentPlayer.id, countryEvent.pyramidEffect);
     }
-    setEventApplied(false);
+    
     // If player has family status, go to family event phase
     if (currentPlayer.familyStatus) {
       setPhase('family_event');
     } else {
       setPhase('action_selection');
     }
-    onPhaseComplete('country_event', countryEvent);
+    onPhaseComplete('country_event', { event: countryEvent, choice, result });
   };
 
   const handleFamilyEventChoice = (choice: FamilyEventChoice | null, effects: Partial<GameResources>) => {
@@ -321,11 +331,10 @@ export default function TurnManager({
             <Globe className="w-5 h-5 text-cyan-500" />
             <h3 className="font-semibold">{t('turnManager.globalEvent')}</h3>
           </div>
-          <EventCard event={globalEvent} />
-          <Button onClick={handleGlobalEventContinue} className="w-full mt-4 gap-2">
-            {t('turnManager.continue')}
-            <ChevronRight className="w-4 h-4" />
-          </Button>
+          <EventCardWithChoices 
+            event={globalEvent} 
+            onChoiceSelect={handleGlobalEventChoice}
+          />
         </div>
       )}
 
@@ -336,16 +345,26 @@ export default function TurnManager({
             <h3 className="font-semibold">{t('turnManager.countryEvent')}</h3>
           </div>
           {countryEvent ? (
-            <EventCard event={countryEvent} />
+            <EventCardWithChoices 
+              event={countryEvent} 
+              onChoiceSelect={handleCountryEventChoice}
+            />
           ) : (
             <div className="glass-card rounded-xl p-6 text-center text-muted-foreground">
-              {t('turnManager.noCountryEvent')}
+              <p className="mb-4">{t('turnManager.noCountryEvent')}</p>
+              <Button onClick={() => {
+                if (currentPlayer.familyStatus) {
+                  setPhase('family_event');
+                } else {
+                  setPhase('action_selection');
+                }
+                onPhaseComplete('country_event', null);
+              }} className="gap-2">
+                {t('turnManager.continue')}
+                <ChevronRight className="w-4 h-4" />
+              </Button>
             </div>
           )}
-          <Button onClick={handleCountryEventContinue} className="w-full mt-4 gap-2">
-            {t('turnManager.continue')}
-            <ChevronRight className="w-4 h-4" />
-          </Button>
         </div>
       )}
 
