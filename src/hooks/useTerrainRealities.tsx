@@ -191,7 +191,7 @@ export function useTerrainRealities() {
       setResult(data);
       
       if (data.cached) {
-        toast.info(t('terrainRealities.cachedResult', 'Données en cache'));
+        toast.info(t('terrainRealities.cachedResult'));
       }
 
       return data as TerrainRealitiesResult;

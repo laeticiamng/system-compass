@@ -40,6 +40,8 @@ import {
 import { useTerrainRealities, TerrainRealitiesResult } from '@/hooks/useTerrainRealities';
 import { useCountries } from '@/lib/countries-store';
 import { TerrainRealitiesPdfExport } from '@/components/terrain/TerrainRealitiesPdfExport';
+import { RiskOverviewChart } from '@/components/terrain/RiskOverviewChart';
+import { ShareReportButton } from '@/components/terrain/ShareReportButton';
 
 function RiskBadge({ level }: { level: 'high' | 'medium' | 'low' }) {
   const { t } = useTranslation();
@@ -158,14 +160,14 @@ function HealthcareSection({ data }: { data: TerrainRealitiesResult['healthcare_
         <CardContent className="space-y-4">
           {/* VIH */}
           <div>
-            <p className="text-xs font-medium uppercase mb-2">VIH/SIDA</p>
+            <p className="text-xs font-medium uppercase mb-2">{t('terrainRealities.hivTreatment')}</p>
             <div className="grid grid-cols-2 gap-2 text-sm">
               <div>
                 <span className="text-muted-foreground">{t('terrainRealities.availability')}:</span>{' '}
                 <span className="capitalize">{data.chronic_disease_management.hiv_treatment.availability}</span>
               </div>
               <div>
-                <span className="text-muted-foreground">Tests:</span>{' '}
+                <span className="text-muted-foreground">{t('terrainRealities.testReliability')}:</span>{' '}
                 <span className="capitalize">{data.chronic_disease_management.hiv_treatment.test_reliability}</span>
               </div>
             </div>
@@ -177,6 +179,26 @@ function HealthcareSection({ data }: { data: TerrainRealitiesResult['healthcare_
                     <li key={i} className="text-xs text-muted-foreground">• {issue}</li>
                   ))}
                 </ul>
+              </div>
+            )}
+            {data.chronic_disease_management.hiv_treatment.reliable_centers && data.chronic_disease_management.hiv_treatment.reliable_centers.length > 0 && (
+              <div className="mt-2">
+                <p className="text-xs text-green-400 mb-1">{t('terrainRealities.reliableCenters')}:</p>
+                <div className="flex flex-wrap gap-1">
+                  {data.chronic_disease_management.hiv_treatment.reliable_centers.map((center, i) => (
+                    <Badge key={i} variant="secondary" className="text-xs">{center}</Badge>
+                  ))}
+                </div>
+              </div>
+            )}
+            {data.chronic_disease_management.hiv_treatment.international_support && data.chronic_disease_management.hiv_treatment.international_support.length > 0 && (
+              <div className="mt-2">
+                <p className="text-xs text-blue-400 mb-1">{t('terrainRealities.internationalSupport')}:</p>
+                <div className="flex flex-wrap gap-1">
+                  {data.chronic_disease_management.hiv_treatment.international_support.map((org, i) => (
+                    <Badge key={i} variant="outline" className="text-xs bg-blue-500/10">{org}</Badge>
+                  ))}
+                </div>
               </div>
             )}
           </div>
@@ -243,7 +265,7 @@ function JusticeSection({ data }: { data: TerrainRealitiesResult['justice_realit
       <div className="flex items-center justify-between">
         <h3 className="text-lg font-semibold flex items-center gap-2">
           <Scale className="h-5 w-5 text-blue-400" />
-          {t('terrainRealities.justice', 'Justice')}
+          {t('terrainRealities.justice')}
         </h3>
         <RiskBadge level={data.risk_level} />
       </div>
@@ -252,14 +274,14 @@ function JusticeSection({ data }: { data: TerrainRealitiesResult['justice_realit
       <Card className="bg-card/30 border-red-500/20">
         <CardHeader className="pb-2">
           <CardTitle className="text-sm text-red-400">
-            {t('terrainRealities.corruptionPatterns', 'Schémas de corruption')}
+            {t('terrainRealities.corruptionPatterns')}
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           {/* Avocats */}
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-sm font-medium">{t('terrainRealities.lawyers', 'Avocats')}</span>
+              <span className="text-sm font-medium">{t('terrainRealities.lawyers')}</span>
               <Badge variant="outline" className="text-xs">{data.corruption_patterns.lawyer_corruption.prevalence}</Badge>
             </div>
             {data.corruption_patterns.lawyer_corruption.mechanism && (
@@ -275,12 +297,12 @@ function JusticeSection({ data }: { data: TerrainRealitiesResult['justice_realit
           {/* Juges */}
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-sm font-medium">{t('terrainRealities.judges', 'Juges')}</span>
+              <span className="text-sm font-medium">{t('terrainRealities.judges')}</span>
               <Badge variant="outline" className="text-xs">{data.corruption_patterns.judicial_corruption.prevalence}</Badge>
             </div>
             {data.corruption_patterns.judicial_corruption.typical_bribes_range && (
               <p className="text-xs text-muted-foreground">
-                {t('terrainRealities.typicalBribes', 'Montants typiques')}: {data.corruption_patterns.judicial_corruption.typical_bribes_range}
+                {t('terrainRealities.typicalBribes')}: {data.corruption_patterns.judicial_corruption.typical_bribes_range}
               </p>
             )}
           </div>
@@ -288,7 +310,7 @@ function JusticeSection({ data }: { data: TerrainRealitiesResult['justice_realit
           {/* Police */}
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-sm font-medium">{t('terrainRealities.police', 'Police')}</span>
+              <span className="text-sm font-medium">{t('terrainRealities.police')}</span>
               <Badge variant="outline" className="text-xs">{data.corruption_patterns.police_corruption.prevalence}</Badge>
             </div>
             {data.corruption_patterns.police_corruption.common_scenarios && (
@@ -307,21 +329,21 @@ function JusticeSection({ data }: { data: TerrainRealitiesResult['justice_realit
         <CardHeader className="pb-2">
           <CardTitle className="text-sm flex items-center gap-2 text-amber-400">
             <Clock className="h-4 w-4" />
-            {t('terrainRealities.averageDelays', 'Délais moyens')}
+            {t('terrainRealities.averageDelays')}
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div className="text-center p-2 bg-muted/30 rounded">
-              <p className="text-xs text-muted-foreground">{t('terrainRealities.civilCases', 'Affaires civiles')}</p>
+              <p className="text-xs text-muted-foreground">{t('terrainRealities.civilCases')}</p>
               <p className="font-medium">{data.average_delays.civil_cases}</p>
             </div>
             <div className="text-center p-2 bg-muted/30 rounded">
-              <p className="text-xs text-muted-foreground">{t('terrainRealities.criminalCases', 'Affaires pénales')}</p>
+              <p className="text-xs text-muted-foreground">{t('terrainRealities.criminalCases')}</p>
               <p className="font-medium">{data.average_delays.criminal_cases}</p>
             </div>
             <div className="text-center p-2 bg-muted/30 rounded">
-              <p className="text-xs text-muted-foreground">{t('terrainRealities.commercial', 'Commercial')}</p>
+              <p className="text-xs text-muted-foreground">{t('terrainRealities.commercial')}</p>
               <p className="font-medium">{data.average_delays.commercial_disputes}</p>
             </div>
           </div>
@@ -334,7 +356,7 @@ function JusticeSection({ data }: { data: TerrainRealitiesResult['justice_realit
           <CardHeader className="pb-2">
             <CardTitle className="text-sm flex items-center gap-2 text-green-400">
               <ShieldAlert className="h-4 w-4" />
-              {t('terrainRealities.emergencyRecourses', "Recours d'urgence")}
+              {t('terrainRealities.emergencyRecourses')}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
@@ -346,10 +368,10 @@ function JusticeSection({ data }: { data: TerrainRealitiesResult['justice_realit
                 </div>
                 <p className="text-xs text-muted-foreground mb-2">{recourse.description}</p>
                 <div className="grid grid-cols-2 gap-2 text-xs">
-                  <div><span className="text-muted-foreground">Délai:</span> {recourse.timeline}</div>
-                  <div><span className="text-muted-foreground">Coût:</span> {recourse.cost_range}</div>
+                  <div><span className="text-muted-foreground">{t('terrainRealities.timeline')}:</span> {recourse.timeline}</div>
+                  <div><span className="text-muted-foreground">{t('terrainRealities.cost')}:</span> {recourse.cost_range}</div>
                 </div>
-                <p className="text-xs mt-2 text-primary">{t('terrainRealities.howToAccess', 'Accès')}: {recourse.how_to_access}</p>
+                <p className="text-xs mt-2 text-primary">{t('terrainRealities.howToAccess')}: {recourse.how_to_access}</p>
               </div>
             ))}
           </CardContent>
@@ -362,7 +384,7 @@ function JusticeSection({ data }: { data: TerrainRealitiesResult['justice_realit
           <CardHeader className="pb-2">
             <CardTitle className="text-sm flex items-center gap-2 text-blue-400">
               <Phone className="h-4 w-4" />
-              {t('terrainRealities.reliableContacts', 'Contacts fiables')}
+              {t('terrainRealities.reliableContacts')}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -394,7 +416,7 @@ function SecuritySection({ data }: { data: TerrainRealitiesResult['security_real
       <div className="flex items-center justify-between">
         <h3 className="text-lg font-semibold flex items-center gap-2">
           <ShieldAlert className="h-5 w-5 text-orange-400" />
-          {t('terrainRealities.security', 'Sécurité')}
+          {t('terrainRealities.security')}
         </h3>
         <RiskBadge level={data.risk_level} />
       </div>
@@ -403,17 +425,17 @@ function SecuritySection({ data }: { data: TerrainRealitiesResult['security_real
       <Card className="bg-card/30 border-red-500/20">
         <CardHeader className="pb-2">
           <CardTitle className="text-sm text-red-400">
-            {t('terrainRealities.humanTrafficking', "Trafic d'êtres humains")}
+            {t('terrainRealities.humanTrafficking')}
           </CardTitle>
           <CardDescription>
-            {t('terrainRealities.prevalence', 'Prévalence')}: {data.human_trafficking.prevalence}
+            {t('terrainRealities.prevalence')}: {data.human_trafficking.prevalence}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-3">
           {data.human_trafficking.common_scenarios.length > 0 && (
             <div>
               <p className="text-xs text-muted-foreground uppercase mb-1">
-                {t('terrainRealities.commonScenarios', 'Scénarios courants')}
+                {t('terrainRealities.commonScenarios')}
               </p>
               <div className="flex flex-wrap gap-1">
                 {data.human_trafficking.common_scenarios.map((s, i) => (
@@ -422,10 +444,24 @@ function SecuritySection({ data }: { data: TerrainRealitiesResult['security_real
               </div>
             </div>
           )}
+          {data.human_trafficking.risk_zones && data.human_trafficking.risk_zones.length > 0 && (
+            <div>
+              <p className="text-xs text-red-400 uppercase mb-1">
+                {t('terrainRealities.riskZones')}
+              </p>
+              <div className="flex flex-wrap gap-1">
+                {data.human_trafficking.risk_zones.map((zone, i) => (
+                  <Badge key={i} variant="outline" className="text-xs bg-red-500/10">
+                    <MapPin className="h-3 w-3 mr-1" />{zone}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+          )}
           {data.human_trafficking.warning_signs.length > 0 && (
             <div>
               <p className="text-xs text-amber-400 uppercase mb-1">
-                {t('terrainRealities.warningSigns', "Signaux d'alerte")}
+                {t('terrainRealities.warningSigns')}
               </p>
               <ul className="space-y-1">
                 {data.human_trafficking.warning_signs.map((sign, i) => (
@@ -440,7 +476,7 @@ function SecuritySection({ data }: { data: TerrainRealitiesResult['security_real
           {data.human_trafficking.emergency_contacts.length > 0 && (
             <div className="p-2 bg-red-500/10 rounded">
               <p className="text-xs text-red-400 font-medium mb-1">
-                {t('terrainRealities.emergencyContacts', "Contacts d'urgence")}
+                {t('terrainRealities.emergencyContacts')}
               </p>
               <ul className="space-y-1">
                 {data.human_trafficking.emergency_contacts.map((c, i) => (
@@ -569,7 +605,7 @@ function AdministrationSection({ data }: { data: TerrainRealitiesResult['adminis
       <div className="flex items-center justify-between">
         <h3 className="text-lg font-semibold flex items-center gap-2">
           <Building2 className="h-5 w-5 text-purple-400" />
-          {t('terrainRealities.administration', 'Administration')}
+          {t('terrainRealities.administration')}
         </h3>
         <RiskBadge level={data.risk_level} />
       </div>
@@ -578,21 +614,21 @@ function AdministrationSection({ data }: { data: TerrainRealitiesResult['adminis
       <Card className="bg-card/30 border-purple-500/20">
         <CardHeader className="pb-2">
           <CardTitle className="text-sm text-purple-400">
-            {t('terrainRealities.documentReliability', 'Fiabilité des documents')}
+            {t('terrainRealities.documentReliability')}
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div className="text-center p-2 bg-muted/30 rounded">
-              <p className="text-xs text-muted-foreground">{t('terrainRealities.birthCertificates', 'Actes de naissance')}</p>
+              <p className="text-xs text-muted-foreground">{t('terrainRealities.birthCertificates')}</p>
               <p className="font-medium text-sm capitalize">{data.document_reliability.birth_certificates}</p>
             </div>
             <div className="text-center p-2 bg-muted/30 rounded">
-              <p className="text-xs text-muted-foreground">{t('terrainRealities.landTitles', 'Titres fonciers')}</p>
+              <p className="text-xs text-muted-foreground">{t('terrainRealities.landTitles')}</p>
               <p className="font-medium text-sm capitalize">{data.document_reliability.land_titles}</p>
             </div>
             <div className="text-center p-2 bg-muted/30 rounded">
-              <p className="text-xs text-muted-foreground">{t('terrainRealities.businessLicenses', 'Licences commerciales')}</p>
+              <p className="text-xs text-muted-foreground">{t('terrainRealities.businessLicenses')}</p>
               <p className="font-medium text-sm capitalize">{data.document_reliability.business_licenses}</p>
             </div>
           </div>
@@ -773,30 +809,31 @@ export default function TerrainRealities() {
         {/* Results */}
         {result && (
           <div className="space-y-6">
-            {/* Overview */}
-            <Card className="bg-card/50 border-primary/20">
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle className="text-lg">{result.country_name}</CardTitle>
-                  <div className="flex items-center gap-2">
-                    <TerrainRealitiesPdfExport data={result} countryName={countryName} />
-                    <span className="text-xs text-muted-foreground">
-                      {t('terrainRealities.overallRisk')}
-                    </span>
-                    <RiskBadge level={result.overall_risk_level} />
+            {/* Overview with Risk Chart */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+              <Card className="bg-card/50 border-primary/20 lg:col-span-2">
+                <CardHeader>
+                  <div className="flex items-center justify-between flex-wrap gap-2">
+                    <CardTitle className="text-lg">{result.country_name}</CardTitle>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <ShareReportButton countryId={countryId || ''} countryName={countryName} />
+                      <TerrainRealitiesPdfExport data={result} countryName={countryName} />
+                    </div>
                   </div>
-                </div>
-                <CardDescription className="flex flex-wrap items-center gap-2 sm:gap-4">
-                  <span>{t('terrainRealities.lastUpdated')}: {result.last_updated}</span>
-                  <span>{t('terrainRealities.confidence')}: {Math.round(result.confidence_score * 100)}%</span>
-                  {result.cached && (
-                    <Badge variant="outline" className="text-xs">
-                      {t('terrainRealities.cachedResult')}
-                    </Badge>
-                  )}
-                </CardDescription>
-              </CardHeader>
-            </Card>
+                  <CardDescription className="flex flex-wrap items-center gap-2 sm:gap-4">
+                    <span>{t('terrainRealities.lastUpdated')}: {result.last_updated}</span>
+                    <span>{t('terrainRealities.confidence')}: {Math.round(result.confidence_score * 100)}%</span>
+                    {result.cached && (
+                      <Badge variant="outline" className="text-xs">
+                        {t('terrainRealities.cachedResult')}
+                      </Badge>
+                    )}
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+              
+              <RiskOverviewChart data={result} />
+            </div>
 
             {/* Tabs */}
             <Tabs defaultValue="healthcare" className="w-full">
