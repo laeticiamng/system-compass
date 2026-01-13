@@ -1001,6 +1001,107 @@ export type Database = {
         }
         Relationships: []
       }
+      financial_intel_country_snapshots: {
+        Row: {
+          audience: string | null
+          confidence: number | null
+          country: string
+          country_profile: Json | null
+          created_at: string
+          disclaimer: string | null
+          expires_at: string
+          id: string
+          language: string
+          legit_top7_json: Json
+          scam_top7_json: Json
+          sector_focus: string | null
+          sources_json: Json
+          updated_at: string
+        }
+        Insert: {
+          audience?: string | null
+          confidence?: number | null
+          country: string
+          country_profile?: Json | null
+          created_at?: string
+          disclaimer?: string | null
+          expires_at?: string
+          id?: string
+          language?: string
+          legit_top7_json?: Json
+          scam_top7_json?: Json
+          sector_focus?: string | null
+          sources_json?: Json
+          updated_at?: string
+        }
+        Update: {
+          audience?: string | null
+          confidence?: number | null
+          country?: string
+          country_profile?: Json | null
+          created_at?: string
+          disclaimer?: string | null
+          expires_at?: string
+          id?: string
+          language?: string
+          legit_top7_json?: Json
+          scam_top7_json?: Json
+          sector_focus?: string | null
+          sources_json?: Json
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      financial_intel_generation_runs: {
+        Row: {
+          completed_at: string | null
+          country: string
+          created_at: string
+          error_message: string | null
+          id: string
+          params_json: Json | null
+          snapshot_id: string | null
+          status: string
+          tokens_cost: number | null
+          user_id: string | null
+          workspace_id: string | null
+        }
+        Insert: {
+          completed_at?: string | null
+          country: string
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          params_json?: Json | null
+          snapshot_id?: string | null
+          status?: string
+          tokens_cost?: number | null
+          user_id?: string | null
+          workspace_id?: string | null
+        }
+        Update: {
+          completed_at?: string | null
+          country?: string
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          params_json?: Json | null
+          snapshot_id?: string | null
+          status?: string
+          tokens_cost?: number | null
+          user_id?: string | null
+          workspace_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "financial_intel_generation_runs_snapshot_id_fkey"
+            columns: ["snapshot_id"]
+            isOneToOne: false
+            referencedRelation: "financial_intel_country_snapshots"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       game_statistics: {
         Row: {
           archetypes_used: Json | null
