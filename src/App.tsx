@@ -56,6 +56,7 @@ import Usage from "./pages/Usage";
 import NotificationSettings from "./pages/NotificationSettings";
 import AdminPartners from "./pages/AdminPartners";
 import CaseDetail from "./pages/CaseDetail";
+import FinancialSafetyIntel from "./pages/FinancialSafetyIntel";
 import { RequireAdmin } from "@/components/RequireAdmin";
 
 const queryClient = new QueryClient();
@@ -123,6 +124,7 @@ const App = () => (
                     <Route path="/settings/notifications" element={<NotificationSettings />} />
                     <Route path="/admin/partners" element={<RequireAdmin><AdminPartners /></RequireAdmin>} />
                     <Route path="/cases/:id" element={<CaseDetail />} />
+                    <Route path="/financial-safety-intel" element={<FinancialSafetyIntel />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </main>
