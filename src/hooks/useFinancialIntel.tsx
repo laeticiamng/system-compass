@@ -108,11 +108,17 @@ export function useFinancialIntel() {
     setError(null);
   };
 
+  const loadResult = (data: FinancialIntelResult) => {
+    setResult(data);
+    setError(null);
+  };
+
   return {
     generateIntel,
     isLoading,
     result,
     error,
-    reset
+    reset,
+    loadResult
   };
 }

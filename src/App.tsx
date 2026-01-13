@@ -58,6 +58,7 @@ import AdminPartners from "./pages/AdminPartners";
 import CaseDetail from "./pages/CaseDetail";
 import FinancialSafetyIntel from "./pages/FinancialSafetyIntel";
 import TerrainRealities from "./pages/TerrainRealities";
+import TerrainRealitiesSelector from "./pages/TerrainRealitiesSelector";
 import { RequireAdmin } from "@/components/RequireAdmin";
 
 const queryClient = new QueryClient();
@@ -126,6 +127,7 @@ const App = () => (
                     <Route path="/admin/partners" element={<RequireAdmin><AdminPartners /></RequireAdmin>} />
                     <Route path="/cases/:id" element={<CaseDetail />} />
                     <Route path="/financial-safety-intel" element={<FinancialSafetyIntel />} />
+                    <Route path="/terrain" element={<TerrainRealitiesSelector />} />
                     <Route path="/terrain/:countryId" element={<TerrainRealities />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>

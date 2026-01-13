@@ -46,7 +46,7 @@ export default function FinancialSafetyIntel() {
   const { t } = useTranslation();
   const { countries } = useCountries();
   const { tier } = useSubscription();
-  const { generateIntel, isLoading, result, error, reset } = useFinancialIntel();
+  const { generateIntel, isLoading, result, error, reset, loadResult } = useFinancialIntel();
   
   const [selectedCountry, setSelectedCountry] = useState('');
   const [sectorFocus, setSectorFocus] = useState('');
@@ -72,8 +72,7 @@ export default function FinancialSafetyIntel() {
   };
 
   const handleLoadFromHistory = (historyResult: FinancialIntelResult) => {
-    // The result is loaded directly from the history component
-    // We need to set it in our local state if we want to display it
+    loadResult(historyResult);
     setShowHistory(false);
   };
 
