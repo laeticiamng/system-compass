@@ -73,7 +73,9 @@ export function Header() {
     { href: '/life-game', label: t('nav.lifeGame', 'Mode Éducatif'), icon: Play },
     { href: '/prevention-filter', label: t('nav.preventionFilter', 'Filtre Décision'), icon: Shield },
     { href: '/financial-safety-intel', label: t('nav.financialIntel', 'Intel Financière'), icon: Shield },
+    { href: '/terrain/:countryId', label: t('nav.terrainRealities', 'Réalités Terrain'), icon: Map },
     { href: '/errors-illusions', label: t('nav.errorsIllusions', 'Erreurs & Illusions'), icon: BookOpen },
+    { href: '/exit-keys/catalog', label: t('nav.exitKeysCatalog', 'Catalogue Clés'), icon: Key },
     { href: '/exit-keys/compare', label: t('nav.exitKeysCompare', 'Comparer Clés'), icon: Scale },
   ];
 
