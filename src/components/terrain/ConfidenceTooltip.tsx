@@ -17,10 +17,11 @@ export function ConfidenceTooltip({ score, showIcon = true }: ConfidenceTooltipP
   const { t } = useTranslation();
   const percentage = Math.round(score * 100);
 
+  // Use neutral blue color scheme to avoid confusion with risk indicators
   const getConfidenceColor = () => {
-    if (percentage >= 70) return 'bg-green-500/20 text-green-300 border-green-500/30';
-    if (percentage >= 40) return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
-    return 'bg-red-500/20 text-red-300 border-red-500/30';
+    if (percentage >= 70) return 'bg-blue-500/20 text-blue-300 border-blue-500/30';
+    if (percentage >= 40) return 'bg-slate-500/20 text-slate-300 border-slate-500/30';
+    return 'bg-orange-500/20 text-orange-300 border-orange-500/30';
   };
 
   const getConfidenceLabel = () => {
