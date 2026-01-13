@@ -3,15 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Scale, TrendingUp, Users, Shield, Briefcase } from 'lucide-react';
-
-interface CountryScoreVariable {
-  id: string;
-  label: string;
-  score: number;
-  lowIndices: string;
-  highIndices: string;
-  icon: React.ReactNode;
-}
+import { useCountryGovernance } from '@/hooks/useCountryGovernance';
 
 interface CountryGovernanceScoreProps {
   countryId: string;
@@ -25,65 +17,86 @@ const getScoreColor = (score: number): string => {
   return 'text-red-600';
 };
 
+const getScoreLabel = (score: number): string => {
+  if (score >= 4) return 'Favorable';
+  if (score >= 3) return 'Modéré';
+  if (score >= 2) return 'Difficile';
+  return 'Très difficile';
+};
+
 export function CountryGovernanceScore({ countryId, countryName, snapshot }: CountryGovernanceScoreProps) {
   const { t } = useTranslation();
+  const { governance, isLoading, averageScore } = useCountryGovernance(countryId);
 
-  const variables: CountryScoreVariable[] = [
+  const variables = [
     {
       id: 'stability',
-      label: 'Stabilité / Prévisibilité',
-      score: 3,
-      lowIndices: 'Changements fréquents, règles floues',
-      highIndices: 'Transitions ordonnées, cadre stable',
+      label: t('governance.score.stability', 'Stabilité / Prévisibilité'),
+      score: governance?.stability_score || 3,
+      lowIndices: t('governance.score.stabilityLow', 'Changements fréquents, règles floues'),
+      highIndices: t('governance.score.stabilityHigh', 'Transitions ordonnées, cadre stable'),
       icon: <Scale className="w-4 h-4" />,
     },
     {
       id: 'friction',
-      label: 'Friction non-officielle',
-      score: 2,
-      lowIndices: 'Opacité élevée, intermédiaires requis',
-      highIndices: 'Processus transparents, accès direct',
+      label: t('governance.score.friction', 'Friction non-officielle'),
+      score: governance?.friction_score || 2,
+      lowIndices: t('governance.score.frictionLow', 'Opacité élevée, intermédiaires requis'),
+      highIndices: t('governance.score.frictionHigh', 'Processus transparents, accès direct'),
       icon: <Shield className="w-4 h-4" />,
     },
     {
       id: 'operational',
-      label: 'Facilité opérationnelle',
-      score: 3,
-      lowIndices: 'Admin lente, fiscalité complexe',
-      highIndices: 'Processus fluides, fiscalité claire',
+      label: t('governance.score.operational', 'Facilité opérationnelle'),
+      score: governance?.operational_score || 3,
+      lowIndices: t('governance.score.operationalLow', 'Admin lente, fiscalité complexe'),
+      highIndices: t('governance.score.operationalHigh', 'Processus fluides, fiscalité claire'),
       icon: <Briefcase className="w-4 h-4" />,
     },
     {
       id: 'capture',
-      label: 'Risque de capture',
-      score: 2,
-      lowIndices: 'Dépendance forte, exit difficile',
-      highIndices: 'Alternatives multiples, exit facile',
+      label: t('governance.score.capture', 'Risque de capture'),
+      score: governance?.capture_risk_score || 2,
+      lowIndices: t('governance.score.captureLow', 'Dépendance forte, exit difficile'),
+      highIndices: t('governance.score.captureHigh', 'Alternatives multiples, exit facile'),
       icon: <TrendingUp className="w-4 h-4" />,
     },
     {
       id: 'ecosystem',
-      label: 'Écosystème partenaires',
-      score: 4,
-      lowIndices: 'Peu d\'acteurs fiables',
-      highIndices: 'Réseau dense et vérifiable',
+      label: t('governance.score.ecosystem', 'Écosystème partenaires'),
+      score: governance?.ecosystem_score || 4,
+      lowIndices: t('governance.score.ecosystemLow', 'Peu d\'acteurs fiables'),
+      highIndices: t('governance.score.ecosystemHigh', 'Réseau dense et vérifiable'),
       icon: <Users className="w-4 h-4" />,
     },
   ];
-
-  const averageScore = variables.reduce((acc, v) => acc + v.score, 0) / variables.length;
 
   return (
     <Card className="border-primary/20">
       <CardHeader>
         <div className="flex items-center justify-between">
-          <CardTitle className="text-lg">Score Gouvernance - {countryName}</CardTitle>
+          <CardTitle className="text-lg">
+            {t('governance.score.title', 'Score Gouvernance')} - {countryName}
+          </CardTitle>
           <div className="text-right">
             <div className={`text-3xl font-bold ${getScoreColor(averageScore)}`}>
               {averageScore.toFixed(1)}/5
             </div>
+            <Badge variant="outline" className={getScoreColor(averageScore)}>
+              {getScoreLabel(averageScore)}
+            </Badge>
           </div>
         </div>
+        {snapshot && (
+          <div className="flex gap-4 text-xs text-muted-foreground mt-2">
+            {snapshot.corruptionIndex && (
+              <span>TI Corruption: {100 - snapshot.corruptionIndex}/100</span>
+            )}
+            {snapshot.freedomIndex && (
+              <span>Liberté: {snapshot.freedomIndex}/100</span>
+            )}
+          </div>
+        )}
       </CardHeader>
       <CardContent className="space-y-4">
         {variables.map(v => (

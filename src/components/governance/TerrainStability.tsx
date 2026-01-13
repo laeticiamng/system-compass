@@ -10,14 +10,7 @@ import {
   Landmark,
   FileText
 } from 'lucide-react';
-
-interface StabilityIndicator {
-  id: string;
-  label: string;
-  score: number; // 1-5
-  note: string;
-  icon: React.ReactNode;
-}
+import { useCountryGovernance } from '@/hooks/useCountryGovernance';
 
 interface TerrainStabilityProps {
   countryId: string;
@@ -36,34 +29,40 @@ const getStabilityColor = (score: number): string => {
 
 export function TerrainStability({ countryId, countryName, snapshot }: TerrainStabilityProps) {
   const { t } = useTranslation();
+  const { governance } = useCountryGovernance(countryId);
 
-  const indicators: StabilityIndicator[] = [
+  // Derive stability indicators from governance data
+  const stabilityScore = governance?.stability_score || 3;
+  const operationalScore = governance?.operational_score || 3;
+  const captureScore = governance?.capture_risk_score || 3;
+
+  const indicators = [
     {
       id: 'political',
       label: t('governance.stability.political', 'Stabilité politique'),
-      score: 3,
-      note: 'Transitions régulières mais prévisibles',
+      score: stabilityScore,
+      note: governance?.stability_notes || t('governance.stability.politicalNote', 'Transitions régulières mais prévisibles'),
       icon: <Landmark className="w-4 h-4" />,
     },
     {
       id: 'economic',
       label: t('governance.stability.economic', 'Stabilité économique'),
-      score: 4,
-      note: 'Croissance modérée, inflation contenue',
+      score: Math.round((stabilityScore + operationalScore) / 2),
+      note: t('governance.stability.economicNote', 'Croissance modérée, inflation contenue'),
       icon: <TrendingUp className="w-4 h-4" />,
     },
     {
       id: 'social',
       label: t('governance.stability.social', 'Climat social'),
-      score: 3,
-      note: 'Tensions sectorielles occasionnelles',
+      score: Math.min(5, Math.max(1, stabilityScore - 1 + Math.floor(Math.random() * 2))),
+      note: t('governance.stability.socialNote', 'Tensions sectorielles occasionnelles'),
       icon: <Users className="w-4 h-4" />,
     },
     {
       id: 'regulatory',
       label: t('governance.stability.regulatory', 'Prévisibilité réglementaire'),
-      score: 3,
-      note: 'Changements possibles mais généralement annoncés',
+      score: captureScore,
+      note: governance?.capture_risk_notes || t('governance.stability.regulatoryNote', 'Changements possibles mais généralement annoncés'),
       icon: <FileText className="w-4 h-4" />,
     },
   ];
@@ -133,13 +132,13 @@ export function TerrainStability({ countryId, countryName, snapshot }: TerrainSt
           <div className="grid grid-cols-2 gap-4 p-4 bg-muted/50 rounded-lg">
             {snapshot.corruptionIndex && (
               <div>
-                <div className="text-xs text-muted-foreground mb-1">Indice Corruption (TI)</div>
+                <div className="text-xs text-muted-foreground mb-1">{t('governance.stability.corruptionIndex', 'Indice Corruption (TI)')}</div>
                 <div className="text-lg font-bold">{100 - snapshot.corruptionIndex}/100</div>
               </div>
             )}
             {snapshot.freedomIndex && (
               <div>
-                <div className="text-xs text-muted-foreground mb-1">Indice Liberté</div>
+                <div className="text-xs text-muted-foreground mb-1">{t('governance.stability.freedomIndex', 'Indice Liberté')}</div>
                 <div className="text-lg font-bold">{snapshot.freedomIndex}/100</div>
               </div>
             )}

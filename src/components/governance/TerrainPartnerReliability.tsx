@@ -1,11 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { 
   Users, 
   Plus, 
@@ -15,8 +14,12 @@ import {
   Shield,
   Eye,
   FileCheck,
-  Trash2
+  Trash2,
+  Save,
+  Loader2
 } from 'lucide-react';
+import { useUserGovernanceNotes } from '@/hooks/useCountryGovernance';
+import { toast } from 'sonner';
 
 interface Partner {
   id: string;
@@ -37,7 +40,6 @@ interface Partner {
 interface TerrainPartnerReliabilityProps {
   countryId: string;
   countryName: string;
-  onSave?: (partners: Partner[]) => void;
 }
 
 const STATUS_CONFIG: Record<string, { label: string; color: string; icon: React.ReactNode }> = {
@@ -66,8 +68,9 @@ const CRITERIA_LABELS: Record<string, { label: string; description: string }> = 
   capacity: { label: 'Capacité réelle', description: 'Moyens effectifs pour délivrer' },
 };
 
-export function TerrainPartnerReliability({ countryId, countryName, onSave }: TerrainPartnerReliabilityProps) {
+export function TerrainPartnerReliability({ countryId, countryName }: TerrainPartnerReliabilityProps) {
   const { t } = useTranslation();
+  const { notes, saveNotes, isSaving, isLoading } = useUserGovernanceNotes(countryId);
   const [partners, setPartners] = useState<Partner[]>([]);
   const [showAddForm, setShowAddForm] = useState(false);
   const [editingPartner, setEditingPartner] = useState<string | null>(null);
@@ -75,17 +78,28 @@ export function TerrainPartnerReliability({ countryId, countryName, onSave }: Te
     criteria: { terrain: false, references: false, transparency: false, alignment: false, capacity: false }
   });
 
+  // Load partners from saved notes
+  useEffect(() => {
+    if (notes?.partner_reliability) {
+      const savedPartners = notes.partner_reliability as Partner[];
+      if (Array.isArray(savedPartners)) {
+        setPartners(savedPartners);
+      }
+    }
+  }, [notes]);
+
   const addPartner = () => {
     if (newPartner.name && newPartner.role) {
-      setPartners(prev => [...prev, {
+      const updatedPartners = [...partners, {
         id: Date.now().toString(),
         name: newPartner.name!,
         role: newPartner.role!,
-        status: 'unverified',
+        status: 'unverified' as const,
         criteria: newPartner.criteria || { terrain: false, references: false, transparency: false, alignment: false, capacity: false },
         notes: newPartner.notes || '',
         proofs: newPartner.proofs || '',
-      }]);
+      }];
+      setPartners(updatedPartners);
       setNewPartner({ criteria: { terrain: false, references: false, transparency: false, alignment: false, capacity: false } });
       setShowAddForm(false);
     }
@@ -111,6 +125,21 @@ export function TerrainPartnerReliability({ countryId, countryName, onSave }: Te
     }));
   };
 
+  const handleSave = () => {
+    saveNotes({ partner_reliability: partners as any });
+    toast.success(t('common.saved', 'Sauvegardé'));
+  };
+
+  if (isLoading) {
+    return (
+      <Card className="border-pink-500/20">
+        <CardContent className="flex items-center justify-center py-12">
+          <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" />
+        </CardContent>
+      </Card>
+    );
+  }
+
   return (
     <Card className="border-pink-500/20">
       <CardHeader>
@@ -119,15 +148,28 @@ export function TerrainPartnerReliability({ countryId, countryName, onSave }: Te
             <Users className="w-5 h-5 text-pink-600" />
             {t('governance.partners.title', 'Partenaires & Fiabilité')}
           </CardTitle>
-          <Button 
-            variant="outline" 
-            size="sm" 
-            onClick={() => setShowAddForm(!showAddForm)}
-            className="gap-1"
-          >
-            <Plus className="w-4 h-4" />
-            {t('common.add', 'Ajouter')}
-          </Button>
+          <div className="flex items-center gap-2">
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={() => setShowAddForm(!showAddForm)}
+              className="gap-1"
+            >
+              <Plus className="w-4 h-4" />
+              {t('common.add', 'Ajouter')}
+            </Button>
+            {partners.length > 0 && (
+              <Button 
+                size="sm" 
+                onClick={handleSave}
+                disabled={isSaving}
+                className="gap-1"
+              >
+                {isSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
+                {t('common.save', 'Sauvegarder')}
+              </Button>
+            )}
+          </div>
         </div>
         <p className="text-sm text-muted-foreground">
           {t('governance.partners.description', 'Grille de vérification des partenaires pour')} {countryName}
@@ -138,17 +180,17 @@ export function TerrainPartnerReliability({ countryId, countryName, onSave }: Te
         {showAddForm && (
           <div className="p-4 bg-muted/50 rounded-lg space-y-3 border-2 border-dashed border-primary/30">
             <Input
-              placeholder="Nom du partenaire"
+              placeholder={t('governance.partners.namePlaceholder', 'Nom du partenaire')}
               value={newPartner.name || ''}
               onChange={(e) => setNewPartner(prev => ({ ...prev, name: e.target.value }))}
             />
             <Input
-              placeholder="Rôle (ex: Distributeur, Avocat, Transitaire...)"
+              placeholder={t('governance.partners.rolePlaceholder', 'Rôle (ex: Distributeur, Avocat, Transitaire...)')}
               value={newPartner.role || ''}
               onChange={(e) => setNewPartner(prev => ({ ...prev, role: e.target.value }))}
             />
             <Textarea
-              placeholder="Notes initiales"
+              placeholder={t('governance.partners.notesPlaceholder', 'Notes initiales')}
               value={newPartner.notes || ''}
               onChange={(e) => setNewPartner(prev => ({ ...prev, notes: e.target.value }))}
             />
@@ -211,12 +253,12 @@ export function TerrainPartnerReliability({ countryId, countryName, onSave }: Te
             {editingPartner === partner.id ? (
               <div className="space-y-2">
                 <Textarea
-                  placeholder="Notes"
+                  placeholder={t('governance.partners.notes', 'Notes')}
                   value={partner.notes}
                   onChange={(e) => updatePartner(partner.id, { notes: e.target.value })}
                 />
                 <Textarea
-                  placeholder="Preuves / Références vérifiées"
+                  placeholder={t('governance.partners.proofs', 'Preuves / Références vérifiées')}
                   value={partner.proofs}
                   onChange={(e) => updatePartner(partner.id, { proofs: e.target.value })}
                 />
@@ -229,15 +271,15 @@ export function TerrainPartnerReliability({ countryId, countryName, onSave }: Te
                 <div className="text-sm text-muted-foreground">
                   {partner.notes ? (
                     <span className="flex items-center gap-1">
-                      <FileCheck className="w-3 h-3" /> Notes ajoutées
+                      <FileCheck className="w-3 h-3" /> {t('governance.partners.notesAdded', 'Notes ajoutées')}
                     </span>
                   ) : (
-                    <span>Pas de notes</span>
+                    <span>{t('governance.partners.noNotes', 'Pas de notes')}</span>
                   )}
                 </div>
                 <Button variant="ghost" size="sm" onClick={() => setEditingPartner(partner.id)}>
                   <Eye className="w-4 h-4 mr-1" />
-                  Détails
+                  {t('governance.partners.details', 'Détails')}
                 </Button>
               </div>
             )}

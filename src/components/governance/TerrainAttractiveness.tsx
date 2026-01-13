@@ -3,14 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { TrendingUp, Users, Briefcase, Zap, BarChart3 } from 'lucide-react';
-
-interface AttractivenessMetric {
-  id: string;
-  label: string;
-  score: number; // 1-5
-  signal: string;
-  icon: React.ReactNode;
-}
+import { useCountryGovernance } from '@/hooks/useCountryGovernance';
 
 interface TerrainAttractivenessProps {
   countryId: string;
@@ -33,35 +26,44 @@ const getScoreLabel = (score: number): string => {
 
 export function TerrainAttractiveness({ countryId, countryName, projectType }: TerrainAttractivenessProps) {
   const { t } = useTranslation();
+  const { governance } = useCountryGovernance(countryId);
 
-  // These would typically come from API/database based on countryId
-  const metrics: AttractivenessMetric[] = [
+  // Get attractiveness data from governance or use defaults
+  const attractiveness = governance?.attractiveness as {
+    demand?: number;
+    easeOfDoing?: number;
+    marketAccess?: number;
+    localDynamics?: number;
+    signals?: string[];
+  } | undefined;
+
+  const metrics = [
     {
       id: 'demand',
       label: t('governance.attractiveness.demand', 'Demande locale'),
-      score: 4,
-      signal: 'Marché en croissance, demande identifiable',
+      score: attractiveness?.demand || 3,
+      signal: t('governance.attractiveness.demandSignal', 'Marché en croissance, demande identifiable'),
       icon: <TrendingUp className="w-4 h-4" />,
     },
     {
       id: 'ease',
       label: t('governance.attractiveness.ease', 'Facilité de faire'),
-      score: 3,
-      signal: 'Bureaucratie moyenne, prévoir des délais',
+      score: attractiveness?.easeOfDoing || 3,
+      signal: t('governance.attractiveness.easeSignal', 'Bureaucratie moyenne, prévoir des délais'),
       icon: <Briefcase className="w-4 h-4" />,
     },
     {
       id: 'access',
       label: t('governance.attractiveness.access', 'Accès marché'),
-      score: 3,
-      signal: 'Possible avec bon réseau local',
+      score: attractiveness?.marketAccess || 3,
+      signal: t('governance.attractiveness.accessSignal', 'Possible avec bon réseau local'),
       icon: <Users className="w-4 h-4" />,
     },
     {
       id: 'dynamism',
       label: t('governance.attractiveness.dynamism', 'Dynamique locale'),
-      score: 4,
-      signal: 'Écosystème actif, opportunités visibles',
+      score: attractiveness?.localDynamics || 3,
+      signal: t('governance.attractiveness.dynamismSignal', 'Écosystème actif, opportunités visibles'),
       icon: <Zap className="w-4 h-4" />,
     },
   ];
@@ -107,6 +109,20 @@ export function TerrainAttractiveness({ countryId, countryName, projectType }: T
             </p>
           </div>
         ))}
+
+        {/* Custom signals from governance data */}
+        {attractiveness?.signals && attractiveness.signals.length > 0 && (
+          <div className="mt-4 p-3 bg-green-500/10 rounded-lg">
+            <h4 className="font-medium text-sm mb-2">
+              {t('governance.attractiveness.signals', 'Signaux terrain')}
+            </h4>
+            <ul className="text-sm text-muted-foreground space-y-1">
+              {attractiveness.signals.map((signal, i) => (
+                <li key={i}>• {signal}</li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         <div className="mt-6 p-4 bg-muted/50 rounded-lg">
           <h4 className="font-medium text-sm mb-2">
