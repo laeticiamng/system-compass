@@ -3065,6 +3065,50 @@
     "defeat": "Objective not reached",
     "score": "Score: {{score}} / {{target}}"
   },
+  "reunionMode": {
+    "title": "Reunion Mode",
+    "subtitle": "Two souls, two countries, one destiny",
+    "rule1Title": "2 Characters",
+    "rule1Desc": "Each player controls 2 characters in different countries",
+    "rule2Title": "1 Aspiration",
+    "rule2Desc": "Both characters share the same life goal",
+    "rule3Title": "Reunion",
+    "rule3Desc": "First to reunite their characters wins",
+    "tip": "The more different the countries, the harder the reunion but the greater the rewards!",
+    "discoverCharacters": "Discover the characters",
+    "yourDestinies": "Your crossed destinies",
+    "clickToReveal": "Click to reveal each pair",
+    "allRevealed": "All characters revealed!",
+    "revealPlayer": "Reveal Player {{player}}",
+    "distanceLabel": "Distance to cover",
+    "close": "Close",
+    "medium": "Medium",
+    "far": "Far",
+    "veryFar": "Very Far",
+    "regenerate": "Regenerate",
+    "startGame": "Start the game",
+    "ready": "Ready to play!",
+    "readyDesc": "Each turn, you can play with one of your two characters. Bring them closer by accumulating the resources needed to migrate!",
+    "letsGo": "Let's go!",
+    "chooseCharacter": "Choose your character",
+    "chooseCharacterDesc": "Click on one of your characters to play this turn with them",
+    "reunionProgress": "Reunion progress",
+    "requirements": "Combined resources needed",
+    "attemptReunion": "Attempt reunion!",
+    "cannotReuniteYet": "Not enough resources to reunite yet",
+    "reunionSuccess": "Reunion successful!",
+    "reunionSuccessDesc": "Your characters have finally found each other!",
+    "reunionFailed": "Reunion failed",
+    "tryAgainNextTurn": "Try again next turn",
+    "reunionCheck": "Reunion check",
+    "reunionPossible": "Reunion possible!",
+    "reunionPossibleDesc": "Your characters have accumulated enough resources to reunite",
+    "skipReunion": "Not now",
+    "notReadyYet": "Not ready yet",
+    "notReadyYetDesc": "Keep accumulating resources with both your characters",
+    "victory": "Reunion Accomplished!",
+    "victoryDesc": "{{player}} reunited their characters on turn {{turns}}!"
+  },
   "rules": {
     "title": "LIFE'S GAME — Complete Rules",
     "concept": {
@@ -3244,18 +3288,41 @@
     "globalEvent": "Global Event",
     "countryEvent": "Country Event",
     "continue": "Continue",
+    "chooseAction": "What do you do?",
+    "ignore": "Ignore",
+    "confirm": "Confirm",
+    "rollDice": "Roll the dice",
+    "needsRoll": "🎲 Need {{min}}+",
+    "ifSuccess": "If success",
+    "ifFail": "If fail",
+    "effectApplied": "Effect applied",
+    "rollSuccess": "🎲 {{roll}} - Success!",
+    "rollFailure": "🎲 {{roll}} - Failed (needed {{needed}}+)",
     "global": {
       "techBoom": {
         "label": "Tech Boom",
-        "description": "A tech revolution creates new opportunities"
+        "description": "A tech revolution creates new opportunities",
+        "descriptionChoice": "The tech boom opens opportunities. How do you react?"
       },
       "economicCrisis": {
         "label": "Economic Crisis",
-        "description": "Global recession, money becomes scarce"
+        "description": "Global recession, money becomes scarce",
+        "descriptionChoice": "An economic crisis hits the world. How do you survive?"
       },
       "pandemic": {
         "label": "Pandemic",
-        "description": "Global health crisis, reduced mobility"
+        "description": "Global health crisis, reduced mobility",
+        "descriptionChoice": "A global pandemic disrupts everything. What strategy do you adopt?"
+      },
+      "newTradeDeal": {
+        "label": "New Trade Deal",
+        "description": "A trade deal opens new markets",
+        "descriptionChoice": "A new international trade deal opens. How do you benefit?"
+      },
+      "climateEvent": {
+        "label": "Climate Event",
+        "description": "Natural disaster affecting the region",
+        "descriptionChoice": "A major climate event strikes. What is your response?"
       },
       "remoteWork": {
         "label": "Remote Work Era",
@@ -3318,7 +3385,105 @@
         "description": "New platforms change how people connect and work"
       }
     },
+    "choices": {
+      "investHeavily": "Invest heavily",
+      "investHeavilyDesc": "Bet big on tech for high potential gains",
+      "investCautiously": "Invest cautiously",
+      "investCautiouslyDesc": "Moderate but secure gains",
+      "retrain": "Retrain",
+      "retrainDesc": "Learn new in-demand skills",
+      "cutExpenses": "Cut expenses",
+      "cutExpensesDesc": "Tighten the belt to survive",
+      "findOpportunities": "Find opportunities",
+      "findOpportunitiesDesc": "Crises create opportunities for the bold",
+      "askHelp": "Ask for help",
+      "askHelpDesc": "Call on your network for support",
+      "isolateStrictly": "Isolate strictly",
+      "isolateStrictlyDesc": "Minimize health risks at the cost of social connections",
+      "balanceRisks": "Balance risks",
+      "balanceRisksDesc": "Maintain limited social life with precautions",
+      "opportunityCrisis": "Seize crisis opportunity",
+      "opportunityCrisisDesc": "Some sectors boom during crises",
+      "exportBusiness": "Start export business",
+      "exportBusinessDesc": "Take advantage of newly opened markets",
+      "studyMarket": "Study the market",
+      "studyMarketDesc": "Learn the specifics before diving in",
+      "relocateOpportunity": "Seize relocation opportunity",
+      "relocateOpportunityDesc": "Move to a country benefiting from the deal",
+      "volunteerHelp": "Volunteer to help",
+      "volunteerHelpDesc": "Build network by helping the community",
+      "protectAssets": "Protect your assets",
+      "protectAssetsDesc": "Minimize material losses",
+      "investGreen": "Invest in green",
+      "investGreenDesc": "Sustainable solutions can be profitable",
+      "followProcedure": "Follow procedure",
+      "followProcedureDesc": "Strictly follow official processes",
+      "useConnections": "Use connections",
+      "useConnectionsDesc": "Speed things up through your network",
+      "hireSpecialist": "Hire a specialist",
+      "hireSpecialistDesc": "Pay someone to handle it for you",
+      "joinStartup": "Join the startup",
+      "joinStartupDesc": "Take the risk of joining a promising young company",
+      "investAngel": "Invest as angel",
+      "investAngelDesc": "Put money into the startup",
+      "observeLearn": "Observe and learn",
+      "observeLearnDesc": "Gain experience without taking risks",
+      "acceptPatron": "Accept patronage",
+      "acceptPatronDesc": "Benefit from protection, but create dependency",
+      "refusePolitely": "Refuse politely",
+      "refusePolitelyDesc": "Keep independence, risk retaliation",
+      "seekAlternative": "Seek alternative",
+      "seekAlternativeDesc": "Find less compromising paths",
+      "pursueCertification": "Pursue certification",
+      "pursueCertificationDesc": "Officially validate your skills",
+      "buildPortfolio": "Build portfolio",
+      "buildPortfolioDesc": "Show concrete achievements",
+      "quickWin": "Quick win",
+      "quickWinDesc": "Capitalize quickly on a small opportunity",
+      "formalPath": "Formal path",
+      "formalPathDesc": "Follow official rules, slow but safe",
+      "informalPath": "Informal path",
+      "informalPathDesc": "Bypass the system, fast but risky",
+      "hybridApproach": "Hybrid approach",
+      "hybridApproachDesc": "Combine both systems intelligently",
+      "investSector": "Invest in sector",
+      "investSectorDesc": "Bet on the resource boom",
+      "serviceProviders": "Provide services",
+      "serviceProvidersDesc": "Sell to companies in the sector",
+      "stayDiversified": "Stay diversified",
+      "stayDiversifiedDesc": "Don't put all eggs in one basket"
+    },
     "country": {
+      "bureaucracyChallenge": {
+        "label": "Bureaucratic Challenge",
+        "description": "Administrative procedures block your project",
+        "descriptionChoice": "You face a bureaucratic wall. How do you overcome it?"
+      },
+      "startupOpportunity": {
+        "label": "Startup Opportunity",
+        "description": "A promising startup seeks talent or investors",
+        "descriptionChoice": "A local startup is booming. How do you benefit?"
+      },
+      "localPatronage": {
+        "label": "Local Patronage",
+        "description": "A local notable offers help... with conditions",
+        "descriptionChoice": "An influential notable offers patronage. What do you do?"
+      },
+      "professionalRecognition": {
+        "label": "Professional Recognition",
+        "description": "Your work attracts attention",
+        "descriptionChoice": "Your expertise is recognized. How do you capitalize?"
+      },
+      "dualSystemNavigation": {
+        "label": "Dual System Navigation",
+        "description": "Formal and informal systems coexist",
+        "descriptionChoice": "You must navigate between formal and informal systems. Which path?"
+      },
+      "resourceBoom": {
+        "label": "Resource Boom",
+        "description": "Natural resources attract investments",
+        "descriptionChoice": "The resource sector is booming. How do you position yourself?"
+      },
       "politicalInstability": {
         "label": "Political Instability",
         "description": "Tensions and uncertainty in the country"

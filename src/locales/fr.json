@@ -3633,6 +3633,50 @@
     "defeat": "Objectif non atteint",
     "score": "Score : {{score}} / {{target}}"
   },
+  "reunionMode": {
+    "title": "Mode Réunion",
+    "subtitle": "Deux âmes, deux pays, un même destin",
+    "rule1Title": "2 Personnages",
+    "rule1Desc": "Chaque joueur contrôle 2 personnages dans des pays différents",
+    "rule2Title": "1 Aspiration",
+    "rule2Desc": "Les deux personnages partagent le même objectif de vie",
+    "rule3Title": "Réunion",
+    "rule3Desc": "Le premier à réunir ses personnages gagne",
+    "tip": "Plus les pays sont différents, plus la réunion est difficile mais les récompenses sont grandes !",
+    "discoverCharacters": "Découvrir les personnages",
+    "yourDestinies": "Vos destins croisés",
+    "clickToReveal": "Cliquez pour révéler chaque paire",
+    "allRevealed": "Tous les personnages sont révélés !",
+    "revealPlayer": "Révéler Joueur {{player}}",
+    "distanceLabel": "Distance à parcourir",
+    "close": "Proche",
+    "medium": "Moyen",
+    "far": "Loin",
+    "veryFar": "Très loin",
+    "regenerate": "Régénérer",
+    "startGame": "Commencer la partie",
+    "ready": "Prêt à jouer !",
+    "readyDesc": "Chaque tour, vous pourrez jouer avec l'un de vos deux personnages. Faites-les se rapprocher en accumulant les ressources nécessaires pour migrer !",
+    "letsGo": "C'est parti !",
+    "chooseCharacter": "Choisissez votre personnage",
+    "chooseCharacterDesc": "Cliquez sur l'un de vos personnages pour jouer ce tour avec lui",
+    "reunionProgress": "Progression vers la réunion",
+    "requirements": "Ressources combinées nécessaires",
+    "attemptReunion": "Tenter la réunion !",
+    "cannotReuniteYet": "Pas encore assez de ressources pour se retrouver",
+    "reunionSuccess": "Réunion réussie !",
+    "reunionSuccessDesc": "Vos personnages se sont enfin retrouvés !",
+    "reunionFailed": "Échec de la réunion",
+    "tryAgainNextTurn": "Réessayez au prochain tour",
+    "reunionCheck": "Vérification de réunion",
+    "reunionPossible": "Réunion possible !",
+    "reunionPossibleDesc": "Vos personnages ont accumulé assez de ressources pour se retrouver",
+    "skipReunion": "Pas maintenant",
+    "notReadyYet": "Pas encore prêt",
+    "notReadyYetDesc": "Continuez à accumuler des ressources avec vos deux personnages",
+    "victory": "Réunion Accomplie !",
+    "victoryDesc": "{{player}} a réuni ses personnages au tour {{turns}} !"
+  },
   "rules": {
     "title": "LE JEU DE LA VIE — Règles complètes",
     "concept": {
@@ -3862,18 +3906,41 @@
     "globalEvent": "Événement mondial",
     "countryEvent": "Événement pays",
     "continue": "Continuer",
+    "chooseAction": "Que faites-vous ?",
+    "ignore": "Ignorer",
+    "confirm": "Confirmer",
+    "rollDice": "Lancer le dé",
+    "needsRoll": "🎲 Besoin de {{min}}+",
+    "ifSuccess": "Si succès",
+    "ifFail": "Si échec",
+    "effectApplied": "Effet appliqué",
+    "rollSuccess": "🎲 {{roll}} - Succès !",
+    "rollFailure": "🎲 {{roll}} - Échec (il fallait {{needed}}+)",
     "global": {
       "techBoom": {
         "label": "Boom technologique",
-        "description": "Une révolution tech crée de nouvelles opportunités"
+        "description": "Une révolution tech crée de nouvelles opportunités",
+        "descriptionChoice": "Le boom technologique ouvre des opportunités. Comment réagissez-vous ?"
       },
       "economicCrisis": {
         "label": "Crise économique",
-        "description": "Récession mondiale, l'argent se fait rare"
+        "description": "Récession mondiale, l'argent se fait rare",
+        "descriptionChoice": "Une crise économique frappe le monde. Comment la traverser ?"
       },
       "pandemic": {
         "label": "Pandémie",
-        "description": "Crise sanitaire mondiale, mobilité réduite"
+        "description": "Crise sanitaire mondiale, mobilité réduite",
+        "descriptionChoice": "Une pandémie mondiale bouleverse tout. Quelle stratégie adoptez-vous ?"
+      },
+      "newTradeDeal": {
+        "label": "Nouvel accord commercial",
+        "description": "Un accord commercial ouvre de nouveaux marchés",
+        "descriptionChoice": "Un nouvel accord commercial international s'ouvre. Comment en profiter ?"
+      },
+      "climateEvent": {
+        "label": "Événement climatique",
+        "description": "Catastrophe naturelle affectant la région",
+        "descriptionChoice": "Un événement climatique majeur frappe. Quelle est votre réponse ?"
       },
       "remoteWork": {
         "label": "Ère du télétravail",
@@ -3936,7 +4003,105 @@
         "description": "De nouvelles plateformes changent les connexions et le travail"
       }
     },
+    "choices": {
+      "investHeavily": "Investir massivement",
+      "investHeavilyDesc": "Miser gros sur la tech pour des gains potentiels élevés",
+      "investCautiously": "Investir prudemment",
+      "investCautiouslyDesc": "Gains modérés mais sécurisés",
+      "retrain": "Se reconvertir",
+      "retrainDesc": "Apprendre les nouvelles compétences demandées",
+      "cutExpenses": "Réduire les dépenses",
+      "cutExpensesDesc": "Serrer la ceinture pour tenir le coup",
+      "findOpportunities": "Chercher des opportunités",
+      "findOpportunitiesDesc": "Les crises créent des opportunités pour les audacieux",
+      "askHelp": "Demander de l'aide",
+      "askHelpDesc": "Faire appel à votre réseau en échange de retours",
+      "isolateStrictly": "S'isoler strictement",
+      "isolateStrictlyDesc": "Minimiser les risques sanitaires au détriment des liens sociaux",
+      "balanceRisks": "Équilibrer les risques",
+      "balanceRisksDesc": "Maintenir une vie sociale limitée avec précautions",
+      "opportunityCrisis": "Saisir l'opportunité de crise",
+      "opportunityCrisisDesc": "Certains secteurs explosent pendant les crises",
+      "exportBusiness": "Lancer une activité export",
+      "exportBusinessDesc": "Profiter des nouveaux marchés ouverts",
+      "studyMarket": "Étudier le marché",
+      "studyMarketDesc": "Apprendre les spécificités avant de se lancer",
+      "relocateOpportunity": "Saisir l'opportunité de relocalisation",
+      "relocateOpportunityDesc": "Déménager vers un pays bénéficiant de l'accord",
+      "volunteerHelp": "Aider bénévolement",
+      "volunteerHelpDesc": "Construire du réseau en aidant la communauté",
+      "protectAssets": "Protéger ses actifs",
+      "protectAssetsDesc": "Minimiser les pertes matérielles",
+      "investGreen": "Investir dans le vert",
+      "investGreenDesc": "Les solutions durables peuvent être rentables",
+      "followProcedure": "Suivre la procédure",
+      "followProcedureDesc": "Respecter scrupuleusement les démarches officielles",
+      "useConnections": "Utiliser ses connexions",
+      "useConnectionsDesc": "Accélérer via votre réseau",
+      "hireSpecialist": "Engager un spécialiste",
+      "hireSpecialistDesc": "Payer pour que quelqu'un gère à votre place",
+      "joinStartup": "Rejoindre la startup",
+      "joinStartupDesc": "Prendre le risque de rejoindre une jeune pousse prometteuse",
+      "investAngel": "Investir en business angel",
+      "investAngelDesc": "Mettre de l'argent dans la startup",
+      "observeLearn": "Observer et apprendre",
+      "observeLearnDesc": "Acquérir de l'expérience sans prendre de risque",
+      "acceptPatron": "Accepter le patronage",
+      "acceptPatronDesc": "Bénéficier d'une protection, mais créer une dépendance",
+      "refusePolitely": "Refuser poliment",
+      "refusePolitelyDesc": "Garder son indépendance, risque de représailles",
+      "seekAlternative": "Chercher une alternative",
+      "seekAlternativeDesc": "Trouver d'autres voies moins compromettantes",
+      "pursueCertification": "Obtenir une certification",
+      "pursueCertificationDesc": "Valider officiellement ses compétences",
+      "buildPortfolio": "Construire un portfolio",
+      "buildPortfolioDesc": "Montrer ses réalisations concrètes",
+      "quickWin": "Gain rapide",
+      "quickWinDesc": "Capitaliser vite sur une petite opportunité",
+      "formalPath": "Voie formelle",
+      "formalPathDesc": "Suivre les règles officielles, lent mais sûr",
+      "informalPath": "Voie informelle",
+      "informalPathDesc": "Contourner le système, rapide mais risqué",
+      "hybridApproach": "Approche hybride",
+      "hybridApproachDesc": "Combiner les deux systèmes intelligemment",
+      "investSector": "Investir dans le secteur",
+      "investSectorDesc": "Miser sur le boom des ressources",
+      "serviceProviders": "Fournir des services",
+      "serviceProvidersDesc": "Vendre aux entreprises du secteur",
+      "stayDiversified": "Rester diversifié",
+      "stayDiversifiedDesc": "Ne pas mettre tous ses œufs dans le même panier"
+    },
     "country": {
+      "bureaucracyChallenge": {
+        "label": "Défi bureaucratique",
+        "description": "Les procédures administratives bloquent votre projet",
+        "descriptionChoice": "Vous faites face à un mur bureaucratique. Comment le surmonter ?"
+      },
+      "startupOpportunity": {
+        "label": "Opportunité startup",
+        "description": "Une startup prometteuse cherche des talents ou investisseurs",
+        "descriptionChoice": "Une startup locale explose. Comment en profiter ?"
+      },
+      "localPatronage": {
+        "label": "Patronage local",
+        "description": "Un notable local propose son aide... avec des conditions",
+        "descriptionChoice": "Un notable influent vous propose son patronage. Que faites-vous ?"
+      },
+      "professionalRecognition": {
+        "label": "Reconnaissance professionnelle",
+        "description": "Votre travail attire l'attention",
+        "descriptionChoice": "Votre expertise est reconnue. Comment capitaliser ?"
+      },
+      "dualSystemNavigation": {
+        "label": "Navigation double système",
+        "description": "Le système formel et informel coexistent",
+        "descriptionChoice": "Vous devez naviguer entre système formel et informel. Quelle voie choisir ?"
+      },
+      "resourceBoom": {
+        "label": "Boom des ressources",
+        "description": "Les ressources naturelles attirent les investissements",
+        "descriptionChoice": "Le secteur des ressources explose. Comment vous positionner ?"
+      },
       "politicalInstability": {
         "label": "Instabilité politique",
         "description": "Tensions et incertitudes dans le pays"
