@@ -536,7 +536,19 @@
     "about": "About",
     "usage": "Usage",
     "institutions": "Institutions",
-    "ovi": "OVI"
+    "ovi": "OVI",
+    "pyramidQuiz": "Game",
+    "profileTest": "Profile Test",
+    "quickTest": "Quick Test",
+    "lifeTrajectory": "Trajectory",
+    "profileMatcher": "Pro Matcher",
+    "financialIntel": "Financial Intel",
+    "irreversa": "Irreversa",
+    "latent": "Latent Zones",
+    "howToRead": "Reading Guide",
+    "explore": "Explore",
+    "tools": "Tools",
+    "account": "Account & Info"
   },
   "worldMap": {
     "badge": "Global exploration",

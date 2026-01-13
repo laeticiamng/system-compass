@@ -47,8 +47,10 @@ export function Footer() {
             <h4 className="font-semibold text-sm sm:text-base mb-2 sm:mb-4">{t('footer.explore')}</h4>
             <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-muted-foreground">
               <li><Link to="/countries" className="hover:text-foreground transition-colors block py-0.5">{t('nav.countries')}</Link></li>
+              <li><Link to="/world-map" className="hover:text-foreground transition-colors block py-0.5">{t('nav.worldMap', 'Carte monde')}</Link></li>
               <li><Link to="/pyramid-types" className="hover:text-foreground transition-colors block py-0.5">{t('nav.pyramids')}</Link></li>
               <li><Link to="/compare" className="hover:text-foreground transition-colors block py-0.5">{t('nav.compare')}</Link></li>
+              <li><Link to="/errors-illusions" className="hover:text-foreground transition-colors block py-0.5">{t('nav.errorsIllusions', 'Erreurs')}</Link></li>
               <li><Link to="/resources" className="hover:text-foreground transition-colors block py-0.5">{t('nav.resources')}</Link></li>
             </ul>
           </div>
@@ -59,9 +61,14 @@ export function Footer() {
             <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-muted-foreground">
               <li><Link to="/exit-keys" className="hover:text-foreground transition-colors block py-0.5">{t('nav.exitKeys')}</Link></li>
               <li><Link to="/prevention-filter" className="hover:text-foreground transition-colors block py-0.5">{t('nav.preventionFilter')}</Link></li>
-              <li><Link to="/life-game" className="hover:text-foreground transition-colors block py-0.5">{t('nav.lifeGame')}</Link></li>
+              <li><Link to="/pyramid-quiz" className="hover:text-foreground transition-colors block py-0.5">🎮 {t('nav.pyramidQuiz', 'Jeu Pyramides')}</Link></li>
+              <li><Link to="/profile-test" className="hover:text-foreground transition-colors block py-0.5">{t('nav.profileTest', 'Test Profil')}</Link></li>
+              <li><Link to="/quick-test" className="hover:text-foreground transition-colors block py-0.5">{t('nav.quickTest', 'Test Rapide')}</Link></li>
+              <li><Link to="/financial-safety-intel" className="hover:text-foreground transition-colors block py-0.5">{t('nav.financialIntel', 'Intel Financière')}</Link></li>
               <li><Link to="/latent" className="hover:text-foreground transition-colors block py-0.5">🔍 {t('footer.potentialZones')}</Link></li>
               <li><Link to="/institutions" className="hover:text-foreground transition-colors block py-0.5">🏛️ {t('footer.businessInstitutions')}</Link></li>
+              <li><Link to="/ovi" className="hover:text-foreground transition-colors block py-0.5">{t('nav.ovi', 'OVI')}</Link></li>
+              <li><Link to="/irreversa" className="hover:text-foreground transition-colors block py-0.5">{t('nav.irreversa', 'Irreversa')}</Link></li>
             </ul>
           </div>
 
@@ -73,6 +80,9 @@ export function Footer() {
               <li><Link to="/pricing" className="hover:text-foreground transition-colors font-medium text-primary block py-0.5">💎 {t('nav.pricing')}</Link></li>
               <li><Link to="/auth" className="hover:text-foreground transition-colors block py-0.5">{t('auth.login')}</Link></li>
               <li><Link to="/about" className="hover:text-foreground transition-colors block py-0.5">{t('footer.about')}</Link></li>
+              <li><Link to="/how-to-read" className="hover:text-foreground transition-colors block py-0.5">{t('nav.howToRead', 'Guide Lecture')}</Link></li>
+              <li><Link to="/partners" className="hover:text-foreground transition-colors block py-0.5">{t('nav.partners', 'Partenaires')}</Link></li>
+              <li><Link to="/b2b" className="hover:text-foreground transition-colors block py-0.5">{t('nav.b2b', 'B2B')}</Link></li>
               <li><Link to="/disclaimer" className="hover:text-foreground transition-colors text-amber-500/80 hover:text-amber-500 block py-0.5">⚠️ {t('footer.warnings')}</Link></li>
             </ul>
           </div>
