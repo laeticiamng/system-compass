@@ -2763,6 +2763,42 @@ export type Database = {
         }
         Relationships: []
       }
+      user_test_results: {
+        Row: {
+          answers: Json
+          created_at: string
+          elapsed_seconds: number | null
+          id: string
+          result_archetype: string | null
+          result_pyramid: string
+          test_type: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          answers: Json
+          created_at?: string
+          elapsed_seconds?: number | null
+          id?: string
+          result_archetype?: string | null
+          result_pyramid: string
+          test_type: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          answers?: Json
+          created_at?: string
+          elapsed_seconds?: number | null
+          id?: string
+          result_archetype?: string | null
+          result_pyramid?: string
+          test_type?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       vacation_recommendations: {
         Row: {
           created_at: string | null

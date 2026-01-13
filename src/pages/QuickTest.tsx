@@ -3,9 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { PyramidType, PYRAMID_TYPE_INFO } from '@/lib/types';
+import { useTestResults } from '@/hooks/useTestResults';
+import { useAuth } from '@/hooks/useAuth';
 import { 
   Zap, 
-  ArrowRight, 
+  ArrowRight,
   Clock, 
   Eye, 
   Key, 
@@ -127,10 +129,13 @@ const PYRAMID_EXIT_KEYS: Record<PyramidType, string> = {
 export default function QuickTest() {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { user } = useAuth();
+  const { saveResult, getLatestResult } = useTestResults();
   const [answers, setAnswers] = useState<QuickTestAnswers>({});
   const [showResults, setShowResults] = useState(false);
   const [startTime] = useState(Date.now());
   const [elapsedTime, setElapsedTime] = useState(0);
+  const [hasSaved, setHasSaved] = useState(false);
 
   // Track elapsed time
   useEffect(() => {
@@ -143,12 +148,19 @@ export default function QuickTest() {
     return () => clearInterval(interval);
   }, [startTime, showResults]);
 
-  // Auto-show results when all 4 questions are answered
+  // Auto-show results and save when all 4 questions are answered
   useEffect(() => {
     if (answers.situation && answers.priority && answers.riskTolerance && answers.mainConstraint) {
       setShowResults(true);
+      
+      // Save to backend
+      if (!hasSaved) {
+        const pyramid = mapToPyramid(answers);
+        saveResult('quick_test', answers as Record<string, unknown>, pyramid, undefined, elapsedTime);
+        setHasSaved(true);
+      }
     }
-  }, [answers]);
+  }, [answers, hasSaved, elapsedTime, saveResult]);
 
   const answeredCount = Object.values(answers).filter(Boolean).length;
   const pyramidType = showResults ? mapToPyramid(answers) : null;
@@ -161,6 +173,7 @@ export default function QuickTest() {
   const handleReset = () => {
     setAnswers({});
     setShowResults(false);
+    setHasSaved(false);
   };
 
   if (showResults && pyramidType && pyramidInfo) {
