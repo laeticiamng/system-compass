@@ -2085,6 +2085,33 @@ export type Database = {
         }
         Relationships: []
       }
+      terrain_realities_cache: {
+        Row: {
+          country: string
+          created_at: string
+          data_json: Json
+          expires_at: string
+          id: string
+          language: string
+        }
+        Insert: {
+          country: string
+          created_at?: string
+          data_json: Json
+          expires_at?: string
+          id?: string
+          language?: string
+        }
+        Update: {
+          country?: string
+          created_at?: string
+          data_json?: Json
+          expires_at?: string
+          id?: string
+          language?: string
+        }
+        Relationships: []
+      }
       traceos_approvals: {
         Row: {
           approved_at: string | null
