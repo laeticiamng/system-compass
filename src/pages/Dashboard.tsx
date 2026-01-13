@@ -6,6 +6,9 @@ import { useSavedComparisons } from '@/hooks/useSavedComparisons';
 import { useSavedGames } from '@/hooks/useSavedGames';
 import { useGameStatistics } from '@/hooks/useGameStatistics';
 import { useSubscription } from '@/hooks/useSubscription';
+import { useUserCases } from '@/hooks/useUserCases';
+import { useLatentZones } from '@/hooks/useLatentZones';
+import { useTestResults } from '@/hooks/useTestResults';
 import { EXIT_KEYS } from '@/lib/exit-keys-engine';
 import { LIFE_MOTOR_PROFILES } from '@/lib/types';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -56,6 +59,9 @@ import {
   Lock,
   Building2,
   Layers,
+  Briefcase,
+  FileText,
+  ClipboardList,
 } from 'lucide-react';
 import { AiHelpButton } from '@/components/ai/AiHelpButton';
 import { AiAction, AiContext } from '@/components/ai/AiSidePanel';
@@ -117,6 +123,9 @@ export default function Dashboard() {
   const { savedGames, loading: gamesLoading, fetchSavedGames, deleteGame } = useSavedGames();
   const { stats, loading: statsLoading, riskSuccessRate, topActions } = useGameStatistics();
   const { tier } = useSubscription();
+  const { cases, isLoading: casesLoading } = useUserCases();
+  const { zones, loading: zonesLoading } = useLatentZones();
+  const { results: testResults, loading: testsLoading } = useTestResults();
 
   const [editingNote, setEditingNote] = useState<number | null>(null);
   const [noteText, setNoteText] = useState('');
@@ -381,7 +390,117 @@ export default function Dashboard() {
           </div>
         )}
 
-        {/* Saved Comparisons Section */}
+        {/* Active Cases Section */}
+        {isLoggedIn && cases.filter(c => c.status === 'active').length > 0 && (
+          <Card className="mb-6 border-emerald-500/20">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Briefcase className="w-5 h-5 text-emerald-500" />
+                {t('dashboard.activeCases', 'Dossiers actifs')}
+              </CardTitle>
+              <CardDescription>
+                {t('dashboard.activeCasesDesc', 'Vos projets de relocalisation ou entrepreneuriat en cours')}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {cases.filter(c => c.status === 'active').slice(0, 6).map(caseItem => (
+                  <Link key={caseItem.id} to={`/cases/${caseItem.id}`}>
+                    <div className="p-4 bg-secondary/50 rounded-lg hover:bg-secondary/70 transition-colors">
+                      <div className="flex items-center justify-between mb-2">
+                        <p className="font-medium">{caseItem.title}</p>
+                        <Badge variant="outline" className={caseItem.intention === 'entrepreneurship' ? 'border-amber-500/40 text-amber-600' : 'border-blue-500/40 text-blue-600'}>
+                          {caseItem.intention === 'entrepreneurship' ? t('cases.deep', 'Deep') : t('cases.light', 'Light')}
+                        </Badge>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                        <span>{caseItem.milestones?.filter(m => m.completed).length || 0}/{caseItem.milestones?.length || 0} {t('dashboard.milestonesComplete', 'jalons')}</span>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Latent Zones Section */}
+        {isLoggedIn && zones.filter(z => z.status === 'emergent' || z.status === 'fragile').length > 0 && (
+          <Card className="mb-6 border-amber-500/20">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Eye className="w-5 h-5 text-amber-500" />
+                {t('dashboard.latentZones', 'Zones en tension')}
+              </CardTitle>
+              <CardDescription>
+                {t('dashboard.latentZonesDesc', 'Zones latentes nécessitant une attention')}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                {zones.filter(z => z.status === 'emergent' || z.status === 'fragile').slice(0, 4).map(zone => (
+                  <Link key={zone.id} to="/latent">
+                    <div className="flex items-center justify-between p-3 bg-secondary/50 rounded-lg hover:bg-secondary/70 transition-colors">
+                      <div>
+                        <p className="font-medium text-sm">{zone.title}</p>
+                        {zone.description && (
+                          <p className="text-xs text-muted-foreground line-clamp-1">{zone.description}</p>
+                        )}
+                      </div>
+                      <Badge variant="outline" className={zone.status === 'fragile' ? 'border-amber-500/40 text-amber-600' : 'border-blue-500/40 text-blue-600'}>
+                        {zone.status === 'fragile' ? '⚠️' : '👁️'}
+                      </Badge>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+              <Link to="/latent" className="block mt-3">
+                <Button variant="outline" size="sm" className="w-full gap-2">
+                  <Eye className="w-4 h-4" />
+                  {t('dashboard.viewAllZones', 'Voir toutes les zones')}
+                </Button>
+              </Link>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Test Results Section */}
+        {isLoggedIn && testResults.length > 0 && (
+          <Card className="mb-6 border-purple-500/20">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <ClipboardList className="w-5 h-5 text-purple-500" />
+                {t('dashboard.testResults', 'Résultats de tests')}
+              </CardTitle>
+              <CardDescription>
+                {t('dashboard.testResultsDesc', 'Vos derniers profils et analyses')}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {testResults.slice(0, 4).map(result => (
+                  <div key={result.id} className="p-3 bg-secondary/50 rounded-lg">
+                    <div className="flex items-center justify-between mb-1">
+                      <Badge variant="outline" className="text-xs">
+                        {result.test_type === 'quick_test' ? t('nav.quickTest', 'Test Rapide') : t('nav.profileTest', 'Test Complet')}
+                      </Badge>
+                      <span className="text-xs text-muted-foreground">
+                        {new Date(result.created_at).toLocaleDateString()}
+                      </span>
+                    </div>
+                    <p className="text-sm font-medium">
+                      {result.result_pyramid.replace(/_/g, ' ')}
+                    </p>
+                    {result.result_archetype && (
+                      <p className="text-xs text-muted-foreground">{result.result_archetype}</p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
         {isLoggedIn && comparisons.length > 0 && (
           <Card className="mb-6">
             <CardHeader>
