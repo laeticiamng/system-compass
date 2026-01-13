@@ -48,10 +48,6 @@ export default function FinancialSafetyIntel() {
   const [audience, setAudience] = useState('');
 
   const isPro = tier === 'pro';
-  const [sectorFocus, setSectorFocus] = useState('');
-  const [audience, setAudience] = useState('');
-
-  const isPro = subscription?.tier === 'pro' || subscription?.tier === 'b2b';
 
   const handleGenerate = async () => {
     if (!selectedCountry) return;
