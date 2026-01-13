@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -15,8 +15,11 @@ import {
   XCircle,
   AlertTriangle,
   Save,
-  ArrowRight
+  ArrowRight,
+  Loader2
 } from 'lucide-react';
+import { useUserGovernanceNotes } from '@/hooks/useCountryGovernance';
+import { toast } from 'sonner';
 
 interface POCPlan {
   hypothesis: string;
@@ -32,11 +35,11 @@ interface TerrainPOCPlannerProps {
   countryId: string;
   countryName: string;
   projectType?: string;
-  onSave?: (plan: POCPlan) => void;
 }
 
-export function TerrainPOCPlanner({ countryId, countryName, projectType, onSave }: TerrainPOCPlannerProps) {
+export function TerrainPOCPlanner({ countryId, countryName, projectType }: TerrainPOCPlannerProps) {
   const { t } = useTranslation();
+  const { notes, saveNotes, isSaving, isLoading } = useUserGovernanceNotes(countryId);
   const [plan, setPlan] = useState<POCPlan>({
     hypothesis: '',
     maxBudget: 5000,
@@ -46,6 +49,22 @@ export function TerrainPOCPlanner({ countryId, countryName, projectType, onSave 
     stopCriteria: [''],
     nextSteps: '',
   });
+
+  // Load POC plan from saved notes
+  useEffect(() => {
+    if (notes?.poc_plan) {
+      const savedPlan = notes.poc_plan as any;
+      setPlan(prev => ({
+        ...prev,
+        hypothesis: savedPlan.hypothesis || '',
+        maxBudget: savedPlan.maxBudget || 5000,
+        duration: typeof savedPlan.duration === 'number' ? savedPlan.duration : parseInt(savedPlan.duration) || 4,
+        successCriteria: savedPlan.successCriteria || [''],
+        stopCriteria: savedPlan.stopCriteria || [''],
+        nextSteps: savedPlan.nextSteps || '',
+      }));
+    }
+  }, [notes]);
 
   const updatePlan = (updates: Partial<POCPlan>) => {
     setPlan(prev => ({ ...prev, ...updates }));
@@ -77,6 +96,29 @@ export function TerrainPOCPlanner({ countryId, countryName, projectType, onSave 
     plan.successCriteria.some(c => c.trim()) && 
     plan.stopCriteria.some(c => c.trim());
 
+  const handleSave = () => {
+    saveNotes({ 
+      poc_plan: {
+        hypothesis: plan.hypothesis,
+        maxBudget: plan.maxBudget,
+        duration: `${plan.duration} weeks`,
+        successCriteria: plan.successCriteria.filter(c => c.trim()),
+        stopCriteria: plan.stopCriteria.filter(c => c.trim()),
+      } as any
+    });
+    toast.success(t('common.saved', 'Sauvegardé'));
+  };
+
+  if (isLoading) {
+    return (
+      <Card className="border-cyan-500/20">
+        <CardContent className="flex items-center justify-center py-12">
+          <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" />
+        </CardContent>
+      </Card>
+    );
+  }
+
   return (
     <Card className="border-cyan-500/20">
       <CardHeader>
@@ -104,7 +146,7 @@ export function TerrainPOCPlanner({ countryId, countryName, projectType, onSave 
             {t('governance.poc.hypothesis', 'Hypothèse à tester')}
           </label>
           <Textarea
-            placeholder="Ex: 'Le marché local est prêt à payer 50€/mois pour notre service'"
+            placeholder={t('governance.poc.hypothesisPlaceholder', 'Ex: \'Le marché local est prêt à payer 50€/mois pour notre service\'')}
             value={plan.hypothesis}
             onChange={(e) => updatePlan({ hypothesis: e.target.value })}
             className="min-h-[80px]"
@@ -169,13 +211,13 @@ export function TerrainPOCPlanner({ countryId, countryName, projectType, onSave 
           {plan.successCriteria.map((criteria, index) => (
             <Input
               key={index}
-              placeholder={`Critère ${index + 1} (ex: '10 clients payants', '1 contrat signé')`}
+              placeholder={t('governance.poc.successPlaceholder', `Critère ${index + 1} (ex: '10 clients payants', '1 contrat signé')`)}
               value={criteria}
               onChange={(e) => updateSuccessCriteria(index, e.target.value)}
             />
           ))}
           <Button variant="ghost" size="sm" onClick={addSuccessCriteria} className="gap-1">
-            + Ajouter un critère
+            + {t('governance.poc.addCriteria', 'Ajouter un critère')}
           </Button>
         </div>
 
@@ -188,13 +230,13 @@ export function TerrainPOCPlanner({ countryId, countryName, projectType, onSave 
           {plan.stopCriteria.map((criteria, index) => (
             <Input
               key={index}
-              placeholder={`Signal d'arrêt ${index + 1} (ex: '0 prospect qualifié après 4 semaines')`}
+              placeholder={t('governance.poc.stopPlaceholder', `Signal d'arrêt ${index + 1} (ex: '0 prospect qualifié après 4 semaines')`)}
               value={criteria}
               onChange={(e) => updateStopCriteria(index, e.target.value)}
             />
           ))}
           <Button variant="ghost" size="sm" onClick={addStopCriteria} className="gap-1">
-            + Ajouter un signal
+            + {t('governance.poc.addSignal', 'Ajouter un signal')}
           </Button>
         </div>
 
@@ -205,7 +247,7 @@ export function TerrainPOCPlanner({ countryId, countryName, projectType, onSave 
             {t('governance.poc.nextSteps', 'Prochaines étapes si succès')}
           </label>
           <Textarea
-            placeholder="Ce qui se passe si les critères de succès sont atteints..."
+            placeholder={t('governance.poc.nextStepsPlaceholder', 'Ce qui se passe si les critères de succès sont atteints...')}
             value={plan.nextSteps}
             onChange={(e) => updatePlan({ nextSteps: e.target.value })}
           />
@@ -217,12 +259,12 @@ export function TerrainPOCPlanner({ countryId, countryName, projectType, onSave 
             <h4 className="font-medium text-sm">{t('governance.poc.summary', 'Résumé POC')}</h4>
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
-                <span className="text-muted-foreground">Budget max :</span>
+                <span className="text-muted-foreground">{t('governance.poc.budgetMax', 'Budget max')} :</span>
                 <span className="ml-2 font-medium">{plan.maxBudget} {plan.currency}</span>
               </div>
               <div>
-                <span className="text-muted-foreground">Durée :</span>
-                <span className="ml-2 font-medium">{plan.duration} semaines</span>
+                <span className="text-muted-foreground">{t('governance.poc.durationLabel', 'Durée')} :</span>
+                <span className="ml-2 font-medium">{plan.duration} {t('governance.poc.weeks', 'semaines')}</span>
               </div>
             </div>
           </div>
@@ -231,11 +273,11 @@ export function TerrainPOCPlanner({ countryId, countryName, projectType, onSave 
         {/* Save Button */}
         <div className="flex justify-end pt-4 border-t">
           <Button 
-            onClick={() => onSave?.(plan)} 
-            disabled={!isComplete}
+            onClick={handleSave} 
+            disabled={!isComplete || isSaving}
             className="gap-2"
           >
-            <Save className="w-4 h-4" />
+            {isSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
             {t('governance.poc.savePlan', 'Sauvegarder le plan POC')}
           </Button>
         </div>

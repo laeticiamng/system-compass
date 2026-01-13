@@ -11,14 +11,7 @@ import {
   Clock,
   CheckCircle2
 } from 'lucide-react';
-
-interface FrictionRisk {
-  id: string;
-  type: 'opacity' | 'intermediary' | 'undocumented' | 'delay' | 'capture';
-  severity: 'low' | 'medium' | 'high';
-  description: string;
-  protection: string;
-}
+import { useCountryGovernance } from '@/hooks/useCountryGovernance';
 
 interface TerrainFrictionRisksProps {
   countryId: string;
@@ -41,45 +34,51 @@ const SEVERITY_CONFIG: Record<string, { label: string; color: string }> = {
 
 export function TerrainFrictionRisks({ countryId, countryName }: TerrainFrictionRisksProps) {
   const { t } = useTranslation();
+  const { governance } = useCountryGovernance(countryId);
 
-  // These would typically come from API/database
-  const frictionRisks: FrictionRisk[] = [
+  // Get friction risks from governance data or use defaults
+  const frictionData = governance?.friction_risks as {
+    redFlags?: Array<{ id: string; label: string; severity: 'low' | 'medium' | 'high' }>;
+    protections?: Array<{ id: string; label: string; implemented: boolean }>;
+  } | undefined;
+
+  const defaultRisks = [
     {
       id: 'opacity-1',
       type: 'opacity',
-      severity: 'medium',
-      description: 'Processus décisionnels peu transparents dans l\'administration',
-      protection: 'Documenter toutes les interactions, demander confirmation écrite',
+      severity: 'medium' as const,
+      description: t('governance.friction.risk1Desc', 'Processus décisionnels peu transparents dans l\'administration'),
+      protection: t('governance.friction.risk1Protection', 'Documenter toutes les interactions, demander confirmation écrite'),
     },
     {
       id: 'intermediary-1',
       type: 'intermediary',
-      severity: 'medium',
-      description: 'Recours fréquent à des intermédiaires pour accéder aux décideurs',
-      protection: 'Vérifier références, ne jamais dépendre d\'un seul intermédiaire',
+      severity: 'medium' as const,
+      description: t('governance.friction.risk2Desc', 'Recours fréquent à des intermédiaires pour accéder aux décideurs'),
+      protection: t('governance.friction.risk2Protection', 'Vérifier références, ne jamais dépendre d\'un seul intermédiaire'),
     },
     {
       id: 'delay-1',
       type: 'delay',
-      severity: 'high',
-      description: 'Délais administratifs imprévisibles (2x à 5x les délais annoncés)',
-      protection: 'Prévoir tampon temps x3, jalons contractuels avec pénalités',
+      severity: 'high' as const,
+      description: t('governance.friction.risk3Desc', 'Délais administratifs imprévisibles (2x à 5x les délais annoncés)'),
+      protection: t('governance.friction.risk3Protection', 'Prévoir tampon temps x3, jalons contractuels avec pénalités'),
     },
   ];
 
-  const redFlags = [
-    'Demande de paiement hors contrat',
-    'Pression temporelle artificielle',
-    'Refus de documentation écrite',
-    'Interlocuteur unique sans alternative',
-    'Changement de règles en cours de processus',
+  const redFlags = frictionData?.redFlags?.filter(f => f.severity === 'high').map(f => f.label) || [
+    t('governance.friction.redFlag1', 'Demande de paiement hors contrat'),
+    t('governance.friction.redFlag2', 'Pression temporelle artificielle'),
+    t('governance.friction.redFlag3', 'Refus de documentation écrite'),
+    t('governance.friction.redFlag4', 'Interlocuteur unique sans alternative'),
+    t('governance.friction.redFlag5', 'Changement de règles en cours de processus'),
   ];
 
   const protections = [
-    { label: 'Contrats avec jalons', icon: <FileCheck className="w-4 h-4" /> },
-    { label: 'Due diligence partenaires', icon: <Users className="w-4 h-4" /> },
-    { label: 'POC avant engagement', icon: <CheckCircle2 className="w-4 h-4" /> },
-    { label: 'Documentation systématique', icon: <Eye className="w-4 h-4" /> },
+    { label: t('governance.friction.protection1', 'Contrats avec jalons'), icon: <FileCheck className="w-4 h-4" /> },
+    { label: t('governance.friction.protection2', 'Due diligence partenaires'), icon: <Users className="w-4 h-4" /> },
+    { label: t('governance.friction.protection3', 'POC avant engagement'), icon: <CheckCircle2 className="w-4 h-4" /> },
+    { label: t('governance.friction.protection4', 'Documentation systématique'), icon: <Eye className="w-4 h-4" /> },
   ];
 
   return (
@@ -94,9 +93,19 @@ export function TerrainFrictionRisks({ countryId, countryName }: TerrainFriction
         </p>
       </CardHeader>
       <CardContent className="space-y-6">
+        {/* Friction Score */}
+        {governance && (
+          <div className="p-3 bg-muted/50 rounded-lg flex items-center justify-between">
+            <span className="text-sm font-medium">{t('governance.friction.scoreLabel', 'Score friction')}</span>
+            <Badge variant="outline" className={governance.friction_score >= 4 ? 'text-green-600' : governance.friction_score >= 3 ? 'text-amber-600' : 'text-red-600'}>
+              {governance.friction_score}/5
+            </Badge>
+          </div>
+        )}
+
         {/* Friction Risks */}
         <div className="space-y-3">
-          {frictionRisks.map(risk => (
+          {defaultRisks.map(risk => (
             <div key={risk.id} className="p-4 bg-muted/50 rounded-lg space-y-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
@@ -110,7 +119,7 @@ export function TerrainFrictionRisks({ countryId, countryName }: TerrainFriction
               <p className="text-sm text-muted-foreground">{risk.description}</p>
               <div className="flex items-start gap-2 text-sm bg-green-500/10 text-green-700 p-2 rounded">
                 <Shield className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>Protection : {risk.protection}</span>
+                <span>{t('governance.friction.protectionPrefix', 'Protection')} : {risk.protection}</span>
               </div>
             </div>
           ))}
