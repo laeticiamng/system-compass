@@ -69,6 +69,7 @@ import { AiHelpButton } from '@/components/ai/AiHelpButton';
 import { AiAction, AiContext } from '@/components/ai/AiSidePanel';
 import { AiUsageStats } from '@/components/dashboard/AiUsageStats';
 import { EmptyDashboardState } from '@/components/dashboard/EmptyDashboardState';
+import { DashboardExitKeysWidget } from '@/components/dashboard/DashboardExitKeysWidget';
 import { SubscriptionStatus } from '@/components/SubscriptionStatus';
 import { toast } from 'sonner';
 
@@ -385,6 +386,13 @@ export default function Dashboard() {
 
         {/* Subscription Management */}
         <SubscriptionStatus isLoggedIn={isLoggedIn} />
+
+        {/* Exit Keys Widget */}
+        {isLoggedIn && (
+          <div className="mb-6">
+            <DashboardExitKeysWidget />
+          </div>
+        )}
 
         {/* AI Usage Stats - Show for subscribed users */}
         {isLoggedIn && (tier === 'premium' || tier === 'pro') && (

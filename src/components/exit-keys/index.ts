@@ -8,3 +8,4 @@ export { RiskContextsSection } from './RiskContextsSection';
 export { VacationRecommendations } from './VacationRecommendations';
 export { SavedExitKeysPanel } from './SavedExitKeysPanel';
 export { ExitKeysPdfExport } from './ExitKeysPdfExport';
+export { ShareResultsButton } from './ShareResultsButton';
