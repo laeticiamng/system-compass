@@ -18,7 +18,7 @@ import Countries from "./pages/Countries";
 import CountryDetail from "./pages/CountryDetail";
 import ProfileTest from "./pages/ProfileTest";
 import LifeTrajectory from "./pages/LifeTrajectory";
-import Match from "./pages/Match";
+// Match.tsx removed - redirects to ProfileMatcher
 import CompareUnified from "./pages/CompareUnified";
 import Resources from "./pages/Resources";
 import PyramidTypes from "./pages/PyramidTypes";
@@ -86,7 +86,7 @@ const App = () => (
                     <Route path="/country/:countryId/terrain-realities" element={<TerrainRealities />} />
                     <Route path="/profile-test" element={<ProfileTest />} />
                     <Route path="/life-trajectory" element={<LifeTrajectory />} />
-                    <Route path="/match" element={<Match />} />
+                    <Route path="/match" element={<Navigate to="/profile-matcher" replace />} />
                     <Route path="/compare" element={<CompareUnified />} />
                     <Route path="/multi-compare" element={<Navigate to="/compare?mode=multi" replace />} />
                     <Route path="/resources" element={<Resources />} />
