@@ -53,3 +53,9 @@ verify_jwt = false
 
 [functions.financial-intel]
 verify_jwt = false
+
+[functions.terrain-realities]
+verify_jwt = false
+
+[functions.batch-terrain-realities]
+verify_jwt = false
