@@ -11,6 +11,14 @@ interface TerrainRealitiesRequest {
   language?: string;
 }
 
+// Helper to get current date in YYYY-MM format
+function getCurrentDate(): string {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  return `${year}-${month}`;
+}
+
 const SYSTEM_PROMPT = `Tu es un expert en analyse des réalités systémiques des pays. Tu génères du contenu factuel et sourcé sur les dysfonctionnements institutionnels réels, basé sur des rapports d'ONG, médias internationaux, et témoignages documentés.
 
 RÈGLES ABSOLUES:
@@ -23,7 +31,7 @@ RÈGLES ABSOLUES:
 FORMAT JSON STRICT:
 {
   "country_name": "Nom du pays",
-  "last_updated": "2025-01",
+  "last_updated": "CURRENT_DATE_PLACEHOLDER",
   "overall_risk_level": "high|medium|low",
   
   "healthcare_realities": {
@@ -232,6 +240,9 @@ Sois factuel et prudent. Indique clairement le niveau de confiance et les limite
       throw new Error('LOVABLE_API_KEY is not configured');
     }
 
+    // Replace placeholder with actual current date
+    const currentSystemPrompt = SYSTEM_PROMPT.replace('CURRENT_DATE_PLACEHOLDER', getCurrentDate());
+
     const aiResponse = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -241,7 +252,7 @@ Sois factuel et prudent. Indique clairement le niveau de confiance et les limite
       body: JSON.stringify({
         model: 'google/gemini-3-flash-preview',
         messages: [
-          { role: 'system', content: SYSTEM_PROMPT },
+          { role: 'system', content: currentSystemPrompt },
           { role: 'user', content: userPrompt }
         ],
       }),
