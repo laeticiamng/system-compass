@@ -13,9 +13,10 @@ import type { FinancialIntelResult } from '@/hooks/useFinancialIntel';
 
 interface ShareButtonProps {
   result: FinancialIntelResult;
+  country?: string;
 }
 
-export function ShareButton({ result }: ShareButtonProps) {
+export function ShareButton({ result, country }: ShareButtonProps) {
   const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
 

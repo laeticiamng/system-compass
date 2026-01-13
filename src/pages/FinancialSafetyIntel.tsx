@@ -12,11 +12,16 @@ import {
 } from '@/components/ui/select';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
-import { Loader2, Shield, AlertTriangle, Sparkles, Lock, FileText } from 'lucide-react';
-import { useFinancialIntel } from '@/hooks/useFinancialIntel';
+import { Loader2, Shield, AlertTriangle, Sparkles, FileText, History, RefreshCw } from 'lucide-react';
+import { useFinancialIntel, FinancialIntelResult } from '@/hooks/useFinancialIntel';
 import { FinancialIntelResults } from '@/components/financial-intel/FinancialIntelResults';
+import { FinancialIntelPdfExport } from '@/components/financial-intel/FinancialIntelPdfExport';
+import { FinancialIntelHistory } from '@/components/financial-intel/FinancialIntelHistory';
+import { FinancialIntelQuota } from '@/components/financial-intel/FinancialIntelQuota';
+import { ShareButton } from '@/components/financial-intel/ShareButton';
 import { useCountries } from '@/lib/countries-store';
 import { useSubscription } from '@/hooks/useSubscription';
+import { toast } from 'sonner';
 
 const SECTORS = [
   { value: '', label: 'Tous les secteurs' },
@@ -46,8 +51,9 @@ export default function FinancialSafetyIntel() {
   const [selectedCountry, setSelectedCountry] = useState('');
   const [sectorFocus, setSectorFocus] = useState('');
   const [audience, setAudience] = useState('');
+  const [showHistory, setShowHistory] = useState(false);
 
-  const isPro = tier === 'pro';
+  const isPro = tier === 'pro' || tier === 'premium';
 
   const handleGenerate = async () => {
     if (!selectedCountry) return;
@@ -63,6 +69,16 @@ export default function FinancialSafetyIntel() {
     setSelectedCountry('');
     setSectorFocus('');
     setAudience('');
+  };
+
+  const handleLoadFromHistory = (historyResult: FinancialIntelResult) => {
+    // The result is loaded directly from the history component
+    // We need to set it in our local state if we want to display it
+    setShowHistory(false);
+  };
+
+  const handlePdfExportComplete = () => {
+    toast.success(t('financialIntel.pdfExported', 'PDF exporté avec succès'));
   };
 
   return (
@@ -91,151 +107,183 @@ export default function FinancialSafetyIntel() {
           </AlertDescription>
         </Alert>
 
+        {/* Quota display */}
+        <FinancialIntelQuota className="mb-6" />
+
         {!result ? (
-          <Card className="bg-card/50 backdrop-blur-sm border-primary/20">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
-                <Sparkles className="h-5 w-5 text-primary" />
-                {t('financialIntel.generateTitle', 'Générer une analyse')}
-              </CardTitle>
-              <CardDescription>
-                {t('financialIntel.generateDescription', 
-                  'Sélectionnez un pays pour obtenir les Top 7 arnaques à éviter et les Top 7 options régulées.'
-                )}
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              {/* Country Select */}
-              <div className="space-y-2">
-                <Label htmlFor="country" className="flex items-center gap-1">
-                  {t('common.country', 'Pays')}
-                  <span className="text-destructive">*</span>
-                </Label>
-                <Select value={selectedCountry} onValueChange={setSelectedCountry}>
-                  <SelectTrigger id="country" className="w-full">
-                    <SelectValue placeholder={t('financialIntel.selectCountry', 'Choisir un pays...')} />
-                  </SelectTrigger>
-                  <SelectContent className="max-h-[300px]">
-                    {countries.map((country) => (
-                      <SelectItem key={country.id} value={country.name}>
-                        {country.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
-              {/* Sector Focus */}
-              <div className="space-y-2">
-                <Label htmlFor="sector" className="flex items-center gap-1">
-                  {t('financialIntel.sectorFocus', 'Focus sectoriel')}
-                  <span className="text-muted-foreground text-xs">({t('common.optional', 'optionnel')})</span>
-                </Label>
-                <Select value={sectorFocus} onValueChange={setSectorFocus}>
-                  <SelectTrigger id="sector" className="w-full">
-                    <SelectValue placeholder={t('financialIntel.allSectors', 'Tous les secteurs')} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {SECTORS.map((sector) => (
-                      <SelectItem key={sector.value} value={sector.value}>
-                        {sector.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
-              {/* Audience */}
-              <div className="space-y-2">
-                <Label htmlFor="audience" className="flex items-center gap-1">
-                  {t('financialIntel.audience', 'Audience')}
-                  <span className="text-muted-foreground text-xs">({t('common.optional', 'optionnel')})</span>
-                </Label>
-                <Select value={audience} onValueChange={setAudience}>
-                  <SelectTrigger id="audience" className="w-full">
-                    <SelectValue placeholder={t('financialIntel.allAudiences', 'Tous publics')} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {AUDIENCES.map((aud) => (
-                      <SelectItem key={aud.value} value={aud.value}>
-                        {aud.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
-              {/* Tier info */}
-              <div className="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
-                <div className="flex items-center gap-2">
-                  {isPro ? (
-                    <Badge className="bg-primary/20 text-primary border-primary/30">Pro</Badge>
-                  ) : (
-                    <Badge variant="secondary">Free</Badge>
-                  )}
-                  <span className="text-sm text-muted-foreground">
-                    {isPro 
-                      ? t('financialIntel.proAccess', 'Accès complet + export PDF')
-                      : t('financialIntel.freeAccess', 'Aperçu Top 3 + Top 3')
-                    }
-                  </span>
-                </div>
-                {isPro && (
-                  <Button variant="outline" size="sm" disabled className="gap-1">
-                    <FileText className="h-4 w-4" />
-                    <span className="hidden sm:inline">PDF</span>
-                  </Button>
-                )}
-              </div>
-
-              {/* Error display */}
-              {error && (
-                <Alert variant="destructive">
-                  <AlertTriangle className="h-4 w-4" />
-                  <AlertDescription>{error}</AlertDescription>
-                </Alert>
-              )}
-
-              {/* Generate Button */}
-              <Button 
-                onClick={handleGenerate} 
-                disabled={!selectedCountry || isLoading}
-                className="w-full gap-2"
-                size="lg"
+          <div className="space-y-6">
+            {/* History toggle */}
+            <div className="flex justify-end">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setShowHistory(!showHistory)}
+                className="gap-2"
               >
-                {isLoading ? (
-                  <>
-                    <Loader2 className="h-4 w-4 animate-spin" />
-                    {t('financialIntel.generating', 'Génération en cours...')}
-                  </>
-                ) : (
-                  <>
-                    <Sparkles className="h-4 w-4" />
-                    {t('financialIntel.generate', 'Générer l\'analyse')}
-                  </>
-                )}
+                <History className="h-4 w-4" />
+                {t('financialIntel.history', 'Historique')}
               </Button>
-            </CardContent>
-          </Card>
+            </div>
+
+            {showHistory ? (
+              <FinancialIntelHistory onLoadSnapshot={handleLoadFromHistory} />
+            ) : (
+              <Card className="bg-card/50 backdrop-blur-sm border-primary/20">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
+                    <Sparkles className="h-5 w-5 text-primary" />
+                    {t('financialIntel.generateTitle', 'Générer une analyse')}
+                  </CardTitle>
+                  <CardDescription>
+                    {t('financialIntel.generateDescription', 
+                      'Sélectionnez un pays pour obtenir les Top 7 arnaques à éviter et les Top 7 options régulées.'
+                    )}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  {/* Country Select */}
+                  <div className="space-y-2">
+                    <Label htmlFor="country" className="flex items-center gap-1">
+                      {t('common.country', 'Pays')}
+                      <span className="text-destructive">*</span>
+                    </Label>
+                    <Select value={selectedCountry} onValueChange={setSelectedCountry}>
+                      <SelectTrigger id="country" className="w-full">
+                        <SelectValue placeholder={t('financialIntel.selectCountry', 'Choisir un pays...')} />
+                      </SelectTrigger>
+                      <SelectContent className="max-h-[300px]">
+                        {countries.map((country) => (
+                          <SelectItem key={country.id} value={country.name}>
+                            {country.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  {/* Sector Focus */}
+                  <div className="space-y-2">
+                    <Label htmlFor="sector" className="flex items-center gap-1">
+                      {t('financialIntel.sectorFocus', 'Focus sectoriel')}
+                      <span className="text-muted-foreground text-xs">({t('common.optional', 'optionnel')})</span>
+                    </Label>
+                    <Select value={sectorFocus} onValueChange={setSectorFocus}>
+                      <SelectTrigger id="sector" className="w-full">
+                        <SelectValue placeholder={t('financialIntel.allSectors', 'Tous les secteurs')} />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {SECTORS.map((sector) => (
+                          <SelectItem key={sector.value} value={sector.value}>
+                            {sector.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  {/* Audience */}
+                  <div className="space-y-2">
+                    <Label htmlFor="audience" className="flex items-center gap-1">
+                      {t('financialIntel.audience', 'Audience')}
+                      <span className="text-muted-foreground text-xs">({t('common.optional', 'optionnel')})</span>
+                    </Label>
+                    <Select value={audience} onValueChange={setAudience}>
+                      <SelectTrigger id="audience" className="w-full">
+                        <SelectValue placeholder={t('financialIntel.allAudiences', 'Tous publics')} />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {AUDIENCES.map((aud) => (
+                          <SelectItem key={aud.value} value={aud.value}>
+                            {aud.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  {/* Tier info */}
+                  <div className="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
+                    <div className="flex items-center gap-2">
+                      {isPro ? (
+                        <Badge className="bg-primary/20 text-primary border-primary/30">Pro</Badge>
+                      ) : (
+                        <Badge variant="secondary">Free</Badge>
+                      )}
+                      <span className="text-sm text-muted-foreground">
+                        {isPro 
+                          ? t('financialIntel.proAccess', 'Accès complet + export PDF')
+                          : t('financialIntel.freeAccess', 'Aperçu Top 3 + Top 3')
+                        }
+                      </span>
+                    </div>
+                    {isPro && (
+                      <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                        <FileText className="h-4 w-4" />
+                        <span className="hidden sm:inline">PDF</span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Error display */}
+                  {error && (
+                    <Alert variant="destructive">
+                      <AlertTriangle className="h-4 w-4" />
+                      <AlertDescription>{error}</AlertDescription>
+                    </Alert>
+                  )}
+
+                  {/* Generate Button */}
+                  <Button 
+                    onClick={handleGenerate} 
+                    disabled={!selectedCountry || isLoading}
+                    className="w-full gap-2"
+                    size="lg"
+                  >
+                    {isLoading ? (
+                      <>
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                        {t('financialIntel.generating', 'Génération en cours...')}
+                      </>
+                    ) : (
+                      <>
+                        <Sparkles className="h-4 w-4" />
+                        {t('financialIntel.generate', 'Générer l\'analyse')}
+                      </>
+                    )}
+                  </Button>
+                </CardContent>
+              </Card>
+            )}
+          </div>
         ) : (
           <div className="space-y-4">
-            {/* Reset button */}
-            <div className="flex items-center justify-between">
+            {/* Action buttons */}
+            <div className="flex flex-wrap items-center justify-between gap-2">
               <Button variant="outline" onClick={handleReset} className="gap-2">
+                <RefreshCw className="h-4 w-4" />
                 {t('financialIntel.newAnalysis', 'Nouvelle analyse')}
               </Button>
               
-              {isPro && (
-                <Button variant="outline" className="gap-2" disabled>
-                  <Lock className="h-4 w-4" />
-                  <FileText className="h-4 w-4" />
-                  {t('financialIntel.exportPdf', 'Exporter PDF')}
-                </Button>
-              )}
+              <div className="flex items-center gap-2">
+                <ShareButton 
+                  result={result} 
+                  country={selectedCountry} 
+                />
+                
+                {isPro && (
+                  <FinancialIntelPdfExport 
+                    result={result}
+                    country={selectedCountry}
+                    sectorFocus={sectorFocus}
+                    audience={audience}
+                    onExportComplete={handlePdfExportComplete}
+                  />
+                )}
+              </div>
             </div>
 
             {/* Results */}
-            <FinancialIntelResults result={result} />
+            <FinancialIntelResults result={result} isPro={isPro} />
           </div>
         )}
       </div>

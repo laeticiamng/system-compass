@@ -11,9 +11,10 @@ import { Link } from 'react-router-dom';
 
 interface FinancialIntelQuotaProps {
   onQuotaExceeded?: () => void;
+  className?: string;
 }
 
-export function FinancialIntelQuota({ onQuotaExceeded }: FinancialIntelQuotaProps) {
+export function FinancialIntelQuota({ onQuotaExceeded, className }: FinancialIntelQuotaProps) {
   const { t } = useTranslation();
   const { user } = useAuth();
   const { tier } = useSubscription();
@@ -99,7 +100,7 @@ export function FinancialIntelQuota({ onQuotaExceeded }: FinancialIntelQuotaProp
   }
 
   return (
-    <div className="flex items-center gap-3 p-3 bg-muted/30 rounded-lg">
+    <div className={`flex items-center gap-3 p-3 bg-muted/30 rounded-lg ${className || ''}`}>
       <div className="flex-1">
         <div className="flex items-center justify-between mb-1">
           <span className="text-xs text-muted-foreground">
