@@ -97,6 +97,7 @@ const App = () => (
                     <Route path="/exit-keys" element={<ExitKeys />} />
                     <Route path="/exit-keys/catalog" element={<ExitKeysCatalog />} />
                     <Route path="/exit-keys/compare" element={<CompareExitKeys />} />
+                    <Route path="/compare-exit-keys" element={<CompareExitKeys />} />
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/disclaimer" element={<Disclaimer />} />

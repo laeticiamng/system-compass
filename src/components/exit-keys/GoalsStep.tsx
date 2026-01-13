@@ -11,13 +11,13 @@ interface GoalsStepProps {
   motorProfile: LifeMotorProfile;
 }
 
-const priorityOptions: { value: LifePriority; label: string; icon: string }[] = [
-  { value: 'freedom', label: 'Liberté', icon: '🦅' },
-  { value: 'money', label: 'Argent', icon: '💰' },
-  { value: 'meaning', label: 'Sens', icon: '💫' },
-  { value: 'status', label: 'Statut', icon: '👔' },
-  { value: 'family', label: 'Famille', icon: '👨‍👩‍👧' },
-  { value: 'calm', label: 'Sérénité', icon: '🧘' },
+const priorityOptions: { value: LifePriority; labelKey: string; icon: string }[] = [
+  { value: 'freedom', labelKey: 'exitKeys.priorities.freedom', icon: '🦅' },
+  { value: 'money', labelKey: 'exitKeys.priorities.money', icon: '💰' },
+  { value: 'meaning', labelKey: 'exitKeys.priorities.meaning', icon: '💫' },
+  { value: 'status', labelKey: 'exitKeys.priorities.status', icon: '👔' },
+  { value: 'family', labelKey: 'exitKeys.priorities.family', icon: '👨‍👩‍👧' },
+  { value: 'calm', labelKey: 'exitKeys.priorities.calm', icon: '🧘' },
 ];
 
 export function GoalsStep({
@@ -52,7 +52,7 @@ export function GoalsStep({
             )}
           >
             <span className="text-4xl block mb-2">{option.icon}</span>
-            <span className="font-medium">{t(`exitKeys.goals.priorities.${option.value}`, option.label)}</span>
+            <span className="font-medium">{t(option.labelKey)}</span>
           </button>
         ))}
       </div>

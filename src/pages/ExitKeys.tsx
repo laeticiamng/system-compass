@@ -45,6 +45,7 @@ import { AiHelpButton } from '@/components/ai/AiHelpButton';
 import { AiAction, AiContext } from '@/components/ai/AiSidePanel';
 import { SavedExitKeysPanel } from '@/components/exit-keys/SavedExitKeysPanel';
 import { ExitKeysPdfExport } from '@/components/exit-keys/ExitKeysPdfExport';
+import { ShareResultsButton } from '@/components/exit-keys/ShareResultsButton';
 import { useExitKeysHistory } from '@/hooks/useExitKeysHistory';
 
 const STEPS = ['origin', 'current', 'profile', 'goals', 'results'] as const;
@@ -1161,6 +1162,14 @@ export default function ExitKeys() {
                       motorProfile: LIFE_MOTOR_PROFILES[motorProfile].label,
                       riskTolerance: riskOptions.find(r => r.value === riskTolerance)?.labelKey,
                       timeHorizon: timeOptions.find(t => t.value === timeHorizon)?.labelKey,
+                    }}
+                  />
+                  <ShareResultsButton
+                    results={filteredResults}
+                    profileSummary={{
+                      birthCountry: birthCountry?.name,
+                      currentCountry: currentCountry?.name,
+                      desiredLife: t(priorityOptions.find(p => p.value === desiredLife)?.labelKey || ''),
                     }}
                   />
                   <Link to="/compare-exit-keys">
