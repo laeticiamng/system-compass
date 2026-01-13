@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
@@ -35,7 +35,8 @@ import {
   TrendingUp,
   MapPin,
   Stethoscope,
-  Download
+  Download,
+  Printer
 } from 'lucide-react';
 import { useTerrainRealities, TerrainRealitiesResult } from '@/hooks/useTerrainRealities';
 import { useTerrainHistory } from '@/hooks/useTerrainHistory';
@@ -45,6 +46,10 @@ import { RiskOverviewChart } from '@/components/terrain/RiskOverviewChart';
 import { ShareReportButton } from '@/components/terrain/ShareReportButton';
 import { TerrainHistoryPanel } from '@/components/terrain/TerrainHistoryPanel';
 import { ConfidenceTooltip } from '@/components/terrain/ConfidenceTooltip';
+import { TerrainCompareDialog } from '@/components/terrain/TerrainCompareDialog';
+import { FavoriteButton, TerrainFavoritesPanel } from '@/components/terrain/TerrainFavorites';
+import { SourcesBreakdown } from '@/components/terrain/SourcesBreakdown';
+import { DataExpirationBadge } from '@/components/terrain/DataExpirationBadge';
 import { toast } from 'sonner';
 
 function RiskBadge({ level }: { level: 'high' | 'medium' | 'low' }) {
@@ -806,6 +811,19 @@ export default function TerrainRealities() {
     toast.success(t('terrainRealities.jsonExportSuccess'));
   };
 
+  // Determine default tab based on highest risk
+  const defaultTab = useMemo(() => {
+    if (!result) return 'healthcare';
+    const risks = [
+      { tab: 'healthcare', level: result.healthcare_realities.risk_level },
+      { tab: 'justice', level: result.justice_realities.risk_level },
+      { tab: 'security', level: result.security_realities.risk_level },
+      { tab: 'admin', level: result.administration_realities.risk_level },
+    ];
+    const riskOrder = { high: 0, medium: 1, low: 2 };
+    risks.sort((a, b) => riskOrder[a.level] - riskOrder[b.level]);
+    return risks[0].tab;
+  }, [result]);
   return (
     <div className="min-h-screen bg-background pt-16 sm:pt-20">
       <div className="container mx-auto px-3 sm:px-4 py-6 sm:py-8 max-w-5xl">
@@ -893,6 +911,20 @@ export default function TerrainRealities() {
                     <div className="flex items-center justify-between flex-wrap gap-2">
                       <CardTitle className="text-lg">{result.country_name}</CardTitle>
                       <div className="flex items-center gap-2 flex-wrap">
+                        <FavoriteButton 
+                          countryId={countryId || ''} 
+                          countryName={countryName}
+                          riskLevel={result.overall_risk_level}
+                        />
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => window.print()}
+                          className="gap-1"
+                          title={t('terrainRealities.printReport')}
+                        >
+                          <Printer className="h-4 w-4" />
+                        </Button>
                         <Button
                           variant="ghost"
                           size="sm"
@@ -904,10 +936,16 @@ export default function TerrainRealities() {
                         </Button>
                         <ShareReportButton countryId={countryId || ''} countryName={countryName} />
                         <TerrainRealitiesPdfExport data={result} countryName={countryName} />
+                        <TerrainCompareDialog 
+                          currentCountryId={countryId || ''}
+                          currentCountryName={countryName}
+                          currentData={result}
+                        />
                       </div>
                     </div>
                     <CardDescription className="flex flex-wrap items-center gap-2 sm:gap-4">
                       <span>{t('terrainRealities.lastUpdated')}: {result.last_updated}</span>
+                      <DataExpirationBadge lastUpdated={result.last_updated} />
                       <ConfidenceTooltip score={result.confidence_score} />
                       {result.cached && (
                         <Badge variant="outline" className="text-xs">
@@ -921,8 +959,8 @@ export default function TerrainRealities() {
                 {/* Risk Overview Chart */}
                 <RiskOverviewChart data={result} />
 
-                {/* Tabs */}
-                <Tabs defaultValue="healthcare" className="w-full">
+                {/* Tabs - default to highest risk section */}
+                <Tabs defaultValue={defaultTab} className="w-full">
                   <TabsList className="grid w-full grid-cols-4 h-auto">
                     <TabsTrigger value="healthcare" className="flex flex-col sm:flex-row items-center gap-1 py-2">
                       <HeartPulse className="h-4 w-4" />
@@ -1024,7 +1062,8 @@ export default function TerrainRealities() {
 
           {/* Sidebar */}
           <div className="lg:col-span-1 space-y-4">
-            <TerrainHistoryPanel currentCountryId={countryId} />
+            <TerrainHistoryPanel currentCountryId={countryId} isLoading={isLoading} />
+            <TerrainFavoritesPanel currentCountryId={countryId} />
           </div>
         </div>
       </div>

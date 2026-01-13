@@ -19,7 +19,7 @@ export function ShareReportButton({ countryId, countryName }: ShareReportButtonP
   const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
 
-  const shareUrl = `${window.location.origin}/terrain-realities/${countryId}`;
+  const shareUrl = `${window.location.origin}/country/${countryId}/terrain-realities`;
 
   const handleCopyLink = async () => {
     try {
