@@ -42,7 +42,7 @@ export function Header() {
     return localStorage.getItem(DISCLAIMER_DISMISSED_KEY) === 'true';
   });
 
-  // Navigation principale - toutes les pages accessibles
+  // Navigation principale - pages essentielles uniquement
   const navItems = [
     { href: '/', label: t('nav.start'), icon: Compass },
     { href: '/countries', label: t('nav.countries'), icon: Map },
@@ -51,29 +51,32 @@ export function Header() {
     { href: '/exit-keys', label: t('nav.exitKeys'), icon: Key },
     { href: '/compare', label: t('nav.compare'), icon: Scale },
     { href: '/pyramid-quiz', label: t('nav.pyramidQuiz', 'Jeu'), icon: Gamepad2 },
-    { href: '/prevention-filter', label: t('nav.preventionFilter', 'Filtre'), icon: Shield },
-    { href: '/errors-illusions', label: t('nav.errorsIllusions', 'Erreurs'), icon: BookOpen },
     { href: '/dashboard', label: t('nav.dashboard'), icon: LayoutDashboard },
   ];
   
-  // Pages outils supplémentaires dans le menu mobile
+  // Outils d'analyse et simulation
   const toolsItems = [
-    { href: '/profile-test', label: t('nav.profileTest', 'Test Profil'), icon: User },
     { href: '/quick-test', label: t('nav.quickTest', 'Test Rapide'), icon: Gamepad2 },
+    { href: '/profile-test', label: t('nav.profileTest', 'Test Complet'), icon: User },
+    { href: '/profile-matcher', label: t('nav.profileMatcher', 'Matcher Pays'), icon: Users },
     { href: '/life-trajectory', label: t('nav.lifeTrajectory', 'Trajectoire'), icon: Map },
-    { href: '/match', label: t('nav.match', 'Matching'), icon: Scale },
-    { href: '/profile-matcher', label: t('nav.profileMatcher', 'Matcher Pro'), icon: Users },
+    { href: '/prevention-filter', label: t('nav.preventionFilter', 'Filtre Décision'), icon: Shield },
     { href: '/financial-safety-intel', label: t('nav.financialIntel', 'Intel Financière'), icon: Shield },
-    { href: '/ovi', label: t('nav.ovi', 'OVI'), icon: Eye },
-    { href: '/irreversa', label: t('nav.irreversa', 'Irreversa'), icon: AlertCircle },
+    { href: '/errors-illusions', label: t('nav.errorsIllusions', 'Erreurs & Illusions'), icon: BookOpen },
+  ];
+
+  // Modules avancés (B2B / Pro)
+  const advancedItems = [
+    { href: '/institutions', label: t('nav.institutions', 'TraceOS'), icon: Building2 },
     { href: '/latent', label: t('nav.latent', 'Zones Latentes'), icon: Eye },
-    { href: '/institutions', label: t('nav.institutions', 'Institutions'), icon: Building2 },
-    { href: '/how-to-read', label: t('nav.howToRead', 'Guide Lecture'), icon: BookOpen },
+    { href: '/irreversa', label: t('nav.irreversa', 'Irreversa'), icon: AlertCircle },
+    { href: '/ovi', label: t('nav.ovi', 'OVI'), icon: Eye },
   ];
 
   // Pages info/compte
   const accountItems = [
     { href: '/about', label: t('nav.about', 'À propos'), icon: Info },
+    { href: '/how-to-read', label: t('nav.howToRead', 'Guide'), icon: BookOpen },
     { href: '/pricing', label: t('nav.pricing', 'Tarifs'), icon: CreditCard },
     { href: '/usage', label: t('nav.usage', 'Consommation'), icon: Settings },
     { href: '/partners', label: t('nav.partners', 'Partenaires'), icon: Users },
@@ -273,6 +276,30 @@ export function Header() {
                 <div className="border-t border-border my-3" />
                 <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">{t('nav.tools', 'Outils')}</div>
                 {toolsItems.map((item) => {
+                  const Icon = item.icon;
+                  const isActive = location.pathname === item.href;
+                  return (
+                    <Link
+                      key={item.href}
+                      to={item.href}
+                      onClick={handleNavClick}
+                      className={cn(
+                        'flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors',
+                        isActive
+                          ? 'bg-primary/10 text-primary'
+                          : 'text-muted-foreground hover:text-foreground hover:bg-accent'
+                      )}
+                    >
+                      <Icon className="w-4 h-4" />
+                      {item.label}
+                    </Link>
+                  );
+                })}
+
+                {/* Modules Avancés */}
+                <div className="border-t border-border my-3" />
+                <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">{t('nav.advanced', 'Modules Pro')}</div>
+                {advancedItems.map((item) => {
                   const Icon = item.icon;
                   const isActive = location.pathname === item.href;
                   return (
