@@ -57,6 +57,7 @@ import NotificationSettings from "./pages/NotificationSettings";
 import AdminPartners from "./pages/AdminPartners";
 import CaseDetail from "./pages/CaseDetail";
 import FinancialSafetyIntel from "./pages/FinancialSafetyIntel";
+import TerrainRealities from "./pages/TerrainRealities";
 import { RequireAdmin } from "@/components/RequireAdmin";
 
 const queryClient = new QueryClient();
@@ -82,6 +83,7 @@ const App = () => (
                     <Route path="/countries" element={<Countries />} />
                     <Route path="/world-map" element={<WorldMapExplorer />} />
                     <Route path="/country/:id" element={<CountryDetail />} />
+                    <Route path="/country/:countryId/terrain-realities" element={<TerrainRealities />} />
                     <Route path="/profile-test" element={<ProfileTest />} />
                     <Route path="/life-trajectory" element={<LifeTrajectory />} />
                     <Route path="/match" element={<Match />} />

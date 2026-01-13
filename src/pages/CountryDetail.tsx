@@ -21,7 +21,8 @@ import { CountryTagsRadar } from '@/components/country/CountryTagsRadar';
 import { CountryPdfExport } from '@/components/CountryPdfExport';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { ArrowLeft, Calendar, ExternalLink, Layers, Map, Target, Brain, Loader2, Sparkles, Shield } from 'lucide-react';
+import { ArrowLeft, Calendar, ExternalLink, Layers, Map, Target, Brain, Loader2, Sparkles, Shield, ShieldAlert } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { useUserHistory } from '@/hooks/useUserHistory';
 import { useExitKeysProfile } from '@/hooks/useExitKeysProfile';
@@ -134,6 +135,12 @@ export default function CountryDetail() {
                 >
                   {typeLabel}
                 </span>
+                <Button variant="outline" size="sm" asChild className="gap-1 text-orange-400 border-orange-500/30 hover:bg-orange-500/10">
+                  <Link to={`/country/${id}/terrain-realities`}>
+                    <ShieldAlert className="h-4 w-4" />
+                    <span className="hidden sm:inline">{t('terrainRealities.title', 'Réalités Terrain')}</span>
+                  </Link>
+                </Button>
               </div>
               <p className="text-muted-foreground">{extendedMeta.region}</p>
             </div>
