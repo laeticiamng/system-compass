@@ -549,7 +549,13 @@
     "explore": "Explore",
     "tools": "Tools",
     "account": "Account & Info",
-    "advanced": "Pro Modules"
+    "advanced": "Pro Modules",
+    "info": "Info"
+  },
+  "tests": {
+    "resultSaved": "Result saved!",
+    "saveError": "Save error",
+    "resultDeleted": "Result deleted"
   },
   "worldMap": {
     "badge": "Global exploration",

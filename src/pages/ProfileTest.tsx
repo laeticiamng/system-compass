@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
 import { UserProfile, ProfileResult, PyramidType } from '@/lib/types';
 import { cn } from '@/lib/utils';
+import { useTestResults } from '@/hooks/useTestResults';
+import { useAuth } from '@/hooks/useAuth';
 import { ArrowRight, ArrowLeft, User, Target, Shield, Zap, FileCheck, Lightbulb, Eye, Plane } from 'lucide-react';
 
 const questionKeys = [
@@ -40,6 +42,8 @@ const PYRAMID_TYPE_COLORS: Record<string, string> = {
 export default function ProfileTest() {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { user } = useAuth();
+  const { saveResult } = useTestResults();
   const [step, setStep] = useState(0);
   const [profile, setProfile] = useState<UserProfile>({
     ambition: 5,
@@ -52,6 +56,7 @@ export default function ProfileTest() {
     mobility: 'medium',
   });
   const [result, setResult] = useState<ProfileResult | null>(null);
+  const [startTime] = useState(Date.now());
 
   const totalSteps = questionKeys.length + 1; // +1 for mobility question
 
@@ -94,11 +99,16 @@ export default function ProfileTest() {
     return { archetype, description, strengths, vulnerabilities, compatibleTypes, redFlags };
   };
 
-  const handleComplete = () => {
+  const handleComplete = async () => {
     const calculatedResult = calculateResult();
     setResult(calculatedResult);
     // Save profile to localStorage for matching
     localStorage.setItem('userProfile', JSON.stringify(profile));
+    
+    // Save to backend
+    const elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
+    const mainPyramid = calculatedResult.compatibleTypes[0] || 'STABILITY_REDIS';
+    await saveResult('profile_test', profile as any, mainPyramid, calculatedResult.archetype, elapsedSeconds);
   };
 
   const handleNext = () => {

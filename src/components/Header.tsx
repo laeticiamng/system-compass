@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
-import { Compass, Map, FileText, Scale, Triangle, Gamepad2, LogIn, LogOut, User, Key, LayoutDashboard, Menu, Play, Info, AlertCircle, X, Shield, BookOpen, CreditCard, Globe, Settings, Building2, Eye, Users } from 'lucide-react';
+import { Compass, Map, FileText, Scale, Triangle, Gamepad2, LogIn, LogOut, User, Key, LayoutDashboard, Menu, Play, Info, AlertCircle, X, Shield, BookOpen, CreditCard, Globe, Settings, Building2, Eye, Users, ChevronDown, Wrench } from 'lucide-react';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { GlobalSearch } from './GlobalSearch';
 import { useAuth } from '@/hooks/useAuth';
@@ -17,6 +17,14 @@ import {
   SheetTitle,
   SheetTrigger,
 } from './ui/sheet';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from './ui/dropdown-menu';
 
 // Pages that show simulation features and need the anti-illusion reminder
 const SIMULATION_PAGES = [
@@ -145,10 +153,10 @@ export function Header() {
         <div className="flex items-center gap-0.5 sm:gap-1 md:gap-2 min-w-0 flex-1 justify-end">
           {/* Desktop Nav - hide on smaller screens */}
           <nav className="hidden xl:flex items-center gap-0.5">
-            {navItems.map((item) => {
+            {/* Main nav items */}
+            {navItems.slice(0, 5).map((item) => {
               const Icon = item.icon;
               const isActive = location.pathname === item.href;
-              const isHighlight = 'highlight' in item && item.highlight;
               return (
                 <Link
                   key={item.href}
@@ -157,9 +165,7 @@ export function Header() {
                     'flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-colors',
                     isActive
                       ? 'bg-primary/10 text-primary'
-                      : isHighlight
-                        ? 'bg-amber-500/10 text-amber-600 hover:bg-amber-500/20 border border-amber-500/30'
-                        : 'text-muted-foreground hover:text-foreground hover:bg-accent'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-accent'
                   )}
                 >
                   <Icon className="w-3.5 h-3.5" />
@@ -168,29 +174,112 @@ export function Header() {
               );
             })}
             
+            {/* Tools dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="sm" className="gap-1 h-8 px-2.5 text-xs font-medium text-muted-foreground hover:text-foreground">
+                  <Wrench className="w-3.5 h-3.5" />
+                  {t('nav.tools', 'Outils')}
+                  <ChevronDown className="w-3 h-3" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-56">
+                <DropdownMenuLabel>{t('nav.tools', 'Outils')}</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                {toolsItems.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <DropdownMenuItem key={item.href} asChild>
+                      <Link to={item.href} className="flex items-center gap-2">
+                        <Icon className="w-4 h-4" />
+                        {item.label}
+                      </Link>
+                    </DropdownMenuItem>
+                  );
+                })}
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            {/* Modules Pro dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="sm" className="gap-1 h-8 px-2.5 text-xs font-medium text-muted-foreground hover:text-foreground">
+                  <Building2 className="w-3.5 h-3.5" />
+                  {t('nav.advanced', 'Pro')}
+                  <ChevronDown className="w-3 h-3" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-56">
+                <DropdownMenuLabel>{t('nav.advanced', 'Modules Pro')}</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                {advancedItems.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <DropdownMenuItem key={item.href} asChild>
+                      <Link to={item.href} className="flex items-center gap-2">
+                        <Icon className="w-4 h-4" />
+                        {item.label}
+                      </Link>
+                    </DropdownMenuItem>
+                  );
+                })}
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            {/* Account dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="sm" className="gap-1 h-8 px-2.5 text-xs font-medium text-muted-foreground hover:text-foreground">
+                  <Info className="w-3.5 h-3.5" />
+                  {t('nav.info', 'Info')}
+                  <ChevronDown className="w-3 h-3" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-56">
+                <DropdownMenuLabel>{t('nav.account', 'Compte & Info')}</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                {accountItems.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <DropdownMenuItem key={item.href} asChild>
+                      <Link to={item.href} className="flex items-center gap-2">
+                        <Icon className="w-4 h-4" />
+                        {item.label}
+                      </Link>
+                    </DropdownMenuItem>
+                  );
+                })}
+              </DropdownMenuContent>
+            </DropdownMenu>
+            
             {/* Admin links for desktop - only show for authenticated users */}
             {user && (
               <>
                 <div className="w-px h-4 bg-border mx-1" />
-                {adminItems.map((item) => {
-                  const Icon = item.icon;
-                  const isActive = location.pathname === item.href;
-                  return (
-                    <Link
-                      key={item.href}
-                      to={item.href}
-                      className={cn(
-                        'flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-colors',
-                        isActive
-                          ? 'bg-primary/10 text-primary'
-                          : 'text-orange-600 hover:text-orange-700 hover:bg-orange-500/10'
-                      )}
-                    >
-                      <Icon className="w-3.5 h-3.5" />
-                      {item.label}
-                    </Link>
-                  );
-                })}
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="sm" className="gap-1 h-8 px-2.5 text-xs font-medium text-orange-600 hover:text-orange-700">
+                      <Settings className="w-3.5 h-3.5" />
+                      Admin
+                      <ChevronDown className="w-3 h-3" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-56">
+                    <DropdownMenuLabel>Administration</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    {adminItems.map((item) => {
+                      const Icon = item.icon;
+                      return (
+                        <DropdownMenuItem key={item.href} asChild>
+                          <Link to={item.href} className="flex items-center gap-2">
+                            <Icon className="w-4 h-4" />
+                            {item.label}
+                          </Link>
+                        </DropdownMenuItem>
+                      );
+                    })}
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </>
             )}
           </nav>
