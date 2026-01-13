@@ -105,7 +105,6 @@ const App = () => (
                     <Route path="/admin/analytics" element={<RequireAdmin><AdminAnalytics /></RequireAdmin>} />
                     <Route path="/prevention-filter" element={<PreventionFilter />} />
                     <Route path="/universal-errors" element={<Navigate to="/errors-illusions" replace />} />
-                    <Route path="/systemic-mistakes" element={<Navigate to="/errors-illusions" replace />} />
                     <Route path="/universal-errors/:id" element={<UniversalErrorDetail />} />
                     <Route path="/errors-illusions" element={<ErrorsAndIllusions />} />
                     <Route path="/orientation-hub" element={<Navigate to="/about" replace />} />

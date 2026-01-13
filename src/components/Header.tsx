@@ -42,21 +42,40 @@ export function Header() {
     return localStorage.getItem(DISCLAIMER_DISMISSED_KEY) === 'true';
   });
 
-  // Navigation simplifiée et claire
+  // Navigation principale - toutes les pages accessibles
   const navItems = [
     { href: '/', label: t('nav.start'), icon: Compass },
-    { href: '/about', label: t('nav.about', 'À propos'), icon: Info },
-    { href: '/prevention-filter', label: t('nav.preventionFilter', 'Filtre'), icon: Shield },
-    { href: '/world-map', label: t('nav.worldMap', 'Carte'), icon: Globe },
-    { href: '/errors-illusions', label: t('nav.errorsIllusions', 'Erreurs'), icon: BookOpen },
     { href: '/countries', label: t('nav.countries'), icon: Map },
+    { href: '/world-map', label: t('nav.worldMap', 'Carte'), icon: Globe },
     { href: '/pyramid-types', label: t('nav.pyramids'), icon: Triangle },
-    { href: '/life-game', label: t('nav.lifeGame'), icon: Play },
     { href: '/exit-keys', label: t('nav.exitKeys'), icon: Key },
     { href: '/compare', label: t('nav.compare'), icon: Scale },
+    { href: '/pyramid-quiz', label: t('nav.pyramidQuiz', 'Jeu'), icon: Gamepad2 },
+    { href: '/prevention-filter', label: t('nav.preventionFilter', 'Filtre'), icon: Shield },
+    { href: '/errors-illusions', label: t('nav.errorsIllusions', 'Erreurs'), icon: BookOpen },
     { href: '/dashboard', label: t('nav.dashboard'), icon: LayoutDashboard },
-    { href: '/usage', label: t('nav.usage', 'Consommation'), icon: Settings },
+  ];
+  
+  // Pages outils supplémentaires dans le menu mobile
+  const toolsItems = [
+    { href: '/profile-test', label: t('nav.profileTest', 'Test Profil'), icon: User },
+    { href: '/quick-test', label: t('nav.quickTest', 'Test Rapide'), icon: Gamepad2 },
+    { href: '/life-trajectory', label: t('nav.lifeTrajectory', 'Trajectoire'), icon: Map },
+    { href: '/match', label: t('nav.match', 'Matching'), icon: Scale },
+    { href: '/profile-matcher', label: t('nav.profileMatcher', 'Matcher Pro'), icon: Users },
+    { href: '/financial-safety-intel', label: t('nav.financialIntel', 'Intel Financière'), icon: Shield },
+    { href: '/ovi', label: t('nav.ovi', 'OVI'), icon: Eye },
+    { href: '/irreversa', label: t('nav.irreversa', 'Irreversa'), icon: AlertCircle },
+    { href: '/latent', label: t('nav.latent', 'Zones Latentes'), icon: Eye },
+    { href: '/institutions', label: t('nav.institutions', 'Institutions'), icon: Building2 },
+    { href: '/how-to-read', label: t('nav.howToRead', 'Guide Lecture'), icon: BookOpen },
+  ];
+
+  // Pages info/compte
+  const accountItems = [
+    { href: '/about', label: t('nav.about', 'À propos'), icon: Info },
     { href: '/pricing', label: t('nav.pricing', 'Tarifs'), icon: CreditCard },
+    { href: '/usage', label: t('nav.usage', 'Consommation'), icon: Settings },
     { href: '/partners', label: t('nav.partners', 'Partenaires'), icon: Users },
     { href: '/b2b', label: t('nav.b2b', 'B2B'), icon: Building2 },
     { href: '/resources', label: t('nav.resources'), icon: FileText },
@@ -224,6 +243,8 @@ export function Header() {
                 </SheetTitle>
               </SheetHeader>
               <nav className="flex flex-col gap-1 mt-6">
+                {/* Navigation principale */}
+                <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">{t('nav.explore', 'Explorer')}</div>
                 {navItems.map((item) => {
                   const Icon = item.icon;
                   const isActive = location.pathname === item.href;
@@ -234,7 +255,7 @@ export function Header() {
                       to={item.href}
                       onClick={handleNavClick}
                       className={cn(
-                        'flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors',
+                        'flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors',
                         isActive
                           ? 'bg-primary/10 text-primary'
                           : isHighlight
@@ -242,13 +263,61 @@ export function Header() {
                             : 'text-muted-foreground hover:text-foreground hover:bg-accent'
                       )}
                     >
-                      <Icon className="w-5 h-5" />
+                      <Icon className="w-4 h-4" />
                       {item.label}
                     </Link>
                   );
                 })}
                 
-                <div className="border-t border-border my-4" />
+                {/* Outils */}
+                <div className="border-t border-border my-3" />
+                <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">{t('nav.tools', 'Outils')}</div>
+                {toolsItems.map((item) => {
+                  const Icon = item.icon;
+                  const isActive = location.pathname === item.href;
+                  return (
+                    <Link
+                      key={item.href}
+                      to={item.href}
+                      onClick={handleNavClick}
+                      className={cn(
+                        'flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors',
+                        isActive
+                          ? 'bg-primary/10 text-primary'
+                          : 'text-muted-foreground hover:text-foreground hover:bg-accent'
+                      )}
+                    >
+                      <Icon className="w-4 h-4" />
+                      {item.label}
+                    </Link>
+                  );
+                })}
+
+                {/* Compte & Info */}
+                <div className="border-t border-border my-3" />
+                <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">{t('nav.account', 'Compte & Info')}</div>
+                {accountItems.map((item) => {
+                  const Icon = item.icon;
+                  const isActive = location.pathname === item.href;
+                  return (
+                    <Link
+                      key={item.href}
+                      to={item.href}
+                      onClick={handleNavClick}
+                      className={cn(
+                        'flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors',
+                        isActive
+                          ? 'bg-primary/10 text-primary'
+                          : 'text-muted-foreground hover:text-foreground hover:bg-accent'
+                      )}
+                    >
+                      <Icon className="w-4 h-4" />
+                      {item.label}
+                    </Link>
+                  );
+                })}
+                
+                <div className="border-t border-border my-3" />
                 
 {user ? (
                   <>
