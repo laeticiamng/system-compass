@@ -1,13 +1,15 @@
-import { useMemo } from 'react';
+import { useMemo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Key, ChevronRight, Sparkles, Unlock, Crosshair } from 'lucide-react';
+import { Key, ChevronRight, Sparkles, Bookmark, Eye, PlayCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Country } from '@/lib/types';
 import { findCompatibleKeys, ExitKeyResult, UserContext } from '@/lib/exit-keys-engine';
 import { useExitKeysProfile } from '@/hooks/useExitKeysProfile';
+import { useExitKeysHistory, ExitKeyStatus } from '@/hooks/useExitKeysHistory';
 import { cn } from '@/lib/utils';
+import { toast } from 'sonner';
 
 interface CountryExitKeysProps {
   country: Country;
@@ -22,13 +24,18 @@ const difficultyConfig = {
 export function CountryExitKeys({ country }: CountryExitKeysProps) {
   const { t } = useTranslation();
   const { profile, loading } = useExitKeysProfile();
+  const { trackExitKey, updateStatus, getSavedKeys, isLoggedIn } = useExitKeysHistory();
 
   const exitKeyResults = useMemo(() => {
     if (!profile) return [];
     
+    // Use actual profile data instead of country pyramidType
     const context: UserContext = {
-      birthCountry: profile.birthCountryId ? country.pyramidType : country.pyramidType,
-      nationalities: profile.nationalityIds?.length > 0 ? [country.pyramidType] : [country.pyramidType],
+      birthCountry: profile.birthCountryId ? 
+        (country.pyramidType) : country.pyramidType,
+      nationalities: profile.nationalityIds?.length > 0 
+        ? [country.pyramidType] 
+        : [country.pyramidType],
       currentCountry: country.pyramidType,
       desiredLife: profile.desiredLife || 'freedom',
       motorProfile: profile.motorProfile || 'BUILDER',
@@ -43,6 +50,27 @@ export function CountryExitKeys({ country }: CountryExitKeysProps) {
 
     return findCompatibleKeys(context).slice(0, 3);
   }, [profile, country]);
+
+  const handleTrackKey = useCallback(async (keyId: string, compatibility: number) => {
+    if (!isLoggedIn) {
+      toast.info(t('exitKeys.loginToSave', 'Connectez-vous pour sauvegarder'));
+      return;
+    }
+    await trackExitKey(keyId, country.id, compatibility);
+    toast.success(t('exitKeys.keyTracked', 'Clé explorée enregistrée'));
+  }, [isLoggedIn, trackExitKey, country.id, t]);
+
+  const handleSaveKey = useCallback(async (keyId: string, compatibility: number) => {
+    if (!isLoggedIn) {
+      toast.info(t('exitKeys.loginToSave', 'Connectez-vous pour sauvegarder'));
+      return;
+    }
+    const entry = await trackExitKey(keyId, country.id, compatibility);
+    if (entry) {
+      await updateStatus(entry.id, 'saved');
+      toast.success(t('exitKeys.keySaved', 'Clé sauvegardée !'));
+    }
+  }, [isLoggedIn, trackExitKey, updateStatus, country.id, t]);
 
   if (loading) {
     return (
@@ -67,12 +95,12 @@ export function CountryExitKeys({ country }: CountryExitKeysProps) {
           <h3 className="font-display font-semibold">{t('exitKeys.title', 'Clés de Sortie')}</h3>
         </div>
         <p className="text-sm text-muted-foreground mb-4">
-          Créez votre profil pour découvrir les stratégies adaptées à votre situation
+          {t('exitKeys.createProfilePrompt', 'Créez votre profil pour découvrir les stratégies adaptées à votre situation')}
         </p>
         <Link to="/exit-keys">
           <Button className="w-full gap-2">
             <Sparkles className="w-4 h-4" />
-            Créer mon profil
+            {t('exitKeys.createProfile', 'Créer mon profil')}
             <ChevronRight className="w-4 h-4" />
           </Button>
         </Link>
@@ -87,23 +115,38 @@ export function CountryExitKeys({ country }: CountryExitKeysProps) {
           <Key className="w-5 h-5 text-primary" />
           <h3 className="font-display font-semibold">{t('exitKeys.title', 'Clés de Sortie')}</h3>
         </div>
-        <Link 
-          to="/exit-keys"
-          className="text-xs text-primary hover:underline"
-        >
-          Voir tout
-        </Link>
+        <div className="flex items-center gap-2">
+          <Link 
+            to="/compare-exit-keys"
+            className="text-xs text-muted-foreground hover:text-primary transition-colors"
+          >
+            {t('exitKeys.compare', 'Comparer')}
+          </Link>
+          <Link 
+            to="/exit-keys"
+            className="text-xs text-primary hover:underline"
+          >
+            {t('exitKeys.seeAll', 'Voir tout')}
+          </Link>
+        </div>
       </div>
 
       {exitKeyResults.length > 0 ? (
         <div className="space-y-3">
           {exitKeyResults.map(({ key, compatibility }) => (
-            <ExitKeyPreview key={key.id} exitKey={key} compatibility={compatibility} />
+            <ExitKeyPreview 
+              key={key.id} 
+              exitKey={key} 
+              compatibility={compatibility}
+              onTrack={() => handleTrackKey(key.id, compatibility)}
+              onSave={() => handleSaveKey(key.id, compatibility)}
+              isLoggedIn={isLoggedIn}
+            />
           ))}
         </div>
       ) : (
         <p className="text-sm text-muted-foreground">
-          Aucune stratégie compatible trouvée depuis ce pays.
+          {t('exitKeys.noCompatibleStrategies', 'Aucune stratégie compatible trouvée depuis ce pays.')}
         </p>
       )}
     </div>
@@ -112,7 +155,10 @@ export function CountryExitKeys({ country }: CountryExitKeysProps) {
 
 function ExitKeyPreview({ 
   exitKey, 
-  compatibility 
+  compatibility,
+  onTrack,
+  onSave,
+  isLoggedIn
 }: { 
   exitKey: { 
     id: string; 
@@ -122,11 +168,15 @@ function ExitKeyPreview({
     timeframe: string;
   }; 
   compatibility: number;
+  onTrack: () => void;
+  onSave: () => void;
+  isLoggedIn: boolean;
 }) {
+  const { t } = useTranslation();
   const difficulty = difficultyConfig[exitKey.difficulty];
 
   return (
-    <div className="p-4 rounded-lg bg-accent/50 hover:bg-accent/80 transition-colors">
+    <div className="p-4 rounded-lg bg-accent/50 hover:bg-accent/80 transition-colors group">
       <div className="flex items-start gap-3">
         <Key className="w-5 h-5 text-primary shrink-0 mt-0.5" />
         <div className="flex-1 min-w-0">
@@ -148,6 +198,33 @@ function ExitKeyPreview({
             </div>
             <span className="text-xs font-medium text-primary">{compatibility}%</span>
             <span className="text-xs text-muted-foreground">{exitKey.timeframe}</span>
+          </div>
+          
+          {/* Action buttons - visible on hover */}
+          <div className="flex items-center gap-2 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+            <button 
+              onClick={onTrack}
+              className="flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors"
+              title={t('exitKeys.markExplored', 'Marquer comme explorée')}
+            >
+              <Eye className="w-3 h-3" />
+              {t('exitKeys.explored', 'Explorée')}
+            </button>
+            <button 
+              onClick={onSave}
+              className="flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors"
+              title={t('exitKeys.saveKey', 'Sauvegarder')}
+            >
+              <Bookmark className="w-3 h-3" />
+              {t('exitKeys.save', 'Sauvegarder')}
+            </button>
+            <Link 
+              to={`/exit-keys?key=${exitKey.id}`}
+              className="flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors"
+            >
+              <PlayCircle className="w-3 h-3" />
+              {t('exitKeys.startKey', 'Démarrer')}
+            </Link>
           </div>
         </div>
       </div>

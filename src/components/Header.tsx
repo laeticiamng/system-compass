@@ -76,7 +76,7 @@ export function Header() {
     { href: '/terrain', label: t('nav.terrainRealities', 'Réalités Terrain'), icon: Map },
     { href: '/errors-illusions', label: t('nav.errorsIllusions', 'Erreurs & Illusions'), icon: BookOpen },
     { href: '/exit-keys/catalog', label: t('nav.exitKeysCatalog', 'Catalogue Clés'), icon: Key },
-    { href: '/exit-keys/compare', label: t('nav.exitKeysCompare', 'Comparer Clés'), icon: Scale },
+    { href: '/compare-exit-keys', label: t('nav.exitKeysCompare', 'Comparer Clés'), icon: Scale },
   ];
 
   // Modules avancés (B2B / Pro)

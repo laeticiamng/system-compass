@@ -43,6 +43,9 @@ import { JourneyProgressBar, getJourneyPhase } from '@/components/JourneyProgres
 import { SimulationDisclaimer } from '@/components/SimulationDisclaimer';
 import { AiHelpButton } from '@/components/ai/AiHelpButton';
 import { AiAction, AiContext } from '@/components/ai/AiSidePanel';
+import { SavedExitKeysPanel } from '@/components/exit-keys/SavedExitKeysPanel';
+import { ExitKeysPdfExport } from '@/components/exit-keys/ExitKeysPdfExport';
+import { useExitKeysHistory } from '@/hooks/useExitKeysHistory';
 
 const STEPS = ['origin', 'current', 'profile', 'goals', 'results'] as const;
 type Step = typeof STEPS[number];
@@ -1147,12 +1150,26 @@ export default function ExitKeys() {
                   </Select>
                 </div>
 
-                <Link to="/exit-keys/compare">
-                  <Button variant="outline" size="sm" className="gap-2">
-                    <Scale className="w-4 h-4" />
-                    {t('exitKeys.results.compare', 'Comparer')}
-                  </Button>
-                </Link>
+                <div className="flex items-center gap-2">
+                  <ExitKeysPdfExport 
+                    results={filteredResults}
+                    profileSummary={{
+                      birthCountry: birthCountry?.name,
+                      currentCountry: currentCountry?.name,
+                      nationalities: nationalityCountries.map(c => c.name),
+                      desiredLife: priorityOptions.find(p => p.value === desiredLife)?.labelKey,
+                      motorProfile: LIFE_MOTOR_PROFILES[motorProfile].label,
+                      riskTolerance: riskOptions.find(r => r.value === riskTolerance)?.labelKey,
+                      timeHorizon: timeOptions.find(t => t.value === timeHorizon)?.labelKey,
+                    }}
+                  />
+                  <Link to="/compare-exit-keys">
+                    <Button variant="outline" size="sm" className="gap-2">
+                      <Scale className="w-4 h-4" />
+                      {t('exitKeys.results.compare', 'Comparer')}
+                    </Button>
+                  </Link>
+                </div>
               </div>
 
               {/* Exit Keys */}
@@ -1218,6 +1235,9 @@ export default function ExitKeys() {
                 originCountryName={birthCountry?.name}
                 destinationCountryName={currentCountry?.name}
               />
+
+              {/* Saved Keys Panel */}
+              <SavedExitKeysPanel />
 
               {/* Actions */}
               <div className="flex flex-wrap justify-center gap-4 pt-8">
