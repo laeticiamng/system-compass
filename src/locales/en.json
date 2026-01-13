@@ -4001,10 +4001,20 @@
         "description": "Your action is being resolved. Discover the outcome.",
         "shortDescription": "Result of your action"
       },
+      "family_event": {
+        "title": "Family Event",
+        "description": "An event related to your family situation occurs. Manage your responsibilities.",
+        "shortDescription": "Manage your family life"
+      },
       "board_move": {
         "title": "Movement",
         "description": "Roll the dice to advance on the board. Each square can trigger bonuses or questions.",
         "shortDescription": "Roll and move forward"
+      },
+      "end_turn": {
+        "title": "End of Turn",
+        "description": "Your turn is complete. Prepare for the next player.",
+        "shortDescription": "End your turn"
       }
     }
   },

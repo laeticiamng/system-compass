@@ -24,6 +24,7 @@ import GameEndSummary from '@/components/game/GameEndSummary';
 import TutorialMode, { shouldSkipTutorial } from '@/components/game/TutorialMode';
 import TurnPhaseHelper from '@/components/game/TurnPhaseHelper';
 import DicePrompt from '@/components/game/DicePrompt';
+import CurrentPlayerInfo from '@/components/game/CurrentPlayerInfo';
 import { useSavedGames, SavedGame, SavedGameState } from '@/hooks/useSavedGames';
 import { useGameStatistics } from '@/hooks/useGameStatistics';
 import { getNewlyUnlockedAchievements } from '@/lib/achievements';
@@ -259,6 +260,7 @@ export default function PyramidQuiz() {
   const [turnPhase, setTurnPhase] = useState<TurnPhase>('global_event');
   const [currentEvent, setCurrentEvent] = useState<GameEvent | null>(null);
   const [playerProfiles, setPlayerProfiles] = useState<GamePlayerProfile[]>([]);
+  const [awaitingEndTurn, setAwaitingEndTurn] = useState(false);
 
   const diceRef = useRef<HTMLButtonElement>(null);
 
@@ -499,7 +501,7 @@ export default function PyramidQuiz() {
   const handleBoardSquare = (playerIdx: number, position: number) => {
     const square = HEXAGONAL_BOARD[position];
     if (!square) {
-      nextPlayer();
+      setAwaitingEndTurn(true);
       return;
     }
     
@@ -521,7 +523,7 @@ export default function PyramidQuiz() {
         }));
       }
       setGameMessage(t('pyramidQuiz.board.landedPyramid', { type: t(`pyramids.${pyramidType.toLowerCase().replace('_', '')}.label`) }));
-      setTimeout(nextPlayer, 1500);
+      setAwaitingEndTurn(true);
     } else if (square.type === 'question' && square.questionIndex !== undefined) {
       setBoardQuestion(square.questionIndex % QUIZ_QUESTIONS.length);
     } else if (square.type === 'chance') {
@@ -542,7 +544,7 @@ export default function PyramidQuiz() {
         }));
       }
       setGameMessage(t('pyramidQuiz.board.chanceCard', { type: t(`pyramids.${randomType.toLowerCase().replace('_', '')}.label`) }));
-      setTimeout(nextPlayer, 1500);
+      setAwaitingEndTurn(true);
     } else if (square.type === 'trap') {
       if (mode === 'cooperative') {
         const maxType = Object.entries(cooperativePool).reduce((a, b) => a[1] > b[1] ? a : b)[0] as PyramidType;
@@ -560,7 +562,7 @@ export default function PyramidQuiz() {
         }));
       }
       setGameMessage(t('pyramidQuiz.board.trap'));
-      setTimeout(nextPlayer, 1500);
+      setAwaitingEndTurn(true);
     } else if (square.type === 'bonus') {
       if (mode === 'cooperative') {
         setCooperativePool(prev => {
@@ -581,7 +583,7 @@ export default function PyramidQuiz() {
         }));
       }
       setGameMessage(t('pyramidQuiz.board.bonus'));
-      setTimeout(nextPlayer, 1500);
+      setAwaitingEndTurn(true);
     } else if (square.type === 'finish') {
       const player = players[playerIdx];
       const result = Object.entries(player.scores).reduce((a, b) => 
@@ -591,13 +593,19 @@ export default function PyramidQuiz() {
         idx === playerIdx ? { ...p, result } : p
       ));
       checkWinCondition();
-      setTimeout(nextPlayer, 1500);
+      setAwaitingEndTurn(true);
     } else if (square.type === 'corner') {
-      // Special corner: choose which side to go next (for future enhancement)
-      setTimeout(nextPlayer, 1000);
+      setGameMessage(t('pyramidQuiz.board.corner', 'Croisement ! Continuez votre chemin.'));
+      setAwaitingEndTurn(true);
     } else {
-      setTimeout(nextPlayer, 1000);
+      setAwaitingEndTurn(true);
     }
+  };
+
+  // Handle end turn button click
+  const handleEndTurnClick = () => {
+    setAwaitingEndTurn(false);
+    nextPlayer();
   };
 
   const handleBoardAnswer = (optionScores: Partial<Record<PyramidType, number>>) => {
@@ -674,6 +682,9 @@ export default function PyramidQuiz() {
       }
       setCurrentPlayerIndex(nextIdx);
       setGameMessage('');
+      
+      // CRITICAL: Reset turn phase to start new turn with events
+      setTurnPhase('global_event');
       
       // Auto-save at end of each turn
       autoSaveGame();
@@ -1114,31 +1125,36 @@ export default function PyramidQuiz() {
     return (
       <div className="min-h-screen pt-24 pb-16">
         <div className="container mx-auto px-4 max-w-6xl">
-          {/* Current Player Indicator */}
-          <div className="flex items-center justify-center gap-4 mb-4 animate-fade-in">
-            <div className={cn("w-8 h-8 rounded-full animate-pulse", currentPlayer.color)} />
-            <span className="font-display text-2xl font-bold">{currentPlayer.name}</span>
-            <span className="text-muted-foreground">{t('pyramidQuiz.multiplayer.yourTurn')}</span>
-          </div>
+          {/* Current Player Full Info Card */}
+          <CurrentPlayerInfo 
+            player={{
+              ...currentPlayer,
+              color: currentPlayer.color,
+              resources: currentPlayer.resources,
+              countryType: currentPlayer.countryType,
+              familyStatus: currentPlayer.familyStatus,
+              position: currentPlayer.position,
+            }}
+            turnNumber={turnNumber}
+          />
 
-          {/* Player Stats Bar */}
-          <div className="flex justify-center gap-4 mb-8 flex-wrap">
-            {players.map((player, idx) => (
-              <div 
-                key={player.id}
-                className={cn(
-                  "glass-card rounded-lg px-4 py-2 flex items-center gap-2 transition-all duration-300",
-                  idx === currentPlayerIndex && "ring-2 ring-primary scale-105"
-                )}
-              >
-                <div className={cn("w-4 h-4 rounded-full", player.color)} />
-                <span className="text-sm font-medium">{player.name}</span>
-                <span className="text-xs text-muted-foreground">
-                  {mode === 'cooperative' ? `#${player.position}` : `${Object.values(player.scores).reduce((s, v) => s + v, 0)}pts`}
-                </span>
-              </div>
-            ))}
-          </div>
+          {/* Other Players Stats Bar */}
+          {players.length > 1 && (
+            <div className="flex justify-center gap-4 my-4 flex-wrap">
+              {players.filter((_, idx) => idx !== currentPlayerIndex).map((player) => (
+                <div 
+                  key={player.id}
+                  className="glass-card rounded-lg px-4 py-2 flex items-center gap-2 opacity-60"
+                >
+                  <div className={cn("w-3 h-3 rounded-full", player.color)} />
+                  <span className="text-sm">{player.name}</span>
+                  <span className="text-xs text-muted-foreground">
+                    {mode === 'cooperative' ? `#${player.position}` : `${Object.values(player.scores).reduce((s, v) => s + v, 0)}pts`}
+                  </span>
+                </div>
+              ))}
+            </div>
+          )}
 
           {/* Turn Phase Helper */}
           <TurnPhaseHelper currentPhase={turnPhase} />
@@ -1231,15 +1247,31 @@ export default function PyramidQuiz() {
                 </div>
               )}
 
-              {/* Dice Prompt with animated arrow */}
-              <DicePrompt
-                diceValue={diceValue}
-                isRolling={isRolling}
-                isMoving={isMoving}
-                isFinished={currentPlayer.position >= FINISH_POSITION}
-                diceRotation={diceRotation}
-                onRoll={rollDice}
-              />
+              {/* Dice Prompt OR End Turn Button */}
+              {awaitingEndTurn ? (
+                <div className="flex flex-col items-center gap-4 mt-8 animate-fade-in">
+                  <div className="glass-card rounded-xl p-6 text-center max-w-md">
+                    <p className="text-lg font-medium mb-4">{gameMessage || t('game.turnComplete', 'Tour terminé !')}</p>
+                    <Button 
+                      onClick={handleEndTurnClick} 
+                      size="lg" 
+                      className="gap-2 text-lg px-8 py-6"
+                    >
+                      <ArrowRight className="w-5 h-5" />
+                      {t('game.endTurn', 'Terminer mon tour')}
+                    </Button>
+                  </div>
+                </div>
+              ) : (
+                <DicePrompt
+                  diceValue={diceValue}
+                  isRolling={isRolling}
+                  isMoving={isMoving}
+                  isFinished={currentPlayer.position >= FINISH_POSITION}
+                  diceRotation={diceRotation}
+                  onRoll={rollDice}
+                />
+              )}
             </>
           )}
 

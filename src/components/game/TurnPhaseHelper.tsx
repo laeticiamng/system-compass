@@ -7,7 +7,9 @@ import {
   Dice6,
   HelpCircle,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Users,
+  CheckCircle
 } from 'lucide-react';
 import { useState } from 'react';
 import { TurnPhase } from './TurnManager';
@@ -16,7 +18,7 @@ interface TurnPhaseHelperProps {
   currentPhase: TurnPhase;
 }
 
-const PHASE_CONFIG = {
+const PHASE_CONFIG: Record<TurnPhase, { icon: any; colorClass: string; stepNumber: number }> = {
   global_event: {
     icon: Globe,
     colorClass: 'text-blue-500 bg-blue-500/10 border-blue-500/30',
@@ -27,20 +29,30 @@ const PHASE_CONFIG = {
     colorClass: 'text-amber-500 bg-amber-500/10 border-amber-500/30',
     stepNumber: 2,
   },
+  family_event: {
+    icon: Users,
+    colorClass: 'text-rose-500 bg-rose-500/10 border-rose-500/30',
+    stepNumber: 3,
+  },
   action_selection: {
     icon: Zap,
     colorClass: 'text-purple-500 bg-purple-500/10 border-purple-500/30',
-    stepNumber: 3,
+    stepNumber: 4,
   },
   action_resolution: {
     icon: Zap,
     colorClass: 'text-purple-500 bg-purple-500/10 border-purple-500/30',
-    stepNumber: 3,
+    stepNumber: 4,
   },
   board_move: {
     icon: Dice6,
     colorClass: 'text-emerald-500 bg-emerald-500/10 border-emerald-500/30',
-    stepNumber: 4,
+    stepNumber: 5,
+  },
+  end_turn: {
+    icon: CheckCircle,
+    colorClass: 'text-cyan-500 bg-cyan-500/10 border-cyan-500/30',
+    stepNumber: 6,
   },
 };
 

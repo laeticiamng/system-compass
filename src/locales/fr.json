@@ -4619,10 +4619,20 @@
         "description": "Votre action est en cours de résolution. Découvrez le résultat.",
         "shortDescription": "Résultat de votre action"
       },
+      "family_event": {
+        "title": "Événement Familial",
+        "description": "Un événement lié à votre situation familiale se produit. Gérez vos responsabilités.",
+        "shortDescription": "Gérez votre vie de famille"
+      },
       "board_move": {
         "title": "Déplacement",
         "description": "Lancez le dé pour avancer sur le plateau. Chaque case peut déclencher des bonus ou des questions.",
         "shortDescription": "Lancez le dé et avancez"
+      },
+      "end_turn": {
+        "title": "Fin de Tour",
+        "description": "Votre tour est terminé. Préparez-vous pour le prochain joueur.",
+        "shortDescription": "Terminez votre tour"
       }
     }
   },
