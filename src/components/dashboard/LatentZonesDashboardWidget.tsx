@@ -31,8 +31,8 @@ export function LatentZonesDashboardWidget() {
     );
   }
 
-  const activeZones = zones.filter(z => z.status === 'active');
-  const watchingZones = zones.filter(z => z.status === 'watching');
+  const emergentZones = zones.filter(z => z.status === 'emergent');
+  const fragileZones = zones.filter(z => z.status === 'fragile');
   const dormantZones = zones.filter(z => z.status === 'dormant');
 
   if (zones.length === 0) {
@@ -77,12 +77,12 @@ export function LatentZonesDashboardWidget() {
         {/* Stats */}
         <div className="grid grid-cols-3 gap-2">
           <div className="text-center p-2 rounded-lg bg-rose-500/10">
-            <div className="text-lg font-bold text-rose-500">{activeZones.length}</div>
-            <div className="text-xs text-muted-foreground">{t('dashboard.latent.active', 'Actives')}</div>
+            <div className="text-lg font-bold text-rose-500">{emergentZones.length}</div>
+            <div className="text-xs text-muted-foreground">{t('dashboard.latent.emergent', 'Émergentes')}</div>
           </div>
           <div className="text-center p-2 rounded-lg bg-amber-500/10">
-            <div className="text-lg font-bold text-amber-500">{watchingZones.length}</div>
-            <div className="text-xs text-muted-foreground">{t('dashboard.latent.watching', 'Surveillance')}</div>
+            <div className="text-lg font-bold text-amber-500">{fragileZones.length}</div>
+            <div className="text-xs text-muted-foreground">{t('dashboard.latent.fragile', 'Fragiles')}</div>
           </div>
           <div className="text-center p-2 rounded-lg bg-muted">
             <div className="text-lg font-bold text-muted-foreground">{dormantZones.length}</div>
@@ -91,9 +91,9 @@ export function LatentZonesDashboardWidget() {
         </div>
 
         {/* Active zones list */}
-        {activeZones.length > 0 && (
+        {emergentZones.length > 0 && (
           <div className="space-y-2">
-            {activeZones.slice(0, 2).map(zone => (
+            {emergentZones.slice(0, 2).map(zone => (
               <div 
                 key={zone.id}
                 className="p-3 rounded-lg border border-rose-500/30 bg-rose-500/5"
