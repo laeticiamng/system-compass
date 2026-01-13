@@ -22,9 +22,10 @@ import type { FinancialIntelResult } from '@/hooks/useFinancialIntel';
 
 interface FinancialIntelResultsProps {
   result: FinancialIntelResult;
+  isPro?: boolean;
 }
 
-export function FinancialIntelResults({ result }: FinancialIntelResultsProps) {
+export function FinancialIntelResults({ result, isPro = false }: FinancialIntelResultsProps) {
   const { t } = useTranslation();
   const [scamCategoryFilter, setScamCategoryFilter] = useState<string | null>(null);
   const [legitCategoryFilter, setLegitCategoryFilter] = useState<string | null>(null);

@@ -1,29 +1,31 @@
-import { useRef } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { FileText, Download, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
-import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import type { FinancialIntelResult } from '@/hooks/useFinancialIntel';
 
 interface FinancialIntelPdfExportProps {
   result: FinancialIntelResult;
-  isGenerating: boolean;
-  onGenerateStart: () => void;
-  onGenerateEnd: () => void;
+  country?: string;
+  sectorFocus?: string;
+  audience?: string;
+  onExportComplete?: () => void;
 }
 
 export function FinancialIntelPdfExport({ 
-  result, 
-  isGenerating, 
-  onGenerateStart, 
-  onGenerateEnd 
+  result,
+  country,
+  sectorFocus,
+  audience,
+  onExportComplete
 }: FinancialIntelPdfExportProps) {
   const { t } = useTranslation();
+  const [isGenerating, setIsGenerating] = useState(false);
 
   const generatePdf = async () => {
-    onGenerateStart();
+    setIsGenerating(true);
     
     try {
       const pdf = new jsPDF('p', 'mm', 'a4');
@@ -70,6 +72,12 @@ export function FinancialIntelPdfExport({
       addText(`Devise: ${result.country_profile.currency}`, 11);
       addText(`Régulateurs: ${result.country_profile.main_regulators.join(', ')}`, 11);
       addText(`Niveau de confiance: ${result.country_profile.source_confidence}`, 11);
+      if (sectorFocus) {
+        addText(`Secteur: ${sectorFocus}`, 11);
+      }
+      if (audience) {
+        addText(`Audience: ${audience}`, 11);
+      }
 
       // Scams
       addSection('TOP 7 - MONTAGES À RISQUE', [220, 38, 38]);
@@ -115,11 +123,12 @@ export function FinancialIntelPdfExport({
       pdf.save(fileName);
       
       toast.success(t('financialIntel.pdfGenerated', 'PDF généré avec succès'));
+      onExportComplete?.();
     } catch (error) {
       console.error('PDF generation error:', error);
       toast.error(t('financialIntel.pdfError', 'Erreur lors de la génération du PDF'));
     } finally {
-      onGenerateEnd();
+      setIsGenerating(false);
     }
   };
 
