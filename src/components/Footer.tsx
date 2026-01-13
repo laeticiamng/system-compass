@@ -60,8 +60,10 @@ export function Footer() {
             <h4 className="font-semibold text-sm sm:text-base mb-2 sm:mb-4">{t('footer.tools')}</h4>
             <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-muted-foreground">
               <li><Link to="/exit-keys" className="hover:text-foreground transition-colors block py-0.5">{t('nav.exitKeys')}</Link></li>
+              <li><Link to="/exit-keys/catalog" className="hover:text-foreground transition-colors block py-0.5">📋 {t('nav.exitKeysCatalog', 'Catalogue Clés')}</Link></li>
               <li><Link to="/prevention-filter" className="hover:text-foreground transition-colors block py-0.5">{t('nav.preventionFilter')}</Link></li>
               <li><Link to="/pyramid-quiz" className="hover:text-foreground transition-colors block py-0.5">🎮 {t('nav.pyramidQuiz', 'Jeu Pyramides')}</Link></li>
+              <li><Link to="/life-game" className="hover:text-foreground transition-colors block py-0.5">🎲 {t('nav.lifeGame', 'Mode Éducatif')}</Link></li>
               <li><Link to="/profile-test" className="hover:text-foreground transition-colors block py-0.5">{t('nav.profileTest', 'Test Profil')}</Link></li>
               <li><Link to="/quick-test" className="hover:text-foreground transition-colors block py-0.5">{t('nav.quickTest', 'Test Rapide')}</Link></li>
               <li><Link to="/financial-safety-intel" className="hover:text-foreground transition-colors block py-0.5">{t('nav.financialIntel', 'Intel Financière')}</Link></li>
@@ -78,6 +80,8 @@ export function Footer() {
             <ul className="grid grid-cols-2 sm:grid-cols-1 gap-1.5 sm:gap-2 text-xs sm:text-sm text-muted-foreground">
               <li><Link to="/dashboard" className="hover:text-foreground transition-colors block py-0.5">{t('nav.dashboard')}</Link></li>
               <li><Link to="/pricing" className="hover:text-foreground transition-colors font-medium text-primary block py-0.5">💎 {t('nav.pricing')}</Link></li>
+              <li><Link to="/usage" className="hover:text-foreground transition-colors block py-0.5">📊 {t('nav.usage', 'Consommation')}</Link></li>
+              <li><Link to="/settings/notifications" className="hover:text-foreground transition-colors block py-0.5">🔔 {t('nav.notifications', 'Notifications')}</Link></li>
               <li><Link to="/auth" className="hover:text-foreground transition-colors block py-0.5">{t('auth.login')}</Link></li>
               <li><Link to="/about" className="hover:text-foreground transition-colors block py-0.5">{t('footer.about')}</Link></li>
               <li><Link to="/how-to-read" className="hover:text-foreground transition-colors block py-0.5">{t('nav.howToRead', 'Guide Lecture')}</Link></li>

@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
-import { Compass, Map, FileText, Scale, Triangle, Gamepad2, LogIn, LogOut, User, Key, LayoutDashboard, Menu, Play, Info, AlertCircle, X, Shield, BookOpen, CreditCard, Globe, Settings, Building2, Eye, Users, ChevronDown, Wrench } from 'lucide-react';
+import { Compass, Map, FileText, Scale, Triangle, Gamepad2, LogIn, LogOut, User, Key, LayoutDashboard, Menu, Play, Info, AlertCircle, X, Shield, BookOpen, CreditCard, Globe, Settings, Building2, Eye, Users, ChevronDown, Wrench, Bell, BarChart3 } from 'lucide-react';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { GlobalSearch } from './GlobalSearch';
 import { useAuth } from '@/hooks/useAuth';
+import { useUserRoles } from '@/hooks/useUserRoles';
 import { Button } from './ui/button';
 import { SubscriptionBadge } from './SubscriptionBadge';
 import { UserHistoryPanel } from './UserHistoryPanel';
@@ -45,6 +46,7 @@ export function Header() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { user, signOut } = useAuth();
+  const { isAdmin } = useUserRoles();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [disclaimerDismissed, setDisclaimerDismissed] = useState(() => {
     return localStorage.getItem(DISCLAIMER_DISMISSED_KEY) === 'true';
@@ -68,6 +70,7 @@ export function Header() {
     { href: '/profile-test', label: t('nav.profileTest', 'Test Complet'), icon: User },
     { href: '/profile-matcher', label: t('nav.profileMatcher', 'Matcher Pays'), icon: Users },
     { href: '/life-trajectory', label: t('nav.lifeTrajectory', 'Trajectoire'), icon: Map },
+    { href: '/life-game', label: t('nav.lifeGame', 'Mode Éducatif'), icon: Play },
     { href: '/prevention-filter', label: t('nav.preventionFilter', 'Filtre Décision'), icon: Shield },
     { href: '/financial-safety-intel', label: t('nav.financialIntel', 'Intel Financière'), icon: Shield },
     { href: '/errors-illusions', label: t('nav.errorsIllusions', 'Erreurs & Illusions'), icon: BookOpen },
@@ -86,17 +89,21 @@ export function Header() {
     { href: '/about', label: t('nav.about', 'À propos'), icon: Info },
     { href: '/how-to-read', label: t('nav.howToRead', 'Guide'), icon: BookOpen },
     { href: '/pricing', label: t('nav.pricing', 'Tarifs'), icon: CreditCard },
-    { href: '/usage', label: t('nav.usage', 'Consommation'), icon: Settings },
+    { href: '/usage', label: t('nav.usage', 'Consommation'), icon: BarChart3 },
+    { href: '/settings/notifications', label: t('nav.notifications', 'Notifications'), icon: Bell },
     { href: '/partners', label: t('nav.partners', 'Partenaires'), icon: Users },
     { href: '/b2b', label: t('nav.b2b', 'B2B'), icon: Building2 },
     { href: '/resources', label: t('nav.resources'), icon: FileText },
   ];
 
-  // Admin navigation items (only show for authenticated users)
+  // Admin navigation items - requires admin role check via useUserRoles
   const adminItems = [
     { href: '/admin/country-generator', label: 'Country Generator', icon: Globe },
     { href: '/admin/analytics', label: 'Analytics', icon: Settings },
     { href: '/admin/partners', label: 'Partners', icon: Users },
+    { href: '/admin/translations', label: 'Translations', icon: FileText },
+    { href: '/admin/generate-translations', label: 'Gen Translations', icon: FileText },
+    { href: '/admin/database-translations', label: 'DB Translations', icon: FileText },
   ];
 
   const handleSignOut = async () => {
@@ -252,8 +259,8 @@ export function Header() {
               </DropdownMenuContent>
             </DropdownMenu>
             
-            {/* Admin links for desktop - only show for authenticated users */}
-            {user && (
+            {/* Admin links for desktop - only show for admin users */}
+            {isAdmin && (
               <>
                 <div className="w-px h-4 bg-border mx-1" />
                 <DropdownMenu>
@@ -445,29 +452,33 @@ export function Header() {
                       {user.user_metadata?.display_name || user.email?.split('@')[0]}
                     </div>
                     
-                    {/* Admin Links */}
-                    <div className="border-t border-border my-4" />
-                    <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">Admin</div>
-                    {adminItems.map((item) => {
-                      const Icon = item.icon;
-                      const isActive = location.pathname === item.href;
-                      return (
-                        <Link
-                          key={item.href}
-                          to={item.href}
-                          onClick={handleNavClick}
-                          className={cn(
-                            'flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors',
-                            isActive
-                              ? 'bg-primary/10 text-primary'
-                              : 'text-muted-foreground hover:text-foreground hover:bg-accent'
-                          )}
-                        >
-                          <Icon className="w-5 h-5" />
-                          {item.label}
-                        </Link>
-                      );
-                    })}
+                    {/* Admin Links - only for admins */}
+                    {isAdmin && (
+                      <>
+                        <div className="border-t border-border my-4" />
+                        <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">Admin</div>
+                        {adminItems.map((item) => {
+                          const Icon = item.icon;
+                          const isActive = location.pathname === item.href;
+                          return (
+                            <Link
+                              key={item.href}
+                              to={item.href}
+                              onClick={handleNavClick}
+                              className={cn(
+                                'flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors',
+                                isActive
+                                  ? 'bg-primary/10 text-primary'
+                                  : 'text-muted-foreground hover:text-foreground hover:bg-accent'
+                              )}
+                            >
+                              <Icon className="w-5 h-5" />
+                              {item.label}
+                            </Link>
+                          );
+                        })}
+                      </>
+                    )}
                     
                     <div className="border-t border-border my-4" />
                     <Button 
