@@ -7,6 +7,7 @@ import { UserProfile, ProfileResult, PyramidType } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { useTestResults } from '@/hooks/useTestResults';
 import { useAuth } from '@/hooks/useAuth';
+import { OVISuggestionsWidget } from '@/components/ovi/OVISuggestionsWidget';
 import { ArrowRight, ArrowLeft, User, Target, Shield, Zap, FileCheck, Lightbulb, Eye, Plane } from 'lucide-react';
 
 const questionKeys = [
@@ -195,6 +196,13 @@ export default function ProfileTest() {
               ))}
             </ul>
           </div>
+
+          {/* OVI Suggestions */}
+          <OVISuggestionsWidget 
+            simulationType="matching" 
+            context={{ riskLevel: profile.riskTolerance > 7 ? 'high' : profile.riskTolerance > 4 ? 'medium' : 'low' }}
+            className="mb-8"
+          />
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button

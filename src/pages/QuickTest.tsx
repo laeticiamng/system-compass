@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { PyramidType, PYRAMID_TYPE_INFO } from '@/lib/types';
 import { useTestResults } from '@/hooks/useTestResults';
 import { useAuth } from '@/hooks/useAuth';
+import { OVISuggestionsWidget } from '@/components/ovi/OVISuggestionsWidget';
 import { 
   Zap, 
   ArrowRight,
@@ -284,6 +285,13 @@ export default function QuickTest() {
               {t('quickTest.restart', 'Recommencer')}
             </Button>
           </div>
+
+          {/* OVI Suggestions */}
+          <OVISuggestionsWidget 
+            simulationType="matching" 
+            context={{ riskLevel: answers.riskTolerance as 'low' | 'medium' | 'high' }}
+            className="mb-6"
+          />
 
           {/* Disclaimer */}
           <p className="text-xs text-center text-muted-foreground/70 px-4">
