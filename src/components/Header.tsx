@@ -74,6 +74,7 @@ export function Header() {
     { href: '/prevention-filter', label: t('nav.preventionFilter', 'Filtre Décision'), icon: Shield },
     { href: '/financial-safety-intel', label: t('nav.financialIntel', 'Intel Financière'), icon: Shield },
     { href: '/errors-illusions', label: t('nav.errorsIllusions', 'Erreurs & Illusions'), icon: BookOpen },
+    { href: '/exit-keys/compare', label: t('nav.exitKeysCompare', 'Comparer Clés'), icon: Scale },
   ];
 
   // Modules avancés (B2B / Pro)

@@ -9,6 +9,7 @@ import { useSubscription } from '@/hooks/useSubscription';
 import { useUserCases } from '@/hooks/useUserCases';
 import { useLatentZones } from '@/hooks/useLatentZones';
 import { useTestResults } from '@/hooks/useTestResults';
+import { useIrreversa } from '@/hooks/useIrreversa';
 import { EXIT_KEYS } from '@/lib/exit-keys-engine';
 import { LIFE_MOTOR_PROFILES } from '@/lib/types';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -62,6 +63,7 @@ import {
   Briefcase,
   FileText,
   ClipboardList,
+  AlertCircle,
 } from 'lucide-react';
 import { AiHelpButton } from '@/components/ai/AiHelpButton';
 import { AiAction, AiContext } from '@/components/ai/AiSidePanel';
@@ -126,6 +128,7 @@ export default function Dashboard() {
   const { cases, isLoading: casesLoading } = useUserCases();
   const { zones, loading: zonesLoading } = useLatentZones();
   const { results: testResults, loading: testsLoading } = useTestResults();
+  const { thresholds, loading: irreversaLoading } = useIrreversa();
 
   const [editingNote, setEditingNote] = useState<number | null>(null);
   const [noteText, setNoteText] = useState('');
@@ -497,6 +500,48 @@ export default function Dashboard() {
                   </div>
                 ))}
               </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Irreversa Thresholds Section */}
+        {isLoggedIn && thresholds.filter(t => t.status !== 'sealed').length > 0 && (
+          <Card className="mb-6 border-red-500/20">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <AlertCircle className="w-5 h-5 text-red-500" />
+                {t('dashboard.irreversaThresholds', 'Seuils Irreversa')}
+              </CardTitle>
+              <CardDescription>
+                {t('dashboard.irreversaThresholdsDesc', 'Décisions irréversibles en attente de scellement')}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                {thresholds.filter(t => t.status !== 'sealed').slice(0, 4).map(threshold => (
+                  <Link key={threshold.id} to="/irreversa">
+                    <div className="flex items-center justify-between p-3 bg-secondary/50 rounded-lg hover:bg-secondary/70 transition-colors">
+                      <div>
+                        <p className="font-medium text-sm">{threshold.title}</p>
+                        <p className="text-xs text-muted-foreground">{threshold.domain} • {threshold.threshold_nature}</p>
+                      </div>
+                      <Badge variant="outline" className={
+                        threshold.status === 'detected' ? 'border-blue-500/40 text-blue-600' :
+                        threshold.status === 'marked' ? 'border-amber-500/40 text-amber-600' :
+                        'border-green-500/40 text-green-600'
+                      }>
+                        {threshold.status === 'detected' ? '🔍' : threshold.status === 'marked' ? '📌' : '✅'}
+                      </Badge>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+              <Link to="/irreversa" className="block mt-3">
+                <Button variant="outline" size="sm" className="w-full gap-2">
+                  <AlertCircle className="w-4 h-4" />
+                  {t('dashboard.viewAllThresholds', 'Voir tous les seuils')}
+                </Button>
+              </Link>
             </CardContent>
           </Card>
         )}
