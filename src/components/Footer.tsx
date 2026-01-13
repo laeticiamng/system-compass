@@ -61,11 +61,14 @@ export function Footer() {
             <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-muted-foreground">
               <li><Link to="/exit-keys" className="hover:text-foreground transition-colors block py-0.5">{t('nav.exitKeys')}</Link></li>
               <li><Link to="/exit-keys/catalog" className="hover:text-foreground transition-colors block py-0.5">📋 {t('nav.exitKeysCatalog', 'Catalogue Clés')}</Link></li>
+              <li><Link to="/exit-keys/compare" className="hover:text-foreground transition-colors block py-0.5">⚖️ {t('nav.exitKeysCompare', 'Comparer Clés')}</Link></li>
               <li><Link to="/prevention-filter" className="hover:text-foreground transition-colors block py-0.5">{t('nav.preventionFilter')}</Link></li>
               <li><Link to="/pyramid-quiz" className="hover:text-foreground transition-colors block py-0.5">🎮 {t('nav.pyramidQuiz', 'Jeu Pyramides')}</Link></li>
               <li><Link to="/life-game" className="hover:text-foreground transition-colors block py-0.5">🎲 {t('nav.lifeGame', 'Mode Éducatif')}</Link></li>
               <li><Link to="/profile-test" className="hover:text-foreground transition-colors block py-0.5">{t('nav.profileTest', 'Test Profil')}</Link></li>
               <li><Link to="/quick-test" className="hover:text-foreground transition-colors block py-0.5">{t('nav.quickTest', 'Test Rapide')}</Link></li>
+              <li><Link to="/profile-matcher" className="hover:text-foreground transition-colors block py-0.5">🎯 {t('nav.profileMatcher', 'Matcher Pays')}</Link></li>
+              <li><Link to="/life-trajectory" className="hover:text-foreground transition-colors block py-0.5">📈 {t('nav.lifeTrajectory', 'Trajectoire')}</Link></li>
               <li><Link to="/financial-safety-intel" className="hover:text-foreground transition-colors block py-0.5">{t('nav.financialIntel', 'Intel Financière')}</Link></li>
               <li><Link to="/latent" className="hover:text-foreground transition-colors block py-0.5">🔍 {t('footer.potentialZones')}</Link></li>
               <li><Link to="/institutions" className="hover:text-foreground transition-colors block py-0.5">🏛️ {t('footer.businessInstitutions')}</Link></li>
