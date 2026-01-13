@@ -31,7 +31,7 @@ export function IrreversaDashboardWidget() {
     );
   }
 
-  const pendingThresholds = thresholds.filter(t => t.status === 'pending');
+  const detectedThresholds = thresholds.filter(t => t.status === 'detected' || t.status === 'marked');
   const validatedThresholds = thresholds.filter(t => t.status === 'validated');
   const sealedThresholds = thresholds.filter(t => t.status === 'sealed');
 
@@ -77,8 +77,8 @@ export function IrreversaDashboardWidget() {
         {/* Stats */}
         <div className="grid grid-cols-3 gap-2">
           <div className="text-center p-2 rounded-lg bg-amber-500/10">
-            <div className="text-lg font-bold text-amber-500">{pendingThresholds.length}</div>
-            <div className="text-xs text-muted-foreground">{t('dashboard.irreversa.pending', 'En attente')}</div>
+            <div className="text-lg font-bold text-amber-500">{detectedThresholds.length}</div>
+            <div className="text-xs text-muted-foreground">{t('dashboard.irreversa.detected', 'Détectés')}</div>
           </div>
           <div className="text-center p-2 rounded-lg bg-emerald-500/10">
             <div className="text-lg font-bold text-emerald-500">{validatedThresholds.length}</div>
@@ -90,10 +90,10 @@ export function IrreversaDashboardWidget() {
           </div>
         </div>
 
-        {/* Pending thresholds requiring attention */}
-        {pendingThresholds.length > 0 && (
+        {/* Detected thresholds requiring attention */}
+        {detectedThresholds.length > 0 && (
           <div className="space-y-2">
-            {pendingThresholds.slice(0, 2).map(threshold => (
+            {detectedThresholds.slice(0, 2).map(threshold => (
               <div 
                 key={threshold.id}
                 className="p-3 rounded-lg border border-amber-500/30 bg-amber-500/5"
