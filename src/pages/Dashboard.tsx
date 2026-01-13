@@ -70,6 +70,8 @@ import { AiAction, AiContext } from '@/components/ai/AiSidePanel';
 import { AiUsageStats } from '@/components/dashboard/AiUsageStats';
 import { EmptyDashboardState } from '@/components/dashboard/EmptyDashboardState';
 import { DashboardExitKeysWidget } from '@/components/dashboard/DashboardExitKeysWidget';
+import { UserProfileWidget } from '@/components/dashboard/UserProfileWidget';
+import { GameStatisticsWidget } from '@/components/dashboard/GameStatisticsWidget';
 import { SubscriptionStatus } from '@/components/SubscriptionStatus';
 import { toast } from 'sonner';
 
@@ -386,6 +388,14 @@ export default function Dashboard() {
 
         {/* Subscription Management */}
         <SubscriptionStatus isLoggedIn={isLoggedIn} />
+
+        {/* User Profile and Game Stats Widgets */}
+        {isLoggedIn && (
+          <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <UserProfileWidget />
+            <GameStatisticsWidget />
+          </div>
+        )}
 
         {/* Exit Keys Widget */}
         {isLoggedIn && (
