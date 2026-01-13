@@ -1,7 +1,10 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { 
   ChevronDown, ChevronUp, Clock, Target, AlertTriangle, 
-  Zap, CheckCircle, Shield, Unlock, Crosshair, AlertOctagon, MessageSquareQuote
+  Zap, CheckCircle, Shield, Unlock, Crosshair, AlertOctagon, 
+  MessageSquareQuote, Bookmark, Eye, PlayCircle, ExternalLink
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -13,10 +16,13 @@ import {
 import { ExitKeyResult } from '@/lib/exit-keys-engine';
 import { cn } from '@/lib/utils';
 import { usePyramidTranslations } from '@/hooks/usePyramidTranslations';
+import { useExitKeysHistory } from '@/hooks/useExitKeysHistory';
+import { toast } from 'sonner';
 
 interface ExitKeyCardProps {
   result: ExitKeyResult;
   rank: number;
+  countryId?: string;
 }
 
 const difficultyConfig = {
@@ -37,11 +43,46 @@ const difficultyConfig = {
   },
 };
 
-export default function ExitKeyCard({ result, rank }: ExitKeyCardProps) {
+export default function ExitKeyCard({ result, rank, countryId }: ExitKeyCardProps) {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(rank === 1);
   const { key, compatibility, personalizedSteps, warnings, accelerators, planB } = result;
   const difficulty = difficultyConfig[key.difficulty];
   const { getPyramidLabel } = usePyramidTranslations();
+  const { trackExitKey, updateStatus, isLoggedIn } = useExitKeysHistory();
+
+  const handleTrack = useCallback(async () => {
+    if (!isLoggedIn) {
+      toast.info(t('exitKeys.loginToSave', 'Connectez-vous pour sauvegarder'));
+      return;
+    }
+    await trackExitKey(key.id, countryId, compatibility);
+    toast.success(t('exitKeys.keyTracked', 'Clé explorée enregistrée'));
+  }, [isLoggedIn, trackExitKey, key.id, countryId, compatibility, t]);
+
+  const handleSave = useCallback(async () => {
+    if (!isLoggedIn) {
+      toast.info(t('exitKeys.loginToSave', 'Connectez-vous pour sauvegarder'));
+      return;
+    }
+    const entry = await trackExitKey(key.id, countryId, compatibility);
+    if (entry) {
+      await updateStatus(entry.id, 'saved');
+      toast.success(t('exitKeys.keySaved', 'Clé sauvegardée !'));
+    }
+  }, [isLoggedIn, trackExitKey, updateStatus, key.id, countryId, compatibility, t]);
+
+  const handleStartProgress = useCallback(async () => {
+    if (!isLoggedIn) {
+      toast.info(t('exitKeys.loginToSave', 'Connectez-vous pour sauvegarder'));
+      return;
+    }
+    const entry = await trackExitKey(key.id, countryId, compatibility);
+    if (entry) {
+      await updateStatus(entry.id, 'in_progress');
+      toast.success(t('exitKeys.keyStarted', 'Clé démarrée ! Suivez votre progression.'));
+    }
+  }, [isLoggedIn, trackExitKey, updateStatus, key.id, countryId, compatibility, t]);
 
   return (
     <Collapsible open={isOpen} onOpenChange={setIsOpen}>
@@ -251,9 +292,46 @@ export default function ExitKeyCard({ result, rank }: ExitKeyCardProps) {
             <div className="bg-muted/30 rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
                 <Shield className="w-4 h-4 text-primary" />
-                <h4 className="font-semibold text-sm">Plan B</h4>
+                <h4 className="font-semibold text-sm">{t('exitKeys.planB', 'Plan B')}</h4>
               </div>
               <p className="text-sm text-muted-foreground">{planB}</p>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-wrap items-center gap-2 pt-3 border-t border-border/50">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={handleTrack}
+                className="gap-1"
+              >
+                <Eye className="w-3 h-3" />
+                {t('exitKeys.markExplored', 'Explorée')}
+              </Button>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={handleSave}
+                className="gap-1"
+              >
+                <Bookmark className="w-3 h-3" />
+                {t('exitKeys.save', 'Sauvegarder')}
+              </Button>
+              <Button 
+                variant="default" 
+                size="sm" 
+                onClick={handleStartProgress}
+                className="gap-1"
+              >
+                <PlayCircle className="w-3 h-3" />
+                {t('exitKeys.startTracking', 'Démarrer')}
+              </Button>
+              <Link to={`/compare-exit-keys?key=${key.id}`} className="ml-auto">
+                <Button variant="ghost" size="sm" className="gap-1">
+                  <ExternalLink className="w-3 h-3" />
+                  {t('exitKeys.addToCompare', 'Comparer')}
+                </Button>
+              </Link>
             </div>
           </div>
         </CollapsibleContent>
