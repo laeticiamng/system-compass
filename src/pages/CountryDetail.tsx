@@ -267,6 +267,12 @@ export default function CountryDetail() {
                 >
                   {typeLabel}
                 </span>
+                <Button variant="outline" size="sm" asChild className="gap-1 text-orange-400 border-orange-500/30 hover:bg-orange-500/10">
+                  <Link to={`/country/${country.id}/terrain-realities`}>
+                    <ShieldAlert className="h-4 w-4" />
+                    <span className="hidden sm:inline">{t('terrainRealities.title', 'Réalités Terrain')}</span>
+                  </Link>
+                </Button>
               </div>
               <p className="text-sm sm:text-base text-muted-foreground">{displayRegion}</p>
             </div>
