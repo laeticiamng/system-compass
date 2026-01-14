@@ -1,9 +1,8 @@
-// Main Application Router
+// Main Application Router - v1.1.0 with Lazy Loading
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-// App Router - v1.0.3
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
 import { FeatureFlagProvider } from "@/shared/components/FeatureFlag";
@@ -13,55 +12,69 @@ import { Footer } from "@/components/Footer";
 import { OnboardingDialog } from "@/components/OnboardingDialog";
 import { DisclaimerConsentDialog } from "@/components/DisclaimerConsentDialog";
 import { DialogCoordinatorProvider } from "@/components/DialogCoordinator";
-import Index from "./pages/Index";
-import Countries from "./pages/Countries";
-import CountryDetail from "./pages/CountryDetail";
-import ProfileTest from "./pages/ProfileTest";
-import LifeTrajectory from "./pages/LifeTrajectory";
-// Match.tsx removed - redirects to ProfileMatcher
-import CompareUnified from "./pages/CompareUnified";
-import Resources from "./pages/Resources";
-import PyramidTypes from "./pages/PyramidTypes";
-import PyramidQuiz from "./pages/PyramidQuiz";
-import LifeGame from "./pages/LifeGame";
-import Auth from "./pages/Auth";
-import NotFound from "./pages/NotFound";
-import ExitKeys from "./pages/ExitKeys";
-import ExitKeysCatalog from "./pages/ExitKeysCatalog";
-import CompareExitKeys from "./pages/CompareExitKeys";
-import Dashboard from "./pages/Dashboard";
-import About from "./pages/About";
-import Disclaimer from "./pages/Disclaimer";
-import HowToRead from "./pages/HowToRead";
-import AdminTranslations from "./pages/AdminTranslations";
-import AdminAnalytics from "./pages/AdminAnalytics";
-import PreventionFilter from "./pages/PreventionFilter";
-import UniversalErrorDetail from "./pages/UniversalErrorDetail";
-import QuickTest from "./pages/QuickTest";
-import ErrorsAndIllusions from "./pages/ErrorsAndIllusions";
-import SubscriptionSuccess from "./pages/SubscriptionSuccess";
-import Pricing from "./pages/Pricing";
-import ProfileMatcher from "./pages/ProfileMatcher";
-import AdminCountryGenerator from "./pages/AdminCountryGenerator";
-import AdminGenerateTranslations from "./pages/AdminGenerateTranslations";
-import AdminDatabaseTranslations from "./pages/AdminDatabaseTranslations";
-import WorldMapExplorer from "./pages/WorldMapExplorer";
-import Institutions from "./pages/Institutions";
-import OVI from "./pages/OVI";
-import B2BSolutions from "./pages/B2BSolutions";
-import Partners from "./pages/Partners";
-import LatentModule from "./pages/LatentModule";
-import IrreversaModule from "./pages/IrreversaModule";
-import Usage from "./pages/Usage";
-import NotificationSettings from "./pages/NotificationSettings";
-import AdminPartners from "./pages/AdminPartners";
-import CaseDetail from "./pages/CaseDetail";
-import FinancialSafetyIntel from "./pages/FinancialSafetyIntel";
-import TerrainRealities from "./pages/TerrainRealities";
-import TerrainRealitiesSelector from "./pages/TerrainRealitiesSelector";
 import { RequireAdmin } from "@/components/RequireAdmin";
 
-const queryClient = new QueryClient();
+// Eagerly loaded pages (small, frequently accessed)
+import Index from "./pages/Index";
+import Auth from "./pages/Auth";
+import NotFound from "./pages/NotFound";
+import About from "./pages/About";
+import Disclaimer from "./pages/Disclaimer";
+import QuickTest from "./pages/QuickTest";
+import SubscriptionSuccess from "./pages/SubscriptionSuccess";
+import Pricing from "./pages/Pricing";
+import Partners from "./pages/Partners";
+
+// Lazy loaded pages (heavy, feature-rich)
+import {
+  LazyCountries,
+  LazyCountryDetail,
+  LazyWorldMapExplorer,
+  LazyCompareUnified,
+  LazyLifeGame,
+  LazyPyramidQuiz,
+  LazyExitKeys,
+  LazyExitKeysCatalog,
+  LazyCompareExitKeys,
+  LazyProfileMatcher,
+  LazyProfileTest,
+  LazyLifeTrajectory,
+  LazyDashboard,
+  LazyUsage,
+  LazyNotificationSettings,
+  LazyInstitutions,
+  LazyB2BSolutions,
+  LazyCaseDetail,
+  LazyLatentModule,
+  LazyIrreversaModule,
+  LazyTerrainRealities,
+  LazyTerrainRealitiesSelector,
+  LazyFinancialSafetyIntel,
+  LazyAdminTranslations,
+  LazyAdminAnalytics,
+  LazyAdminCountryGenerator,
+  LazyAdminGenerateTranslations,
+  LazyAdminDatabaseTranslations,
+  LazyAdminPartners,
+  LazyPyramidTypes,
+  LazyResources,
+  LazyOVI,
+  LazyErrorsAndIllusions,
+  LazyPreventionFilter,
+  LazyUniversalErrorDetail,
+  LazyHowToRead,
+} from "@/routes/LazyRoutes";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000, // 5 minutes
+      gcTime: 30 * 60 * 1000, // 30 minutes (formerly cacheTime)
+      retry: 1,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -75,66 +88,87 @@ const App = () => (
               <DialogCoordinatorProvider>
                 <DisclaimerConsentDialog />
                 <OnboardingDialog />
-              <div className="min-h-screen flex flex-col">
-                <Header />
-                <main className="flex-1">
-                  <Routes>
-                    <Route path="/" element={<Index />} />
-                    <Route path="/auth" element={<Auth />} />
-                    <Route path="/countries" element={<Countries />} />
-                    <Route path="/world-map" element={<WorldMapExplorer />} />
-                    <Route path="/country/:id" element={<CountryDetail />} />
-                    <Route path="/country/:countryId/terrain-realities" element={<TerrainRealities />} />
-                    <Route path="/profile-test" element={<ProfileTest />} />
-                    <Route path="/life-trajectory" element={<LifeTrajectory />} />
-                    <Route path="/match" element={<Navigate to="/profile-matcher" replace />} />
-                    <Route path="/compare" element={<CompareUnified />} />
-                    <Route path="/multi-compare" element={<Navigate to="/compare?mode=multi" replace />} />
-                    <Route path="/resources" element={<Resources />} />
-                    <Route path="/pyramid-types" element={<PyramidTypes />} />
-                    <Route path="/pyramid-quiz" element={<PyramidQuiz />} />
-                    <Route path="/life-game" element={<LifeGame />} />
-                    <Route path="/exit-keys" element={<ExitKeys />} />
-                    <Route path="/exit-keys/catalog" element={<ExitKeysCatalog />} />
-                    <Route path="/exit-keys/compare" element={<CompareExitKeys />} />
-                    <Route path="/compare-exit-keys" element={<CompareExitKeys />} />
-                    <Route path="/dashboard" element={<Dashboard />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/disclaimer" element={<Disclaimer />} />
-                    <Route path="/systemic-mistakes" element={<Navigate to="/errors-illusions" replace />} />
-                    <Route path="/how-to-read" element={<HowToRead />} />
-                    <Route path="/admin/translations" element={<RequireAdmin><AdminTranslations /></RequireAdmin>} />
-                    <Route path="/admin/analytics" element={<RequireAdmin><AdminAnalytics /></RequireAdmin>} />
-                    <Route path="/prevention-filter" element={<PreventionFilter />} />
-                    <Route path="/universal-errors" element={<Navigate to="/errors-illusions" replace />} />
-                    <Route path="/universal-errors/:id" element={<UniversalErrorDetail />} />
-                    <Route path="/errors-illusions" element={<ErrorsAndIllusions />} />
-                    <Route path="/orientation-hub" element={<Navigate to="/about" replace />} />
-                    <Route path="/quick-test" element={<QuickTest />} />
-                    <Route path="/subscription-success" element={<SubscriptionSuccess />} />
-                    <Route path="/pricing" element={<Pricing />} />
-                    <Route path="/profile-matcher" element={<ProfileMatcher />} />
-                    <Route path="/admin/country-generator" element={<RequireAdmin><AdminCountryGenerator /></RequireAdmin>} />
-                    <Route path="/admin/generate-translations" element={<RequireAdmin><AdminGenerateTranslations /></RequireAdmin>} />
-                    <Route path="/admin/database-translations" element={<RequireAdmin><AdminDatabaseTranslations /></RequireAdmin>} />
-                    <Route path="/institutions" element={<Institutions />} />
-                    <Route path="/ovi" element={<OVI />} />
-                    <Route path="/b2b" element={<B2BSolutions />} />
-                    <Route path="/partners" element={<Partners />} />
-                    <Route path="/latent" element={<LatentModule />} />
-                    <Route path="/irreversa" element={<IrreversaModule />} />
-                    <Route path="/usage" element={<Usage />} />
-                    <Route path="/settings/notifications" element={<NotificationSettings />} />
-                    <Route path="/admin/partners" element={<RequireAdmin><AdminPartners /></RequireAdmin>} />
-                    <Route path="/cases/:id" element={<CaseDetail />} />
-                    <Route path="/financial-safety-intel" element={<FinancialSafetyIntel />} />
-                    <Route path="/terrain" element={<TerrainRealitiesSelector />} />
-                    <Route path="/terrain/:countryId" element={<TerrainRealities />} />
-                    <Route path="*" element={<NotFound />} />
-                  </Routes>
-                </main>
-                <Footer />
-              </div>
+                <div className="min-h-screen flex flex-col">
+                  <Header />
+                  <main className="flex-1">
+                    <Routes>
+                      {/* Eager routes - frequently accessed, small */}
+                      <Route path="/" element={<Index />} />
+                      <Route path="/auth" element={<Auth />} />
+                      <Route path="/about" element={<About />} />
+                      <Route path="/disclaimer" element={<Disclaimer />} />
+                      <Route path="/quick-test" element={<QuickTest />} />
+                      <Route path="/subscription-success" element={<SubscriptionSuccess />} />
+                      <Route path="/pricing" element={<Pricing />} />
+                      <Route path="/partners" element={<Partners />} />
+
+                      {/* Lazy routes - Country related */}
+                      <Route path="/countries" element={<LazyCountries />} />
+                      <Route path="/world-map" element={<LazyWorldMapExplorer />} />
+                      <Route path="/country/:id" element={<LazyCountryDetail />} />
+                      <Route path="/country/:countryId/terrain-realities" element={<LazyTerrainRealities />} />
+                      <Route path="/compare" element={<LazyCompareUnified />} />
+
+                      {/* Lazy routes - Analysis tools */}
+                      <Route path="/profile-test" element={<LazyProfileTest />} />
+                      <Route path="/life-trajectory" element={<LazyLifeTrajectory />} />
+                      <Route path="/profile-matcher" element={<LazyProfileMatcher />} />
+                      <Route path="/exit-keys" element={<LazyExitKeys />} />
+                      <Route path="/exit-keys/catalog" element={<LazyExitKeysCatalog />} />
+                      <Route path="/exit-keys/compare" element={<LazyCompareExitKeys />} />
+                      <Route path="/compare-exit-keys" element={<LazyCompareExitKeys />} />
+
+                      {/* Lazy routes - Game */}
+                      <Route path="/pyramid-quiz" element={<LazyPyramidQuiz />} />
+                      <Route path="/life-game" element={<LazyLifeGame />} />
+
+                      {/* Lazy routes - Dashboard & User */}
+                      <Route path="/dashboard" element={<LazyDashboard />} />
+                      <Route path="/usage" element={<LazyUsage />} />
+                      <Route path="/settings/notifications" element={<LazyNotificationSettings />} />
+
+                      {/* Lazy routes - B2B & Institutional */}
+                      <Route path="/institutions" element={<LazyInstitutions />} />
+                      <Route path="/b2b" element={<LazyB2BSolutions />} />
+                      <Route path="/cases/:id" element={<LazyCaseDetail />} />
+                      <Route path="/latent" element={<LazyLatentModule />} />
+                      <Route path="/irreversa" element={<LazyIrreversaModule />} />
+
+                      {/* Lazy routes - Terrain & Intel */}
+                      <Route path="/terrain" element={<LazyTerrainRealitiesSelector />} />
+                      <Route path="/terrain/:countryId" element={<LazyTerrainRealities />} />
+                      <Route path="/financial-safety-intel" element={<LazyFinancialSafetyIntel />} />
+
+                      {/* Lazy routes - Content */}
+                      <Route path="/pyramid-types" element={<LazyPyramidTypes />} />
+                      <Route path="/resources" element={<LazyResources />} />
+                      <Route path="/ovi" element={<LazyOVI />} />
+                      <Route path="/errors-illusions" element={<LazyErrorsAndIllusions />} />
+                      <Route path="/prevention-filter" element={<LazyPreventionFilter />} />
+                      <Route path="/universal-errors/:id" element={<LazyUniversalErrorDetail />} />
+                      <Route path="/how-to-read" element={<LazyHowToRead />} />
+
+                      {/* Lazy routes - Admin */}
+                      <Route path="/admin/translations" element={<RequireAdmin><LazyAdminTranslations /></RequireAdmin>} />
+                      <Route path="/admin/analytics" element={<RequireAdmin><LazyAdminAnalytics /></RequireAdmin>} />
+                      <Route path="/admin/country-generator" element={<RequireAdmin><LazyAdminCountryGenerator /></RequireAdmin>} />
+                      <Route path="/admin/generate-translations" element={<RequireAdmin><LazyAdminGenerateTranslations /></RequireAdmin>} />
+                      <Route path="/admin/database-translations" element={<RequireAdmin><LazyAdminDatabaseTranslations /></RequireAdmin>} />
+                      <Route path="/admin/partners" element={<RequireAdmin><LazyAdminPartners /></RequireAdmin>} />
+
+                      {/* Redirects */}
+                      <Route path="/match" element={<Navigate to="/profile-matcher" replace />} />
+                      <Route path="/multi-compare" element={<Navigate to="/compare?mode=multi" replace />} />
+                      <Route path="/systemic-mistakes" element={<Navigate to="/errors-illusions" replace />} />
+                      <Route path="/universal-errors" element={<Navigate to="/errors-illusions" replace />} />
+                      <Route path="/orientation-hub" element={<Navigate to="/about" replace />} />
+
+                      {/* 404 */}
+                      <Route path="*" element={<NotFound />} />
+                    </Routes>
+                  </main>
+                  <Footer />
+                </div>
               </DialogCoordinatorProvider>
             </BrowserRouter>
           </TooltipProvider>

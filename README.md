@@ -85,6 +85,15 @@
 | **AI** | Lovable AI (Gemini, GPT-5) |
 | **Testing** | Vitest, Playwright (E2E) |
 | **i18n** | react-i18next with 10+ languages |
+| **CI/CD** | GitHub Actions (lint, typecheck, test, coverage) |
+
+---
+
+## ⚡ Performance
+
+- **Code Splitting** — Routes are lazy-loaded for optimal initial bundle size
+- **Query Caching** — React Query with 5-minute stale time
+- **Pre-commit Hooks** — Translation validation before commits
 
 ---
 
