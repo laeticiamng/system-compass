@@ -72,6 +72,13 @@ import { EmptyDashboardState } from '@/components/dashboard/EmptyDashboardState'
 import { DashboardExitKeysWidget } from '@/components/dashboard/DashboardExitKeysWidget';
 import { UserProfileWidget } from '@/components/dashboard/UserProfileWidget';
 import { GameStatisticsWidget } from '@/components/dashboard/GameStatisticsWidget';
+import { CasesDashboardWidget } from '@/components/dashboard/CasesDashboardWidget';
+import { LatentZonesDashboardWidget } from '@/components/dashboard/LatentZonesDashboardWidget';
+import { IrreversaDashboardWidget } from '@/components/dashboard/IrreversaDashboardWidget';
+import { TraceOSDashboardWidget } from '@/components/dashboard/TraceOSDashboardWidget';
+import { OVIDashboardWidget } from '@/components/dashboard/OVIDashboardWidget';
+import { AnalyticsDashboardWidget } from '@/components/dashboard/AnalyticsDashboardWidget';
+import { PartnerDashboardWidget } from '@/components/dashboard/PartnerDashboardWidget';
 import { SubscriptionStatus } from '@/components/SubscriptionStatus';
 import { toast } from 'sonner';
 
@@ -408,6 +415,25 @@ export default function Dashboard() {
         {isLoggedIn && (tier === 'premium' || tier === 'pro') && (
           <div className="mb-6">
             <AiUsageStats compact={false} showActivity={false} />
+          </div>
+        )}
+
+        {/* New Dashboard Widgets Grid */}
+        {isLoggedIn && (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+            <CasesDashboardWidget />
+            <LatentZonesDashboardWidget />
+            <IrreversaDashboardWidget />
+            <TraceOSDashboardWidget />
+            <OVIDashboardWidget />
+            <AnalyticsDashboardWidget />
+          </div>
+        )}
+
+        {/* Partner Dashboard Widget - Full width */}
+        {isLoggedIn && (
+          <div className="mb-6">
+            <PartnerDashboardWidget />
           </div>
         )}
 
