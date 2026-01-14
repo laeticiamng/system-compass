@@ -14,9 +14,13 @@
 
 ## 📸 Screenshots
 
-| Home Page | Country Analysis | Export Report |
-|-----------|------------------|---------------|
-| ![Home](docs/screenshots/home.png) | ![Analysis](docs/screenshots/country-analysis.png) | ![Export](docs/screenshots/export-report.png) |
+| Home Page | Country Analysis | Exit Keys |
+|-----------|------------------|-----------|
+| ![Home](docs/screenshots/home.png) | ![Analysis](docs/screenshots/country-analysis.png) | ![Exit Keys](docs/screenshots/exit-keys.png) |
+
+| Game Mode |
+|-----------|
+| ![Game](docs/screenshots/game-mode.png) |
 
 ---
 
