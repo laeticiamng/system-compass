@@ -2568,6 +2568,33 @@ export type Database = {
         }
         Relationships: []
       }
+      ui_translations: {
+        Row: {
+          created_at: string
+          id: string
+          language: string
+          namespace: string
+          translations: Json
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          language: string
+          namespace?: string
+          translations?: Json
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          language?: string
+          namespace?: string
+          translations?: Json
+          updated_at?: string
+        }
+        Relationships: []
+      }
       user_cases: {
         Row: {
           admin_checklist: Json | null

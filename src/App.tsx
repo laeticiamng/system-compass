@@ -56,6 +56,7 @@ import {
   LazyAdminGenerateTranslations,
   LazyAdminDatabaseTranslations,
   LazyAdminPartners,
+  LazyAdminTranslationsSync,
   LazyPyramidTypes,
   LazyResources,
   LazyOVI,
@@ -155,6 +156,7 @@ const App = () => (
                       <Route path="/admin/generate-translations" element={<RequireAdmin><LazyAdminGenerateTranslations /></RequireAdmin>} />
                       <Route path="/admin/database-translations" element={<RequireAdmin><LazyAdminDatabaseTranslations /></RequireAdmin>} />
                       <Route path="/admin/partners" element={<RequireAdmin><LazyAdminPartners /></RequireAdmin>} />
+                      <Route path="/admin/translations-sync" element={<RequireAdmin><LazyAdminTranslationsSync /></RequireAdmin>} />
 
                       {/* Redirects */}
                       <Route path="/match" element={<Navigate to="/profile-matcher" replace />} />
