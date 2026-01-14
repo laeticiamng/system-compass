@@ -458,6 +458,90 @@ export type Database = {
         }
         Relationships: []
       }
+      countries: {
+        Row: {
+          cost_of_living: Json
+          created_at: string
+          data_version: number
+          healthcare: Json
+          id: string
+          iso2: string
+          last_updated: string | null
+          lgbtq_rights: Json
+          name: string
+          name_local: string | null
+          natural_risks: Json
+          playbook: Json
+          positive_points: Json
+          pyramid: Json
+          pyramid_type: string
+          quality_of_life: Json
+          region: string
+          risks: Json
+          rule_of_gold: string | null
+          snapshot: Json
+          sources: Json
+          updated_at: string
+          visa: Json
+          who_loses: Json
+          who_wins: Json
+        }
+        Insert: {
+          cost_of_living?: Json
+          created_at?: string
+          data_version?: number
+          healthcare?: Json
+          id: string
+          iso2: string
+          last_updated?: string | null
+          lgbtq_rights?: Json
+          name: string
+          name_local?: string | null
+          natural_risks?: Json
+          playbook?: Json
+          positive_points?: Json
+          pyramid?: Json
+          pyramid_type: string
+          quality_of_life?: Json
+          region: string
+          risks?: Json
+          rule_of_gold?: string | null
+          snapshot?: Json
+          sources?: Json
+          updated_at?: string
+          visa?: Json
+          who_loses?: Json
+          who_wins?: Json
+        }
+        Update: {
+          cost_of_living?: Json
+          created_at?: string
+          data_version?: number
+          healthcare?: Json
+          id?: string
+          iso2?: string
+          last_updated?: string | null
+          lgbtq_rights?: Json
+          name?: string
+          name_local?: string | null
+          natural_risks?: Json
+          playbook?: Json
+          positive_points?: Json
+          pyramid?: Json
+          pyramid_type?: string
+          quality_of_life?: Json
+          region?: string
+          risks?: Json
+          rule_of_gold?: string | null
+          snapshot?: Json
+          sources?: Json
+          updated_at?: string
+          visa?: Json
+          who_loses?: Json
+          who_wins?: Json
+        }
+        Relationships: []
+      }
       country_generation_batches: {
         Row: {
           completed_at: string | null
