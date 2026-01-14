@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { 
@@ -28,6 +28,8 @@ import EventCardWithChoices from './EventCardWithChoices';
 import FamilyEventCard from './FamilyEventCard';
 import ResourceBar from './ResourceBar';
 import ActionPanel from './ActionPanel';
+import StrategicChoiceCard, { StrategicChoice } from './StrategicChoiceCard';
+import GameVisualFeedback, { OutcomeAnimation, FloatingNotification } from './GameVisualFeedback';
 import { 
   Play, 
   Calendar, 
@@ -84,6 +86,11 @@ export default function TurnManager({
   const [familyEvent, setFamilyEvent] = useState<FamilyEvent | null>(null);
   const [selectedAction, setSelectedAction] = useState<GameAction | null>(null);
   const [actionResult, setActionResult] = useState<'success' | 'failed' | null>(null);
+  
+  // Visual feedback state
+  const [resourceChanges, setResourceChanges] = useState<{ resource: ResourceType; change: number; id: string }[]>([]);
+  const [showOutcome, setShowOutcome] = useState<'success' | 'failure' | 'critical_success' | 'critical_failure' | null>(null);
+  const [notification, setNotification] = useState<{ icon: string; text: string; variant: 'info' | 'success' | 'warning' | 'danger' } | null>(null);
 
   // Generate events at start of turn
   useEffect(() => {
@@ -106,6 +113,32 @@ export default function TurnManager({
     }
   }, [phase, familyEvent, currentPlayer.familyStatus]);
 
+  // Visual feedback helper
+  const showResourceFeedback = useCallback((effects: Partial<GameResources>) => {
+    const changes = Object.entries(effects)
+      .filter(([, change]) => typeof change === 'number' && change !== 0)
+      .map(([resource, change]) => ({
+        resource: resource as ResourceType,
+        change: change as number,
+        id: `${resource}-${Date.now()}-${Math.random()}`,
+      }));
+    if (changes.length > 0) {
+      setResourceChanges(changes);
+    }
+  }, []);
+
+  const showOutcomeAnimation = useCallback((success: boolean, isCritical?: boolean) => {
+    if (success) {
+      setShowOutcome(isCritical ? 'critical_success' : 'success');
+    } else {
+      setShowOutcome(isCritical ? 'critical_failure' : 'failure');
+    }
+  }, []);
+
+  const showNotification = useCallback((icon: string, text: string, variant: 'info' | 'success' | 'warning' | 'danger') => {
+    setNotification({ icon, text, variant });
+  }, []);
+
   const applyEffects = (effects: Partial<GameResources>) => {
     const newResources = { ...currentPlayer.resources };
     
@@ -116,6 +149,9 @@ export default function TurnManager({
       }
     });
     
+    // Show visual feedback
+    showResourceFeedback(effects);
+    
     onResourceChange(currentPlayer.id, newResources);
   };
 
@@ -125,6 +161,16 @@ export default function TurnManager({
     appliedEffect: Partial<GameResources>
   ) => {
     applyEffects(appliedEffect);
+    
+    // Show visual feedback
+    if (result !== 'skip') {
+      showOutcomeAnimation(result === 'success');
+      showNotification(
+        result === 'success' ? '🌍' : '⚠️',
+        result === 'success' ? t('events.globalEventSuccess', 'Événement mondial résolu !') : t('events.globalEventFailed', 'Impact négatif...'),
+        result === 'success' ? 'success' : 'warning'
+      );
+    }
     
     // Apply pyramid effects if success and event has them
     if (result === 'success' && globalEvent?.pyramidEffect) {
@@ -141,6 +187,16 @@ export default function TurnManager({
     appliedEffect: Partial<GameResources>
   ) => {
     applyEffects(appliedEffect);
+    
+    // Show visual feedback
+    if (result !== 'skip') {
+      showOutcomeAnimation(result === 'success');
+      showNotification(
+        result === 'success' ? '🏛️' : '💥',
+        result === 'success' ? t('events.countryEventSuccess', 'Situation maîtrisée !') : t('events.countryEventFailed', 'Conséquences locales...'),
+        result === 'success' ? 'success' : 'danger'
+      );
+    }
     
     if (result === 'success' && countryEvent?.pyramidEffect) {
       onPyramidScoreChange(currentPlayer.id, countryEvent.pyramidEffect);
@@ -518,6 +574,31 @@ export default function TurnManager({
             {t('turnManager.rollDicePrompt')}
           </p>
         </div>
+      )}
+
+      {/* Visual Feedback Components */}
+      {resourceChanges.length > 0 && (
+        <GameVisualFeedback
+          resourceChanges={resourceChanges}
+          onComplete={() => setResourceChanges([])}
+          position="top-right"
+        />
+      )}
+      
+      {showOutcome && (
+        <OutcomeAnimation
+          outcome={showOutcome}
+          onComplete={() => setShowOutcome(null)}
+        />
+      )}
+      
+      {notification && (
+        <FloatingNotification
+          icon={notification.icon}
+          text={notification.text}
+          variant={notification.variant}
+          onComplete={() => setNotification(null)}
+        />
       )}
     </div>
   );
