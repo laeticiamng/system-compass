@@ -11,6 +11,10 @@ env:
   VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
   VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   quality:
     name: Code Quality
@@ -40,6 +44,12 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Check bundle size
+        run: |
+          echo "📦 Bundle size report:"
+          du -sh dist/
+          du -sh dist/assets/*.js | head -10
 
   i18n-check:
     name: i18n Completeness Check
@@ -132,3 +142,11 @@ jobs:
 
       - name: Run tests with coverage
         run: npx vitest run --coverage --reporter=verbose
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-report
+          path: coverage/
+          retention-days: 14

@@ -1,6 +1,29 @@
-# API Documentation - Boussole Stratégique
+# API Documentation — World Alignment
 
-Documentation complète des Edge Functions disponibles dans l'application.
+Documentation complète des Edge Functions et de l'architecture.
+
+## 🏗️ Architecture Overview
+
+### Tech Stack
+- **Frontend**: React 18 + TypeScript + Vite
+- **Styling**: Tailwind CSS + shadcn/ui
+- **State**: TanStack Query (React Query)
+- **Backend**: Lovable Cloud (Supabase)
+- **i18n**: i18next (10+ languages)
+
+### Performance Optimizations
+
+**Code Splitting (Lazy Loading)**
+- Heavy routes are lazy-loaded via `src/routes/LazyRoutes.tsx`
+- Eager: Index, Auth, About, Pricing
+- Lazy: Countries, Game, Dashboard, Admin
+
+**Query Caching**
+- `staleTime`: 5 minutes
+- `gcTime`: 30 minutes
+- `refetchOnWindowFocus`: false
+
+---
 
 ## Table des matières
 
