@@ -75,6 +75,7 @@ export const LazyAdminCountryGenerator = withSuspense(lazy(() => import('@/pages
 export const LazyAdminGenerateTranslations = withSuspense(lazy(() => import('@/pages/AdminGenerateTranslations')));
 export const LazyAdminDatabaseTranslations = withSuspense(lazy(() => import('@/pages/AdminDatabaseTranslations')));
 export const LazyAdminPartners = withSuspense(lazy(() => import('@/pages/AdminPartners')));
+export const LazyAdminTranslationsSync = withSuspense(lazy(() => import('@/pages/AdminTranslationsSync')));
 
 // Content pages (can be lazy loaded too)
 export const LazyPyramidTypes = withSuspense(lazy(() => import('@/pages/PyramidTypes')));

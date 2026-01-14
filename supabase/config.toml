@@ -62,3 +62,6 @@ verify_jwt = false
 
 [functions.seed-countries]
 verify_jwt = false
+
+[functions.seed-translations]
+verify_jwt = false
