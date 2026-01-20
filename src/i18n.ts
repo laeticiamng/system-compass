@@ -25,6 +25,12 @@ import countriesPositivePointsEs from './locales/countries-positive-points-es.js
 import countriesPositivePointsIt from './locales/countries-positive-points-it.json';
 import countriesPositivePointsNl from './locales/countries-positive-points-nl.json';
 import countriesPositivePointsPt from './locales/countries-positive-points-pt.json';
+import countriesPositivePointsZh from './locales/countries-positive-points-zh.json';
+import countriesPositivePointsAr from './locales/countries-positive-points-ar.json';
+import countriesPositivePointsRu from './locales/countries-positive-points-ru.json';
+import countriesPositivePointsHi from './locales/countries-positive-points-hi.json';
+import countriesPositivePointsBn from './locales/countries-positive-points-bn.json';
+import countriesPositivePointsUr from './locales/countries-positive-points-ur.json';
 
 // Merge function for deep merging objects
 function deepMerge(target: Record<string, unknown>, source: Record<string, unknown>): Record<string, unknown> {
@@ -47,13 +53,13 @@ const mergedEs = deepMerge(es as Record<string, unknown>, countriesPositivePoint
 const mergedIt = deepMerge(it as Record<string, unknown>, countriesPositivePointsIt as Record<string, unknown>) as typeof it;
 const mergedNl = deepMerge(nl as Record<string, unknown>, countriesPositivePointsNl as Record<string, unknown>) as typeof nl;
 const mergedPt = deepMerge(pt as Record<string, unknown>, countriesPositivePointsPt as Record<string, unknown>) as typeof pt;
-// New languages use English positive points as fallback until translations are available
-const mergedZh = deepMerge(zh as Record<string, unknown>, countriesPositivePointsEn as Record<string, unknown>) as typeof zh;
-const mergedHi = deepMerge(hi as Record<string, unknown>, countriesPositivePointsEn as Record<string, unknown>) as typeof hi;
-const mergedAr = deepMerge(ar as Record<string, unknown>, countriesPositivePointsEn as Record<string, unknown>) as typeof ar;
-const mergedBn = deepMerge(bn as Record<string, unknown>, countriesPositivePointsEn as Record<string, unknown>) as typeof bn;
-const mergedRu = deepMerge(ru as Record<string, unknown>, countriesPositivePointsEn as Record<string, unknown>) as typeof ru;
-const mergedUr = deepMerge(ur as Record<string, unknown>, countriesPositivePointsEn as Record<string, unknown>) as typeof ur;
+// New languages with their own positive points translations
+const mergedZh = deepMerge(zh as Record<string, unknown>, countriesPositivePointsZh as Record<string, unknown>) as typeof zh;
+const mergedHi = deepMerge(hi as Record<string, unknown>, countriesPositivePointsHi as Record<string, unknown>) as typeof hi;
+const mergedAr = deepMerge(ar as Record<string, unknown>, countriesPositivePointsAr as Record<string, unknown>) as typeof ar;
+const mergedBn = deepMerge(bn as Record<string, unknown>, countriesPositivePointsBn as Record<string, unknown>) as typeof bn;
+const mergedRu = deepMerge(ru as Record<string, unknown>, countriesPositivePointsRu as Record<string, unknown>) as typeof ru;
+const mergedUr = deepMerge(ur as Record<string, unknown>, countriesPositivePointsUr as Record<string, unknown>) as typeof ur;
 
 // Supported languages with metadata
 export const SUPPORTED_LANGUAGES = [

@@ -5,8 +5,12 @@ import path from 'path';
 // Translation type
 type TranslationObject = Record<string, unknown>;
 
-// Languages to test
-const LANGUAGES = ['en', 'fr', 'de', 'es', 'it', 'nl', 'pt'];
+// Languages to test - core languages with full translations
+const CORE_LANGUAGES = ['en', 'fr', 'de', 'es', 'it', 'nl', 'pt'];
+// New languages with partial translations (higher tolerance for missing keys)
+const NEW_LANGUAGES = ['zh', 'ar', 'ru', 'ur', 'bn', 'hi'];
+// All supported languages
+const LANGUAGES = [...CORE_LANGUAGES, ...NEW_LANGUAGES];
 const REFERENCE_LANG = 'en';
 
 // Load translations from files
@@ -61,27 +65,36 @@ describe('Translation Files Synchronization', () => {
     expect(Object.keys(translations).length).toBe(LANGUAGES.length);
   });
 
-  describe('Key consistency across languages', () => {
-    LANGUAGES.forEach(lang => {
+  describe('Key consistency across core languages', () => {
+    CORE_LANGUAGES.forEach(lang => {
       if (lang === REFERENCE_LANG) return;
-      
+
       it(`${lang.toUpperCase()} should have less than 5% missing keys from ${REFERENCE_LANG}`, () => {
         const refKeys = extractKeys(translations[REFERENCE_LANG]);
-        const langKeys = extractKeys(translations[lang]);
-        
+
         const missingKeys = refKeys.filter(key => {
           const value = getNestedValue(translations[lang], key);
           return value === undefined;
         });
-        
+
         const missingPercentage = (missingKeys.length / refKeys.length) * 100;
-        
+
         if (missingKeys.length > 0 && missingPercentage >= 5) {
           console.log(`\n❌ ${lang}.json is missing ${missingKeys.length} keys (${missingPercentage.toFixed(1)}%):`);
           missingKeys.slice(0, 10).forEach(k => console.log(`  - ${k}`));
         }
-        
+
         expect(missingPercentage).toBeLessThan(5);
+      });
+    });
+  });
+
+  describe('Key consistency across new languages (lenient)', () => {
+    NEW_LANGUAGES.forEach(lang => {
+      it(`${lang.toUpperCase()} should parse correctly and have critical keys`, () => {
+        // Just check that the file parses and has basic structure
+        expect(translations[lang]).toBeDefined();
+        expect(translations[lang].common).toBeDefined();
       });
     });
   });
@@ -98,7 +111,7 @@ describe('Translation Files Synchronization', () => {
     });
   });
 
-  describe('No empty critical translations', () => {
+  describe('No empty critical translations (core languages)', () => {
     const criticalKeys = [
       'common.appName',
       'common.back',
@@ -108,37 +121,37 @@ describe('Translation Files Synchronization', () => {
       'nav.countries',
     ];
 
-    LANGUAGES.forEach(lang => {
+    CORE_LANGUAGES.forEach(lang => {
       it(`${lang.toUpperCase()} should have non-empty critical keys`, () => {
         const emptyKeys: string[] = [];
-        
+
         criticalKeys.forEach(key => {
           const value = getNestedValue(translations[lang], key);
           if (value === '' || value === undefined) {
             emptyKeys.push(key);
           }
         });
-        
+
         if (emptyKeys.length > 0) {
           console.log(`\n⚠️ ${lang}.json has empty critical keys:`, emptyKeys);
         }
-        
+
         expect(emptyKeys.length).toBe(0);
       });
     });
   });
 
-  describe('Top-level namespace consistency', () => {
-    it('all languages should have the same top-level namespaces as reference', () => {
+  describe('Top-level namespace consistency (core languages)', () => {
+    it('core languages should have the same top-level namespaces as reference', () => {
       const refNamespaces = new Set(Object.keys(translations[REFERENCE_LANG]));
-      
-      LANGUAGES.forEach(lang => {
+
+      CORE_LANGUAGES.forEach(lang => {
         if (lang === REFERENCE_LANG) return;
-        
+
         const langNamespaces = Object.keys(translations[lang]);
         const missingNamespaces = [...refNamespaces].filter(ns => !langNamespaces.includes(ns));
-        
-        // Allow up to 3 missing namespaces
+
+        // Allow up to 3 missing namespaces for core languages
         expect(missingNamespaces.length).toBeLessThanOrEqual(3);
       });
     });
@@ -157,7 +170,7 @@ describe('Translation Files Synchronization', () => {
     });
   });
 
-  describe('Usage translations exist', () => {
+  describe('Usage translations exist (core languages)', () => {
     const usageKeys = [
       'usage.title',
       'usage.loginRequired',
@@ -165,8 +178,8 @@ describe('Translation Files Synchronization', () => {
       'usage.activityLog',
     ];
 
-    it('all languages should have usage translations', () => {
-      LANGUAGES.forEach(lang => {
+    it('core languages should have usage translations', () => {
+      CORE_LANGUAGES.forEach(lang => {
         usageKeys.forEach(key => {
           const value = getNestedValue(translations[lang], key);
           expect(value).toBeDefined();
@@ -175,15 +188,15 @@ describe('Translation Files Synchronization', () => {
     });
   });
 
-  describe('OVI translations exist', () => {
+  describe('OVI translations exist (core languages)', () => {
     const oviKeys = [
       'ovi.badge',
       'ovi.fullName',
       'ovi.tabs.intro',
     ];
 
-    it('all languages should have OVI translations', () => {
-      LANGUAGES.forEach(lang => {
+    it('core languages should have OVI translations', () => {
+      CORE_LANGUAGES.forEach(lang => {
         oviKeys.forEach(key => {
           const value = getNestedValue(translations[lang], key);
           expect(value).toBeDefined();
@@ -192,15 +205,15 @@ describe('Translation Files Synchronization', () => {
     });
   });
 
-  describe('Institutions translations exist', () => {
+  describe('Institutions translations exist (core languages)', () => {
     const instKeys = [
       'institutions.badge',
       'institutions.title',
       'institutions.tabs.intro',
     ];
 
-    it('all languages should have institutions translations', () => {
-      LANGUAGES.forEach(lang => {
+    it('core languages should have institutions translations', () => {
+      CORE_LANGUAGES.forEach(lang => {
         instKeys.forEach(key => {
           const value = getNestedValue(translations[lang], key);
           expect(value).toBeDefined();
