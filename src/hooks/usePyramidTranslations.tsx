@@ -48,17 +48,24 @@ const FALLBACK_LABELS: Record<PyramidType, string> = {
 export function usePyramidTranslations() {
   const { t } = useTranslation();
 
-  const getPyramidLabel = (pyramidType: PyramidType): string => {
+  const getPyramidLabel = (pyramidType: PyramidType | undefined | null): string => {
+    if (!pyramidType || !PYRAMID_TRANSLATION_KEYS[pyramidType]) {
+      return t('common.unknown', 'Unknown');
+    }
     const key = PYRAMID_TRANSLATION_KEYS[pyramidType];
-    return t(key.labelKey, FALLBACK_LABELS[pyramidType]);
+    return t(key.labelKey, FALLBACK_LABELS[pyramidType] || 'Unknown');
   };
 
-  const getPyramidDescription = (pyramidType: PyramidType): string => {
+  const getPyramidDescription = (pyramidType: PyramidType | undefined | null): string => {
+    if (!pyramidType || !PYRAMID_TRANSLATION_KEYS[pyramidType]) {
+      return '';
+    }
     const key = PYRAMID_TRANSLATION_KEYS[pyramidType];
     return t(key.descKey, '');
   };
 
-  const getWhoThrives = (pyramidType: PyramidType): string[] => {
+  const getWhoThrives = (pyramidType: PyramidType | undefined | null): string[] => {
+    if (!pyramidType || !PYRAMID_TRANSLATION_KEYS[pyramidType]) return [];
     const key = PYRAMID_TRANSLATION_KEYS[pyramidType].detailsKey;
     const translated = t(`pyramidTypes.details.${key}.whoThrives`, { returnObjects: true });
     if (Array.isArray(translated)) {
@@ -67,7 +74,8 @@ export function usePyramidTranslations() {
     return [];
   };
 
-  const getWhoPays = (pyramidType: PyramidType): string[] => {
+  const getWhoPays = (pyramidType: PyramidType | undefined | null): string[] => {
+    if (!pyramidType || !PYRAMID_TRANSLATION_KEYS[pyramidType]) return [];
     const key = PYRAMID_TRANSLATION_KEYS[pyramidType].detailsKey;
     const translated = t(`pyramidTypes.details.${key}.whoPays`, { returnObjects: true });
     if (Array.isArray(translated)) {
@@ -76,7 +84,8 @@ export function usePyramidTranslations() {
     return [];
   };
 
-  const getSurvivalRules = (pyramidType: PyramidType): string[] => {
+  const getSurvivalRules = (pyramidType: PyramidType | undefined | null): string[] => {
+    if (!pyramidType || !PYRAMID_TRANSLATION_KEYS[pyramidType]) return [];
     const key = PYRAMID_TRANSLATION_KEYS[pyramidType].detailsKey;
     const translated = t(`pyramidTypes.details.${key}.survivalRules`, { returnObjects: true });
     if (Array.isArray(translated)) {
@@ -85,7 +94,8 @@ export function usePyramidTranslations() {
     return [];
   };
 
-  const getOpportunities = (pyramidType: PyramidType): string[] => {
+  const getOpportunities = (pyramidType: PyramidType | undefined | null): string[] => {
+    if (!pyramidType || !PYRAMID_TRANSLATION_KEYS[pyramidType]) return [];
     const key = PYRAMID_TRANSLATION_KEYS[pyramidType].detailsKey;
     const translated = t(`pyramidTypes.details.${key}.opportunities`, { returnObjects: true });
     if (Array.isArray(translated)) {
@@ -94,7 +104,8 @@ export function usePyramidTranslations() {
     return [];
   };
 
-  const getWarningSigns = (pyramidType: PyramidType): string[] => {
+  const getWarningSigns = (pyramidType: PyramidType | undefined | null): string[] => {
+    if (!pyramidType || !PYRAMID_TRANSLATION_KEYS[pyramidType]) return [];
     const key = PYRAMID_TRANSLATION_KEYS[pyramidType].detailsKey;
     const translated = t(`pyramidTypes.details.${key}.warningSigns`, { returnObjects: true });
     if (Array.isArray(translated)) {
