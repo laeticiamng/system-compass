@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 import { useCountries } from '@/lib/countries-data';
 import { Country, PyramidType, LifePriority } from '@/lib/types';
 import { ProjectIntention } from '@/hooks/useExitKeysProfile';
-import { getProfession, Profession } from '@/lib/profession-data';
+import { getProfession, Profession, getEstimatedSalaryWithAge, getCountryCurrency } from '@/lib/profession-data';
 import { Progress } from '@/components/ui/progress';
 
 interface DestinationSelectorProps {
@@ -156,7 +156,21 @@ export function DestinationSelector({ intention, nationalityIds, currentCountryI
               )}>
                 {isTopPick && <div className="absolute -top-3 left-4 px-3 py-1 rounded-full bg-green-600 text-white text-xs font-semibold flex items-center gap-1"><Star className="w-3 h-3" />{t('exitKeys.destination.topPick')}</div>}
                 <div className="flex items-start gap-4">
-                  <div className="flex items-center gap-3"><span className="text-4xl">{getFlagEmoji(country.iso2)}</span><div><h4 className="font-bold text-lg">{country.name}</h4><p className="text-xs text-muted-foreground">~{country.costOfLiving?.monthlyBudgetSingle || 1500}€/{t('common.month', 'mois')}</p></div></div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-4xl">{getFlagEmoji(country.iso2)}</span>
+                    <div>
+                      <h4 className="font-bold text-lg">{country.name}</h4>
+                      {profession ? (
+                        <p className="text-xs text-muted-foreground">
+                          {t('exitKeys.destination.expectedSalary')}: ~{getEstimatedSalaryWithAge(country.id, profession.id, age).toLocaleString()}{getCountryCurrency(country.id).symbol}/{t('common.month')}
+                        </p>
+                      ) : (
+                        <p className="text-xs text-muted-foreground">
+                          {t('exitKeys.destination.costOfLiving')}: ~{country.costOfLiving?.monthlyBudgetSingle || 1500}€/{t('common.month')}
+                        </p>
+                      )}
+                    </div>
+                  </div>
                   <div className="flex-1"><div className="flex items-center justify-between mb-2"><span className={cn("text-2xl font-bold", getScoreColor(score))}>{Math.round(score)}%</span><span className="text-xs text-muted-foreground">{t('exitKeys.destination.compatibility')}</span></div><Progress value={score} className="h-2" /></div>
                 </div>
                 {reasons.length > 0 && <div className="flex flex-wrap gap-1.5 mt-3">{reasons.slice(0, 3).map((r, i) => <span key={i} className={cn("text-xs px-2 py-1 rounded-full", r.impact === 'high' ? "bg-green-500/20 text-green-700 dark:text-green-300" : "bg-muted text-muted-foreground")}>{t(r.key)}</span>)}</div>}

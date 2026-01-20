@@ -82,7 +82,9 @@
       "excellentHealthcare": "उत्कृष्ट स्वास्थ्य सेवा",
       "poorHealthcare": "सीमित स्वास्थ्य सेवा",
       "nomadCommunity": "सक्रिय नोमैड समुदाय",
-      "nomadFriendly": "नोमैड-अनुकूल वातावरण"
+      "nomadFriendly": "नोमैड-अनुकूल वातावरण",
+      "expectedSalary": "अपेक्षित वेतन",
+      "costOfLiving": "जीवन यापन लागत"
     }
   },
   "journey": {

@@ -64,7 +64,9 @@
       "excellentHealthcare": "Ausgezeichnete Gesundheitsversorgung",
       "poorHealthcare": "Begrenzte Gesundheitsversorgung",
       "nomadCommunity": "Aktive Nomaden-Community",
-      "nomadFriendly": "Nomadenfreundliche Umgebung"
+      "nomadFriendly": "Nomadenfreundliche Umgebung",
+      "expectedSalary": "Erwartetes Gehalt",
+      "costOfLiving": "Lebenshaltungskosten"
     }
   },
   "insights": {

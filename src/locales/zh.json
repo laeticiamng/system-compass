@@ -82,7 +82,9 @@
       "excellentHealthcare": "优秀的医疗系统",
       "poorHealthcare": "医疗系统有限",
       "nomadCommunity": "活跃的游民社区",
-      "nomadFriendly": "游民友好环境"
+      "nomadFriendly": "游民友好环境",
+      "expectedSalary": "预期薪资",
+      "costOfLiving": "生活成本"
     }
   },
   "journey": {

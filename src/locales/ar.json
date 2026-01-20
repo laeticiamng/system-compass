@@ -82,7 +82,9 @@
       "excellentHealthcare": "رعاية صحية ممتازة",
       "poorHealthcare": "رعاية صحية محدودة",
       "nomadCommunity": "مجتمع بدو نشط",
-      "nomadFriendly": "بيئة صديقة للبدو"
+      "nomadFriendly": "بيئة صديقة للبدو",
+      "expectedSalary": "الراتب المتوقع",
+      "costOfLiving": "تكلفة المعيشة"
     }
   },
   "journey": {

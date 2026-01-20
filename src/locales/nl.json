@@ -64,7 +64,9 @@
       "excellentHealthcare": "Uitstekende gezondheidszorg",
       "poorHealthcare": "Beperkte gezondheidszorg",
       "nomadCommunity": "Actieve nomadengemeenschap",
-      "nomadFriendly": "Nomadevriendelijke omgeving"
+      "nomadFriendly": "Nomadevriendelijke omgeving",
+      "expectedSalary": "Verwacht salaris",
+      "costOfLiving": "Kosten van levensonderhoud"
     }
   },
   "insights": {
