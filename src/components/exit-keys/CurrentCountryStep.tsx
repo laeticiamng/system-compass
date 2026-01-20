@@ -9,7 +9,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { useCountries } from '@/lib/countries-data';
-import { PyramidType } from '@/lib/types';
+import { usePyramidTranslations } from '@/hooks/usePyramidTranslations';
 
 interface CurrentCountryStepProps {
   birthCountryId: string;
@@ -25,16 +25,6 @@ function getFlagEmoji(iso2: string) {
     .join('');
 }
 
-// Map pyramid types to translation keys
-const PYRAMID_TYPE_TRANSLATION_KEYS: Record<PyramidType, { label: string; detailsKey: string }> = {
-  PROBLEM_RENT: { label: 'pyramids.problemRent.label', detailsKey: 'problemRent' },
-  STABILITY_REDIS: { label: 'pyramids.stabilityRedis.label', detailsKey: 'stabilityRedis' },
-  COMPETENCE_TRUST: { label: 'pyramids.competenceTrust.label', detailsKey: 'competenceTrust' },
-  GROWTH_RISK: { label: 'pyramids.growthRisk.label', detailsKey: 'growthRisk' },
-  HYBRID_TRANSITION: { label: 'pyramids.hybridTransition.label', detailsKey: 'hybridTransition' },
-  RESOURCE_EXTRACTION: { label: 'pyramids.resourceExtraction.label', detailsKey: 'resourceExtraction' },
-};
-
 export function CurrentCountryStep({
   birthCountryId,
   currentCountryId,
@@ -42,48 +32,8 @@ export function CurrentCountryStep({
 }: CurrentCountryStepProps) {
   const { t } = useTranslation();
   const { countries } = useCountries();
+  const { getPyramidLabel, getWhoThrives, getWhoPays } = usePyramidTranslations();
   const currentCountry = countries.find(c => c.id === currentCountryId);
-
-  // Get translated pyramid label
-  const getPyramidLabel = (pyramidType: PyramidType) => {
-    const key = PYRAMID_TYPE_TRANSLATION_KEYS[pyramidType];
-    return t(key.label, pyramidType);
-  };
-
-  // Get translated whoThrives/whoPays from pyramidTypes.details
-  const getWhoThrives = (pyramidType: PyramidType): string[] => {
-    const key = PYRAMID_TYPE_TRANSLATION_KEYS[pyramidType]?.detailsKey;
-    if (!key) return [];
-    
-    const translated = t(`pyramidTypes.details.${key}.whoThrives`, { returnObjects: true, defaultValue: [] });
-    if (Array.isArray(translated) && translated.length > 0) {
-      return translated.filter((item): item is string => typeof item === 'string');
-    }
-    
-    // Fallback to country data if translation not found
-    const countryWhoWins = currentCountry?.whoWins;
-    if (Array.isArray(countryWhoWins)) {
-      return countryWhoWins.slice(0, 4);
-    }
-    return [];
-  };
-
-  const getWhoPays = (pyramidType: PyramidType): string[] => {
-    const key = PYRAMID_TYPE_TRANSLATION_KEYS[pyramidType]?.detailsKey;
-    if (!key) return [];
-    
-    const translated = t(`pyramidTypes.details.${key}.whoPays`, { returnObjects: true, defaultValue: [] });
-    if (Array.isArray(translated) && translated.length > 0) {
-      return translated.filter((item): item is string => typeof item === 'string');
-    }
-    
-    // Fallback to country data if translation not found
-    const countryWhoLoses = currentCountry?.whoLoses;
-    if (Array.isArray(countryWhoLoses)) {
-      return countryWhoLoses.slice(0, 4);
-    }
-    return [];
-  };
 
   return (
     <div className="space-y-6">
@@ -141,7 +91,7 @@ export function CurrentCountryStep({
               <ul className="text-sm space-y-1">
                 {getWhoThrives(currentCountry.pyramidType).slice(0, 2).map((item, i) => (
                   <li key={i} className="flex items-center gap-1">
-                    <CheckCircle className="w-3 h-3 text-emerald-500 shrink-0" />
+                    <CheckCircle className="w-3 h-3 text-green-500 dark:text-green-400 shrink-0" />
                     <span className="truncate">{item}</span>
                   </li>
                 ))}
