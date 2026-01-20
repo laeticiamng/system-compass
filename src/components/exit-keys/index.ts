@@ -9,3 +9,6 @@ export { VacationRecommendations } from './VacationRecommendations';
 export { SavedExitKeysPanel } from './SavedExitKeysPanel';
 export { ExitKeysPdfExport } from './ExitKeysPdfExport';
 export { ShareResultsButton } from './ShareResultsButton';
+export { IntentionStep } from './IntentionStep';
+export { DestinationSelector } from './DestinationSelector';
+export { PersonalizedExitKeys } from './PersonalizedExitKeys';

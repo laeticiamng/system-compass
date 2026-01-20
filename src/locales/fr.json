@@ -6813,15 +6813,50 @@
       "profile": "Profil",
       "priority": "Priorité"
     },
+    "intention": {
+      "title": "Quel est votre projet ?",
+      "subtitle": "Votre intention détermine les destinations et stratégies recommandées",
+      "yourAge": "Votre âge",
+      "ageExplain": "L'âge influence les opportunités et démarches disponibles",
+      "installation": "Installation / Travail",
+      "installationDesc": "S'installer durablement dans un nouveau pays pour travailler",
+      "vacation": "Vacances / Séjour court",
+      "vacationDesc": "Voyager pour le plaisir avec un budget optimisé",
+      "internship": "Stage / Études",
+      "internshipDesc": "Faire un stage ou poursuivre des études à l'étranger",
+      "retirement": "Retraite",
+      "retirementDesc": "Profiter de sa retraite dans un pays au coût de vie avantageux",
+      "digitalNomad": "Nomade digital",
+      "digitalNomadDesc": "Travailler à distance tout en voyageant"
+    },
+    "destination": {
+      "title": "Où voulez-vous aller ?",
+      "subtitle": "Destinations optimisées pour votre projet et votre profil",
+      "showAll": "Voir tous les pays",
+      "topRecommendations": "Meilleures recommandations",
+      "budgetFriendly": "Budget avantageux",
+      "quickAccess": "Accès facile",
+      "systemStability": "Système stable"
+    },
+    "personalized": {
+      "selectDestination": "Sélectionnez une destination pour voir les clés personnalisées",
+      "estimatedTimeline": "Délai estimé",
+      "yourSteps": "Vos étapes personnalisées",
+      "warnings": "Points d'attention",
+      "accelerators": "Vos atouts",
+      "relevantStrategies": "Stratégies recommandées",
+      "countryInfo": "Informations clés sur"
+    },
     "results": {
       "title": "Vos Clés de Sortie",
-      "strategiesFound": "stratégies identifiées pour votre situation",
+      "strategiesFound": "{{count}} stratégies identifiées pour votre situation",
+      "personalizedFor": "Analyse personnalisée pour {{country}}",
       "nationalityAdvantages": "Avantages de vos Nationalités",
       "visaFreeCountries": "pays sans visa",
       "memberOf": "Membre de",
       "regionalBlocs": "Blocs régionaux",
-      "installation": "Installation",
-      "vacation": "Vacances"
+      "installationTab": "Installation",
+      "vacationTab": "Vacances"
     },
     "installation": {
       "title": "Timeline d'installation",
