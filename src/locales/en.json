@@ -6679,15 +6679,50 @@
       "profile": "Profile",
       "priority": "Priority"
     },
+    "intention": {
+      "title": "What is your project?",
+      "subtitle": "Your intention determines recommended destinations and strategies",
+      "yourAge": "Your age",
+      "ageExplain": "Age influences available opportunities and procedures",
+      "installation": "Installation / Work",
+      "installationDesc": "Settle permanently in a new country for work",
+      "vacation": "Vacation / Short stay",
+      "vacationDesc": "Travel for pleasure with an optimized budget",
+      "internship": "Internship / Studies",
+      "internshipDesc": "Do an internship or pursue studies abroad",
+      "retirement": "Retirement",
+      "retirementDesc": "Enjoy retirement in a country with a favorable cost of living",
+      "digitalNomad": "Digital nomad",
+      "digitalNomadDesc": "Work remotely while traveling"
+    },
+    "destination": {
+      "title": "Where do you want to go?",
+      "subtitle": "Destinations optimized for your project and profile",
+      "showAll": "See all countries",
+      "topRecommendations": "Top recommendations",
+      "budgetFriendly": "Budget friendly",
+      "quickAccess": "Easy access",
+      "systemStability": "Stable system"
+    },
+    "personalized": {
+      "selectDestination": "Select a destination to see personalized keys",
+      "estimatedTimeline": "Estimated timeline",
+      "yourSteps": "Your personalized steps",
+      "warnings": "Points of attention",
+      "accelerators": "Your advantages",
+      "relevantStrategies": "Recommended strategies",
+      "countryInfo": "Key information about"
+    },
     "results": {
       "title": "Your Exit Keys",
-      "strategiesFound": "strategies identified for your situation",
+      "strategiesFound": "{{count}} strategies identified for your situation",
+      "personalizedFor": "Personalized analysis for {{country}}",
       "nationalityAdvantages": "Your Nationality Advantages",
       "visaFreeCountries": "visa-free countries",
       "memberOf": "Member of",
       "regionalBlocs": "Regional blocs",
-      "installation": "Installation",
-      "vacation": "Vacation"
+      "installationTab": "Installation",
+      "vacationTab": "Vacation"
     },
     "installation": {
       "title": "Installation Timeline",

@@ -30,7 +30,7 @@ import { getNationalityAdvantages, getPassportStrengthLabel, REGIONAL_BLOCS, get
 import { EDUCATION_LEVELS, PROFESSIONS, PROFESSION_CATEGORY_LABELS, getProfession, type EducationLevel, type ProfessionCategory } from '@/lib/profession-data';
 import ExitKeyCard from '@/components/ExitKeyCard';
 import { cn } from '@/lib/utils';
-import { useExitKeysProfile } from '@/hooks/useExitKeysProfile';
+import { useExitKeysProfile, type ProjectIntention } from '@/hooks/useExitKeysProfile';
 import { useAuth } from '@/hooks/useAuth';
 import { useAnalytics } from '@/hooks/useAnalytics';
 import { DestinationMap } from '@/components/DestinationMap';
@@ -47,8 +47,11 @@ import { SavedExitKeysPanel } from '@/components/exit-keys/SavedExitKeysPanel';
 import { ExitKeysPdfExport } from '@/components/exit-keys/ExitKeysPdfExport';
 import { ShareResultsButton } from '@/components/exit-keys/ShareResultsButton';
 import { useExitKeysHistory } from '@/hooks/useExitKeysHistory';
+import { IntentionStep } from '@/components/exit-keys/IntentionStep';
+import { DestinationSelector } from '@/components/exit-keys/DestinationSelector';
+import { PersonalizedExitKeys } from '@/components/exit-keys/PersonalizedExitKeys';
 
-const STEPS = ['origin', 'current', 'profile', 'goals', 'results'] as const;
+const STEPS = ['origin', 'current', 'profile', 'goals', 'intention', 'destination', 'results'] as const;
 type Step = typeof STEPS[number];
 
 const priorityOptions: { value: LifePriority; labelKey: string; icon: string }[] = [
@@ -100,6 +103,11 @@ export default function ExitKeys() {
   const [hasFamily, setHasFamily] = useState(false);
   const [educationLevel, setEducationLevel] = useState<EducationLevel | undefined>();
   const [professionId, setProfessionId] = useState<string | undefined>();
+  
+  // New intention-based states
+  const [projectIntention, setProjectIntention] = useState<ProjectIntention>('installation');
+  const [age, setAge] = useState<number>(30);
+  const [selectedDestinationId, setSelectedDestinationId] = useState<string>('');
 
   // Load saved profile on mount
   useEffect(() => {
@@ -146,8 +154,14 @@ export default function ExitKeys() {
       hasFamily,
       educationLevel,
       professionId,
+      age,
+      projectIntention,
+      selectedDestinationId,
     });
   };
+  
+  // Selected destination country
+  const selectedDestination = countries.find(c => c.id === selectedDestinationId);
 
   // Derived data
   const birthCountry = countries.find(c => c.id === birthCountryId);
@@ -235,6 +249,8 @@ export default function ExitKeys() {
       case 'current': return !!currentCountryId;
       case 'profile': return true;
       case 'goals': return true;
+      case 'intention': return !!projectIntention && age >= 16 && age <= 100;
+      case 'destination': return !!selectedDestinationId;
       default: return false;
     }
   };
@@ -908,36 +924,85 @@ export default function ExitKeys() {
             </div>
           )}
 
-          {/* Step 5: Results */}
+          {/* Step 5: Intention - Type de projet et âge */}
+          {currentStep === 'intention' && (
+            <IntentionStep
+              intention={projectIntention}
+              onIntentionChange={setProjectIntention}
+              age={age}
+              onAgeChange={setAge}
+            />
+          )}
+
+          {/* Step 6: Destination - Sélection du pays */}
+          {currentStep === 'destination' && (
+            <DestinationSelector
+              intention={projectIntention}
+              nationalityIds={nationalityIds}
+              currentCountryId={currentCountryId}
+              desiredLife={desiredLife}
+              age={age}
+              professionId={professionId}
+              selectedDestinationId={selectedDestinationId}
+              onDestinationSelect={setSelectedDestinationId}
+            />
+          )}
+
+          {/* Step 7: Results */}
           {currentStep === 'results' && (
             <div className="space-y-8">
               <div className="text-center mb-8">
                 <Zap className="w-12 h-12 text-primary mx-auto mb-4" />
                 <h2 className="text-2xl font-bold mb-2">{t('exitKeys.results.title', 'Vos Clés de Sortie')}</h2>
                 <p className="text-muted-foreground">
-                  {t('exitKeys.results.strategiesFound', '{{count}} stratégies identifiées pour votre situation', { count: exitKeyResults.length })}
+                  {selectedDestination 
+                    ? t('exitKeys.results.personalizedFor', 'Analyse personnalisée pour {{country}}', { country: selectedDestination.name })
+                    : t('exitKeys.results.strategiesFound', '{{count}} stratégies identifiées pour votre situation', { count: exitKeyResults.length })
+                  }
                 </p>
               </div>
 
-              {/* Context Summary */}
+              {/* Context Summary with destination */}
               <div className="glass-card rounded-xl p-6 bg-primary/5">
                 <div className="flex flex-wrap items-center justify-center gap-4 text-sm">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xl">{birthCountry && getFlagEmoji(birthCountry.iso2)}</span>
-                    <span>{birthCountry?.name}</span>
-                  </div>
-                  <ChevronRight className="w-4 h-4 text-muted-foreground" />
                   <div className="flex items-center gap-2">
                     <span className="text-xl">{currentCountry && getFlagEmoji(currentCountry.iso2)}</span>
                     <span>{currentCountry?.name}</span>
                   </div>
                   <ChevronRight className="w-4 h-4 text-muted-foreground" />
+                  {selectedDestination && (
+                    <>
+                      <div className="flex items-center gap-2 px-3 py-1 bg-primary/20 rounded-full">
+                        <span className="text-xl">{getFlagEmoji(selectedDestination.iso2)}</span>
+                        <span className="font-medium">{selectedDestination.name}</span>
+                      </div>
+                      <ChevronRight className="w-4 h-4 text-muted-foreground" />
+                    </>
+                  )}
                   <div className="flex items-center gap-2">
                     <span className="text-xl">{priorityOptions.find(p => p.value === desiredLife)?.icon}</span>
                     <span>{t(priorityOptions.find(p => p.value === desiredLife)?.labelKey || '')}</span>
                   </div>
+                  <div className="flex items-center gap-2 px-3 py-1 bg-muted rounded-full">
+                    <span>{age} {t('common.years', 'ans')}</span>
+                  </div>
                 </div>
               </div>
+
+              {/* Personalized Exit Keys for selected destination */}
+              {selectedDestinationId && (
+                <PersonalizedExitKeys
+                  destinationCountryId={selectedDestinationId}
+                  currentCountryId={currentCountryId}
+                  intention={projectIntention}
+                  age={age}
+                  professionId={professionId}
+                  hasCapital={hasCapital}
+                  hasCredentials={hasCredentials}
+                  hasNetwork={hasNetwork}
+                  educationLevel={educationLevel}
+                />
+              )}
 
               {/* Nationality Advantages */}
               {nationalityAdvantages.uniqueAdvantages.length > 0 && (
