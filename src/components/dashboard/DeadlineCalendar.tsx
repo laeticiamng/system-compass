@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -36,14 +37,34 @@ interface CalendarEvent {
   isOverdue: boolean;
 }
 
-const DAYS_FR = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'];
-const MONTHS_FR = [
-  'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
-  'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'
-];
-
 export function DeadlineCalendar({ progress, exitKey }: DeadlineCalendarProps) {
+  const { t } = useTranslation();
   const [currentDate, setCurrentDate] = useState(new Date());
+
+  // i18n day and month names
+  const DAYS = [
+    t('calendar.days.sun', 'Dim'),
+    t('calendar.days.mon', 'Lun'),
+    t('calendar.days.tue', 'Mar'),
+    t('calendar.days.wed', 'Mer'),
+    t('calendar.days.thu', 'Jeu'),
+    t('calendar.days.fri', 'Ven'),
+    t('calendar.days.sat', 'Sam')
+  ];
+  const MONTHS = [
+    t('calendar.months.january', 'Janvier'),
+    t('calendar.months.february', 'Février'),
+    t('calendar.months.march', 'Mars'),
+    t('calendar.months.april', 'Avril'),
+    t('calendar.months.may', 'Mai'),
+    t('calendar.months.june', 'Juin'),
+    t('calendar.months.july', 'Juillet'),
+    t('calendar.months.august', 'Août'),
+    t('calendar.months.september', 'Septembre'),
+    t('calendar.months.october', 'Octobre'),
+    t('calendar.months.november', 'Novembre'),
+    t('calendar.months.december', 'Décembre')
+  ];
 
   // Get calendar events from deadlines
   const events = useMemo(() => {
@@ -151,7 +172,7 @@ export function DeadlineCalendar({ progress, exitKey }: DeadlineCalendarProps) {
         <Card>
           <CardContent className="p-4 text-center">
             <div className="text-2xl font-bold text-primary">{stats.upcoming}</div>
-            <div className="text-xs text-muted-foreground">À venir</div>
+            <div className="text-xs text-muted-foreground">{t('calendar.upcoming', 'À venir')}</div>
           </CardContent>
         </Card>
         <Card className={stats.overdue > 0 ? 'border-destructive/50' : ''}>
@@ -159,13 +180,13 @@ export function DeadlineCalendar({ progress, exitKey }: DeadlineCalendarProps) {
             <div className={`text-2xl font-bold ${stats.overdue > 0 ? 'text-destructive' : ''}`}>
               {stats.overdue}
             </div>
-            <div className="text-xs text-muted-foreground">En retard</div>
+            <div className="text-xs text-muted-foreground">{t('calendar.overdue', 'En retard')}</div>
           </CardContent>
         </Card>
         <Card>
           <CardContent className="p-4 text-center">
             <div className="text-2xl font-bold text-green-500">{stats.completed}</div>
-            <div className="text-xs text-muted-foreground">Complétées</div>
+            <div className="text-xs text-muted-foreground">{t('calendar.completed', 'Complétées')}</div>
           </CardContent>
         </Card>
       </div>
@@ -176,11 +197,11 @@ export function DeadlineCalendar({ progress, exitKey }: DeadlineCalendarProps) {
           <div className="flex items-center justify-between">
             <CardTitle className="text-lg flex items-center gap-2">
               <Calendar className="w-5 h-5" />
-              {MONTHS_FR[currentDate.getMonth()]} {currentDate.getFullYear()}
+              {MONTHS[currentDate.getMonth()]} {currentDate.getFullYear()}
             </CardTitle>
             <div className="flex items-center gap-2">
               <Button variant="outline" size="sm" onClick={goToToday}>
-                Aujourd'hui
+                {t('calendar.today', 'Aujourd\'hui')}
               </Button>
               <Button variant="ghost" size="icon" onClick={prevMonth}>
                 <ChevronLeft className="w-4 h-4" />
@@ -194,8 +215,8 @@ export function DeadlineCalendar({ progress, exitKey }: DeadlineCalendarProps) {
         <CardContent>
           {/* Day headers */}
           <div className="grid grid-cols-7 gap-1 mb-2">
-            {DAYS_FR.map(day => (
-              <div key={day} className="text-center text-xs font-medium text-muted-foreground py-2">
+            {DAYS.map((day, idx) => (
+              <div key={idx} className="text-center text-xs font-medium text-muted-foreground py-2">
                 {day}
               </div>
             ))}
@@ -245,15 +266,15 @@ export function DeadlineCalendar({ progress, exitKey }: DeadlineCalendarProps) {
           <div className="flex justify-center gap-6 mt-4 pt-4 border-t">
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-destructive" />
-              <span className="text-xs text-muted-foreground">En retard</span>
+              <span className="text-xs text-muted-foreground">{t('calendar.overdue', 'En retard')}</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-primary" />
-              <span className="text-xs text-muted-foreground">À venir</span>
+              <span className="text-xs text-muted-foreground">{t('calendar.upcoming', 'À venir')}</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-green-500" />
-              <span className="text-xs text-muted-foreground">Complété</span>
+              <span className="text-xs text-muted-foreground">{t('calendar.completedSingle', 'Complété')}</span>
             </div>
           </div>
         </CardContent>
@@ -267,7 +288,7 @@ export function DeadlineCalendar({ progress, exitKey }: DeadlineCalendarProps) {
             <CardHeader className="pb-3">
               <CardTitle className="text-base flex items-center gap-2 text-destructive">
                 <AlertTriangle className="w-4 h-4" />
-                En retard ({stats.overdue})
+                {t('calendar.overdueCount', 'En retard ({{count}})', { count: stats.overdue })}
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -298,7 +319,7 @@ export function DeadlineCalendar({ progress, exitKey }: DeadlineCalendarProps) {
           <CardHeader className="pb-3">
             <CardTitle className="text-base flex items-center gap-2">
               <Calendar className="w-4 h-4" />
-              Prochaines échéances ({stats.upcoming})
+              {t('calendar.upcomingDeadlines', 'Prochaines échéances ({{count}})', { count: stats.upcoming })}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -332,7 +353,7 @@ export function DeadlineCalendar({ progress, exitKey }: DeadlineCalendarProps) {
                 })}
               {stats.upcoming === 0 && (
                 <p className="text-sm text-muted-foreground text-center py-4">
-                  Aucune échéance à venir. Définissez des échéances pour vos actions !
+                  {t('calendar.noUpcoming', 'Aucune échéance à venir. Définissez des échéances pour vos actions !')}
                 </p>
               )}
             </div>
@@ -344,7 +365,7 @@ export function DeadlineCalendar({ progress, exitKey }: DeadlineCalendarProps) {
           <CardHeader className="pb-3">
             <CardTitle className="text-base flex items-center gap-2 text-green-600">
               <CheckCircle2 className="w-4 h-4" />
-              Récemment complétées
+              {t('calendar.recentlyCompleted', 'Récemment complétées')}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -367,7 +388,7 @@ export function DeadlineCalendar({ progress, exitKey }: DeadlineCalendarProps) {
                 ))}
               {stats.completed === 0 && (
                 <p className="text-sm text-muted-foreground text-center py-4">
-                  Aucune action complétée avec échéance.
+                  {t('calendar.noCompleted', 'Aucune action complétée avec échéance.')}
                 </p>
               )}
             </div>

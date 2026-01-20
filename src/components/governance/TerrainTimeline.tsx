@@ -188,7 +188,13 @@ export function TerrainTimeline({ countryId, countryName, projectType }: Terrain
             </h4>
             <div className="text-right">
               <div className="text-2xl font-bold">{formatDuration(totalTimeline)}</div>
-              <Badge className={currentScenario.color + '/20 text-' + currentScenario.color.replace('bg-', '')}>
+              <Badge className={
+                currentScenario.type === 'optimistic'
+                  ? 'bg-green-500/20 text-green-600'
+                  : currentScenario.type === 'realistic'
+                    ? 'bg-amber-500/20 text-amber-600'
+                    : 'bg-red-500/20 text-red-600'
+              }>
                 {t('governance.timeline.scenario', 'Scenario')} {getScenarioLabel(currentScenario.type).toLowerCase()}
               </Badge>
             </div>

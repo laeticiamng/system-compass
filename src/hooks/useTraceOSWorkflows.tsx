@@ -65,7 +65,7 @@ export function useTraceOSWorkflows() {
       
       setWorkflows(typedData);
     } catch (err) {
-      console.error('Error fetching workflows:', err);
+      // Silent fail for workflows fetching
     } finally {
       setLoading(false);
     }
@@ -99,7 +99,6 @@ export function useTraceOSWorkflows() {
         steps: (data.steps as unknown as WorkflowStep[]) || []
       };
     } catch (err) {
-      console.error('Error creating workflow:', err);
       toast.error('Erreur lors de la création du workflow');
       return null;
     }
@@ -121,7 +120,6 @@ export function useTraceOSWorkflows() {
       toast.success('Workflow supprimé');
       return true;
     } catch (err) {
-      console.error('Error deleting workflow:', err);
       toast.error('Erreur lors de la suppression');
       return false;
     }
@@ -163,7 +161,7 @@ export function useTraceOSApprovals(decisionId?: string) {
       if (error) throw error;
       setApprovals((data || []) as Approval[]);
     } catch (err) {
-      console.error('Error fetching approvals:', err);
+      // Silent fail for approvals fetching
     } finally {
       setLoading(false);
     }
@@ -206,7 +204,6 @@ export function useTraceOSApprovals(decisionId?: string) {
       toast.success('Workflow d\'approbation démarré');
       return true;
     } catch (err) {
-      console.error('Error starting workflow:', err);
       toast.error('Erreur lors du démarrage du workflow');
       return false;
     }
@@ -240,7 +237,6 @@ export function useTraceOSApprovals(decisionId?: string) {
       toast.success('Étape approuvée avec signature électronique');
       return true;
     } catch (err) {
-      console.error('Error approving step:', err);
       toast.error('Erreur lors de l\'approbation');
       return false;
     }
@@ -270,7 +266,6 @@ export function useTraceOSApprovals(decisionId?: string) {
       toast.success('Étape rejetée');
       return true;
     } catch (err) {
-      console.error('Error rejecting step:', err);
       toast.error('Erreur lors du rejet');
       return false;
     }

@@ -113,9 +113,8 @@ export function AiReportBuilder({ context, onComplete }: ReportBuilderProps) {
         onComplete(report);
       }
     } catch (error) {
-      console.error('Report generation error:', error);
       toast.error(t('report.error', 'Erreur lors de la génération'));
-      setSections(prev => prev.map((s, idx) => 
+      setSections(prev => prev.map((s, idx) =>
         idx === currentStep - 1 ? { ...s, status: 'error' } : s
       ));
     } finally {
@@ -123,11 +122,110 @@ export function AiReportBuilder({ context, onComplete }: ReportBuilderProps) {
     }
   };
 
-  const exportToPdf = () => {
-    // For now, we'll use a simple print dialog
-    // In production, you'd use jspdf or similar
-    window.print();
-    toast.success(t('report.exported', 'Export PDF lancé'));
+  const exportToPdf = async () => {
+    if (!report) return;
+
+    try {
+      const { jsPDF } = await import('jspdf');
+      const doc = new jsPDF();
+      const pageWidth = doc.internal.pageSize.getWidth();
+      const margin = 20;
+      let yPosition = 20;
+
+      // Title
+      doc.setFontSize(18);
+      doc.setFont('helvetica', 'bold');
+      doc.text(t('report.title', 'Rapport B2B'), pageWidth / 2, yPosition, { align: 'center' });
+      yPosition += 15;
+
+      // Date
+      doc.setFontSize(10);
+      doc.setFont('helvetica', 'normal');
+      doc.text(`${t('report.generatedOn', 'Généré le')} ${new Date().toLocaleDateString()}`, pageWidth / 2, yPosition, { align: 'center' });
+      yPosition += 20;
+
+      // Executive Summary
+      if (report.resume_executif) {
+        doc.setFontSize(14);
+        doc.setFont('helvetica', 'bold');
+        doc.text(t('report.sections.executive', 'Résumé exécutif'), margin, yPosition);
+        yPosition += 10;
+        doc.setFontSize(10);
+        doc.setFont('helvetica', 'normal');
+        const summaryLines = doc.splitTextToSize(report.resume_executif, pageWidth - 2 * margin);
+        doc.text(summaryLines, margin, yPosition);
+        yPosition += summaryLines.length * 5 + 10;
+      }
+
+      // Profile
+      if (report.profil?.points_cles?.length > 0) {
+        if (yPosition > 250) { doc.addPage(); yPosition = 20; }
+        doc.setFontSize(14);
+        doc.setFont('helvetica', 'bold');
+        doc.text(t('report.sections.profile', 'Profil client'), margin, yPosition);
+        yPosition += 10;
+        doc.setFontSize(10);
+        doc.setFont('helvetica', 'normal');
+        report.profil.points_cles.forEach((point: string) => {
+          if (yPosition > 270) { doc.addPage(); yPosition = 20; }
+          const pointLines = doc.splitTextToSize(`• ${point}`, pageWidth - 2 * margin);
+          doc.text(pointLines, margin, yPosition);
+          yPosition += pointLines.length * 5 + 3;
+        });
+        yPosition += 10;
+      }
+
+      // Options
+      if (report.options_identifiees?.length > 0) {
+        if (yPosition > 250) { doc.addPage(); yPosition = 20; }
+        doc.setFontSize(14);
+        doc.setFont('helvetica', 'bold');
+        doc.text(t('report.sections.options', 'Options identifiées'), margin, yPosition);
+        yPosition += 10;
+        doc.setFontSize(10);
+        doc.setFont('helvetica', 'normal');
+        report.options_identifiees.forEach((opt: string) => {
+          if (yPosition > 270) { doc.addPage(); yPosition = 20; }
+          const optLines = doc.splitTextToSize(`• ${opt}`, pageWidth - 2 * margin);
+          doc.text(optLines, margin, yPosition);
+          yPosition += optLines.length * 5 + 3;
+        });
+        yPosition += 10;
+      }
+
+      // Vigilance Points
+      if (report.points_vigilance?.length > 0) {
+        if (yPosition > 250) { doc.addPage(); yPosition = 20; }
+        doc.setFontSize(14);
+        doc.setFont('helvetica', 'bold');
+        doc.text(t('report.sections.risks', 'Points de vigilance'), margin, yPosition);
+        yPosition += 10;
+        doc.setFontSize(10);
+        doc.setFont('helvetica', 'normal');
+        report.points_vigilance.forEach((point: string) => {
+          if (yPosition > 270) { doc.addPage(); yPosition = 20; }
+          const pointLines = doc.splitTextToSize(`⚠ ${point}`, pageWidth - 2 * margin);
+          doc.text(pointLines, margin, yPosition);
+          yPosition += pointLines.length * 5 + 3;
+        });
+      }
+
+      // Disclaimer
+      doc.setFontSize(8);
+      doc.setTextColor(128);
+      doc.text(
+        t('report.disclaimer', 'Ce rapport est un outil d\'analyse. Il ne constitue pas un conseil juridique, financier ou fiscal.'),
+        pageWidth / 2,
+        doc.internal.pageSize.getHeight() - 10,
+        { align: 'center' }
+      );
+
+      // Save PDF
+      doc.save(`rapport-b2b-${new Date().toISOString().split('T')[0]}.pdf`);
+      toast.success(t('report.exported', 'PDF exporté avec succès'));
+    } catch (error) {
+      toast.error(t('report.exportError', 'Erreur lors de l\'export PDF'));
+    }
   };
 
   const toggleSection = (id: string) => {

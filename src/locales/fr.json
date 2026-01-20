@@ -67,7 +67,68 @@
     "submit": "Soumettre",
     "sending": "Envoi...",
     "new": "Nouveau",
-    "view": "Voir"
+    "view": "Voir",
+    "select": "Sélectionner",
+    "creating": "Création..."
+  },
+  "calendar": {
+    "days": {
+      "sun": "Dim",
+      "mon": "Lun",
+      "tue": "Mar",
+      "wed": "Mer",
+      "thu": "Jeu",
+      "fri": "Ven",
+      "sat": "Sam"
+    },
+    "months": {
+      "january": "Janvier",
+      "february": "Février",
+      "march": "Mars",
+      "april": "Avril",
+      "may": "Mai",
+      "june": "Juin",
+      "july": "Juillet",
+      "august": "Août",
+      "september": "Septembre",
+      "october": "Octobre",
+      "november": "Novembre",
+      "december": "Décembre"
+    },
+    "today": "Aujourd'hui",
+    "upcoming": "À venir",
+    "overdue": "En retard",
+    "completed": "Complétées",
+    "completedSingle": "Complété",
+    "overdueCount": "En retard ({{count}})",
+    "upcomingDeadlines": "Prochaines échéances ({{count}})",
+    "recentlyCompleted": "Récemment complétées",
+    "noUpcoming": "Aucune échéance à venir. Définissez des échéances pour vos actions !",
+    "noCompleted": "Aucune action complétée avec échéance."
+  },
+  "report": {
+    "title": "Générateur de Rapport B2B",
+    "description": "Générez un rapport structuré et exportable pour vos clients",
+    "generating": "Génération en cours...",
+    "generated": "Rapport généré avec succès",
+    "error": "Erreur lors de la génération",
+    "exportError": "Erreur lors de l'export PDF",
+    "exported": "PDF exporté avec succès",
+    "generatedOn": "Généré le",
+    "preview": "Aperçu du rapport",
+    "generate": "Générer le rapport",
+    "exportPdf": "Exporter PDF",
+    "regenerate": "Régénérer",
+    "disclaimer": "Ce rapport est un outil d'analyse. Il ne constitue pas un conseil juridique, financier ou fiscal.",
+    "sections": {
+      "executive": "Résumé exécutif",
+      "profile": "Profil client",
+      "analysis": "Analyse comparative",
+      "risks": "Points d'attention",
+      "nextSteps": "Prochaines étapes",
+      "compliance": "Vérification conformité",
+      "options": "Options identifiées"
+    }
   },
   "errors": {
     "rateLimited": "Trop de requêtes. Veuillez réessayer dans quelques instants.",
