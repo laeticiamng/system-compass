@@ -16,6 +16,7 @@ export interface GameStatistics {
   totalMoneyLost: number;
   totalHealthLost: number;
   favoriteActions: Record<string, number>;
+  displayName?: string;
 }
 
 const LOCAL_STORAGE_KEY = 'game_statistics';
@@ -60,6 +61,15 @@ export function useGameStatistics() {
       // If logged in, fetch from Supabase
       if (user) {
         try {
+          // First, fetch user display name from profiles
+          const { data: profileData } = await supabase
+            .from('profiles')
+            .select('display_name')
+            .eq('id', user.id)
+            .maybeSingle();
+          
+          const userDisplayName = profileData?.display_name || user.email?.split('@')[0] || 'Anonymous';
+
           const { data, error } = await supabase
             .from('game_statistics')
             .select('*')
@@ -83,12 +93,23 @@ export function useGameStatistics() {
               totalMoneyLost: data.total_money_lost || 0,
               totalHealthLost: data.total_health_lost || 0,
               favoriteActions: (data.favorite_actions as Record<string, number>) || {},
+              displayName: userDisplayName,
             };
             setStats(cloudStats);
             localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(cloudStats));
+            
+            // Update display_name in game_statistics if it changed
+            if (data.display_name !== userDisplayName) {
+              await supabase
+                .from('game_statistics')
+                .update({ display_name: userDisplayName })
+                .eq('user_id', user.id);
+            }
           } else if (localData) {
             // Sync local to cloud if no cloud data
-            await syncToCloud(JSON.parse(localData));
+            const parsed = JSON.parse(localData);
+            parsed.displayName = userDisplayName;
+            await syncToCloud(parsed, userDisplayName);
           }
         } catch (error) {
           console.error('Error loading from Supabase:', error);

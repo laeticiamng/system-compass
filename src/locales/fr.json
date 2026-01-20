@@ -418,6 +418,16 @@
       "description": "Gagner une partie en mode course"
     }
   },
+  "game": {
+    "leaderboard": {
+      "title": "Classement",
+      "sectionTitle": "Classement des joueurs",
+      "sectionSubtitle": "Comparez vos scores avec la communauté",
+      "viewAll": "Voir tout le classement",
+      "error": "Impossible de charger le classement",
+      "empty": "Aucun score enregistré. Soyez le premier !"
+    }
+  },
   "footer": {
     "explore": "Explorer",
     "tools": "Outils",
