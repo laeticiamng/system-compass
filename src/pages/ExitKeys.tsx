@@ -533,7 +533,7 @@ export default function ExitKeys() {
                         <div>
                           <h3 className="font-bold">{birthCountry.name}</h3>
                           <p className="text-xs text-muted-foreground">
-                            {PYRAMID_TYPE_INFO[birthCountry.pyramidType].label}
+                            {PYRAMID_TYPE_INFO[birthCountry.pyramidType]?.label || getPyramidLabel(birthCountry.pyramidType)}
                           </p>
                         </div>
                       </div>
@@ -588,7 +588,7 @@ export default function ExitKeys() {
                           <span className="text-xl">{getFlagEmoji(country.iso2)}</span>
                           <span>{country.name}</span>
                           <span className="text-xs text-muted-foreground ml-2">
-                            {PYRAMID_TYPE_INFO[country.pyramidType].label}
+                            {PYRAMID_TYPE_INFO[country.pyramidType]?.label || getPyramidLabel(country.pyramidType)}
                           </span>
                         </span>
                       </SelectItem>
