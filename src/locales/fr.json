@@ -7653,6 +7653,27 @@
     "disclaimer": {
       "title": "Outil de réflexion personnelle",
       "text": "Ce module vous aide à cartographier vos zones de tension. Il ne remplace pas un accompagnement professionnel."
+    },
+    "empty": {
+      "title": "Aucune zone latente",
+      "description": "Créez votre premier espace pour ce qui n'est pas encore prêt",
+      "cta": "Créer ma première zone"
+    },
+    "detail": {
+      "createdAt": "Créée le",
+      "updatedAt": "Mise à jour le",
+      "tensionsCount": "Nombre de tensions"
+    },
+    "tensions": {
+      "title": "Tensions"
+    },
+    "stats": {
+      "total": "Total",
+      "dormant": "Dormantes",
+      "emergent": "Émergentes",
+      "fragile": "Fragiles",
+      "blocked": "Bloquées",
+      "avgTensions": "Tensions moy."
     }
   },
   "irreversa": {
@@ -7748,6 +7769,36 @@
     "disclaimer": {
       "title": "Outil de documentation",
       "text": "Ce module vous aide à documenter les seuils franchis. Il a une valeur de clarification personnelle, pas légale."
+    },
+    "sealed": {
+      "notice": "Scellé le"
+    },
+    "witnesses": {
+      "title": "Témoins",
+      "add": "Ajouter un témoin",
+      "name": "Nom du témoin",
+      "role": "Rôle du témoin",
+      "statement": "Déclaration",
+      "empty": "Aucun témoin enregistré",
+      "added": "Témoin ajouté"
+    },
+    "witnessRole": {
+      "executive": "Cadre dirigeant",
+      "board_member": "Membre du conseil",
+      "legal_counsel": "Conseil juridique",
+      "external_advisor": "Conseiller externe",
+      "auditor": "Auditeur",
+      "stakeholder": "Partie prenante"
+    },
+    "audit": {
+      "empty": "Aucune entrée d'audit",
+      "action": {
+        "created": "Seuil créé",
+        "marked": "Seuil marqué",
+        "witness_added": "Témoin ajouté",
+        "validated": "Seuil validé",
+        "sealed": "Seuil scellé"
+      }
     }
   },
   "partners": {
@@ -8428,6 +8479,18 @@
     },
     "preview": {
       "title": "Aperçu du contenu"
+    },
+    "suggestions": {
+      "title": "Lectures OVI suggérées",
+      "subtitle": "Ces ressources peuvent enrichir votre réflexion après cette simulation.",
+      "relevantTo": "Pertinent pour votre analyse",
+      "viewMore": "Voir dans OVI",
+      "unlockPro": "Débloquer avec Pro",
+      "viewAll": "Voir tous les contenus OVI"
+    },
+    "type": {
+      "framework": "Cadre",
+      "grid": "Grille"
     },
     "intro": {
       "title": "Qu'est-ce que l'OVI ?",

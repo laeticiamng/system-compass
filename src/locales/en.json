@@ -5697,6 +5697,18 @@
     "preview": {
       "title": "Content preview"
     },
+    "suggestions": {
+      "title": "Suggested OVI readings",
+      "subtitle": "These resources can enrich your reflection after this simulation.",
+      "relevantTo": "Relevant to your analysis",
+      "viewMore": "View in OVI",
+      "unlockPro": "Unlock with Pro",
+      "viewAll": "View all OVI content"
+    },
+    "type": {
+      "framework": "Framework",
+      "grid": "Grid"
+    },
     "intro": {
       "title": "What is OVI?",
       "p1": "The Observatory of Invisible Variables is not another tool. It's a space for perspective — a thought laboratory integrated into Pyramid Compass.",
