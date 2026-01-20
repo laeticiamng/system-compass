@@ -106,7 +106,7 @@ function TimelineCard({
         {title}
       </div>
       <ul className="space-y-2">
-        {items.map((item, i) => (
+        {(items || []).map((item, i) => (
           <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
             <span className="text-primary mt-1">•</span>
             {item}
