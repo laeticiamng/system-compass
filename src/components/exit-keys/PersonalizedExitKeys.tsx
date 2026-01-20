@@ -1,15 +1,13 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { 
-  Key, ChevronRight, AlertTriangle, CheckCircle, Shield, 
-  Clock, Target, Zap, MapPin, Briefcase, GraduationCap,
-  Users, DollarSign, FileText, Building
+  Key, AlertTriangle, Clock, Target, Zap, FileText, Building
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useCountries } from '@/lib/countries-data';
 import { Country } from '@/lib/types';
 import { ProjectIntention } from '@/hooks/useExitKeysProfile';
-import { EXIT_KEYS, ExitKey, ExitKeyStep } from '@/lib/exit-keys-engine';
+import { EXIT_KEYS, ExitKey } from '@/lib/exit-keys-engine';
 import { getProfession } from '@/lib/profession-data';
 import { usePyramidTranslations } from '@/hooks/usePyramidTranslations';
 
@@ -33,112 +31,6 @@ function getFlagEmoji(iso2: string) {
     .join('');
 }
 
-// Generate personalized steps based on destination, profession, and intention
-function generatePersonalizedSteps(
-  destination: Country,
-  intention: ProjectIntention,
-  age: number,
-  professionId?: string,
-  hasCredentials?: boolean
-): { steps: string[]; warnings: string[]; accelerators: string[]; timeline: string } {
-  const steps: string[] = [];
-  const warnings: string[] = [];
-  const accelerators: string[] = [];
-  let timeline = '6-12 mois';
-
-  const profession = professionId ? getProfession(professionId) : null;
-
-  // Base steps for all intentions
-  switch (intention) {
-    case 'installation':
-      steps.push(`Vérifier les équivalences de diplômes pour ${destination.name}`);
-      steps.push(`Rechercher les offres d'emploi dans votre secteur`);
-      steps.push(`Préparer les démarches de visa de travail`);
-      steps.push(`Trouver un logement temporaire`);
-      
-      if (profession) {
-        // Check if profession requires licensing (healthcare, legal, etc.)
-        const requiresLicense = profession.category === 'healthcare' || profession.category === 'legal';
-        if (requiresLicense) {
-          steps.push(`Obtenir la reconnaissance de votre licence professionnelle en ${destination.name}`);
-          warnings.push(`Votre profession nécessite une accréditation locale en ${destination.name}`);
-          timeline = '12-24 mois';
-        }
-        if (profession.internationalDemand === 'high' || profession.internationalDemand === 'very_high') {
-          accelerators.push(`Forte demande internationale pour les ${profession.name}`);
-        }
-      }
-
-      if (age > 45) {
-        warnings.push('Certains visas ont des limites d\'âge - vérifiez les conditions');
-      }
-      if (age < 30) {
-        accelerators.push('Éligible aux programmes jeunes professionnels / PVT');
-      }
-      break;
-
-    case 'vacation':
-      steps.push(`Vérifier les conditions d'entrée pour ${destination.name}`);
-      steps.push('Réserver hébergement et transports');
-      steps.push('Souscrire une assurance voyage');
-      steps.push('Préparer un budget quotidien réaliste');
-      timeline = '1-4 semaines';
-
-      const costOfLiving = destination.costOfLiving?.monthlyBudgetSingle || 1500;
-      if (costOfLiving < 1000) {
-        accelerators.push('Destination très économique');
-      }
-      break;
-
-    case 'internship':
-      steps.push(`Rechercher des entreprises/organisations en ${destination.name}`);
-      steps.push('Préparer CV et lettre de motivation adaptés');
-      steps.push('Demander un visa étudiant/stagiaire');
-      steps.push('Trouver un logement étudiant');
-      timeline = '3-6 mois de préparation';
-
-      if (age > 30) {
-        warnings.push('Les stages sont généralement réservés aux moins de 30 ans');
-      }
-      if (hasCredentials) {
-        accelerators.push('Vos diplômes faciliteront les démarches');
-      }
-      break;
-
-    case 'retirement':
-      steps.push('Calculer votre pension nette après imposition');
-      steps.push(`Vérifier les accords fiscaux France-${destination.name}`);
-      steps.push('Évaluer la couverture santé disponible');
-      steps.push('Trouver un logement adapté');
-      timeline = '6-12 mois de préparation';
-
-      if (age < 55) {
-        warnings.push('Vous n\'êtes pas encore en âge de retraite légal');
-      }
-      const healthcareQuality = destination.healthcare?.qualityScore || 50;
-      if (healthcareQuality < 60) {
-        warnings.push('Système de santé limité - assurance privée recommandée');
-      } else {
-        accelerators.push('Bon système de santé public');
-      }
-      break;
-
-    case 'digital_nomad':
-      steps.push(`Vérifier les visas nomade digital en ${destination.name}`);
-      steps.push('Préparer votre structure juridique (auto-entrepreneur, société)');
-      steps.push('Trouver des espaces de coworking');
-      steps.push('Assurer une couverture santé internationale');
-      timeline = '1-3 mois de préparation';
-
-      if (destination.pyramidType === 'GROWTH_RISK') {
-        accelerators.push('Communauté nomade active dans ce pays');
-      }
-      break;
-  }
-
-  return { steps, warnings, accelerators, timeline };
-}
-
 // Find relevant exit keys for the destination and intention
 function findRelevantExitKeys(
   destination: Country,
@@ -148,18 +40,14 @@ function findRelevantExitKeys(
   const profession = professionId ? getProfession(professionId) : null;
   
   return EXIT_KEYS.filter(key => {
-    // Check if key targets this pyramid type
     const matchesPyramid = key.targetPyramids.includes(destination.pyramidType);
     
-    // Check profession compatibility
     const matchesProfession = !profession || 
       profession.compatibleExitKeys.length === 0 || 
       profession.compatibleExitKeys.includes(key.id);
 
-    // Check intention relevance
     let matchesIntention = true;
     if (intention === 'vacation') {
-      // Vacation doesn't need exit keys - it's temporary
       matchesIntention = false;
     } else if (intention === 'internship') {
       matchesIntention = key.difficulty === 'accessible';
@@ -172,9 +60,9 @@ function findRelevantExitKeys(
 }
 
 const difficultyConfig = {
-  accessible: { label: 'Accessible', color: 'bg-emerald-500/20 text-emerald-400', icon: '🟢' },
-  exigeant: { label: 'Exigeant', color: 'bg-amber-500/20 text-amber-400', icon: '🟡' },
-  expert: { label: 'Expert', color: 'bg-red-500/20 text-red-400', icon: '🔴' },
+  accessible: { labelKey: 'exitKeys.difficulty.accessible', color: 'bg-green-500/20 text-green-400' },
+  exigeant: { labelKey: 'exitKeys.difficulty.demanding', color: 'bg-amber-500/20 text-amber-400' },
+  expert: { labelKey: 'exitKeys.difficulty.expert', color: 'bg-red-500/20 text-red-400' },
 };
 
 export function PersonalizedExitKeys({
@@ -193,19 +81,112 @@ export function PersonalizedExitKeys({
   const { getPyramidLabel } = usePyramidTranslations();
 
   const destination = countries.find(c => c.id === destinationCountryId);
-  const currentCountry = countries.find(c => c.id === currentCountryId);
+  const profession = professionId ? getProfession(professionId) : null;
 
+  // Generate personalized steps, warnings, and accelerators using translations
   const { steps, warnings, accelerators, timeline } = useMemo(() => {
     if (!destination) return { steps: [], warnings: [], accelerators: [], timeline: '' };
-    return generatePersonalizedSteps(destination, intention, age, professionId, hasCredentials);
-  }, [destination, intention, age, professionId, hasCredentials]);
+    
+    const stepsList: string[] = [];
+    const warningsList: string[] = [];
+    const acceleratorsList: string[] = [];
+    let timelineStr = t('exitKeys.personalized.timeline.6to12months', '6-12 mois');
+
+    const countryName = destination.name;
+
+    switch (intention) {
+      case 'installation':
+        stepsList.push(t('exitKeys.personalized.steps.checkDiplomas', 'Vérifier les équivalences de diplômes pour {{country}}', { country: countryName }));
+        stepsList.push(t('exitKeys.personalized.steps.searchJobs', 'Rechercher les offres d\'emploi dans votre secteur'));
+        stepsList.push(t('exitKeys.personalized.steps.prepareVisa', 'Préparer les démarches de visa de travail'));
+        stepsList.push(t('exitKeys.personalized.steps.findHousing', 'Trouver un logement temporaire'));
+        
+        if (profession) {
+          const requiresLicense = profession.category === 'healthcare' || profession.category === 'legal';
+          if (requiresLicense) {
+            stepsList.push(t('exitKeys.personalized.steps.getLicense', 'Obtenir la reconnaissance de votre licence professionnelle en {{country}}', { country: countryName }));
+            warningsList.push(t('exitKeys.personalized.warnings.requiresLicense', 'Votre profession nécessite une accréditation locale en {{country}}', { country: countryName }));
+            timelineStr = t('exitKeys.personalized.timeline.12to24months', '12-24 mois');
+          }
+          if (profession.internationalDemand === 'high' || profession.internationalDemand === 'very_high') {
+            acceleratorsList.push(t('exitKeys.personalized.accelerators.highDemand', 'Forte demande internationale pour les {{profession}}', { profession: profession.name }));
+          }
+        }
+
+        if (age > 45) {
+          warningsList.push(t('exitKeys.personalized.warnings.ageLimit', 'Certains visas ont des limites d\'âge - vérifiez les conditions'));
+        }
+        if (age < 30) {
+          acceleratorsList.push(t('exitKeys.personalized.accelerators.youngPro', 'Éligible aux programmes jeunes professionnels / PVT'));
+        }
+        break;
+
+      case 'vacation':
+        stepsList.push(t('exitKeys.personalized.steps.checkEntry', 'Vérifier les conditions d\'entrée pour {{country}}', { country: countryName }));
+        stepsList.push(t('exitKeys.personalized.steps.bookTravel', 'Réserver hébergement et transports'));
+        stepsList.push(t('exitKeys.personalized.steps.getInsurance', 'Souscrire une assurance voyage'));
+        stepsList.push(t('exitKeys.personalized.steps.prepareBudget', 'Préparer un budget quotidien réaliste'));
+        timelineStr = t('exitKeys.personalized.timeline.1to4weeks', '1-4 semaines');
+
+        const costOfLiving = destination.costOfLiving?.monthlyBudgetSingle || 1500;
+        if (costOfLiving < 1000) {
+          acceleratorsList.push(t('exitKeys.personalized.accelerators.veryAffordable', 'Destination très économique'));
+        }
+        break;
+
+      case 'internship':
+        stepsList.push(t('exitKeys.personalized.steps.searchCompanies', 'Rechercher des entreprises/organisations en {{country}}', { country: countryName }));
+        stepsList.push(t('exitKeys.personalized.steps.prepareCV', 'Préparer CV et lettre de motivation adaptés'));
+        stepsList.push(t('exitKeys.personalized.steps.studentVisa', 'Demander un visa étudiant/stagiaire'));
+        stepsList.push(t('exitKeys.personalized.steps.studentHousing', 'Trouver un logement étudiant'));
+        timelineStr = t('exitKeys.personalized.timeline.3to6months', '3-6 mois de préparation');
+
+        if (age > 30) {
+          warningsList.push(t('exitKeys.personalized.warnings.internshipAge', 'Les stages sont généralement réservés aux moins de 30 ans'));
+        }
+        if (hasCredentials) {
+          acceleratorsList.push(t('exitKeys.personalized.accelerators.credentials', 'Vos diplômes faciliteront les démarches'));
+        }
+        break;
+
+      case 'retirement':
+        stepsList.push(t('exitKeys.personalized.steps.calculatePension', 'Calculer votre pension nette après imposition'));
+        stepsList.push(t('exitKeys.personalized.steps.checkTaxTreaties', 'Vérifier les accords fiscaux avec {{country}}', { country: countryName }));
+        stepsList.push(t('exitKeys.personalized.steps.evaluateHealthcare', 'Évaluer la couverture santé disponible'));
+        stepsList.push(t('exitKeys.personalized.steps.findAdaptedHousing', 'Trouver un logement adapté'));
+        timelineStr = t('exitKeys.personalized.timeline.6to12monthsPrep', '6-12 mois de préparation');
+
+        if (age < 55) {
+          warningsList.push(t('exitKeys.personalized.warnings.notRetired', 'Vous n\'êtes pas encore en âge de retraite légal'));
+        }
+        const healthcareQuality = destination.healthcare?.qualityScore || 50;
+        if (healthcareQuality < 60) {
+          warningsList.push(t('exitKeys.personalized.warnings.limitedHealthcare', 'Système de santé limité - assurance privée recommandée'));
+        } else {
+          acceleratorsList.push(t('exitKeys.personalized.accelerators.goodHealthcare', 'Bon système de santé public'));
+        }
+        break;
+
+      case 'digital_nomad':
+        stepsList.push(t('exitKeys.personalized.steps.checkNomadVisa', 'Vérifier les visas nomade digital en {{country}}', { country: countryName }));
+        stepsList.push(t('exitKeys.personalized.steps.prepareStructure', 'Préparer votre structure juridique (auto-entrepreneur, société)'));
+        stepsList.push(t('exitKeys.personalized.steps.findCoworking', 'Trouver des espaces de coworking'));
+        stepsList.push(t('exitKeys.personalized.steps.internationalHealth', 'Assurer une couverture santé internationale'));
+        timelineStr = t('exitKeys.personalized.timeline.1to3months', '1-3 mois de préparation');
+
+        if (destination.pyramidType === 'GROWTH_RISK') {
+          acceleratorsList.push(t('exitKeys.personalized.accelerators.nomadCommunity', 'Communauté nomade active dans ce pays'));
+        }
+        break;
+    }
+
+    return { steps: stepsList, warnings: warningsList, accelerators: acceleratorsList, timeline: timelineStr };
+  }, [destination, intention, age, professionId, hasCredentials, t, profession]);
 
   const relevantExitKeys = useMemo(() => {
     if (!destination) return [];
     return findRelevantExitKeys(destination, intention, professionId);
   }, [destination, intention, professionId]);
-
-  const profession = professionId ? getProfession(professionId) : null;
 
   if (!destination) {
     return (
@@ -237,7 +218,7 @@ export function PersonalizedExitKeys({
         {/* Profile summary */}
         <div className="flex flex-wrap gap-2 pt-4 border-t border-border/50">
           <span className="px-3 py-1 rounded-full bg-muted text-sm">
-            {age} ans
+            {age} {t('common.years', 'ans')}
           </span>
           {profession && (
             <span className="px-3 py-1 rounded-full bg-muted text-sm">
@@ -250,18 +231,18 @@ export function PersonalizedExitKeys({
             </span>
           )}
           {hasCapital && (
-            <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-sm">
-              💰 Capital
+            <span className="px-3 py-1 rounded-full bg-green-500/20 text-green-600 dark:text-green-400 text-sm">
+              💰 {t('exitKeys.profile.capital', 'Capital')}
             </span>
           )}
           {hasCredentials && (
-            <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 text-sm">
-              📜 Diplômes
+            <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-600 dark:text-blue-400 text-sm">
+              📜 {t('exitKeys.profile.diplomas', 'Diplômes')}
             </span>
           )}
           {hasNetwork && (
-            <span className="px-3 py-1 rounded-full bg-purple-500/20 text-purple-400 text-sm">
-              🤝 Réseau
+            <span className="px-3 py-1 rounded-full bg-purple-500/20 text-purple-600 dark:text-purple-400 text-sm">
+              🤝 {t('exitKeys.profile.network', 'Réseau')}
             </span>
           )}
         </div>
@@ -289,7 +270,7 @@ export function PersonalizedExitKeys({
       <div className="grid md:grid-cols-2 gap-4">
         {warnings.length > 0 && (
           <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30">
-            <h4 className="font-medium text-amber-500 mb-2 flex items-center gap-2">
+            <h4 className="font-medium text-amber-600 dark:text-amber-400 mb-2 flex items-center gap-2">
               <AlertTriangle className="w-4 h-4" />
               {t('exitKeys.personalized.warnings', 'Points d\'attention')}
             </h4>
@@ -305,15 +286,15 @@ export function PersonalizedExitKeys({
         )}
 
         {accelerators.length > 0 && (
-          <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30">
-            <h4 className="font-medium text-emerald-500 mb-2 flex items-center gap-2">
+          <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/30">
+            <h4 className="font-medium text-green-600 dark:text-green-400 mb-2 flex items-center gap-2">
               <Zap className="w-4 h-4" />
               {t('exitKeys.personalized.accelerators', 'Vos atouts')}
             </h4>
             <ul className="space-y-1">
               {accelerators.map((acc, i) => (
                 <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                  <span className="text-emerald-500 mt-1">✓</span>
+                  <span className="text-green-500 mt-1">✓</span>
                   {acc}
                 </li>
               ))}
@@ -338,7 +319,7 @@ export function PersonalizedExitKeys({
                     <div className="flex items-center gap-2 mb-1">
                       <h4 className="font-semibold">{key.name}</h4>
                       <span className={cn("text-xs px-2 py-0.5 rounded-full", difficultyConfig[key.difficulty].color)}>
-                        {difficultyConfig[key.difficulty].label}
+                        {t(difficultyConfig[key.difficulty].labelKey, key.difficulty)}
                       </span>
                     </div>
                     <p className="text-sm text-muted-foreground mb-2">{key.unlocks}</p>
@@ -369,13 +350,13 @@ export function PersonalizedExitKeys({
         <div className="grid md:grid-cols-2 gap-4">
           {destination.costOfLiving && (
             <div className="p-3 rounded-lg bg-muted/30">
-              <p className="text-xs text-muted-foreground mb-1">Coût de vie mensuel</p>
+              <p className="text-xs text-muted-foreground mb-1">{t('exitKeys.personalized.monthlyCost', 'Coût de vie mensuel')}</p>
               <p className="font-bold text-lg">~{destination.costOfLiving.monthlyBudgetSingle}€</p>
             </div>
           )}
           {destination.healthcare && (
             <div className="p-3 rounded-lg bg-muted/30">
-              <p className="text-xs text-muted-foreground mb-1">Système de santé</p>
+              <p className="text-xs text-muted-foreground mb-1">{t('exitKeys.personalized.healthcareSystem', 'Système de santé')}</p>
               <p className="font-bold text-lg">{destination.healthcare.qualityScore}/100</p>
             </div>
           )}
