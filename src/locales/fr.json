@@ -8207,6 +8207,7 @@
     }
   },
   "governance": {
+    "mapTab": "Carte",
     "map": {
       "title": "Cartographie de gouvernance",
       "add": "Ajouter",
