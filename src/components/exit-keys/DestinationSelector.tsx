@@ -1,14 +1,11 @@
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { MapPin, Star, DollarSign, Shield, Clock, ChevronRight, Sparkles, Users, Briefcase, Plane, GraduationCap, Palmtree } from 'lucide-react';
+import { ChevronRight, Briefcase, Plane, GraduationCap, Palmtree, Laptop } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useCountries } from '@/lib/countries-data';
 import { Country } from '@/lib/types';
 import { ProjectIntention } from '@/hooks/useExitKeysProfile';
-import { getSmartVacationRecommendations, VacationDestination } from '@/lib/purchasing-power';
-import { getRecommendedDestinations, DestinationRecommendation } from '@/lib/nationality-advantages';
 import { LifePriority } from '@/lib/types';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 interface DestinationSelectorProps {
   intention: ProjectIntention;
@@ -29,94 +26,89 @@ function getFlagEmoji(iso2: string) {
     .join('');
 }
 
-// Score a country for different intentions
+// Score a country for different intentions - returns translation keys
 function scoreCountryForIntention(
   country: Country,
   intention: ProjectIntention,
   age: number,
   currentCostOfLiving: number
-): { score: number; reasons: string[] } {
+): { score: number; reasonKeys: string[] } {
   let score = 50;
-  const reasons: string[] = [];
+  const reasonKeys: string[] = [];
 
   const costOfLiving = country.costOfLiving?.monthlyBudgetSingle || 1500;
   const visaFriendly = country.visa?.workVisa === 'easy' || country.visa?.digitalNomadVisa;
   
   switch (intention) {
     case 'installation':
-      // For installation: job market, quality of life, admin ease
       if (country.pyramidType === 'COMPETENCE_TRUST' || country.pyramidType === 'STABILITY_REDIS') {
         score += 15;
-        reasons.push('Système stable');
+        reasonKeys.push('exitKeys.destination.systemStability');
       }
       if (costOfLiving < currentCostOfLiving * 0.8) {
         score += 10;
-        reasons.push('Coût de vie avantageux');
+        reasonKeys.push('exitKeys.destination.budgetFriendly');
       }
       if (age < 35) {
         score += 5;
-        reasons.push('Opportunités jeunes actifs');
+        reasonKeys.push('exitKeys.destination.youngOpportunities');
       }
       break;
 
     case 'vacation':
-      // For vacation: cost efficiency, safety, visa ease
       if (costOfLiving < currentCostOfLiving * 0.5) {
         score += 25;
-        reasons.push('Budget très favorable');
+        reasonKeys.push('exitKeys.destination.veryAffordable');
       } else if (costOfLiving < currentCostOfLiving * 0.7) {
         score += 15;
-        reasons.push('Bon rapport qualité-prix');
+        reasonKeys.push('exitKeys.destination.goodValue');
       }
       if (visaFriendly) {
         score += 10;
-        reasons.push('Accès facile');
+        reasonKeys.push('exitKeys.destination.quickAccess');
       }
       break;
 
     case 'internship':
-      // For internship: education quality, language, visa for students
       if (age < 30) {
         score += 20;
-        reasons.push('Idéal pour les stages');
+        reasonKeys.push('exitKeys.destination.idealInternship');
       }
       if (country.pyramidType === 'COMPETENCE_TRUST') {
         score += 15;
-        reasons.push('Excellence académique');
+        reasonKeys.push('exitKeys.destination.academicExcellence');
       }
       break;
 
     case 'retirement':
-      // For retirement: cost of living, healthcare, weather, safety
       if (age >= 55) {
         score += 10;
-        reasons.push('Adapté aux retraités');
+        reasonKeys.push('exitKeys.destination.retireeFriendly');
       }
       if (costOfLiving < currentCostOfLiving * 0.6) {
         score += 20;
-        reasons.push('Pension valorisée');
+        reasonKeys.push('exitKeys.destination.pensionValue');
       }
       const healthcareQuality = country.healthcare?.qualityScore || 50;
       if (healthcareQuality >= 70) {
         score += 15;
-        reasons.push('Bonne couverture santé');
+        reasonKeys.push('exitKeys.destination.goodHealthcare');
       }
       break;
 
     case 'digital_nomad':
-      // For digital nomad: cost, internet, community, visa flexibility
       if (costOfLiving < currentCostOfLiving * 0.5) {
         score += 20;
-        reasons.push('Coût de vie très bas');
+        reasonKeys.push('exitKeys.destination.veryLowCost');
       }
       if (country.pyramidType === 'GROWTH_RISK' || country.pyramidType === 'HYBRID_TRANSITION') {
         score += 10;
-        reasons.push('Communauté nomade active');
+        reasonKeys.push('exitKeys.destination.nomadCommunity');
       }
       break;
   }
 
-  return { score: Math.min(100, score), reasons };
+  return { score: Math.min(100, score), reasonKeys };
 }
 
 export function DestinationSelector({
@@ -131,7 +123,6 @@ export function DestinationSelector({
 }: DestinationSelectorProps) {
   const { t } = useTranslation();
   const { countries } = useCountries();
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
   const currentCountry = countries.find(c => c.id === currentCountryId);
   const currentCostOfLiving = currentCountry?.costOfLiving?.monthlyBudgetSingle || 2000;
@@ -156,7 +147,7 @@ export function DestinationSelector({
       case 'vacation': return <Plane className="w-5 h-5" />;
       case 'internship': return <GraduationCap className="w-5 h-5" />;
       case 'retirement': return <Palmtree className="w-5 h-5" />;
-      case 'digital_nomad': return <Briefcase className="w-5 h-5" />;
+      case 'digital_nomad': return <Laptop className="w-5 h-5" />;
     }
   };
 
@@ -187,7 +178,7 @@ export function DestinationSelector({
 
       {/* Recommendations grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {topRecommendations.map(({ country, score, reasons }) => {
+        {topRecommendations.map(({ country, score, reasonKeys }) => {
           const isSelected = selectedDestinationId === country.id;
           const costOfLiving = country.costOfLiving?.monthlyBudgetSingle || 1500;
           
@@ -204,9 +195,9 @@ export function DestinationSelector({
             >
               {/* Score badge */}
               <div className={cn(
-                "absolute -top-2 -right-2 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold",
-                score >= 80 ? "bg-emerald-500 text-white" :
-                score >= 60 ? "bg-amber-500 text-white" :
+                "absolute -top-2 -right-2 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-white",
+                score >= 80 ? "bg-green-600 dark:bg-green-500" :
+                score >= 60 ? "bg-amber-600 dark:bg-amber-500" :
                 "bg-muted text-foreground"
               )}>
                 {score}
@@ -217,16 +208,16 @@ export function DestinationSelector({
                 <div className="flex-1 min-w-0">
                   <h4 className="font-semibold truncate">{country.name}</h4>
                   <p className="text-xs text-muted-foreground truncate">
-                    ~{costOfLiving}€/mois
+                    ~{costOfLiving}€/{t('common.month', 'mois')}
                   </p>
                 </div>
               </div>
 
-              {reasons.length > 0 && (
+              {reasonKeys.length > 0 && (
                 <div className="flex flex-wrap gap-1">
-                  {reasons.slice(0, 2).map((reason, i) => (
+                  {reasonKeys.slice(0, 2).map((key, i) => (
                     <span key={i} className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary">
-                      {reason}
+                      {t(key)}
                     </span>
                   ))}
                 </div>
