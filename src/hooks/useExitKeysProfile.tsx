@@ -6,6 +6,8 @@ import { LifeMotorProfile, LifePriority } from '@/lib/types';
 import { toast } from 'sonner';
 import { EducationLevel, ProfessionCategory } from '@/lib/profession-data';
 
+export type ProjectIntention = 'installation' | 'vacation' | 'internship' | 'retirement' | 'digital_nomad';
+
 export interface ExitKeysProfile {
   birthCountryId: string;
   nationalityIds: string[];
@@ -19,9 +21,13 @@ export interface ExitKeysProfile {
   hasNetwork: boolean;
   isLGBTQ: boolean;
   hasFamily: boolean;
-  // NEW: Education and profession for better matching
+  // Education and profession for better matching
   educationLevel?: EducationLevel;
   professionId?: string;
+  // NEW: Age and intention for personalization
+  age?: number;
+  projectIntention?: ProjectIntention;
+  selectedDestinationId?: string; // The country user wants to go to
 }
 
 const STORAGE_KEY = 'exit_keys_profile';
