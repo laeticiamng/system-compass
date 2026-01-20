@@ -141,18 +141,18 @@ export default function OVI() {
                     icon={Brain}
                     title={t('ovi.frameworks.title', 'Cadres de réflexion')}
                     items={[
-                      t('ovi.frameworks.bias', 'Biais cognitifs'),
-                      t('ovi.frameworks.irreversible', 'Décisions irréversibles'),
-                      t('ovi.frameworks.control', 'Illusion de contrôle')
+                      t('ovi.frameworks.bias.title', 'Biais cognitifs'),
+                      t('ovi.frameworks.irreversible.title', 'Décisions irréversibles'),
+                      t('ovi.frameworks.control.title', 'Illusion de contrôle')
                     ]}
                   />
                   <PreviewCard 
                     icon={Grid3X3}
                     title={t('ovi.grids.title', 'Grilles de lecture')}
                     items={[
-                      t('ovi.grids.reversibility', 'Réversible / Irréversible'),
-                      t('ovi.grids.agency', 'Moi / Système'),
-                      t('ovi.grids.visibility', 'Visible / Invisible')
+                      t('ovi.grids.reversibility.title', 'Réversible / Irréversible'),
+                      t('ovi.grids.agency.title', 'Moi / Système'),
+                      t('ovi.grids.visibility.title', 'Visible / Invisible')
                     ]}
                   />
                 </div>
