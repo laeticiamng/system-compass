@@ -5915,107 +5915,6 @@
       "priority": "Priorité"
     }
   },
-  "ovi": {
-    "title": "OVI - Outils de Vision Intérieure",
-    "subtitle": "Cadres de réflexion pour décisions complexes",
-    "frameworks": {
-      "cognitiveBias": {
-        "title": "Biais Cognitifs",
-        "desc": "Identifiez les distorsions de pensée qui influencent vos décisions"
-      },
-      "irreversible": {
-        "title": "Décisions Irréversibles",
-        "desc": "Évaluez ce qui peut vraiment être annulé et ce qui ne le peut pas"
-      },
-      "controlIllusion": {
-        "title": "Illusion de Contrôle",
-        "desc": "Distinguez ce que vous contrôlez réellement de ce qui vous échappe"
-      },
-      "hiddenCosts": {
-        "title": "Coûts Cachés",
-        "desc": "Révélez les coûts invisibles de vos choix"
-      },
-      "timingError": {
-        "title": "Erreur de Timing",
-        "desc": "Analysez si le moment est vraiment le bon"
-      },
-      "systemBias": {
-        "title": "Biais Systémique",
-        "desc": "Comprenez comment le système influence vos options"
-      },
-      "culturalBlindSpots": {
-        "title": "Angles Morts Culturels",
-        "desc": "Identifiez ce que votre culture vous empêche de voir"
-      },
-      "comparisonFallacy": {
-        "title": "Erreur de Comparaison",
-        "desc": "Évitez les comparaisons qui faussent votre jugement"
-      },
-      "opportunityCost": {
-        "title": "Coût d'Opportunité",
-        "desc": "Évaluez ce que vous sacrifiez en choisissant cette option"
-      },
-      "sunkCost": {
-        "title": "Coûts Irrécupérables",
-        "desc": "Ne laissez pas le passé dicter vos décisions futures"
-      },
-      "confirmationBias": {
-        "title": "Biais de Confirmation",
-        "desc": "Cherchez activement ce qui contredit votre hypothèse"
-      },
-      "overconfidence": {
-        "title": "Excès de Confiance",
-        "desc": "Calibrez votre certitude avec la réalité"
-      },
-      "planningFallacy": {
-        "title": "Erreur de Planification",
-        "desc": "Anticipez les dépassements de temps et de budget"
-      }
-    },
-    "grids": {
-      "visibleInvisible": {
-        "title": "Visible / Invisible",
-        "desc": "Ce qu'on voit facilement vs ce qui reste caché"
-      },
-      "meSystem": {
-        "title": "Moi / Système",
-        "desc": "Ce qui dépend de vous vs ce qui dépend du contexte"
-      },
-      "reversibleIrreversible": {
-        "title": "Réversible / Irréversible",
-        "desc": "Ce qu'on peut annuler vs ce qui est définitif"
-      },
-      "shortLongTerm": {
-        "title": "Court terme / Long terme",
-        "desc": "Gains immédiats vs conséquences futures"
-      },
-      "controllableUncontrollable": {
-        "title": "Contrôlable / Incontrôlable",
-        "desc": "Ce que vous pouvez influencer vs ce qui vous échappe"
-      },
-      "certainUncertain": {
-        "title": "Certain / Incertain",
-        "desc": "Ce qu'on sait vs ce qu'on suppose"
-      },
-      "urgentImportant": {
-        "title": "Urgent / Important",
-        "desc": "Ce qui presse vs ce qui compte vraiment"
-      }
-    },
-    "suggestions": {
-      "title": "Lectures OVI suggérées",
-      "subtitle": "Ces ressources peuvent enrichir votre réflexion après cette simulation.",
-      "basedOn": "Basé sur votre simulation",
-      "explore": "Explorer ce cadre",
-      "dismiss": "Ignorer",
-      "unlockPro": "Débloquer avec Pro",
-      "viewAll": "Voir tous les contenus OVI"
-    },
-    "type": {
-      "framework": "Cadre",
-      "grid": "Grille"
-    }
-  },
   "traceOS": {
     "categories": {
       "hr": "RH",
@@ -8868,8 +8767,17 @@
     "suggestions": {
       "title": "Lectures suggérées de l'OVI",
       "subtitle": "Enrichissez votre réflexion avec des cadres pertinents",
+      "basedOn": "Basé sur votre simulation",
+      "explore": "Explorer ce cadre",
+      "dismiss": "Ignorer",
+      "unlockPro": "Débloquer avec Pro",
+      "viewAll": "Voir tous les contenus OVI",
       "viewMore": "Voir dans l'OVI",
       "relevantTo": "Pertinent pour votre analyse"
+    },
+    "type": {
+      "framework": "Cadre",
+      "grid": "Grille"
     }
   },
   "music": {
