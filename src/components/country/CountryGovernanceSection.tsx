@@ -75,7 +75,7 @@ export function CountryGovernanceSection({
           </TabsTrigger>
           <TabsTrigger value="governance" className="gap-1 text-xs sm:text-sm hidden lg:flex">
             <MapPin className="w-3 h-3 sm:w-4 sm:h-4" />
-            <span>{t('governance.map', 'Carte')}</span>
+            <span>{t('governance.mapTab', 'Carte')}</span>
           </TabsTrigger>
           <TabsTrigger value="execution" className="gap-1 text-xs sm:text-sm hidden lg:flex">
             <Clock className="w-3 h-3 sm:w-4 sm:h-4" />
