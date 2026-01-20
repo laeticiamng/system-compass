@@ -6757,6 +6757,10 @@
   "exitKeys": {
     "title": "Trouvez Votre Clé de Sortie",
     "subtitle": "Simulez et analysez les stratégies adaptées à votre situation",
+    "badge": {
+      "personalized": "Analyse personnalisée",
+      "global": "190+ pays analysés"
+    },
     "reminder": "Rappel",
     "lucidityMessage": "Pyramid Compass structure la lucidité. Si l'analyse révèle que votre option est trop risquée ou irréaliste, nous vous aiderons à explorer des alternatives : rester et entreprendre, migrer autrement, se former d'abord, ou changer d'objectif.",
     "steps": {
