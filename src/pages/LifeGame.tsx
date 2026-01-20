@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { SimulationDisclaimer } from '@/components/SimulationDisclaimer';
 import { Button } from '@/components/ui/button';
+import GameLeaderboard from '@/components/game/GameLeaderboard';
 import { 
   Gamepad2, 
   Users, 
@@ -275,6 +276,24 @@ export default function LifeGame() {
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Leaderboard Section */}
+      <section className="py-12 sm:py-24 bg-muted/30">
+        <div className="container mx-auto px-3 sm:px-4">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
+              {t('game.leaderboard.sectionTitle', 'Classement des joueurs')}
+            </h2>
+            <p className="text-base sm:text-xl text-muted-foreground">
+              {t('game.leaderboard.sectionSubtitle', 'Comparez vos scores avec la communauté')}
+            </p>
+          </div>
+          
+          <div className="max-w-2xl mx-auto">
+            <GameLeaderboard compact />
           </div>
         </div>
       </section>

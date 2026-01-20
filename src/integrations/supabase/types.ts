@@ -1193,8 +1193,10 @@ export type Database = {
           best_score_solo: number | null
           countries_visited: string[] | null
           created_at: string
+          display_name: string | null
           favorite_actions: Json | null
           id: string
+          last_game_at: string | null
           risk_failures: number | null
           risk_successes: number | null
           total_games_played: number
@@ -1212,8 +1214,10 @@ export type Database = {
           best_score_solo?: number | null
           countries_visited?: string[] | null
           created_at?: string
+          display_name?: string | null
           favorite_actions?: Json | null
           id?: string
+          last_game_at?: string | null
           risk_failures?: number | null
           risk_successes?: number | null
           total_games_played?: number
@@ -1231,8 +1235,10 @@ export type Database = {
           best_score_solo?: number | null
           countries_visited?: string[] | null
           created_at?: string
+          display_name?: string | null
           favorite_actions?: Json | null
           id?: string
+          last_game_at?: string | null
           risk_failures?: number | null
           risk_successes?: number | null
           total_games_played?: number

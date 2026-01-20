@@ -102,7 +102,7 @@ export function useGameStatistics() {
   }, [user]);
 
   // Sync to Supabase
-  const syncToCloud = useCallback(async (data: GameStatistics) => {
+  const syncToCloud = useCallback(async (data: GameStatistics, displayName?: string) => {
     if (!user) return false;
 
     setSyncing(true);
@@ -122,6 +122,8 @@ export function useGameStatistics() {
         total_money_lost: data.totalMoneyLost,
         total_health_lost: data.totalHealthLost,
         favorite_actions: data.favoriteActions,
+        last_game_at: new Date().toISOString(),
+        display_name: displayName || 'Anonymous',
       };
 
       const { error } = await supabase
