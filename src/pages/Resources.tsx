@@ -16,7 +16,11 @@ import {
   AlertTriangle,
   Lightbulb,
   BookOpen,
-  ArrowRight
+  ArrowRight,
+  ListChecks,
+  TrendingDown,
+  AlertOctagon,
+  Sparkles
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -24,6 +28,7 @@ import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { cn } from '@/lib/utils';
+import { moduleAudits } from '@/lib/module-completion';
 
 const categoryIcons = {
   financial: Wallet,
@@ -40,6 +45,12 @@ const categoryColors = {
 };
 
 const categoryKeys = ['financial', 'skills', 'mobility', 'security'] as const;
+const auditCategories = [
+  { key: 'featureEnrichments', title: 'Top 5 fonctionnalités à enrichir', icon: Sparkles },
+  { key: 'moduleElements', title: 'Top 5 éléments du module à enrichir', icon: ListChecks },
+  { key: 'leastDeveloped', title: 'Top 5 éléments les moins développés', icon: TrendingDown },
+  { key: 'nonWorking', title: 'Top 5 éléments non fonctionnels', icon: AlertOctagon },
+] as const;
 
 const resourceItemDetails: Record<string, Record<string, { difficulty: 'easy' | 'medium' | 'hard'; time: string; priority: 'high' | 'medium' | 'low' }>> = {
   financial: {
@@ -297,6 +308,60 @@ export default function Resources() {
               storageKey="checklist-premove" 
             />
           </div>
+        </div>
+
+        {/* Module Audit */}
+        <div className="mb-8 sm:mb-16">
+          <h2 className="font-display text-xl sm:text-2xl font-bold mb-4 sm:mb-6 flex items-center gap-2">
+            <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+            Audit de complétude par module
+          </h2>
+          <p className="text-muted-foreground mb-4 sm:mb-6 text-sm sm:text-base">
+            Synthèse opérationnelle des enrichissements prioritaires par module pour finaliser le produit.
+          </p>
+          <Accordion type="multiple" className="space-y-4">
+            {moduleAudits.map((module) => (
+              <AccordionItem
+                key={module.id}
+                value={module.id}
+                className="glass-card rounded-xl border px-6"
+              >
+                <AccordionTrigger className="hover:no-underline py-4">
+                  <div className="text-left">
+                    <h3 className="font-display font-semibold">{module.title}</h3>
+                    <p className="text-sm text-muted-foreground">{module.subtitle}</p>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="pb-6">
+                  <div className="grid gap-4 md:grid-cols-2">
+                    {auditCategories.map((category) => {
+                      const Icon = category.icon;
+                      return (
+                        <Card key={`${module.id}-${category.key}`} className="border-muted/60">
+                          <CardHeader className="pb-3">
+                            <CardTitle className="text-sm sm:text-base flex items-center gap-2">
+                              <Icon className="w-4 h-4 text-primary" />
+                              {category.title}
+                            </CardTitle>
+                          </CardHeader>
+                          <CardContent>
+                            <ul className="space-y-2 text-sm text-muted-foreground">
+                              {module.items[category.key].map((item, index) => (
+                                <li key={`${module.id}-${category.key}-${index}`} className="flex items-start gap-2">
+                                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-primary/70 flex-shrink-0" />
+                                  <span>{item}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </CardContent>
+                        </Card>
+                      );
+                    })}
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
 
         {/* Related Tools */}
