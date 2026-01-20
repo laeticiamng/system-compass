@@ -5,6 +5,9 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Switch } from '@/components/ui/switch';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { toast } from 'sonner';
 import {
   Link2,
   Bell,
@@ -15,7 +18,8 @@ import {
   Settings,
   ExternalLink,
   Zap,
-  RefreshCw
+  RefreshCw,
+  Loader2
 } from 'lucide-react';
 import { WorkflowMetrics } from './WorkflowMetrics';
 import { AutoExportManager } from './AutoExportManager';
@@ -123,6 +127,10 @@ export function TraceOSIntegrations() {
     approvalRequests: true,
     weeklyDigest: false
   });
+  
+  // Zapier integration state
+  const [zapierWebhookUrl, setZapierWebhookUrl] = useState('');
+  const [isTestingZapier, setIsTestingZapier] = useState(false);
 
   const handleToggleConnection = (integrationId: string) => {
     setIntegrations(prev =>
@@ -132,6 +140,74 @@ export function TraceOSIntegrations() {
           : i
       )
     );
+  };
+
+  const handleTestZapierWebhook = async () => {
+    if (!zapierWebhookUrl) {
+      toast.error(t('traceOS.integrations.enterWebhookUrl', 'Veuillez entrer l\'URL du webhook'));
+      return;
+    }
+
+    setIsTestingZapier(true);
+    try {
+      await fetch(zapierWebhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        mode: 'no-cors',
+        body: JSON.stringify({
+          event: 'test',
+          source: 'TraceOS',
+          timestamp: new Date().toISOString(),
+          message: 'Test de connexion Zapier depuis TraceOS',
+          data: { 
+            test: true,
+            decision_sample: {
+              title: 'Décision test',
+              status: 'draft',
+              author: 'Utilisateur TraceOS'
+            }
+          }
+        })
+      });
+      
+      toast.success(t('traceOS.integrations.webhookSent', 'Requête envoyée à Zapier. Vérifiez l\'historique de votre Zap.'));
+      
+      // Mark Zapier as connected
+      setIntegrations(prev =>
+        prev.map(i =>
+          i.id === 'zapier'
+            ? { ...i, connected: true, lastSync: new Date().toISOString() }
+            : i
+        )
+      );
+    } catch (error) {
+      console.error('Zapier webhook error:', error);
+      toast.error(t('traceOS.integrations.webhookError', 'Erreur lors de l\'envoi du webhook'));
+    } finally {
+      setIsTestingZapier(false);
+    }
+  };
+
+  const handleSendToZapier = async (eventType: string, data: Record<string, unknown>) => {
+    if (!zapierWebhookUrl) return false;
+    
+    try {
+      await fetch(zapierWebhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        mode: 'no-cors',
+        body: JSON.stringify({
+          event: eventType,
+          source: 'TraceOS',
+          timestamp: new Date().toISOString(),
+          data
+        })
+      });
+      return true;
+    } catch (error) {
+      console.error('Zapier send error:', error);
+      return false;
+    }
   };
 
   const connectedCount = integrations.filter(i => i.connected).length;
@@ -275,6 +351,40 @@ export function TraceOSIntegrations() {
                               </Button>
                             </div>
                           </div>
+                          
+                          {/* Zapier Configuration Panel */}
+                          {integration.id === 'zapier' && (
+                            <div className="mt-4 pt-4 border-t border-muted space-y-3">
+                              <div className="space-y-2">
+                                <Label htmlFor="zapier-webhook" className="text-sm">
+                                  {t('traceOS.integrations.zapierWebhookUrl', 'URL du Webhook Zapier')}
+                                </Label>
+                                <div className="flex gap-2">
+                                  <Input
+                                    id="zapier-webhook"
+                                    placeholder="https://hooks.zapier.com/hooks/catch/..."
+                                    value={zapierWebhookUrl}
+                                    onChange={(e) => setZapierWebhookUrl(e.target.value)}
+                                    className="flex-1"
+                                  />
+                                  <Button 
+                                    size="sm" 
+                                    onClick={handleTestZapierWebhook}
+                                    disabled={isTestingZapier || !zapierWebhookUrl}
+                                  >
+                                    {isTestingZapier ? (
+                                      <Loader2 className="w-4 h-4 animate-spin" />
+                                    ) : (
+                                      t('traceOS.integrations.testWebhook', 'Tester')
+                                    )}
+                                  </Button>
+                                </div>
+                                <p className="text-xs text-muted-foreground">
+                                  {t('traceOS.integrations.zapierHelp', 'Créez un Zap avec un trigger "Webhooks by Zapier" et collez l\'URL ici.')}
+                                </p>
+                              </div>
+                            </div>
+                          )}
                         </div>
                       ))}
                     </div>
