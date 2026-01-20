@@ -52,19 +52,35 @@ export function CurrentCountryStep({
 
   // Get translated whoThrives/whoPays from pyramidTypes.details
   const getWhoThrives = (pyramidType: PyramidType): string[] => {
-    const key = PYRAMID_TYPE_TRANSLATION_KEYS[pyramidType].detailsKey;
-    const translated = t(`pyramidTypes.details.${key}.whoThrives`, { returnObjects: true });
-    if (Array.isArray(translated)) {
+    const key = PYRAMID_TYPE_TRANSLATION_KEYS[pyramidType]?.detailsKey;
+    if (!key) return [];
+    
+    const translated = t(`pyramidTypes.details.${key}.whoThrives`, { returnObjects: true, defaultValue: [] });
+    if (Array.isArray(translated) && translated.length > 0) {
       return translated.filter((item): item is string => typeof item === 'string');
+    }
+    
+    // Fallback to country data if translation not found
+    const countryWhoWins = currentCountry?.whoWins;
+    if (Array.isArray(countryWhoWins)) {
+      return countryWhoWins.slice(0, 4);
     }
     return [];
   };
 
   const getWhoPays = (pyramidType: PyramidType): string[] => {
-    const key = PYRAMID_TYPE_TRANSLATION_KEYS[pyramidType].detailsKey;
-    const translated = t(`pyramidTypes.details.${key}.whoPays`, { returnObjects: true });
-    if (Array.isArray(translated)) {
+    const key = PYRAMID_TYPE_TRANSLATION_KEYS[pyramidType]?.detailsKey;
+    if (!key) return [];
+    
+    const translated = t(`pyramidTypes.details.${key}.whoPays`, { returnObjects: true, defaultValue: [] });
+    if (Array.isArray(translated) && translated.length > 0) {
       return translated.filter((item): item is string => typeof item === 'string');
+    }
+    
+    // Fallback to country data if translation not found
+    const countryWhoLoses = currentCountry?.whoLoses;
+    if (Array.isArray(countryWhoLoses)) {
+      return countryWhoLoses.slice(0, 4);
     }
     return [];
   };
