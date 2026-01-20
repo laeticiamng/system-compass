@@ -8194,6 +8194,143 @@
       "poc3": "Identification des blocages cachés"
     }
   },
+  "governance": {
+    "map": {
+      "title": "Cartographie de gouvernance",
+      "add": "Ajouter",
+      "cancel": "Annuler",
+      "exportCsv": "Export CSV",
+      "exportPdf": "Export PDF",
+      "redFlags": "Drapeaux rouges",
+      "singleIntermediary": "Dépendance à un seul intermédiaire",
+      "highOpacity": "Opacité élevée (fiabilité non vérifiée)",
+      "mapActors": "Cartographiez les acteurs clés du projet",
+      "reliability": "Fiabilité",
+      "name": "Nom/Titre",
+      "role": "Rôle",
+      "level": "Niveau",
+      "power": "Pouvoir",
+      "levels": {
+        "official": "Officiel",
+        "influential": "Influent",
+        "blocker": "Bloqueur"
+      },
+      "powers": {
+        "sign": "Peut signer",
+        "block": "Peut bloquer",
+        "access": "Donne accès",
+        "advise": "Conseille"
+      },
+      "reliabilities": {
+        "unknown": "Inconnu",
+        "low": "Faible",
+        "medium": "Moyenne",
+        "high": "Élevée"
+      }
+    },
+    "timeline": {
+      "title": "Délais réels",
+      "description": "Scénarios temporels pour",
+      "buffer": "Tampon de sécurité",
+      "bufferTip": "Recommandé : minimum +25% pour les imprévus",
+      "totalDuration": "Durée totale estimée",
+      "cashflowWarning": "Impact cashflow",
+      "cashflowText": "Prévoir financement pour couvrir cette période sans revenus. Les premiers paiements peuvent arriver 30-90 jours après les premières ventes.",
+      "keyRisks": "Risques temporels clés",
+      "week": "semaine",
+      "weeks": "semaines",
+      "month": "mois",
+      "months": "mois",
+      "bufferLabel": "tampon",
+      "scenario": "Scénario",
+      "scenarios": {
+        "optimistic": "Optimiste",
+        "realistic": "Réaliste",
+        "pessimistic": "Pessimiste"
+      },
+      "phases": {
+        "preparation": "Préparation",
+        "admin": "Administratif",
+        "installation": "Installation",
+        "launch": "Lancement",
+        "stabilization": "Stabilisation"
+      },
+      "risks": {
+        "documentCollection": "Collecte documents plus longue",
+        "legalValidation": "Validation légale retardée",
+        "adminDelays": "Délais administration imprévisibles",
+        "missingDocuments": "Pièces manquantes demandées",
+        "logisticsDelayed": "Logistique retardée",
+        "recruitmentDifficult": "Recrutement difficile",
+        "productAdjustments": "Ajustements produit",
+        "revenueDelay": "Retard premiers revenus",
+        "longPayments": "Paiements longs",
+        "teamTurnover": "Turnover équipe",
+        "contractSigning": "Signature de contrats longue (négociation, approbations)",
+        "extendedPayment": "Délais de paiement étendus (60-90 jours standard)",
+        "lateBlockages": "Blocages tardifs après investissement partiel",
+        "ruleChanges": "Changements de règles en cours de processus"
+      }
+    },
+    "competition": {
+      "title": "Concurrence réelle",
+      "description": "Cartographie des acteurs sur",
+      "addCompetitor": "Ajouter un concurrent",
+      "noCompetitors": "Aucun concurrent identifié",
+      "addPrompt": "Ajoutez les acteurs que vous avez identifiés",
+      "name": "Nom de l'acteur",
+      "scope": "Périmètre",
+      "projectTypes": "Types de projets",
+      "projects": "Projets",
+      "implantation": "Implantation",
+      "maturity": "Maturité",
+      "analysis": "Analyse rapide",
+      "stronglyEstablished": "{{count}} acteur(s) fortement implanté(s)",
+      "dominance": "Dominance",
+      "dominanceLocal": "Locale",
+      "dominanceInternational": "Internationale",
+      "opportunity": "Opportunité : segments sous-servis possibles",
+      "types": {
+        "local": "Local",
+        "international": "International",
+        "hybrid": "Hybride"
+      },
+      "implantationLevels": {
+        "strong": "Forte",
+        "moderate": "Modérée",
+        "weak": "Faible"
+      },
+      "maturityLevels": {
+        "established": "Établi",
+        "growing": "En croissance",
+        "emerging": "Émergent"
+      }
+    },
+    "stability": {
+      "title": "Indicateurs de stabilité",
+      "description": "Analyse de la stabilité politique et économique"
+    },
+    "frictionRisks": {
+      "title": "Risques de friction",
+      "description": "Points de friction bureaucratiques et opérationnels"
+    },
+    "partnerReliability": {
+      "title": "Fiabilité des partenaires",
+      "description": "Évaluation de la fiabilité des partenaires locaux"
+    },
+    "stateOfArt": {
+      "title": "État de l'art",
+      "description": "Paysage actuel du marché et des technologies"
+    },
+    "pocPlanner": {
+      "title": "Planificateur POC",
+      "description": "Planification et jalons du proof of concept"
+    },
+    "fiscalChecklist": {
+      "title": "Checklist fiscale",
+      "description": "Liste de vérification de conformité fiscale et réglementaire"
+    }
+  },
   "marketStudy": {
     "title": "Étude de marché",
     "problem": {
