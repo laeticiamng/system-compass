@@ -98,6 +98,10 @@
     "forEveryone": "为每个人，在任何地方",
     "preventionFilter": "通过过滤器运行决策"
   },
+  "cta": {
+    "viewAllKeys": "查看所有出口钥匙",
+    "educationalMode": "教育模式（虚构角色）"
+  },
   "howItWorks": {
     "title": "分析、模拟、理解",
     "subtitle": "一个分析工具。没有承诺，没有指导——只有避免代价高昂错误的信息。",

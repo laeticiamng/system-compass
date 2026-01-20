@@ -94,6 +94,10 @@
     "inProgress": "প্রক্রিয়াধীন",
     "completed": "সম্পন্ন"
   },
+  "cta": {
+    "viewAllKeys": "সমস্ত এক্সিট কী দেখুন",
+    "educationalMode": "শিক্ষামূলক মোড (কাল্পনিক চরিত্র)"
+  },
   "header": {
     "simulationDisclaimer": "দৃশ্যপট অন্বেষণ • কোনো আইনি, আর্থিক বা চিকিৎসা পরামর্শ নয়",
     "compass": "কম্পাস",
