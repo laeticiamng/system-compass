@@ -54,7 +54,7 @@ export function useGameStatistics() {
         try {
           setStats({ ...defaultStats, ...JSON.parse(localData) });
         } catch (e) {
-          console.error('Error parsing local stats:', e);
+          // Silent fail for localStorage parsing
         }
       }
 
@@ -76,9 +76,7 @@ export function useGameStatistics() {
             .eq('user_id', user.id)
             .maybeSingle();
 
-          if (error) {
-            console.error('Error loading stats from Supabase:', error);
-          } else if (data) {
+          if (!error && data) {
             const cloudStats: GameStatistics = {
               totalGamesPlayed: data.total_games_played,
               totalTurnsPlayed: data.total_turns_played,
@@ -112,7 +110,7 @@ export function useGameStatistics() {
             await syncToCloud(parsed, userDisplayName);
           }
         } catch (error) {
-          console.error('Error loading from Supabase:', error);
+          // Silent fail for cloud loading
         }
       }
 
@@ -152,12 +150,10 @@ export function useGameStatistics() {
         .upsert(dbData, { onConflict: 'user_id' });
 
       if (error) {
-        console.error('Error syncing stats:', error);
         return false;
       }
       return true;
     } catch (error) {
-      console.error('Error syncing to cloud:', error);
       return false;
     } finally {
       setSyncing(false);

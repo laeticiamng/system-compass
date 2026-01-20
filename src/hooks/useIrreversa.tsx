@@ -78,7 +78,6 @@ export function useIrreversa() {
       setThresholds((data || []) as unknown as IrreversaThreshold[]);
       setError(null);
     } catch (err) {
-      console.error('Error fetching thresholds:', err);
       setError('Failed to fetch thresholds');
     } finally {
       setLoading(false);
@@ -130,7 +129,6 @@ export function useIrreversa() {
       setThresholds(prev => [newThreshold, ...prev]);
       return newThreshold;
     } catch (err) {
-      console.error('Error creating threshold:', err);
       toast.error('Erreur lors de la création du seuil');
       return null;
     }
@@ -165,7 +163,6 @@ export function useIrreversa() {
       ));
       return true;
     } catch (err) {
-      console.error('Error marking threshold:', err);
       toast.error('Erreur lors du marquage');
       return false;
     }
@@ -203,7 +200,6 @@ export function useIrreversa() {
 
       return data as unknown as IrreversaWitness;
     } catch (err) {
-      console.error('Error adding witness:', err);
       toast.error('Erreur lors de l\'ajout du témoin');
       return null;
     }
@@ -249,7 +245,6 @@ export function useIrreversa() {
       ));
       return true;
     } catch (err) {
-      console.error('Error validating threshold:', err);
       toast.error('Erreur lors de la validation');
       return false;
     }
@@ -293,7 +288,6 @@ export function useIrreversa() {
       ));
       return true;
     } catch (err) {
-      console.error('Error sealing threshold:', err);
       toast.error('Erreur lors du scellement');
       return false;
     }
@@ -312,7 +306,6 @@ export function useIrreversa() {
       if (error) throw error;
       return (data || []) as unknown as IrreversaWitness[];
     } catch (err) {
-      console.error('Error fetching witnesses:', err);
       return [];
     }
   };
@@ -330,7 +323,6 @@ export function useIrreversa() {
       if (error) throw error;
       return (data || []) as unknown as IrreversaAuditEntry[];
     } catch (err) {
-      console.error('Error fetching audit log:', err);
       return [];
     }
   };

@@ -204,7 +204,6 @@ export function TraceOS() {
         toast.success(t('traceOS.email.sent', 'Alerte envoyée par email'));
       }
     } catch (err) {
-      console.error('Error sending email alerts:', err);
       toast.error(t('traceOS.email.error', 'Erreur lors de l\'envoi de l\'alerte'));
     } finally {
       setIsSendingAlerts(false);

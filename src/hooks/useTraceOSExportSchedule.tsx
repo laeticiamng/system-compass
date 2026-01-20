@@ -47,7 +47,7 @@ export function useTraceOSExportSchedule() {
       if (error) throw error;
       setSchedule(data as ExportSchedule | null);
     } catch (err) {
-      console.error('Error fetching schedule:', err);
+      // Silent fail for schedule fetching
     } finally {
       setLoading(false);
     }
@@ -76,7 +76,7 @@ export function useTraceOSExportSchedule() {
         }))
       );
     } catch (err) {
-      console.error('Error fetching exports:', err);
+      // Silent fail for exports fetching
     }
   }, [user]);
 
@@ -131,7 +131,6 @@ export function useTraceOSExportSchedule() {
       toast.success('Planification d\'export mise à jour');
       return true;
     } catch (err) {
-      console.error('Error updating schedule:', err);
       toast.error('Erreur lors de la mise à jour');
       return false;
     }
@@ -152,7 +151,6 @@ export function useTraceOSExportSchedule() {
       toast.success(schedule.is_active ? 'Export automatique désactivé' : 'Export automatique activé');
       return true;
     } catch (err) {
-      console.error('Error toggling schedule:', err);
       toast.error('Erreur');
       return false;
     }
@@ -173,7 +171,6 @@ export function useTraceOSExportSchedule() {
       toast.success(`Export créé: ${data.summary.totalDecisions} décisions`);
       return true;
     } catch (err) {
-      console.error('Error exporting:', err);
       toast.error('Erreur lors de l\'export');
       return false;
     } finally {
@@ -200,7 +197,6 @@ export function useTraceOSExportSchedule() {
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
     } catch (err) {
-      console.error('Error downloading:', err);
       toast.error('Erreur lors du téléchargement');
     }
   }, [user]);
@@ -219,7 +215,6 @@ export function useTraceOSExportSchedule() {
       toast.success('Export supprimé');
       return true;
     } catch (err) {
-      console.error('Error deleting:', err);
       toast.error('Erreur lors de la suppression');
       return false;
     }

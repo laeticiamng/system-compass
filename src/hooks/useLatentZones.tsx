@@ -54,29 +54,28 @@ export function useLatentZones() {
 
     setLoading(true);
     try {
+      // Fetch zones with tensions in a single query using JOIN
       const { data: zonesData, error: zonesError } = await supabase
         .from('latent_zones')
-        .select('*')
+        .select(`
+          *,
+          latent_zone_tensions (*)
+        `)
         .order('updated_at', { ascending: false });
 
       if (zonesError) throw zonesError;
 
-      // Fetch tensions for each zone
-      const zonesWithTensions = await Promise.all(
-        (zonesData || []).map(async (zone) => {
-          const { data: tensions } = await supabase
-            .from('latent_zone_tensions')
-            .select('*')
-            .eq('zone_id', zone.id);
-          return { ...zone, tensions: tensions || [] } as LatentZone;
-        })
-      );
+      // Transform data to match expected structure
+      const zonesWithTensions = (zonesData || []).map((zone: any) => ({
+        ...zone,
+        tensions: zone.latent_zone_tensions || []
+      })) as LatentZone[];
 
       setZones(zonesWithTensions);
       setError(null);
     } catch (err) {
-      console.error('Error fetching latent zones:', err);
       setError('Failed to fetch zones');
+      toast.error('Erreur lors du chargement des zones');
     } finally {
       setLoading(false);
     }
@@ -115,7 +114,6 @@ export function useLatentZones() {
       setZones(prev => [newZone, ...prev]);
       return newZone;
     } catch (err) {
-      console.error('Error creating zone:', err);
       toast.error('Erreur lors de la création de la zone');
       return null;
     }
@@ -150,7 +148,6 @@ export function useLatentZones() {
       ));
       return true;
     } catch (err) {
-      console.error('Error updating zone status:', err);
       toast.error('Erreur lors de la mise à jour du statut');
       return false;
     }
@@ -179,7 +176,6 @@ export function useLatentZones() {
       ));
       return data as ZoneTension;
     } catch (err) {
-      console.error('Error adding tension:', err);
       toast.error('Erreur lors de l\'ajout de la tension');
       return null;
     }
@@ -203,7 +199,7 @@ export function useLatentZones() {
       ));
       return true;
     } catch (err) {
-      console.error('Error removing tension:', err);
+      toast.error('Erreur lors de la suppression');
       return false;
     }
   };
@@ -238,7 +234,6 @@ export function useLatentZones() {
 
       return true;
     } catch (err) {
-      console.error('Error evolving zone:', err);
       toast.error('Erreur lors de l\'évolution de la zone');
       return false;
     }
@@ -258,7 +253,6 @@ export function useLatentZones() {
       setZones(prev => prev.filter(z => z.id !== zoneId));
       return true;
     } catch (err) {
-      console.error('Error deleting zone:', err);
       toast.error('Erreur lors de la suppression de la zone');
       return false;
     }
@@ -277,7 +271,6 @@ export function useLatentZones() {
       if (error) throw error;
       return (data || []) as ZoneHistory[];
     } catch (err) {
-      console.error('Error fetching zone history:', err);
       return [];
     }
   };
@@ -302,7 +295,6 @@ export function useLatentZones() {
       ));
       return true;
     } catch (err) {
-      console.error('Error updating zone:', err);
       toast.error('Erreur lors de la mise à jour de la zone');
       return false;
     }
@@ -358,7 +350,6 @@ export function useLatentZones() {
       setZones(prev => [newZone, ...prev]);
       return newZone;
     } catch (err) {
-      console.error('Error duplicating zone:', err);
       toast.error('Erreur lors de la duplication de la zone');
       return null;
     }
@@ -447,7 +438,6 @@ export function useLatentZones() {
       toast.success('Zones fusionnées avec succès');
       return mergedZone;
     } catch (err) {
-      console.error('Error merging zones:', err);
       toast.error('Erreur lors de la fusion des zones');
       return null;
     }

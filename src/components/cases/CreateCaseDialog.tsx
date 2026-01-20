@@ -56,9 +56,8 @@ export function CreateCaseDialog({ countryId, countryName, trigger, onSuccess }:
         setTitle('');
         onSuccess?.(data.id);
       },
-      onError: (error) => {
+      onError: () => {
         toast.error(t('cases.createError', 'Erreur lors de la création'));
-        console.error(error);
       },
     });
   };

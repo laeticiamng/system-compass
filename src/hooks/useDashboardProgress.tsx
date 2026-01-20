@@ -47,7 +47,7 @@ export function useDashboardProgress() {
           if (!parsed.phaseNotes) parsed.phaseNotes = [];
           setProgress(parsed);
         } catch (e) {
-          console.error('Error parsing local dashboard progress:', e);
+          // Silent fail for localStorage parsing errors
         }
       }
 
@@ -60,9 +60,7 @@ export function useDashboardProgress() {
             .eq('user_id', user.id)
             .maybeSingle();
 
-          if (error) {
-            console.error('Error loading dashboard progress from Supabase:', error);
-          } else if (data) {
+          if (!error && data) {
             const stepsData = Array.isArray(data.steps_progress) 
               ? data.steps_progress as unknown as StepProgress[]
               : [];
@@ -86,7 +84,7 @@ export function useDashboardProgress() {
             await syncToCloud(parsed);
           }
         } catch (error) {
-          console.error('Error loading from Supabase:', error);
+          // Silent fail for cloud loading
         }
       }
 
@@ -122,7 +120,6 @@ export function useDashboardProgress() {
           .eq('id', existing.id);
 
         if (error) {
-          console.error('Error updating in Supabase:', error);
           return false;
         }
       } else {
@@ -138,13 +135,11 @@ export function useDashboardProgress() {
           }]);
 
         if (error) {
-          console.error('Error inserting in Supabase:', error);
           return false;
         }
       }
       return true;
     } catch (error) {
-      console.error('Error syncing to cloud:', error);
       return false;
     } finally {
       setSyncing(false);
@@ -315,7 +310,7 @@ export function useDashboardProgress() {
           .delete()
           .eq('user_id', user.id);
       } catch (error) {
-        console.error('Error deleting from cloud:', error);
+        // Silent fail for cloud deletion
       }
     }
   }, [user]);
