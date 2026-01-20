@@ -201,28 +201,72 @@ serve(async (req) => {
 
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    const results: Array<{ country: string; language: string; success: boolean; error?: string }> = [];
+    // Find next country/language combo that needs caching
+    let nextToProcess: { country: string; language: string } | null = null;
 
-    // Process countries sequentially to avoid rate limits
     for (const country of TOP_COUNTRIES) {
       for (const language of LANGUAGES) {
-        console.log(`Processing ${country} (${language})...`);
-        
-        const result = await generateForCountry(country, language, supabase, apiKey);
-        results.push({ country, language, ...result });
+        const { data: existing } = await supabase
+          .from('financial_intel_country_snapshots')
+          .select('id')
+          .eq('country', country.toLowerCase())
+          .eq('language', language)
+          .gt('expires_at', new Date().toISOString())
+          .limit(1)
+          .maybeSingle();
 
-        // Small delay between requests to avoid rate limiting
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        if (!existing) {
+          nextToProcess = { country, language };
+          break;
+        }
+      }
+      if (nextToProcess) break;
+    }
+
+    if (!nextToProcess) {
+      return new Response(
+        JSON.stringify({
+          message: 'All countries are already cached',
+          status: 'complete'
+        }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    console.log(`Processing ${nextToProcess.country} (${nextToProcess.language})...`);
+    
+    const result = await generateForCountry(
+      nextToProcess.country, 
+      nextToProcess.language, 
+      supabase, 
+      apiKey
+    );
+
+    // Count remaining
+    let remaining = 0;
+    for (const country of TOP_COUNTRIES) {
+      for (const language of LANGUAGES) {
+        const { data: existing } = await supabase
+          .from('financial_intel_country_snapshots')
+          .select('id')
+          .eq('country', country.toLowerCase())
+          .eq('language', language)
+          .gt('expires_at', new Date().toISOString())
+          .limit(1)
+          .maybeSingle();
+        if (!existing) remaining++;
       }
     }
 
-    const successCount = results.filter(r => r.success).length;
-    const totalCount = results.length;
-
     return new Response(
       JSON.stringify({
-        message: `Processed ${successCount}/${totalCount} country/language combinations`,
-        results
+        processed: nextToProcess,
+        success: result.success,
+        error: result.error,
+        remaining,
+        message: result.success 
+          ? `Cached ${nextToProcess.country} (${nextToProcess.language}). ${remaining} remaining.`
+          : `Failed: ${result.error}`
       }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
