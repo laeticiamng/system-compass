@@ -94,6 +94,10 @@
     "inProgress": "جاری ہے",
     "completed": "مکمل"
   },
+  "cta": {
+    "viewAllKeys": "تمام ایگزٹ کیز دیکھیں",
+    "educationalMode": "تعلیمی موڈ (فرضی کردار)"
+  },
   "header": {
     "simulationDisclaimer": "منظرنامے کی تلاش • کوئی قانونی، مالیاتی یا طبی مشورہ نہیں",
     "compass": "کمپاس",
