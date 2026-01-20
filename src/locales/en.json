@@ -418,6 +418,16 @@
       "description": "Win a race mode game"
     }
   },
+  "game": {
+    "leaderboard": {
+      "title": "Leaderboard",
+      "sectionTitle": "Player Rankings",
+      "sectionSubtitle": "Compare your scores with the community",
+      "viewAll": "View full leaderboard",
+      "error": "Unable to load leaderboard",
+      "empty": "No scores recorded. Be the first!"
+    }
+  },
   "footer": {
     "explore": "Explore",
     "tools": "Tools",
