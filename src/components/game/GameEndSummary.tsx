@@ -11,6 +11,7 @@ import {
 } from '@/lib/game-data';
 import { PyramidType, PYRAMID_TYPE_INFO } from '@/lib/types';
 import { cn } from '@/lib/utils';
+import { toast } from 'sonner';
 import { 
   Trophy, 
   Target, 
@@ -533,11 +534,51 @@ export default function GameEndSummary({
           </div>
         )}
 
+        {/* Strategic Insights */}
+        <div className="glass-card rounded-2xl p-6 mt-8 animate-fade-in">
+          <h3 className="font-display text-xl font-bold mb-4 flex items-center gap-2">
+            💡 {t('gameEnd.insights', 'Ce que le jeu révèle')}
+          </h3>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="p-4 rounded-lg bg-primary/5 border border-primary/20">
+              <h4 className="font-semibold text-sm mb-2">{t('gameEnd.insightRisk', 'Votre rapport au risque')}</h4>
+              <p className="text-sm text-muted-foreground">
+                {gameStats && gameStats.risksTaken > 5 
+                  ? t('gameEnd.riskTakerProfile', 'Vous n\'hésitez pas à prendre des risques - attention à ne pas confondre audace et précipitation.')
+                  : t('gameEnd.cautionProfile', 'Vous préférez la prudence - parfois, un risque calculé ouvre des opportunités.')}
+              </p>
+            </div>
+            <div className="p-4 rounded-lg bg-primary/5 border border-primary/20">
+              <h4 className="font-semibold text-sm mb-2">{t('gameEnd.insightSystem', 'Votre navigation systémique')}</h4>
+              <p className="text-sm text-muted-foreground">
+                {rankedResults[0]?.lifeScore.breakdown.find(b => b.category === 'gameEnd.experienceDiversity')?.score >= 20
+                  ? t('gameEnd.diverseProfile', 'Vous avez su naviguer entre différents systèmes - une compétence précieuse.')
+                  : t('gameEnd.focusedProfile', 'Vous êtes resté dans votre zone - explorer d\'autres pyramides pourrait élargir vos options.')}
+              </p>
+            </div>
+          </div>
+          <p className="text-xs text-muted-foreground mt-4 italic text-center">
+            {t('gameEnd.insightDisclaimer', 'Ce jeu est un outil de réflexion, pas une prédiction. La vraie vie offre toujours plus de nuances.')}
+          </p>
+        </div>
+
         {/* Actions */}
-        <div className="flex gap-4 mt-12 justify-center">
+        <div className="flex flex-wrap gap-4 mt-12 justify-center">
           <Button variant="outline" onClick={onBackToMenu} className="gap-2">
             <RotateCcw className="w-4 h-4" />
             {t('gameEnd.mainMenu')}
+          </Button>
+          <Button variant="outline" className="gap-2" onClick={() => {
+            const shareText = `🎮 J'ai joué à Pyramid Compass et obtenu un score de ${rankedResults[0]?.lifeScore.total || 0}! Verdict: ${t(`gameEnd.verdicts.${rankedResults[0]?.lifeScore.verdict}.label`)}`;
+            if (navigator.share) {
+              navigator.share({ text: shareText, url: window.location.origin + '/life-game' });
+            } else {
+              navigator.clipboard.writeText(shareText);
+              toast.success(t('common.copied', 'Copié !'));
+            }
+          }}>
+            <Share2 className="w-4 h-4" />
+            {t('gameEnd.share', 'Partager')}
           </Button>
           <Button onClick={onPlayAgain} className="gap-2">
             <Trophy className="w-4 h-4" />
