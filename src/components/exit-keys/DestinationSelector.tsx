@@ -1,0 +1,273 @@
+import { useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { MapPin, Star, DollarSign, Shield, Clock, ChevronRight, Sparkles, Users, Briefcase, Plane, GraduationCap, Palmtree } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { useCountries } from '@/lib/countries-data';
+import { Country } from '@/lib/types';
+import { ProjectIntention } from '@/hooks/useExitKeysProfile';
+import { getSmartVacationRecommendations, VacationDestination } from '@/lib/purchasing-power';
+import { getRecommendedDestinations, DestinationRecommendation } from '@/lib/nationality-advantages';
+import { LifePriority } from '@/lib/types';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+
+interface DestinationSelectorProps {
+  intention: ProjectIntention;
+  nationalityIds: string[];
+  currentCountryId: string;
+  desiredLife: LifePriority;
+  age?: number;
+  professionId?: string;
+  selectedDestinationId?: string;
+  onDestinationSelect: (countryId: string) => void;
+}
+
+function getFlagEmoji(iso2: string) {
+  return iso2
+    .toUpperCase()
+    .split('')
+    .map(char => String.fromCodePoint(127397 + char.charCodeAt(0)))
+    .join('');
+}
+
+// Score a country for different intentions
+function scoreCountryForIntention(
+  country: Country,
+  intention: ProjectIntention,
+  age: number,
+  currentCostOfLiving: number
+): { score: number; reasons: string[] } {
+  let score = 50;
+  const reasons: string[] = [];
+
+  const costOfLiving = country.costOfLiving?.monthlyBudgetSingle || 1500;
+  const visaFriendly = country.visa?.workVisa === 'easy' || country.visa?.digitalNomadVisa;
+  
+  switch (intention) {
+    case 'installation':
+      // For installation: job market, quality of life, admin ease
+      if (country.pyramidType === 'COMPETENCE_TRUST' || country.pyramidType === 'STABILITY_REDIS') {
+        score += 15;
+        reasons.push('Système stable');
+      }
+      if (costOfLiving < currentCostOfLiving * 0.8) {
+        score += 10;
+        reasons.push('Coût de vie avantageux');
+      }
+      if (age < 35) {
+        score += 5;
+        reasons.push('Opportunités jeunes actifs');
+      }
+      break;
+
+    case 'vacation':
+      // For vacation: cost efficiency, safety, visa ease
+      if (costOfLiving < currentCostOfLiving * 0.5) {
+        score += 25;
+        reasons.push('Budget très favorable');
+      } else if (costOfLiving < currentCostOfLiving * 0.7) {
+        score += 15;
+        reasons.push('Bon rapport qualité-prix');
+      }
+      if (visaFriendly) {
+        score += 10;
+        reasons.push('Accès facile');
+      }
+      break;
+
+    case 'internship':
+      // For internship: education quality, language, visa for students
+      if (age < 30) {
+        score += 20;
+        reasons.push('Idéal pour les stages');
+      }
+      if (country.pyramidType === 'COMPETENCE_TRUST') {
+        score += 15;
+        reasons.push('Excellence académique');
+      }
+      break;
+
+    case 'retirement':
+      // For retirement: cost of living, healthcare, weather, safety
+      if (age >= 55) {
+        score += 10;
+        reasons.push('Adapté aux retraités');
+      }
+      if (costOfLiving < currentCostOfLiving * 0.6) {
+        score += 20;
+        reasons.push('Pension valorisée');
+      }
+      const healthcareQuality = country.healthcare?.qualityScore || 50;
+      if (healthcareQuality >= 70) {
+        score += 15;
+        reasons.push('Bonne couverture santé');
+      }
+      break;
+
+    case 'digital_nomad':
+      // For digital nomad: cost, internet, community, visa flexibility
+      if (costOfLiving < currentCostOfLiving * 0.5) {
+        score += 20;
+        reasons.push('Coût de vie très bas');
+      }
+      if (country.pyramidType === 'GROWTH_RISK' || country.pyramidType === 'HYBRID_TRANSITION') {
+        score += 10;
+        reasons.push('Communauté nomade active');
+      }
+      break;
+  }
+
+  return { score: Math.min(100, score), reasons };
+}
+
+export function DestinationSelector({
+  intention,
+  nationalityIds,
+  currentCountryId,
+  desiredLife,
+  age = 30,
+  professionId,
+  selectedDestinationId,
+  onDestinationSelect,
+}: DestinationSelectorProps) {
+  const { t } = useTranslation();
+  const { countries } = useCountries();
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+
+  const currentCountry = countries.find(c => c.id === currentCountryId);
+  const currentCostOfLiving = currentCountry?.costOfLiving?.monthlyBudgetSingle || 2000;
+
+  // Score and filter countries based on intention
+  const scoredCountries = useMemo(() => {
+    return countries
+      .filter(c => c.id !== currentCountryId)
+      .map(country => ({
+        country,
+        ...scoreCountryForIntention(country, intention, age, currentCostOfLiving)
+      }))
+      .sort((a, b) => b.score - a.score);
+  }, [countries, currentCountryId, intention, age, currentCostOfLiving]);
+
+  // Get top recommendations
+  const topRecommendations = scoredCountries.slice(0, 12);
+
+  const getIntentionIcon = () => {
+    switch (intention) {
+      case 'installation': return <Briefcase className="w-5 h-5" />;
+      case 'vacation': return <Plane className="w-5 h-5" />;
+      case 'internship': return <GraduationCap className="w-5 h-5" />;
+      case 'retirement': return <Palmtree className="w-5 h-5" />;
+      case 'digital_nomad': return <Briefcase className="w-5 h-5" />;
+    }
+  };
+
+  const getIntentionLabel = () => {
+    switch (intention) {
+      case 'installation': return t('exitKeys.intention.installation', 'Installation');
+      case 'vacation': return t('exitKeys.intention.vacation', 'Vacances');
+      case 'internship': return t('exitKeys.intention.internship', 'Stage');
+      case 'retirement': return t('exitKeys.intention.retirement', 'Retraite');
+      case 'digital_nomad': return t('exitKeys.intention.digitalNomad', 'Nomade digital');
+    }
+  };
+
+  return (
+    <div className="space-y-6">
+      <div className="text-center mb-6">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
+          {getIntentionIcon()}
+          <span className="font-medium">{getIntentionLabel()}</span>
+        </div>
+        <h3 className="text-2xl font-bold mb-2">
+          {t('exitKeys.destination.title', 'Où voulez-vous aller ?')}
+        </h3>
+        <p className="text-muted-foreground">
+          {t('exitKeys.destination.subtitle', 'Destinations optimisées pour votre projet et votre profil')}
+        </p>
+      </div>
+
+      {/* Recommendations grid */}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {topRecommendations.map(({ country, score, reasons }) => {
+          const isSelected = selectedDestinationId === country.id;
+          const costOfLiving = country.costOfLiving?.monthlyBudgetSingle || 1500;
+          
+          return (
+            <button
+              key={country.id}
+              onClick={() => onDestinationSelect(country.id)}
+              className={cn(
+                "relative p-4 rounded-xl border-2 text-left transition-all duration-200 hover:scale-[1.02]",
+                isSelected 
+                  ? "border-primary bg-primary/10 ring-2 ring-primary/30" 
+                  : "border-border hover:border-primary/50 bg-card/50"
+              )}
+            >
+              {/* Score badge */}
+              <div className={cn(
+                "absolute -top-2 -right-2 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold",
+                score >= 80 ? "bg-emerald-500 text-white" :
+                score >= 60 ? "bg-amber-500 text-white" :
+                "bg-muted text-foreground"
+              )}>
+                {score}
+              </div>
+
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-3xl">{getFlagEmoji(country.iso2)}</span>
+                <div className="flex-1 min-w-0">
+                  <h4 className="font-semibold truncate">{country.name}</h4>
+                  <p className="text-xs text-muted-foreground truncate">
+                    ~{costOfLiving}€/mois
+                  </p>
+                </div>
+              </div>
+
+              {reasons.length > 0 && (
+                <div className="flex flex-wrap gap-1">
+                  {reasons.slice(0, 2).map((reason, i) => (
+                    <span key={i} className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary">
+                      {reason}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {isSelected && (
+                <div className="absolute bottom-2 right-2">
+                  <ChevronRight className="w-5 h-5 text-primary" />
+                </div>
+              )}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* All countries option */}
+      <details className="mt-6">
+        <summary className="cursor-pointer text-sm text-muted-foreground hover:text-foreground transition-colors">
+          {t('exitKeys.destination.showAll', 'Voir tous les pays')} ({countries.length - 1})
+        </summary>
+        <div className="mt-4 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
+          {countries
+            .filter(c => c.id !== currentCountryId)
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map(country => (
+              <button
+                key={country.id}
+                onClick={() => onDestinationSelect(country.id)}
+                className={cn(
+                  "p-2 rounded-lg border text-left transition-all",
+                  selectedDestinationId === country.id 
+                    ? "border-primary bg-primary/10" 
+                    : "border-border hover:border-primary/50"
+                )}
+              >
+                <span className="text-lg mr-2">{getFlagEmoji(country.iso2)}</span>
+                <span className="text-sm truncate">{country.name}</span>
+              </button>
+            ))}
+        </div>
+      </details>
+    </div>
+  );
+}
