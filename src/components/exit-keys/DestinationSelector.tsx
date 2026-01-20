@@ -1,11 +1,12 @@
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ChevronRight, Briefcase, Plane, GraduationCap, Palmtree, Laptop } from 'lucide-react';
+import { ChevronRight, Briefcase, Plane, GraduationCap, Palmtree, Laptop, TrendingUp, Heart, Shield, Zap, DollarSign, Star } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useCountries } from '@/lib/countries-data';
-import { Country } from '@/lib/types';
+import { Country, PyramidType, LifePriority } from '@/lib/types';
 import { ProjectIntention } from '@/hooks/useExitKeysProfile';
-import { LifePriority } from '@/lib/types';
+import { getProfession, Profession } from '@/lib/profession-data';
+import { Progress } from '@/components/ui/progress';
 
 interface DestinationSelectorProps {
   intention: ProjectIntention;
@@ -19,244 +20,163 @@ interface DestinationSelectorProps {
 }
 
 function getFlagEmoji(iso2: string) {
-  return iso2
-    .toUpperCase()
-    .split('')
-    .map(char => String.fromCodePoint(127397 + char.charCodeAt(0)))
-    .join('');
+  return iso2.toUpperCase().split('').map(char => String.fromCodePoint(127397 + char.charCodeAt(0))).join('');
 }
 
-// Score a country for different intentions - returns translation keys
-function scoreCountryForIntention(
-  country: Country,
-  intention: ProjectIntention,
-  age: number,
-  currentCostOfLiving: number
-): { score: number; reasonKeys: string[] } {
-  let score = 50;
-  const reasonKeys: string[] = [];
+const PRIORITY_PYRAMID_WEIGHTS: Record<LifePriority, Record<PyramidType, number>> = {
+  money: { 'COMPETENCE_TRUST': 95, 'GROWTH_RISK': 80, 'STABILITY_REDIS': 50, 'HYBRID_TRANSITION': 60, 'PROBLEM_RENT': 40, 'RESOURCE_EXTRACTION': 30 },
+  freedom: { 'GROWTH_RISK': 90, 'HYBRID_TRANSITION': 85, 'COMPETENCE_TRUST': 70, 'STABILITY_REDIS': 50, 'PROBLEM_RENT': 45, 'RESOURCE_EXTRACTION': 35 },
+  meaning: { 'STABILITY_REDIS': 80, 'COMPETENCE_TRUST': 75, 'HYBRID_TRANSITION': 70, 'GROWTH_RISK': 55, 'PROBLEM_RENT': 40, 'RESOURCE_EXTRACTION': 30 },
+  status: { 'COMPETENCE_TRUST': 90, 'GROWTH_RISK': 85, 'STABILITY_REDIS': 60, 'HYBRID_TRANSITION': 55, 'PROBLEM_RENT': 50, 'RESOURCE_EXTRACTION': 45 },
+  family: { 'STABILITY_REDIS': 90, 'COMPETENCE_TRUST': 85, 'HYBRID_TRANSITION': 70, 'GROWTH_RISK': 50, 'PROBLEM_RENT': 35, 'RESOURCE_EXTRACTION': 25 },
+  calm: { 'HYBRID_TRANSITION': 90, 'STABILITY_REDIS': 85, 'COMPETENCE_TRUST': 70, 'GROWTH_RISK': 40, 'PROBLEM_RENT': 35, 'RESOURCE_EXTRACTION': 30 },
+};
 
+const COUNTRY_PROFESSION_BONUSES: Record<string, { categories: string[]; bonus: number; reason: string }[]> = {
+  switzerland: [{ categories: ['healthcare'], bonus: 30, reason: 'professionDemandHigh' }, { categories: ['finance', 'tech'], bonus: 25, reason: 'professionDemandHigh' }],
+  germany: [{ categories: ['tech', 'science'], bonus: 25, reason: 'professionDemandHigh' }, { categories: ['healthcare'], bonus: 20, reason: 'professionDemandHigh' }],
+  canada: [{ categories: ['tech', 'healthcare'], bonus: 25, reason: 'professionDemandHigh' }],
+  united_states: [{ categories: ['tech'], bonus: 30, reason: 'professionDemandHigh' }, { categories: ['finance'], bonus: 25, reason: 'professionDemandHigh' }],
+  singapore: [{ categories: ['finance', 'tech'], bonus: 30, reason: 'professionDemandHigh' }],
+  uae: [{ categories: ['finance', 'tech', 'business'], bonus: 25, reason: 'professionDemandHigh' }],
+  portugal: [{ categories: ['tech'], bonus: 20, reason: 'nomadFriendly' }],
+  netherlands: [{ categories: ['tech'], bonus: 25, reason: 'professionDemandHigh' }],
+  australia: [{ categories: ['healthcare'], bonus: 30, reason: 'professionDemandHigh' }, { categories: ['tech'], bonus: 20, reason: 'professionDemandHigh' }],
+};
+
+const EU_COUNTRIES = ['france', 'germany', 'spain', 'portugal', 'italy', 'netherlands', 'belgium', 'ireland', 'austria', 'poland', 'sweden', 'denmark', 'finland'];
+
+function scoreCountryAdvanced(country: Country, intention: ProjectIntention, desiredLife: LifePriority, age: number, profession: Profession | undefined, nationalityIds: string[], currentCostOfLiving: number) {
+  let score = 0;
+  const reasons: { key: string; impact: 'high' | 'medium' | 'low' }[] = [];
+  const warnings: string[] = [];
   const costOfLiving = country.costOfLiving?.monthlyBudgetSingle || 1500;
-  const visaFriendly = country.visa?.workVisa === 'easy' || country.visa?.digitalNomadVisa;
-  
-  switch (intention) {
-    case 'installation':
-      if (country.pyramidType === 'COMPETENCE_TRUST' || country.pyramidType === 'STABILITY_REDIS') {
-        score += 15;
-        reasonKeys.push('exitKeys.destination.systemStability');
-      }
-      if (costOfLiving < currentCostOfLiving * 0.8) {
-        score += 10;
-        reasonKeys.push('exitKeys.destination.budgetFriendly');
-      }
-      if (age < 35) {
-        score += 5;
-        reasonKeys.push('exitKeys.destination.youngOpportunities');
-      }
-      break;
+  const hasEUNationality = nationalityIds.some(n => EU_COUNTRIES.includes(n));
+  const isEUCountry = EU_COUNTRIES.includes(country.id);
 
-    case 'vacation':
-      if (costOfLiving < currentCostOfLiving * 0.5) {
-        score += 25;
-        reasonKeys.push('exitKeys.destination.veryAffordable');
-      } else if (costOfLiving < currentCostOfLiving * 0.7) {
-        score += 15;
-        reasonKeys.push('exitKeys.destination.goodValue');
-      }
-      if (visaFriendly) {
-        score += 10;
-        reasonKeys.push('exitKeys.destination.quickAccess');
-      }
-      break;
+  // Life priority alignment (0-35 points)
+  const pyramidWeight = PRIORITY_PYRAMID_WEIGHTS[desiredLife]?.[country.pyramidType as PyramidType] || 50;
+  score += (pyramidWeight / 100) * 35;
+  if (pyramidWeight >= 80) reasons.push({ key: 'exitKeys.destination.alignedWithGoals', impact: 'high' });
 
-    case 'internship':
-      if (age < 30) {
-        score += 20;
-        reasonKeys.push('exitKeys.destination.idealInternship');
-      }
-      if (country.pyramidType === 'COMPETENCE_TRUST') {
-        score += 15;
-        reasonKeys.push('exitKeys.destination.academicExcellence');
-      }
-      break;
-
-    case 'retirement':
-      if (age >= 55) {
-        score += 10;
-        reasonKeys.push('exitKeys.destination.retireeFriendly');
-      }
-      if (costOfLiving < currentCostOfLiving * 0.6) {
-        score += 20;
-        reasonKeys.push('exitKeys.destination.pensionValue');
-      }
-      const healthcareQuality = country.healthcare?.qualityScore || 50;
-      if (healthcareQuality >= 70) {
-        score += 15;
-        reasonKeys.push('exitKeys.destination.goodHealthcare');
-      }
-      break;
-
-    case 'digital_nomad':
-      if (costOfLiving < currentCostOfLiving * 0.5) {
-        score += 20;
-        reasonKeys.push('exitKeys.destination.veryLowCost');
-      }
-      if (country.pyramidType === 'GROWTH_RISK' || country.pyramidType === 'HYBRID_TRANSITION') {
-        score += 10;
-        reasonKeys.push('exitKeys.destination.nomadCommunity');
-      }
-      break;
+  // Profession demand (0-25 points)
+  if (profession) {
+    const countryBonuses = COUNTRY_PROFESSION_BONUSES[country.id] || [];
+    const professionBonus = countryBonuses.find(b => b.categories.includes(profession.category));
+    if (professionBonus) {
+      score += Math.min(professionBonus.bonus, 25);
+      reasons.push({ key: `exitKeys.destination.${professionBonus.reason}`, impact: professionBonus.bonus >= 20 ? 'high' : 'medium' });
+    } else if (profession.internationalDemand === 'very_high') {
+      score += 15;
+      reasons.push({ key: 'exitKeys.destination.globalDemand', impact: 'medium' });
+    }
+    if (intention === 'digital_nomad' && profession.remoteWorkPossible) {
+      score += 10;
+      reasons.push({ key: 'exitKeys.destination.remoteCompatible', impact: 'medium' });
+    }
   }
 
-  return { score: Math.min(100, score), reasonKeys };
+  // Cost of living (0-20 points)
+  const costRatio = costOfLiving / currentCostOfLiving;
+  if (desiredLife === 'money' && country.pyramidType === 'COMPETENCE_TRUST') {
+    score += 15;
+    reasons.push({ key: 'exitKeys.destination.highSalaries', impact: 'high' });
+  } else if (costRatio < 0.5) {
+    score += 20;
+    reasons.push({ key: 'exitKeys.destination.veryAffordable', impact: 'high' });
+  } else if (costRatio < 0.7) {
+    score += 12;
+    reasons.push({ key: 'exitKeys.destination.affordable', impact: 'medium' });
+  }
+
+  // Visa/mobility (0-15 points)
+  if (hasEUNationality && isEUCountry) {
+    score += 15;
+    reasons.push({ key: 'exitKeys.destination.euFreeMovement', impact: 'high' });
+  } else if (country.visa?.workVisa === 'easy') {
+    score += 10;
+    reasons.push({ key: 'exitKeys.destination.easyVisa', impact: 'medium' });
+  } else if (country.visa?.digitalNomadVisa && intention === 'digital_nomad') {
+    score += 12;
+    reasons.push({ key: 'exitKeys.destination.nomadVisa', impact: 'high' });
+  }
+
+  // Age adjustments
+  if (intention === 'internship' && age > 30) {
+    score -= 15;
+    warnings.push('exitKeys.destination.ageLimitInternship');
+  }
+  if (intention === 'retirement' && age >= 55) {
+    score += 10;
+    const healthcareScore = country.healthcare?.qualityScore || 50;
+    if (healthcareScore >= 75) reasons.push({ key: 'exitKeys.destination.excellentHealthcare', impact: 'high' });
+  }
+
+  return { score: Math.max(0, Math.min(100, score)), reasons, warnings };
 }
 
-export function DestinationSelector({
-  intention,
-  nationalityIds,
-  currentCountryId,
-  desiredLife,
-  age = 30,
-  professionId,
-  selectedDestinationId,
-  onDestinationSelect,
-}: DestinationSelectorProps) {
+export function DestinationSelector({ intention, nationalityIds, currentCountryId, desiredLife, age = 30, professionId, selectedDestinationId, onDestinationSelect }: DestinationSelectorProps) {
   const { t } = useTranslation();
   const { countries } = useCountries();
-
   const currentCountry = countries.find(c => c.id === currentCountryId);
   const currentCostOfLiving = currentCountry?.costOfLiving?.monthlyBudgetSingle || 2000;
+  const profession = professionId ? getProfession(professionId) : undefined;
 
-  // Score and filter countries based on intention
   const scoredCountries = useMemo(() => {
-    return countries
-      .filter(c => c.id !== currentCountryId)
-      .map(country => ({
-        country,
-        ...scoreCountryForIntention(country, intention, age, currentCostOfLiving)
-      }))
-      .sort((a, b) => b.score - a.score);
-  }, [countries, currentCountryId, intention, age, currentCostOfLiving]);
+    return countries.filter(c => c.id !== currentCountryId).map(country => ({
+      country,
+      ...scoreCountryAdvanced(country, intention, desiredLife, age, profession, nationalityIds, currentCostOfLiving)
+    })).sort((a, b) => b.score - a.score);
+  }, [countries, currentCountryId, intention, desiredLife, age, profession, nationalityIds, currentCostOfLiving]);
 
-  // Get top recommendations
-  const topRecommendations = scoredCountries.slice(0, 12);
+  const topRecommendations = scoredCountries.filter(c => c.score >= 40).slice(0, 8);
 
-  const getIntentionIcon = () => {
-    switch (intention) {
-      case 'installation': return <Briefcase className="w-5 h-5" />;
-      case 'vacation': return <Plane className="w-5 h-5" />;
-      case 'internship': return <GraduationCap className="w-5 h-5" />;
-      case 'retirement': return <Palmtree className="w-5 h-5" />;
-      case 'digital_nomad': return <Laptop className="w-5 h-5" />;
-    }
-  };
-
-  const getIntentionLabel = () => {
-    switch (intention) {
-      case 'installation': return t('exitKeys.intention.installation', 'Installation');
-      case 'vacation': return t('exitKeys.intention.vacation', 'Vacances');
-      case 'internship': return t('exitKeys.intention.internship', 'Stage');
-      case 'retirement': return t('exitKeys.intention.retirement', 'Retraite');
-      case 'digital_nomad': return t('exitKeys.intention.digitalNomad', 'Nomade digital');
-    }
-  };
+  const getScoreColor = (score: number) => score >= 75 ? 'text-green-600 dark:text-green-400' : score >= 55 ? 'text-amber-600 dark:text-amber-400' : 'text-muted-foreground';
 
   return (
     <div className="space-y-6">
       <div className="text-center mb-6">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
-          {getIntentionIcon()}
-          <span className="font-medium">{getIntentionLabel()}</span>
-        </div>
-        <h3 className="text-2xl font-bold mb-2">
-          {t('exitKeys.destination.title', 'Où voulez-vous aller ?')}
-        </h3>
-        <p className="text-muted-foreground">
-          {t('exitKeys.destination.subtitle', 'Destinations optimisées pour votre projet et votre profil')}
+        <h3 className="text-2xl font-bold mb-2">{t('exitKeys.destination.title')}</h3>
+        <p className="text-muted-foreground text-sm">
+          {profession ? `${t('exitKeys.destination.basedOnProfile')} : ${profession.name} • ${age} ${t('common.years')}` : t('exitKeys.destination.subtitle')}
         </p>
       </div>
 
-      {/* Recommendations grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {topRecommendations.map(({ country, score, reasonKeys }) => {
-          const isSelected = selectedDestinationId === country.id;
-          const costOfLiving = country.costOfLiving?.monthlyBudgetSingle || 1500;
-          
-          return (
-            <button
-              key={country.id}
-              onClick={() => onDestinationSelect(country.id)}
-              className={cn(
-                "relative p-4 rounded-xl border-2 text-left transition-all duration-200 hover:scale-[1.02]",
-                isSelected 
-                  ? "border-primary bg-primary/10 ring-2 ring-primary/30" 
-                  : "border-border hover:border-primary/50 bg-card/50"
-              )}
-            >
-              {/* Score badge */}
-              <div className={cn(
-                "absolute -top-2 -right-2 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-white",
-                score >= 80 ? "bg-green-600 dark:bg-green-500" :
-                score >= 60 ? "bg-amber-600 dark:bg-amber-500" :
-                "bg-muted text-foreground"
+      {topRecommendations.length === 0 ? (
+        <div className="text-center py-8 text-muted-foreground">{t('exitKeys.destination.noMatches')}</div>
+      ) : (
+        <div className="grid gap-4">
+          {topRecommendations.map(({ country, score, reasons, warnings }, index) => {
+            const isSelected = selectedDestinationId === country.id;
+            const isTopPick = index === 0 && score >= 70;
+            return (
+              <button key={country.id} onClick={() => onDestinationSelect(country.id)} className={cn(
+                "relative p-4 rounded-xl border-2 text-left transition-all hover:scale-[1.01]",
+                isSelected ? "border-primary bg-primary/10 ring-2 ring-primary/30" : isTopPick ? "border-green-500/50 bg-green-500/5" : "border-border hover:border-primary/50 bg-card/50"
               )}>
-                {score}
-              </div>
-
-              <div className="flex items-center gap-3 mb-3">
-                <span className="text-3xl">{getFlagEmoji(country.iso2)}</span>
-                <div className="flex-1 min-w-0">
-                  <h4 className="font-semibold truncate">{country.name}</h4>
-                  <p className="text-xs text-muted-foreground truncate">
-                    ~{costOfLiving}€/{t('common.month', 'mois')}
-                  </p>
+                {isTopPick && <div className="absolute -top-3 left-4 px-3 py-1 rounded-full bg-green-600 text-white text-xs font-semibold flex items-center gap-1"><Star className="w-3 h-3" />{t('exitKeys.destination.topPick')}</div>}
+                <div className="flex items-start gap-4">
+                  <div className="flex items-center gap-3"><span className="text-4xl">{getFlagEmoji(country.iso2)}</span><div><h4 className="font-bold text-lg">{country.name}</h4><p className="text-xs text-muted-foreground">~{country.costOfLiving?.monthlyBudgetSingle || 1500}€/{t('common.month', 'mois')}</p></div></div>
+                  <div className="flex-1"><div className="flex items-center justify-between mb-2"><span className={cn("text-2xl font-bold", getScoreColor(score))}>{Math.round(score)}%</span><span className="text-xs text-muted-foreground">{t('exitKeys.destination.compatibility')}</span></div><Progress value={score} className="h-2" /></div>
                 </div>
-              </div>
-
-              {reasonKeys.length > 0 && (
-                <div className="flex flex-wrap gap-1">
-                  {reasonKeys.slice(0, 2).map((key, i) => (
-                    <span key={i} className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary">
-                      {t(key)}
-                    </span>
-                  ))}
-                </div>
-              )}
-
-              {isSelected && (
-                <div className="absolute bottom-2 right-2">
-                  <ChevronRight className="w-5 h-5 text-primary" />
-                </div>
-              )}
-            </button>
-          );
-        })}
-      </div>
-
-      {/* All countries option */}
-      <details className="mt-6">
-        <summary className="cursor-pointer text-sm text-muted-foreground hover:text-foreground transition-colors">
-          {t('exitKeys.destination.showAll', 'Voir tous les pays')} ({countries.length - 1})
-        </summary>
-        <div className="mt-4 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
-          {countries
-            .filter(c => c.id !== currentCountryId)
-            .sort((a, b) => a.name.localeCompare(b.name))
-            .map(country => (
-              <button
-                key={country.id}
-                onClick={() => onDestinationSelect(country.id)}
-                className={cn(
-                  "p-2 rounded-lg border text-left transition-all",
-                  selectedDestinationId === country.id 
-                    ? "border-primary bg-primary/10" 
-                    : "border-border hover:border-primary/50"
-                )}
-              >
-                <span className="text-lg mr-2">{getFlagEmoji(country.iso2)}</span>
-                <span className="text-sm truncate">{country.name}</span>
+                {reasons.length > 0 && <div className="flex flex-wrap gap-1.5 mt-3">{reasons.slice(0, 3).map((r, i) => <span key={i} className={cn("text-xs px-2 py-1 rounded-full", r.impact === 'high' ? "bg-green-500/20 text-green-700 dark:text-green-300" : "bg-muted text-muted-foreground")}>{t(r.key)}</span>)}</div>}
+                {warnings.length > 0 && <div className="flex flex-wrap gap-1.5 mt-2">{warnings.map((w, i) => <span key={i} className="text-xs px-2 py-1 rounded-full bg-destructive/10 text-destructive">⚠️ {t(w)}</span>)}</div>}
+                {isSelected && <ChevronRight className="absolute top-4 right-4 w-5 h-5 text-primary" />}
               </button>
-            ))}
+            );
+          })}
+        </div>
+      )}
+
+      <details className="mt-6">
+        <summary className="cursor-pointer text-sm text-muted-foreground hover:text-foreground">{t('exitKeys.destination.showAll')} ({scoredCountries.length})</summary>
+        <div className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+          {scoredCountries.filter(c => c.score < 40 || !topRecommendations.includes(c)).map(({ country, score }) => (
+            <button key={country.id} onClick={() => onDestinationSelect(country.id)} className={cn("p-3 rounded-lg border text-left flex items-center gap-2", selectedDestinationId === country.id ? "border-primary bg-primary/10" : "border-border hover:border-primary/50")}>
+              <span className="text-xl">{getFlagEmoji(country.iso2)}</span>
+              <div className="flex-1 min-w-0"><span className="text-sm font-medium truncate block">{country.name}</span><span className={cn("text-xs", getScoreColor(score))}>{Math.round(score)}%</span></div>
+            </button>
+          ))}
         </div>
       </details>
     </div>
