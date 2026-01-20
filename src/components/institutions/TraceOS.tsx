@@ -42,6 +42,9 @@ import { DecisionAuditLog } from './DecisionAuditLog';
 import { WorkflowMetrics } from './WorkflowMetrics';
 import { AutoExportManager } from './AutoExportManager';
 import { TraceOSWebhooks } from './TraceOSWebhooks';
+import { TraceOSReview } from './TraceOSReview';
+import { TraceOSGovernance } from './TraceOSGovernance';
+import { TraceOSIntegrations } from './TraceOSIntegrations';
 import { useSubscription } from '@/hooks/useSubscription';
 import { useTraceOSDecisions } from '@/hooks/useTraceOSDecisions';
 import { useTraceOSTags } from '@/hooks/useTraceOSTags';
@@ -476,48 +479,17 @@ export function TraceOS() {
         </TabsContent>
 
         <TabsContent value="integrations">
-          <div className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <GitBranch className="w-5 h-5" />
-                  {t('traceOS.integrations.title', 'Webhooks & Workflows')}
-                </CardTitle>
-                <CardDescription>
-                  {t('traceOS.integrations.desc', 'Configurez les intégrations externes et les workflows d\'approbation.')}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-4">
-                  {t('traceOS.integrations.info', 'Connectez TraceOS à Slack, Teams ou Notion pour recevoir des notifications automatiques.')}
-                </p>
-              </CardContent>
-            </Card>
-            <div className="grid lg:grid-cols-2 gap-6">
-              <WorkflowMetrics />
-              <AutoExportManager />
-            </div>
-          </div>
+          <TraceOSIntegrations />
         </TabsContent>
 
         <TabsContent value="review">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <History className="w-5 h-5" />
-                {t('traceOS.review.title', 'Relecture stratégique')}
-              </CardTitle>
-              <CardDescription>
-                {t('traceOS.review.desc', 'Analysez l\'enchaînement des décisions et identifiez les moments de rupture.')}
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="text-center py-12 text-muted-foreground">
-                <Eye className="w-12 h-12 mx-auto mb-4 opacity-20" />
-                <p>{t('traceOS.review.selectDecision', 'Sélectionnez une décision dans l\'arbre pour lancer une relecture.')}</p>
-              </div>
-            </CardContent>
-          </Card>
+          <TraceOSReview
+            decisions={displayDecisions}
+            onSelectDecision={(d) => {
+              setSelectedDecision(d);
+              setShowComments(true);
+            }}
+          />
         </TabsContent>
 
         <TabsContent value="tags">
@@ -542,48 +514,7 @@ export function TraceOS() {
         </TabsContent>
 
         <TabsContent value="governance">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Shield className="w-5 h-5" />
-                {t('traceOS.governance.title', 'Gouvernance & Accès')}
-              </CardTitle>
-              <CardDescription>
-                {t('traceOS.governance.desc', 'Gérez les droits d\'accès et la traçabilité des modifications.')}
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Card className="bg-muted/30">
-                  <CardContent className="pt-6">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center">
-                        <Lock className="w-5 h-5 text-green-600" />
-                      </div>
-                      <div>
-                        <h4 className="font-medium">{t('traceOS.governance.appendOnly', 'Append-only')}</h4>
-                        <p className="text-sm text-muted-foreground">{t('traceOS.governance.appendOnlyDesc', 'L\'historique est non modifiable')}</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-                
-                <Card className="bg-muted/30">
-                  <CardContent className="pt-6">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center">
-                        <Users className="w-5 h-5 text-blue-600" />
-                      </div>
-                      <div>
-                        <h4 className="font-medium">{t('traceOS.governance.roles', 'Gestion des rôles')}</h4>
-                        <p className="text-sm text-muted-foreground">{t('traceOS.governance.rolesDesc', 'Lecture / Écriture par utilisateur')}</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </CardContent>
-          </Card>
+          <TraceOSGovernance />
         </TabsContent>
       </Tabs>
 

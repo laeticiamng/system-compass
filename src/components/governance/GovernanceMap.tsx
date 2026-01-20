@@ -37,23 +37,23 @@ interface GovernanceMapProps {
 }
 
 const LEVEL_CONFIG = {
-  official: { label: 'Officiel', color: 'bg-blue-500/20 text-blue-700' },
-  influential: { label: 'Influent', color: 'bg-purple-500/20 text-purple-700' },
-  blocker: { label: 'Bloqueur', color: 'bg-red-500/20 text-red-700' },
+  official: { labelKey: 'governance.map.levels.official', color: 'bg-blue-500/20 text-blue-700' },
+  influential: { labelKey: 'governance.map.levels.influential', color: 'bg-purple-500/20 text-purple-700' },
+  blocker: { labelKey: 'governance.map.levels.blocker', color: 'bg-red-500/20 text-red-700' },
 };
 
 const POWER_CONFIG = {
-  sign: { label: 'Peut signer', icon: <Crown className="w-3 h-3" /> },
-  block: { label: 'Peut bloquer', icon: <Lock className="w-3 h-3" /> },
-  access: { label: 'Donne accès', icon: <Unlock className="w-3 h-3" /> },
-  advise: { label: 'Conseille', icon: <Eye className="w-3 h-3" /> },
+  sign: { labelKey: 'governance.map.powers.sign', icon: <Crown className="w-3 h-3" /> },
+  block: { labelKey: 'governance.map.powers.block', icon: <Lock className="w-3 h-3" /> },
+  access: { labelKey: 'governance.map.powers.access', icon: <Unlock className="w-3 h-3" /> },
+  advise: { labelKey: 'governance.map.powers.advise', icon: <Eye className="w-3 h-3" /> },
 };
 
 const RELIABILITY_CONFIG = {
-  unknown: { label: 'Inconnu', color: 'text-gray-500' },
-  low: { label: 'Faible', color: 'text-red-600' },
-  medium: { label: 'Moyenne', color: 'text-amber-600' },
-  high: { label: 'Élevée', color: 'text-green-600' },
+  unknown: { labelKey: 'governance.map.reliabilities.unknown', color: 'text-gray-500' },
+  low: { labelKey: 'governance.map.reliabilities.low', color: 'text-red-600' },
+  medium: { labelKey: 'governance.map.reliabilities.medium', color: 'text-amber-600' },
+  high: { labelKey: 'governance.map.reliabilities.high', color: 'text-green-600' },
 };
 
 export function GovernanceMap({ countryId, countryName }: GovernanceMapProps) {
@@ -180,14 +180,21 @@ export function GovernanceMap({ countryId, countryName }: GovernanceMapProps) {
 
   const exportStakeholdersCsv = () => {
     if (filteredStakeholders.length === 0) return;
-    const headers = ['Nom', 'Rôle', 'Niveau', 'Pouvoir', 'Fiabilité', 'Notes'];
+    const headers = [
+      t('governance.map.name', 'Name'),
+      t('governance.map.role', 'Role'),
+      t('governance.map.level', 'Level'),
+      t('governance.map.power', 'Power'),
+      t('governance.map.reliability', 'Reliability'),
+      t('common.description', 'Notes')
+    ];
     const escapeValue = (value: string) => `"${value.replace(/\"/g, '""')}"`;
     const rows = filteredStakeholders.map(s => ([
       s.name,
       s.role,
-      LEVEL_CONFIG[s.level]?.label ?? s.level,
-      POWER_CONFIG[s.power]?.label ?? s.power,
-      RELIABILITY_CONFIG[s.reliability]?.label ?? s.reliability,
+      t(LEVEL_CONFIG[s.level]?.labelKey ?? '', s.level),
+      t(POWER_CONFIG[s.power]?.labelKey ?? '', s.power),
+      t(RELIABILITY_CONFIG[s.reliability]?.labelKey ?? '', s.reliability),
       s.notes || '',
     ].map(value => escapeValue(String(value))).join(',')));
     const csv = [headers.map(escapeValue).join(','), ...rows].join('\n');
@@ -212,13 +219,16 @@ export function GovernanceMap({ countryId, countryName }: GovernanceMapProps) {
 
     pdf.setFont('helvetica', 'bold');
     pdf.setFontSize(16);
-    pdf.text(`Stakeholders - ${countryName}`, margin, yPos);
+    pdf.text(`${t('governance.map.title', 'Governance Map')} - ${countryName}`, margin, yPos);
     yPos += 10;
 
     pdf.setFont('helvetica', 'normal');
     pdf.setFontSize(10);
     filteredStakeholders.forEach((stakeholder, index) => {
-      const line = `${index + 1}. ${stakeholder.name} — ${stakeholder.role} | ${LEVEL_CONFIG[stakeholder.level]?.label ?? stakeholder.level} | ${POWER_CONFIG[stakeholder.power]?.label ?? stakeholder.power} | ${RELIABILITY_CONFIG[stakeholder.reliability]?.label ?? stakeholder.reliability}`;
+      const levelLabel = t(LEVEL_CONFIG[stakeholder.level]?.labelKey ?? '', stakeholder.level);
+      const powerLabel = t(POWER_CONFIG[stakeholder.power]?.labelKey ?? '', stakeholder.power);
+      const reliabilityLabel = t(RELIABILITY_CONFIG[stakeholder.reliability]?.labelKey ?? '', stakeholder.reliability);
+      const line = `${index + 1}. ${stakeholder.name} — ${stakeholder.role} | ${levelLabel} | ${powerLabel} | ${reliabilityLabel}`;
       const lines = pdf.splitTextToSize(line, maxWidth);
       lines.forEach(textLine => {
         if (yPos > pdf.internal.pageSize.getHeight() - margin) {
@@ -229,7 +239,7 @@ export function GovernanceMap({ countryId, countryName }: GovernanceMapProps) {
         yPos += 6;
       });
       if (stakeholder.notes) {
-        const notesLines = pdf.splitTextToSize(`Notes: ${stakeholder.notes}`, maxWidth);
+        const notesLines = pdf.splitTextToSize(`${t('common.description', 'Notes')}: ${stakeholder.notes}`, maxWidth);
         notesLines.forEach(noteLine => {
           if (yPos > pdf.internal.pageSize.getHeight() - margin) {
             pdf.addPage();
@@ -246,12 +256,12 @@ export function GovernanceMap({ countryId, countryName }: GovernanceMapProps) {
   };
 
   // Red flags analysis
-  const redFlags = [];
+  const redFlags: string[] = [];
   const singleIntermediary = filteredStakeholders.filter(s => s.level === 'influential').length === 1;
   const highOpacity = filteredStakeholders.filter(s => s.reliability === 'unknown' || s.reliability === 'low').length > filteredStakeholders.length / 2;
-  
-  if (singleIntermediary) redFlags.push('Dépendance à un seul intermédiaire');
-  if (highOpacity) redFlags.push('Opacité élevée (fiabilité non vérifiée)');
+
+  if (singleIntermediary) redFlags.push(t('governance.map.singleIntermediary', 'Dependency on a single intermediary'));
+  if (highOpacity) redFlags.push(t('governance.map.highOpacity', 'High opacity (unverified reliability)'));
 
   return (
     <Card className="border-violet-500/20">
@@ -264,15 +274,15 @@ export function GovernanceMap({ countryId, countryName }: GovernanceMapProps) {
           <div className="flex gap-2">
             <Button variant="outline" size="sm" onClick={() => setShowAddForm(!showAddForm)}>
               <Plus className="w-4 h-4 mr-1" />
-              Ajouter
+              {t('governance.map.add', 'Add')}
             </Button>
             {filteredStakeholders.length > 0 && (
               <>
                 <Button variant="outline" size="sm" onClick={exportStakeholdersCsv}>
-                  Export CSV
+                  {t('governance.map.exportCsv', 'Export CSV')}
                 </Button>
                 <Button size="sm" onClick={exportStakeholdersPdf}>
-                  Export PDF
+                  {t('governance.map.exportPdf', 'Export PDF')}
                 </Button>
               </>
             )}
@@ -285,7 +295,7 @@ export function GovernanceMap({ countryId, countryName }: GovernanceMapProps) {
           <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
             <div className="flex items-center gap-2 mb-2">
               <AlertTriangle className="w-4 h-4 text-red-600" />
-              <span className="font-medium text-sm text-red-700">Drapeaux rouges</span>
+              <span className="font-medium text-sm text-red-700">{t('governance.map.redFlags', 'Red flags')}</span>
             </div>
             <ul className="text-sm text-red-600 space-y-1">
               {redFlags.map((flag, i) => <li key={i}>• {flag}</li>)}
@@ -297,32 +307,32 @@ export function GovernanceMap({ countryId, countryName }: GovernanceMapProps) {
         {showAddForm && (
           <div className="p-4 bg-muted/50 rounded-lg space-y-3 border-2 border-dashed border-primary/30">
             <div className="grid grid-cols-2 gap-2">
-              <Input placeholder="Nom/Titre" value={newStakeholder.name || ''} onChange={(e) => setNewStakeholder(p => ({ ...p, name: e.target.value }))} />
-              <Input placeholder="Rôle" value={newStakeholder.role || ''} onChange={(e) => setNewStakeholder(p => ({ ...p, role: e.target.value }))} />
+              <Input placeholder={t('governance.map.name', 'Name/Title')} value={newStakeholder.name || ''} onChange={(e) => setNewStakeholder(p => ({ ...p, name: e.target.value }))} />
+              <Input placeholder={t('governance.map.role', 'Role')} value={newStakeholder.role || ''} onChange={(e) => setNewStakeholder(p => ({ ...p, role: e.target.value }))} />
             </div>
             <div className="grid grid-cols-3 gap-2">
               <Select value={newStakeholder.level} onValueChange={(v) => setNewStakeholder(p => ({ ...p, level: v as Stakeholder['level'] }))}>
-                <SelectTrigger><SelectValue placeholder="Niveau" /></SelectTrigger>
+                <SelectTrigger><SelectValue placeholder={t('governance.map.level', 'Level')} /></SelectTrigger>
                 <SelectContent>
-                  {Object.entries(LEVEL_CONFIG).map(([k, v]) => <SelectItem key={k} value={k}>{v.label}</SelectItem>)}
+                  {Object.entries(LEVEL_CONFIG).map(([k, v]) => <SelectItem key={k} value={k}>{t(v.labelKey)}</SelectItem>)}
                 </SelectContent>
               </Select>
               <Select value={newStakeholder.power} onValueChange={(v) => setNewStakeholder(p => ({ ...p, power: v as Stakeholder['power'] }))}>
-                <SelectTrigger><SelectValue placeholder="Pouvoir" /></SelectTrigger>
+                <SelectTrigger><SelectValue placeholder={t('governance.map.power', 'Power')} /></SelectTrigger>
                 <SelectContent>
-                  {Object.entries(POWER_CONFIG).map(([k, v]) => <SelectItem key={k} value={k}>{v.label}</SelectItem>)}
+                  {Object.entries(POWER_CONFIG).map(([k, v]) => <SelectItem key={k} value={k}>{t(v.labelKey)}</SelectItem>)}
                 </SelectContent>
               </Select>
               <Select value={newStakeholder.reliability} onValueChange={(v) => setNewStakeholder(p => ({ ...p, reliability: v as Stakeholder['reliability'] }))}>
-                <SelectTrigger><SelectValue placeholder="Fiabilité" /></SelectTrigger>
+                <SelectTrigger><SelectValue placeholder={t('governance.map.reliability', 'Reliability')} /></SelectTrigger>
                 <SelectContent>
-                  {Object.entries(RELIABILITY_CONFIG).map(([k, v]) => <SelectItem key={k} value={k}>{v.label}</SelectItem>)}
+                  {Object.entries(RELIABILITY_CONFIG).map(([k, v]) => <SelectItem key={k} value={k}>{t(v.labelKey)}</SelectItem>)}
                 </SelectContent>
               </Select>
             </div>
             <div className="flex gap-2">
-              <Button size="sm" onClick={addStakeholder}>Ajouter</Button>
-              <Button size="sm" variant="ghost" onClick={() => setShowAddForm(false)}>Annuler</Button>
+              <Button size="sm" onClick={addStakeholder}>{t('governance.map.add', 'Add')}</Button>
+              <Button size="sm" variant="ghost" onClick={() => setShowAddForm(false)}>{t('common.cancel', 'Cancel')}</Button>
             </div>
           </div>
         )}
@@ -334,12 +344,12 @@ export function GovernanceMap({ countryId, countryName }: GovernanceMapProps) {
               <div className="flex-1">
                 <div className="flex items-center gap-2">
                   <span className="font-medium">{s.name}</span>
-                  <Badge className={LEVEL_CONFIG[s.level]?.color}>{LEVEL_CONFIG[s.level]?.label}</Badge>
+                  <Badge className={LEVEL_CONFIG[s.level]?.color}>{t(LEVEL_CONFIG[s.level]?.labelKey ?? '')}</Badge>
                 </div>
                 <div className="text-sm text-muted-foreground flex items-center gap-3 mt-1">
                   <span>{s.role}</span>
-                  <span className="flex items-center gap-1">{POWER_CONFIG[s.power]?.icon} {POWER_CONFIG[s.power]?.label}</span>
-                  <span className={RELIABILITY_CONFIG[s.reliability]?.color}>Fiabilité: {RELIABILITY_CONFIG[s.reliability]?.label}</span>
+                  <span className="flex items-center gap-1">{POWER_CONFIG[s.power]?.icon} {t(POWER_CONFIG[s.power]?.labelKey ?? '')}</span>
+                  <span className={RELIABILITY_CONFIG[s.reliability]?.color}>{t('governance.map.reliability', 'Reliability')}: {t(RELIABILITY_CONFIG[s.reliability]?.labelKey ?? '')}</span>
                 </div>
               </div>
               <Button variant="ghost" size="sm" onClick={() => deleteStakeholder(s.id)}>
@@ -352,7 +362,7 @@ export function GovernanceMap({ countryId, countryName }: GovernanceMapProps) {
         {filteredStakeholders.length === 0 && !showAddForm && (
           <div className="text-center py-6 text-muted-foreground">
             <Users className="w-8 h-8 mx-auto mb-2 opacity-50" />
-            <p>Cartographiez les acteurs clés du projet</p>
+            <p>{t('governance.map.mapActors', 'Map the key actors of the project')}</p>
           </div>
         )}
       </CardContent>

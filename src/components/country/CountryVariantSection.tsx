@@ -231,8 +231,6 @@ export function CountryVariantSection({ countryId, countryName }: CountryVariant
   const [loading, setLoading] = useState(true);
   const [fetchError, setFetchError] = useState<string | null>(null);
 
-  console.log('[CountryVariantSection] Rendering:', { countryId, countryName, canAccessPremium, subscriptionLoading, loading });
-
   const { translatedData: variant, isTranslating } = useTranslatedVariants(
     countryId,
     originalVariant
@@ -246,14 +244,11 @@ export function CountryVariantSection({ countryId, countryName }: CountryVariant
       }
 
       try {
-        console.log('[CountryVariantSection] Fetching variant for:', countryId);
         const { data, error } = await supabase
           .from('country_variants')
           .select('*')
           .eq('country_id', countryId)
           .maybeSingle();
-
-        console.log('[CountryVariantSection] Fetch result:', { data: !!data, error, is_complete: data?.is_complete });
 
         if (error) throw error;
         
@@ -279,17 +274,9 @@ export function CountryVariantSection({ countryId, countryName }: CountryVariant
             success_timeline_months: parseSuccessTimeline(data.success_timeline_months),
             expat_communities: parseExpatCommunities(data.expat_communities),
           };
-          console.log('[CountryVariantSection] Parsed data:', { 
-            institutions: parsed.institutions.length,
-            labor_market: parsed.labor_market.length,
-            is_complete: parsed.is_complete
-          });
           setOriginalVariant(parsed);
-        } else {
-          console.log('[CountryVariantSection] No data found for:', countryId);
         }
       } catch (err) {
-        console.error('[CountryVariantSection] Failed to fetch:', err);
         setFetchError(err instanceof Error ? err.message : 'Unknown error');
       } finally {
         setLoading(false);

@@ -14,16 +14,13 @@ import {
 
 interface TimelineScenario {
   type: 'optimistic' | 'realistic' | 'pessimistic';
-  label: string;
   color: string;
   multiplier: number;
 }
 
 interface TimelinePhase {
   id: string;
-  label: string;
   baseWeeks: number;
-  risks: string[];
 }
 
 interface TerrainTimelineProps {
@@ -32,44 +29,27 @@ interface TerrainTimelineProps {
   projectType?: string;
 }
 
-const SCENARIOS: TimelineScenario[] = [
-  { type: 'optimistic', label: 'Optimiste', color: 'bg-green-500', multiplier: 1 },
-  { type: 'realistic', label: 'Réaliste', color: 'bg-amber-500', multiplier: 1.5 },
-  { type: 'pessimistic', label: 'Pessimiste', color: 'bg-red-500', multiplier: 2.5 },
+const SCENARIOS: Omit<TimelineScenario, 'label'>[] = [
+  { type: 'optimistic', color: 'bg-green-500', multiplier: 1 },
+  { type: 'realistic', color: 'bg-amber-500', multiplier: 1.5 },
+  { type: 'pessimistic', color: 'bg-red-500', multiplier: 2.5 },
 ];
 
-const DEFAULT_PHASES: TimelinePhase[] = [
-  { 
-    id: 'preparation', 
-    label: 'Préparation', 
-    baseWeeks: 4,
-    risks: ['Collecte documents plus longue', 'Validation légale retardée']
-  },
-  { 
-    id: 'admin', 
-    label: 'Administratif', 
-    baseWeeks: 8,
-    risks: ['Délais administration imprévisibles', 'Pièces manquantes demandées']
-  },
-  { 
-    id: 'installation', 
-    label: 'Installation', 
-    baseWeeks: 6,
-    risks: ['Logistique retardée', 'Recrutement difficile']
-  },
-  { 
-    id: 'launch', 
-    label: 'Lancement', 
-    baseWeeks: 4,
-    risks: ['Ajustements produit', 'Retard premiers revenus']
-  },
-  { 
-    id: 'stabilization', 
-    label: 'Stabilisation', 
-    baseWeeks: 12,
-    risks: ['Paiements longs', 'Turnover équipe']
-  },
+const DEFAULT_PHASES: Omit<TimelinePhase, 'label' | 'risks'>[] = [
+  { id: 'preparation', baseWeeks: 4 },
+  { id: 'admin', baseWeeks: 8 },
+  { id: 'installation', baseWeeks: 6 },
+  { id: 'launch', baseWeeks: 4 },
+  { id: 'stabilization', baseWeeks: 12 },
 ];
+
+const PHASE_RISKS: Record<string, string[]> = {
+  preparation: ['documentCollection', 'legalValidation'],
+  admin: ['adminDelays', 'missingDocuments'],
+  installation: ['logisticsDelayed', 'recruitmentDifficult'],
+  launch: ['productAdjustments', 'revenueDelay'],
+  stabilization: ['longPayments', 'teamTurnover'],
+};
 
 export function TerrainTimeline({ countryId, countryName, projectType }: TerrainTimelineProps) {
   const { t } = useTranslation();
@@ -90,10 +70,14 @@ export function TerrainTimeline({ countryId, countryName, projectType }: Terrain
   }, 0);
 
   const formatDuration = (weeks: number): string => {
-    if (weeks < 4) return `${weeks} sem.`;
+    if (weeks < 4) return `${weeks} ${t('governance.timeline.weeks', 'weeks')}`;
     const months = Math.round(weeks / 4);
-    return months === 1 ? '1 mois' : `${months} mois`;
+    return months === 1 ? `1 ${t('governance.timeline.month', 'month')}` : `${months} ${t('governance.timeline.months', 'months')}`;
   };
+
+  const getScenarioLabel = (type: string) => t(`governance.timeline.scenarios.${type}`, type);
+  const getPhaseLabel = (id: string) => t(`governance.timeline.phases.${id}`, id);
+  const getRiskLabel = (riskKey: string) => t(`governance.timeline.risks.${riskKey}`, riskKey);
 
   return (
     <Card className="border-indigo-500/20">
@@ -120,7 +104,7 @@ export function TerrainTimeline({ countryId, countryName, projectType }: Terrain
               }`}
             >
               <div className={`w-3 h-3 rounded-full ${scenario.color} mx-auto mb-2`} />
-              <div className="text-sm font-medium">{scenario.label}</div>
+              <div className="text-sm font-medium">{getScenarioLabel(scenario.type)}</div>
               <div className="text-xs text-muted-foreground">x{scenario.multiplier}</div>
             </button>
           ))}
@@ -152,39 +136,39 @@ export function TerrainTimeline({ countryId, countryName, projectType }: Terrain
         <div className="space-y-4">
           {DEFAULT_PHASES.map((phase, index) => {
             const calc = calculateWeeks(phase.baseWeeks);
-            const phaseProgress = ((index + 1) / DEFAULT_PHASES.length) * 100;
-            
+            const risks = PHASE_RISKS[phase.id] || [];
+
             return (
               <div key={phase.id} className="relative">
                 {/* Connection Line */}
                 {index < DEFAULT_PHASES.length - 1 && (
                   <div className="absolute left-4 top-12 w-0.5 h-8 bg-border" />
                 )}
-                
+
                 <div className="flex gap-4">
                   {/* Timeline Node */}
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${currentScenario.color} text-white`}>
                     {index + 1}
                   </div>
-                  
+
                   {/* Phase Content */}
                   <div className="flex-1 pb-4">
                     <div className="flex items-center justify-between mb-2">
-                      <h4 className="font-medium">{phase.label}</h4>
+                      <h4 className="font-medium">{getPhaseLabel(phase.id)}</h4>
                       <div className="text-right">
                         <div className="font-bold">{formatDuration(calc.total)}</div>
                         <div className="text-xs text-muted-foreground">
-                          ({formatDuration(calc.base)} + {formatDuration(calc.buffer)} tampon)
+                          ({formatDuration(calc.base)} + {formatDuration(calc.buffer)} {t('governance.timeline.bufferLabel', 'buffer')})
                         </div>
                       </div>
                     </div>
-                    
+
                     {/* Risks */}
                     <div className="flex flex-wrap gap-1">
-                      {phase.risks.map((risk, i) => (
+                      {risks.map((riskKey, i) => (
                         <Badge key={i} variant="outline" className="text-xs bg-amber-500/10 text-amber-700 border-amber-500/30">
                           <AlertTriangle className="w-3 h-3 mr-1" />
-                          {risk}
+                          {getRiskLabel(riskKey)}
                         </Badge>
                       ))}
                     </div>
@@ -200,25 +184,25 @@ export function TerrainTimeline({ countryId, countryName, projectType }: Terrain
           <div className="flex items-center justify-between mb-4">
             <h4 className="font-medium flex items-center gap-2">
               <Calendar className="w-4 h-4" />
-              {t('governance.timeline.totalDuration', 'Durée totale estimée')}
+              {t('governance.timeline.totalDuration', 'Estimated total duration')}
             </h4>
             <div className="text-right">
               <div className="text-2xl font-bold">{formatDuration(totalTimeline)}</div>
               <Badge className={currentScenario.color + '/20 text-' + currentScenario.color.replace('bg-', '')}>
-                Scénario {currentScenario.label.toLowerCase()}
+                {t('governance.timeline.scenario', 'Scenario')} {getScenarioLabel(currentScenario.type).toLowerCase()}
               </Badge>
             </div>
           </div>
-          
+
           {/* Cashflow Warning */}
           <div className="flex items-start gap-2 text-sm text-muted-foreground p-3 bg-background rounded border">
             <DollarSign className="w-4 h-4 mt-0.5 flex-shrink-0" />
             <div>
               <p className="font-medium text-foreground mb-1">
-                {t('governance.timeline.cashflowWarning', 'Impact cashflow')}
+                {t('governance.timeline.cashflowWarning', 'Cashflow impact')}
               </p>
               <p>
-                {t('governance.timeline.cashflowText', 'Prévoir financement pour couvrir cette période sans revenus. Les premiers paiements peuvent arriver 30-90 jours après les premières ventes.')}
+                {t('governance.timeline.cashflowText', 'Plan funding to cover this period without revenue. First payments may arrive 30-90 days after first sales.')}
               </p>
             </div>
           </div>
@@ -228,13 +212,13 @@ export function TerrainTimeline({ countryId, countryName, projectType }: Terrain
         <div className="space-y-2">
           <h4 className="font-medium text-sm flex items-center gap-2">
             <AlertTriangle className="w-4 h-4 text-amber-600" />
-            {t('governance.timeline.keyRisks', 'Risques temporels clés')}
+            {t('governance.timeline.keyRisks', 'Key timeline risks')}
           </h4>
           <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
-            <li>Signature de contrats longue (négociation, approbations)</li>
-            <li>Délais de paiement étendus (60-90 jours standard)</li>
-            <li>Blocages tardifs après investissement partiel</li>
-            <li>Changements de règles en cours de processus</li>
+            <li>{getRiskLabel('contractSigning')}</li>
+            <li>{getRiskLabel('extendedPayment')}</li>
+            <li>{getRiskLabel('lateBlockages')}</li>
+            <li>{getRiskLabel('ruleChanges')}</li>
           </ul>
         </div>
       </CardContent>

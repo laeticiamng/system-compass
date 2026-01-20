@@ -1,0 +1,797 @@
+{
+  "countries": {
+    "cameroon": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Strong family and community values",
+          "2": "Vibrant social life",
+          "3": "Diverse culinary traditions"
+        },
+        "economy": {
+          "1": "Low cost of living",
+          "2": "Emerging tech startup scene",
+          "3": "Strategic position for Africa trade"
+        },
+        "culture": {
+          "1": "Rich cultural diversity with 250+ ethnic groups",
+          "2": "Bilingual (French/English)",
+          "3": "Famous music scene (Makossa, Bikutsi)"
+        },
+        "infrastructure": {
+          "1": "Good mobile phone coverage",
+          "2": "Douala port - Central Africa hub"
+        },
+        "opportunities": {
+          "1": "Untapped markets",
+          "2": "Agricultural potential",
+          "3": "Regional business gateway"
+        },
+        "nature": {
+          "1": "Mount Cameroon (active volcano)",
+          "2": "Beautiful beaches in Kribi",
+          "3": "Diverse landscapes from rainforest to savanna"
+        }
+      }
+    },
+    "france": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "35-hour work week",
+          "2": "Exceptional work-life balance",
+          "3": "5 weeks paid vacation",
+          "4": "World-renowned gastronomy"
+        },
+        "economy": {
+          "1": "Strong social protections",
+          "2": "Free education up to university",
+          "3": "Excellent public healthcare",
+          "4": "Many multinational headquarters"
+        },
+        "culture": {
+          "1": "World-class art, museums, and heritage",
+          "2": "Fashion and luxury",
+          "3": "Rich regional diversity",
+          "4": "Cafés and intellectual life"
+        },
+        "infrastructure": {
+          "1": "Excellent public transport network",
+          "2": "TGV connecting major cities",
+          "3": "Subsidized childcare",
+          "4": "Nuclear network (stable energy)"
+        },
+        "opportunities": {
+          "1": "Growing tech ecosystem (Paris)",
+          "2": "Startup support programs",
+          "3": "European market access",
+          "4": "Strong R&D"
+        },
+        "nature": {
+          "1": "Alps and Pyrenees for skiing",
+          "2": "Côte d'Azur (Mediterranean)",
+          "3": "Diverse countryside",
+          "4": "Wine regions (Bordeaux, Burgundy)"
+        }
+      }
+    },
+    "switzerland": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Exceptional safety and security",
+          "2": "Clean cities",
+          "3": "Remarkable public services",
+          "4": "World-class education"
+        },
+        "economy": {
+          "1": "Highest salaries in Europe",
+          "2": "Very low taxes",
+          "3": "Strong banking sector",
+          "4": "Innovation hub"
+        },
+        "culture": {
+          "1": "Four national languages",
+          "2": "Renowned arts and festivals",
+          "3": "Watchmaking tradition",
+          "4": "Mountain heritage"
+        },
+        "infrastructure": {
+          "1": "Among the best public transport in the world",
+          "2": "Ultra-fast internet",
+          "3": "Quality healthcare system",
+          "4": "Efficient alpine tunnels"
+        },
+        "opportunities": {
+          "1": "Pharma and biotech hub",
+          "2": "Finance and fintech",
+          "3": "International organizations",
+          "4": "Commodity trading opportunities"
+        },
+        "nature": {
+          "1": "Spectacular Alps",
+          "2": "Crystal-clear lakes",
+          "3": "World-class ski resorts",
+          "4": "Scenic hiking trails"
+        }
+      }
+    },
+    "usa": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Entrepreneurial freedom",
+          "2": "Innovation culture",
+          "3": "Diverse communities",
+          "4": "World-class entertainment"
+        },
+        "economy": {
+          "1": "World's largest economy",
+          "2": "Silicon Valley tech hub",
+          "3": "Venture capital access",
+          "4": "Strong income potential"
+        },
+        "culture": {
+          "1": "Hollywood and entertainment industry",
+          "2": "Diverse music scene",
+          "3": "Sports culture (NFL, NBA, MLB)",
+          "4": "Multicultural major cities"
+        },
+        "infrastructure": {
+          "1": "World's best universities",
+          "2": "Extensive road network",
+          "3": "Major airports everywhere",
+          "4": "Healthcare innovation"
+        },
+        "opportunities": {
+          "1": "Global startup hub",
+          "2": "Diverse career opportunities",
+          "3": "Research centers",
+          "4": "Accelerator programs"
+        },
+        "nature": {
+          "1": "National Parks (Yellowstone, Grand Canyon)",
+          "2": "Diverse beaches (California, Florida)",
+          "3": "Skiing mountains (Colorado, Utah)",
+          "4": "Vast varied landscapes"
+        }
+      }
+    },
+    "germany": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Excellent work-life balance",
+          "2": "Strong social safety net",
+          "3": "Beer culture",
+          "4": "Family-oriented"
+        },
+        "economy": {
+          "1": "Strong industrial base",
+          "2": "Mittelstand companies",
+          "3": "Low unemployment",
+          "4": "Free university education"
+        },
+        "culture": {
+          "1": "Rich classical music heritage",
+          "2": "Castles and historic architecture",
+          "3": "Christmas markets",
+          "4": "Oktoberfest and regional traditions"
+        },
+        "infrastructure": {
+          "1": "Efficient Autobahn",
+          "2": "Extensive rail network (Deutsche Bahn)",
+          "3": "Clean, well-planned cities",
+          "4": "Quality healthcare system"
+        },
+        "opportunities": {
+          "1": "Engineering and manufacturing hub",
+          "2": "Growing tech scene (Berlin)",
+          "3": "Energy transition leader",
+          "4": "Automotive industry leadership"
+        },
+        "nature": {
+          "1": "Black Forest",
+          "2": "Bavarian Alps",
+          "3": "Rhine Valley",
+          "4": "Baltic Sea coast"
+        }
+      }
+    },
+    "canada": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Multicultural society",
+          "2": "Safe and welcoming",
+          "3": "Outdoor lifestyle",
+          "4": "Excellent work-life balance"
+        },
+        "economy": {
+          "1": "Stable economy",
+          "2": "Immigration-friendly",
+          "3": "Strong tech sector",
+          "4": "Good job market for skilled workers"
+        },
+        "culture": {
+          "1": "Bilingual society (English/French)",
+          "2": "First Nations indigenous heritage",
+          "3": "Vibrant arts scene",
+          "4": "Sports culture (hockey, winter sports)"
+        },
+        "infrastructure": {
+          "1": "Universal healthcare system",
+          "2": "Quality public education",
+          "3": "Good public transit in major cities",
+          "4": "Reliable internet connectivity"
+        },
+        "opportunities": {
+          "1": "Immigration programs (Express Entry)",
+          "2": "Startup support",
+          "3": "Research centers",
+          "4": "Natural resources sector"
+        },
+        "nature": {
+          "1": "Rocky Mountains",
+          "2": "Niagara Falls",
+          "3": "Vast forests and lakes",
+          "4": "Northern Lights"
+        }
+      }
+    },
+    "uae": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Tax-free income",
+          "2": "Safe environment",
+          "3": "Luxurious living options",
+          "4": "Modern amenities"
+        },
+        "economy": {
+          "1": "No income tax",
+          "2": "Business-friendly regulations",
+          "3": "Growing startup ecosystem",
+          "4": "Strategic location"
+        },
+        "culture": {
+          "1": "Diverse expat community",
+          "2": "Arab heritage",
+          "3": "International food scene",
+          "4": "World-class shopping and entertainment"
+        },
+        "infrastructure": {
+          "1": "Ultra-modern architecture",
+          "2": "World-class airport hub (Dubai)",
+          "3": "Modern public transport",
+          "4": "Excellent healthcare"
+        },
+        "opportunities": {
+          "1": "Free zones for businesses",
+          "2": "International trade hub",
+          "3": "Tech and finance sector growth",
+          "4": "Real estate and construction hub"
+        },
+        "nature": {
+          "1": "Desert beaches",
+          "2": "Mountains (Fujairah, Ras Al Khaimah)",
+          "3": "Desert safaris",
+          "4": "Clear diving waters"
+        }
+      }
+    },
+    "singapore": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Very safe and clean",
+          "2": "Efficient public services",
+          "3": "Multicultural food scene",
+          "4": "Modern amenities"
+        },
+        "economy": {
+          "1": "Low taxes",
+          "2": "Business-friendly",
+          "3": "Strong legal system",
+          "4": "Major financial hub"
+        },
+        "culture": {
+          "1": "Mix of cultures (Chinese, Malay, Indian)",
+          "2": "Food paradise",
+          "3": "Modern and colonial architecture",
+          "4": "Festivals throughout the year"
+        },
+        "infrastructure": {
+          "1": "World's best airport (Changi)",
+          "2": "Efficient and clean MRT",
+          "3": "Excellent healthcare",
+          "4": "Ultra-fast internet"
+        },
+        "opportunities": {
+          "1": "Fintech and tech hub",
+          "2": "Gateway to Asia",
+          "3": "Startup ecosystem",
+          "4": "R&D centers"
+        },
+        "nature": {
+          "1": "Gardens by the Bay",
+          "2": "Nature reserves (Bukit Timah)",
+          "3": "Sentosa Island",
+          "4": "East coast and beaches"
+        }
+      }
+    },
+    "portugal": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Excellent climate",
+          "2": "Relaxed pace of life",
+          "3": "Delicious cuisine",
+          "4": "Welcoming expat community"
+        },
+        "economy": {
+          "1": "Favorable tax regime (NHR)",
+          "2": "Affordable cost of living",
+          "3": "Growing tech scene",
+          "4": "Golden Visa"
+        },
+        "culture": {
+          "1": "Rich historical heritage",
+          "2": "Fado music",
+          "3": "Azulejo architecture",
+          "4": "Wine tradition (Porto, Douro)"
+        },
+        "infrastructure": {
+          "1": "Good healthcare system",
+          "2": "Reliable internet",
+          "3": "Public transport in Lisbon",
+          "4": "Well-connected international airport"
+        },
+        "opportunities": {
+          "1": "Digital nomad hub",
+          "2": "Startup ecosystem (Web Summit)",
+          "3": "Growing tourism",
+          "4": "Renewable energies"
+        },
+        "nature": {
+          "1": "Algarve coast",
+          "2": "Douro Valley",
+          "3": "Madeira archipelago",
+          "4": "Wild Azores"
+        }
+      }
+    },
+    "nigeria": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Vibrant social life",
+          "2": "Music scene (Afrobeats)",
+          "3": "Warm hospitality",
+          "4": "Entrepreneurial culture"
+        },
+        "economy": {
+          "1": "Africa's largest economy",
+          "2": "Growing tech scene",
+          "3": "Large consumer market",
+          "4": "Abundant natural resources"
+        },
+        "culture": {
+          "1": "Nollywood (2nd largest film industry)",
+          "2": "Rich ethnic diversity",
+          "3": "Vibrant fashion",
+          "4": "Rich literature"
+        },
+        "infrastructure": {
+          "1": "Growing mobile connectivity",
+          "2": "Tech hubs (Lagos)",
+          "3": "Developing ports",
+          "4": "Special economic zones"
+        },
+        "opportunities": {
+          "1": "African fintech hub",
+          "2": "Growing e-commerce",
+          "3": "Young dynamic population",
+          "4": "Agricultural potential"
+        },
+        "nature": {
+          "1": "Lagos beaches",
+          "2": "Yankari National Park",
+          "3": "Obudu hills",
+          "4": "Niger Delta"
+        }
+      }
+    },
+    "japan": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Safe society",
+          "2": "Cleanliness and order",
+          "3": "Efficient services",
+          "4": "Rich cultural experiences"
+        },
+        "economy": {
+          "1": "Strong tech sector",
+          "2": "Low unemployment",
+          "3": "Innovation leader",
+          "4": "Strong yen as reserve currency"
+        },
+        "culture": {
+          "1": "Unique heritage (temples, gardens)",
+          "2": "Anime and manga",
+          "3": "Traditional cuisine",
+          "4": "Martial arts and traditions"
+        },
+        "infrastructure": {
+          "1": "Shinkansen (bullet trains)",
+          "2": "Exemplary public transport",
+          "3": "Cutting-edge technology",
+          "4": "Advanced healthcare"
+        },
+        "opportunities": {
+          "1": "Robotics and AI",
+          "2": "Gaming and entertainment",
+          "3": "Scientific research",
+          "4": "Precision manufacturing"
+        },
+        "nature": {
+          "1": "Mount Fuji",
+          "2": "Cherry blossoms",
+          "3": "Hot springs (onsen)",
+          "4": "Japanese Alps"
+        }
+      }
+    },
+    "brazil": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Vibrant social culture",
+          "2": "Beautiful beaches",
+          "3": "Samba and Carnival",
+          "4": "Warm hospitality"
+        },
+        "economy": {
+          "1": "Large consumer market",
+          "2": "Abundant natural resources",
+          "3": "Growing middle class",
+          "4": "Strong agricultural sector"
+        },
+        "culture": {
+          "1": "Football and sports passion",
+          "2": "Diverse music (Bossa Nova, Samba, Funk)",
+          "3": "Rio Carnival",
+          "4": "Ethnic diversity"
+        },
+        "infrastructure": {
+          "1": "Major international airports",
+          "2": "Metro in major cities",
+          "3": "Renewable energy leader",
+          "4": "Developed banking system"
+        },
+        "opportunities": {
+          "1": "Agro-industry",
+          "2": "Growing tourism",
+          "3": "Tech startups (São Paulo)",
+          "4": "Green energies"
+        },
+        "nature": {
+          "1": "Amazon rainforest",
+          "2": "Paradise beaches",
+          "3": "Iguazu Falls",
+          "4": "Pantanal (wetlands)"
+        }
+      }
+    },
+    "netherlands": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Excellent work-life balance",
+          "2": "Cycling culture",
+          "3": "Liberal and tolerant society",
+          "4": "High quality of life"
+        },
+        "economy": {
+          "1": "Strong tech sector",
+          "2": "Major European trade hub",
+          "3": "Port of Rotterdam (Europe's largest)",
+          "4": "Innovative startup ecosystem"
+        },
+        "culture": {
+          "1": "Painting masters (Van Gogh, Rembrandt)",
+          "2": "Canal architecture",
+          "3": "Tulips and windmills",
+          "4": "Electronic music scene"
+        },
+        "infrastructure": {
+          "1": "Excellent public transport",
+          "2": "Bike lanes everywhere",
+          "3": "Schiphol (hub airport)",
+          "4": "Ultra-fast internet"
+        },
+        "opportunities": {
+          "1": "Tech and fintech hub",
+          "2": "International business center",
+          "3": "Startup ecosystem",
+          "4": "Logistics and distribution"
+        },
+        "nature": {
+          "1": "Tulip fields (Keukenhof)",
+          "2": "Beaches (Scheveningen)",
+          "3": "Wadden Sea (UNESCO)",
+          "4": "Dutch polders"
+        }
+      }
+    },
+    "morocco": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Low cost of living",
+          "2": "Warm climate",
+          "3": "Rich cuisine",
+          "4": "Welcoming hospitality"
+        },
+        "economy": {
+          "1": "Africa's gateway",
+          "2": "Growing outsourcing hub",
+          "3": "Free trade zones",
+          "4": "Industrial development"
+        },
+        "culture": {
+          "1": "Unique Arab-Berber heritage",
+          "2": "Historical medinas",
+          "3": "Rich artisanship",
+          "4": "Cultural festivals"
+        },
+        "infrastructure": {
+          "1": "High-speed train (TGV)",
+          "2": "Modern airports",
+          "3": "Port of Tangier",
+          "4": "Growing renewable energy"
+        },
+        "opportunities": {
+          "1": "Nearshoring for Europe",
+          "2": "Growing tourism",
+          "3": "Automotive industry",
+          "4": "Renewable energy investments"
+        },
+        "nature": {
+          "1": "Atlas mountains",
+          "2": "Sahara desert",
+          "3": "Mediterranean and Atlantic coasts",
+          "4": "Cedar forests"
+        }
+      }
+    },
+    "australia": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Outdoor lifestyle",
+          "2": "Excellent weather",
+          "3": "Multicultural cities",
+          "4": "Work-life balance"
+        },
+        "economy": {
+          "1": "Strong job market",
+          "2": "High wages",
+          "3": "Stable economy",
+          "4": "Mining and resources sector"
+        },
+        "culture": {
+          "1": "Beach culture",
+          "2": "Aboriginal heritage",
+          "3": "Arts festivals",
+          "4": "Sports culture (cricket, rugby, AFL)"
+        },
+        "infrastructure": {
+          "1": "Quality healthcare",
+          "2": "Good education system",
+          "3": "Modern cities",
+          "4": "Reliable internet"
+        },
+        "opportunities": {
+          "1": "Skilled immigration pathways",
+          "2": "Tech sector growth",
+          "3": "Mining industry",
+          "4": "Asia-Pacific trade hub"
+        },
+        "nature": {
+          "1": "Great Barrier Reef",
+          "2": "Outback wilderness",
+          "3": "Beautiful beaches",
+          "4": "Unique wildlife"
+        }
+      }
+    },
+    "china": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Convenient cashless society",
+          "2": "Affordable everyday living",
+          "3": "Ancient and modern blend",
+          "4": "Vibrant city life"
+        },
+        "economy": {
+          "1": "World's 2nd largest economy",
+          "2": "Huge consumer market",
+          "3": "Manufacturing powerhouse",
+          "4": "Tech innovation hub"
+        },
+        "culture": {
+          "1": "5,000 years of history",
+          "2": "Diverse cuisine traditions",
+          "3": "Traditional festivals",
+          "4": "Art and calligraphy"
+        },
+        "infrastructure": {
+          "1": "High-speed rail network",
+          "2": "Modern airports",
+          "3": "Smart city technology",
+          "4": "Advanced metro systems"
+        },
+        "opportunities": {
+          "1": "E-commerce boom",
+          "2": "AI and tech development",
+          "3": "Manufacturing scale",
+          "4": "Renewable energy growth"
+        },
+        "nature": {
+          "1": "Great Wall",
+          "2": "Zhangjiajie mountains",
+          "3": "Li River landscapes",
+          "4": "Himalayan region"
+        }
+      }
+    },
+    "uk": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Historical heritage",
+          "2": "Cultural diversity",
+          "3": "Pub culture",
+          "4": "Strong arts scene"
+        },
+        "economy": {
+          "1": "Global financial center",
+          "2": "Strong services sector",
+          "3": "Tech hub",
+          "4": "Innovation ecosystem"
+        },
+        "culture": {
+          "1": "Museums and galleries",
+          "2": "Theatre (West End)",
+          "3": "Music scene",
+          "4": "Royal heritage"
+        },
+        "infrastructure": {
+          "1": "NHS healthcare",
+          "2": "London transport network",
+          "3": "Major airports",
+          "4": "University cities"
+        },
+        "opportunities": {
+          "1": "Fintech leadership",
+          "2": "Creative industries",
+          "3": "Research universities",
+          "4": "Legal and professional services"
+        },
+        "nature": {
+          "1": "Lake District",
+          "2": "Scottish Highlands",
+          "3": "Coastal walks",
+          "4": "Countryside villages"
+        }
+      }
+    },
+    "india": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Rich spiritual traditions",
+          "2": "Family values",
+          "3": "Diverse cuisine",
+          "4": "Affordable living"
+        },
+        "economy": {
+          "1": "Fast-growing economy",
+          "2": "Large consumer market",
+          "3": "IT services powerhouse",
+          "4": "Young workforce"
+        },
+        "culture": {
+          "1": "Bollywood",
+          "2": "Ancient temples",
+          "3": "Yoga and Ayurveda",
+          "4": "Colorful festivals"
+        },
+        "infrastructure": {
+          "1": "Growing digital infrastructure",
+          "2": "Metro expansion",
+          "3": "Tech parks (Bangalore, Hyderabad)",
+          "4": "Improving airports"
+        },
+        "opportunities": {
+          "1": "Tech and IT services",
+          "2": "Startup ecosystem",
+          "3": "Pharmaceutical industry",
+          "4": "Digital transformation"
+        },
+        "nature": {
+          "1": "Himalayas",
+          "2": "Beaches (Goa, Kerala)",
+          "3": "Rajasthan deserts",
+          "4": "Wildlife sanctuaries"
+        }
+      }
+    },
+    "senegal": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Teranga (hospitality)",
+          "2": "Strong community bonds",
+          "3": "Relaxed lifestyle",
+          "4": "Delicious cuisine"
+        },
+        "economy": {
+          "1": "Growing economy",
+          "2": "Oil and gas discoveries",
+          "3": "Strategic West Africa position",
+          "4": "Agricultural sector"
+        },
+        "culture": {
+          "1": "Rich musical heritage",
+          "2": "Colorful textiles",
+          "3": "Vibrant arts scene",
+          "4": "Wrestling traditions"
+        },
+        "infrastructure": {
+          "1": "New Dakar airport",
+          "2": "TER train (Dakar)",
+          "3": "Port development",
+          "4": "Growing digital connectivity"
+        },
+        "opportunities": {
+          "1": "Tech hub emergence",
+          "2": "Tourism potential",
+          "3": "Energy sector growth",
+          "4": "Regional trade center"
+        },
+        "nature": {
+          "1": "Beautiful beaches",
+          "2": "Niokolo-Koba Park",
+          "3": "Pink Lake",
+          "4": "Bird sanctuaries"
+        }
+      }
+    },
+    "belgium": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "High quality of life",
+          "2": "Central European location",
+          "3": "Excellent beer and chocolate",
+          "4": "Multicultural atmosphere"
+        },
+        "economy": {
+          "1": "EU headquarters",
+          "2": "Strong logistics sector",
+          "3": "Pharma industry",
+          "4": "Diamond trade (Antwerp)"
+        },
+        "culture": {
+          "1": "Comic book heritage",
+          "2": "Medieval cities",
+          "3": "Art Nouveau architecture",
+          "4": "Music festivals"
+        },
+        "infrastructure": {
+          "1": "Dense rail network",
+          "2": "Central airports",
+          "3": "Port of Antwerp",
+          "4": "Quality healthcare"
+        },
+        "opportunities": {
+          "1": "International organizations",
+          "2": "Biotech sector",
+          "3": "Multinational headquarters",
+          "4": "Creative industries"
+        },
+        "nature": {
+          "1": "Ardennes forests",
+          "2": "North Sea coast",
+          "3": "Countryside cycling",
+          "4": "Nature reserves"
+        }
+      }
+    }
+  }
+}

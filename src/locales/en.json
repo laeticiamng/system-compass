@@ -7671,6 +7671,143 @@
       "poc3": "Identification of hidden blockages"
     }
   },
+  "governance": {
+    "map": {
+      "title": "Governance Map",
+      "add": "Add",
+      "cancel": "Cancel",
+      "exportCsv": "Export CSV",
+      "exportPdf": "Export PDF",
+      "redFlags": "Red flags",
+      "singleIntermediary": "Dependency on a single intermediary",
+      "highOpacity": "High opacity (unverified reliability)",
+      "mapActors": "Map the key actors of the project",
+      "reliability": "Reliability",
+      "name": "Name/Title",
+      "role": "Role",
+      "level": "Level",
+      "power": "Power",
+      "levels": {
+        "official": "Official",
+        "influential": "Influential",
+        "blocker": "Blocker"
+      },
+      "powers": {
+        "sign": "Can sign",
+        "block": "Can block",
+        "access": "Gives access",
+        "advise": "Advises"
+      },
+      "reliabilities": {
+        "unknown": "Unknown",
+        "low": "Low",
+        "medium": "Medium",
+        "high": "High"
+      }
+    },
+    "timeline": {
+      "title": "Real timelines",
+      "description": "Timeline scenarios for",
+      "buffer": "Safety buffer",
+      "bufferTip": "Recommended: minimum +25% for contingencies",
+      "totalDuration": "Estimated total duration",
+      "cashflowWarning": "Cashflow impact",
+      "cashflowText": "Plan funding to cover this period without revenue. First payments may arrive 30-90 days after first sales.",
+      "keyRisks": "Key timeline risks",
+      "week": "week",
+      "weeks": "weeks",
+      "month": "month",
+      "months": "months",
+      "bufferLabel": "buffer",
+      "scenario": "Scenario",
+      "scenarios": {
+        "optimistic": "Optimistic",
+        "realistic": "Realistic",
+        "pessimistic": "Pessimistic"
+      },
+      "phases": {
+        "preparation": "Preparation",
+        "admin": "Administrative",
+        "installation": "Installation",
+        "launch": "Launch",
+        "stabilization": "Stabilization"
+      },
+      "risks": {
+        "documentCollection": "Document collection longer",
+        "legalValidation": "Legal validation delayed",
+        "adminDelays": "Unpredictable admin delays",
+        "missingDocuments": "Missing documents requested",
+        "logisticsDelayed": "Logistics delayed",
+        "recruitmentDifficult": "Recruitment difficult",
+        "productAdjustments": "Product adjustments",
+        "revenueDelay": "First revenue delay",
+        "longPayments": "Long payments",
+        "teamTurnover": "Team turnover",
+        "contractSigning": "Long contract signing (negotiation, approvals)",
+        "extendedPayment": "Extended payment terms (60-90 days standard)",
+        "lateBlockages": "Late blockages after partial investment",
+        "ruleChanges": "Rule changes during process"
+      }
+    },
+    "competition": {
+      "title": "Real competition",
+      "description": "Mapping of actors in",
+      "addCompetitor": "Add competitor",
+      "noCompetitors": "No competitors identified",
+      "addPrompt": "Add the actors you have identified",
+      "name": "Actor name",
+      "scope": "Scope",
+      "projectTypes": "Project types",
+      "projects": "Projects",
+      "implantation": "Implantation",
+      "maturity": "Maturity",
+      "analysis": "Quick analysis",
+      "stronglyEstablished": "{{count}} strongly established actor(s)",
+      "dominance": "Dominance",
+      "dominanceLocal": "Local",
+      "dominanceInternational": "International",
+      "opportunity": "Opportunity: underserved segments possible",
+      "types": {
+        "local": "Local",
+        "international": "International",
+        "hybrid": "Hybrid"
+      },
+      "implantationLevels": {
+        "strong": "Strong",
+        "moderate": "Moderate",
+        "weak": "Weak"
+      },
+      "maturityLevels": {
+        "established": "Established",
+        "growing": "Growing",
+        "emerging": "Emerging"
+      }
+    },
+    "stability": {
+      "title": "Stability indicators",
+      "description": "Political and economic stability analysis"
+    },
+    "frictionRisks": {
+      "title": "Friction risks",
+      "description": "Bureaucratic and operational friction points"
+    },
+    "partnerReliability": {
+      "title": "Partner reliability",
+      "description": "Assessment of local partner trustworthiness"
+    },
+    "stateOfArt": {
+      "title": "State of the art",
+      "description": "Current market and technology landscape"
+    },
+    "pocPlanner": {
+      "title": "POC Planner",
+      "description": "Proof of concept planning and milestones"
+    },
+    "fiscalChecklist": {
+      "title": "Fiscal checklist",
+      "description": "Tax and regulatory compliance checklist"
+    }
+  },
   "marketStudy": {
     "title": "Market Study"
   },
