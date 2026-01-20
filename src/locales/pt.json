@@ -485,7 +485,8 @@
     "resetDisclaimerTooltip": "Mostrar o banner de aviso nas páginas de simulação novamente",
     "disclaimerReset": "Banner de aviso reiniciado",
     "defaultCountry": "País padrão",
-    "defaultCountryTooltip": "As calculadoras usam este país por padrão. Altere-o nas ferramentas."
+    "defaultCountryTooltip": "As calculadoras usam este país por padrão. Altere-o nas ferramentas.",
+    "selectDefaultCountry": "Selecionar país padrão"
   },
   "about": {
     "badge": "A nossa missão",
@@ -718,7 +719,8 @@
     "exploreCountries": "Explorar países",
     "preventionFilter": "Passar uma decisão pelo filtro",
     "madeBy": "Criado por alguém que perdeu anos sem entender o sistema",
-    "forEveryone": "Para todos, em todo lugar"
+    "forEveryone": "Para todos, em todo lugar",
+    "quickTest": "Teste rápido (60 seg)"
   },
   "howItWorks": {
     "title": "Como funciona",

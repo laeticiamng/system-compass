@@ -439,7 +439,8 @@
     "resetDisclaimerTooltip": "Réafficher le bandeau disclaimer sur les pages de simulation",
     "disclaimerReset": "Bandeau disclaimer réinitialisé",
     "defaultCountry": "Pays par défaut",
-    "defaultCountryTooltip": "Les calculateurs utilisent ce pays par défaut. Changez-le dans les outils."
+    "defaultCountryTooltip": "Les calculateurs utilisent ce pays par défaut. Changez-le dans les outils.",
+    "selectDefaultCountry": "Sélectionner le pays par défaut"
   },
   "about": {
     "badge": "Notre mission",
@@ -649,7 +650,8 @@
     "exploreCountries": "Analyser les systèmes",
     "madeBy": "Créé par quelqu'un qui a perdu des années sans comprendre le système",
     "forEveryone": "Pour tout le monde, partout",
-    "preventionFilter": "Passer une décision au filtre"
+    "preventionFilter": "Passer une décision au filtre",
+    "quickTest": "Test rapide (60 sec)"
   },
   "howItWorks": {
     "title": "Analyse, simule, comprends",

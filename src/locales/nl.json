@@ -485,7 +485,8 @@
     "resetDisclaimerTooltip": "Disclaimer-banner op simulatiepagina's opnieuw tonen",
     "disclaimerReset": "Disclaimer-banner gereset",
     "defaultCountry": "Standaard land",
-    "defaultCountryTooltip": "Rekenmachines gebruiken dit land standaard. Wijzig het in de tools."
+    "defaultCountryTooltip": "Rekenmachines gebruiken dit land standaard. Wijzig het in de tools.",
+    "selectDefaultCountry": "Standaard land selecteren"
   },
   "about": {
     "badge": "Onze missie",
@@ -718,7 +719,8 @@
     "exploreCountries": "Verken landen",
     "preventionFilter": "Een beslissing door de filter halen",
     "madeBy": "Gemaakt door iemand die jaren verloren heeft zonder het systeem te begrijpen",
-    "forEveryone": "Voor iedereen, overal"
+    "forEveryone": "Voor iedereen, overal",
+    "quickTest": "Snelle test (60 sec)"
   },
   "howItWorks": {
     "title": "Hoe het werkt",

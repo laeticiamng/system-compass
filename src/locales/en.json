@@ -439,7 +439,8 @@
     "resetDisclaimerTooltip": "Show disclaimer banner on simulation pages again",
     "disclaimerReset": "Disclaimer banner reset",
     "defaultCountry": "Default country",
-    "defaultCountryTooltip": "Calculators use this country by default. Change it in tools."
+    "defaultCountryTooltip": "Calculators use this country by default. Change it in tools.",
+    "selectDefaultCountry": "Select default country"
   },
   "about": {
     "badge": "Our mission",
@@ -649,7 +650,8 @@
     "exploreCountries": "Analyze systems",
     "madeBy": "Created by someone who lost years not understanding the system",
     "forEveryone": "For everyone, everywhere",
-    "preventionFilter": "Run a decision through the filter"
+    "preventionFilter": "Run a decision through the filter",
+    "quickTest": "Quick test (60 sec)"
   },
   "howItWorks": {
     "title": "Analyze, simulate, understand",

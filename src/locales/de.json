@@ -485,7 +485,8 @@
     "resetDisclaimerTooltip": "Disclaimer-Banner auf Simulationsseiten erneut anzeigen",
     "disclaimerReset": "Disclaimer-Banner zurückgesetzt",
     "defaultCountry": "Standardland",
-    "defaultCountryTooltip": "Rechner verwenden dieses Land standardmäßig. Ändern Sie es in den Tools."
+    "defaultCountryTooltip": "Rechner verwenden dieses Land standardmäßig. Ändern Sie es in den Tools.",
+    "selectDefaultCountry": "Standardland auswählen"
   },
   "about": {
     "badge": "Unsere Mission",
@@ -718,7 +719,8 @@
     "exploreCountries": "Länder erkunden",
     "preventionFilter": "Eine Entscheidung durch den Filter prüfen",
     "madeBy": "Erstellt von jemandem, der Jahre verloren hat, ohne das System zu verstehen",
-    "forEveryone": "Für jeden, überall"
+    "forEveryone": "Für jeden, überall",
+    "quickTest": "Schnelltest (60 Sek.)"
   },
   "howItWorks": {
     "title": "Wie es funktioniert",
