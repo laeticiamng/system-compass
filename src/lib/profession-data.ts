@@ -227,6 +227,69 @@ export function getEstimatedSalary(countryId: string, professionId: string): num
   return Math.round(baseSalary * profession.averageSalaryMultiplier);
 }
 
+// Get seniority multiplier based on age (experience factor)
+function getSeniorityMultiplier(age: number): number {
+  if (age < 25) return 0.7; // Junior/entry level
+  if (age < 30) return 0.85; // Early career
+  if (age < 35) return 1.0; // Established
+  if (age < 45) return 1.15; // Senior
+  if (age < 55) return 1.25; // Expert/management
+  if (age < 62) return 1.2; // Late career (slight decrease)
+  return 1.1; // Near retirement
+}
+
+// Get estimated monthly salary with age/seniority factor
+export function getEstimatedSalaryWithAge(countryId: string, professionId: string, age: number): number {
+  const baseSalary = getEstimatedSalary(countryId, professionId);
+  if (baseSalary === 0) return 0;
+  
+  const seniorityMultiplier = getSeniorityMultiplier(age);
+  return Math.round(baseSalary * seniorityMultiplier);
+}
+
+// Get currency symbol for country
+export function getCountryCurrency(countryId: string): { symbol: string; code: string } {
+  const CURRENCIES: Record<string, { symbol: string; code: string }> = {
+    usa: { symbol: '$', code: 'USD' },
+    uk: { symbol: '£', code: 'GBP' },
+    japan: { symbol: '¥', code: 'JPY' },
+    china: { symbol: '¥', code: 'CNY' },
+    switzerland: { symbol: 'CHF', code: 'CHF' },
+    india: { symbol: '₹', code: 'INR' },
+    brazil: { symbol: 'R$', code: 'BRL' },
+    mexico: { symbol: '$', code: 'MXN' },
+    south_korea: { symbol: '₩', code: 'KRW' },
+    thailand: { symbol: '฿', code: 'THB' },
+    vietnam: { symbol: '₫', code: 'VND' },
+    turkey: { symbol: '₺', code: 'TRY' },
+    russia: { symbol: '₽', code: 'RUB' },
+    uae: { symbol: 'AED', code: 'AED' },
+    singapore: { symbol: 'S$', code: 'SGD' },
+    australia: { symbol: 'A$', code: 'AUD' },
+    canada: { symbol: 'C$', code: 'CAD' },
+    new_zealand: { symbol: 'NZ$', code: 'NZD' },
+    israel: { symbol: '₪', code: 'ILS' },
+    south_africa: { symbol: 'R', code: 'ZAR' },
+    nigeria: { symbol: '₦', code: 'NGN' },
+    egypt: { symbol: 'E£', code: 'EGP' },
+    morocco: { symbol: 'DH', code: 'MAD' },
+    argentina: { symbol: '$', code: 'ARS' },
+    chile: { symbol: '$', code: 'CLP' },
+    colombia: { symbol: '$', code: 'COP' },
+    philippines: { symbol: '₱', code: 'PHP' },
+    indonesia: { symbol: 'Rp', code: 'IDR' },
+    malaysia: { symbol: 'RM', code: 'MYR' },
+    poland: { symbol: 'zł', code: 'PLN' },
+    czech_republic: { symbol: 'Kč', code: 'CZK' },
+    hungary: { symbol: 'Ft', code: 'HUF' },
+    romania: { symbol: 'lei', code: 'RON' },
+    senegal: { symbol: 'CFA', code: 'XOF' },
+    cameroon: { symbol: 'CFA', code: 'XAF' },
+  };
+  // Default to EUR for eurozone and unlisted countries
+  return CURRENCIES[countryId] || { symbol: '€', code: 'EUR' };
+}
+
 // Category labels
 export const PROFESSION_CATEGORY_LABELS: Record<ProfessionCategory, { label: string; icon: string }> = {
   healthcare: { label: 'Santé', icon: '⚕️' },

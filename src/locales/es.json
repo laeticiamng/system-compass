@@ -64,7 +64,9 @@
       "excellentHealthcare": "Excelente sistema de salud",
       "poorHealthcare": "Sistema de salud limitado",
       "nomadCommunity": "Comunidad nómada activa",
-      "nomadFriendly": "Entorno amigable para nómadas"
+      "nomadFriendly": "Entorno amigable para nómadas",
+      "expectedSalary": "Salario esperado",
+      "costOfLiving": "Costo de vida"
     }
   },
   "insights": {

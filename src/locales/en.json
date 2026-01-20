@@ -33,7 +33,9 @@
       "excellentHealthcare": "Excellent healthcare",
       "poorHealthcare": "Limited healthcare",
       "nomadCommunity": "Active nomad community",
-      "nomadFriendly": "Nomad-friendly environment"
+      "nomadFriendly": "Nomad-friendly environment",
+      "expectedSalary": "Expected salary",
+      "costOfLiving": "Cost of living"
     }
   },
   "common": {
