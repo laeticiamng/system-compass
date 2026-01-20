@@ -42,14 +42,45 @@ export function FinancialIntelHistory({ onLoadSnapshot }: FinancialIntelHistoryP
     if (!user) return;
     
     try {
-      const { data, error } = await supabase
-        .from('financial_intel_country_snapshots')
-        .select('*')
+      // Fetch user's own generation runs and their associated snapshots
+      const { data: runs, error: runsError } = await supabase
+        .from('financial_intel_generation_runs')
+        .select('snapshot_id, country, created_at')
+        .eq('user_id', user.id)
+        .eq('status', 'completed')
         .order('created_at', { ascending: false })
         .limit(20);
 
-      if (error) throw error;
-      setHistory((data || []) as HistoryItem[]);
+      if (runsError) throw runsError;
+
+      if (!runs || runs.length === 0) {
+        setHistory([]);
+        setIsLoading(false);
+        return;
+      }
+
+      // Get unique snapshot IDs
+      const snapshotIds = [...new Set(runs.map(r => r.snapshot_id).filter(Boolean))] as string[];
+      
+      if (snapshotIds.length === 0) {
+        setHistory([]);
+        setIsLoading(false);
+        return;
+      }
+
+      const { data: snapshots, error: snapshotsError } = await supabase
+        .from('financial_intel_country_snapshots')
+        .select('*')
+        .in('id', snapshotIds);
+
+      if (snapshotsError) throw snapshotsError;
+      
+      // Match snapshots with runs to get correct order
+      const orderedHistory = runs
+        .map(run => snapshots?.find(s => s.id === run.snapshot_id))
+        .filter(Boolean) as HistoryItem[];
+
+      setHistory(orderedHistory);
     } catch (error) {
       console.error('Error fetching history:', error);
     } finally {

@@ -45,6 +45,33 @@ export interface PartnerBenefit {
   active: boolean;
 }
 
+// Helper function to notify admins of new partner applications
+async function notifyAdminsOfNewApplication(userId: string, partnerType: PartnerType): Promise<void> {
+  // Get admin users from user_roles table
+  const { data: adminRoles } = await supabase
+    .from('user_roles')
+    .select('user_id')
+    .eq('role', 'admin');
+
+  if (!adminRoles || adminRoles.length === 0) {
+    console.log('No admins found to notify');
+    return;
+  }
+
+  // Create notification for each admin
+  const notifications = adminRoles.map(admin => ({
+    user_id: admin.user_id,
+    notification_type: 'partner_application',
+    message: `Nouvelle candidature partenaire (${partnerType === 'ambassador' ? 'Ambassadeur' : 'B2B'}) à examiner`,
+    read: false
+  }));
+
+  // Insert into generation_notifications (reusing existing table)
+  await supabase
+    .from('generation_notifications')
+    .insert(notifications);
+}
+
 export function usePartnerProgram() {
   const { user } = useAuth();
   const { toast } = useToast();
@@ -131,6 +158,14 @@ export function usePartnerProgram() {
         });
 
       if (error) throw error;
+
+      // Notify admins about new application
+      try {
+        await notifyAdminsOfNewApplication(user.id, partnerType);
+      } catch (notifyError) {
+        console.warn('Failed to notify admins:', notifyError);
+        // Don't fail the application submission if notification fails
+      }
 
       toast({
         title: "Candidature envoyée",

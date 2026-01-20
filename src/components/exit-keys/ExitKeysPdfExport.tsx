@@ -133,27 +133,86 @@ export function ExitKeysPdfExport({ results, profileSummary }: ExitKeysPdfExport
         doc.text(riskLines, margin + 5, y);
         y += riskLines.length * 5 + 3;
 
-        // Warnings
-        if (result.warnings.length > 0) {
-          doc.setFont('helvetica', 'bold');
-          doc.text(t('exitKeys.pdf.warnings', 'Avertissements:'), margin + 5, y);
-          y += 5;
-          doc.setFont('helvetica', 'normal');
-          result.warnings.forEach(warning => {
-            doc.text(`• ${warning}`, margin + 10, y);
-            y += 5;
-          });
+        // Check page before warnings/accelerators section
+        if (y > 240) {
+          doc.addPage();
+          y = 20;
         }
 
-        // Accelerators
-        if (result.accelerators.length > 0) {
+        // Warnings (always show at least default if none)
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(180, 80, 50);
+        doc.text(t('exitKeys.pdf.warnings', '⚠️ Avertissements:'), margin + 5, y);
+        y += 5;
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(0);
+        
+        const warningsToShow = result.warnings.length > 0 
+          ? result.warnings 
+          : [t('exitKeys.pdf.noSpecificWarning', 'Suivre le plan par phases sans brûler les étapes')];
+        
+        warningsToShow.forEach(warning => {
+          doc.text(`• ${warning}`, margin + 10, y);
+          y += 5;
+        });
+        y += 2;
+
+        // Accelerators (always show at least default if none)
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(50, 150, 80);
+        doc.text(t('exitKeys.pdf.accelerators', '✓ Accélérateurs:'), margin + 5, y);
+        y += 5;
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(0);
+        
+        const acceleratorsToShow = result.accelerators.length > 0 
+          ? result.accelerators 
+          : [t('exitKeys.pdf.noSpecificAccelerator', 'Compétences transférables et réseau diaspora')];
+        
+        acceleratorsToShow.forEach(acc => {
+          doc.text(`✓ ${acc}`, margin + 10, y);
+          y += 5;
+        });
+        y += 2;
+
+        // Plan B (new section)
+        if (result.planB) {
+          if (y > 250) {
+            doc.addPage();
+            y = 20;
+          }
           doc.setFont('helvetica', 'bold');
-          doc.text(t('exitKeys.pdf.accelerators', 'Accélérateurs:'), margin + 5, y);
+          doc.setTextColor(100, 100, 180);
+          doc.text(t('exitKeys.pdf.planB', '🔄 Plan B:'), margin + 5, y);
           y += 5;
           doc.setFont('helvetica', 'normal');
-          result.accelerators.forEach(acc => {
-            doc.text(`✓ ${acc}`, margin + 10, y);
+          doc.setTextColor(0);
+          const planBLines = doc.splitTextToSize(result.planB, pageWidth - 2 * margin - 10);
+          doc.text(planBLines, margin + 10, y);
+          y += planBLines.length * 5 + 2;
+        }
+
+        // Phases overview (new compact section)
+        if (result.personalizedSteps && result.personalizedSteps.length > 0) {
+          if (y > 235) {
+            doc.addPage();
+            y = 20;
+          }
+          doc.setFont('helvetica', 'bold');
+          doc.text(t('exitKeys.pdf.phases', '📋 Phases du parcours:'), margin + 5, y);
+          y += 5;
+          doc.setFont('helvetica', 'normal');
+          
+          result.personalizedSteps.slice(0, 3).forEach((step, stepIdx) => {
+            const phaseText = `Phase ${step.phase}: ${step.name} (${step.duration})`;
+            doc.text(`${stepIdx + 1}. ${phaseText}`, margin + 10, y);
             y += 5;
+            if (step.milestone) {
+              doc.setTextColor(80);
+              doc.text(`   → ${step.milestone}`, margin + 15, y);
+              doc.setTextColor(0);
+              y += 5;
+            }
           });
         }
 
