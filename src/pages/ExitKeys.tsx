@@ -1004,8 +1004,8 @@ export default function ExitKeys() {
                 />
               )}
 
-              {/* Nationality Advantages */}
-              {nationalityAdvantages.uniqueAdvantages.length > 0 && (
+              {/* Only show nationality advantages if NO destination is selected (user is still exploring) */}
+              {!selectedDestinationId && nationalityAdvantages.uniqueAdvantages.length > 0 && (
                 <div className="glass-card rounded-xl p-6 border-2 border-primary/20">
                   <h3 className="font-semibold mb-4 flex items-center gap-2">
                     <Globe className="w-5 h-5 text-primary" />
@@ -1070,12 +1070,12 @@ export default function ExitKeys() {
                           <p className="text-xs text-muted-foreground">{advantage.description}</p>
                         <span className={cn(
                             "text-xs px-2 py-0.5 rounded mt-1 inline-block",
-                            advantage.type === 'visa_free' && 'bg-emerald-500/20 text-emerald-400',
-                            advantage.type === 'regional_access' && 'bg-blue-500/20 text-blue-400',
-                            advantage.type === 'work_permit' && 'bg-amber-500/20 text-amber-400',
-                            advantage.type === 'tax_benefit' && 'bg-purple-500/20 text-purple-400',
-                            advantage.type === 'residency' && 'bg-cyan-500/20 text-cyan-400',
-                            advantage.type === 'citizenship' && 'bg-rose-500/20 text-rose-400',
+                            advantage.type === 'visa_free' && 'bg-green-500/20 text-green-600 dark:text-green-400',
+                            advantage.type === 'regional_access' && 'bg-blue-500/20 text-blue-600 dark:text-blue-400',
+                            advantage.type === 'work_permit' && 'bg-amber-500/20 text-amber-600 dark:text-amber-400',
+                            advantage.type === 'tax_benefit' && 'bg-purple-500/20 text-purple-600 dark:text-purple-400',
+                            advantage.type === 'residency' && 'bg-cyan-500/20 text-cyan-600 dark:text-cyan-400',
+                            advantage.type === 'citizenship' && 'bg-rose-500/20 text-rose-600 dark:text-rose-400',
                           )}>
                             {advantage.type === 'visa_free' && t('exitKeys.advantageTypes.visaFree', 'Visa-free')}
                             {advantage.type === 'regional_access' && t('exitKeys.advantageTypes.regionalAccess', 'Accès régional')}
@@ -1091,8 +1091,8 @@ export default function ExitKeys() {
                 </div>
               )}
 
-              {/* Installation vs Vacation Tabs */}
-              {destinationRecommendations.length > 0 && (
+              {/* Only show destination exploration if NO destination is selected */}
+              {!selectedDestinationId && destinationRecommendations.length > 0 && (
                 <div className="glass-card rounded-xl p-6 border-2 border-primary/20">
                   <Tabs defaultValue="installation" className="w-full">
                     <TabsList className="grid w-full grid-cols-2 mb-6">
@@ -1109,9 +1109,9 @@ export default function ExitKeys() {
                     <TabsContent value="installation">
                       <div className="space-y-4">
                         <div className="flex items-center gap-2 mb-4">
-                          <Map className="w-5 h-5 text-emerald-500" />
+                          <Map className="w-5 h-5 text-green-600 dark:text-green-400" />
                           <h3 className="font-semibold">{t('exitKeys.results.installationDestinations', "Destinations d'Installation")}</h3>
-                          <span className="text-xs px-2 py-1 rounded-full bg-emerald-500/20 text-emerald-400">
+                          <span className="text-xs px-2 py-1 rounded-full bg-green-500/20 text-green-600 dark:text-green-400">
                             {t('exitKeys.results.optimizedForProfile', 'Optimisées pour votre profil')}
                           </span>
                         </div>
@@ -1130,9 +1130,9 @@ export default function ExitKeys() {
                     <TabsContent value="vacances">
                       <div className="space-y-4">
                         <div className="flex items-center gap-2 mb-4">
-                          <Plane className="w-5 h-5 text-blue-500" />
+                          <Plane className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                           <h3 className="font-semibold">{t('exitKeys.results.vacationRecommendations', 'Recommandations Vacances')}</h3>
-                          <span className="text-xs px-2 py-1 rounded-full bg-blue-500/20 text-blue-400">
+                          <span className="text-xs px-2 py-1 rounded-full bg-blue-500/20 text-blue-600 dark:text-blue-400">
                             {t('exitKeys.results.byPurchasingPower', "Par pouvoir d'achat")}
                           </span>
                         </div>
@@ -1150,8 +1150,8 @@ export default function ExitKeys() {
                 </div>
               )}
 
-              {/* Vacation fallback if no destination recommendations */}
-              {destinationRecommendations.length === 0 && (
+              {/* Only show vacation fallback if NO destination selected AND no recommendations */}
+              {!selectedDestinationId && destinationRecommendations.length === 0 && (
                 <VacationRecommendations
                   currentCountryId={currentCountryId}
                   nationalityIds={nationalityIds}
