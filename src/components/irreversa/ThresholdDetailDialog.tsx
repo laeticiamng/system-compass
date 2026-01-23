@@ -27,6 +27,7 @@ import {
   IrreversaAuditEntry,
   useIrreversa 
 } from '@/hooks/useIrreversa';
+import { CriticalityScore } from './CriticalityScore';
 
 interface ThresholdDetailDialogProps {
   threshold: IrreversaThreshold | null;
@@ -108,6 +109,19 @@ export function ThresholdDetailDialog({ threshold, isOpen, onClose }: ThresholdD
           </TabsList>
 
           <TabsContent value="details" className="space-y-4 mt-4">
+            {/* Criticality Score */}
+            <CriticalityScore threshold={{
+              id: threshold.id,
+              title: threshold.title,
+              status: threshold.status,
+              threshold_nature: threshold.threshold_nature,
+              domain: threshold.domain,
+              detection_date: threshold.detection_date,
+              validated_by: threshold.validated_by,
+              alternatives_before: threshold.alternatives_before,
+              irreversibility_reason: threshold.irreversibility_reason,
+            }} />
+
             {/* Context */}
             <div>
               <h4 className="text-sm font-medium text-muted-foreground mb-1">

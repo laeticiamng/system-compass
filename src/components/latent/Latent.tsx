@@ -37,6 +37,7 @@ import { ZoneInterconnections } from './ZoneInterconnections';
 import { ZoneMergeDialog } from './ZoneMergeDialog';
 import { ZoneHistoryTimeline } from './ZoneHistoryTimeline';
 import { ZoneStatsBar } from './ZoneStatsBar';
+import { WeakSignalsDetector } from './WeakSignalsDetector';
 import { PremiumPaywall } from '@/components/PremiumPaywall';
 import { toast } from 'sonner';
 
@@ -375,6 +376,17 @@ export function Latent() {
         <TabsContent value="zones" className="space-y-4">
           {/* Stats Bar */}
           <ZoneStatsBar zones={zones} />
+
+          {/* Weak Signals Detector - shows patterns across zones */}
+          {zones.length >= 2 && (
+            <WeakSignalsDetector 
+              zones={zones} 
+              onZoneClick={(zoneId) => {
+                const zone = zones.find(z => z.id === zoneId);
+                if (zone) handleSelectZoneForHistory(zone);
+              }}
+            />
+          )}
 
           {/* Search, Filter, Sort */}
           <div className="flex flex-wrap items-center gap-3">
