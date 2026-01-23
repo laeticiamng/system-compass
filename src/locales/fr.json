@@ -546,6 +546,29 @@
         "title": "Catalogue des clés de sortie",
         "desc": "Découvrez les stratégies de mobilité et d'évolution"
       }
+    },
+    "alerts": {
+      "title": "Alertes prioritaires",
+      "allClear": "Tout est en ordre",
+      "noAlerts": "Aucune alerte prioritaire pour le moment",
+      "critical": "critiques",
+      "high": "élevées",
+      "moreAlerts": "autres alertes",
+      "zoneEscalating": "Zone en tension - {{count}} signaux",
+      "thresholdPending": "En attente depuis {{days}} jours",
+      "notificationsBacklog": "Notifications en attente",
+      "notificationsCount": "{{count}} notifications non lues"
+    },
+    "calendar": {
+      "title": "Calendrier consolidé",
+      "deadline": "Échéance",
+      "milestone": "Jalon",
+      "threshold": "Seuil",
+      "reminder": "Rappel",
+      "upcoming": "Cette semaine",
+      "today": "Aujourd'hui",
+      "tomorrow": "Demain",
+      "empty": "Aucun événement"
     }
   },
   "achievements": {

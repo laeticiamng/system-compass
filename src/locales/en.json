@@ -485,6 +485,29 @@
         "title": "Exit Keys Catalog",
         "desc": "Discover mobility and evolution strategies"
       }
+    },
+    "alerts": {
+      "title": "Priority alerts",
+      "allClear": "All clear",
+      "noAlerts": "No priority alerts at the moment",
+      "critical": "critical",
+      "high": "high",
+      "moreAlerts": "more alerts",
+      "zoneEscalating": "Zone escalating - {{count}} signals",
+      "thresholdPending": "Pending for {{days}} days",
+      "notificationsBacklog": "Notifications backlog",
+      "notificationsCount": "{{count}} unread notifications"
+    },
+    "calendar": {
+      "title": "Consolidated calendar",
+      "deadline": "Deadline",
+      "milestone": "Milestone",
+      "threshold": "Threshold",
+      "reminder": "Reminder",
+      "upcoming": "This week",
+      "today": "Today",
+      "tomorrow": "Tomorrow",
+      "empty": "No events"
     }
   },
   "achievements": {
