@@ -16,7 +16,8 @@ import {
   Lightbulb,
   AlertTriangle,
   User,
-  Layers
+  Layers,
+  FileCheck
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -28,6 +29,7 @@ import { PremiumPaywall } from '@/components/PremiumPaywall';
 import { ReflectionFrameworks } from '@/components/ovi/ReflectionFrameworks';
 import { ReadingGrids } from '@/components/ovi/ReadingGrids';
 import { OVIArticle } from '@/components/ovi/OVIArticle';
+import { EvidenceCollector } from '@/components/ovi/EvidenceCollector';
 
 export default function OVI() {
   const { t } = useTranslation();
@@ -160,7 +162,7 @@ export default function OVI() {
             </div>
           ) : (
             <Tabs value={activeTab} onValueChange={setActiveTab} className="max-w-6xl mx-auto">
-              <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 gap-1 h-auto p-1 mb-8">
+              <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 gap-1 h-auto p-1 mb-8">
                 <TabsTrigger value="introduction" className="flex items-center gap-2 py-3">
                   <Eye className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('ovi.tabs.intro', 'Introduction')}</span>
@@ -172,6 +174,10 @@ export default function OVI() {
                 <TabsTrigger value="grids" className="flex items-center gap-2 py-3">
                   <Grid3X3 className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('ovi.tabs.grids', 'Grilles')}</span>
+                </TabsTrigger>
+                <TabsTrigger value="evidence" className="flex items-center gap-2 py-3">
+                  <FileCheck className="w-4 h-4" />
+                  <span className="hidden sm:inline">{t('ovi.tabs.evidence', 'Preuves')}</span>
                 </TabsTrigger>
                 <TabsTrigger value="connection" className="flex items-center gap-2 py-3">
                   <Compass className="w-4 h-4" />
@@ -242,6 +248,11 @@ export default function OVI() {
               {/* Grids Tab */}
               <TabsContent value="grids">
                 <ReadingGrids />
+              </TabsContent>
+
+              {/* Evidence Tab */}
+              <TabsContent value="evidence">
+                <EvidenceCollector />
               </TabsContent>
 
               {/* Connection Tab */}

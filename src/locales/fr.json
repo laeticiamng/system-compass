@@ -6343,6 +6343,72 @@
     },
     "filters": {
       "tags": "Tags"
+    },
+    "quality": {
+      "title": "Score qualité",
+      "hypothesis": "Clarté des hypothèses",
+      "context": "Profondeur du contexte",
+      "branches": "Branches abandonnées",
+      "stakeholders": "Implication parties prenantes",
+      "time": "Temporalité",
+      "hasMainHypothesis": "✓ Hypothèse principale définie",
+      "noMainHypothesis": "✗ Hypothèse principale manquante",
+      "hasAlternatives": "✓ Alternatives documentées",
+      "noAlternatives": "✗ Alternatives insuffisantes",
+      "improveHypothesis": "Documenter au moins 2 alternatives",
+      "hasContext": "✓ Contexte détaillé",
+      "noContext": "✗ Contexte insuffisant",
+      "hasConstraints": "✓ Contraintes listées",
+      "noConstraints": "✗ Contraintes non documentées",
+      "improveContext": "Enrichir le contexte et les contraintes",
+      "goodBranches": "✓ Plusieurs alternatives écartées documentées",
+      "fewBranches": "✗ Peu d'alternatives documentées",
+      "branchReasons": "✓ Raisons d'abandon expliquées",
+      "noBranchReasons": "✗ Raisons manquantes",
+      "improveBranches": "Documenter pourquoi les alternatives ont été écartées",
+      "hasAuthor": "✓ Auteur/décideur identifié",
+      "noAuthor": "✗ Auteur non identifié",
+      "hasScope": "✓ Portée définie",
+      "noScope": "✗ Portée non définie",
+      "hasDate": "✓ Date de décision",
+      "noDate": "✗ Date manquante",
+      "validated": "✓ Décision validée",
+      "pending": "○ En attente de validation",
+      "excellent": "Excellent",
+      "good": "Bonne",
+      "adequate": "Correcte",
+      "needsWork": "À améliorer",
+      "dimensions": "Dimensions",
+      "improvements": "Suggestions d'amélioration",
+      "noBias": "Aucun biais majeur détecté"
+    },
+    "bias": {
+      "analysis": "Analyse des biais",
+      "confirmation": {
+        "name": "Biais de confirmation",
+        "desc": "Tendance à chercher uniquement des informations confirmant l'hypothèse principale",
+        "fix": "Documenter au moins 2 hypothèses alternatives crédibles"
+      },
+      "anchoring": {
+        "name": "Biais d'ancrage",
+        "desc": "Attachement excessif au contexte initial sans mise à jour",
+        "fix": "Mettre à jour le contexte avec de nouvelles informations"
+      },
+      "sunkcost": {
+        "name": "Biais des coûts irrécupérables",
+        "desc": "Branches abandonnées sans raisons documentées suggèrent un attachement émotionnel",
+        "fix": "Documenter explicitement pourquoi chaque alternative a été écartée"
+      },
+      "authority": {
+        "name": "Biais d'autorité",
+        "desc": "La décision semble unilatérale sans portée définie",
+        "fix": "Clarifier la portée et impliquer d'autres parties prenantes"
+      },
+      "severity": {
+        "low": "Faible",
+        "medium": "Moyen",
+        "high": "Élevé"
+      }
     }
   },
   "b2b": {
@@ -8686,7 +8752,52 @@
       "intro": "Introduction",
       "frameworks": "Cadres",
       "grids": "Grilles",
+      "evidence": "Preuves",
       "connection": "Connexions"
+    },
+    "evidence": {
+      "title": "Collecte de preuves",
+      "subtitle": "Structurez vos éléments probants pour renforcer vos hypothèses",
+      "hypotheses": "Hypothèses",
+      "hypothesisPlaceholder": "Formulez votre hypothèse...",
+      "robustness": "Robustesse",
+      "linkedEvidences": "preuves liées",
+      "collected": "Preuves collectées",
+      "add": "Ajouter une preuve",
+      "save": "Enregistrer",
+      "empty": "Aucune preuve collectée",
+      "emptyHint": "Commencez par ajouter des éléments probants pour soutenir vos hypothèses.",
+      "fields": {
+        "title": "Titre",
+        "type": "Type de preuve",
+        "source": "Source",
+        "url": "URL (optionnel)",
+        "reliability": "Fiabilité",
+        "supports": "Position",
+        "notes": "Notes"
+      },
+      "type": {
+        "document": "Document",
+        "link": "Lien",
+        "observation": "Observation",
+        "testimonial": "Témoignage",
+        "data": "Données"
+      },
+      "reliability": {
+        "high": "Haute",
+        "medium": "Moyenne",
+        "low": "Faible",
+        "unknown": "Inconnue"
+      },
+      "supports": {
+        "confirms": "Confirme",
+        "contradicts": "Contredit",
+        "neutral": "Neutre"
+      },
+      "summary": "Synthèse",
+      "confirming": "Confirmantes",
+      "contradicting": "Contradictoires",
+      "neutral": "Neutres"
     },
     "paywall": {
       "feature": "OVI - Observatoire des Variables Invisibles",
