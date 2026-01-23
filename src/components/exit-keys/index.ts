@@ -12,3 +12,6 @@ export { ShareResultsButton } from './ShareResultsButton';
 export { IntentionStep } from './IntentionStep';
 export { DestinationSelector } from './DestinationSelector';
 export { PersonalizedExitKeys } from './PersonalizedExitKeys';
+// New enhanced components
+export { StrategyCostSimulator } from './StrategyCostSimulator';
+export { StrategyChecklist } from './StrategyChecklist';

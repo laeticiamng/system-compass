@@ -20,6 +20,8 @@ import { supabase } from '@/integrations/supabase/client';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
+import { StrategyCostSimulator } from './StrategyCostSimulator';
+import { StrategyChecklist } from './StrategyChecklist';
 
 interface PersonalizedExitKeysProps {
   destinationCountryId: string;
@@ -671,6 +673,20 @@ export function PersonalizedExitKeys({
 
         {/* PRACTICAL TAB */}
         <TabsContent value="practical" className="space-y-6">
+          {/* Cost Simulator and Checklist - NEW COMPONENTS */}
+          <div className="grid md:grid-cols-2 gap-6">
+            <StrategyCostSimulator
+              countryId={destinationCountryId}
+              countryName={destination.name}
+              professionId={professionId}
+              intention={intention}
+            />
+            <StrategyChecklist
+              countryId={destinationCountryId}
+              countryName={destination.name}
+              intention={intention}
+            />
+          </div>
           {/* Real Costs Breakdown */}
           {variants?.real_costs_breakdown && variants.real_costs_breakdown.length > 0 && (
             <div className="glass-card rounded-xl p-6">

@@ -79,6 +79,8 @@ import { TraceOSDashboardWidget } from '@/components/dashboard/TraceOSDashboardW
 import { OVIDashboardWidget } from '@/components/dashboard/OVIDashboardWidget';
 import { AnalyticsDashboardWidget } from '@/components/dashboard/AnalyticsDashboardWidget';
 import { PartnerDashboardWidget } from '@/components/dashboard/PartnerDashboardWidget';
+import { RiskAlertsDashboard } from '@/components/dashboard/RiskAlertsDashboard';
+import { ConsolidatedCalendar } from '@/components/dashboard/ConsolidatedCalendar';
 import { SubscriptionStatus } from '@/components/SubscriptionStatus';
 import { toast } from 'sonner';
 
@@ -420,14 +422,23 @@ export default function Dashboard() {
 
         {/* New Dashboard Widgets Grid */}
         {isLoggedIn && (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-            <CasesDashboardWidget />
-            <LatentZonesDashboardWidget />
-            <IrreversaDashboardWidget />
-            <TraceOSDashboardWidget />
-            <OVIDashboardWidget />
-            <AnalyticsDashboardWidget />
-          </div>
+          <>
+            {/* Risk Alerts and Calendar - Full width priority section */}
+            <div className="grid md:grid-cols-2 gap-6 mb-6">
+              <RiskAlertsDashboard />
+              <ConsolidatedCalendar />
+            </div>
+
+            {/* Pro Module Widgets */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+              <CasesDashboardWidget />
+              <LatentZonesDashboardWidget />
+              <IrreversaDashboardWidget />
+              <TraceOSDashboardWidget />
+              <OVIDashboardWidget />
+              <AnalyticsDashboardWidget />
+            </div>
+          </>
         )}
 
         {/* Partner Dashboard Widget - Full width */}
