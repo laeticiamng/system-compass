@@ -45,6 +45,7 @@ import { TraceOSWebhooks } from './TraceOSWebhooks';
 import { TraceOSReview } from './TraceOSReview';
 import { TraceOSGovernance } from './TraceOSGovernance';
 import { TraceOSIntegrations } from './TraceOSIntegrations';
+import { DecisionQualityScore } from './DecisionQualityScore';
 import { useSubscription } from '@/hooks/useSubscription';
 import { useTraceOSDecisions } from '@/hooks/useTraceOSDecisions';
 import { useTraceOSTags } from '@/hooks/useTraceOSTags';
@@ -445,6 +446,7 @@ export function TraceOS() {
             </div>
             {selectedDecision && showComments && (
               <div className="lg:col-span-1 space-y-4">
+                <DecisionQualityScore decision={selectedDecision} />
                 <DecisionComments 
                   decisionId={selectedDecision.id} 
                   decisionTitle={selectedDecision.title}

@@ -5515,6 +5515,57 @@
     "type": {
       "framework": "Framework",
       "grid": "Grid"
+    },
+    "tabs": {
+      "intro": "Introduction",
+      "frameworks": "Frameworks",
+      "grids": "Grids",
+      "evidence": "Evidence",
+      "connection": "Connections"
+    },
+    "evidence": {
+      "title": "Evidence Collection",
+      "subtitle": "Structure your evidence to strengthen your hypotheses",
+      "hypotheses": "Hypotheses",
+      "hypothesisPlaceholder": "Formulate your hypothesis...",
+      "robustness": "Robustness",
+      "linkedEvidences": "linked evidences",
+      "collected": "Collected Evidence",
+      "add": "Add evidence",
+      "save": "Save",
+      "empty": "No evidence collected",
+      "emptyHint": "Start by adding evidence to support your hypotheses.",
+      "fields": {
+        "title": "Title",
+        "type": "Evidence type",
+        "source": "Source",
+        "url": "URL (optional)",
+        "reliability": "Reliability",
+        "supports": "Position",
+        "notes": "Notes"
+      },
+      "type": {
+        "document": "Document",
+        "link": "Link",
+        "observation": "Observation",
+        "testimonial": "Testimonial",
+        "data": "Data"
+      },
+      "reliability": {
+        "high": "High",
+        "medium": "Medium",
+        "low": "Low",
+        "unknown": "Unknown"
+      },
+      "supports": {
+        "confirms": "Confirms",
+        "contradicts": "Contradicts",
+        "neutral": "Neutral"
+      },
+      "summary": "Summary",
+      "confirming": "Confirming",
+      "contradicting": "Contradicting",
+      "neutral": "Neutral"
     }
   },
   "institutions": {
@@ -7280,6 +7331,72 @@
     },
     "export": {
       "loginRequired": "Log in to manage exports"
+    },
+    "quality": {
+      "title": "Quality Score",
+      "hypothesis": "Hypothesis Clarity",
+      "context": "Context Depth",
+      "branches": "Abandoned Branches",
+      "stakeholders": "Stakeholder Involvement",
+      "time": "Timeliness",
+      "hasMainHypothesis": "✓ Main hypothesis defined",
+      "noMainHypothesis": "✗ Main hypothesis missing",
+      "hasAlternatives": "✓ Alternatives documented",
+      "noAlternatives": "✗ Insufficient alternatives",
+      "improveHypothesis": "Document at least 2 alternatives",
+      "hasContext": "✓ Detailed context",
+      "noContext": "✗ Insufficient context",
+      "hasConstraints": "✓ Constraints listed",
+      "noConstraints": "✗ Constraints not documented",
+      "improveContext": "Enrich context and constraints",
+      "goodBranches": "✓ Multiple discarded alternatives documented",
+      "fewBranches": "✗ Few alternatives documented",
+      "branchReasons": "✓ Abandonment reasons explained",
+      "noBranchReasons": "✗ Missing reasons",
+      "improveBranches": "Document why alternatives were discarded",
+      "hasAuthor": "✓ Author/decision-maker identified",
+      "noAuthor": "✗ Author not identified",
+      "hasScope": "✓ Scope defined",
+      "noScope": "✗ Scope not defined",
+      "hasDate": "✓ Decision date",
+      "noDate": "✗ Missing date",
+      "validated": "✓ Decision validated",
+      "pending": "○ Pending validation",
+      "excellent": "Excellent",
+      "good": "Good",
+      "adequate": "Adequate",
+      "needsWork": "Needs work",
+      "dimensions": "Dimensions",
+      "improvements": "Improvement suggestions",
+      "noBias": "No major bias detected"
+    },
+    "bias": {
+      "analysis": "Bias Analysis",
+      "confirmation": {
+        "name": "Confirmation bias",
+        "desc": "Tendency to only seek information confirming the main hypothesis",
+        "fix": "Document at least 2 credible alternative hypotheses"
+      },
+      "anchoring": {
+        "name": "Anchoring bias",
+        "desc": "Excessive attachment to initial context without updates",
+        "fix": "Update context with new information"
+      },
+      "sunkcost": {
+        "name": "Sunk cost bias",
+        "desc": "Abandoned branches without documented reasons suggest emotional attachment",
+        "fix": "Explicitly document why each alternative was discarded"
+      },
+      "authority": {
+        "name": "Authority bias",
+        "desc": "Decision appears unilateral without defined scope",
+        "fix": "Clarify scope and involve other stakeholders"
+      },
+      "severity": {
+        "low": "Low",
+        "medium": "Medium",
+        "high": "High"
+      }
     }
   },
   "irreversa": {
