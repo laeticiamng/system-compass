@@ -229,7 +229,7 @@ export function CountryVariantSection({ countryId, countryName }: CountryVariant
   const { canAccessPremium, loading: subscriptionLoading } = useSubscription();
   const [originalVariant, setOriginalVariant] = useState<CountryVariant | null>(null);
   const [loading, setLoading] = useState(true);
-  const [fetchError, setFetchError] = useState<string | null>(null);
+  const [, setFetchError] = useState<string | null>(null);
 
   const { translatedData: variant, isTranslating } = useTranslatedVariants(
     countryId,

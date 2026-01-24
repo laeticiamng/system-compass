@@ -1,8 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Bell, BellOff, CheckCircle, AlertTriangle, Calendar, X, Settings } from 'lucide-react';
+import { Bell, BellOff, CheckCircle, AlertTriangle, Calendar, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { Switch } from '@/components/ui/switch';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import {

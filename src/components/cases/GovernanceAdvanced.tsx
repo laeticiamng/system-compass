@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { 
   Building2, Users, Clock, Shield, AlertTriangle, Loader2, 
-  Sparkles, RefreshCw, Trash2, Plus, ChevronDown, ChevronUp,
+  Sparkles, Trash2, Plus, ChevronDown, ChevronUp,
   CheckCircle2, HelpCircle, Link as LinkIcon, Calendar,
-  Edit2, X, Save, FileDown, Search, Filter, Info
+  Search, Info
 } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -13,7 +13,6 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Progress } from '@/components/ui/progress';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Separator } from '@/components/ui/separator';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogFooter, DialogDescription } from '@/components/ui/dialog';
@@ -88,16 +87,12 @@ export function GovernanceAdvanced({ caseData, countryName, countryCode }: Gover
     generateIntel,
     clearAIData,
     addActor,
-    updateActor,
     deleteActor,
     addPattern,
-    updatePattern,
     deletePattern,
     addPartner,
-    updatePartner,
     deletePartner,
     addDelay,
-    updateDelay,
     deleteDelay,
   } = useGovernanceIntel(caseData.id);
 
@@ -300,9 +295,7 @@ export function GovernanceAdvanced({ caseData, countryName, countryCode }: Gover
           <ActorsSection 
             actors={actors.filter(a => !searchQuery || a.label.toLowerCase().includes(searchQuery.toLowerCase()))} 
             onDelete={deleteActor}
-            onUpdate={updateActor}
             onAdd={() => setShowAddActorDialog(true)}
-            countryCode={countryCode}
           />
           <AddActorDialog 
             open={showAddActorDialog} 
@@ -317,7 +310,6 @@ export function GovernanceAdvanced({ caseData, countryName, countryCode }: Gover
           <PatternsSection 
             patterns={patterns.filter(p => !searchQuery || p.description_neutral.toLowerCase().includes(searchQuery.toLowerCase()))} 
             onDelete={deletePattern}
-            onUpdate={updatePattern}
             onAdd={() => setShowAddPatternDialog(true)}
           />
           <AddPatternDialog 
@@ -332,7 +324,6 @@ export function GovernanceAdvanced({ caseData, countryName, countryCode }: Gover
           <PartnersSection 
             partners={partners.filter(p => !searchQuery || (p.description?.toLowerCase().includes(searchQuery.toLowerCase())))} 
             onDelete={deletePartner}
-            onUpdate={updatePartner}
             onAdd={() => setShowAddPartnerDialog(true)}
           />
           <AddPartnerDialog 
@@ -347,7 +338,6 @@ export function GovernanceAdvanced({ caseData, countryName, countryCode }: Gover
           <DelaysSection 
             delays={delays.filter(d => !searchQuery || d.process_name.toLowerCase().includes(searchQuery.toLowerCase()))} 
             onDelete={deleteDelay}
-            onUpdate={updateDelay}
             onAdd={() => setShowAddDelayDialog(true)}
           />
           <AddDelayDialog 
@@ -462,12 +452,10 @@ function FrameworkContent() {
 }
 
 // Sub-components
-function ActorsSection({ actors, onDelete, onUpdate, onAdd, countryCode }: { 
+function ActorsSection({ actors, onDelete, onAdd }: { 
   actors: GovernanceActor[]; 
   onDelete: (id: string) => void;
-  onUpdate: (id: string, updates: Partial<GovernanceActor>) => void;
   onAdd: () => void;
-  countryCode: string;
 }) {
   const { t } = useTranslation();
   const [expandedId, setExpandedId] = useState<string | null>(null);
@@ -527,7 +515,6 @@ function ActorsSection({ actors, onDelete, onUpdate, onAdd, countryCode }: {
                   expanded={expandedId === actor.id}
                   onToggle={() => setExpandedId(expandedId === actor.id ? null : actor.id)}
                   onDelete={onDelete}
-                  onUpdate={onUpdate}
                 />
               ))}
             </div>
@@ -538,12 +525,11 @@ function ActorsSection({ actors, onDelete, onUpdate, onAdd, countryCode }: {
   );
 }
 
-function ActorCard({ actor, expanded, onToggle, onDelete, onUpdate }: {
+function ActorCard({ actor, expanded, onToggle, onDelete }: {
   actor: GovernanceActor;
   expanded: boolean;
   onToggle: () => void;
   onDelete: (id: string) => void;
-  onUpdate: (id: string, updates: Partial<GovernanceActor>) => void;
 }) {
   const { t } = useTranslation();
 
@@ -601,10 +587,9 @@ function ActorCard({ actor, expanded, onToggle, onDelete, onUpdate }: {
   );
 }
 
-function PatternsSection({ patterns, onDelete, onUpdate, onAdd }: { 
+function PatternsSection({ patterns, onDelete, onAdd }: { 
   patterns: IntermediationPattern[]; 
   onDelete: (id: string) => void;
-  onUpdate: (id: string, updates: Partial<IntermediationPattern>) => void;
   onAdd: () => void;
 }) {
   const { t } = useTranslation();
@@ -711,10 +696,9 @@ function PatternCard({ pattern, onDelete }: { pattern: IntermediationPattern; on
   );
 }
 
-function PartnersSection({ partners, onDelete, onUpdate, onAdd }: { 
+function PartnersSection({ partners, onDelete, onAdd }: { 
   partners: GovernancePartner[]; 
   onDelete: (id: string) => void;
-  onUpdate: (id: string, updates: Partial<GovernancePartner>) => void;
   onAdd: () => void;
 }) {
   const { t } = useTranslation();
@@ -814,10 +798,9 @@ function PartnerCard({ partner, onDelete }: { partner: GovernancePartner; onDele
   );
 }
 
-function DelaysSection({ delays, onDelete, onUpdate, onAdd }: { 
+function DelaysSection({ delays, onDelete, onAdd }: { 
   delays: DelayReality[]; 
   onDelete: (id: string) => void;
-  onUpdate: (id: string, updates: Partial<DelayReality>) => void;
   onAdd: () => void;
 }) {
   const { t } = useTranslation();

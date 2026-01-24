@@ -7,9 +7,6 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Link } from 'react-router-dom';
 import { 
   Gamepad2, 
-  Trophy, 
-  Target, 
-  TrendingUp, 
   AlertTriangle,
   Play,
   Star

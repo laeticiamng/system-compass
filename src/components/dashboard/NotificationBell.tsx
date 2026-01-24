@@ -7,9 +7,7 @@ import {
   Trash2,
   ExternalLink,
   Loader2,
-  AlertCircle,
   Info,
-  CheckCircle2,
   Calendar,
   Trophy
 } from 'lucide-react';

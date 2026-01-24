@@ -14,7 +14,7 @@ interface CasesListProps {
   showCreateButton?: boolean;
 }
 
-export function CasesList({ countryId, limit, showCreateButton = true }: CasesListProps) {
+export function CasesList({ countryId, limit }: CasesListProps) {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const { cases, isLoading } = useUserCases();

@@ -175,7 +175,7 @@ export function TagsRadarCompare({ countryIds, countryNames }: TagsRadarCompareP
                 borderRadius: '8px',
                 color: 'hsl(var(--foreground))',
               }}
-              formatter={(value: number, name: string, props: any) => {
+              formatter={(_value: number, name: string, props: any) => {
                 // Find the raw value
                 const dataIndex = parseInt(name.replace('country', '').replace(/\D/g, '')) || 0;
                 const rawKey = `country${dataIndex}Raw`;

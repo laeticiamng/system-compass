@@ -2,16 +2,15 @@ import { useMemo, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { 
-  Key, AlertTriangle, Clock, Target, Zap, FileText, Building, ExternalLink, 
+  Key, AlertTriangle, Clock, Target, Zap, FileText, ExternalLink, 
   CheckCircle2, MapPin, Briefcase, Shield, Users, Brain, TrendingUp, 
-  Lightbulb, Scale, Globe, Heart, Wallet, Home, GraduationCap, UserCheck,
-  ArrowRight, Info, Calendar, DollarSign, Layers, Eye
+  Lightbulb, Scale, Globe, Heart, Wallet, Home, UserCheck,
+  Calendar, DollarSign, Eye
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useCountries } from '@/lib/countries-data';
-import { Country } from '@/lib/types';
 import { ProjectIntention } from '@/hooks/useExitKeysProfile';
-import { EXIT_KEYS, ExitKey } from '@/lib/exit-keys-engine';
+import { EXIT_KEYS } from '@/lib/exit-keys-engine';
 import { getProfession } from '@/lib/profession-data';
 import { usePyramidTranslations } from '@/hooks/usePyramidTranslations';
 import { findStrategy, CountryProfessionStrategy } from '@/lib/country-profession-strategies';
@@ -109,7 +108,6 @@ export function PersonalizedExitKeys({
   hasCapital,
   hasCredentials,
   hasNetwork,
-  educationLevel,
 }: PersonalizedExitKeysProps) {
   const { t } = useTranslation();
   const { countries } = useCountries();
@@ -125,7 +123,7 @@ export function PersonalizedExitKeys({
   const [variants, setVariants] = useState<CountryVariants | null>(null);
   const [loadingExtended, setLoadingExtended] = useState(true);
   
-  const { governance, isLoading: governanceLoading } = useCountryGovernance(
+  const { governance } = useCountryGovernance(
     destinationCountryId, 
     destination?.pyramidType
   );

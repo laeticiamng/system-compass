@@ -2,16 +2,13 @@ import { useTranslation } from 'react-i18next';
 import { useLatentZones } from '@/hooks/useLatentZones';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Link } from 'react-router-dom';
 import { 
   Layers, 
   Plus, 
   ArrowRight,
-  AlertTriangle,
-  Eye,
-  EyeOff
+  AlertTriangle
 } from 'lucide-react';
 
 export function LatentZonesDashboardWidget() {

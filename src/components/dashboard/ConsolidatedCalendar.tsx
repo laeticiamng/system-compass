@@ -5,8 +5,6 @@ import {
   Calendar as CalendarIcon,
   ChevronLeft,
   ChevronRight,
-  FileText,
-  MapPin,
   Shield,
   Clock,
   CheckCircle2,
@@ -223,7 +221,7 @@ export function ConsolidatedCalendar() {
             <div className="space-y-2">
               {upcomingEvents.slice(0, 4).map(event => {
                 const config = typeConfig[event.type];
-                const Icon = config.icon;
+                const _Icon = config.icon;
                 const daysUntil = Math.ceil(
                   (event.date.getTime() - today.getTime()) / (1000 * 60 * 60 * 24)
                 );

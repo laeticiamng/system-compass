@@ -31,7 +31,7 @@ export function CountryGovernanceSection({
   snapshot 
 }: CountryGovernanceSectionProps) {
   const { t } = useTranslation();
-  const { governance, isLoading, averageScore } = useCountryGovernance(countryId, pyramidType);
+  const { isLoading } = useCountryGovernance(countryId, pyramidType);
 
   if (isLoading) {
     return (

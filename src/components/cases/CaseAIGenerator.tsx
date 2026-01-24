@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { 
   Sparkles, Loader2, TrendingUp, Users, AlertTriangle, 
-  FileCheck, Beaker, FileText, ChevronDown, ChevronRight
+  FileCheck, Beaker, ChevronDown, ChevronRight
 } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';

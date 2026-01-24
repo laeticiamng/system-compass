@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Country, PYRAMID_TYPE_INFO } from '@/lib/types';
 import { cn } from '@/lib/utils';
-import { usePyramidTranslations } from '@/hooks/usePyramidTranslations';
 
 interface PyramidVisualizationProps {
   country: Country;
@@ -27,7 +26,6 @@ const pyramidLevels = [
 export function PyramidVisualization({ country, translatedPyramid, className }: PyramidVisualizationProps) {
   const { t } = useTranslation();
   const typeInfo = PYRAMID_TYPE_INFO[country.pyramidType];
-  const colorClass = `pyramid-gradient-${typeInfo.color.replace('pyramid-', '')}`;
 
   const pyramid = translatedPyramid || country.pyramid;
 

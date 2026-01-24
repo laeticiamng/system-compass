@@ -15,9 +15,7 @@ import {
   Zap,
   Award,
   Gamepad2,
-  Briefcase,
-  Layers,
-  Lock
+  Briefcase
 } from 'lucide-react';
 
 export function AnalyticsDashboardWidget() {

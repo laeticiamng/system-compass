@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { UserCase } from '@/hooks/useUserCases';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { 
-  Plus, Trash2, CheckCircle2, Circle, Calendar, 
+  Plus, Trash2, CheckCircle2, Calendar, 
   Target, AlertTriangle, Users, FileCheck, Settings 
 } from 'lucide-react';
 
