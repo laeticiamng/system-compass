@@ -2295,7 +2295,7 @@
     "logout": "Sair",
     "errors": {
       "invalidEmail": "Email inválido",
-      "passwordTooShort": "A palavra-passe deve ter pelo menos 6 caracteres",
+      "passwordTooShort": "A palavra-passe deve ter pelo menos 8 caracteres, 1 maiúscula, 1 minúscula e 1 número",
       "nameRequired": "O nome de exibição é obrigatório",
       "invalidCredentials": "Email ou palavra-passe inválidos",
       "alreadyRegistered": "Já existe uma conta com este email",

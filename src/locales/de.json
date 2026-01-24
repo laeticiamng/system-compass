@@ -2295,7 +2295,7 @@
     "logout": "Abmelden",
     "errors": {
       "invalidEmail": "Ungültige E-Mail",
-      "passwordTooShort": "Passwort muss mindestens 6 Zeichen haben",
+      "passwordTooShort": "Passwort muss mindestens 8 Zeichen, 1 Großbuchstaben, 1 Kleinbuchstaben und 1 Zahl enthalten",
       "nameRequired": "Anzeigename ist erforderlich",
       "invalidCredentials": "Ungültige E-Mail oder Passwort",
       "alreadyRegistered": "Ein Konto mit dieser E-Mail existiert bereits",

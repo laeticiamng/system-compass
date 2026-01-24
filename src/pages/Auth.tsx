@@ -11,7 +11,12 @@ import { Compass, LogIn, UserPlus, Loader2, AlertCircle } from 'lucide-react';
 import { z } from 'zod';
 
 const emailSchema = z.string().email();
-const passwordSchema = z.string().min(6);
+// Sécurité renforcée : minimum 8 caractères, 1 majuscule, 1 minuscule, 1 chiffre
+const passwordSchema = z.string()
+  .min(8, 'Minimum 8 caractères requis')
+  .regex(/[A-Z]/, 'Au moins une majuscule requise')
+  .regex(/[a-z]/, 'Au moins une minuscule requise')
+  .regex(/[0-9]/, 'Au moins un chiffre requis');
 
 export default function Auth() {
   const { t } = useTranslation();
