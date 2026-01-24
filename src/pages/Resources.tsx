@@ -29,6 +29,7 @@ import { Progress } from '@/components/ui/progress';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { cn } from '@/lib/utils';
 import { moduleAudits } from '@/lib/module-completion';
+import { loadChecklistState, saveChecklistState } from '@/lib/checklist-storage';
 
 const categoryIcons = {
   financial: Wallet,
@@ -98,15 +99,14 @@ function InteractiveChecklist({
 }) {
   const { t } = useTranslation();
   const [checkedItems, setCheckedItems] = useState<boolean[]>(() => {
-    const saved = localStorage.getItem(storageKey);
-    return saved ? JSON.parse(saved) : new Array(items.length).fill(false);
+    return loadChecklistState(storageKey, items.length);
   });
 
   const toggleItem = (index: number) => {
     const newChecked = [...checkedItems];
     newChecked[index] = !newChecked[index];
     setCheckedItems(newChecked);
-    localStorage.setItem(storageKey, JSON.stringify(newChecked));
+    saveChecklistState(storageKey, newChecked);
   };
 
   const completedCount = checkedItems.filter(Boolean).length;
