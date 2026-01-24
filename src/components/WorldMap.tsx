@@ -1,12 +1,12 @@
 import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ZoomIn, ZoomOut, RotateCcw, Info, TrendingUp, Shield, Globe } from 'lucide-react';
+import { ZoomIn, ZoomOut, RotateCcw, Shield, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import { useCountries } from '@/lib/countries-data';
-import { DB_COMPLETE_COUNTRY_IDS, EXTENDED_COUNTRY_META, isExtendedCountry } from '@/lib/countries-extended';
+import { DB_COMPLETE_COUNTRY_IDS, EXTENDED_COUNTRY_META } from '@/lib/countries-extended';
 
 interface CountryPosition {
   x: number;
@@ -215,7 +215,7 @@ export function WorldMap({
             const touch1 = e.touches[0];
             const touch2 = e.touches[1];
             const dist = Math.hypot(touch2.clientX - touch1.clientX, touch2.clientY - touch1.clientY);
-            setZoom(z => Math.min(Math.max(dist / 200, 0.5), 3));
+            setZoom(() => Math.min(Math.max(dist / 200, 0.5), 3));
           }
         }}
       >

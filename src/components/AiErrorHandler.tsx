@@ -68,7 +68,7 @@ export function useAiErrorHandler() {
 /**
  * Component that displays AI error toasts when an error is passed
  */
-export function AiErrorHandler({ error, onRetry }: AiErrorHandlerProps) {
+export function AiErrorHandler({ error }: AiErrorHandlerProps) {
   const { handleAiError } = useAiErrorHandler();
 
   useEffect(() => {

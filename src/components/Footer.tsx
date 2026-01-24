@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Compass, Heart, RotateCcw, RefreshCw } from 'lucide-react';
+import { Compass, Heart, RotateCcw } from 'lucide-react';
 import { CountryIndicator } from './CountryIndicator';
 import { useResetOnboarding } from './DialogCoordinator';
 import { Button } from './ui/button';
@@ -9,19 +9,12 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { toast } from 'sonner';
-
-const DISCLAIMER_DISMISSED_KEY = 'pyramid-disclaimer-dismissed';
 
 export function Footer() {
   const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
   const resetOnboarding = useResetOnboarding();
 
-  const resetDisclaimerBanner = () => {
-    localStorage.removeItem(DISCLAIMER_DISMISSED_KEY);
-    toast.success(t('footer.disclaimerReset', 'Bandeau disclaimer réinitialisé'));
-  };
 
   return (
     <footer className="border-t border-border/50 bg-background/50 backdrop-blur-sm pb-safe">

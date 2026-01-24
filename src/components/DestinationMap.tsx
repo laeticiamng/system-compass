@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { MapPin, Globe, Plane, Info, Palmtree, Building2, ArrowRight, Calendar } from 'lucide-react';
+import { Globe, Info, Palmtree, Building2, ArrowRight, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { DestinationRecommendation, COUNTRY_NAMES } from '@/lib/nationality-advantages';
+import { DestinationRecommendation } from '@/lib/nationality-advantages';
 import { DestinationInsights } from './DestinationInsights';
 import { InstallationTimeline } from './InstallationTimeline';
 

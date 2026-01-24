@@ -25,41 +25,40 @@ vi.mock('recharts', () => ({
 const mockExitKey: ExitKey = {
   id: 'test-exit-key',
   name: 'Test Exit Key',
+  icon: '🔑',
   unlocks: 'Testing benefits',
   successCondition: 'Complete all tests',
   mainRisk: 'Missing edge cases',
   rawTruth: 'Testing is essential',
   difficulty: 'accessible',
+  timeframe: '2-6 months',
+  linkedPyramids: ['COMPETENCE_TRUST'],
+  targetPyramids: ['STABILITY_REDIS'],
   requirements: ['Test requirement 1', 'Test requirement 2'],
   steps: [
     {
       phase: 1,
       name: 'Preparation',
       duration: '2 weeks',
-      actions: [
-        { action: 'Action 1.1', details: 'Details 1.1' },
-        { action: 'Action 1.2', details: 'Details 1.2' },
-        { action: 'Action 1.3', details: 'Details 1.3' },
-      ],
+      actions: ['Action 1.1', 'Action 1.2', 'Action 1.3'],
+      milestone: 'Preparation complete',
     },
     {
       phase: 2,
       name: 'Execution',
       duration: '4 weeks',
-      actions: [
-        { action: 'Action 2.1', details: 'Details 2.1' },
-        { action: 'Action 2.2', details: 'Details 2.2' },
-      ],
+      actions: ['Action 2.1', 'Action 2.2'],
+      milestone: 'Execution complete',
     },
     {
       phase: 3,
       name: 'Finalization',
       duration: '1 week',
-      actions: [
-        { action: 'Action 3.1', details: 'Details 3.1' },
-      ],
+      actions: ['Action 3.1'],
+      milestone: 'Finalization complete',
     },
   ],
+  planB: 'Alternative plan if main approach fails',
 };
 
 // Mock progress data
@@ -81,11 +80,8 @@ const createMockProgress = (completedSteps: { phaseIndex: number; actionIndex: n
 };
 
 describe('ProgressStats', () => {
-  let originalDateNow: typeof Date.now;
-
   beforeEach(() => {
     // Mock Date.now for consistent calculations
-    originalDateNow = Date.now;
     const fixedDate = new Date('2024-06-15T12:00:00Z').getTime();
     vi.spyOn(Date, 'now').mockImplementation(() => fixedDate);
   });
@@ -206,7 +202,8 @@ describe('ProgressStats', () => {
             phase: 1,
             name: 'Only Phase',
             duration: '1 week',
-            actions: [{ action: 'Action 1', details: 'Details 1' }],
+            actions: ['Action 1'],
+            milestone: 'Phase complete',
           },
         ],
       };

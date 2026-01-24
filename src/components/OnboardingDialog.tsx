@@ -11,7 +11,6 @@ import {
   Gamepad2, 
   ArrowRight, 
   ArrowLeft,
-  CheckCircle2,
   Sparkles
 } from 'lucide-react';
 import { useDialogCoordinator } from './DialogCoordinator';

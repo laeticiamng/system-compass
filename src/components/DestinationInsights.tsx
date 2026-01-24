@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { X, Loader2, Palmtree, Building2, AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+
 import { DestinationRecommendation, COUNTRY_NAMES } from '@/lib/nationality-advantages';
 import { toast } from 'sonner';
 
