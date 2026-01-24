@@ -79,7 +79,7 @@ export default function EventCardWithChoices({ event, onChoiceSelect, className 
     onChoiceSelect(null, 'skip', event.noChoiceEffect || {});
   };
 
-  const renderEffect = (effect: Partial<GameResources>, isNegative?: boolean) => {
+  const renderEffect = (effect: Partial<GameResources>, _isNegative?: boolean) => {
     return (
       <div className="flex flex-wrap gap-1">
         {Object.entries(effect).map(([resource, change]) => (

@@ -1,9 +1,8 @@
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { 
   CharacterCard as CharacterCardType, 
-  GameResources, 
   createDefaultResources,
   POSITIVE_TRAITS,
   NEGATIVE_TRAITS,
@@ -12,13 +11,12 @@ import {
   CharacterAspiration,
   ResourceType,
 } from '@/lib/game-data';
-import { PyramidType, PYRAMID_TYPE_INFO, type Country } from '@/lib/types';
+import { PyramidType, type Country } from '@/lib/types';
 import { useCountries, getCountriesSnapshot } from '@/lib/countries-data';
 import { usePyramidTranslations } from '@/hooks/usePyramidTranslations';
 import { PROFESSIONS, EDUCATION_LEVELS, type EducationLevel, type Profession } from '@/lib/profession-data';
-import { Shuffle, Dices, Flag, Briefcase, GraduationCap, Heart, Target, AlertTriangle, Play, RotateCcw, Info } from 'lucide-react';
+import { Shuffle, Dices, Briefcase, GraduationCap, RotateCcw, Info, Play } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import CharacterCard from './CharacterCard';
 
 interface LifeAssignmentProps {
   playerCount: number;

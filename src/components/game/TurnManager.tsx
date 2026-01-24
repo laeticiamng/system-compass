@@ -4,8 +4,7 @@ import { Button } from '@/components/ui/button';
 import { 
   GameResources, 
   GameAction, 
-  GAME_ACTIONS,
-  CharacterCard,
+  CharacterCard as CharacterCardType,
   ResourceType
 } from '@/lib/game-data';
 import { 
@@ -28,16 +27,14 @@ import EventCardWithChoices from './EventCardWithChoices';
 import FamilyEventCard from './FamilyEventCard';
 import ResourceBar from './ResourceBar';
 import ActionPanel from './ActionPanel';
-import StrategicChoiceCard, { StrategicChoice } from './StrategicChoiceCard';
 import GameVisualFeedback, { OutcomeAnimation, FloatingNotification } from './GameVisualFeedback';
 import { 
-  Play, 
   Calendar, 
   Globe, 
   MapPin,
   ChevronRight,
-  AlertTriangle,
-  Home
+  Home,
+  AlertTriangle
 } from 'lucide-react';
 
 export type TurnPhase = 
@@ -53,7 +50,7 @@ interface TurnManagerProps {
   currentPlayer: {
     id: number;
     name: string;
-    character: CharacterCard;
+    character: CharacterCardType;
     resources: GameResources;
     countryType: PyramidType;
     familyStatus?: FamilyStatus;
@@ -255,7 +252,7 @@ export default function TurnManager({
     setFamilyEvent(null);
   };
 
-  const handleActionSelect = (action: GameAction) => {
+  const _handleActionSelect = (action: GameAction) => {
     setSelectedAction(action);
   };
 
@@ -314,7 +311,7 @@ export default function TurnManager({
     onPhaseComplete('action_selection', { action, success });
   };
 
-  const handleActionConfirm = () => {
+  const _handleActionConfirm = () => {
     if (!selectedAction || !canAffordAction(selectedAction)) return;
     executeAction(selectedAction);
   };
@@ -324,7 +321,7 @@ export default function TurnManager({
     onPhaseComplete('action_resolution');
   };
 
-  const handleEndTurn = () => {
+  const _handleEndTurn = () => {
     // Reset state for next turn
     setGlobalEvent(null);
     setCountryEvent(null);

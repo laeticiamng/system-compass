@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -12,33 +12,25 @@ import {
   GAME_ACTIONS,
   GameAction,
 } from '@/lib/game-data';
-import { PyramidType, PYRAMID_TYPE_INFO } from '@/lib/types';
+import { PyramidType } from '@/lib/types';
 import { ReunionPlayer, CharacterPair } from './ReunionMode';
 import { cn } from '@/lib/utils';
-import CharacterCard from './CharacterCard';
 import ResourceBar from './ResourceBar';
 import { 
   ArrowLeft, 
-  ArrowRight, 
+  ArrowRight,
   Heart, 
-  MapPin, 
   Target,
-  Plane, 
-  Users, 
+  Users,
+  RefreshCw,
   Dices, 
   Zap, 
-  RefreshCw, 
-  Trophy, 
-  Sparkles, 
   Star, 
   Check, 
-  X, 
   Clock, 
-  Home, 
   Globe
 } from 'lucide-react';
 import { toast } from 'sonner';
-import { motion, AnimatePresence } from 'framer-motion';
 
 interface ReunionGameBoardProps {
   players: ReunionPlayer[];
@@ -64,8 +56,8 @@ const REUNION_COUNTRIES: { id: string; name: string; type: PyramidType; flag: st
   { id: 'PH', name: 'Philippines', type: 'HYBRID_TRANSITION', flag: '🇵🇭' },
 ];
 
-// Neutral meeting countries
-const MEETING_COUNTRIES = ['SG', 'AE', 'PT', 'TH'];
+// Neutral meeting countries for future use
+// const MEETING_COUNTRIES = ['SG', 'AE', 'PT', 'TH'];
 
 // Reunion requirements based on distance
 function getReunionRequirements(pair: CharacterPair): Partial<GameResources> {
@@ -139,7 +131,7 @@ function calculateReunionProgress(resources1: GameResources, resources2: GameRes
 
 export default function ReunionGameBoard({
   players: initialPlayers,
-  onGameEnd,
+  onGameEnd: _onGameEnd,
   onBack,
 }: ReunionGameBoardProps) {
   const { t } = useTranslation();
@@ -156,7 +148,7 @@ export default function ReunionGameBoard({
   const currentPlayer = players[currentPlayerIndex];
   const activeChar = currentPlayer.activeCharacter;
   const activeResources = activeChar === 1 ? currentPlayer.resources1 : currentPlayer.resources2;
-  const activeCharacter = activeChar === 1 ? currentPlayer.pair.character1 : currentPlayer.pair.character2;
+  const _activeCharacter = activeChar === 1 ? currentPlayer.pair.character1 : currentPlayer.pair.character2;
   
   const getCountryInfo = (countryId: string) => {
     return REUNION_COUNTRIES.find(c => c.id === countryId) || { 

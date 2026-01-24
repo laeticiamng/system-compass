@@ -65,7 +65,7 @@ export default function StrategicChoiceCard({
   const [diceResult, setDiceResult] = useState<number | null>(null);
   const [rollOutcome, setRollOutcome] = useState<'success' | 'failure' | null>(null);
   const [timeRemaining, setTimeRemaining] = useState<number | null>(null);
-  const [showDetails, setShowDetails] = useState<string | null>(null);
+  const [_showDetails, setShowDetails] = useState<string | null>(null);
 
   const eventColors = {
     global: 'border-cyan-500/50 bg-cyan-500/5',

@@ -102,7 +102,7 @@ interface Dice3DProps {
   onRollComplete?: (value: number) => void;
 }
 
-export function Dice3D({ value, isRolling, size = 'md', onRollComplete }: Dice3DProps) {
+export function Dice3D({ value, isRolling, size = 'md', onRollComplete: _onRollComplete }: Dice3DProps) {
   const sizeClasses = {
     sm: 'w-12 h-12 text-xl',
     md: 'w-20 h-20 text-3xl',
@@ -152,11 +152,11 @@ interface AnimatedResourceBarProps {
 }
 
 export function AnimatedResourceBar({ 
-  resource, 
+  resource: _resource, 
   value, 
   maxValue = 10, 
   icon, 
-  color,
+  color: _color,
   change 
 }: AnimatedResourceBarProps) {
   const percentage = (value / maxValue) * 100;

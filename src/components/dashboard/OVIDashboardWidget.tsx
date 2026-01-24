@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useOVISuggestions, SimulationType } from '@/hooks/useOVISuggestions';
+import { useOVISuggestions } from '@/hooks/useOVISuggestions';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';

@@ -1,10 +1,9 @@
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { 
   CharacterCard as CharacterCardType, 
   GameResources, 
@@ -22,15 +21,14 @@ import {
   ArrowLeft, 
   ArrowRight, 
   Heart, 
-  MapPin, 
   Target,
   Plane,
   Users,
   Shuffle,
-  Play,
   Globe,
   Sparkles,
-  Star
+  Star,
+  Play
 } from 'lucide-react';
 
 // Countries with contrasting pyramid types for interesting gameplay

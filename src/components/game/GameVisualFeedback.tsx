@@ -1,18 +1,10 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { GameResources, ResourceType, RESOURCE_INFO } from '@/lib/game-data';
+import { ResourceType, RESOURCE_INFO } from '@/lib/game-data';
 import { cn } from '@/lib/utils';
 import { 
   TrendingUp, 
-  TrendingDown, 
-  Star, 
-  Zap, 
-  Heart,
-  Coins,
-  Clock,
-  Users,
-  Plane,
-  BookOpen
+  TrendingDown
 } from 'lucide-react';
 
 interface ResourceChange {
@@ -46,15 +38,6 @@ export default function GameVisualFeedback({
     center: 'fixed inset-0 flex items-center justify-center z-50',
     'top-right': 'fixed top-20 right-4 z-50',
     bottom: 'fixed bottom-20 left-1/2 -translate-x-1/2 z-50',
-  };
-
-  const resourceIcons = {
-    money: <Coins className="w-5 h-5" />,
-    health: <Heart className="w-5 h-5" />,
-    time: <Clock className="w-5 h-5" />,
-    network: <Users className="w-5 h-5" />,
-    mobility: <Plane className="w-5 h-5" />,
-    skills: <BookOpen className="w-5 h-5" />,
   };
 
   return (
