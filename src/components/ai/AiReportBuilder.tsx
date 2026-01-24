@@ -11,8 +11,6 @@ import {
   Building2,
   User,
   Target,
-  MapPin,
-  Clock,
   Shield
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';

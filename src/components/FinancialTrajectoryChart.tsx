@@ -29,9 +29,8 @@ import {
   Plus,
   X
 } from 'lucide-react';
-import { FISCAL_SYSTEMS_EXTENDED, calculateNetSalary, type NetSalaryResult } from '@/lib/fiscal-data';
+import { FISCAL_SYSTEMS_EXTENDED, calculateNetSalary } from '@/lib/fiscal-data';
 import { useCountries } from '@/lib/countries-data';
-import { cn } from '@/lib/utils';
 
 interface FinancialTrajectoryChartProps {
   className?: string;

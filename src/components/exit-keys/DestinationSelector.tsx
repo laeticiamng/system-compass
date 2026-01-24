@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ChevronRight, Briefcase, Plane, GraduationCap, Palmtree, Laptop, TrendingUp, Heart, Shield, Zap, DollarSign, Star } from 'lucide-react';
+import { ChevronRight, Star } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useCountries } from '@/lib/countries-data';
 import { Country, PyramidType, LifePriority } from '@/lib/types';

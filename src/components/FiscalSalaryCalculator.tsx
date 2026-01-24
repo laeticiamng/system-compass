@@ -14,17 +14,14 @@ import {
   PiggyBank,
   AlertTriangle,
   CheckCircle,
-  Info,
   Percent,
-  Building2,
-  Banknote
+  Building2
 } from 'lucide-react';
 import { 
   FISCAL_SYSTEMS_EXTENDED, 
   calculateNetSalary, 
   getFiscalSummary,
-  compareSalaries,
-  type NetSalaryResult 
+  compareSalaries
 } from '@/lib/fiscal-data';
 import { PROFESSIONS, getProfession, PROFESSION_CATEGORY_LABELS, type ProfessionCategory } from '@/lib/profession-data';
 import { useCountries } from '@/lib/countries-data';

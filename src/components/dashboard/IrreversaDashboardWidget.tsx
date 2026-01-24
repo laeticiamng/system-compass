@@ -2,7 +2,6 @@ import { useTranslation } from 'react-i18next';
 import { useIrreversa } from '@/hooks/useIrreversa';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Link } from 'react-router-dom';
 import { 
@@ -10,7 +9,6 @@ import {
   Plus, 
   ArrowRight,
   AlertTriangle,
-  CheckCircle2,
   Shield
 } from 'lucide-react';
 

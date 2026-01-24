@@ -85,7 +85,7 @@ export function EmptyDashboardState({ hasProfile = false, hasExitKey = false }: 
 
         {/* Steps Grid */}
         <div className="grid sm:grid-cols-2 gap-4 mb-6">
-          {QUICK_START_STEPS.map((step, index) => {
+          {QUICK_START_STEPS.map((step) => {
             const StepIcon = step.icon;
             const status = getStepStatus(step.id);
             

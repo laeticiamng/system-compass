@@ -73,14 +73,14 @@ export default function FamilyEventCard({ event, onChoice }: FamilyEventCardProp
             </span>
           </div>
           <h3 className="font-display text-xl font-bold">
-            {t(event.label, event.label.split('.').pop())}
+            {t(event.label, { defaultValue: event.label.split('.').pop() || event.label })}
           </h3>
         </div>
       </div>
 
       {/* Description */}
       <p className="text-muted-foreground mb-4">
-        {t(event.description, event.description.split('.').pop())}
+        {t(event.description, { defaultValue: event.description.split('.').pop() || event.description })}
       </p>
 
       {/* Base Effect */}

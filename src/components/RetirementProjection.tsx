@@ -5,8 +5,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Slider } from '@/components/ui/slider';
 import { Badge } from '@/components/ui/badge';
 import { 
-  LineChart, 
-  Line, 
   XAxis, 
   YAxis, 
   CartesianGrid, 
@@ -18,10 +16,8 @@ import {
 } from 'recharts';
 import { 
   PiggyBank, 
-  TrendingUp, 
   Calendar,
   AlertTriangle,
-  CheckCircle,
   Target
 } from 'lucide-react';
 import { FISCAL_SYSTEMS_EXTENDED, calculateNetSalary } from '@/lib/fiscal-data';
@@ -207,9 +203,6 @@ export function RetirementProjection({ initialCountryId, className }: Retirement
     }).format(amount);
   };
   
-  const getCountryName = (countryId: string) => {
-    return countries.find(c => c.id === countryId)?.name || countryId;
-  };
   
   const getPensionQuality = () => {
     if (replacementRate >= 0.7) return { label: t('retirement.excellent', 'Excellent'), color: 'text-green-600', bg: 'bg-green-500/10' };

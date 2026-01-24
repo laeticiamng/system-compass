@@ -10,7 +10,6 @@ import {
   Gem,
   ArrowRight
 } from 'lucide-react';
-import { cn } from '@/lib/utils';
 import { PyramidType } from '@/lib/types';
 
 interface PyramidTypeConfig {

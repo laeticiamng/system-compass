@@ -10,8 +10,8 @@ import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Skeleton } from '@/components/ui/skeleton';
 import { 
-  Briefcase, Home, AlertTriangle, FolderOpen, ChevronRight,
-  Plus, Clock, CheckCircle2, Target
+  Briefcase, Home, FolderOpen, ChevronRight,
+  Plus, Clock, Target
 } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { fr } from 'date-fns/locale';

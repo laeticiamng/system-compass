@@ -74,7 +74,7 @@ export function TagsCompareChart({ countries, compact = false }: Props) {
         fullMark: 5,
       };
 
-      countries.forEach((country, idx) => {
+      countries.forEach((country) => {
         point[country.countryId] = country.tags[key] || 0;
       });
 

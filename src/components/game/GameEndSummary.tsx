@@ -17,9 +17,6 @@ import {
   Target, 
   Heart, 
   Star,
-  TrendingUp,
-  TrendingDown,
-  Minus,
   Award,
   RotateCcw,
   Share2,
@@ -551,7 +548,7 @@ export default function GameEndSummary({
             <div className="p-4 rounded-lg bg-primary/5 border border-primary/20">
               <h4 className="font-semibold text-sm mb-2">{t('gameEnd.insightSystem', 'Votre navigation systémique')}</h4>
               <p className="text-sm text-muted-foreground">
-                {rankedResults[0]?.lifeScore.breakdown.find(b => b.category === 'gameEnd.experienceDiversity')?.score >= 20
+                {(rankedResults[0]?.lifeScore.breakdown.find(b => b.category === 'gameEnd.experienceDiversity')?.score ?? 0) >= 20
                   ? t('gameEnd.diverseProfile', 'Vous avez su naviguer entre différents systèmes - une compétence précieuse.')
                   : t('gameEnd.focusedProfile', 'Vous êtes resté dans votre zone - explorer d\'autres pyramides pourrait élargir vos options.')}
               </p>
