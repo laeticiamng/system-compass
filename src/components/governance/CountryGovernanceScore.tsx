@@ -26,7 +26,7 @@ const getScoreLabel = (score: number): string => {
 
 export function CountryGovernanceScore({ countryId, countryName, snapshot }: CountryGovernanceScoreProps) {
   const { t } = useTranslation();
-  const { governance, isLoading, averageScore } = useCountryGovernance(countryId);
+  const { governance, isLoading: _isLoading, averageScore } = useCountryGovernance(countryId);
 
   const variables = [
     {

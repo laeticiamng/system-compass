@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
@@ -9,10 +9,6 @@ import {
   ChevronLeft, 
   Globe, 
   Heart, 
-  Coins, 
-  Users, 
-  Shield, 
-  Brain,
   AlertTriangle,
   Sparkles,
   BookOpen,

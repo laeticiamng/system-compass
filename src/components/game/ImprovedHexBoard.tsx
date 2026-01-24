@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { PyramidType, PYRAMID_TYPE_INFO } from '@/lib/types';
 import { cn } from '@/lib/utils';
-import { useTranslation } from 'react-i18next';
 import {
   Tooltip,
   TooltipContent,
@@ -147,7 +146,6 @@ export default function ImprovedHexBoard({
   onSquareClick,
   highlightedSquares = []
 }: ImprovedHexBoardProps) {
-  const { t } = useTranslation();
   const [hoveredSquare, setHoveredSquare] = useState<number | null>(null);
 
   const getSquareStyle = (square: BoardSquare) => {

@@ -1,6 +1,5 @@
 import { PyramidType, PYRAMID_TYPE_INFO } from '@/lib/types';
 import { cn } from '@/lib/utils';
-import { useTranslation } from 'react-i18next';
 
 interface PlayerOnBoard {
   id: number;
@@ -93,10 +92,9 @@ const PYRAMID_COLORS: Record<PyramidType, { bg: string; border: string; text: st
   RESOURCE_EXTRACTION: { bg: 'bg-orange-500/20', border: 'border-orange-500', text: 'text-orange-400' },
 };
 
-const SIDE_ROTATION = [0, 60, 120, 180, 240, 300];
+// _SIDE_ROTATION used for future hexagonal layout enhancements
 
 export default function HexagonalBoard({ players, currentPlayerId, onSquareClick }: HexagonalBoardProps) {
-  const { t } = useTranslation();
 
   const getSquareStyle = (square: typeof HEXAGONAL_BOARD[0]) => {
     let baseClass = "w-12 h-12 md:w-14 md:h-14 rounded-lg border-2 flex flex-col items-center justify-center text-xs relative transition-all duration-300 cursor-pointer hover:scale-105";

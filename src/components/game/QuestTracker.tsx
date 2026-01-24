@@ -1,6 +1,5 @@
 import { useState, useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
-import { GameResources, ResourceType } from '@/lib/game-data';
+import { GameResources } from '@/lib/game-data';
 import { PyramidType } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { Target, Trophy, Star, Zap, ChevronDown, ChevronUp } from 'lucide-react';
@@ -106,7 +105,7 @@ export function generateTurnQuests(context: QuestContext): Quest[] {
   return quests.slice(0, 3); // Maximum 3 quêtes par tour
 }
 
-export function generateGameQuests(turnNumber: number): Quest[] {
+export function generateGameQuests(_turnNumber: number): Quest[] {
   const quests: Quest[] = [
     {
       id: 'first_5_turns',
@@ -166,8 +165,7 @@ interface QuestTrackerProps {
   compact?: boolean;
 }
 
-export default function QuestTracker({ context, onQuestComplete, compact = false }: QuestTrackerProps) {
-  const { t } = useTranslation();
+export default function QuestTracker({ context, onQuestComplete: _onQuestComplete, compact = false }: QuestTrackerProps) {
   const [expanded, setExpanded] = useState(!compact);
 
   const turnQuests = useMemo(() => generateTurnQuests(context), [context.turnNumber, context.resources]);

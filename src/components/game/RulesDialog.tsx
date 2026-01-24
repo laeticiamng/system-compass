@@ -30,8 +30,6 @@ import {
   Gamepad2,
   Trophy,
   Map,
-  HelpCircle,
-  Gift,
   Skull
 } from 'lucide-react';
 import { cn } from '@/lib/utils';

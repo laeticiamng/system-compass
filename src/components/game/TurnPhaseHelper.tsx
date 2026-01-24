@@ -9,7 +9,8 @@ import {
   ChevronDown,
   ChevronUp,
   Users,
-  CheckCircle
+  CheckCircle,
+  type LucideIcon
 } from 'lucide-react';
 import { useState } from 'react';
 import { TurnPhase } from './TurnManager';
@@ -18,7 +19,7 @@ interface TurnPhaseHelperProps {
   currentPhase: TurnPhase;
 }
 
-const PHASE_CONFIG: Record<TurnPhase, { icon: any; colorClass: string; stepNumber: number }> = {
+const PHASE_CONFIG: Record<TurnPhase, { icon: LucideIcon; colorClass: string; stepNumber: number }> = {
   global_event: {
     icon: Globe,
     colorClass: 'text-blue-500 bg-blue-500/10 border-blue-500/30',
