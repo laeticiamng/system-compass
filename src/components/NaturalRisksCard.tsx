@@ -3,7 +3,6 @@ import { CountryNaturalRisks } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { 
   Waves, 
-  Cloud, 
   Droplets, 
   Sun, 
   Snowflake, 

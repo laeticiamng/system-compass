@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Search, Globe, Key, BookOpen, AlertTriangle, Map, X, Command } from 'lucide-react';
@@ -213,7 +213,7 @@ export function GlobalSearch() {
               </div>
             ) : (
               <div className="space-y-1">
-                {results.map((result, index) => (
+                {results.map((result) => (
                   <button
                     key={`${result.type}-${result.id}`}
                     onClick={() => handleSelect(result)}

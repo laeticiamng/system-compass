@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import { X, Loader2, Scale, Palmtree, Building2, CheckCircle, XCircle, Minus } from 'lucide-react';
+import { useState } from 'react';
+import { X, Scale, Palmtree, Building2, CheckCircle, XCircle, Minus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { DestinationRecommendation, COUNTRY_NAMES } from '@/lib/nationality-advantages';
+import { DestinationRecommendation } from '@/lib/nationality-advantages';
 
 interface DestinationCompareProps {
   dest1: DestinationRecommendation;
@@ -49,9 +49,6 @@ const DEFAULT_DATA = { costOfLiving: 3, quality: 3, safety: 3, healthcare: 3, cl
 export function DestinationCompare({
   dest1,
   dest2,
-  nationalities,
-  aspiration,
-  currentCountry,
   onClose,
 }: DestinationCompareProps) {
   const [viewMode, setViewMode] = useState<'vacation' | 'installation'>('vacation');

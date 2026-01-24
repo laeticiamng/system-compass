@@ -1,14 +1,14 @@
 import { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { 
-  Calendar, Clock, CheckCircle, Circle, ChevronDown, ChevronUp,
-  Plane, FileText, Home, Briefcase, Heart, GraduationCap,
-  Building2, CreditCard, Shield, Users, MapPin, Flag, Sparkles
+  Clock, CheckCircle, ChevronDown, ChevronUp,
+  Plane, FileText,
+  Building2, Users, MapPin, Flag, Sparkles
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { cn } from '@/lib/utils';
-import { DestinationRecommendation, COUNTRY_NAMES } from '@/lib/nationality-advantages';
+import { DestinationRecommendation } from '@/lib/nationality-advantages';
 
 interface InstallationTimelineProps {
   destination: DestinationRecommendation;
@@ -349,7 +349,7 @@ const COUNTRY_SPECIFICS: Record<string, { fastTrack?: string[]; warnings?: strin
 export function InstallationTimeline({
   destination,
   aspiration,
-  currentCountry,
+  currentCountry: _currentCountry,
   onClose
 }: InstallationTimelineProps) {
   const { t } = useTranslation();
@@ -476,7 +476,7 @@ export function InstallationTimeline({
           {/* Vertical line */}
           <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-border" />
 
-          {timeline.map((phase, phaseIndex) => {
+          {timeline.map((phase) => {
             const isExpanded = expandedPhases.includes(phase.id);
             const phaseCompleted = phase.steps.every(step => completedSteps.includes(step.id));
             const PhaseIcon = phase.icon;

@@ -5,9 +5,9 @@ import { Key, ChevronRight, Sparkles, Bookmark, Eye, PlayCircle } from 'lucide-r
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Country } from '@/lib/types';
-import { findCompatibleKeys, ExitKeyResult, UserContext } from '@/lib/exit-keys-engine';
+import { findCompatibleKeys, UserContext } from '@/lib/exit-keys-engine';
 import { useExitKeysProfile } from '@/hooks/useExitKeysProfile';
-import { useExitKeysHistory, ExitKeyStatus } from '@/hooks/useExitKeysHistory';
+import { useExitKeysHistory } from '@/hooks/useExitKeysHistory';
 import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
 
@@ -24,7 +24,7 @@ const difficultyConfig = {
 export function CountryExitKeys({ country }: CountryExitKeysProps) {
   const { t } = useTranslation();
   const { profile, loading } = useExitKeysProfile();
-  const { trackExitKey, updateStatus, getSavedKeys, isLoggedIn } = useExitKeysHistory();
+  const { trackExitKey, updateStatus, isLoggedIn } = useExitKeysHistory();
 
   const exitKeyResults = useMemo(() => {
     if (!profile) return [];
@@ -158,8 +158,7 @@ function ExitKeyPreview({
   compatibility,
   onTrack,
   onSave,
-  isLoggedIn
-}: { 
+}: {
   exitKey: { 
     id: string; 
     name: string; 

@@ -145,13 +145,11 @@ export function CountryMusicPlayer({
 
         const data = await response.json();
         let audioUrl = (data.audioUrl as string | undefined) || (data.streamUrl as string | undefined);
-        let streamUrl = data.streamUrl as string | undefined;
-
+        // streamUrl from initial response (unused but kept for potential future use)
         if (response.status === 202 || !audioUrl) {
           if (data.taskId) {
             const statusData = await pollTaskStatus(data.taskId as string);
             audioUrl = statusData?.audioUrl || statusData?.streamUrl;
-            streamUrl = statusData?.streamUrl;
 
             if (statusData?.status === 'failed') {
               finalError = statusData.errorMessage || t('music.error', 'Impossible de générer la musique');
