@@ -3803,7 +3803,7 @@
     "logout": "Déconnexion",
     "errors": {
       "invalidEmail": "Email invalide",
-      "passwordTooShort": "Le mot de passe doit contenir au moins 6 caractères",
+      "passwordTooShort": "Le mot de passe doit contenir au moins 8 caractères, 1 majuscule, 1 minuscule et 1 chiffre",
       "nameRequired": "Le nom d'affichage est requis",
       "invalidCredentials": "Email ou mot de passe incorrect",
       "alreadyRegistered": "Un compte existe déjà avec cet email",

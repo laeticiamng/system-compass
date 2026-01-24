@@ -2295,7 +2295,7 @@
     "logout": "Uitloggen",
     "errors": {
       "invalidEmail": "Ongeldige e-mail",
-      "passwordTooShort": "Wachtwoord moet minimaal 6 tekens bevatten",
+      "passwordTooShort": "Wachtwoord moet minimaal 8 tekens, 1 hoofdletter, 1 kleine letter en 1 cijfer bevatten",
       "nameRequired": "Weergavenaam is vereist",
       "invalidCredentials": "Ongeldige e-mail of wachtwoord",
       "alreadyRegistered": "Er bestaat al een account met dit e-mailadres",

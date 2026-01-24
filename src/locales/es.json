@@ -2305,7 +2305,7 @@
     "logout": "Cerrar sesión",
     "errors": {
       "invalidEmail": "Email inválido",
-      "passwordTooShort": "La contraseña debe tener al menos 6 caracteres",
+      "passwordTooShort": "La contraseña debe tener al menos 8 caracteres, 1 mayúscula, 1 minúscula y 1 número",
       "nameRequired": "El nombre de usuario es requerido",
       "invalidCredentials": "Email o contraseña incorrectos",
       "alreadyRegistered": "Ya existe una cuenta con este email",

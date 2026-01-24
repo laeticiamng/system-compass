@@ -3174,7 +3174,7 @@
     "logout": "Sign out",
     "errors": {
       "invalidEmail": "Invalid email",
-      "passwordTooShort": "Password must be at least 6 characters",
+      "passwordTooShort": "Password must be at least 8 characters, with 1 uppercase, 1 lowercase, and 1 number",
       "nameRequired": "Display name is required",
       "invalidCredentials": "Invalid email or password",
       "alreadyRegistered": "An account already exists with this email",
