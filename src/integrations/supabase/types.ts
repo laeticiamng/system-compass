@@ -1947,6 +1947,54 @@ export type Database = {
         }
         Relationships: []
       }
+      pmo_ai_citations: {
+        Row: {
+          case_id: string | null
+          citation_text: string | null
+          confidence_score: number | null
+          created_at: string
+          evidence_id: string | null
+          id: string
+          response_id: string | null
+          user_id: string
+        }
+        Insert: {
+          case_id?: string | null
+          citation_text?: string | null
+          confidence_score?: number | null
+          created_at?: string
+          evidence_id?: string | null
+          id?: string
+          response_id?: string | null
+          user_id: string
+        }
+        Update: {
+          case_id?: string | null
+          citation_text?: string | null
+          confidence_score?: number | null
+          created_at?: string
+          evidence_id?: string | null
+          id?: string
+          response_id?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pmo_ai_citations_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "user_cases"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "pmo_ai_citations_evidence_id_fkey"
+            columns: ["evidence_id"]
+            isOneToOne: false
+            referencedRelation: "pmo_evidence_vault"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       pmo_budget_lines: {
         Row: {
           actual_amount: number | null
@@ -2189,6 +2237,80 @@ export type Database = {
         Relationships: [
           {
             foreignKeyName: "pmo_dependencies_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "user_cases"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      pmo_evidence_vault: {
+        Row: {
+          case_id: string | null
+          content: string | null
+          created_at: string
+          created_by: string | null
+          evidence_type: string
+          id: string
+          is_verified: boolean | null
+          reliability: string
+          source_date: string | null
+          source_name: string | null
+          tags: string[] | null
+          title: string
+          updated_at: string
+          updated_by: string | null
+          url: string | null
+          user_id: string
+          verified_at: string | null
+          verified_by: string | null
+          version: string | null
+        }
+        Insert: {
+          case_id?: string | null
+          content?: string | null
+          created_at?: string
+          created_by?: string | null
+          evidence_type: string
+          id?: string
+          is_verified?: boolean | null
+          reliability?: string
+          source_date?: string | null
+          source_name?: string | null
+          tags?: string[] | null
+          title: string
+          updated_at?: string
+          updated_by?: string | null
+          url?: string | null
+          user_id: string
+          verified_at?: string | null
+          verified_by?: string | null
+          version?: string | null
+        }
+        Update: {
+          case_id?: string | null
+          content?: string | null
+          created_at?: string
+          created_by?: string | null
+          evidence_type?: string
+          id?: string
+          is_verified?: boolean | null
+          reliability?: string
+          source_date?: string | null
+          source_name?: string | null
+          tags?: string[] | null
+          title?: string
+          updated_at?: string
+          updated_by?: string | null
+          url?: string | null
+          user_id?: string
+          verified_at?: string | null
+          verified_by?: string | null
+          version?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pmo_evidence_vault_case_id_fkey"
             columns: ["case_id"]
             isOneToOne: false
             referencedRelation: "user_cases"
@@ -2482,6 +2604,63 @@ export type Database = {
             columns: ["case_id"]
             isOneToOne: false
             referencedRelation: "user_cases"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      pmo_priority_scores: {
+        Row: {
+          breakdown: Json | null
+          calculated_at: string
+          case_id: string | null
+          created_at: string
+          id: string
+          initiative_id: string | null
+          investor_deadline: string | null
+          is_mvp_mode: boolean | null
+          score: number
+          user_id: string
+          weights_snapshot: Json | null
+        }
+        Insert: {
+          breakdown?: Json | null
+          calculated_at?: string
+          case_id?: string | null
+          created_at?: string
+          id?: string
+          initiative_id?: string | null
+          investor_deadline?: string | null
+          is_mvp_mode?: boolean | null
+          score?: number
+          user_id: string
+          weights_snapshot?: Json | null
+        }
+        Update: {
+          breakdown?: Json | null
+          calculated_at?: string
+          case_id?: string | null
+          created_at?: string
+          id?: string
+          initiative_id?: string | null
+          investor_deadline?: string | null
+          is_mvp_mode?: boolean | null
+          score?: number
+          user_id?: string
+          weights_snapshot?: Json | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pmo_priority_scores_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "user_cases"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "pmo_priority_scores_initiative_id_fkey"
+            columns: ["initiative_id"]
+            isOneToOne: false
+            referencedRelation: "pmo_initiatives"
             referencedColumns: ["id"]
           },
         ]

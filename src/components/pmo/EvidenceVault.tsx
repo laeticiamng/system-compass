@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { supabase } from '@/integrations/supabase/client';
-import { useAuth } from '@/hooks/useAuth';
+import { usePmoEvidence, type EvidenceType, type ReliabilityLevel } from '@/hooks/usePmoEvidence';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -13,55 +11,39 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { 
   Plus, FileText, Link as LinkIcon, MessageSquare, 
-  Loader2, Trash2, ExternalLink, Search, Filter, Star
+  Loader2, Trash2, ExternalLink, Search, Filter, Star, CheckCircle2
 } from 'lucide-react';
 import { format } from 'date-fns';
-import { toast } from 'sonner';
 
 interface EvidenceVaultProps {
   caseId: string;
 }
 
-type EvidenceType = 'document' | 'link' | 'note' | 'decision' | 'extract';
-type ReliabilityLevel = 'high' | 'medium' | 'low' | 'unverified';
-
-interface EvidenceItem {
-  id: string;
-  case_id: string;
-  user_id: string;
-  evidence_type: EvidenceType;
-  title: string;
-  content: string | null;
-  url: string | null;
-  source_name: string | null;
-  source_date: string | null;
-  reliability: ReliabilityLevel;
-  tags: string[];
-  version: string | null;
-  is_verified: boolean;
-  created_at: string;
-  updated_at: string;
-}
-
 const EVIDENCE_TYPE_CONFIG: Record<EvidenceType, { icon: React.ElementType; label: string; color: string }> = {
-  document: { icon: FileText, label: 'Document', color: 'bg-blue-100 text-blue-800' },
-  link: { icon: LinkIcon, label: 'Lien', color: 'bg-green-100 text-green-800' },
-  note: { icon: MessageSquare, label: 'Note', color: 'bg-yellow-100 text-yellow-800' },
-  decision: { icon: Star, label: 'Décision', color: 'bg-purple-100 text-purple-800' },
-  extract: { icon: FileText, label: 'Extrait', color: 'bg-orange-100 text-orange-800' },
+  document: { icon: FileText, label: 'Document', color: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' },
+  link: { icon: LinkIcon, label: 'Lien', color: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' },
+  note: { icon: MessageSquare, label: 'Note', color: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200' },
+  decision: { icon: Star, label: 'Décision', color: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200' },
+  extract: { icon: FileText, label: 'Extrait', color: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200' },
 };
 
 const RELIABILITY_CONFIG: Record<ReliabilityLevel, { label: string; color: string }> = {
-  high: { label: 'Fiable', color: 'bg-green-100 text-green-800' },
-  medium: { label: 'Moyenne', color: 'bg-yellow-100 text-yellow-800' },
-  low: { label: 'Faible', color: 'bg-orange-100 text-orange-800' },
-  unverified: { label: 'Non vérifié', color: 'bg-gray-100 text-gray-800' },
+  high: { label: 'Fiable', color: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' },
+  medium: { label: 'Moyenne', color: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200' },
+  low: { label: 'Faible', color: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200' },
+  unverified: { label: 'Non vérifié', color: 'bg-muted text-muted-foreground' },
 };
 
 export function EvidenceVault({ caseId }: EvidenceVaultProps) {
   const { t } = useTranslation();
-  const { user } = useAuth();
-  const queryClient = useQueryClient();
+  const { 
+    evidenceItems, 
+    isLoading, 
+    isCreating,
+    createEvidence,
+    deleteEvidence,
+    verifyEvidence
+  } = usePmoEvidence(caseId);
   
   const [showAddDialog, setShowAddDialog] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -79,67 +61,29 @@ export function EvidenceVault({ caseId }: EvidenceVaultProps) {
     version: '',
   });
 
-  // Fetch evidence items
-  const { data: evidenceItems = [], isLoading } = useQuery({
-    queryKey: ['evidence-vault', caseId],
-    queryFn: async () => {
-      // For now, we'll use local state since the table might not exist yet
-      // In production, this would query pmo_evidence_vault table
-      const { error } = await supabase
-        .from('pmo_generated_packs')
-        .select('*')
-        .eq('case_id', caseId);
-      
-      if (error) {
-        console.log('Evidence table not available, using empty list');
-        return [] as EvidenceItem[];
-      }
-      
-      // Transform to evidence items format (mock for now)
-      return [] as EvidenceItem[];
-    },
-    enabled: !!caseId && !!user,
-  });
-
-  // Create evidence item (mock for now)
-  const createEvidence = useMutation({
-    mutationFn: async (newItem: Partial<EvidenceItem>) => {
-      // In production, this would insert into pmo_evidence_vault
-      console.log('Creating evidence item:', newItem);
-      toast.success(t('pmo.evidence.created', 'Preuve ajoutée'));
-      return newItem;
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['evidence-vault', caseId] });
-      setShowAddDialog(false);
-      setForm({
-        evidence_type: 'note',
-        title: '',
-        content: '',
-        url: '',
-        source_name: '',
-        source_date: '',
-        reliability: 'unverified',
-        tags: '',
-        version: '',
-      });
-    },
-  });
-
   const handleCreate = () => {
-    createEvidence.mutate({
-      case_id: caseId,
-      user_id: user?.id,
+    createEvidence({
       evidence_type: form.evidence_type,
       title: form.title,
-      content: form.content || null,
-      url: form.url || null,
-      source_name: form.source_name || null,
-      source_date: form.source_date || null,
+      content: form.content || undefined,
+      url: form.url || undefined,
+      source_name: form.source_name || undefined,
+      source_date: form.source_date || undefined,
       reliability: form.reliability,
-      tags: form.tags ? form.tags.split(',').map(t => t.trim()) : [],
-      version: form.version || null,
-      is_verified: false,
+      tags: form.tags ? form.tags.split(',').map(t => t.trim()) : undefined,
+      version: form.version || undefined,
+    });
+    setShowAddDialog(false);
+    setForm({
+      evidence_type: 'note',
+      title: '',
+      content: '',
+      url: '',
+      source_name: '',
+      source_date: '',
+      reliability: 'unverified',
+      tags: '',
+      version: '',
     });
   };
 
@@ -297,10 +241,10 @@ export function EvidenceVault({ caseId }: EvidenceVaultProps) {
 
               <Button 
                 onClick={handleCreate} 
-                disabled={!form.title || createEvidence.isPending}
+                disabled={!form.title || isCreating}
                 className="w-full"
               >
-                {createEvidence.isPending && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
+                {isCreating && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
                 {t('pmo.form.create', 'Créer')}
               </Button>
             </div>
@@ -353,8 +297,8 @@ export function EvidenceVault({ caseId }: EvidenceVaultProps) {
           </Card>
         ) : (
           filteredItems.map(item => {
-            const typeConfig = EVIDENCE_TYPE_CONFIG[item.evidence_type];
-            const reliabilityConfig = RELIABILITY_CONFIG[item.reliability];
+            const typeConfig = EVIDENCE_TYPE_CONFIG[item.evidence_type as EvidenceType] || EVIDENCE_TYPE_CONFIG.note;
+            const reliabilityConfig = RELIABILITY_CONFIG[item.reliability as ReliabilityLevel] || RELIABILITY_CONFIG.unverified;
             const Icon = typeConfig.icon;
 
             return (
@@ -380,6 +324,7 @@ export function EvidenceVault({ caseId }: EvidenceVaultProps) {
                       </Badge>
                       {item.is_verified && (
                         <Badge variant="outline" className="text-green-600 border-green-600">
+                          <CheckCircle2 className="w-3 h-3 mr-1" />
                           Vérifié
                         </Badge>
                       )}
@@ -395,7 +340,7 @@ export function EvidenceVault({ caseId }: EvidenceVaultProps) {
                   
                   <div className="flex items-center justify-between">
                     <div className="flex flex-wrap gap-1">
-                      {item.tags.map(tag => (
+                      {item.tags?.map(tag => (
                         <Badge key={tag} variant="secondary" className="text-xs">
                           {tag}
                         </Badge>
@@ -409,7 +354,22 @@ export function EvidenceVault({ caseId }: EvidenceVaultProps) {
                           </a>
                         </Button>
                       )}
-                      <Button size="sm" variant="ghost" className="text-destructive">
+                      {!item.is_verified && (
+                        <Button 
+                          size="sm" 
+                          variant="ghost" 
+                          className="text-green-600"
+                          onClick={() => verifyEvidence(item.id)}
+                        >
+                          <CheckCircle2 className="w-4 h-4" />
+                        </Button>
+                      )}
+                      <Button 
+                        size="sm" 
+                        variant="ghost" 
+                        className="text-destructive"
+                        onClick={() => deleteEvidence(item.id)}
+                      >
                         <Trash2 className="w-4 h-4" />
                       </Button>
                     </div>
