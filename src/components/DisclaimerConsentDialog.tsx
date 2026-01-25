@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { 
   Dialog, 
@@ -111,14 +110,17 @@ export function DisclaimerConsentDialog() {
         </div>
 
         <DialogFooter className="flex-col sm:flex-row gap-2 sm:justify-between">
-          <Link 
-            to="/disclaimer" 
-            className="text-xs sm:text-sm text-muted-foreground hover:text-foreground flex items-center gap-1 justify-center sm:justify-start"
-            onClick={() => completeDisclaimer()}
+          <button 
+            type="button"
+            onClick={() => {
+              completeDisclaimer();
+              window.location.href = '/disclaimer';
+            }}
+            className="text-xs sm:text-sm text-muted-foreground hover:text-foreground flex items-center gap-1 justify-center sm:justify-start bg-transparent border-none cursor-pointer"
           >
             {t('disclaimerConsent.seeDetails', 'Voir les détails complets')}
             <ExternalLink className="w-3 h-3" />
-          </Link>
+          </button>
           <Button 
             onClick={handleAccept}
             disabled={!hasRead}

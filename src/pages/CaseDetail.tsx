@@ -19,6 +19,7 @@ import { usePmoInitiatives } from '@/hooks/usePmoInitiatives';
 import { usePmoRisks } from '@/hooks/usePmoRisks';
 import { usePmoBudget } from '@/hooks/usePmoBudget';
 import { usePmoMilestones } from '@/hooks/usePmoMilestones';
+import { usePmoCompliance } from '@/hooks/usePmoCompliance';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -66,6 +67,7 @@ export default function CaseDetail() {
   const { risks } = usePmoRisks(isDeepCheck ? id! : null);
   const { budgetLines } = usePmoBudget(isDeepCheck ? id! : null);
   const { milestones } = usePmoMilestones(isDeepCheck ? id! : null);
+  const { stats: complianceStats } = usePmoCompliance(isDeepCheck ? id! : null);
 
   if (isLoading) {
     return (
@@ -373,6 +375,11 @@ export default function CaseDetail() {
                 initiatives={initiatives}
                 objectives={objectives}
                 risks={risks}
+                complianceStats={{
+                  total: complianceStats.totalRequirements,
+                  compliant: complianceStats.compliantRequirements,
+                  gaps: complianceStats.nonCompliantRequirements + complianceStats.criticalGaps,
+                }}
               />
             </TabsContent>
           )}

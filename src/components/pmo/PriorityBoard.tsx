@@ -23,10 +23,17 @@ import {
   type ObjectivePriority 
 } from '@/lib/pmo-types';
 
+interface ComplianceStats {
+  total: number;
+  compliant: number;
+  gaps: number;
+}
+
 interface PriorityBoardProps {
   initiatives: PmoInitiativeRow[];
   objectives: PmoObjectiveRow[];
   risks: PmoRiskRow[];
+  complianceStats?: ComplianceStats;
   onReorder?: (orderedIds: string[]) => void;
 }
 
@@ -63,6 +70,7 @@ export function PriorityBoard({
   initiatives, 
   objectives, 
   risks, 
+  complianceStats,
   onReorder 
 }: PriorityBoardProps) {
   const { t, i18n } = useTranslation();
@@ -136,8 +144,14 @@ export function PriorityBoard({
           }
         }
 
-        // Regulatory: Placeholder (would need compliance data)
-        const regulatoryScore = 0;
+        // Regulatory: Based on compliance stats
+        // Higher score when there are gaps that need addressing
+        let regulatoryScore = 0;
+        if (complianceStats && complianceStats.total > 0) {
+          const gapRatio = complianceStats.gaps / complianceStats.total;
+          // If there are gaps, prioritize compliance-related work
+          regulatoryScore = Math.round(gapRatio * 100);
+        }
 
         // Weighted total
         const breakdown = {

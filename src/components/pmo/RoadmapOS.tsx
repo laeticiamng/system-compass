@@ -324,6 +324,7 @@ export function RoadmapOS({ caseId, isAdvancedMode = false }: RoadmapOSProps) {
       <Tabs defaultValue="kanban">
         <TabsList>
           <TabsTrigger value="kanban">{t('pmo.view.kanban', 'Kanban')}</TabsTrigger>
+          <TabsTrigger value="timeline">{t('pmo.view.timeline', 'Timeline')}</TabsTrigger>
           <TabsTrigger value="list">{t('pmo.view.list', 'Liste')}</TabsTrigger>
         </TabsList>
 
@@ -513,6 +514,86 @@ export function RoadmapOS({ caseId, isAdvancedMode = false }: RoadmapOSProps) {
               </Card>
             )}
           </div>
+        </TabsContent>
+
+        {/* Timeline View */}
+        <TabsContent value="timeline" className="mt-4">
+          <Card>
+            <CardContent className="pt-6">
+              <div className="relative">
+                {/* Timeline line */}
+                <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-border" />
+                
+                <div className="space-y-6">
+                  {objectives
+                    .filter(o => o.status === 'active')
+                    .sort((a, b) => (a.horizon_days || 90) - (b.horizon_days || 90))
+                    .map((objective) => {
+                      const objInitiatives = getInitiativesForObjective(objective.id);
+                      const completedCount = objInitiatives.filter(i => i.status === 'done').length;
+                      const progress = objInitiatives.length > 0 
+                        ? Math.round((completedCount / objInitiatives.length) * 100) 
+                        : 0;
+                      
+                      return (
+                        <div key={objective.id} className="relative pl-10">
+                          {/* Timeline dot */}
+                          <div className={`absolute left-2.5 w-3 h-3 rounded-full border-2 border-background ${
+                            progress === 100 ? 'bg-green-500' : 
+                            progress > 0 ? 'bg-blue-500' : 'bg-muted'
+                          }`} />
+                          
+                          <div className="border rounded-lg p-4 bg-card">
+                            <div className="flex items-center justify-between mb-2">
+                              <div className="flex items-center gap-2">
+                                <Target className="w-4 h-4 text-primary" />
+                                <h4 className="font-medium">{objective.title}</h4>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <Badge variant="outline">{objective.horizon_days}j</Badge>
+                                <Badge className={PriorityLabels[objective.priority as ObjectivePriority]?.color}>
+                                  {PriorityLabels[objective.priority as ObjectivePriority]?.[lang]}
+                                </Badge>
+                              </div>
+                            </div>
+                            
+                            <Progress value={progress} className="h-1.5 mb-3" />
+                            
+                            <div className="text-xs text-muted-foreground mb-2">
+                              {completedCount}/{objInitiatives.length} {t('pmo.timeline.initiatives', 'initiatives terminées')}
+                            </div>
+                            
+                            {/* Initiative timeline */}
+                            <div className="flex gap-1 flex-wrap">
+                              {objInitiatives.map(init => (
+                                <Badge 
+                                  key={init.id}
+                                  variant={init.status === 'done' ? 'default' : 'outline'}
+                                  className={`text-xs ${
+                                    init.status === 'done' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' :
+                                    init.status === 'in_progress' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' :
+                                    init.status === 'blocked' ? 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200' :
+                                    ''
+                                  }`}
+                                >
+                                  {init.title}
+                                </Badge>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                </div>
+                
+                {objectives.filter(o => o.status === 'active').length === 0 && (
+                  <div className="text-center py-8 text-muted-foreground">
+                    {t('pmo.timeline.noActiveObjectives', 'Aucun objectif actif à afficher')}
+                  </div>
+                )}
+              </div>
+            </CardContent>
+          </Card>
         </TabsContent>
 
         <TabsContent value="list" className="mt-4">
