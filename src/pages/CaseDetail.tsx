@@ -13,7 +13,12 @@ import { RiskRegisterEnhanced } from '@/components/cases/RiskRegisterEnhanced';
 import { StructuralRulesSection } from '@/components/cases/StructuralRulesSection';
 import { CaseAIGenerator } from '@/components/cases/CaseAIGenerator';
 import { GovernanceAdvanced } from '@/components/cases/GovernanceAdvanced';
-import { RoadmapOS, RiskEngine, BudgetRunway } from '@/components/pmo';
+import { RoadmapOS, RiskEngine, BudgetRunway, PriorityBoard, EvidenceVault, PmoPdfExport } from '@/components/pmo';
+import { usePmoObjectives } from '@/hooks/usePmoObjectives';
+import { usePmoInitiatives } from '@/hooks/usePmoInitiatives';
+import { usePmoRisks } from '@/hooks/usePmoRisks';
+import { usePmoBudget } from '@/hooks/usePmoBudget';
+import { usePmoMilestones } from '@/hooks/usePmoMilestones';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -23,9 +28,10 @@ import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import {
-  ArrowLeft, Home, Briefcase, Shield, Target, FileText,
+  ArrowLeft, Briefcase, Shield, Target, FileText,
   Clock, Calendar, AlertTriangle, Loader2,
-  TrendingUp, Users, FileCheck, Map, LayoutDashboard, CircleDollarSign
+  TrendingUp, Users, FileCheck, LayoutDashboard, CircleDollarSign,
+  ListOrdered, Archive, Home, MapPin
 } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { fr } from 'date-fns/locale';
@@ -52,6 +58,14 @@ export default function CaseDetail() {
     caseData?.country_id || '', 
     pyramidType
   );
+
+  // PMO Hooks - only fetch when case exists and is deep mode
+  const isDeepCheck = caseData ? isDeepMode(caseData.intention) : false;
+  const { objectives } = usePmoObjectives(isDeepCheck ? id! : null);
+  const { initiatives } = usePmoInitiatives(isDeepCheck ? id! : null);
+  const { risks } = usePmoRisks(isDeepCheck ? id! : null);
+  const { budgetLines } = usePmoBudget(isDeepCheck ? id! : null);
+  const { milestones } = usePmoMilestones(isDeepCheck ? id! : null);
 
   if (isLoading) {
     return (
@@ -180,7 +194,7 @@ export default function CaseDetail() {
             {isDeep && (
               <>
                 <TabsTrigger value="gov-advanced" className="gap-2">
-                  <Map className="w-4 h-4" />
+                  <MapPin className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('cases.tabs.govAdvanced', 'Terrain')}</span>
                 </TabsTrigger>
                 <TabsTrigger value="market" className="gap-2">
@@ -211,6 +225,14 @@ export default function CaseDetail() {
                 <TabsTrigger value="pmo-budget" className="gap-2">
                   <CircleDollarSign className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('cases.tabs.pmoBudget', 'Budget')}</span>
+                </TabsTrigger>
+                <TabsTrigger value="pmo-priority" className="gap-2">
+                  <ListOrdered className="w-4 h-4" />
+                  <span className="hidden sm:inline">{t('cases.tabs.pmoPriority', 'Priorités')}</span>
+                </TabsTrigger>
+                <TabsTrigger value="pmo-evidence" className="gap-2">
+                  <Archive className="w-4 h-4" />
+                  <span className="hidden sm:inline">{t('cases.tabs.pmoEvidence', 'Preuves')}</span>
                 </TabsTrigger>
               </>
             )}
@@ -337,6 +359,35 @@ export default function CaseDetail() {
           {isDeep && (
             <TabsContent value="pmo-budget">
               <BudgetRunway caseId={id!} />
+            </TabsContent>
+          )}
+
+          {/* PMO Priority Board Tab (DEEP only) */}
+          {isDeep && (
+            <TabsContent value="pmo-priority">
+              <PriorityBoard
+                initiatives={initiatives}
+                objectives={objectives}
+                risks={risks}
+              />
+            </TabsContent>
+          )}
+
+          {/* PMO Evidence Vault Tab (DEEP only) */}
+          {isDeep && (
+            <TabsContent value="pmo-evidence">
+              <div className="flex justify-end mb-4">
+                <PmoPdfExport
+                  caseTitle={caseData?.title || 'Dossier'}
+                  objectives={objectives}
+                  initiatives={initiatives}
+                  risks={risks}
+                  budgetLines={budgetLines}
+                  milestones={milestones}
+                  isDeep={isDeep}
+                />
+              </div>
+              <EvidenceVault caseId={id!} />
             </TabsContent>
           )}
 
