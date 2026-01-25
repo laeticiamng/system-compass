@@ -13,7 +13,7 @@ import { RiskRegisterEnhanced } from '@/components/cases/RiskRegisterEnhanced';
 import { StructuralRulesSection } from '@/components/cases/StructuralRulesSection';
 import { CaseAIGenerator } from '@/components/cases/CaseAIGenerator';
 import { GovernanceAdvanced } from '@/components/cases/GovernanceAdvanced';
-import { RoadmapOS, RiskEngine, BudgetRunway, PriorityBoard, EvidenceVault, PmoPdfExport, ComplianceMatrix } from '@/components/pmo';
+import { RoadmapOS, RiskEngine, BudgetRunway, PriorityBoard, EvidenceVault, PmoPdfExport, ComplianceMatrix, AiCitationsDisplay } from '@/components/pmo';
 import { usePmoObjectives } from '@/hooks/usePmoObjectives';
 import { usePmoInitiatives } from '@/hooks/usePmoInitiatives';
 import { usePmoRisks } from '@/hooks/usePmoRisks';
@@ -357,7 +357,13 @@ export default function CaseDetail() {
           {/* PMO Risk Engine Tab (DEEP only) */}
           {isDeep && (
             <TabsContent value="pmo-risks">
-              <RiskEngine caseId={id!} />
+              <RiskEngine 
+                caseId={id!} 
+                isAdvancedMode={isDeep}
+                onInitiativeCreated={() => {
+                  // Trigger refetch of initiatives when created from risk
+                }}
+              />
             </TabsContent>
           )}
 
@@ -405,7 +411,14 @@ export default function CaseDetail() {
                   isDeep={isDeep}
                 />
               </div>
-              <EvidenceVault caseId={id!} />
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="md:col-span-2">
+                  <EvidenceVault caseId={id!} />
+                </div>
+                <div>
+                  <AiCitationsDisplay caseId={id!} showAllCitations />
+                </div>
+              </div>
             </TabsContent>
           )}
 
