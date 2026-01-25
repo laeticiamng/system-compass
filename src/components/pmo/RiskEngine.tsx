@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { usePmoRisks } from '@/hooks/usePmoRisks';
+import { usePmoInitiatives } from '@/hooks/usePmoInitiatives';
+import { usePmoDependencies } from '@/hooks/usePmoDependencies';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -13,7 +15,7 @@ import { Progress } from '@/components/ui/progress';
 import { Slider } from '@/components/ui/slider';
 import { 
   Plus, AlertTriangle, Shield, Clock, 
-  Loader2, Trash2, AlertCircle, CheckCircle
+  Loader2, Trash2, AlertCircle, CheckCircle, Zap
 } from 'lucide-react';
 import { isPast, format } from 'date-fns';
 import { 
@@ -29,9 +31,10 @@ import {
 interface RiskEngineProps {
   caseId: string;
   isAdvancedMode?: boolean;
+  onInitiativeCreated?: () => void;
 }
 
-export function RiskEngine({ caseId, isAdvancedMode = false }: RiskEngineProps) {
+export function RiskEngine({ caseId, isAdvancedMode = false, onInitiativeCreated }: RiskEngineProps) {
   const { t, i18n } = useTranslation();
   const lang = i18n.language === 'fr' ? 'fr' : 'en';
   
@@ -45,7 +48,11 @@ export function RiskEngine({ caseId, isAdvancedMode = false }: RiskEngineProps) 
     deleteRisk,
   } = usePmoRisks(caseId);
 
+  const { createInitiative } = usePmoInitiatives(caseId);
+  const { createDependency, getMitigations } = usePmoDependencies(caseId);
+
   const [showRiskDialog, setShowRiskDialog] = useState(false);
+  const [creatingInitiativeForRisk, setCreatingInitiativeForRisk] = useState<string | null>(null);
   const [riskForm, setRiskForm] = useState<CreateRiskForm>({
     title: '',
     description: '',
@@ -53,6 +60,44 @@ export function RiskEngine({ caseId, isAdvancedMode = false }: RiskEngineProps) 
     impact: 3,
     probability: 3,
   });
+
+  // Create mitigation initiative from risk
+  const handleCreateMitigationInitiative = async (risk: typeof risks[0]) => {
+    setCreatingInitiativeForRisk(risk.id);
+    try {
+      // Create initiative
+      createInitiative({
+        title: `Mitigation: ${risk.title}`,
+        description: risk.mitigation_plan || `Initiative de mitigation pour le risque: ${risk.description}`,
+      }, {
+        onSuccess: (newInitiative) => {
+          // Create dependency link (risk → initiative)
+          if (newInitiative?.id) {
+            createDependency({
+              sourceType: 'risk',
+              sourceId: risk.id,
+              targetType: 'initiative',
+              targetId: newInitiative.id,
+              dependencyType: 'mitigates',
+              description: `Initiative de mitigation pour le risque "${risk.title}"`,
+            });
+          }
+          // Update risk status to mitigating
+          updateRisk({ 
+            id: risk.id, 
+            updates: { status: 'mitigating' } 
+          });
+          onInitiativeCreated?.();
+          setCreatingInitiativeForRisk(null);
+        },
+        onError: () => {
+          setCreatingInitiativeForRisk(null);
+        }
+      });
+    } catch {
+      setCreatingInitiativeForRisk(null);
+    }
+  };
 
   const handleCreateRisk = () => {
     createRisk(riskForm);
@@ -366,6 +411,29 @@ export function RiskEngine({ caseId, isAdvancedMode = false }: RiskEngineProps) 
                       )}
                     </div>
                     <div className="flex gap-2">
+                      {/* Create Mitigation Initiative Button */}
+                      {isAdvancedMode && risk.status !== 'closed' && getMitigations(risk.id).length === 0 && (
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="gap-1"
+                          disabled={creatingInitiativeForRisk === risk.id}
+                          onClick={() => handleCreateMitigationInitiative(risk)}
+                        >
+                          {creatingInitiativeForRisk === risk.id ? (
+                            <Loader2 className="w-3 h-3 animate-spin" />
+                          ) : (
+                            <Zap className="w-3 h-3" />
+                          )}
+                          {t('pmo.risks.createInitiative', 'Créer initiative')}
+                        </Button>
+                      )}
+                      {getMitigations(risk.id).length > 0 && (
+                        <Badge variant="outline" className="text-xs">
+                          <Shield className="w-3 h-3 mr-1" />
+                          {t('pmo.risks.hasInitiative', 'Initiative liée')}
+                        </Badge>
+                      )}
                       <Select
                         value={risk.status}
                         onValueChange={(status) => updateRisk({ id: risk.id, updates: { status: status as RiskStatus } })}
