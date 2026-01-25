@@ -2197,6 +2197,172 @@ export type Database = {
           },
         ]
       }
+      pmo_compliance_frameworks: {
+        Row: {
+          activation_questionnaire: Json | null
+          case_id: string
+          created_at: string
+          created_by: string | null
+          description: string | null
+          framework_type: string
+          id: string
+          is_active: boolean | null
+          name: string
+          source_url: string | null
+          updated_at: string
+          updated_by: string | null
+          user_id: string
+          version: string | null
+        }
+        Insert: {
+          activation_questionnaire?: Json | null
+          case_id: string
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          framework_type: string
+          id?: string
+          is_active?: boolean | null
+          name: string
+          source_url?: string | null
+          updated_at?: string
+          updated_by?: string | null
+          user_id: string
+          version?: string | null
+        }
+        Update: {
+          activation_questionnaire?: Json | null
+          case_id?: string
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          framework_type?: string
+          id?: string
+          is_active?: boolean | null
+          name?: string
+          source_url?: string | null
+          updated_at?: string
+          updated_by?: string | null
+          user_id?: string
+          version?: string | null
+        }
+        Relationships: []
+      }
+      pmo_compliance_mappings: {
+        Row: {
+          coverage_status: string | null
+          created_at: string
+          id: string
+          mapping_type: string
+          notes: string | null
+          owner_name: string | null
+          requirement_id: string
+          target_id: string
+          target_title: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          coverage_status?: string | null
+          created_at?: string
+          id?: string
+          mapping_type: string
+          notes?: string | null
+          owner_name?: string | null
+          requirement_id: string
+          target_id: string
+          target_title?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          coverage_status?: string | null
+          created_at?: string
+          id?: string
+          mapping_type?: string
+          notes?: string | null
+          owner_name?: string | null
+          requirement_id?: string
+          target_id?: string
+          target_title?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pmo_compliance_mappings_requirement_id_fkey"
+            columns: ["requirement_id"]
+            isOneToOne: false
+            referencedRelation: "pmo_compliance_requirements"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      pmo_compliance_requirements: {
+        Row: {
+          category: string | null
+          created_at: string
+          criticality: string | null
+          description: string | null
+          due_date: string | null
+          framework_id: string
+          id: string
+          notes: string | null
+          requirement_code: string | null
+          source_date: string | null
+          source_reference: string | null
+          source_version: string | null
+          status: string | null
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string
+          criticality?: string | null
+          description?: string | null
+          due_date?: string | null
+          framework_id: string
+          id?: string
+          notes?: string | null
+          requirement_code?: string | null
+          source_date?: string | null
+          source_reference?: string | null
+          source_version?: string | null
+          status?: string | null
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          category?: string | null
+          created_at?: string
+          criticality?: string | null
+          description?: string | null
+          due_date?: string | null
+          framework_id?: string
+          id?: string
+          notes?: string | null
+          requirement_code?: string | null
+          source_date?: string | null
+          source_reference?: string | null
+          source_version?: string | null
+          status?: string | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pmo_compliance_requirements_framework_id_fkey"
+            columns: ["framework_id"]
+            isOneToOne: false
+            referencedRelation: "pmo_compliance_frameworks"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       pmo_dependencies: {
         Row: {
           case_id: string | null
