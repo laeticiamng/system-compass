@@ -292,7 +292,7 @@ export function ProgressStats({ progress, exitKey }: ProgressStatsProps) {
                     border: '1px solid hsl(var(--border))',
                     borderRadius: '8px'
                   }}
-                  formatter={(value: number, name: string) => [`${value}%`, 'Progression']}
+                  formatter={(value: number) => [`${value}%`, 'Progression']}
                   labelFormatter={(label) => {
                     const phase = phaseStats.find(p => p.name === label);
                     return phase ? phase.fullName : label;

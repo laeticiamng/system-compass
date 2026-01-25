@@ -1947,6 +1947,708 @@ export type Database = {
         }
         Relationships: []
       }
+      pmo_budget_lines: {
+        Row: {
+          actual_amount: number | null
+          amount: number
+          approved_at: string | null
+          approved_by: string | null
+          budget_type: string
+          case_id: string | null
+          category: string
+          created_at: string
+          created_by: string | null
+          currency: string
+          description: string
+          end_month: string | null
+          id: string
+          initiative_id: string | null
+          is_recurring: boolean | null
+          justification: string | null
+          milestone_id: string | null
+          month_year: string
+          owner_id: string | null
+          owner_name: string | null
+          recurrence: string | null
+          risk_id: string | null
+          scenario_id: string | null
+          start_month: string | null
+          status: string
+          updated_at: string
+          updated_by: string | null
+          user_id: string
+          variance: number | null
+        }
+        Insert: {
+          actual_amount?: number | null
+          amount: number
+          approved_at?: string | null
+          approved_by?: string | null
+          budget_type: string
+          case_id?: string | null
+          category: string
+          created_at?: string
+          created_by?: string | null
+          currency?: string
+          description: string
+          end_month?: string | null
+          id?: string
+          initiative_id?: string | null
+          is_recurring?: boolean | null
+          justification?: string | null
+          milestone_id?: string | null
+          month_year: string
+          owner_id?: string | null
+          owner_name?: string | null
+          recurrence?: string | null
+          risk_id?: string | null
+          scenario_id?: string | null
+          start_month?: string | null
+          status?: string
+          updated_at?: string
+          updated_by?: string | null
+          user_id: string
+          variance?: number | null
+        }
+        Update: {
+          actual_amount?: number | null
+          amount?: number
+          approved_at?: string | null
+          approved_by?: string | null
+          budget_type?: string
+          case_id?: string | null
+          category?: string
+          created_at?: string
+          created_by?: string | null
+          currency?: string
+          description?: string
+          end_month?: string | null
+          id?: string
+          initiative_id?: string | null
+          is_recurring?: boolean | null
+          justification?: string | null
+          milestone_id?: string | null
+          month_year?: string
+          owner_id?: string | null
+          owner_name?: string | null
+          recurrence?: string | null
+          risk_id?: string | null
+          scenario_id?: string | null
+          start_month?: string | null
+          status?: string
+          updated_at?: string
+          updated_by?: string | null
+          user_id?: string
+          variance?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pmo_budget_lines_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "user_cases"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "pmo_budget_lines_initiative_id_fkey"
+            columns: ["initiative_id"]
+            isOneToOne: false
+            referencedRelation: "pmo_initiatives"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "pmo_budget_lines_milestone_id_fkey"
+            columns: ["milestone_id"]
+            isOneToOne: false
+            referencedRelation: "pmo_milestones"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "pmo_budget_lines_risk_id_fkey"
+            columns: ["risk_id"]
+            isOneToOne: false
+            referencedRelation: "pmo_risk_register"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      pmo_budget_scenarios: {
+        Row: {
+          available_cash: number | null
+          case_id: string | null
+          created_at: string
+          created_by: string | null
+          description: string | null
+          forecast_months: number | null
+          id: string
+          is_active: boolean | null
+          monthly_burn_rate: number | null
+          name: string
+          parameters: Json | null
+          runway_months: number | null
+          scenario_type: string
+          start_month: string | null
+          total_budget: number | null
+          total_capex: number | null
+          total_opex: number | null
+          updated_at: string
+          updated_by: string | null
+          user_id: string
+        }
+        Insert: {
+          available_cash?: number | null
+          case_id?: string | null
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          forecast_months?: number | null
+          id?: string
+          is_active?: boolean | null
+          monthly_burn_rate?: number | null
+          name: string
+          parameters?: Json | null
+          runway_months?: number | null
+          scenario_type?: string
+          start_month?: string | null
+          total_budget?: number | null
+          total_capex?: number | null
+          total_opex?: number | null
+          updated_at?: string
+          updated_by?: string | null
+          user_id: string
+        }
+        Update: {
+          available_cash?: number | null
+          case_id?: string | null
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          forecast_months?: number | null
+          id?: string
+          is_active?: boolean | null
+          monthly_burn_rate?: number | null
+          name?: string
+          parameters?: Json | null
+          runway_months?: number | null
+          scenario_type?: string
+          start_month?: string | null
+          total_budget?: number | null
+          total_capex?: number | null
+          total_opex?: number | null
+          updated_at?: string
+          updated_by?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pmo_budget_scenarios_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "user_cases"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      pmo_dependencies: {
+        Row: {
+          case_id: string | null
+          created_at: string
+          dependency_type: string
+          description: string | null
+          id: string
+          source_id: string
+          source_type: string
+          target_id: string
+          target_type: string
+          user_id: string
+        }
+        Insert: {
+          case_id?: string | null
+          created_at?: string
+          dependency_type?: string
+          description?: string | null
+          id?: string
+          source_id: string
+          source_type: string
+          target_id: string
+          target_type: string
+          user_id: string
+        }
+        Update: {
+          case_id?: string | null
+          created_at?: string
+          dependency_type?: string
+          description?: string | null
+          id?: string
+          source_id?: string
+          source_type?: string
+          target_id?: string
+          target_type?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pmo_dependencies_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "user_cases"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      pmo_generated_packs: {
+        Row: {
+          case_id: string | null
+          file_size_bytes: number | null
+          file_url: string | null
+          generated_at: string
+          generated_by: string | null
+          id: string
+          is_shared: boolean | null
+          pack_type: string
+          share_expires_at: string | null
+          share_token: string | null
+          snapshot_data: Json
+          template_version: string | null
+          title: string
+          user_id: string
+        }
+        Insert: {
+          case_id?: string | null
+          file_size_bytes?: number | null
+          file_url?: string | null
+          generated_at?: string
+          generated_by?: string | null
+          id?: string
+          is_shared?: boolean | null
+          pack_type: string
+          share_expires_at?: string | null
+          share_token?: string | null
+          snapshot_data: Json
+          template_version?: string | null
+          title: string
+          user_id: string
+        }
+        Update: {
+          case_id?: string | null
+          file_size_bytes?: number | null
+          file_url?: string | null
+          generated_at?: string
+          generated_by?: string | null
+          id?: string
+          is_shared?: boolean | null
+          pack_type?: string
+          share_expires_at?: string | null
+          share_token?: string | null
+          snapshot_data?: Json
+          template_version?: string | null
+          title?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pmo_generated_packs_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "user_cases"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      pmo_initiatives: {
+        Row: {
+          blocked_reason: string | null
+          case_id: string | null
+          completed_at: string | null
+          created_at: string
+          created_by: string | null
+          description: string | null
+          effort_days: number | null
+          effort_estimate: string | null
+          id: string
+          objective_id: string | null
+          owner_id: string | null
+          owner_name: string | null
+          start_date: string | null
+          status: string
+          target_date: string | null
+          title: string
+          updated_at: string
+          updated_by: string | null
+          user_id: string
+          value_expected: string | null
+        }
+        Insert: {
+          blocked_reason?: string | null
+          case_id?: string | null
+          completed_at?: string | null
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          effort_days?: number | null
+          effort_estimate?: string | null
+          id?: string
+          objective_id?: string | null
+          owner_id?: string | null
+          owner_name?: string | null
+          start_date?: string | null
+          status?: string
+          target_date?: string | null
+          title: string
+          updated_at?: string
+          updated_by?: string | null
+          user_id: string
+          value_expected?: string | null
+        }
+        Update: {
+          blocked_reason?: string | null
+          case_id?: string | null
+          completed_at?: string | null
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          effort_days?: number | null
+          effort_estimate?: string | null
+          id?: string
+          objective_id?: string | null
+          owner_id?: string | null
+          owner_name?: string | null
+          start_date?: string | null
+          status?: string
+          target_date?: string | null
+          title?: string
+          updated_at?: string
+          updated_by?: string | null
+          user_id?: string
+          value_expected?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pmo_initiatives_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "user_cases"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "pmo_initiatives_objective_id_fkey"
+            columns: ["objective_id"]
+            isOneToOne: false
+            referencedRelation: "pmo_objectives"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      pmo_milestones: {
+        Row: {
+          achieved_at: string | null
+          case_id: string | null
+          created_at: string
+          created_by: string | null
+          deliverables: Json | null
+          description: string | null
+          id: string
+          initiative_id: string | null
+          objective_id: string | null
+          status: string
+          target_date: string
+          title: string
+          updated_at: string
+          updated_by: string | null
+          user_id: string
+          validation_criteria: Json | null
+        }
+        Insert: {
+          achieved_at?: string | null
+          case_id?: string | null
+          created_at?: string
+          created_by?: string | null
+          deliverables?: Json | null
+          description?: string | null
+          id?: string
+          initiative_id?: string | null
+          objective_id?: string | null
+          status?: string
+          target_date: string
+          title: string
+          updated_at?: string
+          updated_by?: string | null
+          user_id: string
+          validation_criteria?: Json | null
+        }
+        Update: {
+          achieved_at?: string | null
+          case_id?: string | null
+          created_at?: string
+          created_by?: string | null
+          deliverables?: Json | null
+          description?: string | null
+          id?: string
+          initiative_id?: string | null
+          objective_id?: string | null
+          status?: string
+          target_date?: string
+          title?: string
+          updated_at?: string
+          updated_by?: string | null
+          user_id?: string
+          validation_criteria?: Json | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pmo_milestones_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "user_cases"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "pmo_milestones_initiative_id_fkey"
+            columns: ["initiative_id"]
+            isOneToOne: false
+            referencedRelation: "pmo_initiatives"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "pmo_milestones_objective_id_fkey"
+            columns: ["objective_id"]
+            isOneToOne: false
+            referencedRelation: "pmo_objectives"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      pmo_objectives: {
+        Row: {
+          case_id: string | null
+          completed_at: string | null
+          created_at: string
+          created_by: string | null
+          description: string | null
+          horizon_days: number
+          id: string
+          org_id: string | null
+          priority: string
+          progress_percent: number | null
+          status: string
+          success_metrics: Json | null
+          target_date: string | null
+          title: string
+          updated_at: string
+          updated_by: string | null
+          user_id: string
+        }
+        Insert: {
+          case_id?: string | null
+          completed_at?: string | null
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          horizon_days?: number
+          id?: string
+          org_id?: string | null
+          priority?: string
+          progress_percent?: number | null
+          status?: string
+          success_metrics?: Json | null
+          target_date?: string | null
+          title: string
+          updated_at?: string
+          updated_by?: string | null
+          user_id: string
+        }
+        Update: {
+          case_id?: string | null
+          completed_at?: string | null
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          horizon_days?: number
+          id?: string
+          org_id?: string | null
+          priority?: string
+          progress_percent?: number | null
+          status?: string
+          success_metrics?: Json | null
+          target_date?: string | null
+          title?: string
+          updated_at?: string
+          updated_by?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pmo_objectives_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "user_cases"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      pmo_risk_register: {
+        Row: {
+          case_id: string | null
+          category: string
+          cause: string | null
+          closed_at: string | null
+          closure_reason: string | null
+          contingency_plan: string | null
+          created_at: string
+          created_by: string | null
+          criticality: string | null
+          description: string
+          escalation_threshold: number | null
+          id: string
+          impact: number
+          last_review_date: string | null
+          mitigation_plan: string | null
+          next_review_date: string | null
+          occurred_at: string | null
+          org_id: string | null
+          owner_id: string | null
+          owner_name: string | null
+          probability: number
+          response_strategy: string | null
+          score: number | null
+          status: string
+          title: string
+          updated_at: string
+          updated_by: string | null
+          user_id: string
+        }
+        Insert: {
+          case_id?: string | null
+          category: string
+          cause?: string | null
+          closed_at?: string | null
+          closure_reason?: string | null
+          contingency_plan?: string | null
+          created_at?: string
+          created_by?: string | null
+          criticality?: string | null
+          description: string
+          escalation_threshold?: number | null
+          id?: string
+          impact?: number
+          last_review_date?: string | null
+          mitigation_plan?: string | null
+          next_review_date?: string | null
+          occurred_at?: string | null
+          org_id?: string | null
+          owner_id?: string | null
+          owner_name?: string | null
+          probability?: number
+          response_strategy?: string | null
+          score?: number | null
+          status?: string
+          title: string
+          updated_at?: string
+          updated_by?: string | null
+          user_id: string
+        }
+        Update: {
+          case_id?: string | null
+          category?: string
+          cause?: string | null
+          closed_at?: string | null
+          closure_reason?: string | null
+          contingency_plan?: string | null
+          created_at?: string
+          created_by?: string | null
+          criticality?: string | null
+          description?: string
+          escalation_threshold?: number | null
+          id?: string
+          impact?: number
+          last_review_date?: string | null
+          mitigation_plan?: string | null
+          next_review_date?: string | null
+          occurred_at?: string | null
+          org_id?: string | null
+          owner_id?: string | null
+          owner_name?: string | null
+          probability?: number
+          response_strategy?: string | null
+          score?: number | null
+          status?: string
+          title?: string
+          updated_at?: string
+          updated_by?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pmo_risk_register_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "user_cases"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      pmo_risk_reviews: {
+        Row: {
+          actions_generated: Json | null
+          assessment: string | null
+          created_at: string
+          decision: string | null
+          escalated: boolean | null
+          id: string
+          impact_change: string | null
+          new_score: number | null
+          next_review_date: string | null
+          previous_score: number | null
+          probability_change: string | null
+          review_date: string
+          risk_id: string
+          score_change: number | null
+          user_id: string
+        }
+        Insert: {
+          actions_generated?: Json | null
+          assessment?: string | null
+          created_at?: string
+          decision?: string | null
+          escalated?: boolean | null
+          id?: string
+          impact_change?: string | null
+          new_score?: number | null
+          next_review_date?: string | null
+          previous_score?: number | null
+          probability_change?: string | null
+          review_date?: string
+          risk_id: string
+          score_change?: number | null
+          user_id: string
+        }
+        Update: {
+          actions_generated?: Json | null
+          assessment?: string | null
+          created_at?: string
+          decision?: string | null
+          escalated?: boolean | null
+          id?: string
+          impact_change?: string | null
+          new_score?: number | null
+          next_review_date?: string | null
+          previous_score?: number | null
+          probability_change?: string | null
+          review_date?: string
+          risk_id?: string
+          score_change?: number | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pmo_risk_reviews_risk_id_fkey"
+            columns: ["risk_id"]
+            isOneToOne: false
+            referencedRelation: "pmo_risk_register"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           birth_country: string | null
