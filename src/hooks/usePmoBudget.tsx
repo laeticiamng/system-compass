@@ -11,14 +11,15 @@ import type {
   ScenarioType 
 } from '@/lib/pmo-types';
 
-export function usePmoBudget(caseId: string | null, scenarioId?: string) {
+export function usePmoBudget(caseId: string | null, initialScenarioId?: string) {
   const { user } = useAuth();
   const queryClient = useQueryClient();
   const [isCreating, setIsCreating] = useState(false);
+  const [activeScenarioId, setActiveScenarioId] = useState<string | null>(initialScenarioId || null);
 
   // Fetch budget lines
   const { data: budgetLines, isLoading: linesLoading } = useQuery({
-    queryKey: ['pmo-budget-lines', caseId, scenarioId],
+    queryKey: ['pmo-budget-lines', caseId, activeScenarioId],
     queryFn: async () => {
       if (!caseId || !user) return [];
       
@@ -28,8 +29,8 @@ export function usePmoBudget(caseId: string | null, scenarioId?: string) {
         .eq('case_id', caseId)
         .order('month_year', { ascending: true });
 
-      if (scenarioId) {
-        query = query.eq('scenario_id', scenarioId);
+      if (activeScenarioId) {
+        query = query.eq('scenario_id', activeScenarioId);
       } else {
         query = query.is('scenario_id', null);
       }
@@ -307,10 +308,12 @@ export function usePmoBudget(caseId: string | null, scenarioId?: string) {
     dashboard,
     isLoading: linesLoading || scenariosLoading,
     isCreating,
+    activeScenarioId,
+    setActiveScenarioId,
     createBudgetLine: createBudgetLine.mutate,
     updateBudgetLine: updateBudgetLine.mutate,
     deleteBudgetLine: deleteBudgetLine.mutate,
     createScenario: createScenario.mutate,
-    cloneBudgetToScenario: cloneBudgetToScenario.mutate,
+    cloneScenario: cloneBudgetToScenario.mutate,
   };
 }

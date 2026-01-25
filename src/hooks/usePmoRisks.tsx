@@ -226,6 +226,7 @@ export function usePmoRisks(caseId: string | null) {
 
   return {
     risks: risks || [],
+    kpis: dashboard,
     dashboard,
     isLoading,
     error,
@@ -233,6 +234,7 @@ export function usePmoRisks(caseId: string | null) {
     createRisk: createRisk.mutate,
     updateRisk: updateRisk.mutate,
     deleteRisk: deleteRisk.mutate,
+    addReview: () => {}, // Placeholder for future implementation
     createInitiativeFromRisk: createInitiativeFromRisk.mutate,
   };
 }
