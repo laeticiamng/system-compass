@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -21,12 +20,6 @@ import { useTraceOSExportSchedule } from '@/hooks/useTraceOSExportSchedule';
 import { useAuth } from '@/hooks/useAuth';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
-
-const frequencyLabels: Record<string, string> = {
-  daily: 'Quotidien',
-  weekly: 'Hebdomadaire',
-  monthly: 'Mensuel',
-};
 
 export function AutoExportManager() {
   const { t } = useTranslation();

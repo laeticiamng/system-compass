@@ -1,17 +1,16 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { 
-  Eye, 
-  Brain, 
-  Grid3X3, 
+import {
+  Eye,
+  Brain,
+  Grid3X3,
   Compass,
   BookOpen,
   Lock,
   Sparkles,
   ArrowRight,
   Shield,
-  Clock,
   Scale,
   Lightbulb,
   AlertTriangle,

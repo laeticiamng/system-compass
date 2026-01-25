@@ -61,12 +61,10 @@ import {
   Building2,
   Layers,
   Briefcase,
-  FileText,
   ClipboardList,
   AlertCircle,
 } from 'lucide-react';
 import { AiHelpButton } from '@/components/ai/AiHelpButton';
-import { AiAction, AiContext } from '@/components/ai/AiSidePanel';
 import { AiUsageStats } from '@/components/dashboard/AiUsageStats';
 import { EmptyDashboardState } from '@/components/dashboard/EmptyDashboardState';
 import { DashboardExitKeysWidget } from '@/components/dashboard/DashboardExitKeysWidget';
@@ -133,14 +131,14 @@ export default function Dashboard() {
     getPhaseNoteUpdatedAt,
   } = useDashboardProgress();
 
-  const { comparisons, loading: comparisonsLoading, deleteComparison } = useSavedComparisons();
-  const { savedGames, loading: gamesLoading, fetchSavedGames, deleteGame } = useSavedGames();
-  const { stats, loading: statsLoading, riskSuccessRate, topActions } = useGameStatistics();
+  const { comparisons, deleteComparison } = useSavedComparisons();
+  const { savedGames, fetchSavedGames, deleteGame } = useSavedGames();
+  const { stats, riskSuccessRate } = useGameStatistics();
   const { tier } = useSubscription();
-  const { cases, isLoading: casesLoading } = useUserCases();
-  const { zones, loading: zonesLoading } = useLatentZones();
-  const { results: testResults, loading: testsLoading } = useTestResults();
-  const { thresholds, loading: irreversaLoading } = useIrreversa();
+  const { cases } = useUserCases();
+  const { zones } = useLatentZones();
+  const { results: testResults } = useTestResults();
+  const { thresholds } = useIrreversa();
 
   const [editingNote, setEditingNote] = useState<number | null>(null);
   const [noteText, setNoteText] = useState('');

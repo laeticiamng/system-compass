@@ -17,7 +17,6 @@ import {
 } from '@/components/ui/dialog';
 import { useExitKeysHistory, ExitKeyStatus, ExitKeyHistoryEntry } from '@/hooks/useExitKeysHistory';
 import { EXIT_KEYS } from '@/lib/exit-keys-engine';
-import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
 
 const statusConfig: Record<ExitKeyStatus, { label: string; color: string; icon: React.ReactNode }> = {

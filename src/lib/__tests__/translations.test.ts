@@ -185,16 +185,16 @@ describe('Translation Key Structure', () => {
       'common.loading',
     ];
 
-    Object.entries(LANGUAGES).forEach(([langCode, translations]) => {
+    Object.entries(LANGUAGES).forEach(([_langCode, translations]) => {
       const missing: string[] = [];
-      
+
       for (const key of requiredKeys) {
         const value = getNestedValue(translations, key);
         if (value === undefined) {
           missing.push(key);
         }
       }
-      
+
       expect(missing).toHaveLength(0);
     });
   });

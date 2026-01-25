@@ -1,9 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import { 
-  validateCountry, 
-  safeValidateCountry, 
-  validateCountryWithReport,
-  CountrySchema 
+import {
+  validateCountry,
+  safeValidateCountry,
+  validateCountryWithReport
 } from '../schemas/country';
 
 describe('Country Schema Validation', () => {

@@ -14,12 +14,12 @@ interface FinancialIntelQuotaProps {
   className?: string;
 }
 
-export function FinancialIntelQuota({ onQuotaExceeded, className }: FinancialIntelQuotaProps) {
+export function FinancialIntelQuota({ className }: FinancialIntelQuotaProps) {
   const { t } = useTranslation();
   const { user } = useAuth();
   const { tier } = useSubscription();
   const [usageCount, setUsageCount] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
+  const [, setIsLoading] = useState(true);
 
   const FREE_QUOTA = 1;
   const PRO_QUOTA = 50;

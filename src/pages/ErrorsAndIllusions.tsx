@@ -112,7 +112,7 @@ export default function ErrorsAndIllusions() {
   const { t } = useTranslation();
   const { trackUniversalErrorsClicked } = useAnalytics();
 
-  const handleErrorClick = (errorId: string) => {
+  const handleErrorClick = (_errorId: string) => {
     trackUniversalErrorsClicked();
   };
 

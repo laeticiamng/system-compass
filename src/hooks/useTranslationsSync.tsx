@@ -62,7 +62,7 @@ export function useTranslationsSync() {
     namespace?: 'translation' | 'positive-points' | 'all';
     clearExisting?: boolean;
   } = {}) => {
-    const { namespace = 'all', clearExisting = false } = options;
+    const { namespace = 'all' } = options;
     setIsSeeding(true);
     setError(null);
     setProgress({ current: 0, total: 0, currentLanguage: '', results: [] });

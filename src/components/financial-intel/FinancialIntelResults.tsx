@@ -25,7 +25,7 @@ interface FinancialIntelResultsProps {
   isPro?: boolean;
 }
 
-export function FinancialIntelResults({ result, isPro = false }: FinancialIntelResultsProps) {
+export function FinancialIntelResults({ result }: FinancialIntelResultsProps) {
   const { t } = useTranslation();
   const [scamCategoryFilter, setScamCategoryFilter] = useState<string | null>(null);
   const [legitCategoryFilter, setLegitCategoryFilter] = useState<string | null>(null);

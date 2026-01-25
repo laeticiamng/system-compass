@@ -141,8 +141,6 @@ const getDefaultGovernanceData = (countryId: string, pyramidType?: string): Part
 };
 
 export function useCountryGovernance(countryId: string, pyramidType?: string) {
-  const queryClient = useQueryClient();
-
   const { data: governance, isLoading } = useQuery({
     queryKey: ['country-governance', countryId],
     queryFn: async () => {

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Users, Circle, MousePointer2, Edit3, Eye } from 'lucide-react';
+import { Users, MousePointer2, Edit3, Eye } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { supabase } from '@/integrations/supabase/client';
@@ -125,20 +125,6 @@ export function TraceOSCollaboration({
       supabase.removeChannel(channel);
     };
   }, [user, channelName, myColor, onPresenceChange, containerRef]);
-
-  // Track when viewing/editing a decision
-  const trackActivity = useCallback(async (decisionId: string, isEditing: boolean) => {
-    if (!user) return;
-    
-    const channel = supabase.channel(`traceos-collab-${channelName}`);
-    await channel.track({
-      name: user.user_metadata?.display_name || user.email?.split('@')[0] || 'Anonyme',
-      color: myColor,
-      currentDecisionId: decisionId,
-      isEditing,
-      online_at: new Date().toISOString(),
-    });
-  }, [user, channelName, myColor]);
 
   if (!user) return null;
 

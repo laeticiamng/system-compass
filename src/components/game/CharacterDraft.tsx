@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
-import { CharacterCard as CharacterCardType, generateRandomCharacter, GameResources } from '@/lib/game-data';
+import { CharacterCard as CharacterCardType, generateRandomCharacter } from '@/lib/game-data';
 import { PyramidType } from '@/lib/types';
 import { ArrowLeft, Check, Shuffle, Users } from 'lucide-react';
 import { cn } from '@/lib/utils';

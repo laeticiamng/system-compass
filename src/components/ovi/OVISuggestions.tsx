@@ -26,7 +26,7 @@ interface Suggestion {
   color: string;
 }
 
-export function OVISuggestions({ context, decisionType, visible = true }: OVISuggestionsProps) {
+export function OVISuggestions({ context, visible = true }: OVISuggestionsProps) {
   const { t } = useTranslation();
 
   if (!visible) return null;

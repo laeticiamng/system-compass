@@ -1,12 +1,11 @@
 import { useTranslation } from 'react-i18next';
-import { 
-  Brain, 
-  Clock, 
-  Gauge, 
-  Zap, 
+import {
+  Brain,
+  Clock,
+  Gauge,
+  Zap,
   User,
   ArrowRight,
-  BookOpen,
   Timer,
   Eye
 } from 'lucide-react';

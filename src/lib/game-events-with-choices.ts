@@ -1,5 +1,5 @@
 import { PyramidType } from './types';
-import { GameResources, GameEvent, ResourceType } from './game-data';
+import { GameResources, GameEvent } from './game-data';
 
 // Re-export EventChoice for external use
 export interface EventChoice {

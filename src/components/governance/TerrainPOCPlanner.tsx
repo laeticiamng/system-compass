@@ -4,7 +4,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Badge } from '@/components/ui/badge';
 import { Slider } from '@/components/ui/slider';
 import { 
   Beaker, 
@@ -37,7 +36,7 @@ interface TerrainPOCPlannerProps {
   projectType?: string;
 }
 
-export function TerrainPOCPlanner({ countryId, countryName, projectType }: TerrainPOCPlannerProps) {
+export function TerrainPOCPlanner({ countryId, countryName }: TerrainPOCPlannerProps) {
   const { t } = useTranslation();
   const { notes, saveNotes, isSaving, isLoading } = useUserGovernanceNotes(countryId);
   const [plan, setPlan] = useState<POCPlan>({

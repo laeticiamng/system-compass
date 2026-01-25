@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useEffect, useCallback, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
@@ -48,7 +48,6 @@ import { TerrainHistoryPanel } from '@/components/terrain/TerrainHistoryPanel';
 import { ConfidenceTooltip } from '@/components/terrain/ConfidenceTooltip';
 import { TerrainCompareDialog } from '@/components/terrain/TerrainCompareDialog';
 import { FavoriteButton, TerrainFavoritesPanel } from '@/components/terrain/TerrainFavorites';
-import { SourcesBreakdown } from '@/components/terrain/SourcesBreakdown';
 import { DataExpirationBadge } from '@/components/terrain/DataExpirationBadge';
 import { toast } from 'sonner';
 

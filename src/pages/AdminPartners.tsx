@@ -65,7 +65,7 @@ interface Contribution {
 }
 
 export default function AdminPartners() {
-  const { t } = useTranslation();
+  useTranslation();
   const { user } = useAuth();
   const [applications, setApplications] = useState<PartnerApplication[]>([]);
   const [contributions, setContributions] = useState<Contribution[]>([]);

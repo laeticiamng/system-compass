@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { 
-  GitMerge, 
-  Check, 
-  X, 
+import {
+  GitMerge,
+  Check,
   ArrowRight,
   Sparkles,
   Shield,
@@ -11,7 +10,7 @@ import {
   AlertTriangle,
   Loader2
 } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -28,7 +27,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { LatentZone, ZoneTension, TensionType } from '@/hooks/useLatentZones';
+import { LatentZone, TensionType } from '@/hooks/useLatentZones';
 
 interface ZoneMergeDialogProps {
   zones: LatentZone[];

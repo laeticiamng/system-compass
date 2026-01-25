@@ -46,7 +46,7 @@ export interface PartnerBenefit {
 }
 
 // Helper function to notify admins of new partner applications
-async function notifyAdminsOfNewApplication(userId: string, partnerType: PartnerType): Promise<void> {
+async function notifyAdminsOfNewApplication(_userId: string, partnerType: PartnerType): Promise<void> {
   // Get admin users from user_roles table
   const { data: adminRoles } = await supabase
     .from('user_roles')

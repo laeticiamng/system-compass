@@ -1,5 +1,4 @@
 import { GameResources } from './game-data';
-import { PyramidType } from './types';
 
 // ============== FAMILY STATUS ==============
 export type FamilyStatus = 

@@ -221,7 +221,7 @@ export function DecisionAuditLog({ decisionId, decisionTitle }: DecisionAuditLog
               <div className="absolute left-[11px] top-3 bottom-3 w-0.5 bg-border" />
               
               <div className="space-y-4">
-                {history.map((entry, index) => {
+                {history.map((entry) => {
                   const isExpanded = expandedEntries.has(entry.id);
                   const hasChanges = Object.keys(entry.changes).length > 0;
                   

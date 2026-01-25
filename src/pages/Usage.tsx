@@ -1,16 +1,15 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { 
-  ArrowLeft, 
-  BarChart3, 
-  Zap, 
-  FileText, 
-  Bot, 
+import {
+  ArrowLeft,
+  BarChart3,
+  Zap,
+  FileText,
+  Bot,
   Download,
   AlertTriangle,
   CheckCircle,
   Loader2,
-  TrendingUp,
   Clock,
   Activity
 } from 'lucide-react';

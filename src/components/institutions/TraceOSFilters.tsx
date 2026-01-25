@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { 
-  Filter, 
-  X, 
-  Calendar, 
-  User, 
-  Target, 
+import {
+  Filter,
+  Calendar,
+  User,
+  Target,
   Clock,
   CheckCircle2,
   GitBranch,
@@ -16,7 +15,6 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
-import { Checkbox } from '@/components/ui/checkbox';
 import {
   Popover,
   PopoverContent,

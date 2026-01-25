@@ -130,8 +130,8 @@ const PYRAMID_EXIT_KEYS: Record<PyramidType, string> = {
 export default function QuickTest() {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { user } = useAuth();
-  const { saveResult, getLatestResult } = useTestResults();
+  useAuth();
+  const { saveResult } = useTestResults();
   const [answers, setAnswers] = useState<QuickTestAnswers>({});
   const [showResults, setShowResults] = useState(false);
   const [startTime] = useState(Date.now());

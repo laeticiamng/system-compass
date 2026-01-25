@@ -1,14 +1,13 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Eye, Layers, Brain, AlertTriangle } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { ArrowLeft, Eye, Layers, AlertTriangle } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Latent } from '@/components/latent/Latent';
 import { useAuth } from '@/hooks/useAuth';
 
 export default function LatentModule() {
   const { t } = useTranslation();
-  const { user } = useAuth();
+  useAuth();
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20 pt-20 md:pt-24">

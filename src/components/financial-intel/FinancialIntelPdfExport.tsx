@@ -14,9 +14,8 @@ interface FinancialIntelPdfExportProps {
   onExportComplete?: () => void;
 }
 
-export function FinancialIntelPdfExport({ 
+export function FinancialIntelPdfExport({
   result,
-  country,
   sectorFocus,
   audience,
   onExportComplete

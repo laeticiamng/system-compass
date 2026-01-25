@@ -8,7 +8,7 @@
  * - Audit log integrity
  * - Domain and nature categorization
  */
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import {
   createMockIrreversaThreshold,
   VALID_THRESHOLD_DOMAINS,
@@ -511,7 +511,8 @@ describe('Irreversa Module', () => {
         validation_statement: 'Approved after thorough review',
       });
       expect(validatedThreshold.validation_statement).toBeDefined();
-      expect(validatedThreshold.validation_statement!.length).toBeGreaterThan(0);
+      const statement = validatedThreshold.validation_statement as string | null;
+      expect(statement!.length).toBeGreaterThan(0);
     });
 
     it('should have sealed_at timestamp when sealed', () => {

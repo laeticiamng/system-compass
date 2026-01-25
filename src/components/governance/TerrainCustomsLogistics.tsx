@@ -71,7 +71,7 @@ const CATEGORY_CONFIG: Record<string, { label: string; icon: React.ReactNode; co
   },
 };
 
-export function TerrainCustomsLogistics({ countryId, countryName }: TerrainCustomsLogisticsProps) {
+export function TerrainCustomsLogistics({ countryName }: TerrainCustomsLogisticsProps) {
   const { t } = useTranslation();
   const [items, setItems] = useState<CustomsItem[]>(
     DEFAULT_CUSTOMS_ITEMS.map(item => ({ ...item, verified: false }))

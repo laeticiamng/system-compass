@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { Globe, Filter, TrendingUp, Shield, Search, BarChart3, Layers, Info } from 'lucide-react';
+import { Globe, Filter, Shield, Search, BarChart3, Layers, Info } from 'lucide-react';
 import { WorldMap } from '@/components/WorldMap';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
