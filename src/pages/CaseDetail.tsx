@@ -13,6 +13,7 @@ import { RiskRegisterEnhanced } from '@/components/cases/RiskRegisterEnhanced';
 import { StructuralRulesSection } from '@/components/cases/StructuralRulesSection';
 import { CaseAIGenerator } from '@/components/cases/CaseAIGenerator';
 import { GovernanceAdvanced } from '@/components/cases/GovernanceAdvanced';
+import { RoadmapOS, RiskEngine, BudgetRunway } from '@/components/pmo';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -24,11 +25,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import {
   ArrowLeft, Home, Briefcase, Shield, Target, FileText,
   Clock, Calendar, AlertTriangle, Loader2,
-  TrendingUp, Users, FileCheck, Map
+  TrendingUp, Users, FileCheck, Map, LayoutDashboard, CircleDollarSign
 } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { fr } from 'date-fns/locale';
-
 function getFlagEmoji(iso2: string): string {
   const codePoints = iso2.toUpperCase().split('').map((char) => 127397 + char.charCodeAt(0));
   return String.fromCodePoint(...codePoints);
@@ -167,7 +167,7 @@ export default function CaseDetail() {
 
         {/* Main Content Tabs */}
         <Tabs defaultValue="governance" className="space-y-6">
-          <TabsList className={`grid w-full ${isDeep ? 'grid-cols-9' : 'grid-cols-4'}`}>
+          <TabsList className={`grid w-full ${isDeep ? 'grid-cols-12' : 'grid-cols-4'}`}>
             <TabsTrigger value="governance" className="gap-2">
               <Shield className="w-4 h-4" />
               <span className="hidden sm:inline">
@@ -198,6 +198,19 @@ export default function CaseDetail() {
                 <TabsTrigger value="rules" className="gap-2">
                   <FileCheck className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('cases.tabs.rules', 'Règles')}</span>
+                </TabsTrigger>
+                {/* PMO Tabs */}
+                <TabsTrigger value="pmo-roadmap" className="gap-2">
+                  <LayoutDashboard className="w-4 h-4" />
+                  <span className="hidden sm:inline">{t('cases.tabs.pmoRoadmap', 'Plan')}</span>
+                </TabsTrigger>
+                <TabsTrigger value="pmo-risks" className="gap-2">
+                  <AlertTriangle className="w-4 h-4" />
+                  <span className="hidden sm:inline">{t('cases.tabs.pmoRisks', 'Risques PMO')}</span>
+                </TabsTrigger>
+                <TabsTrigger value="pmo-budget" className="gap-2">
+                  <CircleDollarSign className="w-4 h-4" />
+                  <span className="hidden sm:inline">{t('cases.tabs.pmoBudget', 'Budget')}</span>
                 </TabsTrigger>
               </>
             )}
@@ -303,6 +316,27 @@ export default function CaseDetail() {
                 onUpdateCase={(updates) => updateCase(updates)}
                 countryName={countryName}
               />
+            </TabsContent>
+          )}
+
+          {/* PMO Roadmap Tab (DEEP only) */}
+          {isDeep && (
+            <TabsContent value="pmo-roadmap">
+              <RoadmapOS caseId={id!} isAdvancedMode={isDeep} />
+            </TabsContent>
+          )}
+
+          {/* PMO Risk Engine Tab (DEEP only) */}
+          {isDeep && (
+            <TabsContent value="pmo-risks">
+              <RiskEngine caseId={id!} />
+            </TabsContent>
+          )}
+
+          {/* PMO Budget Tab (DEEP only) */}
+          {isDeep && (
+            <TabsContent value="pmo-budget">
+              <BudgetRunway caseId={id!} />
             </TabsContent>
           )}
 
