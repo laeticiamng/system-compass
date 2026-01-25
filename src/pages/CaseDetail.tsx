@@ -13,7 +13,7 @@ import { RiskRegisterEnhanced } from '@/components/cases/RiskRegisterEnhanced';
 import { StructuralRulesSection } from '@/components/cases/StructuralRulesSection';
 import { CaseAIGenerator } from '@/components/cases/CaseAIGenerator';
 import { GovernanceAdvanced } from '@/components/cases/GovernanceAdvanced';
-import { RoadmapOS, RiskEngine, BudgetRunway, PriorityBoard, EvidenceVault, PmoPdfExport } from '@/components/pmo';
+import { RoadmapOS, RiskEngine, BudgetRunway, PriorityBoard, EvidenceVault, PmoPdfExport, ComplianceMatrix } from '@/components/pmo';
 import { usePmoObjectives } from '@/hooks/usePmoObjectives';
 import { usePmoInitiatives } from '@/hooks/usePmoInitiatives';
 import { usePmoRisks } from '@/hooks/usePmoRisks';
@@ -230,6 +230,10 @@ export default function CaseDetail() {
                   <ListOrdered className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('cases.tabs.pmoPriority', 'Priorités')}</span>
                 </TabsTrigger>
+                <TabsTrigger value="pmo-compliance" className="gap-2">
+                  <Shield className="w-4 h-4" />
+                  <span className="hidden sm:inline">{t('cases.tabs.pmoCompliance', 'Conformité')}</span>
+                </TabsTrigger>
                 <TabsTrigger value="pmo-evidence" className="gap-2">
                   <Archive className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('cases.tabs.pmoEvidence', 'Preuves')}</span>
@@ -370,6 +374,13 @@ export default function CaseDetail() {
                 objectives={objectives}
                 risks={risks}
               />
+            </TabsContent>
+          )}
+
+          {/* PMO Compliance Matrix Tab (DEEP only) */}
+          {isDeep && (
+            <TabsContent value="pmo-compliance">
+              <ComplianceMatrix caseId={id!} isAdvancedMode={isDeep} />
             </TabsContent>
           )}
 

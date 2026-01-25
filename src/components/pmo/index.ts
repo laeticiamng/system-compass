@@ -4,3 +4,4 @@ export { BudgetRunway } from './BudgetRunway';
 export { PmoPdfExport } from './PmoPdfExport';
 export { PriorityBoard } from './PriorityBoard';
 export { EvidenceVault } from './EvidenceVault';
+export { ComplianceMatrix } from './ComplianceMatrix';
