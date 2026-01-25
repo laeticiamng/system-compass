@@ -60,7 +60,7 @@ const saveAlertSettings = (settings: AlertSettings) => {
 };
 
 export default function AdminAnalytics() {
-  const { t } = useTranslation();
+  useTranslation();
   const { user, loading: authLoading } = useAuth();
   const [loading, setLoading] = useState(true);
   const [dailyStats, setDailyStats] = useState<DailyStat[]>([]);
@@ -83,7 +83,14 @@ export default function AdminAnalytics() {
         .order('date', { ascending: false })
         .limit(30);
       
-      setDailyStats(daily || []);
+      setDailyStats((daily || []).map(d => ({
+        ...d,
+        date: d.date || '',
+        event_name: d.event_name || '',
+        event_category: d.event_category || '',
+        event_count: d.event_count || 0,
+        unique_sessions: d.unique_sessions || 0,
+      })));
 
       // Fetch all events for CSV export (last 30 days)
       const { data: events } = await supabase

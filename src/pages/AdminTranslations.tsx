@@ -3,18 +3,16 @@ import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { 
-  Languages, 
-  Search, 
-  AlertTriangle, 
-  CheckCircle2, 
+import {
+  Languages,
+  Search,
+  AlertTriangle,
+  CheckCircle2,
   Globe2,
-  ChevronRight,
-  RefreshCw
+  ChevronRight
 } from 'lucide-react';
 
 // Import all locale files
@@ -60,7 +58,7 @@ function getNestedValue(obj: LocaleData, path: string): unknown {
 }
 
 export default function AdminTranslations() {
-  const { t, i18n } = useTranslation();
+  useTranslation();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
 
@@ -120,13 +118,6 @@ export default function AdminTranslations() {
     if (percentage >= 80) return 'text-yellow-500';
     if (percentage >= 60) return 'text-orange-500';
     return 'text-red-500';
-  };
-
-  const getProgressColor = (percentage: number) => {
-    if (percentage >= 95) return 'bg-green-500';
-    if (percentage >= 80) return 'bg-yellow-500';
-    if (percentage >= 60) return 'bg-orange-500';
-    return 'bg-red-500';
   };
 
   return (

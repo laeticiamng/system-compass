@@ -41,8 +41,6 @@ interface ProgressStatsProps {
   exitKey: ExitKey;
 }
 
-const COLORS = ['hsl(var(--primary))', 'hsl(var(--muted))', 'hsl(142, 76%, 36%)', 'hsl(38, 92%, 50%)', 'hsl(0, 84%, 60%)'];
-
 export function ProgressStats({ progress, exitKey }: ProgressStatsProps) {
   const { t } = useTranslation();
   
@@ -292,7 +290,7 @@ export function ProgressStats({ progress, exitKey }: ProgressStatsProps) {
                     border: '1px solid hsl(var(--border))',
                     borderRadius: '8px'
                   }}
-                  formatter={(value: number, name: string) => [`${value}%`, 'Progression']}
+                  formatter={(value: number) => [`${value}%`, 'Progression']}
                   labelFormatter={(label) => {
                     const phase = phaseStats.find(p => p.name === label);
                     return phase ? phase.fullName : label;

@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
-import { useToast } from '@/hooks/use-toast';
 import { toast } from 'sonner';
 
 export type WebhookEvent = 'decision_created' | 'decision_updated' | 'decision_validated' | 'decision_abandoned';

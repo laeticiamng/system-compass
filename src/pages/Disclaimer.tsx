@@ -15,7 +15,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 
 export default function Disclaimer() {
-  const { t } = useTranslation();
+  useTranslation();
 
   return (
     <main className="min-h-screen bg-background pt-24 pb-16">

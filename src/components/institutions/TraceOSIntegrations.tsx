@@ -188,28 +188,6 @@ export function TraceOSIntegrations() {
     }
   };
 
-  const handleSendToZapier = async (eventType: string, data: Record<string, unknown>) => {
-    if (!zapierWebhookUrl) return false;
-    
-    try {
-      await fetch(zapierWebhookUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        mode: 'no-cors',
-        body: JSON.stringify({
-          event: eventType,
-          source: 'TraceOS',
-          timestamp: new Date().toISOString(),
-          data
-        })
-      });
-      return true;
-    } catch (error) {
-      console.error('Zapier send error:', error);
-      return false;
-    }
-  };
-
   const connectedCount = integrations.filter(i => i.connected).length;
 
   return (

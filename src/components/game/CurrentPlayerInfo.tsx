@@ -3,7 +3,7 @@ import { CharacterCard, GameResources } from '@/lib/game-data';
 import { PyramidType, PYRAMID_TYPE_INFO } from '@/lib/types';
 import { FamilyStatus, FAMILY_STATUS_LABELS } from '@/lib/family-system';
 import { cn } from '@/lib/utils';
-import { MapPin, User, Heart, Wallet, Clock, Sparkles, GraduationCap, Users, Flag } from 'lucide-react';
+import { MapPin, User, Clock, Sparkles, Flag } from 'lucide-react';
 
 interface CurrentPlayerInfoProps {
   player: {

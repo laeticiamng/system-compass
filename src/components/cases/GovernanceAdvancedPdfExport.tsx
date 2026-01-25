@@ -50,17 +50,6 @@ export function GovernanceAdvancedPdfExport({
         return false;
       };
 
-      // Helper to wrap text
-      const addWrappedText = (text: string, fontSize: number, isBold = false) => {
-        pdf.setFontSize(fontSize);
-        pdf.setFont('helvetica', isBold ? 'bold' : 'normal');
-        const lines = pdf.splitTextToSize(text, contentWidth);
-        lines.forEach((line: string) => {
-          checkNewPage(fontSize * 0.5);
-          pdf.text(line, margin, yPos);
-          yPos += fontSize * 0.5;
-        });
-      };
 
       // Title
       pdf.setFontSize(20);

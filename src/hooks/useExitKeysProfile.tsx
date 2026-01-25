@@ -1,10 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from './useAuth';
-import { UserContext } from '@/lib/exit-keys-engine';
 import { LifeMotorProfile, LifePriority } from '@/lib/types';
 import { toast } from 'sonner';
-import { EducationLevel, ProfessionCategory } from '@/lib/profession-data';
+import { EducationLevel } from '@/lib/profession-data';
 
 export type ProjectIntention = 'installation' | 'vacation' | 'internship' | 'retirement' | 'digital_nomad';
 
@@ -55,7 +54,7 @@ export function useExitKeysProfile() {
       // If user is logged in, check Supabase profiles table
       if (user) {
         try {
-          const { data, error } = await supabase
+          const { data } = await supabase
             .from('profiles')
             .select('*')
             .eq('id', user.id)

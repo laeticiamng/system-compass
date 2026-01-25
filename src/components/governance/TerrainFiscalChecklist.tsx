@@ -65,7 +65,7 @@ const CATEGORY_CONFIG: Record<string, { label: string; icon: React.ReactNode; co
   },
 };
 
-export function TerrainFiscalChecklist({ countryId, countryName }: TerrainFiscalChecklistProps) {
+export function TerrainFiscalChecklist({ countryName }: TerrainFiscalChecklistProps) {
   const { t } = useTranslation();
   const [items, setItems] = useState<FiscalItem[]>(
     DEFAULT_FISCAL_ITEMS.map(item => ({ ...item, clarified: false }))

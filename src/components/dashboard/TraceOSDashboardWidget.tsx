@@ -4,13 +4,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Link } from 'react-router-dom';
-import { 
-  GitBranch, 
-  Plus, 
+import {
+  GitBranch,
+  Plus,
   ArrowRight,
-  CheckCircle2,
-  Clock,
-  AlertCircle
+  Clock
 } from 'lucide-react';
 
 export function TraceOSDashboardWidget() {

@@ -3,8 +3,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { 
-  Users, Building2, Heart, Shield, Sparkles, 
+import {
+  Users, Building2, Heart, Sparkles,
   ArrowRight, Ban, Eye, CheckCircle2, Quote
 } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";

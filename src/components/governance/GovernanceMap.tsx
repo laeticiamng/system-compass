@@ -230,7 +230,7 @@ export function GovernanceMap({ countryId, countryName }: GovernanceMapProps) {
       const reliabilityLabel = t(RELIABILITY_CONFIG[stakeholder.reliability]?.labelKey ?? '', stakeholder.reliability);
       const line = `${index + 1}. ${stakeholder.name} — ${stakeholder.role} | ${levelLabel} | ${powerLabel} | ${reliabilityLabel}`;
       const lines = pdf.splitTextToSize(line, maxWidth);
-      lines.forEach(textLine => {
+      lines.forEach((textLine: string) => {
         if (yPos > pdf.internal.pageSize.getHeight() - margin) {
           pdf.addPage();
           yPos = margin;
@@ -240,7 +240,7 @@ export function GovernanceMap({ countryId, countryName }: GovernanceMapProps) {
       });
       if (stakeholder.notes) {
         const notesLines = pdf.splitTextToSize(`${t('common.description', 'Notes')}: ${stakeholder.notes}`, maxWidth);
-        notesLines.forEach(noteLine => {
+        notesLines.forEach((noteLine: string) => {
           if (yPos > pdf.internal.pageSize.getHeight() - margin) {
             pdf.addPage();
             yPos = margin;

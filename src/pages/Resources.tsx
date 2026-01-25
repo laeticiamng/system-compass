@@ -1,17 +1,13 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { 
-  FileText, 
-  Shield, 
-  Wallet, 
-  GraduationCap, 
-  Globe, 
-  CheckCircle, 
-  ChevronDown, 
-  ChevronUp,
-  ExternalLink,
-  Download,
+import {
+  FileText,
+  Shield,
+  Wallet,
+  GraduationCap,
+  Globe,
+  CheckCircle,
   Clock,
   AlertTriangle,
   Lightbulb,
@@ -22,8 +18,7 @@ import {
   AlertOctagon,
   Sparkles
 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';

@@ -1,16 +1,14 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { 
-  Building2, 
-  Users, 
-  Scale, 
-  Target, 
-  AlertTriangle, 
-  FileText, 
-  Eye, 
-  Clock, 
-  Shield, 
+import {
+  Building2,
+  Users,
+  Scale,
+  AlertTriangle,
+  FileText,
+  Eye,
+  Shield,
   ArrowRight,
   Briefcase,
   TrendingUp,
@@ -21,7 +19,6 @@ import {
   Lightbulb,
   UserCheck,
   History,
-  BarChart3,
   Info
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';

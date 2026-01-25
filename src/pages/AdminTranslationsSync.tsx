@@ -17,7 +17,7 @@ interface TranslationStat {
 }
 
 export default function AdminTranslationsSync() {
-  const { t } = useTranslation();
+  useTranslation();
   const { seedTranslations, getTranslationsStats, clearTranslations, isSeeding, progress, error } = useTranslationsSync();
   const [stats, setStats] = useState<TranslationStat[]>([]);
   const [isLoading, setIsLoading] = useState(true);

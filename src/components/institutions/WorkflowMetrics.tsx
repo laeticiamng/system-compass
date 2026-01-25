@@ -12,7 +12,7 @@ import {
   BarChart3,
   Users
 } from 'lucide-react';
-import { useTraceOSApprovals, useTraceOSWorkflows } from '@/hooks/useTraceOSWorkflows';
+import { useTraceOSWorkflows } from '@/hooks/useTraceOSWorkflows';
 
 interface Approval {
   id: string;

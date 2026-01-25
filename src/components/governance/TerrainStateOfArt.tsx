@@ -5,7 +5,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { BookOpen, CheckCircle2, Circle, ExternalLink, Save } from 'lucide-react';
+import { BookOpen, CheckCircle2, Circle, Save } from 'lucide-react';
 
 interface StateOfArtItem {
   id: string;
@@ -46,7 +46,7 @@ const CATEGORY_LABELS: Record<string, { label: string; color: string }> = {
   network: { label: 'Réseau', color: 'bg-pink-500/20 text-pink-700 border-pink-500/30' },
 };
 
-export function TerrainStateOfArt({ countryId, countryName, projectType, onSave }: TerrainStateOfArtProps) {
+export function TerrainStateOfArt({ countryName, onSave }: TerrainStateOfArtProps) {
   const { t } = useTranslation();
   const [items, setItems] = useState<StateOfArtItem[]>(
     DEFAULT_CHECKLIST.map(item => ({ ...item, completed: false }))

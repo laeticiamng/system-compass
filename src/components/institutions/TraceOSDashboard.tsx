@@ -2,13 +2,12 @@ import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { 
-  BarChart3, 
-  TrendingUp, 
-  TrendingDown,
-  Calendar, 
-  CheckCircle2, 
-  Clock, 
+import {
+  BarChart3,
+  TrendingUp,
+  Calendar,
+  CheckCircle2,
+  Clock,
   XCircle,
   GitBranch,
   Users,
@@ -16,11 +15,10 @@ import {
   Activity,
   Zap,
   ArrowUpRight,
-  ArrowDownRight,
-  Minus
+  ArrowDownRight
 } from 'lucide-react';
 import { DecisionNodeData } from './DecisionNode';
-import { format, parseISO, startOfMonth, eachMonthOfInterval, subMonths, differenceInDays, startOfWeek, eachWeekOfInterval, subWeeks } from 'date-fns';
+import { format, parseISO, startOfMonth, eachMonthOfInterval, subMonths, startOfWeek, eachWeekOfInterval, subWeeks } from 'date-fns';
 import { fr } from 'date-fns/locale';
 import {
   AreaChart,
@@ -37,7 +35,6 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  Legend,
   RadarChart,
   PolarGrid,
   PolarAngleAxis,

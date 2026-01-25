@@ -10,7 +10,6 @@ import {
 } from 'lucide-react';
 import { usePyramidTranslations } from '@/hooks/usePyramidTranslations';
 import { Button } from '@/components/ui/button';
-import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   Select,
@@ -24,17 +23,15 @@ import {
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import { useCountries } from '@/lib/countries-data';
-import { PyramidType, PYRAMID_TYPE_INFO, LifeMotorProfile, LifePriority, LIFE_MOTOR_PROFILES, type Country } from '@/lib/types';
+import { PYRAMID_TYPE_INFO, LifeMotorProfile, LifePriority, LIFE_MOTOR_PROFILES, type Country } from '@/lib/types';
 import { findCompatibleKeys, UserContext, STRATEGIC_PRINCIPLES } from '@/lib/exit-keys-engine';
-import { getNationalityAdvantages, getPassportStrengthLabel, REGIONAL_BLOCS, getRecommendedDestinations, DestinationRecommendation } from '@/lib/nationality-advantages';
+import { getNationalityAdvantages, getPassportStrengthLabel, REGIONAL_BLOCS, getRecommendedDestinations } from '@/lib/nationality-advantages';
 import { EDUCATION_LEVELS, PROFESSIONS, PROFESSION_CATEGORY_LABELS, getProfession, type EducationLevel, type ProfessionCategory } from '@/lib/profession-data';
 import ExitKeyCard from '@/components/ExitKeyCard';
 import { cn } from '@/lib/utils';
 import { useExitKeysProfile, type ProjectIntention } from '@/hooks/useExitKeysProfile';
 import { useAuth } from '@/hooks/useAuth';
-import { useAnalytics } from '@/hooks/useAnalytics';
 import { DestinationMap } from '@/components/DestinationMap';
-import { DestinationCompare } from '@/components/DestinationCompare';
 import { VacationRecommendations } from '@/components/exit-keys/VacationRecommendations';
 import { RiskContextsSection } from '@/components/exit-keys/RiskContextsSection';
 import { RiskPrevention } from '@/components/RiskPrevention';
@@ -42,11 +39,9 @@ import { SalaryCalculator } from '@/components/SalaryCalculator';
 import { JourneyProgressBar, getJourneyPhase } from '@/components/JourneyProgressBar';
 import { SimulationDisclaimer } from '@/components/SimulationDisclaimer';
 import { AiHelpButton } from '@/components/ai/AiHelpButton';
-import { AiAction, AiContext } from '@/components/ai/AiSidePanel';
 import { SavedExitKeysPanel } from '@/components/exit-keys/SavedExitKeysPanel';
 import { ExitKeysPdfExport } from '@/components/exit-keys/ExitKeysPdfExport';
 import { ShareResultsButton } from '@/components/exit-keys/ShareResultsButton';
-import { useExitKeysHistory } from '@/hooks/useExitKeysHistory';
 import { IntentionStep } from '@/components/exit-keys/IntentionStep';
 import { DestinationSelector } from '@/components/exit-keys/DestinationSelector';
 import { PersonalizedExitKeys } from '@/components/exit-keys/PersonalizedExitKeys';

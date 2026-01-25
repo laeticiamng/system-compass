@@ -4,11 +4,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { 
-  Users, 
-  Plus, 
-  Building2, 
-  Globe, 
+import {
+  Users,
+  Plus,
+  Building2,
   TrendingUp,
   AlertCircle
 } from 'lucide-react';
@@ -47,7 +46,7 @@ const MATURITY_LABELS: Record<string, string> = {
   emerging: 'governance.competition.maturityLevels.emerging',
 };
 
-export function TerrainCompetition({ countryId, countryName, projectType }: TerrainCompetitionProps) {
+export function TerrainCompetition({ countryName }: TerrainCompetitionProps) {
   const { t } = useTranslation();
   const [competitors, setCompetitors] = useState<Competitor[]>([]);
 

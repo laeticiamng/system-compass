@@ -105,7 +105,7 @@ export function ZoneCard({
 
   const groupedTensions = (zone.tensions || []).reduce((acc, tension) => {
     if (!acc[tension.tension_type]) acc[tension.tension_type] = [];
-    acc[tension.tension_type].push(tension);
+    acc[tension.tension_type]!.push(tension);
     return acc;
   }, {} as Record<TensionType, typeof zone.tensions>);
 

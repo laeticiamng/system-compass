@@ -19,7 +19,6 @@ import {
   Edit3,
   Trash2,
   CheckCircle2,
-  AlertTriangle,
   FileText,
   Download
 } from 'lucide-react';

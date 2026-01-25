@@ -4,13 +4,6 @@ import { useAuth } from '@/hooks/useAuth';
 
 type UserRole = 'admin' | 'moderator' | 'user';
 
-interface UserRoleData {
-  id: string;
-  userId: string;
-  role: UserRole;
-  createdAt: string;
-}
-
 export function useUserRoles() {
   const { user } = useAuth();
   const [roles, setRoles] = useState<UserRole[]>([]);

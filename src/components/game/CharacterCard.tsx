@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { CharacterCard as CharacterCardType, RESOURCE_INFO, ResourceType } from '@/lib/game-data';
+import { CharacterCard as CharacterCardType } from '@/lib/game-data';
 import { cn } from '@/lib/utils';
 import { useCountries } from '@/lib/countries-data';
 import ResourceBar from './ResourceBar';

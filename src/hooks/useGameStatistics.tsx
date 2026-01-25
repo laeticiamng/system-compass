@@ -220,7 +220,7 @@ export function useGameStatistics() {
   }, [stats, saveStats]);
 
   // Track action used
-  const trackActionUsed = useCallback(async (actionId: string, success: boolean) => {
+  const trackActionUsed = useCallback(async (actionId: string) => {
     const newStats = {
       ...stats,
       favoriteActions: {

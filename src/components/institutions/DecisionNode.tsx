@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { 
-  Calendar, 
-  User, 
+import {
+  Calendar,
+  User,
   Target,
   AlertTriangle,
   CheckCircle2,
@@ -11,8 +11,7 @@ import {
   FileText,
   ChevronDown,
   ChevronUp,
-  Lightbulb,
-  Lock
+  Lightbulb
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';

@@ -39,8 +39,8 @@ export function useGameLeaderboard() {
         bestScoreRace: row.best_score_race || 0,
         totalGamesPlayed: row.total_games_played || 0,
         countriesVisited: (row.countries_visited || []).length,
-        riskSuccessRate: row.total_risk_events 
-          ? Math.round((row.risk_successes / row.total_risk_events) * 100)
+        riskSuccessRate: row.total_risk_events
+          ? Math.round(((row.risk_successes || 0) / row.total_risk_events) * 100)
           : 0,
         lastGameAt: row.last_game_at || row.updated_at,
       }));

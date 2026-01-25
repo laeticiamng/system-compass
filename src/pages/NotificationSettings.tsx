@@ -1,11 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { 
-  Bell, 
-  Mail, 
-  Smartphone, 
-  Clock, 
+import {
+  Bell,
+  Mail,
+  Smartphone,
   ChevronLeft,
   Save,
   Loader2,

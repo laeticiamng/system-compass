@@ -63,7 +63,7 @@ export function ShareReportButton({ countryId, countryName }: ShareReportButtonP
           <Copy className="h-4 w-4 mr-2" />
           {t('terrainRealities.copyToClipboard')}
         </DropdownMenuItem>
-        {navigator.share && (
+        {typeof navigator.share === 'function' && (
           <DropdownMenuItem onClick={handleShareNative}>
             <Share2 className="h-4 w-4 mr-2" />
             {t('terrainRealities.shareReport')}

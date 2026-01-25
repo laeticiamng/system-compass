@@ -5,16 +5,13 @@ import { useExitKeysProfile } from '@/hooks/useExitKeysProfile';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { cn } from '@/lib/utils';
-import { 
-  ArrowRight, ArrowLeft, Target, Compass, Clock, Zap, 
-  MapPin, Heart, Shield, TrendingUp, Users, Sparkles,
-  CheckCircle, AlertTriangle, Lightbulb, BarChart3, Gauge,
-  Trophy, Brain, Briefcase, GraduationCap
+import {
+  ArrowRight, ArrowLeft, Target, Compass, Clock, Zap,
+  MapPin, Shield, TrendingUp, Sparkles,
+  CheckCircle, AlertTriangle, Lightbulb, BarChart3, Gauge
 } from 'lucide-react';
-import { 
-  LifeMotorProfile, 
-  LifeTrajectoryProfile, 
-  TrajectoryPlan,
+import {
+  LifeMotorProfile,
   TrajectoryRecommendation,
   LIFE_MOTOR_PROFILES,
   LifePriority
@@ -129,7 +126,6 @@ const questions: Question[] = [
 function determineMotorProfile(answers: Record<string, string>): LifeMotorProfile {
   const priority = answers.priority as LifePriority;
   const riskTolerance = answers.uncertainty;
-  const wantsAutonomy = answers.autonomy === 'autonomous';
   const wantsToContribute = answers.contribute === 'yes';
   const geographic = answers.geographic === 'yes';
   const timePreference = answers.timePreference;
@@ -149,10 +145,8 @@ function determineMotorProfile(answers: Record<string, string>): LifeMotorProfil
 
 function generateTrajectories(
   profile: LifeMotorProfile,
-  answers: Record<string, string>
+  _answers: Record<string, string>
 ): TrajectoryRecommendation[] {
-  const t = (key: string) => key; // Will be replaced with actual translation
-  
   const trajectories: Record<LifeMotorProfile, TrajectoryRecommendation[]> = {
     LOTTERY: [
       {

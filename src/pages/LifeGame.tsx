@@ -3,15 +3,14 @@ import { Link } from 'react-router-dom';
 import { SimulationDisclaimer } from '@/components/SimulationDisclaimer';
 import { Button } from '@/components/ui/button';
 import GameLeaderboard from '@/components/game/GameLeaderboard';
-import { 
-  Gamepad2, 
-  Users, 
-  Globe, 
+import {
+  Gamepad2,
+  Users,
+  Globe,
   Zap,
   ArrowRight,
   Play,
   Shield,
-  Target,
   Skull,
   Heart,
   Coins,

@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useAuth } from './useAuth';
 
 interface Notification {
   id: string;
@@ -17,7 +16,6 @@ const STORAGE_KEY = 'pyramid_notifications';
 const MAX_NOTIFICATIONS = 50;
 
 export function useNotifications() {
-  const { user } = useAuth();
   const { t } = useTranslation();
   const [notifications, setNotifications] = useState<Notification[]>([]);
 

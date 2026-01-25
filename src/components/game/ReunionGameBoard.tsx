@@ -148,7 +148,6 @@ export default function ReunionGameBoard({
   const currentPlayer = players[currentPlayerIndex];
   const activeChar = currentPlayer.activeCharacter;
   const activeResources = activeChar === 1 ? currentPlayer.resources1 : currentPlayer.resources2;
-  const _activeCharacter = activeChar === 1 ? currentPlayer.pair.character1 : currentPlayer.pair.character2;
   
   const getCountryInfo = (countryId: string) => {
     return REUNION_COUNTRIES.find(c => c.id === countryId) || { 

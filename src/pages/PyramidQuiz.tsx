@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -17,8 +17,6 @@ import { GamePlayerProfile } from '@/components/game/PlayerProfile';
 import SavedGamesDialog from '@/components/game/SavedGamesDialog';
 import RulesDialog from '@/components/game/RulesDialog';
 import ArchetypeSelector from '@/components/game/ArchetypeSelector';
-import ResourceBar from '@/components/game/ResourceBar';
-import EventCard from '@/components/game/EventCard';
 import TurnManager, { TurnPhase } from '@/components/game/TurnManager';
 import GameEndSummary from '@/components/game/GameEndSummary';
 import TutorialMode, { shouldSkipTutorial } from '@/components/game/TutorialMode';
@@ -29,27 +27,14 @@ import { useSavedGames, SavedGame, SavedGameState } from '@/hooks/useSavedGames'
 import { useGameStatistics } from '@/hooks/useGameStatistics';
 import { getNewlyUnlockedAchievements } from '@/lib/achievements';
 import { useAuth } from '@/hooks/useAuth';
-import { 
+import {
   CharacterCard as CharacterCardType,
   GameResources,
   createDefaultResources,
-  getRandomGlobalEvent,
-  getRandomCountryEvent,
-  GameEvent,
-  ResourceType,
 } from '@/lib/game-data';
-import { 
-  Gamepad2, 
-  ArrowRight, 
-  ArrowLeft, 
-  Dice1, 
-  Dice2, 
-  Dice3, 
-  Dice4, 
-  Dice5, 
-  Dice6,
-  Trophy,
-  RotateCcw,
+import {
+  ArrowRight,
+  ArrowLeft,
   Target,
   Shield,
   Zap,
@@ -58,13 +43,11 @@ import {
   Coins,
   Users,
   Building,
-  Crown,
   Swords,
   HandHeart,
   Flag,
   Save,
   Loader2,
-  Calendar,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { Database } from '@/integrations/supabase/types';
@@ -209,8 +192,6 @@ const PYRAMID_COLORS: Record<PyramidType, string> = {
   RESOURCE_EXTRACTION: 'bg-orange-500/20 border-orange-500 text-orange-400',
 };
 
-const DICE_ICONS = [Dice1, Dice2, Dice3, Dice4, Dice5, Dice6];
-
 const createEmptyScores = (): Record<PyramidType, number> => ({
   PROBLEM_RENT: 0,
   STABILITY_REDIS: 0,
@@ -237,11 +218,6 @@ export default function PyramidQuiz() {
   const [mode, setMode] = useState<GameMode>(null);
   const [setupPhase, setSetupPhase] = useState<SetupPhase>('mode');
   
-  // Online quiz state
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [scores, setScores] = useState<Record<PyramidType, number>>(createEmptyScores());
-  const [quizResult, setQuizResult] = useState<PyramidType | null>(null);
-
   // Board game state
   const [players, setPlayers] = useState<Player[]>([]);
   const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
@@ -258,11 +234,8 @@ export default function PyramidQuiz() {
   const [gameName, setGameName] = useState('');
   const [turnNumber, setTurnNumber] = useState(1);
   const [turnPhase, setTurnPhase] = useState<TurnPhase>('global_event');
-  const [currentEvent, setCurrentEvent] = useState<GameEvent | null>(null);
-  const [playerProfiles, setPlayerProfiles] = useState<GamePlayerProfile[]>([]);
+  const [playerProfiles] = useState<GamePlayerProfile[]>([]);
   const [awaitingEndTurn, setAwaitingEndTurn] = useState(false);
-
-  const diceRef = useRef<HTMLButtonElement>(null);
 
   // Game statistics
   const [gameStats, setGameStats] = useState<GameStats>({
@@ -277,17 +250,6 @@ export default function PyramidQuiz() {
     totalMoneyLost: 0,
     healthLost: 0,
   });
-
-  // Update game stats
-  const updateStats = useCallback((update: Partial<GameStats>) => {
-    setGameStats(prev => ({
-      ...prev,
-      ...update,
-      countriesVisited: update.countriesVisited 
-        ? [...new Set([...prev.countriesVisited, ...update.countriesVisited])]
-        : prev.countriesVisited,
-    }));
-  }, []);
 
   const trackRiskOutcome = useCallback((outcome: 'success' | 'failure' | 'catastrophic', moneyChange: number, healthChange: number) => {
     setGameStats(prev => ({
@@ -310,9 +272,9 @@ export default function PyramidQuiz() {
       actionsCompleted: success ? prev.actionsCompleted + 1 : prev.actionsCompleted,
       actionsFailed: !success ? prev.actionsFailed + 1 : prev.actionsFailed,
     }));
-    // Persist to cloud
-    if (actionId) {
-      trackPersistentAction(actionId, success);
+    // Persist to cloud only on successful action
+    if (actionId && success) {
+      trackPersistentAction(actionId);
     }
   }, [trackPersistentAction]);
 
@@ -424,23 +386,6 @@ export default function PyramidQuiz() {
       }
     }
   }, [gameFinished]);
-
-  const handleAnswer = (optionScores: Partial<Record<PyramidType, number>>) => {
-    const newScores = { ...scores };
-    Object.entries(optionScores).forEach(([type, score]) => {
-      newScores[type as PyramidType] += score || 0;
-    });
-    setScores(newScores);
-
-    if (currentQuestion < QUIZ_QUESTIONS.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
-    } else {
-      const result = Object.entries(newScores).reduce((a, b) => 
-        a[1] > b[1] ? a : b
-      )[0] as PyramidType;
-      setQuizResult(result);
-    }
-  };
 
   const rollDice = () => {
     if (isRolling || isMoving) return;
@@ -737,27 +682,6 @@ export default function PyramidQuiz() {
     setGameFinished(false);
   };
 
-  const startGame = (profiles?: GamePlayerProfile[]) => {
-    const newPlayers: Player[] = [];
-    for (let i = 0; i < playerCount; i++) {
-      newPlayers.push({
-        id: i,
-        name: profiles?.[i]?.name || `${t('pyramidQuiz.multiplayer.player')} ${i + 1}`,
-        position: 0,
-        scores: createEmptyScores(),
-        color: PLAYER_COLORS[i].bg,
-        profile: profiles?.[i],
-        resources: createDefaultResources(),
-        countryType: 'HYBRID_TRANSITION',
-      });
-    }
-    setPlayers(newPlayers);
-    setCurrentPlayerIndex(0);
-    setCooperativePool(createEmptyScores());
-    setSetupPhase('playing');
-    setGameFinished(false);
-  };
-
   // Helper to get country type
   const getCountryType = (countryId: string): PyramidType | null => {
     const countryMap: Record<string, PyramidType> = {
@@ -823,9 +747,6 @@ export default function PyramidQuiz() {
   };
 
   const resetGame = () => {
-    setCurrentQuestion(0);
-    setScores(createEmptyScores());
-    setQuizResult(null);
     setPlayers([]);
     setCurrentPlayerIndex(0);
     setDiceValue(null);
@@ -1058,7 +979,6 @@ export default function PyramidQuiz() {
 
   // Board Game Modes
   if (setupPhase === 'playing' && players.length > 0) {
-    const DiceIcon = diceValue ? DICE_ICONS[diceValue - 1] : Dice1;
     const currentPlayer = players[currentPlayerIndex];
 
     // Game finished screen - Use GameEndSummary
@@ -1195,7 +1115,7 @@ export default function PyramidQuiz() {
                   }));
                 }
               }}
-              onPhaseComplete={(phase, data) => {
+              onPhaseComplete={(phase, _data) => {
                 if (phase === 'action_resolution') {
                   setTurnPhase('board_move');
                 }
