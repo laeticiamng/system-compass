@@ -12,7 +12,7 @@ interface TrajectoryExportPdfProps {
   trajectories: TrajectoryRecommendation[];
 }
 
-export function TrajectoryExportPdf({ profile, trajectories, answers }: TrajectoryExportPdfProps) {
+export function TrajectoryExportPdf({ profile, trajectories }: TrajectoryExportPdfProps) {
   const { t, i18n } = useTranslation();
   const [isExporting, setIsExporting] = useState(false);
 

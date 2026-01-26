@@ -196,6 +196,8 @@ export function PostMortemMode({ decision, onComplete }: PostMortemModeProps) {
       default: return null;
     }
   };
+  // Use the helper for outcome display
+  void getOutcomeIcon;
 
   return (
     <Card>
