@@ -764,7 +764,8 @@
     "tools": "Outils",
     "account": "Compte & Info",
     "advanced": "Modules Pro",
-    "info": "Info"
+    "info": "Info",
+    "notifications": "Notifications"
   },
   "tests": {
     "resultSaved": "Résultat sauvegardé !",
