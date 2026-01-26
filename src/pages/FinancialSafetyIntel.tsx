@@ -24,7 +24,7 @@ import { useSubscription } from '@/hooks/useSubscription';
 import { toast } from 'sonner';
 
 const SECTORS = [
-  { value: '', label: 'Tous les secteurs' },
+  { value: 'all', label: 'Tous les secteurs' },
   { value: 'savings', label: 'Épargne' },
   { value: 'real_estate', label: 'Immobilier' },
   { value: 'crypto', label: 'Crypto-monnaies' },
@@ -35,7 +35,7 @@ const SECTORS = [
 ];
 
 const AUDIENCES = [
-  { value: '', label: 'Tous publics' },
+  { value: 'all', label: 'Tous publics' },
   { value: 'individual', label: 'Particulier' },
   { value: 'diaspora', label: 'Diaspora' },
   { value: 'sme', label: 'PME' },
@@ -49,8 +49,8 @@ export default function FinancialSafetyIntel() {
   const { generateIntel, isLoading, result, error, reset, loadResult } = useFinancialIntel();
   
   const [selectedCountry, setSelectedCountry] = useState('');
-  const [sectorFocus, setSectorFocus] = useState('');
-  const [audience, setAudience] = useState('');
+  const [sectorFocus, setSectorFocus] = useState('all');
+  const [audience, setAudience] = useState('all');
   const [showHistory, setShowHistory] = useState(false);
 
   const isPro = tier === 'pro' || tier === 'premium';
@@ -59,16 +59,16 @@ export default function FinancialSafetyIntel() {
     if (!selectedCountry) return;
     await generateIntel({
       country: selectedCountry,
-      sector_focus: sectorFocus || undefined,
-      audience: audience || undefined,
+      sector_focus: sectorFocus === 'all' ? undefined : sectorFocus,
+      audience: audience === 'all' ? undefined : audience,
     });
   };
 
   const handleReset = () => {
     reset();
     setSelectedCountry('');
-    setSectorFocus('');
-    setAudience('');
+    setSectorFocus('all');
+    setAudience('all');
   };
 
   const handleLoadFromHistory = (historyResult: FinancialIntelResult) => {
