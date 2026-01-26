@@ -8104,35 +8104,6 @@
       "description": "Créez votre premier espace pour accueillir ce qui n'est pas encore prêt.",
       "cta": "Créer ma première zone"
     },
-    "updated": "Mis à jour",
-    "tension": {
-      "nourishing": "Forces nourricières",
-      "blocking": "Forces bloquantes",
-      "fragility": "Fragilités",
-      "prematureCrushing": "Risque d'écrasement prématuré"
-    },
-    "tensions": {
-      "title": "Champs de tension",
-      "add": "Ajouter une tension",
-      "placeholder": "Décrivez cette tension..."
-    },
-    "actions": {
-      "transform": "Transformer (sans décider)",
-      "merge": "Fusionner avec une autre zone",
-      "sleep": "Mettre en sommeil",
-      "archive": "Archiver sans clôture"
-    },
-    "create": {
-      "title": "Créer une zone de potentiel",
-      "subtitle": "Nommer ce qui émerge sans le figer",
-      "labelTitle": "Titre ouvert",
-      "placeholderTitle": "Ce qui commence à émerger...",
-      "hintTitle": "Un titre non-conclusif qui laisse l'espace ouvert",
-      "labelDescription": "Description volontairement vague",
-      "placeholderDescription": "Impressions, directions possibles, pas encore de certitudes...",
-      "hintDescription": "Respectez le flou. Pas d'objectifs quantifiés.",
-      "submit": "Créer cette zone"
-    },
     "toast": {
       "created": "Zone de potentiel créée",
       "statusUpdated": "Statut mis à jour",
@@ -9964,6 +9935,7 @@
       "hiddenCosts": "Coûts cachés",
       "blindSpots": "Angles morts",
       "scenarios": "Scénarios comparatifs",
+      "noRecommendation": "Ces scénarios sont présentés sans recommandation. L'outil éclaire, il ne prescrit pas.",
       "strategic": {
         "title": "Arbitrage stratégique",
         "desc": "Investissements, priorités, allocation de ressources",
