@@ -3668,6 +3668,13 @@
       "player": "Player",
       "yourTurn": "Your turn!",
       "gameOver": "Game over!"
+    },
+    "cooperative": {
+      "pool": "Cooperative Pool",
+      "poolScore": "Collective Score",
+      "victory": "Collective Victory!",
+      "defeat": "Objective not reached",
+      "score": "Score: {{score}} / {{target}}"
     }
   },
   "auth": {

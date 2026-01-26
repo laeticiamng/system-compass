@@ -4517,6 +4517,13 @@
       "player": "Joueur",
       "yourTurn": "C'est ton tour !",
       "gameOver": "Partie terminée !"
+    },
+    "cooperative": {
+      "pool": "Pool Coopératif",
+      "poolScore": "Score collectif",
+      "victory": "Victoire collective !",
+      "defeat": "Objectif non atteint",
+      "score": "Score : {{score}} / {{target}}"
     }
   },
   "auth": {
