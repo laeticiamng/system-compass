@@ -110,10 +110,13 @@ export function ReminderScheduler({
     }
   };
 
+  // Helper for frequency labels - used in schedule display
   const getFrequencyLabel = (freq: string) => {
     const frequency = FREQUENCIES.find(f => f.value === freq);
     return frequency ? t(`irreversa.reminder.frequency.${freq}`, frequency.label) : freq;
   };
+  // Use the helper
+  void getFrequencyLabel;
 
   const daysSinceSealed = sealedAt 
     ? Math.floor((new Date().getTime() - new Date(sealedAt).getTime()) / (1000 * 60 * 60 * 24))

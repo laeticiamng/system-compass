@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { 
-  Users, Building2, Landmark, Shield, Briefcase, 
+  Users, Building2, Landmark, Briefcase, 
   Globe, Scale, HelpCircle, Star, AlertTriangle,
   ThumbsUp, ThumbsDown, Minus
 } from 'lucide-react';
