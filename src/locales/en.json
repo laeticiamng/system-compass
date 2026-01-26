@@ -703,7 +703,8 @@
     "tools": "Tools",
     "account": "Account & Info",
     "advanced": "Pro Modules",
-    "info": "Info"
+    "info": "Info",
+    "notifications": "Notifications"
   },
   "tests": {
     "resultSaved": "Result saved!",
