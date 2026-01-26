@@ -4,6 +4,7 @@ import {
   Download,
   FileJson,
   FileText,
+  FileSpreadsheet,
   Loader2
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -62,6 +63,64 @@ export function TraceOSExport({ decisions, organizationName = 'Organisation' }: 
       toast.success(t('traceOS.export.jsonSuccess', 'Export JSON réussi'));
     } catch (error) {
       console.error('Export JSON error:', error);
+      toast.error(t('traceOS.export.error', 'Erreur lors de l\'export'));
+    }
+  };
+
+  const exportToCSV = () => {
+    try {
+      const flatDecisions = flattenDecisions(decisions);
+      
+      // CSV headers
+      const headers = [
+        'ID',
+        'Titre',
+        'Statut',
+        'Date',
+        'Auteur',
+        'Scope',
+        'Contexte',
+        'Hypothèse principale',
+        'Décision',
+        'Contraintes',
+        'Branches abandonnées',
+        'Profondeur'
+      ];
+
+      // CSV rows
+      const rows = flatDecisions.map(d => [
+        d.id,
+        `"${(d.title || '').replace(/"/g, '""')}"`,
+        d.status,
+        d.date,
+        `"${(d.author || '').replace(/"/g, '""')}"`,
+        d.scope,
+        `"${(d.context || '').replace(/"/g, '""')}"`,
+        `"${(d.mainHypothesis || '').replace(/"/g, '""')}"`,
+        `"${(d.decision || '').replace(/"/g, '""')}"`,
+        `"${(d.constraints || []).join('; ').replace(/"/g, '""')}"`,
+        `"${(d.abandonedBranches || []).map(b => b.title).join('; ').replace(/"/g, '""')}"`,
+        d.depth
+      ]);
+
+      const csvContent = [
+        headers.join(','),
+        ...rows.map(row => row.join(','))
+      ].join('\n');
+
+      const blob = new Blob(['\ufeff' + csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `traceos-export-${new Date().toISOString().split('T')[0]}.csv`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+
+      toast.success(t('traceOS.export.csvSuccess', 'Export CSV réussi'));
+    } catch (error) {
+      console.error('Export CSV error:', error);
       toast.error(t('traceOS.export.error', 'Erreur lors de l\'export'));
     }
   };
@@ -273,6 +332,10 @@ export function TraceOSExport({ decisions, organizationName = 'Organisation' }: 
         <DropdownMenuItem onClick={exportToJSON} className="gap-2 cursor-pointer">
           <FileJson className="w-4 h-4 text-blue-500" />
           {t('traceOS.export.json', 'Données JSON')}
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={exportToCSV} className="gap-2 cursor-pointer">
+          <FileSpreadsheet className="w-4 h-4 text-green-500" />
+          {t('traceOS.export.csv', 'Tableau CSV')}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

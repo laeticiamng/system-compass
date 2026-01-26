@@ -8,13 +8,15 @@ import {
   Shield,
   Clock,
   CheckCircle2,
-  AlertTriangle
+  AlertTriangle,
+  Download
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { useUserCases } from '@/hooks/useUserCases';
 import { useIrreversa } from '@/hooks/useIrreversa';
+import { toast } from 'sonner';
 
 interface CalendarEvent {
   id: string;
@@ -131,6 +133,59 @@ export function ConsolidatedCalendar() {
     setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1));
   };
 
+  // Export to ICS format
+  const exportToICS = () => {
+    if (events.length === 0) {
+      toast.error(t('dashboard.calendar.noEvents', 'Aucun événement à exporter'));
+      return;
+    }
+
+    try {
+      const formatDateICS = (date: Date) => {
+        return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+      };
+
+      const icsContent = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//World Alignment//Calendar Export//FR',
+        'CALSCALE:GREGORIAN',
+        'METHOD:PUBLISH',
+        ...events.map(event => {
+          const endDate = new Date(event.date.getTime() + 60 * 60 * 1000); // 1 hour duration
+          return [
+            'BEGIN:VEVENT',
+            `UID:${event.id}@world-alignment`,
+            `DTSTAMP:${formatDateICS(new Date())}`,
+            `DTSTART:${formatDateICS(event.date)}`,
+            `DTEND:${formatDateICS(endDate)}`,
+            `SUMMARY:${event.title.replace(/[,;]/g, ' ')}`,
+            `DESCRIPTION:Source: ${event.source}`,
+            `CATEGORIES:${event.type.toUpperCase()}`,
+            event.completed ? 'STATUS:COMPLETED' : 'STATUS:CONFIRMED',
+            'END:VEVENT'
+          ].join('\r\n');
+        }),
+        'END:VCALENDAR'
+      ].join('\r\n');
+
+      const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `calendrier-${new Date().toISOString().split('T')[0]}.ics`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+
+      toast.success(t('dashboard.calendar.exported', 'Calendrier exporté'));
+    } catch (error) {
+      console.error('ICS export error:', error);
+      toast.error(t('dashboard.calendar.exportError', 'Erreur lors de l\'export'));
+    }
+  };
+
   const monthName = currentMonth.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
   const dayNames = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
   const today = new Date();
@@ -144,6 +199,15 @@ export function ConsolidatedCalendar() {
             {t('dashboard.calendar.title', 'Calendrier consolidé')}
           </CardTitle>
           <div className="flex items-center gap-1">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="h-8 w-8" 
+              onClick={exportToICS}
+              title={t('dashboard.calendar.export', 'Exporter ICS')}
+            >
+              <Download className="w-4 h-4" />
+            </Button>
             <Button variant="ghost" size="icon" className="h-8 w-8" onClick={prevMonth}>
               <ChevronLeft className="w-4 h-4" />
             </Button>
