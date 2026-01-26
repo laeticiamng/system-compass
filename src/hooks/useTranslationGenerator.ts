@@ -20,22 +20,25 @@ export interface GenerationResult {
   keysTranslated?: number;
 }
 
-// Sections that need translation for secondary languages
+// All sections that need translation for secondary languages
 const SECTIONS_TO_TRANSLATE = [
-  'lifeTrajectory',
-  'lifeProfiles', 
-  'lgbtqRights',
-  'pyramidQuiz',
-  'dashboard',
-  'achievements',
-  'resources',
-  'lifeGame',
-  'pmo',
-  'governance',
-  'ovi'
+  'exitKeys', 'common', 'errors', 'ai', 'journey', 'insights', 'steps', 
+  'responsibility', 'profiles', 'cta', 'guestMode', 'finalCta', 
+  'disclaimerConsent', 'simulationDisclaimer', 'header', 'notDoes',
+  'systemicMistakes', 'dashboard', 'achievements', 'game', 'footer', 
+  'about', 'nav', 'tests', 'worldMap', 'history', 'export', 'vacation',
+  'hero', 'howItWorks', 'pyramids', 'pyramidTypes', 'featured', 
+  'countries', 'countryDetail', 'profileBuilder', 'pmDashboard', 
+  'pmCountry', 'pmTeam', 'pmForecast', 'pmBudget', 'pmRisk', 
+  'pmReports', 'pmAnalytics', 'pmSettings', 'governance', 'ovi', 
+  'latent', 'irreversa', 'settings', 'admin', 'notifications', 
+  'profile', 'profileSetup', 'lifeTrajectory', 'lifeProfiles', 
+  'lgbtqRights', 'pyramidQuiz', 'countriesData', 'auth', 'resources',
+  'lifeGame', 'pmo', 'financialIntel'
 ] as const;
 
-const SECONDARY_LANGUAGES = ['de', 'es', 'nl', 'it', 'pt'] as const;
+// All 11 secondary languages (excl. FR which is core, EN is reference)
+const SECONDARY_LANGUAGES = ['de', 'es', 'nl', 'it', 'pt', 'zh', 'hi', 'ar', 'bn', 'ru', 'ur'] as const;
 
 function getAllKeys(obj: Record<string, unknown>, prefix = ''): string[] {
   let keys: string[] = [];
