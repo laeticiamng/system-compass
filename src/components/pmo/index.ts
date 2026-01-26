@@ -6,3 +6,5 @@ export { PriorityBoard } from './PriorityBoard';
 export { EvidenceVault } from './EvidenceVault';
 export { ComplianceMatrix } from './ComplianceMatrix';
 export { AiCitationsDisplay } from './AiCitationsDisplay';
+export { MilestoneAlerts } from './MilestoneAlerts';
+export { InitiativeReorderList } from './InitiativeReorderList';
