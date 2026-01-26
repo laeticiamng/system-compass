@@ -664,6 +664,7 @@
     }
   },
   "nav": {
+    "home": "Home",
     "start": "Start",
     "countries": "Countries",
     "profile": "Profile",
