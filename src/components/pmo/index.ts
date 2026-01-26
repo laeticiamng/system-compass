@@ -8,3 +8,7 @@ export { ComplianceMatrix } from './ComplianceMatrix';
 export { AiCitationsDisplay } from './AiCitationsDisplay';
 export { MilestoneAlerts } from './MilestoneAlerts';
 export { InitiativeReorderList } from './InitiativeReorderList';
+export { CriticalPathDisplay } from './CriticalPathDisplay';
+export { BurnRateChart } from './BurnRateChart';
+export { ComplianceAlertSystem } from './ComplianceAlertSystem';
+export { PmoProjectSynthesis } from './PmoProjectSynthesis';

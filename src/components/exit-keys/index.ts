@@ -15,3 +15,4 @@ export { PersonalizedExitKeys } from './PersonalizedExitKeys';
 // New enhanced components
 export { StrategyCostSimulator } from './StrategyCostSimulator';
 export { StrategyChecklist } from './StrategyChecklist';
+export { ShortlistComparison } from './ShortlistComparison';
