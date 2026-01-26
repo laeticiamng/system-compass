@@ -8256,8 +8256,9 @@
     }
   },
   "irreversa": {
-    "title": "Protocole de Seuil",
-    "subtitle": "Identifier et traverser les points d'irréversibilité stratégique",
+    "title": "Seuils Irréversibles",
+    "subtitle": "Documentez et scellez les moments où une situation devient irréversible. Un outil de traçabilité et de clarté pour les décisions majeures.",
+    "badge": "Module Irreversa",
     "paywall": {
       "title": "IRREVERSA - Enterprise",
       "description": "Module B2B pour les décisions irréversibles"
@@ -8273,7 +8274,10 @@
       "financial": "Financier",
       "organizational": "Organisationnel",
       "legal": "Juridique",
-      "ethical": "Éthique"
+      "ethical": "Éthique",
+      "hr": "RH",
+      "operations": "Opérations",
+      "finance": "Finance"
     },
     "nature": {
       "resource_commitment": "Engagement de ressources",
@@ -8292,7 +8296,7 @@
       "board": "Conseil d'administration",
       "founder": "Fondateur",
       "director": "Directeur",
-      "comex": "COMEX"
+      "comex": "Comité Exécutif"
     },
     "fields": {
       "title": "Titre",
@@ -8326,11 +8330,13 @@
     "actions": {
       "newThreshold": "Nouveau seuil",
       "detect": "Détecter le seuil",
-      "mark": "Marquer",
+      "mark": "Marquer comme noté",
       "validate": "Valider",
       "seal": "Sceller définitivement",
       "view": "Voir détails",
-      "addAlternative": "Ajouter une alternative"
+      "viewDetails": "Voir les détails",
+      "addAlternative": "Ajouter une alternative",
+      "linkToTraceOS": "Lier à TraceOS"
     },
     "warning": {
       "title": "Protocole d'irréversibilité",
@@ -8340,27 +8346,28 @@
       "noRecommendation": "Pas de recommandation"
     },
     "create": {
-      "title": "Détecter un seuil d'irréversibilité",
+      "title": "Créer un nouveau seuil",
+      "button": "Nouveau seuil",
       "warning": "Ce formulaire engage la responsabilité morale du validateur"
     },
     "sealed": {
-      "title": "Seuil scellé définitivement",
-      "description": "Ce seuil a été scellé et ne peut plus être modifié.",
+      "title": "SEUIL SCELLÉ",
+      "description": "Ce seuil a été scellé de manière permanente. Aucune modification ultérieure n'est possible.",
       "notice": "Scellé le",
       "timestamp": "Horodatage"
     },
     "tabs": {
       "details": "Détails",
       "witnesses": "Témoins",
-      "audit": "Audit"
+      "audit": "Piste d'audit"
     },
     "witnesses": {
       "title": "Témoins",
       "add": "Ajouter un témoin",
       "name": "Nom du témoin",
       "role": "Rôle du témoin",
-      "statement": "Déclaration",
-      "empty": "Aucun témoin enregistré",
+      "statement": "Déclaration (optionnel)",
+      "empty": "Aucun témoin pour le moment",
       "added": "Témoin ajouté avec succès"
     },
     "witnessRole": {
@@ -8403,10 +8410,42 @@
       "sealed": "Seuil scellé définitivement"
     },
     "empty": {
-      "title": "Aucun seuil d'irréversibilité",
-      "description": "Identifiez les points de non-retour stratégiques"
+      "title": "Aucun seuil pour le moment",
+      "description": "Créez votre premier seuil d'irréversibilité pour commencer à documenter vos décisions critiques."
     },
-    "demoMode": "Connectez-vous pour utiliser IRREVERSA"
+    "export": {
+      "success": "Certificat PDF généré avec succès",
+      "error": "Erreur lors de la génération du PDF"
+    },
+    "criticality": {
+      "title": "Score de criticité",
+      "low": "Faible",
+      "medium": "Moyen",
+      "high": "Élevé",
+      "critical": "Critique"
+    },
+    "disclaimer": {
+      "title": "Outil de documentation",
+      "text": "Ce module vous aide à documenter les seuils franchis. Il a une valeur de clarification personnelle, et non juridique."
+    },
+    "demo": {
+      "threshold1": {
+        "title": "Décision de licenciement collectif",
+        "context": "Restructuration suite à perte de marché majeur"
+      },
+      "threshold2": {
+        "title": "Cession de filiale stratégique",
+        "context": "Recentrage sur le cœur de métier"
+      },
+      "threshold3": {
+        "title": "Fermeture site de production",
+        "context": "Délocalisation vers zone à moindre coût"
+      }
+    },
+    "preview": {
+      "description": "Découvrez le module Irreversa avec des exemples. Passez à Pro pour documenter vos propres seuils."
+    },
+    "demoMode": "Mode démo - connectez-vous pour sauvegarder vos seuils"
   },
   "pricing": {
     "unlock": "Débloquez plus de fonctionnalités",
@@ -8704,131 +8743,6 @@
       "fragile": "Fragiles",
       "blocked": "Bloquées",
       "avgTensions": "Tensions moy."
-    }
-  },
-  "irreversa": {
-    "title": "Seuils Irréversibles",
-    "subtitle": "Documentez et scellez les moments où une situation devient irréversible.",
-    "badge": "Module Irreversa",
-    "status": {
-      "detected": "Détecté",
-      "marked": "Marqué",
-      "validated": "Validé",
-      "sealed": "Scellé"
-    },
-    "role": {
-      "ceo": "CEO",
-      "board": "Conseil",
-      "founder": "Fondateur",
-      "director": "Directeur",
-      "comex": "Comex"
-    },
-    "domain": {
-      "strategic": "Stratégique",
-      "financial": "Financier",
-      "organizational": "Organisationnel",
-      "legal": "Légal",
-      "ethical": "Éthique",
-      "hr": "RH",
-      "operations": "Opérations",
-      "finance": "Finance"
-    },
-    "actions": {
-      "newThreshold": "Nouveau seuil"
-    },
-    "warning": {
-      "title": "Attention - Module de traçabilité",
-      "noCancellation": "Aucune annulation possible après scellement",
-      "noEdit": "Aucune modification après validation",
-      "noScoring": "Aucune note ou score",
-      "noRecommendation": "Aucune recommandation"
-    },
-    "toast": {
-      "created": "Seuil créé",
-      "marked": "Seuil marqué",
-      "validated": "Seuil validé",
-      "sealed": "Seuil scellé"
-    },
-    "dialog": {
-      "mark": {
-        "title": "Marquer ce seuil",
-        "description": "Confirmer que ce seuil a été identifié"
-      },
-      "validate": {
-        "title": "Valider ce seuil",
-        "description": "Confirmer la validation de ce seuil irréversible"
-      },
-      "seal": {
-        "title": "Sceller ce seuil",
-        "description": "Le scellement est définitif et irréversible"
-      }
-    },
-    "fields": {
-      "actorName": "Nom de l'acteur",
-      "actorRole": "Rôle de l'acteur"
-    },
-    "placeholders": {
-      "actorName": "Nom complet..."
-    },
-    "empty": {
-      "title": "Aucun seuil documenté",
-      "description": "Commencez par documenter un seuil irréversible"
-    },
-    "demoMode": "Mode démo - connectez-vous pour sauvegarder vos seuils",
-    "paywall": {
-      "title": "Module Irreversa Pro",
-      "description": "Accédez au module complet pour documenter vos seuils irréversibles"
-    },
-    "preview": {
-      "description": "Découvrez le module Irreversa avec des exemples. Passez à Pro pour documenter vos propres seuils."
-    },
-    "demo": {
-      "threshold1": {
-        "title": "Décision de licenciement collectif",
-        "context": "Restructuration suite à perte de marché majeur"
-      },
-      "threshold2": {
-        "title": "Cession de filiale stratégique",
-        "context": "Recentrage sur le cœur de métier"
-      },
-      "threshold3": {
-        "title": "Fermeture site de production",
-        "context": "Délocalisation vers zone à moindre coût"
-      }
-    },
-    "disclaimer": {
-      "title": "Outil de documentation",
-      "text": "Ce module vous aide à documenter les seuils franchis. Il a une valeur de clarification personnelle, pas légale."
-    },
-    "sealed": {
-      "notice": "Scellé le"
-    },
-    "witnesses": {
-      "title": "Témoins",
-      "add": "Ajouter un témoin",
-      "name": "Nom du témoin",
-      "role": "Rôle du témoin",
-      "statement": "Déclaration",
-      "empty": "Aucun témoin enregistré",
-      "added": "Témoin ajouté"
-    },
-    "witnessRole": {
-      "executive": "Cadre dirigeant",
-      "board_member": "Membre du conseil",
-      "legal_counsel": "Conseil juridique",
-      "external_advisor": "Conseiller externe",
-      "auditor": "Auditeur",
-      "stakeholder": "Partie prenante"
-    },
-    "audit": {
-      "empty": "Aucune entrée d'audit",
-      "action": {
-        "created": "Seuil créé",
-        "marked": "Seuil marqué",
-        "witness_added": "Témoin ajouté",
-        "validated": "Seuil validé",
-        "sealed": "Seuil scellé"
-      }
     }
   },
   "partners": {
