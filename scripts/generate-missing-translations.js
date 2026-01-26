@@ -299,8 +299,7 @@ async function main() {
     const updated = deepMerge(translations, translatedTotal);
     saveTranslations(lang, updated);
     console.log(`   ✅ Saved ${lang}.json`);
-  }
-  
+    
     totalMissing += missingCount;
     totalTranslated += Object.keys(translatedTotal).length;
   }
