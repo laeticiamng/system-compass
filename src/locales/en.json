@@ -2134,6 +2134,512 @@
         ],
         "planB": "Netherlands offers EU hub with English. Consider Germany for more opportunities, Belgium for lower costs, or UK for pure English environment."
       }
+    },
+    "argentina": {
+      "name": "Argentina",
+      "region": "South America",
+      "ruleOfGold": "Adapt constantly. The only constant is change — master the art of improvisation.",
+      "pyramid": {
+        "top": "Political dynasties and economic elites",
+        "institutions": "Unstable peso, recurring crises",
+        "gatekeepers": "Union leaders, political networks",
+        "valueCreators": "Entrepreneurs, tech talent, agro-industry",
+        "base": "Workers facing inflation",
+        "realAsset": "Adaptability and crisis resilience"
+      },
+      "whoWins": ["Those with dollar income", "Crisis-resilient entrepreneurs", "Tech workers paid in USD", "Landowners"],
+      "whoLoses": ["Peso earners", "Fixed-income retirees", "Those without international options", "Small savers"],
+      "playbook": {
+        "do": ["Earn in dollars", "Build international options", "Master informal economy", "Diversify currencies", "Network with diaspora"],
+        "dont": ["Save in pesos", "Trust the system", "Plan too far ahead", "Rely on banks alone", "Ignore political cycles"],
+        "plan30Days": ["Open dollar accounts", "Assess income currency options", "Build emergency USD fund", "Map export opportunities"],
+        "plan12Months": ["Establish foreign income stream", "Build international network", "Create offshore options", "Develop remote skills"],
+        "plan5Years": ["Secure residence abroad", "Diversify assets globally", "Build passive income in hard currency", "Maintain Argentina base selectively"],
+        "planB": "Uruguay for stability, Chile for career, Spain for EU access. Keep Argentina for lifestyle while building elsewhere."
+      }
+    },
+    "austria": {
+      "name": "Austria",
+      "region": "Western Europe",
+      "ruleOfGold": "Order and tradition. Respect hierarchy, follow rules, and integrate slowly.",
+      "pyramid": {
+        "top": "Old aristocratic families and business elite",
+        "institutions": "Efficient bureaucracy",
+        "gatekeepers": "German language and local customs",
+        "valueCreators": "Professionals, tourism, manufacturing",
+        "base": "Workers in structured system",
+        "realAsset": "German skills and patience"
+      },
+      "whoWins": ["German speakers", "Patient professionals", "Those who integrate", "EU citizens"],
+      "whoLoses": ["Non-German speakers", "Impatient entrepreneurs", "Those seeking quick results", "Cultural outsiders"],
+      "playbook": {
+        "do": ["Learn German fluently", "Respect hierarchy", "Build trust slowly", "Get credentials recognized", "Appreciate culture"],
+        "dont": ["Rush relationships", "Ignore formalities", "Underestimate bureaucracy", "Be too direct", "Skip language learning"],
+        "plan30Days": ["Assess German level", "Research credential recognition", "Understand visa requirements", "Identify integration steps"],
+        "plan12Months": ["Reach B2 German", "Establish professional network", "Integrate into local community", "Stabilize legal status"],
+        "plan5Years": ["Achieve fluency", "Build stable career", "Consider citizenship", "Integrate fully"],
+        "planB": "Germany for larger market, Switzerland for higher salaries, Czech Republic for lower costs."
+      }
+    },
+    "belgium": {
+      "name": "Belgium",
+      "region": "Western Europe",
+      "ruleOfGold": "Consensus is king. Navigate the complex political landscape patiently.",
+      "pyramid": {
+        "top": "Linguistic communities and political parties",
+        "institutions": "Federal government with regional complexity",
+        "gatekeepers": "Social pillars and language barriers",
+        "valueCreators": "Multinationals, EU institutions, SMEs",
+        "base": "Workers across language divides",
+        "realAsset": "EU institutional access"
+      },
+      "whoWins": ["EU career seekers", "Multilingual professionals", "Those patient with complexity", "International organization workers"],
+      "whoLoses": ["Monolingual outsiders", "Those seeking simplicity", "Impatient entrepreneurs", "Those avoiding bureaucracy"],
+      "playbook": {
+        "do": ["Learn multiple languages", "Understand regional differences", "Network in EU institutions", "Be patient with complexity", "Build cross-community ties"],
+        "dont": ["Ignore language politics", "Expect quick decisions", "Underestimate bureaucracy", "Stay in one community only", "Rush integration"],
+        "plan30Days": ["Understand Belgian structure", "Choose region strategically", "Start language learning", "Research EU opportunities"],
+        "plan12Months": ["Build professional network", "Establish legal presence", "Integrate into local community", "Understand tax system"],
+        "plan5Years": ["Achieve permanent residence", "Build career in EU ecosystem", "Master Belgian complexity", "Consider citizenship"],
+        "planB": "Netherlands for simpler system, Luxembourg for finance, France for French speakers."
+      }
+    },
+    "chile": {
+      "name": "Chile",
+      "region": "South America",
+      "ruleOfGold": "Stability within limits. The system rewards conformity and long-term planning.",
+      "pyramid": {
+        "top": "Economic elites and political establishment",
+        "institutions": "Relatively stable but unequal system",
+        "gatekeepers": "Networks, credentials, and capital",
+        "valueCreators": "Entrepreneurs, professionals, mining sector",
+        "base": "Workers seeking upward mobility",
+        "realAsset": "Relative stability in volatile region"
+      },
+      "whoWins": ["Professionals with capital", "Mining sector workers", "Patient long-term planners", "Those with good networks"],
+      "whoLoses": ["Those without connections", "Impatient entrepreneurs", "Those expecting equality", "Outsiders without capital"],
+      "playbook": {
+        "do": ["Build strong network", "Invest in credentials", "Plan for long term", "Understand class dynamics", "Learn local codes"],
+        "dont": ["Expect rapid mobility", "Ignore importance of connections", "Underestimate inequality", "Be too direct", "Rush relationships"],
+        "plan30Days": ["Research visa options", "Identify industry opportunities", "Build initial contacts", "Understand cost of living"],
+        "plan12Months": ["Establish legal presence", "Build professional network", "Integrate into community", "Develop local expertise"],
+        "plan5Years": ["Obtain permanent residence", "Build stable career", "Diversify regionally", "Consider citizenship"],
+        "planB": "Argentina for larger market, Peru for growth, Uruguay for stability. Chile offers Latin America's most stable environment."
+      }
+    },
+    "china": {
+      "name": "China",
+      "region": "East Asia",
+      "ruleOfGold": "Align with the system or be aligned. Growth is possible but within strict boundaries.",
+      "pyramid": {
+        "top": "Party leadership and state apparatus",
+        "institutions": "Powerful state directing economy",
+        "gatekeepers": "Guanxi, Party connections, and compliance",
+        "valueCreators": "Entrepreneurs, tech workers, manufacturers",
+        "base": "Massive workforce with limited mobility",
+        "realAsset": "Access to the largest market in the world"
+      },
+      "whoWins": ["Those who align with state priorities", "Connected entrepreneurs", "Tech talent in approved sectors", "Those with guanxi"],
+      "whoLoses": ["Non-conformists", "Those in disfavored sectors", "Outsiders without connections", "Those seeking political freedom"],
+      "playbook": {
+        "do": ["Learn Mandarin", "Build guanxi carefully", "Stay apolitical publicly", "Understand red lines", "Create exit options"],
+        "dont": ["Criticize the system", "Ignore political signals", "Centralize all assets in China", "Burn bridges", "Underestimate surveillance"],
+        "plan30Days": ["Assess visa requirements", "Identify approved sectors", "Start Mandarin if needed", "Build initial contacts"],
+        "plan12Months": ["Establish legal presence", "Build professional network", "Understand local dynamics", "Create offshore backup"],
+        "plan5Years": ["Build stable position", "Diversify internationally", "Maintain exit options", "Evaluate long-term commitment"],
+        "planB": "Singapore for China exposure without restrictions, Hong Kong for finance, Taiwan for similar culture with freedom."
+      }
+    },
+    "colombia": {
+      "name": "Colombia",
+      "region": "South America",
+      "ruleOfGold": "Relationships first, business second. Navigate complexity with warmth and patience.",
+      "pyramid": {
+        "top": "Economic oligarchies and political elites",
+        "institutions": "Modernizing but still complex state",
+        "gatekeepers": "Connections, recommendations, and palanca",
+        "valueCreators": "Entrepreneurs, tech startups, services",
+        "base": "Growing middle class seeking opportunities",
+        "realAsset": "Network and strategic positioning"
+      },
+      "whoWins": ["Connected entrepreneurs", "Those with diaspora ties", "Patient relationship builders", "Tech entrepreneurs"],
+      "whoLoses": ["Impatient outsiders", "Those ignoring local codes", "Loners without network", "Those expecting transparency"],
+      "playbook": {
+        "do": ["Build relationships first", "Learn Colombian codes", "Network extensively", "Be patient", "Invest in trust"],
+        "dont": ["Rush business deals", "Ignore social dynamics", "Be too direct", "Underestimate security concerns", "Neglect personal connections"],
+        "plan30Days": ["Research visa options", "Build initial contacts", "Understand regional differences", "Plan exploratory visit"],
+        "plan12Months": ["Establish legal presence", "Build trust network", "Understand local market", "Develop partnerships"],
+        "plan5Years": ["Obtain residence", "Build stable business", "Integrate into community", "Diversify regionally"],
+        "planB": "Mexico for larger market, Panama for business hub, USA for opportunities. Colombia offers growing ecosystem."
+      }
+    },
+    "cuba": {
+      "name": "Cuba",
+      "region": "Caribbean",
+      "ruleOfGold": "Survive the system, don't fight it. Build alternatives quietly while navigating constraints.",
+      "pyramid": {
+        "top": "Party leadership and military-economic complex",
+        "institutions": "State controlling most economic activity",
+        "gatekeepers": "Party membership and connections",
+        "valueCreators": "Informal economy, diaspora remittances",
+        "base": "Population with limited economic freedom",
+        "realAsset": "Resourcefulness and diaspora connections"
+      },
+      "whoWins": ["Those with diaspora support", "Connected insiders", "Informal economy operators", "Those with foreign currency"],
+      "whoLoses": ["Those seeking economic freedom", "Entrepreneurs outside system", "Those without foreign connections", "Political critics"],
+      "playbook": {
+        "do": ["Build diaspora connections", "Develop exportable skills", "Navigate informally", "Stay politically neutral", "Create exit options"],
+        "dont": ["Publicly criticize the system", "Centralize resources", "Ignore informal economy", "Burn bridges", "Wait for change"],
+        "plan30Days": ["Assess exit options", "Build diaspora contacts", "Identify skill opportunities", "Secure documents"],
+        "plan12Months": ["Develop remote work skills", "Build international network", "Create income alternatives", "Plan exit strategy"],
+        "plan5Years": ["Establish residence abroad", "Build income in hard currency", "Maintain family connections", "Create options"],
+        "planB": "Spain for EU access, Mexico for proximity, USA for diaspora. Build skills that work anywhere."
+      }
+    },
+    "denmark": {
+      "name": "Denmark",
+      "region": "Northern Europe",
+      "ruleOfGold": "Janteloven - don't stand out. Integrate, contribute, and embrace the collective.",
+      "pyramid": {
+        "top": "Social democratic consensus",
+        "institutions": "Efficient, transparent bureaucracy",
+        "gatekeepers": "Danish language and cultural integration",
+        "valueCreators": "Professionals, tech workers, designers",
+        "base": "Well-protected workforce",
+        "realAsset": "Work-life balance and social security"
+      },
+      "whoWins": ["Those who integrate fully", "Danish speakers", "Design and tech professionals", "Those valuing balance"],
+      "whoLoses": ["Individualists who stand out", "Non-Danish speakers long-term", "Those seeking rapid wealth", "Cultural outsiders"],
+      "playbook": {
+        "do": ["Learn Danish seriously", "Embrace hygge culture", "Integrate into local life", "Value work-life balance", "Network professionally"],
+        "dont": ["Stand out excessively", "Ignore Danish language", "Expect American-style ambition", "Remain in expat bubble", "Underestimate integration needs"],
+        "plan30Days": ["Secure residence permit", "Start Danish language course", "Register with CPR", "Open Danish bank account"],
+        "plan12Months": ["Reach functional Danish", "Build professional network", "Integrate into local activities", "Understand tax system"],
+        "plan5Years": ["Achieve Danish fluency", "Apply for permanent residence", "Consider citizenship", "Fully integrate"],
+        "planB": "Sweden for similar culture, Norway for higher salaries, Netherlands for more international feel."
+      }
+    },
+    "india": {
+      "name": "India",
+      "region": "South Asia",
+      "ruleOfGold": "Navigate complexity with relationships. The formal and informal coexist everywhere.",
+      "pyramid": {
+        "top": "Business conglomerates and political dynasties",
+        "institutions": "Democratic but complex bureaucracy",
+        "gatekeepers": "Networks, caste dynamics, and recommendations",
+        "valueCreators": "Tech entrepreneurs, professionals, diaspora",
+        "base": "Massive population seeking opportunities",
+        "realAsset": "Network and ability to navigate complexity"
+      },
+      "whoWins": ["Tech entrepreneurs", "Those with strong networks", "Diaspora returnees with capital", "Patient relationship builders"],
+      "whoLoses": ["Those expecting transparency", "Impatient outsiders", "Those without connections", "Those ignoring cultural complexity"],
+      "playbook": {
+        "do": ["Build strong network", "Understand regional differences", "Be patient with complexity", "Invest in relationships", "Learn local dynamics"],
+        "dont": ["Expect uniform system", "Ignore cultural nuances", "Rush business deals", "Underestimate bureaucracy", "Neglect personal relationships"],
+        "plan30Days": ["Research visa options", "Build initial contacts", "Understand regional opportunities", "Plan exploratory visit"],
+        "plan12Months": ["Establish legal presence", "Build trust network", "Navigate bureaucracy", "Develop local partnerships"],
+        "plan5Years": ["Build stable business", "Integrate into ecosystem", "Diversify regionally", "Create international options"],
+        "planB": "Singapore for India exposure without complexity, UAE for business hub, UK for diaspora. India offers massive market potential."
+      }
+    },
+    "italy": {
+      "name": "Italy",
+      "region": "Southern Europe",
+      "ruleOfGold": "La bella figura - appearance and relationships matter. Navigate with patience and style.",
+      "pyramid": {
+        "top": "Old money and political establishment",
+        "institutions": "Complex bureaucracy with regional variation",
+        "gatekeepers": "Connections, recommendations, and bella figura",
+        "valueCreators": "SMEs, fashion, design, tourism",
+        "base": "Workers in protected but rigid market",
+        "realAsset": "Quality of life and cultural richness"
+      },
+      "whoWins": ["Those with connections", "Patient relationship builders", "Creative professionals", "Those appreciating lifestyle"],
+      "whoLoses": ["Impatient entrepreneurs", "Those ignoring social codes", "Outsiders without network", "Those seeking efficiency"],
+      "playbook": {
+        "do": ["Learn Italian well", "Build relationships slowly", "Embrace la bella figura", "Network extensively", "Appreciate quality of life"],
+        "dont": ["Expect German efficiency", "Ignore importance of appearances", "Rush business relationships", "Underestimate bureaucracy", "Be too direct"],
+        "plan30Days": ["Research visa options", "Start Italian learning", "Build initial contacts", "Plan exploratory visit"],
+        "plan12Months": ["Establish legal presence", "Build professional network", "Integrate into local life", "Navigate bureaucracy"],
+        "plan5Years": ["Obtain permanent residence", "Build stable career", "Integrate fully", "Consider citizenship"],
+        "planB": "Spain for similar lifestyle with easier system, France for professionals, Portugal for lower costs."
+      }
+    },
+    "mexico": {
+      "name": "Mexico",
+      "region": "North America",
+      "ruleOfGold": "Relationships and trust before business. Navigate complexity with patience and palanca.",
+      "pyramid": {
+        "top": "Economic oligarchies and political elites",
+        "institutions": "Complex federal system with regional variation",
+        "gatekeepers": "Connections, palanca, and recommendations",
+        "valueCreators": "Entrepreneurs, nearshoring, tech, manufacturing",
+        "base": "Large workforce seeking opportunities",
+        "realAsset": "US proximity and growing market"
+      },
+      "whoWins": ["Connected entrepreneurs", "Nearshoring companies", "Those with palanca", "US-connected businesses"],
+      "whoLoses": ["Impatient outsiders", "Those ignoring local codes", "Loners without network", "Those underestimating security"],
+      "playbook": {
+        "do": ["Build strong network", "Learn local codes", "Invest in relationships", "Understand regional differences", "Take security seriously"],
+        "dont": ["Rush business deals", "Ignore social dynamics", "Underestimate complexity", "Neglect security", "Be too direct"],
+        "plan30Days": ["Research visa options", "Build initial contacts", "Understand regional safety", "Plan exploratory visit"],
+        "plan12Months": ["Establish legal presence", "Build trust network", "Develop local partnerships", "Understand tax system"],
+        "plan5Years": ["Obtain permanent residence", "Build stable business", "Diversify operations", "Consider citizenship"],
+        "planB": "USA for stability (if visa possible), Panama for business hub, Colombia for growth. Mexico offers US access with lower costs."
+      }
+    },
+    "norway": {
+      "name": "Norway",
+      "region": "Northern Europe",
+      "ruleOfGold": "Equality and conformity. Integrate deeply, contribute to the collective, stay humble.",
+      "pyramid": {
+        "top": "Social democratic oil-wealth consensus",
+        "institutions": "Efficient, transparent, and generous",
+        "gatekeepers": "Norwegian language and cultural integration",
+        "valueCreators": "Oil sector, tech, fishing, professionals",
+        "base": "Well-protected and equal workforce",
+        "realAsset": "Extreme stability and quality of life"
+      },
+      "whoWins": ["Those who integrate fully", "Norwegian speakers", "Oil and energy professionals", "Those valuing equality"],
+      "whoLoses": ["Individualists seeking wealth", "Non-Norwegian speakers long-term", "Those escaping taxes", "Cultural outsiders"],
+      "playbook": {
+        "do": ["Learn Norwegian seriously", "Embrace dugnad culture", "Integrate into local life", "Value equality", "Appreciate nature"],
+        "dont": ["Display wealth openly", "Ignore Norwegian language", "Expect rapid wealth creation", "Remain in expat bubble", "Underestimate integration needs"],
+        "plan30Days": ["Secure residence permit", "Start Norwegian course", "Register for ID number", "Open Norwegian bank account"],
+        "plan12Months": ["Reach functional Norwegian", "Build professional network", "Integrate into activities", "Understand tax system"],
+        "plan5Years": ["Achieve Norwegian fluency", "Apply for permanent residence", "Consider citizenship", "Fully integrate"],
+        "planB": "Sweden for similar culture with more opportunities, Denmark for different style, UK for English environment."
+      }
+    },
+    "peru": {
+      "name": "Peru",
+      "region": "South America",
+      "ruleOfGold": "Relationships and patience. Navigate informality with connections and cultural understanding.",
+      "pyramid": {
+        "top": "Economic elites and political establishment",
+        "institutions": "Modernizing but still informal",
+        "gatekeepers": "Connections, recommendations, and trust",
+        "valueCreators": "Mining, tourism, gastronomy, entrepreneurs",
+        "base": "Growing middle class seeking opportunities",
+        "realAsset": "Network and cultural navigation"
+      },
+      "whoWins": ["Connected entrepreneurs", "Mining sector workers", "Tourism professionals", "Those with good network"],
+      "whoLoses": ["Impatient outsiders", "Those ignoring informality", "Loners without connections", "Those expecting transparency"],
+      "playbook": {
+        "do": ["Build relationships first", "Learn local codes", "Navigate informality", "Be patient", "Invest in trust"],
+        "dont": ["Rush business deals", "Ignore social dynamics", "Underestimate informality", "Be too formal", "Neglect personal connections"],
+        "plan30Days": ["Research visa options", "Build initial contacts", "Understand regional differences", "Plan exploratory visit"],
+        "plan12Months": ["Establish legal presence", "Build trust network", "Understand local market", "Develop partnerships"],
+        "plan5Years": ["Obtain residence", "Build stable business", "Integrate into community", "Diversify regionally"],
+        "planB": "Chile for stability, Colombia for similar culture, Ecuador for lower costs. Peru offers unique cultural richness."
+      }
+    },
+    "poland": {
+      "name": "Poland",
+      "region": "Central Europe",
+      "ruleOfGold": "Work hard, respect tradition, build slowly. The system rewards persistence and conformity.",
+      "pyramid": {
+        "top": "Political establishment and new business elite",
+        "institutions": "EU-aligned but nationally conscious",
+        "gatekeepers": "Polish language and cultural integration",
+        "valueCreators": "IT professionals, entrepreneurs, skilled workers",
+        "base": "Growing middle class workforce",
+        "realAsset": "EU access with lower costs"
+      },
+      "whoWins": ["IT professionals", "Polish speakers", "EU citizens leveraging arbitrage", "Patient integrators"],
+      "whoLoses": ["Non-Polish speakers long-term", "Those ignoring cultural values", "Quick-profit seekers", "Cultural outsiders"],
+      "playbook": {
+        "do": ["Learn Polish gradually", "Respect Catholic cultural values", "Build professional network", "Leverage EU benefits", "Be patient"],
+        "dont": ["Ignore cultural sensitivities", "Remain in expat bubble", "Underestimate nationalism", "Expect Western European salaries", "Rush integration"],
+        "plan30Days": ["Secure EU registration or visa", "Start Polish basics", "Understand cost advantages", "Build initial network"],
+        "plan12Months": ["Develop Polish skills", "Build professional reputation", "Integrate into local life", "Understand business environment"],
+        "plan5Years": ["Achieve Polish proficiency", "Build stable career", "Consider long-term residence", "Leverage EU mobility"],
+        "planB": "Germany for higher salaries, Czech Republic for similar costs, UK for English environment."
+      }
+    },
+    "qatar": {
+      "name": "Qatar",
+      "region": "Middle East",
+      "ruleOfGold": "Be useful, be discreet, be temporary. Your wealth is yours as long as you follow the rules.",
+      "pyramid": {
+        "top": "Royal family and their inner circles",
+        "institutions": "State structures serving national vision",
+        "gatekeepers": "Kafala sponsors and permits",
+        "valueCreators": "Skilled expats in demanded fields",
+        "base": "Foreign workers without permanent rights",
+        "realAsset": "Access to wealth and tax-free income"
+      },
+      "whoWins": ["Highly skilled expats", "Those understanding boundaries", "Discreet wealth builders", "Those in strategic sectors"],
+      "whoLoses": ["Those seeking permanent home", "Activists or critics", "Those forgetting temporary status", "Unskilled without protection"],
+      "playbook": {
+        "do": ["Maximize savings during stay", "Build assets outside Qatar", "Stay discreet on sensitive topics", "Network strategically", "Plan exit"],
+        "dont": ["Criticize leadership publicly", "Forget you are temporary", "Centralize assets locally", "Ignore cultural rules", "Expect permanent rights"],
+        "plan30Days": ["Understand kafala system", "Open international accounts", "Identify red lines", "Map networking opportunities"],
+        "plan12Months": ["Maximize savings", "Build professional reputation", "Establish assets outside", "Develop international network"],
+        "plan5Years": ["Create residence alternatives", "Diversify assets globally", "Build location-independent income", "Prepare smooth transition"],
+        "planB": "UAE for more cosmopolitan feel, Bahrain for different environment, UK or Europe for permanent residence."
+      }
+    },
+    "russia": {
+      "name": "Russia",
+      "region": "Eastern Europe",
+      "ruleOfGold": "Navigate power structures carefully. The formal system coexists with informal reality.",
+      "pyramid": {
+        "top": "Political leadership and oligarchs",
+        "institutions": "Powerful state with selective application",
+        "gatekeepers": "Connections, blat, and compliance",
+        "valueCreators": "Tech talent, resource sector, entrepreneurs",
+        "base": "Population with limited mobility",
+        "realAsset": "Network and ability to navigate the system"
+      },
+      "whoWins": ["Those with right connections", "Tech talent in approved sectors", "Those understanding power dynamics", "Politically neutral operators"],
+      "whoLoses": ["Political critics", "Outsiders without protection", "Those in disfavored sectors", "Naive rule-followers"],
+      "playbook": {
+        "do": ["Build strong connections", "Stay politically neutral", "Understand informal rules", "Create exit options", "Diversify internationally"],
+        "dont": ["Criticize power openly", "Ignore political signals", "Centralize all assets", "Burn bridges", "Underestimate system complexity"],
+        "plan30Days": ["Assess political situation", "Build initial contacts", "Understand current climate", "Secure documents"],
+        "plan12Months": ["Build trust network", "Establish legal presence", "Create offshore backup", "Develop exit strategies"],
+        "plan5Years": ["Maintain international options", "Diversify assets globally", "Build income outside Russia", "Evaluate long-term commitment"],
+        "planB": "Georgia or Armenia for regional proximity, UAE for business hub, EU for stability. Maintain options always."
+      }
+    },
+    "saudi-arabia": {
+      "name": "Saudi Arabia",
+      "region": "Middle East",
+      "ruleOfGold": "Serve the Vision, respect the codes, extract value while possible.",
+      "pyramid": {
+        "top": "Royal family and Vision 2030 priorities",
+        "institutions": "Modernizing state with strict codes",
+        "gatekeepers": "Iqama sponsors and compliance",
+        "valueCreators": "Skilled expats in priority sectors",
+        "base": "Foreign workers with limited rights",
+        "realAsset": "Access to transformation wealth"
+      },
+      "whoWins": ["Professionals in Vision 2030 sectors", "Those understanding boundaries", "Discreet operators", "Those in entertainment, tourism, tech"],
+      "whoLoses": ["Those seeking permanent home", "Cultural rule-breakers", "Those forgetting temporary status", "Activists or critics"],
+      "playbook": {
+        "do": ["Align with Vision 2030 sectors", "Maximize savings", "Build assets outside KSA", "Respect cultural codes", "Plan exit"],
+        "dont": ["Criticize leadership", "Break cultural rules", "Centralize assets locally", "Expect permanent rights", "Ignore religious sensitivities"],
+        "plan30Days": ["Understand iqama system", "Identify priority sectors", "Open international accounts", "Map opportunities"],
+        "plan12Months": ["Build professional reputation", "Maximize savings", "Establish outside assets", "Network in priority areas"],
+        "plan5Years": ["Create residence alternatives", "Diversify globally", "Build independent income", "Prepare transition"],
+        "planB": "UAE for more cosmopolitan environment, Bahrain for different feel, UK or Europe for permanent rights."
+      }
+    },
+    "south-africa": {
+      "name": "South Africa",
+      "region": "Sub-Saharan Africa",
+      "ruleOfGold": "Navigate complexity with networks. The rainbow nation requires understanding of multiple dynamics.",
+      "pyramid": {
+        "top": "Political and economic elites across communities",
+        "institutions": "Democratic but challenged",
+        "gatekeepers": "BEE requirements, networks, and capital",
+        "valueCreators": "Entrepreneurs, professionals, mining sector",
+        "base": "Population seeking economic inclusion",
+        "realAsset": "Gateway to Africa with developed infrastructure"
+      },
+      "whoWins": ["Connected entrepreneurs", "BEE-compliant businesses", "Mining professionals", "Those with capital and networks"],
+      "whoLoses": ["Those ignoring BEE", "Outsiders without local partners", "Those underestimating complexity", "Naive investors"],
+      "playbook": {
+        "do": ["Understand BEE requirements", "Build cross-community network", "Partner with locals", "Take security seriously", "Invest in relationships"],
+        "dont": ["Ignore transformation requirements", "Underestimate crime concerns", "Go alone without partners", "Ignore political dynamics", "Be naive about complexity"],
+        "plan30Days": ["Research visa requirements", "Understand BEE basics", "Build initial contacts", "Plan exploratory visit"],
+        "plan12Months": ["Establish legal presence", "Build local partnerships", "Understand market dynamics", "Develop security protocols"],
+        "plan5Years": ["Build stable business", "Integrate into ecosystem", "Expand across Africa", "Maintain international options"],
+        "planB": "Mauritius for ease of business, Kenya for East Africa, UK for stability. South Africa offers Africa's most developed market."
+      }
+    },
+    "spain": {
+      "name": "Spain",
+      "region": "Southern Europe",
+      "ruleOfGold": "Life first, work second. Build relationships, enjoy the process, think long term.",
+      "pyramid": {
+        "top": "Old money and political establishment",
+        "institutions": "EU-aligned with heavy bureaucracy",
+        "gatekeepers": "Networks, credentials, and language",
+        "valueCreators": "Tourism, tech, professionals",
+        "base": "Workers in protected but rigid market",
+        "realAsset": "Quality of life and EU access"
+      },
+      "whoWins": ["Those appreciating lifestyle", "Spanish speakers", "Remote workers with foreign income", "Patient integrators"],
+      "whoLoses": ["High-ambition career seekers", "Impatient entrepreneurs", "Non-Spanish speakers long-term", "Those seeking high salaries"],
+      "playbook": {
+        "do": ["Learn Spanish well", "Embrace the lifestyle", "Build relationships slowly", "Network professionally", "Appreciate work-life balance"],
+        "dont": ["Expect German efficiency", "Rush business relationships", "Underestimate bureaucracy", "Ignore regional differences", "Work against the culture"],
+        "plan30Days": ["Research visa options", "Start Spanish learning", "Build initial contacts", "Plan exploratory visit"],
+        "plan12Months": ["Establish legal presence", "Build professional network", "Integrate into local life", "Navigate bureaucracy"],
+        "plan5Years": ["Obtain permanent residence", "Build stable career", "Integrate fully", "Consider citizenship"],
+        "planB": "Portugal for easier system, Italy for similar lifestyle, France for more opportunities."
+      }
+    },
+    "sweden": {
+      "name": "Sweden",
+      "region": "Northern Europe",
+      "ruleOfGold": "Lagom - not too much, not too little. Integrate, conform, contribute to the collective.",
+      "pyramid": {
+        "top": "Social democratic consensus",
+        "institutions": "Efficient, transparent bureaucracy",
+        "gatekeepers": "Swedish language and cultural integration",
+        "valueCreators": "Tech workers, innovators, professionals",
+        "base": "Well-protected and equal workforce",
+        "realAsset": "Work-life balance and innovation ecosystem"
+      },
+      "whoWins": ["Tech professionals", "Swedish speakers", "Innovation-driven workers", "Those valuing equality"],
+      "whoLoses": ["Individualists seeking wealth", "Non-Swedish speakers long-term", "Those avoiding integration", "Cultural outsiders"],
+      "playbook": {
+        "do": ["Learn Swedish seriously", "Embrace lagom culture", "Integrate into local life", "Value consensus", "Network professionally"],
+        "dont": ["Stand out excessively", "Ignore Swedish language", "Expect rapid wealth", "Remain in expat bubble", "Underestimate integration needs"],
+        "plan30Days": ["Secure residence permit", "Start Swedish course", "Get personnummer", "Open Swedish bank account"],
+        "plan12Months": ["Reach functional Swedish", "Build professional network", "Integrate into activities", "Understand tax system"],
+        "plan5Years": ["Achieve Swedish fluency", "Apply for permanent residence", "Consider citizenship", "Fully integrate"],
+        "planB": "Norway for higher salaries, Denmark for different culture, Netherlands for more international feel."
+      }
+    },
+    "turkey": {
+      "name": "Turkey",
+      "region": "Middle East",
+      "ruleOfGold": "Navigate the bridge between worlds. Relationships and adaptability are essential.",
+      "pyramid": {
+        "top": "Political leadership and business conglomerates",
+        "institutions": "Centralizing state with economic ambition",
+        "gatekeepers": "Connections, political alignment, and capital",
+        "valueCreators": "Entrepreneurs, manufacturers, tech workers",
+        "base": "Large population seeking opportunities",
+        "realAsset": "Bridge position between Europe and Asia"
+      },
+      "whoWins": ["Connected entrepreneurs", "Those aligned with current power", "Real estate investors", "Export-oriented businesses"],
+      "whoLoses": ["Political critics", "Those in disfavored sectors", "Currency-dependent locals", "Outsiders without connections"],
+      "playbook": {
+        "do": ["Build strong network", "Stay politically neutral", "Invest in export capacity", "Maintain foreign currency", "Diversify internationally"],
+        "dont": ["Criticize power openly", "Depend on lira alone", "Ignore political climate", "Underestimate bureaucracy", "Burn bridges"],
+        "plan30Days": ["Understand visa and residence options", "Build initial contacts", "Assess current political climate", "Plan exploratory visit"],
+        "plan12Months": ["Establish legal presence", "Build trust network", "Create foreign currency income", "Develop local partnerships"],
+        "plan5Years": ["Build stable business", "Diversify assets internationally", "Maintain exit options", "Consider citizenship by investment"],
+        "planB": "UAE for business hub, Georgia for proximity, EU for stability. Turkey offers unique geographic advantages."
+      }
+    },
+    "venezuela": {
+      "name": "Venezuela",
+      "region": "South America",
+      "ruleOfGold": "Survive and build alternatives. The system rewards those who create their own opportunities.",
+      "pyramid": {
+        "top": "Political elite and connected class",
+        "institutions": "State controlling economy with dysfunction",
+        "gatekeepers": "Connections, dollars, and political alignment",
+        "valueCreators": "Diaspora, informal economy operators, survivors",
+        "base": "Population struggling with economic crisis",
+        "realAsset": "Resilience and diaspora connections"
+      },
+      "whoWins": ["Those with dollar access", "Connected insiders", "Diaspora with remittances", "Informal economy operators"],
+      "whoLoses": ["Those earning in bolivares", "Political critics", "Those without foreign options", "Small savers"],
+      "playbook": {
+        "do": ["Build dollar income", "Develop diaspora connections", "Create exit options", "Master informal economy", "Stay politically neutral"],
+        "dont": ["Save in local currency", "Criticize openly", "Centralize resources", "Trust formal systems", "Wait for change"],
+        "plan30Days": ["Assess exit options", "Secure documents", "Build diaspora contacts", "Create dollar income"],
+        "plan12Months": ["Develop remote skills", "Build international network", "Create alternative income", "Plan exit strategy"],
+        "plan5Years": ["Establish residence abroad", "Build hard currency income", "Maintain family connections", "Create permanent options"],
+        "planB": "Colombia or Panama for proximity, Spain for EU and language, USA for diaspora. Build skills that work anywhere."
+      }
     }
   },
   "risks": {
