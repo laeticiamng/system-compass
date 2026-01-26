@@ -146,7 +146,8 @@
     "submit": "Submit",
     "sending": "Sending...",
     "new": "New",
-    "view": "View"
+    "view": "View",
+    "skip": "Skip"
   },
   "errors": {
     "rateLimited": "Too many requests. Please try again in a moment.",

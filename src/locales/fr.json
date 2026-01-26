@@ -148,7 +148,8 @@
     "new": "Nouveau",
     "view": "Voir",
     "select": "Sélectionner",
-    "creating": "Création..."
+    "creating": "Création...",
+    "skip": "Passer"
   },
   "calendar": {
     "days": {
