@@ -12,3 +12,4 @@ export { WeakSignalsDetector } from './WeakSignalsDetector';
 export { LatentThresholdAlerts } from './LatentThresholdAlerts';
 export { LatentOnboarding } from './LatentOnboarding';
 export { ExportToTraceOS } from './ExportToTraceOS';
+export { LatentTensionMap } from './LatentTensionMap';

@@ -17,6 +17,7 @@ export { TerrainPOCPlanner } from './TerrainPOCPlanner';
 export { TerrainTimeline } from './TerrainTimeline';
 export { GovernanceMap } from './GovernanceMap';
 export { CountryGovernanceScore } from './CountryGovernanceScore';
+export { ActorCards } from './ActorCards';
 
 // Types
 export type { GovernanceScore, UserGovernanceNotes } from '@/hooks/useCountryGovernance';
