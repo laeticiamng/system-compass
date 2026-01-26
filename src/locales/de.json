@@ -640,6 +640,7 @@
     }
   },
   "nav": {
+    "home": "Startseite",
     "start": "Start",
     "countries": "Länder",
     "profile": "Profil",
