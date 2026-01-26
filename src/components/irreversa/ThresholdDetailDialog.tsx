@@ -10,9 +10,12 @@ import {
   Eye,
   Users,
   History,
-  XCircle
+  XCircle,
+  Download,
+  Loader2
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
@@ -28,6 +31,9 @@ import {
   useIrreversa 
 } from '@/hooks/useIrreversa';
 import { CriticalityScore } from './CriticalityScore';
+import { generateIrreversaCertificate } from './IrreversaPdfExport';
+import { TraceOSLink } from './TraceOSLink';
+import { toast } from 'sonner';
 
 interface ThresholdDetailDialogProps {
   threshold: IrreversaThreshold | null;
@@ -41,6 +47,7 @@ export function ThresholdDetailDialog({ threshold, isOpen, onClose }: ThresholdD
   const [witnesses, setWitnesses] = useState<IrreversaWitness[]>([]);
   const [auditLog, setAuditLog] = useState<IrreversaAuditEntry[]>([]);
   const [loading, setLoading] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
 
   useEffect(() => {
     if (isOpen && threshold) {
@@ -58,6 +65,18 @@ export function ThresholdDetailDialog({ threshold, isOpen, onClose }: ThresholdD
 
   if (!threshold) return null;
 
+  const handleExportPdf = async () => {
+    setIsExporting(true);
+    try {
+      await generateIrreversaCertificate(threshold, witnesses, auditLog);
+      toast.success(t('irreversa.export.success', 'Certificat PDF généré avec succès'));
+    } catch (err) {
+      toast.error(t('irreversa.export.error', 'Erreur lors de la génération du PDF'));
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'detected': return <Eye className="w-4 h-4 text-amber-500" />;
@@ -72,20 +91,38 @@ export function ThresholdDetailDialog({ threshold, isOpen, onClose }: ThresholdD
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-2xl max-h-[85vh] overflow-y-auto">
         <DialogHeader>
-          <div className="flex items-center gap-2 mb-2">
-            {threshold.status === 'sealed' ? (
-              <div className="p-2 rounded-full bg-red-100 dark:bg-red-950">
-                <Lock className="w-5 h-5 text-red-600" />
-              </div>
-            ) : (
-              getStatusIcon(threshold.status)
-            )}
-            <Badge variant="outline" className="text-xs">
-              {t(`irreversa.status.${threshold.status}`)}
-            </Badge>
-            <Badge variant="outline" className="text-xs">
-              {t(`irreversa.domain.${threshold.domain}`)}
-            </Badge>
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center gap-2">
+              {threshold.status === 'sealed' ? (
+                <div className="p-2 rounded-full bg-destructive/10">
+                  <Lock className="w-5 h-5 text-destructive" />
+                </div>
+              ) : (
+                getStatusIcon(threshold.status)
+              )}
+              <Badge variant="outline" className="text-xs">
+                {t(`irreversa.status.${threshold.status}`)}
+              </Badge>
+              <Badge variant="outline" className="text-xs">
+                {t(`irreversa.domain.${threshold.domain}`)}
+              </Badge>
+            </div>
+            <div className="flex items-center gap-2">
+              <TraceOSLink threshold={threshold} />
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={handleExportPdf}
+                disabled={isExporting}
+              >
+                {isExporting ? (
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                ) : (
+                  <Download className="w-4 h-4" />
+                )}
+                <span className="ml-1 hidden sm:inline">PDF</span>
+              </Button>
+            </div>
           </div>
           <DialogTitle className="text-xl pr-8">
             {threshold.title}
