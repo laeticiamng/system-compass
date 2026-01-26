@@ -7,7 +7,8 @@ import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { useTranslationsSync, SeedResult } from '@/hooks/useTranslationsSync';
-import { Database, Upload, Trash2, RefreshCw, CheckCircle, XCircle, Clock } from 'lucide-react';
+import { useTranslationGenerator } from '@/hooks/useTranslationGenerator';
+import { Database, Upload, Trash2, RefreshCw, CheckCircle, XCircle, Clock, Sparkles, Languages } from 'lucide-react';
 import { format } from 'date-fns';
 
 interface TranslationStat {
@@ -19,15 +20,30 @@ interface TranslationStat {
 export default function AdminTranslationsSync() {
   useTranslation();
   const { seedTranslations, getTranslationsStats, clearTranslations, isSeeding, progress, error } = useTranslationsSync();
+  const { 
+    generateMissingTranslations, 
+    getCoverageStats, 
+    isGenerating, 
+    progress: genProgress, 
+    error: genError,
+    SECONDARY_LANGUAGES,
+    SECTIONS_TO_TRANSLATE
+  } = useTranslationGenerator();
+  
   const [stats, setStats] = useState<TranslationStat[]>([]);
+  const [coverageStats, setCoverageStats] = useState<Record<string, { total: number; translated: number; percentage: number }>>({});
   const [isLoading, setIsLoading] = useState(true);
   const [lastResults, setLastResults] = useState<SeedResult[] | null>(null);
 
   const loadStats = async () => {
     setIsLoading(true);
     try {
-      const data = await getTranslationsStats();
+      const [data, coverage] = await Promise.all([
+        getTranslationsStats(),
+        getCoverageStats()
+      ]);
       setStats(data);
+      setCoverageStats(coverage);
     } catch (err) {
       console.error('Failed to load stats:', err);
     } finally {
@@ -77,6 +93,15 @@ export default function AdminTranslationsSync() {
       setLastResults(null);
     } catch (err) {
       console.error('Clear failed:', err);
+    }
+  };
+
+  const handleGenerateMissing = async () => {
+    try {
+      await generateMissingTranslations();
+      await loadStats();
+    } catch (err) {
+      console.error('Generation failed:', err);
     }
   };
 
@@ -160,6 +185,92 @@ export default function AdminTranslationsSync() {
               </div>
             </div>
           )}
+        </CardContent>
+      </Card>
+
+      {/* AI Translation Generation */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Sparkles className="h-5 w-5" />
+            AI Translation Generator
+          </CardTitle>
+          <CardDescription>
+            Generate missing translations for secondary languages (DE, ES, NL, IT, PT) using AI
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="flex flex-wrap gap-3">
+            <Button 
+              onClick={handleGenerateMissing} 
+              disabled={isGenerating || isSeeding}
+              variant="default"
+            >
+              <Languages className="h-4 w-4 mr-2" />
+              Generate Missing Translations
+            </Button>
+          </div>
+
+          {/* Coverage Stats */}
+          <div className="grid grid-cols-5 gap-2 pt-4">
+            {SECONDARY_LANGUAGES.map(lang => {
+              const stats = coverageStats[lang];
+              return (
+                <div key={lang} className="text-center p-2 bg-muted rounded-lg">
+                  <div className="font-bold text-lg">{lang.toUpperCase()}</div>
+                  <div className="text-2xl font-mono">
+                    {stats?.percentage ?? 0}%
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                    {stats?.translated ?? 0}/{stats?.total ?? 0}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {isGenerating && genProgress && (
+            <div className="space-y-2 pt-4 border-t">
+              <div className="flex justify-between text-sm">
+                <span>
+                  Generating: {genProgress.currentLanguage} / {genProgress.currentSection}
+                </span>
+                <span>{genProgress.current} / {genProgress.total}</span>
+              </div>
+              <Progress value={(genProgress.current / genProgress.total) * 100} />
+            </div>
+          )}
+
+          {genProgress && genProgress.results.length > 0 && !isGenerating && (
+            <div className="pt-4 border-t">
+              <h4 className="font-medium mb-2">Generation Results</h4>
+              <div className="flex flex-wrap gap-2 max-h-48 overflow-y-auto">
+                {genProgress.results.map((r, i) => (
+                  <Badge 
+                    key={i} 
+                    variant={r.status === 'success' ? 'default' : r.status === 'skipped' ? 'secondary' : 'destructive'}
+                    className="gap-1"
+                  >
+                    {r.status === 'success' ? <CheckCircle className="h-3 w-3" /> : 
+                     r.status === 'skipped' ? <Clock className="h-3 w-3" /> : 
+                     <XCircle className="h-3 w-3" />}
+                    {r.language.toUpperCase()}/{r.section}
+                    {r.keysTranslated && ` (${r.keysTranslated} keys)`}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {genError && (
+            <Alert variant="destructive">
+              <AlertDescription>{genError}</AlertDescription>
+            </Alert>
+          )}
+
+          <div className="text-xs text-muted-foreground pt-2">
+            <strong>Sections:</strong> {SECTIONS_TO_TRANSLATE.join(', ')}
+          </div>
         </CardContent>
       </Card>
 

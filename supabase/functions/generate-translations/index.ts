@@ -13,7 +13,13 @@ const LANGUAGE_NAMES: Record<string, string> = {
   nl: "Dutch",
   pt: "Portuguese",
   fr: "French",
-  en: "English"
+  en: "English",
+  zh: "Chinese",
+  hi: "Hindi",
+  ar: "Arabic",
+  bn: "Bengali",
+  ru: "Russian",
+  ur: "Urdu"
 };
 
 serve(async (req) => {
@@ -24,11 +30,6 @@ serve(async (req) => {
   try {
     const { sourceText, sourceLang, targetLang, context } = await req.json();
     
-    const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY");
-    if (!OPENAI_API_KEY) {
-      throw new Error("OPENAI_API_KEY is not configured");
-    }
-
     const sourceLangName = LANGUAGE_NAMES[sourceLang] || sourceLang;
     const targetLangName = LANGUAGE_NAMES[targetLang] || targetLang;
 
@@ -46,42 +47,82 @@ IMPORTANT RULES:
 
 Context: ${context || 'General application translation'}`;
 
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${OPENAI_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "gpt-4o-mini",
-        messages: [
-          { role: "system", content: systemPrompt },
-          { role: "user", content: `Translate this JSON from ${sourceLangName} to ${targetLangName}. Return ONLY the translated JSON, no explanations:\n\n${JSON.stringify(sourceText, null, 2)}` }
-        ],
-        temperature: 0.3,
-      }),
-    });
+    // Use Lovable AI (gemini-2.5-flash for speed and quality balance)
+    const LOVABLE_API_URL = Deno.env.get("LOVABLE_API_URL") || "https://api.lovable.dev/v1";
+    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
+    
+    // Fallback to OpenAI if Lovable not configured
+    const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY");
+    
+    let translatedContent: string;
+    
+    if (LOVABLE_API_KEY) {
+      // Use Lovable AI
+      const response = await fetch(`${LOVABLE_API_URL}/chat/completions`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${LOVABLE_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "google/gemini-2.5-flash",
+          messages: [
+            { role: "system", content: systemPrompt },
+            { role: "user", content: `Translate this JSON from ${sourceLangName} to ${targetLangName}. Return ONLY the translated JSON, no explanations:\n\n${JSON.stringify(sourceText, null, 2)}` }
+          ],
+          temperature: 0.3,
+        }),
+      });
 
-    if (!response.ok) {
-      if (response.status === 429) {
-        return new Response(JSON.stringify({ error: "Rate limit exceeded, please try again later." }), {
-          status: 429,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        });
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("Lovable AI API error:", response.status, errorText);
+        throw new Error(`Lovable AI API error: ${response.status}`);
       }
-      if (response.status === 402) {
-        return new Response(JSON.stringify({ error: "Payment required, please add credits." }), {
-          status: 402,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        });
+
+      const data = await response.json();
+      translatedContent = data.choices?.[0]?.message?.content;
+    } else if (OPENAI_API_KEY) {
+      // Fallback to OpenAI
+      const response = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${OPENAI_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "gpt-4o-mini",
+          messages: [
+            { role: "system", content: systemPrompt },
+            { role: "user", content: `Translate this JSON from ${sourceLangName} to ${targetLangName}. Return ONLY the translated JSON, no explanations:\n\n${JSON.stringify(sourceText, null, 2)}` }
+          ],
+          temperature: 0.3,
+        }),
+      });
+
+      if (!response.ok) {
+        if (response.status === 429) {
+          return new Response(JSON.stringify({ error: "Rate limit exceeded, please try again later." }), {
+            status: 429,
+            headers: { ...corsHeaders, "Content-Type": "application/json" },
+          });
+        }
+        if (response.status === 402) {
+          return new Response(JSON.stringify({ error: "Payment required, please add credits." }), {
+            status: 402,
+            headers: { ...corsHeaders, "Content-Type": "application/json" },
+          });
+        }
+        const errorText = await response.text();
+        console.error("OpenAI API error:", response.status, errorText);
+        throw new Error(`OpenAI API error: ${response.status}`);
       }
-      const errorText = await response.text();
-      console.error("OpenAI API error:", response.status, errorText);
-      throw new Error(`OpenAI API error: ${response.status}`);
+
+      const data = await response.json();
+      translatedContent = data.choices?.[0]?.message?.content;
+    } else {
+      throw new Error("No AI API key configured (LOVABLE_API_KEY or OPENAI_API_KEY required)");
     }
-
-    const data = await response.json();
-    const translatedContent = data.choices?.[0]?.message?.content;
 
     if (!translatedContent) {
       throw new Error("No translation received from AI");
