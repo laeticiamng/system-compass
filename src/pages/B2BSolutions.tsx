@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { 
@@ -248,14 +249,18 @@ function FeatureItem({ icon: Icon, text }: { icon: any; text: string }) {
   );
 }
 
-function PrincipleCard({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) {
-  return (
-    <div className="text-center p-6">
-      <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4 text-primary">
-        {icon}
+
+const PrincipleCard = React.forwardRef<HTMLDivElement, { icon: React.ReactNode; title: string; description: string }>(
+  ({ icon, title, description }, ref) => {
+    return (
+      <div ref={ref} className="text-center p-6">
+        <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4 text-primary">
+          {icon}
+        </div>
+        <h3 className="font-semibold mb-2">{title}</h3>
+        <p className="text-sm text-muted-foreground">{description}</p>
       </div>
-      <h3 className="font-semibold mb-2">{title}</h3>
-      <p className="text-sm text-muted-foreground">{description}</p>
-    </div>
-  );
-}
+    );
+  }
+);
+PrincipleCard.displayName = 'PrincipleCard';
