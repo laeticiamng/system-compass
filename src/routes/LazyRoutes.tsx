@@ -93,3 +93,6 @@ export const LazyAuth = withSuspense(lazy(() => import('@/pages/Auth')));
 export const LazyAbout = withSuspense(lazy(() => import('@/pages/About')));
 export const LazyDisclaimer = withSuspense(lazy(() => import('@/pages/Disclaimer')));
 export const LazySubscriptionSuccess = withSuspense(lazy(() => import('@/pages/SubscriptionSuccess')));
+
+// Dev/Admin pages
+export const LazyDiagnostics = withSuspense(lazy(() => import('@/pages/Diagnostics')));

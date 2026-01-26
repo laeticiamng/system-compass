@@ -158,6 +158,10 @@ export const PROFESSIONS: Profession[] = [
   { id: 'exploring_healthcare', name: 'Intéressé par la santé', category: 'exploring', requiredEducation: ['high_school'], averageSalaryMultiplier: 0.5, remoteWorkPossible: false, internationalDemand: 'very_high', compatibleExitKeys: ['education_arbitrage'] },
   { id: 'exploring_manual', name: 'Intéressé par un métier manuel', category: 'exploring', requiredEducation: ['high_school'], averageSalaryMultiplier: 0.5, remoteWorkPossible: false, internationalDemand: 'high', compatibleExitKeys: ['manual_trade_pivot'] },
   
+  // Gap Year / Sabbatical
+  { id: 'gap_year', name: 'Année sabbatique / Gap Year', category: 'exploring', requiredEducation: ['high_school', 'bachelor'], averageSalaryMultiplier: 0.3, remoteWorkPossible: true, internationalDemand: 'medium', compatibleExitKeys: ['digital_nomad_escape', 'content_creator_path', 'education_arbitrage'] },
+  { id: 'career_break', name: 'Reconversion / Pause carrière', category: 'exploring', requiredEducation: ['bachelor', 'master'], averageSalaryMultiplier: 0.0, remoteWorkPossible: true, internationalDemand: 'medium', compatibleExitKeys: ['education_arbitrage', 'freelance_tech', 'digital_nomad_escape'] },
+  
   { id: 'other', name: 'Autre', category: 'other', requiredEducation: ['no_diploma'], averageSalaryMultiplier: 1.0, remoteWorkPossible: true, internationalDemand: 'medium', compatibleExitKeys: ['digital_nomad_escape', 'content_creator_path', 'diaspora_leverage'] },
 ];
 
