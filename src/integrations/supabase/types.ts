@@ -134,6 +134,39 @@ export type Database = {
         }
         Relationships: []
       }
+      analytics_daily_stats_secure: {
+        Row: {
+          avg_session_duration_seconds: number | null
+          created_at: string | null
+          date: string
+          id: string
+          page_views: number | null
+          total_sessions: number | null
+          unique_users: number | null
+          updated_at: string | null
+        }
+        Insert: {
+          avg_session_duration_seconds?: number | null
+          created_at?: string | null
+          date: string
+          id?: string
+          page_views?: number | null
+          total_sessions?: number | null
+          unique_users?: number | null
+          updated_at?: string | null
+        }
+        Update: {
+          avg_session_duration_seconds?: number | null
+          created_at?: string | null
+          date?: string
+          id?: string
+          page_views?: number | null
+          total_sessions?: number | null
+          unique_users?: number | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       analytics_events: {
         Row: {
           created_at: string

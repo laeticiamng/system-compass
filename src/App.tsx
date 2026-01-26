@@ -65,6 +65,7 @@ import {
   LazyPreventionFilter,
   LazyUniversalErrorDetail,
   LazyHowToRead,
+  LazyDiagnostics,
 } from "@/routes/LazyRoutes";
 
 const queryClient = new QueryClient({
@@ -159,6 +160,7 @@ const App = () => (
                       <Route path="/admin/partners" element={<RequireAdmin><LazyAdminPartners /></RequireAdmin>} />
                       <Route path="/admin/translations-sync" element={<RequireAdmin><LazyAdminTranslationsSync /></RequireAdmin>} />
                       <Route path="/seed-translations" element={<LazySeedTranslations />} />
+                      <Route path="/diagnostics" element={<LazyDiagnostics />} />
 
                       {/* Redirects */}
                       <Route path="/match" element={<Navigate to="/profile-matcher" replace />} />
