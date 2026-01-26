@@ -8256,6 +8256,48 @@
       "createdAt": "Créée le",
       "updatedAt": "Mise à jour le",
       "tensionsCount": "Nombre de tensions"
+    },
+    "signals": {
+      "title": "Signaux faibles détectés",
+      "subtitle": "Patterns et corrélations entre vos zones",
+      "nourishingPattern": "Pattern nourricier émergent",
+      "blockingPattern": "Pattern bloquant émergent",
+      "fragilityPattern": "Pattern de fragilité émergent",
+      "premature_crushingPattern": "Pattern d'écrasement prématuré émergent",
+      "multipleZones": "{{count}} zones dormantes partagent cette dynamique",
+      "suggestMonitor": "Surveiller l'évolution conjointe",
+      "escalatingZone": "Zone en escalade potentielle",
+      "multipleTensions": "Accumulation de tensions",
+      "suggestIntervene": "Intervention préventive recommandée",
+      "stuckZone": "Zone bloquée depuis longtemps",
+      "stabilizingZone": "Zone en stabilisation",
+      "suggestReview": "Revoir la pertinence de cette zone",
+      "positiveEmergent": "Émergence positive détectée",
+      "nourishingDynamic": "Dynamique nourricière",
+      "suggestAmplify": "Amplifier cette dynamique",
+      "noSignals": "Aucun signal faible détecté",
+      "addZones": "Ajoutez plus de zones pour activer la détection",
+      "viewZone": "Voir la zone",
+      "intensity": "Intensité",
+      "detectedAt": "Détecté le",
+      "relatedZones": "Zones concernées"
+    },
+    "preview": {
+      "description": "Découvrez le module Latent avec des exemples. Passez à Pro pour créer vos propres zones."
+    },
+    "demo": {
+      "zone1": {
+        "title": "Tensions familiales non-dites",
+        "desc": "Désaccords latents sur les priorités de vie"
+      },
+      "zone2": {
+        "title": "Repositionnement professionnel",
+        "desc": "Envie de changement mais contraintes financières"
+      },
+      "zone3": {
+        "title": "Relation avec le pays d'origine",
+        "desc": "Attentes familiales vs choix de vie"
+      }
     }
   },
   "irreversa": {
@@ -8645,108 +8687,6 @@
     "exportPdf": "Exporter PDF",
     "exported": "Export PDF lancé",
     "regenerate": "Régénérer"
-  },
-  "latent": {
-    "title": "Zones Latentes",
-    "subtitle": "Identifiez et surveillez les zones de votre vie qui sont en tension mais pas encore en crise.",
-    "badge": "Module Latent",
-    "newZone": "Nouvelle zone",
-    "tabs": {
-      "zones": "Zones",
-      "graph": "Graphe",
-      "history": "Historique",
-      "philosophy": "Philosophie"
-    },
-    "status": {
-      "dormant": "Dormante",
-      "emergent": "Émergente",
-      "fragile": "Fragile",
-      "blocked": "Bloquée"
-    },
-    "filter": {
-      "all": "Toutes"
-    },
-    "search": {
-      "placeholder": "Rechercher une zone..."
-    },
-    "sort": {
-      "newest": "Plus récentes",
-      "oldest": "Plus anciennes",
-      "alphabetical": "Alphabétique",
-      "tensions": "Par tensions"
-    },
-    "tension": {
-      "nourishing": "Nourricière",
-      "blocking": "Bloquante",
-      "fragility": "Fragilité",
-      "premature_crushing": "Écrasement prématuré"
-    },
-    "toast": {
-      "created": "Zone créée",
-      "statusUpdated": "Statut mis à jour",
-      "tensionAdded": "Tension ajoutée",
-      "deleted": "Zone supprimée",
-      "transformed": "Zone transformée",
-      "merged": "Zones fusionnées",
-      "archived": "Zone archivée",
-      "put_to_sleep": "Zone mise en veille"
-    },
-    "edit": {
-      "success": "Zone modifiée"
-    },
-    "duplicate": {
-      "success": "Zone dupliquée"
-    },
-    "merge": {
-      "button": "Fusionner"
-    },
-    "demoMode": "Mode démo - connectez-vous pour sauvegarder vos zones",
-    "paywall": {
-      "title": "Module Latent Pro",
-      "description": "Accédez au module complet pour cartographier vos zones de tension"
-    },
-    "preview": {
-      "description": "Découvrez le module Latent avec des exemples. Passez à Pro pour créer vos propres zones."
-    },
-    "demo": {
-      "zone1": {
-        "title": "Tensions familiales non-dites",
-        "desc": "Désaccords latents sur les priorités de vie"
-      },
-      "zone2": {
-        "title": "Repositionnement professionnel",
-        "desc": "Envie de changement mais contraintes financières"
-      },
-      "zone3": {
-        "title": "Relation avec le pays d'origine",
-        "desc": "Attentes familiales vs choix de vie"
-      }
-    },
-    "disclaimer": {
-      "title": "Outil de réflexion personnelle",
-      "text": "Ce module vous aide à cartographier vos zones de tension. Il ne remplace pas un accompagnement professionnel."
-    },
-    "empty": {
-      "title": "Aucune zone latente",
-      "description": "Créez votre premier espace pour ce qui n'est pas encore prêt",
-      "cta": "Créer ma première zone"
-    },
-    "detail": {
-      "createdAt": "Créée le",
-      "updatedAt": "Mise à jour le",
-      "tensionsCount": "Nombre de tensions"
-    },
-    "tensions": {
-      "title": "Tensions"
-    },
-    "stats": {
-      "total": "Total",
-      "dormant": "Dormantes",
-      "emergent": "Émergentes",
-      "fragile": "Fragiles",
-      "blocked": "Bloquées",
-      "avgTensions": "Tensions moy."
-    }
   },
   "partners": {
     "contributions": {
