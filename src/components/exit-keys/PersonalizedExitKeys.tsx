@@ -183,10 +183,27 @@ export function PersonalizedExitKeys({
     return findStrategy(destination.id, profession.id, profession.category);
   }, [destination, profession]);
 
-  // Find relevant exit keys from the engine
+  // Find relevant exit keys from the engine - FILTER BY DESTINATION COUNTRY
   const relevantExitKeys = useMemo(() => {
     if (!destination) return [];
+    
+    // Country-specific exit keys mapping
+    const COUNTRY_SPECIFIC_KEYS: Record<string, string[]> = {
+      switzerland: ['medical_ch_trajectory'],
+      // Add other country-specific keys here as needed
+    };
+    
     return EXIT_KEYS.filter(key => {
+      // Filter out country-specific keys that don't match destination
+      const specificCountries = Object.entries(COUNTRY_SPECIFIC_KEYS)
+        .filter(([, keys]) => keys.includes(key.id))
+        .map(([country]) => country);
+      
+      // If this key is country-specific, only show if destination matches
+      if (specificCountries.length > 0 && !specificCountries.includes(destination.id)) {
+        return false;
+      }
+      
       const matchesPyramid = key.targetPyramids.includes(destination.pyramidType);
       const matchesProfession = !profession || profession.compatibleExitKeys.length === 0 || profession.compatibleExitKeys.includes(key.id);
       return matchesPyramid && matchesProfession && intention !== 'vacation';
