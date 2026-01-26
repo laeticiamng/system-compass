@@ -2850,6 +2850,223 @@
           "steps": { "0": "Documenter son parcours", "1": "Aider ceux qui traversent la même chose" }
         }
       }
+    },
+    "selectToContinue": "Sélectionnez une réponse pour continuer",
+    "lgbtq": {
+      "title": "Considérations LGBTQ+",
+      "description": "Nous prioriserons les pays avec de fortes protections et une sécurité LGBTQ+ dans vos recommandations. Les pays présentant des risques légaux ou une hostilité sociale seront signalés."
+    },
+    "trajectory": {
+      "paths": "Voies professionnelles",
+      "skills": "Compétences à développer",
+      "firstSteps": "Premières étapes"
+    },
+    "china": {
+      "name": "Chine",
+      "region": "Asie de l'Est",
+      "ruleOfGold": "S'aligner publiquement avec le Parti, construire en privé. Ne jamais devenir un symbole politique.",
+      "pyramid": {
+        "top": "Parti communiste et capital aligné sur l'État",
+        "institutions": "Appareil d'État mélangeant contrôle et marché",
+        "gatekeepers": "Connexions au Parti, réseaux guanxi, approbations réglementaires",
+        "valueCreators": "Entrepreneurs opérant dans les limites politiques",
+        "base": "Travailleurs naviguant une transformation rapide",
+        "realAsset": "Vitesse d'adaptation et alignement politique"
+      },
+      "whoWins": ["Ceux qui lisent correctement les vents politiques", "Entrepreneurs alignés avec l'État", "Adaptateurs technophiles", "Ceux avec de solides réseaux guanxi"],
+      "whoLoses": ["Critiques politiquement visibles", "Ceux qui grandissent trop vite trop visiblement", "Entreprises dépendantes de l'étranger", "Ceux qui parient contre la direction de l'État"],
+      "playbook": {
+        "do": ["Maîtriser complètement les réglementations locales", "Construire de vraies relations avec les officiels", "Rester politiquement neutre en public", "Développer discrètement des options internationales", "Investir dans des compétences transférables globalement"],
+        "dont": ["Critiquer le système publiquement", "Devenir un symbole visible", "Dépendre uniquement des revenus basés en Chine", "Ignorer les signaux politiques", "Étaler sa richesse ostensiblement"],
+        "plan30Days": ["Étudier le paysage réglementaire actuel", "Cartographier votre réseau guanxi", "Identifier les compétences transférables", "Mettre en place une banque internationale"],
+        "plan12Months": ["Construire un revenu secondaire à l'étranger", "Établir des communications indépendantes du VPN", "Créer un profil professionnel international", "Diversifier les actifs"],
+        "plan5Years": ["Seconde résidence établie", "Flux de revenus indépendants de la localisation", "Réseau international construit", "Stratégie de sortie claire si nécessaire"],
+        "planB": "Singapour, Japon ou Taïwan pour des cultures similaires. Portugal, Canada pour des environnements différents. Garder les compétences exportables et les actifs diversifiés."
+      }
+    },
+    "russia": {
+      "name": "Russie",
+      "region": "Europe de l'Est/Asie",
+      "ruleOfGold": "Ne jamais défier le pouvoir publiquement. L'État donne et l'État reprend.",
+      "pyramid": {
+        "top": "Élite politique et oligarques alignés sur l'État",
+        "institutions": "Structures étatiques servant la préservation du pouvoir",
+        "gatekeepers": "Bureaucrates connectés et services de sécurité",
+        "valueCreators": "Entrepreneurs opérant dans l'ombre de l'État",
+        "base": "Citoyens naviguant des règles imprévisibles",
+        "realAsset": "Loyauté au pouvoir et invisibilité utile"
+      },
+      "whoWins": ["Ceux proches du pouvoir sans le menacer", "Initiés du secteur sécurité", "Entreprises dépendantes de l'État", "Constructeurs de richesse discrets"],
+      "whoLoses": ["Leaders d'entreprise indépendants", "Voix politiques", "Entrepreneurs connectés à l'Occident", "Ceux avec des actifs non diversifiés"],
+      "playbook": {
+        "do": ["Rester complètement apolitique publiquement", "Construire des compétences qui fonctionnent internationalement", "Maintenir des réserves en devises étrangères", "Développer des options de sortie discrètement", "Réseauter avec la diaspora"],
+        "dont": ["S'engager dans tout commentaire politique", "Construire une entreprise dépendante d'un seul secteur", "Garder tous les actifs en Russie", "Devenir visiblement riche", "Faire entièrement confiance aux droits de propriété formels"],
+        "plan30Days": ["Sécuriser tous les documents d'identité", "Établir des comptes étrangers si possible", "Identifier une compétence exportable", "Cartographier les routes d'évasion si nécessaire"],
+        "plan12Months": ["Développer un revenu compatible remote", "Apprendre une autre langue", "Construire un réseau international", "Diversifier l'épargne géographiquement"],
+        "plan5Years": ["Seconde citoyenneté ou résidence", "Sources de revenus multiples à l'étranger", "Actifs hors de Russie", "Plan de relocalisation clair prêt"],
+        "planB": "Géorgie, Arménie, Serbie pour entrée facile. Pays de l'UE pour le long terme. Garder le passeport valide, les compétences à jour, les actifs mobiles."
+      }
+    },
+    "brazil": {
+      "name": "Brésil",
+      "region": "Amérique du Sud",
+      "ruleOfGold": "Naviguer le jeitinho - flexibilité, réseaux et patience battent les règles formelles.",
+      "pyramid": {
+        "top": "Classe politique et grandes familles d'affaires",
+        "institutions": "Bureaucratie complexe mélangeant formel et informel",
+        "gatekeepers": "Connexions, despachantes et connaissance locale",
+        "valueCreators": "Entrepreneurs maîtrisant la navigation du système",
+        "base": "Travailleurs dans les économies formelles et informelles",
+        "realAsset": "Relations et résilience adaptative"
+      },
+      "whoWins": ["Ceux avec de solides réseaux", "Adaptateurs flexibles", "Ceux maîtrisant la navigation bureaucratique", "Connecteurs internationaux"],
+      "whoLoses": ["Ceux attendant une pure méritocratie", "Étrangers impatients", "Ceux sans connexions locales", "Suiveurs rigides des règles"],
+      "playbook": {
+        "do": ["Construire de vraies relations locales", "Apprendre le portugais correctement", "Comprendre la dynamique de l'économie informelle", "Développer des options de revenus internationaux", "Maîtriser la complexité fiscale et légale"],
+        "dont": ["S'attendre à ce que les choses fonctionnent comme dans son pays", "Ignorer les exigences bureaucratiques", "Sous-estimer la concurrence locale", "Centraliser les actifs en un seul endroit", "Ignorer les considérations de sécurité"],
+        "plan30Days": ["Obtenir CPF et documents de base", "Commencer à apprendre le portugais", "Cartographier les réseaux professionnels locaux", "Comprendre les exigences de visa"],
+        "plan12Months": ["Construire une réputation professionnelle locale", "Établir des flux de revenus multiples", "Créer des options de secours internationales", "Apprendre à naviguer la bureaucratie"],
+        "plan5Years": ["Revenus diversifiés Brésil + international", "Propriété et actifs optimisés", "Réseau local solide", "Options internationales maintenues"],
+        "planB": "Portugal pour similarité langue/culture. Autres pays d'Amérique latine. USA ou UE avec le bon visa. Garder les options ouvertes."
+      }
+    },
+    "norway": {
+      "name": "Norvège",
+      "region": "Europe du Nord",
+      "ruleOfGold": "Le collectif passe en premier. L'excellence est bonne mais jamais au-dessus du groupe.",
+      "pyramid": {
+        "top": "Institutions démocratiques et fonds souverain",
+        "institutions": "État fort, transparent et bien financé",
+        "gatekeepers": "Éducation, langue et normes sociales",
+        "valueCreators": "Travailleurs qualifiés dans un environnement réglementé",
+        "base": "Citoyens avec fortes protections sociales",
+        "realAsset": "Confiance, égalité et stabilité systémique"
+      },
+      "whoWins": ["Ceux embrassant les valeurs égalitaires", "Planificateurs patients à long terme", "Ceux avec des compétences recherchées", "Intégrateurs qui apprennent la langue"],
+      "whoLoses": ["Individualistes très ambitieux", "Ceux cherchant la richesse rapide", "Ceux qui ne s'intègrent pas", "Entrepreneurs voulant une réglementation minimale"],
+      "playbook": {
+        "do": ["Apprendre sérieusement le norvégien", "Embrasser la culture d'équilibre vie-travail", "Comprendre le système fiscal et social", "Construire de vraies amitiés locales", "Respecter les normes égalitaires"],
+        "dont": ["Étaler richesse ou réussite", "S'attendre à un entrepreneuriat à l'américaine", "Ignorer l'intégration sociale", "Sous-estimer l'obscurité hivernale", "Critiquer la façon norvégienne publiquement"],
+        "plan30Days": ["Commencer des cours de norvégien", "Comprendre les exigences de résidence", "Rechercher le marché de l'emploi dans votre domaine", "Se connecter aux communautés d'expatriés"],
+        "plan12Months": ["Atteindre une maîtrise basique du norvégien", "Construire un réseau professionnel local", "Comprendre l'optimisation fiscale", "Établir des connexions sociales"],
+        "plan5Years": ["Intégration complète réalisée", "Maîtrise de la langue", "Trajectoire de carrière stable", "Considérer résidence permanente/citoyenneté"],
+        "planB": "Autres pays nordiques, Pays-Bas, Allemagne pour stabilité similaire. Options moins coûteuses en Europe du Sud avec mobilité UE."
+      }
+    },
+    "qatar": {
+      "name": "Qatar",
+      "region": "Moyen-Orient",
+      "ruleOfGold": "Être utile, rester discret, planifier sa sortie. Vous êtes un invité avec une date d'expiration.",
+      "pyramid": {
+        "top": "Famille royale Al Thani et cercles proches",
+        "institutions": "Structures étatiques servant la vision et la stabilité",
+        "gatekeepers": "Sponsors kafala et autorisations gouvernementales",
+        "valueCreators": "Expatriés experts servant le développement",
+        "base": "Travailleurs étrangers avec droits limités",
+        "realAsset": "Utilité pour les projets d'État et discrétion"
+      },
+      "whoWins": ["Experts de haute valeur dans les secteurs prioritaires", "Accumulateurs de richesse discrets", "Ceux avec des stratégies de sortie claires", "Professionnels du GNL et de la construction"],
+      "whoLoses": ["Ceux cherchant l'appartenance permanente", "Travailleurs peu qualifiés", "Ceux ignorant les normes culturelles", "Planificateurs à long terme sans stratégie de sortie"],
+      "playbook": {
+        "do": ["Maximiser l'épargne pendant votre séjour", "Respecter complètement les coutumes locales", "Construire des compétences et réseaux portables", "Planifier la sortie dès le premier jour", "Réseauter avec les professionnels internationaux"],
+        "dont": ["S'attendre à la citoyenneté ou au séjour permanent", "Critiquer le gouvernement ou la religion", "Devenir trop confortable", "Tout dépenser localement", "Dépendre d'un seul employeur"],
+        "plan30Days": ["Comprendre le visa et les droits d'emploi", "Mettre en place un système d'épargne", "Cartographier le réseau international", "Rechercher les options de prochaine destination"],
+        "plan12Months": ["Établir un fort taux d'épargne", "Construire une réputation dans votre domaine", "Créer des options d'emploi international", "Explorer des alternatives de résidence"],
+        "plan5Years": ["Richesse substantielle accumulée", "Prochaine destination sécurisée", "Compétences hautement transférables", "Sortie exécutée en douceur"],
+        "planB": "EAU pour région similaire. Singapour pour l'Asie. Portugal, Malte pour accès UE. Avoir plusieurs options prêtes."
+      }
+    },
+    "venezuela": {
+      "name": "Venezuela",
+      "region": "Amérique du Sud",
+      "ruleOfGold": "Survivre, rester invisible, préparer sa sortie. Le système ne récompense que ceux au sommet.",
+      "pyramid": {
+        "top": "Élite politico-militaire contrôlant les ressources",
+        "institutions": "Structures vidées de substance servant le régime",
+        "gatekeepers": "Loyalistes du parti et opérateurs connectés",
+        "valueCreators": "Survivants dans l'économie informelle",
+        "base": "Population naviguant l'effondrement",
+        "realAsset": "Connexions et accès aux devises étrangères"
+      },
+      "whoWins": ["Initiés du régime", "Détenteurs de devises étrangères", "Ceux avec connexions internationales", "Opérateurs de l'économie informelle"],
+      "whoLoses": ["Classe moyenne", "Travailleurs du secteur formel", "Ceux sans connexions à l'étranger", "Opposition visible"],
+      "playbook": {
+        "do": ["Sécuriser des devises étrangères urgemment", "Développer des compétences compatibles remote", "Construire des options de sortie maintenant", "Garder la documentation prête", "Se connecter à la diaspora"],
+        "dont": ["Garder l'épargne en monnaie locale", "Devenir politiquement visible", "Attendre que les choses s'améliorent", "Dépendre des systèmes formels", "Ignorer les risques santé/sécurité"],
+        "plan30Days": ["Sécuriser tous les documents d'identité", "Établir toute épargne en devises étrangères", "Identifier les voies d'émigration", "Apprendre des compétences de travail remote"],
+        "plan12Months": ["Construire une source de revenus étrangère", "Préparer les documents d'émigration", "Réseauter avec la diaspora", "Exécuter le plan de sortie si prêt"],
+        "plan5Years": ["Relocalisé dans un pays stable", "Intégré dans la nouvelle économie", "Famille stabilisée", "Actifs protégés"],
+        "planB": "Colombie, Pérou, Chili pour la proximité. Espagne pour les liens culturels. USA avec le bon visa. Partir dès que possible."
+      }
+    },
+    "saudi-arabia": {
+      "name": "Arabie Saoudite",
+      "region": "Moyen-Orient",
+      "ruleOfGold": "Servir la vision, respecter les valeurs, connaître sa place. Hautes récompenses pour les utiles, hauts risques pour les visibles.",
+      "pyramid": {
+        "top": "Famille royale et architectes de Vision 2030",
+        "institutions": "Appareil d'État en transformation rapide",
+        "gatekeepers": "Réseaux wasta et licences gouvernementales",
+        "valueCreators": "Experts internationaux et entrepreneurs locaux",
+        "base": "Citoyens saoudiens et travailleurs étrangers",
+        "realAsset": "Alignement avec la transformation nationale"
+      },
+      "whoWins": ["Professionnels alignés Vision 2030", "Experts internationaux de haute valeur", "Entrepreneurs saoudiens connectés", "Constructeurs de richesse discrets"],
+      "whoLoses": ["Ceux défiant les normes culturelles", "Individus politiquement actifs", "Ceux sans proposition de valeur claire", "Penseurs court-terme"],
+      "playbook": {
+        "do": ["S'aligner avec les priorités Vision 2030", "Respecter les normes culturelles et religieuses", "Construire de vraies relations locales", "Épargner agressivement", "Maintenir des options internationales"],
+        "dont": ["Commenter la politique ou la religion", "Supposer un séjour permanent possible", "Ignorer la dynamique de changement rapide", "Brûler des ponts", "Afficher un style de vie incompatible"],
+        "plan30Days": ["Comprendre l'iqama et les droits d'emploi", "Fixer des objectifs d'épargne agressifs", "Cartographier le réseau professionnel", "Rechercher les options de sortie"],
+        "plan12Months": ["Construire une forte réputation professionnelle", "Diversifier les revenus si possible", "Créer des connexions internationales", "Établir une option de seconde résidence"],
+        "plan5Years": ["Richesse significative accumulée", "Stratégie de sortie exécutée", "Compétences hautement portables", "Réseau international solide"],
+        "planB": "EAU, Bahreïn pour options régionales. Portugal, Malte pour UE. Canada, Australie pour options permanentes. Planifier soigneusement."
+      }
+    },
+    "india": {
+      "name": "Inde",
+      "region": "Asie du Sud",
+      "ruleOfGold": "Naviguer le paradoxe des systèmes anciens et de la croissance explosive. Relations et résilience battent les simples diplômes.",
+      "pyramid": {
+        "top": "Dynasties politiques et grands industriels",
+        "institutions": "Bureaucratie dense mélangeant héritage colonial et futur digital",
+        "gatekeepers": "Réseaux, diplômes et connaissance locale",
+        "valueCreators": "Entrepreneurs dans les secteurs formels et informels",
+        "base": "Main-d'œuvre massive en transformation",
+        "realAsset": "Intelligence adaptative et force du réseau"
+      },
+      "whoWins": ["Adaptateurs technophiles", "Constructeurs de réseaux solides", "Ceux surfant la transformation digitale", "Connecteurs internationaux"],
+      "whoLoses": ["Ceux sans patience", "Opérateurs rigidement formels", "Ceux ignorant la dynamique relationnelle", "Individus purement dépendants des diplômes"],
+      "playbook": {
+        "do": ["Construire de vrais réseaux locaux", "Embrasser les opportunités digitales", "Comprendre les variations régionales", "Développer des options internationales", "Maîtriser la navigation bureaucratique"],
+        "dont": ["S'attendre à des règles uniformes nationalement", "Ignorer la construction de relations", "Sous-estimer la concurrence", "Se fier uniquement aux systèmes formels", "Ignorer les limites santé et infrastructure"],
+        "plan30Days": ["Obtenir les enregistrements nécessaires (PAN, etc)", "Commencer à construire un réseau local", "Comprendre la dynamique de votre secteur", "Mettre en place une banque appropriée"],
+        "plan12Months": ["Établir une réputation professionnelle", "Construire des sources de revenus multiples", "Créer un backup international", "Développer une expertise sectorielle"],
+        "plan5Years": ["Revenus diversifiés Inde + international", "Réseau solide établi", "Actifs correctement structurés", "Options globales maintenues"],
+        "planB": "EAU, Singapour pour options proches. USA, UK, Canada pour marchés développés. Garder les compétences exportables."
+      }
+    },
+    "turkey": {
+      "name": "Turquie",
+      "region": "Europe/Moyen-Orient",
+      "ruleOfGold": "Surfer la volatilité si vous pouvez, vous couvrir si vous devez. Les vents politiques changent vite.",
+      "pyramid": {
+        "top": "Cercle présidentiel et groupes d'affaires alignés",
+        "institutions": "Structures de pouvoir centralisées en flux",
+        "gatekeepers": "Connexions gouvernementales et alignement partisan",
+        "valueCreators": "Entrepreneurs naviguant l'incertitude",
+        "base": "Citoyens gérant la volatilité monétaire",
+        "realAsset": "Agilité et neutralité politique"
+      },
+      "whoWins": ["Neutres politiquement avisés", "Gagneurs en devise forte", "Diversificateurs internationaux", "Adaptateurs agiles"],
+      "whoLoses": ["Critiques politiquement visibles", "Épargnants dépendants de la livre", "Entreprises mono-marché", "Ceux attendant la stabilité"],
+      "playbook": {
+        "do": ["Gagner en devise forte si possible", "Rester politiquement invisible", "Diversifier les actifs internationalement", "Construire des compétences exportables", "Maintenir des options de résidence multiples"],
+        "dont": ["S'engager dans le discours politique", "Garder l'épargne uniquement en livre", "Dépendre d'une seule source de revenus", "Ignorer le risque de change", "Supposer que la stabilité reviendra"],
+        "plan30Days": ["Établir revenus/épargne en devise forte", "Sécuriser tous les documents d'identité", "Cartographier les options de sortie", "Identifier les compétences transférables"],
+        "plan12Months": ["Construire un flux de revenus international", "Établir une banque étrangère", "Créer un réseau professionnel à l'étranger", "Explorer des alternatives de résidence"],
+        "plan5Years": ["Revenus diversifiés internationalement", "Seconde résidence sécurisée", "Actifs protégés de la volatilité", "Plan de sortie prêt si nécessaire"],
+        "planB": "Pays UE via programmes de citoyenneté. Géorgie, Serbie pour entrée facile. EAU pour option régionale. Garder les actifs mobiles."
+      }
     }
   },
   "lifeProfiles": {
