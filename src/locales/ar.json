@@ -837,5 +837,39 @@
     "apply": "تقديم طلب",
     "benefits": "المزايا",
     "requirements": "المتطلبات"
+  },
+  "lifeTrajectory": {
+    "questionOf": "السؤال {{current}} من {{total}}",
+    "selectToContinue": "اختر إجابة للمتابعة",
+    "lgbtq": { "title": "اعتبارات LGBTQ+", "description": "سنعطي الأولوية للدول ذات الحماية القوية لـ LGBTQ+." },
+    "planTypes": { "safe": "🛡️ خطة آمنة", "hybrid": "⚖️ خطة هجينة", "ambitious": "🚀 خطة طموحة" },
+    "trajectory": { "paths": "مسارات مهنية", "skills": "مهارات للتطوير", "firstSteps": "الخطوات الأولى" },
+    "results": { "workRelation": "العلاقة بالعمل", "riskRelation": "العلاقة بالمخاطر", "whatWorks": "ما ينجح فعلاً", "trap": "احذر من", "yourPlans": "خططك الثلاثة", "findCountries": "البحث عن دول متوافقة", "exploreCountries": "استكشاف جميع الدول", "retake": "إعادة الاختبار" }
+  },
+  "lifeProfiles": {
+    "lottery": { "label": "الباحث عن الاختصارات", "description": "تريد مخرجاً فورياً.", "workRelation": "انخراط منخفض في العمل طويل المدى.", "riskRelation": "غالباً عالية لكن ضعيفة السيطرة.", "whatWorks": "ميزانية صارمة، خطة ب موازية.", "trap": "انتظار 'الإشارة'، الديون." },
+    "comfort": { "label": "الراحة وصفر توتر", "description": "تبحث عن الهدوء والأمان النفسي.", "workRelation": "تريد هيكلاً.", "riskRelation": "منخفض.", "whatWorks": "الاستقرار، تقدم بطيء لكن أكيد.", "trap": "الملل ثم الانفجار بعد سنوات." },
+    "builder": { "label": "الباني الصبور", "description": "تريد ثروة + فخر.", "workRelation": "مستعد للعمل.", "riskRelation": "معتدل، محسوب.", "whatWorks": "عمل بسيط، مهارات نادرة.", "trap": "التعقيد المبكر." },
+    "safeWealth": { "label": "باني الثروة الآمنة", "description": "تريد دخلاً عالياً مع أقصى أمان.", "workRelation": "موافق على العمل، ليس المخاطرة.", "riskRelation": "منخفض إلى معتدل.", "whatWorks": "زيادة الدخل عبر مهارات نادرة.", "trap": "تناقض داخلي → ركود." },
+    "nomad": { "label": "البدوي العالمي", "description": "تبحث عن الحرية الجغرافية.", "workRelation": "تريد العمل من أي مكان.", "riskRelation": "متغير.", "whatWorks": "وظائف عن بُعد، دخل بعملة قوية.", "trap": "التقليل من الإدارة، العزلة." },
+    "purpose": { "label": "موجه نحو الهدف", "description": "تبحث عن الفائدة والمساهمة.", "workRelation": "العمل يصبح رسالة.", "riskRelation": "غالباً معتدل.", "whatWorks": "وظائف مفيدة + حدود واضحة.", "trap": "التضحية بالنفس." },
+    "status": { "label": "الباحث عن المكانة", "description": "تبحث عن الاعتراف.", "workRelation": "الوظيفة تصبح هويتك.", "riskRelation": "معتدل إلى عالي.", "whatWorks": "التميز، الشبكات، استراتيجية مهنية.", "trap": "المقارنة السامة." },
+    "recovery": { "label": "التعافي وإعادة البناء", "description": "تبحث عن الأمان والسيطرة.", "workRelation": "الحاجة للإتقان.", "riskRelation": "منخفض أولاً ثم يرتفع.", "whatWorks": "الاستقرار أولاً ثم التدريج.", "trap": "الحكم على النفس." }
+  },
+  "lgbtqRights": { "safe": "آمن لـ LGBTQ+", "caution": "توخَّ الحذر", "dangerous": "خطر عالٍ لـ LGBTQ+" },
+  "pyramidQuiz": {
+    "title": "لعبة الحياة",
+    "subtitle": "محاكاة مسار حياة عبر أنظمة عالمية مختلفة.",
+    "disclaimer": "⚠️ ستلعب شخصية خيالية عشوائية!",
+    "questionOf": "السؤال {{current}} من {{total}}",
+    "back": "رجوع",
+    "modes": { "online": { "title": "اختبار الملف", "description": "أجب على 8 أسئلة.", "cta": "اكتشف ملفي" }, "board": { "title": "وضع المغامرة", "description": "عش حياة كاملة.", "cta": "ابدأ حياتي" }, "multiplayer": { "title": "متعدد اللاعبين", "description": "العب حتى 4!", "cta": "العب معاً" } },
+    "result": { "title": "نوع الهرم المثالي لك", "subtitle": "بناءً على إجاباتك", "scores": "نتائجك حسب النوع", "playAgain": "العب مرة أخرى", "learnMore": "اعرف المزيد" }
+  },
+  "countriesData": {
+    "argentina": { "name": "الأرجنتين", "ruleOfGold": "التكيف المستمر. الثابت الوحيد هو التغيير." },
+    "saudiarabia": { "name": "المملكة العربية السعودية", "ruleOfGold": "كن مفيداً، احترم القواعد الثقافية، خطط للخروج." },
+    "qatar": { "name": "قطر", "ruleOfGold": "كن مفيداً، ابقَ صامتاً، خطط للخروج." },
+    "turkey": { "name": "تركيا", "ruleOfGold": "العلاقات والتكيف." }
   }
 }

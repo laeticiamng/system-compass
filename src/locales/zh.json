@@ -925,5 +925,51 @@
     "apply": "申请",
     "benefits": "福利",
     "requirements": "要求"
+  },
+  "lifeTrajectory": {
+    "questionOf": "问题 {{current}} / {{total}}",
+    "selectToContinue": "选择一个答案继续",
+    "lgbtq": { "title": "LGBTQ+ 考虑", "description": "我们将优先推荐具有强大LGBTQ+保护的国家。" },
+    "planTypes": { "safe": "🛡️ 安全计划", "hybrid": "⚖️ 混合计划", "ambitious": "🚀 雄心计划" },
+    "trajectory": { "paths": "职业道路", "skills": "需要发展的技能", "firstSteps": "第一步" },
+    "results": { "workRelation": "与工作的关系", "riskRelation": "与风险的关系", "whatWorks": "真正有效的", "trap": "小心", "yourPlans": "你的3个轨迹计划", "findCountries": "寻找兼容国家", "exploreCountries": "探索所有国家", "retake": "重新测试" }
+  },
+  "lifeProfiles": {
+    "lottery": { "label": "捷径寻求者", "description": "你想要一个即时的出路。", "workRelation": "对长期工作投入低。", "riskRelation": "通常高但控制不好。", "whatWorks": "严格预算，平行的B计划。", "trap": "等待'信号'，负债。" },
+    "comfort": { "label": "舒适与零压力", "description": "你寻求平静和心理安全。", "workRelation": "你想要结构。", "riskRelation": "低。", "whatWorks": "稳定，缓慢但确定的进步。", "trap": "无聊，然后多年后爆发。" },
+    "builder": { "label": "耐心的建设者", "description": "你想要财富+自豪感。", "workRelation": "愿意工作。", "riskRelation": "适度，计算过的。", "whatWorks": "简单的生意，稀有技能。", "trap": "过早变得太复杂。" },
+    "safeWealth": { "label": "安全财富建设者", "description": "你想要高收入与最大安全。", "workRelation": "可以工作，但不愿冒险。", "riskRelation": "低到适度。", "whatWorks": "通过稀有技能增加收入。", "trap": "内部矛盾→停滞。" },
+    "nomad": { "label": "全球游牧民", "description": "你寻求地理自由。", "workRelation": "你想在任何地方工作。", "riskRelation": "可变。", "whatWorks": "远程工作，强势货币收入。", "trap": "低估行政、孤立。" },
+    "purpose": { "label": "目标导向", "description": "你寻求有用和贡献。", "workRelation": "工作变成使命。", "riskRelation": "通常适度。", "whatWorks": "有用的工作+明确界限。", "trap": "牺牲自己，倦怠。" },
+    "status": { "label": "地位寻求者", "description": "你寻求认可。", "workRelation": "工作变成你的身份。", "riskRelation": "适度到高。", "whatWorks": "卓越，网络，职业策略。", "trap": "有毒的比较。" },
+    "recovery": { "label": "恢复与重建", "description": "你寻求安全和控制。", "workRelation": "需要掌握。", "riskRelation": "先低，后增加。", "whatWorks": "先稳定，然后渐进。", "trap": "评判自己。" }
+  },
+  "lgbtqRights": { "safe": "LGBTQ+ 安全", "caution": "谨慎行事", "dangerous": "LGBTQ+高风险" },
+  "pyramidQuiz": {
+    "title": "人生游戏",
+    "subtitle": "模拟通过不同世界系统的人生轨迹。",
+    "disclaimer": "⚠️ 你将扮演一个随机虚构角色！",
+    "questionOf": "问题 {{current}} / {{total}}",
+    "back": "返回",
+    "modes": { "online": { "title": "档案测验", "description": "回答8个问题。", "cta": "发现我的档案" }, "board": { "title": "冒险模式", "description": "体验完整人生。", "cta": "开始我的人生" }, "multiplayer": { "title": "多人游戏", "description": "最多4人游戏！", "cta": "一起玩" } },
+    "result": { "title": "你理想的金字塔类型", "subtitle": "基于你的答案", "scores": "按类型得分", "playAgain": "再玩一次", "learnMore": "了解更多" }
+  },
+  "countriesData": {
+    "argentina": { "name": "阿根廷", "ruleOfGold": "不断适应。唯一不变的是变化。" },
+    "austria": { "name": "奥地利", "ruleOfGold": "秩序和传统。尊重等级制度。" },
+    "belgium": { "name": "比利时", "ruleOfGold": "共识为王。" },
+    "chile": { "name": "智利", "ruleOfGold": "拉丁美洲的瑞士。" },
+    "china": { "name": "中国", "ruleOfGold": "公开与党保持一致，私下建设。" },
+    "colombia": { "name": "哥伦比亚", "ruleOfGold": "关系重要。信任就是一切。" },
+    "denmark": { "name": "丹麦", "ruleOfGold": "Hygge和平等。" },
+    "india": { "name": "印度", "ruleOfGold": "关系和耐心。" },
+    "italy": { "name": "意大利", "ruleOfGold": "关系和地区自豪感。" },
+    "mexico": { "name": "墨西哥", "ruleOfGold": "关系和灵活性。" },
+    "norway": { "name": "挪威", "ruleOfGold": "集体第一。" },
+    "qatar": { "name": "卡塔尔", "ruleOfGold": "有用、保持沉默、计划退出。" },
+    "russia": { "name": "俄罗斯", "ruleOfGold": "永远不要公开挑战权力。" },
+    "spain": { "name": "西班牙", "ruleOfGold": "关系和地区认同。" },
+    "sweden": { "name": "瑞典", "ruleOfGold": "平等和谦虚。" },
+    "turkey": { "name": "土耳其", "ruleOfGold": "关系和适应。" }
   }
 }
