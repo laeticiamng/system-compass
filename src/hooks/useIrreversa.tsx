@@ -327,6 +327,65 @@ export function useIrreversa() {
     }
   };
 
+  const deleteThreshold = async (thresholdId: string): Promise<boolean> => {
+    if (!user) return false;
+
+    // Find the threshold to check if it can be deleted
+    const threshold = thresholds.find(t => t.id === thresholdId);
+    if (!threshold || threshold.status === 'sealed') {
+      toast.error('Les seuils scellés ne peuvent pas être supprimés');
+      return false;
+    }
+
+    try {
+      // Delete audit log entries first
+      await supabase
+        .from('irreversa_audit_log')
+        .delete()
+        .eq('threshold_id', thresholdId);
+
+      // Delete witnesses
+      await supabase
+        .from('irreversa_witnesses')
+        .delete()
+        .eq('threshold_id', thresholdId);
+
+      // Delete the threshold
+      const { error } = await supabase
+        .from('irreversa_thresholds')
+        .delete()
+        .eq('id', thresholdId)
+        .neq('status', 'sealed');
+
+      if (error) throw error;
+
+      setThresholds(prev => prev.filter(t => t.id !== thresholdId));
+      toast.success('Seuil supprimé');
+      return true;
+    } catch (err) {
+      toast.error('Erreur lors de la suppression');
+      return false;
+    }
+  };
+
+  const removeWitness = async (witnessId: string): Promise<boolean> => {
+    if (!user) return false;
+
+    try {
+      const { error } = await supabase
+        .from('irreversa_witnesses')
+        .delete()
+        .eq('id', witnessId);
+
+      if (error) throw error;
+      toast.success('Témoin retiré');
+      return true;
+    } catch (err) {
+      toast.error('Erreur lors du retrait du témoin');
+      return false;
+    }
+  };
+
   return {
     thresholds,
     loading,
@@ -335,8 +394,10 @@ export function useIrreversa() {
     createThreshold,
     markThreshold,
     addWitness,
+    removeWitness,
     validateThreshold,
     sealThreshold,
+    deleteThreshold,
     getWitnesses,
     getAuditLog,
     refetch: fetchThresholds
