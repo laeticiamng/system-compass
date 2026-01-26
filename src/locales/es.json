@@ -3696,5 +3696,768 @@
       "ready": "¿Listo para estructurar tus decisiones institucionales?",
       "desc": "Explora nuestras herramientas dedicadas o contáctanos para soluciones personalizadas."
     }
+  },
+  "lifeTrajectory": {
+    "questionOf": "Pregunta {{current}} de {{total}}",
+    "selectToContinue": "Selecciona una respuesta para continuar",
+    "questions": {
+      "timePreference": {
+        "question": "¿Prefieres dos años difíciles para libertad rápida, o diez años estables pero lentos?",
+        "short": "2 años intensos",
+        "shortDesc": "Vía rápida con alto esfuerzo",
+        "long": "10 años estables",
+        "longDesc": "Progreso lento pero seguro"
+      },
+      "incomeShock": {
+        "question": "Si pierdes 30% de tus ingresos por 3 meses, ¿qué haces concretamente?",
+        "panic": "Entro en pánico y lucho",
+        "adapt": "Me adapto y encuentro soluciones",
+        "prepared": "Tengo reservas, sin estrés"
+      },
+      "priority": {
+        "question": "Tu prioridad #1 (elige solo una):",
+        "freedom": "🦅 Libertad",
+        "money": "💰 Dinero",
+        "meaning": "💝 Propósito",
+        "status": "👔 Estatus",
+        "family": "👨‍👩‍👧‍👦 Familia",
+        "calm": "🧘 Calma"
+      },
+      "intensity": {
+        "question": "¿Puedes aguantar 60 horas/semana por 6 meses si cambia tu vida?"
+      },
+      "geographic": {
+        "question": "¿Es la libertad geográfica no negociable para ti?"
+      },
+      "uncertainty": {
+        "question": "Tu nivel de comodidad con la incertidumbre:",
+        "low": "Bajo - Necesito previsibilidad",
+        "medium": "Medio - Puedo adaptarme",
+        "high": "Alto - Prospero en el caos"
+      },
+      "autonomy": {
+        "question": "¿Prefieres ser supervisado o autónomo?",
+        "structured": "Supervisado y estructurado",
+        "autonomous": "Autónomo e independiente"
+      },
+      "studies": {
+        "question": "¿Quieres evitar estudios largos?"
+      },
+      "selling": {
+        "question": "¿Estás dispuesto a vender (tú mismo, servicios, productos, negociar)?"
+      },
+      "contribute": {
+        "question": "¿Quieres contribuir a una causa?"
+      },
+      "lgbtq": {
+        "question": "¿Necesitas países LGBTQ+ amigables en tus recomendaciones?"
+      }
+    },
+    "results": {
+      "workRelation": "Relación con el Trabajo",
+      "riskRelation": "Relación con el Riesgo",
+      "whatWorks": "Lo que Realmente Funciona",
+      "trap": "Cuidado con",
+      "yourPlans": "Tus 3 Planes de Trayectoria",
+      "findCountries": "Encontrar Países Compatibles",
+      "exploreCountries": "Explorar Todos los Países",
+      "retake": "Repetir Test"
+    },
+    "lgbtq": {
+      "title": "Consideraciones LGBTQ+",
+      "description": "Priorizaremos países con fuertes protecciones y seguridad LGBTQ+ en tus recomendaciones."
+    },
+    "planTypes": {
+      "safe": "🛡️ Plan Seguro",
+      "hybrid": "⚖️ Plan Híbrido",
+      "ambitious": "🚀 Plan Ambicioso"
+    },
+    "trajectory": {
+      "paths": "Caminos Profesionales",
+      "skills": "Habilidades a Desarrollar",
+      "firstSteps": "Primeros Pasos"
+    }
+  },
+  "lifeProfiles": {
+    "lottery": {
+      "label": "El Buscador de Atajos",
+      "description": "Quieres una salida inmediata, un descanso de tu situación actual.",
+      "workRelation": "Bajo compromiso con trabajo a largo plazo.",
+      "riskRelation": "A menudo alto pero mal controlado.",
+      "whatWorks": "Presupuesto estricto, Plan B paralelo con ingresos estables.",
+      "trap": "Esperar 'la señal', endeudarse."
+    },
+    "comfort": {
+      "label": "Comodidad y Cero Estrés",
+      "description": "Buscas tranquilidad, rutina y seguridad psicológica.",
+      "workRelation": "Quieres estructura, expectativas claras.",
+      "riskRelation": "Bajo — evitas la incertidumbre.",
+      "whatWorks": "Estabilidad, progresión lenta pero segura.",
+      "trap": "Aburrirte, desvanecerte, luego explotar después de años."
+    },
+    "builder": {
+      "label": "Constructor Paciente",
+      "description": "Quieres riqueza + orgullo + la sensación de haberlo ganado.",
+      "workRelation": "Dispuesto a trabajar, pero el esfuerzo debe tener sentido.",
+      "riskRelation": "Moderado, calculado.",
+      "whatWorks": "Negocio simple, habilidades raras, disciplina.",
+      "trap": "Complicarse demasiado temprano."
+    },
+    "safeWealth": {
+      "label": "Constructor de Riqueza Segura",
+      "description": "Quieres altos ingresos con máxima seguridad.",
+      "workRelation": "OK con trabajar, pero no con arriesgarte.",
+      "riskRelation": "Bajo a moderado.",
+      "whatWorks": "Aumentar ingresos vía habilidades raras.",
+      "trap": "Contradicción interna → estancamiento."
+    },
+    "nomad": {
+      "label": "Nómada Global",
+      "description": "Buscas libertad geográfica y autonomía.",
+      "workRelation": "Quieres trabajar desde cualquier lugar.",
+      "riskRelation": "Variable.",
+      "whatWorks": "Trabajos remotos, ingresos en moneda fuerte.",
+      "trap": "Subestimar admin, aislamiento, irregularidad de ingresos."
+    },
+    "purpose": {
+      "label": "Orientado al Propósito",
+      "description": "Buscas utilidad, alineación, contribución.",
+      "workRelation": "El trabajo se convierte en misión.",
+      "riskRelation": "A menudo moderado, pero la emoción puede hacerte olvidar.",
+      "whatWorks": "Trabajos útiles + límites claros + sistema anti-burnout.",
+      "trap": "Sacrificarte, quemarte."
+    },
+    "status": {
+      "label": "Buscador de Estatus",
+      "description": "Buscas reconocimiento, respeto, identidad social.",
+      "workRelation": "El trabajo se convierte en tu identidad.",
+      "riskRelation": "Moderado a alto.",
+      "whatWorks": "Excelencia, selectividad, red, estrategia de carrera.",
+      "trap": "Comparación tóxica, ansiedad de rendimiento."
+    },
+    "recovery": {
+      "label": "Recuperación y Reconstrucción",
+      "description": "Buscas seguridad, control, reparación.",
+      "workRelation": "Necesidad de dominio.",
+      "riskRelation": "Bajo al principio, luego aumenta.",
+      "whatWorks": "Estabilizar primero, luego rampa progresiva.",
+      "trap": "Juzgarte, intentar recuperar 10 años en 6 meses."
+    }
+  },
+  "lgbtqRights": {
+    "safe": "LGBTQ+ Seguro",
+    "caution": "Proceder con Precaución",
+    "dangerous": "Alto Riesgo para LGBTQ+"
+  },
+  "pyramidQuiz": {
+    "title": "El Juego de la Vida",
+    "subtitle": "Simula una trayectoria de vida a través de diferentes sistemas mundiales.",
+    "disclaimer": "⚠️ Jugarás un personaje ficticio aleatorio. ¡Esto no es tu vida real!",
+    "realLifeLink": "¿Quieres planificar tu vida real?",
+    "questionOf": "Pregunta {{current}} de {{total}}",
+    "back": "Atrás",
+    "modes": {
+      "online": {
+        "title": "Quiz de Perfil",
+        "description": "Responde 8 preguntas para descubrir qué sistema mundial te conviene.",
+        "cta": "Descubrir mi perfil"
+      },
+      "board": {
+        "title": "Modo Aventura",
+        "description": "Vive una vida entera: toma decisiones, enfrenta eventos.",
+        "cta": "Comenzar mi vida"
+      },
+      "multiplayer": {
+        "title": "Multijugador",
+        "description": "¡Juega hasta 4! Compara trayectorias de vida.",
+        "cta": "Jugar juntos"
+      }
+    },
+    "questions": {
+      "priority": {
+        "question": "¿Cuál es tu prioridad principal en la vida?",
+        "options": {
+          "security": "Seguridad y estabilidad",
+          "growth": "Crecimiento y oportunidades",
+          "freedom": "Libertad e independencia",
+          "connections": "Redes y conexiones"
+        }
+      },
+      "riskTolerance": {
+        "question": "¿Cuál es tu relación con el riesgo?",
+        "options": {
+          "avoidRisk": "Prefiero evitar riesgos",
+          "calculatedRisk": "Tomo riesgos calculados",
+          "embraceRisk": "Abrazo el riesgo para crecer",
+          "thriveInChaos": "Prospero en el caos"
+        }
+      },
+      "workStyle": {
+        "question": "¿Qué estilo de trabajo te conviene mejor?",
+        "options": {
+          "stableJob": "Trabajo estable con beneficios",
+          "entrepreneur": "Emprendedor con mi propio negocio",
+          "freelance": "Freelance / Consultor independiente",
+          "opportunist": "Oportunista según circunstancias"
+        }
+      },
+      "valueSystem": {
+        "question": "¿Qué sistema de valores te conviene mejor?",
+        "options": {
+          "meritocracy": "Meritocracia y competencia",
+          "socialProtection": "Protección social e igualdad",
+          "pragmatism": "Pragmatismo y adaptación",
+          "wealth": "Acumulación de riqueza"
+        }
+      },
+      "networkStyle": {
+        "question": "¿Cómo construyes tu red?",
+        "options": {
+          "formalNetworks": "Redes profesionales formales",
+          "informalNetworks": "Conexiones informales y amigos",
+          "businessNetworks": "Redes de negocios estratégicas",
+          "minimalNetworks": "Prefiero mantenerme discreto"
+        }
+      },
+      "futureVision": {
+        "question": "¿Cuál es tu visión geográfica para el futuro?",
+        "options": {
+          "stayLocal": "Quedarme en mi país de origen",
+          "goGlobal": "Internacionalizarme",
+          "strategic": "Movilidad estratégica según oportunidades",
+          "opportunistic": "Donde fluye el dinero"
+        }
+      },
+      "moneyRelation": {
+        "question": "¿Cuál es tu relación con el dinero?",
+        "options": {
+          "saveSafely": "Ahorrar prudentemente",
+          "investGrowth": "Invertir para crecer",
+          "maximizeNow": "Maximizar ingresos ahora",
+          "diversify": "Diversificar en todas partes"
+        }
+      },
+      "rulesAttitude": {
+        "question": "¿Cuál es tu actitud hacia las reglas?",
+        "options": {
+          "followStrictly": "Seguirlas estrictamente",
+          "useWisely": "Usarlas sabiamente",
+          "findLoopholes": "Encontrar lagunas",
+          "createOwn": "Crear mis propias reglas"
+        }
+      }
+    },
+    "result": {
+      "title": "Tu tipo de pirámide ideal",
+      "subtitle": "Basado en tus respuestas, aquí está el sistema que mejor te conviene",
+      "scores": "Tus puntuaciones por tipo",
+      "playAgain": "Jugar de nuevo",
+      "learnMore": "Saber más"
+    },
+    "board": {
+      "instructions": "Tira el dado para avanzar. Cada casilla te da puntos.",
+      "rollDice": "Haz clic en el dado para tirar",
+      "landedPyramid": "+2 puntos para {{type}}",
+      "chanceCard": "¡Carta de suerte! +3 puntos para {{type}}",
+      "trap": "¡Trampa! -2 puntos en tu tipo dominante",
+      "bonus": "¡Bonus! +1 punto en todos los tipos",
+      "answeredQuestion": "¡Buena respuesta!",
+      "victory": "¡Felicidades! ¡Has llegado a la meta!",
+      "moving": "Moviendo..."
+    },
+    "multiplayer": {
+      "setup": "Configura tu partida multijugador",
+      "selectPlayers": "Número de jugadores",
+      "startGame": "Iniciar partida",
+      "player": "Jugador",
+      "yourTurn": "¡Tu turno!",
+      "gameOver": "¡Fin del juego!"
+    }
+  },
+  "countriesData": {
+    "argentina": {
+      "name": "Argentina",
+      "ruleOfGold": "Adaptarse constantemente. La única constante es el cambio.",
+      "pyramid": {
+        "top": "Dinastías políticas y élites económicas",
+        "base": "Trabajadores luchando con la inflación",
+        "realAsset": "Adaptabilidad y resiliencia ante crisis",
+        "gatekeepers": "Líderes sindicales, redes políticas",
+        "institutions": "Peso inestable, crisis recurrentes",
+        "valueCreators": "Emprendedores, talento tech, agroindustria"
+      },
+      "whoWins": ["Los que ganan en dólares", "Emprendedores resilientes", "Tech workers pagados en USD"],
+      "whoLoses": ["Los que ganan en pesos", "Jubilados con ingreso fijo", "Pequeños ahorradores"],
+      "playbook": {
+        "do": ["Ganar en dólares", "Construir opciones internacionales"],
+        "dont": ["Ahorrar en pesos", "Confiar en el sistema"],
+        "plan30Days": ["Evaluar habilidades", "Investigar opciones de visa"],
+        "plan12Months": ["Construir ingresos internacionales", "Expandir red"],
+        "plan5Years": ["Lograr residencia permanente", "Construir portafolio"],
+        "planB": "Uruguay para estabilidad, Chile para carrera, España para acceso UE"
+      }
+    },
+    "austria": {
+      "name": "Austria",
+      "ruleOfGold": "Orden y tradición. Respeta la jerarquía, sigue las reglas.",
+      "pyramid": {
+        "top": "Antiguas familias aristocráticas y élite empresarial",
+        "base": "Trabajadores en sistema estructurado",
+        "realAsset": "Habilidades en alemán y paciencia",
+        "gatekeepers": "Idioma alemán y costumbres locales",
+        "institutions": "Burocracia eficiente",
+        "valueCreators": "Profesionales, turismo, manufactura"
+      },
+      "whoWins": ["Germanoparlantes", "Profesionales pacientes", "Ciudadanos UE"],
+      "whoLoses": ["No germanoparlantes", "Emprendedores impacientes"],
+      "playbook": {
+        "do": ["Aprender alemán con fluidez", "Respetar la jerarquía"],
+        "dont": ["Apresurar relaciones", "Ignorar formalidades"],
+        "plan30Days": ["Comenzar clases de alemán", "Entender requisitos de residencia"],
+        "plan12Months": ["Alcanzar alemán básico", "Construir red"],
+        "plan5Years": ["Integración completa lograda", "Considerar residencia permanente"],
+        "planB": "Alemania para mercado más grande, Suiza para salarios más altos"
+      }
+    },
+    "belgium": {
+      "name": "Bélgica",
+      "ruleOfGold": "El consenso es rey. Navega el complejo panorama político.",
+      "pyramid": {
+        "top": "Comunidades lingüísticas y partidos políticos",
+        "base": "Trabajadores a través de divisiones lingüísticas",
+        "realAsset": "Acceso institucional a la UE",
+        "gatekeepers": "Pilares sociales y barreras lingüísticas",
+        "institutions": "Estado federal con complejidad regional",
+        "valueCreators": "Multinacionales, instituciones UE, PYMES"
+      },
+      "whoWins": ["Carrieristas de la UE", "Profesionales multilingües"],
+      "whoLoses": ["Monolingües", "Los fuera de Bruselas"],
+      "playbook": {
+        "do": ["Aprender múltiples idiomas", "Entender instituciones UE"],
+        "dont": ["Subestimar la política lingüística", "Ignorar la burocracia"],
+        "plan30Days": ["Entender comunidades lingüísticas", "Investigar oportunidades UE"],
+        "plan12Months": ["Lograr bilingüismo", "Construir red profesional"],
+        "plan5Years": ["Carrera UE establecida", "Usar Bélgica como base"],
+        "planB": "Países Bajos para negocios, Luxemburgo para finanzas"
+      }
+    },
+    "chile": {
+      "name": "Chile",
+      "ruleOfGold": "La Suiza de Latinoamérica. Estabilidad y reglas funcionan aquí.",
+      "pyramid": {
+        "top": "Élites económicas y tecnócratas políticos",
+        "base": "Trabajadores buscando oportunidades",
+        "realAsset": "Estabilidad y previsibilidad",
+        "gatekeepers": "Educación y redes profesionales",
+        "institutions": "Instituciones fuertes para Latinoamérica",
+        "valueCreators": "Profesionales, emprendedores, minería"
+      },
+      "whoWins": ["Los que valoran estabilidad", "Profesionales"],
+      "whoLoses": ["Los que esperan riqueza rápida"],
+      "playbook": {
+        "do": ["Aprender español", "Entender marco institucional"],
+        "dont": ["Subestimar desigualdad social", "Solo pensar en Santiago"],
+        "plan30Days": ["Investigar opciones de visa", "Comenzar a aprender español"],
+        "plan12Months": ["Construir experiencia laboral local", "Expandir red profesional"],
+        "plan5Years": ["Lograr residencia permanente", "Establecer carrera"],
+        "planB": "Argentina para costos más bajos, Perú para aventura"
+      }
+    },
+    "china": {
+      "name": "China",
+      "ruleOfGold": "Alinearse públicamente con el Partido, construir en privado.",
+      "pyramid": {
+        "top": "Partido Comunista y capital alineado con el estado",
+        "base": "Trabajadores en rápida transformación",
+        "realAsset": "Velocidad de adaptación y alineación política",
+        "gatekeepers": "Conexiones del Partido, redes guanxi",
+        "institutions": "Aparato estatal entre control y mercado",
+        "valueCreators": "Emprendedores dentro de límites políticos"
+      },
+      "whoWins": ["Los que leen bien los vientos políticos", "Emprendedores alineados con el estado"],
+      "whoLoses": ["Críticos políticamente visibles", "Negocios dependientes del extranjero"],
+      "playbook": {
+        "do": ["Dominar regulaciones locales", "Construir relaciones con funcionarios"],
+        "dont": ["Criticar el sistema públicamente", "Convertirse en símbolo visible"],
+        "plan30Days": ["Estudiar panorama regulatorio", "Mapear red guanxi"],
+        "plan12Months": ["Construir ingresos secundarios en el exterior", "Crear perfil internacional"],
+        "plan5Years": ["Segunda residencia establecida", "Flujos de ingresos independientes de ubicación"],
+        "planB": "Singapur, Japón o Taiwán para culturas similares"
+      }
+    },
+    "colombia": {
+      "name": "Colombia",
+      "ruleOfGold": "Las relaciones importan. La confianza es todo en un país en transformación.",
+      "pyramid": {
+        "top": "Familias tradicionales y nuevos emprendedores",
+        "base": "Trabajadores buscando oportunidades",
+        "realAsset": "Adaptabilidad y resiliencia",
+        "gatekeepers": "Conexiones locales y redes",
+        "institutions": "Instituciones mejorando pero desiguales",
+        "valueCreators": "Emprendedores, talento tech, creativos"
+      },
+      "whoWins": ["Los que construyen redes locales", "Adaptadores flexibles"],
+      "whoLoses": ["Los que esperan sistemas formales", "Conscientes de seguridad"],
+      "playbook": {
+        "do": ["Construir relaciones genuinas", "Entender consideraciones de seguridad"],
+        "dont": ["Esperar meritocracia formal", "Ignorar cuestiones de seguridad"],
+        "plan30Days": ["Comenzar a aprender español", "Entender dinámicas regionales"],
+        "plan12Months": ["Construir red local", "Explorar diferentes ciudades"],
+        "plan5Years": ["Negocio o carrera establecida", "Integración local profunda"],
+        "planB": "Ecuador para costos más bajos, Panamá para negocios"
+      }
+    },
+    "cuba": {
+      "name": "Cuba",
+      "ruleOfGold": "Sobrevivir a través de redes. La economía formal no cuenta toda la historia.",
+      "pyramid": {
+        "top": "Partido y militares",
+        "base": "Ciudadanos navegando el sistema",
+        "realAsset": "Relaciones e ingenio",
+        "gatekeepers": "Control estatal y redes informales",
+        "institutions": "Planificación centralizada con soluciones informales",
+        "valueCreators": "Los que conectan sistemas formales e informales"
+      },
+      "whoWins": ["Los que navegan sistemas", "Con conexiones de diáspora"],
+      "whoLoses": ["Los dependientes de economía formal", "Sin conexiones"],
+      "playbook": {
+        "do": ["Entender ambos sistemas económicos", "Construir conexiones locales genuinas"],
+        "dont": ["Asumir que economía formal es todo", "Ignorar límites políticos"],
+        "plan30Days": ["Entender ecosistema económico local", "Construir conexiones de confianza"],
+        "plan12Months": ["Diversificar fuentes de ingresos", "Desarrollar conocimiento local profundo"],
+        "plan5Years": ["Mantener opciones externas", "Estrategia de salida lista"],
+        "planB": "México o España para potencial reubicación"
+      }
+    },
+    "denmark": {
+      "name": "Dinamarca",
+      "ruleOfGold": "Hygge e igualdad. Destacar no es el camino.",
+      "pyramid": {
+        "top": "Consenso socialdemócrata",
+        "base": "Ciudadanos con fuertes protecciones",
+        "realAsset": "Confianza y cohesión social",
+        "gatekeepers": "Idioma danés e integración cultural",
+        "institutions": "Gobierno altamente eficiente y transparente",
+        "valueCreators": "Trabajadores calificados en entorno regulado"
+      },
+      "whoWins": ["Los que abrazan valores igualitarios", "Integradores"],
+      "whoLoses": ["Individualistas altamente ambiciosos", "No integradores"],
+      "playbook": {
+        "do": ["Aprender danés", "Abrazar cultura work-life balance"],
+        "dont": ["Presumir riqueza", "Ignorar integración social"],
+        "plan30Days": ["Comenzar clases de danés", "Entender requisitos de residencia"],
+        "plan12Months": ["Alcanzar danés básico", "Construir red local"],
+        "plan5Years": ["Integración completa lograda", "Considerar residencia permanente"],
+        "planB": "Otros países nórdicos, Países Bajos"
+      }
+    },
+    "india": {
+      "name": "India",
+      "ruleOfGold": "Relaciones y paciencia. El sistema es complejo pero navegable.",
+      "pyramid": {
+        "top": "Capitanes de industria y dinastías políticas",
+        "base": "Clase media aspiracional y los que luchan",
+        "realAsset": "Relaciones y navegación del sistema",
+        "gatekeepers": "Casta, conexiones y burocracia",
+        "institutions": "Democracia con capas burocráticas",
+        "valueCreators": "Emprendedores, talento tech, profesionales"
+      },
+      "whoWins": ["Los con conexiones y paciencia", "Talento tech"],
+      "whoLoses": ["Extranjeros impacientes", "Los que subestiman complejidad"],
+      "playbook": {
+        "do": ["Construir relaciones genuinas", "Entender diferencias regionales"],
+        "dont": ["Tratar al país como un solo sistema", "Subestimar burocracia"],
+        "plan30Days": ["Investigar opciones de visa", "Estudiar dinámicas regionales"],
+        "plan12Months": ["Construir asociaciones locales", "Explorar múltiples ciudades"],
+        "plan5Years": ["Negocio o carrera establecida", "Redes locales profundas"],
+        "planB": "Singapur para hub asiático, Dubai para cercanía"
+      }
+    },
+    "italy": {
+      "name": "Italia",
+      "ruleOfGold": "Relaciones y orgullo regional. Cada región es un país diferente.",
+      "pyramid": {
+        "top": "Familias antiguas y nueva élite económica",
+        "base": "Trabajadores con identidad regional",
+        "realAsset": "Relaciones y conocimiento regional",
+        "gatekeepers": "Redes locales y pertenencia regional",
+        "institutions": "Burocracia compleja con diferencias regionales",
+        "valueCreators": "Negocios familiares, PYMES, creativos"
+      },
+      "whoWins": ["Los que construyen relaciones locales", "Los que entienden dinámicas regionales"],
+      "whoLoses": ["Los que esperan uniformidad nacional", "Los que subestiman burocracia"],
+      "playbook": {
+        "do": ["Aprender italiano", "Elegir región e integrarse"],
+        "dont": ["Tratar Italia como uniforme", "Subestimar burocracia"],
+        "plan30Days": ["Investigar región", "Comenzar a aprender italiano"],
+        "plan12Months": ["Construir red local", "Aprender a navegar burocracia"],
+        "plan5Years": ["Integración regional lograda", "Negocio o carrera establecida"],
+        "planB": "España para cultura similar, Portugal para costos más bajos"
+      }
+    },
+    "mexico": {
+      "name": "México",
+      "ruleOfGold": "Relaciones y flexibilidad. Las reglas formales no cuentan toda la historia.",
+      "pyramid": {
+        "top": "Élites económicas y clase política",
+        "base": "Trabajadores en economías formales e informales",
+        "realAsset": "Relaciones y presencia regional",
+        "gatekeepers": "Conexiones locales y redes regionales",
+        "institutions": "Sistema federal con variación regional",
+        "valueCreators": "Emprendedores, profesionales, creativos"
+      },
+      "whoWins": ["Los que construyen relaciones locales", "Los que entienden dinámicas regionales"],
+      "whoLoses": ["Los que esperan sistema formal", "Los que ignoran seguridad"],
+      "playbook": {
+        "do": ["Aprender español", "Entender diferencias regionales"],
+        "dont": ["Tratar como uniforme", "Ignorar cuestiones de seguridad"],
+        "plan30Days": ["Elegir ciudad cuidadosamente", "Entender entorno de seguridad local"],
+        "plan12Months": ["Construir red local", "Explorar diferentes regiones"],
+        "plan5Years": ["Negocio o carrera establecida", "Integración regional profunda"],
+        "planB": "Colombia para alternativas, España para Europa"
+      }
+    },
+    "norway": {
+      "name": "Noruega",
+      "ruleOfGold": "El colectivo primero. La excelencia es buena, pero nunca por encima del grupo.",
+      "pyramid": {
+        "top": "Instituciones democráticas y fondo soberano",
+        "base": "Ciudadanos con fuertes protecciones sociales",
+        "realAsset": "Confianza, igualdad y estabilidad sistémica",
+        "gatekeepers": "Educación, idioma y normas sociales",
+        "institutions": "Estado fuerte, transparente y bien financiado",
+        "valueCreators": "Trabajadores calificados en entorno regulado"
+      },
+      "whoWins": ["Los que abrazan valores igualitarios", "Planificadores pacientes a largo plazo"],
+      "whoLoses": ["Individualistas altamente ambiciosos", "Los que no se integran"],
+      "playbook": {
+        "do": ["Aprender noruego seriamente", "Abrazar cultura work-life balance"],
+        "dont": ["Presumir riqueza", "Ignorar integración social"],
+        "plan30Days": ["Comenzar clases de noruego", "Entender requisitos de residencia"],
+        "plan12Months": ["Alcanzar noruego básico", "Construir red local"],
+        "plan5Years": ["Integración completa lograda", "Considerar residencia permanente"],
+        "planB": "Otros países nórdicos, Países Bajos, Alemania"
+      }
+    },
+    "peru": {
+      "name": "Perú",
+      "ruleOfGold": "Relaciones y paciencia. Los sistemas formales necesitan navegación informal.",
+      "pyramid": {
+        "top": "Élites económicas y clase política",
+        "base": "Trabajadores en economías formales e informales",
+        "realAsset": "Relaciones y adaptabilidad",
+        "gatekeepers": "Conexiones locales y redes regionales",
+        "institutions": "Instituciones en desarrollo con brechas",
+        "valueCreators": "Emprendedores, profesionales, turismo"
+      },
+      "whoWins": ["Los que construyen relaciones locales", "Adaptadores flexibles"],
+      "whoLoses": ["Los que esperan sistema formal", "Impacientes"],
+      "playbook": {
+        "do": ["Aprender español", "Entender diferencias regionales"],
+        "dont": ["Esperar meritocracia formal", "Subestimar burocracia"],
+        "plan30Days": ["Comenzar a aprender español", "Entender dinámicas regionales"],
+        "plan12Months": ["Construir red local", "Explorar diferentes regiones"],
+        "plan5Years": ["Negocio o carrera establecida", "Integración local profunda"],
+        "planB": "Colombia, Ecuador para alternativas"
+      }
+    },
+    "poland": {
+      "name": "Polonia",
+      "ruleOfGold": "Oportunidades UE con relaciones locales. Europa emergente.",
+      "pyramid": {
+        "top": "Clase política y nueva élite económica",
+        "base": "Trabajadores aprovechando oportunidades UE",
+        "realAsset": "Acceso UE y relaciones locales",
+        "gatekeepers": "Idioma polaco y redes locales",
+        "institutions": "Marco UE con política local",
+        "valueCreators": "Profesionales, emprendedores, talento tech"
+      },
+      "whoWins": ["Los que aprovechan oportunidades UE", "Polacoparlantes"],
+      "whoLoses": ["Los que solo dependen de marco UE", "Los que ignoran dinámicas locales"],
+      "playbook": {
+        "do": ["Aprender polaco", "Entender dinámicas UE y locales"],
+        "dont": ["Esperar Europa Occidental", "Ignorar política local"],
+        "plan30Days": ["Comenzar a aprender polaco", "Entender opciones de visa UE"],
+        "plan12Months": ["Construir red local", "Mejorar polaco"],
+        "plan5Years": ["Carrera o negocio establecido", "Aprovechar movilidad UE"],
+        "planB": "Alemania, República Checa para alternativas"
+      }
+    },
+    "qatar": {
+      "name": "Qatar",
+      "ruleOfGold": "Sé útil, mantente callado, planifica tu salida. Eres un invitado con fecha de caducidad.",
+      "pyramid": {
+        "top": "Familia real Al Thani y círculos cercanos",
+        "base": "Trabajadores extranjeros con derechos limitados",
+        "realAsset": "Utilidad para proyectos estatales y discreción",
+        "gatekeepers": "Patrocinadores kafala y permisos gubernamentales",
+        "institutions": "Estructuras estatales sirviendo visión y estabilidad",
+        "valueCreators": "Expatriados expertos sirviendo al desarrollo"
+      },
+      "whoWins": ["Expertos de alto valor en sectores prioritarios", "Acumuladores discretos de riqueza"],
+      "whoLoses": ["Los que buscan pertenencia permanente", "Trabajadores poco calificados"],
+      "playbook": {
+        "do": ["Maximizar ahorros durante tu estadía", "Respetar costumbres locales"],
+        "dont": ["Esperar ciudadanía", "Criticar gobierno o religión"],
+        "plan30Days": ["Entender derechos de visa y empleo", "Configurar sistema de ahorro"],
+        "plan12Months": ["Establecer alta tasa de ahorro", "Crear opciones de trabajo internacionales"],
+        "plan5Years": ["Riqueza sustancial acumulada", "Próximo destino asegurado"],
+        "planB": "Dubai para la región, Singapur para Asia, Europa para ciudadanía"
+      }
+    },
+    "russia": {
+      "name": "Rusia",
+      "ruleOfGold": "Nunca desafiar al poder públicamente. El estado da y el estado quita.",
+      "pyramid": {
+        "top": "Élite política y oligarcas alineados con el estado",
+        "base": "Ciudadanos navegando reglas impredecibles",
+        "realAsset": "Lealtad al poder e invisibilidad útil",
+        "gatekeepers": "Burócratas conectados y servicios de seguridad",
+        "institutions": "Estructuras estatales sirviendo preservación del poder",
+        "valueCreators": "Emprendedores operando en la sombra del estado"
+      },
+      "whoWins": ["Cercanos al poder sin amenazarlo", "Insiders del sector seguridad"],
+      "whoLoses": ["Líderes empresariales independientes", "Voces políticas"],
+      "playbook": {
+        "do": ["Mantenerse completamente apolítico públicamente", "Construir habilidades internacionales"],
+        "dont": ["Hacer comentarios políticos", "Mantener todos los activos en Rusia"],
+        "plan30Days": ["Asegurar todos los documentos de identidad", "Establecer cuentas extranjeras"],
+        "plan12Months": ["Desarrollar ingresos remotos", "Aprender otro idioma"],
+        "plan5Years": ["Segunda ciudadanía o residencia", "Activos fuera de Rusia"],
+        "planB": "Georgia, Armenia, Serbia para entrada más fácil. Países UE a largo plazo."
+      }
+    },
+    "saudiarabia": {
+      "name": "Arabia Saudita",
+      "ruleOfGold": "Sé útil, respeta reglas culturales, planifica tu salida.",
+      "pyramid": {
+        "top": "Familia real y círculo interno",
+        "base": "Trabajadores extranjeros con contratos temporales",
+        "realAsset": "Utilidad para proyectos Visión 2030",
+        "gatekeepers": "Patrocinadores y permisos gubernamentales",
+        "institutions": "Monarquía con diversificación económica",
+        "valueCreators": "Expatriados expertos en sectores prioritarios"
+      },
+      "whoWins": ["Expertos en sectores Visión 2030", "Acumuladores discretos de riqueza"],
+      "whoLoses": ["Los que buscan residencia permanente", "Los que ignoran reglas culturales"],
+      "playbook": {
+        "do": ["Maximizar ahorros", "Respetar normas culturales completamente"],
+        "dont": ["Esperar ciudadanía", "Ignorar reglas religiosas"],
+        "plan30Days": ["Entender derechos laborales", "Configurar sistema de ahorro"],
+        "plan12Months": ["Hacer networking con profesionales internacionales", "Construir reputación"],
+        "plan5Years": ["Ahorros sustanciales", "Salida lista"],
+        "planB": "Dubai para la región, Europa para ciudadanía"
+      }
+    },
+    "southafrica": {
+      "name": "Sudáfrica",
+      "ruleOfGold": "Navegar desigualdad, entender seguridad, construir oportunidades.",
+      "pyramid": {
+        "top": "Élite económica y clase política",
+        "base": "Trabajadores con alta desigualdad",
+        "realAsset": "Relaciones y presencia regional",
+        "gatekeepers": "Redes y conocimiento local",
+        "institutions": "Instituciones democráticas con desafíos",
+        "valueCreators": "Emprendedores, profesionales, talento tech"
+      },
+      "whoWins": ["Los que construyen redes", "Los que entienden seguridad"],
+      "whoLoses": ["Los que subestiman desigualdad", "Los que ignoran seguridad"],
+      "playbook": {
+        "do": ["Entender entorno de seguridad", "Construir relaciones locales genuinas"],
+        "dont": ["Subestimar desigualdad", "Ignorar cuestiones de seguridad"],
+        "plan30Days": ["Elegir ciudad cuidadosamente", "Entender entorno de seguridad"],
+        "plan12Months": ["Construir red local", "Explorar oportunidades de carrera o negocio"],
+        "plan5Years": ["Negocio o carrera establecida", "Mantener opciones internacionales"],
+        "planB": "Mauricio, Portugal para alternativas"
+      }
+    },
+    "spain": {
+      "name": "España",
+      "ruleOfGold": "Relaciones e identidad regional. Cada región tiene su propia cultura.",
+      "pyramid": {
+        "top": "Élites económicas y poderes regionales",
+        "base": "Trabajadores con identidad regional",
+        "realAsset": "Relaciones y conocimiento regional",
+        "gatekeepers": "Redes locales y pertenencia regional",
+        "institutions": "Estado descentralizado con regiones fuertes",
+        "valueCreators": "Emprendedores, profesionales, turismo"
+      },
+      "whoWins": ["Los que entienden dinámicas regionales", "Constructores de relaciones"],
+      "whoLoses": ["Los que esperan uniformidad nacional", "Los que ignoran regionalismo"],
+      "playbook": {
+        "do": ["Aprender español", "Elegir región e integrarse"],
+        "dont": ["Tratar España como uniforme", "Ignorar política regional"],
+        "plan30Days": ["Investigar región", "Comenzar a aprender español"],
+        "plan12Months": ["Construir red local", "Entender matices regionales"],
+        "plan5Years": ["Integración regional lograda", "Negocio o carrera establecida"],
+        "planB": "Portugal para costos más bajos, Francia para alternativas"
+      }
+    },
+    "sweden": {
+      "name": "Suecia",
+      "ruleOfGold": "Igualdad y modestia. El sistema favorece la conformidad.",
+      "pyramid": {
+        "top": "Consenso socialdemócrata",
+        "base": "Ciudadanos con fuertes protecciones",
+        "realAsset": "Confianza y cohesión social",
+        "gatekeepers": "Idioma sueco e integración cultural",
+        "institutions": "Gobierno altamente eficiente y transparente",
+        "valueCreators": "Trabajadores calificados en entorno regulado"
+      },
+      "whoWins": ["Los que abrazan valores igualitarios", "Integradores"],
+      "whoLoses": ["Individualistas altamente ambiciosos", "No integradores"],
+      "playbook": {
+        "do": ["Aprender sueco", "Abrazar cultura work-life balance"],
+        "dont": ["Presumir riqueza", "Ignorar integración social"],
+        "plan30Days": ["Comenzar clases de sueco", "Entender requisitos de residencia"],
+        "plan12Months": ["Alcanzar sueco básico", "Construir red local"],
+        "plan5Years": ["Integración completa lograda", "Considerar residencia permanente"],
+        "planB": "Otros países nórdicos, Países Bajos"
+      }
+    },
+    "turkey": {
+      "name": "Turquía",
+      "ruleOfGold": "Relaciones y adaptación. El panorama político requiere flexibilidad.",
+      "pyramid": {
+        "top": "Liderazgo político y negocios conectados",
+        "base": "Trabajadores navegando cambios económicos",
+        "realAsset": "Relaciones y adaptabilidad",
+        "gatekeepers": "Conexiones políticas y redes locales",
+        "institutions": "Estado centralizador con volatilidad económica",
+        "valueCreators": "Emprendedores, profesionales, talento tech"
+      },
+      "whoWins": ["Los que navegan el cambio", "Adaptables"],
+      "whoLoses": ["Los que esperan estabilidad", "Los políticamente expuestos"],
+      "playbook": {
+        "do": ["Aprender turco", "Entender dinámicas políticas"],
+        "dont": ["Volverse políticamente visible", "Esperar estabilidad"],
+        "plan30Days": ["Comenzar a aprender turco", "Entender situación económica"],
+        "plan12Months": ["Construir red local", "Mantener opciones internacionales"],
+        "plan5Years": ["Fuentes de ingresos diversificadas", "Estrategia de salida lista"],
+        "planB": "Alemania, Países Bajos para estabilidad, Dubai para la región"
+      }
+    },
+    "venezuela": {
+      "name": "Venezuela",
+      "ruleOfGold": "Pensar en dólares, trabajar en redes, tener opciones de salida.",
+      "pyramid": {
+        "top": "Clase política y élites conectadas",
+        "base": "Ciudadanos navegando crisis económica",
+        "realAsset": "Ingresos en dólares y opciones de salida",
+        "gatekeepers": "Conexiones políticas y acceso a dólares",
+        "institutions": "Control y disfunción económica",
+        "valueCreators": "Los con conexiones externas"
+      },
+      "whoWins": ["Los que ganan en dólares", "Los con estrategia de salida"],
+      "whoLoses": ["Dependientes de moneda local", "Sin opciones externas"],
+      "playbook": {
+        "do": ["Ganar en dólares", "Desarrollar estrategia de salida"],
+        "dont": ["Usar moneda local para ahorros", "Retrasar salida"],
+        "plan30Days": ["Identificar fuentes de ingresos en dólares", "Preparar documentos"],
+        "plan12Months": ["Construir ingresos extranjeros", "Asegurar opciones de salida"],
+        "plan5Years": ["Reubicado o ingresos extranjeros estables"],
+        "planB": "Colombia, España, EE.UU. para reubicación"
+      }
+    }
   }
 }

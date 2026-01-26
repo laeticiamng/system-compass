@@ -3686,5 +3686,51 @@
       "ready": "Klaar om je institutionele beslissingen te structureren?",
       "desc": "Verken onze speciale tools of neem contact op voor aangepaste oplossingen."
     }
+  },
+  "lifeTrajectory": {
+    "questionOf": "Vraag {{current}} van {{total}}",
+    "selectToContinue": "Selecteer een antwoord om door te gaan",
+    "lgbtq": { "title": "LGBTQ+ Overwegingen", "description": "We prioriteren landen met sterke LGBTQ+ bescherming." },
+    "planTypes": { "safe": "🛡️ Veilig Plan", "hybrid": "⚖️ Hybride Plan", "ambitious": "🚀 Ambitieus Plan" },
+    "trajectory": { "paths": "Carrièrepaden", "skills": "Te Ontwikkelen Vaardigheden", "firstSteps": "Eerste Stappen" },
+    "results": { "workRelation": "Relatie met Werk", "riskRelation": "Relatie met Risico", "whatWorks": "Wat Echt Werkt", "trap": "Let Op", "yourPlans": "Je 3 Trajectplannen", "findCountries": "Compatibele Landen Vinden", "exploreCountries": "Alle Landen Verkennen", "retake": "Test Opnieuw" }
+  },
+  "lifeProfiles": {
+    "lottery": { "label": "De Snelkoppeling Zoeker", "description": "Je wilt een directe uitweg.", "workRelation": "Lage betrokkenheid bij langetermijnwerk.", "riskRelation": "Vaak hoog maar slecht gecontroleerd.", "whatWorks": "Strikt budget, parallel Plan B.", "trap": "Wachten op 'het teken', schulden maken." },
+    "comfort": { "label": "Comfort & Nul Stress", "description": "Je zoekt rust en psychologische zekerheid.", "workRelation": "Je wilt structuur.", "riskRelation": "Laag.", "whatWorks": "Stabiliteit, langzame maar zekere progressie.", "trap": "Je vervelen, dan na jaren exploderen." },
+    "builder": { "label": "Geduldige Bouwer", "description": "Je wilt rijkdom + trots.", "workRelation": "Bereid te werken.", "riskRelation": "Gematigd, berekend.", "whatWorks": "Eenvoudig bedrijf, zeldzame vaardigheden.", "trap": "Te vroeg te complex worden." },
+    "safeWealth": { "label": "Veilige Vermogensbouwer", "description": "Je wilt hoog inkomen met maximale zekerheid.", "workRelation": "OK met werken, niet met risico.", "riskRelation": "Laag tot gematigd.", "whatWorks": "Inkomen verhogen via zeldzame vaardigheden.", "trap": "Interne tegenstrijdigheid → stagnatie." },
+    "nomad": { "label": "Globale Nomade", "description": "Je zoekt geografische vrijheid.", "workRelation": "Je wilt overal werken.", "riskRelation": "Variabel.", "whatWorks": "Remote jobs, inkomen in sterke valuta.", "trap": "Admin, isolatie onderschatten." },
+    "purpose": { "label": "Doelgericht", "description": "Je zoekt nut en bijdrage.", "workRelation": "Werk wordt missie.", "riskRelation": "Vaak gematigd.", "whatWorks": "Nuttige jobs + duidelijke grenzen.", "trap": "Je opofferen, opbranden." },
+    "status": { "label": "Statuszoeker", "description": "Je zoekt erkenning.", "workRelation": "De baan wordt je identiteit.", "riskRelation": "Gematigd tot hoog.", "whatWorks": "Excellentie, netwerk, carrièrestrategie.", "trap": "Toxische vergelijking." },
+    "recovery": { "label": "Herstel & Heropbouw", "description": "Je zoekt zekerheid en controle.", "workRelation": "Behoefte aan meesterschap.", "riskRelation": "Eerst laag, dan stijgend.", "whatWorks": "Eerst stabiliseren, dan progressief opbouwen.", "trap": "Jezelf veroordelen." }
+  },
+  "lgbtqRights": { "safe": "LGBTQ+ Veilig", "caution": "Voorzichtig Voortgaan", "dangerous": "Hoog Risico voor LGBTQ+" },
+  "pyramidQuiz": {
+    "title": "Het Levensspel",
+    "subtitle": "Simuleer een levenstraject door verschillende wereldsystemen.",
+    "disclaimer": "⚠️ Je speelt een willekeurig fictief personage!",
+    "questionOf": "Vraag {{current}} van {{total}}",
+    "back": "Terug",
+    "modes": { "online": { "title": "Profiel Quiz", "description": "Beantwoord 8 vragen.", "cta": "Mijn profiel ontdekken" }, "board": { "title": "Avontuurmodus", "description": "Leef een heel leven.", "cta": "Mijn leven starten" }, "multiplayer": { "title": "Meerspeler", "description": "Speel tot 4!", "cta": "Samen spelen" } },
+    "result": { "title": "Je ideale piramidetype", "subtitle": "Gebaseerd op je antwoorden", "scores": "Je scores per type", "playAgain": "Opnieuw spelen", "learnMore": "Meer leren" }
+  },
+  "countriesData": {
+    "argentina": { "name": "Argentinië", "ruleOfGold": "Voortdurend aanpassen. De enige constante is verandering." },
+    "austria": { "name": "Oostenrijk", "ruleOfGold": "Orde en traditie. Respecteer hiërarchie." },
+    "belgium": { "name": "België", "ruleOfGold": "Consensus is koning." },
+    "chile": { "name": "Chili", "ruleOfGold": "De Zwitserland van Latijns-Amerika." },
+    "china": { "name": "China", "ruleOfGold": "Publiek afstemmen met de Partij, privé bouwen." },
+    "colombia": { "name": "Colombia", "ruleOfGold": "Relaties tellen. Vertrouwen is alles." },
+    "denmark": { "name": "Denemarken", "ruleOfGold": "Hygge en gelijkheid." },
+    "india": { "name": "India", "ruleOfGold": "Relaties en geduld." },
+    "italy": { "name": "Italië", "ruleOfGold": "Relaties en regionale trots." },
+    "mexico": { "name": "Mexico", "ruleOfGold": "Relaties en flexibiliteit." },
+    "norway": { "name": "Noorwegen", "ruleOfGold": "Het collectief komt eerst." },
+    "qatar": { "name": "Qatar", "ruleOfGold": "Nuttig zijn, stil blijven, uitstap plannen." },
+    "russia": { "name": "Rusland", "ruleOfGold": "Nooit macht openlijk uitdagen." },
+    "spain": { "name": "Spanje", "ruleOfGold": "Relaties en regionale identiteit." },
+    "sweden": { "name": "Zweden", "ruleOfGold": "Gelijkheid en bescheidenheid." },
+    "turkey": { "name": "Turkije", "ruleOfGold": "Relaties en aanpassing." }
   }
 }

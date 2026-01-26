@@ -3686,5 +3686,51 @@
       "ready": "Pronto para estruturar as suas decisões institucionais?",
       "desc": "Explore as nossas ferramentas dedicadas ou contacte-nos para soluções personalizadas."
     }
+  },
+  "lifeTrajectory": {
+    "questionOf": "Pergunta {{current}} de {{total}}",
+    "selectToContinue": "Selecione uma resposta para continuar",
+    "lgbtq": { "title": "Considerações LGBTQ+", "description": "Daremos prioridade a países com fortes proteções LGBTQ+." },
+    "planTypes": { "safe": "🛡️ Plano Seguro", "hybrid": "⚖️ Plano Híbrido", "ambitious": "🚀 Plano Ambicioso" },
+    "trajectory": { "paths": "Percursos de Carreira", "skills": "Competências a Desenvolver", "firstSteps": "Primeiros Passos" },
+    "results": { "workRelation": "Relação com o Trabalho", "riskRelation": "Relação com o Risco", "whatWorks": "O Que Realmente Funciona", "trap": "Cuidado Com", "yourPlans": "Os Seus 3 Planos de Trajetória", "findCountries": "Encontrar Países Compatíveis", "exploreCountries": "Explorar Todos os Países", "retake": "Repetir Teste" }
+  },
+  "lifeProfiles": {
+    "lottery": { "label": "O Buscador de Atalhos", "description": "Quer uma saída imediata.", "workRelation": "Baixo envolvimento com trabalho de longo prazo.", "riskRelation": "Frequentemente alto mas mal controlado.", "whatWorks": "Orçamento rigoroso, Plano B paralelo.", "trap": "Esperar 'o sinal', endividar-se." },
+    "comfort": { "label": "Conforto e Zero Stress", "description": "Procura tranquilidade e segurança psicológica.", "workRelation": "Quer estrutura.", "riskRelation": "Baixo.", "whatWorks": "Estabilidade, progressão lenta mas segura.", "trap": "Aborrecer-se, depois explodir após anos." },
+    "builder": { "label": "Construtor Paciente", "description": "Quer riqueza + orgulho.", "workRelation": "Disposto a trabalhar.", "riskRelation": "Moderado, calculado.", "whatWorks": "Negócio simples, competências raras.", "trap": "Complicar-se cedo demais." },
+    "safeWealth": { "label": "Construtor de Riqueza Segura", "description": "Quer altos rendimentos com máxima segurança.", "workRelation": "OK com trabalhar, não com arriscar.", "riskRelation": "Baixo a moderado.", "whatWorks": "Aumentar rendimentos via competências raras.", "trap": "Contradição interna → estagnação." },
+    "nomad": { "label": "Nómada Global", "description": "Procura liberdade geográfica.", "workRelation": "Quer trabalhar de qualquer lugar.", "riskRelation": "Variável.", "whatWorks": "Trabalhos remotos, rendimentos em moeda forte.", "trap": "Subestimar admin, isolamento." },
+    "purpose": { "label": "Orientado para o Propósito", "description": "Procura utilidade e contribuição.", "workRelation": "O trabalho torna-se missão.", "riskRelation": "Frequentemente moderado.", "whatWorks": "Trabalhos úteis + limites claros.", "trap": "Sacrificar-se, queimar-se." },
+    "status": { "label": "Buscador de Status", "description": "Procura reconhecimento.", "workRelation": "O trabalho torna-se a sua identidade.", "riskRelation": "Moderado a alto.", "whatWorks": "Excelência, rede, estratégia de carreira.", "trap": "Comparação tóxica." },
+    "recovery": { "label": "Recuperação e Reconstrução", "description": "Procura segurança e controlo.", "workRelation": "Necessidade de domínio.", "riskRelation": "Primeiro baixo, depois aumenta.", "whatWorks": "Primeiro estabilizar, depois rampa progressiva.", "trap": "Julgar-se." }
+  },
+  "lgbtqRights": { "safe": "LGBTQ+ Seguro", "caution": "Proceder com Cautela", "dangerous": "Alto Risco para LGBTQ+" },
+  "pyramidQuiz": {
+    "title": "O Jogo da Vida",
+    "subtitle": "Simule uma trajetória de vida através de diferentes sistemas mundiais.",
+    "disclaimer": "⚠️ Vai jogar um personagem fictício aleatório!",
+    "questionOf": "Pergunta {{current}} de {{total}}",
+    "back": "Voltar",
+    "modes": { "online": { "title": "Quiz de Perfil", "description": "Responda a 8 perguntas.", "cta": "Descobrir o meu perfil" }, "board": { "title": "Modo Aventura", "description": "Viva uma vida inteira.", "cta": "Iniciar a minha vida" }, "multiplayer": { "title": "Multijogador", "description": "Jogue até 4!", "cta": "Jogar juntos" } },
+    "result": { "title": "O seu tipo de pirâmide ideal", "subtitle": "Baseado nas suas respostas", "scores": "As suas pontuações por tipo", "playAgain": "Jogar novamente", "learnMore": "Saber mais" }
+  },
+  "countriesData": {
+    "argentina": { "name": "Argentina", "ruleOfGold": "Adaptar-se constantemente. A única constante é a mudança." },
+    "austria": { "name": "Áustria", "ruleOfGold": "Ordem e tradição. Respeitar a hierarquia." },
+    "belgium": { "name": "Bélgica", "ruleOfGold": "O consenso é rei." },
+    "chile": { "name": "Chile", "ruleOfGold": "A Suíça da América Latina." },
+    "china": { "name": "China", "ruleOfGold": "Alinhar publicamente com o Partido, construir em privado." },
+    "colombia": { "name": "Colômbia", "ruleOfGold": "As relações importam. A confiança é tudo." },
+    "denmark": { "name": "Dinamarca", "ruleOfGold": "Hygge e igualdade." },
+    "india": { "name": "Índia", "ruleOfGold": "Relações e paciência." },
+    "italy": { "name": "Itália", "ruleOfGold": "Relações e orgulho regional." },
+    "mexico": { "name": "México", "ruleOfGold": "Relações e flexibilidade." },
+    "norway": { "name": "Noruega", "ruleOfGold": "O coletivo vem primeiro." },
+    "qatar": { "name": "Qatar", "ruleOfGold": "Ser útil, ficar calado, planear a saída." },
+    "russia": { "name": "Rússia", "ruleOfGold": "Nunca desafiar o poder publicamente." },
+    "spain": { "name": "Espanha", "ruleOfGold": "Relações e identidade regional." },
+    "sweden": { "name": "Suécia", "ruleOfGold": "Igualdade e modéstia." },
+    "turkey": { "name": "Turquia", "ruleOfGold": "Relações e adaptação." }
   }
 }
