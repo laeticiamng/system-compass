@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { 
   Lock, 
@@ -8,11 +8,10 @@ import {
   Shield,
   Eye,
   CheckCircle2,
-  Filter
+  ChevronDown
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import {
@@ -32,10 +31,14 @@ import {
 } from '@/components/ui/dialog';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { useIrreversa, ThresholdStatus, ValidatorRole } from '@/hooks/useIrreversa';
+import { Input } from '@/components/ui/input';
+import { useIrreversa, ThresholdStatus, ValidatorRole, IrreversaThreshold } from '@/hooks/useIrreversa';
 import { useSubscription } from '@/hooks/useSubscription';
 import { ThresholdCard } from './ThresholdCard';
 import { CreateThresholdForm } from './CreateThresholdForm';
+import { ThresholdSearchAndFilter, FilterOptions } from './ThresholdSearchAndFilter';
+import { ThresholdStats } from './ThresholdStats';
+import { SealConfirmationDialog } from './SealConfirmationDialog';
 import { PremiumPaywall } from '@/components/PremiumPaywall';
 import { toast } from 'sonner';
 
@@ -56,12 +59,23 @@ export function Irreversa() {
   
   const [isCreating, setIsCreating] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [statusFilter, setStatusFilter] = useState<ThresholdStatus | 'all'>('all');
   const [actionDialog, setActionDialog] = useState<ActionDialogType>(null);
   const [selectedThresholdId, setSelectedThresholdId] = useState<string | null>(null);
   const [actorName, setActorName] = useState('');
   const [actorRole, setActorRole] = useState<ValidatorRole>('director');
   const [validationStatement, setValidationStatement] = useState('');
+  const [showStats, setShowStats] = useState(true);
+  const [sealConfirmOpen, setSealConfirmOpen] = useState(false);
+  const [thresholdToSeal, setThresholdToSeal] = useState<IrreversaThreshold | null>(null);
+  
+  const [filters, setFilters] = useState<FilterOptions>({
+    search: '',
+    status: 'all',
+    domain: 'all',
+    nature: 'all',
+    sortField: 'created_at',
+    sortOrder: 'desc'
+  });
 
   const handleCreate = async (data: Parameters<typeof createThreshold>[0]) => {
     setIsSubmitting(true);
@@ -109,16 +123,89 @@ export function Irreversa() {
     }
   };
 
-  const filteredThresholds = statusFilter === 'all'
-    ? thresholds
-    : thresholds.filter(t => t.status === statusFilter);
-
-  const counts = {
+  const counts = useMemo(() => ({
     all: thresholds.length,
     detected: thresholds.filter(t => t.status === 'detected').length,
     marked: thresholds.filter(t => t.status === 'marked').length,
     validated: thresholds.filter(t => t.status === 'validated').length,
     sealed: thresholds.filter(t => t.status === 'sealed').length,
+  }), [thresholds]);
+
+  // Apply filters, search, and sorting
+  const filteredThresholds = useMemo(() => {
+    let result = [...thresholds];
+
+    // Status filter
+    if (filters.status !== 'all') {
+      result = result.filter(t => t.status === filters.status);
+    }
+
+    // Domain filter
+    if (filters.domain !== 'all') {
+      result = result.filter(t => t.domain === filters.domain);
+    }
+
+    // Nature filter
+    if (filters.nature !== 'all') {
+      result = result.filter(t => t.threshold_nature === filters.nature);
+    }
+
+    // Search filter
+    if (filters.search.trim()) {
+      const searchLower = filters.search.toLowerCase();
+      result = result.filter(t => 
+        t.title.toLowerCase().includes(searchLower) ||
+        t.context.toLowerCase().includes(searchLower) ||
+        t.irreversibility_reason.toLowerCase().includes(searchLower)
+      );
+    }
+
+    // Sorting
+    result.sort((a, b) => {
+      let comparison = 0;
+      switch (filters.sortField) {
+        case 'title':
+          comparison = a.title.localeCompare(b.title);
+          break;
+        case 'detection_date':
+          comparison = new Date(a.detection_date).getTime() - new Date(b.detection_date).getTime();
+          break;
+        case 'status':
+          const statusOrder = { detected: 0, marked: 1, validated: 2, sealed: 3 };
+          comparison = statusOrder[a.status] - statusOrder[b.status];
+          break;
+        case 'created_at':
+        default:
+          comparison = new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
+          break;
+      }
+      return filters.sortOrder === 'asc' ? comparison : -comparison;
+    });
+
+    return result;
+  }, [thresholds, filters]);
+
+  // Handle seal with confirmation dialog
+  const handleSealRequest = (id: string) => {
+    const threshold = thresholds.find(t => t.id === id);
+    if (threshold) {
+      setThresholdToSeal(threshold);
+      setSealConfirmOpen(true);
+    }
+  };
+
+  const handleSealConfirm = async () => {
+    if (!thresholdToSeal) return;
+    
+    setIsSubmitting(true);
+    const success = await sealThreshold(thresholdToSeal.id, actorName || 'Système', actorRole);
+    setIsSubmitting(false);
+    
+    if (success) {
+      toast.success(t('irreversa.toast.sealed'));
+      setSealConfirmOpen(false);
+      setThresholdToSeal(null);
+    }
   };
 
   // Demo thresholds for preview mode
@@ -319,62 +406,34 @@ export function Irreversa() {
 
       <Separator />
 
-      {/* Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-        {(['detected', 'marked', 'validated', 'sealed'] as const).map(status => {
-          const icons = {
-            detected: Eye,
-            marked: AlertTriangle,
-            validated: CheckCircle2,
-            sealed: Lock
-          };
-          const Icon = icons[status];
-          const colors = {
-            detected: 'text-amber-500',
-            marked: 'text-orange-500',
-            validated: 'text-blue-500',
-            sealed: 'text-red-500'
-          };
-          return (
-            <div key={status} className="flex items-center gap-2 p-3 rounded-lg bg-muted/30">
-              <Icon className={`w-5 h-5 ${colors[status]}`} />
-              <div>
-                <p className="text-2xl font-bold">{counts[status]}</p>
-                <p className="text-xs text-muted-foreground">
-                  {t(`irreversa.status.${status}`)}
-                </p>
-              </div>
-            </div>
-          );
-        })}
-        <div className="flex items-center gap-2 p-3 rounded-lg bg-muted/30">
-          <Shield className="w-5 h-5 text-primary" />
-          <div>
-            <p className="text-2xl font-bold">{counts.all}</p>
-            <p className="text-xs text-muted-foreground">{t('common.total')}</p>
+      {/* Stats Section */}
+      {showStats && thresholds.length > 0 && (
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <h3 className="text-sm font-medium flex items-center gap-2">
+              <ChevronDown className="w-4 h-4" />
+              {t('irreversa.stats.title', 'Statistiques')}
+            </h3>
+            <Button variant="ghost" size="sm" onClick={() => setShowStats(false)}>
+              {t('common.hide', 'Masquer')}
+            </Button>
           </div>
+          <ThresholdStats thresholds={thresholds} />
         </div>
-      </div>
+      )}
 
-      {/* Filter */}
-      <div className="flex items-center gap-2">
-        <Filter className="w-4 h-4 text-muted-foreground" />
-        <Select 
-          value={statusFilter} 
-          onValueChange={(v) => setStatusFilter(v as ThresholdStatus | 'all')}
-        >
-          <SelectTrigger className="w-48">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">{t('common.all')} ({counts.all})</SelectItem>
-            <SelectItem value="detected">{t('irreversa.status.detected')} ({counts.detected})</SelectItem>
-            <SelectItem value="marked">{t('irreversa.status.marked')} ({counts.marked})</SelectItem>
-            <SelectItem value="validated">{t('irreversa.status.validated')} ({counts.validated})</SelectItem>
-            <SelectItem value="sealed">{t('irreversa.status.sealed')} ({counts.sealed})</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
+      {!showStats && thresholds.length > 0 && (
+        <Button variant="ghost" size="sm" onClick={() => setShowStats(true)}>
+          {t('irreversa.stats.show', 'Afficher les statistiques')}
+        </Button>
+      )}
+
+      {/* Search and Filter */}
+      <ThresholdSearchAndFilter
+        filters={filters}
+        onFiltersChange={setFilters}
+        counts={counts}
+      />
 
       {/* Create Form */}
       {isCreating && (
@@ -401,11 +460,23 @@ export function Irreversa() {
               threshold={threshold}
               onMark={(id) => openActionDialog('mark', id)}
               onValidate={(id) => openActionDialog('validate', id)}
-              onSeal={(id) => openActionDialog('seal', id)}
+              onSeal={(id) => handleSealRequest(id)}
             />
           ))}
         </div>
       )}
+
+      {/* Seal Confirmation Dialog */}
+      <SealConfirmationDialog
+        threshold={thresholdToSeal}
+        isOpen={sealConfirmOpen}
+        onClose={() => {
+          setSealConfirmOpen(false);
+          setThresholdToSeal(null);
+        }}
+        onConfirm={handleSealConfirm}
+        isLoading={isSubmitting}
+      />
 
       {/* Empty State */}
       {!loading && filteredThresholds.length === 0 && !isCreating && (
