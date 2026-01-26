@@ -769,5 +769,39 @@
     "apply": "درخواست دیں",
     "benefits": "فوائد",
     "requirements": "ضروریات"
+  },
+  "lifeTrajectory": {
+    "questionOf": "سوال {{current}} / {{total}}",
+    "selectToContinue": "جاری رکھنے کے لیے ایک جواب منتخب کریں",
+    "lgbtq": { "title": "LGBTQ+ تحفظات", "description": "ہم مضبوط LGBTQ+ تحفظ والے ممالک کو ترجیح دیں گے۔" },
+    "planTypes": { "safe": "🛡️ محفوظ منصوبہ", "hybrid": "⚖️ ہائبرڈ منصوبہ", "ambitious": "🚀 پرعزم منصوبہ" },
+    "trajectory": { "paths": "کیریئر راستے", "skills": "ترقی کی مہارتیں", "firstSteps": "پہلے قدم" },
+    "results": { "workRelation": "کام سے تعلق", "riskRelation": "خطرے سے تعلق", "whatWorks": "واقعی کیا کام کرتا ہے", "trap": "احتیاط", "yourPlans": "آپ کے 3 ٹریجیکٹری پلان", "findCountries": "ہم آہنگ ممالک تلاش کریں", "exploreCountries": "تمام ممالک دریافت کریں", "retake": "دوبارہ ٹیسٹ" }
+  },
+  "lifeProfiles": {
+    "lottery": { "label": "شارٹ کٹ تلاش کرنے والا", "description": "آپ فوری نکلنے کا راستہ چاہتے ہیں۔", "workRelation": "طویل مدتی کام میں کم شمولیت۔", "riskRelation": "اکثر زیادہ لیکن خراب کنٹرول۔", "whatWorks": "سخت بجٹ، متوازی پلان بی۔", "trap": "'اشارے' کا انتظار، قرض۔" },
+    "comfort": { "label": "آرام اور صفر تناؤ", "description": "آپ سکون اور نفسیاتی حفاظت چاہتے ہیں۔", "workRelation": "آپ ڈھانچہ چاہتے ہیں۔", "riskRelation": "کم۔", "whatWorks": "استحکام، سست لیکن یقینی پیش رفت۔", "trap": "بوریت، پھر سالوں بعد دھماکہ۔" },
+    "builder": { "label": "صبر والا تعمیر کار", "description": "آپ دولت + فخر چاہتے ہیں۔", "workRelation": "کام کرنے کو تیار۔", "riskRelation": "اعتدال پسند، حساب والا۔", "whatWorks": "سادہ کاروبار، نایاب مہارتیں۔", "trap": "بہت جلدی پیچیدہ ہونا۔" },
+    "safeWealth": { "label": "محفوظ دولت تعمیر کار", "description": "آپ زیادہ سے زیادہ حفاظت کے ساتھ زیادہ آمدنی چاہتے ہیں۔", "workRelation": "کام کے ساتھ ٹھیک، خطرے کے ساتھ نہیں۔", "riskRelation": "کم سے اعتدال پسند۔", "whatWorks": "نایاب مہارتوں سے آمدنی بڑھانا۔", "trap": "اندرونی تضاد → جمود۔" },
+    "nomad": { "label": "عالمی خانہ بدوش", "description": "آپ جغرافیائی آزادی چاہتے ہیں۔", "workRelation": "کہیں سے بھی کام کرنا چاہتے ہیں۔", "riskRelation": "متغیر۔", "whatWorks": "ریموٹ ملازمتیں، مضبوط کرنسی میں آمدنی۔", "trap": "انتظامیہ، تنہائی کو کم سمجھنا۔" },
+    "purpose": { "label": "مقصد پر مبنی", "description": "آپ افادیت اور شراکت چاہتے ہیں۔", "workRelation": "کام مشن بن جاتا ہے۔", "riskRelation": "اکثر اعتدال پسند۔", "whatWorks": "مفید کام + واضح حدود۔", "trap": "خود کو قربان کرنا۔" },
+    "status": { "label": "حیثیت تلاش کرنے والا", "description": "آپ پہچان چاہتے ہیں۔", "workRelation": "کام آپ کی شناخت بن جاتا ہے۔", "riskRelation": "اعتدال پسند سے زیادہ۔", "whatWorks": "عمدگی، نیٹ ورک، کیریئر حکمت عملی۔", "trap": "زہریلا موازنہ۔" },
+    "recovery": { "label": "بحالی اور تعمیر نو", "description": "آپ حفاظت اور کنٹرول چاہتے ہیں۔", "workRelation": "مہارت کی ضرورت۔", "riskRelation": "پہلے کم، پھر بڑھتا ہے۔", "whatWorks": "پہلے مستحکم، پھر بتدریج۔", "trap": "خود کو فیصلہ کرنا۔" }
+  },
+  "lgbtqRights": { "safe": "LGBTQ+ محفوظ", "caution": "احتیاط سے آگے بڑھیں", "dangerous": "LGBTQ+ کے لیے زیادہ خطرہ" },
+  "pyramidQuiz": {
+    "title": "زندگی کا کھیل",
+    "subtitle": "مختلف عالمی نظاموں کے ذریعے زندگی کے راستے کی نقل کریں۔",
+    "disclaimer": "⚠️ آپ ایک بے ترتیب فرضی کردار کھیلیں گے!",
+    "questionOf": "سوال {{current}} / {{total}}",
+    "back": "واپس",
+    "modes": { "online": { "title": "پروفائل کوئز", "description": "8 سوالات کے جوابات دیں۔", "cta": "میری پروفائل دریافت کریں" }, "board": { "title": "ایڈونچر موڈ", "description": "پوری زندگی گزاریں۔", "cta": "میری زندگی شروع کریں" }, "multiplayer": { "title": "ملٹی پلیئر", "description": "4 تک کھیلیں!", "cta": "ساتھ کھیلیں" } },
+    "result": { "title": "آپ کا مثالی پیرامڈ ٹائپ", "subtitle": "آپ کے جوابات پر مبنی", "scores": "ٹائپ کے مطابق سکور", "playAgain": "دوبارہ کھیلیں", "learnMore": "مزید جانیں" }
+  },
+  "countriesData": {
+    "saudiarabia": { "name": "سعودی عرب", "ruleOfGold": "مفید بنیں، ثقافتی قواعد کا احترام کریں، باہر نکلنے کا منصوبہ بنائیں۔" },
+    "qatar": { "name": "قطر", "ruleOfGold": "مفید بنیں، خاموش رہیں، باہر نکلنے کا منصوبہ بنائیں۔" },
+    "india": { "name": "بھارت", "ruleOfGold": "تعلقات اور صبر۔" },
+    "turkey": { "name": "ترکی", "ruleOfGold": "تعلقات اور موافقت۔" }
   }
 }
