@@ -17,20 +17,20 @@ vi.mock('@/integrations/supabase/client', () => ({
         return {
           select: mockSelect.mockReturnValue({
             eq: mockEq.mockReturnValue({
-              order: mockOrder.mockResolvedValue({ data: [], error: null })
+              order: mockOrder
             })
           }),
-          insert: mockInsert.mockResolvedValue({ error: null }),
+          insert: (data: any) => mockInsert(data),
         };
       }
       if (table === 'partner_contributions') {
         return {
           select: mockSelect.mockReturnValue({
             eq: mockEq.mockReturnValue({
-              order: mockOrder.mockResolvedValue({ data: [], error: null })
+              order: mockOrder
             })
           }),
-          insert: mockInsert.mockResolvedValue({ error: null }),
+          insert: (data: any) => mockInsert(data),
         };
       }
       if (table === 'partner_benefits') {
@@ -38,7 +38,7 @@ vi.mock('@/integrations/supabase/client', () => ({
           select: mockSelect.mockReturnValue({
             eq: mockEq.mockReturnValue({
               eq: vi.fn().mockReturnValue({
-                order: mockOrder.mockResolvedValue({ data: [], error: null })
+                order: mockOrder
               })
             })
           }),
@@ -53,7 +53,7 @@ vi.mock('@/integrations/supabase/client', () => ({
       }
       if (table === 'generation_notifications') {
         return {
-          insert: mockInsert.mockResolvedValue({ error: null }),
+          insert: () => mockInsert(),
         };
       }
       return {};
@@ -84,6 +84,7 @@ describe('usePartnerProgram', () => {
     vi.clearAllMocks();
     mockUserValue = mockUser;
     mockOrder.mockResolvedValue({ data: [], error: null });
+    mockInsert.mockResolvedValue({ error: null });
   });
 
   describe('initialization', () => {
@@ -219,9 +220,10 @@ describe('usePartnerProgram', () => {
     });
 
     it('should handle duplicate application with unique constraint', async () => {
-      // Simulate unique constraint error structure
-      mockInsert.mockImplementation(() => {
-        throw { code: '23505' };
+      // Simulate unique constraint error returned from Supabase
+      mockInsert.mockResolvedValue({ 
+        data: null, 
+        error: { code: '23505', message: 'Duplicate entry' } 
       });
 
       const { result } = renderHook(() => usePartnerProgram());
@@ -568,8 +570,9 @@ describe('PartnerProgram Edge Cases', () => {
   });
 
   it('should handle submission errors', async () => {
-    mockInsert.mockImplementation(() => {
-      throw new Error('Database error');
+    mockInsert.mockResolvedValue({ 
+      data: null, 
+      error: { message: 'Database error' } 
     });
 
     const { result } = renderHook(() => usePartnerProgram());
