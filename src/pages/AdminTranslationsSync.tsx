@@ -196,7 +196,7 @@ export default function AdminTranslationsSync() {
             AI Translation Generator
           </CardTitle>
           <CardDescription>
-            Generate missing translations for secondary languages (DE, ES, NL, IT, PT) using AI
+            Generate missing translations for all 11 secondary languages using AI
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -207,22 +207,26 @@ export default function AdminTranslationsSync() {
               variant="default"
             >
               <Languages className="h-4 w-4 mr-2" />
-              Generate Missing Translations
+              Generate Missing Translations (All Languages)
             </Button>
           </div>
 
-          {/* Coverage Stats */}
-          <div className="grid grid-cols-5 gap-2 pt-4">
+          {/* Coverage Stats - Grid for all 11 languages */}
+          <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-11 gap-2 pt-4">
             {SECONDARY_LANGUAGES.map(lang => {
-              const stats = coverageStats[lang];
+              const langStats = coverageStats[lang];
+              const pct = langStats?.percentage ?? 0;
+              const bgColor = pct >= 95 ? 'bg-green-100 dark:bg-green-900/30' : 
+                              pct >= 70 ? 'bg-yellow-100 dark:bg-yellow-900/30' : 
+                              'bg-red-100 dark:bg-red-900/30';
               return (
-                <div key={lang} className="text-center p-2 bg-muted rounded-lg">
-                  <div className="font-bold text-lg">{lang.toUpperCase()}</div>
-                  <div className="text-2xl font-mono">
-                    {stats?.percentage ?? 0}%
+                <div key={lang} className={`text-center p-2 rounded-lg ${bgColor}`}>
+                  <div className="font-bold text-sm">{lang.toUpperCase()}</div>
+                  <div className="text-xl font-mono">
+                    {pct}%
                   </div>
                   <div className="text-xs text-muted-foreground">
-                    {stats?.translated ?? 0}/{stats?.total ?? 0}
+                    {langStats?.translated ?? 0}/{langStats?.total ?? 0}
                   </div>
                 </div>
               );
@@ -269,7 +273,7 @@ export default function AdminTranslationsSync() {
           )}
 
           <div className="text-xs text-muted-foreground pt-2">
-            <strong>Sections:</strong> {SECTIONS_TO_TRANSLATE.join(', ')}
+            <strong>{SECTIONS_TO_TRANSLATE.length} sections:</strong> {SECTIONS_TO_TRANSLATE.slice(0, 10).join(', ')}...
           </div>
         </CardContent>
       </Card>
