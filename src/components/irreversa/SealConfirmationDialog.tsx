@@ -14,13 +14,15 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
+import { Separator } from '@/components/ui/separator';
+import { SignaturePad } from './SignaturePad';
 import { IrreversaThreshold } from '@/hooks/useIrreversa';
 
 interface SealConfirmationDialogProps {
   threshold: IrreversaThreshold | null;
   isOpen: boolean;
   onClose: () => void;
-  onConfirm: () => void;
+  onConfirm: (signatureData?: string) => void;
   isLoading?: boolean;
 }
 
@@ -33,6 +35,7 @@ export function SealConfirmationDialog({
 }: SealConfirmationDialogProps) {
   const { t } = useTranslation();
   const [confirmText, setConfirmText] = useState('');
+  const [signatureData, setSignatureData] = useState<string | null>(null);
   const [checklist, setChecklist] = useState({
     understood: false,
     reviewed: false,
@@ -42,19 +45,27 @@ export function SealConfirmationDialog({
   const expectedText = 'SCELLER';
   const isConfirmTextValid = confirmText.toUpperCase() === expectedText;
   const isChecklistComplete = checklist.understood && checklist.reviewed && checklist.noReturn;
-  const canConfirm = isConfirmTextValid && isChecklistComplete && !isLoading;
+  const hasSignature = !!signatureData;
+  const canConfirm = isConfirmTextValid && isChecklistComplete && hasSignature && !isLoading;
 
   const handleClose = () => {
     setConfirmText('');
+    setSignatureData(null);
     setChecklist({ understood: false, reviewed: false, noReturn: false });
     onClose();
+  };
+
+  const handleConfirm = () => {
+    if (canConfirm) {
+      onConfirm(signatureData || undefined);
+    }
   };
 
   if (!threshold) return null;
 
   return (
     <AlertDialog open={isOpen} onOpenChange={handleClose}>
-      <AlertDialogContent className="max-w-lg">
+      <AlertDialogContent className="max-w-lg max-h-[90vh] overflow-y-auto">
         <AlertDialogHeader>
           <AlertDialogTitle className="flex items-center gap-2 text-destructive">
             <Lock className="w-5 h-5" />
@@ -134,6 +145,16 @@ export function SealConfirmationDialog({
                 </div>
               </div>
 
+              <Separator />
+
+              {/* Electronic Signature */}
+              <SignaturePad 
+                onSignatureChange={setSignatureData}
+                disabled={isLoading}
+              />
+
+              <Separator />
+
               {/* Confirmation input */}
               <div className="space-y-2">
                 <Label htmlFor="confirm-text" className="text-sm">
@@ -147,6 +168,19 @@ export function SealConfirmationDialog({
                   className={confirmText && !isConfirmTextValid ? 'border-destructive' : ''}
                 />
               </div>
+
+              {/* Validation status */}
+              <div className="flex flex-wrap gap-2 text-xs">
+                <span className={`px-2 py-1 rounded ${isChecklistComplete ? 'bg-primary/10 text-primary' : 'bg-muted text-muted-foreground'}`}>
+                  ✓ Checklist
+                </span>
+                <span className={`px-2 py-1 rounded ${hasSignature ? 'bg-primary/10 text-primary' : 'bg-muted text-muted-foreground'}`}>
+                  ✓ Signature
+                </span>
+                <span className={`px-2 py-1 rounded ${isConfirmTextValid ? 'bg-primary/10 text-primary' : 'bg-muted text-muted-foreground'}`}>
+                  ✓ Confirmation
+                </span>
+              </div>
             </div>
           </AlertDialogDescription>
         </AlertDialogHeader>
@@ -155,7 +189,7 @@ export function SealConfirmationDialog({
             {t('common.cancel', 'Annuler')}
           </AlertDialogCancel>
           <AlertDialogAction
-            onClick={onConfirm}
+            onClick={handleConfirm}
             disabled={!canConfirm}
             className="bg-destructive hover:bg-destructive/90"
           >

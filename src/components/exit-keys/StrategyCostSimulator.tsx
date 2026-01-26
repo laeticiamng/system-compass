@@ -10,7 +10,9 @@ import {
   FileText,
   Plane,
   Shield,
-  AlertTriangle
+  AlertTriangle,
+  Zap,
+  ShieldCheck
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -19,6 +21,7 @@ import { Input } from '@/components/ui/input';
 import { Slider } from '@/components/ui/slider';
 import { Progress } from '@/components/ui/progress';
 import { Separator } from '@/components/ui/separator';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { getCountryCurrency } from '@/lib/profession-data';
 
 interface StrategyCostSimulatorProps {
@@ -37,6 +40,8 @@ interface CostCategory {
   variable: boolean;
 }
 
+type ScenarioMode = 'balanced' | 'minimal_risk' | 'max_speed';
+
 export function StrategyCostSimulator({
   countryId,
   countryName,
@@ -47,6 +52,40 @@ export function StrategyCostSimulator({
   
   const [monthsPlanned, setMonthsPlanned] = useState(12);
   const [customBudget, setCustomBudget] = useState<number | null>(null);
+  const [scenarioMode, setScenarioMode] = useState<ScenarioMode>('balanced');
+
+  // Scenario multipliers affect costs and buffers
+  const scenarioConfig = useMemo(() => {
+    switch (scenarioMode) {
+      case 'minimal_risk':
+        return { 
+          capexMult: 1.3, 
+          opexMult: 1.2, 
+          bufferRate: 0.25, 
+          label: t('exitKeys.costs.scenario.minimalRisk', 'Risque Minimal'),
+          description: t('exitKeys.costs.scenario.minimalRiskDesc', 'Budget majoré, marge de sécurité élevée'),
+          icon: ShieldCheck
+        };
+      case 'max_speed':
+        return { 
+          capexMult: 0.85, 
+          opexMult: 0.9, 
+          bufferRate: 0.08, 
+          label: t('exitKeys.costs.scenario.maxSpeed', 'Vitesse Max'),
+          description: t('exitKeys.costs.scenario.maxSpeedDesc', 'Budget optimisé, moins de marge'),
+          icon: Zap
+        };
+      default:
+        return { 
+          capexMult: 1.0, 
+          opexMult: 1.0, 
+          bufferRate: 0.15, 
+          label: t('exitKeys.costs.scenario.balanced', 'Équilibré'),
+          description: t('exitKeys.costs.scenario.balancedDesc', 'Recommandé pour la plupart des profils'),
+          icon: Calculator
+        };
+    }
+  }, [scenarioMode, t]);
 
   // Get base costs based on country cost of living multiplier
   const costMultiplier = useMemo(() => {
@@ -129,24 +168,24 @@ export function StrategyCostSimulator({
     return baseCosts;
   }, [intention, t]);
 
-  // Calculate costs
+  // Calculate costs with scenario adjustments
   const calculations = useMemo(() => {
     const capexItems = costCategories.filter(c => c.type === 'capex');
     const opexItems = costCategories.filter(c => c.type === 'opex');
 
     const capexTotal = capexItems.reduce((sum, item) => {
       const amount = item.variable ? item.baseAmount * costMultiplier : item.baseAmount;
-      return sum + amount;
+      return sum + (amount * scenarioConfig.capexMult);
     }, 0);
 
     const opexMonthly = opexItems.reduce((sum, item) => {
       const amount = item.variable ? item.baseAmount * costMultiplier : item.baseAmount;
-      return sum + amount;
+      return sum + (amount * scenarioConfig.opexMult);
     }, 0);
 
     const opexTotal = opexMonthly * monthsPlanned;
     const totalCost = capexTotal + opexTotal;
-    const buffer = totalCost * 0.15; // 15% buffer recommended
+    const buffer = totalCost * scenarioConfig.bufferRate;
     const recommendedBudget = totalCost + buffer;
 
     return {
@@ -157,9 +196,10 @@ export function StrategyCostSimulator({
       opexTotal,
       totalCost,
       buffer,
+      bufferRate: scenarioConfig.bufferRate,
       recommendedBudget
     };
-  }, [costCategories, costMultiplier, monthsPlanned]);
+  }, [costCategories, costMultiplier, monthsPlanned, scenarioConfig]);
 
   // Budget status
   const budgetStatus = useMemo(() => {
@@ -189,6 +229,46 @@ export function StrategyCostSimulator({
         </p>
       </CardHeader>
       <CardContent className="space-y-6">
+        {/* Scenario Mode Selector */}
+        <div className="space-y-3">
+          <Label className="text-sm font-medium">
+            {t('exitKeys.costs.scenario.title', 'Mode de calcul')}
+          </Label>
+          <ToggleGroup 
+            type="single" 
+            value={scenarioMode} 
+            onValueChange={(v) => v && setScenarioMode(v as ScenarioMode)}
+            className="grid grid-cols-3 gap-2"
+          >
+            <ToggleGroupItem 
+              value="minimal_risk" 
+              className="flex flex-col items-center gap-1 h-auto py-3 data-[state=on]:bg-primary/10 data-[state=on]:border-primary"
+            >
+              <ShieldCheck className="w-4 h-4" />
+              <span className="text-xs">{t('exitKeys.costs.scenario.minimalRisk', 'Risque Min')}</span>
+            </ToggleGroupItem>
+            <ToggleGroupItem 
+              value="balanced" 
+              className="flex flex-col items-center gap-1 h-auto py-3 data-[state=on]:bg-primary/10 data-[state=on]:border-primary"
+            >
+              <Calculator className="w-4 h-4" />
+              <span className="text-xs">{t('exitKeys.costs.scenario.balanced', 'Équilibré')}</span>
+            </ToggleGroupItem>
+            <ToggleGroupItem 
+              value="max_speed" 
+              className="flex flex-col items-center gap-1 h-auto py-3 data-[state=on]:bg-primary/10 data-[state=on]:border-primary"
+            >
+              <Zap className="w-4 h-4" />
+              <span className="text-xs">{t('exitKeys.costs.scenario.maxSpeed', 'Vitesse Max')}</span>
+            </ToggleGroupItem>
+          </ToggleGroup>
+          <p className="text-xs text-muted-foreground">
+            {scenarioConfig.description}
+          </p>
+        </div>
+
+        <Separator />
+
         {/* Duration slider */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
@@ -275,7 +355,7 @@ export function StrategyCostSimulator({
             <span className="text-xl font-bold">{formatAmount(calculations.totalCost)}</span>
           </div>
           <div className="flex items-center justify-between text-sm text-muted-foreground">
-            <span>{t('exitKeys.costs.buffer', 'Marge de sécurité (15%)')}</span>
+            <span>{t('exitKeys.costs.buffer', 'Marge de sécurité')} ({Math.round(calculations.bufferRate * 100)}%)</span>
             <span>+{formatAmount(calculations.buffer)}</span>
           </div>
           <Separator />
