@@ -582,6 +582,63 @@ export const COUNTRY_PROFESSION_STRATEGIES: CountryProfessionStrategy[] = [
   },
 ];
 
+// Generate a generic strategy based on country and profession when no specific one exists
+function generateGenericStrategy(countryId: string, professionCategory: string): CountryProfessionStrategy {
+  const genericSteps = {
+    healthcare: [
+      { phase: 1, name: 'Reconnaissance diplôme', duration: '3-12 mois', actions: ['Vérifier équivalence diplôme dans le pays cible', 'Rassembler documents (diplômes, attestations)', 'Faire traduire et apostiller si nécessaire', 'Soumettre demande à l\'autorité compétente'], documents: ['Diplôme original', 'Traductions certifiées', 'Casier judiciaire'] },
+      { phase: 2, name: 'Recherche d\'emploi', duration: '1-3 mois', actions: ['Identifier hôpitaux/cliniques qui recrutent', 'Postuler avec CV adapté au marché local', 'Préparer entretiens'], costs: 'Variable selon pays' },
+      { phase: 3, name: 'Installation et évolution', duration: '2-5 ans', actions: ['S\'adapter au système de santé local', 'Développer réseau professionnel', 'Évaluer spécialisation ou installation libérale'], milestone: 'Stabilité professionnelle + intégration' },
+    ],
+    tech: [
+      { phase: 1, name: 'Recherche d\'emploi', duration: '1-3 mois', actions: ['Optimiser profil LinkedIn (anglais)', 'Cibler entreprises tech locales et internationales', 'Préparer entretiens techniques', 'Négocier offre'] },
+      { phase: 2, name: 'Installation', duration: '1-2 mois', actions: ['Obtenir visa/permis de travail via employeur', 'Trouver logement', 'Ouvrir compte bancaire', 'S\'enregistrer auprès des autorités'] },
+      { phase: 3, name: 'Croissance', duration: '2-5 ans', actions: ['Monter en responsabilités', 'Négocier augmentations', 'Évaluer freelance ou création entreprise', 'Construire réseau local'] },
+    ],
+    finance: [
+      { phase: 1, name: 'Préparation', duration: '2-6 mois', actions: ['Vérifier reconnaissance diplômes/certifications', 'Obtenir certifications locales si nécessaire (CFA, etc.)', 'Cibler institutions financières'] },
+      { phase: 2, name: 'Intégration', duration: '1-3 mois', actions: ['Postuler via réseaux et chasseurs de têtes', 'Négocier package', 'S\'installer'] },
+      { phase: 3, name: 'Évolution', duration: '3-7 ans', actions: ['Développer expertise marché local', 'Construire réseau', 'Évoluer vers postes senior'] },
+    ],
+    exploring: [
+      { phase: 1, name: 'Exploration', duration: '6-12 mois', actions: ['Identifier vos intérêts et aptitudes', 'Faire des stages/alternances', 'Explorer formations dans le pays cible', 'Rencontrer professionnels de différents secteurs'] },
+      { phase: 2, name: 'Formation', duration: '1-3 ans', actions: ['S\'inscrire dans une formation adaptée', 'Construire premières compétences', 'Faire des projets personnels', 'Développer réseau étudiant international'] },
+      { phase: 3, name: 'Premier emploi', duration: '6-12 mois', actions: ['Postuler avec portfolio/expériences', 'Accepter premier poste même imparfait', 'Apprendre et itérer'] },
+    ],
+    default: [
+      { phase: 1, name: 'Préparation', duration: '1-6 mois', actions: ['Rechercher conditions d\'accès au pays', 'Vérifier équivalence diplômes si applicable', 'Identifier opportunités professionnelles', 'Préparer documents'] },
+      { phase: 2, name: 'Recherche et installation', duration: '1-3 mois', actions: ['Postuler activement', 'Obtenir visa/permis', 'S\'installer (logement, administratif)', 'S\'intégrer localement'] },
+      { phase: 3, name: 'Développement', duration: '2-5 ans', actions: ['Consolider position', 'Développer réseau', 'Évaluer évolutions de carrière', 'Planifier long terme'] },
+    ],
+  };
+
+  const steps = genericSteps[professionCategory as keyof typeof genericSteps] || genericSteps.default;
+
+  return {
+    countryId,
+    professionCategory,
+    steps: steps.map((s, i) => ({ ...s, phase: i + 1 })),
+    keyResources: [
+      { name: 'Ambassade/Consulat du pays', type: 'official' as const },
+      { name: 'Groupes Facebook/LinkedIn expatriés', type: 'community' as const },
+    ],
+    warnings: [
+      'Vérifiez les exigences spécifiques du pays',
+      'Les délais peuvent varier significativement',
+      'Prévoyez une réserve financière pour la transition',
+    ],
+    accelerators: [
+      'Maîtrise de la langue locale = avantage majeur',
+      'Réseau sur place = accès privilégié aux opportunités',
+      'Flexibilité géographique = plus d\'options',
+    ],
+    successMetric: 'Stabilité professionnelle et intégration réussie',
+    planB: 'Évaluer d\'autres destinations avec critères similaires',
+    estimatedTimeTotal: '2-5 ans',
+    difficultyLevel: 'medium',
+  };
+}
+
 // Find strategy for a specific country + profession combination
 export function findStrategy(countryId: string, professionId: string, professionCategory: string): CountryProfessionStrategy | null {
   // First look for profession-specific strategy
@@ -599,11 +656,15 @@ export function findStrategy(countryId: string, professionId: string, profession
   );
   if (categoryStrategy) return categoryStrategy;
 
-  // Finally any strategy for this country
-  return COUNTRY_PROFESSION_STRATEGIES.find(s => 
+  // Look for any strategy for this country + category
+  const anyStrategy = COUNTRY_PROFESSION_STRATEGIES.find(s => 
     s.countryId === countryId && 
     s.professionCategory === professionCategory
-  ) || null;
+  );
+  if (anyStrategy) return anyStrategy;
+
+  // Generate a generic strategy for this country + profession category
+  return generateGenericStrategy(countryId, professionCategory);
 }
 
 // Get all strategies for a country

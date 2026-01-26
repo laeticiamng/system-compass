@@ -32,6 +32,7 @@ export type ProfessionCategory =
   | 'student'
   | 'unemployed'
   | 'retired'
+  | 'exploring'  // Post-bac / career exploration
   | 'other';
 
 export interface Profession {
@@ -148,6 +149,15 @@ export const PROFESSIONS: Profession[] = [
   { id: 'student', name: 'Étudiant', category: 'student', requiredEducation: ['high_school'], averageSalaryMultiplier: 0.3, remoteWorkPossible: true, internationalDemand: 'medium', compatibleExitKeys: ['education_arbitrage', 'content_creator_path', 'freelance_tech'] },
   { id: 'unemployed', name: 'En recherche d\'emploi', category: 'unemployed', requiredEducation: ['no_diploma'], averageSalaryMultiplier: 0.0, remoteWorkPossible: true, internationalDemand: 'low', compatibleExitKeys: ['manual_trade_pivot', 'content_creator_path'] },
   { id: 'retired', name: 'Retraité', category: 'retired', requiredEducation: ['no_diploma'], averageSalaryMultiplier: 0.5, remoteWorkPossible: false, internationalDemand: 'low', compatibleExitKeys: ['real_estate_investor'] },
+  
+  // Exploring / Post-bac - for people who don't know what they want to do
+  { id: 'exploring_general', name: 'Je ne sais pas encore (exploration)', category: 'exploring', requiredEducation: ['high_school'], averageSalaryMultiplier: 0.5, remoteWorkPossible: true, internationalDemand: 'medium', compatibleExitKeys: ['education_arbitrage', 'content_creator_path', 'digital_nomad_escape'] },
+  { id: 'exploring_tech', name: 'Intéressé par la tech', category: 'exploring', requiredEducation: ['high_school'], averageSalaryMultiplier: 0.5, remoteWorkPossible: true, internationalDemand: 'high', compatibleExitKeys: ['education_arbitrage', 'freelance_tech', 'digital_nomad_escape'] },
+  { id: 'exploring_creative', name: 'Intéressé par le créatif', category: 'exploring', requiredEducation: ['high_school'], averageSalaryMultiplier: 0.4, remoteWorkPossible: true, internationalDemand: 'medium', compatibleExitKeys: ['content_creator_path', 'digital_nomad_escape'] },
+  { id: 'exploring_business', name: 'Intéressé par le business', category: 'exploring', requiredEducation: ['high_school'], averageSalaryMultiplier: 0.5, remoteWorkPossible: true, internationalDemand: 'medium', compatibleExitKeys: ['diaspora_leverage', 'corporate_ladder_jump'] },
+  { id: 'exploring_healthcare', name: 'Intéressé par la santé', category: 'exploring', requiredEducation: ['high_school'], averageSalaryMultiplier: 0.5, remoteWorkPossible: false, internationalDemand: 'very_high', compatibleExitKeys: ['education_arbitrage'] },
+  { id: 'exploring_manual', name: 'Intéressé par un métier manuel', category: 'exploring', requiredEducation: ['high_school'], averageSalaryMultiplier: 0.5, remoteWorkPossible: false, internationalDemand: 'high', compatibleExitKeys: ['manual_trade_pivot'] },
+  
   { id: 'other', name: 'Autre', category: 'other', requiredEducation: ['no_diploma'], averageSalaryMultiplier: 1.0, remoteWorkPossible: true, internationalDemand: 'medium', compatibleExitKeys: ['digital_nomad_escape', 'content_creator_path', 'diaspora_leverage'] },
 ];
 
@@ -307,5 +317,6 @@ export const PROFESSION_CATEGORY_LABELS: Record<ProfessionCategory, { label: str
   student: { label: 'Étudiant', icon: '🎓' },
   unemployed: { label: 'Recherche d\'emploi', icon: '🔍' },
   retired: { label: 'Retraité', icon: '🌴' },
+  exploring: { label: 'En exploration / Post-bac', icon: '🧭' },
   other: { label: 'Autre', icon: '📝' },
 };
