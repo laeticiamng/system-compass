@@ -3131,7 +3131,10 @@
       "risks": "Risques à surveiller",
       "firstSteps": "Premières étapes",
       "retakeTest": "Refaire le test",
-      "findCountries": "Trouver des pays compatibles"
+      "findCountries": "Trouver des pays compatibles",
+      "yourPlans": "Tes 3 Plans de Trajectoire",
+      "exploreCountries": "Explorer Tous les Pays",
+      "retake": "Refaire le Test"
     },
     "planTypes": {
       "safe": {
