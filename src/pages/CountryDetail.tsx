@@ -57,6 +57,10 @@ export default function CountryDetail() {
   const extendedMeta = !country && id ? getExtendedCountryMeta(id) : null;
   const isExtended = !country && extendedMeta !== null;
 
+  // IMPORTANT: Hooks must be called before any conditional returns
+  // Fetch governance data for PDF export - always call the hook even if country is null
+  const { governance: governanceData } = useCountryGovernance(country?.id ?? '', country?.pyramidType);
+
   // Track country view
   useEffect(() => {
     if (id && (country || extendedMeta)) {
@@ -204,9 +208,6 @@ export default function CountryDetail() {
 
   // Regular country view
   if (!country) return null;
-
-  // Fetch governance data for PDF export
-  const { governance: governanceData } = useCountryGovernance(country.id, country.pyramidType);
 
   const typeLabel = t(PYRAMID_TYPE_LABELS[country.pyramidType]);
   const typeColor = PYRAMID_TYPE_COLORS[country.pyramidType];
