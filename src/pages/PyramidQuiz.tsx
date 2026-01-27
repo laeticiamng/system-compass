@@ -100,6 +100,16 @@ const PLAYER_COLORS = [
   { bg: 'bg-orange-500', ring: 'ring-orange-500', text: 'text-orange-500' },
 ];
 
+// Map pyramid type to translation key (camelCase format)
+const PYRAMID_TRANSLATION_KEY: Record<PyramidType, string> = {
+  PROBLEM_RENT: 'problemRent',
+  STABILITY_REDIS: 'stabilityRedis',
+  COMPETENCE_TRUST: 'competenceTrust',
+  GROWTH_RISK: 'growthRisk',
+  HYBRID_TRANSITION: 'hybridTransition',
+  RESOURCE_EXTRACTION: 'resourceExtraction',
+};
+
 const QUIZ_QUESTIONS: QuizQuestion[] = [
   {
     id: 'priority',
@@ -467,7 +477,7 @@ export default function PyramidQuiz() {
           return { ...p, scores: newScores };
         }));
       }
-      setGameMessage(t('pyramidQuiz.board.landedPyramid', { type: t(`pyramids.${pyramidType.toLowerCase().replace('_', '')}.label`) }));
+      setGameMessage(t('pyramidQuiz.board.landedPyramid', { type: t(`pyramids.${PYRAMID_TRANSLATION_KEY[pyramidType]}.label`) }));
       setAwaitingEndTurn(true);
     } else if (square.type === 'question' && square.questionIndex !== undefined) {
       setBoardQuestion(square.questionIndex % QUIZ_QUESTIONS.length);
@@ -488,7 +498,7 @@ export default function PyramidQuiz() {
           return { ...p, scores: newScores };
         }));
       }
-      setGameMessage(t('pyramidQuiz.board.chanceCard', { type: t(`pyramids.${randomType.toLowerCase().replace('_', '')}.label`) }));
+      setGameMessage(t('pyramidQuiz.board.chanceCard', { type: t(`pyramids.${PYRAMID_TRANSLATION_KEY[randomType]}.label`) }));
       setAwaitingEndTurn(true);
     } else if (square.type === 'trap') {
       if (mode === 'cooperative') {
