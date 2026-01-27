@@ -13,3 +13,4 @@ export { LatentThresholdAlerts } from './LatentThresholdAlerts';
 export { LatentOnboarding } from './LatentOnboarding';
 export { ExportToTraceOS } from './ExportToTraceOS';
 export { LatentTensionMap } from './LatentTensionMap';
+export { LatentEscalationRules } from './LatentEscalationRules';
