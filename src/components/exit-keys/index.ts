@@ -16,3 +16,4 @@ export { PersonalizedExitKeys } from './PersonalizedExitKeys';
 export { StrategyCostSimulator } from './StrategyCostSimulator';
 export { StrategyChecklist } from './StrategyChecklist';
 export { ShortlistComparison } from './ShortlistComparison';
+export { RoadmapPdfExport } from './RoadmapPdfExport';

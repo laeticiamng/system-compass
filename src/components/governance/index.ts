@@ -18,6 +18,7 @@ export { TerrainTimeline } from './TerrainTimeline';
 export { GovernanceMap } from './GovernanceMap';
 export { CountryGovernanceScore } from './CountryGovernanceScore';
 export { ActorCards } from './ActorCards';
+export { GovernancePdfExport } from './GovernancePdfExport';
 
 // Types
 export type { GovernanceScore, UserGovernanceNotes } from '@/hooks/useCountryGovernance';

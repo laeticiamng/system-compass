@@ -12,3 +12,5 @@ export { CriticalPathDisplay } from './CriticalPathDisplay';
 export { BurnRateChart } from './BurnRateChart';
 export { ComplianceAlertSystem } from './ComplianceAlertSystem';
 export { PmoProjectSynthesis } from './PmoProjectSynthesis';
+export { RiskReviewModal } from './RiskReviewModal';
+export { InitiativeDragDrop } from './InitiativeDragDrop';
