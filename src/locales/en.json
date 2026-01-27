@@ -706,7 +706,10 @@
     "account": "Account & Info",
     "advanced": "Pro Modules",
     "info": "Info",
-    "notifications": "Notifications"
+    "notifications": "Notifications",
+    "exitKeysCatalog": "Exit Keys Catalog",
+    "exitKeysCompare": "Compare Destinations",
+    "terrainRealities": "Terrain Realities"
   },
   "tests": {
     "resultSaved": "Result saved!",

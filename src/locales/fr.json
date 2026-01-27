@@ -767,7 +767,10 @@
     "account": "Compte & Info",
     "advanced": "Modules Pro",
     "info": "Info",
-    "notifications": "Notifications"
+    "notifications": "Notifications",
+    "exitKeysCatalog": "Catalogue Exit Keys",
+    "exitKeysCompare": "Comparer Destinations",
+    "terrainRealities": "Réalités Terrain"
   },
   "tests": {
     "resultSaved": "Résultat sauvegardé !",
