@@ -161,7 +161,7 @@ export default function CurrentPlayerInfo({ player, turnNumber, compact = false 
                     : "bg-rose-500/20 text-rose-400"
                 )}
               >
-                {trait.type === 'positive' ? '+' : '-'} {t(`traits.${trait.id}`, trait.label)}
+                {trait.type === 'positive' ? '+' : '-'} {t(trait.label)}
               </span>
             ))}
           </div>
