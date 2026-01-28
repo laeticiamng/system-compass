@@ -49,7 +49,6 @@ interface WhatIfSimulatorProps {
 }
 
 export function WhatIfSimulator({
-  projectId,
   projectName = 'Projet actuel',
   onSaveScenario
 }: WhatIfSimulatorProps) {
@@ -234,7 +233,8 @@ export function WhatIfSimulator({
     );
   }, []);
 
-  const getCategoryIcon = (category: string) => {
+  // Category icon helper - kept for future use in expanded category display
+  const _getCategoryIcon = (category: string) => {
     switch (category) {
       case 'budget': return <DollarSign className="h-4 w-4" />;
       case 'timeline': return <Clock className="h-4 w-4" />;
@@ -243,6 +243,7 @@ export function WhatIfSimulator({
       default: return <Beaker className="h-4 w-4" />;
     }
   };
+  void _getCategoryIcon;
 
   const getSeverityColor = (severity: string) => {
     switch (severity) {

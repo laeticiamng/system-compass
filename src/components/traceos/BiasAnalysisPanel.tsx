@@ -40,7 +40,6 @@ interface BiasAnalysisPanelProps {
 }
 
 export function BiasAnalysisPanel({
-  decisionId,
   decisionContext,
   hypotheses = [],
   alternatives = [],
