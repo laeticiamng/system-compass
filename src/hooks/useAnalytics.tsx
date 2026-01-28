@@ -87,7 +87,7 @@ export function useAnalytics() {
         .from('analytics_sessions')
         .select('id, visit_count')
         .eq('session_id', sessionId.current)
-        .single();
+        .maybeSingle();
 
       if (existing) {
         await supabase
@@ -99,12 +99,18 @@ export function useAnalytics() {
           })
           .eq('session_id', sessionId.current);
       } else {
-        await supabase.from('analytics_sessions').insert({
+        // Only insert if we have a valid session - skip for anonymous if RLS blocks
+        const { error } = await supabase.from('analytics_sessions').insert({
           session_id: sessionId.current,
           user_id: user?.id || null
         });
+        // Ignore RLS errors for anonymous sessions - this is expected behavior
+        if (error && error.code !== '42501' && error.code !== 'PGRST301') {
+          console.debug('Session insert failed:', error.message);
+        }
       }
     } catch (error) {
+      // Silent fail - analytics should never break the app
       console.debug('Session tracking failed:', error);
     }
   }, [user?.id]);

@@ -14,3 +14,4 @@ export { LatentOnboarding } from './LatentOnboarding';
 export { ExportToTraceOS } from './ExportToTraceOS';
 export { LatentTensionMap } from './LatentTensionMap';
 export { LatentEscalationRules } from './LatentEscalationRules';
+export { LatentProgressIndicator } from './LatentProgressIndicator';

@@ -29,6 +29,7 @@ import { ReflectionFrameworks } from '@/components/ovi/ReflectionFrameworks';
 import { ReadingGrids } from '@/components/ovi/ReadingGrids';
 import { OVIArticle } from '@/components/ovi/OVIArticle';
 import { EvidenceCollector } from '@/components/ovi/EvidenceCollector';
+import { OVIOnboardingGuide } from '@/components/ovi/OVIOnboardingGuide';
 
 export default function OVI() {
   const { t } = useTranslation();
@@ -186,6 +187,7 @@ export default function OVI() {
 
               {/* Introduction Tab */}
               <TabsContent value="introduction" className="space-y-8">
+                <OVIOnboardingGuide className="mb-6" />
                 <Card className="border-primary/20">
                   <CardHeader>
                     <CardTitle className="text-2xl">
