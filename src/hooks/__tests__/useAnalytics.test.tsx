@@ -27,7 +27,8 @@ vi.mock('@/integrations/supabase/client', () => ({
         return {
           select: () => ({
             eq: () => ({
-              single: mockSingle
+              single: mockSingle,
+              maybeSingle: mockSingle
             })
           }),
           insert: mockInsert,

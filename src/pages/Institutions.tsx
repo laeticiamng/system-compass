@@ -29,6 +29,7 @@ import { Separator } from '@/components/ui/separator';
 import { InstitutionalUseCases } from '@/components/institutions/InstitutionalUseCases';
 import { CollectiveDecisionMode } from '@/components/institutions/CollectiveDecisionMode';
 import { DecisionTraceability } from '@/components/institutions/DecisionTraceability';
+import { QuickAccessButtons } from '@/components/institutions/QuickAccessButtons';
 
 export default function Institutions() {
   const { t } = useTranslation();
@@ -68,6 +69,15 @@ export default function Institutions() {
                 {t('institutions.prevent', 'Prévenir')}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Quick Access */}
+      <section className="pb-8">
+        <div className="container mx-auto px-3 sm:px-4">
+          <div className="max-w-6xl mx-auto">
+            <QuickAccessButtons />
           </div>
         </div>
       </section>
