@@ -6,6 +6,8 @@
  * - environment (dev/prod)
  * - last API error
  * - average latency
+ * - network quality
+ * - error history
  */
 
 import { useState, useEffect } from 'react';
@@ -15,7 +17,8 @@ import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { RefreshCw, Server, User, Shield, Clock, AlertTriangle, Database } from 'lucide-react';
+import { RefreshCw, Server, User, Shield, Clock, AlertTriangle, Database, Wifi, Trash2 } from 'lucide-react';
+import { useNetworkQuality, getNetworkStatus } from '@/lib/network-utils';
 
 interface LatencyTest {
   endpoint: string;
@@ -30,16 +33,36 @@ interface ApiError {
   timestamp: Date;
 }
 
+const MAX_ERROR_HISTORY = 10;
+
 export default function Diagnostics() {
   const { user, session } = useAuth();
   const { roles, isAdmin } = useUserRoles();
   const [latencyTests, setLatencyTests] = useState<LatencyTest[]>([]);
-  const [lastError, setLastError] = useState<ApiError | null>(null);
+  const [errorHistory, setErrorHistory] = useState<ApiError[]>([]);
   const [isTestingLatency, setIsTestingLatency] = useState(false);
   const [dbStatus, setDbStatus] = useState<'checking' | 'connected' | 'error'>('checking');
+  const networkQuality = useNetworkQuality();
+  const [networkInfo, setNetworkInfo] = useState(getNetworkStatus());
 
   const isDev = import.meta.env.DEV || window.location.hostname.includes('preview');
   const environment = isDev ? 'development' : 'production';
+
+  // Update network info periodically
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setNetworkInfo(getNetworkStatus());
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const addError = (error: ApiError) => {
+    setErrorHistory(prev => [error, ...prev].slice(0, MAX_ERROR_HISTORY));
+  };
+
+  const clearErrors = () => {
+    setErrorHistory([]);
+  };
 
   // Check database connectivity
   useEffect(() => {
@@ -51,7 +74,7 @@ export default function Diagnostics() {
         
         if (error) {
           setDbStatus('error');
-          setLastError({ message: error.message, endpoint: 'countries', timestamp: new Date() });
+          addError({ message: error.message, endpoint: 'countries', timestamp: new Date() });
         } else {
           setDbStatus('connected');
           setLatencyTests(prev => [...prev.slice(-4), {
@@ -63,7 +86,7 @@ export default function Diagnostics() {
         }
       } catch (e) {
         setDbStatus('error');
-        setLastError({ message: String(e), endpoint: 'DB check', timestamp: new Date() });
+        addError({ message: String(e), endpoint: 'DB check', timestamp: new Date() });
       }
     };
     checkDb();
@@ -277,22 +300,66 @@ export default function Diagnostics() {
         </Card>
       </div>
 
-      {/* Last Error */}
-      {lastError && (
+      {/* Network Status */}
+      <Card className="mt-6">
+        <CardHeader className="pb-3">
+          <CardTitle className="flex items-center gap-2 text-lg">
+            <Wifi className="w-5 h-5" />
+            Réseau
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <div className="flex justify-between items-center">
+            <span className="text-muted-foreground">Qualité</span>
+            <Badge variant={networkQuality === 'good' ? 'default' : networkQuality === 'slow' ? 'secondary' : 'destructive'}>
+              {networkQuality === 'good' ? 'Bonne' : networkQuality === 'slow' ? 'Lente' : 'Hors ligne'}
+            </Badge>
+          </div>
+          {networkInfo.effectiveType && (
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Type de connexion</span>
+              <span className="font-mono text-sm">{networkInfo.effectiveType.toUpperCase()}</span>
+            </div>
+          )}
+          {networkInfo.downlink && (
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">Débit estimé</span>
+              <span className="font-mono text-sm">{networkInfo.downlink} Mbps</span>
+            </div>
+          )}
+          {networkInfo.rtt && (
+            <div className="flex justify-between items-center">
+              <span className="text-muted-foreground">RTT</span>
+              <span className="font-mono text-sm">{networkInfo.rtt}ms</span>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+
+      {/* Error History */}
+      {errorHistory.length > 0 && (
         <Card className="mt-6 border-destructive/50">
           <CardHeader className="pb-3">
-            <CardTitle className="flex items-center gap-2 text-lg text-destructive">
-              <AlertTriangle className="w-5 h-5" />
-              Dernière erreur API
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="bg-destructive/10 p-3 rounded-lg">
-              <p className="font-mono text-sm">{lastError.message}</p>
-              <p className="text-xs text-muted-foreground mt-2">
-                Endpoint: {lastError.endpoint} • {lastError.timestamp.toLocaleTimeString()}
-              </p>
+            <div className="flex items-center justify-between">
+              <CardTitle className="flex items-center gap-2 text-lg text-destructive">
+                <AlertTriangle className="w-5 h-5" />
+                Historique des erreurs ({errorHistory.length})
+              </CardTitle>
+              <Button variant="ghost" size="sm" onClick={clearErrors}>
+                <Trash2 className="w-4 h-4 mr-1" />
+                Effacer
+              </Button>
             </div>
+          </CardHeader>
+          <CardContent className="space-y-2 max-h-48 overflow-y-auto">
+            {errorHistory.map((error, i) => (
+              <div key={i} className="bg-destructive/10 p-2 rounded-lg text-sm">
+                <p className="font-mono text-xs">{error.message}</p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  {error.endpoint} • {error.timestamp.toLocaleTimeString()}
+                </p>
+              </div>
+            ))}
           </CardContent>
         </Card>
       )}
