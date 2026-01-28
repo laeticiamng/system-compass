@@ -1,4 +1,4 @@
-// Main Application Router - v1.1.0 with Lazy Loading
+// Main Application Router - v1.2.0 with Lazy Loading + Offline Support
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -13,6 +13,8 @@ import { OnboardingDialog } from "@/components/OnboardingDialog";
 import { DisclaimerConsentDialog } from "@/components/DisclaimerConsentDialog";
 import { DialogCoordinatorProvider } from "@/components/DialogCoordinator";
 import { RequireAdmin } from "@/components/RequireAdmin";
+import { OfflineBanner } from "@/components/ui/offline-banner";
+import { CookieConsent } from "@/components/ui/cookie-consent";
 
 // Eagerly loaded pages (small, frequently accessed)
 import Index from "./pages/Index";
@@ -174,6 +176,8 @@ const App = () => (
                     </Routes>
                   </main>
                   <Footer />
+                  <OfflineBanner />
+                  <CookieConsent />
                 </div>
               </DialogCoordinatorProvider>
             </BrowserRouter>

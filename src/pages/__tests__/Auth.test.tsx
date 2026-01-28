@@ -4,6 +4,13 @@ import userEvent from '@testing-library/user-event';
 import { render } from '@/test/test-utils';
 import Auth from '../Auth';
 
+// Mock ResizeObserver for Radix UI components
+global.ResizeObserver = class ResizeObserver {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+};
+
 // Mock functions
 const mockSignIn = vi.fn();
 const mockSignUp = vi.fn();

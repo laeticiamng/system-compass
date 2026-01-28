@@ -6,9 +6,11 @@ import { useAnalytics } from '@/hooks/useAnalytics';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Checkbox } from '@/components/ui/checkbox';
 import { cn } from '@/lib/utils';
-import { Compass, LogIn, UserPlus, Loader2, AlertCircle } from 'lucide-react';
+import { Compass, LogIn, UserPlus, Loader2, AlertCircle, Eye, EyeOff } from 'lucide-react';
 import { z } from 'zod';
+import { PasswordStrengthMeter } from '@/components/ui/password-strength-meter';
 
 const emailSchema = z.string().email();
 // Sécurité renforcée : minimum 8 caractères, 1 majuscule, 1 minuscule, 1 chiffre
@@ -30,6 +32,8 @@ export default function Auth() {
   const [displayName, setDisplayName] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
 
   useEffect(() => {
     if (user && !loading) {
@@ -170,16 +174,43 @@ export default function Auth() {
 
             <div className="space-y-2">
               <Label htmlFor="password">{t('auth.password')}</Label>
-              <Input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
-                className="bg-background"
-                required
-              />
+              <div className="relative">
+                <Input
+                  id="password"
+                  type={showPassword ? 'text' : 'password'}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="••••••••"
+                  className="bg-background pr-10"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                  tabIndex={-1}
+                >
+                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </button>
+              </div>
+              {!isLogin && password && (
+                <PasswordStrengthMeter password={password} showRequirements={true} />
+              )}
             </div>
+
+            {/* Remember me checkbox */}
+            {isLogin && (
+              <div className="flex items-center space-x-2">
+                <Checkbox
+                  id="remember"
+                  checked={rememberMe}
+                  onCheckedChange={(checked) => setRememberMe(checked === true)}
+                />
+                <Label htmlFor="remember" className="text-sm text-muted-foreground cursor-pointer">
+                  {t('auth.rememberMe', 'Se souvenir de moi')}
+                </Label>
+              </div>
+            )}
 
             {error && (
               <div className="flex items-center gap-2 p-3 rounded-lg bg-destructive/10 text-destructive animate-fade-in">
