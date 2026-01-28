@@ -50,3 +50,6 @@ export {
   ProfileSkeleton, 
   FormSkeleton 
 } from './loading-skeleton';
+
+// Re-export common types for convenience
+export type { ButtonProps } from './button';
