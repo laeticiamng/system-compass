@@ -38,6 +38,7 @@ import { ZoneMergeDialog } from './ZoneMergeDialog';
 import { ZoneHistoryTimeline } from './ZoneHistoryTimeline';
 import { ZoneStatsBar } from './ZoneStatsBar';
 import { WeakSignalsDetector } from './WeakSignalsDetector';
+import { LatentProgressIndicator } from './LatentProgressIndicator';
 import { PremiumPaywall } from '@/components/PremiumPaywall';
 import { toast } from 'sonner';
 
@@ -352,6 +353,20 @@ export function Latent() {
       )}
 
       <Separator />
+
+      {/* Progress Indicator */}
+      {zones.length > 0 && (
+        <Card className="p-4">
+          <LatentProgressIndicator 
+            zones={zones.map(z => ({
+              id: z.id,
+              title: z.title,
+              status: z.status === 'dormant' ? 'latent' : z.status === 'emergent' ? 'emerging' : z.status === 'blocked' ? 'resolved' : 'active',
+              created_at: z.created_at
+            }))}
+          />
+        </Card>
+      )}
 
       <Tabs defaultValue="zones" className="space-y-4">
         <TabsList className="flex flex-wrap h-auto gap-1">
