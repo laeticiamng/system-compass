@@ -25,9 +25,16 @@ const pyramidLevels = [
 
 export function PyramidVisualization({ country, translatedPyramid, className }: PyramidVisualizationProps) {
   const { t } = useTranslation();
-  const typeInfo = PYRAMID_TYPE_INFO[country.pyramidType];
+  const typeInfo = PYRAMID_TYPE_INFO[country.pyramidType] || { color: 'primary', label: 'Unknown' };
 
-  const pyramid = translatedPyramid || country.pyramid;
+  const pyramid = translatedPyramid || country.pyramid || {
+    top: 'Unknown',
+    institutions: 'Unknown',
+    gatekeepers: 'Unknown',
+    valueCreators: 'Unknown',
+    base: 'Unknown',
+    realAsset: 'Unknown',
+  };
 
   return (
     <div className={cn('space-y-6', className)}>
