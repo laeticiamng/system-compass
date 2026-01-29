@@ -98,6 +98,9 @@ export const LazySubscriptionSuccess = withSuspense(lazy(() => import('@/pages/S
 export const LazyFiscalCalculator = withSuspense(lazy(() => import('@/pages/FiscalCalculator')));
 export const LazyPersonaJourneys = withSuspense(lazy(() => import('@/pages/PersonaJourneys')));
 export const LazyGamificationHub = withSuspense(lazy(() => import('@/pages/GamificationHub')));
+export const LazyExpertMarketplace = withSuspense(lazy(() => import('@/pages/ExpertMarketplace')));
+export const LazyPartnerIntegrations = withSuspense(lazy(() => import('@/pages/PartnerIntegrations')));
+export const LazyCommunity = withSuspense(lazy(() => import('@/pages/Community')));
 
 // Dev/Admin pages
 export const LazyDiagnostics = withSuspense(lazy(() => import('@/pages/Diagnostics')));

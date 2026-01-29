@@ -1,0 +1,350 @@
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { 
+  MessageCircle, 
+  Users, 
+  BookOpen, 
+  Youtube, 
+  Podcast, 
+  Calendar, 
+  ExternalLink,
+  Globe2,
+  Heart,
+  Sparkles,
+  Trophy,
+  Star,
+  ArrowRight,
+  Hash,
+  Mic,
+  Video
+} from 'lucide-react';
+import { toast } from 'sonner';
+
+interface DiscordChannel {
+  name: string;
+  description: string;
+  icon: React.ReactNode;
+}
+
+const DISCORD_CHANNELS: DiscordChannel[] = [
+  { name: '#introductions', description: 'Présentez-vous à la communauté', icon: <Heart className="h-4 w-4" /> },
+  { name: '#general-expat', description: 'Discussions générales sur l\'expatriation', icon: <MessageCircle className="h-4 w-4" /> },
+  { name: '#ask-the-community', description: 'Posez vos questions, recevez des réponses', icon: <Users className="h-4 w-4" /> },
+  { name: '#visa-immigration', description: 'Partagez vos expériences visa', icon: <Globe2 className="h-4 w-4" /> },
+  { name: '#fiscalité', description: 'Optimisation et questions fiscales', icon: <Hash className="h-4 w-4" /> },
+  { name: '#digital-nomads', description: 'Pour les travailleurs à distance', icon: <Sparkles className="h-4 w-4" /> },
+  { name: '#job-opportunities', description: 'Offres d\'emploi et opportunités', icon: <Trophy className="h-4 w-4" /> },
+  { name: '#success-stories', description: 'Partagez vos réussites !', icon: <Star className="h-4 w-4" /> },
+];
+
+const COUNTRY_CHANNELS = [
+  'france', 'portugal', 'spain', 'uae', 'singapore', 'switzerland', 
+  'germany', 'usa', 'canada', 'thailand', 'vietnam', 'malaysia'
+];
+
+const UPCOMING_EVENTS = [
+  {
+    id: '1',
+    title: 'AMA: Fiscalité des Digital Nomads',
+    date: '2024-02-15',
+    time: '19:00 CET',
+    speaker: 'Maître Sophie Laurent',
+    type: 'webinar',
+  },
+  {
+    id: '2',
+    title: 'Meetup Paris - Expats & Entrepreneurs',
+    date: '2024-02-22',
+    time: '18:30',
+    location: 'Paris, France',
+    type: 'meetup',
+  },
+  {
+    id: '3',
+    title: 'Workshop: Préparer son départ en 90 jours',
+    date: '2024-03-01',
+    time: '14:00 CET',
+    type: 'workshop',
+  },
+];
+
+const CONTENT_RESOURCES = [
+  {
+    id: '1',
+    type: 'podcast',
+    title: 'System Compass Podcast',
+    description: 'Interviews d\'expatriés et d\'experts chaque semaine.',
+    episodes: 45,
+    link: '#',
+  },
+  {
+    id: '2',
+    type: 'youtube',
+    title: 'Chaîne YouTube',
+    description: 'Tutoriels, analyses de pays et conseils pratiques.',
+    subscribers: 12000,
+    link: '#',
+  },
+  {
+    id: '3',
+    type: 'blog',
+    title: 'Blog & Guides',
+    description: 'Articles approfondis et guides étape par étape.',
+    articles: 120,
+    link: '#',
+  },
+];
+
+export default function Community() {
+  const handleJoinDiscord = () => {
+    toast.success('Redirection vers Discord', {
+      description: 'Rejoignez notre communauté de +5000 membres !',
+    });
+    // In production: window.open('https://discord.gg/systemcompass', '_blank');
+  };
+
+  return (
+    <div className="container mx-auto px-4 py-8 space-y-8">
+      {/* Header */}
+      <div className="text-center space-y-4">
+        <h1 className="text-4xl font-bold gold-text">
+          Communauté System Compass
+        </h1>
+        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          Rejoignez des milliers d'expatriés, nomades numériques et futurs 
+          expatriés. Échangez, apprenez, entraidez-vous.
+        </p>
+      </div>
+
+      {/* Discord Hero */}
+      <Card className="glass-card-elevated bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-pink-500/10 overflow-hidden">
+        <CardContent className="p-8">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="space-y-6">
+              <div className="flex items-center gap-3">
+                <div className="p-3 rounded-xl bg-indigo-500/20">
+                  <MessageCircle className="h-8 w-8 text-indigo-400" />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold">Discord Officiel</h2>
+                  <p className="text-muted-foreground">+5,000 membres actifs</p>
+                </div>
+              </div>
+              
+              <p className="text-lg">
+                Notre serveur Discord est le cœur de la communauté. Échangez en temps réel 
+                avec des expatriés du monde entier, posez vos questions et partagez vos expériences.
+              </p>
+
+              <div className="flex flex-wrap gap-3">
+                <Badge className="bg-emerald-500/20 text-emerald-400">
+                  <Users className="h-3 w-3 mr-1" />
+                  Communauté active
+                </Badge>
+                <Badge className="bg-blue-500/20 text-blue-400">
+                  <Globe2 className="h-3 w-3 mr-1" />
+                  50+ pays représentés
+                </Badge>
+                <Badge className="bg-purple-500/20 text-purple-400">
+                  <Mic className="h-3 w-3 mr-1" />
+                  Événements vocaux
+                </Badge>
+              </div>
+
+              <Button size="lg" onClick={handleJoinDiscord} className="gap-2">
+                <MessageCircle className="h-5 w-5" />
+                Rejoindre le Discord
+                <ExternalLink className="h-4 w-4" />
+              </Button>
+            </div>
+
+            <div className="space-y-4">
+              <h3 className="font-semibold">Salons populaires</h3>
+              <div className="grid grid-cols-2 gap-2">
+                {DISCORD_CHANNELS.slice(0, 6).map((channel) => (
+                  <div 
+                    key={channel.name}
+                    className="p-3 rounded-lg bg-background/50 hover:bg-background/80 transition-colors"
+                  >
+                    <div className="flex items-center gap-2 mb-1">
+                      {channel.icon}
+                      <span className="font-mono text-sm">{channel.name}</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground">{channel.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Country Channels */}
+      <Card className="glass-card">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Globe2 className="h-5 w-5 text-primary" />
+            Salons par pays
+          </CardTitle>
+          <p className="text-sm text-muted-foreground">
+            Retrouvez des expatriés dans votre destination de rêve
+          </p>
+        </CardHeader>
+        <CardContent>
+          <div className="flex flex-wrap gap-2">
+            {COUNTRY_CHANNELS.map((country) => (
+              <Badge 
+                key={country} 
+                variant="secondary" 
+                className="cursor-pointer hover:bg-primary/20 transition-colors"
+                onClick={handleJoinDiscord}
+              >
+                #{country}
+              </Badge>
+            ))}
+            <Badge variant="outline" className="cursor-pointer">
+              +38 autres pays...
+            </Badge>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Events */}
+      <div className="space-y-4">
+        <h2 className="text-xl font-semibold flex items-center gap-2">
+          <Calendar className="h-5 w-5 text-primary" />
+          Événements à venir
+        </h2>
+        <div className="grid gap-4 md:grid-cols-3">
+          {UPCOMING_EVENTS.map((event) => (
+            <Card key={event.id} className="glass-card hover:shadow-md transition-all duration-300">
+              <CardContent className="p-5">
+                <div className="space-y-3">
+                  <Badge variant={event.type === 'webinar' ? 'default' : 'secondary'}>
+                    {event.type === 'webinar' && <Video className="h-3 w-3 mr-1" />}
+                    {event.type === 'meetup' && <Users className="h-3 w-3 mr-1" />}
+                    {event.type === 'workshop' && <BookOpen className="h-3 w-3 mr-1" />}
+                    {event.type.charAt(0).toUpperCase() + event.type.slice(1)}
+                  </Badge>
+                  
+                  <h3 className="font-semibold">{event.title}</h3>
+                  
+                  <div className="text-sm text-muted-foreground space-y-1">
+                    <p className="flex items-center gap-2">
+                      <Calendar className="h-4 w-4" />
+                      {new Date(event.date).toLocaleDateString('fr-FR', { 
+                        weekday: 'long', 
+                        day: 'numeric', 
+                        month: 'long' 
+                      })}
+                    </p>
+                    <p>{event.time}</p>
+                    {event.speaker && <p>Avec {event.speaker}</p>}
+                    {event.location && <p>{event.location}</p>}
+                  </div>
+
+                  <Button 
+                    variant="outline" 
+                    className="w-full"
+                    onClick={() => toast.info('Inscription aux événements bientôt disponible')}
+                  >
+                    S'inscrire
+                    <ArrowRight className="h-4 w-4 ml-2" />
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+
+      {/* Content Resources */}
+      <div className="space-y-4">
+        <h2 className="text-xl font-semibold flex items-center gap-2">
+          <BookOpen className="h-5 w-5 text-primary" />
+          Contenu & Ressources
+        </h2>
+        <div className="grid gap-4 md:grid-cols-3">
+          {CONTENT_RESOURCES.map((resource) => (
+            <Card 
+              key={resource.id} 
+              className="glass-card hover:shadow-md transition-all duration-300 cursor-pointer"
+              onClick={() => toast.info('Contenu bientôt disponible')}
+            >
+              <CardContent className="p-5">
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <div className="p-3 rounded-xl bg-primary/10">
+                      {resource.type === 'podcast' && <Podcast className="h-6 w-6 text-primary" />}
+                      {resource.type === 'youtube' && <Youtube className="h-6 w-6 text-red-500" />}
+                      {resource.type === 'blog' && <BookOpen className="h-6 w-6 text-primary" />}
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">{resource.title}</h3>
+                      <p className="text-xs text-muted-foreground">
+                        {resource.episodes && `${resource.episodes} épisodes`}
+                        {resource.subscribers && `${resource.subscribers.toLocaleString()} abonnés`}
+                        {resource.articles && `${resource.articles} articles`}
+                      </p>
+                    </div>
+                  </div>
+                  <p className="text-sm text-muted-foreground">{resource.description}</p>
+                  <Button variant="ghost" className="w-full justify-between">
+                    Explorer
+                    <ExternalLink className="h-4 w-4" />
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+
+      {/* Community Stats */}
+      <Card className="glass-card">
+        <CardContent className="p-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div>
+              <p className="text-3xl font-bold text-primary">5,247</p>
+              <p className="text-muted-foreground">Membres Discord</p>
+            </div>
+            <div>
+              <p className="text-3xl font-bold text-primary">50+</p>
+              <p className="text-muted-foreground">Pays représentés</p>
+            </div>
+            <div>
+              <p className="text-3xl font-bold text-primary">120+</p>
+              <p className="text-muted-foreground">Guides & articles</p>
+            </div>
+            <div>
+              <p className="text-3xl font-bold text-primary">45</p>
+              <p className="text-muted-foreground">Épisodes podcast</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* CTA */}
+      <Card className="glass-card-elevated bg-gradient-to-r from-primary/10 to-primary/5">
+        <CardContent className="p-8 text-center">
+          <h2 className="text-2xl font-bold mb-4">Prêt à rejoindre l'aventure ?</h2>
+          <p className="text-muted-foreground mb-6 max-w-lg mx-auto">
+            Que vous prépariez votre expatriation ou que vous soyez déjà installé ailleurs,
+            notre communauté est là pour vous accompagner.
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Button size="lg" onClick={handleJoinDiscord}>
+              <MessageCircle className="h-5 w-5 mr-2" />
+              Rejoindre Discord
+            </Button>
+            <Button size="lg" variant="outline" onClick={() => toast.info('Newsletter bientôt disponible')}>
+              <BookOpen className="h-5 w-5 mr-2" />
+              S'abonner à la newsletter
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
