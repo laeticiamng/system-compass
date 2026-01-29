@@ -491,6 +491,45 @@ export type Database = {
         }
         Relationships: []
       }
+      challenge_progress: {
+        Row: {
+          challenge_id: string
+          challenge_type: string
+          completed_at: string | null
+          created_at: string
+          current_progress: number
+          expires_at: string
+          id: string
+          target_progress: number
+          user_id: string
+          xp_awarded: number
+        }
+        Insert: {
+          challenge_id: string
+          challenge_type: string
+          completed_at?: string | null
+          created_at?: string
+          current_progress?: number
+          expires_at: string
+          id?: string
+          target_progress: number
+          user_id: string
+          xp_awarded?: number
+        }
+        Update: {
+          challenge_id?: string
+          challenge_type?: string
+          completed_at?: string | null
+          created_at?: string
+          current_progress?: number
+          expires_at?: string
+          id?: string
+          target_progress?: number
+          user_id?: string
+          xp_awarded?: number
+        }
+        Relationships: []
+      }
       countries: {
         Row: {
           cost_of_living: Json
@@ -1082,6 +1121,54 @@ export type Database = {
         }
         Relationships: []
       }
+      event_registrations: {
+        Row: {
+          created_at: string
+          event_date: string
+          event_id: string
+          event_title: string
+          event_type: string
+          guest_email: string | null
+          guest_name: string | null
+          id: string
+          notes: string | null
+          reminder_sent: boolean
+          status: string
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          event_date: string
+          event_id: string
+          event_title: string
+          event_type: string
+          guest_email?: string | null
+          guest_name?: string | null
+          id?: string
+          notes?: string | null
+          reminder_sent?: boolean
+          status?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          event_date?: string
+          event_id?: string
+          event_title?: string
+          event_type?: string
+          guest_email?: string | null
+          guest_name?: string | null
+          id?: string
+          notes?: string | null
+          reminder_sent?: boolean
+          status?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       exit_keys_history: {
         Row: {
           compatibility_score: number | null
@@ -1282,6 +1369,51 @@ export type Database = {
           total_turns_played?: number
           updated_at?: string
           user_id?: string
+        }
+        Relationships: []
+      }
+      gamification_progress: {
+        Row: {
+          badges: string[]
+          challenges_completed: string[]
+          created_at: string
+          id: string
+          last_active: string
+          level: string
+          phase: string
+          streak: number
+          total_challenges_completed: number
+          updated_at: string
+          user_id: string
+          xp: number
+        }
+        Insert: {
+          badges?: string[]
+          challenges_completed?: string[]
+          created_at?: string
+          id?: string
+          last_active?: string
+          level?: string
+          phase?: string
+          streak?: number
+          total_challenges_completed?: number
+          updated_at?: string
+          user_id: string
+          xp?: number
+        }
+        Update: {
+          badges?: string[]
+          challenges_completed?: string[]
+          created_at?: string
+          id?: string
+          last_active?: string
+          level?: string
+          phase?: string
+          streak?: number
+          total_challenges_completed?: number
+          updated_at?: string
+          user_id?: string
+          xp?: number
         }
         Relationships: []
       }
@@ -1779,6 +1911,45 @@ export type Database = {
           stream_url?: string | null
           suno_task_id?: string | null
           updated_at?: string
+        }
+        Relationships: []
+      }
+      newsletter_subscriptions: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          is_active: boolean
+          preferences: Json
+          source: string | null
+          subscribed_at: string
+          unsubscribed_at: string | null
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          is_active?: boolean
+          preferences?: Json
+          source?: string | null
+          subscribed_at?: string
+          unsubscribed_at?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          is_active?: boolean
+          preferences?: Json
+          source?: string | null
+          subscribed_at?: string
+          unsubscribed_at?: string | null
+          updated_at?: string
+          user_id?: string | null
         }
         Relationships: []
       }
