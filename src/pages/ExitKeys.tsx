@@ -23,7 +23,7 @@ import {
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import { useCountries } from '@/lib/countries-data';
-import { PYRAMID_TYPE_INFO, LifeMotorProfile, LifePriority, LIFE_MOTOR_PROFILES, type Country } from '@/lib/types';
+import { LifeMotorProfile, LifePriority, LIFE_MOTOR_PROFILES, type Country } from '@/lib/types';
 import { findCompatibleKeys, UserContext, STRATEGIC_PRINCIPLES } from '@/lib/exit-keys-engine';
 import { getNationalityAdvantages, getPassportStrengthLabel, REGIONAL_BLOCS, getRecommendedDestinations } from '@/lib/nationality-advantages';
 import { EDUCATION_LEVELS, PROFESSIONS, PROFESSION_CATEGORY_LABELS, getProfession, type EducationLevel, type ProfessionCategory } from '@/lib/profession-data';
@@ -72,7 +72,7 @@ const timeOptions = [
 
 export default function ExitKeys() {
   const { t } = useTranslation();
-  const { getPyramidLabel } = usePyramidTranslations();
+  const { getPyramidLabel, getWhoThrives, getWhoPays } = usePyramidTranslations();
   const { user } = useAuth();
   const { profile: savedProfile, saveProfile, loading: profileLoading } = useExitKeysProfile();
   const { countries } = useCountries();
@@ -544,7 +544,7 @@ export default function ExitKeys() {
                         <div>
                           <h3 className="font-bold">{birthCountry.name}</h3>
                           <p className="text-xs text-muted-foreground">
-                            {PYRAMID_TYPE_INFO[birthCountry.pyramidType]?.label || getPyramidLabel(birthCountry.pyramidType)}
+                            {getPyramidLabel(birthCountry.pyramidType)}
                           </p>
                         </div>
                       </div>
@@ -599,7 +599,7 @@ export default function ExitKeys() {
                           <span className="text-xl">{getFlagEmoji(country.iso2)}</span>
                           <span>{country.name}</span>
                           <span className="text-xs text-muted-foreground ml-2">
-                            {PYRAMID_TYPE_INFO[country.pyramidType]?.label || getPyramidLabel(country.pyramidType)}
+                            {getPyramidLabel(country.pyramidType)}
                           </span>
                         </span>
                       </SelectItem>
@@ -628,7 +628,7 @@ export default function ExitKeys() {
                         <h3 className="text-xl font-bold">{currentCountry.name}</h3>
                         <p className="text-sm text-muted-foreground flex items-center gap-2">
                           <span className="w-2 h-2 rounded-full bg-blue-500" />
-                          {PYRAMID_TYPE_INFO[currentCountry.pyramidType].label}
+                          {getPyramidLabel(currentCountry.pyramidType)}
                         </p>
                       </div>
                     </div>
@@ -640,7 +640,7 @@ export default function ExitKeys() {
                           {t('exitKeys.current.whoWins', 'Qui gagne ici')}
                         </p>
                         <ul className="text-sm space-y-2">
-                          {currentCountry.whoWins.slice(0, 2).map((item, i) => (
+                          {getWhoThrives(currentCountry.pyramidType).slice(0, 2).map((item, i) => (
                             <li key={i} className="flex items-start gap-2">
                               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 shrink-0" />
                               <span className="text-foreground/80">{item}</span>
@@ -654,7 +654,7 @@ export default function ExitKeys() {
                           {t('exitKeys.current.whoLoses', 'Qui perd ici')}
                         </p>
                         <ul className="text-sm space-y-2">
-                          {currentCountry.whoLoses.slice(0, 2).map((item, i) => (
+                          {getWhoPays(currentCountry.pyramidType).slice(0, 2).map((item, i) => (
                             <li key={i} className="flex items-start gap-2">
                               <span className="w-1.5 h-1.5 rounded-full bg-destructive mt-1.5 shrink-0" />
                               <span className="text-foreground/80">{item}</span>
