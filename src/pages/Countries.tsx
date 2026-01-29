@@ -11,6 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { ChevronLeft, ChevronRight, Search, X, ArrowUpDown, Database, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
+import { useSavedCountries } from '@/components/common/SavedCountriesButton';
 
 const ITEMS_PER_PAGE = 12;
 
@@ -68,12 +69,34 @@ function AnimatedSection({ children, className }: { children: React.ReactNode; c
 export default function Countries() {
   const { t } = useTranslation();
   const { countries } = useCountries();
-  const [filter, setFilter] = useState<PyramidType | 'all' | 'extended'>('all');
+  const { savedIds } = useSavedCountries();
+  const [filter, setFilter] = useState<PyramidType | 'all' | 'extended' | 'saved'>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<SortOption>('name-asc');
   const [currentPage, setCurrentPage] = useState(1);
 
   const filteredAndSortedCountries = useMemo(() => {
+    // When showing saved countries
+    if (filter === 'saved') {
+      let result = countries.filter(c => savedIds.includes(c.id));
+      
+      if (searchQuery.trim()) {
+        const query = searchQuery.toLowerCase().trim();
+        result = result.filter(c => 
+          c.name.toLowerCase().includes(query) ||
+          c.nameLocal?.toLowerCase().includes(query) ||
+          c.region.toLowerCase().includes(query)
+        );
+      }
+      
+      result.sort((a, b) => {
+        if (sortBy === 'name-desc') return b.name.localeCompare(a.name);
+        return a.name.localeCompare(b.name);
+      });
+      
+      return result;
+    }
+
     // When showing extended only
     if (filter === 'extended') {
       let result = [...extendedCountries];

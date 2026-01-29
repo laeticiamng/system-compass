@@ -4,6 +4,7 @@ import { Country } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { useNavigate } from 'react-router-dom';
 import { MapPin, TrendingUp, Shield, Users } from 'lucide-react';
+import { SavedCountriesButton } from '@/components/common/SavedCountriesButton';
 
 const PYRAMID_TYPE_LABELS: Record<string, string> = {
   PROBLEM_RENT: 'pyramids.problemRent.label',
@@ -75,9 +76,18 @@ export const CountryCard = forwardRef<HTMLDivElement, CountryCardProps>(
           className
         )}
       >
+        {/* Save Button */}
+        <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-10">
+          <SavedCountriesButton 
+            countryId={country.id} 
+            countryName={displayName}
+            size="sm"
+          />
+        </div>
+
         {/* Type Badge */}
         <div
-          className="absolute top-3 right-3 sm:top-4 sm:right-4 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium max-w-[45%] truncate"
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium max-w-[40%] truncate"
           style={{
             backgroundColor: `hsl(var(--${typeColor}) / 0.15)`,
             color: `hsl(var(--${typeColor}))`,
