@@ -28,7 +28,12 @@ const SAFETY_CONFIG = {
 
 export function LGBTQRightsIndicator({ rights, className }: LGBTQRightsIndicatorProps) {
   const { t } = useTranslation();
-  const config = SAFETY_CONFIG[rights.safetyRating];
+  
+  // Defensive: fallback to 'caution' if safetyRating is invalid or missing
+  const safetyRating = rights?.safetyRating && SAFETY_CONFIG[rights.safetyRating] 
+    ? rights.safetyRating 
+    : 'caution';
+  const config = SAFETY_CONFIG[safetyRating];
   const SafetyIcon = config.icon;
 
   // Fallback labels for safety ratings
