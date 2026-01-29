@@ -211,3 +211,49 @@ export function getFieldError(
 ): string | undefined {
   return errors?.[field];
 }
+
+// ============ Sanitization Functions ============
+
+/**
+ * Sanitize HTML to prevent XSS attacks
+ */
+export function sanitizeHtml(input: string): string {
+  return input
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;')
+    .replace(/\//g, '&#x2F;');
+}
+
+/**
+ * Build safe URL with properly encoded parameters
+ */
+export function buildSafeUrl(baseUrl: string, params: Record<string, string>): string {
+  const url = new URL(baseUrl);
+  Object.entries(params).forEach(([key, value]) => {
+    url.searchParams.append(key, encodeURIComponent(value));
+  });
+  return url.toString();
+}
+
+// ============ Webhook URL Schemas ============
+
+export const webhookUrlSchema = z
+  .string()
+  .trim()
+  .url({ message: 'URL invalide' })
+  .refine((url) => url.startsWith('https://'), {
+    message: 'L\'URL doit utiliser HTTPS',
+  })
+  .refine((url) => !url.includes('localhost') && !url.includes('127.0.0.1'), {
+    message: 'Les URLs localhost ne sont pas autorisées en production',
+  });
+
+export const slackWebhookSchema = z
+  .string()
+  .trim()
+  .url({ message: 'URL invalide' })
+  .refine((url) => url.startsWith('https://hooks.slack.com/'), {
+    message: 'L\'URL doit être un webhook Slack valide (https://hooks.slack.com/...)',
+  });
