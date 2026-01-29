@@ -34,14 +34,14 @@ export function DisclaimerConsentDialog() {
   return (
     <Dialog open={shouldShowDisclaimer} onOpenChange={() => {}}>
       <DialogContent 
-        className="sm:max-w-lg max-h-[90vh] overflow-y-auto"
+        className="sm:max-w-lg max-h-[85vh] overflow-y-auto z-[50]"
         onPointerDownOutside={(e) => e.preventDefault()}
         onEscapeKeyDown={(e) => e.preventDefault()}
       >
         <DialogHeader className="text-center">
           <div className="flex justify-center mb-2">
-            <div className="p-3 rounded-full bg-amber-500/10">
-              <Scale className="w-8 h-8 text-amber-500" />
+            <div className="p-3 rounded-full bg-primary/10">
+              <Scale className="w-8 h-8 text-primary" />
             </div>
           </div>
           <DialogTitle className="text-lg sm:text-xl">
@@ -54,9 +54,9 @@ export function DisclaimerConsentDialog() {
 
         <div className="py-2 sm:py-4 space-y-3">
           {/* Anti-authority warning */}
-          <div className="p-3 rounded-lg bg-amber-500/10 border border-amber-500/30">
+          <div className="p-3 rounded-lg bg-destructive/10 border border-destructive/30">
             <p className="text-xs text-muted-foreground">
-              <strong className="text-amber-600">⚠️ {t('disclaimerConsent.important', 'Important')} :</strong> {t('disclaimerConsent.warning', "Aucun résultat affiché n'est un diagnostic, une recommandation, ni un avis professionnel. Cet outil ne remplace aucun conseil spécialisé.")}
+              <strong className="text-destructive">⚠️ {t('disclaimerConsent.important', 'Important')} :</strong> {t('disclaimerConsent.warning', "Aucun résultat affiché n'est un diagnostic, une recommandation, ni un avis professionnel. Cet outil ne remplace aucun conseil spécialisé.")}
             </p>
           </div>
 
@@ -73,7 +73,7 @@ export function DisclaimerConsentDialog() {
             </div>
 
             <div className="flex items-start gap-2 p-2 sm:p-3 rounded-lg bg-muted/50">
-              <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500 mt-0.5 shrink-0" />
+              <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 text-destructive mt-0.5 shrink-0" />
               <div>
                 <p className="text-xs sm:text-sm font-medium">{t('disclaimerConsent.noAdviceTitle', 'Pas de conseil professionnel')}</p>
                 <p className="text-[11px] sm:text-xs text-muted-foreground">
@@ -83,7 +83,7 @@ export function DisclaimerConsentDialog() {
             </div>
 
             <div className="flex items-start gap-2 p-2 sm:p-3 rounded-lg bg-muted/50">
-              <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 mt-0.5 shrink-0" />
+              <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-primary mt-0.5 shrink-0" />
               <div>
                 <p className="text-xs sm:text-sm font-medium">{t('disclaimerConsent.responsibleTitle', 'Tu restes responsable')}</p>
                 <p className="text-[11px] sm:text-xs text-muted-foreground">

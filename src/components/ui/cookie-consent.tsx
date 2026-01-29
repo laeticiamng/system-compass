@@ -102,11 +102,11 @@ export function CookieConsent() {
   return (
     <div
       className={cn(
-        "fixed bottom-0 left-0 right-0 z-[60] p-4",
+        "fixed bottom-0 left-0 right-0 z-[45] p-2 sm:p-4 pb-safe",
         "animate-in slide-in-from-bottom duration-500"
       )}
     >
-      <Card className="max-w-2xl mx-auto shadow-2xl border-border/50">
+      <Card className="max-w-2xl mx-auto shadow-2xl border-border/50 bg-card">
         <CardHeader className="pb-3">
           <div className="flex items-center justify-between">
             <CardTitle className="flex items-center gap-2 text-lg">
