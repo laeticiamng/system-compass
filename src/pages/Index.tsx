@@ -1,4 +1,4 @@
-import { useEffect, forwardRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useCountries } from '@/lib/countries-data';
@@ -6,522 +6,616 @@ import { Button } from '@/components/ui/button';
 import { CountryCard } from '@/components/CountryCard';
 import { useAuth } from '@/hooks/useAuth';
 import { useAnalytics } from '@/hooks/useAnalytics';
+import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { 
   ArrowRight, 
   Compass, 
-  Target, 
   Gamepad2, 
   Heart,
   CheckCircle,
   XCircle,
   Route,
-  Settings,
-  BarChart3,
   Key,
-  BookOpen,
   AlertTriangle,
   Shield,
-  Zap,
   Sparkles,
   Crown,
-  Check
+  Check,
+  Globe,
+  Eye,
+  Brain,
+  Unlock,
+  ChevronDown,
+  Play
 } from 'lucide-react';
 
 export default function Index() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { user } = useAuth();
-  const { trackHomeOpened, trackFilterClicked, trackExitKeysClicked, trackUniversalErrorsClicked } = useAnalytics();
+  const { trackHomeOpened, trackFilterClicked, trackExitKeysClicked } = useAnalytics();
   const { countries } = useCountries();
+  
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
+  
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
+  const heroY = useTransform(scrollYProgress, [0, 0.5], [0, 50]);
 
   useEffect(() => {
     trackHomeOpened();
   }, [trackHomeOpened]);
 
   return (
-    <div className="min-h-screen pt-12 sm:pt-14 md:pt-16">
-      {/* Hero Section - SINGLE CLEAR PATH */}
-      <section className="relative overflow-hidden">
-        {/* Enhanced background with multiple layers */}
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/8 via-primary/3 to-transparent" />
-        <div className="absolute inset-0 decoration-gradient" />
-        <div className="absolute top-10 left-1/4 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 decoration-glow animate-pulse-slow" />
-        <div className="absolute bottom-0 right-1/4 w-32 sm:w-48 md:w-64 h-32 sm:h-48 md:h-64 bg-pyramid-competence/15 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 right-10 w-24 sm:w-32 h-24 sm:h-32 bg-purple-500/10 rounded-full blur-2xl animate-float" />
-        
-        <div className="container mx-auto px-3 sm:px-4 py-8 sm:py-12 md:py-24 relative">
-          <div className="max-w-4xl mx-auto text-center">
-            {/* Creator badge */}
-            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-amber-500/10 text-amber-500 text-[10px] sm:text-xs md:text-sm font-medium mb-3 sm:mb-4">
-              <Heart className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" />
-              <span className="line-clamp-1">{t('hero.madeBy', "Créé par quelqu'un qui a perdu énormément de temps dans sa propre vie")}</span>
-            </div>
+    <div className="min-h-screen bg-background overflow-x-hidden">
+      {/* HERO SECTION - Apple-style fullscreen dramatic intro */}
+      <section ref={heroRef} className="relative min-h-[100vh] flex items-center justify-center overflow-hidden">
+        {/* Animated gradient background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background" />
+          <motion.div 
+            className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full"
+            style={{
+              background: 'radial-gradient(circle, hsl(var(--primary) / 0.15) 0%, transparent 70%)',
+            }}
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.5, 0.3],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div 
+            className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full"
+            style={{
+              background: 'radial-gradient(circle, hsl(280 70% 55% / 0.1) 0%, transparent 70%)',
+            }}
+            animate={{
+              scale: [1.2, 1, 1.2],
+              opacity: [0.2, 0.4, 0.2],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        </div>
 
-            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-primary/10 text-primary text-[10px] sm:text-xs md:text-sm font-medium mb-4 sm:mb-6 md:mb-8">
-              <Compass className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" />
-              <span className="truncate">{t('hero.badge')}</span>
-            </div>
-            
-            <h1 className="font-display text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight px-2">
-              {t('hero.title1')}{' '}
-              <span className="gold-text">{t('hero.titleHighlight')}</span>
-              {t('hero.title2') && (
-                <>
-                  <br className="hidden sm:block" />
-                  <span className="sm:hidden"> </span>
-                  {t('hero.title2')}
-                </>
-              )}
-            </h1>
+        <motion.div 
+          className="relative z-10 container mx-auto px-4 text-center"
+          style={{ opacity: heroOpacity, scale: heroScale, y: heroY }}
+        >
+          {/* Micro-badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8"
+          >
+            <Heart className="w-4 h-4 text-primary" />
+            <span className="text-sm text-primary font-medium">{t('hero.madeBy', "Créé par quelqu'un qui a perdu énormément de temps")}</span>
+          </motion.div>
 
-            {/* Positioning tagline */}
-            <p className="text-xs sm:text-sm md:text-base font-medium text-primary/80 mb-2 sm:mb-3 px-4">
-              {t('common.positioningLine', 'Outil d\'analyse et de simulation. Tu décides, nous éclairons.')}
-            </p>
-            
-            <p className="text-sm sm:text-base md:text-xl text-muted-foreground max-w-3xl mx-auto mb-4 sm:mb-6 md:mb-8 text-balance px-4">
-              {t('hero.subtitle')}
-            </p>
+          {/* Main headline - MASSIVE and impactful */}
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tight mb-6"
+          >
+            <span className="block text-foreground">{t('hero.appleTitle1', 'Comprends le système.')}</span>
+            <span className="block bg-gradient-to-r from-primary via-amber-400 to-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-[gradient_3s_ease-in-out_infinite]">
+              {t('hero.appleTitle2', 'Avant de t\'engager.')}
+            </span>
+          </motion.h1>
 
-            {/* SINGLE DOMINANT CTA */}
-            <div className="max-w-md mx-auto px-3 sm:px-4 mb-3 sm:mb-4">
-              <Button
-                size="lg"
-                onClick={() => { trackExitKeysClicked(); navigate('/exit-keys'); }}
-                className="w-full h-12 sm:h-14 md:h-16 text-sm sm:text-base md:text-lg btn-premium text-primary-foreground gap-2 sm:gap-3 touch-manipulation transition-all duration-300 hover:scale-[1.02]"
-              >
-                <Route className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
-                <span className="truncate">{t('hero.discoverProfile')}</span>
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
-              </Button>
-            </div>
+          {/* Subheadline */}
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed"
+          >
+            {t('hero.appleSubtitle', "L'outil qui analyse les règles réelles des pays et simule les conséquences de tes décisions. Pas de promesses. Pas de conseils. Juste la réalité.")}
+          </motion.p>
 
-            {/* PREVENTION FILTER CTA - Prominent secondary */}
-            <div className="max-w-md mx-auto px-3 sm:px-4 mb-3 sm:mb-4">
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={() => { trackFilterClicked(); navigate('/prevention-filter'); }}
-                className="w-full h-10 sm:h-12 text-sm sm:text-base gap-2 border-amber-500/30 bg-amber-500/10 text-amber-600 hover:bg-amber-500/20 hover:text-amber-700 touch-manipulation"
-              >
-                <Shield className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
-                <span className="truncate">{t('hero.preventionFilter', 'Passer une décision au filtre')}</span>
-                <ArrowRight className="w-4 h-4 flex-shrink-0" />
-              </Button>
-            </div>
+          {/* CTA Buttons */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.8 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
+          >
+            <Button
+              size="lg"
+              onClick={() => { trackExitKeysClicked(); navigate('/exit-keys'); }}
+              className="h-14 px-8 text-lg bg-primary text-primary-foreground hover:bg-primary/90 rounded-full gap-3 group transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_hsl(var(--primary)/0.4)]"
+            >
+              <Route className="w-5 h-5" />
+              {t('hero.startAnalysis', 'Analyser ma situation')}
+              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={() => navigate('/quick-test')}
+              className="h-14 px-8 text-lg rounded-full gap-3 border-border/50 hover:bg-muted/50 group"
+            >
+              <Play className="w-5 h-5" />
+              {t('hero.quickTest', 'Test rapide (60s)')}
+            </Button>
+          </motion.div>
 
-            {/* QUICK TEST CTA */}
-            <div className="max-w-md mx-auto px-3 sm:px-4 mb-6 sm:mb-8">
-              <Button
-                variant="ghost"
-                size="lg"
-                onClick={() => navigate('/quick-test')}
-                className="w-full h-9 sm:h-10 text-xs sm:text-sm gap-2 text-primary hover:bg-primary/10 touch-manipulation"
-              >
-                <Zap className="w-3 h-3 sm:w-4 sm:h-4" />
-                {t('hero.quickTest', 'Test rapide (60 sec)')}
-                <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
-              </Button>
-            </div>
+          {/* Scroll indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2, duration: 0.8 }}
+            className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          >
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <ChevronDown className="w-8 h-8 text-muted-foreground/50" />
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      </section>
 
-            {/* 3 STEP MINI EXPLANATION - Factual */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-3xl mx-auto px-3 sm:px-4 mb-4 sm:mb-6">
-              <StepIndicator 
-                number={1}
-                icon={<Settings className="w-3 h-3 sm:w-4 sm:h-4" />}
-                title={t('steps.profile', 'Ton profil')}
-                description={t('steps.profileDesc', 'Situation, nationalité, ressources')}
-              />
-              <StepIndicator 
-                number={2}
-                icon={<BarChart3 className="w-3 h-3 sm:w-4 sm:h-4" />}
-                title={t('steps.analysis', 'Analyse')}
-                description={t('steps.analysisDesc', 'Systèmes, contraintes, options')}
-              />
-              <StepIndicator 
-                number={3}
-                icon={<Key className="w-3 h-3 sm:w-4 sm:h-4" />}
-                title={t('steps.consequences', 'Conséquences')}
-                description={t('steps.consequencesDesc', 'Risques, coûts, conditions')}
-              />
-            </div>
-
-            {/* RESPONSIBILITY STATEMENT - Clear and prominent */}
-            <div className="max-w-xl mx-auto px-3 sm:px-4 mb-4 sm:mb-6">
-              <p className="text-xs sm:text-sm text-center text-muted-foreground bg-muted/30 rounded-lg px-3 sm:px-4 py-2 border border-border/30">
-                <strong className="text-foreground">{t('responsibility.title', 'Tu restes responsable de tes décisions.')}</strong>{' '}
-                <span className="hidden sm:inline">{t('responsibility.description', "Cet outil t'aide à comprendre le système — pas à décider à ta place.")}</span>
+      {/* VALUE PROPOSITION - Big bold statements */}
+      <section className="py-32 md:py-48 relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <AnimatedSection>
+            <div className="max-w-5xl mx-auto">
+              <h2 className="font-display text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-center leading-tight mb-8">
+                {t('value.title1', 'Chaque décision de vie majeure')}
+                <br />
+                <span className="text-muted-foreground">{t('value.title2', 'mérite une analyse de système.')}</span>
+              </h2>
+              <p className="text-center text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+                {t('value.description', "Tu ne joues pas contre les gens. Tu joues contre les règles du système. Et ces règles, personne ne te les explique.")}
               </p>
             </div>
-
-            {/* For everyone badge */}
-            <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2 mb-4 sm:mb-6 px-3 sm:px-4">
-              <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full bg-muted text-[10px] sm:text-xs">🥖 {t('profiles.baker', 'Boulanger')}</span>
-              <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full bg-muted text-[10px] sm:text-xs">🏭 {t('profiles.worker', 'Ouvrier')}</span>
-              <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full bg-muted text-[10px] sm:text-xs">🎓 {t('profiles.student', 'Étudiant')}</span>
-              <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full bg-muted text-[10px] sm:text-xs">🌴 {t('profiles.retiree', 'Retraité')}</span>
-              <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full bg-muted text-[10px] sm:text-xs">🚀 {t('profiles.entrepreneur', 'Entrepreneur')}</span>
-              <span className="hidden sm:inline px-2 py-1 rounded-full bg-muted text-xs">👨‍👩‍👧 {t('profiles.diaspora', 'Parent diaspora')}</span>
-            </div>
-
-            {/* Secondary CTAs */}
-            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-2 sm:gap-3 px-3 sm:px-4">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => navigate('/exit-keys/catalog')}
-                className="text-muted-foreground hover:text-foreground gap-2 text-xs sm:text-sm h-9 touch-manipulation"
-              >
-                <BookOpen className="w-3 h-3 sm:w-4 sm:h-4" />
-                {t('cta.viewAllKeys', 'Voir toutes les clés de sortie')}
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => navigate('/life-game')}
-                className="text-muted-foreground hover:text-foreground gap-2 text-xs sm:text-sm h-9 touch-manipulation"
-              >
-                <Gamepad2 className="w-3 h-3 sm:w-4 sm:h-4" />
-                {t('cta.educationalMode', 'Mode éducatif (personnage fictif)')}
-              </Button>
-            </div>
-
-            {/* Micro-disclaimer */}
-            <p className="text-[10px] sm:text-xs text-muted-foreground/70 mt-4 sm:mt-6 max-w-lg mx-auto px-4">
-              {t('common.disclaimer', 'Pas de conseil juridique, financier ou médical. Tu restes responsable de tes décisions.')}
-            </p>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
-      {/* Guest Mode Banner - Non-aggressive, informative */}
-      {!user && (
-        <section className="py-6 border-t border-border/50">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto p-4 md:p-5 rounded-xl bg-muted/30 border border-border/30 text-center">
-              <p className="text-sm text-muted-foreground mb-2">
-                🔓 <strong>{t('guestMode.title', 'Mode observation')}</strong> — {t('guestMode.subtitle', 'Explorez librement sans compte')}
-              </p>
-              <p className="text-xs text-muted-foreground/80">
-                {t('guestMode.description', 'Toutes les simulations fonctionnent sans inscription.')}{' '}
-                <Link to="/auth" className="text-primary hover:underline ml-1">
-                  {t('guestMode.createAccount', 'Créez un compte')}
-                </Link> {t('guestMode.toSync', 'uniquement pour sauvegarder et synchroniser.')}
-              </p>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* What this tool does NOT do */}
-      <section className="py-10 md:py-14 border-t border-border/50 bg-destructive/5">
+      {/* FEATURES GRID - Minimalist cards */}
+      <section className="py-24 md:py-32 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-2 rounded-lg bg-destructive/10">
-                <XCircle className="w-5 h-5 text-destructive" />
-              </div>
-              <h2 className="font-display text-xl md:text-2xl font-bold">
-                {t('notDoes.title', 'Ce que cet outil ne fait PAS')}
+          <AnimatedSection>
+            <div className="text-center mb-16 md:mb-24">
+              <p className="text-primary font-medium mb-4 tracking-wider uppercase text-sm">
+                {t('features.badge', 'Comment ça marche')}
+              </p>
+              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold">
+                {t('features.title', "Trois dimensions d'analyse")}
               </h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <NotDoItem text={t('notDoes.noGuaranteedResults', 'Ne promet aucun résultat personnel garanti')} />
-              <NotDoItem text={t('notDoes.noLegalAdvice', 'Ne donne pas de conseils juridiques, financiers ou médicaux')} />
-              <NotDoItem text={t('notDoes.noPredictions', "Ne prédit pas l'avenir ni ta réussite")} />
-              <NotDoItem text={t('notDoes.noReplacement', 'Ne remplace pas un avocat, comptable ou médecin')} />
-              <NotDoItem text={t('notDoes.noAccuracyGuarantee', "Ne garantit pas l'exactitude des données affichées")} />
-              <NotDoItem text={t('notDoes.noDecisions', 'Ne prend pas les décisions à ta place')} />
+          </AnimatedSection>
+
+          <div className="grid md:grid-cols-3 gap-8 md:gap-12 max-w-6xl mx-auto">
+            <FeatureCardApple
+              icon={<Eye className="w-8 h-8" />}
+              number="01"
+              title={t('features.understand.title', 'Comprendre le système')}
+              description={t('features.understand.desc', 'Chaque pays fonctionne selon sa propre logique. Nous analysons les règles réelles, pas les apparences.')}
+            />
+            <FeatureCardApple
+              icon={<Brain className="w-8 h-8" />}
+              number="02"
+              title={t('features.simulate.title', 'Simuler les conséquences')}
+              description={t('features.simulate.desc', 'Avant de t\'engager, visualise les impacts sur ton temps, ton argent et ton énergie.')}
+            />
+            <FeatureCardApple
+              icon={<Key className="w-8 h-8" />}
+              number="03"
+              title={t('features.keys.title', 'Identifier les clés de sortie')}
+              description={t('features.keys.desc', 'Chaque situation a des portes de sortie. Nous les cartographions pour toi.')}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* BIG STATEMENT SECTION */}
+      <section className="py-32 md:py-48 relative">
+        <div className="container mx-auto px-4">
+          <AnimatedSection>
+            <div className="max-w-4xl mx-auto text-center">
+              <p className="text-primary font-medium mb-6 tracking-wider uppercase text-sm">
+                {t('statement.badge', 'La vérité')}
+              </p>
+              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8">
+                {t('statement.title', "99% des gens découvrent les règles du jeu")}
+                <br />
+                <span className="text-destructive">{t('statement.titleHighlight', "quand il est trop tard.")}</span>
+              </h2>
+              <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
+                {t('statement.description', "Expatriation, changement de carrière, investissement, retraite... Les vraies contraintes ne sont jamais dans les brochures.")}
+              </p>
+              <Button
+                size="lg"
+                variant="outline"
+                onClick={() => navigate('/errors-illusions')}
+                className="h-14 px-8 text-lg rounded-full gap-3 border-destructive/30 text-destructive hover:bg-destructive/10"
+              >
+                <AlertTriangle className="w-5 h-5" />
+                {t('statement.cta', 'Voir les erreurs courantes')}
+              </Button>
             </div>
-            <p className="text-sm text-muted-foreground mt-4 text-center">
-              {t('notDoes.footer', 'Cet outil analyse les systèmes et simule les conséquences. La responsabilité des décisions reste la tienne.')}
-            </p>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
-      {/* How It Works - Value Props */}
-      <section className="py-16 md:py-24 border-t border-border/50 section-gradient">
+      {/* WHAT WE DON'T DO - Clean and honest */}
+      <section className="py-24 md:py-32 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-10 md:mb-16">
-            <h2 className="font-display text-2xl md:text-3xl font-bold mb-3 md:mb-4">{t('howItWorks.title')}</h2>
-            <p className="text-muted-foreground max-w-xl mx-auto text-sm md:text-base">
-              {t('howItWorks.subtitle')}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
-            <FeatureCard
-              icon={<Target className="w-5 h-5 md:w-6 md:h-6" />}
-              title={t('howItWorks.understand.title')}
-              description={t('howItWorks.understand.description')}
-            />
-            <FeatureCard
-              icon={<BarChart3 className="w-5 h-5 md:w-6 md:h-6" />}
-              title={t('howItWorks.profile.title')}
-              description={t('howItWorks.profile.description')}
-            />
-            <FeatureCard
-              icon={<CheckCircle className="w-5 h-5 md:w-6 md:h-6" />}
-              title={t('howItWorks.playbook.title')}
-              description={t('howItWorks.playbook.description')}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Errors & Illusions Teaser - Combined Section */}
-      <section className="py-12 md:py-16 border-t border-border/50 bg-gradient-to-r from-primary/5 via-destructive/5 to-amber-500/5">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8 mb-6">
-              <div className="flex gap-3">
-                <div className="p-3 rounded-xl bg-primary/10">
-                  <BookOpen className="w-6 h-6 text-primary" />
+          <AnimatedSection>
+            <div className="max-w-4xl mx-auto">
+              <div className="grid md:grid-cols-2 gap-12 md:gap-16">
+                <div>
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-destructive/10 mb-6">
+                    <XCircle className="w-8 h-8 text-destructive" />
+                  </div>
+                  <h3 className="font-display text-2xl md:text-3xl font-bold mb-6">
+                    {t('notDo.title', 'Ce qu\'on ne fait PAS')}
+                  </h3>
+                  <ul className="space-y-4">
+                    <NotDoItemApple text={t('notDo.1', 'Promettre des résultats garantis')} />
+                    <NotDoItemApple text={t('notDo.2', 'Donner des conseils juridiques ou financiers')} />
+                    <NotDoItemApple text={t('notDo.3', 'Prédire ton avenir')} />
+                    <NotDoItemApple text={t('notDo.4', 'Décider à ta place')} />
+                  </ul>
                 </div>
-                <div className="p-3 rounded-xl bg-destructive/10">
-                  <AlertTriangle className="w-6 h-6 text-destructive" />
+                <div>
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-green-500/10 mb-6">
+                    <CheckCircle className="w-8 h-8 text-green-500" />
+                  </div>
+                  <h3 className="font-display text-2xl md:text-3xl font-bold mb-6">
+                    {t('do.title', 'Ce qu\'on fait')}
+                  </h3>
+                  <ul className="space-y-4">
+                    <DoItemApple text={t('do.1', 'Analyser les règles réelles des systèmes')} />
+                    <DoItemApple text={t('do.2', 'Simuler les conséquences de tes choix')} />
+                    <DoItemApple text={t('do.3', 'Cartographier les options disponibles')} />
+                    <DoItemApple text={t('do.4', 'Te montrer ce que personne ne dit')} />
+                  </ul>
                 </div>
               </div>
-              <div className="flex-1 text-center md:text-left">
-                <h2 className="font-display text-xl md:text-2xl font-bold mb-2">
-                  {t('errorsIllusions.title', 'Erreurs & Illusions')}
-                </h2>
-                <p className="text-muted-foreground text-sm md:text-base">
-                  {t('errorsIllusions.homeTeaser', 'Erreurs cognitives et systémiques qui coûtent du temps, de l\'argent et de l\'énergie — factuelles, non moralisatrices.')}
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* TOOLS SHOWCASE */}
+      <section className="py-24 md:py-32">
+        <div className="container mx-auto px-4">
+          <AnimatedSection>
+            <div className="text-center mb-16 md:mb-24">
+              <p className="text-primary font-medium mb-4 tracking-wider uppercase text-sm">
+                {t('tools.badge', 'Boîte à outils')}
+              </p>
+              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+                {t('tools.title', 'Tout ce dont tu as besoin')}
+              </h2>
+              <p className="text-muted-foreground text-lg max-w-xl mx-auto">
+                {t('tools.subtitle', 'Des outils puissants pour analyser, simuler et décider.')}
+              </p>
+            </div>
+          </AnimatedSection>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            <ToolCard
+              icon={<Route className="w-6 h-6" />}
+              title={t('tools.exitKeys', 'Clés de Sortie')}
+              description={t('tools.exitKeysDesc', 'Analyse ta situation et trouve tes options')}
+              onClick={() => { trackExitKeysClicked(); navigate('/exit-keys'); }}
+              primary
+            />
+            <ToolCard
+              icon={<Shield className="w-6 h-6" />}
+              title={t('tools.filter', 'Filtre Décision')}
+              description={t('tools.filterDesc', 'Passe une décision au crible')}
+              onClick={() => { trackFilterClicked(); navigate('/prevention-filter'); }}
+            />
+            <ToolCard
+              icon={<Globe className="w-6 h-6" />}
+              title={t('tools.countries', 'Explorer les pays')}
+              description={t('tools.countriesDesc', '38 pays analysés en profondeur')}
+              onClick={() => navigate('/countries')}
+            />
+            <ToolCard
+              icon={<Gamepad2 className="w-6 h-6" />}
+              title={t('tools.game', 'Mode Éducatif')}
+              description={t('tools.gameDesc', 'Apprends avec un personnage fictif')}
+              onClick={() => navigate('/life-game')}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* COUNTRIES PREVIEW */}
+      <section className="py-24 md:py-32 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <AnimatedSection>
+            <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 md:mb-16 gap-6">
+              <div>
+                <p className="text-primary font-medium mb-4 tracking-wider uppercase text-sm">
+                  {t('countries.badge', 'Explorer')}
                 </p>
+                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold">
+                  {t('countries.title', '38 pays analysés')}
+                </h2>
               </div>
               <Button
                 variant="outline"
-                onClick={() => { trackUniversalErrorsClicked(); navigate('/errors-illusions'); }}
-                className="gap-2 border-primary/30 text-primary hover:bg-primary/10"
+                size="lg"
+                onClick={() => navigate('/countries')}
+                className="rounded-full gap-2"
               >
-                {t('errorsIllusions.explore', 'Explorer les erreurs')}
+                {t('countries.viewAll', 'Voir tous les pays')}
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="glass-card rounded-lg p-4 border-primary/20">
-                <h3 className="font-semibold text-sm mb-1 flex items-center gap-2">
-                  <BookOpen className="w-4 h-4 text-primary" />
-                  {t('errorsIllusions.tabs.cognitive', 'Erreurs cognitives')}
-                </h3>
-                <p className="text-xs text-muted-foreground">
-                  {t('errorsIllusions.cognitiveShort', '10 patterns de décision coûteux à reconnaître')}
-                </p>
-              </div>
-              <div className="glass-card rounded-lg p-4 border-destructive/20">
-                <h3 className="font-semibold text-sm mb-1 flex items-center gap-2">
-                  <AlertTriangle className="w-4 h-4 text-destructive" />
-                  {t('errorsIllusions.tabs.systemic', 'Erreurs systémiques')}
-                </h3>
-                <p className="text-xs text-muted-foreground">
-                  {t('errorsIllusions.systemicShort', 'Décalages entre attentes et règles des systèmes')}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+          </AnimatedSection>
 
-      {/* Featured Countries - Secondary Exploration */}
-      <section className="py-16 md:py-24 border-t border-border/50">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 md:mb-12 gap-4">
-            <div>
-              <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2">Explorer</p>
-              <h2 className="font-display text-2xl md:text-3xl font-bold mb-2">{t('featured.title')}</h2>
-              <p className="text-muted-foreground text-sm md:text-base">
-                {t('featured.subtitle')}
-              </p>
-            </div>
-            <Button
-              variant="outline"
-              onClick={() => navigate('/countries')}
-              className="gap-2 w-full sm:w-auto"
-            >
-              {t('featured.viewAll')}
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            {countries.slice(0, 4).map((country) => (
-              <CountryCard key={country.id} country={country} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {countries.slice(0, 4).map((country, index) => (
+              <motion.div
+                key={country.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+              >
+                <CountryCard country={country} />
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Premium Plans Section */}
-      <section className="py-16 md:py-24 border-t border-border/50 bg-gradient-to-b from-purple-500/5 via-amber-500/5 to-transparent">
+      {/* PRICING TEASER */}
+      <section className="py-24 md:py-32">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-10 md:mb-12">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 text-amber-600 text-xs md:text-sm font-medium mb-4">
-              <Sparkles className="w-4 h-4" />
-              {t('pricing.unlock', 'Débloquez plus de fonctionnalités')}
-            </div>
-            <h2 className="font-display text-2xl md:text-3xl font-bold mb-3">
-              {t('pricing.homepageTitle', 'Allez plus loin dans votre analyse')}
-            </h2>
-            <p className="text-muted-foreground max-w-xl mx-auto text-sm md:text-base">
-              {t('pricing.homepageSubtitle', 'Accédez à des analyses de pays plus détaillées et des recommandations personnalisées')}
-            </p>
-          </div>
+          <AnimatedSection>
+            <div className="max-w-4xl mx-auto text-center">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 mb-8">
+                <Sparkles className="w-4 h-4 text-amber-500" />
+                <span className="text-sm text-amber-500 font-medium">{t('pricing.badge', 'Gratuit pour commencer')}</span>
+              </div>
+              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
+                {t('pricing.title', 'Commence gratuitement.')}
+                <br />
+                <span className="text-muted-foreground">{t('pricing.subtitle', 'Évolue selon tes besoins.')}</span>
+              </h2>
+              <p className="text-lg text-muted-foreground mb-12 max-w-xl mx-auto">
+                {t('pricing.description', 'Accède aux analyses de base gratuitement. Débloques les fonctionnalités avancées quand tu en as besoin.')}
+              </p>
 
-          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-8">
-            {/* Premium Card */}
-            <div className="glass-card rounded-xl p-6 border-amber-500/30 hover:border-amber-500/50 transition-colors">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-amber-500/10">
-                  <Sparkles className="w-5 h-5 text-amber-500" />
+              <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-12">
+                <div className="p-6 rounded-2xl bg-muted/50 border border-border/50 text-left">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Unlock className="w-6 h-6 text-primary" />
+                    <span className="font-semibold text-lg">{t('pricing.free', 'Gratuit')}</span>
+                  </div>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-green-500" />
+                      {t('pricing.freeFeature1', 'Analyse de base')}
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-green-500" />
+                      {t('pricing.freeFeature2', 'Tous les simulateurs')}
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-green-500" />
+                      {t('pricing.freeFeature3', '38 pays')}
+                    </li>
+                  </ul>
                 </div>
-                <div>
-                  <h3 className="font-semibold">Premium</h3>
-                  <p className="text-sm text-muted-foreground">7,99€ {t('pricing.perMonth', '/ mois')}</p>
+                <div className="p-6 rounded-2xl bg-gradient-to-br from-primary/10 to-amber-500/10 border border-primary/20 text-left">
+                  <div className="flex items-center gap-3 mb-4">
+                    <Crown className="w-6 h-6 text-primary" />
+                    <span className="font-semibold text-lg">{t('pricing.pro', 'Pro')}</span>
+                    <span className="text-sm text-muted-foreground">{t('pricing.from', 'dès')} 7,99€</span>
+                  </div>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-green-500" />
+                      {t('pricing.proFeature1', 'Analyses approfondies')}
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-green-500" />
+                      {t('pricing.proFeature2', 'Clés de sortie personnalisées')}
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-green-500" />
+                      {t('pricing.proFeature3', 'Export PDF')}
+                    </li>
+                  </ul>
                 </div>
               </div>
-              <ul className="space-y-2 mb-6">
-                <li className="flex items-center gap-2 text-sm">
-                  <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
-                  {t('pricing.premiumFeature1', 'Variantes pays spécifiques')}
-                </li>
-                <li className="flex items-center gap-2 text-sm">
-                  <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
-                  {t('pricing.premiumFeature2', 'Profils qui réussissent/souffrent')}
-                </li>
-                <li className="flex items-center gap-2 text-sm">
-                  <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
-                  {t('pricing.premiumFeature3', 'Ce qui surprend les nouveaux')}
-                </li>
-              </ul>
-            </div>
 
-            {/* Pro Card */}
-            <div className="glass-card rounded-xl p-6 border-purple-500/30 hover:border-purple-500/50 transition-colors relative">
-              <div className="absolute -top-3 right-4">
-                <span className="px-2 py-1 rounded-full bg-purple-500 text-white text-xs font-medium">
-                  {t('pricing.recommended', 'Recommandé')}
+              <Button
+                size="lg"
+                onClick={() => navigate('/pricing')}
+                className="h-14 px-8 text-lg rounded-full gap-3"
+              >
+                <Sparkles className="w-5 h-5" />
+                {t('pricing.cta', 'Voir les plans')}
+              </Button>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* FINAL CTA - Dramatic */}
+      <section className="py-32 md:py-48 relative overflow-hidden">
+        {/* Background glow */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary/10 blur-3xl" />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <AnimatedSection>
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8">
+                {t('cta.title', 'Prêt à comprendre')}
+                <br />
+                <span className="bg-gradient-to-r from-primary via-amber-400 to-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-[gradient_3s_ease-in-out_infinite]">
+                  {t('cta.titleHighlight', 'les vraies règles ?')}
                 </span>
-              </div>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-purple-500/10">
-                  <Crown className="w-5 h-5 text-purple-500" />
-                </div>
-                <div>
-                  <h3 className="font-semibold">Pro</h3>
-                  <p className="text-sm text-muted-foreground">19,99€ {t('pricing.perMonth', '/ mois')}</p>
-                </div>
-              </div>
-              <ul className="space-y-2 mb-6">
-                <li className="flex items-center gap-2 text-sm">
-                  <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
-                  {t('pricing.proFeature1', 'Tout le contenu Premium')}
-                </li>
-                <li className="flex items-center gap-2 text-sm">
-                  <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
-                  {t('pricing.proFeature2', 'Analyse projet personnalisée')}
-                </li>
-                <li className="flex items-center gap-2 text-sm">
-                  <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
-                  {t('pricing.proFeature3', 'Clés de sortie personnalisées')}
-                </li>
-              </ul>
+              </h2>
+              <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-xl mx-auto">
+                {t('cta.description', "Cet outil ne promet rien. Il analyse et simule. À toi de décider.")}
+              </p>
+              <Button
+                size="lg"
+                onClick={() => navigate('/exit-keys')}
+                className="h-16 px-12 text-xl bg-primary text-primary-foreground hover:bg-primary/90 rounded-full gap-3 group transition-all duration-300 hover:scale-105 hover:shadow-[0_0_60px_hsl(var(--primary)/0.5)]"
+              >
+                <Compass className="w-6 h-6" />
+                {t('cta.button', 'Commencer l\'analyse')}
+                <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
+              </Button>
+
+              <p className="text-sm text-muted-foreground/60 mt-8">
+                {t('cta.disclaimer', 'Outil d\'analyse uniquement. Tu restes responsable de tes décisions.')}
+              </p>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Guest banner */}
+      {!user && (
+        <section className="py-8 border-t border-border/50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto p-6 rounded-2xl bg-muted/30 border border-border/30 text-center">
+              <p className="text-sm text-muted-foreground">
+                🔓 <strong>{t('guest.title', 'Mode observation')}</strong> — {t('guest.subtitle', 'Explore librement sans compte.')}{' '}
+                <Link to="/auth" className="text-primary hover:underline">
+                  {t('guest.cta', 'Créer un compte')}
+                </Link> {t('guest.suffix', 'pour sauvegarder.')}
+              </p>
             </div>
           </div>
-
-          <div className="text-center">
-            <Button
-              onClick={() => navigate('/pricing')}
-              className="gap-2"
-            >
-              <Sparkles className="w-4 h-4" />
-              {t('pricing.viewPlans', 'Voir tous les plans')}
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="py-16 md:py-24 border-t border-border/50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center glass-card rounded-2xl p-8 md:p-12 glow-gold">
-            <h2 className="font-display text-2xl md:text-3xl font-bold mb-3 md:mb-4">
-              {t('finalCta.title', 'Prêt à éviter des erreurs coûteuses ?')}
-            </h2>
-            <p className="text-muted-foreground mb-6 md:mb-8 text-sm md:text-base">
-              {t('finalCta.description', "Cet outil ne promet rien. Il analyse les systèmes et simule les conséquences pour que tu comprennes les règles réelles avant de t'engager.")}
-            </p>
-            <Button
-              size="lg"
-              onClick={() => navigate('/exit-keys')}
-              className="bg-primary text-primary-foreground hover:bg-primary/90 gap-2 w-full sm:w-auto"
-            >
-              <Route className="w-5 h-5" />
-              {t('finalCta.button', 'Analyser ma situation')}
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-
-            {/* Final disclaimer */}
-            <p className="text-xs text-muted-foreground/60 mt-6">
-              {t('finalCta.disclaimer', 'Outil d\'analyse uniquement. Tu restes responsable de tes décisions.')}
-            </p>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
     </div>
   );
 }
 
-function StepIndicator({
-  number,
+// Animated section wrapper
+function AnimatedSection({ children }: { children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+// Apple-style feature card
+function FeatureCardApple({ 
+  icon, 
+  number, 
+  title, 
+  description 
+}: { 
+  icon: React.ReactNode; 
+  number: string; 
+  title: string; 
+  description: string; 
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+      transition={{ duration: 0.6 }}
+      className="group"
+    >
+      <div className="text-primary/30 font-mono text-sm mb-4">{number}</div>
+      <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 text-primary mb-6 group-hover:scale-110 transition-transform duration-300">
+        {icon}
+      </div>
+      <h3 className="font-display text-xl md:text-2xl font-semibold mb-3">{title}</h3>
+      <p className="text-muted-foreground">{description}</p>
+    </motion.div>
+  );
+}
+
+// Tool card
+function ToolCard({
   icon,
   title,
   description,
+  onClick,
+  primary = false
 }: {
-  number: number;
   icon: React.ReactNode;
   title: string;
   description: string;
+  onClick: () => void;
+  primary?: boolean;
 }) {
   return (
-    <div className="flex items-center gap-3 text-left">
-      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm">
-        {number}
+    <motion.button
+      onClick={onClick}
+      whileHover={{ y: -5 }}
+      className={`w-full text-left p-6 rounded-2xl border transition-all duration-300 group ${
+        primary 
+          ? 'bg-primary/10 border-primary/30 hover:border-primary/50 hover:shadow-[0_0_30px_hsl(var(--primary)/0.2)]' 
+          : 'bg-muted/50 border-border/50 hover:border-border hover:bg-muted'
+      }`}
+    >
+      <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 ${
+        primary ? 'bg-primary text-primary-foreground' : 'bg-muted-foreground/10 text-foreground'
+      }`}>
+        {icon}
       </div>
-      <div className="flex-1 min-w-0">
-        <div className="flex items-center gap-1.5 text-sm font-medium">
-          {icon}
-          <span>{title}</span>
-        </div>
-        <p className="text-xs text-muted-foreground truncate">{description}</p>
-      </div>
+      <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">{title}</h3>
+      <p className="text-sm text-muted-foreground">{description}</p>
+    </motion.button>
+  );
+}
+
+// Not do item
+function NotDoItemApple({ text }: { text: string }) {
+  return (
+    <div className="flex items-start gap-3 text-muted-foreground">
+      <XCircle className="w-5 h-5 text-destructive flex-shrink-0 mt-0.5" />
+      <span>{text}</span>
     </div>
   );
 }
 
-const FeatureCard = forwardRef<HTMLDivElement, {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-}>(function FeatureCard({ icon, title, description }, ref) {
+// Do item
+function DoItemApple({ text }: { text: string }) {
   return (
-    <div ref={ref} className="glass-card rounded-xl p-5 md:p-6 text-center">
-      <div className="inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-lg bg-primary/10 text-primary mb-3 md:mb-4">
-        {icon}
-      </div>
-      <h3 className="font-display font-semibold text-base md:text-lg mb-2">{title}</h3>
-      <p className="text-xs md:text-sm text-muted-foreground">{description}</p>
-    </div>
-  );
-});
-
-function NotDoItem({ text }: { text: string }) {
-  return (
-    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-      <XCircle className="w-4 h-4 text-destructive flex-shrink-0" />
+    <div className="flex items-start gap-3">
+      <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
       <span>{text}</span>
     </div>
   );
