@@ -68,6 +68,9 @@ import {
   LazyUniversalErrorDetail,
   LazyHowToRead,
   LazyDiagnostics,
+  LazyFiscalCalculator,
+  LazyPersonaJourneys,
+  LazyGamificationHub,
 } from "@/routes/LazyRoutes";
 
 const queryClient = new QueryClient({
@@ -152,6 +155,11 @@ const App = () => (
                       <Route path="/prevention-filter" element={<LazyPreventionFilter />} />
                       <Route path="/universal-errors/:id" element={<LazyUniversalErrorDetail />} />
                       <Route path="/how-to-read" element={<LazyHowToRead />} />
+                      
+                      {/* New modules */}
+                      <Route path="/fiscal-calculator" element={<LazyFiscalCalculator />} />
+                      <Route path="/personas" element={<LazyPersonaJourneys />} />
+                      <Route path="/gamification" element={<LazyGamificationHub />} />
 
                       {/* Lazy routes - Admin */}
                       <Route path="/admin/translations" element={<RequireAdmin><LazyAdminTranslations /></RequireAdmin>} />

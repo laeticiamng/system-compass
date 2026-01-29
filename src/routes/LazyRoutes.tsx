@@ -94,5 +94,10 @@ export const LazyAbout = withSuspense(lazy(() => import('@/pages/About')));
 export const LazyDisclaimer = withSuspense(lazy(() => import('@/pages/Disclaimer')));
 export const LazySubscriptionSuccess = withSuspense(lazy(() => import('@/pages/SubscriptionSuccess')));
 
+// New modules
+export const LazyFiscalCalculator = withSuspense(lazy(() => import('@/pages/FiscalCalculator')));
+export const LazyPersonaJourneys = withSuspense(lazy(() => import('@/pages/PersonaJourneys')));
+export const LazyGamificationHub = withSuspense(lazy(() => import('@/pages/GamificationHub')));
+
 // Dev/Admin pages
 export const LazyDiagnostics = withSuspense(lazy(() => import('@/pages/Diagnostics')));
