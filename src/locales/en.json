@@ -709,7 +709,14 @@
     "notifications": "Notifications",
     "exitKeysCatalog": "Exit Keys Catalog",
     "exitKeysCompare": "Compare Destinations",
-    "terrainRealities": "Terrain Realities"
+    "terrainRealities": "Terrain Realities",
+    "fiscalCalculator": "Fiscal Calculator",
+    "personas": "Persona Journeys",
+    "gamification": "Progression",
+    "experts": "Expert Marketplace",
+    "partnerServices": "Partner Services",
+    "community": "Community",
+    "language": "Language"
   },
   "tests": {
     "resultSaved": "Result saved!",

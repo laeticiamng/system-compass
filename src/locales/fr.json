@@ -770,7 +770,14 @@
     "notifications": "Notifications",
     "exitKeysCatalog": "Catalogue Exit Keys",
     "exitKeysCompare": "Comparer Destinations",
-    "terrainRealities": "Réalités Terrain"
+    "terrainRealities": "Réalités Terrain",
+    "fiscalCalculator": "Calculateur Fiscal",
+    "personas": "Parcours Persona",
+    "gamification": "Progression",
+    "experts": "Marketplace Experts",
+    "partnerServices": "Services Partenaires",
+    "community": "Communauté",
+    "language": "Langue"
   },
   "tests": {
     "resultSaved": "Résultat sauvegardé !",
