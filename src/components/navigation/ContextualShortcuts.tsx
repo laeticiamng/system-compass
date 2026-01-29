@@ -107,8 +107,8 @@ export function ContextualShortcuts() {
 
   const shortcuts = getShortcuts();
 
-  // Don't show on tools hub (already has navigation)
-  if (location.pathname === '/tools') {
+  // Hide on home page (sidebar is enough) and tools hub
+  if (location.pathname === '/' || location.pathname === '/tools') {
     return null;
   }
 
