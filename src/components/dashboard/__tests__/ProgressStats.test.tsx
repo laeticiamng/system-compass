@@ -1,6 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { screen } from '@testing-library/react';
-import { render } from '@/test/test-utils';
+import { render, screen } from '@/test/test-utils';
 import { ProgressStats } from '../ProgressStats';
 import type { ExitKey } from '@/lib/exit-keys-engine';
 
