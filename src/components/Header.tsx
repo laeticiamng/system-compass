@@ -114,6 +114,7 @@ export function Header() {
     { href: '/admin/generate-translations', label: 'Gen Translations', icon: FileText },
     { href: '/admin/database-translations', label: 'DB Translations', icon: FileText },
     { href: '/admin/translations-sync', label: 'Sync Translations', icon: FileText },
+    { href: '/seed-translations', label: 'Seed Translations', icon: FileText },
     { href: '/diagnostics', label: 'Diagnostics', icon: Settings },
   ];
 
