@@ -44,37 +44,39 @@ export function OnboardingTour() {
         {/* Backdrop */}
         <div className="absolute inset-0 bg-background/80 backdrop-blur-sm pointer-events-auto" />
 
-        {/* Tour Card */}
+        {/* Tour Card - Mobile optimized positioning */}
         <motion.div
           initial={{ opacity: 0, y: 20, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 20, scale: 0.95 }}
           className={cn(
             "absolute pointer-events-auto",
-            "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2",
-            "w-[90vw] max-w-md"
+            // Mobile: centered with safe margins, Desktop: centered
+            "left-4 right-4 top-1/2 -translate-y-1/2",
+            "sm:left-1/2 sm:right-auto sm:-translate-x-1/2",
+            "sm:w-[90vw] sm:max-w-md"
           )}
         >
           <div className="bg-card border border-border rounded-2xl shadow-2xl overflow-hidden">
             {/* Header */}
-            <div className="bg-gradient-to-r from-primary/20 to-primary/5 p-4 border-b border-border/50">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <div className="p-2 rounded-lg bg-primary/20">
-                    <Sparkles className="w-5 h-5 text-primary" />
+            <div className="bg-gradient-to-r from-primary/20 to-primary/5 p-3 sm:p-4 border-b border-border/50">
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2 min-w-0 flex-1">
+                  <div className="p-1.5 sm:p-2 rounded-lg bg-primary/20 flex-shrink-0">
+                    <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                   </div>
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <p className="text-xs text-muted-foreground">
                       Étape {currentStep + 1} / {totalSteps}
                     </p>
-                    <Progress value={progress} className="w-24 h-1 mt-1" />
+                    <Progress value={progress} className="w-full max-w-24 h-1 mt-1" />
                   </div>
                 </div>
                 <Button
                   variant="ghost"
                   size="icon"
                   onClick={skipTour}
-                  className="h-8 w-8 text-muted-foreground hover:text-foreground"
+                  className="h-8 w-8 text-muted-foreground hover:text-foreground flex-shrink-0"
                 >
                   <X className="w-4 h-4" />
                 </Button>
@@ -82,40 +84,40 @@ export function OnboardingTour() {
             </div>
 
             {/* Content */}
-            <div className="p-6">
-              <h3 className="text-xl font-bold mb-2">{step.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">
+            <div className="p-4 sm:p-6">
+              <h3 className="text-lg sm:text-xl font-bold mb-2">{step.title}</h3>
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                 {step.description}
               </p>
             </div>
 
-            {/* Actions */}
-            <div className="p-4 border-t border-border/50 flex items-center justify-between gap-3">
+            {/* Actions - Stack on mobile */}
+            <div className="p-3 sm:p-4 border-t border-border/50 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3">
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={skipTour}
-                className="text-muted-foreground"
+                className="text-muted-foreground order-2 sm:order-1"
               >
                 Passer le tour
               </Button>
               
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 order-1 sm:order-2 sm:ml-auto">
                 {currentStep > 0 && (
                   <Button
                     variant="outline"
                     size="sm"
                     onClick={prevStep}
-                    className="gap-1"
+                    className="gap-1 flex-1 sm:flex-none"
                   >
                     <ChevronLeft className="w-4 h-4" />
-                    Précédent
+                    <span className="hidden sm:inline">Précédent</span>
                   </Button>
                 )}
                 <Button
                   size="sm"
                   onClick={handleNext}
-                  className="gap-1 bg-primary hover:bg-primary/90"
+                  className="gap-1 bg-primary hover:bg-primary/90 flex-1 sm:flex-none"
                 >
                   {currentStep === totalSteps - 1 ? 'Terminer' : 'Suivant'}
                   <ChevronRight className="w-4 h-4" />
