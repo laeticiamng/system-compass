@@ -109,7 +109,7 @@ export function PersonalizedExitKeys({
   hasCredentials,
   hasNetwork,
 }: PersonalizedExitKeysProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { countries } = useCountries();
   const { getPyramidLabel } = usePyramidTranslations();
   
@@ -133,7 +133,10 @@ export function PersonalizedExitKeys({
       if (!destinationCountryId) return;
       setLoadingExtended(true);
       
-      const [intelligenceRes, variantsRes] = await Promise.all([
+      const currentLang = i18n.language;
+      
+      // Fetch intelligence, variants, and translations in parallel
+      const [intelligenceRes, variantsRes, translatedIntelRes, translatedVarsRes] = await Promise.all([
         supabase
           .from('country_intelligence')
           .select('*')
@@ -143,13 +146,56 @@ export function PersonalizedExitKeys({
           .from('country_variants')
           .select('*')
           .eq('country_id', destinationCountryId)
-          .maybeSingle()
+          .maybeSingle(),
+        // Fetch translated intelligence if not English
+        currentLang !== 'en' 
+          ? supabase
+              .from('country_intelligence_translations')
+              .select('translated_data')
+              .eq('country_id', destinationCountryId)
+              .eq('language', currentLang)
+              .maybeSingle()
+          : Promise.resolve({ data: null }),
+        // Fetch translated variants if not English
+        currentLang !== 'en'
+          ? supabase
+              .from('country_variants_translations')
+              .select('translated_data')
+              .eq('country_id', destinationCountryId)
+              .eq('language', currentLang)
+              .maybeSingle()
+          : Promise.resolve({ data: null })
       ]);
       
-      if (intelligenceRes.data) {
+      // Use translated intelligence if available, otherwise fallback to original
+      if (translatedIntelRes.data?.translated_data) {
+        setIntelligence(translatedIntelRes.data.translated_data as unknown as CountryIntelligence);
+      } else if (intelligenceRes.data) {
         setIntelligence(intelligenceRes.data as unknown as CountryIntelligence);
       }
-      if (variantsRes.data) {
+      
+      // Use translated variants if available, otherwise fallback to original
+      if (translatedVarsRes.data?.translated_data) {
+        const data = translatedVarsRes.data.translated_data as any;
+        setVariants({
+          labor_market: safeArray(data.labor_market),
+          entrepreneurship: safeArray(data.entrepreneurship),
+          daily_life: safeArray(data.daily_life),
+          institutions: safeArray(data.institutions),
+          networks: safeArray(data.networks),
+          profiles_succeed: safeArray(data.profiles_succeed),
+          profiles_struggle: safeArray(data.profiles_struggle),
+          surprises: safeArray(data.surprises),
+          typical_day: safeArray(data.typical_day),
+          year_one_reality: safeArray(data.year_one_reality),
+          common_mistakes_timeline: safeArray(data.common_mistakes_timeline),
+          hidden_admin_steps: safeArray(data.hidden_admin_steps),
+          cultural_shocks: safeArray(data.cultural_shocks),
+          real_costs_breakdown: safeArray(data.real_costs_breakdown),
+          success_timeline_months: safeArray(data.success_timeline_months),
+          expat_communities: safeArray(data.expat_communities),
+        });
+      } else if (variantsRes.data) {
         const data = variantsRes.data;
         setVariants({
           labor_market: safeArray(data.labor_market),
@@ -175,7 +221,7 @@ export function PersonalizedExitKeys({
     }
     
     fetchExtendedData();
-  }, [destinationCountryId]);
+  }, [destinationCountryId, i18n.language]);
 
   // Find the ultra-detailed strategy for this country + profession combination
   const detailedStrategy = useMemo<CountryProfessionStrategy | null>(() => {
