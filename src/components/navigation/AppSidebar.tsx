@@ -1,6 +1,6 @@
 /**
  * AppSidebar - Global navigation sidebar with quick access to all modules
- * Collapsible, keyboard-accessible (Ctrl+B), with contextual highlights
+ * Collapsible, keyboard-accessible (Ctrl+B), with contextual highlights and favorites
  */
 
 import { useLocation, Link } from 'react-router-dom';
@@ -27,6 +27,7 @@ import {
 } from '@/components/ui/sidebar';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
+import { FavoritesSidebar } from './FavoritesSidebar';
 
 const NAV_GROUPS = [
   {
@@ -127,6 +128,9 @@ export function AppSidebar() {
       </SidebarHeader>
 
       <SidebarContent>
+        {/* Favorites section at top */}
+        <FavoritesSidebar />
+        
         {NAV_GROUPS.map((group) => (
           <SidebarGroup key={group.id}>
             <SidebarGroupLabel>{group.label}</SidebarGroupLabel>
