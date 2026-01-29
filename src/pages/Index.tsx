@@ -42,9 +42,12 @@ export default function Index() {
     <div className="min-h-screen pt-12 sm:pt-14 md:pt-16">
       {/* Hero Section - SINGLE CLEAR PATH */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
-        <div className="absolute top-20 left-1/4 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-slow" />
-        <div className="absolute bottom-0 right-1/4 w-32 sm:w-48 md:w-64 h-32 sm:h-48 md:h-64 bg-pyramid-competence/10 rounded-full blur-3xl" />
+        {/* Enhanced background with multiple layers */}
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/8 via-primary/3 to-transparent" />
+        <div className="absolute inset-0 decoration-gradient" />
+        <div className="absolute top-10 left-1/4 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 decoration-glow animate-pulse-slow" />
+        <div className="absolute bottom-0 right-1/4 w-32 sm:w-48 md:w-64 h-32 sm:h-48 md:h-64 bg-pyramid-competence/15 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 right-10 w-24 sm:w-32 h-24 sm:h-32 bg-purple-500/10 rounded-full blur-2xl animate-float" />
         
         <div className="container mx-auto px-3 sm:px-4 py-8 sm:py-12 md:py-24 relative">
           <div className="max-w-4xl mx-auto text-center">
@@ -85,7 +88,7 @@ export default function Index() {
               <Button
                 size="lg"
                 onClick={() => { trackExitKeysClicked(); navigate('/exit-keys'); }}
-                className="w-full h-12 sm:h-14 md:h-16 text-sm sm:text-base md:text-lg bg-primary text-primary-foreground hover:bg-primary/90 gap-2 sm:gap-3 glow-gold touch-manipulation"
+                className="w-full h-12 sm:h-14 md:h-16 text-sm sm:text-base md:text-lg btn-premium text-primary-foreground gap-2 sm:gap-3 touch-manipulation transition-all duration-300 hover:scale-[1.02]"
               >
                 <Route className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
                 <span className="truncate">{t('hero.discoverProfile')}</span>
@@ -238,7 +241,7 @@ export default function Index() {
       </section>
 
       {/* How It Works - Value Props */}
-      <section className="py-16 md:py-24 border-t border-border/50 bg-gradient-to-b from-transparent via-card/30 to-transparent">
+      <section className="py-16 md:py-24 border-t border-border/50 section-gradient">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10 md:mb-16">
             <h2 className="font-display text-2xl md:text-3xl font-bold mb-3 md:mb-4">{t('howItWorks.title')}</h2>

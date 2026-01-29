@@ -158,11 +158,17 @@ export default function Countries() {
   const isShowingExtended = filter === 'extended';
 
   return (
-    <div className="min-h-screen pt-16 sm:pt-20 md:pt-24 pb-12 sm:pb-16">
-      <div className="container mx-auto px-3 sm:px-4">
+    <div className="min-h-screen pt-16 sm:pt-20 md:pt-24 pb-12 sm:pb-16 relative">
+      {/* Decorative background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-40 right-20 w-48 h-48 bg-pyramid-stability/5 rounded-full blur-3xl" />
+      </div>
+      
+      <div className="container mx-auto px-3 sm:px-4 relative z-10">
         <div className="max-w-2xl mb-6 sm:mb-8 md:mb-12">
           <h1 className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3 md:mb-4">
-            {t('countries.title')}
+            <span className="gold-text">{t('countries.title')}</span>
           </h1>
           <p className="text-muted-foreground text-xs sm:text-sm md:text-base mb-2 sm:mb-3">
             {t('countries.subtitle')}
@@ -402,7 +408,7 @@ function ExtendedCountryCard({ country }: { country: ExtendedCountryInfo }) {
   return (
     <Link
       to={`/country/${country.id}`}
-      className="glass-card rounded-xl p-4 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden"
+      className="glass-card glow-card rounded-xl p-4 group relative overflow-hidden"
     >
       {/* DB badge */}
       <div className="absolute top-2 right-2">
