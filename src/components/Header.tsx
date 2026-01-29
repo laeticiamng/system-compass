@@ -73,10 +73,13 @@ export function Header() {
     { href: '/life-game', label: t('nav.lifeGame', 'Mode Éducatif'), icon: Play },
     { href: '/prevention-filter', label: t('nav.preventionFilter', 'Filtre Décision'), icon: Shield },
     { href: '/financial-safety-intel', label: t('nav.financialIntel', 'Intel Financière'), icon: Shield },
+    { href: '/fiscal-calculator', label: t('nav.fiscalCalculator', 'Calculateur Fiscal'), icon: BarChart3 },
     { href: '/terrain', label: t('nav.terrainRealities', 'Réalités Terrain'), icon: Map },
     { href: '/errors-illusions', label: t('nav.errorsIllusions', 'Erreurs & Illusions'), icon: BookOpen },
     { href: '/exit-keys/catalog', label: t('nav.exitKeysCatalog', 'Catalogue Clés'), icon: Key },
     { href: '/compare-exit-keys', label: t('nav.exitKeysCompare', 'Comparer Clés'), icon: Scale },
+    { href: '/personas', label: t('nav.personas', 'Parcours Persona'), icon: Users },
+    { href: '/gamification', label: t('nav.gamification', 'Progression'), icon: Gamepad2 },
   ];
 
   // Modules avancés (B2B / Pro)
@@ -85,6 +88,9 @@ export function Header() {
     { href: '/latent', label: t('nav.latent', 'Zones Latentes'), icon: Eye },
     { href: '/irreversa', label: t('nav.irreversa', 'Irreversa'), icon: AlertCircle },
     { href: '/ovi', label: t('nav.ovi', 'OVI'), icon: Eye },
+    { href: '/experts', label: t('nav.experts', 'Experts'), icon: Users },
+    { href: '/partner-services', label: t('nav.partnerServices', 'Services Partenaires'), icon: Building2 },
+    { href: '/community', label: t('nav.community', 'Communauté'), icon: Users },
   ];
 
   // Pages info/compte
@@ -107,6 +113,8 @@ export function Header() {
     { href: '/admin/translations', label: 'Translations', icon: FileText },
     { href: '/admin/generate-translations', label: 'Gen Translations', icon: FileText },
     { href: '/admin/database-translations', label: 'DB Translations', icon: FileText },
+    { href: '/admin/translations-sync', label: 'Sync Translations', icon: FileText },
+    { href: '/diagnostics', label: 'Diagnostics', icon: Settings },
   ];
 
   const handleSignOut = async () => {
