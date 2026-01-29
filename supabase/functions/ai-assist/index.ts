@@ -636,9 +636,25 @@ serve(async (req) => {
   try {
     const { action, context, userId, sessionId } = await req.json();
 
+    // Health check endpoint
+    if (action === "health" || action === "ping") {
+      return new Response(
+        JSON.stringify({ 
+          status: "ok", 
+          timestamp: new Date().toISOString(),
+          availableActions: Object.keys(ACTION_CONFIGS),
+          version: "1.0.0"
+        }),
+        { headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
     if (!action || !ACTION_CONFIGS[action]) {
       return new Response(
-        JSON.stringify({ error: `Action non supportée: ${action}` }),
+        JSON.stringify({ 
+          error: `Action non supportée: ${action}`,
+          availableActions: Object.keys(ACTION_CONFIGS)
+        }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }

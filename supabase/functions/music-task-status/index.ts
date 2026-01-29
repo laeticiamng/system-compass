@@ -41,7 +41,11 @@ serve(async (req) => {
       .maybeSingle();
 
     if (error) {
-      throw error;
+      console.error("Database query error:", error.message, error.code, error.details);
+      return new Response(
+        JSON.stringify({ error: "Database error", details: error.message }),
+        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
     }
 
     if (!task) {
@@ -63,8 +67,8 @@ serve(async (req) => {
       { headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   } catch (error: unknown) {
-    const errorMessage = error instanceof Error ? error.message : String(error);
-    console.error("Error fetching music task status:", errorMessage);
+    const errorMessage = error instanceof Error ? error.message : JSON.stringify(error);
+    console.error("Error fetching music task status:", errorMessage, error);
     return new Response(
       JSON.stringify({ error: "Internal server error", details: errorMessage }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
