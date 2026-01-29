@@ -23,7 +23,7 @@ const DEFAULT_TRENDS: TrendData[] = [
   { year: 2024, stability: 75, economy: 78, safety: 77 },
 ];
 
-export function CountryTrendHistory({ countryName, trends = DEFAULT_TRENDS }: CountryTrendHistoryProps) {
+export function CountryTrendHistory({ trends = DEFAULT_TRENDS }: CountryTrendHistoryProps) {
   const getTrend = (current: number, previous: number) => {
     const diff = current - previous;
     if (diff > 3) return { icon: TrendingUp, color: 'text-emerald-500', label: 'Hausse' };

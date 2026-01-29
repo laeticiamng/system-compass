@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { Progress } from '@/components/ui/progress';
-import { CheckCircle2, XCircle, AlertCircle } from 'lucide-react';
+import { CheckCircle2, XCircle } from 'lucide-react';
 
 interface PasswordStrengthMeterProps {
   password: string;
