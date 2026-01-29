@@ -1,6 +1,7 @@
 /**
  * AppSidebar - Global navigation sidebar with quick access to all modules
  * Collapsible, keyboard-accessible (Ctrl+B), with contextual highlights and favorites
+ * ARIA-enhanced for screen reader support
  */
 
 import { useLocation, Link } from 'react-router-dom';
@@ -113,11 +114,15 @@ export function AppSidebar() {
   };
 
   return (
-    <Sidebar collapsible="icon" className="border-r border-border/50 hidden md:flex">
+    <Sidebar 
+      collapsible="icon" 
+      className="border-r border-border/50 hidden md:flex"
+      aria-label="Navigation principale"
+    >
       <SidebarHeader className="border-b border-border/50">
         <div className="flex items-center gap-2 px-2 py-1">
           <div className="p-1.5 rounded-lg bg-primary/10">
-            <Compass className="w-5 h-5 text-primary" />
+            <Compass className="w-5 h-5 text-primary" aria-hidden="true" />
           </div>
           {!isCollapsed && (
             <span className="font-display font-bold text-sm">
@@ -135,22 +140,34 @@ export function AppSidebar() {
           <SidebarGroup key={group.id}>
             <SidebarGroupLabel>{group.label}</SidebarGroupLabel>
             <SidebarGroupContent>
-              <SidebarMenu>
+              <SidebarMenu role="menu">
                 {group.items.map((item) => {
                   const Icon = item.icon;
                   const active = isActive(item.href);
                   return (
-                    <SidebarMenuItem key={item.href}>
+                    <SidebarMenuItem key={item.href} role="none">
                       <SidebarMenuButton
                         asChild
                         isActive={active}
                         tooltip={item.label}
                       >
-                        <Link to={item.href} className="flex items-center gap-2">
-                          <Icon className={cn(
-                            "w-4 h-4",
-                            active ? "text-primary" : "text-muted-foreground"
-                          )} />
+                        <Link 
+                          to={item.href} 
+                          role="menuitem"
+                          aria-current={active ? 'page' : undefined}
+                          className={cn(
+                            "flex items-center gap-2",
+                            "focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
+                            "focus-visible:outline-none rounded-md"
+                          )}
+                        >
+                          <Icon 
+                            className={cn(
+                              "w-4 h-4",
+                              active ? "text-primary" : "text-muted-foreground"
+                            )} 
+                            aria-hidden="true"
+                          />
                           <span className="flex-1">{item.label}</span>
                           {'badge' in item && item.badge && !isCollapsed && (
                             <Badge variant="secondary" className="text-[10px] px-1.5 py-0">
@@ -158,7 +175,7 @@ export function AppSidebar() {
                             </Badge>
                           )}
                           {active && !isCollapsed && (
-                            <ChevronRight className="w-3 h-3 text-primary" />
+                            <ChevronRight className="w-3 h-3 text-primary" aria-hidden="true" />
                           )}
                         </Link>
                       </SidebarMenuButton>
@@ -178,7 +195,7 @@ export function AppSidebar() {
               Ctrl+B pour basculer
             </span>
           )}
-          <SidebarTrigger className="ml-auto" />
+          <SidebarTrigger className="ml-auto" aria-label="Basculer la sidebar" />
         </div>
       </SidebarFooter>
     </Sidebar>

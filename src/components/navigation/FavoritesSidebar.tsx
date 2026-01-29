@@ -43,42 +43,48 @@ export function FavoritesSidebar({ className }: FavoritesSidebarProps) {
   if (favorites.length === 0) return null;
 
   return (
-    <SidebarGroup className={className}>
+    <SidebarGroup className={className} aria-label="Pages favorites">
       <SidebarGroupLabel className="flex items-center gap-1">
-        <Star className="w-3 h-3 text-primary fill-primary" />
+        <Star className="w-3 h-3 text-primary fill-primary" aria-hidden="true" />
         {!isCollapsed && <span>Favoris</span>}
       </SidebarGroupLabel>
       <SidebarGroupContent>
-        <SidebarMenu>
+        <SidebarMenu role="menu" aria-label="Vos favoris">
           {favorites.map((item) => {
             const Icon = ICON_MAP[item.icon] || Star;
             const isActive = location.pathname === item.href;
             
             return (
-              <SidebarMenuItem key={item.href}>
+              <SidebarMenuItem key={item.href} role="none">
                 <SidebarMenuButton
                   asChild
                   isActive={isActive}
                   tooltip={item.label}
                 >
-                  <Link to={item.href} className="flex items-center gap-2 group">
+                  <Link 
+                    to={item.href} 
+                    role="menuitem"
+                    aria-current={isActive ? 'page' : undefined}
+                    className="flex items-center gap-2 group focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none rounded-md"
+                  >
                     <Icon className={cn(
                       "w-4 h-4",
                       isActive ? "text-primary" : "text-muted-foreground"
-                    )} />
+                    )} aria-hidden="true" />
                     <span className="flex-1 truncate">{item.label}</span>
                     {!isCollapsed && (
                       <Button
                         variant="ghost"
                         size="icon"
                         className="h-5 w-5 opacity-0 group-hover:opacity-100 transition-opacity"
+                        aria-label={`Retirer ${item.label} des favoris`}
                         onClick={(e) => {
                           e.preventDefault();
                           e.stopPropagation();
                           removeFavorite(item.href);
                         }}
                       >
-                        <Star className="w-3 h-3 text-primary fill-primary" />
+                        <Star className="w-3 h-3 text-primary fill-primary" aria-hidden="true" />
                       </Button>
                     )}
                   </Link>
