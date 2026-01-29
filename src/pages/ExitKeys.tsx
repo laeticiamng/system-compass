@@ -188,28 +188,24 @@ export default function ExitKeys() {
 
   const exitKeyResults = useMemo(() => {
     if (!userContext) return [];
-    let results = findCompatibleKeys(userContext);
     
-    // Filter by profession compatibility
+    // Pass destinationCountryId to the engine for proper filtering
+    let results = findCompatibleKeys(userContext, selectedDestinationId || undefined);
+    
+    // Filter by profession compatibility (additive, not restrictive if empty)
     if (professionId) {
       const profession = getProfession(professionId);
       if (profession && profession.compatibleExitKeys.length > 0) {
-        results = results.filter(r => 
-          profession.compatibleExitKeys.includes(r.key.id)
-        );
+        // Boost compatible keys instead of filtering out others
+        results = results.map(r => {
+          if (profession.compatibleExitKeys.includes(r.key.id)) {
+            return { ...r, compatibility: Math.min(100, r.compatibility + 10) };
+          }
+          return r;
+        });
+        // Re-sort after boosting
+        results.sort((a, b) => b.compatibility - a.compatibility);
       }
-    }
-    
-    // CRITICAL: Filter by destination country - only show country-specific keys if destination matches
-    if (selectedDestinationId) {
-      results = results.filter(r => {
-        // If key has a specific destination country, only show if it matches selected destination
-        if (r.key.destinationCountryId) {
-          return r.key.destinationCountryId === selectedDestinationId;
-        }
-        // Generic keys (no specific country) are always shown
-        return true;
-      });
     }
     
     return results;
@@ -1008,6 +1004,7 @@ export default function ExitKeys() {
                   hasCredentials={hasCredentials}
                   hasNetwork={hasNetwork}
                   educationLevel={educationLevel}
+                  nationalityIds={nationalityIds}
                 />
               )}
 

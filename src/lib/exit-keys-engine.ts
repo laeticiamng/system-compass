@@ -103,7 +103,7 @@ export const EXIT_KEYS: ExitKey[] = [
     timeframe: '7-10 ans',
     linkedPyramids: ['STABILITY_REDIS'],
     targetPyramids: ['COMPETENCE_TRUST'],
-    destinationCountryId: 'switzerland', // This strategy ONLY applies to Switzerland
+    destinationCountryId: 'switzerland',
     requirements: [
       'Diplôme médical/paramédical reconnu',
       'Maîtrise du français ou allemand',
@@ -146,6 +146,232 @@ export const EXIT_KEYS: ExitKey[] = [
       },
     ],
     planB: 'Si MEBEKO bloqué : Allemagne, Pays-Bas, ou optimisation frontalière France.',
+  },
+  // GERMANY MEDICAL
+  {
+    id: 'medical_de_trajectory',
+    name: 'Trajectoire Médicale Allemagne',
+    icon: '🏥',
+    unlocks: 'Approbation allemande + salaires 2-3x France + marché stable.',
+    successCondition: 'Approbation validée + Facharzt + installation libérale.',
+    mainRisk: 'Allemand B2/C1 obligatoire - barrière linguistique majeure.',
+    rawTruth: 'Plus accessible que la Suisse, mais exige un investissement linguistique sérieux.',
+    difficulty: 'exigeant',
+    timeframe: '5-10 ans',
+    linkedPyramids: ['STABILITY_REDIS', 'COMPETENCE_TRUST'],
+    targetPyramids: ['COMPETENCE_TRUST'],
+    destinationCountryId: 'germany',
+    requirements: [
+      'Diplôme médical reconnu UE',
+      'Allemand niveau B2/C1',
+      'Motivation long terme',
+    ],
+    steps: [
+      {
+        phase: 1,
+        name: 'Approbation & Langue',
+        duration: '6-18 mois',
+        actions: [
+          'Intensif allemand B2/C1',
+          'Demande Approbation au Land',
+          'Fachsprachprüfung (examen langue médicale)',
+        ],
+        milestone: 'Approbation obtenue',
+        criticalRule: 'Ne pas sous-estimer la barrière linguistique',
+      },
+      {
+        phase: 2,
+        name: 'Facharzt',
+        duration: '4-6 ans',
+        actions: [
+          'Poste hospitalier salarié',
+          'Compléter spécialisation',
+          'Obtenir titre Facharzt',
+        ],
+        milestone: 'Facharzt reconnu',
+      },
+      {
+        phase: 3,
+        name: 'Installation',
+        duration: '2-3 ans',
+        actions: [
+          'Niederlassung (installation cabinet)',
+          'Revenus 150-300k€/an possibles',
+        ],
+        milestone: 'Cabinet rentable',
+      },
+    ],
+    planB: 'Autriche (procédure similaire, langue identique).',
+  },
+  // CANADA TECH
+  {
+    id: 'tech_canada_trajectory',
+    name: 'Immigration Tech Canada',
+    icon: '🍁',
+    unlocks: 'Résidence permanente + citoyenneté en 5 ans + accès marché nord-américain.',
+    successCondition: 'RP obtenue + emploi tech stable + citoyenneté à 5 ans.',
+    mainRisk: 'Process long (1-2 ans) + coût de vie élevé (Toronto, Vancouver).',
+    rawTruth: 'Le Canada est accueillant mais compétitif. Prépare ton IELTS/TEF sérieusement.',
+    difficulty: 'exigeant',
+    timeframe: '3-5 ans',
+    linkedPyramids: ['STABILITY_REDIS', 'COMPETENCE_TRUST', 'GROWTH_RISK'],
+    targetPyramids: ['GROWTH_RISK'],
+    destinationCountryId: 'canada',
+    requirements: [
+      'Anglais IELTS 7+ ou français TEF',
+      'Expérience tech 3+ ans',
+      'Fonds 15-20k CAD',
+    ],
+    steps: [
+      {
+        phase: 1,
+        name: 'Entrée Express',
+        duration: '6-18 mois',
+        actions: [
+          'IELTS/TEF score 7+',
+          'ECA (équivalence diplôme)',
+          'Créer profil Entrée Express',
+          'Améliorer points CRS',
+        ],
+        milestone: 'ITA reçue',
+        criticalRule: 'Plus de points = plus de chances - optimise chaque critère',
+      },
+      {
+        phase: 2,
+        name: 'Résidence Permanente',
+        duration: '6-12 mois',
+        actions: [
+          'Soumettre dossier complet',
+          'Examens médicaux',
+          'Obtenir COPR',
+        ],
+        milestone: 'RP obtenue',
+      },
+      {
+        phase: 3,
+        name: 'Citoyenneté',
+        duration: '3 ans',
+        actions: [
+          'Emploi tech (Toronto, Vancouver, Montreal)',
+          '3 ans de résidence',
+          'Demande citoyenneté',
+        ],
+        milestone: 'Citoyenneté canadienne + passeport',
+      },
+    ],
+    planB: 'USA via TN visa (pour citoyens canadiens) ou Australie.',
+  },
+  // PORTUGAL NOMAD
+  {
+    id: 'portugal_nomad',
+    name: 'Installation Portugal (Nomade/Remote)',
+    icon: '🇵🇹',
+    unlocks: 'Résidence UE + coût de vie modéré + citoyenneté en 5 ans.',
+    successCondition: 'Titre de séjour + revenus remote stables + A2 portugais pour citoyenneté.',
+    mainRisk: 'Bureaucratie lente + marché immobilier Lisbonne surchauffé.',
+    rawTruth: 'Le Portugal est devenu mainstream. Arrive tôt, sors de Lisbonne.',
+    difficulty: 'accessible',
+    timeframe: '5-6 ans',
+    linkedPyramids: ['GROWTH_RISK', 'HYBRID_TRANSITION'],
+    targetPyramids: ['STABILITY_REDIS'],
+    destinationCountryId: 'portugal',
+    requirements: [
+      'Revenus remote > 3k€/mois',
+      'Assurance santé privée',
+      'Motivation apprentissage portugais',
+    ],
+    steps: [
+      {
+        phase: 1,
+        name: 'Visa D7 ou Digital Nomad',
+        duration: '2-4 mois',
+        actions: [
+          'Obtenir NIF via procuration',
+          'Demander visa au consulat',
+          'Prouver revenus (D7: 760€/mois, DN: 3040€/mois)',
+        ],
+        milestone: 'Visa obtenu',
+      },
+      {
+        phase: 2,
+        name: 'Installation',
+        duration: '1-3 mois',
+        actions: [
+          'Trouver logement (Porto > Lisbonne pour budget)',
+          'Ouvrir compte bancaire',
+          'Demander titre de séjour',
+        ],
+        milestone: 'Résidence établie',
+      },
+      {
+        phase: 3,
+        name: 'Citoyenneté',
+        duration: '5 ans',
+        actions: [
+          'Renouveler résidence annuellement',
+          'Apprendre portugais A2',
+          'Demander citoyenneté à 5 ans',
+        ],
+        milestone: 'Passeport UE obtenu',
+      },
+    ],
+    planB: 'Espagne (visa similaire, plus grand marché).',
+  },
+  // UAE/DUBAI
+  {
+    id: 'uae_golden_visa',
+    name: 'Golden Visa UAE/Dubai',
+    icon: '🏜️',
+    unlocks: 'Résidence 10 ans + zéro impôt sur le revenu + hub international.',
+    successCondition: 'Golden Visa obtenu + revenus établis + lifestyle durable.',
+    mainRisk: 'Coût de vie élevé + pas de filet social + dépendance employeur si visa travail.',
+    rawTruth: 'Dubai est un accélérateur, pas une destination finale. Utilise-le stratégiquement.',
+    difficulty: 'exigeant',
+    timeframe: '1-3 ans',
+    linkedPyramids: ['GROWTH_RISK', 'COMPETENCE_TRUST'],
+    targetPyramids: ['GROWTH_RISK'],
+    destinationCountryId: 'uae',
+    requirements: [
+      'Revenus élevés ou investissement',
+      'Compétences spécialisées',
+      'Tolérance chaleur + lifestyle différent',
+    ],
+    steps: [
+      {
+        phase: 1,
+        name: 'Visa initial',
+        duration: '1-4 semaines',
+        actions: [
+          'Option 1: Offre emploi = visa employeur',
+          'Option 2: Freelance visa (free zone)',
+          'Option 3: Golden Visa (investissement/compétences)',
+        ],
+        milestone: 'Visa obtenu',
+      },
+      {
+        phase: 2,
+        name: 'Installation',
+        duration: '1-2 mois',
+        actions: [
+          'Emirates ID',
+          'Compte bancaire UAE',
+          'Logement (colocation au début recommandée)',
+        ],
+        milestone: 'Installé et opérationnel',
+      },
+      {
+        phase: 3,
+        name: 'Optimisation',
+        duration: '1-2 ans',
+        actions: [
+          'Développer activité/revenus',
+          'Convertir en Golden Visa 10 ans si éligible',
+          'Constituer épargne (zéro impôt)',
+        ],
+        milestone: 'Golden Visa + épargne significative',
+      },
+    ],
+    planB: 'Singapour si préférence Asie, ou retour Europe avec capital.',
   },
   {
     id: 'digital_nomad_escape',
@@ -554,10 +780,22 @@ export interface UserContext {
   hasFamily: boolean;
 }
 
-export function findCompatibleKeys(context: UserContext): ExitKeyResult[] {
+export function findCompatibleKeys(context: UserContext, destinationCountryId?: string): ExitKeyResult[] {
   const results: ExitKeyResult[] = [];
 
   for (const key of EXIT_KEYS) {
+    // CRITICAL: Filter by destination country FIRST
+    // If key is country-specific and destination is specified, skip if mismatch
+    if (key.destinationCountryId && destinationCountryId && key.destinationCountryId !== destinationCountryId) {
+      continue;
+    }
+    
+    // If destination specified but key is country-specific to ANOTHER country, skip
+    if (key.destinationCountryId && !destinationCountryId) {
+      // Don't show country-specific keys unless destination is selected
+      continue;
+    }
+    
     const fromMatch = key.linkedPyramids.includes(context.currentCountry);
     const toMatch = key.targetPyramids.some(to => isDesiredDestination(to, context.desiredLife));
 
@@ -566,20 +804,36 @@ export function findCompatibleKeys(context: UserContext): ExitKeyResult[] {
     let compatibility = 50;
     if (toMatch) compatibility += 20;
 
-    // Risk tolerance matching
-    if (key.difficulty === 'accessible' && context.riskTolerance === 'low') compatibility += 10;
-    if (key.difficulty === 'expert' && context.riskTolerance === 'high') compatibility += 10;
-    if (key.difficulty === 'expert' && context.riskTolerance === 'low') compatibility -= 15;
+    // Risk tolerance matching - more nuanced
+    if (key.difficulty === 'accessible') {
+      if (context.riskTolerance === 'low') compatibility += 15;
+      if (context.riskTolerance === 'medium') compatibility += 5;
+    } else if (key.difficulty === 'exigeant') {
+      if (context.riskTolerance === 'high') compatibility += 10;
+      if (context.riskTolerance === 'medium') compatibility += 5;
+      if (context.riskTolerance === 'low') compatibility -= 10;
+    } else if (key.difficulty === 'expert') {
+      if (context.riskTolerance === 'high') compatibility += 15;
+      if (context.riskTolerance === 'medium') compatibility -= 5;
+      if (context.riskTolerance === 'low') compatibility -= 20;
+    }
 
-    // Time horizon matching
+    // Time horizon matching - critical alignment
     const keyDuration = parseTimeframe(key.timeframe);
-    if (context.timeHorizon === 'short' && keyDuration > 5) compatibility -= 20;
-    if (context.timeHorizon === 'long' && keyDuration > 5) compatibility += 10;
+    if (context.timeHorizon === 'short') {
+      if (keyDuration <= 3) compatibility += 15;
+      else if (keyDuration <= 5) compatibility += 5;
+      else compatibility -= 20;
+    } else if (context.timeHorizon === 'medium') {
+      if (keyDuration >= 3 && keyDuration <= 7) compatibility += 10;
+    } else if (context.timeHorizon === 'long') {
+      if (keyDuration > 5) compatibility += 15;
+    }
 
-    // Resources boost
-    if (context.hasCapital) compatibility += 10;
+    // Resources boost - weighted by importance
+    if (context.hasCapital) compatibility += 12;
     if (context.hasCredentials) compatibility += 10;
-    if (context.hasNetwork) compatibility += 5;
+    if (context.hasNetwork) compatibility += 8;
 
     // Motor profile fit
     compatibility += getMotorProfileFit(key.id, context.motorProfile);
@@ -587,20 +841,31 @@ export function findCompatibleKeys(context: UserContext): ExitKeyResult[] {
     // Generate warnings
     const warnings: string[] = [];
     if (key.difficulty === 'expert' && !context.hasCapital) {
-      warnings.push('Capital initial recommandé');
+      warnings.push('Capital initial fortement recommandé pour cette stratégie');
     }
-    if (context.hasFamily && ['digital_nomad_escape', 'resource_extraction_escape'].includes(key.id)) {
-      warnings.push('Logistique familiale à planifier');
+    if (key.difficulty === 'exigeant' && !context.hasCredentials) {
+      warnings.push('Diplômes/certifications nécessaires - vérifier équivalences');
+    }
+    if (context.hasFamily && ['digital_nomad_escape', 'resource_extraction_escape', 'uae_golden_visa'].includes(key.id)) {
+      warnings.push('Logistique familiale complexe à planifier');
     }
     if (context.isLGBTQ) {
-      warnings.push('Vérifier sécurité LGBTQ+ des destinations');
+      if (['uae_golden_visa'].includes(key.id)) {
+        warnings.push('⚠️ Droits LGBTQ+ limités dans cette destination - évaluer personnellement');
+      } else {
+        warnings.push('Vérifier environnement LGBTQ+ de la destination');
+      }
+    }
+    if (context.timeHorizon === 'short' && keyDuration > 5) {
+      warnings.push('Cette stratégie nécessite un horizon long terme');
     }
 
     // Generate accelerators
     const accelerators: string[] = [];
-    if (context.hasCredentials) accelerators.push('Credentials existantes = phase 1 accélérée');
+    if (context.hasCredentials) accelerators.push('Diplômes reconnus = phase 1 accélérée');
     if (context.hasNetwork) accelerators.push('Réseau actif = transition facilitée');
-    if (context.hasCapital) accelerators.push('Capital = phases d\'accumulation raccourcies');
+    if (context.hasCapital) accelerators.push('Capital disponible = options élargies');
+    if (context.riskTolerance === 'high') accelerators.push('Tolérance au risque = stratégies agressives possibles');
 
     const personalizedSteps = personalizeSteps(key.steps, context);
 
@@ -638,6 +903,7 @@ function parseTimeframe(timeframe: string): number {
 function getMotorProfileFit(keyId: string, profile: LifeMotorProfile): number {
   const fits: Record<string, LifeMotorProfile[]> = {
     medical_ch_trajectory: ['BUILDER', 'SAFE_WEALTH', 'STATUS'],
+    medical_de_trajectory: ['BUILDER', 'SAFE_WEALTH', 'STATUS'],
     digital_nomad_escape: ['NOMAD', 'BUILDER', 'PURPOSE'],
     corporate_ladder_jump: ['BUILDER', 'STATUS', 'SAFE_WEALTH'],
     education_arbitrage: ['BUILDER', 'STATUS', 'PURPOSE'],
@@ -646,10 +912,17 @@ function getMotorProfileFit(keyId: string, profile: LifeMotorProfile): number {
     real_estate_investor: ['SAFE_WEALTH', 'BUILDER', 'STATUS'],
     freelance_tech: ['NOMAD', 'BUILDER', 'SAFE_WEALTH'],
     manual_trade_pivot: ['BUILDER', 'RECOVERY', 'SAFE_WEALTH'],
+    tech_canada_trajectory: ['BUILDER', 'NOMAD', 'SAFE_WEALTH'],
+    portugal_nomad: ['NOMAD', 'PURPOSE', 'RECOVERY'],
+    uae_golden_visa: ['BUILDER', 'STATUS', 'SAFE_WEALTH'],
   };
 
   const keyFits = fits[keyId] || [];
-  return keyFits.includes(profile) ? 15 : 0;
+  // Primary fit = 15 points, secondary fit = 10 points
+  const fitIndex = keyFits.indexOf(profile);
+  if (fitIndex === 0) return 15;
+  if (fitIndex > 0) return 10;
+  return 0;
 }
 
 function personalizeSteps(steps: ExitKeyStep[], context: UserContext): ExitKeyStep[] {

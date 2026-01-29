@@ -21,6 +21,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { StrategyCostSimulator } from './StrategyCostSimulator';
 import { StrategyChecklist } from './StrategyChecklist';
+import { FeasibilityScoreCard } from './FeasibilityScoreCard';
 
 interface PersonalizedExitKeysProps {
   destinationCountryId: string;
@@ -32,6 +33,7 @@ interface PersonalizedExitKeysProps {
   hasCredentials: boolean;
   hasNetwork: boolean;
   educationLevel?: string;
+  nationalityIds?: string[]; // Added for better feasibility calculation
 }
 
 // Types for country data
@@ -108,6 +110,7 @@ export function PersonalizedExitKeys({
   hasCapital,
   hasCredentials,
   hasNetwork,
+  nationalityIds = [],
 }: PersonalizedExitKeysProps) {
   const { t, i18n } = useTranslation();
   const { countries } = useCountries();
@@ -451,7 +454,18 @@ export function PersonalizedExitKeys({
         </div>
       </div>
 
-      {/* Key Insights Grid - from country data */}
+      {/* Feasibility Score Card - NEW */}
+      <FeasibilityScoreCard
+        countryId={destinationCountryId}
+        countryName={destination.name}
+        professionId={professionId}
+        nationalityIds={nationalityIds.length > 0 ? nationalityIds : [currentCountryId]}
+        age={age}
+        intention={intention}
+        hasCapital={hasCapital}
+        hasCredentials={hasCredentials}
+      />
+
       <div className="glass-card rounded-xl p-6">
         <h3 className="font-semibold mb-4 flex items-center gap-2">
           <Lightbulb className="w-5 h-5 text-primary" />
