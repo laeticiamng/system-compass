@@ -297,7 +297,7 @@ function PersonaDetail({ persona }: { persona: PersonaType }) {
             <div 
               key={country.id}
               className="flex items-center justify-between p-3 bg-secondary/50 rounded-lg hover:bg-secondary/70 transition-colors cursor-pointer"
-              onClick={() => navigate(`/countries/${country.id}`)}
+              onClick={() => navigate(`/country/${country.id}`)}
             >
               <div className="flex items-center gap-3">
                 <span className="text-2xl">{country.flag}</span>

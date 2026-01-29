@@ -18,6 +18,8 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Skeleton } from '@/components/ui/skeleton';
+import { useGamification } from '@/hooks/useGamification';
 import { 
   BADGES, 
   LEVEL_THRESHOLDS, 
@@ -33,19 +35,6 @@ import {
   type UserPhase
 } from '@/lib/gamification-system';
 import { cn } from '@/lib/utils';
-
-// Mock user progress (in real app, this would come from the database)
-const mockUserProgress = {
-  userId: 'demo',
-  xp: 1250,
-  level: 'explorer' as UserLevel,
-  badges: ['first-steps', 'curious-mind'],
-  phase: 'exploration' as UserPhase,
-  achievements: [],
-  streak: 5,
-  lastActive: new Date().toISOString(),
-  createdAt: new Date().toISOString(),
-};
 
 function LevelProgress({ xp }: { xp: number }) {
   const level = calculateLevel(xp);
