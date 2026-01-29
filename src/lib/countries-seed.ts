@@ -1,6 +1,7 @@
 import { Country } from './types';
+import { additionalCountries } from './additional-countries';
 
-export const countriesSeed: Country[] = [
+const baseCountries: Country[] = [
   {
     id: 'cameroon',
     name: 'Cameroon',
@@ -3245,3 +3246,6 @@ export const countriesSeed: Country[] = [
     sources: ['World Bank', 'Transparency International', 'Freedom House', 'Henley Passport Index', 'Numbeo'],
   },
 ];
+
+// Merge base countries with additional countries (total: 50 countries)
+export const countriesSeed: Country[] = [...baseCountries, ...additionalCountries];
