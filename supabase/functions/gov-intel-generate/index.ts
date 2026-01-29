@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.2";
+import { validate, validationErrorResponse } from "../_shared/validation.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -82,6 +83,16 @@ Tu dois retourner un JSON valide avec cette structure exacte :
   "verification_needed": ["string - points à vérifier avec un conseil local"]
 }`;
 
+interface GovIntelRequest {
+  case_id: string;
+  country_code: string;
+  country_name?: string;
+  sector?: string;
+  project_type?: string;
+  intention?: string;
+  constraints?: string;
+}
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -107,13 +118,25 @@ serve(async (req) => {
     if (!user) throw new Error("User not authenticated");
     logStep("User authenticated", { userId: user.id });
 
-    // Parse request
-    const { case_id, country_code, country_name, sector, project_type, intention, constraints } = await req.json();
+    // Parse and validate request
+    const body = await req.json();
     
-    if (!case_id || !country_code) {
-      throw new Error("case_id and country_code are required");
+    const validation = validate<GovIntelRequest>(body)
+      .uuid('case_id', { required: true })
+      .string('country_code', { required: true, min: 2, max: 10 })
+      .string('country_name', { max: 100 })
+      .string('sector', { max: 100 })
+      .string('project_type', { max: 100 })
+      .string('intention', { max: 100 })
+      .string('constraints', { max: 2000 })
+      .validate();
+
+    if (!validation.success) {
+      return validationErrorResponse(validation.errors!, corsHeaders);
     }
-    logStep("Request parsed", { case_id, country_code, sector, project_type, intention });
+
+    const { case_id, country_code, country_name, sector, project_type, intention, constraints } = validation.data!;
+    logStep("Request validated", { case_id, country_code, sector, project_type, intention });
 
     // Create run log
     const { data: runData, error: runError } = await supabaseClient
