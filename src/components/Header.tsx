@@ -58,9 +58,8 @@ export function Header() {
     { href: '/countries', label: t('nav.countries'), icon: Map },
     { href: '/world-map', label: t('nav.worldMap', 'Carte'), icon: Globe },
     { href: '/pyramid-types', label: t('nav.pyramids'), icon: Triangle },
-    { href: '/exit-keys', label: t('nav.exitKeys'), icon: Key },
+    { href: '/tools', label: t('nav.tools', 'Outils'), icon: Wrench, highlight: true },
     { href: '/compare', label: t('nav.compare'), icon: Scale },
-    { href: '/pyramid-quiz', label: t('nav.pyramidQuiz', 'Jeu'), icon: Gamepad2 },
     { href: '/dashboard', label: t('nav.dashboard'), icon: LayoutDashboard },
   ];
   
