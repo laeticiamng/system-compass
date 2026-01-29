@@ -15,7 +15,7 @@ import { DisclaimerConsentDialog } from "@/components/DisclaimerConsentDialog";
 import { DialogCoordinatorProvider } from "@/components/DialogCoordinator";
 import { OfflineBanner } from "@/components/ui/offline-banner";
 import { CookieConsent } from "@/components/ui/cookie-consent";
-import { ContextualShortcuts, AppSidebar, Breadcrumbs } from "@/components/navigation";
+import { ContextualShortcuts, AppSidebar, Breadcrumbs, OnboardingTour } from "@/components/navigation";
 import { allRoutes } from "@/routes";
 
 const queryClient = new QueryClient({
@@ -42,6 +42,7 @@ const App = () => (
                 <DialogCoordinatorProvider>
                   <DisclaimerConsentDialog />
                   <OnboardingDialog />
+                  <OnboardingTour />
                   <div className="min-h-screen flex w-full">
                     <AppSidebar />
                     <div className="flex-1 flex flex-col min-w-0">
