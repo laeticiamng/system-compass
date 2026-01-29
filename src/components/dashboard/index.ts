@@ -30,3 +30,10 @@ export { TraceOSDashboardWidget } from './TraceOSDashboardWidget';
 export { UserProfileWidget } from './UserProfileWidget';
 export { CalendarExportButton } from './CalendarExportButton';
 export { CasePrefillTemplates } from './CasePrefillTemplates';
+export { 
+  ProgressWidget, 
+  StreakWidget, 
+  XPWidget, 
+  QuickStatsWidget, 
+  UpcomingTasksWidget 
+} from './DashboardWidgets';
