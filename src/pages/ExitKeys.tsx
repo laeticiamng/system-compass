@@ -285,15 +285,15 @@ export default function ExitKeys() {
   };
 
   return (
-    <main className="min-h-screen bg-background pt-24 pb-16">
+    <main className="min-h-screen bg-background pt-24 pb-16 relative overflow-hidden">
       {/* Animated Background Gradient */}
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-        <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-radial from-primary/5 via-transparent to-transparent animate-pulse" style={{ animationDuration: '8s' }} />
-        <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-radial from-amber-500/5 via-transparent to-transparent animate-pulse" style={{ animationDuration: '10s', animationDelay: '2s' }} />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
       </div>
 
       {/* Sticky Journey Progress Bar */}
-      <div className="sticky top-16 z-40 bg-background/80 backdrop-blur-xl border-b border-border/30 py-4 mb-8 shadow-sm">
+      <div className="sticky top-16 z-40 glass-card border-b border-primary/10 py-4 mb-8">
         <div className="container mx-auto px-4 max-w-5xl">
           <JourneyProgressBar currentPhase={getJourneyPhase(currentStep)} />
         </div>
@@ -310,28 +310,28 @@ export default function ExitKeys() {
             {t('common.back', 'Retour')}
           </Link>
           
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 via-background to-amber-500/10 border border-primary/20 p-8 mb-8">
+          <div className="relative overflow-hidden rounded-2xl glass-card-elevated border-primary/20 p-8 mb-8 glow-card">
             {/* Decorative elements */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-radial from-primary/20 to-transparent blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-radial from-amber-500/20 to-transparent blur-3xl" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
             
             <div className="relative flex flex-col md:flex-row items-start gap-6">
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-primary to-primary/80 shadow-lg shadow-primary/25">
+              <div className="p-4 rounded-2xl bg-gradient-to-br from-primary to-primary/80 shadow-lg glow-gold">
                 <Key className="w-10 h-10 text-primary-foreground" />
               </div>
               <div className="flex-1">
-                <h1 className="font-display text-3xl md:text-5xl font-bold bg-gradient-to-r from-foreground via-foreground to-primary bg-clip-text text-transparent mb-3">
+                <h1 className="font-display text-3xl md:text-5xl font-bold mb-3 gold-text">
                   {t('exitKeys.title', 'Trouvez Votre Clé de Sortie')}
                 </h1>
                 <p className="text-lg text-muted-foreground max-w-2xl">
                   {t('exitKeys.subtitle', 'Simulez et analysez les stratégies adaptées à votre situation')}
                 </p>
                 <div className="mt-4 flex flex-wrap gap-3">
-                  <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-500 text-sm font-medium">
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-risk-low/10 text-risk-low text-sm font-medium border border-risk-low/20">
                     <Sparkles className="w-4 h-4" />
                     {t('exitKeys.badge.personalized', 'Analyse personnalisée')}
                   </span>
-                  <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 text-blue-500 text-sm font-medium">
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-pyramid-stability/10 text-pyramid-stability text-sm font-medium border border-pyramid-stability/20">
                     <Globe className="w-4 h-4" />
                     {t('exitKeys.badge.global', '190+ pays analysés')}
                   </span>
@@ -377,7 +377,7 @@ export default function ExitKeys() {
           </div>
 
           {/* Philosophy Banner */}
-          <div className="relative overflow-hidden rounded-xl bg-gradient-to-r from-amber-500/5 via-primary/5 to-emerald-500/5 border border-border/50 p-5 mb-6">
+          <div className="relative overflow-hidden rounded-xl glass-card border-primary/10 p-5 mb-6">
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNiIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS1vcGFjaXR5PSIuMDUiLz48L2c+PC9zdmc+')] opacity-50" />
             <div className="relative flex items-center gap-4">
               <div className="p-2 rounded-lg bg-amber-500/10">

@@ -268,18 +268,19 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-background relative">
+    <div className="min-h-screen bg-background relative overflow-hidden">
       {/* Subtle decorative background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-pyramid-competence/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-48 h-48 bg-risk-low/5 rounded-full blur-3xl" />
       </div>
       
       <div className="container mx-auto px-3 sm:px-4 py-6 sm:py-8 pt-20 sm:pt-24 relative z-10">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 sm:mb-8">
           <div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-1 sm:mb-2">
+            <h1 className="text-2xl sm:text-3xl font-bold gold-text mb-1 sm:mb-2">
               {t('dashboard.title')}
             </h1>
             <p className="text-sm sm:text-base text-muted-foreground">
@@ -334,10 +335,12 @@ export default function Dashboard() {
 
         {/* Login prompt for guests */}
         {!isLoggedIn && (
-          <Card className="mb-6 border-primary/20 bg-primary/5">
+          <Card className="mb-6 glass-card border-primary/20 glow-subtle">
             <CardContent className="p-4">
               <div className="flex items-center gap-4">
-                <Cloud className="w-6 h-6 text-primary" />
+                <div className="p-2 rounded-lg bg-primary/10">
+                  <Cloud className="w-6 h-6 text-primary" />
+                </div>
                 <div className="flex-1">
                   <p className="text-sm font-medium">{t('dashboard.connectToSync')}</p>
                   <p className="text-xs text-muted-foreground">
@@ -345,7 +348,7 @@ export default function Dashboard() {
                   </p>
                 </div>
                 <Link to="/auth">
-                  <Button size="sm">{t('dashboard.signIn')}</Button>
+                  <Button size="sm" className="btn-premium text-primary-foreground">{t('dashboard.signIn')}</Button>
                 </Link>
               </div>
             </CardContent>
@@ -381,10 +384,12 @@ export default function Dashboard() {
         )}
 
         {!profile && (
-          <Card className="mb-6 border-amber-500/20 bg-amber-500/5">
+          <Card className="mb-6 glass-card border-primary/20">
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
-                <AlertTriangle className="w-8 h-8 text-amber-500" />
+                <div className="p-2 rounded-lg bg-primary/10">
+                  <AlertTriangle className="w-8 h-8 text-primary" />
+                </div>
                 <div className="flex-1">
                   <h3 className="font-semibold">{t('dashboard.profileNotConfigured')}</h3>
                   <p className="text-sm text-muted-foreground">
@@ -392,7 +397,7 @@ export default function Dashboard() {
                   </p>
                 </div>
                 <Link to="/exit-keys">
-                  <Button>{t('dashboard.createProfile')}</Button>
+                  <Button className="btn-premium text-primary-foreground">{t('dashboard.createProfile')}</Button>
                 </Link>
               </div>
             </CardContent>
