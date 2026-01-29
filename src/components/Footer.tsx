@@ -74,6 +74,7 @@ export function Footer() {
               <li><Link to="/institutions" className="hover:text-foreground transition-colors block py-0.5">🏛️ {t('footer.businessInstitutions')}</Link></li>
               <li><Link to="/ovi" className="hover:text-foreground transition-colors block py-0.5">{t('nav.ovi', 'OVI')}</Link></li>
               <li><Link to="/irreversa" className="hover:text-foreground transition-colors block py-0.5">{t('nav.irreversa', 'Irreversa')}</Link></li>
+              <li><Link to="/install" className="hover:text-foreground transition-colors block py-0.5">📱 {t('pwa.title', 'Installer l\'app')}</Link></li>
             </ul>
           </div>
 

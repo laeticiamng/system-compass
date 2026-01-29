@@ -74,6 +74,7 @@ import {
   LazyExpertMarketplace,
   LazyPartnerIntegrations,
   LazyCommunity,
+  LazyInstall,
 } from "@/routes/LazyRoutes";
 
 const queryClient = new QueryClient({
@@ -166,6 +167,7 @@ const App = () => (
                       <Route path="/experts" element={<LazyExpertMarketplace />} />
                       <Route path="/partner-services" element={<LazyPartnerIntegrations />} />
                       <Route path="/community" element={<LazyCommunity />} />
+                      <Route path="/install" element={<LazyInstall />} />
 
                       {/* Lazy routes - Admin */}
                       <Route path="/admin/translations" element={<RequireAdmin><LazyAdminTranslations /></RequireAdmin>} />

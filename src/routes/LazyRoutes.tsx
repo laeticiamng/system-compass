@@ -101,6 +101,7 @@ export const LazyGamificationHub = withSuspense(lazy(() => import('@/pages/Gamif
 export const LazyExpertMarketplace = withSuspense(lazy(() => import('@/pages/ExpertMarketplace')));
 export const LazyPartnerIntegrations = withSuspense(lazy(() => import('@/pages/PartnerIntegrations')));
 export const LazyCommunity = withSuspense(lazy(() => import('@/pages/Community')));
+export const LazyInstall = withSuspense(lazy(() => import('@/pages/Install')));
 
 // Dev/Admin pages
 export const LazyDiagnostics = withSuspense(lazy(() => import('@/pages/Diagnostics')));

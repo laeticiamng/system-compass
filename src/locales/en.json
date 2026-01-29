@@ -149,6 +149,51 @@
     "view": "View",
     "skip": "Skip"
   },
+  "pwa": {
+    "title": "Install the app",
+    "subtitle": "Access Pyramid Compass from your home screen like a native app",
+    "pageTitle": "📱 App Installation",
+    "pageDescription": "Install Pyramid Compass on your device for an optimal experience",
+    "installNow": "Install now",
+    "note": "The app works on all modern browsers. For optimal installation, use Safari on iOS or Chrome on Android.",
+    "ios": {
+      "requirement": "Open this page in Safari",
+      "step1": {
+        "title": "Tap Share",
+        "description": "Tap the Share button (square icon with upward arrow) in Safari's navigation bar"
+      },
+      "step2": {
+        "title": "Add to Home Screen",
+        "description": "Scroll and select \"Add to Home Screen\""
+      },
+      "step3": {
+        "title": "Add",
+        "description": "Tap \"Add\" in the top right to confirm"
+      }
+    },
+    "android": {
+      "requirement": "Open this page in Chrome",
+      "step1": {
+        "title": "Open menu",
+        "description": "Tap the Chrome menu (⋮) in the top right"
+      },
+      "step2": {
+        "title": "Install app",
+        "description": "Select \"Install app\" or \"Add to Home screen\""
+      },
+      "step3": {
+        "title": "Confirm",
+        "description": "Tap \"Install\" to confirm the installation"
+      }
+    },
+    "benefits": {
+      "title": "Benefits",
+      "offline": "Offline access",
+      "fast": "Fast loading",
+      "fullscreen": "Fullscreen mode",
+      "homescreen": "Home screen icon"
+    }
+  },
   "errors": {
     "rateLimited": "Too many requests. Please try again in a moment.",
     "insufficientCredits": "Insufficient AI credits.",

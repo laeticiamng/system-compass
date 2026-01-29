@@ -151,6 +151,51 @@
     "creating": "Création...",
     "skip": "Passer"
   },
+  "pwa": {
+    "title": "Installer l'application",
+    "subtitle": "Accédez à Pyramid Compass depuis votre écran d'accueil comme une application native",
+    "pageTitle": "📱 Installation de l'application",
+    "pageDescription": "Installez Pyramid Compass sur votre appareil pour une expérience optimale",
+    "installNow": "Installer maintenant",
+    "note": "L'application fonctionne sur tous les navigateurs modernes. Pour une installation optimale, utilisez Safari sur iOS ou Chrome sur Android.",
+    "ios": {
+      "requirement": "Ouvrez cette page dans Safari",
+      "step1": {
+        "title": "Appuyez sur Partager",
+        "description": "Appuyez sur le bouton Partager (icône carré avec flèche vers le haut) dans la barre de navigation Safari"
+      },
+      "step2": {
+        "title": "Sur l'écran d'accueil",
+        "description": "Faites défiler et sélectionnez \"Sur l'écran d'accueil\""
+      },
+      "step3": {
+        "title": "Ajouter",
+        "description": "Appuyez sur \"Ajouter\" en haut à droite pour confirmer"
+      }
+    },
+    "android": {
+      "requirement": "Ouvrez cette page dans Chrome",
+      "step1": {
+        "title": "Ouvrez le menu",
+        "description": "Appuyez sur le menu Chrome (⋮) en haut à droite"
+      },
+      "step2": {
+        "title": "Installer l'application",
+        "description": "Sélectionnez \"Installer l'application\" ou \"Ajouter à l'écran d'accueil\""
+      },
+      "step3": {
+        "title": "Confirmer",
+        "description": "Appuyez sur \"Installer\" pour confirmer l'installation"
+      }
+    },
+    "benefits": {
+      "title": "Avantages",
+      "offline": "Accès hors ligne",
+      "fast": "Chargement rapide",
+      "fullscreen": "Mode plein écran",
+      "homescreen": "Icône sur l'écran d'accueil"
+    }
+  },
   "calendar": {
     "days": {
       "sun": "Dim",
