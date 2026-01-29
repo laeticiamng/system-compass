@@ -1,7 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@/test/test-utils';
 import userEvent from '@testing-library/user-event';
-import { render } from '@/test/test-utils';
 import Auth from '../Auth';
 
 // Mock ResizeObserver for Radix UI components
@@ -75,7 +74,8 @@ describe('Auth Page', () => {
       expect(screen.queryByLabelText(/display name/i)).not.toBeInTheDocument();
 
       // Find and click the signup button
-      const signupToggle = screen.getAllByRole('button').find(btn =>
+      const buttons = screen.getAllByRole('button') as HTMLButtonElement[];
+      const signupToggle = buttons.find((btn) =>
         btn.textContent?.toLowerCase().includes('sign up') ||
         btn.textContent?.toLowerCase().includes('signup')
       );
@@ -94,7 +94,8 @@ describe('Auth Page', () => {
       render(<Auth />);
 
       // Switch to signup mode
-      const signupToggle = screen.getAllByRole('button').find(btn =>
+      const buttons = screen.getAllByRole('button') as HTMLButtonElement[];
+      const signupToggle = buttons.find((btn) =>
         btn.textContent?.toLowerCase().includes('sign up') ||
         btn.textContent?.toLowerCase().includes('signup')
       );
@@ -106,7 +107,8 @@ describe('Auth Page', () => {
       await user.type(screen.getByLabelText(/password/i), 'Short1'); // Only 6 chars
 
       // Submit - find the submit button
-      const submitBtn = screen.getAllByRole('button').find(btn =>
+      const allButtons = screen.getAllByRole('button') as HTMLButtonElement[];
+      const submitBtn = allButtons.find((btn) =>
         btn.getAttribute('type') === 'submit'
       );
       if (submitBtn) await user.click(submitBtn);
@@ -123,7 +125,8 @@ describe('Auth Page', () => {
       render(<Auth />);
 
       // Switch to signup mode
-      const signupToggle = screen.getAllByRole('button').find(btn =>
+      const buttons = screen.getAllByRole('button') as HTMLButtonElement[];
+      const signupToggle = buttons.find((btn) =>
         btn.textContent?.toLowerCase().includes('sign up') ||
         btn.textContent?.toLowerCase().includes('signup')
       );
@@ -134,7 +137,8 @@ describe('Auth Page', () => {
       await user.type(screen.getByLabelText(/password/i), 'ValidPass1'); // Valid password
 
       // Submit
-      const submitBtn = screen.getAllByRole('button').find(btn =>
+      const allButtons = screen.getAllByRole('button') as HTMLButtonElement[];
+      const submitBtn = allButtons.find((btn) =>
         btn.getAttribute('type') === 'submit'
       );
       if (submitBtn) await user.click(submitBtn);
@@ -157,7 +161,8 @@ describe('Auth Page', () => {
       await user.type(screen.getByLabelText(/email/i), 'invalid-email');
       await user.type(screen.getByLabelText(/password/i), 'ValidPass1');
 
-      const submitBtn = screen.getAllByRole('button').find(btn =>
+      const buttons = screen.getAllByRole('button') as HTMLButtonElement[];
+      const submitBtn = buttons.find((btn) =>
         btn.getAttribute('type') === 'submit'
       );
       if (submitBtn) await user.click(submitBtn);
@@ -175,7 +180,8 @@ describe('Auth Page', () => {
       await user.type(screen.getByLabelText(/email/i), 'valid@example.com');
       await user.type(screen.getByLabelText(/password/i), 'ValidPass1');
 
-      const submitBtn = screen.getAllByRole('button').find(btn =>
+      const buttons = screen.getAllByRole('button') as HTMLButtonElement[];
+      const submitBtn = buttons.find((btn) =>
         btn.getAttribute('type') === 'submit'
       );
       if (submitBtn) await user.click(submitBtn);
@@ -192,7 +198,8 @@ describe('Auth Page', () => {
       render(<Auth />);
 
       // Switch to signup mode
-      const signupToggle = screen.getAllByRole('button').find(btn =>
+      const buttons = screen.getAllByRole('button') as HTMLButtonElement[];
+      const signupToggle = buttons.find((btn) =>
         btn.textContent?.toLowerCase().includes('sign up') ||
         btn.textContent?.toLowerCase().includes('signup')
       );
@@ -202,7 +209,8 @@ describe('Auth Page', () => {
       await user.type(screen.getByLabelText(/email/i), 'test@example.com');
       await user.type(screen.getByLabelText(/password/i), 'ValidPass1');
 
-      const submitBtn = screen.getAllByRole('button').find(btn =>
+      const allButtons = screen.getAllByRole('button') as HTMLButtonElement[];
+      const submitBtn = allButtons.find((btn) =>
         btn.getAttribute('type') === 'submit'
       );
       if (submitBtn) await user.click(submitBtn);
@@ -225,7 +233,8 @@ describe('Auth Page', () => {
       await user.type(screen.getByLabelText(/email/i), 'test@example.com');
       await user.type(screen.getByLabelText(/password/i), 'ValidPass1');
 
-      const submitBtn = screen.getAllByRole('button').find(btn =>
+      const buttons = screen.getAllByRole('button') as HTMLButtonElement[];
+      const submitBtn = buttons.find((btn) =>
         btn.getAttribute('type') === 'submit'
       );
       if (submitBtn) await user.click(submitBtn);
@@ -245,7 +254,8 @@ describe('Auth Page', () => {
       const user = userEvent.setup();
       render(<Auth />);
 
-      const signupToggle = screen.getAllByRole('button').find(btn =>
+      const buttons = screen.getAllByRole('button') as HTMLButtonElement[];
+      const signupToggle = buttons.find((btn) =>
         btn.textContent?.toLowerCase().includes('sign up') ||
         btn.textContent?.toLowerCase().includes('signup')
       );
@@ -255,7 +265,8 @@ describe('Auth Page', () => {
       await user.type(screen.getByLabelText(/email/i), 'existing@example.com');
       await user.type(screen.getByLabelText(/password/i), 'ValidPass1');
 
-      const submitBtn = screen.getAllByRole('button').find(btn =>
+      const allButtons = screen.getAllByRole('button') as HTMLButtonElement[];
+      const submitBtn = allButtons.find((btn) =>
         btn.getAttribute('type') === 'submit'
       );
       if (submitBtn) await user.click(submitBtn);
