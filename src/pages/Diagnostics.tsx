@@ -17,7 +17,9 @@ import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { RefreshCw, Server, User, Shield, Clock, AlertTriangle, Database, Wifi, Trash2 } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { RefreshCw, Server, User, Shield, Clock, AlertTriangle, Database, Wifi, Trash2, TestTube2 } from 'lucide-react';
+import { SmokeTester } from '@/components/common/SmokeTester';
 import { useNetworkQuality, getNetworkStatus } from '@/lib/network-utils';
 
 interface LatencyTest {
@@ -156,7 +158,7 @@ export default function Diagnostics() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-4xl">
+    <div className="container mx-auto px-4 py-8 max-w-5xl">
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-3xl font-bold flex items-center gap-3">
@@ -169,6 +171,20 @@ export default function Diagnostics() {
           {environment.toUpperCase()}
         </Badge>
       </div>
+
+      <Tabs defaultValue="system" className="space-y-6">
+        <TabsList className="grid w-full max-w-md grid-cols-2">
+          <TabsTrigger value="system" className="gap-2">
+            <Server className="w-4 h-4" />
+            Système
+          </TabsTrigger>
+          <TabsTrigger value="smoke" className="gap-2">
+            <TestTube2 className="w-4 h-4" />
+            Tests de Fumée
+          </TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="system">
 
       <div className="grid gap-6 md:grid-cols-2">
         {/* Auth Status */}
@@ -390,6 +406,12 @@ export default function Diagnostics() {
           </div>
         </CardContent>
       </Card>
+        </TabsContent>
+
+        <TabsContent value="smoke">
+          <SmokeTester />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 }
