@@ -70,6 +70,7 @@ export interface ExitKey {
   timeframe: string;
   linkedPyramids: PyramidType[];  // Systèmes où cette clé fonctionne
   targetPyramids: PyramidType[];  // Systèmes de destination
+  destinationCountryId?: string;  // If set, this key ONLY applies to this specific destination country
   // Execution details (optional, for expanded view)
   requirements: string[];
   steps: ExitKeyStep[];
@@ -102,6 +103,7 @@ export const EXIT_KEYS: ExitKey[] = [
     timeframe: '7-10 ans',
     linkedPyramids: ['STABILITY_REDIS'],
     targetPyramids: ['COMPETENCE_TRUST'],
+    destinationCountryId: 'switzerland', // This strategy ONLY applies to Switzerland
     requirements: [
       'Diplôme médical/paramédical reconnu',
       'Maîtrise du français ou allemand',

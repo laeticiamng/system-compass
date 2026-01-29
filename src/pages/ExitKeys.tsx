@@ -200,8 +200,20 @@ export default function ExitKeys() {
       }
     }
     
+    // CRITICAL: Filter by destination country - only show country-specific keys if destination matches
+    if (selectedDestinationId) {
+      results = results.filter(r => {
+        // If key has a specific destination country, only show if it matches selected destination
+        if (r.key.destinationCountryId) {
+          return r.key.destinationCountryId === selectedDestinationId;
+        }
+        // Generic keys (no specific country) are always shown
+        return true;
+      });
+    }
+    
     return results;
-  }, [userContext, professionId]);
+  }, [userContext, professionId, selectedDestinationId]);
 
   // Nationality advantages
   const nationalityAdvantages = useMemo(() => {
