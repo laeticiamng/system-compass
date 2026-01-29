@@ -16,13 +16,15 @@ import {
   Clock, 
   Euro, 
   Search,
-  ExternalLink,
   MessageCircle,
   CheckCircle2,
   Shield,
-  Award
+  Award,
+  Video
 } from 'lucide-react';
 import { toast } from 'sonner';
+import { ExpertProfileDialog } from '@/components/marketplace/ExpertProfileDialog';
+import { VideoConsultationDialog } from '@/components/marketplace/VideoConsultationBooking';
 
 interface Expert {
   id: string;
@@ -178,6 +180,9 @@ export default function ExpertMarketplace() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedType, setSelectedType] = useState('all');
   const [selectedCountry, setSelectedCountry] = useState('all');
+  const [selectedExpert, setSelectedExpert] = useState<Expert | null>(null);
+  const [showProfile, setShowProfile] = useState(false);
+  const [showBooking, setShowBooking] = useState(false);
 
   const allCountries = useMemo(() => {
     const countries = new Set<string>();
@@ -196,6 +201,16 @@ export default function ExpertMarketplace() {
       return matchesType && matchesCountry && matchesSearch;
     });
   }, [selectedType, selectedCountry, searchQuery]);
+
+  const handleViewProfile = (expert: Expert) => {
+    setSelectedExpert(expert);
+    setShowProfile(true);
+  };
+
+  const handleBookConsultation = (expert: Expert) => {
+    setSelectedExpert(expert);
+    setShowBooking(true);
+  };
 
   const handleContact = (expert: Expert) => {
     toast.success(`Demande de contact envoyée à ${expert.name}`, {
@@ -395,14 +410,31 @@ export default function ExpertMarketplace() {
                       <Button 
                         variant="outline" 
                         size="sm"
-                        onClick={() => toast.info('Profil complet bientôt disponible')}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleViewProfile(expert);
+                        }}
                       >
-                        <ExternalLink className="h-4 w-4 mr-1" />
+                        <Star className="h-4 w-4 mr-1" />
                         Profil
                       </Button>
                       <Button 
                         size="sm"
-                        onClick={() => handleContact(expert)}
+                        variant="secondary"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleBookConsultation(expert);
+                        }}
+                      >
+                        <Video className="h-4 w-4 mr-1" />
+                        Réserver
+                      </Button>
+                      <Button 
+                        size="sm"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleContact(expert);
+                        }}
                       >
                         <MessageCircle className="h-4 w-4 mr-1" />
                         Contact
@@ -442,6 +474,29 @@ export default function ExpertMarketplace() {
           </Button>
         </CardContent>
       </Card>
+
+      {/* Expert Profile Dialog */}
+      {selectedExpert && (
+        <ExpertProfileDialog
+          expert={selectedExpert}
+          open={showProfile}
+          onOpenChange={setShowProfile}
+        />
+      )}
+
+      {/* Video Consultation Dialog */}
+      {selectedExpert && (
+        <VideoConsultationDialog
+          expert={{
+            ...selectedExpert,
+            pricePerHour: selectedExpert.priceRange.min,
+            currency: selectedExpert.priceRange.currency,
+            availableSlots: [],
+          }}
+          open={showBooking}
+          onOpenChange={setShowBooking}
+        />
+      )}
     </div>
   );
 }

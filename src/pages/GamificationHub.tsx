@@ -11,7 +11,8 @@ import {
   Lock,
   CheckCircle,
   Clock,
-  Zap
+  Zap,
+  Compass
 } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -20,10 +21,11 @@ import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useGamification } from '@/hooks/useGamification';
+import { DestinationQuests } from '@/components/gamification/DestinationQuests';
 import { 
   BADGES, 
   LEVEL_THRESHOLDS, 
-  PHASES, 
+  PHASES,
   DAILY_CHALLENGES,
   WEEKLY_CHALLENGES,
   calculateLevel,
@@ -169,7 +171,7 @@ function ChallengeCard({
   challenge, 
   type 
 }: { 
-  challenge: typeof DAILY_CHALLENGES[0]; 
+  challenge: { id: string; title: string; description: string; xpReward: number }; 
   type: 'daily' | 'weekly';
 }) {
   const progress = Math.floor(Math.random() * 100); // Mock progress
@@ -273,18 +275,22 @@ export default function GamificationHub() {
       
       {/* Tabs */}
       <Tabs value={activeTab} onValueChange={setActiveTab} className="mt-6 space-y-6">
-        <TabsList className="grid w-full max-w-lg mx-auto grid-cols-3">
+        <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-4">
           <TabsTrigger value="overview" className="gap-2">
             <TrendingUp className="w-4 h-4" />
             Vue d'ensemble
           </TabsTrigger>
-          <TabsTrigger value="badges" className="gap-2">
-            <Medal className="w-4 h-4" />
-            Badges
-          </TabsTrigger>
           <TabsTrigger value="challenges" className="gap-2">
             <Target className="w-4 h-4" />
             Défis
+          </TabsTrigger>
+          <TabsTrigger value="quests" className="gap-2">
+            <Compass className="w-4 h-4" />
+            Quêtes
+          </TabsTrigger>
+          <TabsTrigger value="badges" className="gap-2">
+            <Medal className="w-4 h-4" />
+            Badges
           </TabsTrigger>
         </TabsList>
         
@@ -390,6 +396,10 @@ export default function GamificationHub() {
               Commencer un défi
             </Button>
           </div>
+        </TabsContent>
+
+        <TabsContent value="quests" className="space-y-6">
+          <DestinationQuests />
         </TabsContent>
       </Tabs>
     </div>
