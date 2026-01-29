@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { validate, validationErrorResponse } from "../_shared/validation.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -107,14 +108,21 @@ serve(async (req) => {
   }
 
   try {
-    const { country, sector_focus, audience, language = 'fr' } = await req.json() as FinancialIntelRequest;
+    const body = await req.json();
+    
+    // Validate input with schema validation
+    const validation = validate<FinancialIntelRequest>(body)
+      .string('country', { required: true, min: 2, max: 100 })
+      .string('sector_focus', { max: 200 })
+      .string('audience', { max: 200 })
+      .enum('language', ['fr', 'en', 'es', 'de', 'pt', 'ar', 'zh'], { default: 'fr' })
+      .validate();
 
-    if (!country) {
-      return new Response(
-        JSON.stringify({ error: 'Country is required' }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+    if (!validation.success) {
+      return validationErrorResponse(validation.errors!, corsHeaders);
     }
+
+    const { country, sector_focus, audience, language } = validation.data!;
 
     console.log(`Financial Intel request for: ${country}, sector: ${sector_focus}, audience: ${audience}, lang: ${language}`);
 
