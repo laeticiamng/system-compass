@@ -14,9 +14,12 @@ import {
   ArrowRight,
   Gift,
   TrendingUp,
-  Globe2
+  Globe2,
+  Calculator
 } from 'lucide-react';
 import { toast } from 'sonner';
+import { PartnerCostCalculator } from '@/components/partners/PartnerCostCalculator';
+import { InsuranceComparator } from '@/components/partners/InsuranceComparator';
 
 interface Partner {
   id: string;
@@ -228,6 +231,7 @@ const PARTNERS: Partner[] = [
 
 const CATEGORIES = [
   { value: 'all', label: 'Tous', icon: Globe2 },
+  { value: 'calculators', label: 'Comparateurs', icon: Calculator },
   { value: 'banking', label: 'Banque', icon: Landmark },
   { value: 'insurance', label: 'Assurance', icon: Shield },
   { value: 'travel', label: 'Voyage', icon: Plane },
@@ -327,6 +331,12 @@ export default function PartnerIntegrations() {
             </Card>
           ))}
         </div>
+      </div>
+
+      {/* Calculators Section */}
+      <div className="space-y-6">
+        <PartnerCostCalculator />
+        <InsuranceComparator />
       </div>
 
       {/* All Partners by Category */}
