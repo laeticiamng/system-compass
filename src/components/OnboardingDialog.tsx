@@ -33,7 +33,7 @@ const steps: OnboardingStep[] = [
     icon: <Target className="w-12 h-12" />,
     titleKey: 'onboarding.step2.title',
     descriptionKey: 'onboarding.step2.description',
-    color: 'text-green-500'
+    color: 'text-emerald-500'
   },
   {
     icon: <Calculator className="w-12 h-12" />,
@@ -51,7 +51,7 @@ const steps: OnboardingStep[] = [
     icon: <Gamepad2 className="w-12 h-12" />,
     titleKey: 'onboarding.step5.title',
     descriptionKey: 'onboarding.step5.description',
-    color: 'text-orange-500'
+    color: 'text-amber-500'
   }
 ];
 
