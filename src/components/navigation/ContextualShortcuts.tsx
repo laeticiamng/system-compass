@@ -107,8 +107,9 @@ export function ContextualShortcuts() {
 
   const shortcuts = getShortcuts();
 
-  // Hide on home page (sidebar is enough) and tools hub
-  if (location.pathname === '/' || location.pathname === '/tools') {
+  // Hide on specific pages where it's not needed or may interfere
+  const hiddenRoutes = ['/', '/tools', '/experts', '/marketplace', '/partner'];
+  if (hiddenRoutes.some(route => location.pathname === route || location.pathname.startsWith(route + '/'))) {
     return null;
   }
 
