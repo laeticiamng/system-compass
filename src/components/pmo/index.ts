@@ -14,3 +14,7 @@ export { ComplianceAlertSystem } from './ComplianceAlertSystem';
 export { PmoProjectSynthesis } from './PmoProjectSynthesis';
 export { RiskReviewModal } from './RiskReviewModal';
 export { InitiativeDragDrop } from './InitiativeDragDrop';
+export { WhatIfSimulator } from './WhatIfSimulator';
+export { QuickActionsPanel } from './QuickActionsPanel';
+export { KpiDashboard } from './KpiDashboard';
+export { ProjectSummaryPdf } from './ProjectSummaryPdf';

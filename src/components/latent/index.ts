@@ -15,3 +15,8 @@ export { ExportToTraceOS } from './ExportToTraceOS';
 export { LatentTensionMap } from './LatentTensionMap';
 export { LatentEscalationRules } from './LatentEscalationRules';
 export { LatentProgressIndicator } from './LatentProgressIndicator';
+export { StatusChangeHistory } from './StatusChangeHistory';
+export { TensionIntensityScore } from './TensionIntensityScore';
+export { PredictiveAnalysis } from './PredictiveAnalysis';
+export { TensionAnalytics } from './TensionAnalytics';
+export { ZoneRecommendations } from './ZoneRecommendations';
