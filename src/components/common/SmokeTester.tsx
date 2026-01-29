@@ -30,8 +30,8 @@ interface SmokeTestResult {
 }
 
 export function SmokeTester() {
-  const { t } = useTranslation();
-  const { user, signOut, signIn } = useAuth();
+  useTranslation();
+  const { user } = useAuth();
   const [running, setRunning] = useState(false);
   const [results, setResults] = useState<SmokeTestResult[]>([]);
   const [progress, setProgress] = useState(0);
@@ -129,7 +129,7 @@ export function SmokeTester() {
             };
           }
           
-          const { data, error } = await supabase
+          const { error } = await supabase
             .from('profiles')
             .select('id')
             .eq('id', user.id)

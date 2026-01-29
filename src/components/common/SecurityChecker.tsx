@@ -10,7 +10,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Shield, AlertTriangle, CheckCircle2, Eye, EyeOff, Lock, Unlock } from 'lucide-react';
+import { Shield, AlertTriangle, CheckCircle2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface SecurityCheck {
@@ -28,7 +28,7 @@ interface SecurityResult {
 }
 
 export function SecurityChecker() {
-  const { t } = useTranslation();
+  useTranslation();
   const { user } = useAuth();
   const [results, setResults] = useState<SecurityResult[]>([]);
   const [loading, setLoading] = useState(false);

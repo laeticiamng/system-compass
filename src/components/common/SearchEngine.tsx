@@ -10,7 +10,7 @@ import { useCountries } from '@/lib/countries-store';
 import { useSavedCountries } from '@/components/common/SavedCountriesButton';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Search, ArrowRight, Globe, Key, Calculator, Filter, Users, FileText } from 'lucide-react';
 import { cn } from '@/lib/utils';
