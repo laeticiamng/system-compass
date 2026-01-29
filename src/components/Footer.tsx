@@ -15,7 +15,6 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
   const resetOnboarding = useResetOnboarding();
 
-
   return (
     <footer className="border-t border-border/50 bg-background/50 backdrop-blur-sm pb-safe">
       <div className="container mx-auto px-4 py-6 sm:py-8">
@@ -30,12 +29,18 @@ export function Footer() {
                 Pyramid <span className="gold-text">Compass</span>
               </span>
             </Link>
-            <p className="text-xs sm:text-sm text-muted-foreground">
+            <p className="text-xs sm:text-sm text-muted-foreground mb-3">
               {t('common.tagline')}
             </p>
+            <Link 
+              to="/tools" 
+              className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
+            >
+              🧭 {t('footer.allTools', 'Voir tous les outils')} →
+            </Link>
           </div>
 
-          {/* Navigation */}
+          {/* Discover */}
           <div>
             <h4 className="font-semibold text-sm sm:text-base mb-2 sm:mb-4">{t('footer.explore')}</h4>
             <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-muted-foreground">
@@ -43,38 +48,25 @@ export function Footer() {
               <li><Link to="/world-map" className="hover:text-foreground transition-colors block py-0.5">{t('nav.worldMap', 'Carte monde')}</Link></li>
               <li><Link to="/pyramid-types" className="hover:text-foreground transition-colors block py-0.5">{t('nav.pyramids')}</Link></li>
               <li><Link to="/compare" className="hover:text-foreground transition-colors block py-0.5">{t('nav.compare')}</Link></li>
-              <li><Link to="/terrain" className="hover:text-foreground transition-colors block py-0.5">🗺️ {t('nav.terrainRealities', 'Réalités Terrain')}</Link></li>
-              <li><Link to="/errors-illusions" className="hover:text-foreground transition-colors block py-0.5">{t('nav.errorsIllusions', 'Erreurs')}</Link></li>
-              <li><Link to="/resources" className="hover:text-foreground transition-colors block py-0.5">{t('nav.resources')}</Link></li>
+              <li><Link to="/terrain" className="hover:text-foreground transition-colors block py-0.5">{t('nav.terrainRealities', 'Réalités Terrain')}</Link></li>
             </ul>
           </div>
 
-          {/* Tools */}
+          {/* Tools - Simplified */}
           <div>
             <h4 className="font-semibold text-sm sm:text-base mb-2 sm:mb-4">{t('footer.tools')}</h4>
             <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-muted-foreground">
               <li><Link to="/exit-keys" className="hover:text-foreground transition-colors block py-0.5">{t('nav.exitKeys')}</Link></li>
-              <li><Link to="/exit-keys/catalog" className="hover:text-foreground transition-colors block py-0.5">📋 {t('nav.exitKeysCatalog', 'Catalogue Clés')}</Link></li>
-              <li><Link to="/exit-keys/compare" className="hover:text-foreground transition-colors block py-0.5">⚖️ {t('nav.exitKeysCompare', 'Comparer Clés')}</Link></li>
-              <li><Link to="/prevention-filter" className="hover:text-foreground transition-colors block py-0.5">{t('nav.preventionFilter')}</Link></li>
-              <li><Link to="/fiscal-calculator" className="hover:text-foreground transition-colors block py-0.5">💰 {t('nav.fiscalCalculator', 'Calculateur Fiscal')}</Link></li>
-              <li><Link to="/pyramid-quiz" className="hover:text-foreground transition-colors block py-0.5">🎮 {t('nav.pyramidQuiz', 'Jeu Pyramides')}</Link></li>
-              <li><Link to="/life-game" className="hover:text-foreground transition-colors block py-0.5">🎲 {t('nav.lifeGame', 'Mode Éducatif')}</Link></li>
-              <li><Link to="/profile-test" className="hover:text-foreground transition-colors block py-0.5">{t('nav.profileTest', 'Test Profil')}</Link></li>
               <li><Link to="/quick-test" className="hover:text-foreground transition-colors block py-0.5">{t('nav.quickTest', 'Test Rapide')}</Link></li>
-              <li><Link to="/profile-matcher" className="hover:text-foreground transition-colors block py-0.5">🎯 {t('nav.profileMatcher', 'Matcher Pays')}</Link></li>
-              <li><Link to="/life-trajectory" className="hover:text-foreground transition-colors block py-0.5">📈 {t('nav.lifeTrajectory', 'Trajectoire')}</Link></li>
-              <li><Link to="/financial-safety-intel" className="hover:text-foreground transition-colors block py-0.5">{t('nav.financialIntel', 'Intel Financière')}</Link></li>
-              <li><Link to="/personas" className="hover:text-foreground transition-colors block py-0.5">👤 {t('nav.personas', 'Parcours Persona')}</Link></li>
-              <li><Link to="/gamification" className="hover:text-foreground transition-colors block py-0.5">🏆 {t('nav.gamification', 'Progression')}</Link></li>
-              <li><Link to="/experts" className="hover:text-foreground transition-colors block py-0.5">🎓 {t('nav.experts', 'Marketplace Experts')}</Link></li>
-              <li><Link to="/community" className="hover:text-foreground transition-colors block py-0.5">💬 {t('nav.community', 'Communauté')}</Link></li>
-              <li><Link to="/partner-services" className="hover:text-foreground transition-colors block py-0.5">🤝 {t('nav.partnerServices', 'Services Partenaires')}</Link></li>
-              <li><Link to="/latent" className="hover:text-foreground transition-colors block py-0.5">🔍 {t('footer.potentialZones')}</Link></li>
-              <li><Link to="/institutions" className="hover:text-foreground transition-colors block py-0.5">🏛️ {t('footer.businessInstitutions')}</Link></li>
-              <li><Link to="/ovi" className="hover:text-foreground transition-colors block py-0.5">{t('nav.ovi', 'OVI')}</Link></li>
-              <li><Link to="/irreversa" className="hover:text-foreground transition-colors block py-0.5">{t('nav.irreversa', 'Irreversa')}</Link></li>
-              <li><Link to="/install" className="hover:text-foreground transition-colors block py-0.5">📱 {t('pwa.title', 'Installer l\'app')}</Link></li>
+              <li><Link to="/profile-matcher" className="hover:text-foreground transition-colors block py-0.5">{t('nav.profileMatcher', 'Matcher Pays')}</Link></li>
+              <li><Link to="/fiscal-calculator" className="hover:text-foreground transition-colors block py-0.5">{t('nav.fiscalCalculator', 'Calculateur Fiscal')}</Link></li>
+              <li><Link to="/pyramid-quiz" className="hover:text-foreground transition-colors block py-0.5">{t('nav.pyramidQuiz', 'Jeu Pyramides')}</Link></li>
+              <li><Link to="/gamification" className="hover:text-foreground transition-colors block py-0.5">{t('nav.gamification', 'Progression')}</Link></li>
+              <li>
+                <Link to="/tools" className="hover:text-foreground transition-colors block py-0.5 text-primary font-medium">
+                  + {t('footer.seeAll', 'Voir tout')}
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -83,15 +75,12 @@ export function Footer() {
             <h4 className="font-semibold text-sm sm:text-base mb-2 sm:mb-4">{t('footer.account')}</h4>
             <ul className="grid grid-cols-2 sm:grid-cols-1 gap-1.5 sm:gap-2 text-xs sm:text-sm text-muted-foreground">
               <li><Link to="/dashboard" className="hover:text-foreground transition-colors block py-0.5">{t('nav.dashboard')}</Link></li>
-              <li><Link to="/pricing" className="hover:text-foreground transition-colors font-medium text-primary block py-0.5">💎 {t('nav.pricing')}</Link></li>
-              <li><Link to="/usage" className="hover:text-foreground transition-colors block py-0.5">📊 {t('nav.usage', 'Consommation')}</Link></li>
-              <li><Link to="/settings/notifications" className="hover:text-foreground transition-colors block py-0.5">🔔 {t('nav.notifications', 'Notifications')}</Link></li>
+              <li><Link to="/pricing" className="hover:text-foreground transition-colors font-medium text-primary block py-0.5">{t('nav.pricing')}</Link></li>
               <li><Link to="/auth" className="hover:text-foreground transition-colors block py-0.5">{t('auth.login')}</Link></li>
               <li><Link to="/about" className="hover:text-foreground transition-colors block py-0.5">{t('footer.about')}</Link></li>
-              <li><Link to="/how-to-read" className="hover:text-foreground transition-colors block py-0.5">{t('nav.howToRead', 'Guide Lecture')}</Link></li>
-              <li><Link to="/partners" className="hover:text-foreground transition-colors block py-0.5">{t('nav.partners', 'Partenaires')}</Link></li>
+              <li><Link to="/how-to-read" className="hover:text-foreground transition-colors block py-0.5">{t('nav.howToRead', 'Guide')}</Link></li>
               <li><Link to="/b2b" className="hover:text-foreground transition-colors block py-0.5">{t('nav.b2b', 'B2B')}</Link></li>
-              <li><Link to="/disclaimer" className="hover:text-foreground transition-colors text-amber-500/80 hover:text-amber-500 block py-0.5">⚠️ {t('footer.warnings')}</Link></li>
+              <li><Link to="/disclaimer" className="hover:text-foreground transition-colors text-warning block py-0.5">{t('footer.warnings')}</Link></li>
             </ul>
           </div>
         </div>
