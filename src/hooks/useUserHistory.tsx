@@ -151,8 +151,15 @@ export function useUserHistory() {
       }));
   }, [history]);
 
+  // Get unique countries viewed
+  const countries = history
+    .filter(h => h.type === 'country_view')
+    .map(h => h.id)
+    .filter((id, index, self) => self.indexOf(id) === index);
+
   return {
     history,
+    countries,
     isLoading,
     addEntry,
     trackCountryView,

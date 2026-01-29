@@ -31,7 +31,6 @@ import {
   getRarityColor,
   getRarityBgColor,
   type Badge as BadgeType,
-  type UserLevel,
   type UserPhase
 } from '@/lib/gamification-system';
 import { cn } from '@/lib/utils';
@@ -228,8 +227,15 @@ function StreakCard({ streak }: { streak: number }) {
 export default function GamificationHub() {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('overview');
+  const { progress, isLoading } = useGamification();
   
-  const userProgress = mockUserProgress;
+  const userProgress = progress || {
+    xp: 0,
+    level: 'dreamer' as const,
+    badges: [] as string[],
+    phase: 'exploration' as const,
+    streak: 0,
+  };
   const unlockedBadges = userProgress.badges;
   
   const badgesByCategory = {
@@ -238,6 +244,16 @@ export default function GamificationHub() {
     social: BADGES.filter(b => b.category === 'social'),
     rare: BADGES.filter(b => b.category === 'rare'),
   };
+  
+  if (isLoading) {
+    return (
+      <div className="container max-w-6xl mx-auto py-8 px-4">
+        <div className="flex items-center justify-center min-h-[400px]">
+          <Skeleton className="h-8 w-48" />
+        </div>
+      </div>
+    );
+  }
   
   return (
     <div className="container max-w-6xl mx-auto py-8 px-4">
