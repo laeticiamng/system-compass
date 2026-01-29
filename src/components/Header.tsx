@@ -299,7 +299,9 @@ export function Header() {
           </div>
           {user && <NotificationBell />}
           {user && <span className="hidden sm:inline"><UserHistoryPanel /></span>}
-          <LanguageSwitcher />
+          <div className="hidden xl:block">
+            <LanguageSwitcher />
+          </div>
 
           {/* Auth button - Desktop */}
           <div className="hidden md:flex items-center gap-2">
@@ -442,6 +444,13 @@ export function Header() {
                     </Link>
                   );
                 })}
+                
+                {/* Mobile Language Switcher */}
+                <div className="border-t border-border my-3" />
+                <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">{t('nav.language', 'Langue')}</div>
+                <div className="px-4 py-2">
+                  <LanguageSwitcher className="w-full justify-start" />
+                </div>
                 
                 <div className="border-t border-border my-3" />
                 
