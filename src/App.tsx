@@ -15,6 +15,7 @@ import { DialogCoordinatorProvider } from "@/components/DialogCoordinator";
 import { RequireAdmin } from "@/components/RequireAdmin";
 import { OfflineBanner } from "@/components/ui/offline-banner";
 import { CookieConsent } from "@/components/ui/cookie-consent";
+import { ContextualShortcuts } from "@/components/navigation";
 
 // Eagerly loaded pages (small, frequently accessed)
 import Index from "./pages/Index";
@@ -194,6 +195,7 @@ const App = () => (
                     </Routes>
                   </main>
                   <Footer />
+                  <ContextualShortcuts />
                   <OfflineBanner />
                   <CookieConsent />
                 </div>
