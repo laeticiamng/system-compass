@@ -1,7 +1,8 @@
-// Main Application Router - v1.2.0 with Lazy Loading + Offline Support
+// Main Application Router - v1.3.0 with Global Sidebar Navigation
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
@@ -15,7 +16,7 @@ import { DialogCoordinatorProvider } from "@/components/DialogCoordinator";
 import { RequireAdmin } from "@/components/RequireAdmin";
 import { OfflineBanner } from "@/components/ui/offline-banner";
 import { CookieConsent } from "@/components/ui/cookie-consent";
-import { ContextualShortcuts } from "@/components/navigation";
+import { ContextualShortcuts, AppSidebar } from "@/components/navigation";
 
 // Eagerly loaded pages (small, frequently accessed)
 import Index from "./pages/Index";
@@ -99,13 +100,16 @@ const App = () => (
             <Toaster />
             <Sonner />
             <BrowserRouter>
-              <DialogCoordinatorProvider>
-                <DisclaimerConsentDialog />
-                <OnboardingDialog />
-                <div className="min-h-screen flex flex-col">
-                  <Header />
-                  <main className="flex-1">
-                    <Routes>
+              <SidebarProvider defaultOpen={false}>
+                <DialogCoordinatorProvider>
+                  <DisclaimerConsentDialog />
+                  <OnboardingDialog />
+                  <div className="min-h-screen flex w-full">
+                    <AppSidebar />
+                    <div className="flex-1 flex flex-col min-w-0">
+                      <Header />
+                      <main className="flex-1">
+                        <Routes>
                       {/* Eager routes - frequently accessed, small */}
                       <Route path="/" element={<Index />} />
                       <Route path="/auth" element={<Auth />} />
@@ -192,14 +196,16 @@ const App = () => (
 
                       {/* 404 */}
                       <Route path="*" element={<NotFound />} />
-                    </Routes>
-                  </main>
-                  <Footer />
-                  <ContextualShortcuts />
-                  <OfflineBanner />
-                  <CookieConsent />
-                </div>
-              </DialogCoordinatorProvider>
+                        </Routes>
+                      </main>
+                      <Footer />
+                      <ContextualShortcuts />
+                      <OfflineBanner />
+                      <CookieConsent />
+                    </div>
+                  </div>
+                </DialogCoordinatorProvider>
+              </SidebarProvider>
             </BrowserRouter>
           </TooltipProvider>
         </FeatureFlagProvider>
