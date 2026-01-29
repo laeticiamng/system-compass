@@ -17,9 +17,12 @@ import {
   ArrowRight,
   Hash,
   Mic,
-  Video
+  Video,
+  CheckCircle2
 } from 'lucide-react';
 import { toast } from 'sonner';
+import { useEventRegistration } from '@/hooks/useEventRegistration';
+import { NewsletterSignup } from '@/components/community/NewsletterSignup';
 
 interface DiscordChannel {
   name: string;
@@ -97,11 +100,25 @@ const CONTENT_RESOURCES = [
 ];
 
 export default function Community() {
+  const { register, isRegistered, isLoading } = useEventRegistration();
+
   const handleJoinDiscord = () => {
     toast.success('Redirection vers Discord', {
       description: 'Rejoignez notre communauté de +5000 membres !',
     });
     // In production: window.open('https://discord.gg/systemcompass', '_blank');
+  };
+
+  const handleEventRegister = async (event: typeof UPCOMING_EVENTS[0]) => {
+    const success = await register({
+      eventId: event.id,
+      eventTitle: event.title,
+      eventDate: event.date,
+      eventType: event.type as 'webinar' | 'meetup' | 'workshop' | 'ama',
+    });
+    if (success) {
+      toast.success(`Inscrit à "${event.title}"`);
+    }
   };
 
   return (
@@ -244,14 +261,22 @@ export default function Community() {
                     {event.location && <p>{event.location}</p>}
                   </div>
 
-                  <Button 
-                    variant="outline" 
-                    className="w-full"
-                    onClick={() => toast.info('Inscription aux événements bientôt disponible')}
-                  >
-                    S'inscrire
-                    <ArrowRight className="h-4 w-4 ml-2" />
-                  </Button>
+                  {isRegistered(event.id) ? (
+                    <Button variant="secondary" className="w-full" disabled>
+                      <CheckCircle2 className="h-4 w-4 mr-2 text-emerald-500" />
+                      Inscrit
+                    </Button>
+                  ) : (
+                    <Button 
+                      variant="outline" 
+                      className="w-full"
+                      onClick={() => handleEventRegister(event)}
+                      disabled={isLoading}
+                    >
+                      S'inscrire
+                      <ArrowRight className="h-4 w-4 ml-2" />
+                    </Button>
+                  )}
                 </div>
               </CardContent>
             </Card>
@@ -325,6 +350,9 @@ export default function Community() {
         </CardContent>
       </Card>
 
+      {/* Newsletter Signup */}
+      <NewsletterSignup />
+
       {/* CTA */}
       <Card className="glass-card-elevated bg-gradient-to-r from-primary/10 to-primary/5">
         <CardContent className="p-8 text-center">
@@ -337,10 +365,6 @@ export default function Community() {
             <Button size="lg" onClick={handleJoinDiscord}>
               <MessageCircle className="h-5 w-5 mr-2" />
               Rejoindre Discord
-            </Button>
-            <Button size="lg" variant="outline" onClick={() => toast.info('Newsletter bientôt disponible')}>
-              <BookOpen className="h-5 w-5 mr-2" />
-              S'abonner à la newsletter
             </Button>
           </div>
         </CardContent>

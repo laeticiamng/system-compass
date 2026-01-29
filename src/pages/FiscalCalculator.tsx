@@ -9,7 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { useToast } from '@/hooks/use-toast';
+import { toast } from 'sonner';
 import { 
   FISCAL_SYSTEMS, 
   FISCAL_SYSTEMS_EXTENDED, 
@@ -18,6 +18,7 @@ import {
   getFiscalSummary,
   type NetSalaryResult 
 } from '@/lib/fiscal-data';
+import { exportFiscalComparisonPDF, exportSingleCountryPDF } from '@/lib/fiscal-pdf-export';
 import { cn } from '@/lib/utils';
 
 const COUNTRY_NAMES: Record<string, string> = {
@@ -226,7 +227,6 @@ function ComparisonResult({
 
 export default function FiscalCalculator() {
   const { t } = useTranslation();
-  const { toast } = useToast();
   
   // State
   const [originCountry, setOriginCountry] = useState('france');
@@ -249,10 +249,25 @@ export default function FiscalCalculator() {
   const originSummary = useMemo(() => getFiscalSummary(originCountry), [originCountry]);
   
   const handleExportPDF = () => {
-    toast({
-      title: "Export PDF",
-      description: "Fonctionnalité d'export en cours de développement",
-    });
+    if (comparison && comparison.country1 && comparison.country2) {
+      exportFiscalComparisonPDF({
+        originCountry,
+        originCountryName: COUNTRY_NAMES[originCountry] || originCountry,
+        originResult: comparison.country1,
+        destinationCountry,
+        destinationCountryName: COUNTRY_NAMES[destinationCountry] || destinationCountry,
+        destinationResult: comparison.country2,
+        analysis: comparison.analysis,
+      });
+      toast.success('PDF généré avec succès !');
+    } else if (originResult) {
+      exportSingleCountryPDF(
+        originCountry,
+        COUNTRY_NAMES[originCountry] || originCountry,
+        originResult
+      );
+      toast.success('PDF généré avec succès !');
+    }
   };
   
   return (
