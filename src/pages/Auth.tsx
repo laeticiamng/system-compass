@@ -107,26 +107,30 @@ export default function Auth() {
   }
 
   return (
-    <div className="min-h-screen pt-24 pb-16 flex items-center justify-center">
-      <div className="container mx-auto px-4 max-w-md">
+    <div className="min-h-screen pt-24 pb-16 flex items-center justify-center relative overflow-hidden">
+      {/* Background decorations */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
+      
+      <div className="container mx-auto px-4 max-w-md relative">
         <div className="text-center mb-8 animate-fade-in">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-4">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 text-primary mb-4 glow-gold">
             <Compass className="w-8 h-8" />
           </div>
-          <h1 className="font-display text-3xl font-bold mb-2">
+          <h1 className="font-display text-3xl font-bold mb-2 gold-text">
             {isLogin ? t('auth.login') : t('auth.signup')}
           </h1>
           <p className="text-muted-foreground">{t('auth.subtitle')}</p>
         </div>
 
-        <div className="glass-card rounded-xl p-8 animate-scale-in">
+        <div className="glass-card-elevated rounded-xl p-8 animate-scale-in border-primary/10 glow-card">
           {/* Toggle */}
-          <div className="flex gap-2 mb-8">
+          <div className="flex gap-2 mb-8 p-1 rounded-lg bg-muted/50 border border-primary/10">
             <button
               onClick={() => setIsLogin(true)}
               className={cn(
-                "flex-1 py-2 rounded-lg font-medium transition-all",
-                isLogin ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground hover:text-foreground"
+                "flex-1 py-2.5 rounded-md font-medium transition-all",
+                isLogin ? "bg-primary text-primary-foreground shadow-md" : "text-muted-foreground hover:text-foreground hover:bg-muted"
               )}
             >
               <LogIn className="w-4 h-4 inline mr-2" />
@@ -135,8 +139,8 @@ export default function Auth() {
             <button
               onClick={() => setIsLogin(false)}
               className={cn(
-                "flex-1 py-2 rounded-lg font-medium transition-all",
-                !isLogin ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground hover:text-foreground"
+                "flex-1 py-2.5 rounded-md font-medium transition-all",
+                !isLogin ? "bg-primary text-primary-foreground shadow-md" : "text-muted-foreground hover:text-foreground hover:bg-muted"
               )}
             >
               <UserPlus className="w-4 h-4 inline mr-2" />
@@ -221,7 +225,7 @@ export default function Auth() {
 
             <Button 
               type="submit" 
-              className="w-full gap-2"
+              className="w-full gap-2 btn-premium text-primary-foreground"
               disabled={isSubmitting}
             >
               {isSubmitting ? (
