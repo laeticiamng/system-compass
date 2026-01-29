@@ -68,8 +68,17 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
   });
 
   const checkSubscription = useCallback(async () => {
+    // Don't check subscription if user is not authenticated
     if (!user) {
-      setState(prev => ({ ...prev, tier: 'free', subscribed: false, loading: false }));
+      setState(prev => ({ ...prev, tier: 'free', subscribed: false, loading: false, error: null }));
+      return;
+    }
+
+    // Verify we have a valid session before calling the edge function
+    const { data: sessionData } = await supabase.auth.getSession();
+    if (!sessionData.session) {
+      // No valid session, treat as free tier without error
+      setState(prev => ({ ...prev, tier: 'free', subscribed: false, loading: false, error: null }));
       return;
     }
 
@@ -78,7 +87,20 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
     try {
       const { data, error } = await supabase.functions.invoke('check-subscription');
 
-      if (error) throw error;
+      if (error) {
+        // Handle auth errors gracefully - treat as free tier
+        if (error.message?.includes('Auth') || error.message?.includes('authentication')) {
+          setState({
+            tier: 'free',
+            subscribed: false,
+            subscriptionEnd: null,
+            loading: false,
+            error: null,
+          });
+          return;
+        }
+        throw error;
+      }
 
       setState({
         tier: data.tier || 'free',
@@ -89,11 +111,23 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
       });
     } catch (err) {
       console.error('Failed to check subscription:', err);
-      setState(prev => ({
-        ...prev,
-        loading: false,
-        error: err instanceof Error ? err.message : 'Failed to check subscription',
-      }));
+      // For auth-related errors, don't show error to user - just default to free
+      const errorMessage = err instanceof Error ? err.message : 'Failed to check subscription';
+      if (errorMessage.includes('Auth') || errorMessage.includes('session') || errorMessage.includes('2xx')) {
+        setState(prev => ({
+          ...prev,
+          tier: 'free',
+          subscribed: false,
+          loading: false,
+          error: null,
+        }));
+      } else {
+        setState(prev => ({
+          ...prev,
+          loading: false,
+          error: errorMessage,
+        }));
+      }
     }
   }, [user]);
 
