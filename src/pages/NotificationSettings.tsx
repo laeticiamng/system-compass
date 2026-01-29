@@ -26,6 +26,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { useNotificationSettings } from '@/hooks/useNotificationSettings';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
+import { PushNotificationManager } from '@/components/notifications/PushNotificationManager';
 
 export default function NotificationSettings() {
   const { t } = useTranslation();
@@ -340,6 +341,9 @@ export default function NotificationSettings() {
               </Alert>
             </CardContent>
           </Card>
+
+          {/* Advanced Push Notification Manager */}
+          <PushNotificationManager />
 
           {/* Save Button */}
           <div className="flex justify-end gap-4">
