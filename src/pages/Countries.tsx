@@ -3,13 +3,14 @@ import { useCountries } from '@/lib/countries-data';
 import { EXTENDED_COUNTRY_META } from '@/lib/countries-extended';
 import { CountryCard } from '@/components/CountryCard';
 import { PyramidType, Country } from '@/lib/types';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { ChevronLeft, ChevronRight, Search, X, ArrowUpDown, Database } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Search, X, ArrowUpDown, Database, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { motion, useInView } from 'framer-motion';
 
 const ITEMS_PER_PAGE = 12;
 
@@ -45,6 +46,24 @@ const extendedCountries: ExtendedCountryInfo[] = Object.entries(EXTENDED_COUNTRY
   pyramidType: meta.pyramidType,
   isExtended: true as const,
 }));
+
+// Animated section wrapper
+function AnimatedSection({ children, className }: { children: React.ReactNode; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 export default function Countries() {
   const { t } = useTranslation();
@@ -158,183 +177,263 @@ export default function Countries() {
   const isShowingExtended = filter === 'extended';
 
   return (
-    <div className="min-h-screen pt-16 sm:pt-20 md:pt-24 pb-12 sm:pb-16 relative">
-      {/* Decorative background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-40 right-20 w-48 h-48 bg-pyramid-stability/5 rounded-full blur-3xl" />
-      </div>
-      
-      <div className="container mx-auto px-3 sm:px-4 relative z-10">
-        <div className="max-w-2xl mb-6 sm:mb-8 md:mb-12">
-          <h1 className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3 md:mb-4">
-            <span className="gold-text">{t('countries.title')}</span>
-          </h1>
-          <p className="text-muted-foreground text-xs sm:text-sm md:text-base mb-2 sm:mb-3">
-            {t('countries.subtitle')}
-          </p>
-          <p className="text-[10px] sm:text-xs text-muted-foreground/70">
-            {t('common.disclaimer')}
-          </p>
-        </div>
-
-        {/* Search Bar */}
-        <div className="relative max-w-md mb-6">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-          <Input
-            type="text"
-            placeholder={t('countries.searchPlaceholder', 'Rechercher un pays...')}
-            value={searchQuery}
-            onChange={(e) => handleSearchChange(e.target.value)}
-            className="pl-10 pr-10"
+    <div className="min-h-screen bg-background overflow-x-hidden">
+      {/* Hero Section */}
+      <section className="relative pt-24 sm:pt-32 pb-16 sm:pb-24 overflow-hidden">
+        {/* Animated gradient background */}
+        <div className="absolute inset-0">
+          <motion.div 
+            className="absolute top-20 left-1/4 w-[500px] h-[500px] rounded-full"
+            style={{
+              background: 'radial-gradient(circle, hsl(var(--primary) / 0.1) 0%, transparent 70%)',
+            }}
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.5, 0.3],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
           />
-          {searchQuery && (
-            <button
-              onClick={clearSearch}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-            >
-              <X className="w-4 h-4" />
-            </button>
-          )}
+          <motion.div 
+            className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full"
+            style={{
+              background: 'radial-gradient(circle, hsl(var(--pyramid-stability) / 0.08) 0%, transparent 70%)',
+            }}
+            animate={{
+              scale: [1.2, 1, 1.2],
+              opacity: [0.2, 0.4, 0.2],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
         </div>
 
-        {/* Filters */}
-        <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 sm:mb-8">
-          <FilterButton
-            active={filter === 'all'}
-            onClick={() => handleFilterChange('all')}
-          >
-            {t('countries.allSystems')}
-          </FilterButton>
-          {pyramidTypes.map((type) => (
+        <div className="container mx-auto px-4 relative z-10">
+          <AnimatedSection>
+            <div className="max-w-3xl mx-auto text-center mb-12">
+              {/* Badge */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"
+              >
+                <Globe className="w-4 h-4 text-primary" />
+                <span className="text-sm text-primary font-medium">{t('countries.badge', '38 systèmes analysés')}</span>
+              </motion.div>
+
+              {/* Title */}
+              <motion.h1 
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+                className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6"
+              >
+                <span className="block text-foreground">{t('countries.heroTitle1', 'Explore les règles')}</span>
+                <span className="block bg-gradient-to-r from-primary via-amber-400 to-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-[gradient_3s_ease-in-out_infinite]">
+                  {t('countries.heroTitle2', 'de chaque système.')}
+                </span>
+              </motion.h1>
+
+              {/* Subtitle */}
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+                className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto"
+              >
+                {t('countries.heroSubtitle', 'Chaque pays fonctionne selon sa propre logique. Découvre les mécanismes cachés.')}
+              </motion.p>
+            </div>
+          </AnimatedSection>
+
+          {/* Search Bar - Centered and prominent */}
+          <AnimatedSection className="max-w-xl mx-auto mb-8">
+            <div className="relative">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+              <Input
+                type="text"
+                placeholder={t('countries.searchPlaceholder', 'Rechercher un pays...')}
+                value={searchQuery}
+                onChange={(e) => handleSearchChange(e.target.value)}
+                className="pl-12 pr-12 h-14 text-base rounded-full bg-background/80 backdrop-blur-sm border-border/50 focus:border-primary"
+              />
+              {searchQuery && (
+                <button
+                  onClick={clearSearch}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              )}
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Filters Section */}
+      <section className="py-8 border-y border-border/50 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-wrap gap-2 justify-center mb-6">
             <FilterButton
-              key={type.key}
-              active={filter === type.key}
-              onClick={() => handleFilterChange(type.key)}
-              colorClass={type.color}
+              active={filter === 'all'}
+              onClick={() => handleFilterChange('all')}
             >
-              {t(type.labelKey)}
+              {t('countries.allSystems')}
             </FilterButton>
-          ))}
-          <FilterButton
-            active={filter === 'extended'}
-            onClick={() => handleFilterChange('extended')}
-            colorClass="chart-4"
-          >
-            <Database className="w-3 h-3 mr-1" />
-            {t('countries.extendedDb', '+15 Intelligence')}
-          </FilterButton>
-        </div>
-
-        {/* Sort and Results */}
-        <div className="flex flex-wrap items-center justify-between gap-2 sm:gap-4 mb-4 sm:mb-6">
-          <div className="text-sm text-muted-foreground">
-            {filteredAndSortedCountries.length} {t('countries.results', { count: filteredAndSortedCountries.length })}
-            {isShowingExtended && (
-              <span className="ml-2 text-xs px-2 py-0.5 bg-chart-4/20 text-chart-4 rounded">
-                {t('countries.dbOnly', 'DB Intelligence Layer')}
-              </span>
-            )}
-          </div>
-          
-          <div className="flex items-center gap-2">
-            <ArrowUpDown className="w-4 h-4 text-muted-foreground" />
-            <Select value={sortBy} onValueChange={(v) => handleSortChange(v as SortOption)}>
-              <SelectTrigger className="w-[200px]">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="name-asc">{t('countries.sort.nameAsc', 'Nom (A-Z)')}</SelectItem>
-                <SelectItem value="name-desc">{t('countries.sort.nameDesc', 'Nom (Z-A)')}</SelectItem>
-                {!isShowingExtended && (
-                  <>
-                    <SelectItem value="risk-asc">{t('countries.sort.riskAsc', 'Risque (↑)')}</SelectItem>
-                    <SelectItem value="risk-desc">{t('countries.sort.riskDesc', 'Risque (↓)')}</SelectItem>
-                    <SelectItem value="cost-asc">{t('countries.sort.costAsc', 'Coût de vie (↑)')}</SelectItem>
-                    <SelectItem value="cost-desc">{t('countries.sort.costDesc', 'Coût de vie (↓)')}</SelectItem>
-                  </>
-                )}
-              </SelectContent>
-            </Select>
-          </div>
-        </div>
-
-        {/* Countries Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-          {isShowingExtended ? (
-            // Extended countries cards
-            (paginatedCountries as ExtendedCountryInfo[]).map((country) => (
-              <ExtendedCountryCard key={country.id} country={country} />
-            ))
-          ) : (
-            // Regular country cards
-            (paginatedCountries as Country[]).map((country) => (
-              <CountryCard key={country.id} country={country} />
-            ))
-          )}
-        </div>
-
-        {filteredAndSortedCountries.length === 0 && (
-          <div className="text-center py-16 text-muted-foreground">
-            {t('countries.noResults')}
-          </div>
-        )}
-
-        {/* Pagination */}
-        {totalPages > 1 && (
-          <div className="flex items-center justify-center gap-2 mt-12">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
-              disabled={currentPage === 1}
+            {pyramidTypes.map((type) => (
+              <FilterButton
+                key={type.key}
+                active={filter === type.key}
+                onClick={() => handleFilterChange(type.key)}
+                colorClass={type.color}
+              >
+                {t(type.labelKey)}
+              </FilterButton>
+            ))}
+            <FilterButton
+              active={filter === 'extended'}
+              onClick={() => handleFilterChange('extended')}
+              colorClass="chart-4"
             >
-              <ChevronLeft className="w-4 h-4" />
-            </Button>
-            
-            <div className="flex items-center gap-1">
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
-                // Show first, last, current, and adjacent pages
-                if (
-                  page === 1 ||
-                  page === totalPages ||
-                  (page >= currentPage - 1 && page <= currentPage + 1)
-                ) {
-                  return (
-                    <Button
-                      key={page}
-                      variant={currentPage === page ? 'default' : 'outline'}
-                      size="sm"
-                      onClick={() => setCurrentPage(page)}
-                      className="w-9"
-                    >
-                      {page}
-                    </Button>
-                  );
-                }
-                // Show ellipsis for gaps
-                if (page === currentPage - 2 || page === currentPage + 2) {
-                  return (
-                    <span key={page} className="px-2 text-muted-foreground">
-                      ...
-                    </span>
-                  );
-                }
-                return null;
-              })}
+              <Database className="w-3 h-3 mr-1" />
+              {t('countries.extendedDb', '+15 Intelligence')}
+            </FilterButton>
+          </div>
+
+          {/* Sort and Results */}
+          <div className="flex flex-wrap items-center justify-between gap-4 max-w-6xl mx-auto">
+            <div className="text-sm text-muted-foreground">
+              <span className="font-medium text-foreground">{filteredAndSortedCountries.length}</span> {t('countries.results', { count: filteredAndSortedCountries.length })}
+              {isShowingExtended && (
+                <span className="ml-2 text-xs px-2 py-0.5 bg-chart-4/20 text-chart-4 rounded-full">
+                  {t('countries.dbOnly', 'DB Intelligence Layer')}
+                </span>
+              )}
             </div>
             
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
-              disabled={currentPage === totalPages}
-            >
-              <ChevronRight className="w-4 h-4" />
-            </Button>
+            <div className="flex items-center gap-2">
+              <ArrowUpDown className="w-4 h-4 text-muted-foreground" />
+              <Select value={sortBy} onValueChange={(v) => handleSortChange(v as SortOption)}>
+                <SelectTrigger className="w-[180px] rounded-full bg-background/80">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="name-asc">{t('countries.sort.nameAsc', 'Nom (A-Z)')}</SelectItem>
+                  <SelectItem value="name-desc">{t('countries.sort.nameDesc', 'Nom (Z-A)')}</SelectItem>
+                  {!isShowingExtended && (
+                    <>
+                      <SelectItem value="risk-asc">{t('countries.sort.riskAsc', 'Risque (↑)')}</SelectItem>
+                      <SelectItem value="risk-desc">{t('countries.sort.riskDesc', 'Risque (↓)')}</SelectItem>
+                      <SelectItem value="cost-asc">{t('countries.sort.costAsc', 'Coût de vie (↑)')}</SelectItem>
+                      <SelectItem value="cost-desc">{t('countries.sort.costDesc', 'Coût de vie (↓)')}</SelectItem>
+                    </>
+                  )}
+                </SelectContent>
+              </Select>
+            </div>
           </div>
-        )}
-      </div>
+        </div>
+      </section>
+
+      {/* Countries Grid */}
+      <section className="py-16 sm:py-24">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {isShowingExtended ? (
+              (paginatedCountries as ExtendedCountryInfo[]).map((country, index) => (
+                <motion.div
+                  key={country.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.05, duration: 0.4 }}
+                >
+                  <ExtendedCountryCard country={country} />
+                </motion.div>
+              ))
+            ) : (
+              (paginatedCountries as Country[]).map((country, index) => (
+                <motion.div
+                  key={country.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.05, duration: 0.4 }}
+                >
+                  <CountryCard country={country} />
+                </motion.div>
+              ))
+            )}
+          </div>
+
+          {filteredAndSortedCountries.length === 0 && (
+            <div className="text-center py-24">
+              <Globe className="w-16 h-16 mx-auto text-muted-foreground/30 mb-4" />
+              <p className="text-lg text-muted-foreground">{t('countries.noResults')}</p>
+            </div>
+          )}
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="flex items-center justify-center gap-3 mt-16">
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                disabled={currentPage === 1}
+                className="rounded-full"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </Button>
+              
+              <div className="flex items-center gap-2">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
+                  if (
+                    page === 1 ||
+                    page === totalPages ||
+                    (page >= currentPage - 1 && page <= currentPage + 1)
+                  ) {
+                    return (
+                      <Button
+                        key={page}
+                        variant={currentPage === page ? 'default' : 'outline'}
+                        size="lg"
+                        onClick={() => setCurrentPage(page)}
+                        className="w-12 rounded-full"
+                      >
+                        {page}
+                      </Button>
+                    );
+                  }
+                  if (page === currentPage - 2 || page === currentPage + 2) {
+                    return (
+                      <span key={page} className="px-2 text-muted-foreground">
+                        ...
+                      </span>
+                    );
+                  }
+                  return null;
+                })}
+              </div>
+              
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                disabled={currentPage === totalPages}
+                className="rounded-full"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </Button>
+            </div>
+          )}
+        </div>
+      </section>
     </div>
   );
 }
@@ -354,12 +453,12 @@ function FilterButton({
     <button
       onClick={onClick}
       className={cn(
-        'px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center',
+        'px-4 py-2 rounded-full text-sm font-medium transition-all flex items-center',
         active
           ? colorClass
             ? `bg-${colorClass}/20 text-${colorClass} border border-${colorClass}/30`
             : 'bg-primary/10 text-primary border border-primary/30'
-          : 'bg-secondary text-muted-foreground hover:text-foreground border border-transparent'
+          : 'bg-background text-muted-foreground hover:text-foreground border border-border/50 hover:border-border'
       )}
       style={
         active && colorClass
@@ -408,18 +507,18 @@ function ExtendedCountryCard({ country }: { country: ExtendedCountryInfo }) {
   return (
     <Link
       to={`/country/${country.id}`}
-      className="glass-card glow-card rounded-xl p-4 group relative overflow-hidden"
+      className="block p-5 rounded-2xl bg-card border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--primary)/0.1)] group"
     >
       {/* DB badge */}
-      <div className="absolute top-2 right-2">
-        <span className="text-xs px-2 py-0.5 bg-chart-4/20 text-chart-4 rounded flex items-center gap-1">
+      <div className="flex justify-end mb-3">
+        <span className="text-xs px-2.5 py-1 bg-chart-4/20 text-chart-4 rounded-full flex items-center gap-1.5">
           <Database className="w-3 h-3" />
           DB
         </span>
       </div>
 
-      <div className="flex items-start gap-3 mb-3">
-        <span className="text-3xl">{getFlagEmoji(country.iso2)}</span>
+      <div className="flex items-start gap-4 mb-4">
+        <span className="text-4xl">{getFlagEmoji(country.iso2)}</span>
         <div className="flex-1 min-w-0">
           <h3 className="font-display font-semibold text-lg truncate group-hover:text-primary transition-colors">
             {country.name}
@@ -430,7 +529,7 @@ function ExtendedCountryCard({ country }: { country: ExtendedCountryInfo }) {
 
       <div className="flex items-center gap-2 mb-3">
         <span
-          className="px-2 py-0.5 rounded text-xs font-medium"
+          className="px-3 py-1 rounded-full text-xs font-medium"
           style={{
             backgroundColor: `hsl(var(--${typeColor}) / 0.15)`,
             color: `hsl(var(--${typeColor}))`,
