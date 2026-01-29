@@ -19,7 +19,9 @@ import {
   Lightbulb,
   UserCheck,
   History,
-  Info
+  Info,
+  Calculator,
+  BarChart3
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -30,6 +32,8 @@ import { InstitutionalUseCases } from '@/components/institutions/InstitutionalUs
 import { CollectiveDecisionMode } from '@/components/institutions/CollectiveDecisionMode';
 import { DecisionTraceability } from '@/components/institutions/DecisionTraceability';
 import { QuickAccessButtons } from '@/components/institutions/QuickAccessButtons';
+import { WhatIfSimulatorAdvanced } from '@/components/traceos/WhatIfSimulatorAdvanced';
+import { DecisionAnalyticsDashboard } from '@/components/traceos/DecisionAnalyticsDashboard';
 
 export default function Institutions() {
   const { t } = useTranslation();
@@ -86,7 +90,7 @@ export default function Institutions() {
       <section className="pb-16 sm:pb-20">
         <div className="container mx-auto px-3 sm:px-4">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="max-w-6xl mx-auto">
-            <TabsList className="grid w-full grid-cols-3 sm:grid-cols-5 gap-1 h-auto p-1 mb-6 sm:mb-8">
+            <TabsList className="grid w-full grid-cols-4 sm:grid-cols-7 gap-1 h-auto p-1 mb-6 sm:mb-8">
               <TabsTrigger value="introduction" className="flex items-center gap-1 sm:gap-2 py-2 sm:py-3 text-xs sm:text-sm">
                 <Info className="w-3 h-3 sm:w-4 sm:h-4" />
                 <span className="hidden sm:inline">{t('institutions.tabs.intro', 'Introduction')}</span>
@@ -101,6 +105,15 @@ export default function Institutions() {
                 <Users className="w-3 h-3 sm:w-4 sm:h-4" />
                 <span className="hidden sm:inline">{t('institutions.tabs.collective', 'Décision')}</span>
                 <span className="sm:hidden">Groupe</span>
+              </TabsTrigger>
+              <TabsTrigger value="simulator" className="flex items-center gap-1 sm:gap-2 py-2 sm:py-3 text-xs sm:text-sm">
+                <Calculator className="w-3 h-3 sm:w-4 sm:h-4" />
+                <span className="hidden sm:inline">{t('institutions.tabs.simulator', 'Simulateur')}</span>
+                <span className="sm:hidden">Simu</span>
+              </TabsTrigger>
+              <TabsTrigger value="analytics" className="hidden sm:flex items-center gap-2 py-3 text-sm">
+                <BarChart3 className="w-4 h-4" />
+                <span className="hidden sm:inline">{t('institutions.tabs.analytics', 'Analytics')}</span>
               </TabsTrigger>
               <TabsTrigger value="traceability" className="hidden sm:flex items-center gap-2 py-3 text-sm">
                 <History className="w-4 h-4" />
@@ -222,6 +235,16 @@ export default function Institutions() {
             {/* Collective Decision Tab */}
             <TabsContent value="collective">
               <CollectiveDecisionMode />
+            </TabsContent>
+
+            {/* Simulator Tab - What-If Analysis */}
+            <TabsContent value="simulator">
+              <WhatIfSimulatorAdvanced />
+            </TabsContent>
+
+            {/* Analytics Tab - Decision Intelligence */}
+            <TabsContent value="analytics">
+              <DecisionAnalyticsDashboard />
             </TabsContent>
 
             {/* Traceability Tab */}

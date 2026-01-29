@@ -25,6 +25,7 @@ import {
 import { toast } from 'sonner';
 import { ExpertProfileDialog } from '@/components/marketplace/ExpertProfileDialog';
 import { VideoConsultationDialog } from '@/components/marketplace/VideoConsultationBooking';
+import { ExpertReviews } from '@/components/marketplace/ExpertReviews';
 
 interface Expert {
   id: string;
@@ -456,6 +457,16 @@ export default function ExpertMarketplace() {
             Essayez de modifier vos critères de recherche
           </p>
         </Card>
+      )}
+
+      {/* Expert Reviews Section */}
+      {filteredExperts.length > 0 && (
+        <ExpertReviews 
+          expertId={filteredExperts[0].id} 
+          expertName={filteredExperts[0].name}
+          averageRating={filteredExperts[0].rating}
+          totalReviews={filteredExperts[0].reviewCount}
+        />
       )}
 
       {/* CTA */}

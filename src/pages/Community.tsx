@@ -23,6 +23,7 @@ import {
 import { toast } from 'sonner';
 import { useEventRegistration } from '@/hooks/useEventRegistration';
 import { NewsletterSignup } from '@/components/community/NewsletterSignup';
+import { ForumPreview } from '@/components/community/ForumPreview';
 
 interface DiscordChannel {
   name: string;
@@ -356,6 +357,9 @@ export default function Community() {
           </div>
         </CardContent>
       </Card>
+
+      {/* Forum Preview */}
+      <ForumPreview />
 
       {/* Newsletter Signup */}
       <NewsletterSignup />

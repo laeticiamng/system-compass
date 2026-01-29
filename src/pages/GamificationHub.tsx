@@ -12,7 +12,8 @@ import {
   CheckCircle,
   Clock,
   Zap,
-  Compass
+  Compass,
+  Calendar
 } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -21,6 +22,7 @@ import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useGamification } from '@/hooks/useGamification';
+import { useChallengeProgress } from '@/hooks/useChallengeProgress';
 import { DestinationQuests } from '@/components/gamification/DestinationQuests';
 import { 
   BADGES, 
@@ -249,6 +251,7 @@ export default function GamificationHub() {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('overview');
   const { progress, isLoading } = useGamification();
+  const { getActiveChallenges, getCompletedToday } = useChallengeProgress();
   
   const userProgress = progress || {
     xp: 0,
@@ -257,6 +260,9 @@ export default function GamificationHub() {
     phase: 'exploration' as const,
     streak: 0,
   };
+  
+  const activeChallenges = getActiveChallenges();
+  const completedToday = getCompletedToday();
   const unlockedBadges = userProgress.badges;
   
   const badgesByCategory = {
@@ -372,12 +378,75 @@ export default function GamificationHub() {
         </TabsContent>
         
         <TabsContent value="challenges" className="space-y-6">
+          {/* Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <Card className="glass-card p-4 text-center">
+              <Calendar className="w-6 h-6 mx-auto mb-2 text-primary" />
+              <p className="text-2xl font-bold">{completedToday}</p>
+              <p className="text-xs text-muted-foreground">Complétés aujourd'hui</p>
+            </Card>
+            <Card className="glass-card p-4 text-center">
+              <Target className="w-6 h-6 mx-auto mb-2 text-amber-500" />
+              <p className="text-2xl font-bold">{activeChallenges.filter(c => c.challengeType === 'daily').length}</p>
+              <p className="text-xs text-muted-foreground">Défis quotidiens actifs</p>
+            </Card>
+            <Card className="glass-card p-4 text-center">
+              <Compass className="w-6 h-6 mx-auto mb-2 text-blue-500" />
+              <p className="text-2xl font-bold">{activeChallenges.filter(c => c.challengeType === 'weekly').length}</p>
+              <p className="text-xs text-muted-foreground">Défis hebdo actifs</p>
+            </Card>
+            <Card className="glass-card p-4 text-center">
+              <Star className="w-6 h-6 mx-auto mb-2 text-emerald-500" />
+              <p className="text-2xl font-bold">{activeChallenges.reduce((acc, c) => acc + (c.completedAt ? c.xpAwarded : 0), 0)}</p>
+              <p className="text-xs text-muted-foreground">XP gagnés</p>
+            </Card>
+          </div>
+
+          {/* Active Challenges from Backend */}
+          {activeChallenges.length > 0 && (
+            <Card className="glass-card border-primary/30">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Zap className="w-5 h-5 text-primary" />
+                  Défis en cours (temps réel)
+                </CardTitle>
+                <CardDescription>
+                  Progression synchronisée avec votre activité
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="grid md:grid-cols-2 gap-4">
+                {activeChallenges.map(challenge => (
+                  <ChallengeCard 
+                    key={challenge.id} 
+                    challenge={{
+                      id: challenge.challengeId,
+                      title: challenge.challengeId.includes('login') ? 'Connexion quotidienne' :
+                             challenge.challengeId.includes('explore') ? 'Explorer un pays' :
+                             challenge.challengeId.includes('compare') ? 'Comparer 2 pays' :
+                             challenge.challengeId.includes('explorer') ? 'Explorer 5 pays' :
+                             'Défi fiscal',
+                      description: challenge.challengeId.includes('login') ? 'Connectez-vous chaque jour' :
+                                   challenge.challengeId.includes('explore') ? 'Visitez une fiche pays' :
+                                   challenge.challengeId.includes('compare') ? 'Utilisez le comparateur' :
+                                   challenge.challengeId.includes('explorer') ? 'Découvrez 5 pays différents' :
+                                   'Utilisez le calculateur fiscal 3 fois',
+                      xpReward: challenge.xpAwarded,
+                    }} 
+                    type={challenge.challengeType}
+                    currentProgress={challenge.currentProgress}
+                    targetProgress={challenge.targetProgress}
+                  />
+                ))}
+              </CardContent>
+            </Card>
+          )}
+
           {/* Daily */}
           <Card className="glass-card">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Clock className="w-5 h-5 text-amber-400" />
-                Défis quotidiens
+                Défis quotidiens (templates)
               </CardTitle>
               <CardDescription>
                 Renouvelés chaque jour à minuit
@@ -395,7 +464,7 @@ export default function GamificationHub() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Target className="w-5 h-5 text-primary" />
-                Défis hebdomadaires
+                Défis hebdomadaires (templates)
               </CardTitle>
               <CardDescription>
                 Renouvelés chaque lundi
