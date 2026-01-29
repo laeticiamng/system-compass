@@ -268,8 +268,14 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-3 sm:px-4 py-6 sm:py-8 pt-20 sm:pt-24">
+    <div className="min-h-screen bg-background relative">
+      {/* Subtle decorative background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-pyramid-competence/5 rounded-full blur-3xl" />
+      </div>
+      
+      <div className="container mx-auto px-3 sm:px-4 py-6 sm:py-8 pt-20 sm:pt-24 relative z-10">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 sm:mb-8">
           <div>
@@ -355,17 +361,17 @@ export default function Dashboard() {
 
         {/* Profile Summary */}
         {profile && motorProfile && (
-          <Card className="mb-6 border-primary/20">
+          <Card className="mb-6 border-primary/20 glow-card bg-gradient-to-br from-card to-card/80">
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
-                <div className="text-4xl">{motorProfile.icon}</div>
+                <div className="text-4xl p-3 bg-primary/10 rounded-xl">{motorProfile.icon}</div>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-lg">{t('dashboard.profileLabel')}: {t(motorProfile.label)}</h3>
+                  <h3 className="font-semibold text-lg">{t('dashboard.profileLabel')}: <span className="gold-text">{t(motorProfile.label)}</span></h3>
                   <p className="text-sm text-muted-foreground">{t(motorProfile.description)}</p>
                 </div>
                 <Link to="/exit-keys">
-                  <Button variant="outline" size="sm">
-                    <Key className="w-4 h-4 mr-2" />
+                  <Button variant="outline" size="sm" className="gap-2 hover:border-primary/50">
+                    <Key className="w-4 h-4" />
                     {t('dashboard.viewKeys')}
                   </Button>
                 </Link>

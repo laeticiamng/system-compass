@@ -68,9 +68,10 @@ export default function LifeGame() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-[85vh] sm:min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-0">
-        {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-background" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
+        {/* Enhanced background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/8 to-background" />
+        <div className="absolute inset-0 decoration-gradient" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-500/10 via-transparent to-transparent" />
         
         {/* Animated particles - hide on mobile for performance */}
         <div className="absolute inset-0 overflow-hidden hidden sm:block">
@@ -99,7 +100,7 @@ export default function LifeGame() {
           <h1 className="font-display text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-4 sm:mb-6 animate-fade-in">
             <span className="text-foreground">{t('lifeGame.hero.title1')}</span>
             <br />
-            <span className="bg-gradient-to-r from-primary via-purple-500 to-rose-500 bg-clip-text text-transparent">
+            <span className="accent-text">
               {t('lifeGame.hero.titleHighlight')}
             </span>
           </h1>
@@ -141,7 +142,7 @@ export default function LifeGame() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center animate-fade-in px-4" style={{ animationDelay: '0.4s' }}>
             <Link to="/pyramid-quiz">
-              <Button size="lg" className="gap-2 text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 bg-gradient-to-r from-primary to-purple-600 hover:opacity-90 w-full sm:w-auto">
+              <Button size="lg" className="gap-2 text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 btn-premium hover:opacity-90 w-full sm:w-auto transition-all duration-300 hover:scale-[1.02]">
                 <Play className="w-4 h-4 sm:w-5 sm:h-5" />
                 {t('lifeGame.hero.playCta')}
               </Button>
