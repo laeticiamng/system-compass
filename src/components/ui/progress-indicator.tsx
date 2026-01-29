@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { CheckCircle, Circle, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -57,7 +58,7 @@ export function ProgressIndicator({
           <div className="flex items-center gap-2">
             <div className={cn(
               'flex items-center justify-center rounded-full transition-colors',
-              step.status === 'completed' && 'text-emerald-500',
+              step.status === 'completed' && 'text-risk-low',
               step.status === 'in-progress' && 'text-primary',
               step.status === 'pending' && 'text-muted-foreground',
               step.status === 'error' && 'text-destructive'
@@ -78,7 +79,7 @@ export function ProgressIndicator({
             <span className={cn(
               textSizes[size],
               'font-medium',
-              step.status === 'completed' && 'text-emerald-500',
+              step.status === 'completed' && 'text-risk-low',
               step.status === 'in-progress' && 'text-foreground',
               step.status === 'pending' && 'text-muted-foreground',
               step.status === 'error' && 'text-destructive'
@@ -94,7 +95,7 @@ export function ProgressIndicator({
               orientation === 'vertical' 
                 ? 'w-0.5 h-6 mx-auto my-1' 
                 : cn(connectorSizes[size], 'w-8 mx-2'),
-              step.status === 'completed' ? 'bg-emerald-500' : 'bg-border'
+              step.status === 'completed' ? 'bg-risk-low' : 'bg-border'
             )} />
           )}
         </div>
@@ -133,8 +134,8 @@ export function LabeledProgress({
 
   const variantClasses = {
     default: 'bg-primary',
-    success: 'bg-emerald-500',
-    warning: 'bg-amber-500',
+    success: 'bg-risk-low',
+    warning: 'bg-risk-medium',
     danger: 'bg-destructive'
   };
 
@@ -152,12 +153,14 @@ export function LabeledProgress({
         'w-full bg-secondary rounded-full overflow-hidden',
         heightClasses[size]
       )}>
-        <div 
+        <motion.div 
           className={cn(
-            'h-full rounded-full transition-all duration-500 ease-out',
+            'h-full rounded-full',
             variantClasses[variant]
           )}
-          style={{ width: `${percentage}%` }}
+          initial={{ width: 0 }}
+          animate={{ width: `${percentage}%` }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
         />
       </div>
     </div>
@@ -191,8 +194,8 @@ export function CircularProgress({
 
   const variantColors = {
     default: 'stroke-primary',
-    success: 'stroke-emerald-500',
-    warning: 'stroke-amber-500',
+    success: 'stroke-risk-low',
+    warning: 'stroke-risk-medium',
     danger: 'stroke-destructive'
   };
 
