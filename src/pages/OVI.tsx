@@ -48,26 +48,30 @@ export default function OVI() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20 pt-16 sm:pt-20 md:pt-24">
+    <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20 pt-16 sm:pt-20 md:pt-24 relative overflow-hidden">
+      {/* Background decorations */}
+      <div className="absolute top-32 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-64 right-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
+      
       {/* Hero Section */}
-      <section className="py-8 sm:py-12 md:py-20">
+      <section className="py-8 sm:py-12 md:py-20 relative">
         <div className="container mx-auto px-3 sm:px-4">
           <div className="max-w-4xl mx-auto text-center">
             {/* Premium Badge */}
-            <Badge className="mb-3 sm:mb-4 px-3 sm:px-4 py-1 sm:py-1.5 bg-gradient-to-r from-amber-500/20 to-amber-600/20 text-amber-600 border-amber-500/30 text-xs sm:text-sm">
+            <Badge className="mb-3 sm:mb-4 px-3 sm:px-4 py-1 sm:py-1.5 bg-gradient-to-r from-primary/20 to-primary/10 text-primary border-primary/30 text-xs sm:text-sm glow-subtle">
               <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 mr-1.5 sm:mr-2" />
               {t('ovi.badge', 'Premium • Think Tank')}
             </Badge>
 
             {/* Logo/Title */}
             <div className="flex items-center justify-center gap-3 mb-4 sm:mb-6">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 flex items-center justify-center">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br from-primary/30 to-primary/10 border border-primary/30 flex items-center justify-center glow-gold">
                 <Eye className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
               </div>
             </div>
             
             <h1 className="font-display text-2xl sm:text-3xl md:text-5xl font-bold mb-2 sm:mb-3">
-              <span className="text-primary">OVI</span>
+              <span className="gold-text">OVI</span>
             </h1>
             <p className="text-base sm:text-xl md:text-2xl text-muted-foreground mb-1 sm:mb-2">
               {t('ovi.fullName', 'Observatoire des Variables Invisibles')}
@@ -79,16 +83,16 @@ export default function OVI() {
 
             {/* Core Values */}
             <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-6 sm:mb-10 px-2">
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-muted text-sm font-medium">
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm font-medium border-primary/20">
                 <Brain className="w-4 h-4 text-primary" />
                 {t('ovi.value1', 'Cadres de pensée')}
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-muted text-sm font-medium">
-                <Grid3X3 className="w-4 h-4 text-amber-500" />
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm font-medium border-primary/20">
+                <Grid3X3 className="w-4 h-4 text-primary" />
                 {t('ovi.value2', 'Grilles de lecture')}
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-muted text-sm font-medium">
-                <Shield className="w-4 h-4 text-emerald-500" />
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm font-medium border-primary/20">
+                <Shield className="w-4 h-4 text-risk-low" />
                 {t('ovi.value3', 'Responsabilisation')}
               </div>
             </div>
@@ -97,24 +101,24 @@ export default function OVI() {
       </section>
 
       {/* Ethical Positioning Banner */}
-      <section className="py-6 bg-muted/30 border-y">
+      <section className="py-6 glass-card border-y border-primary/10 relative">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
               <EthicalPillar 
-                icon={<AlertTriangle className="w-5 h-5" />}
+                icon={<AlertTriangle className="w-5 h-5 text-primary" />}
                 text={t('ovi.ethics.noPromise', 'Pas de promesse')}
               />
               <EthicalPillar 
-                icon={<Sparkles className="w-5 h-5" />}
+                icon={<Sparkles className="w-5 h-5 text-primary" />}
                 text={t('ovi.ethics.noMiracle', 'Pas de solution miracle')}
               />
               <EthicalPillar 
-                icon={<BookOpen className="w-5 h-5" />}
+                icon={<BookOpen className="w-5 h-5 text-primary" />}
                 text={t('ovi.ethics.noRecipe', 'Pas de recette')}
               />
               <EthicalPillar 
-                icon={<User className="w-5 h-5" />}
+                icon={<User className="w-5 h-5 text-primary" />}
                 text={t('ovi.ethics.responsibility', 'Responsabilisation maximale')}
               />
             </div>
@@ -162,24 +166,24 @@ export default function OVI() {
             </div>
           ) : (
             <Tabs value={activeTab} onValueChange={setActiveTab} className="max-w-6xl mx-auto">
-              <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 gap-1 h-auto p-1 mb-8">
-                <TabsTrigger value="introduction" className="flex items-center gap-2 py-3">
+              <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 gap-1 h-auto p-1 mb-8 glass-card border-primary/10">
+                <TabsTrigger value="introduction" className="flex items-center gap-2 py-3 data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
                   <Eye className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('ovi.tabs.intro', 'Introduction')}</span>
                 </TabsTrigger>
-                <TabsTrigger value="frameworks" className="flex items-center gap-2 py-3">
+                <TabsTrigger value="frameworks" className="flex items-center gap-2 py-3 data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
                   <Brain className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('ovi.tabs.frameworks', 'Cadres')}</span>
                 </TabsTrigger>
-                <TabsTrigger value="grids" className="flex items-center gap-2 py-3">
+                <TabsTrigger value="grids" className="flex items-center gap-2 py-3 data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
                   <Grid3X3 className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('ovi.tabs.grids', 'Grilles')}</span>
                 </TabsTrigger>
-                <TabsTrigger value="evidence" className="flex items-center gap-2 py-3">
+                <TabsTrigger value="evidence" className="flex items-center gap-2 py-3 data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
                   <FileCheck className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('ovi.tabs.evidence', 'Preuves')}</span>
                 </TabsTrigger>
-                <TabsTrigger value="connection" className="flex items-center gap-2 py-3">
+                <TabsTrigger value="connection" className="flex items-center gap-2 py-3 data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
                   <Compass className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('ovi.tabs.connection', 'Connexions')}</span>
                 </TabsTrigger>
@@ -188,9 +192,9 @@ export default function OVI() {
               {/* Introduction Tab */}
               <TabsContent value="introduction" className="space-y-8">
                 <OVIOnboardingGuide className="mb-6" />
-                <Card className="border-primary/20">
+                <Card className="border-primary/20 glass-card-elevated glow-card">
                   <CardHeader>
-                    <CardTitle className="text-2xl">
+                    <CardTitle className="text-2xl gold-text">
                       {t('ovi.intro.title', 'Qu\'est-ce que l\'OVI ?')}
                     </CardTitle>
                   </CardHeader>
@@ -217,24 +221,24 @@ export default function OVI() {
                       />
                     </div>
 
-                    <Separator />
+                    <Separator className="bg-primary/10" />
 
-                    <div className="bg-muted/30 rounded-xl p-6">
+                    <div className="glass-card rounded-xl p-6 border-primary/10">
                       <h3 className="font-semibold mb-4 flex items-center gap-2">
-                        <Lightbulb className="w-5 h-5 text-amber-500" />
+                        <Lightbulb className="w-5 h-5 text-primary" />
                         {t('ovi.intro.philosophy.title', 'Philosophie')}
                       </h3>
                       <div className="space-y-3 text-muted-foreground">
                         <p>{t('ovi.intro.philosophy.p1', 'Les décisions importantes se prennent souvent sans cadre explicite. On agit vite, on réagit, on suit l\'intuition — parfois à raison, parfois à tort.')}</p>
                         <p>{t('ovi.intro.philosophy.p2', 'L\'OVI propose de ralentir. Non pas pour hésiter, mais pour voir ce qui n\'était pas visible. Pour nommer ce qui restait implicite. Pour distinguer ce qui dépend de vous de ce qui dépend du système.')}</p>
-                        <p className="font-medium text-foreground">{t('ovi.intro.philosophy.p3', 'Ce n\'est pas un oracle. C\'est un miroir.')}</p>
+                        <p className="font-medium text-primary">{t('ovi.intro.philosophy.p3', 'Ce n\'est pas un oracle. C\'est un miroir.')}</p>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
 
                 <div className="text-center">
-                  <Button size="lg" onClick={() => setActiveTab('frameworks')} className="gap-2">
+                  <Button size="lg" onClick={() => setActiveTab('frameworks')} className="gap-2 btn-premium text-primary-foreground">
                     {t('ovi.intro.cta', 'Explorer les cadres de réflexion')}
                     <ArrowRight className="w-4 h-4" />
                   </Button>
@@ -290,9 +294,9 @@ export default function OVI() {
                       />
                     </div>
 
-                    <div className="bg-amber-500/5 border border-amber-500/20 rounded-xl p-6">
+                    <div className="bg-primary/5 border border-primary/20 rounded-xl p-6">
                       <div className="flex items-start gap-3">
-                        <AlertTriangle className="w-5 h-5 text-amber-500 mt-0.5" />
+                        <AlertTriangle className="w-5 h-5 text-primary mt-0.5" />
                         <div>
                           <h4 className="font-semibold mb-1">
                             {t('ovi.connection.warning.title', 'Principe de non-influence')}
@@ -309,9 +313,11 @@ export default function OVI() {
                 {/* Quick Links */}
                 <div className="grid md:grid-cols-3 gap-4">
                   <Link to="/prevention-filter">
-                    <Card className="h-full hover:border-primary/30 transition-colors cursor-pointer">
+                    <Card className="h-full glow-card glass-card border-primary/10 cursor-pointer">
                       <CardContent className="p-6 flex items-center gap-4">
-                        <Shield className="w-8 h-8 text-primary" />
+                        <div className="p-3 rounded-xl bg-primary/10">
+                          <Shield className="w-6 h-6 text-primary" />
+                        </div>
                         <div>
                           <h4 className="font-medium">{t('ovi.quickLinks.filter', 'Filtre de prévention')}</h4>
                           <p className="text-sm text-muted-foreground">{t('ovi.quickLinks.filterDesc', 'Analyser une décision')}</p>
@@ -320,9 +326,11 @@ export default function OVI() {
                     </Card>
                   </Link>
                   <Link to="/compare">
-                    <Card className="h-full hover:border-primary/30 transition-colors cursor-pointer">
+                    <Card className="h-full glow-card glass-card border-primary/10 cursor-pointer">
                       <CardContent className="p-6 flex items-center gap-4">
-                        <Scale className="w-8 h-8 text-amber-500" />
+                        <div className="p-3 rounded-xl bg-primary/10">
+                          <Scale className="w-6 h-6 text-primary" />
+                        </div>
                         <div>
                           <h4 className="font-medium">{t('ovi.quickLinks.compare', 'Comparer')}</h4>
                           <p className="text-sm text-muted-foreground">{t('ovi.quickLinks.compareDesc', 'Explorer des scénarios')}</p>
@@ -331,9 +339,11 @@ export default function OVI() {
                     </Card>
                   </Link>
                   <Link to="/institutions">
-                    <Card className="h-full hover:border-primary/30 transition-colors cursor-pointer">
+                    <Card className="h-full glow-card glass-card border-primary/10 cursor-pointer">
                       <CardContent className="p-6 flex items-center gap-4">
-                        <Layers className="w-8 h-8 text-emerald-500" />
+                        <div className="p-3 rounded-xl bg-risk-low/10">
+                          <Layers className="w-6 h-6 text-risk-low" />
+                        </div>
                         <div>
                           <h4 className="font-medium">{t('ovi.quickLinks.institutions', 'Institutions')}</h4>
                           <p className="text-sm text-muted-foreground">{t('ovi.quickLinks.institutionsDesc', 'Décisions collectives')}</p>
@@ -349,13 +359,14 @@ export default function OVI() {
       </section>
 
       {/* Footer Quote */}
-      <section className="py-12 bg-muted/20 border-t">
-        <div className="container mx-auto px-4 text-center">
+      <section className="py-12 glass-card border-t border-primary/10 relative">
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent pointer-events-none" />
+        <div className="container mx-auto px-4 text-center relative">
           <blockquote className="max-w-2xl mx-auto">
-            <p className="text-xl italic text-muted-foreground mb-4">
-              {t('ovi.quote', '"La clarté ne vient pas de ce qu\'on sait, mais de ce qu\'on accepte de regarder."')}
+            <p className="text-xl italic text-foreground mb-4">
+              <span className="gold-text">"</span>{t('ovi.quote', 'La clarté ne vient pas de ce qu\'on sait, mais de ce qu\'on accepte de regarder.')}<span className="gold-text">"</span>
             </p>
-            <footer className="text-sm text-muted-foreground">
+            <footer className="text-sm text-primary">
               — {t('ovi.quoteAuthor', 'Principe OVI')}
             </footer>
           </blockquote>
@@ -400,11 +411,11 @@ function PreviewCard({ icon: Icon, title, items }: { icon: any; title: string; i
 
 function IntroCard({ icon: Icon, title, description }: { icon: any; title: string; description: string }) {
   return (
-    <div className="text-center p-6 rounded-xl bg-muted/30">
-      <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+    <div className="text-center p-6 rounded-xl glass-card border-primary/10 glow-card">
+      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mx-auto mb-4 glow-subtle">
         <Icon className="w-6 h-6 text-primary" />
       </div>
-      <h3 className="font-semibold mb-2">{title}</h3>
+      <h3 className="font-semibold mb-2 text-foreground">{title}</h3>
       <p className="text-sm text-muted-foreground">{description}</p>
     </div>
   );
