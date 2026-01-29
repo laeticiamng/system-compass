@@ -169,13 +169,19 @@ function BadgeCard({ badge, unlocked }: { badge: BadgeType; unlocked: boolean })
 
 function ChallengeCard({ 
   challenge, 
-  type 
+  type,
+  currentProgress = 0,
+  targetProgress = 1,
+  onComplete
 }: { 
   challenge: { id: string; title: string; description: string; xpReward: number }; 
   type: 'daily' | 'weekly';
+  currentProgress?: number;
+  targetProgress?: number;
+  onComplete?: () => void;
 }) {
-  const progress = Math.floor(Math.random() * 100); // Mock progress
-  const isComplete = progress >= 100;
+  const progressPercent = Math.min((currentProgress / targetProgress) * 100, 100);
+  const isComplete = progressPercent >= 100;
   
   return (
     <div className={cn(
@@ -200,7 +206,20 @@ function ChallengeCard({
         )}
       </div>
       <p className="text-sm text-muted-foreground mb-3">{challenge.description}</p>
-      <Progress value={progress} className="h-2" />
+      <div className="space-y-1">
+        <Progress value={progressPercent} className="h-2" />
+        <div className="flex justify-between text-xs text-muted-foreground">
+          <span>{currentProgress}/{targetProgress}</span>
+          {!isComplete && onComplete && (
+            <button 
+              onClick={onComplete}
+              className="text-primary hover:underline"
+            >
+              Commencer →
+            </button>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

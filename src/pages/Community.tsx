@@ -46,11 +46,18 @@ const COUNTRY_CHANNELS = [
   'germany', 'usa', 'canada', 'thailand', 'vietnam', 'malaysia'
 ];
 
+// Generate dynamic upcoming dates
+const getUpcomingDate = (daysFromNow: number): string => {
+  const date = new Date();
+  date.setDate(date.getDate() + daysFromNow);
+  return date.toISOString().split('T')[0];
+};
+
 const UPCOMING_EVENTS = [
   {
     id: '1',
     title: 'AMA: Fiscalité des Digital Nomads',
-    date: '2024-02-15',
+    date: getUpcomingDate(7),
     time: '19:00 CET',
     speaker: 'Maître Sophie Laurent',
     type: 'webinar',
@@ -58,7 +65,7 @@ const UPCOMING_EVENTS = [
   {
     id: '2',
     title: 'Meetup Paris - Expats & Entrepreneurs',
-    date: '2024-02-22',
+    date: getUpcomingDate(14),
     time: '18:30',
     location: 'Paris, France',
     type: 'meetup',
@@ -66,7 +73,7 @@ const UPCOMING_EVENTS = [
   {
     id: '3',
     title: 'Workshop: Préparer son départ en 90 jours',
-    date: '2024-03-01',
+    date: getUpcomingDate(21),
     time: '14:00 CET',
     type: 'workshop',
   },
