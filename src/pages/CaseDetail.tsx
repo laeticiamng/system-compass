@@ -93,14 +93,18 @@ export default function CaseDetail() {
   const hasRedFlags = caseData.red_flags_acknowledged.length > 0;
 
   return (
-    <div className="min-h-screen pt-24 pb-16">
-      <div className="container mx-auto px-4 max-w-6xl">
+    <div className="min-h-screen pt-24 pb-16 relative overflow-hidden">
+      {/* Background decorations */}
+      <div className="absolute top-32 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-32 left-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
+      
+      <div className="container mx-auto px-4 max-w-6xl relative">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <Button
             variant="ghost"
             onClick={() => navigate('/dashboard')}
-            className="gap-2 text-muted-foreground hover:text-foreground"
+            className="gap-2 text-muted-foreground hover:text-foreground hover:bg-primary/5"
           >
             <ArrowLeft className="w-4 h-4" />
             {t('cases.backToDashboard', 'Retour au tableau de bord')}
@@ -114,27 +118,27 @@ export default function CaseDetail() {
         </div>
 
         {/* Case Header */}
-        <div className="glass-card rounded-xl p-6 mb-8">
+        <div className="glass-card-elevated rounded-xl p-6 mb-8 border-primary/10 glow-card">
           <div className="flex flex-col lg:flex-row lg:items-start gap-6">
             {/* Country Flag & Info */}
             <div className="flex items-center gap-4">
               {countryIso2 && <span className="text-5xl">{getFlagEmoji(countryIso2)}</span>}
               <div>
-                <h1 className="font-display text-2xl font-bold">{caseData.title}</h1>
+                <h1 className="font-display text-2xl font-bold gold-text">{caseData.title}</h1>
                 <p className="text-muted-foreground">{countryName}</p>
               </div>
             </div>
 
             {/* Badges & Status */}
             <div className="flex flex-wrap items-center gap-2 lg:ml-auto">
-              <Badge variant={isDeep ? 'default' : 'secondary'} className="gap-1">
+              <Badge variant={isDeep ? 'default' : 'secondary'} className={`gap-1 ${isDeep ? 'bg-primary/20 text-primary border-primary/30' : ''}`}>
                 {isDeep ? <Briefcase className="w-3 h-3" /> : <Home className="w-3 h-3" />}
                 {isDeep 
                   ? t('cases.depth.deep', 'Mode Complet')
                   : t('cases.depth.light', 'Mode Essentiel')
                 }
               </Badge>
-              <Badge variant="outline">
+              <Badge variant="outline" className="border-primary/20">
                 {t(`cases.status.${caseData.status}`, caseData.status)}
               </Badge>
               {hasRedFlags && (
@@ -152,19 +156,19 @@ export default function CaseDetail() {
               <span className="text-sm text-muted-foreground">
                 {t('cases.progress', 'Progression')}
               </span>
-              <span className="text-sm font-medium">{progress}%</span>
+              <span className="text-sm font-medium text-primary">{progress}%</span>
             </div>
-            <Progress value={progress} className="h-2" />
+            <Progress value={progress} className="h-2 bg-muted" />
           </div>
 
           {/* Meta Info */}
           <div className="flex flex-wrap gap-4 mt-4 text-sm text-muted-foreground">
-            <span className="flex items-center gap-1">
-              <Clock className="w-4 h-4" />
+            <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/5 border border-primary/10">
+              <Clock className="w-4 h-4 text-primary" />
               {t('cases.scenario', 'Scénario')}: {t(`cases.timeline.${caseData.timeline_scenario}`, caseData.timeline_scenario)}
             </span>
-            <span className="flex items-center gap-1">
-              <Calendar className="w-4 h-4" />
+            <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/5 border border-primary/10">
+              <Calendar className="w-4 h-4 text-primary" />
               {t('cases.updated', 'Mis à jour')}: {formatDistanceToNow(new Date(caseData.updated_at), { 
                 addSuffix: true, 
                 locale: i18n.language === 'fr' ? fr : undefined 
@@ -183,8 +187,8 @@ export default function CaseDetail() {
 
         {/* Main Content Tabs */}
         <Tabs defaultValue="governance" className="space-y-6">
-          <TabsList className={`grid w-full ${isDeep ? 'grid-cols-12' : 'grid-cols-4'}`}>
-            <TabsTrigger value="governance" className="gap-2">
+          <TabsList className={`grid w-full ${isDeep ? 'grid-cols-12' : 'grid-cols-4'} glass-card border-primary/10 p-1`}>
+            <TabsTrigger value="governance" className="gap-2 data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
               <Shield className="w-4 h-4" />
               <span className="hidden sm:inline">
                 {isDeep 
@@ -195,62 +199,62 @@ export default function CaseDetail() {
             </TabsTrigger>
             {isDeep && (
               <>
-                <TabsTrigger value="gov-advanced" className="gap-2">
+                <TabsTrigger value="gov-advanced" className="gap-2 data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
                   <MapPin className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('cases.tabs.govAdvanced', 'Terrain')}</span>
                 </TabsTrigger>
-                <TabsTrigger value="market" className="gap-2">
+                <TabsTrigger value="market" className="gap-2 data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
                   <TrendingUp className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('cases.tabs.market', 'Marché')}</span>
                 </TabsTrigger>
-                <TabsTrigger value="actors" className="gap-2">
+                <TabsTrigger value="actors" className="gap-2 data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
                   <Users className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('cases.tabs.actors', 'Acteurs')}</span>
                 </TabsTrigger>
-                <TabsTrigger value="risks" className="gap-2">
+                <TabsTrigger value="risks" className="gap-2 data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
                   <AlertTriangle className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('cases.tabs.risks', 'Risques')}</span>
                 </TabsTrigger>
-                <TabsTrigger value="rules" className="gap-2">
+                <TabsTrigger value="rules" className="gap-2 data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
                   <FileCheck className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('cases.tabs.rules', 'Règles')}</span>
                 </TabsTrigger>
                 {/* PMO Tabs */}
-                <TabsTrigger value="pmo-roadmap" className="gap-2">
+                <TabsTrigger value="pmo-roadmap" className="gap-2 data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
                   <LayoutDashboard className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('cases.tabs.pmoRoadmap', 'Plan')}</span>
                 </TabsTrigger>
-                <TabsTrigger value="pmo-risks" className="gap-2">
+                <TabsTrigger value="pmo-risks" className="gap-2 data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
                   <AlertTriangle className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('cases.tabs.pmoRisks', 'Risques PMO')}</span>
                 </TabsTrigger>
-                <TabsTrigger value="pmo-budget" className="gap-2">
+                <TabsTrigger value="pmo-budget" className="gap-2 data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
                   <CircleDollarSign className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('cases.tabs.pmoBudget', 'Budget')}</span>
                 </TabsTrigger>
-                <TabsTrigger value="pmo-priority" className="gap-2">
+                <TabsTrigger value="pmo-priority" className="gap-2 data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
                   <ListOrdered className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('cases.tabs.pmoPriority', 'Priorités')}</span>
                 </TabsTrigger>
-                <TabsTrigger value="pmo-compliance" className="gap-2">
+                <TabsTrigger value="pmo-compliance" className="gap-2 data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
                   <Shield className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('cases.tabs.pmoCompliance', 'Conformité')}</span>
                 </TabsTrigger>
-                <TabsTrigger value="pmo-evidence" className="gap-2">
+                <TabsTrigger value="pmo-evidence" className="gap-2 data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
                   <Archive className="w-4 h-4" />
                   <span className="hidden sm:inline">{t('cases.tabs.pmoEvidence', 'Preuves')}</span>
                 </TabsTrigger>
               </>
             )}
-            <TabsTrigger value="milestones" className="gap-2">
+            <TabsTrigger value="milestones" className="gap-2 data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
               <Target className="w-4 h-4" />
               <span className="hidden sm:inline">{t('cases.tabs.milestones', 'Jalons')}</span>
             </TabsTrigger>
-            <TabsTrigger value="notes" className="gap-2">
+            <TabsTrigger value="notes" className="gap-2 data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
               <FileText className="w-4 h-4" />
               <span className="hidden sm:inline">{t('cases.tabs.notes', 'Notes')}</span>
             </TabsTrigger>
-            <TabsTrigger value="settings" className="gap-2">
+            <TabsTrigger value="settings" className="gap-2 data-[state=active]:bg-primary/20 data-[state=active]:text-primary">
               <Clock className="w-4 h-4" />
               <span className="hidden sm:inline">{t('cases.tabs.settings', 'Paramètres')}</span>
             </TabsTrigger>
