@@ -111,10 +111,10 @@ export function ZoneCard({
 
   return (
     <Card className={`transition-all duration-300 hover:shadow-md border-l-4 ${
-      zone.status === 'dormant' ? 'border-l-slate-400' :
-      zone.status === 'emergent' ? 'border-l-amber-400' :
-      zone.status === 'fragile' ? 'border-l-blue-400' :
-      'border-l-red-400'
+      zone.status === 'dormant' ? 'border-l-muted-foreground' :
+      zone.status === 'emergent' ? 'border-l-primary' :
+      zone.status === 'fragile' ? 'border-l-blue-500' :
+      'border-l-destructive'
     }`}>
       <CardHeader className="pb-2">
         <div className="flex items-start justify-between gap-2">
