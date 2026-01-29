@@ -3,7 +3,6 @@ import { useAuth } from './useAuth';
 import { useUserHistory } from './useUserHistory';
 import { 
   UserProgress, 
-  UserLevel, 
   UserPhase,
   calculateLevel,
   createInitialProgress,
@@ -26,7 +25,7 @@ interface UseGamificationReturn {
 
 export function useGamification(): UseGamificationReturn {
   const { user } = useAuth();
-  const { history } = useUserHistory();
+  const { countries } = useUserHistory();
   const [progress, setProgress] = useState<UserProgress | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -143,9 +142,9 @@ export function useGamification(): UseGamificationReturn {
 
   // Check badge conditions based on user activity
   const checkBadgeConditions = useCallback(() => {
-    if (!progress || !history) return;
+    if (!progress || !countries) return;
 
-    const countriesViewed = history.countries?.length || 0;
+    const countriesViewed = countries?.length || 0;
     
     // Check countries_explored badges
     BADGES.forEach(badge => {
@@ -164,14 +163,14 @@ export function useGamification(): UseGamificationReturn {
         }
       }
     });
-  }, [progress, history, unlockBadge]);
+  }, [progress, countries, unlockBadge]);
 
-  // Auto-check conditions on history change
+  // Auto-check conditions on countries change
   useEffect(() => {
-    if (history && progress) {
+    if (countries && progress) {
       checkBadgeConditions();
     }
-  }, [history, checkBadgeConditions]);
+  }, [countries, checkBadgeConditions]);
 
   // Update streak on load
   useEffect(() => {
