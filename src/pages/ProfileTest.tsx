@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
 import { useTestResults } from '@/hooks/useTestResults';
 import { useAuth } from '@/hooks/useAuth';
 import { OVISuggestionsWidget } from '@/components/ovi/OVISuggestionsWidget';
-import { ArrowRight, ArrowLeft, User, Target, Shield, Zap, FileCheck, Lightbulb, Eye, Plane } from 'lucide-react';
+import { ArrowRight, ArrowLeft, User, Target, Shield, Zap, FileCheck, Lightbulb, Eye, Plane, Globe, Route } from 'lucide-react';
 
 const questionKeys = [
   { key: 'ambition', icon: Target },
@@ -204,20 +204,38 @@ export default function ProfileTest() {
             className="mb-8"
           />
 
+          {/* Clear Next Steps */}
+          <div className="glass-card rounded-xl p-6 border-primary/20 mb-8">
+            <h3 className="font-semibold text-primary mb-4 text-center">{t('profileTest.whatNow', 'Et maintenant ?')}</h3>
+            <div className="grid sm:grid-cols-3 gap-4">
+              <button
+                onClick={() => navigate('/profile-matcher')}
+                className="p-4 rounded-lg bg-primary/10 border border-primary/20 hover:bg-primary/20 transition-all text-center group"
+              >
+                <Globe className="w-6 h-6 text-primary mx-auto mb-2" />
+                <p className="font-medium text-sm">{t('profileTest.findCountries', 'Trouver mes pays')}</p>
+                <p className="text-xs text-muted-foreground">{t('profileTest.findCountriesDesc', 'Pays compatibles avec votre profil')}</p>
+              </button>
+              <button
+                onClick={() => navigate('/exit-keys')}
+                className="p-4 rounded-lg bg-muted/50 hover:bg-muted transition-all text-center group"
+              >
+                <Route className="w-6 h-6 text-foreground mx-auto mb-2" />
+                <p className="font-medium text-sm">{t('profileTest.exitKeys', 'Clés de sortie')}</p>
+                <p className="text-xs text-muted-foreground">{t('profileTest.exitKeysDesc', 'Stratégies personnalisées')}</p>
+              </button>
+              <button
+                onClick={() => navigate('/compare')}
+                className="p-4 rounded-lg bg-muted/50 hover:bg-muted transition-all text-center group"
+              >
+                <ArrowRight className="w-6 h-6 text-foreground mx-auto mb-2" />
+                <p className="font-medium text-sm">{t('match.compareCountries', 'Comparer des pays')}</p>
+                <p className="text-xs text-muted-foreground">{t('profileTest.compareDesc', 'Analyse comparative')}</p>
+              </button>
+            </div>
+          </div>
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              onClick={() => navigate('/match')}
-              className="bg-primary text-primary-foreground gap-2"
-            >
-              {t('profileTest.findCountries')}
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-            <Button
-              variant="outline"
-              onClick={() => navigate('/compare')}
-            >
-              {t('match.compareCountries')}
-            </Button>
             <Button
               variant="outline"
               onClick={() => {
