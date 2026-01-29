@@ -71,6 +71,9 @@ import {
   LazyFiscalCalculator,
   LazyPersonaJourneys,
   LazyGamificationHub,
+  LazyExpertMarketplace,
+  LazyPartnerIntegrations,
+  LazyCommunity,
 } from "@/routes/LazyRoutes";
 
 const queryClient = new QueryClient({
@@ -160,6 +163,9 @@ const App = () => (
                       <Route path="/fiscal-calculator" element={<LazyFiscalCalculator />} />
                       <Route path="/personas" element={<LazyPersonaJourneys />} />
                       <Route path="/gamification" element={<LazyGamificationHub />} />
+                      <Route path="/experts" element={<LazyExpertMarketplace />} />
+                      <Route path="/partner-services" element={<LazyPartnerIntegrations />} />
+                      <Route path="/community" element={<LazyCommunity />} />
 
                       {/* Lazy routes - Admin */}
                       <Route path="/admin/translations" element={<RequireAdmin><LazyAdminTranslations /></RequireAdmin>} />
