@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { useNavigate } from 'react-router-dom';
 import { MapPin, TrendingUp, Shield, Users } from 'lucide-react';
 import { SavedCountriesButton } from '@/components/common/SavedCountriesButton';
+import { RiskGradeBadge } from '@/components/RiskGradeLabel';
 
 const PYRAMID_TYPE_LABELS: Record<string, string> = {
   PROBLEM_RENT: 'pyramids.problemRent.label',
@@ -52,6 +53,10 @@ export const CountryCard = forwardRef<HTMLDivElement, CountryCardProps>(
     const navigate = useNavigate();
     const { t } = useTranslation();
     const typeColor = PYRAMID_TYPE_COLORS[country.pyramidType];
+    
+    // Calculate overall safety score for the grade
+    const safetyScore = country.qualityOfLife?.safetyIndex || 
+                        (100 - ((country.risks?.legal || 0) + (country.risks?.safety || 0) + (country.risks?.corruption || 0)) / 3);
 
     // Get translated country data
     const countryData = t(`countriesData.${country.id}`, { returnObjects: true }) as {
@@ -115,8 +120,15 @@ export const CountryCard = forwardRef<HTMLDivElement, CountryCardProps>(
           &quot;{displayRuleOfGold}&quot;
         </p>
 
-        {/* Key Stats */}
-        <div className="mt-4 sm:mt-6 grid grid-cols-3 gap-2 sm:gap-4">
+        {/* Key Stats with Risk Grade */}
+        <div className="mt-4 sm:mt-6 grid grid-cols-4 gap-2 sm:gap-3">
+          {/* Risk Grade - New */}
+          <div className="text-center">
+            <div className="flex items-center justify-center mb-0.5 sm:mb-1">
+              <RiskGradeBadge score={safetyScore} className="w-7 h-7 sm:w-8 sm:h-8 text-xs" />
+            </div>
+            <div className="text-[10px] sm:text-xs text-muted-foreground">{t('countries.risk', 'Risque')}</div>
+          </div>
           <div className="text-center">
             <div className="flex items-center justify-center gap-1 text-muted-foreground mb-0.5 sm:mb-1">
               <TrendingUp className="w-3 h-3" />
