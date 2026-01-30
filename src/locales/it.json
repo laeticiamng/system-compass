@@ -3732,5 +3732,319 @@
     "spain": { "name": "Spagna", "ruleOfGold": "Relazioni e identità regionale." },
     "sweden": { "name": "Svezia", "ruleOfGold": "Uguaglianza e modestia." },
     "turkey": { "name": "Turchia", "ruleOfGold": "Relazioni e adattamento." }
+  },
+  "fiscal": {
+    "title": "Sistema Fiscale",
+    "salaryCalculator": "Calcolatore Stipendio Netto",
+    "description": "Stima il tuo stipendio netto reale con tasse, contributi e costo della vita",
+    "grossAnnual": "Stipendio lordo annuale",
+    "grossMonthly": "Lordo mensile",
+    "netMonthly": "Netto mensile",
+    "netAnnual": "Netto annuale",
+    "purchasingPower": "Potere d'acquisto",
+    "adjustedForCostOfLiving": "Adattato al costo della vita locale",
+    "healthcareCost": "Costo sanitario/anno",
+    "insuranceAndCopays": "Assicurazione + ticket",
+    "deductionBreakdown": "Dettaglio trattenute",
+    "incomeTax": "Imposta sul reddito",
+    "socialContributions": "Contributi sociali",
+    "healthInsurance": "Assicurazione sanitaria",
+    "pension": "Pensione",
+    "totalDeductions": "Totale trattenuto",
+    "compareWith": "Confronta con altro paese",
+    "selectCountry": "Seleziona un paese",
+    "selectProfession": "Seleziona una professione",
+    "emptyState": "Seleziona paese e professione per calcolare lo stipendio netto",
+    "analysis": "Analisi comparativa",
+    "winner": "Migliore",
+    "demand": {
+      "very_high": "Domanda internazionale molto alta",
+      "high": "Alta domanda internazionale",
+      "medium": "Domanda media",
+      "low": "Domanda locale"
+    },
+    "taxLevel": {
+      "none": "Nessuna imposta sul reddito",
+      "low": "Tasse basse",
+      "moderate": "Tasse moderate",
+      "high": "Tasse alte"
+    },
+    "socialLevel": {
+      "low": "Contributi sociali bassi",
+      "moderate": "Contributi sociali moderati",
+      "high": "Contributi sociali alti"
+    },
+    "healthcareType": {
+      "public": "Copertura sanitaria pubblica completa",
+      "private": "Assicurazione privata obbligatoria",
+      "mixed": "Sistema misto pubblico/privato"
+    },
+    "costOfLiving": {
+      "veryLow": "Costo della vita molto basso",
+      "low": "Costo della vita basso",
+      "moderate": "Costo della vita moderato",
+      "high": "Costo della vita alto",
+      "veryHigh": "Costo della vita molto alto"
+    },
+    "remoteWork": "Lavoro remoto possibile",
+    "onSiteRequired": "Presenza richiesta",
+    "effectiveRate": "Aliquota effettiva",
+    "monthlyNet": "Netto mensile",
+    "annualNet": "Netto annuale"
+  },
+  "retirement": {
+    "projectionTitle": "Proiezione Pensione 10-20 anni",
+    "projectionDescription": "Simula il tuo capitale pensionistico in base al paese e ai tuoi parametri",
+    "currentAge": "Età attuale",
+    "grossSalary": "Stipendio lordo annuale",
+    "salaryGrowth": "Crescita salariale/anno",
+    "privateContribution": "Risparmio privato/anno",
+    "retirementAge": "Pensione a",
+    "replacementRate": "Tasso di sostituzione",
+    "excellent": "Eccellente",
+    "good": "Buono",
+    "moderate": "Moderato",
+    "low": "Basso",
+    "in20years": "Tra 20 anni",
+    "capitalAccumulated": "Capitale accumulato",
+    "estimatedPension": "Pensione stimata",
+    "stateAndPrivate": "Statale + privata",
+    "totalContributions": "Contributi totali",
+    "over20years": "Su 20 anni",
+    "noPensionWarning": "Nessuna pensione pubblica per espatriati",
+    "noPensionExplanation": "In questo paese, gli espatriati non hanno accesso al sistema pensionistico pubblico. Risparmi privati significativi sono essenziali.",
+    "accumulated": "Capitale accumulato",
+    "netSalary": "Stipendio netto annuale"
+  },
+  "trajectory": {
+    "title": "Traiettoria Finanziaria Comparativa",
+    "description": "Confronta l'evoluzione del potere d'acquisto su 10 anni",
+    "addCountry": "Aggiungi",
+    "netSalary": "Stipendio Netto",
+    "purchasingPower": "Potere d'Acquisto",
+    "lowTaxes": "Tassazione",
+    "healthcare": "Sanità",
+    "costOfLiving": "Costo della Vita",
+    "netMonthly": "Netto mensile",
+    "taxes": "Trattenute"
+  },
+  "lifeGame": {
+    "hero": {
+      "badge": "🎮 Gioco da tavolo educativo",
+      "title1": "Il Gioco della",
+      "titleHighlight": "VITA",
+      "subtitle": "Un gioco di simulazione dove interpreti un personaggio fittizio. Scopri come funziona il mondo attraverso traiettorie casuali — NON è la tua vita reale!",
+      "playCta": "Inizia una partita",
+      "learnCta": "Regole del gioco",
+      "stats": {
+        "archetypes": "Personaggi giocabili",
+        "systems": "Sistemi mondiali",
+        "possibilities": "Traiettorie possibili"
+      }
+    },
+    "clarification": {
+      "title": "⚠️ NON è la tua vita reale",
+      "point1": "Ricevi un personaggio fittizio casuale (erede, rifugiato, imprenditore...)",
+      "point2": "Esplori i meccanismi mondiali senza rischi reali",
+      "point3": "È uno strumento educativo, non una previsione per te",
+      "realLife": "Per pianificare la tua vita reale →",
+      "realLifeLink": "Chiavi di Uscita"
+    },
+    "tagline": {
+      "quote": "Alcuni nascono al traguardo. Altri devono correre una maratona con le catene ai piedi. Questo gioco mostra perché.",
+      "author": "— La realtà, senza filtri"
+    },
+    "features": {
+      "title": "Come funziona il gioco",
+      "subtitle": "Un gioco da tavolo dove caso e strategia si mescolano.",
+      "systems": {
+        "title": "6 Sistemi Mondiali",
+        "description": "Ogni paese nel tabellone funziona diversamente. Impara le regole invisibili di ogni sistema."
+      },
+      "characters": {
+        "title": "12+ Personaggi Giocabili",
+        "description": "Dai figli di papà ai rifugiati. Non scegli sempre — a volte il destino decide per te."
+      },
+      "choices": {
+        "title": "Scelte Strategiche",
+        "description": "Lavora, studia, emigra, crea un'impresa... Gestisci le tue risorse come in un gioco gestionale."
+      },
+      "risks": {
+        "title": "Scorciatoie Rischiose",
+        "description": "Mercato nero, corruzione. Guadagni rapidi a rischio di perdere tutto — proprio come nella vita reale."
+      }
+    },
+    "resources": {
+      "title": "6 Risorse da Gestire",
+      "subtitle": "Nel gioco come nella vita, non avrai mai tutto."
+    },
+    "archetypes": {
+      "title": "Chi giocherai?",
+      "subtitle": "Ogni personaggio ha vantaggi e ostacoli. La difficoltà riflette le disuguaglianze del mondo reale.",
+      "seeAll": "Vedi tutti i personaggi"
+    },
+    "difficulty": {
+      "easy": "Facile",
+      "medium": "Medio",
+      "hard": "Difficile",
+      "extreme": "Estremo"
+    },
+    "warning": {
+      "title": "Contenuto educativo sensibile",
+      "description": "Questo gioco affronta realtà difficili in modo ludico. Le situazioni di gioco sono ispirate a esperienze reali vissute da milioni.",
+      "topics": {
+        "migration": "Migrazione forzata",
+        "corruption": "Corruzione sistemica",
+        "inequality": "Disuguaglianza alla nascita",
+        "shortcuts": "Scorciatoie pericolose"
+      }
+    },
+    "cta": {
+      "title": "Pronto a giocare?",
+      "subtitle": "Inizia una partita e scopri un personaggio casuale. Riesci a navigare nel sistema?",
+      "button": "Avvia partita"
+    }
+  },
+  "archetypes": {
+    "silverSpoon": { "label": "L'Erede", "description": "Nato in una famiglia ricca con rete consolidata. Vita in modalità facile.", "example": "Figlio/a di CEO, avvocato, medico" },
+    "techBro": { "label": "Il Tech Bro", "description": "Sviluppatore autodidatta nella Silicon Valley. Competente ma socialmente limitato.", "example": "Ingegnere FAANG, fondatore startup" },
+    "suburbanDreamer": { "label": "Il Sognatore Suburbano", "description": "Classe media che sogna stabilità e casa con giardino.", "example": "Impiegato, funzionario" },
+    "ambitiousGraduate": { "label": "Il Laureato Ambizioso", "description": "Primo in famiglia all'università. Tutto da dimostrare.", "example": "Studente borsista, stagista sovraqualificato" },
+    "economicMigrant": { "label": "Il Migrante Economico", "description": "Lascia il paese per dare una vita migliore alla famiglia. Resiliente ma invisibile.", "example": "Lavoratore irregolare, diaspora" },
+    "warRefugee": { "label": "Il Rifugiato di Guerra", "description": "Ha perso tutto tranne la speranza. Ricostruire la vita da zero.", "example": "Rifugiato siriano, ucraino, afghano" },
+    "selfMade": { "label": "Il Self-Made", "description": "Partito dal nulla, ha costruito un impero con la sola volontà. Astuto e ambizioso.", "example": "Imprenditore di quartiere, storia di successo immigrata" },
+    "digitalNomad": { "label": "Il Nomade Digitale", "description": "Lavora ovunque, non appartiene a nessun sistema. Libero ma instabile.", "example": "Freelancer remoto, content creator" },
+    "oligarchHeir": { "label": "L'Erede dell'Oligarca", "description": "Ricchezza immensa ma passaporto problematico. I soldi non sono tutto.", "example": "Figlio/a di miliardario russo, cinese" },
+    "stateDependent": { "label": "Il Dipendente dal Sistema", "description": "Malattia cronica o disabilità. Dipende dalle reti di sicurezza sociale.", "example": "Persona con disabilità, malattia lunga" },
+    "expatExecutive": { "label": "L'Expat Manager", "description": "Inviato all'estero dall'azienda. Pacchetto d'oro ma burnout garantito.", "example": "Country director, VP regionale" },
+    "undergroundHustler": { "label": "Lo Street Hustler", "description": "Sopravvivente dell'economia informale. Prospera grazie a rete e astuzia.", "example": "Venditore ambulante, economia grigia" }
+  },
+  "terrainRealities": {
+    "title": "Realtà sul Campo",
+    "subtitle": "Analisi fattuale delle disfunzioni istituzionali",
+    "generating": "Analisi delle realtà sul campo...",
+    "disclaimer": "Queste informazioni sono compilate da fonti aperte (ONG, media, report ufficiali). Potrebbero non riflettere la situazione attuale. Verifica sempre con ambasciate e organizzazioni sul territorio.",
+    "overallRisk": "Rischio complessivo",
+    "lastUpdated": "Aggiornato",
+    "confidence": "Affidabilità dati",
+    "riskHigh": "Alto",
+    "riskMedium": "Medio",
+    "riskLow": "Basso",
+    "healthcare": "Sanità",
+    "healthcareTab": "Salute",
+    "justice": "Giustizia",
+    "justiceTab": "Giustizia",
+    "security": "Sicurezza",
+    "securityTab": "Sicurezza",
+    "administration": "Amministrazione",
+    "adminTab": "Admin",
+    "fakeMedications": "Farmaci contraffatti",
+    "prevalence": "Prevalenza",
+    "affectedCategories": "Categorie interessate",
+    "protection": "Protezione",
+    "medicalEquipment": "Attrezzature mediche",
+    "reliableAlternatives": "Alternative affidabili",
+    "chronicDiseases": "Malattie croniche",
+    "reportedIssues": "Problemi segnalati",
+    "recommendations": "Raccomandazioni",
+    "corruptionPatterns": "Pattern di corruzione",
+    "lawyers": "Avvocati",
+    "judges": "Giudici",
+    "police": "Polizia",
+    "typicalBribes": "Importi tipici",
+    "averageDelays": "Ritardi medi",
+    "civilCases": "Cause civili",
+    "criminalCases": "Cause penali",
+    "commercial": "Commerciale",
+    "emergencyRecourses": "Ricorsi d'emergenza",
+    "reliableContacts": "Contatti affidabili",
+    "howToAccess": "Accesso",
+    "humanTrafficking": "Tratta di esseri umani",
+    "commonScenarios": "Scenari comuni",
+    "warningSigns": "Segnali d'allarme",
+    "emergencyContacts": "Contatti d'emergenza",
+    "organizedCrime": "Crimine organizzato",
+    "pettyCrime": "Microcriminalità",
+    "hotspots": "Hotspot",
+    "riskZones": "Zone a rischio",
+    "documentReliability": "Affidabilità documenti",
+    "birthCertificates": "Certificati di nascita",
+    "landTitles": "Titoli di proprietà",
+    "businessLicenses": "Licenze commerciali",
+    "verificationMethods": "Metodi di verifica",
+    "corruptionBySector": "Corruzione per settore",
+    "typicalAmounts": "Importi",
+    "positiveDevelopments": "Sviluppi positivi",
+    "sources": "Fonti",
+    "cachedResult": "Dati in cache",
+    "viewTerrainRealities": "Vedi Realtà sul Campo",
+    "exportPdf": "Esporta PDF",
+    "exportingPdf": "Esportazione...",
+    "pdfExportSuccess": "PDF esportato con successo"
+  },
+  "news": {
+    "badge": "Notizie Economiche",
+    "title": "Rischi Paese e Analisi",
+    "subtitle": "Rimani informato sui cambiamenti economici e rischi paese che impattano le tue decisioni.",
+    "categoryRisk": "Aggiornamento Rischio",
+    "categoryEconomic": "Analisi Economica",
+    "categoryExpert": "Consiglio Esperto",
+    "categoryAlert": "Allerta",
+    "critical": "Critico",
+    "warning": "Avviso",
+    "info": "Info",
+    "viewAllCountries": "Vedi tutti i paesi analizzati"
+  },
+  "grade": {
+    "a1Label": "Rischio Molto Basso",
+    "a1Desc": "Ambiente estremamente stabile. Condizioni ottimali per stabilirsi.",
+    "a2Label": "Rischio Basso",
+    "a2Desc": "Ambiente molto stabile con alcuni punti d'attenzione minori.",
+    "a3Label": "Rischio Moderato-Basso",
+    "a3Desc": "Ambiente generalmente stabile. Vigilanza raccomandata.",
+    "a4Label": "Rischio Moderato",
+    "a4Desc": "Alcune incertezze da considerare nella pianificazione.",
+    "bLabel": "Rischio Significativo",
+    "bDesc": "Ambiente con vulnerabilità. Preparazione approfondita necessaria.",
+    "cLabel": "Rischio Alto",
+    "cDesc": "Incertezze significative. Guida professionale raccomandata.",
+    "dLabel": "Rischio Molto Alto",
+    "dDesc": "Ambiente instabile. Sconsigliato senza solida competenza locale.",
+    "eLabel": "Rischio Estremo",
+    "eDesc": "Condizioni molto sfavorevoli. Evitare salvo casi eccezionali.",
+    "scoreLabel": "Punteggio"
+  },
+  "experts": {
+    "badge": "Rete Internazionale",
+    "finderTitle": "Trova un Esperto Locale",
+    "finderSubtitle": "Connettiti con professionisti verificati nel tuo paese di destinazione.",
+    "selectCountry": "Seleziona un paese",
+    "allCountries": "Tutti i paesi",
+    "all": "Tutti",
+    "typeExpert": "Esperti",
+    "typePartner": "Partner",
+    "verified": "Verificato",
+    "contact": "Contatta",
+    "book": "Prenota",
+    "unavailable": "Attualmente non disponibile",
+    "noResults": "Nessun esperto trovato per questi criteri.",
+    "viewAll": "Vedi tutti gli esperti",
+    "disclaimer": "Gli esperti sono professionisti indipendenti. World Alignment non garantisce i loro servizi."
+  },
+  "pricing": {
+    "badge": "Inizia gratis",
+    "title": "Inizia gratis.",
+    "subtitle": "Aggiorna quando serve.",
+    "description": "Accedi alle analisi base gratuitamente. Sblocca funzionalità avanzate quando ne hai bisogno.",
+    "free": "Gratis",
+    "freeFeature1": "Analisi base",
+    "freeFeature2": "Tutti i simulatori",
+    "freeFeature3": "38 paesi",
+    "pro": "Pro",
+    "from": "da",
+    "proFeature1": "Analisi approfondite",
+    "proFeature2": "Chiavi di uscita personalizzate",
+    "proFeature3": "Esportazione PDF",
+    "cta": "Vedi piani"
   }
 }
