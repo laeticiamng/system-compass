@@ -120,11 +120,11 @@ const getFlagEmoji = (iso2: string) => {
 
 export function LocalExpertFinder() {
   const { t } = useTranslation();
-  const [selectedCountry, setSelectedCountry] = useState<string>('');
+  const [selectedCountry, setSelectedCountry] = useState<string>('all');
   const [selectedType, setSelectedType] = useState<string>('all');
 
   const filteredExperts = localExperts.filter(expert => {
-    if (selectedCountry && expert.countryCode !== selectedCountry) return false;
+    if (selectedCountry !== 'all' && expert.countryCode !== selectedCountry) return false;
     if (selectedType !== 'all' && expert.type !== selectedType) return false;
     return true;
   });
@@ -165,7 +165,7 @@ export function LocalExpertFinder() {
               <SelectValue placeholder={t('experts.selectCountry', 'Sélectionnez un pays')} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">
+              <SelectItem value="all">
                 {t('experts.allCountries', 'Tous les pays')}
               </SelectItem>
               {countries.map(country => (
