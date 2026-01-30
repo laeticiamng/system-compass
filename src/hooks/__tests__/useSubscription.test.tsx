@@ -8,6 +8,7 @@ import { ReactNode } from 'react';
 
 // Mock Supabase
 const mockFunctionsInvoke = vi.fn();
+const mockGetSession = vi.fn();
 
 vi.mock('@/integrations/supabase/client', () => ({
   supabase: {
@@ -16,7 +17,7 @@ vi.mock('@/integrations/supabase/client', () => ({
     },
     auth: {
       onAuthStateChange: vi.fn(() => ({ data: { subscription: { unsubscribe: vi.fn() } } })),
-      getSession: vi.fn(() => Promise.resolve({ data: { session: null } })),
+      getSession: () => mockGetSession(),
     },
   },
 }));
@@ -47,6 +48,10 @@ describe('useSubscription', () => {
     vi.clearAllMocks();
     mockUserValue = mockUser;
     mockAuthLoading = false;
+    // Default to valid session for authenticated tests
+    mockGetSession.mockResolvedValue({ 
+      data: { session: { user: mockUser, access_token: 'test-token' } } 
+    });
   });
 
   describe('initialization', () => {
@@ -74,6 +79,7 @@ describe('useSubscription', () => {
 
     it('should set free tier when user is not authenticated', async () => {
       mockUserValue = null;
+      mockGetSession.mockResolvedValue({ data: { session: null } });
       mockFunctionsInvoke.mockResolvedValue({ data: { tier: 'free' }, error: null });
       
       const { result } = renderHook(() => useSubscription(), { wrapper: createWrapper() });
@@ -157,6 +163,7 @@ describe('useSubscription', () => {
 
     it('should throw error when user is not authenticated', async () => {
       mockUserValue = null;
+      mockGetSession.mockResolvedValue({ data: { session: null } });
       mockFunctionsInvoke.mockResolvedValue({ data: { tier: 'free' }, error: null });
       
       const { result } = renderHook(() => useSubscription(), { wrapper: createWrapper() });
@@ -194,6 +201,7 @@ describe('useSubscription', () => {
 
     it('should throw error when user is not authenticated', async () => {
       mockUserValue = null;
+      mockGetSession.mockResolvedValue({ data: { session: null } });
       mockFunctionsInvoke.mockResolvedValue({ data: { tier: 'free' }, error: null });
       
       const { result } = renderHook(() => useSubscription(), { wrapper: createWrapper() });
