@@ -625,6 +625,88 @@ Format de sortie JSON:
   },
 };
 
+// Input validation utilities (inline to avoid import issues)
+const isString = (val: unknown): val is string => typeof val === 'string';
+const isUUID = (str: string): boolean => 
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(str);
+const sanitizeString = (str: string, maxLen = 10000): string => 
+  str.trim().replace(/[<>]/g, '').slice(0, maxLen);
+
+interface ValidatedInput {
+  action: string;
+  context: Record<string, unknown>;
+  userId: string | null;
+  sessionId: string;
+}
+
+function validateAiAssistInput(body: unknown): { valid: boolean; data?: ValidatedInput; error?: string } {
+  if (!body || typeof body !== 'object') {
+    return { valid: false, error: 'Invalid request body' };
+  }
+
+  const input = body as Record<string, unknown>;
+
+  // Validate action (required, must be string)
+  if (!input.action || !isString(input.action)) {
+    return { valid: false, error: 'action is required and must be a string' };
+  }
+  const action = sanitizeString(input.action, 100);
+
+  // Validate userId (optional, must be valid UUID if present)
+  let userId: string | null = null;
+  if (input.userId !== undefined && input.userId !== null) {
+    if (!isString(input.userId) || !isUUID(input.userId)) {
+      return { valid: false, error: 'userId must be a valid UUID' };
+    }
+    userId = input.userId;
+  }
+
+  // Validate sessionId (optional, defaults to random UUID)
+  let sessionId: string = crypto.randomUUID();
+  if (input.sessionId !== undefined && input.sessionId !== null) {
+    if (!isString(input.sessionId)) {
+      return { valid: false, error: 'sessionId must be a string' };
+    }
+    // Keep the provided sessionId as-is for tracking purposes
+    sessionId = sanitizeString(input.sessionId, 100);
+  }
+
+  // Validate context (optional, must be object)
+  let context: Record<string, unknown> = {};
+  if (input.context !== undefined && input.context !== null) {
+    if (typeof input.context !== 'object' || Array.isArray(input.context)) {
+      return { valid: false, error: 'context must be an object' };
+    }
+    // Deep sanitize string values in context (prevent XSS)
+    context = sanitizeContext(input.context as Record<string, unknown>);
+  }
+
+  return { valid: true, data: { action, context, userId, sessionId } };
+}
+
+// Recursively sanitize context object
+function sanitizeContext(obj: Record<string, unknown>, depth = 0): Record<string, unknown> {
+  if (depth > 10) return {}; // Prevent deep recursion attacks
+  
+  const result: Record<string, unknown> = {};
+  for (const [key, value] of Object.entries(obj)) {
+    const sanitizedKey = sanitizeString(key, 100);
+    
+    if (isString(value)) {
+      result[sanitizedKey] = sanitizeString(value, 5000);
+    } else if (Array.isArray(value)) {
+      result[sanitizedKey] = value.slice(0, 100).map(item => 
+        isString(item) ? sanitizeString(item, 1000) : item
+      );
+    } else if (typeof value === 'object' && value !== null) {
+      result[sanitizedKey] = sanitizeContext(value as Record<string, unknown>, depth + 1);
+    } else {
+      result[sanitizedKey] = value;
+    }
+  }
+  return result;
+}
+
 // Main handler
 serve(async (req) => {
   if (req.method === "OPTIONS") {
@@ -634,7 +716,27 @@ serve(async (req) => {
   const startTime = Date.now();
 
   try {
-    const { action, context, userId, sessionId } = await req.json();
+    // Parse JSON body safely
+    let body: unknown;
+    try {
+      body = await req.json();
+    } catch {
+      return new Response(
+        JSON.stringify({ error: "Invalid JSON in request body" }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    // Validate input
+    const validation = validateAiAssistInput(body);
+    if (!validation.valid) {
+      return new Response(
+        JSON.stringify({ error: validation.error }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    const { action, context, userId, sessionId } = validation.data!;
 
     // Health check endpoint
     if (action === "health" || action === "ping") {
@@ -643,13 +745,13 @@ serve(async (req) => {
           status: "ok", 
           timestamp: new Date().toISOString(),
           availableActions: Object.keys(ACTION_CONFIGS),
-          version: "1.0.0"
+          version: "1.1.0"
         }),
         { headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
-    if (!action || !ACTION_CONFIGS[action]) {
+    if (!ACTION_CONFIGS[action]) {
       return new Response(
         JSON.stringify({ 
           error: `Action non supportée: ${action}`,
@@ -660,6 +762,7 @@ serve(async (req) => {
     }
 
     if (!LOVABLE_API_KEY) {
+      console.error("LOVABLE_API_KEY not configured");
       return new Response(
         JSON.stringify({ error: "LOVABLE_API_KEY non configurée" }),
         { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }

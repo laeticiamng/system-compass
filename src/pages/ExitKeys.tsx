@@ -505,7 +505,7 @@ export default function ExitKeys() {
 
                 {/* Add nationality */}
                 <Select 
-                  value="" 
+                  value={undefined}
                   onValueChange={(v) => {
                     if (v && !nationalityIds.includes(v)) {
                       setNationalityIds([...nationalityIds, v]);
@@ -702,7 +702,7 @@ export default function ExitKeys() {
                     </div>
                     <Label className="text-sm font-semibold">Niveau d'études</Label>
                   </div>
-                  <Select value={educationLevel} onValueChange={(v) => setEducationLevel(v as EducationLevel)}>
+                  <Select value={educationLevel || ''} onValueChange={(v) => setEducationLevel(v as EducationLevel)}>
                     <SelectTrigger className="w-full h-14 bg-background/50 border-2 hover:border-amber-500/50 transition-colors rounded-xl">
                       <SelectValue placeholder="Sélectionnez votre niveau" />
                     </SelectTrigger>
@@ -728,7 +728,7 @@ export default function ExitKeys() {
                     </div>
                     <Label className="text-sm font-semibold">Métier actuel</Label>
                   </div>
-                  <Select value={professionId} onValueChange={setProfessionId}>
+                  <Select value={professionId || ''} onValueChange={setProfessionId}>
                     <SelectTrigger className="w-full h-14 bg-background/50 border-2 hover:border-blue-500/50 transition-colors rounded-xl">
                       <SelectValue placeholder="Sélectionnez votre métier" />
                     </SelectTrigger>
