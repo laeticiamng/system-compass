@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button';
 import { CountryCard } from '@/components/CountryCard';
 import { useAuth } from '@/hooks/useAuth';
 import { useAnalytics } from '@/hooks/useAnalytics';
+import { EconomicNews } from '@/components/EconomicNews';
+import { LocalExpertFinder } from '@/components/LocalExpertFinder';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { 
   ArrowRight, 
@@ -384,6 +386,9 @@ export default function Index() {
         </div>
       </section>
 
+      {/* ECONOMIC NEWS - Coface-style */}
+      <EconomicNews />
+
       {/* PRICING TEASER */}
       <section className="py-24 md:py-32">
         <div className="container mx-auto px-4">
@@ -458,6 +463,9 @@ export default function Index() {
           </AnimatedSection>
         </div>
       </section>
+
+      {/* LOCAL EXPERT FINDER - Coface-style */}
+      <LocalExpertFinder />
 
       {/* FINAL CTA - Dramatic */}
       <section className="py-32 md:py-48 relative overflow-hidden">
