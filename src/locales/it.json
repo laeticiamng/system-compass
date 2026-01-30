@@ -1,4 +1,113 @@
 {
+  "exitKeys": {
+    "title": "Le tue chiavi di uscita",
+    "subtitle": "Strategie personalizzate per la tua transizione",
+    "badge": {
+      "personalized": "Personalizzato",
+      "global": "Globale"
+    },
+    "reminder": "💡 Questi sono scenari di esplorazione, non raccomandazioni.",
+    "lucidityMessage": "Questa analisi si basa sul tuo profilo. Verifica sempre con fonti ufficiali.",
+    "steps": {
+      "substep": "Sottopassaggio",
+      "of": "di"
+    },
+    "origin": {
+      "title": "Le tue origini",
+      "subtitle": "Da dove vieni?",
+      "birthCountry": "Paese di nascita",
+      "selectBirthCountry": "Seleziona il tuo paese di nascita",
+      "nationality": "Nazionalità",
+      "multiNationalitySupported": "Doppia cittadinanza supportata",
+      "nationalityExplain": "La tua nazionalità determina i diritti di mobilità",
+      "addNationality": "Aggiungi nazionalità",
+      "selectNationality": "Seleziona nazionalità",
+      "addBirthNationality": "Aggiungi nazionalità di nascita"
+    },
+    "current": {
+      "title": "Situazione attuale",
+      "subtitle": "Dove sei ora?"
+    },
+    "costs": {
+      "title": "Simulatore di costi",
+      "subtitle": "Stima CAPEX/OPEX per",
+      "duration": "Durata prevista",
+      "visa": "Visto e permessi",
+      "travel": "Viaggio iniziale",
+      "deposit": "Deposito alloggio",
+      "setup": "Costi di installazione",
+      "rent": "Affitto mensile",
+      "living": "Vita quotidiana",
+      "insurance": "Assicurazione",
+      "professional": "Onorari professionali",
+      "healthcare": "Salute e benessere",
+      "coworking": "Coworking e internet",
+      "oneTime": "Investimento iniziale",
+      "monthly": "Mensile",
+      "totalOpex": "Totale per",
+      "totalCost": "Costo totale stimato",
+      "buffer": "Margine di sicurezza (15%)",
+      "recommended": "Budget consigliato",
+      "yourBudget": "Il tuo budget disponibile",
+      "disclaimer": "⚠️ Queste stime sono indicative e basate su medie. I costi effettivi possono variare significativamente.",
+      "status": {
+        "excellent": "Budget confortevole, alto margine di sicurezza",
+        "good": "Budget adeguato con margine",
+        "tight": "Budget stretto, cautela consigliata",
+        "insufficient": "Budget insufficiente, alto rischio"
+      }
+    },
+    "checklist": {
+      "title": "Checklist automatizzata",
+      "subtitle": "Preparazione per",
+      "overall": "Progresso complessivo",
+      "critical": "Critico",
+      "reset": "Reimposta",
+      "markAll": "Segna tutto",
+      "reminder": "💡 Gli elementi grigi dipendono da altri compiti da completare prima.",
+      "passport": "Passaporto valido (6+ mesi)",
+      "visaResearch": "Ricerca tipo di visto richiesto",
+      "visaApply": "Domanda di visto inviata",
+      "savings": "Risparmi assicurati (6 mesi min)",
+      "bankResearch": "Banca internazionale o locale identificata",
+      "taxAdvisor": "Consulenza fiscale",
+      "housingTemp": "Alloggio temporaneo prenotato (prima settimana)",
+      "housingResearch": "Quartieri target identificati",
+      "healthInsurance": "Assicurazione sanitaria internazionale",
+      "travelInsurance": "Assicurazione viaggio/rimpatrio",
+      "addressChange": "Cambio indirizzo ufficiale",
+      "mailForward": "Inoltro posta",
+      "contactsLocal": "Contatti locali identificati",
+      "expatGroups": "Gruppi espatriati",
+      "flightsBooked": "Voli prenotati",
+      "luggagePlanned": "Bagagli pianificati",
+      "jobSecured": "Lavoro o opportunità confermata",
+      "contractReviewed": "Contratto revisionato da esperto",
+      "credentialsCheck": "Equivalenza credenziali verificata",
+      "pensionTransfer": "Trasferimento pensione organizzato",
+      "healthcareLocal": "Sistema sanitario locale compreso",
+      "emergencyContacts": "Contatti di emergenza stabiliti",
+      "remoteSetup": "Setup lavoro remoto validato",
+      "timezonePlan": "Fuso orario gestito con clienti",
+      "coworkingFound": "Spazi coworking localizzati",
+      "categories": {
+        "documents": "Documenti",
+        "finance": "Finanze",
+        "housing": "Alloggio",
+        "insurance": "Assicurazione",
+        "admin": "Amministrativo",
+        "network": "Rete",
+        "travel": "Viaggio",
+        "work": "Lavoro"
+      },
+      "priority": {
+        "critical": "Critico",
+        "high": "Alto",
+        "medium": "Medio",
+        "low": "Basso"
+      }
+    }
+  },
   "common": {
     "appName": "Pyramid Compass",
     "tagline": "Simulatore di decisioni per sistemi reali",
@@ -19,7 +128,17 @@
     "delete": "Elimina",
     "confirm": "Conferma",
     "edit": "Modifica",
-    "close": "Chiudi"
+    "previewMode": "Modalità anteprima",
+    "all": "Tutti",
+    "total": "Totale",
+    "close": "Chiudi",
+    "optional": "opzionale",
+    "description": "Descrizione",
+    "submit": "Invia",
+    "sending": "Invio in corso...",
+    "new": "Nuovo",
+    "view": "Visualizza",
+    "skip": "Salta"
   },
   "errors": {
     "rateLimited": "Troppe richieste. Riprova tra qualche istante.",

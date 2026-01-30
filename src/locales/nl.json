@@ -1,4 +1,113 @@
 {
+  "exitKeys": {
+    "title": "Jouw exit-sleutels",
+    "subtitle": "Gepersonaliseerde strategieën voor je transitie",
+    "badge": {
+      "personalized": "Gepersonaliseerd",
+      "global": "Globaal"
+    },
+    "reminder": "💡 Dit zijn verkenningsscenario's, geen aanbevelingen.",
+    "lucidityMessage": "Deze analyse is gebaseerd op je profiel. Controleer altijd bij officiële bronnen.",
+    "steps": {
+      "substep": "Substap",
+      "of": "van"
+    },
+    "origin": {
+      "title": "Je afkomst",
+      "subtitle": "Waar kom je vandaan?",
+      "birthCountry": "Geboorteland",
+      "selectBirthCountry": "Selecteer je geboorteland",
+      "nationality": "Nationaliteit",
+      "multiNationalitySupported": "Dubbele nationaliteit ondersteund",
+      "nationalityExplain": "Je nationaliteit bepaalt je mobiliteitsrechten",
+      "addNationality": "Nationaliteit toevoegen",
+      "selectNationality": "Selecteer nationaliteit",
+      "addBirthNationality": "Geboortenationaliteit toevoegen"
+    },
+    "current": {
+      "title": "Huidige situatie",
+      "subtitle": "Waar ben je nu?"
+    },
+    "costs": {
+      "title": "Kostensimulator",
+      "subtitle": "CAPEX/OPEX-schatting voor",
+      "duration": "Geplande duur",
+      "visa": "Visum en vergunningen",
+      "travel": "Eerste reis",
+      "deposit": "Woningborg",
+      "setup": "Installatiekosten",
+      "rent": "Maandelijkse huur",
+      "living": "Dagelijks leven",
+      "insurance": "Verzekering",
+      "professional": "Professionele kosten",
+      "healthcare": "Gezondheid en welzijn",
+      "coworking": "Coworking en internet",
+      "oneTime": "Initiële investering",
+      "monthly": "Maandelijks",
+      "totalOpex": "Totaal voor",
+      "totalCost": "Geschatte totale kosten",
+      "buffer": "Veiligheidsmarge (15%)",
+      "recommended": "Aanbevolen budget",
+      "yourBudget": "Je beschikbare budget",
+      "disclaimer": "⚠️ Deze schattingen zijn indicatief en gebaseerd op gemiddelden. Werkelijke kosten kunnen aanzienlijk variëren.",
+      "status": {
+        "excellent": "Comfortabel budget, hoge veiligheidsmarge",
+        "good": "Adequaat budget met marge",
+        "tight": "Krap budget, voorzichtigheid aanbevolen",
+        "insufficient": "Onvoldoende budget, hoog risico"
+      }
+    },
+    "checklist": {
+      "title": "Geautomatiseerde checklist",
+      "subtitle": "Voorbereiding voor",
+      "overall": "Algemene voortgang",
+      "critical": "Kritiek",
+      "reset": "Reset",
+      "markAll": "Alles markeren",
+      "reminder": "💡 Grijze items zijn afhankelijk van andere taken die eerst moeten worden voltooid.",
+      "passport": "Geldig paspoort (6+ maanden)",
+      "visaResearch": "Onderzoek vereist visumtype",
+      "visaApply": "Visumaanvraag ingediend",
+      "savings": "Spaargeld verzekerd (6 maanden min)",
+      "bankResearch": "Internationale of lokale bank geïdentificeerd",
+      "taxAdvisor": "Belastingadviseur consultatie",
+      "housingTemp": "Tijdelijke huisvesting geboekt (eerste week)",
+      "housingResearch": "Doelwijken geïdentificeerd",
+      "healthInsurance": "Internationale ziektekostenverzekering",
+      "travelInsurance": "Reis-/repatriëringsverzekering",
+      "addressChange": "Officiële adreswijziging",
+      "mailForward": "Post doorsturen",
+      "contactsLocal": "Lokale contacten geïdentificeerd",
+      "expatGroups": "Expat-groepen",
+      "flightsBooked": "Vluchten geboekt",
+      "luggagePlanned": "Bagage gepland",
+      "jobSecured": "Baan of kans bevestigd",
+      "contractReviewed": "Contract beoordeeld door expert",
+      "credentialsCheck": "Diploma-equivalentie geverifieerd",
+      "pensionTransfer": "Pensioenoverdrachtgeorganiseerd",
+      "healthcareLocal": "Lokaal zorgstelsel begrepen",
+      "emergencyContacts": "Noodcontacten vastgesteld",
+      "remoteSetup": "Remote werk setup gevalideerd",
+      "timezonePlan": "Tijdzone beheerd met klanten",
+      "coworkingFound": "Coworking ruimtes gelokaliseerd",
+      "categories": {
+        "documents": "Documenten",
+        "finance": "Financiën",
+        "housing": "Huisvesting",
+        "insurance": "Verzekering",
+        "admin": "Administratief",
+        "network": "Netwerk",
+        "travel": "Reizen",
+        "work": "Werk"
+      },
+      "priority": {
+        "critical": "Kritiek",
+        "high": "Hoog",
+        "medium": "Medium",
+        "low": "Laag"
+      }
+    }
+  },
   "common": {
     "appName": "Pyramid Compass",
     "tagline": "Beslissingssimulator voor echte systemen",
@@ -19,7 +128,17 @@
     "delete": "Verwijderen",
     "confirm": "Bevestigen",
     "edit": "Bewerken",
-    "close": "Sluiten"
+    "previewMode": "Voorbeeldmodus",
+    "all": "Alle",
+    "total": "Totaal",
+    "close": "Sluiten",
+    "optional": "optioneel",
+    "description": "Beschrijving",
+    "submit": "Verzenden",
+    "sending": "Verzenden...",
+    "new": "Nieuw",
+    "view": "Bekijken",
+    "skip": "Overslaan"
   },
   "errors": {
     "rateLimited": "Te veel verzoeken. Probeer het later opnieuw.",
