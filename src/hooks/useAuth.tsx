@@ -78,6 +78,37 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const signOut = async () => {
+    // Clear all application-specific localStorage data on logout
+    // This prevents data leakage on shared computers
+    const keysToRemove = [
+      'newsletter_subscribers',
+      'newsletter_subscriptions',
+      'recent_searches',
+      'saved_countries',
+      'tutorial_completed',
+      'onboarding_completed',
+      'notification_preferences',
+      'user_preferences',
+      'session_context',
+      'offline_queue',
+      'export_queue',
+    ];
+    
+    keysToRemove.forEach(key => {
+      try {
+        localStorage.removeItem(key);
+      } catch (e) {
+        // Ignore errors during cleanup
+      }
+    });
+    
+    // Also clear sessionStorage
+    try {
+      sessionStorage.clear();
+    } catch (e) {
+      // Ignore errors during cleanup
+    }
+    
     await supabase.auth.signOut();
   };
 

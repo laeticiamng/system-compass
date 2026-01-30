@@ -1,14 +1,49 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { validate, validationErrorResponse, sanitizeString, isString } from "../_shared/validation.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-interface TerrainRealitiesRequest {
+// Valid languages for the API
+const VALID_LANGUAGES = ['fr', 'en'] as const;
+type Language = typeof VALID_LANGUAGES[number];
+
+// Input validation interface
+interface TerrainRealitiesInput {
   country: string;
-  language?: string;
+  language: Language;
+}
+
+// Validate and sanitize input
+function validateInput(body: unknown): { valid: boolean; data?: TerrainRealitiesInput; error?: string } {
+  if (!body || typeof body !== 'object') {
+    return { valid: false, error: 'Invalid request body' };
+  }
+
+  const input = body as Record<string, unknown>;
+
+  // Validate country (required)
+  if (!input.country || !isString(input.country)) {
+    return { valid: false, error: 'country is required and must be a string' };
+  }
+  const country = sanitizeString(input.country).slice(0, 100);
+  if (country.length < 2) {
+    return { valid: false, error: 'country must be at least 2 characters' };
+  }
+
+  // Validate language (optional, defaults to 'fr')
+  let language: Language = 'fr';
+  if (input.language !== undefined) {
+    if (!isString(input.language) || !VALID_LANGUAGES.includes(input.language as Language)) {
+      return { valid: false, error: `language must be one of: ${VALID_LANGUAGES.join(', ')}` };
+    }
+    language = input.language as Language;
+  }
+
+  return { valid: true, data: { country, language } };
 }
 
 // Helper to get current date in YYYY-MM format
@@ -180,14 +215,27 @@ serve(async (req) => {
   }
 
   try {
-    const { country, language = 'fr' } = await req.json() as TerrainRealitiesRequest;
-
-    if (!country) {
+    // Parse JSON body safely
+    let body: unknown;
+    try {
+      body = await req.json();
+    } catch {
       return new Response(
-        JSON.stringify({ error: 'Country is required' }),
+        JSON.stringify({ error: 'Invalid JSON in request body' }),
         { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     }
+
+    // Validate and sanitize input
+    const validation = validateInput(body);
+    if (!validation.valid) {
+      return new Response(
+        JSON.stringify({ error: validation.error }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    const { country, language } = validation.data!;
 
     console.log(`Terrain Realities request for: ${country}, lang: ${language}`);
 
