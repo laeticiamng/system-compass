@@ -49,7 +49,7 @@ export function useNewsletter(): UseNewsletterReturn {
         ...preferences,
       };
 
-      // Insert into newsletter_subscriptions table
+      // Prepare insert data
       const insertData: Record<string, unknown> = {
         email: email.toLowerCase().trim(),
         preferences: defaultPreferences,
@@ -58,13 +58,19 @@ export function useNewsletter(): UseNewsletterReturn {
         source: 'website',
       };
 
-      const { error } = await supabase
-        .from('newsletter_subscriptions')
-        .insert(insertData as never);
+      // If user is authenticated, insert directly via Supabase client
+      // Otherwise, store in localStorage (RLS now requires auth for direct inserts)
+      if (user) {
+        const { error } = await supabase
+          .from('newsletter_subscriptions')
+          .insert(insertData as never);
 
-      if (error) {
-        console.error('Newsletter subscription error:', error);
-        // Fallback to localStorage for demo
+        if (error) {
+          console.error('Newsletter subscription error:', error);
+          throw error;
+        }
+      } else {
+        // For anonymous users, store locally (a future edge function could handle this with rate limiting)
         const stored = JSON.parse(localStorage.getItem('newsletter_subscriptions') || '[]');
         stored.push({ 
           email: email.toLowerCase().trim(), 
