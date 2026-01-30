@@ -1,5 +1,6 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { validate, validationErrorResponse, isString, isArray, sanitizeString } from "../_shared/validation.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -8,28 +9,137 @@ const corsHeaders = {
 
 const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
 
+// Valid modes for the API
+const VALID_MODES = ['insights', 'vacation', 'vacation_recommendations'] as const;
+type Mode = typeof VALID_MODES[number];
+
+// Input validation interface
+interface DestinationInsightsInput {
+  destination?: string | { name?: string; countryName?: string };
+  nationalities?: string[] | string;
+  aspiration?: string;
+  mode?: Mode;
+  currentCountry?: string;
+  preferences?: {
+    climate?: string;
+    budget?: string;
+    activities?: string[];
+    duration?: number;
+  };
+}
+
+// Sanitize and validate input
+function validateInput(body: unknown): { valid: boolean; data?: DestinationInsightsInput; error?: string } {
+  if (!body || typeof body !== 'object') {
+    return { valid: false, error: 'Invalid request body' };
+  }
+
+  const input = body as Record<string, unknown>;
+  const result: DestinationInsightsInput = {};
+
+  // Validate mode (optional, defaults to 'insights')
+  if (input.mode !== undefined) {
+    if (!isString(input.mode) || !VALID_MODES.includes(input.mode as Mode)) {
+      return { valid: false, error: `mode must be one of: ${VALID_MODES.join(', ')}` };
+    }
+    result.mode = input.mode as Mode;
+  }
+
+  // Validate destination
+  if (input.destination !== undefined) {
+    if (isString(input.destination)) {
+      result.destination = sanitizeString(input.destination).slice(0, 200);
+    } else if (typeof input.destination === 'object' && input.destination !== null) {
+      const dest = input.destination as Record<string, unknown>;
+      result.destination = {
+        name: dest.name && isString(dest.name) ? sanitizeString(dest.name).slice(0, 200) : undefined,
+        countryName: dest.countryName && isString(dest.countryName) ? sanitizeString(dest.countryName).slice(0, 200) : undefined,
+      };
+    }
+  }
+
+  // Validate nationalities
+  if (input.nationalities !== undefined) {
+    if (isString(input.nationalities)) {
+      result.nationalities = sanitizeString(input.nationalities).slice(0, 500);
+    } else if (isArray(input.nationalities)) {
+      result.nationalities = (input.nationalities as unknown[])
+        .filter(isString)
+        .map(n => sanitizeString(n).slice(0, 100))
+        .slice(0, 10);
+    }
+  }
+
+  // Validate aspiration
+  if (input.aspiration !== undefined && isString(input.aspiration)) {
+    result.aspiration = sanitizeString(input.aspiration).slice(0, 500);
+  }
+
+  // Validate currentCountry
+  if (input.currentCountry !== undefined && isString(input.currentCountry)) {
+    result.currentCountry = sanitizeString(input.currentCountry).slice(0, 200);
+  }
+
+  // Validate preferences (for vacation_recommendations mode)
+  if (input.preferences !== undefined && typeof input.preferences === 'object') {
+    const prefs = input.preferences as Record<string, unknown>;
+    result.preferences = {
+      climate: prefs.climate && isString(prefs.climate) ? sanitizeString(prefs.climate).slice(0, 50) : undefined,
+      budget: prefs.budget && isString(prefs.budget) ? sanitizeString(prefs.budget).slice(0, 50) : undefined,
+      activities: prefs.activities && isArray(prefs.activities) 
+        ? (prefs.activities as unknown[]).filter(isString).map(a => sanitizeString(a).slice(0, 100)).slice(0, 10)
+        : undefined,
+      duration: prefs.duration && typeof prefs.duration === 'number' && prefs.duration > 0 && prefs.duration <= 365
+        ? prefs.duration
+        : undefined,
+    };
+  }
+
+  return { valid: true, data: result };
+}
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const { destination, nationalities, aspiration, mode, currentCountry, preferences } = await req.json();
+    // Parse and validate request body
+    let body: unknown;
+    try {
+      body = await req.json();
+    } catch {
+      return new Response(
+        JSON.stringify({ error: "Invalid JSON in request body" }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    const validation = validateInput(body);
+    if (!validation.valid) {
+      return new Response(
+        JSON.stringify({ error: validation.error }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    const { destination, nationalities, aspiration, mode, currentCountry, preferences } = validation.data!;
     
     // Check for Lovable AI key first, fallback to OpenAI
     const apiKey = LOVABLE_API_KEY || Deno.env.get("OPENAI_API_KEY");
     const useLovableAI = !!LOVABLE_API_KEY;
     
     if (!apiKey) {
+      console.error("No AI API key configured");
       throw new Error("No AI API key configured (LOVABLE_API_KEY or OPENAI_API_KEY)");
     }
 
     // Handle vacation_recommendations mode (returns JSON, no streaming)
     if (mode === 'vacation_recommendations') {
       return await handleVacationRecommendations(
-        currentCountry,
-        nationalities,
-        preferences,
+        currentCountry || '',
+        Array.isArray(nationalities) ? nationalities : (nationalities ? [nationalities] : []),
+        preferences || {},
         apiKey,
         useLovableAI
       );
@@ -40,12 +150,16 @@ serve(async (req) => {
       ? "L'utilisateur envisage des VACANCES ou un séjour temporaire. Focus sur: facilité d'accès, coût du séjour court, sécurité touriste, précautions sanitaires, meilleures saisons, visa touriste."
       : "L'utilisateur envisage une INSTALLATION permanente ou long terme. Focus sur: processus d'immigration, coût de vie mensuel, marché du travail, système de santé, qualité de vie, intégration sociale, éducation.";
 
-    const destinationName = typeof destination === 'string' ? destination : destination?.name || destination?.countryName || 'destination';
+    const destinationName = typeof destination === 'string' 
+      ? destination 
+      : destination?.name || destination?.countryName || 'destination';
+
+    const nationalitiesStr = Array.isArray(nationalities) ? nationalities.join(', ') : nationalities || 'Non spécifié';
 
     const systemPrompt = `Tu es un expert en expatriation et voyages internationaux. Tu fournis des conseils personnalisés et pratiques.
 
 Contexte:
-- Nationalité(s) de l'utilisateur: ${Array.isArray(nationalities) ? nationalities.join(', ') : nationalities || 'Non spécifié'}
+- Nationalité(s) de l'utilisateur: ${nationalitiesStr}
 - Pays actuel: ${currentCountry || 'Non spécifié'}
 - Destination analysée: ${destinationName}
 - Aspiration principale: ${aspiration || 'Non spécifié'}
@@ -154,7 +268,7 @@ Sois concis mais complet.`;
 async function handleVacationRecommendations(
   originCountry: string,
   nationalities: string[],
-  preferences: any,
+  preferences: Record<string, unknown>,
   apiKey: string,
   useLovableAI: boolean
 ): Promise<Response> {
@@ -180,11 +294,11 @@ Format JSON attendu:
 }`;
 
   const userPrompt = `Génère 5 recommandations de destinations vacances pour:
-- Pays d'origine: ${originCountry}
-- Nationalités: ${Array.isArray(nationalities) ? nationalities.join(', ') : nationalities || 'Non spécifié'}
+- Pays d'origine: ${originCountry || 'Non spécifié'}
+- Nationalités: ${nationalities.length > 0 ? nationalities.join(', ') : 'Non spécifié'}
 - Préférences climat: ${preferences?.climate || 'any'}
 - Budget: ${preferences?.budget || 'medium'}
-- Activités préférées: ${preferences?.activities?.join(', ') || 'diverses'}
+- Activités préférées: ${Array.isArray(preferences?.activities) ? preferences.activities.join(', ') : 'diverses'}
 - Durée souhaitée: ${preferences?.duration || 14} jours
 
 Retourne UNIQUEMENT le JSON, sans autre texte.`;
