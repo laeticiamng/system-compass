@@ -1,4 +1,113 @@
 {
+  "exitKeys": {
+    "title": "Tus claves de salida",
+    "subtitle": "Estrategias personalizadas para tu transición",
+    "badge": {
+      "personalized": "Personalizado",
+      "global": "Global"
+    },
+    "reminder": "💡 Estos son escenarios de exploración, no recomendaciones.",
+    "lucidityMessage": "Este análisis se basa en tu perfil. Verifica siempre con fuentes oficiales.",
+    "steps": {
+      "substep": "Subpaso",
+      "of": "de"
+    },
+    "origin": {
+      "title": "Tus orígenes",
+      "subtitle": "¿De dónde vienes?",
+      "birthCountry": "País de nacimiento",
+      "selectBirthCountry": "Selecciona tu país de nacimiento",
+      "nationality": "Nacionalidad",
+      "multiNationalitySupported": "Doble nacionalidad soportada",
+      "nationalityExplain": "Tu nacionalidad determina tus derechos de movilidad",
+      "addNationality": "Agregar nacionalidad",
+      "selectNationality": "Seleccionar nacionalidad",
+      "addBirthNationality": "Agregar nacionalidad de nacimiento"
+    },
+    "current": {
+      "title": "Situación actual",
+      "subtitle": "¿Dónde estás ahora?"
+    },
+    "costs": {
+      "title": "Simulador de costos",
+      "subtitle": "Estimación CAPEX/OPEX para",
+      "duration": "Duración planificada",
+      "visa": "Visa y permisos",
+      "travel": "Viaje inicial",
+      "deposit": "Depósito de alojamiento",
+      "setup": "Costos de instalación",
+      "rent": "Alquiler mensual",
+      "living": "Vida diaria",
+      "insurance": "Seguro",
+      "professional": "Honorarios profesionales",
+      "healthcare": "Salud y bienestar",
+      "coworking": "Coworking e internet",
+      "oneTime": "Inversión inicial",
+      "monthly": "Mensual",
+      "totalOpex": "Total para",
+      "totalCost": "Costo total estimado",
+      "buffer": "Margen de seguridad (15%)",
+      "recommended": "Presupuesto recomendado",
+      "yourBudget": "Tu presupuesto disponible",
+      "disclaimer": "⚠️ Estas estimaciones son indicativas y basadas en promedios. Los costos reales pueden variar significativamente.",
+      "status": {
+        "excellent": "Presupuesto cómodo, alto margen de seguridad",
+        "good": "Presupuesto adecuado con margen",
+        "tight": "Presupuesto ajustado, precaución recomendada",
+        "insufficient": "Presupuesto insuficiente, alto riesgo"
+      }
+    },
+    "checklist": {
+      "title": "Lista de verificación automatizada",
+      "subtitle": "Preparación para",
+      "overall": "Progreso general",
+      "critical": "Crítico",
+      "reset": "Restablecer",
+      "markAll": "Marcar todo",
+      "reminder": "💡 Los elementos grises dependen de otras tareas a completar primero.",
+      "passport": "Pasaporte válido (6+ meses)",
+      "visaResearch": "Investigar tipo de visa requerida",
+      "visaApply": "Solicitud de visa enviada",
+      "savings": "Ahorros asegurados (6 meses mín)",
+      "bankResearch": "Banco internacional o local identificado",
+      "taxAdvisor": "Consulta con asesor fiscal",
+      "housingTemp": "Alojamiento temporal reservado (primera semana)",
+      "housingResearch": "Barrios objetivo identificados",
+      "healthInsurance": "Seguro de salud internacional",
+      "travelInsurance": "Seguro de viaje/repatriación",
+      "addressChange": "Cambio de dirección oficial",
+      "mailForward": "Reenvío de correo",
+      "contactsLocal": "Contactos locales identificados",
+      "expatGroups": "Grupos de expatriados",
+      "flightsBooked": "Vuelos reservados",
+      "luggagePlanned": "Equipaje planificado",
+      "jobSecured": "Trabajo u oportunidad confirmada",
+      "contractReviewed": "Contrato revisado por experto",
+      "credentialsCheck": "Equivalencia de credenciales verificada",
+      "pensionTransfer": "Transferencia de pensión organizada",
+      "healthcareLocal": "Sistema de salud local entendido",
+      "emergencyContacts": "Contactos de emergencia establecidos",
+      "remoteSetup": "Configuración de trabajo remoto validada",
+      "timezonePlan": "Zona horaria gestionada con clientes",
+      "coworkingFound": "Espacios de coworking localizados",
+      "categories": {
+        "documents": "Documentos",
+        "finance": "Finanzas",
+        "housing": "Alojamiento",
+        "insurance": "Seguro",
+        "admin": "Administrativo",
+        "network": "Red",
+        "travel": "Viaje",
+        "work": "Trabajo"
+      },
+      "priority": {
+        "critical": "Crítico",
+        "high": "Alto",
+        "medium": "Medio",
+        "low": "Bajo"
+      }
+    }
+  },
   "common": {
     "appName": "Pyramid Compass",
     "tagline": "Simulador de decisiones para sistemas reales",
@@ -19,7 +128,17 @@
     "delete": "Eliminar",
     "confirm": "Confirmar",
     "edit": "Editar",
-    "close": "Cerrar"
+    "previewMode": "Modo vista previa",
+    "all": "Todos",
+    "total": "Total",
+    "close": "Cerrar",
+    "optional": "opcional",
+    "description": "Descripción",
+    "submit": "Enviar",
+    "sending": "Enviando...",
+    "new": "Nuevo",
+    "view": "Ver",
+    "skip": "Omitir"
   },
   "errors": {
     "rateLimited": "Demasiadas solicitudes. Inténtelo de nuevo en unos momentos.",
