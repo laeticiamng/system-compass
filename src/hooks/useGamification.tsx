@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from './useAuth';
 import { useUserHistory } from './useUserHistory';
+import { supabase } from '@/integrations/supabase/client';
 import { 
   UserProgress, 
   UserPhase,
@@ -10,7 +11,7 @@ import {
   getBadgeById
 } from '@/lib/gamification-system';
 
-// Storage key for local persistence
+// Storage key for local persistence (fallback for anonymous users)
 const STORAGE_KEY = 'gamification-progress';
 
 interface UseGamificationReturn {
@@ -29,28 +30,86 @@ export function useGamification(): UseGamificationReturn {
   const [progress, setProgress] = useState<UserProgress | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Load progress from localStorage
+  // Load progress from Supabase or localStorage
   useEffect(() => {
-    const loadProgress = () => {
-      try {
-        const stored = localStorage.getItem(STORAGE_KEY);
-        if (stored) {
-          const parsed = JSON.parse(stored) as UserProgress;
-          // Update with user ID if logged in
-          if (user?.id && parsed.userId !== user.id) {
-            parsed.userId = user.id;
+    const loadProgress = async () => {
+      // For logged-in users, try Supabase first
+      if (user?.id) {
+        try {
+          const { data, error } = await (supabase as any)
+            .from('gamification_progress')
+            .select('*')
+            .eq('user_id', user.id)
+            .single();
+
+          if (!error && data) {
+            setProgress({
+              userId: data.user_id,
+              xp: data.xp,
+              level: data.level as UserProgress['level'],
+              badges: data.badges || [],
+              phase: data.phase as UserPhase,
+              streak: data.streak,
+              achievements: [],
+              lastActive: data.last_active,
+              createdAt: data.created_at,
+            });
+            setIsLoading(false);
+            return;
           }
-          setProgress(parsed);
-        } else {
-          // Create initial progress
-          const initial = createInitialProgress(user?.id || 'anonymous');
-          setProgress(initial);
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(initial));
+
+          // No record found, create one
+          if (error?.code === 'PGRST116') {
+            const initial = createInitialProgress(user.id);
+            const { error: insertError } = await (supabase as any)
+              .from('gamification_progress')
+              .insert({
+                user_id: user.id,
+                xp: initial.xp,
+                level: initial.level,
+                badges: initial.badges,
+                phase: initial.phase,
+                streak: initial.streak,
+              });
+
+            if (!insertError) {
+              setProgress(initial);
+            } else {
+              console.warn('Could not create gamification record:', insertError.message);
+              // Fallback to localStorage
+              const stored = localStorage.getItem(STORAGE_KEY);
+              if (stored) {
+                setProgress(JSON.parse(stored));
+              } else {
+                setProgress(initial);
+              }
+            }
+          }
+        } catch (err) {
+          console.error('Failed to load gamification from Supabase:', err);
+          // Fallback to localStorage
+          const stored = localStorage.getItem(STORAGE_KEY);
+          if (stored) {
+            setProgress(JSON.parse(stored));
+          } else {
+            setProgress(createInitialProgress(user.id));
+          }
         }
-      } catch (error) {
-        console.error('Failed to load gamification progress:', error);
-        const initial = createInitialProgress(user?.id || 'anonymous');
-        setProgress(initial);
+      } else {
+        // Anonymous user - use localStorage only
+        try {
+          const stored = localStorage.getItem(STORAGE_KEY);
+          if (stored) {
+            setProgress(JSON.parse(stored));
+          } else {
+            const initial = createInitialProgress('anonymous');
+            setProgress(initial);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(initial));
+          }
+        } catch (error) {
+          console.error('Failed to load gamification progress:', error);
+          setProgress(createInitialProgress('anonymous'));
+        }
       }
       setIsLoading(false);
     };
@@ -58,12 +117,33 @@ export function useGamification(): UseGamificationReturn {
     loadProgress();
   }, [user?.id]);
 
-  // Save progress to localStorage whenever it changes
+  // Sync progress to Supabase and localStorage whenever it changes
   useEffect(() => {
-    if (progress) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+    if (!progress) return;
+
+    // Always save to localStorage as backup
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+
+    // Sync to Supabase for logged-in users
+    if (user?.id && progress.userId === user.id) {
+      (supabase as any)
+        .from('gamification_progress')
+        .upsert({
+          user_id: user.id,
+          xp: progress.xp,
+          level: progress.level,
+          badges: progress.badges,
+          phase: progress.phase,
+          streak: progress.streak,
+          last_active: progress.lastActive,
+        }, { onConflict: 'user_id' })
+        .then(({ error }: { error: any }) => {
+          if (error) {
+            console.warn('Could not sync gamification progress:', error.message);
+          }
+        });
     }
-  }, [progress]);
+  }, [progress, user?.id]);
 
   // Add XP
   const addXp = useCallback((amount: number, _reason?: string) => {
