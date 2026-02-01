@@ -1,9 +1,10 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Skeleton } from '@/components/ui/skeleton';
 import { 
   Scale, 
   FileText, 
@@ -20,17 +21,31 @@ import {
   CheckCircle2,
   Shield,
   Award,
-  Video
+  Video,
+  Loader2,
+  RefreshCw
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { ExpertProfileDialog } from '@/components/marketplace/ExpertProfileDialog';
 import { VideoConsultationDialog } from '@/components/marketplace/VideoConsultationBooking';
 import { ExpertReviews } from '@/components/marketplace/ExpertReviews';
+import { useExperts, type Expert } from '@/hooks/useExperts';
+import { useAuth } from '@/hooks/useAuth';
 
-interface Expert {
+const EXPERT_TYPES = [
+  { value: 'all', label: 'Tous les experts', icon: Globe2 },
+  { value: 'lawyer', label: 'Avocats', icon: Scale },
+  { value: 'tax_advisor', label: 'Conseillers fiscaux', icon: Calculator },
+  { value: 'immigration', label: 'Immigration', icon: FileText },
+  { value: 'notary', label: 'Notaires', icon: FileText },
+  { value: 'business', label: 'Business', icon: Building2 },
+];
+
+// Adapter to match legacy interface for dialogs
+interface LegacyExpert {
   id: string;
   name: string;
-  type: 'lawyer' | 'tax_advisor' | 'immigration' | 'notary' | 'business';
+  type: string;
   photo?: string;
   countries: string[];
   languages: string[];
@@ -44,176 +59,72 @@ interface Expert {
   experience: number;
 }
 
-const EXPERTS: Expert[] = [
-  {
-    id: '1',
-    name: 'Maître Sophie Laurent',
-    type: 'lawyer',
-    countries: ['France', 'Belgium', 'Luxembourg'],
-    languages: ['Français', 'English', 'Néerlandais'],
-    specialties: ['Droit fiscal international', 'Expatriation', 'Structuration patrimoniale'],
-    rating: 4.9,
-    reviewCount: 156,
-    priceRange: { min: 200, max: 400, currency: '€' },
-    responseTime: '24h',
-    verified: true,
-    bio: 'Avocate au Barreau de Paris, spécialisée depuis 15 ans dans l\'accompagnement des expatriés et la fiscalité internationale.',
-    experience: 15,
-  },
-  {
-    id: '2',
-    name: 'Dr. Michael Weber',
-    type: 'tax_advisor',
-    countries: ['Germany', 'Switzerland', 'Austria'],
-    languages: ['Deutsch', 'English', 'Français'],
-    specialties: ['Steueroptimierung', 'Holding structures', 'Cross-border taxation'],
-    rating: 4.8,
-    reviewCount: 98,
-    priceRange: { min: 250, max: 500, currency: '€' },
-    responseTime: '48h',
-    verified: true,
-    bio: 'Expert-comptable et conseiller fiscal avec une expertise reconnue en structuration internationale.',
-    experience: 20,
-  },
-  {
-    id: '3',
-    name: 'Emma Rodriguez',
-    type: 'immigration',
-    countries: ['Spain', 'Portugal', 'Andorra'],
-    languages: ['Español', 'Português', 'English', 'Français'],
-    specialties: ['Golden Visa', 'NHR Portugal', 'Beckham Law Spain', 'Residency'],
-    rating: 4.9,
-    reviewCount: 234,
-    priceRange: { min: 150, max: 350, currency: '€' },
-    responseTime: '12h',
-    verified: true,
-    bio: 'Consultante en immigration spécialisée dans les programmes de résidence européens depuis 10 ans.',
-    experience: 10,
-  },
-  {
-    id: '4',
-    name: 'James Chen',
-    type: 'business',
-    countries: ['Singapore', 'Hong Kong', 'UAE'],
-    languages: ['English', '中文', 'Français'],
-    specialties: ['Company formation', 'Offshore structures', 'Banking'],
-    rating: 4.7,
-    reviewCount: 87,
-    priceRange: { min: 300, max: 600, currency: '$' },
-    responseTime: '24h',
-    verified: true,
-    bio: 'Business consultant avec 12 ans d\'expérience dans la création de sociétés en Asie et au Moyen-Orient.',
-    experience: 12,
-  },
-  {
-    id: '5',
-    name: 'Maître Pierre Dubois',
-    type: 'notary',
-    countries: ['France', 'Monaco'],
-    languages: ['Français', 'English', 'Italiano'],
-    specialties: ['Immobilier international', 'Successions transfrontalières', 'Donations'],
-    rating: 4.8,
-    reviewCount: 67,
-    priceRange: { min: 180, max: 350, currency: '€' },
-    responseTime: '72h',
-    verified: true,
-    bio: 'Notaire spécialisé dans les actes à dimension internationale et les successions complexes.',
-    experience: 18,
-  },
-  {
-    id: '6',
-    name: 'Dr. Sarah Williams',
-    type: 'tax_advisor',
-    countries: ['UK', 'Ireland', 'Malta'],
-    languages: ['English', 'Français'],
-    specialties: ['UK Non-Dom', 'Remittance basis', 'Ireland tax residence'],
-    rating: 4.9,
-    reviewCount: 145,
-    priceRange: { min: 280, max: 550, currency: '£' },
-    responseTime: '24h',
-    verified: true,
-    bio: 'Tax advisor certifiée avec expertise pointue sur les régimes fiscaux britanniques et irlandais.',
-    experience: 14,
-  },
-  {
-    id: '7',
-    name: 'Marco Rossi',
-    type: 'lawyer',
-    countries: ['Italy', 'Switzerland', 'San Marino'],
-    languages: ['Italiano', 'Français', 'English', 'Deutsch'],
-    specialties: ['Flat tax Italy', 'Swiss permits', 'Art & wealth'],
-    rating: 4.6,
-    reviewCount: 52,
-    priceRange: { min: 200, max: 400, currency: '€' },
-    responseTime: '48h',
-    verified: true,
-    bio: 'Avocat franco-italien spécialisé dans la relocalisation fiscale et le conseil en gestion de patrimoine.',
-    experience: 11,
-  },
-  {
-    id: '8',
-    name: 'Ana Silva',
-    type: 'immigration',
-    countries: ['Brazil', 'Argentina', 'Uruguay', 'Chile'],
-    languages: ['Português', 'Español', 'English'],
-    specialties: ['Mercosur residency', 'Business visas', 'Investment migration'],
-    rating: 4.7,
-    reviewCount: 78,
-    priceRange: { min: 120, max: 280, currency: '$' },
-    responseTime: '24h',
-    verified: true,
-    bio: 'Spécialiste de l\'immigration en Amérique du Sud avec focus sur les programmes investisseurs.',
-    experience: 8,
-  },
-];
-
-const EXPERT_TYPES = [
-  { value: 'all', label: 'Tous les experts', icon: Globe2 },
-  { value: 'lawyer', label: 'Avocats', icon: Scale },
-  { value: 'tax_advisor', label: 'Conseillers fiscaux', icon: Calculator },
-  { value: 'immigration', label: 'Immigration', icon: FileText },
-  { value: 'notary', label: 'Notaires', icon: FileText },
-  { value: 'business', label: 'Business', icon: Building2 },
-];
+function expertToLegacy(expert: Expert): LegacyExpert {
+  return {
+    id: expert.id,
+    name: expert.name,
+    type: expert.type,
+    photo: expert.photoUrl,
+    countries: expert.countries,
+    languages: expert.languages,
+    specialties: expert.specialties,
+    rating: expert.rating,
+    reviewCount: expert.reviewCount,
+    priceRange: { min: expert.priceMin, max: expert.priceMax, currency: expert.currency },
+    responseTime: expert.responseTime,
+    verified: expert.verified,
+    bio: expert.bio,
+    experience: expert.experienceYears,
+  };
+}
 
 export default function ExpertMarketplace() {
+  const { user } = useAuth();
+  const { experts, isLoading, error, fetchExperts } = useExperts();
   
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedType, setSelectedType] = useState('all');
   const [selectedCountry, setSelectedCountry] = useState('all');
-  const [selectedExpert, setSelectedExpert] = useState<Expert | null>(null);
+  const [selectedExpert, setSelectedExpert] = useState<LegacyExpert | null>(null);
   const [showProfile, setShowProfile] = useState(false);
   const [showBooking, setShowBooking] = useState(false);
 
+  // Refetch when filters change
+  useEffect(() => {
+    fetchExperts({ type: selectedType, country: selectedCountry });
+  }, [selectedType, selectedCountry, fetchExperts]);
+
   const allCountries = useMemo(() => {
     const countries = new Set<string>();
-    EXPERTS.forEach(expert => expert.countries.forEach(c => countries.add(c)));
+    experts.forEach(expert => expert.countries.forEach(c => countries.add(c)));
     return Array.from(countries).sort();
-  }, []);
+  }, [experts]);
 
   const filteredExperts = useMemo(() => {
-    return EXPERTS.filter(expert => {
-      const matchesType = selectedType === 'all' || expert.type === selectedType;
-      const matchesCountry = selectedCountry === 'all' || expert.countries.includes(selectedCountry);
+    return experts.filter(expert => {
       const matchesSearch = searchQuery === '' || 
         expert.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         expert.specialties.some(s => s.toLowerCase().includes(searchQuery.toLowerCase())) ||
         expert.countries.some(c => c.toLowerCase().includes(searchQuery.toLowerCase()));
-      return matchesType && matchesCountry && matchesSearch;
+      return matchesSearch;
     });
-  }, [selectedType, selectedCountry, searchQuery]);
+  }, [experts, searchQuery]);
 
   const handleViewProfile = (expert: Expert) => {
-    setSelectedExpert(expert);
+    setSelectedExpert(expertToLegacy(expert));
     setShowProfile(true);
   };
 
   const handleBookConsultation = (expert: Expert) => {
-    setSelectedExpert(expert);
+    setSelectedExpert(expertToLegacy(expert));
     setShowBooking(true);
   };
 
-  const handleContact = (expert: Expert) => {
+  const handleContact = async (expert: Expert) => {
+    if (!user) {
+      toast.error('Connectez-vous pour contacter un expert');
+      return;
+    }
     toast.success(`Demande de contact envoyée à ${expert.name}`, {
       description: 'Vous recevrez une réponse sous ' + expert.responseTime,
     });
@@ -235,6 +146,28 @@ export default function ExpertMarketplace() {
     }
   };
 
+  if (isLoading) {
+    return (
+      <div className="container mx-auto px-4 py-8 space-y-8">
+        <div className="text-center space-y-4">
+          <Skeleton className="h-10 w-64 mx-auto" />
+          <Skeleton className="h-6 w-96 mx-auto" />
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {[1, 2, 3, 4].map(i => (
+            <Skeleton key={i} className="h-24" />
+          ))}
+        </div>
+        <Skeleton className="h-16 w-full" />
+        <div className="grid gap-6 md:grid-cols-2">
+          {[1, 2, 3, 4].map(i => (
+            <Skeleton key={i} className="h-48" />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="container mx-auto px-4 py-8 space-y-8">
       {/* Header */}
@@ -246,6 +179,15 @@ export default function ExpertMarketplace() {
           Trouvez les meilleurs experts pour votre projet d'expatriation : avocats, 
           conseillers fiscaux, spécialistes en immigration.
         </p>
+        {error && (
+          <div className="flex items-center justify-center gap-2 text-amber-500">
+            <span className="text-sm">Données de démonstration affichées</span>
+            <Button variant="ghost" size="sm" onClick={() => fetchExperts()}>
+              <RefreshCw className="h-4 w-4 mr-1" />
+              Réessayer
+            </Button>
+          </div>
+        )}
       </div>
 
       {/* Trust Badges */}
@@ -320,6 +262,7 @@ export default function ExpertMarketplace() {
         <p className="text-muted-foreground">
           {filteredExperts.length} expert{filteredExperts.length > 1 ? 's' : ''} trouvé{filteredExperts.length > 1 ? 's' : ''}
         </p>
+        {isLoading && <Loader2 className="h-4 w-4 animate-spin" />}
       </div>
 
       {/* Expert Grid */}
@@ -349,13 +292,13 @@ export default function ExpertMarketplace() {
                         {getTypeIcon(expert.type)}
                         <span>{getTypeLabel(expert.type)}</span>
                         <span>•</span>
-                        <span>{expert.experience} ans d'exp.</span>
+                        <span>{expert.experienceYears} ans d'exp.</span>
                       </div>
                     </div>
                     <div className="text-right">
                       <div className="flex items-center gap-1">
                         <Star className="h-4 w-4 fill-amber-500 text-amber-500" />
-                        <span className="font-medium">{expert.rating}</span>
+                        <span className="font-medium">{expert.rating.toFixed(1)}</span>
                       </div>
                       <p className="text-xs text-muted-foreground">{expert.reviewCount} avis</p>
                     </div>
@@ -364,11 +307,16 @@ export default function ExpertMarketplace() {
                   {/* Countries */}
                   <div className="flex items-center gap-2 flex-wrap">
                     <MapPin className="h-4 w-4 text-muted-foreground" />
-                    {expert.countries.map((country) => (
+                    {expert.countries.slice(0, 3).map((country) => (
                       <Badge key={country} variant="secondary" className="text-xs">
                         {country}
                       </Badge>
                     ))}
+                    {expert.countries.length > 3 && (
+                      <Badge variant="outline" className="text-xs">
+                        +{expert.countries.length - 3}
+                      </Badge>
+                    )}
                   </div>
 
                   {/* Languages */}
@@ -398,7 +346,7 @@ export default function ExpertMarketplace() {
                     <div>
                       <p className="text-sm">
                         <span className="font-medium text-primary">
-                          {expert.priceRange.min}-{expert.priceRange.max}{expert.priceRange.currency}
+                          {expert.priceMin}-{expert.priceMax} {expert.currency}
                         </span>
                         <span className="text-muted-foreground">/consultation</span>
                       </p>
