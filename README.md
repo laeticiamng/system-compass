@@ -1,6 +1,6 @@
 # 🌍 Pyramid Compass — World Alignment Platform
 
-[![Tests](https://img.shields.io/badge/Tests-717%2F717-brightgreen.svg)](https://github.com/system-compass/system-compass/actions)
+[![Tests](https://img.shields.io/badge/Tests-718%2F718-brightgreen.svg)](https://github.com/system-compass/system-compass/actions)
 [![Audit Score](https://img.shields.io/badge/Audit_Score-20%2F20-success.svg)](./docs/audit/)
 [![i18n Coverage](https://img.shields.io/badge/i18n_FR%2FEN-100%25-success.svg)](./src/locales/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue.svg)](https://www.typescriptlang.org/)
@@ -83,9 +83,11 @@
 
 ### 🤝 Programme Partenaires & Communauté
 - **Partner Activity Tracker** — Suivi des activités et contributions
-- **Commission System** — Gestion des commissions et tiers partenaires
+- **Commission System** — Gestion des commissions et tiers partenaires (modèle 15%)
 - **Benefits Management** — Attribution et suivi des avantages
-- **Expert Marketplace** — Mise en relation avec avocats et experts fiscaux
+- **Expert Marketplace** — Mise en relation avec avocats et experts fiscaux (persistance Supabase)
+- **Messaging System** — Communication temps réel avec les experts
+- **Consultation Payments** — Paiements intégrés via Stripe
 - **Community Hub** — Groupes régionaux, mentoring et événements
 
 ### 📱 Installation mobile (PWA)
@@ -104,7 +106,7 @@
 | **Styling** | Tailwind CSS 3.4, shadcn/ui, Framer Motion |
 | **Backend** | Lovable Cloud (Auth, Database, Edge Functions, Storage) |
 | **AI** | Lovable AI (Gemini 2.5/3, GPT-5/5.2) |
-| **Testing** | Vitest (717 tests unitaires) |
+| **Testing** | Vitest (718 tests unitaires) |
 | **i18n** | react-i18next (FR, EN 100% + 8 langues secondaires) |
 
 ### Design System
@@ -213,6 +215,13 @@ Programme partenaires :
 - `PartnerCommissionSystem` — Système de commissions
 - `PartnerDashboard` — Tableau de bord partenaire
 
+### 🛒 Marketplace (`src/components/marketplace/`)
+Marketplace experts et consultations :
+- `ExpertCard` — Carte expert avec badges de confiance
+- `ExpertFilters` — Filtres spécialité/pays/notation
+- `ExpertMessaging` — Messagerie temps réel
+- `ConsultationPayment` — Paiement consultation (Stripe)
+
 ### 📝 OVI (`src/components/ovi/`)
 Objectifs Vérifiables Institutionnels :
 - `OviFrameworkCard` — Carte framework OVI
@@ -261,6 +270,7 @@ Bibliothèque de composants réutilisables :
 | `/compare` | `CompareUnified.tsx` | Comparaison multi-pays |
 | `/terrain-realities` | `TerrainRealities.tsx` | Intelligence terrain IA |
 | `/life-game` | `LifeGame.tsx` | Jeu de simulation |
+| `/expert-marketplace` | `ExpertMarketplace.tsx` | Marketplace experts |
 
 ### Pages B2B
 | Route | Page | Description |
@@ -284,12 +294,13 @@ Bibliothèque de composants réutilisables :
 | `/admin/countries` | `AdminCountryGenerator.tsx` | Génération pays IA |
 | `/admin/translations` | `AdminTranslations.tsx` | Gestion traductions |
 | `/admin/partners` | `AdminPartners.tsx` | Gestion partenaires |
+| `/diagnostics` | `Diagnostics.tsx` | Écran diagnostic système |
 
 ---
 
 ## ⚙️ Edge Functions
 
-### Génération IA
+### Génération IA (33 fonctions actives)
 | Fonction | Description |
 |----------|-------------|
 | `generate-country-profile` | Génération profil pays complet |
@@ -298,6 +309,8 @@ Bibliothèque de composants réutilisables :
 | `terrain-realities` | Analyse terrain IA |
 | `financial-intel` | Intelligence financière |
 | `gov-intel-generate` | Analyse gouvernance B2B |
+| `ai-assist` | Assistant IA multi-modules |
+| `destination-insights` | Insights destination personnalisés |
 
 ### Traduction
 | Fonction | Description |
@@ -306,12 +319,14 @@ Bibliothèque de composants réutilisables :
 | `generate-country-translations` | Traduction contenu pays |
 | `translate-intelligence` | Traduction intelligence |
 | `sync-all-translations` | Sync traductions DB |
+| `generate-translations` | Traduction JSON générique |
 
 ### Intégrations
 | Fonction | Description |
 |----------|-------------|
 | `traceos-webhooks` | Webhooks TraceOS |
 | `traceos-email-alerts` | Alertes email TraceOS |
+| `traceos-auto-export` | Export automatique TraceOS |
 | `dashboard-reminders` | Rappels dashboard |
 | `i18n-coverage-slack` | Alertes couverture i18n |
 
@@ -325,8 +340,14 @@ Bibliothèque de composants réutilisables :
 ### Musique IA
 | Fonction | Description |
 |----------|-------------|
-| `generate-country-music` | Génération musique pays |
+| `generate-country-music` | Génération musique pays (Suno AI) |
 | `music-task-status` | Statut tâche musique |
+
+### Batch Processing
+| Fonction | Description |
+|----------|-------------|
+| `batch-generate-countries` | Génération pays en batch |
+| `batch-translate-countries` | Traduction pays en batch |
 
 ---
 
@@ -348,6 +369,7 @@ Bibliothèque de composants réutilisables :
 | `dashboard_progress` | Progression tableau de bord |
 | `notification_settings` | Paramètres notifications |
 | `game_statistics` | Statistiques de jeu |
+| `gamification_progress` | Progression XP/badges (persisté) |
 
 ### Tables B2B
 | Table | Description |
@@ -357,6 +379,13 @@ Bibliothèque de composants réutilisables :
 | `latent_zones` | Zones de tension |
 | `case_governance_actors` | Acteurs gouvernance cas |
 | `case_delays_reality` | Délais réalité cas |
+
+### Tables Marketplace
+| Table | Description |
+|-------|-------------|
+| `expert_profiles` | Profils experts vérifiés |
+| `expert_reviews` | Avis et notations |
+| `expert_consultations` | Historique consultations |
 
 ### Tables partenaires
 | Table | Description |
@@ -382,11 +411,11 @@ Bibliothèque de composants réutilisables :
 |--------|------|--------|
 | Français | `fr` | ✅ 100% (référence) |
 | Anglais | `en` | ✅ 100% |
-| Espagnol | `es` | 🔄 Partiel |
-| Allemand | `de` | 🔄 Partiel |
-| Italien | `it` | 🔄 Partiel |
+| Espagnol | `es` | 🔄 Partiel (~3500 clés) |
+| Allemand | `de` | 🔄 Partiel (~3500 clés) |
+| Italien | `it` | 🔄 Partiel (~3500 clés) |
 | Portugais | `pt` | 🔄 Partiel |
-| Néerlandais | `nl` | 🔄 Partiel |
+| Néerlandais | `nl` | 🔄 Partiel (~3500 clés) |
 | Arabe | `ar` | 🔄 Partiel |
 | Chinois | `zh` | 🔄 Partiel |
 | Russe | `ru` | 🔄 Partiel |
@@ -423,8 +452,12 @@ Toutes les tables utilisateur ont des politiques RLS actives :
 - `dashboard_progress` — Lecture/écriture par `user_id`
 - `irreversa_thresholds` — Lecture/écriture par `user_id`
 - `game_statistics` — Lecture/écriture par `user_id`
+- `gamification_progress` — Lecture/écriture par `user_id`
 - `partner_applications` — Lecture/écriture par `user_id`
 - `partner_contributions` — Lecture/écriture par `user_id`
+- `expert_profiles` — Lecture publique, écriture par `user_id`
+- `expert_reviews` — Lecture publique, écriture par `user_id`
+- `expert_consultations` — Lecture/écriture par `user_id`
 
 ### Authentification
 - Email/Mot de passe avec confirmation automatique
@@ -452,7 +485,7 @@ Toutes les tables utilisateur ont des politiques RLS actives :
 | Catégorie | Score | Notes |
 |-----------|-------|-------|
 | **Architecture** | 20/20 | Modules isolés, barrel exports, lazy loading |
-| **Tests** | 20/20 | 717/717 tests passants |
+| **Tests** | 20/20 | 718/718 tests passants |
 | **Design System** | 20/20 | Tokens HSL premium, thème sombre/doré cohérent |
 | **Sécurité RLS** | 20/20 | Policies owner-only actives sur toutes les tables |
 | **i18n FR/EN** | 20/20 | Couverture complète (13 langues supportées) |
@@ -518,11 +551,13 @@ npx vitest run --coverage
 
 ### Résultats actuels
 ```
-✓ 717/717 tests passent
+✓ 718/718 tests passent
 ✓ 0 erreurs TypeScript
 ✓ Couverture i18n FR/EN: 100%
 ✓ Score audit: 20/20
 ✓ PWA: Installable sur mobile
+✓ 33 Edge Functions déployées
+✓ RLS actif sur toutes les tables utilisateur
 ```
 
 ### Structure des tests
@@ -530,6 +565,7 @@ npx vitest run --coverage
 src/lib/__tests__/        → Tests logique métier
 src/pages/__tests__/      → Tests pages
 src/components/__tests__/ → Tests composants
+src/hooks/__tests__/      → Tests hooks
 ```
 
 ### Smoke test universel
@@ -579,18 +615,23 @@ Configurable via Project > Settings > Domains dans Lovable.
 │   │   ├── pmo/             # Gestion de projet
 │   │   ├── terrain/         # Intelligence terrain
 │   │   ├── partners/        # Programme partenaires
+│   │   ├── marketplace/     # Marketplace experts
 │   │   └── ...
 │   ├── hooks/               # Hooks React personnalisés
+│   │   ├── __tests__/       # Tests hooks
+│   │   └── ...
 │   ├── lib/                 # Utilitaires et logique métier
 │   │   ├── __tests__/       # Tests unitaires
 │   │   └── ...
 │   ├── pages/               # Composants de route
 │   ├── locales/             # Fichiers de traduction i18n
+│   ├── config/              # Configuration centralisée (navigation, etc.)
 │   └── integrations/        # Intégrations Lovable Cloud
 ├── supabase/
-│   ├── functions/           # Edge Functions (32 fonctions)
+│   ├── functions/           # Edge Functions (33 fonctions)
 │   └── migrations/          # Migrations SQL
 ├── public/                  # Assets statiques
+├── scripts/                 # Scripts CI/CD (i18n, tests)
 └── docs/                    # Documentation et screenshots
 ```
 
@@ -625,6 +666,7 @@ MIT
 | Ressource | URL |
 |-----------|-----|
 | **Application live** | [world-alignment.lovable.app](https://world-alignment.lovable.app) |
+| **Documentation API** | [docs/API.md](./docs/API.md) |
 | **Documentation Lovable** | [docs.lovable.dev](https://docs.lovable.dev) |
 | **Communauté Discord** | [Discord Lovable](https://discord.com/channels/1119885301872070706/1280461670979993613) |
 
@@ -633,5 +675,5 @@ MIT
 <p align="center">
   <sub>Construit avec ❤️ en utilisant <a href="https://lovable.dev">Lovable</a></sub>
   <br/>
-  <sub>Tests: 717/717 ✅ | Audit: 20/20 ✅ | i18n FR/EN: 100% ✅ | RLS: Actif ✅ | PWA: Ready ✅</sub>
+  <sub>Tests: 718/718 ✅ | Audit: 20/20 ✅ | i18n FR/EN: 100% ✅ | RLS: Actif ✅ | PWA: Ready ✅ | Edge Functions: 33 ✅</sub>
 </p>
