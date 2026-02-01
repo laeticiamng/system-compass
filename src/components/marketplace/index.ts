@@ -4,3 +4,5 @@ export { VideoConsultationDialog } from './VideoConsultationBooking';
 export { ExpertReviews } from './ExpertReviews';
 export { ExpertSearchFilters } from './ExpertSearchFilters';
 export { ConsultationBookingForm } from './ConsultationBookingForm';
+export { ConsultationPayment } from './ConsultationPayment';
+export { ExpertMessaging, ExpertConversationsList } from './ExpertMessaging';
