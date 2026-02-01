@@ -86,13 +86,8 @@ export const LazyErrorsAndIllusions = withSuspense(lazy(() => import('@/pages/Er
 export const LazyPreventionFilter = withSuspense(lazy(() => import('@/pages/PreventionFilter')));
 export const LazyUniversalErrorDetail = withSuspense(lazy(() => import('@/pages/UniversalErrorDetail')));
 export const LazyHowToRead = withSuspense(lazy(() => import('@/pages/HowToRead')));
-export const LazyQuickTest = withSuspense(lazy(() => import('@/pages/QuickTest')));
-export const LazyPricing = withSuspense(lazy(() => import('@/pages/Pricing')));
-export const LazyPartners = withSuspense(lazy(() => import('@/pages/Partners')));
-export const LazyAuth = withSuspense(lazy(() => import('@/pages/Auth')));
-export const LazyAbout = withSuspense(lazy(() => import('@/pages/About')));
-export const LazyDisclaimer = withSuspense(lazy(() => import('@/pages/Disclaimer')));
-export const LazySubscriptionSuccess = withSuspense(lazy(() => import('@/pages/SubscriptionSuccess')));
+// Note: Auth, About, Disclaimer, QuickTest, SubscriptionSuccess, Pricing, Partners
+// are eagerly loaded in src/routes/index.tsx - do not duplicate lazy imports here
 
 // New modules
 export const LazyFiscalCalculator = withSuspense(lazy(() => import('@/pages/FiscalCalculator')));
