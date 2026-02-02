@@ -11,6 +11,7 @@ import { cn } from '@/lib/utils';
 import { Compass, LogIn, UserPlus, Loader2, AlertCircle, Eye, EyeOff } from 'lucide-react';
 import { z } from 'zod';
 import { PasswordStrengthMeter } from '@/components/ui/password-strength-meter';
+import { PasswordResetDialog } from '@/components/auth/PasswordResetDialog';
 
 const emailSchema = z.string().email();
 // Sécurité renforcée : minimum 8 caractères, 1 majuscule, 1 minuscule, 1 chiffre
@@ -202,17 +203,20 @@ export default function Auth() {
               )}
             </div>
 
-            {/* Remember me checkbox */}
+            {/* Remember me checkbox and password reset */}
             {isLogin && (
-              <div className="flex items-center space-x-2">
-                <Checkbox
-                  id="remember"
-                  checked={rememberMe}
-                  onCheckedChange={(checked) => setRememberMe(checked === true)}
-                />
-                <Label htmlFor="remember" className="text-sm text-muted-foreground cursor-pointer">
-                  {t('auth.rememberMe', 'Se souvenir de moi')}
-                </Label>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-2">
+                  <Checkbox
+                    id="remember"
+                    checked={rememberMe}
+                    onCheckedChange={(checked) => setRememberMe(checked === true)}
+                  />
+                  <Label htmlFor="remember" className="text-sm text-muted-foreground cursor-pointer">
+                    {t('auth.rememberMe', 'Se souvenir de moi')}
+                  </Label>
+                </div>
+                <PasswordResetDialog />
               </div>
             )}
 

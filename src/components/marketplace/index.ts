@@ -6,3 +6,4 @@ export { ExpertSearchFilters } from './ExpertSearchFilters';
 export { ConsultationBookingForm } from './ConsultationBookingForm';
 export { ConsultationPayment } from './ConsultationPayment';
 export { ExpertMessaging, ExpertConversationsList } from './ExpertMessaging';
+export { ExpertPagination } from './ExpertPagination';
