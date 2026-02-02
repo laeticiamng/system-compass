@@ -1,6 +1,6 @@
 # 🌍 Pyramid Compass — World Alignment Platform
 
-[![Tests](https://img.shields.io/badge/Tests-718%2F718-brightgreen.svg)](https://github.com/system-compass/system-compass/actions)
+[![Tests](https://img.shields.io/badge/Tests-1203%2F1203-brightgreen.svg)](https://github.com/system-compass/system-compass/actions)
 [![Audit Score](https://img.shields.io/badge/Audit_Score-20%2F20-success.svg)](./docs/audit/)
 [![i18n Coverage](https://img.shields.io/badge/i18n_FR%2FEN-100%25-success.svg)](./src/locales/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue.svg)](https://www.typescriptlang.org/)
@@ -106,8 +106,8 @@
 | **Styling** | Tailwind CSS 3.4, shadcn/ui, Framer Motion |
 | **Backend** | Lovable Cloud (Auth, Database, Edge Functions, Storage) |
 | **AI** | Lovable AI (Gemini 2.5/3, GPT-5/5.2) |
-| **Testing** | Vitest (718 tests unitaires) |
-| **i18n** | react-i18next (FR, EN 100% + 8 langues secondaires) |
+| **Testing** | Vitest (1203 tests unitaires) |
+| **i18n** | react-i18next (FR, EN 100% + 11 langues secondaires) |
 
 ### Design System
 ```
@@ -300,7 +300,7 @@ Bibliothèque de composants réutilisables :
 
 ## ⚙️ Edge Functions
 
-### Génération IA (33 fonctions actives)
+### Génération IA (34 fonctions actives)
 | Fonction | Description |
 |----------|-------------|
 | `generate-country-profile` | Génération profil pays complet |
@@ -406,7 +406,7 @@ Bibliothèque de composants réutilisables :
 
 ## 🌐 Internationalisation
 
-### Couverture
+### Couverture (13 langues)
 | Langue | Code | Statut |
 |--------|------|--------|
 | Français | `fr` | ✅ 100% (référence) |
@@ -414,24 +414,24 @@ Bibliothèque de composants réutilisables :
 | Espagnol | `es` | 🔄 Partiel (~3500 clés) |
 | Allemand | `de` | 🔄 Partiel (~3500 clés) |
 | Italien | `it` | 🔄 Partiel (~3500 clés) |
-| Portugais | `pt` | 🔄 Partiel |
+| Portugais | `pt` | 🔄 Partiel (~3500 clés) |
 | Néerlandais | `nl` | 🔄 Partiel (~3500 clés) |
-| Arabe | `ar` | 🔄 Partiel |
-| Chinois | `zh` | 🔄 Partiel |
-| Russe | `ru` | 🔄 Partiel |
+| Chinois | `zh` | 🔄 Partiel (~600 clés) |
+| Hindi | `hi` | 🔄 Partiel (~600 clés) |
+| Arabe | `ar` | 🔄 Partiel (~600 clés, RTL) |
+| Bengali | `bn` | 🔄 Partiel (~400 clés) |
+| Russe | `ru` | 🔄 Partiel (~400 clés) |
+| Ourdou | `ur` | 🔄 Partiel (~400 clés, RTL) |
 
 ### Architecture
 ```
 src/locales/
-├── fr/           → Fichiers source (référence)
-│   ├── common.json
-│   ├── countries.json
-│   ├── dashboard.json
-│   ├── exit-keys.json
-│   ├── game.json
-│   └── ...
-└── en/           → Fichiers traduits
-    └── ...
+├── fr.json                           → Fichier source principal (référence)
+├── en.json                           → Traduction anglaise complète
+├── de.json, es.json, it.json, ...    → Traductions partielles
+├── countries-positive-points-fr.json → Points positifs pays (FR)
+├── countries-positive-points-en.json → Points positifs pays (EN)
+└── countries-positive-points-*.json  → Points positifs (13 langues)
 ```
 
 ### Génération automatique
@@ -485,7 +485,7 @@ Toutes les tables utilisateur ont des politiques RLS actives :
 | Catégorie | Score | Notes |
 |-----------|-------|-------|
 | **Architecture** | 20/20 | Modules isolés, barrel exports, lazy loading |
-| **Tests** | 20/20 | 718/718 tests passants |
+| **Tests** | 20/20 | 1203/1203 tests passants |
 | **Design System** | 20/20 | Tokens HSL premium, thème sombre/doré cohérent |
 | **Sécurité RLS** | 20/20 | Policies owner-only actives sur toutes les tables |
 | **i18n FR/EN** | 20/20 | Couverture complète (13 langues supportées) |
@@ -551,12 +551,12 @@ npx vitest run --coverage
 
 ### Résultats actuels
 ```
-✓ 718/718 tests passent
+✓ 1203/1203 tests passent
 ✓ 0 erreurs TypeScript
 ✓ Couverture i18n FR/EN: 100%
 ✓ Score audit: 20/20
 ✓ PWA: Installable sur mobile
-✓ 33 Edge Functions déployées
+✓ 34 Edge Functions déployées
 ✓ RLS actif sur toutes les tables utilisateur
 ```
 
@@ -628,7 +628,7 @@ Configurable via Project > Settings > Domains dans Lovable.
 │   ├── config/              # Configuration centralisée (navigation, etc.)
 │   └── integrations/        # Intégrations Lovable Cloud
 ├── supabase/
-│   ├── functions/           # Edge Functions (33 fonctions)
+│   ├── functions/           # Edge Functions (34 fonctions)
 │   └── migrations/          # Migrations SQL
 ├── public/                  # Assets statiques
 ├── scripts/                 # Scripts CI/CD (i18n, tests)
@@ -675,5 +675,5 @@ MIT
 <p align="center">
   <sub>Construit avec ❤️ en utilisant <a href="https://lovable.dev">Lovable</a></sub>
   <br/>
-  <sub>Tests: 718/718 ✅ | Audit: 20/20 ✅ | i18n FR/EN: 100% ✅ | RLS: Actif ✅ | PWA: Ready ✅ | Edge Functions: 33 ✅</sub>
+  <sub>Tests: 1203/1203 ✅ | Audit: 20/20 ✅ | i18n FR/EN: 100% ✅ | RLS: Actif ✅ | PWA: Ready ✅ | Edge Functions: 34 ✅</sub>
 </p>
