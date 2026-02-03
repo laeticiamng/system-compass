@@ -65,3 +65,12 @@ verify_jwt = false
 
 [functions.seed-translations]
 verify_jwt = false
+
+[functions.firecrawl-scrape]
+verify_jwt = false
+
+[functions.perplexity-search]
+verify_jwt = false
+
+[functions.elevenlabs-tts]
+verify_jwt = false
