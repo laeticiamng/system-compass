@@ -13,8 +13,8 @@ Bienvenue ! Ce guide explique comment contribuer efficacement à Pyramid Compass
 
 ```bash
 # 1. Cloner le projet
-git clone https://github.com/your-org/pyramid-compass.git
-cd pyramid-compass
+git clone https://github.com/system-compass/system-compass.git
+cd system-compass
 
 # 2. Installation automatique
 ./scripts/setup-dev.sh

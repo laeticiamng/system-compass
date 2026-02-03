@@ -11,6 +11,20 @@
 
 ---
 
+## 📸 Aperçu
+
+<p align="center">
+  <img src="./docs/screenshots/home.png" alt="Page d'accueil" width="45%" />
+  <img src="./docs/screenshots/country-analysis.png" alt="Analyse pays" width="45%" />
+</p>
+
+<p align="center">
+  <img src="./docs/screenshots/exit-keys.png" alt="Exit Keys" width="45%" />
+  <img src="./docs/screenshots/game-mode.png" alt="Mode jeu" width="45%" />
+</p>
+
+---
+
 ## 🎯 À propos
 
 Pyramid Compass aide les expatriés, entrepreneurs et institutions à prendre des décisions éclairées concernant la relocalisation internationale. La plateforme analyse 50+ pays selon leurs systèmes socio-économiques et génère des stratégies personnalisées.
@@ -34,7 +48,7 @@ Pyramid Compass aide les expatriés, entrepreneurs et institutions à prendre de
 | 🛒 **Marketplace** | 🔄 Beta | Mise en relation avec experts |
 | 🏛️ **Governance B2B** | 🔄 Beta | Outils pour institutions |
 
-> Voir [`docs/MODULES-STATUS.md`](./docs/MODULES-STATUS.md) pour le statut détaillé de chaque module.
+> Voir [`docs/MODULES-STATUS.md`](./docs/MODULES-STATUS.md) pour le statut détaillé et la roadmap.
 
 ---
 
@@ -61,7 +75,7 @@ npm run dev
 
 > **Note** : L'application fonctionne en mode local avec données mock. Pour le backend complet, utilisez [Lovable Cloud](https://lovable.dev).
 
-Voir [`docs/GETTING-STARTED.md`](./docs/GETTING-STARTED.md) pour les instructions détaillées.
+📖 Voir [`docs/GETTING-STARTED.md`](./docs/GETTING-STARTED.md) pour les instructions détaillées.
 
 ---
 
@@ -71,6 +85,7 @@ Voir [`docs/GETTING-STARTED.md`](./docs/GETTING-STARTED.md) pour les instruction
 |----------|-------------|
 | [Getting Started](./docs/GETTING-STARTED.md) | Guide d'installation complet |
 | [Contributing](./docs/CONTRIBUTING.md) | Guide de contribution |
+| [Testing](./docs/TESTING.md) | Stratégie de tests |
 | [API Reference](./docs/API.md) | Documentation des Edge Functions |
 | [Architecture](./docs/audit/ARCHITECTURE.md) | Diagrammes et flux de données |
 | [Modules Status](./docs/MODULES-STATUS.md) | Statut et roadmap des modules |
@@ -92,6 +107,8 @@ npm run test:coverage
 - Tests unitaires : 718 passants
 - Couverture estimée : ~75%
 - Tables avec RLS : 57/57
+
+📖 Voir [`docs/TESTING.md`](./docs/TESTING.md) pour la stratégie de tests détaillée.
 
 ---
 
@@ -120,6 +137,12 @@ npm run lint
 git commit -m "feat: description"
 git push origin feature/ma-feature
 ```
+
+### Premiers pas
+
+1. 🐛 Cherchez les [issues "good first issue"](https://github.com/system-compass/system-compass/labels/good%20first%20issue)
+2. 💬 Posez vos questions dans les [Discussions](https://github.com/system-compass/system-compass/discussions)
+3. 📖 Lisez la [documentation](./docs/)
 
 ---
 
