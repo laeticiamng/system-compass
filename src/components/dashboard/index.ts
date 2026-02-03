@@ -30,6 +30,8 @@ export { TraceOSDashboardWidget } from './TraceOSDashboardWidget';
 export { UserProfileWidget } from './UserProfileWidget';
 export { CalendarExportButton } from './CalendarExportButton';
 export { CasePrefillTemplates } from './CasePrefillTemplates';
+export { SmartDashboardWidget } from './SmartDashboardWidget';
+export { RealTimeAnalyticsWidget } from './RealTimeAnalyticsWidget';
 export { 
   ProgressWidget, 
   StreakWidget, 

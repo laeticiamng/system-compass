@@ -79,6 +79,8 @@ import { AnalyticsDashboardWidget } from '@/components/dashboard/AnalyticsDashbo
 import { PartnerDashboardWidget } from '@/components/dashboard/PartnerDashboardWidget';
 import { RiskAlertsDashboard } from '@/components/dashboard/RiskAlertsDashboard';
 import { ConsolidatedCalendar } from '@/components/dashboard/ConsolidatedCalendar';
+import { SmartDashboardWidget } from '@/components/dashboard/SmartDashboardWidget';
+import { RealTimeAnalyticsWidget } from '@/components/dashboard/RealTimeAnalyticsWidget';
 import { SubscriptionStatus } from '@/components/SubscriptionStatus';
 import { toast } from 'sonner';
 
@@ -432,6 +434,12 @@ export default function Dashboard() {
         {/* New Dashboard Widgets Grid */}
         {isLoggedIn && (
           <>
+            {/* Smart AI Recommendations + Analytics - Top Priority */}
+            <div className="grid md:grid-cols-2 gap-6 mb-6">
+              <SmartDashboardWidget />
+              <RealTimeAnalyticsWidget />
+            </div>
+
             {/* Risk Alerts and Calendar - Full width priority section */}
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <RiskAlertsDashboard />
