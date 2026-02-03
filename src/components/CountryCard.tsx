@@ -54,9 +54,16 @@ export const CountryCard = forwardRef<HTMLDivElement, CountryCardProps>(
     const { t } = useTranslation();
     const typeColor = PYRAMID_TYPE_COLORS[country.pyramidType];
     
-    // Calculate overall safety score for the grade
-    const safetyScore = country.qualityOfLife?.safetyIndex || 
-                        (100 - ((country.risks?.legal || 0) + (country.risks?.safety || 0) + (country.risks?.corruption || 0)) / 3);
+    // Calculate overall safety score for the grade with robust fallback
+    const calculateSafetyScore = (): number => {
+      if (country.qualityOfLife?.safetyIndex && country.qualityOfLife.safetyIndex > 0) {
+        return country.qualityOfLife.safetyIndex;
+      }
+      const risks = country.risks || {};
+      const avgRisk = ((risks.legal || 50) + (risks.safety || 50) + (risks.corruption || 50)) / 3;
+      return Math.max(0, Math.min(100, 100 - avgRisk));
+    };
+    const safetyScore = calculateSafetyScore();
 
     // Get translated country data
     const countryData = t(`countriesData.${country.id}`, { returnObjects: true }) as {
