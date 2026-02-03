@@ -1,7 +1,13 @@
 # 📊 Rapport d'Audit Pyramid Compass
 
 > Dernière mise à jour : 2026-02-03  
-> Score global : **20/20**
+> Score global : **20/20** *(auto-évaluation interne)*
+
+## ⚠️ Note sur la Méthodologie
+
+Ce score est une **auto-évaluation** basée sur des critères objectifs et vérifiables via les scripts fournis. Il ne constitue pas un audit externe certifié. Les métriques sont automatiquement calculées par les scripts CI/CD.
+
+**Objectif** : Atteindre et maintenir un niveau de qualité production-ready sur tous les critères.
 
 ## Vue d'ensemble
 
@@ -9,14 +15,15 @@ Ce dossier contient les métriques vérifiables et les scripts de validation de 
 
 ## Métriques Clés
 
-| Métrique | Valeur | Script de Vérification |
-|----------|--------|------------------------|
-| Tests unitaires | 718 | `npm run test` |
-| Routes définies | 55 | `node scripts/audit/count-routes.js` |
-| Tables avec RLS | 57 | `node scripts/audit/count-rls-tables.js` |
-| Edge Functions | 35 | `node scripts/audit/count-edge-functions.js` |
-| Langues supportées | 10 | `node scripts/audit/count-languages.js` |
-| Couverture i18n | 94%+ | `node scripts/generate-i18n-coverage.js` |
+| Métrique | Valeur | Script de Vérification | Vérifiable |
+|----------|--------|------------------------|------------|
+| Tests unitaires | 718 | `npm run test` | ✅ CI |
+| Couverture tests | ~75% | `npm run test:coverage` | ✅ CI |
+| Routes définies | 55 | `node scripts/audit/count-routes.js` | ✅ Script |
+| Tables avec RLS | 57 | `node scripts/audit/count-rls-tables.js` | ✅ Script |
+| Edge Functions | 35 | `node scripts/audit/count-edge-functions.js` | ✅ Script |
+| Langues supportées | 13 | `node scripts/audit/count-languages.js` | ✅ Script |
+| Couverture i18n FR/EN | 100% | `node scripts/generate-i18n-coverage.js` | ✅ CI |
 
 ## Critères du Score 20/20
 
@@ -54,6 +61,8 @@ Ce dossier contient les métriques vérifiables et les scripts de validation de 
 - [`ARCHITECTURE.md`](./ARCHITECTURE.md) - Diagrammes et flux de données
 - [`EDGE-FUNCTIONS.md`](./EDGE-FUNCTIONS.md) - Documentation des 35 edge functions
 - [`DATABASE-SCHEMA.md`](./DATABASE-SCHEMA.md) - Schéma des 57 tables
+- [`AI-INTEGRATIONS.md`](./AI-INTEGRATIONS.md) - Limites IA et stratégies de fallback
+- [`I18N-STATUS.md`](./I18N-STATUS.md) - Statut internationalisation et RTL
 
 ## Scripts de Vérification
 
