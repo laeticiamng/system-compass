@@ -1205,6 +1205,86 @@ export type Database = {
         }
         Relationships: []
       }
+      expert_review_votes: {
+        Row: {
+          created_at: string
+          id: string
+          review_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          review_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          review_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "expert_review_votes_review_id_fkey"
+            columns: ["review_id"]
+            isOneToOne: false
+            referencedRelation: "expert_reviews"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      expert_reviews: {
+        Row: {
+          content: string
+          created_at: string
+          expert_id: string
+          expert_response: string | null
+          expert_response_at: string | null
+          helpful_count: number | null
+          id: string
+          rating: number
+          status: string
+          tags: string[] | null
+          title: string
+          updated_at: string
+          user_id: string
+          verified: boolean | null
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          expert_id: string
+          expert_response?: string | null
+          expert_response_at?: string | null
+          helpful_count?: number | null
+          id?: string
+          rating: number
+          status?: string
+          tags?: string[] | null
+          title: string
+          updated_at?: string
+          user_id: string
+          verified?: boolean | null
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          expert_id?: string
+          expert_response?: string | null
+          expert_response_at?: string | null
+          helpful_count?: number | null
+          id?: string
+          rating?: number
+          status?: string
+          tags?: string[] | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+          verified?: boolean | null
+        }
+        Relationships: []
+      }
       financial_intel_country_snapshots: {
         Row: {
           audience: string | null
