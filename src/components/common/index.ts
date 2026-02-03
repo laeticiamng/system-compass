@@ -12,3 +12,7 @@ export { ScenarioSimulator, type ScenarioVariable, type ScenarioResult } from '.
 export { TrendChart } from './TrendChart';
 export { ValidationFeedback, createValidationResult, type ValidationResult, type ValidationLevel } from './ValidationFeedback';
 export { CollaborationThread } from './CollaborationThread';
+export { SmokeTester } from './SmokeTester';
+export { SystemHealthIndicator, useSystemHealth } from './SystemHealthIndicator';
+export { PerformanceMonitor, useRenderTime, usePerformanceTrack } from './PerformanceMonitor';
+export * from './UniversalFormValidator';
