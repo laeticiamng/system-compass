@@ -24,6 +24,12 @@ import countriesPositivePointsEs from '@/locales/countries-positive-points-es.js
 import countriesPositivePointsIt from '@/locales/countries-positive-points-it.json';
 import countriesPositivePointsNl from '@/locales/countries-positive-points-nl.json';
 import countriesPositivePointsPt from '@/locales/countries-positive-points-pt.json';
+import countriesPositivePointsZh from '@/locales/countries-positive-points-zh.json';
+import countriesPositivePointsHi from '@/locales/countries-positive-points-hi.json';
+import countriesPositivePointsAr from '@/locales/countries-positive-points-ar.json';
+import countriesPositivePointsBn from '@/locales/countries-positive-points-bn.json';
+import countriesPositivePointsRu from '@/locales/countries-positive-points-ru.json';
+import countriesPositivePointsUr from '@/locales/countries-positive-points-ur.json';
 
 const mainTranslations: Record<string, Record<string, unknown>> = {
   en, fr, nl, de, es, it, pt, zh, hi, ar, bn, ru, ur
@@ -37,6 +43,12 @@ const positivePointsTranslations: Record<string, Record<string, unknown>> = {
   it: countriesPositivePointsIt,
   nl: countriesPositivePointsNl,
   pt: countriesPositivePointsPt,
+  zh: countriesPositivePointsZh,
+  hi: countriesPositivePointsHi,
+  ar: countriesPositivePointsAr,
+  bn: countriesPositivePointsBn,
+  ru: countriesPositivePointsRu,
+  ur: countriesPositivePointsUr,
 };
 
 let hasAutoSeeded = false;
