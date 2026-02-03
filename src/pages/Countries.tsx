@@ -248,7 +248,9 @@ export default function Countries() {
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"
               >
                 <Globe className="w-4 h-4 text-primary" />
-                <span className="text-sm text-primary font-medium">{t('countries.badge', '38 systèmes analysés')}</span>
+                <span className="text-sm text-primary font-medium">
+                  {t('countries.badge', '{{count}} systèmes analysés', { count: countries.length + extendedCountries.length })}
+                </span>
               </motion.div>
 
               {/* Title */}

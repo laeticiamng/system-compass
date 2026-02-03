@@ -183,7 +183,12 @@ export function LiveIntelPanel({ countryId, countryName }: Props) {
                   </h4>
                   <div className="flex flex-wrap gap-2">
                     {displayData.citations.slice(0, 5).map((citation, idx) => {
-                      const domain = new URL(citation).hostname.replace('www.', '');
+                      let domain = 'source';
+                      try {
+                        domain = new URL(citation).hostname.replace('www.', '');
+                      } catch {
+                        // Invalid URL, use default
+                      }
                       return (
                         <motion.a
                           key={idx}
