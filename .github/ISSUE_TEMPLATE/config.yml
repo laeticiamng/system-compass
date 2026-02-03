@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📖 Documentation
+    url: https://github.com/system-compass/system-compass/blob/main/docs/
+    about: Consultez la documentation avant de créer une issue
+  - name: 💬 Discussions
+    url: https://github.com/system-compass/system-compass/discussions
+    about: Posez des questions générales dans les discussions
