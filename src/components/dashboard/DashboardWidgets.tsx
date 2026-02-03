@@ -97,31 +97,38 @@ export function XPWidget() {
 export function QuickStatsWidget() {
   const { t } = useTranslation();
   const { progress } = useDashboardProgress();
+  const { progress: gamificationProgress } = useGamification();
+  
+  // Calculate real stats from progress data
+  const completedSteps = progress?.stepsProgress?.filter(s => s.completed).length || 0;
+  const totalPhases = progress?.stepsProgress?.length || 0;
+  const xpPoints = gamificationProgress?.xp || 0;
+  const streak = gamificationProgress?.streak || 0;
   
   const stats = [
     { 
-      label: 'Pays explorés', 
-      value: progress ? 1 : 0, 
-      icon: <Target className="w-4 h-4 text-blue-400" />,
-      trend: '+2 cette semaine'
-    },
-    { 
-      label: 'Étapes complétées', 
-      value: 12, 
+      label: t('dashboard.stepsCompleted', 'Étapes complétées'), 
+      value: completedSteps, 
       icon: <CheckCircle className="w-4 h-4 text-emerald-400" />,
-      trend: '+3 ce mois'
+      trend: completedSteps > 0 ? `${totalPhases} total` : t('dashboard.notStarted', 'Non commencé')
     },
     { 
-      label: 'Temps actif', 
-      value: '4h', 
-      icon: <Clock className="w-4 h-4 text-amber-400" />,
-      trend: 'Moyenne'
-    },
-    { 
-      label: 'Score global', 
-      value: 85, 
+      label: t('dashboard.xpPoints', 'Points XP'), 
+      value: xpPoints, 
       icon: <TrendingUp className="w-4 h-4 text-primary" />,
-      trend: '+5 pts'
+      trend: xpPoints > 100 ? t('dashboard.excellent', 'Excellent !') : t('dashboard.keepGoing', 'Continuez !')
+    },
+    { 
+      label: t('dashboard.streak', 'Série'), 
+      value: `${streak}j`, 
+      icon: <Clock className="w-4 h-4 text-amber-400" />,
+      trend: streak >= 7 ? '🔥' : streak > 0 ? t('dashboard.active', 'Actif') : '-'
+    },
+    { 
+      label: t('dashboard.progressScore', 'Score progression'), 
+      value: totalPhases > 0 ? Math.round((completedSteps / Math.max(totalPhases, 1)) * 100) : 0, 
+      icon: <Target className="w-4 h-4 text-blue-400" />,
+      trend: '%'
     },
   ];
   
@@ -141,7 +148,7 @@ export function QuickStatsWidget() {
               <span className="text-xs text-muted-foreground">{stat.label}</span>
             </div>
             <p className="text-xl font-bold">{stat.value}</p>
-            <p className="text-xs text-emerald-400">{stat.trend}</p>
+            <p className="text-xs text-muted-foreground">{stat.trend}</p>
           </div>
         ))}
       </CardContent>
@@ -149,14 +156,60 @@ export function QuickStatsWidget() {
   );
 }
 
-export function UpcomingTasksWidget() {
+interface UpcomingTask {
+  id: string;
+  title: string;
+  due: string;
+  priority: 'high' | 'medium' | 'low';
+}
+
+interface UpcomingTasksWidgetProps {
+  tasks?: UpcomingTask[];
+}
+
+export function UpcomingTasksWidget({ tasks: propTasks }: UpcomingTasksWidgetProps) {
   const { t } = useTranslation();
+  const { progress } = useDashboardProgress();
   
-  const tasks = [
-    { id: 1, title: 'Comparer les visas Portugal/Espagne', due: 'Aujourd\'hui', priority: 'high' },
-    { id: 2, title: 'Calculer impact fiscal', due: 'Demain', priority: 'medium' },
-    { id: 3, title: 'Contacter avocat fiscaliste', due: 'Cette semaine', priority: 'low' },
-  ];
+  // Build tasks from actual progress data (deadlines)
+  const tasksFromProgress: UpcomingTask[] = (progress?.stepsProgress || [])
+    .filter(step => step.deadline && !step.completed)
+    .map((step) => {
+      const deadlineDate = new Date(step.deadline!);
+      const now = new Date();
+      const daysUntil = Math.ceil((deadlineDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+      
+      let due: string;
+      let priority: 'high' | 'medium' | 'low';
+      
+      if (daysUntil <= 0) {
+        due = t('dashboard.today', "Aujourd'hui");
+        priority = 'high';
+      } else if (daysUntil === 1) {
+        due = t('dashboard.tomorrow', 'Demain');
+        priority = 'high';
+      } else if (daysUntil <= 7) {
+        due = t('dashboard.thisWeek', 'Cette semaine');
+        priority = 'medium';
+      } else {
+        due = t('dashboard.later', 'Plus tard');
+        priority = 'low';
+      }
+      
+      return {
+        id: `${step.phaseIndex}-${step.actionIndex}`,
+        title: t('dashboard.phase', 'Phase') + ` ${step.phaseIndex + 1}, ` + t('dashboard.action', 'Action') + ` ${step.actionIndex + 1}`,
+        due,
+        priority
+      };
+    })
+    .sort((a, b) => {
+      const priorityOrder = { high: 0, medium: 1, low: 2 };
+      return priorityOrder[a.priority] - priorityOrder[b.priority];
+    })
+    .slice(0, 5);
+  
+  const tasks = propTasks || tasksFromProgress;
   
   const getPriorityColor = (priority: string) => {
     switch (priority) {
@@ -165,6 +218,26 @@ export function UpcomingTasksWidget() {
       default: return 'text-blue-400';
     }
   };
+  
+  if (tasks.length === 0) {
+    return (
+      <Card className="glass-card">
+        <CardHeader className="pb-3">
+          <CardTitle className="text-base flex items-center gap-2">
+            <Calendar className="w-4 h-4 text-primary" />
+            {t('dashboard.upcomingTasks', 'Prochaines étapes')}
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="text-center py-4 text-muted-foreground">
+            <Calendar className="w-8 h-8 mx-auto mb-2 opacity-50" />
+            <p className="text-sm">{t('dashboard.noUpcomingTasks', 'Aucune échéance planifiée')}</p>
+            <p className="text-xs mt-1">{t('dashboard.setDeadlines', 'Définissez des échéances sur vos actions')}</p>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
   
   return (
     <Card className="glass-card">

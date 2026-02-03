@@ -55,6 +55,17 @@ export function RealTimeAnalyticsWidget() {
       const totalSessions = sessions?.length || 0;
       const fiveMinAgo = new Date(now.getTime() - 5 * 60 * 1000).toISOString();
       const activeNow = sessions?.filter(s => s.last_seen_at >= fiveMinAgo).length || 0;
+      
+      // Calculate average session duration from real data
+      let avgDuration = 0;
+      if (sessions && sessions.length > 0) {
+        const durations = sessions.map(s => {
+          const first = new Date(s.first_seen_at).getTime();
+          const last = new Date(s.last_seen_at).getTime();
+          return (last - first) / 1000; // in seconds
+        });
+        avgDuration = Math.round(durations.reduce((a, b) => a + b, 0) / durations.length);
+      }
 
       // Top pages from events
       const pageViews: Record<string, number> = {};
@@ -71,7 +82,7 @@ export function RealTimeAnalyticsWidget() {
       return {
         totalSessions,
         activeNow,
-        avgDuration: Math.round(Math.random() * 300 + 60), // Simulated for now
+        avgDuration,
         topPages,
         recentEvents: events?.map(e => ({
           name: e.event_name,
