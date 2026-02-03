@@ -13,6 +13,7 @@ import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { CheckCircle2, XCircle, Loader2, Play, RefreshCw } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { scrapeUrl, searchWithAI, generateAudio } from '@/lib/api/premium-intel';
 
 interface SmokeTest {
   id: string;
@@ -178,6 +179,79 @@ export function SmokeTester() {
           message: `Latence moyenne: ${avgLatency.toFixed(0)}ms`,
           duration
         };
+      }
+    },
+    // Premium Intelligence Tests
+    {
+      id: 'firecrawl_scrape',
+      name: 'Firecrawl Scraping',
+      description: 'Test scraping temps réel',
+      critical: false,
+      test: async () => {
+        const start = Date.now();
+        try {
+          const result = await scrapeUrl('https://example.com', { formats: ['markdown'] });
+          const duration = Date.now() - start;
+          return {
+            passed: result.success,
+            message: result.success ? 'Scraping OK' : (result.error || 'Échec scraping'),
+            duration
+          };
+        } catch (e) {
+          return {
+            passed: false,
+            message: e instanceof Error ? e.message : 'Erreur Firecrawl',
+            duration: Date.now() - start
+          };
+        }
+      }
+    },
+    {
+      id: 'perplexity_search',
+      name: 'Perplexity AI Search',
+      description: 'Test recherche IA avec citations',
+      critical: false,
+      test: async () => {
+        const start = Date.now();
+        try {
+          const result = await searchWithAI('What is 2+2?', { maxTokens: 100 });
+          const duration = Date.now() - start;
+          return {
+            passed: result.success && !!result.content,
+            message: result.success ? `Réponse: ${result.content?.slice(0, 50)}...` : (result.error || 'Échec recherche'),
+            duration
+          };
+        } catch (e) {
+          return {
+            passed: false,
+            message: e instanceof Error ? e.message : 'Erreur Perplexity',
+            duration: Date.now() - start
+          };
+        }
+      }
+    },
+    {
+      id: 'elevenlabs_tts',
+      name: 'ElevenLabs TTS',
+      description: 'Test synthèse vocale IA',
+      critical: false,
+      test: async () => {
+        const start = Date.now();
+        try {
+          const result = await generateAudio('Test', { voiceStyle: 'narrator' });
+          const duration = Date.now() - start;
+          return {
+            passed: result.success && !!result.audioContent,
+            message: result.success ? 'Audio généré OK' : (result.error || 'Échec TTS'),
+            duration
+          };
+        } catch (e) {
+          return {
+            passed: false,
+            message: e instanceof Error ? e.message : 'Erreur ElevenLabs',
+            duration: Date.now() - start
+          };
+        }
       }
     }
   ];
