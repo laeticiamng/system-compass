@@ -1,93 +1,77 @@
 # 📊 Rapport d'Audit Pyramid Compass
 
-> Dernière mise à jour : 2026-02-03  
-> Score global : **20/20** *(auto-évaluation interne)*
+> Dernière mise à jour : Février 2026  
+> Ce rapport présente des **métriques vérifiables** via les scripts CI/CD.
 
-## ⚠️ Note sur la Méthodologie
+## ⚠️ Méthodologie
 
-Ce score est une **auto-évaluation** basée sur des critères objectifs et vérifiables via les scripts fournis. Il ne constitue pas un audit externe certifié. Les métriques sont automatiquement calculées par les scripts CI/CD.
+Ce rapport utilise des **métriques automatisées et vérifiables** :
+- Les tests sont exécutés via GitHub Actions à chaque commit
+- Les politiques RLS sont vérifiées par le linter Supabase
+- La couverture i18n est calculée par des scripts dédiés
 
-**Objectif** : Atteindre et maintenir un niveau de qualité production-ready sur tous les critères.
+**Important** : Ces métriques ne constituent pas un audit de sécurité externe. Pour une validation indépendante, consultez un auditeur tiers.
 
-## Vue d'ensemble
+## Métriques Vérifiables
 
-Ce dossier contient les métriques vérifiables et les scripts de validation de la plateforme Pyramid Compass.
+| Métrique | Valeur | Vérification |
+|----------|--------|--------------|
+| Tests unitaires | 718 passants | `npm run test` / [GitHub Actions](../../actions) |
+| Tables avec RLS | 57 | Supabase Linter |
+| Couverture i18n FR/EN | 100% | `node scripts/generate-i18n-coverage.js` |
+| Edge Functions | 34 | `ls supabase/functions/` |
+| Langues supportées | 13 | `ls src/locales/*.json` |
 
-## Métriques Clés
+## Critères de Qualité
 
-| Métrique | Valeur | Script de Vérification | Vérifiable |
-|----------|--------|------------------------|------------|
-| Tests unitaires | 718 | `npm run test` | ✅ CI |
-| Couverture tests | ~75% | `npm run test:coverage` | ✅ CI |
-| Routes définies | 55 | `node scripts/audit/count-routes.js` | ✅ Script |
-| Tables avec RLS | 57 | `node scripts/audit/count-rls-tables.js` | ✅ Script |
-| Edge Functions | 35 | `node scripts/audit/count-edge-functions.js` | ✅ Script |
-| Langues supportées | 13 | `node scripts/audit/count-languages.js` | ✅ Script |
-| Couverture i18n FR/EN | 100% | `node scripts/generate-i18n-coverage.js` | ✅ CI |
-
-## Critères du Score 20/20
-
-### 1. Architecture (5/5)
+### Architecture
 - ✅ Séparation claire UI/logique/data
-- ✅ Providers ordonnés correctement (Auth → Subscription → Features)
+- ✅ Lazy loading sur 103 routes
 - ✅ GlobalErrorBoundary en place
-- ✅ Lazy loading sur routes lourdes
-- ✅ QueryClient configuré avec cache optimisé
+- ✅ QueryClient avec cache optimisé
 
-### 2. Sécurité (5/5)
-- ✅ RLS activé sur 57/57 tables
-- ✅ Aucun secret exposé côté client
+### Sécurité
+- ✅ RLS activé sur toutes les tables utilisateur
 - ✅ Validation des inputs avec Zod
-- ✅ Sanitization XSS
+- ✅ Aucun secret exposé côté client
 - ✅ Auth JWT validée côté Edge Functions
 
-### 3. Tests (5/5)
-- ✅ 718 tests passants
+### Tests
+- ✅ 718 tests passants (Vitest)
 - ✅ Tests unitaires par composant
-- ✅ Tests d'intégration API
 - ✅ Tests de validation i18n
-- ✅ Smoke tests automatisés
 
-### 4. Performance (5/5)
-- ✅ Code splitting (103 composants lazy-loaded)
-- ✅ Query caching (staleTime: 5min, gcTime: 30min)
-- ✅ Mode offline avec service worker
+### Performance
+- ✅ Code splitting par route
+- ✅ Mode offline avec Service Worker
 - ✅ Debounce sur recherches
-- ✅ Pagination sur listes
-
-## Fichiers d'Audit
-
-- [`SECURITY.md`](./SECURITY.md) - Rapport de sécurité détaillé
-- [`ARCHITECTURE.md`](./ARCHITECTURE.md) - Diagrammes et flux de données
-- [`EDGE-FUNCTIONS.md`](./EDGE-FUNCTIONS.md) - Documentation des 35 edge functions
-- [`DATABASE-SCHEMA.md`](./DATABASE-SCHEMA.md) - Schéma des 57 tables
-- [`AI-INTEGRATIONS.md`](./AI-INTEGRATIONS.md) - Limites IA et stratégies de fallback
-- [`I18N-STATUS.md`](./I18N-STATUS.md) - Statut internationalisation et RTL
 
 ## Scripts de Vérification
 
 ```bash
-# Lancer tous les audits
-npm run audit:all
+# Tests
+npm run test
 
-# Audits individuels
-node scripts/audit/count-routes.js
-node scripts/audit/count-rls-tables.js
-node scripts/audit/count-edge-functions.js
-node scripts/audit/count-languages.js
+# Couverture
+npm run test:coverage
+
+# i18n
+node scripts/generate-i18n-coverage.js
+node scripts/check-translation-keys.js
+
+# Audit complet
+npm run audit:all
 ```
 
-## Historique des Audits
+## Fichiers de Référence
 
-| Date | Score | Détails |
-|------|-------|---------|
-| 2026-02-03 | 20/20 | Audit complet post-enrichissements |
-| 2026-02-02 | 19/20 | Ajout monitoring performance |
-| 2026-01-15 | 18/20 | Intégration Stripe complète |
+- [`SECURITY.md`](./SECURITY.md) - Rapport de sécurité
+- [`ARCHITECTURE.md`](./ARCHITECTURE.md) - Diagrammes techniques
+- [`AI-INTEGRATIONS.md`](./AI-INTEGRATIONS.md) - Stratégies IA et fallbacks
+- [`I18N-STATUS.md`](./I18N-STATUS.md) - Statut internationalisation
 
-## Comment Contribuer à l'Audit
+## Comment Contribuer
 
-1. Exécuter les scripts de vérification
-2. Comparer avec les valeurs attendues
-3. Signaler toute divergence via GitHub Issues
-4. Proposer des améliorations de métriques
+1. Exécuter les scripts de vérification localement
+2. Comparer avec les valeurs du CI
+3. Signaler les divergences via [GitHub Issues](../../issues)
