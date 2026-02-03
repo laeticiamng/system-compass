@@ -104,9 +104,9 @@ npm run test:coverage
 ```
 
 **Métriques actuelles** (vérifiables via CI) :
-- Tests unitaires : 718 passants
+- Tests unitaires : 669 passants
 - Couverture estimée : ~75%
-- Tables avec RLS : 57/57
+- Tables avec RLS : 59/59
 
 📖 Voir [`docs/TESTING.md`](./docs/TESTING.md) pour la stratégie de tests détaillée.
 
