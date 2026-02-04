@@ -66,6 +66,7 @@ import {
   LazyCommunity,
   LazyInstall,
   LazyToolsHub,
+  LazyAcademicHub,
 } from "@/routes/LazyRoutes";
 
 // ============================================================
@@ -158,6 +159,7 @@ export const contentRoutes = [
   { path: "/how-to-read", element: <LazyHowToRead /> },
   { path: "/tools", element: <LazyToolsHub /> },
   { path: "/install", element: <LazyInstall /> },
+  { path: "/academic", element: <LazyAcademicHub /> },
 ];
 
 /** Admin routes - protected */
