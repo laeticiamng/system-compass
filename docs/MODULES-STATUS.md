@@ -133,13 +133,19 @@ Ce document décrit l'état actuel de chaque module, son niveau de maturité et 
 
 ## Roadmap
 
-### Q1 2026 (Actuel)
+### Q1 2026 (Actuel - v5.8)
 - ✅ Stabilisation modules core
 - ✅ Mode hors-ligne PWA avec queue sync
-- ✅ 688 tests passants
+- ✅ 730+ tests passants (42 edge functions + 688 services)
 - ✅ Service layer isolé (src/services/)
 - ✅ Politiques RLS RGPD complètes
 - ✅ Tutoriel onboarding interactif
+- ✅ Raccourcis clavier power-users (Alt+H/D/C/E...)
+- ✅ Export RGPD données personnelles
+- ✅ Error boundaries granulaires
+- ✅ Rate limit indicator UI
+- ✅ Composants accessibles ARIA
+- ✅ Landing page UX optimisée mobile/desktop
 - 🔄 Amélioration i18n langues secondaires
 
 ### Q2 2026
