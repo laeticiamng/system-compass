@@ -133,12 +133,12 @@ Ce document décrit l'état actuel de chaque module, son niveau de maturité et 
 
 ## Roadmap
 
-### Q1 2026 (Actuel - v5.9)
+### Q1 2026 (Actuel - v6.0)
 - ✅ Stabilisation modules core
 - ✅ Mode hors-ligne PWA avec queue sync
 - ✅ 730+ tests passants (42 edge functions + 688 services)
-- ✅ Service layer isolé (src/services/)
-- ✅ Politiques RLS RGPD complètes
+- ✅ Service layer isolé (src/services/ - 6 modules)
+- ✅ Politiques RLS RGPD complètes avec validation
 - ✅ Tutoriel onboarding interactif
 - ✅ Raccourcis clavier power-users (Alt+H/D/C/E...)
 - ✅ Export RGPD données personnelles
@@ -153,6 +153,10 @@ Ce document décrit l'état actuel de chaque module, son niveau de maturité et 
 - ✅ Mobile bottom navigation
 - ✅ PWA update notification
 - ✅ CacheService centralisé
+- ✅ Schémas Zod validation centralisée (15+ formulaires)
+- ✅ Error handling service unifié
+- ✅ Skeleton components pour loading states
+- ✅ RLS policies sécurisées (analytics rate-limiting)
 - 🔄 Amélioration i18n langues secondaires
 
 ### Q2 2026

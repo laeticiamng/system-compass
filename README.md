@@ -109,9 +109,10 @@ npm run test:coverage
 - Tables avec RLS : 60+/60+ (sécurité A+)
 - Edge Functions : 36 opérationnelles
 - Langues supportées : 13 (FR/EN 100%)
-- Service layer : 5 modules isolés
-- Raccourcis clavier : Alt+H/D/C/E...
-- Export RGPD : données personnelles
+- Service layer : 6 modules isolés
+- Schémas Zod : 15+ formulaires validés
+- Skeletons UI : Pages clés couvertes
+- Error handling : Service centralisé
 
 📖 Voir [`docs/TESTING.md`](./docs/TESTING.md) pour la stratégie de tests détaillée.
 
