@@ -115,7 +115,7 @@ npm run test:coverage
 - Error handling : Service centralisé
 - Dashboard widgets : 35+ composants
 - Community components : 8 modules
-- **Audit v6.4** : 4 failles critiques RLS corrigées (analytics, newsletter, registrations)
+- **Audit v6.5** : Consolidation RLS (user_subscriptions, push_subscriptions)
 - Linter Supabase : 1 warning infra (Extension in Public - non critique)
 
 📖 Voir [`docs/TESTING.md`](./docs/TESTING.md) pour la stratégie de tests détaillée.
