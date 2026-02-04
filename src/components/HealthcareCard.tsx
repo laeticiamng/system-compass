@@ -71,117 +71,117 @@ export function HealthcareCard({ healthcare, className }: HealthcareCardProps) {
   const { t } = useTranslation();
 
   return (
-    <div className={cn("glass-card rounded-xl p-6", className)}>
-      <h3 className="font-display font-semibold mb-4 flex items-center gap-2">
-        <Heart className="w-5 h-5 text-red-400" />
+    <div className={cn("glass-card rounded-xl p-4 sm:p-6", className)}>
+      <h3 className="font-display font-semibold mb-3 sm:mb-4 flex items-center gap-2 text-sm sm:text-base">
+        <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-red-400 flex-shrink-0" />
         {t('healthcare.title')}
       </h3>
 
       {/* System Type */}
-      <div className="flex items-center gap-3 mb-6 p-3 rounded-lg bg-muted/30">
-        {getSystemIcon(healthcare.systemType)}
-        <div>
-          <div className="font-medium">
+      <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6 p-2 sm:p-3 rounded-lg bg-muted/30">
+        <span className="flex-shrink-0">{getSystemIcon(healthcare.systemType)}</span>
+        <div className="min-w-0">
+          <div className="font-medium text-sm sm:text-base truncate">
             {t(`healthcare.systemTypes.${healthcare.systemType}`)}
           </div>
-          <div className="text-xs text-muted-foreground">
+          <div className="text-[10px] sm:text-xs text-muted-foreground">
             {t('healthcare.systemType')}
           </div>
         </div>
       </div>
 
       {/* Quality Scores */}
-      <div className="grid grid-cols-2 gap-4 mb-6">
-        <div className="space-y-2">
-          <div className="text-xs text-muted-foreground">{t('healthcare.qualityScore')}</div>
-          <div className="flex items-center gap-2">
-            <div className="h-2 flex-1 bg-muted rounded-full overflow-hidden">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6">
+        <div className="space-y-1.5 sm:space-y-2">
+          <div className="text-[10px] sm:text-xs text-muted-foreground truncate">{t('healthcare.qualityScore')}</div>
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <div className="h-1.5 sm:h-2 flex-1 bg-muted rounded-full overflow-hidden">
               <div 
                 className="h-full bg-primary rounded-full transition-all"
                 style={{ width: `${healthcare.qualityScore}%` }}
               />
             </div>
-            <span className="text-sm font-mono font-bold">{healthcare.qualityScore}</span>
+            <span className="text-xs sm:text-sm font-mono font-bold flex-shrink-0">{healthcare.qualityScore}</span>
           </div>
         </div>
-        <div className="space-y-2">
-          <div className="text-xs text-muted-foreground">{t('healthcare.accessScore')}</div>
-          <div className="flex items-center gap-2">
-            <div className="h-2 flex-1 bg-muted rounded-full overflow-hidden">
+        <div className="space-y-1.5 sm:space-y-2">
+          <div className="text-[10px] sm:text-xs text-muted-foreground truncate">{t('healthcare.accessScore')}</div>
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <div className="h-1.5 sm:h-2 flex-1 bg-muted rounded-full overflow-hidden">
               <div 
                 className="h-full bg-blue-500 rounded-full transition-all"
                 style={{ width: `${healthcare.accessScore}%` }}
               />
             </div>
-            <span className="text-sm font-mono font-bold">{healthcare.accessScore}</span>
+            <span className="text-xs sm:text-sm font-mono font-bold flex-shrink-0">{healthcare.accessScore}</span>
           </div>
         </div>
       </div>
 
       {/* Service Quality Grid */}
-      <div className="grid grid-cols-2 gap-3 mb-6">
+      <div className="grid grid-cols-2 gap-2 sm:gap-3 mb-4 sm:mb-6">
         <div className={cn(
-          "p-3 rounded-lg text-center",
+          "p-2 sm:p-3 rounded-lg text-center",
           getQualityColor(healthcare.emergencyResponse)
         )}>
-          <Ambulance className="w-5 h-5 mx-auto mb-1" />
-          <div className="text-xs font-medium mb-1">
+          <Ambulance className="w-4 h-4 sm:w-5 sm:h-5 mx-auto mb-0.5 sm:mb-1" />
+          <div className="text-[10px] sm:text-xs font-medium mb-0.5 sm:mb-1 line-clamp-1">
             {t('healthcare.emergencyResponse')}
           </div>
-          <div className="text-xs opacity-80">
+          <div className="text-[10px] sm:text-xs opacity-80 truncate">
             {t(`healthcare.qualityLevels.${healthcare.emergencyResponse}`)}
           </div>
         </div>
         <div className={cn(
-          "p-3 rounded-lg text-center",
+          "p-2 sm:p-3 rounded-lg text-center",
           getQualityColor(healthcare.specialistAccess)
         )}>
-          <Stethoscope className="w-5 h-5 mx-auto mb-1" />
-          <div className="text-xs font-medium mb-1">
+          <Stethoscope className="w-4 h-4 sm:w-5 sm:h-5 mx-auto mb-0.5 sm:mb-1" />
+          <div className="text-[10px] sm:text-xs font-medium mb-0.5 sm:mb-1 line-clamp-1">
             {t('healthcare.specialistAccess')}
           </div>
-          <div className="text-xs opacity-80">
+          <div className="text-[10px] sm:text-xs opacity-80 truncate">
             {t(`healthcare.qualityLevels.${healthcare.specialistAccess}`)}
           </div>
         </div>
         <div className={cn(
-          "p-3 rounded-lg text-center",
+          "p-2 sm:p-3 rounded-lg text-center",
           getQualityColor(healthcare.chronicCareQuality)
         )}>
-          <Clock className="w-5 h-5 mx-auto mb-1" />
-          <div className="text-xs font-medium mb-1">
+          <Clock className="w-4 h-4 sm:w-5 sm:h-5 mx-auto mb-0.5 sm:mb-1" />
+          <div className="text-[10px] sm:text-xs font-medium mb-0.5 sm:mb-1 line-clamp-1">
             {t('healthcare.chronicCare')}
           </div>
-          <div className="text-xs opacity-80">
+          <div className="text-[10px] sm:text-xs opacity-80 truncate">
             {t(`healthcare.qualityLevels.${healthcare.chronicCareQuality}`)}
           </div>
         </div>
-        <div className="p-3 rounded-lg text-center bg-muted/30">
-          <DollarSign className={cn("w-5 h-5 mx-auto mb-1", getCostColor(healthcare.costForExpats))} />
-          <div className="text-xs font-medium mb-1">
+        <div className="p-2 sm:p-3 rounded-lg text-center bg-muted/30">
+          <DollarSign className={cn("w-4 h-4 sm:w-5 sm:h-5 mx-auto mb-0.5 sm:mb-1", getCostColor(healthcare.costForExpats))} />
+          <div className="text-[10px] sm:text-xs font-medium mb-0.5 sm:mb-1 line-clamp-1">
             {t('healthcare.costForExpats')}
           </div>
-          <div className={cn("text-xs", getCostColor(healthcare.costForExpats))}>
+          <div className={cn("text-[10px] sm:text-xs truncate", getCostColor(healthcare.costForExpats))}>
             {t(`healthcare.costLevels.${healthcare.costForExpats}`)}
           </div>
         </div>
       </div>
 
       {/* Insurance Required */}
-      <div className="flex items-center gap-2 p-3 rounded-lg bg-muted/30">
+      <div className="flex items-center gap-2 p-2 sm:p-3 rounded-lg bg-muted/30">
         {healthcare.insuranceRequired ? (
-          <XCircle className="w-4 h-4 text-amber-400" />
+          <XCircle className="w-3 h-3 sm:w-4 sm:h-4 text-amber-400 flex-shrink-0" />
         ) : (
-          <CheckCircle className="w-4 h-4 text-emerald-400" />
+          <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-emerald-400 flex-shrink-0" />
         )}
-        <span className="text-sm">
+        <span className="text-xs sm:text-sm truncate">
           {t('healthcare.insuranceRequired')}: {healthcare.insuranceRequired ? t('common.yes') : t('common.no')}
         </span>
       </div>
 
       {healthcare.notes && (
-        <div className="mt-4 p-3 rounded-lg bg-muted/30">
-          <p className="text-xs text-muted-foreground">{healthcare.notes}</p>
+        <div className="mt-3 sm:mt-4 p-2 sm:p-3 rounded-lg bg-muted/30">
+          <p className="text-[10px] sm:text-xs text-muted-foreground break-words">{healthcare.notes}</p>
         </div>
       )}
     </div>

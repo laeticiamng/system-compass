@@ -92,33 +92,33 @@ export function NaturalRisksCard({ risks, className }: NaturalRisksCardProps) {
     : 'border-border';
 
   return (
-    <div className={cn("glass-card rounded-xl p-6 border", overallColor, className)}>
-      <h3 className="font-display font-semibold mb-4 flex items-center gap-2">
-        <AlertTriangle className="w-5 h-5 text-amber-500" />
+    <div className={cn("glass-card rounded-xl p-4 sm:p-6 border", overallColor, className)}>
+      <h3 className="font-display font-semibold mb-3 sm:mb-4 flex items-center gap-2 text-sm sm:text-base">
+        <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500 flex-shrink-0" />
         {t('naturalRisks.title')}
       </h3>
 
       {riskItems.length === 0 ? (
-        <p className="text-sm text-muted-foreground">
+        <p className="text-xs sm:text-sm text-muted-foreground">
           {t('naturalRisks.levels.none')}
         </p>
       ) : (
-        <div className="space-y-3">
+        <div className="space-y-2 sm:space-y-3">
           {riskItems.map(item => (
             <div key={item.key} className="space-y-1">
-              <div className="flex items-center justify-between text-sm">
-                <span className="flex items-center gap-2">
-                  {RISK_ICONS[item.key as keyof typeof RISK_ICONS]}
-                  {item.label}
+              <div className="flex items-center justify-between gap-2 text-xs sm:text-sm min-w-0">
+                <span className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+                  <span className="flex-shrink-0">{RISK_ICONS[item.key as keyof typeof RISK_ICONS]}</span>
+                  <span className="truncate">{item.label}</span>
                 </span>
                 <span className={cn(
-                  "px-2 py-0.5 rounded-full text-xs border",
+                  "px-1.5 sm:px-2 py-0.5 rounded-full text-[10px] sm:text-xs border flex-shrink-0 whitespace-nowrap",
                   getRiskColor(item.value)
                 )}>
                   {t(`naturalRisks.levels.${item.value}`)}
                 </span>
               </div>
-              <div className="h-1.5 bg-muted rounded-full overflow-hidden">
+              <div className="h-1 sm:h-1.5 bg-muted rounded-full overflow-hidden">
                 <div 
                   className={cn(
                     "h-full rounded-full transition-all duration-500",
@@ -137,8 +137,8 @@ export function NaturalRisksCard({ risks, className }: NaturalRisksCardProps) {
       )}
 
       {risks.climateNotes && (
-        <div className="mt-4 p-3 rounded-lg bg-muted/30">
-          <p className="text-xs text-muted-foreground">{risks.climateNotes}</p>
+        <div className="mt-3 sm:mt-4 p-2 sm:p-3 rounded-lg bg-muted/30">
+          <p className="text-[10px] sm:text-xs text-muted-foreground break-words">{risks.climateNotes}</p>
         </div>
       )}
     </div>

@@ -48,7 +48,7 @@ export function PyramidVisualization({ country, translatedPyramid, className }: 
           >
             <div
               className={cn(
-                'relative py-4 px-6 text-center transition-all duration-300',
+                'relative py-3 sm:py-4 px-3 sm:px-6 text-center transition-all duration-300',
                 'border border-border/30 backdrop-blur-sm',
                 'hover:scale-[1.02] hover:z-10',
                 index === 0 && 'rounded-t-lg',
@@ -60,10 +60,10 @@ export function PyramidVisualization({ country, translatedPyramid, className }: 
                   hsl(var(--${typeInfo.color}) / ${0.2 - index * 0.03}) 100%)`,
               }}
             >
-              <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">
+              <div className="text-[10px] sm:text-xs uppercase tracking-wider text-muted-foreground mb-0.5 sm:mb-1">
                 {t(`pyramid.${level.key}`)}
               </div>
-              <div className="text-sm font-medium text-foreground/90">
+              <div className="text-xs sm:text-sm font-medium text-foreground/90 line-clamp-2 break-words">
                 {pyramid[level.key]}
               </div>
             </div>
