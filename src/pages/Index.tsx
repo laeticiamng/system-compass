@@ -273,7 +273,7 @@ export default function Index() {
             <ToolCardPremium
               icon={<Globe className="w-5 h-5 md:w-6 md:h-6" />}
               title={t('tools.countries', 'Explorer les pays')}
-              description={t('tools.countriesDesc', '38 pays analysés en profondeur')}
+              description={t('tools.countriesDesc', '50+ pays analysés en profondeur')}
               onClick={() => navigate('/countries')}
               index={2}
             />
@@ -299,8 +299,8 @@ export default function Index() {
                 <p className="text-primary font-medium mb-2 md:mb-4 tracking-[0.15em] md:tracking-[0.2em] uppercase text-xs md:text-sm">
                   {t('countries.badge', 'Explorer')}
                 </p>
-                <h2 className="font-display text-[clamp(1.6rem,3.5vw,3.5rem)] font-bold">
-                  {t('countries.title', '38 pays analysés')}
+              <h2 className="font-display text-[clamp(1.6rem,3.5vw,3.5rem)] font-bold">
+                {t('countries.title', '50+ pays analysés')}
                 </h2>
               </div>
               <Button

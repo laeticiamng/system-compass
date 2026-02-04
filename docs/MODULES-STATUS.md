@@ -167,7 +167,8 @@ Ce document décrit l'état actuel de chaque module, son niveau de maturité et 
   - ✅ AcademicCourses (Cours structurés avec quiz et certifications)
 - ✅ **Route /academic accessible depuis ToolsHub**
 - ✅ **Intégration DiscussionThread et ResourceLibrary dans Community**
-
+- ✅ **AcademicHub responsive mobile/desktop optimisé**
+- ✅ **Cohérence documentation 50+ pays synchronisée**
 ### Q2 2026
 - ✅ Système d'avis Marketplace (modération admin)
 - ✅ Multijoueur Life Game (lobby fonctionnel)

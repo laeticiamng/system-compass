@@ -72,8 +72,8 @@ export default function AcademicHub() {
   const [activeModule, setActiveModule] = useState('frameworks');
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20 pt-16 md:pt-20">
-      <div className="container mx-auto px-4 py-8 md:py-12">
+    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20 pt-20 md:pt-24">
+      <div className="container mx-auto px-3 sm:px-4 py-6 md:py-12">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -102,8 +102,8 @@ export default function AcademicHub() {
           </div>
         </motion.div>
 
-        {/* Module Selection */}
-        <div className="grid md:grid-cols-5 gap-3 mb-8">
+        {/* Module Selection - Responsive grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 md:gap-3 mb-8 overflow-x-auto">
           {ACADEMIC_MODULES.map((module) => {
             const Icon = module.icon;
             const isActive = activeModule === module.id;
@@ -114,18 +114,18 @@ export default function AcademicHub() {
                 onClick={() => setActiveModule(module.id)}
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className={`p-4 rounded-xl border text-left transition-all ${
+                className={`p-3 md:p-4 rounded-xl border text-left transition-all min-w-0 ${
                   isActive 
                     ? 'border-primary bg-primary/10 shadow-lg' 
                     : 'border-border bg-card hover:border-primary/50'
                 }`}
               >
-                <div className="flex items-center gap-2 mb-2">
-                  <Icon className={`w-5 h-5 ${isActive ? 'text-primary' : 'text-muted-foreground'}`} />
-                  <Badge variant="secondary" className="text-[10px]">{module.level}</Badge>
+                <div className="flex items-center gap-1 md:gap-2 mb-1 md:mb-2">
+                  <Icon className={`w-4 h-4 md:w-5 md:h-5 flex-shrink-0 ${isActive ? 'text-primary' : 'text-muted-foreground'}`} />
+                  <Badge variant="secondary" className="text-[9px] md:text-[10px] px-1">{module.level}</Badge>
                 </div>
-                <h3 className="font-semibold text-sm mb-1">{module.title}</h3>
-                <p className="text-xs text-muted-foreground line-clamp-2">{module.description}</p>
+                <h3 className="font-semibold text-xs md:text-sm mb-0.5 md:mb-1 truncate">{module.title}</h3>
+                <p className="text-[10px] md:text-xs text-muted-foreground line-clamp-2 hidden sm:block">{module.description}</p>
               </motion.button>
             );
           })}
