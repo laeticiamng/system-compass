@@ -108,14 +108,15 @@ npm run test:coverage
 - Couverture estimée : ~78%
 - Tables avec RLS : 60+/60+ (sécurité A+)
 - Edge Functions : 36 opérationnelles
-- Langues supportées : 13 (FR/EN 100%)
+- Langues supportées : 13 (FR/EN 100%, autres partielles)
 - Service layer : 6 modules isolés
 - Schémas Zod : 15+ formulaires validés
 - Skeletons UI : Pages clés couvertes
 - Error handling : Service centralisé
 - Dashboard widgets : 35+ composants
 - Community components : 8 modules
-- **Audit v6.5** : Consolidation RLS (user_subscriptions, push_subscriptions)
+- **Audit v6.7** : Cohérence responsive validée sur 10+ pages
+- **Sécurité A+** : 21 findings analysés, tous informatifs ou résolus
 - Linter Supabase : 1 warning infra (Extension in Public - non critique)
 
 📖 Voir [`docs/TESTING.md`](./docs/TESTING.md) pour la stratégie de tests détaillée.
