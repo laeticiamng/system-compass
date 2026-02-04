@@ -38,7 +38,8 @@ import {
   ToolCardPremium, 
   PricingCard,
   NotDoItem,
-  DoItem
+  DoItem,
+  SocialProofBanner,
 } from '@/components/landing';
 
 export default function Index() {
@@ -56,6 +57,9 @@ export default function Index() {
     <div className="min-h-screen bg-background overflow-x-hidden">
       {/* HERO SECTION */}
       <HeroSection onExitKeysClick={trackExitKeysClicked} />
+
+      {/* SOCIAL PROOF BANNER */}
+      <SocialProofBanner />
 
       {/* VALUE PROPOSITION - Cinematic reveal */}
       <section className="py-24 md:py-40 lg:py-56 relative">

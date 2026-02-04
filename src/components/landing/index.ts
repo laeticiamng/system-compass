@@ -9,3 +9,4 @@ export {
   DoItem 
 } from './FeatureCards';
 export { TestimonialsSection } from './TestimonialsSection';
+export { SocialProofBanner, TrustBadges } from './SocialProofBanner';

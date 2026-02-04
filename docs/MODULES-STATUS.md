@@ -1,6 +1,6 @@
 # 📊 Statut des Modules - Pyramid Compass
 
-> Dernière mise à jour : Février 2026 (v6.7 - Audit Cohérence Responsive)
+> Dernière mise à jour : Février 2026 (v6.8 - Enrichissements Intégrés)
 
 Ce document décrit l'état actuel de chaque module, son niveau de maturité et la roadmap prévue.
 
