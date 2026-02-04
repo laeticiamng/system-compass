@@ -115,12 +115,14 @@ npm run test:coverage
 - Skeletons UI : Pages clés couvertes
 - Error handling : Service centralisé
 - Dashboard widgets : 40+ composants
-- Community components : 12 modules (v7.0.4)
-- Game components : 40+ modules (v7.0.4)
-- Marketplace components : 12 modules (v7.0.4)
-- Academic components : 5 modules niveau grande école (v7.0.4)
+- Community components : 11 modules (v7.0.5)
+- Game components : 42 modules (v7.0.5) - HexagonalBoard, ImprovedHexBoard ajoutés
+- Marketplace components : 12 modules (v7.0.5)
+- Academic components : 5 modules niveau grande école (v7.0.5)
   - StrategicFrameworks, FinancialModeling, GeopoliticalAnalysis
   - CaseStudySystem, AcademicCourses
+- Latent components : 23 modules (détection tensions, zones latentes)
+- Irreversa components : 22 modules (seuils irréversibles, témoins)
 - Security scan : 13 findings documentés et ignorés par design
   - Analytics/Newsletter/Events : rate limiting + anonymat
   - GDPR : anonymisation IP après 90 jours
