@@ -115,11 +115,12 @@ npm run test:coverage
 - Error handling : Service centralisé
 - Dashboard widgets : 40+ composants
 - Community components : 12 modules
-- Game components : 6 modules
+- Game components : 40+ modules (complet)
 - Marketplace components : 12 modules
-- **v7.0** : Centre Académique niveau grande école (5 modules)
+- Academic components : 5 modules (niveau grande école)
   - StrategicFrameworks, FinancialModeling, GeopoliticalAnalysis
   - CaseStudySystem, AcademicCourses
+- Security scan : 0 findings critiques (tous ignorés par design)
 - Linter Supabase : 1 warning infra (Extension in Public - non critique)
 
 📖 Voir [`docs/TESTING.md`](./docs/TESTING.md) pour la stratégie de tests détaillée.
