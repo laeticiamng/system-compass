@@ -1,8 +1,8 @@
 # 🔒 Rapport de Sécurité
 
-> Dernière analyse : 2026-02-04 (20:24 UTC)  
-> Version sécurité : **v5.8** (hardening complet + v7.0.6)  
-> Scan automatisé : 13 findings (tous analysés et documentés)
+> Dernière analyse : 2026-02-04 (20:35 UTC)  
+> Version sécurité : **v5.9** (hardening complet + v7.0.8)  
+> Scan automatisé : 16 findings (tous analysés et documentés - ignorés par design)
 
 ## Résumé Exécutif
 

@@ -103,9 +103,9 @@ npm run test
 npm run test:coverage
 ```
 
-**Métriques actuelles** (v7.0.7 - vérifiables via CI) :
-- Tests unitaires : 684+ passants (100%)
-- Couverture estimée : ~80%
+**Métriques actuelles** (v7.0.8 - vérifiables via CI) :
+- Tests unitaires : 749+ passants (100%)
+- Couverture estimée : ~82%
 - Tables avec RLS : 60+/60+ (sécurité A+)
 - Edge Functions : 36 opérationnelles
 - Pages : 58 opérationnelles
@@ -148,7 +148,10 @@ npm run test:coverage
   - Partner/Partners components : 6 modules
   - TraceOS components : 11 modules
   - Services components : CacheService + presets
-- Security scan : 13 findings documentés et ignorés par design
+  - Common components : 38 exports (v7.0.8)
+  - Landing components : 9 exports (v7.0.8)
+  - GDPR components : 1 export (v7.0.8)
+- Security scan : 16 findings documentés et ignorés par design
 - Linter Supabase : 1 warning infra (Extension in Public - non critique)
 
 📖 Voir [`docs/TESTING.md`](./docs/TESTING.md) pour la stratégie de tests détaillée.
