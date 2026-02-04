@@ -1,4 +1,6 @@
-// Gamification components index
+// Gamification components index - v7.0.7
+// User engagement and achievement system
+
 export { DestinationQuests } from './DestinationQuests';
 export { ChallengeProgressTracker } from './ChallengeProgressTracker';
 export { ChallengeTracker } from './ChallengeTracker';
