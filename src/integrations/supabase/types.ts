@@ -4355,6 +4355,15 @@ export type Database = {
         }
         Relationships: []
       }
+      game_leaderboard: {
+        Row: {
+          best_score_race: number | null
+          best_score_solo: number | null
+          display_name: string | null
+          total_games_played: number | null
+        }
+        Relationships: []
+      }
       game_leaderboard_safe: {
         Row: {
           best_score_race: number | null
