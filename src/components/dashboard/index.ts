@@ -39,3 +39,4 @@ export {
   QuickStatsWidget, 
   UpcomingTasksWidget 
 } from './DashboardWidgets';
+export { QuickActionsWidget } from './QuickActionsWidget';

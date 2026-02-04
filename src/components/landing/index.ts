@@ -8,3 +8,4 @@ export {
   NotDoItem,
   DoItem 
 } from './FeatureCards';
+export { TestimonialsSection } from './TestimonialsSection';

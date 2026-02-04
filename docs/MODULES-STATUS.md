@@ -133,7 +133,7 @@ Ce document décrit l'état actuel de chaque module, son niveau de maturité et 
 
 ## Roadmap
 
-### Q1 2026 (Actuel - v5.8)
+### Q1 2026 (Actuel - v5.9)
 - ✅ Stabilisation modules core
 - ✅ Mode hors-ligne PWA avec queue sync
 - ✅ 730+ tests passants (42 edge functions + 688 services)
@@ -146,6 +146,13 @@ Ce document décrit l'état actuel de chaque module, son niveau de maturité et 
 - ✅ Rate limit indicator UI
 - ✅ Composants accessibles ARIA
 - ✅ Landing page UX optimisée mobile/desktop
+- ✅ Témoignages et social proof landing
+- ✅ Quick Actions Dashboard widget
+- ✅ Session timeout warning
+- ✅ Currency converter widget
+- ✅ Mobile bottom navigation
+- ✅ PWA update notification
+- ✅ CacheService centralisé
 - 🔄 Amélioration i18n langues secondaires
 
 ### Q2 2026

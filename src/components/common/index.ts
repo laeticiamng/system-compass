@@ -19,4 +19,5 @@ export { AccessibleFormField } from './AccessibleFormField';
 export { GranularErrorBoundary } from './GranularErrorBoundary';
 export { RateLimitIndicator } from './RateLimitIndicator';
 export { KeyboardShortcutsHelp } from './KeyboardShortcutsHelp';
+export { SessionTimeoutWarning } from './SessionTimeoutWarning';
 export * from './UniversalFormValidator';
