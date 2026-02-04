@@ -15,4 +15,8 @@ export { CollaborationThread } from './CollaborationThread';
 export { SmokeTester } from './SmokeTester';
 export { SystemHealthIndicator, useSystemHealth } from './SystemHealthIndicator';
 export { PerformanceMonitor, useRenderTime, usePerformanceTrack } from './PerformanceMonitor';
+export { AccessibleFormField } from './AccessibleFormField';
+export { GranularErrorBoundary } from './GranularErrorBoundary';
+export { RateLimitIndicator } from './RateLimitIndicator';
+export { KeyboardShortcutsHelp } from './KeyboardShortcutsHelp';
 export * from './UniversalFormValidator';
