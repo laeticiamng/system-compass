@@ -1,4 +1,4 @@
-// Marketplace components index - v7.0.5
+// Marketplace components index - v7.0.6
 // Complete exports for 12 marketplace modules
 
 export { ExpertProfileDialog } from './ExpertProfileDialog';

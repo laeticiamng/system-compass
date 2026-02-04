@@ -1,4 +1,5 @@
-// Dashboard components index
+// Dashboard components index - v7.0.6
+// Complete exports for 40+ dashboard widgets
 export { WeeklyDigestSetup } from './WeeklyDigestSetup';
 export { WeeklyDigestGenerator } from './WeeklyDigestGenerator';
 export { AiUsageStats } from './AiUsageStats';

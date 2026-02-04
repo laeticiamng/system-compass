@@ -1,4 +1,4 @@
-// Community components index - v7.0.5
+// Community components index - v7.0.6
 // Complete exports for 11 community modules
 
 export { NewsletterSignup } from './NewsletterSignup';

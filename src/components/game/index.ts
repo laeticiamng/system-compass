@@ -1,4 +1,4 @@
-// Game components index - v7.0.5
+// Game components index - v7.0.6
 // Complete exports for 42 game components
 
 // Already working exports (named)

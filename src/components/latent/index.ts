@@ -1,3 +1,6 @@
+// Latent components index - v7.0.6
+// Complete exports for 23 latent zone components
+
 export { Latent } from './Latent';
 export { CreateZoneForm } from './CreateZoneForm';
 export { ZoneCard } from './ZoneCard';
