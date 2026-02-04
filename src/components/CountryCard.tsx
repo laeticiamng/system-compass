@@ -97,22 +97,11 @@ export const CountryCard = forwardRef<HTMLDivElement, CountryCardProps>(
           />
         </div>
 
-        {/* Type Badge */}
-        <div
-          className="absolute top-3 right-3 sm:top-4 sm:right-4 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium max-w-[40%] truncate"
-          style={{
-            backgroundColor: `hsl(var(--${typeColor}) / 0.15)`,
-            color: `hsl(var(--${typeColor}))`,
-          }}
-        >
-          {t(PYRAMID_TYPE_LABELS[country.pyramidType])}
-        </div>
-
-        {/* Country Info */}
-        <div className="flex items-start gap-3 sm:gap-4">
+        {/* Country Info - Restructured to avoid overlap */}
+        <div className="flex items-start gap-3 sm:gap-4 mt-6 sm:mt-8">
           <div className="text-3xl sm:text-4xl flex-shrink-0">{getFlagEmoji(country.iso2)}</div>
-          <div className="flex-1 min-w-0 pr-16 sm:pr-20">
-            <h3 className="font-display text-lg sm:text-xl font-semibold text-foreground mb-1 truncate">
+          <div className="flex-1 min-w-0">
+            <h3 className="font-display text-lg sm:text-xl font-semibold text-foreground mb-1 truncate pr-2">
               {displayName}
             </h3>
             <div className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
@@ -120,6 +109,19 @@ export const CountryCard = forwardRef<HTMLDivElement, CountryCardProps>(
               <span className="truncate">{displayRegion}</span>
             </div>
           </div>
+        </div>
+
+        {/* Type Badge - Moved below header for clarity */}
+        <div className="mt-3 sm:mt-4">
+          <span
+            className="inline-block px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium"
+            style={{
+              backgroundColor: `hsl(var(--${typeColor}) / 0.15)`,
+              color: `hsl(var(--${typeColor}))`,
+            }}
+          >
+            {t(PYRAMID_TYPE_LABELS[country.pyramidType])}
+          </span>
         </div>
 
         {/* Rule of Gold */}
