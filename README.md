@@ -108,19 +108,23 @@ npm run test:coverage
 - Couverture estimée : ~80%
 - Tables avec RLS : 60+/60+ (sécurité A+)
 - Edge Functions : 36 opérationnelles
+- Pages : 58 opérationnelles
 - Langues supportées : 13 (FR/EN 100%, autres partielles)
 - Service layer : 6 modules isolés
 - Schémas Zod : 15+ formulaires validés
 - Skeletons UI : Pages clés couvertes
 - Error handling : Service centralisé
 - Dashboard widgets : 40+ composants
-- Community components : 12 modules
-- Game components : 40+ modules (complet)
-- Marketplace components : 12 modules
-- Academic components : 5 modules (niveau grande école)
+- Community components : 12 modules (v7.0.4)
+- Game components : 40+ modules (v7.0.4)
+- Marketplace components : 12 modules (v7.0.4)
+- Academic components : 5 modules niveau grande école (v7.0.4)
   - StrategicFrameworks, FinancialModeling, GeopoliticalAnalysis
   - CaseStudySystem, AcademicCourses
-- Security scan : 0 findings critiques (tous ignorés par design)
+- Security scan : 13 findings documentés et ignorés par design
+  - Analytics/Newsletter/Events : rate limiting + anonymat
+  - GDPR : anonymisation IP après 90 jours
+  - Webhooks : masqués via vue sécurisée
 - Linter Supabase : 1 warning infra (Extension in Public - non critique)
 
 📖 Voir [`docs/TESTING.md`](./docs/TESTING.md) pour la stratégie de tests détaillée.
