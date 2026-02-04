@@ -1,6 +1,7 @@
 # 🔒 Rapport de Sécurité
 
-> Dernière analyse : 2026-02-04
+> Dernière analyse : 2026-02-04  
+> Version sécurité : **v5.4** (hardening complet)
 
 ## Résumé Exécutif
 
@@ -93,7 +94,7 @@ workspace_milestones         ✅ RLS enabled
 4. **Workspace scope** : `workspace_id IN (SELECT ... FROM user_workspaces)`
 5. **Rate limiting** : Triggers avec `FOR UPDATE` pour atomicité
 
-## Nouvelles Protections (v5.2)
+## Nouvelles Protections (v5.4)
 
 ### 1. Rate Limiting
 ```sql
@@ -108,6 +109,12 @@ CREATE TRIGGER push_subscription_limit
   BEFORE INSERT ON public.push_subscriptions
   FOR EACH ROW
   EXECUTE FUNCTION public.check_push_subscription_limit();
+
+-- Analytics events: max 100 per minute per session
+CREATE TRIGGER analytics_events_rate_limit
+  BEFORE INSERT ON public.analytics_events
+  FOR EACH ROW
+  EXECUTE FUNCTION public.check_analytics_rate_limit();
 ```
 
 ### 2. Admin Audit Trail
@@ -134,15 +141,38 @@ CREATE POLICY "Public can view non-expired shared packs"
   );
 ```
 
-### 4. GDPR Consent Tracking
+### 4. GDPR Consent Tracking + Auto-anonymisation
 ```sql
 CREATE TABLE public.gdpr_consent_log (
   user_id UUID,
   session_id TEXT,
   consent_type TEXT NOT NULL, -- 'analytics', 'marketing', 'functional'
   consent_given BOOLEAN NOT NULL,
+  ip_hash TEXT, -- Auto-anonymized after 90 days
+  user_agent_hash TEXT, -- Auto-anonymized after 90 days
   created_at TIMESTAMP WITH TIME ZONE
 );
+
+-- IP hashes removed after 90 days for privacy
+CREATE TRIGGER consent_log_cleanup
+  AFTER INSERT ON public.gdpr_consent_log
+  FOR EACH STATEMENT
+  EXECUTE FUNCTION public.anonymize_old_consent_logs();
+```
+
+### 5. Webhook URL Masking (v5.4)
+```sql
+-- Slack webhook URLs masked in safe view
+CREATE VIEW public.notification_settings_safe 
+WITH (security_invoker = true) AS
+SELECT 
+  id, user_id, email_enabled, push_enabled,
+  CASE WHEN slack_webhook_url IS NOT NULL 
+    THEN '••••••••' || RIGHT(slack_webhook_url, 8)
+    ELSE NULL 
+  END as slack_webhook_masked,
+  deadline_reminder_days, weekly_digest
+FROM public.notification_settings;
 ```
 
 ## Authentification

@@ -4395,6 +4395,42 @@ export type Database = {
         }
         Relationships: []
       }
+      notification_settings_safe: {
+        Row: {
+          created_at: string | null
+          deadline_reminder_days: number | null
+          email_enabled: boolean | null
+          id: string | null
+          push_enabled: boolean | null
+          slack_webhook_masked: string | null
+          updated_at: string | null
+          user_id: string | null
+          weekly_digest: boolean | null
+        }
+        Insert: {
+          created_at?: string | null
+          deadline_reminder_days?: number | null
+          email_enabled?: boolean | null
+          id?: string | null
+          push_enabled?: boolean | null
+          slack_webhook_masked?: never
+          updated_at?: string | null
+          user_id?: string | null
+          weekly_digest?: boolean | null
+        }
+        Update: {
+          created_at?: string | null
+          deadline_reminder_days?: number | null
+          email_enabled?: boolean | null
+          id?: string | null
+          push_enabled?: boolean | null
+          slack_webhook_masked?: never
+          updated_at?: string | null
+          user_id?: string | null
+          weekly_digest?: boolean | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       has_role: { Args: { _role: string; _user_id: string }; Returns: boolean }
