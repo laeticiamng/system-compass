@@ -1,7 +1,7 @@
 # 🔒 Rapport de Sécurité
 
 > Dernière analyse : 2026-02-04  
-> Version sécurité : **v5.5** (hardening complet)
+> Version sécurité : **v5.6** (hardening complet)
 
 ## Résumé Exécutif
 
