@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      admin_audit_log: {
+        Row: {
+          action: string
+          admin_user_id: string
+          created_at: string | null
+          id: string
+          ip_hash: string | null
+          record_count: number | null
+          table_name: string
+        }
+        Insert: {
+          action: string
+          admin_user_id: string
+          created_at?: string | null
+          id?: string
+          ip_hash?: string | null
+          record_count?: number | null
+          table_name: string
+        }
+        Update: {
+          action?: string
+          admin_user_id?: string
+          created_at?: string | null
+          id?: string
+          ip_hash?: string | null
+          record_count?: number | null
+          table_name?: string
+        }
+        Relationships: []
+      }
       ai_activity_log: {
         Row: {
           action_type: string
@@ -1132,6 +1162,7 @@ export type Database = {
           guest_name: string | null
           id: string
           notes: string | null
+          registration_ip_hash: string | null
           reminder_sent: boolean
           status: string
           updated_at: string
@@ -1147,6 +1178,7 @@ export type Database = {
           guest_name?: string | null
           id?: string
           notes?: string | null
+          registration_ip_hash?: string | null
           reminder_sent?: boolean
           status?: string
           updated_at?: string
@@ -1162,6 +1194,7 @@ export type Database = {
           guest_name?: string | null
           id?: string
           notes?: string | null
+          registration_ip_hash?: string | null
           reminder_sent?: boolean
           status?: string
           updated_at?: string
@@ -1494,6 +1527,42 @@ export type Database = {
           updated_at?: string
           user_id?: string
           xp?: number
+        }
+        Relationships: []
+      }
+      gdpr_consent_log: {
+        Row: {
+          consent_given: boolean
+          consent_type: string
+          created_at: string | null
+          id: string
+          ip_hash: string | null
+          session_id: string | null
+          updated_at: string | null
+          user_agent_hash: string | null
+          user_id: string | null
+        }
+        Insert: {
+          consent_given: boolean
+          consent_type: string
+          created_at?: string | null
+          id?: string
+          ip_hash?: string | null
+          session_id?: string | null
+          updated_at?: string | null
+          user_agent_hash?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          consent_given?: boolean
+          consent_type?: string
+          created_at?: string | null
+          id?: string
+          ip_hash?: string | null
+          session_id?: string | null
+          updated_at?: string | null
+          user_agent_hash?: string | null
+          user_id?: string | null
         }
         Relationships: []
       }
@@ -4283,6 +4352,16 @@ export type Database = {
           event_count: number | null
           event_name: string | null
           unique_sessions: number | null
+        }
+        Relationships: []
+      }
+      game_leaderboard_safe: {
+        Row: {
+          best_score_race: number | null
+          best_score_solo: number | null
+          display_name: string | null
+          total_games_played: number | null
+          user_id: string | null
         }
         Relationships: []
       }
