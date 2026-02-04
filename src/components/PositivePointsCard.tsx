@@ -69,36 +69,35 @@ export function PositivePointsCard({ positivePoints, countryId, className }: Pos
   const translationKeys = POSITIVE_POINTS_KEYS[countryId];
 
   return (
-    <div className={cn("glass-card rounded-xl p-6", className)}>
-      <h3 className="font-display text-xl font-bold mb-6 flex items-center gap-2">
-        <Sparkles className="w-5 h-5 text-primary" />
+    <div className={cn("glass-card rounded-xl p-4 sm:p-6", className)}>
+      <h3 className="font-display text-lg sm:text-xl font-bold mb-4 sm:mb-6 flex items-center gap-2">
+        <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
         {t('positivePoints.title', 'Points Positifs')}
       </h3>
       
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
         {categories.map(([category, points]) => {
           const config = CATEGORY_CONFIG[category];
           const Icon = config.icon;
           const categoryKeys = translationKeys?.[category] || [];
           
           return (
-            <div key={category} className="space-y-2">
+            <div key={category} className="space-y-2 min-w-0">
               <div className={cn("flex items-center gap-2 p-2 rounded-lg", config.bgColor)}>
-                <Icon className={cn("w-4 h-4", config.color)} />
-                <span className={cn("font-medium text-sm", config.color)}>
+                <Icon className={cn("w-4 h-4 flex-shrink-0", config.color)} />
+                <span className={cn("font-medium text-xs sm:text-sm truncate", config.color)}>
                   {t(config.label)}
                 </span>
               </div>
-              <ul className="space-y-1 pl-2">
+              <ul className="space-y-1.5 pl-1">
                 {points.map((point, idx) => {
-                  // Use translation key if available, otherwise fallback to original text
                   const translationKey = categoryKeys[idx];
                   const displayText = translationKey ? t(translationKey, point) : point;
                   
                   return (
-                    <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2">
-                      <span className="text-primary mt-1">•</span>
-                      <span>{displayText}</span>
+                    <li key={idx} className="text-xs sm:text-sm text-muted-foreground flex items-start gap-1.5 min-w-0">
+                      <span className="text-primary mt-0.5 flex-shrink-0">•</span>
+                      <span className="break-words">{displayText}</span>
                     </li>
                   );
                 })}

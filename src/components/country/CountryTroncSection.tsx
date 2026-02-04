@@ -42,12 +42,12 @@ export function CountryTroncSection({
   const punishes = t(`pyramidBehaviors.${behaviorKey}.punishes`, { returnObjects: true }) as string[];
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 sm:space-y-8">
       {/* Free Badge */}
       <div className="flex items-center gap-2">
-        <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-green-500/10 text-green-600 text-sm font-medium border border-green-500/20">
-          <Info className="w-4 h-4" />
-          {t('countryDetail.tronc.badge', 'Tronc commun — Accès gratuit')}
+        <span className="inline-flex items-center gap-1 px-2 sm:px-3 py-1 rounded-full bg-green-500/10 text-green-600 text-xs sm:text-sm font-medium border border-green-500/20">
+          <Info className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+          <span className="truncate">{t('countryDetail.tronc.badge', 'Tronc commun — Accès gratuit')}</span>
         </span>
       </div>
 
@@ -55,65 +55,64 @@ export function CountryTroncSection({
       <RuleOfGoldBanner rule={displayRuleOfGold} className="mb-4" />
 
       {/* Main Grid */}
-      <div className="grid lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
         {/* Pyramid */}
-        <div>
-          <h2 className="font-display text-xl font-bold mb-4">{t('countryDetail.systemPyramid')}</h2>
+        <div className="min-w-0">
+          <h2 className="font-display text-lg sm:text-xl font-bold mb-3 sm:mb-4">{t('countryDetail.systemPyramid')}</h2>
           <PyramidVisualization country={country} translatedPyramid={displayPyramid} />
         </div>
 
         {/* Risk Assessment */}
-        <div>
-          <h2 className="font-display text-xl font-bold mb-4">{t('countryDetail.riskAssessment')}</h2>
-          <div className="glass-card rounded-xl p-6">
+        <div className="min-w-0">
+          <h2 className="font-display text-lg sm:text-xl font-bold mb-3 sm:mb-4">{t('countryDetail.riskAssessment')}</h2>
+          <div className="glass-card rounded-xl p-4 sm:p-6">
             <RiskBars risks={country.risks} />
           </div>
         </div>
       </div>
 
       {/* System Behaviors Grid */}
-      <div className="grid md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
         {/* What system rewards */}
-        <div className="glass-card rounded-xl p-5 border-l-4 border-green-500">
-          <h3 className="font-semibold mb-3 flex items-center gap-2 text-green-600">
-            <CheckCircle className="w-5 h-5" />
-            {t('countryDetail.tronc.systemRewards', 'Ce que le système récompense')}
+        <div className="glass-card rounded-xl p-4 sm:p-5 border-l-4 border-green-500">
+          <h3 className="font-semibold mb-2 sm:mb-3 flex items-center gap-2 text-green-600 text-sm sm:text-base">
+            <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+            <span className="truncate">{t('countryDetail.tronc.systemRewards', 'Ce que le système récompense')}</span>
           </h3>
-          <ul className="space-y-2 text-sm text-muted-foreground">
+          <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-muted-foreground">
             {Array.isArray(rewards) && rewards.slice(0, 4).map((item, i) => (
-              <li key={i} className="flex items-start gap-2">
-                <span className="text-green-500 mt-0.5">•</span>
-                {item}
+              <li key={i} className="flex items-start gap-2 min-w-0">
+                <span className="text-green-500 mt-0.5 flex-shrink-0">•</span>
+                <span className="break-words">{item}</span>
               </li>
             ))}
           </ul>
         </div>
 
         {/* What system punishes */}
-        <div className="glass-card rounded-xl p-5 border-l-4 border-red-500">
-          <h3 className="font-semibold mb-3 flex items-center gap-2 text-red-600">
-            <XCircle className="w-5 h-5" />
-            {t('countryDetail.tronc.systemPunishes', 'Ce que le système punit')}
+        <div className="glass-card rounded-xl p-4 sm:p-5 border-l-4 border-red-500">
+          <h3 className="font-semibold mb-2 sm:mb-3 flex items-center gap-2 text-red-600 text-sm sm:text-base">
+            <XCircle className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+            <span className="truncate">{t('countryDetail.tronc.systemPunishes', 'Ce que le système punit')}</span>
           </h3>
-          <ul className="space-y-2 text-sm text-muted-foreground">
+          <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-muted-foreground">
             {Array.isArray(punishes) && punishes.slice(0, 4).map((item, i) => (
-              <li key={i} className="flex items-start gap-2">
-                <span className="text-red-500 mt-0.5">•</span>
-                {item}
+              <li key={i} className="flex items-start gap-2 min-w-0">
+                <span className="text-red-500 mt-0.5 flex-shrink-0">•</span>
+                <span className="break-words">{item}</span>
               </li>
             ))}
           </ul>
         </div>
 
         {/* Frequent errors - from pyramidTypes details */}
-        <div className="glass-card rounded-xl p-5 border-l-4 border-amber-500">
-          <h3 className="font-semibold mb-3 flex items-center gap-2 text-amber-600">
-            <AlertTriangle className="w-5 h-5" />
-            {t('countryDetail.tronc.frequentErrors', 'Erreurs fréquentes')}
+        <div className="glass-card rounded-xl p-4 sm:p-5 border-l-4 border-amber-500">
+          <h3 className="font-semibold mb-2 sm:mb-3 flex items-center gap-2 text-amber-600 text-sm sm:text-base">
+            <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+            <span className="truncate">{t('countryDetail.tronc.frequentErrors', 'Erreurs fréquentes')}</span>
           </h3>
-          <ul className="space-y-2 text-sm text-muted-foreground">
+          <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-muted-foreground">
             {(() => {
-              // Map to pyramidTypes format for warning signs
               const pyramidTypeKey = behaviorKey === 'stability' ? 'stabilityRedis' 
                 : behaviorKey === 'rent' ? 'problemRent'
                 : behaviorKey === 'competence' ? 'competenceTrust'
@@ -124,9 +123,9 @@ export function CountryTroncSection({
               const warningSigns = t(`pyramidTypes.details.${pyramidTypeKey}.warningSigns`, { returnObjects: true }) as string[];
               
               return Array.isArray(warningSigns) && warningSigns.slice(0, 4).map((item, i) => (
-                <li key={i} className="flex items-start gap-2">
-                  <span className="text-amber-500 mt-0.5">•</span>
-                  {item}
+                <li key={i} className="flex items-start gap-2 min-w-0">
+                  <span className="text-amber-500 mt-0.5 flex-shrink-0">•</span>
+                  <span className="break-words">{item}</span>
                 </li>
               ));
             })()}
@@ -136,7 +135,7 @@ export function CountryTroncSection({
 
       {/* Who Wins / Who Loses */}
       <div>
-        <h2 className="font-display text-xl font-bold mb-4">{t('countryDetail.whoWinsLoses')}</h2>
+        <h2 className="font-display text-lg sm:text-xl font-bold mb-3 sm:mb-4">{t('countryDetail.whoWinsLoses')}</h2>
         <WhoWinsWhoLoses wins={displayWhoWins} loses={displayWhoLoses} />
       </div>
 
