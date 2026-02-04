@@ -113,8 +113,9 @@ npm run test:coverage
 - Schémas Zod : 15+ formulaires validés
 - Skeletons UI : Pages clés couvertes
 - Error handling : Service centralisé
-- Dashboard widgets : 30+ composants
-- Community components : 7 modules
+- Dashboard widgets : 35+ composants
+- Community components : 8 modules
+- **Audit v6.3** : 22 vulnérabilités RLS corrigées
 
 📖 Voir [`docs/TESTING.md`](./docs/TESTING.md) pour la stratégie de tests détaillée.
 

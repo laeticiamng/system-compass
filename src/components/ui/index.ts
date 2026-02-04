@@ -51,6 +51,15 @@ export {
   FormSkeleton 
 } from './loading-skeleton';
 export { SkeletonCard, SkeletonGrid, SkeletonTable, SkeletonPage } from './skeleton-card';
+export { SkipToContent } from './skip-to-content';
+export { DataFreshnessIndicator } from './data-freshness-indicator';
+export { SuccessFeedback } from './success-feedback';
+export { ProgressIndicator } from './progress-indicator';
+export { LoadingOverlay } from './loading-overlay';
+export { AnimatedBadge } from './animated-badge';
+export { AnimatedSkeleton } from './animated-skeleton';
+export { PaginationControls } from './pagination-controls';
+export { EnhancedCard } from './enhanced-card';
 
 // Re-export common types for convenience
 export type { ButtonProps } from './button';

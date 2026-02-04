@@ -1,6 +1,6 @@
 # 📊 Statut des Modules - Pyramid Compass
 
-> Dernière mise à jour : Février 2026 (v6.2)
+> Dernière mise à jour : Février 2026 (v6.3 - Audit Sécurité Complet)
 
 Ce document décrit l'état actuel de chaque module, son niveau de maturité et la roadmap prévue.
 
@@ -9,9 +9,6 @@ Ce document décrit l'état actuel de chaque module, son niveau de maturité et 
 | Statut | Signification |
 |--------|---------------|
 | ✅ **Stable** | Production-ready, testé, documenté |
-| 🔄 **Beta** | Fonctionnel mais en cours d'amélioration |
-| 🚧 **Alpha** | En développement actif, peut changer |
-| 📋 **Planifié** | Prévu dans la roadmap |
 | 🔄 **Beta** | Fonctionnel mais en cours d'amélioration |
 | 🚧 **Alpha** | En développement actif, peut changer |
 | 📋 **Planifié** | Prévu dans la roadmap |
@@ -136,7 +133,7 @@ Ce document décrit l'état actuel de chaque module, son niveau de maturité et 
 
 ## Roadmap
 
-### Q1 2026 (Actuel - v6.2)
+### Q1 2026 (Actuel - v6.3)
 - ✅ Stabilisation modules core
 - ✅ Mode hors-ligne PWA avec queue sync
 - ✅ 730+ tests passants (42 edge functions + 688 services)
@@ -165,6 +162,9 @@ Ce document décrit l'état actuel de chaque module, son niveau de maturité et 
 - ✅ Weather Widget (Dashboard)
 - ✅ Draggable Widget Grid (Dashboard)
 - ✅ Skip-to-content accessibility
+- ✅ **AUDIT v6.3 : 22 vulnérabilités RLS corrigées**
+- ✅ **Security Definer View → Security Invoker**
+- ✅ **Validation email/session sur INSERT policies**
 - 🔄 Amélioration i18n langues secondaires
 
 ### Q2 2026
