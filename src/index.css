@@ -5,7 +5,78 @@
 @tailwind utilities;
 
 @layer base {
+  /* LIGHT MODE (default) */
   :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 45 93% 47%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 220 14% 96%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 45 93% 47%;
+
+    --radius: 0.75rem;
+
+    /* Pyramid type colors */
+    --pyramid-rent: 0 72% 51%;
+    --pyramid-stability: 217 91% 60%;
+    --pyramid-competence: 142 71% 45%;
+    --pyramid-growth: 45 93% 47%;
+    --pyramid-hybrid: 280 70% 55%;
+    --pyramid-resource: 35 85% 50%;
+
+    /* Risk colors */
+    --risk-low: 142 71% 45%;
+    --risk-medium: 45 93% 47%;
+    --risk-high: 25 95% 53%;
+    --risk-critical: 0 72% 51%;
+
+    /* Enhanced Gradients - Light */
+    --gradient-gold: linear-gradient(135deg, hsl(45 93% 47%) 0%, hsl(35 91% 40%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(220 14% 96%) 0%, hsl(220 14% 92%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(220 14% 98%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(220 20% 98%) 50%, hsl(0 0% 100%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(45 93% 47%) 0%, hsl(280 70% 55%) 100%);
+    --gradient-success: linear-gradient(135deg, hsl(142 71% 45%) 0%, hsl(160 60% 40%) 100%);
+    
+    /* Enhanced Shadows - Light */
+    --shadow-soft: 0 4px 20px -4px hsl(220 13% 91% / 0.8);
+    --shadow-glow: 0 0 30px -5px hsl(var(--primary) / 0.2);
+    --shadow-card: 0 8px 32px -8px hsl(220 13% 50% / 0.1);
+    --shadow-elevated: 0 16px 48px -12px hsl(220 13% 50% / 0.15);
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 45 93% 47%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 96%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 45 93% 47%;
+  }
+
+  /* DARK MODE */
+  .dark {
     --background: 222 47% 6%;
     --foreground: 210 40% 96%;
 
@@ -34,8 +105,6 @@
     --input: 222 30% 18%;
     --ring: 45 93% 58%;
 
-    --radius: 0.75rem;
-
     /* Pyramid type colors */
     --pyramid-rent: 0 72% 51%;
     --pyramid-stability: 217 91% 60%;
@@ -50,7 +119,7 @@
     --risk-high: 25 95% 53%;
     --risk-critical: 0 72% 51%;
 
-    /* Enhanced Gradients */
+    /* Enhanced Gradients - Dark */
     --gradient-gold: linear-gradient(135deg, hsl(45 93% 58%) 0%, hsl(35 91% 45%) 100%);
     --gradient-dark: linear-gradient(180deg, hsl(222 47% 9%) 0%, hsl(222 47% 4%) 100%);
     --gradient-card: linear-gradient(135deg, hsl(222 47% 11%) 0%, hsl(222 47% 8%) 100%);
@@ -58,7 +127,7 @@
     --gradient-accent: linear-gradient(135deg, hsl(45 93% 58%) 0%, hsl(280 70% 55%) 100%);
     --gradient-success: linear-gradient(135deg, hsl(142 71% 45%) 0%, hsl(160 60% 40%) 100%);
     
-    /* Enhanced Shadows */
+    /* Enhanced Shadows - Dark */
     --shadow-soft: 0 4px 20px -4px hsl(0 0% 0% / 0.3);
     --shadow-glow: 0 0 30px -5px hsl(var(--primary) / 0.25);
     --shadow-card: 0 8px 32px -8px hsl(0 0% 0% / 0.4);
@@ -72,11 +141,6 @@
     --sidebar-accent-foreground: 210 40% 96%;
     --sidebar-border: 222 30% 18%;
     --sidebar-ring: 45 93% 58%;
-  }
-
-  .dark {
-    --background: 222 47% 6%;
-    --foreground: 210 40% 96%;
   }
 }
 
