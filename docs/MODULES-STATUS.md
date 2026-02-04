@@ -60,16 +60,17 @@ Ce document décrit l'état actuel de chaque module, son niveau de maturité et 
 | 12 archétypes | ✅ Stable | Personnages jouables |
 | Événements aléatoires | 🔄 Beta | Pool de 50+ événements |
 | Achievements | 🔄 Beta | Système XP/badges |
-| Multijoueur | 📋 Planifié | Prévu Q3 2026 |
+| Multijoueur | 🔄 Beta | Lobby et matchmaking implémentés |
 
 ### 🛒 Expert Marketplace
 | Aspect | Statut | Notes |
 |--------|--------|-------|
-| Liste experts | 🔄 Beta | Profils vérifiés |
-| Filtres | 🔄 Beta | Par spécialité/pays |
+| Liste experts | ✅ Stable | Profils vérifiés |
+| Filtres | ✅ Stable | Par spécialité/pays |
 | Messagerie | 🔄 Beta | Temps réel via Supabase |
 | Paiements | 🔄 Beta | Intégration Stripe |
-| Système d'avis | 🚧 Alpha | En développement |
+| Système d'avis | 🔄 Beta | Modération admin ajoutée |
+| Calendrier réservation | 🔄 Beta | Vue hebdomadaire avec fuseaux |
 
 ### 🏛️ Governance B2B
 | Aspect | Statut | Notes |
@@ -134,14 +135,18 @@ Ce document décrit l'état actuel de chaque module, son niveau de maturité et 
 
 ### Q1 2026 (Actuel)
 - ✅ Stabilisation modules core
-- ✅ Mode hors-ligne PWA
-- ✅ 669 tests passants
+- ✅ Mode hors-ligne PWA avec queue sync
+- ✅ 688 tests passants
+- ✅ Service layer isolé (src/services/)
+- ✅ Politiques RLS RGPD complètes
+- ✅ Tutoriel onboarding interactif
 - 🔄 Amélioration i18n langues secondaires
 
 ### Q2 2026
-- 📋 Système d'avis Marketplace
-- 📋 Multijoueur Life Game (preview)
+- ✅ Système d'avis Marketplace (modération admin)
+- ✅ Multijoueur Life Game (lobby fonctionnel)
 - 📋 API publique (lecture seule)
+- 📋 Calendrier intégré (Google/Outlook)
 
 ### Q3 2026
 - 📋 Application mobile native (React Native)

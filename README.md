@@ -104,11 +104,12 @@ npm run test:coverage
 ```
 
 **Métriques actuelles** (vérifiables via CI) :
-- Tests unitaires : 669 passants (100%)
-- Couverture estimée : ~75%
+- Tests unitaires : 688 passants (100%)
+- Couverture estimée : ~78%
 - Tables avec RLS : 60+/60+ (sécurité A+)
 - Edge Functions : 36 opérationnelles
 - Langues supportées : 13 (FR/EN 100%)
+- Service layer : 5 modules isolés
 
 📖 Voir [`docs/TESTING.md`](./docs/TESTING.md) pour la stratégie de tests détaillée.
 
