@@ -104,7 +104,7 @@ npm run test:coverage
 ```
 
 **Métriques actuelles** (vérifiables via CI) :
-- Tests unitaires : 730 passants (100%)
+- Tests unitaires : 730+ passants (100%)
 - Couverture estimée : ~78%
 - Tables avec RLS : 60+/60+ (sécurité A+)
 - Edge Functions : 36 opérationnelles
@@ -113,6 +113,8 @@ npm run test:coverage
 - Schémas Zod : 15+ formulaires validés
 - Skeletons UI : Pages clés couvertes
 - Error handling : Service centralisé
+- Dashboard widgets : 30+ composants
+- Community components : 7 modules
 
 📖 Voir [`docs/TESTING.md`](./docs/TESTING.md) pour la stratégie de tests détaillée.
 
