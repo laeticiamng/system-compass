@@ -18,3 +18,4 @@ export { StrategyChecklist } from './StrategyChecklist';
 export { ShortlistComparison } from './ShortlistComparison';
 export { RoadmapPdfExport } from './RoadmapPdfExport';
 export { QuickExitKeySelector } from './QuickExitKeySelector';
+export { StrategyComparisonMode } from './StrategyComparisonMode';
