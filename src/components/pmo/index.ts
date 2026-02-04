@@ -1,3 +1,6 @@
+// PMO components index - v7.0.6
+// Complete exports for 20 project management components
+
 export { RoadmapOS } from './RoadmapOS';
 export { RiskEngine } from './RiskEngine';
 export { BudgetRunway } from './BudgetRunway';

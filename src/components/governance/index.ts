@@ -1,4 +1,5 @@
-// Governance & Terrain Components - Barrel Export
+// Governance & Terrain Components - v7.0.6
+// Complete exports for 20 governance components
 
 // LIGHT (B2C Relocation) & DEEP (B2B Entrepreneurship)
 export { GovernanceLight } from './GovernanceLight';
@@ -19,6 +20,11 @@ export { GovernanceMap } from './GovernanceMap';
 export { CountryGovernanceScore } from './CountryGovernanceScore';
 export { ActorCards } from './ActorCards';
 export { GovernancePdfExport } from './GovernancePdfExport';
+
+// Additional governance components
+export { FrictionScoreCardEnhanced } from './FrictionScoreCardEnhanced';
+export { RegulatoryAlerts } from './RegulatoryAlerts';
+export { StakeholderGraph } from './StakeholderGraph';
 
 // Types
 export type { GovernanceScore, UserGovernanceNotes } from '@/hooks/useCountryGovernance';

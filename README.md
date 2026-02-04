@@ -115,14 +115,24 @@ npm run test:coverage
 - Skeletons UI : Pages clés couvertes
 - Error handling : Service centralisé
 - Dashboard widgets : 40+ composants
-- Community components : 11 modules (v7.0.5)
-- Game components : 42 modules (v7.0.5) - HexagonalBoard, ImprovedHexBoard ajoutés
-- Marketplace components : 12 modules (v7.0.5)
-- Academic components : 5 modules niveau grande école (v7.0.5)
+- Community components : 11 modules (v7.0.6)
+- Game components : 42 modules (v7.0.6)
+- Marketplace components : 12 modules (v7.0.6)
+- Academic components : 5 modules niveau grande école (v7.0.6)
   - StrategicFrameworks, FinancialModeling, GeopoliticalAnalysis
   - CaseStudySystem, AcademicCourses
-- Latent components : 23 modules (détection tensions, zones latentes)
-- Irreversa components : 22 modules (seuils irréversibles, témoins)
+- Latent components : 23 modules (v7.0.6 - détection tensions, zones latentes)
+- Irreversa components : 22 modules (v7.0.6 - seuils irréversibles, témoins)
+- Terrain components : 11 modules (v7.0.6 - analyse risques terrain)
+- Governance components : 20 modules (v7.0.6 - scoring gouvernance)
+- PMO components : 20 modules (v7.0.6 - gestion de projet)
+- OVI components : 10 modules (v7.0.6 - observations stratégiques)
+- Fiscal components : 5 modules (v7.0.6 - simulations fiscales)
+- Country components : 16 modules (v7.0.6 - analyse pays)
+- Cases components : 13 modules (v7.0.6 - gestion B2B)
+- Exit Keys components : 25 modules (v7.0.6 - stratégies de sortie)
+- Auth components : 5 modules (v7.0.6 - sécurité authentification)
+- AI components : 3 modules (v7.0.6 - assistance IA)
 - Security scan : 13 findings documentés et ignorés par design
   - Analytics/Newsletter/Events : rate limiting + anonymat
   - GDPR : anonymisation IP après 90 jours

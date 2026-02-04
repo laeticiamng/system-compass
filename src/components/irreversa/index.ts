@@ -1,4 +1,5 @@
-// Irreversa components index
+// Irreversa components index - v7.0.6
+// Complete exports for 22 irreversa threshold components
 export { Irreversa } from './Irreversa';
 export { SealConfirmationDialog } from './SealConfirmationDialog';
 export { SignaturePad } from './SignaturePad';

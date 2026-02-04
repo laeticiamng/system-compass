@@ -1,4 +1,5 @@
-// OVI components index
+// OVI components index - v7.0.6
+// Complete exports for 10 strategic observation components
 export { OVITraceOSLink } from './OVITraceOSLink';
 export { OVIOnboardingGuide } from './OVIOnboardingGuide';
 export { OVIArticle } from './OVIArticle';
