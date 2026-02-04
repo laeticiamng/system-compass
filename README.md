@@ -103,8 +103,8 @@ npm run test
 npm run test:coverage
 ```
 
-**Métriques actuelles** (vérifiables via CI) :
-- Tests unitaires : 745+ passants (100%)
+**Métriques actuelles** (v7.0.7 - vérifiables via CI) :
+- Tests unitaires : 684+ passants (100%)
 - Couverture estimée : ~80%
 - Tables avec RLS : 60+/60+ (sécurité A+)
 - Edge Functions : 36 opérationnelles
@@ -115,28 +115,40 @@ npm run test:coverage
 - Skeletons UI : Pages clés couvertes
 - Error handling : Service centralisé
 - Dashboard widgets : 40+ composants
-- Community components : 11 modules (v7.0.6)
-- Game components : 42 modules (v7.0.6)
-- Marketplace components : 12 modules (v7.0.6)
-- Academic components : 5 modules niveau grande école (v7.0.6)
-  - StrategicFrameworks, FinancialModeling, GeopoliticalAnalysis
-  - CaseStudySystem, AcademicCourses
-- Latent components : 23 modules (v7.0.6 - détection tensions, zones latentes)
-- Irreversa components : 22 modules (v7.0.6 - seuils irréversibles, témoins)
-- Terrain components : 11 modules (v7.0.6 - analyse risques terrain)
-- Governance components : 20 modules (v7.0.6 - scoring gouvernance)
-- PMO components : 20 modules (v7.0.6 - gestion de projet)
-- OVI components : 10 modules (v7.0.6 - observations stratégiques)
-- Fiscal components : 5 modules (v7.0.6 - simulations fiscales)
-- Country components : 16 modules (v7.0.6 - analyse pays)
-- Cases components : 13 modules (v7.0.6 - gestion B2B)
-- Exit Keys components : 25 modules (v7.0.6 - stratégies de sortie)
-- Auth components : 5 modules (v7.0.6 - sécurité authentification)
-- AI components : 3 modules (v7.0.6 - assistance IA)
+- Community components : 11 modules (v7.0.7)
+- Game components : 42 modules (v7.0.7)
+- Marketplace components : 12 modules (v7.0.7)
+- Academic components : 5 modules niveau grande école (v7.0.7)
+- Latent components : 23 modules (v7.0.7 - détection tensions)
+- Irreversa components : 22 modules (v7.0.7 - seuils irréversibles)
+- Terrain components : 11 modules (v7.0.7 - analyse risques terrain)
+- Governance components : 20 modules (v7.0.7 - scoring gouvernance)
+- PMO components : 20 modules (v7.0.7 - gestion de projet)
+- OVI components : 10 modules (v7.0.7 - observations stratégiques)
+- Fiscal components : 5 modules (v7.0.7 - simulations fiscales)
+- Country components : 16 modules (v7.0.7 - analyse pays)
+- Cases components : 13 modules (v7.0.7 - gestion B2B)
+- Exit Keys components : 25 modules (v7.0.7 - stratégies de sortie)
+- Auth components : 5 modules (v7.0.7 - sécurité authentification)
+- AI components : 3 modules (v7.0.7 - assistance IA)
+- **Nouveaux index v7.0.7** :
+  - Institutions components : 28 modules (TraceOS, DecisionTree)
+  - Quiz components : 4 modules (Game modes)
+  - Financial Intel components : 15 modules (Scams/Legit detection)
+  - Pyramid components : 2 modules
+  - Gamification components : 6 modules
+  - Life Trajectory components : 1 module
+  - Resources components : 1 module
+  - Recommendations components : 1 module
+  - Admin components : 1 module
+  - Diagnostics components : 3 modules
+  - PWA components : 1 module
+  - Navigation components : 10 modules
+  - Persona components : 4 modules
+  - Partner/Partners components : 6 modules
+  - TraceOS components : 11 modules
+  - Services components : CacheService + presets
 - Security scan : 13 findings documentés et ignorés par design
-  - Analytics/Newsletter/Events : rate limiting + anonymat
-  - GDPR : anonymisation IP après 90 jours
-  - Webhooks : masqués via vue sécurisée
 - Linter Supabase : 1 warning infra (Extension in Public - non critique)
 
 📖 Voir [`docs/TESTING.md`](./docs/TESTING.md) pour la stratégie de tests détaillée.

@@ -1,4 +1,6 @@
-// TraceOS components index
+// TraceOS components index - v7.0.7
+// Decision tracking, analytics, and export tools
+
 export { DecisionWorkflowConfig } from './DecisionWorkflowConfig';
 export { PostMortemMode } from './PostMortemMode';
 export { TraceOSMultiExport } from './TraceOSMultiExport';
