@@ -20,3 +20,4 @@ export { TensionIntensityScore } from './TensionIntensityScore';
 export { PredictiveAnalysis } from './PredictiveAnalysis';
 export { TensionAnalytics } from './TensionAnalytics';
 export { ZoneRecommendations } from './ZoneRecommendations';
+export { LatentZoneExport } from './LatentZoneExport';

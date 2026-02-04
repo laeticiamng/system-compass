@@ -3,13 +3,17 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, Eye, Layers, AlertTriangle, Lightbulb, Target, Brain, Route } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Latent } from '@/components/latent/Latent';
+import { LatentZoneExport } from '@/components/latent/LatentZoneExport';
 import { useAuth } from '@/hooks/useAuth';
+import { useLatentZones } from '@/hooks/useLatentZones';
 import { ModuleOnboarding } from '@/components/common/ModuleOnboarding';
 import { NextStepSuggestion } from '@/components/common/NextStepSuggestion';
+import { GranularErrorBoundary } from '@/components/common/GranularErrorBoundary';
 
 export default function LatentModule() {
   const { t } = useTranslation();
-  useAuth();
+  const { user } = useAuth();
+  const { zones } = useLatentZones();
 
   const onboardingSteps = [
     {
@@ -75,6 +79,12 @@ export default function LatentModule() {
                   {t('latent.title', 'Zones Latentes')}
                 </h1>
               </div>
+              {/* Export Button */}
+              {user && zones.length > 0 && (
+                <div className="ml-auto">
+                  <LatentZoneExport zones={zones} />
+                </div>
+              )}
             </div>
             
             <p className="text-lg text-muted-foreground mb-6">
@@ -105,7 +115,9 @@ export default function LatentModule() {
       {/* Main Content */}
       <div className="container mx-auto px-4 py-8 relative">
         <div className="grid lg:grid-cols-[1fr,320px] gap-8">
-          <Latent />
+          <GranularErrorBoundary componentName="Latent Zones">
+            <Latent />
+          </GranularErrorBoundary>
           
           {/* Sidebar with next steps */}
           <aside className="hidden lg:block">
