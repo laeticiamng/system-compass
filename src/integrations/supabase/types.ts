@@ -4332,6 +4332,16 @@ export type Database = {
         Args: { p_increment?: number; p_metric: string; p_user_id: string }
         Returns: undefined
       }
+      update_game_stats: {
+        Args: {
+          p_games_played?: number
+          p_score_race?: number
+          p_score_solo?: number
+          p_turns_played?: number
+          p_user_id: string
+        }
+        Returns: undefined
+      }
     }
     Enums: {
       game_mode: "solo" | "race" | "points_duel" | "cooperative"
