@@ -1,6 +1,6 @@
 # 📊 Statut des Modules - Pyramid Compass
 
-> Dernière mise à jour : Février 2026
+> Dernière mise à jour : Février 2026 (v6.2)
 
 Ce document décrit l'état actuel de chaque module, son niveau de maturité et la roadmap prévue.
 
@@ -9,6 +9,9 @@ Ce document décrit l'état actuel de chaque module, son niveau de maturité et 
 | Statut | Signification |
 |--------|---------------|
 | ✅ **Stable** | Production-ready, testé, documenté |
+| 🔄 **Beta** | Fonctionnel mais en cours d'amélioration |
+| 🚧 **Alpha** | En développement actif, peut changer |
+| 📋 **Planifié** | Prévu dans la roadmap |
 | 🔄 **Beta** | Fonctionnel mais en cours d'amélioration |
 | 🚧 **Alpha** | En développement actif, peut changer |
 | 📋 **Planifié** | Prévu dans la roadmap |
@@ -133,7 +136,7 @@ Ce document décrit l'état actuel de chaque module, son niveau de maturité et 
 
 ## Roadmap
 
-### Q1 2026 (Actuel - v6.0)
+### Q1 2026 (Actuel - v6.2)
 - ✅ Stabilisation modules core
 - ✅ Mode hors-ligne PWA avec queue sync
 - ✅ 730+ tests passants (42 edge functions + 688 services)
@@ -156,7 +159,12 @@ Ce document décrit l'état actuel de chaque module, son niveau de maturité et 
 - ✅ Schémas Zod validation centralisée (15+ formulaires)
 - ✅ Error handling service unifié
 - ✅ Skeleton components pour loading states
-- ✅ RLS policies sécurisées (analytics rate-limiting)
+- ✅ RLS policies sécurisées (60+ tables avec rate-limiting)
+- ✅ Upcoming Events component (Community)
+- ✅ Member Spotlight component (Community)
+- ✅ Weather Widget (Dashboard)
+- ✅ Draggable Widget Grid (Dashboard)
+- ✅ Skip-to-content accessibility
 - 🔄 Amélioration i18n langues secondaires
 
 ### Q2 2026

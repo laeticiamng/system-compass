@@ -40,3 +40,7 @@ export {
   UpcomingTasksWidget 
 } from './DashboardWidgets';
 export { QuickActionsWidget } from './QuickActionsWidget';
+export { SessionTimeoutWarning } from './SessionTimeoutWarning';
+export { CurrencyConverter } from './CurrencyConverter';
+export { WeatherWidget } from './WeatherWidget';
+export { DraggableWidgetGrid } from './DraggableWidgetGrid';
