@@ -1,6 +1,6 @@
 # 📊 Statut des Modules - Pyramid Compass
 
-> Dernière mise à jour : Février 2026 (v7.0 - Enrichissement Académique + Audit Complet)
+> Dernière mise à jour : Février 2026 (v7.0.2 - Audit Complet + Composants Réutilisables)
 
 Ce document décrit l'état actuel de chaque module, son niveau de maturité et la roadmap prévue.
 
@@ -133,7 +133,7 @@ Ce document décrit l'état actuel de chaque module, son niveau de maturité et 
 
 ## Roadmap
 
-### Q1 2026 (Actuel - v7.0)
+### Q1 2026 (Actuel - v7.0.2)
 - ✅ Stabilisation modules core
 - ✅ Mode hors-ligne PWA avec queue sync
 - ✅ 745+ tests passants (42 edge functions + 703 services/hooks)
@@ -169,6 +169,12 @@ Ce document décrit l'état actuel de chaque module, son niveau de maturité et 
 - ✅ **Intégration DiscussionThread et ResourceLibrary dans Community**
 - ✅ **AcademicHub responsive mobile/desktop optimisé**
 - ✅ **Cohérence documentation 50+ pays synchronisée**
+- ✅ **v7.0.2 - Composants réutilisables**
+  - ✅ PageLoadingSkeleton (academic, country, marketplace, game, dashboard)
+  - ✅ ErrorCard (error, warning, info variants)
+  - ✅ EmptyState unifié (file, search, folder, inbox, users, map, document, error)
+  - ✅ 40+ Dashboard widgets
+  - ✅ Security findings documentés et ignorés par design
 ### Q2 2026
 - ✅ Système d'avis Marketplace (modération admin)
 - ✅ Multijoueur Life Game (lobby fonctionnel)
