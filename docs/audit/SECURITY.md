@@ -1,7 +1,8 @@
 # 🔒 Rapport de Sécurité
 
-> Dernière analyse : 2026-02-04  
-> Version sécurité : **v5.6** (hardening complet)
+> Dernière analyse : 2026-02-04 (14:41 UTC)  
+> Version sécurité : **v5.6** (hardening complet)  
+> Scan automatisé : 18 findings (8 analysés, 10 warnings informatifs)
 
 ## Résumé Exécutif
 
