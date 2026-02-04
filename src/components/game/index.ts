@@ -1,5 +1,5 @@
-// Game components index - v7.0.3
-// Core exports for game module
+// Game components index - v7.0.5
+// Complete exports for 42 game components
 
 // Already working exports (named)
 export { DecisionJournalExport } from './DecisionJournalExport';
@@ -7,6 +7,8 @@ export { MultiplayerLobby } from './MultiplayerLobby';
 export { GameTutorial } from './GameTutorial';
 export { default as GameLeaderboard } from './GameLeaderboard';
 export { GameAchievements } from './GameAchievements';
+export { default as HexagonalBoard } from './HexagonalBoard';
+export { default as ImprovedHexBoard } from './ImprovedHexBoard';
 
 // Default exports re-exported
 export { default as TutorialMode } from './TutorialMode';

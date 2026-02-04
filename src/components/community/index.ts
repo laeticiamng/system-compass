@@ -1,5 +1,5 @@
-// Community components index - v7.0.4
-// Full exports for 12 community modules
+// Community components index - v7.0.5
+// Complete exports for 11 community modules
 
 export { NewsletterSignup } from './NewsletterSignup';
 export { ForumPreview } from './ForumPreview';
