@@ -4402,7 +4402,7 @@ export type Database = {
           email_enabled: boolean | null
           id: string | null
           push_enabled: boolean | null
-          slack_webhook_masked: string | null
+          slack_status: string | null
           updated_at: string | null
           user_id: string | null
           weekly_digest: boolean | null
@@ -4413,7 +4413,7 @@ export type Database = {
           email_enabled?: boolean | null
           id?: string | null
           push_enabled?: boolean | null
-          slack_webhook_masked?: never
+          slack_status?: never
           updated_at?: string | null
           user_id?: string | null
           weekly_digest?: boolean | null
@@ -4424,7 +4424,7 @@ export type Database = {
           email_enabled?: boolean | null
           id?: string | null
           push_enabled?: boolean | null
-          slack_webhook_masked?: never
+          slack_status?: never
           updated_at?: string | null
           user_id?: string | null
           weekly_digest?: boolean | null

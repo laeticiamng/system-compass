@@ -15,7 +15,7 @@
 | Pages/Routes | 57 | ✅ Lazy-loaded |
 | Pays avec données | 38+ | ✅ Complets |
 | Langues | 13 | ✅ FR/EN 100% |
-| Sécurité | A+ | ✅ Hardened v5.4 |
+| Sécurité | A+ | ✅ Hardened v5.5 |
 
 ---
 
