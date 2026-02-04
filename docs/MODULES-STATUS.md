@@ -1,6 +1,6 @@
 # 📊 Statut des Modules - Pyramid Compass
 
-> Dernière mise à jour : Février 2026 (v6.4 - Audit Sécurité Complet)
+> Dernière mise à jour : Février 2026 (v6.5 - Consolidation RLS)
 
 Ce document décrit l'état actuel de chaque module, son niveau de maturité et la roadmap prévue.
 
@@ -166,8 +166,8 @@ Ce document décrit l'état actuel de chaque module, son niveau de maturité et 
 - ✅ **Security Definer View → Security Invoker**
 - ✅ **Validation email/session sur INSERT policies**
 - ✅ **AUDIT v6.4 : 4 failles critiques RLS corrigées (analytics_sessions, analytics_events, newsletter_subscriptions, event_registrations)**
+- ✅ **AUDIT v6.5 : Consolidation RLS (user_subscriptions, push_subscriptions) - doublons supprimés**
 - ✅ **Linter Supabase clean (1 warning infra non critique)**
-- 🔄 Amélioration i18n langues secondaires
 
 ### Q2 2026
 - ✅ Système d'avis Marketplace (modération admin)
