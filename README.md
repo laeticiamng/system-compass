@@ -104,8 +104,8 @@ npm run test:coverage
 ```
 
 **Métriques actuelles** (vérifiables via CI) :
-- Tests unitaires : 730+ passants (100%)
-- Couverture estimée : ~78%
+- Tests unitaires : 745+ passants (100%)
+- Couverture estimée : ~80%
 - Tables avec RLS : 60+/60+ (sécurité A+)
 - Edge Functions : 36 opérationnelles
 - Langues supportées : 13 (FR/EN 100%, autres partielles)
@@ -113,10 +113,12 @@ npm run test:coverage
 - Schémas Zod : 15+ formulaires validés
 - Skeletons UI : Pages clés couvertes
 - Error handling : Service centralisé
-- Dashboard widgets : 35+ composants
-- Community components : 8 modules
-- **Audit v6.7** : Cohérence responsive validée sur 10+ pages
-- **Sécurité A+** : 21 findings analysés, tous informatifs ou résolus
+- Dashboard widgets : 40+ composants
+- Community components : 12 modules
+- Game components : 6 modules
+- Marketplace components : 12 modules
+- **Audit v6.9** : Sécurité A+, 2 failles RLS critiques corrigées
+- **Nouveaux enrichissements** : GoalTracker, GameAchievements, DiscussionThread
 - Linter Supabase : 1 warning infra (Extension in Public - non critique)
 
 📖 Voir [`docs/TESTING.md`](./docs/TESTING.md) pour la stratégie de tests détaillée.

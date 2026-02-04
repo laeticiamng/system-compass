@@ -1,6 +1,6 @@
 # 📊 Statut des Modules - Pyramid Compass
 
-> Dernière mise à jour : Février 2026 (v6.8 - Enrichissements Intégrés)
+> Dernière mise à jour : Février 2026 (v6.9 - Audit Complet & Enrichissements Finaux)
 
 Ce document décrit l'état actuel de chaque module, son niveau de maturité et la roadmap prévue.
 
@@ -133,10 +133,10 @@ Ce document décrit l'état actuel de chaque module, son niveau de maturité et 
 
 ## Roadmap
 
-### Q1 2026 (Actuel - v6.3)
+### Q1 2026 (Actuel - v6.9)
 - ✅ Stabilisation modules core
 - ✅ Mode hors-ligne PWA avec queue sync
-- ✅ 730+ tests passants (42 edge functions + 688 services)
+- ✅ 745+ tests passants (42 edge functions + 703 services/hooks)
 - ✅ Service layer isolé (src/services/ - 6 modules)
 - ✅ Politiques RLS RGPD complètes avec validation
 - ✅ Tutoriel onboarding interactif
@@ -162,15 +162,15 @@ Ce document décrit l'état actuel de chaque module, son niveau de maturité et 
 - ✅ Weather Widget (Dashboard)
 - ✅ Draggable Widget Grid (Dashboard)
 - ✅ Skip-to-content accessibility
-- ✅ **AUDIT v6.3 : 22 vulnérabilités RLS corrigées**
-- ✅ **Security Definer View → Security Invoker**
-- ✅ **Validation email/session sur INSERT policies**
-- ✅ **AUDIT v6.4 : 4 failles critiques RLS corrigées (analytics_sessions, analytics_events, newsletter_subscriptions, event_registrations)**
-- ✅ **AUDIT v6.5 : Consolidation RLS (user_subscriptions, push_subscriptions) - doublons supprimés**
-- ✅ **AUDIT v6.6 : Confirmation stabilité, 730 tests passants**
-- ✅ **AUDIT v6.7 : Cohérence responsive validée sur 10+ pages (mobile/tablette/desktop)**
-- ✅ **Sécurité A+ : 21 findings analysés, tous informatifs ou résolus**
-- ✅ **Linter Supabase clean (1 warning infra non critique)**
+- ✅ **AUDIT v6.3-v6.6 : Failles RLS corrigées**
+- ✅ **AUDIT v6.7 : Cohérence responsive validée sur 10+ pages**
+- ✅ **AUDIT v6.8 : Social Proof + Comparaison stratégique + Push Notifications**
+- ✅ **AUDIT v6.9 : Correction 2 failles RLS critiques (analytics_sessions, analytics_events)**
+- ✅ **Nouveaux composants : GameAchievements, DiscussionThread, ResourceLibrary**
+- ✅ **Nouveaux composants Marketplace : ExpertAvailabilityCalendar, ExpertPortfolio**
+- ✅ **Nouveaux composants Dashboard : GoalTracker, CountryProgressTracker, SystemAlerts**
+- ✅ **Sécurité A+ : music_cache restreint admin-only, GDPR session validation renforcée**
+- ✅ Linter Supabase clean (1 warning infra non critique - Extension in Public)
 
 ### Q2 2026
 - ✅ Système d'avis Marketplace (modération admin)
