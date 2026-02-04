@@ -50,6 +50,7 @@ export {
   ProfileSkeleton, 
   FormSkeleton 
 } from './loading-skeleton';
+export { SkeletonCard, SkeletonGrid, SkeletonTable, SkeletonPage } from './skeleton-card';
 
 // Re-export common types for convenience
 export type { ButtonProps } from './button';

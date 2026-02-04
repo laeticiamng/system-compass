@@ -19,3 +19,6 @@ export * from './profile';
 
 // Security & Validation
 export * from './security';
+
+// Error Handling
+export * from './errorHandler';
