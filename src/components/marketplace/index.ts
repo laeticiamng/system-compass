@@ -7,3 +7,4 @@ export { ConsultationBookingForm } from './ConsultationBookingForm';
 export { ConsultationPayment } from './ConsultationPayment';
 export { ExpertMessaging, ExpertConversationsList } from './ExpertMessaging';
 export { ExpertPagination } from './ExpertPagination';
+export { ExpertCalendar } from './ExpertCalendar';

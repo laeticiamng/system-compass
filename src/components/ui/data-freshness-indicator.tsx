@@ -12,14 +12,14 @@ import { formatDistanceToNow } from 'date-fns';
 import { fr } from 'date-fns/locale';
 
 export function DataFreshnessIndicator() {
-  const { isOnline, isSyncing, dataFreshness, lastSyncedAt, pendingActions, forceSync } = useOfflineSync();
+  const { isOnline, isSyncing, lastSyncAt, pendingActions, forceSync } = useOfflineSync();
 
   const getStatusConfig = () => {
     if (!isOnline) {
       return {
         icon: WifiOff,
-        color: 'text-red-500',
-        bgColor: 'bg-red-500/10',
+        color: 'text-destructive',
+        bgColor: 'bg-destructive/10',
         label: 'Hors-ligne',
         description: 'Les modifications seront synchronisées au retour de la connexion',
       };
@@ -27,28 +27,28 @@ export function DataFreshnessIndicator() {
     if (isSyncing) {
       return {
         icon: RefreshCw,
-        color: 'text-blue-500',
-        bgColor: 'bg-blue-500/10',
+        color: 'text-primary',
+        bgColor: 'bg-primary/10',
         label: 'Synchronisation...',
         description: 'Envoi des données en cours',
       };
     }
-    if (dataFreshness === 'stale') {
+    if (pendingActions > 0) {
       return {
         icon: Clock,
-        color: 'text-amber-500',
-        bgColor: 'bg-amber-500/10',
-        label: 'Données anciennes',
-        description: 'Cliquez pour rafraîchir',
+        color: 'text-warning',
+        bgColor: 'bg-warning/10',
+        label: 'Actions en attente',
+        description: 'Cliquez pour synchroniser',
       };
     }
     return {
       icon: Check,
-      color: 'text-green-500',
-      bgColor: 'bg-green-500/10',
+      color: 'text-emerald-500',
+      bgColor: 'bg-emerald-500/10',
       label: 'À jour',
-      description: lastSyncedAt 
-        ? `Mis à jour ${formatDistanceToNow(lastSyncedAt, { addSuffix: true, locale: fr })}`
+      description: lastSyncAt 
+        ? `Mis à jour ${formatDistanceToNow(lastSyncAt, { addSuffix: true, locale: fr })}`
         : 'Données synchronisées',
     };
   };
@@ -84,7 +84,7 @@ export function DataFreshnessIndicator() {
           <p className="font-medium">{config.label}</p>
           <p className="text-xs text-muted-foreground">{config.description}</p>
           {pendingActions > 0 && (
-            <p className="text-xs text-amber-500">
+            <p className="text-xs text-warning">
               {pendingActions} action(s) en attente
             </p>
           )}
