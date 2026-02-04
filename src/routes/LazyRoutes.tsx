@@ -101,3 +101,6 @@ export const LazyToolsHub = withSuspense(lazy(() => import('@/pages/ToolsHub')))
 
 // Dev/Admin pages
 export const LazyDiagnostics = withSuspense(lazy(() => import('@/pages/Diagnostics')));
+
+// Academic Hub - HEC/Polytechnique level tools  
+export const LazyAcademicHub = withSuspense(lazy(() => import('@/pages/AcademicHub')));

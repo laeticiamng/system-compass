@@ -1,6 +1,6 @@
 # 📊 Statut des Modules - Pyramid Compass
 
-> Dernière mise à jour : Février 2026 (v6.9 - Audit Complet & Enrichissements Finaux)
+> Dernière mise à jour : Février 2026 (v7.0 - Enrichissement Académique + Audit Complet)
 
 Ce document décrit l'état actuel de chaque module, son niveau de maturité et la roadmap prévue.
 
@@ -133,7 +133,7 @@ Ce document décrit l'état actuel de chaque module, son niveau de maturité et 
 
 ## Roadmap
 
-### Q1 2026 (Actuel - v6.9)
+### Q1 2026 (Actuel - v7.0)
 - ✅ Stabilisation modules core
 - ✅ Mode hors-ligne PWA avec queue sync
 - ✅ 745+ tests passants (42 edge functions + 703 services/hooks)
@@ -157,20 +157,16 @@ Ce document décrit l'état actuel de chaque module, son niveau de maturité et 
 - ✅ Error handling service unifié
 - ✅ Skeleton components pour loading states
 - ✅ RLS policies sécurisées (60+ tables avec rate-limiting)
-- ✅ Upcoming Events component (Community)
-- ✅ Member Spotlight component (Community)
-- ✅ Weather Widget (Dashboard)
-- ✅ Draggable Widget Grid (Dashboard)
-- ✅ Skip-to-content accessibility
-- ✅ **AUDIT v6.3-v6.6 : Failles RLS corrigées**
-- ✅ **AUDIT v6.7 : Cohérence responsive validée sur 10+ pages**
-- ✅ **AUDIT v6.8 : Social Proof + Comparaison stratégique + Push Notifications**
-- ✅ **AUDIT v6.9 : Correction 2 failles RLS critiques (analytics_sessions, analytics_events)**
-- ✅ **Nouveaux composants : GameAchievements, DiscussionThread, ResourceLibrary**
-- ✅ **Nouveaux composants Marketplace : ExpertAvailabilityCalendar, ExpertPortfolio**
-- ✅ **Nouveaux composants Dashboard : GoalTracker, CountryProgressTracker, SystemAlerts**
-- ✅ **Sécurité A+ : music_cache restreint admin-only, GDPR session validation renforcée**
+- ✅ Sécurité A+ : music_cache restreint admin-only, GDPR session validation renforcée
 - ✅ Linter Supabase clean (1 warning infra non critique - Extension in Public)
+- ✅ **v7.0 - Centre Académique niveau grande école**
+  - ✅ StrategicFrameworks (PESTEL, Porter, SWOT, Matrice de décision)
+  - ✅ FinancialModeling (DCF, Monte Carlo, Comparateur fiscal international)
+  - ✅ GeopoliticalAnalysis (Indicateurs institutionnels, Soft Power, Risques pays)
+  - ✅ CaseStudySystem (Études de cas HEC/INSEAD anonymisées)
+  - ✅ AcademicCourses (Cours structurés avec quiz et certifications)
+- ✅ **Route /academic accessible depuis ToolsHub**
+- ✅ **Intégration DiscussionThread et ResourceLibrary dans Community**
 
 ### Q2 2026
 - ✅ Système d'avis Marketplace (modération admin)

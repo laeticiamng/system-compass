@@ -77,6 +77,7 @@ const TOOL_CATEGORIES = [
       { href: '/gamification', icon: Award, label: 'Progression', description: 'XP & badges', badge: 'Nouveau' },
       { href: '/personas', icon: Users, label: 'Parcours Persona', description: 'Cas d\'usage' },
       { href: '/how-to-read', icon: BookOpen, label: 'Guide', description: 'Mode d\'emploi' },
+      { href: '/academic', icon: Briefcase, label: 'Centre Académique', description: 'Niveau MBA', badge: 'Nouveau' },
     ],
   },
   {

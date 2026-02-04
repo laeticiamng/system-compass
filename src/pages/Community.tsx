@@ -24,6 +24,8 @@ import { toast } from 'sonner';
 import { useEventRegistration } from '@/hooks/useEventRegistration';
 import { NewsletterSignup } from '@/components/community/NewsletterSignup';
 import { ForumPreview } from '@/components/community/ForumPreview';
+import { DiscussionThread } from '@/components/community/DiscussionThread';
+import { ResourceLibrary } from '@/components/community/ResourceLibrary';
 
 interface DiscordChannel {
   name: string;
@@ -357,6 +359,15 @@ export default function Community() {
           </div>
         </CardContent>
       </Card>
+
+      {/* Discussion Thread */}
+      <DiscussionThread 
+        title="Discussions récentes"
+        category="general"
+      />
+
+      {/* Resource Library */}
+      <ResourceLibrary />
 
       {/* Forum Preview */}
       <ForumPreview />

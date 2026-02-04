@@ -117,8 +117,9 @@ npm run test:coverage
 - Community components : 12 modules
 - Game components : 6 modules
 - Marketplace components : 12 modules
-- **Audit v6.9** : Sécurité A+, 2 failles RLS critiques corrigées
-- **Nouveaux enrichissements** : GoalTracker, GameAchievements, DiscussionThread
+- **v7.0** : Centre Académique niveau grande école (5 modules)
+  - StrategicFrameworks, FinancialModeling, GeopoliticalAnalysis
+  - CaseStudySystem, AcademicCourses
 - Linter Supabase : 1 warning infra (Extension in Public - non critique)
 
 📖 Voir [`docs/TESTING.md`](./docs/TESTING.md) pour la stratégie de tests détaillée.
