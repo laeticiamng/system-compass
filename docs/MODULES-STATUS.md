@@ -135,7 +135,7 @@ Ce document décrit l'état actuel de chaque module, son niveau de maturité et 
 ### Q1 2026 (Actuel)
 - ✅ Stabilisation modules core
 - ✅ Mode hors-ligne PWA
-- ✅ 718 tests passants
+- ✅ 669 tests passants
 - 🔄 Amélioration i18n langues secondaires
 
 ### Q2 2026
