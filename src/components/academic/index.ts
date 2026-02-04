@@ -1,5 +1,5 @@
-// Academic Excellence Components - HEC/Polytechnique Level
-// Strategic frameworks, financial modeling, geopolitical analysis
+// Academic Excellence Components - v7.0.4
+// HEC/Polytechnique Level - Strategic frameworks, financial modeling, geopolitical analysis
 
 export { StrategicFrameworks } from './StrategicFrameworks';
 export { FinancialModeling } from './FinancialModeling';
