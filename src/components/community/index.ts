@@ -1,4 +1,4 @@
-// Community components index - v6.3
+// Community components index - v6.9
 export { NewsletterSignup } from './NewsletterSignup';
 export { ForumPreview } from './ForumPreview';
 export { CommunityStats } from './CommunityStats';
@@ -7,3 +7,6 @@ export { UpcomingEvents } from './UpcomingEvents';
 export { MemberSpotlight } from './MemberSpotlight';
 export { PodcastPlayer } from './PodcastPlayer';
 export { CommunityQuickActions } from './CommunityQuickActions';
+export { DiscussionThread } from './DiscussionThread';
+export { ResourceLibrary } from './ResourceLibrary';
+export { PushNotificationToggle } from './PushNotificationToggle';
