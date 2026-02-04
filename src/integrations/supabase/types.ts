@@ -4286,6 +4286,36 @@ export type Database = {
         }
         Relationships: []
       }
+      game_statistics_leaderboard: {
+        Row: {
+          best_score_race: number | null
+          best_score_solo: number | null
+          display_name: string | null
+          id: string | null
+          total_games_played: number | null
+          total_turns_played: number | null
+          updated_at: string | null
+        }
+        Insert: {
+          best_score_race?: number | null
+          best_score_solo?: number | null
+          display_name?: string | null
+          id?: string | null
+          total_games_played?: number | null
+          total_turns_played?: number | null
+          updated_at?: string | null
+        }
+        Update: {
+          best_score_race?: number | null
+          best_score_solo?: number | null
+          display_name?: string | null
+          id?: string | null
+          total_games_played?: number | null
+          total_turns_played?: number | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       has_role: { Args: { _role: string; _user_id: string }; Returns: boolean }

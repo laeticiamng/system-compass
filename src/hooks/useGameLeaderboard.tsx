@@ -22,9 +22,10 @@ export function useGameLeaderboard() {
     setError(null);
 
     try {
+      // Use the secure leaderboard view that only exposes safe columns
       const { data, error: fetchError } = await supabase
-        .from('game_statistics')
-        .select('*')
+        .from('game_statistics_leaderboard' as 'game_statistics')
+        .select('id, display_name, best_score_solo, best_score_race, total_games_played, total_turns_played, updated_at')
         .order('best_score_solo', { ascending: false })
         .limit(50);
 
@@ -33,16 +34,14 @@ export function useGameLeaderboard() {
       }
 
       const mapped: LeaderboardEntry[] = (data || []).map(row => ({
-        userId: row.user_id,
+        userId: row.id,
         displayName: row.display_name || 'Anonymous',
         bestScoreSolo: row.best_score_solo || 0,
         bestScoreRace: row.best_score_race || 0,
         totalGamesPlayed: row.total_games_played || 0,
-        countriesVisited: (row.countries_visited || []).length,
-        riskSuccessRate: row.total_risk_events
-          ? Math.round(((row.risk_successes || 0) / row.total_risk_events) * 100)
-          : 0,
-        lastGameAt: row.last_game_at || row.updated_at,
+        countriesVisited: 0, // Not exposed in secure view
+        riskSuccessRate: 0, // Not exposed in secure view (calculated from sensitive patterns)
+        lastGameAt: row.updated_at,
       }));
 
       // Filter out entries with 0 games played

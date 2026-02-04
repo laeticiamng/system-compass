@@ -5,41 +5,33 @@ import { renderHook, waitFor, act } from '@testing-library/react';
 const mockOrder = vi.fn();
 const mockLimit = vi.fn();
 
+// Mock data matching the secure leaderboard view structure (limited columns)
 const mockLeaderboardData = [
   {
-    user_id: 'user-1',
+    id: 'user-1',
     display_name: 'Player One',
     best_score_solo: 1500,
     best_score_race: 1200,
     total_games_played: 25,
-    countries_visited: ['france', 'usa', 'japan'],
-    total_risk_events: 10,
-    risk_successes: 7,
-    last_game_at: '2024-01-15T10:00:00Z',
+    total_turns_played: 150,
     updated_at: '2024-01-15T10:00:00Z',
   },
   {
-    user_id: 'user-2',
+    id: 'user-2',
     display_name: 'Player Two',
     best_score_solo: 1200,
     best_score_race: 1000,
     total_games_played: 15,
-    countries_visited: ['germany', 'spain'],
-    total_risk_events: 5,
-    risk_successes: 3,
-    last_game_at: '2024-01-14T10:00:00Z',
+    total_turns_played: 90,
     updated_at: '2024-01-14T10:00:00Z',
   },
   {
-    user_id: 'user-3',
+    id: 'user-3',
     display_name: null,
     best_score_solo: 800,
     best_score_race: null,
     total_games_played: 5,
-    countries_visited: null,
-    total_risk_events: 0,
-    risk_successes: 0,
-    last_game_at: null,
+    total_turns_played: 30,
     updated_at: '2024-01-10T10:00:00Z',
   },
 ];
@@ -169,6 +161,7 @@ describe('useGameLeaderboard', () => {
     });
 
     it('should calculate countriesVisited from array length', async () => {
+      // Note: countriesVisited is now 0 in secure view (sensitive pattern data not exposed)
       const { result } = renderHook(() => useGameLeaderboard());
 
       await waitFor(() => {
@@ -176,7 +169,8 @@ describe('useGameLeaderboard', () => {
       });
 
       const playerOne = result.current.entries.find(e => e.userId === 'user-1');
-      expect(playerOne?.countriesVisited).toBe(3);
+      // Secure view doesn't expose countries_visited for privacy
+      expect(playerOne?.countriesVisited).toBe(0);
     });
 
     it('should handle null countries_visited array', async () => {
@@ -193,6 +187,7 @@ describe('useGameLeaderboard', () => {
     });
 
     it('should calculate risk success rate correctly', async () => {
+      // Note: riskSuccessRate is now 0 in secure view (sensitive pattern data not exposed)
       const { result } = renderHook(() => useGameLeaderboard());
 
       await waitFor(() => {
@@ -200,8 +195,8 @@ describe('useGameLeaderboard', () => {
       });
 
       const playerOne = result.current.entries.find(e => e.userId === 'user-1');
-      // 7/10 = 70%
-      expect(playerOne?.riskSuccessRate).toBe(70);
+      // Secure view doesn't expose risk patterns for privacy
+      expect(playerOne?.riskSuccessRate).toBe(0);
     });
 
     it('should return 0 risk success rate when no risk events', async () => {
