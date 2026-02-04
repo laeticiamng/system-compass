@@ -13,7 +13,6 @@ import {
   ArrowRight, 
   Compass, 
   Gamepad2, 
-  Heart,
   CheckCircle,
   XCircle,
   Route,
@@ -27,7 +26,6 @@ import {
   Eye,
   Brain,
   Unlock,
-  ChevronDown,
   Play
 } from 'lucide-react';
 
@@ -54,52 +52,111 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
-      {/* HERO SECTION - Apple-style fullscreen dramatic intro */}
+      {/* HERO SECTION - Ultra Premium Cinematic Intro */}
       <section ref={heroRef} className="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
-        {/* Premium animated gradient orbs */}
+        {/* Layered premium background effects */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(var(--primary)/0.08)_0%,transparent_50%)]" />
+          {/* Base gradient */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,hsl(var(--primary)/0.15)_0%,transparent_50%)]" />
+          
+          {/* Aurora-like morphing blobs */}
           <motion.div 
-            className="absolute top-0 left-1/4 w-[900px] h-[900px] rounded-full"
+            className="absolute -top-[40%] -left-[20%] w-[140%] h-[100%] animate-morph"
             style={{
-              background: 'radial-gradient(circle, hsl(45 93% 58% / 0.12) 0%, transparent 60%)',
+              background: 'radial-gradient(ellipse at 30% 40%, hsl(45 93% 58% / 0.08) 0%, transparent 50%)',
+              filter: 'blur(100px)',
+            }}
+            animate={{
+              rotate: [0, 5, -5, 0],
+              scale: [1, 1.05, 0.98, 1],
+            }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          
+          {/* Secondary aurora */}
+          <motion.div 
+            className="absolute -bottom-[30%] -right-[20%] w-[120%] h-[80%] animate-morph"
+            style={{
+              background: 'radial-gradient(ellipse at 70% 60%, hsl(280 70% 55% / 0.06) 0%, hsl(200 80% 60% / 0.04) 40%, transparent 60%)',
               filter: 'blur(80px)',
             }}
             animate={{
-              x: [0, 50, 0],
-              y: [0, 30, 0],
-              scale: [1, 1.1, 1],
+              rotate: [0, -8, 4, 0],
+              scale: [1.1, 1, 1.08, 1.1],
             }}
             transition={{
-              duration: 15,
+              duration: 20,
               repeat: Infinity,
               ease: "easeInOut"
             }}
           />
+
+          {/* Spotlight effect */}
           <motion.div 
-            className="absolute bottom-0 right-1/4 w-[700px] h-[700px] rounded-full"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px]"
             style={{
-              background: 'radial-gradient(circle, hsl(280 70% 55% / 0.08) 0%, transparent 60%)',
+              background: 'conic-gradient(from 0deg, transparent, hsl(var(--primary) / 0.03), transparent, hsl(280 70% 55% / 0.02), transparent)',
               filter: 'blur(60px)',
             }}
             animate={{
-              x: [0, -40, 0],
-              y: [0, -50, 0],
-              scale: [1.1, 1, 1.1],
+              rotate: [0, 360],
             }}
             transition={{
-              duration: 12,
+              duration: 30,
               repeat: Infinity,
-              ease: "easeInOut"
+              ease: "linear"
             }}
           />
-          {/* Subtle grid pattern */}
+          
+          {/* Floating particles */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {[...Array(20)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-1 h-1 bg-primary/30 rounded-full"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${100 + Math.random() * 20}%`,
+                }}
+                animate={{
+                  y: [0, -window.innerHeight - 100],
+                  x: [0, (Math.random() - 0.5) * 100],
+                  opacity: [0, 1, 1, 0],
+                  scale: [0, 1.5, 1, 0.5],
+                }}
+                transition={{
+                  duration: 10 + Math.random() * 15,
+                  repeat: Infinity,
+                  delay: Math.random() * 10,
+                  ease: "easeOut"
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Grid pattern with fade */}
           <div 
-            className="absolute inset-0 opacity-[0.015]"
+            className="absolute inset-0 opacity-[0.02]"
             style={{
-              backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), 
-                               linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
-              backgroundSize: '60px 60px'
+              backgroundImage: `
+                linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
+                linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)
+              `,
+              backgroundSize: '80px 80px',
+              maskImage: 'radial-gradient(ellipse 80% 60% at 50% 50%, black 20%, transparent 70%)',
+              WebkitMaskImage: 'radial-gradient(ellipse 80% 60% at 50% 50%, black 20%, transparent 70%)',
+            }}
+          />
+
+          {/* Noise texture overlay */}
+          <div 
+            className="absolute inset-0 opacity-[0.015] mix-blend-overlay"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
             }}
           />
         </div>
@@ -112,108 +169,154 @@ export default function Index() {
             y: heroY,
           }}
         >
-          {/* Floating badge with glow */}
+          {/* Floating premium badge */}
           <motion.div
-            initial={{ opacity: 0, y: 30, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ delay: 0.3, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-primary/5 border border-primary/20 backdrop-blur-sm mb-10 shadow-[0_0_30px_hsl(var(--primary)/0.1)]"
+            initial={{ opacity: 0, y: 40, scale: 0.8, filter: 'blur(10px)' }}
+            animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+            transition={{ delay: 0.2, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 border border-primary/20 backdrop-blur-xl mb-12 shadow-[0_0_40px_hsl(var(--primary)/0.15),inset_0_1px_0_hsl(0_0%_100%/0.1)]"
           >
             <motion.div
-              animate={{ rotate: [0, 15, -15, 0] }}
-              transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+              animate={{ 
+                rotate: [0, 15, -15, 0],
+                scale: [1, 1.2, 1, 1]
+              }}
+              transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
             >
-              <Heart className="w-4 h-4 text-primary" />
+              <Sparkles className="w-4 h-4 text-primary" />
             </motion.div>
-            <span className="text-sm text-primary/90 font-medium tracking-wide">
+            <span className="text-sm text-primary font-medium tracking-wide">
               {t('hero.madeBy', "Créé par quelqu'un qui a perdu énormément de temps")}
             </span>
+            <motion.div
+              animate={{ scale: [1, 1.3, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="w-2 h-2 rounded-full bg-primary/60"
+            />
           </motion.div>
 
-          {/* Main headline - MASSIVE Apple-style */}
+          {/* Main headline - Cinematic reveal */}
           <motion.h1 
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display font-bold tracking-tight mb-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className="font-display font-bold tracking-tight mb-10"
           >
-            <span className="block text-[clamp(2.5rem,8vw,8rem)] leading-[0.9] text-foreground">
+            <motion.span 
+              initial={{ opacity: 0, y: 60, filter: 'blur(20px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              transition={{ delay: 0.5, duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+              className="block text-[clamp(2.8rem,9vw,9rem)] leading-[0.85] text-foreground font-extrabold"
+            >
               {t('hero.appleTitle1', 'Comprends le système.')}
-            </span>
-            <span 
-              className="block text-[clamp(2.5rem,8vw,8rem)] leading-[0.9] bg-gradient-to-r from-primary via-amber-300 to-primary bg-clip-text text-transparent bg-[length:200%_auto]"
-              style={{ animation: 'gradient 4s ease-in-out infinite' }}
+            </motion.span>
+            <motion.span 
+              initial={{ opacity: 0, y: 60, filter: 'blur(20px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              transition={{ delay: 0.7, duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+              className="block text-[clamp(2.8rem,9vw,9rem)] leading-[0.85] bg-gradient-to-r from-primary via-amber-400 via-50% to-orange-500 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-text font-extrabold"
             >
               {t('hero.appleTitle2', 'Avant de t\'engager.')}
-            </span>
+            </motion.span>
           </motion.h1>
 
-          {/* Subheadline with stagger */}
+          {/* Subheadline */}
           <motion.p 
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-[clamp(1rem,2.5vw,1.5rem)] text-muted-foreground max-w-3xl mx-auto mb-14 leading-relaxed font-light"
+            transition={{ delay: 1, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[clamp(1.1rem,2.5vw,1.6rem)] text-muted-foreground max-w-3xl mx-auto mb-16 leading-relaxed font-light"
           >
             {t('hero.appleSubtitle', "L'outil qui analyse les règles réelles des pays et simule les conséquences de tes décisions. Pas de promesses. Pas de conseils. Juste la réalité.")}
           </motion.p>
 
-          {/* CTA Buttons - Premium styling */}
+          {/* Premium CTA Buttons */}
           <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-6 mb-24"
+          >
+            <motion.div
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Button
+                size="lg"
+                onClick={() => { trackExitKeysClicked(); navigate('/exit-keys'); }}
+                className="h-[4.5rem] px-12 text-lg bg-gradient-to-r from-primary via-primary to-amber-500 text-primary-foreground rounded-full gap-4 group relative overflow-hidden transition-all duration-500 shadow-[0_0_0_1px_hsl(var(--primary)),0_8px_40px_-8px_hsl(var(--primary)/0.6),0_0_80px_-20px_hsl(var(--primary)/0.4)] hover:shadow-[0_0_0_1px_hsl(var(--primary)),0_16px_60px_-8px_hsl(var(--primary)/0.7),0_0_100px_-20px_hsl(var(--primary)/0.5)]"
+              >
+                {/* Shimmer effect */}
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
+                {/* Glow overlay */}
+                <span className="absolute inset-0 bg-gradient-to-t from-transparent via-white/5 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <Route className="w-6 h-6 relative z-10" />
+                <span className="relative z-10 font-semibold">{t('hero.startAnalysis', 'Analyser ma situation')}</span>
+                <ArrowRight className="w-5 h-5 relative z-10 transition-transform duration-300 group-hover:translate-x-2" />
+              </Button>
+            </motion.div>
+            
+            <motion.div
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={() => navigate('/quick-test')}
+                className="h-[4.5rem] px-12 text-lg rounded-full gap-4 border-2 border-border/40 bg-background/50 backdrop-blur-xl hover:bg-background/80 hover:border-primary/30 group transition-all duration-500 shadow-[0_8px_30px_-10px_hsl(var(--foreground)/0.1)]"
+              >
+                <motion.div
+                  animate={{ scale: [1, 1.15, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <Play className="w-5 h-5 text-primary" />
+                </motion.div>
+                <span className="font-medium">{t('hero.quickTest', 'Test rapide (60s)')}</span>
+              </Button>
+            </motion.div>
+          </motion.div>
+
+          {/* Stats row - Glass morphism */}
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 mb-20"
+            transition={{ delay: 1.5, duration: 0.8 }}
+            className="inline-flex flex-wrap items-center justify-center gap-1 px-2 py-2 rounded-2xl bg-card/30 backdrop-blur-xl border border-border/20 shadow-[0_8px_32px_-8px_hsl(var(--foreground)/0.05)]"
           >
-            <Button
-              size="lg"
-              onClick={() => { trackExitKeysClicked(); navigate('/exit-keys'); }}
-              className="h-16 px-10 text-lg bg-primary text-primary-foreground hover:bg-primary/90 rounded-full gap-3 group relative overflow-hidden transition-all duration-500 hover:scale-[1.02] shadow-[0_0_0_1px_hsl(var(--primary)),0_8px_40px_-8px_hsl(var(--primary)/0.5)] hover:shadow-[0_0_0_1px_hsl(var(--primary)),0_16px_60px_-8px_hsl(var(--primary)/0.6)]"
-            >
-              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
-              <Route className="w-5 h-5" />
-              {t('hero.startAnalysis', 'Analyser ma situation')}
-              <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              onClick={() => navigate('/quick-test')}
-              className="h-16 px-10 text-lg rounded-full gap-3 border-border/30 bg-card/30 backdrop-blur-sm hover:bg-card/50 hover:border-border/50 group transition-all duration-300"
-            >
-              <Play className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
-              {t('hero.quickTest', 'Test rapide (60s)')}
-            </Button>
+            <StatItemPremium value="38" label={t('stats.countries', 'pays analysés')} />
+            <div className="w-px h-8 bg-border/30 mx-4 hidden md:block" />
+            <StatItemPremium value="50+" label={t('stats.keys', 'clés de sortie')} />
+            <div className="w-px h-8 bg-border/30 mx-4 hidden md:block" />
+            <StatItemPremium value="6" label={t('stats.pyramids', 'types de systèmes')} />
           </motion.div>
 
-          {/* Stats row - Apple style */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.3, duration: 0.8 }}
-            className="flex flex-wrap items-center justify-center gap-8 md:gap-16 text-sm text-muted-foreground"
-          >
-            <StatItem value="38" label={t('stats.countries', 'pays analysés')} />
-            <StatItem value="50+" label={t('stats.keys', 'clés de sortie')} />
-            <StatItem value="6" label={t('stats.pyramids', 'types de systèmes')} />
-          </motion.div>
-
-          {/* Scroll indicator */}
+          {/* Scroll indicator - Animated */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 2, duration: 1 }}
-            className="absolute bottom-10 left-1/2 -translate-x-1/2"
+            transition={{ delay: 2.5, duration: 1 }}
+            className="absolute bottom-8 left-1/2 -translate-x-1/2"
           >
             <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-              className="flex flex-col items-center gap-2"
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="flex flex-col items-center gap-3"
             >
-              <span className="text-xs text-muted-foreground/50 uppercase tracking-widest">
+              <span className="text-[10px] text-muted-foreground/40 uppercase tracking-[0.3em] font-medium">
                 {t('hero.scroll', 'Découvrir')}
               </span>
-              <ChevronDown className="w-6 h-6 text-muted-foreground/30" />
+              <motion.div
+                animate={{ opacity: [0.3, 1, 0.3] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="w-6 h-10 rounded-full border-2 border-muted-foreground/20 flex items-start justify-center p-2"
+              >
+                <motion.div
+                  animate={{ y: [0, 12, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="w-1.5 h-1.5 rounded-full bg-muted-foreground/40"
+                />
+              </motion.div>
             </motion.div>
           </motion.div>
         </motion.div>
@@ -633,12 +736,20 @@ export default function Index() {
   );
 }
 
-// Stat item component
-function StatItem({ value, label }: { value: string; label: string }) {
+// Premium stat item component
+function StatItemPremium({ value, label }: { value: string; label: string }) {
   return (
-    <div className="flex items-center gap-3">
-      <span className="text-2xl md:text-3xl font-bold text-foreground font-display">{value}</span>
-      <span className="text-muted-foreground/70">{label}</span>
+    <div className="flex items-center gap-3 px-5 py-2">
+      <motion.span 
+        className="text-2xl md:text-3xl font-bold text-foreground font-display"
+        initial={{ opacity: 0, scale: 0.5 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      >
+        {value}
+      </motion.span>
+      <span className="text-muted-foreground/70 text-sm">{label}</span>
     </div>
   );
 }
