@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
 import { useCountries } from '@/lib/countries-data';
 import { EXTENDED_COUNTRY_META } from '@/lib/countries-extended';
 import { CountryCard } from '@/components/CountryCard';
@@ -240,7 +241,14 @@ export default function Countries() {
   const isShowingExtended = filter === 'extended';
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
+    <>
+      <Helmet>
+        <title>Explorer les pays - Pyramid Compass | 38+ systèmes analysés</title>
+        <meta name="description" content="Explorez 38+ pays avec leurs systèmes analysés en profondeur. Comparez les pyramides, risques et opportunités. Trouvez le pays qui correspond à votre profil." />
+        <meta property="og:title" content="Explorer les pays - Pyramid Compass" />
+        <meta property="og:description" content="38+ pays analysés avec leurs systèmes, risques et opportunités. Trouvez votre destination idéale." />
+      </Helmet>
+      <div className="min-h-screen bg-background overflow-x-hidden">
       {/* Hero Section */}
       <section className="relative pt-24 sm:pt-32 pb-16 sm:pb-24 overflow-hidden">
         {/* Animated gradient background */}
@@ -508,7 +516,8 @@ export default function Countries() {
           )}
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }
 

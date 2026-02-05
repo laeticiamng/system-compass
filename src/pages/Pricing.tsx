@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet-async";
 import { Check, Sparkles, Zap, X, Building2, Users, HelpCircle, ArrowRight, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -116,7 +117,14 @@ const Pricing = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
+    <>
+      <Helmet>
+        <title>Tarifs - Pyramid Compass | Gratuit, Premium et Enterprise</title>
+        <meta name="description" content="Découvrez les offres Pyramid Compass : gratuit pour découvrir, Premium pour un accès complet aux 38+ pays, et Enterprise pour les organisations. Tarification transparente." />
+        <meta property="og:title" content="Tarifs - Pyramid Compass" />
+        <meta property="og:description" content="Gratuit pour découvrir, Premium pour un accès complet. Tarification transparente sans frais cachés." />
+      </Helmet>
+      <div className="min-h-screen bg-background overflow-x-hidden">
       {/* Hero Section */}
       <section className="relative pt-24 sm:pt-32 pb-16 sm:pb-24 overflow-hidden">
         {/* Animated gradient background */}
@@ -455,7 +463,8 @@ const Pricing = () => {
           </AnimatedSection>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 
