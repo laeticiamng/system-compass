@@ -110,7 +110,10 @@ export function Footer() {
           
           <div className="flex flex-col items-center justify-center gap-3 sm:gap-4 text-center">
             <p className="text-xs sm:text-sm text-muted-foreground">
-              © {currentYear} {t('common.appName')}
+              © {currentYear} {t('common.appName')} — {t('footer.company', 'EmotionsCare SASU')}
+            </p>
+            <p className="text-[10px] sm:text-xs text-muted-foreground/70 max-w-md">
+              {t('footer.legalInfo', 'SASU au capital de 1 000€ — SIRET en cours d\'immatriculation — France')}
             </p>
             <p className="text-[10px] sm:text-xs text-muted-foreground/70 max-w-md">
               {t('footer.disclaimer')}

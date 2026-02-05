@@ -15,7 +15,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 
 export default function Disclaimer() {
-  useTranslation();
+  const { t } = useTranslation();
 
   return (
     <main className="min-h-screen bg-background pt-24 pb-16">
@@ -27,7 +27,7 @@ export default function Disclaimer() {
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-6"
           >
             <ArrowLeft className="w-4 h-4" />
-            Retour à l'accueil
+            {t('common.backHome', 'Retour à l\'accueil')}
           </Link>
           
           <div className="flex items-center gap-4 mb-6">
@@ -36,10 +36,10 @@ export default function Disclaimer() {
             </div>
             <div>
               <h1 className="font-display text-3xl md:text-4xl font-bold">
-                Avertissements & Limites
+                {t('disclaimer.title', 'Avertissements & Limites')}
               </h1>
               <p className="text-muted-foreground">
-                Ce que cet outil est — et ce qu'il n'est pas
+                {t('disclaimer.subtitle', 'Ce que cet outil est — et ce qu\'il n\'est pas')}
               </p>
             </div>
           </div>
