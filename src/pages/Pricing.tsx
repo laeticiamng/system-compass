@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { Check, Sparkles, Crown, Zap, X, Building2, Users, Shield, HelpCircle, ArrowRight } from "lucide-react";
+import { Check, Sparkles, Zap, X, Building2, Users, HelpCircle, ArrowRight, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -54,13 +54,13 @@ const Pricing = () => {
       name: t('pricing.freeName', 'Gratuit'),
       price: '0€',
       period: t('pricing.forever', 'pour toujours'),
-      description: t('pricing.freeDescription', 'Accès aux fonctionnalités de base'),
+      description: t('pricing.freeDescription', 'Découvrez le concept'),
       icon: Zap,
       features: SUBSCRIPTION_TIERS.free.features,
       limitations: [
-        t('pricing.limitations.noVariants', 'Pas de variantes pays'),
-        t('pricing.limitations.noProfiles', 'Pas de profils qui réussissent'),
-        t('pricing.limitations.noAnalysis', 'Pas d\'analyse projet'),
+        t('pricing.limitations.limitedCountries', 'Limité à 3 pays'),
+        t('pricing.limitations.noExitKeys', 'Pas d\'Exit Keys personnalisées'),
+        t('pricing.limitations.noExport', 'Pas d\'export PDF'),
       ],
       buttonText: t('pricing.currentPlan', 'Plan actuel'),
       highlighted: false,
@@ -69,32 +69,15 @@ const Pricing = () => {
     {
       id: 'premium' as const,
       name: t('pricing.premiumName', 'Premium'),
-      price: '7,99€',
+      price: '9,99€',
       period: t('pricing.perMonth', '/ mois'),
-      description: t('pricing.premiumDescription', 'Accès aux variantes pays spécifiques'),
+      description: t('pricing.premiumDescription', 'Accès complet pour particuliers'),
       icon: Sparkles,
       features: SUBSCRIPTION_TIERS.premium.features,
-      limitations: [
-        t('pricing.limitations.noLatent', 'Pas d\'accès module Latent'),
-        t('pricing.limitations.noIrreversa', 'Pas d\'accès module Irreversa'),
-        t('pricing.limitations.noTraceOS', 'Pas d\'accès TraceOS'),
-      ],
+      limitations: [],
       buttonText: t('pricing.subscribe', "S'abonner"),
       highlighted: true,
       color: 'amber',
-    },
-    {
-      id: 'pro' as const,
-      name: t('pricing.proName', 'Pro'),
-      price: '19,99€',
-      period: t('pricing.perMonth', '/ mois'),
-      description: t('pricing.proDescription', 'Analyse projet personnalisée'),
-      icon: Crown,
-      features: SUBSCRIPTION_TIERS.pro.features,
-      limitations: [],
-      buttonText: t('pricing.subscribe', "S'abonner"),
-      highlighted: false,
-      color: 'purple',
     },
   ];
 
@@ -128,10 +111,8 @@ const Pricing = () => {
 
   const isCurrentPlan = (planId: string) => tier === planId;
   const canUpgrade = (planId: string) => {
-    if (tier === 'pro') return false;
-    if (tier === 'premium' && planId === 'free') return false;
-    if (tier === 'premium' && planId === 'premium') return false;
-    return planId !== 'free';
+    if (tier === 'pro' || tier === 'premium') return false;
+    return planId === 'premium';
   };
 
   return (
@@ -244,14 +225,12 @@ const Pricing = () => {
                       <div className={cn(
                         "mx-auto p-4 rounded-2xl mb-4",
                         plan.id === 'free' && "bg-muted",
-                        plan.id === 'premium' && "bg-amber-500/10",
-                        plan.id === 'pro' && "bg-purple-500/10"
+                        plan.id === 'premium' && "bg-amber-500/10"
                       )}>
                         <Icon className={cn(
                           "w-7 h-7",
                           plan.id === 'free' && "text-muted-foreground",
-                          plan.id === 'premium' && "text-amber-500",
-                          plan.id === 'pro' && "text-purple-500"
+                          plan.id === 'premium' && "text-amber-500"
                         )} />
                       </div>
                       <CardTitle className="text-xl font-display">{plan.name}</CardTitle>
@@ -299,7 +278,7 @@ const Pricing = () => {
                             plan.highlighted && "shadow-[0_0_20px_hsl(var(--primary)/0.3)]"
                           )}
                           variant={plan.highlighted ? "default" : "outline"}
-                          onClick={() => handleSubscribe(plan.id as 'premium' | 'pro')}
+                          onClick={() => handleSubscribe('premium')}
                           disabled={loading}
                         >
                           {plan.buttonText}
