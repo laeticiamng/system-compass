@@ -1,5 +1,7 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { requireAuth, requireAdmin, authErrorResponse, AuthError } from "../_shared/auth.ts";
+import { validate, validationErrorResponse } from "../_shared/validation.ts";
 
 // Declare EdgeRuntime for background tasks
 declare const EdgeRuntime: { waitUntil: (promise: Promise<unknown>) => void };
@@ -10,6 +12,7 @@ const corsHeaders = {
 };
 
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
+const SUPABASE_ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY")!;
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 
 interface CountryInput {
@@ -24,7 +27,6 @@ interface BatchRequest {
   batch_name: string;
   countries: CountryInput[];
   concurrency?: number;
-  user_id?: string;
 }
 
 serve(async (req) => {
@@ -33,7 +35,25 @@ serve(async (req) => {
   }
 
   try {
-    const { batch_name, countries, concurrency = 5, user_id } = await req.json() as BatchRequest;
+    // Create Supabase client for auth validation
+    const supabaseAuth = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+      global: { headers: { Authorization: req.headers.get("Authorization") || "" } },
+    });
+
+    // Authenticate user - admin only for batch operations
+    let authResult;
+    try {
+      authResult = await requireAuth(req, supabaseAuth);
+      // This is an admin-only operation (expensive batch AI generation)
+      await requireAdmin(authResult.userId, supabaseAuth);
+    } catch (err) {
+      return authErrorResponse(err as AuthError, corsHeaders);
+    }
+
+    console.log(`[batch-generate-countries] Admin user ${authResult.userId} authenticated`);
+
+    const body = await req.json();
+    const { batch_name, countries, concurrency = 5 } = body as BatchRequest;
 
     if (!countries || countries.length === 0) {
       throw new Error("No countries provided");
@@ -41,14 +61,14 @@ serve(async (req) => {
 
     const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
-    // Create batch record
+    // Create batch record with authenticated user
     const { data: batch, error: batchError } = await supabase
       .from("country_generation_batches")
       .insert({
         name: batch_name || `Batch ${new Date().toISOString()}`,
         total_countries: countries.length,
         concurrency,
-        created_by: user_id || null,
+        created_by: authResult.userId,
         status: "running",
       })
       .select()
