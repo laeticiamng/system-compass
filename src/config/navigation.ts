@@ -1,15 +1,15 @@
 /**
  * Navigation Configuration - Single Source of Truth
+ * Simplifié v7.0.8 - 6 entrées principales max
  * Used by Header, AppSidebar, Footer, and ToolsHub
- * Eliminates redundancy and ensures consistency across the platform
  */
 
 import {
   Compass, Map, Globe, Triangle, Key, Scale, Gamepad2,
   User, Users, Play, Shield, BarChart3, BookOpen,
-  Building2, Eye, AlertCircle, LayoutDashboard, CreditCard,
-  Calculator, Target, Zap, Award, MessageSquare, Briefcase,
-  FileText, Bell, TrendingUp, Lightbulb, Home, Wrench,
+  Building2, LayoutDashboard, CreditCard,
+  Calculator, Target, Zap, Award,
+  FileText, Bell, TrendingUp, Home, Wrench,
   Info, Settings, type LucideIcon
 } from 'lucide-react';
 
@@ -21,7 +21,7 @@ export interface NavItem {
   href: string;
   icon: LucideIcon;
   label: string;
-  labelKey?: string; // i18n key
+  labelKey?: string;
   description?: string;
   badge?: string;
   highlight?: boolean;
@@ -33,7 +33,7 @@ export interface NavItem {
 export interface NavGroup {
   id: string;
   title: string;
-  titleKey?: string; // i18n key
+  titleKey?: string;
   description?: string;
   icon: LucideIcon;
   color?: string;
@@ -43,7 +43,21 @@ export interface NavGroup {
 }
 
 // ============================================================
-// NAVIGATION GROUPS - ORGANIZED BY USER JOURNEY
+// NAVIGATION SIMPLIFIÉE - 6 ENTRÉES MAX
+// ============================================================
+
+/** Navigation principale - visible dans Header et Sidebar */
+export const MAIN_NAV: NavItem[] = [
+  { href: '/', icon: Home, label: 'Accueil', labelKey: 'nav.home' },
+  { href: '/countries', icon: Map, label: 'Explorer', labelKey: 'nav.countries', description: 'Pays & carte monde' },
+  { href: '/quick-test', icon: Zap, label: 'Mon Profil', labelKey: 'nav.quickTest', description: 'Test rapide 2min' },
+  { href: '/tools', icon: Wrench, label: 'Outils', labelKey: 'nav.tools', highlight: true },
+  { href: '/pricing', icon: CreditCard, label: 'Tarifs', labelKey: 'nav.pricing' },
+  { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard', labelKey: 'nav.dashboard', requiresAuth: true },
+];
+
+// ============================================================
+// NAVIGATION GROUPS - Pour Sidebar et ToolsHub (détaillé)
 // ============================================================
 
 export const NAV_GROUPS: NavGroup[] = [
@@ -105,7 +119,6 @@ export const NAV_GROUPS: NavGroup[] = [
       { href: '/exit-keys/catalog', icon: FileText, label: 'Catalogue', labelKey: 'nav.exitKeysCatalog', description: '50+ clés' },
       { href: '/exit-keys/compare', icon: Scale, label: 'Comparer Clés', labelKey: 'nav.exitKeysCompare', description: 'Analyse comparative' },
       { href: '/prevention-filter', icon: Shield, label: 'Filtre Décision', labelKey: 'nav.preventionFilter', description: 'Anti-illusions' },
-      { href: '/errors-illusions', icon: Lightbulb, label: 'Erreurs', labelKey: 'nav.errorsIllusions', description: 'Pièges à éviter' },
     ],
   },
   {
@@ -119,14 +132,13 @@ export const NAV_GROUPS: NavGroup[] = [
     items: [
       { href: '/pyramid-quiz', icon: Gamepad2, label: 'Quiz Pyramides', labelKey: 'nav.pyramidQuiz', description: 'Testez vos connaissances' },
       { href: '/life-game', icon: Play, label: 'Mode Éducatif', labelKey: 'nav.lifeGame', description: 'Simulation interactive' },
-      { href: '/gamification', icon: Award, label: 'Progression', labelKey: 'nav.gamification', description: 'XP & badges', badge: 'Nouveau' },
-      { href: '/personas', icon: Users, label: 'Parcours Persona', labelKey: 'nav.personas', description: 'Cas d\'usage' },
+      { href: '/gamification', icon: Award, label: 'Progression', labelKey: 'nav.gamification', description: 'XP & badges' },
       { href: '/how-to-read', icon: BookOpen, label: 'Guide', labelKey: 'nav.howToRead', description: 'Mode d\'emploi' },
     ],
   },
   {
     id: 'pro',
-    title: 'Pro & Business',
+    title: 'Pro',
     titleKey: 'nav.groups.pro',
     description: 'Modules avancés pour professionnels',
     icon: Building2,
@@ -135,25 +147,7 @@ export const NAV_GROUPS: NavGroup[] = [
     badge: 'Pro',
     items: [
       { href: '/institutions', icon: Building2, label: 'TraceOS', labelKey: 'nav.traceOS', description: 'Audit institutionnel', isPro: true },
-      { href: '/latent', icon: Eye, label: 'Zones Latentes', labelKey: 'nav.latent', description: 'Risques cachés', isPro: true },
-      { href: '/irreversa', icon: AlertCircle, label: 'Irreversa', labelKey: 'nav.irreversa', description: 'Seuils critiques', isPro: true },
-      { href: '/ovi', icon: Eye, label: 'OVI', labelKey: 'nav.ovi', description: 'Observatoire', isPro: true },
       { href: '/financial-safety-intel', icon: Shield, label: 'Intel Financière', labelKey: 'nav.financialIntel', description: 'Sécurité financière', isPro: true },
-    ],
-  },
-  {
-    id: 'community',
-    title: 'Communauté',
-    titleKey: 'nav.groups.community',
-    description: 'Experts, partenaires et entraide',
-    icon: MessageSquare,
-    color: 'from-rose-500/20 to-red-500/20',
-    borderColor: 'border-rose-500/30',
-    items: [
-      { href: '/experts', icon: Briefcase, label: 'Experts', labelKey: 'nav.experts', description: 'Marketplace' },
-      { href: '/community', icon: MessageSquare, label: 'Communauté', labelKey: 'nav.community', description: 'Forum & events' },
-      { href: '/partner-services', icon: Users, label: 'Partenaires', labelKey: 'nav.partnerServices', description: 'Services vérifiés' },
-      { href: '/b2b', icon: Building2, label: 'B2B', labelKey: 'nav.b2b', description: 'Solutions entreprises' },
     ],
   },
 ];
@@ -179,13 +173,11 @@ export const ACCOUNT_ITEMS: NavItem[] = [
   { href: '/pricing', icon: CreditCard, label: 'Tarifs', labelKey: 'nav.pricing' },
   { href: '/usage', icon: BarChart3, label: 'Consommation', labelKey: 'nav.usage' },
   { href: '/settings/notifications', icon: Bell, label: 'Notifications', labelKey: 'nav.notifications' },
-  { href: '/partners', icon: Users, label: 'Partenaires', labelKey: 'nav.partners' },
-  { href: '/b2b', icon: Building2, label: 'B2B', labelKey: 'nav.b2b' },
   { href: '/resources', icon: FileText, label: 'Ressources', labelKey: 'nav.resources' },
 ];
 
 // ============================================================
-// ADMIN ITEMS - Requires admin role
+// ADMIN ITEMS - Requires admin role (fonctionnels uniquement)
 // ============================================================
 
 export const ADMIN_ITEMS: NavItem[] = [
@@ -193,26 +185,14 @@ export const ADMIN_ITEMS: NavItem[] = [
   { href: '/admin/analytics', icon: Settings, label: 'Analytics', requiresAdmin: true },
   { href: '/admin/partners', icon: Users, label: 'Partners', requiresAdmin: true },
   { href: '/admin/translations', icon: FileText, label: 'Translations', requiresAdmin: true },
-  { href: '/admin/generate-translations', icon: FileText, label: 'Gen Translations', requiresAdmin: true },
-  { href: '/admin/database-translations', icon: FileText, label: 'DB Translations', requiresAdmin: true },
-  { href: '/admin/translations-sync', icon: FileText, label: 'Sync Translations', requiresAdmin: true },
-  { href: '/seed-translations', icon: FileText, label: 'Seed Translations', requiresAdmin: true },
   { href: '/diagnostics', icon: Settings, label: 'Diagnostics', requiresAdmin: true },
 ];
 
 // ============================================================
-// HEADER NAV - Primary navigation items for header
+// HEADER NAV - Primary 6 items for header (SIMPLIFIÉ)
 // ============================================================
 
-export const HEADER_NAV: NavItem[] = [
-  { href: '/', icon: Compass, label: 'Démarrer', labelKey: 'nav.start' },
-  { href: '/countries', icon: Map, label: 'Pays', labelKey: 'nav.countries' },
-  { href: '/world-map', icon: Globe, label: 'Carte', labelKey: 'nav.worldMap' },
-  { href: '/pyramid-types', icon: Triangle, label: 'Pyramides', labelKey: 'nav.pyramids' },
-  { href: '/tools', icon: Wrench, label: 'Outils', labelKey: 'nav.tools', highlight: true },
-  { href: '/compare', icon: Scale, label: 'Comparer', labelKey: 'nav.compare' },
-  { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard', labelKey: 'nav.dashboard' },
-];
+export const HEADER_NAV: NavItem[] = MAIN_NAV;
 
 // ============================================================
 // HELPERS - Filter and transform navigation items
@@ -247,7 +227,7 @@ export function getToolsDropdownItems(): NavItem[] {
 
 // For dropdown menus - get pro items
 export function getProDropdownItems(): NavItem[] {
-  return getItemsByGroupIds(['pro', 'community']);
+  return getItemsByGroupIds(['pro']);
 }
 
 // Get items for footer columns
@@ -257,7 +237,6 @@ export function getFooterDiscoverItems(): NavItem[] {
 }
 
 export function getFooterToolsItems(): NavItem[] {
-  // Return a subset of tools for footer
   return [
     ...getItemsByGroupIds(['plan']).slice(0, 2),
     ...getItemsByGroupIds(['analyze']).slice(0, 3),
