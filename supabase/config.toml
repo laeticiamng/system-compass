@@ -77,3 +77,12 @@ verify_jwt = false
 
 [functions.scrape-country-data]
 verify_jwt = false
+
+[functions.create-consultation-payment]
+verify_jwt = false
+
+[functions.consultation-webhook]
+verify_jwt = false
+
+[functions.create-stripe-connect]
+verify_jwt = false
