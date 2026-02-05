@@ -8,7 +8,9 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { ChevronLeft, ChevronRight, Search, X, ArrowUpDown, Database, Globe } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Search, X, ArrowUpDown, Database, Globe, AlertCircle } from 'lucide-react';
+import { Skeleton } from '@/components/ui/skeleton';
+import { EmptyState } from '@/components/ui/empty-state';
 import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 import { useSavedCountries } from '@/components/common/SavedCountriesButton';
@@ -68,7 +70,7 @@ function AnimatedSection({ children, className }: { children: React.ReactNode; c
 
 export default function Countries() {
   const { t } = useTranslation();
-  const { countries } = useCountries();
+  const { countries, isLoading, error } = useCountries();
   const { savedIds } = useSavedCountries();
   const [filter, setFilter] = useState<PyramidType | 'all' | 'extended' | 'saved'>('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -158,7 +160,7 @@ export default function Countries() {
     });
     
     return result;
-  }, [countries, filter, searchQuery, sortBy]);
+  }, [countries, filter, searchQuery, sortBy, savedIds]);
 
   const totalPages = Math.ceil(filteredAndSortedCountries.length / ITEMS_PER_PAGE);
   
@@ -166,6 +168,44 @@ export default function Countries() {
     const start = (currentPage - 1) * ITEMS_PER_PAGE;
     return filteredAndSortedCountries.slice(start, start + ITEMS_PER_PAGE);
   }, [filteredAndSortedCountries, currentPage]);
+
+  // Loading state
+  if (isLoading) {
+    return (
+      <div className="min-h-screen pt-24 pb-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <Skeleton className="h-12 w-64 mx-auto mb-4" />
+            <Skeleton className="h-6 w-96 mx-auto" />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <Skeleton key={i} className="h-64 rounded-xl" />
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Error state
+  if (error) {
+    return (
+      <div className="min-h-screen pt-24 pb-16">
+        <div className="container mx-auto px-4">
+          <EmptyState
+            icon={AlertCircle}
+            title={t('common.error', 'Erreur')}
+            description={t('countries.loadError', 'Impossible de charger les pays. Veuillez réessayer.')}
+            action={{
+              label: t('common.retry', 'Réessayer'),
+              onClick: () => window.location.reload(),
+            }}
+          />
+        </div>
+      </div>
+    );
+  }
 
   // Reset to page 1 when filter, search, or sort changes
   const handleFilterChange = (newFilter: PyramidType | 'all' | 'extended') => {
@@ -397,10 +437,19 @@ export default function Countries() {
           </div>
 
           {filteredAndSortedCountries.length === 0 && (
-            <div className="text-center py-24">
-              <Globe className="w-16 h-16 mx-auto text-muted-foreground/30 mb-4" />
-              <p className="text-lg text-muted-foreground">{t('countries.noResults')}</p>
-            </div>
+            <EmptyState
+              icon={Globe}
+              title={t('countries.noResults', 'Aucun résultat')}
+              description={t('countries.noResultsDesc', 'Aucun pays ne correspond à vos critères de recherche.')}
+              action={{
+                label: t('common.reset', 'Réinitialiser'),
+                onClick: () => {
+                  setSearchQuery('');
+                  setFilter('all');
+                },
+                variant: 'outline',
+              }}
+            />
           )}
 
           {/* Pagination */}
