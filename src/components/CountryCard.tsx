@@ -130,34 +130,34 @@ export const CountryCard = forwardRef<HTMLDivElement, CountryCardProps>(
         </p>
 
         {/* Key Stats with Risk Grade */}
-        <div className="mt-4 sm:mt-6 grid grid-cols-4 gap-2 sm:gap-3">
+        <div className="mt-4 sm:mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-3">
           {/* Risk Grade - New */}
           <div className="text-center">
             <div className="flex items-center justify-center mb-0.5 sm:mb-1">
               <RiskGradeBadge score={safetyScore} className="w-7 h-7 sm:w-8 sm:h-8 text-xs" />
             </div>
-            <div className="text-[10px] sm:text-xs text-muted-foreground">{t('countries.risk', 'Risque')}</div>
+            <div className="text-[10px] sm:text-xs text-muted-foreground truncate">{t('countries.risk', 'Risque')}</div>
           </div>
           <div className="text-center">
             <div className="flex items-center justify-center gap-1 text-muted-foreground mb-0.5 sm:mb-1">
               <TrendingUp className="w-3 h-3" />
             </div>
             <div className="text-xs sm:text-sm font-semibold">${formatNumber(country.snapshot.gdpPerCapita)}</div>
-            <div className="text-[10px] sm:text-xs text-muted-foreground">{t('countries.gdpCap')}</div>
+            <div className="text-[10px] sm:text-xs text-muted-foreground truncate">{t('countries.gdpCap', 'PIB/hab')}</div>
           </div>
           <div className="text-center">
             <div className="flex items-center justify-center gap-1 text-muted-foreground mb-0.5 sm:mb-1">
               <Shield className="w-3 h-3" />
             </div>
             <div className="text-xs sm:text-sm font-semibold">#{country.snapshot.passportRank}</div>
-            <div className="text-[10px] sm:text-xs text-muted-foreground">{t('countries.passport')}</div>
+            <div className="text-[10px] sm:text-xs text-muted-foreground truncate">{t('countries.passport', 'Passeport')}</div>
           </div>
           <div className="text-center">
             <div className="flex items-center justify-center gap-1 text-muted-foreground mb-0.5 sm:mb-1">
               <Users className="w-3 h-3" />
             </div>
             <div className="text-xs sm:text-sm font-semibold">{formatPopulation(country.snapshot.population)}</div>
-            <div className="text-[10px] sm:text-xs text-muted-foreground">{t('countries.population')}</div>
+            <div className="text-[10px] sm:text-xs text-muted-foreground truncate">{t('countries.population', 'Pop.')}</div>
           </div>
         </div>
 
