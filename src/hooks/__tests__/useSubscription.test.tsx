@@ -257,15 +257,13 @@ describe('useSubscription', () => {
 // ============================================
 
 describe('SUBSCRIPTION_TIERS configuration', () => {
-  it('should have correct tier hierarchy (free < premium < pro)', () => {
+  it('should have correct tier hierarchy (free < premium)', () => {
     expect(SUBSCRIPTION_TIERS.free.price).toBeLessThan(SUBSCRIPTION_TIERS.premium.price);
-    expect(SUBSCRIPTION_TIERS.premium.price).toBeLessThan(SUBSCRIPTION_TIERS.pro.price);
   });
 
-  it('should have priceId for paid tiers only', () => {
+  it('should have priceId for premium tier only', () => {
     expect(SUBSCRIPTION_TIERS.free).not.toHaveProperty('priceId');
     expect(SUBSCRIPTION_TIERS.premium.priceId).toBeDefined();
-    expect(SUBSCRIPTION_TIERS.pro.priceId).toBeDefined();
   });
 
   it('should have features array for all tiers', () => {
