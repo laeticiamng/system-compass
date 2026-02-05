@@ -31,6 +31,7 @@ import {
   Tooltip as RechartsTooltip
 } from 'recharts';
 import { OVISuggestionsWidget } from '@/components/ovi/OVISuggestionsWidget';
+import { PremiumPageWrapper } from '@/components/PremiumPageWrapper';
 
 interface Question {
   id: string;
@@ -531,6 +532,23 @@ export default function LifeTrajectory() {
     const profileInfo = LIFE_MOTOR_PROFILES[result.profile];
     
     return (
+      <PremiumPageWrapper
+        title={t('subscription.trajectoryTitle', 'Analyse de Trajectoire')}
+        description={t('subscription.trajectoryDesc', 'Découvrez votre profil moteur et les trajectoires recommandées pour atteindre vos objectifs.')}
+        previewContent={
+          <div className="min-h-[40vh] pt-24 pb-8">
+            <div className="container mx-auto px-4 max-w-2xl text-center">
+              <div className="text-5xl mb-4">🎯</div>
+              <h1 className="font-display text-2xl font-bold mb-3">
+                {t('lifeTrajectory.title', 'Analyse de Trajectoire de Vie')}
+              </h1>
+              <p className="text-muted-foreground">
+                {t('lifeTrajectory.subtitle', 'Découvrez les trajectoires adaptées à votre profil')}
+              </p>
+            </div>
+          </div>
+        }
+      >
       <div className="min-h-screen pt-20 md:pt-24 pb-16">
         <div className="container mx-auto px-4 max-w-5xl">
           {/* Profile Result Header */}
@@ -720,6 +738,7 @@ export default function LifeTrajectory() {
           </div>
         </div>
       </div>
+      </PremiumPageWrapper>
     );
   }
 

@@ -42,6 +42,7 @@ import {
   DialogClose,
 } from '@/components/ui/dialog';
 import { toast } from 'sonner';
+import { PremiumPageWrapper } from '@/components/PremiumPageWrapper';
 
 const PYRAMID_TYPE_COLORS: Record<string, string> = {
   PROBLEM_RENT: 'pyramid-rent',
@@ -189,7 +190,27 @@ export default function CompareUnified() {
     );
   };
 
+  const previewContent = (
+    <div className="min-h-[40vh] pt-20 pb-8">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-8">
+          <h1 className="font-display text-3xl md:text-4xl font-bold mb-4">
+            {t('compare.title')}
+          </h1>
+          <p className="text-muted-foreground max-w-xl mx-auto text-sm md:text-base">
+            {t('compare.subtitle')}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
+    <PremiumPageWrapper
+      title={t('subscription.compareTitle', 'Comparaison de Pays')}
+      description={t('subscription.compareDesc', 'Comparez jusqu\'à 5 pays côte à côte pour prendre des décisions éclairées.')}
+      previewContent={previewContent}
+    >
     <div className="min-h-screen pt-20 pb-16">
       <div className="container mx-auto px-4">
         {/* Header */}
@@ -602,5 +623,6 @@ export default function CompareUnified() {
         )}
       </div>
     </div>
+    </PremiumPageWrapper>
   );
 }
