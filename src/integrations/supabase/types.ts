@@ -644,6 +644,128 @@ export type Database = {
         }
         Relationships: []
       }
+      country_data_sources: {
+        Row: {
+          country_id: string
+          created_at: string
+          error_count: number
+          id: string
+          is_active: boolean
+          last_content_hash: string | null
+          last_error: string | null
+          last_scraped_at: string | null
+          scrape_frequency_hours: number
+          source_name: string | null
+          source_type: Database["public"]["Enums"]["source_type"]
+          source_url: string
+          updated_at: string
+        }
+        Insert: {
+          country_id: string
+          created_at?: string
+          error_count?: number
+          id?: string
+          is_active?: boolean
+          last_content_hash?: string | null
+          last_error?: string | null
+          last_scraped_at?: string | null
+          scrape_frequency_hours?: number
+          source_name?: string | null
+          source_type: Database["public"]["Enums"]["source_type"]
+          source_url: string
+          updated_at?: string
+        }
+        Update: {
+          country_id?: string
+          created_at?: string
+          error_count?: number
+          id?: string
+          is_active?: boolean
+          last_content_hash?: string | null
+          last_error?: string | null
+          last_scraped_at?: string | null
+          scrape_frequency_hours?: number
+          source_name?: string | null
+          source_type?: Database["public"]["Enums"]["source_type"]
+          source_url?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "country_data_sources_country_id_fkey"
+            columns: ["country_id"]
+            isOneToOne: false
+            referencedRelation: "countries"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      country_data_updates: {
+        Row: {
+          change_summary: string | null
+          change_type: Database["public"]["Enums"]["change_type"]
+          country_id: string
+          created_at: string
+          detected_at: string
+          id: string
+          new_value: Json
+          old_value: Json | null
+          published_at: string | null
+          source_id: string
+          updated_at: string
+          validated_by: string | null
+          validation_notes: string | null
+          validation_status: Database["public"]["Enums"]["validation_status"]
+        }
+        Insert: {
+          change_summary?: string | null
+          change_type: Database["public"]["Enums"]["change_type"]
+          country_id: string
+          created_at?: string
+          detected_at?: string
+          id?: string
+          new_value: Json
+          old_value?: Json | null
+          published_at?: string | null
+          source_id: string
+          updated_at?: string
+          validated_by?: string | null
+          validation_notes?: string | null
+          validation_status?: Database["public"]["Enums"]["validation_status"]
+        }
+        Update: {
+          change_summary?: string | null
+          change_type?: Database["public"]["Enums"]["change_type"]
+          country_id?: string
+          created_at?: string
+          detected_at?: string
+          id?: string
+          new_value?: Json
+          old_value?: Json | null
+          published_at?: string | null
+          source_id?: string
+          updated_at?: string
+          validated_by?: string | null
+          validation_notes?: string | null
+          validation_status?: Database["public"]["Enums"]["validation_status"]
+        }
+        Relationships: [
+          {
+            foreignKeyName: "country_data_updates_country_id_fkey"
+            columns: ["country_id"]
+            isOneToOne: false
+            referencedRelation: "countries"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "country_data_updates_source_id_fkey"
+            columns: ["source_id"]
+            isOneToOne: false
+            referencedRelation: "country_data_sources"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       country_generation_batches: {
         Row: {
           completed_at: string | null
@@ -3524,6 +3646,60 @@ export type Database = {
         }
         Relationships: []
       }
+      scrape_jobs: {
+        Row: {
+          changes_detected: number | null
+          completed_at: string | null
+          country_id: string | null
+          created_at: string
+          error_message: string | null
+          id: string
+          source_id: string | null
+          started_at: string | null
+          status: string
+          tokens_used: number | null
+        }
+        Insert: {
+          changes_detected?: number | null
+          completed_at?: string | null
+          country_id?: string | null
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          source_id?: string | null
+          started_at?: string | null
+          status?: string
+          tokens_used?: number | null
+        }
+        Update: {
+          changes_detected?: number | null
+          completed_at?: string | null
+          country_id?: string | null
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          source_id?: string | null
+          started_at?: string | null
+          status?: string
+          tokens_used?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "scrape_jobs_country_id_fkey"
+            columns: ["country_id"]
+            isOneToOne: false
+            referencedRelation: "countries"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "scrape_jobs_source_id_fkey"
+            columns: ["source_id"]
+            isOneToOne: false
+            referencedRelation: "country_data_sources"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       subscription_plans: {
         Row: {
           active: boolean | null
@@ -4468,6 +4644,15 @@ export type Database = {
       }
     }
     Enums: {
+      change_type:
+        | "visa_rules"
+        | "tax_rates"
+        | "cost_of_living"
+        | "healthcare"
+        | "immigration_policy"
+        | "lgbtq_rights"
+        | "natural_risks"
+        | "quality_of_life"
       game_mode: "solo" | "race" | "points_duel" | "cooperative"
       partner_application_status:
         | "pending"
@@ -4475,6 +4660,13 @@ export type Database = {
         | "rejected"
         | "suspended"
       partner_type: "ambassador" | "b2b_partner"
+      source_type:
+        | "government"
+        | "embassy"
+        | "statistics"
+        | "immigration"
+        | "fiscal"
+      validation_status: "pending" | "approved" | "rejected"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -4602,6 +4794,16 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
+      change_type: [
+        "visa_rules",
+        "tax_rates",
+        "cost_of_living",
+        "healthcare",
+        "immigration_policy",
+        "lgbtq_rights",
+        "natural_risks",
+        "quality_of_life",
+      ],
       game_mode: ["solo", "race", "points_duel", "cooperative"],
       partner_application_status: [
         "pending",
@@ -4610,6 +4812,14 @@ export const Constants = {
         "suspended",
       ],
       partner_type: ["ambassador", "b2b_partner"],
+      source_type: [
+        "government",
+        "embassy",
+        "statistics",
+        "immigration",
+        "fiscal",
+      ],
+      validation_status: ["pending", "approved", "rejected"],
     },
   },
 } as const

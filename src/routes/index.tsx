@@ -52,6 +52,7 @@ import {
   LazyAdminPartners,
   // LazyAdminTranslationsSync, // MASQUÉ - Non fonctionnel
   // LazySeedTranslations, // MASQUÉ - Non fonctionnel
+  LazyAdminDataSources,
   LazyPyramidTypes,
   LazyResources,
   // LazyOVI, // MASQUÉ - Non fonctionnel
@@ -172,6 +173,7 @@ export const adminRoutes = [
   // { path: "/admin/generate-translations", element: <RequireAdmin><LazyAdminGenerateTranslations /></RequireAdmin> }, // MASQUÉ
   // { path: "/admin/database-translations", element: <RequireAdmin><LazyAdminDatabaseTranslations /></RequireAdmin> }, // MASQUÉ
   { path: "/admin/partners", element: <RequireAdmin><LazyAdminPartners /></RequireAdmin> },
+  { path: "/admin/data-sources", element: <RequireAdmin><LazyAdminDataSources /></RequireAdmin> },
   // { path: "/admin/translations-sync", element: <RequireAdmin><LazyAdminTranslationsSync /></RequireAdmin> }, // MASQUÉ
   // { path: "/seed-translations", element: <LazySeedTranslations /> }, // MASQUÉ
   { path: "/diagnostics", element: <LazyDiagnostics /> },

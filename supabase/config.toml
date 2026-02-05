@@ -74,3 +74,6 @@ verify_jwt = false
 
 [functions.elevenlabs-tts]
 verify_jwt = false
+
+[functions.scrape-country-data]
+verify_jwt = false

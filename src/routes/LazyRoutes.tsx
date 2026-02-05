@@ -77,6 +77,7 @@ export const LazyAdminDatabaseTranslations = withSuspense(lazy(() => import('@/p
 export const LazyAdminPartners = withSuspense(lazy(() => import('@/pages/AdminPartners')));
 export const LazyAdminTranslationsSync = withSuspense(lazy(() => import('@/pages/AdminTranslationsSync')));
 export const LazySeedTranslations = withSuspense(lazy(() => import('@/pages/SeedTranslations')));
+export const LazyAdminDataSources = withSuspense(lazy(() => import('@/pages/admin/AdminDataSources')));
 
 // Content pages (can be lazy loaded too)
 export const LazyPyramidTypes = withSuspense(lazy(() => import('@/pages/PyramidTypes')));
