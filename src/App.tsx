@@ -65,7 +65,7 @@ const App = () => (
                         <ContextualShortcuts />
                         <OfflineBanner />
                         <CookieConsent />
-                        <DevDiagnosticsPanel />
+                        {import.meta.env.DEV && <DevDiagnosticsPanel />}
                       </div>
                     </div>
                   </DialogCoordinatorProvider>

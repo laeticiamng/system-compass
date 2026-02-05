@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
-import { Compass, Map, FileText, Scale, Triangle, Gamepad2, LogIn, LogOut, User, Key, LayoutDashboard, Menu, Play, Info, AlertCircle, X, Shield, BookOpen, CreditCard, Globe, Settings, Building2, Eye, Users, ChevronDown, Wrench, Bell, BarChart3 } from 'lucide-react';
+import { Compass, Map, FileText, Scale, Gamepad2, LogIn, LogOut, User, Key, LayoutDashboard, Menu, Play, Info, AlertCircle, X, Shield, BookOpen, CreditCard, Globe, Settings, Building2, Users, ChevronDown, Wrench, Bell, BarChart3 } from 'lucide-react';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { GlobalSearch } from './GlobalSearch';
 import { useAuth } from '@/hooks/useAuth';
@@ -53,18 +53,21 @@ export function Header() {
     return localStorage.getItem(DISCLAIMER_DISMISSED_KEY) === 'true';
   });
 
-  // Navigation principale - pages essentielles uniquement
+  // Navigation principale SIMPLIFIÉE - 6 entrées max
   const navItems = [
-    { href: '/', label: t('nav.start'), icon: Compass },
-    { href: '/countries', label: t('nav.countries'), icon: Map },
-    { href: '/world-map', label: t('nav.worldMap', 'Carte'), icon: Globe },
-    { href: '/pyramid-types', label: t('nav.pyramids'), icon: Triangle },
+    { href: '/', label: t('nav.home', 'Accueil'), icon: Compass },
+    { href: '/countries', label: t('nav.countries', 'Explorer'), icon: Map },
+    { href: '/quick-test', label: t('nav.quickTest', 'Mon Profil'), icon: User },
     { href: '/tools', label: t('nav.tools', 'Outils'), icon: Wrench, highlight: true },
-    { href: '/compare', label: t('nav.compare'), icon: Scale },
-    { href: '/dashboard', label: t('nav.dashboard'), icon: LayoutDashboard },
+    { href: '/pricing', label: t('nav.pricing', 'Tarifs'), icon: CreditCard },
   ];
   
-  // Outils d'analyse et simulation
+  // Ajouter Dashboard si connecté
+  const allNavItems = user 
+    ? [...navItems, { href: '/dashboard', label: t('nav.dashboard', 'Dashboard'), icon: LayoutDashboard }]
+    : navItems;
+  
+  // Outils d'analyse (dropdown Outils) - fonctionnels uniquement
   const toolsItems = [
     { href: '/quick-test', label: t('nav.quickTest', 'Test Rapide'), icon: Gamepad2 },
     { href: '/profile-test', label: t('nav.profileTest', 'Test Complet'), icon: User },
@@ -75,22 +78,15 @@ export function Header() {
     { href: '/financial-safety-intel', label: t('nav.financialIntel', 'Intel Financière'), icon: Shield },
     { href: '/fiscal-calculator', label: t('nav.fiscalCalculator', 'Calculateur Fiscal'), icon: BarChart3 },
     { href: '/terrain', label: t('nav.terrainRealities', 'Réalités Terrain'), icon: Map },
-    { href: '/errors-illusions', label: t('nav.errorsIllusions', 'Erreurs & Illusions'), icon: BookOpen },
     { href: '/exit-keys/catalog', label: t('nav.exitKeysCatalog', 'Catalogue Clés'), icon: Key },
     { href: '/compare-exit-keys', label: t('nav.exitKeysCompare', 'Comparer Clés'), icon: Scale },
-    { href: '/personas', label: t('nav.personas', 'Parcours Persona'), icon: Users },
     { href: '/gamification', label: t('nav.gamification', 'Progression'), icon: Gamepad2 },
   ];
 
-  // Modules avancés (B2B / Pro)
+  // Modules Pro (fonctionnels uniquement)
   const advancedItems = [
     { href: '/institutions', label: t('nav.institutions', 'TraceOS'), icon: Building2 },
-    { href: '/latent', label: t('nav.latent', 'Zones Latentes'), icon: Eye },
-    { href: '/irreversa', label: t('nav.irreversa', 'Irreversa'), icon: AlertCircle },
-    { href: '/ovi', label: t('nav.ovi', 'OVI'), icon: Eye },
-    { href: '/experts', label: t('nav.experts', 'Experts'), icon: Users },
-    { href: '/partner-services', label: t('nav.partnerServices', 'Services Partenaires'), icon: Building2 },
-    { href: '/community', label: t('nav.community', 'Communauté'), icon: Users },
+    { href: '/financial-safety-intel', label: t('nav.financialIntel', 'Intel Financière'), icon: Shield },
   ];
 
   // Pages info/compte
@@ -100,21 +96,15 @@ export function Header() {
     { href: '/pricing', label: t('nav.pricing', 'Tarifs'), icon: CreditCard },
     { href: '/usage', label: t('nav.usage', 'Consommation'), icon: BarChart3 },
     { href: '/settings/notifications', label: t('nav.notifications', 'Notifications'), icon: Bell },
-    { href: '/partners', label: t('nav.partners', 'Partenaires'), icon: Users },
-    { href: '/b2b', label: t('nav.b2b', 'B2B'), icon: Building2 },
     { href: '/resources', label: t('nav.resources'), icon: FileText },
   ];
 
-  // Admin navigation items - requires admin role check via useUserRoles
+  // Admin navigation items - fonctionnels uniquement
   const adminItems = [
     { href: '/admin/country-generator', label: 'Country Generator', icon: Globe },
     { href: '/admin/analytics', label: 'Analytics', icon: Settings },
     { href: '/admin/partners', label: 'Partners', icon: Users },
     { href: '/admin/translations', label: 'Translations', icon: FileText },
-    { href: '/admin/generate-translations', label: 'Gen Translations', icon: FileText },
-    { href: '/admin/database-translations', label: 'DB Translations', icon: FileText },
-    { href: '/admin/translations-sync', label: 'Sync Translations', icon: FileText },
-    { href: '/seed-translations', label: 'Seed Translations', icon: FileText },
     { href: '/diagnostics', label: 'Diagnostics', icon: Settings },
   ];
 
@@ -177,7 +167,7 @@ export function Header() {
           {/* Desktop Nav - hide on smaller screens */}
           <nav className="hidden xl:flex items-center gap-0.5">
             {/* Main nav items */}
-            {navItems.slice(0, 5).map((item) => {
+            {allNavItems.map((item) => {
               const Icon = item.icon;
               const isActive = location.pathname === item.href;
               return (
@@ -362,7 +352,7 @@ export function Header() {
               <nav className="flex flex-col gap-1 mt-6">
                 {/* Navigation principale */}
                 <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">{t('nav.explore', 'Explorer')}</div>
-                {navItems.map((item) => {
+                {allNavItems.map((item) => {
                   const Icon = item.icon;
                   const isActive = location.pathname === item.href;
                   const isHighlight = 'highlight' in item && item.highlight;
