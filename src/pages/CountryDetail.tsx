@@ -28,6 +28,7 @@ import { useUserHistory } from '@/hooks/useUserHistory';
 import { useExitKeysProfile } from '@/hooks/useExitKeysProfile';
 import { useCountryGovernance } from '@/hooks/useCountryGovernance';
 import { AiHelpButton } from '@/components/ai/AiHelpButton';
+import { FollowCountryButton } from '@/components/country/FollowCountryButton';
 
 const PYRAMID_TYPE_LABELS: Record<string, string> = {
   PROBLEM_RENT: 'pyramids.problemRent.label',
@@ -276,6 +277,7 @@ export default function CountryDetail() {
               </div>
               <p className="text-sm sm:text-base text-muted-foreground">{displayRegion}</p>
             </div>
+            <FollowCountryButton countryId={country.id} />
           </div>
           <div className="flex justify-end">
             <AiHelpButton
