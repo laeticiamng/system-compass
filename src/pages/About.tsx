@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
 import { 
   Compass, ArrowRight, Key, Target, Shield, TrendingUp, 
   Play, AlertTriangle, Brain, Lightbulb, Scale, Map, Users, Heart,
@@ -121,7 +122,16 @@ export default function About() {
   const { t } = useTranslation();
 
   return (
-    <div className="min-h-screen bg-background pt-16 sm:pt-20">
+    <>
+      <Helmet>
+        <title>À propos - Pyramid Compass | Outil de lucidité stratégique</title>
+        <meta name="description" content="Découvrez Pyramid Compass : un simulateur de décisions et outil d'analyse des systèmes pays. Aucun conseil juridique, financier ou médical. Vous restez responsable." />
+        <meta property="og:title" content="À propos - Pyramid Compass | Outil de lucidité stratégique" />
+        <meta property="og:description" content="Simulateur de décisions dans des systèmes réels. Outil d'analyse uniquement. Tu décides, nous éclairons." />
+        <meta property="og:url" content="https://world-alignment.lovable.app/about" />
+        <link rel="canonical" href="https://world-alignment.lovable.app/about" />
+      </Helmet>
+      <div className="min-h-screen bg-background pt-16 sm:pt-20">
       <div className="container mx-auto px-3 sm:px-4 py-6 sm:py-8 max-w-6xl">
         {/* Back link */}
         <Link 
@@ -533,5 +543,6 @@ export default function About() {
         </div>
       </div>
     </div>
+    </>
   );
 }

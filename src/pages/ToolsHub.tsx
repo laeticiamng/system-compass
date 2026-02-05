@@ -5,6 +5,7 @@
 
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { 
   Compass, Map, Globe, Triangle, Key, Scale, Gamepad2, 
@@ -123,7 +124,16 @@ export default function ToolsHub() {
   const { t } = useTranslation();
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20 pt-16 md:pt-20">
+    <>
+      <Helmet>
+        <title>Centre des Outils - Pyramid Compass | Analyse & Planification</title>
+        <meta name="description" content="Accédez à tous les outils Pyramid Compass : tests de profil, comparateur de pays, Exit Keys, calculateur fiscal, et plus. Planifiez votre stratégie d'expatriation." />
+        <meta property="og:title" content="Centre des Outils - Pyramid Compass" />
+        <meta property="og:description" content="Tous vos outils d'analyse, de planification et de décision en un seul endroit. 30+ outils pour comprendre les systèmes des pays." />
+        <meta property="og:url" content="https://world-alignment.lovable.app/tools" />
+        <link rel="canonical" href="https://world-alignment.lovable.app/tools" />
+      </Helmet>
+      <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20 pt-16 md:pt-20">
       <div className="container mx-auto px-4 py-8 md:py-12">
         {/* Header */}
         <motion.div 
@@ -252,5 +262,6 @@ export default function ToolsHub() {
         </motion.div>
       </div>
     </div>
+    </>
   );
 }
