@@ -1,10 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { PyramidType, PYRAMID_TYPE_INFO } from '@/lib/types';
 import { useTestResults } from '@/hooks/useTestResults';
 import { useAuth } from '@/hooks/useAuth';
 import { motion, useInView } from 'framer-motion';
 import { QuickTestResults, determineProfileType, matchCountries } from '@/components/QuickTestResults';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { 
   Zap, 
   Briefcase,
@@ -18,7 +21,9 @@ import {
   Timer,
   Wallet,
   Battery,
-  Users
+  Users,
+  AlertTriangle,
+  Home
 } from 'lucide-react';
 
 type Situation = 'employee' | 'freelance' | 'student' | 'transition';
@@ -91,6 +96,7 @@ function AnimatedSection({ children, className }: { children: React.ReactNode; c
 
 export default function QuickTest() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   useAuth();
   const { saveResult } = useTestResults();
   const [answers, setAnswers] = useState<QuickTestAnswers>({});
@@ -99,6 +105,7 @@ export default function QuickTest() {
   const [elapsedTime, setElapsedTime] = useState(0);
   const [hasSaved, setHasSaved] = useState(false);
   const [countries, setCountries] = useState<{ id: string; name: string; pyramid_type: string }[]>([]);
+  const [calculationError, setCalculationError] = useState(false);
 
   // Fetch countries for matching
   useEffect(() => {
@@ -125,24 +132,29 @@ export default function QuickTest() {
   // Auto-show results and save when all 4 questions are answered
   useEffect(() => {
     if (answers.situation && answers.priority && answers.riskTolerance && answers.mainConstraint) {
-      setShowResults(true);
-      
-      if (!hasSaved) {
-        const pyramid = mapToPyramid(answers);
-        const profileType = determineProfileType(answers);
-        const matched = matchCountries(profileType, pyramid, countries);
-        const matchedForSave = matched.map(c => ({ id: c.id, name: c.name, compatibility: c.compatibility }));
+      try {
+        setShowResults(true);
         
-        saveResult(
-          'quick_test', 
-          answers as Record<string, unknown>, 
-          pyramid, 
-          undefined, 
-          elapsedTime,
-          profileType,
-          matchedForSave
-        );
-        setHasSaved(true);
+        if (!hasSaved) {
+          const pyramid = mapToPyramid(answers);
+          const profileType = determineProfileType(answers);
+          const matched = matchCountries(profileType, pyramid, countries);
+          const matchedForSave = matched.map(c => ({ id: c.id, name: c.name, compatibility: c.compatibility }));
+          
+          saveResult(
+            'quick_test', 
+            answers as Record<string, unknown>, 
+            pyramid, 
+            undefined, 
+            elapsedTime,
+            profileType,
+            matchedForSave
+          );
+          setHasSaved(true);
+        }
+      } catch (error) {
+        console.error('Quick test calculation error:', error);
+        setCalculationError(true);
       }
     }
   }, [answers, hasSaved, elapsedTime, saveResult, countries]);
@@ -159,7 +171,39 @@ export default function QuickTest() {
     setAnswers({});
     setShowResults(false);
     setHasSaved(false);
+    setCalculationError(false);
   };
+
+  // Fallback UI if calculation fails
+  if (calculationError) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center p-4">
+        <Card className="max-w-lg w-full border-amber-500/20">
+          <CardHeader className="text-center">
+            <div className="mx-auto w-16 h-16 rounded-full bg-amber-500/10 flex items-center justify-center mb-4">
+              <AlertTriangle className="w-8 h-8 text-amber-500" />
+            </div>
+            <CardTitle className="text-xl font-display">
+              {t('quickTest.error.title', 'Oops, le calcul a échoué')}
+            </CardTitle>
+            <p className="text-muted-foreground text-sm mt-2">
+              {t('quickTest.error.description', 'Nous n\'avons pas pu calculer votre profil. Veuillez réessayer ou retourner à l\'accueil.')}
+            </p>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <Button onClick={handleReset} className="w-full">
+              <RefreshCcw className="w-4 h-4 mr-2" />
+              {t('quickTest.restart', 'Recommencer')}
+            </Button>
+            <Button onClick={() => navigate('/')} variant="outline" className="w-full">
+              <Home className="w-4 h-4 mr-2" />
+              {t('common.backToHome', 'Retour à l\'accueil')}
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   if (showResults && pyramidType && pyramidInfo) {
     return (
