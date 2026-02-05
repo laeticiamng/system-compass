@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
 import { useAuth } from '@/hooks/useAuth';
 import { useAnalytics } from '@/hooks/useAnalytics';
 import { lovable } from '@/integrations/lovable';
@@ -145,7 +146,18 @@ export default function Auth() {
   }
 
   return (
-    <div className="min-h-screen pt-24 pb-16 flex items-center justify-center relative overflow-hidden">
+    <>
+      <Helmet>
+        <title>Connexion - Pyramid Compass | Accédez à votre compte</title>
+        <meta name="description" content="Connectez-vous à Pyramid Compass pour accéder à vos analyses de pays, Exit Keys personnalisées et tableau de bord. Créez un compte gratuit." />
+        <meta property="og:title" content="Connexion - Pyramid Compass" />
+        <meta property="og:description" content="Accédez à vos analyses de pays et stratégies de sortie personnalisées." />
+        <meta property="og:url" content="https://world-alignment.lovable.app/auth" />
+        <meta name="twitter:title" content="Connexion - Pyramid Compass" />
+        <meta name="twitter:description" content="Accédez à vos analyses de pays et stratégies de sortie personnalisées." />
+        <link rel="canonical" href="https://world-alignment.lovable.app/auth" />
+      </Helmet>
+      <div className="min-h-screen pt-24 pb-16 flex items-center justify-center relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
@@ -343,5 +355,6 @@ export default function Auth() {
         </div>
       </div>
     </div>
+    </>
   );
 }

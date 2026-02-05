@@ -247,6 +247,10 @@ export default function Countries() {
         <meta name="description" content="Explorez 38+ pays avec leurs systèmes analysés en profondeur. Comparez les pyramides, risques et opportunités. Trouvez le pays qui correspond à votre profil." />
         <meta property="og:title" content="Explorer les pays - Pyramid Compass" />
         <meta property="og:description" content="38+ pays analysés avec leurs systèmes, risques et opportunités. Trouvez votre destination idéale." />
+        <meta property="og:url" content="https://world-alignment.lovable.app/countries" />
+        <meta name="twitter:title" content="Explorer les pays - Pyramid Compass" />
+        <meta name="twitter:description" content="38+ pays analysés avec leurs systèmes, risques et opportunités. Trouvez votre destination idéale." />
+        <link rel="canonical" href="https://world-alignment.lovable.app/countries" />
       </Helmet>
       <div className="min-h-screen bg-background overflow-x-hidden">
       {/* Hero Section */}
