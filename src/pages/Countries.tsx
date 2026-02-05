@@ -93,8 +93,8 @@ export default function Countries() {
       }
       
       result.sort((a, b) => {
-        if (sortBy === 'name-desc') return b.name.localeCompare(a.name);
-        return a.name.localeCompare(b.name);
+        if (sortBy === 'name-desc') return b.name.localeCompare(a.name, 'fr', { sensitivity: 'base' });
+        return a.name.localeCompare(b.name, 'fr', { sensitivity: 'base' });
       });
       
       return result;
@@ -115,8 +115,8 @@ export default function Countries() {
       
       // Sort extended countries by name only
       result.sort((a, b) => {
-        if (sortBy === 'name-desc') return b.name.localeCompare(a.name);
-        return a.name.localeCompare(b.name);
+        if (sortBy === 'name-desc') return b.name.localeCompare(a.name, 'fr', { sensitivity: 'base' });
+        return a.name.localeCompare(b.name, 'fr', { sensitivity: 'base' });
       });
       
       return result;
@@ -144,9 +144,9 @@ export default function Countries() {
     result.sort((a, b) => {
       switch (sortBy) {
         case 'name-asc':
-          return a.name.localeCompare(b.name);
+          return a.name.localeCompare(b.name, 'fr', { sensitivity: 'base' });
         case 'name-desc':
-          return b.name.localeCompare(a.name);
+          return b.name.localeCompare(a.name, 'fr', { sensitivity: 'base' });
         case 'risk-asc':
           return calculateAverageRisk(a) - calculateAverageRisk(b);
         case 'risk-desc':
