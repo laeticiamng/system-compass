@@ -1,13 +1,24 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { requireAuth, requireAdmin, authErrorResponse, AuthError } from "../_shared/auth.ts";
+import { validate, validationErrorResponse } from "../_shared/validation.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
-const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
+const SUPABASE_ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY")!;
+const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+
+interface CountryInput {
+  country_id: string;
+  country_name: string;
+  iso2: string;
+  region: string;
+  primary_pyramid: string;
+}
 
 const SYSTEM_PROMPT = `Tu es un analyste en intelligence sociale et géopolitique pour Pyramid Compass.
 Tu produis de l'INTELLIGENCE SYSTÈME ultra-stratégique pour les utilisateurs premium+.
@@ -20,14 +31,6 @@ CONTRAINTES :
 - JSON STRICT uniquement
 
 OBJECTIF : Révéler ce que 10 ans d'expérience dans le pays enseignent.`;
-
-interface CountryInput {
-  country_id: string;
-  country_name: string;
-  iso2: string;
-  region: string;
-  primary_pyramid: string;
-}
 
 function createGenerationPrompt(country: CountryInput): string {
   return `Génère l'INTELLIGENCE SYSTÈME ENRICHIE pour :
@@ -426,21 +429,47 @@ serve(async (req) => {
   }
 
   try {
+    // Create Supabase client for auth validation
+    const supabaseAuth = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+      global: { headers: { Authorization: req.headers.get("Authorization") || "" } },
+    });
+
+    // Authenticate user - admin only for country intelligence generation
+    let authResult;
+    try {
+      authResult = await requireAuth(req, supabaseAuth);
+      // This is an admin-only operation (expensive AI generation)
+      await requireAdmin(authResult.userId, supabaseAuth);
+    } catch (err) {
+      return authErrorResponse(err as AuthError, corsHeaders);
+    }
+
+    console.log(`[generate-country-intelligence] Admin user ${authResult.userId} authenticated`);
+
     const body = await req.json();
     
+    // Validate input
+    const validation = validate<CountryInput>(body)
+      .string('country_id' as keyof CountryInput, { required: true })
+      .string('country_name' as keyof CountryInput, { required: true, max: 100 })
+      .string('iso2' as keyof CountryInput, { required: true, min: 2, max: 3 })
+      .string('region' as keyof CountryInput, { max: 100 })
+      .string('primary_pyramid' as keyof CountryInput, { max: 100 })
+      .validate();
+
+    if (!validation.success) {
+      return validationErrorResponse(validation.errors!, corsHeaders);
+    }
+
     const country: CountryInput = {
-      country_id: body.countryId || body.country_id,
-      country_name: body.countryName || body.country_name,
-      iso2: body.iso2,
-      region: body.region,
-      primary_pyramid: body.primaryPyramid || body.primary_pyramid,
+      country_id: (validation.data as any).country_id || body.countryId || body.country_id,
+      country_name: (validation.data as any).country_name || body.countryName || body.country_name,
+      iso2: (validation.data as any).iso2 || body.iso2,
+      region: (validation.data as any).region || body.region,
+      primary_pyramid: (validation.data as any).primary_pyramid || body.primaryPyramid || body.primary_pyramid,
     };
 
     console.log("Generating INTELLIGENCE for:", country.country_name);
-
-    if (!country.country_name || !country.iso2) {
-      throw new Error("Missing required fields: country_name and iso2");
-    }
 
     const supabase = createClient(SUPABASE_URL!, SUPABASE_SERVICE_ROLE_KEY!);
 

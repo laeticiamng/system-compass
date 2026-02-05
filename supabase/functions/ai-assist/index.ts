@@ -1,6 +1,7 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { requireAuth, optionalAuth, authErrorResponse, AuthError } from "../_shared/auth.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -8,6 +9,7 @@ const corsHeaders = {
 };
 
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
+const SUPABASE_ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY")!;
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
 
@@ -716,6 +718,33 @@ serve(async (req) => {
   const startTime = Date.now();
 
   try {
+    // Create Supabase client with user's auth for validation
+    const authHeader = req.headers.get("Authorization");
+    const supabaseAuth = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+      global: { headers: authHeader ? { Authorization: authHeader } : {} },
+    });
+
+    // Authenticate user - AI operations require authentication
+    let authResult;
+    try {
+      authResult = await requireAuth(req, supabaseAuth);
+    } catch (err) {
+      // Allow health check without auth
+      const body = await req.clone().json().catch(() => ({}));
+      if (body && typeof body === 'object' && 'action' in body && (body.action === "health" || body.action === "ping")) {
+        return new Response(
+          JSON.stringify({ 
+            status: "ok", 
+            timestamp: new Date().toISOString(),
+            availableActions: Object.keys(ACTION_CONFIGS),
+            version: "1.1.0"
+          }),
+          { headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+      return authErrorResponse(err as AuthError, corsHeaders);
+    }
+
     // Parse JSON body safely
     let body: unknown;
     try {
@@ -736,16 +765,19 @@ serve(async (req) => {
       );
     }
 
-    const { action, context, userId, sessionId } = validation.data!;
+    const { action, context, sessionId } = validation.data!;
+    // Use authenticated user ID instead of client-provided userId
+    const userId = authResult.userId;
 
-    // Health check endpoint
+    // Health check endpoint (already handled above for unauthenticated)
     if (action === "health" || action === "ping") {
       return new Response(
         JSON.stringify({ 
           status: "ok", 
           timestamp: new Date().toISOString(),
           availableActions: Object.keys(ACTION_CONFIGS),
-          version: "1.1.0"
+          version: "1.1.0",
+          authenticated: true
         }),
         { headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
