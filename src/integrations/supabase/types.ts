@@ -3838,6 +3838,8 @@ export type Database = {
           nationalities: string[] | null
           profession_id: string | null
           risk_tolerance: string | null
+          stripe_customer_id: string | null
+          subscription_tier: string | null
           updated_at: string
         }
         Insert: {
@@ -3852,6 +3854,8 @@ export type Database = {
           nationalities?: string[] | null
           profession_id?: string | null
           risk_tolerance?: string | null
+          stripe_customer_id?: string | null
+          subscription_tier?: string | null
           updated_at?: string
         }
         Update: {
@@ -3866,6 +3870,8 @@ export type Database = {
           nationalities?: string[] | null
           profession_id?: string | null
           risk_tolerance?: string | null
+          stripe_customer_id?: string | null
+          subscription_tier?: string | null
           updated_at?: string
         }
         Relationships: []
