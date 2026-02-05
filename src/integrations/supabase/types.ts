@@ -560,6 +560,62 @@ export type Database = {
         }
         Relationships: []
       }
+      consultations: {
+        Row: {
+          amount: number | null
+          created_at: string | null
+          duration_minutes: number | null
+          expert_id: string
+          id: string
+          meeting_url: string | null
+          notes: string | null
+          payment_status: Database["public"]["Enums"]["payment_status"] | null
+          platform_fee: number | null
+          scheduled_at: string | null
+          status: Database["public"]["Enums"]["consultation_status"] | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          amount?: number | null
+          created_at?: string | null
+          duration_minutes?: number | null
+          expert_id: string
+          id?: string
+          meeting_url?: string | null
+          notes?: string | null
+          payment_status?: Database["public"]["Enums"]["payment_status"] | null
+          platform_fee?: number | null
+          scheduled_at?: string | null
+          status?: Database["public"]["Enums"]["consultation_status"] | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          amount?: number | null
+          created_at?: string | null
+          duration_minutes?: number | null
+          expert_id?: string
+          id?: string
+          meeting_url?: string | null
+          notes?: string | null
+          payment_status?: Database["public"]["Enums"]["payment_status"] | null
+          platform_fee?: number | null
+          scheduled_at?: string | null
+          status?: Database["public"]["Enums"]["consultation_status"] | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "consultations_expert_id_fkey"
+            columns: ["expert_id"]
+            isOneToOne: false
+            referencedRelation: "experts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       countries: {
         Row: {
           cost_of_living: Json
@@ -1437,6 +1493,80 @@ export type Database = {
           updated_at?: string
           user_id?: string
           verified?: boolean | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fk_expert_reviews_experts"
+            columns: ["expert_id"]
+            isOneToOne: false
+            referencedRelation: "experts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      experts: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          booking_url: string | null
+          certifications: Json | null
+          countries: string[] | null
+          created_at: string | null
+          currency: string | null
+          display_name: string
+          hourly_rate: number | null
+          id: string
+          is_active: boolean | null
+          is_verified: boolean | null
+          languages: string[] | null
+          rating_avg: number | null
+          response_time_hours: number | null
+          review_count: number | null
+          specialties: string[] | null
+          updated_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: string | null
+          booking_url?: string | null
+          certifications?: Json | null
+          countries?: string[] | null
+          created_at?: string | null
+          currency?: string | null
+          display_name: string
+          hourly_rate?: number | null
+          id?: string
+          is_active?: boolean | null
+          is_verified?: boolean | null
+          languages?: string[] | null
+          rating_avg?: number | null
+          response_time_hours?: number | null
+          review_count?: number | null
+          specialties?: string[] | null
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: string | null
+          booking_url?: string | null
+          certifications?: Json | null
+          countries?: string[] | null
+          created_at?: string | null
+          currency?: string | null
+          display_name?: string
+          hourly_rate?: number | null
+          id?: string
+          is_active?: boolean | null
+          is_verified?: boolean | null
+          languages?: string[] | null
+          rating_avg?: number | null
+          response_time_hours?: number | null
+          review_count?: number | null
+          specialties?: string[] | null
+          updated_at?: string | null
+          user_id?: string | null
         }
         Relationships: []
       }
@@ -4813,6 +4943,12 @@ export type Database = {
         | "lgbtq_rights"
         | "natural_risks"
         | "quality_of_life"
+      consultation_status:
+        | "requested"
+        | "confirmed"
+        | "completed"
+        | "cancelled"
+        | "disputed"
       fiscal_convention_type: "exemption" | "credit" | "deduction"
       fiscal_rule_type:
         | "income_tax"
@@ -4828,6 +4964,7 @@ export type Database = {
         | "rejected"
         | "suspended"
       partner_type: "ambassador" | "b2b_partner"
+      payment_status: "pending" | "paid" | "refunded"
       source_type:
         | "government"
         | "embassy"
@@ -4972,6 +5109,13 @@ export const Constants = {
         "natural_risks",
         "quality_of_life",
       ],
+      consultation_status: [
+        "requested",
+        "confirmed",
+        "completed",
+        "cancelled",
+        "disputed",
+      ],
       fiscal_convention_type: ["exemption", "credit", "deduction"],
       fiscal_rule_type: [
         "income_tax",
@@ -4989,6 +5133,7 @@ export const Constants = {
         "suspended",
       ],
       partner_type: ["ambassador", "b2b_partner"],
+      payment_status: ["pending", "paid", "refunded"],
       source_type: [
         "government",
         "embassy",

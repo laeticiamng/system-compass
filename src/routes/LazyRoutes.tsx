@@ -96,9 +96,9 @@ export const LazyFiscalCalculatorAdvanced = withSuspense(lazy(() => import('@/pa
 export const LazySpecialRegimes = withSuspense(lazy(() => import('@/pages/fiscal/SpecialRegimesPage')));
 export const LazyPersonaJourneys = withSuspense(lazy(() => import('@/pages/PersonaJourneys')));
 export const LazyGamificationHub = withSuspense(lazy(() => import('@/pages/GamificationHub')));
-// LazyExpertMarketplace, // MASQUÉ - Non fonctionnel
-// LazyPartnerIntegrations, // MASQUÉ - Non fonctionnel
-// LazyCommunity, // MASQUÉ - Non fonctionnel
+export const LazyExpertMarketplace = withSuspense(lazy(() => import('@/pages/ExpertMarketplace')));
+export const LazyExpertProfile = withSuspense(lazy(() => import('@/pages/ExpertProfile')));
+export const LazyAdminExperts = withSuspense(lazy(() => import('@/pages/admin/AdminExperts')));
 export const LazyInstall = withSuspense(lazy(() => import('@/pages/Install')));
 export const LazyToolsHub = withSuspense(lazy(() => import('@/pages/ToolsHub')));
 
