@@ -62,6 +62,7 @@ import {
   LazyHowToRead,
   LazyDiagnostics,
   LazyFiscalCalculator,
+  LazyFiscalCalculatorAdvanced,
   // LazyPersonaJourneys, // MASQUÉ - Non testé
   LazyGamificationHub,
   // LazyExpertMarketplace, // MASQUÉ - Non fonctionnel
@@ -161,6 +162,7 @@ export const contentRoutes = [
   { path: "/resources", element: <LazyResources /> },
   { path: "/how-to-read", element: <LazyHowToRead /> },
   { path: "/tools", element: <LazyToolsHub /> },
+  { path: "/tools/fiscal-calculator", element: <LazyFiscalCalculatorAdvanced /> },
   { path: "/install", element: <LazyInstall /> },
   // { path: "/academic", element: <LazyAcademicHub /> }, // MASQUÉ
 ];

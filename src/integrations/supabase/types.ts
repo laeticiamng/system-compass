@@ -1541,6 +1541,166 @@ export type Database = {
           },
         ]
       }
+      fiscal_conventions: {
+        Row: {
+          applicable_income_types: string[]
+          convention_type: Database["public"]["Enums"]["fiscal_convention_type"]
+          country_a_id: string
+          country_b_id: string
+          created_at: string
+          effective_date: string | null
+          id: string
+          source_url: string | null
+          updated_at: string
+          withholding_rates: Json | null
+        }
+        Insert: {
+          applicable_income_types?: string[]
+          convention_type: Database["public"]["Enums"]["fiscal_convention_type"]
+          country_a_id: string
+          country_b_id: string
+          created_at?: string
+          effective_date?: string | null
+          id?: string
+          source_url?: string | null
+          updated_at?: string
+          withholding_rates?: Json | null
+        }
+        Update: {
+          applicable_income_types?: string[]
+          convention_type?: Database["public"]["Enums"]["fiscal_convention_type"]
+          country_a_id?: string
+          country_b_id?: string
+          created_at?: string
+          effective_date?: string | null
+          id?: string
+          source_url?: string | null
+          updated_at?: string
+          withholding_rates?: Json | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fiscal_conventions_country_a_id_fkey"
+            columns: ["country_a_id"]
+            isOneToOne: false
+            referencedRelation: "countries"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "fiscal_conventions_country_b_id_fkey"
+            columns: ["country_b_id"]
+            isOneToOne: false
+            referencedRelation: "countries"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      fiscal_rules: {
+        Row: {
+          brackets: Json
+          country_id: string
+          created_at: string
+          currency: string
+          deductions: Json | null
+          id: string
+          notes_i18n: Json | null
+          rule_type: Database["public"]["Enums"]["fiscal_rule_type"]
+          source_url: string | null
+          updated_at: string
+          valid_from: string
+          valid_to: string | null
+        }
+        Insert: {
+          brackets?: Json
+          country_id: string
+          created_at?: string
+          currency?: string
+          deductions?: Json | null
+          id?: string
+          notes_i18n?: Json | null
+          rule_type: Database["public"]["Enums"]["fiscal_rule_type"]
+          source_url?: string | null
+          updated_at?: string
+          valid_from?: string
+          valid_to?: string | null
+        }
+        Update: {
+          brackets?: Json
+          country_id?: string
+          created_at?: string
+          currency?: string
+          deductions?: Json | null
+          id?: string
+          notes_i18n?: Json | null
+          rule_type?: Database["public"]["Enums"]["fiscal_rule_type"]
+          source_url?: string | null
+          updated_at?: string
+          valid_from?: string
+          valid_to?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fiscal_rules_country_id_fkey"
+            columns: ["country_id"]
+            isOneToOne: false
+            referencedRelation: "countries"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      fiscal_special_regimes: {
+        Row: {
+          application_deadline: string | null
+          benefits: Json
+          conditions: Json
+          country_id: string
+          created_at: string
+          description_i18n: Json | null
+          duration_years: number | null
+          id: string
+          is_active: boolean
+          regime_name: string
+          source_url: string | null
+          updated_at: string
+        }
+        Insert: {
+          application_deadline?: string | null
+          benefits?: Json
+          conditions?: Json
+          country_id: string
+          created_at?: string
+          description_i18n?: Json | null
+          duration_years?: number | null
+          id?: string
+          is_active?: boolean
+          regime_name: string
+          source_url?: string | null
+          updated_at?: string
+        }
+        Update: {
+          application_deadline?: string | null
+          benefits?: Json
+          conditions?: Json
+          country_id?: string
+          created_at?: string
+          description_i18n?: Json | null
+          duration_years?: number | null
+          id?: string
+          is_active?: boolean
+          regime_name?: string
+          source_url?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fiscal_special_regimes_country_id_fkey"
+            columns: ["country_id"]
+            isOneToOne: false
+            referencedRelation: "countries"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       game_statistics: {
         Row: {
           archetypes_used: Json | null
@@ -4653,6 +4813,14 @@ export type Database = {
         | "lgbtq_rights"
         | "natural_risks"
         | "quality_of_life"
+      fiscal_convention_type: "exemption" | "credit" | "deduction"
+      fiscal_rule_type:
+        | "income_tax"
+        | "social_contributions"
+        | "wealth_tax"
+        | "capital_gains"
+        | "vat"
+        | "special_regime"
       game_mode: "solo" | "race" | "points_duel" | "cooperative"
       partner_application_status:
         | "pending"
@@ -4803,6 +4971,15 @@ export const Constants = {
         "lgbtq_rights",
         "natural_risks",
         "quality_of_life",
+      ],
+      fiscal_convention_type: ["exemption", "credit", "deduction"],
+      fiscal_rule_type: [
+        "income_tax",
+        "social_contributions",
+        "wealth_tax",
+        "capital_gains",
+        "vat",
+        "special_regime",
       ],
       game_mode: ["solo", "race", "points_duel", "cooperative"],
       partner_application_status: [
