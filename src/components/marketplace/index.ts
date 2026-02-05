@@ -1,5 +1,5 @@
-// Marketplace components index - v7.0.6
-// Complete exports for 12 marketplace modules
+// Marketplace components index - v8.0.0
+// Complete exports for expert marketplace modules
 
 export { ExpertProfileDialog } from './ExpertProfileDialog';
 export { VideoConsultationDialog } from './VideoConsultationBooking';
@@ -12,3 +12,4 @@ export { ExpertPagination } from './ExpertPagination';
 export { ExpertCalendar } from './ExpertCalendar';
 export { ExpertAvailabilityCalendar } from './ExpertAvailabilityCalendar';
 export { ExpertPortfolio } from './ExpertPortfolio';
+export { ExpertCountryWidget } from './ExpertCountryWidget';

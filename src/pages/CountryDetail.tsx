@@ -15,6 +15,7 @@ import { PositivePointsCard } from '@/components/PositivePointsCard';
 import { CountryMusicPlayer } from '@/components/CountryMusicPlayer';
 import { FiscalSalaryCalculator } from '@/components/FiscalSalaryCalculator';
 import { FiscalQuickWidget } from '@/components/fiscal';
+import { ExpertCountryWidget } from '@/components/marketplace';
 import { RetirementProjection } from '@/components/RetirementProjection';
 import { LGBTQRightsIndicator } from '@/components/LGBTQRightsIndicator';
 import { PlaybookSection } from '@/components/PlaybookSection';
@@ -403,6 +404,11 @@ export default function CountryDetail() {
             {country.healthcare && <HealthcareCard healthcare={country.healthcare} />}
           </div>
         )}
+
+        {/* Expert Widget - recommended experts for this country */}
+        <div className="mb-12">
+          <ExpertCountryWidget countryId={country.id} countryName={displayName} />
+        </div>
 
         {/* Fiscal Quick Widget - avant le calculateur détaillé */}
         <div className="mb-12">

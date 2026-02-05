@@ -66,9 +66,9 @@ import {
   LazySpecialRegimes,
   // LazyPersonaJourneys, // MASQUÉ - Non testé
   LazyGamificationHub,
-  // LazyExpertMarketplace, // MASQUÉ - Non fonctionnel
-  // LazyPartnerIntegrations, // MASQUÉ - Non fonctionnel
-  // LazyCommunity, // MASQUÉ - Non fonctionnel
+  LazyExpertMarketplace,
+  LazyExpertProfile,
+  LazyAdminExperts,
   LazyInstall,
   LazyToolsHub,
   // LazyAcademicHub, // MASQUÉ - Non fonctionnel
@@ -166,6 +166,8 @@ export const contentRoutes = [
   { path: "/tools/fiscal-calculator", element: <LazyFiscalCalculatorAdvanced /> },
   { path: "/fiscal/special-regimes", element: <LazySpecialRegimes /> },
   { path: "/install", element: <LazyInstall /> },
+  { path: "/experts", element: <LazyExpertMarketplace /> },
+  { path: "/experts/:id", element: <LazyExpertProfile /> },
   // { path: "/academic", element: <LazyAcademicHub /> }, // MASQUÉ
 ];
 
@@ -174,6 +176,7 @@ export const adminRoutes = [
   { path: "/admin/translations", element: <RequireAdmin><LazyAdminTranslations /></RequireAdmin> },
   { path: "/admin/analytics", element: <RequireAdmin><LazyAdminAnalytics /></RequireAdmin> },
   { path: "/admin/country-generator", element: <RequireAdmin><LazyAdminCountryGenerator /></RequireAdmin> },
+  { path: "/admin/experts", element: <RequireAdmin><LazyAdminExperts /></RequireAdmin> },
   // { path: "/admin/generate-translations", element: <RequireAdmin><LazyAdminGenerateTranslations /></RequireAdmin> }, // MASQUÉ
   // { path: "/admin/database-translations", element: <RequireAdmin><LazyAdminDatabaseTranslations /></RequireAdmin> }, // MASQUÉ
   { path: "/admin/partners", element: <RequireAdmin><LazyAdminPartners /></RequireAdmin> },
