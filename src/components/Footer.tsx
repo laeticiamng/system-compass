@@ -113,7 +113,7 @@ export function Footer() {
               © {currentYear} {t('common.appName')} — {t('footer.company', 'EmotionsCare SASU')}
             </p>
             <p className="text-[10px] sm:text-xs text-muted-foreground/70 max-w-md">
-              {t('footer.legalInfo', 'SASU au capital de 1 000€ — SIRET en cours d\'immatriculation — France')}
+              {t('footer.legalInfo', 'SASU au capital de 100€ — SIRET 944 505 445 00014 — RCS Amiens — TVA FR71944505445')}
             </p>
             <p className="text-[10px] sm:text-xs text-muted-foreground/70 max-w-md">
               {t('footer.disclaimer')}
