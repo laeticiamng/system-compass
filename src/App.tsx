@@ -1,10 +1,11 @@
-// Main Application Router - v1.4.1 with Modular Routes + Breadcrumbs + Diagnostics
+// Main Application Router - v1.4.1 with Modular Routes + Breadcrumbs + Diagnostics + SEO
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import { AuthProvider } from "@/hooks/useAuth";
 import { FeatureFlagProvider } from "@/shared/components/FeatureFlag";
 import { SubscriptionProvider } from "@/hooks/useSubscription";
@@ -31,52 +32,54 @@ const queryClient = new QueryClient({
 });
 
 const App = () => (
-  <GlobalErrorBoundary>
-    <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <SubscriptionProvider>
-          <FeatureFlagProvider>
-            <TooltipProvider>
-              <Toaster />
-              <Sonner />
-              <BrowserRouter>
-                <SidebarProvider defaultOpen={false}>
-                  <DialogCoordinatorProvider>
-                    <DisclaimerConsentDialog />
-                    <OnboardingDialog />
-                    <OnboardingTour />
-                    <div className="min-h-screen flex w-full">
-                      <AppSidebar />
-                      <div className="flex-1 flex flex-col min-w-0">
-                        <Header />
-                        <Breadcrumbs />
-                        <main className="flex-1">
-                          <Routes>
-                            {allRoutes.map((route) => (
-                              <Route 
-                                key={route.path} 
-                                path={route.path} 
-                                element={route.element} 
-                              />
-                            ))}
-                          </Routes>
-                        </main>
-                        <Footer />
-                        <ContextualShortcuts />
-                        <OfflineBanner />
-                        <CookieConsent />
-                        {import.meta.env.DEV && <DevDiagnosticsPanel />}
+  <HelmetProvider>
+    <GlobalErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <SubscriptionProvider>
+            <FeatureFlagProvider>
+              <TooltipProvider>
+                <Toaster />
+                <Sonner />
+                <BrowserRouter>
+                  <SidebarProvider defaultOpen={false}>
+                    <DialogCoordinatorProvider>
+                      <DisclaimerConsentDialog />
+                      <OnboardingDialog />
+                      <OnboardingTour />
+                      <div className="min-h-screen flex w-full">
+                        <AppSidebar />
+                        <div className="flex-1 flex flex-col min-w-0">
+                          <Header />
+                          <Breadcrumbs />
+                          <main className="flex-1">
+                            <Routes>
+                              {allRoutes.map((route) => (
+                                <Route 
+                                  key={route.path} 
+                                  path={route.path} 
+                                  element={route.element} 
+                                />
+                              ))}
+                            </Routes>
+                          </main>
+                          <Footer />
+                          <ContextualShortcuts />
+                          <OfflineBanner />
+                          <CookieConsent />
+                          {import.meta.env.DEV && <DevDiagnosticsPanel />}
+                        </div>
                       </div>
-                    </div>
-                  </DialogCoordinatorProvider>
-                </SidebarProvider>
-              </BrowserRouter>
-            </TooltipProvider>
-          </FeatureFlagProvider>
-        </SubscriptionProvider>
-      </AuthProvider>
-    </QueryClientProvider>
-  </GlobalErrorBoundary>
+                    </DialogCoordinatorProvider>
+                  </SidebarProvider>
+                </BrowserRouter>
+              </TooltipProvider>
+            </FeatureFlagProvider>
+          </SubscriptionProvider>
+        </AuthProvider>
+      </QueryClientProvider>
+    </GlobalErrorBoundary>
+  </HelmetProvider>
 );
 
 export default App;

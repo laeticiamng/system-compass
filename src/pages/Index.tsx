@@ -6,6 +6,7 @@
 import { useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
 import { useCountries } from '@/lib/countries-data';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -43,8 +44,15 @@ export default function Index() {
   const exampleCountry = countries.find(c => c.iso2 === 'CH') || countries[0];
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
-      {/* ========== HERO SECTION ========== */}
+    <>
+      <Helmet>
+        <title>Pyramid Compass - Analyse les systèmes des pays et trouve tes stratégies</title>
+        <meta name="description" content="Pyramid Compass - Analyse les systèmes des pays et trouve tes stratégies de sortie personnalisées. Découvre les règles réelles de 38+ pays, fais le test de profil gratuit et obtiens tes Exit Keys." />
+        <meta property="og:title" content="Pyramid Compass - Analyse les systèmes des pays" />
+        <meta property="og:description" content="Analyse les systèmes des pays et trouve tes stratégies de sortie personnalisées. Test de profil gratuit inclus." />
+      </Helmet>
+      <div className="min-h-screen bg-background overflow-x-hidden">
+        {/* ========== HERO SECTION ========== */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
         {/* Background effects */}
         <div className="absolute inset-0">
@@ -516,6 +524,7 @@ export default function Index() {
           </div>
         </section>
       )}
-    </div>
+      </div>
+    </>
   );
 }
