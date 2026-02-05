@@ -65,14 +65,15 @@ export interface ExpertFilters {
 }
 
 // Fetch all active experts with optional filters
+// Uses experts_public view to hide sensitive fields (user_id, stripe_account_id)
 export function useExpertsDb(filters?: ExpertFilters) {
   return useQuery({
     queryKey: ['experts-db', filters],
     queryFn: async () => {
+      // Use the secure public view that hides sensitive fields
       let query = supabase
-        .from('experts')
+        .from('experts_public')
         .select('*')
-        .eq('is_active', true)
         .order('rating_avg', { ascending: false });
       
       if (filters?.specialty && filters.specialty !== 'all') {
@@ -121,14 +122,16 @@ export function useExpertsDb(filters?: ExpertFilters) {
 }
 
 // Fetch a single expert by ID
+// Uses experts_public view to hide sensitive fields (user_id, stripe_account_id)
 export function useExpertById(id: string | undefined) {
   return useQuery({
     queryKey: ['expert', id],
     queryFn: async () => {
       if (!id) return null;
       
+      // Use the secure public view that hides sensitive fields
       const { data, error } = await supabase
-        .from('experts')
+        .from('experts_public')
         .select('*')
         .eq('id', id)
         .single();
@@ -141,16 +144,17 @@ export function useExpertById(id: string | undefined) {
 }
 
 // Fetch experts for a specific country
+// Uses experts_public view to hide sensitive fields (user_id, stripe_account_id)
 export function useExpertsByCountry(countryId: string | undefined, limit = 3) {
   return useQuery({
     queryKey: ['experts-by-country', countryId, limit],
     queryFn: async () => {
       if (!countryId) return [];
       
+      // Use the secure public view that hides sensitive fields
       const { data, error } = await supabase
-        .from('experts')
+        .from('experts_public')
         .select('*')
-        .eq('is_active', true)
         .contains('countries', [countryId])
         .order('rating_avg', { ascending: false })
         .limit(limit);
@@ -163,14 +167,15 @@ export function useExpertsByCountry(countryId: string | undefined, limit = 3) {
 }
 
 // Get unique values for filters
+// Uses experts_public view for consistent security
 export function useExpertFilterOptions() {
   return useQuery({
     queryKey: ['expert-filter-options'],
     queryFn: async () => {
+      // Use the secure public view
       const { data, error } = await supabase
-        .from('experts')
-        .select('specialties, countries, languages')
-        .eq('is_active', true);
+        .from('experts_public')
+        .select('specialties, countries, languages');
       
       if (error) throw error;
       
@@ -179,9 +184,9 @@ export function useExpertFilterOptions() {
       const languages = new Set<string>();
       
       data?.forEach(expert => {
-        expert.specialties?.forEach(s => specialties.add(s));
-        expert.countries?.forEach(c => countries.add(c));
-        expert.languages?.forEach(l => languages.add(l));
+        (expert.specialties as string[] | null)?.forEach(s => specialties.add(s));
+        (expert.countries as string[] | null)?.forEach(c => countries.add(c));
+        (expert.languages as string[] | null)?.forEach(l => languages.add(l));
       });
       
       return {
