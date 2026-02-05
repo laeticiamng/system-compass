@@ -18,6 +18,7 @@ import {
   ArrowRight,
   CheckCircle2
 } from 'lucide-react';
+import { PremiumPageWrapper } from '@/components/PremiumPageWrapper';
 
 type DifficultyFilter = 'all' | 'accessible' | 'exigeant' | 'expert';
 type PyramidFilter = 'all' | PyramidType;
@@ -68,7 +69,30 @@ export default function ExitKeysCatalog() {
     }
   };
 
+  const previewContent = (
+    <div className="min-h-[40vh] pt-24 pb-8">
+      <div className="container mx-auto px-4">
+        <div className="mb-8">
+          <div className="flex items-center gap-2 mb-2">
+            <Key className="w-6 h-6 text-primary" />
+            <h1 className="text-3xl font-bold text-foreground">
+              {t('exitKeys.catalog.title', 'Catalogue des Clés de Sortie')}
+            </h1>
+          </div>
+          <p className="text-muted-foreground max-w-2xl mb-3">
+            {t('exitKeys.catalog.subtitle', 'Stratégies structurées pour changer de système. Chaque clé est une trajectoire mesurable, sans promesse vague.')}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
+    <PremiumPageWrapper
+      title={t('subscription.catalogTitle', 'Catalogue des Stratégies')}
+      description={t('subscription.catalogDesc', 'Accédez à toutes les stratégies de sortie et trouvez celle qui correspond à votre profil.')}
+      previewContent={previewContent}
+    >
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8 pt-24">
         {/* Header */}
@@ -261,5 +285,6 @@ export default function ExitKeysCatalog() {
         </div>
       </div>
     </div>
+    </PremiumPageWrapper>
   );
 }
