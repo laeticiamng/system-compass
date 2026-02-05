@@ -82,11 +82,11 @@ export class GlobalErrorBoundary extends Component<Props, State> {
               <div className="mx-auto w-16 h-16 rounded-full bg-destructive/10 flex items-center justify-center mb-4">
                 <AlertTriangle className="w-8 h-8 text-destructive" />
               </div>
-              <CardTitle className="text-xl">
-                Une erreur inattendue s'est produite
+              <CardTitle className="text-xl font-display">
+                Oops, une erreur est survenue
               </CardTitle>
               <p className="text-muted-foreground text-sm mt-2">
-                L'application a rencontré un problème. Vous pouvez essayer de recharger la page ou retourner à l'accueil.
+                L'application a rencontré un problème inattendu. Vous pouvez essayer de recharger la page ou retourner à l'accueil.
               </p>
             </CardHeader>
             <CardContent className="space-y-4">
