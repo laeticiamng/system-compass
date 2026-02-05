@@ -92,6 +92,7 @@ export const LazyHowToRead = withSuspense(lazy(() => import('@/pages/HowToRead')
 
 // New modules
 export const LazyFiscalCalculator = withSuspense(lazy(() => import('@/pages/FiscalCalculator')));
+export const LazyFiscalCalculatorAdvanced = withSuspense(lazy(() => import('@/pages/tools/FiscalCalculatorPage')));
 export const LazyPersonaJourneys = withSuspense(lazy(() => import('@/pages/PersonaJourneys')));
 export const LazyGamificationHub = withSuspense(lazy(() => import('@/pages/GamificationHub')));
 export const LazyExpertMarketplace = withSuspense(lazy(() => import('@/pages/ExpertMarketplace')));

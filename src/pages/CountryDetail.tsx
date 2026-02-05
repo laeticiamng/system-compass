@@ -14,6 +14,7 @@ import { HealthcareCard } from '@/components/HealthcareCard';
 import { PositivePointsCard } from '@/components/PositivePointsCard';
 import { CountryMusicPlayer } from '@/components/CountryMusicPlayer';
 import { FiscalSalaryCalculator } from '@/components/FiscalSalaryCalculator';
+import { FiscalQuickWidget } from '@/components/fiscal';
 import { RetirementProjection } from '@/components/RetirementProjection';
 import { LGBTQRightsIndicator } from '@/components/LGBTQRightsIndicator';
 import { PlaybookSection } from '@/components/PlaybookSection';
@@ -402,6 +403,11 @@ export default function CountryDetail() {
             {country.healthcare && <HealthcareCard healthcare={country.healthcare} />}
           </div>
         )}
+
+        {/* Fiscal Quick Widget - avant le calculateur détaillé */}
+        <div className="mb-12">
+          <FiscalQuickWidget countryId={country.id} countryName={displayName} />
+        </div>
 
         <div className="mb-12">
           <h2 className="font-display text-2xl font-bold mb-6">{t('fiscal.salaryCalculator', 'Calculateur de Salaire Net')}</h2>
