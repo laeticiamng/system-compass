@@ -1,6 +1,8 @@
 /**
  * Route Configuration - Centralized route definitions
  * Organized by feature domain for maintainability
+ * 
+ * v7.0.8 - Routes nettoyées : modules non fonctionnels masqués (fichiers conservés)
  */
 
 import { Navigate } from "react-router-dom";
@@ -15,7 +17,7 @@ import Disclaimer from "@/pages/Disclaimer";
 import QuickTest from "@/pages/QuickTest";
 import SubscriptionSuccess from "@/pages/SubscriptionSuccess";
 import Pricing from "@/pages/Pricing";
-import Partners from "@/pages/Partners";
+// import Partners from "@/pages/Partners"; // MASQUÉ - Non fonctionnel
 
 // Lazy loaded pages
 import {
@@ -35,38 +37,38 @@ import {
   LazyUsage,
   LazyNotificationSettings,
   LazyInstitutions,
-  LazyB2BSolutions,
+  // LazyB2BSolutions, // MASQUÉ - Non fonctionnel
   LazyCaseDetail,
-  LazyLatentModule,
-  LazyIrreversaModule,
+  // LazyLatentModule, // MASQUÉ - Non fonctionnel
+  // LazyIrreversaModule, // MASQUÉ - Non fonctionnel
   LazyTerrainRealities,
   LazyTerrainRealitiesSelector,
   LazyFinancialSafetyIntel,
   LazyAdminTranslations,
   LazyAdminAnalytics,
   LazyAdminCountryGenerator,
-  LazyAdminGenerateTranslations,
-  LazyAdminDatabaseTranslations,
+  // LazyAdminGenerateTranslations, // MASQUÉ - Non fonctionnel
+  // LazyAdminDatabaseTranslations, // MASQUÉ - Non fonctionnel
   LazyAdminPartners,
-  LazyAdminTranslationsSync,
-  LazySeedTranslations,
+  // LazyAdminTranslationsSync, // MASQUÉ - Non fonctionnel
+  // LazySeedTranslations, // MASQUÉ - Non fonctionnel
   LazyPyramidTypes,
   LazyResources,
-  LazyOVI,
-  LazyErrorsAndIllusions,
+  // LazyOVI, // MASQUÉ - Non fonctionnel
+  // LazyErrorsAndIllusions, // MASQUÉ - Non fonctionnel
   LazyPreventionFilter,
   LazyUniversalErrorDetail,
   LazyHowToRead,
   LazyDiagnostics,
   LazyFiscalCalculator,
-  LazyPersonaJourneys,
+  // LazyPersonaJourneys, // MASQUÉ - Non testé
   LazyGamificationHub,
-  LazyExpertMarketplace,
-  LazyPartnerIntegrations,
-  LazyCommunity,
+  // LazyExpertMarketplace, // MASQUÉ - Non fonctionnel
+  // LazyPartnerIntegrations, // MASQUÉ - Non fonctionnel
+  // LazyCommunity, // MASQUÉ - Non fonctionnel
   LazyInstall,
   LazyToolsHub,
-  LazyAcademicHub,
+  // LazyAcademicHub, // MASQUÉ - Non fonctionnel
 } from "@/routes/LazyRoutes";
 
 // ============================================================
@@ -82,7 +84,7 @@ export const coreRoutes = [
   { path: "/quick-test", element: <QuickTest /> },
   { path: "/subscription-success", element: <SubscriptionSuccess /> },
   { path: "/pricing", element: <Pricing /> },
-  { path: "/partners", element: <Partners /> },
+  // { path: "/partners", element: <Partners /> }, // MASQUÉ
 ];
 
 /** Country exploration routes */
@@ -109,7 +111,7 @@ export const planningRoutes = [
   { path: "/exit-keys/compare", element: <LazyCompareExitKeys /> },
   { path: "/compare-exit-keys", element: <LazyCompareExitKeys /> },
   { path: "/prevention-filter", element: <LazyPreventionFilter /> },
-  { path: "/errors-illusions", element: <LazyErrorsAndIllusions /> },
+  // { path: "/errors-illusions", element: <LazyErrorsAndIllusions /> }, // MASQUÉ
   { path: "/universal-errors/:id", element: <LazyUniversalErrorDetail /> },
 ];
 
@@ -117,7 +119,7 @@ export const planningRoutes = [
 export const learningRoutes = [
   { path: "/pyramid-quiz", element: <LazyPyramidQuiz /> },
   { path: "/life-game", element: <LazyLifeGame /> },
-  { path: "/personas", element: <LazyPersonaJourneys /> },
+  // { path: "/personas", element: <LazyPersonaJourneys /> }, // MASQUÉ - Non testé
   { path: "/gamification", element: <LazyGamificationHub /> },
 ];
 
@@ -131,18 +133,18 @@ export const userRoutes = [
 /** B2B and institutional routes */
 export const proRoutes = [
   { path: "/institutions", element: <LazyInstitutions /> },
-  { path: "/b2b", element: <LazyB2BSolutions /> },
+  // { path: "/b2b", element: <LazyB2BSolutions /> }, // MASQUÉ
   { path: "/cases/:id", element: <LazyCaseDetail /> },
-  { path: "/latent", element: <LazyLatentModule /> },
-  { path: "/irreversa", element: <LazyIrreversaModule /> },
-  { path: "/ovi", element: <LazyOVI /> },
+  // { path: "/latent", element: <LazyLatentModule /> }, // MASQUÉ
+  // { path: "/irreversa", element: <LazyIrreversaModule /> }, // MASQUÉ
+  // { path: "/ovi", element: <LazyOVI /> }, // MASQUÉ
 ];
 
-/** Community and marketplace */
+/** Community and marketplace - TOUTES MASQUÉES */
 export const communityRoutes = [
-  { path: "/experts", element: <LazyExpertMarketplace /> },
-  { path: "/partner-services", element: <LazyPartnerIntegrations /> },
-  { path: "/community", element: <LazyCommunity /> },
+  // { path: "/experts", element: <LazyExpertMarketplace /> }, // MASQUÉ
+  // { path: "/partner-services", element: <LazyPartnerIntegrations /> }, // MASQUÉ
+  // { path: "/community", element: <LazyCommunity /> }, // MASQUÉ
 ];
 
 /** Terrain and intel routes */
@@ -159,19 +161,19 @@ export const contentRoutes = [
   { path: "/how-to-read", element: <LazyHowToRead /> },
   { path: "/tools", element: <LazyToolsHub /> },
   { path: "/install", element: <LazyInstall /> },
-  { path: "/academic", element: <LazyAcademicHub /> },
+  // { path: "/academic", element: <LazyAcademicHub /> }, // MASQUÉ
 ];
 
-/** Admin routes - protected */
+/** Admin routes - protected (routes admin fonctionnelles uniquement) */
 export const adminRoutes = [
   { path: "/admin/translations", element: <RequireAdmin><LazyAdminTranslations /></RequireAdmin> },
   { path: "/admin/analytics", element: <RequireAdmin><LazyAdminAnalytics /></RequireAdmin> },
   { path: "/admin/country-generator", element: <RequireAdmin><LazyAdminCountryGenerator /></RequireAdmin> },
-  { path: "/admin/generate-translations", element: <RequireAdmin><LazyAdminGenerateTranslations /></RequireAdmin> },
-  { path: "/admin/database-translations", element: <RequireAdmin><LazyAdminDatabaseTranslations /></RequireAdmin> },
+  // { path: "/admin/generate-translations", element: <RequireAdmin><LazyAdminGenerateTranslations /></RequireAdmin> }, // MASQUÉ
+  // { path: "/admin/database-translations", element: <RequireAdmin><LazyAdminDatabaseTranslations /></RequireAdmin> }, // MASQUÉ
   { path: "/admin/partners", element: <RequireAdmin><LazyAdminPartners /></RequireAdmin> },
-  { path: "/admin/translations-sync", element: <RequireAdmin><LazyAdminTranslationsSync /></RequireAdmin> },
-  { path: "/seed-translations", element: <LazySeedTranslations /> },
+  // { path: "/admin/translations-sync", element: <RequireAdmin><LazyAdminTranslationsSync /></RequireAdmin> }, // MASQUÉ
+  // { path: "/seed-translations", element: <LazySeedTranslations /> }, // MASQUÉ
   { path: "/diagnostics", element: <LazyDiagnostics /> },
 ];
 
@@ -179,9 +181,20 @@ export const adminRoutes = [
 export const redirectRoutes = [
   { path: "/match", element: <Navigate to="/profile-matcher" replace /> },
   { path: "/multi-compare", element: <Navigate to="/compare?mode=multi" replace /> },
-  { path: "/systemic-mistakes", element: <Navigate to="/errors-illusions" replace /> },
-  { path: "/universal-errors", element: <Navigate to="/errors-illusions" replace /> },
+  { path: "/systemic-mistakes", element: <Navigate to="/prevention-filter" replace /> },
+  { path: "/universal-errors", element: <Navigate to="/prevention-filter" replace /> },
   { path: "/orientation-hub", element: <Navigate to="/about" replace /> },
+  // Redirects pour routes masquées vers pages fonctionnelles
+  { path: "/errors-illusions", element: <Navigate to="/prevention-filter" replace /> },
+  { path: "/partners", element: <Navigate to="/about" replace /> },
+  { path: "/b2b", element: <Navigate to="/institutions" replace /> },
+  { path: "/experts", element: <Navigate to="/about" replace /> },
+  { path: "/community", element: <Navigate to="/about" replace /> },
+  { path: "/academic", element: <Navigate to="/resources" replace /> },
+  { path: "/personas", element: <Navigate to="/profile-test" replace /> },
+  { path: "/latent", element: <Navigate to="/dashboard" replace /> },
+  { path: "/irreversa", element: <Navigate to="/dashboard" replace /> },
+  { path: "/ovi", element: <Navigate to="/dashboard" replace /> },
 ];
 
 /** 404 fallback */
