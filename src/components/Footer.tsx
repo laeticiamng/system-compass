@@ -112,6 +112,22 @@ export function Footer() {
             <p className="text-xs sm:text-sm text-muted-foreground">
               © {currentYear} {t('common.appName')} — {t('footer.company', 'EmotionsCare SASU')}
             </p>
+            
+            {/* Legal links */}
+            <div className="flex flex-wrap justify-center gap-3 text-xs text-muted-foreground">
+              <Link to="/cgv" className="hover:text-foreground transition-colors">
+                CGV
+              </Link>
+              <span className="text-border">|</span>
+              <Link to="/mentions-legales" className="hover:text-foreground transition-colors">
+                Mentions légales
+              </Link>
+              <span className="text-border">|</span>
+              <Link to="/disclaimer" className="hover:text-foreground transition-colors">
+                Politique de confidentialité
+              </Link>
+            </div>
+            
             <p className="text-[10px] sm:text-xs text-muted-foreground/70 max-w-md">
               {t('footer.disclaimer')}
               <Link to="/disclaimer" className="text-primary hover:underline ml-1">{t('footer.learnMore')}</Link>

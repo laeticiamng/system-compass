@@ -14,6 +14,8 @@ import Auth from "@/pages/Auth";
 import NotFound from "@/pages/NotFound";
 import About from "@/pages/About";
 import Disclaimer from "@/pages/Disclaimer";
+import CGV from "@/pages/CGV";
+import MentionsLegales from "@/pages/MentionsLegales";
 import QuickTest from "@/pages/QuickTest";
 import SubscriptionSuccess from "@/pages/SubscriptionSuccess";
 import Pricing from "@/pages/Pricing";
@@ -86,6 +88,8 @@ export const coreRoutes = [
   { path: "/auth", element: <Auth /> },
   { path: "/about", element: <About /> },
   { path: "/disclaimer", element: <Disclaimer /> },
+  { path: "/cgv", element: <CGV /> },
+  { path: "/mentions-legales", element: <MentionsLegales /> },
   { path: "/quick-test", element: <QuickTest /> },
   { path: "/subscription-success", element: <SubscriptionSuccess /> },
   { path: "/pricing", element: <Pricing /> },
