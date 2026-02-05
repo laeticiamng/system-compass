@@ -614,6 +614,13 @@ export type Database = {
             referencedRelation: "experts"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "consultations_expert_id_fkey"
+            columns: ["expert_id"]
+            isOneToOne: false
+            referencedRelation: "experts_public"
+            referencedColumns: ["id"]
+          },
         ]
       }
       countries: {
@@ -1560,6 +1567,13 @@ export type Database = {
             columns: ["expert_id"]
             isOneToOne: false
             referencedRelation: "experts"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "fk_expert_reviews_experts"
+            columns: ["expert_id"]
+            isOneToOne: false
+            referencedRelation: "experts_public"
             referencedColumns: ["id"]
           },
         ]
@@ -4896,6 +4910,66 @@ export type Database = {
           event_count: number | null
           event_name: string | null
           unique_sessions: number | null
+        }
+        Relationships: []
+      }
+      experts_public: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          booking_url: string | null
+          certifications: Json | null
+          countries: string[] | null
+          created_at: string | null
+          currency: string | null
+          display_name: string | null
+          hourly_rate: number | null
+          id: string | null
+          is_verified: boolean | null
+          languages: string[] | null
+          rating_avg: number | null
+          response_time_hours: number | null
+          review_count: number | null
+          specialties: string[] | null
+          updated_at: string | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: string | null
+          booking_url?: string | null
+          certifications?: Json | null
+          countries?: string[] | null
+          created_at?: string | null
+          currency?: string | null
+          display_name?: string | null
+          hourly_rate?: number | null
+          id?: string | null
+          is_verified?: boolean | null
+          languages?: string[] | null
+          rating_avg?: number | null
+          response_time_hours?: number | null
+          review_count?: number | null
+          specialties?: string[] | null
+          updated_at?: string | null
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: string | null
+          booking_url?: string | null
+          certifications?: Json | null
+          countries?: string[] | null
+          created_at?: string | null
+          currency?: string | null
+          display_name?: string | null
+          hourly_rate?: number | null
+          id?: string | null
+          is_verified?: boolean | null
+          languages?: string[] | null
+          rating_avg?: number | null
+          response_time_hours?: number | null
+          review_count?: number | null
+          specialties?: string[] | null
+          updated_at?: string | null
         }
         Relationships: []
       }
