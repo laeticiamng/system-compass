@@ -4824,6 +4824,8 @@ export type Database = {
           created_at: string
           elapsed_seconds: number | null
           id: string
+          matched_countries: Json | null
+          profile_type: string | null
           result_archetype: string | null
           result_pyramid: string
           test_type: string
@@ -4835,6 +4837,8 @@ export type Database = {
           created_at?: string
           elapsed_seconds?: number | null
           id?: string
+          matched_countries?: Json | null
+          profile_type?: string | null
           result_archetype?: string | null
           result_pyramid: string
           test_type: string
@@ -4846,6 +4850,8 @@ export type Database = {
           created_at?: string
           elapsed_seconds?: number | null
           id?: string
+          matched_countries?: Json | null
+          profile_type?: string | null
           result_archetype?: string | null
           result_pyramid?: string
           test_type?: string

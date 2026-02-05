@@ -11,6 +11,8 @@ export interface TestResult {
   answers: Record<string, unknown>;
   result_pyramid: string;
   result_archetype: string | null;
+  profile_type: string | null;
+  matched_countries: { id: string; name: string; compatibility: number }[] | null;
   elapsed_seconds: number | null;
   created_at: string;
   updated_at: string;
@@ -49,7 +51,9 @@ export function useTestResults() {
     answers: Record<string, unknown>,
     resultPyramid: string,
     resultArchetype?: string,
-    elapsedSeconds?: number
+    elapsedSeconds?: number,
+    profileType?: string,
+    matchedCountries?: { id: string; name: string; compatibility: number }[]
   ): Promise<boolean> => {
     if (!user) {
       // Store locally if not authenticated
@@ -57,6 +61,8 @@ export function useTestResults() {
         answers,
         result_pyramid: resultPyramid,
         result_archetype: resultArchetype,
+        profile_type: profileType,
+        matched_countries: matchedCountries,
         elapsed_seconds: elapsedSeconds,
         created_at: new Date().toISOString()
       }));
@@ -72,8 +78,10 @@ export function useTestResults() {
           answers: answers as any,
           result_pyramid: resultPyramid,
           result_archetype: resultArchetype || null,
+          profile_type: profileType || null,
+          matched_countries: matchedCountries || null,
           elapsed_seconds: elapsedSeconds || null
-        });
+        } as any);
 
       if (error) throw error;
       

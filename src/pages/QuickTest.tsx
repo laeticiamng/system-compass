@@ -1,19 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Button } from '@/components/ui/button';
 import { PyramidType, PYRAMID_TYPE_INFO } from '@/lib/types';
 import { useTestResults } from '@/hooks/useTestResults';
 import { useAuth } from '@/hooks/useAuth';
-import { OVISuggestionsWidget } from '@/components/ovi/OVISuggestionsWidget';
 import { motion, useInView } from 'framer-motion';
+import { QuickTestResults, determineProfileType, matchCountries } from '@/components/QuickTestResults';
 import { 
   Zap, 
-  ArrowRight,
-  Clock, 
-  Eye, 
-  Key, 
-  GitCompare,
   Briefcase,
   GraduationCap,
   RefreshCcw,
@@ -25,8 +18,7 @@ import {
   Timer,
   Wallet,
   Battery,
-  Users,
-  AlertTriangle
+  Users
 } from 'lucide-react';
 
 type Situation = 'employee' | 'freelance' | 'student' | 'transition';
@@ -76,49 +68,8 @@ function mapToPyramid(answers: QuickTestAnswers): PyramidType {
   return 'STABILITY_REDIS';
 }
 
-// Blind spots per pyramid type
-const PYRAMID_BLIND_SPOTS: Record<PyramidType, string[]> = {
-  STABILITY_REDIS: [
-    'quickTest.blindSpots.stability.slow',
-    'quickTest.blindSpots.stability.mobility',
-    'quickTest.blindSpots.stability.rulesChange'
-  ],
-  GROWTH_RISK: [
-    'quickTest.blindSpots.growth.safetyNet',
-    'quickTest.blindSpots.growth.survivors',
-    'quickTest.blindSpots.growth.capital'
-  ],
-  PROBLEM_RENT: [
-    'quickTest.blindSpots.rent.dysfunction',
-    'quickTest.blindSpots.rent.network',
-    'quickTest.blindSpots.rent.reform'
-  ],
-  COMPETENCE_TRUST: [
-    'quickTest.blindSpots.competence.credentials',
-    'quickTest.blindSpots.competence.slow',
-    'quickTest.blindSpots.competence.outsider'
-  ],
-  HYBRID_TRANSITION: [
-    'quickTest.blindSpots.hybrid.rules',
-    'quickTest.blindSpots.hybrid.contradictions',
-    'quickTest.blindSpots.hybrid.timing'
-  ],
-  RESOURCE_EXTRACTION: [
-    'quickTest.blindSpots.resource.temporary',
-    'quickTest.blindSpots.resource.volatility',
-    'quickTest.blindSpots.resource.dependency'
-  ]
-};
-
-// Exit keys per pyramid type
-const PYRAMID_EXIT_KEYS: Record<PyramidType, string> = {
-  STABILITY_REDIS: 'quickTest.exitKeys.stability',
-  GROWTH_RISK: 'quickTest.exitKeys.growth',
-  PROBLEM_RENT: 'quickTest.exitKeys.rent',
-  COMPETENCE_TRUST: 'quickTest.exitKeys.competence',
-  HYBRID_TRANSITION: 'quickTest.exitKeys.hybrid',
-  RESOURCE_EXTRACTION: 'quickTest.exitKeys.resource'
-};
+// Note: PYRAMID_BLIND_SPOTS and PYRAMID_EXIT_KEYS are kept for future use 
+// but currently the QuickTestResults component handles display
 
 // Animated section wrapper
 function AnimatedSection({ children, className }: { children: React.ReactNode; className?: string }) {
@@ -139,7 +90,6 @@ function AnimatedSection({ children, className }: { children: React.ReactNode; c
 }
 
 export default function QuickTest() {
-  const navigate = useNavigate();
   const { t } = useTranslation();
   useAuth();
   const { saveResult } = useTestResults();
@@ -148,6 +98,18 @@ export default function QuickTest() {
   const [startTime] = useState(Date.now());
   const [elapsedTime, setElapsedTime] = useState(0);
   const [hasSaved, setHasSaved] = useState(false);
+  const [countries, setCountries] = useState<{ id: string; name: string; pyramid_type: string }[]>([]);
+
+  // Fetch countries for matching
+  useEffect(() => {
+    const fetchCountries = async () => {
+      const { data } = await import('@/integrations/supabase/client').then(m => 
+        m.supabase.from('countries').select('id, name, pyramid_type')
+      );
+      if (data) setCountries(data);
+    };
+    fetchCountries();
+  }, []);
 
   // Track elapsed time
   useEffect(() => {
@@ -167,11 +129,23 @@ export default function QuickTest() {
       
       if (!hasSaved) {
         const pyramid = mapToPyramid(answers);
-        saveResult('quick_test', answers as Record<string, unknown>, pyramid, undefined, elapsedTime);
+        const profileType = determineProfileType(answers);
+        const matched = matchCountries(profileType, pyramid, countries);
+        const matchedForSave = matched.map(c => ({ id: c.id, name: c.name, compatibility: c.compatibility }));
+        
+        saveResult(
+          'quick_test', 
+          answers as Record<string, unknown>, 
+          pyramid, 
+          undefined, 
+          elapsedTime,
+          profileType,
+          matchedForSave
+        );
         setHasSaved(true);
       }
     }
-  }, [answers, hasSaved, elapsedTime, saveResult]);
+  }, [answers, hasSaved, elapsedTime, saveResult, countries]);
 
   const answeredCount = Object.values(answers).filter(Boolean).length;
   const pyramidType = showResults ? mapToPyramid(answers) : null;
@@ -188,171 +162,15 @@ export default function QuickTest() {
   };
 
   if (showResults && pyramidType && pyramidInfo) {
-    const blindSpots = PYRAMID_BLIND_SPOTS[pyramidType];
-    const exitKey = pyramidType ? PYRAMID_EXIT_KEYS[pyramidType] : null;
-
     return (
-      <div className="min-h-screen bg-background overflow-x-hidden">
-        {/* Results Hero */}
-        <section className="relative pt-24 sm:pt-32 pb-16 overflow-hidden">
-          {/* Animated gradient background */}
-          <div className="absolute inset-0">
-            <motion.div 
-              className="absolute top-20 left-1/3 w-[500px] h-[500px] rounded-full"
-              style={{
-                background: 'radial-gradient(circle, hsl(var(--primary) / 0.15) 0%, transparent 70%)',
-              }}
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.3, 0.5, 0.3],
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-          </div>
-
-          <div className="container mx-auto px-4 relative z-10 max-w-2xl">
-            {/* Timer badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="flex justify-center mb-8"
-            >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 text-green-500 font-medium">
-                <Clock className="w-4 h-4" />
-                {elapsedTime} {t('common.seconds', 'secondes')}
-              </div>
-            </motion.div>
-
-            {/* Main result card */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="bg-card border border-border/50 rounded-3xl p-6 sm:p-10 mb-8 shadow-[0_0_60px_hsl(var(--primary)/0.1)]"
-            >
-              <p className="text-sm text-muted-foreground mb-4 text-center">
-                {t('quickTest.result.systemLooksLike', 'Le système ressemble souvent à...')}
-              </p>
-              
-              <div className="p-6 rounded-2xl bg-primary/5 border border-primary/20 mb-8">
-                <div className="flex items-center gap-4 justify-center">
-                  <div className="p-3 rounded-xl bg-primary/10">
-                    <Eye className="w-8 h-8 text-primary" />
-                  </div>
-                  <div className="text-center sm:text-left">
-                    <h2 className="font-display text-2xl sm:text-3xl font-bold">{pyramidInfo.label}</h2>
-                    <p className="text-sm text-muted-foreground">{pyramidInfo.description}</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Blind spots */}
-              <div className="mb-8">
-                <h3 className="font-semibold mb-4 flex items-center justify-center gap-2 text-lg">
-                  <AlertTriangle className="w-5 h-5 text-amber-500" />
-                  {t('quickTest.result.blindSpots', '3 points aveugles fréquents')}
-                </h3>
-                <ul className="space-y-3">
-                  {blindSpots.map((spotKey, index) => (
-                    <motion.li 
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.4 + index * 0.1 }}
-                      className="flex items-start gap-3 p-4 rounded-xl bg-amber-500/5 border border-amber-500/20"
-                    >
-                      <span className="w-2 h-2 rounded-full bg-amber-500 mt-2 flex-shrink-0" />
-                      <span className="text-sm">{t(spotKey)}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Exit key */}
-              <div className="p-6 rounded-2xl bg-primary/5 border border-primary/20">
-                <h3 className="font-semibold mb-3 flex items-center justify-center gap-2 text-lg">
-                  <Key className="w-5 h-5 text-primary" />
-                  {t('quickTest.result.exitKey', '1 clé de sortie à considérer')}
-                </h3>
-                <p className="text-sm text-muted-foreground mb-4 text-center">
-                  {exitKey && t(exitKey)}
-                </p>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => navigate('/exit-keys')}
-                  className="w-full text-primary hover:text-primary/80 gap-2"
-                >
-                  {t('quickTest.result.viewExitKeys', 'Voir les clés de sortie')}
-                  <ArrowRight className="w-4 h-4" />
-                </Button>
-              </div>
-            </motion.div>
-
-            {/* CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="flex flex-col sm:flex-row gap-4 mb-8"
-            >
-              <Button
-                size="lg"
-                onClick={() => navigate('/prevention-filter', { 
-                  state: { 
-                    prefill: { 
-                      riskTolerance: answers.riskTolerance,
-                      priority: answers.priority 
-                    } 
-                  } 
-                })}
-                className="flex-1 gap-2 h-14 rounded-full shadow-[0_0_30px_hsl(var(--primary)/0.3)]"
-              >
-                <Eye className="w-5 h-5" />
-                {t('quickTest.result.deepDive', 'Approfondir')}
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={() => navigate('/compare?mode=multi')}
-                className="flex-1 gap-2 h-14 rounded-full"
-              >
-                <GitCompare className="w-5 h-5" />
-                {t('quickTest.result.compareScenarios', 'Comparer des scénarios')}
-              </Button>
-            </motion.div>
-
-            {/* Restart */}
-            <div className="text-center mb-8">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={handleReset}
-                className="gap-2 text-muted-foreground"
-              >
-                <RefreshCcw className="w-4 h-4" />
-                {t('quickTest.restart', 'Recommencer')}
-              </Button>
-            </div>
-
-            {/* OVI Suggestions */}
-            <OVISuggestionsWidget 
-              simulationType="matching" 
-              context={{ riskLevel: answers.riskTolerance as 'low' | 'medium' | 'high' }}
-              className="mb-8"
-            />
-
-            {/* Disclaimer */}
-            <p className="text-xs text-center text-muted-foreground/70">
-              ⚠️ {t('quickTest.disclaimer', 'Simulation ≠ prédiction. Exploration uniquement.')}
-            </p>
-          </div>
-        </section>
-      </div>
+      <QuickTestResults
+        answers={answers}
+        pyramidType={pyramidType}
+        pyramidInfo={pyramidInfo}
+        elapsedTime={elapsedTime}
+        onReset={handleReset}
+        countries={countries}
+      />
     );
   }
 
