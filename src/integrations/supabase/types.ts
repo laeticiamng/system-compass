@@ -1416,6 +1416,66 @@ export type Database = {
         }
         Relationships: []
       }
+      expert_applications: {
+        Row: {
+          admin_notes: string | null
+          bio: string | null
+          certifications: Json | null
+          countries: string[] | null
+          created_at: string | null
+          currency: string | null
+          display_name: string
+          documents: Json | null
+          hourly_rate: number | null
+          id: string
+          languages: string[] | null
+          reviewed_at: string | null
+          reviewed_by: string | null
+          specialties: string[] | null
+          status: string | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          admin_notes?: string | null
+          bio?: string | null
+          certifications?: Json | null
+          countries?: string[] | null
+          created_at?: string | null
+          currency?: string | null
+          display_name: string
+          documents?: Json | null
+          hourly_rate?: number | null
+          id?: string
+          languages?: string[] | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          specialties?: string[] | null
+          status?: string | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          admin_notes?: string | null
+          bio?: string | null
+          certifications?: Json | null
+          countries?: string[] | null
+          created_at?: string | null
+          currency?: string | null
+          display_name?: string
+          documents?: Json | null
+          hourly_rate?: number | null
+          id?: string
+          languages?: string[] | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          specialties?: string[] | null
+          status?: string | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       expert_review_votes: {
         Row: {
           created_at: string
@@ -1523,6 +1583,8 @@ export type Database = {
           response_time_hours: number | null
           review_count: number | null
           specialties: string[] | null
+          stripe_account_id: string | null
+          stripe_onboarding_complete: boolean | null
           updated_at: string | null
           user_id: string | null
         }
@@ -1544,6 +1606,8 @@ export type Database = {
           response_time_hours?: number | null
           review_count?: number | null
           specialties?: string[] | null
+          stripe_account_id?: string | null
+          stripe_onboarding_complete?: boolean | null
           updated_at?: string | null
           user_id?: string | null
         }
@@ -1565,6 +1629,8 @@ export type Database = {
           response_time_hours?: number | null
           review_count?: number | null
           specialties?: string[] | null
+          stripe_account_id?: string | null
+          stripe_onboarding_complete?: boolean | null
           updated_at?: string | null
           user_id?: string | null
         }

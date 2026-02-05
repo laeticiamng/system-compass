@@ -68,6 +68,8 @@ import {
   LazyGamificationHub,
   LazyExpertMarketplace,
   LazyExpertProfile,
+  LazyBecomeExpert,
+  LazyConsultationSuccess,
   LazyAdminExperts,
   LazyInstall,
   LazyToolsHub,
@@ -168,6 +170,8 @@ export const contentRoutes = [
   { path: "/install", element: <LazyInstall /> },
   { path: "/experts", element: <LazyExpertMarketplace /> },
   { path: "/experts/:id", element: <LazyExpertProfile /> },
+  { path: "/become-expert", element: <LazyBecomeExpert /> },
+  { path: "/consultation/:id/success", element: <LazyConsultationSuccess /> },
   // { path: "/academic", element: <LazyAcademicHub /> }, // MASQUÉ
 ];
 

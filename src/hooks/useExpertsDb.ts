@@ -5,6 +5,14 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 
+
+export interface Certification {
+  title: string;
+  issuer: string;
+  year: number;
+  verified: boolean;
+}
+
 export interface DbExpert {
   id: string;
   user_id: string | null;
@@ -14,7 +22,7 @@ export interface DbExpert {
   specialties: string[];
   countries: string[];
   languages: string[];
-  certifications: Array<{ title: string; issuer: string; year: number; verified: boolean }>;
+  certifications: Certification[];
   hourly_rate: number;
   currency: string;
   booking_url: string | null;
@@ -23,8 +31,27 @@ export interface DbExpert {
   rating_avg: number;
   review_count: number;
   response_time_hours: number;
+  stripe_account_id?: string | null;
+  stripe_onboarding_complete?: boolean;
   created_at: string;
   updated_at: string;
+}
+
+// Helper to transform DB data to DbExpert
+function transformExpert(data: Record<string, unknown>): DbExpert {
+  return {
+    ...data,
+    specialties: (data.specialties as string[]) || [],
+    countries: (data.countries as string[]) || [],
+    languages: (data.languages as string[]) || [],
+    certifications: (data.certifications as Certification[]) || [],
+    hourly_rate: Number(data.hourly_rate) || 0,
+    rating_avg: Number(data.rating_avg) || 0,
+    review_count: Number(data.review_count) || 0,
+    response_time_hours: Number(data.response_time_hours) || 48,
+    is_verified: Boolean(data.is_verified),
+    is_active: Boolean(data.is_active),
+  } as DbExpert;
 }
 
 export interface ExpertFilters {
@@ -76,8 +103,8 @@ export function useExpertsDb(filters?: ExpertFilters) {
       
       if (error) throw error;
       
-      // Apply search filter client-side for flexibility
-      let results = data as DbExpert[];
+      // Transform and apply search filter
+      let results = (data || []).map(d => transformExpert(d as Record<string, unknown>));
       if (filters?.search) {
         const searchLower = filters.search.toLowerCase();
         results = results.filter(expert => 
@@ -107,7 +134,7 @@ export function useExpertById(id: string | undefined) {
         .single();
       
       if (error) throw error;
-      return data as DbExpert;
+      return transformExpert(data as Record<string, unknown>);
     },
     enabled: !!id,
   });
@@ -129,7 +156,7 @@ export function useExpertsByCountry(countryId: string | undefined, limit = 3) {
         .limit(limit);
       
       if (error) throw error;
-      return data as DbExpert[];
+      return (data || []).map(d => transformExpert(d as Record<string, unknown>));
     },
     enabled: !!countryId,
   });
@@ -177,7 +204,7 @@ export function useAllExpertsAdmin() {
         .order('created_at', { ascending: false });
       
       if (error) throw error;
-      return data as DbExpert[];
+      return (data || []).map(d => transformExpert(d as Record<string, unknown>));
     },
   });
 }

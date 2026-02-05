@@ -98,6 +98,8 @@ export const LazyPersonaJourneys = withSuspense(lazy(() => import('@/pages/Perso
 export const LazyGamificationHub = withSuspense(lazy(() => import('@/pages/GamificationHub')));
 export const LazyExpertMarketplace = withSuspense(lazy(() => import('@/pages/ExpertMarketplace')));
 export const LazyExpertProfile = withSuspense(lazy(() => import('@/pages/ExpertProfile')));
+export const LazyBecomeExpert = withSuspense(lazy(() => import('@/pages/BecomeExpert')));
+export const LazyConsultationSuccess = withSuspense(lazy(() => import('@/pages/ConsultationSuccess')));
 export const LazyAdminExperts = withSuspense(lazy(() => import('@/pages/admin/AdminExperts')));
 export const LazyInstall = withSuspense(lazy(() => import('@/pages/Install')));
 export const LazyToolsHub = withSuspense(lazy(() => import('@/pages/ToolsHub')));
