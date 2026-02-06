@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import { useCountries } from '@/lib/countries-data';
-import { DB_COMPLETE_COUNTRY_IDS, EXTENDED_COUNTRY_META } from '@/lib/countries-extended';
+import { DB_COMPLETE_COUNTRY_IDS, hasCompleteDbData, EXTENDED_COUNTRY_META } from '@/lib/countries-extended';
 
 interface CountryPosition {
   x: number;
@@ -257,7 +257,7 @@ export function WorldMap({
             const isSelected = selectedCountryId === country.id;
             const isHighlighted = highlightCountries?.includes(country.id);
             const isHovered = hoveredCountry === country.id;
-            const hasDbData = DB_COMPLETE_COUNTRY_IDS.includes(country.id as any);
+            const hasDbData = hasCompleteDbData(country.id);
             const pyramidColor = PYRAMID_COLORS[country.pyramidType] || 'fill-gray-500';
 
             return (
@@ -356,7 +356,7 @@ export function WorldMap({
                 )}>
                   {t(`pyramidTypes.${data.pyramidType}.short`, data.pyramidType)}
                 </div>
-                {DB_COMPLETE_COUNTRY_IDS.includes(hoveredCountry as any) && (
+                {hoveredCountry && hasCompleteDbData(hoveredCountry) && (
                   <div className="flex items-center gap-2 text-xs text-primary mt-2">
                     <Shield className="w-3 h-3" />
                     <span>{t('countries.intelligenceAvailable', 'Intelligence Layer disponible')}</span>

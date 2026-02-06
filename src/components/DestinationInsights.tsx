@@ -52,7 +52,7 @@ export function DestinationInsights({
         });
 
         if (fnError) {
-          const status = (fnError as any)?.status;
+          const status = (fnError as { status?: number })?.status;
           if (status === 429) {
             const errorMsg = t('errors.rateLimited', 'Trop de requêtes. Veuillez réessayer dans quelques instants.');
             toast.error(errorMsg);
