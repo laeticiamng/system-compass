@@ -1,8 +1,9 @@
 /**
  * SecuritySettings - User security preferences
- * Manage 2FA, password changes, and security alerts
+ * Manage 2FA, password changes, security alerts, and account deletion
  */
 import { useState } from 'react';
+import { DeleteAccountSection } from './DeleteAccountSection';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
@@ -223,6 +224,8 @@ export function SecuritySettings({
           </div>
         </CardContent>
       </Card>
+      {/* Account Deletion - RGPD Art. 17 */}
+      <DeleteAccountSection />
     </div>
   );
 }

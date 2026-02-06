@@ -1,61 +1,50 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { Star, Quote } from 'lucide-react';
+import { Globe, Shield, Compass, TrendingUp, Users, MapPin } from 'lucide-react';
 
-interface Testimonial {
-  id: string;
-  name: string;
-  role: string;
-  country: string;
-  content: string;
-  rating: number;
+interface FeatureHighlight {
+  icon: React.ElementType;
+  stat: string;
+  label: string;
+  description: string;
 }
-
-const testimonials: Testimonial[] = [
-  {
-    id: '1',
-    name: 'Marie L.',
-    role: 'Entrepreneure',
-    country: '🇫🇷',
-    content: "Grâce à Pyramid Compass, j'ai pu anticiper les vraies contraintes de mon expatriation au Portugal. Les analyses de système m'ont évité des erreurs coûteuses.",
-    rating: 5,
-  },
-  {
-    id: '2',
-    name: 'Thomas K.',
-    role: 'Cadre Tech',
-    country: '🇩🇪',
-    content: "L'outil de comparaison de pays m'a permis de prendre une décision éclairée. Les données sur la fiscalité et la qualité de vie sont exceptionnellement précises.",
-    rating: 5,
-  },
-  {
-    id: '3',
-    name: 'Sophie M.',
-    role: 'Consultante',
-    country: '🇧🇪',
-    content: "Les clés de sortie personnalisées ont été un game-changer. J'ai trouvé une stratégie que je n'aurais jamais imaginée seule.",
-    rating: 5,
-  },
-  {
-    id: '4',
-    name: 'Alexandre D.',
-    role: 'Investisseur',
-    country: '🇨🇭',
-    content: "La profondeur d'analyse des systèmes de pouvoir est impressionnante. Ça m'a aidé à comprendre les vraies règles du jeu avant de m'engager.",
-    rating: 5,
-  },
-];
 
 export function TestimonialsSection() {
   const { t } = useTranslation();
+
+  const highlights: FeatureHighlight[] = [
+    {
+      icon: Globe,
+      stat: '38+',
+      label: t('socialProof.countries', 'Pays analysés'),
+      description: t('socialProof.countriesDesc', 'Systèmes décryptés en profondeur'),
+    },
+    {
+      icon: Compass,
+      stat: '50+',
+      label: t('socialProof.exitKeys', 'Exit Keys'),
+      description: t('socialProof.exitKeysDesc', 'Stratégies de sortie personnalisées'),
+    },
+    {
+      icon: Shield,
+      stat: '13',
+      label: t('socialProof.languages', 'Langues'),
+      description: t('socialProof.languagesDesc', 'Interface multilingue complète'),
+    },
+    {
+      icon: TrendingUp,
+      stat: '200+',
+      label: t('socialProof.indicators', 'Indicateurs'),
+      description: t('socialProof.indicatorsDesc', 'Données vérifiables par pays'),
+    },
+  ];
 
   return (
     <section className="py-20 md:py-32 lg:py-40 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-muted/20 to-transparent" />
-      
+
       <div className="container mx-auto px-4 relative">
         {/* Header */}
         <motion.div
@@ -66,88 +55,67 @@ export function TestimonialsSection() {
           className="text-center mb-12 md:mb-20"
         >
           <p className="text-primary font-medium mb-3 md:mb-5 tracking-[0.15em] md:tracking-[0.2em] uppercase text-xs md:text-sm">
-            {t('testimonials.badge', 'Témoignages')}
+            {t('socialProof.badge', 'En chiffres')}
           </p>
           <h2 className="font-display text-[clamp(1.6rem,3.5vw,3.5rem)] font-bold">
-            {t('testimonials.title', 'Ce que disent nos utilisateurs')}
+            {t('socialProof.title', 'Une plateforme pensée pour la décision')}
           </h2>
+          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+            {t('socialProof.subtitle', 'Des données vérifiables, des analyses systémiques, des stratégies concrètes.')}
+          </p>
         </motion.div>
 
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-          {testimonials.map((testimonial, index) => (
+        {/* Highlights Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          {highlights.map((item, index) => (
             <motion.div
-              key={testimonial.id}
+              key={item.label}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.6 }}
             >
-              <Card className="h-full glass-card border-primary/10 hover:border-primary/20 transition-all duration-300">
+              <Card className="h-full glass-card border-primary/10 hover:border-primary/20 transition-all duration-300 text-center">
                 <CardContent className="p-6">
-                  {/* Quote Icon */}
-                  <Quote className="w-8 h-8 text-primary/20 mb-4" />
-                  
-                  {/* Content */}
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
-                    "{testimonial.content}"
-                  </p>
-                  
-                  {/* Rating */}
-                  <div className="flex gap-1 mb-4">
-                    {Array.from({ length: testimonial.rating }).map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-amber-500 text-amber-500" />
-                    ))}
-                  </div>
-                  
-                  {/* Author */}
-                  <div className="flex items-center gap-3">
-                    <Avatar className="w-10 h-10 border border-primary/20">
-                      <AvatarFallback className="bg-primary/10 text-primary text-sm">
-                        {testimonial.name.charAt(0)}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <p className="font-medium text-sm">
-                        {testimonial.name} {testimonial.country}
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        {testimonial.role}
-                      </p>
-                    </div>
-                  </div>
+                  <item.icon className="w-8 h-8 text-primary mx-auto mb-4" />
+                  <p className="text-3xl md:text-4xl font-bold gold-text mb-1">{item.stat}</p>
+                  <p className="font-medium text-sm mb-2">{item.label}</p>
+                  <p className="text-xs text-muted-foreground">{item.description}</p>
                 </CardContent>
               </Card>
             </motion.div>
           ))}
         </div>
 
-        {/* Social Proof Stats */}
+        {/* CTA Beta */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto text-center"
+          transition={{ delay: 0.5, duration: 0.6 }}
+          className="mt-16 text-center"
         >
-          <div>
-            <p className="text-3xl md:text-4xl font-bold gold-text">15K+</p>
-            <p className="text-sm text-muted-foreground mt-1">
-              {t('testimonials.stat.users', 'Utilisateurs actifs')}
-            </p>
-          </div>
-          <div>
-            <p className="text-3xl md:text-4xl font-bold gold-text">38</p>
-            <p className="text-sm text-muted-foreground mt-1">
-              {t('testimonials.stat.countries', 'Pays analysés')}
-            </p>
-          </div>
-          <div>
-            <p className="text-3xl md:text-4xl font-bold gold-text">4.9/5</p>
-            <p className="text-sm text-muted-foreground mt-1">
-              {t('testimonials.stat.rating', 'Note moyenne')}
-            </p>
-          </div>
+          <Card className="max-w-2xl mx-auto glass-card border-primary/20">
+            <CardContent className="p-8">
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <Users className="w-5 h-5 text-primary" />
+                <MapPin className="w-5 h-5 text-primary" />
+              </div>
+              <h3 className="font-display text-xl font-bold mb-2">
+                {t('socialProof.betaTitle', 'Rejoignez les premiers explorateurs')}
+              </h3>
+              <p className="text-muted-foreground text-sm mb-4">
+                {t('socialProof.betaDescription', 'Testez gratuitement l\'analyse de 3 pays et découvrez votre profil pyramidal. Vos retours façonnent la plateforme.')}
+              </p>
+              <a
+                href="/quick-test"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
+              >
+                <Compass className="w-4 h-4" />
+                {t('socialProof.betaCta', 'Faire le test gratuit')}
+              </a>
+            </CardContent>
+          </Card>
         </motion.div>
       </div>
     </section>
