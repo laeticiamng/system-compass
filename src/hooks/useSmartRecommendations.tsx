@@ -117,10 +117,10 @@ export function useSmartRecommendations(filters?: RecommendationFilters) {
       const tags = tagsData?.find(t => t.country_id === country.id);
       
       // Calculate sub-scores
-      const costOfLiving = country.cost_of_living as any;
-      const qualityOfLife = country.quality_of_life as any;
-      const whoWins = country.who_wins as any;
-      const whoLoses = country.who_loses as any;
+      const costOfLiving = country.cost_of_living as Record<string, unknown> | null;
+      const qualityOfLife = country.quality_of_life as Record<string, unknown> | null;
+      const whoWins = country.who_wins as string[] | null;
+      const whoLoses = country.who_loses as string[] | null;
 
       // Career potential score (0-100)
       let careerPotential = 50;
@@ -132,15 +132,14 @@ export function useSmartRecommendations(filters?: RecommendationFilters) {
       // Lifestyle match (0-100)
       let lifestyleMatch = 50;
       if (qualityOfLife) {
-        const qolScore = qualityOfLife.overall_score || qualityOfLife.score || 50;
+        const qolScore = (qualityOfLife as Record<string, number>).overall_score || (qualityOfLife as Record<string, number>).score || 50;
         lifestyleMatch = typeof qolScore === 'number' ? qolScore : 50;
       }
 
       // Cost efficiency (0-100) - lower cost = higher score for cost-conscious users
       let costEfficiency = 50;
       if (costOfLiving) {
-        const monthlyBudget = costOfLiving.monthly_budget || costOfLiving.total || 2000;
-        // Score inversely proportional to cost (assuming $500-$5000 range)
+        const monthlyBudget = Number((costOfLiving as Record<string, unknown>).monthly_budget || (costOfLiving as Record<string, unknown>).total || 2000);
         costEfficiency = Math.max(0, Math.min(100, 100 - ((monthlyBudget - 500) / 45)));
       }
 
