@@ -7,6 +7,7 @@ import { useState, useCallback, useRef } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { generateAudio, playBase64Audio } from '@/lib/api/premium-intel';
 import { useToast } from '@/hooks/use-toast';
+import { useTranslation } from 'react-i18next';
 
 export type VoiceStyle = 'narrator' | 'guide' | 'expert' | 'friendly';
 export type AudioSection = 'overview' | 'culture' | 'visa' | 'cost' | 'tips' | 'risks';
@@ -35,6 +36,7 @@ const SECTION_PROMPTS: Record<AudioSection, (country: string) => string> = {
 
 export function useCountryAudioGuide({ countryName, countryId }: AudioGuideOptions) {
   const { toast } = useToast();
+  const { t } = useTranslation();
   const queryClient = useQueryClient();
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentSection, setCurrentSection] = useState<AudioSection | null>(null);
@@ -69,14 +71,14 @@ export function useCountryAudioGuide({ countryName, countryId }: AudioGuideOptio
       // Cache the generated audio
       queryClient.setQueryData([...cacheKey, data.section], data);
       toast({
-        title: '🎧 Audio Généré',
-        description: `Guide audio "${data.section}" prêt à écouter`,
+        title: t('audioGuide.generated', '🎧 Audio Généré'),
+        description: t('audioGuide.generatedDesc', 'Guide audio "{{section}}" prêt à écouter', { section: data.section }),
       });
     },
     onError: (error) => {
       toast({
-        title: 'Erreur Audio',
-        description: error instanceof Error ? error.message : 'Échec génération audio',
+        title: t('audioGuide.errorGenerate', 'Erreur Audio'),
+        description: error instanceof Error ? error.message : t('audioGuide.errorGenerateDesc', 'Échec génération audio'),
         variant: 'destructive',
       });
     },
@@ -122,8 +124,8 @@ export function useCountryAudioGuide({ countryName, countryId }: AudioGuideOptio
       setIsPlaying(false);
       setCurrentSection(null);
       toast({
-        title: 'Erreur Lecture',
-        description: 'Impossible de lire l\'audio',
+        title: t('audioGuide.errorPlayback', 'Erreur Lecture'),
+        description: t('audioGuide.errorPlaybackDesc', 'Impossible de lire l\'audio'),
         variant: 'destructive',
       });
     };
@@ -165,8 +167,8 @@ export function useCountryAudioGuide({ countryName, countryId }: AudioGuideOptio
     }
 
     toast({
-      title: '🎙️ Tour Complet Généré',
-      description: `6 guides audio prêts pour ${countryName}`,
+      title: t('audioGuide.fullTourGenerated', '🎙️ Tour Complet Généré'),
+      description: t('audioGuide.fullTourGeneratedDesc', '6 guides audio prêts pour {{countryName}}', { countryName }),
     });
   }, [queryClient, cacheKey, generateSectionAudio, countryName, toast]);
 
