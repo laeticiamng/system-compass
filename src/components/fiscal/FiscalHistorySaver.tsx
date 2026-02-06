@@ -10,6 +10,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { toast } from 'sonner';
 import { Save, History, Trash2, Clock, TrendingUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useTranslation } from 'react-i18next';
 
 interface FiscalCalculation {
   id: string;
@@ -27,6 +28,7 @@ const MAX_HISTORY = 20;
 
 export function useFiscalHistory() {
   // Auth hook available for future user-specific storage
+  const { t } = useTranslation();
   const [history, setHistory] = useState<FiscalCalculation[]>([]);
 
   // Load history on mount
@@ -51,7 +53,7 @@ export function useFiscalHistory() {
     const updated = [newCalc, ...history].slice(0, MAX_HISTORY);
     setHistory(updated);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
-    toast.success('Calcul sauvegardé');
+    toast.success(t('fiscal.saved', 'Calcul sauvegardé'));
     return newCalc;
   };
 
@@ -59,13 +61,13 @@ export function useFiscalHistory() {
     const updated = history.filter(h => h.id !== id);
     setHistory(updated);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
-    toast.success('Calcul supprimé');
+    toast.success(t('fiscal.deleted', 'Calcul supprimé'));
   };
 
   const clearHistory = () => {
     setHistory([]);
     localStorage.removeItem(STORAGE_KEY);
-    toast.success('Historique effacé');
+    toast.success(t('fiscal.cleared', 'Historique effacé'));
   };
 
   return { history, saveCalculation, deleteCalculation, clearHistory };

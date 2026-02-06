@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
+import { useTranslation } from 'react-i18next';
 
 interface Review {
   id: string;
@@ -116,6 +117,7 @@ function StarRating({ rating, size = 'sm' }: { rating: number; size?: 'sm' | 'md
 }
 
 function ReviewCard({ review }: { review: Review }) {
+  const { t } = useTranslation();
   const [helpful, setHelpful] = useState(review.helpful);
   const [hasVoted, setHasVoted] = useState(false);
 
@@ -123,7 +125,7 @@ function ReviewCard({ review }: { review: Review }) {
     if (!hasVoted) {
       setHelpful(prev => prev + 1);
       setHasVoted(true);
-      toast.success('Merci pour votre vote');
+      toast.success(t('reviews.voteSuccess', 'Merci pour votre vote'));
     }
   };
 
@@ -212,17 +214,18 @@ export function ExpertReviews({
   const [showWriteReview, setShowWriteReview] = useState(false);
   const [newRating, setNewRating] = useState(0);
   const [newReview, setNewReview] = useState('');
+  const { t } = useTranslation();
 
   const handleSubmitReview = () => {
     if (newRating === 0) {
-      toast.error('Veuillez sélectionner une note');
+      toast.error(t('reviews.selectRating', 'Veuillez sélectionner une note'));
       return;
     }
     if (newReview.trim().length < 20) {
-      toast.error('Votre avis doit contenir au moins 20 caractères');
+      toast.error(t('reviews.minLength', 'Votre avis doit contenir au moins 20 caractères'));
       return;
     }
-    toast.success('Avis soumis pour vérification');
+    toast.success(t('reviews.submitted', 'Avis soumis pour vérification'));
     setShowWriteReview(false);
     setNewRating(0);
     setNewReview('');

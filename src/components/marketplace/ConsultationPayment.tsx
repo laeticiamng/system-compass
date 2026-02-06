@@ -21,6 +21,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
+import { useTranslation } from 'react-i18next';
 
 interface ConsultationPaymentProps {
   expertId: string;
@@ -54,6 +55,7 @@ export function ConsultationPayment({
   onCancel,
 }: ConsultationPaymentProps) {
   const { user } = useAuth();
+  const { t } = useTranslation();
   const [isProcessing, setIsProcessing] = useState(false);
   const [paymentStatus, setPaymentStatus] = useState<'idle' | 'processing' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -80,7 +82,7 @@ export function ConsultationPayment({
 
   const handlePayment = useCallback(async () => {
     if (!user) {
-      toast.error('Veuillez vous connecter pour continuer');
+      toast.error(t('payment.loginRequired', 'Veuillez vous connecter pour continuer'));
       return;
     }
 
@@ -93,8 +95,8 @@ export function ConsultationPayment({
       if (expertId.startsWith('mock-')) {
         await new Promise(resolve => setTimeout(resolve, 2000));
         setPaymentStatus('success');
-        toast.success('Paiement effectué avec succès !', {
-          description: 'Vous recevrez un email de confirmation.',
+        toast.success(t('payment.success', 'Paiement effectué avec succès !'), {
+          description: t('payment.successDesc', 'Vous recevrez un email de confirmation.'),
         });
         onSuccess?.(`mock-payment-${Date.now()}`);
         return;
@@ -123,7 +125,7 @@ export function ConsultationPayment({
         window.location.href = data.paymentUrl;
       } else if (data?.clientSecret) {
         // Handle embedded payment (if implemented)
-        toast.info('Redirection vers le paiement...');
+        toast.info(t('payment.redirecting', 'Redirection vers le paiement...'));
         // For now, show success for demo
         setPaymentStatus('success');
         onSuccess?.(data.paymentIntentId || `payment-${Date.now()}`);
@@ -134,8 +136,8 @@ export function ConsultationPayment({
       console.error('Payment error:', err);
       setPaymentStatus('error');
       setErrorMessage(err instanceof Error ? err.message : 'Erreur de paiement');
-      toast.error('Erreur lors du paiement', {
-        description: err instanceof Error ? err.message : 'Veuillez réessayer',
+      toast.error(t('payment.error', 'Erreur lors du paiement'), {
+        description: err instanceof Error ? err.message : t('payment.errorRetry', 'Veuillez réessayer'),
       });
     } finally {
       setIsProcessing(false);

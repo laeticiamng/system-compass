@@ -18,11 +18,13 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { z } from 'zod';
+import { useTranslation } from 'react-i18next';
 
 
 const emailSchema = z.string().email('Email invalide').max(255);
 
 export function NewsletterSignup() {
+  const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [preferences, setPreferences] = useState({
     weekly_digest: true,
@@ -38,7 +40,7 @@ export function NewsletterSignup() {
     
     const validation = emailSchema.safeParse(email);
     if (!validation.success) {
-      toast.error('Veuillez entrer un email valide');
+      toast.error(t('newsletter.invalidEmail', 'Veuillez entrer un email valide'));
       return;
     }
 
@@ -64,13 +66,13 @@ export function NewsletterSignup() {
       
       localStorage.setItem('newsletter_subscribers', JSON.stringify(subscribers));
       setIsSubscribed(true);
-      toast.success('Inscription réussie !', {
-        description: 'Vous recevrez notre newsletter chaque semaine.',
+      toast.success(t('newsletter.success', 'Inscription réussie !'), {
+        description: t('newsletter.successDesc', 'Vous recevrez notre newsletter chaque semaine.'),
       });
     } catch (error) {
       // Soft fail - just show success for demo
       setIsSubscribed(true);
-      toast.success('Inscription réussie !');
+      toast.success(t('newsletter.success', 'Inscription réussie !'));
     } finally {
       setIsSubmitting(false);
     }
