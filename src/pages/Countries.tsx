@@ -78,9 +78,12 @@ export default function Countries() {
   const [sortBy, setSortBy] = useState<SortOption>('name-asc');
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Helper to get translated country name for search
-  const getTranslatedName = (countryId: string): string => {
+  // Helper to get translated country name for search using country ID
+  const getTranslatedName = (country: Country | ExtendedCountryInfo): string => {
+    const countryId = country.id?.toLowerCase() || '';
+    if (!countryId) return '';
     const translatedName = t(`countries.${countryId}.name`, { defaultValue: '' });
+    // Return empty string if key not found (i18next returns the key itself)
     return translatedName !== `countries.${countryId}.name` ? translatedName : '';
   };
 
@@ -95,7 +98,7 @@ export default function Countries() {
           c.name.toLowerCase().includes(query) ||
           c.nameLocal?.toLowerCase().includes(query) ||
           c.region.toLowerCase().includes(query) ||
-          getTranslatedName(c.id).toLowerCase().includes(query)
+          getTranslatedName(c).toLowerCase().includes(query)
         );
       }
       
@@ -117,7 +120,7 @@ export default function Countries() {
           c.name.toLowerCase().includes(query) ||
           c.nameLocal?.toLowerCase().includes(query) ||
           c.region.toLowerCase().includes(query) ||
-          getTranslatedName(c.id).toLowerCase().includes(query)
+          getTranslatedName(c).toLowerCase().includes(query)
         );
       }
       
@@ -145,7 +148,7 @@ export default function Countries() {
         c.name.toLowerCase().includes(query) ||
         c.nameLocal?.toLowerCase().includes(query) ||
         c.region.toLowerCase().includes(query) ||
-        getTranslatedName(c.id).toLowerCase().includes(query)
+        getTranslatedName(c).toLowerCase().includes(query)
       );
     }
     
