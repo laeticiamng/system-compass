@@ -3,7 +3,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from './useAuth';
 import { LifeMotorProfile, LifePriority } from '@/lib/types';
 import { toast } from 'sonner';
-import { useTranslation } from 'react-i18next';
+
 import { EducationLevel } from '@/lib/profession-data';
 
 export type ProjectIntention = 'installation' | 'vacation' | 'internship' | 'retirement' | 'digital_nomad';
