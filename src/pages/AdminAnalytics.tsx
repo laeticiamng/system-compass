@@ -60,7 +60,7 @@ const saveAlertSettings = (settings: AlertSettings) => {
 };
 
 export default function AdminAnalytics() {
-  useTranslation();
+  const { t } = useTranslation();
   const { user, loading: authLoading } = useAuth();
   const [loading, setLoading] = useState(true);
   const [dailyStats, setDailyStats] = useState<DailyStat[]>([]);
@@ -199,7 +199,7 @@ export default function AdminAnalytics() {
   // CSV Export function
   const exportToCSV = useCallback(() => {
     if (allEvents.length === 0) {
-      toast.error('Aucune donnée à exporter');
+      toast.error(t('toast.analytics.noData', 'Aucune donnée à exporter'));
       return;
     }
 
@@ -225,13 +225,13 @@ export default function AdminAnalytics() {
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
 
-    toast.success(`${allEvents.length} événements exportés`);
+    toast.success(t('toast.analytics.eventsExported', '{{count}} événements exportés', { count: allEvents.length }));
   }, [allEvents]);
 
   // Export daily stats
   const exportDailyStats = useCallback(() => {
     if (dailyStats.length === 0) {
-      toast.error('Aucune donnée à exporter');
+      toast.error(t('toast.analytics.noData', 'Aucune donnée à exporter'));
       return;
     }
 
@@ -257,7 +257,7 @@ export default function AdminAnalytics() {
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
 
-    toast.success(`${dailyStats.length} lignes exportées`);
+    toast.success(t('toast.analytics.rowsExported', '{{count}} lignes exportées', { count: dailyStats.length }));
   }, [dailyStats]);
 
   // Handle alert settings changes

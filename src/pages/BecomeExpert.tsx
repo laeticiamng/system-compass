@@ -2,6 +2,7 @@
  * Become an Expert - Application page for new experts
  */
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -71,6 +72,7 @@ const applicationSchema = z.object({
 type ApplicationFormData = z.infer<typeof applicationSchema>;
 
 export default function BecomeExpert() {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -100,7 +102,7 @@ export default function BecomeExpert() {
 
   const onSubmit = async (data: ApplicationFormData) => {
     if (!user) {
-      toast.error('Veuillez vous connecter');
+      toast.error(t('toast.expert.loginRequired', 'Veuillez vous connecter'));
       return;
     }
 
@@ -129,7 +131,7 @@ export default function BecomeExpert() {
 
       if (error) {
         if (error.code === '23505') {
-          toast.error('Vous avez déjà soumis une candidature');
+          toast.error(t('toast.expert.alreadyApplied', 'Vous avez déjà soumis une candidature'));
         } else {
           throw error;
         }
@@ -137,10 +139,10 @@ export default function BecomeExpert() {
       }
 
       setSubmitted(true);
-      toast.success('Candidature envoyée !');
+      toast.success(t('toast.expert.applicationSent', 'Candidature envoyée !'));
     } catch (error) {
       console.error('Error submitting application:', error);
-      toast.error('Erreur lors de l\'envoi de la candidature');
+      toast.error(t('toast.expert.submitError', 'Erreur lors de l\'envoi de la candidature'));
     } finally {
       setIsSubmitting(false);
     }

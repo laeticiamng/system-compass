@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -81,6 +82,7 @@ const LANGUAGES: { code: string; name: string; flag: string; data: LocaleData }[
 ];
 
 const AdminGenerateTranslations = () => {
+  const { t } = useTranslation();
   const [targetLang, setTargetLang] = useState<string>("");
   const [isGenerating, setIsGenerating] = useState(false);
   const [isLoadingDb, setIsLoadingDb] = useState(false);
@@ -107,7 +109,7 @@ const AdminGenerateTranslations = () => {
       setSavedTranslations((data || []) as SavedTranslation[]);
     } catch (error) {
       console.error("Error loading translations:", error);
-      toast.error("Erreur lors du chargement des traductions");
+      toast.error(t('toast.translations.loadError', 'Erreur lors du chargement des traductions'));
     } finally {
       setIsLoadingDb(false);
     }
@@ -144,7 +146,7 @@ const AdminGenerateTranslations = () => {
       setJobs(mappedJobs);
     } catch (error) {
       console.error("Error loading translation jobs:", error);
-      toast.error("Erreur lors du chargement des jobs");
+      toast.error(t('toast.translations.jobsLoadError', 'Erreur lors du chargement des jobs'));
     } finally {
       setJobsLoading(false);
     }
@@ -296,7 +298,7 @@ const AdminGenerateTranslations = () => {
 
   const generateTranslations = async () => {
     if (!targetLang || selectedCountries.size === 0) {
-      toast.error("Sélectionnez une langue cible et au moins un pays");
+      toast.error(t('toast.translations.selectRequired', 'Sélectionnez une langue cible et au moins un pays'));
       return;
     }
 
@@ -317,12 +319,12 @@ const AdminGenerateTranslations = () => {
 
       if (error) throw error;
 
-      toast.success(`${data?.jobsCreated ?? countriesToTranslate.length} job(s) lancé(s)`);
+      toast.success(t('toast.translations.jobsLaunched', '{{count}} job(s) lancé(s)', { count: data?.jobsCreated ?? countriesToTranslate.length }));
       setSelectedCountries(new Set());
       loadJobs();
     } catch (error) {
       console.error("Error launching translation batch:", error);
-      toast.error("Erreur lors du lancement de la génération");
+      toast.error(t('toast.translations.generateError', 'Erreur lors du lancement de la génération'));
     } finally {
       setIsGenerating(false);
     }
@@ -330,17 +332,17 @@ const AdminGenerateTranslations = () => {
 
   const copyToClipboard = () => {
     if (!targetLang || Object.keys(selectedTranslationsByCountry).length === 0) {
-      toast.error("Aucune traduction à copier");
+      toast.error(t('toast.translations.nothingToCopy', 'Aucune traduction à copier'));
       return;
     }
     const output = JSON.stringify(selectedTranslationsByCountry, null, 2);
     navigator.clipboard.writeText(output);
-    toast.success("Traductions copiées dans le presse-papier");
+    toast.success(t('toast.translations.copied', 'Traductions copiées dans le presse-papier'));
   };
 
   const downloadTranslations = () => {
     if (!targetLang || Object.keys(selectedTranslationsByCountry).length === 0) {
-      toast.error("Aucune traduction à télécharger");
+      toast.error(t('toast.translations.nothingToDownload', 'Aucune traduction à télécharger'));
       return;
     }
     const output = JSON.stringify(selectedTranslationsByCountry, null, 2);
@@ -351,7 +353,7 @@ const AdminGenerateTranslations = () => {
     a.download = `countriesData-${targetLang}.json`;
     a.click();
     URL.revokeObjectURL(url);
-    toast.success("Fichier téléchargé");
+    toast.success(t('toast.translations.downloaded', 'Fichier téléchargé'));
   };
 
   // Generate merged full file ready to replace the existing one
@@ -379,7 +381,7 @@ const AdminGenerateTranslations = () => {
     const output = JSON.stringify(getMergedFullFile, null, 2);
     navigator.clipboard.writeText(output);
     toast.success(
-      `Fichier ${targetLang}.json complet copié (${Object.keys(getMergedFullFile.countriesData || {}).length} pays)`
+      t('toast.translations.mergedCopied', 'Fichier {{lang}}.json complet copié ({{count}} pays)', { lang: targetLang, count: Object.keys(getMergedFullFile.countriesData || {}).length })
     );
   };
 
@@ -393,7 +395,7 @@ const AdminGenerateTranslations = () => {
     a.download = `${targetLang}.json`;
     a.click();
     URL.revokeObjectURL(url);
-    toast.success(`Fichier ${targetLang}.json téléchargé - remplacez src/locales/${targetLang}.json`);
+    toast.success(t('toast.translations.mergedDownloaded', 'Fichier {{lang}}.json téléchargé - remplacez src/locales/{{lang}}.json', { lang: targetLang }));
   };
 
   const toggleApprovalSelection = (id: string) => {
@@ -418,7 +420,7 @@ const AdminGenerateTranslations = () => {
 
   const approveSelected = async () => {
     if (selectedApprovals.size === 0) {
-      toast.error("Sélectionnez au moins une traduction");
+      toast.error(t('toast.translations.selectAtLeastOne', 'Sélectionnez au moins une traduction'));
       return;
     }
 
@@ -430,12 +432,12 @@ const AdminGenerateTranslations = () => {
 
       if (error) throw error;
 
-      toast.success(`${selectedApprovals.size} traduction(s) approuvée(s)`);
+      toast.success(t('toast.translations.approved', '{{count}} traduction(s) approuvée(s)', { count: selectedApprovals.size }));
       setSelectedApprovals(new Set());
       loadSavedTranslations();
     } catch (error) {
       console.error("Approval error:", error);
-      toast.error("Erreur lors de la validation");
+      toast.error(t('toast.error.approve', 'Erreur lors de la validation'));
     }
   };
 

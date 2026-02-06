@@ -65,7 +65,7 @@ interface Contribution {
 }
 
 export default function AdminPartners() {
-  useTranslation();
+  const { t } = useTranslation();
   const { user } = useAuth();
   const [applications, setApplications] = useState<PartnerApplication[]>([]);
   const [contributions, setContributions] = useState<Contribution[]>([]);
@@ -99,7 +99,7 @@ export default function AdminPartners() {
       if (contribsRes.data) setContributions(contribsRes.data);
     } catch (err) {
       console.error('Error fetching partner data:', err);
-      toast.error('Erreur lors du chargement des données');
+      toast.error(t('toast.error.load', 'Erreur lors du chargement des données'));
     } finally {
       setLoading(false);
     }
@@ -119,13 +119,13 @@ export default function AdminPartners() {
 
       if (error) throw error;
 
-      toast.success('Candidature approuvée');
+      toast.success(t('toast.partners.approved', 'Candidature approuvée'));
       setSelectedApp(null);
       setReviewNotes('');
       fetchData();
     } catch (err) {
       console.error('Error approving application:', err);
-      toast.error('Erreur lors de l\'approbation');
+      toast.error(t('toast.error.approve', 'Erreur lors de l\'approbation'));
     }
   };
 
@@ -143,13 +143,13 @@ export default function AdminPartners() {
 
       if (error) throw error;
 
-      toast.success('Candidature rejetée');
+      toast.success(t('toast.partners.rejected', 'Candidature rejetée'));
       setSelectedApp(null);
       setReviewNotes('');
       fetchData();
     } catch (err) {
       console.error('Error rejecting application:', err);
-      toast.error('Erreur lors du rejet');
+      toast.error(t('toast.error.reject', 'Erreur lors du rejet'));
     }
   };
 
@@ -167,11 +167,11 @@ export default function AdminPartners() {
 
       if (error) throw error;
 
-      toast.success(`Contribution vérifiée (+${creditsToAward} crédits)`);
+      toast.success(t('toast.partners.verified', 'Contribution vérifiée (+{{credits}} crédits)', { credits: creditsToAward }));
       fetchData();
     } catch (err) {
       console.error('Error verifying contribution:', err);
-      toast.error('Erreur lors de la vérification');
+      toast.error(t('toast.error.verify', 'Erreur lors de la vérification'));
     }
   };
 
