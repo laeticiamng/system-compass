@@ -5,6 +5,7 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 import { 
   MessageCircle, 
   Calendar, 
@@ -48,34 +49,33 @@ function QuickAction({ icon, label, description, onClick, badge }: QuickActionPr
 }
 
 export function CommunityQuickActions() {
+  const { t } = useTranslation();
+
   const handleDiscord = () => {
-    toast.info('Redirection vers Discord...', {
-      description: 'Rejoignez +5000 membres de la communauté',
+    toast.info(t('community.discordRedirect', 'Redirection vers Discord...'), {
+      description: t('community.discordDesc', 'Rejoignez +5000 membres de la communauté'),
     });
-    // In production: window.open('https://discord.gg/systemcompass', '_blank');
   };
 
   const handleEvents = () => {
-    toast.info('Voir les événements à venir');
-    // Navigate to events section
+    toast.info(t('community.viewEvents', 'Voir les événements à venir'));
     document.getElementById('events')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleResources = () => {
-    toast.info('Accéder aux ressources');
-    // Navigate to resources
+    toast.info(t('community.accessResources', 'Accéder aux ressources'));
   };
 
   const handleShare = () => {
     if (navigator.share) {
       navigator.share({
         title: 'System Compass Community',
-        text: 'Rejoignez la communauté des expatriés et futurs expatriés',
+        text: t('community.shareText', 'Rejoignez la communauté des expatriés et futurs expatriés'),
         url: window.location.href,
       });
     } else {
       navigator.clipboard.writeText(window.location.href);
-      toast.success('Lien copié !');
+      toast.success(t('community.linkCopied', 'Lien copié !'));
     }
   };
 

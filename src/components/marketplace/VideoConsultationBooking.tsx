@@ -26,6 +26,7 @@ import {
 import { toast } from 'sonner';
 import { format, addDays } from 'date-fns';
 import { fr } from 'date-fns/locale';
+import { useTranslation } from 'react-i18next';
 
 interface Expert {
   id: string;
@@ -56,6 +57,7 @@ interface VideoConsultationBookingProps {
 // const PLATFORM_COMMISSION = 0.15;
 
 export function VideoConsultationBooking({ expert, onClose }: VideoConsultationBookingProps) {
+  const { t } = useTranslation();
   const [step, setStep] = useState<'calendar' | 'details' | 'confirm' | 'success'>('calendar');
   const [formData, setFormData] = useState<BookingFormData>({
     date: undefined,
@@ -93,7 +95,7 @@ export function VideoConsultationBooking({ expert, onClose }: VideoConsultationB
 
   const handleDetailsSubmit = () => {
     if (!formData.name || !formData.email || !formData.topic) {
-      toast.error('Veuillez remplir tous les champs obligatoires');
+      toast.error(t('consultation.fillRequired', 'Veuillez remplir tous les champs obligatoires'));
       return;
     }
     setStep('confirm');
@@ -106,8 +108,8 @@ export function VideoConsultationBooking({ expert, onClose }: VideoConsultationB
     // 3. Send confirmation emails
     // 4. Save booking to database
     
-    toast.success('Réservation confirmée !', {
-      description: 'Vous recevrez un email avec le lien de la visioconférence.',
+    toast.success(t('consultation.confirmed', 'Réservation confirmée !'), {
+      description: t('consultation.confirmedDesc', 'Vous recevrez un email avec le lien de la visioconférence.'),
     });
     
     setStep('success');

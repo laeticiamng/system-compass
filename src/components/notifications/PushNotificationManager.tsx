@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
+import { useTranslation } from 'react-i18next';
 
 interface NotificationPreference {
   id: string;
@@ -97,6 +98,7 @@ function getPermissionStatus(): PermissionStatus {
 }
 
 export function PushNotificationManager() {
+  const { t } = useTranslation();
   const [permissionStatus, setPermissionStatus] = useState<PermissionStatus>('default');
   const [preferences, setPreferences] = useState<NotificationPreference[]>(DEFAULT_PREFERENCES);
   const [isSubscribed, setIsSubscribed] = useState(false);
@@ -126,7 +128,7 @@ export function PushNotificationManager() {
 
   const handleRequestPermission = async () => {
     if (!('Notification' in window)) {
-      toast.error('Les notifications ne sont pas supportées par votre navigateur');
+      toast.error(t('notifications.notSupported', 'Les notifications ne sont pas supportées par votre navigateur'));
       return;
     }
 
@@ -137,26 +139,26 @@ export function PushNotificationManager() {
       if (result === 'granted') {
         setIsSubscribed(true);
         localStorage.setItem('push-subscribed', 'true');
-        toast.success('Notifications activées !');
+        toast.success(t('notifications.enabled', 'Notifications activées !'));
 
         // Show test notification
         new Notification('System Compass', {
-          body: 'Les notifications sont maintenant activées !',
+          body: t('notifications.enabled', 'Les notifications sont maintenant activées !'),
           icon: '/favicon.ico',
         });
       } else if (result === 'denied') {
-        toast.error('Notifications refusées. Vous pouvez les réactiver dans les paramètres du navigateur.');
+        toast.error(t('notifications.denied', 'Notifications refusées. Vous pouvez les réactiver dans les paramètres du navigateur.'));
       }
     } catch (error) {
       console.error('Error requesting notification permission:', error);
-      toast.error('Erreur lors de la demande de permission');
+      toast.error(t('notifications.permissionError', 'Erreur lors de la demande de permission'));
     }
   };
 
   const handleUnsubscribe = () => {
     setIsSubscribed(false);
     localStorage.setItem('push-subscribed', 'false');
-    toast.success('Notifications désactivées');
+    toast.success(t('notifications.disabled', 'Notifications désactivées'));
   };
 
   const handleTogglePreference = (prefId: string) => {
@@ -171,7 +173,7 @@ export function PushNotificationManager() {
       p.category === category ? { ...p, enabled: true } : p
     );
     savePreferences(updated);
-    toast.success('Préférences mises à jour');
+    toast.success(t('notifications.preferencesUpdated', 'Préférences mises à jour'));
   };
 
   const essentialPrefs = preferences.filter(p => p.category === 'essential');

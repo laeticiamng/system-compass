@@ -131,7 +131,7 @@ export default function RiskEventCard({
             <div className="space-y-4">
               <h4 className="text-sm font-semibold flex items-center gap-2">
                 <Dices className="w-4 h-4" />
-                Probabilités des issues
+                {t('game.risk.probabilities', 'Probabilités des issues')}
               </h4>
 
               {/* Success */}
@@ -139,7 +139,7 @@ export default function RiskEventCard({
                 <div className="flex items-center justify-between text-sm">
                   <div className="flex items-center gap-2">
                     <CheckCircle className="w-4 h-4 text-emerald-400" />
-                    <span>Succès</span>
+                    <span>{t('game.risk.success', 'Succès')}</span>
                   </div>
                   <span className="font-bold text-emerald-400">{successChance}%</span>
                 </div>
