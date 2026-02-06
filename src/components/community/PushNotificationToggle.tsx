@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { Bell, BellOff, BellRing, CheckCircle2, XCircle, Loader2 } from 'lucide-react';
 import { usePushNotifications } from '@/hooks/usePushNotifications';
 import { cn } from '@/lib/utils';
+import { useTranslation } from 'react-i18next';
 
 interface PushNotificationToggleProps {
   compact?: boolean;
@@ -14,6 +15,7 @@ interface PushNotificationToggleProps {
 }
 
 export function PushNotificationToggle({ compact = false, className }: PushNotificationToggleProps) {
+  const { t } = useTranslation();
   const {
     isSupported,
     permission,
@@ -41,9 +43,9 @@ export function PushNotificationToggle({ compact = false, className }: PushNotif
             <BellOff className="w-5 h-5 text-muted-foreground" />
           </div>
           <div>
-            <p className="text-sm font-medium">Notifications non supportées</p>
+            <p className="text-sm font-medium">{t('pushToggle.notSupported', 'Notifications non supportées')}</p>
             <p className="text-xs text-muted-foreground">
-              Votre navigateur ne supporte pas les notifications push
+              {t('pushToggle.notSupportedDesc', 'Votre navigateur ne supporte pas les notifications push')}
             </p>
           </div>
         </CardContent>
@@ -60,7 +62,7 @@ export function PushNotificationToggle({ compact = false, className }: PushNotif
           ) : (
             <BellOff className="w-4 h-4 text-muted-foreground" />
           )}
-          <span className="text-sm">Notifications push</span>
+          <span className="text-sm">{t('pushToggle.label', 'Notifications push')}</span>
         </div>
         <Switch
           checked={isSubscribed}
@@ -87,9 +89,9 @@ export function PushNotificationToggle({ compact = false, className }: PushNotif
               )}
             </div>
             <div>
-              <CardTitle className="text-base">Notifications Push</CardTitle>
+              <CardTitle className="text-base">{t('pushToggle.title', 'Notifications Push')}</CardTitle>
               <CardDescription className="text-sm">
-                Recevez des alertes pour les événements importants
+                {t('pushToggle.description', 'Recevez des alertes pour les événements importants')}
               </CardDescription>
             </div>
           </div>
@@ -107,16 +109,16 @@ export function PushNotificationToggle({ compact = false, className }: PushNotif
           {permission === 'granted' ? (
             <Badge variant="outline" className="gap-1 text-green-600 border-green-600/30">
               <CheckCircle2 className="w-3 h-3" />
-              Autorisées
+              {t('pushToggle.granted', 'Autorisées')}
             </Badge>
           ) : permission === 'denied' ? (
             <Badge variant="outline" className="gap-1 text-destructive border-destructive/30">
               <XCircle className="w-3 h-3" />
-              Bloquées
+              {t('pushToggle.denied', 'Bloquées')}
             </Badge>
           ) : (
             <Badge variant="outline" className="gap-1">
-              Non configurées
+              {t('pushToggle.notConfigured', 'Non configurées')}
             </Badge>
           )}
         </div>
@@ -124,24 +126,24 @@ export function PushNotificationToggle({ compact = false, className }: PushNotif
         {/* Notification Types */}
         <div className="space-y-2">
           <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-            Vous serez notifié pour :
+            {t('pushToggle.notifiedFor', 'Vous serez notifié pour :')}
           </p>
           <ul className="space-y-1.5 text-sm">
             <li className="flex items-center gap-2">
               <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />
-              Rappels d'événements communautaires
+              {t('pushToggle.communityReminders', "Rappels d'événements communautaires")}
             </li>
             <li className="flex items-center gap-2">
               <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />
-              Échéances de votre plan d'action
+              {t('pushToggle.deadlines', "Échéances de votre plan d'action")}
             </li>
             <li className="flex items-center gap-2">
               <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />
-              Nouveaux messages d'experts
+              {t('pushToggle.expertMessages', "Nouveaux messages d'experts")}
             </li>
             <li className="flex items-center gap-2">
               <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />
-              Alertes pays personnalisées
+              {t('pushToggle.countryAlerts', 'Alertes pays personnalisées')}
             </li>
           </ul>
         </div>
@@ -150,13 +152,13 @@ export function PushNotificationToggle({ compact = false, className }: PushNotif
         {permission === 'denied' && (
           <div className="mt-4 p-3 rounded-lg bg-destructive/5 border border-destructive/20">
             <p className="text-sm text-muted-foreground mb-2">
-              Les notifications sont bloquées. Pour les réactiver :
+              {t('pushToggle.blockedInstructions', 'Les notifications sont bloquées. Pour les réactiver :')}
             </p>
             <ol className="text-xs text-muted-foreground space-y-1 list-decimal list-inside">
-              <li>Cliquez sur l'icône 🔒 dans la barre d'adresse</li>
-              <li>Trouvez "Notifications"</li>
-              <li>Changez en "Autoriser"</li>
-              <li>Rechargez la page</li>
+              <li>{t('pushToggle.step1', "Cliquez sur l'icône 🔒 dans la barre d'adresse")}</li>
+              <li>{t('pushToggle.step2', 'Trouvez "Notifications"')}</li>
+              <li>{t('pushToggle.step3', 'Changez en "Autoriser"')}</li>
+              <li>{t('pushToggle.step4', 'Rechargez la page')}</li>
             </ol>
           </div>
         )}
@@ -165,7 +167,7 @@ export function PushNotificationToggle({ compact = false, className }: PushNotif
         {isLoading && (
           <div className="mt-4 flex items-center justify-center gap-2 text-sm text-muted-foreground">
             <Loader2 className="w-4 h-4 animate-spin" />
-            Chargement...
+            {t('pushToggle.loading', 'Chargement...')}
           </div>
         )}
       </CardContent>

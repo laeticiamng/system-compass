@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TrendingUp, Star, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useTranslation } from 'react-i18next';
 
 interface LevelUpAnimationProps {
   newLevel: string;
@@ -10,6 +11,7 @@ interface LevelUpAnimationProps {
 }
 
 export function LevelUpAnimation({ newLevel, levelIcon, onClose }: LevelUpAnimationProps) {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
@@ -112,7 +114,7 @@ export function LevelUpAnimation({ newLevel, levelIcon, onClose }: LevelUpAnimat
                 transition={{ delay: 0.9 }}
                 className="text-muted-foreground mb-6"
               >
-                Félicitations ! Vous avez atteint un nouveau niveau.
+                {t('levelUp.congratulations', 'Félicitations ! Vous avez atteint un nouveau niveau.')}
               </motion.p>
 
               <motion.div
@@ -128,7 +130,7 @@ export function LevelUpAnimation({ newLevel, levelIcon, onClose }: LevelUpAnimat
                   className="gap-2"
                 >
                   <Star className="w-4 h-4" />
-                  Continuer
+                  {t('levelUp.continue', 'Continuer')}
                 </Button>
               </motion.div>
             </div>
