@@ -1,139 +1,56 @@
+/**
+ * Disclaimer Consent Banner - Non-blocking banner at bottom of screen
+ * Replaces the previous modal dialog that blocked content access
+ */
 import { useTranslation } from 'react-i18next';
-import { 
-  Dialog, 
-  DialogContent, 
-  DialogHeader, 
-  DialogTitle, 
-  DialogDescription,
-  DialogFooter
-} from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Label } from '@/components/ui/label';
-import { 
-  Scale, 
-  Shield, 
-  AlertTriangle, 
-  CheckCircle,
-  ExternalLink
-} from 'lucide-react';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Scale, CheckCircle } from 'lucide-react';
 import { useDialogCoordinator } from './DialogCoordinator';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export function DisclaimerConsentDialog() {
   const { t } = useTranslation();
   const { shouldShowDisclaimer, completeDisclaimer } = useDialogCoordinator();
-  const navigate = useNavigate();
-  const [hasRead, setHasRead] = useState(false);
-
-  const handleAccept = () => {
-    if (hasRead) {
-      completeDisclaimer();
-    }
-  };
 
   return (
-    <Dialog open={shouldShowDisclaimer} onOpenChange={() => {}}>
-      <DialogContent 
-        className="sm:max-w-lg max-h-[85vh] overflow-y-auto z-[50]"
-        onPointerDownOutside={(e) => e.preventDefault()}
-        onEscapeKeyDown={(e) => e.preventDefault()}
-      >
-        <DialogHeader className="text-center">
-          <div className="flex justify-center mb-2">
-            <div className="p-3 rounded-full bg-primary/10">
-              <Scale className="w-8 h-8 text-primary" />
-            </div>
-          </div>
-          <DialogTitle className="text-lg sm:text-xl">
-            {t('disclaimerConsent.title', 'Avant de commencer')}
-          </DialogTitle>
-          <DialogDescription className="text-sm sm:text-base mt-1">
-            {t('disclaimerConsent.subtitle', 'Quelques informations importantes sur cet outil')}
-          </DialogDescription>
-        </DialogHeader>
-
-        <div className="py-2 sm:py-4 space-y-3">
-          {/* Anti-authority warning */}
-          <div className="p-3 rounded-lg bg-destructive/10 border border-destructive/30">
-            <p className="text-xs text-muted-foreground">
-              <strong className="text-destructive">⚠️ {t('disclaimerConsent.important', 'Important')} :</strong> {t('disclaimerConsent.warning', "Aucun résultat affiché n'est un diagnostic, une recommandation, ni un avis professionnel. Cet outil ne remplace aucun conseil spécialisé.")}
-            </p>
-          </div>
-
-          {/* Key points */}
-          <div className="space-y-2">
-            <div className="flex items-start gap-2 p-2 sm:p-3 rounded-lg bg-muted/50">
-              <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-primary mt-0.5 shrink-0" />
-              <div>
-                <p className="text-xs sm:text-sm font-medium">{t('disclaimerConsent.analysisToolTitle', 'Outil d\'analyse et simulation')}</p>
-                <p className="text-[11px] sm:text-xs text-muted-foreground">
-                  {t('disclaimerConsent.analysisToolDesc', 'Pyramid Compass est un outil éducatif, pas un service de conseil. Simulation ≠ prédiction.')}
+    <AnimatePresence>
+      {shouldShowDisclaimer && (
+        <motion.div
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 100, opacity: 0 }}
+          transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+          className="fixed bottom-0 left-0 right-0 z-50 p-4 sm:p-6"
+        >
+          <div className="max-w-2xl mx-auto bg-background border border-border rounded-xl shadow-2xl p-4 sm:p-5">
+            <div className="flex items-start gap-3">
+              <div className="p-2 rounded-full bg-primary/10 shrink-0">
+                <Scale className="w-5 h-5 text-primary" />
+              </div>
+              
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium mb-1">
+                  {t('disclaimerConsent.bannerTitle', 'Outil éducatif uniquement')}
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  {t('disclaimerConsent.bannerText', 'Pyramid Compass est un outil d\'analyse, pas un service de conseil. Aucun résultat ne constitue un avis professionnel. Vos décisions vous appartiennent.')}
                 </p>
               </div>
-            </div>
 
-            <div className="flex items-start gap-2 p-2 sm:p-3 rounded-lg bg-muted/50">
-              <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 text-destructive mt-0.5 shrink-0" />
-              <div>
-                <p className="text-xs sm:text-sm font-medium">{t('disclaimerConsent.noAdviceTitle', 'Pas de conseil professionnel')}</p>
-                <p className="text-[11px] sm:text-xs text-muted-foreground">
-                  {t('disclaimerConsent.noAdviceDesc', 'Aucun conseil juridique, financier ou médical n\'est fourni. Aucun verdict, aucun score de réussite.')}
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-2 p-2 sm:p-3 rounded-lg bg-muted/50">
-              <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-primary mt-0.5 shrink-0" />
-              <div>
-                <p className="text-xs sm:text-sm font-medium">{t('disclaimerConsent.responsibleTitle', 'Tu restes responsable')}</p>
-                <p className="text-[11px] sm:text-xs text-muted-foreground">
-                  {t('disclaimerConsent.responsibleDesc', 'Tes décisions t\'appartiennent. Les résultats dépendent de ton contexte réel.')}
-                </p>
+              <div className="flex items-center gap-2 shrink-0">
+                <Button 
+                  onClick={completeDisclaimer}
+                  size="sm"
+                  className="gap-1.5"
+                >
+                  <CheckCircle className="w-3.5 h-3.5" />
+                  {t('disclaimerConsent.acceptShort', 'Compris')}
+                </Button>
               </div>
             </div>
           </div>
-        </div>
-
-        <div className="flex items-start gap-2 py-2">
-          <Checkbox 
-            id="disclaimer-read" 
-            checked={hasRead}
-            onCheckedChange={(checked) => setHasRead(checked === true)}
-            className="mt-0.5"
-          />
-          <Label 
-            htmlFor="disclaimer-read" 
-            className="text-xs sm:text-sm text-muted-foreground cursor-pointer leading-relaxed"
-          >
-            {t('disclaimerConsent.checkbox', 'J\'ai compris que cet outil est informatif et que je reste responsable de mes décisions.')}
-          </Label>
-        </div>
-
-        <DialogFooter className="flex-col sm:flex-row gap-2 sm:justify-between">
-          <button 
-            type="button"
-            onClick={() => {
-              completeDisclaimer();
-              navigate('/disclaimer');
-            }}
-            className="text-xs sm:text-sm text-muted-foreground hover:text-foreground flex items-center gap-1 justify-center sm:justify-start bg-transparent border-none cursor-pointer"
-          >
-            {t('disclaimerConsent.seeDetails', 'Voir les détails complets')}
-            <ExternalLink className="w-3 h-3" />
-          </button>
-          <Button 
-            onClick={handleAccept}
-            disabled={!hasRead}
-            className="gap-2 w-full sm:w-auto"
-            size="sm"
-          >
-            <CheckCircle className="w-4 h-4" />
-            {t('disclaimerConsent.accept', 'J\'ai compris, continuer')}
-          </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
