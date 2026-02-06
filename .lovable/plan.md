@@ -1,99 +1,47 @@
 
 
-# Audit C-Suite v17 -- Comprehension en 3 secondes
+# Audit C-Suite v18 -- Verification pre-publication finale
 
-## Diagnostic par role
+## Statut global par role
 
-### CEO -- Positionnement strategique
-Le titre "Comprends le systeme avant de t'engager" ne dit pas DE QUEL systeme on parle. Un visiteur en 3 secondes pense "site de developpement personnel ? coaching ? politique ?". Le positionnement doit immediatement evoquer **expatriation / fiscalite / choix de pays**.
+| Role | Verdict | Detail |
+|------|---------|--------|
+| CEO | OK | Positionnement concret : "Tu veux t'expatrier ? Compare les pays avant de partir." Test 3 secondes = PASSE. |
+| CISO | OK | RLS actif partout. 15 findings ignores avec justification. Linter = 1 warning mineur (extension in public, non-bloquant). |
+| DPO | OK | Cookie consent, anonymisation GDPR, rate limiting actifs. |
+| CDO | OK | Pipeline analytics coherent. |
+| COO | OK | i18n 100% wrappee. Toasts FR wrappees (v14-v16). |
+| Head of Design | OK | Timeline non-cliquable (v16). Jargon supprime (v17). Mobile spacing OK. |
+| Beta testeur | 1 BUG | 2 liens cassees dans le Dashboard (QuickActionsWidget) menent a des 404. |
 
-### CISO -- Securite
-Les 15 findings precedents sont correctement marques comme ignores. Le linter Supabase ne remonte que des warnings non-bloquants. RLS actif partout. **Aucune action requise.**
+## Bug identifie : Routes cassees dans QuickActionsWidget
 
-### DPO -- RGPD
-Cookie consent fonctionne. Anonymisation GDPR active. **Aucune action requise.**
+Le widget "Actions rapides" du Dashboard contient 2 routes qui n'existent pas dans la configuration des routes :
 
-### CDO -- Data
-Pipeline analytics coherent. **Aucune action requise.**
+| Route dans le widget | Route correcte | Impact |
+|---------------------|----------------|--------|
+| `/expert-marketplace` | `/experts` | 404 si l'utilisateur clique |
+| `/tools-hub` (x2 occurrences) | `/tools` | 404 si l'utilisateur clique |
 
-### COO -- Process
-i18n 100% wrappee (v14-v16). **Aucune action requise.**
+Ces routes n'existent nulle part dans `src/routes/index.tsx`. Les routes correctes sont `/experts` (definie dans `contentRoutes`) et `/tools` (definie dans `MAIN_NAV` et `contentRoutes`).
 
-### Head of Design -- UX
-Les 3 etapes (timeline) sont visuellement claires et non-cliquables : **RESOLU (v16)**.
-Mais les TEXTES restent trop abstraits -- le design est bon, le contenu doit etre clarifie.
+## Correction a effectuer
 
-### Beta testeur -- Test 3 secondes
-**ECHEC sur 4 points :**
+**Fichier** : `src/components/dashboard/QuickActionsWidget.tsx`
 
-| Element | Probleme | Impact |
-|---------|----------|--------|
-| Titre hero | "Comprends le systeme" -- systeme DE QUOI ? | L'utilisateur ne sait pas ce que fait l'outil |
-| Sous-titre | "Reponds a quelques questions, decouvre quels pays..." -- mieux mais encore trop generique | Pas de notion d'expatriation/fiscalite |
-| Stats "50+ cles de sortie" | Jargon interne. Personne ne sait ce qu'est une "cle de sortie" | Confusion |
-| Stats "6 types de systemes" | Jargon interne | Confusion |
-| CTA "Decouvrir mon profil" | Profil de quoi ? profil dating ? profil psy ? | Mauvaise categorisation |
-| Pricing "Exit Keys personnalisees" | Jargon | Le visiteur ne sait pas ce qu'il achete |
-| Meta description | Contient "Exit Keys" et "strategies de sortie" | Mauvais SEO/perception |
+3 modifications de texte :
+1. Ligne 57 : `/expert-marketplace` devient `/experts`
+2. Ligne 64 : `/tools-hub` devient `/tools`
+3. Ligne 105 : `/tools-hub` devient `/tools`
 
-## Corrections a implementer
+Aucun autre fichier, aucun changement de structure.
 
-### 1. Hero -- Titre et sous-titre concrets (Index.tsx)
+## Hors perimetre (confirme OK)
 
-**Titre actuel** : "Comprends le systeme / avant de t'engager."
+- Landing page Index.tsx : v17 appliquee, test 3 secondes passe
+- Securite : RLS, rate limiting, GDPR tous actifs
+- i18n : 100% wrappee
+- Mobile : spacing OK
+- Timeline : non-cliquable, sans jargon
+- Navigation Header/Sidebar : routes correctes, pas de liens casses
 
-**Titre propose** : "Tu veux t'expatrier ? / Compare les pays avant de partir."
-
-**Sous-titre actuel** : "Reponds a quelques questions, decouvre quels pays correspondent a ton profil, et obtiens un plan d'action concret."
-
-**Sous-titre propose** : "Fiscalite, cout de la vie, visas, qualite de vie : compare 38 pays en 2 minutes et trouve celui qui te correspond."
-
-### 2. CTA principal -- Dire ce qu'on obtient (Index.tsx)
-
-**Actuel** : "Decouvrir mon profil gratuitement"
-
-**Propose** : "Trouver mon pays ideal -- gratuit"
-
-### 3. Stats hero -- Remplacer le jargon (Index.tsx)
-
-| Actuel | Propose |
-|--------|---------|
-| 38+ pays analyses | 38+ pays compares (inchange, OK) |
-| 50+ cles de sortie | 50+ criteres compares |
-| 6 types de systemes | 6 profils d'expatrie |
-
-### 4. Pricing -- Supprimer le jargon "Exit Keys" (Index.tsx)
-
-**Actuel** : "Exit Keys personnalisees"
-
-**Propose** : "Recommandations personnalisees"
-
-### 5. Meta description -- SEO sans jargon (Index.tsx)
-
-**Actuel** : "...Exit Keys... strategies de sortie..."
-
-**Propose** : "Compare 38+ pays pour ton expatriation : fiscalite, visas, cout de la vie. Test gratuit en 2 minutes."
-
-### 6. CTA final -- Concret (Index.tsx)
-
-**Actuel** : "Pret a comprendre / les vraies regles ?"
-
-**Propose** : "Pret a comparer / les pays ?"
-
-**Sous-titre actuel** : "Cet outil analyse et simule. A toi de decider."
-
-**Sous-titre propose** : "Compare, simule, decide. En toute autonomie."
-
-## Fichier modifie
-
-Un seul fichier : `src/pages/Index.tsx`
-
-Toutes les modifications sont des changements de texte dans les fallbacks i18n existants (les cles `t('landing.xxx', 'nouveau texte')` avec le nouveau texte en fallback). Aucun changement de structure ou de CSS.
-
-## Hors perimetre
-
-- Securite : rien a corriger
-- i18n structure : deja 100% wrappee
-- Mobile spacing : deja resolu (v16)
-- Timeline steps : design deja corrige (v16), seuls les intitules changent ici
-- Les fichiers de traduction JSON (`fr.json`, `en.json`) ne contiennent pas ces cles (les fallbacks inline sont utilises) -- donc seul Index.tsx est concerne
