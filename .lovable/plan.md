@@ -1,71 +1,99 @@
 
 
-# Audit des 4 problemes UX signales -- Verification et corrections
+# Audit C-Suite v17 -- Comprehension en 3 secondes
 
-## Statut de chaque probleme
+## Diagnostic par role
 
-| Probleme | Statut | Detail |
-|----------|--------|--------|
-| 1. Positionnement trop flou | PARTIELLEMENT RESOLU | Le hero a un titre et sous-titre concrets, mais le CTA "Decouvrir mon profil gratuitement" ne dit pas clairement CE QU'ON OBTIENT (une analyse de situation pays/fiscalite). |
-| 2. Les 3 etapes pas assez explicites | PARTIELLEMENT RESOLU | Les descriptions sont meilleures, mais "pyramide" et "Exit Keys" restent du jargon incomprehensible pour un visiteur qui arrive pour la premiere fois. |
-| 3. Les 3 etapes ressemblent a des boutons | NON RESOLU | Les Cards ont `hover:border-primary/30` et un style interactif. Rien n'est cliquable mais l'utilisateur croit que c'est cliquable. |
-| 4. Mobile : espacement exit case | RESOLU | Les sections du bas ont un padding adequat (`py-20 md:py-32`). La separation est nette visuellement. |
+### CEO -- Positionnement strategique
+Le titre "Comprends le systeme avant de t'engager" ne dit pas DE QUEL systeme on parle. Un visiteur en 3 secondes pense "site de developpement personnel ? coaching ? politique ?". Le positionnement doit immediatement evoquer **expatriation / fiscalite / choix de pays**.
+
+### CISO -- Securite
+Les 15 findings precedents sont correctement marques comme ignores. Le linter Supabase ne remonte que des warnings non-bloquants. RLS actif partout. **Aucune action requise.**
+
+### DPO -- RGPD
+Cookie consent fonctionne. Anonymisation GDPR active. **Aucune action requise.**
+
+### CDO -- Data
+Pipeline analytics coherent. **Aucune action requise.**
+
+### COO -- Process
+i18n 100% wrappee (v14-v16). **Aucune action requise.**
+
+### Head of Design -- UX
+Les 3 etapes (timeline) sont visuellement claires et non-cliquables : **RESOLU (v16)**.
+Mais les TEXTES restent trop abstraits -- le design est bon, le contenu doit etre clarifie.
+
+### Beta testeur -- Test 3 secondes
+**ECHEC sur 4 points :**
+
+| Element | Probleme | Impact |
+|---------|----------|--------|
+| Titre hero | "Comprends le systeme" -- systeme DE QUOI ? | L'utilisateur ne sait pas ce que fait l'outil |
+| Sous-titre | "Reponds a quelques questions, decouvre quels pays..." -- mieux mais encore trop generique | Pas de notion d'expatriation/fiscalite |
+| Stats "50+ cles de sortie" | Jargon interne. Personne ne sait ce qu'est une "cle de sortie" | Confusion |
+| Stats "6 types de systemes" | Jargon interne | Confusion |
+| CTA "Decouvrir mon profil" | Profil de quoi ? profil dating ? profil psy ? | Mauvaise categorisation |
+| Pricing "Exit Keys personnalisees" | Jargon | Le visiteur ne sait pas ce qu'il achete |
+| Meta description | Contient "Exit Keys" et "strategies de sortie" | Mauvais SEO/perception |
 
 ## Corrections a implementer
 
-### Correction 1 : Rendre le positionnement plus concret
+### 1. Hero -- Titre et sous-titre concrets (Index.tsx)
 
-Le sous-titre du hero sera reformule pour expliciter le resultat tangible :
+**Titre actuel** : "Comprends le systeme / avant de t'engager."
 
-**Avant** : "Analyse les regles reelles des pays et obtiens tes strategies de sortie personnalisees."
+**Titre propose** : "Tu veux t'expatrier ? / Compare les pays avant de partir."
 
-**Apres** : "Reponds a quelques questions, decouvre quels pays correspondent a ton profil, et obtiens un plan d'action concret." (via la cle i18n `landing.hero.subtitle`)
+**Sous-titre actuel** : "Reponds a quelques questions, decouvre quels pays correspondent a ton profil, et obtiens un plan d'action concret."
 
-### Correction 2 : Rendre les 3 etapes comprehensibles sans jargon
+**Sous-titre propose** : "Fiscalite, cout de la vie, visas, qualite de vie : compare 38 pays en 2 minutes et trouve celui qui te correspond."
 
-Les titres et descriptions seront reformules :
+### 2. CTA principal -- Dire ce qu'on obtient (Index.tsx)
 
-**Etape 1** (inchange -- deja clair) :
-- Titre : "Fais le test"
-- Description : "2 minutes pour decouvrir ton profil et tes priorites de vie."
+**Actuel** : "Decouvrir mon profil gratuitement"
 
-**Etape 2** :
-- **Avant** : "Decouvre ta pyramide" / "Comprends quel type de systeme te correspond le mieux."
-- **Apres** : "Analyse ton systeme" / "Decouvre comment fonctionne le systeme economique et fiscal de chaque pays."
+**Propose** : "Trouver mon pays ideal -- gratuit"
 
-**Etape 3** :
-- **Avant** : "Obtiens tes Exit Keys" / "Strategies personnalisees pour tes decisions de vie."
-- **Apres** : "Obtiens ton plan d'action" / "Recois des strategies concretes adaptees a ta situation et tes objectifs."
+### 3. Stats hero -- Remplacer le jargon (Index.tsx)
 
-### Correction 3 : Transformer les 3 Cards en guide visuel (timeline) au lieu de boutons
+| Actuel | Propose |
+|--------|---------|
+| 38+ pays analyses | 38+ pays compares (inchange, OK) |
+| 50+ cles de sortie | 50+ criteres compares |
+| 6 types de systemes | 6 profils d'expatrie |
 
-Les `<Card>` avec hover interactif seront remplaces par un layout timeline vertical sans effet de survol, visuellement non-cliquable :
+### 4. Pricing -- Supprimer le jargon "Exit Keys" (Index.tsx)
 
-- Supprimer `hover:border-primary/30 transition-colors` des Cards
-- Ajouter `pointer-events-none` pour enlever tout feedback interactif
-- Ajouter une ligne verticale reliant les 3 etapes (trait vertical entre les numeros `01`, `02`, `03`)
-- Les numeros deviennent des cercles connectes par une ligne, creant un effet "timeline/progression"
+**Actuel** : "Exit Keys personnalisees"
 
-Cela transforme le bloc en guide informatif au lieu de 3 boutons.
+**Propose** : "Recommandations personnalisees"
 
-### Correction 4 : Pas de correction necessaire
+### 5. Meta description -- SEO sans jargon (Index.tsx)
 
-L'espacement mobile est deja adequat. Les sections utilisent `py-20 md:py-32` avec des separations visuelles claires (fond alterne `bg-muted/30`).
+**Actuel** : "...Exit Keys... strategies de sortie..."
 
-## Details techniques
+**Propose** : "Compare 38+ pays pour ton expatriation : fiscalite, visas, cout de la vie. Test gratuit en 2 minutes."
 
-Fichier modifie : `src/pages/Index.tsx`
+### 6. CTA final -- Concret (Index.tsx)
 
-### Changements i18n (cles modifiees)
-- `landing.hero.subtitle` : nouveau texte plus concret
-- `landing.howItWorks.step2Title` : "Analyse ton systeme"
-- `landing.howItWorks.step2Description` : nouvelle description sans jargon
-- `landing.howItWorks.step3Title` : "Obtiens ton plan d'action"
-- `landing.howItWorks.step3Description` : nouvelle description concretes
+**Actuel** : "Pret a comprendre / les vraies regles ?"
 
-### Changements CSS/JSX (section "Comment ca marche")
-- Remplacement de la grille de 3 Cards par un layout timeline vertical sur mobile, horizontal sur desktop
-- Suppression des hover effects interactifs sur les etapes
-- Ajout d'une ligne connectrice entre les etapes (pseudo-element ou div decoratif)
-- Les Cards deviennent des `<div>` simples avec `pointer-events-none` au lieu de Cards interactives
+**Propose** : "Pret a comparer / les pays ?"
 
+**Sous-titre actuel** : "Cet outil analyse et simule. A toi de decider."
+
+**Sous-titre propose** : "Compare, simule, decide. En toute autonomie."
+
+## Fichier modifie
+
+Un seul fichier : `src/pages/Index.tsx`
+
+Toutes les modifications sont des changements de texte dans les fallbacks i18n existants (les cles `t('landing.xxx', 'nouveau texte')` avec le nouveau texte en fallback). Aucun changement de structure ou de CSS.
+
+## Hors perimetre
+
+- Securite : rien a corriger
+- i18n structure : deja 100% wrappee
+- Mobile spacing : deja resolu (v16)
+- Timeline steps : design deja corrige (v16), seuls les intitules changent ici
+- Les fichiers de traduction JSON (`fr.json`, `en.json`) ne contiennent pas ces cles (les fallbacks inline sont utilises) -- donc seul Index.tsx est concerne
