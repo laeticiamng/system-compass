@@ -25,9 +25,9 @@ import {
   Play,
   Triangle,
   CheckCircle,
-  Quote,
   Zap
 } from 'lucide-react';
+import { TestimonialsSection } from '@/components/landing/TestimonialsSection';
 
 export default function Index() {
   const navigate = useNavigate();
@@ -272,99 +272,8 @@ export default function Index() {
         </div>
       </section>
 
-      {/* ========== TÉMOIGNAGES ========== */}
-      <section className="py-20 md:py-32 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <p className="text-primary font-medium mb-3 tracking-widest uppercase text-sm">
-              Témoignages
-            </p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold">
-              Ce qu'ils en disent
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {/* Témoignage 1 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0, duration: 0.5 }}
-            >
-              <Card className="h-full">
-                <CardContent className="pt-6">
-                  <Quote className="w-8 h-8 text-primary/20 mb-4" />
-                  <p className="text-foreground mb-6 italic">
-                    "Grâce à Pyramid Compass, j'ai compris le système suisse en 10 minutes. Les vraies règles, pas les clichés."
-                  </p>
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                      <span className="font-bold text-primary">M</span>
-                    </div>
-                    <div>
-                      <p className="font-medium">Marie L.</p>
-                      <p className="text-sm text-muted-foreground">Expatriée en Suisse</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* Témoignage 2 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1, duration: 0.5 }}
-            >
-              <Card className="h-full">
-                <CardContent className="pt-6">
-                  <Quote className="w-8 h-8 text-primary/20 mb-4" />
-                  <p className="text-foreground mb-6 italic">
-                    "Le test de profil m'a ouvert les yeux. Je visais le mauvais pays pour mes objectifs."
-                  </p>
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center">
-                      <span className="font-bold text-amber-500">T</span>
-                    </div>
-                    <div>
-                      <p className="font-medium">Thomas R.</p>
-                      <p className="text-sm text-muted-foreground">Entrepreneur digital</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* Témoignage 3 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-            >
-              <Card className="h-full">
-                <CardContent className="pt-6">
-                  <Quote className="w-8 h-8 text-primary/20 mb-4" />
-                  <p className="text-foreground mb-6 italic">
-                    "Les Exit Keys m'ont permis de planifier ma transition en 3 mois au lieu de 2 ans."
-                  </p>
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-green-500/10 flex items-center justify-center">
-                      <span className="font-bold text-green-500">S</span>
-                    </div>
-                    <div>
-                      <p className="font-medium">Sophie D.</p>
-                      <p className="text-sm text-muted-foreground">Cadre en reconversion</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      {/* ========== EN CHIFFRES ========== */}
+      <TestimonialsSection />
 
       {/* ========== PRICING RAPIDE ========== */}
       <section className="py-20 md:py-32">

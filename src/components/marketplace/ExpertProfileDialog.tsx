@@ -60,16 +60,16 @@ interface ExpertProfileDialogProps {
 const MOCK_REVIEWS: Review[] = [
   {
     id: '1',
-    author: 'Jean-Pierre M.',
+    author: 'Client vérifié',
     date: '2024-01-15',
     rating: 5,
-    comment: 'Excellent accompagnement pour ma relocalisation en Suisse. Très professionnel et disponible.',
+    comment: 'Excellent accompagnement pour ma relocalisation. Très professionnel et disponible.',
     helpful: 12,
     verified: true,
   },
   {
     id: '2',
-    author: 'Marie L.',
+    author: 'Client vérifié',
     date: '2024-01-10',
     rating: 4,
     comment: 'Bons conseils fiscaux, réponses claires à mes questions. Je recommande.',
@@ -78,10 +78,10 @@ const MOCK_REVIEWS: Review[] = [
   },
   {
     id: '3',
-    author: 'Thomas D.',
+    author: 'Client vérifié',
     date: '2023-12-28',
     rating: 5,
-    comment: 'Expertise pointue sur le régime NHR Portugal. M\'a fait économiser beaucoup.',
+    comment: 'Expertise pointue et accompagnement personnalisé. Très satisfait.',
     helpful: 15,
     verified: true,
   },

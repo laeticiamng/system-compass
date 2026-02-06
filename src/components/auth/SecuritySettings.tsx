@@ -3,6 +3,7 @@
  * Manage 2FA, password changes, security alerts, and account deletion
  */
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { DeleteAccountSection } from './DeleteAccountSection';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -42,6 +43,7 @@ export function SecuritySettings({
 }: SecuritySettingsProps) {
   const [loading, setLoading] = useState<string | null>(null);
   const { toast } = useToast();
+  const { t } = useTranslation();
 
   const handleToggle = async (
     setting: string, 
@@ -54,13 +56,13 @@ export function SecuritySettings({
     try {
       await handler(value);
       toast({
-        title: "Paramètre mis à jour",
-        description: `${setting} ${value ? 'activé' : 'désactivé'}.`,
+        title: t('settings.security.settingUpdated', 'Paramètre mis à jour'),
+        description: `${setting} ${value ? t('settings.security.enabled', 'activé') : t('settings.security.disabled', 'désactivé')}.`,
       });
     } catch {
       toast({
-        title: "Erreur",
-        description: "Impossible de mettre à jour le paramètre.",
+        title: t('common.error', 'Erreur'),
+        description: t('settings.security.updateError', 'Impossible de mettre à jour le paramètre.'),
         variant: "destructive",
       });
     } finally {

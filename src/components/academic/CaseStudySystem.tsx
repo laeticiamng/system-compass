@@ -91,7 +91,7 @@ const mockCaseStudies: CaseStudy[] = [
     duration: '45 min',
     destinations: ['Portugal', 'Lisbonne'],
     profile: {
-      name: 'Thomas & Marie L.',
+      name: 'Profil type (exemple académique)',
       age: 38,
       nationality: 'Française',
       profession: 'CTO Startup / Product Designer',
