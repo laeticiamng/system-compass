@@ -3,6 +3,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 
 import type { 
   PmoInitiativeRow,
@@ -12,6 +13,7 @@ import type {
 
 export function usePmoInitiatives(caseId: string | null, objectiveId?: string) {
   const { user } = useAuth();
+  const { t } = useTranslation();
   const queryClient = useQueryClient();
   const [isCreating, setIsCreating] = useState(false);
 
@@ -67,12 +69,12 @@ export function usePmoInitiatives(caseId: string | null, objectiveId?: string) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pmo-initiatives', caseId] });
-      toast.success('Initiative créée avec succès');
+      toast.success(t('toast.initiative.created', 'Initiative créée avec succès'));
       setIsCreating(false);
     },
     onError: (error) => {
       console.error('Error creating initiative:', error);
-      toast.error('Erreur lors de la création de l\'initiative');
+      toast.error(t('toast.error.initiative.create', 'Erreur lors de la création de l\'initiative'));
       setIsCreating(false);
     },
   });
@@ -92,11 +94,11 @@ export function usePmoInitiatives(caseId: string | null, objectiveId?: string) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pmo-initiatives', caseId] });
-      toast.success('Initiative mise à jour');
+      toast.success(t('toast.initiative.updated', 'Initiative mise à jour'));
     },
     onError: (error) => {
       console.error('Error updating initiative:', error);
-      toast.error('Erreur lors de la mise à jour');
+      toast.error(t('toast.error.update', 'Erreur lors de la mise à jour'));
     },
   });
 
@@ -112,11 +114,11 @@ export function usePmoInitiatives(caseId: string | null, objectiveId?: string) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pmo-initiatives', caseId] });
-      toast.success('Initiative supprimée');
+      toast.success(t('toast.initiative.deleted', 'Initiative supprimée'));
     },
     onError: (error) => {
       console.error('Error deleting initiative:', error);
-      toast.error('Erreur lors de la suppression');
+      toast.error(t('toast.error.delete', 'Erreur lors de la suppression'));
     },
   });
 

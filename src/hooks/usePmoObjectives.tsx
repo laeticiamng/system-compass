@@ -3,6 +3,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 import type { 
   PmoObjectiveRow,
   CreateObjectiveForm,
@@ -11,6 +12,7 @@ import type {
 
 export function usePmoObjectives(caseId: string | null) {
   const { user } = useAuth();
+  const { t } = useTranslation();
   const queryClient = useQueryClient();
   const [isCreating, setIsCreating] = useState(false);
 
@@ -61,12 +63,12 @@ export function usePmoObjectives(caseId: string | null) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pmo-objectives', caseId] });
-      toast.success('Objectif créé avec succès');
+      toast.success(t('toast.objective.created', 'Objectif créé avec succès'));
       setIsCreating(false);
     },
     onError: (error) => {
       console.error('Error creating objective:', error);
-      toast.error('Erreur lors de la création de l\'objectif');
+      toast.error(t('toast.error.objective.create', 'Erreur lors de la création de l\'objectif'));
       setIsCreating(false);
     },
   });
@@ -86,11 +88,11 @@ export function usePmoObjectives(caseId: string | null) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pmo-objectives', caseId] });
-      toast.success('Objectif mis à jour');
+      toast.success(t('toast.objective.updated', 'Objectif mis à jour'));
     },
     onError: (error) => {
       console.error('Error updating objective:', error);
-      toast.error('Erreur lors de la mise à jour');
+      toast.error(t('toast.error.update', 'Erreur lors de la mise à jour'));
     },
   });
 
@@ -106,11 +108,11 @@ export function usePmoObjectives(caseId: string | null) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pmo-objectives', caseId] });
-      toast.success('Objectif supprimé');
+      toast.success(t('toast.objective.deleted', 'Objectif supprimé'));
     },
     onError: (error) => {
       console.error('Error deleting objective:', error);
-      toast.error('Erreur lors de la suppression');
+      toast.error(t('toast.error.delete', 'Erreur lors de la suppression'));
     },
   });
 

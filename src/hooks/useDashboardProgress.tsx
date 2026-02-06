@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from './useAuth';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 
 import { Json } from '@/integrations/supabase/types';
 
@@ -31,6 +32,7 @@ const LOCAL_STORAGE_KEY = 'exit_keys_dashboard';
 
 export function useDashboardProgress() {
   const { user } = useAuth();
+  const { t } = useTranslation();
   const [progress, setProgress] = useState<DashboardProgress | null>(null);
   const [loading, setLoading] = useState(true);
   const [syncing, setSyncing] = useState(false);
@@ -158,7 +160,7 @@ export function useDashboardProgress() {
     if (user) {
       const success = await syncToCloud(newProgress);
       if (!success) {
-        toast.error('Erreur de synchronisation cloud');
+        toast.error(t('toast.error.sync', 'Erreur de synchronisation cloud'));
       }
     }
   }, [user, syncToCloud]);

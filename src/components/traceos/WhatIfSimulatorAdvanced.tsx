@@ -3,6 +3,7 @@
  * Monte Carlo simulation and scenario modeling
  */
 import { useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -342,6 +343,7 @@ function SimulationResults({ result }: { result: SimulationResult }) {
 }
 
 export function WhatIfSimulatorAdvanced() {
+  const { t } = useTranslation();
   const [scenarios, setScenarios] = useState<Scenario[]>(DEFAULT_SCENARIOS);
   const [hasSimulated, setHasSimulated] = useState(false);
   const [simulationNotes, setSimulationNotes] = useState('');
@@ -379,7 +381,7 @@ export function WhatIfSimulatorAdvanced() {
 
   const handleRemoveScenario = (index: number) => {
     if (scenarios.length <= 2) {
-      toast.error('Minimum 2 scénarios requis');
+      toast.error(t('toast.error.simulator.minScenarios', 'Minimum 2 scénarios requis'));
       return;
     }
     setScenarios(scenarios.filter((_, i) => i !== index));
@@ -388,19 +390,19 @@ export function WhatIfSimulatorAdvanced() {
 
   const handleRunSimulation = () => {
     if (Math.abs(totalProbability - 100) > 1) {
-      toast.error('La somme des probabilités doit égaler 100%');
+      toast.error(t('toast.error.simulator.probSum', 'La somme des probabilités doit égaler 100%'));
       return;
     }
     setHasSimulated(true);
-    toast.success('Simulation terminée');
+    toast.success(t('toast.simulator.done', 'Simulation terminée'));
   };
 
   const handleSaveSimulation = () => {
-    toast.success('Simulation sauvegardée');
+    toast.success(t('toast.simulator.saved', 'Simulation sauvegardée'));
   };
 
   const handleExport = () => {
-    toast.success('Export PDF généré');
+    toast.success(t('toast.export.pdfGenerated', 'Export PDF généré'));
   };
 
   return (

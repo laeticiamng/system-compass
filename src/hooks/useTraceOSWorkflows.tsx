@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 
 
 interface WorkflowStep {
@@ -39,6 +40,7 @@ interface Approval {
 
 export function useTraceOSWorkflows() {
   const { user } = useAuth();
+  const { t } = useTranslation();
   const [workflows, setWorkflows] = useState<Workflow[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -94,13 +96,13 @@ export function useTraceOSWorkflows() {
       if (error) throw error;
 
       await fetchWorkflows();
-      toast.success('Workflow créé avec succès');
+      toast.success(t('toast.workflow.created', 'Workflow créé avec succès'));
       return {
         ...data,
         steps: (data.steps as unknown as WorkflowStep[]) || []
       };
     } catch (err) {
-      toast.error('Erreur lors de la création du workflow');
+      toast.error(t('toast.error.workflow.create', 'Erreur lors de la création du workflow'));
       return null;
     }
   }, [user, fetchWorkflows]);
@@ -118,10 +120,10 @@ export function useTraceOSWorkflows() {
       if (error) throw error;
 
       await fetchWorkflows();
-      toast.success('Workflow supprimé');
+      toast.success(t('toast.workflow.deleted', 'Workflow supprimé'));
       return true;
     } catch (err) {
-      toast.error('Erreur lors de la suppression');
+      toast.error(t('toast.error.delete', 'Erreur lors de la suppression'));
       return false;
     }
   }, [user, fetchWorkflows]);
@@ -141,6 +143,7 @@ export function useTraceOSWorkflows() {
 
 export function useTraceOSApprovals(decisionId?: string) {
   const { user } = useAuth();
+  const { t } = useTranslation();
   const [approvals, setApprovals] = useState<Approval[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -202,10 +205,10 @@ export function useTraceOSApprovals(decisionId?: string) {
       if (error) throw error;
 
       await fetchApprovals();
-      toast.success('Workflow d\'approbation démarré');
+      toast.success(t('toast.workflow.approvalStarted', 'Workflow d\'approbation démarré'));
       return true;
     } catch (err) {
-      toast.error('Erreur lors du démarrage du workflow');
+      toast.error(t('toast.error.workflow.start', 'Erreur lors du démarrage du workflow'));
       return false;
     }
   }, [user, fetchApprovals]);
@@ -235,10 +238,10 @@ export function useTraceOSApprovals(decisionId?: string) {
       if (error) throw error;
 
       await fetchApprovals();
-      toast.success('Étape approuvée avec signature électronique');
+      toast.success(t('toast.workflow.stepApproved', 'Étape approuvée avec signature électronique'));
       return true;
     } catch (err) {
-      toast.error('Erreur lors de l\'approbation');
+      toast.error(t('toast.error.workflow.approve', 'Erreur lors de l\'approbation'));
       return false;
     }
   }, [user, fetchApprovals]);
@@ -264,10 +267,10 @@ export function useTraceOSApprovals(decisionId?: string) {
       if (error) throw error;
 
       await fetchApprovals();
-      toast.success('Étape rejetée');
+      toast.success(t('toast.workflow.stepRejected', 'Étape rejetée'));
       return true;
     } catch (err) {
-      toast.error('Erreur lors du rejet');
+      toast.error(t('toast.error.workflow.reject', 'Erreur lors du rejet'));
       return false;
     }
   }, [user, fetchApprovals]);

@@ -3,6 +3,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 import type { 
   PmoRiskRow,
   CreateRiskForm,
@@ -12,6 +13,7 @@ import type {
 
 export function usePmoRisks(caseId: string | null) {
   const { user } = useAuth();
+  const { t } = useTranslation();
   const queryClient = useQueryClient();
   const [isCreating, setIsCreating] = useState(false);
 
@@ -115,12 +117,12 @@ export function usePmoRisks(caseId: string | null) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pmo-risks', caseId] });
-      toast.success('Risque créé avec succès');
+      toast.success(t('toast.risk.created', 'Risque créé avec succès'));
       setIsCreating(false);
     },
     onError: (error) => {
       console.error('Error creating risk:', error);
-      toast.error('Erreur lors de la création du risque');
+      toast.error(t('toast.error.risk.create', 'Erreur lors de la création du risque'));
       setIsCreating(false);
     },
   });
@@ -151,11 +153,11 @@ export function usePmoRisks(caseId: string | null) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pmo-risks', caseId] });
-      toast.success('Risque mis à jour');
+      toast.success(t('toast.risk.updated', 'Risque mis à jour'));
     },
     onError: (error) => {
       console.error('Error updating risk:', error);
-      toast.error('Erreur lors de la mise à jour');
+      toast.error(t('toast.error.update', 'Erreur lors de la mise à jour'));
     },
   });
 
@@ -171,11 +173,11 @@ export function usePmoRisks(caseId: string | null) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pmo-risks', caseId] });
-      toast.success('Risque supprimé');
+      toast.success(t('toast.risk.deleted', 'Risque supprimé'));
     },
     onError: (error) => {
       console.error('Error deleting risk:', error);
-      toast.error('Erreur lors de la suppression');
+      toast.error(t('toast.error.delete', 'Erreur lors de la suppression'));
     },
   });
 
@@ -216,11 +218,11 @@ export function usePmoRisks(caseId: string | null) {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pmo-risks', caseId] });
       queryClient.invalidateQueries({ queryKey: ['pmo-initiatives', caseId] });
-      toast.success('Initiative de mitigation créée');
+      toast.success(t('toast.risk.mitigationCreated', 'Initiative de mitigation créée'));
     },
     onError: (error) => {
       console.error('Error creating initiative from risk:', error);
-      toast.error('Erreur lors de la création de l\'initiative');
+      toast.error(t('toast.error.initiative.create', 'Erreur lors de la création de l\'initiative'));
     },
   });
 

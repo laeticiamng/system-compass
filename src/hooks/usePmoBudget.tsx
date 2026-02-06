@@ -3,6 +3,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 
 import type { 
   PmoBudgetLineRow,
@@ -14,6 +15,7 @@ import type {
 
 export function usePmoBudget(caseId: string | null, initialScenarioId?: string) {
   const { user } = useAuth();
+  const { t } = useTranslation();
   const queryClient = useQueryClient();
   const [isCreating, setIsCreating] = useState(false);
   const [activeScenarioId, setActiveScenarioId] = useState<string | null>(initialScenarioId || null);
@@ -172,12 +174,12 @@ export function usePmoBudget(caseId: string | null, initialScenarioId?: string) 
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pmo-budget-lines', caseId] });
-      toast.success('Ligne budgétaire créée');
+      toast.success(t('toast.budget.lineCreated', 'Ligne budgétaire créée'));
       setIsCreating(false);
     },
     onError: (error) => {
       console.error('Error creating budget line:', error);
-      toast.error('Erreur lors de la création');
+      toast.error(t('toast.error.create', 'Erreur lors de la création'));
       setIsCreating(false);
     },
   });
@@ -197,11 +199,11 @@ export function usePmoBudget(caseId: string | null, initialScenarioId?: string) 
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pmo-budget-lines', caseId] });
-      toast.success('Ligne budgétaire mise à jour');
+      toast.success(t('toast.budget.lineUpdated', 'Ligne budgétaire mise à jour'));
     },
     onError: (error) => {
       console.error('Error updating budget line:', error);
-      toast.error('Erreur lors de la mise à jour');
+      toast.error(t('toast.error.update', 'Erreur lors de la mise à jour'));
     },
   });
 
@@ -217,11 +219,11 @@ export function usePmoBudget(caseId: string | null, initialScenarioId?: string) 
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pmo-budget-lines', caseId] });
-      toast.success('Ligne budgétaire supprimée');
+      toast.success(t('toast.budget.lineDeleted', 'Ligne budgétaire supprimée'));
     },
     onError: (error) => {
       console.error('Error deleting budget line:', error);
-      toast.error('Erreur lors de la suppression');
+      toast.error(t('toast.error.delete', 'Erreur lors de la suppression'));
     },
   });
 
@@ -249,11 +251,11 @@ export function usePmoBudget(caseId: string | null, initialScenarioId?: string) 
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pmo-budget-scenarios', caseId] });
-      toast.success('Scénario créé');
+      toast.success(t('toast.budget.scenarioCreated', 'Scénario créé'));
     },
     onError: (error) => {
       console.error('Error creating scenario:', error);
-      toast.error('Erreur lors de la création du scénario');
+      toast.error(t('toast.error.budget.scenarioCreate', 'Erreur lors de la création du scénario'));
     },
   });
 
@@ -295,11 +297,11 @@ export function usePmoBudget(caseId: string | null, initialScenarioId?: string) 
     },
     onSuccess: (count) => {
       queryClient.invalidateQueries({ queryKey: ['pmo-budget-lines', caseId] });
-      toast.success(`${count} lignes clonées dans le scénario`);
+      toast.success(t('toast.budget.cloned', '{{count}} lignes clonées dans le scénario', { count }));
     },
     onError: (error) => {
       console.error('Error cloning budget:', error);
-      toast.error('Erreur lors du clonage');
+      toast.error(t('toast.error.budget.clone', 'Erreur lors du clonage'));
     },
   });
 

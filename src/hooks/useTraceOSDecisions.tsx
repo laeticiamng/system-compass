@@ -3,6 +3,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { useTraceOSWebhooks } from '@/hooks/useTraceOSWebhooks';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 
 import { DecisionNodeData } from '@/components/institutions/DecisionNode';
 
@@ -85,6 +86,7 @@ function findDecisionById(decisions: DecisionNodeData[], id: string): DecisionNo
 
 export function useTraceOSDecisions() {
   const { user } = useAuth();
+  const { t } = useTranslation();
   const { triggerWebhooksForEvent } = useTraceOSWebhooks();
   const [decisions, setDecisions] = useState<DecisionNodeData[]>([]);
   const [loading, setLoading] = useState(true);
@@ -125,7 +127,7 @@ export function useTraceOSDecisions() {
     parentId?: string
   ): Promise<DecisionNodeData | null> => {
     if (!user) {
-      toast.error('Vous devez être connecté pour créer une décision');
+      toast.error(t('toast.error.decision.authRequired', 'Vous devez être connecté pour créer une décision'));
       return null;
     }
 
@@ -153,7 +155,7 @@ export function useTraceOSDecisions() {
       if (insertError) throw insertError;
 
       await fetchDecisions();
-      toast.success('Décision enregistrée');
+      toast.success(t('toast.decision.created', 'Décision enregistrée'));
       const createdDecision = dbToUIDecision(data as DBDecision);
       await triggerWebhooksForEvent('decision_created', {
         decision: createdDecision,
@@ -161,7 +163,7 @@ export function useTraceOSDecisions() {
       return createdDecision;
     } catch (err) {
       console.error('Error creating decision:', err);
-      toast.error('Erreur lors de la création de la décision');
+      toast.error(t('toast.error.decision.create', 'Erreur lors de la création de la décision'));
       return null;
     }
   }, [user, fetchDecisions]);
@@ -198,7 +200,7 @@ export function useTraceOSDecisions() {
       if (updateError) throw updateError;
 
       await fetchDecisions();
-      toast.success('Décision mise à jour');
+      toast.success(t('toast.decision.updated', 'Décision mise à jour'));
 
       await triggerWebhooksForEvent('decision_updated', {
         id,
@@ -217,7 +219,7 @@ export function useTraceOSDecisions() {
       return true;
     } catch (err) {
       console.error('Error updating decision:', err);
-      toast.error('Erreur lors de la mise à jour');
+      toast.error(t('toast.error.update', 'Erreur lors de la mise à jour'));
       return false;
     }
   }, [user, decisions, fetchDecisions, triggerWebhooksForEvent]);
@@ -236,11 +238,11 @@ export function useTraceOSDecisions() {
       if (deleteError) throw deleteError;
 
       await fetchDecisions();
-      toast.success('Décision supprimée');
+      toast.success(t('toast.decision.deleted', 'Décision supprimée'));
       return true;
     } catch (err) {
       console.error('Error deleting decision:', err);
-      toast.error('Erreur lors de la suppression');
+      toast.error(t('toast.error.delete', 'Erreur lors de la suppression'));
       return false;
     }
   }, [user, fetchDecisions]);

@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 
 
 export type ZoneStatus = 'dormant' | 'emergent' | 'fragile' | 'blocked';
@@ -40,6 +41,7 @@ export interface ZoneHistory {
 
 export function useLatentZones() {
   const { user } = useAuth();
+  const { t } = useTranslation();
   const [zones, setZones] = useState<LatentZone[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -76,7 +78,7 @@ export function useLatentZones() {
       setError(null);
     } catch (err) {
       setError('Failed to fetch zones');
-      toast.error('Erreur lors du chargement des zones');
+      toast.error(t('toast.error.zones.load', 'Erreur lors du chargement des zones'));
     } finally {
       setLoading(false);
     }
@@ -115,7 +117,7 @@ export function useLatentZones() {
       setZones(prev => [newZone, ...prev]);
       return newZone;
     } catch (err) {
-      toast.error('Erreur lors de la création de la zone');
+      toast.error(t('toast.error.zones.create', 'Erreur lors de la création de la zone'));
       return null;
     }
   };
@@ -149,7 +151,7 @@ export function useLatentZones() {
       ));
       return true;
     } catch (err) {
-      toast.error('Erreur lors de la mise à jour du statut');
+      toast.error(t('toast.error.zones.statusUpdate', 'Erreur lors de la mise à jour du statut'));
       return false;
     }
   };
@@ -177,7 +179,7 @@ export function useLatentZones() {
       ));
       return data as ZoneTension;
     } catch (err) {
-      toast.error('Erreur lors de l\'ajout de la tension');
+      toast.error(t('toast.error.zones.addTension', 'Erreur lors de l\'ajout de la tension'));
       return null;
     }
   };
@@ -200,7 +202,7 @@ export function useLatentZones() {
       ));
       return true;
     } catch (err) {
-      toast.error('Erreur lors de la suppression');
+      toast.error(t('toast.error.delete', 'Erreur lors de la suppression'));
       return false;
     }
   };
@@ -235,7 +237,7 @@ export function useLatentZones() {
 
       return true;
     } catch (err) {
-      toast.error('Erreur lors de l\'évolution de la zone');
+      toast.error(t('toast.error.zones.evolve', 'Erreur lors de l\'évolution de la zone'));
       return false;
     }
   };
@@ -254,7 +256,7 @@ export function useLatentZones() {
       setZones(prev => prev.filter(z => z.id !== zoneId));
       return true;
     } catch (err) {
-      toast.error('Erreur lors de la suppression de la zone');
+      toast.error(t('toast.error.zones.delete', 'Erreur lors de la suppression de la zone'));
       return false;
     }
   };
@@ -296,7 +298,7 @@ export function useLatentZones() {
       ));
       return true;
     } catch (err) {
-      toast.error('Erreur lors de la mise à jour de la zone');
+      toast.error(t('toast.error.zones.update', 'Erreur lors de la mise à jour de la zone'));
       return false;
     }
   };
@@ -351,7 +353,7 @@ export function useLatentZones() {
       setZones(prev => [newZone, ...prev]);
       return newZone;
     } catch (err) {
-      toast.error('Erreur lors de la duplication de la zone');
+      toast.error(t('toast.error.zones.duplicate', 'Erreur lors de la duplication de la zone'));
       return null;
     }
   };
@@ -436,10 +438,10 @@ export function useLatentZones() {
         )
       ]);
 
-      toast.success('Zones fusionnées avec succès');
+      toast.success(t('toast.zones.merged', 'Zones fusionnées avec succès'));
       return mergedZone;
     } catch (err) {
-      toast.error('Erreur lors de la fusion des zones');
+      toast.error(t('toast.error.zones.merge', 'Erreur lors de la fusion des zones'));
       return null;
     }
   };
