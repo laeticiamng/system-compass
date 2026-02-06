@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { PyramidType } from '@/lib/types';
+import { supabase } from '@/integrations/supabase/client';
 import {
   Tooltip,
   TooltipContent,
@@ -71,22 +72,15 @@ export function CountryMusicPlayer({
 
       await new Promise((resolve) => setTimeout(resolve, pollIntervalMs));
 
-      const statusResponse = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/music-task-status?taskId=${taskId}`,
-        {
-          method: "GET",
-          headers: {
-            apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
-            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-          },
-        }
-      );
+      const { data: statusData, error: statusError } = await supabase.functions.invoke('music-task-status', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+        body: { taskId },
+      });
 
-      if (!statusResponse.ok) {
+      if (statusError || !statusData) {
         continue;
       }
-
-      const statusData = await statusResponse.json();
 
       if (statusData.status === 'completed' && statusData.audioUrl) {
         return statusData;
@@ -121,32 +115,20 @@ export function CountryMusicPlayer({
       let finalError: string | null = null;
 
       while (attempts <= maxAutoRetries) {
-        const response = await fetch(
-          `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/generate-country-music`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
-              Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-            },
-            body: JSON.stringify({
-              countryId,
-              pyramidType,
-              mood: 'narrative',
-            }),
-          }
-        );
+        const { data, error: invokeError } = await supabase.functions.invoke('generate-country-music', {
+          body: {
+            countryId,
+            pyramidType,
+            mood: 'narrative',
+          },
+        });
 
-        if (!response.ok) {
-          const errorData = await response.json().catch(() => ({}));
-          throw new Error(errorData.error || `Failed to generate music: ${response.status}`);
+        if (invokeError) {
+          throw new Error(invokeError.message || 'Failed to generate music');
         }
-
-        const data = await response.json();
         let audioUrl = (data.audioUrl as string | undefined) || (data.streamUrl as string | undefined);
         // streamUrl from initial response (unused but kept for potential future use)
-        if (response.status === 202 || !audioUrl) {
+        if (!audioUrl) {
           if (data.taskId) {
             const statusData = await pollTaskStatus(data.taskId as string);
             audioUrl = statusData?.audioUrl || statusData?.streamUrl;

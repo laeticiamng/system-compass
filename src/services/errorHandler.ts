@@ -292,7 +292,7 @@ export function handleError(
       };
     }
 
-    toast.error('Erreur', toastOptions);
+    toast.error('Error', toastOptions);
   }
 
   // Custom handler

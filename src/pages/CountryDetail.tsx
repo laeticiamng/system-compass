@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
+import { PyramidType } from '@/lib/types';
 import { useCountryById } from '@/lib/countries-data';
 import { getExtendedCountryMeta } from '@/lib/countries-extended';
 import { CountryTroncSection } from '@/components/country/CountryTroncSection';
@@ -26,6 +27,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ArrowLeft, Calendar, ExternalLink, Layers, Map, Target, Brain, Loader2, Shield, ShieldAlert } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
+import { Database } from '@/integrations/supabase/types';
 import { useUserHistory } from '@/hooks/useUserHistory';
 import { useExitKeysProfile } from '@/hooks/useExitKeysProfile';
 import { useCountryGovernance } from '@/hooks/useCountryGovernance';
@@ -74,7 +76,7 @@ export default function CountryDetail() {
   }, [id, country, extendedMeta, trackCountryView]);
 
   // For extended countries, we need to fetch tags from DB
-  const [extendedTags, setExtendedTags] = useState<any>(null);
+  const [extendedTags, setExtendedTags] = useState<Database['public']['Tables']['country_tags']['Row'] | null>(null);
   const [loadingExtended, setLoadingExtended] = useState(isExtended);
 
   useEffect(() => {
@@ -158,7 +160,7 @@ export default function CountryDetail() {
           <CountryMusicPlayer
             countryId={id!}
             countryName={extendedMeta.name}
-            pyramidType={extendedMeta.pyramidType as any}
+            pyramidType={extendedMeta.pyramidType as PyramidType}
             className="mb-8"
           />
 

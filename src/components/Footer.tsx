@@ -116,15 +116,15 @@ export function Footer() {
             {/* Legal links */}
             <div className="flex flex-wrap justify-center gap-3 text-xs text-muted-foreground">
               <Link to="/cgv" className="hover:text-foreground transition-colors">
-                CGV
+                {t('footer.cgv', 'CGV')}
               </Link>
               <span className="text-border">|</span>
               <Link to="/mentions-legales" className="hover:text-foreground transition-colors">
-                Mentions légales
+                {t('footer.legalNotice', 'Mentions légales')}
               </Link>
               <span className="text-border">|</span>
               <Link to="/disclaimer" className="hover:text-foreground transition-colors">
-                Politique de confidentialité
+                {t('footer.privacyPolicy', 'Politique de confidentialité')}
               </Link>
             </div>
             

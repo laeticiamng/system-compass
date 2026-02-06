@@ -109,7 +109,7 @@ export default function ProfileTest() {
     // Save to backend
     const elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
     const mainPyramid = calculatedResult.compatibleTypes[0] || 'STABILITY_REDIS';
-    await saveResult('profile_test', profile as any, mainPyramid, calculatedResult.archetype, elapsedSeconds);
+    await saveResult('profile_test', profile as unknown as Record<string, unknown>, mainPyramid, calculatedResult.archetype, elapsedSeconds);
   };
 
   const handleNext = () => {
