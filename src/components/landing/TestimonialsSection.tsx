@@ -18,7 +18,7 @@ export function TestimonialsSection() {
       icon: Globe,
       stat: '38+',
       label: t('socialProof.countries', 'Pays analysés'),
-      description: t('socialProof.countriesDesc', 'Systèmes décryptés en profondeur'),
+      description: t('socialProof.countriesDesc', 'Analyses détaillées de chaque pays'),
     },
     {
       icon: Compass,
@@ -105,7 +105,7 @@ export function TestimonialsSection() {
                 {t('socialProof.betaTitle', 'Rejoignez les premiers explorateurs')}
               </h3>
               <p className="text-muted-foreground text-sm mb-4">
-                {t('socialProof.betaDescription', 'Testez gratuitement l\'analyse de 3 pays et découvrez votre profil pyramidal. Vos retours façonnent la plateforme.')}
+                {t('socialProof.betaDescription', 'Testez gratuitement l\'analyse de 3 pays et découvrez votre profil d\'expatrié. Vos retours façonnent la plateforme.')}
               </p>
               <a
                 href="/quick-test"

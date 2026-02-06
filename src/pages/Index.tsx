@@ -243,7 +243,7 @@ export default function Index() {
               {t('landing.example.title', 'Une fiche pays en aperçu')}
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
-              {t('landing.example.description', 'Chaque pays est analysé en profondeur : système, risques, opportunités et stratégies.')}
+              {t('landing.example.description', 'Chaque pays est analysé en profondeur : économie, risques, opportunités et stratégies.')}
             </p>
           </div>
 
@@ -362,19 +362,19 @@ export default function Index() {
                   </div>
                   <ul className="space-y-3 mb-8">
                     <li className="flex items-center gap-2 text-sm">
-                      <CheckCircle className="w-4 h-4 text-primary" />
+                      <CheckCircle className="w-4 h-4 text-green-500" />
                       {t('landing.pricing.premiumFeature1', 'Tout le plan gratuit')}
                     </li>
                     <li className="flex items-center gap-2 text-sm">
-                      <CheckCircle className="w-4 h-4 text-primary" />
+                      <CheckCircle className="w-4 h-4 text-green-500" />
                       {t('landing.pricing.premiumFeature2', 'Recommandations personnalisées')}
                     </li>
                     <li className="flex items-center gap-2 text-sm">
-                      <CheckCircle className="w-4 h-4 text-primary" />
+                      <CheckCircle className="w-4 h-4 text-green-500" />
                       {t('landing.pricing.premiumFeature3', 'Export PDF illimité')}
                     </li>
                     <li className="flex items-center gap-2 text-sm">
-                      <CheckCircle className="w-4 h-4 text-primary" />
+                      <CheckCircle className="w-4 h-4 text-green-500" />
                       {t('landing.pricing.premiumFeature4', 'Analyses approfondies')}
                     </li>
                   </ul>
@@ -460,6 +460,7 @@ export default function Index() {
               {t('landing.cta.button', 'Commencer maintenant')}
               <ArrowRight className="w-6 h-6" />
             </Button>
+            <p className="text-sm text-muted-foreground mt-4">{t('landing.cta.freeNotice', 'Gratuit, sans carte bancaire')}</p>
           </motion.div>
         </div>
       </section>

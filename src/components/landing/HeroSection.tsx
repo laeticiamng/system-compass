@@ -193,7 +193,7 @@ export function HeroSection({ onExitKeysClick }: HeroSectionProps) {
             transition={{ delay: 0.5, duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
             className="block text-[clamp(2.2rem,8vw,9rem)] leading-[0.9] text-foreground font-extrabold"
           >
-            {t('hero.appleTitle1', 'Comprends le système.')}
+            {t('hero.appleTitle1', 'Comprends les règles.')}
           </motion.span>
           <motion.span 
             initial={{ opacity: 0, y: 60, filter: 'blur(20px)' }}
@@ -273,9 +273,9 @@ export function HeroSection({ onExitKeysClick }: HeroSectionProps) {
         >
           <StatItem value="38" label={t('stats.countries', 'pays analysés')} />
           <div className="w-px h-6 sm:h-8 bg-border/30 mx-2 sm:mx-4 hidden sm:block" />
-          <StatItem value="50+" label={t('stats.keys', 'clés de sortie')} />
+          <StatItem value="50+" label={t('stats.keys', 'critères comparés')} />
           <div className="w-px h-6 sm:h-8 bg-border/30 mx-2 sm:mx-4 hidden sm:block" />
-          <StatItem value="6" label={t('stats.pyramids', 'types de systèmes')} />
+          <StatItem value="6" label={t('stats.pyramids', 'profils d\'expatrié')} />
         </motion.div>
 
         {/* Scroll indicator - Hidden on very small screens */}
