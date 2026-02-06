@@ -576,8 +576,8 @@ function ActorCard({ actor, expanded, onToggle, onDelete }: {
             {actor.notes && (
               <p className="text-sm text-muted-foreground">{actor.notes}</p>
             )}
-            {actor.sources && (actor.sources as any[]).length > 0 && (
-              <SourcesList sources={actor.sources as any[]} />
+            {actor.sources && (actor.sources as { url: string; title: string; type: string; date?: string }[]).length > 0 && (
+              <SourcesList sources={actor.sources as { url: string; title: string; type: string; date?: string }[]} />
             )}
             <DeleteConfirmButton onDelete={() => onDelete(actor.id)} />
           </CardContent>
