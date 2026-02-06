@@ -159,7 +159,7 @@ export function useExperts(): UseExpertsReturn {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const mapDbExpert = (row: any): Expert => ({
+  const mapDbExpert = (row: Record<string, any>): Expert => ({
     id: row.id,
     userId: row.user_id,
     type: row.expert_type,
@@ -186,8 +186,8 @@ export function useExperts(): UseExpertsReturn {
     try {
       // Since tables may not be in types yet, use a more flexible approach
       // Type assertion for tables not yet in generated types
-      const { data, error: dbError } = await (supabase as any)
-        .from('expert_profiles')
+      const { data, error: dbError } = await supabase
+        .from('expert_profiles' as any)
         .select('*')
         .eq('is_active', true)
         .order('rating', { ascending: false });
@@ -257,8 +257,8 @@ export function useExperts(): UseExpertsReturn {
     }
 
     try {
-      const { data, error: dbError } = await (supabase as any)
-        .from('expert_reviews')
+      const { data, error: dbError } = await supabase
+        .from('expert_reviews' as any)
         .select('*')
         .eq('expert_id', expertId)
         .order('created_at', { ascending: false });
@@ -268,7 +268,7 @@ export function useExperts(): UseExpertsReturn {
         return [];
       }
 
-      return (data || []).map((row: any) => ({
+      return ((data as unknown as Record<string, any>[]) || []).map((row) => ({
         id: row.id,
         expertId: row.expert_id,
         userId: row.user_id,
@@ -301,8 +301,8 @@ export function useExperts(): UseExpertsReturn {
     }
 
     try {
-      const { error: dbError } = await (supabase as any)
-        .from('expert_reviews')
+      const { error: dbError } = await supabase
+        .from('expert_reviews' as any)
         .insert({
           expert_id: expertId,
           user_id: user.id,
@@ -343,8 +343,8 @@ export function useExperts(): UseExpertsReturn {
     }
 
     try {
-      const { error: dbError } = await (supabase as any)
-        .from('expert_consultations')
+      const { error: dbError } = await supabase
+        .from('expert_consultations' as any)
         .insert({
           expert_id: expertId,
           user_id: user.id,
@@ -371,8 +371,8 @@ export function useExperts(): UseExpertsReturn {
     if (!user) return [];
 
     try {
-      const { data, error: dbError } = await (supabase as any)
-        .from('expert_consultations')
+      const { data, error: dbError } = await supabase
+        .from('expert_consultations' as any)
         .select('*')
         .eq('user_id', user.id)
         .order('scheduled_at', { ascending: true });
@@ -382,7 +382,7 @@ export function useExperts(): UseExpertsReturn {
         return [];
       }
 
-      const mapped = (data || []).map((row: any) => ({
+      const mapped = ((data as unknown as Record<string, any>[]) || []).map((row) => ({
         id: row.id,
         expertId: row.expert_id,
         userId: row.user_id,

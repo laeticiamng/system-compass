@@ -14,6 +14,18 @@ import {
 // Storage key for local persistence (fallback for anonymous users)
 const STORAGE_KEY = 'gamification-progress';
 
+/** Row shape from the gamification_progress table */
+interface GamificationRow {
+  user_id: string;
+  xp: number;
+  level: string;
+  badges: string[];
+  phase: string;
+  streak: number;
+  last_active: string;
+  created_at: string;
+}
+
 interface UseGamificationReturn {
   progress: UserProgress | null;
   isLoading: boolean;
@@ -36,23 +48,24 @@ export function useGamification(): UseGamificationReturn {
       // For logged-in users, try Supabase first
       if (user?.id) {
         try {
-          const { data, error } = await (supabase as any)
-            .from('gamification_progress')
+          const { data, error } = await supabase
+            .from('gamification_progress' as any)
             .select('*')
             .eq('user_id', user.id)
             .single();
 
           if (!error && data) {
+            const row = data as unknown as GamificationRow;
             setProgress({
-              userId: data.user_id,
-              xp: data.xp,
-              level: data.level as UserProgress['level'],
-              badges: data.badges || [],
-              phase: data.phase as UserPhase,
-              streak: data.streak,
+              userId: row.user_id,
+              xp: row.xp,
+              level: row.level as UserProgress['level'],
+              badges: row.badges || [],
+              phase: row.phase as UserPhase,
+              streak: row.streak,
               achievements: [],
-              lastActive: data.last_active,
-              createdAt: data.created_at,
+              lastActive: row.last_active,
+              createdAt: row.created_at,
             });
             setIsLoading(false);
             return;
@@ -61,8 +74,8 @@ export function useGamification(): UseGamificationReturn {
           // No record found, create one
           if (error?.code === 'PGRST116') {
             const initial = createInitialProgress(user.id);
-            const { error: insertError } = await (supabase as any)
-              .from('gamification_progress')
+            const { error: insertError } = await supabase
+              .from('gamification_progress' as any)
               .insert({
                 user_id: user.id,
                 xp: initial.xp,
@@ -126,8 +139,8 @@ export function useGamification(): UseGamificationReturn {
 
     // Sync to Supabase for logged-in users
     if (user?.id && progress.userId === user.id) {
-      (supabase as any)
-        .from('gamification_progress')
+      supabase
+        .from('gamification_progress' as any)
         .upsert({
           user_id: user.id,
           xp: progress.xp,

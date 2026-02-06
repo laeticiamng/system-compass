@@ -12,11 +12,25 @@ import {
   User, Users, Play, Shield, BarChart3, BookOpen, 
   Building2, Eye, AlertCircle, CreditCard, FileText,
   Calculator, Target, Zap, Award, MessageSquare, Briefcase,
-  LayoutDashboard, Bell, TrendingUp, Lightbulb
+  LayoutDashboard, Bell, TrendingUp, Lock
 } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
+
+// Routes that are masked/redirected and should be shown as "coming soon"
+const MASKED_ROUTES = new Set([
+  '/errors-illusions', '/personas', '/academic', '/latent', 
+  '/irreversa', '/ovi', '/community', '/b2b', '/partner-services'
+]);
+
+interface ToolItem {
+  href: string;
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
+  description: string;
+  badge?: string;
+}
 
 // Tool categories with clear hierarchy
 const TOOL_CATEGORIES = [
@@ -33,7 +47,7 @@ const TOOL_CATEGORIES = [
       { href: '/pyramid-types', icon: Triangle, label: 'Pyramides', description: '6 types de systèmes' },
       { href: '/compare', icon: Scale, label: 'Comparer', description: 'Jusqu\'à 4 pays' },
       { href: '/terrain', icon: Map, label: 'Réalités Terrain', description: 'Vécu quotidien' },
-    ],
+    ] as ToolItem[],
   },
   {
     id: 'analyze',
@@ -48,7 +62,7 @@ const TOOL_CATEGORIES = [
       { href: '/profile-matcher', icon: Users, label: 'Matcher Pays', description: 'Compatibilité' },
       { href: '/life-trajectory', icon: TrendingUp, label: 'Trajectoire', description: 'Simulation vie' },
       { href: '/fiscal-calculator', icon: Calculator, label: 'Calculateur Fiscal', description: 'Net vs Brut' },
-    ],
+    ] as ToolItem[],
   },
   {
     id: 'plan',
@@ -62,8 +76,7 @@ const TOOL_CATEGORIES = [
       { href: '/exit-keys/catalog', icon: FileText, label: 'Catalogue', description: '50+ clés' },
       { href: '/exit-keys/compare', icon: Scale, label: 'Comparer Clés', description: 'Analyse comparative' },
       { href: '/prevention-filter', icon: Shield, label: 'Filtre Décision', description: 'Anti-illusions' },
-      { href: '/errors-illusions', icon: Lightbulb, label: 'Erreurs', description: 'Pièges à éviter' },
-    ],
+    ] as ToolItem[],
   },
   {
     id: 'learn',
@@ -76,10 +89,8 @@ const TOOL_CATEGORIES = [
       { href: '/pyramid-quiz', icon: Gamepad2, label: 'Quiz Pyramides', description: 'Testez vos connaissances' },
       { href: '/life-game', icon: Play, label: 'Mode Éducatif', description: 'Simulation interactive' },
       { href: '/gamification', icon: Award, label: 'Progression', description: 'XP & badges', badge: 'Nouveau' },
-      { href: '/personas', icon: Users, label: 'Parcours Persona', description: 'Cas d\'usage' },
       { href: '/how-to-read', icon: BookOpen, label: 'Guide', description: 'Mode d\'emploi' },
-      { href: '/academic', icon: Briefcase, label: 'Centre Académique', description: 'Niveau MBA', badge: 'Nouveau' },
-    ],
+    ] as ToolItem[],
   },
   {
     id: 'pro',
@@ -91,11 +102,11 @@ const TOOL_CATEGORIES = [
     badge: 'Pro',
     tools: [
       { href: '/institutions', icon: Building2, label: 'TraceOS', description: 'Audit institutionnel' },
-      { href: '/latent', icon: Eye, label: 'Zones Latentes', description: 'Risques cachés' },
-      { href: '/irreversa', icon: AlertCircle, label: 'Irreversa', description: 'Seuils critiques' },
-      { href: '/ovi', icon: Eye, label: 'OVI', description: 'Observatoire' },
       { href: '/financial-safety-intel', icon: Shield, label: 'Intel Financière', description: 'Sécurité financière' },
-    ],
+      { href: '/latent', icon: Eye, label: 'Zones Latentes', description: 'Risques cachés', badge: 'Bientôt' },
+      { href: '/irreversa', icon: AlertCircle, label: 'Irreversa', description: 'Seuils critiques', badge: 'Bientôt' },
+      { href: '/ovi', icon: Eye, label: 'OVI', description: 'Observatoire', badge: 'Bientôt' },
+    ] as ToolItem[],
   },
   {
     id: 'connect',
@@ -106,10 +117,10 @@ const TOOL_CATEGORIES = [
     borderColor: 'border-rose-500/30',
     tools: [
       { href: '/experts', icon: Briefcase, label: 'Experts', description: 'Marketplace' },
-      { href: '/community', icon: MessageSquare, label: 'Communauté', description: 'Forum & events' },
-      { href: '/partner-services', icon: Users, label: 'Partenaires', description: 'Services vérifiés' },
-      { href: '/b2b', icon: Building2, label: 'B2B', description: 'Solutions entreprises' },
-    ],
+      { href: '/community', icon: MessageSquare, label: 'Communauté', description: 'Forum & events', badge: 'Bientôt' },
+      { href: '/partner-services', icon: Users, label: 'Partenaires', description: 'Services vérifiés', badge: 'Bientôt' },
+      { href: '/b2b', icon: Building2, label: 'B2B', description: 'Solutions entreprises', badge: 'Bientôt' },
+    ] as ToolItem[],
   },
 ];
 
@@ -192,7 +203,7 @@ export default function ToolsHub() {
                         <div>
                           <CardTitle className="text-lg flex items-center gap-2">
                             {category.title}
-                            {category.badge && (
+                            {'badge' in category && category.badge && (
                               <Badge variant="secondary" className="text-xs">
                                 {category.badge}
                               </Badge>
@@ -207,13 +218,38 @@ export default function ToolsHub() {
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
                       {category.tools.map((tool) => {
                         const ToolIcon = tool.icon;
+                        const isMasked = MASKED_ROUTES.has(tool.href);
+                        const isComingSoon = tool.badge === 'Bientôt' || isMasked;
+
+                        if (isComingSoon) {
+                          return (
+                            <div
+                              key={tool.href}
+                              className="relative p-3 rounded-lg border border-border/30 text-center opacity-60 cursor-default"
+                            >
+                              <Badge 
+                                variant="outline" 
+                                className="absolute -top-2 -right-2 text-[10px] px-1.5 py-0 bg-muted"
+                              >
+                                <Lock className="w-2.5 h-2.5 mr-0.5" />
+                                Bientôt
+                              </Badge>
+                              <ToolIcon className="w-6 h-6 mx-auto mb-2 text-muted-foreground/50" />
+                              <div className="font-medium text-sm mb-0.5 text-muted-foreground">{tool.label}</div>
+                              <div className="text-[11px] text-muted-foreground/60 line-clamp-1">
+                                {tool.description}
+                              </div>
+                            </div>
+                          );
+                        }
+
                         return (
                           <Link
                             key={tool.href}
                             to={tool.href}
                             className="group relative p-3 rounded-lg border border-border/50 hover:border-primary/50 hover:bg-primary/5 transition-all text-center"
                           >
-                            {'badge' in tool && tool.badge && (
+                            {tool.badge && (
                               <Badge 
                                 variant="default" 
                                 className="absolute -top-2 -right-2 text-[10px] px-1.5 py-0"
