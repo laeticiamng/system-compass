@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
@@ -53,6 +54,7 @@ export interface IrreversaAuditEntry {
 }
 
 export function useIrreversa() {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const [thresholds, setThresholds] = useState<IrreversaThreshold[]>([]);
   const [loading, setLoading] = useState(true);
@@ -129,7 +131,7 @@ export function useIrreversa() {
       setThresholds(prev => [newThreshold, ...prev]);
       return newThreshold;
     } catch (err) {
-      toast.error('Erreur lors de la création du seuil');
+      toast.error(t('toast.irreversa.createError', 'Erreur lors de la création du seuil'));
       return null;
     }
   };
@@ -163,7 +165,7 @@ export function useIrreversa() {
       ));
       return true;
     } catch (err) {
-      toast.error('Erreur lors du marquage');
+      toast.error(t('toast.irreversa.markError', 'Erreur lors du marquage'));
       return false;
     }
   };
@@ -200,7 +202,7 @@ export function useIrreversa() {
 
       return data as unknown as IrreversaWitness;
     } catch (err) {
-      toast.error('Erreur lors de l\'ajout du témoin');
+      toast.error(t('toast.irreversa.witnessError', 'Erreur lors de l\'ajout du témoin'));
       return null;
     }
   };
@@ -245,7 +247,7 @@ export function useIrreversa() {
       ));
       return true;
     } catch (err) {
-      toast.error('Erreur lors de la validation');
+      toast.error(t('toast.irreversa.validateError', 'Erreur lors de la validation'));
       return false;
     }
   };
@@ -288,7 +290,7 @@ export function useIrreversa() {
       ));
       return true;
     } catch (err) {
-      toast.error('Erreur lors du scellement');
+      toast.error(t('toast.irreversa.sealError', 'Erreur lors du scellement'));
       return false;
     }
   };
@@ -333,7 +335,7 @@ export function useIrreversa() {
     // Find the threshold to check if it can be deleted
     const threshold = thresholds.find(t => t.id === thresholdId);
     if (!threshold || threshold.status === 'sealed') {
-      toast.error('Les seuils scellés ne peuvent pas être supprimés');
+      toast.error(t('toast.irreversa.sealedCannotDelete', 'Les seuils scellés ne peuvent pas être supprimés'));
       return false;
     }
 
@@ -360,10 +362,10 @@ export function useIrreversa() {
       if (error) throw error;
 
       setThresholds(prev => prev.filter(t => t.id !== thresholdId));
-      toast.success('Seuil supprimé');
+      toast.success(t('toast.irreversa.deleted', 'Seuil supprimé'));
       return true;
     } catch (err) {
-      toast.error('Erreur lors de la suppression');
+      toast.error(t('toast.irreversa.deleteError', 'Erreur lors de la suppression'));
       return false;
     }
   };
@@ -378,10 +380,10 @@ export function useIrreversa() {
         .eq('id', witnessId);
 
       if (error) throw error;
-      toast.success('Témoin retiré');
+      toast.success(t('toast.irreversa.witnessRemoved', 'Témoin retiré'));
       return true;
     } catch (err) {
-      toast.error('Erreur lors du retrait du témoin');
+      toast.error(t('toast.irreversa.witnessRemoveError', 'Erreur lors du retrait du témoin'));
       return false;
     }
   };

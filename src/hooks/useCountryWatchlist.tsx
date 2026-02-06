@@ -1,4 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useTranslation } from 'react-i18next';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
@@ -21,6 +22,7 @@ interface WatchlistEntry {
 }
 
 export function useCountryWatchlist() {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const queryClient = useQueryClient();
 
@@ -70,9 +72,9 @@ export function useCountryWatchlist() {
     onSuccess: (result) => {
       queryClient.invalidateQueries({ queryKey: ['country-watchlist'] });
       queryClient.invalidateQueries({ queryKey: ['watchlist-count'] });
-      toast.success(result.action === 'added' ? 'Pays suivi' : 'Pays retiré');
+      toast.success(result.action === 'added' ? t('toast.watchlist.added', 'Pays suivi') : t('toast.watchlist.removed', 'Pays retiré'));
     },
-    onError: () => toast.error('Erreur lors de la mise à jour'),
+    onError: () => toast.error(t('toast.watchlist.error', 'Erreur lors de la mise à jour')),
   });
 
   return { watchlist, isLoading, isWatching, toggleWatch };

@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from './useAuth';
 import { LifeMotorProfile, LifePriority } from '@/lib/types';
@@ -33,6 +34,7 @@ export interface ExitKeysProfile {
 const STORAGE_KEY = 'exit_keys_profile';
 
 export function useExitKeysProfile() {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const [profile, setProfile] = useState<ExitKeysProfile | null>(null);
   const [loading, setLoading] = useState(true);
@@ -104,15 +106,15 @@ export function useExitKeysProfile() {
 
         if (error) {
           console.error('Error saving profile to Supabase:', error);
-          toast.error('Profil sauvegardé localement uniquement');
+          toast.error(t('toast.profile.savedLocalOnly', 'Profil sauvegardé localement uniquement'));
         } else {
-          toast.success('Profil sauvegardé');
+          toast.success(t('toast.profile.saved', 'Profil sauvegardé'));
         }
       } catch (error) {
         console.error('Error saving profile:', error);
       }
     } else {
-      toast.success('Profil sauvegardé localement');
+      toast.success(t('toast.profile.savedLocal', 'Profil sauvegardé localement'));
     }
   }, [user]);
 
