@@ -34,7 +34,7 @@ const CONTEXTUAL_SHORTCUTS: Record<string, ShortcutDef[]> = {
   ],
   '/country': [
     { href: '/compare', icon: Scale, labelKey: 'shortcuts.compare', labelFallback: 'Comparer', descKey: 'shortcuts.compareCountryDesc', descFallback: "Avec d'autres pays" },
-    { href: '/exit-keys', icon: Key, labelKey: 'shortcuts.exitKeys', labelFallback: 'Exit Keys', descKey: 'shortcuts.exitKeysDesc', descFallback: 'Stratégies de sortie' },
+    { href: '/exit-keys', icon: Key, labelKey: 'shortcuts.exitKeys', labelFallback: 'Stratégies', descKey: 'shortcuts.exitKeysDesc', descFallback: 'Stratégies de sortie' },
     { href: '/terrain', icon: Map, labelKey: 'shortcuts.terrain', labelFallback: 'Réalités terrain', descKey: 'shortcuts.terrainDesc', descFallback: 'Vécu quotidien' },
   ],
   '/profile-test': [
@@ -57,7 +57,7 @@ const CONTEXTUAL_SHORTCUTS: Record<string, ShortcutDef[]> = {
     { href: '/errors-illusions', icon: BookOpen, labelKey: 'shortcuts.errors', labelFallback: 'Erreurs', descKey: 'shortcuts.errorsDesc', descFallback: 'Pièges à éviter' },
   ],
   '/dashboard': [
-    { href: '/exit-keys', icon: Key, labelKey: 'shortcuts.exitKeys', labelFallback: 'Exit Keys', descKey: 'shortcuts.continuePlanDesc', descFallback: 'Continuer votre plan' },
+    { href: '/exit-keys', icon: Key, labelKey: 'shortcuts.exitKeys', labelFallback: 'Stratégies', descKey: 'shortcuts.continuePlanDesc', descFallback: 'Continuer votre plan' },
     { href: '/gamification', icon: Award, labelKey: 'shortcuts.progression', labelFallback: 'Progression', descKey: 'shortcuts.challengesDesc', descFallback: 'Vos défis' },
     { href: '/usage', icon: BarChart3, labelKey: 'shortcuts.usage', labelFallback: 'Consommation', descKey: 'shortcuts.usageDesc', descFallback: 'Statistiques' },
   ],
@@ -68,7 +68,7 @@ const CONTEXTUAL_SHORTCUTS: Record<string, ShortcutDef[]> = {
   ],
   '/fiscal-calculator': [
     { href: '/compare', icon: Scale, labelKey: 'shortcuts.compareCountries', labelFallback: 'Comparer pays', descKey: 'shortcuts.fiscalCompareDesc', descFallback: 'Fiscalité comparée' },
-    { href: '/exit-keys', icon: Key, labelKey: 'shortcuts.exitKeys', labelFallback: 'Exit Keys', descKey: 'shortcuts.exitPlanDesc', descFallback: 'Plan de sortie' },
+    { href: '/exit-keys', icon: Key, labelKey: 'shortcuts.exitKeys', labelFallback: 'Stratégies', descKey: 'shortcuts.exitPlanDesc', descFallback: 'Plan stratégique' },
     { href: '/profile-matcher', icon: Target, labelKey: 'shortcuts.matcher', labelFallback: 'Matcher', descKey: 'shortcuts.compatibleDesc', descFallback: 'Pays compatible' },
   ],
   '/gamification': [
