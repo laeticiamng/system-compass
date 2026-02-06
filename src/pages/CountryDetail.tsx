@@ -33,8 +33,6 @@ import { useExitKeysProfile } from '@/hooks/useExitKeysProfile';
 import { useCountryGovernance } from '@/hooks/useCountryGovernance';
 import { AiHelpButton } from '@/components/ai/AiHelpButton';
 import { FollowCountryButton } from '@/components/country/FollowCountryButton';
-import { isCountryFree } from '@/components/PremiumPageWrapper';
-import { PremiumPaywall } from '@/components/PremiumPaywall';
 
 const PYRAMID_TYPE_LABELS: Record<string, string> = {
   PROBLEM_RENT: 'pyramids.problemRent.label',
@@ -237,31 +235,8 @@ export default function CountryDetail() {
   const displayWhoLoses = countryData?.whoLoses || country.whoLoses;
   const displayPlaybook = countryData?.playbook || country.playbook;
 
-  // Check if this is a premium country (not France, Suisse, Belgique)
-  const isPremiumCountry = !isCountryFree(country.id);
-
-  // For premium countries, show paywall for free users
-  if (isPremiumCountry) {
-    return (
-      <PremiumPaywall
-        title={t('subscription.countryPaywallTitle', 'Fiche Pays Premium')}
-        description={t('subscription.countryPaywallDesc', 'Ce pays fait partie des destinations Premium. Passez à Premium pour accéder à l\'analyse complète.')}
-        tier="premium"
-      >
-        <div className="min-h-[50vh] pt-20 sm:pt-24 pb-16">
-          <div className="container mx-auto px-3 sm:px-4">
-            <div className="flex items-start gap-3 sm:gap-4 mb-6">
-              <div className="text-4xl sm:text-6xl">{getFlagEmoji(country.iso2)}</div>
-              <div className="flex-1 min-w-0">
-                <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold">{displayName}</h1>
-                <p className="text-sm sm:text-base text-muted-foreground">{displayRegion}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </PremiumPaywall>
-    );
-  }
+  // All country profiles are accessible for free
+  // Premium features (comparison, export, AI recommendations) are gated separately
 
   return (
     <div className="min-h-screen pt-20 sm:pt-24 pb-16">
