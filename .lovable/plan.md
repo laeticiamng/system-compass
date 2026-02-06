@@ -1,47 +1,88 @@
 
 
-# Audit C-Suite v18 -- Verification pre-publication finale
+# Audit C-Suite v19 -- Corrections finales et reactivation des modules
 
-## Statut global par role
+## Statut global
 
 | Role | Verdict | Detail |
 |------|---------|--------|
-| CEO | OK | Positionnement concret : "Tu veux t'expatrier ? Compare les pays avant de partir." Test 3 secondes = PASSE. |
-| CISO | OK | RLS actif partout. 15 findings ignores avec justification. Linter = 1 warning mineur (extension in public, non-bloquant). |
-| DPO | OK | Cookie consent, anonymisation GDPR, rate limiting actifs. |
-| CDO | OK | Pipeline analytics coherent. |
-| COO | OK | i18n 100% wrappee. Toasts FR wrappees (v14-v16). |
-| Head of Design | OK | Timeline non-cliquable (v16). Jargon supprime (v17). Mobile spacing OK. |
-| Beta testeur | 1 BUG | 2 liens cassees dans le Dashboard (QuickActionsWidget) menent a des 404. |
+| CEO | OK | Positionnement clair. Test 3 secondes = PASSE (v17). |
+| CISO | OK | RLS actif. Pas de nouveau risque. |
+| DPO | OK | GDPR, cookie consent OK. |
+| CDO | OK | Analytics coherent. |
+| COO | OK | i18n 100% wrappee. |
+| Head of Design | OK | Mobile OK. Timeline non-cliquable. Jargon supprime. |
+| Beta testeur | 2 BUGS | Prix incoherent sur 2 pages (9,99 au lieu de 9,90). |
 
-## Bug identifie : Routes cassees dans QuickActionsWidget
+## Bug 1 : Prix incoherent entre pages
 
-Le widget "Actions rapides" du Dashboard contient 2 routes qui n'existent pas dans la configuration des routes :
+Le prix Premium a ete mis a jour a 9,90 euros sur la landing page et dans useSubscription, mais 2 fichiers affichent encore **9,99 euros** :
 
-| Route dans le widget | Route correcte | Impact |
-|---------------------|----------------|--------|
-| `/expert-marketplace` | `/experts` | 404 si l'utilisateur clique |
-| `/tools-hub` (x2 occurrences) | `/tools` | 404 si l'utilisateur clique |
+| Fichier | Texte actuel | Correction |
+|---------|-------------|------------|
+| `src/pages/Pricing.tsx` (ligne 73) | `'9,99€'` | `'9,90€'` |
+| `src/pages/CGV.tsx` (ligne 72) | `9,99 € / mois` | `9,90 € / mois` |
 
-Ces routes n'existent nulle part dans `src/routes/index.tsx`. Les routes correctes sont `/experts` (definie dans `contentRoutes`) et `/tools` (definie dans `MAIN_NAV` et `contentRoutes`).
+## Bug 2 : Feature "Exit Keys personnalisees" dans useSubscription
 
-## Correction a effectuer
+Le texte `'Exit Keys personnalisées'` dans la liste des features du tier premium (useSubscription.tsx ligne 42) utilise encore le jargon supprime en v17.
 
-**Fichier** : `src/components/dashboard/QuickActionsWidget.tsx`
+**Correction** : `'Recommandations personnalisées'`
 
-3 modifications de texte :
-1. Ligne 57 : `/expert-marketplace` devient `/experts`
-2. Ligne 64 : `/tools-hub` devient `/tools`
-3. Ligne 105 : `/tools-hub` devient `/tools`
+## Reactivation des modules masques
 
-Aucun autre fichier, aucun changement de structure.
+13 routes sont actuellement commentees dans `src/routes/index.tsx`. Parmi elles, 9 n'ont pas d'export dans `LazyRoutes.tsx`.
 
-## Hors perimetre (confirme OK)
+### Etape 1 : Ajouter les exports manquants dans LazyRoutes.tsx
 
-- Landing page Index.tsx : v17 appliquee, test 3 secondes passe
-- Securite : RLS, rate limiting, GDPR tous actifs
-- i18n : 100% wrappee
-- Mobile : spacing OK
-- Timeline : non-cliquable, sans jargon
-- Navigation Header/Sidebar : routes correctes, pas de liens casses
+Les pages suivantes existent mais n'ont pas de lazy export :
+- `B2BSolutions.tsx` -> `LazyB2BSolutions`
+- `LatentModule.tsx` -> `LazyLatentModule`
+- `IrreversaModule.tsx` -> `LazyIrreversaModule`
+- `PartnerIntegrations.tsx` -> `LazyPartnerIntegrations`
+- `Community.tsx` -> `LazyCommunity`
+- `SeedTranslations.tsx` -> `LazySeedTranslations`
+- `AdminGenerateTranslations.tsx` -> `LazyAdminGenerateTranslations`
+- `AdminDatabaseTranslations.tsx` -> `LazyAdminDatabaseTranslations`
+- `AdminTranslationsSync.tsx` -> `LazyAdminTranslationsSync`
+
+### Etape 2 : Decommenter les routes dans index.tsx
+
+Decommenter toutes les routes masquees :
+- `/partners` (coreRoutes)
+- `/errors-illusions` (planningRoutes) 
+- `/personas` (learningRoutes)
+- `/b2b` (proRoutes)
+- `/latent` (proRoutes)
+- `/irreversa` (proRoutes)
+- `/ovi` (proRoutes)
+- `/experts` dans communityRoutes (deja actif dans contentRoutes, supprimer le doublon commente)
+- `/partner-services` (communityRoutes)
+- `/community` (communityRoutes)
+- `/academic` (contentRoutes)
+- Routes admin : `/admin/generate-translations`, `/admin/database-translations`, `/admin/translations-sync`, `/seed-translations`
+
+### Etape 3 : Supprimer les redirects devenus inutiles
+
+Les redirects suivants redirigent vers des alternatives car les routes etaient masquees. Ils doivent etre supprimes car les routes reelles sont reactivees :
+- `/errors-illusions` redirect (la route directe existe maintenant)
+- `/partners` redirect
+- `/b2b` redirect
+- `/community` redirect
+- `/partner-services` redirect
+- `/academic` redirect
+- `/personas` redirect
+- `/latent` redirect
+- `/irreversa` redirect
+- `/ovi` redirect
+
+## Resume des fichiers modifies
+
+| Fichier | Modifications |
+|---------|--------------|
+| `src/pages/Pricing.tsx` | Prix 9,99 -> 9,90 |
+| `src/pages/CGV.tsx` | Prix 9,99 -> 9,90 |
+| `src/hooks/useSubscription.tsx` | "Exit Keys personnalisees" -> "Recommandations personnalisees" |
+| `src/routes/LazyRoutes.tsx` | +9 exports lazy manquants |
+| `src/routes/index.tsx` | Decommenter 13 routes, supprimer 10 redirects obsoletes |
 
