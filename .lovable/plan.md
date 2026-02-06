@@ -1,118 +1,98 @@
 
 
-# Triple Audit v5 - Technique + UX + Beta Testeur
+# Triple Audit v6 - Technique + UX + Beta Testeur
 
-## Etat post-audits precedents
+## Etat post-audits v1 a v5
 
-Les audits v1 a v4 ont corrige : routes doublons, `window as any` global, `fetch()` vers `supabase.functions.invoke()`, dead code LazyRoutes, page 404 redesignee, breadcrumbs i18n, cookie consent i18n, contextual shortcuts i18n, onboarding aria-labels, ToolsHub outils fantomes avec badge "Bientot", redirect `/partner-services`, `navigate()` dans DisclaimerConsentDialog et InteractiveTutorial, typage `useCountryWatchlist`/`useGamification`/`useExperts`, `as any` dans WorldMap/DestinationInsights/useSmartRecommendations.
-
----
-
-# PHASE 1 : AUDIT TECHNIQUE (Dev Senior)
-
-## MAJEUR - `(supabase as any)` residuels dans 2 fichiers non traites
-
-| Fichier | Occurrences | Tables |
-|---------|-------------|--------|
-| `usePmoCompliance.tsx` | 9 | `pmo_compliance_frameworks`, `pmo_compliance_requirements`, `pmo_compliance_mappings` |
-| `ExpertMessaging.tsx` | 3 | `expert_conversations`, `expert_messages` |
-
-**Correction :** Migrer vers `supabase.from('table_name' as any)` avec cast des resultats (meme pattern que useCountryWatchlist corrige precedemment). Supprimer les commentaires `eslint-disable` devenus inutiles.
-
-## MAJEUR - `window.location.href` dans NotificationManager (2 occurrences)
-
-**Fichier :** `src/components/common/NotificationManager.tsx`, lignes 134 et 336
-
-Le composant n'importe pas `useNavigate`. Quand un utilisateur clique sur une notification avec un `actionHref`, la page se recharge completement au lieu d'une navigation SPA.
-
-**Correction :** Ajouter `useNavigate` et remplacer les deux `window.location.href` par `navigate()`.
-
-## MINEUR - `as any` residuels dans composants cases/governance
-
-| Fichier | Lignes | Probleme |
-|---------|--------|----------|
-| `RiskRegisterEnhanced.tsx` | 103, 106 | `(caseData as any).risk_register_enhanced` et `onUpdateCase({...} as any)` |
-| `StructuralRulesSection.tsx` | 86, 89 | `(caseData as any).structural_rules` et `onUpdateCase({...} as any)` |
-| `GovernanceAdvanced.tsx` | 579-580 | `actor.sources as any[]` |
-| `TerrainPOCPlanner.tsx` | 55, 106 | `notes.poc_plan as any` et `saveNotes({...} as any)` |
-
-**Correction :** Utiliser des casts cibles (`as Record<string, unknown>`) ou des interfaces etendues locales au lieu de `as any` brut.
-
-## MINEUR - `console.log` en production (13 fichiers, 30+ occurrences)
-
-Des `console.log` de debug sont presents dans le code de production (`countries-store.ts`, `translations-store.ts`, `useOfflineSync.tsx`, `usePartnerProgram.tsx`, etc.). Pas critique mais bruyant en console et risque de fuite d'info.
-
-**Decision :** Documenter pour une passe dediee. Risque faible.
+Les audits precedents ont corrige la majorite des problemes critiques. Le codebase est stable avec les migrations `supabase.from('table' as any)`, la navigation SPA dans la plupart des composants, les outils fantomes masques dans ToolsHub, la page 404 redesignee, l'i18n dans breadcrumbs/cookie consent/contextual shortcuts, et le typage cible dans les composants cases.
 
 ---
 
-# PHASE 2 : AUDIT UX (Designer Senior)
+## PHASE 1 : AUDIT TECHNIQUE (Dev Senior)
 
-## MAJEUR - NotificationManager rechargement complet sur clic notification
+### MAJEUR - `window.location.href` residuel dans NotificationCard (1 occurrence)
 
-Quand un utilisateur clique sur "Voir" dans une notification, la page recharge entierement (flash blanc). L'utilisateur perd son contexte de navigation. C'est le meme pattern que le DisclaimerConsentDialog corrige precedemment.
+**Fichier :** `src/components/common/NotificationManager.tsx`, ligne 338
 
-## MINEUR - Pas de nouveaux problemes UX critiques detectes
+Le composant `NotificationCard` (utilise dans `NotificationCenter`) contient encore `window.location.href = notification.actionHref`. Le composant `NotificationDropdown` a ete corrige mais pas `NotificationCard`. C'est un composant React qui peut utiliser `useNavigate()`.
 
-Les corrections precedentes (404 redesignee, ToolsHub outils fantomes, breadcrumbs i18n, cookie consent i18n) ont elimine les problemes UX les plus impactants. Les problemes restants sont du i18n massif (landing page, toasts) deja documentes.
+**Correction :** Ajouter `useNavigate()` dans `NotificationCard` et remplacer `window.location.href` par `navigate()`.
+
+### MINEUR - `actor.sources as any[]` dans GovernanceAdvanced (2 occurrences)
+
+**Fichier :** `src/components/cases/GovernanceAdvanced.tsx`, lignes 579-580
+
+**Correction :** Caster vers `string[]` qui correspond au type reel des sources.
+
+### MINEUR - `(window as any)` dans performance-utils.ts (2 occurrences)
+
+**Fichier :** `src/lib/performance-utils.ts`, lignes 152, 165
+
+Utilise `(window as any).requestIdleCallback` et `(window as any).cancelIdleCallback`. Ces APIs existent mais ne sont pas dans les types par defaut de TypeScript.
+
+**Decision :** Pas critique - les `eslint-disable` sont deja en place et `requestIdleCallback` n'est pas dans les types TS standard. Garder tel quel.
+
+### INFO - `console.log` en production (47 fichiers, 603 occurrences)
+
+Deja documente dans les audits precedents. Nettoyage dedie necessaire.
+
+### INFO - Tous les `(supabase as any)` ont ete migres vers `supabase.from('table' as any)`
+
+Pas de regression detectee.
 
 ---
 
-# PHASE 3 : AUDIT BETA TESTEUR
+## PHASE 2 : AUDIT UX (Designer Senior)
 
-## "Les notifications me font recharger la page"
+### MAJEUR - NotificationCenter (page standalone) recharge la page au clic action
 
-En tant qu'utilisateur, quand je recois une notification et que je clique sur l'action, la page recharge au lieu de naviguer en douceur. C'est perturbant, surtout si j'etais au milieu d'un formulaire.
+Le composant `NotificationCard` dans le `NotificationCenter` provoque un rechargement complet quand l'utilisateur clique sur une action. C'est le dernier composant avec ce probleme.
 
-## "Certains modules pro affichent des erreurs TypeScript silencieuses"
+### INFO - Pas de nouveaux problemes UX critiques
 
-Les modules de cas (RiskRegister, StructuralRules, GovernanceAdvanced) accedent a des champs via `as any`. Si le schema evolue, ces champs pourraient silencieusement retourner `undefined` sans avertissement.
+Les corrections precedentes couvrent les problemes UX les plus impactants. Les problemes restants sont de l'i18n massif (landing page, toasts) deja documentes.
 
 ---
 
-# PLAN DE CORRECTIONS
+## PHASE 3 : AUDIT BETA TESTEUR
 
-## Priorite 1 : Navigation SPA dans NotificationManager
+### "Les notifications dans le centre de notifications rechargent encore la page"
 
-| # | Fichier | Action |
-|---|---------|--------|
-| 1 | `src/components/common/NotificationManager.tsx` | Ajouter `useNavigate`, remplacer 2x `window.location.href = notification.actionHref` par `navigate(notification.actionHref)` |
+Si j'ouvre le centre de notifications complet (pas le dropdown), et que je clique sur une action, la page recharge. Le dropdown fonctionne bien mais pas la page centre de notifications.
 
-## Priorite 2 : Migrer `(supabase as any)` restants
+---
 
-| # | Fichier | Action |
-|---|---------|--------|
-| 2 | `src/hooks/usePmoCompliance.tsx` | Remplacer 9x `(supabase as any).from('table')` par `supabase.from('table' as any)`, supprimer les `eslint-disable` |
-| 3 | `src/components/marketplace/ExpertMessaging.tsx` | Remplacer 3x `(supabase as any).from('table')` par `supabase.from('table' as any)` avec casts resultats |
+## PLAN DE CORRECTIONS
 
-## Priorite 3 : Typage cible dans composants cases
+### Correction 1 : Navigation SPA dans NotificationCard
 
-| # | Fichier | Action |
-|---|---------|--------|
-| 4 | `src/components/cases/RiskRegisterEnhanced.tsx` | Remplacer `(caseData as any).risk_register_enhanced` par `(caseData as Record<string, unknown>).risk_register_enhanced as Risk[]` |
-| 5 | `src/components/cases/StructuralRulesSection.tsx` | Meme pattern pour `structural_rules` |
-| 6 | `src/components/governance/TerrainPOCPlanner.tsx` | Caster `notes.poc_plan` vers `Record<string, unknown>` |
+| Fichier | Action |
+|---------|--------|
+| `src/components/common/NotificationManager.tsx` | Ajouter `useNavigate()` dans `NotificationCard`, remplacer `window.location.href = notification.actionHref` par `navigate(notification.actionHref)` |
 
-## Non corrige (documente)
+### Correction 2 : Typage GovernanceAdvanced sources
+
+| Fichier | Action |
+|---------|--------|
+| `src/components/cases/GovernanceAdvanced.tsx` | Remplacer `actor.sources as any[]` par `(actor.sources as string[])` (2 occurrences, lignes 579-580) |
+
+## Non corrige (documente, inchange depuis v5)
 
 | Probleme | Raison |
 |----------|--------|
-| `console.log` en production (13 fichiers) | Nettoyage dedie necessaire, risque faible |
-| Toast messages FR (27 hooks) | Refactoring i18n massif, passe dediee |
+| `console.log` en production (47 fichiers) | Nettoyage dedie necessaire |
+| Toast messages FR (27 hooks) | Refactoring i18n massif |
 | Landing page / ToolsHub labels FR | Passe i18n dediee |
-| `GovernanceAdvanced.tsx` `actor.sources as any[]` | Necessite definition du type Source, composant secondaire |
+| `(window as any).requestIdleCallback` | API non typee dans TS, eslint-disable en place |
 
 ## Fichiers a modifier
 
-1. `src/components/common/NotificationManager.tsx` - `navigate()` au lieu de `window.location.href`
-2. `src/hooks/usePmoCompliance.tsx` - Migration `(supabase as any)` vers `supabase.from('table' as any)`
-3. `src/components/marketplace/ExpertMessaging.tsx` - Migration `(supabase as any)` vers `supabase.from('table' as any)`
-4. `src/components/cases/RiskRegisterEnhanced.tsx` - Casts cibles
-5. `src/components/cases/StructuralRulesSection.tsx` - Casts cibles
-6. `src/components/governance/TerrainPOCPlanner.tsx` - Casts cibles
+1. `src/components/common/NotificationManager.tsx` - `navigate()` dans NotificationCard
+2. `src/components/cases/GovernanceAdvanced.tsx` - `as string[]` au lieu de `as any[]`
 
 ## Estimation
 
-- Temps : 15 minutes
-- Complexite : Faible
-- Risque regression : Quasi nul (navigation, typage, et pattern deja valide sur les fichiers precedents)
+- Temps : 5 minutes
+- Complexite : Tres faible
+- Risque regression : Quasi nul
+
