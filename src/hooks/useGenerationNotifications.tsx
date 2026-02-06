@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from './useAuth';
 
 interface GenerationJob {
@@ -193,12 +194,7 @@ export function useGenerationNotifications() {
       );
 
     // Track connection status
-    jobsChannel.on('system', { event: '*' }, (payload) => {
-      console.log('Realtime system event:', payload);
-    });
-
     jobsChannel.subscribe((status) => {
-      console.log('Jobs channel status:', status);
       if (status === 'SUBSCRIBED') {
         setConnectionStatus('connected');
       } else if (status === 'CHANNEL_ERROR') {

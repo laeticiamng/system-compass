@@ -102,7 +102,6 @@ export async function preloadAllTranslations(
         translationsCache.set(cacheKey, row.translations as Record<string, unknown>);
       }
       cacheLoaded = true;
-      console.log(`Preloaded ${data.length} translation sets from database`);
     }
 
     return translationsCache;

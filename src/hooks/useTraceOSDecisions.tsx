@@ -3,6 +3,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { useTraceOSWebhooks } from '@/hooks/useTraceOSWebhooks';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 import { DecisionNodeData } from '@/components/institutions/DecisionNode';
 
 interface DBDecision {

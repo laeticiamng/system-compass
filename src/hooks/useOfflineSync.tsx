@@ -6,6 +6,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 
 interface QueuedAction {
   id: string;
@@ -86,7 +87,6 @@ export function useOfflineSync() {
       try {
         // Execute queued actions using dynamic table access
         // Note: This is a simplified sync - in production, use specific table handlers
-        console.log(`Syncing ${action.type} action for table ${action.table}:`, action.data);
         
         // Simulate successful sync - actual implementation would use proper Supabase calls
         // based on known table names in the schema

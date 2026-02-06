@@ -54,7 +54,6 @@ async function notifyAdminsOfNewApplication(_userId: string, partnerType: Partne
     .eq('role', 'admin');
 
   if (!adminRoles || adminRoles.length === 0) {
-    console.log('No admins found to notify');
     return;
   }
 

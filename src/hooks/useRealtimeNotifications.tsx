@@ -7,6 +7,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 
 interface RealtimeAlert {
   id: string;
@@ -179,8 +180,7 @@ export function useRealtimeNotifications() {
         .eq('status', 'active');
 
       if (exitKeys && exitKeys.length > 0) {
-        // Just log for now - would implement deadline checking logic
-        console.log('Active exit keys:', exitKeys.length);
+        // Would implement deadline checking logic
       }
     };
 

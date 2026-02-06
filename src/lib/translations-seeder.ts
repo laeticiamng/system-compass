@@ -74,13 +74,10 @@ export async function autoSeedTranslationsIfEmpty(): Promise<void> {
 
     // If translations already exist, skip seeding
     if (count && count > 0) {
-      console.log(`Translations already in DB (${count} records), skipping auto-seed`);
       return;
     }
 
-    console.log('No translations found in DB, starting auto-seed...');
     await seedAllTranslations();
-    console.log('Auto-seed complete!');
   } catch (err) {
     console.warn('Auto-seed failed:', err);
   }
@@ -145,7 +142,6 @@ export async function seedAllTranslations(): Promise<{ success: number; errors: 
     }
   }
 
-  console.log(`Seeding complete: ${success} success, ${errors} errors`);
   return { success, errors };
 }
 

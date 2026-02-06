@@ -65,10 +65,8 @@ export async function loadCountries(): Promise<void> {
     } else if (data && data.length > 0) {
       countriesCache = data.map(transformDbCountry);
       dataVersion = Math.max(...data.map(d => (d as Record<string, unknown>).data_version as number || 1));
-      console.log(`Loaded ${data.length} countries from database (version ${dataVersion})`);
     } else {
       // Database empty, use seed data
-      console.log('Database empty, using seed data');
       countriesCache = countriesSeed;
     }
   } catch (err) {
