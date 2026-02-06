@@ -208,6 +208,7 @@ export const redirectRoutes = [
   { path: "/b2b", element: <Navigate to="/institutions" replace /> },
   // Removed: /experts redirect - active route exists in contentRoutes
   { path: "/community", element: <Navigate to="/about" replace /> },
+  { path: "/partner-services", element: <Navigate to="/about" replace /> },
   { path: "/academic", element: <Navigate to="/resources" replace /> },
   { path: "/personas", element: <Navigate to="/profile-test" replace /> },
   { path: "/latent", element: <Navigate to="/dashboard" replace /> },

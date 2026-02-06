@@ -3,6 +3,7 @@
  * Provides contextual tooltips and highlights for key features
  */
 import { useState, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -115,6 +116,7 @@ interface InteractiveTutorialProps {
 
 export function InteractiveTutorial({ onComplete, forceShow = false }: InteractiveTutorialProps) {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [highlightRect, setHighlightRect] = useState<DOMRect | null>(null);
@@ -312,7 +314,8 @@ export function InteractiveTutorial({ onComplete, forceShow = false }: Interacti
                   className="gap-2"
                   onClick={() => {
                     if (currentStep.action?.href) {
-                      window.location.href = currentStep.action.href;
+                      handleComplete();
+                      navigate(currentStep.action.href);
                     }
                     currentStep.action?.onClick?.();
                   }}

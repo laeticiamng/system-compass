@@ -18,11 +18,13 @@ import {
   ExternalLink
 } from 'lucide-react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDialogCoordinator } from './DialogCoordinator';
 
 export function DisclaimerConsentDialog() {
   const { t } = useTranslation();
   const { shouldShowDisclaimer, completeDisclaimer } = useDialogCoordinator();
+  const navigate = useNavigate();
   const [hasRead, setHasRead] = useState(false);
 
   const handleAccept = () => {
@@ -114,7 +116,7 @@ export function DisclaimerConsentDialog() {
             type="button"
             onClick={() => {
               completeDisclaimer();
-              window.location.href = '/disclaimer';
+              navigate('/disclaimer');
             }}
             className="text-xs sm:text-sm text-muted-foreground hover:text-foreground flex items-center gap-1 justify-center sm:justify-start bg-transparent border-none cursor-pointer"
           >

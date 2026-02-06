@@ -3,6 +3,14 @@ import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
 
+interface WatchlistRow {
+  id: string;
+  user_id: string;
+  country_id: string;
+  notify_on_changes: boolean;
+  created_at: string;
+}
+
 interface WatchlistEntry {
   id: string;
   user_id: string;
@@ -19,12 +27,18 @@ export function useCountryWatchlist() {
     queryKey: ['country-watchlist', user?.id],
     queryFn: async () => {
       if (!user?.id) return [];
-      const { data, error } = await (supabase as any)
-        .from('user_country_watchlist')
+      const { data, error } = await supabase
+        .from('user_country_watchlist' as any)
         .select('*')
         .eq('user_id', user.id);
       if (error) throw error;
-      return data as WatchlistEntry[];
+      return (data as unknown as WatchlistRow[]).map((row): WatchlistEntry => ({
+        id: row.id,
+        user_id: row.user_id,
+        country_id: row.country_id,
+        notify_on_changes: row.notify_on_changes,
+        created_at: row.created_at,
+      }));
     },
     enabled: !!user?.id,
   });
@@ -38,18 +52,18 @@ export function useCountryWatchlist() {
       
       const existing = watchlist.find(w => w.country_id === countryId);
       if (existing) {
-        const { error } = await (supabase as any)
-          .from('user_country_watchlist')
+        const { error } = await supabase
+          .from('user_country_watchlist' as any)
           .delete()
           .eq('id', existing.id);
         if (error) throw error;
-        return { action: 'removed' };
+        return { action: 'removed' as const };
       } else {
-        const { error } = await (supabase as any)
-          .from('user_country_watchlist')
+        const { error } = await supabase
+          .from('user_country_watchlist' as any)
           .insert({ user_id: user.id, country_id: countryId });
         if (error) throw error;
-        return { action: 'added' };
+        return { action: 'added' as const };
       }
     },
     onSuccess: (result) => {
@@ -67,8 +81,8 @@ export function useWatchlistCount(countryId: string) {
   return useQuery({
     queryKey: ['watchlist-count', countryId],
     queryFn: async () => {
-      const { count, error } = await (supabase as any)
-        .from('user_country_watchlist')
+      const { count, error } = await supabase
+        .from('user_country_watchlist' as any)
         .select('*', { count: 'exact', head: true })
         .eq('country_id', countryId);
       if (error) return 0;
