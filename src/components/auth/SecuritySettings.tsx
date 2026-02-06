@@ -83,23 +83,23 @@ export function SecuritySettings({
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Key className="h-5 w-5 text-primary" />
-            Mot de passe
+            {t('settings.security.password', 'Mot de passe')}
           </CardTitle>
           <CardDescription>
-            Gérez la sécurité de votre mot de passe
+            {t('settings.security.passwordDescription', 'Gérez la sécurité de votre mot de passe')}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="font-medium">Mot de passe actuel</p>
+              <p className="font-medium">{t('settings.security.currentPassword', 'Mot de passe actuel')}</p>
               {lastPasswordChange ? (
                 <p className="text-sm text-muted-foreground">
-                  Modifié il y a {daysSincePasswordChange} jours
+                  {t('settings.security.changedDaysAgo', 'Modifié il y a {{days}} jours', { days: daysSincePasswordChange })}
                 </p>
               ) : (
                 <p className="text-sm text-muted-foreground">
-                  Date de modification inconnue
+                  {t('settings.security.changeDateUnknown', 'Date de modification inconnue')}
                 </p>
               )}
             </div>
@@ -107,24 +107,23 @@ export function SecuritySettings({
               {passwordNeedsUpdate ? (
                 <Badge variant="destructive" className="gap-1">
                   <AlertTriangle className="h-3 w-3" />
-                  À mettre à jour
+                  {t('settings.security.needsUpdate', 'À mettre à jour')}
                 </Badge>
               ) : (
                 <Badge variant="secondary" className="gap-1">
                   <CheckCircle2 className="h-3 w-3" />
-                  OK
+                  {t('settings.security.ok', 'OK')}
                 </Badge>
               )}
               <Button variant="outline" onClick={onChangePassword}>
-                Modifier
+                {t('settings.security.change', 'Modifier')}
               </Button>
             </div>
           </div>
 
           {passwordNeedsUpdate && (
             <div className="p-3 rounded-lg bg-destructive/10 text-destructive text-sm">
-              Votre mot de passe n'a pas été changé depuis plus de 90 jours. 
-              Nous recommandons de le mettre à jour régulièrement.
+              {t('settings.security.passwordOldWarning', "Votre mot de passe n'a pas été changé depuis plus de 90 jours. Nous recommandons de le mettre à jour régulièrement.")}
             </div>
           )}
         </CardContent>
@@ -135,20 +134,20 @@ export function SecuritySettings({
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Smartphone className="h-5 w-5 text-primary" />
-            Authentification à deux facteurs
+            {t('settings.security.twoFactor', 'Authentification à deux facteurs')}
           </CardTitle>
           <CardDescription>
-            Ajoutez une couche de sécurité supplémentaire
+            {t('settings.security.twoFactorDescription', 'Ajoutez une couche de sécurité supplémentaire')}
           </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex items-center justify-between">
             <div className="space-y-1">
               <Label htmlFor="2fa" className="font-medium">
-                Activer la 2FA
+                {t('settings.security.enable2FA', 'Activer la 2FA')}
               </Label>
               <p className="text-sm text-muted-foreground">
-                Utilisez une application d'authentification
+                {t('settings.security.useAuthApp', "Utilisez une application d'authentification")}
               </p>
             </div>
             <Switch
@@ -166,44 +165,44 @@ export function SecuritySettings({
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Bell className="h-5 w-5 text-primary" />
-            Alertes de sécurité
+            {t('settings.security.securityAlerts', 'Alertes de sécurité')}
           </CardTitle>
           <CardDescription>
-            Configurez vos notifications de sécurité
+            {t('settings.security.securityAlertsDescription', 'Configurez vos notifications de sécurité')}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex items-center justify-between">
             <div className="space-y-1">
               <Label htmlFor="email-alerts" className="font-medium">
-                Alertes par email
+                {t('settings.security.emailAlerts', 'Alertes par email')}
               </Label>
               <p className="text-sm text-muted-foreground">
-                Recevez un email pour les activités suspectes
+                {t('settings.security.emailAlertsDescription', 'Recevez un email pour les activités suspectes')}
               </p>
             </div>
             <Switch
               id="email-alerts"
               checked={emailAlertsEnabled}
-              onCheckedChange={(v) => handleToggle('Alertes email', v, onToggleEmailAlerts)}
-              disabled={loading === 'Alertes email'}
+              onCheckedChange={(v) => handleToggle(t('settings.security.emailAlerts', 'Alertes email'), v, onToggleEmailAlerts)}
+              disabled={loading === t('settings.security.emailAlerts', 'Alertes email')}
             />
           </div>
 
           <div className="flex items-center justify-between">
             <div className="space-y-1">
               <Label htmlFor="login-notifs" className="font-medium">
-                Notifications de connexion
+                {t('settings.security.loginNotifications', 'Notifications de connexion')}
               </Label>
               <p className="text-sm text-muted-foreground">
-                Soyez averti de chaque nouvelle connexion
+                {t('settings.security.loginNotificationsDescription', 'Soyez averti de chaque nouvelle connexion')}
               </p>
             </div>
             <Switch
               id="login-notifs"
               checked={loginNotificationsEnabled}
-              onCheckedChange={(v) => handleToggle('Notifications connexion', v, onToggleLoginNotifications)}
-              disabled={loading === 'Notifications connexion'}
+              onCheckedChange={(v) => handleToggle(t('settings.security.loginNotifications', 'Notifications connexion'), v, onToggleLoginNotifications)}
+              disabled={loading === t('settings.security.loginNotifications', 'Notifications connexion')}
             />
           </div>
         </CardContent>
@@ -215,12 +214,12 @@ export function SecuritySettings({
           <div className="flex items-start gap-3">
             <Shield className="h-5 w-5 text-primary mt-0.5" />
             <div>
-              <h4 className="font-medium mb-2">Conseils de sécurité</h4>
+              <h4 className="font-medium mb-2">{t('settings.security.tips', 'Conseils de sécurité')}</h4>
               <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
-                <li>Utilisez un mot de passe unique d'au moins 12 caractères</li>
-                <li>Activez l'authentification à deux facteurs</li>
-                <li>Vérifiez régulièrement vos sessions actives</li>
-                <li>Ne partagez jamais vos identifiants</li>
+                <li>{t('settings.security.tip1', "Utilisez un mot de passe unique d'au moins 12 caractères")}</li>
+                <li>{t('settings.security.tip2', "Activez l'authentification à deux facteurs")}</li>
+                <li>{t('settings.security.tip3', 'Vérifiez régulièrement vos sessions actives')}</li>
+                <li>{t('settings.security.tip4', 'Ne partagez jamais vos identifiants')}</li>
               </ul>
             </div>
           </div>

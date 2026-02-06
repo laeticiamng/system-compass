@@ -31,7 +31,7 @@ import { TestimonialsSection } from '@/components/landing/TestimonialsSection';
 
 export default function Index() {
   const navigate = useNavigate();
-  const { t: _t } = useTranslation(); // eslint-disable-line @typescript-eslint/no-unused-vars -- Reserved for i18n migration
+  const { t } = useTranslation();
   const { user } = useAuth();
   const { trackHomeOpened } = useAnalytics();
   const { countries } = useCountries();
@@ -46,10 +46,10 @@ export default function Index() {
   return (
     <>
       <Helmet>
-        <title>Pyramid Compass - Analyse les systèmes des pays et trouve tes stratégies</title>
-        <meta name="description" content="Pyramid Compass - Analyse les systèmes des pays et trouve tes stratégies de sortie personnalisées. Découvre les règles réelles de 38+ pays, fais le test de profil gratuit et obtiens tes Exit Keys." />
-        <meta property="og:title" content="Pyramid Compass - Analyse les systèmes des pays" />
-        <meta property="og:description" content="Analyse les systèmes des pays et trouve tes stratégies de sortie personnalisées. Test de profil gratuit inclus." />
+        <title>{t('landing.meta.title', 'Pyramid Compass - Analyse les systèmes des pays et trouve tes stratégies')}</title>
+        <meta name="description" content={t('landing.meta.description', 'Pyramid Compass - Analyse les systèmes des pays et trouve tes stratégies de sortie personnalisées. Découvre les règles réelles de 38+ pays, fais le test de profil gratuit et obtiens tes Exit Keys.')} />
+        <meta property="og:title" content={t('landing.meta.ogTitle', 'Pyramid Compass - Analyse les systèmes des pays')} />
+        <meta property="og:description" content={t('landing.meta.ogDescription', 'Analyse les systèmes des pays et trouve tes stratégies de sortie personnalisées. Test de profil gratuit inclus.')} />
       </Helmet>
       <div className="min-h-screen bg-background overflow-x-hidden">
         {/* ========== HERO SECTION ========== */}
@@ -75,7 +75,7 @@ export default function Index() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8"
           >
             <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-sm text-primary font-medium">100% gratuit pour commencer</span>
+            <span className="text-sm text-primary font-medium">{t('landing.hero.badge', '100% gratuit pour commencer')}</span>
           </motion.div>
 
           {/* Titre accrocheur */}
@@ -85,10 +85,10 @@ export default function Index() {
             transition={{ delay: 0.3, duration: 0.8 }}
             className="font-display font-bold text-[clamp(2rem,6vw,5rem)] leading-[1.1] mb-6"
           >
-            Comprends le système
+            {t('landing.hero.titleLine1', 'Comprends le système')}
             <br />
             <span className="bg-gradient-to-r from-primary via-amber-400 to-orange-500 bg-clip-text text-transparent">
-              avant de t'engager.
+              {t('landing.hero.titleLine2', "avant de t'engager.")}
             </span>
           </motion.h1>
 
@@ -99,7 +99,7 @@ export default function Index() {
             transition={{ delay: 0.5, duration: 0.6 }}
             className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
           >
-            Analyse les règles réelles des pays et obtiens tes stratégies de sortie personnalisées.
+            {t('landing.hero.subtitle', 'Analyse les règles réelles des pays et obtiens tes stratégies de sortie personnalisées.')}
           </motion.p>
 
           {/* CTA principal */}
@@ -115,7 +115,7 @@ export default function Index() {
               className="h-14 px-8 text-lg rounded-full gap-3 bg-primary hover:bg-primary/90 shadow-lg shadow-primary/25"
             >
               <Zap className="w-5 h-5" />
-              Découvrir mon profil gratuitement
+              {t('landing.hero.ctaPrimary', 'Découvrir mon profil gratuitement')}
               <ArrowRight className="w-5 h-5" />
             </Button>
             <Button
@@ -125,7 +125,7 @@ export default function Index() {
               className="h-14 px-8 text-lg rounded-full gap-3"
             >
               <Globe className="w-5 h-5" />
-              Explorer les pays
+              {t('landing.hero.ctaSecondary', 'Explorer les pays')}
             </Button>
           </motion.div>
 
@@ -138,15 +138,15 @@ export default function Index() {
           >
             <div className="text-center">
               <span className="block text-3xl font-bold text-foreground">38+</span>
-              <span className="text-sm">pays analysés</span>
+              <span className="text-sm">{t('landing.hero.statsCountries', 'pays analysés')}</span>
             </div>
             <div className="text-center">
               <span className="block text-3xl font-bold text-foreground">50+</span>
-              <span className="text-sm">clés de sortie</span>
+              <span className="text-sm">{t('landing.hero.statsKeys', 'clés de sortie')}</span>
             </div>
             <div className="text-center">
               <span className="block text-3xl font-bold text-foreground">6</span>
-              <span className="text-sm">types de systèmes</span>
+              <span className="text-sm">{t('landing.hero.statsSystems', 'types de systèmes')}</span>
             </div>
           </motion.div>
         </div>
@@ -157,10 +157,10 @@ export default function Index() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <p className="text-primary font-medium mb-3 tracking-widest uppercase text-sm">
-              Comment ça marche
+              {t('landing.howItWorks.label', 'Comment ça marche')}
             </p>
             <h2 className="font-display text-3xl md:text-4xl font-bold">
-              3 étapes simples
+              {t('landing.howItWorks.title', '3 étapes simples')}
             </h2>
           </div>
 
@@ -178,9 +178,9 @@ export default function Index() {
                     <Play className="w-8 h-8 text-primary" />
                   </div>
                   <div className="text-4xl font-bold text-primary/20 mb-4">01</div>
-                  <h3 className="text-xl font-bold mb-3">Fais le test</h3>
+                  <h3 className="text-xl font-bold mb-3">{t('landing.howItWorks.step1Title', 'Fais le test')}</h3>
                   <p className="text-muted-foreground">
-                    2 minutes pour découvrir ton profil et tes priorités de vie.
+                    {t('landing.howItWorks.step1Description', '2 minutes pour découvrir ton profil et tes priorités de vie.')}
                   </p>
                 </CardContent>
               </Card>
@@ -199,9 +199,9 @@ export default function Index() {
                     <Triangle className="w-8 h-8 text-amber-500" />
                   </div>
                   <div className="text-4xl font-bold text-primary/20 mb-4">02</div>
-                  <h3 className="text-xl font-bold mb-3">Découvre ta pyramide</h3>
+                  <h3 className="text-xl font-bold mb-3">{t('landing.howItWorks.step2Title', 'Découvre ta pyramide')}</h3>
                   <p className="text-muted-foreground">
-                    Comprends quel type de système te correspond le mieux.
+                    {t('landing.howItWorks.step2Description', 'Comprends quel type de système te correspond le mieux.')}
                   </p>
                 </CardContent>
               </Card>
@@ -220,9 +220,9 @@ export default function Index() {
                     <Key className="w-8 h-8 text-green-500" />
                   </div>
                   <div className="text-4xl font-bold text-primary/20 mb-4">03</div>
-                  <h3 className="text-xl font-bold mb-3">Obtiens tes Exit Keys</h3>
+                  <h3 className="text-xl font-bold mb-3">{t('landing.howItWorks.step3Title', 'Obtiens tes Exit Keys')}</h3>
                   <p className="text-muted-foreground">
-                    Stratégies personnalisées pour tes décisions de vie.
+                    {t('landing.howItWorks.step3Description', 'Stratégies personnalisées pour tes décisions de vie.')}
                   </p>
                 </CardContent>
               </Card>
@@ -236,13 +236,13 @@ export default function Index() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <p className="text-primary font-medium mb-3 tracking-widest uppercase text-sm">
-              Exemple concret
+              {t('landing.example.label', 'Exemple concret')}
             </p>
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-              Une fiche pays en aperçu
+              {t('landing.example.title', 'Une fiche pays en aperçu')}
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
-              Chaque pays est analysé en profondeur : système, risques, opportunités et stratégies.
+              {t('landing.example.description', 'Chaque pays est analysé en profondeur : système, risques, opportunités et stratégies.')}
             </p>
           </div>
 
@@ -265,7 +265,7 @@ export default function Index() {
               onClick={() => navigate('/countries')}
               className="gap-2"
             >
-              Voir les {countries.length} pays analysés
+              {t('landing.example.cta', 'Voir les {{count}} pays analysés', { count: countries.length })}
               <ArrowRight className="w-4 h-4" />
             </Button>
           </div>
@@ -286,13 +286,13 @@ export default function Index() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 mb-6"
             >
               <Sparkles className="w-4 h-4 text-amber-500" />
-              <span className="text-sm text-amber-500 font-medium">Gratuit pour commencer</span>
+              <span className="text-sm text-amber-500 font-medium">{t('landing.pricing.badge', 'Gratuit pour commencer')}</span>
             </motion.div>
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-              Choisis ton plan
+              {t('landing.pricing.title', 'Choisis ton plan')}
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
-              Commence gratuitement. Évolue selon tes besoins.
+              {t('landing.pricing.subtitle', 'Commence gratuitement. Évolue selon tes besoins.')}
             </p>
           </div>
 
@@ -310,22 +310,22 @@ export default function Index() {
                       <Unlock className="w-6 h-6" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold">Gratuit</h3>
-                      <p className="text-muted-foreground text-sm">Pour découvrir</p>
+                      <h3 className="text-xl font-bold">{t('landing.pricing.freeName', 'Gratuit')}</h3>
+                      <p className="text-muted-foreground text-sm">{t('landing.pricing.freeTag', 'Pour découvrir')}</p>
                     </div>
                   </div>
                   <ul className="space-y-3 mb-8">
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      Test de profil complet
+                      {t('landing.pricing.freeFeature1', 'Test de profil complet')}
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      Analyse de base des pays
+                      {t('landing.pricing.freeFeature2', 'Analyse de base des pays')}
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      38 pays disponibles
+                      {t('landing.pricing.freeFeature3', '38 pays disponibles')}
                     </li>
                   </ul>
                   <Button 
@@ -333,7 +333,7 @@ export default function Index() {
                     className="w-full"
                     onClick={() => navigate('/auth')}
                   >
-                    Commencer gratuitement
+                    {t('landing.pricing.freeCta', 'Commencer gratuitement')}
                   </Button>
                 </CardContent>
               </Card>
@@ -347,7 +347,7 @@ export default function Index() {
             >
               <Card className="h-full border-primary/50 relative overflow-hidden">
                 <div className="absolute top-0 right-0 bg-primary text-primary-foreground text-xs font-medium px-3 py-1 rounded-bl-lg">
-                  Populaire
+                  {t('landing.pricing.popular', 'Populaire')}
                 </div>
                 <CardContent className="pt-8 pb-8 px-8">
                   <div className="flex items-center gap-3 mb-6">
@@ -355,33 +355,33 @@ export default function Index() {
                       <Crown className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold">Premium</h3>
-                      <p className="text-muted-foreground text-sm">dès 7,99€/mois</p>
+                      <h3 className="text-xl font-bold">{t('landing.pricing.premiumName', 'Premium')}</h3>
+                      <p className="text-muted-foreground text-sm">{t('landing.pricing.premiumPrice', 'dès 7,99€/mois')}</p>
                     </div>
                   </div>
                   <ul className="space-y-3 mb-8">
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-primary" />
-                      Tout le plan gratuit
+                      {t('landing.pricing.premiumFeature1', 'Tout le plan gratuit')}
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-primary" />
-                      Exit Keys personnalisées
+                      {t('landing.pricing.premiumFeature2', 'Exit Keys personnalisées')}
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-primary" />
-                      Export PDF illimité
+                      {t('landing.pricing.premiumFeature3', 'Export PDF illimité')}
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-primary" />
-                      Analyses approfondies
+                      {t('landing.pricing.premiumFeature4', 'Analyses approfondies')}
                     </li>
                   </ul>
                   <Button 
                     className="w-full"
                     onClick={() => navigate('/pricing')}
                   >
-                    Voir les plans
+                    {t('landing.pricing.premiumCta', 'Voir les plans')}
                   </Button>
                 </CardContent>
               </Card>
@@ -400,12 +400,12 @@ export default function Index() {
             viewport={{ once: true }}
           >
             <h2 className="font-display text-3xl md:text-5xl font-bold mb-6">
-              Prêt à comprendre
+              {t('landing.cta.titleLine1', 'Prêt à comprendre')}
               <br />
-              <span className="text-primary">les vraies règles ?</span>
+              <span className="text-primary">{t('landing.cta.titleLine2', 'les vraies règles ?')}</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-10 max-w-xl mx-auto">
-              Cet outil analyse et simule. À toi de décider.
+              {t('landing.cta.subtitle', 'Cet outil analyse et simule. À toi de décider.')}
             </p>
             <Button
               size="lg"
@@ -413,7 +413,7 @@ export default function Index() {
               className="h-16 px-12 text-lg rounded-full gap-3"
             >
               <Compass className="w-6 h-6" />
-              Commencer maintenant
+              {t('landing.cta.button', 'Commencer maintenant')}
               <ArrowRight className="w-6 h-6" />
             </Button>
           </motion.div>
@@ -425,10 +425,10 @@ export default function Index() {
         <section className="py-6 border-t border-border/30">
           <div className="container mx-auto px-4 text-center">
             <p className="text-sm text-muted-foreground">
-              🔓 <strong>Mode observation</strong> — Explore librement sans compte.{' '}
+              🔓 <strong>{t('landing.guest.mode', 'Mode observation')}</strong> — {t('landing.guest.description', 'Explore librement sans compte.')}{' '}
               <Link to="/auth" className="text-primary hover:underline font-medium">
-                Créer un compte
-              </Link> pour sauvegarder.
+                {t('landing.guest.cta', 'Créer un compte')}
+              </Link> {t('landing.guest.suffix', 'pour sauvegarder.')}
             </p>
           </div>
         </section>
