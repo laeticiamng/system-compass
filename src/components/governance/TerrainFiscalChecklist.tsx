@@ -25,50 +25,46 @@ interface TerrainFiscalChecklistProps {
   countryName: string;
 }
 
-const DEFAULT_FISCAL_ITEMS: Omit<FiscalItem, 'clarified'>[] = [
-  // Individual
-  { id: 'tax-residency', label: 'Critères de résidence fiscale', category: 'individual', critical: true },
-  { id: 'income-tax', label: 'Barème d\'imposition sur le revenu', category: 'individual', critical: true },
-  { id: 'social-charges', label: 'Charges sociales obligatoires', category: 'individual', critical: true },
-  { id: 'wealth-tax', label: 'Impôt sur la fortune (existence/seuils)', category: 'individual', critical: false },
-  { id: 'exit-tax', label: 'Exit tax ou taxation de départ', category: 'individual', critical: false },
-  
-  // Company
-  { id: 'corporate-tax', label: 'Impôt sur les sociétés (taux effectif)', category: 'company', critical: true },
-  { id: 'vat', label: 'TVA et règles de facturation', category: 'company', critical: true },
-  { id: 'incentives', label: 'Régimes incitatifs (zones, secteurs)', category: 'company', critical: false },
-  { id: 'payroll-taxes', label: 'Charges employeur', category: 'company', critical: true },
-  { id: 'transfer-pricing', label: 'Règles de prix de transfert', category: 'company', critical: false },
-  
-  // International
-  { id: 'tax-treaties', label: 'Conventions fiscales avec pays d\'origine', category: 'international', critical: true },
-  { id: 'dividends', label: 'Taxation des dividendes (entrée/sortie)', category: 'international', critical: false },
-  { id: 'cfc-rules', label: 'Règles CFC (sociétés étrangères contrôlées)', category: 'international', critical: false },
-  { id: 'substance', label: 'Exigences de substance économique', category: 'international', critical: true },
-];
-
-const CATEGORY_CONFIG: Record<string, { label: string; icon: React.ReactNode; color: string }> = {
-  individual: { 
-    label: 'Fiscalité personnelle', 
-    icon: <User className="w-4 h-4" />,
-    color: 'bg-blue-500/20 text-blue-700 border-blue-500/30'
-  },
-  company: { 
-    label: 'Fiscalité entreprise', 
-    icon: <Building2 className="w-4 h-4" />,
-    color: 'bg-green-500/20 text-green-700 border-green-500/30'
-  },
-  international: { 
-    label: 'Fiscalité internationale', 
-    icon: <Globe className="w-4 h-4" />,
-    color: 'bg-purple-500/20 text-purple-700 border-purple-500/30'
-  },
-};
-
 export function TerrainFiscalChecklist({ countryName }: TerrainFiscalChecklistProps) {
   const { t } = useTranslation();
+
+  const fiscalItems: Omit<FiscalItem, 'clarified'>[] = [
+    { id: 'tax-residency', label: t('governance.fiscal.item.taxResidency', 'Critères de résidence fiscale'), category: 'individual', critical: true },
+    { id: 'income-tax', label: t('governance.fiscal.item.incomeTax', "Barème d'imposition sur le revenu"), category: 'individual', critical: true },
+    { id: 'social-charges', label: t('governance.fiscal.item.socialCharges', 'Charges sociales obligatoires'), category: 'individual', critical: true },
+    { id: 'wealth-tax', label: t('governance.fiscal.item.wealthTax', 'Impôt sur la fortune (existence/seuils)'), category: 'individual', critical: false },
+    { id: 'exit-tax', label: t('governance.fiscal.item.exitTax', 'Exit tax ou taxation de départ'), category: 'individual', critical: false },
+    { id: 'corporate-tax', label: t('governance.fiscal.item.corporateTax', 'Impôt sur les sociétés (taux effectif)'), category: 'company', critical: true },
+    { id: 'vat', label: t('governance.fiscal.item.vat', 'TVA et règles de facturation'), category: 'company', critical: true },
+    { id: 'incentives', label: t('governance.fiscal.item.incentives', 'Régimes incitatifs (zones, secteurs)'), category: 'company', critical: false },
+    { id: 'payroll-taxes', label: t('governance.fiscal.item.payrollTaxes', 'Charges employeur'), category: 'company', critical: true },
+    { id: 'transfer-pricing', label: t('governance.fiscal.item.transferPricing', 'Règles de prix de transfert'), category: 'company', critical: false },
+    { id: 'tax-treaties', label: t('governance.fiscal.item.taxTreaties', "Conventions fiscales avec pays d'origine"), category: 'international', critical: true },
+    { id: 'dividends', label: t('governance.fiscal.item.dividends', 'Taxation des dividendes (entrée/sortie)'), category: 'international', critical: false },
+    { id: 'cfc-rules', label: t('governance.fiscal.item.cfcRules', 'Règles CFC (sociétés étrangères contrôlées)'), category: 'international', critical: false },
+    { id: 'substance', label: t('governance.fiscal.item.substance', 'Exigences de substance économique'), category: 'international', critical: true },
+  ];
+
+  const categoryConfig: Record<string, { label: string; icon: React.ReactNode; color: string }> = {
+    individual: { 
+      label: t('governance.fiscal.category.individual', 'Fiscalité personnelle'), 
+      icon: <User className="w-4 h-4" />,
+      color: 'bg-blue-500/20 text-blue-700 border-blue-500/30'
+    },
+    company: { 
+      label: t('governance.fiscal.category.company', 'Fiscalité entreprise'), 
+      icon: <Building2 className="w-4 h-4" />,
+      color: 'bg-green-500/20 text-green-700 border-green-500/30'
+    },
+    international: { 
+      label: t('governance.fiscal.category.international', 'Fiscalité internationale'), 
+      icon: <Globe className="w-4 h-4" />,
+      color: 'bg-purple-500/20 text-purple-700 border-purple-500/30'
+    },
+  };
+
   const [items, setItems] = useState<FiscalItem[]>(
-    DEFAULT_FISCAL_ITEMS.map(item => ({ ...item, clarified: false }))
+    fiscalItems.map(item => ({ ...item, clarified: false }))
   );
 
   const toggleItem = (id: string) => {
@@ -119,9 +115,9 @@ export function TerrainFiscalChecklist({ countryName }: TerrainFiscalChecklistPr
             <AlertCircle className="w-5 h-5 text-amber-600" />
           )}
           <div className="text-sm">
-            <span className="font-medium">Points critiques : </span>
+            <span className="font-medium">{t('governance.fiscal.criticalPoints', 'Points critiques')} : </span>
             <span className={criticalClarified === criticalTotal ? 'text-green-700' : 'text-amber-700'}>
-              {criticalClarified}/{criticalTotal} clarifiés
+              {criticalClarified}/{criticalTotal} {t('governance.fiscal.clarified', 'clarifiés')}
             </span>
           </div>
         </div>
@@ -130,9 +126,9 @@ export function TerrainFiscalChecklist({ countryName }: TerrainFiscalChecklistPr
         {Object.entries(groupedItems).map(([category, categoryItems]) => (
           <div key={category} className="space-y-3">
             <div className="flex items-center gap-2">
-              {CATEGORY_CONFIG[category]?.icon}
-              <Badge className={CATEGORY_CONFIG[category]?.color}>
-                {CATEGORY_CONFIG[category]?.label}
+              {categoryConfig[category]?.icon}
+              <Badge className={categoryConfig[category]?.color}>
+                {categoryConfig[category]?.label}
               </Badge>
             </div>
             <div className="space-y-2 ml-6">
@@ -154,7 +150,7 @@ export function TerrainFiscalChecklist({ countryName }: TerrainFiscalChecklistPr
                   </span>
                   {item.critical && (
                     <Badge variant="outline" className="text-xs bg-red-500/10 text-red-600 border-red-500/30">
-                      Critique
+                      {t('governance.fiscal.critical', 'Critique')}
                     </Badge>
                   )}
                 </div>
