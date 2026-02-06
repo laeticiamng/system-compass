@@ -70,13 +70,19 @@ function AnimatedSection({ children, className }: { children: React.ReactNode; c
 }
 
 export default function Countries() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { countries, isLoading, error } = useCountries();
   const { savedIds } = useSavedCountries();
   const [filter, setFilter] = useState<PyramidType | 'all' | 'extended' | 'saved'>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<SortOption>('name-asc');
   const [currentPage, setCurrentPage] = useState(1);
+
+  // Helper to get translated country name for search
+  const getTranslatedName = (countryId: string): string => {
+    const translatedName = t(`countries.${countryId}.name`, { defaultValue: '' });
+    return translatedName !== `countries.${countryId}.name` ? translatedName : '';
+  };
 
   const filteredAndSortedCountries = useMemo(() => {
     // When showing saved countries
@@ -88,13 +94,14 @@ export default function Countries() {
         result = result.filter(c => 
           c.name.toLowerCase().includes(query) ||
           c.nameLocal?.toLowerCase().includes(query) ||
-          c.region.toLowerCase().includes(query)
+          c.region.toLowerCase().includes(query) ||
+          getTranslatedName(c.id).toLowerCase().includes(query)
         );
       }
       
       result.sort((a, b) => {
-        if (sortBy === 'name-desc') return b.name.localeCompare(a.name, 'fr', { sensitivity: 'base' });
-        return a.name.localeCompare(b.name, 'fr', { sensitivity: 'base' });
+        if (sortBy === 'name-desc') return b.name.localeCompare(a.name, i18n.language, { sensitivity: 'base' });
+        return a.name.localeCompare(b.name, i18n.language, { sensitivity: 'base' });
       });
       
       return result;
@@ -109,14 +116,15 @@ export default function Countries() {
         result = result.filter(c => 
           c.name.toLowerCase().includes(query) ||
           c.nameLocal?.toLowerCase().includes(query) ||
-          c.region.toLowerCase().includes(query)
+          c.region.toLowerCase().includes(query) ||
+          getTranslatedName(c.id).toLowerCase().includes(query)
         );
       }
       
       // Sort extended countries by name only
       result.sort((a, b) => {
-        if (sortBy === 'name-desc') return b.name.localeCompare(a.name, 'fr', { sensitivity: 'base' });
-        return a.name.localeCompare(b.name, 'fr', { sensitivity: 'base' });
+        if (sortBy === 'name-desc') return b.name.localeCompare(a.name, i18n.language, { sensitivity: 'base' });
+        return a.name.localeCompare(b.name, i18n.language, { sensitivity: 'base' });
       });
       
       return result;
@@ -130,13 +138,14 @@ export default function Countries() {
       result = result.filter(c => c.pyramidType === filter);
     }
     
-    // Filter by search query
+    // Filter by search query (including translated names)
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase().trim();
       result = result.filter(c => 
         c.name.toLowerCase().includes(query) ||
         c.nameLocal?.toLowerCase().includes(query) ||
-        c.region.toLowerCase().includes(query)
+        c.region.toLowerCase().includes(query) ||
+        getTranslatedName(c.id).toLowerCase().includes(query)
       );
     }
     
@@ -144,9 +153,9 @@ export default function Countries() {
     result.sort((a, b) => {
       switch (sortBy) {
         case 'name-asc':
-          return a.name.localeCompare(b.name, 'fr', { sensitivity: 'base' });
+          return a.name.localeCompare(b.name, i18n.language, { sensitivity: 'base' });
         case 'name-desc':
-          return b.name.localeCompare(a.name, 'fr', { sensitivity: 'base' });
+          return b.name.localeCompare(a.name, i18n.language, { sensitivity: 'base' });
         case 'risk-asc':
           return calculateAverageRisk(a) - calculateAverageRisk(b);
         case 'risk-desc':
@@ -161,7 +170,7 @@ export default function Countries() {
     });
     
     return result;
-  }, [countries, filter, searchQuery, sortBy, savedIds]);
+  }, [countries, filter, searchQuery, sortBy, savedIds, i18n.language, getTranslatedName]);
 
   const totalPages = Math.ceil(filteredAndSortedCountries.length / ITEMS_PER_PAGE);
   
