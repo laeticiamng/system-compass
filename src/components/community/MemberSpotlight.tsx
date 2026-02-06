@@ -24,32 +24,32 @@ interface SpotlightMember {
 const SPOTLIGHT_MEMBERS: SpotlightMember[] = [
   {
     id: 'member-1',
-    name: 'Marie L.',
-    originCountry: 'France',
+    name: 'Membre Beta #1',
+    originCountry: 'Europe',
     destinationCountry: 'Portugal',
-    profession: 'Développeuse Web',
-    testimonial: 'Pyramid Compass m\'a aidée à comprendre les réalités fiscales du Portugal avant de m\'y installer. Le simulateur était précis à 95% !',
-    successMetric: 'Installation réussie en 3 mois',
+    profession: 'Développeur·se Web',
+    testimonial: 'La plateforme m\'a aidé·e à comprendre les réalités fiscales du Portugal avant de m\'y installer.',
+    successMetric: 'Installation réussie',
     joinedDate: '2025-06'
   },
   {
     id: 'member-2',
-    name: 'Thomas K.',
-    originCountry: 'Belgique',
+    name: 'Membre Beta #2',
+    originCountry: 'Europe',
     destinationCountry: 'Émirats Arabes Unis',
-    profession: 'Consultant Finance',
-    testimonial: 'Les Exit Keys m\'ont permis de structurer ma transition. Les conseils sur les pièges à éviter étaient inestimables.',
-    successMetric: 'Économies fiscales: 40%',
+    profession: 'Consultant·e Finance',
+    testimonial: 'Les Exit Keys m\'ont permis de structurer ma transition. Les conseils sur les pièges à éviter étaient utiles.',
+    successMetric: 'Transition réussie',
     joinedDate: '2025-03'
   },
   {
     id: 'member-3',
-    name: 'Sophie M.',
-    originCountry: 'Suisse',
+    name: 'Membre Beta #3',
+    originCountry: 'Europe',
     destinationCountry: 'Singapour',
-    profession: 'Entrepreneure Tech',
-    testimonial: 'Le comparateur de pays m\'a fait découvrir des opportunités que je n\'aurais jamais envisagées. Mon business a doublé.',
-    successMetric: 'Croissance: +120%',
+    profession: 'Entrepreneur·se Tech',
+    testimonial: 'Le comparateur de pays m\'a fait découvrir des opportunités que je n\'aurais jamais envisagées.',
+    successMetric: 'Nouvelles opportunités',
     joinedDate: '2024-11'
   }
 ];

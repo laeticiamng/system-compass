@@ -32,7 +32,7 @@ interface DiscussionThreadProps {
 const MOCK_POSTS: ThreadPost[] = [
   {
     id: '1',
-    author: 'Marie D.',
+    author: 'Utilisateur·rice',
     content: "Bonjour à tous ! Je prépare mon expatriation au Portugal et j'aimerais avoir vos retours sur le processus de visa D7. Combien de temps a duré votre dossier ?",
     createdAt: new Date(Date.now() - 3600000 * 24 * 2),
     likes: 12,
@@ -40,7 +40,7 @@ const MOCK_POSTS: ThreadPost[] = [
     replies: [
       {
         id: '1-1',
-        author: 'Jean-Pierre L.',
+        author: 'Membre communauté',
         content: "J'ai obtenu mon D7 en 3 mois environ. Le plus long c'est la collecte des documents, surtout les extraits de casier traduits. Bon courage !",
         createdAt: new Date(Date.now() - 3600000 * 12),
         likes: 5,
@@ -48,7 +48,7 @@ const MOCK_POSTS: ThreadPost[] = [
       },
       {
         id: '1-2',
-        author: 'Sophie M.',
+        author: 'Membre communauté',
         content: "Même expérience que Jean-Pierre. Conseil : préparez tous vos relevés bancaires sur 6 mois minimum, ils sont très regardants sur les revenus passifs.",
         createdAt: new Date(Date.now() - 3600000 * 6),
         likes: 8,
@@ -58,7 +58,7 @@ const MOCK_POSTS: ThreadPost[] = [
   },
   {
     id: '2',
-    author: 'Thomas R.',
+    author: 'Utilisateur·rice',
     content: "Quelqu'un a-t-il de l'expérience avec le Golden Visa UAE ? Je me demande si c'est vraiment avantageux pour un freelance tech.",
     createdAt: new Date(Date.now() - 3600000 * 48),
     likes: 7,
