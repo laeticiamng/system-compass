@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
@@ -152,6 +153,7 @@ const TIER_COLORS = {
 };
 
 export function GameAchievements() {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const [stats, setStats] = useState<GameStats | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -213,7 +215,7 @@ export function GameAchievements() {
         <CardContent className="py-8 text-center">
           <Lock className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
           <p className="text-muted-foreground">
-            {isLoading ? 'Chargement...' : 'Connectez-vous pour voir vos succès'}
+            {isLoading ? t('common.loading', 'Chargement...') : t('game.achievements.loginRequired', 'Connectez-vous pour voir vos succès')}
           </p>
         </CardContent>
       </Card>
@@ -226,7 +228,7 @@ export function GameAchievements() {
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center gap-2">
             <Trophy className="h-5 w-5 text-primary" />
-            Succès
+            {t('game.achievements.title', 'Succès')}
           </CardTitle>
           <div className="flex items-center gap-2">
             <Badge variant="outline">

@@ -2,6 +2,7 @@
  * Challenge Tracker - Real-time challenge progress with backend persistence
  */
 import { useState, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -35,7 +36,7 @@ const calculateTimeRemaining = (expiresAt: Date): string => {
   const now = new Date();
   const diff = expiresAt.getTime() - now.getTime();
   
-  if (diff <= 0) return 'Expiré';
+  if (diff <= 0) return 'expired';
   
   const hours = Math.floor(diff / (1000 * 60 * 60));
   const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
@@ -49,6 +50,7 @@ const calculateTimeRemaining = (expiresAt: Date): string => {
 };
 
 export function ChallengeTracker() {
+  const { t } = useTranslation();
   const { progress, addXp, isLoading } = useGamification();
   const [challenges, setChallenges] = useState<TrackedChallenge[]>([]);
   const [timeRemaining, setTimeRemaining] = useState<Record<string, string>>({});
@@ -63,11 +65,11 @@ export function ChallengeTracker() {
     endOfWeek.setDate(now.getDate() + (7 - now.getDay()));
     endOfWeek.setHours(23, 59, 59, 999);
 
-    const dailyChallenges: TrackedChallenge[] = [
+    const dailyChallengesData: TrackedChallenge[] = [
       {
         id: 'daily-login',
-        title: 'Connexion quotidienne',
-        description: 'Connectez-vous aujourd\'hui',
+        title: t('challenges.dailyLogin.title', 'Connexion quotidienne'),
+        description: t('challenges.dailyLogin.description', 'Connectez-vous aujourd\'hui'),
         type: 'daily',
         xpReward: 10,
         currentProgress: 1,
@@ -77,8 +79,8 @@ export function ChallengeTracker() {
       },
       {
         id: 'daily-explore',
-        title: 'Découverte du jour',
-        description: 'Explorez un nouveau pays',
+        title: t('challenges.dailyExplore.title', 'Découverte du jour'),
+        description: t('challenges.dailyExplore.description', 'Explorez un nouveau pays'),
         type: 'daily',
         xpReward: 25,
         currentProgress: 0,
@@ -88,8 +90,8 @@ export function ChallengeTracker() {
       },
       {
         id: 'daily-compare',
-        title: 'Comparaison rapide',
-        description: 'Comparez 2 destinations',
+        title: t('challenges.dailyCompare.title', 'Comparaison rapide'),
+        description: t('challenges.dailyCompare.description', 'Comparez 2 destinations'),
         type: 'daily',
         xpReward: 20,
         currentProgress: 1,
@@ -99,11 +101,11 @@ export function ChallengeTracker() {
       },
     ];
 
-    const weeklyChallenges: TrackedChallenge[] = [
+    const weeklyChallengesData: TrackedChallenge[] = [
       {
         id: 'weekly-explorer',
-        title: 'Explorateur de la semaine',
-        description: 'Explorez 5 nouveaux pays cette semaine',
+        title: t('challenges.weeklyExplorer.title', 'Explorateur de la semaine'),
+        description: t('challenges.weeklyExplorer.description', 'Explorez 5 nouveaux pays cette semaine'),
         type: 'weekly',
         xpReward: 150,
         currentProgress: 2,
@@ -113,8 +115,8 @@ export function ChallengeTracker() {
       },
       {
         id: 'weekly-fiscal',
-        title: 'Expert fiscal',
-        description: 'Utilisez le calculateur fiscal 3 fois',
+        title: t('challenges.weeklyFiscal.title', 'Expert fiscal'),
+        description: t('challenges.weeklyFiscal.description', 'Utilisez le calculateur fiscal 3 fois'),
         type: 'weekly',
         xpReward: 100,
         currentProgress: 1,
@@ -124,7 +126,7 @@ export function ChallengeTracker() {
       },
     ];
 
-    setChallenges([...dailyChallenges, ...weeklyChallenges]);
+    setChallenges([...dailyChallengesData, ...weeklyChallengesData]);
   }, []);
 
   // Update countdown timers
@@ -161,11 +163,11 @@ export function ChallengeTracker() {
         )
       );
 
-      toast.success(`+${challenge.xpReward} XP réclamés !`, {
-        description: `Défi "${challenge.title}" complété`,
+      toast.success(t('challenges.xpClaimed', '+{{xp}} XP réclamés !', { xp: challenge.xpReward }), {
+        description: t('challenges.challengeCompleted', 'Défi "{{title}}" complété', { title: challenge.title }),
       });
     } catch (error) {
-      toast.error('Erreur lors de la réclamation');
+      toast.error(t('challenges.claimError', 'Erreur lors de la réclamation'));
     }
   }, [addXp]);
 
@@ -186,9 +188,9 @@ export function ChallengeTracker() {
               <Flame className="w-6 h-6 text-orange-400" />
             </div>
             <div className="flex-1">
-              <p className="font-semibold">Série en cours : {progress.streak} jours</p>
+              <p className="font-semibold">{t('challenges.streakCurrent', 'Série en cours : {{count}} jours', { count: progress.streak })}</p>
               <p className="text-sm text-muted-foreground">
-                Continuez demain pour maintenir votre série !
+                {t('challenges.streakKeep', 'Continuez demain pour maintenir votre série !')}
               </p>
             </div>
             <Badge className="bg-orange-500/20 text-orange-400">
@@ -203,10 +205,10 @@ export function ChallengeTracker() {
         <CardHeader className="pb-3">
           <CardTitle className="flex items-center gap-2 text-lg">
             <Zap className="h-5 w-5 text-amber-400" />
-            Défis quotidiens
+            {t('challenges.dailyTitle', 'Défis quotidiens')}
           </CardTitle>
           <CardDescription>
-            Renouvelés à minuit
+            {t('challenges.dailyReset', 'Renouvelés à minuit')}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-3">
@@ -226,10 +228,10 @@ export function ChallengeTracker() {
         <CardHeader className="pb-3">
           <CardTitle className="flex items-center gap-2 text-lg">
             <Target className="h-5 w-5 text-primary" />
-            Défis hebdomadaires
+            {t('challenges.weeklyTitle', 'Défis hebdomadaires')}
           </CardTitle>
           <CardDescription>
-            Renouvelés chaque lundi
+            {t('challenges.weeklyReset', 'Renouvelés chaque lundi')}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-3">
@@ -256,6 +258,7 @@ function ChallengeItem({
   timeRemaining?: string;
   onClaim: () => void;
 }) {
+  const { t } = useTranslation();
   const progress = (challenge.currentProgress / challenge.targetProgress) * 100;
 
   return (
@@ -279,7 +282,7 @@ function ChallengeItem({
         {challenge.completed ? (
           <Button size="sm" onClick={onClaim} className="gap-1">
             <Gift className="h-4 w-4" />
-            Réclamer
+            {t('challenges.claim', 'Réclamer')}
           </Button>
         ) : (
           <Badge variant="secondary">

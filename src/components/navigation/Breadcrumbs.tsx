@@ -13,109 +13,7 @@ interface BreadcrumbItem {
   href?: string;
 }
 
-// Route segment to i18n key mapping
-const ROUTE_I18N_KEYS: Record<string, string> = {
-  '': 'breadcrumbs.home',
-  'countries': 'breadcrumbs.countries',
-  'country': 'breadcrumbs.countryDetail',
-  'world-map': 'breadcrumbs.worldMap',
-  'compare': 'breadcrumbs.compare',
-  'dashboard': 'breadcrumbs.dashboard',
-  'tools': 'breadcrumbs.tools',
-  'quick-test': 'breadcrumbs.quickTest',
-  'profile-test': 'breadcrumbs.profileTest',
-  'profile-matcher': 'breadcrumbs.matcher',
-  'life-trajectory': 'breadcrumbs.trajectory',
-  'fiscal-calculator': 'breadcrumbs.fiscalCalculator',
-  'exit-keys': 'breadcrumbs.exitKeys',
-  'catalog': 'breadcrumbs.catalog',
-  'prevention-filter': 'breadcrumbs.preventionFilter',
-  'errors-illusions': 'breadcrumbs.errorsIllusions',
-  'universal-errors': 'breadcrumbs.universalErrors',
-  'pyramid-quiz': 'breadcrumbs.quiz',
-  'life-game': 'breadcrumbs.lifeGame',
-  'pyramid-types': 'breadcrumbs.pyramidTypes',
-  'personas': 'breadcrumbs.personas',
-  'gamification': 'breadcrumbs.gamification',
-  'institutions': 'breadcrumbs.traceOS',
-  'latent': 'breadcrumbs.latent',
-  'irreversa': 'breadcrumbs.irreversa',
-  'ovi': 'breadcrumbs.ovi',
-  'b2b': 'breadcrumbs.b2b',
-  'cases': 'breadcrumbs.cases',
-  'terrain': 'breadcrumbs.terrain',
-  'terrain-realities': 'breadcrumbs.terrain',
-  'financial-safety-intel': 'breadcrumbs.financialIntel',
-  'experts': 'breadcrumbs.experts',
-  'community': 'breadcrumbs.community',
-  'partner-services': 'breadcrumbs.partnerServices',
-  'usage': 'breadcrumbs.usage',
-  'settings': 'breadcrumbs.settings',
-  'notifications': 'breadcrumbs.notifications',
-  'about': 'breadcrumbs.about',
-  'pricing': 'breadcrumbs.pricing',
-  'partners': 'breadcrumbs.partners',
-  'resources': 'breadcrumbs.resources',
-  'how-to-read': 'breadcrumbs.howToRead',
-  'install': 'breadcrumbs.install',
-  'admin': 'breadcrumbs.admin',
-  'translations': 'breadcrumbs.translations',
-  'analytics': 'breadcrumbs.analytics',
-  'country-generator': 'breadcrumbs.countryGenerator',
-  'diagnostics': 'breadcrumbs.diagnostics',
-};
-
-// Fallback labels (used as default values for t())
-const ROUTE_FALLBACKS: Record<string, string> = {
-  '': 'Accueil',
-  'countries': 'Pays',
-  'country': 'Détail Pays',
-  'world-map': 'Carte Monde',
-  'compare': 'Comparer',
-  'dashboard': 'Dashboard',
-  'tools': 'Outils',
-  'quick-test': 'Test Rapide',
-  'profile-test': 'Test Complet',
-  'profile-matcher': 'Matcher',
-  'life-trajectory': 'Trajectoire',
-  'fiscal-calculator': 'Calculateur Fiscal',
-  'exit-keys': 'Exit Keys',
-  'catalog': 'Catalogue',
-  'prevention-filter': 'Filtre Décision',
-  'errors-illusions': 'Erreurs & Illusions',
-  'universal-errors': 'Erreur Universelle',
-  'pyramid-quiz': 'Quiz',
-  'life-game': 'Mode Éducatif',
-  'pyramid-types': 'Types Pyramides',
-  'personas': 'Personas',
-  'gamification': 'Progression',
-  'institutions': 'TraceOS',
-  'latent': 'Zones Latentes',
-  'irreversa': 'Irreversa',
-  'ovi': 'OVI',
-  'b2b': 'Solutions B2B',
-  'cases': 'Cas',
-  'terrain': 'Réalités Terrain',
-  'terrain-realities': 'Réalités Terrain',
-  'financial-safety-intel': 'Intel Financière',
-  'experts': 'Experts',
-  'community': 'Communauté',
-  'partner-services': 'Services Partenaires',
-  'usage': 'Consommation',
-  'settings': 'Paramètres',
-  'notifications': 'Notifications',
-  'about': 'À propos',
-  'pricing': 'Tarifs',
-  'partners': 'Partenaires',
-  'resources': 'Ressources',
-  'how-to-read': 'Guide de Lecture',
-  'install': 'Installer',
-  'admin': 'Administration',
-  'translations': 'Traductions',
-  'analytics': 'Analytics',
-  'country-generator': 'Générateur Pays',
-  'diagnostics': 'Diagnostics',
-};
+// Pages that should NOT show breadcrumbs (top-level pages)
 
 // Pages that should NOT show breadcrumbs (top-level pages)
 const HIDE_BREADCRUMBS_ON = ['/', '/auth', '/countries', '/dashboard', '/tools'];
@@ -133,9 +31,61 @@ export function Breadcrumbs() {
   if (pathSegments.length < 2) {
     return null;
   }
+
+  // Fallback labels using t() for i18n
+  const routeFallbacks: Record<string, string> = {
+    '': t('breadcrumbs.home', 'Accueil'),
+    'countries': t('breadcrumbs.countries', 'Pays'),
+    'country': t('breadcrumbs.countryDetail', 'Détail Pays'),
+    'world-map': t('breadcrumbs.worldMap', 'Carte Monde'),
+    'compare': t('breadcrumbs.compare', 'Comparer'),
+    'dashboard': t('breadcrumbs.dashboard', 'Dashboard'),
+    'tools': t('breadcrumbs.tools', 'Outils'),
+    'quick-test': t('breadcrumbs.quickTest', 'Test Rapide'),
+    'profile-test': t('breadcrumbs.profileTest', 'Test Complet'),
+    'profile-matcher': t('breadcrumbs.matcher', 'Matcher'),
+    'life-trajectory': t('breadcrumbs.trajectory', 'Trajectoire'),
+    'fiscal-calculator': t('breadcrumbs.fiscalCalculator', 'Calculateur Fiscal'),
+    'exit-keys': t('breadcrumbs.exitKeys', 'Exit Keys'),
+    'catalog': t('breadcrumbs.catalog', 'Catalogue'),
+    'prevention-filter': t('breadcrumbs.preventionFilter', 'Filtre Décision'),
+    'errors-illusions': t('breadcrumbs.errorsIllusions', 'Erreurs & Illusions'),
+    'universal-errors': t('breadcrumbs.universalErrors', 'Erreur Universelle'),
+    'pyramid-quiz': t('breadcrumbs.quiz', 'Quiz'),
+    'life-game': t('breadcrumbs.lifeGame', 'Mode Éducatif'),
+    'pyramid-types': t('breadcrumbs.pyramidTypes', 'Types Pyramides'),
+    'personas': t('breadcrumbs.personas', 'Personas'),
+    'gamification': t('breadcrumbs.gamification', 'Progression'),
+    'institutions': t('breadcrumbs.traceOS', 'TraceOS'),
+    'latent': t('breadcrumbs.latent', 'Zones Latentes'),
+    'irreversa': t('breadcrumbs.irreversa', 'Irreversa'),
+    'ovi': t('breadcrumbs.ovi', 'OVI'),
+    'b2b': t('breadcrumbs.b2b', 'Solutions B2B'),
+    'cases': t('breadcrumbs.cases', 'Cas'),
+    'terrain': t('breadcrumbs.terrain', 'Réalités Terrain'),
+    'terrain-realities': t('breadcrumbs.terrain', 'Réalités Terrain'),
+    'financial-safety-intel': t('breadcrumbs.financialIntel', 'Intel Financière'),
+    'experts': t('breadcrumbs.experts', 'Experts'),
+    'community': t('breadcrumbs.community', 'Communauté'),
+    'partner-services': t('breadcrumbs.partnerServices', 'Services Partenaires'),
+    'usage': t('breadcrumbs.usage', 'Consommation'),
+    'settings': t('breadcrumbs.settings', 'Paramètres'),
+    'notifications': t('breadcrumbs.notifications', 'Notifications'),
+    'about': t('breadcrumbs.about', 'À propos'),
+    'pricing': t('breadcrumbs.pricing', 'Tarifs'),
+    'partners': t('breadcrumbs.partners', 'Partenaires'),
+    'resources': t('breadcrumbs.resources', 'Ressources'),
+    'how-to-read': t('breadcrumbs.howToRead', 'Guide de Lecture'),
+    'install': t('breadcrumbs.install', 'Installer'),
+    'admin': t('breadcrumbs.admin', 'Administration'),
+    'translations': t('breadcrumbs.translations', 'Traductions'),
+    'analytics': t('breadcrumbs.analytics', 'Analytics'),
+    'country-generator': t('breadcrumbs.countryGenerator', 'Générateur Pays'),
+    'diagnostics': t('breadcrumbs.diagnostics', 'Diagnostics'),
+  };
   
   const breadcrumbs: BreadcrumbItem[] = [
-    { label: t('breadcrumbs.home', 'Accueil'), href: '/' },
+    { label: routeFallbacks[''], href: '/' },
   ];
   
   let currentPath = '';
@@ -145,9 +95,7 @@ export function Breadcrumbs() {
     
     const isId = segment.length === 36 || segment.length === 2 || /^[a-z]{2,3}$/i.test(segment);
     
-    const i18nKey = ROUTE_I18N_KEYS[segment];
-    const fallback = ROUTE_FALLBACKS[segment] || segment.charAt(0).toUpperCase() + segment.slice(1);
-    let label = i18nKey ? t(i18nKey, fallback) : fallback;
+    let label = routeFallbacks[segment] || segment.charAt(0).toUpperCase() + segment.slice(1);
     
     if (isId && pathSegments[index - 1]) {
       const parentSegment = pathSegments[index - 1];
