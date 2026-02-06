@@ -3,7 +3,7 @@
  * Shows key features step by step
  */
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 
 const TOUR_COMPLETED_KEY = 'pyramid-compass-tour-completed';
 const TOUR_VERSION = 'v1'; // Increment to re-show tour after updates
@@ -66,18 +66,9 @@ export function useOnboardingTour() {
     }
   });
 
-  // Auto-start tour for new users after a delay
-  useEffect(() => {
-    if (!hasCompletedTour && typeof window !== 'undefined') {
-      const timer = setTimeout(() => {
-        // Only start if user hasn't navigated away from home
-        if (window.location.pathname === '/') {
-          setIsActive(true);
-        }
-      }, 2000);
-      return () => clearTimeout(timer);
-    }
-  }, [hasCompletedTour]);
+  // Auto-start is now disabled - managed by DialogCoordinator
+  // Users can manually trigger via RestartTourButton or Footer
+  // This hook is now only for the optional guided tour, not initial onboarding
 
   const startTour = useCallback(() => {
     setCurrentStep(0);

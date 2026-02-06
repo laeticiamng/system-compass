@@ -16,7 +16,7 @@ import { DisclaimerConsentDialog } from "@/components/DisclaimerConsentDialog";
 import { DialogCoordinatorProvider } from "@/components/DialogCoordinator";
 import { OfflineBanner } from "@/components/ui/offline-banner";
 import { CookieConsent } from "@/components/ui/cookie-consent";
-import { ContextualShortcuts, AppSidebar, Breadcrumbs, OnboardingTour } from "@/components/navigation";
+import { ContextualShortcuts, AppSidebar, Breadcrumbs } from "@/components/navigation";
 import { GlobalErrorBoundary, DevDiagnosticsPanel } from "@/components/diagnostics";
 import { allRoutes } from "@/routes";
 
@@ -46,7 +46,7 @@ const App = () => (
                     <DialogCoordinatorProvider>
                       <DisclaimerConsentDialog />
                       <OnboardingDialog />
-                      <OnboardingTour />
+                      {/* OnboardingTour removed - integrated into OnboardingDialog */}
                       <div className="min-h-screen flex w-full">
                         <AppSidebar />
                         <div className="flex-1 flex flex-col min-w-0">
