@@ -1,6 +1,7 @@
 /**
  * Tax Calendar Widget - Important tax deadlines and reminders
  */
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -23,48 +24,6 @@ interface TaxCalendarWidgetProps {
   onSetReminder?: (id: string) => void;
 }
 
-const DEFAULT_DEADLINES: TaxDeadline[] = [
-  {
-    id: '1',
-    title: 'Déclaration de revenus',
-    date: new Date(new Date().getFullYear(), 4, 25), // May 25
-    country: 'FR',
-    type: 'declaration',
-    priority: 'high',
-  },
-  {
-    id: '2',
-    title: 'Paiement acompte IS',
-    date: new Date(new Date().getFullYear(), 2, 15), // March 15
-    country: 'FR',
-    type: 'payment',
-    priority: 'high',
-  },
-  {
-    id: '3',
-    title: 'Déclaration TVA',
-    date: new Date(new Date().getFullYear(), new Date().getMonth() + 1, 20),
-    country: 'FR',
-    type: 'declaration',
-    priority: 'medium',
-  },
-  {
-    id: '4',
-    title: 'Mise à jour registre bénéficiaires',
-    date: new Date(new Date().getFullYear(), 11, 31), // December 31
-    country: 'FR',
-    type: 'document',
-    priority: 'low',
-  },
-];
-
-const typeConfig = {
-  declaration: { label: 'Déclaration', color: 'bg-blue-500/20 text-blue-500' },
-  payment: { label: 'Paiement', color: 'bg-red-500/20 text-red-500' },
-  document: { label: 'Document', color: 'bg-amber-500/20 text-amber-500' },
-  registration: { label: 'Enregistrement', color: 'bg-purple-500/20 text-purple-500' },
-};
-
 const priorityConfig = {
   high: { icon: AlertTriangle, color: 'text-red-500' },
   medium: { icon: Clock, color: 'text-amber-500' },
@@ -72,14 +31,58 @@ const priorityConfig = {
 };
 
 export function TaxCalendarWidget({ 
-  deadlines = DEFAULT_DEADLINES,
+  deadlines,
   onToggleComplete,
   onSetReminder,
 }: TaxCalendarWidgetProps) {
+  const { t } = useTranslation();
   const now = new Date();
+
+  const typeConfig = {
+    declaration: { label: t('fiscal.type.declaration', 'Déclaration'), color: 'bg-blue-500/20 text-blue-500' },
+    payment: { label: t('fiscal.type.payment', 'Paiement'), color: 'bg-red-500/20 text-red-500' },
+    document: { label: t('fiscal.type.document', 'Document'), color: 'bg-amber-500/20 text-amber-500' },
+    registration: { label: t('fiscal.type.registration', 'Enregistrement'), color: 'bg-purple-500/20 text-purple-500' },
+  };
+
+  const DEFAULT_DEADLINES: TaxDeadline[] = [
+    {
+      id: '1',
+      title: t('fiscal.calendar.incomeDeclaration', 'Déclaration de revenus'),
+      date: new Date(now.getFullYear(), 4, 25),
+      country: 'FR',
+      type: 'declaration',
+      priority: 'high',
+    },
+    {
+      id: '2',
+      title: t('fiscal.calendar.corporateTaxPayment', 'Paiement acompte IS'),
+      date: new Date(now.getFullYear(), 2, 15),
+      country: 'FR',
+      type: 'payment',
+      priority: 'high',
+    },
+    {
+      id: '3',
+      title: t('fiscal.calendar.vatDeclaration', 'Déclaration TVA'),
+      date: new Date(now.getFullYear(), now.getMonth() + 1, 20),
+      country: 'FR',
+      type: 'declaration',
+      priority: 'medium',
+    },
+    {
+      id: '4',
+      title: t('fiscal.calendar.beneficiaryRegister', 'Mise à jour registre bénéficiaires'),
+      date: new Date(now.getFullYear(), 11, 31),
+      country: 'FR',
+      type: 'document',
+      priority: 'low',
+    },
+  ];
+
+  const activeDeadlines = deadlines ?? DEFAULT_DEADLINES;
   
-  // Sort by date and filter upcoming
-  const upcomingDeadlines = [...deadlines]
+  const upcomingDeadlines = [...activeDeadlines]
     .filter(d => !d.completed && d.date >= now)
     .sort((a, b) => a.date.getTime() - b.date.getTime())
     .slice(0, 5);
@@ -97,16 +100,22 @@ export function TaxCalendarWidget({
     });
   };
 
+  const formatDaysUntil = (daysUntil: number): string => {
+    if (daysUntil === 0) return t('fiscal.calendar.today', 'Aujourd\'hui !');
+    if (daysUntil === 1) return t('fiscal.calendar.tomorrow', 'Demain');
+    return t('fiscal.calendar.daysLeft', '{{count}} jours', { count: daysUntil });
+  };
+
   return (
     <Card className="glass-card">
       <CardHeader className="pb-2">
         <CardTitle className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Calendar className="w-5 h-5 text-primary" />
-            Échéances fiscales
+            {t('fiscal.calendar.title', 'Échéances fiscales')}
           </div>
           <Badge variant="outline" className="gap-1">
-            {upcomingDeadlines.length} à venir
+            {t('fiscal.calendar.upcoming', '{{count}} à venir', { count: upcomingDeadlines.length })}
           </Badge>
         </CardTitle>
       </CardHeader>
@@ -114,7 +123,7 @@ export function TaxCalendarWidget({
         {upcomingDeadlines.length === 0 ? (
           <div className="text-center py-6 text-muted-foreground">
             <CheckCircle className="w-10 h-10 mx-auto mb-2 text-emerald-500" />
-            <p>Toutes les échéances sont à jour !</p>
+            <p>{t('fiscal.calendar.allUpToDate', 'Toutes les échéances sont à jour !')}</p>
           </div>
         ) : (
           upcomingDeadlines.map((deadline, index) => {
@@ -152,11 +161,7 @@ export function TaxCalendarWidget({
                   
                   <div className="text-right">
                     <p className={`text-sm font-bold ${isUrgent ? 'text-red-500' : ''}`}>
-                      {daysUntil === 0 
-                        ? 'Aujourd\'hui !' 
-                        : daysUntil === 1 
-                          ? 'Demain' 
-                          : `${daysUntil} jours`}
+                      {formatDaysUntil(daysUntil)}
                     </p>
                     <div className="flex gap-1 mt-1">
                       {onSetReminder && (

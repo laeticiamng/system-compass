@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -31,15 +32,6 @@ import { VideoConsultationDialog } from '@/components/marketplace/VideoConsultat
 import { ExpertReviews } from '@/components/marketplace/ExpertReviews';
 import { useExperts, type Expert } from '@/hooks/useExperts';
 import { useAuth } from '@/hooks/useAuth';
-
-const EXPERT_TYPES = [
-  { value: 'all', label: 'Tous les experts', icon: Globe2 },
-  { value: 'lawyer', label: 'Avocats', icon: Scale },
-  { value: 'tax_advisor', label: 'Conseillers fiscaux', icon: Calculator },
-  { value: 'immigration', label: 'Immigration', icon: FileText },
-  { value: 'notary', label: 'Notaires', icon: FileText },
-  { value: 'business', label: 'Business', icon: Building2 },
-];
 
 // Adapter to match legacy interface for dialogs
 interface LegacyExpert {
@@ -79,6 +71,7 @@ function expertToLegacy(expert: Expert): LegacyExpert {
 }
 
 export default function ExpertMarketplace() {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const { experts, isLoading, error, fetchExperts } = useExperts();
   
@@ -88,6 +81,15 @@ export default function ExpertMarketplace() {
   const [selectedExpert, setSelectedExpert] = useState<LegacyExpert | null>(null);
   const [showProfile, setShowProfile] = useState(false);
   const [showBooking, setShowBooking] = useState(false);
+
+  const EXPERT_TYPES = useMemo(() => [
+    { value: 'all', label: t('marketplace.allExperts', 'Tous les experts'), icon: Globe2 },
+    { value: 'lawyer', label: t('marketplace.lawyers', 'Avocats'), icon: Scale },
+    { value: 'tax_advisor', label: t('marketplace.taxAdvisors', 'Conseillers fiscaux'), icon: Calculator },
+    { value: 'immigration', label: t('marketplace.immigration', 'Immigration'), icon: FileText },
+    { value: 'notary', label: t('marketplace.notaries', 'Notaires'), icon: FileText },
+    { value: 'business', label: t('marketplace.business', 'Business'), icon: Building2 },
+  ], [t]);
 
   // Refetch when filters change
   useEffect(() => {
@@ -122,11 +124,11 @@ export default function ExpertMarketplace() {
 
   const handleContact = async (expert: Expert) => {
     if (!user) {
-      toast.error('Connectez-vous pour contacter un expert');
+      toast.error(t('marketplace.loginToContact', 'Connectez-vous pour contacter un expert'));
       return;
     }
-    toast.success(`Demande de contact envoyée à ${expert.name}`, {
-      description: 'Vous recevrez une réponse sous ' + expert.responseTime,
+    toast.success(t('marketplace.contactSent', 'Demande de contact envoyée à {{name}}', { name: expert.name }), {
+      description: t('marketplace.responseUnder', 'Vous recevrez une réponse sous {{time}}', { time: expert.responseTime }),
     });
   };
 
@@ -173,18 +175,17 @@ export default function ExpertMarketplace() {
       {/* Header */}
       <div className="text-center space-y-4">
         <h1 className="text-4xl font-bold gold-text">
-          Marketplace d'Experts
+          {t('marketplace.title', "Marketplace d'Experts")}
         </h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Trouvez les meilleurs experts pour votre projet d'expatriation : avocats, 
-          conseillers fiscaux, spécialistes en immigration.
+          {t('marketplace.description', "Trouvez les meilleurs experts pour votre projet d'expatriation : avocats, conseillers fiscaux, spécialistes en immigration.")}
         </p>
         {error && (
           <div className="flex items-center justify-center gap-2 text-amber-500">
-            <span className="text-sm">Données de démonstration affichées</span>
+            <span className="text-sm">{t('marketplace.demoData', 'Données de démonstration affichées')}</span>
             <Button variant="ghost" size="sm" onClick={() => fetchExperts()}>
               <RefreshCw className="h-4 w-4 mr-1" />
-              Réessayer
+              {t('common.retry', 'Réessayer')}
             </Button>
           </div>
         )}
@@ -194,23 +195,23 @@ export default function ExpertMarketplace() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <Card className="glass-card p-4 text-center">
           <Shield className="h-8 w-8 mx-auto mb-2 text-emerald-500" />
-          <p className="text-sm font-medium">Experts Vérifiés</p>
-          <p className="text-xs text-muted-foreground">100% certifiés</p>
+          <p className="text-sm font-medium">{t('marketplace.verifiedExperts', 'Experts Vérifiés')}</p>
+          <p className="text-xs text-muted-foreground">{t('marketplace.certified', '100% certifiés')}</p>
         </Card>
         <Card className="glass-card p-4 text-center">
           <Award className="h-8 w-8 mx-auto mb-2 text-amber-500" />
-          <p className="text-sm font-medium">Qualité Garantie</p>
-          <p className="text-xs text-muted-foreground">Note min. 4.5/5</p>
+          <p className="text-sm font-medium">{t('marketplace.qualityGuaranteed', 'Qualité Garantie')}</p>
+          <p className="text-xs text-muted-foreground">{t('marketplace.minRating', 'Note min. 4.5/5')}</p>
         </Card>
         <Card className="glass-card p-4 text-center">
           <Clock className="h-8 w-8 mx-auto mb-2 text-blue-500" />
-          <p className="text-sm font-medium">Réponse Rapide</p>
-          <p className="text-xs text-muted-foreground">Sous 24-48h</p>
+          <p className="text-sm font-medium">{t('marketplace.fastResponse', 'Réponse Rapide')}</p>
+          <p className="text-xs text-muted-foreground">{t('marketplace.within48h', 'Sous 24-48h')}</p>
         </Card>
         <Card className="glass-card p-4 text-center">
           <Euro className="h-8 w-8 mx-auto mb-2 text-primary" />
-          <p className="text-sm font-medium">Tarifs Transparents</p>
-          <p className="text-xs text-muted-foreground">Sans surprise</p>
+          <p className="text-sm font-medium">{t('marketplace.transparentPricing', 'Tarifs Transparents')}</p>
+          <p className="text-xs text-muted-foreground">{t('marketplace.noSurprise', 'Sans surprise')}</p>
         </Card>
       </div>
 
@@ -221,7 +222,7 @@ export default function ExpertMarketplace() {
             <div className="relative md:col-span-2">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
-                placeholder="Rechercher par nom, spécialité, pays..."
+                placeholder={t('marketplace.searchPlaceholder', 'Rechercher par nom, spécialité, pays...')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-10"
@@ -229,7 +230,7 @@ export default function ExpertMarketplace() {
             </div>
             <Select value={selectedType} onValueChange={setSelectedType}>
               <SelectTrigger>
-                <SelectValue placeholder="Type d'expert" />
+                <SelectValue placeholder={t('marketplace.expertType', "Type d'expert")} />
               </SelectTrigger>
               <SelectContent>
                 {EXPERT_TYPES.map((type) => (
@@ -244,10 +245,10 @@ export default function ExpertMarketplace() {
             </Select>
             <Select value={selectedCountry} onValueChange={setSelectedCountry}>
               <SelectTrigger>
-                <SelectValue placeholder="Pays" />
+                <SelectValue placeholder={t('marketplace.country', 'Pays')} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">Tous les pays</SelectItem>
+                <SelectItem value="all">{t('marketplace.allCountries', 'Tous les pays')}</SelectItem>
                 {allCountries.map((country) => (
                   <SelectItem key={country} value={country}>{country}</SelectItem>
                 ))}
@@ -260,7 +261,7 @@ export default function ExpertMarketplace() {
       {/* Results count */}
       <div className="flex items-center justify-between">
         <p className="text-muted-foreground">
-          {filteredExperts.length} expert{filteredExperts.length > 1 ? 's' : ''} trouvé{filteredExperts.length > 1 ? 's' : ''}
+          {t('marketplace.resultsCount', '{{count}} expert(s) trouvé(s)', { count: filteredExperts.length })}
         </p>
         {isLoading && <Loader2 className="h-4 w-4 animate-spin" />}
       </div>
@@ -292,7 +293,7 @@ export default function ExpertMarketplace() {
                         {getTypeIcon(expert.type)}
                         <span>{getTypeLabel(expert.type)}</span>
                         <span>•</span>
-                        <span>{expert.experienceYears} ans d'exp.</span>
+                        <span>{t('marketplace.yearsExp', "{{count}} ans d'exp.", { count: expert.experienceYears })}</span>
                       </div>
                     </div>
                     <div className="text-right">
@@ -300,7 +301,7 @@ export default function ExpertMarketplace() {
                         <Star className="h-4 w-4 fill-amber-500 text-amber-500" />
                         <span className="font-medium">{expert.rating.toFixed(1)}</span>
                       </div>
-                      <p className="text-xs text-muted-foreground">{expert.reviewCount} avis</p>
+                      <p className="text-xs text-muted-foreground">{t('marketplace.reviews', '{{count}} avis', { count: expert.reviewCount })}</p>
                     </div>
                   </div>
 
@@ -352,7 +353,7 @@ export default function ExpertMarketplace() {
                       </p>
                       <p className="text-xs text-muted-foreground flex items-center gap-1">
                         <Clock className="h-3 w-3" />
-                        Réponse sous {expert.responseTime}
+                        {t('marketplace.responseUnder', 'Réponse sous {{time}}', { time: expert.responseTime })}
                       </p>
                     </div>
                     <div className="flex gap-2">
@@ -365,7 +366,7 @@ export default function ExpertMarketplace() {
                         }}
                       >
                         <Star className="h-4 w-4 mr-1" />
-                        Profil
+                        {t('marketplace.profile', 'Profil')}
                       </Button>
                       <Button 
                         size="sm"
@@ -376,7 +377,7 @@ export default function ExpertMarketplace() {
                         }}
                       >
                         <Video className="h-4 w-4 mr-1" />
-                        Réserver
+                        {t('marketplace.book', 'Réserver')}
                       </Button>
                       <Button 
                         size="sm"
@@ -386,7 +387,7 @@ export default function ExpertMarketplace() {
                         }}
                       >
                         <MessageCircle className="h-4 w-4 mr-1" />
-                        Contact
+                        {t('marketplace.contact', 'Contact')}
                       </Button>
                     </div>
                   </div>
@@ -400,9 +401,9 @@ export default function ExpertMarketplace() {
       {filteredExperts.length === 0 && (
         <Card className="glass-card p-12 text-center">
           <Search className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-          <h3 className="text-lg font-medium mb-2">Aucun expert trouvé</h3>
+          <h3 className="text-lg font-medium mb-2">{t('marketplace.noResults', 'Aucun expert trouvé')}</h3>
           <p className="text-muted-foreground">
-            Essayez de modifier vos critères de recherche
+            {t('marketplace.tryDifferent', 'Essayez de modifier vos critères de recherche')}
           </p>
         </Card>
       )}
@@ -420,16 +421,15 @@ export default function ExpertMarketplace() {
       {/* CTA */}
       <Card className="glass-card-elevated bg-gradient-to-r from-primary/10 to-primary/5">
         <CardContent className="p-8 text-center">
-          <h2 className="text-2xl font-bold mb-4">Vous êtes expert ?</h2>
+          <h2 className="text-2xl font-bold mb-4">{t('marketplace.ctaTitle', 'Vous êtes expert ?')}</h2>
           <p className="text-muted-foreground mb-6 max-w-lg mx-auto">
-            Rejoignez notre réseau d'experts vérifiés et accédez à des clients qualifiés 
-            en recherche active de conseils pour leur projet d'expatriation.
+            {t('marketplace.ctaDesc', "Rejoignez notre réseau d'experts vérifiés et accédez à des clients qualifiés en recherche active de conseils pour leur projet d'expatriation.")}
           </p>
           <Button 
             size="lg"
-            onClick={() => toast.info('Inscription partenaires bientôt disponible')}
+            onClick={() => toast.info(t('marketplace.ctaToast', 'Inscription partenaires bientôt disponible'))}
           >
-            Devenir partenaire expert
+            {t('marketplace.ctaButton', 'Devenir partenaire expert')}
           </Button>
         </CardContent>
       </Card>

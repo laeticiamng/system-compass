@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
@@ -8,6 +9,7 @@ import { useChallengeProgress, type ChallengeProgress } from '@/hooks/useChallen
 import { cn } from '@/lib/utils';
 
 export function ChallengeProgressTracker() {
+  const { t } = useTranslation();
   const { 
     challenges, 
     isLoading,
@@ -40,12 +42,12 @@ export function ChallengeProgressTracker() {
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center gap-2 text-lg">
             <Target className="w-5 h-5 text-primary" />
-            Défis en cours
+            {t('challenges.active', 'Défis en cours')}
           </CardTitle>
           <div className="flex items-center gap-2">
             <Badge variant="outline" className="gap-1">
               <CheckCircle className="w-3 h-3 text-emerald-500" />
-              {completedToday} aujourd'hui
+              {t('challenges.completedToday', '{{count}} aujourd\'hui', { count: completedToday })}
             </Badge>
             <Badge className="bg-primary/20 text-primary gap-1">
               <Zap className="w-3 h-3" />
@@ -58,8 +60,8 @@ export function ChallengeProgressTracker() {
         {displayChallenges.length === 0 ? (
           <div className="text-center py-6 text-muted-foreground">
             <Trophy className="w-10 h-10 mx-auto mb-2 opacity-50" />
-            <p>Aucun défi actif</p>
-            <p className="text-sm">Revenez demain pour de nouveaux défis !</p>
+            <p>{t('challenges.noActive', 'Aucun défi actif')}</p>
+            <p className="text-sm">{t('challenges.comeBackTomorrow', 'Revenez demain pour de nouveaux défis !')}</p>
           </div>
         ) : (
           displayChallenges.map((challenge: ChallengeProgress) => {
@@ -85,7 +87,9 @@ export function ChallengeProgressTracker() {
                     )}
                     <span className="font-medium text-sm">{challenge.challengeId}</span>
                     <Badge variant="secondary" className="text-xs">
-                      {challenge.challengeType === 'daily' ? 'Quotidien' : 'Hebdo'}
+                      {challenge.challengeType === 'daily' 
+                        ? t('challenges.daily', 'Quotidien') 
+                        : t('challenges.weekly', 'Hebdo')}
                     </Badge>
                   </div>
                   {isComplete ? (
@@ -113,7 +117,9 @@ export function ChallengeProgressTracker() {
             className="w-full"
             onClick={() => setExpanded(!expanded)}
           >
-            {expanded ? 'Réduire' : `Voir ${activeChallenges.length - 3} autres`}
+            {expanded 
+              ? t('challenges.collapse', 'Réduire') 
+              : t('challenges.showMore', 'Voir {{count}} autres', { count: activeChallenges.length - 3 })}
           </Button>
         )}
       </CardContent>
