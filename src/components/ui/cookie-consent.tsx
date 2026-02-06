@@ -1,7 +1,7 @@
 /**
  * Cookie Consent Component (GDPR compliant)
  * 
- * Displays a cookie consent banner and manages user preferences.
+ * Integrated with DialogCoordinator to show AFTER disclaimer and onboarding.
  */
 
 import { useState, useEffect } from 'react';
@@ -11,6 +11,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
+import { useDialogCoordinator } from '@/components/DialogCoordinator';
 
 const CONSENT_KEY = 'pyramid-compass-cookie-consent';
 
@@ -50,27 +51,39 @@ export function hasConsentedToAnalytics(): boolean {
 }
 
 export function CookieConsent() {
-  const [showBanner, setShowBanner] = useState(false);
+  const { shouldShowCookieConsent, completeCookieConsent } = useDialogCoordinator();
   const [showDetails, setShowDetails] = useState(false);
   const [preferences, setPreferences] = useState<CookiePreferences>(defaultPreferences);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Check if user has already consented
-    const stored = getStoredConsent();
-    if (!stored) {
-      // Small delay to not show immediately on page load
-      const timer = setTimeout(() => setShowBanner(true), 1500);
+    // Small delay for smooth animation after onboarding closes
+    if (shouldShowCookieConsent) {
+      const timer = setTimeout(() => setIsVisible(true), 500);
       return () => clearTimeout(timer);
+    } else {
+      setIsVisible(false);
     }
-    setPreferences(stored);
+  }, [shouldShowCookieConsent]);
+
+  useEffect(() => {
+    // Load existing preferences if any
+    const stored = getStoredConsent();
+    if (stored) {
+      setPreferences(stored);
+    }
   }, []);
 
   const saveConsent = (prefs: CookiePreferences) => {
     const toSave = { ...prefs, consentDate: new Date().toISOString() };
-    localStorage.setItem(CONSENT_KEY, JSON.stringify(toSave));
+    try {
+      localStorage.setItem(CONSENT_KEY, JSON.stringify(toSave));
+    } catch (e) {
+      console.warn('Failed to save cookie consent:', e);
+    }
     setPreferences(toSave);
-    setShowBanner(false);
-    setShowDetails(false);
+    setIsVisible(false);
+    completeCookieConsent();
   };
 
   const acceptAll = () => {
@@ -97,7 +110,7 @@ export function CookieConsent() {
     });
   };
 
-  if (!showBanner) return null;
+  if (!isVisible) return null;
 
   return (
     <div
