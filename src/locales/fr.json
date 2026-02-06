@@ -6110,7 +6110,7 @@
     "start": "Commencer",
     "step1": {
       "title": "Bienvenue sur Pyramid Compass",
-      "description": "Votre boussole pour naviguer dans le système mondial. Comprenez les règles invisibles qui régissent chaque pays."
+      "description": "Comparez les pays en profondeur avant de vous expatrier : fiscalité, visas, coût de la vie et qualité de vie."
     },
     "step2": {
       "title": "Trouvez votre Match",
@@ -6121,12 +6121,12 @@
       "description": "Simulez votre salaire net, votre retraite et votre pouvoir d'achat dans n'importe quel pays."
     },
     "step4": {
-      "title": "Clés de Sortie",
+      "title": "Stratégies",
       "description": "Créez un plan d'action concret pour atteindre vos objectifs de vie, avec des étapes claires et un suivi personnalisé."
     },
     "step5": {
       "title": "Le Jeu de la Vie",
-      "description": "Testez différentes trajectoires de vie dans un jeu de simulation éducatif. Apprenez les mécanismes du système sans risque."
+      "description": "Testez différentes trajectoires de vie dans un jeu de simulation éducatif. Apprenez les mécanismes économiques sans risque."
     }
   },
   "howToRead": {
