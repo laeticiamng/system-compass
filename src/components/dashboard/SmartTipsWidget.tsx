@@ -4,6 +4,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface Tip {
   id: string;
@@ -23,50 +24,52 @@ interface SmartTipsWidgetProps {
   className?: string;
 }
 
-const DEFAULT_TIPS: Tip[] = [
-  {
-    id: 'complete-profile',
-    title: 'Complétez votre profil',
-    description: 'Un profil complet permet des recommandations plus précises',
-    actionLabel: 'Compléter',
-    actionUrl: '/exit-keys',
-    priority: 'high'
-  },
-  {
-    id: 'explore-countries',
-    title: 'Explorez de nouveaux pays',
-    description: 'Découvrez les 38 pays analysés et leurs systèmes pyramidaux',
-    actionLabel: 'Explorer',
-    actionUrl: '/countries',
-    priority: 'medium'
-  },
-  {
-    id: 'try-simulation',
-    title: 'Testez une simulation',
-    description: 'Simulez votre trajectoire avec le Life Game éducatif',
-    actionLabel: 'Jouer',
-    actionUrl: '/life-game',
-    priority: 'low'
-  },
-  {
-    id: 'save-comparison',
-    title: 'Sauvegardez vos comparaisons',
-    description: 'Connectez-vous pour sauvegarder vos analyses et les retrouver plus tard',
-    actionLabel: 'Se connecter',
-    actionUrl: '/auth',
-    priority: 'medium'
-  }
-];
-
 export function SmartTipsWidget({
-  tips = DEFAULT_TIPS,
+  tips: tipsProp,
   onDismiss: onDismissProp,
   onAction,
   autoRotate = true,
   rotateInterval = 10000,
   className
 }: SmartTipsWidgetProps) {
-  // Translation ready for future i18n
+  const { t } = useTranslation();
+
+  const defaultTips: Tip[] = [
+    {
+      id: 'complete-profile',
+      title: t('tips.completeProfile', 'Complétez votre profil'),
+      description: t('tips.completeProfileDesc', 'Un profil complet permet des recommandations plus précises'),
+      actionLabel: t('tips.completeProfileAction', 'Compléter'),
+      actionUrl: '/exit-keys',
+      priority: 'high'
+    },
+    {
+      id: 'explore-countries',
+      title: t('tips.exploreCountries', 'Explorez de nouveaux pays'),
+      description: t('tips.exploreCountriesDesc', 'Découvrez les 38 pays analysés et leurs systèmes pyramidaux'),
+      actionLabel: t('tips.exploreCountriesAction', 'Explorer'),
+      actionUrl: '/countries',
+      priority: 'medium'
+    },
+    {
+      id: 'try-simulation',
+      title: t('tips.trySimulation', 'Testez une simulation'),
+      description: t('tips.trySimulationDesc', 'Simulez votre trajectoire avec le Life Game éducatif'),
+      actionLabel: t('tips.trySimulationAction', 'Jouer'),
+      actionUrl: '/life-game',
+      priority: 'low'
+    },
+    {
+      id: 'save-comparison',
+      title: t('tips.saveComparison', 'Sauvegardez vos comparaisons'),
+      description: t('tips.saveComparisonDesc', 'Connectez-vous pour sauvegarder vos analyses et les retrouver plus tard'),
+      actionLabel: t('tips.saveComparisonAction', 'Se connecter'),
+      actionUrl: '/auth',
+      priority: 'medium'
+    }
+  ];
+
+  const tips = tipsProp ?? defaultTips;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [dismissed, setDismissed] = useState<Set<string>>(new Set());
   const [isHovered, setIsHovered] = useState(false);
