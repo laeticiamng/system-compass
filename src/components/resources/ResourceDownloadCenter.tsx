@@ -84,22 +84,22 @@ export function ResourceDownloadCenter() {
   
   const handleDownload = (resource: Resource) => {
     if (resource.premium && !isPremium) {
-      toast.error('Ressource premium', {
-        description: 'Passez à un plan premium pour accéder à cette ressource.',
+      toast.error(t('toast.error.resource.premium', 'Ressource premium'), {
+        description: t('toast.error.resource.premiumDesc', 'Passez à un plan premium pour accéder à cette ressource.'),
       });
       return;
     }
     
     if (!user) {
-      toast.error('Connexion requise', {
-        description: 'Connectez-vous pour télécharger les ressources.',
+      toast.error(t('toast.error.resource.authRequired', 'Connexion requise'), {
+        description: t('toast.error.resource.authRequiredDesc', 'Connectez-vous pour télécharger les ressources.'),
       });
       return;
     }
     
     // Simulate download
-    toast.success(`Téléchargement de "${resource.title}"`, {
-      description: 'Le fichier sera disponible sous peu.',
+    toast.success(t('toast.resource.downloading', 'Téléchargement de "{{title}}"', { title: resource.title }), {
+      description: t('toast.resource.downloadingDesc', 'Le fichier sera disponible sous peu.'),
     });
   };
   

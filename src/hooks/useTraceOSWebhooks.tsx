@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 
 
 export type WebhookEvent = 'decision_created' | 'decision_updated' | 'decision_validated' | 'decision_abandoned';
@@ -23,6 +24,7 @@ export interface Webhook {
 
 export function useTraceOSWebhooks() {
   const { user } = useAuth();
+  const { t } = useTranslation();
   const [webhooks, setWebhooks] = useState<Webhook[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -84,7 +86,7 @@ export function useTraceOSWebhooks() {
       if (error) throw error;
 
       await fetchWebhooks();
-      toast.success('Webhook créé avec succès');
+      toast.success(t('toast.webhook.created', 'Webhook créé avec succès'));
       return {
         ...data,
         platform: data.platform as WebhookPlatform,
@@ -93,7 +95,7 @@ export function useTraceOSWebhooks() {
       };
     } catch (err) {
       console.error('Error creating webhook:', err);
-      toast.error('Erreur lors de la création du webhook');
+      toast.error(t('toast.error.webhook.create', 'Erreur lors de la création du webhook'));
       return null;
     }
   }, [user, fetchWebhooks]);
@@ -122,11 +124,11 @@ export function useTraceOSWebhooks() {
       if (error) throw error;
 
       await fetchWebhooks();
-      toast.success('Webhook mis à jour');
+      toast.success(t('toast.webhook.updated', 'Webhook mis à jour'));
       return true;
     } catch (err) {
       console.error('Error updating webhook:', err);
-      toast.error('Erreur lors de la mise à jour');
+      toast.error(t('toast.error.update', 'Erreur lors de la mise à jour'));
       return false;
     }
   }, [user, fetchWebhooks]);
@@ -144,11 +146,11 @@ export function useTraceOSWebhooks() {
       if (error) throw error;
 
       await fetchWebhooks();
-      toast.success('Webhook supprimé');
+      toast.success(t('toast.webhook.deleted', 'Webhook supprimé'));
       return true;
     } catch (err) {
       console.error('Error deleting webhook:', err);
-      toast.error('Erreur lors de la suppression');
+      toast.error(t('toast.error.delete', 'Erreur lors de la suppression'));
       return false;
     }
   }, [user, fetchWebhooks]);
@@ -175,11 +177,11 @@ export function useTraceOSWebhooks() {
 
       if (error) throw error;
 
-      toast.success('Test de webhook envoyé');
+      toast.success(t('toast.webhook.testSent', 'Test de webhook envoyé'));
       return true;
     } catch (err) {
       console.error('Error testing webhook:', err);
-      toast.error('Erreur lors du test du webhook');
+      toast.error(t('toast.error.webhook.test', 'Erreur lors du test du webhook'));
       return false;
     }
   }, [user, webhooks]);

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -126,6 +127,7 @@ interface PartnerCommissionSystemProps {
 }
 
 export function PartnerCommissionSystem({ className = '' }: PartnerCommissionSystemProps) {
+  const { t } = useTranslation();
   const [commissions] = useState<Commission[]>(MOCK_COMMISSIONS);
   const [payouts] = useState<PayoutRequest[]>(MOCK_PAYOUTS);
 
@@ -164,16 +166,16 @@ export function PartnerCommissionSystem({ className = '' }: PartnerCommissionSys
 
   const handleRequestPayout = () => {
     if (availableBalance < 50) {
-      toast.error('Solde minimum requis: 50€');
+      toast.error(t('toast.error.payout.minBalance', 'Solde minimum requis: 50€'));
       return;
     }
-    toast.success('Demande de paiement envoyée', {
-      description: `Montant: ${availableBalance.toFixed(2)}€`,
+    toast.success(t('toast.payout.sent', 'Demande de paiement envoyée'), {
+      description: `${t('toast.payout.amount', 'Montant')}: ${availableBalance.toFixed(2)}€`,
     });
   };
 
   const handleExportCSV = () => {
-    toast.success('Export CSV en cours...');
+    toast.success(t('toast.export.csvInProgress', 'Export CSV en cours...'));
     // In production, generate and download CSV
   };
 

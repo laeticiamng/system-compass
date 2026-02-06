@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 
 
 export interface Tag {
@@ -20,6 +21,7 @@ export interface DecisionTag {
 
 export function useTraceOSTags() {
   const { user } = useAuth();
+  const { t } = useTranslation();
   const [tags, setTags] = useState<Tag[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -61,7 +63,7 @@ export function useTraceOSTags() {
       return data;
     } catch (err) {
       console.error('Error creating tag:', err);
-      toast.error('Erreur lors de la création du tag');
+      toast.error(t('toast.error.tag.create', 'Erreur lors de la création du tag'));
       return null;
     }
   }, [user, fetchTags]);
@@ -95,7 +97,7 @@ export function useTraceOSTags() {
 
       if (error) throw error;
       await fetchTags();
-      toast.success('Tag supprimé');
+      toast.success(t('toast.tag.deleted', 'Tag supprimé'));
       return true;
     } catch (err) {
       console.error('Error deleting tag:', err);

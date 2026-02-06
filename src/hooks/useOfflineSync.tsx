@@ -6,6 +6,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 
 
 interface QueuedAction {
@@ -31,6 +32,7 @@ const STALE_THRESHOLD = 5 * 60 * 1000; // 5 minutes
 
 export function useOfflineSync() {
   const queryClient = useQueryClient();
+  const { t } = useTranslation();
   const [status, setStatus] = useState<SyncStatus>({
     isOnline: navigator.onLine,
     isSyncing: false,
@@ -117,9 +119,9 @@ export function useOfflineSync() {
     queryClient.invalidateQueries();
 
     if (failedActions.length === 0 && queue.length > 0) {
-      toast.success('Données synchronisées avec succès');
+      toast.success(t('toast.sync.success', 'Données synchronisées avec succès'));
     } else if (failedActions.length > 0) {
-      toast.warning(`${failedActions.length} actions en attente de synchronisation`);
+      toast.warning(t('toast.sync.pending', '{{count}} actions en attente de synchronisation', { count: failedActions.length }));
     }
   }, [status.isSyncing, getQueue, saveQueue, queryClient]);
 
@@ -129,7 +131,7 @@ export function useOfflineSync() {
       queryClient.invalidateQueries();
       processQueue();
     } else {
-      toast.error('Connexion internet requise');
+      toast.error(t('toast.sync.noConnection', 'Connexion internet requise'));
     }
   }, [processQueue, queryClient]);
 
@@ -162,13 +164,13 @@ export function useOfflineSync() {
   useEffect(() => {
     const handleOnline = () => {
       setStatus(prev => ({ ...prev, isOnline: true }));
-      toast.success('Connexion rétablie');
+      toast.success(t('toast.sync.reconnected', 'Connexion rétablie'));
       processQueue();
     };
 
     const handleOffline = () => {
       setStatus(prev => ({ ...prev, isOnline: false, dataFreshness: 'offline' }));
-      toast.warning('Mode hors-ligne activé');
+      toast.warning(t('toast.sync.offline', 'Mode hors-ligne activé'));
     };
 
     window.addEventListener('online', handleOnline);

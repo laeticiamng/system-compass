@@ -4,6 +4,7 @@
  */
 
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -61,6 +62,7 @@ export function ExpertMessaging({
   onClose 
 }: ExpertMessagingProps) {
   const { user } = useAuth();
+  const { t } = useTranslation();
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -214,13 +216,13 @@ export function ExpertMessaging({
         });
 
       if (error) {
-        toast.error('Erreur lors de l\'envoi du message');
+        toast.error(t('toast.error.message.send', 'Erreur lors de l\'envoi du message'));
         // Remove optimistic message
         setMessages(prev => prev.filter(m => m.id !== tempId));
       }
     } catch (err) {
       console.error('Failed to send message:', err);
-      toast.error('Erreur lors de l\'envoi');
+      toast.error(t('toast.error.message.send', 'Erreur lors de l\'envoi'));
     } finally {
       setIsSending(false);
     }

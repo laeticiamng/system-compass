@@ -3,6 +3,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 
 import type { 
   PmoMilestoneRow,
@@ -12,6 +13,7 @@ import type {
 
 export function usePmoMilestones(caseId: string | null) {
   const { user } = useAuth();
+  const { t } = useTranslation();
   const queryClient = useQueryClient();
   const [isCreating, setIsCreating] = useState(false);
 
@@ -63,12 +65,12 @@ export function usePmoMilestones(caseId: string | null) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pmo-milestones', caseId] });
-      toast.success('Jalon créé avec succès');
+      toast.success(t('toast.milestone.created', 'Jalon créé avec succès'));
       setIsCreating(false);
     },
     onError: (error) => {
       console.error('Error creating milestone:', error);
-      toast.error('Erreur lors de la création du jalon');
+      toast.error(t('toast.error.milestone.create', 'Erreur lors de la création du jalon'));
       setIsCreating(false);
     },
   });
@@ -99,11 +101,11 @@ export function usePmoMilestones(caseId: string | null) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pmo-milestones', caseId] });
-      toast.success('Jalon mis à jour');
+      toast.success(t('toast.milestone.updated', 'Jalon mis à jour'));
     },
     onError: (error) => {
       console.error('Error updating milestone:', error);
-      toast.error('Erreur lors de la mise à jour');
+      toast.error(t('toast.error.update', 'Erreur lors de la mise à jour'));
     },
   });
 
@@ -119,11 +121,11 @@ export function usePmoMilestones(caseId: string | null) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pmo-milestones', caseId] });
-      toast.success('Jalon supprimé');
+      toast.success(t('toast.milestone.deleted', 'Jalon supprimé'));
     },
     onError: (error) => {
       console.error('Error deleting milestone:', error);
-      toast.error('Erreur lors de la suppression');
+      toast.error(t('toast.error.delete', 'Erreur lors de la suppression'));
     },
   });
 

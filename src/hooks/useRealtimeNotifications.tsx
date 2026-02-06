@@ -7,6 +7,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 
 
 interface RealtimeAlert {
@@ -22,6 +23,7 @@ interface RealtimeAlert {
 
 export function useRealtimeNotifications() {
   const { user } = useAuth();
+  const { t } = useTranslation();
   const [alerts, setAlerts] = useState<RealtimeAlert[]>([]);
   const [unreadCount, setUnreadCount] = useState(0);
   const [isSupported, setIsSupported] = useState(false);
@@ -43,7 +45,7 @@ export function useRealtimeNotifications() {
       const result = await Notification.requestPermission();
       setPermission(result);
       if (result === 'granted') {
-        toast.success('Notifications activées !');
+        toast.success(t('toast.notifications.enabled', 'Notifications activées !'));
       }
       return result === 'granted';
     } catch {

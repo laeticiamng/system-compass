@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -36,6 +37,7 @@ export function MultiExportButton({
   variant = 'outline',
   size = 'sm',
 }: MultiExportButtonProps) {
+  const { t } = useTranslation();
   const [isExporting, setIsExporting] = useState(false);
 
   const exportToPDF = async () => {
@@ -107,9 +109,9 @@ export function MultiExportButton({
       }
 
       doc.save(`${filename}.pdf`);
-      toast.success('PDF exporté avec succès');
+      toast.success(t('toast.export.pdfSuccess', 'PDF exporté avec succès'));
     } catch (error) {
-      toast.error("Erreur lors de l'export PDF");
+      toast.error(t('toast.error.export.pdf', "Erreur lors de l'export PDF"));
       console.error(error);
     } finally {
       setIsExporting(false);
@@ -137,9 +139,9 @@ export function MultiExportButton({
       link.click();
       URL.revokeObjectURL(url);
 
-      toast.success('CSV exporté avec succès');
+      toast.success(t('toast.export.csvSuccess', 'CSV exporté avec succès'));
     } catch (error) {
-      toast.error("Erreur lors de l'export CSV");
+      toast.error(t('toast.error.export.csv', "Erreur lors de l'export CSV"));
       console.error(error);
     } finally {
       setIsExporting(false);
@@ -162,9 +164,9 @@ export function MultiExportButton({
       link.click();
       URL.revokeObjectURL(url);
 
-      toast.success('JSON exporté avec succès');
+      toast.success(t('toast.export.jsonSuccess', 'JSON exporté avec succès'));
     } catch (error) {
-      toast.error("Erreur lors de l'export JSON");
+      toast.error(t('toast.error.export.json', "Erreur lors de l'export JSON"));
       console.error(error);
     } finally {
       setIsExporting(false);

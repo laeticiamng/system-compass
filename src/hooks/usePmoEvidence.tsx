@@ -3,6 +3,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 
 export type EvidenceType = 'document' | 'link' | 'note' | 'decision' | 'extract';
 export type ReliabilityLevel = 'high' | 'medium' | 'low' | 'unverified';
@@ -43,6 +44,7 @@ export interface CreateEvidenceForm {
 
 export function usePmoEvidence(caseId: string | null) {
   const { user } = useAuth();
+  const { t } = useTranslation();
   const queryClient = useQueryClient();
   const [isCreating, setIsCreating] = useState(false);
 
@@ -96,12 +98,12 @@ export function usePmoEvidence(caseId: string | null) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pmo-evidence', caseId] });
-      toast.success('Preuve ajoutée avec succès');
+      toast.success(t('toast.evidence.created', 'Preuve ajoutée avec succès'));
       setIsCreating(false);
     },
     onError: (error) => {
       console.error('Error creating evidence:', error);
-      toast.error('Erreur lors de l\'ajout de la preuve');
+      toast.error(t('toast.error.evidence.create', 'Erreur lors de l\'ajout de la preuve'));
       setIsCreating(false);
     },
   });
@@ -121,11 +123,11 @@ export function usePmoEvidence(caseId: string | null) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pmo-evidence', caseId] });
-      toast.success('Preuve mise à jour');
+      toast.success(t('toast.evidence.updated', 'Preuve mise à jour'));
     },
     onError: (error) => {
       console.error('Error updating evidence:', error);
-      toast.error('Erreur lors de la mise à jour');
+      toast.error(t('toast.error.update', 'Erreur lors de la mise à jour'));
     },
   });
 
@@ -141,11 +143,11 @@ export function usePmoEvidence(caseId: string | null) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pmo-evidence', caseId] });
-      toast.success('Preuve supprimée');
+      toast.success(t('toast.evidence.deleted', 'Preuve supprimée'));
     },
     onError: (error) => {
       console.error('Error deleting evidence:', error);
-      toast.error('Erreur lors de la suppression');
+      toast.error(t('toast.error.delete', 'Erreur lors de la suppression'));
     },
   });
 
@@ -169,11 +171,11 @@ export function usePmoEvidence(caseId: string | null) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pmo-evidence', caseId] });
-      toast.success('Preuve vérifiée');
+      toast.success(t('toast.evidence.verified', 'Preuve vérifiée'));
     },
     onError: (error) => {
       console.error('Error verifying evidence:', error);
-      toast.error('Erreur lors de la vérification');
+      toast.error(t('toast.error.evidence.verify', 'Erreur lors de la vérification'));
     },
   });
 

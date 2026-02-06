@@ -3,6 +3,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 
 // ============================================
 // TYPES
@@ -127,6 +128,7 @@ export const CRITICALITY_LABELS: Record<Criticality, { fr: string; en: string; c
 
 export function usePmoCompliance(caseId: string | null) {
   const { user } = useAuth();
+  const { t } = useTranslation();
   const queryClient = useQueryClient();
   const [isCreating, setIsCreating] = useState(false);
 
@@ -218,12 +220,12 @@ export function usePmoCompliance(caseId: string | null) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pmo-compliance-frameworks', caseId] });
-      toast.success('Framework de conformité créé');
+      toast.success(t('toast.compliance.frameworkCreated', 'Framework de conformité créé'));
       setIsCreating(false);
     },
     onError: (error) => {
       console.error('Error creating framework:', error);
-      toast.error('Erreur lors de la création du framework');
+      toast.error(t('toast.error.compliance.frameworkCreate', 'Erreur lors de la création du framework'));
       setIsCreating(false);
     },
   });
@@ -259,11 +261,11 @@ export function usePmoCompliance(caseId: string | null) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pmo-compliance-requirements'] });
-      toast.success('Exigence ajoutée');
+      toast.success(t('toast.compliance.requirementCreated', 'Exigence ajoutée'));
     },
     onError: (error) => {
       console.error('Error creating requirement:', error);
-      toast.error('Erreur lors de l\'ajout de l\'exigence');
+      toast.error(t('toast.error.compliance.requirementCreate', 'Erreur lors de l\'ajout de l\'exigence'));
     },
   });
 
@@ -285,7 +287,7 @@ export function usePmoCompliance(caseId: string | null) {
     },
     onError: (error) => {
       console.error('Error updating requirement:', error);
-      toast.error('Erreur lors de la mise à jour');
+      toast.error(t('toast.error.update', 'Erreur lors de la mise à jour'));
     },
   });
 
@@ -316,11 +318,11 @@ export function usePmoCompliance(caseId: string | null) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pmo-compliance-mappings'] });
-      toast.success('Mapping créé');
+      toast.success(t('toast.compliance.mappingCreated', 'Mapping créé'));
     },
     onError: (error) => {
       console.error('Error creating mapping:', error);
-      toast.error('Erreur lors du mapping');
+      toast.error(t('toast.error.compliance.mapping', 'Erreur lors du mapping'));
     },
   });
 
@@ -336,11 +338,11 @@ export function usePmoCompliance(caseId: string | null) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pmo-compliance-frameworks', caseId] });
-      toast.success('Framework supprimé');
+      toast.success(t('toast.compliance.frameworkDeleted', 'Framework supprimé'));
     },
     onError: (error) => {
       console.error('Error deleting framework:', error);
-      toast.error('Erreur lors de la suppression');
+      toast.error(t('toast.error.delete', 'Erreur lors de la suppression'));
     },
   });
 
@@ -356,11 +358,11 @@ export function usePmoCompliance(caseId: string | null) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pmo-compliance-requirements'] });
-      toast.success('Exigence supprimée');
+      toast.success(t('toast.compliance.requirementDeleted', 'Exigence supprimée'));
     },
     onError: (error) => {
       console.error('Error deleting requirement:', error);
-      toast.error('Erreur lors de la suppression');
+      toast.error(t('toast.error.delete', 'Erreur lors de la suppression'));
     },
   });
 

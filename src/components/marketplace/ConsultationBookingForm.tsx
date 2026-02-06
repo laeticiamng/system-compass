@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -63,6 +64,7 @@ export function ConsultationBookingForm({
   onSubmit,
   onCancel,
 }: ConsultationBookingFormProps) {
+  const { t } = useTranslation();
   const [step, setStep] = useState<'datetime' | 'details' | 'confirm'>('datetime');
   const [isSubmitting, setIsSubmitting] = useState(false);
   
@@ -78,13 +80,13 @@ export function ConsultationBookingForm({
   const handleNext = () => {
     if (step === 'datetime') {
       if (!selectedDate || !selectedTime) {
-        toast.error('Veuillez sélectionner une date et un horaire');
+        toast.error(t('toast.error.consultation.dateRequired', 'Veuillez sélectionner une date et un horaire'));
         return;
       }
       setStep('details');
     } else if (step === 'details') {
       if (!subject.trim() || !name.trim() || !email.trim()) {
-        toast.error('Veuillez remplir tous les champs obligatoires');
+        toast.error(t('toast.error.consultation.fieldsRequired', 'Veuillez remplir tous les champs obligatoires'));
         return;
       }
       setStep('confirm');
@@ -116,15 +118,15 @@ export function ConsultationBookingForm({
       if (onSubmit) {
         const success = await onSubmit(bookingData);
         if (success) {
-          toast.success('Demande de consultation envoyée !', {
-            description: `${expertName} vous contactera sous peu.`,
+          toast.success(t('toast.consultation.sent', 'Demande de consultation envoyée !'), {
+            description: `${expertName} ${t('toast.consultation.willContact', 'vous contactera sous peu.')}`,
           });
         }
       } else {
-        toast.success('Demande de consultation envoyée !');
+        toast.success(t('toast.consultation.sent', 'Demande de consultation envoyée !'));
       }
     } catch {
-      toast.error('Erreur lors de l\'envoi de la demande');
+      toast.error(t('toast.error.consultation.send', 'Erreur lors de l\'envoi de la demande'));
     } finally {
       setIsSubmitting(false);
     }

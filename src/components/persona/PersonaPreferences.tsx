@@ -3,6 +3,7 @@
  * Persists user's selected persona and preferences
  */
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
@@ -18,7 +19,7 @@ interface PersonaPreferences {
 }
 
 export function usePersonaPreferences() {
-  // Auth hook available for future user-specific storage
+  const { t } = useTranslation();
   const [preferences, setPreferences] = useState<PersonaPreferences>({
     selectedPersonaId: null,
     favoriteCountries: [],
@@ -49,7 +50,7 @@ export function usePersonaPreferences() {
       selectedPersonaId: personaId,
       viewedPersonas: [...new Set([...preferences.viewedPersonas, personaId])],
     });
-    toast.success('Profil sélectionné');
+    toast.success(t('toast.persona.selected', 'Profil sélectionné'));
   };
 
   const toggleFavoriteCountry = (countryId: string) => {
@@ -59,7 +60,7 @@ export function usePersonaPreferences() {
       : [...preferences.favoriteCountries, countryId];
     
     savePreferences({ favoriteCountries: updated });
-    toast.success(isFavorite ? 'Retiré des favoris' : 'Ajouté aux favoris');
+    toast.success(isFavorite ? t('toast.persona.removedFavorite', 'Retiré des favoris') : t('toast.persona.addedFavorite', 'Ajouté aux favoris'));
   };
 
   const markPersonaViewed = (personaId: string) => {
