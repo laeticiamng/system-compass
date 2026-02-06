@@ -44,10 +44,10 @@ export default function Index() {
   return (
     <>
       <Helmet>
-        <title>{t('landing.meta.title', 'Pyramid Compass - Analyse les systèmes des pays et trouve tes stratégies')}</title>
-        <meta name="description" content={t('landing.meta.description', 'Pyramid Compass - Analyse les systèmes des pays et trouve tes stratégies de sortie personnalisées. Découvre les règles réelles de 38+ pays, fais le test de profil gratuit et obtiens tes Exit Keys.')} />
-        <meta property="og:title" content={t('landing.meta.ogTitle', 'Pyramid Compass - Analyse les systèmes des pays')} />
-        <meta property="og:description" content={t('landing.meta.ogDescription', 'Analyse les systèmes des pays et trouve tes stratégies de sortie personnalisées. Test de profil gratuit inclus.')} />
+        <title>{t('landing.meta.title', 'Pyramid Compass - Compare 38+ pays pour ton expatriation')}</title>
+        <meta name="description" content={t('landing.meta.description', 'Compare 38+ pays pour ton expatriation : fiscalité, visas, coût de la vie. Test gratuit en 2 minutes.')} />
+        <meta property="og:title" content={t('landing.meta.ogTitle', 'Pyramid Compass - Compare les pays pour ton expatriation')} />
+        <meta property="og:description" content={t('landing.meta.ogDescription', 'Fiscalité, visas, coût de la vie : compare 38+ pays et trouve celui qui te correspond. Test gratuit en 2 minutes.')} />
       </Helmet>
       <div className="min-h-screen bg-background overflow-x-hidden">
         {/* ========== HERO SECTION ========== */}
@@ -83,10 +83,10 @@ export default function Index() {
             transition={{ delay: 0.3, duration: 0.8 }}
             className="font-display font-bold text-[clamp(2rem,6vw,5rem)] leading-[1.1] mb-6"
           >
-            {t('landing.hero.titleLine1', 'Comprends le système')}
+            {t('landing.hero.titleLine1', 'Tu veux t\'expatrier ?')}
             <br />
             <span className="bg-gradient-to-r from-primary via-amber-400 to-orange-500 bg-clip-text text-transparent">
-              {t('landing.hero.titleLine2', "avant de t'engager.")}
+              {t('landing.hero.titleLine2', 'Compare les pays avant de partir.')}
             </span>
           </motion.h1>
 
@@ -97,7 +97,7 @@ export default function Index() {
             transition={{ delay: 0.5, duration: 0.6 }}
             className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
           >
-            {t('landing.hero.subtitle', 'Réponds à quelques questions, découvre quels pays correspondent à ton profil, et obtiens un plan d\'action concret.')}
+            {t('landing.hero.subtitle', 'Fiscalité, coût de la vie, visas, qualité de vie : compare 38 pays en 2 minutes et trouve celui qui te correspond.')}
           </motion.p>
 
           {/* CTA principal */}
@@ -113,7 +113,7 @@ export default function Index() {
               className="h-14 px-8 text-lg rounded-full gap-3 bg-primary hover:bg-primary/90 shadow-lg shadow-primary/25"
             >
               <Zap className="w-5 h-5" />
-              {t('landing.hero.ctaPrimary', 'Découvrir mon profil gratuitement')}
+              {t('landing.hero.ctaPrimary', 'Trouver mon pays idéal — gratuit')}
               <ArrowRight className="w-5 h-5" />
             </Button>
             <Button
@@ -140,11 +140,11 @@ export default function Index() {
             </div>
             <div className="text-center">
               <span className="block text-3xl font-bold text-foreground">50+</span>
-              <span className="text-sm">{t('landing.hero.statsKeys', 'clés de sortie')}</span>
+              <span className="text-sm">{t('landing.hero.statsKeys', 'critères comparés')}</span>
             </div>
             <div className="text-center">
               <span className="block text-3xl font-bold text-foreground">6</span>
-              <span className="text-sm">{t('landing.hero.statsSystems', 'types de systèmes')}</span>
+              <span className="text-sm">{t('landing.hero.statsSystems', 'profils d\'expatrié')}</span>
             </div>
           </motion.div>
         </div>
@@ -367,7 +367,7 @@ export default function Index() {
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-primary" />
-                      {t('landing.pricing.premiumFeature2', 'Exit Keys personnalisées')}
+                      {t('landing.pricing.premiumFeature2', 'Recommandations personnalisées')}
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-primary" />
@@ -401,12 +401,12 @@ export default function Index() {
             viewport={{ once: true }}
           >
             <h2 className="font-display text-3xl md:text-5xl font-bold mb-6">
-              {t('landing.cta.titleLine1', 'Prêt à comprendre')}
+              {t('landing.cta.titleLine1', 'Prêt à comparer')}
               <br />
-              <span className="text-primary">{t('landing.cta.titleLine2', 'les vraies règles ?')}</span>
+              <span className="text-primary">{t('landing.cta.titleLine2', 'les pays ?')}</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-10 max-w-xl mx-auto">
-              {t('landing.cta.subtitle', 'Cet outil analyse et simule. À toi de décider.')}
+              {t('landing.cta.subtitle', 'Compare, simule, décide. En toute autonomie.')}
             </p>
             <Button
               size="lg"
