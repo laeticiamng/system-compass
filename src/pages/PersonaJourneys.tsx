@@ -345,7 +345,7 @@ function PersonaDetail({ persona }: { persona: PersonaType }) {
         size="lg"
         onClick={() => navigate('/exit-keys')}
       >
-        Trouver mes Exit Keys
+        Trouver mes recommandations
         <ArrowRight className="w-4 h-4" />
       </Button>
     </div>
