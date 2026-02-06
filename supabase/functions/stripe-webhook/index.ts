@@ -19,8 +19,8 @@ const logStep = (step: string, details?: unknown) => {
 
 // Map Stripe price IDs to subscription tiers
 const PRICE_TO_TIER: Record<string, string> = {
-  // Add your actual Stripe price IDs here
-  "price_1SxTE4DFa5Y9NR1IeeHU7qNb": "premium",
+  "price_1SxpOSDFa5Y9NR1I05modzpV": "premium",
+  "price_1SxTE4DFa5Y9NR1IeeHU7qNb": "premium", // legacy price
 };
 
 async function getSubscriptionTierFromPriceId(priceId: string): Promise<string> {

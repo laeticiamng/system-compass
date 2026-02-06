@@ -357,7 +357,7 @@ export default function Index() {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold">{t('landing.pricing.premiumName', 'Premium')}</h3>
-                      <p className="text-muted-foreground text-sm">{t('landing.pricing.premiumPrice', 'dès 7,99€/mois')}</p>
+                      <p className="text-muted-foreground text-sm">{t('landing.pricing.premiumPrice', 'dès 9,90€/mois')}</p>
                     </div>
                   </div>
                   <ul className="space-y-3 mb-8">

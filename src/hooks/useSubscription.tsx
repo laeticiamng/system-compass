@@ -35,8 +35,8 @@ export const SUBSCRIPTION_TIERS = {
   },
   premium: {
     name: 'Premium',
-    price: 9.99,
-    priceId: 'price_1SxTE4DFa5Y9NR1IeeHU7qNb',
+    price: 9.90,
+    priceId: 'price_1SxpOSDFa5Y9NR1I05modzpV',
     features: [
       'Tous les pays (25+)',
       'Exit Keys personnalisées',
