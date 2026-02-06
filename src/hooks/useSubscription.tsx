@@ -183,7 +183,7 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
 
     const interval = setInterval(() => {
       checkSubscription();
-    }, 60000);
+    }, 300000); // 5 minutes instead of 60s to reduce backend load
 
     return () => clearInterval(interval);
   }, [user, checkSubscription]);

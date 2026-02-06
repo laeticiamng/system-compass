@@ -23,7 +23,7 @@ export function DataFreshnessIndicator({
   compact = false 
 }: DataFreshnessIndicatorProps) {
   const { t, i18n } = useTranslation();
-  const { isOnline, isSyncing, pendingActions, lastSyncAt, forceSync } = useOfflineSync();
+  const { isOnline, isSyncing, pendingActions, lastSyncedAt, forceSync } = useOfflineSync();
 
   const locale = i18n.language === 'fr' ? fr : enUS;
 
@@ -54,8 +54,8 @@ export function DataFreshnessIndicator({
   };
 
   const getLastSyncText = () => {
-    if (!lastSyncAt) return null;
-    return formatDistanceToNow(lastSyncAt, { addSuffix: true, locale });
+    if (!lastSyncedAt) return null;
+    return formatDistanceToNow(lastSyncedAt, { addSuffix: true, locale });
   };
 
   if (compact) {
@@ -75,7 +75,7 @@ export function DataFreshnessIndicator({
           <TooltipContent>
             <div className="text-sm">
               <p className="font-medium">{getStatusText()}</p>
-              {lastSyncAt && (
+              {lastSyncedAt && (
                 <p className="text-xs text-muted-foreground">
                   {t('pwa.lastSync', 'Dernière sync')}: {getLastSyncText()}
                 </p>

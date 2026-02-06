@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -246,6 +246,10 @@ export default function PyramidQuiz() {
   const [turnPhase, setTurnPhase] = useState<TurnPhase>('global_event');
   const [playerProfiles] = useState<GamePlayerProfile[]>([]);
   const [awaitingEndTurn, setAwaitingEndTurn] = useState(false);
+
+  // Refs for pending tutorial data (replaces window globals)
+  const pendingCharsRef = useRef<CharacterCardType[] | null>(null);
+  const pendingFamilyStatusesRef = useRef<FamilyStatus[] | null>(null);
 
   // Game statistics
   const [gameStats, setGameStats] = useState<GameStats>({
@@ -652,8 +656,8 @@ export default function PyramidQuiz() {
       handleDraftComplete(characters, familyStatuses);
     } else {
       // Store characters and family statuses for after tutorial
-      (window as any).__pendingCharacters = characters;
-      (window as any).__pendingFamilyStatuses = familyStatuses;
+      pendingCharsRef.current = characters;
+      pendingFamilyStatusesRef.current = familyStatuses;
       setSetupPhase('tutorial');
     }
   };
@@ -968,12 +972,12 @@ export default function PyramidQuiz() {
   if (setupPhase === 'tutorial') {
     const handleTutorialComplete = () => {
       // Use pending characters and family statuses from archetype selection
-      const pendingChars = (window as any).__pendingCharacters as CharacterCardType[] | undefined;
-      const pendingFamilyStatuses = (window as any).__pendingFamilyStatuses as FamilyStatus[] | undefined;
+      const pendingChars = pendingCharsRef.current;
+      const pendingFamilyStatuses = pendingFamilyStatusesRef.current;
       if (pendingChars) {
-        delete (window as any).__pendingCharacters;
-        delete (window as any).__pendingFamilyStatuses;
-        handleDraftComplete(pendingChars, pendingFamilyStatuses);
+        pendingCharsRef.current = null;
+        pendingFamilyStatusesRef.current = null;
+        handleDraftComplete(pendingChars, pendingFamilyStatuses ?? undefined);
       } else {
         setSetupPhase('archetype');
       }

@@ -206,7 +206,7 @@ export const redirectRoutes = [
   { path: "/errors-illusions", element: <Navigate to="/prevention-filter" replace /> },
   { path: "/partners", element: <Navigate to="/about" replace /> },
   { path: "/b2b", element: <Navigate to="/institutions" replace /> },
-  { path: "/experts", element: <Navigate to="/about" replace /> },
+  // Removed: /experts redirect - active route exists in contentRoutes
   { path: "/community", element: <Navigate to="/about" replace /> },
   { path: "/academic", element: <Navigate to="/resources" replace /> },
   { path: "/personas", element: <Navigate to="/profile-test" replace /> },

@@ -12,7 +12,7 @@ import { formatDistanceToNow } from 'date-fns';
 import { fr } from 'date-fns/locale';
 
 export function DataFreshnessIndicator() {
-  const { isOnline, isSyncing, lastSyncAt, pendingActions, forceSync } = useOfflineSync();
+  const { isOnline, isSyncing, lastSyncedAt, pendingActions, forceSync } = useOfflineSync();
 
   const getStatusConfig = () => {
     if (!isOnline) {
@@ -47,8 +47,8 @@ export function DataFreshnessIndicator() {
       color: 'text-emerald-500',
       bgColor: 'bg-emerald-500/10',
       label: 'À jour',
-      description: lastSyncAt 
-        ? `Mis à jour ${formatDistanceToNow(lastSyncAt, { addSuffix: true, locale: fr })}`
+      description: lastSyncedAt 
+        ? `Mis à jour ${formatDistanceToNow(lastSyncedAt, { addSuffix: true, locale: fr })}`
         : 'Données synchronisées',
     };
   };

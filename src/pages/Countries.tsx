@@ -4,7 +4,7 @@ import { useCountries } from '@/lib/countries-data';
 import { EXTENDED_COUNTRY_META } from '@/lib/countries-extended';
 import { CountryCard } from '@/components/CountryCard';
 import { PyramidType, Country } from '@/lib/types';
-import { useState, useMemo, useRef } from 'react';
+import { useState, useMemo, useRef, useCallback } from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -79,7 +79,7 @@ export default function Countries() {
   const [currentPage, setCurrentPage] = useState(1);
 
   // Helper to get all translated country names for universal search across languages
-  const getTranslatedNames = (country: Country | ExtendedCountryInfo): string[] => {
+  const getTranslatedNames = useCallback((country: Country | ExtendedCountryInfo): string[] => {
     const countryId = country.id?.toLowerCase() || '';
     if (!countryId) return [];
     
@@ -95,7 +95,7 @@ export default function Countries() {
     }
     
     return names;
-  };
+  }, [i18n]);
 
   const filteredAndSortedCountries = useMemo(() => {
     // When showing saved countries
