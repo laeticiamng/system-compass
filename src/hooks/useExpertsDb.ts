@@ -2,6 +2,7 @@
  * Hook for managing experts from Supabase database
  */
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useTranslation } from 'react-i18next';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 
@@ -216,6 +217,7 @@ export function useAllExpertsAdmin() {
 
 // Admin: Update expert verification status
 export function useUpdateExpertVerification() {
+  const { t } = useTranslation();
   const queryClient = useQueryClient();
   
   return useMutation({
@@ -230,16 +232,17 @@ export function useUpdateExpertVerification() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['all-experts-admin'] });
       queryClient.invalidateQueries({ queryKey: ['experts-db'] });
-      toast.success('Statut de vérification mis à jour');
+      toast.success(t('toasts.consultation.statusUpdated', 'Statut de vérification mis à jour'));
     },
     onError: () => {
-      toast.error('Erreur lors de la mise à jour');
+      toast.error(t('toasts.consultation.errorUpdating', 'Erreur lors de la mise à jour'));
     },
   });
 }
 
 // Admin: Toggle expert active status
 export function useToggleExpertActive() {
+  const { t } = useTranslation();
   const queryClient = useQueryClient();
   
   return useMutation({
@@ -254,10 +257,10 @@ export function useToggleExpertActive() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['all-experts-admin'] });
       queryClient.invalidateQueries({ queryKey: ['experts-db'] });
-      toast.success('Statut mis à jour');
+      toast.success(t('toasts.consultation.statusUpdated', 'Statut mis à jour'));
     },
     onError: () => {
-      toast.error('Erreur lors de la mise à jour');
+      toast.error(t('toasts.consultation.errorUpdating', 'Erreur lors de la mise à jour'));
     },
   });
 }

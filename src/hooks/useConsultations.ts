@@ -2,6 +2,7 @@
  * Hook for managing consultations
  */
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useTranslation } from 'react-i18next';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 
@@ -83,6 +84,7 @@ export function useExpertConsultations(expertId: string | undefined) {
 
 // Create a new consultation request
 export function useCreateConsultation() {
+  const { t } = useTranslation();
   const queryClient = useQueryClient();
   
   return useMutation({
@@ -119,17 +121,18 @@ export function useCreateConsultation() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['user-consultations'] });
-      toast.success('Demande de consultation envoyée');
+      toast.success(t('toasts.consultation.requestSent', 'Demande de consultation envoyée'));
     },
     onError: (error) => {
       console.error('Error creating consultation:', error);
-      toast.error('Erreur lors de la demande');
+      toast.error(t('toasts.consultation.errorRequest', 'Erreur lors de la demande'));
     },
   });
 }
 
 // Update consultation status
 export function useUpdateConsultationStatus() {
+  const { t } = useTranslation();
   const queryClient = useQueryClient();
   
   return useMutation({
@@ -144,16 +147,17 @@ export function useUpdateConsultationStatus() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['user-consultations'] });
       queryClient.invalidateQueries({ queryKey: ['expert-consultations'] });
-      toast.success('Statut mis à jour');
+      toast.success(t('toasts.consultation.statusUpdated', 'Statut mis à jour'));
     },
     onError: () => {
-      toast.error('Erreur lors de la mise à jour');
+      toast.error(t('toasts.consultation.errorUpdating', 'Erreur lors de la mise à jour'));
     },
   });
 }
 
 // Cancel a consultation
 export function useCancelConsultation() {
+  const { t } = useTranslation();
   const queryClient = useQueryClient();
   
   return useMutation({
@@ -167,10 +171,10 @@ export function useCancelConsultation() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['user-consultations'] });
-      toast.success('Consultation annulée');
+      toast.success(t('toasts.consultation.cancelled', 'Consultation annulée'));
     },
     onError: () => {
-      toast.error('Erreur lors de l\'annulation');
+      toast.error(t('toasts.consultation.errorCancelling', 'Erreur lors de l\'annulation'));
     },
   });
 }

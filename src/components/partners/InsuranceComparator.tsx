@@ -187,8 +187,8 @@ export function InsuranceComparator() {
   }).sort((a, b) => b.rating - a.rating);
 
   const handlePlanClick = (plan: InsurancePlan) => {
-    toast.success(`Redirection vers ${plan.provider}`, {
-      description: plan.discount || `Plan ${plan.planName}`,
+    toast.success(t('partners.insurance.redirect', 'Redirection vers {{provider}}', { provider: plan.provider }), {
+      description: plan.discount || t('partners.insurance.planLabel', 'Plan {{name}}', { name: plan.planName }),
     });
     window.open(plan.affiliateLink, '_blank', 'noopener,noreferrer');
   };

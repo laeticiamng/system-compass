@@ -3,6 +3,7 @@
  * Provides CRUD operations for reviews with real-time vote tracking
  */
 import { useState, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
@@ -42,6 +43,7 @@ export interface ReviewStats {
 }
 
 export function useExpertReviews(expertId?: string) {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const [reviews, setReviews] = useState<ExpertReview[]>([]);
   const [stats, setStats] = useState<ReviewStats | null>(null);
@@ -137,17 +139,17 @@ export function useExpertReviews(expertId?: string) {
   // Create a new review
   const createReview = useCallback(async (input: CreateReviewInput): Promise<boolean> => {
     if (!user) {
-      toast.error('Vous devez être connecté pour laisser un avis');
+      toast.error(t('toasts.expert.loginRequiredReview', 'Vous devez être connecté pour laisser un avis'));
       return false;
     }
 
     if (input.rating < 1 || input.rating > 5) {
-      toast.error('La note doit être entre 1 et 5');
+      toast.error(t('toasts.expert.ratingRange', 'La note doit être entre 1 et 5'));
       return false;
     }
 
     if (input.content.length < 20) {
-      toast.error('Votre avis doit contenir au moins 20 caractères');
+      toast.error(t('toasts.expert.reviewMinLength', 'Votre avis doit contenir au moins 20 caractères'));
       return false;
     }
 
@@ -166,11 +168,11 @@ export function useExpertReviews(expertId?: string) {
 
       if (insertError) throw insertError;
 
-      toast.success('Avis soumis pour vérification');
+      toast.success(t('toasts.expert.reviewSubmitted', 'Avis soumis pour vérification'));
       return true;
     } catch (err) {
       console.error('Error creating review:', err);
-      toast.error('Erreur lors de la soumission de l\'avis');
+      toast.error(t('toasts.expert.errorSubmitting', 'Erreur lors de la soumission de l\'avis'));
       return false;
     }
   }, [user]);
@@ -178,7 +180,7 @@ export function useExpertReviews(expertId?: string) {
   // Vote helpful on a review
   const voteHelpful = useCallback(async (reviewId: string): Promise<boolean> => {
     if (!user) {
-      toast.error('Vous devez être connecté pour voter');
+      toast.error(t('toasts.expert.loginRequiredVote', 'Vous devez être connecté pour voter'));
       return false;
     }
 
@@ -192,7 +194,7 @@ export function useExpertReviews(expertId?: string) {
 
       if (voteError) {
         if (voteError.code === '23505') {
-          toast.info('Vous avez déjà voté pour cet avis');
+          toast.info(t('toasts.expert.alreadyVoted', 'Vous avez déjà voté pour cet avis'));
           return false;
         }
         throw voteError;
@@ -205,11 +207,11 @@ export function useExpertReviews(expertId?: string) {
           : r
       ));
 
-      toast.success('Merci pour votre vote');
+      toast.success(t('toasts.expert.thankYouVote', 'Merci pour votre vote'));
       return true;
     } catch (err) {
       console.error('Error voting:', err);
-      toast.error('Erreur lors du vote');
+      toast.error(t('toasts.expert.errorVoting', 'Erreur lors du vote'));
       return false;
     }
   }, [user]);
@@ -290,11 +292,11 @@ export function useExpertReviews(expertId?: string) {
 
       if (error) throw error;
 
-      toast.success('Avis supprimé');
+      toast.success(t('toasts.expert.reviewDeleted', 'Avis supprimé'));
       return true;
     } catch (err) {
       console.error('Error deleting review:', err);
-      toast.error('Impossible de supprimer l\'avis');
+      toast.error(t('toasts.expert.errorDeletingReview', 'Impossible de supprimer l\'avis'));
       return false;
     }
   }, [user]);

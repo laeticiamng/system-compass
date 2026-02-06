@@ -145,8 +145,8 @@ export function PartnerCostCalculator() {
 
   const handleProviderClick = (provider: TransferProvider) => {
     if (provider.affiliateLink) {
-      toast.success(`Redirection vers ${provider.name}`, {
-        description: provider.bonus || 'Profitez de notre partenariat',
+      toast.success(t('partners.calculator.redirect', 'Redirection vers {{name}}', { name: provider.name }), {
+        description: provider.bonus || t('partners.calculator.partnerBenefit', 'Profitez de notre partenariat'),
       });
       window.open(provider.affiliateLink, '_blank', 'noopener,noreferrer');
     }
