@@ -1,64 +1,82 @@
 
 
-# Audit C-Suite v22 -- Corrections Pre-Publication
+# Audit C-Suite v23 -- Corrections Finales Pre-Publication
 
-## Resume Executif
+## Resume de l'audit
 
-L'audit a identifie **11 corrections concretes** reparties en 2 categories : jargon "Exit Keys" encore visible par les utilisateurs finaux (8 occurrences) et ameliorations UX/coherence (3 corrections). La securite, la conformite RGPD, l'architecture et le design sont valides.
+L'audit approfondi (CDO, COO, Head of Design, Beta testeur) a identifie **7 corrections concretes** restantes, principalement du jargon visible par l'utilisateur final et des incoherences UX sur mobile.
 
 ---
 
-## Audit par role
+## Resultats par role
 
 | Role | Verdict | Corrections |
 |------|---------|-------------|
-| CISO | OK | RLS actif, secrets configures, pas de fuite |
-| DPO | OK | RGPD conforme, consent, anonymisation |
-| CDO | OK | KPIs coherents, prix 9,90 EUR unifie |
-| COO | OK | Tous modules actifs, lazy loading |
-| Design | OK | CTA < 3s, responsive, WCAG AA |
-| CEO | **8 residus jargon** | Voir tableau ci-dessous |
-| Beta testeur | **3 incoherences UX** | Voir ci-dessous |
+| CDO | **2 jargons "systeme"** | QuickTest utilise "systeme dominant" -- incomprehensible pour un beta testeur |
+| COO | OK | Tous les modules fonctionnels, lazy loading, routes coherentes |
+| Design | **1 incoherence UX mobile** | Sur mobile (390px), la section pricing empile 3 cartes, mais la carte Pro/B2B n'a pas d'icone CheckCircle verte coherente avec les autres |
+| Beta testeur | **3 jargons "Exit Keys"** + **1 jargon "systeme"** | Le raccourci contextuel affiche "Exit Keys" 3 fois, le titre du QuickTest utilise "systeme dominant" |
 
 ---
 
-## Corrections CEO : 8 fichiers avec jargon "Exit Keys" visible utilisateur
+## 7 corrections identifiees
+
+### Groupe 1 : Jargon "Exit Keys" restant (3 occurrences visibles)
 
 | # | Fichier | Ligne | Texte actuel | Correction |
 |---|---------|-------|-------------|------------|
-| 1 | `src/config/navigation.ts` | 87 | `label: 'Exit Keys'` | `label: 'Strategies'` |
-| 2 | `src/pages/ToolsHub.tsx` | 78 | `label: t('hub.tool.exitKeys', 'Exit Keys')` | `label: t('hub.tool.exitKeys', 'Strategies')` |
-| 3 | `src/pages/ToolsHub.tsx` | 141 | `'Exit Keys, calculateur fiscal'` (meta description) | `'strategies, calculateur fiscal'` |
-| 4 | `src/components/dashboard/WeeklyDigestSetup.tsx` | 149 | `'Exit Keys Progress'` | `'Progression Strategies'` |
-| 5 | `src/components/dashboard/WeeklyDigestGenerator.tsx` | 51 | `'Profil Exit Keys complete'` | `'Profil strategique complete'` |
-| 6 | `src/components/dashboard/ConsolidatedRiskAlerts.tsx` | 91 | `'exit-keys': 'Exit Keys'` | `'exit-keys': 'Strategies'` |
-| 7 | `src/components/exit-keys/RoadmapPdfExport.tsx` | 192 | `'Exit Keys - World Alignment Platform'` (PDF footer) | `'Strategies - Pyramid Compass'` |
-| 8 | `src/components/Header.tsx` | 81 | `label: 'Catalogue Cles'` et ligne 82 `label: 'Comparer Cles'` | `'Catalogue Strategies'` et `'Comparer Strategies'` |
+| 1 | `src/components/navigation/ContextualShortcuts.tsx` | 37 | `labelFallback: 'Exit Keys'` | `labelFallback: 'Strategies'` |
+| 2 | `src/components/navigation/ContextualShortcuts.tsx` | 60 | `labelFallback: 'Exit Keys'` | `labelFallback: 'Strategies'` |
+| 3 | `src/components/navigation/ContextualShortcuts.tsx` | 71 | `labelFallback: 'Exit Keys'` | `labelFallback: 'Strategies'` |
 
-Note : Les commentaires de code, noms de variables et fichiers de test ne sont pas corriges (pas visibles par l'utilisateur).
+### Groupe 2 : Jargon "systeme dominant" (2 occurrences visibles)
+
+Le terme "systeme dominant" est du jargon interne incomprehensible pour un nouvel utilisateur. Il doit etre remplace par un terme concret.
+
+| # | Fichier | Ligne | Texte actuel | Correction |
+|---|---------|-------|-------------|------------|
+| 4 | `src/pages/QuickTest.tsx` | 264 | `'systeme dominant.'` (hero title fallback) | `'profil expatrie.'` |
+| 5 | `src/components/QuickTestResults.tsx` | 297 | `'Systeme dominant'` (result label fallback) | `'Ton profil'` |
+
+### Groupe 3 : Coherence UX pricing mobile
+
+| # | Fichier | Ligne | Probleme | Correction |
+|---|---------|-------|---------|------------|
+| 6 | `src/pages/Index.tsx` | 411, 415, 419 | Les `CheckCircle` de la carte Pro/B2B utilisent `text-muted-foreground` au lieu de `text-green-500` comme le plan gratuit | Uniformiser avec `text-green-500` pour coherence visuelle |
+
+### Groupe 4 : Description contextuelle "Plan de sortie"
+
+| # | Fichier | Ligne | Texte actuel | Correction |
+|---|---------|-------|-------------|------------|
+| 7 | `src/components/navigation/ContextualShortcuts.tsx` | 71 | `descFallback: 'Plan de sortie'` | `descFallback: 'Plan strategique'` |
 
 ---
 
-## Corrections Beta Testeur : 3 incoherences UX
+## Ce qui a ete valide (pas de correction necessaire)
 
-| # | Probleme | Fichier | Correction |
-|---|----------|---------|------------|
-| 1 | Landing page : section pricing affiche 2 plans au lieu de 3 (pas de Pro/B2B) | `src/pages/Index.tsx` (l.300) | Ajouter la carte Pro/B2B dans la grille (passer de `md:grid-cols-2` a `md:grid-cols-3`) ou ajouter un lien "Voir le plan Pro" |
-| 2 | Landing page : etape 2 "Analyse ton systeme" -- le mot "systeme" est vague pour un beta testeur | `src/pages/Index.tsx` (l.204) | Remplacer par "Compare les pays" |
-| 3 | Fake social proof avec chiffres inventes (15,247 utilisateurs, 4.9/5 avec 2,847 avis) | `src/components/landing/SocialProofBanner.tsx` | Ce composant n'est pas utilise sur la landing page actuellement -- aucune action requise, mais a surveiller si reintegre |
+- **Auth** : Page de connexion fonctionnelle (email, Google, Apple), validation Zod, reset password
+- **404** : Page clean avec redirection vers accueil/pays/test
+- **QuickTest** : Parcours fluide en 4 clics, auto-save des resultats
+- **Landing hero** : CTA < 3 secondes, "Tu veux t'expatrier ? Compare les pays" -- clair
+- **Pricing landing** : 3 colonnes OK (Free, Premium, Pro/B2B)
+- **Etape 2 "Comment ca marche"** : "Compare les pays" -- corrige dans la session precedente
+- **Dashboard** : Widgets conditionnels, progression, sync cloud
+- **RLS/Securite** : Pas de nouvelles failles detectees
+- **MentionsLegales** : "Exit Keys" en tant que marque deposee -- correct, c'est legal
 
 ---
 
 ## Details techniques
 
-### Etape 1 : Corriger les 8 fichiers jargon (remplacement de texte)
-Remplacement simple de chaines de caracteres dans chaque fichier -- aucun changement de logique.
+### Etape 1 : Corriger ContextualShortcuts.tsx (3 remplacements de texte)
+Remplacer `labelFallback: 'Exit Keys'` par `labelFallback: 'Strategies'` aux lignes 37, 60, 71. Remplacer `descFallback: 'Plan de sortie'` par `descFallback: 'Plan strategique'` a la ligne 71.
 
-### Etape 2 : Coherence pricing landing page
-Ajouter une troisieme carte "Pro / B2B" dans la section pricing de la page d'accueil, ou a minima un lien visible vers `/pricing` pour decouvrir le plan Pro. La grille passera de 2 a 3 colonnes.
+### Etape 2 : Corriger le jargon "systeme dominant" (2 fichiers)
+- QuickTest.tsx ligne 264 : `'systeme dominant.'` -> `'profil expatrie.'`
+- QuickTestResults.tsx ligne 297 : `'Systeme dominant'` -> `'Ton profil'`
 
-### Etape 3 : Clarifier l'etape 2 du "Comment ca marche"
-Remplacer le fallback "Analyse ton systeme" par "Compare les pays" pour coller au positionnement concret de la plateforme.
+### Etape 3 : Uniformiser les icones CheckCircle de la carte Pro/B2B
+Remplacer `text-muted-foreground` par `text-green-500` sur les 3 `CheckCircle` de la carte Pro/B2B (Index.tsx lignes 411, 415, 419).
 
 ### Etape 4 : Verification
 Confirmer que la plateforme se charge sans erreur apres les corrections.
@@ -67,9 +85,10 @@ Confirmer que la plateforme se charge sans erreur apres les corrections.
 
 ## Resume
 
-- **8 fichiers corriges** (jargon "Exit Keys" -> "Strategies")
-- **1 amelioration UX landing** (pricing 3 colonnes)
-- **1 clarification copywriting** (etape 2 du funnel)
+- **3 fichiers modifies** (ContextualShortcuts, QuickTest, QuickTestResults, Index)
+- **4 jargons "Exit Keys" corriges** (3 shortcut labels + 1 description)
+- **2 jargons "systeme dominant" corriges** (QuickTest hero + resultats)
+- **1 coherence visuelle** (icones CheckCircle pricing)
 - **0 modification de securite/structure/base de donnees**
-- **0 risque de regression** (texte uniquement + ajout carte pricing)
+- **0 risque de regression** (texte et couleur CSS uniquement)
 
