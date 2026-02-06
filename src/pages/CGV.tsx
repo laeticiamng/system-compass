@@ -69,7 +69,7 @@ export default function CGV() {
             <div className="space-y-4">
               <div className="p-4 rounded-lg bg-primary/5 border border-primary/20">
                 <h3 className="font-semibold mb-2">Offre Premium</h3>
-                <p className="text-2xl font-bold text-primary">9,99 € / mois</p>
+                <p className="text-2xl font-bold text-primary">9,90 € / mois</p>
                 <p className="text-sm text-muted-foreground mt-1">TVA incluse</p>
               </div>
               

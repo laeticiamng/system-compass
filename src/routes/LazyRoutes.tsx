@@ -102,3 +102,14 @@ export const LazyDiagnostics = withSuspense(lazy(() => import('@/pages/Diagnosti
 
 // Academic Hub - HEC/Polytechnique level tools  
 export const LazyAcademicHub = withSuspense(lazy(() => import('@/pages/AcademicHub')));
+
+// Previously masked modules - now reactivated
+export const LazyB2BSolutions = withSuspense(lazy(() => import('@/pages/B2BSolutions')));
+export const LazyLatentModule = withSuspense(lazy(() => import('@/pages/LatentModule')));
+export const LazyIrreversaModule = withSuspense(lazy(() => import('@/pages/IrreversaModule')));
+export const LazyPartnerIntegrations = withSuspense(lazy(() => import('@/pages/PartnerIntegrations')));
+export const LazyCommunity = withSuspense(lazy(() => import('@/pages/Community')));
+export const LazySeedTranslations = withSuspense(lazy(() => import('@/pages/SeedTranslations')));
+export const LazyAdminGenerateTranslations = withSuspense(lazy(() => import('@/pages/AdminGenerateTranslations')));
+export const LazyAdminDatabaseTranslations = withSuspense(lazy(() => import('@/pages/AdminDatabaseTranslations')));
+export const LazyAdminTranslationsSync = withSuspense(lazy(() => import('@/pages/AdminTranslationsSync')));

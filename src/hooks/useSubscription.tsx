@@ -39,7 +39,7 @@ export const SUBSCRIPTION_TIERS = {
     priceId: 'price_1SxpOSDFa5Y9NR1I05modzpV',
     features: [
       'Tous les pays (25+)',
-      'Exit Keys personnalisées',
+      'Recommandations personnalisées',
       'Comparaison illimitée',
       'Export PDF',
       'Calculateur fiscal',
