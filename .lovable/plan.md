@@ -1,102 +1,104 @@
 
 
-# Audit C-Suite v7 -- Rapport Final
+# Audit C-Suite v8 -- Rapport Final
 
-## Statut de toutes les corrections precedentes (v1 a v6)
+## Statut de toutes les corrections precedentes (v1 a v7)
 
 | Correction | Statut |
 |-----------|--------|
 | Suppression de compte RGPD (Art. 17) | RESOLU |
 | Faux temoignages Index.tsx | RESOLU |
 | Faux noms (5 fichiers) | RESOLU |
-| SecuritySettings i18n (20+ chaines) | RESOLU |
+| SecuritySettings i18n | RESOLU |
 | DiscussionThread "Jean-Pierre" | RESOLU |
-| Index.tsx i18n (40+ chaines) | RESOLU |
-| SessionManager.tsx toasts i18n (6 chaines) | RESOLU |
-| useVacationRecommendations.tsx i18n (4 toasts) | RESOLU |
-| usePartnerProgram.tsx i18n (5 toasts) | RESOLU |
-| useDataSources.tsx i18n (10 toasts) | RESOLU |
-| useCountryAudioGuide.tsx i18n (3 toasts) | RESOLU |
-| useExperts.tsx i18n (mock reviews + 9 toasts) | RESOLU |
+| Index.tsx i18n | RESOLU |
+| SessionManager.tsx i18n | RESOLU |
+| useVacationRecommendations.tsx i18n | RESOLU |
+| usePartnerProgram.tsx i18n | RESOLU |
+| useDataSources.tsx i18n | RESOLU |
+| useCountryAudioGuide.tsx i18n | RESOLU |
+| useExperts.tsx i18n | RESOLU |
+| EthicsCharter.tsx i18n | RESOLU |
+| PartnerApplicationForm.tsx i18n | RESOLU |
 
-## Synthese par role -- Tous les toasts et hooks sont desormais i18n
+## Synthese par role
 
 - **CEO** : Aucune action. Plateforme strategiquement coherente.
-- **CTO** : Aucune regression. Toasts i18n complets sur tous les hooks.
-- **CPO** : 2 composants partenaires restent avec du contenu FR hardcode (ci-dessous).
-- **CISO** : RLS en place, secrets configures, pas de nouveau risque.
+- **CTO** : Aucune regression. Architecture stable.
+- **CPO** : 5 composants avec contenu FR hardcode sans `t()` (ci-dessous).
+- **CISO** : RLS en place, secrets configures.
 - **DPO** : Art. 17 valide, RGPD conforme.
-- **CDO** : Stack data coherente.
+- **CDO** : Pipeline analytics coherent.
 - **COO** : Documentation a jour.
-- **Head of Design** : Coherence i18n quasi-complete. Dernier point ci-dessous.
-- **Beta testeur** : Parcours utilisateur clair et fonctionnel.
+- **Head of Design** : Coherence i18n a finaliser sur les 5 composants restants.
+- **Beta testeur** : Parcours fonctionnel, derniers points i18n ci-dessous.
 
 ## Inconsistances detectees
 
-### 1. EthicsCharter.tsx -- 15+ chaines FR hardcodees
+### 1. GlobalSearch.tsx -- Tableau PAGES avec 8 titres FR hardcodes
 
-Le composant contient :
-- 6 titres de principes ("Primaute de la lucidite", "Contribution reelle uniquement", etc.)
-- 6 descriptions de principes
-- 1 titre de carte ("Charte ethique des partenaires")
-- 1 introduction ("Tout participant au programme...")
-- 1 avertissement ("Tout manquement entraine...")
+Le tableau `PAGES` (ligne 24-33) contient 8 titres de pages en francais dur, hors du composant donc sans acces a `t()` :
+- "A propos & Orientation", "Carte mondiale", "Filtre de prevention", "Comparer des pays", "Types de pyramides", "Jeu de vie", "Tableau de bord", "Erreurs & Illusions"
 
-### 2. PartnerApplicationForm.tsx -- 30+ chaines FR hardcodees
+**Correction** : Deplacer le tableau `PAGES` a l'interieur du composant `GlobalSearch` pour utiliser `t()` avec fallback FR.
 
-Le formulaire contient :
-- Titres et descriptions de carte (Ambassadeur/B2B)
-- Statuts de candidature ("En cours d'examen", "Approuvee", "Suspendue")
-- Messages de statut (3 variantes)
-- 7 items de liste de reconnaissance
-- 2 avertissements financiers
-- Labels de formulaire (5)
-- Placeholders (4)
-- Boutons ("Soumettre ma candidature", "Masquer/Consulter la charte")
-- Label checkbox charte ethique
-- Badge "Validation manuelle"
+### 2. Breadcrumbs.tsx -- routeNames avec 30+ labels FR hardcodes
 
-### Ce qui est hors-perimetre
+Le dictionnaire `routeNames` (lignes 85-118) contient 30+ labels de routes en francais dur, hors du composant :
+- "Accueil", "Pays", "Carte mondiale", "Parametres", "Administration", etc.
 
-- `character-archetypes.ts` : personnages de jeu
-- Tests unitaires
-- Fichiers deja corriges (12 corrections precedentes)
+**Correction** : Transformer `routeNames` en fonction utilisant `t()` a l'interieur du composant.
+
+### 3. ChallengeTracker.tsx -- 5 challenges avec titres/descriptions FR
+
+Les tableaux `dailyChallenges` et `weeklyChallenges` (lignes 66-125) contiennent 5 challenges avec titres et descriptions en francais dur :
+- "Connexion quotidienne", "Decouverte du jour", "Comparaison rapide", "Explorateur de la semaine", "Expert fiscal"
+
+**Correction** : Ajouter `useTranslation` et remplacer par `t()` avec fallback FR.
+
+### 4. TerrainFiscalChecklist.tsx -- 14 items et 3 categories FR hardcodes
+
+Le tableau `DEFAULT_FISCAL_ITEMS` (lignes 28-48) et `CATEGORY_CONFIG` (lignes 50-65) contiennent 17 chaines FR :
+- "Criteres de residence fiscale", "Bareme d'imposition sur le revenu", "Fiscalite personnelle", etc.
+
+**Correction** : Deplacer les tableaux dans le composant et utiliser `t()`.
+
+### 5. GameAchievements.tsx -- 2 chaines FR hardcodees
+
+Ligne 216 : `'Chargement...'` et `'Connectez-vous pour voir vos succes'` sans `t()`.
+
+**Correction** : Remplacer par `t('common.loading', 'Chargement...')` et `t('game.achievements.loginRequired', 'Connectez-vous pour voir vos succes')`.
+
+### Hors perimetre
+
+- StrategyDeadlineAlerts.tsx : donnees mock de demonstration (strategies fictives), pas du contenu UI persistant
+- character-archetypes.ts : personnages de jeu
+- Fichiers deja corriges (14 corrections precedentes)
 
 ## Plan de correction
 
-### Correction 1 : EthicsCharter.tsx
+### Correction 1 : GlobalSearch.tsx
+1. Deplacer `PAGES` dans le composant `GlobalSearch`
+2. Remplacer les 8 titres par `t('search.page.about', 'A propos & Orientation')`, etc.
 
-1. Ajouter `import { useTranslation } from 'react-i18next';`
-2. Declarer `const { t } = useTranslation();` dans le composant
-3. Transformer `CHARTER_PRINCIPLES` d'un tableau statique en une fonction qui utilise `t()`
-4. Remplacer les 15 chaines par `t()` avec fallback FR
+### Correction 2 : Breadcrumbs.tsx
+1. Transformer `routeNames` en fonction `getRouteNames(t)` appelee dans le composant
+2. Remplacer les 30+ labels par `t('breadcrumb.countries', 'Pays')`, etc.
 
-Cles i18n proposees :
-- `partner.charter.title`
-- `partner.charter.intro`
-- `partner.charter.warning`
-- `partner.charter.principle1Title` a `principle6Title`
-- `partner.charter.principle1Desc` a `principle6Desc`
+### Correction 3 : ChallengeTracker.tsx
+1. Ajouter `import { useTranslation } from 'react-i18next'`
+2. Deplacer les tableaux de challenges dans le composant
+3. Remplacer les 10 chaines (5 titres + 5 descriptions) par `t()`
 
-### Correction 2 : PartnerApplicationForm.tsx
+### Correction 4 : TerrainFiscalChecklist.tsx
+1. Deplacer `DEFAULT_FISCAL_ITEMS` et `CATEGORY_CONFIG` dans le composant
+2. Remplacer les 17 labels par `t()` avec fallback FR
 
-1. Ajouter `import { useTranslation } from 'react-i18next';`
-2. Declarer `const { t } = useTranslation();` dans le composant
-3. Remplacer les 30+ chaines par `t()` avec fallback FR
-
-Cles i18n proposees (selection) :
-- `partner.application.titleAmbassador`, `partner.application.titleB2B`
-- `partner.application.statusPending`, `statusApproved`, `statusSuspended`
-- `partner.application.pendingMessage`, `approvedMessage`, `suspendedMessage`
-- `partner.application.recognition`
-- `partner.application.benefitCredits`, `benefitFeatures`, `benefitBadge`, etc.
-- `partner.application.warningNoFinancial`, `warningConditional`
-- `partner.application.labelCompany`, `labelProfile`, `labelExperience`, `labelMotivation`
-- `partner.application.submit`, `submitting`
-- `partner.application.charterShow`, `charterHide`, `charterAccept`
-- `partner.application.manualValidation`
+### Correction 5 : GameAchievements.tsx
+1. Verifier que `useTranslation` est importe (probablement deja fait)
+2. Remplacer les 2 chaines de la ligne 216 par `t()`
 
 ### Details techniques
 
-Le pattern est identique a toutes les corrections precedentes. La seule particularite est dans `EthicsCharter.tsx` ou le tableau `CHARTER_PRINCIPLES` est defini hors du composant ; il faudra le transformer en hook ou le deplacer a l'interieur du composant pour avoir acces a `t()`.
+Pour les corrections 1, 2, 3 et 4, le pattern consiste a deplacer les tableaux/objets statiques definis hors du composant vers l'interieur de celui-ci (ou les transformer en fonctions prenant `t` en parametre) pour avoir acces au hook `useTranslation`. C'est le meme pattern applique a `EthicsCharter.tsx` dans la v7.
 
