@@ -5211,7 +5211,7 @@
     "start": "Get Started",
     "step1": {
       "title": "Welcome to Pyramid Compass",
-      "description": "Your compass to navigate the global system. Understand the invisible rules that govern each country."
+      "description": "Compare countries in depth before expatriating: taxes, visas, cost of living and quality of life."
     },
     "step2": {
       "title": "Find Your Match",
@@ -5222,12 +5222,12 @@
       "description": "Simulate your net salary, retirement, and purchasing power in any country."
     },
     "step4": {
-      "title": "Exit Keys",
+      "title": "Strategies",
       "description": "Create a concrete action plan to achieve your life goals, with clear steps and personalized tracking."
     },
     "step5": {
       "title": "The Life Game",
-      "description": "Test different life trajectories in an educational simulation game. Learn the system's mechanics risk-free."
+      "description": "Test different life trajectories in an educational simulation game. Learn economic mechanics risk-free."
     }
   },
   "howToRead": {

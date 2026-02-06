@@ -133,7 +133,7 @@ export function OnboardingDialog() {
             onClick={handleSkip}
             className="text-muted-foreground"
           >
-            {t('common.skip', 'Skip')}
+            {t('common.skip', 'Passer')}
           </Button>
           
           <div className="flex gap-2">
@@ -150,11 +150,11 @@ export function OnboardingDialog() {
               {currentStep === steps.length - 1 ? (
                 <>
                   <Sparkles className="w-4 h-4" />
-                  {t('common.start', 'Start')}
+                  {t('common.start', 'Commencer')}
                 </>
               ) : (
                 <>
-                  {t('common.next', 'Next')}
+                  {t('common.next', 'Suivant')}
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}
