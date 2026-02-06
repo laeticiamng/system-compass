@@ -49,7 +49,7 @@ const MOCK_POSTS: ThreadPost[] = [
       {
         id: '1-2',
         author: 'Membre communauté',
-        content: "Même expérience que Jean-Pierre. Conseil : préparez tous vos relevés bancaires sur 6 mois minimum, ils sont très regardants sur les revenus passifs.",
+        content: "Même expérience ici. Conseil : préparez tous vos relevés bancaires sur 6 mois minimum, ils sont très regardants sur les revenus passifs.",
         createdAt: new Date(Date.now() - 3600000 * 6),
         likes: 8,
         replies: [],
