@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -240,9 +241,11 @@ const CATEGORIES = [
 
 export default function PartnerIntegrations() {
 
+  const { t } = useTranslation();
+
   const handlePartnerClick = (partner: Partner) => {
-    toast.success(`Redirection vers ${partner.name}`, {
-      description: partner.discount || 'Profitez de notre partenariat',
+    toast.success(t('toast.partners.redirect', 'Redirection vers {{name}}', { name: partner.name }), {
+      description: partner.discount || t('toast.partners.benefitDefault', 'Profitez de notre partenariat'),
     });
     // In production, this would use affiliate links
     window.open(partner.affiliateLink, '_blank', 'noopener,noreferrer');
@@ -464,7 +467,7 @@ export default function PartnerIntegrations() {
           </p>
           <Button 
             size="lg"
-            onClick={() => toast.info('Programme partenaires bientôt disponible')}
+            onClick={() => toast.info(t('toast.partners.programComingSoon', 'Programme partenaires bientôt disponible'))}
           >
             Nous contacter
           </Button>

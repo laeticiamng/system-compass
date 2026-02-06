@@ -124,7 +124,7 @@ export default function CompareUnified() {
       await navigator.clipboard.writeText(url);
       toast.success(t('compare.linkCopied'));
     } catch {
-      toast.error('Failed to copy link');
+      toast.error(t('toast.error.copyLink', 'Failed to copy link'));
     }
   };
 

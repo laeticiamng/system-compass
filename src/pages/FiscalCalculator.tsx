@@ -259,14 +259,14 @@ export default function FiscalCalculator() {
         destinationResult: comparison.country2,
         analysis: comparison.analysis,
       });
-      toast.success('PDF généré avec succès !');
+      toast.success(t('toast.fiscal.pdfGenerated', 'PDF généré avec succès !'));
     } else if (originResult) {
       exportSingleCountryPDF(
         originCountry,
         COUNTRY_NAMES[originCountry] || originCountry,
         originResult
       );
-      toast.success('PDF généré avec succès !');
+      toast.success(t('toast.fiscal.pdfGenerated', 'PDF généré avec succès !'));
     }
   };
   

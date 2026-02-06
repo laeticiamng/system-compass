@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -110,11 +111,12 @@ const CONTENT_RESOURCES = [
 ];
 
 export default function Community() {
+  const { t } = useTranslation();
   const { register, isRegistered, isLoading } = useEventRegistration();
 
   const handleJoinDiscord = () => {
-    toast.success('Redirection vers Discord', {
-      description: 'Rejoignez notre communauté de +5000 membres !',
+    toast.success(t('toast.community.discordRedirect', 'Redirection vers Discord'), {
+      description: t('toast.community.discordJoin', 'Rejoignez notre communauté de +5000 membres !'),
     });
     // In production: window.open('https://discord.gg/systemcompass', '_blank');
   };
@@ -127,7 +129,7 @@ export default function Community() {
       eventType: event.type as 'webinar' | 'meetup' | 'workshop' | 'ama',
     });
     if (success) {
-      toast.success(`Inscrit à "${event.title}"`);
+      toast.success(t('toast.community.registered', 'Inscrit à "{{title}}"', { title: event.title }));
     }
   };
 
@@ -305,7 +307,7 @@ export default function Community() {
             <Card 
               key={resource.id} 
               className="glass-card hover:shadow-md transition-all duration-300 cursor-pointer"
-              onClick={() => toast.info('Contenu bientôt disponible')}
+              onClick={() => toast.info(t('toast.community.comingSoon', 'Contenu bientôt disponible'))}
             >
               <CardContent className="p-5">
                 <div className="space-y-3">
