@@ -408,15 +408,15 @@ export default function Index() {
                   </div>
                   <ul className="space-y-3 mb-8">
                     <li className="flex items-center gap-2 text-sm">
-                      <CheckCircle className="w-4 h-4 text-muted-foreground" />
+                      <CheckCircle className="w-4 h-4 text-green-500" />
                       {t('landing.pricing.proFeature1', 'Tout le plan Premium')}
                     </li>
                     <li className="flex items-center gap-2 text-sm">
-                      <CheckCircle className="w-4 h-4 text-muted-foreground" />
+                      <CheckCircle className="w-4 h-4 text-green-500" />
                       {t('landing.pricing.proFeature2', 'Modules avancés (TraceOS, Intel)')}
                     </li>
                     <li className="flex items-center gap-2 text-sm">
-                      <CheckCircle className="w-4 h-4 text-muted-foreground" />
+                      <CheckCircle className="w-4 h-4 text-green-500" />
                       {t('landing.pricing.proFeature3', 'Support dédié & multi-utilisateurs')}
                     </li>
                   </ul>

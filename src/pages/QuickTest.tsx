@@ -261,7 +261,7 @@ export default function QuickTest() {
           >
             <span className="block text-foreground">{t('quickTest.heroTitle1', 'Découvre ton')}</span>
             <span className="block bg-gradient-to-r from-primary via-amber-400 to-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-[gradient_3s_ease-in-out_infinite]">
-              {t('quickTest.heroTitle2', 'système dominant.')}
+              {t('quickTest.heroTitle2', 'profil expatrié.')}
             </span>
           </motion.h1>
 
