@@ -299,7 +299,7 @@ export function CountryMusicPlayer({
                   <Info className="w-3 h-3 text-muted-foreground" />
                 </TooltipTrigger>
                 <TooltipContent className="max-w-xs">
-                  <p className="text-sm">{t('music.description', 'La musique représente le système de vie de ce pays. Elle incarne le rythme, les tensions et les opportunités du système.')}</p>
+                  <p className="text-sm">{t('music.description', 'La musique représente l\'ambiance de ce pays. Elle incarne le rythme, les tensions et les opportunités de la vie locale.')}</p>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
