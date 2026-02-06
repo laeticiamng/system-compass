@@ -3,6 +3,7 @@
  * Handles permission, subscription, and notification delivery
  */
 import { useState, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
@@ -25,6 +26,7 @@ interface NotificationPayload {
 }
 
 export function usePushNotifications() {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const [state, setState] = useState<PushNotificationState>({
     isSupported: false,
@@ -46,8 +48,8 @@ export function usePushNotifications() {
   // Request permission
   const requestPermission = useCallback(async (): Promise<boolean> => {
     if (!state.isSupported) {
-      toast.error('Notifications non supportées', {
-        description: 'Votre navigateur ne supporte pas les notifications push.',
+      toast.error(t('push.notSupported', 'Notifications non supportées'), {
+        description: t('push.notSupportedDesc', 'Votre navigateur ne supporte pas les notifications push.'),
       });
       return false;
     }
@@ -59,13 +61,13 @@ export function usePushNotifications() {
       setState((prev) => ({ ...prev, permission, isLoading: false }));
 
       if (permission === 'granted') {
-        toast.success('Notifications activées', {
-          description: 'Vous recevrez désormais les notifications importantes.',
+        toast.success(t('push.enabled', 'Notifications activées'), {
+          description: t('push.enabledDesc', 'Vous recevrez désormais les notifications importantes.'),
         });
         return true;
       } else if (permission === 'denied') {
-        toast.error('Notifications bloquées', {
-          description: 'Vous pouvez les réactiver dans les paramètres du navigateur.',
+        toast.error(t('push.denied', 'Notifications bloquées'), {
+          description: t('push.deniedDesc', 'Vous pouvez les réactiver dans les paramètres du navigateur.'),
         });
       }
       return false;
@@ -79,8 +81,8 @@ export function usePushNotifications() {
   // Subscribe to push notifications
   const subscribe = useCallback(async (): Promise<boolean> => {
     if (!user?.id) {
-      toast.error('Connexion requise', {
-        description: 'Connectez-vous pour activer les notifications.',
+      toast.error(t('push.loginRequired', 'Connexion requise'), {
+        description: t('push.loginRequiredDesc', 'Connectez-vous pour activer les notifications.'),
       });
       return false;
     }
@@ -109,12 +111,12 @@ export function usePushNotifications() {
       if (error) throw error;
 
       setState((prev) => ({ ...prev, isSubscribed: true, isLoading: false }));
-      toast.success('Notifications activées');
+      toast.success(t('push.enabled', 'Notifications activées'));
       return true;
     } catch (error) {
       console.error('Failed to subscribe to push notifications:', error);
       setState((prev) => ({ ...prev, isLoading: false }));
-      toast.error('Erreur lors de l\'activation des notifications');
+      toast.error(t('push.activationError', 'Erreur lors de l\'activation des notifications'));
       return false;
     }
   }, [user?.id, state.permission, requestPermission]);
@@ -135,7 +137,7 @@ export function usePushNotifications() {
       if (error) throw error;
 
       setState((prev) => ({ ...prev, isSubscribed: false, isLoading: false }));
-      toast.success('Notifications désactivées');
+      toast.success(t('push.disabled', 'Notifications désactivées'));
       return true;
     } catch (error) {
       console.error('Failed to unsubscribe from push notifications:', error);

@@ -4,25 +4,29 @@
  */
 
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronRight, ChevronLeft, Sparkles, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
-import { useOnboardingTour } from '@/hooks/useOnboardingTour';
+import { useOnboardingTour, getTourSteps } from '@/hooks/useOnboardingTour';
 import { cn } from '@/lib/utils';
 
 export function OnboardingTour() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+  const steps = getTourSteps(t);
   const {
     isActive,
     currentStep,
     totalSteps,
-    step,
     nextStep,
     prevStep,
     skipTour,
     progress,
-  } = useOnboardingTour();
+  } = useOnboardingTour(steps.length);
+
+  const step = steps[currentStep];
 
   const handleNext = () => {
     if (step?.href) {
@@ -133,6 +137,7 @@ export function OnboardingTour() {
 
 /** Button to restart the tour - can be placed in settings/help */
 export function RestartTourButton() {
+  const { t } = useTranslation();
   const { resetTour, startTour, hasCompletedTour } = useOnboardingTour();
 
   const handleRestart = () => {
@@ -148,7 +153,7 @@ export function RestartTourButton() {
       className="gap-2"
     >
       <RotateCcw className="w-4 h-4" />
-      {hasCompletedTour ? 'Revoir le tour' : 'Commencer le tour'}
+      {hasCompletedTour ? t('tour.restart', 'Revoir le tour') : t('tour.start', 'Commencer le tour')}
     </Button>
   );
 }

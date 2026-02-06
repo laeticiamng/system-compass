@@ -4,6 +4,7 @@
  */
 
 import { useState, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { scrapeUrl, searchWithAI, getLiveCountryIntel, type PerplexityResult, type ScrapeResult } from '@/lib/api/premium-intel';
 import { useToast } from '@/hooks/use-toast';
@@ -25,6 +26,7 @@ interface UseLiveCountryIntelOptions {
 }
 
 export function useLiveCountryIntel({ countryName, countryId }: UseLiveCountryIntelOptions) {
+  const { t } = useTranslation();
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const [activeTopic, setActiveTopic] = useState<IntelTopic | null>(null);
@@ -52,17 +54,16 @@ export function useLiveCountryIntel({ countryName, countryId }: UseLiveCountryIn
       };
     },
     onSuccess: (data) => {
-      // Cache the result
       queryClient.setQueryData([...cacheKey, data.topic], data);
       toast({
-        title: '🔴 Live Intel',
-        description: `Données ${data.topic} actualisées avec ${data.citations.length} sources`,
+        title: t('liveIntel.success', '🔴 Live Intel'),
+        description: t('liveIntel.successDesc', 'Données {{topic}} actualisées avec {{count}} sources', { topic: data.topic, count: data.citations.length }),
       });
     },
     onError: (error) => {
       toast({
-        title: 'Erreur Live Intel',
-        description: error instanceof Error ? error.message : 'Échec récupération données',
+        title: t('liveIntel.error', 'Erreur Live Intel'),
+        description: error instanceof Error ? error.message : t('liveIntel.errorDesc', 'Échec récupération données'),
         variant: 'destructive',
       });
     },
@@ -87,14 +88,14 @@ export function useLiveCountryIntel({ countryName, countryId }: UseLiveCountryIn
     },
     onSuccess: () => {
       toast({
-        title: '📄 Source Scrapée',
-        description: 'Contenu officiel extrait avec succès',
+        title: t('liveIntel.scraped', '📄 Source Scrapée'),
+        description: t('liveIntel.scrapedDesc', 'Contenu officiel extrait avec succès'),
       });
     },
     onError: (error) => {
       toast({
-        title: 'Erreur Scraping',
-        description: error instanceof Error ? error.message : 'Échec extraction',
+        title: t('liveIntel.scrapeError', 'Erreur Scraping'),
+        description: error instanceof Error ? error.message : t('liveIntel.scrapeErrorDesc', 'Échec extraction'),
         variant: 'destructive',
       });
     },
