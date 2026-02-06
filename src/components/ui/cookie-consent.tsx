@@ -5,6 +5,7 @@
  */
 
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Cookie, X, Settings2, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -51,6 +52,7 @@ export function hasConsentedToAnalytics(): boolean {
 }
 
 export function CookieConsent() {
+  const { t } = useTranslation();
   const { shouldShowCookieConsent, completeCookieConsent } = useDialogCoordinator();
   const [showDetails, setShowDetails] = useState(false);
   const [preferences, setPreferences] = useState<CookiePreferences>(defaultPreferences);
@@ -124,14 +126,14 @@ export function CookieConsent() {
           <div className="flex items-center justify-between">
             <CardTitle className="flex items-center gap-2 text-lg">
               <Cookie className="w-5 h-5 text-primary" />
-              Paramètres de confidentialité
+              {t('cookies.title', 'Paramètres de confidentialité')}
             </CardTitle>
             <Button
               variant="ghost"
               size="icon"
               className="h-8 w-8"
               onClick={rejectAll}
-              aria-label="Fermer"
+              aria-label={t('cookies.close', 'Fermer')}
             >
               <X className="h-4 w-4" />
             </Button>
@@ -140,17 +142,16 @@ export function CookieConsent() {
         
         <CardContent className="space-y-4">
           <p className="text-sm text-muted-foreground">
-            Nous utilisons des cookies pour améliorer votre expérience. 
-            Vous pouvez personnaliser vos préférences ci-dessous.
+            {t('cookies.description', 'Nous utilisons des cookies pour améliorer votre expérience. Vous pouvez personnaliser vos préférences ci-dessous.')}
           </p>
 
           {showDetails ? (
             <div className="space-y-4 py-2">
               <div className="flex items-center justify-between">
                 <div>
-                  <Label className="font-medium">Cookies nécessaires</Label>
+                  <Label className="font-medium">{t('cookies.necessary', 'Cookies nécessaires')}</Label>
                   <p className="text-xs text-muted-foreground">
-                    Essentiels au fonctionnement du site
+                    {t('cookies.necessaryDesc', 'Essentiels au fonctionnement du site')}
                   </p>
                 </div>
                 <Switch checked disabled />
@@ -158,9 +159,9 @@ export function CookieConsent() {
               
               <div className="flex items-center justify-between">
                 <div>
-                  <Label className="font-medium">Analytiques</Label>
+                  <Label className="font-medium">{t('cookies.analytics', 'Analytiques')}</Label>
                   <p className="text-xs text-muted-foreground">
-                    Comprendre comment vous utilisez le site
+                    {t('cookies.analyticsDesc', 'Comprendre comment vous utilisez le site')}
                   </p>
                 </div>
                 <Switch
@@ -173,9 +174,9 @@ export function CookieConsent() {
               
               <div className="flex items-center justify-between">
                 <div>
-                  <Label className="font-medium">Préférences</Label>
+                  <Label className="font-medium">{t('cookies.preferences', 'Préférences')}</Label>
                   <p className="text-xs text-muted-foreground">
-                    Mémoriser vos choix et paramètres
+                    {t('cookies.preferencesDesc', 'Mémoriser vos choix et paramètres')}
                   </p>
                 </div>
                 <Switch
@@ -188,9 +189,9 @@ export function CookieConsent() {
               
               <div className="flex items-center justify-between">
                 <div>
-                  <Label className="font-medium">Marketing</Label>
+                  <Label className="font-medium">{t('cookies.marketing', 'Marketing')}</Label>
                   <p className="text-xs text-muted-foreground">
-                    Personnaliser les contenus et publicités
+                    {t('cookies.marketingDesc', 'Personnaliser les contenus et publicités')}
                   </p>
                 </div>
                 <Switch
@@ -211,32 +212,32 @@ export function CookieConsent() {
                 onClick={() => setShowDetails(true)}
               >
                 <Settings2 className="w-4 h-4 mr-2" />
-                Personnaliser
+                {t('cookies.customize', 'Personnaliser')}
               </Button>
             )}
             
             {showDetails ? (
               <Button size="sm" onClick={acceptSelected}>
                 <Check className="w-4 h-4 mr-2" />
-                Enregistrer mes choix
+                {t('cookies.saveChoices', 'Enregistrer mes choix')}
               </Button>
             ) : (
               <>
                 <Button variant="outline" size="sm" onClick={rejectAll}>
-                  Refuser tout
+                  {t('cookies.rejectAll', 'Refuser tout')}
                 </Button>
                 <Button size="sm" onClick={acceptAll}>
                   <Check className="w-4 h-4 mr-2" />
-                  Tout accepter
+                  {t('cookies.acceptAll', 'Tout accepter')}
                 </Button>
               </>
             )}
           </div>
           
           <p className="text-xs text-muted-foreground">
-            En savoir plus dans notre{' '}
+            {t('cookies.learnMore', 'En savoir plus dans notre')}{' '}
             <a href="/disclaimer" className="text-primary hover:underline">
-              politique de confidentialité
+              {t('cookies.privacyPolicy', 'politique de confidentialité')}
             </a>
             .
           </p>

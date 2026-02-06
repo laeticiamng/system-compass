@@ -115,6 +115,7 @@ export function OnboardingDialog() {
             <button
               key={index}
               onClick={() => setCurrentStep(index)}
+              aria-label={t('onboarding.goToStep', { step: index + 1, defaultValue: `Aller à l'étape ${index + 1}` })}
               className={`w-2.5 h-2.5 rounded-full transition-all ${
                 index === currentStep 
                   ? 'bg-primary scale-125' 
