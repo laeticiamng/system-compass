@@ -146,7 +146,7 @@ export function WeeklyDigestSetup() {
   };
 
   const moduleLabels: Record<keyof DigestSettings['includeModules'], string> = {
-    exitKeys: t('dashboard.digest.modules.exitKeys', 'Exit Keys Progress'),
+    exitKeys: t('dashboard.digest.modules.exitKeys', 'Progression Stratégies'),
     cases: t('dashboard.digest.modules.cases', 'Active Cases'),
     latent: t('dashboard.digest.modules.latent', 'Latent Zones'),
     irreversa: t('dashboard.digest.modules.irreversa', 'Irreversa Thresholds'),

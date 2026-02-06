@@ -48,7 +48,7 @@ export function WeeklyDigestGenerator({ digestData }: WeeklyDigestGeneratorProps
     risksIdentified: 2,
     progressPercentage: 42,
     highlights: [
-      'Profil Exit Keys complété',
+      'Profil stratégique complété',
       'Nouveau pays ajouté à la comparaison',
       'Première zone latente documentée'
     ]

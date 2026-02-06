@@ -78,8 +78,8 @@ export function Header() {
     { href: '/financial-safety-intel', label: t('nav.financialIntel', 'Intel Financière'), icon: Shield },
     { href: '/fiscal-calculator', label: t('nav.fiscalCalculator', 'Calculateur Fiscal'), icon: BarChart3 },
     { href: '/terrain', label: t('nav.terrainRealities', 'Réalités Terrain'), icon: Map },
-    { href: '/exit-keys/catalog', label: t('nav.exitKeysCatalog', 'Catalogue Clés'), icon: Key },
-    { href: '/compare-exit-keys', label: t('nav.exitKeysCompare', 'Comparer Clés'), icon: Scale },
+    { href: '/exit-keys/catalog', label: t('nav.exitKeysCatalog', 'Catalogue Stratégies'), icon: Key },
+    { href: '/compare-exit-keys', label: t('nav.exitKeysCompare', 'Comparer Stratégies'), icon: Scale },
     { href: '/gamification', label: t('nav.gamification', 'Progression'), icon: Gamepad2 },
   ];
 

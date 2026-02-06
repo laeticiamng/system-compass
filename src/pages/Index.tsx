@@ -201,7 +201,7 @@ export default function Index() {
                 </div>
                 <div>
                   <div className="text-xs font-mono text-primary/40 tracking-widest mb-1 md:mb-2">02</div>
-                  <h3 className="text-lg font-bold mb-2">{t('landing.howItWorks.step2Title', 'Analyse ton système')}</h3>
+                  <h3 className="text-lg font-bold mb-2">{t('landing.howItWorks.step2Title', 'Compare les pays')}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     {t('landing.howItWorks.step2Description', 'Découvre comment fonctionne le système économique et fiscal de chaque pays.')}
                   </p>
@@ -297,7 +297,7 @@ export default function Index() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {/* Plan Free */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -383,6 +383,49 @@ export default function Index() {
                     onClick={() => navigate('/pricing')}
                   >
                     {t('landing.pricing.premiumCta', 'Voir les plans')}
+                  </Button>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            {/* Plan Pro / B2B */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+            >
+              <Card className="h-full border-muted-foreground/20">
+                <CardContent className="pt-8 pb-8 px-8">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center">
+                      <Globe className="w-6 h-6 text-muted-foreground" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold">{t('landing.pricing.proName', 'Pro / B2B')}</h3>
+                      <p className="text-muted-foreground text-sm">{t('landing.pricing.proPrice', 'Sur devis')}</p>
+                    </div>
+                  </div>
+                  <ul className="space-y-3 mb-8">
+                    <li className="flex items-center gap-2 text-sm">
+                      <CheckCircle className="w-4 h-4 text-muted-foreground" />
+                      {t('landing.pricing.proFeature1', 'Tout le plan Premium')}
+                    </li>
+                    <li className="flex items-center gap-2 text-sm">
+                      <CheckCircle className="w-4 h-4 text-muted-foreground" />
+                      {t('landing.pricing.proFeature2', 'Modules avancés (TraceOS, Intel)')}
+                    </li>
+                    <li className="flex items-center gap-2 text-sm">
+                      <CheckCircle className="w-4 h-4 text-muted-foreground" />
+                      {t('landing.pricing.proFeature3', 'Support dédié & multi-utilisateurs')}
+                    </li>
+                  </ul>
+                  <Button 
+                    variant="outline" 
+                    className="w-full"
+                    onClick={() => navigate('/pricing')}
+                  >
+                    {t('landing.pricing.proCta', 'Nous contacter')}
                   </Button>
                 </CardContent>
               </Card>
