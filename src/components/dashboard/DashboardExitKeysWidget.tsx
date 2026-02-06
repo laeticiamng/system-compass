@@ -7,16 +7,16 @@ import { Button } from '@/components/ui/button';
 import { useExitKeysHistory, ExitKeyStatus } from '@/hooks/useExitKeysHistory';
 import { EXIT_KEYS } from '@/lib/exit-keys-engine';
 
-const statusConfig: Record<ExitKeyStatus, { label: string; color: string; icon: React.ReactNode }> = {
-  explored: { label: 'Explorée', color: 'bg-blue-500/10 text-blue-500', icon: <Eye className="w-3 h-3" /> },
-  saved: { label: 'Sauvegardée', color: 'bg-amber-500/10 text-amber-500', icon: <Bookmark className="w-3 h-3" /> },
-  in_progress: { label: 'En cours', color: 'bg-emerald-500/10 text-emerald-500', icon: <Play className="w-3 h-3" /> },
-  dismissed: { label: 'Écartée', color: 'bg-muted text-muted-foreground', icon: null },
-};
-
 export function DashboardExitKeysWidget() {
   const { t } = useTranslation();
   const { history, loading, getSavedKeys, getInProgressKeys, isLoggedIn } = useExitKeysHistory();
+
+  const statusConfig: Record<ExitKeyStatus, { label: string; color: string; icon: React.ReactNode }> = {
+    explored: { label: t('exitKeys.status.explored', 'Explorée'), color: 'bg-blue-500/10 text-blue-500', icon: <Eye className="w-3 h-3" /> },
+    saved: { label: t('exitKeys.status.saved', 'Sauvegardée'), color: 'bg-amber-500/10 text-amber-500', icon: <Bookmark className="w-3 h-3" /> },
+    in_progress: { label: t('exitKeys.status.inProgress', 'En cours'), color: 'bg-emerald-500/10 text-emerald-500', icon: <Play className="w-3 h-3" /> },
+    dismissed: { label: t('exitKeys.status.dismissed', 'Écartée'), color: 'bg-muted text-muted-foreground', icon: null },
+  };
 
   if (!isLoggedIn) {
     return null;
