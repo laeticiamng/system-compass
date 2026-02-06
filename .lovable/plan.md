@@ -1,164 +1,165 @@
 
 
-# Audit UX Senior - Rapport et Corrections
+# Triple Audit Complet - Technique + UX + Beta Testeur
 
-## Methodologie
+## Etat post-audits precedents
 
-Audit visuel et fonctionnel complet : navigation mobile/desktop, flux utilisateur, micro-interactions, accessibilite, coherence visuelle, feedback utilisateur, et friction dans les parcours cles.
-
----
-
-## PROBLEMES CRITIQUES
-
-### 1. Page 404 minimaliste et deconnectee du design system
-
-**Fichier:** `src/pages/NotFound.tsx`
-
-La page 404 est un composant brut sans aucune coherence avec le reste de l'app :
-- Pas de Header/Footer (elle utilise `min-h-screen` qui double avec le layout existant)
-- Texte en anglais ("Oops! Page not found") alors que l'app est en francais
-- Pas d'i18n, pas d'icone, pas de CTA vers les pages populaires
-- Lien `<a href="/">` au lieu de `<Link to="/">` (force un rechargement complet)
-- Pas d'animation, pas de branding
-
-**Impact UX:** Un utilisateur perdu recoit un ecran impersonnel qui casse la confiance et n'offre aucune aide pour retrouver son chemin.
-
-**Correction:** Redesigner completement avec le design system existant (`EmptyState`, Button, i18n), navigation contextuelle, et lien React Router.
-
-### 2. Cookie Consent bloque le contenu en bas de page
-
-**Fichier:** `src/components/ui/cookie-consent.tsx`
-
-Le banner est `fixed bottom-0` et occupe ~200px de hauteur. Sur mobile (390px), il masque la moitie du viewport et n'a pas de marge inferieure pour eviter de chevaucher le footer ou les `ContextualShortcuts`.
-
-De plus, tout le contenu du banner ("Parametres de confidentialite", descriptions, labels) est hardcode en francais sans i18n.
-
-**Correction:** Ajouter les cles i18n pour tout le texte du cookie consent.
-
-### 3. Breadcrumbs hardcodes en francais (pas d'i18n)
-
-**Fichier:** `src/components/navigation/Breadcrumbs.tsx`
-
-Le dictionnaire `ROUTE_LABELS` (lignes 17-85) contient 40+ labels en francais brut. Un utilisateur anglophone verra "Pays", "Calculateur Fiscal", etc. dans ses breadcrumbs.
-
-**Correction:** Remplacer les valeurs statiques par des cles `t()`.
-
-### 4. ContextualShortcuts hardcodes en francais
-
-**Fichier:** `src/components/navigation/ContextualShortcuts.tsx`
-
-Tous les labels et descriptions des raccourcis contextuels (lignes 24-85) sont en francais brut : "Demarrer en 2 min", "Jusqu'a 4 pays", etc.
-
-**Correction:** Utiliser les cles i18n existantes ou creer des cles dediees.
+Les audits v1, v2 et v3 ont corrige : routes doublons, `window as any`, `fetch()` vers `supabase.functions.invoke()`, dead code LazyRoutes, page 404, breadcrumbs i18n, cookie consent i18n, contextual shortcuts i18n, onboarding aria-labels. Le codebase est stable.
 
 ---
 
-## PROBLEMES MAJEURS
+# PHASE 1 : AUDIT TECHNIQUE (Dev Senior)
 
-### 5. Absence de feedback de chargement sur les pages cles
+## CRITIQUE - `(supabase as any)` systematique (120 occurrences, 5 fichiers)
 
-**Fichier:** `src/pages/Countries.tsx`
+Les tables `user_country_watchlist`, `gamification_progress`, `pmo_compliance_*`, `expert_profiles`, `expert_conversations`, `expert_messages` ne sont pas dans les types generes (`src/integrations/supabase/types.ts`). Les hooks utilisent `(supabase as any).from(...)` pour contourner le typage.
 
-La page pays affiche un skeleton loader correct, mais d'autres pages comme `Dashboard.tsx` (1260 lignes) chargent de nombreux hooks sans indicateur de chargement global.
+**Fichiers :** `useCountryWatchlist.tsx`, `useGamification.tsx`, `usePmoCompliance.tsx`, `useExperts.tsx`, `ExpertMessaging.tsx`
 
-**Decision:** Pas de correction dans cette iteration - le pattern skeleton est deja en place sur Countries. A surveiller.
+**Impact :** Aucune verification de type sur les queries Supabase. Toute erreur de nom de colonne passe silencieusement.
 
-### 6. Hero CTA mobile : taille de cible tactile limite
+**Correction :** Creer des interfaces locales pour ces tables et caster le client supabase avec un type etendu, ou utiliser `.from<TableType>()`. Approche pragmatique : definir les interfaces dans chaque fichier et caster le resultat, pas le client.
 
-**Fichier:** `src/pages/Index.tsx`, ligne 112-120
+## MAJEUR - `window.location.href` au lieu de React Router (3 occurrences corrigeables)
 
-Le bouton principal "Decouvrir mon profil gratuitement" a `h-14` (56px) ce qui est correct, mais les stats en dessous (`38+`, `50+`, `6`) ont des zones de texte petites sans padding tactile. Ce ne sont pas des boutons donc pas de probleme fonctionnel, mais l'espacement `gap-8` sur mobile cree un bloc dense.
+| Fichier | Ligne | Context |
+|---------|-------|---------|
+| `DisclaimerConsentDialog.tsx` | 117 | `window.location.href = '/disclaimer'` - force rechargement complet |
+| `CommunityQuickActions.tsx` | 77 | `window.location.href` pour copier lien - pas critique mais incohérent |
+| `onboarding/InteractiveTutorial.tsx` | 315 | `window.location.href = currentStep.action.href` - navigation interne |
 
-**Correction:** Pas critique - design intentionnel.
+**Note :** Les ErrorBoundary et share/clipboard usages sont legimes.
 
-### 7. Disclaimer dialog non-dismissable sans checkbox
+**Correction :** Remplacer par `navigate()` de react-router-dom dans DisclaimerConsentDialog et InteractiveTutorial.
 
-**Fichier:** `src/components/DisclaimerConsentDialog.tsx`
+## MAJEUR - ToolsHub liens vers routes masquees
 
-Le dialog bloque l'interaction (pas de close sur Escape, pas de click outside). C'est intentionnel pour la conformite legale, mais le bouton "J'ai compris, continuer" est desactive tant que la checkbox n'est pas cochee. Sur mobile, le contenu scrolle dans le dialog ce qui peut masquer la checkbox si l'utilisateur ne scrolle pas assez.
+`src/pages/ToolsHub.tsx` contient des liens vers des routes qui redirigent maintenant :
+- `/errors-illusions` -> redirige vers `/prevention-filter`
+- `/personas` -> redirige vers `/profile-test`
+- `/academic` -> redirige vers `/resources`
+- `/latent` -> redirige vers `/dashboard`
+- `/irreversa` -> redirige vers `/dashboard`
+- `/ovi` -> redirige vers `/dashboard`
+- `/community` -> redirige vers `/about`
+- `/b2b` -> redirige vers `/institutions`
+- `/partner-services` -> pas de redirect (404)
 
-**Correction:** Ajouter un indicateur visuel "Scrollez pour continuer" quand le contenu deborde, ou s'assurer que la checkbox est toujours visible.
+L'utilisateur clique sur "Zones Latentes" et atterrit sur le Dashboard sans comprendre pourquoi.
 
----
+**Correction :** Supprimer ou masquer les outils dont les routes sont masquees dans ToolsHub, ou ajouter un badge "Bientot" avec le lien desactive.
 
-## PROBLEMES MINEURS
+## MINEUR - Toast messages hardcodes FR (791 occurrences, 27 fichiers)
 
-### 8. Onboarding step dots sans aria-label
+Tous les hooks metier utilisent `toast.error('Erreur...')` et `toast.success('Succes...')` en francais brut. C'est le probleme i18n le plus massif restant.
 
-**Fichier:** `src/components/OnboardingDialog.tsx`, lignes 113-127
+**Decision :** Trop risque pour cette iteration (27 fichiers, 791 occurrences). Documenter pour une passe dediee.
 
-Les boutons dots de navigation d'etape sont des `<button>` sans `aria-label`. Un utilisateur avec lecteur d'ecran ne saura pas a quoi servent ces boutons.
+## MINEUR - `as any` residuels non-supabase
 
-**Correction:** Ajouter `aria-label={t('onboarding.goToStep', { step: index + 1 })}`.
-
-### 9. Footer trop dense sur mobile
-
-**Fichier:** `src/components/Footer.tsx`
-
-Le footer a 4 colonnes (`grid-cols-2 md:grid-cols-4`) mais les colonnes "Tools" contiennent 7 liens + un "Voir tout". Sur mobile 390px, ca fait 2 colonnes tres denses avec des textes qui se chevauchent potentiellement.
-
-**Correction:** Reduire les liens visibles sur mobile ou utiliser un accordeon.
-
-### 10. ContextualShortcuts position fixe chevauche potentiellement le contenu
-
-**Fichier:** `src/components/navigation/ContextualShortcuts.tsx`, ligne 122
-
-`fixed bottom-20 right-4` - sur certaines pages avec du contenu en bas (comme le footer), le panel flottant peut chevaucher le contenu. Il est `hidden md:block` donc mobile n'est pas affecte.
-
-**Correction:** Pas critique - desktop only, position standard pour un panel contextuel.
-
----
-
-## CE QUI EST BIEN FAIT (UX)
-
-- Systeme d'onboarding sequentiel bien orchestre (Disclaimer -> Onboarding -> Cookie Consent)
-- Header responsive avec menu mobile Sheet et sidebar desktop
-- Breadcrumbs intelligents qui se cachent sur les pages top-level
-- Empty state component reusable avec animations
-- Contextual shortcuts qui guident le parcours utilisateur
-- CountryCard avec forwardRef pour les animations de liste
-- Loading skeleton sur la page Countries
-- Focus trap et keyboard shortcuts accessibles
-- Reduced motion support dans useAccessibility
+| Fichier | Probleme |
+|---------|----------|
+| `LatentThresholdAlerts.tsx:215` | `variant={...as any}` sur Badge |
+| `TerrainPartnerReliability.tsx:129` | `partners as any` dans saveNotes |
+| `StrategicFrameworks.tsx:187,257,309,418` | Multiples `as any` pour tabs, positions, items |
+| `SecurityChecker.tsx:135` | `window as any` |
+| `TraceOSCollaboration.tsx:61` | `value[0] as any` sur presence |
 
 ---
 
-## PLAN DE CORRECTIONS
+# PHASE 2 : AUDIT UX (Designer Senior)
 
-### Priorite 1 : UX Breaking (page 404)
+## CRITIQUE - ToolsHub affiche des outils fantomes
 
-| Fichier | Action |
-|---------|--------|
-| `src/pages/NotFound.tsx` | Redesign complet : utiliser le design system (icone, branding, CTA vers accueil/pays/test, i18n, Link au lieu de `<a>`, animations) |
+L'utilisateur voit 30+ outils organises en categories. Quand il clique sur "Zones Latentes", "Irreversa", "OVI", "Communaute", "B2B", "Parcours Persona" ou "Centre Academique", il est redirige vers une page generique sans rapport. Aucun indicateur visuel n'avertit que ces outils ne sont pas disponibles.
 
-### Priorite 2 : i18n dans les composants de navigation
+**Correction :** Ajouter un badge "Bientot" et desactiver le lien, ou retirer les outils masques.
 
-| Fichier | Action |
-|---------|--------|
-| `src/components/navigation/Breadcrumbs.tsx` | Remplacer `ROUTE_LABELS` par des appels `t()` |
-| `src/components/navigation/ContextualShortcuts.tsx` | Internationaliser tous les labels et descriptions |
-| `src/components/ui/cookie-consent.tsx` | Internationaliser tout le texte du banner |
+## MAJEUR - Landing page (Index.tsx) 100% hardcodee en francais
 
-### Priorite 3 : Accessibilite et micro-interactions
+La page d'accueil est la premiere impression de l'app. Tout le contenu est en francais brut : hero, etapes, temoignages, pricing. Un utilisateur anglophone voit "Comprends le systeme avant de t'engager" sans traduction possible.
 
-| Fichier | Action |
-|---------|--------|
-| `src/components/OnboardingDialog.tsx` | Ajouter `aria-label` sur les boutons dots de navigation |
-| `src/components/DisclaimerConsentDialog.tsx` | Ajouter un indicateur scroll si le contenu deborde |
+**Correction :** Pas dans cette iteration (530 lignes, 80+ chaines). Documenter comme dette i18n majeure.
+
+## MAJEUR - DisclaimerConsentDialog utilise `window.location.href`
+
+Le lien "Voir les details complets" dans le disclaimer force un rechargement complet (`window.location.href = '/disclaimer'`). L'utilisateur perd son contexte (scroll, etat des formulaires) et voit un flash blanc.
+
+**Correction :** Utiliser `navigate('/disclaimer')` via un hook ou passer `navigate` en prop.
+
+## MINEUR - ToolsHub non internationalise
+
+Toutes les categories et descriptions dans ToolsHub sont en francais brut : "Decouvrir", "Explorer les pays et comprendre les systemes", etc. Meme pattern que la landing page.
 
 ---
+
+# PHASE 3 : AUDIT BETA TESTEUR (Utilisateur Final)
+
+## "Je clique sur des outils et je ne comprends pas ou j'atterris"
+
+En tant qu'utilisateur, je vais sur le Hub Outils (/tools). Je vois "Zones Latentes" avec "Risques caches" comme description. Je clique. J'arrive sur mon Dashboard. Je me dis "c'est un bug". Meme probleme avec OVI, Irreversa, Communaute, B2B, Parcours Persona. **C'est la source de confusion #1.**
+
+## "Le lien /partner-services ne marche pas"
+
+Dans le Hub Outils, la categorie "Communaute" affiche "Partenaires" avec le lien `/partner-services`. Ce lien n'a aucun redirect et aboutit a la page 404. C'est le seul lien casse de l'app.
+
+## "Quand je clique 'Voir les details complets' dans le disclaimer, la page recharge"
+
+Le flash blanc au rechargement donne l'impression que l'app a plante.
+
+## "Tout est en francais, je ne peux pas changer"
+
+Le language switcher existe dans le header mais la landing page, le hub outils, et les toasts restent en francais quel que soit le choix.
+
+---
+
+# PLAN DE CORRECTIONS (3 phases fusionnees)
+
+## Priorite 1 : Liens casses et outils fantomes (UX breaking)
+
+| # | Fichier | Action |
+|---|---------|--------|
+| 1 | `src/pages/ToolsHub.tsx` | Retirer ou desactiver (badge "Bientot" + `pointer-events-none opacity-60`) les outils dont les routes sont masquees : `/errors-illusions`, `/personas`, `/academic`, `/latent`, `/irreversa`, `/ovi`, `/community`, `/b2b`, `/partner-services` |
+| 2 | `src/routes/index.tsx` | Ajouter redirect `/partner-services` -> `/about` pour eliminer le 404 |
+
+## Priorite 2 : Navigation sans rechargement
+
+| # | Fichier | Action |
+|---|---------|--------|
+| 3 | `src/components/DisclaimerConsentDialog.tsx` L117 | Remplacer `window.location.href = '/disclaimer'` par `navigate('/disclaimer')` via `useNavigate()` |
+| 4 | `src/components/onboarding/InteractiveTutorial.tsx` L315 | Remplacer `window.location.href` par `navigate()` |
+
+## Priorite 3 : Type safety Supabase (5 fichiers critiques)
+
+| # | Fichier | Action |
+|---|---------|--------|
+| 5 | `src/hooks/useCountryWatchlist.tsx` | Definir interface `WatchlistRow` et caster les resultats au lieu du client |
+| 6 | `src/hooks/useGamification.tsx` | Definir interface `GamificationRow` et caster les resultats |
+| 7 | `src/hooks/useExperts.tsx` | Definir interface `ExpertProfileRow` et caster les resultats |
+
+## Non corrige (documente)
+
+| Probleme | Raison |
+|----------|--------|
+| 791 toast messages FR dans 27 hooks | Refactoring massif, passe i18n dediee necessaire |
+| Landing page 530 lignes FR | Passe i18n dediee necessaire |
+| ToolsHub labels FR | Meme passe i18n |
+| `as any` residuels dans composants non-critiques | Risque faible, composants secondaires |
+| `(supabase as any)` dans usePmoCompliance (12 occ.) | Module PMO en cours de stabilisation |
 
 ## Fichiers a modifier
 
-1. `src/pages/NotFound.tsx` - Redesign complet
-2. `src/components/navigation/Breadcrumbs.tsx` - i18n labels
-3. `src/components/navigation/ContextualShortcuts.tsx` - i18n labels
-4. `src/components/ui/cookie-consent.tsx` - i18n texte
-5. `src/components/OnboardingDialog.tsx` - Accessibilite dots
+1. `src/pages/ToolsHub.tsx` - Masquer outils fantomes
+2. `src/routes/index.tsx` - Redirect `/partner-services`
+3. `src/components/DisclaimerConsentDialog.tsx` - `navigate()` au lieu de `window.location.href`
+4. `src/components/onboarding/InteractiveTutorial.tsx` - `navigate()` au lieu de `window.location.href`
+5. `src/hooks/useCountryWatchlist.tsx` - Typage interfaces
+6. `src/hooks/useGamification.tsx` - Typage interfaces
+7. `src/hooks/useExperts.tsx` - Typage interfaces
 
 ## Estimation
 
 - Temps : 20-25 minutes
 - Complexite : Moyenne
-- Risque regression : Faible (modifications cosmetiques et i18n, pas de logique metier touchee)
+- Risque regression : Faible (liens, navigation, et typage cible sans logique metier touchee)
 
