@@ -39,7 +39,7 @@ export default function IrreversaModule() {
       icon: <Eye className="w-4 h-4 text-primary" />,
     },
     {
-      label: t('irreversa.nextSteps.exitKeys', 'Clés de Sortie'),
+      label: t('irreversa.nextSteps.exitKeys', 'Stratégies'),
       description: t('irreversa.nextSteps.exitKeysDesc', 'Trouver de nouvelles options'),
       href: '/exit-keys',
       icon: <Route className="w-4 h-4 text-primary" />,

@@ -456,7 +456,7 @@ export default function CountryDetail() {
         </div>
 
         <div className="mb-12">
-          <h2 className="font-display text-2xl font-bold mb-6">{t('exitKeys.title', 'Clés de Sortie')}</h2>
+          <h2 className="font-display text-2xl font-bold mb-6">{t('exitKeys.title', 'Stratégies')}</h2>
           <CountryExitKeys country={country} />
         </div>
 

@@ -167,7 +167,7 @@ function generateResults(formData: FilterFormData): FilterResult {
       );
       exitKeys.push(
         { label: "Comparer les pays", href: "/compare" },
-        { label: "Explorer les clés de sortie", href: "/exit-keys" }
+        { label: "Explorer les stratégies", href: "/exit-keys" }
       );
       break;
     case 'studies':
@@ -198,7 +198,7 @@ function generateResults(formData: FilterFormData): FilterResult {
         "Réalité quotidienne vs image du métier"
       );
       exitKeys.push(
-        { label: "Clés de sortie métier", href: "/exit-keys" },
+        { label: "Stratégies métier", href: "/exit-keys" },
         { label: "Comprendre les pyramides", href: "/pyramid-types" }
       );
       break;
@@ -333,7 +333,7 @@ function generateResults(formData: FilterFormData): FilterResult {
 
   // Always add general exit keys
   exitKeys.push(
-    { label: "Analyser ma situation complète", href: "/exit-keys" },
+    { label: "Analyser ma situation", href: "/exit-keys" },
     { label: "Jouer une simulation", href: "/life-game" }
   );
 

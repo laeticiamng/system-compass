@@ -69,7 +69,7 @@ export function GlobalSearch({
       {
         id: 'exit-keys',
         type: 'tool' as const,
-        title: 'Clés de Sortie',
+        title: 'Stratégies',
         description: 'Stratégies personnalisées d\'expatriation',
         href: '/exit-keys',
         icon: <Key className="w-4 h-4" />,

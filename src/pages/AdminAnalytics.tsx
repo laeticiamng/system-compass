@@ -545,7 +545,7 @@ export default function AdminAnalytics() {
             {[
               { label: 'Home', event: 'home_opened' },
               { label: 'Filtre Prévention', event: 'filter_clicked' },
-              { label: 'Clés de Sortie', event: 'exit_keys_clicked' },
+              { label: 'Stratégies', event: 'exit_keys_clicked' },
               { label: 'Erreurs Universelles', event: 'universal_errors_clicked' }
             ].map(item => {
               const count = dailyStats

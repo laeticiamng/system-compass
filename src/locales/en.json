@@ -256,7 +256,7 @@
     "diaspora": "Diaspora parent"
   },
   "cta": {
-    "viewAllKeys": "View all exit keys",
+    "viewAllKeys": "View all strategies",
     "educationalMode": "Educational mode (fictional character)"
   },
   "guestMode": {
@@ -336,8 +336,8 @@
     "energy": "Energy",
     "money": "Money",
     "stagnation": "Stagnation",
-    "exploreExitKeys": "Explore related exit keys",
-    "viewExitKeys": "View exit keys",
+    "exploreExitKeys": "Explore related strategies",
+    "viewExitKeys": "View strategies",
     "ctaTitle": "Avoiding these mistakes starts with understanding your system",
     "ctaSubtitle": "Analyze your current situation, identify potential mismatches, and explore strategies suited to your profile.",
     "simulateTrajectory": "Simulate my trajectory",
@@ -447,8 +447,8 @@
     "countries": "countries",
     "viewAll": "View all",
     "choosePlan": "Choose a plan to follow",
-    "choosePlanDesc": "Select an exit key to start tracking your progress",
-    "selectExitKey": "Select an exit key...",
+    "choosePlanDesc": "Select a strategy to start tracking your progress",
+    "selectExitKey": "Select a strategy...",
     "startedOn": "Started on",
     "reset": "Reset",
     "overallProgress": "Overall progress",
@@ -528,7 +528,7 @@
         "desc": "Analyze systems from over 25 countries"
       },
       "exitKeys": {
-        "title": "Exit Keys Catalog",
+        "title": "Strategies Catalog",
         "desc": "Discover mobility and evolution strategies"
       }
     },
@@ -623,7 +623,7 @@
     "profileTest": "Profile Test",
     "madeWith": "Made with",
     "about": "About",
-    "exitKeysCatalog": "Exit Keys Catalog",
+    "exitKeysCatalog": "Strategies Catalog",
     "potentialZones": "Potential Zones",
     "thresholdProtocol": "Threshold Protocol",
     "businessInstitutions": "Business & Institutions",
@@ -692,7 +692,7 @@
       },
       "q3": {
         "question": "What's the difference between \"My simulation\" and \"Educational mode\"?",
-        "answer": "\"My simulation\" (Exit Keys) analyzes YOUR real situation with YOUR parameters. \"Educational mode\" has you play a FICTIONAL random character to understand mechanics without personal involvement."
+        "answer": "\"My simulation\" (Strategies) analyzes YOUR real situation with YOUR parameters. \"Educational mode\" has you play a FICTIONAL random character to understand mechanics without personal involvement."
       },
       "q4": {
         "question": "Is it free?",
@@ -719,7 +719,7 @@
     "resources": "Resources",
     "pyramids": "Systems",
     "quiz": "Educational Mode",
-    "exitKeys": "Exit Keys",
+    "exitKeys": "Strategies",
     "dashboard": "Dashboard",
     "multiCompare": "Multi-Analysis",
     "systemicMistakes": "Mistakes",
@@ -752,7 +752,7 @@
     "advanced": "Pro Modules",
     "info": "Info",
     "notifications": "Notifications",
-    "exitKeysCatalog": "Exit Keys Catalog",
+    "exitKeysCatalog": "Strategies Catalog",
     "exitKeysCompare": "Compare Destinations",
     "terrainRealities": "Terrain Realities",
     "fiscalCalculator": "Fiscal Calculator",
@@ -5063,7 +5063,7 @@
       "point2": "You explore world mechanisms with no real risk",
       "point3": "This is an educational tool, not a prediction for you",
       "realLife": "To plan your real life →",
-      "realLifeLink": "Exit Keys"
+      "realLifeLink": "Strategies"
     },
     "tagline": {
       "quote": "Some are born at the finish line. Others must run a marathon with chains on their feet. This game shows why.",
@@ -5351,7 +5351,7 @@
       "implications": "What this choice often implies",
       "blindSpots": "Common blind spots",
       "risks": "Likely risks",
-      "exitKeys": "Possible exit keys"
+      "exitKeys": "Possible strategies"
     },
     "reversibility": {
       "reversible": "Reversible",
@@ -5379,7 +5379,7 @@
     "moneyCost": "Money",
     "energyCost": "Energy",
     "relatedPyramids": "Related pyramids",
-    "exitKeys": "Possible exit keys",
+    "exitKeys": "Possible strategies",
     "simulateCta": "Simulate a concrete case",
     "simulateDescription": "Test a decision related to this error to identify risks before committing.",
     "simulateCase": "Simulate a case",
@@ -5512,10 +5512,10 @@
     "result": {
       "systemLooksLike": "The system often looks like...",
       "blindSpots": "3 frequent blind spots",
-      "exitKey": "1 exit key to consider",
+      "exitKey": "1 strategy to consider",
       "deepDive": "Deep dive",
       "compareScenarios": "Compare 2 scenarios",
-      "viewExitKeys": "View exit keys"
+      "viewExitKeys": "View strategies"
     },
     "blindSpots": {
       "stability": {
@@ -5577,7 +5577,7 @@
     "nextSteps": {
       "countries": "Explore Countries",
       "countriesDesc": "Discover the country variants now unlocked",
-      "exitKeys": "Exit Keys",
+      "exitKeys": "Strategies",
       "exitKeysDesc": "Find strategies adapted to your profile",
       "dashboard": "Dashboard",
       "dashboardDesc": "Track your progress and goals",
@@ -5961,13 +5961,13 @@
   "search": {
     "title": "Global Search",
     "placeholder": "Search...",
-    "inputPlaceholder": "Search for a country, exit key, error...",
+    "inputPlaceholder": "Search for a country, strategy, error...",
     "startTyping": "Start typing to search",
     "noResults": "No results found",
     "hint": "Use ↑↓ to navigate, Enter to select",
     "close": "to close",
     "typeCountry": "Country",
-    "typeExitKey": "Exit Key",
+    "typeExitKey": "Strategy",
     "typeError": "Error",
     "typePage": "Page"
   },
@@ -7259,7 +7259,7 @@
         "plan": {
           "title": "I want to plan my next steps",
           "description": "Structure a realistic action plan",
-          "cta": "Exit Keys"
+          "cta": "Strategies"
         }
       }
     },
@@ -7271,7 +7271,7 @@
         "bestFor": ["Validate an important decision", "Anticipate hidden obstacles"]
       },
       "exitKeys": {
-        "title": "Exit Keys",
+        "title": "Strategies",
         "description": "Personalized roadmaps based on your situation, goals and constraints",
         "bestFor": ["Plan a life transition", "Structure a mobility project"]
       },
@@ -7381,11 +7381,11 @@
       "title": "Avoiding these mistakes starts with understanding your system",
       "subtitle": "Analyze your current situation, identify potential mismatches, and explore strategies suited to your profile.",
       "simulateTrajectory": "Simulate my trajectory",
-      "viewExitKeys": "View Exit Keys"
+      "viewExitKeys": "View Strategies"
     }
   },
   "exitKeys": {
-    "title": "Find Your Exit Key",
+    "title": "Find Your Strategy",
     "subtitle": "Simulate and analyze strategies suited to your situation",
     "badge": {
       "personalized": "Personalized analysis",
@@ -7478,7 +7478,7 @@
       "countryInfo": "Key information about"
     },
     "results": {
-      "title": "Your Exit Keys",
+      "title": "Your Strategies",
       "strategiesFound": "{{count}} strategies identified for your situation",
       "personalizedFor": "Personalized analysis for {{country}}",
       "nationalityAdvantages": "Your Nationality Advantages",
@@ -7555,7 +7555,7 @@
       "calm": "Serenity"
     },
     "results": {
-      "title": "Your Exit Keys",
+      "title": "Your Strategies",
       "strategiesFound": "{{count}} strategies identified for your situation",
       "nationalityAdvantages": "Your Nationality Advantages",
       "visaFreeCountries": "visa-free countries",
@@ -7627,7 +7627,7 @@
       "citizenship": "Citizenship"
     },
     "catalog": {
-      "title": "Exit Keys Catalog",
+      "title": "Strategies Catalog",
       "subtitle": "Structured strategies for changing systems. Each key is a measurable trajectory, no vague promises.",
       "filters": "Filters",
       "difficulty": "Difficulty",
@@ -7650,9 +7650,9 @@
       "simulateTrajectory": "Simulate my trajectory"
     },
     "compare": {
-      "backToKeys": "Back to Exit Keys",
+      "backToKeys": "Back to Strategies",
       "title": "Compare Strategies",
-      "subtitle": "Analyze up to 3 exit keys side by side",
+      "subtitle": "Analyze up to 3 strategies side by side",
       "selectStrategies": "Select strategies to compare",
       "addStrategy": "Add a strategy",
       "compatibility": "Compatibility",
@@ -7668,8 +7668,8 @@
       "bestOption": "{{name}} is the best option for you",
       "withCompatibility": "With {{percent}}% compatibility",
       "selectStrategiesToCompare": "Select strategies",
-      "chooseUpTo3": "Choose up to 3 exit keys to compare them",
-      "viewAllKeys": "View all keys"
+      "chooseUpTo3": "Choose up to 3 strategies to compare them",
+      "viewAllKeys": "View all strategies"
     },
     "pyramidLabels": {
       "PROBLEM_RENT": "Problem Rent",
@@ -8029,7 +8029,7 @@
     "premiumFeature3": "What surprises newcomers",
     "proFeature1": "All Premium content",
     "proFeature2": "Personalized project analysis",
-    "proFeature3": "Personalized exit keys",
+    "proFeature3": "Personalized strategies",
     "badge": "Transparent pricing",
     "title": "Choose your plan",
     "subtitle": "Unlock deeper analyses and personalized recommendations",
@@ -8112,7 +8112,7 @@
   "ai": {
     "help": "AI Help",
     "helpTooltip": "Open AI assistant",
-    "exitKeysAssistant": "Exit Keys Assistant",
+    "exitKeysAssistant": "Strategies Assistant",
     "countryAnalysisAssistant": "Country Analysis Assistant",
     "dashboardAssistant": "Dashboard Assistant",
     "selectAction": "Select an action",
@@ -9051,7 +9051,7 @@
     "pro": "Pro",
     "from": "from",
     "proFeature1": "In-depth analyses",
-    "proFeature2": "Personalized exit keys",
+    "proFeature2": "Personalized strategies",
     "proFeature3": "PDF export",
     "cta": "View plans"
   }

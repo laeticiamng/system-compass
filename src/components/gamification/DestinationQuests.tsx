@@ -81,7 +81,7 @@ const DESTINATION_QUESTS: Quest[] = [
       { id: 'ch-3', title: 'Comprendre les permis', description: 'Lisez le guide des permis B, C, L', type: 'explore', completed: false },
       { id: 'ch-4', title: 'Consulter un expert', description: 'Prenez contact avec un expert Suisse', type: 'expert', completed: false },
       { id: 'ch-5', title: 'Quiz permis suisses', description: 'Validez vos connaissances', type: 'quiz', completed: false },
-      { id: 'ch-6', title: 'Créer votre Exit Key', description: 'Finalisez votre stratégie Suisse', type: 'explore', completed: false },
+      { id: 'ch-6', title: 'Finaliser votre stratégie', description: 'Finalisez votre stratégie Suisse', type: 'explore', completed: false },
     ],
   },
   {

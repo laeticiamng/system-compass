@@ -43,7 +43,7 @@ export default function LatentModule() {
       icon: <AlertTriangle className="w-4 h-4 text-destructive" />,
     },
     {
-      label: t('latent.nextSteps.exitKeys', 'Clés de Sortie'),
+      label: t('latent.nextSteps.exitKeys', 'Stratégies'),
       description: t('latent.nextSteps.exitKeysDesc', 'Explorer vos options concrètes'),
       href: '/exit-keys',
       icon: <Route className="w-4 h-4 text-primary" />,

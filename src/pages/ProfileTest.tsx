@@ -221,7 +221,7 @@ export default function ProfileTest() {
                 className="p-4 rounded-lg bg-muted/50 hover:bg-muted transition-all text-center group"
               >
                 <Route className="w-6 h-6 text-foreground mx-auto mb-2" />
-                <p className="font-medium text-sm">{t('profileTest.exitKeys', 'Clés de sortie')}</p>
+                <p className="font-medium text-sm">{t('profileTest.exitKeys', 'Stratégies')}</p>
                 <p className="text-xs text-muted-foreground">{t('profileTest.exitKeysDesc', 'Stratégies personnalisées')}</p>
               </button>
               <button

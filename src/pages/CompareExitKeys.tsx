@@ -92,7 +92,7 @@ export default function CompareExitKeys() {
             </div>
             <div>
               <h1 className="font-display text-3xl md:text-4xl font-bold">{t('exitKeys.compare.title', 'Comparer les Stratégies')}</h1>
-              <p className="text-muted-foreground">{t('exitKeys.compare.subtitle', "Analysez jusqu'à 3 clés de sortie côte à côte")}</p>
+              <p className="text-muted-foreground">{t('exitKeys.compare.subtitle', "Analysez jusqu'à 3 stratégies côte à côte")}</p>
             </div>
           </div>
         </div>
@@ -103,7 +103,7 @@ export default function CompareExitKeys() {
   return (
     <PremiumPageWrapper
       title={t('subscription.compareExitKeysTitle', 'Comparaison de Stratégies')}
-      description={t('subscription.compareExitKeysDesc', 'Comparez les clés de sortie côte à côte pour identifier la meilleure stratégie pour votre profil.')}
+      description={t('subscription.compareExitKeysDesc', 'Comparez les stratégies côte à côte pour identifier la meilleure option pour votre profil.')}
       previewContent={previewContent}
     >
       <main className="min-h-screen bg-background pt-24 pb-16">
@@ -111,7 +111,7 @@ export default function CompareExitKeys() {
           <div className="mb-8">
             <Link to="/exit-keys" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-6">
               <ArrowLeft className="w-4 h-4" />
-              {t('exitKeys.compare.backToKeys', 'Retour aux Clés de Sortie')}
+              {t('exitKeys.compare.backToKeys', 'Retour aux Stratégies')}
             </Link>
             <div className="flex items-center gap-4 mb-4">
               <div className="p-3 rounded-xl bg-primary/20">
@@ -119,7 +119,7 @@ export default function CompareExitKeys() {
               </div>
               <div>
                 <h1 className="font-display text-3xl md:text-4xl font-bold">{t('exitKeys.compare.title', 'Comparer les Stratégies')}</h1>
-                <p className="text-muted-foreground">{t('exitKeys.compare.subtitle', "Analysez jusqu'à 3 clés de sortie côte à côte")}</p>
+                <p className="text-muted-foreground">{t('exitKeys.compare.subtitle', "Analysez jusqu'à 3 stratégies côte à côte")}</p>
               </div>
             </div>
           </div>
@@ -249,7 +249,7 @@ export default function CompareExitKeys() {
             <div className="text-center py-16">
               <Key className="w-16 h-16 text-muted-foreground mx-auto mb-4 opacity-50" />
               <h3 className="text-xl font-semibold mb-2">{t('exitKeys.compare.selectStrategiesToCompare', 'Sélectionnez des stratégies')}</h3>
-              <p className="text-muted-foreground mb-6">{t('exitKeys.compare.chooseUpTo3', "Choisissez jusqu'à 3 clés de sortie pour les comparer")}</p>
+              <p className="text-muted-foreground mb-6">{t('exitKeys.compare.chooseUpTo3', "Choisissez jusqu'à 3 stratégies pour les comparer")}</p>
               <Link to="/exit-keys"><Button variant="outline" className="gap-2">{t('exitKeys.compare.viewAllKeys', 'Voir toutes les clés')}</Button></Link>
             </div>
           )}

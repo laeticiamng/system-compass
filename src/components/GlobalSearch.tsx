@@ -159,7 +159,7 @@ export function GlobalSearch() {
   const getTypeLabel = (type: SearchResult['type']) => {
     switch (type) {
       case 'country': return t('search.typeCountry', 'Pays');
-      case 'exit_key': return t('search.typeExitKey', 'Clé de sortie');
+      case 'exit_key': return t('search.typeExitKey', 'Stratégie');
       case 'error': return t('search.typeError', 'Erreur');
       case 'page': return t('search.typePage', 'Page');
     }
@@ -191,7 +191,7 @@ export function GlobalSearch() {
             <Input
               value={query}
               onChange={e => setQuery(e.target.value)}
-              placeholder={t('search.inputPlaceholder', 'Rechercher un pays, une clé de sortie, une erreur...')}
+              placeholder={t('search.inputPlaceholder', 'Rechercher un pays, une stratégie, une erreur...')}
               className="border-0 shadow-none focus-visible:ring-0 text-base"
               autoFocus
             />

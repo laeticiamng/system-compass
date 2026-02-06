@@ -22,7 +22,7 @@ const BASE_STATS: LiveStat[] = [
 
 const RECENT_ACTIVITIES = [
   { country: '🇫🇷', action: 'a exploré le Portugal', time: 'il y a 2 min' },
-  { country: '🇩🇪', action: 'a sauvegardé 3 clés de sortie', time: 'il y a 5 min' },
+  { country: '🇩🇪', action: 'a sauvegardé 3 stratégies', time: 'il y a 5 min' },
   { country: '🇧🇪', action: 'a comparé UAE vs Singapour', time: 'il y a 8 min' },
   { country: '🇨🇭', action: 'a terminé le quiz pyramide', time: 'il y a 12 min' },
   { country: '🇪🇸', action: 'a consulté la fiscalité Andorre', time: 'il y a 15 min' },

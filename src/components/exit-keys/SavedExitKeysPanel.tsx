@@ -85,7 +85,7 @@ export function SavedExitKeysPanel() {
         <Bookmark className="w-10 h-10 text-muted-foreground mx-auto mb-3 opacity-50" />
         <h3 className="font-semibold mb-2">{t('exitKeys.savedKeys.loginRequired', 'Connexion requise')}</h3>
         <p className="text-sm text-muted-foreground mb-4">
-          {t('exitKeys.savedKeys.loginPrompt', 'Connectez-vous pour sauvegarder et suivre vos clés de sortie')}
+          {t('exitKeys.savedKeys.loginPrompt', 'Connectez-vous pour sauvegarder et suivre vos stratégies')}
         </p>
         <Link to="/auth">
           <Button variant="outline">{t('auth.login', 'Se connecter')}</Button>
@@ -202,7 +202,7 @@ export function SavedExitKeysPanel() {
           <Key className="w-12 h-12 text-muted-foreground mx-auto mb-4 opacity-50" />
           <h3 className="font-semibold mb-2">{t('exitKeys.savedKeys.noKeys', 'Aucune clé explorée')}</h3>
           <p className="text-sm text-muted-foreground mb-4">
-            {t('exitKeys.savedKeys.explorePrompt', 'Explorez les clés de sortie pour les sauvegarder ici')}
+            {t('exitKeys.savedKeys.explorePrompt', 'Explorez les stratégies pour les sauvegarder ici')}
           </p>
           <Link to="/exit-keys">
             <Button className="gap-2">
