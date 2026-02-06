@@ -56,7 +56,7 @@ export function Footer() {
           <div>
             <h4 className="font-semibold text-sm sm:text-base mb-2 sm:mb-4">{t('footer.tools')}</h4>
             <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-muted-foreground">
-              <li><Link to="/exit-keys" className="hover:text-foreground transition-colors block py-0.5">{t('nav.exitKeys')}</Link></li>
+              <li><Link to="/exit-keys" className="hover:text-foreground transition-colors block py-0.5">{t('nav.exitKeys', 'Stratégies')}</Link></li>
               <li><Link to="/quick-test" className="hover:text-foreground transition-colors block py-0.5">{t('nav.quickTest', 'Test Rapide')}</Link></li>
               <li><Link to="/profile-matcher" className="hover:text-foreground transition-colors block py-0.5">{t('nav.profileMatcher', 'Matcher Pays')}</Link></li>
               <li><Link to="/fiscal-calculator" className="hover:text-foreground transition-colors block py-0.5">{t('nav.fiscalCalculator', 'Calculateur Fiscal')}</Link></li>
