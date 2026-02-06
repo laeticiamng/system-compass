@@ -78,14 +78,23 @@ export default function Countries() {
   const [sortBy, setSortBy] = useState<SortOption>('name-asc');
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Helper to get translated country name for search using country ID
-  const getTranslatedName = (country: Country | ExtendedCountryInfo): string => {
+  // Helper to get all translated country names for universal search across languages
+  const getTranslatedNames = (country: Country | ExtendedCountryInfo): string[] => {
     const countryId = country.id?.toLowerCase() || '';
-    if (!countryId) return '';
-    // FIX: Use 'countriesData' namespace which contains translated country names
-    const translatedName = t(`countriesData.${countryId}.name`, { defaultValue: '' });
-    // Return empty string if key not found (i18next returns the key itself)
-    return translatedName !== `countriesData.${countryId}.name` ? translatedName : '';
+    if (!countryId) return [];
+    
+    // Search across all main languages for universal matching
+    const languages = ['en', 'fr', 'es', 'de', 'pt', 'it', 'nl'];
+    const names: string[] = [];
+    
+    for (const lang of languages) {
+      const name = i18n.getResource(lang, 'translation', `countriesData.${countryId}.name`);
+      if (name && typeof name === 'string') {
+        names.push(name.toLowerCase());
+      }
+    }
+    
+    return names;
   };
 
   const filteredAndSortedCountries = useMemo(() => {
@@ -99,7 +108,7 @@ export default function Countries() {
           c.name.toLowerCase().includes(query) ||
           c.nameLocal?.toLowerCase().includes(query) ||
           c.region.toLowerCase().includes(query) ||
-          getTranslatedName(c).toLowerCase().includes(query)
+          getTranslatedNames(c).some(name => name.includes(query))
         );
       }
       
@@ -121,7 +130,7 @@ export default function Countries() {
           c.name.toLowerCase().includes(query) ||
           c.nameLocal?.toLowerCase().includes(query) ||
           c.region.toLowerCase().includes(query) ||
-          getTranslatedName(c).toLowerCase().includes(query)
+          getTranslatedNames(c).some(name => name.includes(query))
         );
       }
       
@@ -149,7 +158,7 @@ export default function Countries() {
         c.name.toLowerCase().includes(query) ||
         c.nameLocal?.toLowerCase().includes(query) ||
         c.region.toLowerCase().includes(query) ||
-        getTranslatedName(c).toLowerCase().includes(query)
+        getTranslatedNames(c).some(name => name.includes(query))
       );
     }
     
@@ -174,7 +183,7 @@ export default function Countries() {
     });
     
     return result;
-  }, [countries, filter, searchQuery, sortBy, savedIds, i18n.language, getTranslatedName]);
+  }, [countries, filter, searchQuery, sortBy, savedIds, i18n.language, getTranslatedNames]);
 
   const totalPages = Math.ceil(filteredAndSortedCountries.length / ITEMS_PER_PAGE);
   
