@@ -91,7 +91,7 @@ export function CountryProgressTracker() {
                       <h4 className="font-medium">{country.countryName}</h4>
                       {country.exitKeyActive && (
                         <Badge className="bg-primary/10 text-primary text-xs">
-                          Exit Key actif
+                          Stratégie active
                         </Badge>
                       )}
                     </div>

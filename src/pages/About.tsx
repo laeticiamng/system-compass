@@ -278,7 +278,7 @@ export default function About() {
               <CardContent>
                 <Button asChild className="w-full gap-2">
                   <Link to="/exit-keys">
-                    {t('nav.exitKeys', 'Clés de Sortie')}
+                    {t('nav.exitKeys', 'Stratégies')}
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                 </Button>

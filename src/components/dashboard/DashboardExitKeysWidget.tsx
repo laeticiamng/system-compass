@@ -36,7 +36,7 @@ export function DashboardExitKeysWidget() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Key className="w-5 h-5 text-primary" />
-            {t('dashboard.exitKeys.title', 'Mes Clés de Sortie')}
+            {t('dashboard.exitKeys.title', 'Mes Stratégies')}
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -55,18 +55,18 @@ export function DashboardExitKeysWidget() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Key className="w-5 h-5 text-primary" />
-            {t('dashboard.exitKeys.title', 'Mes Clés de Sortie')}
+            {t('dashboard.exitKeys.title', 'Mes Stratégies')}
           </CardTitle>
         </CardHeader>
         <CardContent className="text-center py-6">
           <Key className="w-10 h-10 text-muted-foreground mx-auto mb-3 opacity-50" />
           <p className="text-sm text-muted-foreground mb-4">
-            {t('dashboard.exitKeys.empty', "Vous n'avez pas encore exploré de clés de sortie")}
+            {t('dashboard.exitKeys.empty', "Vous n'avez pas encore exploré de stratégies")}
           </p>
           <Link to="/exit-keys">
             <Button size="sm" className="gap-2">
               <Key className="w-4 h-4" />
-              {t('dashboard.exitKeys.explore', 'Explorer les clés')}
+              {t('dashboard.exitKeys.explore', 'Explorer les stratégies')}
             </Button>
           </Link>
         </CardContent>
@@ -79,7 +79,7 @@ export function DashboardExitKeysWidget() {
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle className="flex items-center gap-2">
           <Key className="w-5 h-5 text-primary" />
-          {t('dashboard.exitKeys.title', 'Mes Clés de Sortie')}
+          {t('dashboard.exitKeys.title', 'Mes Stratégies')}
         </CardTitle>
         <Link to="/exit-keys">
           <Button variant="ghost" size="sm" className="gap-1">

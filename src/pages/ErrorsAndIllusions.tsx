@@ -374,11 +374,11 @@ export default function ErrorsAndIllusions() {
                         <div className="border-t border-border pt-4">
                           <div className="flex items-center justify-between">
                             <span className="text-sm text-muted-foreground">
-                              {t('systemicMistakes.exploreExitKeys', 'Explorer les clés de sortie associées')}
+                              {t('systemicMistakes.exploreExitKeys', 'Explorer les stratégies associées')}
                             </span>
                             <Link to="/exit-keys">
                               <Button variant="ghost" size="sm" className="gap-2">
-                                {t('systemicMistakes.viewExitKeys', 'Voir les clés de sortie')}
+                                {t('systemicMistakes.viewExitKeys', 'Voir les stratégies')}
                                 <ArrowRight className="w-4 h-4" />
                               </Button>
                             </Link>

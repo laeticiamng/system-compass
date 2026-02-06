@@ -373,7 +373,7 @@ export default function Resources() {
                     <Globe className="w-6 h-6 text-primary" />
                   </div>
                   <div className="flex-1">
-                    <h4 className="font-medium">{t('resources.tools.exitKeys', 'Clés de Sortie')}</h4>
+                    <h4 className="font-medium">{t('resources.tools.exitKeys', 'Stratégies')}</h4>
                     <p className="text-sm text-muted-foreground">{t('resources.tools.exitKeysDesc', 'Plans personnalisés')}</p>
                   </div>
                   <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
