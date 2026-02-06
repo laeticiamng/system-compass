@@ -2,6 +2,7 @@
  * useNewsletter - Newsletter subscription hook with backend persistence
  */
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from './useAuth';
 import { toast } from 'sonner';
@@ -24,6 +25,7 @@ interface UseNewsletterReturn {
 }
 
 export function useNewsletter(): UseNewsletterReturn {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -34,7 +36,7 @@ export function useNewsletter(): UseNewsletterReturn {
     // Validate email
     const validation = emailSchema.safeParse(email);
     if (!validation.success) {
-      toast.error('Email invalide');
+      toast.error(t('newsletter.invalidEmail', 'Email invalide'));
       return false;
     }
 
@@ -80,13 +82,13 @@ export function useNewsletter(): UseNewsletterReturn {
         localStorage.setItem('newsletter_subscriptions', JSON.stringify(stored));
       }
 
-      toast.success('Inscription réussie !', {
-        description: 'Bienvenue dans la communauté System Compass.',
+      toast.success(t('newsletter.subscribed', 'Inscription réussie !'), {
+        description: t('newsletter.subscribedDesc', 'Bienvenue dans la communauté System Compass.'),
       });
       return true;
     } catch (error) {
       console.error('Newsletter subscription error:', error);
-      toast.error('Erreur lors de l\'inscription');
+      toast.error(t('newsletter.subscribeError', 'Erreur lors de l\'inscription'));
       return false;
     } finally {
       setIsLoading(false);
@@ -107,11 +109,11 @@ export function useNewsletter(): UseNewsletterReturn {
 
       if (error) throw error;
 
-      toast.success('Désabonnement effectué');
+      toast.success(t('newsletter.unsubscribed', 'Désabonnement effectué'));
       return true;
     } catch (error) {
       console.error('Newsletter unsubscribe error:', error);
-      toast.error('Erreur lors du désabonnement');
+      toast.error(t('newsletter.unsubscribeError', 'Erreur lors du désabonnement'));
       return false;
     } finally {
       setIsLoading(false);
@@ -122,7 +124,7 @@ export function useNewsletter(): UseNewsletterReturn {
     preferences: Partial<NewsletterPreferences>
   ): Promise<boolean> => {
     if (!user) {
-      toast.error('Veuillez vous connecter');
+      toast.error(t('newsletter.loginRequired', 'Veuillez vous connecter'));
       return false;
     }
 
@@ -136,11 +138,11 @@ export function useNewsletter(): UseNewsletterReturn {
 
       if (error) throw error;
 
-      toast.success('Préférences mises à jour');
+      toast.success(t('newsletter.preferencesUpdated', 'Préférences mises à jour'));
       return true;
     } catch (error) {
       console.error('Newsletter preferences error:', error);
-      toast.error('Erreur lors de la mise à jour');
+      toast.error(t('newsletter.preferencesError', 'Erreur lors de la mise à jour'));
       return false;
     } finally {
       setIsLoading(false);

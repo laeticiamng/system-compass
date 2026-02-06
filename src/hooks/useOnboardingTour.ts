@@ -4,6 +4,7 @@
  */
 
 import { useState, useCallback } from 'react';
+import type { TFunction } from 'i18next';
 
 const TOUR_COMPLETED_KEY = 'pyramid-compass-tour-completed';
 const TOUR_VERSION = 'v1'; // Increment to re-show tour after updates
@@ -12,49 +13,53 @@ export interface TourStep {
   id: string;
   title: string;
   description: string;
-  target?: string; // CSS selector for highlight
+  target?: string;
   action?: 'click' | 'navigate';
   href?: string;
 }
 
-export const TOUR_STEPS: TourStep[] = [
-  {
-    id: 'welcome',
-    title: 'Bienvenue sur Pyramid Compass ! 🎉',
-    description: 'Découvrez comment naviguer et utiliser les outils en quelques étapes.',
-  },
-  {
-    id: 'sidebar',
-    title: 'Navigation Sidebar',
-    description: 'Utilisez la sidebar à gauche pour accéder rapidement à tous les modules. Raccourci : Ctrl+B',
-    target: '[data-sidebar]',
-  },
-  {
-    id: 'search',
-    title: 'Recherche Globale',
-    description: 'Tapez Cmd+K (ou Ctrl+K) pour rechercher n\'importe quelle page ou fonctionnalité.',
-    target: '[data-search-trigger]',
-  },
-  {
-    id: 'tools-hub',
-    title: 'Hub Outils',
-    description: 'Retrouvez tous les 30+ outils organisés par catégorie dans le Hub central.',
-    href: '/tools',
-  },
-  {
-    id: 'quick-test',
-    title: 'Commencez par un Test Rapide',
-    description: 'En 60 secondes, découvrez les pays qui correspondent à votre profil.',
-    href: '/quick-test',
-  },
-  {
-    id: 'favorites',
-    title: 'Personnalisez vos Favoris',
-    description: 'Cliquez sur ★ à côté d\'une page pour l\'ajouter à vos favoris dans la sidebar.',
-  },
-];
+export function getTourSteps(t: TFunction): TourStep[] {
+  return [
+    {
+      id: 'welcome',
+      title: t('tour.welcome', 'Bienvenue sur Pyramid Compass ! 🎉'),
+      description: t('tour.welcomeDesc', 'Découvrez comment naviguer et utiliser les outils en quelques étapes.'),
+    },
+    {
+      id: 'sidebar',
+      title: t('tour.sidebar', 'Navigation Sidebar'),
+      description: t('tour.sidebarDesc', 'Utilisez la sidebar à gauche pour accéder rapidement à tous les modules. Raccourci : Ctrl+B'),
+      target: '[data-sidebar]',
+    },
+    {
+      id: 'search',
+      title: t('tour.search', 'Recherche Globale'),
+      description: t('tour.searchDesc', 'Tapez Cmd+K (ou Ctrl+K) pour rechercher n\'importe quelle page ou fonctionnalité.'),
+      target: '[data-search-trigger]',
+    },
+    {
+      id: 'tools-hub',
+      title: t('tour.toolsHub', 'Hub Outils'),
+      description: t('tour.toolsHubDesc', 'Retrouvez tous les 30+ outils organisés par catégorie dans le Hub central.'),
+      href: '/tools',
+    },
+    {
+      id: 'quick-test',
+      title: t('tour.quickTest', 'Commencez par un Test Rapide'),
+      description: t('tour.quickTestDesc', 'En 60 secondes, découvrez les pays qui correspondent à votre profil.'),
+      href: '/quick-test',
+    },
+    {
+      id: 'favorites',
+      title: t('tour.favorites', 'Personnalisez vos Favoris'),
+      description: t('tour.favoritesDesc', 'Cliquez sur ★ à côté d\'une page pour l\'ajouter à vos favoris dans la sidebar.'),
+    },
+  ];
+}
 
-export function useOnboardingTour() {
+const DEFAULT_STEPS_COUNT = 6;
+
+export function useOnboardingTour(stepsCount: number = DEFAULT_STEPS_COUNT) {
   const [isActive, setIsActive] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
   const [hasCompletedTour, setHasCompletedTour] = useState(() => {
@@ -75,24 +80,6 @@ export function useOnboardingTour() {
     setIsActive(true);
   }, []);
 
-  const nextStep = useCallback(() => {
-    if (currentStep < TOUR_STEPS.length - 1) {
-      setCurrentStep(prev => prev + 1);
-    } else {
-      completeTour();
-    }
-  }, [currentStep]);
-
-  const prevStep = useCallback(() => {
-    if (currentStep > 0) {
-      setCurrentStep(prev => prev - 1);
-    }
-  }, [currentStep]);
-
-  const skipTour = useCallback(() => {
-    completeTour();
-  }, []);
-
   const completeTour = useCallback(() => {
     setIsActive(false);
     setHasCompletedTour(true);
@@ -102,6 +89,24 @@ export function useOnboardingTour() {
       console.warn('Failed to save tour completion:', e);
     }
   }, []);
+
+  const nextStep = useCallback(() => {
+    if (currentStep < stepsCount - 1) {
+      setCurrentStep(prev => prev + 1);
+    } else {
+      completeTour();
+    }
+  }, [currentStep, stepsCount, completeTour]);
+
+  const prevStep = useCallback(() => {
+    if (currentStep > 0) {
+      setCurrentStep(prev => prev - 1);
+    }
+  }, [currentStep]);
+
+  const skipTour = useCallback(() => {
+    completeTour();
+  }, [completeTour]);
 
   const resetTour = useCallback(() => {
     setHasCompletedTour(false);
@@ -115,8 +120,7 @@ export function useOnboardingTour() {
   return {
     isActive,
     currentStep,
-    totalSteps: TOUR_STEPS.length,
-    step: TOUR_STEPS[currentStep],
+    totalSteps: stepsCount,
     hasCompletedTour,
     startTour,
     nextStep,
@@ -124,6 +128,6 @@ export function useOnboardingTour() {
     skipTour,
     completeTour,
     resetTour,
-    progress: ((currentStep + 1) / TOUR_STEPS.length) * 100,
+    progress: ((currentStep + 1) / stepsCount) * 100,
   };
 }
