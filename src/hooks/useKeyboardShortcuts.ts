@@ -55,7 +55,7 @@ export function useKeyboardShortcuts(options: UseKeyboardShortcutsOptions = {}) 
     {
       key: 'e',
       alt: true,
-      description: 'Clés de sortie',
+      description: 'Stratégies',
       category: 'navigation',
       action: () => navigate('/exit-keys'),
     },
