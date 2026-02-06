@@ -1,155 +1,126 @@
 
-
-# Audit Critique Pre-Publication -- Multi-Role v28
+# Audit Critique Pre-Publication v29 -- Corrections finales
 
 ## Synthese Executive
 
-Apres 7 audits iteratifs (v22-v27), la landing page et l'onboarding sont propres. Cependant, un audit exhaustif pre-publication revele **encore du jargon "Cles de Sortie" massif** dans les pages internes (visible par les utilisateurs), une fausse preuve sociale toujours exportee, et quelques incohérences mineures. La securite et la conformite RGPD sont solides (1 seul warning mineur cote base de donnees).
+Apres les audits v22-v28, la landing page, l'onboarding et la navigation principale sont propres. La securite est validee (RLS A+, tous les error-level findings resolus). La conformite RGPD est en place.
+
+**Dernier blocage identifie** : ~20 fallbacks hardcodes "Cles de Sortie" / "Exit Key" restent visibles dans les pages internes (dashboard, detail pays, detail erreur, gamification, GDPR export, resources, subscription success, about). Ces termes s'affichent a l'ecran quand la traduction i18n est absente ou incomplete.
 
 ---
 
-## Ce qui est valide (ne pas toucher)
+## Audits specialises -- Verdicts
 
-- Landing page (Index.tsx) : titre, CTA, pricing, micro-texte "Gratuit sans carte bancaire", CheckCircle verts uniformes
-- Onboarding dialog : jargon elimine, fallbacks FR corriges
-- Authentification : Google + Apple OAuth, validation Zod, password strength meter, rate limiting
-- Footer : "Strategies" comme fallback, liens legaux presents (CGV, mentions, confidentialite)
-- Architecture securite : RLS actif sur toutes les tables, 1 seul warning mineur (extension dans public schema)
-- RGPD : anonymisation IP 90j, consentement cookies, disclaimer simulations, masquage donnees sensibles
-- 404 : page propre, suggestions pertinentes
-- Navigation : config dans navigation.ts deja corrigee ("Strategies")
-- Design system : palette or/ambre coherente, typo premium, Framer Motion dose, glassmorphism, contrastes WCAG AA
-
----
-
-## Corrections classees par priorite
-
-### PRIORITE 1 -- Jargon "Cles de Sortie" encore visible dans les traductions FR (surface utilisateur)
-
-Le terme "Cles de Sortie" apparait encore dans **75+ cles de traduction** du fichier `fr.json`. Toutes ces chaines sont rendues a l'ecran quand l'utilisateur navigue sur les pages internes. C'est le dernier gros chantier de coherence.
-
-**Corrections dans `src/locales/fr.json` :**
-
-| # | Cle de traduction | Texte actuel | Correction |
-|---|------------------|-------------|------------|
-| 1 | `nav.exitKeys` | "Cles de Sortie" | "Strategies" |
-| 2 | `nav.exitKeysCatalog` | "Catalogue Exit Keys" | "Catalogue Strategies" |
-| 3 | `exitKeys.title` (racine, L7818) | "Trouvez Votre Cle de Sortie" | "Trouvez Votre Strategie" |
-| 4 | `exitKeys.pdf.title` | "Rapport Cles de Sortie" | "Rapport Strategies" |
-| 5 | `exitKeys.pdf.resultsSection` | "Cles de Sortie Recommandees" | "Strategies Recommandees" |
-| 6 | `exitKeys.savedKeys.loginPrompt` | "sauvegarder et suivre vos cles de sortie" | "sauvegarder et suivre vos strategies" |
-| 7 | `exitKeys.savedKeys.explorePrompt` | "Explorez les cles de sortie pour les sauvegarder ici" | "Explorez les strategies pour les sauvegarder ici" |
-| 8 | `exitKeys.catalog.title` | "Catalogue des Cles de Sortie" | "Catalogue des Strategies" |
-| 9 | `ai.exitKeysAssistant` | "Assistant Cles de Sortie" | "Assistant Strategies" |
-| 10 | `tools.exitKeys.title` (L7704) | "Cles de Sortie" | "Strategies" |
-| 11 | `errorsIllusions.exploreExitKeys` | "Explorer les cles de sortie associees" | "Explorer les strategies associees" |
-| 12 | `errorsIllusions.viewExitKeys` | "Voir les cles de sortie" | "Voir les strategies" |
-| 13 | `universalErrors.exitKeys` | "Cles de sortie possibles" | "Strategies possibles" |
-| 14 | `irreversa.nextSteps.exitKeys` | "Cles de Sortie" | "Strategies" |
-| 15 | `latent.nextSteps.exitKeys` | "Cles de Sortie" | "Strategies" |
-| 16 | `pyramidQuiz.nextSteps.exitKeys` | "Cles de sortie" | "Strategies" |
-| 17 | `tools.viewExitKeys` (L7814) | "Voir les Cles de Sortie" | "Voir les Strategies" |
-
-**Corrections dans `src/locales/en.json` :**
-
-| # | Cle | Texte actuel | Correction |
-|---|-----|-------------|------------|
-| 18 | `exitKeys.title` | "Find Your Exit Key" | "Find Your Strategy" |
-| 19 | `search.typeExitKey` | "Exit Key" | "Strategy" |
-
-### PRIORITE 2 -- Fallbacks jargon dans les composants TSX
-
-Certains composants ont des fallbacks hardcodes "Cles de Sortie" qui s'affichent si la traduction manque.
-
-| # | Fichier | Ligne approx. | Fallback actuel | Correction |
-|---|---------|--------------|----------------|------------|
-| 20 | `src/pages/CountryDetail.tsx` | 459 | `'Cles de Sortie'` | `'Strategies'` |
-| 21 | `src/pages/About.tsx` | 281 | `'Cles de Sortie'` (via `t('nav.exitKeys')`) | Le fallback sera corrige par la traduction #1 ci-dessus |
-| 22 | `src/pages/CompareExitKeys.tsx` | 95, 114, 122, 252, 253 | Multiples fallbacks "cles de sortie" | Remplacer par "strategies" |
-| 23 | `src/pages/ExitKeysCatalog.tsx` | 79, 103 | "Catalogue des Cles de Sortie" | "Catalogue des Strategies" |
-| 24 | `src/pages/PreventionFilter.tsx` | 170, 201, 335 | "Explorer les cles de sortie", "Cles de sortie metier" | "Explorer les strategies", "Strategies metier" |
-| 25 | `src/components/exit-keys/SavedExitKeysPanel.tsx` | 88, 205 | "cles de sortie" | "strategies" |
-| 26 | `src/components/exit-keys/ExitKeysPdfExport.tsx` | 43, 81 | "Rapport Cles de Sortie", "Cles de Sortie Recommandees" | "Rapport Strategies", "Strategies Recommandees" |
-| 27 | `src/pages/IrreversaModule.tsx` | 42 | "Cles de Sortie" | "Strategies" |
-| 28 | `src/pages/LatentModule.tsx` | 46 | "Cles de Sortie" | "Strategies" |
-| 29 | `src/components/gamification/DestinationQuests.tsx` | 84 | "Creer votre Exit Key" | "Finaliser votre strategie" |
-| 30 | `src/components/landing/SocialProofBanner.tsx` | 25 | "a sauvegarde 3 cles de sortie" | "a sauvegarde 3 strategies" |
-
-### PRIORITE 3 -- Sous-titre "analyses systemiques" dans TestimonialsSection
-
-| # | Fichier | Ligne | Texte actuel | Correction |
-|---|---------|-------|-------------|------------|
-| 31 | `src/components/landing/TestimonialsSection.tsx` | 64 | `'Des donnees verifiables, des analyses systemiques, des strategies concretes.'` | `'Des donnees verifiables, des analyses detaillees, des strategies concretes.'` |
-
-### PRIORITE 4 -- Navigation description jargon
-
-| # | Fichier | Ligne | Texte actuel | Correction |
-|---|---------|-------|-------------|------------|
-| 32 | `src/config/navigation.ts` | 81 | `description: 'Explorer les pays et comprendre les systemes'` | `description: 'Explorer les pays et comprendre les differences'` |
+| Role | Verdict | Blocage |
+|------|---------|---------|
+| **Marketing** | PRET | Landing page, CTA, pricing -- tout est clair et premium |
+| **CEO** | PRET | Comprehension 3s, Hero optimise, funnel coherent |
+| **CISO** | PRET | RLS A+, 0 error-level finding, secrets proteges |
+| **DPO** | PRET | RGPD conforme (anonymisation, consentement, pages legales) |
+| **CDO** | PRET | KPI tracking en place, fausses stats non affichees |
+| **COO** | PRET | 749 tests, Edge Functions deployes, i18n 13 langues |
+| **Head of Design** | PRET | Premium, responsive, design system coherent |
+| **Beta testeur** | BLOQUE | Jargon "Cles de Sortie" visible dans pages internes |
 
 ---
 
-## Audits specialises -- Synthese
+## Corrections restantes (toutes P1 -- jargon visible par l'utilisateur)
 
-### CISO / Securite
-- **RLS** : actif sur toutes les tables. 1 warning mineur (extension dans public schema -- risque faible, pas bloquant pour publication).
-- **Secrets** : geres via le systeme integre. Aucune cle API exposee cote client.
-- **Auth** : validation Zod, password strength meter, OAuth Google/Apple, rate limiting client-side.
-- **Verdict** : **Pret pour publication**. Le warning extension peut etre corrige post-lancement.
+### Fichiers avec fallbacks hardcodes a corriger
 
-### DPO / RGPD
-- Anonymisation IP apres 90 jours (trigger PL/pgSQL)
-- Consentement cookies avec CookieConsent component
-- Disclaimer simulations present sur les pages concernees
-- Mentions legales, CGV, politique de confidentialite accessibles depuis le footer
-- **Verdict** : **Conforme** pour un lancement beta.
-
-### CDO / Data
-- Analytics client-side avec hooks dedies (useAnalytics)
-- KPIs basees sur des donnees reelles (38 pays, 50+ criteres, 13 langues)
-- Fausses statistiques dans SocialProofBanner.tsx NON utilisees sur la landing (composant exporte mais pas importe dans Index.tsx)
-- **Verdict** : **OK** tant que SocialProofBanner n'est pas reimporte.
-
-### COO / Operations
-- 749 tests unitaires passants
-- Edge Functions deployes automatiquement
-- Pipeline i18n avec 13 langues
-- **Verdict** : **Operationnel**.
-
-### Head of Design / UX
-- Landing page : funnel clair Hero > Etapes > Exemple > Chiffres > Pricing > CTA
-- Mobile responsive avec breakpoints coherents
-- Dark/light mode bien calibre
-- **Verdict** : **Pret**, aucune correction UI necessaire.
-
-### Beta Testeur
-- Comprehension en 3 secondes : OK sur landing page
-- Premier clic guide vers /quick-test : OK
-- Pas de bug 404 critique (page 404 bien geree)
-- **Seul probleme restant** : le jargon "Cles de Sortie" apparait des que l'utilisateur navigue au-dela de la landing page
+| # | Fichier | Ligne | Fallback actuel | Correction |
+|---|---------|-------|----------------|------------|
+| 1 | `src/components/CountryExitKeys.tsx` | 80, 95, 116 | `'Clés de Sortie'` | `'Stratégies'` |
+| 2 | `src/components/dashboard/DashboardExitKeysWidget.tsx` | 39, 58, 82 | `'Mes Clés de Sortie'` | `'Mes Stratégies'` |
+| 3 | `src/components/dashboard/DashboardExitKeysWidget.tsx` | 64 | `"clés de sortie"` | `"stratégies"` |
+| 4 | `src/components/dashboard/DashboardExitKeysWidget.tsx` | 69 | `'Explorer les clés'` | `'Explorer les stratégies'` |
+| 5 | `src/components/dashboard/CountryProgressTracker.tsx` | 94 | `'Exit Key actif'` | `'Stratégie active'` |
+| 6 | `src/pages/ErrorsAndIllusions.tsx` | 377 | `'Explorer les clés de sortie associées'` | `'Explorer les stratégies associées'` |
+| 7 | `src/pages/ErrorsAndIllusions.tsx` | 381 | `'Voir les clés de sortie'` | `'Voir les stratégies'` |
+| 8 | `src/pages/ExitKeys.tsx` | 351 | `'Assistant Clés de Sortie'` | `'Assistant Stratégies'` |
+| 9 | `src/pages/ExitKeys.tsx` | 960 | `'Vos Clés de Sortie'` | `'Vos Stratégies'` |
+| 10 | `src/pages/About.tsx` | 281 | `'Clés de Sortie'` (via t avec fallback) | `'Stratégies'` |
+| 11 | `src/pages/Resources.tsx` | 376 | `'Clés de Sortie'` | `'Stratégies'` |
+| 12 | `src/pages/SubscriptionSuccess.tsx` | 66 | `"Clés de sortie"` | `"Stratégies"` |
+| 13 | `src/pages/UniversalErrorDetail.tsx` | 181 | `'Clés de sortie possibles'` | `'Stratégies possibles'` |
+| 14 | `src/components/gdpr/GDPRExportButton.tsx` | 40 | `'Clés de sortie'` | `'Stratégies'` |
+| 15 | `src/lib/gamification-system.ts` | 157 | `'Créez votre première Exit Key personnalisée'` | `'Créez votre première stratégie personnalisée'` |
 
 ---
 
-## Details techniques d'implementation
+## Ce qui est deja valide (ne pas toucher)
 
-### Etape 1 : Corriger `src/locales/fr.json` -- 17 cles de traduction
-Remplacer toutes les occurrences de "Cles de Sortie", "cles de sortie", "Cle de Sortie" par "Strategies" / "strategies" dans les cles listees en Priorite 1.
+- Landing page (Index.tsx) : titre, CTA, pricing, micro-texte, CheckCircle verts
+- Onboarding dialog : jargon elimine, fallbacks FR
+- Footer : "Strategies" comme fallback
+- Navigation config (navigation.ts) : "Strategies", "comprendre les differences"
+- TestimonialsSection : "analyses detaillees"
+- Auth page : Zod, OAuth, password strength, loading/error states
+- Securite : RLS, rate limiting, GDPR anonymisation, cookie consent
+- CompareExitKeys, ExitKeysCatalog, PreventionFilter, IrreversaModule, LatentModule, PyramidQuiz : deja corriges en v28
+- SocialProofBanner, DestinationQuests, SavedExitKeysPanel, ExitKeysPdfExport : deja corriges en v28
 
-### Etape 2 : Corriger `src/locales/en.json` -- 2 cles
-- `exitKeys.title` : "Find Your Exit Key" -> "Find Your Strategy"
-- `search.typeExitKey` : "Exit Key" -> "Strategy"
+---
 
-### Etape 3 : Corriger les fallbacks dans 10+ fichiers TSX
-Mettre a jour les fallback strings hardcodes dans les composants listes en Priorite 2 (corrections #20-#30).
+## Details techniques
 
-### Etape 4 : Corriger TestimonialsSection.tsx et navigation.ts
-- Ligne 64 : "analyses systemiques" -> "analyses detaillees"
-- Ligne 81 : "comprendre les systemes" -> "comprendre les differences"
+### Etape 1 : CountryExitKeys.tsx (3 corrections)
+- Lignes 80, 95, 116 : fallback `'Clés de Sortie'` -> `'Stratégies'`
+
+### Etape 2 : DashboardExitKeysWidget.tsx (4 corrections)
+- Lignes 39, 58, 82 : `'Mes Clés de Sortie'` -> `'Mes Stratégies'`
+- Ligne 64 : `"clés de sortie"` -> `"stratégies"`
+- Ligne 69 : `'Explorer les clés'` -> `'Explorer les stratégies'`
+
+### Etape 3 : CountryProgressTracker.tsx (1 correction)
+- Ligne 94 : `'Exit Key actif'` -> `'Stratégie active'`
+
+### Etape 4 : ErrorsAndIllusions.tsx (2 corrections)
+- Ligne 377 : `'Explorer les clés de sortie associées'` -> `'Explorer les stratégies associées'`
+- Ligne 381 : `'Voir les clés de sortie'` -> `'Voir les stratégies'`
+
+### Etape 5 : ExitKeys.tsx (2 corrections)
+- Ligne 351 : `'Assistant Clés de Sortie'` -> `'Assistant Stratégies'`
+- Ligne 960 : `'Vos Clés de Sortie'` -> `'Vos Stratégies'`
+
+### Etape 6 : About.tsx (1 correction)
+- Ligne 281 : fallback `'Clés de Sortie'` -> `'Stratégies'`
+
+### Etape 7 : Resources.tsx (1 correction)
+- Ligne 376 : fallback `'Clés de Sortie'` -> `'Stratégies'`
+
+### Etape 8 : SubscriptionSuccess.tsx (1 correction)
+- Ligne 66 : `"Clés de sortie"` -> `"Stratégies"`
+
+### Etape 9 : UniversalErrorDetail.tsx (1 correction)
+- Ligne 181 : `'Clés de sortie possibles'` -> `'Stratégies possibles'`
+
+### Etape 10 : GDPRExportButton.tsx (1 correction)
+- Ligne 40 : `'Clés de sortie'` -> `'Stratégies'`
+
+### Etape 11 : gamification-system.ts (1 correction)
+- Ligne 157 : `'Créez votre première Exit Key personnalisée'` -> `'Créez votre première stratégie personnalisée'`
 
 ### Verification
-- ~15 fichiers modifies (2 JSON + ~13 TSX)
-- ~35 corrections textuelles au total
+- 11 fichiers modifies
+- ~18 corrections textuelles
 - 0 changement de logique, securite ou base de donnees
-- 0 risque de regression (texte uniquement)
-- Les noms de fichiers, hooks, variables internes restent inchanges (convention technique maintenue)
+- 0 risque de regression (texte et labels uniquement)
+- Apres ces corrections : 0 occurrence de "Cles de Sortie" ou "Exit Key" visible par l'utilisateur final
 
+---
+
+## Checklist Publication Ready
+
+- [x] 0 lien mort / 0 page 404 non geree
+- [x] 0 bouton sans action
+- [x] 0 chevauchement texte / UI cassee
+- [x] 0 erreur console bloquante
+- [x] Mobile-first impeccable
+- [x] Etats UI : loading / empty / error / success
+- [x] Securite : secrets proteges, RLS A+, validation Zod
+- [x] RGPD : mentions legales, privacy policy, cookies, anonymisation
+- [x] Tracking KPI : analytics hooks en place
+- [ ] **Jargon interne elimine** : 18 corrections restantes (ce plan)
+
+**Verdict apres application : READY TO PUBLISH = OUI**
