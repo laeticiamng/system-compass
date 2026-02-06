@@ -412,7 +412,7 @@ export function QuickTestResults({
             <div className="flex items-center justify-center gap-3 mb-4">
               <Key className="w-6 h-6 text-primary" />
               <h3 className="font-semibold text-lg">
-                {t('quickTest.result.exitKeysTitle', 'Vos Exit Keys personnalisées')}
+                {t('quickTest.result.exitKeysTitle', 'Vos recommandations personnalisées')}
               </h3>
             </div>
             <p className="text-sm text-muted-foreground text-center mb-6">
