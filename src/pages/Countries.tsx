@@ -82,9 +82,10 @@ export default function Countries() {
   const getTranslatedName = (country: Country | ExtendedCountryInfo): string => {
     const countryId = country.id?.toLowerCase() || '';
     if (!countryId) return '';
-    const translatedName = t(`countries.${countryId}.name`, { defaultValue: '' });
+    // FIX: Use 'countriesData' namespace which contains translated country names
+    const translatedName = t(`countriesData.${countryId}.name`, { defaultValue: '' });
     // Return empty string if key not found (i18next returns the key itself)
-    return translatedName !== `countries.${countryId}.name` ? translatedName : '';
+    return translatedName !== `countriesData.${countryId}.name` ? translatedName : '';
   };
 
   const filteredAndSortedCountries = useMemo(() => {
