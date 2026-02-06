@@ -60,7 +60,7 @@ const Pricing = () => {
       features: SUBSCRIPTION_TIERS.free.features,
       limitations: [
         t('pricing.limitations.limitedCountries', 'Limité à 3 pays'),
-        t('pricing.limitations.noExitKeys', 'Pas d\'Exit Keys personnalisées'),
+        t('pricing.limitations.noExitKeys', 'Pas de recommandations personnalisées'),
         t('pricing.limitations.noExport', 'Pas d\'export PDF'),
       ],
       buttonText: t('pricing.currentPlan', 'Plan actuel'),

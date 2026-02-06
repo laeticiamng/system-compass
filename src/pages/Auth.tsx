@@ -149,7 +149,7 @@ export default function Auth() {
     <>
       <Helmet>
         <title>Connexion - Pyramid Compass | Accédez à votre compte</title>
-        <meta name="description" content="Connectez-vous à Pyramid Compass pour accéder à vos analyses de pays, Exit Keys personnalisées et tableau de bord. Créez un compte gratuit." />
+        <meta name="description" content="Connectez-vous à Pyramid Compass pour accéder à vos analyses de pays, recommandations personnalisées et tableau de bord. Créez un compte gratuit." />
         <meta property="og:title" content="Connexion - Pyramid Compass" />
         <meta property="og:description" content="Accédez à vos analyses de pays et stratégies de sortie personnalisées." />
         <meta property="og:url" content="https://world-alignment.lovable.app/auth" />
