@@ -1,104 +1,115 @@
 
 
-# Audit C-Suite v8 -- Rapport Final
+# Audit C-Suite v9 -- Rapport Final
 
-## Statut de toutes les corrections precedentes (v1 a v7)
+## Statut de toutes les corrections precedentes (v1 a v8)
 
 | Correction | Statut |
 |-----------|--------|
-| Suppression de compte RGPD (Art. 17) | RESOLU |
-| Faux temoignages Index.tsx | RESOLU |
-| Faux noms (5 fichiers) | RESOLU |
-| SecuritySettings i18n | RESOLU |
-| DiscussionThread "Jean-Pierre" | RESOLU |
-| Index.tsx i18n | RESOLU |
-| SessionManager.tsx i18n | RESOLU |
-| useVacationRecommendations.tsx i18n | RESOLU |
-| usePartnerProgram.tsx i18n | RESOLU |
-| useDataSources.tsx i18n | RESOLU |
-| useCountryAudioGuide.tsx i18n | RESOLU |
-| useExperts.tsx i18n | RESOLU |
-| EthicsCharter.tsx i18n | RESOLU |
-| PartnerApplicationForm.tsx i18n | RESOLU |
+| Toutes les 19 corrections precedentes (v1-v8) | RESOLU |
 
 ## Synthese par role
 
-- **CEO** : Aucune action. Plateforme strategiquement coherente.
-- **CTO** : Aucune regression. Architecture stable.
-- **CPO** : 5 composants avec contenu FR hardcode sans `t()` (ci-dessous).
-- **CISO** : RLS en place, secrets configures.
+- **CEO** : Plateforme strategiquement coherente. Aucune action structurelle.
+- **CTO** : Architecture stable. Derniers composants i18n ci-dessous.
+- **CPO** : 8 composants restants avec toasts/labels FR hardcodes sans `t()`.
+- **CISO** : RLS en place, secrets configures. Pas de nouveau risque.
 - **DPO** : Art. 17 valide, RGPD conforme.
 - **CDO** : Pipeline analytics coherent.
 - **COO** : Documentation a jour.
-- **Head of Design** : Coherence i18n a finaliser sur les 5 composants restants.
+- **Head of Design** : Coherence i18n a finaliser sur les 8 composants restants.
 - **Beta testeur** : Parcours fonctionnel, derniers points i18n ci-dessous.
 
-## Inconsistances detectees
+## Inconsistances detectees -- 8 composants
 
-### 1. GlobalSearch.tsx -- Tableau PAGES avec 8 titres FR hardcodes
+### 1. PushNotificationManager.tsx -- 5 toasts FR hardcodes
 
-Le tableau `PAGES` (ligne 24-33) contient 8 titres de pages en francais dur, hors du composant donc sans acces a `t()` :
-- "A propos & Orientation", "Carte mondiale", "Filtre de prevention", "Comparer des pays", "Types de pyramides", "Jeu de vie", "Tableau de bord", "Erreurs & Illusions"
+- `'Les notifications ne sont pas supportees par votre navigateur'`
+- `'Notifications activees !'`
+- `'Notifications refusees. Vous pouvez les reactiver...'`
+- `'Erreur lors de la demande de permission'`
+- `'Notifications desactivees'`
+- `'Preferences mises a jour'`
 
-**Correction** : Deplacer le tableau `PAGES` a l'interieur du composant `GlobalSearch` pour utiliser `t()` avec fallback FR.
+### 2. VideoConsultationBooking.tsx -- 2 toasts FR hardcodes
 
-### 2. Breadcrumbs.tsx -- routeNames avec 30+ labels FR hardcodes
+- `'Veuillez remplir tous les champs obligatoires'`
+- `'Reservation confirmee !'` + description
 
-Le dictionnaire `routeNames` (lignes 85-118) contient 30+ labels de routes en francais dur, hors du composant :
-- "Accueil", "Pays", "Carte mondiale", "Parametres", "Administration", etc.
+### 3. ConsultationPayment.tsx -- 4 toasts FR hardcodes
 
-**Correction** : Transformer `routeNames` en fonction utilisant `t()` a l'interieur du composant.
+- `'Veuillez vous connecter pour continuer'`
+- `'Paiement effectue avec succes !'` + description
+- `'Redirection vers le paiement...'`
+- `'Erreur lors du paiement'` + description
 
-### 3. ChallengeTracker.tsx -- 5 challenges avec titres/descriptions FR
+### 4. ExpertReviews.tsx -- 4 toasts FR hardcodes
 
-Les tableaux `dailyChallenges` et `weeklyChallenges` (lignes 66-125) contiennent 5 challenges avec titres et descriptions en francais dur :
-- "Connexion quotidienne", "Decouverte du jour", "Comparaison rapide", "Explorateur de la semaine", "Expert fiscal"
+- `'Merci pour votre vote'`
+- `'Veuillez selectionner une note'`
+- `'Votre avis doit contenir au moins 20 caracteres'`
+- `'Avis soumis pour verification'`
 
-**Correction** : Ajouter `useTranslation` et remplacer par `t()` avec fallback FR.
+### 5. FiscalHistorySaver.tsx -- 3 toasts FR hardcodes
 
-### 4. TerrainFiscalChecklist.tsx -- 14 items et 3 categories FR hardcodes
+- `'Calcul sauvegarde'`
+- `'Calcul supprime'`
+- `'Historique efface'`
 
-Le tableau `DEFAULT_FISCAL_ITEMS` (lignes 28-48) et `CATEGORY_CONFIG` (lignes 50-65) contiennent 17 chaines FR :
-- "Criteres de residence fiscale", "Bareme d'imposition sur le revenu", "Fiscalite personnelle", etc.
+### 6. CommunityQuickActions.tsx -- 4 toasts FR hardcodes
 
-**Correction** : Deplacer les tableaux dans le composant et utiliser `t()`.
+- `'Redirection vers Discord...'` + description
+- `'Voir les evenements a venir'`
+- `'Acceder aux ressources'`
+- `'Lien copie !'`
 
-### 5. GameAchievements.tsx -- 2 chaines FR hardcodees
+### 7. NewsletterSignup.tsx -- 3 toasts FR hardcodes
 
-Ligne 216 : `'Chargement...'` et `'Connectez-vous pour voir vos succes'` sans `t()`.
+- `'Veuillez entrer un email valide'`
+- `'Inscription reussie !'` + description (x2)
 
-**Correction** : Remplacer par `t('common.loading', 'Chargement...')` et `t('game.achievements.loginRequired', 'Connectez-vous pour voir vos succes')`.
+### 8. RiskEventCard.tsx -- 2 labels FR hardcodes dans JSX
+
+- `'Probabilites des issues'` (h4 ligne 134)
+- `'Succes'` (span ligne 142)
 
 ### Hors perimetre
 
-- StrategyDeadlineAlerts.tsx : donnees mock de demonstration (strategies fictives), pas du contenu UI persistant
-- character-archetypes.ts : personnages de jeu
-- Fichiers deja corriges (14 corrections precedentes)
+- Donnees mock de demonstration complexes (PodcastPlayer, EventCalendar, FinancialAlerts, CaseStudySystem, StrategicFrameworks, UpcomingEvents) : ce sont des datasets de contenu, pas des labels UI
+- data-freshness-indicator.tsx : composant UI de base
+- Fichiers deja corriges (19 corrections precedentes)
 
 ## Plan de correction
 
-### Correction 1 : GlobalSearch.tsx
-1. Deplacer `PAGES` dans le composant `GlobalSearch`
-2. Remplacer les 8 titres par `t('search.page.about', 'A propos & Orientation')`, etc.
+### Pour chaque fichier, meme pattern :
 
-### Correction 2 : Breadcrumbs.tsx
-1. Transformer `routeNames` en fonction `getRouteNames(t)` appelee dans le composant
-2. Remplacer les 30+ labels par `t('breadcrumb.countries', 'Pays')`, etc.
+1. Ajouter `import { useTranslation } from 'react-i18next';`
+2. Declarer `const { t } = useTranslation();` dans le composant/hook
+3. Remplacer chaque chaine FR par `t('cle.i18n', 'Fallback FR')`
 
-### Correction 3 : ChallengeTracker.tsx
-1. Ajouter `import { useTranslation } from 'react-i18next'`
-2. Deplacer les tableaux de challenges dans le composant
-3. Remplacer les 10 chaines (5 titres + 5 descriptions) par `t()`
+### Cles i18n proposees
 
-### Correction 4 : TerrainFiscalChecklist.tsx
-1. Deplacer `DEFAULT_FISCAL_ITEMS` et `CATEGORY_CONFIG` dans le composant
-2. Remplacer les 17 labels par `t()` avec fallback FR
+**PushNotificationManager** :
+- `notifications.notSupported`, `notifications.enabled`, `notifications.denied`, `notifications.permissionError`, `notifications.disabled`, `notifications.preferencesUpdated`
 
-### Correction 5 : GameAchievements.tsx
-1. Verifier que `useTranslation` est importe (probablement deja fait)
-2. Remplacer les 2 chaines de la ligne 216 par `t()`
+**VideoConsultationBooking** :
+- `consultation.fillRequired`, `consultation.confirmed`, `consultation.confirmedDesc`
 
-### Details techniques
+**ConsultationPayment** :
+- `payment.loginRequired`, `payment.success`, `payment.successDesc`, `payment.redirecting`, `payment.error`, `payment.errorDesc`
 
-Pour les corrections 1, 2, 3 et 4, le pattern consiste a deplacer les tableaux/objets statiques definis hors du composant vers l'interieur de celui-ci (ou les transformer en fonctions prenant `t` en parametre) pour avoir acces au hook `useTranslation`. C'est le meme pattern applique a `EthicsCharter.tsx` dans la v7.
+**ExpertReviews** :
+- `reviews.voteSuccess`, `reviews.selectRating`, `reviews.minLength`, `reviews.submitted`
+
+**FiscalHistorySaver** :
+- `fiscal.saved`, `fiscal.deleted`, `fiscal.cleared`
+
+**CommunityQuickActions** :
+- `community.discordRedirect`, `community.discordDesc`, `community.viewEvents`, `community.accessResources`, `community.linkCopied`
+
+**NewsletterSignup** :
+- `newsletter.invalidEmail`, `newsletter.success`, `newsletter.successDesc`
+
+**RiskEventCard** :
+- `game.risk.probabilities`, `game.risk.success`
 
