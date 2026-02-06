@@ -17,13 +17,11 @@ import { motion } from 'framer-motion';
 import { 
   ArrowRight, 
   Compass, 
-  Key,
   Sparkles,
   Globe,
   Unlock,
   Crown,
   Play,
-  Triangle,
   CheckCircle,
   Zap
 } from 'lucide-react';
@@ -99,7 +97,7 @@ export default function Index() {
             transition={{ delay: 0.5, duration: 0.6 }}
             className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
           >
-            {t('landing.hero.subtitle', 'Analyse les règles réelles des pays et obtiens tes stratégies de sortie personnalisées.')}
+            {t('landing.hero.subtitle', 'Réponds à quelques questions, découvre quels pays correspondent à ton profil, et obtiens un plan d\'action concret.')}
           </motion.p>
 
           {/* CTA principal */}
@@ -164,69 +162,72 @@ export default function Index() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {/* Étape 1 */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0, duration: 0.6 }}
-            >
-              <Card className="h-full text-center p-8 border-2 hover:border-primary/30 transition-colors">
-                <CardContent className="pt-6">
-                  <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
-                    <Play className="w-8 h-8 text-primary" />
-                  </div>
-                  <div className="text-4xl font-bold text-primary/20 mb-4">01</div>
-                  <h3 className="text-xl font-bold mb-3">{t('landing.howItWorks.step1Title', 'Fais le test')}</h3>
-                  <p className="text-muted-foreground">
+          <div className="relative max-w-5xl mx-auto">
+            {/* Timeline connector - vertical on mobile, horizontal on desktop */}
+            <div className="hidden md:block absolute top-10 left-[16.67%] right-[16.67%] h-0.5 bg-border z-0" />
+            <div className="md:hidden absolute top-0 bottom-0 left-8 w-0.5 bg-border z-0" />
+
+            <div className="grid md:grid-cols-3 gap-10 md:gap-8 relative z-10">
+              {/* Étape 1 */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0, duration: 0.6 }}
+                className="pointer-events-none flex md:flex-col items-start md:items-center gap-6 md:gap-0 md:text-center"
+              >
+                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-primary/10 border-4 border-background flex items-center justify-center md:mb-6">
+                  <Play className="w-7 h-7 text-primary" />
+                </div>
+                <div>
+                  <div className="text-xs font-mono text-primary/40 tracking-widest mb-1 md:mb-2">01</div>
+                  <h3 className="text-lg font-bold mb-2">{t('landing.howItWorks.step1Title', 'Fais le test')}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {t('landing.howItWorks.step1Description', '2 minutes pour découvrir ton profil et tes priorités de vie.')}
                   </p>
-                </CardContent>
-              </Card>
-            </motion.div>
+                </div>
+              </motion.div>
 
-            {/* Étape 2 */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1, duration: 0.6 }}
-            >
-              <Card className="h-full text-center p-8 border-2 hover:border-primary/30 transition-colors">
-                <CardContent className="pt-6">
-                  <div className="w-16 h-16 rounded-2xl bg-amber-500/10 flex items-center justify-center mx-auto mb-6">
-                    <Triangle className="w-8 h-8 text-amber-500" />
-                  </div>
-                  <div className="text-4xl font-bold text-primary/20 mb-4">02</div>
-                  <h3 className="text-xl font-bold mb-3">{t('landing.howItWorks.step2Title', 'Découvre ta pyramide')}</h3>
-                  <p className="text-muted-foreground">
-                    {t('landing.howItWorks.step2Description', 'Comprends quel type de système te correspond le mieux.')}
+              {/* Étape 2 */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1, duration: 0.6 }}
+                className="pointer-events-none flex md:flex-col items-start md:items-center gap-6 md:gap-0 md:text-center"
+              >
+                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-amber-500/10 border-4 border-background flex items-center justify-center md:mb-6">
+                  <Compass className="w-7 h-7 text-amber-500" />
+                </div>
+                <div>
+                  <div className="text-xs font-mono text-primary/40 tracking-widest mb-1 md:mb-2">02</div>
+                  <h3 className="text-lg font-bold mb-2">{t('landing.howItWorks.step2Title', 'Analyse ton système')}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {t('landing.howItWorks.step2Description', 'Découvre comment fonctionne le système économique et fiscal de chaque pays.')}
                   </p>
-                </CardContent>
-              </Card>
-            </motion.div>
+                </div>
+              </motion.div>
 
-            {/* Étape 3 */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-            >
-              <Card className="h-full text-center p-8 border-2 hover:border-primary/30 transition-colors">
-                <CardContent className="pt-6">
-                  <div className="w-16 h-16 rounded-2xl bg-green-500/10 flex items-center justify-center mx-auto mb-6">
-                    <Key className="w-8 h-8 text-green-500" />
-                  </div>
-                  <div className="text-4xl font-bold text-primary/20 mb-4">03</div>
-                  <h3 className="text-xl font-bold mb-3">{t('landing.howItWorks.step3Title', 'Obtiens tes Exit Keys')}</h3>
-                  <p className="text-muted-foreground">
-                    {t('landing.howItWorks.step3Description', 'Stratégies personnalisées pour tes décisions de vie.')}
+              {/* Étape 3 */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+                className="pointer-events-none flex md:flex-col items-start md:items-center gap-6 md:gap-0 md:text-center"
+              >
+                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-green-500/10 border-4 border-background flex items-center justify-center md:mb-6">
+                  <CheckCircle className="w-7 h-7 text-green-500" />
+                </div>
+                <div>
+                  <div className="text-xs font-mono text-primary/40 tracking-widest mb-1 md:mb-2">03</div>
+                  <h3 className="text-lg font-bold mb-2">{t('landing.howItWorks.step3Title', 'Obtiens ton plan d\'action')}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {t('landing.howItWorks.step3Description', 'Reçois des stratégies concrètes adaptées à ta situation et tes objectifs.')}
                   </p>
-                </CardContent>
-              </Card>
-            </motion.div>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
