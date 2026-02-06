@@ -4925,6 +4925,7 @@ export type Database = {
           display_name: string | null
           hourly_rate: number | null
           id: string | null
+          is_active: boolean | null
           is_verified: boolean | null
           languages: string[] | null
           rating_avg: number | null
@@ -4944,6 +4945,7 @@ export type Database = {
           display_name?: string | null
           hourly_rate?: number | null
           id?: string | null
+          is_active?: boolean | null
           is_verified?: boolean | null
           languages?: string[] | null
           rating_avg?: number | null
@@ -4963,6 +4965,7 @@ export type Database = {
           display_name?: string | null
           hourly_rate?: number | null
           id?: string | null
+          is_active?: boolean | null
           is_verified?: boolean | null
           languages?: string[] | null
           rating_avg?: number | null
