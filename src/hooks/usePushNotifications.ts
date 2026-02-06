@@ -6,7 +6,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
-import { useTranslation } from 'react-i18next';
+
 
 interface PushNotificationState {
   isSupported: boolean;

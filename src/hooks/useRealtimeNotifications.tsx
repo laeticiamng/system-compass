@@ -7,7 +7,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
-import { useTranslation } from 'react-i18next';
+
 
 interface RealtimeAlert {
   id: string;

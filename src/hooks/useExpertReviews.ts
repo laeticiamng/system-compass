@@ -6,7 +6,7 @@ import { useState, useCallback } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
-import { useTranslation } from 'react-i18next';
+
 
 export interface ExpertReview {
   id: string;
