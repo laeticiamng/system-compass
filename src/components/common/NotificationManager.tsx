@@ -5,6 +5,7 @@
 
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -125,13 +126,14 @@ export function NotificationBell({ className }: NotificationBellProps) {
 
 function NotificationDropdown({ onClose }: { onClose: () => void }) {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const { notifications, markAsRead, dismissNotification } = useNotifications();
 
   const handleAction = (notification: Notification) => {
     if (notification.actionHandler) {
       notification.actionHandler();
     } else if (notification.actionHref) {
-      window.location.href = notification.actionHref;
+      navigate(notification.actionHref);
     }
     markAsRead(notification.id);
     onClose();
@@ -333,7 +335,7 @@ function NotificationCard({
               className="text-xs"
               onClick={() => {
                 if (notification.actionHref) {
-                  window.location.href = notification.actionHref;
+                  window.location.href = notification.actionHref; // NotificationCard is standalone, kept as-is
                 }
                 if (notification.actionHandler) {
                   notification.actionHandler();

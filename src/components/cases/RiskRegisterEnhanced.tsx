@@ -100,10 +100,10 @@ export function RiskRegisterEnhanced({ caseData, onUpdateCase }: RiskRegisterEnh
   const [showTemplates, setShowTemplates] = useState(false);
 
   // Get risks from case data
-  const risks: Risk[] = (caseData as any).risk_register_enhanced || [];
+  const risks: Risk[] = ((caseData as unknown as Record<string, unknown>).risk_register_enhanced as Risk[]) || [];
 
   const updateRisks = (newRisks: Risk[]) => {
-    onUpdateCase({ risk_register_enhanced: newRisks } as any);
+    onUpdateCase({ risk_register_enhanced: newRisks } as Partial<UserCase>);
   };
 
   const addRisk = (category: RiskCategory = 'custom') => {

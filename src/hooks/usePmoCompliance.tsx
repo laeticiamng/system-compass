@@ -136,15 +136,14 @@ export function usePmoCompliance(caseId: string | null) {
     queryFn: async () => {
       if (!caseId || !user) return [];
       
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const { data, error } = await (supabase as any)
-        .from('pmo_compliance_frameworks')
+      const { data, error } = await supabase
+        .from('pmo_compliance_frameworks' as any)
         .select('*')
         .eq('case_id', caseId)
         .order('created_at', { ascending: false });
 
       if (error) throw error;
-      return data as ComplianceFramework[];
+      return (data as unknown) as ComplianceFramework[];
     },
     enabled: !!caseId && !!user,
   });
@@ -157,15 +156,14 @@ export function usePmoCompliance(caseId: string | null) {
     queryFn: async () => {
       if (frameworkIds.length === 0) return [];
       
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const { data, error } = await (supabase as any)
-        .from('pmo_compliance_requirements')
+      const { data, error } = await supabase
+        .from('pmo_compliance_requirements' as any)
         .select('*')
         .in('framework_id', frameworkIds)
         .order('criticality', { ascending: false });
 
       if (error) throw error;
-      return data as ComplianceRequirement[];
+      return (data as unknown) as ComplianceRequirement[];
     },
     enabled: frameworkIds.length > 0,
   });
@@ -178,14 +176,13 @@ export function usePmoCompliance(caseId: string | null) {
     queryFn: async () => {
       if (requirementIds.length === 0) return [];
       
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const { data, error } = await (supabase as any)
-        .from('pmo_compliance_mappings')
+      const { data, error } = await supabase
+        .from('pmo_compliance_mappings' as any)
         .select('*')
         .in('requirement_id', requirementIds);
 
       if (error) throw error;
-      return data as ComplianceMapping[];
+      return (data as unknown) as ComplianceMapping[];
     },
     enabled: requirementIds.length > 0,
   });
@@ -210,9 +207,8 @@ export function usePmoCompliance(caseId: string | null) {
         created_by: user.id,
       };
       
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const { data, error } = await (supabase as any)
-        .from('pmo_compliance_frameworks')
+      const { data, error } = await supabase
+        .from('pmo_compliance_frameworks' as any)
         .insert(insertData)
         .select()
         .single();
@@ -252,9 +248,8 @@ export function usePmoCompliance(caseId: string | null) {
         status: 'not_started',
       };
       
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const { data, error } = await (supabase as any)
-        .from('pmo_compliance_requirements')
+      const { data, error } = await supabase
+        .from('pmo_compliance_requirements' as any)
         .insert(insertData)
         .select()
         .single();
@@ -275,9 +270,8 @@ export function usePmoCompliance(caseId: string | null) {
   // Update requirement status
   const updateRequirementStatus = useMutation({
     mutationFn: async ({ id, status }: { id: string; status: RequirementStatus }) => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const { data, error } = await (supabase as any)
-        .from('pmo_compliance_requirements')
+      const { data, error } = await supabase
+        .from('pmo_compliance_requirements' as any)
         .update({ status })
         .eq('id', id)
         .select()
@@ -311,9 +305,8 @@ export function usePmoCompliance(caseId: string | null) {
         notes: form.notes || null,
       };
       
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const { data, error } = await (supabase as any)
-        .from('pmo_compliance_mappings')
+      const { data, error } = await supabase
+        .from('pmo_compliance_mappings' as any)
         .insert(insertData)
         .select()
         .single();
@@ -334,9 +327,8 @@ export function usePmoCompliance(caseId: string | null) {
   // Delete framework
   const deleteFramework = useMutation({
     mutationFn: async (id: string) => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const { error } = await (supabase as any)
-        .from('pmo_compliance_frameworks')
+      const { error } = await supabase
+        .from('pmo_compliance_frameworks' as any)
         .delete()
         .eq('id', id);
 
@@ -355,9 +347,8 @@ export function usePmoCompliance(caseId: string | null) {
   // Delete requirement
   const deleteRequirement = useMutation({
     mutationFn: async (id: string) => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const { error } = await (supabase as any)
-        .from('pmo_compliance_requirements')
+      const { error } = await supabase
+        .from('pmo_compliance_requirements' as any)
         .delete()
         .eq('id', id);
 

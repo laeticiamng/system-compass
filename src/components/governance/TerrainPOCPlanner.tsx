@@ -52,15 +52,15 @@ export function TerrainPOCPlanner({ countryId, countryName }: TerrainPOCPlannerP
   // Load POC plan from saved notes
   useEffect(() => {
     if (notes?.poc_plan) {
-      const savedPlan = notes.poc_plan as any;
+      const savedPlan = notes.poc_plan as Record<string, unknown>;
       setPlan(prev => ({
         ...prev,
-        hypothesis: savedPlan.hypothesis || '',
-        maxBudget: savedPlan.maxBudget || 5000,
-        duration: typeof savedPlan.duration === 'number' ? savedPlan.duration : parseInt(savedPlan.duration) || 4,
-        successCriteria: savedPlan.successCriteria || [''],
-        stopCriteria: savedPlan.stopCriteria || [''],
-        nextSteps: savedPlan.nextSteps || '',
+        hypothesis: (savedPlan.hypothesis as string) || '',
+        maxBudget: (savedPlan.maxBudget as number) || 5000,
+        duration: typeof savedPlan.duration === 'number' ? savedPlan.duration : parseInt(String(savedPlan.duration)) || 4,
+        successCriteria: (savedPlan.successCriteria as string[]) || [''],
+        stopCriteria: (savedPlan.stopCriteria as string[]) || [''],
+        nextSteps: (savedPlan.nextSteps as string) || '',
       }));
     }
   }, [notes]);
@@ -103,7 +103,7 @@ export function TerrainPOCPlanner({ countryId, countryName }: TerrainPOCPlannerP
         duration: `${plan.duration} weeks`,
         successCriteria: plan.successCriteria.filter(c => c.trim()),
         stopCriteria: plan.stopCriteria.filter(c => c.trim()),
-      } as any
+      } as Record<string, unknown>
     });
     toast.success(t('common.saved', 'Sauvegardé'));
   };
