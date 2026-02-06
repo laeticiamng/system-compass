@@ -47,7 +47,7 @@ export const moduleAudits: ModuleAudit[] = [
   // ===== MODULE 2: EXIT KEYS =====
   {
     id: 'exit-keys',
-    title: 'Exit Keys',
+    title: 'Stratégies',
     subtitle: 'Strategies personnalisees selon le profil et les objectifs.',
     items: {
       featureEnrichments: [
