@@ -77,7 +77,7 @@ export function CountryExitKeys({ country }: CountryExitKeysProps) {
       <div className="glass-card rounded-xl p-6">
         <div className="flex items-center gap-3 mb-4">
           <Key className="w-5 h-5 text-primary" />
-          <h3 className="font-display font-semibold">{t('exitKeys.title', 'Clés de Sortie')}</h3>
+          <h3 className="font-display font-semibold">{t('exitKeys.title', 'Stratégies')}</h3>
         </div>
         <div className="animate-pulse space-y-3">
           <div className="h-20 bg-muted rounded-lg" />
@@ -92,7 +92,7 @@ export function CountryExitKeys({ country }: CountryExitKeysProps) {
       <div className="glass-card rounded-xl p-6 bg-gradient-to-br from-primary/5 to-primary/10">
         <div className="flex items-center gap-3 mb-4">
           <Key className="w-5 h-5 text-primary" />
-          <h3 className="font-display font-semibold">{t('exitKeys.title', 'Clés de Sortie')}</h3>
+          <h3 className="font-display font-semibold">{t('exitKeys.title', 'Stratégies')}</h3>
         </div>
         <p className="text-sm text-muted-foreground mb-4">
           {t('exitKeys.createProfilePrompt', 'Créez votre profil pour découvrir les stratégies adaptées à votre situation')}
@@ -113,7 +113,7 @@ export function CountryExitKeys({ country }: CountryExitKeysProps) {
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
           <Key className="w-5 h-5 text-primary" />
-          <h3 className="font-display font-semibold">{t('exitKeys.title', 'Clés de Sortie')}</h3>
+          <h3 className="font-display font-semibold">{t('exitKeys.title', 'Stratégies')}</h3>
         </div>
         <div className="flex items-center gap-2">
           <Link 

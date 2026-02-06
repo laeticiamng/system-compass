@@ -154,7 +154,7 @@ export const BADGES: Badge[] = [
   {
     id: 'strategist',
     name: 'Stratège',
-    description: 'Créez votre première Exit Key personnalisée',
+    description: 'Créez votre première stratégie personnalisée',
     icon: '🗝️',
     category: 'achievement',
     xpReward: 200,

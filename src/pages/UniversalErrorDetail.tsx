@@ -178,7 +178,7 @@ export default function UniversalErrorDetail() {
               <svg className="w-5 h-5 text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4" />
               </svg>
-              {t('universalErrors.exitKeys', 'Clés de sortie possibles')}
+              {t('universalErrors.exitKeys', 'Stratégies possibles')}
             </CardTitle>
           </CardHeader>
           <CardContent>

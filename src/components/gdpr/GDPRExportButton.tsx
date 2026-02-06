@@ -37,7 +37,7 @@ const DATA_CATEGORIES: DataCategory[] = [
   },
   {
     id: 'exitKeys',
-    label: 'Clés de sortie',
+    label: 'Stratégies',
     description: 'Analyses et stratégies sauvegardées',
     table: 'exit_keys_history',
   },

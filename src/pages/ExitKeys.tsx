@@ -348,7 +348,7 @@ export default function ExitKeys() {
               </div>
               {currentStep === 'results' && userContext && (
                 <AiHelpButton
-                  title={t('ai.exitKeysAssistant', 'Assistant Clés de Sortie')}
+                  title={t('ai.exitKeysAssistant', 'Assistant Stratégies')}
                   actions={[
                     { id: 'clarify_objective', label: t('ai.actions.clarifyObjective', 'Clarifier mon objectif'), description: t('ai.actions.clarifyObjectiveDesc', 'Reformuler votre objectif en version claire avec critères implicites') },
                     { id: 'suggest_trajectories', label: t('ai.actions.suggestTrajectories', 'Proposer 3 trajectoires'), description: t('ai.actions.suggestTrajectoriesDesc', 'Générer trois options structurées avec avantages/risques/coûts') },
@@ -957,7 +957,7 @@ export default function ExitKeys() {
             <div className="space-y-8">
               <div className="text-center mb-8">
                 <Zap className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h2 className="text-2xl font-bold mb-2">{t('exitKeys.results.title', 'Vos Clés de Sortie')}</h2>
+                <h2 className="text-2xl font-bold mb-2">{t('exitKeys.results.title', 'Vos Stratégies')}</h2>
                 <p className="text-muted-foreground">
                   {selectedDestination 
                     ? t('exitKeys.results.personalizedFor', 'Analyse personnalisée pour {{country}}', { country: selectedDestination.name })

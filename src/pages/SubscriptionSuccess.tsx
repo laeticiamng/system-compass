@@ -63,7 +63,7 @@ const SubscriptionSuccess = () => {
     },
     {
       icon: Key,
-      title: t("subscription.nextSteps.exitKeys", "Clés de sortie"),
+      title: t("subscription.nextSteps.exitKeys", "Stratégies"),
       description: t("subscription.nextSteps.exitKeysDesc", "Trouvez les stratégies adaptées à votre profil"),
       href: "/exit-keys",
       color: "text-amber-500"
