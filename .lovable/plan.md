@@ -1,71 +1,74 @@
 
 
-# Audit C-Suite v4 -- Rapport Final et Correction
+# Audit C-Suite v5 -- Rapport Final
 
-## Statut des corrections precedentes
+## Statut de toutes les corrections precedentes
 
 | Correction | Statut |
 |-----------|--------|
-| Suppression de compte RGPD (Art. 17) | RESOLU -- DeleteAccountSection fonctionnel, i18n complet |
-| Faux temoignages Index.tsx | RESOLU -- TestimonialsSection avec stats reelles |
-| Faux noms (5 fichiers) | RESOLU -- Remplaces par labels generiques |
-| SecuritySettings i18n | RESOLU -- 20+ chaines passees par t() |
-| DiscussionThread "Jean-Pierre" | RESOLU -- Remplace par texte generique |
-| Index.tsx i18n (40+ chaines) | RESOLU -- Toutes les chaines passees par t() |
+| Suppression de compte RGPD (Art. 17) | RESOLU |
+| Faux temoignages Index.tsx | RESOLU |
+| Faux noms (5 fichiers) | RESOLU |
+| SecuritySettings i18n (20+ chaines) | RESOLU |
+| DiscussionThread "Jean-Pierre" | RESOLU |
+| Index.tsx i18n (40+ chaines) | RESOLU |
+| SessionManager.tsx toasts i18n (6 chaines) | RESOLU |
 
-## Audit complet -- Synthese par role
+## Synthese par role
 
-### CEO -- Aucune action immediate
-Positionnement unique confirme, roadmap strategique coherente.
+- **CEO** : Positionnement unique, roadmap coherente. Aucune action.
+- **CTO** : Architecture stable, edge functions operationnelles. Aucune regression.
+- **CPO** : i18n coherent sur les fichiers critiques (landing, auth). Progression continue.
+- **CISO** : RLS en place, secrets configures, suppression de compte fonctionnelle. CSP headers a planifier (futur).
+- **DPO** : Art. 17 valide, anonymisation IP, export GDPR. Conforme.
+- **CDO** : Stack IA avec fallbacks. Monitoring a planifier (futur).
+- **COO** : Documentation et scripts d'audit presents.
+- **Head of Design** : Coherence i18n nettement amelioree. Dernier point mineur ci-dessous.
+- **Beta testeur** : Landing page lisible, temoignages credibles, parcours clair.
 
-### CTO -- Aucune regression
-Architecture solide, 749 tests, edge functions operationnelles.
+## Derniere inconsistance detectee
 
-### CPO -- Coherence i18n en progression
-Landing page et Security Settings desormais internationalises.
+### 2 hooks avec toasts hardcodes en francais
 
-### CISO -- Pas de nouveau risque
-CSP headers restent a planifier (futur, non critique).
+Deux hooks contiennent encore des toasts en francais dur sans `t()` :
 
-### DPO -- Conformite Art. 17 validee
-Suppression de compte, export GDPR, anonymisation IP operationnels.
+**`src/hooks/useVacationRecommendations.tsx`** (4 toasts) :
+- "Recommandations generees" / "X destinations trouvees"
+- "Erreur" / message d'erreur
+- "Recommandation supprimee"
+- "Erreur" / "Impossible de supprimer la recommandation"
 
-### CDO -- Pas de changement
-Stack IA avec fallbacks, monitoring a planifier.
+**`src/hooks/usePartnerProgram.tsx`** (5 toasts) :
+- "Candidature envoyee" / "Votre candidature a ete soumise..."
+- "Candidature existante" / "Vous avez deja une candidature..."
+- "Erreur" / "Impossible d'envoyer votre candidature."
+- "Contribution enregistree" / "Votre contribution a ete soumise..."
+- "Erreur" / "Impossible d'enregistrer votre contribution."
 
-### COO -- Documentation a jour
-Scripts de maintenance et docs d'audit presents.
+### Ce qui est hors-perimetre (pas d'action requise)
 
-### CFO -- Pas de changement
-Break-even a 20-40 abonnes, plan annuel a planifier.
+- `character-archetypes.ts` : noms fictifs de personnages de jeu (simulation), pas de faux temoignages
+- Les chaines deja corrigees dans les 7 fichiers precedents
 
-### CMO -- Faux temoignages elimines
-Tous les noms fictifs trompeurs ont ete remplaces. Les noms dans `character-archetypes.ts` sont des personnages de jeu (simulation), pas des faux temoignages -- aucune action requise.
+## Plan de correction
 
-### Head of Design -- Inconsistance i18n residuelle
-Un dernier fichier auth contient des toasts hardcodes en francais.
+### Correction 1 : useVacationRecommendations.tsx
+1. Ajouter `import { useTranslation } from 'react-i18next';`
+2. Declarer `const { t } = useTranslation();` dans le hook
+3. Remplacer les 4 toasts par des appels `t()` avec fallback FR
 
-### Beta testeur -- Experience coherente
-Landing page lisible en 30 secondes, parcours clair, temoignages credibles.
-
-## Derniere correction a appliquer
-
-### SessionManager.tsx -- 6 toasts hardcodes en francais
-
-Le fichier `src/components/auth/SessionManager.tsx` contient 6 messages toast en francais dur sans `t()` :
-- "Session revoquee" / "L'appareil a ete deconnecte avec succes."
-- "Erreur" / "Impossible de revoquer la session." (x3)
-- "Sessions revoquees" / "Vous avez ete deconnecte de tous les appareils."
-- "Sessions revoquees" / "Tous les autres appareils ont ete deconnectes."
-
-**Action** : Ajouter `useTranslation` et passer les 6 toasts par `t()` avec fallback FR, exactement comme fait pour SecuritySettings.
+### Correction 2 : usePartnerProgram.tsx
+1. Ajouter `import { useTranslation } from 'react-i18next';`
+2. Declarer `const { t } = useTranslation();` dans le hook
+3. Remplacer les 5 toasts par des appels `t()` avec fallback FR
 
 ### Details techniques
 
-Le fichier n'importe pas actuellement `useTranslation`. Il faut :
-1. Ajouter `import { useTranslation } from 'react-i18next';`
-2. Declarer `const { t } = useTranslation();` dans le composant
-3. Remplacer les 6 chaines par des appels `t('settings.sessions.xxx', 'Texte FR')`
+Les deux hooks n'importent pas actuellement `useTranslation`. Le pattern est identique a ce qui a ete fait pour SessionManager et SecuritySettings : ajout de l'import, declaration du hook, puis remplacement des chaines par `t('namespace.key', 'Fallback FR')`.
 
-Aucun autre fichier ne necessite de correction.
+Cles i18n proposees :
+- `vacation.generated`, `vacation.deleteSuccess`, `vacation.deleteError`
+- `partner.applicationSent`, `partner.applicationExists`, `partner.applicationError`
+- `partner.contributionSaved`, `partner.contributionError`
+- `common.error` (deja utilise ailleurs)
 
