@@ -235,27 +235,8 @@ export function useExperts(): UseExpertsReturn {
 
   const fetchReviews = useCallback(async (expertId: string): Promise<ExpertReview[]> => {
     if (expertId.startsWith('mock-')) {
-      // Return mock reviews for mock experts
-      return [
-        {
-          id: 'review-1',
-          expertId,
-          rating: 5,
-          title: t('experts.mockReview1Title', 'Excellent accompagnement'),
-          content: t('experts.mockReview1Content', 'Service professionnel et conseils pertinents pour mon expatriation.'),
-          isVerifiedPurchase: true,
-          createdAt: new Date().toISOString(),
-        },
-        {
-          id: 'review-2',
-          expertId,
-          rating: 4,
-          title: t('experts.mockReview2Title', 'Très satisfait'),
-          content: t('experts.mockReview2Content', 'Bonne expertise et réactivité.'),
-          isVerifiedPurchase: true,
-          createdAt: new Date(Date.now() - 86400000).toISOString(),
-        },
-      ];
+      // No fake reviews for mock experts
+      return [];
     }
 
     try {
