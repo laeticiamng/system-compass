@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 
@@ -34,6 +35,7 @@ interface GenerationNotification {
 export type ConnectionStatus = 'connecting' | 'connected' | 'disconnected' | 'error';
 
 export function useGenerationNotifications() {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const [activeJobs, setActiveJobs] = useState<GenerationJob[]>([]);
   const [activeBatch, setActiveBatch] = useState<BatchStatus | null>(null);
@@ -165,17 +167,17 @@ export function useGenerationNotifications() {
           if (eventType === 'UPDATE' && newRecord) {
             // Show toast for status changes
             if (newRecord.status === 'done') {
-              toast.success(`✅ ${newRecord.country_name} généré`, {
+              toast.success(t('toast.generation.done', '✅ {{name}} généré', { name: newRecord.country_name }), {
                 description: `Score: ${newRecord.specificity_score || 'N/A'}/100`
               });
             } else if (newRecord.status === 'failed') {
-              toast.error(`❌ ${newRecord.country_name} échoué`, {
-                description: newRecord.error_message || 'Erreur inconnue'
+              toast.error(t('toast.generation.failed', '❌ {{name}} échoué', { name: newRecord.country_name }), {
+                description: newRecord.error_message || t('toast.generation.unknownError', 'Erreur inconnue')
               });
             } else if (newRecord.status === 'validating') {
-              toast.info(`🔍 ${newRecord.country_name} en validation...`);
+              toast.info(t('toast.generation.validating', '🔍 {{name}} en validation...', { name: newRecord.country_name }));
             } else if (newRecord.status === 'running') {
-              toast.info(`🚀 ${newRecord.country_name} en cours de génération...`);
+              toast.info(t('toast.generation.running', '🚀 {{name}} en cours de génération...', { name: newRecord.country_name }));
             }
 
             // Update active jobs list
@@ -224,12 +226,12 @@ export function useGenerationNotifications() {
             setActiveBatch(() => {
               if (newRecord.status === 'completed' || newRecord.status === 'failed') {
                 if (newRecord.status === 'completed') {
-                  toast.success(`🎉 Batch terminé !`, {
-                    description: `${newRecord.completed_countries}/${newRecord.total_countries} pays générés`
+                  toast.success(t('toast.generation.batchCompleted', '🎉 Batch terminé !'), {
+                    description: t('toast.generation.batchCompletedDesc', '{{completed}}/{{total}} pays générés', { completed: newRecord.completed_countries, total: newRecord.total_countries })
                   });
                 } else {
-                  toast.error(`⚠️ Batch terminé avec erreurs`, {
-                    description: `${newRecord.completed_countries} succès, ${newRecord.failed_countries} échecs`
+                  toast.error(t('toast.generation.batchFailed', '⚠️ Batch terminé avec erreurs'), {
+                    description: t('toast.generation.batchFailedDesc', '{{success}} succès, {{failures}} échecs', { success: newRecord.completed_countries, failures: newRecord.failed_countries })
                   });
                 }
                 return null;

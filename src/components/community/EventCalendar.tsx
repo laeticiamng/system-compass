@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -65,6 +66,7 @@ interface EventCalendarProps {
 }
 
 export function EventCalendar({ maxEvents = 3, showTitle = true }: EventCalendarProps) {
+  const { t } = useTranslation();
   const { register, isRegistered, isLoading } = useEventRegistration();
   const [registering, setRegistering] = useState<string | null>(null);
 
@@ -80,8 +82,8 @@ export function EventCalendar({ maxEvents = 3, showTitle = true }: EventCalendar
         eventType: event.type,
       });
       if (success) {
-        toast.success(`Inscrit à "${event.title}"`, {
-          description: 'Vous recevrez un rappel avant l\'événement.',
+        toast.success(t('toast.calendar.registered', 'Inscrit à "{{title}}"', { title: event.title }), {
+          description: t('toast.calendar.registeredDesc', 'Vous recevrez un rappel avant l\'événement.'),
         });
       }
     } finally {

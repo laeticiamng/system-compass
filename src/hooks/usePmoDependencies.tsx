@@ -1,4 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useTranslation } from 'react-i18next';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
@@ -18,6 +19,7 @@ interface CreateDependencyParams {
 }
 
 export function usePmoDependencies(caseId: string | null) {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const queryClient = useQueryClient();
 
@@ -64,11 +66,11 @@ export function usePmoDependencies(caseId: string | null) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pmo-dependencies', caseId] });
-      toast.success('Dépendance créée');
+      toast.success(t('toast.dependency.created', 'Dépendance créée'));
     },
     onError: (error) => {
       console.error('Error creating dependency:', error);
-      toast.error('Erreur lors de la création de la dépendance');
+      toast.error(t('toast.dependency.createError', 'Erreur lors de la création de la dépendance'));
     },
   });
 
@@ -84,11 +86,11 @@ export function usePmoDependencies(caseId: string | null) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['pmo-dependencies', caseId] });
-      toast.success('Dépendance supprimée');
+      toast.success(t('toast.dependency.deleted', 'Dépendance supprimée'));
     },
     onError: (error) => {
       console.error('Error deleting dependency:', error);
-      toast.error('Erreur lors de la suppression');
+      toast.error(t('toast.dependency.deleteError', 'Erreur lors de la suppression'));
     },
   });
 

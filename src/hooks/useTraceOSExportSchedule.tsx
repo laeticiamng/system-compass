@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
@@ -24,6 +25,7 @@ interface ExportFile {
 }
 
 export function useTraceOSExportSchedule() {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const [schedule, setSchedule] = useState<ExportSchedule | null>(null);
   const [exports, setExports] = useState<ExportFile[]>([]);
@@ -128,10 +130,10 @@ export function useTraceOSExportSchedule() {
       }
 
       await fetchSchedule();
-      toast.success('Planification d\'export mise à jour');
+      toast.success(t('toast.export.scheduleUpdated', 'Planification d\'export mise à jour'));
       return true;
     } catch (err) {
-      toast.error('Erreur lors de la mise à jour');
+      toast.error(t('toast.export.updateError', 'Erreur lors de la mise à jour'));
       return false;
     }
   }, [user, schedule, fetchSchedule]);
@@ -148,10 +150,10 @@ export function useTraceOSExportSchedule() {
       if (error) throw error;
 
       await fetchSchedule();
-      toast.success(schedule.is_active ? 'Export automatique désactivé' : 'Export automatique activé');
+      toast.success(schedule.is_active ? t('toast.export.disabled', 'Export automatique désactivé') : t('toast.export.enabled', 'Export automatique activé'));
       return true;
     } catch (err) {
-      toast.error('Erreur');
+      toast.error(t('toast.export.error', 'Erreur'));
       return false;
     }
   }, [user, schedule, fetchSchedule]);
@@ -168,10 +170,10 @@ export function useTraceOSExportSchedule() {
       if (error) throw error;
 
       await fetchExports();
-      toast.success(`Export créé: ${data.summary.totalDecisions} décisions`);
+      toast.success(t('toast.export.created', 'Export créé: {{count}} décisions', { count: data.summary.totalDecisions }));
       return true;
     } catch (err) {
-      toast.error('Erreur lors de l\'export');
+      toast.error(t('toast.export.exportError', 'Erreur lors de l\'export'));
       return false;
     } finally {
       setExporting(false);
@@ -197,7 +199,7 @@ export function useTraceOSExportSchedule() {
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
     } catch (err) {
-      toast.error('Erreur lors du téléchargement');
+      toast.error(t('toast.export.downloadError', 'Erreur lors du téléchargement'));
     }
   }, [user]);
 
@@ -212,10 +214,10 @@ export function useTraceOSExportSchedule() {
       if (error) throw error;
 
       await fetchExports();
-      toast.success('Export supprimé');
+      toast.success(t('toast.export.deleted', 'Export supprimé'));
       return true;
     } catch (err) {
-      toast.error('Erreur lors de la suppression');
+      toast.error(t('toast.export.deleteError', 'Erreur lors de la suppression'));
       return false;
     }
   }, [user, fetchExports]);

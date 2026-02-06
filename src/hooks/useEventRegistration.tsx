@@ -2,6 +2,7 @@
  * useEventRegistration - Event registration hook with backend persistence
  */
 import { useState, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from './useAuth';
 import { toast } from 'sonner';
@@ -37,6 +38,7 @@ interface UseEventRegistrationReturn {
 }
 
 export function useEventRegistration(): UseEventRegistrationReturn {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const [registrations, setRegistrations] = useState<EventRegistration[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -105,15 +107,15 @@ export function useEventRegistration(): UseEventRegistrationReturn {
         localStorage.setItem('event_registrations', JSON.stringify(stored));
       }
 
-      toast.success('Inscription confirmée !', {
-        description: `Vous êtes inscrit à "${params.eventTitle}"`,
+      toast.success(t('toast.event.registered', 'Inscription confirmée !'), {
+        description: t('toast.event.registeredDesc', 'Vous êtes inscrit à "{{title}}"', { title: params.eventTitle }),
       });
 
       await fetchRegistrations();
       return true;
     } catch (error) {
       console.error('Event registration error:', error);
-      toast.error('Erreur lors de l\'inscription');
+      toast.error(t('toast.event.registerError', 'Erreur lors de l\'inscription'));
       return false;
     } finally {
       setIsLoading(false);
@@ -131,12 +133,12 @@ export function useEventRegistration(): UseEventRegistrationReturn {
 
       if (error) throw error;
 
-      toast.success('Inscription annulée');
+      toast.success(t('toast.event.cancelled', 'Inscription annulée'));
       await fetchRegistrations();
       return true;
     } catch (error) {
       console.error('Event cancellation error:', error);
-      toast.error('Erreur lors de l\'annulation');
+      toast.error(t('toast.event.cancelError', 'Erreur lors de l\'annulation'));
       return false;
     } finally {
       setIsLoading(false);
