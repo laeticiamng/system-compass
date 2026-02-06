@@ -201,6 +201,7 @@ export const redirectRoutes = [
   { path: "/systemic-mistakes", element: <Navigate to="/prevention-filter" replace /> },
   { path: "/universal-errors", element: <Navigate to="/prevention-filter" replace /> },
   { path: "/orientation-hub", element: <Navigate to="/about" replace /> },
+  { path: "/test", element: <Navigate to="/quick-test" replace /> }, // Legacy URL support
   // Redirects pour routes masquées vers pages fonctionnelles
   { path: "/errors-illusions", element: <Navigate to="/prevention-filter" replace /> },
   { path: "/partners", element: <Navigate to="/about" replace /> },
