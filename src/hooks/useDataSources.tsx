@@ -1,6 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import { useTranslation } from 'react-i18next';
 
 // Types
 export interface DataSource {
@@ -160,6 +161,7 @@ export function useDataSourcesStats() {
 export function useCreateDataSource() {
   const queryClient = useQueryClient();
   const { toast } = useToast();
+  const { t } = useTranslation();
 
   return useMutation({
     mutationFn: async (source: Omit<DataSource, 'id' | 'created_at' | 'updated_at' | 'last_scraped_at' | 'last_content_hash' | 'error_count' | 'last_error' | 'countries'>) => {
@@ -175,12 +177,12 @@ export function useCreateDataSource() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['data-sources'] });
       queryClient.invalidateQueries({ queryKey: ['data-sources-stats'] });
-      toast({ title: 'Source ajoutée', description: 'La source de données a été créée.' });
+      toast({ title: t('dataSources.added', 'Source ajoutée'), description: t('dataSources.addedDesc', 'La source de données a été créée.') });
     },
     onError: (error) => {
       toast({ 
-        title: 'Erreur', 
-        description: error instanceof Error ? error.message : 'Échec de la création',
+        title: t('common.error', 'Erreur'), 
+        description: error instanceof Error ? error.message : t('dataSources.createError', 'Échec de la création'),
         variant: 'destructive' 
       });
     },
@@ -190,6 +192,7 @@ export function useCreateDataSource() {
 export function useUpdateDataSource() {
   const queryClient = useQueryClient();
   const { toast } = useToast();
+  const { t } = useTranslation();
 
   return useMutation({
     mutationFn: async ({ id, ...updates }: Partial<DataSource> & { id: string }) => {
@@ -205,12 +208,12 @@ export function useUpdateDataSource() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['data-sources'] });
-      toast({ title: 'Source mise à jour' });
+      toast({ title: t('dataSources.updated', 'Source mise à jour') });
     },
     onError: (error) => {
       toast({ 
-        title: 'Erreur', 
-        description: error instanceof Error ? error.message : 'Échec de la mise à jour',
+        title: t('common.error', 'Erreur'), 
+        description: error instanceof Error ? error.message : t('dataSources.updateError', 'Échec de la mise à jour'),
         variant: 'destructive' 
       });
     },
@@ -220,6 +223,7 @@ export function useUpdateDataSource() {
 export function useDeleteDataSource() {
   const queryClient = useQueryClient();
   const { toast } = useToast();
+  const { t } = useTranslation();
 
   return useMutation({
     mutationFn: async (id: string) => {
@@ -233,12 +237,12 @@ export function useDeleteDataSource() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['data-sources'] });
       queryClient.invalidateQueries({ queryKey: ['data-sources-stats'] });
-      toast({ title: 'Source supprimée' });
+      toast({ title: t('dataSources.deleted', 'Source supprimée') });
     },
     onError: (error) => {
       toast({ 
-        title: 'Erreur', 
-        description: error instanceof Error ? error.message : 'Échec de la suppression',
+        title: t('common.error', 'Erreur'), 
+        description: error instanceof Error ? error.message : t('dataSources.deleteError', 'Échec de la suppression'),
         variant: 'destructive' 
       });
     },
@@ -248,6 +252,7 @@ export function useDeleteDataSource() {
 export function useValidateUpdate() {
   const queryClient = useQueryClient();
   const { toast } = useToast();
+  const { t } = useTranslation();
 
   return useMutation({
     mutationFn: async ({ 
@@ -280,16 +285,16 @@ export function useValidateUpdate() {
       queryClient.invalidateQueries({ queryKey: ['pending-updates'] });
       queryClient.invalidateQueries({ queryKey: ['data-sources-stats'] });
       toast({ 
-        title: variables.status === 'approved' ? 'Changement approuvé' : 'Changement rejeté',
+        title: variables.status === 'approved' ? t('dataSources.changeApproved', 'Changement approuvé') : t('dataSources.changeRejected', 'Changement rejeté'),
         description: variables.status === 'approved' 
-          ? 'Les données seront publiées.'
-          : 'Le changement a été rejeté.'
+          ? t('dataSources.changeApprovedDesc', 'Les données seront publiées.')
+          : t('dataSources.changeRejectedDesc', 'Le changement a été rejeté.')
       });
     },
     onError: (error) => {
       toast({ 
-        title: 'Erreur', 
-        description: error instanceof Error ? error.message : 'Échec de la validation',
+        title: t('common.error', 'Erreur'), 
+        description: error instanceof Error ? error.message : t('dataSources.validationError', 'Échec de la validation'),
         variant: 'destructive' 
       });
     },
@@ -299,6 +304,7 @@ export function useValidateUpdate() {
 export function useTriggerScrape() {
   const queryClient = useQueryClient();
   const { toast } = useToast();
+  const { t } = useTranslation();
 
   return useMutation({
     mutationFn: async ({ 
@@ -327,14 +333,14 @@ export function useTriggerScrape() {
       const changesCount = data.results?.reduce((acc: number, r: { changes_detected: number }) => acc + (r.changes_detected || 0), 0) || 0;
       
       toast({ 
-        title: 'Scraping terminé', 
-        description: `${successCount} source(s) traitée(s), ${changesCount} changement(s) détecté(s).`
+        title: t('dataSources.scrapingDone', 'Scraping terminé'), 
+        description: t('dataSources.scrapingDoneDesc', '{{successCount}} source(s) traitée(s), {{changesCount}} changement(s) détecté(s).', { successCount, changesCount })
       });
     },
     onError: (error) => {
       toast({ 
-        title: 'Erreur de scraping', 
-        description: error instanceof Error ? error.message : 'Le scraping a échoué',
+        title: t('dataSources.scrapingError', 'Erreur de scraping'), 
+        description: error instanceof Error ? error.message : t('dataSources.scrapingFailed', 'Le scraping a échoué'),
         variant: 'destructive' 
       });
     },

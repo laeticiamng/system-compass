@@ -6,6 +6,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from './useAuth';
 import { toast } from 'sonner';
+import { useTranslation } from 'react-i18next';
 
 export interface Expert {
   id: string;
@@ -154,6 +155,7 @@ interface UseExpertsReturn {
 
 export function useExperts(): UseExpertsReturn {
   const { user } = useAuth();
+  const { t } = useTranslation();
   const [experts, setExperts] = useState<Expert[]>([]);
   const [consultations, setConsultations] = useState<Consultation[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -239,8 +241,8 @@ export function useExperts(): UseExpertsReturn {
           id: 'review-1',
           expertId,
           rating: 5,
-          title: 'Excellent accompagnement',
-          content: 'Service professionnel et conseils pertinents pour mon expatriation.',
+          title: t('experts.mockReview1Title', 'Excellent accompagnement'),
+          content: t('experts.mockReview1Content', 'Service professionnel et conseils pertinents pour mon expatriation.'),
           isVerifiedPurchase: true,
           createdAt: new Date().toISOString(),
         },
@@ -248,8 +250,8 @@ export function useExperts(): UseExpertsReturn {
           id: 'review-2',
           expertId,
           rating: 4,
-          title: 'Très satisfait',
-          content: 'Bonne expertise et réactivité.',
+          title: t('experts.mockReview2Title', 'Très satisfait'),
+          content: t('experts.mockReview2Content', 'Bonne expertise et réactivité.'),
           isVerifiedPurchase: true,
           createdAt: new Date(Date.now() - 86400000).toISOString(),
         },
@@ -291,12 +293,12 @@ export function useExperts(): UseExpertsReturn {
     content?: string
   ): Promise<boolean> => {
     if (!user) {
-      toast.error('Vous devez être connecté pour laisser un avis');
+      toast.error(t('experts.loginRequired', 'Vous devez être connecté pour laisser un avis'));
       return false;
     }
 
     if (expertId.startsWith('mock-')) {
-      toast.success('Avis soumis avec succès (démo)');
+      toast.success(t('experts.reviewSubmittedDemo', 'Avis soumis avec succès (démo)'));
       return true;
     }
 
@@ -312,15 +314,15 @@ export function useExperts(): UseExpertsReturn {
         });
 
       if (dbError) {
-        toast.error('Erreur lors de la soumission de l\'avis');
+        toast.error(t('experts.reviewSubmitError', 'Erreur lors de la soumission de l\'avis'));
         return false;
       }
 
-      toast.success('Avis soumis avec succès');
+      toast.success(t('experts.reviewSubmitted', 'Avis soumis avec succès'));
       return true;
     } catch (err) {
       console.error('Error submitting review:', err);
-      toast.error('Erreur lors de la soumission de l\'avis');
+      toast.error(t('experts.reviewSubmitError', 'Erreur lors de la soumission de l\'avis'));
       return false;
     }
   }, [user]);
@@ -331,13 +333,13 @@ export function useExperts(): UseExpertsReturn {
     notes?: string
   ): Promise<boolean> => {
     if (!user) {
-      toast.error('Vous devez être connecté pour réserver');
+      toast.error(t('experts.loginRequiredBooking', 'Vous devez être connecté pour réserver'));
       return false;
     }
 
     if (expertId.startsWith('mock-')) {
-      toast.success('Consultation réservée avec succès (démo)', {
-        description: `Rendez-vous le ${scheduledAt.toLocaleDateString('fr-FR')}`,
+      toast.success(t('experts.consultationBookedDemo', 'Consultation réservée avec succès (démo)'), {
+        description: t('experts.appointmentDate', 'Rendez-vous le {{date}}', { date: scheduledAt.toLocaleDateString('fr-FR') }),
       });
       return true;
     }
@@ -354,15 +356,15 @@ export function useExperts(): UseExpertsReturn {
         });
 
       if (dbError) {
-        toast.error('Erreur lors de la réservation');
+        toast.error(t('experts.bookingError', 'Erreur lors de la réservation'));
         return false;
       }
 
-      toast.success('Consultation réservée avec succès');
+      toast.success(t('experts.consultationBooked', 'Consultation réservée avec succès'));
       return true;
     } catch (err) {
       console.error('Error booking consultation:', err);
-      toast.error('Erreur lors de la réservation');
+      toast.error(t('experts.bookingError', 'Erreur lors de la réservation'));
       return false;
     }
   }, [user]);
