@@ -105,20 +105,21 @@ export function ExpertMessaging({
 
       try {
         // Try to find existing conversation
-        const { data: conv, error: convError } = await (supabase as any)
-          .from('expert_conversations')
+        const { data: conv, error: convError } = await supabase
+          .from('expert_conversations' as any)
           .select('id')
           .eq('expert_id', expertId)
           .eq('user_id', user.id)
           .single();
 
         if (conv && !convError) {
-          setConversationId(conv.id);
+          const convData = conv as unknown as { id: string };
+          setConversationId(convData.id);
           // Load messages
-          const { data: msgs } = await (supabase as any)
-            .from('expert_messages')
+          const { data: msgs } = await supabase
+            .from('expert_messages' as any)
             .select('*')
-            .eq('conversation_id', conv.id)
+            .eq('conversation_id', convData.id)
             .order('created_at', { ascending: true });
 
           if (msgs) {
@@ -202,8 +203,8 @@ export function ExpertMessaging({
 
     // Save to database for real experts
     try {
-      const { error } = await (supabase as any)
-        .from('expert_messages')
+      const { error } = await supabase
+        .from('expert_messages' as any)
         .insert({
           conversation_id: conversationId,
           sender_id: user.id,

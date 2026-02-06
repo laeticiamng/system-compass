@@ -83,10 +83,10 @@ export function StructuralRulesSection({ caseData, onUpdateCase, countryName }: 
   const [showTemplates, setShowTemplates] = useState(false);
 
   // Get rules from case data
-  const rules: StructuralRule[] = (caseData as any).structural_rules || [];
+  const rules: StructuralRule[] = ((caseData as unknown as Record<string, unknown>).structural_rules as StructuralRule[]) || [];
 
   const updateRules = (newRules: StructuralRule[]) => {
-    onUpdateCase({ structural_rules: newRules } as any);
+    onUpdateCase({ structural_rules: newRules } as Partial<UserCase>);
   };
 
   const addRule = (type: RuleType = 'custom') => {
