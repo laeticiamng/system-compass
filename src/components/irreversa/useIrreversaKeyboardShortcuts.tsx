@@ -1,5 +1,6 @@
 import { useCallback, useEffect } from 'react';
 import { toast } from 'sonner';
+import { type TFunction } from 'i18next';
 
 // ============================================
 // KEYBOARD SHORTCUTS FOR IRREVERSA MODULE
@@ -83,19 +84,20 @@ export function useIrreversaKeyboardShortcuts({
 }
 
 // Keyboard shortcut help display
-export const IRREVERSA_SHORTCUTS = [
-  { key: 'N', description: 'Nouveau seuil' },
-  { key: '/', description: 'Rechercher' },
-  { key: 'Ctrl+E', description: 'Exporter' },
-  { key: 'Ctrl+S', description: 'Statistiques' },
-  { key: 'Esc', description: 'Fermer' },
+export const getIrreversaShortcuts = (t: TFunction) => [
+  { key: 'N', description: t('irreversa.shortcuts.newThreshold', 'Nouveau seuil') },
+  { key: '/', description: t('irreversa.shortcuts.search', 'Rechercher') },
+  { key: 'Ctrl+E', description: t('irreversa.shortcuts.export', 'Exporter') },
+  { key: 'Ctrl+S', description: t('irreversa.shortcuts.stats', 'Statistiques') },
+  { key: 'Esc', description: t('irreversa.shortcuts.close', 'Fermer') },
 ];
 
-export function showShortcutsToast() {
+export function showShortcutsToast(t: TFunction) {
+  const shortcuts = getIrreversaShortcuts(t);
   toast.info(
     <div className="space-y-1">
-      <p className="font-semibold text-sm">Raccourcis clavier</p>
-      {IRREVERSA_SHORTCUTS.map(s => (
+      <p className="font-semibold text-sm">{t('irreversa.shortcuts.title', 'Raccourcis clavier')}</p>
+      {shortcuts.map(s => (
         <div key={s.key} className="flex items-center justify-between text-xs">
           <span className="text-muted-foreground">{s.description}</span>
           <kbd className="px-1.5 py-0.5 bg-muted rounded text-xs font-mono">{s.key}</kbd>
