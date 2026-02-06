@@ -134,9 +134,6 @@ export function useTranslationsSync() {
         }
       }
 
-      const successCount = results.filter(r => r.status === 'success').length;
-      console.log(`Seeded ${successCount}/${results.length} translation sets`);
-      
       return results;
     } catch (err) {
       const msg = err instanceof Error ? err.message : 'Unknown error';

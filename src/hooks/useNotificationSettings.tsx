@@ -141,8 +141,6 @@ export function useNotificationSettings() {
         throw new Error('Erreur lors de l\'enregistrement');
       }
 
-      console.log('Push subscription registered:', subscriptionJson.endpoint);
-      
       // Also store in localStorage as fallback
       localStorage.setItem('push_subscription', JSON.stringify(subscriptionJson));
 
@@ -203,7 +201,6 @@ export function useNotificationSettings() {
 
   const requestPushPermission = useCallback(async () => {
     if (!('Notification' in window)) {
-      console.log('Push notifications not supported');
       setPushStatus('unsupported');
       return false;
     }

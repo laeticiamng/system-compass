@@ -224,9 +224,7 @@ if (typeof window !== 'undefined') {
   window.addEventListener('online', () => {
     // Small delay to ensure connection is stable
     setTimeout(() => {
-      if (offlineQueue.length > 0) {
-        console.log(`[OfflineQueue] Processing ${offlineQueue.length} queued operations`);
-      }
+      // Queue will be processed automatically
     }, 1000);
   });
 }

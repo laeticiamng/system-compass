@@ -1,0 +1,129 @@
+{
+  "toasts": {
+    "pmo": {
+      "dependencyCreated": "Dependency created",
+      "dependencyDeleted": "Dependency deleted",
+      "errorCreatingDependency": "Error creating dependency",
+      "errorDeletingDependency": "Error deleting",
+      "budgetLineCreated": "Budget line created",
+      "budgetLineUpdated": "Budget line updated",
+      "budgetLineDeleted": "Budget line deleted",
+      "scenarioCreated": "Scenario created",
+      "errorCreating": "Error creating",
+      "errorUpdating": "Error updating",
+      "errorDeleting": "Error deleting",
+      "errorCreatingScenario": "Error creating scenario",
+      "errorCloning": "Error cloning",
+      "milestoneCreateError": "Error creating milestone",
+      "initiativeCreated": "Initiative created successfully",
+      "initiativeUpdated": "Initiative updated",
+      "initiativeDeleted": "Initiative deleted",
+      "errorCreatingInitiative": "Error creating initiative"
+    },
+    "traceos": {
+      "workflowCreated": "Workflow created successfully",
+      "workflowDeleted": "Workflow deleted",
+      "approvalStarted": "Approval workflow started",
+      "stepApproved": "Step approved with electronic signature",
+      "stepRejected": "Step rejected",
+      "decisionRecorded": "Decision recorded",
+      "decisionUpdated": "Decision updated",
+      "decisionDeleted": "Decision deleted",
+      "tagCreatedError": "Error creating tag",
+      "tagDeleted": "Tag deleted",
+      "tagDeletedError": "Error deleting tag",
+      "errorCreatingWorkflow": "Error creating workflow",
+      "errorDeletingWorkflow": "Error deleting",
+      "errorStartingWorkflow": "Error starting workflow",
+      "errorApproving": "Error approving",
+      "errorRejecting": "Error rejecting",
+      "errorCreatingDecision": "Error creating decision",
+      "errorUpdatingDecision": "Error updating",
+      "errorDeletingDecision": "Error deleting",
+      "loginRequiredDecision": "You must be logged in to create a decision",
+      "errorCreatingWebhook": "Error creating webhook",
+      "errorUpdatingWebhook": "Error updating",
+      "errorDeletingWebhook": "Error deleting",
+      "errorTestingWebhook": "Error testing webhook"
+    },
+    "consultation": {
+      "requestSent": "Consultation request sent",
+      "statusUpdated": "Status updated",
+      "cancelled": "Consultation cancelled",
+      "errorRequest": "Error sending request",
+      "errorUpdating": "Error updating",
+      "errorCancelling": "Error cancelling"
+    },
+    "expert": {
+      "reviewSubmitted": "Review submitted for verification",
+      "reviewDeleted": "Review deleted",
+      "thankYouVote": "Thank you for your vote",
+      "alreadyVoted": "You already voted for this review",
+      "loginRequiredReview": "You must be logged in to leave a review",
+      "loginRequiredVote": "You must be logged in to vote",
+      "ratingRange": "Rating must be between 1 and 5",
+      "reviewMinLength": "Your review must contain at least 20 characters",
+      "errorSubmitting": "Error submitting review",
+      "errorVoting": "Error voting",
+      "errorDeletingReview": "Unable to delete review"
+    },
+    "latent": {
+      "errorLoadingZones": "Error loading zones",
+      "errorCreatingZone": "Error creating zone",
+      "errorUpdatingStatus": "Error updating status",
+      "errorAddingTension": "Error adding tension",
+      "errorDeleting": "Error deleting",
+      "errorEvolvingZone": "Error evolving zone",
+      "errorDeletingZone": "Error deleting zone",
+      "errorUpdatingZone": "Error updating zone",
+      "errorDuplicatingZone": "Error duplicating zone",
+      "zonesMerged": "Zones merged successfully",
+      "errorMergingZones": "Error merging zones"
+    },
+    "sync": {
+      "dataSynced": "Data synchronized successfully",
+      "pendingActions": "{{count}} actions pending synchronization",
+      "connectionRestored": "Connection restored",
+      "offlineMode": "Offline mode activated",
+      "connectionRequired": "Internet connection required",
+      "cloudSyncError": "Cloud synchronization error"
+    },
+    "notifications": {
+      "enabled": "Notifications enabled!",
+      "notSupported": "Notifications not supported",
+      "notSupportedDesc": "Your browser does not support push notifications.",
+      "activated": "Notifications enabled",
+      "activatedDesc": "You will now receive important notifications.",
+      "blocked": "Notifications blocked",
+      "blockedDesc": "You can re-enable them in browser settings."
+    },
+    "profile": {
+      "saved": "Profile saved",
+      "savedLocally": "Profile saved locally",
+      "savedLocallyOnly": "Profile saved locally only"
+    },
+    "watchlist": {
+      "countryAdded": "Country followed",
+      "countryRemoved": "Country removed",
+      "errorUpdating": "Error updating"
+    },
+    "events": {
+      "registered": "Registration confirmed!",
+      "registeredDesc": "You are registered for \"{{title}}\"",
+      "cancelled": "Registration cancelled",
+      "errorRegistering": "Error registering",
+      "errorCancelling": "Error cancelling"
+    },
+    "generation": {
+      "countryGenerated": "✅ {{country}} generated",
+      "countryGeneratedDesc": "Score: {{score}}/100",
+      "countryFailed": "❌ {{country}} failed",
+      "countryValidating": "🔍 {{country}} validating...",
+      "countryRunning": "🚀 {{country}} generating...",
+      "batchCompleted": "🎉 Batch completed!",
+      "batchCompletedDesc": "{{completed}}/{{total}} countries generated",
+      "batchFailed": "⚠️ Batch completed with errors",
+      "batchFailedDesc": "{{completed}} success, {{failed}} failures"
+    }
+  }
+}

@@ -75,11 +75,11 @@ export function TraceOSCollaboration({
         setPresences(newPresences);
         onPresenceChange?.(newPresences);
       })
-      .on('presence', { event: 'join' }, ({ key, newPresences: joinedPresences }) => {
-        console.log('User joined:', key, joinedPresences);
+      .on('presence', { event: 'join' }, () => {
+        // Presence tracked via sync events
       })
-      .on('presence', { event: 'leave' }, ({ key, leftPresences }) => {
-        console.log('User left:', key, leftPresences);
+      .on('presence', { event: 'leave' }, () => {
+        // Presence tracked via sync events
       })
       .on('broadcast', { event: 'cursor' }, ({ payload }) => {
         if (payload.userId !== user.id) {
