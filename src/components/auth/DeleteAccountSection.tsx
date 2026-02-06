@@ -101,7 +101,7 @@ export function DeleteAccountSection() {
                 <ul className="list-disc list-inside text-sm space-y-1">
                   <li>{t('account.confirmItem1', 'Supprimer votre profil et préférences')}</li>
                   <li>{t('account.confirmItem2', 'Supprimer votre historique et progression')}</li>
-                  <li>{t('account.confirmItem3', 'Supprimer vos Exit Keys et comparaisons')}</li>
+                  <li>{t('account.confirmItem3', 'Supprimer vos stratégies et comparaisons')}</li>
                   <li>{t('account.confirmItem4', 'Révoquer votre accès Premium le cas échéant')}</li>
                 </ul>
               </AlertDialogDescription>

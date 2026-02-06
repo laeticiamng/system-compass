@@ -85,7 +85,7 @@ export const ConfirmationEmail = ({
           </Text>
           
           <Text style={featureItem}>
-            🔑 <strong>Exit Keys</strong> — Débloquez vos stratégies de mobilité personnalisées
+            🔑 <strong>Stratégies</strong> — Débloquez vos stratégies de mobilité personnalisées
           </Text>
           
           <Text style={featureItem}>
