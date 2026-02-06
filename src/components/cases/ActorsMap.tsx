@@ -12,6 +12,7 @@ import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
 import { UserCase } from '@/hooks/useUserCases';
+import { ExtendedCaseData } from '@/types/cases';
 
 type ActorType = 'institutional' | 'decider' | 'access' | 'blocker' | 'operator' | 'potential_partner' | 'provider';
 type ActorStatus = 'official' | 'influential';
@@ -66,10 +67,10 @@ export function ActorsMap({ caseData, onUpdateCase }: ActorsMapProps) {
   const [expandedActor, setExpandedActor] = useState<string | null>(null);
 
   // Get actors from case data (or initialize empty)
-  const actors: Actor[] = (caseData as any).actors_map || [];
+  const actors: Actor[] = ((caseData as ExtendedCaseData).actors_map || []) as Actor[];
 
   const updateActors = (newActors: Actor[]) => {
-    onUpdateCase({ actors_map: newActors } as any);
+    onUpdateCase({ actors_map: newActors } as Partial<ExtendedCaseData>);
   };
 
   const addActor = () => {
