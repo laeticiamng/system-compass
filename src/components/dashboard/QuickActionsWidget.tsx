@@ -54,14 +54,14 @@ const quickActions: QuickAction[] = [
     id: 'experts',
     labelKey: 'quickActions.experts',
     icon: <Users className="w-4 h-4" />,
-    route: '/expert-marketplace',
+    route: '/experts',
     color: 'bg-pink-500/10 text-pink-500 hover:bg-pink-500/20',
   },
   {
     id: 'tools',
     labelKey: 'quickActions.tools',
     icon: <FileText className="w-4 h-4" />,
-    route: '/tools-hub',
+    route: '/tools',
     color: 'bg-cyan-500/10 text-cyan-500 hover:bg-cyan-500/20',
   },
 ];
@@ -102,7 +102,7 @@ export function QuickActionsWidget() {
           variant="ghost"
           size="sm"
           className="w-full mt-3 text-muted-foreground hover:text-primary"
-          onClick={() => navigate('/tools-hub')}
+          onClick={() => navigate('/tools')}
         >
           {t('dashboard.viewAllTools', 'Voir tous les outils')}
           <ArrowRight className="w-4 h-4 ml-2" />
