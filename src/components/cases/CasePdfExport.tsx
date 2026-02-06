@@ -15,6 +15,7 @@ import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
 import { UserCase, isDeepMode } from '@/hooks/useUserCases';
+import { ExtendedCaseData } from '@/types/cases';
 import { GovernanceScore } from '@/hooks/useCountryGovernance';
 import jsPDF from 'jspdf';
 
@@ -61,10 +62,11 @@ export function CasePdfExport({ caseData, governanceData, countryName }: CasePdf
   });
 
   // Get enhanced data from case
-  const marketStudy = (caseData as any).market_study;
-  const actorsMap = (caseData as any).actors_map || [];
-  const riskRegisterEnhanced = (caseData as any).risk_register_enhanced || [];
-  const structuralRules = (caseData as any).structural_rules || [];
+  const extendedCase = caseData as ExtendedCaseData;
+  const marketStudy = extendedCase.market_study;
+  const actorsMap = extendedCase.actors_map || [];
+  const riskRegisterEnhanced = extendedCase.risk_register_enhanced || [];
+  const structuralRules = extendedCase.structural_rules || [];
 
   const generatePdf = async () => {
     setIsExporting(true);

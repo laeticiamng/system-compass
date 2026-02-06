@@ -13,6 +13,7 @@ import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { UserCase } from '@/hooks/useUserCases';
+import { ExtendedCaseData } from '@/types/cases';
 
 interface MarketStudyData {
   problemStatement: string;
@@ -101,7 +102,7 @@ export function MarketStudyWizard({ caseData, onUpdateCase, countryName }: Marke
   
   // Load existing study or use default
   const [study, setStudy] = useState<MarketStudyData>(() => {
-    const existing = (caseData as any).market_study;
+    const existing = (caseData as ExtendedCaseData).market_study;
     return existing ? { ...DEFAULT_STUDY, ...existing } : DEFAULT_STUDY;
   });
 
@@ -112,7 +113,7 @@ export function MarketStudyWizard({ caseData, onUpdateCase, countryName }: Marke
   const saveStudy = async () => {
     setIsSaving(true);
     try {
-      onUpdateCase({ market_study: study } as any);
+      onUpdateCase({ market_study: study } as Partial<ExtendedCaseData>);
     } finally {
       setIsSaving(false);
     }

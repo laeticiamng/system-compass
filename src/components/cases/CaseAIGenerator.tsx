@@ -11,6 +11,7 @@ import { Progress } from '@/components/ui/progress';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { useCaseAI } from '@/hooks/useCaseAI';
 import { UserCase, isDeepMode } from '@/hooks/useUserCases';
+import { ExtendedCaseData } from '@/types/cases';
 import { toast } from 'sonner';
 
 interface CaseAIGeneratorProps {
@@ -74,25 +75,25 @@ export function CaseAIGenerator({ caseData, countryName, pyramidType, onUpdateCa
         case 'market':
           result = await generateMarketStudy(context);
           if (result) {
-            onUpdateCase({ market_study: result } as any);
+            onUpdateCase({ market_study: result } as Partial<ExtendedCaseData>);
           }
           break;
         case 'actors':
           result = await generateActorsMap(context);
           if (result?.actors) {
-            onUpdateCase({ actors_map: result.actors } as any);
+            onUpdateCase({ actors_map: result.actors } as Partial<ExtendedCaseData>);
           }
           break;
         case 'risks':
           result = await generateRiskRegister(context);
           if (result?.risks) {
-            onUpdateCase({ risk_register_enhanced: result.risks } as any);
+            onUpdateCase({ risk_register_enhanced: result.risks } as Partial<ExtendedCaseData>);
           }
           break;
         case 'rules':
           result = await generateStructuralRules(context);
           if (result?.rules) {
-            onUpdateCase({ structural_rules: result.rules } as any);
+            onUpdateCase({ structural_rules: result.rules } as Partial<ExtendedCaseData>);
           }
           break;
         case 'poc':
@@ -144,17 +145,17 @@ export function CaseAIGenerator({ caseData, countryName, pyramidType, onUpdateCa
         const updates: Partial<UserCase> = {};
 
         if (result.marketStudy) {
-          (updates as any).market_study = result.marketStudy;
+          (updates as Partial<ExtendedCaseData>).market_study = result.marketStudy;
         }
         if (result.actors?.length > 0) {
-          (updates as any).actors_map = result.actors.map((a: any) => ({
+          (updates as Partial<ExtendedCaseData>).actors_map = result.actors.map((a: any) => ({
             ...a,
             id: a.id || crypto.randomUUID(),
             proofs: a.proofs || [],
           }));
         }
         if (result.risks?.length > 0) {
-          (updates as any).risk_register_enhanced = result.risks.map((r: any) => ({
+          (updates as Partial<ExtendedCaseData>).risk_register_enhanced = result.risks.map((r: any) => ({
             ...r,
             id: r.id || crypto.randomUUID(),
             alertSignals: r.alertSignals || [],
@@ -162,7 +163,7 @@ export function CaseAIGenerator({ caseData, countryName, pyramidType, onUpdateCa
           }));
         }
         if (result.rules?.length > 0) {
-          (updates as any).structural_rules = result.rules.map((r: any) => ({
+          (updates as Partial<ExtendedCaseData>).structural_rules = result.rules.map((r: any) => ({
             ...r,
             id: r.id || crypto.randomUUID(),
           }));
