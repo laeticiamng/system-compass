@@ -474,7 +474,7 @@ export default function CaseDetail() {
                   </label>
                   <Select
                     value={caseData.timeline_scenario}
-                    onValueChange={(val) => updateCase({ timeline_scenario: val as any })}
+                    onValueChange={(val: string) => updateCase({ timeline_scenario: val as 'optimistic' | 'realistic' | 'pessimistic' })}
                   >
                     <SelectTrigger className="w-full max-w-xs">
                       <SelectValue />
@@ -509,7 +509,7 @@ export default function CaseDetail() {
                   </label>
                   <Select
                     value={caseData.status}
-                    onValueChange={(val) => updateCase({ status: val as any })}
+                    onValueChange={(val: string) => updateCase({ status: val as 'draft' | 'active' | 'archived' })}
                   >
                     <SelectTrigger className="w-full max-w-xs">
                       <SelectValue />
