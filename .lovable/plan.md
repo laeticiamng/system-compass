@@ -1,91 +1,126 @@
 
 
-# Audit C-Suite v11 -- Rapport Final
+# Audit C-Suite v12 -- Rapport Final
 
-## Statut de toutes les corrections precedentes (v1 a v10)
+## Statut de toutes les corrections precedentes (v1 a v11)
 
 | Correction | Statut |
 |-----------|--------|
-| Toutes les 31 corrections precedentes (v1-v10) | RESOLU |
+| Toutes les 33 corrections precedentes (v1-v11) | RESOLU |
 
 ## Synthese par role
 
-- **CEO** : Plateforme strategiquement coherente. Aucune action structurelle.
-- **CTO** : Architecture stable. 2 composants UI restants avec FR hardcode.
-- **CPO** : SmartTipsWidget et ToolsHub ont des labels de navigation non traduits.
+- **CEO** : Plateforme strategiquement coherente. Aucune action structurelle requise.
+- **CTO** : Architecture stable. 4 composants UI restants sans `useTranslation`.
+- **CPO** : Derniers composants avec labels FR hardcodes identifies.
 - **CISO** : RLS en place, secrets configures. Pas de nouveau risque.
-- **DPO** : Art. 17 valide, RGPD conforme.
+- **DPO** : RGPD conforme. Pas de nouvelle donnee exposee.
 - **CDO** : Pipeline analytics coherent.
 - **COO** : Documentation a jour.
-- **Head of Design** : Coherence i18n a finaliser sur les 2 derniers composants.
-- **Beta testeur** : Les labels de navigation du ToolsHub et les conseils du dashboard doivent etre traduisibles.
+- **Head of Design** : Coherence i18n a finaliser sur ces 4 derniers composants.
+- **Beta testeur** : Parcours fonctionnel. Derniers labels systeme ci-dessous.
 
 ## Hors perimetre
 
-- **QuestTracker.tsx** : donnees de gameplay (quetes, titres de quetes, badges de difficulte) -- contenu ludique, pas des labels UI systeme
-- **CasePrefillTemplates.tsx** : modeles de dossiers pre-remplis -- contenu metier complexe (objectifs, jalons, risques), pas des labels UI. Les labels de section (`title`, `subtitle`, `objectives`, etc.) sont deja traduits avec `t()`
-- Fichiers deja corriges (31 corrections precedentes)
+- InstallationTimeline.tsx : contenu metier complexe (etapes d'expatriation) -- dataset de contenu, pas des labels UI systeme
+- CasePdfExport.tsx : labels PDF generes (Verifie, En cours, Dep. elevee) -- contenu de document exporte, complexe a refactorer pour un gain marginal
+- DecisionWorkflowConfig.tsx : noms de workflows par defaut -- contenu metier
+- Fichiers deja corriges (33 corrections precedentes)
 
-## Inconsistances detectees -- 2 composants
+## Inconsistances detectees -- 4 composants
 
-### 1. SmartTipsWidget.tsx -- 4 conseils avec titres/descriptions/labels FR hardcodes (aucun `useTranslation`)
+### 1. ChallengeProgressTracker.tsx -- Aucun `useTranslation`, ~8 labels FR
 
-Le tableau `DEFAULT_TIPS` (ligne 26-59) contient 4 conseils avec :
-- 4 titres : "Completez votre profil", "Explorez de nouveaux pays", "Testez une simulation", "Sauvegardez vos comparaisons"
-- 4 descriptions FR
-- 4 labels d'action : "Completer", "Explorer", "Jouer", "Se connecter"
+- Titre : `'Defis en cours'`
+- Badge : `'{completedToday} aujourd'hui'`
+- Etat vide : `'Aucun defi actif'`, `'Revenez demain pour de nouveaux defis !'`
+- Type badges : `'Quotidien'`, `'Hebdo'`
+- Bouton expand : `'Reduire'`, `'Voir {n} autres'`
 
-### 2. ToolsHub.tsx -- 6 categories + 30 outils + 4 acces rapides avec labels FR hardcodes hors composant
+### 2. TaxCalendarWidget.tsx -- Aucun `useTranslation`, ~12 labels FR
 
-Le tableau `TOOL_CATEGORIES` (lignes 36-125) contient :
-- 6 titres de categories : "Decouvrir", "Analyser", "Planifier", "Apprendre", "Pro & Business", "Communaute"
-- 6 descriptions de categories
-- ~25 labels et descriptions d'outils
-- Badges "Bientot", "Populaire", "Nouveau"
+- Titre : `'Echeances fiscales'`
+- Badge : `'{n} a venir'`
+- Etat vide : `'Toutes les echeances sont a jour !'`
+- Type labels : `'Declaration'`, `'Paiement'`, `'Document'`, `'Enregistrement'`
+- Dates relatives : `'Aujourd'hui !'`, `'Demain'`, `'{n} jours'`
+- Default deadlines titles (4 titres FR dans le tableau)
 
-Le tableau `QUICK_ACCESS` (lignes 127-132) contient :
-- 4 labels : "Dashboard", "Consommation", "Notifications", "Tarifs"
-- 4 descriptions FR
+### 3. ExpertMarketplace.tsx -- Aucun `useTranslation`, ~15 labels FR
 
-Aussi : ligne 222 compare `tool.badge === 'Bientot'` en dur, et ligne 235 affiche `'Bientot'` en dur. Les badges de la Helmet (lignes 140-145) contiennent des meta FR hors `t()`.
+- Titre page : `'Marketplace d'Experts'`
+- Description page
+- Types d'experts : `'Tous les experts'`, `'Avocats'`, `'Conseillers fiscaux'`, etc.
+- CTA section : `'Vous etes expert ?'`, description, `'Devenir partenaire expert'`
+- Toast : `'Inscription partenaires bientot disponible'`
 
-Les badges "Commencer par le Test Rapide" et "Lire le Guide" (lignes 289, 294) sont aussi hardcodes.
+### 4. DashboardExitKeysWidget.tsx -- `statusConfig` hors composant sans `t()`
+
+- 4 labels de statut : `'Exploree'`, `'Sauvegardee'`, `'En cours'`, `'Ecartee'`
+- Le composant a deja `useTranslation` mais `statusConfig` est defini hors du composant (ligne 10-15)
 
 ## Plan de correction
 
-### Correction 1 : SmartTipsWidget.tsx
+### Correction 1 : ChallengeProgressTracker.tsx
 
 1. Ajouter `import { useTranslation } from 'react-i18next';`
-2. Declarer `const { t } = useTranslation();` dans le composant
-3. Deplacer `DEFAULT_TIPS` dans le composant pour acceder a `t()`
-4. Remplacer les 12 chaines (4 titres + 4 descriptions + 4 labels) par `t()` avec fallback FR
+2. Declarer `const { t } = useTranslation();`
+3. Remplacer les 8 chaines par `t()` avec fallback FR
 
 Cles i18n :
-- `tips.completeProfile`, `tips.completeProfileDesc`, `tips.completeProfileAction`
-- `tips.exploreCountries`, `tips.exploreCountriesDesc`, `tips.exploreCountriesAction`
-- `tips.trySimulation`, `tips.trySimulationDesc`, `tips.trySimulationAction`
-- `tips.saveComparison`, `tips.saveComparisonDesc`, `tips.saveComparisonAction`
+- `challenges.active` : "Defis en cours"
+- `challenges.completedToday` : "{{count}} aujourd'hui"
+- `challenges.noActive` : "Aucun defi actif"
+- `challenges.comeBackTomorrow` : "Revenez demain..."
+- `challenges.daily` : "Quotidien"
+- `challenges.weekly` : "Hebdo"
+- `challenges.collapse` : "Reduire"
+- `challenges.showMore` : "Voir {{count}} autres"
 
-### Correction 2 : ToolsHub.tsx
+### Correction 2 : TaxCalendarWidget.tsx
 
-1. Deplacer `TOOL_CATEGORIES` et `QUICK_ACCESS` dans le composant pour acceder a `t()`
-2. Remplacer les ~40 chaines par `t()` avec fallback FR
-3. Remplacer le test `tool.badge === 'Bientot'` par une propriete booleenne `comingSoon: true` sur les outils concernes (plus robuste et independant de la langue)
-4. Remplacer les badges hardcodes "Bientot", "Populaire", "Nouveau" par `t('common.comingSoon', 'Bientot')`, `t('common.popular', 'Populaire')`, `t('common.new', 'Nouveau')`
-5. Traduire les 2 badges d'aide : `t('hub.startQuickTest', 'Commencer par le Test Rapide')`, `t('hub.readGuide', 'Lire le Guide')`
-6. Traduire les meta Helmet avec `t()`
+1. Ajouter `import { useTranslation } from 'react-i18next';`
+2. Declarer `const { t } = useTranslation();`
+3. Deplacer `typeConfig` et `DEFAULT_DEADLINES` dans le composant pour acceder a `t()`
+4. Remplacer les ~12 chaines par `t()` avec fallback FR
 
-Cles i18n (selection) :
-- `hub.category.discover`, `hub.category.discoverDesc`
-- `hub.category.analyze`, `hub.category.analyzeDesc`
-- `hub.category.plan`, `hub.category.planDesc`
-- `hub.category.learn`, `hub.category.learnDesc`
-- `hub.category.pro`, `hub.category.proDesc`
-- `hub.category.connect`, `hub.category.connectDesc`
-- `hub.quick.dashboard`, `hub.quick.usage`, `hub.quick.notifications`, `hub.quick.pricing`
-- Chaque outil : `hub.tool.[id]`, `hub.tool.[id]Desc`
+Cles i18n :
+- `fiscal.calendar.title` : "Echeances fiscales"
+- `fiscal.calendar.upcoming` : "{{count}} a venir"
+- `fiscal.calendar.allUpToDate` : "Toutes les echeances sont a jour !"
+- `fiscal.calendar.today` : "Aujourd'hui !"
+- `fiscal.calendar.tomorrow` : "Demain"
+- `fiscal.calendar.daysLeft` : "{{count}} jours"
+- `fiscal.type.declaration`, `fiscal.type.payment`, `fiscal.type.document`, `fiscal.type.registration`
+
+### Correction 3 : ExpertMarketplace.tsx
+
+1. Ajouter `import { useTranslation } from 'react-i18next';`
+2. Declarer `const { t } = useTranslation();`
+3. Deplacer `EXPERT_TYPES` dans le composant pour acceder a `t()`
+4. Remplacer les ~15 chaines par `t()` avec fallback FR
+
+Cles i18n :
+- `marketplace.title` : "Marketplace d'Experts"
+- `marketplace.description` : description paragraphe
+- `marketplace.allExperts`, `marketplace.lawyers`, `marketplace.taxAdvisors`, `marketplace.immigration`, `marketplace.notaries`, `marketplace.business`
+- `marketplace.ctaTitle` : "Vous etes expert ?"
+- `marketplace.ctaDesc` : description CTA
+- `marketplace.ctaButton` : "Devenir partenaire expert"
+- `marketplace.ctaToast` : "Inscription partenaires bientot disponible"
+
+### Correction 4 : DashboardExitKeysWidget.tsx
+
+1. Deplacer `statusConfig` dans le composant (qui a deja `useTranslation`)
+2. Remplacer les 4 labels par `t()` avec fallback FR
+
+Cles i18n :
+- `exitKeys.status.explored` : "Exploree"
+- `exitKeys.status.saved` : "Sauvegardee"
+- `exitKeys.status.inProgress` : "En cours"
+- `exitKeys.status.dismissed` : "Ecartee"
 
 ### Details techniques
 
-Meme pattern que les corrections v8-v10 : deplacer les tableaux statiques dans le composant pour acceder au hook `useTranslation`. Pour ToolsHub, ajouter `comingSoon: boolean` a l'interface `ToolItem` pour remplacer la comparaison de chaine `=== 'Bientot'` par un test booleen.
+Meme pattern que v8-v11 : deplacer les tableaux statiques dans le composant pour acceder au hook `useTranslation()`. Pour DashboardExitKeysWidget, le hook est deja present, il suffit de deplacer `statusConfig` dans le composant.
 
