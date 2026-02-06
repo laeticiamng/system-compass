@@ -84,7 +84,7 @@ export const NAV_GROUPS: NavGroup[] = [
     borderColor: 'border-blue-500/30',
     items: [
       { href: '/countries', icon: Map, label: 'Catalogue Pays', labelKey: 'nav.countries', description: 'Explorer 195+ pays' },
-      { href: '/exit-keys', icon: Key, label: 'Exit Keys', labelKey: 'nav.exitKeys', description: 'Stratégies de sortie' },
+      { href: '/exit-keys', icon: Key, label: 'Stratégies', labelKey: 'nav.exitKeys', description: 'Stratégies de sortie' },
       { href: '/quick-test', icon: Zap, label: 'Quick Test', labelKey: 'nav.quickTest', description: 'Test rapide 2min' },
     ],
   },

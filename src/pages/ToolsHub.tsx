@@ -75,7 +75,7 @@ export default function ToolsHub() {
       color: 'from-amber-500/20 to-orange-500/20',
       borderColor: 'border-amber-500/30',
       tools: [
-        { href: '/exit-keys', icon: Key, label: t('hub.tool.exitKeys', 'Exit Keys'), description: t('hub.tool.exitKeysDesc', 'Stratégies de sortie') },
+        { href: '/exit-keys', icon: Key, label: t('hub.tool.exitKeys', 'Stratégies'), description: t('hub.tool.exitKeysDesc', 'Stratégies de sortie') },
         { href: '/exit-keys/catalog', icon: FileText, label: t('hub.tool.catalog', 'Catalogue'), description: t('hub.tool.catalogDesc', '50+ clés') },
         { href: '/exit-keys/compare', icon: Scale, label: t('hub.tool.compareKeys', 'Comparer Clés'), description: t('hub.tool.compareKeysDesc', 'Analyse comparative') },
         { href: '/prevention-filter', icon: Shield, label: t('hub.tool.preventionFilter', 'Filtre Décision'), description: t('hub.tool.preventionFilterDesc', 'Anti-illusions') },
@@ -138,7 +138,7 @@ export default function ToolsHub() {
     <>
       <Helmet>
         <title>{t('hub.meta.title', 'Centre des Outils - Pyramid Compass | Analyse & Planification')}</title>
-        <meta name="description" content={t('hub.meta.description', 'Accédez à tous les outils Pyramid Compass : tests de profil, comparateur de pays, Exit Keys, calculateur fiscal, et plus.')} />
+        <meta name="description" content={t('hub.meta.description', 'Accédez à tous les outils Pyramid Compass : tests de profil, comparateur de pays, stratégies, calculateur fiscal, et plus.')} />
         <meta property="og:title" content={t('hub.meta.ogTitle', 'Centre des Outils - Pyramid Compass')} />
         <meta property="og:description" content={t('hub.meta.ogDescription', 'Tous vos outils d\'analyse, de planification et de décision en un seul endroit.')} />
         <meta property="og:url" content="https://world-alignment.lovable.app/tools" />

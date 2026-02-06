@@ -88,7 +88,7 @@ export function ConsolidatedRiskAlerts({ alerts: externalAlerts, onNavigate }: C
     pmo: 'PMO',
     latent: 'Latent',
     irreversa: 'Irreversa',
-    'exit-keys': 'Exit Keys'
+    'exit-keys': 'Stratégies'
   };
 
   const formatTimeAgo = (date: Date) => {
