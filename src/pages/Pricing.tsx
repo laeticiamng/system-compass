@@ -80,6 +80,19 @@ const Pricing = () => {
       highlighted: true,
       color: 'amber',
     },
+    {
+      id: 'pro' as const,
+      name: t('pricing.proName', 'Pro / B2B'),
+      price: t('pricing.proPrice', 'Sur devis'),
+      period: '',
+      description: t('pricing.proDescription', 'Pour les équipes et organisations'),
+      icon: Building2,
+      features: SUBSCRIPTION_TIERS.pro.features,
+      limitations: [],
+      buttonText: t('pricing.contactUs', 'Nous contacter'),
+      highlighted: false,
+      color: 'slate',
+    },
   ];
 
   const enterpriseFeatures = [
@@ -237,12 +250,14 @@ const Pricing = () => {
                       <div className={cn(
                         "mx-auto p-4 rounded-2xl mb-4",
                         plan.id === 'free' && "bg-muted",
-                        plan.id === 'premium' && "bg-amber-500/10"
+                        plan.id === 'premium' && "bg-amber-500/10",
+                        plan.id === 'pro' && "bg-primary/10"
                       )}>
                         <Icon className={cn(
                           "w-7 h-7",
                           plan.id === 'free' && "text-muted-foreground",
-                          plan.id === 'premium' && "text-amber-500"
+                          plan.id === 'premium' && "text-amber-500",
+                          plan.id === 'pro' && "text-primary"
                         )} />
                       </div>
                       <CardTitle className="text-xl font-display">{plan.name}</CardTitle>
@@ -282,6 +297,15 @@ const Pricing = () => {
                       {isCurrent ? (
                         <Button variant="outline" className="w-full rounded-full" onClick={() => openCustomerPortal()}>
                           {t('pricing.managePlan', 'Gérer mon abonnement')}
+                        </Button>
+                      ) : plan.id === 'pro' ? (
+                        <Button
+                          variant="outline"
+                          className="w-full gap-2 rounded-full"
+                          onClick={() => navigate('/b2b')}
+                        >
+                          {plan.buttonText}
+                          <ArrowRight className="w-4 h-4" />
                         </Button>
                       ) : showUpgrade ? (
                         <Button
