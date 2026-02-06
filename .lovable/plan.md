@@ -1,77 +1,60 @@
 
-# Audit C-Suite v2 + Plan de Corrections
 
-## Constat Principal
+# Audit C-Suite v3 — Constat et Corrections
 
-L'audit precedent a identifie 4 risques critiques. Deux ont ete traites (suppression de compte, temoignages), mais **avec des lacunes** :
+## Etat actuel apres les corrections v2
 
-### Problemes detectes
+| Element | Statut |
+|---------|--------|
+| Suppression de compte RGPD | OK - DeleteAccountSection fonctionnel |
+| Faux temoignages Index.tsx | OK - TestimonialsSection utilisee |
+| Faux noms (5 fichiers) | OK - Remplaces par "Membre Beta", "Client verifie", etc. |
+| Toasts SecuritySettings i18n | OK - Utilise t() |
 
-**1. Faux temoignages encore presents (CMO - CRITIQUE)**
-Le composant `TestimonialsSection.tsx` a bien ete remplace par des stats reelles, mais la **landing page `Index.tsx` contient toujours les faux temoignages en dur** (Marie L., Thomas R., Sophie D.) aux lignes 275-367. Le composant `TestimonialsSection` n'est meme pas utilise dans `Index.tsx`. Les memes faux noms apparaissent aussi dans 4 autres fichiers :
-- `MemberSpotlight.tsx`
-- `CaseStudySystem.tsx`
-- `ExpertProfileDialog.tsx`
-- `ExpertReviews.tsx`
-- `DiscussionThread.tsx`
+## Problemes restants detectes
 
-**2. SecuritySettings.tsx - toasts hardcodes en francais**
-Les messages toast (lignes 57-58 et 62-63) ne passent pas par i18n.
+### 1. SecuritySettings.tsx — 20+ chaines FR hardcodees (Design / CPO)
+Les toasts utilisent `t()`, mais tout le reste de l'interface (titres de cartes, descriptions, labels, conseils de securite) est encore en francais dur. Exemples :
+- "Mot de passe" (ligne 87)
+- "Gerez la securite de votre mot de passe" (ligne 89)
+- "Authentification a deux facteurs" (ligne 138)
+- "Conseils de securite" (ligne 219)
+- 15+ autres chaines
 
-**3. Landing page non internationalisee**
-`Index.tsx` contient ~40 chaines en francais dur qui ne passent pas par `t()`, malgre l'import de `useTranslation`.
+### 2. DiscussionThread.tsx — Reference residuelle a "Jean-Pierre" (CMO)
+Ligne 52 : le contenu d'un commentaire mentionne encore "Meme experience que Jean-Pierre" alors que l'auteur a ete anonymise. Incoherence.
 
----
-
-## Plan de Corrections (3 chantiers)
-
-### Chantier 1 : Supprimer les faux temoignages de Index.tsx
-- Remplacer la section "Temoignages" (lignes 275-367) par le composant `TestimonialsSection` existant qui affiche des stats reelles
-- Supprimer l'import `Quote` devenu inutile
-
-### Chantier 2 : Nettoyer les faux noms dans les 4 autres fichiers
-- `MemberSpotlight.tsx` : remplacer "Marie L." par "Utilisateur anonyme" ou un prenom generique non-trompeur
-- `ExpertProfileDialog.tsx` : idem
-- `ExpertReviews.tsx` : remplacer "Sophie D."
-- `DiscussionThread.tsx` : remplacer "Thomas R."
-- `CaseStudySystem.tsx` : remplacer "Thomas & Marie L."
-
-### Chantier 3 : Internationaliser les toasts de SecuritySettings
-- Passer les 2 messages toast hardcodes par `t()` avec fallback francais
-
-### Details techniques
-
-**Index.tsx** : Remplacer les lignes 275-367 (section temoignages inline avec faux quotes) par :
-```tsx
-import { TestimonialsSection } from '@/components/landing/TestimonialsSection';
-// ...
-<TestimonialsSection />
-```
-
-**SecuritySettings.tsx** : Lignes 57-58 et 62-63, ajouter `useTranslation` et utiliser `t()` pour les toasts.
-
-**5 fichiers avec faux noms** : Remplacer par des labels comme "Membre beta", "Expert verifie", ou des prenoms clairement fictifs avec mention "(exemple)" pour les cas d'etude academiques.
+### 3. Index.tsx — 40+ chaines FR hardcodees (CPO / Design)
+La landing page entiere n'utilise pas `t()` malgre l'import de `useTranslation`. Chaque texte visible est en francais dur. C'est un chantier i18n majeur.
 
 ---
 
-## Resume de l'audit C-Suite v2
+## Plan de corrections
 
-| Role | Verdict | Action |
-|------|---------|--------|
-| CEO | Positionnement unique confirme | Pas d'action immediate |
-| CTO | Architecture solide, edge functions operationnelles | Monitoring a planifier |
-| CPO | UX claire, trop de modules visibles | Simplification navigation (futur) |
-| CISO | Suppression compte OK, CSP toujours manquant | CSP a planifier |
-| DPO | Art. 17 implemente, delete-account fonctionnel | Politique retention a documenter |
-| CDO | Stack IA avec fallbacks, pas de feedback loop | Thumbs up/down (futur) |
-| COO | Documentation presente, pas de status page | Status page (futur) |
-| CFO | Break-even a 20-40 abonnes | Plan annuel a ajouter (futur) |
-| CMO | **Faux temoignages encore presents dans Index.tsx** | **A corriger maintenant** |
-| CSO | Pas de CRM ni pipeline | Module futur |
-| Design | Interface premium, i18n inconsistant | **Corrections i18n maintenant** |
-| Beta testeur | Landing page coherente en 30s, mais temoignages suspects | **A corriger maintenant** |
+### Correction 1 : SecuritySettings i18n complet
+Passer toutes les chaines restantes par `t()` avec fallback FR :
+- Titres de cartes (Mot de passe, 2FA, Alertes, Conseils)
+- Descriptions
+- Labels et textes de boutons
+- Liste des conseils de securite
 
-### Corrections a appliquer maintenant
-1. Remplacer les faux temoignages dans `Index.tsx` par `TestimonialsSection`
-2. Nettoyer les faux noms dans 5 fichiers secondaires
-3. Internationaliser les toasts de `SecuritySettings.tsx`
+### Correction 2 : DiscussionThread nettoyage
+Remplacer "Meme experience que Jean-Pierre" par "Meme experience ici" ou un equivalent sans nom propre.
+
+### Correction 3 : Index.tsx i18n (chantier majeur)
+Passer les ~40 chaines de la landing page par `t()` avec fallback FR :
+- Hero (titre, sous-titre, badge, CTAs)
+- Section "Comment ca marche" (3 etapes)
+- Section "Exemple fiche pays"
+- Section Pricing (plans Free et Premium)
+- CTA final
+
+---
+
+## Details techniques
+
+**SecuritySettings.tsx** : Ajouter ~20 appels `t()` pour les CardTitle, CardDescription, Label, et textes statiques. La structure du composant reste inchangee.
+
+**DiscussionThread.tsx** : Modification d'une seule ligne (52) — remplacement du contenu texte.
+
+**Index.tsx** : Remplacement systematique de chaque chaine par `t('landing.xxx', 'Texte FR')`. L'import `useTranslation` est deja present (ligne 8), et `_t` est declare mais non utilise (ligne 34) — il suffit de renommer `_t` en `t` et de l'utiliser.
