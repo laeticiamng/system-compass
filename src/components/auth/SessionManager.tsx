@@ -17,6 +17,7 @@ import {
   AlertTriangle,
   RefreshCw
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { useToast } from '@/hooks/use-toast';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
@@ -62,6 +63,7 @@ export function SessionManager({
   const [sessions, setSessions] = useState<Session[]>([]);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
+  const { t } = useTranslation();
   const { session: currentSession } = useAuth();
 
   // Fetch current session info
@@ -123,13 +125,13 @@ export function SessionManager({
       await onRevokeSession(sessionId);
       setSessions(prev => prev.filter(s => s.id !== sessionId));
       toast({
-        title: "Session révoquée",
-        description: "L'appareil a été déconnecté avec succès.",
+        title: t('settings.sessions.revoked', 'Session révoquée'),
+        description: t('settings.sessions.revokedDescription', "L'appareil a été déconnecté avec succès."),
       });
     } catch {
       toast({
-        title: "Erreur",
-        description: "Impossible de révoquer la session.",
+        title: t('common.error', 'Erreur'),
+        description: t('settings.sessions.revokeError', 'Impossible de révoquer la session.'),
         variant: "destructive",
       });
     } finally {
@@ -143,13 +145,13 @@ export function SessionManager({
       try {
         await supabase.auth.signOut({ scope: 'global' });
         toast({
-          title: "Sessions révoquées",
-          description: "Vous avez été déconnecté de tous les appareils.",
+          title: t('settings.sessions.allRevoked', 'Sessions révoquées'),
+          description: t('settings.sessions.allRevokedDescription', 'Vous avez été déconnecté de tous les appareils.'),
         });
       } catch {
         toast({
-          title: "Erreur",
-          description: "Impossible de révoquer les sessions.",
+          title: t('common.error', 'Erreur'),
+          description: t('settings.sessions.revokeAllError', 'Impossible de révoquer les sessions.'),
           variant: "destructive",
         });
       }
@@ -159,13 +161,13 @@ export function SessionManager({
     try {
       await onRevokeAll();
       toast({
-        title: "Sessions révoquées",
-        description: "Tous les autres appareils ont été déconnectés.",
+        title: t('settings.sessions.allRevoked', 'Sessions révoquées'),
+        description: t('settings.sessions.othersRevoked', 'Tous les autres appareils ont été déconnectés.'),
       });
     } catch {
       toast({
-        title: "Erreur",
-        description: "Impossible de révoquer les sessions.",
+        title: t('common.error', 'Erreur'),
+        description: t('settings.sessions.revokeAllError', 'Impossible de révoquer les sessions.'),
         variant: "destructive",
       });
     }
