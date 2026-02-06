@@ -109,9 +109,10 @@ export default function ExitKeys() {
     if (savedProfile && !profileLoading) {
       setBirthCountryId(savedProfile.birthCountryId);
       // Handle migration from old nationalityId to new nationalityIds
+      const legacyProfile = savedProfile as { nationalityId?: string };
       const savedNationalities = savedProfile.nationalityIds || 
-        (savedProfile as any).nationalityId ? [(savedProfile as any).nationalityId] : 
-        [savedProfile.birthCountryId];
+        (legacyProfile.nationalityId ? [legacyProfile.nationalityId] : 
+        [savedProfile.birthCountryId]);
       setNationalityIds(savedNationalities.filter(Boolean));
       setCurrentCountryId(savedProfile.currentCountryId);
       setMotorProfile(savedProfile.motorProfile);

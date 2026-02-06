@@ -31,7 +31,7 @@ import {
 
 export default function Index() {
   const navigate = useNavigate();
-  const { t: _t } = useTranslation(); // Reserved for future i18n
+  const { t: _t } = useTranslation(); // eslint-disable-line @typescript-eslint/no-unused-vars -- Reserved for i18n migration
   const { user } = useAuth();
   const { trackHomeOpened } = useAnalytics();
   const { countries } = useCountries();

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { X, Loader2, Palmtree, Building2, AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { supabase } from '@/integrations/supabase/client';
 
 import { DestinationRecommendation, COUNTRY_NAMES } from '@/lib/nationality-advantages';
 import { toast } from 'sonner';
@@ -36,13 +37,8 @@ export function DestinationInsights({
       setContent('');
 
       try {
-        const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/destination-insights`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-          },
-          body: JSON.stringify({
+        const { data, error: fnError } = await supabase.functions.invoke('destination-insights', {
+          body: {
             destination: {
               id: destination.countryId,
               name: destination.countryName,
@@ -52,16 +48,17 @@ export function DestinationInsights({
             aspiration,
             mode,
             currentCountry: COUNTRY_NAMES[currentCountry]?.name || currentCountry,
-          }),
+          },
         });
 
-        if (!response.ok) {
-          if (response.status === 429) {
+        if (fnError) {
+          const status = (fnError as any)?.status;
+          if (status === 429) {
             const errorMsg = t('errors.rateLimited', 'Trop de requêtes. Veuillez réessayer dans quelques instants.');
             toast.error(errorMsg);
             throw new Error(errorMsg);
           }
-          if (response.status === 402) {
+          if (status === 402) {
             const errorMsg = t('errors.insufficientCredits', 'Crédits IA insuffisants.');
             toast.error(errorMsg);
             throw new Error(errorMsg);
@@ -69,39 +66,13 @@ export function DestinationInsights({
           throw new Error(t('errors.generationFailed', 'Erreur lors de la génération des insights.'));
         }
 
-        const reader = response.body?.getReader();
-        if (!reader) throw new Error('Stream not available');
-
-        const decoder = new TextDecoder();
-        let buffer = '';
-
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
-
-          buffer += decoder.decode(value, { stream: true });
-
-          let newlineIndex: number;
-          while ((newlineIndex = buffer.indexOf('\n')) !== -1) {
-            const line = buffer.slice(0, newlineIndex).trim();
-            buffer = buffer.slice(newlineIndex + 1);
-
-            if (line.startsWith(':') || line === '') continue;
-            if (!line.startsWith('data: ')) continue;
-
-            const jsonStr = line.slice(6).trim();
-            if (jsonStr === '[DONE]') break;
-
-            try {
-              const parsed = JSON.parse(jsonStr);
-              const delta = parsed.choices?.[0]?.delta?.content;
-              if (delta) {
-                setContent(prev => prev + delta);
-              }
-            } catch {
-              // Partial JSON, continue
-            }
-          }
+        // Handle streaming response or plain text
+        if (typeof data === 'string') {
+          setContent(data);
+        } else if (data?.content) {
+          setContent(data.content);
+        } else if (data) {
+          setContent(JSON.stringify(data));
         }
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Erreur inconnue');
@@ -111,7 +82,7 @@ export function DestinationInsights({
     };
 
     fetchInsights();
-  }, [destination, nationalities, aspiration, currentCountry, mode]);
+  }, [destination, nationalities, aspiration, currentCountry, mode, t]);
 
   // Auto-scroll
   useEffect(() => {
@@ -165,7 +136,6 @@ export function DestinationInsights({
               {content && (
                 <div className="whitespace-pre-wrap leading-relaxed">
                   {content.split('\n').map((line, i) => {
-                    // Handle markdown-like formatting
                     if (line.startsWith('## ') || line.startsWith('**') && line.endsWith('**')) {
                       return (
                         <h3 key={i} className="text-primary font-bold mt-6 mb-2 first:mt-0">

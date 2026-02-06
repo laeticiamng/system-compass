@@ -303,10 +303,11 @@ export default function PyramidQuiz() {
         if (savedGame) {
           // Restore game state
           setMode(savedGame.game_mode as GameMode);
-          setPlayers(savedGame.game_state.players.map((p) => ({
+          const savedPlayers = savedGame.game_state.players as Array<Partial<Player>>;
+          setPlayers(savedPlayers.map((p) => ({
             ...p,
-            resources: (p as any).resources || createDefaultResources(),
-            countryType: (p as any).countryType || 'STABILITY_REDIS' as PyramidType,
+            resources: p.resources || createDefaultResources(),
+            countryType: p.countryType || ('STABILITY_REDIS' as PyramidType),
           })) as Player[]);
           setCurrentPlayerIndex(savedGame.game_state.currentPlayerIndex);
           setDiceValue(savedGame.game_state.diceValue);

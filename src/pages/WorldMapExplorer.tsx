@@ -50,7 +50,7 @@ export default function WorldMapExplorer() {
       nameLocal: c.nameLocal,
       pyramidType: c.pyramidType,
       region: c.region,
-      hasIntelligence: DB_COMPLETE_COUNTRY_IDS.includes(c.id as any),
+      hasIntelligence: (DB_COMPLETE_COUNTRY_IDS as readonly string[]).includes(c.id),
     }));
 
     const fromExtended = Object.entries(EXTENDED_COUNTRY_META)

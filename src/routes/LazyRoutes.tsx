@@ -58,10 +58,7 @@ export const LazyNotificationSettings = withSuspense(lazy(() => import('@/pages/
 
 // B2B & Institutional
 export const LazyInstitutions = withSuspense(lazy(() => import('@/pages/Institutions')));
-export const LazyB2BSolutions = withSuspense(lazy(() => import('@/pages/B2BSolutions')));
 export const LazyCaseDetail = withSuspense(lazy(() => import('@/pages/CaseDetail')));
-export const LazyLatentModule = withSuspense(lazy(() => import('@/pages/LatentModule')));
-export const LazyIrreversaModule = withSuspense(lazy(() => import('@/pages/IrreversaModule')));
 
 // Terrain & Financial Intel
 export const LazyTerrainRealities = withSuspense(lazy(() => import('@/pages/TerrainRealities')));
@@ -72,11 +69,7 @@ export const LazyFinancialSafetyIntel = withSuspense(lazy(() => import('@/pages/
 export const LazyAdminTranslations = withSuspense(lazy(() => import('@/pages/AdminTranslations')));
 export const LazyAdminAnalytics = withSuspense(lazy(() => import('@/pages/AdminAnalytics')));
 export const LazyAdminCountryGenerator = withSuspense(lazy(() => import('@/pages/AdminCountryGenerator')));
-export const LazyAdminGenerateTranslations = withSuspense(lazy(() => import('@/pages/AdminGenerateTranslations')));
-export const LazyAdminDatabaseTranslations = withSuspense(lazy(() => import('@/pages/AdminDatabaseTranslations')));
 export const LazyAdminPartners = withSuspense(lazy(() => import('@/pages/AdminPartners')));
-export const LazyAdminTranslationsSync = withSuspense(lazy(() => import('@/pages/AdminTranslationsSync')));
-export const LazySeedTranslations = withSuspense(lazy(() => import('@/pages/SeedTranslations')));
 export const LazyAdminDataSources = withSuspense(lazy(() => import('@/pages/admin/AdminDataSources')));
 
 // Content pages (can be lazy loaded too)
