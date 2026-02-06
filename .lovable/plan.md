@@ -1,98 +1,101 @@
 
 
-# Triple Audit v6 - Technique + UX + Beta Testeur
+# Triple Audit v7 - Technique + UX + Beta Testeur
 
-## Etat post-audits v1 a v5
+## Etat post-audits v1 a v6
 
-Les audits precedents ont corrige la majorite des problemes critiques. Le codebase est stable avec les migrations `supabase.from('table' as any)`, la navigation SPA dans la plupart des composants, les outils fantomes masques dans ToolsHub, la page 404 redesignee, l'i18n dans breadcrumbs/cookie consent/contextual shortcuts, et le typage cible dans les composants cases.
+Tous les problemes critiques et majeurs precedents sont corriges : `(supabase as any)` migres, `window.location.href` corrige dans tous les composants de navigation, ToolsHub outils fantomes masques, page 404 redesignee, i18n breadcrumbs/cookie/shortcuts, typage dans cases/governance. Le codebase est en bon etat.
 
 ---
 
 ## PHASE 1 : AUDIT TECHNIQUE (Dev Senior)
 
-### MAJEUR - `window.location.href` residuel dans NotificationCard (1 occurrence)
+### MAJEUR - `as any` massif dans le module Cases (5 fichiers, 25+ occurrences)
 
-**Fichier :** `src/components/common/NotificationManager.tsx`, ligne 338
+Les composants du module Cases accedent a des champs etendus (`market_study`, `actors_map`, `risk_register_enhanced`, `structural_rules`) qui ne sont pas dans le type `UserCase`. Le pattern `(caseData as any).field` et `onUpdateCase({field: value} as any)` est utilise partout.
 
-Le composant `NotificationCard` (utilise dans `NotificationCenter`) contient encore `window.location.href = notification.actionHref`. Le composant `NotificationDropdown` a ete corrige mais pas `NotificationCard`. C'est un composant React qui peut utiliser `useNavigate()`.
+| Fichier | Occurrences | Champs |
+|---------|-------------|--------|
+| `CaseAIGenerator.tsx` | 12 | market_study, actors_map, risk_register_enhanced, structural_rules |
+| `ActorsMap.tsx` | 2 | actors_map |
+| `MarketStudyWizard.tsx` | 4 | market_study |
+| `CasePdfExport.tsx` | 4 | market_study, actors_map, risk_register_enhanced, structural_rules |
+| `CaseMilestones.tsx` | 1 | type cast |
 
-**Correction :** Ajouter `useNavigate()` dans `NotificationCard` et remplacer `window.location.href` par `navigate()`.
+**Correction :** Creer une interface `ExtendedCaseData` qui etend `UserCase` avec les champs optionnels manquants, et l'utiliser comme type dans ces composants. Cela elimine tous les `as any` d'un coup avec un seul type partage.
 
-### MINEUR - `actor.sources as any[]` dans GovernanceAdvanced (2 occurrences)
+### INFO - `window.location.href` restants (8 fichiers, 12 occurrences)
 
-**Fichier :** `src/components/cases/GovernanceAdvanced.tsx`, lignes 579-580
+Tous les usages restants sont **legitimes** :
+- `ErrorBoundary.tsx`, `GlobalErrorBoundary.tsx`, `error-boundary.tsx` : rechargement complet volontaire apres crash
+- `CompareUnified.tsx`, `ShareButton.tsx`, `CommunityQuickActions.tsx` : lecture de l'URL pour copier/partager (pas de navigation)
+- `ConsultationPayment.tsx` : redirection vers Stripe Checkout (URL externe)
+- `usePushNotifications.ts` : navigation depuis une notification push native (hors React tree)
 
-**Correction :** Caster vers `string[]` qui correspond au type reel des sources.
+**Decision :** Aucune correction necessaire.
 
-### MINEUR - `(window as any)` dans performance-utils.ts (2 occurrences)
+### INFO - `console.log` en production (13 fichiers, 120 occurrences)
 
-**Fichier :** `src/lib/performance-utils.ts`, lignes 152, 165
+Deja documente. Les occurrences sont reparties entre :
+- Tests (translations.test.ts, translations-sync.test.ts) : legitimes
+- Stores (countries-store.ts, translations-store.ts, translations-seeder.ts) : info de chargement
+- Realtime (TraceOSCollaboration, useGenerationNotifications) : debug connexion
+- Network utils : debug offline queue
 
-Utilise `(window as any).requestIdleCallback` et `(window as any).cancelIdleCallback`. Ces APIs existent mais ne sont pas dans les types par defaut de TypeScript.
-
-**Decision :** Pas critique - les `eslint-disable` sont deja en place et `requestIdleCallback` n'est pas dans les types TS standard. Garder tel quel.
-
-### INFO - `console.log` en production (47 fichiers, 603 occurrences)
-
-Deja documente dans les audits precedents. Nettoyage dedie necessaire.
-
-### INFO - Tous les `(supabase as any)` ont ete migres vers `supabase.from('table' as any)`
-
-Pas de regression detectee.
+**Decision :** Nettoyage dedie hors scope. Risque faible.
 
 ---
 
 ## PHASE 2 : AUDIT UX (Designer Senior)
 
-### MAJEUR - NotificationCenter (page standalone) recharge la page au clic action
-
-Le composant `NotificationCard` dans le `NotificationCenter` provoque un rechargement complet quand l'utilisateur clique sur une action. C'est le dernier composant avec ce probleme.
-
 ### INFO - Pas de nouveaux problemes UX critiques
 
-Les corrections precedentes couvrent les problemes UX les plus impactants. Les problemes restants sont de l'i18n massif (landing page, toasts) deja documentes.
+Les corrections des audits precedents ont elimine tous les problemes UX majeurs. Les problemes i18n (landing page, toasts) sont documentes pour une passe dediee.
 
 ---
 
 ## PHASE 3 : AUDIT BETA TESTEUR
 
-### "Les notifications dans le centre de notifications rechargent encore la page"
+### INFO - Stabilite confirmee
 
-Si j'ouvre le centre de notifications complet (pas le dropdown), et que je clique sur une action, la page recharge. Le dropdown fonctionne bien mais pas la page centre de notifications.
+En tant qu'utilisateur final, les parcours principaux fonctionnent sans flash blanc, les outils non disponibles sont clairement marques "Bientot", les notifications naviguent en douceur, et les erreurs sont gerees proprement.
 
 ---
 
 ## PLAN DE CORRECTIONS
 
-### Correction 1 : Navigation SPA dans NotificationCard
+### Correction unique : Type partage pour le module Cases
 
-| Fichier | Action |
-|---------|--------|
-| `src/components/common/NotificationManager.tsx` | Ajouter `useNavigate()` dans `NotificationCard`, remplacer `window.location.href = notification.actionHref` par `navigate(notification.actionHref)` |
+| # | Action |
+|---|--------|
+| 1 | Creer une interface `ExtendedCaseData` dans un fichier partage (ex: `src/types/cases.ts`) qui etend `UserCase` avec les champs optionnels : `market_study`, `actors_map`, `risk_register_enhanced`, `structural_rules` |
+| 2 | Mettre a jour `CaseAIGenerator.tsx` : remplacer les 12 `as any` par des casts vers `ExtendedCaseData` et `Partial<ExtendedCaseData>` |
+| 3 | Mettre a jour `ActorsMap.tsx` : remplacer les 2 `as any` par `ExtendedCaseData` |
+| 4 | Mettre a jour `MarketStudyWizard.tsx` : remplacer les 2 `as any` pour market_study (garder les `as any` pour les valeurs de Select qui sont un pattern UI standard) |
+| 5 | Mettre a jour `CasePdfExport.tsx` : remplacer les 4 `as any` par `ExtendedCaseData` |
 
-### Correction 2 : Typage GovernanceAdvanced sources
-
-| Fichier | Action |
-|---------|--------|
-| `src/components/cases/GovernanceAdvanced.tsx` | Remplacer `actor.sources as any[]` par `(actor.sources as string[])` (2 occurrences, lignes 579-580) |
-
-## Non corrige (documente, inchange depuis v5)
+### Non corrige (documente, inchange)
 
 | Probleme | Raison |
 |----------|--------|
-| `console.log` en production (47 fichiers) | Nettoyage dedie necessaire |
+| `console.log` en production (13 fichiers) | Nettoyage dedie, risque faible |
 | Toast messages FR (27 hooks) | Refactoring i18n massif |
 | Landing page / ToolsHub labels FR | Passe i18n dediee |
-| `(window as any).requestIdleCallback` | API non typee dans TS, eslint-disable en place |
+| `CaseMilestones.tsx` `type as any` | Cast de valeur Select, pattern UI standard |
+| `FinancialModeling.tsx` / `StrategicFrameworks.tsx` `as any` sur Tabs | Pattern Radix UI standard pour les valeurs de Select/Tabs |
+| `FinancialIntelHistory.tsx` `as any` sur JSON fields | Types JSON dynamiques, casting necessaire |
 
-## Fichiers a modifier
+### Fichiers a modifier
 
-1. `src/components/common/NotificationManager.tsx` - `navigate()` dans NotificationCard
-2. `src/components/cases/GovernanceAdvanced.tsx` - `as string[]` au lieu de `as any[]`
+1. `src/types/cases.ts` (nouveau) - Interface `ExtendedCaseData`
+2. `src/components/cases/CaseAIGenerator.tsx` - Casts cibles (12 occurrences)
+3. `src/components/cases/ActorsMap.tsx` - Casts cibles (2 occurrences)
+4. `src/components/cases/MarketStudyWizard.tsx` - Casts cibles (2 occurrences)
+5. `src/components/cases/CasePdfExport.tsx` - Casts cibles (4 occurrences)
 
-## Estimation
+### Estimation
 
-- Temps : 5 minutes
-- Complexite : Tres faible
-- Risque regression : Quasi nul
+- Temps : 10 minutes
+- Complexite : Faible
+- Risque regression : Quasi nul (typage pur, aucune logique modifiee)
 
