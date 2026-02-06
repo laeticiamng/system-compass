@@ -1,8 +1,8 @@
 
 
-# Audit C-Suite v6 -- Rapport Final
+# Audit C-Suite v7 -- Rapport Final
 
-## Statut de toutes les corrections precedentes
+## Statut de toutes les corrections precedentes (v1 a v6)
 
 | Correction | Statut |
 |-----------|--------|
@@ -15,83 +15,88 @@
 | SessionManager.tsx toasts i18n (6 chaines) | RESOLU |
 | useVacationRecommendations.tsx i18n (4 toasts) | RESOLU |
 | usePartnerProgram.tsx i18n (5 toasts) | RESOLU |
+| useDataSources.tsx i18n (10 toasts) | RESOLU |
+| useCountryAudioGuide.tsx i18n (3 toasts) | RESOLU |
+| useExperts.tsx i18n (mock reviews + 9 toasts) | RESOLU |
 
-## Synthese par role
+## Synthese par role -- Tous les toasts et hooks sont desormais i18n
 
-- **CEO** : Positionnement unique, roadmap coherente. Aucune action.
-- **CTO** : Architecture stable, edge functions operationnelles. Aucune regression.
-- **CPO** : i18n en progression continue. 3 hooks restants ci-dessous.
-- **CISO** : RLS en place, secrets configures. CSP headers a planifier (futur).
-- **DPO** : Art. 17 valide, anonymisation IP, export GDPR. Conforme.
-- **CDO** : Stack IA avec fallbacks. Monitoring a planifier (futur).
-- **COO** : Documentation et scripts d'audit presents.
-- **Head of Design** : Coherence i18n amelioree. Points mineurs restants.
-- **Beta testeur** : Parcours clair, landing lisible.
+- **CEO** : Aucune action. Plateforme strategiquement coherente.
+- **CTO** : Aucune regression. Toasts i18n complets sur tous les hooks.
+- **CPO** : 2 composants partenaires restent avec du contenu FR hardcode (ci-dessous).
+- **CISO** : RLS en place, secrets configures, pas de nouveau risque.
+- **DPO** : Art. 17 valide, RGPD conforme.
+- **CDO** : Stack data coherente.
+- **COO** : Documentation a jour.
+- **Head of Design** : Coherence i18n quasi-complete. Dernier point ci-dessous.
+- **Beta testeur** : Parcours utilisateur clair et fonctionnel.
 
 ## Inconsistances detectees
 
-### 1. useDataSources.tsx -- 10 toasts hardcodes en francais
+### 1. EthicsCharter.tsx -- 15+ chaines FR hardcodees
 
-Ce hook contient 10 messages toast en francais dur :
-- "Source ajoutee" / "La source de donnees a ete creee."
-- "Erreur" / "Echec de la creation"
-- "Source mise a jour"
-- "Erreur" / "Echec de la mise a jour"
-- "Source supprimee"
-- "Erreur" / "Echec de la suppression"
-- "Changement approuve" / "Les donnees seront publiees."
-- "Changement rejete" / "Le changement a ete rejete."
-- "Erreur" / "Echec de la validation"
-- "Scraping termine" / description dynamique
-- "Erreur de scraping" / "Le scraping a echoue"
+Le composant contient :
+- 6 titres de principes ("Primaute de la lucidite", "Contribution reelle uniquement", etc.)
+- 6 descriptions de principes
+- 1 titre de carte ("Charte ethique des partenaires")
+- 1 introduction ("Tout participant au programme...")
+- 1 avertissement ("Tout manquement entraine...")
 
-### 2. useCountryAudioGuide.tsx -- 3 toasts hardcodes en francais
+### 2. PartnerApplicationForm.tsx -- 30+ chaines FR hardcodees
 
-- "Audio Genere" / description dynamique
-- "Erreur Audio" / "Echec generation audio"
-- "Erreur Lecture" / "Impossible de lire l'audio"
-
-### 3. useExperts.tsx -- Mock reviews en francais dur
-
-Deux faux avis (mock data) avec titres/contenus en francais :
-- "Excellent accompagnement" / "Service professionnel et conseils pertinents..."
-- "Tres satisfait" / "Bonne expertise et reactivite."
-
-Ces mock reviews apparaissent pour les experts fictifs et devraient utiliser `t()` pour etre coherents avec l'i18n.
+Le formulaire contient :
+- Titres et descriptions de carte (Ambassadeur/B2B)
+- Statuts de candidature ("En cours d'examen", "Approuvee", "Suspendue")
+- Messages de statut (3 variantes)
+- 7 items de liste de reconnaissance
+- 2 avertissements financiers
+- Labels de formulaire (5)
+- Placeholders (4)
+- Boutons ("Soumettre ma candidature", "Masquer/Consulter la charte")
+- Label checkbox charte ethique
+- Badge "Validation manuelle"
 
 ### Ce qui est hors-perimetre
 
-- `character-archetypes.ts` : personnages de jeu (simulation)
-- Tests unitaires (`__tests__/`) : pas d'impact utilisateur
-- Fichiers deja corriges dans les 9 corrections precedentes
+- `character-archetypes.ts` : personnages de jeu
+- Tests unitaires
+- Fichiers deja corriges (12 corrections precedentes)
 
 ## Plan de correction
 
-### Correction 1 : useDataSources.tsx
+### Correction 1 : EthicsCharter.tsx
+
 1. Ajouter `import { useTranslation } from 'react-i18next';`
-2. Ce hook exporte plusieurs fonctions (pas un seul composant), donc ajouter `const { t } = useTranslation();` dans chaque fonction exportee qui utilise toast (5 fonctions)
-3. Remplacer les 10 toasts par `t()` avec fallback FR
+2. Declarer `const { t } = useTranslation();` dans le composant
+3. Transformer `CHARTER_PRINCIPLES` d'un tableau statique en une fonction qui utilise `t()`
+4. Remplacer les 15 chaines par `t()` avec fallback FR
 
-Cles i18n :
-- `dataSources.added`, `dataSources.updated`, `dataSources.deleted`
-- `dataSources.changeApproved`, `dataSources.changeRejected`
-- `dataSources.scrapingDone`, `dataSources.scrapingError`
-- `common.error`
+Cles i18n proposees :
+- `partner.charter.title`
+- `partner.charter.intro`
+- `partner.charter.warning`
+- `partner.charter.principle1Title` a `principle6Title`
+- `partner.charter.principle1Desc` a `principle6Desc`
 
-### Correction 2 : useCountryAudioGuide.tsx
+### Correction 2 : PartnerApplicationForm.tsx
+
 1. Ajouter `import { useTranslation } from 'react-i18next';`
-2. Declarer `const { t } = useTranslation();` dans le hook
-3. Remplacer les 3 toasts par `t()` avec fallback FR
+2. Declarer `const { t } = useTranslation();` dans le composant
+3. Remplacer les 30+ chaines par `t()` avec fallback FR
 
-Cles i18n :
-- `audioGuide.generated`, `audioGuide.errorGenerate`, `audioGuide.errorPlayback`
+Cles i18n proposees (selection) :
+- `partner.application.titleAmbassador`, `partner.application.titleB2B`
+- `partner.application.statusPending`, `statusApproved`, `statusSuspended`
+- `partner.application.pendingMessage`, `approvedMessage`, `suspendedMessage`
+- `partner.application.recognition`
+- `partner.application.benefitCredits`, `benefitFeatures`, `benefitBadge`, etc.
+- `partner.application.warningNoFinancial`, `warningConditional`
+- `partner.application.labelCompany`, `labelProfile`, `labelExperience`, `labelMotivation`
+- `partner.application.submit`, `submitting`
+- `partner.application.charterShow`, `charterHide`, `charterAccept`
+- `partner.application.manualValidation`
 
-### Correction 3 : useExperts.tsx
-1. Ajouter `import { useTranslation } from 'react-i18next';`
-2. Declarer `const { t } = useTranslation();` dans `fetchReviews`
-3. Remplacer les 2 titres/contenus mock par `t()` avec fallback FR
+### Details techniques
 
-Cles i18n :
-- `experts.mockReview1Title`, `experts.mockReview1Content`
-- `experts.mockReview2Title`, `experts.mockReview2Content`
+Le pattern est identique a toutes les corrections precedentes. La seule particularite est dans `EthicsCharter.tsx` ou le tableau `CHARTER_PRINCIPLES` est defini hors du composant ; il faudra le transformer en hook ou le deplacer a l'interieur du composant pour avoir acces a `t()`.
 
