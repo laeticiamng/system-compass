@@ -425,7 +425,7 @@ export function QuickTestResults({
             >
               {!canAccessPremium && <Crown className="w-5 h-5" />}
               <Key className="w-5 h-5" />
-              {t('quickTest.result.getExitKeys', 'Obtenir mes Exit Keys')}
+              {t('quickTest.result.getExitKeys', 'Obtenir mes recommandations')}
               <ArrowRight className="w-5 h-5" />
             </Button>
             {!canAccessPremium && (

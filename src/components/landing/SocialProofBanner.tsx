@@ -26,7 +26,7 @@ const RECENT_ACTIVITIES = [
   { country: '🇧🇪', action: 'a comparé UAE vs Singapour', time: 'il y a 8 min' },
   { country: '🇨🇭', action: 'a terminé le quiz pyramide', time: 'il y a 12 min' },
   { country: '🇪🇸', action: 'a consulté la fiscalité Andorre', time: 'il y a 15 min' },
-  { country: '🇬🇧', action: 'a créé son profil Exit Keys', time: 'il y a 18 min' },
+  { country: '🇬🇧', action: 'a créé son profil stratégique', time: 'il y a 18 min' },
 ];
 
 export function SocialProofBanner() {

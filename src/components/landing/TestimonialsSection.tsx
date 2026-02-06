@@ -23,7 +23,7 @@ export function TestimonialsSection() {
     {
       icon: Compass,
       stat: '50+',
-      label: t('socialProof.exitKeys', 'Exit Keys'),
+      label: t('socialProof.exitKeys', 'Stratégies'),
       description: t('socialProof.exitKeysDesc', 'Stratégies de sortie personnalisées'),
     },
     {

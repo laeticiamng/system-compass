@@ -38,7 +38,7 @@ const SPOTLIGHT_MEMBERS: SpotlightMember[] = [
     originCountry: 'Europe',
     destinationCountry: 'Émirats Arabes Unis',
     profession: 'Consultant·e Finance',
-    testimonial: 'Les Exit Keys m\'ont permis de structurer ma transition. Les conseils sur les pièges à éviter étaient utiles.',
+    testimonial: 'Les recommandations m\'ont permis de structurer ma transition. Les conseils sur les pièges à éviter étaient utiles.',
     successMetric: 'Transition réussie',
     joinedDate: '2025-03'
   },

@@ -50,7 +50,7 @@ export default function CGV() {
             <ul className="list-disc pl-6 space-y-2 mt-4">
               <li>L'accès à des fiches pays détaillées avec analyse des "pyramides de pouvoir"</li>
               <li>Des outils de test de profil et de matching pays-utilisateur</li>
-              <li>Des Exit Keys (stratégies de sortie) personnalisées</li>
+              <li>Des stratégies de sortie personnalisées</li>
               <li>Un calculateur fiscal comparatif</li>
               <li>Des simulations de trajectoire de vie</li>
             </ul>

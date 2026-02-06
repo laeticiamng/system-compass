@@ -46,7 +46,7 @@ export function Breadcrumbs() {
     'profile-matcher': t('breadcrumbs.matcher', 'Matcher'),
     'life-trajectory': t('breadcrumbs.trajectory', 'Trajectoire'),
     'fiscal-calculator': t('breadcrumbs.fiscalCalculator', 'Calculateur Fiscal'),
-    'exit-keys': t('breadcrumbs.exitKeys', 'Exit Keys'),
+    'exit-keys': t('breadcrumbs.exitKeys', 'Stratégies'),
     'catalog': t('breadcrumbs.catalog', 'Catalogue'),
     'prevention-filter': t('breadcrumbs.preventionFilter', 'Filtre Décision'),
     'errors-illusions': t('breadcrumbs.errorsIllusions', 'Erreurs & Illusions'),
