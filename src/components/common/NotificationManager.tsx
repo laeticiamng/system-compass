@@ -286,6 +286,7 @@ function NotificationCard({
   onDismiss: () => void;
 }) {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const typeIcons: Record<Notification['type'], React.ReactNode> = {
     reminder: <Calendar className="w-4 h-4 text-amber-500" />,
@@ -335,7 +336,7 @@ function NotificationCard({
               className="text-xs"
               onClick={() => {
                 if (notification.actionHref) {
-                  window.location.href = notification.actionHref; // NotificationCard is standalone, kept as-is
+                  navigate(notification.actionHref);
                 }
                 if (notification.actionHandler) {
                   notification.actionHandler();
