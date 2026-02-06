@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { useToast } from '@/hooks/use-toast';
@@ -30,6 +31,7 @@ interface VacationPreferences {
 export function useVacationRecommendations() {
   const { user } = useAuth();
   const { toast } = useToast();
+  const { t } = useTranslation();
   const [recommendations, setRecommendations] = useState<VacationRecommendation[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -72,8 +74,8 @@ export function useVacationRecommendations() {
   ): Promise<VacationDestination[]> => {
     if (!user) {
       toast({
-        title: "Authentification requise",
-        description: "Connectez-vous pour générer des recommandations",
+        title: t('common.authRequired', 'Authentification requise'),
+        description: t('vacation.loginToGenerate', 'Connectez-vous pour générer des recommandations'),
         variant: "destructive",
       });
       return [];
@@ -140,8 +142,8 @@ export function useVacationRecommendations() {
       if (insertError) throw insertError;
 
       toast({
-        title: "Recommandations générées",
-        description: `${destinations.length} destinations trouvées`,
+        title: t('vacation.generated', 'Recommandations générées'),
+        description: t('vacation.destinationsFound', '{{count}} destinations trouvées', { count: destinations.length }),
       });
 
       // Refresh list
@@ -153,7 +155,7 @@ export function useVacationRecommendations() {
       const errorMessage = err instanceof Error ? err.message : 'Failed to generate recommendations';
       setError(errorMessage);
       toast({
-        title: "Erreur",
+        title: t('common.error', 'Erreur'),
         description: errorMessage,
         variant: "destructive",
       });
@@ -178,13 +180,13 @@ export function useVacationRecommendations() {
       setRecommendations((prev) => prev.filter((r) => r.id !== id));
 
       toast({
-        title: "Recommandation supprimée",
+        title: t('vacation.deleteSuccess', 'Recommandation supprimée'),
       });
     } catch (err) {
       console.error('Error deleting recommendation:', err);
       toast({
-        title: "Erreur",
-        description: "Impossible de supprimer la recommandation",
+        title: t('common.error', 'Erreur'),
+        description: t('vacation.deleteError', 'Impossible de supprimer la recommandation'),
         variant: "destructive",
       });
     }

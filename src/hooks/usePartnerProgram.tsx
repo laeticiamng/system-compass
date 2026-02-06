@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { useToast } from '@/hooks/use-toast';
@@ -74,6 +75,7 @@ async function notifyAdminsOfNewApplication(_userId: string, partnerType: Partne
 export function usePartnerProgram() {
   const { user } = useAuth();
   const { toast } = useToast();
+  const { t } = useTranslation();
   const [applications, setApplications] = useState<PartnerApplication[]>([]);
   const [contributions, setContributions] = useState<PartnerContribution[]>([]);
   const [benefits, setBenefits] = useState<PartnerBenefit[]>([]);
@@ -135,8 +137,8 @@ export function usePartnerProgram() {
   ) => {
     if (!user) {
       toast({
-        title: "Connexion requise",
-        description: "Veuillez vous connecter pour postuler.",
+        title: t('common.authRequired', 'Connexion requise'),
+        description: t('partner.loginToApply', 'Veuillez vous connecter pour postuler.'),
         variant: "destructive"
       });
       return { success: false };
@@ -167,8 +169,8 @@ export function usePartnerProgram() {
       }
 
       toast({
-        title: "Candidature envoyée",
-        description: "Votre candidature a été soumise avec succès. Nous l'examinerons sous peu."
+        title: t('partner.applicationSent', 'Candidature envoyée'),
+        description: t('partner.applicationSentDesc', 'Votre candidature a été soumise avec succès. Nous l\'examinerons sous peu.')
       });
 
       await fetchPartnerData();
@@ -176,14 +178,14 @@ export function usePartnerProgram() {
     } catch (error: any) {
       if (error.code === '23505') {
         toast({
-          title: "Candidature existante",
-          description: "Vous avez déjà une candidature pour ce poste.",
+          title: t('partner.applicationExists', 'Candidature existante'),
+          description: t('partner.applicationExistsDesc', 'Vous avez déjà une candidature pour ce poste.'),
           variant: "destructive"
         });
       } else {
         toast({
-          title: "Erreur",
-          description: "Impossible d'envoyer votre candidature.",
+          title: t('common.error', 'Erreur'),
+          description: t('partner.applicationError', 'Impossible d\'envoyer votre candidature.'),
           variant: "destructive"
         });
       }
@@ -211,16 +213,16 @@ export function usePartnerProgram() {
       if (error) throw error;
 
       toast({
-        title: "Contribution enregistrée",
-        description: "Votre contribution a été soumise pour vérification."
+        title: t('partner.contributionSaved', 'Contribution enregistrée'),
+        description: t('partner.contributionSavedDesc', 'Votre contribution a été soumise pour vérification.')
       });
 
       await fetchPartnerData();
       return { success: true };
     } catch (error) {
       toast({
-        title: "Erreur",
-        description: "Impossible d'enregistrer votre contribution.",
+        title: t('common.error', 'Erreur'),
+        description: t('partner.contributionError', 'Impossible d\'enregistrer votre contribution.'),
         variant: "destructive"
       });
       return { success: false };
