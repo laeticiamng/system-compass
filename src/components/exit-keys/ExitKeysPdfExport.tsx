@@ -40,7 +40,7 @@ export function ExitKeysPdfExport({ results, profileSummary }: ExitKeysPdfExport
       
       doc.setFontSize(16);
       doc.setFont('helvetica', 'normal');
-      doc.text(t('exitKeys.pdf.title', 'Rapport Clés de Sortie'), margin, y);
+      doc.text(t('exitKeys.pdf.title', 'Rapport Stratégies'), margin, y);
       y += 10;
       
       doc.setFontSize(10);
@@ -78,7 +78,7 @@ export function ExitKeysPdfExport({ results, profileSummary }: ExitKeysPdfExport
       // Results
       doc.setFontSize(14);
       doc.setFont('helvetica', 'bold');
-      doc.text(t('exitKeys.pdf.resultsSection', 'Clés de Sortie Recommandées'), margin, y);
+      doc.text(t('exitKeys.pdf.resultsSection', 'Stratégies Recommandées'), margin, y);
       y += 10;
 
       results.slice(0, 5).forEach((result, index) => {

@@ -52,7 +52,7 @@ const SAMPLE_EVENTS: CommunityEvent[] = [
   },
   {
     id: 'evt-3',
-    title: 'Workshop: Préparer son Exit Key',
+    title: 'Workshop: Préparer sa stratégie',
     description: 'Atelier pratique pour construire votre stratégie de relocalisation',
     date: new Date(Date.now() + 21 * 24 * 60 * 60 * 1000).toISOString(),
     location: 'En ligne',

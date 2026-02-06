@@ -317,7 +317,7 @@
     "diaspora": "Parent diaspora"
   },
   "cta": {
-    "viewAllKeys": "Voir toutes les clés de sortie",
+    "viewAllKeys": "Voir toutes les stratégies",
     "educationalMode": "Mode éducatif (personnage fictif)"
   },
   "guestMode": {
@@ -397,8 +397,8 @@
     "energy": "Énergie",
     "money": "Argent",
     "stagnation": "Stagnation",
-    "exploreExitKeys": "Explorer les clés de sortie associées",
-    "viewExitKeys": "Voir les clés de sortie",
+    "exploreExitKeys": "Explorer les stratégies associées",
+    "viewExitKeys": "Voir les stratégies",
     "ctaTitle": "Éviter ces erreurs commence par comprendre ton système",
     "ctaSubtitle": "Analyse ta situation actuelle, identifie les décalages potentiels, et explore les stratégies adaptées à ton profil.",
     "simulateTrajectory": "Simuler ma trajectoire",
@@ -508,8 +508,8 @@
     "countries": "pays",
     "viewAll": "Voir toutes",
     "choosePlan": "Choisir un plan à suivre",
-    "choosePlanDesc": "Sélectionnez une clé de sortie pour commencer à suivre votre progression",
-    "selectExitKey": "Sélectionner une clé de sortie...",
+    "choosePlanDesc": "Sélectionnez une stratégie pour commencer à suivre votre progression",
+    "selectExitKey": "Sélectionner une stratégie...",
     "startedOn": "Démarré le",
     "reset": "Réinitialiser",
     "overallProgress": "Progression globale",
@@ -589,7 +589,7 @@
         "desc": "Analysez les systèmes de plus de 25 pays"
       },
       "exitKeys": {
-        "title": "Catalogue des clés de sortie",
+        "title": "Catalogue des stratégies",
         "desc": "Découvrez les stratégies de mobilité et d'évolution"
       }
     },
@@ -753,7 +753,7 @@
       },
       "q3": {
         "question": "Quelle différence entre \"Ma simulation\" et \"Mode éducatif\" ?",
-        "answer": "\"Ma simulation\" (Clés de Sortie) analyse TA vraie situation avec TES paramètres. Le \"Mode éducatif\" te fait incarner un personnage FICTIF aléatoire pour comprendre les mécanismes sans t'impliquer personnellement."
+        "answer": "\"Ma simulation\" (Stratégies) analyse TA vraie situation avec TES paramètres. Le \"Mode éducatif\" te fait incarner un personnage FICTIF aléatoire pour comprendre les mécanismes sans t'impliquer personnellement."
       },
       "q4": {
         "question": "Est-ce gratuit ?",
@@ -780,7 +780,7 @@
     "resources": "Ressources",
     "pyramids": "Systèmes",
     "quiz": "Mode Éducatif",
-    "exitKeys": "Clés de Sortie",
+    "exitKeys": "Stratégies",
     "dashboard": "Tableau de Bord",
     "multiCompare": "Multi-Analyse",
     "systemicMistakes": "Erreurs",
@@ -813,7 +813,7 @@
     "advanced": "Modules Pro",
     "info": "Info",
     "notifications": "Notifications",
-    "exitKeysCatalog": "Catalogue Exit Keys",
+    "exitKeysCatalog": "Catalogue Stratégies",
     "exitKeysCompare": "Comparer Destinations",
     "terrainRealities": "Réalités Terrain",
     "fiscalCalculator": "Calculateur Fiscal",
@@ -5962,7 +5962,7 @@
       "point2": "Tu explores les mécanismes du monde sans risque réel",
       "point3": "C'est un outil pédagogique, pas une prédiction pour toi",
       "realLife": "Pour planifier ta vraie vie →",
-      "realLifeLink": "Clés de Sortie"
+      "realLifeLink": "Stratégies"
     },
     "tagline": {
       "quote": "Certains naissent sur la ligne d'arrivée. D'autres doivent courir un marathon avec des chaînes aux pieds. Ce jeu montre pourquoi.",
@@ -6250,7 +6250,7 @@
       "implications": "Ce que ce choix implique souvent",
       "blindSpots": "Points aveugles fréquents",
       "risks": "Risques probables",
-      "exitKeys": "Clés de sortie possibles"
+      "exitKeys": "Stratégies possibles"
     },
     "reversibility": {
       "reversible": "Réversible",
@@ -6278,7 +6278,7 @@
     "moneyCost": "Argent",
     "energyCost": "Énergie",
     "relatedPyramids": "Pyramides concernées",
-    "exitKeys": "Clés de sortie possibles",
+    "exitKeys": "Stratégies possibles",
     "simulateCta": "Simuler un cas concret",
     "simulateDescription": "Testez une décision liée à cette erreur pour identifier les risques avant de vous engager.",
     "simulateCase": "Simuler un cas",
@@ -6411,10 +6411,10 @@
     "result": {
       "systemLooksLike": "Le système ressemble souvent à...",
       "blindSpots": "3 points aveugles fréquents",
-      "exitKey": "1 clé de sortie à considérer",
+      "exitKey": "1 stratégie à considérer",
       "deepDive": "Approfondir",
       "compareScenarios": "Comparer 2 scénarios",
-      "viewExitKeys": "Voir les clés de sortie"
+      "viewExitKeys": "Voir les stratégies"
     },
     "blindSpots": {
       "stability": {
@@ -6476,7 +6476,7 @@
     "nextSteps": {
       "countries": "Explorer les pays",
       "countriesDesc": "Découvrez les variantes pays maintenant débloquées",
-      "exitKeys": "Clés de sortie",
+      "exitKeys": "Stratégies",
       "exitKeysDesc": "Trouvez les stratégies adaptées à votre profil",
       "dashboard": "Tableau de bord",
       "dashboardDesc": "Suivez votre progression et vos objectifs",
@@ -6860,13 +6860,13 @@
   "search": {
     "title": "Recherche globale",
     "placeholder": "Rechercher...",
-    "inputPlaceholder": "Rechercher un pays, une clé de sortie, une erreur...",
+    "inputPlaceholder": "Rechercher un pays, une stratégie, une erreur...",
     "startTyping": "Commencez à taper pour rechercher",
     "noResults": "Aucun résultat trouvé",
     "hint": "Utilisez ↑↓ pour naviguer, Entrée pour sélectionner",
     "close": "pour fermer",
     "typeCountry": "Pays",
-    "typeExitKey": "Clé de sortie",
+    "typeExitKey": "Stratégie",
     "typeError": "Erreur",
     "typePage": "Page"
   },
@@ -7689,7 +7689,7 @@
         "plan": {
           "title": "Je veux planifier mes prochaines étapes",
           "description": "Structure un plan d'action réaliste",
-          "cta": "Clés de Sortie"
+          "cta": "Stratégies"
         }
       }
     },
@@ -7701,7 +7701,7 @@
         "bestFor": ["Valider une décision importante", "Anticiper les obstacles cachés"]
       },
       "exitKeys": {
-        "title": "Clés de Sortie",
+        "title": "Stratégies",
         "description": "Feuilles de route personnalisées selon ta situation, tes objectifs et tes contraintes",
         "bestFor": ["Planifier une transition de vie", "Structurer un projet de mobilité"]
       },
@@ -7811,11 +7811,11 @@
       "title": "Éviter ces erreurs commence par comprendre ton système",
       "subtitle": "Analyse ta situation actuelle, identifie les décalages potentiels, et explore les stratégies adaptées à ton profil.",
       "simulateTrajectory": "Simuler ma trajectoire",
-      "viewExitKeys": "Voir les Clés de Sortie"
+      "viewExitKeys": "Voir les Stratégies"
     }
   },
   "exitKeys": {
-    "title": "Trouvez Votre Clé de Sortie",
+    "title": "Trouvez Votre Stratégie",
     "subtitle": "Simulez et analysez les stratégies adaptées à votre situation",
     "badge": {
       "personalized": "Analyse personnalisée",
@@ -7908,7 +7908,7 @@
       "countryInfo": "Informations clés sur"
     },
     "results": {
-      "title": "Vos Clés de Sortie",
+      "title": "Vos Stratégies",
       "strategiesFound": "{{count}} stratégies identifiées pour votre situation",
       "personalizedFor": "Analyse personnalisée pour {{country}}",
       "nationalityAdvantages": "Avantages de vos Nationalités",
@@ -7985,7 +7985,7 @@
       "calm": "Sérénité"
     },
     "results": {
-      "title": "Vos Clés de Sortie",
+      "title": "Vos Stratégies",
       "strategiesFound": "{{count}} stratégies identifiées pour votre situation",
       "nationalityAdvantages": "Avantages de vos Nationalités",
       "visaFreeCountries": "pays sans visa",
@@ -8057,7 +8057,7 @@
       "citizenship": "Citoyenneté"
     },
     "catalog": {
-      "title": "Catalogue des Clés de Sortie",
+      "title": "Catalogue des Stratégies",
       "subtitle": "Stratégies structurées pour changer de système. Chaque clé est une trajectoire mesurable, sans promesse vague.",
       "filters": "Filtres",
       "difficulty": "Difficulté",
@@ -8080,9 +8080,9 @@
       "simulateTrajectory": "Simuler ma trajectoire"
     },
     "compare": {
-      "backToKeys": "Retour aux Clés de Sortie",
+      "backToKeys": "Retour aux Stratégies",
       "title": "Comparer les Stratégies",
-      "subtitle": "Analysez jusqu'à 3 clés de sortie côte à côte",
+      "subtitle": "Analysez jusqu'à 3 stratégies côte à côte",
       "selectStrategies": "Sélectionner les stratégies à comparer",
       "addStrategy": "Ajouter une stratégie",
       "compatibility": "Compatibilité",
@@ -8098,8 +8098,8 @@
       "bestOption": "{{name}} est la meilleure option pour vous",
       "withCompatibility": "Avec {{percent}}% de compatibilité",
       "selectStrategiesToCompare": "Sélectionnez des stratégies",
-      "chooseUpTo3": "Choisissez jusqu'à 3 clés de sortie pour les comparer",
-      "viewAllKeys": "Voir toutes les clés"
+      "chooseUpTo3": "Choisissez jusqu'à 3 stratégies pour les comparer",
+      "viewAllKeys": "Voir toutes les stratégies"
     },
     "pyramidLabels": {
       "PROBLEM_RENT": "Rente Problème",
@@ -8565,7 +8565,7 @@
     "premiumFeature3": "Ce qui surprend les nouveaux",
     "proFeature1": "Tout le contenu Premium",
     "proFeature2": "Analyse projet personnalisée",
-    "proFeature3": "Clés de sortie personnalisées",
+    "proFeature3": "Stratégies personnalisées",
     "badge": "Tarification transparente",
     "title": "Choisissez votre plan",
     "subtitle": "Débloquez des analyses plus profondes et des recommandations personnalisées",
@@ -8648,7 +8648,7 @@
   "ai": {
     "help": "Aide IA",
     "helpTooltip": "Ouvrir l'assistant IA",
-    "exitKeysAssistant": "Assistant Clés de Sortie",
+    "exitKeysAssistant": "Assistant Stratégies",
     "countryAnalysisAssistant": "Assistant Analyse Pays",
     "dashboardAssistant": "Assistant Tableau de Bord",
     "selectAction": "Sélectionnez une action",
@@ -10451,7 +10451,7 @@
     "pro": "Pro",
     "from": "dès",
     "proFeature1": "Analyses approfondies",
-    "proFeature2": "Clés de sortie personnalisées",
+    "proFeature2": "Stratégies personnalisées",
     "proFeature3": "Export PDF",
     "cta": "Voir les plans"
   }

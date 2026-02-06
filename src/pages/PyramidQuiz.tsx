@@ -808,7 +808,7 @@ export default function PyramidQuiz() {
               <Link to="/exit-keys" className="text-sm text-primary hover:underline inline-flex items-center gap-1">
                 {t('pyramidQuiz.realLifeLink', 'Tu veux planifier ta vraie vie ?')}
                 <ArrowRight className="w-3 h-3" />
-                <span className="font-medium">{t('nav.exitKeys', 'Clés de Sortie')}</span>
+                <span className="font-medium">{t('nav.exitKeys', 'Stratégies')}</span>
               </Link>
             </div>
           </div>

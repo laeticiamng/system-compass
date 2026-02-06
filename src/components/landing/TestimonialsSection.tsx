@@ -61,7 +61,7 @@ export function TestimonialsSection() {
             {t('socialProof.title', 'Une plateforme pensée pour la décision')}
           </h2>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-            {t('socialProof.subtitle', 'Des données vérifiables, des analyses systémiques, des stratégies concrètes.')}
+            {t('socialProof.subtitle', 'Des données vérifiables, des analyses détaillées, des stratégies concrètes.')}
           </p>
         </motion.div>
 

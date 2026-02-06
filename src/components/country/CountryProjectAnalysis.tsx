@@ -190,7 +190,7 @@ function generateAnalysis(formData: FormData, countryId: string): AnalysisResult
 
   // Always add these
   exitKeys.push(
-    { label: 'Explorer les clés de sortie', href: '/exit-keys' },
+    { label: 'Explorer les stratégies', href: '/exit-keys' },
     { label: 'Tester un scénario alternatif', href: '/prevention-filter' }
   );
 
@@ -232,7 +232,7 @@ export function CountryProjectAnalysis({ countryId, countryName }: CountryProjec
     return (
       <PremiumPaywall
         title={t('countryDetail.project.paywallTitle', 'Analyse Projet Personnalisée')}
-        description={t('countryDetail.project.paywallDesc', `Obtenez une analyse adaptée à votre projet spécifique pour ${countryName} : points aveugles, risques fréquents et clés de sortie personnalisées.`)}
+        description={t('countryDetail.project.paywallDesc', `Obtenez une analyse adaptée à votre projet spécifique pour ${countryName} : points aveugles, risques fréquents et stratégies personnalisées.`)}
         tier="pro"
       />
     );

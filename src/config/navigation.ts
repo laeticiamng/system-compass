@@ -78,7 +78,7 @@ export const NAV_GROUPS: NavGroup[] = [
     id: 'discover',
     title: 'Découvrir',
     titleKey: 'nav.groups.discover',
-    description: 'Explorer les pays et comprendre les systèmes',
+    description: 'Explorer les pays et comprendre les différences',
     icon: Compass,
     color: 'from-blue-500/20 to-cyan-500/20',
     borderColor: 'border-blue-500/30',

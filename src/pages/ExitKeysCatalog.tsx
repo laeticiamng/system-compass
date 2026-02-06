@@ -76,7 +76,7 @@ export default function ExitKeysCatalog() {
           <div className="flex items-center gap-2 mb-2">
             <Key className="w-6 h-6 text-primary" />
             <h1 className="text-3xl font-bold text-foreground">
-              {t('exitKeys.catalog.title', 'Catalogue des Clés de Sortie')}
+              {t('exitKeys.catalog.title', 'Catalogue des Stratégies')}
             </h1>
           </div>
           <p className="text-muted-foreground max-w-2xl mb-3">
@@ -100,7 +100,7 @@ export default function ExitKeysCatalog() {
           <div className="flex items-center gap-2 mb-2">
             <Key className="w-6 h-6 text-primary" />
             <h1 className="text-3xl font-bold text-foreground">
-              {t('exitKeys.catalog.title', 'Catalogue des Clés de Sortie')}
+              {t('exitKeys.catalog.title', 'Catalogue des Stratégies')}
             </h1>
           </div>
           <p className="text-muted-foreground max-w-2xl mb-3">
