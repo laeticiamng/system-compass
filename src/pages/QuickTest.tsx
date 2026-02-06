@@ -271,7 +271,7 @@ export default function QuickTest() {
             transition={{ delay: 0.3 }}
             className="text-lg text-muted-foreground mb-8"
           >
-            {t('quickTest.subtitle', 'En 60 secondes, découvre le système qui ressemble à ta situation')}
+            {t('quickTest.subtitle', 'En 60 secondes, découvre le pays qui correspond à ta situation')}
           </motion.p>
 
           {/* Progress indicator */}
