@@ -24,7 +24,7 @@ import { CountryTagsRadar } from '@/components/country/CountryTagsRadar';
 import { CountryPdfExport } from '@/components/CountryPdfExport';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { ArrowLeft, Calendar, ExternalLink, Layers, Map, Target, Brain, Loader2, Shield, MapPin } from 'lucide-react';
+import { ArrowLeft, Calendar, ExternalLink, Layers, Map, Target, Brain, Loader2, Shield, MapPin, Scale } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { Database } from '@/integrations/supabase/types';
@@ -278,7 +278,19 @@ export default function CountryDetail() {
               </div>
               <p className="text-sm sm:text-base text-muted-foreground">{displayRegion}</p>
             </div>
-            <FollowCountryButton countryId={country.id} />
+            <div className="flex flex-col gap-2 items-end">
+              <FollowCountryButton countryId={country.id} />
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => navigate(`/compare?countries=${country.id}`)}
+                className="gap-1.5 text-xs"
+              >
+                <Scale className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">{t('countryDetail.compareCta', 'Comparer ce pays')}</span>
+                <span className="sm:hidden">Comparer</span>
+              </Button>
+            </div>
           </div>
           <div className="flex justify-end">
             <AiHelpButton
