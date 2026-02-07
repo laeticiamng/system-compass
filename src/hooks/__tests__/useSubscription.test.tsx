@@ -274,6 +274,7 @@ describe('SUBSCRIPTION_TIERS configuration', () => {
 
   it('should have correct Stripe price IDs format', () => {
     expect(SUBSCRIPTION_TIERS.premium.priceId).toMatch(/^price_/);
-    expect(SUBSCRIPTION_TIERS.pro.priceId).toMatch(/^price_/);
+    // Pro has null priceId (sur devis)
+    expect(SUBSCRIPTION_TIERS.pro.priceId).toBeNull();
   });
 });

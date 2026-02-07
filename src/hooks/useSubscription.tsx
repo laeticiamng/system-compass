@@ -28,9 +28,9 @@ export const SUBSCRIPTION_TIERS = {
     name: 'Gratuit',
     price: 0,
     features: [
-      '3 pays accessibles',
-      'Quiz de profil basique',
-      'Vue pyramide simplifiée',
+      'Aperçu de 38+ pays',
+      'Quiz de profil',
+      'Détails par pays',
     ],
   },
   premium: {
@@ -38,8 +38,8 @@ export const SUBSCRIPTION_TIERS = {
     price: 9.90,
     priceId: 'price_1SxpOSDFa5Y9NR1I05modzpV',
     features: [
-      'Tous les pays (25+)',
-      'Recommandations personnalisées',
+      'Analyse système avancée',
+      'Gouvernance & Terrain',
       'Comparaison illimitée',
       'Export PDF',
       'Calculateur fiscal',
@@ -51,8 +51,8 @@ export const SUBSCRIPTION_TIERS = {
     priceId: null,
     features: [
       'Tout Premium inclus',
+      'Analyse projet personnalisée',
       'Accès multi-utilisateurs',
-      'API access',
       'Support dédié',
     ],
   },

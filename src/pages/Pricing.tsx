@@ -406,14 +406,16 @@ const Pricing = () => {
                       { name: t('pricing.feature.basicCountries', 'Fiches pays basiques'), free: true, premium: true, pro: true },
                       { name: t('pricing.feature.riskIndicators', 'Indicateurs de risque'), free: true, premium: true, pro: true },
                       { name: t('pricing.feature.pyramidCommon', 'Analyse de base'), free: true, premium: true, pro: true },
-                      { name: t('pricing.feature.countryVariants', 'Détails par pays'), free: false, premium: true, pro: true },
-                      { name: t('pricing.feature.profilesSuccess', 'Profils qui réussissent'), free: false, premium: true, pro: true },
-                      { name: t('pricing.feature.surprises', 'Ce qui surprend les nouveaux'), free: false, premium: true, pro: true },
+                      { name: t('pricing.feature.countryVariants', 'Détails par pays'), free: true, premium: true, pro: true },
+                      { name: t('pricing.feature.profilesSuccess', 'Profils qui réussissent'), free: true, premium: true, pro: true },
+                      { name: t('pricing.feature.surprises', 'Ce qui surprend les nouveaux'), free: true, premium: true, pro: true },
+                      { name: t('pricing.feature.systemAnalysis', 'Analyse système'), free: false, premium: true, pro: true },
+                      { name: t('pricing.feature.governance', 'Gouvernance & Terrain'), free: false, premium: true, pro: true },
                       { name: t('pricing.feature.projectAnalysis', 'Analyse projet personnalisée'), free: false, premium: false, pro: true },
                       { name: t('pricing.feature.blindSpots', 'Points aveugles spécifiques'), free: false, premium: false, pro: true },
-                      { name: t('pricing.feature.latentModule', 'Module Latent'), free: false, premium: false, pro: true },
-                      { name: t('pricing.feature.irreversaModule', 'Module Irreversa'), free: false, premium: false, pro: true },
-                      { name: t('pricing.feature.traceOS', 'TraceOS'), free: false, premium: false, pro: true },
+                      { name: t('pricing.feature.latentModule', 'Analyse des risques cachés'), free: false, premium: false, pro: true },
+                      { name: t('pricing.feature.irreversaModule', 'Points de non-retour'), free: false, premium: false, pro: true },
+                      { name: t('pricing.feature.traceOS', 'Suivi institutionnel'), free: false, premium: false, pro: true },
                     ].map((row, i) => (
                       <tr key={i} className="border-b hover:bg-muted/30 transition-colors">
                         <td className="py-4 px-6 text-sm">{row.name}</td>
