@@ -220,7 +220,7 @@ export function Header() {
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="sm" className="gap-1 h-8 px-2.5 text-xs font-medium text-muted-foreground hover:text-foreground">
                   <Building2 className="w-3.5 h-3.5" />
-                  {t('nav.advanced', 'Pro')}
+                  {t('nav.advanced', 'Pour les pros')}
                   <ChevronDown className="w-3 h-3" />
                 </Button>
               </DropdownMenuTrigger>

@@ -23,7 +23,8 @@ import {
   Crown,
   Play,
   CheckCircle,
-  Zap
+  Zap,
+  ChevronDown
 } from 'lucide-react';
 import { TestimonialsSection } from '@/components/landing/TestimonialsSection';
 
@@ -430,6 +431,52 @@ export default function Index() {
                 </CardContent>
               </Card>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========== FAQ MINI ========== */}
+      <section className="py-20 md:py-32 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <p className="text-primary font-medium mb-3 tracking-widest uppercase text-sm">
+              {t('landing.faq.label', 'Questions fréquentes')}
+            </p>
+            <h2 className="font-display text-3xl md:text-4xl font-bold">
+              {t('landing.faq.title', 'On répond à vos questions')}
+            </h2>
+          </div>
+
+          <div className="max-w-3xl mx-auto space-y-4">
+            {[
+              {
+                q: t('landing.faq.q1', 'Est-ce vraiment gratuit ?'),
+                a: t('landing.faq.a1', 'Oui. Le test de profil, l\'exploration des 38+ pays et les fiches de base sont 100% gratuits. Les fonctionnalités avancées (export PDF, recommandations IA, modules Pro) sont réservées aux plans payants.'),
+              },
+              {
+                q: t('landing.faq.q2', 'Est-ce un conseil juridique ou fiscal ?'),
+                a: t('landing.faq.a2', 'Non. Pyramid Compass est un outil de simulation et de comparaison. Il ne remplace pas un avocat, un fiscaliste ou un conseiller en immigration. Consultez toujours un professionnel avant de prendre une décision.'),
+              },
+              {
+                q: t('landing.faq.q3', 'Comment sont calculées les données ?'),
+                a: t('landing.faq.a3', 'Nos données proviennent de sources publiques (Banque Mondiale, ONU, Transparency International, etc.) et sont mises à jour régulièrement. Chaque fiche pays indique ses sources.'),
+              },
+            ].map((faq, i) => (
+              <motion.details
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="group glass-card rounded-xl p-6 cursor-pointer"
+              >
+                <summary className="flex items-center justify-between font-semibold text-base list-none">
+                  {faq.q}
+                  <ChevronDown className="w-5 h-5 text-muted-foreground transition-transform group-open:rotate-180" />
+                </summary>
+                <p className="mt-4 text-muted-foreground text-sm leading-relaxed">{faq.a}</p>
+              </motion.details>
+            ))}
           </div>
         </div>
       </section>
