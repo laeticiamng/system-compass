@@ -323,11 +323,15 @@ export default function Index() {
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      {t('landing.pricing.freeFeature2', 'Analyse de base des pays')}
+                      {t('landing.pricing.freeFeature2', 'Détails complets par pays')}
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
                       {t('landing.pricing.freeFeature3', '38 pays disponibles')}
+                    </li>
+                    <li className="flex items-center gap-2 text-sm">
+                      <CheckCircle className="w-4 h-4 text-green-500" />
+                      {t('landing.pricing.freeFeature4', 'Profils qui réussissent')}
                     </li>
                   </ul>
                   <Button 

@@ -796,7 +796,7 @@
     "b2b": "B2B",
     "about": "À Propos",
     "usage": "Consommation",
-    "institutions": "TraceOS",
+    "institutions": "Institutions",
     "ovi": "OVI",
     "pyramidQuiz": "Jeu",
     "profileTest": "Test Complet",
@@ -8616,9 +8616,11 @@
       "surprises": "Ce qui surprend les nouveaux",
       "projectAnalysis": "Analyse projet personnalisée",
       "blindSpots": "Points aveugles spécifiques",
-      "latentModule": "Module Latent",
-      "irreversaModule": "Module Irreversa",
-      "traceOS": "TraceOS"
+      "latentModule": "Analyse des risques cachés",
+      "irreversaModule": "Points de non-retour",
+      "traceOS": "Suivi institutionnel",
+      "systemAnalysis": "Analyse système",
+      "governance": "Gouvernance & Terrain"
     },
     "faq": {
       "title": "Questions fréquentes",

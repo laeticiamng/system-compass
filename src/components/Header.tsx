@@ -85,7 +85,7 @@ export function Header() {
 
   // Modules Pro (fonctionnels uniquement)
   const advancedItems = [
-    { href: '/institutions', label: t('nav.institutions', 'TraceOS'), icon: Building2 },
+    { href: '/institutions', label: t('nav.institutions', 'Institutions'), icon: Building2 },
     { href: '/b2b', label: t('nav.b2b', 'Solutions B2B'), icon: Building2 },
     { href: '/experts', label: t('nav.experts', 'Experts'), icon: Users },
     { href: '/academic', label: t('nav.academic', 'Académique'), icon: BookOpen },
