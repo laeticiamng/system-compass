@@ -120,7 +120,7 @@ export function TagsRadarCompare({ countryIds, countryNames }: TagsRadarCompareP
     return (
       <div className="glass-card rounded-xl p-6">
         <h3 className="font-semibold text-lg mb-4 text-center">
-          {t('multiCompare.tagsRadar', 'Intelligence Tags Comparison')}
+          {t('multiCompare.tagsRadar', 'Comparaison des indicateurs')}
         </h3>
         <p className="text-muted-foreground text-center py-8">
           {t('multiCompare.noTagsData', 'Intelligence tags data not available for selected countries. Available for 29 countries including: Argentina, Australia, Austria, Belgium, Brazil, Canada, Chile, China, Colombia, Cuba, Denmark, France, Germany, India, Italy, Japan, Mexico, Netherlands, Peru, Poland, Portugal, Singapore, South Africa, Spain, Sweden, Switzerland, UAE, UK, USA.')}
@@ -132,7 +132,7 @@ export function TagsRadarCompare({ countryIds, countryNames }: TagsRadarCompareP
   return (
     <div className="glass-card rounded-xl p-6">
       <h3 className="font-semibold text-lg mb-4 text-center">
-        {t('multiCompare.tagsRadar', 'Intelligence Tags Comparison')}
+        {t('multiCompare.tagsRadar', 'Comparaison des indicateurs')}
       </h3>
       <div className="h-[450px] w-full">
         <ResponsiveContainer width="100%" height="100%">
