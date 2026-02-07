@@ -24,8 +24,8 @@ import {
   Play,
   CheckCircle,
   Zap,
-  ChevronDown
 } from 'lucide-react';
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 import { TestimonialsSection } from '@/components/landing/TestimonialsSection';
 
 export default function Index() {
@@ -140,8 +140,8 @@ export default function Index() {
               <span className="text-sm">{t('landing.hero.statsCountries', 'pays analysés')}</span>
             </div>
             <div className="text-center">
-              <span className="block text-3xl font-bold text-foreground">50+</span>
-              <span className="text-sm">{t('landing.hero.statsKeys', 'critères comparés')}</span>
+              <span className="block text-3xl font-bold text-foreground">13</span>
+              <span className="text-sm">{t('landing.hero.statsLanguages', 'langues')}</span>
             </div>
             <div className="text-center">
               <span className="block text-3xl font-bold text-foreground">6</span>
@@ -372,7 +372,7 @@ export default function Index() {
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      {t('landing.pricing.premiumFeature2', 'Recommandations personnalisées')}
+                      {t('landing.pricing.premiumFeature2', 'Analyse système avancée')}
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
@@ -380,7 +380,7 @@ export default function Index() {
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      {t('landing.pricing.premiumFeature4', 'Analyses approfondies')}
+                      {t('landing.pricing.premiumFeature4', 'Gouvernance & Terrain')}
                     </li>
                   </ul>
                   <Button 
@@ -418,7 +418,7 @@ export default function Index() {
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      {t('landing.pricing.proFeature2', 'Modules avancés')}
+                      {t('landing.pricing.proFeature2', 'Analyse projet personnalisée')}
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
@@ -451,37 +451,38 @@ export default function Index() {
             </h2>
           </div>
 
-          <div className="max-w-3xl mx-auto space-y-4">
-            {[
-              {
-                q: t('landing.faq.q1', 'Est-ce vraiment gratuit ?'),
-                a: t('landing.faq.a1', 'Oui. Le test de profil, l\'exploration des 38+ pays et les fiches de base sont 100% gratuits. Les fonctionnalités avancées (export PDF, recommandations IA, modules Pro) sont réservées aux plans payants.'),
-              },
-              {
-                q: t('landing.faq.q2', 'Est-ce un conseil juridique ou fiscal ?'),
-                a: t('landing.faq.a2', 'Non. Pyramid Compass est un outil de simulation et de comparaison. Il ne remplace pas un avocat, un fiscaliste ou un conseiller en immigration. Consultez toujours un professionnel avant de prendre une décision.'),
-              },
-              {
-                q: t('landing.faq.q3', 'Comment sont calculées les données ?'),
-                a: t('landing.faq.a3', 'Nos données proviennent de sources publiques (Banque Mondiale, ONU, Transparency International, etc.) et sont mises à jour régulièrement. Chaque fiche pays indique ses sources.'),
-              },
-            ].map((faq, i) => (
-              <motion.details
-                key={i}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group glass-card rounded-xl p-6 cursor-pointer"
-              >
-                <summary className="flex items-center justify-between font-semibold text-base list-none">
-                  {faq.q}
-                  <ChevronDown className="w-5 h-5 text-muted-foreground transition-transform group-open:rotate-180" />
-                </summary>
-                <p className="mt-4 text-muted-foreground text-sm leading-relaxed">{faq.a}</p>
-              </motion.details>
-            ))}
-          </div>
+          <Accordion type="single" collapsible className="max-w-3xl mx-auto space-y-4">
+            <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+              <AccordionItem value="faq-1" className="glass-card rounded-xl px-6 border-none">
+                <AccordionTrigger className="text-base font-semibold hover:no-underline">
+                  {t('landing.faq.q1', 'Est-ce vraiment gratuit ?')}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
+                  {t('landing.faq.a1', 'Oui. Le test de profil, l\'exploration des 38+ pays et les fiches de base sont 100% gratuits. Les fonctionnalités avancées (export PDF, recommandations IA, modules Pro) sont réservées aux plans payants.')}
+                </AccordionContent>
+              </AccordionItem>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
+              <AccordionItem value="faq-2" className="glass-card rounded-xl px-6 border-none">
+                <AccordionTrigger className="text-base font-semibold hover:no-underline">
+                  {t('landing.faq.q2', 'Est-ce un conseil juridique ou fiscal ?')}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
+                  {t('landing.faq.a2', 'Non. Pyramid Compass est un outil de simulation et de comparaison. Il ne remplace pas un avocat, un fiscaliste ou un conseiller en immigration. Consultez toujours un professionnel avant de prendre une décision.')}
+                </AccordionContent>
+              </AccordionItem>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
+              <AccordionItem value="faq-3" className="glass-card rounded-xl px-6 border-none">
+                <AccordionTrigger className="text-base font-semibold hover:no-underline">
+                  {t('landing.faq.q3', 'Comment sont calculées les données ?')}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
+                  {t('landing.faq.a3', 'Nos données proviennent de sources publiques (Banque Mondiale, ONU, Transparency International, etc.) et sont mises à jour régulièrement. Chaque fiche pays indique ses sources.')}
+                </AccordionContent>
+              </AccordionItem>
+            </motion.div>
+          </Accordion>
         </div>
       </section>
 

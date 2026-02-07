@@ -102,10 +102,10 @@ export function TestimonialsSection() {
                 <MapPin className="w-5 h-5 text-primary" />
               </div>
               <h3 className="font-display text-xl font-bold mb-2">
-                {t('socialProof.betaTitle', 'Rejoignez les premiers explorateurs')}
+                {t('socialProof.betaTitle', 'Commencez votre analyse gratuite')}
               </h3>
               <p className="text-muted-foreground text-sm mb-4">
-                {t('socialProof.betaDescription', 'Testez gratuitement l\'analyse de 3 pays et découvrez votre profil d\'expatrié. Vos retours façonnent la plateforme.')}
+                {t('socialProof.betaDescription', 'Explorez 38+ pays gratuitement, découvrez votre profil d\'expatrié et comparez les opportunités en toute autonomie.')}
               </p>
               <a
                 href="/quick-test"
