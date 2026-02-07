@@ -216,7 +216,7 @@ interface CountryProjectAnalysisProps {
 export function CountryProjectAnalysis({ countryId, countryName }: CountryProjectAnalysisProps) {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { canAccessPro, loading: subscriptionLoading } = useSubscription();
+  const { canAccessPremium, loading: subscriptionLoading } = useSubscription();
   
   const [formData, setFormData] = useState<FormData>({
     projectType: null,
@@ -227,13 +227,13 @@ export function CountryProjectAnalysis({ countryId, countryName }: CountryProjec
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [analyzing, setAnalyzing] = useState(false);
 
-  // Show paywall if not Pro
-  if (!canAccessPro) {
+  // Show paywall if not Premium
+  if (!canAccessPremium) {
     return (
       <PremiumPaywall
         title={t('countryDetail.project.paywallTitle', 'Analyse Projet Personnalisée')}
         description={t('countryDetail.project.paywallDesc', `Obtenez une analyse adaptée à votre projet spécifique pour ${countryName} : points aveugles, risques fréquents et stratégies personnalisées.`)}
-        tier="pro"
+        tier="premium"
       />
     );
   }

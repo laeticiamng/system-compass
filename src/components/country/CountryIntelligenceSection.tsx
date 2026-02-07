@@ -213,7 +213,7 @@ function parseStringArray(data: Json | null): string[] {
 
 export function CountryIntelligenceSection({ countryId, countryName }: Props) {
   const { t } = useTranslation();
-  const { canAccessPro } = useSubscription();
+  const { canAccessPremium } = useSubscription();
   const [originalIntelligence, setOriginalIntelligence] = useState<CountryIntelligence | null>(null);
   const [tags, setTags] = useState<CountryTags | null>(null);
   const [loading, setLoading] = useState(true);
@@ -267,12 +267,12 @@ export function CountryIntelligenceSection({ countryId, countryName }: Props) {
     fetchData();
   }, [countryId]);
 
-  if (!canAccessPro) {
+  if (!canAccessPremium) {
     return (
       <PremiumPaywall
         title={t('intelligence.paywallTitle', 'Intelligence Système')}
         description={t('intelligence.paywallDesc', 'Accédez aux dynamiques de pouvoir, stratégies sociales et héritages historiques de ce pays.')}
-        tier="pro"
+        tier="premium"
       />
     );
   }
