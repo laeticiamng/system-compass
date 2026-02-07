@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 import { useCountryById } from '@/lib/countries-data';
 import { getExtendedCountryMeta } from '@/lib/countries-extended';
@@ -247,6 +248,12 @@ export default function CountryDetail() {
             <span className="hidden sm:inline">{t('countryDetail.backToCountries')}</span>
             <span className="sm:hidden">Retour</span>
           </Button>
+          {/* Mobile breadcrumb */}
+          <nav className="sm:hidden flex items-center gap-1 text-xs text-muted-foreground ml-1">
+            <Link to="/countries" className="hover:text-foreground transition-colors">Pays</Link>
+            <span>/</span>
+            <span className="text-foreground font-medium truncate max-w-[120px]">{displayName}</span>
+          </nav>
           <CountryPdfExport 
             country={country} 
             governanceData={governanceData}
@@ -359,7 +366,7 @@ export default function CountryDetail() {
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="tronc">
+          <TabsContent value="tronc" className="animate-fade-in">
             <CountryTroncSection
               country={country}
               displayPyramid={displayPyramid}
@@ -369,15 +376,15 @@ export default function CountryDetail() {
             />
           </TabsContent>
 
-          <TabsContent value="variant">
+          <TabsContent value="variant" className="animate-fade-in">
             <CountryVariantSection countryId={country.id} countryName={displayName} />
           </TabsContent>
 
-          <TabsContent value="intelligence">
+          <TabsContent value="intelligence" className="animate-fade-in">
             <CountryIntelligenceSection countryId={country.id} countryName={displayName} />
           </TabsContent>
 
-          <TabsContent value="governance">
+          <TabsContent value="governance" className="animate-fade-in">
             <CountryGovernanceSection 
               countryId={country.id} 
               countryName={displayName}
@@ -386,7 +393,7 @@ export default function CountryDetail() {
             />
           </TabsContent>
 
-          <TabsContent value="project">
+          <TabsContent value="project" className="animate-fade-in">
             <CountryProjectAnalysis countryId={country.id} countryName={displayName} />
           </TabsContent>
         </Tabs>
@@ -465,10 +472,16 @@ export default function CountryDetail() {
 
 function SnapshotCard({ label, value, colorClass }: { label: string; value: string; colorClass?: string }) {
   return (
-    <div className="glass-card rounded-xl p-4 text-center">
+    <motion.div
+      initial={{ opacity: 0, y: 15, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.4, ease: 'easeOut' }}
+      whileHover={{ scale: 1.04, transition: { duration: 0.2 } }}
+      className="glass-card rounded-xl p-4 text-center cursor-default"
+    >
       <div className="text-sm text-muted-foreground mb-1">{label}</div>
       <div className={`font-display font-semibold text-lg ${colorClass || ''}`}>{value}</div>
-    </div>
+    </motion.div>
   );
 }
 
