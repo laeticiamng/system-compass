@@ -1,9 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
-import { useSubscription } from '@/hooks/useSubscription';
 import { useTranslatedVariants } from '@/hooks/useTranslatedVariants';
-import { PremiumPaywall } from '@/components/PremiumPaywall';
 import { 
   Building2, 
   Users, 
@@ -226,7 +224,6 @@ interface CountryVariantSectionProps {
 
 export function CountryVariantSection({ countryId, countryName }: CountryVariantSectionProps) {
   const { t } = useTranslation();
-  const { canAccessPremium, loading: subscriptionLoading } = useSubscription();
   const [originalVariant, setOriginalVariant] = useState<CountryVariant | null>(null);
   const [loading, setLoading] = useState(true);
   const [, setFetchError] = useState<string | null>(null);
@@ -238,11 +235,6 @@ export function CountryVariantSection({ countryId, countryName }: CountryVariant
 
   useEffect(() => {
     async function fetchVariant() {
-      if (!canAccessPremium) {
-        setLoading(false);
-        return;
-      }
-
       try {
         const { data, error } = await supabase
           .from('country_variants')
@@ -284,19 +276,9 @@ export function CountryVariantSection({ countryId, countryName }: CountryVariant
     }
 
     fetchVariant();
-  }, [countryId, canAccessPremium]);
+  }, [countryId]);
 
-  if (!canAccessPremium) {
-    return (
-      <PremiumPaywall
-        title={t('countryDetail.variant.paywallTitle', 'Variante Pays')}
-        description={t('countryDetail.variant.paywallDesc', `Débloquez les spécificités locales de ${countryName} : institutions, réseaux, marché du travail, entrepreneuriat, et plus encore.`)}
-        tier="premium"
-      />
-    );
-  }
-
-  if (loading || subscriptionLoading || isTranslating) {
+  if (loading || isTranslating) {
     return (
       <div className="flex flex-col items-center justify-center py-12 gap-3">
         <Loader2 className="w-8 h-8 animate-spin text-primary" />
@@ -342,10 +324,10 @@ export function CountryVariantSection({ countryId, countryName }: CountryVariant
 
   return (
     <div className="space-y-6">
-      {/* Premium Badge */}
+      {/* Free Badge */}
       <div className="flex items-center gap-2">
-        <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium border border-primary/20">
-          ⭐ {t('countryDetail.variant.badge', 'Variante Pays — Premium')}
+        <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-green-500/10 text-green-600 dark:text-green-400 text-sm font-medium border border-green-500/20">
+          ✅ {t('countryDetail.variant.badge', 'Détails pays — Accès gratuit')}
         </span>
       </div>
 

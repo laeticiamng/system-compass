@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useCountryGovernance } from '@/hooks/useCountryGovernance';
+import { useSubscription } from '@/hooks/useSubscription';
+import { PremiumPaywall } from '@/components/PremiumPaywall';
 import { Loader2, Shield, Briefcase, Users, AlertTriangle, MapPin, Clock } from 'lucide-react';
 import {
   CountryGovernanceScore,
@@ -32,12 +34,23 @@ export function CountryGovernanceSection({
 }: CountryGovernanceSectionProps) {
   const { t } = useTranslation();
   const { isLoading } = useCountryGovernance(countryId, pyramidType);
+  const { canAccessPremium, loading: subscriptionLoading } = useSubscription();
 
-  if (isLoading) {
+  if (isLoading || subscriptionLoading) {
     return (
       <div className="flex items-center justify-center py-12">
         <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
       </div>
+    );
+  }
+
+  if (!canAccessPremium) {
+    return (
+      <PremiumPaywall
+        title={t('governance.paywallTitle', 'Gouvernance & Terrain')}
+        description={t('governance.paywallDesc', 'Accédez aux scores de gouvernance, risques de friction, attractivité et logistique de ce pays.')}
+        tier="premium"
+      />
     );
   }
 
