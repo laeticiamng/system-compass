@@ -138,7 +138,7 @@ export function TagsCompareTable({ countryIds, countryNames }: TagsCompareTableP
     <div className="glass-card rounded-xl overflow-hidden">
       <div className="p-4 border-b border-border bg-muted/30">
         <h3 className="font-semibold flex items-center gap-2">
-          {t('multiCompare.tagsTable', 'Intelligence Tags Table')}
+          {t('multiCompare.tagsTable', 'Tableau des indicateurs')}
         </h3>
         <p className="text-sm text-muted-foreground mt-1">
           {t('multiCompare.tagsTableNote', 'Detailed comparison of systemic characteristics')}

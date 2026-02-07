@@ -47,7 +47,7 @@ export function CountryTroncSection({
       <div className="flex items-center gap-2">
         <span className="inline-flex items-center gap-1 px-2 sm:px-3 py-1 rounded-full bg-green-500/10 text-green-600 text-xs sm:text-sm font-medium border border-green-500/20">
           <Info className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
-          <span className="truncate">{t('countryDetail.tronc.badge', 'Tronc commun — Accès gratuit')}</span>
+          <span className="truncate">{t('countryDetail.tronc.badge', 'Aperçu — Accès gratuit')}</span>
         </span>
       </div>
 

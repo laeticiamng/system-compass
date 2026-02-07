@@ -405,8 +405,8 @@ const Pricing = () => {
                     {[
                       { name: t('pricing.feature.basicCountries', 'Fiches pays basiques'), free: true, premium: true, pro: true },
                       { name: t('pricing.feature.riskIndicators', 'Indicateurs de risque'), free: true, premium: true, pro: true },
-                      { name: t('pricing.feature.pyramidCommon', 'Tronc commun pyramide'), free: true, premium: true, pro: true },
-                      { name: t('pricing.feature.countryVariants', 'Variantes pays spécifiques'), free: false, premium: true, pro: true },
+                      { name: t('pricing.feature.pyramidCommon', 'Analyse de base'), free: true, premium: true, pro: true },
+                      { name: t('pricing.feature.countryVariants', 'Détails par pays'), free: false, premium: true, pro: true },
                       { name: t('pricing.feature.profilesSuccess', 'Profils qui réussissent'), free: false, premium: true, pro: true },
                       { name: t('pricing.feature.surprises', 'Ce qui surprend les nouveaux'), free: false, premium: true, pro: true },
                       { name: t('pricing.feature.projectAnalysis', 'Analyse projet personnalisée'), free: false, premium: false, pro: true },

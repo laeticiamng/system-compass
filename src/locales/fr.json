@@ -1248,13 +1248,13 @@
     "lastUpdated": "Dernière mise à jour",
     "extendedNote": "Ce pays dispose de données Intelligence Layer. Profil complet à venir.",
     "tabs": {
-      "tronc": "Tronc commun",
-      "variant": "Variante pays",
+      "tronc": "Aperçu",
+      "variant": "Détails",
       "project": "Analyse projet",
       "intelligence": "Intelligence"
     },
     "tronc": {
-      "badge": "Tronc commun — Accès gratuit",
+      "badge": "Aperçu — Accès gratuit",
       "title": "Analyse structurelle",
       "subtitle": "Ce que le système récompense et punit",
       "systemRewards": "Ce que le système récompense",
@@ -8610,8 +8610,8 @@
     "feature": {
       "basicCountries": "Fiches pays basiques",
       "riskIndicators": "Indicateurs de risque",
-      "pyramidCommon": "Tronc commun pyramide",
-      "countryVariants": "Variantes pays spécifiques",
+      "pyramidCommon": "Analyse de base",
+      "countryVariants": "Détails par pays",
       "profilesSuccess": "Profils qui réussissent",
       "surprises": "Ce qui surprend les nouveaux",
       "projectAnalysis": "Analyse projet personnalisée",

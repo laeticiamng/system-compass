@@ -414,7 +414,7 @@ export default function Index() {
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      {t('landing.pricing.proFeature2', 'Modules avancés (TraceOS, Intel)')}
+                      {t('landing.pricing.proFeature2', 'Modules avancés')}
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
