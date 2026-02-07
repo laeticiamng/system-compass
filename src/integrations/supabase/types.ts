@@ -4646,6 +4646,27 @@ export type Database = {
         }
         Relationships: []
       }
+      user_country_watchlist: {
+        Row: {
+          country_id: string
+          created_at: string
+          id: string
+          user_id: string
+        }
+        Insert: {
+          country_id: string
+          created_at?: string
+          id?: string
+          user_id: string
+        }
+        Update: {
+          country_id?: string
+          created_at?: string
+          id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_governance_notes: {
         Row: {
           country_id: string
