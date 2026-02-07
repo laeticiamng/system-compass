@@ -1,127 +1,98 @@
 
 
-# Audit Beta-Testeur Non-Technique - Pyramid Compass
+# Audit Beta-Testeur Non-Technique (Post-Corrections v2)
 
 ## 1) Test "3 secondes"
-
 - **En 3 secondes, je crois que cette plateforme sert a** : comparer des pays pour s'expatrier
-- **Public cible** : francophones qui envisagent de s'expatrier (freelances, entrepreneurs, retraites)
-- **2 confusions possibles** : (1) Un site de coaching en expatriation payant, (2) Une agence de voyage/relocation
-- **Note clarte immediate** : 8/10 - Le hero "Tu veux t'expatrier ? Compare les pays avant de partir" est clair et efficace
+- **Public cible** : francophones envisageant l'expatriation
+- **Confusions possibles** : (1) Cabinet de conseil en relocation payant, (2) Blog voyage premium
+- **Note clarte** : 9/10 -- Hero et CTAs sont clairs et efficaces
 
 ## 2) Parcours utilisateur
 
-| Etape | Ce que j'ai essaye | Ce qui s'est passe | Ressenti | Blocage | Attendu |
+| Etape | Essaye | Resultat | Ressenti | Blocage | Attendu |
 |---|---|---|---|---|---|
-| Decouverte | J'arrive sur la home | Hero clair, 2 CTA visibles | Bien guide | Aucun | OK |
-| Premier clic | "Trouver mon pays ideal" | Quick Test s'ouvre, quiz interactif | Positif | Aucun | OK |
-| Explorer pays | Clic "Explorer les pays" | Liste de 38+ pays avec drapeaux | Visuellement attractif | Aucun | OK |
-| Clic sur un pays | Clic sur France | Page detail complete avec onglets | Contenu riche, un peu dense | Beaucoup de jargon technique (Tronc, Variante, Intel, Gouv.) | Des termes simples |
-| Page Exit Keys | Navigation vers /exit-keys | Page de strategies d'expatriation | OK | Aucun | OK |
-| Page Compare | Navigation vers /compare | Outil de comparaison fonctionnel | OK | Aucun | OK |
-| Auth | Navigation vers /auth | Formulaire login/signup | OK | Aucun | OK |
-| Pricing | Navigation vers /pricing | 3 plans (Gratuit/Premium/Pro) | Clair | Aucun | OK |
+| Home | Arrivee | Hero clair, 2 CTAs | Bien guide | Aucun | OK |
+| Quick Test | Clic CTA | Quiz interactif | Positif | Aucun | OK |
+| Countries | Explorer | Liste 38+ pays | Attractif | Aucun | OK |
+| Fiche pays | Clic France | Onglets renommes (Apercu, Details...) | Bien | Badge "Tronc commun" encore present | Un terme clair |
+| Pricing | Visite | 3 plans | Jargon "Tronc commun pyramide", "TraceOS, Intel" | Termes simples |
+| Navigation | Retour | Fluide | Aucun | OK |
 
-## 3) Audit confiance : 7.5/10
+## 3) Audit confiance : 8.5/10
 
-**Points positifs** :
-- Design premium coherent (glassmorphism, animations fluides)
-- Pages legales presentes (CGV, Mentions Legales, Disclaimer)
-- Pas de faux avis/temoignages (nettoyage effectue)
-- SSL, cookie consent present
+**Positif** : Design premium, legal, pas de faux temoignages, onglets clairs, FAQ ajoutee
 
-**Points a ameliorer** :
-- Les onglets de la fiche pays utilisent du jargon ("Tronc Pyramide", "Variante", "Intel", "Gouv.") - un utilisateur non technique ne comprend pas
-- Le bouton "Realites Terrain" avec icone orange alerte est confus - on dirait un avertissement de danger
-- La banniere disclaimer en bas chevauche potentiellement le footer/cookie consent
-- Le "Music Player" sur la fiche pays est bizarre pour un outil de comparaison de pays
-- Pas de section FAQ visible sur la home
+**Jargon residuel a corriger** :
+- Badge "Tronc commun -- Acces gratuit" sur la fiche pays (CountryTroncSection)
+- "Tronc commun pyramide" dans le tableau pricing (Pricing.tsx)
+- "Variantes pays specifiques" dans le pricing
+- "Modules avances (TraceOS, Intel)" dans le plan Pro (Index.tsx)
+- "Intelligence Tags Comparison" dans le comparateur (TagsRadarCompare, TagsCompareTable)
+- Traductions fr.json : tabs "Tronc commun", "Variante pays", badge "Tronc commun"
 
-## 4) Audit comprehension et guidance
+## 4) Audit comprehension
+- Premier clic evident : OUI
+- Apres premier clic : OUI
+- Perdu : Nulle part sur le parcours principal
+- **Phrases floues restantes** :
+  1. "Tronc commun -- Acces gratuit" (badge vert sur fiche pays)
+  2. "Tronc commun pyramide" (pricing)
+  3. "TraceOS, Intel" (pricing Pro)
+  4. "Intelligence Tags" (comparateur)
 
-- **Premier clic evident** : OUI - "Trouver mon pays ideal" est bien visible
-- **Apres le premier clic** : OUI - le quick test guide bien
-- **Ou je me sens perdu(e)** :
-  - Sur la fiche pays : trop d'onglets techniques
-  - Navigation header : le menu "Pro" melange B2B/Experts/Academic sans contexte
-  - Mot "Intelligence" dans les onglets - c'est quoi ?
-- **Phrases floues** :
-  - "Tronc Pyramide" - incomprehensible pour un non-initie
-  - "DB Intelligence Layer" dans les filtres pays
-  - "Variante Pays" - variante de quoi ?
+## 5) Audit visuel
+- Premium : Tout est coherent
+- Cheap : Rien
+- Trop charge : Rien de bloquant
+- Manque : Rien de critique
+- Mobile : OK
 
-## 5) Audit visuel non technique
-
-- **Ce qui fait premium** : animations de fond, cartes glassmorphism, typographie, badges colores
-- **Ce qui fait cheap** : rien de majeur
-- **Ce qui est trop charge** : la fiche pays (5 onglets + musique + radar + AI help + follow + PDF)
-- **Ce qui manque** : FAQ sur la home, temoignages reels (a terme)
-- **Lisibilite mobile** : OK - les onglets sont un peu serres mais fonctionnels
-
-## 6) Tableau des problemes
+## 6) Problemes restants
 
 | Probleme | Ou | Gravite | Impact | Suggestion |
 |---|---|---|---|---|
-| Jargon technique dans onglets pays | /country/:id | Majeur | Confusion, abandon | Renommer : "Apercu", "Details", "Analyse", "Gouvernance", "Mon projet" |
-| "DB Intelligence Layer" dans filtres | /countries | Moyen | Confusion | Renommer en "+15 pays supplementaires" |
-| Music Player sur fiche pays | /country/:id | Moyen | Distraction, credibilite | Deplacer en bas ou rendre optionnel |
-| Banniere disclaimer + cookie consent potentiellement empiles | Global | Moyen | Encombrement mobile | Espacer les deux bannieres |
-| Menu Pro confus dans header | Header | Moyen | Navigation peu claire | Simplifier les labels |
+| Badge "Tronc commun" | CountryTroncSection | Moyen | Jargon residuel | "Apercu -- Acces gratuit" |
+| "Tronc commun pyramide" dans pricing | Pricing.tsx + Index.tsx | Moyen | Confusion | "Analyse de base" |
+| "TraceOS, Intel" dans Pro pricing | Index.tsx | Moyen | Jargon | "Modules avances" |
+| "Intelligence Tags" dans comparateur | TagsRadarCompare.tsx | Mineur | Jargon anglais | "Indicateurs par pays" |
+| Traductions fr.json avec jargon | fr.json | Moyen | Incoherence | Mettre a jour les cles |
 
-## 7) Top 15 ameliorations
+## 7) Top 5 ameliorations (tout est P1/P2 desormais)
 
-### P0 (bloquants avant publication) : 1-5
-1. **Renommer les onglets de la fiche pays** : "Tronc" -> "Apercu", "Variante" -> "Details", "Intelligence" -> "Analyse", "Projet" -> "Mon Projet" - pour eliminer tout jargon
-2. **Renommer le filtre "DB Intelligence"** dans /countries : "+15 pays supplementaires" au lieu de "+15 Intelligence"
-3. **Renommer "Realites Terrain"** : le bouton orange avec icone alerte fait peur - changer en "Vie sur place" avec une icone neutre (MapPin)
-4. **Supprimer ou masquer le CountryMusicPlayer** de la fiche pays par defaut - c'est hors-sujet pour un outil de decision
-5. **Ajouter un espacement** entre la banniere disclaimer et le cookie consent pour eviter le chevauchement sur mobile
-
-### P1 (ameliore fortement conversion) : 6-10
-6. Ajouter une mini FAQ (3 questions) sur la page d'accueil
-7. Simplifier le header : renommer "Pro" en "Pour les pros" avec des labels plus clairs
-8. Reduire les onglets pays de 5 a 3 (fusionner Apercu+Details, garder Analyse et Mon Projet)
-9. Ajouter un CTA "Comparer ce pays" bien visible sur la fiche pays
-10. Mettre le bouton "Follow" (coeur) plus visible avec un label texte
-
-### P2 (polish premium) : 11-15
-11. Ajouter des micro-animations sur les stats de la fiche pays
-12. Ameliorer les transitions entre onglets
-13. Ajouter un breadcrumb plus visible sur mobile
-14. Optimiser le temps de chargement des pages lazy-loaded
-15. Ajouter un onboarding tooltip au premier usage
+1. **Renommer le badge "Tronc commun"** dans CountryTroncSection -> "Apercu -- Acces gratuit"
+2. **Renommer "Tronc commun pyramide"** dans Pricing -> "Analyse de base"
+3. **Renommer "TraceOS, Intel"** dans Pro pricing -> "Modules avances"
+4. **Renommer "Intelligence Tags"** dans comparateur -> "Indicateurs par pays"
+5. **Mettre a jour fr.json** pour les cles de traduction correspondantes
 
 ## 8) Verdict final
-
-- **Publiable aujourd'hui** : OUI, avec les corrections P0 ci-dessus
-- **Les 5 points P0 a corriger** : jargon onglets, filtre DB Intelligence, bouton Terrain, music player, espacement bannieres
-- **HERO parfait** : "Tu veux t'expatrier ? Compare les pays avant de partir." (deja en place, excellent)
-- **CTA ideal** : "Trouver mon pays ideal — gratuit" (deja en place, excellent)
+- **Publiable** : OUI (aucun P0 restant)
+- **Hero** : "Tu veux t'expatrier ? Compare les pays avant de partir." (deja OK)
+- **CTA** : "Trouver mon pays ideal -- gratuit" (deja OK)
 
 ---
 
 ## Plan de corrections techniques
 
-### 1. Renommer les onglets fiche pays (`src/pages/CountryDetail.tsx`)
-- "Tronc" -> "Apercu" / "Overview"
-- "Var." -> "Details" 
-- "Intel" -> "Analyse"
-- "Gouv." -> "Gouv." (celui-ci est acceptable)
-- "Proj." -> "Projet"
-- Mettre a jour les labels complets (desktop) et abreges (mobile)
+### 1. CountryTroncSection.tsx (ligne 50)
+- Changer le fallback du badge : "Tronc commun -- Acces gratuit" -> "Apercu -- Acces gratuit"
 
-### 2. Renommer le filtre extended dans `/countries` (`src/pages/Countries.tsx`)
-- "+15 Intelligence" -> "+15 pays"
-- "DB Intelligence Layer" -> "Couverture etendue"
+### 2. Index.tsx (ligne 417)
+- Changer "Modules avances (TraceOS, Intel)" -> "Modules avances"
 
-### 3. Changer le bouton "Realites Terrain" (`src/pages/CountryDetail.tsx`)
-- Icone : `ShieldAlert` -> `MapPin`
-- Couleur : orange -> neutre (primary)
-- Label : "Realites Terrain" -> "Vie sur place"
+### 3. Pricing.tsx (ligne 408)
+- "Tronc commun pyramide" -> "Analyse de base"
+- "Variantes pays specifiques" -> "Details par pays"
 
-### 4. Masquer le Music Player par defaut (`src/pages/CountryDetail.tsx`)
-- Rendre le `CountryMusicPlayer` dans un accordion repliable ou le supprimer
+### 4. fr.json - Mettre a jour les cles suivantes :
+- `countryDetail.tabs.tronc` : "Tronc commun" -> "Apercu"
+- `countryDetail.tabs.variant` : "Variante pays" -> "Details"
+- `countryDetail.tronc.badge` : "Tronc commun -- Acces gratuit" -> "Apercu -- Acces gratuit"
+- `pricing.feature.pyramidCommon` : "Tronc commun pyramide" -> "Analyse de base"
+- `pricing.feature.countryVariants` : "Variantes pays specifiques" -> "Details par pays"
 
-### 5. Espacement banniere disclaimer (`src/components/DisclaimerConsentDialog.tsx`)
-- Ajouter un `mb-16` ou ajuster le `bottom` pour eviter le chevauchement avec le cookie consent
+### 5. TagsRadarCompare.tsx / TagsCompareTable.tsx
+- "Intelligence Tags Comparison" -> "Comparaison des indicateurs"
+- "Intelligence Tags Table" -> "Tableau des indicateurs"
 
