@@ -13,7 +13,7 @@ import { CountryExitKeys } from '@/components/CountryExitKeys';
 import { NaturalRisksCard } from '@/components/NaturalRisksCard';
 import { HealthcareCard } from '@/components/HealthcareCard';
 import { PositivePointsCard } from '@/components/PositivePointsCard';
-import { CountryMusicPlayer } from '@/components/CountryMusicPlayer';
+// CountryMusicPlayer removed per audit
 import { FiscalSalaryCalculator } from '@/components/FiscalSalaryCalculator';
 import { FiscalQuickWidget } from '@/components/fiscal';
 import { ExpertCountryWidget } from '@/components/marketplace';
@@ -24,7 +24,7 @@ import { CountryTagsRadar } from '@/components/country/CountryTagsRadar';
 import { CountryPdfExport } from '@/components/CountryPdfExport';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { ArrowLeft, Calendar, ExternalLink, Layers, Map, Target, Brain, Loader2, Shield, ShieldAlert } from 'lucide-react';
+import { ArrowLeft, Calendar, ExternalLink, Layers, Map, Target, Brain, Loader2, Shield, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { Database } from '@/integrations/supabase/types';
@@ -143,10 +143,10 @@ export default function CountryDetail() {
                 >
                   {typeLabel}
                 </span>
-                <Button variant="outline" size="sm" asChild className="gap-1 text-orange-400 border-orange-500/30 hover:bg-orange-500/10">
+                <Button variant="outline" size="sm" asChild className="gap-1">
                   <Link to={`/country/${id}/terrain-realities`}>
-                    <ShieldAlert className="h-4 w-4" />
-                    <span className="hidden sm:inline">{t('terrainRealities.title', 'Réalités Terrain')}</span>
+                    <MapPin className="h-4 w-4" />
+                    <span className="hidden sm:inline">{t('terrainRealities.title', 'Vie sur place')}</span>
                   </Link>
                 </Button>
               </div>
@@ -154,13 +154,7 @@ export default function CountryDetail() {
             </div>
           </div>
 
-          {/* Music Player */}
-          <CountryMusicPlayer
-            countryId={id!}
-            countryName={extendedMeta.name}
-            pyramidType={extendedMeta.pyramidType as PyramidType}
-            className="mb-8"
-          />
+           {/* Music Player removed per audit - off-topic for decision tool */}
 
           {/* Tags Radar */}
           {extendedTags && (
@@ -174,17 +168,17 @@ export default function CountryDetail() {
             <TabsList className="grid w-full grid-cols-3 mb-8">
               <TabsTrigger value="intelligence" className="gap-2">
                 <Brain className="w-4 h-4" />
-                <span className="hidden sm:inline">{t('countryDetail.tabs.intelligence', 'Intelligence')}</span>
-                <span className="sm:hidden">Intel</span>
+                <span className="hidden sm:inline">{t('countryDetail.tabs.intelligence', 'Analyse')}</span>
+                <span className="sm:hidden">Analyse</span>
               </TabsTrigger>
               <TabsTrigger value="variant" className="gap-2">
                 <Map className="w-4 h-4" />
-                <span className="hidden sm:inline">{t('countryDetail.tabs.variant', 'Variante Pays')}</span>
-                <span className="sm:hidden">Variante</span>
+                <span className="hidden sm:inline">{t('countryDetail.tabs.variant', 'Détails')}</span>
+                <span className="sm:hidden">Détails</span>
               </TabsTrigger>
               <TabsTrigger value="project" className="gap-2">
                 <Target className="w-4 h-4" />
-                <span className="hidden sm:inline">{t('countryDetail.tabs.project', 'Analyse Projet')}</span>
+                <span className="hidden sm:inline">{t('countryDetail.tabs.project', 'Mon Projet')}</span>
                 <span className="sm:hidden">Projet</span>
               </TabsTrigger>
             </TabsList>
@@ -275,10 +269,10 @@ export default function CountryDetail() {
                 >
                   {typeLabel}
                 </span>
-                <Button variant="outline" size="sm" asChild className="gap-1 text-orange-400 border-orange-500/30 hover:bg-orange-500/10">
+                <Button variant="outline" size="sm" asChild className="gap-1">
                   <Link to={`/country/${country.id}/terrain-realities`}>
-                    <ShieldAlert className="h-4 w-4" />
-                    <span className="hidden sm:inline">{t('terrainRealities.title', 'Réalités Terrain')}</span>
+                    <MapPin className="h-4 w-4" />
+                    <span className="hidden sm:inline">{t('terrainRealities.title', 'Vie sur place')}</span>
                   </Link>
                 </Button>
               </div>
@@ -321,31 +315,25 @@ export default function CountryDetail() {
           <SnapshotCard label={t('countryDetail.snapshot.freedomIndex')} value={`${country.snapshot.freedomIndex}/100`} colorClass={getFreedomColor(country.snapshot.freedomIndex)} />
         </div>
 
-        {/* Music Player */}
-        <CountryMusicPlayer
-          countryId={country.id}
-          countryName={displayName}
-          pyramidType={country.pyramidType}
-          className="mb-8"
-        />
+        {/* Music Player removed per audit - off-topic for decision tool */}
 
         {/* 5-Layer Tabs */}
         <Tabs defaultValue="tronc" className="mb-8 sm:mb-12">
           <TabsList className="grid w-full grid-cols-5 mb-4 sm:mb-8 h-auto p-1">
             <TabsTrigger value="tronc" className="gap-1 py-2 text-[10px] sm:text-xs md:text-sm flex-col sm:flex-row">
               <Layers className="w-3 h-3 sm:w-4 sm:h-4" />
-              <span className="hidden md:inline">{t('countryDetail.tabs.tronc', 'Tronc Pyramide')}</span>
-              <span className="md:hidden">Tronc</span>
+              <span className="hidden md:inline">{t('countryDetail.tabs.tronc', 'Aperçu')}</span>
+              <span className="md:hidden">Aperçu</span>
             </TabsTrigger>
             <TabsTrigger value="variant" className="gap-1 py-2 text-[10px] sm:text-xs md:text-sm flex-col sm:flex-row">
               <Map className="w-3 h-3 sm:w-4 sm:h-4" />
-              <span className="hidden md:inline">{t('countryDetail.tabs.variant', 'Variante')}</span>
-              <span className="md:hidden">Var.</span>
+              <span className="hidden md:inline">{t('countryDetail.tabs.variant', 'Détails')}</span>
+              <span className="md:hidden">Détails</span>
             </TabsTrigger>
             <TabsTrigger value="intelligence" className="gap-1 py-2 text-[10px] sm:text-xs md:text-sm flex-col sm:flex-row">
               <Brain className="w-3 h-3 sm:w-4 sm:h-4" />
-              <span className="hidden md:inline">{t('countryDetail.tabs.intelligence', 'Intelligence')}</span>
-              <span className="md:hidden">Intel</span>
+              <span className="hidden md:inline">{t('countryDetail.tabs.intelligence', 'Analyse')}</span>
+              <span className="md:hidden">Analyse</span>
             </TabsTrigger>
             <TabsTrigger value="governance" className="gap-1 py-2 text-[10px] sm:text-xs md:text-sm flex-col sm:flex-row">
               <Shield className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -354,8 +342,8 @@ export default function CountryDetail() {
             </TabsTrigger>
             <TabsTrigger value="project" className="gap-1 py-2 text-[10px] sm:text-xs md:text-sm flex-col sm:flex-row">
               <Target className="w-3 h-3 sm:w-4 sm:h-4" />
-              <span className="hidden md:inline">{t('countryDetail.tabs.project', 'Projet')}</span>
-              <span className="md:hidden">Proj.</span>
+              <span className="hidden md:inline">{t('countryDetail.tabs.project', 'Mon Projet')}</span>
+              <span className="md:hidden">Projet</span>
             </TabsTrigger>
           </TabsList>
 
