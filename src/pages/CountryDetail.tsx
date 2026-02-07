@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
-import { PyramidType } from '@/lib/types';
+
 import { useCountryById } from '@/lib/countries-data';
 import { getExtendedCountryMeta } from '@/lib/countries-extended';
 import { CountryTroncSection } from '@/components/country/CountryTroncSection';
