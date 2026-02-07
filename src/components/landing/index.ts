@@ -1,7 +1,7 @@
 // Landing page components index - v7.0.8
 // Homepage and marketing sections
 
-export { HeroSection } from './HeroSection';
+
 export { 
   AnimatedSection, 
   FeatureCardPremium, 
