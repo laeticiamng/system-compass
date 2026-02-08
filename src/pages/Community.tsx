@@ -19,7 +19,8 @@ import {
   Hash,
   Mic,
   Video,
-  CheckCircle2
+  CheckCircle2,
+  Bell
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { useEventRegistration } from '@/hooks/useEventRegistration';
@@ -89,7 +90,7 @@ const CONTENT_RESOURCES = [
     type: 'podcast',
     title: 'System Compass Podcast',
     description: 'Interviews d\'expatriés et d\'experts chaque semaine.',
-    episodes: 45,
+    statusLabel: 'En préparation',
     link: '#',
   },
   {
@@ -97,7 +98,7 @@ const CONTENT_RESOURCES = [
     type: 'youtube',
     title: 'Chaîne YouTube',
     description: 'Tutoriels, analyses de pays et conseils pratiques.',
-    subscribers: 12000,
+    statusLabel: 'En préparation',
     link: '#',
   },
   {
@@ -105,7 +106,7 @@ const CONTENT_RESOURCES = [
     type: 'blog',
     title: 'Blog & Guides',
     description: 'Articles approfondis et guides étape par étape.',
-    articles: 120,
+    statusLabel: 'En préparation',
     link: '#',
   },
 ];
@@ -326,9 +327,7 @@ export default function Community() {
                     <div>
                       <h3 className="font-semibold">{resource.title}</h3>
                       <p className="text-xs text-muted-foreground">
-                        {resource.episodes && `${resource.episodes} épisodes`}
-                        {resource.subscribers && `${resource.subscribers.toLocaleString()} abonnés`}
-                        {resource.articles && `${resource.articles} articles`}
+                        {resource.statusLabel}
                       </p>
                     </div>
                   </div>
@@ -344,27 +343,25 @@ export default function Community() {
         </div>
       </div>
 
-      {/* Community Stats */}
-      <Card className="glass-card">
-        <CardContent className="p-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <div>
-              <p className="text-3xl font-bold text-primary">5,247</p>
-              <p className="text-muted-foreground">Membres Discord</p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-primary">50+</p>
-              <p className="text-muted-foreground">Pays représentés</p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-primary">120+</p>
-              <p className="text-muted-foreground">Guides & articles</p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-primary">45</p>
-              <p className="text-muted-foreground">Épisodes podcast</p>
-            </div>
-          </div>
+      {/* Community CTA - Notification */}
+      <Card className="glass-card border-primary/20">
+        <CardContent className="p-8 text-center space-y-4">
+          <Sparkles className="w-8 h-8 text-primary mx-auto" />
+          <h3 className="text-xl font-bold">Notre communauté grandit</h3>
+          <p className="text-muted-foreground max-w-lg mx-auto">
+            Podcast, chaîne YouTube, blog et bien plus arrivent bientôt. 
+            Inscrivez-vous pour être informé du lancement.
+          </p>
+          <Button 
+            variant="outline" 
+            className="gap-2"
+            onClick={() => {
+              toast.success('Vous serez notifié du lancement !');
+            }}
+          >
+            <Bell className="w-4 h-4" />
+            Être informé du lancement
+          </Button>
         </CardContent>
       </Card>
 
