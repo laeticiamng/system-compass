@@ -110,8 +110,24 @@ export default function LifeGame() {
             {t('lifeGame.hero.subtitle')}
           </p>
 
-          {/* Clarification Box */}
-          <div className="glass-card rounded-xl p-4 md:p-6 max-w-2xl mx-auto mb-6 sm:mb-8 border-amber-500/30 bg-amber-500/5 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+          {/* CTA Buttons - moved above clarification */}
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center animate-fade-in px-4 mb-6 sm:mb-8" style={{ animationDelay: '0.3s' }}>
+            <Link to="/pyramid-quiz">
+              <Button size="lg" className="gap-2 text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 btn-premium hover:opacity-90 w-full sm:w-auto transition-all duration-300 hover:scale-[1.02]">
+                <Play className="w-4 h-4 sm:w-5 sm:h-5" />
+                {t('lifeGame.hero.playCta')}
+              </Button>
+            </Link>
+            <Button size="lg" variant="outline" className="gap-2 text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6" asChild>
+              <a href="#features">
+                {t('lifeGame.hero.learnCta')}
+                <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5" />
+              </a>
+            </Button>
+          </div>
+
+          {/* Clarification Box - moved below CTA */}
+          <div className="glass-card rounded-xl p-4 md:p-6 max-w-2xl mx-auto mb-6 sm:mb-8 border-amber-500/30 bg-amber-500/5 animate-fade-in" style={{ animationDelay: '0.4s' }}>
             <h3 className="font-semibold text-amber-400 mb-2 sm:mb-3 text-sm sm:text-lg">
               {t('lifeGame.clarification.title')}
             </h3>
@@ -137,22 +153,6 @@ export default function LifeGame() {
               </Link>
               <SimulationDisclaimer variant="inline" />
             </div>
-          </div>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center animate-fade-in px-4" style={{ animationDelay: '0.4s' }}>
-            <Link to="/pyramid-quiz">
-              <Button size="lg" className="gap-2 text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 btn-premium hover:opacity-90 w-full sm:w-auto transition-all duration-300 hover:scale-[1.02]">
-                <Play className="w-4 h-4 sm:w-5 sm:h-5" />
-                {t('lifeGame.hero.playCta')}
-              </Button>
-            </Link>
-            <Button size="lg" variant="outline" className="gap-2 text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6" asChild>
-              <a href="#features">
-                {t('lifeGame.hero.learnCta')}
-                <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5" />
-              </a>
-            </Button>
           </div>
 
           {/* Stats */}

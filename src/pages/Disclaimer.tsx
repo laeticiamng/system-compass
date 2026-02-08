@@ -45,6 +45,39 @@ export default function Disclaimer() {
           </div>
         </div>
 
+        {/* TL;DR Summary */}
+        <Card className="bg-gradient-to-br from-primary/5 to-transparent border-primary/20">
+          <CardContent className="p-6">
+            <h2 className="font-semibold text-lg mb-4 flex items-center gap-2">
+              <Shield className="w-5 h-5 text-primary" />
+              En résumé
+            </h2>
+            <div className="grid md:grid-cols-3 gap-4">
+              <div className="flex items-start gap-3 p-3 rounded-lg bg-background/60">
+                <Info className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-medium text-sm">Outil éducatif</p>
+                  <p className="text-xs text-muted-foreground">Un simulateur pour réfléchir, pas un conseiller.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 p-3 rounded-lg bg-background/60">
+                <AlertTriangle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-medium text-sm">Pas de conseil pro</p>
+                  <p className="text-xs text-muted-foreground">Consultez des experts pour toute décision importante.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 p-3 rounded-lg bg-background/60">
+                <CheckCircle className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-medium text-sm">Vous décidez</p>
+                  <p className="text-xs text-muted-foreground">Vous êtes seul(e) responsable de vos choix.</p>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Main Content */}
         <div className="space-y-8">
           {/* Nature de l'outil */}

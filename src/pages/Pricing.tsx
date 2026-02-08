@@ -56,6 +56,7 @@ const Pricing = () => {
       price: '0€',
       period: t('pricing.forever', 'pour toujours'),
       description: t('pricing.freeDescription', 'Découvrez le concept'),
+      subtitle: t('pricing.freeSubtitle', 'Pas de carte bancaire requise'),
       icon: Zap,
       features: SUBSCRIPTION_TIERS.free.features,
       limitations: [
@@ -63,8 +64,9 @@ const Pricing = () => {
         t('pricing.limitations.noExitKeys', 'Pas de recommandations personnalisées'),
         t('pricing.limitations.noExport', 'Pas d\'export PDF'),
       ],
-      buttonText: t('pricing.currentPlan', 'Plan actuel'),
+      buttonText: t('pricing.startFree', 'Commencer gratuitement'),
       highlighted: false,
+      recommended: true,
       color: 'slate',
     },
     {
@@ -235,6 +237,11 @@ const Pricing = () => {
                       isCurrent && "ring-2 ring-primary"
                     )}
                   >
+                    {plan.recommended && !plan.highlighted && (
+                      <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-500 px-4">
+                        {t('pricing.recommended', 'Recommandé pour commencer')}
+                      </Badge>
+                    )}
                     {plan.highlighted && (
                       <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary px-4">
                         {t('pricing.popular', 'Populaire')}
@@ -262,6 +269,12 @@ const Pricing = () => {
                       </div>
                       <CardTitle className="text-xl font-display">{plan.name}</CardTitle>
                       <CardDescription>{plan.description}</CardDescription>
+                      {plan.subtitle && (
+                        <p className="text-xs text-emerald-500 font-medium mt-1 flex items-center gap-1">
+                          <Shield className="w-3 h-3" />
+                          {plan.subtitle}
+                        </p>
+                      )}
                     </CardHeader>
 
                     <CardContent className="flex-1">
@@ -317,6 +330,11 @@ const Pricing = () => {
                           onClick={() => handleSubscribe('premium')}
                           disabled={loading}
                         >
+                          {plan.buttonText}
+                          <ArrowRight className="w-4 h-4" />
+                        </Button>
+                      ) : plan.id === 'free' && !isCurrent ? (
+                        <Button className="w-full rounded-full gap-2" onClick={() => navigate('/auth')}>
                           {plan.buttonText}
                           <ArrowRight className="w-4 h-4" />
                         </Button>

@@ -385,7 +385,7 @@ export default function Dashboard() {
           </Card>
         )}
 
-        {!profile && (
+        {!profile && selectedKeyId && (
           <Card className="mb-6 glass-card border-primary/20">
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
