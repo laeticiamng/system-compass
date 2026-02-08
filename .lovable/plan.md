@@ -1,94 +1,77 @@
 
 
-# Audit non-technique -- Creation de compte et utilisation de la plateforme
+# Audit UX Non-Technique -- Notes par page et corrections
 
-## Test effectue le 8 fevrier 2026
+## Notes par page (sur 10)
 
-J'ai cree un vrai compte en direct et teste le parcours utilisateur de bout en bout.
-
----
-
-## 1. Creation de compte : FONCTIONNE
-
-| Etape | Resultat | Verdict |
-|---|---|---|
-| Affichage formulaire d'inscription | Champs nom, email, mot de passe visibles | OK |
-| Indicateur de force du mot de passe | Affiche "Fort" avec un mot de passe complexe | OK |
-| Soumission du formulaire | Compte cree en base de donnees instantanement | OK |
-| Email confirme automatiquement | Oui (auto-confirm actif) | OK |
-| Toast de bienvenue | **NON VISIBLE** -- le toast devrait s'afficher mais il n'a pas ete observe clairement | A VERIFIER |
-| Redirection apres inscription | Redirige vers `/quick-test` | OK |
-
-**Verdict creation de compte : 8/10** -- Le processus technique fonctionne, la redirection vers `/quick-test` est en place.
-
----
-
-## 2. Email de bienvenue : NE FONCTIONNE PAS
-
-| Element | Statut | Detail |
-|---|---|---|
-| Fonction send-email appelee | OUI | La fonction est bien invoquee apres inscription |
-| Email envoye | **NON** | Erreur 500 : "The pyramid-compass.com domain is not verified" |
-| Impact utilisateur | L'utilisateur ne recoit aucun email | Pas bloquant pour l'usage, mais mauvaise impression |
-
-**Action requise** : Verifier le domaine `pyramid-compass.com` dans le tableau de bord Resend (https://resend.com/domains). Sans cela, aucun email ne sera envoye.
+| Page | Note | Points forts | Points faibles |
+|---|---|---|---|
+| **Accueil (/)** | 8/10 | Hero impactant, design Apple-like, CTA clair "Commencer gratuitement" | Beaucoup de sections, peut sembler long en scroll |
+| **Auth (/auth)** | 7/10 | Formulaire clair, indicateur de force du mot de passe | Manque un feedback visuel fort apres inscription (toast trop discret) |
+| **About (/about)** | 8/10 | Contenu riche, bien structure, visuels soignes | Un peu dense en texte |
+| **Quick Test (/quick-test)** | 9/10 | Parcours guide etape par etape, selection claire, progression visible | Excellent, quasi rien a corriger |
+| **Countries (/countries)** | 8/10 | Grille de drapeaux attractive, filtres presents, barre de recherche | Les cards pourraient avoir plus de contraste visuel |
+| **Pricing (/pricing)** | 7/10 | Plans bien presentes avec badges | Le plan gratuit devrait etre plus mis en avant pour rassurer les visiteurs |
+| **Profile Test (/profile-test)** | 8/10 | Wizard multi-etapes bien fait, progression visuelle | Bien realise |
+| **Dashboard (/dashboard)** | 6/10 | Structure presente avec cards | Affiche un etat vide sans contexte suffisant -- l'utilisateur ne comprend pas quoi faire ensuite |
+| **Exit Keys (/exit-keys)** | 8/10 | Interface wizard solide, etapes claires | Bon |
+| **Life Game (/life-game)** | 7/10 | Concept interessant, scenarios interactifs | Interface de demarrage peu engageante -- manque un visuel hero |
+| **Compare (/compare)** | 7/10 | Fonctionnalite utile, comparaison multi-pays | L'etat initial vide manque d'indication claire ("Selectionnez 2+ pays") |
+| **Errors & Illusions (/errors-illusions)** | 8/10 | Contenu pedagogique riche, cards bien illustrees | Bon |
+| **Pyramid Quiz (/pyramid-quiz)** | 8/10 | Quiz interactif engageant | Bon |
+| **Experts (/experts)** | 6/10 | Liste d'experts avec filtres | Etat vide sans donnees -- affiche une page quasi blanche sans appel a l'action |
+| **Fiscal Calculator (/fiscal-calculator)** | 8/10 | Interface claire avec champs de saisie | Bien fait |
+| **Community (/community)** | 6/10 | Structure presente | Contenu placeholder visible, manque d'activite reelle |
+| **Partners (/partners)** | 7/10 | Page bien structuree | Quelques sections placeholder |
+| **B2B (/b2b)** | 8/10 | Page professionnelle, bien designee | Bonne impression |
+| **Resources (/resources)** | 7/10 | Catalogue bien organise | Pourrait beneficier de plus de contenu |
+| **Disclaimer (/disclaimer)** | 7/10 | Contenu legal present et lisible | Design un peu austere |
 
 ---
 
-## 3. Parcours apres inscription : FONCTIONNE
-
-| Etape | Ce qui se passe | Verdict |
-|---|---|---|
-| Arrivee sur /quick-test | Page du test rapide affichee correctement | OK |
-| Selection du profil (Salarie/Entrepreneur...) | Les boutons fonctionnent, selection visible | OK |
-| Etape 2 -- Priorites | Selection multiple fonctionne (Securite, Qualite de vie...) | OK |
-| Etape 3 -- Budget | Slider et options de budget affiches | OK |
-| Navigation entre etapes | Boutons Suivant/Precedent fonctionnels | OK |
-
-**Verdict parcours : 9/10** -- Le quick-test fonctionne bien et guide l'utilisateur.
+## Moyenne globale : 7.4/10
 
 ---
 
-## 4. Erreurs techniques detectees (console)
+## Corrections proposees (par priorite)
 
-| Erreur | Gravite | Impact utilisateur |
-|---|---|---|
-| **send-email retourne 500** (domaine non verifie Resend) | MAJEUR | Pas d'email de bienvenue |
-| **analytics_events retourne 403** | Mineur | Invisible pour l'utilisateur, mais le tracking ne fonctionne pas |
-| Erreur CORS manifest.json (PWA) | Negligeable | Aucun impact visible |
+### 1. Dashboard -- Etat vide ameliore (6 -> 8)
+Le dashboard sans donnees est desorientant. Ajouter un message d'accueil contextuel avec des etapes suggerees :
+- "Bienvenue ! Voici vos prochaines etapes :"
+- Lien vers le Quick Test si non complete
+- Lien vers l'exploration des pays
+- Lien vers les Exit Keys
 
----
+### 2. Experts -- Etat vide engageant (6 -> 8)
+Quand il n'y a pas d'experts listes, afficher un message attractif au lieu d'une page vide :
+- "La marketplace d'experts arrive bientot"
+- Formulaire d'interet pour etre notifie
+- Ou afficher des profils de demonstration
 
-## 5. Verdict global
+### 3. Community -- Contenu placeholder visible (6 -> 8)
+Remplacer les placeholders par un message "Communaute en construction" avec :
+- Un compteur d'inscrits
+- Un appel a rejoindre la communaute
+- Un apercu de ce qui sera disponible
 
-| Critere | Note | Commentaire |
-|---|---|---|
-| La creation de compte fonctionne-t-elle ? | **OUI** | Le compte est cree, le profil aussi |
-| L'utilisateur est-il guide apres inscription ? | **OUI** | Redirection vers /quick-test |
-| L'utilisateur recoit-il un email ? | **NON** | Domaine Resend non verifie |
-| Le quick-test fonctionne-t-il ? | **OUI** | Parcours fluide en 3+ etapes |
-| Y a-t-il des erreurs bloquantes ? | **NON** | Les erreurs sont silencieuses |
+### 4. Auth -- Feedback post-inscription plus fort (7 -> 9)
+- Afficher une page intermediaire de confirmation au lieu d'un simple toast
+- Message "Votre compte a ete cree avec succes !" avec animation
+- Puis redirection automatique vers /quick-test apres 2 secondes
 
----
-
-## 6. Actions correctives
-
-### Action 1 (CRITIQUE) -- Verifier le domaine Resend
-Le domaine `pyramid-compass.com` doit etre verifie dans le tableau de bord Resend pour que les emails de bienvenue fonctionnent. C'est une action manuelle a faire sur https://resend.com/domains.
-
-### Action 2 (MOYENNE) -- Corriger l'erreur analytics 403
-La table `analytics_events` retourne une erreur 403 lors de l'insertion. Les politiques RLS de cette table doivent etre verifiees pour autoriser les insertions authentifiees.
-
-### Action 3 (MINEURE) -- Verifier la visibilite du toast de bienvenue
-Confirmer que le toast "Bienvenue ! Decouvrez votre profil d'expatrie" s'affiche bien apres l'inscription. Il est possible qu'il apparaisse et disparaisse trop vite pendant la redirection.
+### 5. Compare -- Etat initial guide (7 -> 8)
+- Ajouter un texte d'aide visible : "Selectionnez au moins 2 pays pour comparer"
+- Suggestions de comparaisons populaires (France vs Portugal, etc.)
 
 ---
 
-## Resume pour les beta testeurs
+## Details techniques
 
-**"La creation de compte ne fonctionne pas"** -- Ce retour est probablement lie a :
-1. **L'absence d'email de confirmation** (le domaine Resend n'est pas verifie) qui donne l'impression que rien ne s'est passe
-2. **Un toast de bienvenue possiblement trop discret** qui ne rassure pas assez l'utilisateur
+### Fichiers a modifier :
 
-Le processus technique fonctionne : les comptes sont crees, les profils aussi, et la redirection vers le quick-test est en place. Le probleme est un **probleme de perception**, pas un probleme technique bloquant.
+1. **Dashboard** : `src/pages/Dashboard.tsx` -- Ameliorer le composant d'etat vide avec des liens contextuels vers les prochaines etapes
+2. **Experts** : `src/pages/ExpertMarketplace.tsx` -- Ajouter un empty state attractif avec illustration
+3. **Community** : `src/pages/Community.tsx` -- Remplacer les placeholders par un etat "coming soon" professionnel
+4. **Auth** : `src/pages/Auth.tsx` -- Ajouter une page intermediaire de confirmation apres inscription
+5. **Compare** : `src/pages/CompareUnified.tsx` -- Ameliorer l'etat initial avec suggestions de comparaisons
 
