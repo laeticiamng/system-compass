@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
@@ -14,6 +14,7 @@ import { Compass, LogIn, UserPlus, Loader2, AlertCircle, Eye, EyeOff } from 'luc
 import { z } from 'zod';
 import { PasswordStrengthMeter } from '@/components/ui/password-strength-meter';
 import { PasswordResetDialog } from '@/components/auth/PasswordResetDialog';
+import { toast } from 'sonner';
 
 const emailSchema = z.string().email();
 // Sécurité renforcée : minimum 8 caractères, 1 majuscule, 1 minuscule, 1 chiffre
@@ -39,10 +40,17 @@ export default function Auth() {
   const [rememberMe, setRememberMe] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const [isAppleLoading, setIsAppleLoading] = useState(false);
+  const isNewSignupRef = useRef(false);
 
   useEffect(() => {
     if (user && !loading) {
-      navigate('/');
+      if (isNewSignupRef.current) {
+        isNewSignupRef.current = false;
+        toast.success('Bienvenue ! Découvrez votre profil d\'expatrié 🧭');
+        navigate('/quick-test');
+      } else {
+        navigate('/dashboard');
+      }
     }
   }, [user, loading, navigate]);
 
@@ -93,6 +101,7 @@ export default function Auth() {
             setError(error.message);
           }
         } else {
+          isNewSignupRef.current = true;
           trackAccountCreated();
         }
       }
@@ -209,6 +218,7 @@ export default function Auth() {
                   onChange={(e) => setDisplayName(e.target.value)}
                   placeholder={t('auth.displayNamePlaceholder')}
                   className="bg-background"
+                  autoComplete="name"
                 />
               </div>
             )}
@@ -222,6 +232,7 @@ export default function Auth() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="email@example.com"
                 className="bg-background"
+                autoComplete="email"
                 required
               />
             </div>
@@ -236,6 +247,7 @@ export default function Auth() {
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
                   className="bg-background pr-10"
+                  autoComplete={isLogin ? 'current-password' : 'new-password'}
                   required
                 />
                 <button
