@@ -10,8 +10,8 @@ import {
   Section,
   Text,
   Hr,
-} from 'https://esm.sh/@react-email/components@0.0.22'
-import * as React from 'https://esm.sh/react@18.3.1'
+} from 'npm:@react-email/components@0.0.22'
+import * as React from 'npm:react@18.3.1'
 
 interface ConfirmationEmailProps {
   supabase_url: string
@@ -19,21 +19,17 @@ interface ConfirmationEmailProps {
   redirect_to: string
   token_hash: string
   token: string
+  displayName?: string
 }
 
 export const ConfirmationEmail = ({
-  token,
-  supabase_url,
-  email_action_type,
-  redirect_to,
-  token_hash,
+  displayName,
 }: ConfirmationEmailProps) => (
   <Html>
     <Head />
-    <Preview>Bienvenue sur Pyramid Compass 🧭 - Confirmez votre inscription</Preview>
+    <Preview>Bienvenue sur Pyramid Compass 🧭 - Votre compte est prêt !</Preview>
     <Body style={main}>
       <Container style={container}>
-        {/* Logo */}
         <Section style={logoSection}>
           <Img
             src="https://abysiagseykztutnbjtu.supabase.co/storage/v1/object/public/email-assets/logo-192.png?v=1"
@@ -44,50 +40,41 @@ export const ConfirmationEmail = ({
           />
         </Section>
 
-        {/* Header */}
-        <Heading style={h1}>Bienvenue sur Pyramid Compass 🧭</Heading>
+        <Heading style={h1}>
+          {displayName ? `Bienvenue ${displayName} ! 🧭` : 'Bienvenue sur Pyramid Compass 🧭'}
+        </Heading>
         
         <Text style={text}>
-          Merci de rejoindre notre communauté d'expatriés stratégiques ! Vous êtes à un clic de découvrir votre destination idéale.
+          Votre compte a été créé avec succès ! Vous faites désormais partie de notre communauté d'expatriés stratégiques.
         </Text>
 
-        {/* Confirmation Button */}
         <Section style={buttonSection}>
           <Link
-            href={`${supabase_url}/auth/v1/verify?token=${token_hash}&type=${email_action_type}&redirect_to=${redirect_to}`}
+            href="https://world-alignment.lovable.app/quick-test"
             target="_blank"
             style={button}
           >
-            ✨ Confirmer mon inscription
+            🧪 Découvrir mon profil d'expatrié
           </Link>
         </Section>
 
-        <Text style={textMuted}>
-          Ou copiez ce code de confirmation : <code style={code}>{token}</code>
-        </Text>
-
         <Hr style={hr} />
 
-        {/* Features Section */}
         <Section style={featuresSection}>
           <Heading as="h2" style={h2}>🎁 Vos avantages gratuits</Heading>
           
           <Text style={featureItem}>
             🗺️ <strong>Catalogue Pays</strong> — Explorez 25+ destinations analysées en profondeur
           </Text>
-          
           <Text style={featureItem}>
             🧪 <strong>Quick Test</strong> — Découvrez votre profil d'expatrié en 2 minutes
           </Text>
-          
           <Text style={featureItem}>
             📊 <strong>Vue Pyramide</strong> — Comprenez les dynamiques cachées de chaque pays
           </Text>
-          
           <Text style={featureItem}>
             🔑 <strong>Stratégies</strong> — Débloquez vos stratégies de mobilité personnalisées
           </Text>
-          
           <Text style={featureItem}>
             🛠️ <strong>Outils</strong> — Calculateurs fiscaux, comparateurs, et plus encore
           </Text>
@@ -95,7 +82,6 @@ export const ConfirmationEmail = ({
 
         <Hr style={hr} />
 
-        {/* Footer */}
         <Text style={footer}>
           Si vous n'avez pas créé de compte sur Pyramid Compass, vous pouvez ignorer cet email.
         </Text>
@@ -117,7 +103,6 @@ export const ConfirmationEmail = ({
 
 export default ConfirmationEmail
 
-// Styles
 const main = {
   backgroundColor: '#1a1a2e',
   fontFamily:
@@ -165,14 +150,6 @@ const text = {
   textAlign: 'center' as const,
 }
 
-const textMuted = {
-  color: '#9ca3af',
-  fontSize: '14px',
-  lineHeight: '20px',
-  margin: '16px 0',
-  textAlign: 'center' as const,
-}
-
 const buttonSection = {
   textAlign: 'center' as const,
   margin: '32px 0',
@@ -187,14 +164,6 @@ const button = {
   fontWeight: 'bold',
   padding: '14px 28px',
   textDecoration: 'none',
-}
-
-const code = {
-  backgroundColor: '#2d2d44',
-  borderRadius: '4px',
-  color: '#fbbf24',
-  fontSize: '14px',
-  padding: '4px 8px',
 }
 
 const hr = {
