@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { supabase } from '@/integrations/supabase/client';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
@@ -103,6 +104,10 @@ export default function Auth() {
         } else {
           isNewSignupRef.current = true;
           trackAccountCreated();
+          // Send welcome email via Resend (fire-and-forget)
+          supabase.functions.invoke('send-email', {
+            body: { email, displayName, type: 'welcome' },
+          }).catch((err: Error) => console.warn('[send-email] Failed:', err));
         }
       }
     } catch (err) {
