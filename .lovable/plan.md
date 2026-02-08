@@ -1,116 +1,94 @@
 
 
-# Audit complet -- Creation de compte (Beta Testeurs)
+# Audit non-technique -- Creation de compte et utilisation de la plateforme
 
-## 1. Etat actuel de la base utilisateurs
+## Test effectue le 8 fevrier 2026
 
-| Email | Display Name | Cree le | Email confirme | Derniere connexion | Provider |
-|---|---|---|---|---|---|
-| m.laeticia@hotmail.fr | Laeti | 8 jan 2026 | Oui (auto) | 6 fev 2026 | email |
-| test-audit@example.com | Test Utilisateur | 6 fev 2026 | Oui (auto) | 6 fev 2026 | email |
-| audit-beta-test@example.com | Audit Beta | 8 fev 2026 (test live) | Oui (auto) | 8 fev 2026 | email |
-
-**Constat critique** : Seulement **1 vrai utilisateur** (Laeti) en 1 mois. Les 2 autres sont des comptes de test. L'adoption est quasi nulle.
-
-## 2. Test live de la creation de compte
-
-J'ai cree un compte en direct via le navigateur. Resultat :
-- Le formulaire fonctionne techniquement (nom, email, mot de passe)
-- Le password strength meter fonctionne
-- Le compte est cree dans la base de donnees
-- Le profil est bien cree dans la table `profiles`
-- L'utilisateur est **immediatement redirige** vers la page d'accueil
-- **Aucun message de succes** n'est affiche apres l'inscription
-
-## 3. Problemes identifies
-
-### P0 -- Bloquants potentiels
-
-| # | Probleme | Impact | Detail |
-|---|---|---|---|
-| 1 | **Pas de message de confirmation apres inscription** | L'utilisateur ne sait pas si son compte a ete cree | Apres `signUp()` reussi, le code fait seulement `trackAccountCreated()` puis le `useEffect` redirige silencieusement vers `/`. L'utilisateur arrive sur la homepage sans aucun feedback. |
-| 2 | **Auto-confirm active = pas d'email de bienvenue** | L'utilisateur s'inscrit mais ne recoit aucun email | Les emails sont auto-confirmes (`email_confirmed_at` = `created_at`). La fonction `send-email` n'a **aucun log** = elle n'est jamais appelee. Le webhook hook n'est probablement pas configure dans les settings d'authentification. |
-| 3 | **Secret `SEND_EMAIL_HOOK_SECRET` absent des secrets** | Le webhook d'email ne peut pas fonctionner | La fonction `send-email` attend ce secret mais il n'est pas configure dans les secrets du projet. |
-| 4 | **Aucun onboarding apres inscription** | Un nouvel utilisateur arrive sur la homepage sans savoir quoi faire | Pas de tutoriel, pas de redirection vers `/quick-test`, pas de welcome modal. |
-
-### P1 -- UX/Conversion
-
-| # | Probleme | Impact |
-|---|---|---|
-| 5 | **Redirection vers `/` au lieu de `/dashboard` ou `/quick-test`** | L'utilisateur inscrit atterrit sur la page marketing au lieu d'etre guide vers une action |
-| 6 | **Pas de toast de bienvenue** | Aucun retour visuel que l'inscription a reussi |
-| 7 | **`email_verified: false` dans identity_data** | Bien que `email_confirmed_at` soit set, le champ `email_verified` dans `identity_data` reste `false` -- incoherence potentielle |
-
-### P2 -- Accessibilite
-
-| # | Probleme | Impact |
-|---|---|---|
-| 8 | **Pas d'attribut `autocomplete` sur les inputs** | Warning console : les champs password n'ont pas `autocomplete="current-password"` ou `autocomplete="new-password"` |
-| 9 | **Erreur CORS manifest.json** | Erreur console non bloquante mais visible liee au PWA manifest |
-
-## 4. Analyse du flux d'inscription (code)
-
-```text
-Utilisateur clique "Inscription"
-       |
-       v
-[Validation Zod: email + password + displayName]
-       |
-       v
-[supabase.auth.signUp({ email, password, data: { display_name } })]
-       |
-       v
-[Auto-confirm ON => compte immediatement actif]
-       |
-       v
-[trackAccountCreated() -- analytics seulement]
-       |                                         
-       v                           MANQUANT:
-[useEffect detecte user => navigate('/')]  - Pas de toast succes
-       |                                  - Pas de redirection onboarding
-       v                                  - Pas d'email de bienvenue
-[Homepage marketing]                      - Pas de welcome modal
-```
-
-## 5. Plan de corrections
-
-### Correction 1 : Ajouter un toast de bienvenue + rediriger vers le quick-test
-
-**Fichier** : `src/pages/Auth.tsx`
-
-Apres le `signUp` reussi (ligne 96), ajouter un toast de succes. Modifier le `useEffect` de redirection pour envoyer les **nouveaux** utilisateurs vers `/quick-test` au lieu de `/`.
-
-Logique :
-- Ajouter un state `isNewSignup` 
-- Apres `signUp` reussi sans erreur, set `isNewSignup = true`
-- Dans le `useEffect`, si `isNewSignup`, rediriger vers `/quick-test` avec un toast "Bienvenue ! Decouvrez votre profil d'expatrie."
-- Sinon (login), rediriger vers `/dashboard`
-
-### Correction 2 : Ajouter les attributs `autocomplete` aux inputs
-
-**Fichier** : `src/pages/Auth.tsx`
-
-- Input email : `autoComplete="email"`
-- Input password (login) : `autoComplete="current-password"`
-- Input password (signup) : `autoComplete="new-password"`
-- Input displayName : `autoComplete="name"`
-
-### Correction 3 : Rediriger les logins vers `/dashboard` au lieu de `/`
-
-**Fichier** : `src/pages/Auth.tsx`
-
-Modifier le `useEffect` : `navigate('/dashboard')` au lieu de `navigate('/')` pour que les utilisateurs connectes aillent directement vers leur tableau de bord.
-
-### Correction 4 : Ajouter un message d'erreur plus clair pour les erreurs reseau
-
-**Fichier** : `src/pages/Auth.tsx`
-
-Le `catch` generique (ligne 100) affiche `auth.errors.generic` -- verifier que cette cle de traduction existe et est claire.
+J'ai cree un vrai compte en direct et teste le parcours utilisateur de bout en bout.
 
 ---
 
-## Hors perimetre (necessite action manuelle)
+## 1. Creation de compte : FONCTIONNE
 
-- **Configurer le webhook `send-email`** : Le secret `SEND_EMAIL_HOOK_SECRET` doit etre ajoute et le hook configure dans les parametres d'authentification du backend. Cela sera signale apres implementation.
-- **Desactiver l'auto-confirm si les emails de bienvenue doivent fonctionner** : A discuter selon la strategie souhaitee (auto-confirm = pas de friction, mais pas d'email).
+| Etape | Resultat | Verdict |
+|---|---|---|
+| Affichage formulaire d'inscription | Champs nom, email, mot de passe visibles | OK |
+| Indicateur de force du mot de passe | Affiche "Fort" avec un mot de passe complexe | OK |
+| Soumission du formulaire | Compte cree en base de donnees instantanement | OK |
+| Email confirme automatiquement | Oui (auto-confirm actif) | OK |
+| Toast de bienvenue | **NON VISIBLE** -- le toast devrait s'afficher mais il n'a pas ete observe clairement | A VERIFIER |
+| Redirection apres inscription | Redirige vers `/quick-test` | OK |
+
+**Verdict creation de compte : 8/10** -- Le processus technique fonctionne, la redirection vers `/quick-test` est en place.
+
+---
+
+## 2. Email de bienvenue : NE FONCTIONNE PAS
+
+| Element | Statut | Detail |
+|---|---|---|
+| Fonction send-email appelee | OUI | La fonction est bien invoquee apres inscription |
+| Email envoye | **NON** | Erreur 500 : "The pyramid-compass.com domain is not verified" |
+| Impact utilisateur | L'utilisateur ne recoit aucun email | Pas bloquant pour l'usage, mais mauvaise impression |
+
+**Action requise** : Verifier le domaine `pyramid-compass.com` dans le tableau de bord Resend (https://resend.com/domains). Sans cela, aucun email ne sera envoye.
+
+---
+
+## 3. Parcours apres inscription : FONCTIONNE
+
+| Etape | Ce qui se passe | Verdict |
+|---|---|---|
+| Arrivee sur /quick-test | Page du test rapide affichee correctement | OK |
+| Selection du profil (Salarie/Entrepreneur...) | Les boutons fonctionnent, selection visible | OK |
+| Etape 2 -- Priorites | Selection multiple fonctionne (Securite, Qualite de vie...) | OK |
+| Etape 3 -- Budget | Slider et options de budget affiches | OK |
+| Navigation entre etapes | Boutons Suivant/Precedent fonctionnels | OK |
+
+**Verdict parcours : 9/10** -- Le quick-test fonctionne bien et guide l'utilisateur.
+
+---
+
+## 4. Erreurs techniques detectees (console)
+
+| Erreur | Gravite | Impact utilisateur |
+|---|---|---|
+| **send-email retourne 500** (domaine non verifie Resend) | MAJEUR | Pas d'email de bienvenue |
+| **analytics_events retourne 403** | Mineur | Invisible pour l'utilisateur, mais le tracking ne fonctionne pas |
+| Erreur CORS manifest.json (PWA) | Negligeable | Aucun impact visible |
+
+---
+
+## 5. Verdict global
+
+| Critere | Note | Commentaire |
+|---|---|---|
+| La creation de compte fonctionne-t-elle ? | **OUI** | Le compte est cree, le profil aussi |
+| L'utilisateur est-il guide apres inscription ? | **OUI** | Redirection vers /quick-test |
+| L'utilisateur recoit-il un email ? | **NON** | Domaine Resend non verifie |
+| Le quick-test fonctionne-t-il ? | **OUI** | Parcours fluide en 3+ etapes |
+| Y a-t-il des erreurs bloquantes ? | **NON** | Les erreurs sont silencieuses |
+
+---
+
+## 6. Actions correctives
+
+### Action 1 (CRITIQUE) -- Verifier le domaine Resend
+Le domaine `pyramid-compass.com` doit etre verifie dans le tableau de bord Resend pour que les emails de bienvenue fonctionnent. C'est une action manuelle a faire sur https://resend.com/domains.
+
+### Action 2 (MOYENNE) -- Corriger l'erreur analytics 403
+La table `analytics_events` retourne une erreur 403 lors de l'insertion. Les politiques RLS de cette table doivent etre verifiees pour autoriser les insertions authentifiees.
+
+### Action 3 (MINEURE) -- Verifier la visibilite du toast de bienvenue
+Confirmer que le toast "Bienvenue ! Decouvrez votre profil d'expatrie" s'affiche bien apres l'inscription. Il est possible qu'il apparaisse et disparaisse trop vite pendant la redirection.
+
+---
+
+## Resume pour les beta testeurs
+
+**"La creation de compte ne fonctionne pas"** -- Ce retour est probablement lie a :
+1. **L'absence d'email de confirmation** (le domaine Resend n'est pas verifie) qui donne l'impression que rien ne s'est passe
+2. **Un toast de bienvenue possiblement trop discret** qui ne rassure pas assez l'utilisateur
+
+Le processus technique fonctionne : les comptes sont crees, les profils aussi, et la redirection vers le quick-test est en place. Le probleme est un **probleme de perception**, pas un probleme technique bloquant.
 
