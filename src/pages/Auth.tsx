@@ -47,8 +47,13 @@ export default function Auth() {
     if (user && !loading) {
       if (isNewSignupRef.current) {
         isNewSignupRef.current = false;
-        toast.success('Bienvenue ! Découvrez votre profil d\'expatrié 🧭');
         navigate('/quick-test');
+        // Toast after navigation so it persists on the new page
+        setTimeout(() => {
+          toast.success('Bienvenue ! Découvrez votre profil d\'expatrié 🧭', {
+            duration: 6000,
+          });
+        }, 500);
       } else {
         navigate('/dashboard');
       }
