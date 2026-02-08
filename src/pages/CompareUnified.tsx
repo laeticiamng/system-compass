@@ -613,12 +613,36 @@ export default function CompareUnified() {
           </div>
         ) : (
           <div className="text-center py-16 glass-card rounded-xl">
-            <Scale className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
-            <p className="text-muted-foreground">
+            <Scale className="w-16 h-16 text-muted-foreground/50 mx-auto mb-4" />
+            <h3 className="text-lg font-semibold mb-2">
               {compareMode === 'duo' 
                 ? t('compare.selectBoth', 'Sélectionne 2 pays à comparer')
                 : t('multiCompare.selectAtLeast', 'Sélectionne au moins 2 pays')}
+            </h3>
+            <p className="text-sm text-muted-foreground mb-6 max-w-md mx-auto">
+              {t('compare.helpText', 'Utilisez le menu ci-dessus pour ajouter des pays et comparer leur fiscalité, qualité de vie, risques et opportunités.')}
             </p>
+            <div className="flex flex-wrap justify-center gap-2">
+              <p className="text-xs text-muted-foreground w-full mb-2">{t('compare.popularComparisons', 'Comparaisons populaires :')}</p>
+              {[
+                { label: '🇫🇷 France vs 🇵🇹 Portugal', ids: ['portugal', 'france'] },
+                { label: '🇫🇷 France vs 🇦🇪 Émirats', ids: ['uae', 'france'] },
+                { label: '🇨🇭 Suisse vs 🇸🇬 Singapour', ids: ['singapore', 'switzerland'] },
+              ].map((suggestion) => (
+                <Button
+                  key={suggestion.label}
+                  variant="outline"
+                  size="sm"
+                  className="text-xs"
+                  onClick={() => {
+                    const validIds = suggestion.ids.filter(id => countries.some(c => c.id === id));
+                    if (validIds.length >= 2) setSelectedIds(validIds);
+                  }}
+                >
+                  {suggestion.label}
+                </Button>
+              ))}
+            </div>
           </div>
         )}
       </div>

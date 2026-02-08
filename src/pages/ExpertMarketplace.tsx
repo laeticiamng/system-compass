@@ -400,11 +400,31 @@ export default function ExpertMarketplace() {
 
       {filteredExperts.length === 0 && (
         <Card className="glass-card p-12 text-center">
-          <Search className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-          <h3 className="text-lg font-medium mb-2">{t('marketplace.noResults', 'Aucun expert trouvé')}</h3>
-          <p className="text-muted-foreground">
-            {t('marketplace.tryDifferent', 'Essayez de modifier vos critères de recherche')}
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4 mx-auto">
+            <Search className="h-8 w-8 text-primary" />
+          </div>
+          <h3 className="text-xl font-semibold mb-2">
+            {experts.length === 0 
+              ? t('marketplace.comingSoon', 'La marketplace d\'experts arrive bientôt 🚀')
+              : t('marketplace.noResults', 'Aucun expert trouvé')
+            }
+          </h3>
+          <p className="text-muted-foreground max-w-md mx-auto mb-6">
+            {experts.length === 0 
+              ? t('marketplace.comingSoonDesc', 'Nous sélectionnons les meilleurs avocats, fiscalistes et conseillers en expatriation. Soyez parmi les premiers à en bénéficier.')
+              : t('marketplace.tryDifferent', 'Essayez de modifier vos critères de recherche')
+            }
           </p>
+          {experts.length === 0 && (
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Button onClick={() => toast.success(t('marketplace.notified', 'Vous serez notifié dès l\'ouverture !'))}>
+                {t('marketplace.notifyMe', 'Me prévenir à l\'ouverture')}
+              </Button>
+              <Button variant="outline" asChild>
+                <a href="/countries">{t('marketplace.exploreCountries', 'Explorer les pays')}</a>
+              </Button>
+            </div>
+          )}
         </Card>
       )}
 

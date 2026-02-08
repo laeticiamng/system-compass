@@ -306,9 +306,15 @@ export default function Community() {
           {CONTENT_RESOURCES.map((resource) => (
             <Card 
               key={resource.id} 
-              className="glass-card hover:shadow-md transition-all duration-300 cursor-pointer"
+              className="glass-card hover:shadow-md transition-all duration-300 cursor-pointer relative overflow-hidden"
               onClick={() => toast.info(t('toast.community.comingSoon', 'Contenu bientôt disponible'))}
             >
+              <div className="absolute top-2 right-2">
+                <Badge variant="secondary" className="text-[10px]">
+                  <Sparkles className="h-3 w-3 mr-1" />
+                  Bientôt
+                </Badge>
+              </div>
               <CardContent className="p-5">
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
