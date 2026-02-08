@@ -1,67 +1,64 @@
 
 
-# Audit UX Non-Technique -- Notes par page et corrections
+# Audit UX Non-Technique -- Mise a jour post-corrections
 
-## Notes par page (sur 10)
+## Notes actualisees par page (sur 10)
 
-| Page | Note | Points forts | Points faibles |
+| Page | Ancienne note | Nouvelle note | Statut |
 |---|---|---|---|
-| **Accueil (/)** | 8/10 | Hero impactant, design Apple-like, CTA clair "Commencer gratuitement" | Beaucoup de sections, peut sembler long en scroll |
-| **Auth (/auth)** | 7/10 | Formulaire clair, indicateur de force du mot de passe | Manque un feedback visuel fort apres inscription (toast trop discret) |
-| **About (/about)** | 8/10 | Contenu riche, bien structure, visuels soignes | Un peu dense en texte |
-| **Quick Test (/quick-test)** | 9/10 | Parcours guide etape par etape, selection claire, progression visible | Excellent, quasi rien a corriger |
-| **Countries (/countries)** | 8/10 | Grille de drapeaux attractive, filtres presents, barre de recherche | Les cards pourraient avoir plus de contraste visuel |
-| **Pricing (/pricing)** | 7/10 | Plans bien presentes avec badges | Le plan gratuit devrait etre plus mis en avant pour rassurer les visiteurs |
-| **Profile Test (/profile-test)** | 8/10 | Wizard multi-etapes bien fait, progression visuelle | Bien realise |
-| **Dashboard (/dashboard)** | 6/10 | Structure presente avec cards | Affiche un etat vide sans contexte suffisant -- l'utilisateur ne comprend pas quoi faire ensuite |
-| **Exit Keys (/exit-keys)** | 8/10 | Interface wizard solide, etapes claires | Bon |
-| **Life Game (/life-game)** | 7/10 | Concept interessant, scenarios interactifs | Interface de demarrage peu engageante -- manque un visuel hero |
-| **Compare (/compare)** | 7/10 | Fonctionnalite utile, comparaison multi-pays | L'etat initial vide manque d'indication claire ("Selectionnez 2+ pays") |
-| **Errors & Illusions (/errors-illusions)** | 8/10 | Contenu pedagogique riche, cards bien illustrees | Bon |
-| **Pyramid Quiz (/pyramid-quiz)** | 8/10 | Quiz interactif engageant | Bon |
-| **Experts (/experts)** | 6/10 | Liste d'experts avec filtres | Etat vide sans donnees -- affiche une page quasi blanche sans appel a l'action |
-| **Fiscal Calculator (/fiscal-calculator)** | 8/10 | Interface claire avec champs de saisie | Bien fait |
-| **Community (/community)** | 6/10 | Structure presente | Contenu placeholder visible, manque d'activite reelle |
-| **Partners (/partners)** | 7/10 | Page bien structuree | Quelques sections placeholder |
-| **B2B (/b2b)** | 8/10 | Page professionnelle, bien designee | Bonne impression |
-| **Resources (/resources)** | 7/10 | Catalogue bien organise | Pourrait beneficier de plus de contenu |
-| **Disclaimer (/disclaimer)** | 7/10 | Contenu legal present et lisible | Design un peu austere |
+| **Accueil (/)** | 8/10 | 8/10 | Stable -- bon |
+| **Auth (/auth)** | 7/10 | 8/10 | Ameliore (ecran de confirmation post-inscription) |
+| **About (/about)** | 8/10 | 8/10 | Stable |
+| **Quick Test (/quick-test)** | 9/10 | 9/10 | Excellent |
+| **Countries (/countries)** | 8/10 | 8/10 | Stable |
+| **Pricing (/pricing)** | 7/10 | 7/10 | A ameliorer |
+| **Profile Test (/profile-test)** | 8/10 | 8/10 | Stable |
+| **Dashboard (/dashboard)** | 6/10 | 8/10 | Ameliore (EmptyDashboardState avec etapes guidees) |
+| **Exit Keys (/exit-keys)** | 8/10 | 8/10 | Stable |
+| **Life Game (/life-game)** | 7/10 | 7/10 | A ameliorer |
+| **Compare (/compare)** | 7/10 | 8/10 | Ameliore (suggestions de comparaisons populaires) |
+| **Errors & Illusions** | 8/10 | 8/10 | Stable |
+| **Pyramid Quiz** | 8/10 | 8/10 | Stable |
+| **Experts (/experts)** | 6/10 | 8/10 | Ameliore (empty state "Coming soon") |
+| **Fiscal Calculator** | 8/10 | 8/10 | Stable |
+| **Community (/community)** | 6/10 | 7/10 | Ameliore (badges "Bientot") mais encore ameliorable |
+| **Partners (/partners)** | 7/10 | 7/10 | A ameliorer |
+| **B2B (/b2b)** | 8/10 | 8/10 | Stable |
+| **Resources (/resources)** | 7/10 | 7/10 | Stable |
+| **Disclaimer (/disclaimer)** | 7/10 | 7/10 | A ameliorer |
+
+**Nouvelle moyenne : 7.8/10** (vs 7.4 precedemment)
 
 ---
 
-## Moyenne globale : 7.4/10
+## Corrections restantes (par priorite)
 
----
+### 1. Pricing -- Plan gratuit plus rassurant (7 -> 8.5)
+Le plan gratuit est presente au meme niveau que les plans payants. Les visiteurs hesitent car ils ne voient pas clairement qu'ils peuvent commencer sans payer.
+- Ajouter un badge "Recommande pour commencer" sur le plan gratuit
+- Ajouter un texte rassurant sous le titre : "Pas de carte bancaire requise"
+- Mettre le bouton du plan gratuit en style primary au lieu de outline
 
-## Corrections proposees (par priorite)
+### 2. Community -- Section ressources trop "placeholder" (7 -> 8.5)
+Les badges "Bientot" sont un progres mais les donnees fictives (45 episodes, 12000 abonnes, 120 articles) manquent de credibilite.
+- Remplacer les chiffres fictifs par un texte generique ("En preparation")
+- Rendre les stats du bas ("5,247 Membres Discord") plus honnetes ou les retirer
+- Ajouter un CTA "Etre informe du lancement" a la place des stats
 
-### 1. Dashboard -- Etat vide ameliore (6 -> 8)
-Le dashboard sans donnees est desorientant. Ajouter un message d'accueil contextuel avec des etapes suggerees :
-- "Bienvenue ! Voici vos prochaines etapes :"
-- Lien vers le Quick Test si non complete
-- Lien vers l'exploration des pays
-- Lien vers les Exit Keys
+### 3. Disclaimer -- Design plus engageant (7 -> 8)
+La page est fonctionnelle mais austere. Pour un contenu legal que les utilisateurs doivent lire, il manque un peu de chaleur.
+- Ajouter une section "En resume" en haut avec 3 points cles visuels
+- Utiliser des icones colorees pour chaque section au lieu d'un style uniforme
 
-### 2. Experts -- Etat vide engageant (6 -> 8)
-Quand il n'y a pas d'experts listes, afficher un message attractif au lieu d'une page vide :
-- "La marketplace d'experts arrive bientot"
-- Formulaire d'interet pour etre notifie
-- Ou afficher des profils de demonstration
+### 4. Life Game -- Hero trop long avant le CTA (7 -> 8)
+Le hero prend presque tout l'ecran avec beaucoup d'informations avant d'arriver aux boutons d'action.
+- Remonter les boutons CTA plus pres du titre
+- Deplacer la "Clarification Box" (le cadre ambre) apres les CTA plutot qu'avant
 
-### 3. Community -- Contenu placeholder visible (6 -> 8)
-Remplacer les placeholders par un message "Communaute en construction" avec :
-- Un compteur d'inscrits
-- Un appel a rejoindre la communaute
-- Un apercu de ce qui sera disponible
-
-### 4. Auth -- Feedback post-inscription plus fort (7 -> 9)
-- Afficher une page intermediaire de confirmation au lieu d'un simple toast
-- Message "Votre compte a ete cree avec succes !" avec animation
-- Puis redirection automatique vers /quick-test apres 2 secondes
-
-### 5. Compare -- Etat initial guide (7 -> 8)
-- Ajouter un texte d'aide visible : "Selectionnez au moins 2 pays pour comparer"
-- Suggestions de comparaisons populaires (France vs Portugal, etc.)
+### 5. Dashboard -- Double message pour profil manquant (8 -> 9)
+Quand l'utilisateur n'a pas de profil, il voit a la fois le `EmptyDashboardState` ET la card "Profil non configure" avec icone AlertTriangle. C'est redondant.
+- Supprimer la card "Profil non configure" quand l'EmptyDashboardState est deja affiche
+- Garder la card "Profil non configure" uniquement si l'utilisateur a deja commence un exit key mais pas de profil
 
 ---
 
@@ -69,9 +66,9 @@ Remplacer les placeholders par un message "Communaute en construction" avec :
 
 ### Fichiers a modifier :
 
-1. **Dashboard** : `src/pages/Dashboard.tsx` -- Ameliorer le composant d'etat vide avec des liens contextuels vers les prochaines etapes
-2. **Experts** : `src/pages/ExpertMarketplace.tsx` -- Ajouter un empty state attractif avec illustration
-3. **Community** : `src/pages/Community.tsx` -- Remplacer les placeholders par un etat "coming soon" professionnel
-4. **Auth** : `src/pages/Auth.tsx` -- Ajouter une page intermediaire de confirmation apres inscription
-5. **Compare** : `src/pages/CompareUnified.tsx` -- Ameliorer l'etat initial avec suggestions de comparaisons
+1. **Pricing** : `src/pages/Pricing.tsx` -- Ajouter badge "Recommande" et texte rassurant au plan gratuit, changer le style du bouton
+2. **Community** : `src/pages/Community.tsx` -- Remplacer les chiffres fictifs des ressources par "En preparation", retirer ou ajuster les stats globales
+3. **Disclaimer** : `src/pages/Disclaimer.tsx` -- Ajouter section resume visuel en haut de page
+4. **Life Game** : `src/pages/LifeGame.tsx` -- Intervertir la position des CTA et de la Clarification Box
+5. **Dashboard** : `src/pages/Dashboard.tsx` -- Conditionner l'affichage de la card "Profil non configure" pour eviter la redondance avec EmptyDashboardState
 
