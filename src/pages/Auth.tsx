@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import { supabase } from '@/integrations/supabase/client';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -11,7 +12,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { cn } from '@/lib/utils';
-import { Compass, LogIn, UserPlus, Loader2, AlertCircle, Eye, EyeOff } from 'lucide-react';
+import { Compass, LogIn, UserPlus, Loader2, AlertCircle, Eye, EyeOff, CheckCircle2 } from 'lucide-react';
 import { z } from 'zod';
 import { PasswordStrengthMeter } from '@/components/ui/password-strength-meter';
 import { PasswordResetDialog } from '@/components/auth/PasswordResetDialog';
@@ -43,17 +44,22 @@ export default function Auth() {
   const [isAppleLoading, setIsAppleLoading] = useState(false);
   const isNewSignupRef = useRef(false);
 
+  const [showSignupSuccess, setShowSignupSuccess] = useState(false);
+
   useEffect(() => {
     if (user && !loading) {
       if (isNewSignupRef.current) {
         isNewSignupRef.current = false;
-        navigate('/quick-test');
-        // Toast after navigation so it persists on the new page
+        setShowSignupSuccess(true);
+        // Redirect after showing confirmation
         setTimeout(() => {
-          toast.success('Bienvenue ! Découvrez votre profil d\'expatrié 🧭', {
-            duration: 6000,
-          });
-        }, 500);
+          navigate('/quick-test');
+          setTimeout(() => {
+            toast.success('Bienvenue ! Découvrez votre profil d\'expatrié 🧭', {
+              duration: 6000,
+            });
+          }, 500);
+        }, 2500);
       } else {
         navigate('/dashboard');
       }
@@ -160,6 +166,51 @@ export default function Auth() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  if (showSignupSuccess) {
+    return (
+      <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+          className="text-center px-4"
+        >
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.2, type: 'spring', stiffness: 300 }}
+            className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-emerald-500/20 mb-6"
+          >
+            <CheckCircle2 className="w-10 h-10 text-emerald-500" />
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="text-2xl font-bold mb-2"
+          >
+            {t('auth.signupSuccess', 'Compte créé avec succès ! 🎉')}
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="text-muted-foreground"
+          >
+            {t('auth.redirecting', 'Redirection vers le test rapide...')}
+          </motion.p>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ delay: 0.6, duration: 1.8, ease: 'linear' }}
+            className="mt-6 h-1 bg-primary rounded-full origin-left max-w-xs mx-auto"
+          />
+        </motion.div>
       </div>
     );
   }
