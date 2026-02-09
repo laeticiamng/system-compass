@@ -24,7 +24,7 @@ interface ShortcutDef {
 const CONTEXTUAL_SHORTCUTS: Record<string, ShortcutDef[]> = {
   '/': [
     { href: '/quick-test', icon: Zap, labelKey: 'shortcuts.quickTest', labelFallback: 'Test Rapide', descKey: 'shortcuts.quickTestDesc', descFallback: 'Démarrer en 2 min' },
-    { href: '/countries', icon: Map, labelKey: 'shortcuts.explore', labelFallback: 'Explorer', descKey: 'shortcuts.exploreDesc', descFallback: '195+ pays' },
+    { href: '/countries', icon: Map, labelKey: 'shortcuts.explore', labelFallback: 'Explorer', descKey: 'shortcuts.exploreDesc', descFallback: '44 pays analysés' },
     { href: '/tools', icon: Target, labelKey: 'shortcuts.allTools', labelFallback: 'Tous les outils', descKey: 'shortcuts.allToolsDesc', descFallback: 'Hub central' },
   ],
   '/countries': [
