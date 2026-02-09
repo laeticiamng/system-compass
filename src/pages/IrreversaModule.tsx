@@ -6,6 +6,7 @@ import { Irreversa } from '@/components/irreversa/Irreversa';
 import { useAuth } from '@/hooks/useAuth';
 import { ModuleOnboarding } from '@/components/common/ModuleOnboarding';
 import { NextStepSuggestion } from '@/components/common/NextStepSuggestion';
+import { ExpatTimeline } from '@/components/irreversa/ExpatTimeline';
 
 export default function IrreversaModule() {
   const { t } = useTranslation();
@@ -112,6 +113,17 @@ export default function IrreversaModule() {
         {/* Mobile next steps */}
         <div className="lg:hidden mt-8">
           <NextStepSuggestion steps={nextSteps} />
+        </div>
+
+        {/* Expatriation Timeline Section */}
+        <div className="mt-12">
+          <h2 className="font-display text-2xl font-bold mb-6">
+            {t('irreversa.timeline.title', 'Timeline d\'expatriation')}
+          </h2>
+          <p className="text-muted-foreground mb-8">
+            {t('irreversa.timeline.subtitle', 'Suivez les étapes critiques de votre projet d\'expatriation et identifiez les points de non-retour.')}
+          </p>
+          <ExpatTimeline />
         </div>
       </div>
     </div>

@@ -21,3 +21,4 @@ export { ThresholdStats } from './ThresholdStats';
 export { TraceOSLink } from './TraceOSLink';
 export { WitnessList } from './WitnessList';
 export { useIrreversaKeyboardShortcuts } from './useIrreversaKeyboardShortcuts';
+export { ExpatTimeline } from './ExpatTimeline';

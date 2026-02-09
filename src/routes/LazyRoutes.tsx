@@ -113,3 +113,10 @@ export const LazySeedTranslations = withSuspense(lazy(() => import('@/pages/Seed
 export const LazyAdminGenerateTranslations = withSuspense(lazy(() => import('@/pages/AdminGenerateTranslations')));
 export const LazyAdminDatabaseTranslations = withSuspense(lazy(() => import('@/pages/AdminDatabaseTranslations')));
 export const LazyAdminTranslationsSync = withSuspense(lazy(() => import('@/pages/AdminTranslationsSync')));
+
+// Blog pages
+export const LazyBlog = withSuspense(lazy(() => import('@/pages/Blog')));
+export const LazyBlogArticle = withSuspense(lazy(() => import('@/pages/BlogArticle')));
+
+// Thematic paths
+export const LazyThematicPaths = withSuspense(lazy(() => import('@/pages/ThematicPaths')));

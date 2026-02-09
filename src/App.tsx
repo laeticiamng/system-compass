@@ -19,6 +19,8 @@ import { CookieConsent } from "@/components/ui/cookie-consent";
 import { ContextualShortcuts, AppSidebar, Breadcrumbs } from "@/components/navigation";
 import { GlobalErrorBoundary, DevDiagnosticsPanel } from "@/components/diagnostics";
 import { allRoutes } from "@/routes";
+import { OrganizationJsonLd, SoftwareApplicationJsonLd } from "@/components/seo/JsonLd";
+import { HreflangTags } from "@/components/seo/HreflangTags";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -42,6 +44,9 @@ const App = () => (
                 <Toaster />
                 <Sonner />
                 <BrowserRouter>
+                  <OrganizationJsonLd />
+                  <SoftwareApplicationJsonLd />
+                  <HreflangTags />
                   <SidebarProvider defaultOpen={false}>
                     <DialogCoordinatorProvider>
                       <DisclaimerConsentDialog />

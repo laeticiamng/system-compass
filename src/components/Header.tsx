@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { Compass, Map, FileText, Scale, Gamepad2, LogIn, LogOut, User, Key, LayoutDashboard, Menu, Play, Info, AlertCircle, X, Shield, BookOpen, CreditCard, Globe, Settings, Building2, Users, ChevronDown, Wrench, Bell, BarChart3 } from 'lucide-react';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { GlobalSearch } from './GlobalSearch';
+import { ThemeToggle } from './ThemeToggle';
 import { useAuth } from '@/hooks/useAuth';
 import { useUserRoles } from '@/hooks/useUserRoles';
 import { Button } from './ui/button';
@@ -304,6 +305,7 @@ export function Header() {
           </div>
           {user && <NotificationBell />}
           {user && <span className="hidden sm:inline"><UserHistoryPanel /></span>}
+          <ThemeToggle />
           <div className="hidden xl:block">
             <LanguageSwitcher />
           </div>

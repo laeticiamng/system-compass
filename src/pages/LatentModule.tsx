@@ -9,6 +9,7 @@ import { useLatentZones } from '@/hooks/useLatentZones';
 import { ModuleOnboarding } from '@/components/common/ModuleOnboarding';
 import { NextStepSuggestion } from '@/components/common/NextStepSuggestion';
 import { GranularErrorBoundary } from '@/components/common/GranularErrorBoundary';
+import { CountryRiskAnalysis } from '@/components/latent/CountryRiskAnalysis';
 
 export default function LatentModule() {
   const { t } = useTranslation();
@@ -130,6 +131,13 @@ export default function LatentModule() {
         {/* Mobile next steps */}
         <div className="lg:hidden mt-8">
           <NextStepSuggestion steps={nextSteps} />
+        </div>
+
+        {/* Country Risk Analysis Section */}
+        <div className="mt-12">
+          <GranularErrorBoundary componentName="Country Risk Analysis">
+            <CountryRiskAnalysis />
+          </GranularErrorBoundary>
         </div>
       </div>
     </div>
