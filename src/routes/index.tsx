@@ -78,6 +78,9 @@ import {
   LazyAcademicHub,
   LazyPartnerIntegrations,
   LazyCommunity,
+  LazyBlog,
+  LazyBlogArticle,
+  LazyThematicPaths,
 } from "@/routes/LazyRoutes";
 
 // ============================================================
@@ -178,6 +181,9 @@ export const contentRoutes = [
   { path: "/become-expert", element: <LazyBecomeExpert /> },
   { path: "/consultation/:id/success", element: <LazyConsultationSuccess /> },
   { path: "/academic", element: <LazyAcademicHub /> },
+  { path: "/blog", element: <LazyBlog /> },
+  { path: "/blog/:slug", element: <LazyBlogArticle /> },
+  { path: "/thematic-paths", element: <LazyThematicPaths /> },
 ];
 
 /** Admin routes - protected */

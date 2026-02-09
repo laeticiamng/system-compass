@@ -1,5 +1,6 @@
 import { Country } from './types';
 import { additionalCountries } from './additional-countries';
+import { expansionCountries } from './expansion-countries';
 
 const baseCountries: Country[] = [
   {
@@ -3247,5 +3248,5 @@ const baseCountries: Country[] = [
   },
 ];
 
-// Merge base countries with additional countries (total: 50 countries)
-export const countriesSeed: Country[] = [...baseCountries, ...additionalCountries];
+// Merge base countries with additional countries and expansion (total: 60+ countries)
+export const countriesSeed: Country[] = [...baseCountries, ...additionalCountries, ...expansionCountries];

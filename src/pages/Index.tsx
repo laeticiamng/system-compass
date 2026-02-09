@@ -27,6 +27,7 @@ import {
 } from 'lucide-react';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 import { TestimonialsSection } from '@/components/landing/TestimonialsSection';
+import { FAQPageJsonLd } from '@/components/seo/JsonLd';
 
 export default function Index() {
   const navigate = useNavigate();
@@ -50,6 +51,13 @@ export default function Index() {
         <meta property="og:title" content={t('landing.meta.ogTitle', 'Pyramid Compass - Compare les pays pour ton expatriation')} />
         <meta property="og:description" content={t('landing.meta.ogDescription', 'Fiscalité, visas, coût de la vie : compare 38+ pays et trouve celui qui te correspond. Test gratuit en 2 minutes.')} />
       </Helmet>
+      <FAQPageJsonLd faqs={[
+        { question: "Qu'est-ce que Pyramid Compass ?", answer: "Pyramid Compass est une plateforme d'intelligence décisionnelle pour la relocalisation internationale. Elle analyse les systèmes de plus de 60 pays pour vous aider à planifier votre expatriation." },
+        { question: "Comment fonctionne le test de profil ?", answer: "Le test rapide évalue vos priorités (fiscalité, qualité de vie, sécurité, opportunités) en 2 minutes pour vous suggérer les pays les plus compatibles avec votre profil." },
+        { question: "Le service est-il gratuit ?", answer: "L'accès de base est gratuit avec le test rapide et l'exploration des pays. Le plan Premium à 9,90€/mois donne accès à tous les outils avancés." },
+        { question: "Les données sont-elles fiables ?", answer: "Les données proviennent de sources publiques (Banque Mondiale, OCDE, Transparency International) et sont mises à jour régulièrement. Elles sont fournies à titre informatif uniquement." },
+        { question: "Puis-je comparer plusieurs pays ?", answer: "Oui, l'outil de comparaison permet de comparer jusqu'à 4 pays simultanément sur tous les critères : fiscalité, coût de la vie, qualité de vie, visas, et plus." },
+      ]} />
       <div className="min-h-screen bg-background overflow-x-hidden">
         {/* ========== HERO SECTION ========== */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
