@@ -123,7 +123,7 @@ export function Footer() {
                 {t('footer.legalNotice', 'Mentions légales')}
               </Link>
               <span className="text-border">|</span>
-              <Link to="/disclaimer" className="hover:text-foreground transition-colors">
+              <Link to="/privacy" className="hover:text-foreground transition-colors">
                 {t('footer.privacyPolicy', 'Politique de confidentialité')}
               </Link>
             </div>

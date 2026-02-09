@@ -16,6 +16,7 @@ import About from "@/pages/About";
 import Disclaimer from "@/pages/Disclaimer";
 import CGV from "@/pages/CGV";
 import MentionsLegales from "@/pages/MentionsLegales";
+import Privacy from "@/pages/Privacy";
 import QuickTest from "@/pages/QuickTest";
 import SubscriptionSuccess from "@/pages/SubscriptionSuccess";
 import Pricing from "@/pages/Pricing";
@@ -95,6 +96,7 @@ export const coreRoutes = [
   { path: "/disclaimer", element: <Disclaimer /> },
   { path: "/cgv", element: <CGV /> },
   { path: "/mentions-legales", element: <MentionsLegales /> },
+  { path: "/privacy", element: <Privacy /> },
   { path: "/quick-test", element: <QuickTest /> },
   { path: "/subscription-success", element: <SubscriptionSuccess /> },
   { path: "/pricing", element: <Pricing /> },
@@ -201,7 +203,7 @@ export const adminRoutes = [
   { path: "/diagnostics", element: <LazyDiagnostics /> },
 ];
 
-/** Redirects for legacy URLs */
+/** Redirects for legacy URLs and common aliases */
 export const redirectRoutes = [
   { path: "/match", element: <Navigate to="/profile-matcher" replace /> },
   { path: "/multi-compare", element: <Navigate to="/compare?mode=multi" replace /> },
@@ -209,6 +211,14 @@ export const redirectRoutes = [
   { path: "/universal-errors", element: <Navigate to="/prevention-filter" replace /> },
   { path: "/orientation-hub", element: <Navigate to="/about" replace /> },
   { path: "/test", element: <Navigate to="/quick-test" replace /> },
+  // Fix 404s — common user-typed or linked URLs
+  { path: "/login", element: <Navigate to="/auth" replace /> },
+  { path: "/map", element: <Navigate to="/world-map" replace /> },
+  { path: "/strategies", element: <Navigate to="/exit-keys" replace /> },
+  { path: "/profile", element: <Navigate to="/dashboard" replace /> },
+  { path: "/game", element: <Navigate to="/life-game" replace /> },
+  { path: "/matcher", element: <Navigate to="/profile-matcher" replace /> },
+  { path: "/legal", element: <Navigate to="/mentions-legales" replace /> },
 ];
 
 /** 404 fallback */

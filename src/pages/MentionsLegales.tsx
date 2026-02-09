@@ -187,7 +187,7 @@ export default function MentionsLegales() {
               de consentement ou les paramètres de votre navigateur.
             </p>
             <div className="mt-4">
-              <Link to="/disclaimer" className="text-primary hover:underline">
+              <Link to="/privacy" className="text-primary hover:underline">
                 Consulter notre politique de confidentialité complète →
               </Link>
             </div>
@@ -203,8 +203,13 @@ export default function MentionsLegales() {
                 </Link>
               </li>
               <li>
-                <Link to="/disclaimer" className="text-primary hover:underline flex items-center gap-2">
+                <Link to="/privacy" className="text-primary hover:underline flex items-center gap-2">
                   → Politique de confidentialité
+                </Link>
+              </li>
+              <li>
+                <Link to="/disclaimer" className="text-primary hover:underline flex items-center gap-2">
+                  → Disclaimer / Avertissements
                 </Link>
               </li>
             </ul>

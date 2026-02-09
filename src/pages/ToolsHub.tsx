@@ -45,7 +45,7 @@ export default function ToolsHub() {
       color: 'from-blue-500/20 to-cyan-500/20',
       borderColor: 'border-blue-500/30',
       tools: [
-        { href: '/countries', icon: Map, label: t('hub.tool.countries', 'Pays'), description: t('hub.tool.countriesDesc', 'Explorer 195+ pays') },
+        { href: '/countries', icon: Map, label: t('hub.tool.countries', 'Pays'), description: t('hub.tool.countriesDesc', '44 pays analysés en profondeur') },
         { href: '/world-map', icon: Globe, label: t('hub.tool.worldMap', 'Carte Monde'), description: t('hub.tool.worldMapDesc', 'Vue interactive') },
         { href: '/pyramid-types', icon: Triangle, label: t('hub.tool.pyramids', 'Pyramides'), description: t('hub.tool.pyramidsDesc', '6 types de systèmes') },
         { href: '/compare', icon: Scale, label: t('hub.tool.compare', 'Comparer'), description: t('hub.tool.compareDesc', 'Jusqu\'à 4 pays') },
