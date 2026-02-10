@@ -251,4 +251,172 @@ export const DEFAULT_TAX_RULES: Record<string, { incomeTax: TaxBracket[], social
     ],
     socialRate: 0.063,
   },
+  germany: {
+    incomeTax: [
+      { min: 0, max: 11604, rate: 0 },
+      { min: 11605, max: 17005, rate: 0.14 },
+      { min: 17006, max: 66760, rate: 0.2397 },
+      { min: 66761, max: 277825, rate: 0.42 },
+      { min: 277826, max: null, rate: 0.45 },
+    ],
+    socialRate: 0.205,
+  },
+  usa: {
+    incomeTax: [
+      { min: 0, max: 11600, rate: 0.10 },
+      { min: 11601, max: 47150, rate: 0.12 },
+      { min: 47151, max: 100525, rate: 0.22 },
+      { min: 100526, max: 191950, rate: 0.24 },
+      { min: 191951, max: 243725, rate: 0.32 },
+      { min: 243726, max: 609350, rate: 0.35 },
+      { min: 609351, max: null, rate: 0.37 },
+    ],
+    socialRate: 0.0765,
+  },
+  canada: {
+    incomeTax: [
+      { min: 0, max: 15705, rate: 0 },
+      { min: 15706, max: 55867, rate: 0.15 },
+      { min: 55868, max: 111733, rate: 0.205 },
+      { min: 111734, max: 154906, rate: 0.26 },
+      { min: 154907, max: 220000, rate: 0.29 },
+      { min: 220001, max: null, rate: 0.33 },
+    ],
+    socialRate: 0.073,
+  },
+  uae: {
+    incomeTax: [
+      { min: 0, max: null, rate: 0 },
+    ],
+    socialRate: 0.05,
+  },
+  singapore: {
+    incomeTax: [
+      { min: 0, max: 20000, rate: 0 },
+      { min: 20001, max: 30000, rate: 0.02 },
+      { min: 30001, max: 40000, rate: 0.035 },
+      { min: 40001, max: 80000, rate: 0.07 },
+      { min: 80001, max: 120000, rate: 0.115 },
+      { min: 120001, max: 160000, rate: 0.15 },
+      { min: 160001, max: 200000, rate: 0.18 },
+      { min: 200001, max: 240000, rate: 0.19 },
+      { min: 240001, max: 280000, rate: 0.195 },
+      { min: 280001, max: 320000, rate: 0.20 },
+      { min: 320001, max: null, rate: 0.22 },
+    ],
+    socialRate: 0.20,
+  },
+  japan: {
+    incomeTax: [
+      { min: 0, max: 1950000, rate: 0.05 },
+      { min: 1950001, max: 3300000, rate: 0.10 },
+      { min: 3300001, max: 6950000, rate: 0.20 },
+      { min: 6950001, max: 9000000, rate: 0.23 },
+      { min: 9000001, max: 18000000, rate: 0.33 },
+      { min: 18000001, max: 40000000, rate: 0.40 },
+      { min: 40000001, max: null, rate: 0.45 },
+    ],
+    socialRate: 0.15,
+  },
+  australia: {
+    incomeTax: [
+      { min: 0, max: 18200, rate: 0 },
+      { min: 18201, max: 45000, rate: 0.19 },
+      { min: 45001, max: 120000, rate: 0.325 },
+      { min: 120001, max: 180000, rate: 0.37 },
+      { min: 180001, max: null, rate: 0.45 },
+    ],
+    socialRate: 0.02,
+  },
+  morocco: {
+    incomeTax: [
+      { min: 0, max: 30000, rate: 0 },
+      { min: 30001, max: 50000, rate: 0.10 },
+      { min: 50001, max: 60000, rate: 0.20 },
+      { min: 60001, max: 80000, rate: 0.30 },
+      { min: 80001, max: 180000, rate: 0.34 },
+      { min: 180001, max: null, rate: 0.38 },
+    ],
+    socialRate: 0.065,
+  },
+  brazil: {
+    incomeTax: [
+      { min: 0, max: 24511, rate: 0 },
+      { min: 24512, max: 33919, rate: 0.075 },
+      { min: 33920, max: 45012, rate: 0.15 },
+      { min: 45013, max: 55976, rate: 0.225 },
+      { min: 55977, max: null, rate: 0.275 },
+    ],
+    socialRate: 0.11,
+  },
+  netherlands: {
+    incomeTax: [
+      { min: 0, max: 75518, rate: 0.3693 },
+      { min: 75519, max: null, rate: 0.4950 },
+    ],
+    socialRate: 0.2765,
+  },
+  ireland: {
+    incomeTax: [
+      { min: 0, max: 42000, rate: 0.20 },
+      { min: 42001, max: null, rate: 0.40 },
+    ],
+    socialRate: 0.04,
+  },
+  qatar: {
+    incomeTax: [
+      { min: 0, max: null, rate: 0 },
+    ],
+    socialRate: 0,
+  },
+  norway: {
+    incomeTax: [
+      { min: 0, max: 198350, rate: 0 },
+      { min: 198351, max: 279150, rate: 0.017 },
+      { min: 279151, max: 642950, rate: 0.04 },
+      { min: 642951, max: 926800, rate: 0.136 },
+      { min: 926801, max: 1500000, rate: 0.166 },
+      { min: 1500001, max: null, rate: 0.176 },
+    ],
+    socialRate: 0.082,
+  },
+  turkey: {
+    incomeTax: [
+      { min: 0, max: 110000, rate: 0.15 },
+      { min: 110001, max: 230000, rate: 0.20 },
+      { min: 230001, max: 870000, rate: 0.27 },
+      { min: 870001, max: 3000000, rate: 0.35 },
+      { min: 3000001, max: null, rate: 0.40 },
+    ],
+    socialRate: 0.15,
+  },
+  india: {
+    incomeTax: [
+      { min: 0, max: 300000, rate: 0 },
+      { min: 300001, max: 700000, rate: 0.05 },
+      { min: 700001, max: 1000000, rate: 0.10 },
+      { min: 1000001, max: 1200000, rate: 0.15 },
+      { min: 1200001, max: 1500000, rate: 0.20 },
+      { min: 1500001, max: null, rate: 0.30 },
+    ],
+    socialRate: 0.12,
+  },
+  poland: {
+    incomeTax: [
+      { min: 0, max: 30000, rate: 0 },
+      { min: 30001, max: 120000, rate: 0.12 },
+      { min: 120001, max: null, rate: 0.32 },
+    ],
+    socialRate: 0.139,
+  },
+  greece: {
+    incomeTax: [
+      { min: 0, max: 10000, rate: 0.09 },
+      { min: 10001, max: 20000, rate: 0.22 },
+      { min: 20001, max: 30000, rate: 0.28 },
+      { min: 30001, max: 40000, rate: 0.36 },
+      { min: 40001, max: null, rate: 0.44 },
+    ],
+    socialRate: 0.141,
+  },
 };

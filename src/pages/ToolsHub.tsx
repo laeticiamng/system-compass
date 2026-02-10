@@ -62,8 +62,10 @@ export default function ToolsHub() {
       tools: [
         { href: '/quick-test', icon: Zap, label: t('hub.tool.quickTest', 'Test Rapide'), description: t('hub.tool.quickTestDesc', '2 min'), badge: t('common.popular', 'Populaire') },
         { href: '/profile-test', icon: User, label: t('hub.tool.profileTest', 'Test Complet'), description: t('hub.tool.profileTestDesc', '15 min') },
-        { href: '/profile-matcher', icon: Users, label: t('hub.tool.profileMatcher', 'Matcher Pays'), description: t('hub.tool.profileMatcherDesc', 'Compatibilité') },
+        { href: '/tools/matcher', icon: Users, label: t('hub.tool.matcher', 'Matcher Pays IA'), description: t('hub.tool.matcherDesc', '10 questions, top 5 pays'), badge: t('common.new', 'Nouveau') },
+        { href: '/profile-matcher', icon: Users, label: t('hub.tool.profileMatcher', 'Matcher Avancé'), description: t('hub.tool.profileMatcherDesc', 'Compatibilité par profil') },
         { href: '/life-trajectory', icon: TrendingUp, label: t('hub.tool.trajectory', 'Trajectoire'), description: t('hub.tool.trajectoryDesc', 'Simulation vie') },
+        { href: '/tools/fiscal-simulator', icon: Calculator, label: t('hub.tool.fiscalSim', 'Simulateur Fiscal'), description: t('hub.tool.fiscalSimDesc', 'Impôts + pouvoir d\'achat'), badge: t('common.new', 'Nouveau') },
         { href: '/fiscal-calculator', icon: Calculator, label: t('hub.tool.fiscalCalc', 'Calculateur Fiscal'), description: t('hub.tool.fiscalCalcDesc', 'Net vs Brut') },
       ] as ToolItem[],
     },
@@ -79,6 +81,7 @@ export default function ToolsHub() {
         { href: '/exit-keys/catalog', icon: FileText, label: t('hub.tool.catalog', 'Catalogue'), description: t('hub.tool.catalogDesc', '50+ clés') },
         { href: '/exit-keys/compare', icon: Scale, label: t('hub.tool.compareKeys', 'Comparer Clés'), description: t('hub.tool.compareKeysDesc', 'Analyse comparative') },
         { href: '/prevention-filter', icon: Shield, label: t('hub.tool.preventionFilter', 'Filtre Décision'), description: t('hub.tool.preventionFilterDesc', 'Anti-illusions') },
+        { href: '/trace', icon: FileText, label: t('hub.tool.traceJournal', 'Journal Décisions'), description: t('hub.tool.traceJournalDesc', 'Timeline + annotations + PDF'), badge: t('common.new', 'Nouveau') },
       ] as ToolItem[],
     },
     {

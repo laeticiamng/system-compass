@@ -6,6 +6,7 @@ import { Compass, Map, FileText, Scale, Gamepad2, LogIn, LogOut, User, Key, Layo
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { GlobalSearch } from './GlobalSearch';
 import { ThemeToggle } from './ThemeToggle';
+import { GamificationProgressBar } from './GamificationProgressBar';
 import { useAuth } from '@/hooks/useAuth';
 import { useUserRoles } from '@/hooks/useUserRoles';
 import { Button } from './ui/button';
@@ -72,7 +73,9 @@ export function Header() {
   const toolsItems = [
     { href: '/quick-test', label: t('nav.quickTest', 'Test Rapide'), icon: Gamepad2 },
     { href: '/profile-test', label: t('nav.profileTest', 'Test Complet'), icon: User },
-    { href: '/profile-matcher', label: t('nav.profileMatcher', 'Matcher Pays'), icon: Users },
+    { href: '/tools/matcher', label: t('nav.matcher', 'Matcher Pays IA'), icon: Users },
+    { href: '/tools/fiscal-simulator', label: t('nav.fiscalSimulator', 'Simulateur Fiscal'), icon: BarChart3 },
+    { href: '/trace', label: t('nav.traceJournal', 'Journal Décisions'), icon: FileText },
     { href: '/life-trajectory', label: t('nav.lifeTrajectory', 'Trajectoire'), icon: Map },
     { href: '/life-game', label: t('nav.lifeGame', 'Mode Éducatif'), icon: Play },
     { href: '/prevention-filter', label: t('nav.preventionFilter', 'Filtre Décision'), icon: Shield },
@@ -305,6 +308,7 @@ export function Header() {
           </div>
           {user && <NotificationBell />}
           {user && <span className="hidden sm:inline"><UserHistoryPanel /></span>}
+          <GamificationProgressBar className="hidden md:flex" />
           <ThemeToggle />
           <div className="hidden xl:block">
             <LanguageSwitcher />

@@ -120,3 +120,8 @@ export const LazyBlogArticle = withSuspense(lazy(() => import('@/pages/BlogArtic
 
 // Thematic paths
 export const LazyThematicPaths = withSuspense(lazy(() => import('@/pages/ThematicPaths')));
+
+// New tools — Fiscal Simulator, Country Matcher, Trace Journal
+export const LazyFiscalSimulator = withSuspense(lazy(() => import('@/pages/tools/FiscalSimulatorPage')));
+export const LazyCountryMatcher = withSuspense(lazy(() => import('@/pages/tools/CountryMatcherPage')));
+export const LazyTraceJournal = withSuspense(lazy(() => import('@/pages/TraceJournal')));

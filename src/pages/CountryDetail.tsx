@@ -11,6 +11,7 @@ import { CountryProjectAnalysis } from '@/components/country/CountryProjectAnaly
 import { CountryIntelligenceSection } from '@/components/country/CountryIntelligenceSection';
 import { CountryGovernanceSection } from '@/components/country/CountryGovernanceSection';
 import { CountryExitKeys } from '@/components/CountryExitKeys';
+import { CountryExitKeysDetailed } from '@/components/CountryExitKeysDetailed';
 import { NaturalRisksCard } from '@/components/NaturalRisksCard';
 import { HealthcareCard } from '@/components/HealthcareCard';
 import { PositivePointsCard } from '@/components/PositivePointsCard';
@@ -440,6 +441,10 @@ export default function CountryDetail() {
         <div className="mb-12">
           <h2 className="font-display text-2xl font-bold mb-6">{t('exitKeys.title', 'Stratégies')}</h2>
           <CountryExitKeys country={country} />
+        </div>
+
+        <div className="mb-12">
+          <CountryExitKeysDetailed country={country} />
         </div>
 
         <div className="mb-12">
