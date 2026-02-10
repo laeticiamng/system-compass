@@ -11,10 +11,12 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { TrendingDown, Star, Info } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { motion } from 'framer-motion';
+import { ShoppingCart } from 'lucide-react';
 
 import { useFiscalRulesMultiple, useSpecialRegimesMultiple } from '@/hooks/useFiscalData';
 import { calculateCountryTax, formatCurrency, formatPercent, DEFAULT_TAX_RULES, type TaxProfile, type TaxCalculationResult } from '@/lib/fiscalEngine';
 import { SimulationDisclaimer } from '@/components/SimulationDisclaimer';
+import { useCountries } from '@/lib/countries-data';
 
 interface FiscalResultsStepProps {
   profile: TaxProfile;
@@ -25,6 +27,7 @@ interface FiscalResultsStepProps {
 
 export function FiscalResultsStep({ profile, selectedCountries }: FiscalResultsStepProps) {
   const { t } = useTranslation();
+  const { countries: allCountriesData } = useCountries();
   
   // Fetch country names
   const { data: countries } = useQuery({
@@ -96,16 +99,31 @@ export function FiscalResultsStep({ profile, selectedCountries }: FiscalResultsS
     return calculations.sort((a, b) => a.effectiveRate - b.effectiveRate);
   }, [countries, rulesMap, regimesMap, profile]);
   
-  // Prepare chart data
+  // Cost of living lookup for purchasing power adjustment
+  const colLookup = useMemo(() => {
+    const map: Record<string, number> = {};
+    for (const c of allCountriesData) {
+      map[c.id] = c.costOfLiving?.index || 50;
+    }
+    return map;
+  }, [allCountriesData]);
+
+  // Prepare chart data with purchasing power adjustment
   const chartData = useMemo(() => {
-    return results.map(r => ({
-      name: r.countryName,
-      incomeTax: Math.round(r.incomeTax),
-      socialContributions: Math.round(r.socialContributions),
-      wealthTax: Math.round(r.wealthTax),
-      netIncome: Math.round(r.netIncome),
-    }));
-  }, [results]);
+    return results.map(r => {
+      const colIndex = colLookup[r.countryId] || 50;
+      // Purchasing power: net income adjusted by cost of living (relative to France=70 baseline)
+      const purchasingPower = Math.round(r.netIncome * (70 / Math.max(colIndex, 1)));
+      return {
+        name: r.countryName,
+        incomeTax: Math.round(r.incomeTax),
+        socialContributions: Math.round(r.socialContributions),
+        wealthTax: Math.round(r.wealthTax),
+        netIncome: Math.round(r.netIncome),
+        purchasingPower,
+      };
+    });
+  }, [results, colLookup]);
   
   if (rulesLoading) {
     return (
@@ -178,6 +196,33 @@ export function FiscalResultsStep({ profile, selectedCountries }: FiscalResultsS
           </ResponsiveContainer>
         </CardContent>
       </Card>
+
+      {/* Purchasing Power comparison chart */}
+      <Card>
+        <CardContent className="pt-6">
+          <h4 className="text-sm font-semibold mb-3 flex items-center gap-2">
+            <ShoppingCart className="w-4 h-4 text-primary" />
+            {t('fiscal.results.purchasingPowerTitle', 'Pouvoir d\'achat ajusté (coût de la vie)')}
+          </h4>
+          <ResponsiveContainer width="100%" height={200}>
+            <BarChart data={chartData} layout="vertical">
+              <CartesianGrid strokeDasharray="3 3" opacity={0.3} />
+              <XAxis type="number" tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`} />
+              <YAxis type="category" dataKey="name" width={100} />
+              <Tooltip
+                formatter={(value: number, name: string) => [formatCurrency(value), name]}
+                contentStyle={{ backgroundColor: 'hsl(var(--card))', border: '1px solid hsl(var(--border))' }}
+              />
+              <Legend />
+              <Bar dataKey="netIncome" name={t('fiscal.results.netIncome', 'Revenu net')} fill="hsl(var(--chart-2))" />
+              <Bar dataKey="purchasingPower" name={t('fiscal.results.purchasingPower', 'Pouvoir d\'achat ajusté')} fill="hsl(var(--primary))" />
+            </BarChart>
+          </ResponsiveContainer>
+          <p className="text-xs text-muted-foreground mt-2">
+            {t('fiscal.results.purchasingPowerNote', 'Ajusté par rapport au coût de la vie (base France = 70). Plus le pouvoir d\'achat est élevé, plus votre argent va loin.')}
+          </p>
+        </CardContent>
+      </Card>
       
       {/* Country cards */}
       <div className="grid gap-4 md:grid-cols-2">
@@ -232,6 +277,21 @@ export function FiscalResultsStep({ profile, selectedCountries }: FiscalResultsS
                     <p className="font-medium">{formatPercent(result.marginalRate)}</p>
                   </div>
                 </div>
+                {/* Purchasing power row */}
+                {(() => {
+                  const chartEntry = chartData.find(c => c.name === result.countryName);
+                  return chartEntry ? (
+                    <div className="mt-2 pt-2 border-t border-border/50">
+                      <div className="flex items-center justify-between text-sm">
+                        <span className="text-muted-foreground flex items-center gap-1">
+                          <ShoppingCart className="w-3 h-3" />
+                          {t('fiscal.results.purchasingPower', 'Pouvoir d\'achat ajusté')}
+                        </span>
+                        <span className="font-bold text-primary">{formatCurrency(chartEntry.purchasingPower)}</span>
+                      </div>
+                    </div>
+                  ) : null;
+                })()}
               </CardContent>
             </Card>
           </motion.div>

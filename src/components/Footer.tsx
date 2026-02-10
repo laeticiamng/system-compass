@@ -58,8 +58,9 @@ export function Footer() {
             <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-muted-foreground">
               <li><Link to="/exit-keys" className="hover:text-foreground transition-colors block py-0.5">{t('nav.exitKeys', 'Stratégies')}</Link></li>
               <li><Link to="/quick-test" className="hover:text-foreground transition-colors block py-0.5">{t('nav.quickTest', 'Test Rapide')}</Link></li>
-              <li><Link to="/profile-matcher" className="hover:text-foreground transition-colors block py-0.5">{t('nav.profileMatcher', 'Matcher Pays')}</Link></li>
-              <li><Link to="/fiscal-calculator" className="hover:text-foreground transition-colors block py-0.5">{t('nav.fiscalCalculator', 'Calculateur Fiscal')}</Link></li>
+              <li><Link to="/tools/matcher" className="hover:text-foreground transition-colors block py-0.5">{t('nav.matcher', 'Matcher Pays IA')}</Link></li>
+              <li><Link to="/tools/fiscal-simulator" className="hover:text-foreground transition-colors block py-0.5">{t('nav.fiscalSimulator', 'Simulateur Fiscal')}</Link></li>
+              <li><Link to="/trace" className="hover:text-foreground transition-colors block py-0.5">{t('nav.traceJournal', 'Journal Décisions')}</Link></li>
               <li><Link to="/pyramid-quiz" className="hover:text-foreground transition-colors block py-0.5">{t('nav.pyramidQuiz', 'Jeu Pyramides')}</Link></li>
               <li><Link to="/gamification" className="hover:text-foreground transition-colors block py-0.5">{t('nav.gamification', 'Progression')}</Link></li>
               <li>
@@ -110,7 +111,7 @@ export function Footer() {
           
           <div className="flex flex-col items-center justify-center gap-3 sm:gap-4 text-center">
             <p className="text-xs sm:text-sm text-muted-foreground">
-              © {currentYear} {t('common.appName')} — {t('footer.company', 'EmotionsCare SASU')}
+              © {currentYear} Pyramid Compass — EmotionsCare SASU
             </p>
             
             {/* Legal links */}
@@ -129,8 +130,8 @@ export function Footer() {
             </div>
             
             <p className="text-[10px] sm:text-xs text-muted-foreground/70 max-w-md">
-              {t('footer.disclaimer')}
-              <Link to="/disclaimer" className="text-primary hover:underline ml-1">{t('footer.learnMore')}</Link>
+              {t('footer.disclaimer', 'Outil d\'analyse et simulation. Pas de conseil juridique, financier ou médical.')}{' '}
+              <Link to="/disclaimer" className="text-primary hover:underline">{t('footer.learnMore')}</Link>
             </p>
             <span className="flex items-center gap-1 text-xs sm:text-sm text-muted-foreground">
               {t('footer.madeWith', 'Made with')} <Heart className="w-3 h-3 sm:w-4 sm:h-4 text-primary fill-primary" />

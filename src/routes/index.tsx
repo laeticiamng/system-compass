@@ -82,6 +82,9 @@ import {
   LazyBlog,
   LazyBlogArticle,
   LazyThematicPaths,
+  LazyFiscalSimulator,
+  LazyCountryMatcher,
+  LazyTraceJournal,
 } from "@/routes/LazyRoutes";
 
 // ============================================================
@@ -176,6 +179,9 @@ export const contentRoutes = [
   { path: "/how-to-read", element: <LazyHowToRead /> },
   { path: "/tools", element: <LazyToolsHub /> },
   { path: "/tools/fiscal-calculator", element: <LazyFiscalCalculatorAdvanced /> },
+  { path: "/tools/fiscal-simulator", element: <LazyFiscalSimulator /> },
+  { path: "/tools/matcher", element: <LazyCountryMatcher /> },
+  { path: "/trace", element: <LazyTraceJournal /> },
   { path: "/fiscal/special-regimes", element: <LazySpecialRegimes /> },
   { path: "/install", element: <LazyInstall /> },
   { path: "/experts", element: <LazyExpertMarketplace /> },
