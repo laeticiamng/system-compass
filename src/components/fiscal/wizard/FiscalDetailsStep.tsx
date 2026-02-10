@@ -4,6 +4,8 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useQuery } from '@tanstack/react-query';
+import jsPDF from 'jspdf';
+import { format } from 'date-fns';
 import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -95,11 +97,98 @@ export function FiscalDetailsStep({ profile, selectedCountries }: FiscalDetailsS
   }, [countries, rulesMap, regimesMap, profile]);
   
   const handleExportPDF = () => {
+    if (results.length === 0) {
+      toast.error(t('fiscal.export.noData', 'Aucune donnée à exporter'));
+      return;
+    }
+
     toast.info(t('fiscal.export.preparing', 'Préparation du PDF...'));
-    // TODO: Implement PDF export using jspdf
-    setTimeout(() => {
-      toast.success(t('fiscal.export.success', 'PDF généré avec succès'));
-    }, 1500);
+
+    const doc = new jsPDF();
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const pageHeight = doc.internal.pageSize.getHeight();
+    const margin = 14;
+    const lineHeight = 6;
+
+    let y = margin;
+
+    const ensureSpace = (requiredHeight: number) => {
+      if (y + requiredHeight > pageHeight - margin) {
+        doc.addPage();
+        y = margin;
+      }
+    };
+
+    doc.setFontSize(16);
+    doc.text(t('fiscal.export.reportTitle', 'Rapport fiscal détaillé'), margin, y);
+    y += lineHeight;
+
+    doc.setFontSize(10);
+    doc.setTextColor(90, 90, 90);
+    doc.text(
+      `${t('fiscal.export.generatedOn', 'Généré le')} ${format(new Date(), 'yyyy-MM-dd HH:mm')}`,
+      margin,
+      y,
+    );
+    y += lineHeight + 2;
+
+    doc.setTextColor(0, 0, 0);
+    doc.setFontSize(11);
+    doc.text(t('fiscal.export.profileTitle', 'Profil simulé'), margin, y);
+    y += lineHeight;
+    doc.setFontSize(10);
+
+    const profileLines = [
+      `${t('fiscal.profile.gross', 'Revenu brut')}: ${formatCurrency(profile.grossIncome, 'EUR')}`,
+      `${t('fiscal.profile.familyStatus', 'Statut familial')}: ${profile.familyStatus}`,
+      `${t('fiscal.profile.children', 'Enfants')}: ${profile.children}`,
+      `${t('fiscal.profile.socialStatus', 'Statut social')}: ${profile.socialStatus}`,
+    ];
+
+    for (const line of profileLines) {
+      ensureSpace(lineHeight);
+      doc.text(line, margin, y);
+      y += lineHeight;
+    }
+
+    y += 2;
+
+    for (const [index, result] of results.entries()) {
+      ensureSpace(40);
+
+      doc.setDrawColor(220, 220, 220);
+      doc.roundedRect(margin, y - 4, pageWidth - margin * 2, 34, 2, 2);
+
+      doc.setFontSize(12);
+      doc.text(`${index + 1}. ${result.countryName}`, margin + 2, y + 2);
+      y += lineHeight + 1;
+
+      doc.setFontSize(10);
+      const detailLines = [
+        `${t('fiscal.details.effectiveRate', 'Taux effectif')}: ${formatPercent(result.effectiveRate)}`,
+        `${t('fiscal.details.netResult', 'Net')}: ${formatCurrency(result.netIncome, result.currency)}`,
+        `${t('fiscal.details.incomeTax', 'Impôt revenu')}: -${formatCurrency(result.incomeTax, result.currency)}`,
+        `${t('fiscal.details.social', 'Cotisations')}: -${formatCurrency(result.socialContributions, result.currency)}`,
+      ];
+
+      for (const line of detailLines) {
+        doc.text(line, margin + 2, y + 2);
+        y += lineHeight;
+      }
+
+      if (result.hasSpecialRegimes) {
+        doc.setTextColor(59, 130, 246);
+        doc.text(t('fiscal.details.hasSpecialRegimes', 'Régimes spéciaux disponibles'), margin + 2, y + 2);
+        doc.setTextColor(0, 0, 0);
+        y += lineHeight;
+      }
+
+      y += 4;
+    }
+
+    const fileName = `fiscal-details-${lang}-${format(new Date(), 'yyyy-MM-dd')}.pdf`;
+    doc.save(fileName);
+    toast.success(t('fiscal.export.success', 'PDF généré avec succès'));
   };
   
   return (
