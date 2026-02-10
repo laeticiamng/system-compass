@@ -3248,5 +3248,5 @@ const baseCountries: Country[] = [
   },
 ];
 
-// Merge base countries with additional countries and expansion (total: 60+ countries)
+// Merge base countries with additional countries and expansion (total: 44 countries analysed)
 export const countriesSeed: Country[] = [...baseCountries, ...additionalCountries, ...expansionCountries];

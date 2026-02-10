@@ -174,7 +174,7 @@ export default function Community() {
                 </Badge>
                 <Badge className="bg-blue-500/20 text-blue-400">
                   <Globe2 className="h-3 w-3 mr-1" />
-                  50+ pays représentés
+                  44 pays représentés
                 </Badge>
                 <Badge className="bg-purple-500/20 text-purple-400">
                   <Mic className="h-3 w-3 mr-1" />
