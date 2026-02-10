@@ -12,7 +12,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { cn } from '@/lib/utils';
-import { Compass, LogIn, UserPlus, Loader2, AlertCircle, Eye, EyeOff, CheckCircle2 } from 'lucide-react';
+import { Compass, LogIn, UserPlus, Loader2, AlertCircle, Eye, EyeOff, CheckCircle2, Mail } from 'lucide-react';
 import { z } from 'zod';
 import { PasswordStrengthMeter } from '@/components/ui/password-strength-meter';
 import { PasswordResetDialog } from '@/components/auth/PasswordResetDialog';
@@ -42,6 +42,8 @@ export default function Auth() {
   const [rememberMe, setRememberMe] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const [isAppleLoading, setIsAppleLoading] = useState(false);
+  const [isMagicLinkLoading, setIsMagicLinkLoading] = useState(false);
+  const [magicLinkSent, setMagicLinkSent] = useState(false);
   const isNewSignupRef = useRef(false);
 
   const [showSignupSuccess, setShowSignupSuccess] = useState(false);
@@ -159,6 +161,38 @@ export default function Auth() {
       setError(t('auth.errors.generic'));
     } finally {
       setIsAppleLoading(false);
+    }
+  };
+
+  const handleMagicLink = async () => {
+    setError(null);
+    setMagicLinkSent(false);
+
+    try {
+      emailSchema.parse(email);
+    } catch {
+      setError(t('auth.errors.invalidEmail', 'Adresse email invalide'));
+      return;
+    }
+
+    setIsMagicLinkLoading(true);
+    try {
+      const { error } = await supabase.auth.signInWithOtp({
+        email,
+        options: {
+          emailRedirectTo: `${window.location.origin}/dashboard`,
+        },
+      });
+      if (error) {
+        setError(error.message);
+      } else {
+        setMagicLinkSent(true);
+        toast.success(t('auth.magicLinkSent', 'Lien magique envoyé ! Vérifiez votre boîte mail.'));
+      }
+    } catch {
+      setError(t('auth.errors.generic'));
+    } finally {
+      setIsMagicLinkLoading(false);
     }
   };
 
@@ -424,6 +458,45 @@ export default function Auth() {
               )}
               {t('auth.continueWithApple', 'Continuer avec Apple')}
             </Button>
+
+            {/* Magic Link */}
+            {isLogin && (
+              <>
+                <div className="relative my-4">
+                  <div className="absolute inset-0 flex items-center">
+                    <div className="w-full border-t border-border" />
+                  </div>
+                  <div className="relative flex justify-center text-xs uppercase">
+                    <span className="bg-card px-2 text-muted-foreground">{t('auth.orUseMagicLink', 'ou sans mot de passe')}</span>
+                  </div>
+                </div>
+
+                {magicLinkSent ? (
+                  <div className="flex items-center gap-2 p-4 rounded-lg bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 animate-fade-in">
+                    <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm font-medium">{t('auth.magicLinkSentTitle', 'Lien envoyé !')}</p>
+                      <p className="text-xs text-muted-foreground">{t('auth.magicLinkSentDesc', 'Vérifiez votre boîte mail et cliquez sur le lien pour vous connecter.')}</p>
+                    </div>
+                  </div>
+                ) : (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="w-full gap-3 border-primary/20 hover:bg-primary/5"
+                    onClick={handleMagicLink}
+                    disabled={isMagicLinkLoading || !email}
+                  >
+                    {isMagicLinkLoading ? (
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                    ) : (
+                      <Mail className="w-4 h-4" />
+                    )}
+                    {t('auth.magicLink', 'Recevoir un lien de connexion par email')}
+                  </Button>
+                )}
+              </>
+            )}
           </form>
         </div>
       </div>

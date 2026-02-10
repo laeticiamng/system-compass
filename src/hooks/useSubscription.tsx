@@ -28,7 +28,7 @@ export const SUBSCRIPTION_TIERS = {
     name: 'Gratuit',
     price: 0,
     features: [
-      'Aperçu de 38+ pays',
+      'Aperçu de 44 pays',
       'Quiz de profil',
       'Détails par pays',
     ],

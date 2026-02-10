@@ -46,13 +46,13 @@ export default function Index() {
   return (
     <>
       <Helmet>
-        <title>{t('landing.meta.title', 'Pyramid Compass - Compare 38+ pays pour ton expatriation')}</title>
-        <meta name="description" content={t('landing.meta.description', 'Compare 38+ pays pour ton expatriation : fiscalité, visas, coût de la vie. Test gratuit en 2 minutes.')} />
+        <title>{t('landing.meta.title', 'Pyramid Compass - Compare 44 pays pour ton expatriation')}</title>
+        <meta name="description" content={t('landing.meta.description', 'Compare 44 pays pour ton expatriation : fiscalité, visas, coût de la vie. Test gratuit en 2 minutes.')} />
         <meta property="og:title" content={t('landing.meta.ogTitle', 'Pyramid Compass - Compare les pays pour ton expatriation')} />
-        <meta property="og:description" content={t('landing.meta.ogDescription', 'Fiscalité, visas, coût de la vie : compare 38+ pays et trouve celui qui te correspond. Test gratuit en 2 minutes.')} />
+        <meta property="og:description" content={t('landing.meta.ogDescription', 'Fiscalité, visas, coût de la vie : compare 44 pays et trouve celui qui te correspond. Test gratuit en 2 minutes.')} />
       </Helmet>
       <FAQPageJsonLd faqs={[
-        { question: "Qu'est-ce que Pyramid Compass ?", answer: "Pyramid Compass est une plateforme d'intelligence décisionnelle pour la relocalisation internationale. Elle analyse les systèmes de plus de 60 pays pour vous aider à planifier votre expatriation." },
+        { question: "Qu'est-ce que Pyramid Compass ?", answer: "Pyramid Compass est une plateforme d'intelligence décisionnelle pour la relocalisation internationale. Elle analyse les systèmes de 44 pays pour vous aider à planifier votre expatriation." },
         { question: "Comment fonctionne le test de profil ?", answer: "Le test rapide évalue vos priorités (fiscalité, qualité de vie, sécurité, opportunités) en 2 minutes pour vous suggérer les pays les plus compatibles avec votre profil." },
         { question: "Le service est-il gratuit ?", answer: "L'accès de base est gratuit avec le test rapide et l'exploration des pays. Le plan Premium à 9,90€/mois donne accès à tous les outils avancés." },
         { question: "Les données sont-elles fiables ?", answer: "Les données proviennent de sources publiques (Banque Mondiale, OCDE, Transparency International) et sont mises à jour régulièrement. Elles sont fournies à titre informatif uniquement." },
@@ -106,7 +106,7 @@ export default function Index() {
             transition={{ delay: 0.5, duration: 0.6 }}
             className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
           >
-            {t('landing.hero.subtitle', 'Fiscalité, coût de la vie, visas, qualité de vie : compare 38 pays en 2 minutes et trouve celui qui te correspond.')}
+            {t('landing.hero.subtitle', 'Fiscalité, coût de la vie, visas, qualité de vie : compare 44 pays en 2 minutes et trouve celui qui te correspond.')}
           </motion.p>
 
           {/* CTA principal */}
@@ -144,7 +144,7 @@ export default function Index() {
             className="flex flex-wrap justify-center gap-8 mt-16 text-muted-foreground"
           >
             <div className="text-center">
-              <span className="block text-3xl font-bold text-foreground">38+</span>
+              <span className="block text-3xl font-bold text-foreground">44</span>
               <span className="text-sm">{t('landing.hero.statsCountries', 'pays analysés')}</span>
             </div>
             <div className="text-center">
@@ -335,7 +335,7 @@ export default function Index() {
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      {t('landing.pricing.freeFeature3', '38 pays disponibles')}
+                      {t('landing.pricing.freeFeature3', '44 pays disponibles')}
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
@@ -466,7 +466,7 @@ export default function Index() {
                   {t('landing.faq.q1', 'Est-ce vraiment gratuit ?')}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
-                  {t('landing.faq.a1', 'Oui. Le test de profil, l\'exploration des 38+ pays et les fiches de base sont 100% gratuits. Les fonctionnalités avancées (export PDF, recommandations IA, modules Pro) sont réservées aux plans payants.')}
+                  {t('landing.faq.a1', 'Oui. Le test de profil, l\'exploration des 44 pays et les fiches de base sont 100% gratuits. Les fonctionnalités avancées (export PDF, recommandations IA, modules Pro) sont réservées aux plans payants.')}
                 </AccordionContent>
               </AccordionItem>
             </motion.div>
