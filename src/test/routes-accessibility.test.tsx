@@ -1,129 +1,61 @@
 import { describe, it, expect } from 'vitest';
+import {
+  adminRoutes,
+  countryRoutes,
+  analysisRoutes,
+  learningRoutes,
+  userRoutes,
+  terrainRoutes,
+  redirectRoutes,
+} from '@/routes';
 
 describe('Route Accessibility', () => {
-  const routes = [
-    '/',
-    '/auth',
-    '/about', 
-    '/disclaimer',
-    '/quick-test',
-    '/subscription-success',
-    '/pricing',
-    '/partners',
-    '/countries',
-    '/world-map',
-    '/compare',
-    '/profile-test',
-    '/life-trajectory',
-    '/profile-matcher',
-    '/exit-keys',
-    '/exit-keys/catalog',
-    '/exit-keys/compare',
-    '/pyramid-quiz',
-    '/life-game',
-    '/dashboard',
-    '/usage',
-    '/settings/notifications',
-    '/institutions',
-    '/b2b',
-    '/latent',
-    '/irreversa',
-    '/terrain',
-    '/financial-safety-intel',
-    '/pyramid-types',
-    '/resources',
-    '/ovi',
-    '/errors-illusions',
-    '/prevention-filter',
-    '/how-to-read',
-    '/fiscal-calculator',
-    '/personas',
-    '/gamification',
-    '/experts',
-    '/partner-services',
-    '/community',
-    '/diagnostics',
-  ];
+  it('keeps all user-facing feature routes reachable from route config', () => {
+    const featurePaths = [
+      ...countryRoutes,
+      ...analysisRoutes,
+      ...learningRoutes,
+      ...userRoutes,
+      ...terrainRoutes,
+    ].map((route) => route.path);
 
-  it('should have route definitions for all main paths', () => {
-    expect(routes.length).toBeGreaterThan(40);
-    expect(routes).toContain('/');
-    expect(routes).toContain('/dashboard');
-    expect(routes).toContain('/countries');
+    expect(featurePaths).toContain('/countries');
+    expect(featurePaths).toContain('/dashboard');
+    expect(featurePaths).toContain('/fiscal-calculator');
+    expect(featurePaths).toContain('/profile-matcher');
+    expect(featurePaths).toContain('/terrain');
   });
 
-  it('should have unique route paths', () => {
-    const uniqueRoutes = new Set(routes);
-    expect(uniqueRoutes.size).toBe(routes.length);
-  });
+  it('preserves dynamic route patterns required by deep pages', () => {
+    const dynamicPaths = countryRoutes.concat(terrainRoutes).map((route) => route.path);
 
-  it('should have proper route format', () => {
-    routes.forEach(route => {
-      expect(route).toMatch(/^\//);
-      expect(route).not.toContain(' ');
-    });
-  });
-});
-
-describe('Dynamic Routes', () => {
-  const dynamicRoutes = [
-    { pattern: '/country/:id', example: '/country/france' },
-    { pattern: '/country/:countryId/terrain-realities', example: '/country/france/terrain-realities' },
-    { pattern: '/terrain/:countryId', example: '/terrain/france' },
-    { pattern: '/cases/:id', example: '/cases/test-case' },
-    { pattern: '/universal-errors/:id', example: '/universal-errors/overconfidence' },
-  ];
-
-  it('should have dynamic route patterns defined', () => {
-    expect(dynamicRoutes.length).toBe(5);
-  });
-
-  it('should have valid example paths for dynamic routes', () => {
-    dynamicRoutes.forEach(route => {
-      expect(route.example).toMatch(/^\//);
-      expect(route.example).not.toContain(':');
-    });
+    expect(dynamicPaths).toContain('/country/:id');
+    expect(dynamicPaths).toContain('/country/:countryId/terrain-realities');
+    expect(dynamicPaths).toContain('/terrain/:countryId');
   });
 });
 
 describe('Redirect Routes', () => {
-  const redirects = [
-    { from: '/match', to: '/profile-matcher' },
-    { from: '/multi-compare', to: '/compare?mode=multi' },
-    { from: '/systemic-mistakes', to: '/errors-illusions' },
-    { from: '/universal-errors', to: '/errors-illusions' },
-    { from: '/orientation-hub', to: '/about' },
-  ];
+  it('keeps redirect aliases targeting product routes instead of homepage', () => {
+    const redirects = redirectRoutes
+      .filter((route) => route.path !== '*')
+      .map((route) => (route.element.props as { to?: string }).to)
+      .filter((to): to is string => Boolean(to));
 
-  it('should have redirect definitions', () => {
-    expect(redirects.length).toBe(5);
-  });
-
-  it('should redirect to valid paths', () => {
-    redirects.forEach(redirect => {
-      expect(redirect.to).toMatch(/^\//);
+    redirects.forEach((to) => {
+      expect(to).toMatch(/^\//);
+      expect(to).not.toBe('/');
     });
   });
 });
 
 describe('Admin Routes', () => {
-  const adminRoutes = [
-    '/admin/translations',
-    '/admin/analytics',
-    '/admin/country-generator',
-    '/admin/generate-translations',
-    '/admin/database-translations',
-    '/admin/partners',
-    '/admin/translations-sync',
-  ];
+  it('keeps admin pages under the /admin namespace', () => {
+    const adminPaths = adminRoutes.map((route) => route.path).filter((path) => path.startsWith('/admin'));
+    expect(adminPaths.length).toBeGreaterThan(0);
 
-  it('should have admin routes defined', () => {
-    expect(adminRoutes.length).toBe(7);
-  });
-
-  it('should have admin routes under /admin prefix', () => {
-    adminRoutes.forEach(route => {
-      expect(route).toMatch(/^\/admin\//);
+    adminPaths.forEach((path) => {
+      expect(path).toMatch(/^\/admin\//);
     });
   });
 });
