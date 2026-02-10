@@ -8,9 +8,7 @@ import {
   GitBranch, 
   Plus, 
   ArrowRight,
-  CheckCircle2,
-  Clock,
-  AlertCircle
+  Clock
 } from 'lucide-react';
 
 export function TraceOSDashboardWidget() {

@@ -6,8 +6,8 @@
  */
 
 import { getCountriesSnapshot } from './countries-data';
-import { getEstimatedSalary, getProfession } from './profession-data';
-import { getNationalityAdvantages, REGIONAL_BLOCS, COUNTRY_NAMES, DestinationRecommendation, NATIONALITY_PROFILES } from './nationality-advantages';
+import { getEstimatedSalary } from './profession-data';
+import { getNationalityAdvantages, REGIONAL_BLOCS, COUNTRY_NAMES, NATIONALITY_PROFILES } from './nationality-advantages';
 
 export interface VacationDestination {
   countryId: string;
@@ -258,13 +258,7 @@ export function getVacationRecommendations(
 export function getSmartVacationRecommendations(
   currentCountryId: string,
   nationalityIds: string[],
-  professionId: string,
-  preferences?: {
-    prioritizeSafety?: boolean;
-    prioritizeTourism?: boolean;
-    maxBudgetPerDay?: number;
-    preferVisaFree?: boolean;
-  }
+  professionId: string
 ): {
   bestValue: VacationDestination[];
   safestOptions: VacationDestination[];

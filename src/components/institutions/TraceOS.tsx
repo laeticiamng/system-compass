@@ -12,8 +12,6 @@ import {
   Eye,
   Loader2,
   LayoutGrid,
-  FileText,
-  MessageSquare,
   BarChart3,
   Tag,
   Mail,
@@ -25,10 +23,9 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { DecisionTree } from './DecisionTree';
 import { CreateDecisionForm } from './CreateDecisionForm';
-import { DecisionNode, DecisionNodeData } from './DecisionNode';
+import { DecisionNodeData } from './DecisionNode';
 import { TraceOSFiltersPanel, TraceOSFilters, filterDecisions, extractFilterOptions } from './TraceOSFilters';
 import { TraceOSExport } from './TraceOSExport';
 import { TraceOSNotifications } from './TraceOSNotifications';
@@ -39,8 +36,6 @@ import { TraceOSDashboard } from './TraceOSDashboard';
 import { TagManager } from './TagManager';
 import { TraceOSCollaboration } from './TraceOSCollaboration';
 import { DecisionAuditLog } from './DecisionAuditLog';
-import { WorkflowMetrics } from './WorkflowMetrics';
-import { AutoExportManager } from './AutoExportManager';
 import { TraceOSWebhooks } from './TraceOSWebhooks';
 import { TraceOSReview } from './TraceOSReview';
 import { TraceOSGovernance } from './TraceOSGovernance';

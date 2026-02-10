@@ -1,5 +1,4 @@
-import { CharacterCard, GameResources, CharacterTrait, CharacterAspiration, POSITIVE_TRAITS, NEGATIVE_TRAITS, ASPIRATIONS } from './game-data';
-import { PyramidType } from './types';
+import { CharacterCard, CharacterTrait, CharacterAspiration, POSITIVE_TRAITS, NEGATIVE_TRAITS, ASPIRATIONS } from './game-data';
 import { FamilyStatus } from './family-system';
 
 // Helper to find traits/aspirations by ID

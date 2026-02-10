@@ -1,10 +1,6 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { 
-  Moon, 
-  Sunrise, 
-  Wind, 
-  Lock,
   Sparkles,
   Shield,
   Leaf,

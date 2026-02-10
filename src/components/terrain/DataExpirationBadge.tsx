@@ -15,7 +15,7 @@ interface DataExpirationBadgeProps {
 }
 
 export function DataExpirationBadge({ lastUpdated, cacheDays = 30 }: DataExpirationBadgeProps) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   // Parse date - handle both "YYYY-MM" and full ISO formats
   let parsedDate: Date;

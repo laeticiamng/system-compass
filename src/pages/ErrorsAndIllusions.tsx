@@ -112,7 +112,7 @@ export default function ErrorsAndIllusions() {
   const { t } = useTranslation();
   const { trackUniversalErrorsClicked } = useAnalytics();
 
-  const handleErrorClick = (errorId: string) => {
+  const handleErrorClick = () => {
     trackUniversalErrorsClicked();
   };
 
@@ -245,7 +245,7 @@ export default function ErrorsAndIllusions() {
                       </div>
 
                       <div className="flex gap-2 pt-2">
-                        <Button asChild variant="outline" size="sm" className="flex-1" onClick={() => handleErrorClick(error.id)}>
+                        <Button asChild variant="outline" size="sm" className="flex-1" onClick={handleErrorClick}>
                           <Link to={`/universal-errors/${error.id}`}>
                             {t('universalErrors.learnMore', 'En savoir plus')}
                             <ArrowRight className="w-4 h-4 ml-2" />

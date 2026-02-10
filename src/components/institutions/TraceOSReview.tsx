@@ -8,7 +8,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from '@/components/ui/dialog';
 import {
-  History,
   Eye,
   CheckCircle2,
   XCircle,
@@ -43,7 +42,7 @@ export function TraceOSReview({ decisions, onSelectDecision }: TraceOSReviewProp
   const [selectedWorkflowId, setSelectedWorkflowId] = useState<string>('');
   const [showStartWorkflow, setShowStartWorkflow] = useState(false);
 
-  const { approvals, loading: approvalsLoading, startWorkflow, approveStep, rejectStep } =
+  const { approvals, startWorkflow, approveStep, rejectStep } =
     useTraceOSApprovals(selectedDecisionId || undefined);
 
   const pendingDecisions = useMemo(() => {
@@ -325,7 +324,6 @@ export function TraceOSReview({ decisions, onSelectDecision }: TraceOSReviewProp
                       <ApprovalStepCard
                         key={approval.id}
                         approval={approval}
-                        isFirst={index === 0}
                         isLast={index === approvals.length - 1}
                         previousApproved={index === 0 || approvals[index - 1].status === 'approved'}
                         onApprove={() => approveStep(approval.id)}
@@ -410,7 +408,6 @@ interface ApprovalStepCardProps {
     comment: string | null;
     approved_at: string | null;
   };
-  isFirst: boolean;
   isLast: boolean;
   previousApproved: boolean;
   onApprove: () => void;
@@ -420,7 +417,6 @@ interface ApprovalStepCardProps {
 
 function ApprovalStepCard({
   approval,
-  isFirst,
   isLast,
   previousApproved,
   onApprove,

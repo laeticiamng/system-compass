@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { PyramidType, PYRAMID_TYPE_INFO } from '@/lib/types';
 import { useTestResults } from '@/hooks/useTestResults';
-import { useAuth } from '@/hooks/useAuth';
 import { OVISuggestionsWidget } from '@/components/ovi/OVISuggestionsWidget';
 import { 
   Zap, 
@@ -130,8 +129,7 @@ const PYRAMID_EXIT_KEYS: Record<PyramidType, string> = {
 export default function QuickTest() {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { user } = useAuth();
-  const { saveResult, getLatestResult } = useTestResults();
+  const { saveResult } = useTestResults();
   const [answers, setAnswers] = useState<QuickTestAnswers>({});
   const [showResults, setShowResults] = useState(false);
   const [startTime] = useState(Date.now());

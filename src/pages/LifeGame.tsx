@@ -11,7 +11,6 @@ import {
   ArrowRight,
   Play,
   Shield,
-  Target,
   Skull,
   Heart,
   Coins,

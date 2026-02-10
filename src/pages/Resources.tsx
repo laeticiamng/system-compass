@@ -8,10 +8,6 @@ import {
   GraduationCap, 
   Globe, 
   CheckCircle, 
-  ChevronDown, 
-  ChevronUp,
-  ExternalLink,
-  Download,
   Clock,
   AlertTriangle,
   Lightbulb,
@@ -22,8 +18,7 @@ import {
   AlertOctagon,
   Sparkles
 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';

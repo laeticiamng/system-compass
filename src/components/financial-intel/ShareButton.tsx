@@ -16,7 +16,7 @@ interface ShareButtonProps {
   country?: string;
 }
 
-export function ShareButton({ result, country }: ShareButtonProps) {
+export function ShareButton({ result }: ShareButtonProps) {
   const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
 

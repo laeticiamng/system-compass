@@ -1,6 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 import { ArrowLeft, TrendingUp, Users, MousePointer, BarChart3, RefreshCw, Download, AlertTriangle, Settings } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -60,7 +59,6 @@ const saveAlertSettings = (settings: AlertSettings) => {
 };
 
 export default function AdminAnalytics() {
-  const { t } = useTranslation();
   const { user, loading: authLoading } = useAuth();
   const [loading, setLoading] = useState(true);
   const [dailyStats, setDailyStats] = useState<DailyStat[]>([]);
@@ -83,7 +81,13 @@ export default function AdminAnalytics() {
         .order('date', { ascending: false })
         .limit(30);
       
-      setDailyStats(daily || []);
+      setDailyStats((daily || []).map(stat => ({
+        date: stat.date ?? '',
+        event_name: stat.event_name ?? 'unknown',
+        event_category: stat.event_category ?? 'unknown',
+        event_count: stat.event_count ?? 0,
+        unique_sessions: stat.unique_sessions ?? 0,
+      })));
 
       // Fetch all events for CSV export (last 30 days)
       const { data: events } = await supabase

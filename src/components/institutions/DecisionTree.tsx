@@ -5,11 +5,9 @@ import {
   ZoomIn,
   ZoomOut,
   Maximize2,
-  Eye,
   Calendar,
   ChevronRight
 } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -191,7 +189,7 @@ function DecisionTimeline({
       <div className="absolute left-4 top-0 bottom-0 w-px bg-border" />
 
       <div className="space-y-4">
-        {timelineItems.map((item, index) => (
+        {timelineItems.map(item => (
           <div
             key={item.id}
             className={cn(

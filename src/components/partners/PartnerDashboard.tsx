@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { 
-  Trophy, Gift, Star, Plus, Clock, CheckCircle2, 
+  Trophy, Gift, Plus, Clock, CheckCircle2, 
   Users, Building2, Sparkles, Award, TrendingUp,
   FileText, Loader2
 } from "lucide-react";
@@ -31,7 +31,6 @@ const getContributionTypes = (t: any) => [
 export function PartnerDashboard() {
   const { t } = useTranslation();
   const { 
-    applications, 
     contributions, 
     benefits, 
     loading,
@@ -48,7 +47,6 @@ export function PartnerDashboard() {
   const [contribImpact, setContribImpact] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
-  const approvedApps = applications.filter(a => a.status === 'approved');
   const isAmbassador = isApprovedPartner('ambassador');
   const isB2BPartner = isApprovedPartner('b2b_partner');
 

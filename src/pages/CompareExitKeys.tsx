@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { 
   ArrowLeft, Key, Plus, X, Clock, Target, 
-  AlertTriangle, CheckCircle, Shield,
+  CheckCircle,
   Zap, Unlock, Crosshair, AlertOctagon
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -16,7 +16,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { EXIT_KEYS, ExitKey, findCompatibleKeys, UserContext } from '@/lib/exit-keys-engine';
+import { EXIT_KEYS, findCompatibleKeys, UserContext } from '@/lib/exit-keys-engine';
 import { useExitKeysProfile } from '@/hooks/useExitKeysProfile';
 import { useCountries } from '@/lib/countries-data';
 import type { Country } from '@/lib/types';

@@ -54,7 +54,7 @@ export function useVacationRecommendations() {
         originCountry: item.origin_country,
         destinations: (item.destinations as unknown as VacationDestination[]) || [],
         preferences: (item.preferences as Record<string, unknown>) || {},
-        createdAt: item.created_at,
+        createdAt: item.created_at ?? new Date().toISOString(),
       }));
 
       setRecommendations(mapped);

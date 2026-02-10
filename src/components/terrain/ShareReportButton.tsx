@@ -50,6 +50,8 @@ export function ShareReportButton({ countryId, countryName }: ShareReportButtonP
     }
   };
 
+  const hasNativeShare = typeof navigator.share === 'function';
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -63,7 +65,7 @@ export function ShareReportButton({ countryId, countryName }: ShareReportButtonP
           <Copy className="h-4 w-4 mr-2" />
           {t('terrainRealities.copyToClipboard')}
         </DropdownMenuItem>
-        {navigator.share && (
+        {hasNativeShare && (
           <DropdownMenuItem onClick={handleShareNative}>
             <Share2 className="h-4 w-4 mr-2" />
             {t('terrainRealities.shareReport')}

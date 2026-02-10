@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '@/hooks/useAuth';
@@ -355,7 +355,7 @@ export default function PreventionFilter() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { user } = useAuth();
-  const { trackSimulationStarted, trackSimulationCompleted, trackSimulationDropped } = useAnalytics();
+  const { trackSimulationCompleted, trackSimulationDropped } = useAnalytics();
   
   const [formData, setFormData] = useState<FilterFormData>({
     decisionType: null,

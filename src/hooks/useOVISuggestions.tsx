@@ -159,7 +159,7 @@ export function useOVISuggestions() {
   const { t } = useTranslation();
   const { user } = useAuth();
   const [dismissedSuggestions, setDismissedSuggestions] = useState<Set<string>>(new Set());
-  const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
 
   // Load dismissed suggestions from database on mount
   useEffect(() => {

@@ -40,7 +40,6 @@ interface CostCategory {
 export function StrategyCostSimulator({ 
   countryId, 
   countryName,
-  professionId,
   intention
 }: StrategyCostSimulatorProps) {
   const { t } = useTranslation();

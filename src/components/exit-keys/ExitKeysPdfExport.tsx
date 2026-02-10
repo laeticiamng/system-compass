@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Download, FileText, Loader2 } from 'lucide-react';
+import { FileText, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { jsPDF } from 'jspdf';
-import { ExitKeyResult, EXIT_KEYS } from '@/lib/exit-keys-engine';
+import { ExitKeyResult } from '@/lib/exit-keys-engine';
 import { toast } from 'sonner';
 
 interface ExitKeysPdfExportProps {

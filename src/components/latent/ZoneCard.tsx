@@ -58,6 +58,8 @@ interface ZoneCardProps {
   onDuplicate?: (zoneId: string) => void;
 }
 
+type ZoneTension = NonNullable<LatentZone['tensions']>[number];
+
 const STATUS_CONFIG: Record<ZoneStatus, { icon: typeof Moon; color: string; bgColor: string }> = {
   dormant: { icon: Moon, color: 'text-slate-500', bgColor: 'bg-slate-100 dark:bg-slate-800' },
   emergent: { icon: Sunrise, color: 'text-amber-500', bgColor: 'bg-amber-50 dark:bg-amber-950' },
@@ -103,11 +105,11 @@ export function ZoneCard({
     }
   };
 
-  const groupedTensions = (zone.tensions || []).reduce((acc, tension) => {
+  const groupedTensions = (zone.tensions ?? []).reduce<Record<TensionType, ZoneTension[]>>((acc, tension) => {
     if (!acc[tension.tension_type]) acc[tension.tension_type] = [];
     acc[tension.tension_type].push(tension);
     return acc;
-  }, {} as Record<TensionType, typeof zone.tensions>);
+  }, {} as Record<TensionType, ZoneTension[]>);
 
   return (
     <Card className={`transition-all duration-300 hover:shadow-md border-l-4 ${

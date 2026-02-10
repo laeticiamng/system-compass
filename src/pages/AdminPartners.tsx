@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -65,7 +64,6 @@ interface Contribution {
 }
 
 export default function AdminPartners() {
-  const { t } = useTranslation();
   const { user } = useAuth();
   const [applications, setApplications] = useState<PartnerApplication[]>([]);
   const [contributions, setContributions] = useState<Contribution[]>([]);

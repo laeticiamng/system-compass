@@ -14,7 +14,7 @@ import { OVISuggestions } from '@/components/ovi/OVISuggestions';
 import { cn } from '@/lib/utils';
 import { 
   Plus, X, Share2, Trash2, Save, Bookmark, FolderOpen,
-  Plane, DollarSign, Heart, Wifi, TrendingUp, TrendingDown, Minus,
+  TrendingUp, TrendingDown,
   ArrowLeftRight, Check, Scale, Users, User
 } from 'lucide-react';
 import {
@@ -41,22 +41,7 @@ import {
   DialogFooter,
   DialogClose,
 } from '@/components/ui/dialog';
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from '@/components/ui/tabs';
 import { toast } from 'sonner';
-
-const PYRAMID_TYPE_LABELS: Record<string, string> = {
-  PROBLEM_RENT: 'pyramids.problemRent.label',
-  STABILITY_REDIS: 'pyramids.stabilityRedis.label',
-  COMPETENCE_TRUST: 'pyramids.competenceTrust.label',
-  GROWTH_RISK: 'pyramids.growthRisk.label',
-  HYBRID_TRANSITION: 'pyramids.hybridTransition.label',
-  RESOURCE_EXTRACTION: 'pyramids.resourceExtraction.label',
-};
 
 const PYRAMID_TYPE_COLORS: Record<string, string> = {
   PROBLEM_RENT: 'pyramid-rent',
@@ -75,16 +60,6 @@ function getFlagEmoji(iso2: string): string {
     .split('')
     .map(char => 127397 + char.charCodeAt(0));
   return String.fromCodePoint(...codePoints);
-}
-
-function getVisaDifficultyScore(difficulty: string): number {
-  const scores: Record<string, number> = {
-    easy: 1,
-    moderate: 2,
-    difficult: 3,
-    very_difficult: 4,
-  };
-  return scores[difficulty] || 3;
 }
 
 export default function CompareUnified() {

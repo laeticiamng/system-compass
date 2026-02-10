@@ -4,14 +4,12 @@ import {
   FileText,
   Plus,
   Link2,
-  Calendar,
   Tag,
   Trash2,
   CheckCircle2,
   AlertTriangle,
   HelpCircle,
-  ExternalLink,
-  Download
+  ExternalLink
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -20,7 +18,6 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Progress } from '@/components/ui/progress';
-import { Separator } from '@/components/ui/separator';
 import {
   Select,
   SelectContent,

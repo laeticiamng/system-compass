@@ -1,14 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Lock, AlertTriangle, Shield } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Irreversa } from '@/components/irreversa/Irreversa';
-import { useAuth } from '@/hooks/useAuth';
 
 export default function IrreversaModule() {
   const { t } = useTranslation();
-  const { user } = useAuth();
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20 pt-20 md:pt-24">

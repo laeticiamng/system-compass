@@ -11,7 +11,6 @@ import {
   Sparkles,
   ArrowRight,
   Shield,
-  Clock,
   Scale,
   Lightbulb,
   AlertTriangle,

@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useUserCase, isDeepMode, CaseIntention } from '@/hooks/useUserCases';
+import { useUserCase, isDeepMode } from '@/hooks/useUserCases';
 import { useCountryGovernance } from '@/hooks/useCountryGovernance';
 import { useCountryById } from '@/lib/countries-data';
 import { getExtendedCountryMeta } from '@/lib/countries-extended';
@@ -23,8 +23,8 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { 
   ArrowLeft, Home, Briefcase, Shield, Target, FileText, 
-  Clock, Calendar, AlertTriangle, CheckCircle2, Loader2,
-  TrendingUp, Users, BarChart3, FileCheck, Map
+  Clock, Calendar, AlertTriangle, Loader2,
+  TrendingUp, Users, FileCheck, Map
 } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { fr } from 'date-fns/locale';

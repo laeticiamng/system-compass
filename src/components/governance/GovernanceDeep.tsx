@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { 
-  Shield, Target, Users, AlertTriangle, DollarSign, Clock, 
-  FileCheck, Building2, Eye, ChevronRight, Plus, Trash2
+  Shield, Target, Users, AlertTriangle, DollarSign, 
+  Building2, Eye, Plus, Trash2
 } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -10,7 +10,6 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Progress } from '@/components/ui/progress';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { GovernanceScore, UserGovernanceNotes } from '@/hooks/useCountryGovernance';
 import { UserCase } from '@/hooks/useUserCases';
@@ -25,10 +24,8 @@ interface GovernanceDeepProps {
 
 export function GovernanceDeep({ 
   governance, 
-  userNotes, 
   caseData, 
-  onUpdateCase, 
-  onSaveNotes 
+  onUpdateCase
 }: GovernanceDeepProps) {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('overview');

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
@@ -6,7 +6,6 @@ import { Slider } from '@/components/ui/slider';
 import { UserProfile, ProfileResult, PyramidType } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { useTestResults } from '@/hooks/useTestResults';
-import { useAuth } from '@/hooks/useAuth';
 import { OVISuggestionsWidget } from '@/components/ovi/OVISuggestionsWidget';
 import { ArrowRight, ArrowLeft, User, Target, Shield, Zap, FileCheck, Lightbulb, Eye, Plane } from 'lucide-react';
 
@@ -43,7 +42,6 @@ const PYRAMID_TYPE_COLORS: Record<string, string> = {
 export default function ProfileTest() {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { user } = useAuth();
   const { saveResult } = useTestResults();
   const [step, setStep] = useState(0);
   const [profile, setProfile] = useState<UserProfile>({

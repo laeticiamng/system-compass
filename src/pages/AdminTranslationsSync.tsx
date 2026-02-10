@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
@@ -17,7 +16,6 @@ interface TranslationStat {
 }
 
 export default function AdminTranslationsSync() {
-  const { t } = useTranslation();
   const { seedTranslations, getTranslationsStats, clearTranslations, isSeeding, progress, error } = useTranslationsSync();
   const [stats, setStats] = useState<TranslationStat[]>([]);
   const [isLoading, setIsLoading] = useState(true);

@@ -9,7 +9,6 @@ import {
   Tag,
   ChevronRight,
   Download,
-  Clock,
   CheckCircle2,
   AlertTriangle,
   Bookmark

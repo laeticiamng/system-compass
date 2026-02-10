@@ -14,12 +14,11 @@ interface FinancialIntelQuotaProps {
   className?: string;
 }
 
-export function FinancialIntelQuota({ onQuotaExceeded, className }: FinancialIntelQuotaProps) {
+export function FinancialIntelQuota({ className }: FinancialIntelQuotaProps) {
   const { t } = useTranslation();
   const { user } = useAuth();
   const { tier } = useSubscription();
   const [usageCount, setUsageCount] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
 
   const FREE_QUOTA = 1;
   const PRO_QUOTA = 50;
@@ -28,10 +27,7 @@ export function FinancialIntelQuota({ onQuotaExceeded, className }: FinancialInt
 
   useEffect(() => {
     const fetchUsage = async () => {
-      if (!user) {
-        setIsLoading(false);
-        return;
-      }
+      if (!user) return;
 
       try {
         // Get current month's generation runs
@@ -50,8 +46,6 @@ export function FinancialIntelQuota({ onQuotaExceeded, className }: FinancialInt
         setUsageCount(count || 0);
       } catch (error) {
         console.error('Error fetching usage:', error);
-      } finally {
-        setIsLoading(false);
       }
     };
 

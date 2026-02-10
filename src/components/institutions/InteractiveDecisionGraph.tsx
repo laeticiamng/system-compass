@@ -10,8 +10,7 @@ import {
   Move,
   CheckCircle2,
   Clock,
-  XCircle,
-  MessageSquare
+  XCircle
 } from 'lucide-react';
 import { DecisionNodeData } from './DecisionNode';
 

@@ -7,7 +7,6 @@ import {
   Clock, 
   Calendar, 
   AlertTriangle, 
-  TrendingUp,
   DollarSign,
   Shield
 } from 'lucide-react';
@@ -51,7 +50,7 @@ const PHASE_RISKS: Record<string, string[]> = {
   stabilization: ['longPayments', 'teamTurnover'],
 };
 
-export function TerrainTimeline({ countryId, countryName, projectType }: TerrainTimelineProps) {
+export function TerrainTimeline({ countryName }: TerrainTimelineProps) {
   const { t } = useTranslation();
   const [selectedScenario, setSelectedScenario] = useState<'optimistic' | 'realistic' | 'pessimistic'>('realistic');
   const [timeBuffer, setTimeBuffer] = useState(25); // Percentage buffer

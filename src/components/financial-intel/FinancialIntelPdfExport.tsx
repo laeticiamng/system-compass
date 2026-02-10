@@ -16,7 +16,6 @@ interface FinancialIntelPdfExportProps {
 
 export function FinancialIntelPdfExport({ 
   result,
-  country,
   sectorFocus,
   audience,
   onExportComplete

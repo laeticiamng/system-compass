@@ -5,7 +5,6 @@ import {
   Bell, 
   Mail, 
   Smartphone, 
-  Clock, 
   ChevronLeft,
   Save,
   Loader2,

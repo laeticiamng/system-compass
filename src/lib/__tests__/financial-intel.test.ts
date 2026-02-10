@@ -11,7 +11,6 @@
 import { describe, it, expect } from 'vitest';
 import {
   createMockFinancialIntelResult,
-  isValidISODate,
 } from './test-utils';
 
 // Types for validation
@@ -66,9 +65,6 @@ interface FinancialIntelResult {
 
 // Validation constants
 const VALID_CONFIDENCE_LEVELS: SourceConfidence[] = ['high', 'medium', 'low'];
-const VALID_SOURCE_TYPES = ['regulator', 'government', 'ngo', 'academic', 'media', 'industry'];
-const VALID_SCAM_CATEGORIES = ['investment', 'banking', 'crypto', 'real_estate', 'employment', 'romance', 'government_impersonation'];
-
 // Business logic functions (extracted for pure testing)
 function validateConfidenceLevel(level: string): level is SourceConfidence {
   return VALID_CONFIDENCE_LEVELS.includes(level as SourceConfidence);

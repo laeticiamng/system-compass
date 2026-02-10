@@ -225,7 +225,7 @@ export function useGenerationNotifications() {
           setLastUpdate(new Date());
           
           if (newRecord) {
-            setActiveBatch(prev => {
+            setActiveBatch(() => {
               if (newRecord.status === 'completed' || newRecord.status === 'failed') {
                 if (newRecord.status === 'completed') {
                   toast.success(`🎉 Batch terminé !`, {

@@ -26,6 +26,8 @@ interface ZoneDetailDialogProps {
   onClose: () => void;
 }
 
+type ZoneTension = NonNullable<LatentZone['tensions']>[number];
+
 const STATUS_CONFIG: Record<ZoneStatus, { icon: typeof Moon; color: string; bgColor: string }> = {
   dormant: { icon: Moon, color: 'text-slate-500', bgColor: 'bg-slate-100 dark:bg-slate-800' },
   emergent: { icon: Sunrise, color: 'text-amber-500', bgColor: 'bg-amber-50 dark:bg-amber-950' },
@@ -49,11 +51,11 @@ export function ZoneDetailDialog({ zone, isOpen, onClose }: ZoneDetailDialogProp
   const statusColor = STATUS_CONFIG[zone.status].color;
   const statusBgColor = STATUS_CONFIG[zone.status].bgColor;
 
-  const groupedTensions = (zone.tensions || []).reduce((acc, tension) => {
+  const groupedTensions = (zone.tensions ?? []).reduce<Record<TensionType, ZoneTension[]>>((acc, tension) => {
     if (!acc[tension.tension_type]) acc[tension.tension_type] = [];
     acc[tension.tension_type].push(tension);
     return acc;
-  }, {} as Record<TensionType, typeof zone.tensions>);
+  }, {} as Record<TensionType, ZoneTension[]>);
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>

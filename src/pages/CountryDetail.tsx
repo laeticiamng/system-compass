@@ -2,7 +2,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import { useCountryById } from '@/lib/countries-data';
-import { isExtendedCountry, getExtendedCountryMeta } from '@/lib/countries-extended';
+import { getExtendedCountryMeta } from '@/lib/countries-extended';
 import { CountryTroncSection } from '@/components/country/CountryTroncSection';
 import { CountryVariantSection } from '@/components/country/CountryVariantSection';
 import { CountryProjectAnalysis } from '@/components/country/CountryProjectAnalysis';
@@ -21,14 +21,13 @@ import { CountryTagsRadar } from '@/components/country/CountryTagsRadar';
 import { CountryPdfExport } from '@/components/CountryPdfExport';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { ArrowLeft, Calendar, ExternalLink, Layers, Map, Target, Brain, Loader2, Sparkles, Shield, ShieldAlert } from 'lucide-react';
+import { ArrowLeft, Calendar, ExternalLink, Layers, Map, Target, Brain, Loader2, Shield, ShieldAlert } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { useUserHistory } from '@/hooks/useUserHistory';
 import { useExitKeysProfile } from '@/hooks/useExitKeysProfile';
 import { useCountryGovernance } from '@/hooks/useCountryGovernance';
 import { AiHelpButton } from '@/components/ai/AiHelpButton';
-import { AiAction, AiContext } from '@/components/ai/AiSidePanel';
 
 const PYRAMID_TYPE_LABELS: Record<string, string> = {
   PROBLEM_RENT: 'pyramids.problemRent.label',

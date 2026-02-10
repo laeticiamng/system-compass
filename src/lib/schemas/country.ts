@@ -1,5 +1,4 @@
 import { z } from 'zod';
-import { PyramidType } from '../types';
 
 // Enum pour les types de pyramides
 const PyramidTypeEnum = z.enum([

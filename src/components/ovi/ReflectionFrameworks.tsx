@@ -6,7 +6,6 @@ import {
   Zap, 
   User,
   ArrowRight,
-  BookOpen,
   Timer,
   Eye
 } from 'lucide-react';

@@ -32,18 +32,23 @@ export function useGameLeaderboard() {
         throw fetchError;
       }
 
-      const mapped: LeaderboardEntry[] = (data || []).map(row => ({
+      const mapped: LeaderboardEntry[] = (data || []).map(row => {
+        const riskSuccesses = row.risk_successes ?? 0;
+        const totalRiskEvents = row.total_risk_events ?? 0;
+
+        return ({
         userId: row.user_id,
         displayName: row.display_name || 'Anonymous',
         bestScoreSolo: row.best_score_solo || 0,
         bestScoreRace: row.best_score_race || 0,
         totalGamesPlayed: row.total_games_played || 0,
         countriesVisited: (row.countries_visited || []).length,
-        riskSuccessRate: row.total_risk_events 
-          ? Math.round((row.risk_successes / row.total_risk_events) * 100)
+        riskSuccessRate: totalRiskEvents 
+          ? Math.round((riskSuccesses / totalRiskEvents) * 100)
           : 0,
         lastGameAt: row.last_game_at || row.updated_at,
-      }));
+      });
+      });
 
       // Filter out entries with 0 games played
       setEntries(mapped.filter(e => e.totalGamesPlayed > 0));

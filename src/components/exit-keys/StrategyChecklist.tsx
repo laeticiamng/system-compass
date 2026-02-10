@@ -2,9 +2,7 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { 
   CheckCircle2, 
-  Circle, 
   ListTodo,
-  Calendar,
   AlertTriangle,
   FileText,
   Briefcase,
@@ -40,7 +38,6 @@ interface StrategyChecklistProps {
 }
 
 export function StrategyChecklist({ 
-  countryId, 
   countryName,
   intention,
   onProgressChange

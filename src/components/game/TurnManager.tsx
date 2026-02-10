@@ -71,7 +71,6 @@ export default function TurnManager({
   onResourceChange,
   onPyramidScoreChange,
   onPhaseComplete,
-  onTurnEnd,
   onTrackRisk,
   onTrackAction,
   onFamilyStatusChange,
@@ -252,84 +251,9 @@ export default function TurnManager({
     setFamilyEvent(null);
   };
 
-  const _handleActionSelect = (action: GameAction) => {
-    setSelectedAction(action);
-  };
-
-  const canAffordAction = (action: GameAction): boolean => {
-    if (action.requirements) {
-      for (const [resource, required] of Object.entries(action.requirements)) {
-        if (currentPlayer.resources[resource as ResourceType] < required) {
-          return false;
-        }
-      }
-    }
-    for (const [resource, cost] of Object.entries(action.costs)) {
-      if (currentPlayer.resources[resource as ResourceType] < cost) {
-        return false;
-      }
-    }
-    return true;
-  };
-
-  const executeAction = (action: GameAction) => {
-    const newResources = { ...currentPlayer.resources };
-    
-    // Apply costs
-    Object.entries(action.costs).forEach(([resource, cost]) => {
-      const key = resource as ResourceType;
-      newResources[key] = Math.max(0, newResources[key] - cost);
-    });
-    
-    // Check for risk
-    let success = true;
-    if (action.riskChance && Math.random() < action.riskChance) {
-      success = false;
-      // Apply risk penalty
-      if (action.riskPenalty) {
-        Object.entries(action.riskPenalty).forEach(([resource, penalty]) => {
-          const key = resource as ResourceType;
-          newResources[key] = Math.max(0, newResources[key] - penalty);
-        });
-      }
-    } else {
-      // Apply gains
-      Object.entries(action.gains).forEach(([resource, gain]) => {
-        const key = resource as ResourceType;
-        newResources[key] = Math.min(10, newResources[key] + gain);
-      });
-      
-      // Apply pyramid effects
-      if (action.pyramidEffect) {
-        onPyramidScoreChange(currentPlayer.id, action.pyramidEffect);
-      }
-    }
-    
-    onResourceChange(currentPlayer.id, newResources);
-    setActionResult(success ? 'success' : 'failed');
-    setPhase('action_resolution');
-    onPhaseComplete('action_selection', { action, success });
-  };
-
-  const _handleActionConfirm = () => {
-    if (!selectedAction || !canAffordAction(selectedAction)) return;
-    executeAction(selectedAction);
-  };
-
   const handleContinueToBoard = () => {
     setPhase('board_move');
     onPhaseComplete('action_resolution');
-  };
-
-  const _handleEndTurn = () => {
-    // Reset state for next turn
-    setGlobalEvent(null);
-    setCountryEvent(null);
-    setFamilyEvent(null);
-    setSelectedAction(null);
-    setActionResult(null);
-    setPhase('global_event');
-    onTurnEnd();
   };
 
   // Define phases for progress indicator

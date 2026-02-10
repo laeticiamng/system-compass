@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 import { 
   ArrowLeft, 
   AlertTriangle, 
@@ -15,8 +14,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 
 export default function Disclaimer() {
-  const { t } = useTranslation();
-
   return (
     <main className="min-h-screen bg-background pt-24 pb-16">
       <div className="container mx-auto px-4 max-w-4xl">

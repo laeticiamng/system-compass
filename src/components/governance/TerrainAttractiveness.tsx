@@ -24,7 +24,7 @@ const getScoreLabel = (score: number): string => {
   return 'Très difficile';
 };
 
-export function TerrainAttractiveness({ countryId, countryName, projectType }: TerrainAttractivenessProps) {
+export function TerrainAttractiveness({ countryId, countryName }: TerrainAttractivenessProps) {
   const { t } = useTranslation();
   const { governance } = useCountryGovernance(countryId);
 

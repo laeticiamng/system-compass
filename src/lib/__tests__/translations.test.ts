@@ -185,7 +185,7 @@ describe('Translation Key Structure', () => {
       'common.loading',
     ];
 
-    Object.entries(LANGUAGES).forEach(([langCode, translations]) => {
+    Object.entries(LANGUAGES).forEach(([, translations]) => {
       const missing: string[] = [];
       
       for (const key of requiredKeys) {

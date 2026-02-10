@@ -10,7 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Skeleton } from '@/components/ui/skeleton';
 import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
-import { User, MapPin, GraduationCap, Briefcase, Target, Save, Edit, X } from 'lucide-react';
+import { User, MapPin, GraduationCap, Target, Save, Edit, X } from 'lucide-react';
 import { useCountries } from '@/lib/countries-store';
 import { LIFE_MOTOR_PROFILES } from '@/lib/types';
 

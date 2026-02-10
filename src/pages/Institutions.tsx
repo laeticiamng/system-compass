@@ -5,11 +5,9 @@ import {
   Building2, 
   Users, 
   Scale, 
-  Target, 
   AlertTriangle, 
   FileText, 
   Eye, 
-  Clock, 
   Shield, 
   ArrowRight,
   Briefcase,
@@ -21,7 +19,6 @@ import {
   Lightbulb,
   UserCheck,
   History,
-  BarChart3,
   Info
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';

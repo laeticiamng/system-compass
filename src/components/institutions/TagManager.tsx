@@ -31,7 +31,7 @@ interface TagManagerProps {
 
 export function TagManager({ decisionId, selectedTags = [], onTagsChange, compact }: TagManagerProps) {
   const { t } = useTranslation();
-  const { tags, createTag, deleteTag, addTagToDecision, removeTagFromDecision } = useTraceOSTags();
+  const { tags, createTag, addTagToDecision, removeTagFromDecision } = useTraceOSTags();
   const [newTagName, setNewTagName] = useState('');
   const [newTagColor, setNewTagColor] = useState(TAG_COLORS[0]);
   const [isCreating, setIsCreating] = useState(false);

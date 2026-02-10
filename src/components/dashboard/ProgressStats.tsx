@@ -41,8 +41,6 @@ interface ProgressStatsProps {
   exitKey: ExitKey;
 }
 
-const COLORS = ['hsl(var(--primary))', 'hsl(var(--muted))', 'hsl(142, 76%, 36%)', 'hsl(38, 92%, 50%)', 'hsl(0, 84%, 60%)'];
-
 export function ProgressStats({ progress, exitKey }: ProgressStatsProps) {
   const { t } = useTranslation();
   

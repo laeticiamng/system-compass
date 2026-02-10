@@ -2,8 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { 
   validateCountry, 
   safeValidateCountry, 
-  validateCountryWithReport,
-  CountrySchema 
+  validateCountryWithReport 
 } from '../schemas/country';
 
 describe('Country Schema Validation', () => {
