@@ -357,7 +357,6 @@ export function RoadmapOS({ caseId, isAdvancedMode = false }: RoadmapOSProps) {
                 <CardContent>
                   {/* Initiatives Grid */}
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
-                    {/* TODO */}
                     <div className="space-y-2">
                       <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
                         {t('pmo.status.todo', 'À faire')}
