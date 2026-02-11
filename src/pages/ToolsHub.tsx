@@ -140,9 +140,9 @@ export default function ToolsHub() {
   return (
     <>
       <Helmet>
-        <title>{t('hub.meta.title', 'Centre des Outils - Pyramid Compass | Analyse & Planification')}</title>
-        <meta name="description" content={t('hub.meta.description', 'Accédez à tous les outils Pyramid Compass : tests de profil, comparateur de pays, stratégies, calculateur fiscal, et plus.')} />
-        <meta property="og:title" content={t('hub.meta.ogTitle', 'Centre des Outils - Pyramid Compass')} />
+        <title>{t('hub.meta.title', 'Centre des Outils - System Compass | Analyse & Planification')}</title>
+        <meta name="description" content={t('hub.meta.description', 'Accédez à tous les outils System Compass : tests de profil, comparateur de pays, stratégies, calculateur fiscal, et plus.')} />
+        <meta property="og:title" content={t('hub.meta.ogTitle', 'Centre des Outils - System Compass')} />
         <meta property="og:description" content={t('hub.meta.ogDescription', 'Tous vos outils d\'analyse, de planification et de décision en un seul endroit.')} />
         <meta property="og:url" content="https://world-alignment.lovable.app/tools" />
         <link rel="canonical" href="https://world-alignment.lovable.app/tools" />

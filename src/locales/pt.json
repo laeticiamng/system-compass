@@ -146,7 +146,7 @@
     }
   },
   "common": {
-    "appName": "Pyramid Compass",
+    "appName": "System Compass",
     "tagline": "Simulador de decisões para sistemas reais",
     "positioningLine": "Ferramenta de análise e simulação. Tu decides, nós iluminamos.",
     "disclaimer": "Sem aconselhamento legal, financeiro ou médico. Continuas responsável pelas tuas decisões.",
@@ -235,7 +235,7 @@
     "important": "Importante",
     "warning": "Nenhum resultado mostrado é um diagnóstico, recomendação ou conselho profissional.",
     "analysisToolTitle": "Ferramenta de análise e simulação",
-    "analysisToolDesc": "Pyramid Compass é uma ferramenta educacional, não um serviço de consultoria.",
+    "analysisToolDesc": "System Compass é uma ferramenta educacional, não um serviço de consultoria.",
     "noAdviceTitle": "Sem aconselhamento profissional",
     "noAdviceDesc": "Não é fornecido aconselhamento jurídico, financeiro ou médico.",
     "responsibleTitle": "Tu continuas responsável",
@@ -678,7 +678,7 @@
       "title": "Porque esta ferramenta existe",
       "paragraph1": "Esta ferramenta foi criada por alguém que perdeu anos a tomar decisões sem entender o sistema em que operava.",
       "paragraph2": "País errado, carreira errada, timing errado — não por falta de inteligência, mas por falta de um quadro.",
-      "paragraph3": "Pyramid Compass nasceu desta frustração: dar a todos a análise que só os privilegiados recebem da sua rede.",
+      "paragraph3": "System Compass nasceu desta frustração: dar a todos a análise que só os privilegiados recebem da sua rede.",
       "conclusion": "Isto não é uma ferramenta que te diz o que fazer. É uma ferramenta que te ajuda a VER — para que TU decidas com pleno conhecimento."
     },
     "forEveryone": {
@@ -688,7 +688,7 @@
     "faq": {
       "title": "Perguntas frequentes",
       "q1": {
-        "question": "O Pyramid Compass pode dizer-me que país escolher?",
+        "question": "O System Compass pode dizer-me que país escolher?",
         "answer": "Não. A ferramenta analisa sistemas e simula cenários, mas a decisão final é tua. Fornecemos informação, tu fazes as tuas próprias escolhas."
       },
       "q2": {
@@ -2684,7 +2684,7 @@
     "next": "Seguinte",
     "start": "Começar",
     "step1": {
-      "title": "Bem-vindo ao Pyramid Compass",
+      "title": "Bem-vindo ao System Compass",
       "description": "A tua bússola para navegar no sistema global. Compreende as regras invisíveis que governam cada país."
     },
     "step2": {
@@ -3665,7 +3665,7 @@
     "noLegalAdvice": "Sem aconselhamento jurídico",
     "noDreamSold": "Sem sonhos vendidos",
     "structuredLucidity": "Lucidez estruturada",
-    "philosophy": "Pyramid Compass é uma plataforma de orientação antes das decisões.",
+    "philosophy": "System Compass é uma plataforma de orientação antes das decisões.",
     "philosophyDesc": "Permitir a cada pessoa compreender claramente as suas opções reais, riscos, custos e alternativas, antes de comprometer o seu dinheiro, vida ou futuro.",
     "quickTitle": "Acesso rápido conforme a sua necessidade",
     "toolsTitle": "Todas as ferramentas de orientação",
@@ -3759,7 +3759,7 @@
     "badge": "Soluções Empresariais",
     "title": "Para Organizações e Decisores",
     "subtitle": "Ferramentas premium para suporte de decisões institucionais e reflexão estratégica.",
-    "intro": "Pyramid Compass oferece módulos dedicados para organizações que procuram estruturar a sua tomada de decisões sem delegar responsabilidade.",
+    "intro": "System Compass oferece módulos dedicados para organizações que procuram estruturar a sua tomada de decisões sem delegar responsabilidade.",
     "tabs": {
       "modules": "Módulos"
     },

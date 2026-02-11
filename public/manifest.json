@@ -1,6 +1,6 @@
 {
-  "name": "Pyramid Compass - World Alignment",
-  "short_name": "Pyramid Compass",
+  "name": "System Compass - World Alignment",
+  "short_name": "System Compass",
   "description": "Strategic decision simulator for real-world systems. Analyze countries, plan relocations, and navigate international decisions.",
   "start_url": "/",
   "display": "standalone",

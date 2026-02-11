@@ -163,7 +163,7 @@ export function Header() {
               <Compass className="w-4 h-4 md:w-5 md:h-5 text-primary" />
             </div>
             <span className="font-display font-bold text-sm sm:text-base md:text-lg truncate">
-              <span className="hidden xs:inline">Pyramid </span>
+              <span className="hidden xs:inline">System </span>
               <span className="gold-text">Compass</span>
             </span>
           </Link>
@@ -354,7 +354,7 @@ export function Header() {
               <SheetHeader>
                 <SheetTitle className="flex items-center gap-2">
                   <Compass className="w-5 h-5 text-primary" />
-                  Pyramid Compass
+                  System Compass
                 </SheetTitle>
               </SheetHeader>
               <nav className="flex flex-col gap-1 mt-6">

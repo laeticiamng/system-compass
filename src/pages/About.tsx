@@ -124,9 +124,9 @@ export default function About() {
   return (
     <>
       <Helmet>
-        <title>À propos - Pyramid Compass | Outil de lucidité stratégique</title>
-        <meta name="description" content="Découvrez Pyramid Compass : un simulateur de décisions et outil d'analyse des systèmes pays. Aucun conseil juridique, financier ou médical. Vous restez responsable." />
-        <meta property="og:title" content="À propos - Pyramid Compass | Outil de lucidité stratégique" />
+        <title>À propos - System Compass | Outil de lucidité stratégique</title>
+        <meta name="description" content="Découvrez System Compass : un simulateur de décisions et outil d'analyse des systèmes pays. Aucun conseil juridique, financier ou médical. Vous restez responsable." />
+        <meta property="og:title" content="À propos - System Compass | Outil de lucidité stratégique" />
         <meta property="og:description" content="Simulateur de décisions dans des systèmes réels. Outil d'analyse uniquement. Tu décides, nous éclairons." />
         <meta property="og:url" content="https://world-alignment.lovable.app/about" />
         <link rel="canonical" href="https://world-alignment.lovable.app/about" />
@@ -168,7 +168,7 @@ export default function About() {
             </div>
             <blockquote className="text-center max-w-3xl mx-auto">
               <p className="text-xl font-medium mb-4">
-                {t('orientationHub.philosophy', 'Pyramid Compass est une plateforme d\'orientation avant décision.')}
+                {t('orientationHub.philosophy', 'System Compass est une plateforme d\'orientation avant décision.')}
               </p>
               <p className="text-muted-foreground">
                 {t('orientationHub.philosophyDesc', 'Permettre à chaque personne de comprendre clairement ses options réelles, leurs risques, leurs coûts et leurs alternatives, avant d\'engager son argent, sa vie ou son avenir.')}
@@ -399,7 +399,7 @@ export default function About() {
           <CardContent className="space-y-4 text-muted-foreground">
             <p>{t('about.origin.paragraph1', 'Cet outil a été créé par quelqu\'un qui a perdu des années à faire des choix sans comprendre le système dans lequel il évoluait.')}</p>
             <p>{t('about.origin.paragraph2', 'Mauvais pays, mauvaise carrière, mauvais timing — pas par manque d\'intelligence, mais par manque de grille de lecture.')}</p>
-            <p>{t('about.origin.paragraph3', 'Pyramid Compass est né de cette frustration : offrir à tous l\'analyse que seuls les privilégiés reçoivent de leur entourage.')}</p>
+            <p>{t('about.origin.paragraph3', 'System Compass est né de cette frustration : offrir à tous l\'analyse que seuls les privilégiés reçoivent de leur entourage.')}</p>
             <p className="font-medium text-foreground">
               {t('about.origin.conclusion', 'Ce n\'est pas un outil qui te dit quoi faire. C\'est un outil qui t\'aide à VOIR — pour que TU décides en connaissance de cause.')}
             </p>
@@ -423,7 +423,7 @@ export default function About() {
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground mb-6">
-              {t('orientationHub.alternatives.description', 'Pyramid Compass peut révéler que l\'option envisagée est trop risquée, irréaliste ou destructrice. Dans ce cas, la plateforme aide à explorer des alternatives :')}
+              {t('orientationHub.alternatives.description', 'System Compass peut révéler que l\'option envisagée est trop risquée, irréaliste ou destructrice. Dans ce cas, la plateforme aide à explorer des alternatives :')}
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {[
@@ -519,7 +519,7 @@ export default function About() {
         <Card className="bg-gradient-to-r from-primary/5 to-amber-500/5 border-primary/20">
           <CardContent className="pt-6 text-center">
             <h3 className="text-xl font-semibold mb-3">
-              {t('orientationHub.partners.title', 'Vous voulez diffuser Pyramid Compass ?')}
+              {t('orientationHub.partners.title', 'Vous voulez diffuser System Compass ?')}
             </h3>
             <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
               {t('orientationHub.partners.description', 'Rejoignez le programme Compass Partners pour une diffusion responsable basée sur l\'usage réel et la compréhension.')}

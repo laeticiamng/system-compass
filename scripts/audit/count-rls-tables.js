@@ -12,7 +12,7 @@ const path = require('path');
 const TYPES_FILE = path.join(__dirname, '../../src/integrations/supabase/types.ts');
 
 function countRlsTables() {
-  console.log('🔒 Pyramid Compass - RLS Tables Counter');
+  console.log('🔒 System Compass - RLS Tables Counter');
   console.log('========================================\n');
 
   if (!fs.existsSync(TYPES_FILE)) {

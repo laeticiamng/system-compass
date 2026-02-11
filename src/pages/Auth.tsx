@@ -252,12 +252,12 @@ export default function Auth() {
   return (
     <>
       <Helmet>
-        <title>Connexion - Pyramid Compass | Accédez à votre compte</title>
-        <meta name="description" content="Connectez-vous à Pyramid Compass pour accéder à vos analyses de pays, recommandations personnalisées et tableau de bord. Créez un compte gratuit." />
-        <meta property="og:title" content="Connexion - Pyramid Compass" />
+        <title>Connexion - System Compass | Accédez à votre compte</title>
+        <meta name="description" content="Connectez-vous à System Compass pour accéder à vos analyses de pays, recommandations personnalisées et tableau de bord. Créez un compte gratuit." />
+        <meta property="og:title" content="Connexion - System Compass" />
         <meta property="og:description" content="Accédez à vos analyses de pays et stratégies de sortie personnalisées." />
         <meta property="og:url" content="https://world-alignment.lovable.app/auth" />
-        <meta name="twitter:title" content="Connexion - Pyramid Compass" />
+        <meta name="twitter:title" content="Connexion - System Compass" />
         <meta name="twitter:description" content="Accédez à vos analyses de pays et stratégies de sortie personnalisées." />
         <link rel="canonical" href="https://world-alignment.lovable.app/auth" />
       </Helmet>

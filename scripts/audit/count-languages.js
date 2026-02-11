@@ -24,7 +24,7 @@ function countKeys(obj, prefix = '') {
 }
 
 function countLanguages() {
-  console.log('🌍 Pyramid Compass - Language Counter');
+  console.log('🌍 System Compass - Language Counter');
   console.log('======================================\n');
 
   if (!fs.existsSync(LOCALES_DIR)) {

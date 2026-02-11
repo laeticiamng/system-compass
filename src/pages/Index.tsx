@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
-import { useCountries } from '@/lib/countries-data';
+import { useCountries, countriesSeed } from '@/lib/countries-data';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { CountryCard } from '@/components/CountryCard';
@@ -46,13 +46,13 @@ export default function Index() {
   return (
     <>
       <Helmet>
-        <title>{t('landing.meta.title', 'Pyramid Compass - Compare 44 pays pour ton expatriation')}</title>
+        <title>{t('landing.meta.title', 'System Compass - Compare 44 pays pour ton expatriation')}</title>
         <meta name="description" content={t('landing.meta.description', 'Compare 44 pays pour ton expatriation : fiscalité, visas, coût de la vie. Test gratuit en 2 minutes.')} />
-        <meta property="og:title" content={t('landing.meta.ogTitle', 'Pyramid Compass - Compare les pays pour ton expatriation')} />
+        <meta property="og:title" content={t('landing.meta.ogTitle', 'System Compass - Compare les pays pour ton expatriation')} />
         <meta property="og:description" content={t('landing.meta.ogDescription', 'Fiscalité, visas, coût de la vie : compare 44 pays et trouve celui qui te correspond. Test gratuit en 2 minutes.')} />
       </Helmet>
       <FAQPageJsonLd faqs={[
-        { question: "Qu'est-ce que Pyramid Compass ?", answer: "Pyramid Compass est une plateforme d'intelligence décisionnelle pour la relocalisation internationale. Elle analyse les systèmes de 44 pays pour vous aider à planifier votre expatriation." },
+        { question: "Qu'est-ce que System Compass ?", answer: "System Compass est une plateforme d'intelligence décisionnelle pour la relocalisation internationale. Elle analyse les systèmes de 44 pays pour vous aider à planifier votre expatriation." },
         { question: "Comment fonctionne le test de profil ?", answer: "Le test rapide évalue vos priorités (fiscalité, qualité de vie, sécurité, opportunités) en 2 minutes pour vous suggérer les pays les plus compatibles avec votre profil." },
         { question: "Le service est-il gratuit ?", answer: "L'accès de base est gratuit avec le test rapide et l'exploration des pays. Le plan Premium à 9,90€/mois donne accès à tous les outils avancés." },
         { question: "Les données sont-elles fiables ?", answer: "Les données proviennent de sources publiques (Banque Mondiale, OCDE, Transparency International) et sont mises à jour régulièrement. Elles sont fournies à titre informatif uniquement." },
@@ -275,7 +275,7 @@ export default function Index() {
               onClick={() => navigate('/countries')}
               className="gap-2"
             >
-              {t('landing.example.cta', 'Voir les {{count}} pays analysés', { count: countries.length })}
+              {t('landing.example.cta', 'Voir les {{count}} pays analysés', { count: countries.length || countriesSeed.length })}
               <ArrowRight className="w-4 h-4" />
             </Button>
           </div>
@@ -476,7 +476,7 @@ export default function Index() {
                   {t('landing.faq.q2', 'Est-ce un conseil juridique ou fiscal ?')}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
-                  {t('landing.faq.a2', 'Non. Pyramid Compass est un outil de simulation et de comparaison. Il ne remplace pas un avocat, un fiscaliste ou un conseiller en immigration. Consultez toujours un professionnel avant de prendre une décision.')}
+                  {t('landing.faq.a2', 'Non. System Compass est un outil de simulation et de comparaison. Il ne remplace pas un avocat, un fiscaliste ou un conseiller en immigration. Consultez toujours un professionnel avant de prendre une décision.')}
                 </AccordionContent>
               </AccordionItem>
             </motion.div>

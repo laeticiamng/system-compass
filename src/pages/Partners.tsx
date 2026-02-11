@@ -43,13 +43,13 @@ export default function Partners() {
               Compass Partners
             </h1>
             <p className="text-sm sm:text-lg text-muted-foreground mb-6 sm:mb-8">
-              Diffusion responsable de Pyramid Compass
+              Diffusion responsable de System Compass
             </p>
             
             <div className="bg-card border rounded-xl p-4 sm:p-6 text-left max-w-xl mx-auto">
               <Quote className="h-6 w-6 sm:h-8 sm:w-8 text-primary/30 mb-2" />
               <p className="text-sm sm:text-lg italic text-foreground/80">
-                Pyramid Compass reconnaît les personnes qui contribuent à diffuser la lucidité,
+                System Compass reconnaît les personnes qui contribuent à diffuser la lucidité,
                 par l'usage, la compréhension et la responsabilité.
               </p>
             </div>
@@ -80,7 +80,7 @@ export default function Partners() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-muted-foreground">
-                  Pyramid Compass repose sur une conviction simple :
+                  System Compass repose sur une conviction simple :
                 </p>
                 <blockquote className="border-l-4 border-primary pl-4 py-2 bg-muted/30 rounded-r">
                   <p className="font-medium">
@@ -113,7 +113,7 @@ export default function Partners() {
                   <div>
                     <h4 className="font-medium mb-2">Rôle</h4>
                     <ul className="text-sm text-muted-foreground space-y-1">
-                      <li>• Présenter Pyramid Compass à des personnes pertinentes</li>
+                      <li>• Présenter System Compass à des personnes pertinentes</li>
                       <li>• Partager une expérience d'usage authentique</li>
                       <li>• Contribuer par des retours qualitatifs</li>
                     </ul>

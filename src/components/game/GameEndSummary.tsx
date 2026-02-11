@@ -566,7 +566,7 @@ export default function GameEndSummary({
             {t('gameEnd.mainMenu')}
           </Button>
           <Button variant="outline" className="gap-2" onClick={() => {
-            const shareText = `🎮 J'ai joué à Pyramid Compass et obtenu un score de ${rankedResults[0]?.lifeScore.total || 0}! Verdict: ${t(`gameEnd.verdicts.${rankedResults[0]?.lifeScore.verdict}.label`)}`;
+            const shareText = `🎮 J'ai joué à System Compass et obtenu un score de ${rankedResults[0]?.lifeScore.total || 0}! Verdict: ${t(`gameEnd.verdicts.${rankedResults[0]?.lifeScore.verdict}.label`)}`;
             if (navigator.share) {
               navigator.share({ text: shareText, url: window.location.origin + '/life-game' });
             } else {

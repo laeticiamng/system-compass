@@ -393,7 +393,7 @@ export default function ExitKeys() {
                 <Shield className="w-5 h-5 text-amber-500" />
               </div>
               <p className="text-sm text-muted-foreground">
-                <strong className="text-foreground">{t('exitKeys.reminder', 'Rappel')} :</strong> {t('exitKeys.lucidityMessage', 'Pyramid Compass structure la lucidité. Si l\'analyse révèle que votre option est trop risquée ou irréaliste, nous vous aiderons à explorer des alternatives : rester et entreprendre, migrer autrement, se former d\'abord, ou changer d\'objectif.')}
+                <strong className="text-foreground">{t('exitKeys.reminder', 'Rappel')} :</strong> {t('exitKeys.lucidityMessage', 'System Compass structure la lucidité. Si l\'analyse révèle que votre option est trop risquée ou irréaliste, nous vous aiderons à explorer des alternatives : rester et entreprendre, migrer autrement, se former d\'abord, ou changer d\'objectif.')}
               </p>
             </div>
           </div>

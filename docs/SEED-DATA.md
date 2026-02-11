@@ -1,4 +1,4 @@
-# Données de Seed - Pyramid Compass
+# Données de Seed - System Compass
 
 Ce document explique comment peupler la base de données avec des données de test.
 

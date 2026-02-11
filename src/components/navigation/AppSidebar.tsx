@@ -50,7 +50,7 @@ export function AppSidebar() {
           </div>
           {!isCollapsed && (
             <span className="font-display font-bold text-sm">
-              Pyramid <span className="text-primary">Compass</span>
+              System <span className="text-primary">Compass</span>
             </span>
           )}
         </div>

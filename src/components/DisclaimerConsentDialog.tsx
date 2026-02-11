@@ -33,7 +33,7 @@ export function DisclaimerConsentDialog() {
                   {t('disclaimerConsent.bannerTitle', 'Outil éducatif uniquement')}
                 </p>
                 <p className="text-xs text-muted-foreground">
-                  {t('disclaimerConsent.bannerText', 'Pyramid Compass est un outil d\'analyse, pas un service de conseil. Aucun résultat ne constitue un avis professionnel. Vos décisions vous appartiennent.')}
+                  {t('disclaimerConsent.bannerText', 'System Compass est un outil d\'analyse, pas un service de conseil. Aucun résultat ne constitue un avis professionnel. Vos décisions vous appartiennent.')}
                 </p>
               </div>
 

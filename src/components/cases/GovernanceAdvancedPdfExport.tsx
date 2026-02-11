@@ -299,7 +299,7 @@ export function GovernanceAdvancedPdfExport({
         pdf.setFont('helvetica', 'normal');
         pdf.setTextColor(128);
         pdf.text(
-          `${t('governanceAdvanced.notice.title', 'Orientation prévention')} - Pyramid Compass - Page ${i}/${totalPages}`,
+          `${t('governanceAdvanced.notice.title', 'Orientation prévention')} - System Compass - Page ${i}/${totalPages}`,
           margin,
           pdf.internal.pageSize.getHeight() - 10
         );

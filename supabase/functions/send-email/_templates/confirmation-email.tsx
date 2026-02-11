@@ -27,13 +27,13 @@ export const ConfirmationEmail = ({
 }: ConfirmationEmailProps) => (
   <Html>
     <Head />
-    <Preview>Bienvenue sur Pyramid Compass 🧭 - Votre compte est prêt !</Preview>
+    <Preview>Bienvenue sur System Compass 🧭 - Votre compte est prêt !</Preview>
     <Body style={main}>
       <Container style={container}>
         <Section style={logoSection}>
           <Img
             src="https://abysiagseykztutnbjtu.supabase.co/storage/v1/object/public/email-assets/logo-192.png?v=1"
-            alt="Pyramid Compass Logo"
+            alt="System Compass Logo"
             width="80"
             height="80"
             style={logo}
@@ -41,7 +41,7 @@ export const ConfirmationEmail = ({
         </Section>
 
         <Heading style={h1}>
-          {displayName ? `Bienvenue ${displayName} ! 🧭` : 'Bienvenue sur Pyramid Compass 🧭'}
+          {displayName ? `Bienvenue ${displayName} ! 🧭` : 'Bienvenue sur System Compass 🧭'}
         </Heading>
         
         <Text style={text}>
@@ -83,12 +83,12 @@ export const ConfirmationEmail = ({
         <Hr style={hr} />
 
         <Text style={footer}>
-          Si vous n'avez pas créé de compte sur Pyramid Compass, vous pouvez ignorer cet email.
+          Si vous n'avez pas créé de compte sur System Compass, vous pouvez ignorer cet email.
         </Text>
         
         <Text style={footerBrand}>
           <Link href="https://world-alignment.lovable.app" style={footerLink}>
-            Pyramid Compass
+            System Compass
           </Link>
           {' '}— Votre boussole stratégique pour l'expatriation
         </Text>

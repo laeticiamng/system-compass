@@ -1,6 +1,6 @@
-# 🚀 Guide de démarrage - Pyramid Compass
+# 🚀 Guide de démarrage - System Compass
 
-Ce guide vous accompagne pour installer et configurer Pyramid Compass en développement local.
+Ce guide vous accompagne pour installer et configurer System Compass en développement local.
 
 ## Prérequis
 

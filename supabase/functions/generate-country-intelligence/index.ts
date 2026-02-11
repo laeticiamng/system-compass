@@ -20,7 +20,7 @@ interface CountryInput {
   primary_pyramid: string;
 }
 
-const SYSTEM_PROMPT = `Tu es un analyste en intelligence sociale et géopolitique pour Pyramid Compass.
+const SYSTEM_PROMPT = `Tu es un analyste en intelligence sociale et géopolitique pour System Compass.
 Tu produis de l'INTELLIGENCE SYSTÈME ultra-stratégique pour les utilisateurs premium+.
 
 CONTRAINTES :

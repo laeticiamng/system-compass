@@ -26,7 +26,7 @@ export function Footer() {
                 <Compass className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
               </div>
               <span className="font-display font-bold text-base sm:text-lg">
-                Pyramid <span className="gold-text">Compass</span>
+                System <span className="gold-text">Compass</span>
               </span>
             </Link>
             <p className="text-xs sm:text-sm text-muted-foreground mb-3">
@@ -111,7 +111,7 @@ export function Footer() {
           
           <div className="flex flex-col items-center justify-center gap-3 sm:gap-4 text-center">
             <p className="text-xs sm:text-sm text-muted-foreground">
-              © {currentYear} Pyramid Compass — EmotionsCare SASU
+              © {currentYear} System Compass — EmotionsCare SASU
             </p>
             
             {/* Legal links */}

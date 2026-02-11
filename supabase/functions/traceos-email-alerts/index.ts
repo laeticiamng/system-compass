@@ -167,7 +167,7 @@ const handler = async (req: Request): Promise<Response> => {
           
           <div style="background-color: #f9fafb; padding: 20px; text-align: center; border-top: 1px solid #e5e7eb;">
             <p style="color: #9ca3af; font-size: 12px; margin: 0;">
-              Pyramid Compass - TraceOS | Mémoire Décisionnelle<br/>
+              System Compass - TraceOS | Mémoire Décisionnelle<br/>
               <a href="#" style="color: #6366f1;">Se désabonner des alertes</a>
             </p>
           </div>

@@ -133,7 +133,7 @@ export default function Institutions() {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-primary">
                       <CheckCircle2 className="w-5 h-5" />
-                      {t('institutions.whatItIs.title', 'Ce que fait Pyramid Compass')}
+                      {t('institutions.whatItIs.title', 'Ce que fait System Compass')}
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
@@ -165,7 +165,7 @@ export default function Institutions() {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-destructive">
                       <XCircle className="w-5 h-5" />
-                      {t('institutions.whatItDoesNot.title', 'Ce que Pyramid Compass ne fait PAS')}
+                      {t('institutions.whatItDoesNot.title', 'Ce que System Compass ne fait PAS')}
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
@@ -270,7 +270,7 @@ export default function Institutions() {
                   <DisclaimerBlock 
                     icon={<XCircle className="w-5 h-5" />}
                     title={t('institutions.disclaimer.noReplacement', 'Ne remplace pas une décision humaine')}
-                    description={t('institutions.disclaimer.noReplacementDesc', 'Pyramid Compass est un outil d\'aide à la réflexion. Il ne prend pas et ne doit pas prendre de décision à la place des responsables.')}
+                    description={t('institutions.disclaimer.noReplacementDesc', 'System Compass est un outil d\'aide à la réflexion. Il ne prend pas et ne doit pas prendre de décision à la place des responsables.')}
                   />
                   <Separator />
                   <DisclaimerBlock 
@@ -288,7 +288,7 @@ export default function Institutions() {
                   <DisclaimerBlock 
                     icon={<UserCheck className="w-5 h-5" />}
                     title={t('institutions.disclaimer.responsibility', 'Le décideur reste responsable')}
-                    description={t('institutions.disclaimer.responsibilityDesc', 'L\'utilisation de Pyramid Compass ne transfère aucune responsabilité. Chaque décision engage ceux qui la prennent.')}
+                    description={t('institutions.disclaimer.responsibilityDesc', 'L\'utilisation de System Compass ne transfère aucune responsabilité. Chaque décision engage ceux qui la prennent.')}
                   />
                 </CardContent>
               </Card>
@@ -299,7 +299,7 @@ export default function Institutions() {
                   {t('institutions.disclaimer.summary', 'L\'outil éclaire, le décideur reste responsable.')}
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  {t('institutions.disclaimer.summaryDesc', 'Pyramid Compass est conçu pour accompagner la réflexion, pas pour se substituer au jugement humain.')}
+                  {t('institutions.disclaimer.summaryDesc', 'System Compass est conçu pour accompagner la réflexion, pas pour se substituer au jugement humain.')}
                 </p>
               </div>
             </TabsContent>
@@ -314,7 +314,7 @@ export default function Institutions() {
             {t('institutions.finalCta.title', 'Prêt à structurer vos décisions ?')}
           </h2>
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-            {t('institutions.finalCta.description', 'Explorez les outils existants de Pyramid Compass, déjà adaptés à l\'analyse décisionnelle.')}
+            {t('institutions.finalCta.description', 'Explorez les outils existants de System Compass, déjà adaptés à l\'analyse décisionnelle.')}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/prevention-filter">

@@ -21,7 +21,7 @@ export function OrganizationJsonLd() {
       '@context': 'https://schema.org',
       '@type': 'Organization',
       name: 'System Compass',
-      alternateName: 'Pyramid Compass',
+      alternateName: 'System Compass',
       url: 'https://world-alignment.lovable.app',
       logo: 'https://world-alignment.lovable.app/icons/icon-512x512.png',
       description: 'Plateforme d\'intelligence décisionnelle pour la relocalisation internationale. Analysez les systèmes des pays et planifiez votre expatriation.',

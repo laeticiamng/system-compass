@@ -42,9 +42,9 @@ Deno.serve(async (req) => {
     )
 
     const { data, error } = await resend.emails.send({
-      from: 'Pyramid Compass <noreply@pyramid-compass.com>',
+      from: 'System Compass <noreply@pyramid-compass.com>',
       to: [email],
-      subject: 'Bienvenue sur Pyramid Compass 🧭',
+      subject: 'Bienvenue sur System Compass 🧭',
       html,
     })
 

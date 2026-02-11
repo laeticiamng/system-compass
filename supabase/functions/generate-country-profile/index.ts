@@ -10,7 +10,7 @@ const corsHeaders = {
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
 
-const SYSTEM_PROMPT = `Tu es un moteur d'analyse socio-économique pour Pyramid Compass.
+const SYSTEM_PROMPT = `Tu es un moteur d'analyse socio-économique pour System Compass.
 Tu produis une fiche pays TRONC COMMUN ultra-complète et spécifique.
 
 CONTRAINTES ABSOLUES :
@@ -22,7 +22,7 @@ CONTRAINTES ABSOLUES :
 
 OBJECTIF : Maximiser la SPÉCIFICITÉ pays. Chaque phrase doit être UNIQUE à ce pays.`;
 
-const VALIDATOR_PROMPT = `Tu es un auditeur qualité pour Pyramid Compass.
+const VALIDATOR_PROMPT = `Tu es un auditeur qualité pour System Compass.
 Mission :
 1) Supprimer toute injonction ("tu dois", recommandations directes)
 2) Neutraliser tout conseil juridique/financier/immigration/médical

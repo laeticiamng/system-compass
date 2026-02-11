@@ -52,7 +52,7 @@ export default function Install() {
           {t('pwa.pageTitle', '📱 Installation de l\'application')}
         </h1>
         <p className="text-muted-foreground">
-          {t('pwa.pageDescription', 'Installez Pyramid Compass sur votre appareil pour une expérience optimale')}
+          {t('pwa.pageDescription', 'Installez System Compass sur votre appareil pour une expérience optimale')}
         </p>
       </div>
 

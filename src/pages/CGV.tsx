@@ -44,7 +44,7 @@ export default function CGV() {
               Article 1 - Description du Service
             </h2>
             <p>
-              Pyramid Compass est une plateforme d'analyse et de comparaison des systèmes économiques 
+              System Compass est une plateforme d'analyse et de comparaison des systèmes économiques 
               et sociaux de différents pays. Le service propose :
             </p>
             <ul className="list-disc pl-6 space-y-2 mt-4">

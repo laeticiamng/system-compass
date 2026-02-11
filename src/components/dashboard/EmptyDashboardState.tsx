@@ -104,7 +104,7 @@ export function EmptyDashboardState({ hasProfile = false, hasExitKey = false }: 
               <Compass className="w-8 h-8 text-primary" />
             </div>
             <h2 className="text-2xl font-bold mb-2">
-              {t('dashboard.emptyState.title', 'Bienvenue sur Pyramid Compass 🧭')}
+              {t('dashboard.emptyState.title', 'Bienvenue sur System Compass 🧭')}
             </h2>
             <p className="text-muted-foreground max-w-md mx-auto">
               {t('dashboard.emptyState.subtitle', 'Votre tableau de bord se remplira au fur et à mesure. Commencez par ces étapes :')}

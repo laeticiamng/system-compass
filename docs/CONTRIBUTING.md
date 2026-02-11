@@ -1,6 +1,6 @@
 # 🤝 Guide de Contribution
 
-Bienvenue ! Ce guide explique comment contribuer efficacement à Pyramid Compass.
+Bienvenue ! Ce guide explique comment contribuer efficacement à System Compass.
 
 ## Prérequis
 
