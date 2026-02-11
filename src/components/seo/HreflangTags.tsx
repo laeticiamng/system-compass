@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 
-const BASE_URL = 'https://world-alignment.lovable.app';
+const BASE_URL = 'https://system-compass.app';
 
 export function HreflangTags() {
   const location = useLocation();

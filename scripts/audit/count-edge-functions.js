@@ -11,7 +11,7 @@ const path = require('path');
 const FUNCTIONS_DIR = path.join(__dirname, '../../supabase/functions');
 
 function countEdgeFunctions() {
-  console.log('⚡ Pyramid Compass - Edge Functions Counter');
+  console.log('⚡ System Compass - Edge Functions Counter');
   console.log('============================================\n');
 
   if (!fs.existsSync(FUNCTIONS_DIR)) {

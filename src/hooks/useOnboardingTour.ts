@@ -22,7 +22,7 @@ export function getTourSteps(t: TFunction): TourStep[] {
   return [
     {
       id: 'welcome',
-      title: t('tour.welcome', 'Bienvenue sur Pyramid Compass ! 🎉'),
+      title: t('tour.welcome', 'Bienvenue sur System Compass ! 🎉'),
       description: t('tour.welcomeDesc', 'Découvrez comment naviguer et utiliser les outils en quelques étapes.'),
     },
     {

@@ -28,7 +28,7 @@ const getFlagEmoji = (iso2: string) => {
 };
 
 export function SalaryCalculator({ initialCountryId, initialProfessionId }: SalaryCalculatorProps) {
-  useTranslation();
+  const { t } = useTranslation();
   const { defaultCountryId, setDefaultCountry } = useDefaultCountry();
   const { countries } = useCountries();
   
@@ -204,7 +204,7 @@ export function SalaryCalculator({ initialCountryId, initialProfessionId }: Sala
                 <div>
                   <span className="text-muted-foreground">Travail à distance:</span>
                   <p className={cn("font-medium", selectedProfession.remoteWorkPossible ? 'text-emerald-400' : 'text-muted-foreground')}>
-                    {selectedProfession.remoteWorkPossible ? '✓ Possible' : '✗ Non applicable'}
+                    {selectedProfession.remoteWorkPossible ? t('common.possible', '✓ Possible') : t('common.notApplicable', '✗ Non applicable')}
                   </p>
                 </div>
               </div>

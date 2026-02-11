@@ -155,7 +155,7 @@ export function ProjectSummaryPdf({ data, onGenerate }: ProjectSummaryPdfProps) 
       // Footer
       doc.setFontSize(8);
       doc.setTextColor(128);
-      doc.text(`Généré le ${data.generatedAt} - World Alignment Compass`, margin, doc.internal.pageSize.getHeight() - 10);
+      doc.text(`Généré le ${data.generatedAt} - System Compass`, margin, doc.internal.pageSize.getHeight() - 10);
 
       // Save
       doc.save(`${data.projectName.replace(/\s+/g, '-').toLowerCase()}-summary.pdf`);

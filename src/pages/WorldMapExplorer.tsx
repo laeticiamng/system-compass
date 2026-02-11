@@ -161,7 +161,7 @@ export default function WorldMapExplorer() {
             <Select value={pyramidFilter} onValueChange={setPyramidFilter}>
               <SelectTrigger className="w-[200px]">
                 <Filter className="w-4 h-4 mr-2" />
-                <SelectValue placeholder="Type de pyramide" />
+                <SelectValue placeholder={t('worldMap.pyramidType', "Type de pyramide")} />
               </SelectTrigger>
               <SelectContent>
                 {PYRAMID_TYPES.map(type => (
@@ -178,7 +178,7 @@ export default function WorldMapExplorer() {
             <Select value={regionFilter} onValueChange={setRegionFilter}>
               <SelectTrigger className="w-[180px]">
                 <Globe className="w-4 h-4 mr-2" />
-                <SelectValue placeholder="Région" />
+                <SelectValue placeholder={t('worldMap.region', "Région")} />
               </SelectTrigger>
               <SelectContent>
                 {REGIONS.map(region => (

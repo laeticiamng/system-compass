@@ -1,4 +1,4 @@
-# 🌍 Pyramid Compass — World Alignment Platform
+# 🌍 System Compass
 
 [![CI Tests](https://github.com/system-compass/system-compass/actions/workflows/test.yml/badge.svg)](https://github.com/system-compass/system-compass/actions)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue.svg)](https://www.typescriptlang.org/)
@@ -7,7 +7,7 @@
 
 > **Plateforme open-source d'aide à la décision** pour comprendre les systèmes-pays, planifier des trajectoires de vie et naviguer la relocalisation internationale.
 
-**🔗 Demo live** : [world-alignment.lovable.app](https://world-alignment.lovable.app)
+**🔗 Demo live** : [system-compass.app](https://system-compass.app)
 
 ---
 
@@ -27,7 +27,7 @@
 
 ## 🎯 À propos
 
-Pyramid Compass aide les expatriés, entrepreneurs et institutions à prendre des décisions éclairées concernant la relocalisation internationale. La plateforme analyse 50+ pays selon leurs systèmes socio-économiques et génère des stratégies personnalisées.
+System Compass aide les expatriés, entrepreneurs et institutions à prendre des décisions éclairées concernant la relocalisation internationale. La plateforme analyse 50+ pays selon leurs systèmes socio-économiques et génère des stratégies personnalisées.
 
 ### Cibles
 - **B2C** : Expatriés, nomades digitaux, familles en relocalisation

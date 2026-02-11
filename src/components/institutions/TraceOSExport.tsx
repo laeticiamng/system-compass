@@ -293,7 +293,7 @@ export function TraceOSExport({ decisions, organizationName = 'Organisation' }: 
       pdf.setFontSize(8);
       pdf.setTextColor(128, 128, 128);
       pdf.text(
-        'Généré par TraceOS - Pyramid Compass',
+        'Généré par TraceOS - System Compass',
         pageWidth / 2,
         pageHeight - 10,
         { align: 'center' }

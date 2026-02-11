@@ -1051,7 +1051,7 @@ export default function Dashboard() {
                               {editingNote === phaseIndex ? (
                                 <div className="space-y-3">
                                   <Textarea
-                                    placeholder="Écrivez vos notes, observations, idées pour cette phase..."
+                                    placeholder={t('dashboard.notesPlaceholder', "Écrivez vos notes, observations, idées pour cette phase...")}
                                     value={noteText}
                                     onChange={(e) => setNoteText(e.target.value)}
                                     rows={4}
@@ -1060,7 +1060,7 @@ export default function Dashboard() {
                                   <div className="flex gap-2">
                                     <Button size="sm" onClick={() => handleSavePhaseNote(phaseIndex)}>
                                       <Save className="w-4 h-4 mr-1" />
-                                      Sauvegarder
+                                      {t('common.save', 'Sauvegarder')}
                                     </Button>
                                     <Button 
                                       size="sm" 

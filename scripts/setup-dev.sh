@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # ============================================
-# Pyramid Compass - Development Setup Script
+# System Compass - Development Setup Script
 # ============================================
 
 set -e
 
-echo "🏔️ Pyramid Compass - Installation de développement"
+echo "🏔️ System Compass - Installation de développement"
 echo "=================================================="
 echo ""
 
@@ -65,7 +65,7 @@ print_step "Configuration de l'environnement..."
 if [ ! -f .env ]; then
     # Create minimal .env for development without Supabase
     cat > .env << EOF
-# Pyramid Compass - Development Environment
+# System Compass - Development Environment
 # Pour le mode complet avec backend, utilisez Lovable Cloud
 
 # Mode développement local (sans backend)

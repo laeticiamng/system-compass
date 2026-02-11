@@ -11,7 +11,7 @@ const path = require('path');
 const ROUTES_FILE = path.join(__dirname, '../../src/routes/index.tsx');
 
 function countRoutes() {
-  console.log('📊 Pyramid Compass - Route Counter');
+  console.log('📊 System Compass - Route Counter');
   console.log('===================================\n');
 
   if (!fs.existsSync(ROUTES_FILE)) {

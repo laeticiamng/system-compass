@@ -4,7 +4,7 @@ import { requireAuth, requireAdmin, authErrorResponse, AuthError } from "../_sha
 import { validate, validationErrorResponse } from "../_shared/validation.ts";
 
 const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Origin": "https://system-compass.app",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
@@ -20,7 +20,7 @@ interface CountryInput {
   primary_pyramid: string;
 }
 
-const SYSTEM_PROMPT = `Tu es un analyste en intelligence sociale et géopolitique pour Pyramid Compass.
+const SYSTEM_PROMPT = `Tu es un analyste en intelligence sociale et géopolitique pour System Compass.
 Tu produis de l'INTELLIGENCE SYSTÈME ultra-stratégique pour les utilisateurs premium+.
 
 CONTRAINTES :

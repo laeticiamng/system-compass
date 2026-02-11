@@ -132,4 +132,4 @@ Pour ajouter/améliorer une traduction :
 - Utiliser le vouvoiement formel
 - Respecter la ponctuation locale
 - Conserver les variables `{{variable}}`
-- Ne pas traduire les noms propres (Pyramid Compass, Exit Keys)
+- Ne pas traduire les noms propres (System Compass, Exit Keys)

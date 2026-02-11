@@ -295,7 +295,7 @@ export default function AdminPartners() {
                   <div className="relative w-64">
                     <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
                     <Input
-                      placeholder="Rechercher..."
+                      placeholder={t('common.search', 'Rechercher...')}
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       className="pl-8"

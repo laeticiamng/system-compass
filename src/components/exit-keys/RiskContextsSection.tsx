@@ -425,7 +425,7 @@ export function RiskContextsSection({
             <Shield className="w-6 h-6 sm:w-8 sm:h-8 text-amber-500 flex-shrink-0" />
             <div className="w-full">
               <h3 className="font-semibold mb-2 text-sm sm:text-base">
-                {t('riskContexts.warningTitle', 'Ce que Pyramid Compass peut faire pour vous')}
+                {t('riskContexts.warningTitle', 'Ce que System Compass peut faire pour vous')}
               </h3>
               <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">
                 {t('riskContexts.warningDesc', 'La plateforme ne promet rien et n\'oriente pas vers l\'illégal. Elle structure la lucidité pour que vous puissiez prendre des décisions éclairées. Parfois, la meilleure décision est de ne pas partir — ou de partir autrement.')}

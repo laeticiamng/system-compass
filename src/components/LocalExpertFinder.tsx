@@ -337,7 +337,7 @@ export function LocalExpertFinder() {
             </Link>
           </Button>
           <p className="text-xs text-muted-foreground mt-4">
-            {t('experts.disclaimer', 'Les experts sont des professionnels indépendants. World Alignment ne garantit pas leurs services.')}
+            {t('experts.disclaimer', 'Les experts sont des professionnels indépendants. System Compass ne garantit pas leurs services.')}
           </p>
         </motion.div>
       </div>

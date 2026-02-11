@@ -421,7 +421,7 @@ export function WhatIfSimulatorAdvanced() {
         <div className="flex gap-2">
           <Button variant="outline" size="sm" onClick={handleSaveSimulation}>
             <Save className="h-4 w-4 mr-2" />
-            Sauvegarder
+            {t('common.save', 'Sauvegarder')}
           </Button>
           <Button variant="outline" size="sm" onClick={handleExport}>
             <Download className="h-4 w-4 mr-2" />

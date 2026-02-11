@@ -1,4 +1,4 @@
-# API Documentation — World Alignment
+# API Documentation — System Compass
 
 Documentation complète des Edge Functions et de l'architecture.
 

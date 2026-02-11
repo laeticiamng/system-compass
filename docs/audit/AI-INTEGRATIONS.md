@@ -4,7 +4,7 @@
 
 ## Vue d'ensemble
 
-Pyramid Compass utilise plusieurs services IA externes. Ce document décrit leurs limites et les stratégies de fallback.
+System Compass utilise plusieurs services IA externes. Ce document décrit leurs limites et les stratégies de fallback.
 
 ## Modèles Utilisés
 

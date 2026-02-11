@@ -1,4 +1,4 @@
-# 📊 Statut des Modules - Pyramid Compass
+# 📊 Statut des Modules - System Compass
 
 > Dernière mise à jour : Février 2026 (v7.0.8 - Audit Complet + Exports Common/Landing/GDPR)
 

@@ -1,4 +1,4 @@
-# 🧪 Stratégie de Tests - Pyramid Compass
+# 🧪 Stratégie de Tests - System Compass
 
 > Ce document décrit la stratégie de tests et les bonnes pratiques du projet.
 

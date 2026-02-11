@@ -118,7 +118,7 @@
     }
   },
   "common": {
-    "appName": "Pyramid Compass",
+    "appName": "System Compass",
     "tagline": "Simulateur de décisions dans des systèmes réels",
     "positioningLine": "Outil d'analyse et de simulation. Tu décides, nous éclairons.",
     "disclaimer": "Pas de conseil juridique, financier ou médical. Tu restes responsable de tes décisions.",
@@ -153,9 +153,9 @@
   },
   "pwa": {
     "title": "Installer l'application",
-    "subtitle": "Accédez à Pyramid Compass depuis votre écran d'accueil comme une application native",
+    "subtitle": "Accédez à System Compass depuis votre écran d'accueil comme une application native",
     "pageTitle": "📱 Installation de l'application",
-    "pageDescription": "Installez Pyramid Compass sur votre appareil pour une expérience optimale",
+    "pageDescription": "Installez System Compass sur votre appareil pour une expérience optimale",
     "installNow": "Installer maintenant",
     "note": "L'application fonctionne sur tous les navigateurs modernes. Pour une installation optimale, utilisez Safari sur iOS ou Chrome sur Android.",
     "ios": {
@@ -339,7 +339,7 @@
     "important": "Important",
     "warning": "Aucun résultat affiché n'est un diagnostic, une recommandation, ni un avis professionnel. Cet outil ne remplace aucun conseil spécialisé.",
     "analysisToolTitle": "Outil d'analyse et simulation",
-    "analysisToolDesc": "Pyramid Compass est un outil éducatif, pas un service de conseil. Simulation ≠ prédiction.",
+    "analysisToolDesc": "System Compass est un outil éducatif, pas un service de conseil. Simulation ≠ prédiction.",
     "noAdviceTitle": "Pas de conseil professionnel",
     "noAdviceDesc": "Aucun conseil juridique, financier ou médical n'est fourni. Aucun verdict, aucun score de réussite.",
     "responsibleTitle": "Tu restes responsable",
@@ -570,7 +570,7 @@
     "institutionsDesc": "Aide à la décision collective et traçabilité",
     "usageDesc": "Suivez votre utilisation IA et vos ressources",
     "emptyState": {
-      "title": "Bienvenue sur Pyramid Compass",
+      "title": "Bienvenue sur System Compass",
       "subtitle": "Commencez votre exploration en quelques étapes simples",
       "continueTest": "Faire le test rapide",
       "startProfile": "Créer mon profil"
@@ -734,7 +734,7 @@
       "title": "Pourquoi cet outil existe",
       "paragraph1": "Cet outil a été créé par quelqu'un qui a perdu des années à faire des choix sans comprendre le système dans lequel il évoluait.",
       "paragraph2": "Mauvais pays, mauvaise carrière, mauvais timing — pas par manque d'intelligence, mais par manque de grille de lecture.",
-      "paragraph3": "Pyramid Compass est né de cette frustration : offrir à tous l'analyse que seuls les privilégiés reçoivent de leur entourage.",
+      "paragraph3": "System Compass est né de cette frustration : offrir à tous l'analyse que seuls les privilégiés reçoivent de leur entourage.",
       "conclusion": "Ce n'est pas un outil qui te dit quoi faire. C'est un outil qui t'aide à VOIR — pour que TU décides en connaissance de cause."
     },
     "forEveryone": {
@@ -744,7 +744,7 @@
     "faq": {
       "title": "Questions fréquentes",
       "q1": {
-        "question": "Est-ce que Pyramid Compass peut me dire quel pays choisir ?",
+        "question": "Est-ce que System Compass peut me dire quel pays choisir ?",
         "answer": "Non. L'outil analyse les systèmes et simule des scénarios, mais la décision finale t'appartient. Nous fournissons l'information, tu fais tes propres choix."
       },
       "q2": {
@@ -882,7 +882,7 @@
     "downloaded": "Le PDF a été téléchargé",
     "error": "Erreur d'export",
     "errorDesc": "Impossible de générer le PDF",
-    "footer": "Généré par Pyramid Compass | {{date}} | Simulation uniquement"
+    "footer": "Généré par System Compass | {{date}} | Simulation uniquement"
   },
   "vacation": {
     "title": "Recommandations Vacances par Pouvoir d'Achat",
@@ -6109,7 +6109,7 @@
     "next": "Suivant",
     "start": "Commencer",
     "step1": {
-      "title": "Bienvenue sur Pyramid Compass",
+      "title": "Bienvenue sur System Compass",
       "description": "Comparez les pays en profondeur avant de vous expatrier : fiscalité, visas, coût de la vie et qualité de vie."
     },
     "step2": {
@@ -7229,7 +7229,7 @@
     "badge": "Solutions Business",
     "title": "Pour les Organisations & Décideurs",
     "subtitle": "Outils premium d'aide à la décision institutionnelle et de réflexion stratégique.",
-    "intro": "Pyramid Compass propose des modules dédiés aux organisations cherchant à structurer leur prise de décision sans déléguer la responsabilité.",
+    "intro": "System Compass propose des modules dédiés aux organisations cherchant à structurer leur prise de décision sans déléguer la responsabilité.",
     "tabs": {
       "modules": "Modules",
       "traceos": "TraceOS"
@@ -7380,7 +7380,7 @@
         "2": "Blocage de comptes bancaires ou actifs"
       }
     },
-    "warningTitle": "Ce que Pyramid Compass peut faire pour vous",
+    "warningTitle": "Ce que System Compass peut faire pour vous",
     "warningDesc": "La plateforme ne promet rien et n'oriente pas vers l'illégal. Elle structure la lucidité pour que vous puissiez prendre des décisions éclairées. Parfois, la meilleure décision est de ne pas partir — ou de partir autrement.",
     "alternatives": {
       "stayBuild": "Rester et entreprendre",
@@ -7653,8 +7653,8 @@
     "structuredLucidity": "Lucidité structurée",
     "badge": "Hub d'Orientation",
     "title": "Par où commencer ?",
-    "subtitle": "Pyramid Compass t'aide à comprendre tes vraies options avant toute décision. Pas de promesse, pas de raccourci — juste de la clarté.",
-    "philosophy": "Pyramid Compass est une plateforme d'orientation avant décision.",
+    "subtitle": "System Compass t'aide à comprendre tes vraies options avant toute décision. Pas de promesse, pas de raccourci — juste de la clarté.",
+    "philosophy": "System Compass est une plateforme d'orientation avant décision.",
     "philosophyDesc": "Permettre à chaque personne de comprendre clairement ses options réelles, leurs risques, leurs coûts et leurs alternatives, avant d'engager son argent, sa vie ou son avenir.",
     "quickTitle": "Accès rapide selon votre besoin",
     "toolsTitle": "Tous les outils d'orientation",
@@ -7737,7 +7737,7 @@
     "alternatives": {
       "title": "Des alternatives existent",
       "subtitle": "Avant tout choix irréversible, explore toutes tes options",
-      "message": "Pyramid Compass montre qu'il existe parfois d'autres trajectoires : rester et entreprendre, migrer plus tard, migrer autrement, se former, changer d'objectif initial.",
+      "message": "System Compass montre qu'il existe parfois d'autres trajectoires : rester et entreprendre, migrer plus tard, migrer autrement, se former, changer d'objectif initial.",
       "options": {
         "stay": {
           "title": "Rester et construire",
@@ -7822,7 +7822,7 @@
       "global": "44 pays analysés en profondeur"
     },
     "reminder": "Rappel",
-    "lucidityMessage": "Pyramid Compass structure la lucidité. Si l'analyse révèle que votre option est trop risquée ou irréaliste, nous vous aiderons à explorer des alternatives : rester et entreprendre, migrer autrement, se former d'abord, ou changer d'objectif.",
+    "lucidityMessage": "System Compass structure la lucidité. Si l'analyse révèle que votre option est trop risquée ou irréaliste, nous vous aiderons à explorer des alternatives : rester et entreprendre, migrer autrement, se former d'abord, ou changer d'objectif.",
     "steps": {
       "substep": "Sous-étape",
       "of": "sur"
@@ -9490,7 +9490,7 @@
     },
     "intro": {
       "title": "Qu'est-ce que l'OVI ?",
-      "p1": "L'Observatoire des Variables Invisibles n'est pas un outil supplémentaire. C'est un espace de recul — un laboratoire de pensée intégré à Pyramid Compass.",
+      "p1": "L'Observatoire des Variables Invisibles n'est pas un outil supplémentaire. C'est un espace de recul — un laboratoire de pensée intégré à System Compass.",
       "observe": {
         "title": "Observer",
         "desc": "Identifier ce qui échappe au regard immédiat : biais, hypothèses implicites, angles morts."
@@ -9670,9 +9670,9 @@
     },
     "readTime": "{{min}} min",
     "connection": {
-      "title": "Connexion avec Pyramid Compass",
+      "title": "Connexion avec System Compass",
       "subtitle": "L'OVI enrichit vos simulations sans les influencer",
-      "intro": "Lorsque vous effectuez une simulation dans Pyramid Compass, l'OVI peut suggérer des lectures pertinentes. L'objectif : nourrir votre réflexion, pas orienter votre décision.",
+      "intro": "Lorsque vous effectuez une simulation dans System Compass, l'OVI peut suggérer des lectures pertinentes. L'objectif : nourrir votre réflexion, pas orienter votre décision.",
       "ex1": {
         "sim": "Simulation de trajectoire professionnelle",
         "sug1": "Cadre : Décisions irréversibles",
@@ -9881,7 +9881,7 @@
       "disclaimer": "Limites"
     },
     "whatItIs": {
-      "title": "Ce que fait Pyramid Compass",
+      "title": "Ce que fait System Compass",
       "illuminate": "Éclaire les options",
       "illuminateDesc": "Rend visibles les variables, zones d'incertitude et coûts cachés",
       "structure": "Structure les décisions",
@@ -9892,7 +9892,7 @@
       "scenariosDesc": "Permet de visualiser plusieurs trajectoires possibles sans en recommander une"
     },
     "whatItDoesNot": {
-      "title": "Ce que Pyramid Compass ne fait PAS",
+      "title": "Ce que System Compass ne fait PAS",
       "noRecommendation": "Ne recommande pas",
       "noRecommendationDesc": "Aucune option n'est présentée comme \"la bonne décision\"",
       "noPrediction": "Ne prédit pas",
@@ -9915,19 +9915,19 @@
       "title": "Disclaimer institutionnel",
       "subtitle": "Limites et responsabilités",
       "noReplacement": "Ne remplace pas une décision humaine",
-      "noReplacementDesc": "Pyramid Compass est un outil d'aide à la réflexion. Il ne prend pas et ne doit pas prendre de décision à la place des responsables.",
+      "noReplacementDesc": "System Compass est un outil d'aide à la réflexion. Il ne prend pas et ne doit pas prendre de décision à la place des responsables.",
       "noPrediction": "N'est pas un outil de prédiction",
       "noPredictionDesc": "Les simulations explorent des scénarios possibles. Elles ne prédisent pas l'avenir ni ne garantissent un résultat.",
       "noAdvice": "Ne fournit aucune recommandation",
       "noAdviceDesc": "Aucune option, aucun scénario n'est présenté comme \"la bonne décision\". L'outil n'émet pas d'avis.",
       "responsibility": "Le décideur reste responsable",
-      "responsibilityDesc": "L'utilisation de Pyramid Compass ne transfère aucune responsabilité. Chaque décision engage ceux qui la prennent.",
+      "responsibilityDesc": "L'utilisation de System Compass ne transfère aucune responsabilité. Chaque décision engage ceux qui la prennent.",
       "summary": "L'outil éclaire, le décideur reste responsable.",
-      "summaryDesc": "Pyramid Compass est conçu pour accompagner la réflexion, pas pour se substituer au jugement humain."
+      "summaryDesc": "System Compass est conçu pour accompagner la réflexion, pas pour se substituer au jugement humain."
     },
     "finalCta": {
       "title": "Prêt à structurer vos décisions ?",
-      "description": "Explorez les outils existants de Pyramid Compass, déjà adaptés à l'analyse décisionnelle.",
+      "description": "Explorez les outils existants de System Compass, déjà adaptés à l'analyse décisionnelle.",
       "filter": "Filtre de prévention",
       "compare": "Comparer des scénarios"
     },
@@ -10346,7 +10346,7 @@
     "pdfBusinessLicenses": "Licences",
     "pdfRiskLevel": "Niveau de risque",
     "pdfDisclaimer": "Avertissement",
-    "pdfGeneratedBy": "Généré par Pyramid Compass",
+    "pdfGeneratedBy": "Généré par System Compass",
     "pdfConfidentialReport": "Rapport confidentiel",
     "confidenceTooltip": "Mesure la qualité et la fiabilité des sources consultées (ONG, médias, rapports officiels). Ne reflète PAS le niveau de sécurité du pays.",
     "cacheTooltip": "Données mises en cache pour 30 jours",
@@ -10439,7 +10439,7 @@
     "unavailable": "Indisponible actuellement",
     "noResults": "Aucun expert trouvé pour ces critères.",
     "viewAll": "Voir tous les experts",
-    "disclaimer": "Les experts sont des professionnels indépendants. World Alignment ne garantit pas leurs services."
+    "disclaimer": "Les experts sont des professionnels indépendants. System Compass ne garantit pas leurs services."
   },
   "pricing": {
     "badge": "Gratuit pour commencer",

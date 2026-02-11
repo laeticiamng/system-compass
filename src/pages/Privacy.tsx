@@ -1,7 +1,7 @@
 /**
  * Privacy Policy - Politique de Confidentialité RGPD
  * Dedicated routable page for GDPR compliance
- * EmotionsCare SASU - Pyramid Compass
+ * EmotionsCare SASU - System Compass
  */
 
 import { ArrowLeft, Shield, Eye, Database, Lock, UserCheck, Globe, Bell, Trash2, FileText } from 'lucide-react';
@@ -16,9 +16,9 @@ export default function Privacy() {
   return (
     <>
       <Helmet>
-        <title>{t('privacy.meta.title', 'Politique de Confidentialité - Pyramid Compass')}</title>
-        <meta name="description" content={t('privacy.meta.description', 'Politique de confidentialité RGPD de Pyramid Compass. Découvrez comment nous protégeons vos données personnelles.')} />
-        <link rel="canonical" href="https://world-alignment.lovable.app/privacy" />
+        <title>{t('privacy.meta.title', 'Politique de Confidentialité - System Compass')}</title>
+        <meta name="description" content={t('privacy.meta.description', 'Politique de confidentialité RGPD de System Compass. Découvrez comment nous protégeons vos données personnelles.')} />
+        <link rel="canonical" href="https://system-compass.app/privacy" />
       </Helmet>
 
       <div className="min-h-screen bg-background pt-20 sm:pt-24">
@@ -48,7 +48,7 @@ export default function Privacy() {
 
             <div className="p-4 rounded-lg bg-primary/5 border border-primary/20 mb-6">
               <p className="text-sm">
-                {t('privacy.intro', "Chez Pyramid Compass (édité par EmotionsCare SASU), la protection de vos données personnelles est une priorité. Cette politique explique comment nous collectons, utilisons et protégeons vos informations conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés.")}
+                {t('privacy.intro', "Chez System Compass (édité par EmotionsCare SASU), la protection de vos données personnelles est une priorité. Cette politique explique comment nous collectons, utilisons et protégeons vos informations conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés.")}
               </p>
             </div>
           </div>
@@ -125,7 +125,7 @@ export default function Privacy() {
               </h2>
               <div className="space-y-4">
                 <p>
-                  {t('privacy.localFirst.desc', "Pyramid Compass adopte une architecture local-first : vos données sont d'abord stockées sur votre appareil (localStorage du navigateur). Aucune donnée n'est envoyée à nos serveurs sans votre consentement explicite.")}
+                  {t('privacy.localFirst.desc', "System Compass adopte une architecture local-first : vos données sont d'abord stockées sur votre appareil (localStorage du navigateur). Aucune donnée n'est envoyée à nos serveurs sans votre consentement explicite.")}
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
@@ -331,7 +331,7 @@ export default function Privacy() {
                 <ol className="list-decimal pl-6 space-y-2 text-sm">
                   <li>{t('privacy.localData.step1', "Ouvrez les paramètres de votre navigateur")}</li>
                   <li>{t('privacy.localData.step2', "Accédez à la section \"Données de sites\"")}</li>
-                  <li>{t('privacy.localData.step3', "Recherchez le domaine de Pyramid Compass")}</li>
+                  <li>{t('privacy.localData.step3', "Recherchez le domaine de System Compass")}</li>
                   <li>{t('privacy.localData.step4', "Supprimez les données associées")}</li>
                 </ol>
                 <p className="text-sm text-muted-foreground">
@@ -344,7 +344,7 @@ export default function Privacy() {
             <section className="p-6 rounded-xl bg-card border border-border/50">
               <h2 className="text-xl font-semibold mb-4">{t('privacy.cookies.title', 'Cookies')}</h2>
               <div className="space-y-4">
-                <p>{t('privacy.cookies.desc', "Pyramid Compass utilise un minimum de cookies, strictement nécessaires au fonctionnement du service :")}</p>
+                <p>{t('privacy.cookies.desc', "System Compass utilise un minimum de cookies, strictement nécessaires au fonctionnement du service :")}</p>
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm">
                     <thead>
@@ -405,7 +405,7 @@ export default function Privacy() {
             <section className="p-6 rounded-xl bg-card border border-border/50">
               <h2 className="text-xl font-semibold mb-4">{t('privacy.minors.title', 'Protection des Mineurs')}</h2>
               <p>
-                {t('privacy.minors.desc', "Pyramid Compass s'adresse à un public majeur (18 ans et plus). Nous ne collectons pas sciemment de données personnelles de mineurs. Si nous découvrons que des données de mineurs ont été collectées, elles seront supprimées immédiatement.")}
+                {t('privacy.minors.desc', "System Compass s'adresse à un public majeur (18 ans et plus). Nous ne collectons pas sciemment de données personnelles de mineurs. Si nous découvrons que des données de mineurs ont été collectées, elles seront supprimées immédiatement.")}
               </p>
             </section>
 

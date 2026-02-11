@@ -2,7 +2,7 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Origin": "https://system-compass.app",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
@@ -63,7 +63,7 @@ serve(async (req) => {
         type: "header",
         text: {
           type: "plain_text",
-          text: `${statusEmoji} Rapport Couverture i18n - Pyramid Compass`,
+          text: `${statusEmoji} Rapport Couverture i18n - System Compass`,
           emoji: true
         }
       },

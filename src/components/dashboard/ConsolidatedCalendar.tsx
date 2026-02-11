@@ -148,14 +148,14 @@ export function ConsolidatedCalendar() {
       const icsContent = [
         'BEGIN:VCALENDAR',
         'VERSION:2.0',
-        'PRODID:-//World Alignment//Calendar Export//FR',
+        'PRODID:-//System Compass//Calendar Export//FR',
         'CALSCALE:GREGORIAN',
         'METHOD:PUBLISH',
         ...events.map(event => {
           const endDate = new Date(event.date.getTime() + 60 * 60 * 1000); // 1 hour duration
           return [
             'BEGIN:VEVENT',
-            `UID:${event.id}@world-alignment`,
+            `UID:${event.id}@system-compass`,
             `DTSTAMP:${formatDateICS(new Date())}`,
             `DTSTART:${formatDateICS(event.date)}`,
             `DTEND:${formatDateICS(endDate)}`,

@@ -1,4 +1,4 @@
-# 📊 Rapport d'Audit Pyramid Compass
+# 📊 Rapport d'Audit System Compass
 
 > Dernière mise à jour : Février 2026  
 > Ce rapport présente des **métriques vérifiables** via les scripts CI/CD.

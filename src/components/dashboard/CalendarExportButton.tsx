@@ -47,7 +47,7 @@ export function CalendarExportButton({ events, filename = 'export' }: CalendarEx
     const lines = [
       'BEGIN:VCALENDAR',
       'VERSION:2.0',
-      'PRODID:-//WorldAlignment//Compass//FR',
+      'PRODID:-//SystemCompass//Compass//FR',
       'CALSCALE:GREGORIAN',
       'METHOD:PUBLISH',
     ];
@@ -56,7 +56,7 @@ export function CalendarExportButton({ events, filename = 'export' }: CalendarEx
       const endDate = event.endDate || new Date(event.startDate.getTime() + 60 * 60 * 1000);
       
       lines.push('BEGIN:VEVENT');
-      lines.push(`UID:${event.id}@worldalignment.app`);
+      lines.push(`UID:${event.id}@systemcompass.app`);
       lines.push(`DTSTAMP:${formatDateICS(new Date())}`);
       
       if (event.isAllDay) {

@@ -2,6 +2,7 @@
  * Search Input - Reusable search input with clear functionality
  */
 import { useState, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Search, X, Loader2 } from 'lucide-react';
 import { Input } from './input';
 import { Button } from './button';
@@ -21,7 +22,7 @@ interface SearchInputProps {
 
 export function SearchInput({
   value: controlledValue,
-  placeholder = 'Rechercher...',
+  placeholder,
   onChange,
   onSearch,
   debounce = 300,
@@ -30,6 +31,8 @@ export function SearchInput({
   inputClassName,
   autoFocus = false,
 }: SearchInputProps) {
+  const { t } = useTranslation();
+  const resolvedPlaceholder = placeholder ?? t('common.search', 'Rechercher...');
   const [internalValue, setInternalValue] = useState(controlledValue || '');
 
   // Sync with controlled value
@@ -86,7 +89,7 @@ export function SearchInput({
         value={internalValue}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
-        placeholder={placeholder}
+        placeholder={resolvedPlaceholder}
         autoFocus={autoFocus}
         className={cn('pl-9 pr-9', inputClassName)}
       />

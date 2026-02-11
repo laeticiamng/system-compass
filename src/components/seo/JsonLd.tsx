@@ -21,9 +21,9 @@ export function OrganizationJsonLd() {
       '@context': 'https://schema.org',
       '@type': 'Organization',
       name: 'System Compass',
-      alternateName: 'Pyramid Compass',
-      url: 'https://world-alignment.lovable.app',
-      logo: 'https://world-alignment.lovable.app/icons/icon-512x512.png',
+      alternateName: 'System Compass',
+      url: 'https://system-compass.app',
+      logo: 'https://system-compass.app/icons/icon-512x512.png',
       description: 'Plateforme d\'intelligence décisionnelle pour la relocalisation internationale. Analysez les systèmes des pays et planifiez votre expatriation.',
       sameAs: [],
       contactPoint: {
@@ -126,7 +126,7 @@ export function BlogPostingJsonLd({ title, description, datePublished, author, u
         name: 'System Compass',
         logo: {
           '@type': 'ImageObject',
-          url: 'https://world-alignment.lovable.app/icons/icon-512x512.png',
+          url: 'https://system-compass.app/icons/icon-512x512.png',
         },
       },
       url: url,

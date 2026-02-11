@@ -1,4 +1,5 @@
 import { Component, ErrorInfo, ReactNode } from 'react';
+import i18next from 'i18next';
 import { AlertTriangle, RefreshCw, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -58,11 +59,11 @@ export class ErrorBoundary extends Component<Props, State> {
               <div className="mx-auto mb-4 p-3 rounded-full bg-destructive/10 w-fit">
                 <AlertTriangle className="h-8 w-8 text-destructive" />
               </div>
-              <CardTitle className="text-xl">Une erreur est survenue</CardTitle>
+              <CardTitle className="text-xl">{i18next.t('errors.occurred', 'Une erreur est survenue')}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-muted-foreground text-center">
-                Nous nous excusons pour ce désagrément. L'équipe technique a été notifiée.
+                {i18next.t('errors.apology', "Nous nous excusons pour ce désagrément. L'équipe technique a été notifiée.")}
               </p>
               
               {process.env.NODE_ENV === 'development' && this.state.error && (
@@ -79,11 +80,11 @@ export class ErrorBoundary extends Component<Props, State> {
               <div className="flex flex-col sm:flex-row gap-2 justify-center">
                 <Button onClick={this.handleReset} variant="default">
                   <RefreshCw className="h-4 w-4 mr-2" />
-                  Réessayer
+                  {i18next.t('common.retry', 'Réessayer')}
                 </Button>
                 <Button onClick={this.handleGoHome} variant="outline">
                   <Home className="h-4 w-4 mr-2" />
-                  Retour à l'accueil
+                  {i18next.t('common.backToHome', "Retour à l'accueil")}
                 </Button>
               </div>
             </CardContent>
