@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -80,6 +81,7 @@ const MOCK_GOALS: Goal[] = [
 ];
 
 export function GoalTracker() {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const [goals, setGoals] = useState<Goal[]>(MOCK_GOALS);
   const [filter, setFilter] = useState<string>('all');
@@ -94,13 +96,13 @@ export function GoalTracker() {
     }
     switch (status) {
       case 'completed':
-        return <Badge className="bg-green-500">Terminé</Badge>;
+        return <Badge className="bg-green-500">{t('goals.status.completed', 'Terminé')}</Badge>;
       case 'in_progress':
-        return <Badge variant="secondary">En cours</Badge>;
+        return <Badge variant="secondary">{t('goals.status.inProgress', 'En cours')}</Badge>;
       case 'delayed':
-        return <Badge variant="destructive">Retardé</Badge>;
+        return <Badge variant="destructive">{t('goals.status.delayed', 'Retardé')}</Badge>;
       default:
-        return <Badge variant="outline">Non commencé</Badge>;
+        return <Badge variant="outline">{t('goals.status.notStarted', 'Non commencé')}</Badge>;
     }
   };
 

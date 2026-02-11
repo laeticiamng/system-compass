@@ -7,7 +7,7 @@ import { validate, validationErrorResponse } from "../_shared/validation.ts";
 declare const EdgeRuntime: { waitUntil: (promise: Promise<unknown>) => void };
 
 const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Origin": "https://world-alignment.lovable.app",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 

@@ -122,7 +122,7 @@ export function DecisionAuditLog({ decisionId, decisionTitle }: DecisionAuditLog
 
   const formatValue = (value: unknown): string => {
     if (value === null || value === undefined) return '(vide)';
-    if (typeof value === 'boolean') return value ? 'Oui' : 'Non';
+    if (typeof value === 'boolean') return value ? t('common.yes', 'Oui') : t('common.no', 'Non');
     if (Array.isArray(value)) {
       if (value.length === 0) return '(aucun)';
       return value.map(v => typeof v === 'object' ? JSON.stringify(v) : String(v)).join(', ');

@@ -325,7 +325,7 @@ export function PersonalizedExitKeys({
           content.keyInsights.push({
             icon: <Globe className="w-4 h-4" />,
             title: t('exitKeys.insights.nomadVisa', 'Visa Nomade'),
-            value: destination.visa.digitalNomadVisa ? 'Disponible' : 'Non spécifique',
+            value: destination.visa.digitalNomadVisa ? t('common.available', 'Disponible') : t('common.nonSpecific', 'Non spécifique'),
           });
         }
         if (variants?.networks?.length) {

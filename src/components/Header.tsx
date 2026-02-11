@@ -146,7 +146,7 @@ export function Header() {
             <button 
               onClick={handleDismissDisclaimer}
               className="ml-2 p-0.5 rounded hover:bg-amber-500/20 transition-colors"
-              aria-label="Fermer"
+              aria-label={t('common.close', 'Fermer')}
             >
               <X className="w-3 h-3" />
             </button>

@@ -185,7 +185,7 @@ export function DecisionJournalViewer({
         d.healthChange,
         d.reputationChange,
         d.country,
-        d.riskTaken ? 'Oui' : 'Non',
+        d.riskTaken ? t('common.yes', 'Oui') : t('common.no', 'Non'),
         d.reasoning || '',
       ]);
       
