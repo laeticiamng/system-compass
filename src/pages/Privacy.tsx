@@ -18,7 +18,7 @@ export default function Privacy() {
       <Helmet>
         <title>{t('privacy.meta.title', 'Politique de Confidentialité - System Compass')}</title>
         <meta name="description" content={t('privacy.meta.description', 'Politique de confidentialité RGPD de System Compass. Découvrez comment nous protégeons vos données personnelles.')} />
-        <link rel="canonical" href="https://world-alignment.lovable.app/privacy" />
+        <link rel="canonical" href="https://system-compass.app/privacy" />
       </Helmet>
 
       <div className="min-h-screen bg-background pt-20 sm:pt-24">

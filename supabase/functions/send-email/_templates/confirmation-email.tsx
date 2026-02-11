@@ -50,7 +50,7 @@ export const ConfirmationEmail = ({
 
         <Section style={buttonSection}>
           <Link
-            href="https://world-alignment.lovable.app/quick-test"
+            href="https://system-compass.app/quick-test"
             target="_blank"
             style={button}
           >
@@ -87,7 +87,7 @@ export const ConfirmationEmail = ({
         </Text>
         
         <Text style={footerBrand}>
-          <Link href="https://world-alignment.lovable.app" style={footerLink}>
+          <Link href="https://system-compass.app" style={footerLink}>
             System Compass
           </Link>
           {' '}— Votre boussole stratégique pour l'expatriation

@@ -4,7 +4,7 @@ import { requireAuth, requireAdmin, authErrorResponse, AuthError } from "../_sha
 import { validate, validationErrorResponse } from "../_shared/validation.ts";
 
 const corsHeaders = {
-  "Access-Control-Allow-Origin": "https://world-alignment.lovable.app",
+  "Access-Control-Allow-Origin": "https://system-compass.app",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 

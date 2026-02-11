@@ -22,4 +22,4 @@ Disallow: /admin/
 Disallow: /diagnostics
 Disallow: /seed-translations
 
-Sitemap: https://world-alignment.lovable.app/sitemap.xml
+Sitemap: https://system-compass.app/sitemap.xml

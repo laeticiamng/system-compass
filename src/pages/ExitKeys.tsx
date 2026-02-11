@@ -705,7 +705,7 @@ export default function ExitKeys() {
                   </div>
                   <Select value={educationLevel || ''} onValueChange={(v) => setEducationLevel(v as EducationLevel)}>
                     <SelectTrigger className="w-full h-14 bg-background/50 border-2 hover:border-amber-500/50 transition-colors rounded-xl">
-                      <SelectValue placeholder="Sélectionnez votre niveau" />
+                      <SelectValue placeholder={t('exitKeys.selectLevel', "Sélectionnez votre niveau")} />
                     </SelectTrigger>
                     <SelectContent>
                       {EDUCATION_LEVELS.map(level => (
@@ -731,7 +731,7 @@ export default function ExitKeys() {
                   </div>
                   <Select value={professionId || ''} onValueChange={setProfessionId}>
                     <SelectTrigger className="w-full h-14 bg-background/50 border-2 hover:border-blue-500/50 transition-colors rounded-xl">
-                      <SelectValue placeholder="Sélectionnez votre métier" />
+                      <SelectValue placeholder={t('exitKeys.selectProfession', "Sélectionnez votre métier")} />
                     </SelectTrigger>
                     <SelectContent className="max-h-[300px]">
                       {Object.entries(

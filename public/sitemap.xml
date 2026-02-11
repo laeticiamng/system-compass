@@ -3,281 +3,281 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <!-- Core Pages -->
   <url>
-    <loc>https://world-alignment.lovable.app/</loc>
+    <loc>https://system-compass.app/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://world-alignment.lovable.app/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://world-alignment.lovable.app/en/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/" />
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/about</loc>
+    <loc>https://system-compass.app/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/pricing</loc>
+    <loc>https://system-compass.app/pricing</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/auth</loc>
+    <loc>https://system-compass.app/auth</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/disclaimer</loc>
+    <loc>https://system-compass.app/disclaimer</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/cgv</loc>
+    <loc>https://system-compass.app/cgv</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/mentions-legales</loc>
+    <loc>https://system-compass.app/mentions-legales</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <!-- Country Pages -->
   <url>
-    <loc>https://world-alignment.lovable.app/countries</loc>
+    <loc>https://system-compass.app/countries</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/world-map</loc>
+    <loc>https://system-compass.app/world-map</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/compare</loc>
+    <loc>https://system-compass.app/compare</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/pyramid-types</loc>
+    <loc>https://system-compass.app/pyramid-types</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- Analysis Tools -->
   <url>
-    <loc>https://world-alignment.lovable.app/quick-test</loc>
+    <loc>https://system-compass.app/quick-test</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/profile-test</loc>
+    <loc>https://system-compass.app/profile-test</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/profile-matcher</loc>
+    <loc>https://system-compass.app/profile-matcher</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/life-trajectory</loc>
+    <loc>https://system-compass.app/life-trajectory</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/fiscal-calculator</loc>
+    <loc>https://system-compass.app/fiscal-calculator</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Planning Tools -->
   <url>
-    <loc>https://world-alignment.lovable.app/exit-keys</loc>
+    <loc>https://system-compass.app/exit-keys</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/exit-keys/catalog</loc>
+    <loc>https://system-compass.app/exit-keys/catalog</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/prevention-filter</loc>
+    <loc>https://system-compass.app/prevention-filter</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/errors-illusions</loc>
+    <loc>https://system-compass.app/errors-illusions</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- Learning & Games -->
   <url>
-    <loc>https://world-alignment.lovable.app/pyramid-quiz</loc>
+    <loc>https://system-compass.app/pyramid-quiz</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/life-game</loc>
+    <loc>https://system-compass.app/life-game</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/personas</loc>
+    <loc>https://system-compass.app/personas</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/gamification</loc>
+    <loc>https://system-compass.app/gamification</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <!-- Pro Modules -->
   <url>
-    <loc>https://world-alignment.lovable.app/latent</loc>
+    <loc>https://system-compass.app/latent</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/irreversa</loc>
+    <loc>https://system-compass.app/irreversa</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/ovi</loc>
+    <loc>https://system-compass.app/ovi</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <!-- Terrain & Intel -->
   <url>
-    <loc>https://world-alignment.lovable.app/terrain</loc>
+    <loc>https://system-compass.app/terrain</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/financial-safety-intel</loc>
+    <loc>https://system-compass.app/financial-safety-intel</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- Community & Partners -->
   <url>
-    <loc>https://world-alignment.lovable.app/community</loc>
+    <loc>https://system-compass.app/community</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/partner-services</loc>
+    <loc>https://system-compass.app/partner-services</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/experts</loc>
+    <loc>https://system-compass.app/experts</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- Content & Resources -->
   <url>
-    <loc>https://world-alignment.lovable.app/resources</loc>
+    <loc>https://system-compass.app/resources</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/tools</loc>
+    <loc>https://system-compass.app/tools</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/how-to-read</loc>
+    <loc>https://system-compass.app/how-to-read</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/academic</loc>
+    <loc>https://system-compass.app/academic</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/install</loc>
+    <loc>https://system-compass.app/install</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <!-- B2B -->
   <url>
-    <loc>https://world-alignment.lovable.app/institutions</loc>
+    <loc>https://system-compass.app/institutions</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/b2b</loc>
+    <loc>https://system-compass.app/b2b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <!-- Blog -->
   <url>
-    <loc>https://world-alignment.lovable.app/blog</loc>
+    <loc>https://system-compass.app/blog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/blog/guide-complet-expatriation</loc>
+    <loc>https://system-compass.app/blog/guide-complet-expatriation</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/blog/fiscalite-expatries-residence-fiscale</loc>
+    <loc>https://system-compass.app/blog/fiscalite-expatries-residence-fiscale</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/blog/digital-nomad-meilleurs-pays</loc>
+    <loc>https://system-compass.app/blog/digital-nomad-meilleurs-pays</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/blog/expatriation-famille-enfants</loc>
+    <loc>https://system-compass.app/blog/expatriation-famille-enfants</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/blog/pieges-juridiques-expatriation</loc>
+    <loc>https://system-compass.app/blog/pieges-juridiques-expatriation</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/blog/portugal-guide-installation</loc>
+    <loc>https://system-compass.app/blog/portugal-guide-installation</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/blog/retraite-etranger-destinations</loc>
+    <loc>https://system-compass.app/blog/retraite-etranger-destinations</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/blog/assurance-sante-expatrie</loc>
+    <loc>https://system-compass.app/blog/assurance-sante-expatrie</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/blog/creer-entreprise-etranger</loc>
+    <loc>https://system-compass.app/blog/creer-entreprise-etranger</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://world-alignment.lovable.app/blog/choc-culturel-adaptation</loc>
+    <loc>https://system-compass.app/blog/choc-culturel-adaptation</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- Thematic Paths -->
   <url>
-    <loc>https://world-alignment.lovable.app/thematic-paths</loc>
+    <loc>https://system-compass.app/thematic-paths</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

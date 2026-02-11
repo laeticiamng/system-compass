@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export function ThemeToggle() {
+  const { t } = useTranslation();
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     // Check localStorage first
     const stored = localStorage.getItem('theme');
@@ -45,7 +47,7 @@ export function ThemeToggle() {
       size="icon"
       onClick={toggle}
       className="relative h-9 w-9 rounded-lg transition-all duration-300"
-      aria-label={theme === 'dark' ? 'Passer en mode clair' : 'Passer en mode sombre'}
+      aria-label={theme === 'dark' ? t('theme.switchToLight', 'Passer en mode clair') : t('theme.switchToDark', 'Passer en mode sombre')}
     >
       <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
       <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />

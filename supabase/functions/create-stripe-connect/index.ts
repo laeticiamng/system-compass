@@ -3,7 +3,7 @@ import Stripe from "https://esm.sh/stripe@18.5.0";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.2";
 
 const corsHeaders = {
-  "Access-Control-Allow-Origin": "https://world-alignment.lovable.app",
+  "Access-Control-Allow-Origin": "https://system-compass.app",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
@@ -101,7 +101,7 @@ serve(async (req) => {
     }
 
     // Create account link for onboarding
-    const origin = req.headers.get("origin") || returnUrl || "https://world-alignment.lovable.app";
+    const origin = req.headers.get("origin") || returnUrl || "https://system-compass.app";
     const accountLink = await stripe.accountLinks.create({
       account: accountId,
       refresh_url: `${origin}/expert/onboarding?refresh=true`,

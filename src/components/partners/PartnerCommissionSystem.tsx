@@ -245,11 +245,11 @@ export function PartnerCommissionSystem({ className = '' }: PartnerCommissionSys
           <TabsList>
             <TabsTrigger value="commissions" className="gap-2">
               <DollarSign className="h-4 w-4" />
-              Commissions
+              {t('partners.commissions', 'Commissions')}
             </TabsTrigger>
             <TabsTrigger value="payouts" className="gap-2">
               <History className="h-4 w-4" />
-              Historique paiements
+              {t('partners.paymentHistory', 'Historique paiements')}
             </TabsTrigger>
           </TabsList>
           <Button variant="outline" size="sm" onClick={handleExportCSV}>

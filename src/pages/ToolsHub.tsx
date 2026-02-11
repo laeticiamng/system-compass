@@ -144,8 +144,8 @@ export default function ToolsHub() {
         <meta name="description" content={t('hub.meta.description', 'Accédez à tous les outils System Compass : tests de profil, comparateur de pays, stratégies, calculateur fiscal, et plus.')} />
         <meta property="og:title" content={t('hub.meta.ogTitle', 'Centre des Outils - System Compass')} />
         <meta property="og:description" content={t('hub.meta.ogDescription', 'Tous vos outils d\'analyse, de planification et de décision en un seul endroit.')} />
-        <meta property="og:url" content="https://world-alignment.lovable.app/tools" />
-        <link rel="canonical" href="https://world-alignment.lovable.app/tools" />
+        <meta property="og:url" content="https://system-compass.app/tools" />
+        <link rel="canonical" href="https://system-compass.app/tools" />
       </Helmet>
       <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20 pt-16 md:pt-20">
       <div className="container mx-auto px-4 py-8 md:py-12">

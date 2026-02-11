@@ -91,7 +91,7 @@ export function ProfileStep({
         </div>
         <Select value={educationLevel} onValueChange={(v) => onEducationChange?.(v as EducationLevel)}>
           <SelectTrigger className="w-full h-12">
-            <SelectValue placeholder="Sélectionnez votre niveau d'études" />
+            <SelectValue placeholder={t('exitKeys.selectEducation', "Sélectionnez votre niveau d'études")} />
           </SelectTrigger>
           <SelectContent>
             {EDUCATION_LEVELS.map(level => (
@@ -115,7 +115,7 @@ export function ProfileStep({
         </div>
         <Select value={professionId} onValueChange={(v) => onProfessionChange?.(v)}>
           <SelectTrigger className="w-full h-12">
-            <SelectValue placeholder="Sélectionnez votre métier" />
+            <SelectValue placeholder={t('exitKeys.selectProfession', "Sélectionnez votre métier")} />
           </SelectTrigger>
           <SelectContent className="max-h-[300px]">
             {Object.entries(groupedProfessions).map(([category, profs]) => (

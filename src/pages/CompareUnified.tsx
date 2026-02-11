@@ -252,7 +252,7 @@ export default function CompareUnified() {
               )}
             >
               <Users className="w-4 h-4" />
-              <span className="hidden sm:inline">Multi (jusqu'à 5)</span>
+              <span className="hidden sm:inline">{t('compare.multiUpTo5', "Multi (jusqu'à 5)")}</span>
               <span className="sm:hidden">Multi</span>
             </button>
           </div>

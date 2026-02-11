@@ -363,12 +363,12 @@ export function DestinationQuests() {
 
             <div className="flex justify-between mt-6">
               <Button variant="outline" onClick={() => setSelectedQuest(null)}>
-                Fermer
+                {t('common.close', 'Fermer')}
               </Button>
               {!activeQuests.includes(selectedQuest.id) && (
                 <Button onClick={() => handleStartQuest(selectedQuest)}>
                   <Target className="h-4 w-4 mr-2" />
-                  Commencer cette quête
+                  {t('gamification.startQuest', 'Commencer cette quête')}
                 </Button>
               )}
             </div>

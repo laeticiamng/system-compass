@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -13,6 +14,7 @@ interface QueuedAction {
 }
 
 export function OfflineQueue() {
+  const { t } = useTranslation();
   const [queue, setQueue] = useState<QueuedAction[]>([]);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [isSyncing, setIsSyncing] = useState(false);
@@ -85,9 +87,9 @@ export function OfflineQueue() {
         <CardTitle className="text-sm flex items-center justify-between">
           <div className="flex items-center gap-2">
             <WifiOff className="h-4 w-4 text-amber-500" />
-            Actions en attente
+            {t('offline.pendingActions', 'Actions en attente')}
           </div>
-          <Badge variant="secondary">{pendingCount} en attente</Badge>
+          <Badge variant="secondary">{pendingCount} {t('offline.pending', 'en attente')}</Badge>
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-3">
@@ -121,24 +123,24 @@ export function OfflineQueue() {
             {isSyncing ? (
               <>
                 <RefreshCw className="h-4 w-4 mr-1 animate-spin" />
-                Synchronisation...
+                {t('offline.syncing', 'Synchronisation...')}
               </>
             ) : (
               <>
                 <RefreshCw className="h-4 w-4 mr-1" />
-                Synchroniser
+                {t('offline.sync', 'Synchroniser')}
               </>
             )}
           </Button>
           <Button size="sm" variant="outline" onClick={clearQueue}>
-            Effacer
+            {t('common.clear', 'Effacer')}
           </Button>
         </div>
 
         {!isOnline && (
           <p className="text-xs text-amber-500 flex items-center gap-1">
             <WifiOff className="h-3 w-3" />
-            Hors ligne - les actions seront synchronisées au retour de la connexion
+            {t('offline.offlineMessage', 'Hors ligne - les actions seront synchronisées au retour de la connexion')}
           </p>
         )}
       </CardContent>

@@ -4,6 +4,7 @@
  */
 
 import { useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
@@ -44,6 +45,7 @@ interface ComparisonCountry {
 const MAX_COUNTRIES = 4;
 
 export function AICountryComparator() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const { topRecommendations } = useSmartRecommendations();
@@ -159,10 +161,10 @@ export function AICountryComparator() {
       <CardHeader className="bg-gradient-to-r from-primary/10 to-transparent">
         <CardTitle className="flex items-center gap-2">
           <Scale className="w-5 h-5 text-primary" />
-          Comparateur IA Multi-Pays
+          {t('compare.aiComparator', 'Comparateur IA Multi-Pays')}
           <Badge variant="outline" className="ml-auto bg-primary/10">
             <Sparkles className="w-3 h-3 mr-1" />
-            Personnalisé
+            {t('common.personalized', 'Personnalisé')}
           </Badge>
         </CardTitle>
       </CardHeader>
@@ -170,7 +172,7 @@ export function AICountryComparator() {
         {/* Country Selector */}
         <div className="space-y-2">
           <p className="text-sm text-muted-foreground">
-            Sélectionnez jusqu'à {MAX_COUNTRIES} pays à comparer
+            {t('compare.selectUpTo', "Sélectionnez jusqu'à {{count}} pays à comparer", { count: MAX_COUNTRIES })}
           </p>
           
           <div className="flex flex-wrap gap-2">

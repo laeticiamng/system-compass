@@ -278,7 +278,7 @@ export default function BecomeExpert() {
                       <FormLabel>Biographie</FormLabel>
                       <FormControl>
                         <Textarea 
-                          placeholder="Décrivez votre parcours, vos expertises et ce que vous apportez à vos clients..."
+                          placeholder={t('expert.bioPlaceholder', "Décrivez votre parcours, vos expertises et ce que vous apportez à vos clients...")}
                           rows={4}
                           {...field}
                         />

@@ -4,7 +4,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.1";
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 
 const corsHeaders = {
-  "Access-Control-Allow-Origin": "https://world-alignment.lovable.app",
+  "Access-Control-Allow-Origin": "https://system-compass.app",
   "Access-Control-Allow-Headers":
     "authorization, x-client-info, apikey, content-type",
 };
@@ -157,7 +157,7 @@ const handler = async (req: Request): Promise<Response> => {
             </p>
             
             <div style="text-align: center; margin-top: 30px;">
-              <a href="${Deno.env.get("SITE_URL") || "https://pyramid-compass.lovable.app"}/b2b" 
+              <a href="${Deno.env.get("SITE_URL") || "https://system-compass.app"}/b2b" 
                  style="display: inline-block; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); 
                         color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 500;">
                 Accéder à TraceOS

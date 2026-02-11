@@ -3,7 +3,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.2";
 import webpush from "https://esm.sh/web-push@3.6.7?target=deno";
 
 const corsHeaders = {
-  "Access-Control-Allow-Origin": "https://world-alignment.lovable.app",
+  "Access-Control-Allow-Origin": "https://system-compass.app",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
@@ -63,7 +63,7 @@ serve(async (req) => {
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
     const canSendEmail = !!resendApiKey;
     const canSendPush = !!(vapidPublicKey && vapidPrivateKey);
-    const baseAppUrl = supabaseUrl.replace('.supabase.co', '.lovable.app');
+    const baseAppUrl = 'https://system-compass.app';
 
     if (canSendPush) {
       webpush.setVapidDetails(vapidSubject, vapidPublicKey!, vapidPrivateKey!);
@@ -212,7 +212,7 @@ serve(async (req) => {
                   ` : ''}
                   
                   <p>Consultez votre tableau de bord pour suivre votre progression.</p>
-                  <a href="${supabaseUrl?.replace('.supabase.co', '.lovable.app')}/dashboard" class="cta">
+                  <a href="https://system-compass.app/dashboard" class="cta">
                     Voir mon tableau de bord
                   </a>
                 </div>

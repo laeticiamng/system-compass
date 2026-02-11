@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
@@ -40,6 +41,7 @@ interface PartnerActivityTrackerProps {
 }
 
 export function PartnerActivityTracker({ partnerId, className = '' }: PartnerActivityTrackerProps) {
+  const { t } = useTranslation();
   const [activities, setActivities] = useState<ActivityEntry[]>([]);
   const [stats, setStats] = useState<PartnerStats>({
     totalClicks: 0,
@@ -215,11 +217,11 @@ export function PartnerActivityTracker({ partnerId, className = '' }: PartnerAct
           <CardContent className="p-4">
             <div className="flex items-center gap-2 text-muted-foreground mb-1">
               <DollarSign className="h-4 w-4" />
-              <span className="text-sm">Commissions</span>
+              <span className="text-sm">{t('partners.commissions', 'Commissions')}</span>
             </div>
             <p className="text-2xl font-bold">{stats.totalCommissions}€</p>
             <p className="text-xs text-amber-500">
-              {stats.pendingCommissions}€ en attente
+              {t('partners.pendingAmount', '{{amount}}€ en attente', { amount: stats.pendingCommissions })}
             </p>
           </CardContent>
         </Card>

@@ -162,7 +162,7 @@ export function GovernancePdfExport({
         doc.setFontSize(8);
         doc.setTextColor(150);
         doc.text(
-          `Page ${i} sur ${pageCount} | World Alignment Platform`,
+          `Page ${i} sur ${pageCount} | System Compass`,
           pageWidth / 2,
           doc.internal.pageSize.getHeight() - 10,
           { align: 'center' }
