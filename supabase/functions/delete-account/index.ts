@@ -92,6 +92,20 @@ Deno.serve(async (req) => {
       }
     }
 
+    // Write audit log before deleting auth user (RGPD compliance)
+    try {
+      await supabaseAdmin.from('account_deletion_audit').insert({
+        user_id: userId,
+        user_email: userData.user.email,
+        deletion_results: deletionResults,
+        tables_cleaned: Object.keys(deletionResults).length,
+        requested_at: new Date().toISOString(),
+        ip_address: req.headers.get('x-forwarded-for') || req.headers.get('cf-connecting-ip') || 'unknown',
+      });
+    } catch (auditErr) {
+      console.warn('[delete-account] Audit log failed (non-blocking):', auditErr);
+    }
+
     // Delete the auth user last
     const { error: deleteAuthError } = await supabaseAdmin.auth.admin.deleteUser(userId);
     if (deleteAuthError) {

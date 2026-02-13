@@ -45,23 +45,23 @@ const EVIDENCE_TYPE_ICONS: Record<string, React.ReactNode> = {
 };
 
 const RELIABILITY_CONFIG: Record<string, { label: string; color: string; icon: React.ReactNode }> = {
-  high: { 
-    label: 'Haute fiabilité', 
+  high: {
+    label: 'pmo.citations.reliabilityHigh',
     color: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
     icon: <CheckCircle className="w-3 h-3" />
   },
-  medium: { 
-    label: 'Fiabilité moyenne', 
+  medium: {
+    label: 'pmo.citations.reliabilityMedium',
     color: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
     icon: <Shield className="w-3 h-3" />
   },
-  low: { 
-    label: 'Faible fiabilité', 
+  low: {
+    label: 'pmo.citations.reliabilityLow',
     color: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
     icon: <AlertTriangle className="w-3 h-3" />
   },
-  unverified: { 
-    label: 'Non vérifiée', 
+  unverified: {
+    label: 'pmo.citations.reliabilityUnverified',
     color: 'bg-muted text-muted-foreground',
     icon: <AlertTriangle className="w-3 h-3" />
   },
@@ -166,7 +166,7 @@ export function AiCitationsDisplay({ caseId, responseId, showAllCitations = fals
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
                     <span className="font-medium text-sm truncate">
-                      {citation.evidence?.title || 'Source inconnue'}
+                      {citation.evidence?.title || t('pmo.citations.unknownSource', 'Source inconnue')}
                     </span>
                     {citation.evidence?.is_verified && citation.evidence.is_verified && (
                       <CheckCircle className="w-3 h-3 text-green-600 shrink-0" />
@@ -187,7 +187,7 @@ export function AiCitationsDisplay({ caseId, responseId, showAllCitations = fals
                       >
                         {RELIABILITY_CONFIG[citation.evidence.reliability]?.icon}
                         <span className="ml-1">
-                          {RELIABILITY_CONFIG[citation.evidence.reliability]?.label}
+                          {t(RELIABILITY_CONFIG[citation.evidence.reliability]?.label, RELIABILITY_CONFIG[citation.evidence.reliability]?.label)}
                         </span>
                       </Badge>
                     )}
@@ -234,7 +234,7 @@ export function AiCitationsDisplay({ caseId, responseId, showAllCitations = fals
                       <div className="space-y-4 py-4">
                         {selectedEvidence?.source_name && (
                           <div>
-                            <span className="text-sm font-medium">Source:</span>
+                            <span className="text-sm font-medium">{t('pmo.citations.source', 'Source :')}</span>
                             <span className="text-sm text-muted-foreground ml-2">
                               {selectedEvidence.source_name}
                             </span>
@@ -242,7 +242,7 @@ export function AiCitationsDisplay({ caseId, responseId, showAllCitations = fals
                         )}
                         {selectedEvidence?.source_date && (
                           <div>
-                            <span className="text-sm font-medium">Date:</span>
+                            <span className="text-sm font-medium">{t('pmo.citations.date', 'Date :')}</span>
                             <span className="text-sm text-muted-foreground ml-2">
                               {new Date(selectedEvidence.source_date).toLocaleDateString('fr-FR')}
                             </span>
@@ -250,7 +250,7 @@ export function AiCitationsDisplay({ caseId, responseId, showAllCitations = fals
                         )}
                         {selectedEvidence?.content && (
                           <div>
-                            <span className="text-sm font-medium">Contenu:</span>
+                            <span className="text-sm font-medium">{t('pmo.citations.content', 'Contenu :')}</span>
                             <p className="text-sm text-muted-foreground mt-1 whitespace-pre-wrap">
                               {selectedEvidence.content}
                             </p>
@@ -263,7 +263,7 @@ export function AiCitationsDisplay({ caseId, responseId, showAllCitations = fals
                             onClick={() => window.open(selectedEvidence?.url || '', '_blank')}
                           >
                             <ExternalLink className="w-4 h-4" />
-                            Ouvrir la source
+                            {t('pmo.citations.openSource', 'Ouvrir la source')}
                           </Button>
                         )}
                       </div>

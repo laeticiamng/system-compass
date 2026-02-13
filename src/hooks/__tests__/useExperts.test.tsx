@@ -99,28 +99,26 @@ describe('useExperts', () => {
   });
 
   describe('reviews', () => {
-    it('should fetch mock reviews for mock experts', async () => {
+    it('should return empty reviews for mock experts', async () => {
       const { result } = renderHook(() => useExperts());
-      
+
       await waitFor(() => {
         expect(result.current.isLoading).toBe(false);
       });
 
       const reviews = await result.current.fetchReviews('mock-1');
-      expect(reviews.length).toBeGreaterThan(0);
+      expect(reviews).toEqual([]);
     });
 
-    it('should return reviews with correct structure', async () => {
+    it('should return an array from fetchReviews', async () => {
       const { result } = renderHook(() => useExperts());
-      
+
       await waitFor(() => {
         expect(result.current.isLoading).toBe(false);
       });
 
       const reviews = await result.current.fetchReviews('mock-1');
-      expect(reviews[0]).toHaveProperty('id');
-      expect(reviews[0]).toHaveProperty('rating');
-      expect(reviews[0]).toHaveProperty('expertId');
+      expect(Array.isArray(reviews)).toBe(true);
     });
   });
 

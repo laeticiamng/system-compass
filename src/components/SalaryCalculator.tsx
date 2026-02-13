@@ -76,8 +76,8 @@ export function SalaryCalculator({ initialCountryId, initialProfessionId }: Sala
           <DollarSign className="w-6 h-6 text-primary" />
         </div>
         <div>
-          <h3 className="font-bold text-lg">Calculateur de Salaire</h3>
-          <p className="text-sm text-muted-foreground">Estimez votre salaire selon le pays et le métier</p>
+          <h3 className="font-bold text-lg">{t('salary.title', 'Calculateur de Salaire')}</h3>
+          <p className="text-sm text-muted-foreground">{t('salary.subtitle', 'Estimez votre salaire selon le pays et le métier')}</p>
         </div>
       </div>
 
@@ -86,11 +86,11 @@ export function SalaryCalculator({ initialCountryId, initialProfessionId }: Sala
         <div className="space-y-2">
           <label className="text-sm font-medium flex items-center gap-2">
             <Globe className="w-4 h-4" />
-            Pays de résidence
+            {t('salary.countryLabel', 'Pays de résidence')}
           </label>
           <Select value={countryId} onValueChange={setCountryId}>
             <SelectTrigger className="w-full">
-              <SelectValue placeholder="Sélectionnez un pays" />
+              <SelectValue placeholder={t('salary.selectCountry', 'Sélectionnez un pays')} />
             </SelectTrigger>
             <SelectContent className="max-h-[300px]">
               {countries.map(country => (
@@ -109,11 +109,11 @@ export function SalaryCalculator({ initialCountryId, initialProfessionId }: Sala
         <div className="space-y-2">
           <label className="text-sm font-medium flex items-center gap-2">
             <Briefcase className="w-4 h-4" />
-            Métier
+            {t('salary.professionLabel', 'Métier')}
           </label>
           <Select value={professionId} onValueChange={setProfessionId}>
             <SelectTrigger className="w-full">
-              <SelectValue placeholder="Sélectionnez un métier" />
+              <SelectValue placeholder={t('salary.selectProfession', 'Sélectionnez un métier')} />
             </SelectTrigger>
             <SelectContent className="max-h-[300px]">
               {Object.entries(groupedProfessions).map(([category, profs]) => (
@@ -138,7 +138,7 @@ export function SalaryCalculator({ initialCountryId, initialProfessionId }: Sala
         <div className="space-y-4">
           <div className="p-4 bg-primary/10 rounded-xl">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-muted-foreground">Salaire mensuel net estimé</span>
+              <span className="text-sm text-muted-foreground">{t('salary.estimatedNetSalary', 'Salaire mensuel net estimé')}</span>
               {selectedProfession && (
                 <span className={cn(
                   "text-xs px-2 py-0.5 rounded-full",
@@ -147,28 +147,28 @@ export function SalaryCalculator({ initialCountryId, initialProfessionId }: Sala
                   selectedProfession.internationalDemand === 'medium' && 'bg-amber-500/20 text-amber-400',
                   selectedProfession.internationalDemand === 'low' && 'bg-muted text-muted-foreground',
                 )}>
-                  {selectedProfession.internationalDemand === 'very_high' && '🌍 Très demandé'}
-                  {selectedProfession.internationalDemand === 'high' && '🌍 Demandé'}
-                  {selectedProfession.internationalDemand === 'medium' && 'Demande moyenne'}
-                  {selectedProfession.internationalDemand === 'low' && 'Demande locale'}
+                  {selectedProfession.internationalDemand === 'very_high' && <>🌍 {t('salary.demandVeryHigh', 'Très demandé')}</>}
+                  {selectedProfession.internationalDemand === 'high' && <>🌍 {t('salary.demandHigh', 'Demandé')}</>}
+                  {selectedProfession.internationalDemand === 'medium' && t('salary.demandMedium', 'Demande moyenne')}
+                  {selectedProfession.internationalDemand === 'low' && t('salary.demandLow', 'Demande locale')}
                 </span>
               )}
             </div>
             <div className="flex items-baseline gap-2">
               <span className="text-4xl font-bold text-primary">{salary.toLocaleString()}€</span>
-              <span className="text-muted-foreground">/mois</span>
+              <span className="text-muted-foreground">{t('salary.perMonth', '/mois')}</span>
             </div>
             <div className="text-sm text-muted-foreground mt-2">
-              Soit ~{(salary * 12).toLocaleString()}€/an
+              {t('salary.annualEquivalent', 'Soit ~{{amount}}€/an', { amount: (salary * 12).toLocaleString() })}
             </div>
             {selectedCountry && (
               <div className="mt-3 pt-3 border-t border-border/50">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-muted-foreground">Coût de vie moyen</span>
+                  <span className="text-muted-foreground">{t('salary.costOfLiving', 'Coût de vie moyen')}</span>
                   <span>{selectedCountry.costOfLiving.monthlyBudgetSingle}€/mois</span>
                 </div>
                 <div className="flex items-center justify-between text-sm mt-1">
-                  <span className="text-muted-foreground">Reste après dépenses</span>
+                  <span className="text-muted-foreground">{t('salary.remainingAfterExpenses', 'Reste après dépenses')}</span>
                   <span className={cn(
                     "font-medium",
                     salary - selectedCountry.costOfLiving.monthlyBudgetSingle > 0 ? 'text-emerald-400' : 'text-red-400'
@@ -185,11 +185,11 @@ export function SalaryCalculator({ initialCountryId, initialProfessionId }: Sala
             <div className="p-4 bg-muted/30 rounded-xl">
               <h4 className="font-medium mb-3 flex items-center gap-2">
                 <GraduationCap className="w-4 h-4" />
-                Informations sur le métier
+                {t('salary.professionInfo', 'Informations sur le métier')}
               </h4>
               <div className="grid grid-cols-2 gap-3 text-sm">
                 <div>
-                  <span className="text-muted-foreground">Formation requise:</span>
+                  <span className="text-muted-foreground">{t('salary.requiredEducation', 'Formation requise :')}</span>
                   <div className="flex flex-wrap gap-1 mt-1">
                     {selectedProfession.requiredEducation.slice(0, 2).map(edu => {
                       const eduInfo = EDUCATION_LEVELS.find(e => e.id === edu);
@@ -202,7 +202,7 @@ export function SalaryCalculator({ initialCountryId, initialProfessionId }: Sala
                   </div>
                 </div>
                 <div>
-                  <span className="text-muted-foreground">Travail à distance:</span>
+                  <span className="text-muted-foreground">{t('salary.remoteWork', 'Travail à distance :')}</span>
                   <p className={cn("font-medium", selectedProfession.remoteWorkPossible ? 'text-emerald-400' : 'text-muted-foreground')}>
                     {selectedProfession.remoteWorkPossible ? t('common.possible', '✓ Possible') : t('common.notApplicable', '✗ Non applicable')}
                   </p>
@@ -215,11 +215,11 @@ export function SalaryCalculator({ initialCountryId, initialProfessionId }: Sala
           <div className="p-4 bg-muted/20 rounded-xl">
             <h4 className="font-medium mb-3 flex items-center gap-2">
               <TrendingUp className="w-4 h-4" />
-              Comparer avec un autre pays
+              {t('salary.compareWith', 'Comparer avec un autre pays')}
             </h4>
             <Select value={compareCountryId} onValueChange={setCompareCountryId}>
               <SelectTrigger className="w-full">
-                <SelectValue placeholder="Sélectionnez un pays à comparer" />
+                <SelectValue placeholder={t('salary.selectCompareCountry', 'Sélectionnez un pays à comparer')} />
               </SelectTrigger>
               <SelectContent className="max-h-[300px]">
                 {countries.filter(c => c.id !== countryId).map(country => (
@@ -255,7 +255,7 @@ export function SalaryCalculator({ initialCountryId, initialProfessionId }: Sala
                     <p className="font-bold text-lg">{compareSalary.toLocaleString()}€</p>
                   </div>
                   <div className="text-center p-2 bg-background/50 rounded">
-                    <p className="text-muted-foreground text-xs">Différence</p>
+                    <p className="text-muted-foreground text-xs">{t('salary.difference', 'Différence')}</p>
                     <p className={cn("font-bold text-lg", salaryDiff > 0 ? 'text-emerald-400' : 'text-red-400')}>
                       {salaryDiff > 0 ? '+' : ''}{salaryDiff.toLocaleString()}€
                     </p>
@@ -264,15 +264,15 @@ export function SalaryCalculator({ initialCountryId, initialProfessionId }: Sala
 
                 {purchasingPowerRatio && (
                   <div className="mt-3 pt-3 border-t border-border/50 text-center">
-                    <p className="text-xs text-muted-foreground mb-1">Ratio pouvoir d'achat</p>
+                    <p className="text-xs text-muted-foreground mb-1">{t('salary.purchasingPowerRatio', "Ratio pouvoir d'achat")}</p>
                     <p className={cn(
                       "font-bold",
                       purchasingPowerRatio > 1.2 ? 'text-emerald-400' : 
                       purchasingPowerRatio < 0.8 ? 'text-red-400' : 'text-amber-400'
                     )}>
-                      {purchasingPowerRatio > 1.2 && '✓ Meilleur pouvoir d\'achat'}
-                      {purchasingPowerRatio >= 0.8 && purchasingPowerRatio <= 1.2 && '≈ Pouvoir d\'achat similaire'}
-                      {purchasingPowerRatio < 0.8 && '✗ Pouvoir d\'achat inférieur'}
+                      {purchasingPowerRatio > 1.2 && <>✓ {t('salary.betterPurchasingPower', "Meilleur pouvoir d'achat")}</>}
+                      {purchasingPowerRatio >= 0.8 && purchasingPowerRatio <= 1.2 && <>≈ {t('salary.similarPurchasingPower', "Pouvoir d'achat similaire")}</>}
+                      {purchasingPowerRatio < 0.8 && <>✗ {t('salary.lowerPurchasingPower', "Pouvoir d'achat inférieur")}</>}
                     </p>
                     <p className="text-xs text-muted-foreground mt-1">
                       Ratio: {purchasingPowerRatio.toFixed(2)}x
@@ -288,7 +288,7 @@ export function SalaryCalculator({ initialCountryId, initialProfessionId }: Sala
       {!salary && (
         <div className="text-center py-8 text-muted-foreground">
           <Building className="w-12 h-12 mx-auto mb-4 opacity-50" />
-          <p>Sélectionnez un pays et un métier pour voir l'estimation salariale</p>
+          <p>{t('salary.emptyState', "Sélectionnez un pays et un métier pour voir l'estimation salariale")}</p>
         </div>
       )}
     </div>
