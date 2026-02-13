@@ -110,10 +110,10 @@ export function SystemHealthMonitor() {
 
   const getStatusBadge = (status: SystemStatus['status']) => {
     switch (status) {
-      case 'online': return <Badge variant="outline" className="bg-green-500/10 text-green-500 border-green-500/20">En ligne</Badge>;
-      case 'degraded': return <Badge variant="outline" className="bg-amber-500/10 text-amber-500 border-amber-500/20">Dégradé</Badge>;
-      case 'offline': return <Badge variant="outline" className="bg-red-500/10 text-red-500 border-red-500/20">Hors ligne</Badge>;
-      case 'checking': return <Badge variant="outline" className="bg-muted text-muted-foreground">Vérification...</Badge>;
+      case 'online': return <Badge variant="outline" className="bg-green-500/10 text-green-500 border-green-500/20">{t('diagnostics.statusOnline', 'En ligne')}</Badge>;
+      case 'degraded': return <Badge variant="outline" className="bg-amber-500/10 text-amber-500 border-amber-500/20">{t('diagnostics.statusDegraded', 'Dégradé')}</Badge>;
+      case 'offline': return <Badge variant="outline" className="bg-red-500/10 text-red-500 border-red-500/20">{t('diagnostics.statusOffline', 'Hors ligne')}</Badge>;
+      case 'checking': return <Badge variant="outline" className="bg-muted text-muted-foreground">{t('diagnostics.statusChecking', 'Vérification...')}</Badge>;
     }
   };
 

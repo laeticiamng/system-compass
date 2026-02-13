@@ -53,11 +53,14 @@ const App = () => (
                       <OnboardingDialog />
                       {/* OnboardingTour removed - integrated into OnboardingDialog */}
                       <div className="min-h-screen flex w-full">
+                        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:p-4 focus:bg-primary focus:text-primary-foreground">
+                          Skip to main content
+                        </a>
                         <AppSidebar />
                         <div className="flex-1 flex flex-col min-w-0">
                           <Header />
                           <Breadcrumbs />
-                          <main className="flex-1">
+                          <main id="main-content" className="flex-1">
                             <Routes>
                               {allRoutes.map((route) => (
                                 <Route 

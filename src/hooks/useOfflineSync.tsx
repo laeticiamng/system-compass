@@ -115,8 +115,10 @@ export function useOfflineSync() {
       dataFreshness: 'fresh',
     }));
 
-    // Invalidate queries to refresh data
-    queryClient.invalidateQueries();
+    // Invalidate specific queries to refresh data
+    queryClient.invalidateQueries({ queryKey: ['countries'] });
+    queryClient.invalidateQueries({ queryKey: ['userData'] });
+    queryClient.invalidateQueries({ queryKey: ['dashboard'] });
 
     if (failedActions.length === 0 && queue.length > 0) {
       toast.success(t('toast.sync.success', 'Données synchronisées avec succès'));
@@ -128,7 +130,9 @@ export function useOfflineSync() {
   // Force sync
   const forceSync = useCallback(() => {
     if (navigator.onLine) {
-      queryClient.invalidateQueries();
+      queryClient.invalidateQueries({ queryKey: ['countries'] });
+      queryClient.invalidateQueries({ queryKey: ['userData'] });
+      queryClient.invalidateQueries({ queryKey: ['dashboard'] });
       processQueue();
     } else {
       toast.error(t('toast.sync.noConnection', 'Connexion internet requise'));

@@ -145,6 +145,7 @@ interface RiskCardProps {
 }
 
 function RiskCard({ risk }: RiskCardProps) {
+  const { t } = useTranslation();
   const [isTipsOpen, setIsTipsOpen] = useState(false);
   const config = CATEGORY_CONFIG[risk.category];
   const CategoryIcon = config.icon;
@@ -211,7 +212,7 @@ function RiskCard({ risk }: RiskCardProps) {
         {/* Severity bar */}
         <div className="space-y-1">
           <div className="flex justify-between text-xs text-muted-foreground">
-            <span>Severite</span>
+            <span>{t('latent.severity', 'Sévérité')}</span>
             <span>{risk.severity}/10</span>
           </div>
           <div className="h-2 bg-secondary rounded-full overflow-hidden">
@@ -229,7 +230,7 @@ function RiskCard({ risk }: RiskCardProps) {
         {risk.sources.length > 0 && (
           <div>
             <p className="text-xs font-medium text-muted-foreground mb-1.5">
-              Sources :
+              {t('latent.sources', 'Sources :')}
             </p>
             <div className="flex flex-wrap gap-1.5">
               {risk.sources.map((source, idx) => (
@@ -250,7 +251,7 @@ function RiskCard({ risk }: RiskCardProps) {
           <div>
             <p className="text-xs font-medium text-muted-foreground mb-1.5">
               <Users className="w-3 h-3 inline mr-1" />
-              Profils concernes :
+              {t('latent.affectedProfiles', 'Profils concernés :')}
             </p>
             <div className="flex flex-wrap gap-1.5">
               {risk.affectedProfiles.map((profile, idx) => (
@@ -277,7 +278,7 @@ function RiskCard({ risk }: RiskCardProps) {
             >
               <span className="flex items-center gap-1.5 text-muted-foreground">
                 <Shield className="w-3.5 h-3.5" />
-                Conseils d'attenuation ({risk.mitigationTips.length})
+                {t('latent.mitigationTips', "Conseils d'atténuation")} ({risk.mitigationTips.length})
               </span>
               {isTipsOpen ? (
                 <ChevronUp className="w-4 h-4 text-muted-foreground" />
@@ -328,14 +329,14 @@ export function CountryRiskAnalysis() {
           <div className="flex items-center gap-2 mb-2">
             <Badge className="px-3 py-1 bg-gradient-to-r from-red-500/20 to-amber-500/20 border-red-500/30">
               <AlertTriangle className="w-3.5 h-3.5 mr-2" />
-              ZONES LATENTES
+              {t('latent.badge', 'ZONES LATENTES')}
             </Badge>
           </div>
           <h2 className="font-display text-2xl font-bold">
-            Analyse des risques caches par pays
+            {t('latent.title', 'Analyse des risques cachés par pays')}
           </h2>
           <p className="text-sm text-muted-foreground mt-1">
-            Identifiez les risques invisibles, subtils et emergents specifiques a chaque pays de destination.
+            {t('latent.subtitle', 'Identifiez les risques invisibles, subtils et émergents spécifiques à chaque pays de destination.')}
           </p>
         </div>
       </div>
@@ -346,14 +347,14 @@ export function CountryRiskAnalysis() {
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <div className="flex items-center gap-2 text-sm font-medium shrink-0">
               <Globe2 className="w-4 h-4 text-primary" />
-              Selectionnez un pays :
+              {t('latent.selectCountry', 'Sélectionnez un pays :')}
             </div>
             <Select
               value={selectedCountryId}
               onValueChange={setSelectedCountryId}
             >
               <SelectTrigger className="w-full sm:max-w-sm">
-                <SelectValue placeholder="Choisir un pays..." />
+                <SelectValue placeholder={t('latent.selectPlaceholder', 'Choisir un pays...')} />
               </SelectTrigger>
               <SelectContent>
                 {sortedProfiles.map((profile) => (
@@ -388,11 +389,10 @@ export function CountryRiskAnalysis() {
           <CardContent className="flex flex-col items-center justify-center py-16">
             <Globe2 className="w-16 h-16 text-muted-foreground/30 mb-4" />
             <h3 className="font-medium text-lg mb-2">
-              Aucun pays selectionne
+              {t('latent.noCountrySelected', 'Aucun pays sélectionné')}
             </h3>
             <p className="text-sm text-muted-foreground text-center max-w-md">
-              Choisissez un pays dans le menu ci-dessus pour decouvrir
-              les risques caches qui ne figurent pas dans les classements traditionnels.
+              {t('latent.emptyStateText', 'Choisissez un pays dans le menu ci-dessus pour découvrir les risques cachés qui ne figurent pas dans les classements traditionnels.')}
             </p>
           </CardContent>
         </Card>
@@ -407,7 +407,7 @@ export function CountryRiskAnalysis() {
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center gap-2 text-lg">
                   <AlertTriangle className={cn('w-5 h-5', getSeverityTextColor(selectedProfile.overallLatentScore))} />
-                  Score latent global : {selectedProfile.countryName}
+                  {t('latent.overallScore', 'Score latent global :')} {selectedProfile.countryName}
                 </CardTitle>
                 <div
                   className={cn(
@@ -420,39 +420,39 @@ export function CountryRiskAnalysis() {
                 </div>
               </div>
               <p className="text-xs text-muted-foreground">
-                Derniere mise a jour : {new Date(selectedProfile.lastUpdated).toLocaleDateString('fr-FR')}
+                {t('latent.lastUpdated', 'Dernière mise à jour :')} {new Date(selectedProfile.lastUpdated).toLocaleDateString('fr-FR')}
               </p>
             </CardHeader>
             <CardContent className="space-y-4">
               {/* Radar-like bar visualization */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
                 <ScoreBar
-                  label="Corruption"
+                  label={t('latent.categories.corruption', 'Corruption')}
                   score={selectedProfile.corruptionScore}
                   icon={Landmark}
                 />
                 <ScoreBar
-                  label="Pieges juridiques"
+                  label={t('latent.categories.legalTraps', 'Pièges juridiques')}
                   score={selectedProfile.legalTrapScore}
                   icon={Scale}
                 />
                 <ScoreBar
-                  label="Risques culturels"
+                  label={t('latent.categories.cultural', 'Risques culturels')}
                   score={selectedProfile.culturalRiskScore}
                   icon={Globe2}
                 />
                 <ScoreBar
-                  label="Risques financiers"
+                  label={t('latent.categories.financial', 'Risques financiers')}
                   score={selectedProfile.financialRiskScore}
                   icon={Briefcase}
                 />
                 <ScoreBar
-                  label="Bureaucratie"
+                  label={t('latent.categories.bureaucratic', 'Bureaucratie')}
                   score={selectedProfile.bureaucraticScore}
                   icon={Shield}
                 />
                 <ScoreBar
-                  label="Risques sociaux"
+                  label={t('latent.categories.social', 'Risques sociaux')}
                   score={selectedProfile.socialRiskScore}
                   icon={Users}
                 />
@@ -460,15 +460,15 @@ export function CountryRiskAnalysis() {
 
               {/* Summary badges */}
               <div className="flex flex-wrap gap-2 pt-2 border-t">
-                <span className="text-xs text-muted-foreground mr-1">Legende :</span>
+                <span className="text-xs text-muted-foreground mr-1">{t('latent.legend', 'Légende :')}</span>
                 <Badge variant="outline" className="text-xs bg-green-500/10 border-green-500/20 text-green-600">
-                  1-3 Faible
+                  {t('latent.severityLow', '1-3 Faible')}
                 </Badge>
                 <Badge variant="outline" className="text-xs bg-amber-500/10 border-amber-500/20 text-amber-600">
-                  4-6 Modere
+                  {t('latent.severityModerate', '4-6 Modéré')}
                 </Badge>
                 <Badge variant="outline" className="text-xs bg-red-500/10 border-red-500/20 text-red-600">
-                  7-10 Eleve
+                  {t('latent.severityHigh', '7-10 Élevé')}
                 </Badge>
               </div>
             </CardContent>
@@ -496,14 +496,14 @@ export function CountryRiskAnalysis() {
           <div>
             <h3 className="font-display text-lg font-semibold mb-4 flex items-center gap-2">
               <Eye className="w-5 h-5 text-muted-foreground" />
-              Risques caches identifies ({selectedProfile.hiddenRisks.length})
+              {t('latent.identifiedRisks', 'Risques cachés identifiés')} ({selectedProfile.hiddenRisks.length})
             </h3>
 
             {selectedProfile.hiddenRisks.length === 0 ? (
               <Card className="glass-card">
                 <CardContent className="py-8 text-center text-muted-foreground">
                   <Shield className="w-10 h-10 mx-auto mb-3 opacity-40" />
-                  <p>Aucun risque cache repertorie pour ce pays.</p>
+                  <p>{t('latent.noRisks', 'Aucun risque caché répertorié pour ce pays.')}</p>
                 </CardContent>
               </Card>
             ) : (
@@ -525,27 +525,16 @@ export function CountryRiskAnalysis() {
                 <Info className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
                 <div className="space-y-2 text-xs text-muted-foreground leading-relaxed">
                   <p className="font-semibold text-sm text-foreground/80">
-                    Avertissement juridique
+                    {t('latent.legalDisclaimer', 'Avertissement juridique')}
                   </p>
                   <p>
-                    Les informations presentees dans cette analyse sont fournies a titre
-                    purement indicatif et educatif. Elles ne constituent en aucun cas un
-                    conseil juridique, financier ou professionnel. Les scores et evaluations
-                    sont bases sur des donnees publiques et des analyses automatisees qui
-                    peuvent contenir des imprecisions ou ne pas refleter la situation
-                    actuelle dans le pays concerne.
+                    {t('latent.disclaimerParagraph1', 'Les informations présentées dans cette analyse sont fournies à titre purement indicatif et éducatif. Elles ne constituent en aucun cas un conseil juridique, financier ou professionnel. Les scores et évaluations sont basés sur des données publiques et des analyses automatisées qui peuvent contenir des imprécisions ou ne pas refléter la situation actuelle dans le pays concerné.')}
                   </p>
                   <p>
-                    Avant toute decision d'expatriation, d'investissement ou d'implantation,
-                    nous recommandons vivement de consulter des professionnels qualifies
-                    (avocats, fiscalistes, consultants en mobilite internationale) ayant une
-                    expertise reconnue dans le pays de destination.
+                    {t('latent.disclaimerParagraph2', "Avant toute décision d'expatriation, d'investissement ou d'implantation, nous recommandons vivement de consulter des professionnels qualifiés (avocats, fiscalistes, consultants en mobilité internationale) ayant une expertise reconnue dans le pays de destination.")}
                   </p>
                   <p>
-                    System Compass decline toute responsabilite quant aux decisions prises
-                    sur la base de ces informations. Les risques caches, par nature, sont
-                    difficiles a quantifier et leur materialisation depend de nombreux
-                    facteurs contextuels propres a chaque situation individuelle.
+                    {t('latent.disclaimerParagraph3', 'System Compass décline toute responsabilité quant aux décisions prises sur la base de ces informations. Les risques cachés, par nature, sont difficiles à quantifier et leur matérialisation dépend de nombreux facteurs contextuels propres à chaque situation individuelle.')}
                   </p>
                 </div>
               </div>
