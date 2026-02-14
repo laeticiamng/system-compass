@@ -144,7 +144,7 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
 
       if (error) throw error;
       if (data?.url) {
-        window.open(data.url, '_blank');
+        window.open(data.url, '_blank', 'noopener,noreferrer');
       }
     } catch (err) {
       console.error('Failed to create checkout:', err);
@@ -162,7 +162,7 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
 
       if (error) throw error;
       if (data?.url) {
-        window.open(data.url, '_blank');
+        window.open(data.url, '_blank', 'noopener,noreferrer');
       }
     } catch (err) {
       console.error('Failed to open customer portal:', err);

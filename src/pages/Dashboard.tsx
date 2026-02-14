@@ -88,7 +88,7 @@ import { toast } from 'sonner';
 function parseDuration(duration: string): number {
   const match = duration.match(/(\d+)-?(\d+)?\s*(mois|ans|months|years)/i);
   if (!match) return 180;
-  const minVal = parseInt(match[1]);
+  const minVal = parseInt(match[1], 10);
   const unit = match[3].toLowerCase();
   if (unit === 'mois' || unit === 'months') {
     return minVal * 30;
