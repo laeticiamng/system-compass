@@ -64,7 +64,8 @@ export function useEventRegistration(): UseEventRegistrationReturn {
     } catch (error) {
       console.error('Error fetching event registrations:', error);
       // Fallback to localStorage
-      const stored = JSON.parse(localStorage.getItem('event_registrations') || '[]');
+      let stored: EventRegistration[] = [];
+      try { stored = JSON.parse(localStorage.getItem('event_registrations') || '[]'); } catch { /* corrupted data */ }
       setRegistrations(stored);
     } finally {
       setIsLoading(false);
@@ -98,7 +99,8 @@ export function useEventRegistration(): UseEventRegistrationReturn {
       if (error) {
         console.error('Event registration error:', error);
         // Fallback to localStorage
-        const stored = JSON.parse(localStorage.getItem('event_registrations') || '[]');
+        let stored: Record<string, unknown>[] = [];
+        try { stored = JSON.parse(localStorage.getItem('event_registrations') || '[]'); } catch { /* corrupted data */ }
         stored.push({
           ...registrationData,
           id: crypto.randomUUID(),

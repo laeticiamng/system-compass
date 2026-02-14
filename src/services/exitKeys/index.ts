@@ -67,7 +67,7 @@ export function calculateTimelineScore(
   };
 
   const userMonths = timelineMap[userTimeline];
-  const keyMonths = parseInt(keyTimeline) || 12;
+  const keyMonths = parseInt(keyTimeline, 10) || 12;
 
   if (keyMonths <= userMonths) return 100;
   if (keyMonths <= userMonths * 2) return 70;

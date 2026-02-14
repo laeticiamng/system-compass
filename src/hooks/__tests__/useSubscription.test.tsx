@@ -156,8 +156,8 @@ describe('useSubscription', () => {
       });
       
       expect(mockFunctionsInvoke).toHaveBeenCalledWith('create-checkout', { body: { tier: 'premium' } });
-      expect(mockOpen).toHaveBeenCalledWith('https://checkout.stripe.com/test', '_blank');
-      
+      expect(mockOpen).toHaveBeenCalledWith('https://checkout.stripe.com/test', '_blank', 'noopener,noreferrer');
+
       mockOpen.mockRestore();
     });
 
@@ -165,13 +165,13 @@ describe('useSubscription', () => {
       mockUserValue = null;
       mockGetSession.mockResolvedValue({ data: { session: null } });
       mockFunctionsInvoke.mockResolvedValue({ data: { tier: 'free' }, error: null });
-      
+
       const { result } = renderHook(() => useSubscription(), { wrapper: createWrapper() });
-      
+
       await waitFor(() => {
         expect(result.current.loading).toBe(false);
       });
-      
+
       await expect(result.current.createCheckout('premium')).rejects.toThrow('User must be logged in to subscribe');
     });
   });
@@ -182,19 +182,19 @@ describe('useSubscription', () => {
       mockFunctionsInvoke
         .mockResolvedValueOnce({ data: { tier: 'premium', subscribed: true }, error: null })
         .mockResolvedValueOnce({ data: { url: 'https://billing.stripe.com/portal' }, error: null });
-      
+
       const { result } = renderHook(() => useSubscription(), { wrapper: createWrapper() });
-      
+
       await waitFor(() => {
         expect(result.current.loading).toBe(false);
       });
-      
+
       await act(async () => {
         await result.current.openCustomerPortal();
       });
-      
+
       expect(mockFunctionsInvoke).toHaveBeenCalledWith('customer-portal');
-      expect(mockOpen).toHaveBeenCalledWith('https://billing.stripe.com/portal', '_blank');
+      expect(mockOpen).toHaveBeenCalledWith('https://billing.stripe.com/portal', '_blank', 'noopener,noreferrer');
       
       mockOpen.mockRestore();
     });

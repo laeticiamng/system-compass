@@ -128,7 +128,7 @@ export function QuickVerifyMode({ country, onDetailedAnalysis }: QuickVerifyMode
           flags.push(t('financialIntel.quickVerify.flags.exclusivity', 'Claims exclusivity or secrets'));
           riskLevel = 'high';
         }
-        if (text.match(/\d+%/) && parseInt(text.match(/\d+/)?.[0] || '0') > 20) {
+        if (text.match(/\d+%/) && parseInt(text.match(/\d+/)?.[0] || '0', 10) > 20) {
           flags.push(t('financialIntel.quickVerify.flags.highReturns', 'Promises unrealistic returns'));
           riskLevel = 'critical';
         }

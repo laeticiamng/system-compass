@@ -464,7 +464,9 @@ export default function LifeTrajectory() {
   // Generate profile radar data
   const profileRadarData = useMemo(() => {
     if (!result) return [];
-    const answers = JSON.parse(localStorage.getItem('lifeTrajectoryProfile') || '{}').answers || {};
+    let profileData: Record<string, unknown> = {};
+    try { profileData = JSON.parse(localStorage.getItem('lifeTrajectoryProfile') || '{}'); } catch { /* corrupted data */ }
+    const answers = (profileData as { answers?: Record<string, string> }).answers || {};
     
     return [
       { trait: 'Risque', value: answers.uncertainty === 'high' ? 90 : answers.uncertainty === 'medium' ? 60 : 30, fullMark: 100 },

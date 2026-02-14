@@ -115,7 +115,7 @@ export async function withMonitoring<T>(
       apiMonitor.logError({
         endpoint,
         message: result.error.message,
-        statusCode: result.error.code ? parseInt(result.error.code) : undefined,
+        statusCode: result.error.code ? parseInt(result.error.code, 10) : undefined,
       });
     }
     

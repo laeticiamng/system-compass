@@ -25,7 +25,7 @@ const checkRetention = (): { isReturning: boolean; daysSinceFirst: number } => {
     return { isReturning: false, daysSinceFirst: 0 };
   }
   
-  const daysSinceFirst = Math.floor((now - parseInt(firstVisit)) / (1000 * 60 * 60 * 24));
+  const daysSinceFirst = Math.floor((now - parseInt(firstVisit, 10)) / (1000 * 60 * 60 * 24));
   return { isReturning: true, daysSinceFirst };
 };
 

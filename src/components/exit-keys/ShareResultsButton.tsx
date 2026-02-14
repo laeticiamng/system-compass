@@ -50,17 +50,17 @@ Simulez votre trajectoire: ${window.location.origin}/exit-keys`;
 
   const handleTwitterShare = () => {
     const text = encodeURIComponent(generateShareText());
-    window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
+    window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank', 'noopener,noreferrer');
   };
 
   const handleLinkedinShare = () => {
     const url = encodeURIComponent(`${window.location.origin}/exit-keys`);
-    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank', 'noopener,noreferrer');
   };
 
   const handleFacebookShare = () => {
     const url = encodeURIComponent(`${window.location.origin}/exit-keys`);
-    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank', 'noopener,noreferrer');
   };
 
   return (

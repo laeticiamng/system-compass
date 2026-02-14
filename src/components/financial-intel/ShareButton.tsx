@@ -40,12 +40,12 @@ export function ShareButton({ result }: ShareButtonProps) {
 
   const shareToTwitter = () => {
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText.slice(0, 280))}&url=${encodeURIComponent(shareUrl)}`;
-    window.open(twitterUrl, '_blank', 'width=550,height=420');
+    window.open(twitterUrl, '_blank', 'noopener,noreferrer,width=550,height=420');
   };
 
   const shareToLinkedIn = () => {
     const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
-    window.open(linkedInUrl, '_blank', 'width=550,height=420');
+    window.open(linkedInUrl, '_blank', 'noopener,noreferrer,width=550,height=420');
   };
 
   const nativeShare = async () => {
