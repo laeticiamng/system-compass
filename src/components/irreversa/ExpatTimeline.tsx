@@ -98,7 +98,7 @@ function saveCheckedState(state: CheckedState): void {
 }
 
 export function ExpatTimeline() {
-  const { } = useTranslation();
+  useTranslation();
   const [checkedItems, setCheckedItems] = useState<CheckedState>(loadCheckedState);
   const [expandedPhase, setExpandedPhase] = useState<string | null>(null);
   const [expandedMilestone, setExpandedMilestone] = useState<string | null>(null);

@@ -61,8 +61,7 @@ interface StrategicFrameworksProps {
   countryCode?: string;
 }
 
-export function StrategicFrameworks({
-}: StrategicFrameworksProps) {
+export function StrategicFrameworks(_props: StrategicFrameworksProps) {
   const [activeFramework, setActiveFramework] = useState<'pestel' | 'porter' | 'swot' | 'matrix'>('pestel');
   
   // PESTEL Analysis State

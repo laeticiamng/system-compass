@@ -205,7 +205,7 @@ describe('useNotificationSettings', () => {
   describe('push notifications', () => {
     it('should report unsupported when Notification API unavailable', async () => {
       const originalNotification = window.Notification;
-      // @ts-ignore
+      // @ts-expect-error - intentionally deleting for test
       delete window.Notification;
 
       const { result } = renderHook(() => useNotificationSettings());
