@@ -163,5 +163,5 @@ export function normalizeWhitespace(text: string): string {
  */
 export function isSafeText(text: string): boolean {
   // Allow letters, numbers, common punctuation, and whitespace
-  return /^[\p{L}\p{N}\s.,!?;:'"()\-–—@#%&*+=\[\]{}\/\\]+$/u.test(text);
+  return /^[\p{L}\p{N}\s.,!?;:'"()\-–—@#%&*+=[\]{}/\\]+$/u.test(text);
 }

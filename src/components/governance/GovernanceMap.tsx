@@ -188,7 +188,7 @@ export function GovernanceMap({ countryId, countryName }: GovernanceMapProps) {
       t('governance.map.reliability', 'Reliability'),
       t('common.description', 'Notes')
     ];
-    const escapeValue = (value: string) => `"${value.replace(/\"/g, '""')}"`;
+    const escapeValue = (value: string) => `"${value.replace(/"/g, '""')}"`;
     const rows = filteredStakeholders.map(s => ([
       s.name,
       s.role,
