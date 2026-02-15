@@ -213,8 +213,9 @@
     "diaspora": "Pai da diáspora"
   },
   "cta": {
-    "viewAllKeys": "Ver todas as chaves de saída",
-    "educationalMode": "Modo educativo (personagem fictício)"
+    "title": "Pronto para navegar?",
+    "subtitle": "Este site não julga. Traduz. Ajuda-te a entenderes-te, depois a fazeres um plano que se ajuste à tua realidade.",
+    "button": "Projeta a tua trajetória de vida"
   },
   "guestMode": {
     "title": "Modo observação",
@@ -457,53 +458,101 @@
   },
   "resources": {
     "title": "Recursos",
-    "subtitle": "Ferramentas práticas e frameworks para construir opcionalidade. Sem fantasias — apenas passos acionáveis.",
+    "subtitle": "Ferramentas práticas e frameworks para construir opcionalidade. Sem fantasias—apenas passos acionáveis.",
     "categories": {
       "financial": {
         "title": "Independência financeira",
-        "description": "Constrói a tua base financeira independentemente da tua localização",
+        "description": "Constrói a tua base financeira independentemente da localização",
         "items": {
-          "emergencyFund": { "name": "Calculadora de fundo de emergência", "description": "Mínimo 6-12 meses de despesas" },
-          "multipleIncome": { "name": "Fontes de rendimento múltiplas", "description": "Nunca depender de uma única fonte" },
-          "offshoreBanking": { "name": "Bases de banca offshore", "description": "Estratégias de diversificação legítimas" },
-          "taxOptimization": { "name": "Otimização fiscal", "description": "Estruturas legais para a tua situação" }
+          "emergencyFund": {
+            "name": "Calculadora fundo emergência",
+            "description": "6-12 meses de despesas mínimo"
+          },
+          "multipleIncome": {
+            "name": "Múltiplas fontes de rendimento",
+            "description": "Nunca depender de uma só fonte"
+          },
+          "offshoreBanking": {
+            "name": "Banca offshore básica",
+            "description": "Estratégias de diversificação legítimas"
+          },
+          "taxOptimization": {
+            "name": "Otimização fiscal",
+            "description": "Estruturas legais para a tua situação"
+          }
         }
       },
       "skills": {
         "title": "Competências exportáveis",
         "description": "Competências que atravessam fronteiras e sistemas",
         "items": {
-          "remote": { "name": "Competências remote-first", "description": "Tech, escrita, design, consultoria" },
-          "certifications": { "name": "Certificações que viajam", "description": "Acreditações reconhecidas internacionalmente" },
-          "languages": { "name": "Aquisição de línguas", "description": "Prioridades de aprendizagem estratégicas" },
-          "digitalPresence": { "name": "Presença digital", "description": "Constrói uma reputação que te preceda" }
+          "remote": {
+            "name": "Competências remote-first",
+            "description": "Tech, escrita, design, consultoria"
+          },
+          "certifications": {
+            "name": "Certificações que viajam",
+            "description": "Credenciais reconhecidas internacionalmente"
+          },
+          "languages": {
+            "name": "Aquisição de línguas",
+            "description": "Prioridades de aprendizagem estratégicas"
+          },
+          "digitalPresence": {
+            "name": "Presença digital",
+            "description": "Constrói uma reputação que te precede"
+          }
         }
       },
       "mobility": {
-        "title": "Preparação para a mobilidade",
-        "description": "Prepara-te para te mudares quando surgir a oportunidade",
+        "title": "Preparação para mobilidade",
+        "description": "Prepara-te para te moveres quando a oportunidade surgir",
         "items": {
-          "documents": { "name": "Segurança de documentos", "description": "Mantém todos os papéis organizados e atualizados" },
-          "visaStrategy": { "name": "Matriz de estratégia de vistos", "description": "Conhece as tuas opções antes de precisares delas" },
-          "secondResidency": { "name": "Opções de segunda residência", "description": "Caminhos por investimento e competências" },
-          "digitalNomad": { "name": "Frameworks de nómada digital", "description": "Testa destinos antes de te comprometeres" }
+          "documents": {
+            "name": "Segurança de documentos",
+            "description": "Mantém todos os papéis organizados e atualizados"
+          },
+          "visaStrategy": {
+            "name": "Matriz estratégia de visto",
+            "description": "Conhece as tuas opções antes de precisares delas"
+          },
+          "secondResidency": {
+            "name": "Opções segunda residência",
+            "description": "Caminhos baseados em investimento e competências"
+          },
+          "digitalNomad": {
+            "name": "Frameworks nómada digital",
+            "description": "Testa localizações antes de te comprometeres"
+          }
         }
       },
       "security": {
-        "title": "Segurança e discrição",
+        "title": "Segurança & discrição",
         "description": "Protege-te em ambientes de alto risco",
         "items": {
-          "opsec": { "name": "Bases de segurança operacional", "description": "Minimiza o teu perfil de exposição" },
-          "digitalPrivacy": { "name": "Privacidade digital", "description": "Comunicações e dados seguros" },
-          "assetProtection": { "name": "Proteção de ativos", "description": "Estrutura para minimizar o risco de apreensão" },
-          "networkSafety": { "name": "Segurança da rede", "description": "Em quem confiar e como verificar" }
+          "opsec": {
+            "name": "Segurança operacional básica",
+            "description": "Minimiza o teu perfil de exposição"
+          },
+          "digitalPrivacy": {
+            "name": "Privacidade digital",
+            "description": "Comunicações e dados seguros"
+          },
+          "assetProtection": {
+            "name": "Proteção de ativos",
+            "description": "Estrutura para minimizar risco de apreensão"
+          },
+          "networkSafety": {
+            "name": "Segurança de rede",
+            "description": "Em quem confiar e como verificar"
+          }
         }
       }
     },
     "checklists": {
       "title": "Checklists rápidas",
       "survival30": {
-        "title": "Arranque de sobrevivência 30 dias",
+        "title": "Arranque sobrevivência 30 dias",
         "items": [
           "Audita a tua posição financeira atual",
           "Identifica a tua competência exportável principal",
@@ -520,37 +569,23 @@
           "Pegada digital limpa",
           "Fonte de rendimento que viaja",
           "Conta bancária com acesso internacional",
-          "Registos médicos e receitas",
+          "Registos médicos e prescrições",
           "Procuração para assuntos do país de origem"
         ]
       }
     },
     "disclaimer": {
       "title": "Aviso importante",
-      "text": "Este site fornece apenas frameworks de análise. Não é aconselhamento legal, financeiro ou de imigração. Consulta sempre profissionais qualificados para a tua situação específica. Cada ação tem consequências — planeia cuidadosamente e nunca corras riscos desnecessários."
-    },
-    "time": "Tempo",
-    "timeDesc": "Capacidade de empreender ações",
-    "money": "Dinheiro",
-    "moneyDesc": "Acesso a investimentos",
-    "health": "Saúde",
-    "healthDesc": "Proteção de estabilidade",
-    "network": "Rede",
-    "networkDesc": "Abre oportunidades",
-    "skills": "Competências",
-    "skillsDesc": "Melhora os retornos",
-    "mobility": "Mobilidade",
-    "mobilityDesc": "Permite a migração",
-    "family": "Família",
-    "familyDesc": "Laços familiares"
+      "text": "Este site fornece apenas frameworks analíticos. Não é aconselhamento legal, financeiro ou de imigração. Consulta sempre profissionais qualificados para a tua situação específica. Cada ação tem consequências—planeia cuidadosamente e nunca tomes riscos desnecessários."
+    }
   },
   "lifeGame": {
     "hero": {
       "badge": "🎮 Jogo de tabuleiro educativo",
       "title1": "O Jogo da",
       "titleHighlight": "VIDA",
-      "subtitle": "Um jogo de simulação onde encarnas uma personagem fictícia. Descobre como o mundo funciona através de trajetórias aleatórias — isto não é a tua vida real!",
-      "playCta": "Iniciar partida",
+      "subtitle": "Um jogo de simulação onde jogas um personagem fictício. Descobre como o mundo funciona através de trajetórias aleatórias — isto NÃO é a tua vida real!",
+      "playCta": "Iniciar um jogo",
       "learnCta": "Regras do jogo",
       "stats": {
         "archetypes": "Personagens jogáveis",
@@ -560,44 +595,44 @@
     },
     "clarification": {
       "title": "⚠️ Isto NÃO é a tua vida real",
-      "point1": "Recebes uma personagem fictícia ao acaso (herdeiro, refugiado, empreendedor...)",
-      "point2": "Exploras os mecanismos do mundo sem risco real",
+      "point1": "Recebes um personagem fictício aleatório (herdeiro, refugiado, empreendedor...)",
+      "point2": "Exploras mecanismos mundiais sem riscos reais",
       "point3": "É uma ferramenta educativa, não uma previsão para ti",
       "realLife": "Para planear a tua vida real →",
       "realLifeLink": "Chaves de Saída"
     },
     "tagline": {
       "quote": "Alguns nascem na linha de chegada. Outros têm de correr uma maratona com correntes nos pés. Este jogo mostra porquê.",
-      "author": "— A realidade, sem filtro"
+      "author": "— A realidade, sem filtros"
     },
     "features": {
       "title": "Como funciona o jogo",
-      "subtitle": "Um jogo de tabuleiro onde o acaso e a estratégia se misturam.",
+      "subtitle": "Um jogo de tabuleiro onde sorte e estratégia se misturam.",
       "systems": {
         "title": "6 Sistemas Mundiais",
         "description": "Cada país no tabuleiro funciona de forma diferente. Aprende as regras invisíveis de cada sistema."
       },
       "characters": {
         "title": "12+ Personagens Jogáveis",
-        "description": "Do filho de boa família ao refugiado. Nem sempre escolhes tu — às vezes o destino decide por ti."
+        "description": "De filhos de papás a refugiados. Nem sempre escolhes — às vezes o destino decide por ti."
       },
       "choices": {
         "title": "Escolhas Estratégicas",
-        "description": "Trabalhar, estudar, migrar, empreender... Gere os teus recursos como num jogo de gestão."
+        "description": "Trabalha, estuda, emigra, cria um negócio... Gere os teus recursos como num jogo de gestão."
       },
       "risks": {
         "title": "Atalhos Arriscados",
-        "description": "O mercado negro, a corrupção. Ganhos rápidos com risco de perder tudo — como na vida real."
+        "description": "Mercado negro, corrupção. Ganhos rápidos com risco de perder tudo — tal como na vida real."
       }
     },
     "resources": {
-      "title": "6 Recursos a Gerir",
+      "title": "6 Recursos para Gerir",
       "subtitle": "No jogo como na vida, nunca terás tudo."
     },
     "archetypes": {
-      "title": "Quem vais encarnar?",
-      "subtitle": "Cada personagem tem as suas vantagens e obstáculos. A dificuldade reflete as desigualdades do mundo real.",
-      "seeAll": "Ver todas as personagens"
+      "title": "Quem vais jogar?",
+      "subtitle": "Cada personagem tem vantagens e obstáculos. A dificuldade reflete desigualdades do mundo real.",
+      "seeAll": "Ver todos os personagens"
     },
     "difficulty": {
       "easy": "Fácil",
@@ -607,18 +642,18 @@
     },
     "warning": {
       "title": "Conteúdo educativo sensível",
-      "description": "Este jogo aborda realidades difíceis de forma lúdica. As situações do jogo são inspiradas em experiências reais vividas por milhões de pessoas.",
+      "description": "Este jogo aborda realidades difíceis de forma lúdica.",
       "topics": {
         "migration": "Migração forçada",
         "corruption": "Corrupção sistémica",
-        "inequality": "Desigualdades de nascimento",
+        "inequality": "Desigualdade à nascença",
         "shortcuts": "Atalhos perigosos"
       }
     },
     "cta": {
       "title": "Pronto para jogar?",
-      "subtitle": "Inicia uma partida e descobre uma personagem ao acaso. Conseguirás navegar o sistema?",
-      "button": "Iniciar o jogo"
+      "subtitle": "Inicia um jogo e descobre um personagem aleatório.",
+      "button": "Iniciar jogo"
     }
   },
   "footer": {
@@ -1155,11 +1190,6 @@
     "subtitle": "Análise profunda de sistemas reais, não rankings de fantasia",
     "viewAll": "Ver tudo"
   },
-  "cta": {
-    "title": "Pronto para navegar?",
-    "subtitle": "Este site não julga. Traduz. Ajuda-te a entenderes-te, depois a fazeres um plano que se ajuste à tua realidade.",
-    "button": "Projeta a tua trajetória de vida"
-  },
   "countries": {
     "title": "Inteligência de países",
     "subtitle": "Análise profunda de sistemas nacionais. Compreende o que cada país realmente recompensa, os riscos e as tuas opções estratégicas.",
@@ -1217,16 +1247,9 @@
     }
   },
   "lgbtqRights": {
-    "title": "Direitos LGBTQ+",
-    "index": "Índice",
-    "marriage": "Casamento",
-    "civilUnion": "União civil",
-    "employmentProtection": "Proteção laboral",
-    "safety": {
-      "safe": "Seguro",
-      "caution": "Precaução recomendada",
-      "dangerous": "Perigoso"
-    }
+    "safe": "LGBTQ+ Seguro",
+    "caution": "Proceder com Cautela",
+    "dangerous": "Alto Risco para LGBTQ+"
   },
   "pyramid": {
     "top": "Topo",
@@ -1327,37 +1350,81 @@
       "ambitiousMeritocrat": {
         "name": "Meritocrático ambicioso",
         "description": "Procuras recompensas proporcionais pela excelência. Prosperas onde a competência ganha.",
-        "strengths": ["Orientado a resultados", "Forte ética de trabalho"],
-        "vulnerabilities": ["Pode frustrar-se com injustiça", "Risco de burnout"],
-        "redFlags": ["Sistemas que recompensam conexões sobre competência", "Sistemas de alta redistribuição"]
+        "strengths": [
+          "Orientado a resultados",
+          "Forte ética de trabalho"
+        ],
+        "vulnerabilities": [
+          "Pode frustrar-se com injustiça",
+          "Risco de burnout"
+        ],
+        "redFlags": [
+          "Sistemas que recompensam conexões sobre competência",
+          "Sistemas de alta redistribuição"
+        ]
       },
       "stabilitySeeker": {
         "name": "Buscador de estabilidade",
         "description": "Valorizas previsibilidade e proteção. Rendes melhor com uma rede de segurança.",
-        "strengths": ["Paciente e metódico", "Planeador a longo prazo"],
-        "vulnerabilities": ["Pode perder oportunidades de crescimento", "Demasiado avesso ao risco"],
-        "redFlags": ["Ambientes de crescimento de alto risco", "Sistemas com fraca proteção social"]
+        "strengths": [
+          "Paciente e metódico",
+          "Planeador a longo prazo"
+        ],
+        "vulnerabilities": [
+          "Pode perder oportunidades de crescimento",
+          "Demasiado avesso ao risco"
+        ],
+        "redFlags": [
+          "Ambientes de crescimento de alto risco",
+          "Sistemas com fraca proteção social"
+        ]
       },
       "strategicSurvivor": {
         "name": "Sobrevivente estratégico",
         "description": "Sabes navegar sem exposição. Constróis em silêncio e proteges ganhos.",
-        "strengths": ["Consciência tática", "Gestão de riscos"],
-        "vulnerabilities": ["Pode sub-explorar visibilidade", "Pode tornar-se demasiado defensivo"],
-        "redFlags": ["Sistemas que requerem perfil público", "Meritocracias transparentes"]
+        "strengths": [
+          "Consciência tática",
+          "Gestão de riscos"
+        ],
+        "vulnerabilities": [
+          "Pode sub-explorar visibilidade",
+          "Pode tornar-se demasiado defensivo"
+        ],
+        "redFlags": [
+          "Sistemas que requerem perfil público",
+          "Meritocracias transparentes"
+        ]
       },
       "growthConquistador": {
         "name": "Conquistador de crescimento",
         "description": "Persegues escala e velocidade. Prosperas em ambientes de alto risco e alta recompensa.",
-        "strengths": ["Velocidade e adaptabilidade", "Reconhecimento de oportunidades"],
-        "vulnerabilities": ["Pode negligenciar estabilidade", "Risco de burnout"],
-        "redFlags": ["Sistemas burocráticos lentos", "Alta tributação sobre crescimento"]
+        "strengths": [
+          "Velocidade e adaptabilidade",
+          "Reconhecimento de oportunidades"
+        ],
+        "vulnerabilities": [
+          "Pode negligenciar estabilidade",
+          "Risco de burnout"
+        ],
+        "redFlags": [
+          "Sistemas burocráticos lentos",
+          "Alta tributação sobre crescimento"
+        ]
       },
       "balancedNavigator": {
         "name": "Navegador equilibrado",
         "description": "Adaptas-te ao contexto. Podes sobreviver em muitos sistemas mas não otimizas para nenhum.",
-        "strengths": ["Flexibilidade", "Tolerância ampla"],
-        "vulnerabilities": ["Pode faltar direção forte", "Risco de deriva"],
-        "redFlags": ["Sistemas extremos em qualquer direção"]
+        "strengths": [
+          "Flexibilidade",
+          "Tolerância ampla"
+        ],
+        "vulnerabilities": [
+          "Pode faltar direção forte",
+          "Risco de deriva"
+        ],
+        "redFlags": [
+          "Sistemas extremos em qualquer direção"
+        ]
       }
     },
     "strengths": "Pontos fortes",
@@ -1366,81 +1433,6 @@
     "redFlags": "Bandeiras vermelhas — Evita estes",
     "findCountries": "Encontra países compatíveis",
     "retakeTest": "Refazer teste"
-  },
-  "resources": {
-    "title": "Recursos",
-    "subtitle": "Ferramentas práticas e frameworks para construir opcionalidade. Sem fantasias—apenas passos acionáveis.",
-    "categories": {
-      "financial": {
-        "title": "Independência financeira",
-        "description": "Constrói a tua base financeira independentemente da localização",
-        "items": {
-          "emergencyFund": { "name": "Calculadora fundo emergência", "description": "6-12 meses de despesas mínimo" },
-          "multipleIncome": { "name": "Múltiplas fontes de rendimento", "description": "Nunca depender de uma só fonte" },
-          "offshoreBanking": { "name": "Banca offshore básica", "description": "Estratégias de diversificação legítimas" },
-          "taxOptimization": { "name": "Otimização fiscal", "description": "Estruturas legais para a tua situação" }
-        }
-      },
-      "skills": {
-        "title": "Competências exportáveis",
-        "description": "Competências que atravessam fronteiras e sistemas",
-        "items": {
-          "remote": { "name": "Competências remote-first", "description": "Tech, escrita, design, consultoria" },
-          "certifications": { "name": "Certificações que viajam", "description": "Credenciais reconhecidas internacionalmente" },
-          "languages": { "name": "Aquisição de línguas", "description": "Prioridades de aprendizagem estratégicas" },
-          "digitalPresence": { "name": "Presença digital", "description": "Constrói uma reputação que te precede" }
-        }
-      },
-      "mobility": {
-        "title": "Preparação para mobilidade",
-        "description": "Prepara-te para te moveres quando a oportunidade surgir",
-        "items": {
-          "documents": { "name": "Segurança de documentos", "description": "Mantém todos os papéis organizados e atualizados" },
-          "visaStrategy": { "name": "Matriz estratégia de visto", "description": "Conhece as tuas opções antes de precisares delas" },
-          "secondResidency": { "name": "Opções segunda residência", "description": "Caminhos baseados em investimento e competências" },
-          "digitalNomad": { "name": "Frameworks nómada digital", "description": "Testa localizações antes de te comprometeres" }
-        }
-      },
-      "security": {
-        "title": "Segurança & discrição",
-        "description": "Protege-te em ambientes de alto risco",
-        "items": {
-          "opsec": { "name": "Segurança operacional básica", "description": "Minimiza o teu perfil de exposição" },
-          "digitalPrivacy": { "name": "Privacidade digital", "description": "Comunicações e dados seguros" },
-          "assetProtection": { "name": "Proteção de ativos", "description": "Estrutura para minimizar risco de apreensão" },
-          "networkSafety": { "name": "Segurança de rede", "description": "Em quem confiar e como verificar" }
-        }
-      }
-    },
-    "checklists": {
-      "title": "Checklists rápidas",
-      "survival30": {
-        "title": "Arranque sobrevivência 30 dias",
-        "items": [
-          "Audita a tua posição financeira atual",
-          "Identifica a tua competência exportável principal",
-          "Assegura todos os documentos de identidade",
-          "Começa um fundo de emergência (mesmo 50€/mês)",
-          "Mapeia o valor da tua rede atual",
-          "Pesquisa um destino potencial"
-        ]
-      },
-      "preMove": {
-        "title": "Checklist pré-mudança",
-        "items": [
-          "Passaporte válido (6+ meses restantes)",
-          "Pegada digital limpa",
-          "Fonte de rendimento que viaja",
-          "Conta bancária com acesso internacional",
-          "Registos médicos e prescrições",
-          "Procuração para assuntos do país de origem"
-        ]
-      }
-    },
-    "disclaimer": {
-      "title": "Aviso importante",
-      "text": "Este site fornece apenas frameworks analíticos. Não é aconselhamento legal, financeiro ou de imigração. Consulta sempre profissionais qualificados para a tua situação específica. Cada ação tem consequências—planeia cuidadosamente e nunca tomes riscos desnecessários."
-    }
   },
   "language": {
     "select": "Idioma"
@@ -1523,182 +1515,98 @@
     "workLifeBalance": "Equilíbrio vida-trabalho",
     "internetSpeed": "Velocidade internet"
   },
-  "lgbtqRights": {
-    "title": "Direitos LGBTQ+",
-    "index": "Índice de direitos",
-    "marriage": "Casamento igualitário",
-    "civilUnion": "União civil",
-    "employmentProtection": "Proteção laboral",
-    "safetyRating": "Nível de segurança",
-    "safe": "Seguro",
-    "caution": "Cautela",
-    "dangerous": "Perigoso",
-    "notice": "Os direitos LGBTQ+ são considerados nas tuas recomendações de países."
-  },
   "lifeTrajectory": {
-    "title": "Diagnóstico de trajetória de vida",
-    "subtitle": "O trabalho é apenas um veículo. Descobre que vida queres construir.",
-    "startButton": "Iniciar diagnóstico",
     "questionOf": "Pergunta {{current}} de {{total}}",
-    "yes": "Sim",
-    "no": "Não",
-    "back": "Voltar",
-    "next": "Seguinte",
-    "seeResults": "Ver os meus resultados",
-    "selectToContinue": "Seleciona uma resposta para continuar",
-    "coreIdea": {
-      "title": "A ideia central",
-      "text": "A maioria das pessoas não procura \"um trabalho\". Procuram uma vida. O trabalho é apenas um veículo."
-    },
-    "questions": {
-      "timePreference": {
-        "question": "Preferes: dois anos muito difíceis para liberdade rápida, ou dez anos estáveis mas lentos?",
-        "short": "2 anos intensos",
-        "shortDesc": "Liberdade rápida, esforço concentrado",
-        "long": "10 anos estáveis",
-        "longDesc": "Progressão lenta mas segura"
-      },
-      "incomeShock": {
-        "question": "Se perderes 30% do teu rendimento durante três meses, o que fazes concretamente?",
-        "panic": "Entro em pânico, não tenho plano B",
-        "adapt": "Adapto-me, reduzo despesas",
-        "prepared": "Tenho reservas, é gerível"
-      },
-      "priority": {
-        "question": "A tua prioridade número 1 (apenas uma escolha):",
-        "freedom": "🦅 Liberdade",
-        "money": "💰 Dinheiro",
-        "meaning": "💝 Significado",
-        "status": "👔 Status",
-        "family": "👨‍👩‍👧‍👦 Família",
-        "calm": "🧘 Calma"
-      },
-      "intensity": {
-        "question": "Consegues aguentar 60 horas/semana durante 6 meses se mudar a tua vida?"
-      },
-      "geographic": {
-        "question": "A liberdade geográfica é não negociável para ti?"
-      },
-      "uncertainty": {
-        "question": "O teu nível de conforto com a incerteza:",
-        "low": "Baixo - Preciso de previsibilidade",
-        "medium": "Médio - Consigo adaptar-me",
-        "high": "Alto - Prospero no caos"
-      },
-      "autonomy": {
-        "question": "Preferes ser supervisionado ou autónomo?",
-        "structured": "Supervisionado e estruturado",
-        "autonomous": "Autónomo e independente"
-      },
-      "studies": {
-        "question": "Queres evitar estudos longos?"
-      },
-      "selling": {
-        "question": "Estás confortável com vender (tu mesmo, serviços, produtos, negociar)?"
-      },
-      "contribute": {
-        "question": "Queres contribuir para uma causa?"
-      },
-      "lgbtq": {
-        "question": "Os direitos LGBTQ+ são importantes na tua escolha de destino?"
-      }
-    },
-    "results": {
-      "title": "O teu perfil de trajetória",
-      "yourProfile": "O teu perfil motor",
-      "workRelation": "Relação com o trabalho",
-      "riskRelation": "Relação com o risco",
-      "whatWorks": "O que realmente funciona",
-      "trap": "A armadilha a evitar",
-      "trajectories": "As tuas 3 trajetórias recomendadas",
-      "choosePlan": "Escolhe o plano que corresponde à tua situação",
-      "duration": "Duração",
-      "paths": "Caminhos adequados",
-      "skills": "Competências a desenvolver",
-      "risks": "Riscos a monitorizar",
-      "firstSteps": "Primeiros passos",
-      "retakeTest": "Refazer teste",
-      "findCountries": "Encontrar países compatíveis"
+    "selectToContinue": "Selecione uma resposta para continuar",
+    "lgbtq": {
+      "title": "Considerações LGBTQ+",
+      "description": "Daremos prioridade a países com fortes proteções LGBTQ+."
     },
     "planTypes": {
-      "safe": {
-        "label": "🛡️ Plano Seguro",
-        "description": "Para quem tem responsabilidades, ansiedade ou forte necessidade de segurança. Estabilidade + progressão segura."
-      },
-      "hybrid": {
-        "label": "⚖️ Plano Híbrido",
-        "description": "Para a maioria. Trabalho estável + desenvolvimento de competências + projeto paralelo estruturado."
-      },
-      "ambitious": {
-        "label": "🚀 Plano Ambicioso",
-        "description": "Para quem tem energia e tolerância ao risco. Aceleração de rendimentos + estratégia de crescimento."
-      }
+      "safe": "🛡️ Plano Seguro",
+      "hybrid": "⚖️ Plano Híbrido",
+      "ambitious": "🚀 Plano Ambicioso"
+    },
+    "trajectory": {
+      "paths": "Percursos de Carreira",
+      "skills": "Competências a Desenvolver",
+      "firstSteps": "Primeiros Passos"
+    },
+    "results": {
+      "workRelation": "Relação com o Trabalho",
+      "riskRelation": "Relação com o Risco",
+      "whatWorks": "O Que Realmente Funciona",
+      "trap": "Cuidado Com",
+      "yourPlans": "Os Seus 3 Planos de Trajetória",
+      "findCountries": "Encontrar Países Compatíveis",
+      "exploreCountries": "Explorar Todos os Países",
+      "retake": "Repetir Teste"
     }
   },
   "lifeProfiles": {
     "lottery": {
-      "label": "Lotaria / Golpe de sorte",
-      "description": "Procuras uma saída imediata, uma rutura com a tua situação atual, um atalho.",
-      "workRelation": "Baixo - o esforço longo é vivido como inútil.",
-      "riskRelation": "Alto mas mal controlado (risco inconsciente).",
-      "whatWorks": "Quadro estrito (teto orçamental) + plano B sólido em paralelo (rendimento estável, competência útil).",
-      "trap": "Esperar \"o sinal\", endividar-se, acreditar que uma oportunidade substitui uma estratégia."
+      "label": "O Buscador de Atalhos",
+      "description": "Quer uma saída imediata.",
+      "workRelation": "Baixo envolvimento com trabalho de longo prazo.",
+      "riskRelation": "Frequentemente alto mas mal controlado.",
+      "whatWorks": "Orçamento rigoroso, Plano B paralelo.",
+      "trap": "Esperar 'o sinal', endividar-se."
     },
     "comfort": {
-      "label": "Conforto e zero stress",
-      "description": "Procuras tranquilidade, rotina, segurança psicológica.",
-      "workRelation": "Queres um quadro, uma estrutura, expectativas claras.",
+      "label": "Conforto e Zero Stress",
+      "description": "Procura tranquilidade e segurança psicológica.",
+      "workRelation": "Quer estrutura.",
       "riskRelation": "Baixo.",
-      "whatWorks": "Estabilidade, progressão lenta mas segura, poupança automática, trabalho previsível.",
-      "trap": "Entediar-se, apagar-se, depois explodir ao fim de alguns anos."
+      "whatWorks": "Estabilidade, progressão lenta mas segura.",
+      "trap": "Aborrecer-se, depois explodir após anos."
     },
     "builder": {
-      "label": "Construtor paciente",
-      "description": "Procuras riqueza + orgulho + sensação de mérito.",
-      "workRelation": "Pronto a trabalhar, mas o esforço deve fazer sentido e render.",
+      "label": "Construtor Paciente",
+      "description": "Quer riqueza + orgulho.",
+      "workRelation": "Disposto a trabalhar.",
       "riskRelation": "Moderado, calculado.",
-      "whatWorks": "Negócio simples, competências raras, disciplina, investimento a longo prazo.",
-      "trap": "Querer fazer demasiado complexo demasiado cedo, dispersar-se."
+      "whatWorks": "Negócio simples, competências raras.",
+      "trap": "Complicar-se cedo demais."
     },
     "safeWealth": {
-      "label": "Grande dinheiro sem riscos",
-      "description": "Procuras altos rendimentos com máxima segurança.",
-      "workRelation": "OK com trabalhar, mas não com te colocares em perigo.",
+      "label": "Construtor de Riqueza Segura",
+      "description": "Quer altos rendimentos com máxima segurança.",
+      "workRelation": "OK com trabalhar, não com arriscar.",
       "riskRelation": "Baixo a moderado.",
-      "whatWorks": "Aumentar rendimento via competência rara, assegurar via diversificação.",
-      "trap": "Contradição interna (querer o jackpot sem contrapartida) → estagnação."
+      "whatWorks": "Aumentar rendimentos via competências raras.",
+      "trap": "Contradição interna → estagnação."
     },
     "nomad": {
-      "label": "Nómada / Volta ao mundo",
-      "description": "Procuras liberdade geográfica e autonomia.",
-      "workRelation": "Queres poder trabalhar de qualquer lugar.",
+      "label": "Nómada Global",
+      "description": "Procura liberdade geográfica.",
+      "workRelation": "Quer trabalhar de qualquer lugar.",
       "riskRelation": "Variável.",
-      "whatWorks": "Trabalhos remote, rendimentos em moeda forte, compreensão de vistos e realidades logísticas.",
-      "trap": "Subestimar o administrativo, o isolamento, a irregularidade de rendimentos."
+      "whatWorks": "Trabalhos remotos, rendimentos em moeda forte.",
+      "trap": "Subestimar admin, isolamento."
     },
     "purpose": {
-      "label": "Significado / Entrega",
-      "description": "Procuras utilidade, alinhamento, contribuição.",
+      "label": "Orientado para o Propósito",
+      "description": "Procura utilidade e contribuição.",
       "workRelation": "O trabalho torna-se missão.",
-      "riskRelation": "Moderado, mas a emoção pode empurrar a esquecer-se de si.",
-      "whatWorks": "Trabalhos úteis + limites claros + sistema anti-burnout + higiene de vida.",
-      "trap": "Sacrificar-se, esgotar-se, confundir valor com sofrimento."
+      "riskRelation": "Frequentemente moderado.",
+      "whatWorks": "Trabalhos úteis + limites claros.",
+      "trap": "Sacrificar-se, queimar-se."
     },
     "status": {
-      "label": "Status / Prestígio",
-      "description": "Procuras reconhecimento, respeito, identidade social.",
-      "workRelation": "O trabalho torna-se a identidade.",
-      "riskRelation": "Moderado a alto conforme o ego e a competição.",
-      "whatWorks": "Excelência, seletividade, rede, storytelling, estratégia de carreira.",
-      "trap": "Comparação tóxica, ansiedade de desempenho, identidade frágil se o status descer."
+      "label": "Buscador de Status",
+      "description": "Procura reconhecimento.",
+      "workRelation": "O trabalho torna-se a sua identidade.",
+      "riskRelation": "Moderado a alto.",
+      "whatWorks": "Excelência, rede, estratégia de carreira.",
+      "trap": "Comparação tóxica."
     },
     "recovery": {
-      "label": "Revanche / Trajetória pós-trauma",
-      "description": "Procuras segurança, controlo, reparação, estabilidade emocional, reconstrução.",
-      "workRelation": "Necessidade de domínio, às vezes medo da instabilidade.",
-      "riskRelation": "Baixo no início, depois aumenta se a segurança voltar.",
-      "whatWorks": "Estabilizar primeiro (rendimento, quadro, rotina), depois subida progressiva.",
-      "trap": "Julgar-se, querer recuperar dez anos em seis meses, esgotar-se."
+      "label": "Recuperação e Reconstrução",
+      "description": "Procura segurança e controlo.",
+      "workRelation": "Necessidade de domínio.",
+      "riskRelation": "Primeiro baixo, depois aumenta.",
+      "whatWorks": "Primeiro estabilizar, depois rampa progressiva.",
+      "trap": "Julgar-se."
     }
   },
   "plans": {
@@ -1706,699 +1614,566 @@
       "safe": {
         "title": "Estabilização rápida",
         "description": "Criar base estável antes de qualquer risco.",
-        "paths": ["Emprego a tempo parcial estável", "Formação curta certificante"],
-        "skills": ["Gestão orçamental", "Competência técnica básica"],
-        "risks": ["Impaciência e abandono"],
-        "steps": ["Estabelecer orçamento estrito", "Identificar formação de 3 meses máx."]
+        "paths": [
+          "Emprego a tempo parcial estável",
+          "Formação curta certificante"
+        ],
+        "skills": [
+          "Gestão orçamental",
+          "Competência técnica básica"
+        ],
+        "risks": [
+          "Impaciência e abandono"
+        ],
+        "steps": [
+          "Estabelecer orçamento estrito",
+          "Identificar formação de 3 meses máx."
+        ]
       },
       "hybrid": {
         "title": "Estabilidade + experimentação",
         "description": "Trabalho estável em paralelo com side project enquadrado.",
-        "paths": ["Emprego estável + side hustle limitado", "Formação contínua"],
-        "skills": ["Gestão do tempo", "Marketing básico"],
-        "risks": ["Dispersão dos esforços"],
-        "steps": ["Encontrar emprego estável", "Limitar side project a 10h/semana"]
+        "paths": [
+          "Emprego estável + side hustle limitado",
+          "Formação contínua"
+        ],
+        "skills": [
+          "Gestão do tempo",
+          "Marketing básico"
+        ],
+        "risks": [
+          "Dispersão dos esforços"
+        ],
+        "steps": [
+          "Encontrar emprego estável",
+          "Limitar side project a 10h/semana"
+        ]
       },
       "ambitious": {
         "title": "Transição calculada",
         "description": "Construção metódica rumo à independência.",
-        "paths": ["Freelance em área procurada"],
-        "skills": ["Vendas", "Competência técnica avançada"],
-        "risks": ["Desânimo", "Má gestão financeira"],
-        "steps": ["Poupar 6 meses de despesas", "Desenvolver portfolio"]
+        "paths": [
+          "Freelance em área procurada"
+        ],
+        "skills": [
+          "Vendas",
+          "Competência técnica avançada"
+        ],
+        "risks": [
+          "Desânimo",
+          "Má gestão financeira"
+        ],
+        "steps": [
+          "Poupar 6 meses de despesas",
+          "Desenvolver portfolio"
+        ]
       }
     },
     "comfort": {
       "safe": {
         "title": "Emprego estável estruturado",
         "description": "Encontrar ambiente previsível e tranquilizador.",
-        "paths": ["Administração pública", "Grande empresa estabelecida"],
-        "skills": ["Especialização num campo"],
-        "risks": ["Tédio a longo prazo"],
-        "steps": ["Identificar empregadores estáveis", "Preparar concursos se necessário"]
+        "paths": [
+          "Administração pública",
+          "Grande empresa estabelecida"
+        ],
+        "skills": [
+          "Especialização num campo"
+        ],
+        "risks": [
+          "Tédio a longo prazo"
+        ],
+        "steps": [
+          "Identificar empregadores estáveis",
+          "Preparar concursos se necessário"
+        ]
       },
       "hybrid": {
         "title": "Estabilidade + evolução",
         "description": "Posição estável com oportunidades de progressão interna.",
-        "paths": ["Empresa com plano de carreira", "Setor em crescimento estável"],
-        "skills": ["Gestão", "Competência técnica evolutiva"],
-        "risks": ["Teto de vidro"],
-        "steps": ["Negociar plano de desenvolvimento", "Identificar competências chave"]
+        "paths": [
+          "Empresa com plano de carreira",
+          "Setor em crescimento estável"
+        ],
+        "skills": [
+          "Gestão",
+          "Competência técnica evolutiva"
+        ],
+        "risks": [
+          "Teto de vidro"
+        ],
+        "steps": [
+          "Negociar plano de desenvolvimento",
+          "Identificar competências chave"
+        ]
       },
       "ambitious": {
         "title": "Especialista reconhecido",
         "description": "Tornar-se referência num campo mantendo estabilidade.",
-        "paths": ["Especialista técnico sénior"],
-        "skills": ["Expertise avançada", "Comunicação"],
-        "risks": ["Obsolescência de competências"],
-        "steps": ["Escolher especialização perene", "Construir reputação"]
+        "paths": [
+          "Especialista técnico sénior"
+        ],
+        "skills": [
+          "Expertise avançada",
+          "Comunicação"
+        ],
+        "risks": [
+          "Obsolescência de competências"
+        ],
+        "steps": [
+          "Escolher especialização perene",
+          "Construir reputação"
+        ]
       }
     },
     "builder": {
       "safe": {
         "title": "Competência rara + emprego",
         "description": "Desenvolver expertise rara mantendo rendimento estável.",
-        "paths": ["Emprego + certificação avançada", "Especialização técnica"],
-        "skills": ["Competência técnica rara", "Negociação salarial"],
-        "risks": ["Dispersão de esforços"],
-        "steps": ["Identificar competência rara procurada", "Planear certificação"]
+        "paths": [
+          "Emprego + certificação avançada",
+          "Especialização técnica"
+        ],
+        "skills": [
+          "Competência técnica rara",
+          "Negociação salarial"
+        ],
+        "risks": [
+          "Dispersão de esforços"
+        ],
+        "steps": [
+          "Identificar competência rara procurada",
+          "Planear certificação"
+        ]
       },
       "hybrid": {
         "title": "Emprego + side business",
         "description": "Construir negócio em paralelo a emprego seguro.",
-        "paths": ["Consultoria em paralelo", "Produto digital"],
-        "skills": ["Vendas", "Gestão de projetos"],
-        "risks": ["Burnout"],
-        "steps": ["Validar ideia antes de investir tempo", "Fixar limites claros"]
+        "paths": [
+          "Consultoria em paralelo",
+          "Produto digital"
+        ],
+        "skills": [
+          "Vendas",
+          "Gestão de projetos"
+        ],
+        "risks": [
+          "Burnout"
+        ],
+        "steps": [
+          "Validar ideia antes de investir tempo",
+          "Fixar limites claros"
+        ]
       },
       "ambitious": {
         "title": "Empreendedor completo",
         "description": "Transição completa para o empreendedorismo com capital.",
-        "paths": ["Negócio escalável"],
-        "skills": ["Liderança", "Finanças"],
-        "risks": ["Fracasso financeiro", "Isolamento"],
-        "steps": ["Constituir 12 meses de runway", "Validar mercado"]
+        "paths": [
+          "Negócio escalável"
+        ],
+        "skills": [
+          "Liderança",
+          "Finanças"
+        ],
+        "risks": [
+          "Fracasso financeiro",
+          "Isolamento"
+        ],
+        "steps": [
+          "Constituir 12 meses de runway",
+          "Validar mercado"
+        ]
       }
     },
     "safeWealth": {
       "safe": {
         "title": "Carreira alta remuneração",
         "description": "Maximizar rendimentos via expertise reconhecida.",
-        "paths": ["Profissão regulamentada bem paga", "Tech sénior"],
-        "skills": ["Expertise setorial"],
-        "risks": ["Estagnação de rendimentos"],
-        "steps": ["Pesquisar setores de altos salários", "Planear certificações"]
+        "paths": [
+          "Profissão regulamentada bem paga",
+          "Tech sénior"
+        ],
+        "skills": [
+          "Expertise setorial"
+        ],
+        "risks": [
+          "Estagnação de rendimentos"
+        ],
+        "steps": [
+          "Pesquisar setores de altos salários",
+          "Planear certificações"
+        ]
       },
       "hybrid": {
         "title": "Emprego + investimento",
         "description": "Altos rendimentos + diversificação patrimonial.",
-        "paths": ["Emprego sénior + imobiliário", "Ações e ETFs"],
-        "skills": ["Finanças pessoais", "Negociação"],
-        "risks": ["Maus investimentos"],
-        "steps": ["Automatizar poupança", "Formar-se em investimento"]
+        "paths": [
+          "Emprego sénior + imobiliário",
+          "Ações e ETFs"
+        ],
+        "skills": [
+          "Finanças pessoais",
+          "Negociação"
+        ],
+        "risks": [
+          "Maus investimentos"
+        ],
+        "steps": [
+          "Automatizar poupança",
+          "Formar-se em investimento"
+        ]
       },
       "ambitious": {
         "title": "Independência financeira",
         "description": "Construir património que gere rendimentos passivos.",
-        "paths": ["Portfolio diversificado"],
-        "skills": ["Gestão de património", "Fiscalidade"],
-        "risks": ["Volatilidade de mercados"],
-        "steps": ["Calcular objetivo de independência", "Construir plano a 10 anos"]
+        "paths": [
+          "Portfolio diversificado"
+        ],
+        "skills": [
+          "Gestão de património",
+          "Fiscalidade"
+        ],
+        "risks": [
+          "Volatilidade de mercados"
+        ],
+        "steps": [
+          "Calcular objetivo de independência",
+          "Construir plano a 10 anos"
+        ]
       }
     },
     "nomad": {
       "safe": {
         "title": "Remote assalariado",
         "description": "Emprego remote estável com flexibilidade geográfica.",
-        "paths": ["Programador remote", "Suporte cliente internacional"],
-        "skills": ["Competência digital", "Autonomia"],
-        "risks": ["Isolamento social"],
-        "steps": ["Encontrar empregador remote-friendly", "Testar nomadismo 1 mês"]
+        "paths": [
+          "Programador remote",
+          "Suporte cliente internacional"
+        ],
+        "skills": [
+          "Competência digital",
+          "Autonomia"
+        ],
+        "risks": [
+          "Isolamento social"
+        ],
+        "steps": [
+          "Encontrar empregador remote-friendly",
+          "Testar nomadismo 1 mês"
+        ]
       },
       "hybrid": {
         "title": "Freelance + bases",
         "description": "Freelance com alguns clientes estáveis.",
-        "paths": ["Consultor remote", "Criador de conteúdo"],
-        "skills": ["Vendas", "Personal branding"],
-        "risks": ["Irregularidade de rendimentos"],
-        "steps": ["Assinar 2-3 clientes recorrentes", "Criar presença online"]
+        "paths": [
+          "Consultor remote",
+          "Criador de conteúdo"
+        ],
+        "skills": [
+          "Vendas",
+          "Personal branding"
+        ],
+        "risks": [
+          "Irregularidade de rendimentos"
+        ],
+        "steps": [
+          "Assinar 2-3 clientes recorrentes",
+          "Criar presença online"
+        ]
       },
       "ambitious": {
         "title": "Negócio location-independent",
         "description": "Empresa 100% online com equipa distribuída.",
-        "paths": ["SaaS ou agência remote"],
-        "skills": ["Gestão remote", "Sistemas automatizados"],
-        "risks": ["Complexidade legal internacional", "Burnout"],
-        "steps": ["Escolher modelo de negócio escalável", "Estruturar legalmente"]
+        "paths": [
+          "SaaS ou agência remote"
+        ],
+        "skills": [
+          "Gestão remote",
+          "Sistemas automatizados"
+        ],
+        "risks": [
+          "Complexidade legal internacional",
+          "Burnout"
+        ],
+        "steps": [
+          "Escolher modelo de negócio escalável",
+          "Estruturar legalmente"
+        ]
       }
     },
     "purpose": {
       "safe": {
         "title": "Trabalho de impacto estável",
         "description": "Emprego em setor útil com segurança.",
-        "paths": ["Saúde", "Educação", "Social"],
-        "skills": ["Competência profissional específica"],
-        "risks": ["Burnout por sobre-envolvimento"],
-        "steps": ["Identificar setor que ressoa", "Colocar limites claros"]
+        "paths": [
+          "Saúde",
+          "Educação",
+          "Social"
+        ],
+        "skills": [
+          "Competência profissional específica"
+        ],
+        "risks": [
+          "Burnout por sobre-envolvimento"
+        ],
+        "steps": [
+          "Identificar setor que ressoa",
+          "Colocar limites claros"
+        ]
       },
       "hybrid": {
         "title": "Impacto + equilíbrio",
         "description": "Contribuir protegendo a própria energia.",
-        "paths": ["ONG com estrutura sã", "Empreendedorismo social"],
-        "skills": ["Gestão de projetos", "Comunicação"],
-        "risks": ["Subremuneração"],
-        "steps": ["Negociar condições sãs", "Diversificar rendimentos"]
+        "paths": [
+          "ONG com estrutura sã",
+          "Empreendedorismo social"
+        ],
+        "skills": [
+          "Gestão de projetos",
+          "Comunicação"
+        ],
+        "risks": [
+          "Subremuneração"
+        ],
+        "steps": [
+          "Negociar condições sãs",
+          "Diversificar rendimentos"
+        ]
       },
       "ambitious": {
         "title": "Líder de impacto",
         "description": "Criar ou dirigir organização de alto impacto.",
-        "paths": ["Fundador de ONG ou empresa social"],
-        "skills": ["Liderança", "Fundraising"],
-        "risks": ["Esgotamento total"],
-        "steps": ["Validar impacto real", "Construir equipa sólida"]
+        "paths": [
+          "Fundador de ONG ou empresa social"
+        ],
+        "skills": [
+          "Liderança",
+          "Fundraising"
+        ],
+        "risks": [
+          "Esgotamento total"
+        ],
+        "steps": [
+          "Validar impacto real",
+          "Construir equipa sólida"
+        ]
       }
     },
     "status": {
       "safe": {
         "title": "Carreira prestigiosa",
         "description": "Progressão em ambiente reconhecido.",
-        "paths": ["Grande empresa reputada", "Consultoria"],
-        "skills": ["Excelência técnica"],
-        "risks": ["Dependência do olhar alheio"],
-        "steps": ["Visar empregadores prestigiados", "Construir CV sólido"]
+        "paths": [
+          "Grande empresa reputada",
+          "Consultoria"
+        ],
+        "skills": [
+          "Excelência técnica"
+        ],
+        "risks": [
+          "Dependência do olhar alheio"
+        ],
+        "steps": [
+          "Visar empregadores prestigiados",
+          "Construir CV sólido"
+        ]
       },
       "hybrid": {
         "title": "Especialista visível",
         "description": "Tornar-se referência reconhecida no próprio campo.",
-        "paths": ["Speaker", "Autor", "Formador"],
-        "skills": ["Personal branding", "Comunicação"],
-        "risks": ["Síndrome do impostor"],
-        "steps": ["Criar conteúdo regularmente", "Intervir em conferências"]
+        "paths": [
+          "Speaker",
+          "Autor",
+          "Formador"
+        ],
+        "skills": [
+          "Personal branding",
+          "Comunicação"
+        ],
+        "risks": [
+          "Síndrome do impostor"
+        ],
+        "steps": [
+          "Criar conteúdo regularmente",
+          "Intervir em conferências"
+        ]
       },
       "ambitious": {
         "title": "Líder de indústria",
         "description": "Atingir o topo da hierarquia ou do reconhecimento.",
-        "paths": ["Direção geral", "Fundador reconhecido"],
-        "skills": ["Estratégia", "Política de empresa"],
-        "risks": ["Identidade frágil em caso de fracasso", "Solidão no topo"],
-        "steps": ["Identificar mentores influentes", "Construir rede estratégica"]
+        "paths": [
+          "Direção geral",
+          "Fundador reconhecido"
+        ],
+        "skills": [
+          "Estratégia",
+          "Política de empresa"
+        ],
+        "risks": [
+          "Identidade frágil em caso de fracasso",
+          "Solidão no topo"
+        ],
+        "steps": [
+          "Identificar mentores influentes",
+          "Construir rede estratégica"
+        ]
       }
     },
     "recovery": {
       "safe": {
         "title": "Estabilização primeiro",
         "description": "Reconstruir base sólida sem pressão.",
-        "paths": ["Emprego estável pouco stressante", "Tempo parcial se possível"],
-        "skills": ["Gestão de stress"],
-        "risks": ["Julgar-se demasiado duramente"],
-        "steps": ["Aceitar começar devagar", "Criar rotina sã"]
+        "paths": [
+          "Emprego estável pouco stressante",
+          "Tempo parcial se possível"
+        ],
+        "skills": [
+          "Gestão de stress"
+        ],
+        "risks": [
+          "Julgar-se demasiado duramente"
+        ],
+        "steps": [
+          "Aceitar começar devagar",
+          "Criar rotina sã"
+        ]
       },
       "hybrid": {
         "title": "Reconstrução progressiva",
         "description": "Subida gradual e controlada.",
-        "paths": ["Formação progressiva", "Emprego + desenvolvimento pessoal"],
-        "skills": ["Resiliência", "Nova competência"],
-        "risks": ["Querer recuperar tempo perdido"],
-        "steps": ["Fixar objetivos realistas", "Celebrar cada progresso"]
+        "paths": [
+          "Formação progressiva",
+          "Emprego + desenvolvimento pessoal"
+        ],
+        "skills": [
+          "Resiliência",
+          "Nova competência"
+        ],
+        "risks": [
+          "Querer recuperar tempo perdido"
+        ],
+        "steps": [
+          "Fixar objetivos realistas",
+          "Celebrar cada progresso"
+        ]
       },
       "ambitious": {
         "title": "Renascimento completo",
         "description": "Transformar a prova em força para nova trajetória.",
-        "paths": ["Reconversão bem-sucedida", "Partilha de experiência"],
-        "skills": ["Storytelling pessoal", "Expertise adquirida"],
-        "risks": ["Sobreinvestimento compensatório"],
-        "steps": ["Documentar o próprio percurso", "Ajudar quem atravessa o mesmo"]
+        "paths": [
+          "Reconversão bem-sucedida",
+          "Partilha de experiência"
+        ],
+        "skills": [
+          "Storytelling pessoal",
+          "Expertise adquirida"
+        ],
+        "risks": [
+          "Sobreinvestimento compensatório"
+        ],
+        "steps": [
+          "Documentar o próprio percurso",
+          "Ajudar quem atravessa o mesmo"
+        ]
       }
     }
   },
   "countriesData": {
-    "cameroon": {
-      "name": "Camarões",
-      "region": "África Central",
-      "ruleOfGold": "Nunca resolvas um problema visível. Nunca te tornes indispensável. Nunca centralizes.",
-      "pyramid": {
-        "top": "Elites políticas e redes conectadas",
-        "institutions": "Aparelho estatal servindo interesses privados",
-        "gatekeepers": "Burocratas, intermediários e corretores informais",
-        "valueCreators": "Empreendedores, agricultores e trabalhadores informais",
-        "base": "População geral financiando o sistema",
-        "realAsset": "O problema em si — a disfunção é lucrativa"
-      },
-      "whoWins": ["Insiders conectados com acesso político", "Guardiões que controlam gargalos", "Quem monetiza a disfunção", "Atores internacionais extraindo recursos"],
-      "whoLoses": ["Pessoas competentes sem conexões", "Empreendedores transparentes", "Qualquer um que resolva problemas publicamente", "Jovens ambiciosos sem redes"],
-      "playbook": {
-        "do": ["Manter-se invisível, construir em silêncio", "Diversificar fontes de rendimento", "Desenvolver competências exportáveis", "Criar opções offshore progressivamente", "Fazer networking com a diáspora"],
-        "dont": ["Resolver publicamente problemas sistémicos", "Tornar-se visivelmente bem-sucedido sem proteção", "Centralizar ativos ou poder", "Confiar cegamente em instituições formais", "Moralizar ou criticar abertamente"],
-        "plan30Days": ["Assegurar documentos e papéis de identidade", "Iniciar fundo de emergência (mesmo pequeno)", "Identificar uma competência exportável para desenvolver", "Mapear o valor da tua rede atual"],
-        "plan12Months": ["Desenvolver fonte secundária de rendimento", "Construir conexões internacionais", "Aprender competências de trabalho remoto", "Criar primeira conta offshore se possível"],
-        "plan5Years": ["Estabelecer opção de residência no estrangeiro", "Diversificar ativos geograficamente", "Construir reputação em rede internacional", "Criar fluxos de rendimento passivo"],
-        "planB": "Foca-te em destinos francófonos com acesso de visto mais fácil (Marrocos, Senegal, França, Canadá-Quebec). Desenvolve competências digitais para trabalho remoto."
-      }
+    "argentina": {
+      "name": "Argentina",
+      "ruleOfGold": "Adaptar-se constantemente. A única constante é a mudança."
     },
-    "france": {
-      "name": "França",
-      "region": "Europa Ocidental",
-      "ruleOfGold": "O sistema protege a estabilidade, não a explosão. Joga o longo prazo dentro das regras.",
-      "pyramid": {
-        "top": "Instituições estatais e modelo social",
-        "institutions": "Burocracia pesada assegurando redistribuição",
-        "gatekeepers": "Diplomas, certificações e procedimentos",
-        "valueCreators": "Trabalhadores, empreendedores (restringidos)",
-        "base": "Contribuintes financiando o contrato social",
-        "realAsset": "Estabilidade e previsibilidade"
-      },
-      "whoWins": ["Quem domina as regras do sistema", "Funcionários do setor público", "Quem tem os diplomas e redes certos", "Planeadores pacientes de longo prazo"],
-      "whoLoses": ["Perfis de alta ambição, baixa paciência", "Outsiders sem credenciais francesas", "Quem procura crescimento explosivo", "Não-conformistas e inovadores"],
-      "playbook": {
-        "do": ["Entender e usar o sistema", "Otimizar estrutura fiscal legalmente", "Construir múltiplas fontes de rendimento", "Desenvolver opções internacionais", "Investir em qualidade de vida"],
-        "dont": ["Depender de uma única fonte de rendimento", "Ignorar requisitos administrativos", "Esperar que só a meritocracia ganhe", "Queimar pontes com instituições", "Subestimar o tempo da burocracia"],
-        "plan30Days": ["Auditar a tua situação atual", "Entender o teu escalão fiscal", "Iniciar poupança automatizada", "Pesquisar opções de rendimento secundário"],
-        "plan12Months": ["Estabelecer rendimento secundário", "Otimizar a tua estrutura legal", "Construir certificações transferíveis", "Criar portfólio internacional"],
-        "plan5Years": ["Diversificação geográfica", "Construir rendimento independente de localização", "Estabelecer alternativas UE", "Criar riqueza fora do alcance do sistema"],
-        "planB": "A mobilidade UE é a tua vantagem. Considera Portugal, Espanha ou Países Baixos para menos fricção. Suíça para maior ambição. Mantém benefícios franceses enquanto constróis noutro lugar."
-      }
+    "austria": {
+      "name": "Áustria",
+      "ruleOfGold": "Ordem e tradição. Respeitar a hierarquia."
     },
-    "switzerland": {
-      "name": "Suíça",
-      "region": "Europa Ocidental",
-      "ruleOfGold": "Excelência + regras + reputação = segurança. Sem atalhos, sem aproximações.",
-      "pyramid": {
-        "top": "Confiança, precisão e fiabilidade institucional",
-        "institutions": "Governação eficiente baseada em regras",
-        "gatekeepers": "Padrões de qualidade e requisitos profissionais",
-        "valueCreators": "Trabalhadores e empreendedores altamente qualificados",
-        "base": "Cidadãos investidos na manutenção do sistema",
-        "realAsset": "Competência e confiança coletiva"
-      },
-      "whoWins": ["Especialistas altamente competentes", "Seguidores de regras com excelência", "Construtores de reputação de longo prazo", "Quem valoriza a precisão"],
-      "whoLoses": ["Aproximadores e tomadores de atalhos", "Disruptores impacientes", "Quem sem credenciais reconhecidas", "Outsiders culturais que não se adaptam"],
-      "playbook": {
-        "do": ["Dominar o teu ofício até à excelência", "Seguir as regras precisamente", "Construir reputação ao longo do tempo", "Integrar-se culturalmente", "Investir em certificações"],
-        "dont": ["Tomar atalhos nunca", "Fazer batota ou dobrar regras", "Sobrevender ou exagerar", "Ignorar normas locais", "Apressar o processo de integração"],
-        "plan30Days": ["Pesquisar reconhecimento de credenciais", "Entender padrões profissionais locais", "Começar aprendizagem de língua a sério", "Mapear requisitos de integração"],
-        "plan12Months": ["Alcançar certificações requeridas", "Construir rede profissional local", "Demonstrar desempenho consistente", "Estabelecer estabilidade financeira"],
-        "plan5Years": ["Alcançar residência permanente/cidadania", "Tornar-se referência no teu campo", "Construir riqueza de longo prazo", "Integrar-se completamente mantendo opções"],
-        "planB": "Outros sistemas COMPETÊNCIA_CONFIANÇA: Alemanha, Países Baixos, Áustria, Singapura. Constrói credenciais que transferem entre estes sistemas."
-      }
+    "belgium": {
+      "name": "Bélgica",
+      "ruleOfGold": "O consenso é rei."
     },
-    "usa": {
-      "name": "Estados Unidos",
-      "region": "América do Norte",
-      "ruleOfGold": "Ganha rápido, assegura ganhos, diversifica. O sistema recompensa velocidade, não estabilidade.",
-      "pyramid": {
-        "top": "Capital e potencial de crescimento",
-        "institutions": "Mercados e estruturas de oportunidade",
-        "gatekeepers": "Acesso a capital e redes",
-        "valueCreators": "Empreendedores e alto desempenho",
-        "base": "Trabalhadores em ambiente competitivo",
-        "realAsset": "Crescimento e escalabilidade"
-      },
-      "whoWins": ["Empreendedores de alta velocidade", "Quem tem acesso a capital", "Proprietários de competências escaláveis", "Construtores de redes"],
-      "whoLoses": ["Procuradores de estabilidade", "Quem depende de rede social", "Tipos lentos e constantes", "Quem sem buffer saúde/riqueza"],
-      "playbook": {
-        "do": ["Mover-se rápido e escalar", "Construir múltiplas fontes de rendimento", "Assegurar redes de segurança privadas", "Fazer networking agressivamente", "Diversificar geograficamente"],
-        "dont": ["Depender de sistemas sociais", "Ficar numa única fonte de rendimento", "Ignorar seguro de saúde", "Esgotar-se sem plano de saída", "Assumir que estabilidade existe"],
-        "plan30Days": ["Assegurar cobertura de saúde", "Iniciar fundo de emergência", "Identificar oportunidades de crescimento", "Mapear o valor da tua rede"],
-        "plan12Months": ["Construir rendimento escalável", "Criar estratégia de investimento", "Estabelecer reputação profissional", "Construir buffers de segurança"],
-        "plan5Years": ["Alcançar independência financeira", "Diversificar internacionalmente", "Construir rendimentos passivos", "Criar opções de saída"],
-        "planB": "Considera Canadá para estabilidade com crescimento, Portugal para acesso UE, Dubai para otimização fiscal. Mantém rendimentos US enquanto constróis opções."
-      }
-    },
-    "germany": {
-      "name": "Alemanha",
-      "region": "Europa Ocidental",
-      "ruleOfGold": "Precisão, processo e paciência. O sistema recompensa quem domina as regras.",
-      "pyramid": {
-        "top": "Excelência industrial e confiança institucional",
-        "institutions": "Burocracia eficiente e sindicatos fortes",
-        "gatekeepers": "Qualificações profissionais e certificações",
-        "valueCreators": "Engenheiros, trabalhadores qualificados, empreendedores Mittelstand",
-        "base": "Contribuintes apoiando a economia social de mercado",
-        "realAsset": "Competência técnica e fiabilidade"
-      },
-      "whoWins": ["Especialistas técnicos e engenheiros", "Quem com qualificações reconhecidas", "Construtores pacientes de longo prazo", "Empreendedores Mittelstand"],
-      "whoLoses": ["Quem procura vitórias rápidas", "Outsiders sem credenciais alemãs", "Disruptores impacientes", "Quem resiste à burocracia"],
-      "playbook": {
-        "do": ["Fazer reconhecer as tuas qualificações", "Aprender alemão a sério", "Construir rede profissional metodicamente", "Abraçar processo e procedimento", "Pensar estabilidade de longo prazo"],
-        "dont": ["Apressar-se ou tomar atalhos", "Ignorar requisitos de papelada", "Subestimar importância da língua", "Esperar flexibilidade estilo americano", "Rejeitar sindicatos e direitos dos trabalhadores"],
-        "plan30Days": ["Pesquisar reconhecimento de qualificações", "Avaliar nível de alemão requerido", "Identificar empregadores potenciais", "Iniciar processo administrativo"],
-        "plan12Months": ["Alcançar nível B2 em alemão", "Fazer reconhecer qualificações", "Construir rede profissional", "Estabilizar situação legal"],
-        "plan5Years": ["Obter residência permanente", "Tornar-se especialista reconhecido no teu campo", "Construir estabilidade financeira", "Integrar-se completamente"],
-        "planB": "Outros sistemas similares: Áustria, Suíça, Países Baixos. As qualificações alemãs são altamente transferíveis na UE."
-      }
-    },
-    "uae": {
-      "name": "Emirados Árabes Unidos",
-      "region": "Médio Oriente",
-      "ruleOfGold": "Sê útil ao poder, mantém-te discreto, nunca local. Os teus ganhos pertencem-te enquanto seguires as regras.",
-      "pyramid": {
-        "top": "Famílias reinantes e os seus círculos próximos",
-        "institutions": "Estruturas estatais servindo a visão real",
-        "gatekeepers": "Patrocinadores, zonas francas e autorizações",
-        "valueCreators": "Expatriados qualificados e empreendedores",
-        "base": "Trabalhadores estrangeiros sem direitos permanentes",
-        "realAsset": "Acesso ao poder e utilidade para o sistema"
-      },
-      "whoWins": ["Especialistas úteis para o desenvolvimento", "Quem entende a discrição", "Empreendedores com capital", "Profissionais de alto valor"],
-      "whoLoses": ["Procuradores de cidadania permanente", "Trabalhadores pouco qualificados", "Quem fala de política", "Quem não consegue adaptar-se ao sistema de patrocínio"],
-      "playbook": {
-        "do": ["Ser excelente no teu campo", "Manter baixo perfil político", "Construir riqueza localmente, diversificar globalmente", "Desenvolver múltiplas opções de residência", "Networking com expats e locais estratégicos"],
-        "dont": ["Comentar sobre política", "Assumir que podes ficar para sempre", "Depender de um único empregador/patrocinador", "Ignorar requisitos legais", "Esquecer o plano B"],
-        "plan30Days": ["Entender completamente o teu visto e direitos", "Iniciar fundo de emergência", "Mapear a tua rede", "Identificar opções de diversificação"],
-        "plan12Months": ["Estabelecer fluxos de poupança", "Construir reputação profissional", "Criar conexões internacionais", "Explorar opções de residência alternativa"],
-        "plan5Years": ["Diversificação geográfica de ativos", "Múltiplas opções de residência", "Rendimentos passivos estabelecidos", "Plano de saída claro"],
-        "planB": "Considera Portugal (Golden Visa), Malta ou Chipre para residência UE. Singapura ou Hong Kong para Ásia. Mantém passaporte forte."
-      }
+    "chile": {
+      "name": "Chile",
+      "ruleOfGold": "A Suíça da América Latina."
     },
     "china": {
       "name": "China",
-      "region": "Ásia Oriental",
-      "ruleOfGold": "Alinha-te publicamente com o Partido, constrói em privado. Nunca te tornes um símbolo político.",
-      "pyramid": {
-        "top": "Partido Comunista e capital alinhado com o Estado",
-        "institutions": "Aparelho estatal que mistura controlo e mercado",
-        "gatekeepers": "Conexões do Partido, redes guanxi, aprovações regulatórias",
-        "valueCreators": "Empreendedores a operar dentro de limites políticos",
-        "base": "Trabalhadores a navegar transformação rápida",
-        "realAsset": "Velocidade de adaptação e alinhamento político"
-      },
-      "whoWins": ["Quem lê corretamente os ventos políticos", "Empreendedores alinhados com o Estado", "Adaptadores tech-savvy", "Quem tem fortes redes guanxi"],
-      "whoLoses": ["Críticos politicamente visíveis", "Quem cresce demasiado rápido e visivelmente", "Negócios dependentes do estrangeiro", "Quem aposta contra a direção do Estado"],
-      "playbook": {
-        "do": ["Dominar completamente as regulações locais", "Construir relações genuínas com funcionários", "Manter-se publicamente neutro politicamente", "Desenvolver discretamente opções internacionais", "Investir em competências transferíveis globalmente"],
-        "dont": ["Criticar o sistema publicamente", "Tornar-se um símbolo visível", "Depender apenas de rendimentos baseados na China", "Ignorar sinais políticos", "Ostentar riqueza"],
-        "plan30Days": ["Estudar panorama regulatório atual", "Mapear a tua rede guanxi", "Identificar competências transferíveis", "Configurar banca internacional"],
-        "plan12Months": ["Construir rendimento secundário no estrangeiro", "Estabelecer comunicações independentes de VPN", "Criar perfil profissional internacional", "Diversificar ativos"],
-        "plan5Years": ["Segunda residência estabelecida", "Fluxos de rendimento independentes de localização", "Rede internacional construída", "Estratégia de saída clara"],
-        "planB": "Singapura, Japão ou Taiwan para culturas semelhantes. Portugal, Canadá para ambientes diferentes."
-      }
+      "ruleOfGold": "Alinhar publicamente com o Partido, construir em privado."
     },
-    "russia": {
-      "name": "Rússia",
-      "region": "Europa de Leste/Ásia",
-      "ruleOfGold": "Nunca desafies o poder publicamente. O Estado dá e o Estado tira.",
-      "pyramid": {
-        "top": "Elite política e oligarcas alinhados com o Estado",
-        "institutions": "Estruturas estatais que servem a preservação do poder",
-        "gatekeepers": "Burocratas conectados e serviços de segurança",
-        "valueCreators": "Empreendedores a operar na sombra do Estado",
-        "base": "Cidadãos a navegar regras imprevisíveis",
-        "realAsset": "Lealdade ao poder e invisibilidade útil"
-      },
-      "whoWins": ["Próximos do poder sem o ameaçar", "Insiders do setor de segurança", "Negócios dependentes do Estado", "Construtores de riqueza de baixo perfil"],
-      "whoLoses": ["Líderes empresariais independentes", "Vozes políticas", "Empreendedores conectados ao Ocidente", "Quem tem ativos não diversificados"],
-      "playbook": {
-        "do": ["Manter-se completamente apolítico publicamente", "Construir competências que funcionam internacionalmente", "Manter reservas em moeda estrangeira", "Desenvolver opções de saída silenciosamente", "Fazer networking com diáspora"],
-        "dont": ["Fazer comentários políticos", "Construir negócio dependente de um setor", "Manter todos os ativos na Rússia", "Tornar-se visivelmente rico", "Confiar completamente em direitos de propriedade formais"],
-        "plan30Days": ["Assegurar todos os documentos de identidade", "Estabelecer contas estrangeiras se possível", "Identificar uma competência exportável", "Mapear rotas de fuga"],
-        "plan12Months": ["Desenvolver rendimento remote-capable", "Aprender outra língua", "Construir rede internacional", "Diversificar poupanças geograficamente"],
-        "plan5Years": ["Segunda cidadania ou residência", "Múltiplas fontes de rendimento no estrangeiro", "Ativos fora da Rússia", "Plano de relocalização pronto"],
-        "planB": "Geórgia, Arménia, Sérvia para entrada fácil. Países UE a longo prazo."
-      }
+    "colombia": {
+      "name": "Colômbia",
+      "ruleOfGold": "As relações importam. A confiança é tudo."
     },
-    "brazil": {
-      "name": "Brasil",
-      "region": "América do Sul",
-      "ruleOfGold": "Navega o jeitinho - flexibilidade, redes e paciência vencem regras formais.",
-      "pyramid": {
-        "top": "Classe política e grandes famílias empresariais",
-        "institutions": "Burocracia complexa que mistura formal e informal",
-        "gatekeepers": "Conexões, despachantes e conhecimento local",
-        "valueCreators": "Empreendedores que dominam navegação do sistema",
-        "base": "Trabalhadores em economias formal e informal",
-        "realAsset": "Relações e resiliência adaptativa"
-      },
-      "whoWins": ["Quem tem redes fortes", "Adaptadores flexíveis", "Quem domina navegação burocrática", "Conectores internacionais"],
-      "whoLoses": ["Quem espera meritocracia pura", "Estrangeiros impacientes", "Quem não tem conexões locais", "Seguidores rígidos de regras"],
-      "playbook": {
-        "do": ["Construir relações locais genuínas", "Aprender português corretamente", "Entender dinâmica de economia informal", "Desenvolver opções de rendimento internacionais", "Dominar complexidade fiscal e legal"],
-        "dont": ["Esperar que as coisas funcionem como em casa", "Ignorar requisitos burocráticos", "Subestimar competição local", "Centralizar ativos num lugar", "Ignorar considerações de segurança"],
-        "plan30Days": ["Obter CPF e documentos básicos", "Começar a aprender português", "Mapear redes profissionais locais", "Entender requisitos de visto"],
-        "plan12Months": ["Construir reputação profissional local", "Estabelecer múltiplos fluxos de rendimento", "Criar opções internacionais de backup", "Aprender a navegar burocracia"],
-        "plan5Years": ["Rendimentos diversificados Brasil + internacional", "Propriedades e ativos otimizados", "Rede local forte", "Opções internacionais mantidas"],
-        "planB": "Portugal por semelhança língua/cultura. Outros países latino-americanos. EUA ou UE com visto correto."
-      }
-    },
-    "norway": {
-      "name": "Noruega",
-      "region": "Norte da Europa",
-      "ruleOfGold": "O coletivo vem primeiro. A excelência é boa mas nunca acima do grupo.",
-      "pyramid": {
-        "top": "Instituições democráticas e riqueza soberana",
-        "institutions": "Estado forte, transparente e bem financiado",
-        "gatekeepers": "Educação, língua e normas sociais",
-        "valueCreators": "Trabalhadores qualificados em ambiente regulado",
-        "base": "Cidadãos com fortes proteções sociais",
-        "realAsset": "Confiança, igualdade e estabilidade sistémica"
-      },
-      "whoWins": ["Quem abraça valores igualitários", "Planeadores pacientes de longo prazo", "Quem tem competências procuradas", "Integradores que aprendem a língua"],
-      "whoLoses": ["Individualistas de alta ambição", "Quem procura riqueza rápida", "Quem não se integra", "Empreendedores que querem mínima regulação"],
-      "playbook": {
-        "do": ["Aprender norueguês seriamente", "Abraçar cultura de equilíbrio trabalho-vida", "Entender sistema fiscal e de benefícios", "Construir amizades locais genuínas", "Respeitar normas igualitárias"],
-        "dont": ["Ostentar riqueza ou conquistas", "Esperar empreendedorismo estilo americano", "Ignorar integração social", "Subestimar escuridão invernal", "Criticar publicamente o modo norueguês"],
-        "plan30Days": ["Começar aulas de norueguês", "Entender requisitos de residência", "Pesquisar mercado de trabalho no teu campo", "Conectar com comunidades expat"],
-        "plan12Months": ["Alcançar fluência básica em norueguês", "Construir rede profissional local", "Entender otimização fiscal", "Estabelecer conexões sociais"],
-        "plan5Years": ["Integração completa alcançada", "Proficiência linguística", "Carreira estável", "Considerar residência permanente/cidadania"],
-        "planB": "Outros países nórdicos, Países Baixos, Alemanha para estabilidade semelhante."
-      }
-    },
-    "qatar": {
-      "name": "Catar",
-      "region": "Médio Oriente",
-      "ruleOfGold": "Sê útil, fica calado, planeia a tua saída. És um convidado com data de validade.",
-      "pyramid": {
-        "top": "Família real Al Thani e círculos próximos",
-        "institutions": "Estruturas estatais que servem visão e estabilidade",
-        "gatekeepers": "Patrocinadores kafala e permissões governamentais",
-        "valueCreators": "Expatriados especialistas que servem o desenvolvimento",
-        "base": "Trabalhadores estrangeiros com direitos limitados",
-        "realAsset": "Utilidade para projetos estatais e discrição"
-      },
-      "whoWins": ["Especialistas de alto valor em setores prioritários", "Acumuladores discretos de riqueza", "Quem tem estratégias de saída claras", "Profissionais em GNL e construção"],
-      "whoLoses": ["Quem procura pertença permanente", "Trabalhadores pouco qualificados", "Quem ignora normas culturais", "Planeadores de longo prazo sem estratégia de saída"],
-      "playbook": {
-        "do": ["Maximizar poupanças durante a estadia", "Respeitar completamente costumes locais", "Construir competências e redes portáveis", "Planear saída desde o primeiro dia", "Fazer networking com profissionais internacionais"],
-        "dont": ["Esperar cidadania ou estadia permanente", "Criticar governo ou religião", "Ficar demasiado confortável", "Gastar tudo localmente", "Depender de um único empregador"],
-        "plan30Days": ["Entender direitos de visto e emprego", "Configurar sistema de poupança", "Mapear rede internacional", "Pesquisar opções de próximo destino"],
-        "plan12Months": ["Estabelecer forte taxa de poupança", "Construir reputação no campo", "Criar opções de trabalho internacionais", "Explorar alternativas de residência"],
-        "plan5Years": ["Riqueza substancial acumulada", "Próximo destino assegurado", "Competências altamente transferíveis", "Saída executada suavemente"],
-        "planB": "EAU para região semelhante. Singapura para Ásia. Portugal, Malta para acesso UE."
-      }
-    },
-    "venezuela": {
-      "name": "Venezuela",
-      "region": "América do Sul",
-      "ruleOfGold": "Sobrevive, mantém-te invisível, prepara a tua saída. O sistema só recompensa quem está no topo.",
-      "pyramid": {
-        "top": "Elite político-militar que controla recursos",
-        "institutions": "Estruturas esvaziadas que servem o regime",
-        "gatekeepers": "Lealistas do partido e operadores conectados",
-        "valueCreators": "Sobreviventes na economia informal",
-        "base": "População a navegar o colapso",
-        "realAsset": "Conexões e acesso a moeda estrangeira"
-      },
-      "whoWins": ["Insiders do regime", "Detentores de moeda estrangeira", "Quem tem conexões internacionais", "Operadores de economia informal"],
-      "whoLoses": ["Classe média", "Trabalhadores do setor formal", "Quem não tem conexões no estrangeiro", "Oposição visível"],
-      "playbook": {
-        "do": ["Assegurar moeda estrangeira urgentemente", "Desenvolver competências remotas", "Construir opções de saída agora", "Manter documentação pronta", "Conectar com diáspora"],
-        "dont": ["Manter poupanças em moeda local", "Tornar-se politicamente visível", "Esperar que as coisas melhorem", "Depender de sistemas formais", "Ignorar riscos de saúde/segurança"],
-        "plan30Days": ["Assegurar todos os documentos de identidade", "Estabelecer qualquer poupança em moeda estrangeira", "Identificar vias de emigração", "Aprender competências de trabalho remoto"],
-        "plan12Months": ["Construir fonte de rendimento estrangeira", "Preparar documentos de emigração", "Fazer networking com diáspora", "Executar plano de saída se pronto"],
-        "plan5Years": ["Relocalizado para país estável", "Integrado em nova economia", "Família estabilizada", "Ativos protegidos"],
-        "planB": "Colômbia, Peru, Chile por proximidade. Espanha por laços culturais. EUA com visto correto."
-      }
-    },
-    "saudi-arabia": {
-      "name": "Arábia Saudita",
-      "region": "Médio Oriente",
-      "ruleOfGold": "Serve a visão, respeita os valores, conhece o teu lugar. Altas recompensas para os úteis, altos riscos para os visíveis.",
-      "pyramid": {
-        "top": "Família real e arquitetos da Vision 2030",
-        "institutions": "Aparelho estatal em rápida transformação",
-        "gatekeepers": "Redes wasta e licenças governamentais",
-        "valueCreators": "Especialistas internacionais e empreendedores locais",
-        "base": "Cidadãos sauditas e trabalhadores estrangeiros",
-        "realAsset": "Alinhamento com transformação nacional"
-      },
-      "whoWins": ["Profissionais alinhados com Vision 2030", "Especialistas internacionais de alto valor", "Empreendedores sauditas conectados", "Construtores discretos de riqueza"],
-      "whoLoses": ["Quem desafia normas culturais", "Indivíduos politicamente ativos", "Quem não tem clara proposta de valor", "Pensadores de curto prazo"],
-      "playbook": {
-        "do": ["Alinhar-se com prioridades Vision 2030", "Respeitar normas culturais e religiosas", "Construir relações locais genuínas", "Poupar agressivamente", "Manter opções internacionais"],
-        "dont": ["Comentar sobre política ou religião", "Assumir estadia permanente possível", "Ignorar dinâmicas de mudança rápida", "Queimar pontes", "Ostentar estilo de vida incompatível"],
-        "plan30Days": ["Entender iqama e direitos laborais", "Definir objetivos agressivos de poupança", "Mapear rede profissional", "Pesquisar opções de saída"],
-        "plan12Months": ["Construir forte reputação profissional", "Diversificar rendimento se possível", "Criar conexões internacionais", "Estabelecer opção de segunda residência"],
-        "plan5Years": ["Riqueza significativa acumulada", "Estratégia de saída executada", "Competências altamente portáveis", "Rede internacional forte"],
-        "planB": "EAU, Bahrain para opções regionais. Portugal, Malta para UE. Canadá, Austrália para opções permanentes."
-      }
+    "denmark": {
+      "name": "Dinamarca",
+      "ruleOfGold": "Hygge e igualdade."
     },
     "india": {
       "name": "Índia",
-      "region": "Sul da Ásia",
-      "ruleOfGold": "Navega o paradoxo de sistemas antigos e crescimento explosivo. Relações e resiliência vencem credenciais puras.",
-      "pyramid": {
-        "top": "Dinastias políticas e grandes industriais",
-        "institutions": "Burocracia densa que mistura legado colonial e futuro digital",
-        "gatekeepers": "Redes, credenciais e conhecimento local",
-        "valueCreators": "Empreendedores em setores formal e informal",
-        "base": "Força de trabalho massiva em transformação",
-        "realAsset": "Inteligência adaptativa e força de rede"
-      },
-      "whoWins": ["Adaptadores tech-savvy", "Fortes construtores de redes", "Quem cavalga transformação digital", "Conectores internacionais"],
-      "whoLoses": ["Quem não tem paciência", "Operadores rígidos só-formais", "Quem ignora dinâmica relacional", "Indivíduos puramente dependentes de credenciais"],
-      "playbook": {
-        "do": ["Construir redes locais genuínas", "Abraçar oportunidades digitais", "Entender variações regionais", "Desenvolver opções internacionais", "Dominar navegação burocrática"],
-        "dont": ["Esperar regras uniformes a nível nacional", "Ignorar construção de relações", "Subestimar competição", "Depender apenas de sistemas formais", "Ignorar limites de saúde e infraestrutura"],
-        "plan30Days": ["Obter registos necessários (PAN, etc)", "Começar a construir rede local", "Entender dinâmica do teu setor", "Configurar banca apropriada"],
-        "plan12Months": ["Estabelecer reputação profissional", "Construir múltiplas fontes de rendimento", "Criar backup internacional", "Desenvolver expertise setorial"],
-        "plan5Years": ["Rendimentos diversificados Índia + internacional", "Rede forte estabelecida", "Ativos corretamente estruturados", "Opções globais mantidas"],
-        "planB": "EAU, Singapura para opções próximas. EUA, UK, Canadá para mercados desenvolvidos."
-      }
+      "ruleOfGold": "Relações e paciência."
+    },
+    "italy": {
+      "name": "Itália",
+      "ruleOfGold": "Relações e orgulho regional."
+    },
+    "mexico": {
+      "name": "México",
+      "ruleOfGold": "Relações e flexibilidade."
+    },
+    "norway": {
+      "name": "Noruega",
+      "ruleOfGold": "O coletivo vem primeiro."
+    },
+    "qatar": {
+      "name": "Qatar",
+      "ruleOfGold": "Ser útil, ficar calado, planear a saída."
+    },
+    "russia": {
+      "name": "Rússia",
+      "ruleOfGold": "Nunca desafiar o poder publicamente."
+    },
+    "spain": {
+      "name": "Espanha",
+      "ruleOfGold": "Relações e identidade regional."
+    },
+    "sweden": {
+      "name": "Suécia",
+      "ruleOfGold": "Igualdade e modéstia."
     },
     "turkey": {
       "name": "Turquia",
-      "region": "Europa/Médio Oriente",
-      "ruleOfGold": "Cavalga a volatilidade se puderes, protege-te se tiveres de. Ventos políticos mudam rápido.",
-      "pyramid": {
-        "top": "Círculo presidencial e grupos empresariais alinhados",
-        "institutions": "Estruturas de poder centralizadas em fluxo",
-        "gatekeepers": "Conexões governamentais e alinhamento partidário",
-        "valueCreators": "Empreendedores a navegar incerteza",
-        "base": "Cidadãos a gerir volatilidade cambial",
-        "realAsset": "Agilidade e neutralidade política"
-      },
-      "whoWins": ["Neutros politicamente astutos", "Ganhadores em moeda forte", "Diversificadores internacionais", "Adaptadores ágeis"],
-      "whoLoses": ["Críticos politicamente visíveis", "Poupadores dependentes da lira", "Negócios de mercado único", "Quem espera estabilidade"],
-      "playbook": {
-        "do": ["Ganhar em moeda forte se possível", "Permanecer politicamente invisível", "Diversificar ativos internacionalmente", "Construir competências exportáveis", "Manter múltiplas opções de residência"],
-        "dont": ["Participar em discurso político", "Manter poupanças apenas em liras", "Depender de uma única fonte de rendimento", "Ignorar risco cambial", "Assumir que a estabilidade vai voltar"],
-        "plan30Days": ["Estabelecer rendimento/poupanças em moeda forte", "Assegurar todos os documentos de identidade", "Mapear opções de saída", "Identificar competências transferíveis"],
-        "plan12Months": ["Construir fluxo de rendimento internacional", "Estabelecer banca estrangeira", "Criar rede profissional no estrangeiro", "Explorar alternativas de residência"],
-        "plan5Years": ["Rendimentos diversificados internacionalmente", "Segunda residência assegurada", "Ativos protegidos da volatilidade", "Plano de saída pronto"],
-        "planB": "Países UE via programas de cidadania. Geórgia, Sérvia para entrada fácil. EAU para opção regional."
-      }
-    },
-    "netherlands": {
-      "name": "Países Baixos",
-      "region": "Europa Ocidental",
-      "ruleOfGold": "Sê direto, sê competente, sê integrado. O sistema recompensa quem contribui.",
-      "pyramid": {
-        "top": "Instituições baseadas em consenso e comércio",
-        "institutions": "Burocracia eficiente e transparente",
-        "gatekeepers": "Credenciais profissionais e integração",
-        "valueCreators": "Profissionais qualificados, empreendedores, comerciantes",
-        "base": "Força de trabalho bem protegida com direitos fortes",
-        "realAsset": "Confiança, eficiência e redes comerciais"
-      },
-      "whoWins": ["Profissionais altamente qualificados", "Trabalhadores tech e empreendedores", "Quem se integra culturalmente", "Comunicadores diretos"],
-      "whoLoses": ["Quem evita integração", "Não falantes de neerlandês a longo prazo", "Personalidades hierárquicas", "Quem procura otimização fiscal"],
-      "playbook": {
-        "do": ["Obter regra dos 30% se elegível", "Aprender neerlandês eventualmente", "Integrar-se na cultura local", "Construir rede profissional", "Adotar comunicação direta"],
-        "dont": ["Ficar na bolha expat a longo prazo", "Ignorar a língua neerlandesa", "Esperar que a hierarquia funcione", "Subestimar o mercado imobiliário", "Ignorar requisitos de integração"],
-        "plan30Days": ["Assegurar autorização de residência/trabalho", "Candidatar-se à regra dos 30%", "Registar-se no gemeente", "Abrir conta bancária neerlandesa"],
-        "plan12Months": ["Começar curso de neerlandês", "Construir rede profissional", "Compreender mercado imobiliário", "Integrar-se na vida local"],
-        "plan5Years": ["Atingir proficiência em neerlandês", "Candidatar-se a residência permanente", "Considerar cidadania", "Construir carreira a longo prazo"],
-        "planB": "Os Países Baixos oferecem hub UE com inglês. Considere Alemanha para mais oportunidades, Bélgica para custos mais baixos, ou UK para ambiente puramente anglófono."
-      }
+      "ruleOfGold": "Relações e adaptação."
     }
   },
   "pyramidQuiz": {
-    "title": "Quiz das Pirâmides",
-    "subtitle": "Descobre qual tipo de sistema corresponde melhor à tua personalidade e aspirações",
+    "title": "O Jogo da Vida",
+    "subtitle": "Simule uma trajetória de vida através de diferentes sistemas mundiais.",
+    "disclaimer": "⚠️ Vai jogar um personagem fictício aleatório!",
     "questionOf": "Pergunta {{current}} de {{total}}",
     "back": "Voltar",
     "modes": {
       "online": {
-        "title": "Quiz online",
-        "description": "Responde a 8 perguntas para descobrir o teu tipo de pirâmide ideal. Rápido, simples e eficaz.",
-        "cta": "Começar o quiz"
+        "title": "Quiz de Perfil",
+        "description": "Responda a 8 perguntas.",
+        "cta": "Descobrir o meu perfil"
       },
       "board": {
-        "title": "Jogo de tabuleiro",
-        "description": "Estilo Monopoly: lança o dado, avança no tabuleiro e descobre o teu perfil a jogar.",
-        "cta": "Jogar o tabuleiro"
-      }
-    },
-    "questions": {
-      "priority": {
-        "question": "Qual é a tua prioridade principal na vida?",
-        "options": {
-          "security": "Segurança e estabilidade",
-          "growth": "Crescimento e oportunidades",
-          "freedom": "Liberdade e independência",
-          "connections": "Redes e conexões"
-        }
+        "title": "Modo Aventura",
+        "description": "Viva uma vida inteira.",
+        "cta": "Iniciar a minha vida"
       },
-      "riskTolerance": {
-        "question": "Qual é a tua relação com o risco?",
-        "options": {
-          "avoidRisk": "Prefiro evitar riscos",
-          "calculatedRisk": "Tomo riscos calculados",
-          "embraceRisk": "Abraço o risco para crescer",
-          "thriveInChaos": "Prospero no caos"
-        }
-      },
-      "workStyle": {
-        "question": "Que estilo de trabalho te corresponde melhor?",
-        "options": {
-          "stableJob": "Emprego estável com benefícios",
-          "entrepreneur": "Empreendedor com a minha própria empresa",
-          "freelance": "Freelance / Consultor independente",
-          "opportunist": "Oportunista conforme as circunstâncias"
-        }
-      },
-      "valueSystem": {
-        "question": "Que sistema de valores te corresponde mais?",
-        "options": {
-          "meritocracy": "Meritocracia e competência",
-          "socialProtection": "Proteção social e igualdade",
-          "pragmatism": "Pragmatismo e adaptação",
-          "wealth": "Acumulação de riqueza"
-        }
-      },
-      "networkStyle": {
-        "question": "Como constróis a tua rede?",
-        "options": {
-          "formalNetworks": "Redes profissionais formais",
-          "informalNetworks": "Conexões informais e amigos",
-          "businessNetworks": "Redes de negócios estratégicas",
-          "minimalNetworks": "Prefiro ficar discreto"
-        }
-      },
-      "futureVision": {
-        "question": "Qual é a tua visão geográfica para o futuro?",
-        "options": {
-          "stayLocal": "Ficar no meu país de origem",
-          "goGlobal": "Ir para o internacional",
-          "strategic": "Mobilidade estratégica conforme oportunidades",
-          "opportunistic": "Onde o dinheiro flui"
-        }
-      },
-      "moneyRelation": {
-        "question": "Qual é a tua relação com o dinheiro?",
-        "options": {
-          "saveSafely": "Poupar prudentemente",
-          "investGrowth": "Investir para crescer",
-          "maximizeNow": "Maximizar rendimentos agora",
-          "diversify": "Diversificar em todo o lado"
-        }
-      },
-      "rulesAttitude": {
-        "question": "Qual é a tua atitude face às regras?",
-        "options": {
-          "followStrictly": "Segui-las rigorosamente",
-          "useWisely": "Usá-las inteligentemente",
-          "findLoopholes": "Encontrar as lacunas",
-          "createOwn": "Criar as minhas próprias regras"
-        }
+      "multiplayer": {
+        "title": "Multijogador",
+        "description": "Jogue até 4!",
+        "cta": "Jogar juntos"
       }
     },
     "result": {
-      "title": "O teu tipo de pirâmide ideal",
-      "subtitle": "Baseado nas tuas respostas, aqui está o sistema que te corresponde melhor",
-      "scores": "As tuas pontuações por tipo",
+      "title": "O seu tipo de pirâmide ideal",
+      "subtitle": "Baseado nas suas respostas",
+      "scores": "As suas pontuações por tipo",
       "playAgain": "Jogar novamente",
       "learnMore": "Saber mais"
-    },
-    "board": {
-      "instructions": "Lança o dado para avançar. Cada casa dá-te pontos para diferentes tipos de pirâmides.",
-      "rollDice": "Clica no dado para lançar",
-      "landedPyramid": "+2 pontos para {{type}}",
-      "chanceCard": "Carta sorte! +3 pontos para {{type}}",
-      "trap": "Armadilha! -2 pontos no teu tipo dominante",
-      "bonus": "Bónus! +1 ponto em todos os tipos",
-      "answeredQuestion": "Boa resposta!",
-      "victory": "Parabéns! Chegaste à meta!",
-      "moving": "A mover..."
-    },
-    "multiplayer": {
-      "setup": "Configura o teu jogo multijogador",
-      "selectPlayers": "Número de jogadores",
-      "startGame": "Iniciar jogo",
-      "player": "Jogador",
-      "yourTurn": "A tua vez!",
-      "gameOver": "Jogo terminado!"
-    },
-    "gameLoaded": "Jogo carregado!"
+    }
   },
   "auth": {
     "login": "Entrar",
@@ -2428,281 +2203,6 @@
     "infrastructure": "Infraestrutura",
     "opportunities": "Oportunidades",
     "nature": "Natureza e Clima"
-  },
-  "howToRead": {
-    "title": "Como ler os resultados",
-    "subtitle": "Compreender a diferença entre simulação e previsão",
-    "whatSimulationIs": {
-      "title": "O que UMA SIMULAÇÃO é",
-      "point1": "Um modelo simplificado baseado em dados gerais",
-      "point2": "Uma ferramenta para explorar tendências e padrões",
-      "point3": "Uma ajuda para reflexão e perspetiva",
-      "point4": "Um ponto de partida para as tuas próprias pesquisas",
-      "point5": "Uma representação do que TENDE a acontecer em certos contextos"
-    },
-    "whatSimulationIsNot": {
-      "title": "O que uma simulação NÃO é",
-      "point1": "Uma previsão do teu futuro pessoal",
-      "point2": "Aconselhamento jurídico, financeiro ou médico",
-      "point3": "Uma garantia de resultado se seguires as recomendações",
-      "point4": "Uma verdade absoluta aplicável a todos",
-      "point5": "Um julgamento de valor sobre as tuas escolhas de vida"
-    },
-    "keyConcept": {
-      "title": "O conceito-chave: Tendência ≠ Certeza",
-      "explanation": "Quando a ferramenta diz \"este sistema tende a favorecer X\", significa que estatisticamente, neste tipo de contexto, X é mais provável. Mas o TEU caso particular depende de milhares de fatores que a ferramenta desconhece.",
-      "analogy": "É como o tempo: \"Chove frequentemente em novembro em Paris\" é estatisticamente verdade, mas não prevê se vai chover a 15 de novembro quando TU lá estiveres."
-    },
-    "examples": {
-      "title": "Exemplos concretos de boa leitura",
-      "wrongReading": "❌ Má leitura",
-      "correctReading": "✓ Boa leitura",
-      "countryMatch": {
-        "title": "Resultado de compatibilidade de país",
-        "wrong": "A ferramenta diz 85% de compatibilidade com a Suíça, então vou certamente ter sucesso lá.",
-        "correct": "A Suíça parece alinhada com o meu perfil teórico. Vou investigar para ver se corresponde à MINHA situação real."
-      },
-      "trajectory": {
-        "title": "Simulação de trajetória financeira",
-        "wrong": "A ferramenta mostra que terei 50.000€ poupados em 10 anos, é certo.",
-        "correct": "Se mantiver estes parâmetros e não surgir nenhum imprevisto, este montante é plausível. Devo prever margens."
-      },
-      "gameVerdict": {
-        "title": "Veredicto do modo educativo",
-        "wrong": "Obtive 'trajetória difícil' no jogo, então a minha vida real será um fracasso.",
-        "correct": "Esta simulação mostra os obstáculos típicos deste contexto inicial. Posso inspirar-me para antecipar desafios."
-      }
-    },
-    "limitations": {
-      "title": "O que a ferramenta NÃO PODE ter em conta",
-      "point1": "As tuas competências únicas, a tua rede pessoal, a tua sorte",
-      "point2": "As mudanças geopolíticas, económicas ou pessoais futuras",
-      "point3": "As nuances culturais que só a experiência local permite compreender",
-      "point4": "As oportunidades imprevistas que podem mudar tudo"
-    },
-    "bestPractices": {
-      "title": "Como usar a ferramenta de forma inteligente",
-      "practice1": {
-        "title": "Usa-a como ponto de partida",
-        "description": "Não como destino. Os resultados devem abrir pistas de investigação, não fechá-las."
-      },
-      "practice2": {
-        "title": "Cruza com outras fontes",
-        "description": "Fala com pessoas que vivem no local, lê testemunhos, consulta profissionais."
-      },
-      "practice3": {
-        "title": "Adapta à TUA situação",
-        "description": "As médias não se aplicam a todos. O teu percurso único pode mudar radicalmente as probabilidades."
-      },
-      "practice4": {
-        "title": "Revê regularmente",
-        "description": "Os teus parâmetros mudam. Refaz as simulações quando a tua situação evoluir."
-      }
-    },
-    "finalNote": {
-      "title": "Em resumo",
-      "text": "Esta ferramenta ajuda-te a ver mais claro, não a ver o futuro. Ilumina tendências para que TU possas decidir com conhecimento de causa. A decisão, e a responsabilidade, permanecem sempre tuas."
-    }
-  },
-  "lifeGame": {
-    "hero": {
-      "badge": "🎮 Jogo de tabuleiro educativo",
-      "title1": "O Jogo da",
-      "titleHighlight": "VIDA",
-      "subtitle": "Um jogo de simulação onde encarnas uma personagem fictícia. Descobre como o mundo funciona através de trajetórias aleatórias — NÃO é a tua vida real!",
-      "playCta": "Iniciar partida",
-      "learnCta": "Regras do jogo",
-      "stats": {
-        "archetypes": "Personagens jogáveis",
-        "systems": "Sistemas mundiais",
-        "possibilities": "Trajetórias possíveis"
-      }
-    },
-    "clarification": {
-      "title": "⚠️ Isto NÃO é a tua vida real",
-      "point1": "Recebes uma personagem fictícia aleatória (herdeiro, refugiado, empreendedor...)",
-      "point2": "Exploras mecanismos do mundo sem risco real",
-      "point3": "É uma ferramenta educativa, não uma previsão para ti",
-      "realLife": "Para planear a tua vida real →",
-      "realLifeLink": "Chaves de Saída"
-    },
-    "tagline": {
-      "quote": "Alguns nascem na linha de chegada. Outros têm de correr uma maratona com correntes nos pés. Este jogo mostra porquê.",
-      "author": "— A realidade, sem filtros"
-    },
-    "features": {
-      "title": "Como funciona o jogo",
-      "subtitle": "Um jogo de tabuleiro onde acaso e estratégia se misturam.",
-      "systems": {
-        "title": "6 Sistemas Mundiais",
-        "description": "Cada país no tabuleiro funciona de forma diferente. Aprende as regras invisíveis de cada sistema."
-      },
-      "characters": {
-        "title": "12+ Personagens Jogáveis",
-        "description": "Do herdeiro ao refugiado. Nem sempre escolhes — às vezes o destino decide por ti."
-      },
-      "choices": {
-        "title": "Escolhas Estratégicas",
-        "description": "Trabalhar, estudar, migrar, empreender... Gere os teus recursos como num jogo de gestão."
-      },
-      "risks": {
-        "title": "Atalhos Arriscados",
-        "description": "Mercado negro, corrupção. Ganhos rápidos com o risco de perder tudo — como na vida real."
-      }
-    },
-    "resources": {
-      "title": "6 Recursos para Gerir",
-      "subtitle": "No jogo como na vida, nunca terás tudo."
-    },
-    "archetypes": {
-      "title": "Quem vais encarnar?",
-      "subtitle": "Cada personagem tem vantagens e obstáculos. A dificuldade reflete as desigualdades do mundo real.",
-      "seeAll": "Ver todas as personagens"
-    },
-    "difficulty": {
-      "easy": "Fácil",
-      "medium": "Médio",
-      "hard": "Difícil",
-      "extreme": "Extremo"
-    },
-    "warning": {
-      "title": "Conteúdo educativo sensível",
-      "description": "Este jogo aborda realidades difíceis de forma lúdica. As situações do jogo são inspiradas em experiências reais vividas por milhões.",
-      "topics": {
-        "migration": "Migração forçada",
-        "corruption": "Corrupção sistémica",
-        "inequality": "Desigualdade de nascimento",
-        "shortcuts": "Atalhos perigosos"
-      }
-    },
-    "cta": {
-      "title": "Pronto para jogar?",
-      "subtitle": "Inicia uma partida e descobre uma personagem aleatória. Conseguirás navegar o sistema?",
-      "button": "Lançar o jogo"
-    }
-  },
-  "archetypes": {
-    "silverSpoon": {
-      "label": "O Herdeiro",
-      "description": "Nascido numa família abastada com rede já estabelecida. A vida em modo fácil.",
-      "example": "Filho/a de CEO, advogado, médico"
-    },
-    "techBro": {
-      "label": "O Tech Bro",
-      "description": "Programador autodidata em Silicon Valley. Competente mas socialmente limitado.",
-      "example": "Engenheiro FAANG, fundador de startup"
-    },
-    "suburbanDreamer": {
-      "label": "O Sonhador Suburbano",
-      "description": "Classe média que sonha com estabilidade e casa com jardim.",
-      "example": "Empregado de empresa, funcionário público"
-    },
-    "ambitiousGraduate": {
-      "label": "O Licenciado Ambicioso",
-      "description": "Primeiro da família na universidade. Tudo para provar.",
-      "example": "Estudante bolseiro, estagiário sobrequalificado"
-    },
-    "economicMigrant": {
-      "label": "O Migrante Económico",
-      "description": "Deixa o país para oferecer uma vida melhor à família. Resiliente mas invisível.",
-      "example": "Trabalhador sem documentos, diáspora"
-    },
-    "warRefugee": {
-      "label": "O Refugiado de Guerra",
-      "description": "Perdeu tudo menos a esperança. Reconstrói a vida do zero.",
-      "example": "Refugiado sírio, ucraniano, afegão"
-    },
-    "selfMade": {
-      "label": "O Self-Made",
-      "description": "Partiu do nada, construiu um império com pura força de vontade. Astuto e ambicioso.",
-      "example": "Empreendedor de bairro, história de sucesso imigrante"
-    },
-    "digitalNomad": {
-      "label": "O Nómada Digital",
-      "description": "Trabalha de qualquer lugar, não pertence a nenhum sistema. Livre mas instável.",
-      "example": "Freelancer remoto, criador de conteúdo"
-    },
-    "oligarchHeir": {
-      "label": "O Herdeiro Oligarca",
-      "description": "Fortuna imensa mas passaporte problemático. O dinheiro não é tudo.",
-      "example": "Filho de bilionário russo, chinês"
-    },
-    "stateDependent": {
-      "label": "O Dependente do Sistema",
-      "description": "Doença crónica ou deficiência. Depende das redes de segurança social.",
-      "example": "Pessoa com deficiência, doença de longa duração"
-    },
-    "expatExecutive": {
-      "label": "O Executivo Expatriado",
-      "description": "Enviado para o estrangeiro pela empresa. Pacote dourado mas burnout garantido.",
-      "example": "Diretor de país, VP regional"
-    },
-    "undergroundHustler": {
-      "label": "O Hustler de Rua",
-      "description": "Sobrevivente da economia informal. Prospera graças à rede e astúcia.",
-      "example": "Vendedor ambulante, economia cinzenta"
-    }
-  },
-  "archetypeSelector": {
-    "title": "Escolhe o teu Destino",
-    "subtitle": "Como queres definir a tua personagem?",
-    "chooseMode": "Escolher o meu arquétipo",
-    "chooseModeDesc": "Explora os 12 arquétipos sociais e escolhe o que te ressoa.",
-    "selectArchetype": "Selecionar",
-    "randomMode": "Deixar o destino decidir",
-    "randomModeDesc": "A vida não escolhe. Recebe um arquétipo aleatório e descobre os desafios que te esperam.",
-    "rollDice": "Lançar os dados",
-    "playerSelect": "Jogador {{player}} — Escolhe a tua vida",
-    "selectHint": "Cada arquétipo tem vantagens e obstáculos. A dificuldade reflete as desigualdades do mundo real.",
-    "randomOne": "Aleatório",
-    "confirmNext": "Confirmar e seguinte",
-    "startGame": "Iniciar o jogo",
-    "selectedPlayers": "Jogadores confirmados",
-    "difficulty": {
-      "easy": "Fácil",
-      "medium": "Médio",
-      "hard": "Difícil",
-      "extreme": "Extremo"
-    }
-  },
-  "savedGames": {
-    "title": "Os meus jogos",
-    "myGames": "Os meus jogos",
-    "noGames": "Nenhum jogo guardado",
-    "finished": "Terminado",
-    "save": "Guardar",
-    "saveGame": "Guardar jogo",
-    "gameName": "Nome do jogo",
-    "nameRequired": "O nome é obrigatório",
-    "saved": "Jogo guardado!",
-    "saveFailed": "Falha ao guardar",
-    "gameLoaded": "Jogo carregado!"
-  },
-  "onboarding": {
-    "skip": "Saltar",
-    "previous": "Anterior",
-    "next": "Seguinte",
-    "start": "Começar",
-    "step1": {
-      "title": "Bem-vindo ao System Compass",
-      "description": "A tua bússola para navegar no sistema global. Compreende as regras invisíveis que governam cada país."
-    },
-    "step2": {
-      "title": "Encontra o teu Match",
-      "description": "Responde a algumas perguntas e descobre quais países realmente correspondem ao teu perfil e ambições."
-    },
-    "step3": {
-      "title": "Calculadoras Inteligentes",
-      "description": "Simula o teu salário líquido, reforma e poder de compra em qualquer país."
-    },
-    "step4": {
-      "title": "Chaves de Saída",
-      "description": "Cria um plano de ação concreto para alcançar os teus objetivos de vida, com passos claros e acompanhamento personalizado."
-    },
-    "step5": {
-      "title": "O Jogo da Vida",
-      "description": "Testa diferentes trajetórias de vida num jogo de simulação educativo. Aprende os mecanismos do sistema sem risco."
-    }
   },
   "howToRead": {
     "title": "Como ler os resultados",
@@ -2777,6 +2277,129 @@
     "finalNote": {
       "title": "Em resumo",
       "text": "Esta ferramenta ajuda-te a ver mais claramente, não a ver o futuro. Ilumina tendências para que TU possas decidir com conhecimento de causa. A decisão e a responsabilidade permanecem sempre tuas."
+    }
+  },
+  "archetypes": {
+    "silverSpoon": {
+      "label": "O Herdeiro",
+      "description": "Nascido em família rica com rede estabelecida. Vida em modo fácil.",
+      "example": "Filho/a de CEO, advogado, médico"
+    },
+    "techBro": {
+      "label": "O Tech Bro",
+      "description": "Desenvolvedor autodidata em Silicon Valley. Competente mas socialmente limitado.",
+      "example": "Engenheiro FAANG, fundador startup"
+    },
+    "suburbanDreamer": {
+      "label": "O Sonhador Suburbano",
+      "description": "Classe média que sonha com estabilidade e casa com jardim.",
+      "example": "Funcionário, funcionário público"
+    },
+    "ambitiousGraduate": {
+      "label": "O Licenciado Ambicioso",
+      "description": "Primeiro na família a ir à universidade. Tudo por provar.",
+      "example": "Estudante bolseiro, estagiário sobrequalificado"
+    },
+    "economicMigrant": {
+      "label": "O Migrante Económico",
+      "description": "Deixa o país para dar vida melhor à família. Resiliente mas invisível.",
+      "example": "Trabalhador indocumentado, diáspora"
+    },
+    "warRefugee": {
+      "label": "O Refugiado de Guerra",
+      "description": "Perdeu tudo menos a esperança. Reconstruir vida do zero.",
+      "example": "Refugiado sírio, ucraniano, afegão"
+    },
+    "selfMade": {
+      "label": "O Self-Made",
+      "description": "Começou do nada, construiu império por pura vontade. Astuto e ambicioso.",
+      "example": "Empreendedor de bairro, história de sucesso imigrante"
+    },
+    "digitalNomad": {
+      "label": "O Nómada Digital",
+      "description": "Trabalha de qualquer lugar, não pertence a nenhum sistema. Livre mas instável.",
+      "example": "Freelancer remoto, content creator"
+    },
+    "oligarchHeir": {
+      "label": "O Herdeiro do Oligarca",
+      "description": "Riqueza imensa mas passaporte problemático. Dinheiro não é tudo.",
+      "example": "Filho/a de bilionário russo, chinês"
+    },
+    "stateDependent": {
+      "label": "O Dependente do Sistema",
+      "description": "Doença crónica ou deficiência. Depende de redes de segurança social.",
+      "example": "Pessoa com deficiência, doença longa"
+    },
+    "expatExecutive": {
+      "label": "O Expat Executivo",
+      "description": "Enviado para o estrangeiro pela empresa. Pacote dourado mas burnout garantido.",
+      "example": "Diretor de país, VP regional"
+    },
+    "undergroundHustler": {
+      "label": "O Street Hustler",
+      "description": "Sobrevivente da economia informal. Prospera através de rede e astúcia.",
+      "example": "Vendedor ambulante, economia cinzenta"
+    }
+  },
+  "archetypeSelector": {
+    "title": "Escolhe o teu Destino",
+    "subtitle": "Como queres definir a tua personagem?",
+    "chooseMode": "Escolher o meu arquétipo",
+    "chooseModeDesc": "Explora os 12 arquétipos sociais e escolhe o que te ressoa.",
+    "selectArchetype": "Selecionar",
+    "randomMode": "Deixar o destino decidir",
+    "randomModeDesc": "A vida não escolhe. Recebe um arquétipo aleatório e descobre os desafios que te esperam.",
+    "rollDice": "Lançar os dados",
+    "playerSelect": "Jogador {{player}} — Escolhe a tua vida",
+    "selectHint": "Cada arquétipo tem vantagens e obstáculos. A dificuldade reflete as desigualdades do mundo real.",
+    "randomOne": "Aleatório",
+    "confirmNext": "Confirmar e seguinte",
+    "startGame": "Iniciar o jogo",
+    "selectedPlayers": "Jogadores confirmados",
+    "difficulty": {
+      "easy": "Fácil",
+      "medium": "Médio",
+      "hard": "Difícil",
+      "extreme": "Extremo"
+    }
+  },
+  "savedGames": {
+    "title": "Os meus jogos",
+    "myGames": "Os meus jogos",
+    "noGames": "Nenhum jogo guardado",
+    "finished": "Terminado",
+    "save": "Guardar",
+    "saveGame": "Guardar jogo",
+    "gameName": "Nome do jogo",
+    "nameRequired": "O nome é obrigatório",
+    "saved": "Jogo guardado!",
+    "saveFailed": "Falha ao guardar",
+    "gameLoaded": "Jogo carregado!"
+  },
+  "onboarding": {
+    "skip": "Saltar",
+    "previous": "Anterior",
+    "next": "Seguinte",
+    "start": "Começar",
+    "step1": {
+      "title": "Bem-vindo ao System Compass",
+      "description": "A tua bússola para navegar no sistema global. Compreende as regras invisíveis que governam cada país."
+    },
+    "step2": {
+      "title": "Encontra o teu Match",
+      "description": "Responde a algumas perguntas e descobre quais países realmente correspondem ao teu perfil e ambições."
+    },
+    "step3": {
+      "title": "Calculadoras Inteligentes",
+      "description": "Simula o teu salário líquido, reforma e poder de compra em qualquer país."
+    },
+    "step4": {
+      "title": "Chaves de Saída",
+      "description": "Cria um plano de ação concreto para alcançar os teus objetivos de vida, com passos claros e acompanhamento personalizado."
+    },
+    "step5": {
+      "title": "O Jogo da Vida",
+      "description": "Testa diferentes trajetórias de vida num jogo de simulação educativo. Aprende os mecanismos do sistema sem risco."
     }
   },
   "preventionFilter": {
@@ -3214,28 +2837,88 @@
     "rewards": "O sistema recompensa",
     "punishes": "O sistema pune",
     "stability": {
-      "rewards": ["Paciência e senioridade", "Seguir procedimentos", "Lealdade institucional", "Diplomas reconhecidos"],
-      "punishes": ["Impaciência e atalhos", "Tomada de riscos excessiva", "Mudanças frequentes de emprego", "Falta de credenciais"]
+      "rewards": [
+        "Paciência e senioridade",
+        "Seguir procedimentos",
+        "Lealdade institucional",
+        "Diplomas reconhecidos"
+      ],
+      "punishes": [
+        "Impaciência e atalhos",
+        "Tomada de riscos excessiva",
+        "Mudanças frequentes de emprego",
+        "Falta de credenciais"
+      ]
     },
     "growth": {
-      "rewards": ["Iniciativa e tomada de riscos", "Criação de valor mensurável", "Adaptabilidade rápida", "Rede profissional"],
-      "punishes": ["Espera passiva", "Recusa de inovar", "Dependência do empregador", "Isolamento profissional"]
+      "rewards": [
+        "Iniciativa e tomada de riscos",
+        "Criação de valor mensurável",
+        "Adaptabilidade rápida",
+        "Rede profissional"
+      ],
+      "punishes": [
+        "Espera passiva",
+        "Recusa de inovar",
+        "Dependência do empregador",
+        "Isolamento profissional"
+      ]
     },
     "rent": {
-      "rewards": ["Acesso a círculos de poder", "Capacidade de manter o status quo", "Conexões familiares", "Discrição sobre rendimentos"],
-      "punishes": ["Transparência excessiva", "Tentativas de reforma", "Falta de rede", "Meritocracia ingénua"]
+      "rewards": [
+        "Acesso a círculos de poder",
+        "Capacidade de manter o status quo",
+        "Conexões familiares",
+        "Discrição sobre rendimentos"
+      ],
+      "punishes": [
+        "Transparência excessiva",
+        "Tentativas de reforma",
+        "Falta de rede",
+        "Meritocracia ingénua"
+      ]
     },
     "competence": {
-      "rewards": ["Expertise técnica afiada", "Certificações reconhecidas", "Rigor metodológico", "Formação contínua"],
-      "punishes": ["Aproximação", "Falta de certificação", "Mudanças de área", "Autodidatismo não validado"]
+      "rewards": [
+        "Expertise técnica afiada",
+        "Certificações reconhecidas",
+        "Rigor metodológico",
+        "Formação contínua"
+      ],
+      "punishes": [
+        "Aproximação",
+        "Falta de certificação",
+        "Mudanças de área",
+        "Autodidatismo não validado"
+      ]
     },
     "hybrid": {
-      "rewards": ["Flexibilidade estratégica", "Ler sinais", "Timing preciso", "Dupla competência"],
-      "punishes": ["Rigidez", "Compromisso prematuro", "Incompreensão de códigos", "Escolha de sistema único"]
+      "rewards": [
+        "Flexibilidade estratégica",
+        "Ler sinais",
+        "Timing preciso",
+        "Dupla competência"
+      ],
+      "punishes": [
+        "Rigidez",
+        "Compromisso prematuro",
+        "Incompreensão de códigos",
+        "Escolha de sistema único"
+      ]
     },
     "resource": {
-      "rewards": ["Expertise setorial", "Mobilidade geográfica", "Contratos curtos bem negociados", "Poupança massiva"],
-      "punishes": ["Enraizamento local", "Projetos de longo prazo", "Dependência do sistema local", "Despesas de vida elevadas"]
+      "rewards": [
+        "Expertise setorial",
+        "Mobilidade geográfica",
+        "Contratos curtos bem negociados",
+        "Poupança massiva"
+      ],
+      "punishes": [
+        "Enraizamento local",
+        "Projetos de longo prazo",
+        "Dependência do sistema local",
+        "Despesas de vida elevadas"
+      ]
     }
   },
   "latent": {
@@ -3250,12 +2933,15 @@
     },
     "tabs": {
       "zones": "Zonas de potencial",
-      "philosophy": "Filosofia"
+      "philosophy": "Filosofia",
+      "graph": "Gráfico",
+      "history": "Histórico"
     },
     "filter": {
       "all": "Todos os status"
     },
     "status": {
+      "title": "Status",
       "dormant": "Dormente",
       "emergent": "Emergente",
       "fragile": "Frágil",
@@ -3361,19 +3047,6 @@
       "noTensions": "Nenhuma tensão para preservar",
       "confirm": "Fundir"
     },
-    "tabs": {
-      "zones": "Zonas de potencial",
-      "philosophy": "Filosofia",
-      "graph": "Gráfico",
-      "history": "Histórico"
-    },
-    "status": {
-      "title": "Status",
-      "dormant": "Dormente",
-      "emergent": "Emergente",
-      "fragile": "Frágil",
-      "blocked": "Bloqueado"
-    },
     "search": {
       "placeholder": "Pesquisar zonas...",
       "noResults": "Nenhuma zona encontrada"
@@ -3411,7 +3084,7 @@
       "title": "Detalhes da zona",
       "createdAt": "Criada em",
       "updatedAt": "Atualizada em",
-    "tensionsCount": "Número de tensões"
+      "tensionsCount": "Número de tensões"
     }
   },
   "irreversa": {
@@ -3535,95 +3208,20 @@
     }
   },
   "pricing": {
-    "unlock": "Desbloqueie mais recursos",
-    "homepageTitle": "Vá mais longe na sua análise",
-    "homepageSubtitle": "Acesse análises de países mais detalhadas e recomendações personalizadas",
-    "viewPlans": "Ver todos os planos",
-    "recommended": "Recomendado",
-    "premiumFeature1": "Variantes específicas por país",
-    "premiumFeature2": "Perfis de sucesso/dificuldade",
-    "premiumFeature3": "O que surpreende os recém-chegados",
-    "proFeature1": "Todo o conteúdo Premium",
-    "proFeature2": "Análise de projeto personalizada",
-    "proFeature3": "Chaves de saída personalizadas",
-    "badge": "Preços transparentes",
-    "title": "Escolha seu plano",
-    "subtitle": "Desbloqueie análises mais profundas e recomendações personalizadas",
-    "freeName": "Gratuito",
-    "premiumName": "Premium",
-    "proName": "Pro",
-    "forever": "para sempre",
-    "perMonth": "/ mês",
-    "freeDescription": "Acesso às funcionalidades básicas",
-    "premiumDescription": "Acesso às variantes específicas por país",
-    "proDescription": "Análise de projeto personalizada",
-    "currentPlan": "Plano atual",
-    "subscribe": "Assinar",
-    "popular": "Popular",
-    "includedInYourPlan": "Incluído",
-    "managePlan": "Gerenciar assinatura",
-    "guarantee": "Cancele a qualquer momento. Sem compromisso.",
-    "limitations": {
-      "noVariants": "Sem variantes de país",
-      "noProfiles": "Sem perfis de sucesso",
-      "noAnalysis": "Sem análise de projeto",
-      "noLatent": "Sem módulo Latent",
-      "noIrreversa": "Sem módulo Irreversa",
-      "noTraceOS": "Sem TraceOS"
-    },
-    "enterprise": {
-      "title": "Enterprise",
-      "subtitle": "Para grandes organizações",
-      "cta": "Entre em contato",
-      "customPricing": "Preços personalizados",
-      "multiUser": "Acesso multiusuário",
-      "customAnalysis": "Análises personalizadas",
-      "apiAccess": "Acesso à API",
-      "dedicatedSupport": "Suporte dedicado",
-      "sla": "SLA garantido",
-      "whiteLabel": "White-label disponível"
-    },
-    "comparison": {
-      "title": "Comparar funcionalidades",
-      "feature": "Funcionalidade"
-    },
-    "feature": {
-      "basicCountries": "Perfis de país básicos",
-      "riskIndicators": "Indicadores de risco",
-      "pyramidCommon": "Núcleo comum da pirâmide",
-      "countryVariants": "Variantes específicas por país",
-      "profilesSuccess": "Perfis de sucesso",
-      "surprises": "O que surpreende os novatos",
-      "projectAnalysis": "Análise de projeto personalizada",
-      "blindSpots": "Pontos cegos específicos",
-      "latentModule": "Módulo Latent",
-      "irreversaModule": "Módulo Irreversa",
-      "traceOS": "TraceOS"
-    },
-    "faq": {
-      "title": "Perguntas frequentes",
-      "cancel": {
-        "q": "Posso cancelar a qualquer momento?",
-        "a": "Sim, você pode cancelar sua assinatura a qualquer momento. Você manterá o acesso até o final do seu período de faturamento."
-      },
-      "payment": {
-        "q": "Quais métodos de pagamento vocês aceitam?",
-        "a": "Aceitamos cartões de crédito (Visa, Mastercard, American Express) via Stripe. O pagamento é seguro e criptografado."
-      },
-      "upgrade": {
-        "q": "Posso mudar de plano?",
-        "a": "Sim, você pode fazer upgrade para um plano superior a qualquer momento. A diferença será calculada proporcionalmente."
-      },
-      "refund": {
-        "q": "Existe garantia de reembolso?",
-        "a": "Oferecemos uma garantia de reembolso de 14 dias. Entre em contato para solicitar um reembolso."
-      }
-    },
-    "trust": {
-      "secure": "Pagamento seguro",
-      "noCommitment": "Sem compromisso",
-      "instantAccess": "Acesso imediato"
-    }
+    "badge": "Começar grátis",
+    "title": "Começa grátis.",
+    "subtitle": "Faz upgrade quando precisares.",
+    "description": "Acede a análises básicas gratuitamente. Desbloqueia funcionalidades avançadas quando precisares.",
+    "free": "Grátis",
+    "freeFeature1": "Análise básica",
+    "freeFeature2": "Todos os simuladores",
+    "freeFeature3": "38 países",
+    "pro": "Pro",
+    "from": "desde",
+    "proFeature1": "Análises aprofundadas",
+    "proFeature2": "Chaves de saída personalizadas",
+    "proFeature3": "Exportação PDF",
+    "cta": "Ver planos"
   },
   "usage": {
     "title": "Consumo",
@@ -3683,32 +3281,50 @@
       "preventionFilter": {
         "title": "Filtro de Prevenção",
         "description": "Identifica riscos e obstáculos antes de te comprometeres com uma decisão",
-        "bestFor": ["Validar uma decisão importante", "Antecipar obstáculos ocultos"]
+        "bestFor": [
+          "Validar uma decisão importante",
+          "Antecipar obstáculos ocultos"
+        ]
       },
       "exitKeys": {
         "title": "Chaves de Saída",
         "description": "Roteiros personalizados com base na tua situação, objetivos e restrições",
-        "bestFor": ["Planear uma transição de vida", "Estruturar um projeto de mobilidade"]
+        "bestFor": [
+          "Planear uma transição de vida",
+          "Estruturar um projeto de mobilidade"
+        ]
       },
       "lifeTrajectory": {
         "title": "Trajetória de Vida",
         "description": "Simula a evolução da tua situação em 10-30 anos com base nas tuas escolhas",
-        "bestFor": ["Visualizar consequências a longo prazo", "Comparar cenários de vida"]
+        "bestFor": [
+          "Visualizar consequências a longo prazo",
+          "Comparar cenários de vida"
+        ]
       },
       "profileTest": {
         "title": "Teste de Perfil",
         "description": "Compreende o teu perfil, vantagens da nacionalidade e compatibilidade com sistemas",
-        "bestFor": ["Descobrir o teu arquétipo", "Identificar forças e fraquezas"]
+        "bestFor": [
+          "Descobrir o teu arquétipo",
+          "Identificar forças e fraquezas"
+        ]
       },
       "lifeGame": {
         "title": "Jogo da Vida",
         "description": "Jogo educativo para entender como as decisões de vida funcionam em diferentes sistemas",
-        "bestFor": ["Aprender a jogar", "Testar estratégias sem risco"]
+        "bestFor": [
+          "Aprender a jogar",
+          "Testar estratégias sem risco"
+        ]
       },
       "errorsIllusions": {
         "title": "Erros e Ilusões",
         "description": "Identifica vieses cognitivos e erros sistémicos que custam anos",
-        "bestFor": ["Evitar erros comuns", "Compreender vieses cognitivos"]
+        "bestFor": [
+          "Evitar erros comuns",
+          "Compreender vieses cognitivos"
+        ]
       }
     }
   },
@@ -3767,17 +3383,29 @@
       "institutions": {
         "title": "Instituições e Organizações",
         "desc": "Clarifique compromissos, identifique pontos cegos, previna erros dispendiosos",
-        "features": ["Casos de uso institucionais", "Modo de decisão coletiva", "Rastreabilidade e prevenção"]
+        "features": [
+          "Casos de uso institucionais",
+          "Modo de decisão coletiva",
+          "Rastreabilidade e prevenção"
+        ]
       },
       "ovi": {
         "title": "OVI Think Tank",
         "desc": "Frameworks de pensamento e grelhas de leitura para decisões complexas",
-        "features": ["Frameworks de vieses cognitivos", "Análise de reversibilidade de decisões", "Mapeamento sistema vs. indivíduo"]
+        "features": [
+          "Frameworks de vieses cognitivos",
+          "Análise de reversibilidade de decisões",
+          "Mapeamento sistema vs. indivíduo"
+        ]
       },
       "latent": {
         "badge": "Anti-Acelerador",
         "desc": "Mapeie e mantenha potenciais não formulados sem obrigação de transformação.",
-        "features": ["Zonas de potencial não finalizadas", "Proteção contra cristalização prematura", "Evolução sem obrigação de resultado"]
+        "features": [
+          "Zonas de potencial não finalizadas",
+          "Proteção contra cristalização prematura",
+          "Evolução sem obrigação de resultado"
+        ]
       }
     },
     "principles": {
@@ -3803,52 +3431,6 @@
       "ready": "Pronto para estruturar as suas decisões institucionais?",
       "desc": "Explore as nossas ferramentas dedicadas ou contacte-nos para soluções personalizadas."
     }
-  },
-  "lifeTrajectory": {
-    "questionOf": "Pergunta {{current}} de {{total}}",
-    "selectToContinue": "Selecione uma resposta para continuar",
-    "lgbtq": { "title": "Considerações LGBTQ+", "description": "Daremos prioridade a países com fortes proteções LGBTQ+." },
-    "planTypes": { "safe": "🛡️ Plano Seguro", "hybrid": "⚖️ Plano Híbrido", "ambitious": "🚀 Plano Ambicioso" },
-    "trajectory": { "paths": "Percursos de Carreira", "skills": "Competências a Desenvolver", "firstSteps": "Primeiros Passos" },
-    "results": { "workRelation": "Relação com o Trabalho", "riskRelation": "Relação com o Risco", "whatWorks": "O Que Realmente Funciona", "trap": "Cuidado Com", "yourPlans": "Os Seus 3 Planos de Trajetória", "findCountries": "Encontrar Países Compatíveis", "exploreCountries": "Explorar Todos os Países", "retake": "Repetir Teste" }
-  },
-  "lifeProfiles": {
-    "lottery": { "label": "O Buscador de Atalhos", "description": "Quer uma saída imediata.", "workRelation": "Baixo envolvimento com trabalho de longo prazo.", "riskRelation": "Frequentemente alto mas mal controlado.", "whatWorks": "Orçamento rigoroso, Plano B paralelo.", "trap": "Esperar 'o sinal', endividar-se." },
-    "comfort": { "label": "Conforto e Zero Stress", "description": "Procura tranquilidade e segurança psicológica.", "workRelation": "Quer estrutura.", "riskRelation": "Baixo.", "whatWorks": "Estabilidade, progressão lenta mas segura.", "trap": "Aborrecer-se, depois explodir após anos." },
-    "builder": { "label": "Construtor Paciente", "description": "Quer riqueza + orgulho.", "workRelation": "Disposto a trabalhar.", "riskRelation": "Moderado, calculado.", "whatWorks": "Negócio simples, competências raras.", "trap": "Complicar-se cedo demais." },
-    "safeWealth": { "label": "Construtor de Riqueza Segura", "description": "Quer altos rendimentos com máxima segurança.", "workRelation": "OK com trabalhar, não com arriscar.", "riskRelation": "Baixo a moderado.", "whatWorks": "Aumentar rendimentos via competências raras.", "trap": "Contradição interna → estagnação." },
-    "nomad": { "label": "Nómada Global", "description": "Procura liberdade geográfica.", "workRelation": "Quer trabalhar de qualquer lugar.", "riskRelation": "Variável.", "whatWorks": "Trabalhos remotos, rendimentos em moeda forte.", "trap": "Subestimar admin, isolamento." },
-    "purpose": { "label": "Orientado para o Propósito", "description": "Procura utilidade e contribuição.", "workRelation": "O trabalho torna-se missão.", "riskRelation": "Frequentemente moderado.", "whatWorks": "Trabalhos úteis + limites claros.", "trap": "Sacrificar-se, queimar-se." },
-    "status": { "label": "Buscador de Status", "description": "Procura reconhecimento.", "workRelation": "O trabalho torna-se a sua identidade.", "riskRelation": "Moderado a alto.", "whatWorks": "Excelência, rede, estratégia de carreira.", "trap": "Comparação tóxica." },
-    "recovery": { "label": "Recuperação e Reconstrução", "description": "Procura segurança e controlo.", "workRelation": "Necessidade de domínio.", "riskRelation": "Primeiro baixo, depois aumenta.", "whatWorks": "Primeiro estabilizar, depois rampa progressiva.", "trap": "Julgar-se." }
-  },
-  "lgbtqRights": { "safe": "LGBTQ+ Seguro", "caution": "Proceder com Cautela", "dangerous": "Alto Risco para LGBTQ+" },
-  "pyramidQuiz": {
-    "title": "O Jogo da Vida",
-    "subtitle": "Simule uma trajetória de vida através de diferentes sistemas mundiais.",
-    "disclaimer": "⚠️ Vai jogar um personagem fictício aleatório!",
-    "questionOf": "Pergunta {{current}} de {{total}}",
-    "back": "Voltar",
-    "modes": { "online": { "title": "Quiz de Perfil", "description": "Responda a 8 perguntas.", "cta": "Descobrir o meu perfil" }, "board": { "title": "Modo Aventura", "description": "Viva uma vida inteira.", "cta": "Iniciar a minha vida" }, "multiplayer": { "title": "Multijogador", "description": "Jogue até 4!", "cta": "Jogar juntos" } },
-    "result": { "title": "O seu tipo de pirâmide ideal", "subtitle": "Baseado nas suas respostas", "scores": "As suas pontuações por tipo", "playAgain": "Jogar novamente", "learnMore": "Saber mais" }
-  },
-  "countriesData": {
-    "argentina": { "name": "Argentina", "ruleOfGold": "Adaptar-se constantemente. A única constante é a mudança." },
-    "austria": { "name": "Áustria", "ruleOfGold": "Ordem e tradição. Respeitar a hierarquia." },
-    "belgium": { "name": "Bélgica", "ruleOfGold": "O consenso é rei." },
-    "chile": { "name": "Chile", "ruleOfGold": "A Suíça da América Latina." },
-    "china": { "name": "China", "ruleOfGold": "Alinhar publicamente com o Partido, construir em privado." },
-    "colombia": { "name": "Colômbia", "ruleOfGold": "As relações importam. A confiança é tudo." },
-    "denmark": { "name": "Dinamarca", "ruleOfGold": "Hygge e igualdade." },
-    "india": { "name": "Índia", "ruleOfGold": "Relações e paciência." },
-    "italy": { "name": "Itália", "ruleOfGold": "Relações e orgulho regional." },
-    "mexico": { "name": "México", "ruleOfGold": "Relações e flexibilidade." },
-    "norway": { "name": "Noruega", "ruleOfGold": "O coletivo vem primeiro." },
-    "qatar": { "name": "Qatar", "ruleOfGold": "Ser útil, ficar calado, planear a saída." },
-    "russia": { "name": "Rússia", "ruleOfGold": "Nunca desafiar o poder publicamente." },
-    "spain": { "name": "Espanha", "ruleOfGold": "Relações e identidade regional." },
-    "sweden": { "name": "Suécia", "ruleOfGold": "Igualdade e modéstia." },
-    "turkey": { "name": "Turquia", "ruleOfGold": "Relações e adaptação." }
   },
   "fiscal": {
     "title": "Sistema Fiscal",
@@ -3944,60 +3526,6 @@
     "costOfLiving": "Custo de Vida",
     "netMonthly": "Líquido mensal",
     "taxes": "Deduções"
-  },
-  "lifeGame": {
-    "hero": {
-      "badge": "🎮 Jogo de tabuleiro educativo",
-      "title1": "O Jogo da",
-      "titleHighlight": "VIDA",
-      "subtitle": "Um jogo de simulação onde jogas um personagem fictício. Descobre como o mundo funciona através de trajetórias aleatórias — isto NÃO é a tua vida real!",
-      "playCta": "Iniciar um jogo",
-      "learnCta": "Regras do jogo",
-      "stats": {
-        "archetypes": "Personagens jogáveis",
-        "systems": "Sistemas mundiais",
-        "possibilities": "Trajetórias possíveis"
-      }
-    },
-    "clarification": {
-      "title": "⚠️ Isto NÃO é a tua vida real",
-      "point1": "Recebes um personagem fictício aleatório (herdeiro, refugiado, empreendedor...)",
-      "point2": "Exploras mecanismos mundiais sem riscos reais",
-      "point3": "É uma ferramenta educativa, não uma previsão para ti",
-      "realLife": "Para planear a tua vida real →",
-      "realLifeLink": "Chaves de Saída"
-    },
-    "tagline": {
-      "quote": "Alguns nascem na linha de chegada. Outros têm de correr uma maratona com correntes nos pés. Este jogo mostra porquê.",
-      "author": "— A realidade, sem filtros"
-    },
-    "features": {
-      "title": "Como funciona o jogo",
-      "subtitle": "Um jogo de tabuleiro onde sorte e estratégia se misturam.",
-      "systems": { "title": "6 Sistemas Mundiais", "description": "Cada país no tabuleiro funciona de forma diferente. Aprende as regras invisíveis de cada sistema." },
-      "characters": { "title": "12+ Personagens Jogáveis", "description": "De filhos de papás a refugiados. Nem sempre escolhes — às vezes o destino decide por ti." },
-      "choices": { "title": "Escolhas Estratégicas", "description": "Trabalha, estuda, emigra, cria um negócio... Gere os teus recursos como num jogo de gestão." },
-      "risks": { "title": "Atalhos Arriscados", "description": "Mercado negro, corrupção. Ganhos rápidos com risco de perder tudo — tal como na vida real." }
-    },
-    "resources": { "title": "6 Recursos para Gerir", "subtitle": "No jogo como na vida, nunca terás tudo." },
-    "archetypes": { "title": "Quem vais jogar?", "subtitle": "Cada personagem tem vantagens e obstáculos. A dificuldade reflete desigualdades do mundo real.", "seeAll": "Ver todos os personagens" },
-    "difficulty": { "easy": "Fácil", "medium": "Médio", "hard": "Difícil", "extreme": "Extremo" },
-    "warning": { "title": "Conteúdo educativo sensível", "description": "Este jogo aborda realidades difíceis de forma lúdica.", "topics": { "migration": "Migração forçada", "corruption": "Corrupção sistémica", "inequality": "Desigualdade à nascença", "shortcuts": "Atalhos perigosos" } },
-    "cta": { "title": "Pronto para jogar?", "subtitle": "Inicia um jogo e descobre um personagem aleatório.", "button": "Iniciar jogo" }
-  },
-  "archetypes": {
-    "silverSpoon": { "label": "O Herdeiro", "description": "Nascido em família rica com rede estabelecida. Vida em modo fácil.", "example": "Filho/a de CEO, advogado, médico" },
-    "techBro": { "label": "O Tech Bro", "description": "Desenvolvedor autodidata em Silicon Valley. Competente mas socialmente limitado.", "example": "Engenheiro FAANG, fundador startup" },
-    "suburbanDreamer": { "label": "O Sonhador Suburbano", "description": "Classe média que sonha com estabilidade e casa com jardim.", "example": "Funcionário, funcionário público" },
-    "ambitiousGraduate": { "label": "O Licenciado Ambicioso", "description": "Primeiro na família a ir à universidade. Tudo por provar.", "example": "Estudante bolseiro, estagiário sobrequalificado" },
-    "economicMigrant": { "label": "O Migrante Económico", "description": "Deixa o país para dar vida melhor à família. Resiliente mas invisível.", "example": "Trabalhador indocumentado, diáspora" },
-    "warRefugee": { "label": "O Refugiado de Guerra", "description": "Perdeu tudo menos a esperança. Reconstruir vida do zero.", "example": "Refugiado sírio, ucraniano, afegão" },
-    "selfMade": { "label": "O Self-Made", "description": "Começou do nada, construiu império por pura vontade. Astuto e ambicioso.", "example": "Empreendedor de bairro, história de sucesso imigrante" },
-    "digitalNomad": { "label": "O Nómada Digital", "description": "Trabalha de qualquer lugar, não pertence a nenhum sistema. Livre mas instável.", "example": "Freelancer remoto, content creator" },
-    "oligarchHeir": { "label": "O Herdeiro do Oligarca", "description": "Riqueza imensa mas passaporte problemático. Dinheiro não é tudo.", "example": "Filho/a de bilionário russo, chinês" },
-    "stateDependent": { "label": "O Dependente do Sistema", "description": "Doença crónica ou deficiência. Depende de redes de segurança social.", "example": "Pessoa com deficiência, doença longa" },
-    "expatExecutive": { "label": "O Expat Executivo", "description": "Enviado para o estrangeiro pela empresa. Pacote dourado mas burnout garantido.", "example": "Diretor de país, VP regional" },
-    "undergroundHustler": { "label": "O Street Hustler", "description": "Sobrevivente da economia informal. Prospera através de rede e astúcia.", "example": "Vendedor ambulante, economia cinzenta" }
   },
   "terrainRealities": {
     "title": "Realidades de Campo",
@@ -4111,20 +3639,753 @@
     "viewAll": "Ver todos os especialistas",
     "disclaimer": "Especialistas são profissionais independentes. System Compass não garante os seus serviços."
   },
-  "pricing": {
-    "badge": "Começar grátis",
-    "title": "Começa grátis.",
-    "subtitle": "Faz upgrade quando precisares.",
-    "description": "Acede a análises básicas gratuitamente. Desbloqueia funcionalidades avançadas quando precisares.",
-    "free": "Grátis",
-    "freeFeature1": "Análise básica",
-    "freeFeature2": "Todos os simuladores",
-    "freeFeature3": "38 países",
-    "pro": "Pro",
-    "from": "desde",
-    "proFeature1": "Análises aprofundadas",
-    "proFeature2": "Chaves de saída personalizadas",
-    "proFeature3": "Exportação PDF",
-    "cta": "Ver planos"
+  "actions": {
+    "majorTitle": "Ações Principais (1/turno)",
+    "minorTitle": "Ações Secundárias",
+    "used": "Utilizada",
+    "costs": "Custos",
+    "gains": "Ganhos",
+    "confirm": "Confirmar",
+    "riskWarning": "Risco de falha: {{chance}}%",
+    "work": {
+      "label": "Trabalhar",
+      "description": "Ganhe dinheiro e experiência, mas fique cansado"
+    },
+    "study": {
+      "label": "Estudar",
+      "description": "Desenvolva suas habilidades para o futuro"
+    },
+    "entrepreneur": {
+      "label": "Empreender",
+      "description": "Muito lucrativo se funcionar, arriscado se falhar"
+    },
+    "migrate": {
+      "label": "Migrar",
+      "description": "Mudar de sistema, custa mobilidade e adaptação"
+    },
+    "contribute": {
+      "label": "Contribuir",
+      "description": "Aumente seu propósito e sua rede de contatos"
+    },
+    "networking": {
+      "label": "Networking",
+      "description": "Desenvolva suas conexões"
+    },
+    "relationships": {
+      "label": "Relacionamentos",
+      "description": "Cuide de seus entes queridos e da saúde mental"
+    },
+    "heal": {
+      "label": "Curar-se",
+      "description": "Recupere sua saúde"
+    },
+    "rest": {
+      "label": "Descansar",
+      "description": "Recupere tempo e energia"
+    },
+    "shortcut": {
+      "label": "Pegar um atalho",
+      "description": "Tente um caminho perigoso para ganhar mobilidade rapidamente"
+    },
+    "shortcutTitle": "Atalhos perigosos",
+    "dangerous": "Arriscado",
+    "shortcutWarning": "Atenção: Isso acionará um evento de risco",
+    "shortcutExplain": "Atalhos podem levar a golpes, exploração ou coisa pior. Baseado em situações reais.",
+    "takeRisk": "Assumir o risco"
+  },
+  "actorsMap": {
+    "title": "Mapeamento de Atores"
+  },
+  "ai": {
+    "caseGenerator": "Geração por IA",
+    "caseGeneratorDesc": "Gere automaticamente o conteúdo do seu caso",
+    "progress": "Progresso",
+    "generateAll": "Gerar caso completo",
+    "generatingComplete": "Geração completa em andamento...",
+    "completeGeneration": "Caso completo gerado!",
+    "generationSuccess": "Conteúdo gerado com sucesso",
+    "disclaimer": "Conteúdo gerado por IA - revise e complete manualmente",
+    "rateLimitError": "Limite de requisições atingido. Tente novamente em instantes.",
+    "creditsError": "Créditos de IA insuficientes. Recarregue sua conta."
+  },
+  "aspirations": {
+    "financialFreedom": {
+      "label": "Liberdade Financeira",
+      "description": "Alcançar independência econômica"
+    },
+    "stabilitySeeker": {
+      "label": "Buscador de Estabilidade",
+      "description": "Construir uma vida segura e previsível"
+    },
+    "worldExplorer": {
+      "label": "Explorador do Mundo",
+      "description": "Viver em vários países"
+    },
+    "masterCraftsman": {
+      "label": "Mestre Artesão",
+      "description": "Excelência na sua área"
+    },
+    "influencer": {
+      "label": "Influenciador",
+      "description": "Ter impacto sobre os outros"
+    },
+    "empireBuilder": {
+      "label": "Construtor de Impérios",
+      "description": "Criar algo grandioso"
+    },
+    "balancedLife": {
+      "label": "Vida Equilibrada",
+      "description": "Harmonia entre os domínios"
+    },
+    "socialClimber": {
+      "label": "Ascensão Social",
+      "description": "Subir na hierarquia"
+    }
+  },
+  "character": {
+    "aspirations": "Aspirações",
+    "startingResources": "Recursos Iniciais",
+    "selectCharacter": "Escolha seu personagem",
+    "drawNew": "Sortear novos personagens"
+  },
+  "characterDraft": {
+    "title": "Jogador {{player}} - Escolha seu personagem",
+    "subtitle": "Selecione um personagem entre os 4 disponíveis. Cada um possui características, restrições e aspirações únicas.",
+    "reshuffle": "Embaralhar novamente",
+    "confirmNext": "Confirmar e avançar",
+    "startGame": "Iniciar jogo",
+    "selectedCharacters": "Personagens selecionados"
+  },
+  "dicePrompt": {
+    "rollButton": "Jogar os dados!",
+    "instruction": "Clique nos dados ou no botão para avançar no tabuleiro.",
+    "finished": "Você chegou ao final!"
+  },
+  "familyConstraints": {
+    "youngChildren": {
+      "label": "Filhos pequenos",
+      "description": "Necessitam de estabilidade e cuidados constantes. Relocação muito difícil."
+    },
+    "schoolChildren": {
+      "label": "Filhos em idade escolar",
+      "description": "Escola, amigos, atividades. Mudar significa reconstruir tudo."
+    },
+    "sickParent": {
+      "label": "Pai/mãe doente",
+      "description": "Responsabilidade de cuidado. Difícil se afastar."
+    },
+    "familyAbroad": {
+      "label": "Família no país de origem",
+      "description": "Envio regular de dinheiro. Pressão financeira."
+    },
+    "spouseCareer": {
+      "label": "Carreira do cônjuge",
+      "description": "O parceiro tem sua própria carreira a considerar."
+    },
+    "disabledSibling": {
+      "label": "Familiar com deficiência",
+      "description": "Responsabilidade por um irmão ou parente com deficiência."
+    },
+    "sandwichGeneration": {
+      "label": "Geração sanduíche",
+      "description": "Entre os filhos e os pais idosos."
+    }
+  },
+  "familyEvents": {
+    "childBirth": {
+      "label": "Nascimento de filho",
+      "description": "Um novo membro se junta à família"
+    },
+    "marriage": {
+      "label": "Casamento",
+      "description": "União oficial com seu parceiro"
+    },
+    "familyReunion": {
+      "label": "Reunião familiar",
+      "description": "Visita à família após longa separação"
+    },
+    "childGraduation": {
+      "label": "Formatura do filho",
+      "description": "Seu filho se forma"
+    },
+    "parentIllness": {
+      "label": "Doença de um dos pais",
+      "description": "Um de seus pais adoece gravemente"
+    },
+    "parentDeath": {
+      "label": "Falecimento de um dos pais",
+      "description": "Perda de um dos pais"
+    },
+    "divorce": {
+      "label": "Divórcio",
+      "description": "Separação do cônjuge"
+    },
+    "childIllness": {
+      "label": "Doença do filho",
+      "description": "Seu filho está doente"
+    },
+    "familyConflict": {
+      "label": "Conflito familiar",
+      "description": "Tensões dentro da família"
+    },
+    "familyNeedsMoney": {
+      "label": "Família precisa de dinheiro",
+      "description": "Pedido urgente de apoio financeiro"
+    },
+    "spouseOpportunity": {
+      "label": "Oportunidade do cônjuge",
+      "description": "Seu parceiro tem uma oportunidade de trabalho em outro lugar"
+    },
+    "elderlyParentAlone": {
+      "label": "Pai/mãe idoso sozinho",
+      "description": "Seu pai/mãe idoso agora está sozinho"
+    }
+  },
+  "familyResponsibilities": {
+    "remittance": {
+      "label": "Remessas",
+      "description": "Transferência mensal para a família no país de origem"
+    },
+    "childEducation": {
+      "label": "Educação dos filhos",
+      "description": "Mensalidades escolares, atividades, materiais"
+    },
+    "elderlyCare": {
+      "label": "Cuidado com idosos",
+      "description": "Cuidado e apoio aos pais idosos"
+    },
+    "childcare": {
+      "label": "Cuidado infantil",
+      "description": "Tempo e custos com filhos pequenos"
+    },
+    "spouseSupport": {
+      "label": "Apoio ao cônjuge",
+      "description": "Investimento no relacionamento"
+    }
+  },
+  "familyStatus": {
+    "title": "Situação Familiar",
+    "selectorTitle": "Escolha sua situação familiar",
+    "selectorDescription": "Sua situação familiar impacta sua mobilidade e recursos",
+    "constraints": "Restrições:",
+    "single": "Solteiro(a)",
+    "inRelationship": "Em um relacionamento",
+    "married": "Casado(a)",
+    "parentYoung": "Pai/Mãe (filhos pequenos)",
+    "parentSchool": "Pai/Mãe (filhos em idade escolar)",
+    "parentAdult": "Pai/Mãe (filhos adultos)",
+    "caregiver": "Cuidador(a)",
+    "sandwich": "Geração sanduíche",
+    "diaspora": "Diáspora"
+  },
+  "game": {
+    "leaderboard": {
+      "title": "Placar",
+      "sectionTitle": "Ranking dos Jogadores",
+      "sectionSubtitle": "Compare suas pontuações com a comunidade",
+      "viewAll": "Ver placar completo",
+      "error": "Não foi possível carregar o placar",
+      "empty": "Nenhuma pontuação registrada. Seja o primeiro!"
+    }
+  },
+  "gameEnd": {
+    "title": "Fim de Jogo",
+    "yearsSimulated": "{{count}} anos de vida simulados",
+    "victory": "{{name}} vence!",
+    "lifeScore": "Pontuação de vida: {{score}} pontos",
+    "statistics": "Estatísticas do Jogo",
+    "risksTaken": "Riscos assumidos",
+    "risksSucceeded": "Sucessos",
+    "risksFailed": "Fracassos",
+    "risksCatastrophic": "Catástrofes",
+    "actionsCompleted": "Ações completadas",
+    "moneyLost": "Dinheiro perdido",
+    "healthLost": "Saúde perdida",
+    "countriesVisited": "Países visitados",
+    "riskAnalysis": "Análise de Riscos",
+    "prudentPlay": "Você jogou com cautela, sem pegar atalhos perigosos.",
+    "luckyRisks": "A sorte esteve do seu lado, mas atalhos continuam perigosos.",
+    "catastrophicRisks": "Os atalhos tiveram consequências graves. Na vida real, essas situações destroem famílias.",
+    "riskyConsequences": "Os riscos assumidos tiveram consequências. Cada fracasso representa uma realidade vivida por milhares de pessoas.",
+    "mainMenu": "Menu principal",
+    "playAgain": "Jogar novamente",
+    "lifeReport": "Relatório de Vida",
+    "finalResources": "Recursos Finais",
+    "experienceDiversity": "Diversidade de experiências",
+    "goalsAchieved": "Objetivos alcançados",
+    "healthPreserved": "Saúde preservada",
+    "networkDeveloped": "Rede desenvolvida",
+    "totalScore": "Pontuação Total",
+    "lifeGoals": "Objetivos de Vida",
+    "finalState": "Estado Final",
+    "experiencesBySystem": "Experiências por sistema",
+    "verdicts": {
+      "exceptional": {
+        "label": "Trajetória muito favorável",
+        "description": "Este cenário ilustra o que tende a acontecer quando as escolhas e o contexto se alinham favoravelmente."
+      },
+      "successful": {
+        "label": "Trajetória favorável",
+        "description": "Este cenário mostra o que geralmente acontece com escolhas consistentes e um contexto favorável."
+      },
+      "average": {
+        "label": "Trajetória mista",
+        "description": "Este cenário reflete altos e baixos — a realidade mais comum para muitos."
+      },
+      "struggling": {
+        "label": "Trajetória restrita",
+        "description": "Este cenário ilustra obstáculos que certos contextos iniciais tendem a criar."
+      },
+      "critical": {
+        "label": "Trajetória de sobrevivência",
+        "description": "Este cenário mostra desafios extremos que certas situações iniciais frequentemente implicam."
+      },
+      "disclaimer": "Lembrete: esta é uma simulação educativa. Seu caminho real dependerá de milhares de fatores não modelados aqui."
+    }
+  },
+  "gameModes": {
+    "solo": {
+      "title": "Solo",
+      "description": "Jogue sozinho e descubra seu tipo ideal de pirâmide"
+    },
+    "race": {
+      "title": "Corrida",
+      "description": "O primeiro a terminar vence! Corra até o final"
+    },
+    "pointsDuel": {
+      "title": "Duelo de Pontos",
+      "description": "Acumule o maior número de pontos antes de chegar ao final"
+    },
+    "cooperative": {
+      "title": "Cooperativo",
+      "description": "Trabalhem juntos para maximizar as pontuações coletivas"
+    }
+  },
+  "healthcare": {
+    "title": "Sistema de Saúde",
+    "systemType": "Tipo de Sistema",
+    "qualityScore": "Qualidade do Atendimento",
+    "accessScore": "Acesso para Estrangeiros",
+    "emergencyResponse": "Serviços de Emergência",
+    "specialistAccess": "Acesso a Especialistas",
+    "chronicCare": "Cuidados Crônicos",
+    "costForExpats": "Custo para Expatriados",
+    "insuranceRequired": "Seguro Obrigatório",
+    "systemTypes": {
+      "universal": "Universal",
+      "mixed": "Misto",
+      "private": "Privado",
+      "limited": "Limitado"
+    },
+    "qualityLevels": {
+      "excellent": "Excelente",
+      "good": "Bom",
+      "adequate": "Adequado",
+      "limited": "Limitado",
+      "poor": "Precário"
+    },
+    "costLevels": {
+      "free": "Gratuito",
+      "low": "Baixo",
+      "moderate": "Moderado",
+      "high": "Alto",
+      "very_high": "Muito Alto"
+    }
+  },
+  "journey": {
+    "profile": "Seu perfil",
+    "options": "Suas opções",
+    "keys": "Suas chaves"
+  },
+  "marketStudy": {
+    "title": "Estudo de Mercado"
+  },
+  "music": {
+    "systemSoundscape": "Paisagem Sonora do Sistema",
+    "listenTo": "Ouça a ambientação de {{country}}",
+    "description": "A música representa o sistema de vida deste país. Ela incorpora o ritmo, as tensões e as oportunidades do sistema.",
+    "generating": "A música está sendo gerada. Tente novamente em alguns minutos.",
+    "error": "Não foi possível gerar a música",
+    "loadError": "Erro ao carregar o áudio",
+    "play": "Reproduzir",
+    "pause": "Pausar",
+    "volume": "Volume"
+  },
+  "naturalRisks": {
+    "title": "Riscos Naturais",
+    "seismic": "Risco Sísmico",
+    "tsunami": "Risco de Tsunami",
+    "flood": "Risco de Enchente",
+    "drought": "Risco de Seca",
+    "cyclone": "Risco de Ciclone",
+    "volcano": "Risco Vulcânico",
+    "extremeHeat": "Calor Extremo",
+    "extremeCold": "Frio Extremo",
+    "levels": {
+      "none": "Nenhum",
+      "low": "Baixo",
+      "moderate": "Moderado",
+      "high": "Alto",
+      "very_high": "Muito Alto",
+      "rare": "Raro",
+      "occasional": "Ocasional",
+      "frequent": "Frequente",
+      "severe": "Severo"
+    }
+  },
+  "playerProfile": {
+    "title": "Crie Seu Perfil",
+    "subtitle": "Defina sua história para personalizar sua jornada",
+    "playerNumber": "Jogador {{number}}",
+    "name": "Seu nome",
+    "namePlaceholder": "Qual é o seu nome?",
+    "birthCountry": "País de nascimento",
+    "currentCountry": "País atual",
+    "selectCountry": "Selecione um país",
+    "desiredLife": "Vida desejada",
+    "nextPlayer": "Próximo jogador",
+    "startGame": "Iniciar jogo",
+    "goals": {
+      "stability": "Estabilidade",
+      "growth": "Crescimento",
+      "freedom": "Liberdade",
+      "wealth": "Riqueza",
+      "meaning": "Propósito"
+    }
+  },
+  "pwa": {
+    "title": "Instale o aplicativo",
+    "subtitle": "Acesse o System Compass pela tela inicial como um aplicativo nativo",
+    "pageTitle": "Instalação do Aplicativo",
+    "pageDescription": "Instale o System Compass no seu dispositivo para uma experiência otimizada",
+    "installNow": "Instalar agora",
+    "note": "O aplicativo funciona em todos os navegadores modernos. Para uma instalação ideal, use o Safari no iOS ou o Chrome no Android.",
+    "ios": {
+      "requirement": "Abra esta página no Safari",
+      "step1": {
+        "title": "Toque em Compartilhar",
+        "description": "Toque no botão Compartilhar (ícone quadrado com seta para cima) na barra de navegação do Safari"
+      },
+      "step2": {
+        "title": "Adicionar à Tela Inicial",
+        "description": "Role e selecione \"Adicionar à Tela Inicial\""
+      },
+      "step3": {
+        "title": "Adicionar",
+        "description": "Toque em \"Adicionar\" no canto superior direito para confirmar"
+      }
+    },
+    "android": {
+      "requirement": "Abra esta página no Chrome",
+      "step1": {
+        "title": "Abrir menu",
+        "description": "Toque no menu do Chrome (⋮) no canto superior direito"
+      },
+      "step2": {
+        "title": "Instalar aplicativo",
+        "description": "Selecione \"Instalar aplicativo\" ou \"Adicionar à tela inicial\""
+      },
+      "step3": {
+        "title": "Confirmar",
+        "description": "Toque em \"Instalar\" para confirmar a instalação"
+      }
+    },
+    "benefits": {
+      "title": "Benefícios",
+      "offline": "Acesso offline",
+      "fast": "Carregamento rápido",
+      "fullscreen": "Modo tela cheia",
+      "homescreen": "Ícone na tela inicial"
+    }
+  },
+  "pyramidQuiz.cooperative": {
+    "poolScore": "Pontuação Coletiva",
+    "victory": "Vitória Coletiva!",
+    "defeat": "Objetivo não alcançado",
+    "score": "Pontuação: {{score}} / {{target}}"
+  },
+  "reunionMode": {
+    "title": "Modo Reencontro",
+    "subtitle": "Duas almas, dois países, um destino",
+    "rule1Title": "2 Personagens",
+    "rule1Desc": "Cada jogador controla 2 personagens em países diferentes",
+    "rule2Title": "1 Aspiração",
+    "rule2Desc": "Ambos os personagens compartilham o mesmo objetivo de vida",
+    "rule3Title": "Reencontro",
+    "rule3Desc": "O primeiro a reunir seus personagens vence",
+    "tip": "Quanto mais diferentes os países, mais difícil o reencontro, mas maiores as recompensas!",
+    "discoverCharacters": "Descobrir os personagens",
+    "yourDestinies": "Seus destinos cruzados",
+    "clickToReveal": "Clique para revelar cada par",
+    "allRevealed": "Todos os personagens revelados!",
+    "revealPlayer": "Revelar Jogador {{player}}",
+    "distanceLabel": "Distância a percorrer",
+    "close": "Perto",
+    "medium": "Médio",
+    "far": "Longe",
+    "veryFar": "Muito Longe",
+    "regenerate": "Regenerar",
+    "startGame": "Iniciar o jogo",
+    "ready": "Pronto para jogar!",
+    "readyDesc": "A cada turno, você pode jogar com um dos seus dois personagens. Aproxime-os acumulando os recursos necessários para migrar!",
+    "letsGo": "Vamos lá!",
+    "chooseCharacter": "Escolha seu personagem",
+    "chooseCharacterDesc": "Clique em um dos seus personagens para jogar este turno com ele",
+    "reunionProgress": "Progresso do reencontro",
+    "requirements": "Recursos combinados necessários",
+    "attemptReunion": "Tentar o reencontro!",
+    "cannotReuniteYet": "Recursos insuficientes para o reencontro",
+    "reunionSuccess": "Reencontro bem-sucedido!",
+    "reunionSuccessDesc": "Seus personagens finalmente se encontraram!",
+    "reunionFailed": "Reencontro fracassou",
+    "tryAgainNextTurn": "Tente novamente no próximo turno",
+    "reunionCheck": "Verificação do reencontro",
+    "reunionPossible": "Reencontro possível!",
+    "reunionPossibleDesc": "Seus personagens acumularam recursos suficientes para se reunirem",
+    "skipReunion": "Agora não",
+    "notReadyYet": "Ainda não está pronto",
+    "notReadyYetDesc": "Continue acumulando recursos com ambos os seus personagens",
+    "victory": "Reencontro Realizado!",
+    "victoryDesc": "{{player}} reuniu seus personagens no turno {{turns}}!"
+  },
+  "riskRegister": {
+    "title": "Registro de Riscos"
+  },
+  "structuralRules": {
+    "title": "Regras Estruturais"
+  },
+  "subscription": {
+    "successTitle": "Assinatura Ativada!",
+    "successSubtitle": "Bem-vindo à experiência completa",
+    "successDescription": "Obrigado pela sua confiança! Agora você tem acesso a todos os recursos premium.",
+    "exploreCountries": "Explorar Países",
+    "managePlan": "Gerenciar Assinatura",
+    "yourPlan": "Seu Plano",
+    "upgrade": "Upgrade",
+    "subscribe": "Assinar",
+    "featuresUnlocked": "Recursos Desbloqueados",
+    "whatNext": "E agora?",
+    "startAnalysis": "Iniciar Análise",
+    "goToDashboard": "Ir para o Painel",
+    "disclaimer": "Sua assinatura é segura e pode ser cancelada a qualquer momento pelo seu painel.",
+    "nextSteps": {
+      "countries": "Explorar Países",
+      "countriesDesc": "Descubra as variantes de países agora desbloqueadas",
+      "exitKeys": "Estratégias",
+      "exitKeysDesc": "Encontre estratégias adaptadas ao seu perfil",
+      "dashboard": "Painel",
+      "dashboardDesc": "Acompanhe seu progresso e objetivos",
+      "learn": "Guia de Leitura",
+      "learnDesc": "Aprenda a interpretar os dados"
+    }
+  },
+  "tests": {
+    "resultSaved": "Resultado salvo!",
+    "saveError": "Erro ao salvar",
+    "resultDeleted": "Resultado excluído"
+  },
+  "traits": {
+    "charismatic": {
+      "label": "Carismático",
+      "description": "Facilidade para criar conexões"
+    },
+    "resilient": {
+      "label": "Resiliente",
+      "description": "Recupera-se rapidamente das adversidades"
+    },
+    "wealthyFamily": {
+      "label": "Família Rica",
+      "description": "Início financeiro privilegiado"
+    },
+    "quickLearner": {
+      "label": "Aprendiz Rápido",
+      "description": "Adquire novas habilidades rapidamente"
+    },
+    "wellConnected": {
+      "label": "Bem Relacionado",
+      "description": "Rede de contatos inicial sólida"
+    },
+    "dualCitizenship": {
+      "label": "Dupla Cidadania",
+      "description": "Mobilidade internacional facilitada"
+    },
+    "efficient": {
+      "label": "Eficiente",
+      "description": "Otimiza o uso do tempo"
+    },
+    "streetSmart": {
+      "label": "Esperto",
+      "description": "Sabe navegar em sistemas informais"
+    },
+    "chronicIllness": {
+      "label": "Doença Crônica",
+      "description": "Saúde frágil"
+    },
+    "poorBackground": {
+      "label": "Origem Humilde",
+      "description": "Poucos recursos no início"
+    },
+    "sociallyAwkward": {
+      "label": "Socialmente Desajeitado",
+      "description": "Dificuldade em criar conexões"
+    },
+    "visaRestricted": {
+      "label": "Visto Restrito",
+      "description": "Mobilidade internacional limitada"
+    },
+    "impulsive": {
+      "label": "Impulsivo",
+      "description": "Decisões precipitadas e custosas"
+    },
+    "burnedOut": {
+      "label": "Esgotado",
+      "description": "Energia e tempo reduzidos"
+    }
+  },
+  "turnManager": {
+    "year": "Ano {{year}}",
+    "phases": {
+      "global_event": "Evento global",
+      "country_event": "Evento do país",
+      "action_selection": "Seleção de ação",
+      "action_resolution": "Resolução",
+      "board_move": "Movimento",
+      "end_turn": "Fim do turno"
+    },
+    "globalEvent": "Evento Global",
+    "countryEvent": "Evento do País",
+    "noCountryEvent": "Nenhum evento particular no seu país neste ano",
+    "continue": "Continuar",
+    "executeAction": "Executar ação",
+    "actionSuccess": "Ação bem-sucedida!",
+    "actionFailed": "Ação fracassou!",
+    "riskPenalty": "Penalidade de risco aplicada",
+    "continueToBoard": "Continuar para o tabuleiro",
+    "rollDicePrompt": "Jogue os dados para se mover no tabuleiro"
+  },
+  "turnPhaseHelper": {
+    "currentPhase": "Fase atual",
+    "allPhases": "Todas as fases do turno",
+    "now": "Agora",
+    "phases": {
+      "global_event": {
+        "title": "Evento Mundial",
+        "description": "Um evento global afeta todos os jogadores. Leia atentamente e clique em Continuar.",
+        "shortDescription": "Evento que afeta o mundo inteiro"
+      },
+      "country_event": {
+        "title": "Evento Local",
+        "description": "Um evento específico do seu país ocorre. Adapte-se à situação.",
+        "shortDescription": "Evento específico do seu sistema"
+      },
+      "action_selection": {
+        "title": "Seleção de Ação",
+        "description": "Escolha uma ação entre as opções disponíveis. Fique atento aos custos e riscos!",
+        "shortDescription": "Escolha a ação do seu turno"
+      },
+      "action_resolution": {
+        "title": "Resolução da Ação",
+        "description": "Sua ação está sendo resolvida. Descubra o resultado.",
+        "shortDescription": "Resultado da sua ação"
+      },
+      "family_event": {
+        "title": "Evento Familiar",
+        "description": "Um evento relacionado à sua situação familiar ocorre. Gerencie suas responsabilidades.",
+        "shortDescription": "Gerencie sua vida familiar"
+      },
+      "board_move": {
+        "title": "Movimento",
+        "description": "Jogue os dados para avançar no tabuleiro. Cada casa pode acionar bônus ou perguntas.",
+        "shortDescription": "Jogue e avance"
+      },
+      "end_turn": {
+        "title": "Fim do Turno",
+        "description": "Seu turno está completo. Prepare-se para o próximo jogador.",
+        "shortDescription": "Encerre seu turno"
+      }
+    }
+  },
+  "variant": {
+    "tabs": {
+      "overview": "Visão Geral",
+      "typicalDay": "Dia Típico",
+      "yearOne": "Primeiro Ano",
+      "mistakes": "Erros",
+      "admin": "Burocracia",
+      "costs": "Custos",
+      "culture": "Cultura",
+      "communities": "Comunidades"
+    },
+    "typicalDay": {
+      "title": "Dia Típico",
+      "subtitle": "Como é um dia típico",
+      "time": "Horário",
+      "activity": "Atividade",
+      "culturalNote": "Nota Cultural",
+      "noData": "Dados não disponíveis para este país"
+    },
+    "yearOne": {
+      "title": "Realidade do Primeiro Ano",
+      "subtitle": "O que realmente espera você",
+      "month": "Mês",
+      "milestone": "Marco Principal",
+      "difficulty": "Dificuldade",
+      "tip": "Dica",
+      "noData": "Dados não disponíveis para este país"
+    },
+    "successTimeline": {
+      "title": "Cronograma Realista de Sucesso",
+      "subtitle": "Objetivos realistas por período",
+      "monthRange": "Período",
+      "realisticGoal": "Objetivo Realista",
+      "warning": "Atenção",
+      "noData": "Dados não disponíveis"
+    },
+    "mistakes": {
+      "title": "Erros Comuns por Fase",
+      "subtitle": "O que os recém-chegados erram",
+      "phase": "Fase",
+      "mistake": "Erro",
+      "consequence": "Consequência",
+      "prevention": "Prevenção",
+      "noData": "Dados não disponíveis para este país"
+    },
+    "admin": {
+      "title": "Etapas Burocráticas Ocultas",
+      "subtitle": "O que ninguém conta para você",
+      "step": "Etapa",
+      "timeEstimate": "Estimativa de Tempo",
+      "difficulty": "Dificuldade",
+      "insiderTip": "Dica Privilegiada",
+      "noData": "Dados não disponíveis para este país"
+    },
+    "costs": {
+      "title": "Custos Reais",
+      "subtitle": "Orçamento oficial vs realidade",
+      "category": "Categoria",
+      "officialCost": "Custo Oficial",
+      "realCost": "Custo Real",
+      "notes": "Notas",
+      "noData": "Dados não disponíveis para este país"
+    },
+    "culture": {
+      "title": "Choques Culturais",
+      "subtitle": "O que surpreende os estrangeiros",
+      "shock": "Choque Cultural",
+      "explanation": "Explicação",
+      "adaptationTime": "Tempo de Adaptação",
+      "surprises": "Surpresas Locais",
+      "noData": "Dados não disponíveis para este país"
+    },
+    "communities": {
+      "title": "Comunidades de Expatriados",
+      "subtitle": "Onde encontrar apoio",
+      "name": "Nome",
+      "location": "Localização",
+      "size": "Tamanho",
+      "focus": "Foco",
+      "entryDifficulty": "Dificuldade de Entrada",
+      "noData": "Dados não disponíveis para este país"
+    }
   }
 }
