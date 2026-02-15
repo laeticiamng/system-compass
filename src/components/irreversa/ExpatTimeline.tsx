@@ -12,7 +12,6 @@ import {
   Clock,
   ChevronDown,
   ChevronUp,
-  ArrowRight,
   Shield,
   DollarSign,
 } from 'lucide-react';
@@ -20,7 +19,6 @@ import { cn } from '@/lib/utils';
 import {
   EXPAT_PHASES as expatPhases,
   REVERSIBILITY_CHECKLISTS as reversibilityChecklists,
-  type ExpatPhase,
   type ExpatMilestone,
 } from '@/lib/expatriation-timeline-data';
 
@@ -100,7 +98,7 @@ function saveCheckedState(state: CheckedState): void {
 }
 
 export function ExpatTimeline() {
-  const { t } = useTranslation();
+  const { } = useTranslation();
   const [checkedItems, setCheckedItems] = useState<CheckedState>(loadCheckedState);
   const [expandedPhase, setExpandedPhase] = useState<string | null>(null);
   const [expandedMilestone, setExpandedMilestone] = useState<string | null>(null);
