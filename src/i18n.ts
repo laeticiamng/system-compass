@@ -66,17 +66,18 @@ const mergedRu = deepMerge(deepMerge(ru as Record<string, unknown>, countriesPos
 const mergedUr = deepMerge(deepMerge(ur as Record<string, unknown>, countriesPositivePointsUr as Record<string, unknown>), toastsEn as Record<string, unknown>) as typeof ur;
 
 // Supported languages with metadata
+// Languages with beta: true have less than 15% translation coverage
 export const SUPPORTED_LANGUAGES = [
   { code: 'en', label: 'English', flag: '🇬🇧', name: 'English' },
-  { code: 'zh', label: '中文', flag: '🇨🇳', name: '中文 (Mandarin)' },
-  { code: 'hi', label: 'हिंदी', flag: '🇮🇳', name: 'हिंदी (Hindi)' },
+  { code: 'zh', label: '中文', flag: '🇨🇳', name: '中文 (Mandarin)', beta: true },
+  { code: 'hi', label: 'हिंदी', flag: '🇮🇳', name: 'हिंदी (Hindi)', beta: true },
   { code: 'es', label: 'Español', flag: '🇪🇸', name: 'Español' },
-  { code: 'ar', label: 'العربية', flag: '🇸🇦', name: 'العربية (Arabic)', dir: 'rtl' },
+  { code: 'ar', label: 'العربية', flag: '🇸🇦', name: 'العربية (Arabic)', dir: 'rtl', beta: true },
   { code: 'fr', label: 'Français', flag: '🇫🇷', name: 'Français' },
-  { code: 'bn', label: 'বাংলা', flag: '🇧🇩', name: 'বাংলা (Bengali)' },
+  { code: 'bn', label: 'বাংলা', flag: '🇧🇩', name: 'বাংলা (Bengali)', beta: true },
   { code: 'pt', label: 'Português', flag: '🇧🇷', name: 'Português' },
-  { code: 'ru', label: 'Русский', flag: '🇷🇺', name: 'Русский' },
-  { code: 'ur', label: 'اردو', flag: '🇵🇰', name: 'اردو (Urdu)', dir: 'rtl' },
+  { code: 'ru', label: 'Русский', flag: '🇷🇺', name: 'Русский', beta: true },
+  { code: 'ur', label: 'اردو', flag: '🇵🇰', name: 'اردو (Urdu)', dir: 'rtl', beta: true },
   { code: 'de', label: 'Deutsch', flag: '🇩🇪', name: 'Deutsch' },
   { code: 'it', label: 'Italiano', flag: '🇮🇹', name: 'Italiano' },
   { code: 'nl', label: 'Nederlands', flag: '🇳🇱', name: 'Nederlands' },

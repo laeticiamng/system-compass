@@ -10,13 +10,13 @@ verify_jwt = false
 verify_jwt = false
 
 [functions.create-checkout]
-verify_jwt = false
+verify_jwt = true
 
 [functions.check-subscription]
-verify_jwt = false
+verify_jwt = true
 
 [functions.customer-portal]
-verify_jwt = false
+verify_jwt = true
 
 [functions.generate-country-profile]
 verify_jwt = false
@@ -28,13 +28,13 @@ verify_jwt = false
 verify_jwt = false
 
 [functions.traceos-email-alerts]
-verify_jwt = false
+verify_jwt = true
 
 [functions.traceos-webhooks]
 verify_jwt = false
 
 [functions.traceos-auto-export]
-verify_jwt = false
+verify_jwt = true
 
 [functions.i18n-coverage-slack]
 verify_jwt = false
@@ -43,10 +43,10 @@ verify_jwt = false
 verify_jwt = false
 
 [functions.ai-assist]
-verify_jwt = false
+verify_jwt = true
 
 [functions.dashboard-reminders]
-verify_jwt = false
+verify_jwt = true
 
 [functions.gov-intel-generate]
 verify_jwt = false
@@ -73,25 +73,25 @@ verify_jwt = false
 verify_jwt = false
 
 [functions.elevenlabs-tts]
-verify_jwt = false
+verify_jwt = true
 
 [functions.scrape-country-data]
 verify_jwt = false
 
 [functions.create-consultation-payment]
-verify_jwt = false
+verify_jwt = true
 
 [functions.consultation-webhook]
 verify_jwt = false
 
 [functions.create-stripe-connect]
-verify_jwt = false
+verify_jwt = true
 
 [functions.stripe-webhook]
 verify_jwt = false
 
 [functions.delete-account]
-verify_jwt = false
+verify_jwt = true
 
 [functions.send-email]
 verify_jwt = false

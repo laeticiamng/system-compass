@@ -1,10 +1,12 @@
 /**
  * Decision Analytics Dashboard - TraceOS decision insights and patterns
+ * Computes metrics dynamically from real decision data via useTraceOSDecisions
  */
 import { useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
+import { Skeleton } from '@/components/ui/skeleton';
 import {
   BarChart3,
   TrendingUp,
@@ -16,14 +18,17 @@ import {
   CheckCircle2,
   Zap,
   Calendar,
-  PieChart
+  PieChart,
+  Inbox
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useTraceOSDecisions } from '@/hooks/useTraceOSDecisions';
+import type { DecisionNodeData } from '@/components/institutions/DecisionNode';
 
 interface DecisionMetrics {
   totalDecisions: number;
   thisMonth: number;
-  avgResponseTime: number; // hours
+  avgResponseTime: number; // days
   successRate: number;
   pendingReview: number;
   byCategory: Record<string, number>;
@@ -31,55 +36,151 @@ interface DecisionMetrics {
   trend: number; // percentage change
 }
 
-// Mock data - in production would come from useTraceOSDecisions
-const MOCK_METRICS: DecisionMetrics = {
-  totalDecisions: 47,
-  thisMonth: 8,
-  avgResponseTime: 4.2,
-  successRate: 78,
-  pendingReview: 3,
-  byCategory: {
-    'Stratégique': 12,
-    'Opérationnel': 18,
-    'Financier': 9,
-    'RH': 5,
-    'Technique': 3,
-  },
-  byOutcome: { positive: 32, neutral: 10, negative: 5 },
-  trend: 15,
-};
+interface PatternInsight {
+  id: string;
+  pattern: string;
+  insight: string;
+  type: 'warning' | 'success';
+}
 
-const RECENT_PATTERNS = [
-  {
-    id: '1',
-    pattern: 'Décisions rapides souvent révisées',
-    insight: 'Les décisions prises en moins de 24h ont un taux de révision 40% plus élevé',
-    type: 'warning',
-  },
-  {
-    id: '2',
-    pattern: 'Meilleur timing : mardi-mercredi',
-    insight: 'Vos décisions prises en milieu de semaine montrent de meilleurs résultats',
-    type: 'success',
-  },
-  {
-    id: '3',
-    pattern: 'Biais de confirmation détecté',
-    insight: '3 décisions récentes montrent une recherche sélective d\'informations',
-    type: 'warning',
-  },
-];
+// Flatten a decision tree into a flat array
+function flattenDecisions(decisions: DecisionNodeData[]): DecisionNodeData[] {
+  const result: DecisionNodeData[] = [];
+  for (const d of decisions) {
+    result.push(d);
+    if (d.children && d.children.length > 0) {
+      result.push(...flattenDecisions(d.children));
+    }
+  }
+  return result;
+}
 
-function MetricCard({ 
-  title, 
-  value, 
-  subtitle, 
-  icon: Icon, 
+// Compute metrics from real decision data
+function computeMetrics(decisions: DecisionNodeData[]): DecisionMetrics {
+  const all = flattenDecisions(decisions);
+  const now = new Date();
+  const thisMonthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+  const lastMonthStart = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+
+  const thisMonthDecisions = all.filter(d => new Date(d.date) >= thisMonthStart);
+  const lastMonthDecisions = all.filter(d => {
+    const date = new Date(d.date);
+    return date >= lastMonthStart && date < thisMonthStart;
+  });
+
+  const validated = all.filter(d => d.status === 'validated').length;
+  const abandoned = all.filter(d => d.status === 'abandoned').length;
+  const pending = all.filter(d => d.status === 'pending').length;
+  const decided = validated + abandoned;
+
+  // Avg response time: estimate from decision dates
+  let avgDays = 0;
+  const decisionsWithDates = all.filter(d => d.date && d.status !== 'pending');
+  if (decisionsWithDates.length > 0) {
+    const totalDays = decisionsWithDates.reduce((sum, d) => {
+      const created = new Date(d.date);
+      const diff = Math.max(1, Math.ceil((now.getTime() - created.getTime()) / (1000 * 60 * 60 * 24)));
+      return sum + Math.min(diff, 30);
+    }, 0);
+    avgDays = Math.round((totalDays / decisionsWithDates.length) * 10) / 10;
+  }
+
+  // Category breakdown by scope
+  const byCategory: Record<string, number> = {};
+  all.forEach(d => {
+    const scope = d.scope || 'Non classé';
+    const label = scope.charAt(0).toUpperCase() + scope.slice(1);
+    byCategory[label] = (byCategory[label] || 0) + 1;
+  });
+
+  // Trend: % change this month vs last month
+  const lastMonthCount = lastMonthDecisions.length;
+  const thisMonthCount = thisMonthDecisions.length;
+  const trend = lastMonthCount > 0
+    ? Math.round(((thisMonthCount - lastMonthCount) / lastMonthCount) * 100)
+    : thisMonthCount > 0 ? 100 : 0;
+
+  return {
+    totalDecisions: all.length,
+    thisMonth: thisMonthCount,
+    avgResponseTime: avgDays,
+    successRate: decided > 0 ? Math.round((validated / decided) * 100) : 0,
+    pendingReview: pending,
+    byCategory,
+    byOutcome: { positive: validated, neutral: pending, negative: abandoned },
+    trend,
+  };
+}
+
+// Detect patterns from decision data
+function detectPatterns(decisions: DecisionNodeData[]): PatternInsight[] {
+  const all = flattenDecisions(decisions);
+  if (all.length === 0) return [];
+
+  const patterns: PatternInsight[] = [];
+
+  const pending = all.filter(d => d.status === 'pending');
+  if (pending.length >= 3) {
+    patterns.push({
+      id: 'pending-pileup',
+      pattern: `${pending.length} décisions en attente`,
+      insight: 'Plusieurs décisions attendent votre validation. Prioriser les plus anciennes.',
+      type: 'warning',
+    });
+  }
+
+  const validated = all.filter(d => d.status === 'validated').length;
+  const abandoned = all.filter(d => d.status === 'abandoned').length;
+  const decided = validated + abandoned;
+  if (decided >= 5) {
+    const rate = (validated / decided) * 100;
+    if (rate >= 75) {
+      patterns.push({
+        id: 'high-success',
+        pattern: `Taux de succès élevé : ${Math.round(rate)}%`,
+        insight: 'Vos décisions validées sont largement majoritaires. Bon indicateur de rigueur.',
+        type: 'success',
+      });
+    } else if (rate < 50) {
+      patterns.push({
+        id: 'low-success',
+        pattern: `Taux d'abandon élevé : ${Math.round(100 - rate)}%`,
+        insight: 'Plus de la moitié de vos décisions sont abandonnées. Revoir les critères en amont.',
+        type: 'warning',
+      });
+    }
+  }
+
+  const scopes = new Set(all.map(d => d.scope).filter(Boolean));
+  if (scopes.size === 1 && all.length >= 5) {
+    patterns.push({
+      id: 'scope-concentration',
+      pattern: 'Concentration sur un seul périmètre',
+      insight: `Toutes vos décisions portent sur "${[...scopes][0]}". Diversifier les champs de décision.`,
+      type: 'warning',
+    });
+  } else if (scopes.size >= 3) {
+    patterns.push({
+      id: 'scope-diversity',
+      pattern: 'Diversité décisionnelle',
+      insight: `Vos décisions couvrent ${scopes.size} périmètres différents. Bonne couverture stratégique.`,
+      type: 'success',
+    });
+  }
+
+  return patterns.slice(0, 3);
+}
+
+function MetricCard({
+  title,
+  value,
+  subtitle,
+  icon: Icon,
   trend,
-  trendLabel 
-}: { 
-  title: string; 
-  value: string | number; 
+  trendLabel
+}: {
+  title: string;
+  value: string | number;
   subtitle?: string;
   icon: React.ElementType;
   trend?: number;
@@ -124,6 +225,22 @@ function CategoryBreakdown({ categories }: { categories: Record<string, number> 
   const total = Object.values(categories).reduce((a, b) => a + b, 0);
   const sorted = Object.entries(categories).sort((a, b) => b[1] - a[1]);
 
+  if (sorted.length === 0) {
+    return (
+      <Card className="glass-card">
+        <CardHeader className="pb-3">
+          <CardTitle className="text-base flex items-center gap-2">
+            <PieChart className="h-4 w-4 text-primary" />
+            Répartition par catégorie
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm text-muted-foreground">Aucune donnée disponible</p>
+        </CardContent>
+      </Card>
+    );
+  }
+
   return (
     <Card className="glass-card">
       <CardHeader className="pb-3">
@@ -153,6 +270,22 @@ function CategoryBreakdown({ categories }: { categories: Record<string, number> 
 function OutcomeChart({ outcomes }: { outcomes: { positive: number; neutral: number; negative: number } }) {
   const total = outcomes.positive + outcomes.neutral + outcomes.negative;
 
+  if (total === 0) {
+    return (
+      <Card className="glass-card">
+        <CardHeader className="pb-3">
+          <CardTitle className="text-base flex items-center gap-2">
+            <Target className="h-4 w-4 text-primary" />
+            Résultats des décisions
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm text-muted-foreground">Aucune donnée disponible</p>
+        </CardContent>
+      </Card>
+    );
+  }
+
   return (
     <Card className="glass-card">
       <CardHeader className="pb-3">
@@ -163,31 +296,31 @@ function OutcomeChart({ outcomes }: { outcomes: { positive: number; neutral: num
       </CardHeader>
       <CardContent>
         <div className="flex h-4 rounded-full overflow-hidden">
-          <div 
-            className="bg-emerald-500" 
+          <div
+            className="bg-emerald-500"
             style={{ width: `${(outcomes.positive / total) * 100}%` }}
           />
-          <div 
-            className="bg-amber-500" 
+          <div
+            className="bg-amber-500"
             style={{ width: `${(outcomes.neutral / total) * 100}%` }}
           />
-          <div 
-            className="bg-red-500" 
+          <div
+            className="bg-red-500"
             style={{ width: `${(outcomes.negative / total) * 100}%` }}
           />
         </div>
         <div className="flex justify-between mt-3 text-sm">
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-emerald-500" />
-            <span>Positif ({outcomes.positive})</span>
+            <span>Validé ({outcomes.positive})</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-amber-500" />
-            <span>Neutre ({outcomes.neutral})</span>
+            <span>En attente ({outcomes.neutral})</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-red-500" />
-            <span>Négatif ({outcomes.negative})</span>
+            <span>Abandonné ({outcomes.negative})</span>
           </div>
         </div>
       </CardContent>
@@ -195,7 +328,28 @@ function OutcomeChart({ outcomes }: { outcomes: { positive: number; neutral: num
   );
 }
 
-function PatternInsights() {
+function PatternInsightsSection({ patterns }: { patterns: PatternInsight[] }) {
+  if (patterns.length === 0) {
+    return (
+      <Card className="glass-card">
+        <CardHeader className="pb-3">
+          <CardTitle className="text-base flex items-center gap-2">
+            <Brain className="h-4 w-4 text-primary" />
+            Patterns détectés
+          </CardTitle>
+          <CardDescription>
+            Insights basés sur vos décisions récentes
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm text-muted-foreground">
+            Pas assez de données pour détecter des patterns. Continuez à enregistrer vos décisions.
+          </p>
+        </CardContent>
+      </Card>
+    );
+  }
+
   return (
     <Card className="glass-card">
       <CardHeader className="pb-3">
@@ -208,13 +362,13 @@ function PatternInsights() {
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-3">
-        {RECENT_PATTERNS.map(pattern => (
-          <div 
+        {patterns.map(pattern => (
+          <div
             key={pattern.id}
             className={cn(
               'p-3 rounded-lg border',
-              pattern.type === 'warning' 
-                ? 'bg-amber-500/10 border-amber-500/30' 
+              pattern.type === 'warning'
+                ? 'bg-amber-500/10 border-amber-500/30'
                 : 'bg-emerald-500/10 border-emerald-500/30'
             )}
           >
@@ -236,8 +390,74 @@ function PatternInsights() {
   );
 }
 
+function EmptyState() {
+  return (
+    <Card className="glass-card">
+      <CardContent className="p-8 text-center">
+        <Inbox className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+        <h3 className="text-lg font-medium mb-2">Aucune décision enregistrée</h3>
+        <p className="text-sm text-muted-foreground">
+          Commencez par créer votre première décision dans TraceOS pour voir apparaître vos analytiques ici.
+        </p>
+      </CardContent>
+    </Card>
+  );
+}
+
+function LoadingSkeleton() {
+  return (
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {[1, 2, 3, 4].map(i => (
+        <Card key={i} className="glass-card">
+          <CardContent className="p-4">
+            <Skeleton className="h-4 w-24 mb-2" />
+            <Skeleton className="h-8 w-16" />
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  );
+}
+
 export function DecisionAnalyticsDashboard() {
-  const metrics = useMemo(() => MOCK_METRICS, []);
+  const { decisions, loading, isLoggedIn } = useTraceOSDecisions();
+
+  const metrics = useMemo(() => computeMetrics(decisions), [decisions]);
+  const patterns = useMemo(() => detectPatterns(decisions), [decisions]);
+
+  if (loading) {
+    return (
+      <div className="space-y-6">
+        <div>
+          <h2 className="text-2xl font-bold flex items-center gap-2">
+            <BarChart3 className="h-6 w-6 text-primary" />
+            Analytiques des décisions
+          </h2>
+          <p className="text-muted-foreground">
+            Vue d'ensemble de vos décisions TraceOS
+          </p>
+        </div>
+        <LoadingSkeleton />
+      </div>
+    );
+  }
+
+  if (!isLoggedIn || metrics.totalDecisions === 0) {
+    return (
+      <div className="space-y-6">
+        <div>
+          <h2 className="text-2xl font-bold flex items-center gap-2">
+            <BarChart3 className="h-6 w-6 text-primary" />
+            Analytiques des décisions
+          </h2>
+          <p className="text-muted-foreground">
+            Vue d'ensemble de vos décisions TraceOS
+          </p>
+        </div>
+        <EmptyState />
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
@@ -269,14 +489,14 @@ export function DecisionAnalyticsDashboard() {
         />
         <MetricCard
           title="Temps moyen"
-          value={`${metrics.avgResponseTime}h`}
+          value={`${metrics.avgResponseTime}j`}
           subtitle="Délai de décision"
           icon={Clock}
         />
         <MetricCard
           title="Taux de succès"
           value={`${metrics.successRate}%`}
-          subtitle="Résultats positifs"
+          subtitle="Décisions validées"
           icon={Zap}
         />
       </div>
@@ -306,7 +526,7 @@ export function DecisionAnalyticsDashboard() {
       </div>
 
       {/* Pattern Insights */}
-      <PatternInsights />
+      <PatternInsightsSection patterns={patterns} />
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -34,7 +35,7 @@ const activityColors = {
   simulation: 'text-primary bg-primary/10',
 };
 
-export function RecentActivityFeed({ activities = [], maxItems = 10 }: RecentActivityFeedProps) {
+export const RecentActivityFeed = memo(function RecentActivityFeed({ activities = [], maxItems = 10 }: RecentActivityFeedProps) {
   const { t, i18n } = useTranslation();
   
   // Demo activities if none provided
@@ -92,4 +93,4 @@ export function RecentActivityFeed({ activities = [], maxItems = 10 }: RecentAct
       </CardContent>
     </Card>
   );
-}
+});

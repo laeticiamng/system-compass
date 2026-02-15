@@ -31,7 +31,7 @@ const SCHENGEN_PLUS = [...EU_COUNTRIES, 'ch', 'switzerland', 'no', 'norway', 'is
 
 // Countries with specific visa programs
 const NOMAD_VISA_COUNTRIES = ['pt', 'portugal', 'es', 'spain', 'hr', 'croatia', 'gr', 'greece', 'ae', 'uae', 'th', 'thailand', 'id', 'indonesia', 'my', 'malaysia'];
-const POINTS_IMMIGRATION = ['ca', 'canada', 'au', 'australia', 'nz', 'new-zealand'];
+const POINTS_IMMIGRATION = ['ca', 'canada', 'au', 'australia', 'nz', 'new_zealand'];
 
 export function FeasibilityScoreCard({
   countryId,

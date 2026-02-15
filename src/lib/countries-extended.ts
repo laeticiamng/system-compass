@@ -94,17 +94,18 @@ export const EXTENDED_COUNTRY_META: Record<string, {
   region: string;
   pyramidType: string;
 }> = {
-  'argentina': { name: 'Argentina', nameLocal: 'Argentina', iso2: 'AR', region: 'South America', pyramidType: 'HYBRID_TRANSITION' },
+  // Pyramid types aligned with authoritative seed data (additional-countries.ts / expansion-countries.ts)
+  'argentina': { name: 'Argentina', nameLocal: 'Argentina', iso2: 'AR', region: 'Amérique du Sud', pyramidType: 'STABILITY_REDIS' },
   'austria': { name: 'Austria', nameLocal: 'Österreich', iso2: 'AT', region: 'Western Europe', pyramidType: 'STABILITY_REDIS' },
   'belgium': { name: 'Belgium', nameLocal: 'België / Belgique', iso2: 'BE', region: 'Western Europe', pyramidType: 'STABILITY_REDIS' },
-  'chile': { name: 'Chile', nameLocal: 'Chile', iso2: 'CL', region: 'South America', pyramidType: 'GROWTH_RISK' },
+  'chile': { name: 'Chile', nameLocal: 'Chile', iso2: 'CL', region: 'Amérique du Sud', pyramidType: 'COMPETENCE_TRUST' },
   'colombia': { name: 'Colombia', nameLocal: 'Colombia', iso2: 'CO', region: 'South America', pyramidType: 'HYBRID_TRANSITION' },
   'cuba': { name: 'Cuba', nameLocal: 'Cuba', iso2: 'CU', region: 'Caribbean', pyramidType: 'STABILITY_REDIS' },
   'denmark': { name: 'Denmark', nameLocal: 'Danmark', iso2: 'DK', region: 'Northern Europe', pyramidType: 'STABILITY_REDIS' },
   'italy': { name: 'Italy', nameLocal: 'Italia', iso2: 'IT', region: 'Southern Europe', pyramidType: 'STABILITY_REDIS' },
   'mexico': { name: 'Mexico', nameLocal: 'México', iso2: 'MX', region: 'North America', pyramidType: 'HYBRID_TRANSITION' },
-  'peru': { name: 'Peru', nameLocal: 'Perú', iso2: 'PE', region: 'South America', pyramidType: 'PROBLEM_RENT' },
-  'poland': { name: 'Poland', nameLocal: 'Polska', iso2: 'PL', region: 'Eastern Europe', pyramidType: 'HYBRID_TRANSITION' },
+  'peru': { name: 'Peru', nameLocal: 'Perú', iso2: 'PE', region: 'Amérique du Sud', pyramidType: 'HYBRID_TRANSITION' },
+  'poland': { name: 'Poland', nameLocal: 'Polska', iso2: 'PL', region: 'Central Europe', pyramidType: 'GROWTH_RISK' },
   'spain': { name: 'Spain', nameLocal: 'España', iso2: 'ES', region: 'Southern Europe', pyramidType: 'STABILITY_REDIS' },
   'sweden': { name: 'Sweden', nameLocal: 'Sverige', iso2: 'SE', region: 'Northern Europe', pyramidType: 'STABILITY_REDIS' },
   'south-africa': { name: 'South Africa', nameLocal: 'South Africa', iso2: 'ZA', region: 'Southern Africa', pyramidType: 'HYBRID_TRANSITION' },

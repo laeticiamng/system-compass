@@ -8,6 +8,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { Globe } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -55,6 +56,11 @@ export function LanguageSwitcher({ className }: { className?: string }) {
           >
             <span>{lang.flag}</span>
             <span>{lang.label}</span>
+            {'beta' in lang && lang.beta && (
+              <Badge variant="outline" className="ml-auto text-[10px] px-1 py-0 h-4 text-muted-foreground">
+                Beta
+              </Badge>
+            )}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

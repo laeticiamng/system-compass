@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useTraceOSWorkflows } from '@/hooks/useTraceOSWorkflows';
 import { 
   Settings2, 
   GitBranch, 
@@ -78,9 +79,42 @@ const DEFAULT_WORKFLOWS: WorkflowConfig[] = [
 
 export function DecisionWorkflowConfig() {
   const { t } = useTranslation();
-  const [workflows, setWorkflows] = useState<WorkflowConfig[]>(DEFAULT_WORKFLOWS);
+  const { workflows: dbWorkflows, loading: dbLoading } = useTraceOSWorkflows();
+
+  // Use DB workflows if available, otherwise fall back to defaults
+  const initialWorkflows = useMemo((): WorkflowConfig[] => {
+    if (dbLoading) return DEFAULT_WORKFLOWS;
+    if (dbWorkflows.length > 0) {
+      return dbWorkflows.map(w => ({
+        id: w.id,
+        name: w.name,
+        description: w.description || '',
+        scope: 'operational' as const,
+        steps: (w.steps || []).map((s, i) => ({
+          id: `db-step-${i}`,
+          name: s.name,
+          type: s.type === 'signature' ? 'approval' as const : s.type as WorkflowStep['type'],
+          assigneeRole: 'owner',
+          required: true,
+          autoAdvance: false,
+        })),
+        requireAllApprovals: true,
+        notifyOnCompletion: true,
+      }));
+    }
+    return DEFAULT_WORKFLOWS;
+  }, [dbWorkflows, dbLoading]);
+
+  const [workflows, setWorkflows] = useState<WorkflowConfig[]>(initialWorkflows);
   const [selectedWorkflow, setSelectedWorkflow] = useState<WorkflowConfig | null>(null);
   const [isEditing, setIsEditing] = useState(false);
+
+  // Sync when DB workflows load
+  useEffect(() => {
+    if (!dbLoading && dbWorkflows.length > 0) {
+      setWorkflows(initialWorkflows);
+    }
+  }, [initialWorkflows, dbLoading, dbWorkflows.length]);
 
   const handleSelectWorkflow = (workflowId: string) => {
     const workflow = workflows.find(w => w.id === workflowId);

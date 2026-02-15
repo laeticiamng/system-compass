@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AlertTriangle, Clock, TrendingUp, Shield, Bell, ChevronRight } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -20,7 +20,7 @@ interface ConsolidatedRiskAlertsProps {
   onNavigate?: (url: string) => void;
 }
 
-export function ConsolidatedRiskAlerts({ alerts: externalAlerts, onNavigate }: ConsolidatedRiskAlertsProps) {
+export const ConsolidatedRiskAlerts = memo(function ConsolidatedRiskAlerts({ alerts: externalAlerts, onNavigate }: ConsolidatedRiskAlertsProps) {
   const { t } = useTranslation();
 
   // Mock alerts for demonstration - in production, these would come from hooks
@@ -170,4 +170,4 @@ export function ConsolidatedRiskAlerts({ alerts: externalAlerts, onNavigate }: C
       </CardContent>
     </Card>
   );
-}
+});
