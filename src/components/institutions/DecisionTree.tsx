@@ -27,7 +27,7 @@ export function DecisionTree({ decisions, onSelectDecision, selectedDecisionId }
 
   // Count decisions recursively
   const countDecisions = (nodes: DecisionNodeData[]): { total: number; validated: number; pending: number; abandoned: number } => {
-    const counts = { total: 0, validated: 0, pending: 0, abandoned: 0 };
+    let counts = { total: 0, validated: 0, pending: 0, abandoned: 0 };
     
     nodes.forEach(node => {
       counts.total++;

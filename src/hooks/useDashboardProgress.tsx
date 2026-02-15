@@ -83,9 +83,8 @@ export function useDashboardProgress() {
             localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(cloudProgress));
           } else if (localData) {
             // No cloud data but local data exists - sync local to cloud
-            let parsed: DashboardProgress | null = null;
-            try { parsed = JSON.parse(localData) as DashboardProgress; } catch { /* corrupted data */ }
-            if (parsed) await syncToCloud(parsed);
+            const parsed = JSON.parse(localData) as DashboardProgress;
+            await syncToCloud(parsed);
           }
         } catch (error) {
           // Silent fail for cloud loading

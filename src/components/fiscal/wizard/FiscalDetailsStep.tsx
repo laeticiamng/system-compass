@@ -140,9 +140,9 @@ export function FiscalDetailsStep({ profile, selectedCountries }: FiscalDetailsS
 
     const profileLines = [
       `${t('fiscal.profile.gross', 'Revenu brut')}: ${formatCurrency(profile.grossIncome, 'EUR')}`,
-      `${t('fiscal.profile.status', 'Statut')}: ${profile.status}`,
+      `${t('fiscal.profile.familyStatus', 'Statut familial')}: ${profile.familyStatus}`,
       `${t('fiscal.profile.children', 'Enfants')}: ${profile.children}`,
-      `${t('fiscal.profile.incomeType', 'Type de revenu')}: ${profile.incomeType}`,
+      `${t('fiscal.profile.socialStatus', 'Statut social')}: ${profile.socialStatus}`,
     ];
 
     for (const line of profileLines) {

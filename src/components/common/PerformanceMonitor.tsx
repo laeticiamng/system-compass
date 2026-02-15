@@ -314,8 +314,7 @@ export function usePerformanceTrack() {
     // Could send to analytics in production
     if (duration > 100) {
       // Log slow operations
-      let slowOps: unknown[] = [];
-      try { slowOps = JSON.parse(localStorage.getItem('slow_operations') || '[]'); } catch { /* corrupted data */ }
+      const slowOps = JSON.parse(localStorage.getItem('slow_operations') || '[]');
       slowOps.unshift({ event: eventName, duration, timestamp: Date.now() });
       localStorage.setItem('slow_operations', JSON.stringify(slowOps.slice(0, 50)));
     }

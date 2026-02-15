@@ -42,9 +42,6 @@ jobs:
       - name: Run tests
         run: npx vitest run --reporter=verbose
 
-      - name: Security audit
-        run: npm audit --audit-level=high || true
-
       - name: Build
         run: npm run build
 

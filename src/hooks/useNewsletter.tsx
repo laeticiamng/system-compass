@@ -73,8 +73,7 @@ export function useNewsletter(): UseNewsletterReturn {
         }
       } else {
         // For anonymous users, store locally (a future edge function could handle this with rate limiting)
-        let stored: unknown[] = [];
-        try { stored = JSON.parse(localStorage.getItem('newsletter_subscriptions') || '[]'); } catch { /* corrupted data */ }
+        const stored = JSON.parse(localStorage.getItem('newsletter_subscriptions') || '[]');
         stored.push({ 
           email: email.toLowerCase().trim(), 
           preferences: defaultPreferences,

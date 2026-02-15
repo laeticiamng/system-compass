@@ -47,14 +47,12 @@ interface AlertSettings {
 
 const ALERT_SETTINGS_KEY = 'analytics_alert_settings';
 
-const DEFAULT_ALERT_SETTINGS: AlertSettings = { enabled: true, completionThreshold: 50, retentionThreshold: 10 };
-
 const getAlertSettings = (): AlertSettings => {
   const stored = localStorage.getItem(ALERT_SETTINGS_KEY);
   if (stored) {
-    try { return JSON.parse(stored); } catch { return DEFAULT_ALERT_SETTINGS; }
+    return JSON.parse(stored);
   }
-  return DEFAULT_ALERT_SETTINGS;
+  return { enabled: true, completionThreshold: 50, retentionThreshold: 10 };
 };
 
 const saveAlertSettings = (settings: AlertSettings) => {

@@ -131,7 +131,7 @@ export function usePmoRisks(caseId: string | null) {
   const updateRisk = useMutation({
     mutationFn: async ({ id, updates }: { id: string; updates: Partial<PmoRiskRow> }) => {
       // Recalculate score if impact/probability change
-      const finalUpdates = { ...updates, updated_by: user?.id };
+      let finalUpdates = { ...updates, updated_by: user?.id };
       if (updates.impact !== undefined || updates.probability !== undefined) {
         const currentRisk = risks?.find(r => r.id === id);
         if (currentRisk) {

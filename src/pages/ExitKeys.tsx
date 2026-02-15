@@ -233,7 +233,7 @@ export default function ExitKeys() {
       // Duration filter
       if (durationFilter !== 'all') {
         const timeMatch = result.key.timeframe.match(/(\d+)-?(\d+)?/);
-        const maxYears = timeMatch ? parseInt(timeMatch[2] || timeMatch[1], 10) : 5;
+        const maxYears = timeMatch ? parseInt(timeMatch[2] || timeMatch[1]) : 5;
         
         if (durationFilter === 'short' && maxYears > 3) return false;
         if (durationFilter === 'medium' && (maxYears <= 3 || maxYears > 7)) return false;

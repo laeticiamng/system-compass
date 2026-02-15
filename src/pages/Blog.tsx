@@ -12,7 +12,7 @@ import { blogArticles, getFeaturedArticles, BLOG_CATEGORIES, type BlogArticle } 
 type CategoryFilter = BlogArticle['category'] | 'all';
 
 export default function Blog() {
-  useTranslation();
+  const { t } = useTranslation();
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>('all');
 

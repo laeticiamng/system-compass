@@ -147,7 +147,7 @@ export function MarketStudyWizard({ caseData, onUpdateCase, countryName }: Marke
   // Calculate progress
   const getProgress = () => {
     let filled = 0;
-    const total = 10;
+    let total = 10;
     if (study.problemStatement) filled++;
     if (study.valueProposition) filled++;
     if (study.customerSegments.length > 0) filled++;

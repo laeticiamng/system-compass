@@ -6,21 +6,6 @@ import type { Database } from '@/integrations/supabase/types';
 
 type Country = Database['public']['Tables']['countries']['Row'];
 
-export interface QualityOfLifeData {
-  overall: number;
-  [key: string]: number;
-}
-
-export interface CostOfLivingData {
-  score: number;
-  [key: string]: number;
-}
-
-export interface RiskData {
-  overall: number;
-  [key: string]: number | string;
-}
-
 export interface CountryScore {
   countryId: string;
   overallScore: number;
@@ -34,13 +19,13 @@ export interface CountryScore {
  * Calculate overall country score from multiple dimensions
  */
 export function calculateCountryScore(country: Country): CountryScore {
-  const qualityOfLife = country.quality_of_life as QualityOfLifeData | null;
-  const costOfLiving = country.cost_of_living as CostOfLivingData | null;
-  const risks = country.risks as RiskData | null;
+  const qualityOfLife = country.quality_of_life as Record<string, number> | null;
+  const costOfLiving = country.cost_of_living as Record<string, number> | null;
+  const risks = country.risks as Record<string, unknown> | null;
 
   const economicScore = costOfLiving?.score ?? 50;
   const qualityOfLifeScore = qualityOfLife?.overall ?? 50;
-  const safetyScore = 100 - (risks?.overall ?? 50);
+  const safetyScore = 100 - ((risks as Record<string, number>)?.overall ?? 50);
   const accessibilityScore = 50; // Default, calculated from visa data
 
   const overallScore = Math.round(

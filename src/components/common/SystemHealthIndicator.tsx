@@ -64,7 +64,7 @@ export function SystemHealthIndicator({
       const latency = Date.now() - startTime;
       
       // Check offline queue
-      const queueSize = parseInt(localStorage.getItem('offline_queue_size') || '0', 10);
+      const queueSize = parseInt(localStorage.getItem('offline_queue_size') || '0');
       
       // Calculate health score
       const isDbConnected = !error;

@@ -334,7 +334,7 @@ export function PersonalizedExitKeys({
         if (variants?.expat_communities?.length) {
           content.practicalTips.push(
             ...safeArray<any>(variants.expat_communities).slice(0, 2).map((c: any) =>
-              typeof c === 'string' ? c : (c.name ? `${c.name} (${c.location})` : JSON.stringify(c))
+              typeof c === 'string' ? c : `${c.name} (${c.location})` || JSON.stringify(c)
             )
           );
         }

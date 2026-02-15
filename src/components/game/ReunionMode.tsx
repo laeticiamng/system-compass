@@ -93,7 +93,7 @@ function generateCharacterPair(
   // Get two countries with DIFFERENT pyramid types for contrast
   const shuffledCountries = [...REUNION_COUNTRIES].sort(() => Math.random() - 0.5);
   const country1 = shuffledCountries[0];
-  const country2 = shuffledCountries.find(c => c.type !== country1.type) || shuffledCountries[1];
+  let country2 = shuffledCountries.find(c => c.type !== country1.type) || shuffledCountries[1];
   
   // Create first character
   const char1 = generateCharacterForReunion(

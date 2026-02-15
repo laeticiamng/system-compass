@@ -170,11 +170,10 @@ export function Irreversa() {
         case 'detection_date':
           comparison = new Date(a.detection_date).getTime() - new Date(b.detection_date).getTime();
           break;
-        case 'status': {
+        case 'status':
           const statusOrder = { detected: 0, marked: 1, validated: 2, sealed: 3 };
           comparison = statusOrder[a.status] - statusOrder[b.status];
           break;
-        }
         case 'created_at':
         default:
           comparison = new Date(a.created_at).getTime() - new Date(b.created_at).getTime();

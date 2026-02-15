@@ -81,9 +81,8 @@ export function checkRateLimit(
       remainingAttempts: Math.max(0, maxAttempts - data.attempts),
       resetTime: data.windowStart + windowMs,
     };
-  } catch (error) {
-    // If localStorage fails, allow the request but log for visibility
-    console.warn('Rate limit check failed (localStorage unavailable):', error);
+  } catch {
+    // If localStorage fails, allow the request
     return { allowed: true, remainingAttempts: maxAttempts, resetTime: now + windowMs };
   }
 }

@@ -105,12 +105,9 @@ export function useGameStatistics() {
             }
           } else if (localData) {
             // Sync local to cloud if no cloud data
-            let parsed: GameStatistics | null = null;
-            try { parsed = JSON.parse(localData); } catch { /* corrupted data */ }
-            if (parsed) {
-              parsed.displayName = userDisplayName;
-              await syncToCloud(parsed, userDisplayName);
-            }
+            const parsed = JSON.parse(localData);
+            parsed.displayName = userDisplayName;
+            await syncToCloud(parsed, userDisplayName);
           }
         } catch (error) {
           // Silent fail for cloud loading

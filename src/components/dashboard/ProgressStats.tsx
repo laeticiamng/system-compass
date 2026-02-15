@@ -113,7 +113,7 @@ export function ProgressStats({ progress, exitKey }: ProgressStatsProps) {
     const weeks = Object.keys(weeklyData);
     if (weeks.length === 0) return [];
 
-    const maxWeek = Math.max(...weeks.map(w => parseInt(w.substring(1), 10)));
+    const maxWeek = Math.max(...weeks.map(w => parseInt(w.substring(1))));
     const result = [];
     let cumulative = 0;
 

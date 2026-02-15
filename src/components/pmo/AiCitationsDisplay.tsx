@@ -207,7 +207,7 @@ export function AiCitationsDisplay({ caseId, responseId, showAllCitations = fals
                       variant="ghost" 
                       size="icon" 
                       className="h-6 w-6"
-                      onClick={() => window.open(citation.evidence?.url || '', '_blank', 'noopener,noreferrer')}
+                      onClick={() => window.open(citation.evidence?.url || '', '_blank')}
                     >
                       <ExternalLink className="w-3 h-3" />
                     </Button>
@@ -260,7 +260,7 @@ export function AiCitationsDisplay({ caseId, responseId, showAllCitations = fals
                           <Button 
                             variant="outline" 
                             className="w-full gap-2"
-                            onClick={() => window.open(selectedEvidence?.url || '', '_blank', 'noopener,noreferrer')}
+                            onClick={() => window.open(selectedEvidence?.url || '', '_blank')}
                           >
                             <ExternalLink className="w-4 h-4" />
                             {t('pmo.citations.openSource', 'Ouvrir la source')}

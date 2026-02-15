@@ -19,7 +19,7 @@ export function useAiErrorHandler() {
 
     const errorMessage = error instanceof Error ? error.message : String(error);
     const statusMatch = errorMessage.match(/(\d{3})/);
-    const status = statusMatch ? parseInt(statusMatch[1], 10) : null;
+    const status = statusMatch ? parseInt(statusMatch[1]) : null;
 
     // Rate limit exceeded (429)
     if (status === 429 || errorMessage.toLowerCase().includes('rate limit')) {

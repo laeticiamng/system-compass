@@ -897,7 +897,7 @@ function isDesiredDestination(pyramidType: PyramidType, priority: LifePriority):
 function parseTimeframe(timeframe: string): number {
   const match = timeframe.match(/(\d+)-?(\d+)?/);
   if (!match) return 5;
-  return parseInt(match[2] || match[1], 10);
+  return parseInt(match[2] || match[1]);
 }
 
 function getMotorProfileFit(keyId: string, profile: LifeMotorProfile): number {

@@ -92,7 +92,7 @@ export function useGamification(): UseGamificationReturn {
               // Fallback to localStorage
               const stored = localStorage.getItem(STORAGE_KEY);
               if (stored) {
-                try { setProgress(JSON.parse(stored)); } catch { setProgress(initial); }
+                setProgress(JSON.parse(stored));
               } else {
                 setProgress(initial);
               }
@@ -103,7 +103,7 @@ export function useGamification(): UseGamificationReturn {
           // Fallback to localStorage
           const stored = localStorage.getItem(STORAGE_KEY);
           if (stored) {
-            try { setProgress(JSON.parse(stored)); } catch { setProgress(createInitialProgress(user.id)); }
+            setProgress(JSON.parse(stored));
           } else {
             setProgress(createInitialProgress(user.id));
           }

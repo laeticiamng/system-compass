@@ -81,7 +81,7 @@ export function VideoConsultationBooking({ expert, onClose }: VideoConsultationB
   );
 
   const calculatePrice = () => {
-    const hours = parseInt(formData.duration, 10) / 60;
+    const hours = parseInt(formData.duration) / 60;
     return expert.pricePerHour * hours;
   };
 
