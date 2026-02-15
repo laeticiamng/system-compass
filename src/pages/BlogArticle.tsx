@@ -22,7 +22,7 @@ import { getArticleBySlug, getRelatedArticles, BLOG_CATEGORIES } from '@/lib/blo
 import { BlogPostingJsonLd } from '@/components/seo/JsonLd';
 
 export default function BlogArticle() {
-  const { t } = useTranslation();
+  const { } = useTranslation();
   const { slug } = useParams<{ slug: string }>();
   const [linkCopied, setLinkCopied] = useState(false);
 

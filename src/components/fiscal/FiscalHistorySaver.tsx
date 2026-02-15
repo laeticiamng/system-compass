@@ -92,6 +92,7 @@ export function FiscalHistorySaver({
   purchasingPowerDifference,
   onLoadCalculation,
 }: FiscalHistorySaverProps) {
+  const { t } = useTranslation();
   const { history, saveCalculation, deleteCalculation, clearHistory } = useFiscalHistory();
   const [showHistory, setShowHistory] = useState(false);
 
