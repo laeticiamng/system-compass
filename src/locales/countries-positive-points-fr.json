@@ -912,6 +912,316 @@
           "4": "Mont Ararat"
         }
       }
+    },
+    "uk": {
+      "positivePoints": {
+        "lifestyle": { "1": "Culture cosmopolite", "2": "Traditions séculaires", "3": "Pubs et vie sociale" },
+        "economy": { "1": "Place financière mondiale (City)", "2": "Startups et fintech", "3": "Marché du travail dynamique" },
+        "culture": { "1": "Patrimoine littéraire (Shakespeare, Dickens)", "2": "Musées gratuits de classe mondiale", "3": "Musique (Beatles, rock, grime)" },
+        "infrastructure": { "1": "Métro de Londres (Underground)", "2": "NHS système de santé universel", "3": "Universités prestigieuses (Oxford, Cambridge)" },
+        "opportunities": { "1": "Finance et banque", "2": "Tech et innovation", "3": "Industries créatives" },
+        "nature": { "1": "Highlands d'Écosse", "2": "Lake District", "3": "Côtes du Pays de Galles" }
+      }
+    },
+    "senegal": {
+      "positivePoints": {
+        "lifestyle": { "1": "Teranga (hospitalité légendaire)", "2": "Vie sociale chaleureuse", "3": "Cuisine riche (thiéboudienne)" },
+        "economy": { "1": "Hub économique de l'Afrique de l'Ouest", "2": "Découvertes de gaz et pétrole", "3": "Secteur numérique en croissance" },
+        "culture": { "1": "Musique (Youssou N'Dour, mbalax)", "2": "Île de Gorée (patrimoine mondial)", "3": "Traditions religieuses riches" },
+        "infrastructure": { "1": "Aéroport AIBD moderne", "2": "TER (train express régional)", "3": "Couverture mobile étendue" },
+        "opportunities": { "1": "Tech et numérique (Dakar)", "2": "Tourisme balnéaire", "3": "Agriculture et pêche" },
+        "nature": { "1": "Lac Rose", "2": "Parc du Djoudj (oiseaux migrateurs)", "3": "Casamance verdoyante" }
+      }
+    },
+    "belgium": {
+      "positivePoints": {
+        "lifestyle": { "1": "Art de vivre (bière, chocolat, gaufres)", "2": "Qualité de vie élevée", "3": "Multiculturel et tolérant" },
+        "economy": { "1": "Siège de l'UE et de l'OTAN", "2": "Port d'Anvers (2e en Europe)", "3": "Économie diversifiée" },
+        "culture": { "1": "Bande dessinée (Tintin, Spirou)", "2": "Art flamand (Rubens, Magritte)", "3": "Patrimoine UNESCO (Grand-Place)" },
+        "infrastructure": { "1": "Réseau ferroviaire dense", "2": "Soins de santé de qualité", "3": "Position centrale en Europe" },
+        "opportunities": { "1": "Organisations internationales", "2": "Secteur biotech", "3": "Industries créatives" },
+        "nature": { "1": "Forêts des Ardennes", "2": "Côte de la Mer du Nord", "3": "Réserves naturelles" }
+      }
+    },
+    "vietnam": {
+      "positivePoints": {
+        "lifestyle": { "1": "Street food incroyable", "2": "Coût de la vie très bas", "3": "Paysages magnifiques", "4": "Villes dynamiques" },
+        "economy": { "1": "Croissance rapide (7%+ PIB)", "2": "Hub manufacturier en essor", "3": "Main-d'œuvre jeune et dynamique" },
+        "culture": { "1": "Histoire millénaire", "2": "Hospitalité chaleureuse", "3": "Culture du café vietnamien" },
+        "infrastructure": { "1": "Aéroports internationaux modernes", "2": "Internet rapide", "3": "Applications de VTC répandues" },
+        "opportunities": { "1": "Secteur tech en plein boom", "2": "Enseignement de l'anglais", "3": "Manufacturier et exports" },
+        "nature": { "1": "Baie d'Ha Long (UNESCO)", "2": "Delta du Mékong", "3": "Plages (Da Nang, Phu Quoc)", "4": "Montagnes de Sapa" }
+      }
+    },
+    "colombia": {
+      "positivePoints": {
+        "lifestyle": { "1": "Printemps éternel à Medellin", "2": "Vie nocturne vibrante", "3": "Gens extrêmement accueillants", "4": "Culture du café" },
+        "economy": { "1": "Hub tech en croissance (Medellin, Bogota)", "2": "Boom touristique", "3": "Main-d'œuvre jeune" },
+        "culture": { "1": "Salsa, cumbia et vallenato", "2": "Architecture coloniale (Carthagène)", "3": "Identités régionales diverses" },
+        "infrastructure": { "1": "Métro moderne (Medellin)", "2": "Bon internet en ville", "3": "Espaces de coworking en croissance" },
+        "opportunities": { "1": "Hub digital nomad", "2": "Écosystème de startups tech", "3": "Croissance touristique" },
+        "nature": { "1": "Côte caribéenne et plages", "2": "Accès à la forêt amazonienne", "3": "Région du café (Eje Cafetero)", "4": "Andes" }
+      }
+    },
+    "south_korea": {
+      "positivePoints": {
+        "lifestyle": { "1": "Hub mondial de la K-culture", "2": "Cuisine incroyable (BBQ coréen, kimchi)", "3": "Villes ultra-modernes" },
+        "economy": { "1": "Puissance tech (Samsung, LG, Hyundai)", "2": "Leader en semi-conducteurs", "3": "Économie d'export majeure" },
+        "culture": { "1": "K-pop et cinéma coréen (oscarisé)", "2": "Riche histoire confucéenne et bouddhiste", "3": "Identité culturelle unique" },
+        "infrastructure": { "1": "Meilleur transport public au monde", "2": "Internet le plus rapide au monde", "3": "Technologie smart city" },
+        "opportunities": { "1": "Secteur tech (IA, semi-conducteurs, gaming)", "2": "Programmes d'enseignement de l'anglais", "3": "Industrie du divertissement" },
+        "nature": { "1": "Belles montagnes (Seoraksan, Hallasan)", "2": "Île de Jeju", "3": "Parcs nationaux et sentiers de randonnée" }
+      }
+    },
+    "indonesia": {
+      "positivePoints": {
+        "lifestyle": { "1": "Paradis tropical", "2": "Coût de la vie bas", "3": "Cultures incroyablement diverses", "4": "Hospitalité chaleureuse" },
+        "economy": { "1": "Marché massif (277 millions d'habitants)", "2": "Classe moyenne en croissance", "3": "Boom de l'économie numérique" },
+        "culture": { "1": "Diversité ethnique incroyable (300+ groupes)", "2": "Temples anciens (Borobudur, Prambanan)", "3": "Arts traditionnels (batik, gamelan)" },
+        "infrastructure": { "1": "Nouveau MRT de Jakarta", "2": "Adoption du paiement digital", "3": "Écosystème startup en croissance" },
+        "opportunities": { "1": "Économie numérique et e-commerce", "2": "Tourisme (Bali et au-delà)", "3": "Secteur des ressources naturelles" },
+        "nature": { "1": "Plages et rizières de Bali", "2": "Dragons de Komodo", "3": "Raja Ampat (meilleure plongée au monde)", "4": "Volcans actifs (Mont Bromo)" }
+      }
+    },
+    "greece": {
+      "positivePoints": {
+        "lifestyle": { "1": "Climat méditerranéen toute l'année", "2": "Cuisine incroyable (huile d'olive, feta)", "3": "Vie insulaire", "4": "Rythme de vie détendu" },
+        "economy": { "1": "Puissance touristique", "2": "Industrie maritime (plus grande flotte au monde)", "3": "Accès au marché européen" },
+        "culture": { "1": "Berceau de la démocratie", "2": "Hospitalité grecque (philoxenia)", "3": "Valeurs familiales fortes" },
+        "infrastructure": { "1": "Bons aéroports internationaux", "2": "Réseaux de ferries extensifs", "3": "Services numériques en croissance" },
+        "opportunities": { "1": "Tourisme et hôtellerie", "2": "Programme Golden Visa", "3": "Destination de travail à distance" },
+        "nature": { "1": "Milliers d'îles magnifiques (Santorin, Crète)", "2": "Villages de montagne", "3": "Sites archéologiques antiques", "4": "Eaux cristallines" }
+      }
+    },
+    "kenya": {
+      "positivePoints": {
+        "lifestyle": { "1": "Safaris de classe mondiale", "2": "Plages de l'Océan Indien (Mombasa, Diani)", "3": "Pays anglophone" },
+        "economy": { "1": "Silicon Savannah (hub tech de Nairobi)", "2": "Révolution M-Pesa (argent mobile)", "3": "Hub économique de l'Afrique de l'Est" },
+        "culture": { "1": "Héritage Maasai", "2": "Histoire de la côte swahilie", "3": "Scène musicale vibrante" },
+        "infrastructure": { "1": "Aéroport moderne Jomo Kenyatta", "2": "Leader mondial de l'argent mobile", "3": "Infrastructure tech en croissance" },
+        "opportunities": { "1": "Startups tech (Silicon Savannah)", "2": "Tourisme safari", "3": "Hub commercial régional" },
+        "nature": { "1": "Maasai Mara (Grande Migration)", "2": "Mont Kenya", "3": "Plages côtières (Diani, Lamu)", "4": "Lac Nakuru (flamants roses)" }
+      }
+    },
+    "poland": {
+      "positivePoints": {
+        "lifestyle": { "1": "Coût de la vie bas pour l'Europe", "2": "Quatre saisons distinctes", "3": "Riche patrimoine historique" },
+        "economy": { "1": "Leader de la croissance en UE", "2": "Base manufacturière solide", "3": "Hub tech en croissance (Varsovie, Cracovie)" },
+        "culture": { "1": "Villes médiévales (Vieille Ville de Cracovie)", "2": "Cuisine polonaise copieuse (pierogi, bigos)", "3": "Scène artistique et musicale vibrante" },
+        "infrastructure": { "1": "Autoroutes modernes financées par l'UE", "2": "Bons aéroports internationaux", "3": "Internet rapide (parmi les plus rapides en UE)" },
+        "opportunities": { "1": "Secteur tech et outsourcing IT", "2": "Centres de services partagés", "3": "Accès au marché unique européen" },
+        "nature": { "1": "Montagnes Tatras", "2": "Côte de la Baltique", "3": "Forêt de Bialowieza (forêt primaire)", "4": "Lacs de Mazurie" }
+      }
+    },
+    "egypt": {
+      "positivePoints": {
+        "lifestyle": { "1": "Merveilles antiques à votre porte", "2": "Mode de vie au bord du Nil", "3": "Plongée en Mer Rouge" },
+        "economy": { "1": "Position stratégique (Canal de Suez)", "2": "Grand marché intérieur (104 millions)", "3": "Potentiel touristique" },
+        "culture": { "1": "Héritage pharaonique (5 000+ ans)", "2": "Architecture islamique (mosquées du Caire)", "3": "Hospitalité légendaire" },
+        "infrastructure": { "1": "Nouvelle capitale administrative en construction", "2": "Métro du Caire en expansion", "3": "Aéroports internationaux" },
+        "opportunities": { "1": "Tourisme et hôtellerie", "2": "Commerce international (Canal de Suez)", "3": "Manufacturier et textiles" },
+        "nature": { "1": "Pyramides de Gizeh et Sphinx", "2": "Récifs coralliens de la Mer Rouge", "3": "Oasis de la vallée du Nil", "4": "Désert et montagnes du Sinaï" }
+      }
+    },
+    "ireland": {
+      "positivePoints": {
+        "lifestyle": { "1": "Culture accueillante et chaleureuse", "2": "Pays anglophone", "3": "Culture des pubs et musique live" },
+        "economy": { "1": "Hub tech de l'Europe (sièges Google, Meta, Apple)", "2": "Taux d'imposition des sociétés bas (12,5%)", "3": "Accès au marché unique européen" },
+        "culture": { "1": "Riche tradition littéraire (Joyce, Yeats, Wilde)", "2": "Héritage celtique", "3": "Hospitalité chaleureuse (the craic)" },
+        "infrastructure": { "1": "Bons aéroports internationaux (Dublin)", "2": "Internet rapide", "3": "Villes modernes avec espaces verts" },
+        "opportunities": { "1": "Emplois tech (Silicon Docks)", "2": "Services financiers (IFSC)", "3": "Industrie pharmaceutique" },
+        "nature": { "1": "Wild Atlantic Way (2 500 km de côte)", "2": "Campagne verdoyante", "3": "Falaises de Moher", "4": "Sites historiques et châteaux" }
+      }
+    },
+    "new_zealand": {
+      "positivePoints": {
+        "lifestyle": { "1": "Équilibre vie-travail exceptionnel", "2": "Culture de l'aventure en plein air", "3": "Environnement très sûr", "4": "Air pur et eau pure" },
+        "economy": { "1": "Économie stable et transparente", "2": "Fort secteur touristique", "3": "Agriculture et laiterie de classe mondiale" },
+        "culture": { "1": "Héritage et traditions maories", "2": "Peuple Kiwi amical", "3": "Culture du rugby (All Blacks)" },
+        "infrastructure": { "1": "Bon réseau routier", "2": "Aéroports modernes", "3": "Forte utilisation d'énergie renouvelable" },
+        "opportunities": { "1": "Croissance du secteur tech", "2": "Agriculture et agritech", "3": "Industrie du cinéma (Weta Workshop, Seigneur des Anneaux)" },
+        "nature": { "1": "Fjords et montagnes spectaculaires (Milford Sound)", "2": "Capitale des sports d'aventure (Queenstown)", "3": "Parcs nationaux et randonnée (Tongariro)", "4": "Plages immaculées" }
+      }
+    },
+    "malaysia": {
+      "positivePoints": {
+        "lifestyle": { "1": "Coût de la vie bas", "2": "Paradis de la street food", "3": "Climat tropical toute l'année", "4": "Anglais largement parlé" },
+        "economy": { "1": "Classe moyenne en croissance", "2": "Hub commercial régional (ASEAN)", "3": "Économie diversifiée" },
+        "culture": { "1": "Société multiculturelle (Malais, Chinois, Indiens)", "2": "Patrimoine riche (Melaka, George Town UNESCO)", "3": "Cuisine diverse (nasi lemak, roti canai, laksa)" },
+        "infrastructure": { "1": "Kuala Lumpur moderne (Tours Petronas)", "2": "Bon réseau autoroutier", "3": "Aéroport KLIA efficace" },
+        "opportunities": { "1": "Croissance du secteur tech", "2": "Manufacturier et électronique", "3": "Tourisme (Langkawi, Bornéo)" },
+        "nature": { "1": "Plages (Langkawi, Îles Perhentian)", "2": "Forêts tropicales de Bornéo (orangs-outans)", "3": "Cameron Highlands", "4": "Mont Kinabalu" }
+      }
+    },
+    "spain": {
+      "positivePoints": {
+        "lifestyle": { "1": "Équilibre vie-travail exceptionnel", "2": "Climat méditerranéen", "3": "Cuisine de renommée mondiale (tapas, paella)", "4": "Vie sociale vibrante et culture de la sieste" },
+        "economy": { "1": "Fort secteur touristique", "2": "Hubs tech en croissance (Barcelone, Madrid)", "3": "Accès au marché européen" },
+        "culture": { "1": "Riche histoire (héritage maure et romain)", "2": "Flamenco, art et architecture (Gaudi)", "3": "Cultures régionales diverses (Catalogne, Basque, Andalousie)" },
+        "infrastructure": { "1": "Trains à grande vitesse AVE", "2": "Aéroports internationaux modernes", "3": "Excellent système de santé public" },
+        "opportunities": { "1": "Paradis du travail à distance", "2": "Tourisme et hôtellerie", "3": "Croissance du secteur tech" },
+        "nature": { "1": "Belles plages (Costa Brava, Costa del Sol)", "2": "Pyrénées et Sierra Nevada", "3": "Îles Baléares et Canaries", "4": "Paysages divers du nord vert au sud aride" }
+      }
+    },
+    "cambodia": {
+      "positivePoints": {
+        "lifestyle": { "1": "Coût de la vie très bas", "2": "Climat tropical toute l'année", "3": "Communauté expatriée dynamique" },
+        "economy": { "1": "Dollar US largement utilisé (stabilité)", "2": "Économie en croissance rapide", "3": "Secteur touristique florissant" },
+        "culture": { "1": "Temples d'Angkor Wat (UNESCO)", "2": "Peuple accueillant et souriant", "3": "Riche patrimoine khmer" },
+        "infrastructure": { "1": "Internet fibre en expansion", "2": "Aéroports modernes", "3": "Couverture 4G étendue" },
+        "opportunities": { "1": "Tourisme en pleine croissance", "2": "Immobilier abordable", "3": "Accès au marché ASEAN" },
+        "nature": { "1": "Complexe de temples d'Angkor Wat", "2": "Plages de Sihanoukville et Koh Rong", "3": "Tonlé Sap (plus grand lac d'Asie du Sud-Est)", "4": "Forêts tropicales" }
+      }
+    },
+    "philippines": {
+      "positivePoints": {
+        "lifestyle": { "1": "Anglais largement parlé", "2": "Peuple extrêmement accueillant", "3": "Coût de la vie très bas" },
+        "economy": { "1": "Hub mondial BPO (outsourcing)", "2": "Main-d'œuvre anglophone qualifiée", "3": "Croissance économique soutenue" },
+        "culture": { "1": "Hospitalité légendaire (esprit Bayanihan)", "2": "Fêtes colorées (Sinulog, Ati-Atihan)", "3": "Mélange culturel asio-hispanique unique" },
+        "infrastructure": { "1": "Aéroports en expansion", "2": "Couverture mobile étendue", "3": "Internet en amélioration rapide" },
+        "opportunities": { "1": "BPO et services numériques", "2": "Croissance touristique", "3": "Expansion e-commerce" },
+        "nature": { "1": "7 641 îles paradisiaques", "2": "Rizières en terrasses de Banaue", "3": "Plages de Palawan et Boracay", "4": "Spots de plongée (Récif de Tubbataha)" }
+      }
+    },
+    "sri-lanka": {
+      "positivePoints": {
+        "lifestyle": { "1": "Belle île aux paysages divers", "2": "Cuisine savoureuse et épicée", "3": "Coût de la vie très bas" },
+        "economy": { "1": "Main-d'œuvre qualifiée et éduquée", "2": "Secteur tech émergent", "3": "Thé de Ceylan (marque mondiale)" },
+        "culture": { "1": "2 500 ans d'histoire", "2": "Sites UNESCO (Sigiriya, Polonnaruwa)", "3": "Ayurveda et bien-être traditionnel" },
+        "infrastructure": { "1": "Bon réseau routier pour la région", "2": "Port stratégique de Colombo", "3": "Aéroport international moderne" },
+        "opportunities": { "1": "Relance du tourisme de luxe", "2": "Secteur tech et BPO", "3": "Exports de thé et agriculture" },
+        "nature": { "1": "Plages tropicales", "2": "Plantations de thé des collines (Ella, Nuwara Eliya)", "3": "Parcs nationaux (léopards, éléphants)", "4": "Récifs coralliens et vie marine" }
+      }
+    },
+    "nepal": {
+      "positivePoints": {
+        "lifestyle": { "1": "Coût de la vie extrêmement bas", "2": "Cadre himalayen spectaculaire", "3": "Rythme de vie paisible" },
+        "economy": { "1": "Croissance du tourisme d'aventure", "2": "Immense potentiel hydroélectrique", "3": "Main-d'œuvre jeune" },
+        "culture": { "1": "Lieu de naissance de Bouddha (Lumbini)", "2": "Riche patrimoine culturel Newari", "3": "Festivals hindous et bouddhistes" },
+        "infrastructure": { "1": "Nouvel aéroport de Pokhara", "2": "Réseau mobile en expansion", "3": "Connexions routières en amélioration" },
+        "opportunities": { "1": "Trekking et tourisme d'aventure", "2": "Développement hydroélectrique", "3": "Secteur ONG et développement" },
+        "nature": { "1": "8 des 14 sommets de plus de 8 000m (Everest)", "2": "Parc national de Chitwan (tigres, rhinocéros)", "3": "Vallées et gorges spectaculaires", "4": "Biodiversité exceptionnelle" }
+      }
+    },
+    "costa-rica": {
+      "positivePoints": {
+        "lifestyle": { "1": "Philosophie Pura Vida", "2": "Biodiversité incroyable", "3": "Climat tropical agréable" },
+        "economy": { "1": "Démocratie la plus stable d'Amérique latine", "2": "Pas d'armée (budget pour éducation et santé)", "3": "Zones franches attractives" },
+        "culture": { "1": "Culture unique Pura Vida", "2": "Peuple accueillant et éduqué", "3": "Engagement environnemental national" },
+        "infrastructure": { "1": "Bon système de santé (CAJA, couverture universelle)", "2": "Aéroports internationaux", "3": "Internet fiable" },
+        "opportunities": { "1": "Écotourisme de classe mondiale", "2": "Tech et services partagés (zones franches)", "3": "Énergie renouvelable (98% électricité propre)" },
+        "nature": { "1": "5% de la biodiversité mondiale", "2": "Volcans actifs (Arenal)", "3": "Plages Pacifique et Caraïbes", "4": "Forêts de nuages et forêts tropicales" }
+      }
+    },
+    "panama": {
+      "positivePoints": {
+        "lifestyle": { "1": "Monnaie en dollar US (pas de risque de change)", "2": "Climat tropical toute l'année", "3": "Programme retraités excellent (Pensionado)" },
+        "economy": { "1": "Hub logistique mondial (Canal de Panama)", "2": "Centre financier international", "3": "Système fiscal territorial (favorable)" },
+        "culture": { "1": "Mélange culturel unique (afro, indigène, hispanique)", "2": "Carnaval animé", "3": "Quartier historique Casco Viejo" },
+        "infrastructure": { "1": "Canal de Panama (merveille d'ingénierie)", "2": "Système de métro moderne", "3": "Aéroport Tocumen (hub régional)" },
+        "opportunities": { "1": "Logistique et commerce international", "2": "Finance et banque", "3": "Marché immobilier en croissance" },
+        "nature": { "1": "Zone du Canal de Panama", "2": "Archipel de Bocas del Toro", "3": "Forêt tropicale du Darién", "4": "Volcán Barú (plus haut sommet)" }
+      }
+    },
+    "ecuador": {
+      "positivePoints": {
+        "lifestyle": { "1": "Monnaie en dollar US (stabilité monétaire)", "2": "Coût de la vie très abordable", "3": "Quatre régions climatiques en un pays" },
+        "economy": { "1": "Dollar US comme monnaie officielle", "2": "Exports agricoles (bananes, cacao, crevettes)", "3": "Citoyenneté rapide (3 ans)" },
+        "culture": { "1": "Héritage inca et colonial", "2": "Riches cultures indigènes", "3": "Célèbre marché d'Otavalo" },
+        "infrastructure": { "1": "Aéroports modernes (Quito, Guayaquil)", "2": "Routes inter-villes améliorées", "3": "Couverture mobile correcte" },
+        "opportunities": { "1": "Tourisme aux Galápagos", "2": "Agriculture biologique", "3": "Destination de retraite abordable" },
+        "nature": { "1": "Îles Galápagos (uniques au monde)", "2": "Volcans andins (Cotopaxi)", "3": "Forêt amazonienne", "4": "Littoral pacifique" }
+      }
+    },
+    "peru": {
+      "positivePoints": {
+        "lifestyle": { "1": "Gastronomie de renommée mondiale (Lima, capitale culinaire)", "2": "Coût de la vie abordable", "3": "Vie culturelle riche" },
+        "economy": { "1": "Économie la plus résiliente d'Amérique latine", "2": "Boom gastronomique international", "3": "Puissant secteur minier (cuivre, or)" },
+        "culture": { "1": "Machu Picchu et civilisation inca", "2": "Cuisine péruvienne (acclamée mondialement)", "3": "Patrimoine colonial de Lima et Cusco" },
+        "infrastructure": { "1": "Extension de l'aéroport de Lima", "2": "Internet rapide en ville", "3": "Routes principales en bon état" },
+        "opportunities": { "1": "Gastronomie et tourisme culinaire", "2": "Mines et ressources naturelles", "3": "Tourisme culturel (Machu Picchu)" },
+        "nature": { "1": "Machu Picchu", "2": "Amazonie péruvienne", "3": "Lac Titicaca", "4": "Andes et lignes de Nazca" }
+      }
+    },
+    "chile": {
+      "positivePoints": {
+        "lifestyle": { "1": "Paysages magnifiques et variés", "2": "Pays viticole de classe mondiale", "3": "Villes sûres" },
+        "economy": { "1": "Économie la plus stable de la région", "2": "Institutions solides", "3": "Industrie minière (1er producteur mondial de cuivre)" },
+        "culture": { "1": "Influence européenne", "2": "Tradition littéraire (Neruda, Mistral, prix Nobel)", "3": "Culture gastronomique et viticole émergente" },
+        "infrastructure": { "1": "Excellent réseau routier", "2": "Aéroports modernes", "3": "Internet rapide" },
+        "opportunities": { "1": "Programme Start-Up Chile (renommée mondiale)", "2": "Secteur minier", "3": "Énergie renouvelable (solaire, éolien)" },
+        "nature": { "1": "Désert d'Atacama (le plus aride au monde)", "2": "Patagonie et Torres del Paine", "3": "Île de Pâques (Rapa Nui)", "4": "Cordillère des Andes" }
+      }
+    },
+    "argentina": {
+      "positivePoints": {
+        "lifestyle": { "1": "Buenos Aires (le Paris de l'Amérique du Sud)", "2": "Culture des cafés et restaurants", "3": "Vie nocturne légendaire" },
+        "economy": { "1": "Talents tech de classe mondiale", "2": "Agriculture puissante (soja, bœuf, vin)", "3": "Citoyenneté rapide (2 ans)" },
+        "culture": { "1": "Tango (patrimoine immatériel UNESCO)", "2": "Littérature (Borges, Cortázar)", "3": "Football (religion nationale)" },
+        "infrastructure": { "1": "Métro de Buenos Aires", "2": "Universités de qualité (UBA, gratuites)", "3": "Internet fiable en ville" },
+        "opportunities": { "1": "Tech et développement logiciel", "2": "Gastronomie et industrie viticole", "3": "Exports agricoles" },
+        "nature": { "1": "Patagonie et glaciers (Perito Moreno)", "2": "Chutes d'Iguazú", "3": "Andes et stations de ski", "4": "Pampas et estancias" }
+      }
+    },
+    "ghana": {
+      "positivePoints": {
+        "lifestyle": { "1": "Peuple très accueillant (Akwaaba)", "2": "Vie sociale riche", "3": "Cuisine savoureuse (jollof rice, fufu)" },
+        "economy": { "1": "Démocratie la plus stable d'Afrique de l'Ouest", "2": "Ressources naturelles (or, cacao, pétrole)", "3": "Hub tech émergent (Accra)" },
+        "culture": { "1": "Riche héritage Ashanti", "2": "Festivals colorés (Homowo, Panafest)", "3": "Musique highlife et afrobeats" },
+        "infrastructure": { "1": "Accra en modernisation rapide", "2": "Aéroport international Kotoka", "3": "Couverture mobile étendue" },
+        "opportunities": { "1": "Tech et fintech (argent mobile)", "2": "Cacao et agriculture", "3": "Tourisme patrimonial" },
+        "nature": { "1": "Châteaux de Cape Coast (sites historiques)", "2": "Parc national de Kakum (passerelle canopée)", "3": "Lac Volta (plus grand réservoir au monde)", "4": "Chutes de Wli" }
+      }
+    },
+    "tanzania": {
+      "positivePoints": {
+        "lifestyle": { "1": "Peuple chaleureux et accueillant", "2": "Zanzibar (paradis insulaire)", "3": "Coût de la vie très bas" },
+        "economy": { "1": "Croissance économique rapide (7%+)", "2": "Ressources naturelles significatives", "3": "Industrie touristique de classe mondiale" },
+        "culture": { "1": "Berceau de la langue swahilie", "2": "Culture unique de Zanzibar", "3": "Peuple Maasai et traditions vivantes" },
+        "infrastructure": { "1": "Nouvelle ligne ferroviaire SGR", "2": "Installations portuaires en expansion", "3": "Couverture mobile en croissance" },
+        "opportunities": { "1": "Safari et tourisme de luxe", "2": "Agriculture d'exportation", "3": "Mines (tanzanite, or)" },
+        "nature": { "1": "Kilimandjaro (toit de l'Afrique)", "2": "Serengeti et Grande Migration", "3": "Cratère du Ngorongoro", "4": "Plages de Zanzibar" }
+      }
+    },
+    "rwanda": {
+      "positivePoints": {
+        "lifestyle": { "1": "Kigali (ville la plus propre d'Afrique)", "2": "Sécurité exceptionnelle", "3": "Climat agréable toute l'année (altitude)" },
+        "economy": { "1": "Croissance économique rapide (8%+)", "2": "Anti-corruption exemplaire en Afrique", "3": "Excellent environnement des affaires" },
+        "culture": { "1": "Résilience post-génocide inspirante", "2": "Culture Umuganda (service communautaire)", "3": "Café de spécialité rwandais (renommée mondiale)" },
+        "infrastructure": { "1": "Excellentes routes pour la région", "2": "Couverture internet en expansion", "3": "Nouvel aéroport de Bugesera en construction" },
+        "opportunities": { "1": "Secteur tech et innovation", "2": "Tourisme des gorilles (haute valeur)", "3": "Hub de conférences et événements africains" },
+        "nature": { "1": "Gorilles de montagne (Parc des Volcans)", "2": "Lac Kivu", "3": "Forêt de Nyungwe", "4": "Pays des Mille Collines" }
+      }
+    },
+    "mauritius": {
+      "positivePoints": {
+        "lifestyle": { "1": "Paradis insulaire toute l'année", "2": "Excellente qualité de vie", "3": "Société multiculturelle harmonieuse" },
+        "economy": { "1": "Hub financier pour l'Afrique", "2": "Régime fiscal attractif (taux unique 15%)", "3": "N°1 en Afrique pour les affaires" },
+        "culture": { "1": "Diversité culturelle unique (indienne, française, chinoise, africaine)", "2": "Festivals de toutes les religions", "3": "Multilinguisme naturel (anglais, français, créole)" },
+        "infrastructure": { "1": "Aéroport international moderne", "2": "Bon réseau routier", "3": "Internet fibre disponible" },
+        "opportunities": { "1": "Finance et fintech", "2": "Tech et services externalisés", "3": "Hub commercial Afrique-Asie" },
+        "nature": { "1": "Lagons turquoise et récifs coralliens", "2": "Terre des Sept Couleurs de Chamarel", "3": "Parc national des Gorges de Black River", "4": "Île aux Cerfs" }
+      }
+    },
+    "laos": {
+      "positivePoints": {
+        "lifestyle": { "1": "Rythme de vie très détendu", "2": "Coût de la vie très bas", "3": "Paysages naturels préservés" },
+        "economy": { "1": "Croissance portée par l'hydroélectricité", "2": "Ligne ferroviaire à grande vitesse Chine-Laos", "3": "Positionnement stratégique ASEAN" },
+        "culture": { "1": "Temples bouddhistes magnifiques", "2": "Luang Prabang (patrimoine mondial UNESCO)", "3": "Culture lao authentique" },
+        "infrastructure": { "1": "Nouvelle voie ferrée Chine-Laos", "2": "Réseau mobile en expansion", "3": "Vientiane en modernisation" },
+        "opportunities": { "1": "Tourisme durable", "2": "Commerce transfrontalier", "3": "Exports d'hydroélectricité" },
+        "nature": { "1": "Fleuve Mékong et affluents", "2": "Grottes et karsts de Vang Vieng", "3": "Forêts tropicales préservées", "4": "Cascades du Plateau des Bolavens" }
+      }
+    },
+    "myanmar": {
+      "positivePoints": {
+        "lifestyle": { "1": "Peuple birman d'une gentillesse remarquable", "2": "Culture bouddhiste profonde", "3": "Cuisine unique et savoureuse" },
+        "economy": { "1": "Immenses ressources naturelles (jade, gaz, bois)", "2": "Main-d'œuvre jeune", "3": "Potentiel de reconstruction futur" },
+        "culture": { "1": "Temples de Bagan (merveille du monde)", "2": "Traditions bouddhistes vivantes", "3": "Diversité ethnique exceptionnelle" },
+        "infrastructure": { "1": "Potentiel de développement massif avec stabilisation" },
+        "opportunities": { "1": "Opportunités de reconstruction future", "2": "Secteur des ressources naturelles", "3": "Position stratégique entre Inde et Chine" },
+        "nature": { "1": "Plaines de temples de Bagan", "2": "Lac Inle", "3": "Plages de l'Arakan", "4": "Forêts tropicales du Kachin" }
+      }
     }
   }
 }

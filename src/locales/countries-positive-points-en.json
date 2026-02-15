@@ -792,6 +792,1202 @@
           "4": "Nature reserves"
         }
       }
+    },
+    "russia": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Affordable cost of living",
+          "2": "Rich cultural life",
+          "3": "Strong educational tradition"
+        },
+        "economy": {
+          "1": "Abundant natural resources",
+          "2": "Strong tech sector",
+          "3": "Space industry"
+        },
+        "culture": {
+          "1": "World-class ballet and opera",
+          "2": "Classic literature (Tolstoy, Dostoevsky)",
+          "3": "Historic architecture",
+          "4": "Hermitage Museum"
+        },
+        "infrastructure": {
+          "1": "Moscow Metro (architectural masterpiece)",
+          "2": "Affordable public transport",
+          "3": "Strong education system"
+        },
+        "opportunities": {
+          "1": "IT and software development",
+          "2": "Science and research",
+          "3": "Energy sector"
+        },
+        "nature": {
+          "1": "Lake Baikal",
+          "2": "Wild Siberia",
+          "3": "Caucasus Mountains",
+          "4": "Northern Lights"
+        }
+      }
+    },
+    "norway": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Best work-life balance in the world",
+          "2": "Egalitarian society",
+          "3": "Accessible nature",
+          "4": "Exceptional safety"
+        },
+        "economy": {
+          "1": "Very high salaries",
+          "2": "World's largest sovereign wealth fund",
+          "3": "Low unemployment"
+        },
+        "culture": {
+          "1": "Viking heritage",
+          "2": "Scandinavian design",
+          "3": "Friluftsliv (outdoor living tradition)"
+        },
+        "infrastructure": {
+          "1": "Excellent healthcare system",
+          "2": "Quality public transport",
+          "3": "Free education",
+          "4": "Electric vehicle leader"
+        },
+        "opportunities": {
+          "1": "Oil and gas sector",
+          "2": "Renewable energy",
+          "3": "Maritime and aquaculture"
+        },
+        "nature": {
+          "1": "Spectacular fjords",
+          "2": "Northern Lights",
+          "3": "Midnight sun",
+          "4": "Mountains and glaciers"
+        }
+      }
+    },
+    "qatar": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Tax-free income",
+          "2": "Very safe environment",
+          "3": "Accessible luxury living"
+        },
+        "economy": {
+          "1": "No income tax",
+          "2": "High GDP per capita",
+          "3": "Massive investments"
+        },
+        "culture": {
+          "1": "Blend of tradition and modernity",
+          "2": "World-class museums (Museum of Islamic Art)",
+          "3": "International sporting events"
+        },
+        "infrastructure": {
+          "1": "Ultra-modern airport (Hamad International)",
+          "2": "New metro system",
+          "3": "State-of-the-art hospitals"
+        },
+        "opportunities": {
+          "1": "Natural gas sector (LNG leader)",
+          "2": "Finance and banking",
+          "3": "Construction and real estate"
+        },
+        "nature": {
+          "1": "Desert and sand dunes",
+          "2": "Persian Gulf coastline",
+          "3": "Inland Sea (Khor Al Adaid)"
+        }
+      }
+    },
+    "saudi-arabia": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Tax-free income",
+          "2": "Safe environment",
+          "3": "Rapid modernization"
+        },
+        "economy": {
+          "1": "No income tax",
+          "2": "Vision 2030 diversification program",
+          "3": "Massive investment projects"
+        },
+        "culture": {
+          "1": "Rich Islamic heritage",
+          "2": "Historic sites (AlUla, Diriyah)",
+          "3": "Traditional Arab hospitality"
+        },
+        "infrastructure": {
+          "1": "Mega-projects (NEOM, The Line)",
+          "2": "New international airports",
+          "3": "Expanding transport network"
+        },
+        "opportunities": {
+          "1": "Energy sector",
+          "2": "Expanding tourism industry",
+          "3": "Tech and innovation"
+        },
+        "nature": {
+          "1": "Red Sea diving and coral reefs",
+          "2": "Spectacular desert landscapes",
+          "3": "Asir Mountains"
+        }
+      }
+    },
+    "venezuela": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Warm hospitality",
+          "2": "Rich social life",
+          "3": "Festive culture"
+        },
+        "economy": {
+          "1": "Largest proven oil reserves in the world",
+          "2": "Agricultural potential",
+          "3": "Mineral resources"
+        },
+        "culture": {
+          "1": "Music and dance (salsa, joropo)",
+          "2": "Baseball passion",
+          "3": "Vibrant arts and literature"
+        },
+        "infrastructure": {
+          "1": "Telecommunications in urban areas",
+          "2": "Well-known universities",
+          "3": "Strategic Caribbean ports"
+        },
+        "opportunities": {
+          "1": "Oil sector (with stabilization)",
+          "2": "Tourism potential",
+          "3": "Agriculture"
+        },
+        "nature": {
+          "1": "Angel Falls (world's highest waterfall)",
+          "2": "Caribbean beaches",
+          "3": "Venezuelan Andes",
+          "4": "Orinoco Delta"
+        }
+      }
+    },
+    "turkey": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Affordable cost of living",
+          "2": "Mediterranean climate",
+          "3": "Turkish hospitality",
+          "4": "Delicious cuisine"
+        },
+        "economy": {
+          "1": "Diversified economy",
+          "2": "Strong manufacturing sector",
+          "3": "Major tourism industry"
+        },
+        "culture": {
+          "1": "Ottoman and Byzantine heritage",
+          "2": "Historic bazaars (Grand Bazaar)",
+          "3": "Traditional hammams"
+        },
+        "infrastructure": {
+          "1": "New Istanbul Airport (mega hub)",
+          "2": "Expanding metro systems",
+          "3": "Modern hospitals"
+        },
+        "opportunities": {
+          "1": "Tourism and hospitality",
+          "2": "E-commerce growth",
+          "3": "Textile and fashion"
+        },
+        "nature": {
+          "1": "Cappadocia fairy chimneys",
+          "2": "Turquoise Coast",
+          "3": "Pamukkale travertines",
+          "4": "Mount Ararat"
+        }
+      }
+    },
+    "vietnam": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Incredible street food culture",
+          "2": "Very low cost of living",
+          "3": "Beautiful landscapes",
+          "4": "Vibrant energetic cities"
+        },
+        "economy": {
+          "1": "Fast-growing economy (7%+ GDP growth)",
+          "2": "Rising manufacturing hub",
+          "3": "Young dynamic workforce"
+        },
+        "culture": {
+          "1": "Rich thousand-year history",
+          "2": "Warm hospitality",
+          "3": "Vietnamese coffee culture"
+        },
+        "infrastructure": {
+          "1": "Modern international airports",
+          "2": "Fast internet connectivity",
+          "3": "Ride-hailing apps widely available"
+        },
+        "opportunities": {
+          "1": "Booming tech sector",
+          "2": "English teaching demand",
+          "3": "Manufacturing and exports"
+        },
+        "nature": {
+          "1": "Ha Long Bay (UNESCO World Heritage)",
+          "2": "Mekong Delta",
+          "3": "Beautiful beaches (Da Nang, Phu Quoc)",
+          "4": "Sapa mountain region"
+        }
+      }
+    },
+    "colombia": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Year-round spring weather in Medellin",
+          "2": "Vibrant nightlife and social scene",
+          "3": "Extremely friendly people",
+          "4": "World-famous coffee culture"
+        },
+        "economy": {
+          "1": "Growing tech hub (Medellin, Bogota)",
+          "2": "Tourism boom",
+          "3": "Young dynamic workforce"
+        },
+        "culture": {
+          "1": "Salsa, cumbia, and vallenato music",
+          "2": "Colonial architecture (Cartagena)",
+          "3": "Diverse regional identities"
+        },
+        "infrastructure": {
+          "1": "Modern metro system (Medellin)",
+          "2": "Good internet in cities",
+          "3": "Growing coworking spaces"
+        },
+        "opportunities": {
+          "1": "Digital nomad hub",
+          "2": "Tech startups ecosystem",
+          "3": "Tourism sector growth"
+        },
+        "nature": {
+          "1": "Caribbean coast and beaches",
+          "2": "Amazon rainforest access",
+          "3": "Coffee region (Eje Cafetero)",
+          "4": "Andes mountains"
+        }
+      }
+    },
+    "south_korea": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Global K-culture hub",
+          "2": "Amazing food (Korean BBQ, kimchi)",
+          "3": "Ultra-modern cities"
+        },
+        "economy": {
+          "1": "Tech powerhouse (Samsung, LG, Hyundai)",
+          "2": "Innovation leader in semiconductors",
+          "3": "Major export economy"
+        },
+        "culture": {
+          "1": "K-pop and Korean cinema (Oscar-winning)",
+          "2": "Rich Confucian and Buddhist history",
+          "3": "Unique cultural identity"
+        },
+        "infrastructure": {
+          "1": "Best public transport in the world",
+          "2": "Fastest internet globally",
+          "3": "Smart city technology"
+        },
+        "opportunities": {
+          "1": "Tech sector (AI, semiconductors, gaming)",
+          "2": "English teaching programs",
+          "3": "Entertainment and media industry"
+        },
+        "nature": {
+          "1": "Beautiful mountains (Seoraksan, Hallasan)",
+          "2": "Jeju Island",
+          "3": "National parks and hiking trails"
+        }
+      }
+    },
+    "indonesia": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Tropical island paradise",
+          "2": "Low cost of living",
+          "3": "Incredibly diverse cultures",
+          "4": "Warm hospitality"
+        },
+        "economy": {
+          "1": "Massive market (277 million people)",
+          "2": "Growing middle class",
+          "3": "Digital economy boom (Gojek, Tokopedia)"
+        },
+        "culture": {
+          "1": "Incredible ethnic diversity (300+ groups)",
+          "2": "Ancient temples (Borobudur, Prambanan)",
+          "3": "Traditional arts (batik, gamelan)"
+        },
+        "infrastructure": {
+          "1": "New Jakarta MRT",
+          "2": "Digital payment adoption",
+          "3": "Growing startup ecosystem"
+        },
+        "opportunities": {
+          "1": "Digital economy and e-commerce",
+          "2": "Tourism (Bali and beyond)",
+          "3": "Natural resource sector"
+        },
+        "nature": {
+          "1": "Bali beaches and rice terraces",
+          "2": "Komodo dragons and islands",
+          "3": "Raja Ampat diving (world's best)",
+          "4": "Active volcanoes (Mount Bromo)"
+        }
+      }
+    },
+    "greece": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Mediterranean climate year-round",
+          "2": "Incredible cuisine (olive oil, feta, seafood)",
+          "3": "Island life",
+          "4": "Relaxed pace of living"
+        },
+        "economy": {
+          "1": "Tourism powerhouse",
+          "2": "Shipping industry (world's largest fleet)",
+          "3": "EU membership and market access"
+        },
+        "culture": {
+          "1": "Ancient heritage (birthplace of democracy)",
+          "2": "Warm Greek hospitality (philoxenia)",
+          "3": "Strong family values"
+        },
+        "infrastructure": {
+          "1": "Good international airports",
+          "2": "Extensive ferry networks",
+          "3": "Growing digital services"
+        },
+        "opportunities": {
+          "1": "Tourism and hospitality",
+          "2": "Golden Visa program",
+          "3": "Remote work destination"
+        },
+        "nature": {
+          "1": "Thousands of beautiful islands (Santorini, Crete)",
+          "2": "Mountain villages",
+          "3": "Ancient archaeological sites",
+          "4": "Crystal-clear waters"
+        }
+      }
+    },
+    "kenya": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "World-class wildlife safaris",
+          "2": "Indian Ocean beaches (Mombasa, Diani)",
+          "3": "English-speaking country"
+        },
+        "economy": {
+          "1": "Silicon Savannah (Nairobi tech hub)",
+          "2": "M-Pesa mobile money revolution",
+          "3": "East Africa's economic hub"
+        },
+        "culture": {
+          "1": "Maasai heritage and traditions",
+          "2": "Swahili coast history",
+          "3": "Vibrant music scene"
+        },
+        "infrastructure": {
+          "1": "Modern Jomo Kenyatta Airport",
+          "2": "Mobile money leader worldwide",
+          "3": "Growing tech infrastructure"
+        },
+        "opportunities": {
+          "1": "Tech startups (Silicon Savannah)",
+          "2": "Safari tourism",
+          "3": "Regional trade hub"
+        },
+        "nature": {
+          "1": "Maasai Mara (Great Migration)",
+          "2": "Mount Kenya",
+          "3": "Coastal beaches (Diani, Lamu)",
+          "4": "Lake Nakuru (flamingos)"
+        }
+      }
+    },
+    "poland": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Low cost of living for Europe",
+          "2": "Four distinct seasons",
+          "3": "Rich history and heritage"
+        },
+        "economy": {
+          "1": "EU growth leader for decades",
+          "2": "Strong manufacturing base",
+          "3": "Growing tech hub (Warsaw, Krakow, Wroclaw)"
+        },
+        "culture": {
+          "1": "Medieval cities (Krakow Old Town)",
+          "2": "Hearty Polish cuisine (pierogi, bigos)",
+          "3": "Vibrant arts and music scene"
+        },
+        "infrastructure": {
+          "1": "Modern EU-funded highways",
+          "2": "Good international airports",
+          "3": "Fast internet (among fastest in EU)"
+        },
+        "opportunities": {
+          "1": "Tech sector and IT outsourcing",
+          "2": "Shared services centers",
+          "3": "EU single market access"
+        },
+        "nature": {
+          "1": "Tatra Mountains",
+          "2": "Baltic Sea coast",
+          "3": "Bialowieza Forest (ancient primeval forest)",
+          "4": "Masurian Lakes district"
+        }
+      }
+    },
+    "egypt": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Ancient wonders at your doorstep",
+          "2": "Nile River lifestyle",
+          "3": "Red Sea diving and beaches"
+        },
+        "economy": {
+          "1": "Strategic Suez Canal location",
+          "2": "Large domestic market (104 million people)",
+          "3": "Tourism industry potential"
+        },
+        "culture": {
+          "1": "Pharaonic heritage (5,000+ years)",
+          "2": "Islamic architecture (Cairo mosques)",
+          "3": "Legendary hospitality"
+        },
+        "infrastructure": {
+          "1": "New Administrative Capital under construction",
+          "2": "Growing Cairo Metro system",
+          "3": "International airports (Cairo, Hurghada)"
+        },
+        "opportunities": {
+          "1": "Tourism and hospitality",
+          "2": "International trade (Suez Canal)",
+          "3": "Manufacturing and textiles"
+        },
+        "nature": {
+          "1": "Pyramids of Giza and Sphinx",
+          "2": "Red Sea coral reefs",
+          "3": "Nile Valley oases",
+          "4": "Sinai desert and mountains"
+        }
+      }
+    },
+    "ireland": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Friendly welcoming culture",
+          "2": "English-speaking country",
+          "3": "Famous pub culture and live music"
+        },
+        "economy": {
+          "1": "Tech hub of Europe (Google, Meta, Apple HQs)",
+          "2": "Low corporate tax rate (12.5%)",
+          "3": "EU single market access"
+        },
+        "culture": {
+          "1": "Rich literary tradition (Joyce, Yeats, Wilde)",
+          "2": "Celtic heritage",
+          "3": "Warm hospitality (the craic)"
+        },
+        "infrastructure": {
+          "1": "Good international airports (Dublin)",
+          "2": "Fast internet connectivity",
+          "3": "Modern cities with green spaces"
+        },
+        "opportunities": {
+          "1": "Tech sector jobs (Silicon Docks)",
+          "2": "Financial services (IFSC)",
+          "3": "Pharmaceutical industry"
+        },
+        "nature": {
+          "1": "Wild Atlantic Way (2,500 km coastal route)",
+          "2": "Green countryside",
+          "3": "Cliffs of Moher",
+          "4": "Historic sites and castles"
+        }
+      }
+    },
+    "new_zealand": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Exceptional work-life balance",
+          "2": "Outdoor adventure culture",
+          "3": "Very safe environment",
+          "4": "Clean air and pure water"
+        },
+        "economy": {
+          "1": "Stable transparent economy",
+          "2": "Strong tourism sector",
+          "3": "World-class agriculture and dairy"
+        },
+        "culture": {
+          "1": "Maori heritage and traditions",
+          "2": "Friendly Kiwi people",
+          "3": "Rugby culture (All Blacks)"
+        },
+        "infrastructure": {
+          "1": "Good road network",
+          "2": "Modern airports",
+          "3": "High renewable energy usage"
+        },
+        "opportunities": {
+          "1": "Tech sector growth",
+          "2": "Agriculture and agritech",
+          "3": "Film industry (Weta Workshop, Lord of the Rings)"
+        },
+        "nature": {
+          "1": "Stunning fjords and mountains (Milford Sound)",
+          "2": "Adventure sports capital (Queenstown)",
+          "3": "National parks and hiking (Tongariro)",
+          "4": "Clean pristine beaches"
+        }
+      }
+    },
+    "malaysia": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Low cost of living",
+          "2": "Food paradise (street food, hawker centers)",
+          "3": "Tropical climate year-round",
+          "4": "English widely spoken"
+        },
+        "economy": {
+          "1": "Growing middle class",
+          "2": "Regional business hub (ASEAN)",
+          "3": "Diverse economy (palm oil, electronics, tourism)"
+        },
+        "culture": {
+          "1": "Multicultural society (Malay, Chinese, Indian)",
+          "2": "Rich heritage (Melaka, George Town UNESCO sites)",
+          "3": "Diverse cuisine (nasi lemak, roti canai, laksa)"
+        },
+        "infrastructure": {
+          "1": "Modern Kuala Lumpur (Petronas Towers)",
+          "2": "Good highway network",
+          "3": "Efficient KLIA airport"
+        },
+        "opportunities": {
+          "1": "Tech sector growth",
+          "2": "Manufacturing and electronics",
+          "3": "Tourism (Langkawi, Borneo)"
+        },
+        "nature": {
+          "1": "Pristine beaches (Langkawi, Perhentian Islands)",
+          "2": "Borneo rainforests (orangutans, pygmy elephants)",
+          "3": "Cameron Highlands",
+          "4": "Mount Kinabalu"
+        }
+      }
+    },
+    "spain": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Exceptional work-life balance",
+          "2": "Mediterranean climate",
+          "3": "World-renowned cuisine (tapas, paella)",
+          "4": "Vibrant social life and siesta culture"
+        },
+        "economy": {
+          "1": "Strong tourism sector",
+          "2": "Growing tech hubs (Barcelona, Madrid)",
+          "3": "EU market access"
+        },
+        "culture": {
+          "1": "Rich history (Moorish, Roman heritage)",
+          "2": "Flamenco, art, and architecture (Gaudi)",
+          "3": "Diverse regional cultures (Catalonia, Basque, Andalusia)"
+        },
+        "infrastructure": {
+          "1": "High-speed AVE trains",
+          "2": "Modern international airports",
+          "3": "Excellent public healthcare system"
+        },
+        "opportunities": {
+          "1": "Remote work paradise",
+          "2": "Tourism and hospitality",
+          "3": "Tech sector growth"
+        },
+        "nature": {
+          "1": "Beautiful beaches (Costa Brava, Costa del Sol)",
+          "2": "Pyrenees and Sierra Nevada mountains",
+          "3": "Balearic and Canary Islands",
+          "4": "Diverse landscapes from green north to arid south"
+        }
+      }
+    },
+    "cambodia": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Very low cost of living",
+          "2": "Tropical climate year-round",
+          "3": "Dynamic expatriate community"
+        },
+        "economy": {
+          "1": "US dollar widely used (currency stability)",
+          "2": "Rapidly growing economy",
+          "3": "Flourishing tourism sector"
+        },
+        "culture": {
+          "1": "Angkor Wat temples (UNESCO World Heritage)",
+          "2": "Welcoming and smiling people",
+          "3": "Rich Khmer cultural heritage"
+        },
+        "infrastructure": {
+          "1": "Expanding fiber internet",
+          "2": "Modern airports",
+          "3": "Extensive 4G mobile coverage"
+        },
+        "opportunities": {
+          "1": "Tourism in full growth",
+          "2": "Affordable real estate",
+          "3": "ASEAN market access"
+        },
+        "nature": {
+          "1": "Angkor Wat temple complex",
+          "2": "Beaches of Sihanoukville and Koh Rong",
+          "3": "Tonle Sap (largest lake in Southeast Asia)",
+          "4": "Tropical rainforests"
+        }
+      }
+    },
+    "philippines": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "English widely spoken",
+          "2": "Extremely welcoming people",
+          "3": "Very low cost of living"
+        },
+        "economy": {
+          "1": "Global BPO hub (call centers, outsourcing)",
+          "2": "Skilled English-speaking workforce",
+          "3": "Sustained economic growth"
+        },
+        "culture": {
+          "1": "Legendary hospitality (Bayanihan spirit)",
+          "2": "Colorful fiestas and festivals (Sinulog, Ati-Atihan)",
+          "3": "Unique Asian-Hispanic cultural blend"
+        },
+        "infrastructure": {
+          "1": "Expanding airports",
+          "2": "Extensive mobile coverage",
+          "3": "Rapidly improving internet"
+        },
+        "opportunities": {
+          "1": "BPO and digital services",
+          "2": "Tourism growth",
+          "3": "E-commerce expansion"
+        },
+        "nature": {
+          "1": "7,641 paradise islands",
+          "2": "Banaue Rice Terraces",
+          "3": "Palawan and Boracay beaches",
+          "4": "World-class diving spots (Tubbataha Reef)"
+        }
+      }
+    },
+    "sri-lanka": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Beautiful island with diverse landscapes",
+          "2": "Flavorful and spicy cuisine",
+          "3": "Very low cost of living"
+        },
+        "economy": {
+          "1": "Skilled and educated workforce",
+          "2": "Emerging tech sector",
+          "3": "Ceylon Tea (global brand)"
+        },
+        "culture": {
+          "1": "2,500 years of history",
+          "2": "UNESCO sites (Sigiriya, Polonnaruwa)",
+          "3": "Ayurveda and traditional wellness"
+        },
+        "infrastructure": {
+          "1": "Good road network for the region",
+          "2": "Strategic Colombo Port",
+          "3": "Modern international airport"
+        },
+        "opportunities": {
+          "1": "Luxury tourism revival",
+          "2": "Tech and BPO sector",
+          "3": "Tea and agriculture exports"
+        },
+        "nature": {
+          "1": "Tropical beaches",
+          "2": "Hill country tea plantations (Ella, Nuwara Eliya)",
+          "3": "National parks (leopards, elephants)",
+          "4": "Coral reefs and marine life"
+        }
+      }
+    },
+    "nepal": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Extremely low cost of living",
+          "2": "Spectacular Himalayan setting",
+          "3": "Peaceful pace of life"
+        },
+        "economy": {
+          "1": "Adventure tourism growth",
+          "2": "Immense hydroelectric potential",
+          "3": "Young workforce"
+        },
+        "culture": {
+          "1": "Birthplace of Buddha (Lumbini)",
+          "2": "Rich Newari cultural heritage",
+          "3": "Hindu and Buddhist festivals"
+        },
+        "infrastructure": {
+          "1": "New Pokhara airport",
+          "2": "Expanding mobile network",
+          "3": "Improving road connections"
+        },
+        "opportunities": {
+          "1": "Trekking and adventure tourism",
+          "2": "Hydroelectricity development",
+          "3": "NGO and development sector"
+        },
+        "nature": {
+          "1": "8 of the world's 14 peaks above 8,000m (Everest)",
+          "2": "Chitwan National Park (tigers, rhinos)",
+          "3": "Spectacular valleys and gorges",
+          "4": "Exceptional biodiversity"
+        }
+      }
+    },
+    "costa-rica": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Pura Vida philosophy (relaxed lifestyle)",
+          "2": "Incredible biodiversity",
+          "3": "Pleasant tropical climate"
+        },
+        "economy": {
+          "1": "Most stable democracy in Latin America",
+          "2": "No army (budget goes to education and health)",
+          "3": "Attractive free trade zones"
+        },
+        "culture": {
+          "1": "Unique Pura Vida culture",
+          "2": "Welcoming and educated people",
+          "3": "National environmental commitment"
+        },
+        "infrastructure": {
+          "1": "Good healthcare system (CAJA universal coverage)",
+          "2": "International airports",
+          "3": "Reliable internet"
+        },
+        "opportunities": {
+          "1": "World-class ecotourism",
+          "2": "Tech and shared services (free zones)",
+          "3": "Renewable energy (98% clean electricity)"
+        },
+        "nature": {
+          "1": "5% of the world's biodiversity",
+          "2": "Active volcanoes (Arenal)",
+          "3": "Pacific and Caribbean beaches",
+          "4": "Cloud forests and tropical rainforests"
+        }
+      }
+    },
+    "panama": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "US dollar currency (no exchange risk)",
+          "2": "Tropical climate year-round",
+          "3": "Excellent retiree program (Pensionado)"
+        },
+        "economy": {
+          "1": "Global logistics hub (Panama Canal)",
+          "2": "International financial center",
+          "3": "Territorial tax system (favorable)"
+        },
+        "culture": {
+          "1": "Unique cultural blend (Afro, Indigenous, Hispanic)",
+          "2": "Lively Carnival celebrations",
+          "3": "Historic Casco Viejo district"
+        },
+        "infrastructure": {
+          "1": "Panama Canal (engineering marvel)",
+          "2": "Modern metro system",
+          "3": "Tocumen Airport (regional hub)"
+        },
+        "opportunities": {
+          "1": "International logistics and trade",
+          "2": "Finance and banking",
+          "3": "Growing real estate market"
+        },
+        "nature": {
+          "1": "Panama Canal zone",
+          "2": "Bocas del Toro archipelago",
+          "3": "Darien tropical rainforest",
+          "4": "Volcan Baru (highest peak)"
+        }
+      }
+    },
+    "ecuador": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "US dollar currency (monetary stability)",
+          "2": "Very affordable cost of living",
+          "3": "Four climate regions in one country"
+        },
+        "economy": {
+          "1": "US dollar as official currency",
+          "2": "Agricultural exports (bananas, cacao, shrimp)",
+          "3": "Fast citizenship path (3 years)"
+        },
+        "culture": {
+          "1": "Inca and colonial heritage",
+          "2": "Rich indigenous cultures",
+          "3": "Famous Otavalo market"
+        },
+        "infrastructure": {
+          "1": "Modern airports (Quito, Guayaquil)",
+          "2": "Improved inter-city roads",
+          "3": "Decent mobile coverage"
+        },
+        "opportunities": {
+          "1": "Galapagos tourism",
+          "2": "Organic agriculture",
+          "3": "Affordable retirement destination"
+        },
+        "nature": {
+          "1": "Galapagos Islands (unique in the world)",
+          "2": "Andean volcanoes (Cotopaxi)",
+          "3": "Amazon rainforest",
+          "4": "Pacific coastline"
+        }
+      }
+    },
+    "peru": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "World-renowned gastronomy (Lima, culinary capital)",
+          "2": "Affordable cost of living",
+          "3": "Rich cultural life"
+        },
+        "economy": {
+          "1": "Most resilient economy in Latin America",
+          "2": "International gastronomy boom",
+          "3": "Powerful mining sector (copper, gold)"
+        },
+        "culture": {
+          "1": "Machu Picchu and Inca civilization",
+          "2": "Peruvian cuisine (globally acclaimed)",
+          "3": "Colonial heritage of Lima and Cusco"
+        },
+        "infrastructure": {
+          "1": "Lima airport expansion",
+          "2": "Fast internet in cities",
+          "3": "Main highways in good condition"
+        },
+        "opportunities": {
+          "1": "Gastronomy and culinary tourism",
+          "2": "Mining and natural resources",
+          "3": "Cultural tourism (Machu Picchu)"
+        },
+        "nature": {
+          "1": "Machu Picchu",
+          "2": "Peruvian Amazon rainforest",
+          "3": "Lake Titicaca",
+          "4": "Andes mountains and Nazca Lines"
+        }
+      }
+    },
+    "chile": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Magnificent and varied landscapes",
+          "2": "World-class wine country",
+          "3": "Safe cities"
+        },
+        "economy": {
+          "1": "Most stable economy in the region",
+          "2": "Strong institutions",
+          "3": "Mining industry (world's top copper producer)"
+        },
+        "culture": {
+          "1": "European influence",
+          "2": "Literary tradition (Neruda, Mistral Nobel laureates)",
+          "3": "Emerging food and wine culture"
+        },
+        "infrastructure": {
+          "1": "Excellent road network",
+          "2": "Modern airports",
+          "3": "Fast internet"
+        },
+        "opportunities": {
+          "1": "Start-Up Chile program (world-renowned)",
+          "2": "Mining sector",
+          "3": "Renewable energy (solar, wind)"
+        },
+        "nature": {
+          "1": "Atacama Desert (driest on Earth)",
+          "2": "Patagonia and Torres del Paine",
+          "3": "Easter Island (Rapa Nui)",
+          "4": "Andes mountain range"
+        }
+      }
+    },
+    "argentina": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Buenos Aires (the Paris of South America)",
+          "2": "Cafe and restaurant culture",
+          "3": "Legendary nightlife"
+        },
+        "economy": {
+          "1": "World-class tech talent",
+          "2": "Powerful agriculture (soy, beef, wine)",
+          "3": "Fast citizenship path (2 years)"
+        },
+        "culture": {
+          "1": "Tango (UNESCO Intangible Heritage)",
+          "2": "Literature (Borges, Cortazar)",
+          "3": "Football (national religion)"
+        },
+        "infrastructure": {
+          "1": "Buenos Aires Metro system",
+          "2": "Quality universities (UBA, free tuition)",
+          "3": "Reliable internet in cities"
+        },
+        "opportunities": {
+          "1": "Tech and software development",
+          "2": "Gastronomy and wine industry",
+          "3": "Agricultural exports"
+        },
+        "nature": {
+          "1": "Patagonia and glaciers (Perito Moreno)",
+          "2": "Iguazu Falls",
+          "3": "Andes and ski resorts",
+          "4": "Pampas and estancias"
+        }
+      }
+    },
+    "ghana": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Very welcoming people (Akwaaba)",
+          "2": "Rich social life",
+          "3": "Flavorful cuisine (jollof rice, fufu)"
+        },
+        "economy": {
+          "1": "Most stable democracy in West Africa",
+          "2": "Natural resources (gold, cocoa, oil)",
+          "3": "Emerging tech hub (Accra)"
+        },
+        "culture": {
+          "1": "Rich Ashanti heritage",
+          "2": "Colorful festivals (Homowo, Panafest)",
+          "3": "Highlife and afrobeats music"
+        },
+        "infrastructure": {
+          "1": "Accra rapidly modernizing",
+          "2": "Kotoka International Airport",
+          "3": "Extensive mobile coverage"
+        },
+        "opportunities": {
+          "1": "Tech and fintech (mobile money)",
+          "2": "Cocoa and agriculture",
+          "3": "Heritage tourism"
+        },
+        "nature": {
+          "1": "Cape Coast castles (historic sites)",
+          "2": "Kakum National Park (canopy walkway)",
+          "3": "Lake Volta (world's largest reservoir)",
+          "4": "Wli Waterfalls"
+        }
+      }
+    },
+    "tanzania": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Warm and welcoming people",
+          "2": "Zanzibar (island paradise)",
+          "3": "Very low cost of living"
+        },
+        "economy": {
+          "1": "Rapid economic growth (7%+)",
+          "2": "Significant natural resources",
+          "3": "World-class tourism industry"
+        },
+        "culture": {
+          "1": "Birthplace of the Swahili language",
+          "2": "Unique Zanzibari culture",
+          "3": "Maasai people and living traditions"
+        },
+        "infrastructure": {
+          "1": "New SGR railway line",
+          "2": "Expanding port facilities",
+          "3": "Growing mobile coverage"
+        },
+        "opportunities": {
+          "1": "Safari and luxury tourism",
+          "2": "Export agriculture",
+          "3": "Mining (tanzanite, gold)"
+        },
+        "nature": {
+          "1": "Kilimanjaro (roof of Africa)",
+          "2": "Serengeti and Great Migration",
+          "3": "Ngorongoro Crater",
+          "4": "Zanzibar beaches"
+        }
+      }
+    },
+    "rwanda": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Kigali (cleanest city in Africa)",
+          "2": "Exceptional safety",
+          "3": "Pleasant year-round climate (altitude)"
+        },
+        "economy": {
+          "1": "Rapid economic growth (8%+)",
+          "2": "Exemplary anti-corruption in Africa",
+          "3": "Excellent business environment"
+        },
+        "culture": {
+          "1": "Inspiring post-genocide resilience",
+          "2": "Umuganda culture (community service)",
+          "3": "Rwandan specialty coffee (world-renowned)"
+        },
+        "infrastructure": {
+          "1": "Excellent roads for the region",
+          "2": "Expanding internet coverage",
+          "3": "New Bugesera airport under construction"
+        },
+        "opportunities": {
+          "1": "Tech and innovation sector",
+          "2": "Gorilla trekking tourism (high value)",
+          "3": "African conference and events hub"
+        },
+        "nature": {
+          "1": "Mountain gorillas (Volcanoes National Park)",
+          "2": "Lake Kivu",
+          "3": "Nyungwe Forest",
+          "4": "Land of a Thousand Hills"
+        }
+      }
+    },
+    "mauritius": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Island paradise year-round",
+          "2": "Excellent quality of life",
+          "3": "Harmonious multicultural society"
+        },
+        "economy": {
+          "1": "Financial hub for Africa",
+          "2": "Attractive tax regime (15% flat rate)",
+          "3": "Ranked #1 in Africa for business"
+        },
+        "culture": {
+          "1": "Unique cultural diversity (Indian, French, Chinese, African)",
+          "2": "Festivals from all religions",
+          "3": "Natural multilingualism (English, French, Creole)"
+        },
+        "infrastructure": {
+          "1": "Modern international airport",
+          "2": "Good road network",
+          "3": "Fiber internet available"
+        },
+        "opportunities": {
+          "1": "Finance and fintech",
+          "2": "Tech and outsourcing services",
+          "3": "Africa-Asia business hub"
+        },
+        "nature": {
+          "1": "Turquoise lagoons and coral reefs",
+          "2": "Seven Coloured Earths of Chamarel",
+          "3": "Black River Gorges National Park",
+          "4": "Ile aux Cerfs"
+        }
+      }
+    },
+    "laos": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Very relaxed pace of life",
+          "2": "Very low cost of living",
+          "3": "Preserved natural landscapes"
+        },
+        "economy": {
+          "1": "Growth driven by hydroelectricity",
+          "2": "China-Laos high-speed railway",
+          "3": "Strategic ASEAN positioning"
+        },
+        "culture": {
+          "1": "Magnificent Buddhist temples",
+          "2": "Luang Prabang (UNESCO World Heritage)",
+          "3": "Authentic Lao culture"
+        },
+        "infrastructure": {
+          "1": "New China-Laos railway",
+          "2": "Expanding mobile network",
+          "3": "Vientiane modernizing"
+        },
+        "opportunities": {
+          "1": "Sustainable tourism",
+          "2": "Cross-border trade",
+          "3": "Hydroelectricity exports"
+        },
+        "nature": {
+          "1": "Mekong River and tributaries",
+          "2": "Vang Vieng caves and karsts",
+          "3": "Preserved tropical forests",
+          "4": "Bolaven Plateau waterfalls"
+        }
+      }
+    },
+    "myanmar": {
+      "positivePoints": {
+        "lifestyle": {
+          "1": "Burmese people of remarkable kindness",
+          "2": "Deep Buddhist culture",
+          "3": "Unique and flavorful cuisine"
+        },
+        "economy": {
+          "1": "Immense natural resources (jade, gas, timber)",
+          "2": "Young workforce",
+          "3": "Future reconstruction potential"
+        },
+        "culture": {
+          "1": "Bagan temples (world wonder)",
+          "2": "Living Buddhist traditions",
+          "3": "Exceptional ethnic diversity"
+        },
+        "infrastructure": {
+          "1": "Massive development potential with stabilization"
+        },
+        "opportunities": {
+          "1": "Future reconstruction opportunities",
+          "2": "Natural resources sector",
+          "3": "Strategic position between India and China"
+        },
+        "nature": {
+          "1": "Bagan temple plains",
+          "2": "Inle Lake",
+          "3": "Arakan beaches",
+          "4": "Kachin tropical forests"
+        }
+      }
     }
   }
 }
