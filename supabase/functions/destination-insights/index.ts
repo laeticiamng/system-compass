@@ -335,7 +335,7 @@ Retourne UNIQUEMENT le JSON, sans autre texte.`;
   }
 
   const data = await response.json();
-  let content = data.choices?.[0]?.message?.content || "";
+  const content = data.choices?.[0]?.message?.content || "";
 
   // Parse JSON from response
   try {

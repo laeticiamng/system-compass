@@ -76,7 +76,7 @@ export class Validator<T> {
       return this;
     }
 
-    let str = opts.sanitize !== false ? sanitizeString(value) : value;
+    const str = opts.sanitize !== false ? sanitizeString(value) : value;
     
     if (opts.min && str.length < opts.min) {
       this.errors.push({ field: field as string, message: `${String(field)} must be at least ${opts.min} characters` });

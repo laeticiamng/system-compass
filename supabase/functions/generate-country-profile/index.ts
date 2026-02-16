@@ -413,7 +413,7 @@ serve(async (req) => {
   try {
     const body = await req.json();
     
-    let job_id = body.job_id;
+    const job_id = body.job_id;
     let country: CountryInput;
     
     if (body.country) {

@@ -90,7 +90,7 @@ export function useTraceOSExportSchedule() {
 
     try {
       const now = new Date();
-      let nextExport = new Date(now);
+      const nextExport = new Date(now);
       
       switch (frequency) {
         case 'daily':
