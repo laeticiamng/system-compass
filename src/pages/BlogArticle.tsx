@@ -1,5 +1,4 @@
 import { useMemo, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import { Link, useParams } from 'react-router-dom';
 import {
@@ -22,7 +21,6 @@ import { getArticleBySlug, getRelatedArticles, BLOG_CATEGORIES } from '@/lib/blo
 import { BlogPostingJsonLd } from '@/components/seo/JsonLd';
 
 export default function BlogArticle() {
-  const { t } = useTranslation();
   const { slug } = useParams<{ slug: string }>();
   const [linkCopied, setLinkCopied] = useState(false);
 

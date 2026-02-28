@@ -83,6 +83,7 @@ interface FiscalHistorySaverProps {
   onLoadCalculation?: (calc: FiscalCalculation) => void;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function FiscalHistorySaver({
   originCountry,
   destinationCountry,
@@ -129,7 +130,7 @@ export function FiscalHistorySaver({
       <div className="flex gap-2">
         <Button onClick={handleSave} variant="outline" className="gap-2">
           <Save className="w-4 h-4" />
-          {t('common.save', 'Sauvegarder')}
+          Sauvegarder
         </Button>
         <Button 
           onClick={() => setShowHistory(!showHistory)} 
@@ -137,7 +138,7 @@ export function FiscalHistorySaver({
           className="gap-2"
         >
           <History className="w-4 h-4" />
-          {t('fiscal.history', 'Historique')} ({history.length})
+          Historique ({history.length})
         </Button>
       </div>
 
@@ -147,7 +148,7 @@ export function FiscalHistorySaver({
             <div className="flex items-center justify-between">
               <CardTitle className="text-lg flex items-center gap-2">
                 <Clock className="w-5 h-5 text-primary" />
-                {t('fiscal.calculationHistory', 'Historique des calculs')}
+                Historique des calculs
               </CardTitle>
               <Button 
                 variant="ghost" 

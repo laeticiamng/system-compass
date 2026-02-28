@@ -112,10 +112,11 @@ export function useNotificationSettings() {
 
     try {
       const registration = await navigator.serviceWorker.register('/push-sw.js');
-      let subscription = await registration.pushManager.getSubscription();
+      const pm = (registration as any).pushManager;
+      let subscription = await pm.getSubscription();
 
       if (!subscription) {
-        subscription = await registration.pushManager.subscribe({
+        subscription = await pm.subscribe({
           userVisibleOnly: true,
           applicationServerKey: urlBase64ToUint8Array(vapidKey),
         });

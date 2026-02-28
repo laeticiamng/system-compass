@@ -82,9 +82,10 @@ export const CountryCard = forwardRef<HTMLDivElement, CountryCardProps>(
         onClick={() => navigate(`/country/${country.id}`)}
         className={cn(
           'group relative p-4 sm:p-6 rounded-xl cursor-pointer',
-          'glass-card glow-subtle',
+          'glass-card glow-subtle border border-border/60',
           'transition-all duration-300 active:scale-[0.98] sm:hover:scale-[1.02]',
-          'hover:border-primary/30 touch-manipulation',
+          'hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 touch-manipulation',
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
           className
         )}
       >
