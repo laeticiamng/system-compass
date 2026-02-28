@@ -1,5 +1,4 @@
 import { useState, useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { BookOpen, Clock, Tag, ArrowRight, Search } from 'lucide-react';
@@ -12,7 +11,6 @@ import { blogArticles, getFeaturedArticles, BLOG_CATEGORIES, type BlogArticle } 
 type CategoryFilter = BlogArticle['category'] | 'all';
 
 export default function Blog() {
-  const { t } = useTranslation();
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>('all');
 
