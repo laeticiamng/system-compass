@@ -254,11 +254,9 @@ export default function Auth() {
       <Helmet>
         <title>Connexion - System Compass | Accédez à votre compte</title>
         <meta name="description" content="Connectez-vous à System Compass pour accéder à vos analyses de pays, recommandations personnalisées et tableau de bord. Créez un compte gratuit." />
-        <link rel="canonical" href="https://system-compass.app/auth" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Connexion - System Compass" />
         <meta property="og:description" content="Accédez à vos analyses de pays et stratégies de sortie personnalisées." />
-        <meta property="og:url" content="https://system-compass.app/auth" />
         <meta property="og:image" content="https://system-compass.app/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Connexion - System Compass" />

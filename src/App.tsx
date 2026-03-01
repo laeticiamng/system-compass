@@ -21,6 +21,7 @@ import { GlobalErrorBoundary, DevDiagnosticsPanel } from "@/components/diagnosti
 import { allLocalizedRoutes, LEGACY_ROUTE_SEGMENTS } from "@/routes";
 import { OrganizationJsonLd, SoftwareApplicationJsonLd, ServiceJsonLd, WebSiteJsonLd } from "@/components/seo/JsonLd";
 import { HreflangTags } from "@/components/seo/HreflangTags";
+import { AutoCanonical } from "@/components/seo/AutoCanonical";
 import { LanguageRouter, RedirectToLanguage, LegacyRedirect } from "@/components/i18n";
 
 const queryClient = new QueryClient({
@@ -46,8 +47,9 @@ const AppLayout = () => (
         <AppSidebar />
         <div className="flex-1 flex flex-col min-w-0">
           <Header />
-          <Breadcrumbs />
-          <main id="main-content" className="flex-1">
+           <Breadcrumbs />
+           <AutoCanonical />
+           <main id="main-content" className="flex-1">
             <Routes>
               {allLocalizedRoutes.map((route) => (
                 <Route

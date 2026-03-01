@@ -30,11 +30,9 @@ export default function B2BSolutions() {
       <Helmet>
         <title>Solutions B2B - System Compass</title>
         <meta name="description" content="Solutions d'intelligence pays pour entreprises et institutions. Analyse systémique, due diligence géopolitique et accompagnement stratégique." />
-        <link rel="canonical" href="https://system-compass.app/b2b" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Solutions B2B - System Compass" />
         <meta property="og:description" content="Intelligence pays pour entreprises : analyse systémique et due diligence géopolitique." />
-        <meta property="og:url" content="https://system-compass.app/b2b" />
         <meta property="og:image" content="https://system-compass.app/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Solutions B2B - System Compass" />
