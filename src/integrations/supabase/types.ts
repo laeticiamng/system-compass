@@ -14,6 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
+      account_deletion_audit: {
+        Row: {
+          created_at: string
+          deletion_results: Json | null
+          id: string
+          ip_address: string | null
+          requested_at: string
+          tables_cleaned: number | null
+          user_email: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          deletion_results?: Json | null
+          id?: string
+          ip_address?: string | null
+          requested_at?: string
+          tables_cleaned?: number | null
+          user_email?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          deletion_results?: Json | null
+          id?: string
+          ip_address?: string | null
+          requested_at?: string
+          tables_cleaned?: number | null
+          user_email?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       admin_audit_log: {
         Row: {
           action: string
@@ -4946,7 +4979,6 @@ export type Database = {
           display_name: string | null
           hourly_rate: number | null
           id: string | null
-          is_active: boolean | null
           is_verified: boolean | null
           languages: string[] | null
           rating_avg: number | null
@@ -4966,7 +4998,6 @@ export type Database = {
           display_name?: string | null
           hourly_rate?: number | null
           id?: string | null
-          is_active?: boolean | null
           is_verified?: boolean | null
           languages?: string[] | null
           rating_avg?: number | null
@@ -4986,7 +5017,6 @@ export type Database = {
           display_name?: string | null
           hourly_rate?: number | null
           id?: string | null
-          is_active?: boolean | null
           is_verified?: boolean | null
           languages?: string[] | null
           rating_avg?: number | null

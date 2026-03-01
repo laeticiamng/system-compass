@@ -60,15 +60,21 @@ export async function scrapeUrl(
 export async function searchWithAI(
   query: string,
   options?: {
-    systemPrompt?: string;
     model?: 'sonar' | 'sonar-pro';
     maxTokens?: number;
     domainFilter?: string[];
     recencyFilter?: 'day' | 'week' | 'month' | 'year';
   }
 ): Promise<PerplexityResult> {
+  // SECURITY: Only send safe options to server - systemPrompt is server-defined only
+  const safeOptions = options ? {
+    model: options.model,
+    maxTokens: options.maxTokens,
+    domainFilter: options.domainFilter,
+    recencyFilter: options.recencyFilter,
+  } : undefined;
   const { data, error } = await supabase.functions.invoke('perplexity-search', {
-    body: { query, options }
+    body: { query, options: safeOptions }
   });
 
   if (error) {

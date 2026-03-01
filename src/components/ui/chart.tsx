@@ -58,6 +58,9 @@ const ChartContainer = React.forwardRef<
 });
 ChartContainer.displayName = "Chart";
 
+// SECURITY NOTE: dangerouslySetInnerHTML below is safe because all values come from
+// hardcoded THEMES and developer-defined ChartConfig. Never pass user-controlled input
+// to color values or chart IDs. Modifying this to accept user input would create XSS risk.
 const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
   const colorConfig = Object.entries(config).filter(([_, config]) => config.theme || config.color);
 
