@@ -1,14 +1,13 @@
 /**
  * Route Configuration - Centralized route definitions
- * Organized by feature domain for maintainability
- * 
- * v19.0 - All modules reactivated, obsolete redirects removed
+ * v20.0 - i18n routing with /:lang/* prefix support
+ * Routes use relative paths for nesting under LanguageRouter
  */
 
 import { Navigate } from "react-router-dom";
 import { RequireAdmin } from "@/components/RequireAdmin";
 
-// Eagerly loaded pages (small, frequently accessed)
+// Eagerly loaded pages
 import Index from "@/pages/Index";
 import Auth from "@/pages/Auth";
 import NotFound from "@/pages/NotFound";
@@ -24,214 +23,162 @@ import Partners from "@/pages/Partners";
 
 // Lazy loaded pages
 import {
-  LazyCountries,
-  LazyCountryDetail,
-  LazyWorldMapExplorer,
-  LazyCompareUnified,
-  LazyLifeGame,
-  LazyPyramidQuiz,
-  LazyExitKeys,
-  LazyExitKeysCatalog,
-  LazyCompareExitKeys,
-  LazyProfileMatcher,
-  LazyProfileTest,
-  LazyLifeTrajectory,
-  LazyDashboard,
-  LazyUsage,
-  LazyNotificationSettings,
-  LazyInstitutions,
-  LazyB2BSolutions,
-  LazyCaseDetail,
-  LazyLatentModule,
-  LazyIrreversaModule,
-  LazyTerrainRealities,
-  LazyTerrainRealitiesSelector,
+  LazyCountries, LazyCountryDetail, LazyWorldMapExplorer,
+  LazyCompareUnified, LazyLifeGame, LazyPyramidQuiz,
+  LazyExitKeys, LazyExitKeysCatalog, LazyCompareExitKeys,
+  LazyProfileMatcher, LazyProfileTest, LazyLifeTrajectory,
+  LazyDashboard, LazyUsage, LazyNotificationSettings,
+  LazyInstitutions, LazyB2BSolutions, LazyCaseDetail,
+  LazyLatentModule, LazyIrreversaModule,
+  LazyTerrainRealities, LazyTerrainRealitiesSelector,
   LazyFinancialSafetyIntel,
-  LazyAdminTranslations,
-  LazyAdminAnalytics,
-  LazyAdminCountryGenerator,
-  LazyAdminGenerateTranslations,
-  LazyAdminDatabaseTranslations,
-  LazyAdminPartners,
-  LazyAdminTranslationsSync,
-  LazySeedTranslations,
-  LazyAdminDataSources,
-  LazyPyramidTypes,
-  LazyResources,
-  LazyOVI,
-  LazyErrorsAndIllusions,
-  LazyPreventionFilter,
-  LazyUniversalErrorDetail,
-  LazyHowToRead,
-  LazyDiagnostics,
-  LazyFiscalCalculator,
-  LazyFiscalCalculatorAdvanced,
-  LazySpecialRegimes,
-  LazyPersonaJourneys,
-  LazyGamificationHub,
-  LazyExpertMarketplace,
-  LazyExpertProfile,
-  LazyBecomeExpert,
-  LazyConsultationSuccess,
-  LazyAdminExperts,
-  LazyInstall,
-  LazyToolsHub,
-  LazyAcademicHub,
-  LazyPartnerIntegrations,
-  LazyCommunity,
-  LazyBlog,
-  LazyBlogArticle,
-  LazyThematicPaths,
-  LazyFiscalSimulator,
-  LazyCountryMatcher,
-  LazyTraceJournal,
+  LazyAdminTranslations, LazyAdminAnalytics, LazyAdminCountryGenerator,
+  LazyAdminGenerateTranslations, LazyAdminDatabaseTranslations,
+  LazyAdminPartners, LazyAdminTranslationsSync, LazySeedTranslations,
+  LazyAdminDataSources, LazyPyramidTypes, LazyResources,
+  LazyOVI, LazyErrorsAndIllusions, LazyPreventionFilter,
+  LazyUniversalErrorDetail, LazyHowToRead, LazyDiagnostics,
+  LazyFiscalCalculator, LazyFiscalCalculatorAdvanced, LazySpecialRegimes,
+  LazyPersonaJourneys, LazyGamificationHub,
+  LazyExpertMarketplace, LazyExpertProfile, LazyBecomeExpert,
+  LazyConsultationSuccess, LazyAdminExperts,
+  LazyInstall, LazyToolsHub, LazyAcademicHub,
+  LazyPartnerIntegrations, LazyCommunity,
+  LazyBlog, LazyBlogArticle, LazyThematicPaths,
+  LazyFiscalSimulator, LazyCountryMatcher, LazyTraceJournal,
 } from "@/routes/LazyRoutes";
 
 // ============================================================
-// ROUTE DEFINITIONS BY DOMAIN
+// LOCALIZED ROUTES (relative paths, nested under /:lang/*)
 // ============================================================
 
-/** Core pages - frequently accessed, eagerly loaded */
 export const coreRoutes = [
-  { path: "/", element: <Index /> },
-  { path: "/auth", element: <Auth /> },
-  { path: "/about", element: <About /> },
-  { path: "/disclaimer", element: <Disclaimer /> },
-  { path: "/cgv", element: <CGV /> },
-  { path: "/mentions-legales", element: <MentionsLegales /> },
-  { path: "/privacy", element: <Privacy /> },
-  { path: "/quick-test", element: <QuickTest /> },
-  { path: "/subscription-success", element: <SubscriptionSuccess /> },
-  { path: "/pricing", element: <Pricing /> },
-  { path: "/partners", element: <Partners /> },
+  { path: "", element: <Index /> },
+  { path: "auth", element: <Auth /> },
+  { path: "about", element: <About /> },
+  { path: "disclaimer", element: <Disclaimer /> },
+  { path: "cgv", element: <CGV /> },
+  { path: "mentions-legales", element: <MentionsLegales /> },
+  { path: "privacy", element: <Privacy /> },
+  { path: "quick-test", element: <QuickTest /> },
+  { path: "subscription-success", element: <SubscriptionSuccess /> },
+  { path: "pricing", element: <Pricing /> },
+  { path: "partners", element: <Partners /> },
 ];
 
-/** Country exploration routes */
 export const countryRoutes = [
-  { path: "/countries", element: <LazyCountries /> },
-  { path: "/world-map", element: <LazyWorldMapExplorer /> },
-  { path: "/country/:id", element: <LazyCountryDetail /> },
-  { path: "/country/:countryId/terrain-realities", element: <LazyTerrainRealities /> },
-  { path: "/compare", element: <LazyCompareUnified /> },
+  { path: "countries", element: <LazyCountries /> },
+  { path: "world-map", element: <LazyWorldMapExplorer /> },
+  { path: "country/:id", element: <LazyCountryDetail /> },
+  { path: "country/:countryId/terrain-realities", element: <LazyTerrainRealities /> },
+  { path: "compare", element: <LazyCompareUnified /> },
 ];
 
-/** Analysis and testing tools */
 export const analysisRoutes = [
-  { path: "/profile-test", element: <LazyProfileTest /> },
-  { path: "/life-trajectory", element: <LazyLifeTrajectory /> },
-  { path: "/profile-matcher", element: <LazyProfileMatcher /> },
-  { path: "/fiscal-calculator", element: <LazyFiscalCalculator /> },
+  { path: "profile-test", element: <LazyProfileTest /> },
+  { path: "life-trajectory", element: <LazyLifeTrajectory /> },
+  { path: "profile-matcher", element: <LazyProfileMatcher /> },
+  { path: "fiscal-calculator", element: <LazyFiscalCalculator /> },
 ];
 
-/** Exit keys and planning */
 export const planningRoutes = [
-  { path: "/exit-keys", element: <LazyExitKeys /> },
-  { path: "/exit-keys/catalog", element: <LazyExitKeysCatalog /> },
-  { path: "/exit-keys/compare", element: <LazyCompareExitKeys /> },
-  { path: "/compare-exit-keys", element: <LazyCompareExitKeys /> },
-  { path: "/prevention-filter", element: <LazyPreventionFilter /> },
-  { path: "/errors-illusions", element: <LazyErrorsAndIllusions /> },
-  { path: "/universal-errors/:id", element: <LazyUniversalErrorDetail /> },
+  { path: "exit-keys", element: <LazyExitKeys /> },
+  { path: "exit-keys/catalog", element: <LazyExitKeysCatalog /> },
+  { path: "exit-keys/compare", element: <LazyCompareExitKeys /> },
+  { path: "compare-exit-keys", element: <LazyCompareExitKeys /> },
+  { path: "prevention-filter", element: <LazyPreventionFilter /> },
+  { path: "errors-illusions", element: <LazyErrorsAndIllusions /> },
+  { path: "universal-errors/:id", element: <LazyUniversalErrorDetail /> },
 ];
 
-/** Game and learning routes */
 export const learningRoutes = [
-  { path: "/pyramid-quiz", element: <LazyPyramidQuiz /> },
-  { path: "/life-game", element: <LazyLifeGame /> },
-  { path: "/personas", element: <LazyPersonaJourneys /> },
-  { path: "/gamification", element: <LazyGamificationHub /> },
+  { path: "pyramid-quiz", element: <LazyPyramidQuiz /> },
+  { path: "life-game", element: <LazyLifeGame /> },
+  { path: "personas", element: <LazyPersonaJourneys /> },
+  { path: "gamification", element: <LazyGamificationHub /> },
 ];
 
-/** User dashboard and settings */
 export const userRoutes = [
-  { path: "/dashboard", element: <LazyDashboard /> },
-  { path: "/usage", element: <LazyUsage /> },
-  { path: "/settings/notifications", element: <LazyNotificationSettings /> },
+  { path: "dashboard", element: <LazyDashboard /> },
+  { path: "usage", element: <LazyUsage /> },
+  { path: "settings/notifications", element: <LazyNotificationSettings /> },
 ];
 
-/** B2B and institutional routes */
 export const proRoutes = [
-  { path: "/institutions", element: <LazyInstitutions /> },
-  { path: "/b2b", element: <LazyB2BSolutions /> },
-  { path: "/cases/:id", element: <LazyCaseDetail /> },
-  { path: "/latent", element: <LazyLatentModule /> },
-  { path: "/irreversa", element: <LazyIrreversaModule /> },
-  { path: "/ovi", element: <LazyOVI /> },
+  { path: "institutions", element: <LazyInstitutions /> },
+  { path: "b2b", element: <LazyB2BSolutions /> },
+  { path: "cases/:id", element: <LazyCaseDetail /> },
+  { path: "latent", element: <LazyLatentModule /> },
+  { path: "irreversa", element: <LazyIrreversaModule /> },
+  { path: "ovi", element: <LazyOVI /> },
 ];
 
-/** Community and marketplace */
 export const communityRoutes = [
-  { path: "/partner-services", element: <LazyPartnerIntegrations /> },
-  { path: "/community", element: <LazyCommunity /> },
+  { path: "partner-services", element: <LazyPartnerIntegrations /> },
+  { path: "community", element: <LazyCommunity /> },
 ];
 
-/** Terrain and intel routes */
 export const terrainRoutes = [
-  { path: "/terrain", element: <LazyTerrainRealitiesSelector /> },
-  { path: "/terrain/:countryId", element: <LazyTerrainRealities /> },
-  { path: "/financial-safety-intel", element: <LazyFinancialSafetyIntel /> },
+  { path: "terrain", element: <LazyTerrainRealitiesSelector /> },
+  { path: "terrain/:countryId", element: <LazyTerrainRealities /> },
+  { path: "financial-safety-intel", element: <LazyFinancialSafetyIntel /> },
 ];
 
-/** Content and resources */
 export const contentRoutes = [
-  { path: "/pyramid-types", element: <LazyPyramidTypes /> },
-  { path: "/resources", element: <LazyResources /> },
-  { path: "/how-to-read", element: <LazyHowToRead /> },
-  { path: "/tools", element: <LazyToolsHub /> },
-  { path: "/tools/fiscal-calculator", element: <LazyFiscalCalculatorAdvanced /> },
-  { path: "/tools/fiscal-simulator", element: <LazyFiscalSimulator /> },
-  { path: "/tools/matcher", element: <LazyCountryMatcher /> },
-  { path: "/trace", element: <LazyTraceJournal /> },
-  { path: "/fiscal/special-regimes", element: <LazySpecialRegimes /> },
-  { path: "/install", element: <LazyInstall /> },
-  { path: "/experts", element: <LazyExpertMarketplace /> },
-  { path: "/experts/:id", element: <LazyExpertProfile /> },
-  { path: "/become-expert", element: <LazyBecomeExpert /> },
-  { path: "/consultation/:id/success", element: <LazyConsultationSuccess /> },
-  { path: "/academic", element: <LazyAcademicHub /> },
-  { path: "/blog", element: <LazyBlog /> },
-  { path: "/blog/:slug", element: <LazyBlogArticle /> },
-  { path: "/thematic-paths", element: <LazyThematicPaths /> },
+  { path: "pyramid-types", element: <LazyPyramidTypes /> },
+  { path: "resources", element: <LazyResources /> },
+  { path: "how-to-read", element: <LazyHowToRead /> },
+  { path: "tools", element: <LazyToolsHub /> },
+  { path: "tools/fiscal-calculator", element: <LazyFiscalCalculatorAdvanced /> },
+  { path: "tools/fiscal-simulator", element: <LazyFiscalSimulator /> },
+  { path: "tools/matcher", element: <LazyCountryMatcher /> },
+  { path: "trace", element: <LazyTraceJournal /> },
+  { path: "fiscal/special-regimes", element: <LazySpecialRegimes /> },
+  { path: "install", element: <LazyInstall /> },
+  { path: "experts", element: <LazyExpertMarketplace /> },
+  { path: "experts/:id", element: <LazyExpertProfile /> },
+  { path: "become-expert", element: <LazyBecomeExpert /> },
+  { path: "consultation/:id/success", element: <LazyConsultationSuccess /> },
+  { path: "academic", element: <LazyAcademicHub /> },
+  { path: "blog", element: <LazyBlog /> },
+  { path: "blog/:slug", element: <LazyBlogArticle /> },
+  { path: "thematic-paths", element: <LazyThematicPaths /> },
 ];
 
-/** Admin routes - protected */
 export const adminRoutes = [
-  { path: "/admin/translations", element: <RequireAdmin><LazyAdminTranslations /></RequireAdmin> },
-  { path: "/admin/analytics", element: <RequireAdmin><LazyAdminAnalytics /></RequireAdmin> },
-  { path: "/admin/country-generator", element: <RequireAdmin><LazyAdminCountryGenerator /></RequireAdmin> },
-  { path: "/admin/experts", element: <RequireAdmin><LazyAdminExperts /></RequireAdmin> },
-  { path: "/admin/generate-translations", element: <RequireAdmin><LazyAdminGenerateTranslations /></RequireAdmin> },
-  { path: "/admin/database-translations", element: <RequireAdmin><LazyAdminDatabaseTranslations /></RequireAdmin> },
-  { path: "/admin/partners", element: <RequireAdmin><LazyAdminPartners /></RequireAdmin> },
-  { path: "/admin/data-sources", element: <RequireAdmin><LazyAdminDataSources /></RequireAdmin> },
-  { path: "/admin/translations-sync", element: <RequireAdmin><LazyAdminTranslationsSync /></RequireAdmin> },
-  { path: "/seed-translations", element: <LazySeedTranslations /> },
-  { path: "/diagnostics", element: <LazyDiagnostics /> },
+  { path: "admin/translations", element: <RequireAdmin><LazyAdminTranslations /></RequireAdmin> },
+  { path: "admin/analytics", element: <RequireAdmin><LazyAdminAnalytics /></RequireAdmin> },
+  { path: "admin/country-generator", element: <RequireAdmin><LazyAdminCountryGenerator /></RequireAdmin> },
+  { path: "admin/experts", element: <RequireAdmin><LazyAdminExperts /></RequireAdmin> },
+  { path: "admin/generate-translations", element: <RequireAdmin><LazyAdminGenerateTranslations /></RequireAdmin> },
+  { path: "admin/database-translations", element: <RequireAdmin><LazyAdminDatabaseTranslations /></RequireAdmin> },
+  { path: "admin/partners", element: <RequireAdmin><LazyAdminPartners /></RequireAdmin> },
+  { path: "admin/data-sources", element: <RequireAdmin><LazyAdminDataSources /></RequireAdmin> },
+  { path: "admin/translations-sync", element: <RequireAdmin><LazyAdminTranslationsSync /></RequireAdmin> },
+  { path: "seed-translations", element: <LazySeedTranslations /> },
+  { path: "diagnostics", element: <LazyDiagnostics /> },
 ];
 
-/** Redirects for legacy URLs and common aliases */
 export const redirectRoutes = [
-  { path: "/match", element: <Navigate to="/profile-matcher" replace /> },
-  { path: "/multi-compare", element: <Navigate to="/compare?mode=multi" replace /> },
-  { path: "/systemic-mistakes", element: <Navigate to="/prevention-filter" replace /> },
-  { path: "/universal-errors", element: <Navigate to="/prevention-filter" replace /> },
-  { path: "/orientation-hub", element: <Navigate to="/about" replace /> },
-  { path: "/test", element: <Navigate to="/quick-test" replace /> },
-  // Fix 404s — common user-typed or linked URLs
-  { path: "/login", element: <Navigate to="/auth" replace /> },
-  { path: "/map", element: <Navigate to="/world-map" replace /> },
-  { path: "/strategies", element: <Navigate to="/exit-keys" replace /> },
-  { path: "/profile", element: <Navigate to="/dashboard" replace /> },
-  { path: "/game", element: <Navigate to="/life-game" replace /> },
-  { path: "/matcher", element: <Navigate to="/profile-matcher" replace /> },
-  { path: "/legal", element: <Navigate to="/mentions-legales" replace /> },
+  { path: "match", element: <Navigate to="../profile-matcher" replace /> },
+  { path: "multi-compare", element: <Navigate to="../compare?mode=multi" replace /> },
+  { path: "systemic-mistakes", element: <Navigate to="../prevention-filter" replace /> },
+  { path: "universal-errors", element: <Navigate to="../prevention-filter" replace /> },
+  { path: "orientation-hub", element: <Navigate to="../about" replace /> },
+  { path: "test", element: <Navigate to="../quick-test" replace /> },
+  { path: "login", element: <Navigate to="../auth" replace /> },
+  { path: "map", element: <Navigate to="../world-map" replace /> },
+  { path: "strategies", element: <Navigate to="../exit-keys" replace /> },
+  { path: "profile", element: <Navigate to="../dashboard" replace /> },
+  { path: "game", element: <Navigate to="../life-game" replace /> },
+  { path: "matcher", element: <Navigate to="../profile-matcher" replace /> },
+  { path: "legal", element: <Navigate to="../mentions-legales" replace /> },
 ];
 
-/** 404 fallback */
 export const fallbackRoute = { path: "*", element: <NotFound /> };
 
-/** All routes combined */
-export const allRoutes = [
+/** All localized routes (relative paths for /:lang/* nesting) */
+export const allLocalizedRoutes = [
   ...coreRoutes,
   ...countryRoutes,
   ...analysisRoutes,
@@ -245,4 +192,27 @@ export const allRoutes = [
   ...adminRoutes,
   ...redirectRoutes,
   fallbackRoute,
+];
+
+/**
+ * Legacy route paths (without leading /) for catching old URLs
+ * These are all unique first segments that need to redirect to /:lang/path
+ */
+export const LEGACY_ROUTE_SEGMENTS = [
+  'auth', 'about', 'disclaimer', 'cgv', 'mentions-legales', 'privacy',
+  'quick-test', 'subscription-success', 'pricing', 'partners',
+  'countries', 'world-map', 'country', 'compare',
+  'profile-test', 'life-trajectory', 'profile-matcher', 'fiscal-calculator',
+  'exit-keys', 'compare-exit-keys', 'prevention-filter', 'errors-illusions', 'universal-errors',
+  'pyramid-quiz', 'life-game', 'personas', 'gamification',
+  'dashboard', 'usage', 'settings',
+  'institutions', 'b2b', 'cases', 'latent', 'irreversa', 'ovi',
+  'partner-services', 'community',
+  'terrain', 'financial-safety-intel',
+  'pyramid-types', 'resources', 'how-to-read', 'tools', 'trace',
+  'fiscal', 'install', 'experts', 'become-expert', 'consultation',
+  'academic', 'blog', 'thematic-paths',
+  'admin', 'seed-translations', 'diagnostics',
+  'match', 'multi-compare', 'systemic-mistakes', 'orientation-hub',
+  'test', 'login', 'map', 'strategies', 'profile', 'game', 'matcher', 'legal',
 ];

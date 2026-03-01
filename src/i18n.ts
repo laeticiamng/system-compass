@@ -100,7 +100,20 @@ const resources = {
   ur: { translation: mergedUr },
 };
 
-// Custom language detector that checks localStorage first
+// Custom language detector that checks URL path first, then localStorage
+const customPathDetector = {
+  name: 'customPath',
+  lookup: () => {
+    const pathSegments = window.location.pathname.split('/');
+    const firstSegment = pathSegments[1]; // e.g. 'fr' from '/fr/about'
+    const supported = SUPPORTED_LANGUAGES.map(l => l.code);
+    if (firstSegment && supported.includes(firstSegment as SupportedLanguage)) {
+      return firstSegment;
+    }
+    return undefined;
+  },
+};
+
 const customLanguageDetector = {
   name: 'customLocalStorage',
   lookup: () => {
@@ -137,6 +150,7 @@ const customNavigatorDetector = {
 };
 
 const languageDetector = new LanguageDetector();
+languageDetector.addDetector(customPathDetector);
 languageDetector.addDetector(customLanguageDetector);
 languageDetector.addDetector(customNavigatorDetector);
 
@@ -151,7 +165,7 @@ i18n
       escapeValue: false,
     },
     detection: {
-      order: ['customLocalStorage', 'customNavigator', 'navigator'],
+      order: ['customPath', 'customLocalStorage', 'customNavigator', 'navigator'],
       caches: [],
     },
     // Dev mode: warn about missing keys

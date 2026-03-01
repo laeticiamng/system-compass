@@ -5,7 +5,8 @@
  * ARIA-enhanced for screen reader support
  */
 
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { LocalizedLink as Link } from '@/components/i18n';
 import { ChevronRight } from 'lucide-react';
 import {
   Sidebar,
