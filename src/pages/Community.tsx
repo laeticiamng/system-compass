@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -135,6 +136,21 @@ export default function Community() {
   };
 
   return (
+    <>
+      <Helmet>
+        <title>Communauté - System Compass</title>
+        <meta name="description" content="Rejoignez la communauté System Compass : forum, ressources, événements et échanges entre expatriés et aspirants au départ." />
+        <link rel="canonical" href="https://system-compass.app/community" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Communauté - System Compass" />
+        <meta property="og:description" content="Forum, ressources et événements pour expatriés et aspirants au départ." />
+        <meta property="og:url" content="https://system-compass.app/community" />
+        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Communauté - System Compass" />
+        <meta name="twitter:description" content="Forum, ressources et événements pour expatriés et aspirants au départ." />
+        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
+      </Helmet>
     <div className="container mx-auto px-4 py-8 space-y-8">
       {/* Header */}
       <div className="text-center space-y-4">
@@ -397,5 +413,6 @@ export default function Community() {
         </CardContent>
       </Card>
     </div>
+    </>
   );
 }

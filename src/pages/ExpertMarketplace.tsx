@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -171,6 +172,21 @@ export default function ExpertMarketplace() {
   }
 
   return (
+    <>
+      <Helmet>
+        <title>Experts en Expatriation - System Compass</title>
+        <meta name="description" content="Consultez des experts vérifiés en expatriation : avocats, fiscalistes, conseillers. Réservation directe et avis vérifiés." />
+        <link rel="canonical" href="https://system-compass.app/experts" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Experts en Expatriation - System Compass" />
+        <meta property="og:description" content="Experts vérifiés en expatriation : avocats, fiscalistes, conseillers." />
+        <meta property="og:url" content="https://system-compass.app/experts" />
+        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Experts en Expatriation - System Compass" />
+        <meta name="twitter:description" content="Experts vérifiés en expatriation : avocats, fiscalistes, conseillers." />
+        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
+      </Helmet>
     <div className="container mx-auto px-4 py-8 space-y-8">
       {/* Header */}
       <div className="text-center space-y-4">
@@ -477,5 +493,6 @@ export default function ExpertMarketplace() {
         />
       )}
     </div>
+    </>
   );
 }

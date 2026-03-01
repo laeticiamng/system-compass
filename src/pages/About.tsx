@@ -126,10 +126,16 @@ export default function About() {
       <Helmet>
         <title>À propos - System Compass | Outil de lucidité stratégique</title>
         <meta name="description" content="Découvrez System Compass : un simulateur de décisions et outil d'analyse des systèmes pays. Aucun conseil juridique, financier ou médical. Vous restez responsable." />
+        <link rel="canonical" href="https://system-compass.app/about" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="À propos - System Compass | Outil de lucidité stratégique" />
         <meta property="og:description" content="Simulateur de décisions dans des systèmes réels. Outil d'analyse uniquement. Tu décides, nous éclairons." />
         <meta property="og:url" content="https://system-compass.app/about" />
-        <link rel="canonical" href="https://system-compass.app/about" />
+        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="À propos - System Compass | Outil de lucidité stratégique" />
+        <meta name="twitter:description" content="Simulateur de décisions dans des systèmes réels. Outil d'analyse uniquement. Tu décides, nous éclairons." />
+        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
       </Helmet>
       <div className="min-h-screen bg-background pt-16 sm:pt-20">
       <div className="container mx-auto px-3 sm:px-4 py-6 sm:py-8 max-w-6xl">

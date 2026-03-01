@@ -35,9 +35,15 @@ export default function Partners() {
         <title>Programme Partenaires - System Compass</title>
         <meta name="description" content="Rejoignez le programme Compass Partners : ambassadeur ou partenaire B2B. Diffusion responsable de System Compass, sans mécanisme de recrutement en chaîne." />
         <link rel="canonical" href="https://system-compass.app/partners" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="Programme Partenaires - System Compass" />
         <meta property="og:description" content="Compass Partners : ambassadeur ou partenaire B2B pour diffuser la lucidité." />
         <meta property="og:url" content="https://system-compass.app/partners" />
+        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Programme Partenaires - System Compass" />
+        <meta name="twitter:description" content="Compass Partners : ambassadeur ou partenaire B2B pour diffuser la lucidité." />
+        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
       </Helmet>
       {/* Hero Section */}
       <section className="relative py-8 sm:py-16 md:py-24 overflow-hidden">

@@ -267,12 +267,16 @@ export default function Countries() {
       <Helmet>
         <title>Explorer les pays - System Compass | 44 systèmes analysés</title>
         <meta name="description" content="Explorez 44 pays avec leurs systèmes analysés en profondeur. Comparez les pyramides, risques et opportunités. Trouvez le pays qui correspond à votre profil." />
+        <link rel="canonical" href="https://system-compass.app/countries" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="Explorer les pays - System Compass" />
         <meta property="og:description" content="44 pays analysés avec leurs systèmes, risques et opportunités. Trouvez votre destination idéale." />
         <meta property="og:url" content="https://system-compass.app/countries" />
+        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Explorer les pays - System Compass" />
         <meta name="twitter:description" content="44 pays analysés avec leurs systèmes, risques et opportunités. Trouvez votre destination idéale." />
-        <link rel="canonical" href="https://system-compass.app/countries" />
+        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
       </Helmet>
       <div className="min-h-screen bg-background overflow-x-hidden">
       {/* Hero Section */}

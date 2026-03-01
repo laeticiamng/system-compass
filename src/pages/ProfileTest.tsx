@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
@@ -254,6 +255,21 @@ export default function ProfileTest() {
   const currentQuestion = step < questionKeys.length ? questionKeys[step] : null;
 
   return (
+    <>
+      <Helmet>
+        <title>Test de Profil Expatrié - System Compass</title>
+        <meta name="description" content="Évaluez votre profil expatrié : ambition, tolérance au risque, besoin de sécurité. Découvrez quel type de système vous convient le mieux." />
+        <link rel="canonical" href="https://system-compass.app/profile-test" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Test de Profil Expatrié - System Compass" />
+        <meta property="og:description" content="Évaluez votre profil expatrié et trouvez le système qui vous correspond." />
+        <meta property="og:url" content="https://system-compass.app/profile-test" />
+        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Test de Profil Expatrié - System Compass" />
+        <meta name="twitter:description" content="Évaluez votre profil expatrié et trouvez le système qui vous correspond." />
+        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
+      </Helmet>
     <div className="min-h-screen pt-24 pb-16">
       <div className="container mx-auto px-4 max-w-2xl">
         {/* Progress */}
@@ -353,5 +369,6 @@ export default function ProfileTest() {
         </div>
       </div>
     </div>
+    </>
   );
 }

@@ -300,9 +300,15 @@ export default function ExitKeys() {
         <title>Clés de Sortie Personnalisées - System Compass</title>
         <meta name="description" content="Trouvez vos clés de sortie personnalisées pour l'expatriation. Analyse de votre profil, nationalité, compétences et objectifs pour identifier les meilleures stratégies." />
         <link rel="canonical" href="https://system-compass.app/exit-keys" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="Clés de Sortie - System Compass" />
         <meta property="og:description" content="Stratégies d'expatriation personnalisées basées sur votre profil et vos objectifs." />
         <meta property="og:url" content="https://system-compass.app/exit-keys" />
+        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Clés de Sortie - System Compass" />
+        <meta name="twitter:description" content="Stratégies d'expatriation personnalisées basées sur votre profil et vos objectifs." />
+        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
       </Helmet>
       {/* Animated Background Gradient */}
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">

@@ -48,8 +48,16 @@ export default function Index() {
       <Helmet>
         <title>{t('landing.meta.title', 'System Compass - Compare 44 pays pour ton expatriation')}</title>
         <meta name="description" content={t('landing.meta.description', 'Plateforme d\'intelligence décisionnelle pour l\'expatriation. Analyse systémique de 44+ pays : fiscalité, visas, coût de la vie, structures de pouvoir. Test de profil gratuit en 2 min.')} />
+        <link rel="canonical" href="https://system-compass.app/" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content={t('landing.meta.ogTitle', 'System Compass - Intelligence décisionnelle pour l\'expatriation')} />
         <meta property="og:description" content={t('landing.meta.ogDescription', 'Comparez 44+ pays par compatibilité avec votre profil : fiscalité, visas, coût de la vie, sécurité. Approche systémique unique. Test gratuit.')} />
+        <meta property="og:url" content="https://system-compass.app/" />
+        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={t('landing.meta.ogTitle', 'System Compass - Intelligence décisionnelle pour l\'expatriation')} />
+        <meta name="twitter:description" content={t('landing.meta.ogDescription', 'Comparez 44+ pays par compatibilité avec votre profil : fiscalité, visas, coût de la vie, sécurité. Approche systémique unique. Test gratuit.')} />
+        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM information" />
       </Helmet>
       <FAQPageJsonLd faqs={[

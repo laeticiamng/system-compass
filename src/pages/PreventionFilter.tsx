@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '@/hooks/useAuth';
@@ -423,6 +424,21 @@ export default function PreventionFilter() {
   };
 
   return (
+    <>
+      <Helmet>
+        <title>Filtre de Prévention - System Compass</title>
+        <meta name="description" content="Identifiez les risques et pièges avant votre expatriation. Filtre de prévention personnalisé selon votre profil, situation et destination." />
+        <link rel="canonical" href="https://system-compass.app/prevention-filter" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Filtre de Prévention - System Compass" />
+        <meta property="og:description" content="Identifiez les risques avant votre expatriation. Filtre personnalisé." />
+        <meta property="og:url" content="https://system-compass.app/prevention-filter" />
+        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Filtre de Prévention - System Compass" />
+        <meta name="twitter:description" content="Identifiez les risques avant votre expatriation. Filtre personnalisé." />
+        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
+      </Helmet>
     <div className="min-h-screen pt-16 sm:pt-20 pb-12 sm:pb-16">
       <div className="container mx-auto px-3 sm:px-4 max-w-4xl">
         {/* Header */}
@@ -790,5 +806,6 @@ export default function PreventionFilter() {
         )}
       </div>
     </div>
+    </>
   );
 }

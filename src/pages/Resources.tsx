@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import {
@@ -188,6 +189,21 @@ export default function Resources() {
   const preMoveItems = Array.isArray(preMoveItemsRaw) ? preMoveItemsRaw : [];
 
   return (
+    <>
+      <Helmet>
+        <title>Ressources & Guides d'Expatriation - System Compass</title>
+        <meta name="description" content="Checklists, guides pratiques et ressources pour préparer votre expatriation : finances, administration, santé, logement et bien plus." />
+        <link rel="canonical" href="https://system-compass.app/resources" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Ressources & Guides - System Compass" />
+        <meta property="og:description" content="Checklists et guides pratiques pour préparer votre expatriation." />
+        <meta property="og:url" content="https://system-compass.app/resources" />
+        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Ressources & Guides - System Compass" />
+        <meta name="twitter:description" content="Checklists et guides pratiques pour préparer votre expatriation." />
+        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
+      </Helmet>
     <div className="min-h-screen pt-20 sm:pt-24 pb-12 sm:pb-16">
       <div className="container mx-auto px-3 sm:px-4">
         {/* Header */}
@@ -427,5 +443,6 @@ export default function Resources() {
         </Card>
       </div>
     </div>
+    </>
   );
 }

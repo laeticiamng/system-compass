@@ -69,12 +69,16 @@ export default function Blog() {
       <Helmet>
         <title>Blog Expatriation - System Compass | Guides et conseils pour expatriés</title>
         <meta name="description" content="Guides complets, conseils pratiques et analyses sur l'expatriation : fiscalité, démarches, destinations, digital nomad, famille et bien plus." />
+        <link rel="canonical" href="https://system-compass.app/blog" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="Blog Expatriation - System Compass" />
         <meta property="og:description" content="Guides complets, conseils pratiques et analyses sur l'expatriation : fiscalité, démarches, destinations, digital nomad." />
-        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://system-compass.app/blog" />
+        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Blog Expatriation - System Compass" />
         <meta name="twitter:description" content="Guides complets et analyses sur l'expatriation pour vous accompagner dans votre projet." />
-        <link rel="canonical" href="https://system-compass.app/blog" />
+        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
       </Helmet>
 
       <div className="min-h-screen pt-20 sm:pt-24 pb-12 sm:pb-16">
