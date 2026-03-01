@@ -23,11 +23,9 @@ export default function Disclaimer() {
       <Helmet>
         <title>Avertissements & Limites - System Compass</title>
         <meta name="description" content="Avertissements légaux de System Compass : outil éducatif d'analyse des systèmes de pays. Simulation ≠ prédiction. Ne constitue pas un conseil professionnel." />
-        <link rel="canonical" href="https://system-compass.app/disclaimer" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Avertissements & Limites - System Compass" />
         <meta property="og:description" content="Ce que System Compass est — et ce qu'il n'est pas. Outil éducatif, pas de conseil professionnel." />
-        <meta property="og:url" content="https://system-compass.app/disclaimer" />
         <meta property="og:image" content="https://system-compass.app/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Avertissements & Limites - System Compass" />

@@ -245,11 +245,9 @@ export default function ProfileMatcher() {
       <Helmet>
         <title>Matching Pays-Profil - System Compass</title>
         <meta name="description" content="Trouvez les pays qui correspondent à votre profil. Ajustez vos préférences (réseau, diplôme, risque, bureaucratie) et découvrez vos matchs par compatibilité." />
-        <link rel="canonical" href="https://system-compass.app/profile-matcher" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Profile Matcher - System Compass" />
         <meta property="og:description" content="Découvrez quels pays correspondent le mieux à votre profil personnel." />
-        <meta property="og:url" content="https://system-compass.app/profile-matcher" />
         <meta property="og:image" content="https://system-compass.app/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Profile Matcher - System Compass" />

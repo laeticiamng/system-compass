@@ -428,11 +428,9 @@ export default function PreventionFilter() {
       <Helmet>
         <title>Filtre de Prévention - System Compass</title>
         <meta name="description" content="Identifiez les risques et pièges avant votre expatriation. Filtre de prévention personnalisé selon votre profil, situation et destination." />
-        <link rel="canonical" href="https://system-compass.app/prevention-filter" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Filtre de Prévention - System Compass" />
         <meta property="og:description" content="Identifiez les risques avant votre expatriation. Filtre personnalisé." />
-        <meta property="og:url" content="https://system-compass.app/prevention-filter" />
         <meta property="og:image" content="https://system-compass.app/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Filtre de Prévention - System Compass" />

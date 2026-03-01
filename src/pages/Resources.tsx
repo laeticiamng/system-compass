@@ -193,11 +193,9 @@ export default function Resources() {
       <Helmet>
         <title>Ressources & Guides d'Expatriation - System Compass</title>
         <meta name="description" content="Checklists, guides pratiques et ressources pour préparer votre expatriation : finances, administration, santé, logement et bien plus." />
-        <link rel="canonical" href="https://system-compass.app/resources" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Ressources & Guides - System Compass" />
         <meta property="og:description" content="Checklists et guides pratiques pour préparer votre expatriation." />
-        <meta property="og:url" content="https://system-compass.app/resources" />
         <meta property="og:image" content="https://system-compass.app/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Ressources & Guides - System Compass" />

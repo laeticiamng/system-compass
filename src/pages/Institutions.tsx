@@ -45,11 +45,9 @@ export default function Institutions() {
       <Helmet>
         <title>Entreprises & Institutions - System Compass</title>
         <meta name="description" content="Solutions System Compass pour entreprises et institutions : analyse de gouvernance, due diligence pays et intelligence systémique pour décisions stratégiques." />
-        <link rel="canonical" href="https://system-compass.app/institutions" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Entreprises & Institutions - System Compass" />
         <meta property="og:description" content="Intelligence systémique pour entreprises : gouvernance, due diligence et stratégie." />
-        <meta property="og:url" content="https://system-compass.app/institutions" />
         <meta property="og:image" content="https://system-compass.app/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Entreprises & Institutions - System Compass" />

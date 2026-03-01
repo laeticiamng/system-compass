@@ -140,11 +140,9 @@ export default function Community() {
       <Helmet>
         <title>Communauté - System Compass</title>
         <meta name="description" content="Rejoignez la communauté System Compass : forum, ressources, événements et échanges entre expatriés et aspirants au départ." />
-        <link rel="canonical" href="https://system-compass.app/community" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Communauté - System Compass" />
         <meta property="og:description" content="Forum, ressources et événements pour expatriés et aspirants au départ." />
-        <meta property="og:url" content="https://system-compass.app/community" />
         <meta property="og:image" content="https://system-compass.app/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Communauté - System Compass" />
