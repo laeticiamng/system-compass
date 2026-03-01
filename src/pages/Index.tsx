@@ -47,16 +47,20 @@ export default function Index() {
     <>
       <Helmet>
         <title>{t('landing.meta.title', 'System Compass - Compare 44 pays pour ton expatriation')}</title>
-        <meta name="description" content={t('landing.meta.description', 'Compare 44 pays pour ton expatriation : fiscalité, visas, coût de la vie. Test gratuit en 2 minutes.')} />
-        <meta property="og:title" content={t('landing.meta.ogTitle', 'System Compass - Compare les pays pour ton expatriation')} />
-        <meta property="og:description" content={t('landing.meta.ogDescription', 'Fiscalité, visas, coût de la vie : compare 44 pays et trouve celui qui te correspond. Test gratuit en 2 minutes.')} />
+        <meta name="description" content={t('landing.meta.description', 'Plateforme d\'intelligence décisionnelle pour l\'expatriation. Analyse systémique de 44+ pays : fiscalité, visas, coût de la vie, structures de pouvoir. Test de profil gratuit en 2 min.')} />
+        <meta property="og:title" content={t('landing.meta.ogTitle', 'System Compass - Intelligence décisionnelle pour l\'expatriation')} />
+        <meta property="og:description" content={t('landing.meta.ogDescription', 'Comparez 44+ pays par compatibilité avec votre profil : fiscalité, visas, coût de la vie, sécurité. Approche systémique unique. Test gratuit.')} />
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM information" />
       </Helmet>
       <FAQPageJsonLd faqs={[
-        { question: "Qu'est-ce que System Compass ?", answer: "System Compass est une plateforme d'intelligence décisionnelle pour la relocalisation internationale. Elle analyse les systèmes de 44 pays pour vous aider à planifier votre expatriation." },
-        { question: "Comment fonctionne le test de profil ?", answer: "Le test rapide évalue vos priorités (fiscalité, qualité de vie, sécurité, opportunités) en 2 minutes pour vous suggérer les pays les plus compatibles avec votre profil." },
-        { question: "Le service est-il gratuit ?", answer: "L'accès de base est gratuit avec le test rapide et l'exploration des pays. Le plan Premium à 9,90€/mois donne accès à tous les outils avancés." },
-        { question: "Les données sont-elles fiables ?", answer: "Les données proviennent de sources publiques (Banque Mondiale, OCDE, Transparency International) et sont mises à jour régulièrement. Elles sont fournies à titre informatif uniquement." },
-        { question: "Puis-je comparer plusieurs pays ?", answer: "Oui, l'outil de comparaison permet de comparer jusqu'à 4 pays simultanément sur tous les critères : fiscalité, coût de la vie, qualité de vie, visas, et plus." },
+        { question: "Qu'est-ce que System Compass ?", answer: "System Compass est la première plateforme d'intelligence décisionnelle pour la relocalisation internationale. Elle analyse les systèmes de 44+ pays avec une approche systémique unique : structures de pouvoir, profils compatibles, règles non-écrites." },
+        { question: "Comment fonctionne le test de profil expatrié ?", answer: "Le test rapide évalue vos priorités (fiscalité, qualité de vie, sécurité, opportunités) en 2 minutes. Il vous suggère les pays les plus compatibles avec votre profil spécifique, contrairement aux classements génériques." },
+        { question: "Le service est-il gratuit ?", answer: "L'accès de base est gratuit : test rapide, exploration des 44+ pays, comparaison basique. Le plan Premium à 9,90€/mois donne accès aux clés de sortie, simulateur fiscal et intelligence live." },
+        { question: "D'où viennent les données de System Compass ?", answer: "Les données proviennent de la Banque Mondiale, OCDE, FMI, Transparency International, Numbeo et sources gouvernementales. L'intelligence live est actualisée via Perplexity AI et vérification terrain." },
+        { question: "Puis-je comparer plusieurs pays pour mon expatriation ?", answer: "Oui, l'outil de comparaison permet de comparer jusqu'à 4 pays simultanément sur fiscalité, coût de la vie, qualité de vie, visas, sécurité et plus, avec des radar charts et exports PDF." },
+        { question: "En quoi System Compass est différent des guides d'expatriation classiques ?", answer: "System Compass analyse les structures de pouvoir (méritocratique, réseau, État-fort, hybride), identifie les profils qui réussissent ou échouent dans chaque pays, et propose des stratégies personnalisées plutôt que des classements génériques." },
+        { question: "Quels pays sont couverts par System Compass ?", answer: "System Compass couvre 44+ pays : Europe (France, Suisse, Portugal, Allemagne...), Amérique (USA, Canada, Mexique...), Asie (Thaïlande, Japon, Singapour...), Moyen-Orient (Émirats, Qatar...) et Afrique." },
+        { question: "Comment fonctionne le simulateur fiscal ?", answer: "Le simulateur fiscal calcule votre impôt sur le revenu dans le pays de destination et le compare à votre situation actuelle. Il intègre les régimes spéciaux, conventions de double imposition et optimisations légales." },
       ]} />
       <div className="min-h-screen bg-background overflow-x-hidden">
         {/* ========== HERO SECTION ========== */}
