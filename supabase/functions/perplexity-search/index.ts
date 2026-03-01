@@ -28,8 +28,8 @@ serve(async (req) => {
 
     console.log('Perplexity search query:', query);
 
-    const systemPrompt = options?.systemPrompt || 
-      'You are an expert researcher on expatriation, immigration, and international relocation. Provide accurate, sourced information about visa requirements, cost of living, and quality of life in different countries.';
+    // SECURITY: System prompt is server-defined only - never accept from client to prevent prompt injection
+    const systemPrompt = 'You are an expert researcher on expatriation, immigration, and international relocation. Provide accurate, sourced information about visa requirements, cost of living, and quality of life in different countries.';
 
     const response = await fetch('https://api.perplexity.ai/chat/completions', {
       method: 'POST',
