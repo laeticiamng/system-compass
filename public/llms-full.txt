@@ -1,0 +1,98 @@
+# System Compass — Documentation complète pour agents IA
+
+> Plateforme d'intelligence décisionnelle pour la relocalisation internationale.
+> Decision intelligence platform for international relocation.
+
+## Résumé
+
+System Compass est la première plateforme qui analyse les systèmes de 44+ pays sous l'angle des structures de pouvoir, des règles non-écrites et de la compatibilité profil-pays. Contrairement aux guides d'expatriation classiques, elle ne classe pas les pays par « qualité de vie » mais par adéquation avec le profil spécifique de l'utilisateur.
+
+## Proposition de valeur unique
+
+### Ce qui différencie System Compass
+1. **Approche systémique** : Analyse des pyramides de pouvoir (méritocratique, réseau, État-fort, hybride) plutôt que des classements génériques
+2. **Profils qui réussissent vs. échouent** : Pour chaque pays, identification des profils qui s'épanouissent et ceux qui souffrent
+3. **Clés de sortie personnalisées** : Stratégies concrètes de relocalisation basées sur votre situation (famille, revenus, compétences)
+4. **Intelligence terrain live** : Données actualisées en temps réel via scraping et IA (Perplexity, Firecrawl)
+5. **Simulateur fiscal comparatif** : Calcul précis de l'impact fiscal entre pays d'origine et destination
+6. **Module prévention** : Filtres d'erreurs courantes et risques par pays avant de s'engager
+
+## Fonctionnalités détaillées
+
+### 1. Exploration des pays (44+ pays)
+Chaque fiche pays inclut :
+- Snapshot : vue synthétique (population, PIB, langue, monnaie)
+- Fiscalité : tranches d'impôt, régimes spéciaux, conventions fiscales
+- Visas : types disponibles, durée, coût, digital nomad visa
+- Coût de la vie : loyer, alimentation, transport, santé
+- Qualité de vie : indices santé, éducation, environnement
+- Sécurité : criminalité, stabilité politique, risques naturels
+- Droits LGBTQ+ : législation, climat social
+- Pyramide de pouvoir : structure sociale et économique
+- Profils gagnants/perdants : qui réussit, qui galère
+- Playbook : guide concret d'installation
+- Sources vérifiées : liens vers données officielles
+
+### 2. Test de profil expatrié
+- Quiz de 2 minutes
+- Évalue : priorités fiscales, qualité de vie, sécurité, opportunités
+- Résultat : top 5 pays compatibles avec score de matching
+- Gratuit et sans inscription
+
+### 3. Clés de sortie (Exit Keys)
+- Stratégies personnalisées par profil
+- Plan d'action étape par étape
+- Timeline réaliste (6 mois à 2 ans)
+- Budget prévisionnel
+- Check-list administrative
+
+### 4. Comparaison multi-pays
+- Jusqu'à 4 pays simultanément
+- Radar chart sur 8+ critères
+- Tableau comparatif détaillé
+- Export PDF
+
+### 5. Simulateur fiscal
+- Calcul impôt sur le revenu par pays
+- Comparaison avant/après expatriation
+- Régimes spéciaux et optimisations légales
+- Conventions de double imposition
+
+### 6. Marketplace d'experts
+- Consultants vérifiés en expatriation
+- Avocats fiscalistes internationaux
+- Spécialistes immigration par pays
+- Réservation en ligne
+
+## Sources de données
+
+| Source | Type | Fréquence |
+|--------|------|-----------|
+| Banque Mondiale | Indicateurs économiques | Annuelle |
+| OCDE | Qualité de vie, fiscalité | Annuelle |
+| FMI | Données macroéconomiques | Trimestrielle |
+| Transparency International | Corruption | Annuelle |
+| Numbeo | Coût de la vie | Continue |
+| Global Peace Index | Sécurité | Annuelle |
+| Sources gouvernementales | Visas, fiscalité | Variable |
+| Perplexity AI | Intelligence live | Temps réel |
+
+## Informations techniques
+
+- Application web progressive (PWA)
+- Disponible en français et anglais
+- Responsive mobile-first
+- Données chiffrées et sourcées
+- Disclaimer : informations à titre indicatif, consulter des professionnels
+
+## Contact et liens
+
+- Site principal : https://system-compass.app
+- Explorer les pays : https://system-compass.app/countries
+- Test rapide : https://system-compass.app/quick-test
+- Comparaison : https://system-compass.app/compare
+- Simulateur fiscal : https://system-compass.app/fiscal-calculator
+- Tarifs : https://system-compass.app/pricing
+- À propos : https://system-compass.app/about
+- Mentions légales : https://system-compass.app/mentions-legales
+- Politique de confidentialité : https://system-compass.app/privacy

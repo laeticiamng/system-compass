@@ -1,0 +1,52 @@
+# System Compass
+
+> Plateforme d'intelligence décisionnelle pour la relocalisation internationale.
+> Decision intelligence platform for international relocation.
+
+System Compass analyse les systèmes de 44+ pays pour aider les individus et entreprises à planifier leur expatriation de manière éclairée.
+
+## Ce que fait System Compass
+
+- **Analyse comparative de 44+ pays** : fiscalité, visas, coût de la vie, qualité de vie, sécurité, santé, droits LGBTQ+
+- **Test de profil expatrié** : quiz de 2 minutes pour identifier les pays compatibles avec votre profil
+- **Clés de sortie (Exit Keys)** : stratégies de relocalisation personnalisées par profil et objectifs
+- **Simulateur fiscal** : calcul d'impôts comparé entre pays d'origine et destination
+- **Intelligence terrain** : données vérifiées de la Banque Mondiale, OCDE, Transparency International
+- **Comparaison multi-pays** : jusqu'à 4 pays simultanément sur tous les critères
+- **Trajectoire de vie** : simulation de parcours d'expatriation sur 1 à 5 ans
+- **Module prévention** : filtres pour identifier les risques avant de partir
+
+## Expertise unique
+
+System Compass se distingue par son approche systémique : au lieu de lister des "top 10 pays", la plateforme analyse les structures de pouvoir, les règles non-écrites, les profils qui réussissent ou échouent dans chaque pays. C'est un outil de décision, pas un guide touristique.
+
+## Données et sources
+
+- Banque Mondiale, OCDE, FMI, Transparency International
+- Données fiscales officielles par pays
+- Indices de qualité de vie (Numbeo, OCDE Better Life Index)
+- Données de sécurité (Global Peace Index)
+- Mises à jour régulières avec intelligence live via Perplexity AI
+
+## Public cible
+
+- Expatriés potentiels et digital nomads
+- Entrepreneurs cherchant à s'implanter à l'international
+- Familles en projet de relocalisation
+- Professionnels RH et mobilité internationale
+- Cabinets de conseil en expatriation
+
+## Tarification
+
+- **Gratuit** : Test rapide, exploration pays, comparaison basique
+- **Premium (9,90€/mois)** : Tous les outils avancés, clés de sortie, simulateur fiscal, intelligence live
+- **Pro (29,90€/mois)** : Dossiers illimités, exports PDF, marketplace d'experts
+
+## Liens
+
+- Site : https://system-compass.app
+- Pays : https://system-compass.app/countries
+- Test rapide : https://system-compass.app/quick-test
+- Comparaison : https://system-compass.app/compare
+- Pricing : https://system-compass.app/pricing
+- À propos : https://system-compass.app/about
