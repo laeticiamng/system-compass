@@ -6,11 +6,20 @@
 import { ArrowLeft, Building2, User, Globe, Server, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { Helmet } from 'react-helmet-async';
 
 export default function MentionsLegales() {
 
   return (
     <div className="min-h-screen bg-background pt-20 sm:pt-24">
+      <Helmet>
+        <title>Mentions Légales - System Compass</title>
+        <meta name="description" content="Mentions légales de System Compass, édité par EmotionsCare SASU. SIRET, hébergement, propriété intellectuelle et protection des données personnelles (RGPD)." />
+        <link rel="canonical" href="https://system-compass.app/mentions-legales" />
+        <meta property="og:title" content="Mentions Légales - System Compass" />
+        <meta property="og:description" content="Informations légales de System Compass : éditeur, hébergement, RGPD." />
+        <meta property="og:url" content="https://system-compass.app/mentions-legales" />
+      </Helmet>
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Header */}
         <div className="mb-8">

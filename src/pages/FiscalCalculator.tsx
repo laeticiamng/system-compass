@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
 import { Calculator, ArrowRight, Download, TrendingUp, TrendingDown, Equal, Heart, Briefcase, Home, PiggyBank } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -272,6 +273,14 @@ export default function FiscalCalculator() {
   
   return (
     <div className="container max-w-6xl mx-auto py-8 px-4">
+      <Helmet>
+        <title>Simulateur Fiscal International - System Compass</title>
+        <meta name="description" content="Calculez votre salaire net et pouvoir d'achat dans 20 pays. Comparaison fiscale incluant impôts, charges sociales, coût de la vie et couverture santé." />
+        <link rel="canonical" href="https://system-compass.app/fiscal-calculator" />
+        <meta property="og:title" content="Simulateur Fiscal International - System Compass" />
+        <meta property="og:description" content="Comparez votre salaire net et pouvoir d'achat entre 20 pays." />
+        <meta property="og:url" content="https://system-compass.app/fiscal-calculator" />
+      </Helmet>
       {/* Header */}
       <div className="text-center mb-8">
         <h1 className="text-3xl md:text-4xl font-display font-bold mb-4 flex items-center justify-center gap-3">

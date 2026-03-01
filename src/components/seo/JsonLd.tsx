@@ -98,11 +98,6 @@ export function SoftwareApplicationJsonLd() {
           billingPeriod: 'P1M',
         },
       ],
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.7',
-        ratingCount: '1250',
-      },
     }} />
   );
 }

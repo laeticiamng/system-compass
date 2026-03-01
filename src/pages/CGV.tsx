@@ -6,11 +6,20 @@
 import { ArrowLeft, FileText, CreditCard, RefreshCcw, Scale, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { Helmet } from 'react-helmet-async';
 
 export default function CGV() {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Conditions Générales de Vente - System Compass</title>
+        <meta name="description" content="CGV de System Compass : abonnement Premium à 9,90€/mois, droit de rétractation 14 jours, résiliation sans frais. Paiement sécurisé via Stripe." />
+        <link rel="canonical" href="https://system-compass.app/cgv" />
+        <meta property="og:title" content="Conditions Générales de Vente - System Compass" />
+        <meta property="og:description" content="CGV de System Compass : abonnement, paiement, rétractation et résiliation." />
+        <meta property="og:url" content="https://system-compass.app/cgv" />
+      </Helmet>
       <div className="container mx-auto px-4 py-12 max-w-4xl">
         {/* Header */}
         <div className="mb-8">

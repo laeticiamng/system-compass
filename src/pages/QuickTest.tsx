@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import { PyramidType, PYRAMID_TYPE_INFO } from '@/lib/types';
 import { useTestResults } from '@/hooks/useTestResults';
@@ -220,6 +221,14 @@ export default function QuickTest() {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
+      <Helmet>
+        <title>Test Rapide d'Expatriation en 60 secondes - System Compass</title>
+        <meta name="description" content="Découvrez votre profil expatrié en 60 secondes. Test gratuit : situation, priorités, tolérance au risque. Trouvez les pays compatibles avec votre profil." />
+        <link rel="canonical" href="https://system-compass.app/quick-test" />
+        <meta property="og:title" content="Test Rapide d'Expatriation - System Compass" />
+        <meta property="og:description" content="Découvrez votre profil expatrié en 60 secondes. Test gratuit et personnalisé." />
+        <meta property="og:url" content="https://system-compass.app/quick-test" />
+      </Helmet>
       {/* Hero Section */}
       <section className="relative pt-24 sm:pt-32 pb-12 overflow-hidden">
         {/* Animated gradient background */}
