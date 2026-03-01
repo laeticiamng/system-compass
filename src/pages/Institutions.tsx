@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import {
@@ -40,6 +41,21 @@ export default function Institutions() {
   const [activeTab, setActiveTab] = useState('introduction');
 
   return (
+    <>
+      <Helmet>
+        <title>Entreprises & Institutions - System Compass</title>
+        <meta name="description" content="Solutions System Compass pour entreprises et institutions : analyse de gouvernance, due diligence pays et intelligence systémique pour décisions stratégiques." />
+        <link rel="canonical" href="https://system-compass.app/institutions" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Entreprises & Institutions - System Compass" />
+        <meta property="og:description" content="Intelligence systémique pour entreprises : gouvernance, due diligence et stratégie." />
+        <meta property="og:url" content="https://system-compass.app/institutions" />
+        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Entreprises & Institutions - System Compass" />
+        <meta name="twitter:description" content="Intelligence systémique pour entreprises : gouvernance, due diligence et stratégie." />
+        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
+      </Helmet>
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20 pt-16 sm:pt-20 md:pt-24">
       {/* Hero Section */}
       <section className="py-8 sm:py-12 md:py-20">
@@ -333,6 +349,7 @@ export default function Institutions() {
         </div>
       </section>
     </div>
+    </>
   );
 }
 

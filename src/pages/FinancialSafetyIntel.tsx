@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -81,6 +82,21 @@ export default function FinancialSafetyIntel() {
   };
 
   return (
+    <>
+      <Helmet>
+        <title>Intelligence Financière - System Compass</title>
+        <meta name="description" content="Analyse des risques financiers par pays : arnaques courantes, opportunités légitimes, alertes et conseils de sécurité financière pour expatriés." />
+        <link rel="canonical" href="https://system-compass.app/financial-safety-intel" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Intelligence Financière - System Compass" />
+        <meta property="og:description" content="Risques financiers, arnaques et opportunités par pays pour expatriés." />
+        <meta property="og:url" content="https://system-compass.app/financial-safety-intel" />
+        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Intelligence Financière - System Compass" />
+        <meta name="twitter:description" content="Risques financiers, arnaques et opportunités par pays pour expatriés." />
+        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
+      </Helmet>
     <div className="min-h-screen bg-background pt-16 sm:pt-20">
       <div className="container mx-auto px-3 sm:px-4 py-6 sm:py-8 max-w-4xl">
         {/* Header */}
@@ -287,5 +303,6 @@ export default function FinancialSafetyIntel() {
         )}
       </div>
     </div>
+    </>
   );
 }

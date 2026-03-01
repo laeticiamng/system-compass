@@ -277,9 +277,15 @@ export default function FiscalCalculator() {
         <title>Simulateur Fiscal International - System Compass</title>
         <meta name="description" content="Calculez votre salaire net et pouvoir d'achat dans 20 pays. Comparaison fiscale incluant impôts, charges sociales, coût de la vie et couverture santé." />
         <link rel="canonical" href="https://system-compass.app/fiscal-calculator" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="Simulateur Fiscal International - System Compass" />
         <meta property="og:description" content="Comparez votre salaire net et pouvoir d'achat entre 20 pays." />
         <meta property="og:url" content="https://system-compass.app/fiscal-calculator" />
+        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Simulateur Fiscal International - System Compass" />
+        <meta name="twitter:description" content="Comparez votre salaire net et pouvoir d'achat entre 20 pays." />
+        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
       </Helmet>
       {/* Header */}
       <div className="text-center mb-8">

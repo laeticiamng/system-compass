@@ -225,9 +225,15 @@ export default function QuickTest() {
         <title>Test Rapide d'Expatriation en 60 secondes - System Compass</title>
         <meta name="description" content="Découvrez votre profil expatrié en 60 secondes. Test gratuit : situation, priorités, tolérance au risque. Trouvez les pays compatibles avec votre profil." />
         <link rel="canonical" href="https://system-compass.app/quick-test" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="Test Rapide d'Expatriation - System Compass" />
         <meta property="og:description" content="Découvrez votre profil expatrié en 60 secondes. Test gratuit et personnalisé." />
         <meta property="og:url" content="https://system-compass.app/quick-test" />
+        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Test Rapide d'Expatriation - System Compass" />
+        <meta name="twitter:description" content="Découvrez votre profil expatrié en 60 secondes. Test gratuit et personnalisé." />
+        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
       </Helmet>
       {/* Hero Section */}
       <section className="relative pt-24 sm:pt-32 pb-12 overflow-hidden">

@@ -16,9 +16,15 @@ export default function MentionsLegales() {
         <title>Mentions Légales - System Compass</title>
         <meta name="description" content="Mentions légales de System Compass, édité par EmotionsCare SASU. SIRET, hébergement, propriété intellectuelle et protection des données personnelles (RGPD)." />
         <link rel="canonical" href="https://system-compass.app/mentions-legales" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="Mentions Légales - System Compass" />
         <meta property="og:description" content="Informations légales de System Compass : éditeur, hébergement, RGPD." />
         <meta property="og:url" content="https://system-compass.app/mentions-legales" />
+        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Mentions Légales - System Compass" />
+        <meta name="twitter:description" content="Informations légales de System Compass : éditeur, hébergement, RGPD." />
+        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
       </Helmet>
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Header */}

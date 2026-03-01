@@ -217,9 +217,15 @@ export default function CompareUnified() {
         <title>Comparateur de Pays - System Compass</title>
         <meta name="description" content="Comparez jusqu'à 5 pays côte à côte : fiscalité, coût de la vie, qualité de vie, risques. Visualisations radar, barres de risque et trajectoire financière." />
         <link rel="canonical" href="https://system-compass.app/compare" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="Comparateur de Pays - System Compass" />
         <meta property="og:description" content="Comparez jusqu'à 5 pays sur fiscalité, coût de la vie et qualité de vie." />
         <meta property="og:url" content="https://system-compass.app/compare" />
+        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Comparateur de Pays - System Compass" />
+        <meta name="twitter:description" content="Comparez jusqu'à 5 pays sur fiscalité, coût de la vie et qualité de vie." />
+        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
       </Helmet>
       <div className="container mx-auto px-4">
         {/* Header */}

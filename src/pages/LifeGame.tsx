@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { SimulationDisclaimer } from '@/components/SimulationDisclaimer';
 import { Button } from '@/components/ui/button';
@@ -65,6 +66,21 @@ export default function LifeGame() {
   const previewArchetypes = CHARACTER_ARCHETYPES.slice(0, 4);
 
   return (
+    <>
+      <Helmet>
+        <title>Jeu de Simulation de Vie - System Compass</title>
+        <meta name="description" content="Simulez des trajectoires de vie dans différents pays. Jeu stratégique avec archétypes, événements aléatoires et classement mondial." />
+        <link rel="canonical" href="https://system-compass.app/life-game" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Jeu de Simulation de Vie - System Compass" />
+        <meta property="og:description" content="Simulez des trajectoires de vie dans différents pays. Jeu stratégique immersif." />
+        <meta property="og:url" content="https://system-compass.app/life-game" />
+        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Jeu de Simulation de Vie - System Compass" />
+        <meta name="twitter:description" content="Simulez des trajectoires de vie dans différents pays. Jeu stratégique immersif." />
+        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
+      </Helmet>
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-[85vh] sm:min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-0">
@@ -345,5 +361,6 @@ export default function LifeGame() {
         </div>
       </section>
     </div>
+    </>
   );
 }
