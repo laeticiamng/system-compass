@@ -1,42 +1,49 @@
 import { describe, it, expect } from 'vitest';
 import { isValidElement } from 'react';
-import { allRoutes, redirectRoutes } from '@/routes';
+import { allLocalizedRoutes, redirectRoutes } from '@/routes';
 
 const CRITICAL_INTERNAL_ROUTES = [
-  '/dashboard',
-  '/tools',
-  '/countries',
-  '/compare',
-  '/fiscal-calculator',
-  '/pyramid-quiz',
-  '/gamification',
-  '/world-map',
-  '/pyramid-types',
-  '/profile-matcher',
-  '/terrain',
+  'dashboard',
+  'tools',
+  'countries',
+  'compare',
+  'fiscal-calculator',
+  'pyramid-quiz',
+  'gamification',
+  'world-map',
+  'pyramid-types',
+  'profile-matcher',
+  'terrain',
 ];
+
+interface RouteEntry {
+  path: string;
+  element: React.ReactNode;
+}
 
 describe('Route Configuration', () => {
   it('exposes all route definitions through a single source of truth', () => {
-    expect(allRoutes.length).toBeGreaterThan(50);
+    expect(allLocalizedRoutes.length).toBeGreaterThan(50);
   });
 
-  it('uses canonical absolute paths', () => {
-    allRoutes.forEach((route) => {
-      expect(route.path === '*' || route.path.startsWith('/')).toBe(true);
+  it('uses relative paths for nested routing (no leading slash except *)', () => {
+    allLocalizedRoutes.forEach((route: RouteEntry) => {
+      if (route.path !== '*') {
+        expect(route.path).not.toMatch(/^\//);
+      }
       expect(route.path).not.toContain(' ');
     });
   });
 
   it('keeps path declarations unique', () => {
-    const paths = allRoutes.map((route) => route.path);
+    const paths = allLocalizedRoutes.map((route: RouteEntry) => route.path);
     const uniquePaths = new Set(paths);
     expect(uniquePaths.size).toBe(paths.length);
   });
 
-  it('maps every critical internal route to a dedicated page component (not home redirect)', () => {
+  it('maps every critical internal route to a dedicated page component', () => {
     CRITICAL_INTERNAL_ROUTES.forEach((criticalPath) => {
-      const route = allRoutes.find((candidate) => candidate.path === criticalPath);
+      const route = allLocalizedRoutes.find((candidate: RouteEntry) => candidate.path === criticalPath);
       expect(route, `Missing route definition for ${criticalPath}`).toBeDefined();
 
       if (!route || !isValidElement(route.element)) {
@@ -50,7 +57,7 @@ describe('Route Configuration', () => {
 
   it('does not redirect critical paths back to homepage', () => {
     CRITICAL_INTERNAL_ROUTES.forEach((criticalPath) => {
-      const redirect = redirectRoutes.find((candidate) => candidate.path === criticalPath);
+      const redirect = redirectRoutes.find((candidate: RouteEntry) => candidate.path === criticalPath);
       expect(redirect, `${criticalPath} should never be declared as a redirect`).toBeUndefined();
     });
   });

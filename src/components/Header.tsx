@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { LocalizedLink as Link } from '@/components/i18n';
+import { useLocalizedPath } from '@/hooks/useLocalizedPath';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
 import { Compass, Map, FileText, Scale, Gamepad2, LogIn, LogOut, User, Key, LayoutDashboard, Menu, Play, Info, AlertCircle, X, Shield, BookOpen, CreditCard, Globe, Settings, Building2, Users, ChevronDown, Wrench, Bell, BarChart3 } from 'lucide-react';
@@ -31,16 +33,9 @@ import {
 } from './ui/dropdown-menu';
 
 // Pages that show simulation features and need the anti-illusion reminder
-const SIMULATION_PAGES = [
-  '/exit-keys', 
-  '/life-game', 
-  '/compare', 
-  '/life-trajectory', 
-  '/country/', 
-  '/systemic-mistakes',
-  '/match',
-  '/profile-test',
-  '/pyramid-quiz'
+const SIMULATION_SEGMENTS = [
+  '/exit-keys', '/life-game', '/compare', '/life-trajectory', 
+  '/country/', '/systemic-mistakes', '/match', '/profile-test', '/pyramid-quiz'
 ];
 const DISCLAIMER_DISMISSED_KEY = 'pyramid-disclaimer-dismissed';
 
@@ -114,9 +109,11 @@ export function Header() {
     { href: '/diagnostics', label: 'Diagnostics', icon: Settings },
   ];
 
+  const { localizedPath } = useLocalizedPath();
+  
   const handleSignOut = async () => {
     await signOut();
-    navigate('/');
+    navigate(localizedPath('/'));
     setMobileMenuOpen(false);
   };
 
@@ -129,8 +126,9 @@ export function Header() {
     localStorage.setItem(DISCLAIMER_DISMISSED_KEY, 'true');
   };
 
-  // Check if current page is a simulation page
-  const isSimulationPage = SIMULATION_PAGES.some(page => location.pathname.startsWith(page));
+  // Check if current page is a simulation page (strip lang prefix)
+  const pathForCheck = location.pathname.replace(/^\/[a-z]{2}(?=\/)/, '');
+  const isSimulationPage = SIMULATION_SEGMENTS.some(page => pathForCheck.startsWith(page));
   const showDisclaimer = isSimulationPage && !disclaimerDismissed;
 
   return (

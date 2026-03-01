@@ -3,7 +3,8 @@
  * Provides contextual navigation for deep pages
  */
 
-import { Link, useLocation } from 'react-router-dom';
+import { LocalizedLink as Link } from '@/components/i18n';
+import { usePathWithoutLang } from '@/hooks/useLocalizedPath';
 import { useTranslation } from 'react-i18next';
 import { ChevronRight, Home } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -19,14 +20,16 @@ interface BreadcrumbItem {
 const HIDE_BREADCRUMBS_ON = ['/', '/auth', '/countries', '/dashboard', '/tools'];
 
 export function Breadcrumbs() {
-  const location = useLocation();
+  
   const { t } = useTranslation();
   
-  if (HIDE_BREADCRUMBS_ON.includes(location.pathname)) {
+  const rawPath = usePathWithoutLang();
+  
+  if (HIDE_BREADCRUMBS_ON.includes(rawPath)) {
     return null;
   }
   
-  const pathSegments = location.pathname.split('/').filter(Boolean);
+  const pathSegments = rawPath.split('/').filter(Boolean);
   
   if (pathSegments.length < 2) {
     return null;

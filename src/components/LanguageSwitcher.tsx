@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { SUPPORTED_LANGUAGES } from '@/i18n';
+import { usePathWithoutLang } from '@/hooks/useLocalizedPath';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,6 +15,8 @@ import { cn } from '@/lib/utils';
 
 export function LanguageSwitcher({ className }: { className?: string }) {
   const { i18n } = useTranslation();
+  const navigate = useNavigate();
+  const pathWithoutLang = usePathWithoutLang();
 
   const currentLang = SUPPORTED_LANGUAGES.find(l => l.code === i18n.language) 
     || SUPPORTED_LANGUAGES[0];
@@ -28,6 +32,8 @@ export function LanguageSwitcher({ className }: { className?: string }) {
   const handleLanguageChange = (langCode: string) => {
     i18n.changeLanguage(langCode);
     localStorage.setItem('app_lang', langCode);
+    // Navigate to the same page with the new language prefix
+    navigate(`/${langCode}${pathWithoutLang}`);
   };
 
   return (
