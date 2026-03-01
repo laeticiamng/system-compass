@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { useAggregateRating } from '@/hooks/useAggregateRating';
 
 interface JsonLdProps {
   data: Record<string, unknown>;
@@ -50,56 +51,69 @@ export function OrganizationJsonLd() {
   );
 }
 
-// SoftwareApplication schema — enriched for GEO
+// SoftwareApplication schema — enriched for GEO, with real AggregateRating
 export function SoftwareApplicationJsonLd() {
-  return (
-    <JsonLd data={{
-      '@context': 'https://schema.org',
-      '@type': 'SoftwareApplication',
-      name: 'System Compass',
-      description: 'Application web d\'aide à la décision pour l\'expatriation. Compare 44+ pays sur la fiscalité, les visas, le coût de la vie et la qualité de vie. Test de profil gratuit en 2 minutes.',
-      applicationCategory: 'LifestyleApplication',
-      applicationSubCategory: 'Expatriation & Relocation',
-      operatingSystem: 'Web',
-      inLanguage: ['fr', 'en'],
-      isAccessibleForFree: true,
-      featureList: [
-        'Comparaison de 44+ pays',
-        'Test de profil expatrié en 2 minutes',
-        'Simulateur fiscal international',
-        'Clés de sortie personnalisées',
-        'Intelligence terrain en temps réel',
-        'Marketplace d\'experts en expatriation',
-        'Export PDF des analyses',
-      ],
-      screenshot: 'https://system-compass.app/og-image.png',
-      offers: [
-        {
-          '@type': 'Offer',
-          price: '0',
-          priceCurrency: 'EUR',
-          name: 'Gratuit',
-          description: 'Test rapide, exploration pays, comparaison basique',
-        },
-        {
-          '@type': 'Offer',
-          price: '9.90',
-          priceCurrency: 'EUR',
-          name: 'Premium',
-          description: 'Tous les outils avancés, clés de sortie, simulateur fiscal, intelligence live',
-          billingPeriod: 'P1M',
-        },
-        {
-          '@type': 'Offer',
-          price: '29.90',
-          priceCurrency: 'EUR',
-          name: 'Pro',
-          description: 'Dossiers illimités, exports PDF, marketplace d\'experts',
-          billingPeriod: 'P1M',
-        },
-      ],
-    }} />
-  );
+  const { data: rating } = useAggregateRating();
+
+  const schemaData: Record<string, unknown> = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'System Compass',
+    description: 'Application web d\'aide à la décision pour l\'expatriation. Compare 44+ pays sur la fiscalité, les visas, le coût de la vie et la qualité de vie. Test de profil gratuit en 2 minutes.',
+    applicationCategory: 'LifestyleApplication',
+    applicationSubCategory: 'Expatriation & Relocation',
+    operatingSystem: 'Web',
+    inLanguage: ['fr', 'en'],
+    isAccessibleForFree: true,
+    featureList: [
+      'Comparaison de 44+ pays',
+      'Test de profil expatrié en 2 minutes',
+      'Simulateur fiscal international',
+      'Clés de sortie personnalisées',
+      'Intelligence terrain en temps réel',
+      'Marketplace d\'experts en expatriation',
+      'Export PDF des analyses',
+    ],
+    screenshot: 'https://system-compass.app/og-image.png',
+    offers: [
+      {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'EUR',
+        name: 'Gratuit',
+        description: 'Test rapide, exploration pays, comparaison basique',
+      },
+      {
+        '@type': 'Offer',
+        price: '9.90',
+        priceCurrency: 'EUR',
+        name: 'Premium',
+        description: 'Tous les outils avancés, clés de sortie, simulateur fiscal, intelligence live',
+        billingPeriod: 'P1M',
+      },
+      {
+        '@type': 'Offer',
+        price: '29.90',
+        priceCurrency: 'EUR',
+        name: 'Pro',
+        description: 'Dossiers illimités, exports PDF, marketplace d\'experts',
+        billingPeriod: 'P1M',
+      },
+    ],
+  };
+
+  // Only include AggregateRating when real reviews exist
+  if (rating && rating.reviewCount > 0) {
+    schemaData.aggregateRating = {
+      '@type': 'AggregateRating',
+      ratingValue: rating.ratingValue,
+      bestRating: 5,
+      worstRating: 1,
+      reviewCount: rating.reviewCount,
+    };
+  }
+
+  return <JsonLd data={schemaData} />;
 }
 
 // Service schema — for GEO: what problem we solve
