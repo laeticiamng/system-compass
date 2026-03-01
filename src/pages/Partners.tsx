@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from 'react-helmet-async';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -30,6 +31,14 @@ export default function Partners() {
 
   return (
     <div className="min-h-screen bg-background pt-16 sm:pt-20">
+      <Helmet>
+        <title>Programme Partenaires - System Compass</title>
+        <meta name="description" content="Rejoignez le programme Compass Partners : ambassadeur ou partenaire B2B. Diffusion responsable de System Compass, sans mécanisme de recrutement en chaîne." />
+        <link rel="canonical" href="https://system-compass.app/partners" />
+        <meta property="og:title" content="Programme Partenaires - System Compass" />
+        <meta property="og:description" content="Compass Partners : ambassadeur ou partenaire B2B pour diffuser la lucidité." />
+        <meta property="og:url" content="https://system-compass.app/partners" />
+      </Helmet>
       {/* Hero Section */}
       <section className="relative py-8 sm:py-16 md:py-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5" />

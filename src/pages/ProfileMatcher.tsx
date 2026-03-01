@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo, useRef } from "react";
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
 import { supabase } from '@/integrations/supabase/client';
 import { useCountries } from '@/lib/countries-data';
 import { Button } from '@/components/ui/button';
@@ -241,6 +242,14 @@ export default function ProfileMatcher() {
 
   return (
     <div className="min-h-screen pt-24 pb-16">
+      <Helmet>
+        <title>Matching Pays-Profil - System Compass</title>
+        <meta name="description" content="Trouvez les pays qui correspondent à votre profil. Ajustez vos préférences (réseau, diplôme, risque, bureaucratie) et découvrez vos matchs par compatibilité." />
+        <link rel="canonical" href="https://system-compass.app/profile-matcher" />
+        <meta property="og:title" content="Profile Matcher - System Compass" />
+        <meta property="og:description" content="Découvrez quels pays correspondent le mieux à votre profil personnel." />
+        <meta property="og:url" content="https://system-compass.app/profile-matcher" />
+      </Helmet>
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
           <h1 className="font-display text-4xl font-bold mb-4 flex items-center justify-center gap-3">

@@ -10,7 +10,6 @@ export function HreflangTags() {
   return (
     <Helmet>
       <link rel="alternate" hrefLang="fr" href={`${BASE_URL}${currentPath}`} />
-      <link rel="alternate" hrefLang="en" href={`${BASE_URL}/en${currentPath}`} />
       <link rel="alternate" hrefLang="x-default" href={`${BASE_URL}${currentPath}`} />
     </Helmet>
   );

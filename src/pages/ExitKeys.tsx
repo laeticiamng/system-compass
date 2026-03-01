@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { 
   ArrowLeft, Key, Compass, Target, Zap, 
@@ -295,6 +296,14 @@ export default function ExitKeys() {
 
   return (
     <main className="min-h-screen bg-background pt-24 pb-16 relative overflow-hidden">
+      <Helmet>
+        <title>Clés de Sortie Personnalisées - System Compass</title>
+        <meta name="description" content="Trouvez vos clés de sortie personnalisées pour l'expatriation. Analyse de votre profil, nationalité, compétences et objectifs pour identifier les meilleures stratégies." />
+        <link rel="canonical" href="https://system-compass.app/exit-keys" />
+        <meta property="og:title" content="Clés de Sortie - System Compass" />
+        <meta property="og:description" content="Stratégies d'expatriation personnalisées basées sur votre profil et vos objectifs." />
+        <meta property="og:url" content="https://system-compass.app/exit-keys" />
+      </Helmet>
       {/* Animated Background Gradient */}
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />

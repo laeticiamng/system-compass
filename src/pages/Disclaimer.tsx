@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { 
@@ -19,6 +20,14 @@ export default function Disclaimer() {
 
   return (
     <main className="min-h-screen bg-background pt-24 pb-16">
+      <Helmet>
+        <title>Avertissements & Limites - System Compass</title>
+        <meta name="description" content="Avertissements légaux de System Compass : outil éducatif d'analyse des systèmes de pays. Simulation ≠ prédiction. Ne constitue pas un conseil professionnel." />
+        <link rel="canonical" href="https://system-compass.app/disclaimer" />
+        <meta property="og:title" content="Avertissements & Limites - System Compass" />
+        <meta property="og:description" content="Ce que System Compass est — et ce qu'il n'est pas. Outil éducatif, pas de conseil professionnel." />
+        <meta property="og:url" content="https://system-compass.app/disclaimer" />
+      </Helmet>
       <div className="container mx-auto px-4 max-w-4xl">
         {/* Header */}
         <div className="mb-8">

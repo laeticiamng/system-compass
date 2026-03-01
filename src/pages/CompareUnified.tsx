@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { useCountries } from '@/lib/countries-data';
 import { Country } from '@/lib/types';
 import { Button } from '@/components/ui/button';
@@ -212,6 +213,14 @@ export default function CompareUnified() {
       previewContent={previewContent}
     >
     <div className="min-h-screen pt-20 pb-16">
+      <Helmet>
+        <title>Comparateur de Pays - System Compass</title>
+        <meta name="description" content="Comparez jusqu'à 5 pays côte à côte : fiscalité, coût de la vie, qualité de vie, risques. Visualisations radar, barres de risque et trajectoire financière." />
+        <link rel="canonical" href="https://system-compass.app/compare" />
+        <meta property="og:title" content="Comparateur de Pays - System Compass" />
+        <meta property="og:description" content="Comparez jusqu'à 5 pays sur fiscalité, coût de la vie et qualité de vie." />
+        <meta property="og:url" content="https://system-compass.app/compare" />
+      </Helmet>
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-8">
