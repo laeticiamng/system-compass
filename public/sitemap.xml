@@ -69,10 +69,47 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://system-compass.app/en/auth</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/auth" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/auth" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/auth" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://system-compass.app/fr/partners</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/partners" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/partners" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/partners" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://system-compass.app/en/partners</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/partners" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/partners" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/partners" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
   <!-- Legal Pages -->
   <url>
     <loc>https://system-compass.app/fr/disclaimer</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/disclaimer" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/disclaimer" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/disclaimer" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://system-compass.app/en/disclaimer</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/disclaimer" />
     <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/disclaimer" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/disclaimer" />
@@ -90,6 +127,15 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://system-compass.app/en/cgv</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/cgv" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/cgv" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/cgv" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://system-compass.app/fr/mentions-legales</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/mentions-legales" />
     <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/mentions-legales" />
@@ -99,7 +145,25 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://system-compass.app/en/mentions-legales</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/mentions-legales" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/mentions-legales" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/mentions-legales" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://system-compass.app/fr/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/privacy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/privacy" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://system-compass.app/en/privacy</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/privacy" />
     <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/privacy" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/privacy" />
@@ -138,6 +202,16 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://system-compass.app/en/world-map</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/world-map" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/world-map" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/world-map" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://system-compass.app/fr/compare</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/compare" />
     <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/compare" />
@@ -147,7 +221,26 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://system-compass.app/en/compare</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/compare" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/compare" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/compare" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://system-compass.app/fr/pyramid-types</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/pyramid-types" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/pyramid-types" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/pyramid-types" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://system-compass.app/en/pyramid-types</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/pyramid-types" />
     <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/pyramid-types" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/pyramid-types" />
@@ -186,6 +279,16 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://system-compass.app/en/profile-test</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/profile-test" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/profile-test" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/profile-test" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://system-compass.app/fr/profile-matcher</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/profile-matcher" />
     <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/profile-matcher" />
@@ -194,6 +297,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://system-compass.app/en/profile-matcher</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/profile-matcher" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/profile-matcher" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/profile-matcher" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <url>
     <loc>https://system-compass.app/fr/life-trajectory</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/life-trajectory" />
@@ -204,7 +317,26 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://system-compass.app/en/life-trajectory</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/life-trajectory" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/life-trajectory" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/life-trajectory" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://system-compass.app/fr/fiscal-calculator</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/fiscal-calculator" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/fiscal-calculator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/fiscal-calculator" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://system-compass.app/en/fiscal-calculator</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/fiscal-calculator" />
     <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/fiscal-calculator" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/fiscal-calculator" />
@@ -224,6 +356,16 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://system-compass.app/en/exit-keys</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/exit-keys" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/exit-keys" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/exit-keys" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://system-compass.app/fr/exit-keys/catalog</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/exit-keys/catalog" />
     <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/exit-keys/catalog" />
@@ -232,6 +374,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://system-compass.app/en/exit-keys/catalog</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/exit-keys/catalog" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/exit-keys/catalog" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/exit-keys/catalog" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <url>
     <loc>https://system-compass.app/fr/prevention-filter</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/prevention-filter" />
@@ -242,7 +394,26 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://system-compass.app/en/prevention-filter</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/prevention-filter" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/prevention-filter" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/prevention-filter" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
     <loc>https://system-compass.app/fr/errors-illusions</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/errors-illusions" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/errors-illusions" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/errors-illusions" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://system-compass.app/en/errors-illusions</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/errors-illusions" />
     <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/errors-illusions" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/errors-illusions" />
@@ -262,6 +433,16 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://system-compass.app/en/pyramid-quiz</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/pyramid-quiz" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/pyramid-quiz" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/pyramid-quiz" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
     <loc>https://system-compass.app/fr/life-game</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/life-game" />
     <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/life-game" />
@@ -270,6 +451,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://system-compass.app/en/life-game</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/life-game" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/life-game" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/life-game" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <url>
     <loc>https://system-compass.app/fr/personas</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/personas" />
@@ -280,7 +471,26 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://system-compass.app/en/personas</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/personas" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/personas" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/personas" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
     <loc>https://system-compass.app/fr/gamification</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/gamification" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/gamification" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/gamification" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://system-compass.app/en/gamification</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/gamification" />
     <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/gamification" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/gamification" />
@@ -300,6 +510,16 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://system-compass.app/en/latent</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/latent" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/latent" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/latent" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
     <loc>https://system-compass.app/fr/irreversa</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/irreversa" />
     <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/irreversa" />
@@ -309,10 +529,67 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://system-compass.app/en/irreversa</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/irreversa" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/irreversa" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/irreversa" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
     <loc>https://system-compass.app/fr/ovi</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/ovi" />
     <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/ovi" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/ovi" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://system-compass.app/en/ovi</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/ovi" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/ovi" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/ovi" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://system-compass.app/fr/institutions</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/institutions" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/institutions" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/institutions" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://system-compass.app/en/institutions</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/institutions" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/institutions" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/institutions" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://system-compass.app/fr/b2b</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/b2b" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/b2b" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/b2b" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://system-compass.app/en/b2b</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/b2b" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/b2b" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/b2b" />
     <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -329,7 +606,26 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://system-compass.app/en/terrain</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/terrain" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/terrain" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/terrain" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
     <loc>https://system-compass.app/fr/financial-safety-intel</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/financial-safety-intel" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/financial-safety-intel" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/financial-safety-intel" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://system-compass.app/en/financial-safety-intel</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/financial-safety-intel" />
     <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/financial-safety-intel" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/financial-safety-intel" />
@@ -349,6 +645,16 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://system-compass.app/en/community</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/community" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/community" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/community" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
     <loc>https://system-compass.app/fr/partner-services</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/partner-services" />
     <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/partner-services" />
@@ -358,14 +664,16 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://system-compass.app/fr/partners</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/partners" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/partners" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/partners" />
+    <loc>https://system-compass.app/en/partner-services</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/partner-services" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/partner-services" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/partner-services" />
     <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
+  <!-- Experts -->
   <url>
     <loc>https://system-compass.app/fr/experts</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/experts" />
@@ -374,6 +682,34 @@
     <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://system-compass.app/en/experts</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/experts" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/experts" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/experts" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://system-compass.app/fr/become-expert</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/become-expert" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/become-expert" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/become-expert" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://system-compass.app/en/become-expert</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/become-expert" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/become-expert" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/become-expert" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 
   <!-- Content & Resources -->
@@ -387,6 +723,16 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://system-compass.app/en/resources</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/resources" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/resources" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/resources" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
     <loc>https://system-compass.app/fr/tools</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/tools" />
     <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/tools" />
@@ -395,6 +741,111 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://system-compass.app/en/tools</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/tools" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/tools" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/tools" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://system-compass.app/fr/tools/fiscal-calculator</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/tools/fiscal-calculator" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/tools/fiscal-calculator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/tools/fiscal-calculator" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://system-compass.app/en/tools/fiscal-calculator</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/tools/fiscal-calculator" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/tools/fiscal-calculator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/tools/fiscal-calculator" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://system-compass.app/fr/tools/fiscal-simulator</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/tools/fiscal-simulator" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/tools/fiscal-simulator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/tools/fiscal-simulator" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://system-compass.app/en/tools/fiscal-simulator</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/tools/fiscal-simulator" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/tools/fiscal-simulator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/tools/fiscal-simulator" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://system-compass.app/fr/tools/matcher</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/tools/matcher" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/tools/matcher" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/tools/matcher" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://system-compass.app/en/tools/matcher</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/tools/matcher" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/tools/matcher" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/tools/matcher" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://system-compass.app/fr/trace</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/trace" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/trace" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/trace" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://system-compass.app/en/trace</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/trace" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/trace" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/trace" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://system-compass.app/fr/fiscal/special-regimes</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/fiscal/special-regimes" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/fiscal/special-regimes" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/fiscal/special-regimes" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://system-compass.app/en/fiscal/special-regimes</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/fiscal/special-regimes" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/fiscal/special-regimes" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/fiscal/special-regimes" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <url>
     <loc>https://system-compass.app/fr/how-to-read</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/how-to-read" />
@@ -405,6 +856,16 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://system-compass.app/en/how-to-read</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/how-to-read" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/how-to-read" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/how-to-read" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
     <loc>https://system-compass.app/fr/academic</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/academic" />
     <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/academic" />
@@ -414,6 +875,16 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://system-compass.app/en/academic</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/academic" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/academic" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/academic" />
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
     <loc>https://system-compass.app/fr/install</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/install" />
     <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/install" />
@@ -422,25 +893,14 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
-
-  <!-- B2B -->
   <url>
-    <loc>https://system-compass.app/fr/institutions</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/institutions" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/institutions" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/institutions" />
+    <loc>https://system-compass.app/en/install</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/install" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/install" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/install" />
     <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://system-compass.app/fr/b2b</loc>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://system-compass.app/fr/b2b" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://system-compass.app/en/b2b" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://system-compass.app/en/b2b" />
-    <lastmod>2026-03-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.5</priority>
   </url>
 
   <!-- Blog -->
