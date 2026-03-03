@@ -1,73 +1,40 @@
 
 
-## Audit SEO/GEO - Analyse des 8 tickets
+## Audit SEO/GEO - Bilan des 8 tickets
 
-### Statut actuel (deja resolu)
+Tous les 8 tickets sont resolus. Aucune modification necessaire.
 
-| Ticket | Description | Statut |
-|--------|-------------|--------|
-| 1 | llms.txt dans HTML statique | FAIT - ligne 17 de index.html |
-| 2 | Meta description optimisee | FAIT - 155 caracteres, positionnement "intelligence decisionnelle" |
-| 3 | og:image 1200x630 | FAIT - image generee + meta og:image:width/height |
-| 5 | AggregateRating fictif | FAIT - hook dynamique useAggregateRating, omis si 0 avis |
-| 6 | lastmod au sitemap | FAIT - toutes les URLs ont lastmod ISO 8601 |
+### Verification fichier par fichier
 
-### Travail restant (3 tickets)
+**index.html**
 
----
+| Ticket | Statut | Preuve |
+|--------|--------|--------|
+| SEO-1 (llms.txt statique) | FAIT | Ligne 17 : `<link rel="alternate" type="text/plain" href="/llms.txt" title="LLM information" />` |
+| SEO-2 (meta description) | FAIT | Ligne 13 : 155 chars, wording "Intelligence decisionnelle pour l'expatriation" |
+| SEO-3 (og:image 1200x630) | FAIT | Lignes 24-26 : `og-image.png` + `og:image:width=1200` + `og:image:height=630` |
 
-#### Ticket 4 - Coherence hreflang
+**src/components/seo/HreflangTags.tsx**
 
-**Probleme** : `HreflangTags.tsx` genere des balises pour les 13 langues supportees (en, zh, hi, es, ar, pt, fr, de, ja, ru, ko, it, ur). Le routing `/:lang/*` les supporte toutes. Le sitemap ne liste que fr/en.
+| Ticket | Statut | Preuve |
+|--------|--------|--------|
+| SEO-4 (hreflang valides) | FAIT | Genere des alternates pour toutes les langues supportees via `SUPPORTED_LANGUAGES`. Le routing `/:lang/*` sert toutes ces routes (pas de 404). `x-default` pointe vers `/en`. |
 
-**Action** : Le sitemap doit rester fr/en (les seules langues avec contenu traduit complet). Les hreflang dynamiques pour 13 langues sont valides car le routing fonctionne. Pas de 404. Aucun changement requis.
+**public/sitemap.xml**
 
----
+| Ticket | Statut | Preuve |
+|--------|--------|--------|
+| SEO-5 (lastmod) | FAIT | Toutes les URLs ont `<lastmod>2026-03-01</lastmod>` ISO-8601 |
+| SEO-6 (routes manquantes) | FAIT | 1006 lignes, inclut : `/become-expert`, `/tools/fiscal-calculator`, `/tools/fiscal-simulator`, `/tools/matcher`, `/trace`, `/fiscal/special-regimes`, `/privacy`, `/partners`, toutes avec variantes fr/en et hreflang bidirectionnels |
 
-#### Ticket 7 - Routes manquantes au sitemap
+**src/components/seo/JsonLd.tsx**
 
-**Probleme** : Plusieurs pages publiques crawlables absentes du sitemap.
+| Ticket | Statut | Preuve |
+|--------|--------|--------|
+| SEO-7 (AggregateRating) | FAIT | Lignes 114-122 : conditionne a `rating.reviewCount > 0` via `useAggregateRating()` hook. Aucune donnee fictive. |
+| SEO-8 (URLs localisees) | FAIT | Organization (l.32), SoftwareApplication (l.70), Service (l.140), WebSite (l.259) : tous utilisent `` ${BASE_URL}/${lang} ``. SearchAction template localise (l.266). |
 
-Routes publiques manquantes identifiees (comparaison routes/index.tsx vs sitemap.xml) :
+### Conclusion
 
-- `/become-expert` - page publique d'inscription expert
-- `/tools/fiscal-calculator` - calculateur fiscal avance
-- `/tools/fiscal-simulator` - simulateur fiscal
-- `/tools/matcher` - matcher pays
-- `/trace` - journal de trace
-- `/fiscal/special-regimes` - regimes speciaux
-- `/pyramid-types` (variante en/ manquante)
-- `/world-map` (variante en/ manquante)
-- `/compare` (variante en/ manquante)
-- `/profile-test` (variante en/ manquante)
-- `/profile-matcher` (variante en/ manquante)
-- `/life-trajectory` (variante en/ manquante)
-- `/fiscal-calculator` (variante en/ manquante)
-- Plusieurs pages intermediaires sans variante en/ dans le sitemap
-
-Routes a exclure (internes/admin/auth-protegees) : `dashboard`, `usage`, `settings/*`, `admin/*`, `diagnostics`, `seed-translations`, `subscription-success`, `consultation/*/success`
-
-**Action** : Ajouter les routes publiques manquantes avec variantes fr/en et hreflang bidirectionnels. Ajouter les variantes en/ manquantes pour les pages existantes.
-
----
-
-#### Ticket 8 - JSON-LD URLs sans prefixe langue
-
-**Probleme** : Les schemas JSON-LD dans `JsonLd.tsx` utilisent des URLs hardcodees sans prefixe langue :
-- `url: 'https://system-compass.app'` (Organization)
-- `url: 'https://system-compass.app'` (Service provider)
-- `url: 'https://system-compass.app'` (WebSite)
-- `urlTemplate` du SearchAction sans prefixe langue
-
-Ces URLs pointent vers la racine qui redirige, pas vers une page de contenu. Pour la coherence avec les canonical dynamiques (`/fr/`, `/en/`), les URLs JSON-LD devraient pointer vers la version localisee.
-
-**Action** : Rendre les URLs JSON-LD dynamiques en utilisant la langue courante via `useTranslation` / `i18n.language`. Les schemas Organization et WebSite utiliseront `https://system-compass.app/{lang}` et le SearchAction utilisera le template localise.
-
----
-
-### Plan d'implementation
-
-1. **Sitemap complet** (`public/sitemap.xml`) - Ajouter ~15 URLs manquantes avec variantes fr/en et hreflang. Ajouter les variantes en/ pour les pages qui n'ont que fr/.
-
-2. **JSON-LD localise** (`src/components/seo/JsonLd.tsx`) - Injecter la langue courante dans les URLs des schemas Organization, Service, WebSite et SoftwareApplication.
+Aucune action requise. Les 8 tickets sont des tickets de non-regression desormais. L'ensemble canonical/og:url/hreflang/JSON-LD est coherent avec la strategie i18n `/${lang}/`.
 
