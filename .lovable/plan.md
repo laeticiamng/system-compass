@@ -1,172 +1,73 @@
 
-# Routing i18n complet avec prefixes de langue
 
-## Vue d'ensemble
+## Audit SEO/GEO - Analyse des 8 tickets
 
-Implementer un systeme de routing avec prefixes de langue (`/fr/about`, `/en/about`, `/es/about`) pour que chaque page ait une URL distincte par langue. Cela permet des hreflang valides et un meilleur SEO multilingue.
+### Statut actuel (deja resolu)
 
-## Architecture
+| Ticket | Description | Statut |
+|--------|-------------|--------|
+| 1 | llms.txt dans HTML statique | FAIT - ligne 17 de index.html |
+| 2 | Meta description optimisee | FAIT - 155 caracteres, positionnement "intelligence decisionnelle" |
+| 3 | og:image 1200x630 | FAIT - image generee + meta og:image:width/height |
+| 5 | AggregateRating fictif | FAIT - hook dynamique useAggregateRating, omis si 0 avis |
+| 6 | lastmod au sitemap | FAIT - toutes les URLs ont lastmod ISO 8601 |
 
-```text
-Avant:  /about           (langue via localStorage/cookie)
-Apres:  /fr/about        (langue dans l'URL)
-        /en/about
-        /es/about
-        /              -> redirect vers /{lang_detectee}/
-```
+### Travail restant (3 tickets)
 
-## Fichiers a modifier/creer
+---
 
-### 1. Nouveau composant : `src/components/i18n/LanguageRouter.tsx`
+#### Ticket 4 - Coherence hreflang
 
-Composant wrapper qui :
-- Lit le parametre `:lang` de l'URL
-- Synchronise i18next avec la langue de l'URL
-- Redirige vers la langue detectee si le prefixe est absent ou invalide
-- Rend les routes enfants
+**Probleme** : `HreflangTags.tsx` genere des balises pour les 13 langues supportees (en, zh, hi, es, ar, pt, fr, de, ja, ru, ko, it, ur). Le routing `/:lang/*` les supporte toutes. Le sitemap ne liste que fr/en.
 
-```text
-<Route path="/:lang/*" element={<LanguageRouter />}>
-  <Route path="" element={<Index />} />
-  <Route path="about" element={<About />} />
-  ...
-</Route>
-<Route path="/" element={<RedirectToLanguage />} />
-```
+**Action** : Le sitemap doit rester fr/en (les seules langues avec contenu traduit complet). Les hreflang dynamiques pour 13 langues sont valides car le routing fonctionne. Pas de 404. Aucun changement requis.
 
-### 2. Nouveau hook : `src/hooks/useLocalizedPath.ts`
+---
 
-Hook utilitaire :
-- `useLocalizedPath()` retourne une fonction `localizedPath(path)` qui prefixe automatiquement la langue courante
-- Exemple : `localizedPath('/about')` retourne `/fr/about`
+#### Ticket 7 - Routes manquantes au sitemap
 
-### 3. Nouveau composant : `src/components/i18n/LocalizedLink.tsx`
+**Probleme** : Plusieurs pages publiques crawlables absentes du sitemap.
 
-Remplacement drop-in de `<Link>` de react-router :
-- Prefixe automatiquement le chemin avec la langue courante
-- API identique a `<Link>` : `<LocalizedLink to="/about">` genere `/fr/about`
+Routes publiques manquantes identifiees (comparaison routes/index.tsx vs sitemap.xml) :
 
-### 4. Modification : `src/routes/index.tsx`
+- `/become-expert` - page publique d'inscription expert
+- `/tools/fiscal-calculator` - calculateur fiscal avance
+- `/tools/fiscal-simulator` - simulateur fiscal
+- `/tools/matcher` - matcher pays
+- `/trace` - journal de trace
+- `/fiscal/special-regimes` - regimes speciaux
+- `/pyramid-types` (variante en/ manquante)
+- `/world-map` (variante en/ manquante)
+- `/compare` (variante en/ manquante)
+- `/profile-test` (variante en/ manquante)
+- `/profile-matcher` (variante en/ manquante)
+- `/life-trajectory` (variante en/ manquante)
+- `/fiscal-calculator` (variante en/ manquante)
+- Plusieurs pages intermediaires sans variante en/ dans le sitemap
 
-- Retirer les prefixes `/` de toutes les routes (garder `about` au lieu de `/about`)
-- Restructurer pour fonctionner avec le routing imbrique sous `/:lang/*`
-- Conserver les redirections legacy avec prefixe langue
+Routes a exclure (internes/admin/auth-protegees) : `dashboard`, `usage`, `settings/*`, `admin/*`, `diagnostics`, `seed-translations`, `subscription-success`, `consultation/*/success`
 
-### 5. Modification : `src/App.tsx`
+**Action** : Ajouter les routes publiques manquantes avec variantes fr/en et hreflang bidirectionnels. Ajouter les variantes en/ manquantes pour les pages existantes.
 
-- Remplacer le rendu plat des routes par un routing imbrique :
-  - `<Route path="/" element={<RedirectToLanguage />} />`
-  - `<Route path="/:lang/*" element={<LanguageRouter />}>`
-  - Routes enfants imbriquees
+---
 
-### 6. Modification : `src/components/LanguageSwitcher.tsx`
+#### Ticket 8 - JSON-LD URLs sans prefixe langue
 
-- Au changement de langue, naviguer vers la meme page avec le nouveau prefixe de langue
-- Exemple : sur `/fr/about`, cliquer sur EN navigue vers `/en/about`
-- Utiliser `useNavigate` + `useLocation` pour reconstruire le chemin
+**Probleme** : Les schemas JSON-LD dans `JsonLd.tsx` utilisent des URLs hardcodees sans prefixe langue :
+- `url: 'https://system-compass.app'` (Organization)
+- `url: 'https://system-compass.app'` (Service provider)
+- `url: 'https://system-compass.app'` (WebSite)
+- `urlTemplate` du SearchAction sans prefixe langue
 
-### 7. Modification : `src/components/seo/HreflangTags.tsx`
+Ces URLs pointent vers la racine qui redirige, pas vers une page de contenu. Pour la coherence avec les canonical dynamiques (`/fr/`, `/en/`), les URLs JSON-LD devraient pointer vers la version localisee.
 
-- Generer un `<link rel="alternate">` pour chacune des 13 langues supportees
-- Chaque lien pointe vers la version linguistique correspondante de la page courante
-- Ajouter `x-default` pointant vers la version anglaise
+**Action** : Rendre les URLs JSON-LD dynamiques en utilisant la langue courante via `useTranslation` / `i18n.language`. Les schemas Organization et WebSite utiliseront `https://system-compass.app/{lang}` et le SearchAction utilisera le template localise.
 
-### 8. Modification : `src/components/Header.tsx` et `src/components/Footer.tsx`
+---
 
-- Remplacer tous les `<Link to="/path">` par `<LocalizedLink to="/path">`
-- Importer `LocalizedLink` au lieu de `Link` de react-router
+### Plan d'implementation
 
-### 9. Modification : `src/i18n.ts`
+1. **Sitemap complet** (`public/sitemap.xml`) - Ajouter ~15 URLs manquantes avec variantes fr/en et hreflang. Ajouter les variantes en/ pour les pages qui n'ont que fr/.
 
-- Ajouter un detecteur de langue URL (`path` detector) en priorite maximale dans l'ordre de detection
-- L'URL prime sur localStorage et le navigateur
+2. **JSON-LD localise** (`src/components/seo/JsonLd.tsx`) - Injecter la langue courante dans les URLs des schemas Organization, Service, WebSite et SoftwareApplication.
 
-### 10. Modification : `public/sitemap.xml`
-
-- Ajouter les variantes de langue pour les pages principales (au minimum fr et en)
-- Utiliser `<xhtml:link rel="alternate" hreflang="fr" href="..."/>` dans chaque `<url>`
-
-### 11. Modification : Pages avec `<Helmet>` (toutes les pages publiques)
-
-- Mettre a jour les URLs canoniques pour inclure le prefixe de langue
-- Mettre a jour les `og:url` pour inclure le prefixe de langue
-- Utiliser un hook pour generer dynamiquement l'URL canonique avec la langue courante
-
-## Strategie de migration
-
-### Compatibilite ascendante
-
-- Les anciennes URLs sans prefixe (`/about`, `/countries`) redirigent automatiquement vers `/{lang_detectee}/about`
-- Le composant `RedirectToLanguage` gere la detection initiale (localStorage > navigateur > defaut `fr`)
-
-### Ordre d'execution
-
-1. Creer `useLocalizedPath` hook et `LocalizedLink` composant
-2. Creer `LanguageRouter` wrapper
-3. Mettre a jour le routeur dans `App.tsx` et `routes/index.tsx`
-4. Mettre a jour `LanguageSwitcher` pour naviguer avec prefixe
-5. Mettre a jour `Header.tsx` et `Footer.tsx` (remplacer Link par LocalizedLink)
-6. Mettre a jour `HreflangTags.tsx` pour generer les 13 alternates
-7. Mettre a jour les Helmets avec URLs canoniques dynamiques
-8. Ajouter le detecteur URL a `i18n.ts`
-9. Mettre a jour le sitemap
-
-## Risques et precautions
-
-- **Volume de changements** : Tous les `<Link>` du projet doivent etre remplaces par `<LocalizedLink>`. Un grep systematique sera fait pour ne rien oublier.
-- **Redirections legacy** : Les anciennes URLs continueront de fonctionner via redirect 302.
-- **SEO** : Les redirections preservent le juice SEO. Les nouvelles URLs canoniques evitent le contenu duplique.
-- **Performance** : Aucun impact - le prefixe est un simple parametre de route React Router.
-
-## Details techniques
-
-### LanguageRouter (pseudo-code)
-
-```text
-function LanguageRouter() {
-  const { lang } = useParams()
-  const { i18n } = useTranslation()
-  
-  // Valider que lang est supporte
-  if (!SUPPORTED_LANGUAGES.includes(lang)) {
-    return <Navigate to={`/${i18n.language}${location.pathname}`} />
-  }
-  
-  // Synchroniser i18n avec l'URL
-  useEffect(() => {
-    if (i18n.language !== lang) {
-      i18n.changeLanguage(lang)
-    }
-  }, [lang])
-  
-  return <Outlet />
-}
-```
-
-### LocalizedLink (pseudo-code)
-
-```text
-function LocalizedLink({ to, ...props }) {
-  const { i18n } = useTranslation()
-  const localTo = `/${i18n.language}${to}`
-  return <Link to={localTo} {...props} />
-}
-```
-
-## Fichiers impactes : ~15-20 fichiers
-
-| Fichier | Action |
-|---------|--------|
-| `src/components/i18n/LanguageRouter.tsx` | Creer |
-| `src/components/i18n/LocalizedLink.tsx` | Creer |
-| `src/hooks/useLocalizedPath.ts` | Creer |
-| `src/App.tsx` | Modifier (routing imbrique) |
-| `src/routes/index.tsx` | Modifier (retirer / prefixes) |
-| `src/components/LanguageSwitcher.tsx` | Modifier (naviguer avec prefixe) |
-| `src/components/seo/HreflangTags.tsx` | Modifier (13 alternates) |
-| `src/components/Header.tsx` | Modifier (LocalizedLink) |
-| `src/components/Footer.tsx` | Modifier (LocalizedLink) |
-| `src/components/navigation/AppSidebar.tsx` | Modifier (LocalizedLink) |
-| `src/i18n.ts` | Modifier (detecteur URL) |
-| `public/sitemap.xml` | Modifier (variantes langues) |
-| Pages avec Helmet (30+) | Modifier (canonical dynamique) |
