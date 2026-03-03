@@ -1,27 +1,27 @@
 
 
-## Audit de non-régression — 8 tickets SEO/GEO
+## Audit de non-régression SEO/GEO — 8 tickets (baseline confirmée)
 
-Tous les 8 tickets sont confirmés résolus. Aucune modification requise.
+Les 8 tickets ont déjà été audités et validés lors de la session précédente. Aucune modification de code n'est requise.
 
-### Résultats par ticket
+### Statut par ticket
 
-| Ticket | Fichier | Statut | Preuve |
-|--------|---------|--------|--------|
-| **T1** llms.txt statique | `index.html:17` | ✅ | `<link rel="alternate" type="text/plain" href="/llms.txt">` dans `<head>` statique |
-| **T2** Meta description | `index.html:13` | ✅ | 155 chars, wording "Intelligence décisionnelle pour l'expatriation" |
-| **T3** OG image 1200x630 | `index.html:24-26` | ✅ | `og-image.png` + `og:image:width=1200` + `og:image:height=630` |
-| **T4** Hreflang cohérent | `HreflangTags.tsx` | ✅ | Alternates via `SUPPORTED_LANGUAGES`, `x-default` vers `/en` (l.21) |
-| **T5** AggregateRating réel | `JsonLd.tsx:114` | ✅ | Conditionné à `rating.reviewCount > 0` — aucune donnée fictive |
-| **T6** Sitemap lastmod | `sitemap.xml:11` | ✅ | `<lastmod>2026-03-01</lastmod>` ISO-8601 sur toutes les URLs |
-| **T7** Sitemap complet | `sitemap.xml` | ✅ | 1006 lignes, hreflang bidirectionnels fr/en, aucune route admin |
-| **T8** JSON-LD URLs localisées | `JsonLd.tsx` | ✅ | Organization, WebSite, Service, SoftwareApplication tous localisés via `${BASE_URL}/${lang}` |
+| # | Item | Fichier | Statut | Preuve |
+|---|------|---------|--------|--------|
+| T1 | `llms.txt` statique | `index.html:17` | ✅ | `<link rel="alternate" type="text/plain" href="/llms.txt">` dans `<head>` |
+| T2 | Meta description ≤160 chars | `index.html:13` | ✅ | 155 caractères, wording aligné branding |
+| T3 | OG image 1200×630 | `index.html:24-26` | ✅ | `og:image` + `og:image:width` + `og:image:height` déclarés |
+| T4 | Hreflang cohérent | `HreflangTags.tsx` | ✅ | `SUPPORTED_LANGUAGES` + `x-default` → `/en` |
+| T5 | AggregateRating réel | `JsonLd.tsx:114` | ✅ | Conditionné `reviewCount > 0`, hook `useAggregateRating` |
+| T6 | Sitemap lastmod ISO | `sitemap.xml` | ✅ | `<lastmod>2026-03-01</lastmod>` sur toutes URLs |
+| T7 | Routes publiques only | `sitemap.xml` | ✅ | 1006 lignes, aucune route admin/protégée |
+| T8 | JSON-LD URLs localisées | `JsonLd.tsx` | ✅ | Tous schemas via `${BASE_URL}/${lang}` |
 
-### Seul point d'attention identifié (hors scope tickets)
+### Point d'attention hors scope
 
-10 URLs de blog individuel dans le sitemap (lignes 926-985) pointent vers des articles non encore créés ("Article non trouvé"). Ce n'est pas un ticket existant, mais un nettoyage recommandé.
+10 URLs blog fantômes dans le sitemap (lignes 926-985) retournent "Article non trouvé" — nettoyage recommandé en P3.
 
 ### Conclusion
 
-Ces 8 tickets constituent désormais la baseline de non-régression SEO. Aucune action corrective nécessaire.
+Aucune action corrective. Cette baseline sert de référence pour tous les audits SEO/GEO futurs.
 
