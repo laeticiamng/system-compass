@@ -1,5 +1,8 @@
 import { Helmet } from 'react-helmet-async';
+import { useTranslation } from 'react-i18next';
 import { useAggregateRating } from '@/hooks/useAggregateRating';
+
+const BASE_URL = 'https://system-compass.app';
 
 interface JsonLdProps {
   data: Record<string, unknown>;
@@ -15,16 +18,19 @@ export function JsonLd({ data }: JsonLdProps) {
   );
 }
 
-// Organization schema for the whole site — GEO-optimized with clear positioning
+// Organization schema — GEO-optimized with localized URL
 export function OrganizationJsonLd() {
+  const { i18n } = useTranslation();
+  const lang = i18n.language;
+
   return (
     <JsonLd data={{
       '@context': 'https://schema.org',
       '@type': 'Organization',
       name: 'System Compass',
       alternateName: 'System Compass - Intelligence Expatriation',
-      url: 'https://system-compass.app',
-      logo: 'https://system-compass.app/icons/icon-512x512.png',
+      url: `${BASE_URL}/${lang}`,
+      logo: `${BASE_URL}/icons/icon-512x512.png`,
       description: 'Plateforme d\'intelligence décisionnelle pour la relocalisation internationale. Analyse systémique de 44+ pays : fiscalité, visas, coût de la vie, structures de pouvoir. Approche unique par profils compatibles plutôt que classements génériques.',
       slogan: 'Comparez les systèmes, pas les clichés.',
       foundingDate: '2025',
@@ -51,14 +57,17 @@ export function OrganizationJsonLd() {
   );
 }
 
-// SoftwareApplication schema — enriched for GEO, with real AggregateRating
+// SoftwareApplication schema — with real AggregateRating and localized URL
 export function SoftwareApplicationJsonLd() {
+  const { i18n } = useTranslation();
+  const lang = i18n.language;
   const { data: rating } = useAggregateRating();
 
   const schemaData: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: 'System Compass',
+    url: `${BASE_URL}/${lang}`,
     description: 'Application web d\'aide à la décision pour l\'expatriation. Compare 44+ pays sur la fiscalité, les visas, le coût de la vie et la qualité de vie. Test de profil gratuit en 2 minutes.',
     applicationCategory: 'LifestyleApplication',
     applicationSubCategory: 'Expatriation & Relocation',
@@ -74,7 +83,7 @@ export function SoftwareApplicationJsonLd() {
       'Marketplace d\'experts en expatriation',
       'Export PDF des analyses',
     ],
-    screenshot: 'https://system-compass.app/og-image.png',
+    screenshot: `${BASE_URL}/og-image.png`,
     offers: [
       {
         '@type': 'Offer',
@@ -102,7 +111,6 @@ export function SoftwareApplicationJsonLd() {
     ],
   };
 
-  // Only include AggregateRating when real reviews exist
   if (rating && rating.reviewCount > 0) {
     schemaData.aggregateRating = {
       '@type': 'AggregateRating',
@@ -116,8 +124,11 @@ export function SoftwareApplicationJsonLd() {
   return <JsonLd data={schemaData} />;
 }
 
-// Service schema — for GEO: what problem we solve
+// Service schema — localized provider URL
 export function ServiceJsonLd() {
+  const { i18n } = useTranslation();
+  const lang = i18n.language;
+
   return (
     <JsonLd data={{
       '@context': 'https://schema.org',
@@ -126,7 +137,7 @@ export function ServiceJsonLd() {
       provider: {
         '@type': 'Organization',
         name: 'System Compass',
-        url: 'https://system-compass.app',
+        url: `${BASE_URL}/${lang}`,
       },
       description: 'Analyse systémique de 44+ pays pour planifier votre expatriation. Comparaison fiscale, visas, coût de la vie, sécurité. Approche par compatibilité de profil.',
       serviceType: 'Aide à la décision expatriation',
@@ -227,7 +238,7 @@ export function BlogPostingJsonLd({ title, description, datePublished, author, u
         name: 'System Compass',
         logo: {
           '@type': 'ImageObject',
-          url: 'https://system-compass.app/icons/icon-512x512.png',
+          url: `${BASE_URL}/icons/icon-512x512.png`,
         },
       },
       url: url,
@@ -235,21 +246,24 @@ export function BlogPostingJsonLd({ title, description, datePublished, author, u
   );
 }
 
-// WebSite schema with SearchAction for sitelinks search
+// WebSite schema with localized SearchAction
 export function WebSiteJsonLd() {
+  const { i18n } = useTranslation();
+  const lang = i18n.language;
+
   return (
     <JsonLd data={{
       '@context': 'https://schema.org',
       '@type': 'WebSite',
       name: 'System Compass',
-      url: 'https://system-compass.app',
+      url: `${BASE_URL}/${lang}`,
       description: 'Plateforme d\'intelligence décisionnelle pour la relocalisation internationale. Compare 44+ pays pour ton expatriation.',
       inLanguage: ['fr', 'en'],
       potentialAction: {
         '@type': 'SearchAction',
         target: {
           '@type': 'EntryPoint',
-          urlTemplate: 'https://system-compass.app/countries?search={search_term_string}',
+          urlTemplate: `${BASE_URL}/${lang}/countries?search={search_term_string}`,
         },
         'query-input': 'required name=search_term_string',
       },
