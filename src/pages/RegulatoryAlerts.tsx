@@ -8,7 +8,8 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Bell, AlertTriangle, Info, CheckCircle2, Globe, Filter,
-  Clock, ExternalLink, ChevronDown, Shield, Zap, TrendingUp
+  Clock, ExternalLink, ChevronDown, Shield, Zap, TrendingUp,
+  Radar, Loader2, Bot
 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -16,6 +17,7 @@ import { Button } from '@/components/ui/button';
 
 import { cn } from '@/lib/utils';
 import { useRealtimeNotifications } from '@/hooks/useRealtimeNotifications';
+import { useGeopoliticalAlerts } from '@/hooks/useGeopoliticalAlerts';
 
 // Mock regulatory alerts data (would come from useLiveCountryIntel in production)
 interface RegulatoryAlert {
@@ -253,15 +255,36 @@ const categoryColors: Record<string, string> = {
 
 export default function RegulatoryAlerts() {
   const { permission, requestPermission, isSupported } = useRealtimeNotifications();
+  const { alerts: aiAlerts, scanning, triggerScan } = useGeopoliticalAlerts();
   const [filter, setFilter] = useState('all');
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
-  const filtered = filter === 'all'
-    ? MOCK_ALERTS
-    : MOCK_ALERTS.filter(a => a.category === filter);
+  // Merge mock alerts with AI-generated alerts
+  const aiAsRegulatory: RegulatoryAlert[] = aiAlerts.map(a => ({
+    id: `ai-${a.id}`,
+    country: a.region,
+    countryCode: a.country_codes?.[0] || '🌍',
+    title: a.title,
+    summary: a.summary + (a.impact_assessment ? `\n\n💡 Impact expats : ${a.impact_assessment}` : ''),
+    category: 'geopolitics' as const,
+    severity: a.severity,
+    date: a.detected_at,
+    source: `IA Perplexity (${a.ai_model || 'sonar-pro'})`,
+    sourceUrl: a.citations?.[0],
+    affectsProfiles: ['entrepreneur', 'investisseur', 'salarié expatrié', 'digital-nomad'],
+    isAI: true,
+    citations: a.citations,
+    confidence: a.ai_confidence,
+  }));
 
-  const criticalCount = MOCK_ALERTS.filter(a => a.severity === 'critical').length;
-  const warningCount = MOCK_ALERTS.filter(a => a.severity === 'warning').length;
+  const allAlerts = [...aiAsRegulatory, ...MOCK_ALERTS];
+
+  const filtered = filter === 'all'
+    ? allAlerts
+    : allAlerts.filter(a => a.category === filter);
+
+  const criticalCount = allAlerts.filter(a => a.severity === 'critical').length;
+  const warningCount = allAlerts.filter(a => a.severity === 'warning').length;
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl space-y-8">
@@ -295,9 +318,40 @@ export default function RegulatoryAlerts() {
           </Badge>
           <Badge variant="outline" className="bg-muted/50">
             <Globe className="w-3 h-3 mr-1" />
-            {MOCK_ALERTS.length} alertes totales
+            {allAlerts.length} alertes totales
           </Badge>
+          {aiAlerts.length > 0 && (
+            <Badge variant="outline" className="bg-purple-500/20 text-purple-400">
+              <Bot className="w-3 h-3 mr-1" />
+              {aiAlerts.length} IA
+            </Badge>
+          )}
         </div>
+
+        {/* AI Scanner CTA */}
+        <Card className="border-purple-500/30 bg-purple-500/5">
+          <CardContent className="p-4 flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <Radar className="w-5 h-5 text-purple-400" />
+              <div>
+                <p className="text-sm font-medium">Scanner IA géopolitique</p>
+                <p className="text-xs text-muted-foreground">
+                  Détection automatique des conflits et tensions via Perplexity AI
+                </p>
+              </div>
+            </div>
+            <Button 
+              size="sm" 
+              variant="outline" 
+              onClick={triggerScan}
+              disabled={scanning}
+              className="gap-1.5 border-purple-500/30 text-purple-400 hover:bg-purple-500/10"
+            >
+              {scanning ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Radar className="w-3.5 h-3.5" />}
+              {scanning ? 'Scan en cours…' : 'Lancer le scan'}
+            </Button>
+          </CardContent>
+        </Card>
 
         {/* Push notification CTA */}
         {isSupported && permission !== 'granted' && (
@@ -375,6 +429,11 @@ export default function RegulatoryAlerts() {
                             <Badge className={sev.badge} variant="secondary">
                               {sev.label}
                             </Badge>
+                            {(alert as any).isAI && (
+                              <Badge variant="secondary" className="bg-purple-500/20 text-purple-300 text-[10px]">
+                                <Bot className="w-2.5 h-2.5 mr-0.5" /> IA
+                              </Badge>
+                            )}
                           </div>
                           <h3 className="font-semibold text-sm leading-tight">{alert.title}</h3>
                         </div>
@@ -426,6 +485,25 @@ export default function RegulatoryAlerts() {
                                 </a>
                               )}
                             </div>
+                            {/* AI Citations */}
+                            {(alert as any).citations?.length > 0 && (
+                              <div className="flex flex-wrap gap-1.5 pt-1">
+                                <span className="text-[10px] text-muted-foreground">Sources IA :</span>
+                                {(alert as any).citations.slice(0, 3).map((url: string, ci: number) => (
+                                  <a
+                                    key={ci}
+                                    href={url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={e => e.stopPropagation()}
+                                    className="text-[10px] text-purple-400 hover:underline flex items-center gap-0.5 max-w-[200px] truncate"
+                                  >
+                                    <ExternalLink className="w-2.5 h-2.5 shrink-0" />
+                                    {new URL(url).hostname}
+                                  </a>
+                                ))}
+                              </div>
+                            )}
                           </div>
                         </motion.div>
                       )}
