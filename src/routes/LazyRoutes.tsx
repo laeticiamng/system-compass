@@ -125,3 +125,7 @@ export const LazyThematicPaths = withSuspense(lazy(() => import('@/pages/Themati
 export const LazyFiscalSimulator = withSuspense(lazy(() => import('@/pages/tools/FiscalSimulatorPage')));
 export const LazyCountryMatcher = withSuspense(lazy(() => import('@/pages/tools/CountryMatcherPage')));
 export const LazyTraceJournal = withSuspense(lazy(() => import('@/pages/TraceJournal')));
+
+// Timeline & Checklist
+export const LazyExpatriationTimeline = withSuspense(lazy(() => import('@/pages/ExpatriationTimeline')));
+export const LazyCountryChecklist = withSuspense(lazy(() => import('@/pages/CountryChecklist')));

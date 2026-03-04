@@ -20,9 +20,9 @@ export function DisclaimerConsentDialog() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-          className="fixed bottom-0 left-0 right-0 z-50 p-3 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] sm:p-6 sm:bottom-4"
+          className="fixed bottom-0 left-0 right-0 z-50 p-3 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] sm:p-6 sm:bottom-4 pointer-events-none"
         >
-          <div className="max-w-2xl mx-auto bg-background border border-border rounded-xl shadow-2xl p-4 sm:p-5">
+          <div className="max-w-2xl mx-auto bg-background border border-border rounded-xl shadow-2xl p-4 sm:p-5 pointer-events-auto">
             <div className="flex items-start gap-3">
               <div className="p-2 rounded-full bg-primary/10 shrink-0">
                 <Scale className="w-5 h-5 text-primary" />

@@ -1207,6 +1207,10 @@
   "countries": {
     "title": "Analyse des Pays",
     "subtitle": "Analyse approfondie des systèmes nationaux. Comprends ce que chaque système récompense, les risques et tes options.",
+    "heroTitle1": "Explore les règles",
+    "heroTitle2": "de chaque système.",
+    "heroSubtitle": "Chaque pays fonctionne selon sa propre logique. Découvre les mécanismes cachés.",
+    "badge": "{{count}} systèmes analysés",
     "allSystems": "Tous les systèmes",
     "noResults": "Aucun pays ne correspond à ce filtre.",
     "explore": "Analyser →",
