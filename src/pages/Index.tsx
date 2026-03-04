@@ -28,6 +28,7 @@ import {
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 import { TestimonialsSection } from '@/components/landing/TestimonialsSection';
 import { FAQPageJsonLd } from '@/components/seo/JsonLd';
+import { HeroMiniDemo } from '@/components/landing/HeroMiniDemo';
 
 export default function Index() {
   const navigate = useNavigate();
@@ -146,12 +147,15 @@ export default function Index() {
             </Button>
           </motion.div>
 
+          {/* Interactive Mini Demo */}
+          <HeroMiniDemo />
+
           {/* Stats rapides */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 0.6 }}
-            className="flex flex-wrap justify-center gap-8 mt-16 text-muted-foreground"
+            transition={{ delay: 1.8, duration: 0.6 }}
+            className="flex flex-wrap justify-center gap-8 mt-10 text-muted-foreground"
           >
             <div className="text-center">
               <span className="block text-3xl font-bold text-foreground">44</span>

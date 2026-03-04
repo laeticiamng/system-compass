@@ -47,7 +47,7 @@ import {
   LazyBlog, LazyBlogArticle, LazyThematicPaths,
   LazyFiscalSimulator, LazyCountryMatcher, LazyTraceJournal,
   LazyExpatriationTimeline, LazyCountryChecklist, LazyFiscalBeforeAfter, LazyChangelog,
-  LazyRegulatoryAlerts, LazyFamilyWorkspace, LazyExpatReviews,
+  LazyRegulatoryAlerts, LazyFamilyWorkspace, LazyExpatReviews, LazyApiDocs,
 } from "@/routes/LazyRoutes";
 
 // ============================================================
@@ -152,6 +152,7 @@ export const contentRoutes = [
   { path: "thematic-paths", element: <LazyThematicPaths /> },
   { path: "changelog", element: <LazyChangelog /> },
   { path: "regulatory-alerts", element: <LazyRegulatoryAlerts /> },
+  { path: "api", element: <LazyApiDocs /> },
 ];
 
 export const adminRoutes = [
