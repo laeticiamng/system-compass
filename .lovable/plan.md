@@ -1,49 +1,46 @@
 
 
-## Audit Complet — System Compass : Etat actuel
+## Plan : Mise a jour geopolitique complete (mars 2026)
 
-### TIER 1 — Bugs ✅ 100%
+Ce plan couvre la mise a jour de toutes les donnees geopolitiques avec les conflits actuels et leurs consequences.
 
-| # | Probleme | Statut |
-|---|----------|--------|
-| **B1** | Skeletons /countries | ✅ FIXE — seed data instant, DB upgrade en background |
-| **B2** | Disclaimer chevauche stats mobile | ✅ FIXE |
-| **B3** | Widget gamification mobile | ✅ FIXE |
-| **B4** | Textes hero en anglais sur /fr/countries | ✅ FIXE |
+### Zones a modifier
 
-### TIER 2 — Features ✅ 100%
+**1. Alertes reglementaires (`src/pages/RegulatoryAlerts.tsx`)**
+Remplacer les 7 alertes mock datees de 2024 par ~15 alertes a jour couvrant :
+- **Guerre Russie-Ukraine** : sanctions renforcees UE/US, gel d'actifs, impact sur les expats en Europe de l'Est, hausse des couts energetiques, consequences sur les visas russes/ukrainiens
+- **Conflit Israel-Gaza/Moyen-Orient** : impact securitaire sur Israel, Liban, Jordanie, alertes voyage, consequences sur Dubai/EAU, perturbations Mer Rouge et commerce mondial
+- **Tensions Taiwan/Chine** : risque pour les expats en Asie-Pacifique, impact sur les chaines d'approvisionnement, consequences pour les visas taiwanais
+- **Soudan / Sahel** : coups d'Etat au Mali/Burkina/Niger, retrait de presences etrangeres, risques pour les expats en Afrique de l'Ouest
+- **Myanmar** : guerre civile, sanctions, consequences pour les pays voisins (Thailande, Inde)
+- Ajout de la categorie `'geopolitics'` aux filtres
 
-| # | Feature | Statut |
-|---|---------|--------|
-| **F1** | Timeline expatriation interactive | ✅ /expatriation-timeline |
-| **F2** | Checklist administrative par pays | ✅ /checklist |
-| **F3** | Comparaison avant/après chiffrée | ✅ /fiscal-before-after |
-| **F4** | Alertes réglementaires temps réel | ✅ /regulatory-alerts |
-| **F5** | Mode collaboration / famille | ✅ /family-workspace |
-| **F6** | Social proof réel (reviews expatriés) | ✅ /expat-reviews |
+**2. Analyse geopolitique academique (`src/components/academic/GeopoliticalAnalysis.tsx`)**
+Mettre a jour les donnees mock :
+- `mockGeopoliticalRisks` : ajouter les conflits actifs (Ukraine, Moyen-Orient, Sahel, Myanmar, tensions Chine-Taiwan) avec probabilites et impacts recalibres pour 2026
+- `mockPowerIndices` : ajuster les scores France (hausse defense post-Ukraine, baisse stabilite politique)
+- `mockInstitutionalIndicators` : mettre a jour les annees (2025-2026)
 
-### TIER 3 — UX/Design ✅ 90%
+**3. Donnees pays en seed (`src/lib/countries-seed.ts`, `expansion-countries.ts`, `additional-countries.ts`)**
+Mettre a jour les champs `risks` (safety, volatility) pour les pays directement impactes par des conflits :
+- Ukraine, Israel, Myanmar, Soudan : safety et volatility a 80-95
+- Pays voisins (Pologne, Jordanie, Liban, Thailande, Tchad) : ajustements de +10-20 sur safety/volatility
+- Mettre a jour les `visa.notes` pour refleter les restrictions actuelles
 
-| # | Probleme | Statut |
-|---|----------|--------|
-| **U1** | Navigation simplifiée | ✅ 6 entrées header + groupes sidebar |
-| **U2** | Wow moment hero interactif | ✅ HeroMiniDemo animé |
-| **U3** | Hiérarchie 4 parcours | ✅ Découvrir → Planifier |
-| **U4** | Traductions manquantes | ✅ FIXE |
+**4. Changelog (`src/pages/Changelog.tsx`)**
+Ajouter une entree `v7.3.0` "Mise a jour geopolitique mars 2026" documentant toutes les modifications
 
-### TIER 4 — Stratégie ✅ 90%
+### Details techniques
 
-| # | Levier | Statut |
-|---|--------|--------|
-| **S1** | API publique documentée | ✅ /api |
-| **S2** | Contenu utilisateur | Partiel — reviews statiques, pas de UGC temps réel |
-| **S3** | PWA offline | ✅ StaleWhileRevalidate countries + seed instant |
-| **S4** | Webhooks B2B | ✅ /webhooks |
-| **S5** | Changelog public | ✅ /changelog |
+- Aucun changement de schema DB requis — toutes les modifications sont dans le code frontend (donnees seed et mock)
+- Ajout du filtre `geopolitics` dans les categories d'alertes reglementaires
+- ~4 fichiers modifies, aucun fichier cree
+- Les donnees DB seront mises a jour via la prochaine synchronisation seed → DB
 
-### TIER 5 — Données ✅ 85%
+### Volume estime
 
-| # | Manque | Statut |
-|---|--------|--------|
-| **D1** | 72 pays sur 195 | ✅ De 44 à 72 pays (+28 ajoutés) |
-| **D2** | Données sourcées | ✅ Attribution source+date sur fiches pays |
+- 15 nouvelles alertes geopolitiques avec sources
+- 8-10 risques geopolitiques mis a jour dans le module academique
+- 15-20 pays avec scores de risques ajustes
+- 1 entree changelog
+
