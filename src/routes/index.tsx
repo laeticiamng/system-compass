@@ -48,6 +48,7 @@ import {
   LazyFiscalSimulator, LazyCountryMatcher, LazyTraceJournal,
   LazyExpatriationTimeline, LazyCountryChecklist, LazyFiscalBeforeAfter, LazyChangelog,
   LazyRegulatoryAlerts, LazyFamilyWorkspace, LazyExpatReviews, LazyApiDocs,
+  LazyWebhooksDocs,
 } from "@/routes/LazyRoutes";
 
 // ============================================================
@@ -153,6 +154,7 @@ export const contentRoutes = [
   { path: "changelog", element: <LazyChangelog /> },
   { path: "regulatory-alerts", element: <LazyRegulatoryAlerts /> },
   { path: "api", element: <LazyApiDocs /> },
+  { path: "webhooks", element: <LazyWebhooksDocs /> },
 ];
 
 export const adminRoutes = [
