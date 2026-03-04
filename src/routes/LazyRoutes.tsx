@@ -129,3 +129,5 @@ export const LazyTraceJournal = withSuspense(lazy(() => import('@/pages/TraceJou
 // Timeline & Checklist
 export const LazyExpatriationTimeline = withSuspense(lazy(() => import('@/pages/ExpatriationTimeline')));
 export const LazyCountryChecklist = withSuspense(lazy(() => import('@/pages/CountryChecklist')));
+export const LazyFiscalBeforeAfter = withSuspense(lazy(() => import('@/pages/FiscalBeforeAfter')));
+export const LazyChangelog = withSuspense(lazy(() => import('@/pages/Changelog')));
