@@ -48,7 +48,7 @@ import {
   LazyFiscalSimulator, LazyCountryMatcher, LazyTraceJournal,
   LazyExpatriationTimeline, LazyCountryChecklist, LazyFiscalBeforeAfter, LazyChangelog,
   LazyRegulatoryAlerts, LazyFamilyWorkspace, LazyExpatReviews, LazyApiDocs,
-  LazyWebhooksDocs,
+  LazyWebhooksDocs, LazyLifeSimulator,
 } from "@/routes/LazyRoutes";
 
 // ============================================================
@@ -155,6 +155,7 @@ export const contentRoutes = [
   { path: "regulatory-alerts", element: <LazyRegulatoryAlerts /> },
   { path: "api", element: <LazyApiDocs /> },
   { path: "webhooks", element: <LazyWebhooksDocs /> },
+  { path: "life-simulator", element: <LazyLifeSimulator /> },
 ];
 
 export const adminRoutes = [
@@ -227,4 +228,5 @@ export const LEGACY_ROUTE_SEGMENTS = [
   'admin', 'seed-translations', 'diagnostics',
   'match', 'multi-compare', 'systemic-mistakes', 'orientation-hub',
   'test', 'login', 'map', 'strategies', 'profile', 'game', 'matcher', 'legal',
+  'life-simulator',
 ];
