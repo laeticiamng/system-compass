@@ -46,6 +46,7 @@ import {
   LazyPartnerIntegrations, LazyCommunity,
   LazyBlog, LazyBlogArticle, LazyThematicPaths,
   LazyFiscalSimulator, LazyCountryMatcher, LazyTraceJournal,
+  LazyExpatriationTimeline, LazyCountryChecklist,
 } from "@/routes/LazyRoutes";
 
 // ============================================================
@@ -89,6 +90,8 @@ export const planningRoutes = [
   { path: "prevention-filter", element: <LazyPreventionFilter /> },
   { path: "errors-illusions", element: <LazyErrorsAndIllusions /> },
   { path: "universal-errors/:id", element: <LazyUniversalErrorDetail /> },
+  { path: "expatriation-timeline", element: <LazyExpatriationTimeline /> },
+  { path: "checklist", element: <LazyCountryChecklist /> },
 ];
 
 export const learningRoutes = [
