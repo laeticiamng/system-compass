@@ -132,3 +132,5 @@ export const LazyCountryChecklist = withSuspense(lazy(() => import('@/pages/Coun
 export const LazyFiscalBeforeAfter = withSuspense(lazy(() => import('@/pages/FiscalBeforeAfter')));
 export const LazyChangelog = withSuspense(lazy(() => import('@/pages/Changelog')));
 export const LazyRegulatoryAlerts = withSuspense(lazy(() => import('@/pages/RegulatoryAlerts')));
+export const LazyFamilyWorkspace = withSuspense(lazy(() => import('@/pages/FamilyWorkspace')));
+export const LazyExpatReviews = withSuspense(lazy(() => import('@/pages/ExpatReviews')));
