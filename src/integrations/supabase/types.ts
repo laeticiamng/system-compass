@@ -4625,6 +4625,152 @@ export type Database = {
         }
         Relationships: []
       }
+      ugc_country_reviews: {
+        Row: {
+          cons: string[] | null
+          content: string
+          country_id: string
+          created_at: string
+          duration_months: number | null
+          from_country: string | null
+          helpful_count: number
+          id: string
+          is_verified: boolean
+          profile_type: string
+          pros: string[] | null
+          rating_admin: number | null
+          rating_cost: number | null
+          rating_integration: number | null
+          rating_overall: number
+          rating_quality_life: number | null
+          rating_safety: number | null
+          status: string
+          tags: string[] | null
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          cons?: string[] | null
+          content: string
+          country_id: string
+          created_at?: string
+          duration_months?: number | null
+          from_country?: string | null
+          helpful_count?: number
+          id?: string
+          is_verified?: boolean
+          profile_type?: string
+          pros?: string[] | null
+          rating_admin?: number | null
+          rating_cost?: number | null
+          rating_integration?: number | null
+          rating_overall: number
+          rating_quality_life?: number | null
+          rating_safety?: number | null
+          status?: string
+          tags?: string[] | null
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          cons?: string[] | null
+          content?: string
+          country_id?: string
+          created_at?: string
+          duration_months?: number | null
+          from_country?: string | null
+          helpful_count?: number
+          id?: string
+          is_verified?: boolean
+          profile_type?: string
+          pros?: string[] | null
+          rating_admin?: number | null
+          rating_cost?: number | null
+          rating_integration?: number | null
+          rating_overall?: number
+          rating_quality_life?: number | null
+          rating_safety?: number | null
+          status?: string
+          tags?: string[] | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      ugc_journal_entries: {
+        Row: {
+          content: string
+          country_id: string
+          created_at: string
+          id: string
+          is_public: boolean
+          month_number: number | null
+          mood: string | null
+          tags: string[] | null
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          content: string
+          country_id: string
+          created_at?: string
+          id?: string
+          is_public?: boolean
+          month_number?: number | null
+          mood?: string | null
+          tags?: string[] | null
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          country_id?: string
+          created_at?: string
+          id?: string
+          is_public?: boolean
+          month_number?: number | null
+          mood?: string | null
+          tags?: string[] | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      ugc_review_votes: {
+        Row: {
+          created_at: string
+          id: string
+          review_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          review_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          review_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ugc_review_votes_review_id_fkey"
+            columns: ["review_id"]
+            isOneToOne: false
+            referencedRelation: "ugc_country_reviews"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       ui_translations: {
         Row: {
           created_at: string
