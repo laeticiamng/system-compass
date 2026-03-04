@@ -47,7 +47,7 @@ import {
   LazyBlog, LazyBlogArticle, LazyThematicPaths,
   LazyFiscalSimulator, LazyCountryMatcher, LazyTraceJournal,
   LazyExpatriationTimeline, LazyCountryChecklist, LazyFiscalBeforeAfter, LazyChangelog,
-  LazyRegulatoryAlerts,
+  LazyRegulatoryAlerts, LazyFamilyWorkspace, LazyExpatReviews,
 } from "@/routes/LazyRoutes";
 
 // ============================================================
@@ -107,6 +107,7 @@ export const userRoutes = [
   { path: "dashboard", element: <LazyDashboard /> },
   { path: "usage", element: <LazyUsage /> },
   { path: "settings/notifications", element: <LazyNotificationSettings /> },
+  { path: "family-workspace", element: <LazyFamilyWorkspace /> },
 ];
 
 export const proRoutes = [
@@ -121,6 +122,7 @@ export const proRoutes = [
 export const communityRoutes = [
   { path: "partner-services", element: <LazyPartnerIntegrations /> },
   { path: "community", element: <LazyCommunity /> },
+  { path: "expat-reviews", element: <LazyExpatReviews /> },
 ];
 
 export const terrainRoutes = [
