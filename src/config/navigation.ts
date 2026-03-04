@@ -8,7 +8,7 @@ import {
   Compass, Map, Globe, Key, Users,
   BarChart3, BookOpen, LayoutDashboard, CreditCard,
   Zap, FileText, Bell, Home, Wrench,
-  Info, Settings, type LucideIcon
+  Info, Settings, AlertTriangle, Clock, type LucideIcon
 } from 'lucide-react';
 
 // ============================================================
@@ -86,6 +86,21 @@ export const NAV_GROUPS: NavGroup[] = [
       { href: '/countries', icon: Map, label: 'Catalogue Pays', labelKey: 'nav.countries', description: '44 pays analysés en profondeur' },
       { href: '/exit-keys', icon: Key, label: 'Stratégies', labelKey: 'nav.exitKeys', description: 'Stratégies de sortie' },
       { href: '/quick-test', icon: Zap, label: 'Quick Test', labelKey: 'nav.quickTest', description: 'Test rapide 2min' },
+    ],
+  },
+  {
+    id: 'plan',
+    title: 'Planifier',
+    titleKey: 'nav.groups.plan',
+    description: 'Préparer concrètement votre expatriation',
+    icon: Clock,
+    color: 'from-emerald-500/20 to-green-500/20',
+    borderColor: 'border-emerald-500/30',
+    items: [
+      { href: '/expatriation-timeline', icon: Clock, label: 'Timeline', labelKey: 'nav.timeline', description: 'J-180 à J+90' },
+      { href: '/checklist', icon: BookOpen, label: 'Checklist', labelKey: 'nav.checklist', description: 'Admin par pays' },
+      { href: '/fiscal-before-after', icon: BarChart3, label: 'Avant/Après', labelKey: 'nav.beforeAfter', description: 'Comparaison fiscale' },
+      { href: '/regulatory-alerts', icon: AlertTriangle, label: 'Alertes', labelKey: 'nav.alerts', description: 'Veille réglementaire', badge: 'Live' },
     ],
   },
 ];
