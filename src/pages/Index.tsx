@@ -29,6 +29,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/
 import { TestimonialsSection } from '@/components/landing/TestimonialsSection';
 import { FAQPageJsonLd } from '@/components/seo/JsonLd';
 import { HeroMiniDemo } from '@/components/landing/HeroMiniDemo';
+import { ConflictZonesMap } from '@/components/landing/ConflictZonesMap';
 
 export default function Index() {
   const navigate = useNavigate();
@@ -296,7 +297,10 @@ export default function Index() {
         </div>
       </section>
 
-      {/* ========== EN CHIFFRES ========== */}
+      {/* ========== ZONES DE CONFLIT ========== */}
+      <ConflictZonesMap />
+
+      {/* ========== TÉMOIGNAGES ========== */}
       <TestimonialsSection />
 
       {/* ========== PRICING RAPIDE ========== */}
