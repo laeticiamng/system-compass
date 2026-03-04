@@ -46,7 +46,7 @@ import {
   LazyPartnerIntegrations, LazyCommunity,
   LazyBlog, LazyBlogArticle, LazyThematicPaths,
   LazyFiscalSimulator, LazyCountryMatcher, LazyTraceJournal,
-  LazyExpatriationTimeline, LazyCountryChecklist,
+  LazyExpatriationTimeline, LazyCountryChecklist, LazyFiscalBeforeAfter, LazyChangelog,
 } from "@/routes/LazyRoutes";
 
 // ============================================================
@@ -80,6 +80,7 @@ export const analysisRoutes = [
   { path: "life-trajectory", element: <LazyLifeTrajectory /> },
   { path: "profile-matcher", element: <LazyProfileMatcher /> },
   { path: "fiscal-calculator", element: <LazyFiscalCalculator /> },
+  { path: "fiscal-before-after", element: <LazyFiscalBeforeAfter /> },
 ];
 
 export const planningRoutes = [
@@ -146,6 +147,7 @@ export const contentRoutes = [
   { path: "blog", element: <LazyBlog /> },
   { path: "blog/:slug", element: <LazyBlogArticle /> },
   { path: "thematic-paths", element: <LazyThematicPaths /> },
+  { path: "changelog", element: <LazyChangelog /> },
 ];
 
 export const adminRoutes = [
