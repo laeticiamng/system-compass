@@ -40,6 +40,18 @@ const TYPE_CONFIG: Record<ChangeType, { icon: React.ComponentType<{ className?: 
 const CHANGELOG: ChangelogEntry[] = [
   {
     date: '2026-03-04',
+    version: 'v7.3.0',
+    changes: [
+      { type: 'data', text: 'Mise à jour géopolitique complète mars 2026 — 8 conflits actifs intégrés (Ukraine, Gaza, Sahel, Myanmar, Soudan, Taïwan)' },
+      { type: 'data', text: 'Recalibration des scores de risques pour la Russie (safety 55→80, volatility 85→92), la Pologne (volatility 35→45) et notes visa actualisées' },
+      { type: 'feature', text: 'Nouveau filtre « Géopolitique » dans les alertes réglementaires — 15 alertes géopolitiques avec sources' },
+      { type: 'improvement', text: 'Module académique GeopoliticalAnalysis recalibré — indices de puissance France post-Ukraine, 8 risques géopolitiques détaillés' },
+      { type: 'data', text: 'Indicateurs institutionnels mis à jour 2025-2026 (CPI, Rule of Law, Political Stability, HDI)' },
+      { type: 'security', text: 'Alertes de sécurité critique pour Ukraine, Soudan, Myanmar, Sahel — zones déconseillées documentées' },
+    ],
+  },
+  {
+    date: '2026-03-04',
     version: 'v7.2.0',
     changes: [
       { type: 'feature', text: 'Page Timeline d\'expatriation interactive — parcours J-180 → J+90 avec réversibilité' },
