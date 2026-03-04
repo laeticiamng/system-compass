@@ -1,11 +1,12 @@
-import { useEffect, useMemo, useState, useSyncExternalStore } from 'react';
+import { useEffect, useMemo, useSyncExternalStore } from 'react';
 import type { Country, PyramidType } from './types';
 import { countriesSeed } from './countries-seed';
 import { supabase } from '@/integrations/supabase/client';
 
 const listeners = new Set<() => void>();
-let countriesCache: Country[] = [];
+let countriesCache: Country[] = countriesSeed; // Start with seed data immediately
 let hasLoaded = false;
+let isUpgrading = false;
 let dataVersion = 0;
 
 function notifyListeners() {
@@ -50,31 +51,27 @@ function transformDbCountry(row: Record<string, unknown>): Country {
 }
 
 export async function loadCountries(): Promise<void> {
-  if (hasLoaded) return;
+  if (hasLoaded || isUpgrading) return;
+  isUpgrading = true;
 
   try {
-    // Try to load from database first
+    // Seed data is already in cache, try to upgrade from DB
     const { data, error } = await supabase
       .from('countries')
       .select('*')
       .order('name');
 
-    if (error) {
-      console.warn('Failed to load countries from database, using seed data:', error.message);
-      countriesCache = countriesSeed;
-    } else if (data && data.length > 0) {
+    if (!error && data && data.length > 0) {
       countriesCache = data.map(transformDbCountry);
       dataVersion = Math.max(...data.map(d => (d as Record<string, unknown>).data_version as number || 1));
-    } else {
-      // Database empty, use seed data
-      countriesCache = countriesSeed;
     }
+    // If DB fails or is empty, seed data is already in cache
   } catch (err) {
-    console.warn('Error loading countries, falling back to seed:', err);
-    countriesCache = countriesSeed;
+    console.warn('DB upgrade failed, using seed data:', err);
   }
 
   hasLoaded = true;
+  isUpgrading = false;
   notifyListeners();
 }
 
@@ -88,32 +85,13 @@ export function getDataVersion(): number {
 
 export function useCountries() {
   const countries = useSyncExternalStore(subscribeCountries, getCountriesSnapshot);
-  const [isLoading, setIsLoading] = useState(!hasLoaded);
-  const [error, setError] = useState<Error | null>(null);
+  const isLoading = false; // Never show loading — seed data is instant
+  const error = null as Error | null;
 
   useEffect(() => {
-    let isMounted = true;
-
     if (!hasLoaded) {
-      setIsLoading(true);
-      loadCountries()
-        .catch(loadError => {
-          if (isMounted) {
-            setError(loadError as Error);
-          }
-        })
-        .finally(() => {
-          if (isMounted) {
-            setIsLoading(false);
-          }
-        });
-    } else {
-      setIsLoading(false);
+      loadCountries().catch(e => console.warn('Countries load error:', e));
     }
-
-    return () => {
-      isMounted = false;
-    };
   }, []);
 
   return {

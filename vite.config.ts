@@ -42,6 +42,15 @@ export default defineConfig(({ mode }) => ({
             },
           },
           {
+            urlPattern: /^https:\/\/.*\.supabase\.co\/rest\/v1\/countries.*/i,
+            handler: "StaleWhileRevalidate",
+            options: {
+              cacheName: "supabase-countries-cache",
+              expiration: { maxEntries: 50, maxAgeSeconds: 60 * 60 * 24 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+          {
             urlPattern: /^https:\/\/.*\.supabase\.co\/rest\/v1\/.*/i,
             handler: "NetworkFirst",
             options: {
