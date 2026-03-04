@@ -923,66 +923,7 @@
     <priority>0.8</priority>
   </url>
 
-  <url>
-    <loc>https://system-compass.app/fr/blog/guide-complet-expatriation</loc>
-    <lastmod>2026-03-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://system-compass.app/fr/blog/fiscalite-expatries-residence-fiscale</loc>
-    <lastmod>2026-03-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://system-compass.app/fr/blog/digital-nomad-meilleurs-pays</loc>
-    <lastmod>2026-03-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://system-compass.app/fr/blog/expatriation-famille-enfants</loc>
-    <lastmod>2026-03-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://system-compass.app/fr/blog/pieges-juridiques-expatriation</loc>
-    <lastmod>2026-03-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://system-compass.app/fr/blog/portugal-guide-installation</loc>
-    <lastmod>2026-03-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://system-compass.app/fr/blog/retraite-etranger-destinations</loc>
-    <lastmod>2026-03-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://system-compass.app/fr/blog/assurance-sante-expatrie</loc>
-    <lastmod>2026-03-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://system-compass.app/fr/blog/creer-entreprise-etranger</loc>
-    <lastmod>2026-03-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://system-compass.app/fr/blog/choc-culturel-adaptation</loc>
-    <lastmod>2026-03-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+  <!-- Ghost blog URLs removed: articles don't exist yet -->
 
   <!-- Thematic Paths -->
   <url>

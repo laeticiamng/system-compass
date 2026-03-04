@@ -4,11 +4,12 @@
  */
 
 import { useLocation, Link } from 'react-router-dom';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowRight, Map, Key, Scale, Gamepad2, User,
-  BarChart3, Shield, Target, Building2, BookOpen, Zap, Award
+  BarChart3, Shield, Target, Building2, BookOpen, Zap, Award, X
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -87,6 +88,11 @@ const DEFAULT_SHORTCUTS: ShortcutDef[] = [
 export function ContextualShortcuts() {
   const { t } = useTranslation();
   const location = useLocation();
+  const [dismissed, setDismissed] = useState(() => {
+    try {
+      return sessionStorage.getItem('shortcuts-dismissed') === 'true';
+    } catch { return false; }
+  });
 
   const getShortcuts = (): ShortcutDef[] => {
     if (CONTEXTUAL_SHORTCUTS[location.pathname]) {
@@ -102,8 +108,20 @@ export function ContextualShortcuts() {
 
   const shortcuts = getShortcuts();
 
+  // Check if user has completed the quick test
+  const hasCompletedQuickTest = (() => {
+    try {
+      return !!localStorage.getItem('quick-test-result') || !!localStorage.getItem('profile-test-result');
+    } catch { return false; }
+  })();
+
+  // Hide on landing pages and until quick test is done
   const hiddenRoutes = ['/', '/tools', '/experts', '/marketplace', '/partner'];
-  if (hiddenRoutes.some(route => location.pathname === route || location.pathname.startsWith(route + '/'))) {
+  if (
+    dismissed ||
+    !hasCompletedQuickTest ||
+    hiddenRoutes.some(route => location.pathname === route || location.pathname.startsWith(route + '/'))
+  ) {
     return null;
   }
 
@@ -116,9 +134,20 @@ export function ContextualShortcuts() {
         className="fixed bottom-20 right-4 z-40 hidden md:block"
       >
         <div className="bg-background/95 backdrop-blur-sm border border-border/50 rounded-xl shadow-lg p-3 space-y-2 max-w-[200px]">
-          <p className="text-xs text-muted-foreground font-medium px-1">
-            {t('shortcuts.nextSteps', 'Prochaines étapes')}
-          </p>
+          <div className="flex items-center justify-between px-1">
+            <p className="text-xs text-muted-foreground font-medium">
+              {t('shortcuts.nextSteps', 'Prochaines étapes')}
+            </p>
+            <button
+              onClick={() => {
+                setDismissed(true);
+                try { sessionStorage.setItem('shortcuts-dismissed', 'true'); } catch {}
+              }}
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+          </div>
           <div className="space-y-1">
             {shortcuts.map((shortcut, index) => {
               const Icon = shortcut.icon;
