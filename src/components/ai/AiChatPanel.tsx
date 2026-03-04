@@ -1,9 +1,11 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { X, Send, MessageCircle, Sparkles, Loader2, Trash2 } from 'lucide-react';
+import { X, Send, MessageCircle, Sparkles, Trash2, User, MapPin, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { Badge } from '@/components/ui/badge';
 import { useAuth } from '@/hooks/useAuth';
+import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
 import ReactMarkdown from 'react-markdown';
@@ -13,12 +15,39 @@ type ChatMessage = { role: 'user' | 'assistant'; content: string };
 
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/ai-chat`;
 
-const SUGGESTIONS = [
-  "Quels pays sont idéaux pour un freelance français ?",
-  "Compare le Portugal et la Thaïlande pour un digital nomad",
-  "Quelles démarches pour s'installer au Canada ?",
-  "Quel pays a la fiscalité la plus avantageuse en Europe ?",
-];
+interface UserProfile {
+  display_name: string | null;
+  current_country: string | null;
+  nationalities: string[] | null;
+  profession_id: string | null;
+  motor_profile: string | null;
+  desired_life: string | null;
+}
+
+function getPersonalizedSuggestions(profile: UserProfile | null, watchlist: string[]): string[] {
+  const base = [
+    "Quels pays sont idéaux pour mon profil ?",
+    "Quelles démarches administratives dois-je prévoir ?",
+  ];
+
+  if (watchlist.length > 0) {
+    const country = watchlist[0];
+    base.unshift(`Donne-moi un résumé complet de ${country} pour mon expatriation`);
+    if (watchlist.length > 1) {
+      base.push(`Compare ${watchlist[0]} et ${watchlist[1]} pour ma situation`);
+    }
+  }
+
+  if (profile?.profession_id) {
+    base.push(`Quels pays offrent les meilleures opportunités pour un ${profile.profession_id} ?`);
+  }
+
+  if (profile?.current_country) {
+    base.push(`Quelles sont les étapes pour quitter ${profile.current_country} ?`);
+  }
+
+  return base.slice(0, 4);
+}
 
 export function AiChatPanel() {
   const { user } = useAuth();
@@ -26,8 +55,42 @@ export function AiChatPanel() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [profile, setProfile] = useState<UserProfile | null>(null);
+  const [watchlist, setWatchlist] = useState<string[]>([]);
+  const [contextLoaded, setContextLoaded] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  // Fetch user context when panel opens
+  useEffect(() => {
+    if (!isOpen || !user || contextLoaded) return;
+
+    const fetchContext = async () => {
+      try {
+        const [profileRes, watchlistRes] = await Promise.all([
+          supabase
+            .from('profiles')
+            .select('display_name, current_country, nationalities, profession_id, motor_profile, desired_life')
+            .eq('id', user.id)
+            .maybeSingle(),
+          supabase
+            .from('user_country_watchlist')
+            .select('country_id')
+            .eq('user_id', user.id)
+            .limit(20),
+        ]);
+
+        if (profileRes.data) setProfile(profileRes.data);
+        if (watchlistRes.data) setWatchlist(watchlistRes.data.map(w => w.country_id));
+        setContextLoaded(true);
+      } catch {
+        // Non-blocking
+        setContextLoaded(true);
+      }
+    };
+
+    fetchContext();
+  }, [isOpen, user, contextLoaded]);
 
   // Auto-scroll to bottom
   useEffect(() => {
@@ -38,16 +101,17 @@ export function AiChatPanel() {
   }, [messages]);
 
   const streamChat = useCallback(async (allMessages: ChatMessage[]) => {
+    // Get the session token for server-side auth
+    const { data: { session } } = await supabase.auth.getSession();
+    const token = session?.access_token || import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+
     const resp = await fetch(CHAT_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+        Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({
-        messages: allMessages,
-        userContext: user ? { id: user.id, email: user.email } : undefined,
-      }),
+      body: JSON.stringify({ messages: allMessages }),
     });
 
     if (!resp.ok) {
@@ -123,7 +187,7 @@ export function AiChatPanel() {
         } catch { /* ignore */ }
       }
     }
-  }, [user]);
+  }, []);
 
   const send = async (text?: string) => {
     const msg = text || input.trim();
@@ -155,6 +219,9 @@ export function AiChatPanel() {
     setMessages([]);
   };
 
+  const suggestions = getPersonalizedSuggestions(profile, watchlist);
+  const hasContext = profile?.display_name || watchlist.length > 0;
+
   return (
     <>
       {/* Floating button */}
@@ -169,10 +236,13 @@ export function AiChatPanel() {
             <Button
               onClick={() => setIsOpen(true)}
               size="lg"
-              className="rounded-full w-14 h-14 shadow-lg bg-primary hover:bg-primary/90 p-0"
+              className="rounded-full w-14 h-14 shadow-lg bg-primary hover:bg-primary/90 p-0 relative"
               aria-label="Ouvrir l'assistant IA"
             >
               <MessageCircle className="w-6 h-6" />
+              {user && (
+                <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-primary/80 rounded-full border-2 border-background" />
+              )}
             </Button>
           </motion.div>
         )}
@@ -195,8 +265,14 @@ export function AiChatPanel() {
                   <Sparkles className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h2 className="font-semibold text-sm">Coach Expatriation IA</h2>
-                  <p className="text-xs text-muted-foreground">Posez toutes vos questions</p>
+                  <h2 className="font-semibold text-sm">
+                    {profile?.display_name
+                      ? `Coach de ${profile.display_name}`
+                      : 'Coach Expatriation IA'}
+                  </h2>
+                  <p className="text-xs text-muted-foreground">
+                    {hasContext ? 'Contexte personnalisé actif' : 'Posez toutes vos questions'}
+                  </p>
                 </div>
               </div>
               <div className="flex items-center gap-1">
@@ -211,19 +287,50 @@ export function AiChatPanel() {
               </div>
             </div>
 
+            {/* Context badges */}
+            {hasContext && messages.length === 0 && (
+              <div className="px-4 pt-3 flex flex-wrap gap-1.5">
+                {profile?.current_country && (
+                  <Badge variant="secondary" className="text-[10px] gap-1">
+                    <MapPin className="w-3 h-3" />
+                    {profile.current_country}
+                  </Badge>
+                )}
+                {profile?.profession_id && (
+                  <Badge variant="secondary" className="text-[10px] gap-1">
+                    <User className="w-3 h-3" />
+                    {profile.profession_id}
+                  </Badge>
+                )}
+                {watchlist.length > 0 && (
+                  <Badge variant="secondary" className="text-[10px] gap-1">
+                    <Globe className="w-3 h-3" />
+                    {watchlist.length} pays suivis
+                  </Badge>
+                )}
+              </div>
+            )}
+
             {/* Messages */}
             <ScrollArea className="flex-1" ref={scrollRef}>
               <div className="p-4 space-y-4">
                 {messages.length === 0 && (
-                  <div className="space-y-4 pt-4">
+                  <div className="space-y-4 pt-2">
                     <div className="text-center">
                       <Sparkles className="w-10 h-10 text-primary mx-auto mb-3 opacity-50" />
-                      <p className="text-sm text-muted-foreground mb-4">
-                        Je suis votre coach IA en expatriation. Comment puis-je vous aider ?
+                      <p className="text-sm text-muted-foreground mb-1">
+                        {profile?.display_name
+                          ? `Bonjour ${profile.display_name} 👋`
+                          : 'Bonjour 👋'}
+                      </p>
+                      <p className="text-xs text-muted-foreground mb-4">
+                        {hasContext
+                          ? 'Je connais votre profil et vos pays favoris. Comment puis-je vous aider ?'
+                          : 'Je suis votre coach IA en expatriation. Comment puis-je vous aider ?'}
                       </p>
                     </div>
                     <div className="grid gap-2">
-                      {SUGGESTIONS.map((s, i) => (
+                      {suggestions.map((s, i) => (
                         <button
                           key={i}
                           onClick={() => send(s)}
@@ -266,7 +373,11 @@ export function AiChatPanel() {
                 {isLoading && messages[messages.length - 1]?.role !== 'assistant' && (
                   <div className="flex justify-start">
                     <div className="bg-muted rounded-2xl rounded-bl-md px-4 py-3">
-                      <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />
+                      <div className="flex gap-1">
+                        <span className="w-2 h-2 bg-muted-foreground/40 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                        <span className="w-2 h-2 bg-muted-foreground/40 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                        <span className="w-2 h-2 bg-muted-foreground/40 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                      </div>
                     </div>
                   </div>
                 )}
