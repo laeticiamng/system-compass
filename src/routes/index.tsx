@@ -47,6 +47,7 @@ import {
   LazyBlog, LazyBlogArticle, LazyThematicPaths,
   LazyFiscalSimulator, LazyCountryMatcher, LazyTraceJournal,
   LazyExpatriationTimeline, LazyCountryChecklist, LazyFiscalBeforeAfter, LazyChangelog,
+  LazyRegulatoryAlerts,
 } from "@/routes/LazyRoutes";
 
 // ============================================================
@@ -148,6 +149,7 @@ export const contentRoutes = [
   { path: "blog/:slug", element: <LazyBlogArticle /> },
   { path: "thematic-paths", element: <LazyThematicPaths /> },
   { path: "changelog", element: <LazyChangelog /> },
+  { path: "regulatory-alerts", element: <LazyRegulatoryAlerts /> },
 ];
 
 export const adminRoutes = [
