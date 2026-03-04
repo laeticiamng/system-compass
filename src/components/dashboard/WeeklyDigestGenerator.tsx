@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 import { useNotificationSettings } from '@/hooks/useNotificationSettings';
+import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 
 interface WeeklyDigestData {
@@ -72,11 +73,30 @@ export function WeeklyDigestGenerator({ digestData }: WeeklyDigestGeneratorProps
 
     setSending(true);
     try {
-      // Simulate sending (would call edge function in production)
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      toast.success(t('dashboard.digest.testSent', 'Test envoyé à {{email}}', { email: user.email }));
+      const { data, error } = await supabase.functions.invoke('weekly-digest', {
+        body: {
+          userId: user.id,
+          email: user.email,
+          displayName: user.user_metadata?.display_name || '',
+          isTest: true,
+        },
+      });
+
+      if (error) throw error;
+      if (data?.error) throw new Error(data.error);
+
+      const stats = data?.stats;
+      toast.success(
+        t('dashboard.digest.testSent', 'Synthèse envoyée à {{email}}', { email: user.email }),
+        {
+          description: stats
+            ? `${stats.geoAlerts} alertes · ${stats.regChanges} changements · ${stats.watchedCountries} pays suivis`
+            : undefined,
+        }
+      );
     } catch (error) {
-      toast.error(t('dashboard.digest.error', 'Erreur lors de l\'envoi'));
+      console.error('[WeeklyDigest] Error:', error);
+      toast.error(t('dashboard.digest.error', "Erreur lors de l'envoi"));
     } finally {
       setSending(false);
     }
