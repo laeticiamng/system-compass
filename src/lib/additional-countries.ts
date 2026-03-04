@@ -871,9 +871,9 @@ export const additionalCountries: Country[] = [
     },
     risks: {
       legal: 30,
-      safety: 25,
+      safety: 35,
       corruption: 35,
-      volatility: 35,
+      volatility: 45,
       bureaucracy: 45,
     },
     whoWins: [
@@ -936,7 +936,7 @@ export const additionalCountries: Country[] = [
       digitalNomadVisa: false,
       investmentVisa: true,
       citizenshipYears: 3,
-      notes: 'EU citizens have free movement. Non-EU need work permit through employer.',
+      notes: 'EU citizens have free movement. Non-EU need work permit. Frontière est sous haute surveillance (conflit Ukraine). Budget défense 4.2% PIB — le plus élevé de l\'OTAN.',
     },
     costOfLiving: {
       index: 42,

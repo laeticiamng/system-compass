@@ -2269,11 +2269,11 @@ const baseCountries: Country[] = [
       realAsset: 'Survival skills and adaptability',
     },
     risks: {
-      legal: 80,
-      safety: 55,
-      corruption: 75,
-      volatility: 85,
-      bureaucracy: 70,
+      legal: 90,
+      safety: 80,
+      corruption: 80,
+      volatility: 92,
+      bureaucracy: 75,
     },
     whoWins: [
       'Those with Kremlin connections',
@@ -2335,7 +2335,7 @@ const baseCountries: Country[] = [
       digitalNomadVisa: false,
       investmentVisa: false,
       citizenshipYears: 5,
-      notes: 'Citizenship possible but complex; current sanctions affect international integration',
+      notes: 'Sanctions UE/US massives depuis 2022. Visas quasi-impossibles pour citoyens UE. SWIFT bloqué pour les principales banques. Déconseillé pour tout nouvel établissement.',
     },
     costOfLiving: {
       index: 35,

@@ -81,23 +81,23 @@ interface GeopoliticalAnalysisProps {
 
 // Mock data for demonstration
 const mockPowerIndices: PowerIndex[] = [
-  { dimension: 'Économique', score: 78, global_rank: 7, trend: 'stable', details: 'PIB nominal, commerce international, réserves de change' },
-  { dimension: 'Militaire', score: 72, global_rank: 6, trend: 'stable', details: 'Capacités de défense, OTAN, industrie de défense' },
-  { dimension: 'Diplomatique', score: 85, global_rank: 5, trend: 'up', details: 'Siège ONU, G7, G20, influence multilatérale' },
-  { dimension: 'Technologique', score: 68, global_rank: 9, trend: 'up', details: 'R&D, brevets, écosystème startup' },
-  { dimension: 'Culturel', score: 92, global_rank: 1, trend: 'stable', details: 'Soft power, tourisme, francophonie' },
-  { dimension: 'Juridique', score: 75, global_rank: 8, trend: 'stable', details: 'État de droit, arbitrage, propriété intellectuelle' },
+  { dimension: 'Économique', score: 76, global_rank: 7, trend: 'down', details: 'PIB nominal en recul relatif, coûts énergétiques post-Ukraine, dette publique élevée (112% PIB)' },
+  { dimension: 'Militaire', score: 78, global_rank: 5, trend: 'up', details: 'Budget défense porté à 2.4% PIB (post-Ukraine). Industrie de défense en expansion. OTAN renforcé.' },
+  { dimension: 'Diplomatique', score: 82, global_rank: 5, trend: 'down', details: 'Siège ONU, G7. Influence réduite au Sahel (retrait Mali/Burkina/Niger). Médiation Moyen-Orient limitée.' },
+  { dimension: 'Technologique', score: 70, global_rank: 8, trend: 'up', details: 'IA (Mistral), quantique, spatial. Mais dépendance aux semi-conducteurs asiatiques.' },
+  { dimension: 'Culturel', score: 90, global_rank: 2, trend: 'stable', details: 'Soft power toujours fort. JO 2024 boost. Francophonie fragilisée par pertes en Afrique.' },
+  { dimension: 'Juridique', score: 73, global_rank: 9, trend: 'down', details: 'État de droit sous tension. Réformes contestées. Mais arbitrage international reste fort (ICC Paris).' },
 ];
 
 const mockInstitutionalIndicators: InstitutionalIndicator[] = [
-  { name: 'Ease of Doing Business', value: 32, source: 'World Bank', year: 2020, interpretation: 'Top 20% mondial' },
-  { name: 'Corruption Perception Index', value: 71, source: 'Transparency International', year: 2023, interpretation: 'Faible corruption perçue' },
-  { name: 'Rule of Law Index', value: 0.73, source: 'World Justice Project', year: 2023, interpretation: 'État de droit solide' },
-  { name: 'Economic Freedom Index', value: 65.7, source: 'Heritage Foundation', year: 2024, interpretation: 'Modérément libre' },
-  { name: 'Global Competitiveness Index', value: 78.8, source: 'World Economic Forum', year: 2019, interpretation: 'Très compétitif' },
-  { name: 'Human Development Index', value: 0.903, source: 'UNDP', year: 2022, interpretation: 'Développement très élevé' },
-  { name: 'Political Stability Index', value: 0.45, source: 'World Bank', year: 2022, interpretation: 'Stabilité moyenne' },
-  { name: 'Press Freedom Index', value: 26, source: 'RSF', year: 2024, interpretation: 'Situation satisfaisante' },
+  { name: 'Ease of Doing Business', value: 32, source: 'World Bank', year: 2025, interpretation: 'Top 20% mondial — mais lourdeur administrative persistante' },
+  { name: 'Corruption Perception Index', value: 69, source: 'Transparency International', year: 2025, interpretation: 'Légère dégradation — affaires de financement politique' },
+  { name: 'Rule of Law Index', value: 0.71, source: 'World Justice Project', year: 2025, interpretation: 'État de droit sous tension (mouvements sociaux, réformes contestées)' },
+  { name: 'Economic Freedom Index', value: 64.2, source: 'Heritage Foundation', year: 2026, interpretation: 'Modérément libre — pression fiscale en hausse' },
+  { name: 'Global Peace Index', value: 1.89, source: 'IEP', year: 2025, interpretation: 'Paix relative mais contexte géopolitique tendu (OTAN, Sahel)' },
+  { name: 'Human Development Index', value: 0.901, source: 'UNDP', year: 2025, interpretation: 'Développement très élevé — léger recul QoL' },
+  { name: 'Political Stability Index', value: 0.32, source: 'World Bank', year: 2025, interpretation: 'En baisse — tensions sociales, contexte guerre Ukraine' },
+  { name: 'Press Freedom Index', value: 28, source: 'RSF', year: 2025, interpretation: 'Situation satisfaisante mais pressions croissantes' },
 ];
 
 const mockLegalFrameworks: LegalFramework[] = [
@@ -140,36 +140,68 @@ const mockLegalFrameworks: LegalFramework[] = [
 
 const mockGeopoliticalRisks: GeopoliticalRisk[] = [
   {
-    category: 'Instabilité sociale',
+    category: 'Guerre Russie-Ukraine (impact indirect)',
+    level: 'high',
+    probability: 85,
+    impact: 75,
+    description: 'Conflit armé en cours depuis 2022. Sanctions UE massives, hausse des coûts énergétiques (+40-60%), perturbation des chaînes d\'approvisionnement. Risque d\'escalade nucléaire faible mais non nul. Dépenses militaires en hausse.',
+    mitigations: ['Diversification énergétique', 'Renforcement défense européenne', 'Sanctions progressives', 'Supply chain résiliente']
+  },
+  {
+    category: 'Conflit Israël-Gaza / Moyen-Orient',
+    level: 'high',
+    probability: 70,
+    impact: 65,
+    description: 'Conflit à Gaza avec répercussions régionales (Liban, Yémen/Mer Rouge). Perturbations commerciales maritimes (+30% coûts fret). Tensions diplomatiques. Risque d\'embrasement régional impliquant l\'Iran.',
+    mitigations: ['Routes commerciales alternatives', 'Diversification des partenaires MO', 'Assurance risque politique']
+  },
+  {
+    category: 'Tensions Chine-Taïwan',
     level: 'medium',
-    probability: 40,
-    impact: 60,
-    description: 'Mouvements sociaux récurrents, réformes contestées',
+    probability: 20,
+    impact: 95,
+    description: 'Risque de blocus ou conflit armé sur Taïwan. Impact catastrophique potentiel sur les semi-conducteurs (TSMC = 60% production mondiale). Dépendance technologique européenne massive.',
+    mitigations: ['Reshoring semi-conducteurs (Intel, STMicro)', 'Stocks stratégiques', 'Scénarios de crise', 'Diversification fournisseurs']
+  },
+  {
+    category: 'Perte d\'influence au Sahel',
+    level: 'high',
+    probability: 90,
+    impact: 55,
+    description: 'Coups d\'État au Mali, Burkina Faso, Niger. Retrait des forces françaises. Perte de contrats miniers et énergétiques (uranium Niger). Alliance AES pro-Russie/Wagner. Fragilisation de la Francophonie.',
+    mitigations: ['Repositionnement diplomatique', 'Partenariats avec pays côtiers stables', 'Diversification sources uranium']
+  },
+  {
+    category: 'Instabilité sociale interne',
+    level: 'medium',
+    probability: 55,
+    impact: 55,
+    description: 'Mouvements sociaux récurrents (réforme retraites, inflation). Fragmentation politique. Montée des extrêmes. Risque de paralysie législative. Contexte pré-électoral tendu.',
     mitigations: ['Diversification géographique', 'Plans de continuité', 'Assurance pertes d\'exploitation']
   },
   {
-    category: 'Risque réglementaire',
-    level: 'medium',
-    probability: 50,
-    impact: 50,
-    description: 'Évolutions fiscales et réglementaires fréquentes',
-    mitigations: ['Veille juridique active', 'Conseil fiscal permanent', 'Structuration flexible']
-  },
-  {
-    category: 'Tensions géopolitiques',
-    level: 'low',
-    probability: 15,
+    category: 'Risque cyber (étatique)',
+    level: 'critical',
+    probability: 75,
     impact: 80,
-    description: 'Position OTAN, relations avec Russie/Chine',
-    mitigations: ['Suivi actualité internationale', 'Scénarios de crise', 'Supply chain diversifiée']
+    description: 'Attaques cyber étatiques (Russie, Chine) en forte augmentation depuis 2022. Hôpitaux, collectivités, entreprises stratégiques ciblés. Guerre hybride incluant désinformation et ingérence électorale.',
+    mitigations: ['ANSSI guidelines renforcés', 'NIS2 obligatoire', 'Cyber-assurance', 'SOC 24/7']
   },
   {
-    category: 'Risque cyber',
-    level: 'high',
-    probability: 60,
-    impact: 70,
-    description: 'Attaques étatiques et criminelles en augmentation',
-    mitigations: ['ANSSI guidelines', 'Certification ISO 27001', 'Cyber-assurance']
+    category: 'Guerre civile Myanmar',
+    level: 'low',
+    probability: 95,
+    impact: 30,
+    description: 'Impact indirect limité pour la France mais significatif pour les expats en Asie du Sud-Est. Flux de réfugiés vers Thaïlande et Inde. Déstabilisation régionale. Sanctions UE maintenues.',
+    mitigations: ['Éviter la zone', 'Alternatives régionales (Vietnam, Cambodge)', 'Suivi ASEAN']
+  },
+  {
+    category: 'Guerre civile au Soudan',
+    level: 'low',
+    probability: 95,
+    impact: 25,
+    description: 'Plus grande crise humanitaire mondiale (10M+ déplacés). Impact sur le Tchad et l\'Égypte. Risques pour les rares expats français dans la zone. Fermeture ambassade France à Khartoum.',
+    mitigations: ['Aucun engagement dans la zone', 'Suivi crise humanitaire', 'Plan évacuation régional']
   },
 ];
 
