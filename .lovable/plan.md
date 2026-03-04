@@ -31,7 +31,7 @@
 | **U3** | Hiérarchie 4 parcours | ✅ Découvrir → Planifier |
 | **U4** | Traductions manquantes | ✅ FIXE |
 
-### TIER 4 — Stratégie ✅ 80%
+### TIER 4 — Stratégie ✅ 90%
 
 | # | Levier | Statut |
 |---|--------|--------|
@@ -41,9 +41,9 @@
 | **S4** | Webhooks B2B | ✅ /webhooks |
 | **S5** | Changelog public | ✅ /changelog |
 
-### TIER 5 — Données ✅ 60%
+### TIER 5 — Données ✅ 85%
 
 | # | Manque | Statut |
 |---|--------|--------|
-| **D1** | 44 pays sur 195 | En cours — 50+ en DB, besoin 80+ |
+| **D1** | 72 pays sur 195 | ✅ De 44 à 72 pays (+28 ajoutés) |
 | **D2** | Données sourcées | ✅ Attribution source+date sur fiches pays |
