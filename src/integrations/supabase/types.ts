@@ -2172,6 +2172,72 @@ export type Database = {
           },
         ]
       }
+      geopolitical_alerts_ai: {
+        Row: {
+          ai_confidence: number | null
+          ai_model: string | null
+          category: string
+          citations: string[] | null
+          conflict_type: string | null
+          countries_affected: string[]
+          country_codes: string[]
+          created_at: string
+          detected_at: string
+          expires_at: string | null
+          id: string
+          impact_assessment: string | null
+          is_active: boolean
+          region: string
+          severity: string
+          source_query: string | null
+          summary: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          ai_confidence?: number | null
+          ai_model?: string | null
+          category?: string
+          citations?: string[] | null
+          conflict_type?: string | null
+          countries_affected?: string[]
+          country_codes?: string[]
+          created_at?: string
+          detected_at?: string
+          expires_at?: string | null
+          id?: string
+          impact_assessment?: string | null
+          is_active?: boolean
+          region: string
+          severity?: string
+          source_query?: string | null
+          summary: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          ai_confidence?: number | null
+          ai_model?: string | null
+          category?: string
+          citations?: string[] | null
+          conflict_type?: string | null
+          countries_affected?: string[]
+          country_codes?: string[]
+          created_at?: string
+          detected_at?: string
+          expires_at?: string | null
+          id?: string
+          impact_assessment?: string | null
+          is_active?: boolean
+          region?: string
+          severity?: string
+          source_query?: string | null
+          summary?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       gov_intel_runs: {
         Row: {
           actors_count: number | null
