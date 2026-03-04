@@ -135,3 +135,4 @@ export const LazyRegulatoryAlerts = withSuspense(lazy(() => import('@/pages/Regu
 export const LazyFamilyWorkspace = withSuspense(lazy(() => import('@/pages/FamilyWorkspace')));
 export const LazyExpatReviews = withSuspense(lazy(() => import('@/pages/ExpatReviews')));
 export const LazyApiDocs = withSuspense(lazy(() => import('@/pages/ApiDocs')));
+export const LazyWebhooksDocs = withSuspense(lazy(() => import('@/pages/WebhooksDocs')));

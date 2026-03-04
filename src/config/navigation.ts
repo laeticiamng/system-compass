@@ -101,6 +101,7 @@ export const NAV_GROUPS: NavGroup[] = [
       { href: '/checklist', icon: BookOpen, label: 'Checklist', labelKey: 'nav.checklist', description: 'Admin par pays' },
       { href: '/fiscal-before-after', icon: BarChart3, label: 'Avant/Après', labelKey: 'nav.beforeAfter', description: 'Comparaison fiscale' },
       { href: '/regulatory-alerts', icon: AlertTriangle, label: 'Alertes', labelKey: 'nav.alerts', description: 'Veille réglementaire', badge: 'Live' },
+      { href: '/family-workspace', icon: Users, label: 'Famille', labelKey: 'nav.family', description: 'Espace collaboratif' },
     ],
   },
 ];

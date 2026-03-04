@@ -26,7 +26,7 @@ import { CountryTagsRadar } from '@/components/country/CountryTagsRadar';
 import { CountryPdfExport } from '@/components/CountryPdfExport';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { ArrowLeft, Calendar, ExternalLink, Layers, Map, Target, Brain, Loader2, Shield, MapPin, Scale } from 'lucide-react';
+import { ArrowLeft, Calendar, ExternalLink, Layers, Map, Target, Brain, Loader2, Shield, MapPin, Scale, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { Database } from '@/integrations/supabase/types';
@@ -452,7 +452,7 @@ export default function CountryDetail() {
           <PlaybookSection playbook={displayPlaybook} />
         </div>
 
-        {/* Sources */}
+        {/* Sources & Attribution (D2) */}
         <div className="glass-card rounded-xl p-6">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-display font-semibold">{t('countryDetail.sourcesUpdates')}</h3>
@@ -461,6 +461,9 @@ export default function CountryDetail() {
               {t('countryDetail.lastUpdated')}: {country.lastUpdated}
             </div>
           </div>
+          <p className="text-xs text-muted-foreground mb-3">
+            {t('countryDetail.sourcesDisclaimer', 'Données collectées et vérifiées à partir de sources officielles. Chaque chiffre est sourcé et daté pour garantir la fiabilité.')}
+          </p>
           <div className="flex flex-wrap gap-2">
             {country.sources.map((source, i) => (
               <span key={i} className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-secondary text-sm text-muted-foreground">
@@ -468,6 +471,10 @@ export default function CountryDetail() {
                 {source}
               </span>
             ))}
+          </div>
+          <div className="mt-3 pt-3 border-t border-border/30 flex items-center gap-2 text-xs text-muted-foreground/60">
+            <ShieldCheck className="w-3.5 h-3.5" />
+            {t('countryDetail.dataVersionLabel', 'Version des données')}: v{country.lastUpdated?.replace(/-/g, '.') || '1.0'}
           </div>
         </div>
       </div>
