@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { LocalizedLink as Link } from '@/components/i18n';
 import { useTranslation } from 'react-i18next';
 import { AlertTriangle, CheckCircle, XCircle, Shield, Zap, LucideIcon } from 'lucide-react';
 import { PyramidType, PYRAMID_TYPE_INFO } from '@/lib/types';
