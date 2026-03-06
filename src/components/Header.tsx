@@ -55,7 +55,7 @@ export function Header() {
   const navItems = [
     { href: '/', label: t('nav.home', 'Accueil'), icon: Compass },
     { href: '/countries', label: t('nav.countries', 'Explorer'), icon: Map },
-    { href: '/quick-test', label: t('nav.quickTest', 'Mon Profil'), icon: User },
+    { href: '/quick-test', label: t('nav.quickTest', 'Test Rapide'), icon: User },
     
     { href: '/pricing', label: t('nav.pricing', 'Tarifs'), icon: CreditCard },
   ];
