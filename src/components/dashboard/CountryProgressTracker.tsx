@@ -5,7 +5,7 @@ import { Progress } from '@/components/ui/progress';
 import { 
   Map, Globe, CheckCircle, Clock, ArrowRight
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { LocalizedLink as Link } from '@/components/i18n';
 
 interface CountryProgress {
   countryId: string;

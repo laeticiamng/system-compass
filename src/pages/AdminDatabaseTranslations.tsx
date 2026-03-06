@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { toast } from "sonner";
 import { ArrowLeft, Database, Play, CheckCircle2, XCircle, Loader2, RefreshCw, Globe } from "lucide-react";
-import { Link } from "react-router-dom";
+import { LocalizedLink as Link } from '@/components/i18n';
 import { supabase } from "@/integrations/supabase/client";
 
 const LANGUAGES = [
