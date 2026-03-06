@@ -19,16 +19,11 @@ import { PasswordResetDialog } from '@/components/auth/PasswordResetDialog';
 import { toast } from 'sonner';
 
 const emailSchema = z.string().email();
-// Sécurité renforcée : minimum 8 caractères, 1 majuscule, 1 minuscule, 1 chiffre
-const passwordSchema = z.string()
-  .min(8, 'Minimum 8 caractères requis')
-  .regex(/[A-Z]/, 'Au moins une majuscule requise')
-  .regex(/[a-z]/, 'Au moins une minuscule requise')
-  .regex(/[0-9]/, 'Au moins un chiffre requis');
 
 export default function Auth() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
+  const { user, loading, signUp, signIn } = useAuth();
   const { user, loading, signUp, signIn } = useAuth();
   const { trackAccountCreated } = useAnalytics();
   
