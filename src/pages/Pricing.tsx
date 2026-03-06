@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useSubscription, SUBSCRIPTION_TIERS } from "@/hooks/useSubscription";
 import { useAuth } from "@/hooks/useAuth";
-import { Link } from "react-router-dom";
+import { LocalizedLink as Link } from '@/components/i18n';
 import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { cn } from "@/lib/utils";
 import { motion, useInView } from "framer-motion";

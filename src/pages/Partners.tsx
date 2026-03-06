@@ -12,7 +12,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { usePartnerProgram } from "@/hooks/usePartnerProgram";
 import { PartnerApplicationForm } from "@/components/partners/PartnerApplicationForm";
 import { PartnerDashboard } from "@/components/partners/PartnerDashboard";
-import { Link } from "react-router-dom";
+import { LocalizedLink as Link } from '@/components/i18n';
 
 const PROGRAM_EXCLUSIONS = [
   "Aucun mécanisme de recrutement en chaîne",
