@@ -57,7 +57,7 @@ const PYRAMID_TYPE_COLORS: Record<string, string> = {
 
 export default function CountryDetail() {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { t } = useTranslation();
   const { trackCountryView } = useUserHistory();
   const { profile } = useExitKeysProfile();

@@ -97,7 +97,7 @@ function AnimatedSection({ children, className }: { children: React.ReactNode; c
 
 export default function QuickTest() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   useAuth();
   const { saveResult } = useTestResults();
   const [answers, setAnswers] = useState<QuickTestAnswers>({});

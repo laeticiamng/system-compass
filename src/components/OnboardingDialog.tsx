@@ -292,7 +292,7 @@ function FeatureHighlightsStep({ onNext, goal }: StepProps & { goal: B2CGoal }) 
 // ─── Step 5: Quick actions to get started ───
 function GetStartedStep({ onComplete, profilePath, goal }: { onComplete: () => void; profilePath: ProfilePath; goal: B2CGoal }) {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
 
   const b2cActions: Record<string, { link: string; label: string; icon: React.ElementType }[]> = {
     explore: [

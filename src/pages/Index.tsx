@@ -33,7 +33,7 @@ import { HeroMiniDemo } from '@/components/landing/HeroMiniDemo';
 import { ConflictZonesMap } from '@/components/landing/ConflictZonesMap';
 
 export default function Index() {
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { t } = useTranslation();
   const { user } = useAuth();
   const { trackHomeOpened } = useAnalytics();
