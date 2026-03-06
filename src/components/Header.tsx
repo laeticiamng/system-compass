@@ -74,15 +74,7 @@ export function Header() {
     { href: '/prevention-filter', label: t('nav.preventionFilter', 'Filtre Décision'), icon: Shield },
   ];
 
-  // Modules Pro (fonctionnels uniquement)
-  const advancedItems = [
-    { href: '/institutions', label: t('nav.institutions', 'Institutions'), icon: Building2 },
-    { href: '/b2b', label: t('nav.b2b', 'Solutions B2B'), icon: Building2 },
-    { href: '/experts', label: t('nav.experts', 'Experts'), icon: Users },
-    { href: '/academic', label: t('nav.academic', 'Académique'), icon: BookOpen },
-  ];
-
-  // Pages info/compte
+  // Pages info/compte — includes Pro modules merged in
   const accountItems = [
     { href: '/about', label: t('nav.about', 'À propos'), icon: Info },
     { href: '/how-to-read', label: t('nav.howToRead', 'Guide'), icon: BookOpen },
@@ -90,6 +82,10 @@ export function Header() {
     { href: '/usage', label: t('nav.usage', 'Consommation'), icon: BarChart3 },
     { href: '/settings/notifications', label: t('nav.notifications', 'Notifications'), icon: Bell },
     { href: '/resources', label: t('nav.resources'), icon: FileText },
+    { href: '/institutions', label: t('nav.institutions', 'Institutions'), icon: Building2 },
+    { href: '/b2b', label: t('nav.b2b', 'Solutions B2B'), icon: Building2 },
+    { href: '/experts', label: t('nav.experts', 'Experts'), icon: Users },
+    { href: '/academic', label: t('nav.academic', 'Académique'), icon: BookOpen },
   ];
 
   // Admin navigation items - fonctionnels uniquement
