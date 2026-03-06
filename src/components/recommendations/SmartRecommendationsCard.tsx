@@ -6,7 +6,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { useSmartRecommendations } from '@/hooks/useSmartRecommendations';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -37,7 +37,7 @@ const RECOMMENDATION_COLORS = {
 
 export function SmartRecommendationsCard() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const [activeTab, setActiveTab] = useState('top');
   
   const {
@@ -204,7 +204,7 @@ interface RecommendationRowProps {
 }
 
 function RecommendationRow({ recommendation, rank, showChallenges }: RecommendationRowProps) {
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   
   return (
     <motion.div

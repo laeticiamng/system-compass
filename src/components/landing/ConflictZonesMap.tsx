@@ -8,7 +8,7 @@ import { AlertTriangle, Shield, ExternalLink, X } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 
 interface ConflictZone {
   id: string;
@@ -93,7 +93,7 @@ const STATUS_CONFIG = {
 
 export function ConflictZonesMap() {
   const [selectedZone, setSelectedZone] = useState<ConflictZone | null>(null);
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
 
   return (
     <section className="py-20 md:py-28 bg-muted/30 relative overflow-hidden">

@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { useTranslation } from 'react-i18next';
 import { ZoomIn, ZoomOut, RotateCcw, Shield, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -98,7 +98,7 @@ export function WorldMap({
   interactive = true,
 }: WorldMapProps) {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { countries } = useCountries();
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });

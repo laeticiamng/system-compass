@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { 
   AlertTriangle, 
   Shield, 
@@ -74,7 +74,7 @@ const PYRAMID_CONFIGS: PyramidTypeConfig[] = [
 
 export function PyramidTypesShowcase() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
 
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { useSubscription, SUBSCRIPTION_TIERS } from '@/hooks/useSubscription';
 import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
@@ -29,7 +29,7 @@ export function PremiumPaywall({
   const { t } = useTranslation();
   const { user } = useAuth();
   const { createCheckout, loading } = useSubscription();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
 
   const tierConfig = SUBSCRIPTION_TIERS[tier];
 

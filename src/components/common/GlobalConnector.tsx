@@ -4,7 +4,8 @@
  */
 
 import { useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import type { Json } from '@/integrations/supabase/types';
@@ -86,7 +87,7 @@ export async function syncUserActivity(userId: string, activity: {
 
 // Navigation helpers with context preservation
 export function useContextualNavigation() {
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { user } = useAuth();
   
   const navigateWithContext = (

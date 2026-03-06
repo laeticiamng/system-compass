@@ -3,7 +3,7 @@
  * Shows step-by-step guide to platform features
  */
 
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronRight, ChevronLeft, Sparkles, RotateCcw } from 'lucide-react';
@@ -13,7 +13,7 @@ import { useOnboardingTour, getTourSteps } from '@/hooks/useOnboardingTour';
 import { cn } from '@/lib/utils';
 
 export function OnboardingTour() {
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { t } = useTranslation();
   const steps = getTourSteps(t);
   const {

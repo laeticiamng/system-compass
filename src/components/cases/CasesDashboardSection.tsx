@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { useUserCases, isDeepMode } from '@/hooks/useUserCases';
 import { CreateCaseDialog } from './CreateCaseDialog';
 import { useCountries } from '@/lib/countries-data';
@@ -28,7 +28,7 @@ interface CasesDashboardSectionProps {
 
 export function CasesDashboardSection({ countryId, limit = 5 }: CasesDashboardSectionProps) {
   const { t, i18n } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { cases, isLoading } = useUserCases();
   const { countries } = useCountries();
 

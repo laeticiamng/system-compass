@@ -4,7 +4,7 @@
  */
 
 import { useEffect, useCallback, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { useToast } from '@/hooks/use-toast';
 
 interface ShortcutDefinition {
@@ -24,7 +24,7 @@ interface UseKeyboardShortcutsOptions {
 
 export function useKeyboardShortcuts(options: UseKeyboardShortcutsOptions = {}) {
   const { enabled = true, showToast = false } = options;
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { toast } = useToast();
   const [isHelpOpen, setIsHelpOpen] = useState(false);
 

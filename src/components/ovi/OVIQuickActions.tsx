@@ -13,7 +13,7 @@ import {
   Download,
   Plus
 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 
 interface QuickAction {
   id: string;
@@ -37,7 +37,7 @@ export function OVIQuickActions({
   onExportInsights,
   onLinkToTraceOS
 }: OVIQuickActionsProps) {
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
 
   const actions: QuickAction[] = [
     {

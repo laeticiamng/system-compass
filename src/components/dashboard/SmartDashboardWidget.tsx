@@ -4,7 +4,7 @@
  */
 
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { useSmartRecommendations } from '@/hooks/useSmartRecommendations';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -22,7 +22,7 @@ import {
 } from 'lucide-react';
 
 export function SmartDashboardWidget() {
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { topRecommendations, isLoading, hasProfile } = useSmartRecommendations();
 
   if (isLoading) {

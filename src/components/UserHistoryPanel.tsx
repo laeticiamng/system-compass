@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { History, Globe, GitCompare, Play, Key, Trash2, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -39,7 +39,7 @@ const TYPE_LABELS = {
 
 export function UserHistoryPanel() {
   const { t, i18n } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { history, clearHistory, getMostViewedCountries } = useUserHistory();
 
   const handleItemClick = (entry: any) => {

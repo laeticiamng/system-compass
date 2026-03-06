@@ -6,7 +6,7 @@
 import { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { useSmartRecommendations } from '@/hooks/useSmartRecommendations';
@@ -46,7 +46,7 @@ const MAX_COUNTRIES = 4;
 
 export function AICountryComparator() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const { topRecommendations } = useSmartRecommendations();
 

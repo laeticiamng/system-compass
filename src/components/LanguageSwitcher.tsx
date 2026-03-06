@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { SUPPORTED_LANGUAGES } from '@/i18n';
 import { usePathWithoutLang } from '@/hooks/useLocalizedPath';
 import {
@@ -15,7 +15,7 @@ import { cn } from '@/lib/utils';
 
 export function LanguageSwitcher({ className }: { className?: string }) {
   const { i18n } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const pathWithoutLang = usePathWithoutLang();
 
   const currentLang = SUPPORTED_LANGUAGES.find(l => l.code === i18n.language) 

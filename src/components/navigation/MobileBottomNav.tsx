@@ -1,4 +1,5 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
 import { 
@@ -47,7 +48,7 @@ const navItems: NavItem[] = [
 export function MobileBottomNav() {
   const { t } = useTranslation();
   const location = useLocation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { toggleSidebar } = useSidebar();
 
   const isActive = (route: string) => {

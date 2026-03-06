@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { 
   Laptop, 
   Palmtree, 
@@ -222,7 +222,7 @@ function PersonaCard({ persona, isSelected, onClick }: {
 }
 
 function PersonaDetail({ persona }: { persona: PersonaType }) {
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const Icon = persona.icon;
   
   return (

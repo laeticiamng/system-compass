@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { useSubscription } from '@/hooks/useSubscription';
 import { PremiumPaywall } from '@/components/PremiumPaywall';
 import { Button } from '@/components/ui/button';
@@ -215,7 +215,7 @@ interface CountryProjectAnalysisProps {
 
 export function CountryProjectAnalysis({ countryId, countryName }: CountryProjectAnalysisProps) {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { canAccessPremium, loading: subscriptionLoading } = useSubscription();
   
   const [formData, setFormData] = useState<FormData>({

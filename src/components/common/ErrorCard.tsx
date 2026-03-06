@@ -2,7 +2,7 @@ import { AlertTriangle, RefreshCw, Home, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 
 interface ErrorCardProps {
   title?: string;
@@ -27,7 +27,7 @@ export function ErrorCard({
   variant = 'error',
   className,
 }: ErrorCardProps) {
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
 
   const variantStyles = {
     error: 'border-destructive/30 bg-destructive/5',

@@ -5,7 +5,7 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { useCountries } from '@/lib/countries-store';
 import { useSavedCountries } from '@/components/common/SavedCountriesButton';
 import { Input } from '@/components/ui/input';
@@ -40,7 +40,7 @@ export function GlobalSearch({
   showResults = true 
 }: GlobalSearchProps) {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { countries } = useCountries();
   const { savedIds } = useSavedCountries();
   const [query, setQuery] = useState('');

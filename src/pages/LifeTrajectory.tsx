@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { useTranslation } from 'react-i18next';
 import { useExitKeysProfile } from '@/hooks/useExitKeysProfile';
 import { Button } from '@/components/ui/button';
@@ -411,7 +411,7 @@ function generateTrajectories(
 }
 
 export default function LifeTrajectory() {
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { t } = useTranslation();
   const { profile: savedProfile, loading: profileLoading } = useExitKeysProfile();
   const [step, setStep] = useState(0);

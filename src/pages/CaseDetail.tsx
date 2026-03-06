@@ -1,4 +1,5 @@
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { useTranslation } from 'react-i18next';
 import { useUserCase, isDeepMode } from '@/hooks/useUserCases';
 import { useCountryGovernance } from '@/hooks/useCountryGovernance';
@@ -43,7 +44,7 @@ function getFlagEmoji(iso2: string): string {
 
 export default function CaseDetail() {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { t, i18n } = useTranslation();
   const { caseData, isLoading, updateCase, isUpdating } = useUserCase(id || '');
 

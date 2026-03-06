@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Country } from '@/lib/types';
 import { cn } from '@/lib/utils';
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { MapPin, TrendingUp, Shield, Users } from 'lucide-react';
 import { SavedCountriesButton } from '@/components/common/SavedCountriesButton';
 import { RiskGradeBadge } from '@/components/RiskGradeLabel';
@@ -50,7 +50,7 @@ function formatPopulation(num: number): string {
 
 export const CountryCard = forwardRef<HTMLDivElement, CountryCardProps>(
   function CountryCard({ country, className }, ref) {
-    const navigate = useNavigate();
+    const navigate = useLocalizedNavigate();
     const { t } = useTranslation();
     const typeColor = PYRAMID_TYPE_COLORS[country.pyramidType];
     

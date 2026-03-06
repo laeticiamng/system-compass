@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { useTranslation } from 'react-i18next';
 import { Search, Globe, Key, BookOpen, AlertTriangle, Map, X, Command } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
@@ -34,7 +34,7 @@ export function GlobalSearch() {
     { id: 'dashboard', title: t('search.page.dashboard', 'Tableau de bord'), path: '/dashboard', icon: <BookOpen className="w-4 h-4" /> },
     { id: 'errors-illusions', title: t('search.page.errorsIllusions', 'Erreurs & Illusions'), path: '/errors-illusions', icon: <AlertTriangle className="w-4 h-4" /> },
   ];
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { countries } = useCountries();
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
