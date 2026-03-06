@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { LocalizedLink as Link } from '@/components/i18n';
 import { ArrowLeft, Lock, AlertTriangle, Shield, FileText, CheckCircle, Eye, Route } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Irreversa } from '@/components/irreversa/Irreversa';

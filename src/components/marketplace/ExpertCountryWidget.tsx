@@ -1,7 +1,7 @@
 /**
  * Expert Country Widget - Shows recommended experts for a country
  */
-import { Link } from 'react-router-dom';
+import { LocalizedLink as Link } from '@/components/i18n';
 import { useExpertsByCountry } from '@/hooks/useExpertsDb';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
