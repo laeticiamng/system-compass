@@ -31,8 +31,12 @@ import { Compass } from 'lucide-react';
 
 export function AppSidebar() {
   const location = useLocation();
+  const { user } = useAuth();
   const { state } = useSidebar();
   const isCollapsed = state === 'collapsed';
+
+  // Hide sidebar entirely for non-authenticated users
+  if (!user) return null;
 
   const isActive = (href: string) => {
     if (href === '/') return location.pathname === '/';
