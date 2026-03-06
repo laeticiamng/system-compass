@@ -5,7 +5,7 @@ import { LocalizedLink as Link } from '@/components/i18n';
 import { useLocalizedPath } from '@/hooks/useLocalizedPath';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
-import { Compass, Map, FileText, Scale, Gamepad2, LogIn, LogOut, User, Key, LayoutDashboard, Menu, Play, Info, AlertCircle, X, Shield, BookOpen, CreditCard, Globe, Settings, Building2, Users, ChevronDown, Wrench, Bell, BarChart3 } from 'lucide-react';
+import { Compass, Map, FileText, Scale, Gamepad2, LogIn, LogOut, User, LayoutDashboard, Menu, Info, AlertCircle, X, Shield, BookOpen, CreditCard, Globe, Settings, Building2, Users, ChevronDown, Wrench, Bell, BarChart3 } from 'lucide-react';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { GlobalSearch } from './GlobalSearch';
 import { ThemeToggle } from './ThemeToggle';
@@ -65,22 +65,13 @@ export function Header() {
     ? [...navItems, { href: '/dashboard', label: t('nav.dashboard', 'Dashboard'), icon: LayoutDashboard }]
     : navItems;
   
-  // Outils d'analyse (dropdown Outils) - fonctionnels uniquement
+  // Outils d'analyse (dropdown Outils) - 5 essentiels + lien vers hub
   const toolsItems = [
     { href: '/quick-test', label: t('nav.quickTest', 'Test Rapide'), icon: Gamepad2 },
-    { href: '/profile-test', label: t('nav.profileTest', 'Test Complet'), icon: User },
     { href: '/tools/matcher', label: t('nav.matcher', 'Matcher Pays IA'), icon: Users },
     { href: '/tools/fiscal-simulator', label: t('nav.fiscalSimulator', 'Simulateur Fiscal'), icon: BarChart3 },
-    { href: '/trace', label: t('nav.traceJournal', 'Journal Décisions'), icon: FileText },
-    { href: '/life-trajectory', label: t('nav.lifeTrajectory', 'Trajectoire'), icon: Map },
-    { href: '/life-game', label: t('nav.lifeGame', 'Mode Éducatif'), icon: Play },
+    { href: '/compare', label: t('nav.compare', 'Comparer'), icon: Scale },
     { href: '/prevention-filter', label: t('nav.preventionFilter', 'Filtre Décision'), icon: Shield },
-    { href: '/financial-safety-intel', label: t('nav.financialIntel', 'Intel Financière'), icon: Shield },
-    { href: '/fiscal-calculator', label: t('nav.fiscalCalculator', 'Calculateur Fiscal'), icon: BarChart3 },
-    { href: '/terrain', label: t('nav.terrainRealities', 'Réalités Terrain'), icon: Map },
-    { href: '/exit-keys/catalog', label: t('nav.exitKeysCatalog', 'Catalogue Stratégies'), icon: Key },
-    { href: '/compare-exit-keys', label: t('nav.exitKeysCompare', 'Comparer Stratégies'), icon: Scale },
-    { href: '/gamification', label: t('nav.gamification', 'Progression'), icon: Gamepad2 },
   ];
 
   // Modules Pro (fonctionnels uniquement)
@@ -154,9 +145,9 @@ export function Header() {
       )}
       <div className="glass-card border-b border-border/50 safe-area-inset">
         <div className="container mx-auto px-2 sm:px-3 md:px-4 h-12 sm:h-14 md:h-16 flex items-center justify-between gap-1 sm:gap-2">
-        {/* Sidebar Toggle - visible on all screens */}
+        {/* Sidebar Toggle - only for authenticated users */}
         <div className="flex items-center gap-1 sm:gap-2">
-          <SidebarTrigger className="h-8 w-8 flex-shrink-0" />
+          {user && <SidebarTrigger className="h-8 w-8 flex-shrink-0" />}
           <Link to="/" className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0 min-w-0">
             <div className="p-1 sm:p-1.5 md:p-2 rounded-lg bg-primary/10 flex-shrink-0">
               <Compass className="w-4 h-4 md:w-5 md:h-5 text-primary" />
@@ -215,6 +206,13 @@ export function Header() {
                     </DropdownMenuItem>
                   );
                 })}
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                  <Link to="/tools" className="flex items-center gap-2 font-medium text-primary">
+                    <Wrench className="w-4 h-4" />
+                    {t('nav.allTools', 'Tous les outils →')}
+                  </Link>
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
