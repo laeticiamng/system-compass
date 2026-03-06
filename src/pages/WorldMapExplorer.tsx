@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { Globe, Filter, Shield, Search, BarChart3, Layers, Info } from 'lucide-react';
 import { WorldMap } from '@/components/WorldMap';
 import { Button } from '@/components/ui/button';

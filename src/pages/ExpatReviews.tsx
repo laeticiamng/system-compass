@@ -18,7 +18,7 @@ import { useUgcReviews, type UgcReview } from '@/hooks/useUgcReviews';
 import { useUgcJournal, type JournalEntry } from '@/hooks/useUgcJournal';
 import { ReviewForm } from '@/components/ugc/ReviewForm';
 import { JournalForm } from '@/components/ugc/JournalForm';
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 
 const PROFILE_FILTERS = [
   { value: 'all', label: 'Tous' },

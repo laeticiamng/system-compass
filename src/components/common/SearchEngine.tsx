@@ -5,7 +5,7 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { useCountries } from '@/lib/countries-store';
 import { useSavedCountries } from '@/components/common/SavedCountriesButton';
 import { Input } from '@/components/ui/input';

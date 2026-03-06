@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { useUserCases, isDeepMode } from '@/hooks/useUserCases';
 import { CreateCaseDialog } from './CreateCaseDialog';
 import { useCountries } from '@/lib/countries-data';

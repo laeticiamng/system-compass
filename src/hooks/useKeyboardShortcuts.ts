@@ -4,7 +4,7 @@
  */
 
 import { useEffect, useCallback, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { useToast } from '@/hooks/use-toast';
 
 interface ShortcutDefinition {
