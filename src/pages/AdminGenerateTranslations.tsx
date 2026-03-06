@@ -26,7 +26,7 @@ import {
   Check,
   ListChecks,
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { LocalizedLink as Link } from '@/components/i18n';
 import { supabase } from "@/integrations/supabase/client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
