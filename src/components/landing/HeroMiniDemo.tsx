@@ -78,7 +78,7 @@ export function HeroMiniDemo() {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 1.2, duration: 0.8 }}
-      className="max-w-md mx-auto mt-12 mb-28 sm:mb-12"
+      className="max-w-md mx-auto mt-12 mb-44 sm:mb-12"
       onMouseEnter={() => setIsAnimating(false)}
       onMouseLeave={() => setIsAnimating(true)}
     >

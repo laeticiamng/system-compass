@@ -74,15 +74,7 @@ export function Header() {
     { href: '/prevention-filter', label: t('nav.preventionFilter', 'Filtre Décision'), icon: Shield },
   ];
 
-  // Modules Pro (fonctionnels uniquement)
-  const advancedItems = [
-    { href: '/institutions', label: t('nav.institutions', 'Institutions'), icon: Building2 },
-    { href: '/b2b', label: t('nav.b2b', 'Solutions B2B'), icon: Building2 },
-    { href: '/experts', label: t('nav.experts', 'Experts'), icon: Users },
-    { href: '/academic', label: t('nav.academic', 'Académique'), icon: BookOpen },
-  ];
-
-  // Pages info/compte
+  // Pages info/compte — includes Pro modules merged in
   const accountItems = [
     { href: '/about', label: t('nav.about', 'À propos'), icon: Info },
     { href: '/how-to-read', label: t('nav.howToRead', 'Guide'), icon: BookOpen },
@@ -90,6 +82,10 @@ export function Header() {
     { href: '/usage', label: t('nav.usage', 'Consommation'), icon: BarChart3 },
     { href: '/settings/notifications', label: t('nav.notifications', 'Notifications'), icon: Bell },
     { href: '/resources', label: t('nav.resources'), icon: FileText },
+    { href: '/institutions', label: t('nav.institutions', 'Institutions'), icon: Building2 },
+    { href: '/b2b', label: t('nav.b2b', 'Solutions B2B'), icon: Building2 },
+    { href: '/experts', label: t('nav.experts', 'Experts'), icon: Users },
+    { href: '/academic', label: t('nav.academic', 'Académique'), icon: BookOpen },
   ];
 
   // Admin navigation items - fonctionnels uniquement
@@ -216,33 +212,8 @@ export function Header() {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {/* Modules Pro dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="gap-1 h-8 px-2.5 text-xs font-medium text-muted-foreground hover:text-foreground">
-                  <Building2 className="w-3.5 h-3.5" />
-                  {t('nav.advanced', 'Pour les pros')}
-                  <ChevronDown className="w-3 h-3" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-56">
-                <DropdownMenuLabel>{t('nav.advanced', 'Modules Pro')}</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                {advancedItems.map((item) => {
-                  const Icon = item.icon;
-                  return (
-                    <DropdownMenuItem key={item.href} asChild>
-                      <Link to={item.href} className="flex items-center gap-2">
-                        <Icon className="w-4 h-4" />
-                        {item.label}
-                      </Link>
-                    </DropdownMenuItem>
-                  );
-                })}
-              </DropdownMenuContent>
-            </DropdownMenu>
 
-            {/* Account dropdown */}
+            {/* Account & Pro dropdown (merged) */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="sm" className="gap-1 h-8 px-2.5 text-xs font-medium text-muted-foreground hover:text-foreground">
@@ -405,31 +376,8 @@ export function Header() {
                   );
                 })}
 
-                {/* Modules Avancés */}
-                <div className="border-t border-border my-3" />
-                <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">{t('nav.advanced', 'Modules Pro')}</div>
-                {advancedItems.map((item) => {
-                  const Icon = item.icon;
-                  const isActive = location.pathname === item.href;
-                  return (
-                    <Link
-                      key={item.href}
-                      to={item.href}
-                      onClick={handleNavClick}
-                      className={cn(
-                        'flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors',
-                        isActive
-                          ? 'bg-primary/10 text-primary'
-                          : 'text-muted-foreground hover:text-foreground hover:bg-accent'
-                      )}
-                    >
-                      <Icon className="w-4 h-4" />
-                      {item.label}
-                    </Link>
-                  );
-                })}
 
-                {/* Compte & Info */}
+                {/* Compte & Info (includes Pro modules) */}
                 <div className="border-t border-border my-3" />
                 <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">{t('nav.account', 'Compte & Info')}</div>
                 {accountItems.map((item) => {
