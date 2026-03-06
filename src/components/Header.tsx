@@ -145,9 +145,9 @@ export function Header() {
       )}
       <div className="glass-card border-b border-border/50 safe-area-inset">
         <div className="container mx-auto px-2 sm:px-3 md:px-4 h-12 sm:h-14 md:h-16 flex items-center justify-between gap-1 sm:gap-2">
-        {/* Sidebar Toggle - visible on all screens */}
+        {/* Sidebar Toggle - only for authenticated users */}
         <div className="flex items-center gap-1 sm:gap-2">
-          <SidebarTrigger className="h-8 w-8 flex-shrink-0" />
+          {user && <SidebarTrigger className="h-8 w-8 flex-shrink-0" />}
           <Link to="/" className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0 min-w-0">
             <div className="p-1 sm:p-1.5 md:p-2 rounded-lg bg-primary/10 flex-shrink-0">
               <Compass className="w-4 h-4 md:w-5 md:h-5 text-primary" />
