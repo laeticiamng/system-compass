@@ -169,7 +169,7 @@ export const adminRoutes = [
   { path: "admin/data-sources", element: <RequireAdmin><LazyAdminDataSources /></RequireAdmin> },
   { path: "admin/translations-sync", element: <RequireAdmin><LazyAdminTranslationsSync /></RequireAdmin> },
   { path: "seed-translations", element: <RequireAdmin><LazySeedTranslations /></RequireAdmin> },
-  { path: "diagnostics", element: <LazyDiagnostics /> },
+  { path: "diagnostics", element: <RequireAdmin><LazyDiagnostics /></RequireAdmin> },
 ];
 
 export const redirectRoutes = [

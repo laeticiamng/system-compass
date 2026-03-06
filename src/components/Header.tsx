@@ -65,22 +65,13 @@ export function Header() {
     ? [...navItems, { href: '/dashboard', label: t('nav.dashboard', 'Dashboard'), icon: LayoutDashboard }]
     : navItems;
   
-  // Outils d'analyse (dropdown Outils) - fonctionnels uniquement
+  // Outils d'analyse (dropdown Outils) - 5 essentiels + lien vers hub
   const toolsItems = [
     { href: '/quick-test', label: t('nav.quickTest', 'Test Rapide'), icon: Gamepad2 },
-    { href: '/profile-test', label: t('nav.profileTest', 'Test Complet'), icon: User },
     { href: '/tools/matcher', label: t('nav.matcher', 'Matcher Pays IA'), icon: Users },
     { href: '/tools/fiscal-simulator', label: t('nav.fiscalSimulator', 'Simulateur Fiscal'), icon: BarChart3 },
-    { href: '/trace', label: t('nav.traceJournal', 'Journal Décisions'), icon: FileText },
-    { href: '/life-trajectory', label: t('nav.lifeTrajectory', 'Trajectoire'), icon: Map },
-    { href: '/life-game', label: t('nav.lifeGame', 'Mode Éducatif'), icon: Play },
+    { href: '/compare', label: t('nav.compare', 'Comparer'), icon: Scale },
     { href: '/prevention-filter', label: t('nav.preventionFilter', 'Filtre Décision'), icon: Shield },
-    { href: '/financial-safety-intel', label: t('nav.financialIntel', 'Intel Financière'), icon: Shield },
-    { href: '/fiscal-calculator', label: t('nav.fiscalCalculator', 'Calculateur Fiscal'), icon: BarChart3 },
-    { href: '/terrain', label: t('nav.terrainRealities', 'Réalités Terrain'), icon: Map },
-    { href: '/exit-keys/catalog', label: t('nav.exitKeysCatalog', 'Catalogue Stratégies'), icon: Key },
-    { href: '/compare-exit-keys', label: t('nav.exitKeysCompare', 'Comparer Stratégies'), icon: Scale },
-    { href: '/gamification', label: t('nav.gamification', 'Progression'), icon: Gamepad2 },
   ];
 
   // Modules Pro (fonctionnels uniquement)

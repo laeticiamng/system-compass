@@ -8,6 +8,7 @@
 import { useLocation } from 'react-router-dom';
 import { LocalizedLink as Link } from '@/components/i18n';
 import { ChevronRight } from 'lucide-react';
+import { useAuth } from '@/hooks/useAuth';
 import {
   Sidebar,
   SidebarContent,
