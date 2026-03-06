@@ -71,7 +71,7 @@ export default function Index() {
         { question: "Quels pays sont couverts par System Compass ?", answer: "System Compass couvre 44+ pays : Europe (France, Suisse, Portugal, Allemagne...), Amérique (USA, Canada, Mexique...), Asie (Thaïlande, Japon, Singapour...), Moyen-Orient (Émirats, Qatar...) et Afrique." },
         { question: "Comment fonctionne le simulateur fiscal ?", answer: "Le simulateur fiscal calcule votre impôt sur le revenu dans le pays de destination et le compare à votre situation actuelle. Il intègre les régimes spéciaux, conventions de double imposition et optimisations légales." },
       ]} />
-      <div className="min-h-screen bg-background overflow-x-hidden">
+      <div className="min-h-screen bg-background overflow-x-hidden pb-24 sm:pb-0">
         {/* ========== HERO SECTION ========== */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
         {/* Background effects */}
