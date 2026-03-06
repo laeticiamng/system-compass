@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
+import { LocalizedLink as Link } from '@/components/i18n';
 import { useTranslation } from "react-i18next";
 import { CheckCircle, Sparkles, Crown, ArrowRight, Key, Map, BarChart3, BookOpen, Shield, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -34,7 +35,7 @@ function triggerConfetti() {
 
 const SubscriptionSuccess = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { checkSubscription, tier, loading } = useSubscription();
   const [hasTriggeredConfetti, setHasTriggeredConfetti] = useState(false);
 

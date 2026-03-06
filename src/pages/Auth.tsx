@@ -51,7 +51,7 @@ export default function Auth() {
         setTimeout(() => {
           navigate('/quick-test');
           setTimeout(() => {
-            toast.success('Bienvenue ! Découvrez votre profil d\'expatrié 🧭', {
+            toast.success(t('auth.welcomeToast', 'Bienvenue ! Découvrez votre profil d\'expatrié 🧭'), {
               duration: 6000,
             });
           }, 500);
