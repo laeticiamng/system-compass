@@ -4,6 +4,7 @@
  */
 
 import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
+import { useAuth } from '@/hooks/useAuth';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -203,6 +204,7 @@ export function QuickTestResults({
 }: QuickTestResultsProps) {
   const navigate = useLocalizedNavigate();
   const { t } = useTranslation();
+  const { user } = useAuth();
   const { canAccessPremium } = useSubscription();
 
   const profileTypeId = determineProfileType(answers);
