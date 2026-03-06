@@ -3,7 +3,7 @@ import { useTraceOSDecisions } from '@/hooks/useTraceOSDecisions';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Link } from 'react-router-dom';
+import { LocalizedLink as Link } from '@/components/i18n';
 import {
   GitBranch,
   Plus,

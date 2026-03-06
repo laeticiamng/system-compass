@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
+import { LocalizedLink as Link } from '@/components/i18n';
 import { Helmet } from 'react-helmet-async';
 import { useCountries } from '@/lib/countries-data';
 import { Country } from '@/lib/types';

@@ -2,7 +2,8 @@
  * Expert Profile Page - Individual expert view with reviews and booking
  */
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { LocalizedLink as Link } from '@/components/i18n';
 import { useExpertById } from '@/hooks/useExpertsDb';
 import { useExpertReviews } from '@/hooks/useExpertReviews';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';

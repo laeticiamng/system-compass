@@ -26,7 +26,7 @@ import {
   SelectTrigger, 
   SelectValue 
 } from '@/components/ui/select';
-import { Link } from 'react-router-dom';
+import { LocalizedLink as Link } from '@/components/i18n';
 import { cn } from '@/lib/utils';
 
 interface LocalExpert {

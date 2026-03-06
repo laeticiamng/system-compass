@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { LocalizedLink as Link } from '@/components/i18n';
 import {
   BookOpen,
   Clock,

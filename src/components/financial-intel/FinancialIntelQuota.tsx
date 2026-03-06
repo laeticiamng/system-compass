@@ -7,7 +7,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
 import { Lock, Zap, Crown } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { LocalizedLink as Link } from '@/components/i18n';
 
 interface FinancialIntelQuotaProps {
   onQuotaExceeded?: () => void;

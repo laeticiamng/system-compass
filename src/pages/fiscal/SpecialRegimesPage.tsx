@@ -16,7 +16,7 @@ import {
   Briefcase, Building2, Wallet, Users, MapPin, Star 
 } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { LocalizedLink as Link } from '@/components/i18n';
 import { SimulationDisclaimer } from '@/components/SimulationDisclaimer';
 
 interface SpecialRegime {

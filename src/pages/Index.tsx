@@ -4,7 +4,7 @@
  */
 
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { LocalizedLink as Link } from '@/components/i18n';
 import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';

@@ -4,7 +4,7 @@
  */
 
 import { ArrowLeft, Building2, User, Globe, Server, Shield } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { LocalizedLink as Link } from '@/components/i18n';
 import { Button } from '@/components/ui/button';
 import { Helmet } from 'react-helmet-async';
 

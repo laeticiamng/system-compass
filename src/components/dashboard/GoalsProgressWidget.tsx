@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Target, CheckCircle, Circle, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { LocalizedLink as Link } from '@/components/i18n';
 import { useDashboardProgress } from '@/hooks/useDashboardProgress';
 import { useExitKeysProfile } from '@/hooks/useExitKeysProfile';
 import { useGamification } from '@/hooks/useGamification';

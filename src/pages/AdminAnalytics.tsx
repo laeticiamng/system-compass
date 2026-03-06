@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { LocalizedLink as Link } from '@/components/i18n';
 import { useTranslation } from 'react-i18next';
 import { ArrowLeft, TrendingUp, Users, MousePointer, BarChart3, RefreshCw, Download, AlertTriangle, Settings } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';

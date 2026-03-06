@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { LocalizedLink as Link } from '@/components/i18n';
 import { EXIT_KEYS, ExitKey } from '@/lib/exit-keys-engine';
 import { PyramidType } from '@/lib/types';
 import { SimulationDisclaimer } from '@/components/SimulationDisclaimer';

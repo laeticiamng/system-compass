@@ -1,6 +1,6 @@
 import { useMemo, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { LocalizedLink as Link } from '@/components/i18n';
 import { 
   Key, AlertTriangle, Clock, Target, Zap, FileText, ExternalLink, 
   CheckCircle2, MapPin, Briefcase, Shield, Users, Brain, TrendingUp, 

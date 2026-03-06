@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { LocalizedLink as Link } from '@/components/i18n';
 import { ArrowLeft, AlertTriangle, Target, TrendingUp, Shield, Shuffle, Pickaxe } from 'lucide-react';
 import { PYRAMID_TYPE_INFO, PyramidType } from '@/lib/types';
 import { useCountries } from '@/lib/countries-data';

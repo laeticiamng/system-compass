@@ -3,7 +3,8 @@
  * Shows user's pinned favorite pages for quick access
  */
 
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { LocalizedLink as Link } from '@/components/i18n';
 import { Star, Compass, Map, Globe, Triangle, Key, Scale, Gamepad2,
   User, Users, Play, Shield, BarChart3, BookOpen,
   Building2, Eye, AlertCircle, LayoutDashboard,

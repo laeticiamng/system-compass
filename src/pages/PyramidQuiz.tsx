@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
+import { LocalizedLink as Link } from '@/components/i18n';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {

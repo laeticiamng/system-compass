@@ -14,7 +14,7 @@ import {
 import { supabase } from '@/integrations/supabase/client';
 import { IrreversaThreshold } from '@/hooks/useIrreversa';
 import { toast } from 'sonner';
-import { Link } from 'react-router-dom';
+import { LocalizedLink as Link } from '@/components/i18n';
 
 interface TraceOSLinkProps {
   threshold: IrreversaThreshold;

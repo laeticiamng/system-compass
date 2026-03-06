@@ -168,7 +168,7 @@ export const adminRoutes = [
   { path: "admin/partners", element: <RequireAdmin><LazyAdminPartners /></RequireAdmin> },
   { path: "admin/data-sources", element: <RequireAdmin><LazyAdminDataSources /></RequireAdmin> },
   { path: "admin/translations-sync", element: <RequireAdmin><LazyAdminTranslationsSync /></RequireAdmin> },
-  { path: "seed-translations", element: <LazySeedTranslations /> },
+  { path: "seed-translations", element: <RequireAdmin><LazySeedTranslations /></RequireAdmin> },
   { path: "diagnostics", element: <LazyDiagnostics /> },
 ];
 

@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { InstallInstructions } from '@/components/pwa/InstallInstructions';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Download } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { LocalizedLink as Link } from '@/components/i18n';
 import { useEffect, useState } from 'react';
 
 export default function Install() {

@@ -7,7 +7,7 @@
  * decisions and export a PDF of their decision trail.
  */
 import { useState, useMemo, useRef, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { LocalizedLink as Link } from '@/components/i18n';
 import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
