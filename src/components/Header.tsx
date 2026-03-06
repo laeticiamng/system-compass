@@ -305,7 +305,7 @@ export function Header() {
           </div>
           {user && <NotificationBell />}
           {user && <span className="hidden sm:inline"><UserHistoryPanel /></span>}
-          <GamificationProgressBar className="hidden md:flex" />
+          {user && <GamificationProgressBar className="hidden md:flex" />}
           <ThemeToggle />
           <div className="hidden xl:block">
             <LanguageSwitcher />

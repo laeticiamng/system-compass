@@ -436,6 +436,30 @@ export function QuickTestResults({
             )}
           </motion.div>
 
+          {/* Save results CTA for non-authenticated users */}
+          {!user && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="bg-card border border-primary/20 rounded-2xl p-6 mb-6 text-center"
+            >
+              <p className="text-sm font-medium mb-2">
+                {t('quickTest.result.saveTitle', '📌 Sauvegardez vos résultats')}
+              </p>
+              <p className="text-xs text-muted-foreground mb-4">
+                {t('quickTest.result.saveDescription', 'Créez un compte gratuit pour retrouver votre profil, vos pays compatibles et suivre votre progression.')}
+              </p>
+              <Button
+                onClick={() => navigate('/auth')}
+                className="gap-2"
+              >
+                {t('quickTest.result.createAccount', 'Créer mon compte gratuit')}
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </motion.div>
+          )}
+
           {/* Restart */}
           <div className="text-center mb-8">
             <Button
