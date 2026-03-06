@@ -8573,16 +8573,22 @@
     "badge": "Tarification transparente",
     "title": "Choisissez votre plan",
     "subtitle": "Débloquez des analyses plus profondes et des recommandations personnalisées",
+    "heroTitle1": "Choisissez votre",
+    "heroTitle2": "niveau d'accès.",
     "freeName": "Gratuit",
     "premiumName": "Premium",
-    "proName": "Pro",
+    "proName": "Pro / B2B",
     "forever": "pour toujours",
     "perMonth": "/ mois",
-    "freeDescription": "Accès aux fonctionnalités de base",
-    "premiumDescription": "Accès aux variantes pays spécifiques",
-    "proDescription": "Analyse projet personnalisée",
+    "freeDescription": "Découvrez le concept",
+    "freeSubtitle": "Pas de carte bancaire requise",
+    "premiumDescription": "Accès complet pour particuliers",
+    "proDescription": "Pour les équipes et organisations",
+    "proPrice": "Sur devis",
     "currentPlan": "Plan actuel",
     "subscribe": "S'abonner",
+    "startFree": "Commencer gratuitement",
+    "contactUs": "Nous contacter",
     "popular": "Populaire",
     "includedInYourPlan": "Inclus",
     "managePlan": "Gérer mon abonnement",
@@ -8593,7 +8599,10 @@
       "noAnalysis": "Pas d'analyse projet",
       "noLatent": "Pas d'accès module Latent",
       "noIrreversa": "Pas d'accès module Irreversa",
-      "noTraceOS": "Pas d'accès TraceOS"
+      "noTraceOS": "Pas d'accès TraceOS",
+      "limitedCountries": "Limité à 3 pays",
+      "noExitKeys": "Pas de recommandations personnalisées",
+      "noExport": "Pas d'export PDF"
     },
     "enterprise": {
       "title": "Enterprise",
@@ -10445,7 +10454,7 @@
     "viewAll": "Voir tous les experts",
     "disclaimer": "Les experts sont des professionnels indépendants. System Compass ne garantit pas leurs services."
   },
-  "pricing": {
+  "pricingWidget": {
     "badge": "Gratuit pour commencer",
     "title": "Commence gratuitement.",
     "subtitle": "Évolue selon tes besoins.",

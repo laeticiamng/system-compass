@@ -48,7 +48,7 @@ export interface NavGroup {
 export const MAIN_NAV: NavItem[] = [
   { href: '/', icon: Home, label: 'Accueil', labelKey: 'nav.home' },
   { href: '/countries', icon: Map, label: 'Explorer', labelKey: 'nav.countries', description: 'Pays & carte monde' },
-  { href: '/quick-test', icon: Zap, label: 'Mon Profil', labelKey: 'nav.quickTest', description: 'Test rapide 2min' },
+  { href: '/quick-test', icon: Zap, label: 'Test Rapide', labelKey: 'nav.quickTest', description: 'Test rapide 2min' },
   { href: '/tools', icon: Wrench, label: 'Outils', labelKey: 'nav.tools', highlight: true },
   { href: '/pricing', icon: CreditCard, label: 'Tarifs', labelKey: 'nav.pricing' },
   { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard', labelKey: 'nav.dashboard', requiresAuth: true },

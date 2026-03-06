@@ -12,6 +12,7 @@ import Index from "@/pages/Index";
 import Auth from "@/pages/Auth";
 import NotFound from "@/pages/NotFound";
 import About from "@/pages/About";
+import Contact from "@/pages/Contact";
 import Disclaimer from "@/pages/Disclaimer";
 import CGV from "@/pages/CGV";
 import MentionsLegales from "@/pages/MentionsLegales";
@@ -67,6 +68,7 @@ export const coreRoutes = [
   { path: "subscription-success", element: <SubscriptionSuccess /> },
   { path: "pricing", element: <Pricing /> },
   { path: "partners", element: <Partners /> },
+  { path: "contact", element: <Contact /> },
 ];
 
 export const countryRoutes = [

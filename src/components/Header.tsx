@@ -5,7 +5,7 @@ import { LocalizedLink as Link } from '@/components/i18n';
 import { useLocalizedPath } from '@/hooks/useLocalizedPath';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
-import { Compass, Map, FileText, Scale, Gamepad2, LogIn, LogOut, User, LayoutDashboard, Menu, Info, AlertCircle, X, Shield, BookOpen, CreditCard, Globe, Settings, Building2, Users, ChevronDown, Wrench, Bell, BarChart3 } from 'lucide-react';
+import { Compass, Map, FileText, Scale, Gamepad2, LogIn, LogOut, User, LayoutDashboard, Menu, Info, AlertCircle, X, Shield, BookOpen, CreditCard, Globe, Settings, Building2, Users, ChevronDown, Wrench, Bell, BarChart3, Mail } from 'lucide-react';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { GlobalSearch } from './GlobalSearch';
 import { ThemeToggle } from './ThemeToggle';
@@ -55,7 +55,7 @@ export function Header() {
   const navItems = [
     { href: '/', label: t('nav.home', 'Accueil'), icon: Compass },
     { href: '/countries', label: t('nav.countries', 'Explorer'), icon: Map },
-    { href: '/quick-test', label: t('nav.quickTest', 'Mon Profil'), icon: User },
+    { href: '/quick-test', label: t('nav.quickTest', 'Test Rapide'), icon: User },
     
     { href: '/pricing', label: t('nav.pricing', 'Tarifs'), icon: CreditCard },
   ];
@@ -86,6 +86,7 @@ export function Header() {
     { href: '/b2b', label: t('nav.b2b', 'Solutions B2B'), icon: Building2 },
     { href: '/experts', label: t('nav.experts', 'Experts'), icon: Users },
     { href: '/academic', label: t('nav.academic', 'Académique'), icon: BookOpen },
+    { href: '/contact', label: t('nav.contact', 'Contact'), icon: Mail },
   ];
 
   // Admin navigation items - fonctionnels uniquement
