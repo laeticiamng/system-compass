@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { SUPPORTED_LANGUAGES } from '@/i18n';
 import { usePathWithoutLang } from '@/hooks/useLocalizedPath';
 import {
