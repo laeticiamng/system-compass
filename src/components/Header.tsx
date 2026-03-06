@@ -212,33 +212,8 @@ export function Header() {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {/* Modules Pro dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="gap-1 h-8 px-2.5 text-xs font-medium text-muted-foreground hover:text-foreground">
-                  <Building2 className="w-3.5 h-3.5" />
-                  {t('nav.advanced', 'Pour les pros')}
-                  <ChevronDown className="w-3 h-3" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-56">
-                <DropdownMenuLabel>{t('nav.advanced', 'Modules Pro')}</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                {advancedItems.map((item) => {
-                  const Icon = item.icon;
-                  return (
-                    <DropdownMenuItem key={item.href} asChild>
-                      <Link to={item.href} className="flex items-center gap-2">
-                        <Icon className="w-4 h-4" />
-                        {item.label}
-                      </Link>
-                    </DropdownMenuItem>
-                  );
-                })}
-              </DropdownMenuContent>
-            </DropdownMenu>
 
-            {/* Account dropdown */}
+            {/* Account & Pro dropdown (merged) */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="sm" className="gap-1 h-8 px-2.5 text-xs font-medium text-muted-foreground hover:text-foreground">
@@ -401,31 +376,8 @@ export function Header() {
                   );
                 })}
 
-                {/* Modules Avancés */}
-                <div className="border-t border-border my-3" />
-                <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">{t('nav.advanced', 'Modules Pro')}</div>
-                {advancedItems.map((item) => {
-                  const Icon = item.icon;
-                  const isActive = location.pathname === item.href;
-                  return (
-                    <Link
-                      key={item.href}
-                      to={item.href}
-                      onClick={handleNavClick}
-                      className={cn(
-                        'flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors',
-                        isActive
-                          ? 'bg-primary/10 text-primary'
-                          : 'text-muted-foreground hover:text-foreground hover:bg-accent'
-                      )}
-                    >
-                      <Icon className="w-4 h-4" />
-                      {item.label}
-                    </Link>
-                  );
-                })}
 
-                {/* Compte & Info */}
+                {/* Compte & Info (includes Pro modules) */}
                 <div className="border-t border-border my-3" />
                 <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">{t('nav.account', 'Compte & Info')}</div>
                 {accountItems.map((item) => {
