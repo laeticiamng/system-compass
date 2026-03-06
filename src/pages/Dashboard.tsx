@@ -115,7 +115,7 @@ function getDaysRemaining(deadline: string): number {
 
 export default function Dashboard() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { profile, loading: profileLoading } = useExitKeysProfile();
   const {
     progress,
