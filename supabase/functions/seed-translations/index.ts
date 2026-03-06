@@ -1,96 +1,5 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
-
 import { corsHeaders } from "../_shared/cors.ts";
-
-// Bengali translations
-const bnTranslations = {
-  "common": {
-    "appName": "পিরামিড কম্পাস",
-    "tagline": "বাস্তব বিশ্ব সিস্টেমের জন্য সিদ্ধান্ত সিমুলেটর",
-    "positioningLine": "বিশ্লেষণ এবং সিমুলেশন টুল। আপনি সিদ্ধান্ত নিন, আমরা আলো দেখাই।",
-    "disclaimer": "আইনি, আর্থিক বা চিকিৎসা পরামর্শ নয়। আপনি আপনার সিদ্ধান্তের জন্য দায়ী।",
-    "yes": "হ্যাঁ",
-    "no": "না",
-    "back": "ফিরে যান",
-    "next": "পরবর্তী",
-    "years": "বছর",
-    "save": "সংরক্ষণ",
-    "cancel": "বাতিল",
-    "loading": "লোড হচ্ছে...",
-    "country": "দেশ",
-    "delete": "মুছুন",
-    "confirm": "নিশ্চিত করুন",
-    "edit": "সম্পাদনা",
-    "close": "বন্ধ",
-    "view": "দেখুন"
-  },
-  "hero": {
-    "badge": "বিশ্লেষণ সিমুলেটর",
-    "title1": "ব্যয়বহুল ভুল এড়িয়ে চলুন",
-    "titleHighlight": "প্রতিশ্রুতি দেওয়ার আগে",
-    "subtitle": "সিস্টেমের প্রকৃত নিয়ম বুঝুন। সিদ্ধান্ত নেওয়ার আগে পরিণতি সিমুলেট করুন।",
-    "discoverProfile": "আমার গতিপথ সিমুলেট করুন",
-    "exploreCountries": "সিস্টেম বিশ্লেষণ করুন",
-    "quickTest": "দ্রুত পরীক্ষা (৬০ সেকেন্ড)"
-  },
-  "footer": {
-    "explore": "অন্বেষণ",
-    "tools": "সরঞ্জাম",
-    "account": "অ্যাকাউন্ট",
-    "disclaimer": "বিশ্লেষণ এবং সিমুলেশন টুল। কোনো আইনি, আর্থিক বা চিকিৎসা পরামর্শ নয়।",
-    "defaultCountry": "ডিফল্ট দেশ",
-    "selectDefaultCountry": "ডিফল্ট দেশ নির্বাচন করুন"
-  },
-  "cta": {
-    "viewAllKeys": "সব এক্সিট কী দেখুন",
-    "educationalMode": "শিক্ষামূলক মোড (কাল্পনিক চরিত্র)"
-  }
-};
-
-// Russian translations
-const ruTranslations = {
-  "common": {
-    "appName": "Пирамидный Компас",
-    "tagline": "Симулятор решений для реальных систем",
-    "positioningLine": "Инструмент анализа и моделирования. Вы решаете, мы освещаем.",
-    "disclaimer": "Не является юридической, финансовой или медицинской консультацией. Вы несёте ответственность за свои решения.",
-    "yes": "Да",
-    "no": "Нет",
-    "back": "Назад",
-    "next": "Далее",
-    "years": "лет",
-    "save": "Сохранить",
-    "cancel": "Отмена",
-    "loading": "Загрузка...",
-    "country": "Страна",
-    "delete": "Удалить",
-    "confirm": "Подтвердить",
-    "edit": "Редактировать",
-    "close": "Закрыть",
-    "view": "Просмотр"
-  },
-  "hero": {
-    "badge": "Симулятор анализа",
-    "title1": "Избегайте дорогостоящих ошибок",
-    "titleHighlight": "до принятия обязательств",
-    "subtitle": "Поймите реальные правила системы. Симулируйте последствия перед принятием решения.",
-    "discoverProfile": "Симулировать мою траекторию",
-    "exploreCountries": "Анализировать системы",
-    "quickTest": "Быстрый тест (60 сек)"
-  },
-  "footer": {
-    "explore": "Исследовать",
-    "tools": "Инструменты",
-    "account": "Аккаунт",
-    "disclaimer": "Инструмент анализа и моделирования. Без юридических, финансовых или медицинских советов.",
-    "defaultCountry": "Страна по умолчанию",
-    "selectDefaultCountry": "Выбрать страну по умолчанию"
-  },
-  "cta": {
-    "viewAllKeys": "Посмотреть все ключи выхода",
-    "educationalMode": "Образовательный режим (вымышленный персонаж)"
-  }
-};
 
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') {
@@ -98,29 +7,108 @@ Deno.serve(async (req) => {
   }
 
   try {
-    const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
-    const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
-    const supabase = createClient(supabaseUrl, supabaseServiceKey);
+    // Admin-only: require authentication and admin role
+    const authHeader = req.headers.get('Authorization');
+    if (!authHeader?.startsWith('Bearer ')) {
+      return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+        status: 401,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
 
-    console.log('Starting translations seeding for bn and ru...');
+    const supabaseAuth = createClient(
+      Deno.env.get('SUPABASE_URL')!,
+      Deno.env.get('SUPABASE_ANON_KEY')!,
+      { global: { headers: { Authorization: authHeader } } }
+    );
+
+    const token = authHeader.replace('Bearer ', '');
+    const { data: claimsData, error: claimsError } = await supabaseAuth.auth.getClaims(token);
+    if (claimsError || !claimsData?.claims?.sub) {
+      return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+        status: 401,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
+    const userId = claimsData.claims.sub as string;
+
+    // Check admin role
+    const { data: roleData } = await supabaseAuth
+      .from('user_roles')
+      .select('role')
+      .eq('user_id', userId)
+      .eq('role', 'admin')
+      .maybeSingle();
+
+    if (!roleData) {
+      return new Response(JSON.stringify({ error: 'Forbidden: admin role required' }), {
+        status: 403,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
+    // Proceed with service role
+    const supabase = createClient(
+      Deno.env.get('SUPABASE_URL')!,
+      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
+    );
+
+    console.log('Starting translations seeding (admin authorized)...');
 
     const body = await req.json().catch(() => ({}));
     const { seedAll = false, languages = ['bn', 'ru'] } = body;
 
+    // Bengali translations
+    const bnTranslations = {
+      "common": {
+        "appName": "পিরামিড কম্পাস",
+        "tagline": "বাস্তব বিশ্ব সিস্টেমের জন্য সিদ্ধান্ত সিমুলেটর",
+        "yes": "হ্যাঁ",
+        "no": "না",
+        "back": "ফিরে যান",
+        "next": "পরবর্তী",
+        "save": "সংরক্ষণ",
+        "cancel": "বাতিল",
+        "loading": "লোড হচ্ছে...",
+        "country": "দেশ",
+        "delete": "মুছুন",
+        "confirm": "নিশ্চিত করুন",
+        "edit": "সম্পাদনা",
+        "close": "বন্ধ",
+        "view": "দেখুন"
+      }
+    };
+
+    // Russian translations
+    const ruTranslations = {
+      "common": {
+        "appName": "Пирамидный Компас",
+        "tagline": "Симулятор решений для реальных систем",
+        "yes": "Да",
+        "no": "Нет",
+        "back": "Назад",
+        "next": "Далее",
+        "save": "Сохранить",
+        "cancel": "Отмена",
+        "loading": "Загрузка...",
+        "country": "Страна",
+        "delete": "Удалить",
+        "confirm": "Подтвердить",
+        "edit": "Редактировать",
+        "close": "Закрыть",
+        "view": "Просмотр"
+      }
+    };
+
     const translationsToSeed: Record<string, object> = {};
-    
-    if (languages.includes('bn') || seedAll) {
-      translationsToSeed['bn'] = bnTranslations;
-    }
-    if (languages.includes('ru') || seedAll) {
-      translationsToSeed['ru'] = ruTranslations;
-    }
+    if (languages.includes('bn') || seedAll) translationsToSeed['bn'] = bnTranslations;
+    if (languages.includes('ru') || seedAll) translationsToSeed['ru'] = ruTranslations;
 
     const results: { language: string; status: string }[] = [];
 
     for (const [lang, data] of Object.entries(translationsToSeed)) {
       console.log(`Seeding ${lang} translations...`);
-      
       const { error } = await supabase
         .from('ui_translations')
         .upsert({
@@ -128,39 +116,21 @@ Deno.serve(async (req) => {
           namespace: 'translation',
           translations: data,
           updated_at: new Date().toISOString(),
-        }, {
-          onConflict: 'language,namespace',
-        });
+        }, { onConflict: 'language,namespace' });
 
-      if (error) {
-        console.error(`Error seeding ${lang}:`, error);
-        results.push({ language: lang, status: 'error: ' + error.message });
-      } else {
-        results.push({ language: lang, status: 'success' });
-      }
+      results.push({ language: lang, status: error ? 'error: ' + error.message : 'success' });
     }
 
-    const successCount = results.filter(r => r.status === 'success').length;
-
     return new Response(
-      JSON.stringify({
-        message: `Seeded ${successCount} translation sets`,
-        results,
-      }),
-      { 
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        status: 200,
-      }
+      JSON.stringify({ message: `Seeded ${results.filter(r => r.status === 'success').length} translation sets`, results }),
+      { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 200 }
     );
   } catch (err) {
     const errorMessage = err instanceof Error ? err.message : 'Unknown error';
     console.error('Seed translations error:', errorMessage);
     return new Response(
       JSON.stringify({ error: errorMessage }),
-      { 
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        status: 500,
-      }
+      { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 500 }
     );
   }
 });
