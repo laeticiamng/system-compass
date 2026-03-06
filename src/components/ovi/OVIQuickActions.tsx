@@ -37,7 +37,7 @@ export function OVIQuickActions({
   onExportInsights,
   onLinkToTraceOS
 }: OVIQuickActionsProps) {
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
 
   const actions: QuickAction[] = [
     {

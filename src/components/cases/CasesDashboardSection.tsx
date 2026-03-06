@@ -28,7 +28,7 @@ interface CasesDashboardSectionProps {
 
 export function CasesDashboardSection({ countryId, limit = 5 }: CasesDashboardSectionProps) {
   const { t, i18n } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { cases, isLoading } = useUserCases();
   const { countries } = useCountries();
 

@@ -74,7 +74,7 @@ type ApplicationFormData = z.infer<typeof applicationSchema>;
 export default function BecomeExpert() {
   const { t } = useTranslation();
   const { user } = useAuth();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 

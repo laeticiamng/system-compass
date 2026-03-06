@@ -215,7 +215,7 @@ interface CountryProjectAnalysisProps {
 
 export function CountryProjectAnalysis({ countryId, countryName }: CountryProjectAnalysisProps) {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { canAccessPremium, loading: subscriptionLoading } = useSubscription();
   
   const [formData, setFormData] = useState<FormData>({

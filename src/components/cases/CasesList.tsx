@@ -16,7 +16,7 @@ interface CasesListProps {
 
 export function CasesList({ countryId, limit }: CasesListProps) {
   const { t, i18n } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { cases, isLoading } = useUserCases();
 
   const filteredCases = countryId 

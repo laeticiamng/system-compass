@@ -35,7 +35,7 @@ const REGIONS = [
 
 export default function WorldMapExplorer() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { countries } = useCountries();
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
   const [pyramidFilter, setPyramidFilter] = useState('all');

@@ -198,7 +198,7 @@ function JournalCard({ entry }: { entry: JournalEntry }) {
 
 export default function ExpatReviews() {
   const { user } = useAuth();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const [profileFilter, setProfileFilter] = useState('all');
   const { reviews, isLoading: loadingReviews, createReview, voteReview } = useUgcReviews(undefined, profileFilter);
   const { entries: journalEntries, isLoading: loadingJournal, createEntry } = useUgcJournal(true);

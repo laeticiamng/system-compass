@@ -24,7 +24,7 @@ interface UseKeyboardShortcutsOptions {
 
 export function useKeyboardShortcuts(options: UseKeyboardShortcutsOptions = {}) {
   const { enabled = true, showToast = false } = options;
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { toast } = useToast();
   const [isHelpOpen, setIsHelpOpen] = useState(false);
 

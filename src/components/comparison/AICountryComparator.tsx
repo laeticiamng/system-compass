@@ -46,7 +46,7 @@ const MAX_COUNTRIES = 4;
 
 export function AICountryComparator() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const { topRecommendations } = useSmartRecommendations();
 

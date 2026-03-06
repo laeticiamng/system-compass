@@ -40,7 +40,7 @@ export function GlobalSearch({
   showResults = true 
 }: GlobalSearchProps) {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { countries } = useCountries();
   const { savedIds } = useSavedCountries();
   const [query, setQuery] = useState('');

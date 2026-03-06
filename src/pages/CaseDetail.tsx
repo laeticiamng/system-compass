@@ -44,7 +44,7 @@ function getFlagEmoji(iso2: string): string {
 
 export default function CaseDetail() {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { t, i18n } = useTranslation();
   const { caseData, isLoading, updateCase, isUpdating } = useUserCase(id || '');
 

@@ -12,7 +12,7 @@ import { useTerrainHistory } from '@/hooks/useTerrainHistory';
 
 export default function TerrainRealitiesSelector() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { countries } = useCountries();
   const { history } = useTerrainHistory();
   const [search, setSearch] = useState('');
