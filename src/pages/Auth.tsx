@@ -24,7 +24,6 @@ export default function Auth() {
   const { t } = useTranslation();
   const navigate = useLocalizedNavigate();
   const { user, loading, signUp, signIn } = useAuth();
-  const { user, loading, signUp, signIn } = useAuth();
   const { trackAccountCreated } = useAnalytics();
   
   const [isLogin, setIsLogin] = useState(true);
@@ -77,9 +76,14 @@ export default function Auth() {
       return;
     }
 
-    try {
-      passwordSchema.parse(password);
-    } catch {
+    // Password validation with i18n messages
+    const passwordResult = z.string()
+      .min(8)
+      .regex(/[A-Z]/)
+      .regex(/[a-z]/)
+      .regex(/[0-9]/)
+      .safeParse(password);
+    if (!passwordResult.success) {
       setError(t('auth.errors.passwordTooShort'));
       setIsSubmitting(false);
       return;
