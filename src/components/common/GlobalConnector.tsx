@@ -87,7 +87,7 @@ export async function syncUserActivity(userId: string, activity: {
 
 // Navigation helpers with context preservation
 export function useContextualNavigation() {
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { user } = useAuth();
   
   const navigateWithContext = (

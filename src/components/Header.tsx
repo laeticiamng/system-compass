@@ -42,7 +42,7 @@ const DISCLAIMER_DISMISSED_KEY = 'pyramid-disclaimer-dismissed';
 
 export function Header() {
   const location = useLocation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { t } = useTranslation();
   const { user, signOut } = useAuth();
   const { isAdmin } = useUserRoles();

@@ -48,7 +48,7 @@ const navItems: NavItem[] = [
 export function MobileBottomNav() {
   const { t } = useTranslation();
   const location = useLocation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { toggleSidebar } = useSidebar();
 
   const isActive = (route: string) => {

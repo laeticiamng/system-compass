@@ -126,7 +126,7 @@ export function NotificationBell({ className }: NotificationBellProps) {
 
 function NotificationDropdown({ onClose }: { onClose: () => void }) {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { notifications, markAsRead, dismissNotification } = useNotifications();
 
   const handleAction = (notification: Notification) => {

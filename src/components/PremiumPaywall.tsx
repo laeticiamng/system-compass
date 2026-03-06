@@ -29,7 +29,7 @@ export function PremiumPaywall({
   const { t } = useTranslation();
   const { user } = useAuth();
   const { createCheckout, loading } = useSubscription();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
 
   const tierConfig = SUBSCRIPTION_TIERS[tier];
 
