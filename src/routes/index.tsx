@@ -68,6 +68,7 @@ export const coreRoutes = [
   { path: "subscription-success", element: <SubscriptionSuccess /> },
   { path: "pricing", element: <Pricing /> },
   { path: "partners", element: <Partners /> },
+  { path: "contact", element: <Contact /> },
 ];
 
 export const countryRoutes = [
