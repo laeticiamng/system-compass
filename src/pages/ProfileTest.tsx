@@ -42,7 +42,7 @@ const PYRAMID_TYPE_COLORS: Record<string, string> = {
 };
 
 export default function ProfileTest() {
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { t } = useTranslation();
   useAuth();
   const { saveResult } = useTestResults();

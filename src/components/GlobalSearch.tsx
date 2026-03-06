@@ -34,7 +34,7 @@ export function GlobalSearch() {
     { id: 'dashboard', title: t('search.page.dashboard', 'Tableau de bord'), path: '/dashboard', icon: <BookOpen className="w-4 h-4" /> },
     { id: 'errors-illusions', title: t('search.page.errorsIllusions', 'Erreurs & Illusions'), path: '/errors-illusions', icon: <AlertTriangle className="w-4 h-4" /> },
   ];
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { countries } = useCountries();
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');

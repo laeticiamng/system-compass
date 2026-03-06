@@ -355,7 +355,7 @@ function generateResults(formData: FilterFormData): FilterResult {
 
 export default function PreventionFilter() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { user } = useAuth();
   const { trackSimulationCompleted, trackSimulationDropped } = useAnalytics();
   

@@ -13,7 +13,7 @@ import { useOnboardingTour, getTourSteps } from '@/hooks/useOnboardingTour';
 import { cn } from '@/lib/utils';
 
 export function OnboardingTour() {
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { t } = useTranslation();
   const steps = getTourSteps(t);
   const {

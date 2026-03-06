@@ -68,7 +68,7 @@ const quickActions: QuickAction[] = [
 
 export function QuickActionsWidget() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
 
   return (
     <Card className="glass-card border-primary/10">

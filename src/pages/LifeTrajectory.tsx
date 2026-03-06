@@ -411,7 +411,7 @@ function generateTrajectories(
 }
 
 export default function LifeTrajectory() {
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { t } = useTranslation();
   const { profile: savedProfile, loading: profileLoading } = useExitKeysProfile();
   const [step, setStep] = useState(0);

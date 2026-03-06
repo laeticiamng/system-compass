@@ -116,7 +116,7 @@ interface InteractiveTutorialProps {
 
 export function InteractiveTutorial({ onComplete, forceShow = false }: InteractiveTutorialProps) {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [highlightRect, setHighlightRect] = useState<DOMRect | null>(null);

@@ -27,7 +27,7 @@ export function ErrorCard({
   variant = 'error',
   className,
 }: ErrorCardProps) {
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
 
   const variantStyles = {
     error: 'border-destructive/30 bg-destructive/5',

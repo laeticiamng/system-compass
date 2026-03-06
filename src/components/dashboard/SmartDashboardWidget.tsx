@@ -22,7 +22,7 @@ import {
 } from 'lucide-react';
 
 export function SmartDashboardWidget() {
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { topRecommendations, isLoading, hasProfile } = useSmartRecommendations();
 
   if (isLoading) {

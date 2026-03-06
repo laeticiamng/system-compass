@@ -201,7 +201,7 @@ export function QuickTestResults({
   onReset,
   countries
 }: QuickTestResultsProps) {
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { t } = useTranslation();
   const { canAccessPremium } = useSubscription();
 

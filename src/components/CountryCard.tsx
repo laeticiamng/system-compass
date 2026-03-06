@@ -50,7 +50,7 @@ function formatPopulation(num: number): string {
 
 export const CountryCard = forwardRef<HTMLDivElement, CountryCardProps>(
   function CountryCard({ country, className }, ref) {
-    const navigate = useNavigate();
+    const navigate = useLocalizedNavigate();
     const { t } = useTranslation();
     const typeColor = PYRAMID_TYPE_COLORS[country.pyramidType];
     

@@ -222,7 +222,7 @@ function PersonaCard({ persona, isSelected, onClick }: {
 }
 
 function PersonaDetail({ persona }: { persona: PersonaType }) {
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const Icon = persona.icon;
   
   return (
