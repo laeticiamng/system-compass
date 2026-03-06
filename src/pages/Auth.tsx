@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { supabase } from '@/integrations/supabase/client';
-import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { Helmet } from 'react-helmet-async';
 import { useAuth } from '@/hooks/useAuth';
 import { useAnalytics } from '@/hooks/useAnalytics';
@@ -19,16 +19,10 @@ import { PasswordResetDialog } from '@/components/auth/PasswordResetDialog';
 import { toast } from 'sonner';
 
 const emailSchema = z.string().email();
-// Sécurité renforcée : minimum 8 caractères, 1 majuscule, 1 minuscule, 1 chiffre
-const passwordSchema = z.string()
-  .min(8, 'Minimum 8 caractères requis')
-  .regex(/[A-Z]/, 'Au moins une majuscule requise')
-  .regex(/[a-z]/, 'Au moins une minuscule requise')
-  .regex(/[0-9]/, 'Au moins un chiffre requis');
 
 export default function Auth() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { user, loading, signUp, signIn } = useAuth();
   const { trackAccountCreated } = useAnalytics();
   
@@ -82,9 +76,14 @@ export default function Auth() {
       return;
     }
 
-    try {
-      passwordSchema.parse(password);
-    } catch {
+    // Password validation with i18n messages
+    const passwordResult = z.string()
+      .min(8)
+      .regex(/[A-Z]/)
+      .regex(/[a-z]/)
+      .regex(/[0-9]/)
+      .safeParse(password);
+    if (!passwordResult.success) {
       setError(t('auth.errors.passwordTooShort'));
       setIsSubmitting(false);
       return;

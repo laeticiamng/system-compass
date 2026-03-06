@@ -4,7 +4,7 @@
  */
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
@@ -292,7 +292,7 @@ function FeatureHighlightsStep({ onNext, goal }: StepProps & { goal: B2CGoal }) 
 // ─── Step 5: Quick actions to get started ───
 function GetStartedStep({ onComplete, profilePath, goal }: { onComplete: () => void; profilePath: ProfilePath; goal: B2CGoal }) {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
 
   const b2cActions: Record<string, { link: string; label: string; icon: React.ElementType }[]> = {
     explore: [

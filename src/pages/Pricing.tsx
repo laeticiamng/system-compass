@@ -8,7 +8,8 @@ import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useSubscription, SUBSCRIPTION_TIERS } from "@/hooks/useSubscription";
 import { useAuth } from "@/hooks/useAuth";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { cn } from "@/lib/utils";
 import { motion, useInView } from "framer-motion";
 
@@ -32,7 +33,7 @@ function AnimatedSection({ children, className }: { children: React.ReactNode; c
 
 const Pricing = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { user } = useAuth();
   const { tier, createCheckout, openCustomerPortal, loading } = useSubscription();
 

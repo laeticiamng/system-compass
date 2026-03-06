@@ -1,4 +1,5 @@
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
@@ -56,7 +57,7 @@ const PYRAMID_TYPE_COLORS: Record<string, string> = {
 
 export default function CountryDetail() {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { t } = useTranslation();
   const { trackCountryView } = useUserHistory();
   const { profile } = useExitKeysProfile();

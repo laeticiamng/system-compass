@@ -22,7 +22,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { ProgressStats } from '@/components/dashboard/ProgressStats';
 import { DeadlineCalendar } from '@/components/dashboard/DeadlineCalendar';
 import { NotificationBell } from '@/components/dashboard/NotificationBell';
@@ -114,7 +115,7 @@ function getDaysRemaining(deadline: string): number {
 
 export default function Dashboard() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const { profile, loading: profileLoading } = useExitKeysProfile();
   const {
     progress,
