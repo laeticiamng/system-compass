@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { useTranslation } from 'react-i18next';
 import { ZoomIn, ZoomOut, RotateCcw, Shield, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';

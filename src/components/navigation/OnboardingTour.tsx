@@ -3,7 +3,7 @@
  * Shows step-by-step guide to platform features
  */
 
-import { useNavigate } from 'react-router-dom';
+import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronRight, ChevronLeft, Sparkles, RotateCcw } from 'lucide-react';
