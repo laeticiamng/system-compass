@@ -37,7 +37,7 @@ const RECOMMENDATION_COLORS = {
 
 export function SmartRecommendationsCard() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   const [activeTab, setActiveTab] = useState('top');
   
   const {
@@ -204,7 +204,7 @@ interface RecommendationRowProps {
 }
 
 function RecommendationRow({ recommendation, rank, showChallenges }: RecommendationRowProps) {
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
   
   return (
     <motion.div
