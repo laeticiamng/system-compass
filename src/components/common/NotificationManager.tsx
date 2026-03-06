@@ -286,7 +286,7 @@ function NotificationCard({
   onDismiss: () => void;
 }) {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useLocalizedNavigate();
 
   const typeIcons: Record<Notification['type'], React.ReactNode> = {
     reminder: <Calendar className="w-4 h-4 text-amber-500" />,
