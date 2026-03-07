@@ -29,7 +29,7 @@ interface StepProps {
 }
 
 // ─── Step 1: Welcome ───
-function WelcomeStep({ onNext }: StepProps) {
+function WelcomeStep({ onNext, onSkip }: StepProps & { onSkip: () => void }) {
   const { t } = useTranslation();
   return (
     <motion.div
@@ -55,12 +55,8 @@ function WelcomeStep({ onNext }: StepProps) {
         <ArrowRight className="w-4 h-4" />
       </Button>
       <button
-        onClick={() => {
-          // Skip is handled by parent dialog onOpenChange
-          const event = new Event('onboarding-skip');
-          window.dispatchEvent(event);
-        }}
-        className="text-xs text-muted-foreground hover:text-foreground transition-colors mt-2"
+        onClick={onSkip}
+        className="block mx-auto text-xs text-muted-foreground hover:text-foreground transition-colors mt-2"
       >
         {t('onboarding.welcome.skip', 'Non merci, explorer directement')}
       </button>
