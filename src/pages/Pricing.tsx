@@ -136,7 +136,7 @@ const Pricing = () => {
     <>
       <Helmet>
         <title>Tarifs - System Compass | Gratuit, Premium et Enterprise</title>
-        <meta name="description" content="Découvrez les offres System Compass : gratuit pour découvrir, Premium pour un accès complet aux 44 pays, et Enterprise pour les organisations. Tarification transparente." />
+        <meta name="description" content="Découvrez les offres System Compass : gratuit pour découvrir, Premium pour un accès complet aux 80+ pays, et Enterprise pour les organisations. Tarification transparente." />
         <meta property="og:title" content="Tarifs - System Compass" />
         <meta property="og:description" content="Gratuit pour découvrir, Premium pour un accès complet. Tarification transparente sans frais cachés." />
         <meta name="twitter:title" content="Tarifs - System Compass" />

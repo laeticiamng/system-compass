@@ -265,15 +265,15 @@ export default function Countries() {
   return (
     <>
       <Helmet>
-        <title>Explorer les pays - System Compass | 44 systèmes analysés</title>
-        <meta name="description" content="Explorez 44 pays avec leurs systèmes analysés en profondeur. Comparez les pyramides, risques et opportunités. Trouvez le pays qui correspond à votre profil." />
+        <title>{t('countries.metaTitle', 'Explorer les pays - System Compass | 44+ pays analysés')}</title>
+        <meta name="description" content="Explorez 80+ pays avec leurs systèmes analysés en profondeur. Comparez les pyramides, risques et opportunités. Trouvez le pays qui correspond à votre profil." />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Explorer les pays - System Compass" />
-        <meta property="og:description" content="44 pays analysés avec leurs systèmes, risques et opportunités. Trouvez votre destination idéale." />
+        <meta property="og:description" content="80+ pays analysés avec leurs systèmes, risques et opportunités. Trouvez votre destination idéale." />
         <meta property="og:image" content="https://system-compass.app/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Explorer les pays - System Compass" />
-        <meta name="twitter:description" content="44 pays analysés avec leurs systèmes, risques et opportunités. Trouvez votre destination idéale." />
+        <meta name="twitter:description" content="80+ pays analysés avec leurs systèmes, risques et opportunités. Trouvez votre destination idéale." />
         <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
       </Helmet>
       <div className="min-h-screen bg-background overflow-x-hidden">
@@ -325,7 +325,7 @@ export default function Countries() {
               >
                 <Globe className="w-4 h-4 text-primary" />
                 <span className="text-sm text-primary font-medium">
-                  {t('countries.badge', '{{count}} systèmes analysés', { count: countries.length + extendedCountries.length })}
+                  {t('countries.badge', '{{count}} pays analysés', { count: countries.length + extendedCountries.length })}
                 </span>
               </motion.div>
 
