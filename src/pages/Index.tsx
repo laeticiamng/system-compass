@@ -49,8 +49,8 @@ export default function Index() {
   return (
     <>
       <Helmet>
-        <title>{t('landing.meta.title', 'System Compass - Compare 44 pays pour ton expatriation')}</title>
-        <meta name="description" content={t('landing.meta.description', 'Plateforme d\'intelligence décisionnelle pour l\'expatriation. Analyse systémique de 44+ pays : fiscalité, visas, coût de la vie, structures de pouvoir. Test de profil gratuit en 2 min.')} />
+        <title>{t('landing.meta.title', 'System Compass - Compare 80+ pays pour ton expatriation')}</title>
+        <meta name="description" content={t('landing.meta.description', 'Plateforme d\'intelligence décisionnelle pour l\'expatriation. Analyse systémique de 80+ pays : fiscalité, visas, coût de la vie, structures de pouvoir. Test de profil gratuit en 2 min.')} />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={t('landing.meta.ogTitle', 'System Compass - Intelligence décisionnelle pour l\'expatriation')} />
         <meta property="og:description" content={t('landing.meta.ogDescription', 'Comparez 44+ pays par compatibilité avec votre profil : fiscalité, visas, coût de la vie, sécurité. Approche systémique unique. Test gratuit.')} />
@@ -119,7 +119,7 @@ export default function Index() {
             transition={{ delay: 0.5, duration: 0.6 }}
             className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
           >
-            {t('landing.hero.subtitle', 'Fiscalité, coût de la vie, visas, qualité de vie : compare 44 pays en 2 minutes et trouve celui qui te correspond.')}
+            {t('landing.hero.subtitle', 'Fiscalité, coût de la vie, visas, qualité de vie : compare 80+ pays en 2 minutes et trouve celui qui te correspond.')}
           </motion.p>
 
           {/* CTA principal */}
@@ -354,7 +354,7 @@ export default function Index() {
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      {t('landing.pricing.freeFeature3', '44 pays disponibles')}
+                      {t('landing.pricing.freeFeature3', '80+ pays disponibles')}
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
@@ -485,7 +485,7 @@ export default function Index() {
                   {t('landing.faq.q1', 'Est-ce vraiment gratuit ?')}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
-                  {t('landing.faq.a1', 'Oui. Le test de profil, l\'exploration des 44 pays et les fiches de base sont 100% gratuits. Les fonctionnalités avancées (export PDF, recommandations IA, modules Pro) sont réservées aux plans payants.')}
+                  {t('landing.faq.a1', 'Oui. Le test de profil, l\'exploration des 80+ pays et les fiches de base sont 100% gratuits. Les fonctionnalités avancées (export PDF, recommandations IA, modules Pro) sont réservées aux plans payants.')}
                 </AccordionContent>
               </AccordionItem>
             </motion.div>
