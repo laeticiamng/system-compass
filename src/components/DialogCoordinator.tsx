@@ -54,9 +54,19 @@ export function DialogCoordinatorProvider({ children }: { children: ReactNode })
   const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
+    // Delay initialization: 300ms for disclaimer, 5s for onboarding (let user see hero first)
     const timer = setTimeout(() => setInitialized(true), 300);
     return () => clearTimeout(timer);
   }, []);
+
+  // Extra delay for onboarding so the hero is visible first
+  const [onboardingReady, setOnboardingReady] = useState(false);
+  useEffect(() => {
+    if (initialized && isDisclaimerComplete && !isOnboardingComplete) {
+      const timer = setTimeout(() => setOnboardingReady(true), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [initialized, isDisclaimerComplete, isOnboardingComplete]);
 
   const onHomePage = isHomePage(location.pathname);
 
