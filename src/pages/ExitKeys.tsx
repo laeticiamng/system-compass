@@ -355,7 +355,7 @@ export default function ExitKeys() {
                   </span>
                   <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-pyramid-stability/10 text-pyramid-stability text-sm font-medium border border-pyramid-stability/20">
                     <Globe className="w-4 h-4" />
-                    {t('exitKeys.badge.global', '44 pays analysés en profondeur')}
+                    {t('exitKeys.badge.global', '80+ pays analysés en profondeur')}
                   </span>
                 </div>
               </div>
