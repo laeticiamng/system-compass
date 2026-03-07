@@ -325,7 +325,10 @@ export default function Countries() {
               >
                 <Globe className="w-4 h-4 text-primary" />
                 <span className="text-sm text-primary font-medium">
-                  {t('countries.badge', '{{count}} systèmes analysés', { count: countries.length + extendedCountries.length })}
+                  {t('countries.badge', '{{count}} pays analysés', { count: countries.length })}
+                  {extendedCountries.length > 0 && (
+                    <span className="text-muted-foreground font-normal"> + {extendedCountries.length} {t('countries.extendedProfiles', 'profils étendus')}</span>
+                  )}
                 </span>
               </motion.div>
 

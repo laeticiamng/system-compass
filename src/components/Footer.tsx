@@ -128,9 +128,9 @@ export function Footer() {
                 {t('footer.privacyPolicy', 'Politique de confidentialité')}
               </Link>
               <span className="text-border">|</span>
-              <a href="mailto:contact@system-compass.app" className="hover:text-foreground transition-colors">
+              <Link to="/contact" className="hover:text-foreground transition-colors">
                 {t('footer.contact', 'Contact')}
-              </a>
+              </Link>
             </div>
             
             <p className="text-[10px] sm:text-xs text-muted-foreground/70 max-w-md">
