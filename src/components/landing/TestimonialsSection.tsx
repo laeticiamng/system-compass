@@ -105,7 +105,7 @@ export function TestimonialsSection() {
                 {t('socialProof.betaTitle', 'Commencez votre analyse gratuite')}
               </h3>
               <p className="text-muted-foreground text-sm mb-4">
-                {t('socialProof.betaDescription', 'Explorez 44 pays gratuitement, découvrez votre profil d\'expatrié et comparez les opportunités en toute autonomie.')}
+                {t('socialProof.betaDescription', 'Explorez 80+ pays gratuitement, découvrez votre profil d\'expatrié et comparez les opportunités en toute autonomie.')}
               </p>
               <a
                 href="/quick-test"

@@ -78,7 +78,7 @@ const CHANGELOG: ChangelogEntry[] = [
     changes: [
       { type: 'feature', text: 'Module Intelligence Financière IA — détection des schémas légitimes vs frauduleux' },
       { type: 'feature', text: 'Marketplace d\'experts — mise en relation avec des professionnels vérifiés' },
-      { type: 'data', text: '44 pays analysés en profondeur avec couche intelligence' },
+      { type: 'data', text: '80+ pays analysés en profondeur avec couche intelligence' },
       { type: 'improvement', text: 'Simulateur fiscal avec conventions bilatérales et régimes spéciaux' },
       { type: 'security', text: 'Authentification renforcée avec gestion des rôles admin' },
     ],

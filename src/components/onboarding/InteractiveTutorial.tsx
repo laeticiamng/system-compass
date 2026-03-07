@@ -49,7 +49,7 @@ const tutorialSteps: TutorialStep[] = [
   {
     id: 'countries',
     title: 'Explorer les pays',
-    description: 'Accédez à des profils détaillés de 44 pays avec des analyses systémiques uniques : pyramide du pouvoir, risques réels, et qui gagne/perd dans chaque système.',
+    description: 'Accédez à des profils détaillés de 80+ pays avec des analyses systémiques uniques : pyramide du pouvoir, risques réels, et qui gagne/perd dans chaque système.',
     icon: <Globe className="w-8 h-8 text-blue-500" />,
     targetSelector: '[data-tutorial="countries"]',
     position: 'bottom',

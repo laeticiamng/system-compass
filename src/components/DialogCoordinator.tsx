@@ -1,4 +1,5 @@
 import { useState, useEffect, createContext, useContext, ReactNode } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const CONSENT_KEY = 'pyramid-compass-disclaimer-accepted';
 const ONBOARDING_KEY = 'pyramid-compass-onboarding-complete';
@@ -22,7 +23,6 @@ function getStoredValue(key: string, defaultValue: boolean = false): boolean {
   if (typeof window === 'undefined') return defaultValue;
   try {
     const value = localStorage.getItem(key);
-    // For cookie consent, check if the key exists (JSON object)
     if (key === COOKIE_CONSENT_KEY) {
       return value !== null;
     }
@@ -32,7 +32,16 @@ function getStoredValue(key: string, defaultValue: boolean = false): boolean {
   }
 }
 
+/** Check if current path is the homepage (with or without lang prefix) */
+function isHomePage(pathname: string): boolean {
+  const cleaned = pathname.replace(/\/+$/, '');
+  if (cleaned === '' || cleaned === '/') return true;
+  // Match /:lang patterns like /fr, /en, /es etc.
+  return /^\/[a-z]{2}$/.test(cleaned);
+}
+
 export function DialogCoordinatorProvider({ children }: { children: ReactNode }) {
+  const location = useLocation();
   const [isDisclaimerComplete, setIsDisclaimerComplete] = useState(() => 
     getStoredValue(CONSENT_KEY)
   );
@@ -45,16 +54,16 @@ export function DialogCoordinatorProvider({ children }: { children: ReactNode })
   const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
-    // Small delay for better UX - avoids flash
     const timer = setTimeout(() => setInitialized(true), 300);
     return () => clearTimeout(timer);
   }, []);
 
-  // Sequential flow: Disclaimer → Onboarding → Cookies
-  // Each step only shows when the previous is complete
+  const onHomePage = isHomePage(location.pathname);
+
+  // Disclaimer shows on all pages, onboarding ONLY on homepage, cookies after both
   const shouldShowDisclaimer = initialized && !isDisclaimerComplete;
-  const shouldShowOnboarding = initialized && isDisclaimerComplete && !isOnboardingComplete;
-  const shouldShowCookieConsent = initialized && isDisclaimerComplete && isOnboardingComplete && !isCookieConsentComplete;
+  const shouldShowOnboarding = initialized && isDisclaimerComplete && !isOnboardingComplete && onHomePage;
+  const shouldShowCookieConsent = initialized && isDisclaimerComplete && (isOnboardingComplete || !onHomePage) && !isCookieConsentComplete;
 
   const completeDisclaimer = () => {
     try {
@@ -68,7 +77,6 @@ export function DialogCoordinatorProvider({ children }: { children: ReactNode })
   const completeOnboarding = () => {
     try {
       localStorage.setItem(ONBOARDING_KEY, 'true');
-      // Also mark the tour as complete to avoid conflicts
       localStorage.setItem('pyramid-compass-tour-completed', 'v1');
     } catch (e) {
       console.warn('Failed to save onboarding completion:', e);
