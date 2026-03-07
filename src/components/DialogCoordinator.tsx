@@ -72,7 +72,7 @@ export function DialogCoordinatorProvider({ children }: { children: ReactNode })
 
   // Disclaimer shows on all pages, onboarding ONLY on homepage, cookies after both
   const shouldShowDisclaimer = initialized && !isDisclaimerComplete;
-  const shouldShowOnboarding = initialized && isDisclaimerComplete && !isOnboardingComplete && onHomePage;
+  const shouldShowOnboarding = initialized && onboardingReady && isDisclaimerComplete && !isOnboardingComplete && onHomePage;
   const shouldShowCookieConsent = initialized && isDisclaimerComplete && (isOnboardingComplete || !onHomePage) && !isCookieConsentComplete;
 
   const completeDisclaimer = () => {
