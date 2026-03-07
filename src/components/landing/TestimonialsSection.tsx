@@ -16,7 +16,7 @@ export function TestimonialsSection() {
   const highlights: FeatureHighlight[] = [
     {
       icon: Globe,
-      stat: '38+',
+      stat: '80+',
       label: t('socialProof.countries', 'Pays analysés'),
       description: t('socialProof.countriesDesc', 'Analyses détaillées de chaque pays'),
     },

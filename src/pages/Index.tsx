@@ -160,7 +160,7 @@ export default function Index() {
             className="flex flex-wrap justify-center gap-8 mt-10 text-muted-foreground"
           >
             <div className="text-center">
-              <span className="block text-3xl font-bold text-foreground">44</span>
+              <span className="block text-3xl font-bold text-foreground">80+</span>
               <span className="text-sm">{t('landing.hero.statsCountries', 'pays analysés')}</span>
             </div>
             <div className="text-center">
