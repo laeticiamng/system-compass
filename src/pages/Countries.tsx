@@ -265,7 +265,7 @@ export default function Countries() {
   return (
     <>
       <Helmet>
-        <title>Explorer les pays - System Compass | 44 systèmes analysés</title>
+        <title>{t('countries.metaTitle', 'Explorer les pays - System Compass | 44+ pays analysés')}</title>
         <meta name="description" content="Explorez 44 pays avec leurs systèmes analysés en profondeur. Comparez les pyramides, risques et opportunités. Trouvez le pays qui correspond à votre profil." />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Explorer les pays - System Compass" />
