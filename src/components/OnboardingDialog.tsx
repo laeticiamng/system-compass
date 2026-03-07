@@ -419,7 +419,7 @@ export function OnboardingDialog() {
   const renderStep = () => {
     switch (step) {
       case 0:
-        return <WelcomeStep onNext={() => setStep(1)} />;
+        return <WelcomeStep onNext={() => setStep(1)} onSkip={handleSkip} />;
       case 1:
         return <ProfileSelectStep onNext={() => {}} onSelect={handleProfileSelect} />;
       case 2:
