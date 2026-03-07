@@ -96,7 +96,7 @@ const PLANS = [
     price: '199€',
     period: '/mois',
     description: 'Agences relocation & cabinets conseil',
-    features: ['10 000 requêtes/jour', '44+ pays', 'Intelligence complète', 'Fiscal simulator API', 'Webhooks temps réel', 'Support dédié'],
+    features: ['10 000 requêtes/jour', '80+ pays', 'Intelligence complète', 'Fiscal simulator API', 'Webhooks temps réel', 'Support dédié'],
     highlight: true,
   },
   {
@@ -155,7 +155,7 @@ export default function ApiDocs() {
         {/* Key features */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {[
-            { icon: Globe, label: '44+ pays', desc: 'Données complètes' },
+            { icon: Globe, label: '80+ pays', desc: 'Données complètes' },
             { icon: Zap, label: '<100ms', desc: 'Latence moyenne' },
             { icon: Shield, label: '99.9% SLA', desc: 'Haute disponibilité' },
             { icon: Lock, label: 'OAuth 2.0', desc: 'Sécurité enterprise' },

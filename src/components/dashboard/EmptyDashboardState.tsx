@@ -43,7 +43,7 @@ const QUICK_START_STEPS = [
     titleKey: 'dashboard.quickStart.countries.title',
     titleFallback: 'Explorer les pays',
     descKey: 'dashboard.quickStart.countries.desc',
-    descFallback: 'Parcourez notre catalogue de 44 pays avec analyses détaillées et comparaisons.',
+    descFallback: 'Parcourez notre catalogue de 80+ pays avec analyses détaillées et comparaisons.',
     link: '/countries',
     color: 'text-emerald-500',
     bgColor: 'bg-emerald-500/10',
