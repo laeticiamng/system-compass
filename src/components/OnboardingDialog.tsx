@@ -47,13 +47,23 @@ function WelcomeStep({ onNext }: StepProps) {
           {t('onboarding.welcome.title', 'Bienvenue sur System Compass')}
         </h2>
         <p className="text-muted-foreground max-w-sm mx-auto">
-          {t('onboarding.welcome.desc', 'La plateforme d\'intelligence géopolitique qui vous guide dans vos décisions de mobilité internationale.')}
+          {t('onboarding.welcome.desc', 'Comparez 80+ pays en quelques minutes et trouvez la destination qui correspond à votre profil.')}
         </p>
       </div>
       <Button onClick={onNext} size="lg" className="gap-2">
         {t('onboarding.welcome.cta', 'Démarrer le tour')}
         <ArrowRight className="w-4 h-4" />
       </Button>
+      <button
+        onClick={() => {
+          // Skip is handled by parent dialog onOpenChange
+          const event = new Event('onboarding-skip');
+          window.dispatchEvent(event);
+        }}
+        className="text-xs text-muted-foreground hover:text-foreground transition-colors mt-2"
+      >
+        {t('onboarding.welcome.skip', 'Non merci, explorer directement')}
+      </button>
     </motion.div>
   );
 }
@@ -67,7 +77,7 @@ function ProfileSelectStep({ onSelect }: StepProps & { onSelect: (v: string) => 
       icon: User,
       title: t('onboarding.profile.b2c', 'Particulier'),
       desc: t('onboarding.profile.b2cDesc', 'Je prépare un projet d\'expatriation personnel ou familial'),
-      features: ['Explorer 72+ pays', 'Simulateur fiscal', 'Budget de vie', 'Journal d\'expatrié'],
+      features: ['Explorer 80+ pays', 'Simulateur fiscal', 'Budget de vie', 'Journal d\'expatrié'],
     },
     {
       value: 'b2b',
@@ -223,7 +233,7 @@ function FeatureHighlightsStep({ onNext, goal }: StepProps & { goal: B2CGoal }) 
 
   const featuresByGoal: Record<string, { icon: React.ElementType; label: string; desc: string }[]> = {
     explore: [
-      { icon: Globe, label: 'Carte interactive', desc: '72+ pays avec profils complets et intelligence culturelle' },
+      { icon: Globe, label: 'Carte interactive', desc: '80+ pays avec profils complets et intelligence culturelle' },
       { icon: Target, label: 'Country Matcher', desc: 'Trouvez le pays idéal selon votre profil' },
       { icon: BarChart3, label: 'Comparateur', desc: 'Comparez jusqu\'à 4 pays côte à côte' },
       { icon: BookOpen, label: 'Retours d\'expatriés', desc: 'Avis vérifiés de la communauté' },
