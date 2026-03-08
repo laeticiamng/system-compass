@@ -473,7 +473,7 @@ Format de sortie JSON:
 
   // Risk Register Generation
   "generate-risk-register": {
-    systemPrompt: `Tu es un expert en analyse de risques projets internationaux pour System Compass.
+    systemPrompt: `Tu es un expert en analyse de risques projets internationaux pour Compass.
 Ta mission : identifier les risques typiques pour un projet dans un pays cible.
 
 RÈGLES ABSOLUES:
