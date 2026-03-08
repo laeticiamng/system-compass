@@ -108,13 +108,13 @@ export function TestimonialsSection() {
               <p className="text-muted-foreground text-sm mb-4">
                 {t('socialProof.betaDescription', 'Explorez 80+ pays gratuitement, découvrez votre profil d\'expatrié et comparez les opportunités en toute autonomie.')}
               </p>
-              <a
-                href="/quick-test"
+              <Link
+                to="/quick-test"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
               >
                 <Compass className="w-4 h-4" />
                 {t('socialProof.betaCta', 'Faire le test gratuit')}
-              </a>
+              </Link>
             </CardContent>
           </Card>
         </motion.div>
