@@ -177,7 +177,7 @@ export function PodcastPlayer() {
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center gap-2">
             <Podcast className="h-5 w-5 text-primary" />
-            System Compass Podcast
+            Compass Podcast
           </CardTitle>
           <Badge variant="outline" className="gap-1">
             <Headphones className="h-3 w-3" />
