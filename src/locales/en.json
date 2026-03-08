@@ -6870,9 +6870,9 @@
       "noAdvice": "Provides no recommendation",
       "noAdviceDesc": "No option, no scenario is presented as \"the right decision\". The tool offers no opinion.",
       "responsibility": "The decision-maker remains responsible",
-      "responsibilityDesc": "Using System Compass transfers no responsibility. Each decision commits those who make it.",
+      "responsibilityDesc": "Using Compass transfers no responsibility. Each decision commits those who make it.",
       "summary": "The tool illuminates, the decision-maker remains responsible.",
-      "summaryDesc": "System Compass is designed to support reflection, not to substitute for human judgment."
+      "summaryDesc": "Compass is designed to support reflection, not to substitute for human judgment."
     },
     "finalCta": {
       "title": "Ready to structure your decisions?",
