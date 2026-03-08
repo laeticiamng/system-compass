@@ -178,10 +178,10 @@ function B2CGoalStep({ onSelect }: StepProps & { onSelect: (v: string) => void }
 function B2BFeaturesStep({ onNext }: StepProps) {
   const { t } = useTranslation();
   const features = [
-    { icon: Shield, label: 'Governance Intel', desc: 'Analyse des acteurs, partenaires, délais réglementaires par pays', link: '/b2b' },
-    { icon: BarChart3, label: 'Risk Register', desc: 'Cartographiez et suivez les risques de vos opérations internationales', link: '/latent' },
-    { icon: BookOpen, label: 'Dossiers de cas', desc: 'Constituez des dossiers structurés avec preuve d\'audit', link: '/irreversa' },
-    { icon: Briefcase, label: 'API & Intégrations', desc: 'Connectez System Compass à vos outils via API REST', link: '/api' },
+    { icon: Shield, label: t('onboarding.b2b.governance', 'Governance Intel'), desc: t('onboarding.b2b.governanceDesc', 'Analyse des acteurs, partenaires, délais réglementaires par pays'), link: '/b2b' },
+    { icon: BarChart3, label: t('onboarding.b2b.riskRegister', 'Registre des risques'), desc: t('onboarding.b2b.riskRegisterDesc', 'Cartographiez et suivez les risques de vos opérations internationales'), link: '/latent' },
+    { icon: BookOpen, label: t('onboarding.b2b.caseDossiers', 'Dossiers de cas'), desc: t('onboarding.b2b.caseDossiersDesc', 'Constituez des dossiers structurés avec preuve d\'audit'), link: '/irreversa' },
+    { icon: Briefcase, label: t('onboarding.b2b.apiIntegrations', 'API & Intégrations'), desc: t('onboarding.b2b.apiIntegrationsDesc', 'Connectez System Compass à vos outils via API REST'), link: '/api' },
   ];
 
   return (
