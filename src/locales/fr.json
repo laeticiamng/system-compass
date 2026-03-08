@@ -7923,7 +7923,7 @@
     "alternatives": {
       "title": "Des alternatives existent",
       "subtitle": "Avant tout choix irréversible, explore toutes tes options",
-      "message": "System Compass montre qu'il existe parfois d'autres trajectoires : rester et entreprendre, migrer plus tard, migrer autrement, se former, changer d'objectif initial.",
+      "message": "Compass montre qu'il existe parfois d'autres trajectoires : rester et entreprendre, migrer plus tard, migrer autrement, se former, changer d'objectif initial.",
       "options": {
         "stay": {
           "title": "Rester et construire",
