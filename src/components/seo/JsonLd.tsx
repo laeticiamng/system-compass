@@ -17,10 +17,20 @@ export function JsonLd({ data }: JsonLdProps) {
   );
 }
 
-// Organization schema — GEO-optimized with localized URL
+// Organization schema — GEO-optimized with localized URL and description
 export function OrganizationJsonLd() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const lang = i18n.language;
+
+  const descriptions: Record<string, string> = {
+    fr: 'Plateforme d\'intelligence décisionnelle pour la relocalisation internationale. Analyse systémique de 80+ pays : fiscalité, visas, coût de la vie, structures de pouvoir. Approche unique par profils compatibles plutôt que classements génériques.',
+    en: 'Decision intelligence platform for international relocation. Systemic analysis of 80+ countries: taxation, visas, cost of living, power structures. Unique approach by compatible profiles rather than generic rankings.',
+  };
+
+  const slogans: Record<string, string> = {
+    fr: 'Comparez les systèmes, pas les clichés.',
+    en: 'Compare systems, not stereotypes.',
+  };
 
   return (
     <JsonLd data={{
@@ -30,11 +40,11 @@ export function OrganizationJsonLd() {
       alternateName: 'System Compass - Intelligence Expatriation',
       url: `${SITE_CONFIG.productionUrl}/${lang}`,
       logo: `${SITE_CONFIG.productionUrl}/icons/icon-512x512.png`,
-      description: 'Plateforme d\'intelligence décisionnelle pour la relocalisation internationale. Analyse systémique de 80+ pays : fiscalité, visas, coût de la vie, structures de pouvoir. Approche unique par profils compatibles plutôt que classements génériques.',
-      slogan: 'Comparez les systèmes, pas les clichés.',
+      description: descriptions[lang] || descriptions.en,
+      slogan: slogans[lang] || slogans.en,
       foundingDate: '2025',
       areaServed: 'Worldwide',
-      knowsAbout: [
+      knowsAbout: lang === 'fr' ? [
         'Expatriation',
         'Relocalisation internationale',
         'Fiscalité internationale',
@@ -45,6 +55,17 @@ export function OrganizationJsonLd() {
         'Optimisation fiscale légale',
         'Immigration',
         'Comparaison de pays',
+      ] : [
+        'Expatriation',
+        'International relocation',
+        'International taxation',
+        'Digital nomad visas',
+        'Cost of living by country',
+        'Expat quality of life',
+        'International mobility',
+        'Legal tax optimization',
+        'Immigration',
+        'Country comparison',
       ],
       sameAs: [],
       contactPoint: {
