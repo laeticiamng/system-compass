@@ -83,7 +83,7 @@ export const ConfirmationEmail = ({
         <Hr style={hr} />
 
         <Text style={footer}>
-          Si vous n'avez pas créé de compte sur System Compass, vous pouvez ignorer cet email.
+          Si vous n'avez pas créé de compte sur Compass, vous pouvez ignorer cet email.
         </Text>
         
         <Text style={footerBrand}>
