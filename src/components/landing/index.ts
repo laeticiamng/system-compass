@@ -12,3 +12,5 @@ export {
 } from './FeatureCards';
 export { TestimonialsSection } from './TestimonialsSection';
 export { SocialProofBanner, TrustBadges } from './SocialProofBanner';
+export { UserJourneys } from './UserJourneys';
+export { FeatureDiscoveryTooltips } from './FeatureDiscoveryTooltips';

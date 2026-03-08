@@ -31,6 +31,8 @@ import { TestimonialsSection } from '@/components/landing/TestimonialsSection';
 import { FAQPageJsonLd } from '@/components/seo/JsonLd';
 import { HeroMiniDemo } from '@/components/landing/HeroMiniDemo';
 import { ConflictZonesMap } from '@/components/landing/ConflictZonesMap';
+import { UserJourneys } from '@/components/landing/UserJourneys';
+import { SITE_CONFIG } from '@/config/site';
 
 export default function Index() {
   const navigate = useLocalizedNavigate();
@@ -54,11 +56,11 @@ export default function Index() {
         <meta property="og:type" content="website" />
         <meta property="og:title" content={t('landing.meta.ogTitle', 'System Compass - Intelligence décisionnelle pour l\'expatriation')} />
         <meta property="og:description" content={t('landing.meta.ogDescription', 'Comparez 80+ pays par compatibilité avec votre profil : fiscalité, visas, coût de la vie, sécurité. Approche systémique unique. Test gratuit.')} />
-        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={t('landing.meta.ogTitle', 'System Compass - Intelligence décisionnelle pour l\'expatriation')} />
         <meta name="twitter:description" content={t('landing.meta.ogDescription', 'Comparez 80+ pays par compatibilité avec votre profil : fiscalité, visas, coût de la vie, sécurité. Approche systémique unique. Test gratuit.')} />
-        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM information" />
       </Helmet>
       <FAQPageJsonLd faqs={[
@@ -174,6 +176,9 @@ export default function Index() {
           </motion.div>
         </div>
       </section>
+
+      {/* ========== PARCOURS UTILISATEUR ========== */}
+      <UserJourneys />
 
       {/* ========== COMMENT ÇA MARCHE - 3 ÉTAPES ========== */}
       <section className="py-20 md:py-32 bg-muted/30">
