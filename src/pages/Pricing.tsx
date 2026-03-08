@@ -67,7 +67,7 @@ const Pricing = () => {
     {
       id: 'free' as const,
       name: t('pricing.freeName', 'Gratuit'),
-      price: '0€',
+      price: freePrice,
       period: t('pricing.forever', 'pour toujours'),
       description: t('pricing.freeDescription', 'Découvrez le concept'),
       subtitle: t('pricing.freeSubtitle', 'Pas de carte bancaire requise'),
