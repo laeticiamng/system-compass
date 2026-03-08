@@ -36,8 +36,8 @@ export function OrganizationJsonLd() {
     <JsonLd data={{
       '@context': 'https://schema.org',
       '@type': 'Organization',
-      name: 'System Compass',
-      alternateName: 'System Compass - Intelligence Expatriation',
+      name: 'Compass',
+      alternateName: 'Compass - Compare les pays avant de partir',
       url: `${SITE_CONFIG.productionUrl}/${lang}`,
       logo: `${SITE_CONFIG.productionUrl}/icons/icon-512x512.png`,
       description: descriptions[lang] || descriptions.en,

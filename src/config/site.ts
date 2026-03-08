@@ -26,8 +26,8 @@ export const SITE_CONFIG = {
   },
 
   // App info
-  name: 'System Compass',
-  tagline: 'Intelligence décisionnelle pour l\'expatriation',
+  name: 'Compass',
+  tagline: 'Compare les pays avant de partir',
   
   // Stats
   stats: {
