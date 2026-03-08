@@ -97,6 +97,8 @@ export const LazyAdminExperts = withSuspense(lazy(() => import('@/pages/admin/Ad
 export const LazyInstall = withSuspense(lazy(() => import('@/pages/Install')));
 export const LazyToolsHub = withSuspense(lazy(() => import('@/pages/ToolsHub')));
 
+export const LazyHealthcare = withSuspense(lazy(() => import('@/pages/Healthcare')));
+
 // Dev/Admin pages
 export const LazyDiagnostics = withSuspense(lazy(() => import('@/pages/Diagnostics')));
 

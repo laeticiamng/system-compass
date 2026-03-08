@@ -14,12 +14,12 @@ import {
   Compass, Target, TrendingUp, Calculator, Globe, Users,
   Building2, ArrowRight, ArrowLeft, Sparkles, CheckCircle2,
   MapPin, Shield, BookOpen, BarChart3, Briefcase, Heart,
-  Plane, User
+  Plane, User, Stethoscope, GraduationCap, FileText
 } from 'lucide-react';
 import { useDialogCoordinator } from './DialogCoordinator';
 
 // ─── Profile types ───
-type ProfilePath = 'b2c' | 'b2b' | null;
+type ProfilePath = 'b2c' | 'b2b' | 'healthcare' | null;
 type B2CGoal = 'explore' | 'relocate' | 'invest' | 'retire' | null;
 
 interface StepProps {
@@ -74,6 +74,13 @@ function ProfileSelectStep({ onSelect }: StepProps & { onSelect: (v: string) => 
       title: t('onboarding.profile.b2c', 'Particulier'),
       desc: t('onboarding.profile.b2cDesc', 'Je prépare un projet d\'expatriation personnel ou familial'),
       features: [t('onboarding.profile.b2cFeature1', 'Explorer 80+ pays'), t('onboarding.profile.b2cFeature2', 'Simulateur fiscal'), t('onboarding.profile.b2cFeature3', 'Budget de vie'), t('onboarding.profile.b2cFeature4', 'Journal d\'expatrié')],
+    },
+    {
+      value: 'healthcare',
+      icon: Stethoscope,
+      title: t('onboarding.profile.healthcare', 'Professionnel de santé'),
+      desc: t('onboarding.profile.healthcareDesc', 'Médecin, infirmier, pharmacien — je prépare ma mobilité internationale'),
+      features: [t('onboarding.profile.healthcareFeature1', 'Reconnaissance diplôme'), t('onboarding.profile.healthcareFeature2', 'Autorisations d\'exercer'), t('onboarding.profile.healthcareFeature3', 'Protection sociale'), t('onboarding.profile.healthcareFeature4', 'Checklist documents')],
     },
     {
       value: 'b2b',
@@ -222,8 +229,56 @@ function B2BFeaturesStep({ onNext }: StepProps) {
     </motion.div>
   );
 }
+// ─── Step 3c: Healthcare features tour ───
+function HealthcareFeaturesStep({ onNext }: StepProps) {
+  const { t } = useTranslation();
+  const features = [
+    { icon: GraduationCap, label: t('onboarding.healthcare.diploma', 'Reconnaissance diplôme'), desc: t('onboarding.healthcare.diplomaDesc', 'MEBEKO, CNOM, Ärztekammer — procédures détaillées par pays') },
+    { icon: Shield, label: t('onboarding.healthcare.licensing', 'Autorisations d\'exercer'), desc: t('onboarding.healthcare.licensingDesc', 'Exigences cantonales, départementales, nationales') },
+    { icon: Heart, label: t('onboarding.healthcare.social', 'Protection sociale'), desc: t('onboarding.healthcare.socialDesc', 'LAMal vs Sécu, piliers de retraite, accords bilatéraux') },
+    { icon: FileText, label: t('onboarding.healthcare.checklist', 'Checklist documents'), desc: t('onboarding.healthcare.checklistDesc', 'Liste personnalisée par spécialité et pays d\'origine') },
+  ];
 
-// ─── Step 4: Feature highlights (B2C, personalized) ───
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
+      className="space-y-5 py-2"
+    >
+      <div className="text-center space-y-1">
+        <h2 className="text-xl font-display font-bold">
+          {t('onboarding.healthcare.title', 'Parcours Professionnel de Santé')}
+        </h2>
+        <p className="text-sm text-muted-foreground">
+          {t('onboarding.healthcare.subtitle', 'Des outils spécialisés pour votre mobilité médicale')}
+        </p>
+      </div>
+      <div className="space-y-2">
+        {features.map((f, i) => (
+          <motion.div
+            key={f.label}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: i * 0.1 }}
+            className="flex items-start gap-3 p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors"
+          >
+            <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+              <f.icon className="w-4 h-4 text-primary" />
+            </div>
+            <div>
+              <p className="font-semibold text-sm">{f.label}</p>
+              <p className="text-xs text-muted-foreground">{f.desc}</p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+      <Button onClick={onNext} className="w-full gap-2">
+        {t('common.next', 'Suivant')} <ArrowRight className="w-4 h-4" />
+      </Button>
+    </motion.div>
+  );
+}
+
+
 function FeatureHighlightsStep({ onNext, goal }: StepProps & { goal: B2CGoal }) {
   const { t } = useTranslation();
 
@@ -329,7 +384,13 @@ function GetStartedStep({ onComplete, profilePath, goal }: { onComplete: () => v
     { link: '/api', label: t('onboarding.action.apiDocs', 'Documentation API'), icon: BookOpen },
   ];
 
-  const actions = profilePath === 'b2b' ? b2bActions : (b2cActions[goal || 'explore'] || b2cActions.explore);
+  const healthcareActions = [
+    { link: '/healthcare', label: t('onboarding.action.healthcareExplore', 'Explorer le parcours santé'), icon: Stethoscope },
+    { link: '/countries', label: t('onboarding.action.healthcareCountries', 'Voir les pays couverts'), icon: Globe },
+    { link: '/fiscal-calculator', label: t('onboarding.action.healthcareTax', 'Simulateur fiscal'), icon: Calculator },
+  ];
+
+  const actions = profilePath === 'b2b' ? b2bActions : profilePath === 'healthcare' ? healthcareActions : (b2cActions[goal || 'explore'] || b2cActions.explore);
 
   const handleAction = (link: string) => {
     onComplete();
@@ -395,12 +456,16 @@ export function OnboardingDialog() {
   const [b2cGoal, setB2cGoal] = useState<B2CGoal>(null);
 
   // Dynamic step count based on path
-  const totalSteps = profilePath === 'b2b' ? 4 : profilePath === 'b2c' ? 5 : 2;
+  const totalSteps = profilePath === 'b2b' ? 4 : profilePath === 'healthcare' ? 4 : profilePath === 'b2c' ? 5 : 2;
   const progress = ((step + 1) / totalSteps) * 100;
 
   const handleProfileSelect = (value: string) => {
     setProfilePath(value as ProfilePath);
-    setStep(2);
+    if (value === 'healthcare') {
+      setStep(2); // go to healthcare features
+    } else {
+      setStep(2);
+    }
   };
 
   const handleGoalSelect = (value: string) => {
@@ -425,6 +490,9 @@ export function OnboardingDialog() {
       case 2:
         if (profilePath === 'b2c') {
           return <B2CGoalStep onNext={() => {}} onSelect={handleGoalSelect} />;
+        }
+        if (profilePath === 'healthcare') {
+          return <HealthcareFeaturesStep onNext={() => setStep(3)} />;
         }
         return <B2BFeaturesStep onNext={() => setStep(3)} />;
       case 3:
