@@ -83,18 +83,22 @@ export function SoftwareApplicationJsonLd() {
   const lang = i18n.language;
   const { data: rating } = useAggregateRating();
 
+  const isFr = lang === 'fr';
+
   const schemaData: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: 'System Compass',
     url: `${SITE_CONFIG.productionUrl}/${lang}`,
-    description: 'Application web d\'aide à la décision pour l\'expatriation. Compare 80+ pays sur la fiscalité, les visas, le coût de la vie et la qualité de vie. Test de profil gratuit en 2 minutes.',
+    description: isFr
+      ? 'Application web d\'aide à la décision pour l\'expatriation. Compare 80+ pays sur la fiscalité, les visas, le coût de la vie et la qualité de vie. Test de profil gratuit en 2 minutes.'
+      : 'Web application for expatriation decision-making. Compare 80+ countries on taxation, visas, cost of living and quality of life. Free 2-minute profile test.',
     applicationCategory: 'LifestyleApplication',
     applicationSubCategory: 'Expatriation & Relocation',
     operatingSystem: 'Web',
     inLanguage: ['fr', 'en'],
     isAccessibleForFree: true,
-    featureList: [
+    featureList: isFr ? [
       'Comparaison de 80+ pays',
       'Test de profil expatrié en 2 minutes',
       'Simulateur fiscal international',
@@ -102,6 +106,14 @@ export function SoftwareApplicationJsonLd() {
       'Intelligence terrain en temps réel',
       'Marketplace d\'experts en expatriation',
       'Export PDF des analyses',
+    ] : [
+      'Comparison of 80+ countries',
+      '2-minute expat profile test',
+      'International tax simulator',
+      'Personalized exit keys',
+      'Real-time ground intelligence',
+      'Expatriation expert marketplace',
+      'PDF export of analyses',
     ],
     screenshot: `${SITE_CONFIG.productionUrl}/og-image.png`,
     offers: [
@@ -109,15 +121,15 @@ export function SoftwareApplicationJsonLd() {
         '@type': 'Offer',
         price: '0',
         priceCurrency: 'EUR',
-        name: 'Gratuit',
-        description: 'Test rapide, exploration pays, comparaison basique',
+        name: isFr ? 'Gratuit' : 'Free',
+        description: isFr ? 'Test rapide, exploration pays, comparaison basique' : 'Quick test, country exploration, basic comparison',
       },
       {
         '@type': 'Offer',
         price: '9.90',
         priceCurrency: 'EUR',
         name: 'Premium',
-        description: 'Tous les outils avancés, clés de sortie, simulateur fiscal, intelligence live',
+        description: isFr ? 'Tous les outils avancés, clés de sortie, simulateur fiscal, intelligence live' : 'All advanced tools, exit keys, tax simulator, live intelligence',
         billingPeriod: 'P1M',
       },
       {
@@ -125,7 +137,7 @@ export function SoftwareApplicationJsonLd() {
         price: '29.90',
         priceCurrency: 'EUR',
         name: 'Pro',
-        description: 'Dossiers illimités, exports PDF, marketplace d\'experts',
+        description: isFr ? 'Dossiers illimités, exports PDF, marketplace d\'experts' : 'Unlimited reports, PDF exports, expert marketplace',
         billingPeriod: 'P1M',
       },
     ],
