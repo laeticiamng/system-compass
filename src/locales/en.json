@@ -4018,10 +4018,10 @@
       "generic": "An error occurred"
     },
     "meta": {
-      "title": "Sign In - System Compass | Access your account",
-      "description": "Sign in to System Compass to access your country analyses, personalized recommendations and dashboard. Create a free account.",
-      "ogTitle": "Sign In - System Compass",
-      "ogDescription": "Access your country analyses and personalized exit strategies."
+      "title": "Sign In - Compass | Access your account",
+      "description": "Sign in to Compass to access your country analyses, personalized recommendations and dashboard. Create a free account.",
+      "ogTitle": "Sign In - Compass",
+      "ogDescription": "Access your country analyses and personalized strategies."
     }
   },
   "gameModes": {
