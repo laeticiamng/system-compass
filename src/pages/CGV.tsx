@@ -7,6 +7,7 @@ import { ArrowLeft, FileText, CreditCard, RefreshCcw, Scale, ShieldCheck } from 
 import { LocalizedLink as Link } from '@/components/i18n';
 import { Button } from '@/components/ui/button';
 import { Helmet } from 'react-helmet-async';
+import { SITE_CONFIG } from '@/config/site';
 
 export default function CGV() {
 
