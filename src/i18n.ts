@@ -159,7 +159,7 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    fallbackLng: 'en',
+    fallbackLng: 'fr',
     supportedLngs: SUPPORTED_LANGUAGES.map(l => l.code),
     interpolation: {
       escapeValue: false,
