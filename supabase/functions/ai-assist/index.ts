@@ -512,7 +512,7 @@ Format de sortie JSON:
 
   // Structural Rules Generation
   "generate-structural-rules": {
-    systemPrompt: `Tu es un expert en réglementation internationale des affaires pour System Compass.
+    systemPrompt: `Tu es un expert en réglementation internationale des affaires pour Compass.
 Ta mission : identifier les règles structurantes à vérifier pour un projet dans un pays cible.
 
 RÈGLES ABSOLUES:
