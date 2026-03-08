@@ -15,9 +15,9 @@ export function TrustBadges() {
   const { t } = useTranslation();
 
   const badges = [
-    { label: t('trustBadges.secureData', 'Données sécurisées'), icon: <CheckCircle className="w-4 h-4" /> },
-    { label: t('trustBadges.gdpr', 'RGPD compliant'), icon: <CheckCircle className="w-4 h-4" /> },
-    { label: t('trustBadges.noAdvice', 'Pas de conseil fiscal'), icon: <CheckCircle className="w-4 h-4" /> },
+    { label: t('socialProof.trustSecureData', 'Données sécurisées'), icon: <CheckCircle className="w-4 h-4" /> },
+    { label: t('socialProof.trustGdpr', 'RGPD compliant'), icon: <CheckCircle className="w-4 h-4" /> },
+    { label: t('socialProof.trustNoAdvice', 'Pas de conseil fiscal'), icon: <CheckCircle className="w-4 h-4" /> },
   ];
 
   return (
@@ -27,7 +27,7 @@ export function TrustBadges() {
           key={badge.label}
           className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-muted/50 text-sm text-muted-foreground"
         >
-          <span className="text-green-500">{badge.icon}</span>
+          <span className="text-primary">{badge.icon}</span>
           {badge.label}
         </div>
       ))}

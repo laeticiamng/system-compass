@@ -756,7 +756,10 @@
     "indicatorsDesc": "Verifiable data per country",
     "betaTitle": "Start your free analysis",
     "betaDescription": "Explore 80+ countries for free, discover your expat profile and compare opportunities autonomously.",
-    "betaCta": "Take the free test"
+    "betaCta": "Take the free test",
+    "trustSecureData": "Secure data",
+    "trustGdpr": "GDPR compliant",
+    "trustNoAdvice": "No tax advice"
   },
   "geopolitics": {
     "updatedDate": "Updated March 2026",
@@ -5799,11 +5802,6 @@
     "portugal": "Portugal",
     "dubai": "Dubai",
     "thailand": "Thailand"
-  },
-  "trustBadges": {
-    "secureData": "Secure data",
-    "gdpr": "GDPR compliant",
-    "noAdvice": "No tax advice"
   },
   "subscription": {
     "successTitle": "Subscription Activated!",

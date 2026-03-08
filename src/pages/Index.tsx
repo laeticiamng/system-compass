@@ -28,6 +28,7 @@ import {
 } from 'lucide-react';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 import { TestimonialsSection } from '@/components/landing/TestimonialsSection';
+import { TrustBadges } from '@/components/landing/SocialProofBanner';
 import { FAQPageJsonLd } from '@/components/seo/JsonLd';
 import { HeroMiniDemo } from '@/components/landing/HeroMiniDemo';
 import { ConflictZonesMap } from '@/components/landing/ConflictZonesMap';
@@ -174,6 +175,7 @@ export default function Index() {
               <span className="text-sm">{t('landing.hero.statsSystems', 'profils d\'expatrié')}</span>
             </div>
           </motion.div>
+          <TrustBadges />
         </div>
       </section>
 

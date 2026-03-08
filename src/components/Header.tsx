@@ -120,6 +120,14 @@ export function Header() {
   const isSimulationPage = SIMULATION_SEGMENTS.some(page => pathForCheck.startsWith(page));
   const showDisclaimer = isSimulationPage && !disclaimerDismissed;
 
+  const isRouteActive = (href: string) => {
+    if (href === '/') return pathForCheck === '/';
+    if (href === '/countries') {
+      return pathForCheck === '/countries' || pathForCheck === '/world-map' || pathForCheck.startsWith('/country/');
+    }
+    return pathForCheck === href || pathForCheck.startsWith(`${href}/`);
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       {/* Compact disclaimer banner for simulation pages */}
@@ -162,7 +170,7 @@ export function Header() {
             {/* Main nav items */}
             {allNavItems.map((item) => {
               const Icon = item.icon;
-              const isActive = pathForCheck === item.href || (item.href === '/' && pathForCheck === '/');
+              const isActive = isRouteActive(item.href);
               return (
                 <Link
                   key={item.href}
@@ -331,7 +339,7 @@ export function Header() {
                 <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">{t('nav.explore', 'Explorer')}</div>
                 {allNavItems.map((item) => {
                   const Icon = item.icon;
-                  const isActive = pathForCheck === item.href || (item.href === '/' && pathForCheck === '/');
+                  const isActive = isRouteActive(item.href);
                   const isHighlight = 'highlight' in item && item.highlight;
                   return (
                     <Link
@@ -358,7 +366,7 @@ export function Header() {
                 <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">{t('nav.tools', 'Outils')}</div>
                 {toolsItems.map((item) => {
                   const Icon = item.icon;
-                  const isActive = pathForCheck === item.href;
+                  const isActive = isRouteActive(item.href);
                   return (
                     <Link
                       key={item.href}
@@ -383,7 +391,7 @@ export function Header() {
                 <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">{t('nav.account', 'Compte & Info')}</div>
                 {accountItems.map((item) => {
                   const Icon = item.icon;
-                  const isActive = pathForCheck === item.href;
+                  const isActive = isRouteActive(item.href);
                   return (
                     <Link
                       key={item.href}
@@ -428,7 +436,7 @@ export function Header() {
                         <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">Admin</div>
                         {adminItems.map((item) => {
                           const Icon = item.icon;
-                          const isActive = pathForCheck === item.href;
+                          const isActive = isRouteActive(item.href);
                           return (
                             <Link
                               key={item.href}
