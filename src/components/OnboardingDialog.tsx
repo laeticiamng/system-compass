@@ -44,7 +44,7 @@ function WelcomeStep({ onNext, onSkip }: StepProps & { onSkip: () => void }) {
       </div>
       <div className="space-y-2">
         <h2 className="text-2xl font-display font-bold">
-          {t('onboarding.welcome.title', 'Bienvenue sur System Compass')}
+          {t('onboarding.welcome.title', 'Bienvenue sur Compass')}
         </h2>
         <p className="text-muted-foreground max-w-sm mx-auto">
           {t('onboarding.welcome.desc', 'Comparez 80+ pays en quelques minutes et trouvez la destination qui correspond à votre profil.')}

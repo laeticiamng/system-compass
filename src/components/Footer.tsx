@@ -26,7 +26,7 @@ export function Footer() {
                 <Compass className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
               </div>
               <span className="font-display font-bold text-base sm:text-lg">
-                System <span className="gold-text">Compass</span>
+                <span className="gold-text">Compass</span>
               </span>
             </Link>
             <p className="text-xs sm:text-sm text-muted-foreground mb-3">
@@ -45,10 +45,10 @@ export function Footer() {
             <h4 className="font-semibold text-sm sm:text-base mb-2 sm:mb-4">{t('footer.explore')}</h4>
             <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-muted-foreground">
               <li><Link to="/countries" className="hover:text-foreground transition-colors block py-0.5">{t('nav.countries')}</Link></li>
-              <li><Link to="/world-map" className="hover:text-foreground transition-colors block py-0.5">{t('nav.worldMap', 'Carte monde')}</Link></li>
+              <li><Link to="/world-map" className="hover:text-foreground transition-colors block py-0.5">{t('nav.worldMap', 'Carte')}</Link></li>
               <li><Link to="/pyramid-types" className="hover:text-foreground transition-colors block py-0.5">{t('nav.pyramids')}</Link></li>
               <li><Link to="/compare" className="hover:text-foreground transition-colors block py-0.5">{t('nav.compare')}</Link></li>
-              <li><Link to="/terrain" className="hover:text-foreground transition-colors block py-0.5">{t('nav.terrainRealities', 'Réalités Terrain')}</Link></li>
+              <li><Link to="/terrain" className="hover:text-foreground transition-colors block py-0.5">{t('nav.terrainRealities', 'Vie sur place')}</Link></li>
             </ul>
           </div>
 
@@ -58,11 +58,10 @@ export function Footer() {
             <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-muted-foreground">
               <li><Link to="/exit-keys" className="hover:text-foreground transition-colors block py-0.5">{t('nav.exitKeys', 'Stratégies')}</Link></li>
               <li><Link to="/quick-test" className="hover:text-foreground transition-colors block py-0.5">{t('nav.quickTest', 'Test Rapide')}</Link></li>
-              <li><Link to="/tools/matcher" className="hover:text-foreground transition-colors block py-0.5">{t('nav.matcher', 'Matcher Pays IA')}</Link></li>
+              <li><Link to="/tools/matcher" className="hover:text-foreground transition-colors block py-0.5">{t('nav.matcher', 'Trouver mon pays')}</Link></li>
               <li><Link to="/tools/fiscal-simulator" className="hover:text-foreground transition-colors block py-0.5">{t('nav.fiscalSimulator', 'Simulateur Fiscal')}</Link></li>
-              <li><Link to="/trace" className="hover:text-foreground transition-colors block py-0.5">{t('nav.traceJournal', 'Journal Décisions')}</Link></li>
+              <li><Link to="/trace" className="hover:text-foreground transition-colors block py-0.5">{t('nav.traceJournal', 'Mon Journal')}</Link></li>
               <li><Link to="/pyramid-quiz" className="hover:text-foreground transition-colors block py-0.5">{t('nav.pyramidQuiz', 'Quiz Découverte')}</Link></li>
-              <li><Link to="/gamification" className="hover:text-foreground transition-colors block py-0.5">{t('nav.gamification', 'Progression')}</Link></li>
               <li>
                 <Link to="/tools" className="hover:text-foreground transition-colors block py-0.5 text-primary font-medium">
                   + {t('footer.seeAll', 'Voir tout')}
@@ -111,7 +110,7 @@ export function Footer() {
           
           <div className="flex flex-col items-center justify-center gap-3 sm:gap-4 text-center">
             <p className="text-xs sm:text-sm text-muted-foreground">
-              © {currentYear} System Compass — EmotionsCare SASU
+              © {currentYear} Compass — EmotionsCare SASU
             </p>
             
             {/* Legal links */}
@@ -138,7 +137,7 @@ export function Footer() {
               <Link to="/disclaimer" className="text-primary hover:underline">{t('footer.learnMore')}</Link>
             </p>
             <span className="flex items-center gap-1 text-xs sm:text-sm text-muted-foreground">
-              {t('footer.madeWith', 'Made with')} <Heart className="w-3 h-3 sm:w-4 sm:h-4 text-primary fill-primary" />
+              {t('footer.madeWith', 'Fait avec')} <Heart className="w-3 h-3 sm:w-4 sm:h-4 text-primary fill-primary" />
             </span>
           </div>
         </div>

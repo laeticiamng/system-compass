@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useCountries } from '@/lib/countries-data';
 
 const STORAGE_KEY = 'pyramid-compass-default-country';
-const DEFAULT_COUNTRY_ID = 'nigeria'; // Nigeria par défaut
+const DEFAULT_COUNTRY_ID = 'france'; // France par défaut (plateforme francophone)
 
 export function useDefaultCountry() {
   const { countries } = useCountries();
