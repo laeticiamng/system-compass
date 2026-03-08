@@ -170,7 +170,7 @@ export function Header() {
             {/* Main nav items */}
             {allNavItems.map((item) => {
               const Icon = item.icon;
-              const isActive = pathForCheck === item.href || (item.href === '/' && pathForCheck === '/');
+              const isActive = isRouteActive(item.href);
               return (
                 <Link
                   key={item.href}
