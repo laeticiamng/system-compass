@@ -111,8 +111,8 @@ export default function Changelog() {
   return (
     <>
       <Helmet>
-        <title>{t('changelog.seoTitle', 'Changelog | System Compass')}</title>
-        <meta name="description" content={t('changelog.seoDesc', 'Historique des mises à jour de System Compass. Nouvelles fonctionnalités, corrections et mises à jour des données.')} />
+        <title>{t('changelog.seoTitle', 'Changelog | Compass')}</title>
+        <meta name="description" content={t('changelog.seoDesc', 'Historique des mises à jour de Compass. Nouvelles fonctionnalités, corrections et mises à jour des données.')} />
       </Helmet>
 
       <div className="min-h-screen bg-background">

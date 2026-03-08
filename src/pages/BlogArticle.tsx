@@ -69,7 +69,7 @@ export default function BlogArticle() {
     return (
       <>
         <Helmet>
-          <title>Article non trouvé - System Compass</title>
+          <title>Article non trouvé — Compass</title>
         </Helmet>
         <div className="min-h-screen pt-20 sm:pt-24 pb-12 sm:pb-16">
           <div className="container mx-auto px-3 sm:px-4 text-center py-16">
@@ -98,7 +98,7 @@ export default function BlogArticle() {
   return (
     <>
       <Helmet>
-        <title>{article.title} - Blog System Compass</title>
+        <title>{article.title} — Blog Compass</title>
         <meta name="description" content={article.excerpt} />
         <meta property="og:title" content={article.title} />
         <meta property="og:description" content={article.excerpt} />

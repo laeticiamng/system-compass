@@ -85,14 +85,14 @@ export default function FinancialSafetyIntel() {
   return (
     <>
       <Helmet>
-        <title>Intelligence Financière - System Compass</title>
+        <title>Sécurité Financière — Compass</title>
         <meta name="description" content="Analyse des risques financiers par pays : arnaques courantes, opportunités légitimes, alertes et conseils de sécurité financière pour expatriés." />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Intelligence Financière - System Compass" />
+        <meta property="og:title" content="Sécurité Financière — Compass" />
         <meta property="og:description" content="Risques financiers, arnaques et opportunités par pays pour expatriés." />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Intelligence Financière - System Compass" />
+        <meta name="twitter:title" content="Sécurité Financière — Compass" />
         <meta name="twitter:description" content="Risques financiers, arnaques et opportunités par pays pour expatriés." />
         <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>

@@ -1,11 +1,11 @@
-# System Compass — Documentation complète pour agents IA
+# Compass — Documentation complète pour agents IA
 
-> Plateforme d'intelligence décisionnelle pour la relocalisation internationale.
-> Decision intelligence platform for international relocation.
+> Plateforme de comparaison de pays pour la relocalisation internationale.
+> Country comparison platform for international relocation.
 
 ## Résumé
 
-System Compass est la première plateforme qui analyse les systèmes de 80+ pays sous l'angle des structures de pouvoir, des règles non-écrites et de la compatibilité profil-pays. Contrairement aux guides d'expatriation classiques, elle ne classe pas les pays par « qualité de vie » mais par adéquation avec le profil spécifique de l'utilisateur.
+Compass est une plateforme qui analyse 80+ pays pour aider les expatriés à comparer les destinations : fiscalité, visas, coût de la vie, sécurité, profils compatibles et stratégies concrètes.
 
 ## Proposition de valeur unique
 

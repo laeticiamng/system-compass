@@ -15,7 +15,7 @@ export default function ExpatriationTimeline() {
   return (
     <>
       <Helmet>
-        <title>{t('timeline.seoTitle', 'Timeline d\'expatriation interactive | System Compass')}</title>
+        <title>{t('timeline.seoTitle', 'Timeline d\'expatriation interactive | Compass')}</title>
         <meta name="description" content={t('timeline.seoDesc', 'Planifiez chaque étape de votre expatriation avec notre timeline interactive. De J-180 au Jour J et au-delà.')} />
       </Helmet>
 

@@ -22,11 +22,11 @@ export default function Disclaimer() {
   return (
     <main className="min-h-screen bg-background pt-24 pb-16">
       <Helmet>
-        <title>Avertissements & Limites - System Compass</title>
-        <meta name="description" content="Avertissements légaux de System Compass : outil éducatif d'analyse des systèmes de pays. Simulation ≠ prédiction. Ne constitue pas un conseil professionnel." />
+        <title>Avertissements & Limites — Compass</title>
+        <meta name="description" content="Avertissements : Compass est un outil de comparaison et simulation. Ne constitue pas un conseil professionnel." />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Avertissements & Limites - System Compass" />
-        <meta property="og:description" content="Ce que System Compass est — et ce qu'il n'est pas. Outil éducatif, pas de conseil professionnel." />
+        <meta property="og:title" content="Avertissements & Limites — Compass" />
+        <meta property="og:description" content="Ce que Compass est — et ce qu'il n'est pas. Outil de comparaison, pas de conseil professionnel." />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Avertissements & Limites - System Compass" />

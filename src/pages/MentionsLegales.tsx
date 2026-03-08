@@ -14,10 +14,10 @@ export default function MentionsLegales() {
   return (
     <div className="min-h-screen bg-background pt-20 sm:pt-24">
       <Helmet>
-        <title>Mentions Légales - System Compass</title>
-        <meta name="description" content="Mentions légales de System Compass, édité par EmotionsCare SASU. SIRET, hébergement, propriété intellectuelle et protection des données personnelles (RGPD)." />
+        <title>Mentions Légales — Compass</title>
+        <meta name="description" content="Mentions légales de Compass, édité par EmotionsCare SASU. SIRET, hébergement, propriété intellectuelle et RGPD." />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Mentions Légales - System Compass" />
+        <meta property="og:title" content="Mentions Légales — Compass" />
         <meta property="og:description" content="Informations légales de System Compass : éditeur, hébergement, RGPD." />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />

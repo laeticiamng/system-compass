@@ -44,15 +44,15 @@ export default function Institutions() {
   return (
     <>
       <Helmet>
-        <title>Entreprises & Institutions - System Compass</title>
-        <meta name="description" content="Solutions System Compass pour entreprises et institutions : analyse de gouvernance, due diligence pays et intelligence systémique pour décisions stratégiques." />
+        <title>Entreprises & Institutions — Compass</title>
+        <meta name="description" content="Solutions Compass pour entreprises et institutions : analyse de pays, due diligence et accompagnement stratégique." />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Entreprises & Institutions - System Compass" />
-        <meta property="og:description" content="Intelligence systémique pour entreprises : gouvernance, due diligence et stratégie." />
+        <meta property="og:title" content="Entreprises & Institutions — Compass" />
+        <meta property="og:description" content="Analyse pays pour entreprises : due diligence et stratégie." />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Entreprises & Institutions - System Compass" />
-        <meta name="twitter:description" content="Intelligence systémique pour entreprises : gouvernance, due diligence et stratégie." />
+        <meta name="twitter:title" content="Entreprises & Institutions — Compass" />
+        <meta name="twitter:description" content="Analyse pays pour entreprises : due diligence et stratégie." />
         <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20 pt-16 sm:pt-20 md:pt-24">

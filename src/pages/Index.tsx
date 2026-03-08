@@ -52,26 +52,26 @@ export default function Index() {
   return (
     <>
       <Helmet>
-        <title>{t('landing.meta.title', 'System Compass - Compare 80+ pays pour ton expatriation')}</title>
-        <meta name="description" content={t('landing.meta.description', 'Plateforme d\'intelligence décisionnelle pour l\'expatriation. Analyse systémique de 80+ pays : fiscalité, visas, coût de la vie, structures de pouvoir. Test de profil gratuit en 2 min.')} />
+        <title>{t('landing.meta.title', 'Compass — Compare 80+ pays pour ton expatriation')}</title>
+        <meta name="description" content={t('landing.meta.description', 'Compare 80+ pays avant de t\'expatrier : fiscalité, visas, coût de la vie, sécurité. Test de profil gratuit en 2 min.')} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={t('landing.meta.ogTitle', 'System Compass - Intelligence décisionnelle pour l\'expatriation')} />
-        <meta property="og:description" content={t('landing.meta.ogDescription', 'Comparez 80+ pays par compatibilité avec votre profil : fiscalité, visas, coût de la vie, sécurité. Approche systémique unique. Test gratuit.')} />
+        <meta property="og:title" content={t('landing.meta.ogTitle', 'Compass — Compare les pays avant de partir')} />
+        <meta property="og:description" content={t('landing.meta.ogDescription', 'Comparez 80+ pays par compatibilité avec votre profil : fiscalité, visas, coût de la vie, sécurité. Test gratuit en 2 min.')} />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={t('landing.meta.ogTitle', 'System Compass - Intelligence décisionnelle pour l\'expatriation')} />
-        <meta name="twitter:description" content={t('landing.meta.ogDescription', 'Comparez 80+ pays par compatibilité avec votre profil : fiscalité, visas, coût de la vie, sécurité. Approche systémique unique. Test gratuit.')} />
+        <meta name="twitter:title" content={t('landing.meta.ogTitle', 'Compass — Compare les pays avant de partir')} />
+        <meta name="twitter:description" content={t('landing.meta.ogDescription', 'Comparez 80+ pays par compatibilité avec votre profil : fiscalité, visas, coût de la vie, sécurité. Test gratuit en 2 min.')} />
         <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM information" />
       </Helmet>
       <FAQPageJsonLd faqs={[
-        { question: t('landing.faq.jsonld.q1', "Qu'est-ce que System Compass ?"), answer: t('landing.faq.jsonld.a1', "System Compass est la première plateforme d'intelligence décisionnelle pour la relocalisation internationale. Elle analyse les systèmes de 80+ pays avec une approche systémique unique : structures de pouvoir, profils compatibles, règles non-écrites.") },
-        { question: t('landing.faq.jsonld.q2', "Comment fonctionne le test de profil expatrié ?"), answer: t('landing.faq.jsonld.a2', "Le test rapide évalue vos priorités (fiscalité, qualité de vie, sécurité, opportunités) en 2 minutes. Il vous suggère les pays les plus compatibles avec votre profil spécifique, contrairement aux classements génériques.") },
-        { question: t('landing.faq.jsonld.q3', "Le service est-il gratuit ?"), answer: t('landing.faq.jsonld.a3', "L'accès de base est gratuit : test rapide, exploration des 80+ pays, comparaison basique. Le plan Premium à 9,90€/mois donne accès aux clés de sortie, simulateur fiscal et intelligence live.") },
-        { question: t('landing.faq.jsonld.q4', "D'où viennent les données de System Compass ?"), answer: t('landing.faq.jsonld.a4', "Les données proviennent de la Banque Mondiale, OCDE, FMI, Transparency International, Numbeo et sources gouvernementales. L'intelligence live est actualisée via Perplexity AI et vérification terrain.") },
-        { question: t('landing.faq.jsonld.q5', "Puis-je comparer plusieurs pays pour mon expatriation ?"), answer: t('landing.faq.jsonld.a5', "Oui, l'outil de comparaison permet de comparer jusqu'à 4 pays simultanément sur fiscalité, coût de la vie, qualité de vie, visas, sécurité et plus, avec des radar charts et exports PDF.") },
-        { question: t('landing.faq.jsonld.q6', "En quoi System Compass est différent des guides d'expatriation classiques ?"), answer: t('landing.faq.jsonld.a6', "System Compass analyse les structures de pouvoir (méritocratique, réseau, État-fort, hybride), identifie les profils qui réussissent ou échouent dans chaque pays, et propose des stratégies personnalisées plutôt que des classements génériques.") },
-        { question: t('landing.faq.jsonld.q7', "Quels pays sont couverts par System Compass ?"), answer: t('landing.faq.jsonld.a7', "System Compass couvre 80+ pays : Europe (France, Suisse, Portugal, Allemagne...), Amérique (USA, Canada, Mexique...), Asie (Thaïlande, Japon, Singapour...), Moyen-Orient (Émirats, Qatar...) et Afrique.") },
+        { question: t('landing.faq.jsonld.q1', "Qu'est-ce que Compass ?"), answer: t('landing.faq.jsonld.a1', "Compass est une plateforme qui vous aide à comparer 80+ pays avant de vous expatrier : fiscalité, visas, coût de la vie, sécurité, profils compatibles et stratégies concrètes.") },
+        { question: t('landing.faq.jsonld.q2', "Comment fonctionne le test de profil expatrié ?"), answer: t('landing.faq.jsonld.a2', "Le test rapide évalue vos priorités (fiscalité, qualité de vie, sécurité, opportunités) en 2 minutes. Il vous suggère les pays les plus compatibles avec votre profil spécifique.") },
+        { question: t('landing.faq.jsonld.q3', "Le service est-il gratuit ?"), answer: t('landing.faq.jsonld.a3', "L'accès de base est gratuit : test rapide, exploration des 80+ pays, comparaison basique. Le plan Premium à 9,90€/mois donne accès aux stratégies personnalisées, simulateur fiscal et analyses avancées.") },
+        { question: t('landing.faq.jsonld.q4', "D'où viennent les données ?"), answer: t('landing.faq.jsonld.a4', "Les données proviennent de la Banque Mondiale, OCDE, FMI, Transparency International, Numbeo et sources gouvernementales, mises à jour régulièrement.") },
+        { question: t('landing.faq.jsonld.q5', "Puis-je comparer plusieurs pays ?"), answer: t('landing.faq.jsonld.a5', "Oui, l'outil de comparaison permet de comparer jusqu'à 4 pays simultanément sur fiscalité, coût de la vie, qualité de vie, visas, sécurité et plus, avec des graphiques et exports PDF.") },
+        { question: t('landing.faq.jsonld.q6', "En quoi Compass est différent des guides d'expatriation classiques ?"), answer: t('landing.faq.jsonld.a6', "Compass identifie les profils qui réussissent ou échouent dans chaque pays et propose des stratégies personnalisées plutôt que des classements génériques.") },
+        { question: t('landing.faq.jsonld.q7', "Quels pays sont couverts ?"), answer: t('landing.faq.jsonld.a7', "Compass couvre 80+ pays : Europe (France, Suisse, Portugal, Allemagne...), Amérique (USA, Canada, Mexique...), Asie (Thaïlande, Japon, Singapour...), Moyen-Orient (Émirats, Qatar...) et Afrique.") },
         { question: t('landing.faq.jsonld.q8', "Comment fonctionne le simulateur fiscal ?"), answer: t('landing.faq.jsonld.a8', "Le simulateur fiscal calcule votre impôt sur le revenu dans le pays de destination et le compare à votre situation actuelle. Il intègre les régimes spéciaux, conventions de double imposition et optimisations légales.") },
       ]} />
       <div className="min-h-screen bg-background overflow-x-hidden">
@@ -406,15 +406,15 @@ export default function Index() {
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      {t('landing.pricing.premiumFeature2', 'Analyse système avancée')}
+                       {t('landing.pricing.premiumFeature2', 'Analyses approfondies')}
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      {t('landing.pricing.premiumFeature3', 'Export PDF illimité')}
+                       {t('landing.pricing.premiumFeature3', 'Export PDF illimité')}
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      {t('landing.pricing.premiumFeature4', 'Gouvernance & Terrain')}
+                       {t('landing.pricing.premiumFeature4', 'Recommandations personnalisées')}
                     </li>
                   </ul>
                   <Button 
@@ -502,7 +502,7 @@ export default function Index() {
                   {t('landing.faq.q2', 'Est-ce un conseil juridique ou fiscal ?')}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
-                  {t('landing.faq.a2', 'Non. System Compass est un outil de simulation et de comparaison. Il ne remplace pas un avocat, un fiscaliste ou un conseiller en immigration. Consultez toujours un professionnel avant de prendre une décision.')}
+                  {t('landing.faq.a2', 'Non. Compass est un outil de simulation et de comparaison. Il ne remplace pas un avocat, un fiscaliste ou un conseiller en immigration. Consultez toujours un professionnel avant de prendre une décision.')}
                 </AccordionContent>
               </AccordionItem>
             </motion.div>

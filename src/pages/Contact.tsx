@@ -84,8 +84,8 @@ export default function Contact() {
   return (
     <>
       <Helmet>
-        <title>{t('contact.metaTitle', 'Contact — System Compass')}</title>
-        <meta name="description" content={t('contact.metaDesc', 'Contactez l\'équipe System Compass pour toute question.')} />
+        <title>{t('contact.metaTitle', 'Contact — Compass')}</title>
+        <meta name="description" content={t('contact.metaDesc', 'Contactez l\'équipe Compass pour toute question.')} />
       </Helmet>
       <div className="container mx-auto px-4 py-16 max-w-2xl">
         <div className="text-center mb-12">

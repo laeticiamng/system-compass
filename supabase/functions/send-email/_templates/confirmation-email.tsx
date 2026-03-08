@@ -27,7 +27,7 @@ export const ConfirmationEmail = ({
 }: ConfirmationEmailProps) => (
   <Html>
     <Head />
-    <Preview>Bienvenue sur System Compass 🧭 - Votre compte est prêt !</Preview>
+    <Preview>Bienvenue sur Compass 🧭 - Votre compte est prêt !</Preview>
     <Body style={main}>
       <Container style={container}>
         <Section style={logoSection}>
@@ -41,7 +41,7 @@ export const ConfirmationEmail = ({
         </Section>
 
         <Heading style={h1}>
-          {displayName ? `Bienvenue ${displayName} ! 🧭` : 'Bienvenue sur System Compass 🧭'}
+          {displayName ? `Bienvenue ${displayName} ! 🧭` : 'Bienvenue sur Compass 🧭'}
         </Heading>
         
         <Text style={text}>
@@ -83,18 +83,18 @@ export const ConfirmationEmail = ({
         <Hr style={hr} />
 
         <Text style={footer}>
-          Si vous n'avez pas créé de compte sur System Compass, vous pouvez ignorer cet email.
+          Si vous n'avez pas créé de compte sur Compass, vous pouvez ignorer cet email.
         </Text>
         
         <Text style={footerBrand}>
           <Link href="https://system-compass.app" style={footerLink}>
-            System Compass
+            Compass
           </Link>
-          {' '}— Votre boussole stratégique pour l'expatriation
+          {' '}— Comparez les pays avant de partir
         </Text>
         
         <Text style={footerLegal}>
-          © 2025 EmotionsCare SASU. Tous droits réservés.
+          © {new Date().getFullYear()} EmotionsCare SASU. Tous droits réservés.
         </Text>
       </Container>
     </Body>

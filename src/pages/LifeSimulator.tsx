@@ -196,7 +196,7 @@ export default function LifeSimulator() {
   return (
     <>
       <Helmet>
-        <title>Simulateur de Vie — System Compass</title>
+        <title>Simulateur de Vie — Compass</title>
         <meta name="description" content="Projetez votre budget mensuel dans votre pays de destination. Comparaison avant/après et scénarios what-if." />
       </Helmet>
 

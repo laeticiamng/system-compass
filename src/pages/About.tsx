@@ -125,14 +125,14 @@ export default function About() {
   return (
     <>
       <Helmet>
-        <title>À propos - System Compass | Outil de lucidité stratégique</title>
-        <meta name="description" content="Découvrez System Compass : un simulateur de décisions et outil d'analyse des systèmes pays. Aucun conseil juridique, financier ou médical. Vous restez responsable." />
+        <title>À propos — Compass | Comparez les pays avant de partir</title>
+        <meta name="description" content="Découvrez Compass : un outil de comparaison et d'analyse de 80+ pays pour préparer votre expatriation. Aucun conseil juridique, financier ou médical." />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="À propos - System Compass | Outil de lucidité stratégique" />
-        <meta property="og:description" content="Simulateur de décisions dans des systèmes réels. Outil d'analyse uniquement. Tu décides, nous éclairons." />
+        <meta property="og:title" content="À propos — Compass" />
+        <meta property="og:description" content="Outil de comparaison de pays pour expatriés. Vous décidez, nous éclairons." />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="À propos - System Compass | Outil de lucidité stratégique" />
+        <meta name="twitter:title" content="À propos — Compass" />
         <meta name="twitter:description" content="Simulateur de décisions dans des systèmes réels. Outil d'analyse uniquement. Tu décides, nous éclairons." />
         <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>

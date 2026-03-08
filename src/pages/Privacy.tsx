@@ -17,8 +17,8 @@ export default function Privacy() {
   return (
     <>
       <Helmet>
-        <title>{t('privacy.meta.title', 'Politique de Confidentialité - System Compass')}</title>
-        <meta name="description" content={t('privacy.meta.description', 'Politique de confidentialité RGPD de System Compass. Découvrez comment nous protégeons vos données personnelles.')} />
+        <title>{t('privacy.meta.title', 'Politique de Confidentialité — Compass')}</title>
+        <meta name="description" content={t('privacy.meta.description', 'Politique de confidentialité RGPD de Compass. Découvrez comment nous protégeons vos données personnelles.')} />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Politique de Confidentialité - System Compass" />
         <meta property="og:description" content="Politique de confidentialité RGPD de System Compass. Protection des données personnelles." />

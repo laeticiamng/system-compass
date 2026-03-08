@@ -497,15 +497,15 @@ export default function ThematicPaths() {
   return (
     <>
       <Helmet>
-        <title>{t('thematicPaths.meta.title', 'Parcours Thematiques - System Compass | Digital Nomad, Famille, Retraite')}</title>
-        <meta name="description" content={t('thematicPaths.meta.description', 'Decouvrez nos parcours thematiques d\'expatriation : Digital Nomad, Famille et Retraite. Pays recommandes, etapes cles et outils pour chaque profil.')} />
+        <title>{t('thematicPaths.meta.title', 'Parcours Thématiques — Compass | Digital Nomad, Famille, Retraite')}</title>
+        <meta name="description" content={t('thematicPaths.meta.description', 'Découvrez nos parcours thématiques d\'expatriation : Digital Nomad, Famille et Retraite. Pays recommandés, étapes clés et outils pour chaque profil.')} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={t('thematicPaths.meta.ogTitle', 'Parcours Thematiques - System Compass')} />
-        <meta property="og:description" content={t('thematicPaths.meta.ogDescription', 'Trois parcours d\'expatriation adaptes a votre situation : Digital Nomad, Famille et Retraite.')} />
+        <meta property="og:title" content={t('thematicPaths.meta.ogTitle', 'Parcours Thématiques — Compass')} />
+        <meta property="og:description" content={t('thematicPaths.meta.ogDescription', 'Trois parcours d\'expatriation adaptés à votre situation : Digital Nomad, Famille et Retraite.')} />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={t('thematicPaths.meta.ogTitle', 'Parcours Thematiques - System Compass')} />
-        <meta name="twitter:description" content={t('thematicPaths.meta.ogDescription', 'Trois parcours d\'expatriation adaptes a votre situation : Digital Nomad, Famille et Retraite.')} />
+        <meta name="twitter:title" content={t('thematicPaths.meta.ogTitle', 'Parcours Thématiques — Compass')} />
+        <meta name="twitter:description" content={t('thematicPaths.meta.ogDescription', 'Trois parcours d\'expatriation adaptés à votre situation : Digital Nomad, Famille et Retraite.')} />
         <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
 

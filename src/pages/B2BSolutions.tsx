@@ -29,15 +29,15 @@ export default function B2BSolutions() {
   return (
     <>
       <Helmet>
-        <title>Solutions B2B - System Compass</title>
-        <meta name="description" content="Solutions d'intelligence pays pour entreprises et institutions. Analyse systémique, due diligence géopolitique et accompagnement stratégique." />
+        <title>Solutions B2B — Compass</title>
+        <meta name="description" content="Solutions d'analyse pays pour entreprises et institutions. Due diligence, intelligence terrain et accompagnement stratégique." />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Solutions B2B - System Compass" />
-        <meta property="og:description" content="Intelligence pays pour entreprises : analyse systémique et due diligence géopolitique." />
+        <meta property="og:title" content="Solutions B2B — Compass" />
+        <meta property="og:description" content="Analyse pays pour entreprises : due diligence et accompagnement stratégique." />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Solutions B2B - System Compass" />
-        <meta name="twitter:description" content="Intelligence pays pour entreprises : analyse systémique et due diligence géopolitique." />
+        <meta name="twitter:title" content="Solutions B2B — Compass" />
+        <meta name="twitter:description" content="Analyse pays pour entreprises : due diligence et accompagnement stratégique." />
         <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20 pt-20 md:pt-24">

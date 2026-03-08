@@ -141,14 +141,14 @@ export default function ToolsHub() {
   return (
     <>
       <Helmet>
-        <title>{t('hub.meta.title', 'Centre des Outils - System Compass | Analyse & Planification')}</title>
-        <meta name="description" content={t('hub.meta.description', 'Accédez à tous les outils System Compass : tests de profil, comparateur de pays, stratégies, calculateur fiscal, et plus.')} />
+        <title>{t('hub.meta.title', 'Centre des Outils — Compass')}</title>
+        <meta name="description" content={t('hub.meta.description', 'Accédez à tous les outils Compass : tests de profil, comparateur de pays, stratégies, calculateur fiscal, et plus.')} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={t('hub.meta.ogTitle', 'Centre des Outils - System Compass')} />
+        <meta property="og:title" content={t('hub.meta.ogTitle', 'Centre des Outils — Compass')} />
         <meta property="og:description" content={t('hub.meta.ogDescription', 'Tous vos outils d\'analyse, de planification et de décision en un seul endroit.')} />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={t('hub.meta.ogTitle', 'Centre des Outils - System Compass')} />
+        <meta name="twitter:title" content={t('hub.meta.ogTitle', 'Centre des Outils — Compass')} />
         <meta name="twitter:description" content={t('hub.meta.ogDescription', 'Tous vos outils d\'analyse, de planification et de décision en un seul endroit.')} />
         <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>

@@ -244,10 +244,10 @@ export default function ProfileMatcher() {
   return (
     <div className="min-h-screen pt-24 pb-16">
       <Helmet>
-        <title>Matching Pays-Profil - System Compass</title>
-        <meta name="description" content="Trouvez les pays qui correspondent à votre profil. Ajustez vos préférences (réseau, diplôme, risque, bureaucratie) et découvrez vos matchs par compatibilité." />
+        <title>Trouver mon pays — Compass</title>
+        <meta name="description" content="Trouvez les pays qui correspondent à votre profil. Ajustez vos préférences et découvrez vos meilleurs matchs." />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Profile Matcher - System Compass" />
+        <meta property="og:title" content="Trouver mon pays — Compass" />
         <meta property="og:description" content="Découvrez quels pays correspondent le mieux à votre profil personnel." />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
