@@ -234,5 +234,5 @@ export const LEGACY_ROUTE_SEGMENTS = [
   'admin', 'seed-translations', 'diagnostics',
   'match', 'multi-compare', 'systemic-mistakes', 'orientation-hub',
   'test', 'login', 'map', 'strategies', 'profile', 'game', 'matcher', 'legal',
-  'life-simulator',
+  'life-simulator', 'roadmap', 'status', 'beta-feedback',
 ];

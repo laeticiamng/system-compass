@@ -137,3 +137,8 @@ export const LazyExpatReviews = withSuspense(lazy(() => import('@/pages/ExpatRev
 export const LazyApiDocs = withSuspense(lazy(() => import('@/pages/ApiDocs')));
 export const LazyWebhooksDocs = withSuspense(lazy(() => import('@/pages/WebhooksDocs')));
 export const LazyLifeSimulator = withSuspense(lazy(() => import('@/pages/LifeSimulator')));
+
+// Product pages
+export const LazyRoadmap = withSuspense(lazy(() => import('@/pages/Roadmap')));
+export const LazyStatus = withSuspense(lazy(() => import('@/pages/Status')));
+export const LazyBetaFeedback = withSuspense(lazy(() => import('@/pages/BetaFeedback')));

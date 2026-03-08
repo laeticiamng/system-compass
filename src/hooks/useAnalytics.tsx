@@ -200,6 +200,26 @@ export function useAnalytics() {
     trackEvent({ event: 'account_created', category: 'conversion' });
   }, [trackEvent]);
 
+  const trackQuickTestCompleted = useCallback((countryId?: string, score?: number) => {
+    trackEvent({ event: 'quick_test_completed', category: 'conversion', metadata: { country_id: countryId, score } });
+  }, [trackEvent]);
+
+  const trackSignupAfterResults = useCallback((source?: string) => {
+    trackEvent({ event: 'signup_after_results', category: 'conversion', metadata: { source } });
+  }, [trackEvent]);
+
+  const trackPricingViewed = useCallback((plan?: string) => {
+    trackEvent({ event: 'pricing_viewed', category: 'conversion', metadata: { plan } });
+  }, [trackEvent]);
+
+  const trackCheckoutStarted = useCallback((plan?: string, price?: number) => {
+    trackEvent({ event: 'checkout_started', category: 'conversion', metadata: { plan, price } });
+  }, [trackEvent]);
+
+  const trackFeedbackSubmitted = useCallback((type?: string) => {
+    trackEvent({ event: 'feedback_submitted', category: 'engagement', metadata: { type } });
+  }, [trackEvent]);
+
   return {
     trackEvent,
     trackHomeOpened,
@@ -210,6 +230,11 @@ export function useAnalytics() {
     trackAlternativeScenarioClicked,
     trackExitKeysClicked,
     trackUniversalErrorsClicked,
-    trackAccountCreated
+    trackAccountCreated,
+    trackQuickTestCompleted,
+    trackSignupAfterResults,
+    trackPricingViewed,
+    trackCheckoutStarted,
+    trackFeedbackSubmitted,
   };
 }
