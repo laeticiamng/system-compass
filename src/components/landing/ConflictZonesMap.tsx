@@ -479,7 +479,7 @@ export function ConflictZonesMap() {
                     </Badge>
                     <Badge variant="outline" className={cn('text-xs gap-1', trend.color)}>
                       <TrendingUp className="w-3 h-3" />
-                      {trend.label}
+                      {t(trend.labelKey, trend.labelFallback)}
                     </Badge>
                   </div>
 
