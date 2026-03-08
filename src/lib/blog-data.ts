@@ -188,7 +188,7 @@ Avant de vous décider, plusieurs critères méritent une analyse approfondie : 
 Nous recommandons vivement de passer plusieurs mois dans le pays envisagé, à différentes saisons, avant de prendre une décision définitive. L'image vacancière d'un pays peut être très différente de la réalité quotidienne d'un résident permanent. Certains retraités optent pour une solution intermédiaire : passer 6 mois dans le pays choisi et 6 mois en France, ce qui peut permettre de conserver certains avantages sociaux français tout en profitant d'un cadre de vie différent.`,
     category: 'guide',
     tags: ['retraite', 'pension', 'coût de la vie', 'fiscalité retraite', 'senior'],
-    author: 'System Compass',
+    author: 'Compass',
     publishedAt: '2025-03-10',
     readTime: 12,
     featured: false,
