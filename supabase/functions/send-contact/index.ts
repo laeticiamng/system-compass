@@ -64,7 +64,7 @@ Deno.serve(async (req) => {
     console.log(`[send-contact] Contact from ${sanitizedEmail} — subject: ${sanitizedSubject}`)
 
     const { data, error } = await resend.emails.send({
-      from: 'System Compass <noreply@pyramid-compass.com>',
+      from: 'Compass <noreply@pyramid-compass.com>',
       to: ['contact@system-compass.app'],
       replyTo: sanitizedEmail,
       subject: `[Contact] ${sanitizedSubject}`,

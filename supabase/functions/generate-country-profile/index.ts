@@ -22,7 +22,7 @@ CONTRAINTES ABSOLUES :
 
 OBJECTIF : Maximiser la SPÉCIFICITÉ pays. Chaque phrase doit être UNIQUE à ce pays.`;
 
-const VALIDATOR_PROMPT = `Tu es un auditeur qualité pour System Compass.
+const VALIDATOR_PROMPT = `Tu es un auditeur qualité pour Compass.
 Mission :
 1) Supprimer toute injonction ("tu dois", recommandations directes)
 2) Neutraliser tout conseil juridique/financier/immigration/médical
