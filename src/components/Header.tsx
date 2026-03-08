@@ -73,18 +73,13 @@ export function Header() {
     { href: '/prevention-filter', label: t('nav.preventionFilter', 'Aide à la décision'), icon: Shield },
   ];
 
-  // Pages info/compte — includes Pro modules merged in
+  // Pages info/compte — essentielles uniquement (pas de doublons avec nav principale)
   const accountItems = [
     { href: '/about', label: t('nav.about', 'À propos'), icon: Info },
     { href: '/how-to-read', label: t('nav.howToRead', 'Guide'), icon: BookOpen },
-    { href: '/pricing', label: t('nav.pricing', 'Tarifs'), icon: CreditCard },
-    { href: '/usage', label: t('nav.usage', 'Consommation'), icon: BarChart3 },
-    { href: '/settings/notifications', label: t('nav.notifications', 'Notifications'), icon: Bell },
-    { href: '/resources', label: t('nav.resources', 'Ressources'), icon: FileText },
-    { href: '/institutions', label: t('nav.institutions', 'Institutions'), icon: Building2 },
-    { href: '/b2b', label: t('nav.b2b', 'Solutions B2B'), icon: Building2 },
     { href: '/experts', label: t('nav.experts', 'Experts'), icon: Users },
-    { href: '/academic', label: t('nav.academic', 'Académique'), icon: BookOpen },
+    { href: '/resources', label: t('nav.resources', 'Ressources'), icon: FileText },
+    { href: '/b2b', label: t('nav.b2b', 'Solutions B2B'), icon: Building2 },
     { href: '/contact', label: t('nav.contact', 'Contact'), icon: Mail },
   ];
 

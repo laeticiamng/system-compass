@@ -88,9 +88,9 @@ export const ConfirmationEmail = ({
         
         <Text style={footerBrand}>
           <Link href="https://system-compass.app" style={footerLink}>
-            System Compass
+            Compass
           </Link>
-          {' '}— Votre boussole stratégique pour l'expatriation
+          {' '}— Comparez les pays avant de partir
         </Text>
         
         <Text style={footerLegal}>
