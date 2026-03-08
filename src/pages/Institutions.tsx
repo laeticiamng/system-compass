@@ -303,7 +303,7 @@ export default function Institutions() {
                   <DisclaimerBlock 
                     icon={<UserCheck className="w-5 h-5" />}
                     title={t('institutions.disclaimer.responsibility', 'Le décideur reste responsable')}
-                    description={t('institutions.disclaimer.responsibilityDesc', 'L\'utilisation de System Compass ne transfère aucune responsabilité. Chaque décision engage ceux qui la prennent.')}
+                    description={t('institutions.disclaimer.responsibilityDesc', 'L\'utilisation de Compass ne transfère aucune responsabilité. Chaque décision engage ceux qui la prennent.')}
                   />
                 </CardContent>
               </Card>
