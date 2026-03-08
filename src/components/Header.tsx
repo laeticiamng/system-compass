@@ -329,7 +329,7 @@ export function Header() {
               <SheetHeader>
                 <SheetTitle className="flex items-center gap-2">
                   <Compass className="w-5 h-5 text-primary" />
-                  System Compass
+                  Compass
                 </SheetTitle>
               </SheetHeader>
               <nav className="flex flex-col gap-1 mt-6">
