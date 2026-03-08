@@ -19,7 +19,7 @@ export function JsonLd({ data }: JsonLdProps) {
 
 // Organization schema — GEO-optimized with localized URL and description
 export function OrganizationJsonLd() {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const lang = i18n.language;
 
   const descriptions: Record<string, string> = {
