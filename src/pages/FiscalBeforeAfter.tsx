@@ -108,7 +108,7 @@ export default function FiscalBeforeAfter() {
   return (
     <>
       <Helmet>
-        <title>{t('beforeAfter.seoTitle', 'Avant/Après Fiscal | System Compass')}</title>
+        <title>{t('beforeAfter.seoTitle', 'Avant/Après Fiscal | Compass')}</title>
         <meta name="description" content={t('beforeAfter.seoDesc', 'Comparez votre salaire net entre la France et votre pays de destination. Visualisez le delta mensuel en un coup d\'œil.')} />
       </Helmet>
 

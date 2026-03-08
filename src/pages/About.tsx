@@ -524,7 +524,7 @@ export default function About() {
         <Card className="bg-gradient-to-r from-primary/5 to-amber-500/5 border-primary/20">
           <CardContent className="pt-6 text-center">
             <h3 className="text-xl font-semibold mb-3">
-              {t('orientationHub.partners.title', 'Vous voulez diffuser System Compass ?')}
+              {t('orientationHub.partners.title', 'Vous voulez diffuser Compass ?')}
             </h3>
             <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
               {t('orientationHub.partners.description', 'Rejoignez le programme Compass Partners pour une diffusion responsable basée sur l\'usage réel et la compréhension.')}

@@ -197,7 +197,7 @@ export function PodcastPlayer() {
               <div className="flex-1 min-w-0">
                 <h4 className="font-medium text-sm truncate">{currentEpisode.title}</h4>
                 <p className="text-xs text-muted-foreground">
-                  {currentEpisode.guest || 'System Compass'}
+                  {currentEpisode.guest || 'Compass'}
                 </p>
               </div>
             </div>

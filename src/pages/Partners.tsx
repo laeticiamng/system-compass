@@ -127,7 +127,7 @@ export default function Partners() {
                   <div>
                     <h4 className="font-medium mb-2">Rôle</h4>
                     <ul className="text-sm text-muted-foreground space-y-1">
-                      <li>• Présenter System Compass à des personnes pertinentes</li>
+                      <li>• Présenter Compass à des personnes pertinentes</li>
                       <li>• Partager une expérience d'usage authentique</li>
                       <li>• Contribuer par des retours qualitatifs</li>
                     </ul>
