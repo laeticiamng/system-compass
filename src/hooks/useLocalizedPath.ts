@@ -42,5 +42,5 @@ export function useCanonicalUrl(basePath?: string): string {
   const { i18n } = useTranslation();
   const pathFromUrl = usePathWithoutLang();
   const path = basePath || pathFromUrl;
-  return `https://system-compass.app/${i18n.language}${path === '/' ? '' : path}`;
+  return `${SITE_CONFIG.productionUrl}/${i18n.language}${path === '/' ? '' : path}`;
 }
