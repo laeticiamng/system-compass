@@ -470,7 +470,7 @@ export function OnboardingDialog() {
             className="absolute left-4 top-4 gap-1 text-xs text-muted-foreground"
             onClick={() => setStep(s => Math.max(0, s - 1))}
           >
-            <ArrowLeft className="w-3 h-3" /> Retour
+            <ArrowLeft className="w-3 h-3" /> {t('onboarding.back', 'Retour')}
           </Button>
         )}
 
