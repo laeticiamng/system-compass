@@ -173,7 +173,7 @@ export default function About() {
             </div>
             <blockquote className="text-center max-w-3xl mx-auto">
               <p className="text-xl font-medium mb-4">
-                {t('orientationHub.philosophy', 'System Compass est une plateforme d\'orientation avant décision.')}
+                {t('orientationHub.philosophy', 'Compass est une plateforme d\'orientation avant décision.')}
               </p>
               <p className="text-muted-foreground">
                 {t('orientationHub.philosophyDesc', 'Permettre à chaque personne de comprendre clairement ses options réelles, leurs risques, leurs coûts et leurs alternatives, avant d\'engager son argent, sa vie ou son avenir.')}
