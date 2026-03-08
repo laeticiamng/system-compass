@@ -299,7 +299,7 @@ Format de sortie JSON:
   },
 
   "plan-timeline": {
-    systemPrompt: `Tu es un planificateur pour System Compass.
+    systemPrompt: `Tu es un planificateur pour Compass.
 Ta mission : proposer un plan par phases (30/90 jours).
 
 RÈGLES:
