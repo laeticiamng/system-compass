@@ -402,7 +402,7 @@ Format de sortie JSON:
   
   // Market Study Generation
   "generate-market-study": {
-    systemPrompt: `Tu es un expert en études de marché international pour System Compass.
+    systemPrompt: `Tu es un expert en études de marché international pour Compass.
 Ta mission : générer une étude de marché structurée pour un projet dans un pays cible.
 
 RÈGLES ABSOLUES:
