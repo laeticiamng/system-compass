@@ -134,10 +134,10 @@ function ProfileSelectStep({ onSelect }: StepProps & { onSelect: (v: string) => 
 function B2CGoalStep({ onSelect }: StepProps & { onSelect: (v: string) => void }) {
   const { t } = useTranslation();
   const goals = [
-    { value: 'explore', icon: Globe, label: t('onboarding.goal.explore', 'Explorer les pays'), desc: 'Comparer, comprendre, découvrir' },
-    { value: 'relocate', icon: Plane, label: t('onboarding.goal.relocate', 'Préparer un déménagement'), desc: 'Visa, budget, checklist' },
-    { value: 'invest', icon: TrendingUp, label: t('onboarding.goal.invest', 'Optimiser ma fiscalité'), desc: 'Simulateur, régimes spéciaux' },
-    { value: 'retire', icon: Heart, label: t('onboarding.goal.retire', 'Préparer ma retraite'), desc: 'Coût de vie, santé, sécurité' },
+    { value: 'explore', icon: Globe, label: t('onboarding.goal.explore', 'Explorer les pays'), desc: t('onboarding.goal.exploreDesc', 'Comparer, comprendre, découvrir') },
+    { value: 'relocate', icon: Plane, label: t('onboarding.goal.relocate', 'Préparer un déménagement'), desc: t('onboarding.goal.relocateDesc', 'Visa, budget, checklist') },
+    { value: 'invest', icon: TrendingUp, label: t('onboarding.goal.invest', 'Optimiser ma fiscalité'), desc: t('onboarding.goal.investDesc', 'Simulateur, régimes spéciaux') },
+    { value: 'retire', icon: Heart, label: t('onboarding.goal.retire', 'Préparer ma retraite'), desc: t('onboarding.goal.retireDesc', 'Coût de vie, santé, sécurité') },
   ];
 
   return (
