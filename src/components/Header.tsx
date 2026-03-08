@@ -5,7 +5,7 @@ import { LocalizedLink as Link } from '@/components/i18n';
 import { useLocalizedPath } from '@/hooks/useLocalizedPath';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
-import { Compass, Map, FileText, Scale, Gamepad2, LogIn, LogOut, User, LayoutDashboard, Menu, Info, AlertCircle, X, Shield, BookOpen, CreditCard, Globe, Settings, Building2, Users, ChevronDown, Wrench, Bell, BarChart3, Mail } from 'lucide-react';
+import { Compass, Map, FileText, Scale, LogIn, LogOut, User, LayoutDashboard, Menu, Info, AlertCircle, X, Shield, BookOpen, CreditCard, Globe, Settings, Building2, Users, ChevronDown, Wrench, Bell, BarChart3, Mail } from 'lucide-react';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { GlobalSearch } from './GlobalSearch';
 import { ThemeToggle } from './ThemeToggle';
