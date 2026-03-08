@@ -48,7 +48,7 @@ export function CountryIndicator() {
           className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground h-auto py-1.5"
         >
           <MapPin className="w-3.5 h-3.5" />
-          <span className="hidden sm:inline">{t('footer.defaultCountry', 'Pays par défaut')}:</span>
+          <span className="hidden sm:inline">{t('footer.defaultCountry', 'Mon pays')}:</span>
           <span className="font-medium text-foreground">{flag} {country.name}</span>
           <ChevronDown className="w-3.5 h-3.5 ml-0.5" />
         </Button>

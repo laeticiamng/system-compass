@@ -279,7 +279,7 @@ export default function Countries() {
       </Helmet>
       <div className="min-h-screen bg-background overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative pt-24 sm:pt-32 pb-16 sm:pb-24 overflow-hidden">
+      <section className="relative pt-20 sm:pt-24 pb-8 sm:pb-12 overflow-hidden">
         {/* Animated gradient background */}
         <div className="absolute inset-0">
           <motion.div 
