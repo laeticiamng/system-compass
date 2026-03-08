@@ -148,12 +148,12 @@ const Pricing = () => {
   return (
     <>
       <Helmet>
-        <title>{t('pricing.meta.title', 'Pricing - System Compass | Free, Premium & Enterprise')}</title>
-        <meta name="description" content={t('pricing.meta.description', 'Discover System Compass plans: free to explore, Premium for full access to 80+ countries, Enterprise for organizations. Transparent pricing.')} />
-        <meta property="og:title" content={t('pricing.meta.ogTitle', 'Pricing - System Compass')} />
-        <meta property="og:description" content={t('pricing.meta.ogDescription', 'Free to explore, Premium for full access. Transparent pricing with no hidden fees.')} />
-        <meta name="twitter:title" content={t('pricing.meta.ogTitle', 'Pricing - System Compass')} />
-        <meta name="twitter:description" content={t('pricing.meta.ogDescription', 'Free to explore, Premium for full access. Transparent pricing.')} />
+        <title>{t('pricing.meta.title', 'Tarifs — Compass | Gratuit, Premium & Pro')}</title>
+        <meta name="description" content={t('pricing.meta.description', 'Découvrez les plans Compass : gratuit pour explorer, Premium pour un accès complet à 80+ pays, Pro pour les organisations. Tarification transparente.')} />
+        <meta property="og:title" content={t('pricing.meta.ogTitle', 'Tarifs — Compass')} />
+        <meta property="og:description" content={t('pricing.meta.ogDescription', 'Gratuit pour explorer, Premium pour un accès complet. Tarification transparente sans frais cachés.')} />
+        <meta name="twitter:title" content={t('pricing.meta.ogTitle', 'Tarifs — Compass')} />
+        <meta name="twitter:description" content={t('pricing.meta.ogDescription', 'Gratuit pour explorer, Premium pour un accès complet. Tarification transparente.')} />
       </Helmet>
       <div className="min-h-screen bg-background overflow-x-hidden">
       {/* Hero Section */}
