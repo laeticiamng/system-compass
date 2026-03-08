@@ -292,7 +292,7 @@ export function WebSiteJsonLd() {
     <JsonLd data={{
       '@context': 'https://schema.org',
       '@type': 'WebSite',
-      name: 'System Compass',
+      name: 'Compass',
       url: `${SITE_CONFIG.productionUrl}/${lang}`,
       description: 'Plateforme d\'intelligence décisionnelle pour la relocalisation internationale. Compare 80+ pays pour ton expatriation.',
       inLanguage: ['fr', 'en'],

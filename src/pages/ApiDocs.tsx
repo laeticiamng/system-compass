@@ -145,7 +145,7 @@ export default function ApiDocs() {
             <Code className="w-7 h-7 text-primary" />
           </div>
           <div>
-            <h1 className="text-3xl font-display font-bold">API System Compass</h1>
+            <h1 className="text-3xl font-display font-bold">API Compass</h1>
             <p className="text-muted-foreground">
               Intégrez l'intelligence pays dans vos applications B2B
             </p>

@@ -274,7 +274,7 @@ export default function OVI() {
                   </CardHeader>
                   <CardContent className="space-y-6">
                     <p className="text-muted-foreground">
-                      {t('ovi.connection.intro', 'Lorsque vous effectuez une simulation dans System Compass, l\'OVI peut suggérer des lectures pertinentes. L\'objectif : nourrir votre réflexion, pas orienter votre décision.')}
+                      {t('ovi.connection.intro', 'Lorsque vous effectuez une simulation dans Compass, l\'OVI peut suggérer des lectures pertinentes. L\'objectif : nourrir votre réflexion, pas orienter votre décision.')}
                     </p>
 
                     <div className="grid md:grid-cols-2 gap-6">
