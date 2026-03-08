@@ -502,7 +502,7 @@ export default function Index() {
                   {t('landing.faq.q2', 'Est-ce un conseil juridique ou fiscal ?')}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
-                  {t('landing.faq.a2', 'Non. System Compass est un outil de simulation et de comparaison. Il ne remplace pas un avocat, un fiscaliste ou un conseiller en immigration. Consultez toujours un professionnel avant de prendre une décision.')}
+                  {t('landing.faq.a2', 'Non. Compass est un outil de simulation et de comparaison. Il ne remplace pas un avocat, un fiscaliste ou un conseiller en immigration. Consultez toujours un professionnel avant de prendre une décision.')}
                 </AccordionContent>
               </AccordionItem>
             </motion.div>
