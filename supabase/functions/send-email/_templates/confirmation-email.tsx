@@ -41,7 +41,7 @@ export const ConfirmationEmail = ({
         </Section>
 
         <Heading style={h1}>
-          {displayName ? `Bienvenue ${displayName} ! 🧭` : 'Bienvenue sur System Compass 🧭'}
+          {displayName ? `Bienvenue ${displayName} ! 🧭` : 'Bienvenue sur Compass 🧭'}
         </Heading>
         
         <Text style={text}>
