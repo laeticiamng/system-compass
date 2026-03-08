@@ -8112,7 +8112,9 @@
       "blindSpots": "Specific blind spots",
       "latentModule": "Latent Module",
       "irreversaModule": "Irreversa Module",
-      "traceOS": "TraceOS"
+      "traceOS": "TraceOS",
+      "systemAnalysis": "System Analysis",
+      "governance": "Governance & Field"
     },
     "faq": {
       "title": "Frequently asked questions",

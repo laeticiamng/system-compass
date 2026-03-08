@@ -426,9 +426,9 @@ const Pricing = () => {
                   <thead>
                     <tr className="border-b bg-muted/50">
                       <th className="text-left py-4 px-6">{t('pricing.comparison.feature', 'Fonctionnalité')}</th>
-                      <th className="text-center py-4 px-4">Gratuit</th>
-                      <th className="text-center py-4 px-4 bg-primary/5">Premium</th>
-                      <th className="text-center py-4 px-4">Pro</th>
+                      <th className="text-center py-4 px-4">{t('pricing.freeName', 'Gratuit')}</th>
+                      <th className="text-center py-4 px-4 bg-primary/5">{t('pricing.premiumName', 'Premium')}</th>
+                      <th className="text-center py-4 px-4">{t('pricing.proName', 'Pro / B2B')}</th>
                     </tr>
                   </thead>
                   <tbody>
