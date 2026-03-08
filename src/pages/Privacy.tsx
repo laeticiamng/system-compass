@@ -413,7 +413,7 @@ export default function Privacy() {
             <section className="p-6 rounded-xl bg-card border border-border/50">
               <h2 className="text-xl font-semibold mb-4">{t('privacy.minors.title', 'Protection des Mineurs')}</h2>
               <p>
-                {t('privacy.minors.desc', "System Compass s'adresse à un public majeur (18 ans et plus). Nous ne collectons pas sciemment de données personnelles de mineurs. Si nous découvrons que des données de mineurs ont été collectées, elles seront supprimées immédiatement.")}
+                {t('privacy.minors.desc', "Compass s'adresse à un public majeur (18 ans et plus). Nous ne collectons pas sciemment de données personnelles de mineurs. Si nous découvrons que des données de mineurs ont été collectées, elles seront supprimées immédiatement.")}
               </p>
             </section>
 

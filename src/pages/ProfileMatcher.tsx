@@ -251,7 +251,7 @@ export default function ProfileMatcher() {
         <meta property="og:description" content="Découvrez quels pays correspondent le mieux à votre profil personnel." />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Profile Matcher - System Compass" />
+        <meta name="twitter:title" content="Trouver mon pays — Compass" />
         <meta name="twitter:description" content="Découvrez quels pays correspondent le mieux à votre profil personnel." />
         <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
