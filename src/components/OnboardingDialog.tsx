@@ -73,7 +73,7 @@ function ProfileSelectStep({ onSelect }: StepProps & { onSelect: (v: string) => 
       icon: User,
       title: t('onboarding.profile.b2c', 'Particulier'),
       desc: t('onboarding.profile.b2cDesc', 'Je prépare un projet d\'expatriation personnel ou familial'),
-      features: ['Explorer 80+ pays', 'Simulateur fiscal', 'Budget de vie', 'Journal d\'expatrié'],
+      features: [t('onboarding.profile.b2cFeature1', 'Explorer 80+ pays'), t('onboarding.profile.b2cFeature2', 'Simulateur fiscal'), t('onboarding.profile.b2cFeature3', 'Budget de vie'), t('onboarding.profile.b2cFeature4', 'Journal d\'expatrié')],
     },
     {
       value: 'b2b',
