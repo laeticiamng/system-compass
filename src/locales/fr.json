@@ -6145,7 +6145,7 @@
     "back": "Retour",
     "stepProgress": "Étape {{current}}/{{total}}",
     "welcome": {
-      "title": "Bienvenue sur System Compass",
+      "title": "Bienvenue sur Compass",
       "desc": "Comparez 80+ pays en quelques minutes et trouvez la destination qui correspond à votre profil.",
       "cta": "Démarrer le tour",
       "skip": "Non merci, explorer directement"
