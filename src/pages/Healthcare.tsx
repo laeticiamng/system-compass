@@ -2,14 +2,12 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
-import { Stethoscope, Globe, Shield, Heart, FileText, GraduationCap, CheckCircle2 } from 'lucide-react';
+import { Stethoscope, Globe, FileText, CheckCircle2 } from 'lucide-react';
 import { HealthcareCountryOverview } from '@/components/healthcare/HealthcareCountryOverview';
 import { useAllHealthcareCountries } from '@/hooks/useHealthcareData';
-import { useCountries } from '@/lib/countries-store';
 
 const HEALTHCARE_COUNTRIES = [
   { id: 'switzerland', name: 'Suisse', flag: '🇨🇭' },
