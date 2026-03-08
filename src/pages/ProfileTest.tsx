@@ -265,7 +265,7 @@ export default function ProfileTest() {
         <meta property="og:description" content="Évaluez votre profil expatrié et trouvez le système qui vous correspond." />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Test de Profil Expatrié - System Compass" />
+        <meta name="twitter:title" content="Test de Profil Expatrié — Compass" />
         <meta name="twitter:description" content="Évaluez votre profil expatrié et trouvez le système qui vous correspond." />
         <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>

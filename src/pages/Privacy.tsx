@@ -339,7 +339,7 @@ export default function Privacy() {
                 <ol className="list-decimal pl-6 space-y-2 text-sm">
                   <li>{t('privacy.localData.step1', "Ouvrez les paramètres de votre navigateur")}</li>
                   <li>{t('privacy.localData.step2', "Accédez à la section \"Données de sites\"")}</li>
-                  <li>{t('privacy.localData.step3', "Recherchez le domaine de System Compass")}</li>
+                  <li>{t('privacy.localData.step3', "Recherchez le domaine de Compass")}</li>
                   <li>{t('privacy.localData.step4', "Supprimez les données associées")}</li>
                 </ol>
                 <p className="text-sm text-muted-foreground">

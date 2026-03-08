@@ -58,7 +58,7 @@ export default function CGV() {
               Article 1 - Description du Service
             </h2>
             <p>
-              System Compass est une plateforme d'analyse et de comparaison des systèmes économiques 
+              Compass est une plateforme de comparaison des pays pour l'expatriation. Le service propose : 
               et sociaux de différents pays. Le service propose :
             </p>
             <ul className="list-disc pl-6 space-y-2 mt-4">

@@ -114,7 +114,7 @@ export function ExportButton({
                 <p>Exporté le ${new Date().toLocaleDateString(lang)} - Langue: ${lang.toUpperCase()}</p>
                 <pre>${JSON.stringify(data, null, 2)}</pre>
                 <div class="footer">
-                  <p>Généré par System Compass</p>
+                  <p>Généré par Compass</p>
                 </div>
               </body>
             </html>

@@ -329,7 +329,7 @@ export default function Institutions() {
             {t('institutions.finalCta.title', 'Prêt à structurer vos décisions ?')}
           </h2>
           <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-            {t('institutions.finalCta.description', 'Explorez les outils existants de System Compass, déjà adaptés à l\'analyse décisionnelle.')}
+            {t('institutions.finalCta.description', 'Explorez les outils existants de Compass, déjà adaptés à l\'analyse décisionnelle.')}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/prevention-filter">
