@@ -6,6 +6,7 @@
 import { LocalizedLink as Link } from '@/components/i18n';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
+import { SITE_CONFIG } from '@/config/site';
 import { motion } from 'framer-motion';
 import { 
   Compass, Map, Globe, Triangle, Key, Scale, Gamepad2, 
