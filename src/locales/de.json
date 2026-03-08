@@ -235,7 +235,7 @@
     "important": "Wichtig",
     "warning": "Kein angezeigtes Ergebnis ist eine Diagnose, Empfehlung oder professionelle Beratung.",
     "analysisToolTitle": "Analyse- und Simulationstool",
-    "analysisToolDesc": "System Compass ist ein Bildungstool, kein Beratungsdienst.",
+    "analysisToolDesc": "Compass ist ein Bildungstool, kein Beratungsdienst.",
     "noAdviceTitle": "Keine professionelle Beratung",
     "noAdviceDesc": "Keine rechtliche, finanzielle oder medizinische Beratung.",
     "responsibleTitle": "Sie bleiben verantwortlich",
@@ -678,7 +678,7 @@
       "title": "Warum dieses Werkzeug existiert",
       "paragraph1": "Dieses Werkzeug wurde von jemandem erstellt, der Jahre verloren hat, Entscheidungen zu treffen, ohne das System zu verstehen, in dem er operierte.",
       "paragraph2": "Falsches Land, falsche Karriere, falsches Timing — nicht aus Mangel an Intelligenz, sondern aus Mangel an einem Rahmen.",
-      "paragraph3": "System Compass entstand aus dieser Frustration: jedem die Analyse zu geben, die nur Privilegierte von ihrem Netzwerk erhalten.",
+      "paragraph3": "Compass entstand aus dieser Frustration: jedem die Analyse zu geben, die nur Privilegierte von ihrem Netzwerk erhalten.",
       "conclusion": "Dies ist kein Werkzeug, das dir sagt, was du tun sollst. Es ist ein Werkzeug, das dir hilft zu SEHEN — damit DU mit vollem Wissen entscheidest."
     },
     "forEveryone": {
@@ -688,7 +688,7 @@
     "faq": {
       "title": "Häufig gestellte Fragen",
       "q1": {
-        "question": "Kann System Compass mir sagen, welches Land ich wählen soll?",
+        "question": "Kann Compass mir sagen, welches Land ich wählen soll?",
         "answer": "Nein. Das Werkzeug analysiert Systeme und simuliert Szenarien, aber die endgültige Entscheidung liegt bei dir. Wir liefern Informationen, du triffst deine eigenen Entscheidungen."
       },
       "q2": {
@@ -2684,7 +2684,7 @@
     "next": "Weiter",
     "start": "Loslegen",
     "step1": {
-      "title": "Willkommen bei System Compass",
+      "title": "Willkommen bei Compass",
       "description": "Dein Kompass zur Navigation im globalen System. Verstehe die unsichtbaren Regeln, die jedes Land regieren."
     },
     "step2": {
@@ -3665,7 +3665,7 @@
     "noLegalAdvice": "Keine Rechtsberatung",
     "noDreamSold": "Keine verkauften Träume",
     "structuredLucidity": "Strukturierte Klarheit",
-    "philosophy": "System Compass ist eine Orientierungsplattform vor Entscheidungen.",
+    "philosophy": "Compass ist eine Orientierungsplattform vor Entscheidungen.",
     "philosophyDesc": "Jedem ermöglichen, seine realen Optionen, Risiken, Kosten und Alternativen klar zu verstehen, bevor er sein Geld, Leben oder seine Zukunft einsetzt.",
     "quickTitle": "Schnellzugriff nach Bedarf",
     "toolsTitle": "Alle Orientierungstools",
@@ -3759,7 +3759,7 @@
     "badge": "Business-Lösungen",
     "title": "Für Organisationen & Entscheidungsträger",
     "subtitle": "Premium-Tools für institutionelle Entscheidungsunterstützung und strategische Reflexion.",
-    "intro": "System Compass bietet dedizierte Module für Organisationen, die ihre Entscheidungsfindung strukturieren möchten, ohne Verantwortung zu delegieren.",
+    "intro": "Compass bietet dedizierte Module für Organisationen, die ihre Entscheidungsfindung strukturieren möchten, ohne Verantwortung zu delegieren.",
     "tabs": {
       "modules": "Module"
     },
@@ -4826,7 +4826,7 @@
     "unavailable": "Derzeit nicht verfügbar",
     "noResults": "Keine Experten für diese Kriterien gefunden.",
     "viewAll": "Alle Experten ansehen",
-    "disclaimer": "Experten sind unabhängige Fachleute. System Compass garantiert ihre Dienste nicht."
+    "disclaimer": "Experten sind unabhängige Fachleute. Compass garantiert ihre Dienste nicht."
   },
   "pricing": {
     "badge": "Kostenlos starten",

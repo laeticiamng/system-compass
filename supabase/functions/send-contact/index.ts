@@ -79,7 +79,7 @@ Deno.serve(async (req) => {
           <div style="background: #f5f5f5; padding: 16px; border-radius: 8px; margin-top: 16px;">
             <p style="white-space: pre-wrap; color: #333;">${sanitizedMessage}</p>
           </div>
-          <p style="color: #999; font-size: 12px; margin-top: 24px;">Envoyé depuis le formulaire de contact System Compass</p>
+          <p style="color: #999; font-size: 12px; margin-top: 24px;">Envoyé depuis le formulaire de contact Compass</p>
         </div>
       `,
     })

@@ -237,7 +237,7 @@
     "important": "Importante",
     "warning": "Ningún resultado mostrado es un diagnóstico, recomendación o consejo profesional.",
     "analysisToolTitle": "Herramienta de análisis y simulación",
-    "analysisToolDesc": "System Compass es una herramienta educativa, no un servicio de asesoramiento.",
+    "analysisToolDesc": "Compass es una herramienta educativa, no un servicio de asesoramiento.",
     "noAdviceTitle": "Sin asesoramiento profesional",
     "noAdviceDesc": "No se proporciona asesoramiento legal, financiero o médico.",
     "responsibleTitle": "Tú sigues siendo responsable",
@@ -680,7 +680,7 @@
       "title": "Por qué existe esta herramienta",
       "paragraph1": "Esta herramienta fue creada por alguien que perdió años tomando decisiones sin entender el sistema en el que operaba.",
       "paragraph2": "País equivocado, carrera equivocada, timing equivocado — no por falta de inteligencia, sino por falta de un marco.",
-      "paragraph3": "System Compass nació de esta frustración: dar a todos el análisis que solo los privilegiados reciben de su red.",
+      "paragraph3": "Compass nació de esta frustración: dar a todos el análisis que solo los privilegiados reciben de su red.",
       "conclusion": "Esta no es una herramienta que te dice qué hacer. Es una herramienta que te ayuda a VER — para que TÚ decidas con pleno conocimiento."
     },
     "forEveryone": {
@@ -690,7 +690,7 @@
     "faq": {
       "title": "Preguntas frecuentes",
       "q1": {
-        "question": "¿Puede System Compass decirme qué país elegir?",
+        "question": "¿Puede Compass decirme qué país elegir?",
         "answer": "No. La herramienta analiza sistemas y simula escenarios, pero la decisión final es tuya. Proporcionamos información, tú tomas tus propias decisiones."
       },
       "q2": {
@@ -2696,7 +2696,7 @@
     "next": "Siguiente",
     "start": "Comenzar",
     "step1": {
-      "title": "Bienvenido a System Compass",
+      "title": "Bienvenido a Compass",
       "description": "Tu brújula para navegar el sistema global. Comprende las reglas invisibles que gobiernan cada país."
     },
     "step2": {
@@ -3677,7 +3677,7 @@
     "noLegalAdvice": "Sin asesoramiento legal",
     "noDreamSold": "Sin sueños vendidos",
     "structuredLucidity": "Lucidez estructurada",
-    "philosophy": "System Compass es una plataforma de orientación antes de decidir.",
+    "philosophy": "Compass es una plataforma de orientación antes de decidir.",
     "philosophyDesc": "Permitir a cada persona comprender claramente sus opciones reales, riesgos, costes y alternativas, antes de comprometer su dinero, vida o futuro.",
     "quickTitle": "Acceso rápido según tu necesidad",
     "toolsTitle": "Todas las herramientas de orientación",
@@ -3771,7 +3771,7 @@
     "badge": "Soluciones Empresariales",
     "title": "Para Organizaciones y Tomadores de Decisiones",
     "subtitle": "Herramientas premium para soporte de decisiones institucionales y reflexión estratégica.",
-    "intro": "System Compass ofrece módulos dedicados para organizaciones que buscan estructurar su toma de decisiones sin delegar responsabilidad.",
+    "intro": "Compass ofrece módulos dedicados para organizaciones que buscan estructurar su toma de decisiones sin delegar responsabilidad.",
     "tabs": {
       "modules": "Módulos"
     },

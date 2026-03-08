@@ -74,7 +74,7 @@ interface ActionConfig {
 const ACTION_CONFIGS: Record<string, ActionConfig> = {
   // Exit Keys actions
   "clarify-objective": {
-    systemPrompt: `Tu es un assistant d'analyse stratégique pour System Compass.
+    systemPrompt: `Tu es un assistant d'analyse stratégique pour Compass.
 Ta mission : reformuler l'objectif de l'utilisateur en version claire + critères implicites.
 
 RÈGLES ABSOLUES:
@@ -96,7 +96,7 @@ Format de sortie JSON:
   },
 
   "propose-trajectories": {
-    systemPrompt: `Tu es un simulateur de trajectoires pour System Compass.
+    systemPrompt: `Tu es un simulateur de trajectoires pour Compass.
 Ta mission : générer 3 trajectoires possibles basées sur le profil utilisateur.
 
 RÈGLES ABSOLUES:
@@ -127,7 +127,7 @@ Format de sortie JSON:
   },
 
   "generate-checklist": {
-    systemPrompt: `Tu es un assistant de planification pour System Compass.
+    systemPrompt: `Tu es un assistant de planification pour Compass.
 Ta mission : convertir une trajectoire en étapes concrètes.
 
 RÈGLES ABSOLUES:
@@ -155,7 +155,7 @@ Format de sortie JSON:
   },
 
   "generate-synthesis": {
-    systemPrompt: `Tu es un rédacteur de synthèses pour System Compass.
+    systemPrompt: `Tu es un rédacteur de synthèses pour Compass.
 Ta mission : produire une synthèse courte basée uniquement sur les données fournies.
 
 RÈGLES:
@@ -180,7 +180,7 @@ Format de sortie JSON:
 
   // Country Analysis actions
   "compare-countries": {
-    systemPrompt: `Tu es un analyste comparatif pour System Compass.
+    systemPrompt: `Tu es un analyste comparatif pour Compass.
 Ta mission : comparer deux pays selon le profil utilisateur.
 
 RÈGLES:
@@ -204,7 +204,7 @@ Format de sortie JSON:
   },
 
   "summarize-country": {
-    systemPrompt: `Tu es un analyste pays pour System Compass.
+    systemPrompt: `Tu es un analyste pays pour Compass.
 Ta mission : résumer un pays selon les contraintes spécifiques de l'utilisateur.
 
 RÈGLES:
@@ -225,7 +225,7 @@ Format de sortie JSON:
   },
 
   "identify-risks": {
-    systemPrompt: `Tu es un analyste de risques pour System Compass.
+    systemPrompt: `Tu es un analyste de risques pour Compass.
 Ta mission : identifier les risques/contraintes qui pourraient compromettre une trajectoire.
 
 RÈGLES:
@@ -248,7 +248,7 @@ Format de sortie JSON:
 
   // Attention Points for Country Analysis
   "attention_points": {
-    systemPrompt: `Tu es un analyste de risques pays pour System Compass.
+    systemPrompt: `Tu es un analyste de risques pays pour Compass.
 Ta mission : identifier les points d'attention critiques qui pourraient compromettre un projet de relocalisation ou d'entrepreneuriat dans un pays cible.
 
 RÈGLES:
@@ -280,7 +280,7 @@ Format de sortie JSON:
 
   // Dashboard actions
   "suggest-next-step": {
-    systemPrompt: `Tu es un assistant de suivi pour System Compass.
+    systemPrompt: `Tu es un assistant de suivi pour Compass.
 Ta mission : proposer le prochain pas logique basé sur la progression actuelle.
 
 RÈGLES:
@@ -299,7 +299,7 @@ Format de sortie JSON:
   },
 
   "plan-timeline": {
-    systemPrompt: `Tu es un planificateur pour System Compass.
+    systemPrompt: `Tu es un planificateur pour Compass.
 Ta mission : proposer un plan par phases (30/90 jours).
 
 RÈGLES:
@@ -319,7 +319,7 @@ Format de sortie JSON:
   },
 
   "suggest-reminders": {
-    systemPrompt: `Tu es un assistant de rappels pour System Compass.
+    systemPrompt: `Tu es un assistant de rappels pour Compass.
 Ta mission : suggérer des rappels non-intrusifs basés sur l'avancement.
 
 Format de sortie JSON:
@@ -335,7 +335,7 @@ Format de sortie JSON:
 
   // B2B Report Builder - Multi-step agent
   "build-report": {
-    systemPrompt: `Tu es un générateur de rapports B2B pour System Compass.
+    systemPrompt: `Tu es un générateur de rapports B2B pour Compass.
 Ta mission : produire un rapport structuré et professionnel.
 
 RÈGLES ABSOLUES:
@@ -376,7 +376,7 @@ Format de sortie JSON:
 
   // Vacation AI analysis
   "vacation-analysis": {
-    systemPrompt: `Tu es un expert en voyages et vacances pour System Compass.
+    systemPrompt: `Tu es un expert en voyages et vacances pour Compass.
 Ta mission : analyser une destination de vacances selon le profil utilisateur.
 
 RÈGLES:
@@ -402,7 +402,7 @@ Format de sortie JSON:
   
   // Market Study Generation
   "generate-market-study": {
-    systemPrompt: `Tu es un expert en études de marché international pour System Compass.
+    systemPrompt: `Tu es un expert en études de marché international pour Compass.
 Ta mission : générer une étude de marché structurée pour un projet dans un pays cible.
 
 RÈGLES ABSOLUES:
@@ -438,7 +438,7 @@ Format de sortie JSON:
 
   // Actors Map Generation
   "generate-actors-map": {
-    systemPrompt: `Tu es un expert en cartographie des parties prenantes pour System Compass.
+    systemPrompt: `Tu es un expert en cartographie des parties prenantes pour Compass.
 Ta mission : identifier les acteurs clés pour un projet dans un pays cible.
 
 RÈGLES ABSOLUES:
@@ -473,7 +473,7 @@ Format de sortie JSON:
 
   // Risk Register Generation
   "generate-risk-register": {
-    systemPrompt: `Tu es un expert en analyse de risques projets internationaux pour System Compass.
+    systemPrompt: `Tu es un expert en analyse de risques projets internationaux pour Compass.
 Ta mission : identifier les risques typiques pour un projet dans un pays cible.
 
 RÈGLES ABSOLUES:
@@ -512,7 +512,7 @@ Format de sortie JSON:
 
   // Structural Rules Generation
   "generate-structural-rules": {
-    systemPrompt: `Tu es un expert en réglementation internationale des affaires pour System Compass.
+    systemPrompt: `Tu es un expert en réglementation internationale des affaires pour Compass.
 Ta mission : identifier les règles structurantes à vérifier pour un projet dans un pays cible.
 
 RÈGLES ABSOLUES:
@@ -544,7 +544,7 @@ Format de sortie JSON:
 
   // POC Planner Generation
   "generate-poc-plan": {
-    systemPrompt: `Tu es un expert en planification de POC (Proof of Concept) pour System Compass.
+    systemPrompt: `Tu es un expert en planification de POC (Proof of Concept) pour Compass.
 Ta mission : proposer un plan de POC adapté au projet et au contexte pays.
 
 RÈGLES:
@@ -574,7 +574,7 @@ Format de sortie JSON:
 
   // Complete Case Generation (all modules at once)
   "generate-complete-case": {
-    systemPrompt: `Tu es un expert en analyse stratégique internationale pour System Compass.
+    systemPrompt: `Tu es un expert en analyse stratégique internationale pour Compass.
 Ta mission : générer une analyse complète pour un projet d'implantation/relocation dans un pays cible.
 
 RÈGLES ABSOLUES:

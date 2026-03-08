@@ -912,7 +912,7 @@
     "downloaded": "Le PDF a été téléchargé",
     "error": "Erreur d'export",
     "errorDesc": "Impossible de générer le PDF",
-    "footer": "Généré par System Compass | {{date}} | Simulation uniquement"
+    "footer": "Généré par Compass | {{date}} | Simulation uniquement"
   },
   "vacation": {
     "title": "Recommandations Vacances par Pouvoir d'Achat",
@@ -6188,7 +6188,7 @@
       "caseDossiers": "Dossiers de cas",
       "caseDossiersDesc": "Constituez des dossiers structurés avec preuve d'audit",
       "apiIntegrations": "API & Intégrations",
-      "apiIntegrationsDesc": "Connectez System Compass à vos outils via API REST"
+      "apiIntegrationsDesc": "Connectez Compass à vos outils via API REST"
     },
     "features": {
       "title": "Vos outils recommandés",
@@ -7415,7 +7415,7 @@
     "badge": "Solutions Business",
     "title": "Pour les Organisations & Décideurs",
     "subtitle": "Outils premium d'aide à la décision institutionnelle et de réflexion stratégique.",
-    "intro": "System Compass propose des modules dédiés aux organisations cherchant à structurer leur prise de décision sans déléguer la responsabilité.",
+    "intro": "Compass propose des modules dédiés aux organisations cherchant à structurer leur prise de décision sans déléguer la responsabilité.",
     "tabs": {
       "modules": "Modules",
       "traceos": "TraceOS"
@@ -7566,7 +7566,7 @@
         "2": "Blocage de comptes bancaires ou actifs"
       }
     },
-    "warningTitle": "Ce que System Compass peut faire pour vous",
+    "warningTitle": "Ce que Compass peut faire pour vous",
     "warningDesc": "La plateforme ne promet rien et n'oriente pas vers l'illégal. Elle structure la lucidité pour que vous puissiez prendre des décisions éclairées. Parfois, la meilleure décision est de ne pas partir — ou de partir autrement.",
     "alternatives": {
       "stayBuild": "Rester et entreprendre",
@@ -7923,7 +7923,7 @@
     "alternatives": {
       "title": "Des alternatives existent",
       "subtitle": "Avant tout choix irréversible, explore toutes tes options",
-      "message": "System Compass montre qu'il existe parfois d'autres trajectoires : rester et entreprendre, migrer plus tard, migrer autrement, se former, changer d'objectif initial.",
+      "message": "Compass montre qu'il existe parfois d'autres trajectoires : rester et entreprendre, migrer plus tard, migrer autrement, se former, changer d'objectif initial.",
       "options": {
         "stay": {
           "title": "Rester et construire",
@@ -8008,7 +8008,7 @@
       "global": "80+ pays analysés en profondeur"
     },
     "reminder": "Rappel",
-    "lucidityMessage": "System Compass structure la lucidité. Si l'analyse révèle que votre option est trop risquée ou irréaliste, nous vous aiderons à explorer des alternatives : rester et entreprendre, migrer autrement, se former d'abord, ou changer d'objectif.",
+    "lucidityMessage": "Compass structure la lucidité. Si l'analyse révèle que votre option est trop risquée ou irréaliste, nous vous aiderons à explorer des alternatives : rester et entreprendre, migrer autrement, se former d'abord, ou changer d'objectif.",
     "steps": {
       "substep": "Sous-étape",
       "of": "sur"
@@ -8842,9 +8842,9 @@
       "instantAccess": "Accès immédiat"
     },
     "meta": {
-      "title": "Tarifs - System Compass | Gratuit, Premium et Enterprise",
-      "description": "Découvrez les offres System Compass : gratuit pour découvrir, Premium pour un accès complet aux 80+ pays, et Enterprise pour les organisations. Tarification transparente.",
-      "ogTitle": "Tarifs - System Compass",
+      "title": "Tarifs - Compass | Gratuit, Premium et Enterprise",
+      "description": "Découvrez les offres Compass : gratuit pour découvrir, Premium pour un accès complet aux 80+ pays, et Enterprise pour les organisations. Tarification transparente.",
+      "ogTitle": "Tarifs - Compass",
       "ogDescription": "Gratuit pour découvrir, Premium pour un accès complet. Tarification transparente sans frais cachés."
     }
   },
@@ -9691,7 +9691,7 @@
     },
     "intro": {
       "title": "Qu'est-ce que l'OVI ?",
-      "p1": "L'Observatoire des Variables Invisibles n'est pas un outil supplémentaire. C'est un espace de recul — un laboratoire de pensée intégré à System Compass.",
+      "p1": "L'Observatoire des Variables Invisibles n'est pas un outil supplémentaire. C'est un espace de recul — un laboratoire de pensée intégré à Compass.",
       "observe": {
         "title": "Observer",
         "desc": "Identifier ce qui échappe au regard immédiat : biais, hypothèses implicites, angles morts."
@@ -9871,9 +9871,9 @@
     },
     "readTime": "{{min}} min",
     "connection": {
-      "title": "Connexion avec System Compass",
+      "title": "Connexion avec Compass",
       "subtitle": "L'OVI enrichit vos simulations sans les influencer",
-      "intro": "Lorsque vous effectuez une simulation dans System Compass, l'OVI peut suggérer des lectures pertinentes. L'objectif : nourrir votre réflexion, pas orienter votre décision.",
+      "intro": "Lorsque vous effectuez une simulation dans Compass, l'OVI peut suggérer des lectures pertinentes. L'objectif : nourrir votre réflexion, pas orienter votre décision.",
       "ex1": {
         "sim": "Simulation de trajectoire professionnelle",
         "sug1": "Cadre : Décisions irréversibles",
@@ -10082,7 +10082,7 @@
       "disclaimer": "Limites"
     },
     "whatItIs": {
-      "title": "Ce que fait System Compass",
+      "title": "Ce que fait Compass",
       "illuminate": "Éclaire les options",
       "illuminateDesc": "Rend visibles les variables, zones d'incertitude et coûts cachés",
       "structure": "Structure les décisions",
@@ -10093,7 +10093,7 @@
       "scenariosDesc": "Permet de visualiser plusieurs trajectoires possibles sans en recommander une"
     },
     "whatItDoesNot": {
-      "title": "Ce que System Compass ne fait PAS",
+      "title": "Ce que Compass ne fait PAS",
       "noRecommendation": "Ne recommande pas",
       "noRecommendationDesc": "Aucune option n'est présentée comme \"la bonne décision\"",
       "noPrediction": "Ne prédit pas",
@@ -10116,19 +10116,19 @@
       "title": "Disclaimer institutionnel",
       "subtitle": "Limites et responsabilités",
       "noReplacement": "Ne remplace pas une décision humaine",
-      "noReplacementDesc": "System Compass est un outil d'aide à la réflexion. Il ne prend pas et ne doit pas prendre de décision à la place des responsables.",
+      "noReplacementDesc": "Compass est un outil d'aide à la réflexion. Il ne prend pas et ne doit pas prendre de décision à la place des responsables.",
       "noPrediction": "N'est pas un outil de prédiction",
       "noPredictionDesc": "Les simulations explorent des scénarios possibles. Elles ne prédisent pas l'avenir ni ne garantissent un résultat.",
       "noAdvice": "Ne fournit aucune recommandation",
       "noAdviceDesc": "Aucune option, aucun scénario n'est présenté comme \"la bonne décision\". L'outil n'émet pas d'avis.",
       "responsibility": "Le décideur reste responsable",
-      "responsibilityDesc": "L'utilisation de System Compass ne transfère aucune responsabilité. Chaque décision engage ceux qui la prennent.",
+      "responsibilityDesc": "L'utilisation de Compass ne transfère aucune responsabilité. Chaque décision engage ceux qui la prennent.",
       "summary": "L'outil éclaire, le décideur reste responsable.",
-      "summaryDesc": "System Compass est conçu pour accompagner la réflexion, pas pour se substituer au jugement humain."
+      "summaryDesc": "Compass est conçu pour accompagner la réflexion, pas pour se substituer au jugement humain."
     },
     "finalCta": {
       "title": "Prêt à structurer vos décisions ?",
-      "description": "Explorez les outils existants de System Compass, déjà adaptés à l'analyse décisionnelle.",
+      "description": "Explorez les outils existants de Compass, déjà adaptés à l'analyse décisionnelle.",
       "filter": "Filtre de prévention",
       "compare": "Comparer des scénarios"
     },
@@ -10547,7 +10547,7 @@
     "pdfBusinessLicenses": "Licences",
     "pdfRiskLevel": "Niveau de risque",
     "pdfDisclaimer": "Avertissement",
-    "pdfGeneratedBy": "Généré par System Compass",
+    "pdfGeneratedBy": "Généré par Compass",
     "pdfConfidentialReport": "Rapport confidentiel",
     "confidenceTooltip": "Mesure la qualité et la fiabilité des sources consultées (ONG, médias, rapports officiels). Ne reflète PAS le niveau de sécurité du pays.",
     "cacheTooltip": "Données mises en cache pour 30 jours",
@@ -10640,7 +10640,7 @@
     "unavailable": "Indisponible actuellement",
     "noResults": "Aucun expert trouvé pour ces critères.",
     "viewAll": "Voir tous les experts",
-    "disclaimer": "Les experts sont des professionnels indépendants. System Compass ne garantit pas leurs services."
+    "disclaimer": "Les experts sont des professionnels indépendants. Compass ne garantit pas leurs services."
   },
   "pricingWidget": {
     "badge": "Gratuit pour commencer",

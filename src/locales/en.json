@@ -160,9 +160,9 @@
   },
   "pwa": {
     "title": "Install the app",
-    "subtitle": "Access System Compass from your home screen like a native app",
+    "subtitle": "Access Compass from your home screen like a native app",
     "pageTitle": "📱 App Installation",
-    "pageDescription": "Install System Compass on your device for an optimal experience",
+    "pageDescription": "Install Compass on your device for an optimal experience",
     "installNow": "Install now",
     "note": "The app works on all modern browsers. For optimal installation, use Safari on iOS or Chrome on Android.",
     "ios": {
@@ -287,7 +287,7 @@
     "important": "Important",
     "warning": "No result shown is a diagnosis, recommendation, or professional advice. This tool does not replace specialized advice.",
     "analysisToolTitle": "Analysis and simulation tool",
-    "analysisToolDesc": "System Compass is an educational tool, not an advisory service. Simulation ≠ prediction.",
+    "analysisToolDesc": "Compass is an educational tool, not an advisory service. Simulation ≠ prediction.",
     "noAdviceTitle": "No professional advice",
     "noAdviceDesc": "No legal, financial, or medical advice is provided. No verdicts, no success scores.",
     "responsibleTitle": "You remain responsible",
@@ -630,10 +630,10 @@
   },
   "landing": {
     "meta": {
-      "title": "System Compass - Compare 80+ countries for your expatriation",
-      "description": "Decision intelligence platform for expatriation. Systemic analysis of 80+ countries: taxation, visas, cost of living, power structures. Free profile test in 2 min.",
-      "ogTitle": "System Compass - Decision intelligence for expatriation",
-      "ogDescription": "Compare 80+ countries by compatibility with your profile: taxation, visas, cost of living, safety. Unique systemic approach. Free test."
+      "title": "Compass - Compare 80+ countries for your expatriation",
+      "description": "Country comparison platform for expatriation. Analysis of 80+ countries: taxation, visas, cost of living, quality of life. Free profile test in 2 min.",
+      "ogTitle": "Compass - Compare countries for your expatriation",
+      "ogDescription": "Compare 80+ countries by compatibility with your profile: taxation, visas, cost of living, safety. Free test."
     },
     "hero": {
       "badge": "100% free to start",
@@ -715,24 +715,24 @@
       "q1": "Is it really free?",
       "a1": "Yes. The profile test, exploring 80+ countries and basic profiles are 100% free. Advanced features (PDF export, AI recommendations, Pro modules) are reserved for paid plans.",
       "q2": "Is this legal or tax advice?",
-      "a2": "No. System Compass is a simulation and comparison tool. It does not replace a lawyer, tax advisor or immigration consultant. Always consult a professional before making a decision.",
+      "a2": "No. Compass is a simulation and comparison tool. It does not replace a lawyer, tax advisor or immigration consultant. Always consult a professional before making a decision.",
       "q3": "How is the data calculated?",
       "a3": "Our data comes from public sources (World Bank, UN, Transparency International, etc.) and is updated regularly. Each country profile indicates its sources.",
       "jsonld": {
-        "q1": "What is System Compass?",
-        "a1": "System Compass is the first decision intelligence platform for international relocation. It analyzes the systems of 80+ countries with a unique systemic approach: power structures, compatible profiles, unwritten rules.",
+        "q1": "What is Compass?",
+        "a1": "Compass is a country comparison platform for international relocation. It analyzes 80+ countries: taxation, visas, cost of living, compatible profiles, unwritten rules.",
         "q2": "How does the expat profile test work?",
         "a2": "The quick test evaluates your priorities (taxation, quality of life, safety, opportunities) in 2 minutes. It suggests the countries most compatible with your specific profile, unlike generic rankings.",
         "q3": "Is the service free?",
-        "a3": "Basic access is free: quick test, exploration of 80+ countries, basic comparison. The Premium plan at €9.90/month gives access to exit strategies, fiscal simulator and live intelligence.",
-        "q4": "Where does System Compass data come from?",
-        "a4": "Data comes from the World Bank, OECD, IMF, Transparency International, Numbeo and government sources. Live intelligence is updated via Perplexity AI and field verification.",
+        "a3": "Basic access is free: quick test, exploration of 80+ countries, basic comparison. The Premium plan at €9.90/month gives access to strategies, fiscal simulator and detailed analyses.",
+        "q4": "Where does Compass data come from?",
+        "a4": "Data comes from the World Bank, OECD, IMF, Transparency International, Numbeo and government sources. Intelligence is updated regularly via verified sources.",
         "q5": "Can I compare multiple countries for my expatriation?",
         "a5": "Yes, the comparison tool allows you to compare up to 4 countries simultaneously on taxation, cost of living, quality of life, visas, safety and more, with radar charts and PDF exports.",
-        "q6": "How is System Compass different from classic expatriation guides?",
-        "a6": "System Compass analyzes power structures (meritocratic, network, strong-state, hybrid), identifies profiles that succeed or fail in each country, and offers personalized strategies rather than generic rankings.",
-        "q7": "Which countries are covered by System Compass?",
-        "a7": "System Compass covers 80+ countries: Europe (France, Switzerland, Portugal, Germany...), Americas (USA, Canada, Mexico...), Asia (Thailand, Japan, Singapore...), Middle East (UAE, Qatar...) and Africa.",
+        "q6": "How is Compass different from classic expatriation guides?",
+        "a6": "Compass analyzes each country in depth (who succeeds, who struggles, unwritten rules) and offers personalized strategies rather than generic rankings.",
+        "q7": "Which countries are covered by Compass?",
+        "a7": "Compass covers 80+ countries: Europe (France, Switzerland, Portugal, Germany...), Americas (USA, Canada, Mexico...), Asia (Thailand, Japan, Singapore...), Middle East (UAE, Qatar...) and Africa.",
         "q8": "How does the fiscal simulator work?",
         "a8": "The fiscal simulator calculates your income tax in the destination country and compares it to your current situation. It integrates special regimes, double taxation treaties and legal optimizations."
       }
@@ -897,7 +897,7 @@
       "title": "Why this tool exists",
       "paragraph1": "This tool was created by someone who lost years making choices without understanding the system they were operating in.",
       "paragraph2": "Wrong country, wrong career, wrong timing — not from lack of intelligence, but from lack of a framework.",
-      "paragraph3": "System Compass was born from this frustration: to give everyone the analysis that only the privileged receive from their network.",
+      "paragraph3": "Compass was born from this frustration: to give everyone the analysis that only the privileged receive from their network.",
       "conclusion": "This is not a tool that tells you what to do. It's a tool that helps you SEE — so YOU decide with full knowledge."
     },
     "forEveryone": {
@@ -907,7 +907,7 @@
     "faq": {
       "title": "Frequently Asked Questions",
       "q1": {
-        "question": "Can System Compass tell me which country to choose?",
+        "question": "Can Compass tell me which country to choose?",
         "answer": "No. The tool analyzes systems and simulates scenarios, but the final decision is yours. We provide information, you make your own choices."
       },
       "q2": {
@@ -931,20 +931,20 @@
         "answer": "This tool is a starting point for your reflection, not an absolute source of truth. For important decisions (immigration, taxes, health), always consult qualified professionals."
       },
       "jsonld": {
-        "q1": "What is System Compass?",
-        "a1": "System Compass is the first decision intelligence platform for international relocation. It analyzes the systems of 80+ countries with a unique systemic approach: power structures, compatible profiles, unwritten rules.",
+        "q1": "What is Compass?",
+        "a1": "Compass is a country comparison platform for international relocation. It analyzes 80+ countries: taxation, visas, cost of living, compatible profiles, unwritten rules.",
         "q2": "How does the expat profile test work?",
         "a2": "The quick test evaluates your priorities (taxation, quality of life, safety, opportunities) in 2 minutes. It suggests the most compatible countries for your specific profile, unlike generic rankings.",
         "q3": "Is the service free?",
-        "a3": "Basic access is free: quick test, exploration of 80+ countries, basic comparison. The Premium plan at €9.90/month gives access to exit keys, tax simulator and live intelligence.",
-        "q4": "Where does System Compass data come from?",
-        "a4": "Data comes from the World Bank, OECD, IMF, Transparency International, Numbeo and government sources. Live intelligence is updated via Perplexity AI and ground verification.",
+        "a3": "Basic access is free: quick test, exploration of 80+ countries, basic comparison. The Premium plan at €9.90/month gives access to strategies, tax simulator and detailed analyses.",
+        "q4": "Where does Compass data come from?",
+        "a4": "Data comes from the World Bank, OECD, IMF, Transparency International, Numbeo and government sources. Intelligence is updated regularly via verified sources.",
         "q5": "Can I compare multiple countries for my expatriation?",
         "a5": "Yes, the comparison tool allows you to compare up to 4 countries simultaneously on taxation, cost of living, quality of life, visas, safety and more, with radar charts and PDF exports.",
-        "q6": "How is System Compass different from classic expatriation guides?",
-        "a6": "System Compass analyzes power structures (meritocratic, network, strong-state, hybrid), identifies profiles that succeed or fail in each country, and offers personalized strategies rather than generic rankings.",
-        "q7": "Which countries are covered by System Compass?",
-        "a7": "System Compass covers 80+ countries: Europe (France, Switzerland, Portugal, Germany...), Americas (USA, Canada, Mexico...), Asia (Thailand, Japan, Singapore...), Middle East (UAE, Qatar...) and Africa.",
+        "q6": "How is Compass different from classic expatriation guides?",
+        "a6": "Compass analyzes each country in depth (who succeeds, who struggles, unwritten rules) and offers personalized strategies rather than generic rankings.",
+        "q7": "Which countries are covered by Compass?",
+        "a7": "Compass covers 80+ countries: Europe (France, Switzerland, Portugal, Germany...), Americas (USA, Canada, Mexico...), Asia (Thailand, Japan, Singapore...), Middle East (UAE, Qatar...) and Africa.",
         "q8": "How does the tax simulator work?",
         "a8": "The tax simulator calculates your income tax in the destination country and compares it to your current situation. It integrates special regimes, double taxation treaties and legal optimizations."
       }
@@ -1066,7 +1066,7 @@
     "downloaded": "PDF has been downloaded",
     "error": "Export error",
     "errorDesc": "Unable to generate PDF",
-    "footer": "Generated by System Compass | {{date}} | Simulation only"
+    "footer": "Generated by Compass | {{date}} | Simulation only"
   },
   "vacation": {
     "title": "Vacation Recommendations by Purchasing Power",
@@ -4018,10 +4018,10 @@
       "generic": "An error occurred"
     },
     "meta": {
-      "title": "Sign In - System Compass | Access your account",
-      "description": "Sign in to System Compass to access your country analyses, personalized recommendations and dashboard. Create a free account.",
-      "ogTitle": "Sign In - System Compass",
-      "ogDescription": "Access your country analyses and personalized exit strategies."
+      "title": "Sign In - Compass | Access your account",
+      "description": "Sign in to Compass to access your country analyses, personalized recommendations and dashboard. Create a free account.",
+      "ogTitle": "Sign In - Compass",
+      "ogDescription": "Access your country analyses and personalized strategies."
     }
   },
   "gameModes": {
@@ -5940,9 +5940,9 @@
     "restart": "Restart",
     "disclaimer": "Simulation ≠ prediction. Exploration only.",
     "meta": {
-      "title": "Quick Expatriation Test in 60 Seconds - System Compass",
+      "title": "Quick Expatriation Test in 60 Seconds - Compass",
       "description": "Discover your expat profile in 60 seconds. Free test: situation, priorities, risk tolerance. Find countries compatible with your profile.",
-      "ogTitle": "Quick Expatriation Test - System Compass",
+      "ogTitle": "Quick Expatriation Test - Compass",
       "ogDescription": "Discover your expat profile in 60 seconds. Free and personalized test."
     },
     "heroTitle1": "Discover your",
@@ -6623,7 +6623,7 @@
       "disclaimer": "Limits"
     },
     "whatItIs": {
-      "title": "What System Compass Does",
+      "title": "What Compass Does",
       "illuminate": "Illuminates options",
       "illuminateDesc": "Makes visible variables, uncertainty zones, and hidden costs",
       "structure": "Structures decisions",
@@ -6634,7 +6634,7 @@
       "scenariosDesc": "Allows visualization of multiple possible trajectories without recommending one"
     },
     "whatItDoesNot": {
-      "title": "What System Compass Does NOT Do",
+      "title": "What Compass Does NOT Do",
       "noRecommendation": "Does not recommend",
       "noRecommendationDesc": "No option is presented as \"the right decision\"",
       "noPrediction": "Does not predict",
@@ -6864,19 +6864,19 @@
       "title": "Institutional Disclaimer",
       "subtitle": "Limits and responsibilities",
       "noReplacement": "Does not replace a human decision",
-      "noReplacementDesc": "System Compass is a reflection support tool. It does not and should not make decisions in place of those responsible.",
+      "noReplacementDesc": "Compass is a reflection support tool. It does not and should not make decisions in place of those responsible.",
       "noPrediction": "Is not a prediction tool",
       "noPredictionDesc": "Simulations explore possible scenarios. They do not predict the future or guarantee a result.",
       "noAdvice": "Provides no recommendation",
       "noAdviceDesc": "No option, no scenario is presented as \"the right decision\". The tool offers no opinion.",
       "responsibility": "The decision-maker remains responsible",
-      "responsibilityDesc": "Using System Compass transfers no responsibility. Each decision commits those who make it.",
+      "responsibilityDesc": "Using Compass transfers no responsibility. Each decision commits those who make it.",
       "summary": "The tool illuminates, the decision-maker remains responsible.",
-      "summaryDesc": "System Compass is designed to support reflection, not to substitute for human judgment."
+      "summaryDesc": "Compass is designed to support reflection, not to substitute for human judgment."
     },
     "finalCta": {
       "title": "Ready to structure your decisions?",
-      "description": "Explore the existing System Compass tools, already adapted to decision analysis.",
+      "description": "Explore the existing Compass tools, already adapted to decision analysis.",
       "filter": "Prevention Filter",
       "compare": "Compare scenarios"
     }
@@ -6921,7 +6921,7 @@
     },
     "intro": {
       "title": "What is OVI?",
-      "p1": "The Observatory of Invisible Variables is not another tool. It's a space for perspective — a thought laboratory integrated into System Compass.",
+      "p1": "The Observatory of Invisible Variables is not another tool. It's a space for perspective — a thought laboratory integrated into Compass.",
       "observe": {
         "title": "Observe",
         "desc": "Identify what escapes immediate view: biases, implicit assumptions, blind spots."
@@ -7077,9 +7077,9 @@
     },
     "readTime": "{{min}} min",
     "connection": {
-      "title": "Connection with System Compass",
+      "title": "Connection with Compass",
       "subtitle": "OVI enriches your simulations without influencing them",
-      "intro": "When you run a simulation in System Compass, OVI can suggest relevant readings. The goal: nourish your reflection, not orient your decision.",
+      "intro": "When you run a simulation in Compass, OVI can suggest relevant readings. The goal: nourish your reflection, not orient your decision.",
       "ex1": {
         "sim": "Career trajectory simulation",
         "sug1": "Framework: Irreversible Decisions",
@@ -7245,7 +7245,7 @@
     "badge": "Business Solutions",
     "title": "For Organizations & Decision-Makers",
     "subtitle": "Premium tools for institutional decision support and strategic reflection.",
-    "intro": "System Compass offers dedicated modules for organizations seeking to structure their decision-making without delegating responsibility.",
+    "intro": "Compass offers dedicated modules for organizations seeking to structure their decision-making without delegating responsibility.",
     "tabs": {
       "modules": "Modules",
       "traceos": "TraceOS"
@@ -7396,7 +7396,7 @@
         "2": "Freezing of bank accounts or assets"
       }
     },
-    "warningTitle": "What System Compass can do for you",
+    "warningTitle": "What Compass can do for you",
     "warningDesc": "The platform promises nothing and doesn't guide toward illegal options. It structures lucidity so you can make informed decisions. Sometimes, the best decision is not to leave — or to leave differently.",
     "alternatives": {
       "stayBuild": "Stay and build locally",
@@ -7669,8 +7669,8 @@
     "structuredLucidity": "Structured lucidity",
     "badge": "Orientation Hub",
     "title": "Where to start?",
-    "subtitle": "System Compass helps you understand your real options before any decision. No promises, no shortcuts — just clarity.",
-    "philosophy": "System Compass is an orientation platform before decision.",
+    "subtitle": "Compass helps you understand your real options before any decision. No promises, no shortcuts — just clarity.",
+    "philosophy": "Compass is an orientation platform before decision.",
     "philosophyDesc": "Enabling everyone to clearly understand their real options, risks, costs, and alternatives, before committing their money, life, or future.",
     "quickTitle": "Quick access based on your need",
     "toolsTitle": "All orientation tools",
@@ -7753,7 +7753,7 @@
     "alternatives": {
       "title": "Alternatives exist",
       "subtitle": "Before any irreversible choice, explore all your options",
-      "message": "System Compass shows that there are sometimes other trajectories: staying and starting a business, migrating later, migrating differently, training, changing the initial goal.",
+      "message": "Compass shows that there are sometimes other trajectories: staying and starting a business, migrating later, migrating differently, training, changing the initial goal.",
       "options": {
         "stay": {
           "title": "Stay and build",
@@ -7838,7 +7838,7 @@
       "global": "80+ countries analyzed in depth"
     },
     "reminder": "Reminder",
-    "lucidityMessage": "System Compass structures lucidity. If the analysis reveals your option is too risky or unrealistic, we'll help you explore alternatives: stay and build, migrate differently, train first, or change your goal.",
+    "lucidityMessage": "Compass structures lucidity. If the analysis reveals your option is too risky or unrealistic, we'll help you explore alternatives: stay and build, migrate differently, train first, or change your goal.",
     "steps": {
       "substep": "Sub-step",
       "of": "of"
@@ -8566,9 +8566,9 @@
       "instantAccess": "Instant access"
     },
     "meta": {
-      "title": "Pricing - System Compass | Free, Premium & Enterprise",
-      "description": "Discover System Compass plans: free to explore, Premium for full access to 80+ countries, Enterprise for organizations. Transparent pricing.",
-      "ogTitle": "Pricing - System Compass",
+      "title": "Pricing - Compass | Free, Premium & Enterprise",
+      "description": "Discover Compass plans: free to explore, Premium for full access to 80+ countries, Enterprise for organizations. Transparent pricing.",
+      "ogTitle": "Pricing - Compass",
       "ogDescription": "Free to explore, Premium for full access. Transparent pricing with no hidden fees."
     }
   },

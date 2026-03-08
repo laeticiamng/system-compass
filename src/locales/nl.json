@@ -237,7 +237,7 @@
     "important": "Belangrijk",
     "warning": "Geen enkel resultaat is een diagnose, aanbeveling of professioneel advies.",
     "analysisToolTitle": "Analyse- en simulatietool",
-    "analysisToolDesc": "System Compass is een educatieve tool, geen adviesdienst.",
+    "analysisToolDesc": "Compass is een educatieve tool, geen adviesdienst.",
     "noAdviceTitle": "Geen professioneel advies",
     "noAdviceDesc": "Er wordt geen juridisch, financieel of medisch advies gegeven.",
     "responsibleTitle": "Je blijft verantwoordelijk",
@@ -680,7 +680,7 @@
       "title": "Waarom dit hulpmiddel bestaat",
       "paragraph1": "Dit hulpmiddel is gemaakt door iemand die jaren heeft verloren met het nemen van beslissingen zonder het systeem te begrijpen waarin hij opereerde.",
       "paragraph2": "Verkeerd land, verkeerde carrière, verkeerde timing — niet door gebrek aan intelligentie, maar door gebrek aan een kader.",
-      "paragraph3": "System Compass is geboren uit deze frustratie: iedereen de analyse geven die alleen bevoorrechten van hun netwerk krijgen.",
+      "paragraph3": "Compass is geboren uit deze frustratie: iedereen de analyse geven die alleen bevoorrechten van hun netwerk krijgen.",
       "conclusion": "Dit is geen hulpmiddel dat je vertelt wat je moet doen. Het is een hulpmiddel dat je helpt te ZIEN — zodat JIJ met volledige kennis beslist."
     },
     "forEveryone": {
@@ -690,7 +690,7 @@
     "faq": {
       "title": "Veelgestelde vragen",
       "q1": {
-        "question": "Kan System Compass me vertellen welk land ik moet kiezen?",
+        "question": "Kan Compass me vertellen welk land ik moet kiezen?",
         "answer": "Nee. Het hulpmiddel analyseert systemen en simuleert scenario's, maar de uiteindelijke beslissing is aan jou. Wij leveren informatie, jij maakt je eigen keuzes."
       },
       "q2": {
@@ -2686,7 +2686,7 @@
     "next": "Volgende",
     "start": "Aan de slag",
     "step1": {
-      "title": "Welkom bij System Compass",
+      "title": "Welkom bij Compass",
       "description": "Je kompas om door het wereldwijde systeem te navigeren. Begrijp de onzichtbare regels die elk land besturen."
     },
     "step2": {
@@ -3667,7 +3667,7 @@
     "noLegalAdvice": "Geen juridisch advies",
     "noDreamSold": "Geen verkochte dromen",
     "structuredLucidity": "Gestructureerde helderheid",
-    "philosophy": "System Compass is een oriëntatieplatform vóór beslissingen.",
+    "philosophy": "Compass is een oriëntatieplatform vóór beslissingen.",
     "philosophyDesc": "Iedereen in staat stellen om duidelijk zijn echte opties, risico's, kosten en alternatieven te begrijpen, voordat hij zijn geld, leven of toekomst inzet.",
     "quickTitle": "Snelle toegang op basis van je behoefte",
     "toolsTitle": "Alle oriëntatietools",
@@ -3761,7 +3761,7 @@
     "badge": "Bedrijfsoplossingen",
     "title": "Voor Organisaties & Besluitvormers",
     "subtitle": "Premium tools voor institutionele beslissingsondersteuning en strategische reflectie.",
-    "intro": "System Compass biedt speciale modules voor organisaties die hun besluitvorming willen structureren zonder verantwoordelijkheid te delegeren.",
+    "intro": "Compass biedt speciale modules voor organisaties die hun besluitvorming willen structureren zonder verantwoordelijkheid te delegeren.",
     "tabs": {
       "modules": "Modules"
     },
@@ -4111,7 +4111,7 @@
     "unavailable": "Momenteel niet beschikbaar",
     "noResults": "Geen experts gevonden voor deze criteria.",
     "viewAll": "Bekijk alle experts",
-    "disclaimer": "Experts zijn onafhankelijke professionals. System Compass garandeert hun diensten niet."
+    "disclaimer": "Experts zijn onafhankelijke professionals. Compass garandeert hun diensten niet."
   },
   "pricing": {
     "badge": "Gratis starten",

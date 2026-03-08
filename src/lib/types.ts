@@ -1,4 +1,4 @@
-// Core types for System Compass
+// Core types for Compass
 export type PyramidType = 'PROBLEM_RENT' | 'STABILITY_REDIS' | 'COMPETENCE_TRUST' | 'GROWTH_RISK' | 'HYBRID_TRANSITION' | 'RESOURCE_EXTRACTION';
 
 export interface CountryRisks {
