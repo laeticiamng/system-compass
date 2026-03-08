@@ -67,7 +67,6 @@ export function Header() {
   
   // Outils d'analyse (dropdown Outils) - 5 essentiels + lien vers hub
   const toolsItems = [
-    { href: '/quick-test', label: t('nav.quickTest', 'Test Rapide'), icon: Gamepad2 },
     { href: '/tools/matcher', label: t('nav.matcher', 'Matcher Pays IA'), icon: Users },
     { href: '/tools/fiscal-simulator', label: t('nav.fiscalSimulator', 'Simulateur Fiscal'), icon: BarChart3 },
     { href: '/compare', label: t('nav.compare', 'Comparer'), icon: Scale },

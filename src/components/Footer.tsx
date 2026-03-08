@@ -76,7 +76,7 @@ export function Footer() {
             <h4 className="font-semibold text-sm sm:text-base mb-2 sm:mb-4">{t('footer.account')}</h4>
             <ul className="grid grid-cols-2 sm:grid-cols-1 gap-1.5 sm:gap-2 text-xs sm:text-sm text-muted-foreground">
               <li><Link to="/dashboard" className="hover:text-foreground transition-colors block py-0.5">{t('nav.dashboard')}</Link></li>
-              <li><Link to="/pricing" className="hover:text-foreground transition-colors font-medium text-primary block py-0.5">{t('nav.pricing')}</Link></li>
+              <li><Link to="/pricing" className="hover:text-foreground transition-colors block py-0.5">{t('nav.pricing')}</Link></li>
               <li><Link to="/auth" className="hover:text-foreground transition-colors block py-0.5">{t('auth.login')}</Link></li>
               <li><Link to="/about" className="hover:text-foreground transition-colors block py-0.5">{t('footer.about')}</Link></li>
               <li><Link to="/how-to-read" className="hover:text-foreground transition-colors block py-0.5">{t('nav.howToRead', 'Guide')}</Link></li>

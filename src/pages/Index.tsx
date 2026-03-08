@@ -246,7 +246,7 @@ export default function Index() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2, duration: 0.6 }}
-                className="pointer-events-none flex md:flex-col items-start md:items-center gap-6 md:gap-0 md:text-center"
+                className="flex md:flex-col items-start md:items-center gap-6 md:gap-0 md:text-center"
               >
                 <div className="flex-shrink-0 w-16 h-16 rounded-full bg-green-500/10 border-4 border-background flex items-center justify-center md:mb-6">
                   <CheckCircle className="w-7 h-7 text-green-500" />
