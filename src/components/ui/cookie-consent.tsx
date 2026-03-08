@@ -239,9 +239,9 @@ export function CookieConsent() {
           
           <p className="text-xs text-muted-foreground">
             {t('cookies.learnMore', 'En savoir plus dans notre')}{' '}
-            <a href="/privacy" className="text-primary hover:underline">
+            <LocalizedLink to="/privacy" className="text-primary hover:underline">
               {t('cookies.privacyPolicy', 'politique de confidentialité')}
-            </a>
+            </LocalizedLink>
             .
           </p>
         </CardContent>
