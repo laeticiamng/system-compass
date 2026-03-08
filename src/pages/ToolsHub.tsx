@@ -41,16 +41,16 @@ export default function ToolsHub() {
     {
       id: 'discover',
       title: t('hub.category.discover', 'Découvrir'),
-      description: t('hub.category.discoverDesc', 'Explorer les pays et comprendre les systèmes'),
+      description: t('hub.category.discoverDesc', 'Explorer les pays et leurs spécificités'),
       icon: Compass,
       color: 'from-blue-500/20 to-cyan-500/20',
       borderColor: 'border-blue-500/30',
       tools: [
         { href: '/countries', icon: Map, label: t('hub.tool.countries', 'Pays'), description: t('hub.tool.countriesDesc', '80+ pays analysés en profondeur') },
         { href: '/world-map', icon: Globe, label: t('hub.tool.worldMap', 'Carte Monde'), description: t('hub.tool.worldMapDesc', 'Vue interactive') },
-        { href: '/pyramid-types', icon: Triangle, label: t('hub.tool.pyramids', 'Systèmes'), description: t('hub.tool.pyramidsDesc', '6 types de systèmes') },
+        { href: '/pyramid-types', icon: Triangle, label: t('hub.tool.pyramids', 'Profils de pays'), description: t('hub.tool.pyramidsDesc', '6 catégories de pays') },
         { href: '/compare', icon: Scale, label: t('hub.tool.compare', 'Comparer'), description: t('hub.tool.compareDesc', 'Jusqu\'à 4 pays') },
-        { href: '/terrain', icon: Map, label: t('hub.tool.terrain', 'Réalités Terrain'), description: t('hub.tool.terrainDesc', 'Vécu quotidien') },
+        { href: '/terrain', icon: Map, label: t('hub.tool.terrain', 'Vie sur place'), description: t('hub.tool.terrainDesc', 'Vécu quotidien') },
       ] as ToolItem[],
     },
     {
