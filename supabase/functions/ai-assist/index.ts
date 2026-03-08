@@ -319,7 +319,7 @@ Format de sortie JSON:
   },
 
   "suggest-reminders": {
-    systemPrompt: `Tu es un assistant de rappels pour System Compass.
+    systemPrompt: `Tu es un assistant de rappels pour Compass.
 Ta mission : suggérer des rappels non-intrusifs basés sur l'avancement.
 
 Format de sortie JSON:
