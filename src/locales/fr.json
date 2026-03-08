@@ -10093,7 +10093,7 @@
       "scenariosDesc": "Permet de visualiser plusieurs trajectoires possibles sans en recommander une"
     },
     "whatItDoesNot": {
-      "title": "Ce que System Compass ne fait PAS",
+      "title": "Ce que Compass ne fait PAS",
       "noRecommendation": "Ne recommande pas",
       "noRecommendationDesc": "Aucune option n'est présentée comme \"la bonne décision\"",
       "noPrediction": "Ne prédit pas",
