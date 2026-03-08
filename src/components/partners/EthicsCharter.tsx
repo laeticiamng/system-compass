@@ -10,7 +10,7 @@ export function EthicsCharter() {
     {
       icon: Heart,
       title: t('partner.charter.principle1Title', "Primauté de la lucidité"),
-      description: t('partner.charter.principle1Desc', "Toute présentation de System Compass doit refléter fidèlement ses usages réels, sans exagération ni promesse implicite.")
+      description: t('partner.charter.principle1Desc', "Toute présentation de Compass doit refléter fidèlement ses usages réels, sans exagération ni promesse implicite.")
     },
     {
       icon: Shield,
