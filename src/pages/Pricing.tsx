@@ -42,8 +42,11 @@ function AnimatedSection({ children, className }: { children: React.ReactNode; c
 }
 
 const Pricing = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useLocalizedNavigate();
+  const locale = i18n.language === 'fr' ? 'fr-FR' : i18n.language === 'de' ? 'de-DE' : i18n.language === 'es' ? 'es-ES' : 'en-US';
+  const freePrice = useMemo(() => formatPrice(0, locale), [locale]);
+  const premiumPrice = useMemo(() => formatPrice(9.90, locale), [locale]);
   const { user } = useAuth();
   const { tier, createCheckout, openCustomerPortal, loading } = useSubscription();
 
