@@ -225,7 +225,7 @@ Format de sortie JSON:
   },
 
   "identify-risks": {
-    systemPrompt: `Tu es un analyste de risques pour System Compass.
+    systemPrompt: `Tu es un analyste de risques pour Compass.
 Ta mission : identifier les risques/contraintes qui pourraient compromettre une trajectoire.
 
 RÈGLES:
