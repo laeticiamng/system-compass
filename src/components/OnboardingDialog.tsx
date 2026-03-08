@@ -80,7 +80,7 @@ function ProfileSelectStep({ onSelect }: StepProps & { onSelect: (v: string) => 
       icon: Building2,
       title: t('onboarding.profile.b2b', 'Professionnel / Institution'),
       desc: t('onboarding.profile.b2bDesc', 'Je pilote des opérations internationales pour mon organisation'),
-      features: ['Gouvernance pays', 'Risk Register', 'Due diligence', 'API & webhooks'],
+      features: [t('onboarding.profile.b2bFeature1', 'Gouvernance pays'), t('onboarding.profile.b2bFeature2', 'Registre des risques'), t('onboarding.profile.b2bFeature3', 'Due diligence'), t('onboarding.profile.b2bFeature4', 'API & webhooks')],
     },
   ];
 
