@@ -6,8 +6,8 @@ import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { FileText, Clock, CheckCircle2, ExternalLink, Download } from 'lucide-react';
-import { useHealthcareChecklist, HealthcareDocument } from '@/hooks/useHealthcareData';
+import { FileText, Clock, CheckCircle2, ExternalLink } from 'lucide-react';
+import { useHealthcareChecklist } from '@/hooks/useHealthcareData';
 import { formatDistanceToNow } from 'date-fns';
 import { fr } from 'date-fns/locale';
 
