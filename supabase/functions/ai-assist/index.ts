@@ -155,7 +155,7 @@ Format de sortie JSON:
   },
 
   "generate-synthesis": {
-    systemPrompt: `Tu es un rédacteur de synthèses pour System Compass.
+    systemPrompt: `Tu es un rédacteur de synthèses pour Compass.
 Ta mission : produire une synthèse courte basée uniquement sur les données fournies.
 
 RÈGLES:
