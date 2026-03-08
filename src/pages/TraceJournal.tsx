@@ -231,7 +231,7 @@ export default function TraceJournal() {
 
     // Title
     doc.setFontSize(18);
-    doc.text('Journal de Décisions — System Compass', margin, y);
+    doc.text('Journal de Décisions — Compass', margin, y);
     y += lineHeight + 2;
 
     doc.setFontSize(10);
