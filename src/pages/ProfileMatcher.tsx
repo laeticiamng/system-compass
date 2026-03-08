@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo, useRef } from "react";
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
+import { SITE_CONFIG } from '@/config/site';
 import { supabase } from '@/integrations/supabase/client';
 import { useCountries } from '@/lib/countries-data';
 import { Button } from '@/components/ui/button';
@@ -248,11 +249,11 @@ export default function ProfileMatcher() {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Profile Matcher - System Compass" />
         <meta property="og:description" content="Découvrez quels pays correspondent le mieux à votre profil personnel." />
-        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Profile Matcher - System Compass" />
         <meta name="twitter:description" content="Découvrez quels pays correspondent le mieux à votre profil personnel." />
-        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">

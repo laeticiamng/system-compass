@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { SITE_CONFIG } from '@/config/site';
 import { LocalizedLink as Link } from '@/components/i18n';
 import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { useTranslation } from 'react-i18next';
@@ -432,11 +433,11 @@ export default function PreventionFilter() {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Filtre de Prévention - System Compass" />
         <meta property="og:description" content="Identifiez les risques avant votre expatriation. Filtre personnalisé." />
-        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Filtre de Prévention - System Compass" />
         <meta name="twitter:description" content="Identifiez les risques avant votre expatriation. Filtre personnalisé." />
-        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
     <div className="min-h-screen pt-16 sm:pt-20 pb-12 sm:pb-16">
       <div className="container mx-auto px-3 sm:px-4 max-w-4xl">

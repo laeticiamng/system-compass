@@ -7,6 +7,7 @@ import { ArrowLeft, Building2, User, Globe, Server, Shield } from 'lucide-react'
 import { LocalizedLink as Link } from '@/components/i18n';
 import { Button } from '@/components/ui/button';
 import { Helmet } from 'react-helmet-async';
+import { SITE_CONFIG } from '@/config/site';
 
 export default function MentionsLegales() {
 
@@ -18,11 +19,11 @@ export default function MentionsLegales() {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Mentions Légales - System Compass" />
         <meta property="og:description" content="Informations légales de System Compass : éditeur, hébergement, RGPD." />
-        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Mentions Légales - System Compass" />
         <meta name="twitter:description" content="Informations légales de System Compass : éditeur, hébergement, RGPD." />
-        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Header */}

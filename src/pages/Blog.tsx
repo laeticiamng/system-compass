@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { SITE_CONFIG } from '@/config/site';
 import { LocalizedLink as Link } from '@/components/i18n';
 import { BookOpen, Clock, Tag, ArrowRight, Search } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -72,11 +73,11 @@ export default function Blog() {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Blog Expatriation - System Compass" />
         <meta property="og:description" content="Guides complets, conseils pratiques et analyses sur l'expatriation : fiscalité, démarches, destinations, digital nomad." />
-        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Blog Expatriation - System Compass" />
         <meta name="twitter:description" content="Guides complets et analyses sur l'expatriation pour vous accompagner dans votre projet." />
-        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
 
       <div className="min-h-screen pt-20 sm:pt-24 pb-12 sm:pb-16">

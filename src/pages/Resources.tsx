@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { SITE_CONFIG } from '@/config/site';
 import { useTranslation } from 'react-i18next';
 import { LocalizedLink as Link } from '@/components/i18n';
 import {
@@ -196,11 +197,11 @@ export default function Resources() {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Ressources & Guides - System Compass" />
         <meta property="og:description" content="Checklists et guides pratiques pour préparer votre expatriation." />
-        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Ressources & Guides - System Compass" />
         <meta name="twitter:description" content="Checklists et guides pratiques pour préparer votre expatriation." />
-        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
     <div className="min-h-screen pt-20 sm:pt-24 pb-12 sm:pb-16">
       <div className="container mx-auto px-3 sm:px-4">

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { SITE_CONFIG } from '@/config/site';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -89,11 +90,11 @@ export default function FinancialSafetyIntel() {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Intelligence Financière - System Compass" />
         <meta property="og:description" content="Risques financiers, arnaques et opportunités par pays pour expatriés." />
-        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Intelligence Financière - System Compass" />
         <meta name="twitter:description" content="Risques financiers, arnaques et opportunités par pays pour expatriés." />
-        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
     <div className="min-h-screen bg-background pt-16 sm:pt-20">
       <div className="container mx-auto px-3 sm:px-4 py-6 sm:py-8 max-w-4xl">

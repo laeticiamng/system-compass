@@ -8,6 +8,7 @@ import { ArrowLeft, Shield, Eye, Database, Lock, UserCheck, Globe, Bell, Trash2,
 import { LocalizedLink as Link } from '@/components/i18n';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
+import { SITE_CONFIG } from '@/config/site';
 import { Button } from '@/components/ui/button';
 
 export default function Privacy() {
@@ -21,11 +22,11 @@ export default function Privacy() {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Politique de Confidentialité - System Compass" />
         <meta property="og:description" content="Politique de confidentialité RGPD de System Compass. Protection des données personnelles." />
-        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Politique de Confidentialité - System Compass" />
         <meta name="twitter:description" content="Politique de confidentialité RGPD de System Compass. Protection des données personnelles." />
-        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
 
       <div className="min-h-screen bg-background pt-20 sm:pt-24">

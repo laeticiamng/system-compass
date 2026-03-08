@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { SITE_CONFIG } from '@/config/site';
 import { LocalizedLink as Link } from '@/components/i18n';
 import { useTranslation } from 'react-i18next';
 import { 
@@ -33,11 +34,11 @@ export default function B2BSolutions() {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Solutions B2B - System Compass" />
         <meta property="og:description" content="Intelligence pays pour entreprises : analyse systémique et due diligence géopolitique." />
-        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Solutions B2B - System Compass" />
         <meta name="twitter:description" content="Intelligence pays pour entreprises : analyse systémique et due diligence géopolitique." />
-        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20 pt-20 md:pt-24">
       {/* Hero Section */}

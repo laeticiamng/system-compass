@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 import { LocalizedLink as Link } from '@/components/i18n';
 import { Helmet } from 'react-helmet-async';
+import { SITE_CONFIG } from '@/config/site';
 import { useCountries } from '@/lib/countries-data';
 import { Country } from '@/lib/types';
 import { Button } from '@/components/ui/button';
@@ -220,11 +221,11 @@ export default function CompareUnified() {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Comparateur de Pays - System Compass" />
         <meta property="og:description" content="Comparez jusqu'à 5 pays sur fiscalité, coût de la vie et qualité de vie." />
-        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Comparateur de Pays - System Compass" />
         <meta name="twitter:description" content="Comparez jusqu'à 5 pays sur fiscalité, coût de la vie et qualité de vie." />
-        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
       <div className="container mx-auto px-4">
         {/* Header */}

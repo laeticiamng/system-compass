@@ -4,6 +4,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useTranslation } from 'react-i18next';
 import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { Helmet } from 'react-helmet-async';
+import { SITE_CONFIG } from '@/config/site';
 import { useAuth } from '@/hooks/useAuth';
 import { useAnalytics } from '@/hooks/useAnalytics';
 import { lovable } from '@/integrations/lovable';
@@ -256,11 +257,11 @@ export default function Auth() {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Connexion - System Compass" />
         <meta property="og:description" content="Accédez à vos analyses de pays et stratégies de sortie personnalisées." />
-        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Connexion - System Compass" />
         <meta name="twitter:description" content="Accédez à vos analyses de pays et stratégies de sortie personnalisées." />
-        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
       <div className="min-h-screen pt-24 pb-16 flex items-center justify-center relative overflow-hidden">
       {/* Background decorations */}

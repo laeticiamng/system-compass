@@ -2,6 +2,7 @@ import { useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { SUPPORTED_LANGUAGES, type SupportedLanguage } from '@/i18n';
+import { SITE_CONFIG } from '@/config/site';
 
 const supportedCodes = SUPPORTED_LANGUAGES.map(l => l.code);
 
@@ -42,5 +43,5 @@ export function useCanonicalUrl(basePath?: string): string {
   const { i18n } = useTranslation();
   const pathFromUrl = usePathWithoutLang();
   const path = basePath || pathFromUrl;
-  return `https://system-compass.app/${i18n.language}${path === '/' ? '' : path}`;
+  return `${SITE_CONFIG.productionUrl}/${i18n.language}${path === '/' ? '' : path}`;
 }

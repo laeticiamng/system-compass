@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
+import { SITE_CONFIG } from '@/config/site';
 import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { PyramidType, PYRAMID_TYPE_INFO } from '@/lib/types';
 import { useTestResults } from '@/hooks/useTestResults';
@@ -227,11 +228,11 @@ export default function QuickTest() {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Test Rapide d'Expatriation - System Compass" />
         <meta property="og:description" content="Découvrez votre profil expatrié en 60 secondes. Test gratuit et personnalisé." />
-        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Test Rapide d'Expatriation - System Compass" />
         <meta name="twitter:description" content="Découvrez votre profil expatrié en 60 secondes. Test gratuit et personnalisé." />
-        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
       {/* Hero Section */}
       <section className="relative pt-24 sm:pt-32 pb-12 overflow-hidden">

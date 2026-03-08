@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { SITE_CONFIG } from '@/config/site';
 import { useTranslation } from 'react-i18next';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -179,11 +180,11 @@ export default function ExpertMarketplace() {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Experts en Expatriation - System Compass" />
         <meta property="og:description" content="Experts vérifiés en expatriation : avocats, fiscalistes, conseillers." />
-        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Experts en Expatriation - System Compass" />
         <meta name="twitter:description" content="Experts vérifiés en expatriation : avocats, fiscalistes, conseillers." />
-        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
     <div className="container mx-auto px-4 py-8 space-y-8">
       {/* Header */}
