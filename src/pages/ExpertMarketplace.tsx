@@ -182,7 +182,7 @@ export default function ExpertMarketplace() {
         <meta property="og:description" content="Experts vérifiés en expatriation : avocats, fiscalistes, conseillers." />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Experts en Expatriation - System Compass" />
+        <meta name="twitter:title" content="Experts en Expatriation — Compass" />
         <meta name="twitter:description" content="Experts vérifiés en expatriation : avocats, fiscalistes, conseillers." />
         <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>

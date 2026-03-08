@@ -88,7 +88,7 @@ export function SoftwareApplicationJsonLd() {
   const schemaData: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
-    name: 'System Compass',
+    name: 'Compass',
     url: `${SITE_CONFIG.productionUrl}/${lang}`,
     description: isFr
       ? 'Application web d\'aide à la décision pour l\'expatriation. Compare 80+ pays sur la fiscalité, les visas, le coût de la vie et la qualité de vie. Test de profil gratuit en 2 minutes.'
@@ -169,7 +169,7 @@ export function ServiceJsonLd() {
       name: isFr ? 'Intelligence décisionnelle pour l\'expatriation' : 'Decision intelligence for expatriation',
       provider: {
         '@type': 'Organization',
-        name: 'System Compass',
+        name: 'Compass',
         url: `${SITE_CONFIG.productionUrl}/${lang}`,
       },
       description: isFr
@@ -185,7 +185,7 @@ export function ServiceJsonLd() {
       },
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
-        name: isFr ? 'Outils System Compass' : 'System Compass Tools',
+        name: isFr ? 'Outils Compass' : 'Compass Tools',
         itemListElement: [
           {
             '@type': 'Offer',
@@ -272,7 +272,7 @@ export function BlogPostingJsonLd({ title, description, datePublished, author, u
       },
       publisher: {
         '@type': 'Organization',
-        name: 'System Compass',
+        name: 'Compass',
         logo: {
           '@type': 'ImageObject',
           url: `${SITE_CONFIG.productionUrl}/icons/icon-512x512.png`,
@@ -292,7 +292,7 @@ export function WebSiteJsonLd() {
     <JsonLd data={{
       '@context': 'https://schema.org',
       '@type': 'WebSite',
-      name: 'System Compass',
+      name: 'Compass',
       url: `${SITE_CONFIG.productionUrl}/${lang}`,
       description: 'Plateforme d\'intelligence décisionnelle pour la relocalisation internationale. Compare 80+ pays pour ton expatriation.',
       inLanguage: ['fr', 'en'],

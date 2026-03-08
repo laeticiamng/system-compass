@@ -95,7 +95,7 @@ export function InstallInstructions() {
             {t('pwa.instructions.title', 'Instructions d\'installation')}
           </CardTitle>
           <CardDescription>
-            {t('pwa.subtitle', 'Accédez à System Compass depuis votre écran d\'accueil comme une application native')}
+            {t('pwa.subtitle', 'Accédez à Compass depuis votre écran d\'accueil comme une application native')}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -192,7 +192,7 @@ export function InstallInstructions() {
                   <span className="font-medium text-sm">{t('pwa.desktop.shortcut', 'Raccourci Chrome/Edge')}</span>
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  {t('pwa.desktop.shortcutDescription', 'Menu (⋮) → « Installer System Compass... » ou « Plus d\'outils » → « Créer un raccourci »')}
+                  {t('pwa.desktop.shortcutDescription', 'Menu (⋮) → « Installer Compass... » ou « Plus d\'outils » → « Créer un raccourci »')}
                 </p>
               </div>
             </TabsContent>

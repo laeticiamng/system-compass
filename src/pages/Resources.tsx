@@ -199,7 +199,7 @@ export default function Resources() {
         <meta property="og:description" content="Checklists et guides pratiques pour préparer votre expatriation." />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Ressources & Guides - System Compass" />
+        <meta name="twitter:title" content="Ressources & Guides — Compass" />
         <meta name="twitter:description" content="Checklists et guides pratiques pour préparer votre expatriation." />
         <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>

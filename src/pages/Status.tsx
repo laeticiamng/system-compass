@@ -87,7 +87,7 @@ export default function Status() {
           {t('status.title', 'État de la plateforme')}
         </h1>
         <p className="text-muted-foreground">
-          {t('status.subtitle', 'Surveillance en temps réel de tous les services System Compass.')}
+          {t('status.subtitle', 'Surveillance en temps réel de tous les services Compass.')}
         </p>
       </div>
 

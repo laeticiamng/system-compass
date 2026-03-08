@@ -142,7 +142,7 @@ export function PushNotificationManager() {
         toast.success(t('notifications.enabled', 'Notifications activées !'));
 
         // Show test notification
-        new Notification('System Compass', {
+        new Notification('Compass', {
           body: t('notifications.enabled', 'Les notifications sont maintenant activées !'),
           icon: '/favicon.ico',
         });

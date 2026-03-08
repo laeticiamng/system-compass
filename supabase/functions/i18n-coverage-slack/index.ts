@@ -63,7 +63,7 @@ serve(async (req) => {
         type: "header",
         text: {
           type: "plain_text",
-          text: `${statusEmoji} Rapport Couverture i18n - System Compass`,
+          text: `${statusEmoji} Rapport Couverture i18n - Compass`,
           emoji: true
         }
       },

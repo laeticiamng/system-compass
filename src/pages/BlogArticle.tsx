@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
 import { LocalizedLink as Link } from '@/components/i18n';
+import { SITE_CONFIG } from '@/config/site';
 import {
   BookOpen,
   Clock,
@@ -103,7 +104,7 @@ export default function BlogArticle() {
         <meta property="og:title" content={article.title} />
         <meta property="og:description" content={article.excerpt} />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://system-compass.app/blog/${article.slug}`} />
+        <meta property="og:url" content={`${SITE_CONFIG.baseUrl}/blog/${article.slug}`} />
         <meta property="article:published_time" content={article.publishedAt} />
         <meta property="article:author" content={article.author} />
         <meta property="article:section" content={BLOG_CATEGORIES[article.category].label} />
@@ -113,7 +114,7 @@ export default function BlogArticle() {
         <meta name="twitter:title" content={article.title} />
         <meta name="twitter:description" content={article.excerpt} />
         <meta name="twitter:card" content="summary_large_image" />
-        <link rel="canonical" href={`https://system-compass.app/blog/${article.slug}`} />
+        <link rel="canonical" href={`${SITE_CONFIG.baseUrl}/blog/${article.slug}`} />
       </Helmet>
 
       <BlogPostingJsonLd
@@ -121,7 +122,7 @@ export default function BlogArticle() {
         description={article.excerpt}
         datePublished={article.publishedAt}
         author={article.author}
-        url={`https://system-compass.app/blog/${article.slug}`}
+        url={`${SITE_CONFIG.baseUrl}/blog/${article.slug}`}
       />
 
       <div className="min-h-screen pt-20 sm:pt-24 pb-12 sm:pb-16">

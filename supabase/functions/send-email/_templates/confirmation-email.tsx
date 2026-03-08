@@ -33,7 +33,7 @@ export const ConfirmationEmail = ({
         <Section style={logoSection}>
           <Img
             src="https://abysiagseykztutnbjtu.supabase.co/storage/v1/object/public/email-assets/logo-192.png?v=1"
-            alt="System Compass Logo"
+            alt="Compass Logo"
             width="80"
             height="80"
             style={logo}

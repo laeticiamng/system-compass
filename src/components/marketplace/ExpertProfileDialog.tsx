@@ -339,7 +339,7 @@ export function ExpertProfileDialog({ expert, open, onOpenChange }: ExpertProfil
                       <div className="w-2 h-2 rounded-full bg-primary mt-2" />
                       <div>
                         <p className="font-medium">+{expert.reviewCount} consultations réalisées</p>
-                        <p className="text-sm text-muted-foreground">Sur la plateforme System Compass</p>
+                        <p className="text-sm text-muted-foreground">Sur la plateforme Compass</p>
                       </div>
                     </div>
                   </div>

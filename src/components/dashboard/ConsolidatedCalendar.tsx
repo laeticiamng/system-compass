@@ -148,7 +148,7 @@ export function ConsolidatedCalendar() {
       const icsContent = [
         'BEGIN:VCALENDAR',
         'VERSION:2.0',
-        'PRODID:-//System Compass//Calendar Export//FR',
+        'PRODID:-//Compass//Calendar Export//FR',
         'CALSCALE:GREGORIAN',
         'METHOD:PUBLISH',
         ...events.map(event => {

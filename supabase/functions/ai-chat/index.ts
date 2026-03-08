@@ -4,7 +4,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { corsHeaders } from "../_shared/cors.ts";
 import { checkRateLimit, getRateLimitKey, rateLimitResponse } from "../_shared/rate-limit.ts";
 
-const SYSTEM_PROMPT = `Tu es l'Assistant System Compass, un coach IA expert en expatriation et mobilité internationale. Tu accompagnes les utilisateurs dans leur projet d'expatriation.
+const SYSTEM_PROMPT = `Tu es l'Assistant Compass, un coach IA expert en expatriation et mobilité internationale. Tu accompagnes les utilisateurs dans leur projet d'expatriation.
 
 ## Tes compétences :
 - Analyse comparative de pays (fiscalité, visa, coût de la vie, qualité de vie, sécurité)

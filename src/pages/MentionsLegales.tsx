@@ -18,11 +18,11 @@ export default function MentionsLegales() {
         <meta name="description" content="Mentions légales de Compass, édité par EmotionsCare SASU. SIRET, hébergement, propriété intellectuelle et RGPD." />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Mentions Légales — Compass" />
-        <meta property="og:description" content="Informations légales de System Compass : éditeur, hébergement, RGPD." />
+        <meta property="og:description" content="Informations légales de Compass : éditeur, hébergement, RGPD." />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Mentions Légales - System Compass" />
-        <meta name="twitter:description" content="Informations légales de System Compass : éditeur, hébergement, RGPD." />
+        <meta name="twitter:title" content="Mentions Légales — Compass" />
+        <meta name="twitter:description" content="Informations légales de Compass : éditeur, hébergement, RGPD." />
         <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
       <div className="container mx-auto px-4 py-8 max-w-4xl">
@@ -127,7 +127,7 @@ export default function MentionsLegales() {
             </h2>
             <div className="space-y-4">
               <p>
-                L'ensemble du contenu du site System Compass (textes, graphismes, images, logos, 
+                L'ensemble du contenu du site Compass (textes, graphismes, images, logos, 
                 icônes, logiciels, bases de données, etc.) est protégé par le droit d'auteur et 
                 les droits de propriété intellectuelle.
               </p>
@@ -138,7 +138,7 @@ export default function MentionsLegales() {
               </p>
               <div className="p-4 rounded-lg bg-amber-500/10 border border-amber-500/20">
                 <p className="text-sm">
-                  <strong>Marques :</strong> "System Compass", "Exit Keys" et le logo associé 
+                  <strong>Marques :</strong> "Compass" et le logo associé 
                   sont des marques déposées ou en cours de dépôt par EmotionsCare SASU.
                 </p>
               </div>

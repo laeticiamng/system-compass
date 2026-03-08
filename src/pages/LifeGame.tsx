@@ -76,7 +76,7 @@ export default function LifeGame() {
         <meta property="og:description" content="Simulez des trajectoires de vie dans différents pays. Jeu stratégique immersif." />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Jeu de Simulation de Vie - System Compass" />
+        <meta name="twitter:title" content="Jeu de Simulation de Vie — Compass" />
         <meta name="twitter:description" content="Simulez des trajectoires de vie dans différents pays. Jeu stratégique immersif." />
         <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>

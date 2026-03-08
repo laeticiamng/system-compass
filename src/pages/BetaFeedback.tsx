@@ -123,7 +123,7 @@ export default function BetaFeedback() {
           {t('feedback.title', 'Beta Feedback')}
         </h1>
         <p className="text-muted-foreground mt-1">
-          {t('feedback.subtitle', 'Aidez-nous à améliorer System Compass. Chaque retour compte.')}
+          {t('feedback.subtitle', 'Aidez-nous à améliorer Compass. Chaque retour compte.')}
         </p>
       </div>
 

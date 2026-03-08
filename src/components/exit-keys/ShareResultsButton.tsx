@@ -29,7 +29,7 @@ export function ShareResultsButton({ results, profileSummary }: ShareResultsButt
       `• ${r.key.name} (${r.compatibility}%)`
     ).join('\n');
     
-    return `🧭 Mes Stratégies System Compass
+    return `🧭 Mes Stratégies Compass
 
 De ${profileSummary.birthCountry || '?'} vers ${profileSummary.currentCountry || '?'}
 Objectif: ${profileSummary.desiredLife || 'liberté'}

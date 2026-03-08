@@ -113,7 +113,7 @@ Deno.serve(async (req) => {
 
     // 6. Send via Resend
     const { data: sendData, error: sendError } = await resend.emails.send({
-      from: "System Compass <noreply@pyramid-compass.com>",
+      from: "Compass <noreply@pyramid-compass.com>",
       to: [email],
       subject: `🧭 Votre synthèse hebdomadaire — ${new Date().toLocaleDateString("fr-FR", { day: "numeric", month: "long" })}`,
       html,

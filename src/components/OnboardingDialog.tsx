@@ -181,7 +181,7 @@ function B2BFeaturesStep({ onNext }: StepProps) {
     { icon: Shield, label: t('onboarding.b2b.governance', 'Governance Intel'), desc: t('onboarding.b2b.governanceDesc', 'Analyse des acteurs, partenaires, délais réglementaires par pays'), link: '/b2b' },
     { icon: BarChart3, label: t('onboarding.b2b.riskRegister', 'Registre des risques'), desc: t('onboarding.b2b.riskRegisterDesc', 'Cartographiez et suivez les risques de vos opérations internationales'), link: '/latent' },
     { icon: BookOpen, label: t('onboarding.b2b.caseDossiers', 'Dossiers de cas'), desc: t('onboarding.b2b.caseDossiersDesc', 'Constituez des dossiers structurés avec preuve d\'audit'), link: '/irreversa' },
-    { icon: Briefcase, label: t('onboarding.b2b.apiIntegrations', 'API & Intégrations'), desc: t('onboarding.b2b.apiIntegrationsDesc', 'Connectez System Compass à vos outils via API REST'), link: '/api' },
+    { icon: Briefcase, label: t('onboarding.b2b.apiIntegrations', 'API & Intégrations'), desc: t('onboarding.b2b.apiIntegrationsDesc', 'Connectez Compass à vos outils via API REST'), link: '/api' },
   ];
 
   return (

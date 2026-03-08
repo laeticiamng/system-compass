@@ -29,8 +29,8 @@ export default function Disclaimer() {
         <meta property="og:description" content="Ce que Compass est — et ce qu'il n'est pas. Outil de comparaison, pas de conseil professionnel." />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Avertissements & Limites - System Compass" />
-        <meta name="twitter:description" content="Ce que System Compass est — et ce qu'il n'est pas. Outil éducatif, pas de conseil professionnel." />
+        <meta name="twitter:title" content="Avertissements & Limites — Compass" />
+        <meta name="twitter:description" content="Ce que Compass est — et ce qu'il n'est pas. Outil de comparaison, pas de conseil professionnel." />
         <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
       <div className="container mx-auto px-4 max-w-4xl">
@@ -104,7 +104,7 @@ export default function Disclaimer() {
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-muted-foreground">
-                <strong className="text-foreground">System Compass</strong> est un <strong className="text-foreground">outil d'analyse et de simulation</strong> conçu pour aider à comprendre les systèmes socio-économiques de différents pays et explorer des trajectoires de vie hypothétiques.
+                <strong className="text-foreground">Compass</strong> est un <strong className="text-foreground">outil de comparaison et de simulation</strong> conçu pour aider à comprendre les réalités socio-économiques de différents pays et explorer des trajectoires de vie hypothétiques.
               </p>
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="p-4 rounded-lg bg-green-500/5 border border-green-500/20">

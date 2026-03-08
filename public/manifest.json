@@ -1,7 +1,7 @@
 {
-  "name": "System Compass",
-  "short_name": "System Compass",
-  "description": "Strategic decision simulator for real-world systems. Analyze countries, plan relocations, and navigate international decisions.",
+  "name": "Compass",
+  "short_name": "Compass",
+  "description": "Compare countries before you go. Taxation, visas, cost of living and quality of life for 80+ destinations.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a0a0b",

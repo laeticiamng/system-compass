@@ -35,7 +35,7 @@ export function ExitKeysPdfExport({ results, profileSummary }: ExitKeysPdfExport
       // Title
       doc.setFontSize(24);
       doc.setFont('helvetica', 'bold');
-      doc.text('System Compass', margin, y);
+      doc.text('Compass', margin, y);
       y += 10;
       
       doc.setFontSize(16);

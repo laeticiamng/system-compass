@@ -189,7 +189,7 @@ export function RoadmapPdfExport({
         doc.setFontSize(8);
         doc.setTextColor(150);
         doc.text(
-          `Page ${i}/${pageCount} | Stratégies - System Compass`,
+          `Page ${i}/${pageCount} | Stratégies - Compass`,
           pageWidth / 2,
           doc.internal.pageSize.getHeight() - 10,
           { align: 'center' }

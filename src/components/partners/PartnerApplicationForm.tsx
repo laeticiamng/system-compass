@@ -97,7 +97,7 @@ export function PartnerApplicationForm({ type, onSuccess }: PartnerApplicationFo
               <CardDescription className="mt-2">
                 {isAmbassador 
                   ? t('partner.application.descAmbassador', "Partagez votre expérience et contribuez à diffuser la lucidité")
-                  : t('partner.application.descB2B', "Mettez System Compass en relation avec des organisations")}
+                  : t('partner.application.descB2B', "Mettez Compass en relation avec des organisations")}
               </CardDescription>
             </div>
             <Badge variant="outline" className="hidden sm:flex">
@@ -137,7 +137,7 @@ export function PartnerApplicationForm({ type, onSuccess }: PartnerApplicationFo
                     <Sparkles className="h-3 w-3" /> {t('partner.application.benefitB2BTools', "Accès à des outils B2B dédiés")}
                   </li>
                   <li className="flex items-center gap-2">
-                    <Sparkles className="h-3 w-3" /> {t('partner.application.benefitEcosystem', "Association à l'écosystème System Compass")}
+                    <Sparkles className="h-3 w-3" /> {t('partner.application.benefitEcosystem', "Association à l'écosystème Compass")}
                   </li>
                 </>
               )}
@@ -180,7 +180,7 @@ export function PartnerApplicationForm({ type, onSuccess }: PartnerApplicationFo
             )}
 
             <div className="space-y-2">
-              <Label htmlFor="experience">{t('partner.application.labelExperience', "Expérience avec System Compass")}</Label>
+              <Label htmlFor="experience">{t('partner.application.labelExperience', "Expérience avec Compass")}</Label>
               <Textarea
                 id="experience"
                 value={platformExperience}

@@ -393,7 +393,7 @@ export function PmoPdfExport({
       pdf.setFontSize(8);
       pdf.setTextColor('#999999');
       pdf.text(`${packConfig.title} - ${caseTitle} - ${format(new Date(), 'dd/MM/yyyy')}`, margin, yPos);
-      pdf.text('Généré par System Compass', pageWidth - margin - 40, yPos);
+      pdf.text('Généré par Compass', pageWidth - margin - 40, yPos);
 
       // Save
       const fileName = `${selectedPack}-${caseTitle.toLowerCase().replace(/\s+/g, '-')}-${format(new Date(), 'yyyy-MM-dd')}.pdf`;

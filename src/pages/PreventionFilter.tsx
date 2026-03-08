@@ -435,7 +435,7 @@ export default function PreventionFilter() {
         <meta property="og:description" content="Identifiez les risques avant votre expatriation. Filtre personnalisé." />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Filtre de Prévention - System Compass" />
+        <meta name="twitter:title" content="Aide à la Décision — Compass" />
         <meta name="twitter:description" content="Identifiez les risques avant votre expatriation. Filtre personnalisé." />
         <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>

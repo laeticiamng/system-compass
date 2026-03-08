@@ -200,7 +200,7 @@ export default function OVI() {
                   </CardHeader>
                   <CardContent className="space-y-6">
                     <p className="text-lg text-muted-foreground">
-                      {t('ovi.intro.p1', 'L\'Observatoire des Variables Invisibles n\'est pas un outil supplémentaire. C\'est un espace de recul — un laboratoire de pensée intégré à System Compass.')}
+                      {t('ovi.intro.p1', 'L\'Observatoire des Variables Invisibles n\'est pas un outil supplémentaire. C\'est un espace de recul — un laboratoire de pensée intégré à Compass.')}
                     </p>
                     
                     <div className="grid md:grid-cols-3 gap-6">
@@ -266,7 +266,7 @@ export default function OVI() {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <Compass className="w-5 h-5 text-primary" />
-                      {t('ovi.connection.title', 'Connexion avec System Compass')}
+                      {t('ovi.connection.title', 'Connexion avec Compass')}
                     </CardTitle>
                     <CardDescription>
                       {t('ovi.connection.subtitle', 'L\'OVI enrichit vos simulations sans les influencer')}
@@ -274,7 +274,7 @@ export default function OVI() {
                   </CardHeader>
                   <CardContent className="space-y-6">
                     <p className="text-muted-foreground">
-                      {t('ovi.connection.intro', 'Lorsque vous effectuez une simulation dans System Compass, l\'OVI peut suggérer des lectures pertinentes. L\'objectif : nourrir votre réflexion, pas orienter votre décision.')}
+                      {t('ovi.connection.intro', 'Lorsque vous effectuez une simulation dans Compass, l\'OVI peut suggérer des lectures pertinentes. L\'objectif : nourrir votre réflexion, pas orienter votre décision.')}
                     </p>
 
                     <div className="grid md:grid-cols-2 gap-6">

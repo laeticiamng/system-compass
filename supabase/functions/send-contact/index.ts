@@ -57,14 +57,14 @@ Deno.serve(async (req) => {
     }
 
     const sanitizedName = (name || 'Anonyme').toString().slice(0, 200)
-    const sanitizedSubject = (subject || 'Contact via System Compass').toString().slice(0, 300)
+    const sanitizedSubject = (subject || 'Contact via Compass').toString().slice(0, 300)
     const sanitizedMessage = message.toString().slice(0, 5000)
     const sanitizedEmail = email.toString().slice(0, 320)
 
     console.log(`[send-contact] Contact from ${sanitizedEmail} — subject: ${sanitizedSubject}`)
 
     const { data, error } = await resend.emails.send({
-      from: 'System Compass <noreply@pyramid-compass.com>',
+      from: 'Compass <noreply@pyramid-compass.com>',
       to: ['contact@system-compass.app'],
       replyTo: sanitizedEmail,
       subject: `[Contact] ${sanitizedSubject}`,

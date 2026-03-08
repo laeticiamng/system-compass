@@ -441,7 +441,7 @@ export default function PartnerIntegrations() {
                 Avantages exclusifs
               </h3>
               <p className="text-sm text-muted-foreground">
-                Profitez de réductions et bonus réservés aux utilisateurs de System Compass.
+                Profitez de réductions et bonus réservés aux utilisateurs de Compass.
               </p>
             </div>
             <div className="space-y-2">

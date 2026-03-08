@@ -231,7 +231,7 @@ export default function TraceJournal() {
 
     // Title
     doc.setFontSize(18);
-    doc.text('Journal de Décisions — System Compass', margin, y);
+    doc.text('Journal de Décisions — Compass', margin, y);
     y += lineHeight + 2;
 
     doc.setFontSize(10);
@@ -305,7 +305,7 @@ export default function TraceJournal() {
       y
     );
     y += 4;
-    doc.text('© 2026 System Compass — EmotionsCare SASU', margin, y);
+    doc.text('© 2026 Compass — EmotionsCare SASU', margin, y);
 
     const fileName = `trace-journal-${format(new Date(), 'yyyy-MM-dd')}.pdf`;
     doc.save(fileName);

@@ -9,7 +9,7 @@ const corsHeaders = {
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
 
-const SYSTEM_PROMPT = `Tu es un expert en expatriation et vie quotidienne à l'étranger pour System Compass.
+const SYSTEM_PROMPT = `Tu es un expert en expatriation et vie quotidienne à l'étranger pour Compass.
 Tu produis des VARIANTES PAYS ultra-détaillées et pratiques pour les utilisateurs premium.
 
 CONTRAINTES :

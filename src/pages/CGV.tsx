@@ -18,11 +18,11 @@ export default function CGV() {
         <meta name="description" content="CGV de Compass : abonnement Premium à 9,90€/mois, droit de rétractation 14 jours, résiliation sans frais. Paiement sécurisé via Stripe." />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Conditions Générales de Vente — Compass" />
-        <meta property="og:description" content="CGV de System Compass : abonnement, paiement, rétractation et résiliation." />
+        <meta property="og:description" content="CGV de Compass : abonnement, paiement, rétractation et résiliation." />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Conditions Générales de Vente - System Compass" />
-        <meta name="twitter:description" content="CGV de System Compass : abonnement, paiement, rétractation et résiliation." />
+        <meta name="twitter:title" content="Conditions Générales de Vente — Compass" />
+        <meta name="twitter:description" content="CGV de Compass : abonnement, paiement, rétractation et résiliation." />
         <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
       <div className="container mx-auto px-4 py-12 max-w-4xl">
@@ -58,7 +58,7 @@ export default function CGV() {
               Article 1 - Description du Service
             </h2>
             <p>
-              System Compass est une plateforme d'analyse et de comparaison des systèmes économiques 
+              Compass est une plateforme de comparaison des pays pour l'expatriation. Le service propose : 
               et sociaux de différents pays. Le service propose :
             </p>
             <ul className="list-disc pl-6 space-y-2 mt-4">

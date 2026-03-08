@@ -41,7 +41,7 @@ const TUTORIAL_STORAGE_KEY = 'pyramid_interactive_tutorial_completed';
 const tutorialSteps: TutorialStep[] = [
   {
     id: 'welcome',
-    title: 'Bienvenue sur System Compass',
+    title: 'Bienvenue sur Compass',
     description: 'Découvrez les clés pour comprendre comment fonctionnent vraiment les pays et trouver votre destination idéale.',
     icon: <Sparkles className="w-8 h-8 text-primary" />,
     position: 'center',

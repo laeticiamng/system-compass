@@ -235,7 +235,7 @@ export function ForumPreview() {
           Forum Communautaire
         </CardTitle>
         <CardDescription>
-          Échangez avec la communauté System Compass
+          Échangez avec la communauté Compass
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
