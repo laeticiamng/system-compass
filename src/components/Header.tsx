@@ -115,8 +115,8 @@ export function Header() {
     localStorage.setItem(DISCLAIMER_DISMISSED_KEY, 'true');
   };
 
-  // Check if current page is a simulation page (strip lang prefix)
-  const pathForCheck = location.pathname.replace(/^\/[a-z]{2}(?=\/)/, '');
+  // Strip language prefix for route matching
+  const pathForCheck = location.pathname.replace(/^\/[a-z]{2}(?=\/|$)/, '') || '/';
   const isSimulationPage = SIMULATION_SEGMENTS.some(page => pathForCheck.startsWith(page));
   const showDisclaimer = isSimulationPage && !disclaimerDismissed;
 
