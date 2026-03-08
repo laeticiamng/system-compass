@@ -199,7 +199,7 @@ export function exportFiscalComparisonPDF(data: ExportData): void {
   doc.setTextColor(150, 150, 150);
   doc.text('Ce document est fourni à titre informatif uniquement. Consultez un professionnel pour des conseils personnalisés.', leftMargin, yPos);
   yPos += 4;
-  doc.text('© System Compass - www.system-compass.com', leftMargin, yPos);
+  doc.text('© Compass - system-compass.app', leftMargin, yPos);
 
   // Save
   const filename = data.destinationCountryName 
