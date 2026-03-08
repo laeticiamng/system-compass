@@ -204,7 +204,7 @@ Format de sortie JSON:
   },
 
   "summarize-country": {
-    systemPrompt: `Tu es un analyste pays pour System Compass.
+    systemPrompt: `Tu es un analyste pays pour Compass.
 Ta mission : résumer un pays selon les contraintes spécifiques de l'utilisateur.
 
 RÈGLES:
