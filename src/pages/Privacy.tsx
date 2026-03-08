@@ -20,12 +20,12 @@ export default function Privacy() {
         <title>{t('privacy.meta.title', 'Politique de Confidentialité — Compass')}</title>
         <meta name="description" content={t('privacy.meta.description', 'Politique de confidentialité RGPD de Compass. Découvrez comment nous protégeons vos données personnelles.')} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Politique de Confidentialité - System Compass" />
-        <meta property="og:description" content="Politique de confidentialité RGPD de System Compass. Protection des données personnelles." />
+        <meta property="og:title" content="Politique de Confidentialité — Compass" />
+        <meta property="og:description" content="Politique de confidentialité RGPD de Compass. Protection des données personnelles." />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Politique de Confidentialité - System Compass" />
-        <meta name="twitter:description" content="Politique de confidentialité RGPD de System Compass. Protection des données personnelles." />
+        <meta name="twitter:title" content="Politique de Confidentialité — Compass" />
+        <meta name="twitter:description" content="Politique de confidentialité RGPD de Compass. Protection des données personnelles." />
         <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
 
