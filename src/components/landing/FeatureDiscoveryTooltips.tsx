@@ -5,6 +5,7 @@
  */
 
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Lightbulb } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -54,21 +55,29 @@ function getDismissed(): string[] {
 
 export function FeatureDiscoveryTooltips() {
   const { t } = useTranslation();
+  const location = useLocation();
   const [dismissed, setDismissed] = useState<string[]>([]);
   const [currentTip, setCurrentTip] = useState<Tip | null>(null);
+
+  // Pages where specific tips are redundant
+  const pathname = location.pathname.replace(/^\/[a-z]{2}(?=\/|$)/, '') || '/';
+  const suppressedTips: string[] = [];
+  if (pathname.startsWith('/quick-test') || pathname.startsWith('/profile-test')) suppressedTips.push('quick_test');
+  if (pathname.startsWith('/compare')) suppressedTips.push('compare');
+  if (pathname.startsWith('/exit-keys') || pathname.startsWith('/strategies')) suppressedTips.push('exit_keys');
 
   useEffect(() => {
     const d = getDismissed();
     setDismissed(d);
 
-    // Show first undismissed tip after delay
+    // Show first undismissed + non-suppressed tip after delay
     const timer = setTimeout(() => {
-      const next = TIPS.find(tip => !d.includes(tip.id));
+      const next = TIPS.find(tip => !d.includes(tip.id) && !suppressedTips.includes(tip.id));
       if (next) setCurrentTip(next);
-    }, 8000); // Show after 8 seconds
+    }, 8000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [pathname]);
 
   const dismissTip = (tipId: string) => {
     const updated = [...dismissed, tipId];
@@ -91,7 +100,7 @@ export function FeatureDiscoveryTooltips() {
           initial={{ opacity: 0, y: 20, x: 20 }}
           animate={{ opacity: 1, y: 0, x: 0 }}
           exit={{ opacity: 0, y: 10 }}
-          className="fixed bottom-20 right-4 z-40 max-w-xs"
+          className="fixed bottom-24 right-4 z-40 max-w-xs"
         >
           <div className="bg-card border border-border rounded-xl shadow-xl p-4">
             <div className="flex items-start gap-3">

@@ -71,7 +71,7 @@ export function OnboardingTour() {
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="text-xs text-muted-foreground">
-                      Étape {currentStep + 1} / {totalSteps}
+                      {t('tour.step', 'Step {{current}} / {{total}}', { current: currentStep + 1, total: totalSteps })}
                     </p>
                     <Progress value={progress} className="w-full max-w-24 h-1 mt-1" />
                   </div>
@@ -103,7 +103,7 @@ export function OnboardingTour() {
                 onClick={skipTour}
                 className="text-muted-foreground order-2 sm:order-1"
               >
-                Passer le tour
+                {t('tour.skip', 'Skip tour')}
               </Button>
               
               <div className="flex items-center gap-2 order-1 sm:order-2 sm:ml-auto">
@@ -115,7 +115,7 @@ export function OnboardingTour() {
                     className="gap-1 flex-1 sm:flex-none"
                   >
                     <ChevronLeft className="w-4 h-4" />
-                    <span className="hidden sm:inline">Précédent</span>
+                    <span className="hidden sm:inline">{t('tour.previous', 'Previous')}</span>
                   </Button>
                 )}
                 <Button
@@ -123,7 +123,7 @@ export function OnboardingTour() {
                   onClick={handleNext}
                   className="gap-1 bg-primary hover:bg-primary/90 flex-1 sm:flex-none"
                 >
-                  {currentStep === totalSteps - 1 ? 'Terminer' : 'Suivant'}
+                  {currentStep === totalSteps - 1 ? t('tour.finish', 'Finish') : t('tour.next', 'Next')}
                   <ChevronRight className="w-4 h-4" />
                 </Button>
               </div>

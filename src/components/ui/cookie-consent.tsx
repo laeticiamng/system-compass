@@ -118,8 +118,10 @@ export function CookieConsent() {
     <div
       className={cn(
         "fixed bottom-0 left-0 right-0 z-[45] p-2 sm:p-4 pb-safe",
-        "animate-in slide-in-from-bottom duration-500"
+        "animate-in slide-in-from-bottom duration-500",
+        "mb-0 sm:mb-0"
       )}
+      style={{ marginBottom: 0 }}
     >
       <Card className="max-w-2xl mx-auto shadow-2xl border-border/50 bg-card">
         <CardHeader className="pb-3">

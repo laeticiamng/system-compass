@@ -145,32 +145,32 @@ export interface ProfileResult {
 
 export const PYRAMID_TYPE_INFO: Record<PyramidType, { label: string; description: string; color: string }> = {
   PROBLEM_RENT: {
-    label: 'Problem Rent',
+    label: 'Informal Economy',
     description: 'The dysfunction is the asset. Solving problems puts you at risk.',
     color: 'pyramid-rent',
   },
   STABILITY_REDIS: {
-    label: 'Stability Redistribution',
+    label: 'Social Protection',
     description: 'The system rewards stability, protection, and redistribution.',
     color: 'pyramid-stability',
   },
   COMPETENCE_TRUST: {
-    label: 'Competence Trust',
+    label: 'Merit & Trust',
     description: 'The solution is the asset. Rigor and competence are rewarded.',
     color: 'pyramid-competence',
   },
   GROWTH_RISK: {
-    label: 'Growth Risk',
+    label: 'Growth & Innovation',
     description: 'Growth is the asset. Speed, scalability, and capital are rewarded.',
     color: 'pyramid-growth',
   },
   HYBRID_TRANSITION: {
-    label: 'Hybrid Transition',
+    label: 'System in Transition',
     description: 'Multiple logics coexist. Navigate contradictions and rapid changes.',
     color: 'pyramid-hybrid',
   },
   RESOURCE_EXTRACTION: {
-    label: 'Resource Extraction',
+    label: 'Resource-based Economy',
     description: 'Natural resources fund the system. Proximity to the flow matters most.',
     color: 'pyramid-resource',
   },

@@ -1,4 +1,13 @@
 {
+  "tour": {
+    "step": "Étape {{current}} / {{total}}",
+    "skip": "Passer le tour",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "finish": "Terminer",
+    "restart": "Revoir le tour",
+    "start": "Commencer le tour"
+  },
   "exitKeys": {
     "destination": {
       "title": "Destinations optimisées pour vous",
@@ -966,27 +975,27 @@
     "subtitle": "Chaque système entre dans l'une de ces catégories",
     "examples": "Exemples",
     "problemRent": {
-      "label": "Rente du problème",
+      "label": "Économie informelle",
       "description": "Le dysfonctionnement est l'actif. Résoudre les problèmes te met en danger."
     },
     "stabilityRedis": {
-      "label": "Redistribution stabilité",
+      "label": "Protection sociale",
       "description": "Le système récompense la stabilité, la protection et la redistribution."
     },
     "competenceTrust": {
-      "label": "Confiance compétence",
+      "label": "Mérite & confiance",
       "description": "La solution est l'actif. La rigueur et la compétence sont récompensées."
     },
     "growthRisk": {
-      "label": "Risque croissance",
+      "label": "Croissance & innovation",
       "description": "La croissance est l'actif. Vitesse, scalabilité et capital sont récompensés."
     },
     "hybridTransition": {
-      "label": "Hybride transition",
+      "label": "Système en transition",
       "description": "Plusieurs logiques coexistent. Navigue les contradictions et les changements rapides."
     },
     "resourceExtraction": {
-      "label": "Extraction ressources",
+      "label": "Économie de ressources",
       "description": "Les ressources naturelles financent le système. La proximité au flux compte le plus."
     },
     "characteristics": {

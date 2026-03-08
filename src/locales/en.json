@@ -1,4 +1,13 @@
 {
+  "tour": {
+    "step": "Step {{current}} / {{total}}",
+    "skip": "Skip tour",
+    "previous": "Previous",
+    "next": "Next",
+    "finish": "Finish",
+    "restart": "Replay tour",
+    "start": "Start tour"
+  },
   "exitKeys": {
     "destination": {
       "title": "Destinations optimized for you",
@@ -1120,27 +1129,27 @@
     "subtitle": "Every system falls into one of these categories",
     "examples": "Examples",
     "problemRent": {
-      "label": "Problem Rent",
+      "label": "Informal Economy",
       "description": "The dysfunction is the asset. Solving problems puts you at risk."
     },
     "stabilityRedis": {
-      "label": "Stability Redistribution",
+      "label": "Social Protection",
       "description": "The system rewards stability, protection, and redistribution."
     },
     "competenceTrust": {
-      "label": "Competence Trust",
+      "label": "Merit & Trust",
       "description": "The solution is the asset. Rigor and competence are rewarded."
     },
     "growthRisk": {
-      "label": "Growth Risk",
+      "label": "Growth & Innovation",
       "description": "Growth is the asset. Speed, scalability, and capital are rewarded."
     },
     "hybridTransition": {
-      "label": "Hybrid Transition",
+      "label": "System in Transition",
       "description": "Multiple logics coexist. Navigate contradictions and rapid changes."
     },
     "resourceExtraction": {
-      "label": "Resource Extraction",
+      "label": "Resource-based Economy",
       "description": "Natural resources fund the system. Proximity to the flow matters most."
     },
     "characteristics": {
