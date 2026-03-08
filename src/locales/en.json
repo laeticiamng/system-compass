@@ -5484,7 +5484,7 @@
     "back": "Back",
     "stepProgress": "Step {{current}}/{{total}}",
     "welcome": {
-      "title": "Welcome to System Compass",
+      "title": "Welcome to Compass",
       "desc": "Compare 80+ countries in minutes and find the destination that fits your profile.",
       "cta": "Start the tour",
       "skip": "No thanks, explore directly"
