@@ -10,7 +10,7 @@ const corsHeaders = {
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
 
-const SYSTEM_PROMPT = `Tu es un moteur d'analyse socio-économique pour System Compass.
+const SYSTEM_PROMPT = `Tu es un moteur d'analyse socio-économique pour Compass.
 Tu produis une fiche pays TRONC COMMUN ultra-complète et spécifique.
 
 CONTRAINTES ABSOLUES :
