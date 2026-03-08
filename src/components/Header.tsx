@@ -158,7 +158,7 @@ export function Header() {
 
         <div className="flex items-center gap-0.5 sm:gap-1 md:gap-2 min-w-0 flex-1 justify-end">
           {/* Desktop Nav - hide on smaller screens */}
-          <nav className="hidden xl:flex items-center gap-0.5">
+          <nav className="hidden lg:flex items-center gap-0.5">
             {/* Main nav items */}
             {allNavItems.map((item) => {
               const Icon = item.icon;
