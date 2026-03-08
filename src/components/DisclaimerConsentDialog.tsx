@@ -41,6 +41,7 @@ export function DisclaimerConsentDialog() {
                 variant="ghost"
                 size="sm"
                 className="gap-1 h-7 px-2 text-xs shrink-0"
+                aria-label={t('disclaimerConsent.dismiss', 'Fermer le bandeau')}
               >
                 <CheckCircle className="w-3 h-3" />
                 {t('disclaimerConsent.acceptShort', 'OK')}

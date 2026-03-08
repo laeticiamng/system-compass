@@ -285,7 +285,10 @@
     "responsibleDesc": "Your decisions are yours. Results depend on your actual context.",
     "checkbox": "I understand that this tool is informational and that I remain responsible for my decisions.",
     "seeDetails": "See full details",
-    "accept": "I understand, continue"
+    "accept": "I understand, continue",
+    "bannerText": "Educational analysis tool — not professional advice.",
+    "acceptShort": "OK",
+    "dismiss": "Dismiss banner"
   },
   "simulationDisclaimer": {
     "notPrediction": "Simulation ≠ Prediction",
@@ -8112,7 +8115,9 @@
       "blindSpots": "Specific blind spots",
       "latentModule": "Latent Module",
       "irreversaModule": "Irreversa Module",
-      "traceOS": "TraceOS"
+      "traceOS": "TraceOS",
+      "systemAnalysis": "System Analysis",
+      "governance": "Governance & Field"
     },
     "faq": {
       "title": "Frequently asked questions",
@@ -8137,6 +8142,12 @@
       "secure": "Secure payment",
       "noCommitment": "No commitment",
       "instantAccess": "Instant access"
+    },
+    "meta": {
+      "title": "Pricing - System Compass | Free, Premium & Enterprise",
+      "description": "Discover System Compass plans: free to explore, Premium for full access to 80+ countries, Enterprise for organizations. Transparent pricing.",
+      "ogTitle": "Pricing - System Compass",
+      "ogDescription": "Free to explore, Premium for full access. Transparent pricing with no hidden fees."
     }
   },
   "ai": {

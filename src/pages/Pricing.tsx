@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
 import { Check, Sparkles, Zap, X, Building2, Users, HelpCircle, ArrowRight, Shield } from "lucide-react";
@@ -12,6 +12,16 @@ import { LocalizedLink as Link } from '@/components/i18n';
 import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { cn } from "@/lib/utils";
 import { motion, useInView } from "framer-motion";
+
+/** Format price with Intl.NumberFormat for locale-aware display */
+function formatPrice(amount: number, locale: string, currency = 'EUR'): string {
+  return new Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency,
+    minimumFractionDigits: amount === 0 ? 0 : 2,
+    maximumFractionDigits: 2,
+  }).format(amount);
+}
 
 // Animated section wrapper
 function AnimatedSection({ children, className }: { children: React.ReactNode; className?: string }) {
@@ -32,8 +42,11 @@ function AnimatedSection({ children, className }: { children: React.ReactNode; c
 }
 
 const Pricing = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useLocalizedNavigate();
+  const locale = i18n.language === 'fr' ? 'fr-FR' : i18n.language === 'de' ? 'de-DE' : i18n.language === 'es' ? 'es-ES' : 'en-US';
+  const freePrice = useMemo(() => formatPrice(0, locale), [locale]);
+  const premiumPrice = useMemo(() => formatPrice(9.90, locale), [locale]);
   const { user } = useAuth();
   const { tier, createCheckout, openCustomerPortal, loading } = useSubscription();
 
@@ -54,7 +67,7 @@ const Pricing = () => {
     {
       id: 'free' as const,
       name: t('pricing.freeName', 'Gratuit'),
-      price: '0€',
+      price: freePrice,
       period: t('pricing.forever', 'pour toujours'),
       description: t('pricing.freeDescription', 'Découvrez le concept'),
       subtitle: t('pricing.freeSubtitle', 'Pas de carte bancaire requise'),
@@ -73,7 +86,7 @@ const Pricing = () => {
     {
       id: 'premium' as const,
       name: t('pricing.premiumName', 'Premium'),
-      price: '9,90€',
+      price: premiumPrice,
       period: t('pricing.perMonth', '/ mois'),
       description: t('pricing.premiumDescription', 'Accès complet pour particuliers'),
       icon: Sparkles,
@@ -135,12 +148,12 @@ const Pricing = () => {
   return (
     <>
       <Helmet>
-        <title>Tarifs - System Compass | Gratuit, Premium et Enterprise</title>
-        <meta name="description" content="Découvrez les offres System Compass : gratuit pour découvrir, Premium pour un accès complet aux 80+ pays, et Enterprise pour les organisations. Tarification transparente." />
-        <meta property="og:title" content="Tarifs - System Compass" />
-        <meta property="og:description" content="Gratuit pour découvrir, Premium pour un accès complet. Tarification transparente sans frais cachés." />
-        <meta name="twitter:title" content="Tarifs - System Compass" />
-        <meta name="twitter:description" content="Gratuit pour découvrir, Premium pour un accès complet. Tarification transparente." />
+        <title>{t('pricing.meta.title', 'Pricing - System Compass | Free, Premium & Enterprise')}</title>
+        <meta name="description" content={t('pricing.meta.description', 'Discover System Compass plans: free to explore, Premium for full access to 80+ countries, Enterprise for organizations. Transparent pricing.')} />
+        <meta property="og:title" content={t('pricing.meta.ogTitle', 'Pricing - System Compass')} />
+        <meta property="og:description" content={t('pricing.meta.ogDescription', 'Free to explore, Premium for full access. Transparent pricing with no hidden fees.')} />
+        <meta name="twitter:title" content={t('pricing.meta.ogTitle', 'Pricing - System Compass')} />
+        <meta name="twitter:description" content={t('pricing.meta.ogDescription', 'Free to explore, Premium for full access. Transparent pricing.')} />
       </Helmet>
       <div className="min-h-screen bg-background overflow-x-hidden">
       {/* Hero Section */}
@@ -413,9 +426,9 @@ const Pricing = () => {
                   <thead>
                     <tr className="border-b bg-muted/50">
                       <th className="text-left py-4 px-6">{t('pricing.comparison.feature', 'Fonctionnalité')}</th>
-                      <th className="text-center py-4 px-4">Gratuit</th>
-                      <th className="text-center py-4 px-4 bg-primary/5">Premium</th>
-                      <th className="text-center py-4 px-4">Pro</th>
+                      <th className="text-center py-4 px-4">{t('pricing.freeName', 'Gratuit')}</th>
+                      <th className="text-center py-4 px-4 bg-primary/5">{t('pricing.premiumName', 'Premium')}</th>
+                      <th className="text-center py-4 px-4">{t('pricing.proName', 'Pro / B2B')}</th>
                     </tr>
                   </thead>
                   <tbody>

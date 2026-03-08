@@ -346,7 +346,10 @@
     "responsibleDesc": "Tes décisions t'appartiennent. Les résultats dépendent de ton contexte réel.",
     "checkbox": "J'ai compris que cet outil est informatif et que je reste responsable de mes décisions.",
     "seeDetails": "Voir les détails complets",
-    "accept": "J'ai compris, continuer"
+    "accept": "J'ai compris, continuer",
+    "bannerText": "Outil d'analyse éducatif — pas de conseil professionnel.",
+    "acceptShort": "OK",
+    "dismiss": "Fermer le bandeau"
   },
   "simulationDisclaimer": {
     "notPrediction": "Simulation ≠ Prédiction",
@@ -8658,6 +8661,12 @@
       "secure": "Paiement sécurisé",
       "noCommitment": "Sans engagement",
       "instantAccess": "Accès immédiat"
+    },
+    "meta": {
+      "title": "Tarifs - System Compass | Gratuit, Premium et Enterprise",
+      "description": "Découvrez les offres System Compass : gratuit pour découvrir, Premium pour un accès complet aux 80+ pays, et Enterprise pour les organisations. Tarification transparente.",
+      "ogTitle": "Tarifs - System Compass",
+      "ogDescription": "Gratuit pour découvrir, Premium pour un accès complet. Tarification transparente sans frais cachés."
     }
   },
   "ai": {
