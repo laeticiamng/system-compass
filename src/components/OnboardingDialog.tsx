@@ -324,9 +324,9 @@ function GetStartedStep({ onComplete, profilePath, goal }: { onComplete: () => v
   };
 
   const b2bActions = [
-    { link: '/b2b', label: 'Solutions B2B', icon: Building2 },
-    { link: '/institutions', label: 'Pour les institutions', icon: Briefcase },
-    { link: '/api', label: 'Documentation API', icon: BookOpen },
+    { link: '/b2b', label: t('onboarding.action.b2bSolutions', 'Solutions B2B'), icon: Building2 },
+    { link: '/institutions', label: t('onboarding.action.institutions', 'Pour les institutions'), icon: Briefcase },
+    { link: '/api', label: t('onboarding.action.apiDocs', 'Documentation API'), icon: BookOpen },
   ];
 
   const actions = profilePath === 'b2b' ? b2bActions : (b2cActions[goal || 'explore'] || b2cActions.explore);
