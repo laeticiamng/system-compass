@@ -544,7 +544,7 @@ Format de sortie JSON:
 
   // POC Planner Generation
   "generate-poc-plan": {
-    systemPrompt: `Tu es un expert en planification de POC (Proof of Concept) pour System Compass.
+    systemPrompt: `Tu es un expert en planification de POC (Proof of Concept) pour Compass.
 Ta mission : proposer un plan de POC adapté au projet et au contexte pays.
 
 RÈGLES:
