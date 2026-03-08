@@ -146,8 +146,8 @@
     }
   },
   "common": {
-    "appName": "System Compass",
-    "tagline": "Simulador de decisões para sistemas reais",
+    "appName": "Compass",
+    "tagline": "Compare os países antes de ir",
     "positioningLine": "Ferramenta de análise e simulação. Tu decides, nós iluminamos.",
     "disclaimer": "Sem aconselhamento legal, financeiro ou médico. Continuas responsável pelas tuas decisões.",
     "yes": "Sim",

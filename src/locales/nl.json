@@ -109,8 +109,8 @@
     }
   },
   "common": {
-    "appName": "System Compass",
-    "tagline": "Beslissingssimulator voor echte systemen",
+    "appName": "Compass",
+    "tagline": "Vergelijk landen voordat je vertrekt",
     "positioningLine": "Analyse- en simulatietool. Jij beslist, wij verlichten.",
     "disclaimer": "Geen juridisch, financieel of medisch advies. Je blijft verantwoordelijk voor je beslissingen.",
     "yes": "Ja",
