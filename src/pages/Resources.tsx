@@ -192,10 +192,10 @@ export default function Resources() {
   return (
     <>
       <Helmet>
-        <title>Ressources & Guides d'Expatriation - System Compass</title>
-        <meta name="description" content="Checklists, guides pratiques et ressources pour préparer votre expatriation : finances, administration, santé, logement et bien plus." />
+        <title>Ressources & Guides d'Expatriation — Compass</title>
+        <meta name="description" content="Checklists, guides pratiques et ressources pour préparer votre expatriation : finances, administration, santé, logement." />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Ressources & Guides - System Compass" />
+        <meta property="og:title" content="Ressources & Guides — Compass" />
         <meta property="og:description" content="Checklists et guides pratiques pour préparer votre expatriation." />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />

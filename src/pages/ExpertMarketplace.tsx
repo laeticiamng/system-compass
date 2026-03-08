@@ -175,10 +175,10 @@ export default function ExpertMarketplace() {
   return (
     <>
       <Helmet>
-        <title>Experts en Expatriation - System Compass</title>
+        <title>Experts en Expatriation — Compass</title>
         <meta name="description" content="Consultez des experts vérifiés en expatriation : avocats, fiscalistes, conseillers. Réservation directe et avis vérifiés." />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Experts en Expatriation - System Compass" />
+        <meta property="og:title" content="Experts en Expatriation — Compass" />
         <meta property="og:description" content="Experts vérifiés en expatriation : avocats, fiscalistes, conseillers." />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />

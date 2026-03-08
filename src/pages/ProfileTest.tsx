@@ -258,10 +258,10 @@ export default function ProfileTest() {
   return (
     <>
       <Helmet>
-        <title>Test de Profil Expatrié - System Compass</title>
-        <meta name="description" content="Évaluez votre profil expatrié : ambition, tolérance au risque, besoin de sécurité. Découvrez quel type de système vous convient le mieux." />
+        <title>Test de Profil Expatrié — Compass</title>
+        <meta name="description" content="Évaluez votre profil expatrié : ambition, tolérance au risque, besoin de sécurité. Découvrez quel pays vous convient." />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Test de Profil Expatrié - System Compass" />
+        <meta property="og:title" content="Test de Profil Expatrié — Compass" />
         <meta property="og:description" content="Évaluez votre profil expatrié et trouvez le système qui vous correspond." />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />

@@ -298,10 +298,10 @@ export default function ExitKeys() {
   return (
     <main className="min-h-screen bg-background pt-24 pb-16 relative overflow-hidden">
       <Helmet>
-        <title>Clés de Sortie Personnalisées - System Compass</title>
-        <meta name="description" content="Trouvez vos clés de sortie personnalisées pour l'expatriation. Analyse de votre profil, nationalité, compétences et objectifs pour identifier les meilleures stratégies." />
+        <title>Stratégies d'Expatriation Personnalisées — Compass</title>
+        <meta name="description" content="Trouvez vos stratégies d'expatriation personnalisées. Analyse de votre profil, nationalité, compétences et objectifs." />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Clés de Sortie - System Compass" />
+        <meta property="og:title" content="Stratégies d'Expatriation — Compass" />
         <meta property="og:description" content="Stratégies d'expatriation personnalisées basées sur votre profil et vos objectifs." />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />

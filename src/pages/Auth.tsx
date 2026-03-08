@@ -252,10 +252,10 @@ export default function Auth() {
   return (
     <>
       <Helmet>
-        <title>{t('auth.meta.title', 'Connexion - System Compass | Accédez à votre compte')}</title>
-        <meta name="description" content={t('auth.meta.description', "Connectez-vous à System Compass pour accéder à vos analyses de pays, recommandations personnalisées et tableau de bord. Créez un compte gratuit.")} />
+        <title>{t('auth.meta.title', 'Connexion — Compass')}</title>
+        <meta name="description" content={t('auth.meta.description', "Connectez-vous à Compass pour accéder à vos analyses de pays et recommandations personnalisées. Créez un compte gratuit.")} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={t('auth.meta.ogTitle', 'Connexion - System Compass')} />
+        <meta property="og:title" content={t('auth.meta.ogTitle', 'Connexion — Compass')} />
         <meta property="og:description" content={t('auth.meta.ogDescription', "Accédez à vos analyses de pays et stratégies de sortie personnalisées.")} />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />

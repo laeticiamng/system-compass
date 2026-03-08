@@ -54,8 +54,8 @@ export default function Roadmap() {
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
       <Helmet>
-        <title>{t('roadmap.metaTitle', 'Roadmap — System Compass')}</title>
-        <meta name="description" content={t('roadmap.metaDesc', 'Découvrez les fonctionnalités à venir et celles déjà livrées sur System Compass.')} />
+        <title>{t('roadmap.metaTitle', 'Roadmap — Compass')}</title>
+        <meta name="description" content={t('roadmap.metaDesc', 'Découvrez les fonctionnalités à venir et celles déjà livrées sur Compass.')} />
       </Helmet>
 
       <div className="mb-8 text-center">
