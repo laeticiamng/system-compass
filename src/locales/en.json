@@ -796,6 +796,8 @@
     "explore": "Explore",
     "tools": "Tools",
     "account": "Account",
+    "allTools": "See all tools",
+    "seeAll": "See all",
     "profileTest": "Profile Test",
     "madeWith": "Made with",
     "about": "About",
@@ -815,6 +817,39 @@
     "defaultCountry": "Default country",
     "defaultCountryTooltip": "Calculators use this country by default. Change it in tools.",
     "selectDefaultCountry": "Select default country"
+  },
+  "cookies": {
+    "title": "Privacy Settings",
+    "close": "Close",
+    "description": "We use cookies to improve your experience. You can customize your preferences below.",
+    "necessary": "Necessary cookies",
+    "necessaryDesc": "Essential for the site to function",
+    "analytics": "Analytics",
+    "analyticsDesc": "Understand how you use the site",
+    "preferences": "Preferences",
+    "preferencesDesc": "Remember your choices and settings",
+    "marketing": "Marketing",
+    "marketingDesc": "Personalize content and ads",
+    "customize": "Customize",
+    "rejectAll": "Reject all",
+    "acceptAll": "Accept all",
+    "saveChoices": "Save my choices",
+    "learnMore": "Learn more in our",
+    "privacyPolicy": "privacy policy"
+  },
+  "tips": {
+    "quickTest": {
+      "title": "🎯 Free profile test",
+      "desc": "In 2 minutes, find the countries most compatible with your profile."
+    },
+    "compare": {
+      "title": "📊 Compare up to 4 countries",
+      "desc": "Use the comparison tool to see differences side by side."
+    },
+    "exitKeys": {
+      "title": "🔑 Relocation strategies",
+      "desc": "Discover the concrete steps to relocate to a country."
+    }
   },
   "about": {
     "badge": "Our mission",
