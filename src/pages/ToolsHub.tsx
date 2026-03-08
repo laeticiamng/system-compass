@@ -93,7 +93,7 @@ export default function ToolsHub() {
       color: 'from-emerald-500/20 to-teal-500/20',
       borderColor: 'border-emerald-500/30',
       tools: [
-        { href: '/pyramid-quiz', icon: Gamepad2, label: t('hub.tool.quiz', 'Quiz Pyramides'), description: t('hub.tool.quizDesc', 'Testez vos connaissances') },
+        { href: '/pyramid-quiz', icon: Gamepad2, label: t('hub.tool.quiz', 'Quiz Découverte'), description: t('hub.tool.quizDesc', 'Testez vos connaissances') },
         { href: '/life-game', icon: Play, label: t('hub.tool.lifeGame', 'Mode Éducatif'), description: t('hub.tool.lifeGameDesc', 'Simulation interactive') },
         { href: '/gamification', icon: Award, label: t('hub.tool.gamification', 'Progression'), description: t('hub.tool.gamificationDesc', 'XP & badges'), badge: t('common.new', 'Nouveau') },
         { href: '/how-to-read', icon: BookOpen, label: t('hub.tool.guide', 'Guide'), description: t('hub.tool.guideDesc', 'Mode d\'emploi') },
