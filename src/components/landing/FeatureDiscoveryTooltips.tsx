@@ -55,21 +55,29 @@ function getDismissed(): string[] {
 
 export function FeatureDiscoveryTooltips() {
   const { t } = useTranslation();
+  const location = useLocation();
   const [dismissed, setDismissed] = useState<string[]>([]);
   const [currentTip, setCurrentTip] = useState<Tip | null>(null);
+
+  // Pages where specific tips are redundant
+  const pathname = location.pathname.replace(/^\/[a-z]{2}(?=\/|$)/, '') || '/';
+  const suppressedTips: string[] = [];
+  if (pathname.startsWith('/quick-test') || pathname.startsWith('/profile-test')) suppressedTips.push('quick_test');
+  if (pathname.startsWith('/compare')) suppressedTips.push('compare');
+  if (pathname.startsWith('/exit-keys') || pathname.startsWith('/strategies')) suppressedTips.push('exit_keys');
 
   useEffect(() => {
     const d = getDismissed();
     setDismissed(d);
 
-    // Show first undismissed tip after delay
+    // Show first undismissed + non-suppressed tip after delay
     const timer = setTimeout(() => {
-      const next = TIPS.find(tip => !d.includes(tip.id));
+      const next = TIPS.find(tip => !d.includes(tip.id) && !suppressedTips.includes(tip.id));
       if (next) setCurrentTip(next);
-    }, 8000); // Show after 8 seconds
+    }, 8000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [pathname]);
 
   const dismissTip = (tipId: string) => {
     const updated = [...dismissed, tipId];
