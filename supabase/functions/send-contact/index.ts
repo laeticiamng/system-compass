@@ -57,7 +57,7 @@ Deno.serve(async (req) => {
     }
 
     const sanitizedName = (name || 'Anonyme').toString().slice(0, 200)
-    const sanitizedSubject = (subject || 'Contact via System Compass').toString().slice(0, 300)
+    const sanitizedSubject = (subject || 'Contact via Compass').toString().slice(0, 300)
     const sanitizedMessage = message.toString().slice(0, 5000)
     const sanitizedEmail = email.toString().slice(0, 320)
 
