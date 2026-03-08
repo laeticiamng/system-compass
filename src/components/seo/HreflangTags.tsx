@@ -1,8 +1,9 @@
 import { Helmet } from 'react-helmet-async';
 import { usePathWithoutLang } from '@/hooks/useLocalizedPath';
 import { SUPPORTED_LANGUAGES } from '@/i18n';
+import { SITE_CONFIG } from '@/config/site';
 
-const BASE_URL = 'https://system-compass.app';
+const BASE_URL = SITE_CONFIG.productionUrl;
 
 export function HreflangTags() {
   const currentPath = usePathWithoutLang();

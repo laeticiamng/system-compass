@@ -187,7 +187,7 @@ export default function ApiDocs() {
           </h2>
           <div className="relative">
             <pre className="bg-muted/50 rounded-lg p-4 text-xs overflow-x-auto font-mono">
-              <code>{`curl -X GET "https://api.system-compass.app/v1/countries/portugal" \\
+              <code>{`curl -X GET "https://api.compass-app.dev/v1/countries/portugal" \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Accept: application/json"
 
@@ -208,7 +208,7 @@ export default function ApiDocs() {
               variant="ghost"
               size="sm"
               className="absolute top-2 right-2"
-              onClick={() => copyToClipboard('curl -X GET "https://api.system-compass.app/v1/countries/portugal"')}
+              onClick={() => copyToClipboard('curl -X GET "https://api.compass-app.dev/v1/countries/portugal"')}
             >
               {copiedPath ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
             </Button>
