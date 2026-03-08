@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { LocalizedLink as Link } from '@/components/i18n';
 import { Card, CardContent } from '@/components/ui/card';
 import { Globe, Shield, Compass, TrendingUp, Users, MapPin } from 'lucide-react';
 
