@@ -162,9 +162,9 @@
   },
   "pwa": {
     "title": "Installer l'application",
-    "subtitle": "Accédez à System Compass depuis votre écran d'accueil comme une application native",
+    "subtitle": "Accédez à Compass depuis votre écran d'accueil comme une application native",
     "pageTitle": "📱 Installation de l'application",
-    "pageDescription": "Installez System Compass sur votre appareil pour une expérience optimale",
+    "pageDescription": "Installez Compass sur votre appareil pour une expérience optimale",
     "installNow": "Installer maintenant",
     "note": "L'application fonctionne sur tous les navigateurs modernes. Pour une installation optimale, utilisez Safari sur iOS ou Chrome sur Android.",
     "ios": {
