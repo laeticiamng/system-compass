@@ -6692,7 +6692,51 @@
       "risksDesc": "Inflation, emploi, instabilité",
       "stable": "Stable",
       "transition": "Transition",
-      "volatile": "Volatil"
+      "volatile": "Volatil",
+      "updatedDate": "Mis à jour mars 2026",
+      "mapTitle": "Zones de conflit actives",
+      "mapSubtitle": "6 zones de conflit ou de haute tension suivies en temps réel. Cliquez pour voir l'impact sur les pays voisins.",
+      "zonesTracked": "zones suivies",
+      "since": "Depuis",
+      "estimatedCasualties": "Victimes est.",
+      "impactedCountries": "Pays impactés",
+      "viewAlerts": "Voir les alertes détaillées",
+      "status": {
+        "war": "Guerre active",
+        "highTension": "Haute tension",
+        "instability": "Instabilité"
+      },
+      "trend": {
+        "escalating": "En escalade",
+        "stable": "Stable",
+        "de-escalating": "En désescalade"
+      },
+      "zones": {
+        "ukraine": {
+          "name": "Ukraine — Russie",
+          "summary": "Conflit armé depuis 2022. Sanctions massives UE/US. Impact énergétique et visas dans toute l'Europe de l'Est."
+        },
+        "gaza": {
+          "name": "Israël — Gaza",
+          "summary": "Conflit à Gaza. Perturbations en mer Rouge (+30 % coûts de fret). Tensions régionales avec le Liban et l'Iran."
+        },
+        "sahel": {
+          "name": "Sahel (Mali, Burkina, Niger)",
+          "summary": "Coups d'État en cascade. Retrait des forces françaises. Alliance AES pro-Russie. Risque élevé pour les expatriés."
+        },
+        "sudan": {
+          "name": "Soudan",
+          "summary": "Guerre civile FAR vs FSR. Plus grande crise de déplacement au monde (10M+). Famine. Totalement déconseillé."
+        },
+        "myanmar": {
+          "name": "Myanmar",
+          "summary": "Guerre civile contre la junte militaire. Effondrement de l'État. Réfugiés fuyant vers la Thaïlande et l'Inde."
+        },
+        "taiwan": {
+          "name": "Détroit de Taïwan",
+          "summary": "Exercices militaires chinois réguliers. Risque de blocus 15-25 %. Impact semi-conducteurs (TSMC = 60 % mondial)."
+        }
+      }
     },
     "historical": {
       "title": "Héritage historique",
