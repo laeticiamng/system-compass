@@ -352,7 +352,7 @@ export default function Privacy() {
             <section className="p-6 rounded-xl bg-card border border-border/50">
               <h2 className="text-xl font-semibold mb-4">{t('privacy.cookies.title', 'Cookies')}</h2>
               <div className="space-y-4">
-                <p>{t('privacy.cookies.desc', "System Compass utilise un minimum de cookies, strictement nécessaires au fonctionnement du service :")}</p>
+                <p>{t('privacy.cookies.desc', "Compass utilise un minimum de cookies, strictement nécessaires au fonctionnement du service :")}</p>
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm">
                     <thead>
