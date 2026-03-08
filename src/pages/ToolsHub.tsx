@@ -63,9 +63,9 @@ export default function ToolsHub() {
       tools: [
         { href: '/quick-test', icon: Zap, label: t('hub.tool.quickTest', 'Test Rapide'), description: t('hub.tool.quickTestDesc', '2 min'), badge: t('common.popular', 'Populaire') },
         { href: '/profile-test', icon: User, label: t('hub.tool.profileTest', 'Test Complet'), description: t('hub.tool.profileTestDesc', '15 min') },
-        { href: '/tools/matcher', icon: Users, label: t('hub.tool.matcher', 'Matcher Pays IA'), description: t('hub.tool.matcherDesc', '10 questions, top 5 pays'), badge: t('common.new', 'Nouveau') },
-        { href: '/profile-matcher', icon: Users, label: t('hub.tool.profileMatcher', 'Matcher Avancé'), description: t('hub.tool.profileMatcherDesc', 'Compatibilité par profil') },
-        { href: '/life-trajectory', icon: TrendingUp, label: t('hub.tool.trajectory', 'Trajectoire'), description: t('hub.tool.trajectoryDesc', 'Simulation vie') },
+        { href: '/tools/matcher', icon: Users, label: t('hub.tool.matcher', 'Trouver mon pays'), description: t('hub.tool.matcherDesc', '10 questions, top 5 pays'), badge: t('common.new', 'Nouveau') },
+        { href: '/profile-matcher', icon: Users, label: t('hub.tool.profileMatcher', 'Compatibilité avancée'), description: t('hub.tool.profileMatcherDesc', 'Analyse détaillée par profil') },
+        { href: '/life-trajectory', icon: TrendingUp, label: t('hub.tool.trajectory', 'Simulation de vie'), description: t('hub.tool.trajectoryDesc', 'Projetez-vous dans un pays') },
         { href: '/tools/fiscal-simulator', icon: Calculator, label: t('hub.tool.fiscalSim', 'Simulateur Fiscal'), description: t('hub.tool.fiscalSimDesc', 'Impôts + pouvoir d\'achat'), badge: t('common.new', 'Nouveau') },
         { href: '/fiscal-calculator', icon: Calculator, label: t('hub.tool.fiscalCalc', 'Calculateur Fiscal'), description: t('hub.tool.fiscalCalcDesc', 'Net vs Brut') },
       ] as ToolItem[],
