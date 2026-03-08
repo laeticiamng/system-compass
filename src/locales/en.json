@@ -7077,9 +7077,9 @@
     },
     "readTime": "{{min}} min",
     "connection": {
-      "title": "Connection with System Compass",
+      "title": "Connection with Compass",
       "subtitle": "OVI enriches your simulations without influencing them",
-      "intro": "When you run a simulation in System Compass, OVI can suggest relevant readings. The goal: nourish your reflection, not orient your decision.",
+      "intro": "When you run a simulation in Compass, OVI can suggest relevant readings. The goal: nourish your reflection, not orient your decision.",
       "ex1": {
         "sim": "Career trajectory simulation",
         "sug1": "Framework: Irreversible Decisions",
