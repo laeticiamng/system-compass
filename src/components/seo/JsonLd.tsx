@@ -272,7 +272,7 @@ export function BlogPostingJsonLd({ title, description, datePublished, author, u
       },
       publisher: {
         '@type': 'Organization',
-        name: 'System Compass',
+        name: 'Compass',
         logo: {
           '@type': 'ImageObject',
           url: `${SITE_CONFIG.productionUrl}/icons/icon-512x512.png`,
