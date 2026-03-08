@@ -43,6 +43,8 @@ function getMetrics(t: (key: string, fallback: string) => string) {
 }
 
 export function HeroMiniDemo() {
+  const { t } = useTranslation();
+  const METRICS = getMetrics(t);
   const [pairIndex, setPairIndex] = useState(0);
   const [visibleMetric, setVisibleMetric] = useState(0);
   const [isAnimating, setIsAnimating] = useState(true);
