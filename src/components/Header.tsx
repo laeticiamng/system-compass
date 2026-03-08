@@ -120,6 +120,14 @@ export function Header() {
   const isSimulationPage = SIMULATION_SEGMENTS.some(page => pathForCheck.startsWith(page));
   const showDisclaimer = isSimulationPage && !disclaimerDismissed;
 
+  const isRouteActive = (href: string) => {
+    if (href === '/') return pathForCheck === '/';
+    if (href === '/countries') {
+      return pathForCheck === '/countries' || pathForCheck === '/world-map' || pathForCheck.startsWith('/country/');
+    }
+    return pathForCheck === href || pathForCheck.startsWith(`${href}/`);
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       {/* Compact disclaimer banner for simulation pages */}
