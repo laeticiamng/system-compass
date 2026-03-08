@@ -50,6 +50,7 @@ import {
   LazyExpatriationTimeline, LazyCountryChecklist, LazyFiscalBeforeAfter, LazyChangelog,
   LazyRegulatoryAlerts, LazyFamilyWorkspace, LazyExpatReviews, LazyApiDocs,
   LazyWebhooksDocs, LazyLifeSimulator,
+  LazyRoadmap, LazyStatus, LazyBetaFeedback,
 } from "@/routes/LazyRoutes";
 
 // ============================================================
