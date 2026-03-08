@@ -14,7 +14,7 @@ import {
   Compass, Target, TrendingUp, Calculator, Globe, Users,
   Building2, ArrowRight, ArrowLeft, Sparkles, CheckCircle2,
   MapPin, Shield, BookOpen, BarChart3, Briefcase, Heart,
-  Plane, User
+  Plane, User, Stethoscope
 } from 'lucide-react';
 import { useDialogCoordinator } from './DialogCoordinator';
 
