@@ -81,7 +81,7 @@ export function Header() {
     { href: '/pricing', label: t('nav.pricing', 'Tarifs'), icon: CreditCard },
     { href: '/usage', label: t('nav.usage', 'Consommation'), icon: BarChart3 },
     { href: '/settings/notifications', label: t('nav.notifications', 'Notifications'), icon: Bell },
-    { href: '/resources', label: t('nav.resources'), icon: FileText },
+    { href: '/resources', label: t('nav.resources', 'Ressources'), icon: FileText },
     { href: '/institutions', label: t('nav.institutions', 'Institutions'), icon: Building2 },
     { href: '/b2b', label: t('nav.b2b', 'Solutions B2B'), icon: Building2 },
     { href: '/experts', label: t('nav.experts', 'Experts'), icon: Users },
