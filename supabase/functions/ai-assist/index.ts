@@ -127,7 +127,7 @@ Format de sortie JSON:
   },
 
   "generate-checklist": {
-    systemPrompt: `Tu es un assistant de planification pour System Compass.
+    systemPrompt: `Tu es un assistant de planification pour Compass.
 Ta mission : convertir une trajectoire en étapes concrètes.
 
 RÈGLES ABSOLUES:
