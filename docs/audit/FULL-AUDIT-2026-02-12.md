@@ -1,7 +1,7 @@
-# Audit Complet - System Compass
+# Audit Complet - Compass
 **Date :** 12 fevrier 2026
 **Branche :** `claude/conduct-audit-df9Cy`
-**Scope :** Audit technique et non-technique de la plateforme System Compass
+**Scope :** Audit technique et non-technique de la plateforme Compass
 
 ---
 
