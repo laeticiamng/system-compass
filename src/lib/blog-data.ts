@@ -234,7 +234,7 @@ D'autres juridictions méritent d'être considérées selon votre activité : Si
 Avertissement : La création d'une structure à l'étranger dans un but principalement fiscal sans substance économique réelle (bureaux, employés, activité effective) peut être requalifiée par l'administration fiscale française comme un montage abusif. Les règles CFC (Controlled Foreign Company) permettent à la France d'imposer les bénéfices d'une société étrangère contrôlée par un résident français si cette société est soumise à un régime fiscal privilégié. Toute structuration internationale doit être accompagnée par des professionnels qualifiés et respecter la substance économique réelle.`,
     category: 'fiscal',
     tags: ['entreprise', 'création société', 'juridiction', 'e-residency', 'fiscalité entreprise'],
-    author: 'System Compass',
+    author: 'Compass',
     publishedAt: '2025-03-25',
     readTime: 14,
     featured: false,
