@@ -1,160 +1,115 @@
 
-
-# Audit Complet — Ce qui manque pour rendre System Compass unique et revolutionnaire
-
-## Etat actuel
-
-System Compass est deja une plateforme impressionnante : 80+ pages, 72 pays, 36 edge functions, 13 langues, scanner geopolitique IA, modules B2B/governance/gamification, export PDF, marketplace d'experts, et un design system solide. C'est un produit mature.
-
-L'audit ci-dessous identifie les **lacunes strategiques** qui separent une bonne plateforme d'une plateforme *incontournable*.
+# Audit complet pre-production -- System Compass
 
 ---
 
-## A. Experiences manquantes a fort impact
+## A. SECURITE
 
-### A1. Assistant IA conversationnel contextuel
-Actuellement, `AiHelpButton` propose des actions predefinies. Il manque un **chatbot IA persistent** (type ChatGPT) qui :
-- Connait le profil utilisateur, ses pays favoris, son avancement
-- Repond en langage naturel : "Quels pays acceptent mon visa freelance ?" "Compare le Portugal et la Thailande pour ma situation"
-- Guide l'utilisateur pas a pas dans son parcours d'expatriation
-- Accessible depuis un panneau lateral permanent (le `AiSidePanel.tsx` existe mais semble sous-utilise)
+### A1. CRITIQUE -- Toutes les Edge Functions ont `verify_jwt = false`
+**Severite: P0**
+Les 38 fonctions dans `supabase/config.toml` ont `verify_jwt = false`. Cela signifie que n'importe qui peut appeler directement les endpoints batch, admin, suppression de compte, IA, paiement, etc. sans authentification JWT verifiee au niveau gateway.
 
-**Impact** : Differenciant majeur. Aucun concurrent n'offre un assistant IA personnalise pour l'expatriation.
+**Impact:** Abus de credits IA, suppression de comptes arbitraires, generation batch non autorisee, contournement Stripe.
 
-### A2. Simulateur de vie immersif ("A quoi ressemblera ma vie la-bas ?")
-Manque un simulateur qui transforme les donnees brutes en **projection concrete** :
-- Budget mensuel detaille (loyer, courses, transports, sante, loisirs) adapte au profil
-- Timeline interactive : "Mois 1 : arrivee, Mois 3 : ouverture compte bancaire, Mois 6 : permis de residence..."
-- Comparaison visuelle avant/apres (France vs destination) sur un tableau de bord split-screen
-- Scenarios "What-if" : "Et si mon salaire baisse de 20% ?" "Et si j'ai un enfant ?"
+**Correction:** Passer `verify_jwt = true` pour toutes les fonctions sauf les webhooks Stripe (`stripe-webhook`, `consultation-webhook`) qui recoivent des appels externes. Verifier que chaque fonction valide le JWT manuellement si necessaire.
 
-### A3. Temoignages et retours d'experience reels (UGC)
-Les temoignages actuels dans `TestimonialsSection` sont statiques/mock. Il manque :
-- Systeme d'avis utilisateurs reels par pays (verifie par connexion)
-- "Journal d'expatrie" : les utilisateurs partagent leur experience mois apres mois
-- Notation par critere (administration, integration, cout reel vs attendu)
-- Filtrage par profil similaire ("Montrez-moi les retours de freelancers francais au Portugal")
+### A2. CORS trop permissif en fallback
+Le fichier `supabase/functions/_shared/cors.ts` n'inclut pas le domaine de preview Lovable (`id-preview--*.lovable.app`). En production c'est correct, mais le fallback `getAllowedOrigin()` sans `req` retourne le premier domaine -- les fonctions qui utilisent `corsHeaders` directement (sans passer `req`) acceptent tout via le fallback.
 
-### A4. Checklist administrative dynamique et connectee
-`CountryChecklist.tsx` existe mais manque de profondeur :
-- Checklist generee par l'IA en fonction du profil exact (nationalite, statut, famille)
-- Integration calendrier (Google Calendar / iCal) pour les deadlines
-- Rappels automatiques avant echeances visa/fiscales
-- Tracking des documents (passeport, apostilles, traductions) avec upload et stockage
+**Correction:** S'assurer que toutes les fonctions appellent `getCorsHeaders(req)` et non `corsHeaders` directement.
+
+### A3. `RequireAdmin` redirige vers `/auth` sans prefixe i18n
+Ligne 25 de `RequireAdmin.tsx`: `<Navigate to="/auth" replace />` -- contourne le systeme i18n et provoque une redirection 302 supplementaire via `LegacyRedirect`.
+
+**Correction:** Utiliser `useLocalizedPath` pour construire le chemin.
 
 ---
 
-## B. Fonctionnalites techniques manquantes
+## B. SEO & GEO
 
-### B1. Onboarding guide
-Le flag `onboarding: a ajouter tutoriel interactif` est dans l'audit depuis des mois. Un parcours guide (type Shepherd.js / product tour) qui :
-- Detecte les nouveaux utilisateurs et les guide etape par etape
-- Personnalise le tour selon le profil (B2C simple vs B2B governance)
-- Mesure le taux de completion
+### B1. `llms.txt` affiche "44+ pays" au lieu de "80+"
+**Severite: P1**
+Lignes 6, 10 de `public/llms.txt` : "44+ pays" -- incoherent avec le reste du site qui affiche "80+". Les LLM (GPT, Claude, Perplexity) indexeront la mauvaise metrique.
 
-### B2. Recherche globale intelligente
-`GlobalSearch.tsx` existe mais pourrait etre augmente :
-- Recherche semantique IA ("pays sans impot sur les plus-values crypto")
-- Resultats cross-modules (pays + experts + alertes + articles)
-- Suggestions predictives basees sur le profil
+### B2. Sitemap statique avec `lastmod` fixe
+Le `sitemap.xml` est un fichier statique avec `lastmod: 2026-03-01` partout. Ce n'est pas bloquant mais degrade le signal de fraicheur pour Google.
 
-### B3. Mode collaboratif reel (Family Workspace)
-`FamilyWorkspace.tsx` fonctionne avec des donnees demo statiques. Il faudrait :
-- Invitations par email avec lien partage
-- Synchronisation en temps reel (Supabase Realtime)
-- Vote et consensus sur les pays entre membres de la famille
-- Dashboard partage avec progression commune
+### B3. Description JSON-LD Organization hardcodee en francais
+`JsonLd.tsx` ligne 33 : la description Organization est en francais uniquement, meme quand `lang=en`. Impact GEO negatif pour le marche anglophone.
 
-### B4. Notifications intelligentes
-L'infra push est prete (`usePushNotifications`) mais manque :
-- Alertes proactives : "Le Portugal a change ses regles de visa NHR" → push aux utilisateurs qui suivent le Portugal
-- Digest hebdomadaire personnalise par email (via Resend, deja connecte)
-- "Moment ideal" : suggestions basees sur le timing ("Vous partez dans 3 mois, avez-vous fait votre X ?")
+### B4. FAQ JSON-LD hardcodee en francais sur la landing
+`Index.tsx` lignes 67-75 : les FAQs du schema JSON-LD sont en francais en dur, pas localisees via `t()`.
 
 ---
 
-## C. Lacunes de contenu et donnees
+## C. i18n
 
-### C1. Donnees temps reel
-Les donnees pays sont des snapshots statiques (seed). Il manquerait :
-- Cout de la vie actualise automatiquement (API Numbeo ou scraping Firecrawl — deja connecte)
-- Taux de change en temps reel
-- Index de qualite de l'air, meteo saisonniere
+### C1. SUBSCRIPTION_TIERS hardcode en francais
+`useSubscription.tsx` ligne 28 : `name: 'Gratuit'`, `name: 'Premium'` etc. -- pas de `t()`. Visible sur le dashboard en anglais.
 
-### C2. Contenu editorial / blog reel
-`Blog.tsx` et `BlogArticle.tsx` existent mais semblent vides ou mock. Un blog alimente :
-- Guides pays approfondis ("S'installer au Portugal en 2026 : le guide complet")
-- Analyses de tendances ("Les 5 pays qui attirent le plus de freelancers en 2026")
-- SEO-driven content pour le trafic organique
-
-### C3. Comparateur avance
-Le comparateur existe mais manque :
-- Comparaison de 5+ pays simultanement (actuellement limite a 4)
-- Export du comparatif en image/PDF brandee pour partage social
-- Score de compatibilite personnalise dans le comparateur
+### C2. Accessibilite aria-label quasi absente
+La recherche sur `aria-label` dans `src/pages` ne retourne qu'1 resultat (AdminDataSources). Les formulaires, boutons d'action et composants interactifs des 80+ pages n'ont pratiquement aucun label d'accessibilite.
 
 ---
 
-## D. Monetisation et croissance
+## D. PERFORMANCE & ARCHITECTURE
 
-### D1. Freemium funnel optimise
-- Manque un compteur visible "3/5 analyses gratuites restantes" pour creer l'urgence
-- Pas de trial period pour le Premium (7 jours gratuits)
-- Pas de referral/parrainage ("Invitez un ami, gagnez 1 mois")
+### D1. 80+ pages -- bundle initial potentiellement lourd
+Les pages core (Index, Auth, About, Contact, etc.) sont chargees de facon eager dans `routes/index.tsx`. C'est 12 imports synchrones. Les pages lazy sont bien configurees.
 
-### D2. Marketplace d'experts vivante
-Le booking est marque `a integrer` depuis l'audit. Il manque :
-- Paiement reel (Stripe Connect est configure mais pas connecte au flow)
-- Calendrier de disponibilite des experts
-- Appels video integres ou redirection Calendly
-- Commission automatique sur les transactions
+**Recommandation:** Verifier que le chunk principal ne depasse pas 250KB gzippe. Les chunks manuels (radix-ui, charts, maps, pdf) sont bien configures.
 
-### D3. API publique / Widgets embarquables
-`ApiDocs.tsx` et `WebhooksDocs.tsx` existent mais pas d'API reelle. Offrir :
-- API REST pour les partenaires (agences, blogs voyage)
-- Widget embarquable "Trouvez votre pays ideal" pour sites tiers
-- Programme d'affiliation
+### D2. `autoSeedTranslationsIfEmpty` au demarrage
+`main.tsx` execute un seed de traductions au chargement. Si le reseau est lent ou le seed echoue, cela ne bloque pas mais ajoute de la latence. Le `.catch(console.warn)` est correct.
+
+### D3. Triple ErrorBoundary
+Il existe 4 implementations d'ErrorBoundary (`common/ErrorBoundary`, `ui/error-boundary`, `common/GranularErrorBoundary`, `diagnostics/GlobalErrorBoundary`). Fonctionnel mais maintenance complexe.
 
 ---
 
-## E. Ce qui rendrait la plateforme UNIQUE (aucun concurrent ne fait ca)
+## E. PAIEMENT & STRIPE
 
-| Innovation | Description | Niveau de disruption |
-|-----------|-------------|---------------------|
-| **IA Coach expatriation** | Assistant conversationnel qui connait votre dossier et vous guide sur 12 mois | Tres eleve |
-| **Simulation de vie immersive** | "Vivez une journee type a Lisbonne" avec budget, transport, logement projetes | Eleve |
-| **Score de regret** | IA qui calcule la probabilite de retour/echec basee sur les profils similaires | Tres eleve |
-| **Reseau d'expatries verifies** | Mise en relation avec des expatries deja installes dans le pays cible | Eleve |
-| **Timeline reglementaire vivante** | Calendrier auto-genere des demarches admin avec rappels push | Eleve |
-| **Mode "Shadow expat"** | Suivre un expatrie pendant 30 jours (journal partage anonymise) | Tres eleve |
+### E1. Price ID en dur
+`useSubscription.tsx` ligne 39 : `priceId: 'price_1SxpOSDFa5Y9NR1I05modzpV'` -- si ce price ID est celui de test Stripe, il cassera en production. Verifier que c'est le bon price ID live.
 
 ---
 
-## F. Priorites d'implementation suggerees
+## F. UX / CONTENU
 
-```text
-IMMEDIAT (impact maximal, effort modere)
-├── 1. Assistant IA conversationnel (edge function + panneau lateral)
-├── 2. Onboarding guide interactif
-├── 3. Digest email hebdomadaire personnalise (Resend ready)
-└── 4. Blog reel avec contenus SEO generes par IA
+### F1. Manifest PWA `start_url: "/"` sans prefixe langue
+`manifest.json` ligne 6 : `"start_url": "/"` -- l'utilisateur qui installe la PWA sera redirige vers `/` puis vers `/:lang/`, ajoutant un delai de chargement initial.
 
-COURT TERME (1-2 semaines)
-├── 5. Simulateur de vie / budget projete par pays
-├── 6. UGC : avis et journaux d'expatries reels
-├── 7. Family Workspace collaboratif reel
-└── 8. Booking experts fonctionnel (Stripe Connect)
-
-MOYEN TERME (differenciation profonde)
-├── 9. Score de regret / probabilite de retour
-├── 10. Reseau d'expatries verifies (social layer)
-├── 11. API publique + widget embarquable
-└── 12. Mode hors-ligne complet (PWA)
-```
+### F2. FAQ landing non localisee (contenu)
+Les questions/reponses FAQ (lignes 67-75 Index.tsx) passent par `t()` avec fallback francais, mais le schema JSON-LD associe est en francais brut.
 
 ---
 
-## Resume
+## G. LEGAL / RGPD
 
-La plateforme est techniquement solide (669 tests, RLS A+, 36 edge functions). Ce qui manque n'est pas technique — c'est **l'experience humaine** : un assistant qui vous connait, des histoires reelles d'expatries, un simulateur qui rend le futur tangible, et un parcours guide qui elimine l'angoisse de l'inconnu. C'est la difference entre un outil d'analyse et un **compagnon d'expatriation**.
+### G1. Configuration correcte
+- Cookie consent via DialogCoordinator : OK
+- Pages legales (CGV, Mentions, Privacy, Disclaimer) : presentes et dans le sitemap
+- Anonymisation IPs apres 90 jours : trigger en place
+- Suppression de compte : edge function `delete-account` presente
 
+---
+
+## RESUME DES ACTIONS
+
+| # | Action | Priorite | Effort |
+|---|--------|----------|--------|
+| A1 | Passer `verify_jwt = true` sur ~35 fonctions (sauf webhooks) | P0 | 30min |
+| A3 | Corriger redirect `/auth` dans RequireAdmin avec i18n | P0 | 10min |
+| B1 | Mettre a jour `llms.txt` : "44+" → "80+" | P0 | 5min |
+| B3 | Localiser description JSON-LD Organization | P1 | 20min |
+| B4 | Localiser FAQ JSON-LD sur landing | P1 | 30min |
+| C1 | Internationaliser `SUBSCRIPTION_TIERS` labels | P1 | 15min |
+| C2 | Ajouter aria-labels sur les formulaires et boutons principaux | P2 | 2h |
+| E1 | Verifier price ID Stripe (test vs live) | P0 | 5min |
+| F1 | Mettre `start_url` PWA a `"/fr/"` ou detection dynamique | P2 | 10min |
+| A2 | Audit usage `corsHeaders` vs `getCorsHeaders(req)` dans chaque fonction | P1 | 1h |
+| D3 | Consolider les ErrorBoundary en 2 max | P3 | 1h |
+
+**Score pre-prod estime : 15/20** -- Les P0 (JWT, llms.txt, price ID, RequireAdmin i18n) doivent etre resolus avant publication. Le reste peut etre traite en sprint post-launch.
+
+Veux-tu que j'implemente les correctifs P0 en priorite ?
