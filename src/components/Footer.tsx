@@ -61,7 +61,7 @@ export function Footer() {
               <li><Link to="/tools/matcher" className="hover:text-foreground transition-colors block py-0.5">{t('nav.matcher', 'Matcher Pays IA')}</Link></li>
               <li><Link to="/tools/fiscal-simulator" className="hover:text-foreground transition-colors block py-0.5">{t('nav.fiscalSimulator', 'Simulateur Fiscal')}</Link></li>
               <li><Link to="/trace" className="hover:text-foreground transition-colors block py-0.5">{t('nav.traceJournal', 'Journal Décisions')}</Link></li>
-              <li><Link to="/pyramid-quiz" className="hover:text-foreground transition-colors block py-0.5">{t('nav.pyramidQuiz', 'Jeu Pyramides')}</Link></li>
+              <li><Link to="/pyramid-quiz" className="hover:text-foreground transition-colors block py-0.5">{t('nav.pyramidQuiz', 'Quiz Découverte')}</Link></li>
               <li><Link to="/gamification" className="hover:text-foreground transition-colors block py-0.5">{t('nav.gamification', 'Progression')}</Link></li>
               <li>
                 <Link to="/tools" className="hover:text-foreground transition-colors block py-0.5 text-primary font-medium">
