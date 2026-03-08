@@ -156,54 +156,59 @@ export function SoftwareApplicationJsonLd() {
   return <JsonLd data={schemaData} />;
 }
 
-// Service schema — localized provider URL
+// Service schema — localized provider URL and content
 export function ServiceJsonLd() {
   const { i18n } = useTranslation();
   const lang = i18n.language;
+  const isFr = lang === 'fr';
 
   return (
     <JsonLd data={{
       '@context': 'https://schema.org',
       '@type': 'Service',
-      name: 'Intelligence décisionnelle pour l\'expatriation',
+      name: isFr ? 'Intelligence décisionnelle pour l\'expatriation' : 'Decision intelligence for expatriation',
       provider: {
         '@type': 'Organization',
         name: 'System Compass',
         url: `${SITE_CONFIG.productionUrl}/${lang}`,
       },
-      description: 'Analyse systémique de 80+ pays pour planifier votre expatriation. Comparaison fiscale, visas, coût de la vie, sécurité. Approche par compatibilité de profil.',
-      serviceType: 'Aide à la décision expatriation',
+      description: isFr
+        ? 'Analyse systémique de 80+ pays pour planifier votre expatriation. Comparaison fiscale, visas, coût de la vie, sécurité. Approche par compatibilité de profil.'
+        : 'Systemic analysis of 80+ countries to plan your expatriation. Tax comparison, visas, cost of living, safety. Profile compatibility approach.',
+      serviceType: isFr ? 'Aide à la décision expatriation' : 'Expatriation decision support',
       areaServed: 'Worldwide',
       audience: {
         '@type': 'Audience',
-        audienceType: 'Expatriés potentiels, digital nomads, entrepreneurs internationaux, familles en relocalisation',
+        audienceType: isFr
+          ? 'Expatriés potentiels, digital nomads, entrepreneurs internationaux, familles en relocalisation'
+          : 'Potential expats, digital nomads, international entrepreneurs, relocating families',
       },
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
-        name: 'Outils System Compass',
+        name: isFr ? 'Outils System Compass' : 'System Compass Tools',
         itemListElement: [
           {
             '@type': 'Offer',
             itemOffered: {
               '@type': 'Service',
-              name: 'Comparaison multi-pays',
-              description: 'Comparez jusqu\'à 4 pays sur fiscalité, visas, coût de la vie, qualité de vie',
+              name: isFr ? 'Comparaison multi-pays' : 'Multi-country comparison',
+              description: isFr ? 'Comparez jusqu\'à 4 pays sur fiscalité, visas, coût de la vie, qualité de vie' : 'Compare up to 4 countries on taxation, visas, cost of living, quality of life',
             },
           },
           {
             '@type': 'Offer',
             itemOffered: {
               '@type': 'Service',
-              name: 'Test de profil expatrié',
-              description: 'Quiz de 2 minutes pour identifier vos pays compatibles',
+              name: isFr ? 'Test de profil expatrié' : 'Expat profile test',
+              description: isFr ? 'Quiz de 2 minutes pour identifier vos pays compatibles' : '2-minute quiz to identify your compatible countries',
             },
           },
           {
             '@type': 'Offer',
             itemOffered: {
               '@type': 'Service',
-              name: 'Simulateur fiscal international',
-              description: 'Calcul comparatif d\'impôts entre pays d\'origine et destination',
+              name: isFr ? 'Simulateur fiscal international' : 'International tax simulator',
+              description: isFr ? 'Calcul comparatif d\'impôts entre pays d\'origine et destination' : 'Comparative tax calculation between origin and destination countries',
             },
           },
         ],

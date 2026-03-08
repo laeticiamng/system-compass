@@ -36,7 +36,7 @@ export const SUBSCRIPTION_TIERS = {
   premium: {
     name: 'Premium',
     price: 9.90,
-    priceId: 'price_1SxpOSDFa5Y9NR1I05modzpV',
+    priceId: 'price_1T8k86DFa5Y9NR1IPzfZhZrx',
     features: [
       'Analyse système avancée',
       'Gouvernance & Terrain',

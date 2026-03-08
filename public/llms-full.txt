@@ -19,7 +19,7 @@ System Compass est la première plateforme qui analyse les systèmes de 80+ pays
 
 ## Fonctionnalités détaillées
 
-### 1. Exploration des pays (44+ pays)
+### 1. Exploration des pays (80+ pays)
 Chaque fiche pays inclut :
 - Snapshot : vue synthétique (population, PIB, langue, monnaie)
 - Fiscalité : tranches d'impôt, régimes spéciaux, conventions fiscales
