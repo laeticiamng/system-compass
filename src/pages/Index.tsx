@@ -175,6 +175,7 @@ export default function Index() {
               <span className="text-sm">{t('landing.hero.statsSystems', 'profils d\'expatrié')}</span>
             </div>
           </motion.div>
+          <TrustBadges />
         </div>
       </section>
 
