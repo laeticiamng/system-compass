@@ -67,10 +67,10 @@ export function Header() {
   
   // Outils d'analyse (dropdown Outils) - 5 essentiels + lien vers hub
   const toolsItems = [
-    { href: '/tools/matcher', label: t('nav.matcher', 'Matcher Pays IA'), icon: Users },
+    { href: '/tools/matcher', label: t('nav.matcher', 'Trouver mon pays'), icon: Users },
     { href: '/tools/fiscal-simulator', label: t('nav.fiscalSimulator', 'Simulateur Fiscal'), icon: BarChart3 },
     { href: '/compare', label: t('nav.compare', 'Comparer'), icon: Scale },
-    { href: '/prevention-filter', label: t('nav.preventionFilter', 'Filtre Décision'), icon: Shield },
+    { href: '/prevention-filter', label: t('nav.preventionFilter', 'Aide à la décision'), icon: Shield },
   ];
 
   // Pages info/compte — includes Pro modules merged in
