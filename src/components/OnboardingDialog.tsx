@@ -448,7 +448,7 @@ export function OnboardingDialog() {
             <Progress value={progress} className="h-1.5" />
             <div className="flex items-center justify-between">
               <span className="text-[10px] text-muted-foreground">
-                Étape {step + 1}/{totalSteps}
+                {t('onboarding.stepProgress', 'Étape {{current}}/{{total}}', { current: step + 1, total: totalSteps })}
               </span>
               {step > 0 && step < totalSteps - 1 && (
                 <button
