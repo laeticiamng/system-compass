@@ -57,7 +57,7 @@ export default function Partners() {
               Compass Partners
             </h1>
             <p className="text-sm sm:text-lg text-muted-foreground mb-6 sm:mb-8">
-              Diffusion responsable de System Compass
+              Diffusion responsable de Compass
             </p>
             
             <div className="bg-card border rounded-xl p-4 sm:p-6 text-left max-w-xl mx-auto">
