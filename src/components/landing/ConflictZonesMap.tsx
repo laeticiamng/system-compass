@@ -151,9 +151,9 @@ const STATUS_CONFIG = {
 };
 
 const TREND_CONFIG = {
-  escalating: { icon: '↗', color: 'text-red-500', label: 'Escalating' },
-  stable: { icon: '→', color: 'text-amber-500', label: 'Stable' },
-  'de-escalating': { icon: '↘', color: 'text-emerald-500', label: 'De-escalating' },
+  escalating: { icon: '↗', color: 'text-red-500', labelKey: 'geopolitics.trend.escalating', labelFallback: 'Escalating' },
+  stable: { icon: '→', color: 'text-amber-500', labelKey: 'geopolitics.trend.stable', labelFallback: 'Stable' },
+  'de-escalating': { icon: '↘', color: 'text-emerald-500', labelKey: 'geopolitics.trend.de-escalating', labelFallback: 'De-escalating' },
 };
 
 // Realistic continent SVG with better proportions (Robinson-like projection)
@@ -479,7 +479,7 @@ export function ConflictZonesMap() {
                     </Badge>
                     <Badge variant="outline" className={cn('text-xs gap-1', trend.color)}>
                       <TrendingUp className="w-3 h-3" />
-                      {trend.label}
+                      {t(trend.labelKey, trend.labelFallback)}
                     </Badge>
                   </div>
 

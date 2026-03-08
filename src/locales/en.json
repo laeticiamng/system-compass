@@ -5810,7 +5810,51 @@
       "risksDesc": "Inflation, employment, instability",
       "stable": "Stable",
       "transition": "Transition",
-      "volatile": "Volatile"
+      "volatile": "Volatile",
+      "updatedDate": "Updated March 2026",
+      "mapTitle": "Active conflict zones",
+      "mapSubtitle": "6 conflict or high-tension zones tracked in real time. Click to see impact on neighboring countries.",
+      "zonesTracked": "zones tracked",
+      "since": "Since",
+      "estimatedCasualties": "Est. casualties",
+      "impactedCountries": "Impacted countries",
+      "viewAlerts": "View detailed alerts",
+      "status": {
+        "war": "Active war",
+        "highTension": "High tension",
+        "instability": "Instability"
+      },
+      "trend": {
+        "escalating": "Escalating",
+        "stable": "Stable",
+        "de-escalating": "De-escalating"
+      },
+      "zones": {
+        "ukraine": {
+          "name": "Ukraine — Russia",
+          "summary": "Armed conflict since 2022. Massive EU/US sanctions. Energy and visa impact across Eastern Europe."
+        },
+        "gaza": {
+          "name": "Israel — Gaza",
+          "summary": "Gaza conflict. Red Sea disruptions (+30% freight costs). Regional tensions with Lebanon and Iran."
+        },
+        "sahel": {
+          "name": "Sahel (Mali, Burkina, Niger)",
+          "summary": "Cascading coups. French forces withdrawn. AES alliance pro-Russia. High risk for expats."
+        },
+        "sudan": {
+          "name": "Sudan",
+          "summary": "Civil war SAF vs RSF. World's largest displacement crisis (10M+). Famine. Totally inadvisable."
+        },
+        "myanmar": {
+          "name": "Myanmar",
+          "summary": "Civil war against military junta. State collapse. Refugees fleeing to Thailand and India."
+        },
+        "taiwan": {
+          "name": "Taiwan Strait",
+          "summary": "Regular Chinese military exercises. Blockade risk 15-25%. Semiconductor impact (TSMC = 60% global)."
+        }
+      }
     },
     "historical": {
       "title": "Historical Legacy",
