@@ -5430,6 +5430,41 @@
     "previous": "Previous",
     "next": "Next",
     "start": "Get Started",
+    "welcome": {
+      "title": "Welcome to System Compass",
+      "desc": "Compare 80+ countries in minutes and find the destination that fits your profile.",
+      "cta": "Start the tour",
+      "skip": "No thanks, explore directly"
+    },
+    "profile": {
+      "title": "What's your profile?",
+      "subtitle": "We'll adapt your journey to your needs",
+      "b2c": "Individual",
+      "b2cDesc": "I'm planning a personal or family expatriation project",
+      "b2b": "Professional / Institution",
+      "b2bDesc": "I manage international operations for my organization"
+    },
+    "goal": {
+      "title": "What's your goal?",
+      "subtitle": "We'll guide you to the most relevant tools",
+      "explore": "Explore countries",
+      "relocate": "Prepare a move",
+      "invest": "Optimize my taxation",
+      "retire": "Plan my retirement"
+    },
+    "b2b": {
+      "title": "Your professional tools",
+      "subtitle": "Here are the modules designed for organizations"
+    },
+    "features": {
+      "title": "Your recommended tools",
+      "subtitle": "Based on your goal, here's where to start"
+    },
+    "start": {
+      "title": "You're ready!",
+      "subtitle": "Your personalized journey awaits. Where would you like to start?",
+      "later": "Explore freely"
+    },
     "step1": {
       "title": "Welcome to System Compass",
       "description": "Compare countries in depth before expatriating: taxes, visas, cost of living and quality of life."
