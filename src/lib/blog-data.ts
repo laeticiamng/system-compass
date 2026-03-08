@@ -210,7 +210,7 @@ Certains expatriés optent pour une approche hybride : la CFE pour la base (et l
 Quelques points de vigilance sont essentiels lors du choix de votre couverture. Vérifiez les exclusions de garanties, notamment les conditions préexistantes, les sports à risque et les pandémies. Assurez-vous que le contrat couvre le rapatriement sanitaire vers la France. Contrôlez les plafonds de remboursement, particulièrement pour l'hospitalisation. Examinez le réseau de professionnels de santé partenaires dans votre pays de destination (tiers payant vs avance de frais). Enfin, soyez attentif à l'évolution des cotisations avec l'âge : certains contrats deviennent prohibitifs après 60 ans. La souscription avant le départ est fortement recommandée, car les questionnaires médicaux sont généralement plus favorables lorsqu'on s'assure avant de quitter son pays d'origine.`,
     category: 'guide',
     tags: ['assurance santé', 'CFE', 'couverture médicale', 'sécurité sociale', 'rapatriement'],
-    author: 'System Compass',
+    author: 'Compass',
     publishedAt: '2025-03-18',
     readTime: 11,
     featured: false,
