@@ -339,7 +339,7 @@ export function Header() {
                 <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">{t('nav.explore', 'Explorer')}</div>
                 {allNavItems.map((item) => {
                   const Icon = item.icon;
-                  const isActive = pathForCheck === item.href || (item.href === '/' && pathForCheck === '/');
+                  const isActive = isRouteActive(item.href);
                   const isHighlight = 'highlight' in item && item.highlight;
                   return (
                     <Link
