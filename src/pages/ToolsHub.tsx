@@ -146,11 +146,11 @@ export default function ToolsHub() {
         <meta property="og:type" content="website" />
         <meta property="og:title" content={t('hub.meta.ogTitle', 'Centre des Outils - System Compass')} />
         <meta property="og:description" content={t('hub.meta.ogDescription', 'Tous vos outils d\'analyse, de planification et de décision en un seul endroit.')} />
-        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={t('hub.meta.ogTitle', 'Centre des Outils - System Compass')} />
         <meta name="twitter:description" content={t('hub.meta.ogDescription', 'Tous vos outils d\'analyse, de planification et de décision en un seul endroit.')} />
-        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
       <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20 pt-16 md:pt-20">
       <div className="container mx-auto px-4 py-8 md:py-12">
