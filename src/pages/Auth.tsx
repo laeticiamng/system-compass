@@ -180,7 +180,7 @@ export default function Auth() {
       const { error } = await supabase.auth.signInWithOtp({
         email,
         options: {
-          emailRedirectTo: `${window.location.origin}/dashboard`,
+          emailRedirectTo: `${window.location.origin}${window.location.pathname.match(/^\/[a-z]{2}(?=\/|$)/)?.[0] || ''}/dashboard`,
         },
       });
       if (error) {
