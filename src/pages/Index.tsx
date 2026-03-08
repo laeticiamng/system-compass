@@ -52,15 +52,15 @@ export default function Index() {
   return (
     <>
       <Helmet>
-        <title>{t('landing.meta.title', 'System Compass - Compare 80+ pays pour ton expatriation')}</title>
-        <meta name="description" content={t('landing.meta.description', 'Plateforme d\'intelligence décisionnelle pour l\'expatriation. Analyse systémique de 80+ pays : fiscalité, visas, coût de la vie, structures de pouvoir. Test de profil gratuit en 2 min.')} />
+        <title>{t('landing.meta.title', 'Compass — Compare 80+ pays pour ton expatriation')}</title>
+        <meta name="description" content={t('landing.meta.description', 'Compare 80+ pays avant de t\'expatrier : fiscalité, visas, coût de la vie, sécurité. Test de profil gratuit en 2 min.')} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={t('landing.meta.ogTitle', 'System Compass - Intelligence décisionnelle pour l\'expatriation')} />
-        <meta property="og:description" content={t('landing.meta.ogDescription', 'Comparez 80+ pays par compatibilité avec votre profil : fiscalité, visas, coût de la vie, sécurité. Approche systémique unique. Test gratuit.')} />
+        <meta property="og:title" content={t('landing.meta.ogTitle', 'Compass — Compare les pays avant de partir')} />
+        <meta property="og:description" content={t('landing.meta.ogDescription', 'Comparez 80+ pays par compatibilité avec votre profil : fiscalité, visas, coût de la vie, sécurité. Test gratuit en 2 min.')} />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={t('landing.meta.ogTitle', 'System Compass - Intelligence décisionnelle pour l\'expatriation')} />
-        <meta name="twitter:description" content={t('landing.meta.ogDescription', 'Comparez 80+ pays par compatibilité avec votre profil : fiscalité, visas, coût de la vie, sécurité. Approche systémique unique. Test gratuit.')} />
+        <meta name="twitter:title" content={t('landing.meta.ogTitle', 'Compass — Compare les pays avant de partir')} />
+        <meta name="twitter:description" content={t('landing.meta.ogDescription', 'Comparez 80+ pays par compatibilité avec votre profil : fiscalité, visas, coût de la vie, sécurité. Test gratuit en 2 min.')} />
         <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM information" />
       </Helmet>
