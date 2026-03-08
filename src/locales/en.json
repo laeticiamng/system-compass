@@ -1,4 +1,13 @@
 {
+  "tour": {
+    "step": "Step {{current}} / {{total}}",
+    "skip": "Skip tour",
+    "previous": "Previous",
+    "next": "Next",
+    "finish": "Finish",
+    "restart": "Replay tour",
+    "start": "Start tour"
+  },
   "exitKeys": {
     "destination": {
       "title": "Destinations optimized for you",

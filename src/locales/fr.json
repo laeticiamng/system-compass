@@ -1,4 +1,13 @@
 {
+  "tour": {
+    "step": "Étape {{current}} / {{total}}",
+    "skip": "Passer le tour",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "finish": "Terminer",
+    "restart": "Revoir le tour",
+    "start": "Commencer le tour"
+  },
   "exitKeys": {
     "destination": {
       "title": "Destinations optimisées pour vous",
