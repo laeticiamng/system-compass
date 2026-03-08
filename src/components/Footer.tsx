@@ -26,7 +26,7 @@ export function Footer() {
                 <Compass className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
               </div>
               <span className="font-display font-bold text-base sm:text-lg">
-                System <span className="gold-text">Compass</span>
+                <span className="gold-text">Compass</span>
               </span>
             </Link>
             <p className="text-xs sm:text-sm text-muted-foreground mb-3">
