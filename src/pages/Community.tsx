@@ -90,7 +90,7 @@ const CONTENT_RESOURCES = [
   {
     id: '1',
     type: 'podcast',
-    title: 'System Compass Podcast',
+    title: 'Compass Podcast',
     description: 'Interviews d\'expatriés et d\'experts chaque semaine.',
     statusLabel: 'En préparation',
     link: '#',
