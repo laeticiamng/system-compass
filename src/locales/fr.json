@@ -756,8 +756,8 @@
     "faq": {
       "title": "Questions fréquentes",
       "q1": {
-        "question": "Est-ce que System Compass peut me dire quel pays choisir ?",
-        "answer": "Non. L'outil analyse les systèmes et simule des scénarios, mais la décision finale t'appartient. Nous fournissons l'information, tu fais tes propres choix."
+        "question": "Est-ce que Compass peut me dire quel pays choisir ?",
+        "answer": "Non. L'outil analyse les pays et simule des scénarios, mais la décision finale t'appartient. Nous fournissons l'information, tu fais tes propres choix."
       },
       "q2": {
         "question": "Les données sont-elles fiables ?",
