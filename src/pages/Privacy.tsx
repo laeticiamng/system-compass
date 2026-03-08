@@ -56,7 +56,7 @@ export default function Privacy() {
 
             <div className="p-4 rounded-lg bg-primary/5 border border-primary/20 mb-6">
               <p className="text-sm">
-                {t('privacy.intro', "Chez System Compass (édité par EmotionsCare SASU), la protection de vos données personnelles est une priorité. Cette politique explique comment nous collectons, utilisons et protégeons vos informations conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés.")}
+                {t('privacy.intro', "Chez Compass (édité par EmotionsCare SASU), la protection de vos données personnelles est une priorité. Cette politique explique comment nous collectons, utilisons et protégeons vos informations conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés.")}
               </p>
             </div>
           </div>
