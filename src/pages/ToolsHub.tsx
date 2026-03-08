@@ -41,16 +41,16 @@ export default function ToolsHub() {
     {
       id: 'discover',
       title: t('hub.category.discover', 'Découvrir'),
-      description: t('hub.category.discoverDesc', 'Explorer les pays et comprendre les systèmes'),
+      description: t('hub.category.discoverDesc', 'Explorer les pays et leurs spécificités'),
       icon: Compass,
       color: 'from-blue-500/20 to-cyan-500/20',
       borderColor: 'border-blue-500/30',
       tools: [
         { href: '/countries', icon: Map, label: t('hub.tool.countries', 'Pays'), description: t('hub.tool.countriesDesc', '80+ pays analysés en profondeur') },
         { href: '/world-map', icon: Globe, label: t('hub.tool.worldMap', 'Carte Monde'), description: t('hub.tool.worldMapDesc', 'Vue interactive') },
-        { href: '/pyramid-types', icon: Triangle, label: t('hub.tool.pyramids', 'Systèmes'), description: t('hub.tool.pyramidsDesc', '6 types de systèmes') },
+        { href: '/pyramid-types', icon: Triangle, label: t('hub.tool.pyramids', 'Profils de pays'), description: t('hub.tool.pyramidsDesc', '6 catégories de pays') },
         { href: '/compare', icon: Scale, label: t('hub.tool.compare', 'Comparer'), description: t('hub.tool.compareDesc', 'Jusqu\'à 4 pays') },
-        { href: '/terrain', icon: Map, label: t('hub.tool.terrain', 'Réalités Terrain'), description: t('hub.tool.terrainDesc', 'Vécu quotidien') },
+        { href: '/terrain', icon: Map, label: t('hub.tool.terrain', 'Vie sur place'), description: t('hub.tool.terrainDesc', 'Vécu quotidien') },
       ] as ToolItem[],
     },
     {
@@ -63,9 +63,9 @@ export default function ToolsHub() {
       tools: [
         { href: '/quick-test', icon: Zap, label: t('hub.tool.quickTest', 'Test Rapide'), description: t('hub.tool.quickTestDesc', '2 min'), badge: t('common.popular', 'Populaire') },
         { href: '/profile-test', icon: User, label: t('hub.tool.profileTest', 'Test Complet'), description: t('hub.tool.profileTestDesc', '15 min') },
-        { href: '/tools/matcher', icon: Users, label: t('hub.tool.matcher', 'Matcher Pays IA'), description: t('hub.tool.matcherDesc', '10 questions, top 5 pays'), badge: t('common.new', 'Nouveau') },
-        { href: '/profile-matcher', icon: Users, label: t('hub.tool.profileMatcher', 'Matcher Avancé'), description: t('hub.tool.profileMatcherDesc', 'Compatibilité par profil') },
-        { href: '/life-trajectory', icon: TrendingUp, label: t('hub.tool.trajectory', 'Trajectoire'), description: t('hub.tool.trajectoryDesc', 'Simulation vie') },
+        { href: '/tools/matcher', icon: Users, label: t('hub.tool.matcher', 'Trouver mon pays'), description: t('hub.tool.matcherDesc', '10 questions, top 5 pays'), badge: t('common.new', 'Nouveau') },
+        { href: '/profile-matcher', icon: Users, label: t('hub.tool.profileMatcher', 'Compatibilité avancée'), description: t('hub.tool.profileMatcherDesc', 'Analyse détaillée par profil') },
+        { href: '/life-trajectory', icon: TrendingUp, label: t('hub.tool.trajectory', 'Simulation de vie'), description: t('hub.tool.trajectoryDesc', 'Projetez-vous dans un pays') },
         { href: '/tools/fiscal-simulator', icon: Calculator, label: t('hub.tool.fiscalSim', 'Simulateur Fiscal'), description: t('hub.tool.fiscalSimDesc', 'Impôts + pouvoir d\'achat'), badge: t('common.new', 'Nouveau') },
         { href: '/fiscal-calculator', icon: Calculator, label: t('hub.tool.fiscalCalc', 'Calculateur Fiscal'), description: t('hub.tool.fiscalCalcDesc', 'Net vs Brut') },
       ] as ToolItem[],

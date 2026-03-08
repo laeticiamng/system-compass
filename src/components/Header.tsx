@@ -67,10 +67,10 @@ export function Header() {
   
   // Outils d'analyse (dropdown Outils) - 5 essentiels + lien vers hub
   const toolsItems = [
-    { href: '/tools/matcher', label: t('nav.matcher', 'Matcher Pays IA'), icon: Users },
+    { href: '/tools/matcher', label: t('nav.matcher', 'Trouver mon pays'), icon: Users },
     { href: '/tools/fiscal-simulator', label: t('nav.fiscalSimulator', 'Simulateur Fiscal'), icon: BarChart3 },
     { href: '/compare', label: t('nav.compare', 'Comparer'), icon: Scale },
-    { href: '/prevention-filter', label: t('nav.preventionFilter', 'Filtre Décision'), icon: Shield },
+    { href: '/prevention-filter', label: t('nav.preventionFilter', 'Aide à la décision'), icon: Shield },
   ];
 
   // Pages info/compte — includes Pro modules merged in
@@ -157,7 +157,6 @@ export function Header() {
               <Compass className="w-4 h-4 md:w-5 md:h-5 text-primary" />
             </div>
             <span className="font-display font-bold text-sm sm:text-base md:text-lg truncate">
-              <span className="hidden xs:inline">System </span>
               <span className="gold-text">Compass</span>
             </span>
           </Link>
@@ -330,7 +329,7 @@ export function Header() {
               <SheetHeader>
                 <SheetTitle className="flex items-center gap-2">
                   <Compass className="w-5 h-5 text-primary" />
-                  System Compass
+                  Compass
                 </SheetTitle>
               </SheetHeader>
               <nav className="flex flex-col gap-1 mt-6">
