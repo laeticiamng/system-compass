@@ -27,7 +27,7 @@ export const ConfirmationEmail = ({
 }: ConfirmationEmailProps) => (
   <Html>
     <Head />
-    <Preview>Bienvenue sur System Compass 🧭 - Votre compte est prêt !</Preview>
+    <Preview>Bienvenue sur Compass 🧭 - Votre compte est prêt !</Preview>
     <Body style={main}>
       <Container style={container}>
         <Section style={logoSection}>
