@@ -428,7 +428,7 @@ export default function About() {
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground mb-6">
-              {t('orientationHub.alternatives.description', 'System Compass peut révéler que l\'option envisagée est trop risquée, irréaliste ou destructrice. Dans ce cas, la plateforme aide à explorer des alternatives :')}
+              {t('orientationHub.alternatives.description', 'Compass peut révéler que l\'option envisagée est trop risquée, irréaliste ou destructrice. Dans ce cas, la plateforme aide à explorer des alternatives :')}
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {[
