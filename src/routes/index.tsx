@@ -159,6 +159,9 @@ export const contentRoutes = [
   { path: "api", element: <LazyApiDocs /> },
   { path: "webhooks", element: <LazyWebhooksDocs /> },
   { path: "life-simulator", element: <LazyLifeSimulator /> },
+  { path: "roadmap", element: <LazyRoadmap /> },
+  { path: "status", element: <LazyStatus /> },
+  { path: "beta-feedback", element: <LazyBetaFeedback /> },
 ];
 
 export const adminRoutes = [
