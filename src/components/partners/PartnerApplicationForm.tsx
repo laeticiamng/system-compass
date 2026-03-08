@@ -97,7 +97,7 @@ export function PartnerApplicationForm({ type, onSuccess }: PartnerApplicationFo
               <CardDescription className="mt-2">
                 {isAmbassador 
                   ? t('partner.application.descAmbassador', "Partagez votre expérience et contribuez à diffuser la lucidité")
-                  : t('partner.application.descB2B', "Mettez System Compass en relation avec des organisations")}
+                  : t('partner.application.descB2B', "Mettez Compass en relation avec des organisations")}
               </CardDescription>
             </div>
             <Badge variant="outline" className="hidden sm:flex">
