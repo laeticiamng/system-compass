@@ -404,7 +404,7 @@ export default function About() {
           <CardContent className="space-y-4 text-muted-foreground">
             <p>{t('about.origin.paragraph1', 'Cet outil a été créé par quelqu\'un qui a perdu des années à faire des choix sans comprendre le système dans lequel il évoluait.')}</p>
             <p>{t('about.origin.paragraph2', 'Mauvais pays, mauvaise carrière, mauvais timing — pas par manque d\'intelligence, mais par manque de grille de lecture.')}</p>
-            <p>{t('about.origin.paragraph3', 'System Compass est né de cette frustration : offrir à tous l\'analyse que seuls les privilégiés reçoivent de leur entourage.')}</p>
+            <p>{t('about.origin.paragraph3', 'Compass est né de cette frustration : offrir à tous l\'analyse que seuls les privilégiés reçoivent de leur entourage.')}</p>
             <p className="font-medium text-foreground">
               {t('about.origin.conclusion', 'Ce n\'est pas un outil qui te dit quoi faire. C\'est un outil qui t\'aide à VOIR — pour que TU décides en connaissance de cause.')}
             </p>
