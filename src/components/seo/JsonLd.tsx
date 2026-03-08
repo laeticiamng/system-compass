@@ -23,21 +23,21 @@ export function OrganizationJsonLd() {
   const lang = i18n.language;
 
   const descriptions: Record<string, string> = {
-    fr: 'Plateforme d\'intelligence décisionnelle pour la relocalisation internationale. Analyse systémique de 80+ pays : fiscalité, visas, coût de la vie, structures de pouvoir. Approche unique par profils compatibles plutôt que classements génériques.',
-    en: 'Decision intelligence platform for international relocation. Systemic analysis of 80+ countries: taxation, visas, cost of living, power structures. Unique approach by compatible profiles rather than generic rankings.',
+    fr: 'Plateforme de comparaison de pays pour l\'expatriation. Analyse de 80+ pays : fiscalité, visas, coût de la vie, qualité de vie. Trouvez le pays qui correspond à votre profil.',
+    en: 'Country comparison platform for expatriation. Analysis of 80+ countries: taxation, visas, cost of living, quality of life. Find the country that fits your profile.',
   };
 
   const slogans: Record<string, string> = {
-    fr: 'Comparez les systèmes, pas les clichés.',
-    en: 'Compare systems, not stereotypes.',
+    fr: 'Compare les pays avant de partir.',
+    en: 'Compare countries before you go.',
   };
 
   return (
     <JsonLd data={{
       '@context': 'https://schema.org',
       '@type': 'Organization',
-      name: 'System Compass',
-      alternateName: 'System Compass - Intelligence Expatriation',
+      name: 'Compass',
+      alternateName: 'Compass - Compare les pays avant de partir',
       url: `${SITE_CONFIG.productionUrl}/${lang}`,
       logo: `${SITE_CONFIG.productionUrl}/icons/icon-512x512.png`,
       description: descriptions[lang] || descriptions.en,
