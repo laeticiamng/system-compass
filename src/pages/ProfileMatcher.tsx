@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo, useRef } from "react";
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
+import { SITE_CONFIG } from '@/config/site';
 import { supabase } from '@/integrations/supabase/client';
 import { useCountries } from '@/lib/countries-data';
 import { Button } from '@/components/ui/button';
