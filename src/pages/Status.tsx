@@ -5,7 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
-import { CheckCircle, AlertTriangle, XCircle, RefreshCw, Wifi, Database, Zap, Globe, Shield, Clock } from 'lucide-react';
+import { CheckCircle, AlertTriangle, XCircle, RefreshCw, Database, Zap, Globe, Shield, Clock } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 
 interface ServiceStatus {

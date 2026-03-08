@@ -35,11 +35,15 @@ export default function BetaFeedback() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<{
+    title: string; description: string;
+    feedback_type: 'bug' | 'feature' | 'improvement' | 'other';
+    priority: 'low' | 'medium' | 'high' | 'critical';
+  }>({
     title: '',
     description: '',
-    feedback_type: 'bug' as const,
-    priority: 'medium' as const,
+    feedback_type: 'bug',
+    priority: 'medium',
   });
   const [myFeedback, setMyFeedback] = useState<Array<{
     id: string; title: string; feedback_type: string; status: string; priority: string; created_at: string;
