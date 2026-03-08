@@ -335,7 +335,7 @@ Format de sortie JSON:
 
   // B2B Report Builder - Multi-step agent
   "build-report": {
-    systemPrompt: `Tu es un générateur de rapports B2B pour System Compass.
+    systemPrompt: `Tu es un générateur de rapports B2B pour Compass.
 Ta mission : produire un rapport structuré et professionnel.
 
 RÈGLES ABSOLUES:
