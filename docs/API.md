@@ -1,4 +1,4 @@
-# API Documentation — System Compass
+# API Documentation — Compass
 
 Documentation complète des Edge Functions et de l'architecture.
 

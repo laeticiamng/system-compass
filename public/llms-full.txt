@@ -9,7 +9,7 @@ Compass est une plateforme qui analyse 80+ pays pour aider les expatriés à com
 
 ## Proposition de valeur unique
 
-### Ce qui différencie System Compass
+### Ce qui différencie Compass
 1. **Approche systémique** : Analyse des pyramides de pouvoir (méritocratique, réseau, État-fort, hybride) plutôt que des classements génériques
 2. **Profils qui réussissent vs. échouent** : Pour chaque pays, identification des profils qui s'épanouissent et ceux qui souffrent
 3. **Clés de sortie personnalisées** : Stratégies concrètes de relocalisation basées sur votre situation (famille, revenus, compétences)

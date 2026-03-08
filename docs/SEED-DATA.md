@@ -1,4 +1,4 @@
-# Données de Seed - System Compass
+# Données de Seed - Compass
 
 Ce document explique comment peupler la base de données avec des données de test.
 

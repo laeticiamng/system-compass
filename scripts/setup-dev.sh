@@ -65,7 +65,7 @@ print_step "Configuration de l'environnement..."
 if [ ! -f .env ]; then
     # Create minimal .env for development without Supabase
     cat > .env << EOF
-# System Compass - Development Environment
+# Compass - Development Environment
 # Pour le mode complet avec backend, utilisez Lovable Cloud
 
 # Mode développement local (sans backend)

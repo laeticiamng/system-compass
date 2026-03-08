@@ -31,7 +31,7 @@
 
 ## 1. Resume executif
 
-**System Compass** est une plateforme SaaS d'aide a la decision pour l'expatriation et la relocalisation internationale. Elle analyse les systemes socio-economiques de 50+ pays et fournit des strategies personnalisees ("Exit Keys").
+**Compass** est une plateforme SaaS d'aide a la decision pour l'expatriation et la relocalisation internationale. Elle analyse les systemes socio-economiques de 50+ pays et fournit des strategies personnalisees ("Exit Keys").
 
 ### Metriques cles
 
