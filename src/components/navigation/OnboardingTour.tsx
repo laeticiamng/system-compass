@@ -103,7 +103,7 @@ export function OnboardingTour() {
                 onClick={skipTour}
                 className="text-muted-foreground order-2 sm:order-1"
               >
-                Passer le tour
+                {t('tour.skip', 'Skip tour')}
               </Button>
               
               <div className="flex items-center gap-2 order-1 sm:order-2 sm:ml-auto">
