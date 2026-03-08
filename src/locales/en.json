@@ -630,10 +630,10 @@
   },
   "landing": {
     "meta": {
-      "title": "System Compass - Compare 80+ countries for your expatriation",
-      "description": "Decision intelligence platform for expatriation. Systemic analysis of 80+ countries: taxation, visas, cost of living, power structures. Free profile test in 2 min.",
-      "ogTitle": "System Compass - Decision intelligence for expatriation",
-      "ogDescription": "Compare 80+ countries by compatibility with your profile: taxation, visas, cost of living, safety. Unique systemic approach. Free test."
+      "title": "Compass - Compare 80+ countries for your expatriation",
+      "description": "Country comparison platform for expatriation. Analysis of 80+ countries: taxation, visas, cost of living, quality of life. Free profile test in 2 min.",
+      "ogTitle": "Compass - Compare countries for your expatriation",
+      "ogDescription": "Compare 80+ countries by compatibility with your profile: taxation, visas, cost of living, safety. Free test."
     },
     "hero": {
       "badge": "100% free to start",
