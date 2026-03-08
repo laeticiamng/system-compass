@@ -229,28 +229,28 @@ function FeatureHighlightsStep({ onNext, goal }: StepProps & { goal: B2CGoal }) 
 
   const featuresByGoal: Record<string, { icon: React.ElementType; label: string; desc: string }[]> = {
     explore: [
-      { icon: Globe, label: 'Carte interactive', desc: '80+ pays avec profils complets et intelligence culturelle' },
-      { icon: Target, label: 'Country Matcher', desc: 'Trouvez le pays idéal selon votre profil' },
-      { icon: BarChart3, label: 'Comparateur', desc: 'Comparez jusqu\'à 4 pays côte à côte' },
-      { icon: BookOpen, label: 'Retours d\'expatriés', desc: 'Avis vérifiés de la communauté' },
+      { icon: Globe, label: t('onboarding.feat.interactiveMap', 'Carte interactive'), desc: t('onboarding.feat.interactiveMapDesc', '80+ pays avec profils complets et intelligence culturelle') },
+      { icon: Target, label: t('onboarding.feat.countryMatcher', 'Country Matcher'), desc: t('onboarding.feat.countryMatcherDesc', 'Trouvez le pays idéal selon votre profil') },
+      { icon: BarChart3, label: t('onboarding.feat.comparator', 'Comparateur'), desc: t('onboarding.feat.comparatorDesc', 'Comparez jusqu\'à 4 pays côte à côte') },
+      { icon: BookOpen, label: t('onboarding.feat.expatReviews', 'Retours d\'expatriés'), desc: t('onboarding.feat.expatReviewsDesc', 'Avis vérifiés de la communauté') },
     ],
     relocate: [
-      { icon: CheckCircle2, label: 'Checklist admin', desc: 'Toutes les démarches, étape par étape' },
-      { icon: Calculator, label: 'Simulateur budget', desc: 'Projetez votre budget mensuel dans le pays cible' },
-      { icon: MapPin, label: 'Timeline', desc: 'Chronologie des démarches sur 12 mois' },
-      { icon: Users, label: 'Espace famille', desc: 'Planifiez à plusieurs avec vote et consensus' },
+      { icon: CheckCircle2, label: t('onboarding.feat.checklist', 'Checklist admin'), desc: t('onboarding.feat.checklistDesc', 'Toutes les démarches, étape par étape') },
+      { icon: Calculator, label: t('onboarding.feat.budgetSim', 'Simulateur budget'), desc: t('onboarding.feat.budgetSimDesc', 'Projetez votre budget mensuel dans le pays cible') },
+      { icon: MapPin, label: t('onboarding.feat.timeline', 'Timeline'), desc: t('onboarding.feat.timelineDesc', 'Chronologie des démarches sur 12 mois') },
+      { icon: Users, label: t('onboarding.feat.familySpace', 'Espace famille'), desc: t('onboarding.feat.familySpaceDesc', 'Planifiez à plusieurs avec vote et consensus') },
     ],
     invest: [
-      { icon: Calculator, label: 'Simulateur fiscal', desc: 'Calcul d\'impôt dans 50+ juridictions' },
-      { icon: TrendingUp, label: 'Avant/Après', desc: 'Comparaison visuelle France vs destination' },
-      { icon: Shield, label: 'Régimes spéciaux', desc: 'NHR, Beckham, Non-Dom... tous les régimes' },
-      { icon: BarChart3, label: 'Financial Intel', desc: 'Analyse des risques financiers par pays' },
+      { icon: Calculator, label: t('onboarding.feat.taxSim', 'Simulateur fiscal'), desc: t('onboarding.feat.taxSimDesc', 'Calcul d\'impôt dans 50+ juridictions') },
+      { icon: TrendingUp, label: t('onboarding.feat.beforeAfter', 'Avant/Après'), desc: t('onboarding.feat.beforeAfterDesc', 'Comparaison visuelle France vs destination') },
+      { icon: Shield, label: t('onboarding.feat.specialRegimes', 'Régimes spéciaux'), desc: t('onboarding.feat.specialRegimesDesc', 'NHR, Beckham, Non-Dom... tous les régimes') },
+      { icon: BarChart3, label: t('onboarding.feat.financialIntel', 'Financial Intel'), desc: t('onboarding.feat.financialIntelDesc', 'Analyse des risques financiers par pays') },
     ],
     retire: [
-      { icon: Heart, label: 'Qualité de vie', desc: 'Santé, sécurité, climat, coût de vie' },
-      { icon: Calculator, label: 'Budget de vie', desc: 'Projection détaillée poste par poste' },
-      { icon: Globe, label: 'Visa retraite', desc: 'Options de visa pour retraités par pays' },
-      { icon: Users, label: 'Communauté', desc: 'Échangez avec d\'autres retraités expatriés' },
+      { icon: Heart, label: t('onboarding.feat.qualityOfLife', 'Qualité de vie'), desc: t('onboarding.feat.qualityOfLifeDesc', 'Santé, sécurité, climat, coût de vie') },
+      { icon: Calculator, label: t('onboarding.feat.livingBudget', 'Budget de vie'), desc: t('onboarding.feat.livingBudgetDesc', 'Projection détaillée poste par poste') },
+      { icon: Globe, label: t('onboarding.feat.retireVisa', 'Visa retraite'), desc: t('onboarding.feat.retireVisaDesc', 'Options de visa pour retraités par pays') },
+      { icon: Users, label: t('onboarding.feat.community', 'Communauté'), desc: t('onboarding.feat.communityDesc', 'Échangez avec d\'autres retraités expatriés') },
     ],
   };
 
