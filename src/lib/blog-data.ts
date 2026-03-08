@@ -164,7 +164,7 @@ Le système de santé portugais (SNS - Serviço Nacional de Saúde) est public e
 La communauté francophone au Portugal est très active, avec de nombreuses associations, groupes Facebook et événements réguliers. Si cette communauté facilite l'intégration initiale, nous recommandons de faire l'effort d'apprendre le portugais pour une intégration réelle et durable. La langue est relativement accessible pour les francophones et son apprentissage est un signe de respect envers le pays d'accueil qui est très apprécié par les Portugais.`,
     category: 'country',
     tags: ['Portugal', 'Lisbonne', 'visa', 'NHR', 'installation', 'immobilier'],
-    author: 'System Compass',
+    author: 'Compass',
     publishedAt: '2025-03-01',
     readTime: 13,
     featured: false,
