@@ -185,7 +185,7 @@ export function ServiceJsonLd() {
       },
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
-        name: isFr ? 'Outils System Compass' : 'System Compass Tools',
+        name: isFr ? 'Outils Compass' : 'Compass Tools',
         itemListElement: [
           {
             '@type': 'Offer',
