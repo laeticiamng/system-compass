@@ -49,7 +49,12 @@ export type EventName =
   | 'universal_errors_clicked'
   | 'return_visit'
   | 'account_created'
-  | 'page_view';
+  | 'page_view'
+  | 'quick_test_completed'
+  | 'signup_after_results'
+  | 'pricing_viewed'
+  | 'checkout_started'
+  | 'feedback_submitted';
 
 interface TrackEventParams {
   event: EventName;
