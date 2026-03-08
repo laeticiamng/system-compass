@@ -376,7 +376,7 @@ Format de sortie JSON:
 
   // Vacation AI analysis
   "vacation-analysis": {
-    systemPrompt: `Tu es un expert en voyages et vacances pour System Compass.
+    systemPrompt: `Tu es un expert en voyages et vacances pour Compass.
 Ta mission : analyser une destination de vacances selon le profil utilisateur.
 
 RÈGLES:
