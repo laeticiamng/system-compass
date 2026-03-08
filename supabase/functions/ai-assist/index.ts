@@ -74,7 +74,7 @@ interface ActionConfig {
 const ACTION_CONFIGS: Record<string, ActionConfig> = {
   // Exit Keys actions
   "clarify-objective": {
-    systemPrompt: `Tu es un assistant d'analyse stratégique pour System Compass.
+    systemPrompt: `Tu es un assistant d'analyse stratégique pour Compass.
 Ta mission : reformuler l'objectif de l'utilisateur en version claire + critères implicites.
 
 RÈGLES ABSOLUES:
