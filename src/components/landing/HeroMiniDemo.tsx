@@ -171,7 +171,7 @@ export function HeroMiniDemo() {
 
         {/* Progress dots */}
         <div className="flex justify-center gap-1.5 mt-3">
-          {COUNTRY_PAIRS.map((_, i) => (
+          {COUNTRY_PAIRS_DEF.map((_, i) => (
             <button
               key={i}
               onClick={() => { setPairIndex(i); setVisibleMetric(0); }}
