@@ -50,6 +50,7 @@ import {
   LazyExpatriationTimeline, LazyCountryChecklist, LazyFiscalBeforeAfter, LazyChangelog,
   LazyRegulatoryAlerts, LazyFamilyWorkspace, LazyExpatReviews, LazyApiDocs,
   LazyWebhooksDocs, LazyLifeSimulator,
+  LazyRoadmap, LazyStatus, LazyBetaFeedback,
 } from "@/routes/LazyRoutes";
 
 // ============================================================
@@ -158,6 +159,9 @@ export const contentRoutes = [
   { path: "api", element: <LazyApiDocs /> },
   { path: "webhooks", element: <LazyWebhooksDocs /> },
   { path: "life-simulator", element: <LazyLifeSimulator /> },
+  { path: "roadmap", element: <LazyRoadmap /> },
+  { path: "status", element: <LazyStatus /> },
+  { path: "beta-feedback", element: <LazyBetaFeedback /> },
 ];
 
 export const adminRoutes = [
@@ -230,5 +234,5 @@ export const LEGACY_ROUTE_SEGMENTS = [
   'admin', 'seed-translations', 'diagnostics',
   'match', 'multi-compare', 'systemic-mistakes', 'orientation-hub',
   'test', 'login', 'map', 'strategies', 'profile', 'game', 'matcher', 'legal',
-  'life-simulator',
+  'life-simulator', 'roadmap', 'status', 'beta-feedback',
 ];

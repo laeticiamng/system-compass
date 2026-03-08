@@ -2,6 +2,7 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 import { corsHeaders } from "../_shared/cors.ts";
+import { checkRateLimit, getRateLimitKey, rateLimitResponse } from "../_shared/rate-limit.ts";
 
 const SYSTEM_PROMPT = `Tu es l'Assistant System Compass, un coach IA expert en expatriation et mobilité internationale. Tu accompagnes les utilisateurs dans leur projet d'expatriation.
 
@@ -12,7 +13,7 @@ const SYSTEM_PROMPT = `Tu es l'Assistant System Compass, un coach IA expert en e
 - Fiscalité internationale et conventions de non-double-imposition
 - Intégration culturelle et réseaux d'expatriés
 - Évaluation des risques géopolitiques
-- Connaissance approfondie de 72+ pays avec données actualisées mars 2026
+- Connaissance approfondie de 80+ pays avec données actualisées mars 2026
 
 ## Règles :
 - Réponds toujours en français sauf si l'utilisateur écrit dans une autre langue
@@ -27,6 +28,12 @@ const SYSTEM_PROMPT = `Tu es l'Assistant System Compass, un coach IA expert en e
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
+  }
+
+  // Rate limit: 20 AI requests per minute per IP
+  const rl = checkRateLimit(getRateLimitKey(req, 'ai-chat'), { maxRequests: 20, windowSeconds: 60 });
+  if (!rl.allowed) {
+    return rateLimitResponse(rl, corsHeaders);
   }
 
   try {
