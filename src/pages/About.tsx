@@ -1,6 +1,7 @@
 import { LocalizedLink as Link } from '@/components/i18n';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
+import { SITE_CONFIG } from '@/config/site';
 import { 
   Compass, ArrowRight, Key, Target, Shield, TrendingUp, 
   Play, AlertTriangle, Brain, Lightbulb, Scale, Map, Users, Heart,
