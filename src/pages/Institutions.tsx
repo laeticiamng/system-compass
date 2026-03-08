@@ -180,7 +180,7 @@ export default function Institutions() {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-destructive">
                       <XCircle className="w-5 h-5" />
-                      {t('institutions.whatItDoesNot.title', 'Ce que System Compass ne fait PAS')}
+                      {t('institutions.whatItDoesNot.title', 'Ce que Compass ne fait PAS')}
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
