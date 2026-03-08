@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
 import { Check, Sparkles, Zap, X, Building2, Users, HelpCircle, ArrowRight, Shield } from "lucide-react";
@@ -12,6 +12,16 @@ import { LocalizedLink as Link } from '@/components/i18n';
 import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { cn } from "@/lib/utils";
 import { motion, useInView } from "framer-motion";
+
+/** Format price with Intl.NumberFormat for locale-aware display */
+function formatPrice(amount: number, locale: string, currency = 'EUR'): string {
+  return new Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency,
+    minimumFractionDigits: amount === 0 ? 0 : 2,
+    maximumFractionDigits: 2,
+  }).format(amount);
+}
 
 // Animated section wrapper
 function AnimatedSection({ children, className }: { children: React.ReactNode; className?: string }) {
