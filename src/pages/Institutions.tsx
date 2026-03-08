@@ -285,7 +285,7 @@ export default function Institutions() {
                   <DisclaimerBlock 
                     icon={<XCircle className="w-5 h-5" />}
                     title={t('institutions.disclaimer.noReplacement', 'Ne remplace pas une décision humaine')}
-                    description={t('institutions.disclaimer.noReplacementDesc', 'System Compass est un outil d\'aide à la réflexion. Il ne prend pas et ne doit pas prendre de décision à la place des responsables.')}
+                    description={t('institutions.disclaimer.noReplacementDesc', 'Compass est un outil d\'aide à la réflexion. Il ne prend pas et ne doit pas prendre de décision à la place des responsables.')}
                   />
                   <Separator />
                   <DisclaimerBlock 
