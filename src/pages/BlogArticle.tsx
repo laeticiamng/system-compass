@@ -98,7 +98,7 @@ export default function BlogArticle() {
   return (
     <>
       <Helmet>
-        <title>{article.title} - Blog System Compass</title>
+        <title>{article.title} — Blog Compass</title>
         <meta name="description" content={article.excerpt} />
         <meta property="og:title" content={article.title} />
         <meta property="og:description" content={article.excerpt} />

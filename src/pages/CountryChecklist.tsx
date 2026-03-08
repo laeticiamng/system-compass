@@ -98,7 +98,7 @@ export default function CountryChecklist() {
   return (
     <>
       <Helmet>
-        <title>{t('checklist.seoTitle', 'Checklist d\'expatriation par pays | System Compass')}</title>
+        <title>{t('checklist.seoTitle', 'Checklist d\'expatriation par pays | Compass')}</title>
         <meta
           name="description"
           content={t('checklist.seoDesc', 'Checklist administrative complète pour votre expatriation : visa, banque, assurance, logement. Suivez votre progression par pays.')}
