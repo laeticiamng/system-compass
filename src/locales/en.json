@@ -990,7 +990,10 @@
     "experts": "Expert Marketplace",
     "partnerServices": "Partner Services",
     "community": "Community",
-    "language": "Language"
+    "language": "Language",
+    "matcher": "AI Country Matcher",
+    "fiscalSimulator": "Tax Simulator",
+    "traceJournal": "Decision Journal"
   },
   "tests": {
     "resultSaved": "Result saved!",
