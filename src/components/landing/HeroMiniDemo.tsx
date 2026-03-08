@@ -33,12 +33,14 @@ const COUNTRY_PAIRS: [CountryData, CountryData][] = [
   ],
 ];
 
-const METRICS = [
-  { key: 'tax' as const, label: 'Impôts', suffix: '%', lower: true },
-  { key: 'cost' as const, label: 'Coût/mois', suffix: '€', lower: true },
-  { key: 'safety' as const, label: 'Sécurité', suffix: '/100', lower: false },
-  { key: 'quality' as const, label: 'Qualité vie', suffix: '/100', lower: false },
-];
+function getMetrics(t: (key: string, fallback: string) => string) {
+  return [
+    { key: 'tax' as const, label: t('miniDemo.tax', 'Impôts'), suffix: '%', lower: true },
+    { key: 'cost' as const, label: t('miniDemo.cost', 'Coût/mois'), suffix: '€', lower: true },
+    { key: 'safety' as const, label: t('miniDemo.safety', 'Sécurité'), suffix: '/100', lower: false },
+    { key: 'quality' as const, label: t('miniDemo.quality', 'Qualité vie'), suffix: '/100', lower: false },
+  ];
+}
 
 export function HeroMiniDemo() {
   const [pairIndex, setPairIndex] = useState(0);
