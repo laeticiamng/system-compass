@@ -314,7 +314,7 @@ export default function Institutions() {
                   {t('institutions.disclaimer.summary', 'L\'outil éclaire, le décideur reste responsable.')}
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  {t('institutions.disclaimer.summaryDesc', 'System Compass est conçu pour accompagner la réflexion, pas pour se substituer au jugement humain.')}
+                  {t('institutions.disclaimer.summaryDesc', 'Compass est conçu pour accompagner la réflexion, pas pour se substituer au jugement humain.')}
                 </p>
               </div>
             </TabsContent>
