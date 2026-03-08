@@ -105,7 +105,7 @@ export default function BetaFeedback() {
   if (!user) {
     return (
       <div className="container mx-auto px-4 py-16 text-center">
-        <Helmet><title>Beta Feedback — System Compass</title></Helmet>
+        <Helmet><title>Beta Feedback — Compass</title></Helmet>
         <Bug className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
         <h1 className="text-2xl font-bold mb-2">{t('feedback.loginRequired', 'Connexion requise')}</h1>
         <p className="text-muted-foreground">{t('feedback.loginDesc', 'Connectez-vous pour soumettre un retour beta.')}</p>
