@@ -87,6 +87,7 @@ export const analysisRoutes = [
   { path: "profile-matcher", element: <LazyProfileMatcher /> },
   { path: "fiscal-calculator", element: <LazyFiscalCalculator /> },
   { path: "fiscal-before-after", element: <LazyFiscalBeforeAfter /> },
+  { path: "healthcare", element: <LazyHealthcare /> },
 ];
 
 export const planningRoutes = [
