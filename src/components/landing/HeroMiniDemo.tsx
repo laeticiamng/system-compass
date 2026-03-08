@@ -59,7 +59,11 @@ export function HeroMiniDemo() {
   const [visibleMetric, setVisibleMetric] = useState(0);
   const [isAnimating, setIsAnimating] = useState(true);
 
-  const pair = COUNTRY_PAIRS[pairIndex];
+  const rawPair = COUNTRY_PAIRS_DEF[pairIndex];
+  const pair: [CountryData, CountryData] = [
+    { ...rawPair[0], name: t(rawPair[0].nameKey, rawPair[0].nameFallback) },
+    { ...rawPair[1], name: t(rawPair[1].nameKey, rawPair[1].nameFallback) },
+  ];
 
   // Auto-cycle through metrics then switch pair
   useEffect(() => {
