@@ -358,7 +358,7 @@ export function Header() {
                 <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">{t('nav.tools', 'Outils')}</div>
                 {toolsItems.map((item) => {
                   const Icon = item.icon;
-                  const isActive = location.pathname === item.href;
+                  const isActive = pathForCheck === item.href;
                   return (
                     <Link
                       key={item.href}
