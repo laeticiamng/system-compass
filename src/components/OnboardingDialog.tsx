@@ -19,7 +19,7 @@ import {
 import { useDialogCoordinator } from './DialogCoordinator';
 
 // ─── Profile types ───
-type ProfilePath = 'b2c' | 'b2b' | null;
+type ProfilePath = 'b2c' | 'b2b' | 'healthcare' | null;
 type B2CGoal = 'explore' | 'relocate' | 'invest' | 'retire' | null;
 
 interface StepProps {
