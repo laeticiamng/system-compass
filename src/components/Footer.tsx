@@ -111,7 +111,7 @@ export function Footer() {
           
           <div className="flex flex-col items-center justify-center gap-3 sm:gap-4 text-center">
             <p className="text-xs sm:text-sm text-muted-foreground">
-              © {currentYear} System Compass — EmotionsCare SASU
+              © {currentYear} Compass — EmotionsCare SASU
             </p>
             
             {/* Legal links */}
