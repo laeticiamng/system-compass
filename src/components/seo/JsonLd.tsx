@@ -169,7 +169,7 @@ export function ServiceJsonLd() {
       name: isFr ? 'Intelligence décisionnelle pour l\'expatriation' : 'Decision intelligence for expatriation',
       provider: {
         '@type': 'Organization',
-        name: 'System Compass',
+        name: 'Compass',
         url: `${SITE_CONFIG.productionUrl}/${lang}`,
       },
       description: isFr
