@@ -48,7 +48,7 @@ export default function ToolsHub() {
       tools: [
         { href: '/countries', icon: Map, label: t('hub.tool.countries', 'Pays'), description: t('hub.tool.countriesDesc', '80+ pays analysés en profondeur') },
         { href: '/world-map', icon: Globe, label: t('hub.tool.worldMap', 'Carte Monde'), description: t('hub.tool.worldMapDesc', 'Vue interactive') },
-        { href: '/pyramid-types', icon: Triangle, label: t('hub.tool.pyramids', 'Pyramides'), description: t('hub.tool.pyramidsDesc', '6 types de systèmes') },
+        { href: '/pyramid-types', icon: Triangle, label: t('hub.tool.pyramids', 'Systèmes'), description: t('hub.tool.pyramidsDesc', '6 types de systèmes') },
         { href: '/compare', icon: Scale, label: t('hub.tool.compare', 'Comparer'), description: t('hub.tool.compareDesc', 'Jusqu\'à 4 pays') },
         { href: '/terrain', icon: Map, label: t('hub.tool.terrain', 'Réalités Terrain'), description: t('hub.tool.terrainDesc', 'Vécu quotidien') },
       ] as ToolItem[],
@@ -93,7 +93,7 @@ export default function ToolsHub() {
       color: 'from-emerald-500/20 to-teal-500/20',
       borderColor: 'border-emerald-500/30',
       tools: [
-        { href: '/pyramid-quiz', icon: Gamepad2, label: t('hub.tool.quiz', 'Quiz Pyramides'), description: t('hub.tool.quizDesc', 'Testez vos connaissances') },
+        { href: '/pyramid-quiz', icon: Gamepad2, label: t('hub.tool.quiz', 'Quiz Découverte'), description: t('hub.tool.quizDesc', 'Testez vos connaissances') },
         { href: '/life-game', icon: Play, label: t('hub.tool.lifeGame', 'Mode Éducatif'), description: t('hub.tool.lifeGameDesc', 'Simulation interactive') },
         { href: '/gamification', icon: Award, label: t('hub.tool.gamification', 'Progression'), description: t('hub.tool.gamificationDesc', 'XP & badges'), badge: t('common.new', 'Nouveau') },
         { href: '/how-to-read', icon: BookOpen, label: t('hub.tool.guide', 'Guide'), description: t('hub.tool.guideDesc', 'Mode d\'emploi') },
