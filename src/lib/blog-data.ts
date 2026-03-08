@@ -116,7 +116,7 @@ Préparez le départ en impliquant les enfants dans le projet. Montrez-leur des 
 Une fois sur place, soyez patients et attentifs. L'adaptation prend en moyenne 6 à 12 mois pour un enfant. Maintenez des routines familières (repas en famille, rituels du coucher) tout en étant ouverts aux nouvelles habitudes locales. Encouragez les activités extrascolaires qui permettent de créer des liens avec les enfants locaux : sport, musique, arts. Les enfants expatriés développent souvent ce qu'on appelle une « identité de troisième culture » : ils ne se sentent ni complètement de leur pays d'origine, ni complètement du pays d'accueil, mais créent une identité hybride riche et unique. Cette expérience, bien accompagnée, devient un atout considérable pour leur vie future.`,
     category: 'lifestyle',
     tags: ['famille', 'enfants', 'scolarité', 'adaptation', 'école internationale'],
-    author: 'System Compass',
+    author: 'Compass',
     publishedAt: '2025-02-12',
     readTime: 10,
     featured: false,
