@@ -74,7 +74,7 @@ export function HeroMiniDemo() {
         if (prev >= METRICS.length - 1) {
           // Switch to next pair after showing all metrics
           setTimeout(() => {
-            setPairIndex(p => (p + 1) % COUNTRY_PAIRS.length);
+            setPairIndex(p => (p + 1) % COUNTRY_PAIRS_DEF.length);
             setVisibleMetric(0);
           }, 800);
           return prev;
