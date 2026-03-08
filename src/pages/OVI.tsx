@@ -266,7 +266,7 @@ export default function OVI() {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <Compass className="w-5 h-5 text-primary" />
-                      {t('ovi.connection.title', 'Connexion avec System Compass')}
+                      {t('ovi.connection.title', 'Connexion avec Compass')}
                     </CardTitle>
                     <CardDescription>
                       {t('ovi.connection.subtitle', 'L\'OVI enrichit vos simulations sans les influencer')}
