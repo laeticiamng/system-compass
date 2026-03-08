@@ -33,8 +33,8 @@ export default function Partners() {
   return (
     <div className="min-h-screen bg-background pt-16 sm:pt-20">
       <Helmet>
-        <title>Programme Partenaires - System Compass</title>
-        <meta name="description" content="Rejoignez le programme Compass Partners : ambassadeur ou partenaire B2B. Diffusion responsable de System Compass, sans mécanisme de recrutement en chaîne." />
+        <title>Programme Partenaires — Compass</title>
+        <meta name="description" content="Rejoignez le programme Compass Partners : ambassadeur ou partenaire B2B." />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Programme Partenaires - System Compass" />
         <meta property="og:description" content="Compass Partners : ambassadeur ou partenaire B2B pour diffuser la lucidité." />

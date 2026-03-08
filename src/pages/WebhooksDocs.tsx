@@ -153,7 +153,7 @@ export default function WebhooksDocs() {
   return (
     <>
       <Helmet>
-        <title>Webhooks API — System Compass B2B</title>
+        <title>Webhooks API — Compass B2B</title>
         <meta name="description" content="Documentation des webhooks B2B pour cabinets de relocation et partenaires. Recevez les alertes pays en temps réel." />
       </Helmet>
 

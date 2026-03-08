@@ -115,7 +115,7 @@ export default function BetaFeedback() {
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-3xl">
-      <Helmet><title>Beta Feedback — System Compass</title></Helmet>
+      <Helmet><title>Beta Feedback — Compass</title></Helmet>
 
       <div className="mb-8">
         <h1 className="text-3xl font-bold flex items-center gap-3">

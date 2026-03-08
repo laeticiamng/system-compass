@@ -69,10 +69,10 @@ export default function LifeGame() {
   return (
     <>
       <Helmet>
-        <title>Jeu de Simulation de Vie - System Compass</title>
-        <meta name="description" content="Simulez des trajectoires de vie dans différents pays. Jeu stratégique avec archétypes, événements aléatoires et classement mondial." />
+        <title>Jeu de Simulation de Vie — Compass</title>
+        <meta name="description" content="Simulez des trajectoires de vie dans différents pays. Jeu stratégique avec archétypes et événements aléatoires." />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Jeu de Simulation de Vie - System Compass" />
+        <meta property="og:title" content="Jeu de Simulation de Vie — Compass" />
         <meta property="og:description" content="Simulez des trajectoires de vie dans différents pays. Jeu stratégique immersif." />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
