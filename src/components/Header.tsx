@@ -157,7 +157,6 @@ export function Header() {
               <Compass className="w-4 h-4 md:w-5 md:h-5 text-primary" />
             </div>
             <span className="font-display font-bold text-sm sm:text-base md:text-lg truncate">
-              <span className="hidden xs:inline">System </span>
               <span className="gold-text">Compass</span>
             </span>
           </Link>
