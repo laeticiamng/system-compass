@@ -138,7 +138,7 @@ export function Footer() {
               <Link to="/disclaimer" className="text-primary hover:underline">{t('footer.learnMore')}</Link>
             </p>
             <span className="flex items-center gap-1 text-xs sm:text-sm text-muted-foreground">
-              {t('footer.madeWith', 'Made with')} <Heart className="w-3 h-3 sm:w-4 sm:h-4 text-primary fill-primary" />
+              {t('footer.madeWith', 'Fait avec')} <Heart className="w-3 h-3 sm:w-4 sm:h-4 text-primary fill-primary" />
             </span>
           </div>
         </div>
