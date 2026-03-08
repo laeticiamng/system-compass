@@ -462,7 +462,7 @@ export default function Index() {
                   <Button 
                     variant="outline" 
                     className="w-full"
-                    onClick={() => navigate('/pricing')}
+                    onClick={() => navigate('/contact')}
                   >
                     {t('landing.pricing.proCta', 'Nous contacter')}
                   </Button>
