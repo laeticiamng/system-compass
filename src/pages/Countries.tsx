@@ -652,7 +652,7 @@ function ExtendedCountryCard({ country }: { country: ExtendedCountryInfo }) {
       </div>
 
       <p className="text-xs text-muted-foreground">
-        {t('countries.intelligenceAvailable', 'Intelligence Layer disponible')}
+        {t('countries.intelligenceAvailable', 'Analyse approfondie disponible')}
       </p>
     </Link>
   );
