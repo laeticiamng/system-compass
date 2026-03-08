@@ -95,7 +95,7 @@ export function InstallInstructions() {
             {t('pwa.instructions.title', 'Instructions d\'installation')}
           </CardTitle>
           <CardDescription>
-            {t('pwa.subtitle', 'Accédez à System Compass depuis votre écran d\'accueil comme une application native')}
+            {t('pwa.subtitle', 'Accédez à Compass depuis votre écran d\'accueil comme une application native')}
           </CardDescription>
         </CardHeader>
         <CardContent>
