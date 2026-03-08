@@ -9871,9 +9871,9 @@
     },
     "readTime": "{{min}} min",
     "connection": {
-      "title": "Connexion avec System Compass",
+      "title": "Connexion avec Compass",
       "subtitle": "L'OVI enrichit vos simulations sans les influencer",
-      "intro": "Lorsque vous effectuez une simulation dans System Compass, l'OVI peut suggérer des lectures pertinentes. L'objectif : nourrir votre réflexion, pas orienter votre décision.",
+      "intro": "Lorsque vous effectuez une simulation dans Compass, l'OVI peut suggérer des lectures pertinentes. L'objectif : nourrir votre réflexion, pas orienter votre décision.",
       "ex1": {
         "sim": "Simulation de trajectoire professionnelle",
         "sug1": "Cadre : Décisions irréversibles",
