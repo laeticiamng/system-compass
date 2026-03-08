@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
 import { LocalizedLink as Link } from '@/components/i18n';
+import { SITE_CONFIG } from '@/config/site';
 import {
   BookOpen,
   Clock,
