@@ -137,7 +137,7 @@ export function PartnerApplicationForm({ type, onSuccess }: PartnerApplicationFo
                     <Sparkles className="h-3 w-3" /> {t('partner.application.benefitB2BTools', "Accès à des outils B2B dédiés")}
                   </li>
                   <li className="flex items-center gap-2">
-                    <Sparkles className="h-3 w-3" /> {t('partner.application.benefitEcosystem', "Association à l'écosystème System Compass")}
+                    <Sparkles className="h-3 w-3" /> {t('partner.application.benefitEcosystem', "Association à l'écosystème Compass")}
                   </li>
                 </>
               )}
