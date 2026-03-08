@@ -285,7 +285,10 @@
     "responsibleDesc": "Your decisions are yours. Results depend on your actual context.",
     "checkbox": "I understand that this tool is informational and that I remain responsible for my decisions.",
     "seeDetails": "See full details",
-    "accept": "I understand, continue"
+    "accept": "I understand, continue",
+    "bannerText": "Educational analysis tool — not professional advice.",
+    "acceptShort": "OK",
+    "dismiss": "Dismiss banner"
   },
   "simulationDisclaimer": {
     "notPrediction": "Simulation ≠ Prediction",
