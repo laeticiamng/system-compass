@@ -78,8 +78,8 @@ export default function Status() {
   return (
     <div className="container mx-auto px-4 py-8 max-w-3xl">
       <Helmet>
-        <title>{t('status.metaTitle', 'Status — System Compass')}</title>
-        <meta name="description" content={t('status.metaDesc', 'État en temps réel de la plateforme System Compass.')} />
+        <title>{t('status.metaTitle', 'Status — Compass')}</title>
+        <meta name="description" content={t('status.metaDesc', 'État en temps réel de la plateforme Compass.')} />
       </Helmet>
 
       <div className="text-center mb-8">

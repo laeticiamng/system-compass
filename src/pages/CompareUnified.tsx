@@ -216,14 +216,14 @@ export default function CompareUnified() {
     >
     <div className="min-h-screen pt-20 pb-16">
       <Helmet>
-        <title>Comparateur de Pays - System Compass</title>
-        <meta name="description" content="Comparez jusqu'à 5 pays côte à côte : fiscalité, coût de la vie, qualité de vie, risques. Visualisations radar, barres de risque et trajectoire financière." />
+        <title>Comparateur de Pays — Compass</title>
+        <meta name="description" content="Comparez jusqu'à 5 pays côte à côte : fiscalité, coût de la vie, qualité de vie, risques." />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Comparateur de Pays - System Compass" />
+        <meta property="og:title" content="Comparateur de Pays — Compass" />
         <meta property="og:description" content="Comparez jusqu'à 5 pays sur fiscalité, coût de la vie et qualité de vie." />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Comparateur de Pays - System Compass" />
+        <meta name="twitter:title" content="Comparateur de Pays — Compass" />
         <meta name="twitter:description" content="Comparez jusqu'à 5 pays sur fiscalité, coût de la vie et qualité de vie." />
         <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
