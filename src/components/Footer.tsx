@@ -45,10 +45,10 @@ export function Footer() {
             <h4 className="font-semibold text-sm sm:text-base mb-2 sm:mb-4">{t('footer.explore')}</h4>
             <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-muted-foreground">
               <li><Link to="/countries" className="hover:text-foreground transition-colors block py-0.5">{t('nav.countries')}</Link></li>
-              <li><Link to="/world-map" className="hover:text-foreground transition-colors block py-0.5">{t('nav.worldMap', 'Carte monde')}</Link></li>
+              <li><Link to="/world-map" className="hover:text-foreground transition-colors block py-0.5">{t('nav.worldMap', 'Carte')}</Link></li>
               <li><Link to="/pyramid-types" className="hover:text-foreground transition-colors block py-0.5">{t('nav.pyramids')}</Link></li>
               <li><Link to="/compare" className="hover:text-foreground transition-colors block py-0.5">{t('nav.compare')}</Link></li>
-              <li><Link to="/terrain" className="hover:text-foreground transition-colors block py-0.5">{t('nav.terrainRealities', 'Réalités Terrain')}</Link></li>
+              <li><Link to="/terrain" className="hover:text-foreground transition-colors block py-0.5">{t('nav.terrainRealities', 'Vie sur place')}</Link></li>
             </ul>
           </div>
 
