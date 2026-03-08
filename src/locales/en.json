@@ -7753,7 +7753,7 @@
     "alternatives": {
       "title": "Alternatives exist",
       "subtitle": "Before any irreversible choice, explore all your options",
-      "message": "System Compass shows that there are sometimes other trajectories: staying and starting a business, migrating later, migrating differently, training, changing the initial goal.",
+      "message": "Compass shows that there are sometimes other trajectories: staying and starting a business, migrating later, migrating differently, training, changing the initial goal.",
       "options": {
         "stay": {
           "title": "Stay and build",
