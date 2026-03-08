@@ -1,8 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { useAggregateRating } from '@/hooks/useAggregateRating';
-
-const BASE_URL = 'https://system-compass.app';
+import { SITE_CONFIG } from '@/config/site';
 
 interface JsonLdProps {
   data: Record<string, unknown>;

@@ -2,6 +2,7 @@ import { useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { SUPPORTED_LANGUAGES, type SupportedLanguage } from '@/i18n';
+import { SITE_CONFIG } from '@/config/site';
 
 const supportedCodes = SUPPORTED_LANGUAGES.map(l => l.code);
 
