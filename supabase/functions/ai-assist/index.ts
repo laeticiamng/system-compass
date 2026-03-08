@@ -180,7 +180,7 @@ Format de sortie JSON:
 
   // Country Analysis actions
   "compare-countries": {
-    systemPrompt: `Tu es un analyste comparatif pour System Compass.
+    systemPrompt: `Tu es un analyste comparatif pour Compass.
 Ta mission : comparer deux pays selon le profil utilisateur.
 
 RÈGLES:
