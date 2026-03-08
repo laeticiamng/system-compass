@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { SITE_CONFIG } from '@/config/site';
 import { LocalizedLink as Link } from '@/components/i18n';
 import { BookOpen, Clock, Tag, ArrowRight, Search } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
