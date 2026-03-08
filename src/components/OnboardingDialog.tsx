@@ -402,12 +402,16 @@ export function OnboardingDialog() {
   const [b2cGoal, setB2cGoal] = useState<B2CGoal>(null);
 
   // Dynamic step count based on path
-  const totalSteps = profilePath === 'b2b' ? 4 : profilePath === 'b2c' ? 5 : 2;
+  const totalSteps = profilePath === 'b2b' ? 4 : profilePath === 'healthcare' ? 4 : profilePath === 'b2c' ? 5 : 2;
   const progress = ((step + 1) / totalSteps) * 100;
 
   const handleProfileSelect = (value: string) => {
     setProfilePath(value as ProfilePath);
-    setStep(2);
+    if (value === 'healthcare') {
+      setStep(2); // go to healthcare features
+    } else {
+      setStep(2);
+    }
   };
 
   const handleGoalSelect = (value: string) => {
@@ -432,6 +436,9 @@ export function OnboardingDialog() {
       case 2:
         if (profilePath === 'b2c') {
           return <B2CGoalStep onNext={() => {}} onSelect={handleGoalSelect} />;
+        }
+        if (profilePath === 'healthcare') {
+          return <HealthcareFeaturesStep onNext={() => setStep(3)} />;
         }
         return <B2BFeaturesStep onNext={() => setStep(3)} />;
       case 3:
