@@ -27,11 +27,11 @@ export default function Disclaimer() {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Avertissements & Limites - System Compass" />
         <meta property="og:description" content="Ce que System Compass est — et ce qu'il n'est pas. Outil éducatif, pas de conseil professionnel." />
-        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Avertissements & Limites - System Compass" />
         <meta name="twitter:description" content="Ce que System Compass est — et ce qu'il n'est pas. Outil éducatif, pas de conseil professionnel." />
-        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
       <div className="container mx-auto px-4 max-w-4xl">
         {/* Header */}

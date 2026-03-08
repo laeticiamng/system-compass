@@ -263,11 +263,11 @@ export default function ProfileTest() {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Test de Profil Expatrié - System Compass" />
         <meta property="og:description" content="Évaluez votre profil expatrié et trouvez le système qui vous correspond." />
-        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Test de Profil Expatrié - System Compass" />
         <meta name="twitter:description" content="Évaluez votre profil expatrié et trouvez le système qui vous correspond." />
-        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
     <div className="min-h-screen pt-24 pb-16">
       <div className="container mx-auto px-4 max-w-2xl">

@@ -38,11 +38,11 @@ export default function Partners() {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Programme Partenaires - System Compass" />
         <meta property="og:description" content="Compass Partners : ambassadeur ou partenaire B2B pour diffuser la lucidité." />
-        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Programme Partenaires - System Compass" />
         <meta name="twitter:description" content="Compass Partners : ambassadeur ou partenaire B2B pour diffuser la lucidité." />
-        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
       {/* Hero Section */}
       <section className="relative py-8 sm:py-16 md:py-24 overflow-hidden">
