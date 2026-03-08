@@ -81,7 +81,7 @@ export function Header() {
     { href: '/pricing', label: t('nav.pricing', 'Tarifs'), icon: CreditCard },
     { href: '/usage', label: t('nav.usage', 'Consommation'), icon: BarChart3 },
     { href: '/settings/notifications', label: t('nav.notifications', 'Notifications'), icon: Bell },
-    { href: '/resources', label: t('nav.resources'), icon: FileText },
+    { href: '/resources', label: t('nav.resources', 'Ressources'), icon: FileText },
     { href: '/institutions', label: t('nav.institutions', 'Institutions'), icon: Building2 },
     { href: '/b2b', label: t('nav.b2b', 'Solutions B2B'), icon: Building2 },
     { href: '/experts', label: t('nav.experts', 'Experts'), icon: Users },
@@ -115,8 +115,8 @@ export function Header() {
     localStorage.setItem(DISCLAIMER_DISMISSED_KEY, 'true');
   };
 
-  // Check if current page is a simulation page (strip lang prefix)
-  const pathForCheck = location.pathname.replace(/^\/[a-z]{2}(?=\/)/, '');
+  // Strip language prefix for route matching
+  const pathForCheck = location.pathname.replace(/^\/[a-z]{2}(?=\/|$)/, '') || '/';
   const isSimulationPage = SIMULATION_SEGMENTS.some(page => pathForCheck.startsWith(page));
   const showDisclaimer = isSimulationPage && !disclaimerDismissed;
 
@@ -158,11 +158,11 @@ export function Header() {
 
         <div className="flex items-center gap-0.5 sm:gap-1 md:gap-2 min-w-0 flex-1 justify-end">
           {/* Desktop Nav - hide on smaller screens */}
-          <nav className="hidden xl:flex items-center gap-0.5">
+          <nav className="hidden lg:flex items-center gap-0.5">
             {/* Main nav items */}
             {allNavItems.map((item) => {
               const Icon = item.icon;
-              const isActive = location.pathname === item.href;
+              const isActive = pathForCheck === item.href || (item.href === '/' && pathForCheck === '/');
               return (
                 <Link
                   key={item.href}
@@ -279,7 +279,7 @@ export function Header() {
           {user && <span className="hidden sm:inline"><UserHistoryPanel /></span>}
           {user && <GamificationProgressBar className="hidden md:flex" />}
           <ThemeToggle />
-          <div className="hidden xl:block">
+          <div className="hidden lg:block">
             <LanguageSwitcher />
           </div>
 
@@ -315,7 +315,7 @@ export function Header() {
           {/* Mobile Menu - only visible on mobile (sidebar handles desktop) */}
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden h-9 w-9 sm:h-8 sm:w-8 flex-shrink-0">
+              <Button variant="ghost" size="icon" className="lg:hidden h-9 w-9 sm:h-8 sm:w-8 flex-shrink-0">
                 <Menu className="w-5 h-5" />
               </Button>
             </SheetTrigger>
@@ -331,7 +331,7 @@ export function Header() {
                 <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">{t('nav.explore', 'Explorer')}</div>
                 {allNavItems.map((item) => {
                   const Icon = item.icon;
-                  const isActive = location.pathname === item.href;
+                  const isActive = pathForCheck === item.href || (item.href === '/' && pathForCheck === '/');
                   const isHighlight = 'highlight' in item && item.highlight;
                   return (
                     <Link
@@ -358,7 +358,7 @@ export function Header() {
                 <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">{t('nav.tools', 'Outils')}</div>
                 {toolsItems.map((item) => {
                   const Icon = item.icon;
-                  const isActive = location.pathname === item.href;
+                  const isActive = pathForCheck === item.href;
                   return (
                     <Link
                       key={item.href}
@@ -383,7 +383,7 @@ export function Header() {
                 <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">{t('nav.account', 'Compte & Info')}</div>
                 {accountItems.map((item) => {
                   const Icon = item.icon;
-                  const isActive = location.pathname === item.href;
+                  const isActive = pathForCheck === item.href;
                   return (
                     <Link
                       key={item.href}
@@ -428,7 +428,7 @@ export function Header() {
                         <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">Admin</div>
                         {adminItems.map((item) => {
                           const Icon = item.icon;
-                          const isActive = location.pathname === item.href;
+                          const isActive = pathForCheck === item.href;
                           return (
                             <Link
                               key={item.href}

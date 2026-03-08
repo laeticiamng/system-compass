@@ -5794,7 +5794,16 @@
     "tax": "Taxes",
     "cost": "Cost/month",
     "safety": "Safety",
-    "quality": "Quality of life"
+    "quality": "Quality of life",
+    "france": "France",
+    "portugal": "Portugal",
+    "dubai": "Dubai",
+    "thailand": "Thailand"
+  },
+  "trustBadges": {
+    "secureData": "Secure data",
+    "gdpr": "GDPR compliant",
+    "noAdvice": "No tax advice"
   },
   "subscription": {
     "successTitle": "Subscription Activated!",

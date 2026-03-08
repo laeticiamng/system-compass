@@ -18,18 +18,28 @@ interface CountryData {
   quality: number;
 }
 
-const COUNTRY_PAIRS: [CountryData, CountryData][] = [
+interface CountryPairDef {
+  nameKey: string;
+  nameFallback: string;
+  emoji: string;
+  tax: number;
+  cost: number;
+  safety: number;
+  quality: number;
+}
+
+const COUNTRY_PAIRS_DEF: [CountryPairDef, CountryPairDef][] = [
   [
-    { name: 'France', emoji: '🇫🇷', tax: 45, cost: 2800, safety: 72, quality: 78 },
-    { name: 'Portugal', emoji: '🇵🇹', tax: 20, cost: 1600, safety: 81, quality: 82 },
+    { nameKey: 'miniDemo.france', nameFallback: 'France', emoji: '🇫🇷', tax: 45, cost: 2800, safety: 72, quality: 78 },
+    { nameKey: 'miniDemo.portugal', nameFallback: 'Portugal', emoji: '🇵🇹', tax: 20, cost: 1600, safety: 81, quality: 82 },
   ],
   [
-    { name: 'France', emoji: '🇫🇷', tax: 45, cost: 2800, safety: 72, quality: 78 },
-    { name: 'Dubaï', emoji: '🇦🇪', tax: 0, cost: 3200, safety: 89, quality: 84 },
+    { nameKey: 'miniDemo.france', nameFallback: 'France', emoji: '🇫🇷', tax: 45, cost: 2800, safety: 72, quality: 78 },
+    { nameKey: 'miniDemo.dubai', nameFallback: 'Dubai', emoji: '🇦🇪', tax: 0, cost: 3200, safety: 89, quality: 84 },
   ],
   [
-    { name: 'France', emoji: '🇫🇷', tax: 45, cost: 2800, safety: 72, quality: 78 },
-    { name: 'Thaïlande', emoji: '🇹🇭', tax: 15, cost: 900, safety: 68, quality: 70 },
+    { nameKey: 'miniDemo.france', nameFallback: 'France', emoji: '🇫🇷', tax: 45, cost: 2800, safety: 72, quality: 78 },
+    { nameKey: 'miniDemo.thailand', nameFallback: 'Thailand', emoji: '🇹🇭', tax: 15, cost: 900, safety: 68, quality: 70 },
   ],
 ];
 
@@ -49,7 +59,11 @@ export function HeroMiniDemo() {
   const [visibleMetric, setVisibleMetric] = useState(0);
   const [isAnimating, setIsAnimating] = useState(true);
 
-  const pair = COUNTRY_PAIRS[pairIndex];
+  const rawPair = COUNTRY_PAIRS_DEF[pairIndex];
+  const pair: [CountryData, CountryData] = [
+    { ...rawPair[0], name: t(rawPair[0].nameKey, rawPair[0].nameFallback) },
+    { ...rawPair[1], name: t(rawPair[1].nameKey, rawPair[1].nameFallback) },
+  ];
 
   // Auto-cycle through metrics then switch pair
   useEffect(() => {
@@ -60,7 +74,7 @@ export function HeroMiniDemo() {
         if (prev >= METRICS.length - 1) {
           // Switch to next pair after showing all metrics
           setTimeout(() => {
-            setPairIndex(p => (p + 1) % COUNTRY_PAIRS.length);
+            setPairIndex(p => (p + 1) % COUNTRY_PAIRS_DEF.length);
             setVisibleMetric(0);
           }, 800);
           return prev;
@@ -157,7 +171,7 @@ export function HeroMiniDemo() {
 
         {/* Progress dots */}
         <div className="flex justify-center gap-1.5 mt-3">
-          {COUNTRY_PAIRS.map((_, i) => (
+          {COUNTRY_PAIRS_DEF.map((_, i) => (
             <button
               key={i}
               onClick={() => { setPairIndex(i); setVisibleMetric(0); }}

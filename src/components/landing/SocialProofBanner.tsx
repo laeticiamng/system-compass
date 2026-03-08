@@ -3,6 +3,7 @@
  * Only shows verified, factual information
  */
 import { CheckCircle } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export function SocialProofBanner() {
   // Removed: fake stats and simulated activity feed
@@ -11,10 +12,12 @@ export function SocialProofBanner() {
 }
 
 export function TrustBadges() {
+  const { t } = useTranslation();
+
   const badges = [
-    { label: 'Données sécurisées', icon: <CheckCircle className="w-4 h-4" /> },
-    { label: 'RGPD compliant', icon: <CheckCircle className="w-4 h-4" /> },
-    { label: 'Pas de conseil fiscal', icon: <CheckCircle className="w-4 h-4" /> },
+    { label: t('trustBadges.secureData', 'Données sécurisées'), icon: <CheckCircle className="w-4 h-4" /> },
+    { label: t('trustBadges.gdpr', 'RGPD compliant'), icon: <CheckCircle className="w-4 h-4" /> },
+    { label: t('trustBadges.noAdvice', 'Pas de conseil fiscal'), icon: <CheckCircle className="w-4 h-4" /> },
   ];
 
   return (
