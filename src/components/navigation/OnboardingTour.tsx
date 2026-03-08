@@ -71,7 +71,7 @@ export function OnboardingTour() {
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="text-xs text-muted-foreground">
-                      Étape {currentStep + 1} / {totalSteps}
+                      {t('tour.step', 'Step {{current}} / {{total}}', { current: currentStep + 1, total: totalSteps })}
                     </p>
                     <Progress value={progress} className="w-full max-w-24 h-1 mt-1" />
                   </div>
