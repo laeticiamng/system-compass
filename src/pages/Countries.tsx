@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
+import { SITE_CONFIG } from '@/config/site';
 import { useCountries } from '@/lib/countries-data';
 import { EXTENDED_COUNTRY_META } from '@/lib/countries-extended';
 import { CountryCard } from '@/components/CountryCard';
