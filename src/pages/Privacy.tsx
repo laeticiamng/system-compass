@@ -1,7 +1,7 @@
 /**
  * Privacy Policy - Politique de Confidentialité RGPD
  * Dedicated routable page for GDPR compliance
- * EmotionsCare SASU - System Compass
+ * EmotionsCare SASU - Compass
  */
 
 import { ArrowLeft, Shield, Eye, Database, Lock, UserCheck, Globe, Bell, Trash2, FileText } from 'lucide-react';
