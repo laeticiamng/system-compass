@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeftRight, TrendingUp, TrendingDown, Minus } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useTranslation } from 'react-i18next';
 
 interface CountryData {
   name: string;
@@ -32,14 +33,18 @@ const COUNTRY_PAIRS: [CountryData, CountryData][] = [
   ],
 ];
 
-const METRICS = [
-  { key: 'tax' as const, label: 'Impôts', suffix: '%', lower: true },
-  { key: 'cost' as const, label: 'Coût/mois', suffix: '€', lower: true },
-  { key: 'safety' as const, label: 'Sécurité', suffix: '/100', lower: false },
-  { key: 'quality' as const, label: 'Qualité vie', suffix: '/100', lower: false },
-];
+function getMetrics(t: (key: string, fallback: string) => string) {
+  return [
+    { key: 'tax' as const, label: t('miniDemo.tax', 'Impôts'), suffix: '%', lower: true },
+    { key: 'cost' as const, label: t('miniDemo.cost', 'Coût/mois'), suffix: '€', lower: true },
+    { key: 'safety' as const, label: t('miniDemo.safety', 'Sécurité'), suffix: '/100', lower: false },
+    { key: 'quality' as const, label: t('miniDemo.quality', 'Qualité vie'), suffix: '/100', lower: false },
+  ];
+}
 
 export function HeroMiniDemo() {
+  const { t } = useTranslation();
+  const METRICS = getMetrics(t);
   const [pairIndex, setPairIndex] = useState(0);
   const [visibleMetric, setVisibleMetric] = useState(0);
   const [isAnimating, setIsAnimating] = useState(true);

@@ -3792,6 +3792,12 @@
       "invalidCredentials": "Invalid email or password",
       "alreadyRegistered": "An account already exists with this email",
       "generic": "An error occurred"
+    },
+    "meta": {
+      "title": "Sign In - System Compass | Access your account",
+      "description": "Sign in to System Compass to access your country analyses, personalized recommendations and dashboard. Create a free account.",
+      "ogTitle": "Sign In - System Compass",
+      "ogDescription": "Access your country analyses and personalized exit strategies."
     }
   },
   "gameModes": {
@@ -5600,7 +5606,25 @@
       "resource": "Prepare a geographic Plan B"
     },
     "restart": "Restart",
-    "disclaimer": "Simulation ≠ prediction. Exploration only."
+    "disclaimer": "Simulation ≠ prediction. Exploration only.",
+    "meta": {
+      "title": "Quick Expatriation Test in 60 Seconds - System Compass",
+      "description": "Discover your expat profile in 60 seconds. Free test: situation, priorities, risk tolerance. Find countries compatible with your profile.",
+      "ogTitle": "Quick Expatriation Test - System Compass",
+      "ogDescription": "Discover your expat profile in 60 seconds. Free and personalized test."
+    },
+    "heroTitle1": "Discover your",
+    "heroTitle2": "expat profile.",
+    "error": {
+      "title": "Oops, calculation failed",
+      "description": "We couldn't calculate your profile. Please try again or return to the homepage."
+    }
+  },
+  "miniDemo": {
+    "tax": "Taxes",
+    "cost": "Cost/month",
+    "safety": "Safety",
+    "quality": "Quality of life"
   },
   "subscription": {
     "successTitle": "Subscription Activated!",
