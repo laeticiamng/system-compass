@@ -160,9 +160,9 @@
   },
   "pwa": {
     "title": "Install the app",
-    "subtitle": "Access System Compass from your home screen like a native app",
+    "subtitle": "Access Compass from your home screen like a native app",
     "pageTitle": "📱 App Installation",
-    "pageDescription": "Install System Compass on your device for an optimal experience",
+    "pageDescription": "Install Compass on your device for an optimal experience",
     "installNow": "Install now",
     "note": "The app works on all modern browsers. For optimal installation, use Safari on iOS or Chrome on Android.",
     "ios": {
