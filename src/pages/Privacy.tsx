@@ -8,6 +8,7 @@ import { ArrowLeft, Shield, Eye, Database, Lock, UserCheck, Globe, Bell, Trash2,
 import { LocalizedLink as Link } from '@/components/i18n';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
+import { SITE_CONFIG } from '@/config/site';
 import { Button } from '@/components/ui/button';
 
 export default function Privacy() {
