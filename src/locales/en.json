@@ -816,7 +816,11 @@
     "disclaimerReset": "Disclaimer banner reset",
     "defaultCountry": "Default country",
     "defaultCountryTooltip": "Calculators use this country by default. Change it in tools.",
-    "selectDefaultCountry": "Select default country"
+    "selectDefaultCountry": "Select default country",
+    "cgv": "Terms of Service",
+    "legalNotice": "Legal Notice",
+    "privacyPolicy": "Privacy Policy",
+    "contact": "Contact"
   },
   "cookies": {
     "title": "Privacy Settings",
