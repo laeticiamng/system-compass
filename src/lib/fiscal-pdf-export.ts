@@ -37,7 +37,7 @@ export function exportFiscalComparisonPDF(data: ExportData): void {
   // Header
   doc.setFontSize(22);
   doc.setTextColor(59, 130, 246); // Primary blue
-  doc.text('System Compass', leftMargin, yPos);
+  doc.text('Compass', leftMargin, yPos);
   
   yPos += 10;
   doc.setFontSize(16);
