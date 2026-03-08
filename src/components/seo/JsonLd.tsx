@@ -88,7 +88,7 @@ export function SoftwareApplicationJsonLd() {
   const schemaData: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
-    name: 'System Compass',
+    name: 'Compass',
     url: `${SITE_CONFIG.productionUrl}/${lang}`,
     description: isFr
       ? 'Application web d\'aide à la décision pour l\'expatriation. Compare 80+ pays sur la fiscalité, les visas, le coût de la vie et la qualité de vie. Test de profil gratuit en 2 minutes.'
