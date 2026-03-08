@@ -912,7 +912,7 @@
     "downloaded": "Le PDF a été téléchargé",
     "error": "Erreur d'export",
     "errorDesc": "Impossible de générer le PDF",
-    "footer": "Généré par System Compass | {{date}} | Simulation uniquement"
+    "footer": "Généré par Compass | {{date}} | Simulation uniquement"
   },
   "vacation": {
     "title": "Recommandations Vacances par Pouvoir d'Achat",
