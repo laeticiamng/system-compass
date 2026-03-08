@@ -94,7 +94,7 @@ export const ConfirmationEmail = ({
         </Text>
         
         <Text style={footerLegal}>
-          © 2025 EmotionsCare SASU. Tous droits réservés.
+          © {new Date().getFullYear()} EmotionsCare SASU. Tous droits réservés.
         </Text>
       </Container>
     </Body>
