@@ -46,7 +46,7 @@ Enfin, ne sous-estimez pas la dimension humaine de l'expatriation. Le départ im
 Pour structurer votre projet, nous recommandons d'utiliser un rétroplanning détaillé avec des jalons à 12 mois, 6 mois, 3 mois et 1 mois avant le départ. Chaque jalon doit comporter des actions administratives, financières et personnelles clairement définies. Cette méthode transforme un projet qui peut sembler écrasant en une série d'étapes gérables et mesurables.`,
     category: 'guide',
     tags: ['expatriation', 'préparation', 'démarches', 'checklist', 'planification'],
-    author: 'System Compass',
+    author: 'Compass',
     publishedAt: '2025-01-15',
     readTime: 12,
     featured: true,
