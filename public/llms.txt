@@ -1,11 +1,11 @@
-# System Compass
+# Compass
 
-> Plateforme d'intelligence décisionnelle pour la relocalisation internationale.
-> Decision intelligence platform for international relocation.
+> Plateforme de comparaison de pays pour la relocalisation internationale.
+> Country comparison platform for international relocation.
 
-System Compass analyse les systèmes de 80+ pays pour aider les individus et entreprises à planifier leur expatriation de manière éclairée.
+Compass analyse 80+ pays pour aider les individus et entreprises à planifier leur expatriation de manière éclairée.
 
-## Ce que fait System Compass
+## Ce que fait Compass
 
 - **Analyse comparative de 80+ pays** : fiscalité, visas, coût de la vie, qualité de vie, sécurité, santé, droits LGBTQ+
 - **Test de profil expatrié** : quiz de 2 minutes pour identifier les pays compatibles avec votre profil
@@ -18,7 +18,7 @@ System Compass analyse les systèmes de 80+ pays pour aider les individus et ent
 
 ## Expertise unique
 
-System Compass se distingue par son approche systémique : au lieu de lister des "top 10 pays", la plateforme analyse les structures de pouvoir, les règles non-écrites, les profils qui réussissent ou échouent dans chaque pays. C'est un outil de décision, pas un guide touristique.
+Compass se distingue par son approche systémique : au lieu de lister des "top 10 pays", la plateforme analyse les structures de pouvoir, les règles non-écrites, les profils qui réussissent ou échouent dans chaque pays. C'est un outil de décision, pas un guide touristique.
 
 ## Données et sources
 

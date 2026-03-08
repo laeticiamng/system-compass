@@ -1,7 +1,7 @@
-# Audit Complet - System Compass
+# Audit Complet - Compass
 **Date :** 12 fevrier 2026
 **Branche :** `claude/conduct-audit-df9Cy`
-**Scope :** Audit technique et non-technique de la plateforme System Compass
+**Scope :** Audit technique et non-technique de la plateforme Compass
 
 ---
 
@@ -31,7 +31,7 @@
 
 ## 1. Resume executif
 
-**System Compass** est une plateforme SaaS d'aide a la decision pour l'expatriation et la relocalisation internationale. Elle analyse les systemes socio-economiques de 50+ pays et fournit des strategies personnalisees ("Exit Keys").
+**Compass** est une plateforme SaaS d'aide a la decision pour l'expatriation et la relocalisation internationale. Elle analyse les systemes socio-economiques de 50+ pays et fournit des strategies personnalisees ("Exit Keys").
 
 ### Metriques cles
 
@@ -618,4 +618,4 @@ GLOBAL            ███████░░░  7.0/10
 
 ---
 
-*Rapport genere le 12 fevrier 2026 dans le cadre de l'audit complet de la plateforme System Compass.*
+*Rapport genere le 12 fevrier 2026 dans le cadre de l'audit complet de la plateforme Compass.*

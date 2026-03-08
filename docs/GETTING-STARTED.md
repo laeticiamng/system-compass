@@ -1,6 +1,6 @@
-# 🚀 Guide de démarrage - System Compass
+# 🚀 Guide de démarrage - Compass
 
-Ce guide vous accompagne pour installer et configurer System Compass en développement local.
+Ce guide vous accompagne pour installer et configurer Compass en développement local.
 
 ## Prérequis
 

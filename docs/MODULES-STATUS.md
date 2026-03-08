@@ -1,4 +1,4 @@
-# 📊 Statut des Modules - System Compass
+# 📊 Statut des Modules - Compass
 
 > Dernière mise à jour : Février 2026 (v7.0.8 - Audit Complet + Exports Common/Landing/GDPR)
 

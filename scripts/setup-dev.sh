@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # ============================================
-# System Compass - Development Setup Script
+# Compass - Development Setup Script
 # ============================================
 
 set -e
 
-echo "🏔️ System Compass - Installation de développement"
+echo "🏔️ Compass - Installation de développement"
 echo "=================================================="
 echo ""
 
@@ -65,7 +65,7 @@ print_step "Configuration de l'environnement..."
 if [ ! -f .env ]; then
     # Create minimal .env for development without Supabase
     cat > .env << EOF
-# System Compass - Development Environment
+# Compass - Development Environment
 # Pour le mode complet avec backend, utilisez Lovable Cloud
 
 # Mode développement local (sans backend)
