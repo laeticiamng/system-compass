@@ -4,7 +4,7 @@
  */
 import { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { AlertTriangle, Shield, ExternalLink, X, Radio, TrendingUp } from 'lucide-react';
+import { AlertTriangle, Shield, ExternalLink, X, TrendingUp } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
