@@ -384,7 +384,13 @@ function GetStartedStep({ onComplete, profilePath, goal }: { onComplete: () => v
     { link: '/api', label: t('onboarding.action.apiDocs', 'Documentation API'), icon: BookOpen },
   ];
 
-  const actions = profilePath === 'b2b' ? b2bActions : (b2cActions[goal || 'explore'] || b2cActions.explore);
+  const healthcareActions = [
+    { link: '/healthcare', label: t('onboarding.action.healthcareExplore', 'Explorer le parcours santé'), icon: Stethoscope },
+    { link: '/countries', label: t('onboarding.action.healthcareCountries', 'Voir les pays couverts'), icon: Globe },
+    { link: '/fiscal-calculator', label: t('onboarding.action.healthcareTax', 'Simulateur fiscal'), icon: Calculator },
+  ];
+
+  const actions = profilePath === 'b2b' ? b2bActions : profilePath === 'healthcare' ? healthcareActions : (b2cActions[goal || 'explore'] || b2cActions.explore);
 
   const handleAction = (link: string) => {
     onComplete();
