@@ -305,7 +305,7 @@ export default function ExitKeys() {
         <meta property="og:description" content="Stratégies d'expatriation personnalisées basées sur votre profil et vos objectifs." />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Clés de Sortie - System Compass" />
+        <meta name="twitter:title" content="Stratégies d'Expatriation — Compass" />
         <meta name="twitter:description" content="Stratégies d'expatriation personnalisées basées sur votre profil et vos objectifs." />
         <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
