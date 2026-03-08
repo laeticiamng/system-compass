@@ -27,7 +27,7 @@ export function TrustBadges() {
           key={badge.label}
           className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-muted/50 text-sm text-muted-foreground"
         >
-          <span className="text-green-500">{badge.icon}</span>
+          <span className="text-primary">{badge.icon}</span>
           {badge.label}
         </div>
       ))}
