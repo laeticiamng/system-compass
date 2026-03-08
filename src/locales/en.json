@@ -5527,7 +5527,7 @@
       "caseDossiers": "Case Dossiers",
       "caseDossiersDesc": "Build structured dossiers with audit evidence",
       "apiIntegrations": "API & Integrations",
-      "apiIntegrationsDesc": "Connect System Compass to your tools via REST API"
+      "apiIntegrationsDesc": "Connect Compass to your tools via REST API"
     },
     "features": {
       "title": "Your recommended tools",
