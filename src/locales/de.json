@@ -688,7 +688,7 @@
     "faq": {
       "title": "Häufig gestellte Fragen",
       "q1": {
-        "question": "Kann System Compass mir sagen, welches Land ich wählen soll?",
+        "question": "Kann Compass mir sagen, welches Land ich wählen soll?",
         "answer": "Nein. Das Werkzeug analysiert Systeme und simuliert Szenarien, aber die endgültige Entscheidung liegt bei dir. Wir liefern Informationen, du triffst deine eigenen Entscheidungen."
       },
       "q2": {
