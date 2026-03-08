@@ -7,6 +7,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Cookie, X, Settings2, Check } from 'lucide-react';
+import { LocalizedLink } from '@/components/i18n';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Switch } from '@/components/ui/switch';
@@ -238,9 +239,9 @@ export function CookieConsent() {
           
           <p className="text-xs text-muted-foreground">
             {t('cookies.learnMore', 'En savoir plus dans notre')}{' '}
-            <a href="/privacy" className="text-primary hover:underline">
+            <LocalizedLink to="/privacy" className="text-primary hover:underline">
               {t('cookies.privacyPolicy', 'politique de confidentialité')}
-            </a>
+            </LocalizedLink>
             .
           </p>
         </CardContent>
