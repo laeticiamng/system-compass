@@ -86,7 +86,7 @@ const Pricing = () => {
     {
       id: 'premium' as const,
       name: t('pricing.premiumName', 'Premium'),
-      price: '9,90€',
+      price: premiumPrice,
       period: t('pricing.perMonth', '/ mois'),
       description: t('pricing.premiumDescription', 'Accès complet pour particuliers'),
       icon: Sparkles,
