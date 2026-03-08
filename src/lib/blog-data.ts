@@ -70,7 +70,7 @@ La planification fiscale de l'expatriation doit être anticipée et accompagnée
 Avertissement : Les informations contenues dans cet article sont fournies à titre informatif et ne constituent pas un conseil fiscal personnalisé. La fiscalité internationale est un domaine complexe et en constante évolution. Consultez impérativement un professionnel qualifié (avocat fiscaliste, expert-comptable spécialisé) avant de prendre toute décision ayant des implications fiscales.`,
     category: 'fiscal',
     tags: ['fiscalité', 'résidence fiscale', 'impôts', 'exit tax', 'conventions fiscales'],
-    author: 'System Compass',
+    author: 'Compass',
     publishedAt: '2025-01-22',
     readTime: 15,
     featured: true,
