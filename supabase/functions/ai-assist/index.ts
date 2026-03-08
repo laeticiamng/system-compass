@@ -280,7 +280,7 @@ Format de sortie JSON:
 
   // Dashboard actions
   "suggest-next-step": {
-    systemPrompt: `Tu es un assistant de suivi pour System Compass.
+    systemPrompt: `Tu es un assistant de suivi pour Compass.
 Ta mission : proposer le prochain pas logique basé sur la progression actuelle.
 
 RÈGLES:
