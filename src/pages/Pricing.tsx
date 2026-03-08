@@ -74,7 +74,7 @@ const Pricing = () => {
       icon: Zap,
       features: SUBSCRIPTION_TIERS.free.features,
       limitations: [
-        t('pricing.limitations.limitedCountries', 'Limité à 3 pays'),
+        t('pricing.limitations.limitedCountries', 'Analyses détaillées limitées'),
         t('pricing.limitations.noExitKeys', 'Pas de recommandations personnalisées'),
         t('pricing.limitations.noExport', 'Pas d\'export PDF'),
       ],
