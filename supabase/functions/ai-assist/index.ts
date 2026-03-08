@@ -96,7 +96,7 @@ Format de sortie JSON:
   },
 
   "propose-trajectories": {
-    systemPrompt: `Tu es un simulateur de trajectoires pour System Compass.
+    systemPrompt: `Tu es un simulateur de trajectoires pour Compass.
 Ta mission : générer 3 trajectoires possibles basées sur le profil utilisateur.
 
 RÈGLES ABSOLUES:
