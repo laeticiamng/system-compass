@@ -104,7 +104,7 @@ export default function Disclaimer() {
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-muted-foreground">
-                <strong className="text-foreground">System Compass</strong> est un <strong className="text-foreground">outil d'analyse et de simulation</strong> conçu pour aider à comprendre les systèmes socio-économiques de différents pays et explorer des trajectoires de vie hypothétiques.
+                <strong className="text-foreground">Compass</strong> est un <strong className="text-foreground">outil de comparaison et de simulation</strong> conçu pour aider à comprendre les réalités socio-économiques de différents pays et explorer des trajectoires de vie hypothétiques.
               </p>
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="p-4 rounded-lg bg-green-500/5 border border-green-500/20">

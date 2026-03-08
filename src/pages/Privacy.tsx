@@ -133,7 +133,7 @@ export default function Privacy() {
               </h2>
               <div className="space-y-4">
                 <p>
-                  {t('privacy.localFirst.desc', "System Compass adopte une architecture local-first : vos données sont d'abord stockées sur votre appareil (localStorage du navigateur). Aucune donnée n'est envoyée à nos serveurs sans votre consentement explicite.")}
+                  {t('privacy.localFirst.desc', "Compass adopte une architecture local-first : vos données sont d'abord stockées sur votre appareil (localStorage du navigateur). Aucune donnée n'est envoyée à nos serveurs sans votre consentement explicite.")}
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/20">

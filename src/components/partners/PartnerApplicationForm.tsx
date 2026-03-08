@@ -180,7 +180,7 @@ export function PartnerApplicationForm({ type, onSuccess }: PartnerApplicationFo
             )}
 
             <div className="space-y-2">
-              <Label htmlFor="experience">{t('partner.application.labelExperience', "Expérience avec System Compass")}</Label>
+              <Label htmlFor="experience">{t('partner.application.labelExperience', "Expérience avec Compass")}</Label>
               <Textarea
                 id="experience"
                 value={platformExperience}

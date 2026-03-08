@@ -534,7 +534,7 @@ export function CountryRiskAnalysis() {
                     {t('latent.disclaimerParagraph2', "Avant toute décision d'expatriation, d'investissement ou d'implantation, nous recommandons vivement de consulter des professionnels qualifiés (avocats, fiscalistes, consultants en mobilité internationale) ayant une expertise reconnue dans le pays de destination.")}
                   </p>
                   <p>
-                    {t('latent.disclaimerParagraph3', 'System Compass décline toute responsabilité quant aux décisions prises sur la base de ces informations. Les risques cachés, par nature, sont difficiles à quantifier et leur matérialisation dépend de nombreux facteurs contextuels propres à chaque situation individuelle.')}
+                    {t('latent.disclaimerParagraph3', 'Compass décline toute responsabilité quant aux décisions prises sur la base de ces informations. Les risques cachés, par nature, sont difficiles à quantifier et leur matérialisation dépend de nombreux facteurs contextuels propres à chaque situation individuelle.')}
                   </p>
                 </div>
               </div>

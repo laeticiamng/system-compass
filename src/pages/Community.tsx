@@ -146,7 +146,7 @@ export default function Community() {
         <meta property="og:description" content="Forum, ressources et événements pour expatriés et aspirants au départ." />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Communauté - System Compass" />
+        <meta name="twitter:title" content="Communauté — Compass" />
         <meta name="twitter:description" content="Forum, ressources et événements pour expatriés et aspirants au départ." />
         <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
@@ -154,7 +154,7 @@ export default function Community() {
       {/* Header */}
       <div className="text-center space-y-4">
         <h1 className="text-4xl font-bold gold-text">
-          Communauté System Compass
+          Communauté Compass
         </h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
           Rejoignez des milliers d'expatriés, nomades numériques et futurs 
