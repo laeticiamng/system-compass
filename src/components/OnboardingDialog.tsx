@@ -76,6 +76,13 @@ function ProfileSelectStep({ onSelect }: StepProps & { onSelect: (v: string) => 
       features: [t('onboarding.profile.b2cFeature1', 'Explorer 80+ pays'), t('onboarding.profile.b2cFeature2', 'Simulateur fiscal'), t('onboarding.profile.b2cFeature3', 'Budget de vie'), t('onboarding.profile.b2cFeature4', 'Journal d\'expatrié')],
     },
     {
+      value: 'healthcare',
+      icon: Stethoscope,
+      title: t('onboarding.profile.healthcare', 'Professionnel de santé'),
+      desc: t('onboarding.profile.healthcareDesc', 'Médecin, infirmier, pharmacien — je prépare ma mobilité internationale'),
+      features: [t('onboarding.profile.healthcareFeature1', 'Reconnaissance diplôme'), t('onboarding.profile.healthcareFeature2', 'Autorisations d\'exercer'), t('onboarding.profile.healthcareFeature3', 'Protection sociale'), t('onboarding.profile.healthcareFeature4', 'Checklist documents')],
+    },
+    {
       value: 'b2b',
       icon: Building2,
       title: t('onboarding.profile.b2b', 'Professionnel / Institution'),
