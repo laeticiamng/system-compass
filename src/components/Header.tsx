@@ -436,7 +436,7 @@ export function Header() {
                         <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">Admin</div>
                         {adminItems.map((item) => {
                           const Icon = item.icon;
-                          const isActive = pathForCheck === item.href;
+                          const isActive = isRouteActive(item.href);
                           return (
                             <Link
                               key={item.href}
