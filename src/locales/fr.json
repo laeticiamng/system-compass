@@ -10122,9 +10122,9 @@
       "noAdvice": "Ne fournit aucune recommandation",
       "noAdviceDesc": "Aucune option, aucun scénario n'est présenté comme \"la bonne décision\". L'outil n'émet pas d'avis.",
       "responsibility": "Le décideur reste responsable",
-      "responsibilityDesc": "L'utilisation de System Compass ne transfère aucune responsabilité. Chaque décision engage ceux qui la prennent.",
+      "responsibilityDesc": "L'utilisation de Compass ne transfère aucune responsabilité. Chaque décision engage ceux qui la prennent.",
       "summary": "L'outil éclaire, le décideur reste responsable.",
-      "summaryDesc": "System Compass est conçu pour accompagner la réflexion, pas pour se substituer au jugement humain."
+      "summaryDesc": "Compass est conçu pour accompagner la réflexion, pas pour se substituer au jugement humain."
     },
     "finalCta": {
       "title": "Prêt à structurer vos décisions ?",
