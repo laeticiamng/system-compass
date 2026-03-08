@@ -708,6 +708,24 @@
       "q6": {
         "question": "Can I use this tool for important decisions?",
         "answer": "This tool is a starting point for your reflection, not an absolute source of truth. For important decisions (immigration, taxes, health), always consult qualified professionals."
+      },
+      "jsonld": {
+        "q1": "What is System Compass?",
+        "a1": "System Compass is the first decision intelligence platform for international relocation. It analyzes the systems of 80+ countries with a unique systemic approach: power structures, compatible profiles, unwritten rules.",
+        "q2": "How does the expat profile test work?",
+        "a2": "The quick test evaluates your priorities (taxation, quality of life, safety, opportunities) in 2 minutes. It suggests the most compatible countries for your specific profile, unlike generic rankings.",
+        "q3": "Is the service free?",
+        "a3": "Basic access is free: quick test, exploration of 80+ countries, basic comparison. The Premium plan at €9.90/month gives access to exit keys, tax simulator and live intelligence.",
+        "q4": "Where does System Compass data come from?",
+        "a4": "Data comes from the World Bank, OECD, IMF, Transparency International, Numbeo and government sources. Live intelligence is updated via Perplexity AI and ground verification.",
+        "q5": "Can I compare multiple countries for my expatriation?",
+        "a5": "Yes, the comparison tool allows you to compare up to 4 countries simultaneously on taxation, cost of living, quality of life, visas, safety and more, with radar charts and PDF exports.",
+        "q6": "How is System Compass different from classic expatriation guides?",
+        "a6": "System Compass analyzes power structures (meritocratic, network, strong-state, hybrid), identifies profiles that succeed or fail in each country, and offers personalized strategies rather than generic rankings.",
+        "q7": "Which countries are covered by System Compass?",
+        "a7": "System Compass covers 80+ countries: Europe (France, Switzerland, Portugal, Germany...), Americas (USA, Canada, Mexico...), Asia (Thailand, Japan, Singapore...), Middle East (UAE, Qatar...) and Africa.",
+        "q8": "How does the tax simulator work?",
+        "a8": "The tax simulator calculates your income tax in the destination country and compares it to your current situation. It integrates special regimes, double taxation treaties and legal optimizations."
       }
     }
   },

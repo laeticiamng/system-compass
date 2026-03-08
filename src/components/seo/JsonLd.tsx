@@ -17,10 +17,20 @@ export function JsonLd({ data }: JsonLdProps) {
   );
 }
 
-// Organization schema — GEO-optimized with localized URL
+// Organization schema — GEO-optimized with localized URL and description
 export function OrganizationJsonLd() {
   const { i18n } = useTranslation();
   const lang = i18n.language;
+
+  const descriptions: Record<string, string> = {
+    fr: 'Plateforme d\'intelligence décisionnelle pour la relocalisation internationale. Analyse systémique de 80+ pays : fiscalité, visas, coût de la vie, structures de pouvoir. Approche unique par profils compatibles plutôt que classements génériques.',
+    en: 'Decision intelligence platform for international relocation. Systemic analysis of 80+ countries: taxation, visas, cost of living, power structures. Unique approach by compatible profiles rather than generic rankings.',
+  };
+
+  const slogans: Record<string, string> = {
+    fr: 'Comparez les systèmes, pas les clichés.',
+    en: 'Compare systems, not stereotypes.',
+  };
 
   return (
     <JsonLd data={{
@@ -30,11 +40,11 @@ export function OrganizationJsonLd() {
       alternateName: 'System Compass - Intelligence Expatriation',
       url: `${SITE_CONFIG.productionUrl}/${lang}`,
       logo: `${SITE_CONFIG.productionUrl}/icons/icon-512x512.png`,
-      description: 'Plateforme d\'intelligence décisionnelle pour la relocalisation internationale. Analyse systémique de 80+ pays : fiscalité, visas, coût de la vie, structures de pouvoir. Approche unique par profils compatibles plutôt que classements génériques.',
-      slogan: 'Comparez les systèmes, pas les clichés.',
+      description: descriptions[lang] || descriptions.en,
+      slogan: slogans[lang] || slogans.en,
       foundingDate: '2025',
       areaServed: 'Worldwide',
-      knowsAbout: [
+      knowsAbout: lang === 'fr' ? [
         'Expatriation',
         'Relocalisation internationale',
         'Fiscalité internationale',
@@ -45,6 +55,17 @@ export function OrganizationJsonLd() {
         'Optimisation fiscale légale',
         'Immigration',
         'Comparaison de pays',
+      ] : [
+        'Expatriation',
+        'International relocation',
+        'International taxation',
+        'Digital nomad visas',
+        'Cost of living by country',
+        'Expat quality of life',
+        'International mobility',
+        'Legal tax optimization',
+        'Immigration',
+        'Country comparison',
       ],
       sameAs: [],
       contactPoint: {
@@ -62,18 +83,22 @@ export function SoftwareApplicationJsonLd() {
   const lang = i18n.language;
   const { data: rating } = useAggregateRating();
 
+  const isFr = lang === 'fr';
+
   const schemaData: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: 'System Compass',
     url: `${SITE_CONFIG.productionUrl}/${lang}`,
-    description: 'Application web d\'aide à la décision pour l\'expatriation. Compare 80+ pays sur la fiscalité, les visas, le coût de la vie et la qualité de vie. Test de profil gratuit en 2 minutes.',
+    description: isFr
+      ? 'Application web d\'aide à la décision pour l\'expatriation. Compare 80+ pays sur la fiscalité, les visas, le coût de la vie et la qualité de vie. Test de profil gratuit en 2 minutes.'
+      : 'Web application for expatriation decision-making. Compare 80+ countries on taxation, visas, cost of living and quality of life. Free 2-minute profile test.',
     applicationCategory: 'LifestyleApplication',
     applicationSubCategory: 'Expatriation & Relocation',
     operatingSystem: 'Web',
     inLanguage: ['fr', 'en'],
     isAccessibleForFree: true,
-    featureList: [
+    featureList: isFr ? [
       'Comparaison de 80+ pays',
       'Test de profil expatrié en 2 minutes',
       'Simulateur fiscal international',
@@ -81,6 +106,14 @@ export function SoftwareApplicationJsonLd() {
       'Intelligence terrain en temps réel',
       'Marketplace d\'experts en expatriation',
       'Export PDF des analyses',
+    ] : [
+      'Comparison of 80+ countries',
+      '2-minute expat profile test',
+      'International tax simulator',
+      'Personalized exit keys',
+      'Real-time ground intelligence',
+      'Expatriation expert marketplace',
+      'PDF export of analyses',
     ],
     screenshot: `${SITE_CONFIG.productionUrl}/og-image.png`,
     offers: [
@@ -88,15 +121,15 @@ export function SoftwareApplicationJsonLd() {
         '@type': 'Offer',
         price: '0',
         priceCurrency: 'EUR',
-        name: 'Gratuit',
-        description: 'Test rapide, exploration pays, comparaison basique',
+        name: isFr ? 'Gratuit' : 'Free',
+        description: isFr ? 'Test rapide, exploration pays, comparaison basique' : 'Quick test, country exploration, basic comparison',
       },
       {
         '@type': 'Offer',
         price: '9.90',
         priceCurrency: 'EUR',
         name: 'Premium',
-        description: 'Tous les outils avancés, clés de sortie, simulateur fiscal, intelligence live',
+        description: isFr ? 'Tous les outils avancés, clés de sortie, simulateur fiscal, intelligence live' : 'All advanced tools, exit keys, tax simulator, live intelligence',
         billingPeriod: 'P1M',
       },
       {
@@ -104,7 +137,7 @@ export function SoftwareApplicationJsonLd() {
         price: '29.90',
         priceCurrency: 'EUR',
         name: 'Pro',
-        description: 'Dossiers illimités, exports PDF, marketplace d\'experts',
+        description: isFr ? 'Dossiers illimités, exports PDF, marketplace d\'experts' : 'Unlimited reports, PDF exports, expert marketplace',
         billingPeriod: 'P1M',
       },
     ],
@@ -123,54 +156,59 @@ export function SoftwareApplicationJsonLd() {
   return <JsonLd data={schemaData} />;
 }
 
-// Service schema — localized provider URL
+// Service schema — localized provider URL and content
 export function ServiceJsonLd() {
   const { i18n } = useTranslation();
   const lang = i18n.language;
+  const isFr = lang === 'fr';
 
   return (
     <JsonLd data={{
       '@context': 'https://schema.org',
       '@type': 'Service',
-      name: 'Intelligence décisionnelle pour l\'expatriation',
+      name: isFr ? 'Intelligence décisionnelle pour l\'expatriation' : 'Decision intelligence for expatriation',
       provider: {
         '@type': 'Organization',
         name: 'System Compass',
         url: `${SITE_CONFIG.productionUrl}/${lang}`,
       },
-      description: 'Analyse systémique de 80+ pays pour planifier votre expatriation. Comparaison fiscale, visas, coût de la vie, sécurité. Approche par compatibilité de profil.',
-      serviceType: 'Aide à la décision expatriation',
+      description: isFr
+        ? 'Analyse systémique de 80+ pays pour planifier votre expatriation. Comparaison fiscale, visas, coût de la vie, sécurité. Approche par compatibilité de profil.'
+        : 'Systemic analysis of 80+ countries to plan your expatriation. Tax comparison, visas, cost of living, safety. Profile compatibility approach.',
+      serviceType: isFr ? 'Aide à la décision expatriation' : 'Expatriation decision support',
       areaServed: 'Worldwide',
       audience: {
         '@type': 'Audience',
-        audienceType: 'Expatriés potentiels, digital nomads, entrepreneurs internationaux, familles en relocalisation',
+        audienceType: isFr
+          ? 'Expatriés potentiels, digital nomads, entrepreneurs internationaux, familles en relocalisation'
+          : 'Potential expats, digital nomads, international entrepreneurs, relocating families',
       },
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
-        name: 'Outils System Compass',
+        name: isFr ? 'Outils System Compass' : 'System Compass Tools',
         itemListElement: [
           {
             '@type': 'Offer',
             itemOffered: {
               '@type': 'Service',
-              name: 'Comparaison multi-pays',
-              description: 'Comparez jusqu\'à 4 pays sur fiscalité, visas, coût de la vie, qualité de vie',
+              name: isFr ? 'Comparaison multi-pays' : 'Multi-country comparison',
+              description: isFr ? 'Comparez jusqu\'à 4 pays sur fiscalité, visas, coût de la vie, qualité de vie' : 'Compare up to 4 countries on taxation, visas, cost of living, quality of life',
             },
           },
           {
             '@type': 'Offer',
             itemOffered: {
               '@type': 'Service',
-              name: 'Test de profil expatrié',
-              description: 'Quiz de 2 minutes pour identifier vos pays compatibles',
+              name: isFr ? 'Test de profil expatrié' : 'Expat profile test',
+              description: isFr ? 'Quiz de 2 minutes pour identifier vos pays compatibles' : '2-minute quiz to identify your compatible countries',
             },
           },
           {
             '@type': 'Offer',
             itemOffered: {
               '@type': 'Service',
-              name: 'Simulateur fiscal international',
-              description: 'Calcul comparatif d\'impôts entre pays d\'origine et destination',
+              name: isFr ? 'Simulateur fiscal international' : 'International tax simulator',
+              description: isFr ? 'Calcul comparatif d\'impôts entre pays d\'origine et destination' : 'Comparative tax calculation between origin and destination countries',
             },
           },
         ],

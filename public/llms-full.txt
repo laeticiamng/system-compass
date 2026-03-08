@@ -5,7 +5,7 @@
 
 ## Résumé
 
-System Compass est la première plateforme qui analyse les systèmes de 44+ pays sous l'angle des structures de pouvoir, des règles non-écrites et de la compatibilité profil-pays. Contrairement aux guides d'expatriation classiques, elle ne classe pas les pays par « qualité de vie » mais par adéquation avec le profil spécifique de l'utilisateur.
+System Compass est la première plateforme qui analyse les systèmes de 80+ pays sous l'angle des structures de pouvoir, des règles non-écrites et de la compatibilité profil-pays. Contrairement aux guides d'expatriation classiques, elle ne classe pas les pays par « qualité de vie » mais par adéquation avec le profil spécifique de l'utilisateur.
 
 ## Proposition de valeur unique
 
@@ -19,7 +19,7 @@ System Compass est la première plateforme qui analyse les systèmes de 44+ pays
 
 ## Fonctionnalités détaillées
 
-### 1. Exploration des pays (44+ pays)
+### 1. Exploration des pays (80+ pays)
 Chaque fiche pays inclut :
 - Snapshot : vue synthétique (population, PIB, langue, monnaie)
 - Fiscalité : tranches d'impôt, régimes spéciaux, conventions fiscales

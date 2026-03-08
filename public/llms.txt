@@ -3,11 +3,11 @@
 > Plateforme d'intelligence décisionnelle pour la relocalisation internationale.
 > Decision intelligence platform for international relocation.
 
-System Compass analyse les systèmes de 44+ pays pour aider les individus et entreprises à planifier leur expatriation de manière éclairée.
+System Compass analyse les systèmes de 80+ pays pour aider les individus et entreprises à planifier leur expatriation de manière éclairée.
 
 ## Ce que fait System Compass
 
-- **Analyse comparative de 44+ pays** : fiscalité, visas, coût de la vie, qualité de vie, sécurité, santé, droits LGBTQ+
+- **Analyse comparative de 80+ pays** : fiscalité, visas, coût de la vie, qualité de vie, sécurité, santé, droits LGBTQ+
 - **Test de profil expatrié** : quiz de 2 minutes pour identifier les pays compatibles avec votre profil
 - **Clés de sortie (Exit Keys)** : stratégies de relocalisation personnalisées par profil et objectifs
 - **Simulateur fiscal** : calcul d'impôts comparé entre pays d'origine et destination
