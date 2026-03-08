@@ -302,24 +302,24 @@ function GetStartedStep({ onComplete, profilePath, goal }: { onComplete: () => v
 
   const b2cActions: Record<string, { link: string; label: string; icon: React.ElementType }[]> = {
     explore: [
-      { link: '/world-map', label: 'Explorer la carte', icon: Globe },
-      { link: '/profile-matcher', label: 'Trouver mon pays', icon: Target },
-      { link: '/countries', label: 'Voir tous les pays', icon: MapPin },
+      { link: '/world-map', label: t('onboarding.action.exploreMap', 'Explorer la carte'), icon: Globe },
+      { link: '/profile-matcher', label: t('onboarding.action.findCountry', 'Trouver mon pays'), icon: Target },
+      { link: '/countries', label: t('onboarding.action.seeAll', 'Voir tous les pays'), icon: MapPin },
     ],
     relocate: [
-      { link: '/quick-test', label: 'Faire le test rapide', icon: Target },
-      { link: '/life-simulator', label: 'Simuler mon budget', icon: Calculator },
-      { link: '/checklist', label: 'Ma checklist', icon: CheckCircle2 },
+      { link: '/quick-test', label: t('onboarding.action.quickTest', 'Faire le test rapide'), icon: Target },
+      { link: '/life-simulator', label: t('onboarding.action.simulateBudget', 'Simuler mon budget'), icon: Calculator },
+      { link: '/checklist', label: t('onboarding.action.myChecklist', 'Ma checklist'), icon: CheckCircle2 },
     ],
     invest: [
-      { link: '/fiscal-calculator', label: 'Simulateur fiscal', icon: Calculator },
-      { link: '/fiscal-before-after', label: 'Comparer avant/après', icon: TrendingUp },
-      { link: '/fiscal/special-regimes', label: 'Régimes spéciaux', icon: Shield },
+      { link: '/fiscal-calculator', label: t('onboarding.action.taxSim', 'Simulateur fiscal'), icon: Calculator },
+      { link: '/fiscal-before-after', label: t('onboarding.action.compareBeforeAfter', 'Comparer avant/après'), icon: TrendingUp },
+      { link: '/fiscal/special-regimes', label: t('onboarding.action.specialRegimes', 'Régimes spéciaux'), icon: Shield },
     ],
     retire: [
-      { link: '/life-simulator', label: 'Budget de vie', icon: Calculator },
-      { link: '/countries', label: 'Explorer les pays', icon: Globe },
-      { link: '/expat-reviews', label: 'Lire les avis', icon: BookOpen },
+      { link: '/life-simulator', label: t('onboarding.action.livingBudget', 'Budget de vie'), icon: Calculator },
+      { link: '/countries', label: t('onboarding.action.exploreCountries', 'Explorer les pays'), icon: Globe },
+      { link: '/expat-reviews', label: t('onboarding.action.readReviews', 'Lire les avis'), icon: BookOpen },
     ],
   };
 
