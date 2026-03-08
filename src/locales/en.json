@@ -796,6 +796,8 @@
     "explore": "Explore",
     "tools": "Tools",
     "account": "Account",
+    "allTools": "See all tools",
+    "seeAll": "See all",
     "profileTest": "Profile Test",
     "madeWith": "Made with",
     "about": "About",
@@ -814,7 +816,44 @@
     "disclaimerReset": "Disclaimer banner reset",
     "defaultCountry": "Default country",
     "defaultCountryTooltip": "Calculators use this country by default. Change it in tools.",
-    "selectDefaultCountry": "Select default country"
+    "selectDefaultCountry": "Select default country",
+    "cgv": "Terms of Service",
+    "legalNotice": "Legal Notice",
+    "privacyPolicy": "Privacy Policy",
+    "contact": "Contact"
+  },
+  "cookies": {
+    "title": "Privacy Settings",
+    "close": "Close",
+    "description": "We use cookies to improve your experience. You can customize your preferences below.",
+    "necessary": "Necessary cookies",
+    "necessaryDesc": "Essential for the site to function",
+    "analytics": "Analytics",
+    "analyticsDesc": "Understand how you use the site",
+    "preferences": "Preferences",
+    "preferencesDesc": "Remember your choices and settings",
+    "marketing": "Marketing",
+    "marketingDesc": "Personalize content and ads",
+    "customize": "Customize",
+    "rejectAll": "Reject all",
+    "acceptAll": "Accept all",
+    "saveChoices": "Save my choices",
+    "learnMore": "Learn more in our",
+    "privacyPolicy": "privacy policy"
+  },
+  "tips": {
+    "quickTest": {
+      "title": "🎯 Free profile test",
+      "desc": "In 2 minutes, find the countries most compatible with your profile."
+    },
+    "compare": {
+      "title": "📊 Compare up to 4 countries",
+      "desc": "Use the comparison tool to see differences side by side."
+    },
+    "exitKeys": {
+      "title": "🔑 Relocation strategies",
+      "desc": "Discover the concrete steps to relocate to a country."
+    }
   },
   "about": {
     "badge": "Our mission",
@@ -955,7 +994,10 @@
     "experts": "Expert Marketplace",
     "partnerServices": "Partner Services",
     "community": "Community",
-    "language": "Language"
+    "language": "Language",
+    "matcher": "AI Country Matcher",
+    "fiscalSimulator": "Tax Simulator",
+    "traceJournal": "Decision Journal"
   },
   "tests": {
     "resultSaved": "Result saved!",
@@ -5430,6 +5472,41 @@
     "previous": "Previous",
     "next": "Next",
     "start": "Get Started",
+    "welcome": {
+      "title": "Welcome to System Compass",
+      "desc": "Compare 80+ countries in minutes and find the destination that fits your profile.",
+      "cta": "Start the tour",
+      "skip": "No thanks, explore directly"
+    },
+    "profile": {
+      "title": "What's your profile?",
+      "subtitle": "We'll adapt your journey to your needs",
+      "b2c": "Individual",
+      "b2cDesc": "I'm planning a personal or family expatriation project",
+      "b2b": "Professional / Institution",
+      "b2bDesc": "I manage international operations for my organization"
+    },
+    "goal": {
+      "title": "What's your goal?",
+      "subtitle": "We'll guide you to the most relevant tools",
+      "explore": "Explore countries",
+      "relocate": "Prepare a move",
+      "invest": "Optimize my taxation",
+      "retire": "Plan my retirement"
+    },
+    "b2b": {
+      "title": "Your professional tools",
+      "subtitle": "Here are the modules designed for organizations"
+    },
+    "features": {
+      "title": "Your recommended tools",
+      "subtitle": "Based on your goal, here's where to start"
+    },
+    "start": {
+      "title": "You're ready!",
+      "subtitle": "Your personalized journey awaits. Where would you like to start?",
+      "later": "Explore freely"
+    },
     "step1": {
       "title": "Welcome to System Compass",
       "description": "Compare countries in depth before expatriating: taxes, visas, cost of living and quality of life."
