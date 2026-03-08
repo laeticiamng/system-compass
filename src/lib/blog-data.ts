@@ -94,7 +94,7 @@ D'autres destinations méritent une attention particulière en 2025 : la Géorgi
 Le choix du pays idéal dépend de vos priorités personnelles : fiscalité, coût de la vie, climat, fuseau horaire par rapport à vos clients, qualité de l'infrastructure numérique, facilité d'obtention du visa et qualité de la communauté nomade locale. Nous recommandons de tester une destination pendant 1 à 3 mois avant de s'engager sur un séjour plus long, et de bien étudier les implications fiscales dans votre pays d'origine avant de partir.`,
     category: 'digital-nomad',
     tags: ['digital nomad', 'visa nomade', 'travail à distance', 'coworking', 'freelance'],
-    author: 'System Compass',
+    author: 'Compass',
     publishedAt: '2025-02-05',
     readTime: 11,
     featured: true,
