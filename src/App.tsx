@@ -19,6 +19,7 @@ import { CookieConsent } from "@/components/ui/cookie-consent";
 import { ContextualShortcuts, AppSidebar, Breadcrumbs } from "@/components/navigation";
 import { GlobalErrorBoundary, DevDiagnosticsPanel } from "@/components/diagnostics";
 import { AiChatPanel } from "@/components/ai/AiChatPanel";
+import { FeatureDiscoveryTooltips } from "@/components/landing/FeatureDiscoveryTooltips";
 import { allLocalizedRoutes, LEGACY_ROUTE_SEGMENTS } from "@/routes";
 import { OrganizationJsonLd, SoftwareApplicationJsonLd, ServiceJsonLd, WebSiteJsonLd } from "@/components/seo/JsonLd";
 import { HreflangTags } from "@/components/seo/HreflangTags";
