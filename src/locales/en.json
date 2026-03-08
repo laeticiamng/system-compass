@@ -5803,11 +5803,6 @@
     "dubai": "Dubai",
     "thailand": "Thailand"
   },
-  "trustBadges": {
-    "secureData": "Secure data",
-    "gdpr": "GDPR compliant",
-    "noAdvice": "No tax advice"
-  },
   "subscription": {
     "successTitle": "Subscription Activated!",
     "successSubtitle": "Welcome to the complete experience",
