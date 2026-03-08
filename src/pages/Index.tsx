@@ -177,6 +177,9 @@ export default function Index() {
         </div>
       </section>
 
+      {/* ========== PARCOURS UTILISATEUR ========== */}
+      <UserJourneys />
+
       {/* ========== COMMENT ÇA MARCHE - 3 ÉTAPES ========== */}
       <section className="py-20 md:py-32 bg-muted/30">
         <div className="container mx-auto px-4">

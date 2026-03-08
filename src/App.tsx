@@ -67,7 +67,8 @@ const AppLayout = () => (
           <OfflineBanner />
           <CookieConsent />
           <AiChatPanel />
-          {import.meta.env.DEV && <DevDiagnosticsPanel />}
+           <FeatureDiscoveryTooltips />
+           {import.meta.env.DEV && <DevDiagnosticsPanel />}
         </div>
       </div>
     </DialogCoordinatorProvider>
