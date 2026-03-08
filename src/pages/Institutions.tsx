@@ -148,7 +148,7 @@ export default function Institutions() {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-primary">
                       <CheckCircle2 className="w-5 h-5" />
-                      {t('institutions.whatItIs.title', 'Ce que fait System Compass')}
+                      {t('institutions.whatItIs.title', 'Ce que fait Compass')}
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
