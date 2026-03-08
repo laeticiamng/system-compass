@@ -18,18 +18,28 @@ interface CountryData {
   quality: number;
 }
 
-const COUNTRY_PAIRS: [CountryData, CountryData][] = [
+interface CountryPairDef {
+  nameKey: string;
+  nameFallback: string;
+  emoji: string;
+  tax: number;
+  cost: number;
+  safety: number;
+  quality: number;
+}
+
+const COUNTRY_PAIRS_DEF: [CountryPairDef, CountryPairDef][] = [
   [
-    { name: 'France', emoji: '🇫🇷', tax: 45, cost: 2800, safety: 72, quality: 78 },
-    { name: 'Portugal', emoji: '🇵🇹', tax: 20, cost: 1600, safety: 81, quality: 82 },
+    { nameKey: 'miniDemo.france', nameFallback: 'France', emoji: '🇫🇷', tax: 45, cost: 2800, safety: 72, quality: 78 },
+    { nameKey: 'miniDemo.portugal', nameFallback: 'Portugal', emoji: '🇵🇹', tax: 20, cost: 1600, safety: 81, quality: 82 },
   ],
   [
-    { name: 'France', emoji: '🇫🇷', tax: 45, cost: 2800, safety: 72, quality: 78 },
-    { name: 'Dubaï', emoji: '🇦🇪', tax: 0, cost: 3200, safety: 89, quality: 84 },
+    { nameKey: 'miniDemo.france', nameFallback: 'France', emoji: '🇫🇷', tax: 45, cost: 2800, safety: 72, quality: 78 },
+    { nameKey: 'miniDemo.dubai', nameFallback: 'Dubai', emoji: '🇦🇪', tax: 0, cost: 3200, safety: 89, quality: 84 },
   ],
   [
-    { name: 'France', emoji: '🇫🇷', tax: 45, cost: 2800, safety: 72, quality: 78 },
-    { name: 'Thaïlande', emoji: '🇹🇭', tax: 15, cost: 900, safety: 68, quality: 70 },
+    { nameKey: 'miniDemo.france', nameFallback: 'France', emoji: '🇫🇷', tax: 45, cost: 2800, safety: 72, quality: 78 },
+    { nameKey: 'miniDemo.thailand', nameFallback: 'Thailand', emoji: '🇹🇭', tax: 15, cost: 900, safety: 68, quality: 70 },
   ],
 ];
 
