@@ -20,8 +20,6 @@ Deno.serve(async (req) => {
     return rateLimitResponse(rateLimitResult, corsHeaders);
   }
 
-  const corsHeaders = getCorsHeaders(req)
-
   if (req.method !== 'POST') {
     return new Response('Method not allowed', { status: 405, headers: corsHeaders })
   }
