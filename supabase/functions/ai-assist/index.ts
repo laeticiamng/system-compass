@@ -438,7 +438,7 @@ Format de sortie JSON:
 
   // Actors Map Generation
   "generate-actors-map": {
-    systemPrompt: `Tu es un expert en cartographie des parties prenantes pour System Compass.
+    systemPrompt: `Tu es un expert en cartographie des parties prenantes pour Compass.
 Ta mission : identifier les acteurs clés pour un projet dans un pays cible.
 
 RÈGLES ABSOLUES:
