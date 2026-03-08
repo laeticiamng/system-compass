@@ -28,7 +28,7 @@ export function DisclaimerConsentDialog() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-          className="fixed bottom-0 left-0 right-0 z-40 p-2 sm:p-4 sm:bottom-4 pointer-events-none"
+          className="fixed bottom-0 left-0 right-0 z-40 p-2 pb-[env(safe-area-inset-bottom,8px)] sm:p-4 sm:bottom-4 pointer-events-none"
         >
           <div className="max-w-lg mx-auto bg-background/95 backdrop-blur-sm border border-border rounded-lg shadow-lg px-4 py-2.5 pointer-events-auto">
             <div className="flex items-center gap-3">
