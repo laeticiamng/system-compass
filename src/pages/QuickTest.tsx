@@ -230,7 +230,7 @@ export default function QuickTest() {
         <meta property="og:description" content={t('quickTest.meta.ogDescription', "Découvrez votre profil expatrié en 60 secondes. Test gratuit et personnalisé.")} />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={t('quickTest.meta.ogTitle', "Test Rapide d'Expatriation - System Compass")} />
+        <meta name="twitter:title" content={t('quickTest.meta.ogTitle', "Test Rapide d'Expatriation — Compass")} />
         <meta name="twitter:description" content={t('quickTest.meta.ogDescription', "Découvrez votre profil expatrié en 60 secondes. Test gratuit et personnalisé.")} />
         <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>

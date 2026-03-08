@@ -85,7 +85,7 @@ export function CommunityQuickActions() {
   const handleShare = () => {
     if (navigator.share) {
       navigator.share({
-        title: 'System Compass Community',
+        title: 'Compass Community',
         text: t('community.shareText', 'Rejoignez la communauté des expatriés et futurs expatriés'),
         url: window.location.href,
       });

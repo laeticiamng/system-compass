@@ -25,7 +25,7 @@ export function EthicsCharter() {
     {
       icon: Ban,
       title: t('partner.charter.principle4Title', "Absence de discours financier incitatif"),
-      description: t('partner.charter.principle4Desc', "System Compass n'est pas présenté comme une opportunité financière.")
+      description: t('partner.charter.principle4Desc', "Compass n'est pas présenté comme une opportunité financière.")
     },
     {
       icon: Eye,

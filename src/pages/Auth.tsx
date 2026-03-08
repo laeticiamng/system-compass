@@ -259,7 +259,7 @@ export default function Auth() {
         <meta property="og:description" content={t('auth.meta.ogDescription', "Accédez à vos analyses de pays et stratégies de sortie personnalisées.")} />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={t('auth.meta.ogTitle', 'Connexion - System Compass')} />
+        <meta name="twitter:title" content={t('auth.meta.ogTitle', 'Connexion — Compass')} />
         <meta name="twitter:description" content={t('auth.meta.ogDescription', "Accédez à vos analyses de pays et stratégies de sortie personnalisées.")} />
         <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>

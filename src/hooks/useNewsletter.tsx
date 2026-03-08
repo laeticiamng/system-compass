@@ -83,7 +83,7 @@ export function useNewsletter(): UseNewsletterReturn {
       }
 
       toast.success(t('newsletter.subscribed', 'Inscription réussie !'), {
-        description: t('newsletter.subscribedDesc', 'Bienvenue dans la communauté System Compass.'),
+        description: t('newsletter.subscribedDesc', 'Bienvenue dans la communauté Compass.'),
       });
       return true;
     } catch (error) {

@@ -36,7 +36,7 @@ export default function Partners() {
         <title>Programme Partenaires — Compass</title>
         <meta name="description" content="Rejoignez le programme Compass Partners : ambassadeur ou partenaire B2B." />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Programme Partenaires - System Compass" />
+        <meta property="og:title" content="Programme Partenaires — Compass" />
         <meta property="og:description" content="Compass Partners : ambassadeur ou partenaire B2B pour diffuser la lucidité." />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />

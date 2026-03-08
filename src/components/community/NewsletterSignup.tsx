@@ -109,7 +109,7 @@ export function NewsletterSignup() {
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Mail className="h-5 w-5 text-primary" />
-          Newsletter System Compass
+          Newsletter Compass
         </CardTitle>
         <CardDescription>
           Recevez chaque semaine les meilleures opportunités d'expatriation, 
