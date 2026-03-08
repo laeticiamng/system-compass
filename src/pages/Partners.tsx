@@ -63,7 +63,7 @@ export default function Partners() {
             <div className="bg-card border rounded-xl p-4 sm:p-6 text-left max-w-xl mx-auto">
               <Quote className="h-6 w-6 sm:h-8 sm:w-8 text-primary/30 mb-2" />
               <p className="text-sm sm:text-lg italic text-foreground/80">
-                System Compass reconnaît les personnes qui contribuent à diffuser la lucidité,
+                Compass reconnaît les personnes qui contribuent à diffuser la lucidité,
                 par l'usage, la compréhension et la responsabilité.
               </p>
             </div>
