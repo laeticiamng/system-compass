@@ -356,6 +356,54 @@ export type Database = {
         }
         Relationships: []
       }
+      beta_feedback: {
+        Row: {
+          created_at: string
+          description: string
+          feedback_type: string
+          id: string
+          metadata: Json | null
+          page_url: string | null
+          priority: string
+          screenshot_url: string | null
+          status: string
+          title: string
+          updated_at: string
+          user_agent: string | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          description: string
+          feedback_type: string
+          id?: string
+          metadata?: Json | null
+          page_url?: string | null
+          priority?: string
+          screenshot_url?: string | null
+          status?: string
+          title: string
+          updated_at?: string
+          user_agent?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          feedback_type?: string
+          id?: string
+          metadata?: Json | null
+          page_url?: string | null
+          priority?: string
+          screenshot_url?: string | null
+          status?: string
+          title?: string
+          updated_at?: string
+          user_agent?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       case_delays_reality: {
         Row: {
           case_id: string
