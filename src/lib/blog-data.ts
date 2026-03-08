@@ -256,7 +256,7 @@ Pour traverser ces phases, plusieurs stratégies ont fait leurs preuves. Premiè
 Le « choc culturel inversé » au retour dans son pays d'origine est un phénomène moins connu mais tout aussi déstabilisant. Après une expatriation prolongée, on ne retrouve jamais exactement le pays, les amis et la vie qu'on a quittés. On a changé, et notre entourage aussi. Ce décalage peut être source de frustration et de sentiment d'étrangeté dans son propre pays. En avoir conscience permet de s'y préparer. L'expatriation est en définitive un voyage intérieur autant qu'un déplacement géographique. Elle nous confronte à nos certitudes, élargit notre vision du monde et nous transforme en profondeur. C'est précisément cette transformation qui en fait une expérience si précieuse et si formatrice.`,
     category: 'lifestyle',
     tags: ['choc culturel', 'adaptation', 'intégration', 'psychologie', 'expatriation'],
-    author: 'System Compass',
+    author: 'Compass',
     publishedAt: '2025-04-02',
     readTime: 10,
     featured: false,
