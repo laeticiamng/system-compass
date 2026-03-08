@@ -2340,6 +2340,148 @@ export type Database = {
         }
         Relationships: []
       }
+      healthcare_country_data: {
+        Row: {
+          country_id: string
+          created_at: string
+          cross_border_agreements: Json | null
+          data_confidence: string | null
+          diploma_authority_acronym: string | null
+          diploma_authority_name: string
+          diploma_recognition_cost_eur: number | null
+          diploma_recognition_duration_months: number | null
+          diploma_recognition_steps: Json
+          diploma_recognition_url: string | null
+          health_insurance_system: string | null
+          id: string
+          insurance_mandatory: boolean
+          insurance_min_coverage_eur: number | null
+          insurance_notes: string | null
+          insurance_providers: Json | null
+          language_requirements: Json | null
+          last_verified_at: string
+          licensing_authority_level: string | null
+          licensing_authority_name: string | null
+          licensing_requirements: Json
+          pension_system: Json | null
+          social_protection_system: string | null
+          source_urls: Json | null
+          specialties_covered: string[] | null
+          updated_at: string
+        }
+        Insert: {
+          country_id: string
+          created_at?: string
+          cross_border_agreements?: Json | null
+          data_confidence?: string | null
+          diploma_authority_acronym?: string | null
+          diploma_authority_name: string
+          diploma_recognition_cost_eur?: number | null
+          diploma_recognition_duration_months?: number | null
+          diploma_recognition_steps?: Json
+          diploma_recognition_url?: string | null
+          health_insurance_system?: string | null
+          id?: string
+          insurance_mandatory?: boolean
+          insurance_min_coverage_eur?: number | null
+          insurance_notes?: string | null
+          insurance_providers?: Json | null
+          language_requirements?: Json | null
+          last_verified_at?: string
+          licensing_authority_level?: string | null
+          licensing_authority_name?: string | null
+          licensing_requirements?: Json
+          pension_system?: Json | null
+          social_protection_system?: string | null
+          source_urls?: Json | null
+          specialties_covered?: string[] | null
+          updated_at?: string
+        }
+        Update: {
+          country_id?: string
+          created_at?: string
+          cross_border_agreements?: Json | null
+          data_confidence?: string | null
+          diploma_authority_acronym?: string | null
+          diploma_authority_name?: string
+          diploma_recognition_cost_eur?: number | null
+          diploma_recognition_duration_months?: number | null
+          diploma_recognition_steps?: Json
+          diploma_recognition_url?: string | null
+          health_insurance_system?: string | null
+          id?: string
+          insurance_mandatory?: boolean
+          insurance_min_coverage_eur?: number | null
+          insurance_notes?: string | null
+          insurance_providers?: Json | null
+          language_requirements?: Json | null
+          last_verified_at?: string
+          licensing_authority_level?: string | null
+          licensing_authority_name?: string | null
+          licensing_requirements?: Json
+          pension_system?: Json | null
+          social_protection_system?: string | null
+          source_urls?: Json | null
+          specialties_covered?: string[] | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "healthcare_country_data_country_id_fkey"
+            columns: ["country_id"]
+            isOneToOne: true
+            referencedRelation: "countries"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      healthcare_document_checklists: {
+        Row: {
+          country_id: string
+          created_at: string
+          documents: Json
+          id: string
+          last_verified_at: string
+          origin_region: string
+          source_urls: Json | null
+          specialty: string
+          total_estimated_weeks: number | null
+          updated_at: string
+        }
+        Insert: {
+          country_id: string
+          created_at?: string
+          documents?: Json
+          id?: string
+          last_verified_at?: string
+          origin_region?: string
+          source_urls?: Json | null
+          specialty?: string
+          total_estimated_weeks?: number | null
+          updated_at?: string
+        }
+        Update: {
+          country_id?: string
+          created_at?: string
+          documents?: Json
+          id?: string
+          last_verified_at?: string
+          origin_region?: string
+          source_urls?: Json | null
+          specialty?: string
+          total_estimated_weeks?: number | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "healthcare_document_checklists_country_id_fkey"
+            columns: ["country_id"]
+            isOneToOne: false
+            referencedRelation: "countries"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       i18n_coverage_alerts: {
         Row: {
           alert_sent: boolean | null
@@ -3995,9 +4137,11 @@ export type Database = {
           display_name: string | null
           education_level: string | null
           id: string
+          medical_specialty: string | null
           motor_profile: string | null
           nationalities: string[] | null
           profession_id: string | null
+          professional_track: string | null
           risk_tolerance: string | null
           stripe_customer_id: string | null
           subscription_tier: string | null
@@ -4011,9 +4155,11 @@ export type Database = {
           display_name?: string | null
           education_level?: string | null
           id: string
+          medical_specialty?: string | null
           motor_profile?: string | null
           nationalities?: string[] | null
           profession_id?: string | null
+          professional_track?: string | null
           risk_tolerance?: string | null
           stripe_customer_id?: string | null
           subscription_tier?: string | null
@@ -4027,9 +4173,11 @@ export type Database = {
           display_name?: string | null
           education_level?: string | null
           id?: string
+          medical_specialty?: string | null
           motor_profile?: string | null
           nationalities?: string[] | null
           profession_id?: string | null
+          professional_track?: string | null
           risk_tolerance?: string | null
           stripe_customer_id?: string | null
           subscription_tier?: string | null
