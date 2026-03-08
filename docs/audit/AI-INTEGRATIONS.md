@@ -4,7 +4,7 @@
 
 ## Vue d'ensemble
 
-System Compass utilise plusieurs services IA externes. Ce document décrit leurs limites et les stratégies de fallback.
+Compass utilise plusieurs services IA externes. Ce document décrit leurs limites et les stratégies de fallback.
 
 ## Modèles Utilisés
 

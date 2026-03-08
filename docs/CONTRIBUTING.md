@@ -1,6 +1,6 @@
 # 🤝 Guide de Contribution
 
-Bienvenue ! Ce guide explique comment contribuer efficacement à System Compass.
+Bienvenue ! Ce guide explique comment contribuer efficacement à Compass.
 
 ## Prérequis
 

@@ -27,7 +27,7 @@
 
 ## 🎯 À propos
 
-System Compass aide les expatriés, entrepreneurs et institutions à prendre des décisions éclairées concernant la relocalisation internationale. La plateforme analyse 50+ pays selon leurs systèmes socio-économiques et génère des stratégies personnalisées.
+Compass aide les expatriés, entrepreneurs et institutions à prendre des décisions éclairées concernant la relocalisation internationale. La plateforme analyse 80+ pays selon leurs systèmes socio-économiques et génère des stratégies personnalisées.
 
 ### Cibles
 - **B2C** : Expatriés, nomades digitaux, familles en relocalisation

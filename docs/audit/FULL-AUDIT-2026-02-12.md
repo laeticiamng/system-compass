@@ -618,4 +618,4 @@ GLOBAL            ███████░░░  7.0/10
 
 ---
 
-*Rapport genere le 12 fevrier 2026 dans le cadre de l'audit complet de la plateforme System Compass.*
+*Rapport genere le 12 fevrier 2026 dans le cadre de l'audit complet de la plateforme Compass.*
