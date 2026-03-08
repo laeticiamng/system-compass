@@ -200,7 +200,7 @@ export default function OVI() {
                   </CardHeader>
                   <CardContent className="space-y-6">
                     <p className="text-lg text-muted-foreground">
-                      {t('ovi.intro.p1', 'L\'Observatoire des Variables Invisibles n\'est pas un outil supplémentaire. C\'est un espace de recul — un laboratoire de pensée intégré à System Compass.')}
+                      {t('ovi.intro.p1', 'L\'Observatoire des Variables Invisibles n\'est pas un outil supplémentaire. C\'est un espace de recul — un laboratoire de pensée intégré à Compass.')}
                     </p>
                     
                     <div className="grid md:grid-cols-3 gap-6">
