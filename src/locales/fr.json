@@ -1235,11 +1235,11 @@
     "button": "Commencer l'analyse"
   },
   "countries": {
-    "title": "Analyse des Pays",
-    "subtitle": "Analyse approfondie de chaque pays. Comprends ce que chaque pays récompense, les risques et tes options.",
-    "heroTitle1": "Explore les règles",
-    "heroTitle2": "de chaque pays.",
-    "heroSubtitle": "Chaque pays fonctionne selon sa propre logique. Découvre les mécanismes cachés.",
+    "title": "Explorer les pays",
+    "subtitle": "Analyse approfondie de chaque pays : fiscalité, coût de la vie, visas, qualité de vie et plus encore.",
+    "heroTitle1": "Explore",
+    "heroTitle2": "80+ pays en détail.",
+    "heroSubtitle": "Fiscalité, visas, coût de la vie, qualité de vie : tout ce qu'il faut savoir avant de partir.",
     "badge": "{{count}} pays analysés",
     "allSystems": "Tous les pays",
     "noResults": "Aucun pays ne correspond à ce filtre.",
