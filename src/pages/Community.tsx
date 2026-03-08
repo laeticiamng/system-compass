@@ -144,11 +144,11 @@ export default function Community() {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Communauté - System Compass" />
         <meta property="og:description" content="Forum, ressources et événements pour expatriés et aspirants au départ." />
-        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Communauté - System Compass" />
         <meta name="twitter:description" content="Forum, ressources et événements pour expatriés et aspirants au départ." />
-        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
     <div className="container mx-auto px-4 py-8 space-y-8">
       {/* Header */}

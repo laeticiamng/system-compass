@@ -303,11 +303,11 @@ export default function ExitKeys() {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Clés de Sortie - System Compass" />
         <meta property="og:description" content="Stratégies d'expatriation personnalisées basées sur votre profil et vos objectifs." />
-        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Clés de Sortie - System Compass" />
         <meta name="twitter:description" content="Stratégies d'expatriation personnalisées basées sur votre profil et vos objectifs." />
-        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
       {/* Animated Background Gradient */}
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">

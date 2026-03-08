@@ -280,11 +280,11 @@ export default function FiscalCalculator() {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Simulateur Fiscal International - System Compass" />
         <meta property="og:description" content="Comparez votre salaire net et pouvoir d'achat entre 20 pays." />
-        <meta property="og:image" content="https://system-compass.app/og-image.png" />
+        <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Simulateur Fiscal International - System Compass" />
         <meta name="twitter:description" content="Comparez votre salaire net et pouvoir d'achat entre 20 pays." />
-        <meta name="twitter:image" content="https://system-compass.app/og-image.png" />
+        <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
       {/* Header */}
       <div className="text-center mb-8">
