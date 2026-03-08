@@ -51,6 +51,7 @@ import {
   LazyRegulatoryAlerts, LazyFamilyWorkspace, LazyExpatReviews, LazyApiDocs,
   LazyWebhooksDocs, LazyLifeSimulator,
   LazyRoadmap, LazyStatus, LazyBetaFeedback,
+  LazyHealthcare,
 } from "@/routes/LazyRoutes";
 
 // ============================================================
