@@ -123,7 +123,7 @@ export function OnboardingTour() {
                   onClick={handleNext}
                   className="gap-1 bg-primary hover:bg-primary/90 flex-1 sm:flex-none"
                 >
-                  {currentStep === totalSteps - 1 ? 'Terminer' : 'Suivant'}
+                  {currentStep === totalSteps - 1 ? t('tour.finish', 'Finish') : t('tour.next', 'Next')}
                   <ChevronRight className="w-4 h-4" />
                 </Button>
               </div>
