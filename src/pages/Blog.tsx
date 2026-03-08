@@ -68,14 +68,14 @@ export default function Blog() {
   return (
     <>
       <Helmet>
-        <title>Blog Expatriation - System Compass | Guides et conseils pour expatriés</title>
+        <title>Blog Expatriation — Compass | Guides et conseils pour expatriés</title>
         <meta name="description" content="Guides complets, conseils pratiques et analyses sur l'expatriation : fiscalité, démarches, destinations, digital nomad, famille et bien plus." />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Blog Expatriation - System Compass" />
+        <meta property="og:title" content="Blog Expatriation — Compass" />
         <meta property="og:description" content="Guides complets, conseils pratiques et analyses sur l'expatriation : fiscalité, démarches, destinations, digital nomad." />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Blog Expatriation - System Compass" />
+        <meta name="twitter:title" content="Blog Expatriation — Compass" />
         <meta name="twitter:description" content="Guides complets et analyses sur l'expatriation pour vous accompagner dans votre projet." />
         <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>

@@ -266,15 +266,15 @@ export default function Countries() {
   return (
     <>
       <Helmet>
-        <title>{t('countries.metaTitle', 'Explorer les pays - System Compass | 80+ pays analysés')}</title>
-        <meta name="description" content={t('countries.meta.description', "Explorez 80+ pays avec leurs systèmes analysés en profondeur. Comparez les pyramides, risques et opportunités. Trouvez le pays qui correspond à votre profil.")} />
+        <title>{t('countries.metaTitle', 'Explorer les pays — Compass | 80+ pays analysés')}</title>
+        <meta name="description" content={t('countries.meta.description', "Explorez 80+ pays en détail : fiscalité, visas, coût de la vie, sécurité. Trouvez le pays qui correspond à votre profil.")} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={t('countries.meta.ogTitle', 'Explorer les pays - System Compass')} />
-        <meta property="og:description" content={t('countries.meta.ogDescription', "80+ pays analysés avec leurs systèmes, risques et opportunités. Trouvez votre destination idéale.")} />
+        <meta property="og:title" content={t('countries.meta.ogTitle', 'Explorer les pays — Compass')} />
+        <meta property="og:description" content={t('countries.meta.ogDescription', "80+ pays analysés en détail. Trouvez votre destination idéale.")} />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={t('countries.meta.ogTitle', 'Explorer les pays - System Compass')} />
-        <meta name="twitter:description" content={t('countries.meta.ogDescription', "80+ pays analysés avec leurs systèmes, risques et opportunités. Trouvez votre destination idéale.")} />
+        <meta name="twitter:title" content={t('countries.meta.ogTitle', 'Explorer les pays — Compass')} />
+        <meta name="twitter:description" content={t('countries.meta.ogDescription', "80+ pays analysés en détail. Trouvez votre destination idéale.")} />
         <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
       <div className="min-h-screen bg-background overflow-x-hidden">
