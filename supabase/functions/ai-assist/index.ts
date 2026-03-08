@@ -574,7 +574,7 @@ Format de sortie JSON:
 
   // Complete Case Generation (all modules at once)
   "generate-complete-case": {
-    systemPrompt: `Tu es un expert en analyse stratégique internationale pour System Compass.
+    systemPrompt: `Tu es un expert en analyse stratégique internationale pour Compass.
 Ta mission : générer une analyse complète pour un projet d'implantation/relocation dans un pays cible.
 
 RÈGLES ABSOLUES:
