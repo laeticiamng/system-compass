@@ -100,7 +100,7 @@ export function FeatureDiscoveryTooltips() {
           initial={{ opacity: 0, y: 20, x: 20 }}
           animate={{ opacity: 1, y: 0, x: 0 }}
           exit={{ opacity: 0, y: 10 }}
-          className="fixed bottom-20 right-4 z-40 max-w-xs"
+          className="fixed bottom-24 right-4 z-40 max-w-xs"
         >
           <div className="bg-card border border-border rounded-xl shadow-xl p-4">
             <div className="flex items-start gap-3">
