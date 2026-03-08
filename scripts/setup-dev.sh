@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # ============================================
-# System Compass - Development Setup Script
+# Compass - Development Setup Script
 # ============================================
 
 set -e
 
-echo "🏔️ System Compass - Installation de développement"
+echo "🏔️ Compass - Installation de développement"
 echo "=================================================="
 echo ""
 
