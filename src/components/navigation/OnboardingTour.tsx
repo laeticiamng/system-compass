@@ -115,7 +115,7 @@ export function OnboardingTour() {
                     className="gap-1 flex-1 sm:flex-none"
                   >
                     <ChevronLeft className="w-4 h-4" />
-                    <span className="hidden sm:inline">Précédent</span>
+                    <span className="hidden sm:inline">{t('tour.previous', 'Previous')}</span>
                   </Button>
                 )}
                 <Button
