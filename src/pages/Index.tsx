@@ -31,6 +31,8 @@ import { TestimonialsSection } from '@/components/landing/TestimonialsSection';
 import { FAQPageJsonLd } from '@/components/seo/JsonLd';
 import { HeroMiniDemo } from '@/components/landing/HeroMiniDemo';
 import { ConflictZonesMap } from '@/components/landing/ConflictZonesMap';
+import { UserJourneys } from '@/components/landing/UserJourneys';
+import { SITE_CONFIG } from '@/config/site';
 
 export default function Index() {
   const navigate = useLocalizedNavigate();
