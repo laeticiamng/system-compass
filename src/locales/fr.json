@@ -6188,7 +6188,7 @@
       "caseDossiers": "Dossiers de cas",
       "caseDossiersDesc": "Constituez des dossiers structurés avec preuve d'audit",
       "apiIntegrations": "API & Intégrations",
-      "apiIntegrationsDesc": "Connectez System Compass à vos outils via API REST"
+      "apiIntegrationsDesc": "Connectez Compass à vos outils via API REST"
     },
     "features": {
       "title": "Vos outils recommandés",
