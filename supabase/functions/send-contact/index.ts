@@ -1,11 +1,23 @@
 import { Resend } from 'npm:resend@4.0.0'
 import { getCorsHeaders, handleCorsPreflightRequest } from "../_shared/cors.ts";
+import { checkRateLimit, getRateLimitKey, rateLimitResponse } from "../_shared/rate-limit.ts";
 
 const resend = new Resend(Deno.env.get('RESEND_API_KEY') as string)
 
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return handleCorsPreflightRequest(req)
+  }
+
+  const corsHeaders = getCorsHeaders(req)
+
+  // Rate limit: 5 contact submissions per 10 minutes per IP
+  const rateLimitResult = checkRateLimit(
+    getRateLimitKey(req, 'send-contact'),
+    { maxRequests: 5, windowSeconds: 600 }
+  );
+  if (!rateLimitResult.allowed) {
+    return rateLimitResponse(rateLimitResult, corsHeaders);
   }
 
   const corsHeaders = getCorsHeaders(req)
