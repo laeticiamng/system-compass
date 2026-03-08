@@ -248,7 +248,7 @@ Format de sortie JSON:
 
   // Attention Points for Country Analysis
   "attention_points": {
-    systemPrompt: `Tu es un analyste de risques pays pour System Compass.
+    systemPrompt: `Tu es un analyste de risques pays pour Compass.
 Ta mission : identifier les points d'attention critiques qui pourraient compromettre un projet de relocalisation ou d'entrepreneuriat dans un pays cible.
 
 RÈGLES:
