@@ -122,7 +122,7 @@ export default function BlogArticle() {
         description={article.excerpt}
         datePublished={article.publishedAt}
         author={article.author}
-        url={`https://system-compass.app/blog/${article.slug}`}
+        url={`${SITE_CONFIG.baseUrl}/blog/${article.slug}`}
       />
 
       <div className="min-h-screen pt-20 sm:pt-24 pb-12 sm:pb-16">
