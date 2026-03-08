@@ -94,7 +94,7 @@ export default function Partners() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-muted-foreground">
-                  System Compass repose sur une conviction simple :
+                  Compass repose sur une conviction simple :
                 </p>
                 <blockquote className="border-l-4 border-primary pl-4 py-2 bg-muted/30 rounded-r">
                   <p className="font-medium">
