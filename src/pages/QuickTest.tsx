@@ -223,15 +223,15 @@ export default function QuickTest() {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Helmet>
-        <title>Test Rapide d'Expatriation en 60 secondes - System Compass</title>
-        <meta name="description" content="Découvrez votre profil expatrié en 60 secondes. Test gratuit : situation, priorités, tolérance au risque. Trouvez les pays compatibles avec votre profil." />
+        <title>{t('quickTest.meta.title', "Test Rapide d'Expatriation en 60 secondes - System Compass")}</title>
+        <meta name="description" content={t('quickTest.meta.description', "Découvrez votre profil expatrié en 60 secondes. Test gratuit : situation, priorités, tolérance au risque. Trouvez les pays compatibles avec votre profil.")} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Test Rapide d'Expatriation - System Compass" />
-        <meta property="og:description" content="Découvrez votre profil expatrié en 60 secondes. Test gratuit et personnalisé." />
+        <meta property="og:title" content={t('quickTest.meta.ogTitle', "Test Rapide d'Expatriation - System Compass")} />
+        <meta property="og:description" content={t('quickTest.meta.ogDescription', "Découvrez votre profil expatrié en 60 secondes. Test gratuit et personnalisé.")} />
         <meta property="og:image" content={SITE_CONFIG.ogImageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Test Rapide d'Expatriation - System Compass" />
-        <meta name="twitter:description" content="Découvrez votre profil expatrié en 60 secondes. Test gratuit et personnalisé." />
+        <meta name="twitter:title" content={t('quickTest.meta.ogTitle', "Test Rapide d'Expatriation - System Compass")} />
+        <meta name="twitter:description" content={t('quickTest.meta.ogDescription', "Découvrez votre profil expatrié en 60 secondes. Test gratuit et personnalisé.")} />
         <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
       {/* Hero Section */}
