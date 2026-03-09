@@ -20,8 +20,10 @@ const LANGUAGE_NAMES: Record<string, string> = {
 
 serve(async (req) => {
   if (req.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
+    return handleCorsPreflightRequest(req);
   }
+
+  const corsHeaders = getCorsHeaders(req);
 
   try {
     const { sourceText, sourceLang, targetLang, context } = await req.json();

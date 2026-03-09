@@ -403,8 +403,10 @@ async function syncToCountryTags(supabase: any, countryId: string, json: any) {
 
 serve(async (req) => {
   if (req.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
+    return handleCorsPreflightRequest(req);
   }
+
+  const corsHeaders = getCorsHeaders(req);
 
   try {
     const body = await req.json();
