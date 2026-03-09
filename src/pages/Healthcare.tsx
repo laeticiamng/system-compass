@@ -103,19 +103,19 @@ export default function Healthcare() {
         >
           <Tabs defaultValue="procedures" className="w-full">
             <TabsList className="grid w-full grid-cols-4">
-              <TabsTrigger value="procedures" className="gap-1.5 text-xs">
+              <TabsTrigger value="procedures" className="gap-1.5 text-xs" aria-label={t('healthcare.tabs.procedures', 'Procédures')}>
                 <FileText className="w-3.5 h-3.5" />
                 <span className="hidden sm:inline">{t('healthcare.tabs.procedures', 'Procédures')}</span>
               </TabsTrigger>
-              <TabsTrigger value="tax" className="gap-1.5 text-xs">
+              <TabsTrigger value="tax" className="gap-1.5 text-xs" aria-label={t('healthcare.tabs.tax', 'Simulateur')}>
                 <Calculator className="w-3.5 h-3.5" />
                 <span className="hidden sm:inline">{t('healthcare.tabs.tax', 'Simulateur')}</span>
               </TabsTrigger>
-              <TabsTrigger value="community" className="gap-1.5 text-xs">
+              <TabsTrigger value="community" className="gap-1.5 text-xs" aria-label={t('healthcare.tabs.community', 'Réseau')}>
                 <Users className="w-3.5 h-3.5" />
                 <span className="hidden sm:inline">{t('healthcare.tabs.community', 'Réseau')}</span>
               </TabsTrigger>
-              <TabsTrigger value="updates" className="gap-1.5 text-xs">
+              <TabsTrigger value="updates" className="gap-1.5 text-xs" aria-label={t('healthcare.tabs.updates', 'Alertes')}>
                 <Bell className="w-3.5 h-3.5" />
                 <span className="hidden sm:inline">{t('healthcare.tabs.updates', 'Alertes')}</span>
               </TabsTrigger>
