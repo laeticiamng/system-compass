@@ -456,11 +456,11 @@ export default function Index() {
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      {t('landing.pricing.proFeature2', 'Analyse projet personnalisée')}
+                      {t('landing.pricing.proFeature2', 'Accompagnement personnalisé')}
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      {t('landing.pricing.proFeature3', 'Support dédié & multi-utilisateurs')}
+                      {t('landing.pricing.proFeature3', 'Support dédié & accès multi-utilisateurs')}
                     </li>
                   </ul>
                   <Button 
