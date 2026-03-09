@@ -319,8 +319,8 @@ export default function Privacy() {
                   <p className="text-sm">
                     <strong>{t('privacy.rights.howTo', 'Comment exercer vos droits ?')}</strong>{' '}
                     {t('privacy.rights.howToDesc', "Envoyez un email à")} {' '}
-                    <a href="mailto:privacy@pyramidcompass.com" className="text-primary hover:underline">
-                      privacy@pyramidcompass.com
+                    <a href="mailto:contact@emotionscare.com" className="text-primary hover:underline">
+                      contact@emotionscare.com
                     </a>
                     {' '}{t('privacy.rights.howToDesc2', "avec une preuve d'identité. Nous répondrons sous 30 jours.")}
                   </p>
