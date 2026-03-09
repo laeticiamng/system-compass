@@ -57,7 +57,7 @@ const journeys = [
     descDefault: 'Compare jusqu\'à 4 pays côte à côte : radar charts, fiscalité, qualité de vie.',
     ctaKey: 'landing.journeys.compare.cta',
     ctaDefault: 'Comparer',
-    time: '~3 min',
+    time: undefined as string | undefined,
   },
   {
     id: 'healthcare',
