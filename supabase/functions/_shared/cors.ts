@@ -8,6 +8,10 @@ const ALLOWED_ORIGINS = [
   'https://world-alignment.lovable.app',
 ];
 
+function isLovablePreview(origin: string): boolean {
+  return /^https:\/\/[a-z0-9-]+--[a-z0-9-]+\.lovable\.app$/.test(origin);
+}
+
 function getAllowedOrigin(req?: Request): string {
   if (req) {
     const origin = req.headers.get('Origin') || '';
