@@ -644,7 +644,8 @@
       "ctaSecondary": "Explore countries",
       "statsCountries": "countries analyzed",
       "statsLanguages": "languages",
-      "statsSystems": "expat profiles"
+      "statsSystems": "expat profiles",
+      "statsIndicators": "indicators per country"
     },
     "journeys": {
       "label": "Where to start?",
