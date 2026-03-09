@@ -1,160 +1,118 @@
 
 
-# Audit Complet — Ce qui manque pour rendre System Compass unique et revolutionnaire
+# AUDIT TECHNIQUE — Module Healthcare Professional Track
 
-## Etat actuel
+## 1. RÉSUMÉ EXÉCUTIF
 
-System Compass est deja une plateforme impressionnante : 80+ pages, 72 pays, 36 edge functions, 13 langues, scanner geopolitique IA, modules B2B/governance/gamification, export PDF, marketplace d'experts, et un design system solide. C'est un produit mature.
+**État global** : Le module Healthcare est fonctionnel en termes de rendu et de structure, mais présente des **problèmes critiques de données factices, de persistance absente et d'incohérences SEO/routing**. Le module est dans un état **démonstratif**, pas production-ready.
 
-L'audit ci-dessous identifie les **lacunes strategiques** qui separent une bonne plateforme d'une plateforme *incontournable*.
+**Verdict go-live : NON EN L'ÉTAT**
 
----
+### Top 5 P0
+1. **Community tab = données 100% mockées** — Les profils de "confrères" sont hardcodés (MOCK_PEERS). Le bouton "Demander conseil" ne fait que modifier un state local. Aucune donnée persistée, aucun backend. C'est une fausse fonctionnalité.
+2. **Procedural Updates = données 100% hardcodées** — La fonction `getUpdatesForCountry()` retourne des données statiques in-code, pas de la base. Les dates sont inventées (2026). Pas de système de notification réel.
+3. **Tax Calculator = simulation simpliste sans avertissement suffisant** — Les taux sont approximatifs et hardcodés. L'utilisateur peut comparer un pays avec lui-même sans avertissement. Les devises ne sont pas converties (CHF vs EUR comparé directement).
+4. **Document checklist limitée** — Seule la combinaison `general_medicine` + `eu` existe en base pour les 4 pays. Choisir une autre spécialité affiche "Pas de checklist disponible" sans explication claire que c'est une limitation de données.
+5. **`healthcare` absent de LEGACY_ROUTE_SEGMENTS** — L'accès direct à `/healthcare` (sans préfixe langue) affiche une 404 au lieu de rediriger vers `/:lang/healthcare`.
 
-## A. Experiences manquantes a fort impact
-
-### A1. Assistant IA conversationnel contextuel
-Actuellement, `AiHelpButton` propose des actions predefinies. Il manque un **chatbot IA persistent** (type ChatGPT) qui :
-- Connait le profil utilisateur, ses pays favoris, son avancement
-- Repond en langage naturel : "Quels pays acceptent mon visa freelance ?" "Compare le Portugal et la Thailande pour ma situation"
-- Guide l'utilisateur pas a pas dans son parcours d'expatriation
-- Accessible depuis un panneau lateral permanent (le `AiSidePanel.tsx` existe mais semble sous-utilise)
-
-**Impact** : Differenciant majeur. Aucun concurrent n'offre un assistant IA personnalise pour l'expatriation.
-
-### A2. Simulateur de vie immersif ("A quoi ressemblera ma vie la-bas ?")
-Manque un simulateur qui transforme les donnees brutes en **projection concrete** :
-- Budget mensuel detaille (loyer, courses, transports, sante, loisirs) adapte au profil
-- Timeline interactive : "Mois 1 : arrivee, Mois 3 : ouverture compte bancaire, Mois 6 : permis de residence..."
-- Comparaison visuelle avant/apres (France vs destination) sur un tableau de bord split-screen
-- Scenarios "What-if" : "Et si mon salaire baisse de 20% ?" "Et si j'ai un enfant ?"
-
-### A3. Temoignages et retours d'experience reels (UGC)
-Les temoignages actuels dans `TestimonialsSection` sont statiques/mock. Il manque :
-- Systeme d'avis utilisateurs reels par pays (verifie par connexion)
-- "Journal d'expatrie" : les utilisateurs partagent leur experience mois apres mois
-- Notation par critere (administration, integration, cout reel vs attendu)
-- Filtrage par profil similaire ("Montrez-moi les retours de freelancers francais au Portugal")
-
-### A4. Checklist administrative dynamique et connectee
-`CountryChecklist.tsx` existe mais manque de profondeur :
-- Checklist generee par l'IA en fonction du profil exact (nationalite, statut, famille)
-- Integration calendrier (Google Calendar / iCal) pour les deadlines
-- Rappels automatiques avant echeances visa/fiscales
-- Tracking des documents (passeport, apostilles, traductions) avec upload et stockage
+### Top 5 P1
+1. **Checklist progress stocké uniquement en localStorage** — Le progrès de la checklist documents n'est pas lié au compte utilisateur. Perdu au changement de navigateur/appareil.
+2. **Aucun lien vers /healthcare dans la navigation principale** — Le module n'est accessible que par URL directe. Pas dans le Header, pas dans le sidebar, pas dans le dashboard.
+3. **Community "Demander conseil" sans authentification** — Le CTA fonctionne sans être connecté. Aucune vérification d'identité avant d'envoyer une "demande".
+4. **i18n incomplète** — Plusieurs labels dans HealthcareCommunity et HealthcareTaxCalculator sont en français hardcodé (filtres spécialités, régions, MOCK_PEERS).
+5. **Pas de lien entre le profil "healthcare" choisi à l'onboarding et l'adaptation réelle de la plateforme** — Choisir "Professionnel de santé" à l'onboarding ne modifie pas la navigation ni le dashboard.
 
 ---
 
-## B. Fonctionnalites techniques manquantes
+## 2. TABLEAU D'AUDIT
 
-### B1. Onboarding guide
-Le flag `onboarding: a ajouter tutoriel interactif` est dans l'audit depuis des mois. Un parcours guide (type Shepherd.js / product tour) qui :
-- Detecte les nouveaux utilisateurs et les guide etape par etape
-- Personnalise le tour selon le profil (B2C simple vs B2B governance)
-- Mesure le taux de completion
-
-### B2. Recherche globale intelligente
-`GlobalSearch.tsx` existe mais pourrait etre augmente :
-- Recherche semantique IA ("pays sans impot sur les plus-values crypto")
-- Resultats cross-modules (pays + experts + alertes + articles)
-- Suggestions predictives basees sur le profil
-
-### B3. Mode collaboratif reel (Family Workspace)
-`FamilyWorkspace.tsx` fonctionne avec des donnees demo statiques. Il faudrait :
-- Invitations par email avec lien partage
-- Synchronisation en temps reel (Supabase Realtime)
-- Vote et consensus sur les pays entre membres de la famille
-- Dashboard partage avec progression commune
-
-### B4. Notifications intelligentes
-L'infra push est prete (`usePushNotifications`) mais manque :
-- Alertes proactives : "Le Portugal a change ses regles de visa NHR" → push aux utilisateurs qui suivent le Portugal
-- Digest hebdomadaire personnalise par email (via Resend, deja connecte)
-- "Moment ideal" : suggestions basees sur le timing ("Vous partez dans 3 mois, avez-vous fait votre X ?")
+| Priorité | Domaine | Localisation | Problème | Risque | Recommandation | Faisable immédiatement ? |
+|----------|---------|-------------|----------|--------|----------------|-------------------------|
+| P0 | UX/Data | HealthcareCommunity.tsx | Données 100% mockées (MOCK_PEERS). "Demander conseil" = noop | Fausse fonctionnalité en production | Soit masquer l'onglet Community, soit ajouter un banner "Bientôt disponible" | Oui (banner) |
+| P0 | UX/Data | HealthcareProceduralUpdates.tsx | Données hardcodées dans getUpdatesForCountry(), pas de backend | Contenu figé, aucune mise à jour réelle | Soit migrer vers DB, soit ajouter disclaimer "Données indicatives" | Oui (disclaimer) |
+| P0 | UX/Data | HealthcareTaxCalculator.tsx | Taux hardcodés, pas de conversion de devise, comparaison même pays possible | Calculs trompeurs | Bloquer comparaison même pays, renforcer le disclaimer | Oui |
+| P0 | Data | healthcare_document_checklists | Seule la combinaison general_medicine/eu existe | 80% des sélections retournent "pas de checklist" | Indiquer clairement les combinaisons disponibles | Oui |
+| P0 | Routing | LEGACY_ROUTE_SEGMENTS | `healthcare` manquant | 404 sur /healthcare sans préfixe langue | Ajouter à la liste | Oui |
+| P1 | Persistence | HealthcareDocumentChecklist.tsx | Progrès en localStorage seulement | Perte de données cross-device | Migrer vers Supabase si user authentifié | Non (migration DB) |
+| P1 | Navigation | Header/Sidebar | Aucun lien vers /healthcare | Page inaccessible sans URL directe | Ajouter entrée navigation | Oui |
+| P1 | Auth | HealthcareCommunity.tsx | "Demander conseil" sans vérification auth | Action fantôme sans conséquence | Requérir authentification | Oui |
+| P1 | i18n | HealthcareCommunity.tsx | SPECIALTIES, REGIONS, MOCK_PEERS labels hardcodés en français | Cassé en multilingue | Wrapper t() sur tous les labels | Oui |
+| P1 | UX | HealthcareTaxCalculator.tsx | Grille 3 colonnes sur mobile = illisible | UX mobile dégradée | Passer en stack vertical sur mobile | Oui |
+| P2 | SEO | Healthcare.tsx | Pas de og:image spécifique, meta description fixe | SEO sous-optimal | Ajouter PageMeta dédié | Oui |
+| P2 | Data | healthcare_country_data | 4 pays seulement, pas de fallback IA | Couverture limitée | Ajouter message "X pays en cours d'ajout" | Oui |
+| P2 | Security | healthcare tables | RLS = public read only, pas de write policy | Pas d'admin write possible via API | Ajouter policy admin write | Non (décision produit) |
+| P2 | UX | HealthcareDocumentChecklist | Changer specialty/origin ne reset pas le checked state | Progrès affiché incohérent | Reset checked quand les filtres changent | Oui |
+| P3 | UX | HealthcareTaxCalculator | Net difference banner hardcode "/mois" sans i18n | Non traduit | Passer par t() | Oui |
+| P3 | A11y | Healthcare.tsx | TabsTrigger avec span hidden sm:inline = pas de label accessible sur mobile | Icônes sans texte alternatif | Ajouter aria-label | Oui |
 
 ---
 
-## C. Lacunes de contenu et donnees
+## 3. DÉTAIL PAR CATÉGORIE
 
-### C1. Donnees temps reel
-Les donnees pays sont des snapshots statiques (seed). Il manquerait :
-- Cout de la vie actualise automatiquement (API Numbeo ou scraping Firecrawl — deja connecte)
-- Taux de change en temps reel
-- Index de qualite de l'air, meteo saisonniere
+### A. Frontend & Rendu
+- **Fonctionne** : Page /healthcare se charge, onglets navigables, country selector opérationnel, skeletons de loading, états vides gérés.
+- **Cassé** : Rien de bloquant côté rendu.
+- **Douteux** : La grille 3 colonnes du TaxCalculator sur mobile est probablement illisible.
 
-### C2. Contenu editorial / blog reel
-`Blog.tsx` et `BlogArticle.tsx` existent mais semblent vides ou mock. Un blog alimente :
-- Guides pays approfondis ("S'installer au Portugal en 2026 : le guide complet")
-- Analyses de tendances ("Les 5 pays qui attirent le plus de freelancers en 2026")
-- SEO-driven content pour le trafic organique
+### B. QA Fonctionnelle
+- **Fonctionne** : Sélection pays → affichage données DB (diploma, licensing, social protection, checklist). Filtres checklist specialty/origin fonctionnels.
+- **Cassé** : Community "Demander conseil" = noop local. Procedural Updates = statiques.
+- **Douteux** : Le checkbox state de la checklist ne se reset pas quand on change de specialty/country.
 
-### C3. Comparateur avance
-Le comparateur existe mais manque :
-- Comparaison de 5+ pays simultanement (actuellement limite a 4)
-- Export du comparatif en image/PDF brandee pour partage social
-- Score de compatibilite personnalise dans le comparateur
+### C. Database & RLS
+- **Fonctionne** : 4 pays seed en DB, RLS public read activé, foreign key vers countries.
+- **Cassé** : Aucune write policy → impossible de mettre à jour les données via le client sans service role.
+- **Non confirmé** : Pas de trigger de notification quand les données changent (bien que ProceduralUpdates l'annonce).
 
----
+### D. Sécurité
+- **Fonctionne** : Tables en lecture seule publique (choix architectural cohérent avec countries/translations).
+- **Risque** : La communauté mockée pourrait donner l'impression d'un réseau réel — risque de réputation si mis en prod.
 
-## D. Monetisation et croissance
+### E. i18n
+- **Cassé** : SPECIALTIES labels, REGIONS labels, MOCK_PEERS data, "/mois" dans TaxCalculator, type labels dans ProceduralUpdates — tous hardcodés en français.
 
-### D1. Freemium funnel optimise
-- Manque un compteur visible "3/5 analyses gratuites restantes" pour creer l'urgence
-- Pas de trial period pour le Premium (7 jours gratuits)
-- Pas de referral/parrainage ("Invitez un ami, gagnez 1 mois")
-
-### D2. Marketplace d'experts vivante
-Le booking est marque `a integrer` depuis l'audit. Il manque :
-- Paiement reel (Stripe Connect est configure mais pas connecte au flow)
-- Calendrier de disponibilite des experts
-- Appels video integres ou redirection Calendly
-- Commission automatique sur les transactions
-
-### D3. API publique / Widgets embarquables
-`ApiDocs.tsx` et `WebhooksDocs.tsx` existent mais pas d'API reelle. Offrir :
-- API REST pour les partenaires (agences, blogs voyage)
-- Widget embarquable "Trouvez votre pays ideal" pour sites tiers
-- Programme d'affiliation
+### F. SEO
+- **Fonctionne** : Helmet avec title/description sur Healthcare.tsx.
+- **Manquant** : og:image, hreflang pour /healthcare (géré globalement mais non testé spécifiquement), `healthcare` absent de LEGACY_ROUTE_SEGMENTS.
 
 ---
 
-## E. Ce qui rendrait la plateforme UNIQUE (aucun concurrent ne fait ca)
+## 4. PLAN D'ACTION PRIORISÉ
 
-| Innovation | Description | Niveau de disruption |
-|-----------|-------------|---------------------|
-| **IA Coach expatriation** | Assistant conversationnel qui connait votre dossier et vous guide sur 12 mois | Tres eleve |
-| **Simulation de vie immersive** | "Vivez une journee type a Lisbonne" avec budget, transport, logement projetes | Eleve |
-| **Score de regret** | IA qui calcule la probabilite de retour/echec basee sur les profils similaires | Tres eleve |
-| **Reseau d'expatries verifies** | Mise en relation avec des expatries deja installes dans le pays cible | Eleve |
-| **Timeline reglementaire vivante** | Calendrier auto-genere des demarches admin avec rappels push | Eleve |
-| **Mode "Shadow expat"** | Suivre un expatrie pendant 30 jours (journal partage anonymise) | Tres eleve |
+### P0 — Corrections critiques (à implémenter immédiatement)
+1. Ajouter `healthcare` (et autres routes manquantes) à `LEGACY_ROUTE_SEGMENTS`
+2. Ajouter banner "Fonctionnalité en cours de développement" sur l'onglet Community
+3. Ajouter disclaimer renforcé sur ProceduralUpdates ("Données indicatives, non mises à jour automatiquement")
+4. Bloquer la comparaison d'un pays avec lui-même dans TaxCalculator
+5. Clarifier les combinaisons disponibles dans la checklist documents
 
----
+### P1 — Corrections rapides
+6. Ajouter lien /healthcare dans la navigation (Header ou sidebar)
+7. Fix responsive TaxCalculator (stack vertical mobile)
+8. Reset checklist checked state quand specialty/country change
+9. Ajouter aria-label sur les TabsTrigger pour l'accessibilité mobile
+10. Wrapper i18n sur les labels hardcodés français
 
-## F. Priorites d'implementation suggerees
+### P2 — Améliorations
+11. Ajouter PageMeta avec og:image sur Healthcare.tsx
+12. Envisager migration checklist progress vers Supabase
+13. Ajouter write policies admin pour les tables healthcare
 
-```text
-IMMEDIAT (impact maximal, effort modere)
-├── 1. Assistant IA conversationnel (edge function + panneau lateral)
-├── 2. Onboarding guide interactif
-├── 3. Digest email hebdomadaire personnalise (Resend ready)
-└── 4. Blog reel avec contenus SEO generes par IA
-
-COURT TERME (1-2 semaines)
-├── 5. Simulateur de vie / budget projete par pays
-├── 6. UGC : avis et journaux d'expatries reels
-├── 7. Family Workspace collaboratif reel
-└── 8. Booking experts fonctionnel (Stripe Connect)
-
-MOYEN TERME (differenciation profonde)
-├── 9. Score de regret / probabilite de retour
-├── 10. Reseau d'expatries verifies (social layer)
-├── 11. API publique + widget embarquable
-└── 12. Mode hors-ligne complet (PWA)
-```
+### P3 — Polish
+14. i18n "/mois" et labels mineurs
+15. Ajouter animation de transition entre les onglets
 
 ---
 
-## Resume
+## 5. IMPLÉMENTATION IMMÉDIATE — Ce qui sera corrigé
 
-La plateforme est techniquement solide (669 tests, RLS A+, 36 edge functions). Ce qui manque n'est pas technique — c'est **l'experience humaine** : un assistant qui vous connait, des histoires reelles d'expatries, un simulateur qui rend le futur tangible, et un parcours guide qui elimine l'angoisse de l'inconnu. C'est la difference entre un outil d'analyse et un **compagnon d'expatriation**.
+Les corrections suivantes seront appliquées :
+
+1. **LEGACY_ROUTE_SEGMENTS** : Ajouter `healthcare`, `contact`, `expat-reviews`, `changelog`, `regulatory-alerts`, `family-workspace`, `api`, `webhooks`, `fiscal-before-after`, `checklist`, `expatriation-timeline`
+2. **HealthcareCommunity.tsx** : Ajouter un banner "Réseau en construction — fonctionnalité bientôt disponible" en haut, désactiver le CTA par défaut
+3. **HealthcareProceduralUpdates.tsx** : Ajouter disclaimer "Données indicatives — dernière vérification manuelle"
+4. **HealthcareTaxCalculator.tsx** : Empêcher la sélection du même pays pour les deux sélecteurs, améliorer responsive (grid-cols-1 sur mobile)
+5. **HealthcareDocumentChecklist.tsx** : Reset du state `checked` quand `countryId` ou `specialty` change
+6. **Healthcare.tsx** : Ajouter `aria-label` sur les TabsTrigger pour l'accessibilité mobile
+7. **i18n** : Wrapper les labels hardcodés restants dans t()
 
