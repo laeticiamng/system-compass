@@ -59,6 +59,22 @@ const journeys = [
     ctaDefault: 'Comparer',
     time: '~3 min',
   },
+  {
+    id: 'healthcare',
+    icon: Stethoscope,
+    color: 'text-emerald-500',
+    bgColor: 'bg-emerald-500/10',
+    borderColor: 'border-emerald-500/20',
+    route: '/healthcare',
+    titleKey: 'landing.journeys.healthcare.title',
+    titleDefault: 'Professionnel de Santé',
+    descKey: 'landing.journeys.healthcare.desc',
+    descDefault: 'Reconnaissance de diplôme, autorisation d\'exercer, simulateur fiscal transfrontalier et checklist documents personnalisée.',
+    ctaKey: 'landing.journeys.healthcare.cta',
+    ctaDefault: 'Parcours santé',
+    time: '~10 min',
+    highlight: false,
+  },
 ];
 
 export function UserJourneys() {
