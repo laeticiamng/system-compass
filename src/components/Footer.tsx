@@ -88,22 +88,24 @@ export function Footer() {
           {/* Country indicator and tutorial reset */}
           <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-4">
             <CountryIndicator />
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button 
-                  variant="ghost" 
-                  size="sm"
-                  onClick={resetOnboarding}
-                  className="text-muted-foreground hover:text-foreground h-auto py-1 sm:py-1.5 text-xs sm:text-sm"
-                >
-                  <RotateCcw className="w-3 h-3 sm:w-3.5 sm:h-3.5 mr-1 sm:mr-1.5" />
-                  <span>{t('footer.restartTutorial', 'Revoir le tutoriel')}</span>
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>{t('footer.restartTutorialTooltip', 'Relancer le tutoriel de bienvenue')}</p>
-              </TooltipContent>
-            </Tooltip>
+            {user && (
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button 
+                    variant="ghost" 
+                    size="sm"
+                    onClick={resetOnboarding}
+                    className="text-muted-foreground hover:text-foreground h-auto py-1 sm:py-1.5 text-xs sm:text-sm"
+                  >
+                    <RotateCcw className="w-3 h-3 sm:w-3.5 sm:h-3.5 mr-1 sm:mr-1.5" />
+                    <span>{t('footer.restartTutorial', 'Revoir le tutoriel')}</span>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{t('footer.restartTutorialTooltip', 'Relancer le tutoriel de bienvenue')}</p>
+                </TooltipContent>
+              </Tooltip>
+            )}
           </div>
           
           <div className="flex flex-col items-center justify-center gap-3 sm:gap-4 text-center">
