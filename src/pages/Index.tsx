@@ -477,6 +477,69 @@ export default function Index() {
         </div>
       </section>
 
+      {/* ========== HEALTHCARE SECTION ========== */}
+      <section className="py-20 md:py-32">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="relative overflow-hidden rounded-3xl border border-emerald-500/20 bg-gradient-to-br from-emerald-500/5 via-background to-emerald-500/5 p-8 md:p-12"
+            >
+              {/* Decorative background */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+              
+              <div className="relative z-10 grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
+                    <Stethoscope className="w-4 h-4 text-emerald-500" />
+                    <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400">{t('landing.healthcare.badge', 'Parcours dédié')}</span>
+                  </div>
+                  <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
+                    {t('landing.healthcare.title', 'Vous êtes professionnel de santé ?')}
+                  </h2>
+                  <p className="text-muted-foreground leading-relaxed mb-6">
+                    {t('landing.healthcare.description', 'Reconnaissance de diplôme, autorisation d\'exercer, protection sociale et simulateur fiscal transfrontalier — tout ce dont vous avez besoin pour préparer votre mobilité.')}
+                  </p>
+                  <Button
+                    size="lg"
+                    onClick={() => navigate('/healthcare')}
+                    className="gap-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full"
+                  >
+                    <Stethoscope className="w-5 h-5" />
+                    {t('landing.healthcare.cta', 'Découvrir le parcours santé')}
+                    <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  {[
+                    { icon: FileCheck, label: t('landing.healthcare.feature1', 'Diplômes & MEBEKO / CNOM'), desc: t('landing.healthcare.feature1Desc', 'Procédures de reconnaissance') },
+                    { icon: Shield, label: t('landing.healthcare.feature2', 'Autorisations d\'exercer'), desc: t('landing.healthcare.feature2Desc', 'Par canton / département') },
+                    { icon: Calculator, label: t('landing.healthcare.feature3', 'Simulateur fiscal'), desc: t('landing.healthcare.feature3Desc', 'LAMal vs Sécu, pilier 2 vs retraite') },
+                    { icon: CheckCircle, label: t('landing.healthcare.feature4', 'Checklist documents'), desc: t('landing.healthcare.feature4Desc', 'Personnalisée par spécialité') },
+                  ].map((item, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.1 }}
+                      className="rounded-xl border border-border/50 bg-card/50 p-4 backdrop-blur-sm"
+                    >
+                      <item.icon className="w-5 h-5 text-emerald-500 mb-2" />
+                      <p className="text-sm font-semibold mb-0.5">{item.label}</p>
+                      <p className="text-xs text-muted-foreground">{item.desc}</p>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* ========== FAQ MINI ========== */}
       <section className="py-20 md:py-32 bg-muted/30">
         <div className="container mx-auto px-4">
