@@ -6,7 +6,7 @@
 import { useState, useCallback } from 'react';
 import type { TFunction } from 'i18next';
 
-const TOUR_COMPLETED_KEY = 'pyramid-compass-tour-completed';
+const TOUR_COMPLETED_KEY = 'compass-tour-completed';
 const TOUR_VERSION = 'v1'; // Increment to re-show tour after updates
 
 export interface TourStep {

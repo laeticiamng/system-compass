@@ -292,7 +292,7 @@ export default function AdminAnalytics() {
   if (authLoading) {
     return (
       <div className="container mx-auto px-4 py-8">
-        <div className="animate-pulse">Chargement...</div>
+        <div className="animate-pulse">{t('common.loading', 'Chargement...')}</div>
       </div>
     );
   }

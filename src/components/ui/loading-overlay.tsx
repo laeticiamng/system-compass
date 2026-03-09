@@ -8,7 +8,7 @@ interface LoadingOverlayProps {
 }
 
 export function LoadingOverlay({ 
-  message = 'Chargement...', 
+  message, 
   className,
   fullScreen = false 
 }: LoadingOverlayProps) {
