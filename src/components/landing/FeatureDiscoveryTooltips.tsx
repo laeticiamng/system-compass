@@ -74,7 +74,7 @@ export function FeatureDiscoveryTooltips() {
     const timer = setTimeout(() => {
       const next = TIPS.find(tip => !d.includes(tip.id) && !suppressedTips.includes(tip.id));
       if (next) setCurrentTip(next);
-    }, 20000); // 20s delay to avoid overlap with onboarding + cookie consent
+    }, 45000); // 45s delay to avoid overlap with onboarding + cookie consent + disclaimer
 
     return () => clearTimeout(timer);
   }, [pathname]);

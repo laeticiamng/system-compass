@@ -38,7 +38,7 @@ const SIMULATION_SEGMENTS = [
   '/exit-keys', '/life-game', '/compare', '/life-trajectory', 
   '/country/', '/systemic-mistakes', '/match', '/profile-test', '/pyramid-quiz'
 ];
-const DISCLAIMER_DISMISSED_KEY = 'pyramid-disclaimer-dismissed';
+const DISCLAIMER_DISMISSED_KEY = 'compass-disclaimer-dismissed';
 
 export function Header() {
   const location = useLocation();

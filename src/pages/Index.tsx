@@ -175,8 +175,8 @@ export default function Index() {
               <span className="text-sm">{t('landing.hero.statsLanguages', 'langues')}</span>
             </div>
             <div className="text-center">
-              <span className="block text-3xl font-bold text-foreground">6</span>
-              <span className="text-sm">{t('landing.hero.statsSystems', 'profils d\'expatrié')}</span>
+              <span className="block text-3xl font-bold text-foreground">200+</span>
+              <span className="text-sm">{t('landing.hero.statsIndicators', 'indicateurs par pays')}</span>
             </div>
           </motion.div>
           <TrustBadges />
@@ -369,7 +369,7 @@ export default function Index() {
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      {t('landing.pricing.freeFeature4', 'Profils qui réussissent')}
+                      {t('landing.pricing.freeFeature4', 'Qui réussit, qui galère dans chaque pays')}
                     </li>
                   </ul>
                   <Button 
@@ -410,15 +410,15 @@ export default function Index() {
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                       {t('landing.pricing.premiumFeature2', 'Analyses approfondies')}
+                     {t('landing.pricing.premiumFeature2', 'Analyses détaillées par pays')}
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                       {t('landing.pricing.premiumFeature3', 'Export PDF illimité')}
+                       {t('landing.pricing.premiumFeature3', 'Export PDF & simulateur fiscal')}
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                       {t('landing.pricing.premiumFeature4', 'Recommandations personnalisées')}
+                       {t('landing.pricing.premiumFeature4', 'Recommandations adaptées à votre profil')}
                     </li>
                   </ul>
                   <Button 
@@ -456,11 +456,11 @@ export default function Index() {
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      {t('landing.pricing.proFeature2', 'Analyse projet personnalisée')}
+                      {t('landing.pricing.proFeature2', 'Accompagnement personnalisé')}
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      {t('landing.pricing.proFeature3', 'Support dédié & multi-utilisateurs')}
+                      {t('landing.pricing.proFeature3', 'Support dédié & accès multi-utilisateurs')}
                     </li>
                   </ul>
                   <Button 
@@ -515,9 +515,9 @@ export default function Index() {
 
                 <div className="grid grid-cols-2 gap-4">
                   {[
-                    { icon: FileCheck, label: t('landing.healthcare.feature1', 'Diplômes & MEBEKO / CNOM'), desc: t('landing.healthcare.feature1Desc', 'Procédures de reconnaissance') },
-                    { icon: Shield, label: t('landing.healthcare.feature2', 'Autorisations d\'exercer'), desc: t('landing.healthcare.feature2Desc', 'Par canton / département') },
-                    { icon: Calculator, label: t('landing.healthcare.feature3', 'Simulateur fiscal'), desc: t('landing.healthcare.feature3Desc', 'LAMal vs Sécu, pilier 2 vs retraite') },
+                    { icon: FileCheck, label: t('landing.healthcare.feature1', 'Reconnaissance de diplôme'), desc: t('landing.healthcare.feature1Desc', '🇨🇭 MEBEKO · 🇫🇷 CNOM') },
+                    { icon: Shield, label: t('landing.healthcare.feature2', 'Autorisation d\'exercer'), desc: t('landing.healthcare.feature2Desc', 'Par canton ou département') },
+                    { icon: Calculator, label: t('landing.healthcare.feature3', 'Simulateur fiscal'), desc: t('landing.healthcare.feature3Desc', 'Assurance maladie & retraite comparées') },
                     { icon: CheckCircle, label: t('landing.healthcare.feature4', 'Checklist documents'), desc: t('landing.healthcare.feature4Desc', 'Personnalisée par spécialité') },
                   ].map((item, i) => (
                     <motion.div
@@ -633,10 +633,10 @@ export default function Index() {
         <section className="py-6 border-t border-border/30">
           <div className="container mx-auto px-4 text-center">
             <p className="text-sm text-muted-foreground">
-              🔓 <strong>{t('landing.guest.mode', 'Mode observation')}</strong> — {t('landing.guest.description', 'Explore librement sans compte.')}{' '}
+              ✨ <strong>{t('landing.guest.mode', 'Explorez librement')}</strong> — {t('landing.guest.description', 'Aucun compte requis pour découvrir.')}{' '}
               <Link to="/auth" className="text-primary hover:underline font-medium">
-                {t('landing.guest.cta', 'Créer un compte')}
-              </Link> {t('landing.guest.suffix', 'pour sauvegarder.')}
+                {t('landing.guest.cta', 'Créez un compte')}
+              </Link> {t('landing.guest.suffix', 'pour sauvegarder vos recherches.')}
             </p>
           </div>
         </section>
