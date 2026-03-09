@@ -6,6 +6,7 @@
 
 import { Navigate } from "react-router-dom";
 import { RequireAdmin } from "@/components/RequireAdmin";
+import { RequireAuth } from "@/components/RequireAuth";
 
 // Eagerly loaded pages
 import Index from "@/pages/Index";
