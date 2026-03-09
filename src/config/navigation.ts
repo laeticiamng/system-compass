@@ -7,7 +7,7 @@
 import {
   Compass, Map, Globe, Key, Users,
   BarChart3, BookOpen, LayoutDashboard, CreditCard,
-  Zap, FileText, Bell, Home, Wrench,
+  Zap, FileText, Bell, Home, Wrench, Stethoscope,
   Info, Settings, AlertTriangle, Clock, type LucideIcon
 } from 'lucide-react';
 
@@ -102,6 +102,19 @@ export const NAV_GROUPS: NavGroup[] = [
       { href: '/fiscal-before-after', icon: BarChart3, label: 'Avant/Après', labelKey: 'nav.beforeAfter', description: 'Comparaison fiscale' },
       { href: '/regulatory-alerts', icon: AlertTriangle, label: 'Alertes', labelKey: 'nav.alerts', description: 'Veille réglementaire', badge: 'Live' },
       { href: '/family-workspace', icon: Users, label: 'Famille', labelKey: 'nav.family', description: 'Espace collaboratif' },
+    ],
+  },
+  {
+    id: 'healthcare',
+    title: 'Santé',
+    titleKey: 'nav.groups.healthcare',
+    description: 'Parcours professionnel de santé',
+    icon: Stethoscope,
+    color: 'from-rose-500/20 to-pink-500/20',
+    borderColor: 'border-rose-500/30',
+    badge: 'New',
+    items: [
+      { href: '/healthcare', icon: Stethoscope, label: 'Parcours Santé', labelKey: 'nav.healthcare', description: 'Diplômes, autorisations, protection sociale', badge: 'New' },
     ],
   },
 ];

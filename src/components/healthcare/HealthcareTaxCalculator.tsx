@@ -2,10 +2,9 @@ import { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Calculator, ArrowRight, TrendingDown, TrendingUp, Heart, Coins, AlertTriangle } from 'lucide-react';
+import { Calculator, ArrowRight, ArrowDown, TrendingDown, TrendingUp, Heart, Coins, AlertTriangle } from 'lucide-react';
 
 interface TaxResult {
   grossSalary: number;
@@ -120,10 +119,21 @@ export function HealthcareTaxCalculator() {
   const origin = COUNTRIES.find(c => c.id === originId)!;
   const target = COUNTRIES.find(c => c.id === targetId)!;
   const gross = parseFloat(grossSalary) || 0;
+  const sameCountry = originId === targetId;
 
   const originResult = useMemo(() => computeTax(origin, gross), [origin, gross]);
   const targetResult = useMemo(() => computeTax(target, gross), [target, gross]);
   const netDifference = targetResult.netTakeHome - originResult.netTakeHome;
+
+  // When user selects same country for target, auto-switch
+  const handleTargetChange = (val: string) => {
+    if (val === originId) return; // block same country
+    setTargetId(val);
+  };
+  const handleOriginChange = (val: string) => {
+    if (val === targetId) return; // block same country
+    setOriginId(val);
+  };
 
   return (
     <Card>
@@ -137,14 +147,14 @@ export function HealthcareTaxCalculator() {
         </p>
       </CardHeader>
       <CardContent className="space-y-5">
-        {/* Inputs */}
-        <div className="grid grid-cols-3 gap-3">
+        {/* Inputs - responsive */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div className="space-y-1.5">
             <label className="text-xs font-medium">{t('healthcare.tax.currentCountry', 'Pays actuel')}</label>
-            <Select value={originId} onValueChange={setOriginId}>
+            <Select value={originId} onValueChange={handleOriginChange}>
               <SelectTrigger className="h-9 text-xs"><SelectValue /></SelectTrigger>
               <SelectContent>
-                {COUNTRIES.map(c => (
+                {COUNTRIES.filter(c => c.id !== targetId).map(c => (
                   <SelectItem key={c.id} value={c.id}>{c.flag} {c.name}</SelectItem>
                 ))}
               </SelectContent>
@@ -152,10 +162,10 @@ export function HealthcareTaxCalculator() {
           </div>
           <div className="space-y-1.5">
             <label className="text-xs font-medium">{t('healthcare.tax.targetCountry', 'Pays cible')}</label>
-            <Select value={targetId} onValueChange={setTargetId}>
+            <Select value={targetId} onValueChange={handleTargetChange}>
               <SelectTrigger className="h-9 text-xs"><SelectValue /></SelectTrigger>
               <SelectContent>
-                {COUNTRIES.map(c => (
+                {COUNTRIES.filter(c => c.id !== originId).map(c => (
                   <SelectItem key={c.id} value={c.id}>{c.flag} {c.name}</SelectItem>
                 ))}
               </SelectContent>
@@ -173,13 +183,24 @@ export function HealthcareTaxCalculator() {
           </div>
         </div>
 
-        {/* Side-by-side comparison */}
-        {gross > 0 && (
+        {/* Currency warning */}
+        {origin.currency !== target.currency && gross > 0 && (
+          <div className="flex items-start gap-2 rounded-lg border border-blue-500/30 bg-blue-500/5 p-2">
+            <AlertTriangle className="w-3.5 h-3.5 text-blue-500 shrink-0 mt-0.5" />
+            <p className="text-[10px] text-muted-foreground">
+              {t('healthcare.tax.currencyWarning', 'Les devises diffèrent ({{from}} vs {{to}}). Les montants ne sont pas convertis — comparaison à titre indicatif uniquement.', { from: origin.currency, to: target.currency })}
+            </p>
+          </div>
+        )}
+
+        {/* Side-by-side comparison - responsive */}
+        {gross > 0 && !sameCountry && (
           <>
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <ResultColumn country={origin} result={originResult} />
-              <div className="flex flex-col items-center justify-center">
-                <ArrowRight className="w-5 h-5 text-muted-foreground" />
+              <div className="flex sm:flex-col items-center justify-center py-2">
+                <ArrowRight className="w-5 h-5 text-muted-foreground hidden sm:block" />
+                <ArrowDown className="w-5 h-5 text-muted-foreground sm:hidden" />
               </div>
               <ResultColumn country={target} result={targetResult} />
             </div>
@@ -188,7 +209,7 @@ export function HealthcareTaxCalculator() {
             <div className={`rounded-lg p-3 text-center ${netDifference >= 0 ? 'bg-emerald-500/10 border border-emerald-500/30' : 'bg-destructive/10 border border-destructive/30'}`}>
               <p className="text-xs text-muted-foreground">{t('healthcare.tax.difference', 'Différence nette mensuelle')}</p>
               <p className={`text-lg font-bold ${netDifference >= 0 ? 'text-emerald-600' : 'text-destructive'}`}>
-                {netDifference >= 0 ? '+' : ''}{Math.round(netDifference).toLocaleString()} /mois
+                {netDifference >= 0 ? '+' : ''}{Math.round(netDifference).toLocaleString()} {t('healthcare.tax.perMonth', '/mois')}
               </p>
             </div>
 

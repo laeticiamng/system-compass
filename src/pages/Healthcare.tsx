@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Stethoscope, Globe, FileText, CheckCircle2, Calculator, Users, Bell } from 'lucide-react';
+import { PageMeta } from '@/components/seo/PageMeta';
 import { HealthcareCountryOverview } from '@/components/healthcare/HealthcareCountryOverview';
 import { HealthcareTaxCalculator } from '@/components/healthcare/HealthcareTaxCalculator';
 import { HealthcareCommunity } from '@/components/healthcare/HealthcareCommunity';
@@ -29,10 +29,10 @@ export default function Healthcare() {
 
   return (
     <>
-      <Helmet>
-        <title>{t('healthcare.seo.title', 'Parcours Professionnel de Santé — Compass')}</title>
-        <meta name="description" content={t('healthcare.seo.description', 'Guide complet pour les professionnels de santé : reconnaissance de diplôme, autorisations d\'exercer, protection sociale et checklist documents par pays.')} />
-      </Helmet>
+      <PageMeta
+        title={t('healthcare.seo.title', 'Parcours Professionnel de Santé — Compass')}
+        description={t('healthcare.seo.description', 'Guide complet pour les professionnels de santé : reconnaissance de diplôme, autorisations d\'exercer, protection sociale et checklist documents par pays.')}
+      />
 
       <div className="container max-w-5xl mx-auto py-8 px-4 space-y-8">
         {/* Hero */}
@@ -103,19 +103,19 @@ export default function Healthcare() {
         >
           <Tabs defaultValue="procedures" className="w-full">
             <TabsList className="grid w-full grid-cols-4">
-              <TabsTrigger value="procedures" className="gap-1.5 text-xs">
+              <TabsTrigger value="procedures" className="gap-1.5 text-xs" aria-label={t('healthcare.tabs.procedures', 'Procédures')}>
                 <FileText className="w-3.5 h-3.5" />
                 <span className="hidden sm:inline">{t('healthcare.tabs.procedures', 'Procédures')}</span>
               </TabsTrigger>
-              <TabsTrigger value="tax" className="gap-1.5 text-xs">
+              <TabsTrigger value="tax" className="gap-1.5 text-xs" aria-label={t('healthcare.tabs.tax', 'Simulateur')}>
                 <Calculator className="w-3.5 h-3.5" />
                 <span className="hidden sm:inline">{t('healthcare.tabs.tax', 'Simulateur')}</span>
               </TabsTrigger>
-              <TabsTrigger value="community" className="gap-1.5 text-xs">
+              <TabsTrigger value="community" className="gap-1.5 text-xs" aria-label={t('healthcare.tabs.community', 'Réseau')}>
                 <Users className="w-3.5 h-3.5" />
                 <span className="hidden sm:inline">{t('healthcare.tabs.community', 'Réseau')}</span>
               </TabsTrigger>
-              <TabsTrigger value="updates" className="gap-1.5 text-xs">
+              <TabsTrigger value="updates" className="gap-1.5 text-xs" aria-label={t('healthcare.tabs.updates', 'Alertes')}>
                 <Bell className="w-3.5 h-3.5" />
                 <span className="hidden sm:inline">{t('healthcare.tabs.updates', 'Alertes')}</span>
               </TabsTrigger>

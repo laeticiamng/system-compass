@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Bell, ExternalLink, CheckCircle2, AlertTriangle, Info, Clock } from 'lucide-react';
+import { Bell, ExternalLink, CheckCircle2, AlertTriangle, Info, Clock, Construction } from 'lucide-react';
 import { useHealthcareCountryData } from '@/hooks/useHealthcareData';
 import { formatDistanceToNow, format } from 'date-fns';
 import { fr } from 'date-fns/locale';
@@ -44,9 +44,15 @@ function getUpdatesForCountry(countryId: string): ProceduralUpdate[] {
 }
 
 const typeConfig = {
-  change: { icon: AlertTriangle, color: 'text-amber-500', bg: 'bg-amber-500/10', border: 'border-amber-500/30', label: 'Changement' },
-  info: { icon: Info, color: 'text-primary', bg: 'bg-primary/10', border: 'border-primary/30', label: 'Information' },
-  warning: { icon: AlertTriangle, color: 'text-destructive', bg: 'bg-destructive/10', border: 'border-destructive/30', label: 'Alerte' },
+  change: { icon: AlertTriangle, color: 'text-amber-500', bg: 'bg-amber-500/10', border: 'border-amber-500/30', labelKey: 'healthcare.updates.typeChange' },
+  info: { icon: Info, color: 'text-primary', bg: 'bg-primary/10', border: 'border-primary/30', labelKey: 'healthcare.updates.typeInfo' },
+  warning: { icon: AlertTriangle, color: 'text-destructive', bg: 'bg-destructive/10', border: 'border-destructive/30', labelKey: 'healthcare.updates.typeWarning' },
+};
+
+const TYPE_FALLBACKS: Record<string, string> = {
+  'healthcare.updates.typeChange': 'Changement',
+  'healthcare.updates.typeInfo': 'Information',
+  'healthcare.updates.typeWarning': 'Alerte',
 };
 
 export function HealthcareProceduralUpdates({ countryId }: Props) {
@@ -78,6 +84,14 @@ export function HealthcareProceduralUpdates({ countryId }: Props) {
         </p>
       </CardHeader>
       <CardContent className="space-y-3">
+        {/* Disclaimer banner */}
+        <div className="flex items-start gap-2 rounded-lg border border-amber-500/30 bg-amber-500/5 p-3">
+          <Construction className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
+          <p className="text-[10px] text-muted-foreground leading-relaxed">
+            {t('healthcare.updates.disclaimer', 'Données indicatives issues d\'une veille manuelle. Les alertes automatiques en temps réel ne sont pas encore actives. Vérifiez toujours auprès des sources officielles.')}
+          </p>
+        </div>
+
         {updates.length === 0 ? (
           <div className="text-center py-8 text-muted-foreground text-sm">
             {t('healthcare.updates.noData', 'Pas de mises à jour récentes pour ce pays.')}
@@ -98,10 +112,12 @@ export function HealthcareProceduralUpdates({ countryId }: Props) {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
                       <h4 className="text-sm font-semibold">{update.title}</h4>
-                      <Badge variant="secondary" className="text-[9px]">{config.label}</Badge>
+                      <Badge variant="secondary" className="text-[9px]">
+                        {t(config.labelKey, TYPE_FALLBACKS[config.labelKey] || update.type)}
+                      </Badge>
                     </div>
                     <p className="text-xs text-muted-foreground mt-1">{update.description}</p>
-                    <div className="flex items-center gap-3 mt-2">
+                    <div className="flex items-center gap-3 mt-2 flex-wrap">
                       <span className="text-[10px] text-muted-foreground flex items-center gap-1">
                         <Clock className="w-3 h-3" /> {ago}
                       </span>
