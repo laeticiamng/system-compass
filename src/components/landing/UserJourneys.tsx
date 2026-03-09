@@ -26,7 +26,7 @@ const journeys = [
     descDefault: 'Parcours les 80+ fiches pays : fiscalité, visas, coût de la vie, sécurité.',
     ctaKey: 'landing.journeys.explore.cta',
     ctaDefault: 'Explorer',
-    time: '~5 min',
+    time: undefined as string | undefined,
   },
   {
     id: 'test',
@@ -57,7 +57,7 @@ const journeys = [
     descDefault: 'Compare jusqu\'à 4 pays côte à côte : radar charts, fiscalité, qualité de vie.',
     ctaKey: 'landing.journeys.compare.cta',
     ctaDefault: 'Comparer',
-    time: '~3 min',
+    time: undefined as string | undefined,
   },
   {
     id: 'healthcare',
@@ -72,7 +72,7 @@ const journeys = [
     descDefault: 'Reconnaissance de diplôme (🇨🇭 MEBEKO, 🇫🇷 CNOM), autorisation d\'exercer, simulateur fiscal et checklist documents.',
     ctaKey: 'landing.journeys.healthcare.cta',
     ctaDefault: 'Parcours santé',
-    time: '~10 min',
+    time: undefined as string | undefined,
     highlight: false,
   },
 ];
@@ -142,7 +142,7 @@ export function UserJourneys() {
                     </p>
 
                     <div className="flex items-center justify-between">
-                      <span className="text-xs text-muted-foreground/70">{journey.time}</span>
+                      {journey.time && <span className="text-xs text-muted-foreground/70">{journey.time}</span>}
                       <Button
                         variant={journey.highlight ? 'default' : 'ghost'}
                         size="sm"

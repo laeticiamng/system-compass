@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Compass, Heart, RotateCcw } from 'lucide-react';
 import { CountryIndicator } from './CountryIndicator';
 import { useResetOnboarding } from './DialogCoordinator';
+import { useAuth } from '@/hooks/useAuth';
 import { Button } from './ui/button';
 import {
   Tooltip,
@@ -14,6 +15,7 @@ export function Footer() {
   const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
   const resetOnboarding = useResetOnboarding();
+  const { user } = useAuth();
 
   return (
     <footer className="border-t border-border/50 bg-background/50 backdrop-blur-sm pb-safe">
@@ -86,22 +88,24 @@ export function Footer() {
           {/* Country indicator and tutorial reset */}
           <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-4">
             <CountryIndicator />
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button 
-                  variant="ghost" 
-                  size="sm"
-                  onClick={resetOnboarding}
-                  className="text-muted-foreground hover:text-foreground h-auto py-1 sm:py-1.5 text-xs sm:text-sm"
-                >
-                  <RotateCcw className="w-3 h-3 sm:w-3.5 sm:h-3.5 mr-1 sm:mr-1.5" />
-                  <span>{t('footer.restartTutorial', 'Revoir le tutoriel')}</span>
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>{t('footer.restartTutorialTooltip', 'Relancer le tutoriel de bienvenue')}</p>
-              </TooltipContent>
-            </Tooltip>
+            {user && (
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button 
+                    variant="ghost" 
+                    size="sm"
+                    onClick={resetOnboarding}
+                    className="text-muted-foreground hover:text-foreground h-auto py-1 sm:py-1.5 text-xs sm:text-sm"
+                  >
+                    <RotateCcw className="w-3 h-3 sm:w-3.5 sm:h-3.5 mr-1 sm:mr-1.5" />
+                    <span>{t('footer.restartTutorial', 'Revoir le tutoriel')}</span>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{t('footer.restartTutorialTooltip', 'Relancer le tutoriel de bienvenue')}</p>
+                </TooltipContent>
+              </Tooltip>
+            )}
           </div>
           
           <div className="flex flex-col items-center justify-center gap-3 sm:gap-4 text-center">

@@ -644,7 +644,8 @@
       "ctaSecondary": "Explore countries",
       "statsCountries": "countries analyzed",
       "statsLanguages": "languages",
-      "statsSystems": "expat profiles"
+      "statsSystems": "expat profiles",
+      "statsIndicators": "indicators per country"
     },
     "journeys": {
       "label": "Where to start?",
@@ -665,6 +666,11 @@
         "title": "Compare",
         "desc": "Compare up to 4 countries side by side: radar charts, taxation, quality of life.",
         "cta": "Compare"
+      },
+      "healthcare": {
+        "title": "Healthcare Professional",
+        "desc": "Diploma recognition (🇨🇭 MEBEKO, 🇫🇷 CNOM), licensing, tax simulator and document checklist.",
+        "cta": "Healthcare track"
       }
     },
     "howItWorks": {
@@ -693,20 +699,20 @@
       "freeFeature1": "Complete profile test",
       "freeFeature2": "Full country details",
       "freeFeature3": "80+ countries available",
-      "freeFeature4": "Profiles that succeed",
+      "freeFeature4": "Who succeeds, who struggles in each country",
       "freeCta": "Start for free",
       "premiumName": "Premium",
       "premiumPrice": "from €9.90/month",
       "premiumFeature1": "Everything in Free plan",
-      "premiumFeature2": "Advanced system analysis",
-      "premiumFeature3": "Unlimited PDF export",
-      "premiumFeature4": "Governance & Terrain",
+      "premiumFeature2": "In-depth country analysis",
+      "premiumFeature3": "PDF export & tax simulator",
+      "premiumFeature4": "Recommendations tailored to your profile",
       "premiumCta": "View plans",
       "proName": "Pro / B2B",
       "proPrice": "Custom quote",
       "proFeature1": "Everything in Premium",
-      "proFeature2": "Custom project analysis",
-      "proFeature3": "Dedicated support & multi-user",
+      "proFeature2": "Personalized guidance",
+      "proFeature3": "Dedicated support & multi-user access",
       "proCta": "Contact us"
     },
     "faq": {
@@ -718,6 +724,12 @@
       "a2": "No. Compass is a simulation and comparison tool. It does not replace a lawyer, tax advisor or immigration consultant. Always consult a professional before making a decision.",
       "q3": "How is the data calculated?",
       "a3": "Our data comes from public sources (World Bank, UN, Transparency International, etc.) and is updated regularly. Each country profile indicates its sources.",
+      "q4": "Is Compass suitable for healthcare professionals?",
+      "a4": "Yes. Compass offers a dedicated track for healthcare professionals: diploma recognition (MEBEKO, CNOM), licensing by canton or department, cross-border tax simulator, peer community and specialty-specific document checklist.",
+      "q5": "Can I delete my account and data?",
+      "a5": "Yes. You can delete your account and all associated data at any time from your dashboard settings. Deletion is immediate and irreversible, in compliance with GDPR.",
+      "q6": "Can I export my data?",
+      "a6": "Yes. You can export your comparison results and country analyses as PDF. All your personal data can be downloaded from your account settings.",
       "jsonld": {
         "q1": "What is Compass?",
         "a1": "Compass is a country comparison platform for international relocation. It analyzes 80+ countries: taxation, visas, cost of living, compatible profiles, unwritten rules.",
@@ -745,10 +757,24 @@
       "freeNotice": "Free, no credit card required"
     },
     "guest": {
-      "mode": "Observation mode",
-      "description": "Explore freely without an account.",
+      "mode": "Explore freely",
+      "description": "No account needed to discover.",
       "cta": "Create an account",
-      "suffix": "to save your progress."
+      "suffix": "to save your research."
+    },
+    "healthcare": {
+      "badge": "Dedicated track",
+      "title": "Are you a healthcare professional?",
+      "description": "Diploma recognition, licensing, social protection and cross-border tax simulator — everything you need to prepare your mobility.",
+      "cta": "Discover the healthcare track",
+      "feature1": "Diploma recognition",
+      "feature1Desc": "🇨🇭 MEBEKO · 🇫🇷 CNOM",
+      "feature2": "Practice authorization",
+      "feature2Desc": "By canton or department",
+      "feature3": "Tax simulator",
+      "feature3Desc": "Health insurance & pension compared",
+      "feature4": "Document checklist",
+      "feature4Desc": "Customized by specialty"
     }
   },
   "socialProof": {
@@ -1004,9 +1030,12 @@
     "partnerServices": "Partner Services",
     "community": "Community",
     "language": "Language",
-    "matcher": "AI Country Matcher",
+    "matcher": "Find my country",
     "fiscalSimulator": "Tax Simulator",
-    "traceJournal": "Decision Journal"
+    "traceJournal": "Decision Journal",
+    "healthcare": "Healthcare Track",
+    "allTools": "All tools →",
+    "preventionFilter": "Decision support"
   },
   "tests": {
     "resultSaved": "Result saved!",

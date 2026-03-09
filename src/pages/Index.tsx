@@ -593,6 +593,26 @@ export default function Index() {
                 </AccordionContent>
               </AccordionItem>
             </motion.div>
+            <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}>
+              <AccordionItem value="faq-5" className="glass-card rounded-xl px-6 border-none">
+                <AccordionTrigger className="text-base font-semibold hover:no-underline">
+                  {t('landing.faq.q5', 'Puis-je supprimer mon compte et mes données ?')}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
+                  {t('landing.faq.a5', 'Oui. Vous pouvez supprimer votre compte et toutes les données associées à tout moment depuis les paramètres de votre tableau de bord. La suppression est immédiate et irréversible, conformément au RGPD.')}
+                </AccordionContent>
+              </AccordionItem>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.5 }}>
+              <AccordionItem value="faq-6" className="glass-card rounded-xl px-6 border-none">
+                <AccordionTrigger className="text-base font-semibold hover:no-underline">
+                  {t('landing.faq.q6', 'Puis-je exporter mes données ?')}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
+                  {t('landing.faq.a6', 'Oui. Vous pouvez exporter vos résultats de comparaison et analyses pays en PDF. Toutes vos données personnelles sont téléchargeables depuis les paramètres de votre compte.')}
+                </AccordionContent>
+              </AccordionItem>
+            </motion.div>
           </Accordion>
         </div>
       </section>
