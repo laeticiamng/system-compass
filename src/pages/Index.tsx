@@ -369,7 +369,7 @@ export default function Index() {
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      {t('landing.pricing.freeFeature4', 'Profils qui réussissent')}
+                      {t('landing.pricing.freeFeature4', 'Qui réussit, qui galère dans chaque pays')}
                     </li>
                   </ul>
                   <Button 
