@@ -515,9 +515,9 @@ export default function Index() {
 
                 <div className="grid grid-cols-2 gap-4">
                   {[
-                    { icon: FileCheck, label: t('landing.healthcare.feature1', 'Diplômes & MEBEKO / CNOM'), desc: t('landing.healthcare.feature1Desc', 'Procédures de reconnaissance') },
-                    { icon: Shield, label: t('landing.healthcare.feature2', 'Autorisations d\'exercer'), desc: t('landing.healthcare.feature2Desc', 'Par canton / département') },
-                    { icon: Calculator, label: t('landing.healthcare.feature3', 'Simulateur fiscal'), desc: t('landing.healthcare.feature3Desc', 'LAMal vs Sécu, pilier 2 vs retraite') },
+                    { icon: FileCheck, label: t('landing.healthcare.feature1', 'Reconnaissance de diplôme'), desc: t('landing.healthcare.feature1Desc', '🇨🇭 MEBEKO · 🇫🇷 CNOM') },
+                    { icon: Shield, label: t('landing.healthcare.feature2', 'Autorisation d\'exercer'), desc: t('landing.healthcare.feature2Desc', 'Par canton ou département') },
+                    { icon: Calculator, label: t('landing.healthcare.feature3', 'Simulateur fiscal'), desc: t('landing.healthcare.feature3Desc', 'Assurance maladie & retraite comparées') },
                     { icon: CheckCircle, label: t('landing.healthcare.feature4', 'Checklist documents'), desc: t('landing.healthcare.feature4Desc', 'Personnalisée par spécialité') },
                   ].map((item, i) => (
                     <motion.div
