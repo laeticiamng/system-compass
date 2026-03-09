@@ -26,7 +26,7 @@ const journeys = [
     descDefault: 'Parcours les 80+ fiches pays : fiscalité, visas, coût de la vie, sécurité.',
     ctaKey: 'landing.journeys.explore.cta',
     ctaDefault: 'Explorer',
-    time: '~5 min',
+    time: undefined as string | undefined,
   },
   {
     id: 'test',
