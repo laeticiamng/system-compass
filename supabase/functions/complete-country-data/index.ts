@@ -96,8 +96,10 @@ function extractJSON(text: string): Record<string, unknown> | null {
 
 serve(async (req) => {
   if (req.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
+    return handleCorsPreflightRequest(req);
   }
+
+  const corsHeaders = getCorsHeaders(req);
 
   try {
     const { countryId, type } = await req.json();
