@@ -25,6 +25,10 @@ import {
   Play,
   CheckCircle,
   Zap,
+  Stethoscope,
+  FileCheck,
+  Calculator,
+  Shield,
 } from 'lucide-react';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 import { TestimonialsSection } from '@/components/landing/TestimonialsSection';
