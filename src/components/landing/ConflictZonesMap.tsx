@@ -256,10 +256,10 @@ export function ConflictZonesMap() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-destructive/10 border border-destructive/20 mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 mb-6"
           >
-            <AlertTriangle className="w-4 h-4 text-destructive" />
-            <span className="text-sm text-destructive font-medium">
+            <Shield className="w-4 h-4 text-amber-500" />
+            <span className="text-sm text-amber-500 font-medium">
               {t('geopolitics.updatedDate', 'Updated March 2026')}
             </span>
           </motion.div>
