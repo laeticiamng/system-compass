@@ -633,10 +633,10 @@ export default function Index() {
         <section className="py-6 border-t border-border/30">
           <div className="container mx-auto px-4 text-center">
             <p className="text-sm text-muted-foreground">
-              🔓 <strong>{t('landing.guest.mode', 'Mode observation')}</strong> — {t('landing.guest.description', 'Explore librement sans compte.')}{' '}
+              ✨ <strong>{t('landing.guest.mode', 'Explorez librement')}</strong> — {t('landing.guest.description', 'Aucun compte requis pour découvrir.')}{' '}
               <Link to="/auth" className="text-primary hover:underline font-medium">
-                {t('landing.guest.cta', 'Créer un compte')}
-              </Link> {t('landing.guest.suffix', 'pour sauvegarder.')}
+                {t('landing.guest.cta', 'Créez un compte')}
+              </Link> {t('landing.guest.suffix', 'pour sauvegarder vos recherches.')}
             </p>
           </div>
         </section>

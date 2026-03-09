@@ -54,12 +54,10 @@ export function Footer() {
           <div>
             <h4 className="font-semibold text-sm sm:text-base mb-2 sm:mb-4">{t('footer.tools')}</h4>
             <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-muted-foreground">
-              <li><Link to="/exit-keys" className="hover:text-foreground transition-colors block py-0.5">{t('nav.exitKeys', 'Stratégies')}</Link></li>
               <li><Link to="/quick-test" className="hover:text-foreground transition-colors block py-0.5">{t('nav.quickTest', 'Test Rapide')}</Link></li>
               <li><Link to="/tools/matcher" className="hover:text-foreground transition-colors block py-0.5">{t('nav.matcher', 'Trouver mon pays')}</Link></li>
               <li><Link to="/tools/fiscal-simulator" className="hover:text-foreground transition-colors block py-0.5">{t('nav.fiscalSimulator', 'Simulateur Fiscal')}</Link></li>
-              <li><Link to="/trace" className="hover:text-foreground transition-colors block py-0.5">{t('nav.traceJournal', 'Mon Journal')}</Link></li>
-              <li><Link to="/pyramid-quiz" className="hover:text-foreground transition-colors block py-0.5">{t('nav.pyramidQuiz', 'Quiz Découverte')}</Link></li>
+              <li><Link to="/healthcare" className="hover:text-foreground transition-colors block py-0.5">{t('nav.healthcare', 'Parcours Santé')}</Link></li>
               <li>
                 <Link to="/tools" className="hover:text-foreground transition-colors block py-0.5 text-primary font-medium">
                   + {t('footer.seeAll', 'Voir tout')}

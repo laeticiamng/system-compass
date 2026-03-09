@@ -69,7 +69,7 @@ const journeys = [
     titleKey: 'landing.journeys.healthcare.title',
     titleDefault: 'Professionnel de Santé',
     descKey: 'landing.journeys.healthcare.desc',
-    descDefault: 'Reconnaissance de diplôme, autorisation d\'exercer, simulateur fiscal transfrontalier et checklist documents personnalisée.',
+    descDefault: 'Reconnaissance de diplôme (🇨🇭 MEBEKO, 🇫🇷 CNOM), autorisation d\'exercer, simulateur fiscal et checklist documents.',
     ctaKey: 'landing.journeys.healthcare.cta',
     ctaDefault: 'Parcours santé',
     time: '~10 min',
