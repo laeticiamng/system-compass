@@ -363,17 +363,7 @@ export default function Auth() {
 
             {/* Remember me checkbox and password reset */}
             {isLogin && (
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  <Checkbox
-                    id="remember"
-                    checked={rememberMe}
-                    onCheckedChange={(checked) => setRememberMe(checked === true)}
-                  />
-                  <Label htmlFor="remember" className="text-sm text-muted-foreground cursor-pointer">
-                    {t('auth.rememberMe', 'Se souvenir de moi')}
-                  </Label>
-                </div>
+              <div className="flex items-center justify-end">
                 <PasswordResetDialog />
               </div>
             )}

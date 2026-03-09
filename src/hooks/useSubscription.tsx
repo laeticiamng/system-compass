@@ -177,15 +177,16 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
     }
   }, [user, authLoading, checkSubscription]);
 
-  // Periodic refresh every minute
+  // Refresh on window focus instead of polling
   useEffect(() => {
     if (!user) return;
 
-    const interval = setInterval(() => {
+    const handleFocus = () => {
       checkSubscription();
-    }, 300000); // 5 minutes instead of 60s to reduce backend load
+    };
 
-    return () => clearInterval(interval);
+    window.addEventListener('focus', handleFocus);
+    return () => window.removeEventListener('focus', handleFocus);
   }, [user, checkSubscription]);
 
   const value: SubscriptionContextValue = {

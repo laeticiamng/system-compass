@@ -130,7 +130,7 @@ export function useResetOnboarding() {
       localStorage.removeItem(ONBOARDING_KEY);
       localStorage.removeItem(CONSENT_KEY);
       localStorage.removeItem(COOKIE_CONSENT_KEY);
-      localStorage.removeItem('pyramid-compass-tour-completed');
+      localStorage.removeItem('compass-tour-completed');
     } catch (e) {
       console.warn('Failed to reset onboarding:', e);
     }

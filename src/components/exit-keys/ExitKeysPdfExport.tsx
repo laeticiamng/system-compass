@@ -232,7 +232,7 @@ export function ExitKeysPdfExport({ results, profileSummary }: ExitKeysPdfExport
       doc.text(disclaimerLines, margin, y);
 
       // Save
-      doc.save(`pyramid-compass-exit-keys-${new Date().toISOString().split('T')[0]}.pdf`);
+      doc.save(`compass-exit-keys-${new Date().toISOString().split('T')[0]}.pdf`);
       toast.success(t('exitKeys.pdf.success', 'PDF généré avec succès'));
     } catch (error) {
       console.error('PDF generation error:', error);
