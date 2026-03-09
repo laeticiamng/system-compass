@@ -724,6 +724,12 @@
       "a2": "No. Compass is a simulation and comparison tool. It does not replace a lawyer, tax advisor or immigration consultant. Always consult a professional before making a decision.",
       "q3": "How is the data calculated?",
       "a3": "Our data comes from public sources (World Bank, UN, Transparency International, etc.) and is updated regularly. Each country profile indicates its sources.",
+      "q4": "Is Compass suitable for healthcare professionals?",
+      "a4": "Yes. Compass offers a dedicated track for healthcare professionals: diploma recognition (MEBEKO, CNOM), licensing by canton or department, cross-border tax simulator, peer community and specialty-specific document checklist.",
+      "q5": "Can I delete my account and data?",
+      "a5": "Yes. You can delete your account and all associated data at any time from your dashboard settings. Deletion is immediate and irreversible, in compliance with GDPR.",
+      "q6": "Can I export my data?",
+      "a6": "Yes. You can export your comparison results and country analyses as PDF. All your personal data can be downloaded from your account settings."
       "jsonld": {
         "q1": "What is Compass?",
         "a1": "Compass is a country comparison platform for international relocation. It analyzes 80+ countries: taxation, visas, cost of living, compatible profiles, unwritten rules.",
