@@ -87,7 +87,7 @@ export function DialogCoordinatorProvider({ children }: { children: ReactNode })
   const completeOnboarding = () => {
     try {
       localStorage.setItem(ONBOARDING_KEY, 'true');
-      localStorage.setItem('pyramid-compass-tour-completed', 'v1');
+      localStorage.setItem('compass-tour-completed', 'v1');
     } catch (e) {
       console.warn('Failed to save onboarding completion:', e);
     }
