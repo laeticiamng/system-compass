@@ -270,7 +270,7 @@ export function ConflictZonesMap() {
             transition={{ delay: 0.05 }}
             className="font-display text-3xl md:text-5xl font-bold mb-5 tracking-tight"
           >
-            {t('geopolitics.mapTitle', 'Active conflict zones')}
+            {t('geopolitics.mapTitle', 'Zones to monitor')}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
