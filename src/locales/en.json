@@ -666,6 +666,11 @@
         "title": "Compare",
         "desc": "Compare up to 4 countries side by side: radar charts, taxation, quality of life.",
         "cta": "Compare"
+      },
+      "healthcare": {
+        "title": "Healthcare Professional",
+        "desc": "Diploma recognition (🇨🇭 MEBEKO, 🇫🇷 CNOM), licensing, tax simulator and document checklist.",
+        "cta": "Healthcare track"
       }
     },
     "howItWorks": {
