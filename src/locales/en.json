@@ -757,10 +757,24 @@
       "freeNotice": "Free, no credit card required"
     },
     "guest": {
-      "mode": "Observation mode",
-      "description": "Explore freely without an account.",
+      "mode": "Explore freely",
+      "description": "No account needed to discover.",
       "cta": "Create an account",
-      "suffix": "to save your progress."
+      "suffix": "to save your research."
+    },
+    "healthcare": {
+      "badge": "Dedicated track",
+      "title": "Are you a healthcare professional?",
+      "description": "Diploma recognition, licensing, social protection and cross-border tax simulator — everything you need to prepare your mobility.",
+      "cta": "Discover the healthcare track",
+      "feature1": "Diploma recognition",
+      "feature1Desc": "🇨🇭 MEBEKO · 🇫🇷 CNOM",
+      "feature2": "Practice authorization",
+      "feature2Desc": "By canton or department",
+      "feature3": "Tax simulator",
+      "feature3Desc": "Health insurance & pension compared",
+      "feature4": "Document checklist",
+      "feature4Desc": "Customized by specialty"
     }
   },
   "socialProof": {
