@@ -110,7 +110,12 @@ export function Footer() {
           
           <div className="flex flex-col items-center justify-center gap-3 sm:gap-4 text-center">
             <p className="text-xs sm:text-sm text-muted-foreground">
-              © {currentYear} Compass — EmotionsCare SASU
+              © {currentYear} Compass — EMOTIONSCARE SASU — SIREN 944 505 445 — Amiens, France
+            </p>
+            <p className="text-xs text-muted-foreground/70">
+              <a href="mailto:contact@emotionscare.com" className="hover:text-foreground transition-colors">
+                contact@emotionscare.com
+              </a>
             </p>
             
             {/* Legal links */}

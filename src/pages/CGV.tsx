@@ -127,7 +127,7 @@ export default function CGV() {
                   Comment exercer votre droit de rétractation ?
                 </h3>
                 <ul className="list-disc pl-6 space-y-1">
-                  <li>Par email à : support@pyramidcompass.com</li>
+                  <li>Par email à : contact@emotionscare.com</li>
                   <li>Via le formulaire de contact sur le site</li>
                   <li>Par courrier à l'adresse du siège social</li>
                 </ul>
@@ -216,7 +216,7 @@ export default function CGV() {
             </p>
             <ul className="mt-4 space-y-2">
               <li>
-                <strong>Email :</strong> support@pyramidcompass.com
+                <strong>Email :</strong> contact@emotionscare.com
               </li>
               <li>
                 <strong>Éditeur :</strong> EmotionsCare SASU

@@ -538,8 +538,16 @@ export default function About() {
           </CardContent>
         </Card>
 
-        {/* Final Disclaimer */}
-        <div className="mt-12 max-w-2xl mx-auto">
+        {/* Final Disclaimer + Editor info */}
+        <div className="mt-12 max-w-2xl mx-auto space-y-4">
+          <div className="glass-card rounded-xl p-6 text-center">
+            <p className="text-sm text-muted-foreground mb-3">
+              System Compass est une plateforme éditée par <strong>EMOTIONSCARE SASU</strong> — SIREN 944 505 445 — Amiens, France
+            </p>
+            <p className="text-xs text-muted-foreground">
+              <a href="mailto:contact@emotionscare.com" className="text-primary hover:underline">contact@emotionscare.com</a>
+            </p>
+          </div>
           <div className="glass-card rounded-xl p-6 border-l-4 border-primary text-center">
             <p className="text-sm text-muted-foreground">
               {t('common.disclaimer', 'Pas de conseil juridique, financier ou médical. Tu restes responsable de tes décisions.')}

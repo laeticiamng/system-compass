@@ -63,7 +63,7 @@ export default function Contact() {
       });
     } catch {
       // Fallback: open mailto
-      const mailtoUrl = `mailto:contact@system-compass.app?subject=${encodeURIComponent(form.subject || 'Contact')}&body=${encodeURIComponent(`De: ${form.name} (${form.email})\n\n${form.message}`)}`;
+      const mailtoUrl = `mailto:contact@emotionscare.com?subject=${encodeURIComponent(form.subject || 'Contact')}&body=${encodeURIComponent(`De: ${form.name} (${form.email})\n\n${form.message}`)}`;
       window.open(mailtoUrl, '_blank');
       setSent(true);
     } finally {
@@ -174,6 +174,49 @@ export default function Contact() {
             </CardContent>
           </Card>
 
+          {/* Company info */}
+          <Card>
+            <CardContent className="p-6 space-y-5">
+              <h2 className="font-semibold text-lg">{t('contact.companyInfo', 'Nous sommes à votre écoute')}</h2>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="p-4 rounded-lg bg-muted/30">
+                  <p className="text-sm text-muted-foreground mb-1">{t('contact.companyName', 'Raison sociale')}</p>
+                  <p className="font-semibold">EMOTIONSCARE SASU</p>
+                  <p className="text-sm text-muted-foreground">SIREN : 944 505 445</p>
+                </div>
+                <div className="p-4 rounded-lg bg-muted/30">
+                  <p className="text-sm text-muted-foreground mb-1">{t('contact.headquarters', 'Siège social')}</p>
+                  <p className="font-semibold">80000 Amiens, France</p>
+                </div>
+                <div className="p-4 rounded-lg bg-muted/30">
+                  <p className="text-sm text-muted-foreground mb-1">{t('contact.emailLabel', 'Email')}</p>
+                  <a href="mailto:contact@emotionscare.com" className="font-semibold text-primary hover:underline">
+                    contact@emotionscare.com
+                  </a>
+                </div>
+                <div className="p-4 rounded-lg bg-muted/30">
+                  <p className="text-sm text-muted-foreground mb-1">{t('contact.hours', 'Horaires')}</p>
+                  <p className="font-semibold">Lun - Ven : 9h00 - 18h00</p>
+                  <p className="text-sm text-muted-foreground">Réponse sous 24-48h ouvrées</p>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-3">
+                <Button variant="outline" size="sm" asChild>
+                  <a href="https://www.linkedin.com/in/laeticiamotongane/" target="_blank" rel="noopener noreferrer">
+                    Motongane Laeticia — LinkedIn
+                  </a>
+                </Button>
+                <Button variant="outline" size="sm" asChild>
+                  <a href="https://www.linkedin.com/company/emotionscare/" target="_blank" rel="noopener noreferrer">
+                    EMOTIONSCARE SASU — LinkedIn
+                  </a>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+
           {/* Direct email fallback */}
           <Card>
             <CardContent className="flex items-start gap-4 p-6">
@@ -186,9 +229,9 @@ export default function Contact() {
                   {t('contact.emailDesc', 'Pour toute question générale, support ou proposition de partenariat.')}
                 </p>
                 <Button variant="outline" asChild>
-                  <a href="mailto:contact@system-compass.app">
+                  <a href="mailto:contact@emotionscare.com">
                     <Mail className="w-4 h-4 mr-2" />
-                    contact@system-compass.app
+                    contact@emotionscare.com
                   </a>
                 </Button>
               </div>
