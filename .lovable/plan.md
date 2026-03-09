@@ -1,160 +1,175 @@
 
 
-# Audit Complet — Ce qui manque pour rendre System Compass unique et revolutionnaire
-
-## Etat actuel
-
-System Compass est deja une plateforme impressionnante : 80+ pages, 72 pays, 36 edge functions, 13 langues, scanner geopolitique IA, modules B2B/governance/gamification, export PDF, marketplace d'experts, et un design system solide. C'est un produit mature.
-
-L'audit ci-dessous identifie les **lacunes strategiques** qui separent une bonne plateforme d'une plateforme *incontournable*.
+# AUDIT TECHNIQUE COMPLET — System Compass / Lovable Cloud
 
 ---
 
-## A. Experiences manquantes a fort impact
+## 1. RÉSUMÉ EXÉCUTIF
 
-### A1. Assistant IA conversationnel contextuel
-Actuellement, `AiHelpButton` propose des actions predefinies. Il manque un **chatbot IA persistent** (type ChatGPT) qui :
-- Connait le profil utilisateur, ses pays favoris, son avancement
-- Repond en langage naturel : "Quels pays acceptent mon visa freelance ?" "Compare le Portugal et la Thailande pour ma situation"
-- Guide l'utilisateur pas a pas dans son parcours d'expatriation
-- Accessible depuis un panneau lateral permanent (le `AiSidePanel.tsx` existe mais semble sous-utilise)
+**État global** : La plateforme est techniquement impressionnante en scope (113 tables, 47 edge functions, 80+ pages, 13 langues). Le socle architectural est solide (code splitting, i18n routing, RLS généralisée, auth complète). Cependant, des **problèmes critiques de sécurité (CORS, RLS, injection de notifications), d'incohérence de branding (3 domaines email coexistent), et de fonctionnalités mockées en production** empêchent un lancement immédiat.
 
-**Impact** : Differenciant majeur. Aucun concurrent n'offre un assistant IA personnalise pour l'expatriation.
+**Verdict go-live : NON EN L'ÉTAT**
 
-### A2. Simulateur de vie immersif ("A quoi ressemblera ma vie la-bas ?")
-Manque un simulateur qui transforme les donnees brutes en **projection concrete** :
-- Budget mensuel detaille (loyer, courses, transports, sante, loisirs) adapte au profil
-- Timeline interactive : "Mois 1 : arrivee, Mois 3 : ouverture compte bancaire, Mois 6 : permis de residence..."
-- Comparaison visuelle avant/apres (France vs destination) sur un tableau de bord split-screen
-- Scenarios "What-if" : "Et si mon salaire baisse de 20% ?" "Et si j'ai un enfant ?"
+### Top 5 P0 — Bloquants critiques
+1. **CORS hardcodé `system-compass.app` dans ~17 edge functions** — Les fonctions check-subscription, create-checkout, ai-assist, etc. n'utilisent pas `_shared/cors.ts` et rejettent les requêtes depuis le domaine preview/lovable. **Toute fonctionnalité Stripe, IA, contact échoue hors du domaine de prod.**
+2. **Injection de notifications (RLS)** — Tout utilisateur public peut insérer des notifications arbitraires dans la boîte de réception de n'importe quel utilisateur via `generation_notifications` (confirmé par security scan).
+3. **Packs PMO exposés sans vérification de token** — La policy RLS de `pmo_generated_packs` expose toutes les packs partagés (snapshot_data, file_url) à tous les utilisateurs tant que `share_token IS NOT NULL`.
+4. **Email "from" = `noreply@pyramid-compass.com`** — L'email de bienvenue, contact et digest hebdomadaire utilisent un domaine différent du domaine de production et du domaine légal (`emotionscare.com`). Risque de bounce/spam et incohérence de marque.
+5. **Contact form envoie à `contact@system-compass.app`** — Au lieu de `contact@emotionscare.com` (mis à jour côté frontend mais pas dans l'edge function `send-contact`).
 
-### A3. Temoignages et retours d'experience reels (UGC)
-Les temoignages actuels dans `TestimonialsSection` sont statiques/mock. Il manque :
-- Systeme d'avis utilisateurs reels par pays (verifie par connexion)
-- "Journal d'expatrie" : les utilisateurs partagent leur experience mois apres mois
-- Notation par critere (administration, integration, cout reel vs attendu)
-- Filtrage par profil similaire ("Montrez-moi les retours de freelancers francais au Portugal")
-
-### A4. Checklist administrative dynamique et connectee
-`CountryChecklist.tsx` existe mais manque de profondeur :
-- Checklist generee par l'IA en fonction du profil exact (nationalite, statut, famille)
-- Integration calendrier (Google Calendar / iCal) pour les deadlines
-- Rappels automatiques avant echeances visa/fiscales
-- Tracking des documents (passeport, apostilles, traductions) avec upload et stockage
+### Top 5 P1 — Très importants
+1. **Price ID dans `useSubscription.tsx` (l. 39) ne correspond pas aux price IDs du webhook** — `price_1T8k86DFa5Y9NR1IPzfZhZrx` vs `price_1SxpOSDFa5Y9NR1I05modzpV` → risque de checkout non fonctionnel ou de mapping de tier incorrect.
+2. **RLS permissives sur `country_generation_jobs` et `country_generation_batches`** — Tout utilisateur authentifié peut lire et modifier tous les jobs/batches de génération.
+3. **Dashboard non protégé par guard d'auth** — `/dashboard` est accessible par URL directe sans être connecté (le composant gère l'état "non connecté" mais le contenu s'affiche).
+4. **Données mockées/hardcodées présentées comme fonctionnelles** — Healthcare Community (MOCK_PEERS), Procedural Updates (dates 2026 inventées), Blog articles hardcodés, Expert Marketplace sans données DB.
+5. **17+ edge functions n'utilisent pas `_shared/cors.ts`** — Duplication massive de CORS headers, maintenance impossible, et ajout de nouveau domaine nécessite de modifier chaque fichier.
 
 ---
 
-## B. Fonctionnalites techniques manquantes
+## 2. TABLEAU D'AUDIT COMPLET
 
-### B1. Onboarding guide
-Le flag `onboarding: a ajouter tutoriel interactif` est dans l'audit depuis des mois. Un parcours guide (type Shepherd.js / product tour) qui :
-- Detecte les nouveaux utilisateurs et les guide etape par etape
-- Personnalise le tour selon le profil (B2C simple vs B2B governance)
-- Mesure le taux de completion
-
-### B2. Recherche globale intelligente
-`GlobalSearch.tsx` existe mais pourrait etre augmente :
-- Recherche semantique IA ("pays sans impot sur les plus-values crypto")
-- Resultats cross-modules (pays + experts + alertes + articles)
-- Suggestions predictives basees sur le profil
-
-### B3. Mode collaboratif reel (Family Workspace)
-`FamilyWorkspace.tsx` fonctionne avec des donnees demo statiques. Il faudrait :
-- Invitations par email avec lien partage
-- Synchronisation en temps reel (Supabase Realtime)
-- Vote et consensus sur les pays entre membres de la famille
-- Dashboard partage avec progression commune
-
-### B4. Notifications intelligentes
-L'infra push est prete (`usePushNotifications`) mais manque :
-- Alertes proactives : "Le Portugal a change ses regles de visa NHR" → push aux utilisateurs qui suivent le Portugal
-- Digest hebdomadaire personnalise par email (via Resend, deja connecte)
-- "Moment ideal" : suggestions basees sur le timing ("Vous partez dans 3 mois, avez-vous fait votre X ?")
+| Priorité | Domaine | Localisation | Problème | Risque | Recommandation | Faisable ? |
+|----------|---------|-------------|----------|--------|----------------|------------|
+| P0 | Security/CORS | 17 edge functions | CORS hardcodé `system-compass.app` au lieu de `_shared/cors.ts` | Toutes les APIs bloquées hors prod | Migrer vers `_shared/cors.ts` | Oui |
+| P0 | RLS | `generation_notifications` | INSERT policy permet à tout public d'injecter des notifs à n'importe quel user | Injection de spam/phishing | Ajouter `auth.uid() = user_id` à WITH CHECK | Oui (migration) |
+| P0 | RLS | `pmo_generated_packs` | SELECT exposé si `share_token IS NOT NULL` sans vérification du token | Fuite de données business | Exiger token dans la query | Oui (migration) |
+| P0 | Branding | `send-email`, `send-contact`, `weekly-digest` | Email "from" = `noreply@pyramid-compass.com` | Bounce/spam + incohérence marque | Changer vers domaine vérifié | Oui |
+| P0 | Branding | `send-contact/index.ts` l.68 | `to: ['contact@system-compass.app']` | Contact perdu | Changer vers `contact@emotionscare.com` | Oui |
+| P1 | Billing | `useSubscription.tsx` l.39 | priceId `price_1T8k86...` ≠ webhook priceId `price_1Sxp...` | Checkout/tier mapping cassé | Aligner les IDs | Non (vérifier Stripe dashboard) |
+| P1 | RLS | `country_generation_jobs/batches` | Tout authenticated peut SELECT/UPDATE tous les jobs | Data corruption admin | Restreindre à admin | Oui (migration) |
+| P1 | Auth | `/dashboard` route | Pas de RequireAuth guard | Contenu affiché aux visiteurs anonymes | Ajouter guard ou redirect | Oui |
+| P1 | UX/Data | Healthcare Community, Blog, Experts | Données 100% mockées en production | Fausse fonctionnalité | Bannières "en construction" | Partiellement fait |
+| P1 | RLS | `financial_intel_generation_runs`, `ovi_suggestions` | `user_id IS NULL` rend les rows visibles à tous | Fuite de données | Supprimer le branch NULL | Oui (migration) |
+| P2 | CORS | `_shared/cors.ts` | Preview domain `id-preview--*.lovable.app` non inclus | Dev/test bloqué | Ajouter pattern matching ou wildcard | Oui |
+| P2 | SEO | `sitemap.xml` | Non confirmé si généré automatiquement | Indexation manquante | Vérifier/générer | Non confirmé |
+| P2 | Performance | `SubscriptionProvider` | Check subscription toutes les 5 min même si pas de changement | Appels API inutiles | Vérifier uniquement au focus/auth change | Oui |
+| P2 | i18n | `HealthcareCommunity`, `TaxCalculator` | Labels hardcodés en français | Cassé en multilingue | Wrapper `t()` | Partiellement fait |
+| P2 | Security | `send-contact/index.ts` | HTML injection dans email body (sanitizedMessage non échappé) | XSS dans l'email admin | Échapper les HTML entities | Oui |
+| P3 | Branding | localStorage keys | `pyramid-compass-*` prefix partout | Incohérence branding | Renommer en `compass-*` | Oui |
+| P3 | Security | Security Definer Views | 6 vues SECURITY DEFINER (scan Supabase) | Risque si mal configuré | Auditer chaque vue | Non confirmé |
 
 ---
 
-## C. Lacunes de contenu et donnees
+## 3. DÉTAIL PAR CATÉGORIE
 
-### C1. Donnees temps reel
-Les donnees pays sont des snapshots statiques (seed). Il manquerait :
-- Cout de la vie actualise automatiquement (API Numbeo ou scraping Firecrawl — deja connecte)
-- Taux de change en temps reel
-- Index de qualite de l'air, meteo saisonniere
+### A. Frontend & Rendu
+**Fonctionne** : Code splitting avec LazyRoutes/Suspense, Helmet SEO sur toutes les pages, i18n routing complet, error boundary global, responsive design avec breakpoints cohérents, sidebar + header adaptatifs.
+**Cassé** : Rien de bloquant côté rendu pur.
+**Douteux** : Dashboard loading state affiche "Chargement..." en français hardcodé (l.269).
 
-### C2. Contenu editorial / blog reel
-`Blog.tsx` et `BlogArticle.tsx` existent mais semblent vides ou mock. Un blog alimente :
-- Guides pays approfondis ("S'installer au Portugal en 2026 : le guide complet")
-- Analyses de tendances ("Les 5 pays qui attirent le plus de freelancers en 2026")
-- SEO-driven content pour le trafic organique
+### B. QA Fonctionnelle
+**Fonctionne** : Auth flow (login/signup/OAuth/magic link/password reset), navigation i18n, country exploration, quick test, pricing display.
+**Cassé** : Toute edge function appelée depuis le preview Lovable échoue (CORS). Send-contact envoie au mauvais email.
+**Non confirmé** : Stripe checkout end-to-end (price IDs potentiellement désalignés).
 
-### C3. Comparateur avance
-Le comparateur existe mais manque :
-- Comparaison de 5+ pays simultanement (actuellement limite a 4)
-- Export du comparatif en image/PDF brandee pour partage social
-- Score de compatibilite personnalise dans le comparateur
+### C. Auth & Autorisations
+**Fonctionne** : `RequireAdmin` avec `useUserRoles` (table séparée, `has_role` SECURITY DEFINER). OAuth Google/Apple via Lovable Cloud auth. Session refresh. Logout avec nettoyage localStorage.
+**Cassé** : Dashboard accessible sans auth (pas de guard, contenu visible).
+**Douteux** : `rememberMe` checkbox dans Auth.tsx ne fait rien (Supabase persiste toujours la session).
 
----
+### D. APIs & Edge Functions
+**Fonctionne** : Architecture edge functions solide (47 fonctions), `_shared/` avec CORS, rate-limit, validation. Admin functions vérifient les claims.
+**Cassé** : 17+ fonctions ignorent `_shared/cors.ts` et hardcodent `system-compass.app`. Preview domain bloqué.
+**Douteux** : `verify_jwt = false` sur toutes les fonctions — correctement compensé par validation manuelle dans le code, mais certaines fonctions admin (seed-countries) pourraient être mieux protégées.
 
-## D. Monetisation et croissance
+### E. Database & RLS
+**Fonctionne** : 113 tables, RLS activée globalement, `has_role` SECURITY DEFINER avec `search_path` fixé.
+**Cassé** : `generation_notifications` INSERT public sans vérification owner. `pmo_generated_packs` SELECT trop permissif.
+**Douteux** : `country_generation_jobs/batches` UPDATE accessible à tous les authenticated.
 
-### D1. Freemium funnel optimise
-- Manque un compteur visible "3/5 analyses gratuites restantes" pour creer l'urgence
-- Pas de trial period pour le Premium (7 jours gratuits)
-- Pas de referral/parrainage ("Invitez un ami, gagnez 1 mois")
+### F. Sécurité
+**Fonctionne** : Input validation Zod côté client, password strength meter, rate limiting sur send-contact/ai-chat, GDPR consent, account deletion cascade, IP anonymization trigger.
+**Cassé** : HTML injection possible dans email send-contact (sanitizedMessage injecté dans HTML sans échappement). Notification injection via RLS.
+**Douteux** : 6 SECURITY DEFINER views détectées par le linter Supabase — intentionnel selon le memory mais à confirmer.
 
-### D2. Marketplace d'experts vivante
-Le booking est marque `a integrer` depuis l'audit. Il manque :
-- Paiement reel (Stripe Connect est configure mais pas connecte au flow)
-- Calendrier de disponibilite des experts
-- Appels video integres ou redirection Calendly
-- Commission automatique sur les transactions
+### G. Paiement & Billing
+**Fonctionne** : Flow checkout → success page avec confetti. Customer portal. Webhook handler avec HMAC verification. Tier reflected in UI.
+**Cassé** : Price ID mismatch entre `useSubscription.tsx` (display) et `stripe-webhook/index.ts` (processing). Le webhook hardcode `PRICE_TO_TIER` avec des IDs différents du frontend.
+**Non confirmé** : Si les Stripe price IDs sont en mode test ou live.
 
-### D3. API publique / Widgets embarquables
-`ApiDocs.tsx` et `WebhooksDocs.tsx` existent mais pas d'API reelle. Offrir :
-- API REST pour les partenaires (agences, blogs voyage)
-- Widget embarquable "Trouvez votre pays ideal" pour sites tiers
-- Programme d'affiliation
+### H. Performance
+**Fonctionne** : Code splitting, staleTime 5min, gcTime 30min, lazy loading routes.
+**Douteux** : Homepage charge framer-motion, recharts potentiellement lourds. Subscription check toutes les 5 min.
 
----
+### I. SEO Technique
+**Fonctionne** : AutoCanonical, HreflangTags, JSON-LD (Organization, SoftwareApplication, FAQ), og:image configuré, llms.txt link.
+**Non confirmé** : Existence du sitemap.xml, robots.txt.
 
-## E. Ce qui rendrait la plateforme UNIQUE (aucun concurrent ne fait ca)
+### J. i18n
+**Fonctionne** : Routing /:lang/*, LEGACY_ROUTE_SEGMENTS pour redirects, LanguageSwitcher, fallback keys.
+**Cassé** : Healthcare module labels partiellement hardcodés (partiellement corrigé). Dashboard "Chargement..." hardcodé.
 
-| Innovation | Description | Niveau de disruption |
-|-----------|-------------|---------------------|
-| **IA Coach expatriation** | Assistant conversationnel qui connait votre dossier et vous guide sur 12 mois | Tres eleve |
-| **Simulation de vie immersive** | "Vivez une journee type a Lisbonne" avec budget, transport, logement projetes | Eleve |
-| **Score de regret** | IA qui calcule la probabilite de retour/echec basee sur les profils similaires | Tres eleve |
-| **Reseau d'expatries verifies** | Mise en relation avec des expatries deja installes dans le pays cible | Eleve |
-| **Timeline reglementaire vivante** | Calendrier auto-genere des demarches admin avec rappels push | Eleve |
-| **Mode "Shadow expat"** | Suivre un expatrie pendant 30 jours (journal partage anonymise) | Tres eleve |
+### K. Observabilité / Go-live
+**Fonctionne** : Console logging structuré dans edge functions, analytics sessions/events, Status page, DevDiagnosticsPanel en DEV.
+**Manquant** : Sentry/error tracking, health endpoint backend, monitoring, alerts.
 
 ---
 
-## F. Priorites d'implementation suggerees
+## 4. PLAN D'ACTION PRIORISÉ
 
-```text
-IMMEDIAT (impact maximal, effort modere)
-├── 1. Assistant IA conversationnel (edge function + panneau lateral)
-├── 2. Onboarding guide interactif
-├── 3. Digest email hebdomadaire personnalise (Resend ready)
-└── 4. Blog reel avec contenus SEO generes par IA
+### P0 — Corrections critiques
+1. **Migrer les 17 edge functions vers `_shared/cors.ts`** — check-subscription, create-checkout, customer-portal, ai-assist, generate-translations, create-consultation-payment, generate-country-profile, batch-generate-countries, dashboard-reminders, gov-intel-generate, generate-country-translations, complete-country-data, translate-variants, generate-country-variants, translate-intelligence, batch-terrain-realities, seed-countries
+2. **Ajouter le preview domain dans `_shared/cors.ts`** ALLOWED_ORIGINS
+3. **Fix RLS `generation_notifications`** — Ajouter `auth.uid() = user_id` à la policy INSERT
+4. **Fix RLS `pmo_generated_packs`** — Exiger token dans le query parameter
+5. **Fix email `from` domain** — Changer `pyramid-compass.com` vers `emotionscare.com` ou domaine vérifié dans send-email, send-contact, weekly-digest
+6. **Fix `send-contact` recipient** — Changer `contact@system-compass.app` vers `contact@emotionscare.com`
 
-COURT TERME (1-2 semaines)
-├── 5. Simulateur de vie / budget projete par pays
-├── 6. UGC : avis et journaux d'expatries reels
-├── 7. Family Workspace collaboratif reel
-└── 8. Booking experts fonctionnel (Stripe Connect)
+### P1 — Corrections rapides
+7. **Aligner Stripe price IDs** entre frontend et backend (nécessite vérification Stripe dashboard)
+8. **Restreindre RLS `country_generation_jobs/batches`** à admin
+9. **Ajouter auth guard sur `/dashboard`** route ou créer un RequireAuth wrapper
+10. **Fix RLS `financial_intel_generation_runs` et `ovi_suggestions`** — Supprimer branch `user_id IS NULL`
+11. **Échapper HTML dans `send-contact`** pour prévenir XSS dans l'email admin
 
-MOYEN TERME (differenciation profonde)
-├── 9. Score de regret / probabilite de retour
-├── 10. Reseau d'expatries verifies (social layer)
-├── 11. API publique + widget embarquable
-└── 12. Mode hors-ligne complet (PWA)
-```
+### P2 — Améliorations
+12. Renommer localStorage keys `pyramid-compass-*` → `compass-*`
+13. Réduire fréquence subscription check
+14. Vérifier/générer sitemap.xml
+15. Auditer les 6 SECURITY DEFINER views
+
+### P3 — Polish
+16. Supprimer le checkbox `rememberMe` non fonctionnel ou l'implémenter
+17. i18n du "Chargement..." hardcodé dans Dashboard
 
 ---
 
-## Resume
+## 5. IMPLÉMENTATION IMMÉDIATE
 
-La plateforme est techniquement solide (669 tests, RLS A+, 36 edge functions). Ce qui manque n'est pas technique — c'est **l'experience humaine** : un assistant qui vous connait, des histoires reelles d'expatries, un simulateur qui rend le futur tangible, et un parcours guide qui elimine l'angoisse de l'inconnu. C'est la difference entre un outil d'analyse et un **compagnon d'expatriation**.
+Les corrections suivantes seront appliquées :
+
+### Edge Functions CORS (P0)
+Les 17 fonctions qui hardcodent `"Access-Control-Allow-Origin": "https://system-compass.app"` seront migrées vers `import { corsHeaders, getCorsHeaders, handleCorsPreflightRequest } from "../_shared/cors.ts"`. Le preview domain sera ajouté à ALLOWED_ORIGINS dans `_shared/cors.ts`.
+
+### Branding Email (P0)
+- `send-contact/index.ts` : `to` → `contact@emotionscare.com`, `from` → `Compass <noreply@emotionscare.com>` (ou garder pyramid-compass.com si c'est le seul domaine vérifié Resend — à confirmer)
+- `send-email/index.ts` : `from` → idem
+- `weekly-digest/index.ts` : `from` → idem
+
+### RLS Fixes (P0/P1)
+Migrations SQL pour :
+- `generation_notifications` : Fix INSERT policy
+- `pmo_generated_packs` : Fix SELECT policy
+- `country_generation_jobs` : Restrict to admin
+- `country_generation_batches` : Restrict to admin
+- `financial_intel_generation_runs` : Remove NULL branch
+- `ovi_suggestions` : Remove NULL branch
+
+### HTML Escaping (P1)
+- `send-contact/index.ts` : Échapper `sanitizedMessage` et `sanitizedName` avant injection dans HTML
+
+### Auth Guard (P1)
+- Ajouter un `RequireAuth` wrapper et l'appliquer au route `/dashboard`
+
+### Dashboard i18n (P3)
+- Remplacer "Chargement..." hardcodé par `t('common.loading')`
+
+---
+
+## 6. DÉPENDANCES EXTERNES NON RÉSOLVABLES
+
+1. **Resend email domain** — Les `from` addresses doivent correspondre à un domaine vérifié dans Resend. Changer vers `emotionscare.com` nécessite que ce domaine soit vérifié dans le compte Resend. **Nécessite configuration externe.**
+2. **Stripe Price IDs** — Impossible de confirmer les IDs corrects sans accès au dashboard Stripe. **Nécessite vérification manuelle.**
+3. **Sentry/monitoring** — Non implémentable sans décision produit et clé API.
+4. **Sitemap.xml** — À vérifier si servi statiquement ou généré.
 
