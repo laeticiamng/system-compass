@@ -164,13 +164,14 @@
     font-family: 'Space Grotesk', system-ui, sans-serif;
   }
 
-  /* Mobile-optimized touch targets */
+  /* Mobile-optimized touch targets - scoped to primary interactive elements */
   @media (max-width: 768px) {
-    button, a, [role="button"] {
+    /* Only enforce touch targets on standalone interactive elements, not inline ones */
+    button:not(.inline-btn):not([class*="absolute"]):not([class*="w-1"]):not([class*="h-1"]):not([class*="p-0"]),
+    [role="button"]:not(.inline-btn) {
       min-height: 44px;
-      min-width: 44px;
     }
-    
+
     input, select, textarea {
       font-size: 16px; /* Prevents zoom on iOS */
     }
@@ -180,6 +181,14 @@
   html {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+    /* Prevent horizontal overflow globally */
+    overflow-x: hidden;
+  }
+
+  /* Safe viewport height for mobile (accounts for browser chrome) */
+  :root {
+    --vh-full: 100vh;
+    --vh-full: 100dvh;
   }
 
   /* Better text rendering on mobile */
@@ -188,6 +197,15 @@
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+  }
+
+  /* Prevent content shift when keyboard opens on mobile */
+  @media (max-width: 768px) {
+    body.keyboard-open {
+      position: fixed;
+      width: 100%;
     }
   }
 }
@@ -542,4 +560,113 @@ button, [role="button"] {
 /* RTL icon flipping */
 [dir="rtl"] .rtl-flip {
   transform: scaleX(-1);
+}
+
+/* ============ MOBILE RESPONSIVE UTILITIES ============ */
+
+/* Mobile-optimized scrollable containers */
+.mobile-scroll-x {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.mobile-scroll-x::-webkit-scrollbar {
+  display: none;
+}
+
+/* Scrollable table wrapper for mobile */
+.table-scroll-mobile {
+  position: relative;
+}
+.table-scroll-mobile::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 24px;
+  background: linear-gradient(to right, transparent, hsl(var(--background)));
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+.table-scroll-mobile.scrolled-end::after {
+  opacity: 0;
+}
+
+/* Mobile sticky header for fixed header offset */
+@media (max-width: 768px) {
+  .pt-header {
+    padding-top: calc(3rem + env(safe-area-inset-top, 0px));
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .pt-header {
+    padding-top: calc(3.5rem + env(safe-area-inset-top, 0px));
+  }
+}
+
+/* Mobile card touch feedback */
+@media (max-width: 768px) {
+  .touch-card {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .touch-card:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Mobile bottom CTA bar */
+.mobile-bottom-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Prevent body scroll when modal/sheet is open on mobile */
+body[data-scroll-locked] {
+  overflow: hidden !important;
+  touch-action: none;
+}
+
+/* Mobile-optimized dialog */
+@media (max-width: 640px) {
+  [role="dialog"] {
+    max-height: calc(100vh - 2rem);
+    max-height: calc(100dvh - 2rem);
+  }
+}
+
+/* Fix for iOS momentum scrolling in modals */
+.modal-scroll-mobile {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* Prevent text overflow in cards on narrow screens */
+@media (max-width: 375px) {
+  .text-responsive-xs {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+}
+
+/* Sticky mobile section header */
+.sticky-section-header {
+  position: sticky;
+  top: 3rem;
+  z-index: 20;
+  backdrop-filter: blur(12px);
+  background-color: hsl(var(--background) / 0.9);
+}
+
+@media (max-width: 768px) {
+  .sticky-section-header {
+    top: 3rem;
+  }
 }

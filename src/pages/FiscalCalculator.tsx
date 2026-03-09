@@ -165,18 +165,18 @@ function ComparisonResult({
       </CardHeader>
       <CardContent className="space-y-4">
         {/* Net difference */}
-        <div className="grid grid-cols-2 gap-4">
-          <div className="p-4 bg-secondary/50 rounded-lg text-center">
-            <div className="text-sm text-muted-foreground mb-1">Différence nette</div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+          <div className="p-3 sm:p-4 bg-secondary/50 rounded-lg text-center">
+            <div className="text-xs sm:text-sm text-muted-foreground mb-1">Différence nette</div>
             <div className={cn(
-              "text-2xl font-bold",
+              "text-xl sm:text-2xl font-bold",
               netDiff > 0 ? "text-emerald-400" : netDiff < 0 ? "text-red-400" : "text-muted-foreground"
             )}>
               {netDiff > 0 ? '+' : ''}{formatCurrency(netDiff)}/mois
             </div>
           </div>
-          
-          <div className="p-4 bg-secondary/50 rounded-lg text-center">
+
+          <div className="p-3 sm:p-4 bg-secondary/50 rounded-lg text-center">
             <div className="text-sm text-muted-foreground mb-1">Pouvoir d'achat</div>
             <div className={cn(
               "text-2xl font-bold",
@@ -299,7 +299,7 @@ export default function FiscalCalculator() {
       
       {/* Tabs */}
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-        <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
+        <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 h-auto">
           <TabsTrigger value="single">Simulation simple</TabsTrigger>
           <TabsTrigger value="compare">Comparaison</TabsTrigger>
         </TabsList>

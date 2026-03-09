@@ -328,7 +328,7 @@ export default function CountryDetail() {
         </div>
 
         {/* Snapshot */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 sm:gap-4 mb-6 sm:mb-8">
+        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 gap-2 sm:gap-4 mb-6 sm:mb-8">
           <SnapshotCard label={t('countryDetail.snapshot.gdpPerCapita')} value={`$${country.snapshot.gdpPerCapita.toLocaleString()}`} />
           <SnapshotCard label={t('countryDetail.snapshot.population')} value={formatPopulation(country.snapshot.population)} />
           <SnapshotCard label={t('countryDetail.snapshot.passportRank')} value={`#${country.snapshot.passportRank}`} />
@@ -340,28 +340,28 @@ export default function CountryDetail() {
 
         {/* 5-Layer Tabs */}
         <Tabs defaultValue="tronc" className="mb-8 sm:mb-12">
-          <TabsList className="grid w-full grid-cols-5 mb-4 sm:mb-8 h-auto p-1">
-            <TabsTrigger value="tronc" className="gap-1 py-2 text-[10px] sm:text-xs md:text-sm flex-col sm:flex-row">
+          <TabsList className="flex sm:grid sm:grid-cols-5 w-full mb-4 sm:mb-8 h-auto p-1 overflow-x-auto mobile-scroll-x gap-1 sm:gap-0">
+            <TabsTrigger value="tronc" className="gap-1 py-2 text-[10px] sm:text-xs md:text-sm flex-col sm:flex-row flex-shrink-0 sm:flex-shrink">
               <Layers className="w-3 h-3 sm:w-4 sm:h-4" />
               <span className="hidden md:inline">{t('countryDetail.tabs.tronc', 'Aperçu')}</span>
               <span className="md:hidden">Aperçu</span>
             </TabsTrigger>
-            <TabsTrigger value="variant" className="gap-1 py-2 text-[10px] sm:text-xs md:text-sm flex-col sm:flex-row">
+            <TabsTrigger value="variant" className="gap-1 py-2 text-[10px] sm:text-xs md:text-sm flex-col sm:flex-row flex-shrink-0 sm:flex-shrink">
               <Map className="w-3 h-3 sm:w-4 sm:h-4" />
               <span className="hidden md:inline">{t('countryDetail.tabs.variant', 'Détails')}</span>
               <span className="md:hidden">Détails</span>
             </TabsTrigger>
-            <TabsTrigger value="intelligence" className="gap-1 py-2 text-[10px] sm:text-xs md:text-sm flex-col sm:flex-row">
+            <TabsTrigger value="intelligence" className="gap-1 py-2 text-[10px] sm:text-xs md:text-sm flex-col sm:flex-row flex-shrink-0 sm:flex-shrink">
               <Brain className="w-3 h-3 sm:w-4 sm:h-4" />
               <span className="hidden md:inline">{t('countryDetail.tabs.intelligence', 'Analyse')}</span>
               <span className="md:hidden">Analyse</span>
             </TabsTrigger>
-            <TabsTrigger value="governance" className="gap-1 py-2 text-[10px] sm:text-xs md:text-sm flex-col sm:flex-row">
+            <TabsTrigger value="governance" className="gap-1 py-2 text-[10px] sm:text-xs md:text-sm flex-col sm:flex-row flex-shrink-0 sm:flex-shrink">
               <Shield className="w-3 h-3 sm:w-4 sm:h-4" />
               <span className="hidden md:inline">{t('countryDetail.tabs.governance', 'Gouvernance')}</span>
               <span className="md:hidden">Gouv.</span>
             </TabsTrigger>
-            <TabsTrigger value="project" className="gap-1 py-2 text-[10px] sm:text-xs md:text-sm flex-col sm:flex-row">
+            <TabsTrigger value="project" className="gap-1 py-2 text-[10px] sm:text-xs md:text-sm flex-col sm:flex-row flex-shrink-0 sm:flex-shrink">
               <Target className="w-3 h-3 sm:w-4 sm:h-4" />
               <span className="hidden md:inline">{t('countryDetail.tabs.project', 'Mon Projet')}</span>
               <span className="md:hidden">Projet</span>
@@ -413,7 +413,7 @@ export default function CountryDetail() {
         </div>
 
         {(country.naturalRisks || country.healthcare) && (
-          <div className="grid lg:grid-cols-2 gap-8 mb-12">
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-8 mb-8 sm:mb-12">
             {country.naturalRisks && <NaturalRisksCard risks={country.naturalRisks} />}
             {country.healthcare && <HealthcareCard healthcare={country.healthcare} />}
           </div>

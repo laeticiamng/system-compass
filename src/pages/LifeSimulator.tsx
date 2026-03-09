@@ -424,14 +424,14 @@ export default function LifeSimulator() {
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
                 <Card className="bg-primary/5 border-primary/20">
                   <CardContent className="p-5">
-                    <div className="grid grid-cols-3 gap-4 text-center">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 text-center">
                       <div>
                         <p className="text-xs text-muted-foreground mb-1">Budget annuel France</p>
-                        <p className="text-lg font-bold">{(originBudget.total * 12).toLocaleString('fr-FR')} €</p>
+                        <p className="text-base sm:text-lg font-bold">{(originBudget.total * 12).toLocaleString('fr-FR')} €</p>
                       </div>
                       <div>
                         <p className="text-xs text-muted-foreground mb-1">Budget annuel {destination.name}</p>
-                        <p className="text-lg font-bold">{(destBudget.total * 12).toLocaleString('fr-FR')} €</p>
+                        <p className="text-base sm:text-lg font-bold">{(destBudget.total * 12).toLocaleString('fr-FR')} €</p>
                       </div>
                       <div>
                         <p className="text-xs text-muted-foreground mb-1">Différence annuelle</p>

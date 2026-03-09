@@ -170,7 +170,8 @@ export function GlobalSearch() {
       {/* Trigger button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-muted/50 border border-border/50 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors text-sm"
+        className="flex items-center gap-2 px-2 sm:px-3 py-1.5 rounded-lg bg-muted/50 border border-border/50 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors text-sm"
+        aria-label={t('search.placeholder', 'Rechercher...')}
       >
         <Search className="w-4 h-4" />
         <span className="hidden sm:inline">{t('search.placeholder', 'Rechercher...')}</span>
@@ -181,13 +182,13 @@ export function GlobalSearch() {
 
       {/* Search dialog */}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="sm:max-w-xl p-0 gap-0">
+        <DialogContent className="sm:max-w-xl p-0 gap-0 max-h-[85vh] max-h-[85dvh] flex flex-col w-[calc(100vw-1rem)] sm:w-full rounded-xl sm:rounded-lg">
           <DialogHeader className="p-4 pb-0 sr-only">
             <DialogTitle>{t('search.title', 'Recherche globale')}</DialogTitle>
           </DialogHeader>
 
-          <div className="flex items-center gap-3 p-4 border-b">
-            <Search className="w-5 h-5 text-muted-foreground" />
+          <div className="flex items-center gap-3 p-3 sm:p-4 border-b flex-shrink-0">
+            <Search className="w-5 h-5 text-muted-foreground flex-shrink-0" />
             <Input
               value={query}
               onChange={e => setQuery(e.target.value)}
@@ -196,13 +197,13 @@ export function GlobalSearch() {
               autoFocus
             />
             {query && (
-              <button onClick={() => setQuery('')} className="p-1 hover:bg-muted rounded">
+              <button onClick={() => setQuery('')} className="p-1 hover:bg-muted rounded flex-shrink-0">
                 <X className="w-4 h-4" />
               </button>
             )}
           </div>
 
-          <div className="max-h-[400px] overflow-auto p-2">
+          <div className="flex-1 overflow-y-auto overscroll-contain p-2">
             {query.trim() === '' ? (
               <div className="p-4 text-center text-muted-foreground text-sm">
                 {t('search.startTyping', 'Commencez à taper pour rechercher')}
@@ -222,16 +223,16 @@ export function GlobalSearch() {
                       "hover:bg-muted focus:bg-muted focus:outline-none"
                     )}
                   >
-                    <div className="p-2 rounded-lg bg-muted">
+                    <div className="p-2 rounded-lg bg-muted flex-shrink-0">
                       {result.icon}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="font-medium truncate">{result.title}</div>
+                      <div className="font-medium truncate text-sm">{result.title}</div>
                       {result.subtitle && (
                         <div className="text-xs text-muted-foreground truncate">{result.subtitle}</div>
                       )}
                     </div>
-                    <Badge variant="outline" className="text-xs">
+                    <Badge variant="outline" className="text-xs flex-shrink-0 hidden sm:inline-flex">
                       {getTypeLabel(result.type)}
                     </Badge>
                   </button>
@@ -240,8 +241,9 @@ export function GlobalSearch() {
             )}
           </div>
 
-          <div className="p-3 border-t bg-muted/30 text-xs text-muted-foreground flex items-center justify-between">
-            <span>{t('search.hint', 'Utilisez ↑↓ pour naviguer, Entrée pour sélectionner')}</span>
+          <div className="p-3 border-t bg-muted/30 text-xs text-muted-foreground flex items-center justify-between flex-shrink-0">
+            <span className="hidden sm:inline">{t('search.hint', 'Utilisez ↑↓ pour naviguer, Entrée pour sélectionner')}</span>
+            <span className="sm:hidden">{t('search.tapToSelect', 'Appuyez pour sélectionner')}</span>
             <span>ESC {t('search.close', 'pour fermer')}</span>
           </div>
         </DialogContent>

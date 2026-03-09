@@ -656,8 +656,8 @@ export default function ExitKeys() {
                       </div>
                     </div>
                     
-                    <div className="grid grid-cols-2 gap-6">
-                      <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/20">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                      <div className="p-3 sm:p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/20">
                         <p className="text-xs font-medium text-emerald-500 mb-3 flex items-center gap-2">
                           <CheckCircle className="w-4 h-4" />
                           {t('exitKeys.current.whoWins', 'Qui gagne ici')}
@@ -671,7 +671,7 @@ export default function ExitKeys() {
                           ))}
                         </ul>
                       </div>
-                      <div className="p-4 rounded-xl bg-destructive/5 border border-destructive/20">
+                      <div className="p-3 sm:p-4 rounded-xl bg-destructive/5 border border-destructive/20">
                         <p className="text-xs font-medium text-destructive mb-3 flex items-center gap-2">
                           <AlertTriangle className="w-4 h-4" />
                           {t('exitKeys.current.whoLoses', 'Qui perd ici')}
@@ -899,20 +899,20 @@ export default function ExitKeys() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
                 {priorityOptions.map(option => (
                   <button
                     key={option.value}
                     onClick={() => setDesiredLife(option.value)}
                     className={cn(
-                      "p-6 rounded-xl border text-center transition-all",
-                      desiredLife === option.value 
-                        ? "border-primary bg-primary/10 ring-2 ring-primary/20" 
+                      "p-4 sm:p-6 rounded-xl border text-center transition-all",
+                      desiredLife === option.value
+                        ? "border-primary bg-primary/10 ring-2 ring-primary/20"
                         : "border-border hover:border-primary/50"
                     )}
                   >
-                    <span className="text-4xl block mb-2">{option.icon}</span>
-                    <span className="font-medium">{t(option.labelKey)}</span>
+                    <span className="text-3xl sm:text-4xl block mb-2">{option.icon}</span>
+                    <span className="font-medium text-sm sm:text-base">{t(option.labelKey)}</span>
                   </button>
                 ))}
               </div>
@@ -920,7 +920,7 @@ export default function ExitKeys() {
               {/* Summary */}
               <div className="glass-card rounded-xl p-6 mt-8">
                 <h3 className="font-semibold mb-4">{t('exitKeys.summary.title', 'Résumé de votre profil')}</h3>
-                <div className="grid grid-cols-2 gap-4 text-sm">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-sm">
                   <div>
                     <span className="text-muted-foreground">{t('exitKeys.summary.origin', 'Origine')}:</span>
                     <span className="ml-2 font-medium">{birthCountry?.name}</span>

@@ -339,19 +339,21 @@ export default function Dashboard() {
         {/* Login prompt for guests */}
         {!isLoggedIn && (
           <Card className="mb-6 glass-card border-primary/20 glow-subtle">
-            <CardContent className="p-4">
-              <div className="flex items-center gap-4">
-                <div className="p-2 rounded-lg bg-primary/10">
-                  <Cloud className="w-6 h-6 text-primary" />
+            <CardContent className="p-3 sm:p-4">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-primary/10 flex-shrink-0">
+                    <Cloud className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium">{t('dashboard.connectToSync')}</p>
+                    <p className="text-xs text-muted-foreground">
+                      {t('dashboard.localDataInfo')}
+                    </p>
+                  </div>
                 </div>
-                <div className="flex-1">
-                  <p className="text-sm font-medium">{t('dashboard.connectToSync')}</p>
-                  <p className="text-xs text-muted-foreground">
-                    {t('dashboard.localDataInfo')}
-                  </p>
-                </div>
-                <Link to="/auth">
-                  <Button size="sm" className="btn-premium text-primary-foreground">{t('dashboard.signIn')}</Button>
+                <Link to="/auth" className="flex-shrink-0">
+                  <Button size="sm" className="btn-premium text-primary-foreground w-full sm:w-auto">{t('dashboard.signIn')}</Button>
                 </Link>
               </div>
             </CardContent>
@@ -368,15 +370,17 @@ export default function Dashboard() {
         {/* Profile Summary */}
         {profile && motorProfile && (
           <Card className="mb-6 border-primary/20 glow-card bg-gradient-to-br from-card to-card/80">
-            <CardContent className="p-6">
-              <div className="flex items-center gap-4">
-                <div className="text-4xl p-3 bg-primary/10 rounded-xl">{motorProfile.icon}</div>
-                <div className="flex-1">
-                  <h3 className="font-semibold text-lg">{t('dashboard.profileLabel')}: <span className="gold-text">{t(motorProfile.label)}</span></h3>
-                  <p className="text-sm text-muted-foreground">{t(motorProfile.description)}</p>
+            <CardContent className="p-4 sm:p-6">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <div className="text-3xl sm:text-4xl p-2 sm:p-3 bg-primary/10 rounded-xl flex-shrink-0">{motorProfile.icon}</div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-semibold text-base sm:text-lg">{t('dashboard.profileLabel')}: <span className="gold-text">{t(motorProfile.label)}</span></h3>
+                    <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2">{t(motorProfile.description)}</p>
+                  </div>
                 </div>
-                <Link to="/exit-keys">
-                  <Button variant="outline" size="sm" className="gap-2 hover:border-primary/50">
+                <Link to="/exit-keys" className="flex-shrink-0">
+                  <Button variant="outline" size="sm" className="gap-2 hover:border-primary/50 w-full sm:w-auto">
                     <Key className="w-4 h-4" />
                     {t('dashboard.viewKeys')}
                   </Button>
@@ -388,19 +392,21 @@ export default function Dashboard() {
 
         {!profile && selectedKeyId && (
           <Card className="mb-6 glass-card border-primary/20">
-            <CardContent className="p-6">
-              <div className="flex items-center gap-4">
-                <div className="p-2 rounded-lg bg-primary/10">
-                  <AlertTriangle className="w-8 h-8 text-primary" />
+            <CardContent className="p-4 sm:p-6">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <div className="p-2 rounded-lg bg-primary/10 flex-shrink-0">
+                    <AlertTriangle className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-semibold text-sm sm:text-base">{t('dashboard.profileNotConfigured')}</h3>
+                    <p className="text-xs sm:text-sm text-muted-foreground">
+                      {t('dashboard.profileNotConfiguredDesc')}
+                    </p>
+                  </div>
                 </div>
-                <div className="flex-1">
-                  <h3 className="font-semibold">{t('dashboard.profileNotConfigured')}</h3>
-                  <p className="text-sm text-muted-foreground">
-                    {t('dashboard.profileNotConfiguredDesc')}
-                  </p>
-                </div>
-                <Link to="/exit-keys">
-                  <Button className="btn-premium text-primary-foreground">{t('dashboard.createProfile')}</Button>
+                <Link to="/exit-keys" className="flex-shrink-0">
+                  <Button className="btn-premium text-primary-foreground w-full sm:w-auto">{t('dashboard.createProfile')}</Button>
                 </Link>
               </div>
             </CardContent>
@@ -412,7 +418,7 @@ export default function Dashboard() {
 
         {/* User Profile and Game Stats Widgets */}
         {isLoggedIn && (
-          <div className="grid md:grid-cols-2 gap-6 mb-6">
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 mb-6">
             <UserProfileWidget />
             <GameStatisticsWidget />
           </div>
@@ -436,19 +442,19 @@ export default function Dashboard() {
         {isLoggedIn && (
           <>
             {/* Smart AI Recommendations + Analytics - Top Priority */}
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 mb-6">
               <SmartDashboardWidget />
               <RealTimeAnalyticsWidget />
             </div>
 
             {/* Risk Alerts and Calendar - Full width priority section */}
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 mb-6">
               <RiskAlertsDashboard />
               <ConsolidatedCalendar />
             </div>
 
             {/* Pro Module Widgets */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6">
               <CasesDashboardWidget />
               <LatentZonesDashboardWidget />
               <IrreversaDashboardWidget />
