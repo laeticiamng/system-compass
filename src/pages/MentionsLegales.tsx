@@ -172,8 +172,8 @@ export default function MentionsLegales() {
 
               <p>
                 Pour exercer ces droits, contactez-nous à : 
-                <a href="mailto:privacy@pyramidcompass.com" className="text-primary hover:underline ml-1">
-                  privacy@pyramidcompass.com
+                <a href="mailto:contact@emotionscare.com" className="text-primary hover:underline ml-1">
+                  contact@emotionscare.com
                 </a>
               </p>
 

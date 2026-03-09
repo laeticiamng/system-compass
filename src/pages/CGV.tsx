@@ -216,7 +216,7 @@ export default function CGV() {
             </p>
             <ul className="mt-4 space-y-2">
               <li>
-                <strong>Email :</strong> support@pyramidcompass.com
+                <strong>Email :</strong> contact@emotionscare.com
               </li>
               <li>
                 <strong>Éditeur :</strong> EmotionsCare SASU

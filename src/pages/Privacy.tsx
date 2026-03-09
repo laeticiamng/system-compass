@@ -84,8 +84,8 @@ export default function Privacy() {
                 <div className="p-4 rounded-lg bg-muted/30">
                   <p className="text-sm text-muted-foreground mb-1">{t('privacy.controller.contact', 'Contact DPO')}</p>
                   <p className="font-semibold">
-                    <a href="mailto:privacy@pyramidcompass.com" className="text-primary hover:underline">
-                      privacy@pyramidcompass.com
+                    <a href="mailto:contact@emotionscare.com" className="text-primary hover:underline">
+                      contact@emotionscare.com
                     </a>
                   </p>
                 </div>
