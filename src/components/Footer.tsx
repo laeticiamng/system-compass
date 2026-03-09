@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Compass, Heart, RotateCcw } from 'lucide-react';
 import { CountryIndicator } from './CountryIndicator';
 import { useResetOnboarding } from './DialogCoordinator';
+import { useAuth } from '@/hooks/useAuth';
 import { Button } from './ui/button';
 import {
   Tooltip,
