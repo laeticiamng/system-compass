@@ -1,9 +1,9 @@
 import { useState, useEffect, createContext, useContext, ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
 
-const CONSENT_KEY = 'pyramid-compass-disclaimer-accepted';
-const ONBOARDING_KEY = 'pyramid-compass-onboarding-complete';
-const COOKIE_CONSENT_KEY = 'pyramid-compass-cookie-consent';
+const CONSENT_KEY = 'compass-disclaimer-accepted';
+const ONBOARDING_KEY = 'compass-onboarding-complete';
+const COOKIE_CONSENT_KEY = 'compass-cookie-consent';
 
 interface DialogCoordinatorContextType {
   isDisclaimerComplete: boolean;
