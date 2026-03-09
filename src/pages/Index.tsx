@@ -583,6 +583,16 @@ export default function Index() {
                 </AccordionContent>
               </AccordionItem>
             </motion.div>
+            <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }}>
+              <AccordionItem value="faq-4" className="glass-card rounded-xl px-6 border-none">
+                <AccordionTrigger className="text-base font-semibold hover:no-underline">
+                  {t('landing.faq.q4', 'Compass est-il adapté aux professionnels de santé ?')}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
+                  {t('landing.faq.a4', 'Oui. Compass propose un parcours dédié aux professionnels de santé : reconnaissance de diplôme (MEBEKO, CNOM), autorisations d\'exercer par canton ou département, simulateur fiscal transfrontalier (LAMal vs Sécurité sociale, pilier 2 vs retraite française), communauté de pairs et checklist documents personnalisée par spécialité.')}
+                </AccordionContent>
+              </AccordionItem>
+            </motion.div>
           </Accordion>
         </div>
       </section>

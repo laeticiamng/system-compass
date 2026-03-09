@@ -71,6 +71,7 @@ export function Header() {
     { href: '/tools/fiscal-simulator', label: t('nav.fiscalSimulator', 'Simulateur Fiscal'), icon: BarChart3 },
     { href: '/compare', label: t('nav.compare', 'Comparer'), icon: Scale },
     { href: '/prevention-filter', label: t('nav.preventionFilter', 'Aide à la décision'), icon: Shield },
+    { href: '/healthcare', label: t('nav.healthcare', 'Parcours Santé'), icon: Stethoscope },
   ];
 
   // Pages info/compte — essentielles uniquement (pas de doublons avec nav principale)
