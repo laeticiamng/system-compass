@@ -13,8 +13,10 @@ const PLATFORM_FEE_PERCENT = 0.15;
 
 serve(async (req) => {
   if (req.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
+    return handleCorsPreflightRequest(req);
   }
+
+  const corsHeaders = getCorsHeaders(req);
 
   const supabaseClient = createClient(
     Deno.env.get("SUPABASE_URL") ?? "",
