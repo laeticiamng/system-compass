@@ -307,7 +307,7 @@ export function Header() {
               <Link to="/auth">
                 <Button variant="outline" size="sm" className="gap-1 h-8 px-2">
                   <LogIn className="w-3.5 h-3.5" />
-                  <span className="hidden lg:inline text-xs">{t('auth.login')}</span>
+                  <span className="hidden xl:inline text-xs">{t('auth.login')}</span>
                 </Button>
               </Link>
             )}
