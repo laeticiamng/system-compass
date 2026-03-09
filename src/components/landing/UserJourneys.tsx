@@ -72,7 +72,7 @@ const journeys = [
     descDefault: 'Reconnaissance de diplôme (🇨🇭 MEBEKO, 🇫🇷 CNOM), autorisation d\'exercer, simulateur fiscal et checklist documents.',
     ctaKey: 'landing.journeys.healthcare.cta',
     ctaDefault: 'Parcours santé',
-    time: '~10 min',
+    time: undefined as string | undefined,
     highlight: false,
   },
 ];
