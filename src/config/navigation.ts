@@ -104,6 +104,19 @@ export const NAV_GROUPS: NavGroup[] = [
       { href: '/family-workspace', icon: Users, label: 'Famille', labelKey: 'nav.family', description: 'Espace collaboratif' },
     ],
   },
+  {
+    id: 'healthcare',
+    title: 'Santé',
+    titleKey: 'nav.groups.healthcare',
+    description: 'Parcours professionnel de santé',
+    icon: Stethoscope,
+    color: 'from-rose-500/20 to-pink-500/20',
+    borderColor: 'border-rose-500/30',
+    badge: 'New',
+    items: [
+      { href: '/healthcare', icon: Stethoscope, label: 'Parcours Santé', labelKey: 'nav.healthcare', description: 'Diplômes, autorisations, protection sociale', badge: 'New' },
+    ],
+  },
 ];
 
 // ============================================================

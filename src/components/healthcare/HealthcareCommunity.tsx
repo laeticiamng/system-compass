@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Users, MessageCircle, MapPin, Stethoscope, Search, UserPlus, Star, Clock } from 'lucide-react';
+import { Users, MessageCircle, MapPin, Stethoscope, Search, UserPlus, Star, Clock, Construction } from 'lucide-react';
 
 interface PeerProfile {
   id: string;
@@ -21,46 +21,70 @@ interface PeerProfile {
 }
 
 const MOCK_PEERS: PeerProfile[] = [
-  { id: '1', initials: 'ML', specialty: 'Médecine générale', originCountry: 'France', currentCountry: 'Suisse', yearsAbroad: 5, languages: ['FR', 'DE'], topics: ['MEBEKO', 'LAMal', 'Canton Vaud'], available: true, rating: 4.8 },
-  { id: '2', initials: 'SA', specialty: 'Soins infirmiers', originCountry: 'Belgique', currentCountry: 'Suisse', yearsAbroad: 3, languages: ['FR'], topics: ['Croix-Rouge', 'Reconnaissance diplôme'], available: true, rating: 4.6 },
-  { id: '3', initials: 'KR', specialty: 'Pharmacie', originCountry: 'France', currentCountry: 'Allemagne', yearsAbroad: 7, languages: ['FR', 'DE', 'EN'], topics: ['Approbation', 'Apothekerkammer'], available: false, rating: 4.9 },
-  { id: '4', initials: 'JD', specialty: 'Kinésithérapie', originCountry: 'France', currentCountry: 'Belgique', yearsAbroad: 2, languages: ['FR', 'NL'], topics: ['INAMI', 'Agrément'], available: true, rating: 4.5 },
-  { id: '5', initials: 'PT', specialty: 'Dentisterie', originCountry: 'Allemagne', currentCountry: 'Suisse', yearsAbroad: 4, languages: ['DE', 'FR', 'EN'], topics: ['SSO', 'Autorisation cantonale'], available: true, rating: 4.7 },
+  { id: '1', initials: 'ML', specialty: 'general_medicine', originCountry: 'france', currentCountry: 'switzerland', yearsAbroad: 5, languages: ['FR', 'DE'], topics: ['MEBEKO', 'LAMal', 'Canton Vaud'], available: true, rating: 4.8 },
+  { id: '2', initials: 'SA', specialty: 'nursing', originCountry: 'belgium', currentCountry: 'switzerland', yearsAbroad: 3, languages: ['FR'], topics: ['Croix-Rouge', 'Reconnaissance diplôme'], available: true, rating: 4.6 },
+  { id: '3', initials: 'KR', specialty: 'pharmacy', originCountry: 'france', currentCountry: 'germany', yearsAbroad: 7, languages: ['FR', 'DE', 'EN'], topics: ['Approbation', 'Apothekerkammer'], available: false, rating: 4.9 },
+  { id: '4', initials: 'JD', specialty: 'physiotherapy', originCountry: 'france', currentCountry: 'belgium', yearsAbroad: 2, languages: ['FR', 'NL'], topics: ['INAMI', 'Agrément'], available: true, rating: 4.5 },
+  { id: '5', initials: 'PT', specialty: 'dentistry', originCountry: 'germany', currentCountry: 'switzerland', yearsAbroad: 4, languages: ['DE', 'FR', 'EN'], topics: ['SSO', 'Autorisation cantonale'], available: true, rating: 4.7 },
 ];
 
-const SPECIALTIES = [
-  { value: 'all', label: 'Toutes spécialités' },
-  { value: 'Médecine générale', label: 'Médecine générale' },
-  { value: 'Soins infirmiers', label: 'Soins infirmiers' },
-  { value: 'Pharmacie', label: 'Pharmacie' },
-  { value: 'Dentisterie', label: 'Dentisterie' },
-  { value: 'Kinésithérapie', label: 'Kinésithérapie' },
+const SPECIALTY_KEYS = [
+  { value: 'all', labelKey: 'healthcare.specialties.all' },
+  { value: 'general_medicine', labelKey: 'healthcare.specialties.generalMedicine' },
+  { value: 'nursing', labelKey: 'healthcare.specialties.nursing' },
+  { value: 'pharmacy', labelKey: 'healthcare.specialties.pharmacy' },
+  { value: 'dentistry', labelKey: 'healthcare.specialties.dentistry' },
+  { value: 'physiotherapy', labelKey: 'healthcare.specialties.physiotherapy' },
 ];
 
-const REGIONS = [
-  { value: 'all', label: 'Toutes destinations' },
-  { value: 'Suisse', label: '🇨🇭 Suisse' },
-  { value: 'France', label: '🇫🇷 France' },
-  { value: 'Allemagne', label: '🇩🇪 Allemagne' },
-  { value: 'Belgique', label: '🇧🇪 Belgique' },
+const REGION_KEYS = [
+  { value: 'all', labelKey: 'healthcare.regions.all' },
+  { value: 'switzerland', labelKey: 'healthcare.regions.switzerland', flag: '🇨🇭' },
+  { value: 'france', labelKey: 'healthcare.regions.france', flag: '🇫🇷' },
+  { value: 'germany', labelKey: 'healthcare.regions.germany', flag: '🇩🇪' },
+  { value: 'belgium', labelKey: 'healthcare.regions.belgium', flag: '🇧🇪' },
 ];
+
+const SPECIALTY_FALLBACKS: Record<string, string> = {
+  'healthcare.specialties.all': 'Toutes spécialités',
+  'healthcare.specialties.generalMedicine': 'Médecine générale',
+  'healthcare.specialties.nursing': 'Soins infirmiers',
+  'healthcare.specialties.pharmacy': 'Pharmacie',
+  'healthcare.specialties.dentistry': 'Dentisterie',
+  'healthcare.specialties.physiotherapy': 'Kinésithérapie',
+};
+
+const REGION_FALLBACKS: Record<string, string> = {
+  'healthcare.regions.all': 'Toutes destinations',
+  'healthcare.regions.switzerland': 'Suisse',
+  'healthcare.regions.france': 'France',
+  'healthcare.regions.germany': 'Allemagne',
+  'healthcare.regions.belgium': 'Belgique',
+};
 
 export function HealthcareCommunity() {
   const { t } = useTranslation();
   const [specialtyFilter, setSpecialtyFilter] = useState('all');
   const [regionFilter, setRegionFilter] = useState('all');
   const [search, setSearch] = useState('');
-  const [requestSent, setRequestSent] = useState<Set<string>>(new Set());
 
   const filtered = MOCK_PEERS.filter(p => {
     if (specialtyFilter !== 'all' && p.specialty !== specialtyFilter) return false;
     if (regionFilter !== 'all' && p.currentCountry !== regionFilter) return false;
-    if (search && !p.topics.some(t => t.toLowerCase().includes(search.toLowerCase())) && !p.specialty.toLowerCase().includes(search.toLowerCase())) return false;
+    if (search && !p.topics.some(tp => tp.toLowerCase().includes(search.toLowerCase())) && !p.specialty.toLowerCase().includes(search.toLowerCase())) return false;
     return true;
   });
 
-  const handleRequest = (peerId: string) => {
-    setRequestSent(prev => new Set(prev).add(peerId));
+  const getSpecialtyLabel = (key: string) => {
+    const sk = SPECIALTY_KEYS.find(s => s.value === key);
+    return sk ? t(sk.labelKey, SPECIALTY_FALLBACKS[sk.labelKey] || key) : key;
+  };
+
+  const getRegionLabel = (key: string) => {
+    const rk = REGION_KEYS.find(r => r.value === key);
+    if (!rk) return key;
+    const label = t(rk.labelKey, REGION_FALLBACKS[rk.labelKey] || key);
+    return 'flag' in rk ? `${(rk as any).flag} ${label}` : label;
   };
 
   return (
@@ -75,21 +99,38 @@ export function HealthcareCommunity() {
         </p>
       </CardHeader>
       <CardContent className="space-y-4">
+        {/* Beta banner */}
+        <div className="flex items-start gap-2 rounded-lg border border-amber-500/30 bg-amber-500/5 p-3">
+          <Construction className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
+          <div>
+            <p className="text-xs font-medium text-amber-700 dark:text-amber-400">
+              {t('healthcare.community.betaTitle', 'Réseau en construction')}
+            </p>
+            <p className="text-[10px] text-muted-foreground leading-relaxed">
+              {t('healthcare.community.betaDescription', 'Cette fonctionnalité est en cours de développement. Les profils affichés sont des exemples illustratifs. Le réseau réel sera disponible prochainement.')}
+            </p>
+          </div>
+        </div>
+
         {/* Filters */}
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
           <Select value={specialtyFilter} onValueChange={setSpecialtyFilter}>
             <SelectTrigger className="h-9 text-xs"><SelectValue /></SelectTrigger>
             <SelectContent>
-              {SPECIALTIES.map(s => (
-                <SelectItem key={s.value} value={s.value}>{s.label}</SelectItem>
+              {SPECIALTY_KEYS.map(s => (
+                <SelectItem key={s.value} value={s.value}>
+                  {t(s.labelKey, SPECIALTY_FALLBACKS[s.labelKey] || s.value)}
+                </SelectItem>
               ))}
             </SelectContent>
           </Select>
           <Select value={regionFilter} onValueChange={setRegionFilter}>
             <SelectTrigger className="h-9 text-xs"><SelectValue /></SelectTrigger>
             <SelectContent>
-              {REGIONS.map(r => (
-                <SelectItem key={r.value} value={r.value}>{r.label}</SelectItem>
+              {REGION_KEYS.map(r => (
+                <SelectItem key={r.value} value={r.value}>
+                  {'flag' in r ? `${(r as any).flag} ` : ''}{t(r.labelKey, REGION_FALLBACKS[r.labelKey] || r.value)}
+                </SelectItem>
               ))}
             </SelectContent>
           </Select>
@@ -119,7 +160,7 @@ export function HealthcareCommunity() {
           {filtered.map((peer) => (
             <div
               key={peer.id}
-              className="flex items-start gap-3 rounded-lg border p-3 hover:bg-muted/30 transition-colors"
+              className="flex items-start gap-3 rounded-lg border p-3 hover:bg-muted/30 transition-colors opacity-75"
             >
               {/* Avatar */}
               <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
@@ -128,7 +169,7 @@ export function HealthcareCommunity() {
 
               <div className="flex-1 min-w-0 space-y-1.5">
                 <div className="flex items-center gap-2 flex-wrap">
-                  <span className="font-semibold text-sm">{peer.specialty}</span>
+                  <span className="font-semibold text-sm">{getSpecialtyLabel(peer.specialty)}</span>
                   <div className="flex items-center gap-0.5">
                     <Star className="w-3 h-3 text-amber-500 fill-amber-500" />
                     <span className="text-[10px] text-muted-foreground">{peer.rating}</span>
@@ -147,7 +188,7 @@ export function HealthcareCommunity() {
 
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
                   <MapPin className="w-3 h-3" />
-                  {peer.originCountry} → {peer.currentCountry}
+                  {getRegionLabel(peer.originCountry)} → {getRegionLabel(peer.currentCountry)}
                   <span className="text-[10px]">• {peer.yearsAbroad} {t('healthcare.community.years', 'ans')}</span>
                 </div>
 
@@ -161,25 +202,18 @@ export function HealthcareCommunity() {
                 </div>
               </div>
 
-              {/* Action */}
+              {/* Action - disabled in beta */}
               <div className="shrink-0">
-                {requestSent.has(peer.id) ? (
-                  <Badge variant="outline" className="text-[10px] gap-1 text-emerald-600">
-                    <MessageCircle className="w-3 h-3" />
-                    {t('healthcare.community.sent', 'Envoyé')}
-                  </Badge>
-                ) : (
-                  <Button
-                    size="sm"
-                    variant={peer.available ? 'default' : 'outline'}
-                    className="text-xs gap-1 h-8"
-                    onClick={() => handleRequest(peer.id)}
-                    disabled={!peer.available}
-                  >
-                    <UserPlus className="w-3 h-3" />
-                    {t('healthcare.community.askButton', 'Demander conseil')}
-                  </Button>
-                )}
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="text-xs gap-1 h-8"
+                  disabled
+                  title={t('healthcare.community.comingSoon', 'Bientôt disponible')}
+                >
+                  <UserPlus className="w-3 h-3" />
+                  <span className="hidden sm:inline">{t('healthcare.community.askButton', 'Demander conseil')}</span>
+                </Button>
               </div>
             </div>
           ))}

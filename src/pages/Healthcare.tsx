@@ -30,10 +30,10 @@ export default function Healthcare() {
 
   return (
     <>
-      <Helmet>
-        <title>{t('healthcare.seo.title', 'Parcours Professionnel de Santé — Compass')}</title>
-        <meta name="description" content={t('healthcare.seo.description', 'Guide complet pour les professionnels de santé : reconnaissance de diplôme, autorisations d\'exercer, protection sociale et checklist documents par pays.')} />
-      </Helmet>
+      <PageMeta
+        title={t('healthcare.seo.title', 'Parcours Professionnel de Santé — Compass')}
+        description={t('healthcare.seo.description', 'Guide complet pour les professionnels de santé : reconnaissance de diplôme, autorisations d\'exercer, protection sociale et checklist documents par pays.')}
+      />
 
       <div className="container max-w-5xl mx-auto py-8 px-4 space-y-8">
         {/* Hero */}

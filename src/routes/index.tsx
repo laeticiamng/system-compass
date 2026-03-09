@@ -237,4 +237,7 @@ export const LEGACY_ROUTE_SEGMENTS = [
   'match', 'multi-compare', 'systemic-mistakes', 'orientation-hub',
   'test', 'login', 'map', 'strategies', 'profile', 'game', 'matcher', 'legal',
   'life-simulator', 'roadmap', 'status', 'beta-feedback',
+  'healthcare', 'regulatory-alerts', 'family-workspace',
+  'fiscal-before-after', 'checklist', 'expatriation-timeline',
+  'contact', 'expat-reviews', 'changelog',
 ];

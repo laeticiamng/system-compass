@@ -56,6 +56,14 @@ export function HealthcareDocumentChecklist({ countryId, countryName }: Props) {
   
   const [checked, setChecked] = useState<Record<number, boolean>>(() => getProgress(countryId, specialty));
 
+  // Reset checked state when filters change
+  const [prevKey, setPrevKey] = useState(`${countryId}_${specialty}_${originRegion}`);
+  const currentKey = `${countryId}_${specialty}_${originRegion}`;
+  if (currentKey !== prevKey) {
+    setPrevKey(currentKey);
+    setChecked(getProgress(countryId, specialty));
+  }
+
   const toggleDoc = (order: number) => {
     const next = { ...checked, [order]: !checked[order] };
     setChecked(next);
