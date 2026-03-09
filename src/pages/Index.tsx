@@ -410,15 +410,15 @@ export default function Index() {
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                       {t('landing.pricing.premiumFeature2', 'Analyses approfondies')}
+                     {t('landing.pricing.premiumFeature2', 'Analyses détaillées par pays')}
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                       {t('landing.pricing.premiumFeature3', 'Export PDF illimité')}
+                       {t('landing.pricing.premiumFeature3', 'Export PDF & simulateur fiscal')}
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                       {t('landing.pricing.premiumFeature4', 'Recommandations personnalisées')}
+                       {t('landing.pricing.premiumFeature4', 'Recommandations adaptées à votre profil')}
                     </li>
                   </ul>
                   <Button 
