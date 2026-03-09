@@ -63,7 +63,7 @@ export default function Contact() {
       });
     } catch {
       // Fallback: open mailto
-      const mailtoUrl = `mailto:contact@system-compass.app?subject=${encodeURIComponent(form.subject || 'Contact')}&body=${encodeURIComponent(`De: ${form.name} (${form.email})\n\n${form.message}`)}`;
+      const mailtoUrl = `mailto:contact@emotionscare.com?subject=${encodeURIComponent(form.subject || 'Contact')}&body=${encodeURIComponent(`De: ${form.name} (${form.email})\n\n${form.message}`)}`;
       window.open(mailtoUrl, '_blank');
       setSent(true);
     } finally {
