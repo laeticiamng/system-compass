@@ -7,7 +7,7 @@
 import {
   Compass, Map, Globe, Key, Users,
   BarChart3, BookOpen, LayoutDashboard, CreditCard,
-  Zap, FileText, Bell, Home, Wrench,
+  Zap, FileText, Bell, Home, Wrench, Stethoscope,
   Info, Settings, AlertTriangle, Clock, type LucideIcon
 } from 'lucide-react';
 

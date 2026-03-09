@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Users, MessageCircle, MapPin, Stethoscope, Search, UserPlus, Star, Clock, Construction } from 'lucide-react';
+import { Users, MapPin, Stethoscope, Search, UserPlus, Star, Clock, Construction } from 'lucide-react';
 
 interface PeerProfile {
   id: string;
