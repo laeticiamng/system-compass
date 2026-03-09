@@ -142,7 +142,7 @@ export function UserJourneys() {
                     </p>
 
                     <div className="flex items-center justify-between">
-                      <span className="text-xs text-muted-foreground/70">{journey.time}</span>
+                      {journey.time && <span className="text-xs text-muted-foreground/70">{journey.time}</span>}
                       <Button
                         variant={journey.highlight ? 'default' : 'ghost'}
                         size="sm"

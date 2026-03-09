@@ -1030,9 +1030,12 @@
     "partnerServices": "Partner Services",
     "community": "Community",
     "language": "Language",
-    "matcher": "AI Country Matcher",
+    "matcher": "Find my country",
     "fiscalSimulator": "Tax Simulator",
-    "traceJournal": "Decision Journal"
+    "traceJournal": "Decision Journal",
+    "healthcare": "Healthcare Track",
+    "allTools": "All tools →",
+    "preventionFilter": "Decision support"
   },
   "tests": {
     "resultSaved": "Result saved!",

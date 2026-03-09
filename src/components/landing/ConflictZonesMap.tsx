@@ -279,7 +279,7 @@ export function ConflictZonesMap() {
             transition={{ delay: 0.1 }}
             className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg"
           >
-            {t('geopolitics.mapSubtitle', '6 conflict or high-tension zones tracked in real time. Click to see impact on neighboring countries.')}
+            {t('geopolitics.mapSubtitle', '6 zones with geopolitical tensions to consider before relocating. Click for details.')}
           </motion.p>
         </div>
 
