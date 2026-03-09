@@ -5,7 +5,7 @@ import { LocalizedLink as Link } from '@/components/i18n';
 import { useLocalizedPath } from '@/hooks/useLocalizedPath';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
-import { Compass, Map, FileText, Scale, LogIn, LogOut, User, LayoutDashboard, Menu, Info, AlertCircle, X, Shield, BookOpen, CreditCard, Globe, Settings, Building2, Users, ChevronDown, Wrench, BarChart3, Mail } from 'lucide-react';
+import { Compass, Map, FileText, Scale, LogIn, LogOut, User, LayoutDashboard, Menu, Info, AlertCircle, X, Shield, BookOpen, CreditCard, Globe, Settings, Building2, Users, ChevronDown, Wrench, BarChart3, Mail, Stethoscope } from 'lucide-react';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { GlobalSearch } from './GlobalSearch';
 import { ThemeToggle } from './ThemeToggle';
@@ -71,6 +71,7 @@ export function Header() {
     { href: '/tools/fiscal-simulator', label: t('nav.fiscalSimulator', 'Simulateur Fiscal'), icon: BarChart3 },
     { href: '/compare', label: t('nav.compare', 'Comparer'), icon: Scale },
     { href: '/prevention-filter', label: t('nav.preventionFilter', 'Aide à la décision'), icon: Shield },
+    { href: '/healthcare', label: t('nav.healthcare', 'Parcours Santé'), icon: Stethoscope },
   ];
 
   // Pages info/compte — essentielles uniquement (pas de doublons avec nav principale)
