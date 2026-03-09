@@ -33,7 +33,7 @@ vi.mock('@/lib/countries-data', () => ({
 // Import after mocks
 import { useDefaultCountry } from '../useDefaultCountry';
 
-const STORAGE_KEY = 'pyramid-compass-default-country';
+const STORAGE_KEY = 'compass-default-country';
 
 describe('useDefaultCountry', () => {
   beforeEach(() => {

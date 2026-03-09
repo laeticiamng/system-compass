@@ -11,7 +11,7 @@ import { lovable } from '@/integrations/lovable';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Checkbox } from '@/components/ui/checkbox';
+
 import { cn } from '@/lib/utils';
 import { Compass, LogIn, UserPlus, Loader2, AlertCircle, Eye, EyeOff, CheckCircle2, Mail } from 'lucide-react';
 import { z } from 'zod';
