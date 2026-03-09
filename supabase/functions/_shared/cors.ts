@@ -15,7 +15,7 @@ function isLovablePreview(origin: string): boolean {
 function getAllowedOrigin(req?: Request): string {
   if (req) {
     const origin = req.headers.get('Origin') || '';
-    if (ALLOWED_ORIGINS.includes(origin)) return origin;
+    if (ALLOWED_ORIGINS.includes(origin) || isLovablePreview(origin)) return origin;
   }
   return Deno.env.get('ALLOWED_ORIGIN') || ALLOWED_ORIGINS[0];
 }
