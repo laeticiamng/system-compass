@@ -300,7 +300,7 @@ export function Header() {
                   className="gap-1 h-8 px-2"
                 >
                   <LogOut className="w-3.5 h-3.5" />
-                  <span className="hidden lg:inline text-xs">{t('auth.logout')}</span>
+                  <span className="hidden xl:inline text-xs">{t('auth.logout')}</span>
                 </Button>
               </div>
             ) : (
