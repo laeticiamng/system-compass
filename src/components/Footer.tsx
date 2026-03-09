@@ -15,6 +15,7 @@ export function Footer() {
   const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
   const resetOnboarding = useResetOnboarding();
+  const { user } = useAuth();
 
   return (
     <footer className="border-t border-border/50 bg-background/50 backdrop-blur-sm pb-safe">
