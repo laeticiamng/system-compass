@@ -56,9 +56,9 @@ Deno.serve(async (req) => {
       })
     }
 
-    const sanitizedName = (name || 'Anonyme').toString().slice(0, 200)
-    const sanitizedSubject = (subject || 'Contact via Compass').toString().slice(0, 300)
-    const sanitizedMessage = message.toString().slice(0, 5000)
+    const sanitizedName = (name || 'Anonyme').toString().slice(0, 200).replace(/[&<>"']/g, (c: string) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] || c))
+    const sanitizedSubject = (subject || 'Contact via Compass').toString().slice(0, 300).replace(/[&<>"']/g, (c: string) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] || c))
+    const sanitizedMessage = message.toString().slice(0, 5000).replace(/[&<>"']/g, (c: string) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] || c))
     const sanitizedEmail = email.toString().slice(0, 320)
 
     console.log(`[send-contact] Contact from ${sanitizedEmail} — subject: ${sanitizedSubject}`)
