@@ -1,9 +1,9 @@
 import { useState, useEffect, createContext, useContext, ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
 
-const CONSENT_KEY = 'pyramid-compass-disclaimer-accepted';
-const ONBOARDING_KEY = 'pyramid-compass-onboarding-complete';
-const COOKIE_CONSENT_KEY = 'pyramid-compass-cookie-consent';
+const CONSENT_KEY = 'compass-disclaimer-accepted';
+const ONBOARDING_KEY = 'compass-onboarding-complete';
+const COOKIE_CONSENT_KEY = 'compass-cookie-consent';
 
 interface DialogCoordinatorContextType {
   isDisclaimerComplete: boolean;
@@ -87,7 +87,7 @@ export function DialogCoordinatorProvider({ children }: { children: ReactNode })
   const completeOnboarding = () => {
     try {
       localStorage.setItem(ONBOARDING_KEY, 'true');
-      localStorage.setItem('pyramid-compass-tour-completed', 'v1');
+      localStorage.setItem('compass-tour-completed', 'v1');
     } catch (e) {
       console.warn('Failed to save onboarding completion:', e);
     }
@@ -130,7 +130,7 @@ export function useResetOnboarding() {
       localStorage.removeItem(ONBOARDING_KEY);
       localStorage.removeItem(CONSENT_KEY);
       localStorage.removeItem(COOKIE_CONSENT_KEY);
-      localStorage.removeItem('pyramid-compass-tour-completed');
+      localStorage.removeItem('compass-tour-completed');
     } catch (e) {
       console.warn('Failed to reset onboarding:', e);
     }

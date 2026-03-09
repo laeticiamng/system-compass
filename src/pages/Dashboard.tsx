@@ -265,7 +265,7 @@ export default function Dashboard() {
   if (loading || profileLoading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="animate-pulse text-muted-foreground">Chargement...</div>
+        <div className="animate-pulse text-muted-foreground">{t('common.loading', 'Chargement...')}</div>
       </div>
     );
   }

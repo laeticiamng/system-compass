@@ -15,7 +15,7 @@ import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
 import { useDialogCoordinator } from '@/components/DialogCoordinator';
 
-const CONSENT_KEY = 'pyramid-compass-cookie-consent';
+const CONSENT_KEY = 'compass-cookie-consent';
 
 interface CookiePreferences {
   necessary: boolean; // Always true

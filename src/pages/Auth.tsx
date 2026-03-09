@@ -11,7 +11,7 @@ import { lovable } from '@/integrations/lovable';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Checkbox } from '@/components/ui/checkbox';
+
 import { cn } from '@/lib/utils';
 import { Compass, LogIn, UserPlus, Loader2, AlertCircle, Eye, EyeOff, CheckCircle2, Mail } from 'lucide-react';
 import { z } from 'zod';
@@ -34,7 +34,7 @@ export default function Auth() {
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
+  // rememberMe removed - Supabase always persists sessions
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const [isAppleLoading, setIsAppleLoading] = useState(false);
   const [isMagicLinkLoading, setIsMagicLinkLoading] = useState(false);
@@ -363,17 +363,7 @@ export default function Auth() {
 
             {/* Remember me checkbox and password reset */}
             {isLogin && (
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  <Checkbox
-                    id="remember"
-                    checked={rememberMe}
-                    onCheckedChange={(checked) => setRememberMe(checked === true)}
-                  />
-                  <Label htmlFor="remember" className="text-sm text-muted-foreground cursor-pointer">
-                    {t('auth.rememberMe', 'Se souvenir de moi')}
-                  </Label>
-                </div>
+              <div className="flex items-center justify-end">
                 <PasswordResetDialog />
               </div>
             )}

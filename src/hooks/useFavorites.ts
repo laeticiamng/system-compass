@@ -5,7 +5,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 
-const FAVORITES_KEY = 'pyramid-compass-favorites';
+const FAVORITES_KEY = 'compass-favorites';
 const MAX_FAVORITES = 6;
 
 export interface FavoriteItem {

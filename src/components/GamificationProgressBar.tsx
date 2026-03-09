@@ -49,7 +49,7 @@ const XP_VALUES = {
   profile_created: 50,
 };
 
-const XP_STORAGE_KEY = 'pyramid-compass-xp';
+const XP_STORAGE_KEY = 'compass-xp';
 
 function getStoredXP(): number {
   try {

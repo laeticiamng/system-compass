@@ -92,7 +92,7 @@ const DECISION_TYPE_CONFIG: Record<DecisionType, {
   },
 };
 
-const STORAGE_KEY = 'pyramid-compass-trace-journal';
+const STORAGE_KEY = 'compass-trace-journal';
 
 function loadEntries(): DecisionEntry[] {
   try {
