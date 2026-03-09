@@ -1,11 +1,7 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.2";
 import webpush from "https://esm.sh/web-push@3.6.7?target=deno";
-
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "https://system-compass.app",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
-};
+import { getCorsHeaders, handleCorsPreflightRequest } from "../_shared/cors.ts";
 
 interface ReminderRequest {
   userId?: string;
