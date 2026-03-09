@@ -226,7 +226,7 @@ serve(async (req) => {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              from: "Boussole Stratégique <notifications@resend.dev>",
+              from: "Compass <noreply@emotionscare.com>",
               to: [email],
               subject: urgentDeadlines.length > 0 
                 ? `⚠️ ${urgentDeadlines.length} échéance(s) urgente(s) - Action requise`
