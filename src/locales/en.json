@@ -729,7 +729,7 @@
       "q5": "Can I delete my account and data?",
       "a5": "Yes. You can delete your account and all associated data at any time from your dashboard settings. Deletion is immediate and irreversible, in compliance with GDPR.",
       "q6": "Can I export my data?",
-      "a6": "Yes. You can export your comparison results and country analyses as PDF. All your personal data can be downloaded from your account settings."
+      "a6": "Yes. You can export your comparison results and country analyses as PDF. All your personal data can be downloaded from your account settings.",
       "jsonld": {
         "q1": "What is Compass?",
         "a1": "Compass is a country comparison platform for international relocation. It analyzes 80+ countries: taxation, visas, cost of living, compatible profiles, unwritten rules.",
