@@ -97,7 +97,7 @@ export default function MentionsLegales() {
               Le directeur de la publication est le représentant légal de la société EmotionsCare SASU.
             </p>
             <p className="mt-4 text-sm text-muted-foreground">
-              Contact : contact@emotionscare.fr
+              Contact : <a href="mailto:contact@emotionscare.com" className="text-primary hover:underline">contact@emotionscare.com</a>
             </p>
           </section>
 
