@@ -8,10 +8,14 @@ const ALLOWED_ORIGINS = [
   'https://world-alignment.lovable.app',
 ];
 
+function isLovablePreview(origin: string): boolean {
+  return /^https:\/\/[a-z0-9-]+--[a-z0-9-]+\.lovable\.app$/.test(origin);
+}
+
 function getAllowedOrigin(req?: Request): string {
   if (req) {
     const origin = req.headers.get('Origin') || '';
-    if (ALLOWED_ORIGINS.includes(origin)) return origin;
+    if (ALLOWED_ORIGINS.includes(origin) || isLovablePreview(origin)) return origin;
   }
   return Deno.env.get('ALLOWED_ORIGIN') || ALLOWED_ORIGINS[0];
 }

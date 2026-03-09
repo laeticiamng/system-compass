@@ -6,6 +6,7 @@
 
 import { Navigate } from "react-router-dom";
 import { RequireAdmin } from "@/components/RequireAdmin";
+import { RequireAuth } from "@/components/RequireAuth";
 
 // Eagerly loaded pages
 import Index from "@/pages/Index";
@@ -110,7 +111,7 @@ export const learningRoutes = [
 ];
 
 export const userRoutes = [
-  { path: "dashboard", element: <LazyDashboard /> },
+  { path: "dashboard", element: <RequireAuth><LazyDashboard /></RequireAuth> },
   { path: "usage", element: <LazyUsage /> },
   { path: "settings/notifications", element: <LazyNotificationSettings /> },
   { path: "family-workspace", element: <LazyFamilyWorkspace /> },
