@@ -316,7 +316,7 @@ export function Header() {
           {/* Mobile Menu - only visible on mobile (sidebar handles desktop) */}
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="lg:hidden h-9 w-9 sm:h-8 sm:w-8 flex-shrink-0">
+              <Button variant="ghost" size="icon" className="xl:hidden h-9 w-9 sm:h-8 sm:w-8 flex-shrink-0">
                 <Menu className="w-5 h-5" />
               </Button>
             </SheetTrigger>
