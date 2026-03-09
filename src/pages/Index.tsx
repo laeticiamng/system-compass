@@ -175,8 +175,8 @@ export default function Index() {
               <span className="text-sm">{t('landing.hero.statsLanguages', 'langues')}</span>
             </div>
             <div className="text-center">
-              <span className="block text-3xl font-bold text-foreground">6</span>
-              <span className="text-sm">{t('landing.hero.statsSystems', 'profils d\'expatrié')}</span>
+              <span className="block text-3xl font-bold text-foreground">200+</span>
+              <span className="text-sm">{t('landing.hero.statsIndicators', 'indicateurs par pays')}</span>
             </div>
           </motion.div>
           <TrustBadges />
