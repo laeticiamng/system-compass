@@ -708,8 +708,10 @@ function sanitizeContext(obj: Record<string, unknown>, depth = 0): Record<string
 // Main handler
 serve(async (req) => {
   if (req.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
+    return handleCorsPreflightRequest(req);
   }
+
+  const corsHeaders = getCorsHeaders(req);
 
   const startTime = Date.now();
 

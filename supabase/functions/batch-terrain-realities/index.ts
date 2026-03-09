@@ -245,8 +245,10 @@ async function processCountriesInBackground(
 
 serve(async (req) => {
   if (req.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
+    return handleCorsPreflightRequest(req);
   }
+
+  const corsHeaders = getCorsHeaders(req);
 
   try {
     const { language = "fr", onlyMissing = true, limit = 38 } = await req.json();
