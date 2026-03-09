@@ -5,8 +5,12 @@ import { motion } from 'framer-motion';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
-import { Stethoscope, Globe, FileText, CheckCircle2 } from 'lucide-react';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+import { Stethoscope, Globe, FileText, CheckCircle2, Calculator, Users, Bell } from 'lucide-react';
 import { HealthcareCountryOverview } from '@/components/healthcare/HealthcareCountryOverview';
+import { HealthcareTaxCalculator } from '@/components/healthcare/HealthcareTaxCalculator';
+import { HealthcareCommunity } from '@/components/healthcare/HealthcareCommunity';
+import { HealthcareProceduralUpdates } from '@/components/healthcare/HealthcareProceduralUpdates';
 import { useAllHealthcareCountries } from '@/hooks/useHealthcareData';
 
 const HEALTHCARE_COUNTRIES = [
@@ -30,7 +34,7 @@ export default function Healthcare() {
         <meta name="description" content={t('healthcare.seo.description', 'Guide complet pour les professionnels de santé : reconnaissance de diplôme, autorisations d\'exercer, protection sociale et checklist documents par pays.')} />
       </Helmet>
 
-      <div className="container max-w-4xl mx-auto py-8 px-4 space-y-8">
+      <div className="container max-w-5xl mx-auto py-8 px-4 space-y-8">
         {/* Hero */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -91,16 +95,51 @@ export default function Healthcare() {
           </Card>
         </motion.div>
 
-        {/* Country healthcare overview */}
+        {/* Tabbed content */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <HealthcareCountryOverview 
-            countryId={selectedCountry} 
-            countryName={country.name} 
-          />
+          <Tabs defaultValue="procedures" className="w-full">
+            <TabsList className="grid w-full grid-cols-4">
+              <TabsTrigger value="procedures" className="gap-1.5 text-xs">
+                <FileText className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">{t('healthcare.tabs.procedures', 'Procédures')}</span>
+              </TabsTrigger>
+              <TabsTrigger value="tax" className="gap-1.5 text-xs">
+                <Calculator className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">{t('healthcare.tabs.tax', 'Simulateur')}</span>
+              </TabsTrigger>
+              <TabsTrigger value="community" className="gap-1.5 text-xs">
+                <Users className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">{t('healthcare.tabs.community', 'Réseau')}</span>
+              </TabsTrigger>
+              <TabsTrigger value="updates" className="gap-1.5 text-xs">
+                <Bell className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">{t('healthcare.tabs.updates', 'Alertes')}</span>
+              </TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="procedures">
+              <HealthcareCountryOverview
+                countryId={selectedCountry}
+                countryName={country.name}
+              />
+            </TabsContent>
+
+            <TabsContent value="tax">
+              <HealthcareTaxCalculator />
+            </TabsContent>
+
+            <TabsContent value="community">
+              <HealthcareCommunity />
+            </TabsContent>
+
+            <TabsContent value="updates">
+              <HealthcareProceduralUpdates countryId={selectedCountry} />
+            </TabsContent>
+          </Tabs>
         </motion.div>
       </div>
     </>
