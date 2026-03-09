@@ -80,7 +80,7 @@ export default function Index() {
       ]} />
       <div className="min-h-screen bg-background overflow-x-hidden">
         {/* ========== HERO SECTION ========== */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
+      <section className="relative min-h-[80vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden pt-16 sm:pt-20">
         {/* Background effects */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,hsl(var(--primary)/0.15)_0%,transparent_50%)]" />
@@ -99,10 +99,10 @@ export default function Index() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8"
+            className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 border border-primary/20 mb-6 sm:mb-8"
           >
-            <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-sm text-primary font-medium">{t('landing.hero.badge', '100% gratuit pour commencer')}</span>
+            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
+            <span className="text-xs sm:text-sm text-primary font-medium">{t('landing.hero.badge', '100% gratuit pour commencer')}</span>
           </motion.div>
 
           {/* Titre accrocheur */}
@@ -134,24 +134,24 @@ export default function Index() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full sm:w-auto px-4 sm:px-0"
           >
             <Button
               size="lg"
               onClick={() => navigate('/quick-test')}
-              className="h-14 px-8 text-lg rounded-full gap-3 bg-primary hover:bg-primary/90 shadow-lg shadow-primary/25"
+              className="h-12 sm:h-14 px-5 sm:px-8 text-base sm:text-lg rounded-full gap-2 sm:gap-3 bg-primary hover:bg-primary/90 shadow-lg shadow-primary/25 w-full sm:w-auto"
             >
-              <Zap className="w-5 h-5" />
-              {t('landing.hero.ctaPrimary', 'Trouver mon pays idéal — gratuit')}
-              <ArrowRight className="w-5 h-5" />
+              <Zap className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+              <span className="truncate">{t('landing.hero.ctaPrimary', 'Trouver mon pays idéal — gratuit')}</span>
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
             </Button>
             <Button
               variant="outline"
               size="lg"
               onClick={() => navigate('/countries')}
-              className="h-14 px-8 text-lg rounded-full gap-3"
+              className="h-12 sm:h-14 px-5 sm:px-8 text-base sm:text-lg rounded-full gap-2 sm:gap-3 w-full sm:w-auto"
             >
-              <Globe className="w-5 h-5" />
+              <Globe className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
               {t('landing.hero.ctaSecondary', 'Explorer les pays')}
             </Button>
           </motion.div>
@@ -164,19 +164,19 @@ export default function Index() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.8, duration: 0.6 }}
-            className="flex flex-wrap justify-center gap-8 mt-10 text-muted-foreground"
+            className="flex flex-wrap justify-center gap-5 sm:gap-8 mt-8 sm:mt-10 text-muted-foreground"
           >
             <div className="text-center">
-              <span className="block text-3xl font-bold text-foreground">80+</span>
-              <span className="text-sm">{t('landing.hero.statsCountries', 'pays analysés')}</span>
+              <span className="block text-2xl sm:text-3xl font-bold text-foreground">80+</span>
+              <span className="text-xs sm:text-sm">{t('landing.hero.statsCountries', 'pays analysés')}</span>
             </div>
             <div className="text-center">
-              <span className="block text-3xl font-bold text-foreground">13</span>
-              <span className="text-sm">{t('landing.hero.statsLanguages', 'langues')}</span>
+              <span className="block text-2xl sm:text-3xl font-bold text-foreground">13</span>
+              <span className="text-xs sm:text-sm">{t('landing.hero.statsLanguages', 'langues')}</span>
             </div>
             <div className="text-center">
-              <span className="block text-3xl font-bold text-foreground">200+</span>
-              <span className="text-sm">{t('landing.hero.statsIndicators', 'indicateurs par pays')}</span>
+              <span className="block text-2xl sm:text-3xl font-bold text-foreground">200+</span>
+              <span className="text-xs sm:text-sm">{t('landing.hero.statsIndicators', 'indicateurs par pays')}</span>
             </div>
           </motion.div>
           <TrustBadges />
@@ -485,7 +485,7 @@ export default function Index() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="relative overflow-hidden rounded-3xl border border-emerald-500/20 bg-gradient-to-br from-emerald-500/5 via-background to-emerald-500/5 p-8 md:p-12"
+              className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-emerald-500/20 bg-gradient-to-br from-emerald-500/5 via-background to-emerald-500/5 p-5 sm:p-8 md:p-12"
             >
               {/* Decorative background */}
               <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
@@ -637,11 +637,11 @@ export default function Index() {
             <Button
               size="lg"
               onClick={() => navigate('/quick-test')}
-              className="h-16 px-12 text-lg rounded-full gap-3"
+              className="h-14 sm:h-16 px-8 sm:px-12 text-base sm:text-lg rounded-full gap-2 sm:gap-3"
             >
-              <Compass className="w-6 h-6" />
+              <Compass className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
               {t('landing.cta.button', 'Commencer maintenant')}
-              <ArrowRight className="w-6 h-6" />
+              <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
             </Button>
             <p className="text-sm text-muted-foreground mt-4">{t('landing.cta.freeNotice', 'Gratuit, sans carte bancaire')}</p>
           </motion.div>

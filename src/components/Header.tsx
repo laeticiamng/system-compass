@@ -274,9 +274,7 @@ export function Header() {
             )}
           </nav>
 
-          <div className="hidden sm:block">
-            <GlobalSearch />
-          </div>
+          <GlobalSearch />
           {user && <NotificationBell />}
           {user && <span className="hidden sm:inline"><UserHistoryPanel /></span>}
           {user && <GamificationProgressBar className="hidden md:flex" />}

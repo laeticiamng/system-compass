@@ -227,10 +227,10 @@ export default function CompareUnified() {
         <meta name="twitter:description" content="Comparez jusqu'à 5 pays sur fiscalité, coût de la vie et qualité de vie." />
         <meta name="twitter:image" content={SITE_CONFIG.ogImageUrl} />
       </Helmet>
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-3 sm:px-4">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="font-display text-3xl md:text-4xl font-bold mb-4">
+        <div className="text-center mb-6 sm:mb-8">
+          <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
             {t('compare.title')}
           </h1>
           <p className="text-muted-foreground max-w-xl mx-auto text-sm md:text-base">
@@ -274,7 +274,7 @@ export default function CompareUnified() {
         </div>
 
         {/* Country Selector */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-6">
           {selectedIds.length < maxAllowed && (
             <Select onValueChange={addCountry}>
               <SelectTrigger className="w-full sm:w-64">
@@ -459,11 +459,11 @@ export default function CompareUnified() {
                   {t('compare.keyMetrics')}
                 </h2>
               </div>
-              <div className="overflow-x-auto">
+              <div className="overflow-x-auto mobile-scroll-x">
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead className="w-40 md:w-48 text-xs md:text-sm">{t('common.metric', 'Métrique')}</TableHead>
+                      <TableHead className="w-28 sm:w-40 md:w-48 text-xs md:text-sm whitespace-nowrap">{t('common.metric', 'Métrique')}</TableHead>
                       {selectedCountries.map(c => (
                         <TableHead key={c.id} className="text-center min-w-24 md:min-w-32 text-xs md:text-sm">
                           <span className="hidden md:inline">{getFlagEmoji(c.iso2)} {c.name}</span>
@@ -637,7 +637,7 @@ export default function CompareUnified() {
             <p className="text-sm text-muted-foreground mb-6 max-w-md mx-auto">
               {t('compare.helpText', 'Utilisez le menu ci-dessus pour ajouter des pays et comparer leur fiscalité, qualité de vie, risques et opportunités.')}
             </p>
-            <div className="flex flex-wrap justify-center gap-2">
+            <div className="flex flex-wrap justify-center gap-2 px-2">
               <p className="text-xs text-muted-foreground w-full mb-2">{t('compare.popularComparisons', 'Comparaisons populaires :')}</p>
               {[
                 { label: '🇫🇷 France vs 🇵🇹 Portugal', ids: ['portugal', 'france'] },

@@ -245,7 +245,7 @@ const Pricing = () => {
                   <Card
                     className={cn(
                       "relative flex flex-col h-full transition-all duration-300 hover:shadow-[0_0_40px_hsl(var(--primary)/0.1)]",
-                      plan.highlighted && "border-primary shadow-xl scale-105 z-10 bg-gradient-to-b from-primary/5 to-background",
+                      plan.highlighted && "border-primary shadow-xl sm:scale-105 z-10 bg-gradient-to-b from-primary/5 to-background",
                       isCurrent && "ring-2 ring-primary"
                     )}
                   >
@@ -383,10 +383,10 @@ const Pricing = () => {
                         </div>
                       </div>
                       
-                      <div className="grid grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                         {enterpriseFeatures.map((feature, i) => (
                           <div key={i} className="flex items-center gap-2">
-                            <Check className="w-4 h-4 text-green-400" />
+                            <Check className="w-4 h-4 text-green-400 flex-shrink-0" />
                             <span className="text-sm text-slate-200">{feature}</span>
                           </div>
                         ))}
@@ -421,14 +421,15 @@ const Pricing = () => {
                 {t('pricing.comparison.title', 'Comparer les fonctionnalités')}
               </h2>
               
-              <div className="overflow-x-auto rounded-2xl border border-border/50">
+              {/* Desktop table view */}
+              <div className="hidden sm:block overflow-x-auto rounded-2xl border border-border/50">
                 <table className="w-full border-collapse">
                   <thead>
                     <tr className="border-b bg-muted/50">
-                      <th className="text-left py-4 px-6">{t('pricing.comparison.feature', 'Fonctionnalité')}</th>
-                      <th className="text-center py-4 px-4">{t('pricing.freeName', 'Gratuit')}</th>
-                      <th className="text-center py-4 px-4 bg-primary/5">{t('pricing.premiumName', 'Premium')}</th>
-                      <th className="text-center py-4 px-4">{t('pricing.proName', 'Pro / B2B')}</th>
+                      <th className="text-left py-4 px-4 sm:px-6">{t('pricing.comparison.feature', 'Fonctionnalité')}</th>
+                      <th className="text-center py-4 px-3 sm:px-4">{t('pricing.freeName', 'Gratuit')}</th>
+                      <th className="text-center py-4 px-3 sm:px-4 bg-primary/5">{t('pricing.premiumName', 'Premium')}</th>
+                      <th className="text-center py-4 px-3 sm:px-4">{t('pricing.proName', 'Pro / B2B')}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -448,20 +449,57 @@ const Pricing = () => {
                       { name: t('pricing.feature.traceOS', 'Suivi institutionnel'), free: false, premium: false, pro: true },
                     ].map((row, i) => (
                       <tr key={i} className="border-b hover:bg-muted/30 transition-colors">
-                        <td className="py-4 px-6 text-sm">{row.name}</td>
-                        <td className="py-4 px-4 text-center">
+                        <td className="py-3 sm:py-4 px-4 sm:px-6 text-sm">{row.name}</td>
+                        <td className="py-3 sm:py-4 px-3 sm:px-4 text-center">
                           {row.free ? <Check className="w-5 h-5 text-green-500 mx-auto" /> : <X className="w-5 h-5 text-muted-foreground/30 mx-auto" />}
                         </td>
-                        <td className="py-4 px-4 text-center bg-primary/5">
+                        <td className="py-3 sm:py-4 px-3 sm:px-4 text-center bg-primary/5">
                           {row.premium ? <Check className="w-5 h-5 text-green-500 mx-auto" /> : <X className="w-5 h-5 text-muted-foreground/30 mx-auto" />}
                         </td>
-                        <td className="py-4 px-4 text-center">
+                        <td className="py-3 sm:py-4 px-3 sm:px-4 text-center">
                           {row.pro ? <Check className="w-5 h-5 text-green-500 mx-auto" /> : <X className="w-5 h-5 text-muted-foreground/30 mx-auto" />}
                         </td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
+              </div>
+
+              {/* Mobile card-based comparison view */}
+              <div className="sm:hidden space-y-3">
+                {[
+                  { name: t('pricing.feature.basicCountries', 'Fiches pays basiques'), free: true, premium: true, pro: true },
+                  { name: t('pricing.feature.riskIndicators', 'Indicateurs de risque'), free: true, premium: true, pro: true },
+                  { name: t('pricing.feature.pyramidCommon', 'Analyse de base'), free: true, premium: true, pro: true },
+                  { name: t('pricing.feature.countryVariants', 'Détails par pays'), free: true, premium: true, pro: true },
+                  { name: t('pricing.feature.profilesSuccess', 'Profils qui réussissent'), free: true, premium: true, pro: true },
+                  { name: t('pricing.feature.surprises', 'Ce qui surprend les nouveaux'), free: true, premium: true, pro: true },
+                  { name: t('pricing.feature.systemAnalysis', 'Analyses approfondies'), free: false, premium: true, pro: true },
+                  { name: t('pricing.feature.governance', 'Vie sur place & terrain'), free: false, premium: true, pro: true },
+                  { name: t('pricing.feature.projectAnalysis', 'Analyse projet personnalisée'), free: false, premium: false, pro: true },
+                  { name: t('pricing.feature.blindSpots', 'Points aveugles spécifiques'), free: false, premium: false, pro: true },
+                  { name: t('pricing.feature.latentModule', 'Analyse des risques cachés'), free: false, premium: false, pro: true },
+                  { name: t('pricing.feature.irreversaModule', 'Points de non-retour'), free: false, premium: false, pro: true },
+                  { name: t('pricing.feature.traceOS', 'Suivi institutionnel'), free: false, premium: false, pro: true },
+                ].map((row, i) => (
+                  <div key={i} className="rounded-xl border border-border/50 p-3">
+                    <p className="text-sm font-medium mb-2">{row.name}</p>
+                    <div className="flex items-center gap-4 text-xs">
+                      <span className="flex items-center gap-1">
+                        {row.free ? <Check className="w-4 h-4 text-green-500" /> : <X className="w-4 h-4 text-muted-foreground/30" />}
+                        <span className="text-muted-foreground">{t('pricing.freeName', 'Gratuit')}</span>
+                      </span>
+                      <span className="flex items-center gap-1">
+                        {row.premium ? <Check className="w-4 h-4 text-green-500" /> : <X className="w-4 h-4 text-muted-foreground/30" />}
+                        <span className="text-primary font-medium">{t('pricing.premiumName', 'Premium')}</span>
+                      </span>
+                      <span className="flex items-center gap-1">
+                        {row.pro ? <Check className="w-4 h-4 text-green-500" /> : <X className="w-4 h-4 text-muted-foreground/30" />}
+                        <span className="text-muted-foreground">{t('pricing.proName', 'Pro')}</span>
+                      </span>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </AnimatedSection>
