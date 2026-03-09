@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Stethoscope, Globe, FileText, CheckCircle2, Calculator, Users, Bell } from 'lucide-react';
+import { PageMeta } from '@/components/seo/PageMeta';
 import { HealthcareCountryOverview } from '@/components/healthcare/HealthcareCountryOverview';
 import { HealthcareTaxCalculator } from '@/components/healthcare/HealthcareTaxCalculator';
 import { HealthcareCommunity } from '@/components/healthcare/HealthcareCommunity';
