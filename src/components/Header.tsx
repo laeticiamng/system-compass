@@ -159,7 +159,7 @@ export function Header() {
 
         <div className="flex items-center gap-0.5 sm:gap-1 md:gap-2 min-w-0 flex-1 justify-end">
           {/* Desktop Nav - hide on smaller screens */}
-          <nav className="hidden lg:flex items-center gap-0.5">
+          <nav className="hidden xl:flex items-center gap-0.5 overflow-hidden">
             {/* Main nav items */}
             {allNavItems.map((item) => {
               const Icon = item.icon;
@@ -280,7 +280,7 @@ export function Header() {
           {user && <span className="hidden sm:inline"><UserHistoryPanel /></span>}
           {user && <GamificationProgressBar className="hidden md:flex" />}
           <ThemeToggle />
-          <div className="hidden lg:block">
+          <div className="hidden xl:block">
             <LanguageSwitcher />
           </div>
 
@@ -300,14 +300,14 @@ export function Header() {
                   className="gap-1 h-8 px-2"
                 >
                   <LogOut className="w-3.5 h-3.5" />
-                  <span className="hidden lg:inline text-xs">{t('auth.logout')}</span>
+                  <span className="hidden xl:inline text-xs">{t('auth.logout')}</span>
                 </Button>
               </div>
             ) : (
               <Link to="/auth">
                 <Button variant="outline" size="sm" className="gap-1 h-8 px-2">
                   <LogIn className="w-3.5 h-3.5" />
-                  <span className="hidden lg:inline text-xs">{t('auth.login')}</span>
+                  <span className="hidden xl:inline text-xs">{t('auth.login')}</span>
                 </Button>
               </Link>
             )}
@@ -316,7 +316,7 @@ export function Header() {
           {/* Mobile Menu - only visible on mobile (sidebar handles desktop) */}
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="lg:hidden h-9 w-9 sm:h-8 sm:w-8 flex-shrink-0">
+              <Button variant="ghost" size="icon" className="xl:hidden h-9 w-9 sm:h-8 sm:w-8 flex-shrink-0">
                 <Menu className="w-5 h-5" />
               </Button>
             </SheetTrigger>
