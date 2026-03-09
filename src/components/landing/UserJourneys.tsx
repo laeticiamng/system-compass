@@ -10,7 +10,7 @@ import { useAnalytics } from '@/hooks/useAnalytics';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import { Globe, Zap, GitCompareArrows, ArrowRight } from 'lucide-react';
+import { Globe, Zap, GitCompareArrows, ArrowRight, Stethoscope } from 'lucide-react';
 
 const journeys = [
   {
