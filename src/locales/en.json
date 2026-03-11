@@ -4027,6 +4027,8 @@
     "displayNamePlaceholder": "How do you want to be called?",
     "loginButton": "Sign in",
     "signupButton": "Sign up",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
     "logout": "Sign out",
     "signupSuccess": "Account created successfully! 🎉",
     "redirecting": "Redirecting to quick test...",
@@ -5992,6 +5994,29 @@
     "thailand": "Thailand"
   },
   "subscription": {
+    "tiers": {
+      "free": {
+        "name": "Free",
+        "feature1": "Overview of 80+ countries",
+        "feature2": "Profile quiz",
+        "feature3": "Country details"
+      },
+      "premium": {
+        "name": "Premium",
+        "feature1": "Advanced system analysis",
+        "feature2": "Governance & Ground truth",
+        "feature3": "Unlimited comparison",
+        "feature4": "PDF export",
+        "feature5": "Tax calculator"
+      },
+      "pro": {
+        "name": "Pro / B2B",
+        "feature1": "Everything in Premium",
+        "feature2": "Custom project analysis",
+        "feature3": "Multi-user access",
+        "feature4": "Dedicated support"
+      }
+    },
     "successTitle": "Subscription Activated!",
     "successSubtitle": "Welcome to the complete experience",
     "successDescription": "Thank you for your trust! You now have access to all premium features.",
