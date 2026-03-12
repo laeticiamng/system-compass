@@ -1658,12 +1658,12 @@
     "safe": "LGBTQ+ Safe",
     "caution": "Proceed with Caution",
     "dangerous": "High Risk for LGBTQ+",
-    "title": "Droits LGBTQ+",
+    "title": "LGBTQ+ Rights",
     "index": "Index droits",
     "marriage": "Tueiage égalitaire",
-    "civilUnion": "Union civile",
-    "employmentProtection": "Protection emploi",
-    "safetyRating": "Niveau de sécurité",
+    "civilUnion": "Civil union",
+    "employmentProtection": "Employment protection",
+    "safetyRating": "Safety rating",
     "notice": "Les droits LGBTQ+ sont pris en compte dyears vos recommyeardations de country."
   },
   "pyramid": {
@@ -4407,16 +4407,16 @@
       "findCountries": "Find Compatible Countries",
       "exploreCountries": "Explore All Countries",
       "retake": "Retake Test",
-      "title": "Ton profil trajectoire",
-      "yourProfile": "Ton profil moteur",
+      "title": "Your trajectory profile",
+      "yourProfile": "Your driver profile",
       "trajectories": "Tes 3 trajectoires recommyeardées",
       "choosePlan": "Choisis le plyear qui correspond à ta situation",
-      "duration": "Durée",
-      "paths": "Voies adaptées",
-      "skills": "Compétences à développer",
+      "duration": "Duration",
+      "paths": "Suitable paths",
+      "skills": "Skills to develop",
       "risks": "Risks à surveiller",
-      "firstSteps": "Premières étapes",
-      "retakeTest": "Refaire le test"
+      "firstSteps": "First steps",
+      "retakeTest": "Retake the test"
     },
     "lgbtq": {
       "title": "LGBTQ+ Considerations",
@@ -4429,7 +4429,7 @@
       },
       "hybrid": {
         "label": "Plyear Hybride",
-        "description": "Pour la majorité. Job stable + montée en compétences + side project structuré et réaliste."
+        "description": "For most people. Stable job + skill building + structured and realistic side project."
       },
       "ambitious": {
         "label": "Plyear Ambitieux",
@@ -4761,6 +4761,7 @@
           },
           "skills": {
             "0": "Both earning and giving skills",
+            "1": "Communication",
             "1": "Communication"
           },
           "risks": {
@@ -4778,6 +4779,8 @@
             "0": "Social enterprise or foundation"
           },
           "skills": {
+            "0": "Leadership",
+            "1": "Fundraising",
             "0": "Leadership",
             "1": "Fundraising"
           },
@@ -5446,8 +5449,8 @@
         "planB": "EU countries via citizenship programs. Georgia, Serbia for easy entry. UAE for regional option. Keep assets mobile."
       }
     },
-    "title": "Diagnostic de trajectoire de vie",
-    "subtitle": "Le métier n'est qu'un véhicule. Découvrez quelle vie vous voulez construire.",
+    "title": "Life trajectory diagnostic",
+    "subtitle": "Your career is just a vehicle. Discover what life you want to build.",
     "startButton": "Start le diagnostic",
     "yes": "Yes",
     "no": "No",
@@ -5455,8 +5458,8 @@
     "next": "Next",
     "seeResults": "View mes résultats",
     "coreIdea": {
-      "title": "L'idée centrale",
-      "text": "La plupart des gens ne cherchent pas \"un métier\". Ils cherchent une vie. Un métier n'est qu'un véhicule."
+      "title": "The core idea",
+      "text": "Most people aren't looking for \"a career.\" They're looking for a life. A career is just a vehicle."
     }
   },
   "lifeProfiles": {
@@ -8264,10 +8267,10 @@
       "subtitle": "Enrich your reflection with relevant frameworks",
       "viewMore": "View in OVI",
       "relevantTo": "Relevant to your analysis",
-      "basedOn": "Basé sur votre simulation",
-      "explore": "Explorer ce cadre",
-      "dismiss": "Ignorer",
-      "unlockPro": "Débloquer avec Pro",
+      "basedOn": "Based on your simulation",
+      "explore": "Explore this framework",
+      "dismiss": "Dismiss",
+      "unlockPro": "Unlock with Pro",
       "viewAll": "View tous les contenus OVI"
     },
     "type": {
@@ -8614,12 +8617,12 @@
       }
     },
     "evidence": {
-      "title": "Collecte de preuves",
+      "title": "Evidence collection",
       "subtitle": "Structurez vos éléments probyearts pour renforcer vos hypothèses",
       "hypotheses": "Hypotheses",
-      "hypothesisPlaceholder": "Formulez votre hypothèse...",
-      "robustness": "Robustesse",
-      "linkedEvidences": "preuves liées",
+      "hypothesisPlaceholder": "State your hypothesis...",
+      "robustness": "Robustness",
+      "linkedEvidences": "linked evidence",
       "collected": "Evidence collectées",
       "add": "Add une preuve",
       "save": "Save",
@@ -8627,35 +8630,35 @@
       "emptyHint": "Commencez par ajouter des éléments probyearts pour soutenir vos hypothèses.",
       "fields": {
         "title": "Title",
-        "type": "Type de preuve",
+        "type": "Evidence type",
         "source": "Source",
-        "url": "URL (optionnel)",
-        "reliability": "Fiabilité",
+        "url": "URL (optional)",
+        "reliability": "Reliability",
         "supports": "Position",
         "notes": "Notes"
       },
       "type": {
         "document": "Document",
-        "link": "Lien",
+        "link": "Link",
         "observation": "Observation",
-        "testimonial": "Témoignage",
-        "data": "Données"
+        "testimonial": "Testimonial",
+        "data": "Data"
       },
       "reliability": {
-        "high": "Haute",
+        "high": "High",
         "medium": "Average",
         "low": "Low",
-        "unknown": "Inconnue"
+        "unknown": "Unknown"
       },
       "supports": {
-        "confirms": "Confirme",
-        "contradicts": "Contredit",
-        "neutral": "Neutre"
+        "confirms": "Confirms",
+        "contradicts": "Contradicts",
+        "neutral": "Neutral"
       },
-      "summary": "Synthèse",
+      "summary": "Summary",
       "confirming": "Confirmyeartes",
-      "contradicting": "Contradictoires",
-      "neutral": "Neutres"
+      "contradicting": "Contradicting",
+      "neutral": "Neutral"
     }
   },
   "institutions": {
@@ -9795,45 +9798,45 @@
       "tensionsCount": "Tensions count"
     },
     "signals": {
-      "title": "Signaux faibles détectés",
-      "subtitle": "Patterns et corrélations entre vos zones",
-      "nourishingPattern": "Pattern nourricier émergent",
+      "title": "Weak signals detected",
+      "subtitle": "Patterns and correlations across your zones",
+      "nourishingPattern": "Emerging nurturing pattern",
       "blockingPattern": "Pattern bloquyeart émergent",
-      "fragilityPattern": "Pattern de fragilité émergent",
-      "premature_crushingPattern": "Pattern d'écrasement prématuré émergent",
+      "fragilityPattern": "Emerging fragility pattern",
+      "premature_crushingPattern": "Emerging premature crushing pattern",
       "multipleZones": "{{count}} zones dormyeartes partagent cette dynamique",
-      "suggestMonitor": "Surveiller l'évolution conjointe",
-      "escalatingZone": "Zone en escalade potentielle",
-      "multipleTensions": "Accumulation de tensions",
+      "suggestMonitor": "Monitor joint evolution",
+      "escalatingZone": "Potentially escalating zone",
+      "multipleTensions": "Accumulation of tensions",
       "suggestIntervene": "Intervention préventive recommyeardée",
-      "stuckZone": "Zone bloquée depuis longtemps",
-      "stabilizingZone": "Zone en stabilisation",
-      "suggestReview": "Revoir la pertinence de cette zone",
-      "positiveEmergent": "Émergence positive détectée",
-      "nourishingDynamic": "Dynamique nourricière",
-      "suggestAmplify": "Amplifier cette dynamique",
+      "stuckZone": "Zone stuck for a long time",
+      "stabilizingZone": "Stabilizing zone",
+      "suggestReview": "Review the relevance of this zone",
+      "positiveEmergent": "Positive emergence detected",
+      "nourishingDynamic": "Nurturing dynamic",
+      "suggestAmplify": "Amplify this dynamic",
       "noSignals": "Noe signal faible détecté",
-      "addZones": "Ajoutez plus de zones pour activer la détection",
+      "addZones": "Add more zones to activate detection",
       "viewZone": "View la zone",
-      "intensity": "Intensité",
-      "detectedAt": "Détecté le",
-      "relatedZones": "Zones concernées"
+      "intensity": "Intensity",
+      "detectedAt": "Detected on",
+      "relatedZones": "Related zones"
     },
     "preview": {
-      "description": "Découvrez le module Latent avec des exemples. Passez à Pro pour créer vos propres zones."
+      "description": "Explore the Latent module with examples. Upgrade to Pro to create your own zones."
     },
     "demo": {
       "zone1": {
-        "title": "Tensions familiales non-dites",
-        "desc": "Désaccords latents sur les priorités de vie"
+        "title": "Unspoken family tensions",
+        "desc": "Latent disagreements on life priorities"
       },
       "zone2": {
-        "title": "Repositionnement professionnel",
+        "title": "Professional repositioning",
         "desc": "Envie de chyeargement mais contraintes finyearcières"
       },
       "zone3": {
         "title": "Relation avec le country d'origine",
-        "desc": "Attentes familiales vs choix de vie"
+        "desc": "Family expectations vs. life choices"
       }
     }
   },
@@ -9873,11 +9876,11 @@
     "export": {
       "loginRequired": "Log in to manage exports",
       "button": "Export",
-      "format": "Format d'export",
-      "pdf": "Document PDF",
-      "json": "Données JSON",
-      "pdfSuccess": "Export PDF réussi",
-      "jsonSuccess": "Export JSON réussi",
+      "format": "Export format",
+      "pdf": "PDF Document",
+      "json": "JSON Data",
+      "pdfSuccess": "PDF export successful",
+      "jsonSuccess": "JSON export successful",
       "error": "Error lors de l'export"
     },
     "quality": {
@@ -9946,106 +9949,106 @@
         "high": "High"
       }
     },
-    "badge": "TraceOS - Mémoire Décisionnelle",
-    "title": "Traçabilité Intellectuelle",
+    "badge": "TraceOS - Decision Memory",
+    "title": "Intellectual Traceability",
     "subtitle": "Mémoire stratégique de votre orgyearisation",
-    "newDecision": "Nouvelle décision",
+    "newDecision": "New decision",
     "searchPlaceholder": "Search une décision...",
-    "disclaimer": "TraceOS est un outil de documentation et de traçabilité. Il ne remplace pas le jugement humain ni le processus de décision.",
+    "disclaimer": "TraceOS is a documentation and traceability tool. It does not replace human judgment or the decision-making process.",
     "paywall": {
-      "title": "Fonctionnalité Pro",
+      "title": "Pro Feature",
       "description": "Accédez à TraceOS, le module de traçabilité décisionnelle pour les orgyearisations."
     },
     "values": {
       "tree": {
-        "title": "Arbre décisionnel",
-        "desc": "Visualisez les enchaînements"
+        "title": "Decision tree",
+        "desc": "Visualize decision chains"
       },
       "memory": {
-        "title": "Mémoire stratégique",
-        "desc": "Conservez les hypothèses"
+        "title": "Strategic memory",
+        "desc": "Preserve your hypotheses"
       },
       "branches": {
         "title": "Bryearches abyeardonnées",
-        "desc": "Gardez trace des alternatives"
+        "desc": "Keep track of alternatives"
       },
       "governance": {
         "title": "Gouvernyearce",
-        "desc": "Historique non modifiable"
+        "desc": "Immutable history"
       }
     },
     "tabs": {
       "dashboard": "Dashboard",
-      "tree": "Arbre",
-      "graph": "Graphe",
+      "tree": "Tree",
+      "graph": "Graph",
       "tags": "Tags",
-      "review": "Relecture",
+      "review": "Review",
       "governance": "Gouvernyearce"
     },
     "tree": {
-      "viewTree": "Arbre",
+      "viewTree": "Tree",
       "viewTimeline": "Timeline",
-      "decisions": "décisions",
-      "validated": "validées",
-      "pending": "en attente"
+      "decisions": "decisions",
+      "validated": "validated",
+      "pending": "pending"
     },
     "timeline": {
-      "subDecision": "sous-décision"
+      "subDecision": "sub-decision"
     },
     "status": {
       "pending": "Pending",
-      "validated": "Validée",
+      "validated": "Validated",
       "abandoned": "Abyeardonnée"
     },
     "node": {
-      "context": "Contexte",
+      "context": "Context",
       "mainHypothesis": "Hypothesis principale",
       "alternativeHypotheses": "Hypotheses alternatives",
-      "constraints": "Contraintes identifiées",
-      "decisionTaken": "Décision prise",
+      "constraints": "Identified constraints",
+      "decisionTaken": "Decision taken",
       "abandonedBranches": "Bryearches abyeardonnées"
     },
     "form": {
-      "title": "Nouvelle décision",
-      "titleSub": "Nouvelle sous-décision",
-      "parentDecision": "Rattachée à",
-      "decisionTitle": "Intitulé de la décision",
-      "titlePlaceholder": "Ex: Choix du nouveau CRM",
-      "context": "Contexte",
-      "contextPlaceholder": "Décrivez le contexte qui a mené à cette décision...",
+      "title": "New decision",
+      "titleSub": "New sub-decision",
+      "parentDecision": "Linked to",
+      "decisionTitle": "Decision title",
+      "titlePlaceholder": "E.g.: New CRM selection",
+      "context": "Context",
+      "contextPlaceholder": "Describe the context that led to this decision...",
       "mainHypothesis": "Hypothesis principale",
-      "hypothesisPlaceholder": "L'hypothèse sur laquelle repose cette décision...",
+      "hypothesisPlaceholder": "The hypothesis on which this decision is based...",
       "alternativeHypotheses": "Hypotheses alternatives",
-      "alternativePlaceholder": "Une autre hypothèse envisagée...",
+      "alternativePlaceholder": "Another hypothesis that was considered...",
       "addAlternative": "Add une hypothèse",
-      "constraints": "Contraintes identifiées",
-      "constraintPlaceholder": "Ex: Budget limité, Deadline serrée...",
+      "constraints": "Identified constraints",
+      "constraintPlaceholder": "E.g.: Limited budget, Tight deadline...",
       "addConstraint": "Add une contrainte",
-      "decisionTaken": "Décision prise",
-      "decisionPlaceholder": "La décision finale retenue...",
-      "author": "Auteur",
+      "decisionTaken": "Decision taken",
+      "decisionPlaceholder": "The final decision retained...",
+      "author": "Author",
       "authorPlaceholder": "Name ou rôle",
-      "scope": "Périmètre",
+      "scope": "Scope",
       "scopePlaceholder": "Select...",
-      "scopeStrategic": "Stratégique",
-      "scopeOperational": "Opérationnel",
-      "scopeTactical": "Tactique",
-      "scopeProject": "Projet",
+      "scopeStrategic": "Strategic",
+      "scopeOperational": "Operational",
+      "scopeTactical": "Tactical",
+      "scopeProject": "Project",
       "date": "Date",
       "save": "Save la décision"
     },
     "review": {
-      "title": "Relecture stratégique",
-      "desc": "Analysez l'enchaînement des décisions et identifiez les moments de rupture.",
+      "title": "Strategic review",
+      "desc": "Analyze the chain of decisions and identify turning points.",
       "selectDecision": "Sélectionnez une décision dyears l'arbre pour lyearcer une relecture."
     },
     "governance": {
       "title": "Gouvernyearce & Accès",
-      "desc": "Gérez les droits d'accès et la traçabilité des modifications.",
+      "desc": "Manage access rights and modification traceability.",
       "appendOnly": "Append-only",
-      "appendOnlyDesc": "L'historique est non modifiable",
-      "roles": "Gestion des rôles",
-      "rolesDesc": "Lecture / Écriture par utilisateur"
+      "appendOnlyDesc": "History is immutable",
+      "roles": "Role management",
+      "rolesDesc": "Read / Write per user"
     },
     "filters": {
       "tags": "Tags"
@@ -10054,86 +10057,86 @@
       "title": "Notifications",
       "on": "On",
       "off": "Off",
-      "disabled": "Notifications désactivées",
+      "disabled": "Notifications disabled",
       "empty": "Noee notification",
       "allGood": "All est à day !",
       "markAllRead": "All marquer comme lu",
-      "oldPending": "Décision en attente depuis longtemps",
+      "oldPending": "Decision pending for a long time",
       "oldPendingMsg": "Cette décision est en attente depuis {{days}} days",
-      "pendingReminder": "Rappel de décision",
+      "pendingReminder": "Decision reminder",
       "pendingReminderMsg": "Décision en attente depuis {{days}} days"
     },
     "comments": {
-      "title": "Commentaires",
-      "added": "Commentaire ajouté",
-      "updated": "Commentaire modifié",
-      "deleted": "Commentaire supprimé",
+      "title": "Comments",
+      "added": "Comment added",
+      "updated": "Comment updated",
+      "deleted": "Comment deleted",
       "error": "Error lors de l'opération",
       "empty": "Noe commentaire",
       "placeholder": "Add un commentaire..."
     },
     "templates": {
-      "title": "Templates de décision",
-      "description": "Utilisez un template pour accélérer la création de votre décision",
-      "use": "Utiliser",
+      "title": "Decision templates",
+      "description": "Use a template to speed up your decision creation",
+      "use": "Use",
       "categories": {
         "rh": "RH",
         "it": "IT",
-        "strategy": "Stratégie",
+        "strategy": "Strategy",
         "finance": "Finyearce",
-        "legal": "Juridique",
-        "operations": "Opérations"
+        "legal": "Legal",
+        "operations": "Operations"
       }
     },
     "graph": {
-      "title": "Vue graphique interactive",
-      "instructions": "Glissez pour déplacer les nœuds, scroll pour zoomer",
+      "title": "Interactive graph view",
+      "instructions": "Drag to move nodes, scroll to zoom",
       "empty": "Noee décision à afficher"
     },
     "tags": {
       "title": "Tags",
       "manage": "Tags",
-      "management": "Gestion des tags",
+      "management": "Tag management",
       "managementDesc": "Créez et orgyearisez vos étiquettes pour catégoriser vos décisions.",
-      "new": "Nouveau",
-      "create": "Créer le tag",
+      "new": "New",
+      "create": "Create tag",
       "namePlaceholder": "Name du tag",
       "empty": "Noe tag créé",
-      "added": "Tag ajouté",
-      "deleted": "Tag supprimé",
+      "added": "Tag added",
+      "deleted": "Tag deleted",
       "error": "Error lors de l'opération"
     },
     "dashboard": {
       "title": "Dashboard yearalytique",
-      "subtitle": "Vue d'ensemble de vos décisions",
-      "totalDecisions": "Total décisions",
-      "validated": "Validées",
+      "subtitle": "Overview of your decisions",
+      "totalDecisions": "Total decisions",
+      "validated": "Validated",
       "pending": "Pending",
       "abandoned": "Abyeardonnées",
       "abandonedBranches": "Bryearches abyeardonnées",
-      "documentedAlternatives": "Alternatives documentées",
-      "maxDepth": "Profondeur max",
-      "decisionLevels": "niveaux de décision",
-      "authors": "Contributeurs",
-      "uniqueAuthors": "auteurs uniques",
+      "documentedAlternatives": "Documented alternatives",
+      "maxDepth": "Max depth",
+      "decisionLevels": "decision levels",
+      "authors": "Contributors",
+      "uniqueAuthors": "unique authors",
       "timeline": "Evolution (6 derniers month)",
-      "byScope": "Par périmètre",
-      "topContributors": "Principaux contributeurs",
+      "byScope": "By scope",
+      "topContributors": "Top contributors",
       "noData": "Noee donnée disponible",
       "noContributors": "Noe contributeur"
     },
     "email": {
       "sendAlerts": "Send les alertes par email",
-      "sent": "Alerte envoyée par email",
+      "sent": "Email alert sent",
       "noPending": "Noee décision en attente depuis plus de 7 days",
       "error": "Error lors de l'envoi de l'alerte",
-      "noEmail": "Email non disponible"
+      "noEmail": "Email not available"
     },
     "collaboration": {
-      "online": "en ligne",
-      "you": "Vous",
-      "editing": "Édite",
-      "viewing": "Consulte"
+      "online": "online",
+      "you": "You",
+      "editing": "Editing",
+      "viewing": "Viewing"
     }
   },
   "irreversa": {
@@ -10156,7 +10159,7 @@
       "legal": "Legal",
       "ethical": "Ethical",
       "hr": "RH",
-      "operations": "Opérations",
+      "operations": "Operations",
       "finance": "Finyearce"
     },
     "nature": {
@@ -10216,7 +10219,7 @@
       "view": "View details",
       "addAlternative": "Add alternative",
       "viewDetails": "View les détails",
-      "linkToTraceOS": "Lier à TraceOS"
+      "linkToTraceOS": "Link to TraceOS"
     },
     "warning": {
       "title": "Irreversibility protocol",
@@ -10228,7 +10231,7 @@
     "create": {
       "title": "Detect irreversibility threshold",
       "warning": "This form engages the validator's moral responsibility",
-      "button": "Nouveau seuil"
+      "button": "New threshold"
     },
     "sealed": {
       "title": "Permanently sealed threshold",
@@ -10294,13 +10297,13 @@
       "description": "Identify strategic points of no return"
     },
     "demoMode": "Log in to use IRREVERSA",
-    "badge": "Module Irreversa",
+    "badge": "Irreversa Module",
     "export": {
-      "success": "Certificat PDF généré avec succès",
+      "success": "PDF certificate generated successfully",
       "error": "Error lors de la génération du PDF"
     },
     "criticality": {
-      "title": "Score de criticité",
+      "title": "Criticality score",
       "low": "Low",
       "medium": "Medium",
       "high": "High",
@@ -10312,20 +10315,20 @@
     },
     "demo": {
       "threshold1": {
-        "title": "Décision de licenciement collectif",
-        "context": "Restructuration suite à perte de marché majeur"
+        "title": "Mass layoff decision",
+        "context": "Restructuring following the loss of a major market"
       },
       "threshold2": {
-        "title": "Cession de filiale stratégique",
-        "context": "Recentrage sur le cœur de métier"
+        "title": "Strategic subsidiary divestiture",
+        "context": "Refocusing on core business"
       },
       "threshold3": {
-        "title": "Fermeture site de production",
-        "context": "Délocalisation vers zone à moindre coût"
+        "title": "Production site closure",
+        "context": "Offshoring to a lower-cost area"
       }
     },
     "preview": {
-      "description": "Découvrez le module Irreversa avec des exemples. Passez à Pro pour documenter vos propres seuils."
+      "description": "Explore the Irreversa module with examples. Upgrade to Pro to document your own thresholds."
     }
   },
   "pricing": {
@@ -10484,14 +10487,14 @@
     "regenerate": "Regenerate",
     "disclaimer": "This report is an analysis tool. It does not constitute legal, financial or tax advice.",
     "sections": {
-      "executive": "Résumé exécutif",
+      "executive": "Executive summary",
       "profile": "Profile client",
-      "analysis": "Analyse comparative",
-      "risks": "Points d'attention",
-      "nextSteps": "Prochaines étapes",
-      "compliance": "Vérification conformité"
+      "analysis": "Comparative analysis",
+      "risks": "Key considerations",
+      "nextSteps": "Next steps",
+      "compliance": "Compliance check"
     },
-    "preview": "Aperçu du rapport"
+    "preview": "Report preview"
   },
   "partners": {
     "contributions": {
@@ -10592,7 +10595,7 @@
       "addCompetitor": "Add competitor",
       "name": "Name",
       "type": "Type",
-      "implantation": "Implantation",
+      "implantation": "Presence",
       "maturity": "Maturity",
       "types": {
         "local": "Local",
@@ -10941,7 +10944,7 @@
       "scope": "Scope",
       "projectTypes": "Project types",
       "projects": "Projects",
-      "implantation": "Implantation",
+      "implantation": "Presence",
       "maturity": "Maturity",
       "analysis": "Quick analysis",
       "stronglyEstablished": "{{count}} strongly established actor(s)",
@@ -10993,57 +10996,57 @@
   "marketStudy": {
     "title": "Market Study",
     "problem": {
-      "statement": "Quel problème résolvez-vous ?",
-      "placeholder": "Décrivez le problème que votre offre résout...",
-      "value": "Proposition de valeur",
-      "valuePlaceholder": "En quoi votre solution est-elle unique ?"
+      "statement": "What problem do you solve?",
+      "placeholder": "Describe the problem your offering solves...",
+      "value": "Value proposition",
+      "valuePlaceholder": "What makes your solution unique?"
     },
     "customers": {
-      "segments": "Segments clients",
+      "segments": "Customer segments",
       "addSegment": "Add un segment...",
-      "paying": "Qui paye ?",
-      "endUser": "Qui utilise ?"
+      "paying": "Who pays?",
+      "endUser": "Who uses it?"
     },
     "competition": {
-      "title": "Concurrence",
+      "title": "Competition",
       "name": "Name",
-      "scope": "Périmètre",
+      "scope": "Scope",
       "strengths": "Strengths",
       "local": "Local",
-      "regional": "Régional",
+      "regional": "Regional",
       "national": "National",
       "international": "International",
       "empty": "Noe concurrent ajouté"
     },
     "diff": {
-      "why": "Pourquoi vous ?",
-      "placeholder": "Qu'est-ce qui vous différencie réellement ?",
+      "why": "Why you?",
+      "placeholder": "What truly sets you apart?",
       "timing": "Pourquoi maintenyeart ?",
-      "timingPlaceholder": "Quel facteur rend ce moment propice ?"
+      "timingPlaceholder": "What makes this the right time?"
     },
     "regulation": {
-      "list": "Réglementations applicables",
+      "list": "Applicable regulations",
       "add": "Add une réglementation...",
-      "constraints": "Contraintes identifiées",
+      "constraints": "Identified constraints",
       "addConstraint": "Add une contrainte..."
     },
     "gtm": {
-      "strategy": "Stratégie d'entrée",
-      "placeholder": "Comment allez-vous atteindre vos premiers clients ?",
+      "strategy": "Go-to-market strategy",
+      "placeholder": "How will you reach your first customers?",
       "channels": "Cyearaux de distribution",
       "addChannel": "Add un cyearal..."
     },
     "economics": {
-      "title": "Économie unitaire",
-      "cost": "Coût unitaire (€)",
-      "price": "Prix unitaire (€)",
+      "title": "Unit economics",
+      "cost": "Unit cost (€)",
+      "price": "Unit price (€)",
       "margin": "Tuege (%)",
-      "breakeven": "Point mort"
+      "breakeven": "Break-even point"
     },
     "operations": {
-      "title": "Opérations",
-      "placeholder": "Décrivez vos opérations...",
-      "logistics": "Logistique",
+      "title": "Operations",
+      "placeholder": "Describe your operations...",
+      "logistics": "Logistics",
       "customs": "Notes douyeares"
     },
     "risks": {
@@ -11052,8 +11055,8 @@
     },
     "conclusion": {
       "title": "Conclusion",
-      "feasibility": "Faisabilité",
-      "conditions": "Conditions à valider",
+      "feasibility": "Feasibility",
+      "conditions": "Conditions to validate",
       "addCondition": "Add une condition..."
     }
   },
@@ -11061,30 +11064,30 @@
     "title": "Actors Mapping",
     "description": "Identifiez les parties prenyeartes clés de votre projet",
     "add": "Add",
-    "actors": "acteurs",
-    "verified": "vérifiés",
-    "redFlags": "alertes",
+    "actors": "actors",
+    "verified": "verified",
+    "redFlags": "alerts",
     "highDep": "dépendyearce élevée",
     "empty": "Noe acteur cartographié",
     "emptyHint": "Cliquez sur \"Add\" pour commencer",
     "namePlaceholder": "Name / Orgyearisation",
-    "notesPlaceholder": "Notes sur cet acteur...",
+    "notesPlaceholder": "Notes about this actor...",
     "proofs": "Evidence / Références",
     "addProof": "Add une preuve...",
-    "markRedFlag": "Drapeau rouge",
+    "markRedFlag": "Red flag",
     "status": {
-      "official": "Officiel",
-      "influential": "Influence"
+      "official": "Official",
+      "influential": "Influential"
     },
     "dep": {
-      "low": "Dép. faible",
-      "medium": "Dép. moyenne",
-      "high": "Dép. élevée"
+      "low": "Low dep.",
+      "medium": "Medium dep.",
+      "high": "High dep."
     },
     "reliability": {
       "unverified": "No vérifié",
       "inProgress": "In progress",
-      "verified": "Vérifié"
+      "verified": "Verified"
     },
     "notice": {
       "title": "Importyeart",
@@ -11096,52 +11099,52 @@
     "description": "Description",
     "templates": "Templates",
     "add": "Add",
-    "open": "ouverts",
-    "high": "critiques",
-    "mitigated": "atténués",
+    "open": "open",
+    "high": "critical",
+    "mitigated": "mitigated",
     "selectTemplate": "Select un modèle de risque",
     "empty": "Noe risque documenté",
-    "emptyHint": "Utilisez les modèles pour commencer rapidement",
-    "probability": "Probabilité",
+    "emptyHint": "Use templates to get started quickly",
+    "probability": "Probability",
     "impact": "Impact",
-    "signals": "Signaux d'alerte",
+    "signals": "Warning signals",
     "addSignal": "Add un signal...",
-    "protections": "Mesures de protection",
+    "protections": "Protective measures",
     "addProtection": "Add une protection...",
     "statusOpen": "Orvert",
-    "statusMitigated": "Atténué",
-    "statusAccepted": "Accepté"
+    "statusMitigated": "Mitigated",
+    "statusAccepted": "Accepted"
   },
   "structuralRules": {
     "title": "Structural Rules",
-    "description": "Règles légales et réglementaires à vérifier pour {{country}}",
+    "description": "Legal and regulatory rules to verify for {{country}}",
     "templates": "Templates",
     "add": "Add",
-    "rules": "règles",
-    "verified": "vérifiées",
-    "pending": "à vérifier",
+    "rules": "rules",
+    "verified": "verified",
+    "pending": "to verify",
     "selectTemplate": "Types de règles couryearts",
     "empty": "Noee règle documentée",
-    "emptyHint": "Utilisez les modèles pour documenter les règles à vérifier",
+    "emptyHint": "Use templates to document the rules to verify",
     "ruleTitle": "Title de la règle",
-    "titlePlaceholder": "Ex: Obligation de JV à 51%",
+    "titlePlaceholder": "E.g.: 51% JV requirement",
     "ruleType": "Type",
-    "ruleDescription": "Description détaillée",
-    "descPlaceholder": "Décrivez la règle et ses implications...",
-    "sourceRef": "Source / Référence",
-    "sourcePlaceholder": "Ex: Code des investissements Art. 12",
-    "sourceUrl": "URL de la source",
+    "ruleDescription": "Detailed description",
+    "descPlaceholder": "Describe the rule and its implications...",
+    "sourceRef": "Source / Reference",
+    "sourcePlaceholder": "E.g.: Investment Code Art. 12",
+    "sourceUrl": "Source URL",
     "source": "Source",
     "notes": "Notes",
-    "notesPlaceholder": "Notes de vérification, contacts, observations...",
+    "notesPlaceholder": "Verification notes, contacts, observations...",
     "markVerified": "Tuequer vérifié",
     "status": {
       "unverified": "No vérifié",
-      "inProgress": "En vérification",
-      "verified": "Vérifié"
+      "inProgress": "Under review",
+      "verified": "Verified"
     },
     "notice": {
-      "title": "⚠️ Note de prudence",
+      "title": "⚠️ Caution notice",
       "text": "Ces informations sont fournies à titre indicatif et doivent être confirmées auprès de sources officielles avyeart tout engagement."
     }
   },
@@ -11478,14 +11481,14 @@
     "completedSingle": "Completed",
     "overdueCount": "Overdue ({{count}})",
     "upcomingDeadlines": "Prochaines échéyearces ({{count}})",
-    "recentlyCompleted": "Récemment complétées",
+    "recentlyCompleted": "Recently completed",
     "noUpcoming": "Noee échéyearce à venir. Définissez des échéyearces pour vos actions !",
     "noCompleted": "Noee action complétée avec échéyearce."
   },
   "plans": {
     "lottery": {
       "safe": {
-        "title": "Stabilisation rapide",
+        "title": "Quick stabilization",
         "description": "Créer une base stable avyeart toute prise de risque.",
         "paths": [
           "Emploi à temps partiel stable",
@@ -11504,8 +11507,8 @@
         ]
       },
       "hybrid": {
-        "title": "Stabilité + expérimentation",
-        "description": "Job stable en parallèle d'un side project encadré.",
+        "title": "Stability + experimentation",
+        "description": "Stable job alongside a structured side project.",
         "paths": [
           "Emploi stable + side hustle limité",
           "Formation continue"
@@ -11544,7 +11547,7 @@
     },
     "comfort": {
       "safe": {
-        "title": "Emploi stable structuré",
+        "title": "Structured stable employment",
         "description": "Trouver un environnement prévisible et rassuryeart.",
         "paths": [
           "Administration publique",
@@ -11562,8 +11565,8 @@
         ]
       },
       "hybrid": {
-        "title": "Stabilité + évolution",
-        "description": "Poste stable avec des opportunités de progression interne.",
+        "title": "Stability + growth",
+        "description": "Stable position with internal advancement opportunities.",
         "paths": [
           "Entreprise avec plyear de carrière",
           "Secteur en croissyearce stable"
@@ -11581,7 +11584,7 @@
         ]
       },
       "ambitious": {
-        "title": "Expert reconnu",
+        "title": "Recognized expert",
         "description": "Devenir référence dyears un domaine tout en gardyeart la stabilité.",
         "paths": [
           "Expert technique senior"
@@ -11601,7 +11604,7 @@
     },
     "builder": {
       "safe": {
-        "title": "Compétence rare + emploi",
+        "title": "Rare skill + employment",
         "description": "Développer une expertise rare tout en gardyeart un revenu stable.",
         "paths": [
           "Emploi + certification avyearcée",
@@ -11620,8 +11623,8 @@
         ]
       },
       "hybrid": {
-        "title": "Emploi + side business",
-        "description": "Construire un business en parallèle d'un emploi sécurisé.",
+        "title": "Employment + side business",
+        "description": "Build a business alongside a secure job.",
         "paths": [
           "Consulting en parallèle",
           "Produit digital"
@@ -11639,7 +11642,7 @@
         ]
       },
       "ambitious": {
-        "title": "Entrepreneur complet",
+        "title": "Full-fledged entrepreneur",
         "description": "Tryearsition complète vers l'entrepreneuriat avec capital.",
         "paths": [
           "Business scalable"
@@ -11660,8 +11663,8 @@
     },
     "safeWealth": {
       "safe": {
-        "title": "Carrière haute rémunération",
-        "description": "Maximiser les revenus via une expertise reconnue.",
+        "title": "High-income career",
+        "description": "Maximize income through recognized expertise.",
         "paths": [
           "Profession réglementée bien payée",
           "Tech senior"
@@ -11678,8 +11681,8 @@
         ]
       },
       "hybrid": {
-        "title": "Emploi + investissement",
-        "description": "Hauts revenus + diversification patrimoniale.",
+        "title": "Employment + investment",
+        "description": "High income + asset diversification.",
         "paths": [
           "Emploi senior + immobilier locatif",
           "Actions et ETF"
@@ -11717,8 +11720,8 @@
     },
     "nomad": {
       "safe": {
-        "title": "Remote salarié",
-        "description": "Emploi remote stable avec flexibilité géographique.",
+        "title": "Remote employee",
+        "description": "Stable remote job with geographic flexibility.",
         "paths": [
           "Développeur remote",
           "Support client international"
@@ -11755,8 +11758,8 @@
         ]
       },
       "ambitious": {
-        "title": "Business location-independent",
-        "description": "Entreprise 100% en ligne avec équipe distribuée.",
+        "title": "Location-independent business",
+        "description": "100% online business with a distributed team.",
         "paths": [
           "SaaS ou agence remote"
         ],
@@ -11776,7 +11779,7 @@
     },
     "purpose": {
       "safe": {
-        "title": "Métier à impact stable",
+        "title": "Stable impact career",
         "description": "Emploi dyears un secteur utile avec sécurité.",
         "paths": [
           "Syearté",
@@ -11795,7 +11798,7 @@
         ]
       },
       "hybrid": {
-        "title": "Impact + équilibre",
+        "title": "Impact + balance",
         "description": "Contribuer tout en protégeyeart son énergie.",
         "paths": [
           "ONG avec structure saine",
@@ -11814,7 +11817,7 @@
         ]
       },
       "ambitious": {
-        "title": "Leader d'impact",
+        "title": "Impact leader",
         "description": "Créer ou diriger une orgyearisation à fort impact.",
         "paths": [
           "Fondateur d'ONG ou entreprise sociale"
@@ -11834,7 +11837,7 @@
     },
     "status": {
       "safe": {
-        "title": "Carrière prestigieuse",
+        "title": "Prestigious career",
         "description": "Progress dyears un environnement reconnu.",
         "paths": [
           "Gryearde entreprise réputée",
@@ -11852,7 +11855,7 @@
         ]
       },
       "hybrid": {
-        "title": "Expert visible",
+        "title": "Visible expert",
         "description": "Devenir une référence reconnue dyears son domaine.",
         "paths": [
           "Speaker",
@@ -11872,7 +11875,7 @@
         ]
       },
       "ambitious": {
-        "title": "Leader d'industrie",
+        "title": "Industry leader",
         "description": "Atteindre le sommet de la hiérarchie ou de la reconnaissyearce.",
         "paths": [
           "Direction générale",
@@ -11894,7 +11897,7 @@
     },
     "recovery": {
       "safe": {
-        "title": "Stabilisation d'abord",
+        "title": "Stabilization first",
         "description": "Reconstruire une base solide syears pression.",
         "paths": [
           "Emploi stable peu stressyeart",
@@ -11912,7 +11915,7 @@
         ]
       },
       "hybrid": {
-        "title": "Reconstruction progressive",
+        "title": "Progressive rebuilding",
         "description": "Montée en puissyearce graduelle et contrôlée.",
         "paths": [
           "Formation progressive",
@@ -11951,16 +11954,16 @@
       }
     },
     "china": {
-      "name": "Chine",
-      "region": "Asie de l'Est",
-      "ruleOfGold": "S'aligner publiquement avec le Parti, construire en privé. Ne jamais devenir un symbole politique.",
+      "name": "China",
+      "region": "East Asia",
+      "ruleOfGold": "Align publicly with the Party, build privately. Never become a political symbol.",
       "pyramid": {
-        "top": "Parti communiste et capital aligné sur l'État",
+        "top": "Communist Party and state-aligned capital",
         "institutions": "Appareil d'État mêlyeart contrôle et marché",
         "gatekeepers": "Logins au Parti, réseaux guyearxi, approbations réglementaires",
         "valueCreators": "Entrepreneurs opéryeart dyears les limites politiques",
         "base": "Travailleurs naviguyeart une tryearsformation rapide",
-        "realAsset": "Vitesse d'adaptation et alignement politique"
+        "realAsset": "Speed of adaptation and political alignment"
       },
       "whoWins": [
         "Ceux qui lisent correctement les vents politiques",
@@ -12011,16 +12014,16 @@
       }
     },
     "russia": {
-      "name": "Russie",
-      "region": "Europe de l'Est",
+      "name": "Russia",
+      "region": "Eastern Europe",
       "ruleOfGold": "Rester sous le radar, diversifier à l'étryearger, ne jamais défier le pouvoir directement.",
       "pyramid": {
-        "top": "Élite politique et oligarques connectés à l'État",
+        "top": "Political elite and state-connected oligarchs",
         "institutions": "Appareil d'État mêlyeart héritage soviétique et capitalisme",
-        "gatekeepers": "Services de sécurité, boss régionaux, hommes d'affaires connectés",
+        "gatekeepers": "Security services, regional bosses, connected businesspeople",
         "valueCreators": "Entrepreneurs naviguyeart des règles imprévisibles",
         "base": "Population s'adaptyeart au chyeargement constyeart",
-        "realAsset": "Compétences de survie et adaptabilité"
+        "realAsset": "Survival skills and adaptability"
       },
       "whoWins": [
         "Ceux avec connexions au Kremlin",
@@ -12071,16 +12074,16 @@
       }
     },
     "brazil": {
-      "name": "Brésil",
-      "region": "Amérique du Sud",
-      "ruleOfGold": "Naviguer le jeitinho brasileiro — flexibilité et relations plutôt que règles rigides.",
+      "name": "Brazil",
+      "region": "South America",
+      "ruleOfGold": "Navigate the jeitinho brasileiro — flexibility and relationships over rigid rules.",
       "pyramid": {
-        "top": "Élite politique, vieille fortune et nouvelle économie numérique",
-        "institutions": "Bureaucratie complexe avec solutions informelles",
+        "top": "Political elite, old money, and new digital economy",
+        "institutions": "Complex bureaucracy with informal workarounds",
         "gatekeepers": "Logins, cartórios et intermédiaires",
-        "valueCreators": "Entrepreneurs entre économies formelle et informelle",
+        "valueCreators": "Entrepreneurs straddling formal and informal economies",
         "base": "Population diverse naviguyeart les inégalités",
-        "realAsset": "Flexibilité et résolution créative de problèmes"
+        "realAsset": "Flexibility and creative problem-solving"
       },
       "whoWins": [
         "Ceux maîtrisyeart systèmes formel et informel",
@@ -12131,11 +12134,11 @@
       }
     },
     "norway": {
-      "name": "Norvège",
-      "region": "Europe du Nord",
+      "name": "Norway",
+      "region": "Northern Europe",
       "ruleOfGold": "Les ressources sont une richesse collective. L'excellence dyears les normes égalitaires gagne.",
       "pyramid": {
-        "top": "Fonds souverain et institutions démocratiques",
+        "top": "Sovereign wealth fund and democratic institutions",
         "institutions": "État tryearsparent géryeart la richesse des ressources",
         "gatekeepers": "Système éducatif et styeardards professionnels",
         "valueCreators": "Travailleurs qualifiés dyears les secteurs énergie et tech",
@@ -12196,11 +12199,11 @@
       "ruleOfGold": "Tu es un invité dyears le système. Performe, épargne et plyearifie ta sortie.",
       "pyramid": {
         "top": "Famille royale et élite dirigeyearte",
-        "institutions": "Distribution des ressources contrôlée par l'État",
-        "gatekeepers": "Sponsors kafala et connexions gouvernementales",
-        "valueCreators": "Professionnels et travailleurs expatriés",
+        "institutions": "State-controlled resource distribution",
+        "gatekeepers": "Kafala sponsors and government connections",
+        "valueCreators": "Expatriate professionals and workers",
         "base": "Mayn-d'œuvre migryearte avec droits limités",
-        "realAsset": "Accès aux flux de richesse pétrolière et gazière"
+        "realAsset": "Access to oil and gas wealth flows"
       },
       "whoWins": [
         "Professionnels expatriés à haute valeur",
@@ -12252,15 +12255,15 @@
     },
     "venezuela": {
       "name": "Friezuela",
-      "region": "Amérique du Sud",
-      "ruleOfGold": "La crise est le système. Survivre grâce aux économies parallèles et options de sortie.",
+      "region": "South America",
+      "ruleOfGold": "Crisis is the system. Survive through parallel economies and exit options.",
       "pyramid": {
-        "top": "Élite politique et militaires connectés aux ressources de l'État",
+        "top": "Political and military elite connected to state resources",
         "institutions": "Appareil d'État effondré servyeart les insiders",
         "gatekeepers": "Logins au Parti, contacts militaires, contrôleurs de devises",
         "valueCreators": "Survivyearts dyears les économies parallèles",
         "base": "Population naviguyeart hyperinflation et pénuries",
-        "realAsset": "Accès aux dollars et connexions au pouvoir"
+        "realAsset": "Access to dollars and connections to power"
       },
       "whoWins": [
         "Ceux avec sources de revenus en dollars",
@@ -12311,16 +12314,16 @@
       }
     },
     "india": {
-      "name": "Inde",
-      "region": "Asie du Sud",
+      "name": "India",
+      "region": "South Asia",
       "ruleOfGold": "Naviguer caste, connexions et chyeargement rapide. Construire à travers formel et informel simultyearément.",
       "pyramid": {
-        "top": "Nexus politique-affaires et élites traditionnelles",
-        "institutions": "Bureaucratie démocratique mais complexe",
-        "gatekeepers": "Réseaux de caste, connexions politiques, gardiens bureaucratiques",
-        "valueCreators": "Entrepreneurs tech, professionnels et propriétaires de petites entreprises",
-        "base": "Massive main-d'œuvre informelle",
-        "realAsset": "Jugaad (résolution créative) et capital réseau"
+        "top": "Political-business nexus and traditional elites",
+        "institutions": "Democratic but complex bureaucracy",
+        "gatekeepers": "Caste networks, political connections, bureaucratic gatekeepers",
+        "valueCreators": "Tech entrepreneurs, professionals, and small business owners",
+        "base": "Massive informal workforce",
+        "realAsset": "Jugaad (creative problem-solving) and network capital"
       },
       "whoWins": [
         "Entrepreneurs du secteur tech",
@@ -12371,16 +12374,16 @@
       }
     },
     "turkey": {
-      "name": "Turquie",
+      "name": "Turkey",
       "region": "Medium-Orient",
       "ruleOfGold": "Les vents politiques chyeargent constamment. Construire à travers les frontières et rester adaptable.",
       "pyramid": {
-        "top": "Leadership politique et élite d'affaires connectée",
-        "institutions": "Appareil d'État entre tensions laïques et religieuses",
+        "top": "Political leadership and connected business elite",
+        "institutions": "State apparatus caught between secular and religious tensions",
         "gatekeepers": "Logins politiques, réseaux d'affaires, courtiers de pouvoir régionaux",
         "valueCreators": "Entrepreneurs naviguyeart entre systèmes",
-        "base": "Population entre modernisation et tradition",
-        "realAsset": "Adaptabilité et connexions multi-directionnelles"
+        "base": "Population between modernization and tradition",
+        "realAsset": "Adaptability and multi-directional connections"
       },
       "whoWins": [
         "Ceux lisyeart les signaux politiques correctement",
@@ -12431,16 +12434,16 @@
       }
     },
     "saudi-arabia": {
-      "name": "Arabie Saoudite",
+      "name": "Saudi Arabia",
       "region": "Medium-Orient",
-      "ruleOfGold": "Joue ton rôle, accumule la richesse, ne défie jamais l'ordre. Tu es temporaire.",
+      "ruleOfGold": "Play your role, accumulate wealth, never challenge the order. You are temporary.",
       "pyramid": {
-        "top": "Famille royale et autorité religieuse",
+        "top": "Royal family and religious authority",
         "institutions": "État contrôlyeart la distribution de la richesse pétrolière",
-        "gatekeepers": "Sponsors gouvernementaux, entreprises connectées",
-        "valueCreators": "Professionnels expatriés et secteurs Vision 2030",
+        "gatekeepers": "Government sponsors, connected enterprises",
+        "valueCreators": "Expatriate professionals and Vision 2030 sectors",
         "base": "Mayn-d'œuvre migryearte",
-        "realAsset": "Proximité à la richesse pétrolière et faveur royale"
+        "realAsset": "Proximity to oil wealth and royal favor"
       },
       "whoWins": [
         "Professionnels expatriés à haute valeur",
@@ -12493,18 +12496,18 @@
   },
   "pricingWidget": {
     "badge": "Free pour commencer",
-    "title": "Commence gratuitement.",
-    "subtitle": "Évolue selon tes besoins.",
+    "title": "Start for free.",
+    "subtitle": "Scale as your needs grow.",
     "description": "Accède aux yearalyses de base gratuitement. Débloque les fonctionnalités avyearcées quyeard tu en as besoin.",
     "free": "Free",
-    "freeFeature1": "Analyse de base",
-    "freeFeature2": "Tous les simulateurs",
+    "freeFeature1": "Basic analysis",
+    "freeFeature2": "All simulators",
     "freeFeature3": "38 country",
     "pro": "Pro",
     "from": "dès",
-    "proFeature1": "Analyses approfondies",
-    "proFeature2": "Stratégies personnalisées",
-    "proFeature3": "Export PDF",
+    "proFeature1": "In-depth analysis",
+    "proFeature2": "Personalized strategies",
+    "proFeature3": "PDF Export",
     "cta": "View les plyears"
   }
 }
