@@ -1,7 +1,7 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import Stripe from "https://esm.sh/stripe@18.5.0";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.2";
-import { getCorsHeaders, handleCorsPreflightRequest } from "../_shared/cors.ts";
+import { getCorsHeaders, handleCorsPreflightRequest, getSafeOrigin } from "../_shared/cors.ts";
 
 const logStep = (step: string, details?: unknown) => {
   const detailsStr = details ? ` - ${JSON.stringify(details)}` : '';
@@ -45,6 +45,20 @@ serve(async (req) => {
 
     if (!expertId || !amount || !durationMinutes) {
       throw new Error("Missing required fields: expertId, amount, durationMinutes");
+    }
+
+    if (typeof amount !== 'number' || amount <= 0 || amount > 50000) {
+      return new Response(
+        JSON.stringify({ error: "Invalid amount: must be between 0.01 and 50000", code: "VALIDATION_ERROR" }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    if (typeof durationMinutes !== 'number' || durationMinutes < 15 || durationMinutes > 480) {
+      return new Response(
+        JSON.stringify({ error: "Invalid duration: must be between 15 and 480 minutes", code: "VALIDATION_ERROR" }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
     }
 
     // Authenticate user
@@ -144,8 +158,8 @@ serve(async (req) => {
           quantity: 1,
         },
       ],
-      success_url: `${req.headers.get("origin")}/consultation/${consultation.id}/success`,
-      cancel_url: `${req.headers.get("origin")}/experts/${expertId}?cancelled=true`,
+      success_url: `${getSafeOrigin(req)}/consultation/${consultation.id}/success`,
+      cancel_url: `${getSafeOrigin(req)}/experts/${expertId}?cancelled=true`,
       metadata: {
         consultation_id: consultation.id,
         expert_id: expertId,

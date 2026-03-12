@@ -359,23 +359,28 @@ Les corrections suivantes ont ete implementees directement :
 | 9 | **CORS preflight : Access-Control-Allow-Methods ajouté** | `supabase/functions/_shared/cors.ts` | P2 — Conformité |
 | 10 | **Pricing : table comparaison dé-dupliquée** | `src/pages/Pricing.tsx` | P3 — Maintenabilité |
 | 11 | **Rapport d'audit technique complet** | `docs/AUDIT-TECHNIQUE-2026-03-11.md` | Documentation |
+| 12 | **Open Redirect corrigé : getSafeOrigin(req) avec whitelist** | `supabase/functions/_shared/cors.ts`, `create-checkout`, `customer-portal`, `create-consultation-payment` | P0 — Sécurité |
+| 13 | **Webhook signature obligatoire** | `supabase/functions/consultation-webhook/index.ts` | P0 — Sécurité |
+| 14 | **Validation amount (0.01-50000) et durée (15-480min)** | `supabase/functions/create-consultation-payment/index.ts` | P1 — Billing |
+| 15 | **Sitemap multilingue 13 langues × 49 routes** | `public/sitemap.xml` | P1 — SEO |
+| 16 | **Console.log/warn supprimés en prod via esbuild drop** | `vite.config.ts` | P2 — Performance/Sécurité |
 
 ### Elements restants a traiter
 
-**P0 — Nécessitent intervention externe :**
-- [ ] Open Redirect dans edge functions (create-checkout, customer-portal, create-consultation-payment) — nécessite déploiement Supabase
-- [ ] Webhook signature verification obligatoire dans consultation-webhook — nécessite STRIPE_WEBHOOK_SECRET en production
+**P0 — Corrigés (2026-03-12) :**
+- [x] Open Redirect dans edge functions — `getSafeOrigin(req)` whiteliste les origines autorisées
+- [x] Webhook signature verification obligatoire dans consultation-webhook — échoue si STRIPE_WEBHOOK_SECRET absent
+- [x] Validation d'amount dans create-consultation-payment — 0.01-50000 EUR, durée 15-480 min
 - [ ] Traductions complètes pour ar, bn, hi, ru, ur, zh (8-9% de couverture) — nécessite outil de traduction ou API
-- [ ] Validation d'amount dans create-consultation-payment — nécessite déploiement edge function
 
-**P1 :**
+**P1 — Corrigés (2026-03-12) :**
+- [x] Sitemap multilingue — 13 langues × 49 routes = 637 URLs avec hreflang complets
 - [ ] Retirer .env du tracking git (git rm --cached .env) — nécessite décision car le repo l'utilise peut-être en CI
 - [ ] Audit des 34 edge functions avec verify_jwt=false
-- [ ] Sitemap multilingue (11 langues manquantes)
 - [ ] Compléter traductions de, es, it, nl, pt (~40-50% couverture)
 
-**P2 :**
-- [ ] Retirer les 50+ console.log/warn du code source
+**P2 — Corrigés (2026-03-12) :**
+- [x] Console.log/warn supprimés en production via esbuild drop dans vite.config.ts
 - [ ] Rate limiting sur ai-assist
 - [ ] Cache-Control headers sur endpoints authentifiés
 - [ ] Toasts pour les 11 langues non-fr/en

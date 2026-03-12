@@ -35,6 +35,18 @@ export function getCorsHeaders(req: Request): Record<string, string> {
   };
 }
 
+/**
+ * Returns a safe, validated origin for use in redirect URLs (e.g. Stripe success/cancel URLs).
+ * Prevents open redirect attacks by only allowing whitelisted origins.
+ */
+export function getSafeOrigin(req: Request): string {
+  const origin = req.headers.get('Origin') || '';
+  if (ALLOWED_ORIGINS.includes(origin) || isLovablePreview(origin)) {
+    return origin;
+  }
+  return ALLOWED_ORIGINS[0];
+}
+
 export function handleCorsPreflightRequest(req?: Request): Response {
   const headers = req ? getCorsHeaders(req) : corsHeaders;
   return new Response(null, {
