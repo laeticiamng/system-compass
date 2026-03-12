@@ -131,7 +131,7 @@
       "visaFreeCountries": "land sans visa",
       "memberOf": "Member of",
       "regionalBlocs": "Regional blocs",
-      "installationTab": "Installation",
+      "installationTab": "Vestiging",
       "vacationTab": "Vacation",
       "installationDestinations": "Installation Destinations",
       "optimizedForProfile": "Optimized for your profile",
@@ -196,7 +196,7 @@
       "notRequired": "Not required. Continue exploring freely."
     },
     "risk": {
-      "prudent": "Prudent",
+      "prudent": "Voorzichtig",
       "prudentDesc": "I prefer safety",
       "balanced": "Balanced",
       "balancedDesc": "Risico's calculés",
@@ -242,7 +242,7 @@
       "viewKeys": "Bekijken mes clés"
     },
     "advantageTypes": {
-      "visaFree": "Visa-free",
+      "visaFree": "Visumvrij",
       "regionalAccess": "Regional access",
       "workPermit": "Work",
       "taxBenefit": "Tax",
@@ -256,7 +256,7 @@
       "difficulty": "Difficulty",
       "system": "System",
       "allDifficulties": "Alleses",
-      "accessible": "Accessible",
+      "accessible": "Toegankelijk",
       "demanding": "Demanding",
       "expert": "Expert",
       "allSystems": "All systems",
@@ -265,7 +265,7 @@
       "keysFoundPlural": "{{count}} keys found",
       "successCondition": "Success condition",
       "mainRisk": "Risico principal",
-      "phases": "phases",
+      "phases": "fasen",
       "requirements": "requirements",
       "noKeysMatch": "Geene clé ne correspond aux filtres sélectionnés.",
       "resetFilters": "Herstellen les filtres",
@@ -282,8 +282,8 @@
       "criterion": "Criterion",
       "difficulty": "Difficulty",
       "duration": "Duration",
-      "phases": "Phases",
-      "phasesCount": "{{count}} phases",
+      "phases": "Fasen",
+      "phasesCount": "{{count}} fasen",
       "prerequisites": "Prerequisites",
       "criteriaCount": "{{count}} criteria",
       "detailedPrerequisites": "Detailed Prerequisites",
@@ -689,7 +689,7 @@
     "progress": "Voortgang",
     "noneInCategory": "Geen prestaties ontgrendeld in deze categorie",
     "allUnlocked": "Alle prestaties in deze categorie zijn ontgrendeld! 🎉",
-    "social": "Social",
+    "social": "Sociaal",
     "world_explorer": {
       "name": "World Explorer",
       "description": "Visiter 5 land différents"
@@ -1102,7 +1102,7 @@
     "trajectory": "Traject",
     "match": "Compatibiliteit",
     "compare": "Vergelijken",
-    "multiCompare": "Multi-Analyse",
+    "multiCompare": "Multi-analyse",
     "resources": "Bronnen",
     "pyramids": "Systemen",
     "quiz": "Educatieve Modus",
@@ -1131,13 +1131,13 @@
     "financialIntel": "Financial Intel",
     "irreversa": "Irreversa",
     "latent": "Risico's cachés",
-    "howToRead": "Guide",
+    "howToRead": "Handleiding",
     "explore": "Explore",
     "tools": "Tools",
     "account": "Account & Info",
     "advanced": "Pro Modules",
     "info": "Info",
-    "notifications": "Notifications",
+    "notifications": "Meldingen",
     "exitKeysCatalog": "Strategies Catalog",
     "exitKeysCompare": "Vergelijken Destinations",
     "terrainRealities": "Terrain Realities",
@@ -1593,12 +1593,12 @@
     "safe": "LGBTQ+ Veilig",
     "caution": "Voorzichtig Voortgaan",
     "dangerous": "Hoog Risico voor LGBTQ+",
-    "title": "Droits LGBTQ+",
-    "index": "Indice droits",
+    "title": "LGBTQ+-rechten",
+    "index": "Rechtenindex",
     "marriage": "Diiage égalitaire",
-    "civilUnion": "Union civile",
-    "employmentProtection": "Protection emploi",
-    "safetyRating": "Niveau de sécurité",
+    "civilUnion": "Geregistreerd partnerschap",
+    "employmentProtection": "Arbeidsbescherming",
+    "safetyRating": "Veiligheidsniveau",
     "notice": "Les droits LGBTQ+ sont pris en compte dans vos recommandations de land."
   },
   "pyramid": {
@@ -1876,16 +1876,16 @@
     },
     "planTypes": {
       "safe": {
-        "label": "Plan Safe",
-        "description": "Pour ceux qui ont des responsabilités, de l'anxiété, ou un besoin fort de sécurité. Stabilité + progression certaine."
+        "label": "Veilig plan",
+        "description": "Voor wie verantwoordelijkheden, onzekerheid of een sterke behoefte aan zekerheid heeft. Stabiliteit + gegarandeerde vooruitgang."
       },
       "hybrid": {
-        "label": "Plan Hybride",
-        "description": "Pour la majorité. Job stable + montée en compétences + side project structuré et réaliste."
+        "label": "Hybride plan",
+        "description": "Voor de meerderheid. Vaste baan + vaardigheidsontwikkeling + gestructureerd en realistisch zijproject."
       },
       "ambitious": {
-        "label": "Plan Ambitieux",
-        "description": "Pour ceux qui ont l'énergie et la tolérance au risque. Accélération des revenus + stratégie de croissance."
+        "label": "Ambitieus plan",
+        "description": "Voor wie de energie en risicotolerantie heeft. Inkomstenversnelling + groeistrategie."
       }
     },
     "trajectory": {
@@ -1902,19 +1902,19 @@
       "findCountries": "Compatibele Landen Vinden",
       "exploreCountries": "Alle Landen Verkennen",
       "retake": "Test Opnieuw",
-      "title": "Ton profil trajectoire",
-      "yourProfile": "Ton profil moteur",
-      "trajectories": "Tes 3 trajectoires recommandées",
-      "choosePlan": "Choisis le plan qui correspond à ta situation",
-      "duration": "Durée",
-      "paths": "Voies adaptées",
-      "skills": "Compétences à développer",
+      "title": "Uw trajectprofiel",
+      "yourProfile": "Uw drijfverenprofiel",
+      "trajectories": "Uw 3 aanbevolen trajecten",
+      "choosePlan": "Kies het plan dat bij uw situatie past",
+      "duration": "Duur",
+      "paths": "Geschikte loopbanen",
+      "skills": "Te ontwikkelen vaardigheden",
       "risks": "Risico's à surveiller",
-      "firstSteps": "Premières étapes",
-      "retakeTest": "Refaire le test"
+      "firstSteps": "Eerste stappen",
+      "retakeTest": "Test opnieuw doen"
     },
-    "title": "Diagnostic de trajectoire de vie",
-    "subtitle": "Le métier n'est qu'un véhicule. Découvrez quelle vie vous voulez construire.",
+    "title": "Levenstraject-diagnose",
+    "subtitle": "Uw beroep is slechts een middel. Ontdek welk leven u wilt opbouwen.",
     "startButton": "Starten le diagnostic",
     "yes": "Ja",
     "no": "Nee",
@@ -1922,8 +1922,8 @@
     "next": "Volgende",
     "seeResults": "Bekijken mes résultats",
     "coreIdea": {
-      "title": "L'idée centrale",
-      "text": "La plupart des gens ne cherchent pas \"un métier\". Ils cherchent une vie. Un métier n'est qu'un véhicule."
+      "title": "Het kernidee",
+      "text": "De meeste mensen zoeken geen 'beroep'. Ze zoeken een leven. Een beroep is slechts een middel."
     },
     "questions": {
       "timePreference": {
@@ -2298,7 +2298,7 @@
           },
           "skills": {
             "0": "Both earning and giving skills",
-            "1": "Communication"
+            "1": "Communicatie"
           },
           "risks": {
             "0": "Purpose delayed"
@@ -2315,8 +2315,8 @@
             "0": "Social enterprise or foundation"
           },
           "skills": {
-            "0": "Leadership",
-            "1": "Fundraising"
+            "0": "Leiderschap",
+            "1": "Fondsenwerving"
           },
           "risks": {
             "0": "Burnout risk"
@@ -3519,16 +3519,16 @@
       }
     },
     "china": {
-      "name": "Chine",
-      "region": "Asie de l'Est",
-      "ruleOfGold": "S'aligner publiquement avec le Parti, construire en privé. Ne jamais devenir un symbole politique.",
+      "name": "China",
+      "region": "Oost-Azië",
+      "ruleOfGold": "Sluit u publiekelijk aan bij de Partij, bouw privé op. Word nooit een politiek symbool.",
       "pyramid": {
-        "top": "Parti communiste et capital aligné sur l'État",
-        "institutions": "Appareil d'État mêlant contrôle et marché",
+        "top": "Communistische Partij en staatsgericht kapitaal",
+        "institutions": "Staatsapparaat dat controle en markt combineert",
         "gatekeepers": "Inloggens au Parti, réseaux guanxi, approbations réglementaires",
-        "valueCreators": "Entrepreneurs opérant dans les limites politiques",
-        "base": "Travailleurs naviguant une transformation rapide",
-        "realAsset": "Vitesse d'adaptation et alignement politique"
+        "valueCreators": "Ondernemers die binnen politieke grenzen opereren",
+        "base": "Werknemers die een snelle transformatie navigeren",
+        "realAsset": "Aanpassingssnelheid en politieke afstemming"
       },
       "whoWins": [
         "Ceux qui lisent correctement les vents politiques",
@@ -3575,20 +3575,20 @@
           "Construire une réputation dans les réseaux mondiaux",
           "Créer un revenu indépendant du lieu"
         ],
-        "planB": "Singapour pour la continuité des affaires chinoises, Canada/Australie pour l'émigration familiale, Portugal pour l'accès UE. Garder une présence continentale tout en construisant des alternatives."
+        "planB": "Singapore voor continuïteit van Chinese zaken, Canada/Australië voor gezinsemigratie, Portugal voor EU-toegang. Behoud een continentale aanwezigheid terwijl u alternatieven opbouwt."
       }
     },
     "russia": {
-      "name": "Russie",
-      "region": "Europe de l'Est",
-      "ruleOfGold": "Rester sous le radar, diversifier à l'étranger, ne jamais défier le pouvoir directement.",
+      "name": "Rusland",
+      "region": "Oost-Europa",
+      "ruleOfGold": "Blijf onder de radar, diversifieer in het buitenland, daag de macht nooit rechtstreeks uit.",
       "pyramid": {
-        "top": "Élite politique et oligarques connectés à l'État",
-        "institutions": "Appareil d'État mêlant héritage soviétique et capitalisme",
-        "gatekeepers": "Services de sécurité, boss régionaux, hommes d'affaires connectés",
-        "valueCreators": "Entrepreneurs naviguant des règles imprévisibles",
-        "base": "Population s'adaptant au changement constant",
-        "realAsset": "Compétences de survie et adaptabilité"
+        "top": "Politieke elite en aan de staat verbonden oligarchen",
+        "institutions": "Staatsapparaat dat Sovjet-erfgoed en kapitalisme combineert",
+        "gatekeepers": "Veiligheidsdiensten, regionale leiders, geconnecteerde zakenlieden",
+        "valueCreators": "Ondernemers die onvoorspelbare regels navigeren",
+        "base": "Bevolking die zich aanpast aan voortdurende verandering",
+        "realAsset": "Overlevingsvaardigheden en aanpassingsvermogen"
       },
       "whoWins": [
         "Ceux avec connexions au Kremlin",
@@ -3635,20 +3635,20 @@
           "Sécuriser les options de sortie familiales",
           "Créer une vie durable à l'étranger"
         ],
-        "planB": "EAU pour la continuité des affaires, Géorgie/Arménie pour une relocalisation facile, Serbie pour l'accès sans visa. Israël si éligible. Europe de plus en plus difficile."
+        "planB": "VAE voor zakelijke continuïteit, Georgië/Armenië voor eenvoudige hervestiging, Servië voor visumvrije toegang. Israël indien in aanmerking komend. Europa steeds moeilijker."
       }
     },
     "brazil": {
-      "name": "Brésil",
-      "region": "Amérique du Sud",
-      "ruleOfGold": "Naviguer le jeitinho brasileiro — flexibilité et relations plutôt que règles rigides.",
+      "name": "Brazilië",
+      "region": "Zuid-Amerika",
+      "ruleOfGold": "Navigeer de jeitinho brasileiro — flexibiliteit en relaties boven rigide regels.",
       "pyramid": {
-        "top": "Élite politique, vieille fortune et nouvelle économie numérique",
-        "institutions": "Bureaucratie complexe avec solutions informelles",
+        "top": "Politieke elite, oud geld en de nieuwe digitale economie",
+        "institutions": "Complexe bureaucratie met informele oplossingen",
         "gatekeepers": "Inloggens, cartórios et intermédiaires",
-        "valueCreators": "Entrepreneurs entre économies formelle et informelle",
-        "base": "Population diverse naviguant les inégalités",
-        "realAsset": "Flexibilité et résolution créative de problèmes"
+        "valueCreators": "Ondernemers tussen formele en informele economie",
+        "base": "Diverse bevolking die ongelijkheid navigeert",
+        "realAsset": "Flexibiliteit en creatieve probleemoplossing"
       },
       "whoWins": [
         "Ceux maîtrisant systèmes formel et informel",
@@ -3695,20 +3695,20 @@
           "Créer une option de résidence internationale",
           "Développer des compétences indépendantes du lieu"
         ],
-        "planB": "Portugal pour intégration facile et accès UE, USA pour l'ambition, Argentine/Uruguay pour options régionales. Garder la base brésilienne tout en construisant à l'étranger."
+        "planB": "Portugal voor eenvoudige integratie en EU-toegang, VS voor ambitie, Argentinië/Uruguay voor regionale opties. Behoud de Braziliaanse basis terwijl u in het buitenland opbouwt."
       }
     },
     "norway": {
-      "name": "Norvège",
-      "region": "Europe du Nord",
-      "ruleOfGold": "Les ressources sont une richesse collective. L'excellence dans les normes égalitaires gagne.",
+      "name": "Noorwegen",
+      "region": "Noord-Europa",
+      "ruleOfGold": "Grondstoffen zijn collectieve rijkdom. Excellentie in egalitaire normen wint.",
       "pyramid": {
-        "top": "Fonds souverain et institutions démocratiques",
-        "institutions": "État transparent gérant la richesse des ressources",
-        "gatekeepers": "Système éducatif et standards professionnels",
-        "valueCreators": "Travailleurs qualifiés dans les secteurs énergie et tech",
-        "base": "Citoyens bénéficiant de la redistribution des ressources",
-        "realAsset": "Ressources naturelles bien gérées et confiance sociale"
+        "top": "Staatsinvesteringsfonds en democratische instellingen",
+        "institutions": "Transparante overheid die grondstoffenrijkdom beheert",
+        "gatekeepers": "Onderwijssysteem en beroepsnormen",
+        "valueCreators": "Gekwalificeerde werknemers in de energie- en techsector",
+        "base": "Burgers die profiteren van de herverdeling van grondstoffen",
+        "realAsset": "Goed beheerde natuurlijke hulpbronnen en sociaal vertrouwen"
       },
       "whoWins": [
         "Ceux embrassant les valeurs égalitaires",
@@ -3761,14 +3761,14 @@
     "qatar": {
       "name": "Qatar",
       "region": "Gemiddeld-Orient",
-      "ruleOfGold": "Tu es un invité dans le système. Performe, épargne et planifie ta sortie.",
+      "ruleOfGold": "U bent een gast in het systeem. Presteer, spaar en plan uw vertrek.",
       "pyramid": {
-        "top": "Famille royale et élite dirigeante",
-        "institutions": "Distribution des ressources contrôlée par l'État",
-        "gatekeepers": "Sponsors kafala et connexions gouvernementales",
-        "valueCreators": "Professionnels et travailleurs expatriés",
+        "top": "Koninklijke familie en heersende elite",
+        "institutions": "Door de staat gecontroleerde verdeling van grondstoffen",
+        "gatekeepers": "Kafala-sponsors en overheidsconnecties",
+        "valueCreators": "Expat-professionals en werknemers",
         "base": "Mein-d'œuvre migrante avec droits limités",
-        "realAsset": "Accès aux flux de richesse pétrolière et gazière"
+        "realAsset": "Toegang tot olie- en gasrijkdomstromen"
       },
       "whoWins": [
         "Professionnels expatriés à haute valeur",
@@ -3820,15 +3820,15 @@
     },
     "venezuela": {
       "name": "Vrezuela",
-      "region": "Amérique du Sud",
-      "ruleOfGold": "La crise est le système. Survivre grâce aux économies parallèles et options de sortie.",
+      "region": "Zuid-Amerika",
+      "ruleOfGold": "De crisis is het systeem. Overleef via parallelle economieën en vertrekopties.",
       "pyramid": {
-        "top": "Élite politique et militaires connectés aux ressources de l'État",
-        "institutions": "Appareil d'État effondré servant les insiders",
+        "top": "Politieke elite en militairen verbonden met staatsmiddelen",
+        "institutions": "Ingestort staatsapparaat dat insiders dient",
         "gatekeepers": "Inloggens au Parti, contacts militaires, contrôleurs de devises",
-        "valueCreators": "Survivants dans les économies parallèles",
-        "base": "Population naviguant hyperinflation et pénuries",
-        "realAsset": "Accès aux dollars et connexions au pouvoir"
+        "valueCreators": "Overlevenden in parallelle economieën",
+        "base": "Bevolking die hyperinflatie en tekorten navigeert",
+        "realAsset": "Toegang tot dollars en connecties met de macht"
       },
       "whoWins": [
         "Ceux avec sources de revenus en dollars",
@@ -3875,20 +3875,20 @@
           "Construire un revenu durable ailleurs",
           "Hulpr les membres de la famille à sortir"
         ],
-        "planB": "Colombie, Chili, Espagne ou USA pour intégration diaspora. Se concentrer sur le statut légal et les capacités de travail à distance."
+        "planB": "Colombia, Chili, Spanje of VS voor diaspora-integratie. Focus op legale status en mogelijkheden voor werken op afstand."
       }
     },
     "india": {
-      "name": "Inde",
-      "region": "Asie du Sud",
-      "ruleOfGold": "Naviguer caste, connexions et changement rapide. Construire à travers formel et informel simultanément.",
+      "name": "India",
+      "region": "Zuid-Azië",
+      "ruleOfGold": "Navigeer kaste, connecties en snelle verandering. Bouw gelijktijdig via formeel en informeel.",
       "pyramid": {
-        "top": "Nexus politique-affaires et élites traditionnelles",
-        "institutions": "Bureaucratie démocratique mais complexe",
-        "gatekeepers": "Réseaux de caste, connexions politiques, gardiens bureaucratiques",
-        "valueCreators": "Entrepreneurs tech, professionnels et propriétaires de petites entreprises",
-        "base": "Massive main-d'œuvre informelle",
-        "realAsset": "Jugaad (résolution créative) et capital réseau"
+        "top": "Politiek-zakelijk netwerk en traditionele elites",
+        "institutions": "Democratische maar complexe bureaucratie",
+        "gatekeepers": "Kastenetwerken, politieke connecties, bureaucratische poortwachters",
+        "valueCreators": "Tech-ondernemers, professionals en kleine bedrijfseigenaren",
+        "base": "Massale informele arbeidskracht",
+        "realAsset": "Jugaad (creatief oplossen) en netwerkkapitaal"
       },
       "whoWins": [
         "Entrepreneurs du secteur tech",
@@ -3935,20 +3935,20 @@
           "Créer des flux de revenus passifs",
           "Considérer des alternatives de résidence"
         ],
-        "planB": "EAU/Singapour pour options régionales, USA/Canada/UK pour intégration diaspora, Europe pour qualité de vie. Les compétences IT fortes sont votre passeport."
+        "planB": "VAE/Singapore voor regionale opties, VS/Canada/VK voor diaspora-integratie, Europa voor levenskwaliteit. Sterke IT-vaardigheden zijn uw paspoort."
       }
     },
     "turkey": {
-      "name": "Turquie",
+      "name": "Turkije",
       "region": "Gemiddeld-Orient",
-      "ruleOfGold": "Les vents politiques changent constamment. Construire à travers les frontières et rester adaptable.",
+      "ruleOfGold": "Politieke winden veranderen voortdurend. Bouw over grenzen heen en blijf aanpasbaar.",
       "pyramid": {
-        "top": "Leadership politique et élite d'affaires connectée",
-        "institutions": "Appareil d'État entre tensions laïques et religieuses",
+        "top": "Politiek leiderschap en geconnecteerde zakelijke elite",
+        "institutions": "Staatsapparaat te midden van seculiere en religieuze spanningen",
         "gatekeepers": "Inloggens politiques, réseaux d'affaires, courtiers de pouvoir régionaux",
-        "valueCreators": "Entrepreneurs naviguant entre systèmes",
-        "base": "Population entre modernisation et tradition",
-        "realAsset": "Adaptabilité et connexions multi-directionnelles"
+        "valueCreators": "Ondernemers die tussen systemen navigeren",
+        "base": "Bevolking tussen modernisering en traditie",
+        "realAsset": "Aanpassingsvermogen en multidirectionele connecties"
       },
       "whoWins": [
         "Ceux lisant les signaux politiques correctement",
@@ -3999,16 +3999,16 @@
       }
     },
     "saudi-arabia": {
-      "name": "Arabie Saoudite",
+      "name": "Saudi-Arabië",
       "region": "Gemiddeld-Orient",
-      "ruleOfGold": "Joue ton rôle, accumule la richesse, ne défie jamais l'ordre. Tu es temporaire.",
+      "ruleOfGold": "Speel uw rol, vergaar rijkdom, daag de orde nooit uit. U bent tijdelijk.",
       "pyramid": {
-        "top": "Famille royale et autorité religieuse",
-        "institutions": "État contrôlant la distribution de la richesse pétrolière",
-        "gatekeepers": "Sponsors gouvernementaux, entreprises connectées",
-        "valueCreators": "Professionnels expatriés et secteurs Vision 2030",
+        "top": "Koninklijke familie en religieuze autoriteit",
+        "institutions": "Staat die de verdeling van olierijkdom controleert",
+        "gatekeepers": "Overheidssponsors, geconnecteerde bedrijven",
+        "valueCreators": "Expat-professionals en Vision 2030-sectoren",
         "base": "Mein-d'œuvre migrante",
-        "realAsset": "Proximité à la richesse pétrolière et faveur royale"
+        "realAsset": "Nabijheid tot olierijkdom en koninklijke gunst"
       },
       "whoWins": [
         "Professionnels expatriés à haute valeur",
@@ -4055,7 +4055,7 @@
           "Construire un revenu indépendant du lieu",
           "Exécuter la transition planifiée"
         ],
-        "planB": "EAU pour présence continue au Golfe, Singapour ou Europe pour l'étape suivante. Utiliser le capital accumulé pour acheter la résidence ailleurs."
+        "planB": "VAE voor voortdurende aanwezigheid in de Golf, Singapore of Europa als volgende stap. Gebruik opgebouwd kapitaal om elders een verblijfsvergunning te kopen."
       }
     }
   },
@@ -5081,7 +5081,7 @@
       }
     },
     "france": {
-      "name": "France",
+      "name": "Frankrijk",
       "region": "Western Europe",
       "ruleOfGold": "The system protects stability, not explosion. Play the long game within the rules.",
       "pyramid": {
@@ -5388,7 +5388,7 @@
         "top": "Political elites and oil magnates",
         "institutions": "Weak state with pockets of competence",
         "gatekeepers": "Inloggens, 'settlement' et accès",
-        "valueCreators": "Entrepreneurs, diaspora, techies",
+        "valueCreators": "Ondernemers, diaspora, techneuten",
         "base": "Massive population seeking opportunities",
         "realAsset": "Energy, network, and adaptability"
       },
@@ -6735,7 +6735,7 @@
       "explore": "Explorer les land",
       "exploreDesc": "Vergelijken, comprendre, découvrir",
       "relocate": "Prepare a move",
-      "relocateDesc": "Visa, budget, checklist",
+      "relocateDesc": "Visum, budget, checklist",
       "invest": "Optimize my taxation",
       "investDesc": "Simulator, special regimes",
       "retire": "Plan my retirement",
@@ -6770,7 +6770,7 @@
       "checklistDesc": "Alleses les démarches, étape par étape",
       "budgetSim": "Budget Simulator",
       "budgetSimDesc": "Projetez votre budget mensuel dans le land cible",
-      "timeline": "Timeline",
+      "timeline": "Tijdlijn",
       "timelineDesc": "12-month procedure timeline",
       "familySpace": "Family Space",
       "familySpaceDesc": "Plan together with voting and consensus",
@@ -6827,7 +6827,7 @@
       "country": "Land",
       "studies": "Studies",
       "career": "Carrière",
-      "business": "Business",
+      "business": "Zakelijk",
       "investment": "Investering",
       "relationship": "Relatie",
       "other": "Ander"
@@ -7111,7 +7111,7 @@
       "geopolitics": "Geopolitiek",
       "historical": "Historische erfenis",
       "power": "Power",
-      "social": "Social",
+      "social": "Sociaal",
       "unspoken": "Nee-dits",
       "negotiation": "Negotiation",
       "trust": "Trust",
@@ -7204,7 +7204,7 @@
       },
       "trend": {
         "escalating": "Escalating",
-        "stable": "Stable",
+        "stable": "Stabiel",
         "de-escalating": "De-escalating"
       },
       "zones": {
@@ -7705,45 +7705,45 @@
       }
     },
     "signals": {
-      "title": "Signaux faibles détectés",
-      "subtitle": "Patterns et corrélations entre vos zones",
-      "nourishingPattern": "Pattern nourricier émergent",
-      "blockingPattern": "Pattern bloquant émergent",
-      "fragilityPattern": "Pattern de fragilité émergent",
-      "premature_crushingPattern": "Pattern d'écrasement prématuré émergent",
-      "multipleZones": "{{count}} zones dormantes partagent cette dynamique",
-      "suggestMonitor": "Surveiller l'évolution conjointe",
-      "escalatingZone": "Zone en escalade potentielle",
-      "multipleTensions": "Accumulation de tensions",
-      "suggestIntervene": "Intervention préventive recommandée",
-      "stuckZone": "Zone bloquée depuis longtemps",
-      "stabilizingZone": "Zone en stabilisation",
-      "suggestReview": "Revoir la pertinence de cette zone",
-      "positiveEmergent": "Émergence positive détectée",
-      "nourishingDynamic": "Dynamique nourricière",
-      "suggestAmplify": "Amplifier cette dynamique",
+      "title": "Gedetecteerde zwakke signalen",
+      "subtitle": "Patronen en correlaties tussen uw zones",
+      "nourishingPattern": "Opkomend voedend patroon",
+      "blockingPattern": "Opkomend blokkerend patroon",
+      "fragilityPattern": "Opkomend kwetsbaarheidspatroon",
+      "premature_crushingPattern": "Opkomend patroon van premature onderdrukking",
+      "multipleZones": "{{count}} slapende zones delen deze dynamiek",
+      "suggestMonitor": "Gezamenlijke evolutie monitoren",
+      "escalatingZone": "Zone met mogelijke escalatie",
+      "multipleTensions": "Opeenstapeling van spanningen",
+      "suggestIntervene": "Preventieve interventie aanbevolen",
+      "stuckZone": "Zone al lang geblokkeerd",
+      "stabilizingZone": "Zone in stabilisatie",
+      "suggestReview": "Relevantie van deze zone herzien",
+      "positiveEmergent": "Positieve opkomst gedetecteerd",
+      "nourishingDynamic": "Voedende dynamiek",
+      "suggestAmplify": "Deze dynamiek versterken",
       "noSignals": "Geen signal faible détecté",
-      "addZones": "Ajoutez plus de zones pour activer la détection",
+      "addZones": "Voeg meer zones toe om de detectie te activeren",
       "viewZone": "Bekijken la zone",
-      "intensity": "Intensité",
-      "detectedAt": "Détecté le",
-      "relatedZones": "Zones concernées"
+      "intensity": "Intensiteit",
+      "detectedAt": "Gedetecteerd op",
+      "relatedZones": "Betrokken zones"
     },
     "preview": {
-      "description": "Découvrez le module Latent avec des exemples. Passez à Pro pour créer vos propres zones."
+      "description": "Ontdek de Latent-module met voorbeelden. Upgrade naar Pro om uw eigen zones aan te maken."
     },
     "demo": {
       "zone1": {
-        "title": "Tensions familiales non-dites",
-        "desc": "Désaccords latents sur les priorités de vie"
+        "title": "Onuitgesproken familiale spanningen",
+        "desc": "Latente meningsverschillen over levensprioriteiten"
       },
       "zone2": {
-        "title": "Repositionnement professionnel",
-        "desc": "Envie de changement mais contraintes financières"
+        "title": "Professionele heroriëntatie",
+        "desc": "Verlangen naar verandering maar financiële beperkingen"
       },
       "zone3": {
         "title": "Relation avec le land d'origine",
-        "desc": "Attentes familiales vs choix de vie"
+        "desc": "Familieverwachtingen versus levenskeuzes"
       }
     }
   },
@@ -7777,7 +7777,7 @@
       "view": "Bekijken détails",
       "viewDetails": "Bekijken les détails",
       "addAlternative": "Toevoegen une alternative",
-      "linkToTraceOS": "Lier à TraceOS"
+      "linkToTraceOS": "Koppelen aan TraceOS"
     },
     "fields": {
       "title": "Titel",
@@ -7815,8 +7815,8 @@
       "legal": "Juridisch",
       "ethical": "Ethisch",
       "hr": "RH",
-      "operations": "Opérations",
-      "finance": "Finance"
+      "operations": "Operaties",
+      "finance": "Financiën"
     },
     "nature": {
       "resource_commitment": "Middelentoezegging",
@@ -7896,7 +7896,7 @@
     },
     "create": {
       "title": "Detect irreversibility threshold",
-      "button": "Nouveau seuil",
+      "button": "Nieuwe drempel",
       "warning": "This form engages the validator's moral responsibility"
     },
     "sealed": {
@@ -7911,36 +7911,36 @@
       "audit": "Audit"
     },
     "export": {
-      "success": "Certificat PDF généré avec succès",
+      "success": "PDF-certificaat succesvol gegenereerd",
       "error": "Fout lors de la génération du PDF"
     },
     "criticality": {
-      "title": "Score de criticité",
+      "title": "Kritikaliteitsscore",
       "low": "Laag",
       "medium": "Gemiddeld",
       "high": "Hoog",
       "critical": "Kritiek"
     },
     "disclaimer": {
-      "title": "Outil de documentation",
-      "text": "Ce module vous aide à documenter les seuils franchis. Il a une valeur de clarification personnelle, et non juridique."
+      "title": "Documentatietool",
+      "text": "Deze module helpt u bij het documenteren van overschreden drempels. Het heeft een waarde van persoonlijke verduidelijking, niet juridisch."
     },
     "demo": {
       "threshold1": {
-        "title": "Décision de licenciement collectif",
-        "context": "Restructuration suite à perte de marché majeur"
+        "title": "Besluit tot collectief ontslag",
+        "context": "Herstructurering na verlies van een belangrijke markt"
       },
       "threshold2": {
-        "title": "Cession de filiale stratégique",
-        "context": "Recentrage sur le cœur de métier"
+        "title": "Verkoop van strategische dochteronderneming",
+        "context": "Heroriëntatie op de kernactiviteit"
       },
       "threshold3": {
-        "title": "Fermeture site de production",
-        "context": "Délocalisation vers zone à moindre coût"
+        "title": "Sluiting van productielocatie",
+        "context": "Verplaatsing naar een regio met lagere kosten"
       }
     },
     "preview": {
-      "description": "Découvrez le module Irreversa avec des exemples. Passez à Pro pour documenter vos propres seuils."
+      "description": "Ontdek de Irreversa-module met voorbeelden. Upgrade naar Pro om uw eigen drempels te documenteren."
     }
   },
   "pricing": {
@@ -8107,14 +8107,14 @@
     "regenerate": "Opnieuw genereren",
     "disclaimer": "Dit rapport is een analysetool. Het vormt geen juridisch, financieel of fiscaal advies.",
     "sections": {
-      "executive": "Résumé exécutif",
+      "executive": "Managementsamenvatting",
       "profile": "Profiel client",
-      "analysis": "Analyse comparative",
-      "risks": "Points d'attention",
-      "nextSteps": "Prochaines étapes",
-      "compliance": "Vérification conformité"
+      "analysis": "Vergelijkende analyse",
+      "risks": "Aandachtspunten",
+      "nextSteps": "Volgende stappen",
+      "compliance": "Nalevingscontrole"
     },
-    "preview": "Aperçu du rapport"
+    "preview": "Rapportvoorbeeld"
   },
   "orientationHub": {
     "noPromise": "Geen belofte",
@@ -8477,7 +8477,7 @@
     "security": "Veiligheid",
     "securityTab": "Veiligheid",
     "administration": "Administratie",
-    "adminTab": "Admin",
+    "adminTab": "Beheer",
     "fakeMedications": "Vervalste medicijnen",
     "prevalence": "Prevalentie",
     "affectedCategories": "Getroffen categorieën",
@@ -8599,7 +8599,7 @@
     "jsonExport": "JSON export",
     "jsonExportSuccess": "JSON data exported",
     "dataLastUpdated": "Data last updated on",
-    "sourceCount": "sources",
+    "sourceCount": "bronnen",
     "highReliability": "High reliability",
     "mediumReliability": "Medium reliability",
     "lowReliability": "Low reliability",
@@ -8612,7 +8612,7 @@
     "sectorName": "Sector",
     "howToAvoid": "How to avoid",
     "developmentSince": "Since",
-    "developmentSource": "Source"
+    "developmentSource": "Bron"
   },
   "news": {
     "badge": "Economisch Nieuws",
@@ -8752,11 +8752,11 @@
     "today": "Vandaag",
     "upcoming": "Aanstaand",
     "overdue": "Verlaat",
-    "completed": "Complétées",
-    "completedSingle": "Complété",
+    "completed": "Afgerond",
+    "completedSingle": "Afgerond",
     "overdueCount": "Verlaat ({{count}})",
-    "upcomingDeadlines": "Prochaines échéances ({{count}})",
-    "recentlyCompleted": "Récemment complétées",
+    "upcomingDeadlines": "Aankomende deadlines ({{count}})",
+    "recentlyCompleted": "Recent afgerond",
     "noUpcoming": "Geene échéance à venir. Définissez des échéances pour vos actions !",
     "noCompleted": "Geene action complétée avec échéance."
   },
@@ -8835,7 +8835,7 @@
     "subtitle": "Deux âmes, deux land, un même destin",
     "rule1Title": "2 Characters",
     "rule1Desc": "Chaque joueur contrôle 2 personnages dans des land différents",
-    "rule2Title": "1 Aspiration",
+    "rule2Title": "1 Aspiratie",
     "rule2Desc": "Both characters share the same life goal",
     "rule3Title": "Reunion",
     "rule3Desc": "First to reunite their characters wins",
@@ -8950,7 +8950,7 @@
       "shortcutsDesc": "Acties risquées qui peuvent rapporter gros... ou tout détruire.",
       "blackMarket": "Diché noir",
       "fakeDocs": "Fake Documents",
-      "corruption": "Corruption",
+      "corruption": "Corruptie",
       "note": "Geene action n'est 'gratuite'. Le jeu récompense les joueurs qui savent quand agir et quand attendre."
     },
     "turnFlow": {
@@ -8988,7 +8988,7 @@
       "successDesc": "The action succeeds. You get the promised gains.",
       "failureTitle": "Failure (30-40%)",
       "failureDesc": "The action fails. You lose invested resources.",
-      "catastropheTitle": "Catastrophe (10-20%)",
+      "catastropheTitle": "Catastrofe (10-20%)",
       "catastropheDesc": "Devastating consequences: prison, deportation, losing everything...",
       "moral": "The game doesn't judge these choices. It shows that 'shortcuts' have a statistical price."
     },
@@ -9050,7 +9050,7 @@
     "minorTitle": "Acties mineures",
     "used": "Used",
     "costs": "Costs",
-    "gains": "Gains",
+    "gains": "Winsten",
     "confirm": "Bevestigen",
     "riskWarning": "Risico d'échec : {{chance}}%",
     "work": {
@@ -9144,7 +9144,7 @@
         "description": "Working from home becomes the norm"
       },
       "inflation": {
-        "label": "Inflation",
+        "label": "Inflatie",
         "description": "Cost of living increases everywhere"
       },
       "openBorders": {
@@ -9679,7 +9679,7 @@
       "description": "Loss of a parent"
     },
     "divorce": {
-      "label": "Divorce",
+      "label": "Scheiding",
       "description": "Separation from spouse"
     },
     "childIllness": {
@@ -9738,7 +9738,7 @@
     }
   },
   "character": {
-    "aspirations": "Aspirations",
+    "aspirations": "Aspiraties",
     "startingResources": "Starting Resources",
     "selectCharacter": "Choose your character",
     "drawNew": "Draw new characters"
@@ -9828,7 +9828,7 @@
     "risksTaken": "Risico's pris",
     "risksSucceeded": "Successes",
     "risksFailed": "Failures",
-    "risksCatastrophic": "Catastrophes",
+    "risksCatastrophic": "Catastrofes",
     "actionsCompleted": "Acties réussies",
     "moneyLost": "Money lost",
     "healthLost": "Health lost",
@@ -9964,7 +9964,7 @@
       "moderate": "Moderate",
       "high": "Hoog",
       "very_high": "Very High",
-      "rare": "Rare",
+      "rare": "Zeldzaam",
       "occasional": "Occasional",
       "frequent": "Frequent",
       "severe": "Severe"
@@ -9987,7 +9987,7 @@
       "limited": "Limited"
     },
     "qualityLevels": {
-      "excellent": "Excellent",
+      "excellent": "Uitstekend",
       "good": "Good",
       "adequate": "Adequate",
       "limited": "Limited",
@@ -10009,7 +10009,7 @@
     "error": "Unable to generate music",
     "loadError": "Fout de chargement audio",
     "play": "Play",
-    "pause": "Pause",
+    "pause": "Pauze",
     "volume": "Volume"
   },
   "subscription": {
@@ -10066,9 +10066,9 @@
       "typicalDay": "Typical Day",
       "yearOne": "Year One",
       "mistakes": "Fouts",
-      "admin": "Admin",
+      "admin": "Beheer",
       "costs": "Costs",
-      "culture": "Culture",
+      "culture": "Cultuur",
       "communities": "Communities"
     },
     "typicalDay": {
@@ -10099,7 +10099,7 @@
     "mistakes": {
       "title": "Fouts courantes par phase",
       "subtitle": "What newcomers get wrong",
-      "phase": "Phase",
+      "phase": "Fase",
       "mistake": "Fout",
       "consequence": "Consequence",
       "prevention": "Prevention",
@@ -10148,7 +10148,7 @@
       "hr": "HR",
       "it": "IT",
       "strategy": "Strategy",
-      "finance": "Finance",
+      "finance": "Financiën",
       "legal": "Legal",
       "operations": "Operations"
     },
@@ -10157,116 +10157,116 @@
       "approvalsCount": "{{count}} approvals",
       "stepsCount": "{{count}} steps"
     },
-    "badge": "TraceOS - Mémoire Décisionnelle",
-    "title": "Traçabilité Intellectuelle",
-    "subtitle": "Mémoire stratégique de votre organisation",
+    "badge": "TraceOS - Besluitvormingsgeheugen",
+    "title": "Intellectuele traceerbaarheid",
+    "subtitle": "Strategisch geheugen van uw organisatie",
     "export": {
       "button": "Exporteren",
-      "format": "Format d'export",
-      "pdf": "Document PDF",
-      "json": "Données JSON",
-      "pdfSuccess": "Export PDF réussi",
-      "jsonSuccess": "Export JSON réussi",
+      "format": "Exportformaat",
+      "pdf": "PDF-document",
+      "json": "JSON-gegevens",
+      "pdfSuccess": "PDF-export geslaagd",
+      "jsonSuccess": "JSON-export geslaagd",
       "error": "Fout lors de l'export",
       "loginRequired": "Log in to manage exports"
     },
-    "newDecision": "Nouvelle décision",
+    "newDecision": "Nieuw besluit",
     "searchPlaceholder": "Zoeken une décision...",
-    "disclaimer": "TraceOS est un outil de documentation et de traçabilité. Il ne remplace pas le jugement humain ni le processus de décision.",
+    "disclaimer": "TraceOS is een documentatie- en traceerbaarheidstool. Het vervangt niet het menselijk oordeel of het besluitvormingsproces.",
     "paywall": {
-      "title": "Fonctionnalité Pro",
-      "description": "Accédez à TraceOS, le module de traçabilité décisionnelle pour les organisations."
+      "title": "Pro-functionaliteit",
+      "description": "Krijg toegang tot TraceOS, de module voor besluitvormingstraceerbaarheid voor organisaties."
     },
     "values": {
       "tree": {
-        "title": "Arbre décisionnel",
-        "desc": "Visualisez les enchaînements"
+        "title": "Besluitvormingsboom",
+        "desc": "Visualiseer de opeenvolging"
       },
       "memory": {
-        "title": "Mémoire stratégique",
-        "desc": "Conservez les hypothèses"
+        "title": "Strategisch geheugen",
+        "desc": "Bewaar de hypothesen"
       },
       "branches": {
-        "title": "Branches abandonnées",
-        "desc": "Gardez trace des alternatives"
+        "title": "Verlaten vertakkingen",
+        "desc": "Houd alternatieven bij"
       },
       "governance": {
-        "title": "Gouvernance",
-        "desc": "Historique non modifiable"
+        "title": "Governance",
+        "desc": "Onwijzigbare historie"
       }
     },
     "tabs": {
       "dashboard": "Dashboard",
-      "tree": "Arbre",
-      "graph": "Graphe",
+      "tree": "Boom",
+      "graph": "Grafiek",
       "tags": "Tags",
-      "review": "Relecture",
-      "governance": "Gouvernance"
+      "review": "Herziening",
+      "governance": "Governance"
     },
     "tree": {
-      "viewTree": "Arbre",
-      "viewTimeline": "Timeline",
-      "decisions": "décisions",
-      "validated": "validées",
-      "pending": "en attente"
+      "viewTree": "Boom",
+      "viewTimeline": "Tijdlijn",
+      "decisions": "besluiten",
+      "validated": "gevalideerd",
+      "pending": "in afwachting"
     },
     "timeline": {
-      "subDecision": "sous-décision"
+      "subDecision": "subbesluit"
     },
     "status": {
       "pending": "In afwachting",
-      "validated": "Validée",
-      "abandoned": "Abandonnée"
+      "validated": "Gevalideerd",
+      "abandoned": "Verlaten"
     },
     "node": {
-      "context": "Contexte",
-      "mainHypothesis": "Hypothèse principale",
-      "alternativeHypotheses": "Hypothèses alternatives",
-      "constraints": "Contraintes identifiées",
-      "decisionTaken": "Décision prise",
-      "abandonedBranches": "Branches abandonnées"
+      "context": "Context",
+      "mainHypothesis": "Hoofdhypothese",
+      "alternativeHypotheses": "Alternatieve hypothesen",
+      "constraints": "Geïdentificeerde beperkingen",
+      "decisionTaken": "Genomen besluit",
+      "abandonedBranches": "Verlaten vertakkingen"
     },
     "form": {
-      "title": "Nouvelle décision",
-      "titleSub": "Nouvelle sous-décision",
-      "parentDecision": "Rattachée à",
-      "decisionTitle": "Intitulé de la décision",
-      "titlePlaceholder": "Ex: Choix du nouveau CRM",
-      "context": "Contexte",
-      "contextPlaceholder": "Décrivez le contexte qui a mené à cette décision...",
-      "mainHypothesis": "Hypothèse principale",
-      "hypothesisPlaceholder": "L'hypothèse sur laquelle repose cette décision...",
-      "alternativeHypotheses": "Hypothèses alternatives",
-      "alternativePlaceholder": "Une autre hypothèse envisagée...",
+      "title": "Nieuw besluit",
+      "titleSub": "Nieuw subbesluit",
+      "parentDecision": "Gekoppeld aan",
+      "decisionTitle": "Titel van het besluit",
+      "titlePlaceholder": "Bijv.: Keuze van het nieuwe CRM",
+      "context": "Context",
+      "contextPlaceholder": "Beschrijf de context die tot dit besluit heeft geleid...",
+      "mainHypothesis": "Hoofdhypothese",
+      "hypothesisPlaceholder": "De hypothese waarop dit besluit is gebaseerd...",
+      "alternativeHypotheses": "Alternatieve hypothesen",
+      "alternativePlaceholder": "Een andere overwogen hypothese...",
       "addAlternative": "Toevoegen une hypothèse",
-      "constraints": "Contraintes identifiées",
-      "constraintPlaceholder": "Ex: Budget limité, Deadline serrée...",
+      "constraints": "Geïdentificeerde beperkingen",
+      "constraintPlaceholder": "Bijv.: Beperkt budget, Strakke deadline...",
       "addConstraint": "Toevoegen une contrainte",
-      "decisionTaken": "Décision prise",
-      "decisionPlaceholder": "La décision finale retenue...",
+      "decisionTaken": "Genomen besluit",
+      "decisionPlaceholder": "Het uiteindelijk gekozen besluit...",
       "author": "Auteur",
       "authorPlaceholder": "Naam ou rôle",
-      "scope": "Périmètre",
+      "scope": "Bereik",
       "scopePlaceholder": "Selecteren...",
-      "scopeStrategic": "Stratégique",
-      "scopeOperational": "Opérationnel",
-      "scopeTactical": "Tactique",
-      "scopeProject": "Projet",
+      "scopeStrategic": "Strategisch",
+      "scopeOperational": "Operationeel",
+      "scopeTactical": "Tactisch",
+      "scopeProject": "Project",
       "date": "Datum",
       "save": "Opslaan la décision"
     },
     "review": {
-      "title": "Relecture stratégique",
-      "desc": "Analysez l'enchaînement des décisions et identifiez les moments de rupture.",
-      "selectDecision": "Sélectionnez une décision dans l'arbre pour lancer une relecture."
+      "title": "Strategische herziening",
+      "desc": "Analyseer de opeenvolging van besluiten en identificeer breekpunten.",
+      "selectDecision": "Selecteer een besluit in de boom om een herziening te starten."
     },
     "governance": {
-      "title": "Gouvernance & Accès",
-      "desc": "Gérez les droits d'accès et la traçabilité des modifications.",
+      "title": "Governance & Toegang",
+      "desc": "Beheer de toegangsrechten en de traceerbaarheid van wijzigingen.",
       "appendOnly": "Append-only",
-      "appendOnlyDesc": "L'historique est non modifiable",
-      "roles": "Gestion des rôles",
-      "rolesDesc": "Lecture / Écriture par utilisateur"
+      "appendOnlyDesc": "De historie is onwijzigbaar",
+      "roles": "Rollenbeheer",
+      "rolesDesc": "Lezen / Schrijven per gebruiker"
     },
     "filters": {
       "tags": "Tags"
@@ -10291,89 +10291,89 @@
       "secureStorageDesc": "Your exports are securely stored and only accessible to you."
     },
     "notifications": {
-      "title": "Notifications",
+      "title": "Meldingen",
       "on": "On",
       "off": "Off",
-      "disabled": "Notifications désactivées",
+      "disabled": "Meldingen uitgeschakeld",
       "empty": "Geene notification",
       "allGood": "Alles est à jour !",
       "markAllRead": "Alles marquer comme lu",
-      "oldPending": "Décision en attente depuis longtemps",
-      "oldPendingMsg": "Cette décision est en attente depuis {{days}} jours",
-      "pendingReminder": "Rappel de décision",
-      "pendingReminderMsg": "Décision en attente depuis {{days}} jours"
+      "oldPending": "Besluit lang in afwachting",
+      "oldPendingMsg": "Dit besluit staat al {{days}} dagen in afwachting",
+      "pendingReminder": "Besluitherinnering",
+      "pendingReminderMsg": "Besluit staat al {{days}} dagen in afwachting"
     },
     "comments": {
-      "title": "Commentaires",
-      "added": "Commentaire ajouté",
-      "updated": "Commentaire modifié",
-      "deleted": "Commentaire supprimé",
+      "title": "Opmerkingen",
+      "added": "Opmerking toegevoegd",
+      "updated": "Opmerking gewijzigd",
+      "deleted": "Opmerking verwijderd",
       "error": "Fout lors de l'opération",
       "empty": "Geen commentaire",
       "placeholder": "Toevoegen un commentaire..."
     },
     "templates": {
-      "title": "Templates de décision",
-      "description": "Utilisez un template pour accélérer la création de votre décision",
-      "use": "Utiliser",
+      "title": "Besluitsjablonen",
+      "description": "Gebruik een sjabloon om het aanmaken van uw besluit te versnellen",
+      "use": "Gebruiken",
       "categories": {
         "rh": "RH",
         "it": "IT",
-        "strategy": "Stratégie",
-        "finance": "Finance",
-        "legal": "Juridique",
-        "operations": "Opérations"
+        "strategy": "Strategie",
+        "finance": "Financiën",
+        "legal": "Juridisch",
+        "operations": "Operaties"
       }
     },
     "graph": {
-      "title": "Vue graphique interactive",
-      "instructions": "Glissez pour déplacer les nœuds, scroll pour zoomer",
+      "title": "Interactieve grafische weergave",
+      "instructions": "Sleep om knooppunten te verplaatsen, scroll om te zoomen",
       "empty": "Geene décision à afficher"
     },
     "tags": {
       "title": "Tags",
       "manage": "Tags",
-      "management": "Gestion des tags",
-      "managementDesc": "Créez et organisez vos étiquettes pour catégoriser vos décisions.",
-      "new": "Nouveau",
-      "create": "Créer le tag",
+      "management": "Tagbeheer",
+      "managementDesc": "Maak en organiseer uw labels om uw besluiten te categoriseren.",
+      "new": "Nieuw",
+      "create": "Tag aanmaken",
       "namePlaceholder": "Naam du tag",
       "empty": "Geen tag créé",
-      "added": "Tag ajouté",
-      "deleted": "Tag supprimé",
+      "added": "Tag toegevoegd",
+      "deleted": "Tag verwijderd",
       "error": "Fout lors de l'opération"
     },
     "dashboard": {
       "title": "Dashboard analytique",
-      "subtitle": "Vue d'ensemble de vos décisions",
+      "subtitle": "Overzicht van uw besluiten",
       "totalDecisions": "Totaal décisions",
-      "validated": "Validées",
+      "validated": "Gevalideerd",
       "pending": "In afwachting",
-      "abandoned": "Abandonnées",
-      "abandonedBranches": "Branches abandonnées",
-      "documentedAlternatives": "Alternatives documentées",
-      "maxDepth": "Profondeur max",
-      "decisionLevels": "niveaux de décision",
-      "authors": "Contributeurs",
-      "uniqueAuthors": "auteurs uniques",
-      "timeline": "Évolution (6 derniers mois)",
-      "byScope": "Par périmètre",
-      "topContributors": "Principaux contributeurs",
+      "abandoned": "Verlaten",
+      "abandonedBranches": "Verlaten vertakkingen",
+      "documentedAlternatives": "Gedocumenteerde alternatieven",
+      "maxDepth": "Maximale diepte",
+      "decisionLevels": "besluitniveaus",
+      "authors": "Bijdragers",
+      "uniqueAuthors": "unieke auteurs",
+      "timeline": "Verloop (afgelopen 6 maanden)",
+      "byScope": "Per bereik",
+      "topContributors": "Belangrijkste bijdragers",
       "noData": "Geene donnée disponible",
       "noContributors": "Geen contributeur"
     },
     "email": {
       "sendAlerts": "Verzenden les alertes par email",
-      "sent": "Alerte envoyée par email",
+      "sent": "Waarschuwing per e-mail verzonden",
       "noPending": "Geene décision en attente depuis plus de 7 jours",
       "error": "Fout lors de l'envoi de l'alerte",
-      "noEmail": "Email non disponible"
+      "noEmail": "E-mail niet beschikbaar"
     },
     "collaboration": {
-      "online": "en ligne",
-      "you": "Vous",
-      "editing": "Édite",
-      "viewing": "Consulte"
+      "online": "online",
+      "you": "U",
+      "editing": "Bewerkt",
+      "viewing": "Bekijkt"
     },
     "quality": {
       "title": "Quality Score",
@@ -10405,7 +10405,7 @@
       "noDate": "✗ Datum manquante",
       "validated": "✓ Decision validated",
       "pending": "○ In afwachting de validation",
-      "excellent": "Excellent",
+      "excellent": "Uitstekend",
       "good": "Good",
       "adequate": "Adequate",
       "needsWork": "Needs work",
@@ -10567,7 +10567,7 @@
     "descStable": "Your privileged situation protects you from certain risks, but other challenges await you. Here's what to anticipate.",
     "descUnstable": "This section is not here to scare, but to inform and protect. Official paths are longer but infinitely safer.",
     "descDynamic": "Risico's spécifiques pour un trajet {{origin}} → {{destination}}.",
-    "infoProtection": "Information = Protection",
+    "infoProtection": "Informatie = Bescherming",
     "noJudgment": "Geen jugement, que de la prévention",
     "realStats": "Real statistics",
     "warningSignals": "Warning signals",
@@ -10590,7 +10590,7 @@
       "sosMed": "SOS Mediterranean",
       "laborInspection": "Labor Inspection France",
       "ccem": "Committee Against Modern Slavery",
-      "franceDiplomatie": "France Diplomatie - Visas",
+      "franceDiplomatie": "France Diplomatie - Visa",
       "signalArnaques": "Signal-Arnaques",
       "mouvementNid": "Mouvement du Nid",
       "alcNice": "ALC Nice Association",
@@ -10826,7 +10826,7 @@
       "customs": "Customs & Logistics",
       "partners": "Partner Reliability",
       "poc": "POC Planner",
-      "timeline": "Timeline",
+      "timeline": "Tijdlijn",
       "stakeholders": "Key Stakeholders"
     },
     "scores": {
@@ -10869,11 +10869,11 @@
       "addCompetitor": "Toevoegen un concurrent",
       "name": "Naam",
       "type": "Type",
-      "implantation": "Implantation",
+      "implantation": "Vestiging",
       "maturity": "Maturity",
       "types": {
-        "local": "Local",
-        "international": "International",
+        "local": "Lokaal",
+        "international": "Internationaal",
         "stateOwned": "State-owned",
         "informal": "Informal"
       }
@@ -10881,7 +10881,7 @@
     "frictionRisks": {
       "title": "Risico's de friction",
       "description": "Potential blocking points",
-      "redFlags": "Red Flags",
+      "redFlags": "Rode vlaggen",
       "protections": "Protections in place",
       "addFlag": "Toevoegen un red flag",
       "severity": {
@@ -10968,7 +10968,7 @@
         "access": "Gives access"
       },
       "reliability": "Reliability",
-      "redFlag": "Red Flag"
+      "redFlag": "Rode vlag"
     },
     "export": {
       "governance": "Governance & Terrain (B2B)",
@@ -10980,7 +10980,7 @@
     "title": "Advanced Governance",
     "description": "Mapping of actors, intermediation patterns, partners and real delays",
     "items": "items",
-    "frameworkBtn": "Framework",
+    "frameworkBtn": "Raamwerk",
     "frameworkTitle": "Governance Framework",
     "sector": "Sector",
     "sectorPlaceholder": "e.g.: healthcare, finance, telecom...",
@@ -11015,7 +11015,7 @@
       "other": "Other"
     },
     "powerTypes": {
-      "sign": "Signature",
+      "sign": "Handtekening",
       "approve": "Approval",
       "block": "Blocking",
       "grant_access": "Decision-maker access",
@@ -11078,7 +11078,7 @@
     "patternType": "Pattern type",
     "patternDescription": "Beschrijving neutre",
     "signals": "Warning signals",
-    "protections": "Protections",
+    "protections": "Beschermingen",
     "riskLevel": "Risk level",
     "partnerType": "Partnership type",
     "mandatoryPartner": "Mandatory partnership",
@@ -11094,7 +11094,7 @@
     "delayFactors": "Delay factors",
     "cashflowImpact": "Cashflow impact",
     "confidence": "Confidence",
-    "sources": "Sources",
+    "sources": "Bronnen",
     "exportPdf": "Exporteren PDF",
     "exporting": "Exporting...",
     "exportSuccess": "PDF exported successfully",
@@ -11135,8 +11135,8 @@
       "title": "Governance Map",
       "add": "Toevoegen",
       "cancel": "Annuleren",
-      "exportCsv": "Export CSV",
-      "exportPdf": "Export PDF",
+      "exportCsv": "CSV exporteren",
+      "exportPdf": "PDF exporteren",
       "redFlags": "Red flags",
       "singleIntermediary": "Dependency on a single intermediary",
       "highOpacity": "High opacity (unverified reliability)",
@@ -11187,7 +11187,7 @@
       "phases": {
         "preparation": "Preparation",
         "admin": "Administrative",
-        "installation": "Installation",
+        "installation": "Vestiging",
         "launch": "Launch",
         "stabilization": "Stabilization"
       },
@@ -11218,17 +11218,17 @@
       "scope": "Scope",
       "projectTypes": "Project types",
       "projects": "Projects",
-      "implantation": "Implantation",
+      "implantation": "Vestiging",
       "maturity": "Maturity",
       "analysis": "Quick analysis",
       "stronglyEstablished": "{{count}} strongly established actor(s)",
-      "dominance": "Dominance",
+      "dominance": "Dominantie",
       "dominanceLocal": "Local",
       "dominanceInternational": "International",
       "opportunity": "Opportunity: underserved segments possible",
       "types": {
-        "local": "Local",
-        "international": "International",
+        "local": "Lokaal",
+        "international": "Internationaal",
         "hybrid": "Hybrid"
       },
       "implantationLevels": {
@@ -11270,57 +11270,57 @@
   "marketStudy": {
     "title": "Market Study",
     "problem": {
-      "statement": "Quel problème résolvez-vous ?",
-      "placeholder": "Décrivez le problème que votre offre résout...",
-      "value": "Proposition de valeur",
-      "valuePlaceholder": "En quoi votre solution est-elle unique ?"
+      "statement": "Welk probleem lost u op?",
+      "placeholder": "Beschrijf het probleem dat uw aanbod oplost...",
+      "value": "Waardepropositie",
+      "valuePlaceholder": "Wat maakt uw oplossing uniek?"
     },
     "customers": {
-      "segments": "Segments clients",
+      "segments": "Klantsegmenten",
       "addSegment": "Toevoegen un segment...",
-      "paying": "Qui paye ?",
-      "endUser": "Qui utilise ?"
+      "paying": "Wie betaalt?",
+      "endUser": "Wie gebruikt het?"
     },
     "competition": {
-      "title": "Concurrence",
+      "title": "Concurrentie",
       "name": "Naam",
-      "scope": "Périmètre",
-      "strengths": "Points forts",
-      "local": "Local",
-      "regional": "Régional",
-      "national": "National",
-      "international": "International",
+      "scope": "Bereik",
+      "strengths": "Sterke punten",
+      "local": "Lokaal",
+      "regional": "Regionaal",
+      "national": "Nationaal",
+      "international": "Internationaal",
       "empty": "Geen concurrent ajouté"
     },
     "diff": {
-      "why": "Pourquoi vous ?",
-      "placeholder": "Qu'est-ce qui vous différencie réellement ?",
-      "timing": "Pourquoi maintenant ?",
-      "timingPlaceholder": "Quel facteur rend ce moment propice ?"
+      "why": "Waarom u?",
+      "placeholder": "Wat onderscheidt u werkelijk?",
+      "timing": "Waarom nu?",
+      "timingPlaceholder": "Welke factor maakt dit het juiste moment?"
     },
     "regulation": {
-      "list": "Réglementations applicables",
+      "list": "Toepasselijke regelgeving",
       "add": "Toevoegen une réglementation...",
-      "constraints": "Contraintes identifiées",
+      "constraints": "Geïdentificeerde beperkingen",
       "addConstraint": "Toevoegen une contrainte..."
     },
     "gtm": {
-      "strategy": "Stratégie d'entrée",
-      "placeholder": "Comment allez-vous atteindre vos premiers clients ?",
-      "channels": "Canaux de distribution",
+      "strategy": "Markttoetreedstrategie",
+      "placeholder": "Hoe gaat u uw eerste klanten bereiken?",
+      "channels": "Distributiekanalen",
       "addChannel": "Toevoegen un canal..."
     },
     "economics": {
-      "title": "Économie unitaire",
-      "cost": "Coût unitaire (€)",
-      "price": "Prix unitaire (€)",
+      "title": "Eenheidseconomie",
+      "cost": "Kosten per eenheid (€)",
+      "price": "Prijs per eenheid (€)",
       "margin": "Dige (%)",
-      "breakeven": "Point mort"
+      "breakeven": "Break-even punt"
     },
     "operations": {
-      "title": "Opérations",
-      "placeholder": "Décrivez vos opérations...",
-      "logistics": "Logistique",
+      "title": "Operaties",
+      "placeholder": "Beschrijf uw operaties...",
+      "logistics": "Logistiek",
       "customs": "Notities douanes"
     },
     "risks": {
@@ -11328,44 +11328,44 @@
       "add": "Toevoegen un risque..."
     },
     "conclusion": {
-      "title": "Conclusion",
-      "feasibility": "Faisabilité",
-      "conditions": "Conditions à valider",
+      "title": "Conclusie",
+      "feasibility": "Haalbaarheid",
+      "conditions": "Te valideren voorwaarden",
       "addCondition": "Toevoegen une condition..."
     }
   },
   "actorsMap": {
     "title": "Actors Mapping",
-    "description": "Identifiez les parties prenantes clés de votre projet",
+    "description": "Identificeer de belangrijkste belanghebbenden van uw project",
     "add": "Toevoegen",
-    "actors": "acteurs",
-    "verified": "vérifiés",
-    "redFlags": "alertes",
-    "highDep": "dépendance élevée",
+    "actors": "actoren",
+    "verified": "geverifieerd",
+    "redFlags": "waarschuwingen",
+    "highDep": "hoge afhankelijkheid",
     "empty": "Geen acteur cartographié",
     "emptyHint": "Cliquez sur \"Toevoegen\" pour commencer",
     "namePlaceholder": "Naam / Organisation",
     "notesPlaceholder": "Notities sur cet acteur...",
-    "proofs": "Preuves / Références",
+    "proofs": "Bewijzen / Referenties",
     "addProof": "Toevoegen une preuve...",
-    "markRedFlag": "Drapeau rouge",
+    "markRedFlag": "Rode vlag",
     "status": {
-      "official": "Officiel",
-      "influential": "Influence"
+      "official": "Officieel",
+      "influential": "Invloedrijk"
     },
     "dep": {
-      "low": "Dép. faible",
-      "medium": "Dép. moyenne",
-      "high": "Dép. élevée"
+      "low": "Lage afh.",
+      "medium": "Gemiddelde afh.",
+      "high": "Hoge afh."
     },
     "reliability": {
       "unverified": "Nee vérifié",
       "inProgress": "In uitvoering",
-      "verified": "Vérifié"
+      "verified": "Geverifieerd"
     },
     "notice": {
-      "title": "Important",
-      "text": "Cette cartographie documente les risques d'opacité et de dépendance comme outils de prévention."
+      "title": "Belangrijk",
+      "text": "Deze cartografie documenteert de risico's van ondoorzichtigheid en afhankelijkheid als preventiemiddelen."
     }
   },
   "riskRegister": {
@@ -11373,53 +11373,53 @@
     "description": "Beschrijving",
     "templates": "Sjablonen",
     "add": "Toevoegen",
-    "open": "ouverts",
-    "high": "critiques",
-    "mitigated": "atténués",
+    "open": "open",
+    "high": "kritiek",
+    "mitigated": "gemitigeerd",
     "selectTemplate": "Selecteren un modèle de risque",
     "empty": "Geen risque documenté",
-    "emptyHint": "Utilisez les modèles pour commencer rapidement",
-    "probability": "Probabilité",
+    "emptyHint": "Gebruik de sjablonen om snel te beginnen",
+    "probability": "Waarschijnlijkheid",
     "impact": "Impact",
-    "signals": "Signaux d'alerte",
+    "signals": "Waarschuwingssignalen",
     "addSignal": "Toevoegen un signal...",
-    "protections": "Mesures de protection",
+    "protections": "Beschermingsmaatregelen",
     "addProtection": "Toevoegen une protection...",
-    "statusOpen": "Ouvert",
-    "statusMitigated": "Atténué",
-    "statusAccepted": "Accepté"
+    "statusOpen": "Open",
+    "statusMitigated": "Gemitigeerd",
+    "statusAccepted": "Geaccepteerd"
   },
   "structuralRules": {
     "title": "Structural Rules",
-    "description": "Règles légales et réglementaires à vérifier pour {{country}}",
+    "description": "Wettelijke en regelgevende regels te verifiëren voor {{country}}",
     "templates": "Sjablonen",
     "add": "Toevoegen",
-    "rules": "règles",
-    "verified": "vérifiées",
-    "pending": "à vérifier",
-    "selectTemplate": "Types de règles courants",
+    "rules": "regels",
+    "verified": "geverifieerd",
+    "pending": "te verifiëren",
+    "selectTemplate": "Veelvoorkomende regeltypen",
     "empty": "Geene règle documentée",
-    "emptyHint": "Utilisez les modèles pour documenter les règles à vérifier",
+    "emptyHint": "Gebruik de sjablonen om de te verifiëren regels te documenteren",
     "ruleTitle": "Titel de la règle",
-    "titlePlaceholder": "Ex: Obligation de JV à 51%",
+    "titlePlaceholder": "Bijv.: Verplichting tot 51% JV",
     "ruleType": "Type",
     "ruleDescription": "Beschrijving détaillée",
-    "descPlaceholder": "Décrivez la règle et ses implications...",
-    "sourceRef": "Source / Référence",
-    "sourcePlaceholder": "Ex: Code des investissements Art. 12",
-    "sourceUrl": "URL de la source",
-    "source": "Source",
+    "descPlaceholder": "Beschrijf de regel en de implicaties...",
+    "sourceRef": "Bron / Referentie",
+    "sourcePlaceholder": "Bijv.: Investeringswet Art. 12",
+    "sourceUrl": "URL van de bron",
+    "source": "Bron",
     "notes": "Notities",
     "notesPlaceholder": "Notities de vérification, contacts, observations...",
     "markVerified": "Diquer vérifié",
     "status": {
       "unverified": "Nee vérifié",
-      "inProgress": "En vérification",
-      "verified": "Vérifié"
+      "inProgress": "In verificatie",
+      "verified": "Geverifieerd"
     },
     "notice": {
       "title": "⚠️ Notitie de prudence",
-      "text": "Ces informations sont fournies à titre indicatif et doivent être confirmées auprès de sources officielles avant tout engagement."
+      "text": "Deze informatie is ter indicatie en moet worden bevestigd bij officiële bronnen alvorens tot enige verbintenis over te gaan."
     }
   },
   "ovi": {
@@ -11436,55 +11436,55 @@
       "responsibility": "Maximum empowerment"
     },
     "tabs": {
-      "intro": "Introduction",
+      "intro": "Introductie",
       "frameworks": "Frameworks",
       "grids": "Grids",
-      "evidence": "Preuves",
+      "evidence": "Bewijsmateriaal",
       "connection": "Inloggens"
     },
     "evidence": {
-      "title": "Collecte de preuves",
-      "subtitle": "Structurez vos éléments probants pour renforcer vos hypothèses",
-      "hypotheses": "Hypothèses",
-      "hypothesisPlaceholder": "Formulez votre hypothèse...",
-      "robustness": "Robustesse",
-      "linkedEvidences": "preuves liées",
-      "collected": "Preuves collectées",
+      "title": "Bewijsverzameling",
+      "subtitle": "Structureer uw bewijselementen om uw hypothesen te versterken",
+      "hypotheses": "Hypothesen",
+      "hypothesisPlaceholder": "Formuleer uw hypothese...",
+      "robustness": "Robuustheid",
+      "linkedEvidences": "gekoppelde bewijzen",
+      "collected": "Verzamelde bewijzen",
       "add": "Toevoegen une preuve",
       "save": "Opslaan",
       "empty": "Geene preuve collectée",
-      "emptyHint": "Commencez par ajouter des éléments probants pour soutenir vos hypothèses.",
+      "emptyHint": "Begin met het toevoegen van bewijselementen om uw hypothesen te ondersteunen.",
       "fields": {
         "title": "Titel",
-        "type": "Type de preuve",
-        "source": "Source",
-        "url": "URL (optionnel)",
-        "reliability": "Fiabilité",
-        "supports": "Position",
+        "type": "Type bewijs",
+        "source": "Bron",
+        "url": "URL (optioneel)",
+        "reliability": "Betrouwbaarheid",
+        "supports": "Positie",
         "notes": "Notities"
       },
       "type": {
         "document": "Document",
-        "link": "Lien",
-        "observation": "Observation",
-        "testimonial": "Témoignage",
-        "data": "Données"
+        "link": "Link",
+        "observation": "Observatie",
+        "testimonial": "Getuigenis",
+        "data": "Gegevens"
       },
       "reliability": {
-        "high": "Haute",
+        "high": "Hoog",
         "medium": "Gemiddeldne",
         "low": "Laag",
-        "unknown": "Inconnue"
+        "unknown": "Onbekend"
       },
       "supports": {
-        "confirms": "Confirme",
-        "contradicts": "Contredit",
-        "neutral": "Neutre"
+        "confirms": "Bevestigt",
+        "contradicts": "Weerspreekt",
+        "neutral": "Neutraal"
       },
-      "summary": "Synthèse",
-      "confirming": "Confirmantes",
-      "contradicting": "Contradictoires",
-      "neutral": "Neutres"
+      "summary": "Samenvatting",
+      "confirming": "Bevestigend",
+      "contradicting": "Weerspreken",
+      "neutral": "Neutraal"
     },
     "paywall": {
       "feature": "OVI - Observatory of Invisible Variables",
@@ -11496,10 +11496,10 @@
     "suggestions": {
       "title": "Suggested readings from OVI",
       "subtitle": "Enrich your reflection with relevant frameworks",
-      "basedOn": "Basé sur votre simulation",
-      "explore": "Explorer ce cadre",
-      "dismiss": "Ignorer",
-      "unlockPro": "Débloquer avec Pro",
+      "basedOn": "Gebaseerd op uw simulatie",
+      "explore": "Dit kader verkennen",
+      "dismiss": "Negeren",
+      "unlockPro": "Ontgrendelen met Pro",
       "viewAll": "Bekijken tous les contenus OVI",
       "viewMore": "Bekijken dans l'OVI",
       "relevantTo": "Relevant to your analysis"
@@ -11637,7 +11637,7 @@
         }
       },
       "visibility": {
-        "title": "Visible / Invisible",
+        "title": "Zichtbaar / Onzichtbaar",
         "desc": "Identify what is apparent and what remains hidden",
         "left": "Visible today",
         "right": "Invisible today",
@@ -11713,7 +11713,7 @@
       "filterDesc": "Analyseren une décision",
       "compare": "Vergelijken",
       "compareDesc": "Explore scenarios",
-      "institutions": "Institutions",
+      "institutions": "Instellingen",
       "institutionsDesc": "Collective decisions"
     },
     "quote": "\"Clarity comes not from what we know, but from what we accept to look at.\"",
@@ -11725,7 +11725,7 @@
         "title": "Cognitive Biases",
         "subtitle": "The invisible filters of our decisions",
         "s1": {
-          "title": "Introduction",
+          "title": "Introductie",
           "p1": "Our brain is an extraordinary machine, capable of processing millions of pieces of information per second. To achieve this, it uses shortcuts — heuristics that allow us to decide quickly.",
           "p2": "Ces raccourcis sont précieux dans la vie quotidienne. Meis ils peuvent devenir des pièges dans les décisions importantes, là où la nuance compte."
         },
@@ -11856,7 +11856,7 @@
     "structure": "Structure",
     "prevent": "Prevent",
     "tabs": {
-      "intro": "Introduction",
+      "intro": "Introductie",
       "useCases": "Use Cases",
       "collective": "Collective Decision",
       "traceability": "Traceability",
@@ -11982,7 +11982,7 @@
       },
       "project": {
         "title": "Project Launch / Stop",
-        "desc": "Go/No-go, pivot, abandon",
+        "desc": "Go/No-go, pivot, stopzetting",
         "var1": "Investment already made (sunk cost)",
         "var2": "Remaining investment needed",
         "var3": "Estimated probability of success",
@@ -12139,7 +12139,7 @@
       },
       "noHistory": "Geene simulation enregistrée",
       "export": "Exporteren",
-      "participants": "Participants",
+      "participants": "Deelnemers",
       "hypotheses": "Retained hypotheses",
       "scenarios": "Explored scenarios",
       "blindSpots": "Identified blind spots",
@@ -12175,7 +12175,7 @@
     "selectCountry": "Choisir un land...",
     "sectorFocus": "Sector focus",
     "allSectors": "All sectors",
-    "audience": "Audience",
+    "audience": "Doelgroep",
     "allAudiences": "All audiences",
     "proAccess": "Full access + PDF export",
     "freeAccess": "Preview Top 3 + Top 3",
@@ -12235,7 +12235,7 @@
       "individual": "Individual",
       "diaspora": "Diaspora",
       "sme": "SME",
-      "association": "Association"
+      "association": "Vereniging"
     },
     "scamCategories": {
       "ponzi": "Ponzi",
@@ -12258,18 +12258,18 @@
   },
   "pricingWidget": {
     "badge": "Gratis pour commencer",
-    "title": "Commence gratuitement.",
-    "subtitle": "Évolue selon tes besoins.",
-    "description": "Accède aux analyses de base gratuitement. Débloque les fonctionnalités avancées quand tu en as besoin.",
+    "title": "Begin gratis.",
+    "subtitle": "Groei mee met uw behoeften.",
+    "description": "Krijg gratis toegang tot basisanalyses. Ontgrendel geavanceerde functies wanneer u ze nodig heeft.",
     "free": "Gratis",
-    "freeFeature1": "Analyse de base",
-    "freeFeature2": "Tous les simulateurs",
+    "freeFeature1": "Basisanalyse",
+    "freeFeature2": "Alle simulatoren",
     "freeFeature3": "38 land",
     "pro": "Pro",
     "from": "dès",
-    "proFeature1": "Analyses approfondies",
-    "proFeature2": "Stratégies personnalisées",
-    "proFeature3": "Export PDF",
+    "proFeature1": "Diepgaande analyses",
+    "proFeature2": "Gepersonaliseerde strategieën",
+    "proFeature3": "PDF exporteren",
     "cta": "Bekijken les plans"
   }
 }

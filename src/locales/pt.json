@@ -210,7 +210,7 @@
       "visaFreeCountries": "país sans visa",
       "memberOf": "Member of",
       "regionalBlocs": "Regional blocs",
-      "installationTab": "Installation",
+      "installationTab": "Instalação",
       "vacationTab": "Vacation",
       "installationDestinations": "Installation Destinations",
       "optimizedForProfile": "Optimized for your profile",
@@ -243,7 +243,7 @@
       "easy": "Easy",
       "moderate": "Moderate",
       "hard": "Hard",
-      "expert": "Expert",
+      "expert": "Especialista",
       "duration": "Duration",
       "allDurations": "Tudoes",
       "shortTerm": "1-3 years",
@@ -275,7 +275,7 @@
       "notRequired": "Not required. Continue exploring freely."
     },
     "risk": {
-      "prudent": "Prudent",
+      "prudent": "Prudente",
       "prudentDesc": "I prefer safety",
       "balanced": "Balanced",
       "balancedDesc": "Riscos calculés",
@@ -321,7 +321,7 @@
       "viewKeys": "Ver mes clés"
     },
     "advantageTypes": {
-      "visaFree": "Visa-free",
+      "visaFree": "Sem visto",
       "regionalAccess": "Regional access",
       "workPermit": "Work",
       "taxBenefit": "Tax",
@@ -335,16 +335,16 @@
       "difficulty": "Difficulty",
       "system": "System",
       "allDifficulties": "Tudoes",
-      "accessible": "Accessible",
+      "accessible": "Acessível",
       "demanding": "Demanding",
-      "expert": "Expert",
+      "expert": "Especialista",
       "allSystems": "All systems",
       "reset": "Redefinir",
       "keysFound": "{{count}} key found",
       "keysFoundPlural": "{{count}} keys found",
       "successCondition": "Success condition",
       "mainRisk": "Risco principal",
-      "phases": "phases",
+      "phases": "fases",
       "requirements": "requirements",
       "noKeysMatch": "Nenhume clé ne correspond aux filtres sélectionnés.",
       "resetFilters": "Redefinir les filtres",
@@ -361,8 +361,8 @@
       "criterion": "Criterion",
       "difficulty": "Difficulty",
       "duration": "Duration",
-      "phases": "Phases",
-      "phasesCount": "{{count}} phases",
+      "phases": "Fases",
+      "phasesCount": "{{count}} fases",
       "prerequisites": "Prerequisites",
       "criteriaCount": "{{count}} criteria",
       "detailedPrerequisites": "Detailed Prerequisites",
@@ -490,7 +490,7 @@
   "simulationDisclaimer": {
     "notPrediction": "Simulação ≠ Previsão",
     "inline": "Simulação apenas para fins informativos.",
-    "limits": "Limites",
+    "limits": "Limitações",
     "compact": "Ferramenta de análise — não é aconselhamento.",
     "learnMore": "Saber mais",
     "minimal": "Exploração de cenários",
@@ -1210,13 +1210,13 @@
     "financialIntel": "Financial Intel",
     "irreversa": "Irreversa",
     "latent": "Riscos cachés",
-    "howToRead": "Guide",
+    "howToRead": "Guia",
     "explore": "Explore",
     "tools": "Tools",
     "account": "Conta & Info",
     "advanced": "Pro Modules",
     "info": "Info",
-    "notifications": "Notifications",
+    "notifications": "Notificações",
     "exitKeysCatalog": "Strategies Catalog",
     "exitKeysCompare": "Comparar Destinations",
     "terrainRealities": "Terrain Realities",
@@ -1241,7 +1241,7 @@
     },
     "stats": {
       "total": "Países analisados",
-      "intelligence": "Intelligence Layer",
+      "intelligence": "Camada de Inteligência",
       "pyramids": "Tipos de pirâmide",
       "languages": "Idiomas"
     },
@@ -1270,7 +1270,7 @@
     "overview": "Visão geral",
     "risks": "Riscos",
     "playbook": "Playbook",
-    "intelligence": "Intelligence Layer",
+    "intelligence": "Camada de Inteligência",
     "variants": "Variantes",
     "tags": "Tags/Indicadores",
     "notAvailable": "não disponível",
@@ -1649,7 +1649,7 @@
       "tronc": "Análise central",
       "variant": "Variante país",
       "project": "Análise de projeto",
-      "intelligence": "Intelligence"
+      "intelligence": "Inteligência"
     },
     "tronc": {
       "badge": "Tronco comum — Acesso gratuito",
@@ -1672,12 +1672,12 @@
     "safe": "LGBTQ+ Seguro",
     "caution": "Proceder com Cautela",
     "dangerous": "Alto Risco para LGBTQ+",
-    "title": "Droits LGBTQ+",
-    "index": "Indice droits",
+    "title": "Direitos LGBTQ+",
+    "index": "Índice de direitos",
     "marriage": "Teriage égalitaire",
-    "civilUnion": "Union civile",
-    "employmentProtection": "Protection emploi",
-    "safetyRating": "Niveau de sécurité",
+    "civilUnion": "União civil",
+    "employmentProtection": "Proteção no emprego",
+    "safetyRating": "Nível de segurança",
     "notice": "Les droits LGBTQ+ sont pris en compte dans vos recommandations de país."
   },
   "pyramid": {
@@ -1955,16 +1955,16 @@
     },
     "planTypes": {
       "safe": {
-        "label": "Plan Safe",
-        "description": "Pour ceux qui ont des responsabilités, de l'anxiété, ou un besoin fort de sécurité. Stabilité + progression certaine."
+        "label": "Plano Seguro",
+        "description": "Para quem tem responsabilidades, ansiedade ou uma forte necessidade de segurança. Estabilidade + progresso garantido."
       },
       "hybrid": {
-        "label": "Plan Hybride",
-        "description": "Pour la majorité. Job stable + montée en compétences + side project structuré et réaliste."
+        "label": "Plano Híbrido",
+        "description": "Para a maioria. Emprego estável + desenvolvimento de competências + projeto paralelo estruturado e realista."
       },
       "ambitious": {
-        "label": "Plan Ambitieux",
-        "description": "Pour ceux qui ont l'énergie et la tolérance au risque. Accélération des revenus + stratégie de croissance."
+        "label": "Plano Ambicioso",
+        "description": "Para quem tem energia e tolerância ao risco. Aceleração de receitas + estratégia de crescimento."
       }
     },
     "trajectory": {
@@ -1981,19 +1981,19 @@
       "findCountries": "Encontrar Países Compatíveis",
       "exploreCountries": "Explorar Todos os Países",
       "retake": "Repetir Teste",
-      "title": "Ton profil trajectoire",
-      "yourProfile": "Ton profil moteur",
-      "trajectories": "Tes 3 trajectoires recommandées",
-      "choosePlan": "Choisis le plan qui correspond à ta situation",
-      "duration": "Durée",
-      "paths": "Voies adaptées",
-      "skills": "Compétences à développer",
+      "title": "Seu perfil de trajetória",
+      "yourProfile": "Seu perfil motor",
+      "trajectories": "Suas 3 trajetórias recomendadas",
+      "choosePlan": "Escolha o plano que corresponde à sua situação",
+      "duration": "Duração",
+      "paths": "Caminhos adequados",
+      "skills": "Competências a desenvolver",
       "risks": "Riscos à surveiller",
-      "firstSteps": "Premières étapes",
-      "retakeTest": "Refaire le test"
+      "firstSteps": "Primeiros passos",
+      "retakeTest": "Refazer o teste"
     },
-    "title": "Diagnostic de trajectoire de vie",
-    "subtitle": "Le métier n'est qu'un véhicule. Découvrez quelle vie vous voulez construire.",
+    "title": "Diagnóstico de trajetória de vida",
+    "subtitle": "A profissão é apenas um veículo. Descubra que vida você quer construir.",
     "startButton": "Começar le diagnostic",
     "yes": "Sim",
     "no": "Não",
@@ -2001,8 +2001,8 @@
     "next": "Próximo",
     "seeResults": "Ver mes résultats",
     "coreIdea": {
-      "title": "L'idée centrale",
-      "text": "La plupart des gens ne cherchent pas \"un métier\". Ils cherchent une vie. Un métier n'est qu'un véhicule."
+      "title": "A ideia central",
+      "text": "A maioria das pessoas não busca \"uma profissão\". Elas buscam uma vida. A profissão é apenas um veículo."
     },
     "questions": {
       "timePreference": {
@@ -2377,7 +2377,7 @@
           },
           "skills": {
             "0": "Both earning and giving skills",
-            "1": "Communication"
+            "1": "Comunicação"
           },
           "risks": {
             "0": "Purpose delayed"
@@ -2394,8 +2394,8 @@
             "0": "Social enterprise or foundation"
           },
           "skills": {
-            "0": "Leadership",
-            "1": "Fundraising"
+            "0": "Liderança",
+            "1": "Captação de recursos"
           },
           "risks": {
             "0": "Burnout risk"
@@ -2763,7 +2763,7 @@
       }
     },
     "qatar": {
-      "name": "Qatar",
+      "name": "Catar",
       "region": "Médio-Orient",
       "ruleOfGold": "Be useful, stay quiet, plan your exit. You are a guest with an expiration date.",
       "pyramid": {
@@ -3598,16 +3598,16 @@
       }
     },
     "china": {
-      "name": "Chine",
-      "region": "Asie de l'Est",
-      "ruleOfGold": "S'aligner publiquement avec le Parti, construire en privé. Ne jamais devenir un symbole politique.",
+      "name": "China",
+      "region": "Ásia Oriental",
+      "ruleOfGold": "Alinhe-se publicamente com o Partido, construa em privado. Nunca se torne um símbolo político.",
       "pyramid": {
-        "top": "Parti communiste et capital aligné sur l'État",
-        "institutions": "Appareil d'État mêlant contrôle et marché",
+        "top": "Partido Comunista e capital alinhado ao Estado",
+        "institutions": "Aparato estatal que combina controle e mercado",
         "gatekeepers": "Entrars au Parti, réseaux guanxi, approbations réglementaires",
-        "valueCreators": "Entrepreneurs opérant dans les limites politiques",
-        "base": "Travailleurs naviguant une transformation rapide",
-        "realAsset": "Vitesse d'adaptation et alignement politique"
+        "valueCreators": "Empreendedores operando dentro dos limites políticos",
+        "base": "Trabalhadores navegando uma transformação rápida",
+        "realAsset": "Velocidade de adaptação e alinhamento político"
       },
       "whoWins": [
         "Ceux qui lisent correctement les vents politiques",
@@ -3654,20 +3654,20 @@
           "Construire une réputation dans les réseaux mondiaux",
           "Créer un revenu indépendant du lieu"
         ],
-        "planB": "Singapour pour la continuité des affaires chinoises, Canada/Australie pour l'émigration familiale, Portugal pour l'accès UE. Garder une présence continentale tout en construisant des alternatives."
+        "planB": "Singapura para continuidade dos negócios chineses, Canadá/Austrália para emigração familiar, Portugal para acesso à UE. Manter presença continental enquanto constrói alternativas."
       }
     },
     "russia": {
-      "name": "Russie",
-      "region": "Europe de l'Est",
-      "ruleOfGold": "Rester sous le radar, diversifier à l'étranger, ne jamais défier le pouvoir directement.",
+      "name": "Rússia",
+      "region": "Europa Oriental",
+      "ruleOfGold": "Fique discreto, diversifique no exterior, nunca desafie o poder diretamente.",
       "pyramid": {
-        "top": "Élite politique et oligarques connectés à l'État",
-        "institutions": "Appareil d'État mêlant héritage soviétique et capitalisme",
-        "gatekeepers": "Services de sécurité, boss régionaux, hommes d'affaires connectés",
-        "valueCreators": "Entrepreneurs naviguant des règles imprévisibles",
-        "base": "Population s'adaptant au changement constant",
-        "realAsset": "Compétences de survie et adaptabilité"
+        "top": "Elite política e oligarcas conectados ao Estado",
+        "institutions": "Aparato estatal que combina herança soviética e capitalismo",
+        "gatekeepers": "Serviços de segurança, chefes regionais, empresários conectados",
+        "valueCreators": "Empreendedores navegando regras imprevisíveis",
+        "base": "População se adaptando a mudanças constantes",
+        "realAsset": "Habilidades de sobrevivência e adaptabilidade"
       },
       "whoWins": [
         "Ceux avec connexions au Kremlin",
@@ -3714,20 +3714,20 @@
           "Sécuriser les options de sortie familiales",
           "Créer une vie durable à l'étranger"
         ],
-        "planB": "EAU pour la continuité des affaires, Géorgie/Arménie pour une relocalisation facile, Serbie pour l'accès sans visa. Israël si éligible. Europe de plus en plus difficile."
+        "planB": "Emirados Árabes para continuidade dos negócios, Geórgia/Armênia para realocação fácil, Sérvia para acesso sem visto. Israel se elegível. Europa cada vez mais difícil."
       }
     },
     "brazil": {
-      "name": "Brésil",
-      "region": "Amérique du Sud",
-      "ruleOfGold": "Naviguer le jeitinho brasileiro — flexibilité et relations plutôt que règles rigides.",
+      "name": "Brasil",
+      "region": "América do Sul",
+      "ruleOfGold": "Navegue o jeitinho brasileiro — flexibilidade e relações em vez de regras rígidas.",
       "pyramid": {
-        "top": "Élite politique, vieille fortune et nouvelle économie numérique",
-        "institutions": "Bureaucratie complexe avec solutions informelles",
+        "top": "Elite política, velha fortuna e nova economia digital",
+        "institutions": "Burocracia complexa com soluções informais",
         "gatekeepers": "Entrars, cartórios et intermédiaires",
-        "valueCreators": "Entrepreneurs entre économies formelle et informelle",
-        "base": "Population diverse naviguant les inégalités",
-        "realAsset": "Flexibilité et résolution créative de problèmes"
+        "valueCreators": "Empreendedores entre economias formal e informal",
+        "base": "População diversa navegando as desigualdades",
+        "realAsset": "Flexibilidade e resolução criativa de problemas"
       },
       "whoWins": [
         "Ceux maîtrisant systèmes formel et informel",
@@ -3774,20 +3774,20 @@
           "Créer une option de résidence internationale",
           "Développer des compétences indépendantes du lieu"
         ],
-        "planB": "Portugal pour intégration facile et accès UE, USA pour l'ambition, Argentine/Uruguay pour options régionales. Garder la base brésilienne tout en construisant à l'étranger."
+        "planB": "Portugal para integração fácil e acesso à UE, EUA para ambição, Argentina/Uruguai para opções regionais. Manter a base brasileira enquanto constrói no exterior."
       }
     },
     "norway": {
-      "name": "Norvège",
-      "region": "Europe du Nord",
-      "ruleOfGold": "Les ressources sont une richesse collective. L'excellence dans les normes égalitaires gagne.",
+      "name": "Noruega",
+      "region": "Europa do Norte",
+      "ruleOfGold": "Os recursos são riqueza coletiva. A excelência dentro das normas igualitárias vence.",
       "pyramid": {
-        "top": "Fonds souverain et institutions démocratiques",
-        "institutions": "État transparent gérant la richesse des ressources",
-        "gatekeepers": "Système éducatif et standards professionnels",
-        "valueCreators": "Travailleurs qualifiés dans les secteurs énergie et tech",
-        "base": "Citoyens bénéficiant de la redistribution des ressources",
-        "realAsset": "Ressources naturelles bien gérées et confiance sociale"
+        "top": "Fundo soberano e instituições democráticas",
+        "institutions": "Estado transparente gerindo a riqueza dos recursos",
+        "gatekeepers": "Sistema educacional e padrões profissionais",
+        "valueCreators": "Profissionais qualificados nos setores de energia e tecnologia",
+        "base": "Cidadãos beneficiados pela redistribuição de recursos",
+        "realAsset": "Recursos naturais bem geridos e confiança social"
       },
       "whoWins": [
         "Ceux embrassant les valeurs égalitaires",
@@ -3838,16 +3838,16 @@
       }
     },
     "qatar": {
-      "name": "Qatar",
+      "name": "Catar",
       "region": "Médio-Orient",
-      "ruleOfGold": "Tu es un invité dans le système. Performe, épargne et planifie ta sortie.",
+      "ruleOfGold": "Você é um convidado no sistema. Performe, economize e planeje sua saída.",
       "pyramid": {
-        "top": "Famille royale et élite dirigeante",
-        "institutions": "Distribution des ressources contrôlée par l'État",
-        "gatekeepers": "Sponsors kafala et connexions gouvernementales",
-        "valueCreators": "Professionnels et travailleurs expatriés",
+        "top": "Família real e elite governante",
+        "institutions": "Distribuição de recursos controlada pelo Estado",
+        "gatekeepers": "Patrocinadores kafala e conexões governamentais",
+        "valueCreators": "Profissionais e trabalhadores expatriados",
         "base": "Maion-d'œuvre migrante avec droits limités",
-        "realAsset": "Accès aux flux de richesse pétrolière et gazière"
+        "realAsset": "Acesso aos fluxos de riqueza de petróleo e gás"
       },
       "whoWins": [
         "Professionnels expatriés à haute valeur",
@@ -3899,15 +3899,15 @@
     },
     "venezuela": {
       "name": "Sexezuela",
-      "region": "Amérique du Sud",
-      "ruleOfGold": "La crise est le système. Survivre grâce aux économies parallèles et options de sortie.",
+      "region": "América do Sul",
+      "ruleOfGold": "A crise é o sistema. Sobreviva através de economias paralelas e opções de saída.",
       "pyramid": {
-        "top": "Élite politique et militaires connectés aux ressources de l'État",
-        "institutions": "Appareil d'État effondré servant les insiders",
+        "top": "Elite política e militares conectados aos recursos do Estado",
+        "institutions": "Aparato estatal colapsado servindo aos insiders",
         "gatekeepers": "Entrars au Parti, contacts militaires, contrôleurs de devises",
-        "valueCreators": "Survivants dans les économies parallèles",
-        "base": "Population naviguant hyperinflation et pénuries",
-        "realAsset": "Accès aux dollars et connexions au pouvoir"
+        "valueCreators": "Sobreviventes nas economias paralelas",
+        "base": "População navegando hiperinflação e escassez",
+        "realAsset": "Acesso a dólares e conexões com o poder"
       },
       "whoWins": [
         "Ceux avec sources de revenus en dollars",
@@ -3954,20 +3954,20 @@
           "Construire un revenu durable ailleurs",
           "Ajudar les membres de la famille à sortir"
         ],
-        "planB": "Colombie, Chili, Espagne ou USA pour intégration diaspora. Se concentrer sur le statut légal et les capacités de travail à distance."
+        "planB": "Colômbia, Chile, Espanha ou EUA para integração da diáspora. Foque no status legal e nas capacidades de trabalho remoto."
       }
     },
     "india": {
-      "name": "Inde",
-      "region": "Asie du Sud",
-      "ruleOfGold": "Naviguer caste, connexions et changement rapide. Construire à travers formel et informel simultanément.",
+      "name": "Índia",
+      "region": "Ásia do Sul",
+      "ruleOfGold": "Navegue castas, conexões e mudanças rápidas. Construa simultaneamente pelo formal e informal.",
       "pyramid": {
-        "top": "Nexus politique-affaires et élites traditionnelles",
-        "institutions": "Bureaucratie démocratique mais complexe",
-        "gatekeepers": "Réseaux de caste, connexions politiques, gardiens bureaucratiques",
-        "valueCreators": "Entrepreneurs tech, professionnels et propriétaires de petites entreprises",
-        "base": "Massive main-d'œuvre informelle",
-        "realAsset": "Jugaad (résolution créative) et capital réseau"
+        "top": "Nexo político-empresarial e elites tradicionais",
+        "institutions": "Burocracia democrática, porém complexa",
+        "gatekeepers": "Redes de casta, conexões políticas, guardiões burocráticos",
+        "valueCreators": "Empreendedores tech, profissionais e donos de pequenas empresas",
+        "base": "Enorme mão de obra informal",
+        "realAsset": "Jugaad (resolução criativa) e capital de rede"
       },
       "whoWins": [
         "Entrepreneurs du secteur tech",
@@ -4014,20 +4014,20 @@
           "Créer des flux de revenus passifs",
           "Considérer des alternatives de résidence"
         ],
-        "planB": "EAU/Singapour pour options régionales, USA/Canada/UK pour intégration diaspora, Europe pour qualité de vie. Les compétences IT fortes sont votre passeport."
+        "planB": "Emirados Árabes/Singapura para opções regionais, EUA/Canadá/Reino Unido para integração da diáspora, Europa para qualidade de vida. Competências fortes em TI são seu passaporte."
       }
     },
     "turkey": {
-      "name": "Turquie",
+      "name": "Turquia",
       "region": "Médio-Orient",
-      "ruleOfGold": "Les vents politiques changent constamment. Construire à travers les frontières et rester adaptable.",
+      "ruleOfGold": "Os ventos políticos mudam constantemente. Construa além das fronteiras e mantenha-se adaptável.",
       "pyramid": {
-        "top": "Leadership politique et élite d'affaires connectée",
-        "institutions": "Appareil d'État entre tensions laïques et religieuses",
+        "top": "Liderança política e elite empresarial conectada",
+        "institutions": "Aparato estatal entre tensões laicas e religiosas",
         "gatekeepers": "Entrars politiques, réseaux d'affaires, courtiers de pouvoir régionaux",
-        "valueCreators": "Entrepreneurs naviguant entre systèmes",
-        "base": "Population entre modernisation et tradition",
-        "realAsset": "Adaptabilité et connexions multi-directionnelles"
+        "valueCreators": "Empreendedores navegando entre sistemas",
+        "base": "População entre modernização e tradição",
+        "realAsset": "Adaptabilidade e conexões multidirecionais"
       },
       "whoWins": [
         "Ceux lisant les signaux politiques correctement",
@@ -4078,16 +4078,16 @@
       }
     },
     "saudi-arabia": {
-      "name": "Arabie Saoudite",
+      "name": "Arábia Saudita",
       "region": "Médio-Orient",
-      "ruleOfGold": "Joue ton rôle, accumule la richesse, ne défie jamais l'ordre. Tu es temporaire.",
+      "ruleOfGold": "Cumpra seu papel, acumule riqueza, nunca desafie a ordem. Você é temporário.",
       "pyramid": {
-        "top": "Famille royale et autorité religieuse",
-        "institutions": "État contrôlant la distribution de la richesse pétrolière",
-        "gatekeepers": "Sponsors gouvernementaux, entreprises connectées",
-        "valueCreators": "Professionnels expatriés et secteurs Vision 2030",
+        "top": "Família real e autoridade religiosa",
+        "institutions": "Estado controlando a distribuição da riqueza petrolífera",
+        "gatekeepers": "Patrocinadores governamentais, empresas conectadas",
+        "valueCreators": "Profissionais expatriados e setores da Visão 2030",
         "base": "Maion-d'œuvre migrante",
-        "realAsset": "Proximité à la richesse pétrolière et faveur royale"
+        "realAsset": "Proximidade à riqueza petrolífera e favor real"
       },
       "whoWins": [
         "Professionnels expatriés à haute valeur",
@@ -4134,7 +4134,7 @@
           "Construire un revenu indépendant du lieu",
           "Exécuter la transition planifiée"
         ],
-        "planB": "EAU pour présence continue au Golfe, Singapour ou Europe pour l'étape suivante. Utiliser le capital accumulé pour acheter la résidence ailleurs."
+        "planB": "Emirados Árabes para presença contínua no Golfo, Singapura ou Europa para a próxima etapa. Use o capital acumulado para comprar residência em outro lugar."
       }
     }
   },
@@ -4800,7 +4800,7 @@
       }
     },
     "qatar": {
-      "name": "Qatar",
+      "name": "Catar",
       "ruleOfGold": "Ser útil, ficar calado, planear a saída.",
       "region": "Médio-Orient",
       "pyramid": {
@@ -5160,7 +5160,7 @@
       }
     },
     "france": {
-      "name": "France",
+      "name": "França",
       "region": "Western Europe",
       "ruleOfGold": "The system protects stability, not explosion. Play the long game within the rules.",
       "pyramid": {
@@ -5460,14 +5460,14 @@
       }
     },
     "nigeria": {
-      "name": "Nigeria",
+      "name": "Nigéria",
       "region": "West Africa",
       "ruleOfGold": "Hustle or disappear. The system rewards agility, not conformity.",
       "pyramid": {
         "top": "Political elites and oil magnates",
         "institutions": "Weak state with pockets of competence",
         "gatekeepers": "Entrars, 'settlement' et accès",
-        "valueCreators": "Entrepreneurs, diaspora, techies",
+        "valueCreators": "Empreendedores, diáspora, profissionais de tecnologia",
         "base": "Massive population seeking opportunities",
         "realAsset": "Energy, network, and adaptability"
       },
@@ -5700,7 +5700,7 @@
       }
     },
     "canada": {
-      "name": "Canada",
+      "name": "Canadá",
       "region": "North America",
       "ruleOfGold": "Immigrate by the rules, integrate patiently, build for the long term.",
       "pyramid": {
@@ -6556,7 +6556,7 @@
     "login": "Entrar",
     "signup": "Registar",
     "subtitle": "Entra para guardar os teus jogos e criar o teu perfil",
-    "email": "Email",
+    "email": "E-mail",
     "password": "Palavra-passe",
     "displayName": "Nome de exibição",
     "displayNamePlaceholder": "Como queres ser chamado?",
@@ -6814,7 +6814,7 @@
       "explore": "Explorer les país",
       "exploreDesc": "Comparar, comprendre, découvrir",
       "relocate": "Prepare a move",
-      "relocateDesc": "Visa, budget, checklist",
+      "relocateDesc": "Visto, orçamento, checklist",
       "invest": "Optimize my taxation",
       "investDesc": "Simulator, special regimes",
       "retire": "Plan my retirement",
@@ -7283,7 +7283,7 @@
       },
       "trend": {
         "escalating": "Escalating",
-        "stable": "Stable",
+        "stable": "Estável",
         "de-escalating": "De-escalating"
       },
       "zones": {
@@ -7296,7 +7296,7 @@
           "summary": "Gaza conflict. Red Sea disruptions (+30% freight costs). Regional tensions with Lebanon and Iran."
         },
         "sahel": {
-          "name": "Sahel (Mali, Burkina, Niger)",
+          "name": "Sahel (Mali, Burkina, Níger)",
           "summary": "Coups d'État en cascade. Retrait des forces françaises. Alliance AES pro-Russie. Risco élevé pour les expatriés."
         },
         "sudan": {
@@ -7304,7 +7304,7 @@
           "summary": "Guerre civile FAR vs FSR. Maios grande crise de déplacement au monde (10M+). Famine. Totalement déconseillé."
         },
         "myanmar": {
-          "name": "Myanmar",
+          "name": "Mianmar",
           "summary": "Civil war against military junta. State collapse. Refugees fleeing to Thailand and India."
         },
         "taiwan": {
@@ -7389,7 +7389,7 @@
     "timePerception": {
       "title": "Time Perception",
       "subtitle": "How time is perceived locally",
-      "aspect": "Aspect",
+      "aspect": "Aspecto",
       "localNorm": "Local Norm",
       "foreignerTrap": "Foreigner Trap",
       "noData": "Données non disponibles pour ce país"
@@ -7484,7 +7484,7 @@
       "read": "Read"
     },
     "types": {
-      "deadline": "Deadline",
+      "deadline": "Prazo",
       "reminder": "Reminder",
       "achievement": "Sucesso",
       "info": "Info"
@@ -7784,45 +7784,45 @@
       }
     },
     "signals": {
-      "title": "Signaux faibles détectés",
-      "subtitle": "Patterns et corrélations entre vos zones",
-      "nourishingPattern": "Pattern nourricier émergent",
-      "blockingPattern": "Pattern bloquant émergent",
-      "fragilityPattern": "Pattern de fragilité émergent",
-      "premature_crushingPattern": "Pattern d'écrasement prématuré émergent",
-      "multipleZones": "{{count}} zones dormantes partagent cette dynamique",
-      "suggestMonitor": "Surveiller l'évolution conjointe",
-      "escalatingZone": "Zone en escalade potentielle",
-      "multipleTensions": "Accumulation de tensions",
-      "suggestIntervene": "Intervention préventive recommandée",
-      "stuckZone": "Zone bloquée depuis longtemps",
-      "stabilizingZone": "Zone en stabilisation",
-      "suggestReview": "Revoir la pertinence de cette zone",
-      "positiveEmergent": "Émergence positive détectée",
-      "nourishingDynamic": "Dynamique nourricière",
-      "suggestAmplify": "Amplifier cette dynamique",
+      "title": "Sinais fracos detectados",
+      "subtitle": "Padrões e correlações entre suas zonas",
+      "nourishingPattern": "Padrão nutritivo emergente",
+      "blockingPattern": "Padrão bloqueante emergente",
+      "fragilityPattern": "Padrão de fragilidade emergente",
+      "premature_crushingPattern": "Padrão de esmagamento prematuro emergente",
+      "multipleZones": "{{count}} zonas dormentes compartilham essa dinâmica",
+      "suggestMonitor": "Monitorar a evolução conjunta",
+      "escalatingZone": "Zona em escalada potencial",
+      "multipleTensions": "Acúmulo de tensões",
+      "suggestIntervene": "Intervenção preventiva recomendada",
+      "stuckZone": "Zona bloqueada há muito tempo",
+      "stabilizingZone": "Zona em estabilização",
+      "suggestReview": "Reavaliar a pertinência desta zona",
+      "positiveEmergent": "Emergência positiva detectada",
+      "nourishingDynamic": "Dinâmica nutritiva",
+      "suggestAmplify": "Amplificar esta dinâmica",
       "noSignals": "Nenhum signal faible détecté",
-      "addZones": "Ajoutez plus de zones pour activer la détection",
+      "addZones": "Adicione mais zonas para ativar a detecção",
       "viewZone": "Ver la zone",
-      "intensity": "Intensité",
-      "detectedAt": "Détecté le",
-      "relatedZones": "Zones concernées"
+      "intensity": "Intensidade",
+      "detectedAt": "Detectado em",
+      "relatedZones": "Zonas relacionadas"
     },
     "preview": {
-      "description": "Découvrez le module Latent avec des exemples. Passez à Pro pour créer vos propres zones."
+      "description": "Conheça o módulo Latent com exemplos. Assine o Pro para criar suas próprias zonas."
     },
     "demo": {
       "zone1": {
-        "title": "Tensions familiales non-dites",
-        "desc": "Désaccords latents sur les priorités de vie"
+        "title": "Tensões familiares não ditas",
+        "desc": "Desacordos latentes sobre as prioridades de vida"
       },
       "zone2": {
-        "title": "Repositionnement professionnel",
-        "desc": "Envie de changement mais contraintes financières"
+        "title": "Reposicionamento profissional",
+        "desc": "Desejo de mudança, mas restrições financeiras"
       },
       "zone3": {
         "title": "Relation avec le país d'origine",
-        "desc": "Attentes familiales vs choix de vie"
+        "desc": "Expectativas familiares vs escolhas de vida"
       }
     }
   },
@@ -7856,7 +7856,7 @@
       "view": "Ver détails",
       "viewDetails": "Ver les détails",
       "addAlternative": "Adicionar une alternative",
-      "linkToTraceOS": "Lier à TraceOS"
+      "linkToTraceOS": "Vincular ao TraceOS"
     },
     "fields": {
       "title": "Título",
@@ -7894,8 +7894,8 @@
       "legal": "Legal",
       "ethical": "Ético",
       "hr": "RH",
-      "operations": "Opérations",
-      "finance": "Finance"
+      "operations": "Operações",
+      "finance": "Finanças"
     },
     "nature": {
       "resource_commitment": "Comprometimento de recursos",
@@ -7969,13 +7969,13 @@
         "sealed": "Threshold sealed"
       }
     },
-    "badge": "Module Irreversa",
+    "badge": "Módulo Irreversa",
     "hints": {
       "alternatives": "List the alternatives that will be definitively abandoned"
     },
     "create": {
       "title": "Detect irreversibility threshold",
-      "button": "Nouveau seuil",
+      "button": "Novo limiar",
       "warning": "This form engages the validator's moral responsibility"
     },
     "sealed": {
@@ -7990,36 +7990,36 @@
       "audit": "Audit"
     },
     "export": {
-      "success": "Certificat PDF généré avec succès",
+      "success": "Certificado PDF gerado com sucesso",
       "error": "Erro lors de la génération du PDF"
     },
     "criticality": {
-      "title": "Score de criticité",
+      "title": "Pontuação de criticidade",
       "low": "Baixo",
       "medium": "Médio",
       "high": "Alto",
       "critical": "Crítico"
     },
     "disclaimer": {
-      "title": "Outil de documentation",
-      "text": "Ce module vous aide à documenter les seuils franchis. Il a une valeur de clarification personnelle, et non juridique."
+      "title": "Ferramenta de documentação",
+      "text": "Este módulo ajuda você a documentar os limiares ultrapassados. Tem valor de esclarecimento pessoal, e não jurídico."
     },
     "demo": {
       "threshold1": {
-        "title": "Décision de licenciement collectif",
-        "context": "Restructuration suite à perte de marché majeur"
+        "title": "Decisão de demissão coletiva",
+        "context": "Reestruturação após perda de mercado importante"
       },
       "threshold2": {
-        "title": "Cession de filiale stratégique",
-        "context": "Recentrage sur le cœur de métier"
+        "title": "Venda de subsidiária estratégica",
+        "context": "Foco no negócio principal"
       },
       "threshold3": {
-        "title": "Fermeture site de production",
-        "context": "Délocalisation vers zone à moindre coût"
+        "title": "Fechamento de unidade de produção",
+        "context": "Deslocalização para zona de menor custo"
       }
     },
     "preview": {
-      "description": "Découvrez le module Irreversa avec des exemples. Passez à Pro pour documenter vos propres seuils."
+      "description": "Conheça o módulo Irreversa com exemplos. Assine o Pro para documentar seus próprios limiares."
     }
   },
   "pricing": {
@@ -8186,14 +8186,14 @@
     "regenerate": "Regenerar",
     "disclaimer": "Este relatório é uma ferramenta de análise. Não constitui aconselhamento jurídico, financeiro ou fiscal.",
     "sections": {
-      "executive": "Résumé exécutif",
+      "executive": "Resumo executivo",
       "profile": "Perfil client",
-      "analysis": "Analyse comparative",
-      "risks": "Points d'attention",
-      "nextSteps": "Prochaines étapes",
-      "compliance": "Vérification conformité"
+      "analysis": "Análise comparativa",
+      "risks": "Pontos de atenção",
+      "nextSteps": "Próximas etapas",
+      "compliance": "Verificação de conformidade"
     },
-    "preview": "Aperçu du rapport"
+    "preview": "Pré-visualização do relatório"
   },
   "orientationHub": {
     "noPromise": "Sem promessa",
@@ -8678,7 +8678,7 @@
     "jsonExport": "JSON export",
     "jsonExportSuccess": "JSON data exported",
     "dataLastUpdated": "Data last updated on",
-    "sourceCount": "sources",
+    "sourceCount": "fontes",
     "highReliability": "High reliability",
     "mediumReliability": "Medium reliability",
     "lowReliability": "Low reliability",
@@ -8691,7 +8691,7 @@
     "sectorName": "Sector",
     "howToAvoid": "How to avoid",
     "developmentSince": "Since",
-    "developmentSource": "Source"
+    "developmentSource": "Fonte"
   },
   "news": {
     "badge": "Notícias Económicas",
@@ -8831,11 +8831,11 @@
     "today": "Hoje",
     "upcoming": "Próximos",
     "overdue": "Atrasado",
-    "completed": "Complétées",
-    "completedSingle": "Complété",
+    "completed": "Concluídas",
+    "completedSingle": "Concluído",
     "overdueCount": "Atrasado ({{count}})",
-    "upcomingDeadlines": "Prochaines échéances ({{count}})",
-    "recentlyCompleted": "Récemment complétées",
+    "upcomingDeadlines": "Próximos prazos ({{count}})",
+    "recentlyCompleted": "Concluídas recentemente",
     "noUpcoming": "Nenhume échéance à venir. Définissez des échéances pour vos actions !",
     "noCompleted": "Nenhume action complétée avec échéance."
   },
@@ -8914,7 +8914,7 @@
     "subtitle": "Deux âmes, deux país, un même destin",
     "rule1Title": "2 Characters",
     "rule1Desc": "Chaque joueur contrôle 2 personnages dans des país différents",
-    "rule2Title": "1 Aspiration",
+    "rule2Title": "1 Aspiração",
     "rule2Desc": "Both characters share the same life goal",
     "rule3Title": "Reunion",
     "rule3Desc": "First to reunite their characters wins",
@@ -9029,7 +9029,7 @@
       "shortcutsDesc": "Ações risquées qui peuvent rapporter gros... ou tout détruire.",
       "blackMarket": "Terché noir",
       "fakeDocs": "Fake Documents",
-      "corruption": "Corruption",
+      "corruption": "Corrupção",
       "note": "Nenhume action n'est 'gratuite'. Le jeu récompense les joueurs qui savent quand agir et quand attendre."
     },
     "turnFlow": {
@@ -9067,7 +9067,7 @@
       "successDesc": "The action succeeds. You get the promised gains.",
       "failureTitle": "Failure (30-40%)",
       "failureDesc": "The action fails. You lose invested resources.",
-      "catastropheTitle": "Catastrophe (10-20%)",
+      "catastropheTitle": "Catástrofe (10-20%)",
       "catastropheDesc": "Devastating consequences: prison, deportation, losing everything...",
       "moral": "The game doesn't judge these choices. It shows that 'shortcuts' have a statistical price."
     },
@@ -9118,7 +9118,7 @@
       "resourceBonus": "High resources bonus",
       "crisisPenalty": "Unresolved crises",
       "difficultyBonus": "Bonus país difficile",
-      "bonus": "Bonus",
+      "bonus": "Bônus",
       "penalty": "Penalty",
       "equity": "Equity",
       "finalNote": "The score isn't just a number: it's the reflection of a life lived on your own terms."
@@ -9129,7 +9129,7 @@
     "minorTitle": "Ações mineures",
     "used": "Used",
     "costs": "Costs",
-    "gains": "Gains",
+    "gains": "Ganhos",
     "confirm": "Confirmar",
     "riskWarning": "Risco d'échec : {{chance}}%",
     "work": {
@@ -9223,7 +9223,7 @@
         "description": "Working from home becomes the norm"
       },
       "inflation": {
-        "label": "Inflation",
+        "label": "Inflação",
         "description": "Cost of living increases everywhere"
       },
       "openBorders": {
@@ -9678,7 +9678,7 @@
     "parentAdult": "Parent (adult children)",
     "caregiver": "Caregiver",
     "sandwich": "Sandwich generation",
-    "diaspora": "Diaspora"
+    "diaspora": "Diáspora"
   },
   "familyConstraints": {
     "youngChildren": {
@@ -9758,7 +9758,7 @@
       "description": "Loss of a parent"
     },
     "divorce": {
-      "label": "Divorce",
+      "label": "Divórcio",
       "description": "Separation from spouse"
     },
     "childIllness": {
@@ -9817,7 +9817,7 @@
     }
   },
   "character": {
-    "aspirations": "Aspirations",
+    "aspirations": "Aspirações",
     "startingResources": "Starting Resources",
     "selectCharacter": "Choose your character",
     "drawNew": "Draw new characters"
@@ -9907,7 +9907,7 @@
     "risksTaken": "Riscos pris",
     "risksSucceeded": "Successes",
     "risksFailed": "Failures",
-    "risksCatastrophic": "Catastrophes",
+    "risksCatastrophic": "Catástrofes",
     "actionsCompleted": "Ações réussies",
     "moneyLost": "Money lost",
     "healthLost": "Health lost",
@@ -10043,7 +10043,7 @@
       "moderate": "Moderate",
       "high": "Alto",
       "very_high": "Very High",
-      "rare": "Rare",
+      "rare": "Raro",
       "occasional": "Occasional",
       "frequent": "Frequent",
       "severe": "Severe"
@@ -10066,7 +10066,7 @@
       "limited": "Limited"
     },
     "qualityLevels": {
-      "excellent": "Excellent",
+      "excellent": "Excelente",
       "good": "Good",
       "adequate": "Adequate",
       "limited": "Limited",
@@ -10088,7 +10088,7 @@
     "error": "Unable to generate music",
     "loadError": "Erro de chargement audio",
     "play": "Play",
-    "pause": "Pause",
+    "pause": "Pausar",
     "volume": "Volume"
   },
   "subscription": {
@@ -10147,7 +10147,7 @@
       "mistakes": "Erros",
       "admin": "Admin",
       "costs": "Costs",
-      "culture": "Culture",
+      "culture": "Cultura",
       "communities": "Communities"
     },
     "typicalDay": {
@@ -10178,7 +10178,7 @@
     "mistakes": {
       "title": "Erros courantes par phase",
       "subtitle": "What newcomers get wrong",
-      "phase": "Phase",
+      "phase": "Fase",
       "mistake": "Erro",
       "consequence": "Consequence",
       "prevention": "Prevention",
@@ -10217,7 +10217,7 @@
       "name": "Nome",
       "location": "Location",
       "size": "Size",
-      "focus": "Focus",
+      "focus": "Foco",
       "entryDifficulty": "Entry Difficulty",
       "noData": "Données non disponibles pour ce país"
     }
@@ -10227,7 +10227,7 @@
       "hr": "HR",
       "it": "IT",
       "strategy": "Strategy",
-      "finance": "Finance",
+      "finance": "Finanças",
       "legal": "Legal",
       "operations": "Operations"
     },
@@ -10236,116 +10236,116 @@
       "approvalsCount": "{{count}} approvals",
       "stepsCount": "{{count}} steps"
     },
-    "badge": "TraceOS - Mémoire Décisionnelle",
-    "title": "Traçabilité Intellectuelle",
-    "subtitle": "Mémoire stratégique de votre organisation",
+    "badge": "TraceOS - Memória Decisória",
+    "title": "Rastreabilidade Intelectual",
+    "subtitle": "Memória estratégica da sua organização",
     "export": {
       "button": "Exportar",
-      "format": "Format d'export",
-      "pdf": "Document PDF",
-      "json": "Données JSON",
-      "pdfSuccess": "Export PDF réussi",
-      "jsonSuccess": "Export JSON réussi",
+      "format": "Formato de exportação",
+      "pdf": "Documento PDF",
+      "json": "Dados JSON",
+      "pdfSuccess": "Exportação PDF realizada com sucesso",
+      "jsonSuccess": "Exportação JSON realizada com sucesso",
       "error": "Erro lors de l'export",
       "loginRequired": "Log in to manage exports"
     },
-    "newDecision": "Nouvelle décision",
+    "newDecision": "Nova decisão",
     "searchPlaceholder": "Pesquisar une décision...",
-    "disclaimer": "TraceOS est un outil de documentation et de traçabilité. Il ne remplace pas le jugement humain ni le processus de décision.",
+    "disclaimer": "TraceOS é uma ferramenta de documentação e rastreabilidade. Não substitui o julgamento humano nem o processo de decisão.",
     "paywall": {
-      "title": "Fonctionnalité Pro",
-      "description": "Accédez à TraceOS, le module de traçabilité décisionnelle pour les organisations."
+      "title": "Funcionalidade Pro",
+      "description": "Acesse o TraceOS, o módulo de rastreabilidade decisória para organizações."
     },
     "values": {
       "tree": {
-        "title": "Arbre décisionnel",
-        "desc": "Visualisez les enchaînements"
+        "title": "Árvore decisória",
+        "desc": "Visualize os encadeamentos"
       },
       "memory": {
-        "title": "Mémoire stratégique",
-        "desc": "Conservez les hypothèses"
+        "title": "Memória estratégica",
+        "desc": "Preserve as hipóteses"
       },
       "branches": {
-        "title": "Branches abandonnées",
-        "desc": "Gardez trace des alternatives"
+        "title": "Ramos abandonados",
+        "desc": "Mantenha o registro das alternativas"
       },
       "governance": {
-        "title": "Gouvernance",
-        "desc": "Historique non modifiable"
+        "title": "Governança",
+        "desc": "Histórico não modificável"
       }
     },
     "tabs": {
-      "dashboard": "Dashboard",
-      "tree": "Arbre",
-      "graph": "Graphe",
+      "dashboard": "Painel",
+      "tree": "Árvore",
+      "graph": "Grafo",
       "tags": "Tags",
-      "review": "Relecture",
-      "governance": "Gouvernance"
+      "review": "Revisão",
+      "governance": "Governança"
     },
     "tree": {
-      "viewTree": "Arbre",
-      "viewTimeline": "Timeline",
-      "decisions": "décisions",
-      "validated": "validées",
-      "pending": "en attente"
+      "viewTree": "Árvore",
+      "viewTimeline": "Linha do tempo",
+      "decisions": "decisões",
+      "validated": "validadas",
+      "pending": "pendentes"
     },
     "timeline": {
-      "subDecision": "sous-décision"
+      "subDecision": "subdecisão"
     },
     "status": {
       "pending": "Pendente",
-      "validated": "Validée",
-      "abandoned": "Abandonnée"
+      "validated": "Validada",
+      "abandoned": "Abandonada"
     },
     "node": {
-      "context": "Contexte",
-      "mainHypothesis": "Hypothèse principale",
-      "alternativeHypotheses": "Hypothèses alternatives",
-      "constraints": "Contraintes identifiées",
-      "decisionTaken": "Décision prise",
-      "abandonedBranches": "Branches abandonnées"
+      "context": "Contexto",
+      "mainHypothesis": "Hipótese principal",
+      "alternativeHypotheses": "Hipóteses alternativas",
+      "constraints": "Restrições identificadas",
+      "decisionTaken": "Decisão tomada",
+      "abandonedBranches": "Ramos abandonados"
     },
     "form": {
-      "title": "Nouvelle décision",
-      "titleSub": "Nouvelle sous-décision",
-      "parentDecision": "Rattachée à",
-      "decisionTitle": "Intitulé de la décision",
-      "titlePlaceholder": "Ex: Choix du nouveau CRM",
-      "context": "Contexte",
-      "contextPlaceholder": "Décrivez le contexte qui a mené à cette décision...",
-      "mainHypothesis": "Hypothèse principale",
-      "hypothesisPlaceholder": "L'hypothèse sur laquelle repose cette décision...",
-      "alternativeHypotheses": "Hypothèses alternatives",
-      "alternativePlaceholder": "Une autre hypothèse envisagée...",
+      "title": "Nova decisão",
+      "titleSub": "Nova subdecisão",
+      "parentDecision": "Vinculada a",
+      "decisionTitle": "Título da decisão",
+      "titlePlaceholder": "Ex: Escolha do novo CRM",
+      "context": "Contexto",
+      "contextPlaceholder": "Descreva o contexto que levou a esta decisão...",
+      "mainHypothesis": "Hipótese principal",
+      "hypothesisPlaceholder": "A hipótese na qual esta decisão se baseia...",
+      "alternativeHypotheses": "Hipóteses alternativas",
+      "alternativePlaceholder": "Outra hipótese considerada...",
       "addAlternative": "Adicionar une hypothèse",
-      "constraints": "Contraintes identifiées",
-      "constraintPlaceholder": "Ex: Budget limité, Deadline serrée...",
+      "constraints": "Restrições identificadas",
+      "constraintPlaceholder": "Ex: Orçamento limitado, Prazo apertado...",
       "addConstraint": "Adicionar une contrainte",
-      "decisionTaken": "Décision prise",
-      "decisionPlaceholder": "La décision finale retenue...",
-      "author": "Auteur",
+      "decisionTaken": "Decisão tomada",
+      "decisionPlaceholder": "A decisão final escolhida...",
+      "author": "Autor",
       "authorPlaceholder": "Nome ou rôle",
-      "scope": "Périmètre",
+      "scope": "Escopo",
       "scopePlaceholder": "Selecionar...",
-      "scopeStrategic": "Stratégique",
-      "scopeOperational": "Opérationnel",
-      "scopeTactical": "Tactique",
-      "scopeProject": "Projet",
+      "scopeStrategic": "Estratégico",
+      "scopeOperational": "Operacional",
+      "scopeTactical": "Tático",
+      "scopeProject": "Projeto",
       "date": "Data",
       "save": "Salvar la décision"
     },
     "review": {
-      "title": "Relecture stratégique",
-      "desc": "Analysez l'enchaînement des décisions et identifiez les moments de rupture.",
-      "selectDecision": "Sélectionnez une décision dans l'arbre pour lancer une relecture."
+      "title": "Revisão estratégica",
+      "desc": "Analise o encadeamento das decisões e identifique os momentos de ruptura.",
+      "selectDecision": "Selecione uma decisão na árvore para iniciar uma revisão."
     },
     "governance": {
-      "title": "Gouvernance & Accès",
-      "desc": "Gérez les droits d'accès et la traçabilité des modifications.",
-      "appendOnly": "Append-only",
-      "appendOnlyDesc": "L'historique est non modifiable",
-      "roles": "Gestion des rôles",
-      "rolesDesc": "Lecture / Écriture par utilisateur"
+      "title": "Governança e Acesso",
+      "desc": "Gerencie os direitos de acesso e a rastreabilidade das modificações.",
+      "appendOnly": "Somente adição",
+      "appendOnlyDesc": "O histórico não pode ser modificado",
+      "roles": "Gestão de papéis",
+      "rolesDesc": "Leitura / Escrita por usuário"
     },
     "filters": {
       "tags": "Tags"
@@ -10370,89 +10370,89 @@
       "secureStorageDesc": "Your exports are securely stored and only accessible to you."
     },
     "notifications": {
-      "title": "Notifications",
+      "title": "Notificações",
       "on": "On",
       "off": "Off",
-      "disabled": "Notifications désactivées",
+      "disabled": "Notificações desativadas",
       "empty": "Nenhume notification",
       "allGood": "Tudo est à jour !",
       "markAllRead": "Tudo marquer comme lu",
-      "oldPending": "Décision en attente depuis longtemps",
-      "oldPendingMsg": "Cette décision est en attente depuis {{days}} jours",
-      "pendingReminder": "Rappel de décision",
-      "pendingReminderMsg": "Décision en attente depuis {{days}} jours"
+      "oldPending": "Decisão pendente há muito tempo",
+      "oldPendingMsg": "Esta decisão está pendente há {{days}} dias",
+      "pendingReminder": "Lembrete de decisão",
+      "pendingReminderMsg": "Decisão pendente há {{days}} dias"
     },
     "comments": {
-      "title": "Commentaires",
-      "added": "Commentaire ajouté",
-      "updated": "Commentaire modifié",
-      "deleted": "Commentaire supprimé",
+      "title": "Comentários",
+      "added": "Comentário adicionado",
+      "updated": "Comentário editado",
+      "deleted": "Comentário excluído",
       "error": "Erro lors de l'opération",
       "empty": "Nenhum commentaire",
       "placeholder": "Adicionar un commentaire..."
     },
     "templates": {
-      "title": "Templates de décision",
-      "description": "Utilisez un template pour accélérer la création de votre décision",
-      "use": "Utiliser",
+      "title": "Modelos de decisão",
+      "description": "Use um modelo para acelerar a criação da sua decisão",
+      "use": "Usar",
       "categories": {
         "rh": "RH",
         "it": "IT",
-        "strategy": "Stratégie",
-        "finance": "Finance",
-        "legal": "Juridique",
-        "operations": "Opérations"
+        "strategy": "Estratégia",
+        "finance": "Finanças",
+        "legal": "Jurídico",
+        "operations": "Operações"
       }
     },
     "graph": {
-      "title": "Vue graphique interactive",
-      "instructions": "Glissez pour déplacer les nœuds, scroll pour zoomer",
+      "title": "Visualização gráfica interativa",
+      "instructions": "Arraste para mover os nós, scroll para dar zoom",
       "empty": "Nenhume décision à afficher"
     },
     "tags": {
       "title": "Tags",
       "manage": "Tags",
-      "management": "Gestion des tags",
-      "managementDesc": "Créez et organisez vos étiquettes pour catégoriser vos décisions.",
-      "new": "Nouveau",
-      "create": "Créer le tag",
+      "management": "Gestão de tags",
+      "managementDesc": "Crie e organize suas etiquetas para categorizar suas decisões.",
+      "new": "Novo",
+      "create": "Criar tag",
       "namePlaceholder": "Nome du tag",
       "empty": "Nenhum tag créé",
-      "added": "Tag ajouté",
-      "deleted": "Tag supprimé",
+      "added": "Tag adicionada",
+      "deleted": "Tag excluída",
       "error": "Erro lors de l'opération"
     },
     "dashboard": {
       "title": "Painel analytique",
-      "subtitle": "Vue d'ensemble de vos décisions",
-      "totalDecisions": "Total décisions",
-      "validated": "Validées",
+      "subtitle": "Visão geral das suas decisões",
+      "totalDecisions": "Total de decisões",
+      "validated": "Validadas",
       "pending": "Pendente",
-      "abandoned": "Abandonnées",
-      "abandonedBranches": "Branches abandonnées",
-      "documentedAlternatives": "Alternatives documentées",
-      "maxDepth": "Profondeur max",
-      "decisionLevels": "niveaux de décision",
-      "authors": "Contributeurs",
-      "uniqueAuthors": "auteurs uniques",
-      "timeline": "Évolution (6 derniers mois)",
-      "byScope": "Par périmètre",
-      "topContributors": "Principaux contributeurs",
+      "abandoned": "Abandonadas",
+      "abandonedBranches": "Ramos abandonados",
+      "documentedAlternatives": "Alternativas documentadas",
+      "maxDepth": "Profundidade máxima",
+      "decisionLevels": "níveis de decisão",
+      "authors": "Contribuidores",
+      "uniqueAuthors": "autores únicos",
+      "timeline": "Evolução (últimos 6 meses)",
+      "byScope": "Por escopo",
+      "topContributors": "Principais contribuidores",
       "noData": "Nenhume donnée disponible",
       "noContributors": "Nenhum contributeur"
     },
     "email": {
       "sendAlerts": "Enviar les alertes par email",
-      "sent": "Alerte envoyée par email",
+      "sent": "Alerta enviado por e-mail",
       "noPending": "Nenhume décision en attente depuis plus de 7 jours",
       "error": "Erro lors de l'envoi de l'alerte",
-      "noEmail": "Email non disponible"
+      "noEmail": "E-mail não disponível"
     },
     "collaboration": {
-      "online": "en ligne",
-      "you": "Vous",
-      "editing": "Édite",
-      "viewing": "Consulte"
+      "online": "online",
+      "you": "Você",
+      "editing": "Editando",
+      "viewing": "Visualizando"
     },
     "quality": {
       "title": "Quality Score",
@@ -10484,7 +10484,7 @@
       "noDate": "✗ Data manquante",
       "validated": "✓ Decision validated",
       "pending": "○ Pendente de validation",
-      "excellent": "Excellent",
+      "excellent": "Excelente",
       "good": "Good",
       "adequate": "Adequate",
       "needsWork": "Needs work",
@@ -10646,7 +10646,7 @@
     "descStable": "Your privileged situation protects you from certain risks, but other challenges await you. Here's what to anticipate.",
     "descUnstable": "This section is not here to scare, but to inform and protect. Official paths are longer but infinitely safer.",
     "descDynamic": "Riscos spécifiques pour un trajet {{origin}} → {{destination}}.",
-    "infoProtection": "Information = Protection",
+    "infoProtection": "Informação = Proteção",
     "noJudgment": "Nenhum jugement, que de la prévention",
     "realStats": "Real statistics",
     "warningSignals": "Warning signals",
@@ -10669,7 +10669,7 @@
       "sosMed": "SOS Mediterranean",
       "laborInspection": "Labor Inspection France",
       "ccem": "Committee Against Modern Slavery",
-      "franceDiplomatie": "France Diplomatie - Visas",
+      "franceDiplomatie": "France Diplomatie - Vistos",
       "signalArnaques": "Signal-Arnaques",
       "mouvementNid": "Mouvement du Nid",
       "alcNice": "ALC Nice Association",
@@ -10905,7 +10905,7 @@
       "customs": "Customs & Logistics",
       "partners": "Partner Reliability",
       "poc": "POC Planner",
-      "timeline": "Timeline",
+      "timeline": "Linha do tempo",
       "stakeholders": "Key Stakeholders"
     },
     "scores": {
@@ -10948,11 +10948,11 @@
       "addCompetitor": "Adicionar un concurrent",
       "name": "Nome",
       "type": "Tipo",
-      "implantation": "Implantation",
+      "implantation": "Implantação",
       "maturity": "Maturity",
       "types": {
         "local": "Local",
-        "international": "International",
+        "international": "Internacional",
         "stateOwned": "State-owned",
         "informal": "Informal"
       }
@@ -11094,7 +11094,7 @@
       "other": "Other"
     },
     "powerTypes": {
-      "sign": "Signature",
+      "sign": "Assinatura",
       "approve": "Approval",
       "block": "Blocking",
       "grant_access": "Decision-maker access",
@@ -11157,7 +11157,7 @@
     "patternType": "Tipo de schéma",
     "patternDescription": "Descrição neutre",
     "signals": "Warning signals",
-    "protections": "Protections",
+    "protections": "Proteções",
     "riskLevel": "Risk level",
     "partnerType": "Tipo de partenariat",
     "mandatoryPartner": "Mandatory partnership",
@@ -11173,7 +11173,7 @@
     "delayFactors": "Delay factors",
     "cashflowImpact": "Cashflow impact",
     "confidence": "Confidence",
-    "sources": "Sources",
+    "sources": "Fontes",
     "exportPdf": "Exportar PDF",
     "exporting": "Exporting...",
     "exportSuccess": "PDF exported successfully",
@@ -11214,8 +11214,8 @@
       "title": "Governance Map",
       "add": "Adicionar",
       "cancel": "Cancelar",
-      "exportCsv": "Export CSV",
-      "exportPdf": "Export PDF",
+      "exportCsv": "Exportar CSV",
+      "exportPdf": "Exportar PDF",
       "redFlags": "Red flags",
       "singleIntermediary": "Dependency on a single intermediary",
       "highOpacity": "High opacity (unverified reliability)",
@@ -11266,7 +11266,7 @@
       "phases": {
         "preparation": "Preparation",
         "admin": "Administrative",
-        "installation": "Installation",
+        "installation": "Instalação",
         "launch": "Launch",
         "stabilization": "Stabilization"
       },
@@ -11297,17 +11297,17 @@
       "scope": "Scope",
       "projectTypes": "Tipos de projets",
       "projects": "Projects",
-      "implantation": "Implantation",
+      "implantation": "Implantação",
       "maturity": "Maturity",
       "analysis": "Quick analysis",
       "stronglyEstablished": "{{count}} strongly established actor(s)",
-      "dominance": "Dominance",
+      "dominance": "Dominância",
       "dominanceLocal": "Local",
       "dominanceInternational": "International",
       "opportunity": "Opportunity: underserved segments possible",
       "types": {
         "local": "Local",
-        "international": "International",
+        "international": "Internacional",
         "hybrid": "Hybrid"
       },
       "implantationLevels": {
@@ -11349,57 +11349,57 @@
   "marketStudy": {
     "title": "Market Study",
     "problem": {
-      "statement": "Quel problème résolvez-vous ?",
-      "placeholder": "Décrivez le problème que votre offre résout...",
-      "value": "Proposition de valeur",
-      "valuePlaceholder": "En quoi votre solution est-elle unique ?"
+      "statement": "Qual problema você resolve?",
+      "placeholder": "Descreva o problema que sua oferta resolve...",
+      "value": "Proposta de valor",
+      "valuePlaceholder": "Em que sua solução é única?"
     },
     "customers": {
-      "segments": "Segments clients",
+      "segments": "Segmentos de clientes",
       "addSegment": "Adicionar un segment...",
-      "paying": "Qui paye ?",
-      "endUser": "Qui utilise ?"
+      "paying": "Quem paga?",
+      "endUser": "Quem usa?"
     },
     "competition": {
-      "title": "Concurrence",
+      "title": "Concorrência",
       "name": "Nome",
-      "scope": "Périmètre",
-      "strengths": "Points forts",
+      "scope": "Escopo",
+      "strengths": "Pontos fortes",
       "local": "Local",
-      "regional": "Régional",
-      "national": "National",
-      "international": "International",
+      "regional": "Regional",
+      "national": "Nacional",
+      "international": "Internacional",
       "empty": "Nenhum concurrent ajouté"
     },
     "diff": {
-      "why": "Pourquoi vous ?",
-      "placeholder": "Qu'est-ce qui vous différencie réellement ?",
-      "timing": "Pourquoi maintenant ?",
-      "timingPlaceholder": "Quel facteur rend ce moment propice ?"
+      "why": "Por que você?",
+      "placeholder": "O que realmente diferencia você?",
+      "timing": "Por que agora?",
+      "timingPlaceholder": "Que fator torna este momento propício?"
     },
     "regulation": {
-      "list": "Réglementations applicables",
+      "list": "Regulamentações aplicáveis",
       "add": "Adicionar une réglementation...",
-      "constraints": "Contraintes identifiées",
+      "constraints": "Restrições identificadas",
       "addConstraint": "Adicionar une contrainte..."
     },
     "gtm": {
-      "strategy": "Stratégie d'entrée",
-      "placeholder": "Comment allez-vous atteindre vos premiers clients ?",
-      "channels": "Canaux de distribution",
+      "strategy": "Estratégia de entrada",
+      "placeholder": "Como você vai alcançar seus primeiros clientes?",
+      "channels": "Canais de distribuição",
       "addChannel": "Adicionar un canal..."
     },
     "economics": {
-      "title": "Économie unitaire",
-      "cost": "Coût unitaire (€)",
-      "price": "Prix unitaire (€)",
+      "title": "Economia unitária",
+      "cost": "Custo unitário (€)",
+      "price": "Preço unitário (€)",
       "margin": "Terge (%)",
-      "breakeven": "Point mort"
+      "breakeven": "Ponto de equilíbrio"
     },
     "operations": {
-      "title": "Opérations",
-      "placeholder": "Décrivez vos opérations...",
-      "logistics": "Logistique",
+      "title": "Operações",
+      "placeholder": "Descreva suas operações...",
+      "logistics": "Logística",
       "customs": "Notas douanes"
     },
     "risks": {
@@ -11407,44 +11407,44 @@
       "add": "Adicionar un risque..."
     },
     "conclusion": {
-      "title": "Conclusion",
-      "feasibility": "Faisabilité",
-      "conditions": "Conditions à valider",
+      "title": "Conclusão",
+      "feasibility": "Viabilidade",
+      "conditions": "Condições a validar",
       "addCondition": "Adicionar une condition..."
     }
   },
   "actorsMap": {
     "title": "Actors Mapping",
-    "description": "Identifiez les parties prenantes clés de votre projet",
+    "description": "Identifique as partes interessadas do seu projeto",
     "add": "Adicionar",
-    "actors": "acteurs",
-    "verified": "vérifiés",
-    "redFlags": "alertes",
-    "highDep": "dépendance élevée",
+    "actors": "atores",
+    "verified": "verificados",
+    "redFlags": "alertas",
+    "highDep": "dependência elevada",
     "empty": "Nenhum acteur cartographié",
     "emptyHint": "Cliquez sur \"Adicionar\" pour commencer",
     "namePlaceholder": "Nome / Organisation",
     "notesPlaceholder": "Notas sur cet acteur...",
-    "proofs": "Preuves / Références",
+    "proofs": "Provas / Referências",
     "addProof": "Adicionar une preuve...",
-    "markRedFlag": "Drapeau rouge",
+    "markRedFlag": "Sinalizar alerta",
     "status": {
-      "official": "Officiel",
-      "influential": "Influence"
+      "official": "Oficial",
+      "influential": "Influente"
     },
     "dep": {
-      "low": "Dép. faible",
-      "medium": "Dép. moyenne",
-      "high": "Dép. élevée"
+      "low": "Dep. baixa",
+      "medium": "Dep. média",
+      "high": "Dep. alta"
     },
     "reliability": {
       "unverified": "Não vérifié",
       "inProgress": "Em andamento",
-      "verified": "Vérifié"
+      "verified": "Verificado"
     },
     "notice": {
-      "title": "Important",
-      "text": "Cette cartographie documente les risques d'opacité et de dépendance comme outils de prévention."
+      "title": "Importante",
+      "text": "Esta cartografia documenta os riscos de opacidade e dependência como ferramentas de prevenção."
     }
   },
   "riskRegister": {
@@ -11452,53 +11452,53 @@
     "description": "Descrição",
     "templates": "Modelos",
     "add": "Adicionar",
-    "open": "ouverts",
-    "high": "critiques",
-    "mitigated": "atténués",
+    "open": "abertos",
+    "high": "críticos",
+    "mitigated": "mitigados",
     "selectTemplate": "Selecionar un modèle de risque",
     "empty": "Nenhum risque documenté",
-    "emptyHint": "Utilisez les modèles pour commencer rapidement",
-    "probability": "Probabilité",
-    "impact": "Impact",
-    "signals": "Signaux d'alerte",
+    "emptyHint": "Use os modelos para começar rapidamente",
+    "probability": "Probabilidade",
+    "impact": "Impacto",
+    "signals": "Sinais de alerta",
     "addSignal": "Adicionar un signal...",
-    "protections": "Mesures de protection",
+    "protections": "Medidas de proteção",
     "addProtection": "Adicionar une protection...",
-    "statusOpen": "Ouvert",
-    "statusMitigated": "Atténué",
-    "statusAccepted": "Accepté"
+    "statusOpen": "Aberto",
+    "statusMitigated": "Mitigado",
+    "statusAccepted": "Aceito"
   },
   "structuralRules": {
     "title": "Structural Rules",
-    "description": "Règles légales et réglementaires à vérifier pour {{country}}",
+    "description": "Regras legais e regulatórias a verificar para {{country}}",
     "templates": "Modelos",
     "add": "Adicionar",
-    "rules": "règles",
-    "verified": "vérifiées",
-    "pending": "à vérifier",
+    "rules": "regras",
+    "verified": "verificadas",
+    "pending": "a verificar",
     "selectTemplate": "Tipos de règles courants",
     "empty": "Nenhume règle documentée",
-    "emptyHint": "Utilisez les modèles pour documenter les règles à vérifier",
+    "emptyHint": "Use os modelos para documentar as regras a verificar",
     "ruleTitle": "Título de la règle",
-    "titlePlaceholder": "Ex: Obligation de JV à 51%",
+    "titlePlaceholder": "Ex: Obrigação de JV a 51%",
     "ruleType": "Tipo",
     "ruleDescription": "Descrição détaillée",
-    "descPlaceholder": "Décrivez la règle et ses implications...",
-    "sourceRef": "Source / Référence",
-    "sourcePlaceholder": "Ex: Code des investissements Art. 12",
-    "sourceUrl": "URL de la source",
-    "source": "Source",
+    "descPlaceholder": "Descreva a regra e suas implicações...",
+    "sourceRef": "Fonte / Referência",
+    "sourcePlaceholder": "Ex: Código de investimentos Art. 12",
+    "sourceUrl": "URL da fonte",
+    "source": "Fonte",
     "notes": "Notas",
     "notesPlaceholder": "Notas de vérification, contacts, observations...",
     "markVerified": "Terquer vérifié",
     "status": {
       "unverified": "Não vérifié",
-      "inProgress": "En vérification",
-      "verified": "Vérifié"
+      "inProgress": "Em verificação",
+      "verified": "Verificado"
     },
     "notice": {
       "title": "⚠️ Nota de prudence",
-      "text": "Ces informations sont fournies à titre indicatif et doivent être confirmées auprès de sources officielles avant tout engagement."
+      "text": "Estas informações são fornecidas a título indicativo e devem ser confirmadas junto a fontes oficiais antes de qualquer compromisso."
     }
   },
   "ovi": {
@@ -11515,55 +11515,55 @@
       "responsibility": "Maximum empowerment"
     },
     "tabs": {
-      "intro": "Introduction",
+      "intro": "Introdução",
       "frameworks": "Frameworks",
       "grids": "Grids",
-      "evidence": "Preuves",
+      "evidence": "Evidências",
       "connection": "Entrars"
     },
     "evidence": {
-      "title": "Collecte de preuves",
-      "subtitle": "Structurez vos éléments probants pour renforcer vos hypothèses",
-      "hypotheses": "Hypothèses",
-      "hypothesisPlaceholder": "Formulez votre hypothèse...",
-      "robustness": "Robustesse",
-      "linkedEvidences": "preuves liées",
-      "collected": "Preuves collectées",
+      "title": "Coleta de evidências",
+      "subtitle": "Estruture seus elementos probatórios para fortalecer suas hipóteses",
+      "hypotheses": "Hipóteses",
+      "hypothesisPlaceholder": "Formule sua hipótese...",
+      "robustness": "Robustez",
+      "linkedEvidences": "evidências vinculadas",
+      "collected": "Evidências coletadas",
       "add": "Adicionar une preuve",
       "save": "Salvar",
       "empty": "Nenhume preuve collectée",
-      "emptyHint": "Commencez par ajouter des éléments probants pour soutenir vos hypothèses.",
+      "emptyHint": "Comece adicionando elementos probatórios para apoiar suas hipóteses.",
       "fields": {
         "title": "Título",
         "type": "Tipo de preuve",
-        "source": "Source",
-        "url": "URL (optionnel)",
-        "reliability": "Fiabilité",
-        "supports": "Position",
+        "source": "Fonte",
+        "url": "URL (opcional)",
+        "reliability": "Confiabilidade",
+        "supports": "Posição",
         "notes": "Notas"
       },
       "type": {
-        "document": "Document",
-        "link": "Lien",
-        "observation": "Observation",
-        "testimonial": "Témoignage",
-        "data": "Données"
+        "document": "Documento",
+        "link": "Link",
+        "observation": "Observação",
+        "testimonial": "Depoimento",
+        "data": "Dados"
       },
       "reliability": {
-        "high": "Haute",
+        "high": "Alta",
         "medium": "Médione",
         "low": "Baixo",
-        "unknown": "Inconnue"
+        "unknown": "Desconhecida"
       },
       "supports": {
-        "confirms": "Confirme",
-        "contradicts": "Contredit",
-        "neutral": "Neutre"
+        "confirms": "Confirma",
+        "contradicts": "Contradiz",
+        "neutral": "Neutro"
       },
-      "summary": "Synthèse",
-      "confirming": "Confirmantes",
-      "contradicting": "Contradictoires",
-      "neutral": "Neutres"
+      "summary": "Síntese",
+      "confirming": "Confirmadoras",
+      "contradicting": "Contraditórias",
+      "neutral": "Neutras"
     },
     "paywall": {
       "feature": "OVI - Observatory of Invisible Variables",
@@ -11575,10 +11575,10 @@
     "suggestions": {
       "title": "Suggested readings from OVI",
       "subtitle": "Enrich your reflection with relevant frameworks",
-      "basedOn": "Basé sur votre simulation",
-      "explore": "Explorer ce cadre",
-      "dismiss": "Ignorer",
-      "unlockPro": "Débloquer avec Pro",
+      "basedOn": "Baseado na sua simulação",
+      "explore": "Explorar este framework",
+      "dismiss": "Ignorar",
+      "unlockPro": "Desbloquear com o Pro",
       "viewAll": "Ver tous les contenus OVI",
       "viewMore": "Ver dans l'OVI",
       "relevantTo": "Relevant to your analysis"
@@ -11716,7 +11716,7 @@
         }
       },
       "visibility": {
-        "title": "Visible / Invisible",
+        "title": "Visível / Invisível",
         "desc": "Identify what is apparent and what remains hidden",
         "left": "Visible today",
         "right": "Invisible today",
@@ -11792,7 +11792,7 @@
       "filterDesc": "Analisar une décision",
       "compare": "Comparar",
       "compareDesc": "Explore scenarios",
-      "institutions": "Institutions",
+      "institutions": "Instituições",
       "institutionsDesc": "Collective decisions"
     },
     "quote": "\"Clarity comes not from what we know, but from what we accept to look at.\"",
@@ -11804,7 +11804,7 @@
         "title": "Cognitive Biases",
         "subtitle": "The invisible filters of our decisions",
         "s1": {
-          "title": "Introduction",
+          "title": "Introdução",
           "p1": "Our brain is an extraordinary machine, capable of processing millions of pieces of information per second. To achieve this, it uses shortcuts — heuristics that allow us to decide quickly.",
           "p2": "Ces raccourcis sont précieux dans la vie quotidienne. Maios ils peuvent devenir des pièges dans les décisions importantes, là où la nuance compte."
         },
@@ -11935,7 +11935,7 @@
     "structure": "Structure",
     "prevent": "Prevent",
     "tabs": {
-      "intro": "Introduction",
+      "intro": "Introdução",
       "useCases": "Use Cases",
       "collective": "Collective Decision",
       "traceability": "Traceability",
@@ -12061,7 +12061,7 @@
       },
       "project": {
         "title": "Project Launch / Stop",
-        "desc": "Go/No-go, pivot, abandon",
+        "desc": "Go/No-go, pivô, abandono",
         "var1": "Investment already made (sunk cost)",
         "var2": "Remaining investment needed",
         "var3": "Estimated probability of success",
@@ -12218,7 +12218,7 @@
       },
       "noHistory": "Nenhume simulation enregistrée",
       "export": "Exportar",
-      "participants": "Participants",
+      "participants": "Participantes",
       "hypotheses": "Retained hypotheses",
       "scenarios": "Explored scenarios",
       "blindSpots": "Identified blind spots",
@@ -12254,7 +12254,7 @@
     "selectCountry": "Choisir un país...",
     "sectorFocus": "Sector focus",
     "allSectors": "All sectors",
-    "audience": "Audience",
+    "audience": "Público",
     "allAudiences": "All audiences",
     "proAccess": "Full access + PDF export",
     "freeAccess": "Preview Top 3 + Top 3",
@@ -12312,9 +12312,9 @@
     },
     "audiences": {
       "individual": "Individual",
-      "diaspora": "Diaspora",
+      "diaspora": "Diáspora",
       "sme": "SME",
-      "association": "Association"
+      "association": "Associação"
     },
     "scamCategories": {
       "ponzi": "Ponzi",
@@ -12337,18 +12337,18 @@
   },
   "pricingWidget": {
     "badge": "Gratuito pour commencer",
-    "title": "Commence gratuitement.",
-    "subtitle": "Évolue selon tes besoins.",
-    "description": "Accède aux analyses de base gratuitement. Débloque les fonctionnalités avancées quand tu en as besoin.",
+    "title": "Comece gratuitamente.",
+    "subtitle": "Evolua conforme suas necessidades.",
+    "description": "Acesse as análises básicas gratuitamente. Desbloqueie as funcionalidades avançadas quando precisar.",
     "free": "Gratuito",
-    "freeFeature1": "Analyse de base",
-    "freeFeature2": "Tous les simulateurs",
+    "freeFeature1": "Análise básica",
+    "freeFeature2": "Todos os simuladores",
     "freeFeature3": "38 país",
     "pro": "Pro",
     "from": "dès",
-    "proFeature1": "Analyses approfondies",
-    "proFeature2": "Stratégies personnalisées",
-    "proFeature3": "Export PDF",
+    "proFeature1": "Análises aprofundadas",
+    "proFeature2": "Estratégias personalizadas",
+    "proFeature3": "Exportar PDF",
     "cta": "Ver les plans"
   }
 }
