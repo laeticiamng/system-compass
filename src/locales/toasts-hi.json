@@ -1,0 +1,129 @@
+{
+  "toasts": {
+    "pmo": {
+      "dependencyCreated": "निर्भरता बनाई गई",
+      "dependencyDeleted": "निर्भरता हटाई गई",
+      "errorCreatingDependency": "निर्भरता बनाने में त्रुटि",
+      "errorDeletingDependency": "हटाने में त्रुटि",
+      "budgetLineCreated": "बजट लाइन बनाई गई",
+      "budgetLineUpdated": "बजट लाइन अपडेट की गई",
+      "budgetLineDeleted": "बजट लाइन हटाई गई",
+      "scenarioCreated": "परिदृश्य बनाया गया",
+      "errorCreating": "बनाने में त्रुटि",
+      "errorUpdating": "अपडेट करने में त्रुटि",
+      "errorDeleting": "हटाने में त्रुटि",
+      "errorCreatingScenario": "परिदृश्य बनाने में त्रुटि",
+      "errorCloning": "क्लोन करने में त्रुटि",
+      "milestoneCreateError": "माइलस्टोन बनाने में त्रुटि",
+      "initiativeCreated": "पहल सफलतापूर्वक बनाई गई",
+      "initiativeUpdated": "पहल अपडेट की गई",
+      "initiativeDeleted": "पहल हटाई गई",
+      "errorCreatingInitiative": "पहल बनाने में त्रुटि"
+    },
+    "traceos": {
+      "workflowCreated": "वर्कफ़्लो सफलतापूर्वक बनाया गया",
+      "workflowDeleted": "वर्कफ़्लो हटाया गया",
+      "approvalStarted": "अनुमोदन वर्कफ़्लो शुरू हुआ",
+      "stepApproved": "इलेक्ट्रॉनिक हस्ताक्षर के साथ चरण स्वीकृत",
+      "stepRejected": "चरण अस्वीकृत",
+      "decisionRecorded": "निर्णय दर्ज किया गया",
+      "decisionUpdated": "निर्णय अपडेट किया गया",
+      "decisionDeleted": "निर्णय हटाया गया",
+      "tagCreatedError": "टैग बनाने में त्रुटि",
+      "tagDeleted": "टैग हटाया गया",
+      "tagDeletedError": "टैग हटाने में त्रुटि",
+      "errorCreatingWorkflow": "वर्कफ़्लो बनाने में त्रुटि",
+      "errorDeletingWorkflow": "हटाने में त्रुटि",
+      "errorStartingWorkflow": "वर्कफ़्लो शुरू करने में त्रुटि",
+      "errorApproving": "स्वीकृत करने में त्रुटि",
+      "errorRejecting": "अस्वीकृत करने में त्रुटि",
+      "errorCreatingDecision": "निर्णय बनाने में त्रुटि",
+      "errorUpdatingDecision": "अपडेट करने में त्रुटि",
+      "errorDeletingDecision": "हटाने में त्रुटि",
+      "loginRequiredDecision": "निर्णय बनाने के लिए लॉगिन आवश्यक है",
+      "errorCreatingWebhook": "वेबहुक बनाने में त्रुटि",
+      "errorUpdatingWebhook": "अपडेट करने में त्रुटि",
+      "errorDeletingWebhook": "हटाने में त्रुटि",
+      "errorTestingWebhook": "वेबहुक परीक्षण में त्रुटि"
+    },
+    "consultation": {
+      "requestSent": "परामर्श अनुरोध भेजा गया",
+      "statusUpdated": "स्थिति अपडेट की गई",
+      "cancelled": "परामर्श रद्द किया गया",
+      "errorRequest": "अनुरोध भेजने में त्रुटि",
+      "errorUpdating": "अपडेट करने में त्रुटि",
+      "errorCancelling": "रद्द करने में त्रुटि"
+    },
+    "expert": {
+      "reviewSubmitted": "समीक्षा सत्यापन के लिए सबमिट की गई",
+      "reviewDeleted": "समीक्षा हटाई गई",
+      "thankYouVote": "आपके वोट के लिए धन्यवाद",
+      "alreadyVoted": "आपने इस समीक्षा के लिए पहले ही वोट किया है",
+      "loginRequiredReview": "समीक्षा छोड़ने के लिए लॉगिन आवश्यक है",
+      "loginRequiredVote": "वोट करने के लिए लॉगिन आवश्यक है",
+      "ratingRange": "रेटिंग 1 से 5 के बीच होनी चाहिए",
+      "reviewMinLength": "आपकी समीक्षा में कम से कम 20 अक्षर होने चाहिए",
+      "errorSubmitting": "समीक्षा सबमिट करने में त्रुटि",
+      "errorVoting": "वोट करने में त्रुटि",
+      "errorDeletingReview": "समीक्षा हटाने में असमर्थ"
+    },
+    "latent": {
+      "errorLoadingZones": "ज़ोन लोड करने में त्रुटि",
+      "errorCreatingZone": "ज़ोन बनाने में त्रुटि",
+      "errorUpdatingStatus": "स्थिति अपडेट करने में त्रुटि",
+      "errorAddingTension": "तनाव जोड़ने में त्रुटि",
+      "errorDeleting": "हटाने में त्रुटि",
+      "errorEvolvingZone": "ज़ोन विकसित करने में त्रुटि",
+      "errorDeletingZone": "ज़ोन हटाने में त्रुटि",
+      "errorUpdatingZone": "ज़ोन अपडेट करने में त्रुटि",
+      "errorDuplicatingZone": "ज़ोन डुप्लिकेट करने में त्रुटि",
+      "zonesMerged": "ज़ोन सफलतापूर्वक मर्ज किए गए",
+      "errorMergingZones": "ज़ोन मर्ज करने में त्रुटि"
+    },
+    "sync": {
+      "dataSynced": "डेटा सफलतापूर्वक सिंक्रनाइज़ किया गया",
+      "pendingActions": "{{count}} क्रियाएँ सिंक्रनाइज़ेशन के लिए लंबित",
+      "connectionRestored": "कनेक्शन बहाल हुआ",
+      "offlineMode": "ऑफ़लाइन मोड सक्रिय",
+      "connectionRequired": "इंटरनेट कनेक्शन आवश्यक है",
+      "cloudSyncError": "क्लाउड सिंक्रनाइज़ेशन त्रुटि"
+    },
+    "notifications": {
+      "enabled": "सूचनाएँ सक्षम!",
+      "notSupported": "सूचनाएँ समर्थित नहीं हैं",
+      "notSupportedDesc": "आपका ब्राउज़र पुश सूचनाओं का समर्थन नहीं करता।",
+      "activated": "सूचनाएँ सक्षम",
+      "activatedDesc": "अब आपको महत्वपूर्ण सूचनाएँ प्राप्त होंगी।",
+      "blocked": "सूचनाएँ अवरुद्ध",
+      "blockedDesc": "आप ब्राउज़र सेटिंग्स में इन्हें पुनः सक्षम कर सकते हैं।"
+    },
+    "profile": {
+      "saved": "प्रोफ़ाइल सहेजी गई",
+      "savedLocally": "प्रोफ़ाइल स्थानीय रूप से सहेजी गई",
+      "savedLocallyOnly": "प्रोफ़ाइल केवल स्थानीय रूप से सहेजी गई"
+    },
+    "watchlist": {
+      "countryAdded": "देश फ़ॉलो किया गया",
+      "countryRemoved": "देश हटाया गया",
+      "errorUpdating": "अपडेट करने में त्रुटि"
+    },
+    "events": {
+      "registered": "पंजीकरण की पुष्टि!",
+      "registeredDesc": "आप \"{{title}}\" के लिए पंजीकृत हैं",
+      "cancelled": "पंजीकरण रद्द किया गया",
+      "errorRegistering": "पंजीकरण में त्रुटि",
+      "errorCancelling": "रद्द करने में त्रुटि"
+    },
+    "generation": {
+      "countryGenerated": "✅ {{country}} जनरेट किया गया",
+      "countryGeneratedDesc": "स्कोर: {{score}}/100",
+      "countryFailed": "❌ {{country}} विफल",
+      "countryValidating": "🔍 {{country}} सत्यापित हो रहा है...",
+      "countryRunning": "🚀 {{country}} जनरेट हो रहा है...",
+      "batchCompleted": "🎉 बैच पूर्ण!",
+      "batchCompletedDesc": "{{completed}}/{{total}} देश जनरेट किए गए",
+      "batchFailed": "⚠️ बैच त्रुटियों के साथ पूर्ण",
+      "batchFailedDesc": "{{completed}} सफल, {{failed}} विफल"
+    }
+  }
+}

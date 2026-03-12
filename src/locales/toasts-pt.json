@@ -1,0 +1,129 @@
+{
+  "toasts": {
+    "pmo": {
+      "dependencyCreated": "Dependência criada",
+      "dependencyDeleted": "Dependência excluída",
+      "errorCreatingDependency": "Erro ao criar dependência",
+      "errorDeletingDependency": "Erro ao excluir",
+      "budgetLineCreated": "Linha orçamentária criada",
+      "budgetLineUpdated": "Linha orçamentária atualizada",
+      "budgetLineDeleted": "Linha orçamentária excluída",
+      "scenarioCreated": "Cenário criado",
+      "errorCreating": "Erro ao criar",
+      "errorUpdating": "Erro ao atualizar",
+      "errorDeleting": "Erro ao excluir",
+      "errorCreatingScenario": "Erro ao criar cenário",
+      "errorCloning": "Erro ao clonar",
+      "milestoneCreateError": "Erro ao criar marco",
+      "initiativeCreated": "Iniciativa criada com sucesso",
+      "initiativeUpdated": "Iniciativa atualizada",
+      "initiativeDeleted": "Iniciativa excluída",
+      "errorCreatingInitiative": "Erro ao criar iniciativa"
+    },
+    "traceos": {
+      "workflowCreated": "Fluxo de trabalho criado com sucesso",
+      "workflowDeleted": "Fluxo de trabalho excluído",
+      "approvalStarted": "Fluxo de aprovação iniciado",
+      "stepApproved": "Etapa aprovada com assinatura eletrônica",
+      "stepRejected": "Etapa rejeitada",
+      "decisionRecorded": "Decisão registrada",
+      "decisionUpdated": "Decisão atualizada",
+      "decisionDeleted": "Decisão excluída",
+      "tagCreatedError": "Erro ao criar tag",
+      "tagDeleted": "Tag excluída",
+      "tagDeletedError": "Erro ao excluir tag",
+      "errorCreatingWorkflow": "Erro ao criar fluxo de trabalho",
+      "errorDeletingWorkflow": "Erro ao excluir",
+      "errorStartingWorkflow": "Erro ao iniciar fluxo de trabalho",
+      "errorApproving": "Erro ao aprovar",
+      "errorRejecting": "Erro ao rejeitar",
+      "errorCreatingDecision": "Erro ao criar decisão",
+      "errorUpdatingDecision": "Erro ao atualizar",
+      "errorDeletingDecision": "Erro ao excluir",
+      "loginRequiredDecision": "Você precisa estar conectado para criar uma decisão",
+      "errorCreatingWebhook": "Erro ao criar webhook",
+      "errorUpdatingWebhook": "Erro ao atualizar",
+      "errorDeletingWebhook": "Erro ao excluir",
+      "errorTestingWebhook": "Erro ao testar webhook"
+    },
+    "consultation": {
+      "requestSent": "Solicitação de consultoria enviada",
+      "statusUpdated": "Status atualizado",
+      "cancelled": "Consultoria cancelada",
+      "errorRequest": "Erro ao enviar solicitação",
+      "errorUpdating": "Erro ao atualizar",
+      "errorCancelling": "Erro ao cancelar"
+    },
+    "expert": {
+      "reviewSubmitted": "Avaliação enviada para verificação",
+      "reviewDeleted": "Avaliação excluída",
+      "thankYouVote": "Obrigado pelo seu voto",
+      "alreadyVoted": "Você já votou nesta avaliação",
+      "loginRequiredReview": "Você precisa estar conectado para deixar uma avaliação",
+      "loginRequiredVote": "Você precisa estar conectado para votar",
+      "ratingRange": "A nota deve estar entre 1 e 5",
+      "reviewMinLength": "Sua avaliação deve conter pelo menos 20 caracteres",
+      "errorSubmitting": "Erro ao enviar avaliação",
+      "errorVoting": "Erro ao votar",
+      "errorDeletingReview": "Não foi possível excluir a avaliação"
+    },
+    "latent": {
+      "errorLoadingZones": "Erro ao carregar zonas",
+      "errorCreatingZone": "Erro ao criar zona",
+      "errorUpdatingStatus": "Erro ao atualizar status",
+      "errorAddingTension": "Erro ao adicionar tensão",
+      "errorDeleting": "Erro ao excluir",
+      "errorEvolvingZone": "Erro ao evoluir zona",
+      "errorDeletingZone": "Erro ao excluir zona",
+      "errorUpdatingZone": "Erro ao atualizar zona",
+      "errorDuplicatingZone": "Erro ao duplicar zona",
+      "zonesMerged": "Zonas mescladas com sucesso",
+      "errorMergingZones": "Erro ao mesclar zonas"
+    },
+    "sync": {
+      "dataSynced": "Dados sincronizados com sucesso",
+      "pendingActions": "{{count}} ações pendentes de sincronização",
+      "connectionRestored": "Conexão restabelecida",
+      "offlineMode": "Modo offline ativado",
+      "connectionRequired": "Conexão com a internet necessária",
+      "cloudSyncError": "Erro de sincronização na nuvem"
+    },
+    "notifications": {
+      "enabled": "Notificações ativadas!",
+      "notSupported": "Notificações não suportadas",
+      "notSupportedDesc": "Seu navegador não suporta notificações push.",
+      "activated": "Notificações ativadas",
+      "activatedDesc": "Você receberá notificações importantes a partir de agora.",
+      "blocked": "Notificações bloqueadas",
+      "blockedDesc": "Você pode reativá-las nas configurações do navegador."
+    },
+    "profile": {
+      "saved": "Perfil salvo",
+      "savedLocally": "Perfil salvo localmente",
+      "savedLocallyOnly": "Perfil salvo apenas localmente"
+    },
+    "watchlist": {
+      "countryAdded": "País seguido",
+      "countryRemoved": "País removido",
+      "errorUpdating": "Erro ao atualizar"
+    },
+    "events": {
+      "registered": "Inscrição confirmada!",
+      "registeredDesc": "Você está inscrito em \"{{title}}\"",
+      "cancelled": "Inscrição cancelada",
+      "errorRegistering": "Erro ao se inscrever",
+      "errorCancelling": "Erro ao cancelar"
+    },
+    "generation": {
+      "countryGenerated": "✅ {{country}} gerado",
+      "countryGeneratedDesc": "Pontuação: {{score}}/100",
+      "countryFailed": "❌ {{country}} falhou",
+      "countryValidating": "🔍 {{country}} validando...",
+      "countryRunning": "🚀 {{country}} gerando...",
+      "batchCompleted": "🎉 Lote concluído!",
+      "batchCompletedDesc": "{{completed}}/{{total}} países gerados",
+      "batchFailed": "⚠️ Lote concluído com erros",
+      "batchFailedDesc": "{{completed}} sucesso, {{failed}} falhas"
+    }
+  }
+}

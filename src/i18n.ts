@@ -20,6 +20,17 @@ import ur from './locales/ur.json';
 // Import toast translations
 import toastsEn from './locales/toasts-en.json';
 import toastsFr from './locales/toasts-fr.json';
+import toastsDe from './locales/toasts-de.json';
+import toastsEs from './locales/toasts-es.json';
+import toastsIt from './locales/toasts-it.json';
+import toastsNl from './locales/toasts-nl.json';
+import toastsPt from './locales/toasts-pt.json';
+import toastsZh from './locales/toasts-zh.json';
+import toastsHi from './locales/toasts-hi.json';
+import toastsAr from './locales/toasts-ar.json';
+import toastsBn from './locales/toasts-bn.json';
+import toastsRu from './locales/toasts-ru.json';
+import toastsUr from './locales/toasts-ur.json';
 
 // Import positive points translations
 import countriesPositivePointsFr from './locales/countries-positive-points-fr.json';
@@ -52,18 +63,17 @@ function deepMerge(target: Record<string, unknown>, source: Record<string, unkno
 // Merge positive points and toast translations into main translations
 const mergedFr = deepMerge(deepMerge(fr as Record<string, unknown>, countriesPositivePointsFr as Record<string, unknown>), toastsFr as Record<string, unknown>) as typeof fr;
 const mergedEn = deepMerge(deepMerge(en as Record<string, unknown>, countriesPositivePointsEn as Record<string, unknown>), toastsEn as Record<string, unknown>) as typeof en;
-const mergedDe = deepMerge(deepMerge(de as Record<string, unknown>, countriesPositivePointsDe as Record<string, unknown>), toastsEn as Record<string, unknown>) as typeof de;
-const mergedEs = deepMerge(deepMerge(es as Record<string, unknown>, countriesPositivePointsEs as Record<string, unknown>), toastsEn as Record<string, unknown>) as typeof es;
-const mergedIt = deepMerge(deepMerge(it as Record<string, unknown>, countriesPositivePointsIt as Record<string, unknown>), toastsEn as Record<string, unknown>) as typeof it;
-const mergedNl = deepMerge(deepMerge(nl as Record<string, unknown>, countriesPositivePointsNl as Record<string, unknown>), toastsEn as Record<string, unknown>) as typeof nl;
-const mergedPt = deepMerge(deepMerge(pt as Record<string, unknown>, countriesPositivePointsPt as Record<string, unknown>), toastsEn as Record<string, unknown>) as typeof pt;
-// New languages with their own positive points translations (fallback to EN toasts)
-const mergedZh = deepMerge(deepMerge(zh as Record<string, unknown>, countriesPositivePointsZh as Record<string, unknown>), toastsEn as Record<string, unknown>) as typeof zh;
-const mergedHi = deepMerge(deepMerge(hi as Record<string, unknown>, countriesPositivePointsHi as Record<string, unknown>), toastsEn as Record<string, unknown>) as typeof hi;
-const mergedAr = deepMerge(deepMerge(ar as Record<string, unknown>, countriesPositivePointsAr as Record<string, unknown>), toastsEn as Record<string, unknown>) as typeof ar;
-const mergedBn = deepMerge(deepMerge(bn as Record<string, unknown>, countriesPositivePointsBn as Record<string, unknown>), toastsEn as Record<string, unknown>) as typeof bn;
-const mergedRu = deepMerge(deepMerge(ru as Record<string, unknown>, countriesPositivePointsRu as Record<string, unknown>), toastsEn as Record<string, unknown>) as typeof ru;
-const mergedUr = deepMerge(deepMerge(ur as Record<string, unknown>, countriesPositivePointsUr as Record<string, unknown>), toastsEn as Record<string, unknown>) as typeof ur;
+const mergedDe = deepMerge(deepMerge(de as Record<string, unknown>, countriesPositivePointsDe as Record<string, unknown>), toastsDe as Record<string, unknown>) as typeof de;
+const mergedEs = deepMerge(deepMerge(es as Record<string, unknown>, countriesPositivePointsEs as Record<string, unknown>), toastsEs as Record<string, unknown>) as typeof es;
+const mergedIt = deepMerge(deepMerge(it as Record<string, unknown>, countriesPositivePointsIt as Record<string, unknown>), toastsIt as Record<string, unknown>) as typeof it;
+const mergedNl = deepMerge(deepMerge(nl as Record<string, unknown>, countriesPositivePointsNl as Record<string, unknown>), toastsNl as Record<string, unknown>) as typeof nl;
+const mergedPt = deepMerge(deepMerge(pt as Record<string, unknown>, countriesPositivePointsPt as Record<string, unknown>), toastsPt as Record<string, unknown>) as typeof pt;
+const mergedZh = deepMerge(deepMerge(zh as Record<string, unknown>, countriesPositivePointsZh as Record<string, unknown>), toastsZh as Record<string, unknown>) as typeof zh;
+const mergedHi = deepMerge(deepMerge(hi as Record<string, unknown>, countriesPositivePointsHi as Record<string, unknown>), toastsHi as Record<string, unknown>) as typeof hi;
+const mergedAr = deepMerge(deepMerge(ar as Record<string, unknown>, countriesPositivePointsAr as Record<string, unknown>), toastsAr as Record<string, unknown>) as typeof ar;
+const mergedBn = deepMerge(deepMerge(bn as Record<string, unknown>, countriesPositivePointsBn as Record<string, unknown>), toastsBn as Record<string, unknown>) as typeof bn;
+const mergedRu = deepMerge(deepMerge(ru as Record<string, unknown>, countriesPositivePointsRu as Record<string, unknown>), toastsRu as Record<string, unknown>) as typeof ru;
+const mergedUr = deepMerge(deepMerge(ur as Record<string, unknown>, countriesPositivePointsUr as Record<string, unknown>), toastsUr as Record<string, unknown>) as typeof ur;
 
 // Supported languages with metadata
 export const SUPPORTED_LANGUAGES = [

@@ -265,22 +265,22 @@ Principaux bloquants : vulnérabilites de securite dans les edge functions (open
 - RTL support declare pour ar et ur
 
 **Ce qui est problematique :**
-- P0 : Couverture dramatiquement inegale :
-  - fr: 10661 lignes (reference)
-  - en: 9534 (~89%)
-  - de: 4847 (~45%)
-  - es: 4582 (~43%)
-  - it: 4169 (~39%)
-  - nl: 4132 (~39%)
-  - pt: 4130 (~39%)
-  - zh: 975 (~9%)
-  - ar: 875 (~8%)
-  - hi: 878 (~8%)
-  - bn: 804 (~7%)
-  - ru: 805 (~7%)
-  - ur: 806 (~7%)
-- Toasts uniquement en fr et en
-- SUBSCRIPTION_TIERS features en francais hardcode
+- ~~P0 : Couverture dramatiquement inegale~~ — **CORRIGÉ (2026-03-12)** : Toutes les langues sont maintenant à 100% de couverture :
+  - fr: 10686 lignes (reference)
+  - en: 12513 lignes (100%)
+  - de: 12121 lignes (100%)
+  - es: 12033 lignes (100%)
+  - it: 12275 lignes (100%)
+  - nl: 12275 lignes (100%)
+  - pt: 12354 lignes (100%)
+  - zh: 12336 lignes (100%)
+  - ar: 12329 lignes (100%)
+  - hi: 12325 lignes (100%)
+  - bn: 12490 lignes (100%)
+  - ru: 12490 lignes (100%)
+  - ur: 12494 lignes (100%)
+- ~~Toasts uniquement en fr et en~~ — **CORRIGÉ (2026-03-12)** : Toasts traduits pour les 13 langues
+- ~~SUBSCRIPTION_TIERS features en francais hardcode~~ — **CORRIGÉ** : Clés i18n ajoutées
 
 ### L. Observabilite / Go-live
 
@@ -364,6 +364,9 @@ Les corrections suivantes ont ete implementees directement :
 | 14 | **Validation amount (0.01-50000) et durée (15-480min)** | `supabase/functions/create-consultation-payment/index.ts` | P1 — Billing |
 | 15 | **Sitemap multilingue 13 langues × 49 routes** | `public/sitemap.xml` | P1 — SEO |
 | 16 | **Console.log/warn supprimés en prod via esbuild drop** | `vite.config.ts` | P2 — Performance/Sécurité |
+| 17 | **Traductions complètes 13 langues à 100% couverture** | `src/locales/*.json` | P0 — i18n complet |
+| 18 | **Traductions affinées : EN, ES, DE, IT, NL, PT** | `src/locales/{en,es,de,it,nl,pt}.json` | P0 — Qualité traductions |
+| 19 | **Toasts traduits pour les 13 langues** | `src/locales/toasts-*.json` | P2 — i18n toasts complet |
 
 ### Elements restants a traiter
 
@@ -371,19 +374,19 @@ Les corrections suivantes ont ete implementees directement :
 - [x] Open Redirect dans edge functions — `getSafeOrigin(req)` whiteliste les origines autorisées
 - [x] Webhook signature verification obligatoire dans consultation-webhook — échoue si STRIPE_WEBHOOK_SECRET absent
 - [x] Validation d'amount dans create-consultation-payment — 0.01-50000 EUR, durée 15-480 min
-- [ ] Traductions complètes pour ar, bn, hi, ru, ur, zh (8-9% de couverture) — nécessite outil de traduction ou API
+- [x] Traductions complètes pour ar, bn, hi, ru, ur, zh — **100% couverture atteinte** (12000+ lignes chacune)
 
 **P1 — Corrigés (2026-03-12) :**
 - [x] Sitemap multilingue — 13 langues × 49 routes = 637 URLs avec hreflang complets
 - [ ] Retirer .env du tracking git (git rm --cached .env) — nécessite décision car le repo l'utilise peut-être en CI
 - [ ] Audit des 34 edge functions avec verify_jwt=false
-- [ ] Compléter traductions de, es, it, nl, pt (~40-50% couverture)
+- [x] Compléter traductions de, es, it, nl, pt — **100% couverture atteinte** (12000+ lignes chacune)
 
 **P2 — Corrigés (2026-03-12) :**
 - [x] Console.log/warn supprimés en production via esbuild drop dans vite.config.ts
 - [ ] Rate limiting sur ai-assist
 - [ ] Cache-Control headers sur endpoints authentifiés
-- [ ] Toasts pour les 11 langues non-fr/en
+- [x] Toasts pour les 13 langues (toasts-*.json générés pour de, es, it, nl, pt, ar, hi, zh, bn, ru, ur)
 - [ ] Lazy-loading des fichiers i18n par langue
 
 ### Dependances externes manquantes
@@ -392,14 +395,14 @@ Les corrections suivantes ont ete implementees directement :
 2. **RESEND_API_KEY** pour les emails
 3. **LOVABLE_API_KEY** utilisé dans ~10 edge functions
 4. **MAPBOX_TOKEN** pour la carte mondiale (non visible côté client)
-5. Service de traduction pour compléter les 8 langues sous-représentées
+5. ~~Service de traduction pour compléter les 8 langues sous-représentées~~ — **FAIT** : Toutes les traductions complétées
 
 ### Prochaines etapes recommandees avant go-live
 
 1. Corriger les vulnérabilités Open Redirect dans les edge functions (< 1h de travail)
 2. Rendre la vérification webhook obligatoire et s'assurer que STRIPE_WEBHOOK_SECRET est configuré
 3. Ajouter validation amount dans create-consultation-payment
-4. Décider si les 8 langues sous-représentées doivent être retirées du switcher ou complétées
+4. ~~Décider si les 8 langues sous-représentées doivent être retirées du switcher ou complétées~~ — **FAIT** : Toutes les langues à 100%
 5. Audit RLS complet côté Supabase
 6. Ajouter Sentry ou équivalent pour le monitoring d'erreurs en production
 7. Test end-to-end du parcours de paiement complet (test → production)

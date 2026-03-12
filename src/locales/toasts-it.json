@@ -1,0 +1,129 @@
+{
+  "toasts": {
+    "pmo": {
+      "dependencyCreated": "Dipendenza creata",
+      "dependencyDeleted": "Dipendenza eliminata",
+      "errorCreatingDependency": "Errore nella creazione della dipendenza",
+      "errorDeletingDependency": "Errore nell'eliminazione",
+      "budgetLineCreated": "Linea di budget creata",
+      "budgetLineUpdated": "Linea di budget aggiornata",
+      "budgetLineDeleted": "Linea di budget eliminata",
+      "scenarioCreated": "Scenario creato",
+      "errorCreating": "Errore nella creazione",
+      "errorUpdating": "Errore nell'aggiornamento",
+      "errorDeleting": "Errore nell'eliminazione",
+      "errorCreatingScenario": "Errore nella creazione dello scenario",
+      "errorCloning": "Errore nella clonazione",
+      "milestoneCreateError": "Errore nella creazione della milestone",
+      "initiativeCreated": "Iniziativa creata con successo",
+      "initiativeUpdated": "Iniziativa aggiornata",
+      "initiativeDeleted": "Iniziativa eliminata",
+      "errorCreatingInitiative": "Errore nella creazione dell'iniziativa"
+    },
+    "traceos": {
+      "workflowCreated": "Flusso di lavoro creato con successo",
+      "workflowDeleted": "Flusso di lavoro eliminato",
+      "approvalStarted": "Flusso di approvazione avviato",
+      "stepApproved": "Passaggio approvato con firma elettronica",
+      "stepRejected": "Passaggio rifiutato",
+      "decisionRecorded": "Decisione registrata",
+      "decisionUpdated": "Decisione aggiornata",
+      "decisionDeleted": "Decisione eliminata",
+      "tagCreatedError": "Errore nella creazione del tag",
+      "tagDeleted": "Tag eliminato",
+      "tagDeletedError": "Errore nell'eliminazione del tag",
+      "errorCreatingWorkflow": "Errore nella creazione del flusso di lavoro",
+      "errorDeletingWorkflow": "Errore nell'eliminazione",
+      "errorStartingWorkflow": "Errore nell'avvio del flusso di lavoro",
+      "errorApproving": "Errore nell'approvazione",
+      "errorRejecting": "Errore nel rifiuto",
+      "errorCreatingDecision": "Errore nella creazione della decisione",
+      "errorUpdatingDecision": "Errore nell'aggiornamento",
+      "errorDeletingDecision": "Errore nell'eliminazione",
+      "loginRequiredDecision": "Devi effettuare l'accesso per creare una decisione",
+      "errorCreatingWebhook": "Errore nella creazione del webhook",
+      "errorUpdatingWebhook": "Errore nell'aggiornamento",
+      "errorDeletingWebhook": "Errore nell'eliminazione",
+      "errorTestingWebhook": "Errore nel test del webhook"
+    },
+    "consultation": {
+      "requestSent": "Richiesta di consulenza inviata",
+      "statusUpdated": "Stato aggiornato",
+      "cancelled": "Consulenza annullata",
+      "errorRequest": "Errore nell'invio della richiesta",
+      "errorUpdating": "Errore nell'aggiornamento",
+      "errorCancelling": "Errore nell'annullamento"
+    },
+    "expert": {
+      "reviewSubmitted": "Recensione inviata per la verifica",
+      "reviewDeleted": "Recensione eliminata",
+      "thankYouVote": "Grazie per il tuo voto",
+      "alreadyVoted": "Hai già votato per questa recensione",
+      "loginRequiredReview": "Devi effettuare l'accesso per lasciare una recensione",
+      "loginRequiredVote": "Devi effettuare l'accesso per votare",
+      "ratingRange": "La valutazione deve essere compresa tra 1 e 5",
+      "reviewMinLength": "La tua recensione deve contenere almeno 20 caratteri",
+      "errorSubmitting": "Errore nell'invio della recensione",
+      "errorVoting": "Errore nella votazione",
+      "errorDeletingReview": "Impossibile eliminare la recensione"
+    },
+    "latent": {
+      "errorLoadingZones": "Errore nel caricamento delle zone",
+      "errorCreatingZone": "Errore nella creazione della zona",
+      "errorUpdatingStatus": "Errore nell'aggiornamento dello stato",
+      "errorAddingTension": "Errore nell'aggiunta della tensione",
+      "errorDeleting": "Errore nell'eliminazione",
+      "errorEvolvingZone": "Errore nell'evoluzione della zona",
+      "errorDeletingZone": "Errore nell'eliminazione della zona",
+      "errorUpdatingZone": "Errore nell'aggiornamento della zona",
+      "errorDuplicatingZone": "Errore nella duplicazione della zona",
+      "zonesMerged": "Zone unite con successo",
+      "errorMergingZones": "Errore nell'unione delle zone"
+    },
+    "sync": {
+      "dataSynced": "Dati sincronizzati con successo",
+      "pendingActions": "{{count}} azioni in attesa di sincronizzazione",
+      "connectionRestored": "Connessione ripristinata",
+      "offlineMode": "Modalità offline attivata",
+      "connectionRequired": "Connessione Internet necessaria",
+      "cloudSyncError": "Errore di sincronizzazione cloud"
+    },
+    "notifications": {
+      "enabled": "Notifiche attivate!",
+      "notSupported": "Notifiche non supportate",
+      "notSupportedDesc": "Il tuo browser non supporta le notifiche push.",
+      "activated": "Notifiche attivate",
+      "activatedDesc": "Ora riceverai le notifiche importanti.",
+      "blocked": "Notifiche bloccate",
+      "blockedDesc": "Puoi riattivarle nelle impostazioni del browser."
+    },
+    "profile": {
+      "saved": "Profilo salvato",
+      "savedLocally": "Profilo salvato localmente",
+      "savedLocallyOnly": "Profilo salvato solo localmente"
+    },
+    "watchlist": {
+      "countryAdded": "Paese seguito",
+      "countryRemoved": "Paese rimosso",
+      "errorUpdating": "Errore nell'aggiornamento"
+    },
+    "events": {
+      "registered": "Registrazione confermata!",
+      "registeredDesc": "Sei registrato per \"{{title}}\"",
+      "cancelled": "Registrazione annullata",
+      "errorRegistering": "Errore nella registrazione",
+      "errorCancelling": "Errore nell'annullamento"
+    },
+    "generation": {
+      "countryGenerated": "✅ {{country}} generato",
+      "countryGeneratedDesc": "Punteggio: {{score}}/100",
+      "countryFailed": "❌ {{country}} fallito",
+      "countryValidating": "🔍 {{country}} in fase di validazione...",
+      "countryRunning": "🚀 {{country}} in fase di generazione...",
+      "batchCompleted": "🎉 Batch completato!",
+      "batchCompletedDesc": "{{completed}}/{{total}} paesi generati",
+      "batchFailed": "⚠️ Batch completato con errori",
+      "batchFailedDesc": "{{completed}} riusciti, {{failed}} falliti"
+    }
+  }
+}

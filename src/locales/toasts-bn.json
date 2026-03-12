@@ -1,0 +1,129 @@
+{
+  "toasts": {
+    "pmo": {
+      "dependencyCreated": "নির্ভরতা তৈরি হয়েছে",
+      "dependencyDeleted": "নির্ভরতা মুছে ফেলা হয়েছে",
+      "errorCreatingDependency": "নির্ভরতা তৈরিতে ত্রুটি",
+      "errorDeletingDependency": "মুছে ফেলতে ত্রুটি",
+      "budgetLineCreated": "বাজেট লাইন তৈরি হয়েছে",
+      "budgetLineUpdated": "বাজেট লাইন আপডেট হয়েছে",
+      "budgetLineDeleted": "বাজেট লাইন মুছে ফেলা হয়েছে",
+      "scenarioCreated": "পরিস্থিতি তৈরি হয়েছে",
+      "errorCreating": "তৈরিতে ত্রুটি",
+      "errorUpdating": "আপডেটে ত্রুটি",
+      "errorDeleting": "মুছে ফেলতে ত্রুটি",
+      "errorCreatingScenario": "পরিস্থিতি তৈরিতে ত্রুটি",
+      "errorCloning": "ক্লোন করতে ত্রুটি",
+      "milestoneCreateError": "মাইলস্টোন তৈরিতে ত্রুটি",
+      "initiativeCreated": "উদ্যোগ সফলভাবে তৈরি হয়েছে",
+      "initiativeUpdated": "উদ্যোগ আপডেট হয়েছে",
+      "initiativeDeleted": "উদ্যোগ মুছে ফেলা হয়েছে",
+      "errorCreatingInitiative": "উদ্যোগ তৈরিতে ত্রুটি"
+    },
+    "traceos": {
+      "workflowCreated": "ওয়ার্কফ্লো সফলভাবে তৈরি হয়েছে",
+      "workflowDeleted": "ওয়ার্কফ্লো মুছে ফেলা হয়েছে",
+      "approvalStarted": "অনুমোদন ওয়ার্কফ্লো শুরু হয়েছে",
+      "stepApproved": "ইলেকট্রনিক স্বাক্ষর সহ ধাপ অনুমোদিত",
+      "stepRejected": "ধাপ প্রত্যাখ্যাত",
+      "decisionRecorded": "সিদ্ধান্ত রেকর্ড করা হয়েছে",
+      "decisionUpdated": "সিদ্ধান্ত আপডেট হয়েছে",
+      "decisionDeleted": "সিদ্ধান্ত মুছে ফেলা হয়েছে",
+      "tagCreatedError": "ট্যাগ তৈরিতে ত্রুটি",
+      "tagDeleted": "ট্যাগ মুছে ফেলা হয়েছে",
+      "tagDeletedError": "ট্যাগ মুছে ফেলতে ত্রুটি",
+      "errorCreatingWorkflow": "ওয়ার্কফ্লো তৈরিতে ত্রুটি",
+      "errorDeletingWorkflow": "মুছে ফেলতে ত্রুটি",
+      "errorStartingWorkflow": "ওয়ার্কফ্লো শুরু করতে ত্রুটি",
+      "errorApproving": "অনুমোদনে ত্রুটি",
+      "errorRejecting": "প্রত্যাখ্যানে ত্রুটি",
+      "errorCreatingDecision": "সিদ্ধান্ত তৈরিতে ত্রুটি",
+      "errorUpdatingDecision": "আপডেটে ত্রুটি",
+      "errorDeletingDecision": "মুছে ফেলতে ত্রুটি",
+      "loginRequiredDecision": "সিদ্ধান্ত তৈরি করতে আপনাকে লগইন করতে হবে",
+      "errorCreatingWebhook": "ওয়েবহুক তৈরিতে ত্রুটি",
+      "errorUpdatingWebhook": "আপডেটে ত্রুটি",
+      "errorDeletingWebhook": "মুছে ফেলতে ত্রুটি",
+      "errorTestingWebhook": "ওয়েবহুক পরীক্ষায় ত্রুটি"
+    },
+    "consultation": {
+      "requestSent": "পরামর্শের অনুরোধ পাঠানো হয়েছে",
+      "statusUpdated": "স্থিতি আপডেট হয়েছে",
+      "cancelled": "পরামর্শ বাতিল হয়েছে",
+      "errorRequest": "অনুরোধ পাঠাতে ত্রুটি",
+      "errorUpdating": "আপডেটে ত্রুটি",
+      "errorCancelling": "বাতিল করতে ত্রুটি"
+    },
+    "expert": {
+      "reviewSubmitted": "যাচাইয়ের জন্য পর্যালোচনা জমা দেওয়া হয়েছে",
+      "reviewDeleted": "পর্যালোচনা মুছে ফেলা হয়েছে",
+      "thankYouVote": "আপনার ভোটের জন্য ধন্যবাদ",
+      "alreadyVoted": "আপনি ইতিমধ্যে এই পর্যালোচনায় ভোট দিয়েছেন",
+      "loginRequiredReview": "পর্যালোচনা দিতে আপনাকে লগইন করতে হবে",
+      "loginRequiredVote": "ভোট দিতে আপনাকে লগইন করতে হবে",
+      "ratingRange": "রেটিং ১ থেকে ৫ এর মধ্যে হতে হবে",
+      "reviewMinLength": "আপনার পর্যালোচনায় কমপক্ষে ২০টি অক্ষর থাকতে হবে",
+      "errorSubmitting": "পর্যালোচনা জমা দিতে ত্রুটি",
+      "errorVoting": "ভোট দিতে ত্রুটি",
+      "errorDeletingReview": "পর্যালোচনা মুছে ফেলা সম্ভব হয়নি"
+    },
+    "latent": {
+      "errorLoadingZones": "জোন লোড করতে ত্রুটি",
+      "errorCreatingZone": "জোন তৈরিতে ত্রুটি",
+      "errorUpdatingStatus": "স্থিতি আপডেটে ত্রুটি",
+      "errorAddingTension": "টেনশন যোগ করতে ত্রুটি",
+      "errorDeleting": "মুছে ফেলতে ত্রুটি",
+      "errorEvolvingZone": "জোন বিকাশে ত্রুটি",
+      "errorDeletingZone": "জোন মুছে ফেলতে ত্রুটি",
+      "errorUpdatingZone": "জোন আপডেটে ত্রুটি",
+      "errorDuplicatingZone": "জোন ডুপ্লিকেট করতে ত্রুটি",
+      "zonesMerged": "জোনগুলি সফলভাবে মার্জ হয়েছে",
+      "errorMergingZones": "জোন মার্জ করতে ত্রুটি"
+    },
+    "sync": {
+      "dataSynced": "ডেটা সফলভাবে সিঙ্ক্রোনাইজ হয়েছে",
+      "pendingActions": "{{count}}টি কার্য সিঙ্ক্রোনাইজেশনের জন্য মুলতুবি",
+      "connectionRestored": "সংযোগ পুনরুদ্ধার হয়েছে",
+      "offlineMode": "অফলাইন মোড সক্রিয় হয়েছে",
+      "connectionRequired": "ইন্টারনেট সংযোগ প্রয়োজন",
+      "cloudSyncError": "ক্লাউড সিঙ্ক্রোনাইজেশনে ত্রুটি"
+    },
+    "notifications": {
+      "enabled": "বিজ্ঞপ্তি সক্রিয় করা হয়েছে!",
+      "notSupported": "বিজ্ঞপ্তি সমর্থিত নয়",
+      "notSupportedDesc": "আপনার ব্রাউজার পুশ বিজ্ঞপ্তি সমর্থন করে না।",
+      "activated": "বিজ্ঞপ্তি সক্রিয় করা হয়েছে",
+      "activatedDesc": "আপনি এখন গুরুত্বপূর্ণ বিজ্ঞপ্তি পাবেন।",
+      "blocked": "বিজ্ঞপ্তি ব্লক করা হয়েছে",
+      "blockedDesc": "আপনি ব্রাউজার সেটিংসে এগুলি পুনরায় সক্রিয় করতে পারেন।"
+    },
+    "profile": {
+      "saved": "প্রোফাইল সংরক্ষিত",
+      "savedLocally": "প্রোফাইল স্থানীয়ভাবে সংরক্ষিত",
+      "savedLocallyOnly": "প্রোফাইল শুধুমাত্র স্থানীয়ভাবে সংরক্ষিত"
+    },
+    "watchlist": {
+      "countryAdded": "দেশ অনুসরণ করা হচ্ছে",
+      "countryRemoved": "দেশ সরানো হয়েছে",
+      "errorUpdating": "আপডেটে ত্রুটি"
+    },
+    "events": {
+      "registered": "নিবন্ধন নিশ্চিত হয়েছে!",
+      "registeredDesc": "আপনি \"{{title}}\"-এ নিবন্ধিত হয়েছেন",
+      "cancelled": "নিবন্ধন বাতিল হয়েছে",
+      "errorRegistering": "নিবন্ধনে ত্রুটি",
+      "errorCancelling": "বাতিল করতে ত্রুটি"
+    },
+    "generation": {
+      "countryGenerated": "✅ {{country}} তৈরি হয়েছে",
+      "countryGeneratedDesc": "স্কোর: {{score}}/১০০",
+      "countryFailed": "❌ {{country}} ব্যর্থ হয়েছে",
+      "countryValidating": "🔍 {{country}} যাচাই হচ্ছে...",
+      "countryRunning": "🚀 {{country}} তৈরি হচ্ছে...",
+      "batchCompleted": "🎉 ব্যাচ সম্পন্ন!",
+      "batchCompletedDesc": "{{completed}}/{{total}}টি দেশ তৈরি হয়েছে",
+      "batchFailed": "⚠️ ত্রুটি সহ ব্যাচ সম্পন্ন",
+      "batchFailedDesc": "{{completed}} সফল, {{failed}} ব্যর্থ"
+    }
+  }
+}

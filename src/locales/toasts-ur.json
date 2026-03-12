@@ -1,0 +1,129 @@
+{
+  "toasts": {
+    "pmo": {
+      "dependencyCreated": "انحصار بنایا گیا",
+      "dependencyDeleted": "انحصار حذف کیا گیا",
+      "errorCreatingDependency": "انحصار بنانے میں خرابی",
+      "errorDeletingDependency": "حذف کرنے میں خرابی",
+      "budgetLineCreated": "بجٹ لائن بنائی گئی",
+      "budgetLineUpdated": "بجٹ لائن اپ ڈیٹ کی گئی",
+      "budgetLineDeleted": "بجٹ لائن حذف کی گئی",
+      "scenarioCreated": "منظرنامہ بنایا گیا",
+      "errorCreating": "بنانے میں خرابی",
+      "errorUpdating": "اپ ڈیٹ میں خرابی",
+      "errorDeleting": "حذف کرنے میں خرابی",
+      "errorCreatingScenario": "منظرنامہ بنانے میں خرابی",
+      "errorCloning": "کلون کرنے میں خرابی",
+      "milestoneCreateError": "سنگ میل بنانے میں خرابی",
+      "initiativeCreated": "اقدام کامیابی سے بنایا گیا",
+      "initiativeUpdated": "اقدام اپ ڈیٹ کیا گیا",
+      "initiativeDeleted": "اقدام حذف کیا گیا",
+      "errorCreatingInitiative": "اقدام بنانے میں خرابی"
+    },
+    "traceos": {
+      "workflowCreated": "ورک فلو کامیابی سے بنایا گیا",
+      "workflowDeleted": "ورک فلو حذف کیا گیا",
+      "approvalStarted": "منظوری کا ورک فلو شروع ہوا",
+      "stepApproved": "الیکٹرانک دستخط کے ساتھ مرحلہ منظور",
+      "stepRejected": "مرحلہ مسترد کیا گیا",
+      "decisionRecorded": "فیصلہ ریکارڈ کیا گیا",
+      "decisionUpdated": "فیصلہ اپ ڈیٹ کیا گیا",
+      "decisionDeleted": "فیصلہ حذف کیا گیا",
+      "tagCreatedError": "ٹیگ بنانے میں خرابی",
+      "tagDeleted": "ٹیگ حذف کیا گیا",
+      "tagDeletedError": "ٹیگ حذف کرنے میں خرابی",
+      "errorCreatingWorkflow": "ورک فلو بنانے میں خرابی",
+      "errorDeletingWorkflow": "حذف کرنے میں خرابی",
+      "errorStartingWorkflow": "ورک فلو شروع کرنے میں خرابی",
+      "errorApproving": "منظوری میں خرابی",
+      "errorRejecting": "مسترد کرنے میں خرابی",
+      "errorCreatingDecision": "فیصلہ بنانے میں خرابی",
+      "errorUpdatingDecision": "اپ ڈیٹ میں خرابی",
+      "errorDeletingDecision": "حذف کرنے میں خرابی",
+      "loginRequiredDecision": "فیصلہ بنانے کے لیے آپ کا لاگ ان ہونا ضروری ہے",
+      "errorCreatingWebhook": "ویب ہک بنانے میں خرابی",
+      "errorUpdatingWebhook": "اپ ڈیٹ میں خرابی",
+      "errorDeletingWebhook": "حذف کرنے میں خرابی",
+      "errorTestingWebhook": "ویب ہک کی جانچ میں خرابی"
+    },
+    "consultation": {
+      "requestSent": "مشاورت کی درخواست بھیج دی گئی",
+      "statusUpdated": "حیثیت اپ ڈیٹ کی گئی",
+      "cancelled": "مشاورت منسوخ کی گئی",
+      "errorRequest": "درخواست بھیجنے میں خرابی",
+      "errorUpdating": "اپ ڈیٹ میں خرابی",
+      "errorCancelling": "منسوخ کرنے میں خرابی"
+    },
+    "expert": {
+      "reviewSubmitted": "جائزہ تصدیق کے لیے جمع کیا گیا",
+      "reviewDeleted": "جائزہ حذف کیا گیا",
+      "thankYouVote": "آپ کے ووٹ کا شکریہ",
+      "alreadyVoted": "آپ اس جائزے کے لیے پہلے ہی ووٹ دے چکے ہیں",
+      "loginRequiredReview": "جائزہ دینے کے لیے آپ کا لاگ ان ہونا ضروری ہے",
+      "loginRequiredVote": "ووٹ دینے کے لیے آپ کا لاگ ان ہونا ضروری ہے",
+      "ratingRange": "درجہ بندی ۱ سے ۵ کے درمیان ہونی چاہیے",
+      "reviewMinLength": "آپ کے جائزے میں کم از کم ۲۰ حروف ہونے چاہئیں",
+      "errorSubmitting": "جائزہ جمع کرنے میں خرابی",
+      "errorVoting": "ووٹ دینے میں خرابی",
+      "errorDeletingReview": "جائزہ حذف کرنے سے قاصر"
+    },
+    "latent": {
+      "errorLoadingZones": "زونز لوڈ کرنے میں خرابی",
+      "errorCreatingZone": "زون بنانے میں خرابی",
+      "errorUpdatingStatus": "حیثیت اپ ڈیٹ کرنے میں خرابی",
+      "errorAddingTension": "تناؤ شامل کرنے میں خرابی",
+      "errorDeleting": "حذف کرنے میں خرابی",
+      "errorEvolvingZone": "زون کی ارتقاء میں خرابی",
+      "errorDeletingZone": "زون حذف کرنے میں خرابی",
+      "errorUpdatingZone": "زون اپ ڈیٹ کرنے میں خرابی",
+      "errorDuplicatingZone": "زون کی نقل بنانے میں خرابی",
+      "zonesMerged": "زونز کامیابی سے ضم کیے گئے",
+      "errorMergingZones": "زونز ضم کرنے میں خرابی"
+    },
+    "sync": {
+      "dataSynced": "ڈیٹا کامیابی سے مطابقت پذیر ہو گیا",
+      "pendingActions": "{{count}} اعمال مطابقت پذیری کے منتظر ہیں",
+      "connectionRestored": "کنکشن بحال ہو گیا",
+      "offlineMode": "آف لائن موڈ فعال ہو گیا",
+      "connectionRequired": "انٹرنیٹ کنکشن ضروری ہے",
+      "cloudSyncError": "کلاؤڈ مطابقت پذیری میں خرابی"
+    },
+    "notifications": {
+      "enabled": "اطلاعات فعال کر دی گئیں!",
+      "notSupported": "اطلاعات تعاون یافتہ نہیں ہیں",
+      "notSupportedDesc": "آپ کا براؤزر پش اطلاعات کی حمایت نہیں کرتا۔",
+      "activated": "اطلاعات فعال کر دی گئیں",
+      "activatedDesc": "اب آپ کو اہم اطلاعات موصول ہوں گی۔",
+      "blocked": "اطلاعات بلاک کر دی گئیں",
+      "blockedDesc": "آپ انہیں براؤزر کی ترتیبات میں دوبارہ فعال کر سکتے ہیں۔"
+    },
+    "profile": {
+      "saved": "پروفائل محفوظ ہو گیا",
+      "savedLocally": "پروفائل مقامی طور پر محفوظ ہو گیا",
+      "savedLocallyOnly": "پروفائل صرف مقامی طور پر محفوظ ہو گیا"
+    },
+    "watchlist": {
+      "countryAdded": "ملک کی پیروی شروع",
+      "countryRemoved": "ملک ہٹا دیا گیا",
+      "errorUpdating": "اپ ڈیٹ میں خرابی"
+    },
+    "events": {
+      "registered": "رجسٹریشن کی تصدیق ہو گئی!",
+      "registeredDesc": "آپ \"{{title}}\" کے لیے رجسٹرڈ ہیں",
+      "cancelled": "رجسٹریشن منسوخ کی گئی",
+      "errorRegistering": "رجسٹریشن میں خرابی",
+      "errorCancelling": "منسوخ کرنے میں خرابی"
+    },
+    "generation": {
+      "countryGenerated": "✅ {{country}} تیار ہو گیا",
+      "countryGeneratedDesc": "اسکور: {{score}}/۱۰۰",
+      "countryFailed": "❌ {{country}} ناکام ہو گیا",
+      "countryValidating": "🔍 {{country}} کی تصدیق ہو رہی ہے...",
+      "countryRunning": "🚀 {{country}} تیار ہو رہا ہے...",
+      "batchCompleted": "🎉 بیچ مکمل!",
+      "batchCompletedDesc": "{{completed}}/{{total}} ممالک تیار ہو گئے",
+      "batchFailed": "⚠️ بیچ خرابیوں کے ساتھ مکمل ہوا",
+      "batchFailedDesc": "{{completed}} کامیاب، {{failed}} ناکام"
+    }
+  }
+}
