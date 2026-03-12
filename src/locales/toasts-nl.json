@@ -1,0 +1,129 @@
+{
+  "toasts": {
+    "pmo": {
+      "dependencyCreated": "Afhankelijkheid aangemaakt",
+      "dependencyDeleted": "Afhankelijkheid verwijderd",
+      "errorCreatingDependency": "Fout bij het aanmaken van afhankelijkheid",
+      "errorDeletingDependency": "Fout bij het verwijderen",
+      "budgetLineCreated": "Budgetlijn aangemaakt",
+      "budgetLineUpdated": "Budgetlijn bijgewerkt",
+      "budgetLineDeleted": "Budgetlijn verwijderd",
+      "scenarioCreated": "Scenario aangemaakt",
+      "errorCreating": "Fout bij het aanmaken",
+      "errorUpdating": "Fout bij het bijwerken",
+      "errorDeleting": "Fout bij het verwijderen",
+      "errorCreatingScenario": "Fout bij het aanmaken van scenario",
+      "errorCloning": "Fout bij het klonen",
+      "milestoneCreateError": "Fout bij het aanmaken van mijlpaal",
+      "initiativeCreated": "Initiatief succesvol aangemaakt",
+      "initiativeUpdated": "Initiatief bijgewerkt",
+      "initiativeDeleted": "Initiatief verwijderd",
+      "errorCreatingInitiative": "Fout bij het aanmaken van initiatief"
+    },
+    "traceos": {
+      "workflowCreated": "Workflow succesvol aangemaakt",
+      "workflowDeleted": "Workflow verwijderd",
+      "approvalStarted": "Goedkeuringsworkflow gestart",
+      "stepApproved": "Stap goedgekeurd met elektronische handtekening",
+      "stepRejected": "Stap afgewezen",
+      "decisionRecorded": "Beslissing vastgelegd",
+      "decisionUpdated": "Beslissing bijgewerkt",
+      "decisionDeleted": "Beslissing verwijderd",
+      "tagCreatedError": "Fout bij het aanmaken van tag",
+      "tagDeleted": "Tag verwijderd",
+      "tagDeletedError": "Fout bij het verwijderen van tag",
+      "errorCreatingWorkflow": "Fout bij het aanmaken van workflow",
+      "errorDeletingWorkflow": "Fout bij het verwijderen",
+      "errorStartingWorkflow": "Fout bij het starten van workflow",
+      "errorApproving": "Fout bij het goedkeuren",
+      "errorRejecting": "Fout bij het afwijzen",
+      "errorCreatingDecision": "Fout bij het aanmaken van beslissing",
+      "errorUpdatingDecision": "Fout bij het bijwerken",
+      "errorDeletingDecision": "Fout bij het verwijderen",
+      "loginRequiredDecision": "U moet ingelogd zijn om een beslissing aan te maken",
+      "errorCreatingWebhook": "Fout bij het aanmaken van webhook",
+      "errorUpdatingWebhook": "Fout bij het bijwerken",
+      "errorDeletingWebhook": "Fout bij het verwijderen",
+      "errorTestingWebhook": "Fout bij het testen van webhook"
+    },
+    "consultation": {
+      "requestSent": "Consultatieaanvraag verzonden",
+      "statusUpdated": "Status bijgewerkt",
+      "cancelled": "Consultatie geannuleerd",
+      "errorRequest": "Fout bij het verzenden van aanvraag",
+      "errorUpdating": "Fout bij het bijwerken",
+      "errorCancelling": "Fout bij het annuleren"
+    },
+    "expert": {
+      "reviewSubmitted": "Beoordeling ingediend ter verificatie",
+      "reviewDeleted": "Beoordeling verwijderd",
+      "thankYouVote": "Bedankt voor uw stem",
+      "alreadyVoted": "U heeft al gestemd op deze beoordeling",
+      "loginRequiredReview": "U moet ingelogd zijn om een beoordeling achter te laten",
+      "loginRequiredVote": "U moet ingelogd zijn om te stemmen",
+      "ratingRange": "Beoordeling moet tussen 1 en 5 liggen",
+      "reviewMinLength": "Uw beoordeling moet minimaal 20 tekens bevatten",
+      "errorSubmitting": "Fout bij het indienen van beoordeling",
+      "errorVoting": "Fout bij het stemmen",
+      "errorDeletingReview": "Kan beoordeling niet verwijderen"
+    },
+    "latent": {
+      "errorLoadingZones": "Fout bij het laden van zones",
+      "errorCreatingZone": "Fout bij het aanmaken van zone",
+      "errorUpdatingStatus": "Fout bij het bijwerken van status",
+      "errorAddingTension": "Fout bij het toevoegen van spanning",
+      "errorDeleting": "Fout bij het verwijderen",
+      "errorEvolvingZone": "Fout bij het evolueren van zone",
+      "errorDeletingZone": "Fout bij het verwijderen van zone",
+      "errorUpdatingZone": "Fout bij het bijwerken van zone",
+      "errorDuplicatingZone": "Fout bij het dupliceren van zone",
+      "zonesMerged": "Zones succesvol samengevoegd",
+      "errorMergingZones": "Fout bij het samenvoegen van zones"
+    },
+    "sync": {
+      "dataSynced": "Gegevens succesvol gesynchroniseerd",
+      "pendingActions": "{{count}} acties wachten op synchronisatie",
+      "connectionRestored": "Verbinding hersteld",
+      "offlineMode": "Offlinemodus geactiveerd",
+      "connectionRequired": "Internetverbinding vereist",
+      "cloudSyncError": "Fout bij cloudsynchronisatie"
+    },
+    "notifications": {
+      "enabled": "Meldingen ingeschakeld!",
+      "notSupported": "Meldingen niet ondersteund",
+      "notSupportedDesc": "Uw browser ondersteunt geen pushmeldingen.",
+      "activated": "Meldingen ingeschakeld",
+      "activatedDesc": "U ontvangt nu belangrijke meldingen.",
+      "blocked": "Meldingen geblokkeerd",
+      "blockedDesc": "U kunt ze opnieuw inschakelen in de browserinstellingen."
+    },
+    "profile": {
+      "saved": "Profiel opgeslagen",
+      "savedLocally": "Profiel lokaal opgeslagen",
+      "savedLocallyOnly": "Profiel alleen lokaal opgeslagen"
+    },
+    "watchlist": {
+      "countryAdded": "Land gevolgd",
+      "countryRemoved": "Land verwijderd",
+      "errorUpdating": "Fout bij het bijwerken"
+    },
+    "events": {
+      "registered": "Registratie bevestigd!",
+      "registeredDesc": "U bent geregistreerd voor \"{{title}}\"",
+      "cancelled": "Registratie geannuleerd",
+      "errorRegistering": "Fout bij het registreren",
+      "errorCancelling": "Fout bij het annuleren"
+    },
+    "generation": {
+      "countryGenerated": "✅ {{country}} gegenereerd",
+      "countryGeneratedDesc": "Score: {{score}}/100",
+      "countryFailed": "❌ {{country}} mislukt",
+      "countryValidating": "🔍 {{country}} valideren...",
+      "countryRunning": "🚀 {{country}} genereren...",
+      "batchCompleted": "🎉 Batch voltooid!",
+      "batchCompletedDesc": "{{completed}}/{{total}} landen gegenereerd",
+      "batchFailed": "⚠️ Batch voltooid met fouten",
+      "batchFailedDesc": "{{completed}} geslaagd, {{failed}} mislukt"
+    }
+  }
+}

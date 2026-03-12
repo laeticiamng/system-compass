@@ -90,13 +90,13 @@ export function PremiumPaywall({
           {/* Features list */}
           <div className="bg-background/50 rounded-lg p-4 max-w-sm mx-auto">
             <p className="text-sm font-medium mb-2">
-              {t('subscription.includedWith', 'Inclus avec')} {tierConfig.name}:
+              {t('subscription.includedWith', 'Inclus avec')} {t(tierConfig.nameKey, tierConfig.name)}:
             </p>
             <ul className="text-sm text-muted-foreground space-y-1 text-left">
-              {tierConfig.features.slice(0, 4).map((feature, i) => (
+              {tierConfig.featureKeys.slice(0, 4).map((featureKey, i) => (
                 <li key={i} className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
-                  {feature}
+                  {t(featureKey, tierConfig.features[i])}
                 </li>
               ))}
             </ul>

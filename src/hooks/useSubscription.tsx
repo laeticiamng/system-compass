@@ -23,10 +23,17 @@ interface SubscriptionContextValue extends SubscriptionState {
 const SubscriptionContext = createContext<SubscriptionContextValue | null>(null);
 
 // Stripe tier configuration (for display)
+// Feature keys are i18n translation keys with French fallbacks
 export const SUBSCRIPTION_TIERS = {
   free: {
+    nameKey: 'subscription.tiers.free.name',
     name: 'Gratuit',
     price: 0,
+    featureKeys: [
+      'subscription.tiers.free.feature1',
+      'subscription.tiers.free.feature2',
+      'subscription.tiers.free.feature3',
+    ],
     features: [
       'Aperçu de 80+ pays',
       'Quiz de profil',
@@ -34,9 +41,17 @@ export const SUBSCRIPTION_TIERS = {
     ],
   },
   premium: {
+    nameKey: 'subscription.tiers.premium.name',
     name: 'Premium',
     price: 9.90,
     priceId: 'price_1T8k86DFa5Y9NR1IPzfZhZrx',
+    featureKeys: [
+      'subscription.tiers.premium.feature1',
+      'subscription.tiers.premium.feature2',
+      'subscription.tiers.premium.feature3',
+      'subscription.tiers.premium.feature4',
+      'subscription.tiers.premium.feature5',
+    ],
     features: [
       'Analyse système avancée',
       'Gouvernance & Terrain',
@@ -46,9 +61,16 @@ export const SUBSCRIPTION_TIERS = {
     ],
   },
   pro: {
+    nameKey: 'subscription.tiers.pro.name',
     name: 'Pro / B2B',
     price: null, // Sur devis
     priceId: null,
+    featureKeys: [
+      'subscription.tiers.pro.feature1',
+      'subscription.tiers.pro.feature2',
+      'subscription.tiers.pro.feature3',
+      'subscription.tiers.pro.feature4',
+    ],
     features: [
       'Tout Premium inclus',
       'Analyse projet personnalisée',

@@ -28,15 +28,13 @@ serve(async (req) => {
   let event: Stripe.Event;
   const body = await req.text();
 
+  if (!webhookSecret) {
+    logStep("CRITICAL: STRIPE_WEBHOOK_SECRET not configured — rejecting webhook");
+    return new Response("Webhook secret not configured", { status: 500 });
+  }
+
   try {
-    // If webhook secret is configured, verify signature
-    if (webhookSecret) {
-      event = await stripe.webhooks.constructEventAsync(body, signature, webhookSecret);
-    } else {
-      // For development, parse without verification
-      event = JSON.parse(body) as Stripe.Event;
-      logStep("Warning: Webhook secret not configured, skipping signature verification");
-    }
+    event = await stripe.webhooks.constructEventAsync(body, signature, webhookSecret);
   } catch (err) {
     const errorMessage = err instanceof Error ? err.message : String(err);
     logStep("Webhook signature verification failed", { error: errorMessage });

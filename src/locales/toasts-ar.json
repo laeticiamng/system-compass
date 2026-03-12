@@ -1,0 +1,129 @@
+{
+  "toasts": {
+    "pmo": {
+      "dependencyCreated": "تم إنشاء التبعية",
+      "dependencyDeleted": "تم حذف التبعية",
+      "errorCreatingDependency": "خطأ في إنشاء التبعية",
+      "errorDeletingDependency": "خطأ في الحذف",
+      "budgetLineCreated": "تم إنشاء بند الميزانية",
+      "budgetLineUpdated": "تم تحديث بند الميزانية",
+      "budgetLineDeleted": "تم حذف بند الميزانية",
+      "scenarioCreated": "تم إنشاء السيناريو",
+      "errorCreating": "خطأ في الإنشاء",
+      "errorUpdating": "خطأ في التحديث",
+      "errorDeleting": "خطأ في الحذف",
+      "errorCreatingScenario": "خطأ في إنشاء السيناريو",
+      "errorCloning": "خطأ في الاستنساخ",
+      "milestoneCreateError": "خطأ في إنشاء المعلم",
+      "initiativeCreated": "تم إنشاء المبادرة بنجاح",
+      "initiativeUpdated": "تم تحديث المبادرة",
+      "initiativeDeleted": "تم حذف المبادرة",
+      "errorCreatingInitiative": "خطأ في إنشاء المبادرة"
+    },
+    "traceos": {
+      "workflowCreated": "تم إنشاء سير العمل بنجاح",
+      "workflowDeleted": "تم حذف سير العمل",
+      "approvalStarted": "تم بدء سير عمل الموافقة",
+      "stepApproved": "تمت الموافقة على الخطوة بالتوقيع الإلكتروني",
+      "stepRejected": "تم رفض الخطوة",
+      "decisionRecorded": "تم تسجيل القرار",
+      "decisionUpdated": "تم تحديث القرار",
+      "decisionDeleted": "تم حذف القرار",
+      "tagCreatedError": "خطأ في إنشاء الوسم",
+      "tagDeleted": "تم حذف الوسم",
+      "tagDeletedError": "خطأ في حذف الوسم",
+      "errorCreatingWorkflow": "خطأ في إنشاء سير العمل",
+      "errorDeletingWorkflow": "خطأ في الحذف",
+      "errorStartingWorkflow": "خطأ في بدء سير العمل",
+      "errorApproving": "خطأ في الموافقة",
+      "errorRejecting": "خطأ في الرفض",
+      "errorCreatingDecision": "خطأ في إنشاء القرار",
+      "errorUpdatingDecision": "خطأ في التحديث",
+      "errorDeletingDecision": "خطأ في الحذف",
+      "loginRequiredDecision": "يجب تسجيل الدخول لإنشاء قرار",
+      "errorCreatingWebhook": "خطأ في إنشاء الويب هوك",
+      "errorUpdatingWebhook": "خطأ في التحديث",
+      "errorDeletingWebhook": "خطأ في الحذف",
+      "errorTestingWebhook": "خطأ في اختبار الويب هوك"
+    },
+    "consultation": {
+      "requestSent": "تم إرسال طلب الاستشارة",
+      "statusUpdated": "تم تحديث الحالة",
+      "cancelled": "تم إلغاء الاستشارة",
+      "errorRequest": "خطأ في إرسال الطلب",
+      "errorUpdating": "خطأ في التحديث",
+      "errorCancelling": "خطأ في الإلغاء"
+    },
+    "expert": {
+      "reviewSubmitted": "تم إرسال المراجعة للتحقق",
+      "reviewDeleted": "تم حذف المراجعة",
+      "thankYouVote": "شكراً لتصويتك",
+      "alreadyVoted": "لقد صوّتت بالفعل لهذه المراجعة",
+      "loginRequiredReview": "يجب تسجيل الدخول لترك مراجعة",
+      "loginRequiredVote": "يجب تسجيل الدخول للتصويت",
+      "ratingRange": "يجب أن يكون التقييم بين 1 و 5",
+      "reviewMinLength": "يجب أن تحتوي مراجعتك على 20 حرفاً على الأقل",
+      "errorSubmitting": "خطأ في إرسال المراجعة",
+      "errorVoting": "خطأ في التصويت",
+      "errorDeletingReview": "تعذر حذف المراجعة"
+    },
+    "latent": {
+      "errorLoadingZones": "خطأ في تحميل المناطق",
+      "errorCreatingZone": "خطأ في إنشاء المنطقة",
+      "errorUpdatingStatus": "خطأ في تحديث الحالة",
+      "errorAddingTension": "خطأ في إضافة التوتر",
+      "errorDeleting": "خطأ في الحذف",
+      "errorEvolvingZone": "خطأ في تطوير المنطقة",
+      "errorDeletingZone": "خطأ في حذف المنطقة",
+      "errorUpdatingZone": "خطأ في تحديث المنطقة",
+      "errorDuplicatingZone": "خطأ في تكرار المنطقة",
+      "zonesMerged": "تم دمج المناطق بنجاح",
+      "errorMergingZones": "خطأ في دمج المناطق"
+    },
+    "sync": {
+      "dataSynced": "تمت مزامنة البيانات بنجاح",
+      "pendingActions": "{{count}} إجراءات في انتظار المزامنة",
+      "connectionRestored": "تم استعادة الاتصال",
+      "offlineMode": "تم تفعيل وضع عدم الاتصال",
+      "connectionRequired": "يلزم الاتصال بالإنترنت",
+      "cloudSyncError": "خطأ في المزامنة السحابية"
+    },
+    "notifications": {
+      "enabled": "تم تفعيل الإشعارات!",
+      "notSupported": "الإشعارات غير مدعومة",
+      "notSupportedDesc": "متصفحك لا يدعم الإشعارات الفورية.",
+      "activated": "تم تفعيل الإشعارات",
+      "activatedDesc": "ستتلقى الآن الإشعارات المهمة.",
+      "blocked": "تم حظر الإشعارات",
+      "blockedDesc": "يمكنك إعادة تفعيلها من إعدادات المتصفح."
+    },
+    "profile": {
+      "saved": "تم حفظ الملف الشخصي",
+      "savedLocally": "تم حفظ الملف الشخصي محلياً",
+      "savedLocallyOnly": "تم حفظ الملف الشخصي محلياً فقط"
+    },
+    "watchlist": {
+      "countryAdded": "تمت متابعة البلد",
+      "countryRemoved": "تمت إزالة البلد",
+      "errorUpdating": "خطأ في التحديث"
+    },
+    "events": {
+      "registered": "تم تأكيد التسجيل!",
+      "registeredDesc": "أنت مسجل في \"{{title}}\"",
+      "cancelled": "تم إلغاء التسجيل",
+      "errorRegistering": "خطأ في التسجيل",
+      "errorCancelling": "خطأ في الإلغاء"
+    },
+    "generation": {
+      "countryGenerated": "✅ تم توليد {{country}}",
+      "countryGeneratedDesc": "النتيجة: {{score}}/100",
+      "countryFailed": "❌ فشل {{country}}",
+      "countryValidating": "🔍 جارٍ التحقق من {{country}}...",
+      "countryRunning": "🚀 جارٍ توليد {{country}}...",
+      "batchCompleted": "🎉 اكتملت الدفعة!",
+      "batchCompletedDesc": "تم توليد {{completed}}/{{total}} بلد",
+      "batchFailed": "⚠️ اكتملت الدفعة مع أخطاء",
+      "batchFailedDesc": "{{completed}} نجاح، {{failed}} فشل"
+    }
+  }
+}

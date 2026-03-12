@@ -112,9 +112,9 @@ export const learningRoutes = [
 
 export const userRoutes = [
   { path: "dashboard", element: <RequireAuth><LazyDashboard /></RequireAuth> },
-  { path: "usage", element: <LazyUsage /> },
-  { path: "settings/notifications", element: <LazyNotificationSettings /> },
-  { path: "family-workspace", element: <LazyFamilyWorkspace /> },
+  { path: "usage", element: <RequireAuth><LazyUsage /></RequireAuth> },
+  { path: "settings/notifications", element: <RequireAuth><LazyNotificationSettings /></RequireAuth> },
+  { path: "family-workspace", element: <RequireAuth><LazyFamilyWorkspace /></RequireAuth> },
 ];
 
 export const proRoutes = [

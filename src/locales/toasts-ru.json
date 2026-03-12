@@ -1,0 +1,129 @@
+{
+  "toasts": {
+    "pmo": {
+      "dependencyCreated": "Зависимость создана",
+      "dependencyDeleted": "Зависимость удалена",
+      "errorCreatingDependency": "Ошибка создания зависимости",
+      "errorDeletingDependency": "Ошибка удаления",
+      "budgetLineCreated": "Бюджетная строка создана",
+      "budgetLineUpdated": "Бюджетная строка обновлена",
+      "budgetLineDeleted": "Бюджетная строка удалена",
+      "scenarioCreated": "Сценарий создан",
+      "errorCreating": "Ошибка создания",
+      "errorUpdating": "Ошибка обновления",
+      "errorDeleting": "Ошибка удаления",
+      "errorCreatingScenario": "Ошибка создания сценария",
+      "errorCloning": "Ошибка клонирования",
+      "milestoneCreateError": "Ошибка создания вехи",
+      "initiativeCreated": "Инициатива успешно создана",
+      "initiativeUpdated": "Инициатива обновлена",
+      "initiativeDeleted": "Инициатива удалена",
+      "errorCreatingInitiative": "Ошибка создания инициативы"
+    },
+    "traceos": {
+      "workflowCreated": "Рабочий процесс успешно создан",
+      "workflowDeleted": "Рабочий процесс удалён",
+      "approvalStarted": "Процесс утверждения запущен",
+      "stepApproved": "Этап утверждён электронной подписью",
+      "stepRejected": "Этап отклонён",
+      "decisionRecorded": "Решение записано",
+      "decisionUpdated": "Решение обновлено",
+      "decisionDeleted": "Решение удалено",
+      "tagCreatedError": "Ошибка создания тега",
+      "tagDeleted": "Тег удалён",
+      "tagDeletedError": "Ошибка удаления тега",
+      "errorCreatingWorkflow": "Ошибка создания рабочего процесса",
+      "errorDeletingWorkflow": "Ошибка удаления",
+      "errorStartingWorkflow": "Ошибка запуска рабочего процесса",
+      "errorApproving": "Ошибка утверждения",
+      "errorRejecting": "Ошибка отклонения",
+      "errorCreatingDecision": "Ошибка создания решения",
+      "errorUpdatingDecision": "Ошибка обновления",
+      "errorDeletingDecision": "Ошибка удаления",
+      "loginRequiredDecision": "Для создания решения необходимо войти в систему",
+      "errorCreatingWebhook": "Ошибка создания вебхука",
+      "errorUpdatingWebhook": "Ошибка обновления",
+      "errorDeletingWebhook": "Ошибка удаления",
+      "errorTestingWebhook": "Ошибка тестирования вебхука"
+    },
+    "consultation": {
+      "requestSent": "Запрос на консультацию отправлен",
+      "statusUpdated": "Статус обновлён",
+      "cancelled": "Консультация отменена",
+      "errorRequest": "Ошибка отправки запроса",
+      "errorUpdating": "Ошибка обновления",
+      "errorCancelling": "Ошибка отмены"
+    },
+    "expert": {
+      "reviewSubmitted": "Отзыв отправлен на проверку",
+      "reviewDeleted": "Отзыв удалён",
+      "thankYouVote": "Спасибо за ваш голос",
+      "alreadyVoted": "Вы уже голосовали за этот отзыв",
+      "loginRequiredReview": "Для написания отзыва необходимо войти в систему",
+      "loginRequiredVote": "Для голосования необходимо войти в систему",
+      "ratingRange": "Оценка должна быть от 1 до 5",
+      "reviewMinLength": "Ваш отзыв должен содержать не менее 20 символов",
+      "errorSubmitting": "Ошибка отправки отзыва",
+      "errorVoting": "Ошибка голосования",
+      "errorDeletingReview": "Не удалось удалить отзыв"
+    },
+    "latent": {
+      "errorLoadingZones": "Ошибка загрузки зон",
+      "errorCreatingZone": "Ошибка создания зоны",
+      "errorUpdatingStatus": "Ошибка обновления статуса",
+      "errorAddingTension": "Ошибка добавления напряжения",
+      "errorDeleting": "Ошибка удаления",
+      "errorEvolvingZone": "Ошибка развития зоны",
+      "errorDeletingZone": "Ошибка удаления зоны",
+      "errorUpdatingZone": "Ошибка обновления зоны",
+      "errorDuplicatingZone": "Ошибка дублирования зоны",
+      "zonesMerged": "Зоны успешно объединены",
+      "errorMergingZones": "Ошибка объединения зон"
+    },
+    "sync": {
+      "dataSynced": "Данные успешно синхронизированы",
+      "pendingActions": "{{count}} действий ожидают синхронизации",
+      "connectionRestored": "Соединение восстановлено",
+      "offlineMode": "Автономный режим активирован",
+      "connectionRequired": "Требуется подключение к интернету",
+      "cloudSyncError": "Ошибка облачной синхронизации"
+    },
+    "notifications": {
+      "enabled": "Уведомления включены!",
+      "notSupported": "Уведомления не поддерживаются",
+      "notSupportedDesc": "Ваш браузер не поддерживает push-уведомления.",
+      "activated": "Уведомления включены",
+      "activatedDesc": "Теперь вы будете получать важные уведомления.",
+      "blocked": "Уведомления заблокированы",
+      "blockedDesc": "Вы можете повторно включить их в настройках браузера."
+    },
+    "profile": {
+      "saved": "Профиль сохранён",
+      "savedLocally": "Профиль сохранён локально",
+      "savedLocallyOnly": "Профиль сохранён только локально"
+    },
+    "watchlist": {
+      "countryAdded": "Страна добавлена в отслеживаемые",
+      "countryRemoved": "Страна удалена",
+      "errorUpdating": "Ошибка обновления"
+    },
+    "events": {
+      "registered": "Регистрация подтверждена!",
+      "registeredDesc": "Вы зарегистрированы на \"{{title}}\"",
+      "cancelled": "Регистрация отменена",
+      "errorRegistering": "Ошибка регистрации",
+      "errorCancelling": "Ошибка отмены"
+    },
+    "generation": {
+      "countryGenerated": "✅ {{country}} сгенерирована",
+      "countryGeneratedDesc": "Оценка: {{score}}/100",
+      "countryFailed": "❌ {{country}} — ошибка",
+      "countryValidating": "🔍 {{country}} — проверка...",
+      "countryRunning": "🚀 {{country}} — генерация...",
+      "batchCompleted": "🎉 Пакет завершён!",
+      "batchCompletedDesc": "{{completed}}/{{total}} стран сгенерировано",
+      "batchFailed": "⚠️ Пакет завершён с ошибками",
+      "batchFailedDesc": "{{completed}} успешно, {{failed}} с ошибками"
+    }
+  }
+}

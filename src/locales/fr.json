@@ -4625,6 +4625,8 @@
     "displayNamePlaceholder": "Comment veux-tu être appelé ?",
     "loginButton": "Se connecter",
     "signupButton": "S'inscrire",
+    "showPassword": "Afficher le mot de passe",
+    "hidePassword": "Masquer le mot de passe",
     "logout": "Déconnexion",
     "errors": {
       "invalidEmail": "Email invalide",
@@ -6602,6 +6604,29 @@
     "disclaimer": "Simulation ≠ prédiction. Exploration uniquement."
   },
   "subscription": {
+    "tiers": {
+      "free": {
+        "name": "Gratuit",
+        "feature1": "Aperçu de 80+ pays",
+        "feature2": "Quiz de profil",
+        "feature3": "Détails par pays"
+      },
+      "premium": {
+        "name": "Premium",
+        "feature1": "Analyse système avancée",
+        "feature2": "Gouvernance & Terrain",
+        "feature3": "Comparaison illimitée",
+        "feature4": "Export PDF",
+        "feature5": "Calculateur fiscal"
+      },
+      "pro": {
+        "name": "Pro / B2B",
+        "feature1": "Tout Premium inclus",
+        "feature2": "Analyse projet personnalisée",
+        "feature3": "Accès multi-utilisateurs",
+        "feature4": "Support dédié"
+      }
+    },
     "successTitle": "Abonnement activé !",
     "successSubtitle": "Bienvenue dans l'expérience complète",
     "successDescription": "Merci pour votre confiance ! Vous avez maintenant accès à toutes les fonctionnalités premium.",

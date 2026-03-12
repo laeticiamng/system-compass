@@ -1,7 +1,7 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import Stripe from "https://esm.sh/stripe@18.5.0";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.2";
-import { getCorsHeaders, handleCorsPreflightRequest } from "../_shared/cors.ts";
+import { getCorsHeaders, handleCorsPreflightRequest, getSafeOrigin } from "../_shared/cors.ts";
 
 const logStep = (step: string, details?: unknown) => {
   const detailsStr = details ? ` - ${JSON.stringify(details)}` : '';
@@ -80,8 +80,8 @@ serve(async (req) => {
         },
       ],
       mode: "subscription",
-      success_url: `${req.headers.get("origin")}/subscription-success?tier=${tier}`,
-      cancel_url: `${req.headers.get("origin")}/countries`,
+      success_url: `${getSafeOrigin(req)}/subscription-success?tier=${tier}`,
+      cancel_url: `${getSafeOrigin(req)}/countries`,
       metadata: {
         user_id: user.id,
         tier: tier,
