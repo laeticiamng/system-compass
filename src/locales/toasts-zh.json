@@ -109,7 +109,7 @@
     },
     "events": {
       "registered": "报名已确认！",
-      "registeredDesc": "您已报名参加"{{title}}"",
+      "registeredDesc": "您已报名参加\u201c{{title}}\u201d",
       "cancelled": "报名已取消",
       "errorRegistering": "报名时出错",
       "errorCancelling": "取消时出错"
