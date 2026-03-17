@@ -81,16 +81,34 @@ export default function Index() {
       <div className="min-h-screen bg-background overflow-x-hidden">
         {/* ========== HERO SECTION ========== */}
       <section className="relative min-h-[80vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden pt-16 sm:pt-20">
-        {/* Background effects */}
+        {/* Background depth layers */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,hsl(var(--primary)/0.15)_0%,transparent_50%)]" />
-          <motion.div 
+          {/* Layer 0: Atmospheric gradient */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,hsl(var(--primary)/0.12)_0%,transparent_50%)]" />
+          {/* Layer 1: Secondary ambient glow */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_70%_80%,hsl(var(--primary)/0.06)_0%,transparent_60%)]" />
+          {/* Layer 2: Rotating globe with depth offset */}
+          <motion.div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px]"
             animate={{ rotate: 360 }}
-            transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 90, repeat: Infinity, ease: "linear" }}
+            style={{ filter: 'blur(0.5px)' }}
           >
-            <Globe className="w-full h-full text-primary/5" />
+            <Globe className="w-full h-full text-primary/[0.03]" />
           </motion.div>
+          {/* Layer 3: Decorative floating orbs */}
+          <motion.div
+            className="absolute top-[20%] left-[15%] w-32 h-32 rounded-full"
+            style={{ background: 'radial-gradient(circle, hsl(var(--primary) / 0.08) 0%, transparent 70%)' }}
+            animate={{ y: [-10, 10, -10], x: [-5, 5, -5] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute bottom-[30%] right-[10%] w-48 h-48 rounded-full"
+            style={{ background: 'radial-gradient(circle, hsl(280 60% 50% / 0.05) 0%, transparent 70%)' }}
+            animate={{ y: [10, -10, 10], x: [5, -5, 5] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          />
         </div>
 
         <div className="relative z-10 container mx-auto px-4 text-center">
@@ -136,20 +154,19 @@ export default function Index() {
             transition={{ delay: 0.7, duration: 0.6 }}
             className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full sm:w-auto px-4 sm:px-0"
           >
-            <Button
-              size="lg"
+            <button
               onClick={() => navigate('/quick-test')}
-              className="h-12 sm:h-14 px-5 sm:px-8 text-base sm:text-lg rounded-full gap-2 sm:gap-3 bg-primary hover:bg-primary/90 shadow-lg shadow-primary/25 w-full sm:w-auto"
+              className="btn-cta-premium h-12 sm:h-14 px-5 sm:px-8 text-base sm:text-lg gap-2 sm:gap-3 w-full sm:w-auto flex items-center justify-center text-primary-foreground font-semibold"
             >
               <Zap className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
               <span className="truncate">{t('landing.hero.ctaPrimary', 'Trouver mon pays idéal — gratuit')}</span>
               <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
-            </Button>
+            </button>
             <Button
               variant="outline"
               size="lg"
               onClick={() => navigate('/countries')}
-              className="h-12 sm:h-14 px-5 sm:px-8 text-base sm:text-lg rounded-full gap-2 sm:gap-3 w-full sm:w-auto"
+              className="h-12 sm:h-14 px-5 sm:px-8 text-base sm:text-lg rounded-full gap-2 sm:gap-3 w-full sm:w-auto border-border/60 hover:bg-card/50 transition-all duration-300"
             >
               <Globe className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
               {t('landing.hero.ctaSecondary', 'Explorer les pays')}
@@ -159,26 +176,25 @@ export default function Index() {
           {/* Interactive Mini Demo */}
           <HeroMiniDemo />
 
-          {/* Stats rapides */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.8, duration: 0.6 }}
-            className="flex flex-wrap justify-center gap-5 sm:gap-8 mt-8 sm:mt-10 text-muted-foreground"
-          >
-            <div className="text-center">
-              <span className="block text-2xl sm:text-3xl font-bold text-foreground">80+</span>
-              <span className="text-xs sm:text-sm">{t('landing.hero.statsCountries', 'pays analysés')}</span>
-            </div>
-            <div className="text-center">
-              <span className="block text-2xl sm:text-3xl font-bold text-foreground">13</span>
-              <span className="text-xs sm:text-sm">{t('landing.hero.statsLanguages', 'langues')}</span>
-            </div>
-            <div className="text-center">
-              <span className="block text-2xl sm:text-3xl font-bold text-foreground">200+</span>
-              <span className="text-xs sm:text-sm">{t('landing.hero.statsIndicators', 'indicateurs par pays')}</span>
-            </div>
-          </motion.div>
+          {/* Stats rapides — floating cards */}
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-8 sm:mt-10">
+            {[
+              { value: '80+', label: t('landing.hero.statsCountries', 'pays analysés'), delay: 1.8 },
+              { value: '13', label: t('landing.hero.statsLanguages', 'langues'), delay: 1.95 },
+              { value: '200+', label: t('landing.hero.statsIndicators', 'indicateurs par pays'), delay: 2.1 },
+            ].map((stat) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: stat.delay, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="stat-card-float rounded-xl bg-card/80 backdrop-blur-sm border border-border/40 px-5 py-3 text-center"
+              >
+                <span className="block text-2xl sm:text-3xl font-bold text-foreground font-display">{stat.value}</span>
+                <span className="text-xs sm:text-sm text-muted-foreground">{stat.label}</span>
+              </motion.div>
+            ))}
+          </div>
           <TrustBadges />
         </div>
       </section>
@@ -385,12 +401,13 @@ export default function Index() {
 
             {/* Plan Pro */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              className="md:-mt-4 md:mb-4"
             >
-              <Card className="h-full border-primary/50 relative overflow-hidden">
-                <div className="absolute top-0 right-0 bg-primary text-primary-foreground text-xs font-medium px-3 py-1 rounded-bl-lg">
+              <Card className="h-full premium-card border-primary/40 relative overflow-hidden">
+                <div className="absolute top-0 right-0 bg-primary text-primary-foreground text-xs font-semibold px-4 py-1.5 rounded-bl-xl">
                   {t('landing.pricing.popular', 'Populaire')}
                 </div>
                 <CardContent className="pt-8 pb-8 px-8">
@@ -634,15 +651,14 @@ export default function Index() {
             <p className="text-lg text-muted-foreground mb-10 max-w-xl mx-auto">
               {t('landing.cta.subtitle', 'Compare, simule, décide. En toute autonomie.')}
             </p>
-            <Button
-              size="lg"
+            <button
               onClick={() => navigate('/quick-test')}
-              className="h-14 sm:h-16 px-8 sm:px-12 text-base sm:text-lg rounded-full gap-2 sm:gap-3"
+              className="btn-cta-premium h-14 sm:h-16 px-8 sm:px-12 text-base sm:text-lg gap-2 sm:gap-3 flex items-center justify-center text-primary-foreground font-semibold"
             >
               <Compass className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
               {t('landing.cta.button', 'Commencer maintenant')}
               <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
-            </Button>
+            </button>
             <p className="text-sm text-muted-foreground mt-4">{t('landing.cta.freeNotice', 'Gratuit, sans carte bancaire')}</p>
           </motion.div>
         </div>
