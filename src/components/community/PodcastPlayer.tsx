@@ -8,8 +8,6 @@ import { Slider } from '@/components/ui/slider';
 import { Badge } from '@/components/ui/badge';
 import {
   Podcast,
-  Play,
-  Pause,
   SkipBack,
   SkipForward,
   Volume2,
@@ -18,9 +16,17 @@ import {
   ExternalLink,
   Headphones,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Play,
+  Pause,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import {
+  PremiumPlayerShell,
+  AudioVisualizer,
+  PremiumProgressBar,
+  PlayButton,
+} from '@/components/ui/premium-player-shell';
 
 interface Episode {
   id: string;
@@ -88,22 +94,15 @@ function EpisodeCard({
 }) {
   return (
     <div className={cn(
-      'p-4 rounded-lg border transition-all hover:bg-secondary/30',
-      isPlaying && 'border-primary/50 bg-primary/5'
+      'p-4 rounded-xl border transition-all duration-300 hover:bg-secondary/20',
+      isPlaying && 'border-primary/40 bg-primary/5 shadow-[0_0_20px_-8px_hsl(var(--primary)/0.2)]'
     )}>
       <div className="flex items-start gap-4">
-        <Button
-          variant={isPlaying ? 'default' : 'outline'}
-          size="icon"
-          className="h-12 w-12 rounded-full flex-shrink-0"
+        <PlayButton
+          isPlaying={isPlaying}
           onClick={onPlay}
-        >
-          {isPlaying ? (
-            <Pause className="h-5 w-5" />
-          ) : (
-            <Play className="h-5 w-5 ml-0.5" />
-          )}
-        </Button>
+          size="default"
+        />
         
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap mb-1">
@@ -187,12 +186,15 @@ export function PodcastPlayer() {
       </CardHeader>
       
       <CardContent className="space-y-4">
-        {/* Current Player */}
+        {/* Current Player — Premium Shell */}
         {currentEpisode && (
-          <div className="p-4 rounded-lg bg-secondary/30 border border-primary/20">
+          <PremiumPlayerShell isPlaying={isPlaying} compact>
             <div className="flex items-center gap-3 mb-3">
-              <div className="h-12 w-12 rounded-lg bg-primary/20 flex items-center justify-center">
+              <div className="h-12 w-12 rounded-lg bg-primary/15 flex items-center justify-center relative">
                 <Podcast className="h-6 w-6 text-primary" />
+                {isPlaying && (
+                  <AudioVisualizer isPlaying={isPlaying} barCount={3} className="absolute -bottom-1 left-1/2 -translate-x-1/2" />
+                )}
               </div>
               <div className="flex-1 min-w-0">
                 <h4 className="font-medium text-sm truncate">{currentEpisode.title}</h4>
@@ -201,29 +203,27 @@ export function PodcastPlayer() {
                 </p>
               </div>
             </div>
-            
-            {/* Progress Bar */}
+
+            {/* Premium Progress Bar */}
             <div className="space-y-2">
-              <Slider
-                value={[progress]}
-                onValueChange={([val]) => setProgress(val)}
-                max={100}
-                step={0.1}
-                className="w-full"
+              <PremiumProgressBar
+                progress={progress}
+                duration={100}
+                onSeek={(val) => setProgress(val)}
               />
-              <div className="flex justify-between text-xs text-muted-foreground">
+              <div className="flex justify-between text-[10px] text-muted-foreground tabular-nums">
                 <span>{formatTime(progress * 30)}</span>
                 <span>{currentEpisode.duration}</span>
               </div>
             </div>
-            
+
             {/* Controls */}
             <div className="flex items-center justify-between mt-3">
               <div className="flex items-center gap-2">
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="h-8 w-8"
+                  className="h-8 w-8 hover:bg-primary/10"
                   onClick={() => setIsMuted(!isMuted)}
                 >
                   {isMuted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
@@ -238,38 +238,34 @@ export function PodcastPlayer() {
                   className="w-20"
                 />
               </div>
-              
+
               <div className="flex items-center gap-1">
                 <Button
                   variant="ghost"
                   size="icon"
+                  className="hover:bg-primary/10"
                   onClick={() => handleSkip('back')}
                 >
                   <SkipBack className="h-4 w-4" />
                 </Button>
-                <Button
-                  size="icon"
-                  className="h-10 w-10"
+                <PlayButton
+                  isPlaying={isPlaying}
                   onClick={() => setIsPlaying(!isPlaying)}
-                >
-                  {isPlaying ? (
-                    <Pause className="h-5 w-5" />
-                  ) : (
-                    <Play className="h-5 w-5 ml-0.5" />
-                  )}
-                </Button>
+                  size="default"
+                />
                 <Button
                   variant="ghost"
                   size="icon"
+                  className="hover:bg-primary/10"
                   onClick={() => handleSkip('forward')}
                 >
                   <SkipForward className="h-4 w-4" />
                 </Button>
               </div>
-              
-              <span className="text-xs text-muted-foreground">1.0x</span>
+
+              <span className="text-xs text-muted-foreground font-mono">1.0x</span>
             </div>
-          </div>
+          </PremiumPlayerShell>
         )}
         
         {/* Episode List */}

@@ -2,14 +2,11 @@ import { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
-import { 
-  Play, 
-  Pause, 
-  Volume2, 
-  VolumeX, 
-  Music2, 
-  Loader2,
-  Info 
+import {
+  Volume2,
+  VolumeX,
+  Music2,
+  Info
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { PyramidType } from '@/lib/types';
@@ -20,6 +17,12 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import {
+  PremiumPlayerShell,
+  AudioVisualizer,
+  PremiumProgressBar,
+  PlayButton,
+} from '@/components/ui/premium-player-shell';
 
 interface CountryMusicPlayerProps {
   countryId: string;
@@ -239,24 +242,17 @@ export function CountryMusicPlayer({
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={togglePlay}
-              disabled={isLoading}
-              className={cn("relative", className)}
-            >
-              {isLoading ? (
-                <Loader2 className="w-4 h-4 animate-spin" />
-              ) : isPlaying ? (
-                <Pause className="w-4 h-4" />
-              ) : (
-                <Music2 className="w-4 h-4" />
-              )}
+            <div className={cn("relative", className)}>
+              <PlayButton
+                isPlaying={isPlaying}
+                isLoading={isLoading}
+                onClick={togglePlay}
+                size="sm"
+              />
               {isPlaying && (
-                <span className="absolute -top-1 -right-1 w-2 h-2 bg-primary rounded-full animate-pulse" />
+                <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-primary rounded-full animate-pulse ring-2 ring-background" />
               )}
-            </Button>
+            </div>
           </TooltipTrigger>
           <TooltipContent>
             <p>{t('music.listenTo', { country: countryName })}</p>
@@ -267,30 +263,29 @@ export function CountryMusicPlayer({
   }
 
   return (
-    <div className={cn("glass-card rounded-xl p-4", className)}>
+    <PremiumPlayerShell
+      isPlaying={isPlaying}
+      compact
+      className={className}
+    >
       <div className="flex items-center gap-4">
-        {/* Play button */}
-        <Button
-          variant="outline"
-          size="icon"
+        {/* Premium play button */}
+        <PlayButton
+          isPlaying={isPlaying}
+          isLoading={isLoading}
           onClick={togglePlay}
-          disabled={isLoading}
-          className="h-12 w-12 rounded-full shrink-0"
-        >
-          {isLoading ? (
-            <Loader2 className="w-5 h-5 animate-spin" />
-          ) : isPlaying ? (
-            <Pause className="w-5 h-5" />
-          ) : (
-            <Play className="w-5 h-5 ml-0.5" />
-          )}
-        </Button>
+          size="default"
+        />
 
         <div className="flex-1 min-w-0">
-          {/* Title */}
+          {/* Title with audio visualizer */}
           <div className="flex items-center gap-2 mb-2">
-            <Music2 className="w-4 h-4 text-primary shrink-0" />
-            <span className="font-medium truncate">
+            {isPlaying ? (
+              <AudioVisualizer isPlaying={isPlaying} barCount={4} className="shrink-0" />
+            ) : (
+              <Music2 className="w-4 h-4 text-primary shrink-0" />
+            )}
+            <span className="font-medium truncate text-sm">
               {t('music.systemSoundscape', 'Paysage sonore')} - {countryName}
             </span>
             <TooltipProvider>
@@ -305,22 +300,28 @@ export function CountryMusicPlayer({
             </TooltipProvider>
           </div>
 
-          {/* Progress bar */}
+          {/* Premium progress bar */}
           {hasLoaded && (
-            <div className="flex items-center gap-2 text-xs text-muted-foreground">
-              <span>{formatTime(progress)}</span>
-              <div className="flex-1 h-1 bg-muted rounded-full overflow-hidden">
-                <div 
-                  className="h-full bg-primary transition-all"
-                  style={{ width: `${(progress / duration) * 100}%` }}
-                />
+            <div className="space-y-1.5">
+              <PremiumProgressBar
+                progress={progress}
+                duration={duration}
+                onSeek={(time) => {
+                  if (audioRef.current) {
+                    audioRef.current.currentTime = time;
+                    setProgress(time);
+                  }
+                }}
+              />
+              <div className="flex justify-between text-[10px] text-muted-foreground tabular-nums">
+                <span>{formatTime(progress)}</span>
+                <span>{formatTime(duration)}</span>
               </div>
-              <span>{formatTime(duration)}</span>
             </div>
           )}
 
           {error && (
-            <p className="text-xs text-destructive">{error}</p>
+            <p className="text-xs text-destructive mt-1">{error}</p>
           )}
         </div>
 
@@ -330,7 +331,7 @@ export function CountryMusicPlayer({
             variant="ghost"
             size="icon"
             onClick={toggleMute}
-            className="h-8 w-8"
+            className="h-8 w-8 hover:bg-primary/10"
           >
             {isMuted || volume === 0 ? (
               <VolumeX className="w-4 h-4" />
@@ -347,6 +348,6 @@ export function CountryMusicPlayer({
           />
         </div>
       </div>
-    </div>
+    </PremiumPlayerShell>
   );
 }

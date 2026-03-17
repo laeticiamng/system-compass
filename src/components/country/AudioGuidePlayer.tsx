@@ -7,15 +7,12 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCountryAudioGuide, type AudioSection, type VoiceStyle } from '@/hooks/useCountryAudioGuide';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import {
   Headphones,
-  Play,
-  Pause,
   Square,
   Volume2,
   Loader2,
@@ -29,6 +26,12 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import {
+  PremiumPlayerShell,
+  AudioVisualizer,
+  PremiumProgressBar,
+  PlayButton,
+} from '@/components/ui/premium-player-shell';
 
 interface Props {
   countryId: string;
@@ -78,23 +81,23 @@ export function AudioGuidePlayer({ countryId, countryName }: Props) {
   };
 
   return (
-    <Card className="overflow-hidden border-primary/20 bg-gradient-to-br from-background to-accent/10">
-      <CardHeader className="pb-3">
+    <PremiumPlayerShell isPlaying={isPlaying} className="overflow-hidden">
+      <div className="pb-3">
         <div className="flex items-center justify-between">
-          <CardTitle className="flex items-center gap-2 text-lg">
-            <motion.div
-              animate={isPlaying ? { scale: [1, 1.1, 1] } : {}}
-              transition={{ repeat: Infinity, duration: 0.5 }}
-            >
+          <div className="flex items-center gap-2 text-lg font-semibold">
+            <div className="relative">
               <Headphones className="w-5 h-5 text-primary" />
-            </motion.div>
+              {isPlaying && (
+                <AudioVisualizer isPlaying={isPlaying} barCount={3} className="absolute -bottom-2 left-1/2 -translate-x-1/2 scale-75" />
+              )}
+            </div>
             {t('audioGuide.title', 'Guide Audio IA')}
-            <Badge variant="outline" className="text-xs bg-gradient-to-r from-primary/10 to-accent/10">
+            <Badge variant="outline" className="text-xs bg-gradient-to-r from-primary/10 to-accent/10 border-primary/20">
               <Volume2 className="w-3 h-3 mr-1" />
               ElevenLabs
             </Badge>
-          </CardTitle>
-          
+          </div>
+
           {/* Voice Style Selector */}
           <Select value={voiceStyle} onValueChange={(v) => setVoiceStyle(v as VoiceStyle)}>
             <SelectTrigger className="w-[140px] h-8 text-xs">
@@ -109,10 +112,10 @@ export function AudioGuidePlayer({ countryId, countryName }: Props) {
             </SelectContent>
           </Select>
         </div>
-      </CardHeader>
+      </div>
 
-      <CardContent className="space-y-4">
-        {/* Playback Progress */}
+      <div className="space-y-4">
+        {/* Playback Progress — Premium */}
         <AnimatePresence>
           {(isPlaying || currentSection) && (
             <motion.div
@@ -123,37 +126,26 @@ export function AudioGuidePlayer({ countryId, countryName }: Props) {
             >
               <div className="flex items-center justify-between text-sm">
                 <span className="font-medium flex items-center gap-2">
-                  <motion.div
-                    animate={{ opacity: [0.5, 1, 0.5] }}
-                    transition={{ repeat: Infinity, duration: 1.5 }}
-                    className="w-2 h-2 rounded-full bg-red-500"
-                  />
+                  <AudioVisualizer isPlaying={isPlaying} barCount={4} />
                   {SECTIONS.find(s => s.id === currentSection)?.label || 'Lecture'}
                 </span>
                 <div className="flex items-center gap-2">
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="h-8 w-8"
+                  <PlayButton
+                    isPlaying={isPlaying}
                     onClick={togglePlayback}
-                  >
-                    {isPlaying ? (
-                      <Pause className="w-4 h-4" />
-                    ) : (
-                      <Play className="w-4 h-4" />
-                    )}
-                  </Button>
+                    size="sm"
+                  />
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="h-8 w-8"
+                    className="h-8 w-8 hover:bg-primary/10"
                     onClick={stopPlayback}
                   >
                     <Square className="w-4 h-4" />
                   </Button>
                 </div>
               </div>
-              <Progress value={progress} className="h-1.5" />
+              <PremiumProgressBar progress={progress} duration={100} />
             </motion.div>
           )}
         </AnimatePresence>
@@ -224,10 +216,10 @@ export function AudioGuidePlayer({ countryId, countryName }: Props) {
         </Button>
 
         {/* Powered By */}
-        <p className="text-[10px] text-center text-muted-foreground">
+        <p className="text-[10px] text-center text-muted-foreground opacity-60">
           Propulsé par ElevenLabs • Voix synthétisée par IA
         </p>
-      </CardContent>
-    </Card>
+      </div>
+    </PremiumPlayerShell>
   );
 }

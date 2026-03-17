@@ -101,9 +101,10 @@ export function HeroMiniDemo() {
       onMouseEnter={() => setIsAnimating(false)}
       onMouseLeave={() => setIsAnimating(true)}
     >
-      <div className="relative rounded-2xl bg-card/80 backdrop-blur-sm border border-border/50 p-4 shadow-xl overflow-hidden">
-        {/* Glow effect */}
-        <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="relative rounded-2xl bg-card/80 backdrop-blur-xl border border-border/40 p-4 overflow-hidden" style={{ boxShadow: 'var(--shadow-depth-3), var(--edge-light-strong)' }}>
+        {/* Premium glow effects */}
+        <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/8 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute inset-0 rounded-[inherit] pointer-events-none" style={{ background: 'linear-gradient(180deg, hsl(0 0% 100% / 0.05) 0%, transparent 30%)' }} />
 
         {/* Country headers */}
         <AnimatePresence mode="wait">
