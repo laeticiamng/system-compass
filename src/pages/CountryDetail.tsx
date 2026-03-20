@@ -26,6 +26,8 @@ import { PlaybookSection } from '@/components/PlaybookSection';
 import { CountryTagsRadar } from '@/components/country/CountryTagsRadar';
 import { CountryPdfExport } from '@/components/CountryPdfExport';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ArrowLeft, Calendar, ExternalLink, Layers, Map, Target, Brain, Loader2, Shield, MapPin, Scale, ShieldCheck } from 'lucide-react';
 import { LocalizedLink as Link } from '@/components/i18n';
@@ -36,6 +38,7 @@ import { useExitKeysProfile } from '@/hooks/useExitKeysProfile';
 import { useCountryGovernance } from '@/hooks/useCountryGovernance';
 import { AiHelpButton } from '@/components/ai/AiHelpButton';
 import { FollowCountryButton } from '@/components/country/FollowCountryButton';
+import { countryRiskProfiles } from '@/lib/country-risks-data';
 
 const PYRAMID_TYPE_LABELS: Record<string, string> = {
   PROBLEM_RENT: 'pyramids.problemRent.label',
@@ -199,10 +202,24 @@ export default function CountryDetail() {
             </TabsContent>
           </Tabs>
 
-          {/* Note about extended country */}
-          <div className="glass-card rounded-xl p-6 text-center text-muted-foreground">
-            <p>{t('countryDetail.extendedNote', 'This country has intelligence layer data. Full profile data coming soon.')}</p>
-          </div>
+          <Card className="border-primary/20 bg-card/70 backdrop-blur">
+            <CardContent className="p-6">
+              <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                <div>
+                  <p className="text-sm font-medium">{t('countryDetail.extendedCoverage', 'Couverture de données disponible')}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    {t('countryDetail.extendedCoverageDesc', 'Ce pays est alimenté par la couche intelligence en base : analyse, variantes et projection projet sont déjà utilisables.') }
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="outline">Analyse DB</Badge>
+                  <Badge variant="outline">Variantes</Badge>
+                  <Badge variant="outline">Projet</Badge>
+                  {extendedTags && <Badge variant="outline">Tags terrain</Badge>}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     );
@@ -231,6 +248,11 @@ export default function CountryDetail() {
   const displayWhoWins = countryData?.whoWins || country.whoWins;
   const displayWhoLoses = countryData?.whoLoses || country.whoLoses;
   const displayPlaybook = countryData?.playbook || country.playbook;
+
+  const latentRiskProfile = countryRiskProfiles.find((profile) => profile.countryId === country.iso2);
+  const governanceAverage = governanceData
+    ? ((governanceData.stability_score + governanceData.friction_score + governanceData.operational_score + governanceData.capture_risk_score + governanceData.ecosystem_score) / 5).toFixed(1)
+    : null;
 
   // All country profiles are accessible for free
   // Premium features (comparison, export, AI recommendations) are gated separately
@@ -451,6 +473,39 @@ export default function CountryDetail() {
         <div className="mb-12">
           <h2 className="font-display text-2xl font-bold mb-6">{t('countryDetail.survivalPlaybook')}</h2>
           <PlaybookSection playbook={displayPlaybook} />
+        </div>
+
+        <div className="mb-12">
+          <Card className="border-primary/20 bg-card/70 backdrop-blur">
+            <CardContent className="p-6">
+              <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+                <div>
+                  <p className="text-sm font-medium">{t('countryDetail.coverageReady', 'Couverture utilisateur prête')}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    {t('countryDetail.coverageReadyDesc', 'La fiche consolide les données macro, la gouvernance, les risques terrain, la santé, le fiscal et les stratégies associées sans écran “bientôt”.')}
+                  </p>
+                </div>
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                  <div className="rounded-xl border border-border/50 bg-background/50 p-3">
+                    <p className="text-xs text-muted-foreground">Gouvernance</p>
+                    <p className="mt-1 text-lg font-semibold">{governanceAverage ? `${governanceAverage}/5` : '—'}</p>
+                  </div>
+                  <div className="rounded-xl border border-border/50 bg-background/50 p-3">
+                    <p className="text-xs text-muted-foreground">Risques latents</p>
+                    <p className="mt-1 text-lg font-semibold">{latentRiskProfile ? `${latentRiskProfile.overallLatentScore}/10` : '—'}</p>
+                  </div>
+                  <div className="rounded-xl border border-border/50 bg-background/50 p-3">
+                    <p className="text-xs text-muted-foreground">Sources</p>
+                    <p className="mt-1 text-lg font-semibold">{country.sources.length}</p>
+                  </div>
+                  <div className="rounded-xl border border-border/50 bg-background/50 p-3">
+                    <p className="text-xs text-muted-foreground">MAJ</p>
+                    <p className="mt-1 text-lg font-semibold">{country.lastUpdated}</p>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
 
         {/* Sources & Attribution (D2) */}

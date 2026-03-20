@@ -73,9 +73,15 @@ npm install
 npm run dev
 ```
 
-> **Note** : L'application fonctionne en mode local avec données mock. Pour le backend complet, utilisez [Lovable Cloud](https://lovable.dev).
+> **Note** : l'application attend des données réelles via Supabase/Lovable Cloud. Le mode local doit être branché sur votre propre projet Supabase et ne repose plus sur un mode “mock” utilisateur.
 
 📖 Voir [`docs/GETTING-STARTED.md`](./docs/GETTING-STARTED.md) pour les instructions détaillées.
+
+### Audit UX & data integrity (2026-03)
+- ✅ Modules front réellement routés réexposés dans le hub outils (`community`, `partner-services`, `b2b`, `personas`, `academic`, `latent`, `irreversa`, `ovi`).
+- ✅ Centre des alertes réglementaires branché sur les alertes IA en base + les profils de risques pays sourcés, sans données mockées côté utilisateur.
+- ✅ Fiches pays étendues nettoyées pour supprimer les messages “coming soon” et exposer l'état réel de couverture.
+- ✅ Garde-fou CI local ajouté : `npm run check:ts-comments` échoue si `@ts-nocheck` réapparaît.
 
 ---
 
@@ -98,6 +104,9 @@ npm run dev
 ```bash
 # Exécuter les tests
 npm run test
+
+# Vérifier qu'aucun @ts-nocheck n'a été réintroduit
+npm run check:ts-comments
 
 # Avec couverture
 npm run test:coverage
