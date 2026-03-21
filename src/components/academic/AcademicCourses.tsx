@@ -60,8 +60,8 @@ interface Quiz {
   source?: string;
 }
 
-// PLACEHOLDER: Replace with real data from Supabase when academic courses are implemented
-const mockCourses: Course[] = [
+// Dev-only placeholder data — not shown in production
+const mockCourses: Course[] = !import.meta.env.DEV ? [] : [
   {
     id: 'course-1',
     title: 'Stratégie d\'Internationalisation',
@@ -139,7 +139,7 @@ const mockCourses: Course[] = [
   }
 ];
 
-const sampleQuiz: Quiz[] = [
+const sampleQuiz: Quiz[] = !import.meta.env.DEV ? [] : [
   {
     id: 'q1',
     question: 'Dans le modèle des 5 Forces de Porter, quel facteur influence le plus directement la rentabilité d\'un secteur ?',

@@ -241,8 +241,8 @@ dashboard_progress, exit_keys_history, challenge_progress, game_statistics, user
 | Finding precedent | Statut actuel | Notes |
 |-------------------|--------------|-------|
 | P0-1 : Open Redirect dans create-checkout | **RESOLU** | `getSafeOrigin()` implemente avec whitelist |
-| P0-2 : Webhook Stripe verification optionnelle | A reverifier | consultation-webhook specifiquement |
-| P0-3 : Routes sans auth guard | A reverifier | /usage, /settings/notifications, /family-workspace |
+| P0-2 : Webhook Stripe verification optionnelle | **RESOLU** | consultation-webhook : verification signature obligatoire, rejet si secret absent |
+| P0-3 : Routes sans auth guard | **RESOLU** | /usage, /settings/notifications, /family-workspace tous proteges par RequireAuth |
 | P1-1 : .env commite | **RESOLU** | `git rm --cached .env` applique |
 | P1-2 : 34 functions verify_jwt=false | Mitigue | Auth partagee via `_shared/auth.ts` |
 | P1-3 : Pas de validation amount | **RESOLU** | Validation amount 0.01-50000 et duration 15-480 min implementee |
@@ -268,19 +268,21 @@ dashboard_progress, exit_keys_history, challenge_progress, game_statistics, user
 | P0-1 | Admin bypass sans audit | Ajout d'un audit log dans `admin_audit_log` a chaque bypass admin | `check-subscription/index.ts` |
 | P1-1 | Prix Stripe hardcodes | Suppression du mapping hardcode `PRICE_TO_TIER`, lookup exclusif via `subscription_plans` avec fallback product ID | `stripe-webhook/index.ts` |
 | P1-2 | .env commite | `git rm --cached .env` — fichier retire du suivi git | `.env` |
-| P2-1 | Donnees mock en production | Commentaires PLACEHOLDER ajoutes sur tous les mock data arrays (5 composants) | `DiscussionThread.tsx`, `PodcastPlayer.tsx`, `AcademicCourses.tsx`, `CaseStudySystem.tsx`, `GeopoliticalAnalysis.tsx` |
+| P2-1 | Donnees mock en production | Feature-flag `import.meta.env.DEV` sur tous les mock data arrays (9 arrays, 5 composants) — vides en production | `DiscussionThread.tsx`, `PodcastPlayer.tsx`, `AcademicCourses.tsx`, `CaseStudySystem.tsx`, `GeopoliticalAnalysis.tsx` |
 | P2-2 | Domaine emetteur incoherent | Domaine emetteur configurable via `EMAIL_SENDER_DOMAIN` env var, defaut `system-compass.app` | `send-email/index.ts` |
-| P2-3 | PII dans les logs | Masquage emails (`jo***@example.com`) et truncation user IDs dans 6 edge functions | `check-subscription`, `stripe-webhook`, `send-email`, `create-checkout`, `customer-portal`, `create-consultation-payment` |
+| P2-3 | PII dans les logs | Masquage emails (`jo***@example.com`) et truncation user IDs dans 8 edge functions | `check-subscription`, `stripe-webhook`, `send-email`, `create-checkout`, `customer-portal`, `create-consultation-payment`, `weekly-digest`, `dashboard-reminders` |
+| NEW | traceos-webhooks sans auth | Ajout verification Bearer token avec `auth.getUser()` | `traceos-webhooks/index.ts` |
+| NEW | subscription_plans desynchronise | Migration SQL pour mettre a jour les price IDs Stripe dans la table | `20260321120000_update_subscription_plan_prices.sql` |
 
 ---
 
 ## 7. RECOMMANDATIONS RESTANTES
 
-### Court terme (sprint suivant)
+### Configuration (deploiement)
 
 1. **Configurer `EMAIL_SENDER_DOMAIN`** dans les secrets Supabase avec le domaine Resend verifie
-2. **Verifier `subscription_plans`** contient tous les price IDs actifs (migration depuis le mapping hardcode)
-3. **Feature-flag les donnees mock** — Conditionner l'affichage par `import.meta.env.DEV` ou un flag feature
+2. **Appliquer la migration** `20260321120000_update_subscription_plan_prices.sql` en production
+3. **Verifier** que les price IDs dans `subscription_plans` correspondent bien a ceux actifs dans le dashboard Stripe
 
 ### Moyen terme
 
@@ -294,9 +296,18 @@ dashboard_progress, exit_keys_history, challenge_progress, game_statistics, user
 
 La posture de securite de System Compass est **globalement solide** pour une plateforme SaaS de cette complexite. La couverture RLS (754 policies), l'authentification centralisee, et la validation CORS demontrent une approche mature de la securite.
 
-Toutes les corrections P0, P1 et P2 identifiees dans cet audit ont ete implementees :
+Toutes les corrections P0, P1 et P2 identifiees dans cet audit ont ete implementees, ainsi que des corrections supplementaires :
+
+**Audit precedent (2026-03-11) — tous les P0 resolus :**
+- P0-1 (Open Redirect) : deja corrige via `getSafeOrigin()`
+- P0-2 (Webhook verification optionnelle) : deja corrige, verification obligatoire
+- P0-3 (Routes sans auth) : deja corrige, RequireAuth sur toutes les routes utilisateur
+- P1-3 (Pas de validation amount) : deja corrige, validation 0.01-50000
+
+**Audit courant (2026-03-21) — toutes les corrections appliquees :**
 - **P0** : Le bypass admin est desormais trace dans `admin_audit_log`
 - **P1** : Les prix Stripe sont resolus dynamiquement depuis la base de donnees ; `.env` retire du suivi git
-- **P2** : PII masquees dans les logs, domaine emetteur configurable, mock data marques comme placeholders
+- **P2** : PII masquees dans 8 edge functions, domaine emetteur configurable, mock data feature-flagged derriere `import.meta.env.DEV`
+- **Extra** : Auth ajoutee sur `traceos-webhooks`, migration pour synchroniser les price IDs
 
-**Verdict readiness securite : PRET — corrections appliquees.**
+**Verdict readiness securite : PRET — toutes les corrections appliquees.**

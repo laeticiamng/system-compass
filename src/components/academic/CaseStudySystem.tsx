@@ -80,8 +80,8 @@ interface CaseStudy {
   sources?: string[];
 }
 
-// PLACEHOLDER: Replace with real data from Supabase when case study system is implemented
-const mockCaseStudies: CaseStudy[] = [
+// Dev-only placeholder data — not shown in production
+const mockCaseStudies: CaseStudy[] = !import.meta.env.DEV ? [] : [
   {
     id: 'case-1',
     title: 'Expatriation Tech vers Lisbonne',

@@ -49,7 +49,8 @@ Deno.serve(async (req) => {
       throw new Error("userId and email are required");
     }
 
-    console.log(`[weekly-digest] Building digest for ${email} (${userId})`);
+    const maskedEmail = email.replace(/^(.{2})(.*)(@.*)$/, '$1***$3');
+    console.log(`[weekly-digest] Building digest for ${maskedEmail} (${String(userId).slice(0, 8)}...)`);
 
     // 1. Fetch watched countries
     const { data: watchlist } = await supabase

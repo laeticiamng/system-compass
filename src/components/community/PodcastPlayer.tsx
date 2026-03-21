@@ -39,8 +39,8 @@ interface Episode {
   category: string;
 }
 
-// PLACEHOLDER: Replace with real data from Supabase when podcast features are implemented
-const MOCK_EPISODES: Episode[] = [
+// Dev-only placeholder data — not shown in production
+const MOCK_EPISODES: Episode[] = import.meta.env.DEV ? [
   {
     id: '1',
     title: 'EP45 - Fiscalité des Digital Nomads en 2026',
@@ -76,7 +76,7 @@ const MOCK_EPISODES: Episode[] = [
     guest: 'Dr. Anne Martin',
     category: 'Santé',
   },
-];
+] : [];
 
 function formatTime(seconds: number): string {
   const mins = Math.floor(seconds / 60);
