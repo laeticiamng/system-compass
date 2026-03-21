@@ -4485,20 +4485,20 @@
   },
   "pyramidQuiz": {
     "title": "Le Jeu de la Vie",
-    "subtitle": "Simule une trajectoire de vie à travers différents systèmes mondiaux. Incarne un personnage fictif, fais des choix, gère ses ressources.",
-    "disclaimer": "⚠️ Vous vas incarner un personnage fictif au hasard. Ce n'est pas votre vraie vie — c'est un jeu éducatif !",
+    "subtitle": "Simulez une trajectoire de vie à travers différents systèmes mondiaux. Incarnez un personnage fictif, faites des choix, gérez ses ressources.",
+    "disclaimer": "⚠️ Vous allez incarner un personnage fictif au hasard. Ce n'est pas votre vraie vie — c'est un jeu éducatif !",
     "realLifeLink": "Vous voulez planifier votre vraie vie ?",
     "questionOf": "Question {{current}} sur {{total}}",
     "back": "Retour",
     "modes": {
       "online": {
         "title": "Quiz Profil",
-        "description": "Réponds à 8 questions pour découvrir quel système mondial te correspond. Rapide et révélateur.",
+        "description": "Répondez à 8 questions pour découvrir quel système mondial vous correspond. Rapide et révélateur.",
         "cta": "Découvrir mon profil"
       },
       "board": {
         "title": "Mode Aventure",
-        "description": "Vivez une vie entière : fais des choix, affronte des événements, gère vos ressources et construis votre destin.",
+        "description": "Vivez une vie entière : faites des choix, affrontez des événements, gérez vos ressources et construisez votre destin.",
         "cta": "Commencer ma vie"
       },
       "multiplayer": {
@@ -4527,7 +4527,7 @@
         }
       },
       "workStyle": {
-        "question": "Quel style de travail te correspond le mieux ?",
+        "question": "Quel style de travail vous correspond le mieux ?",
         "options": {
           "stableJob": "Emploi stable avec avantages",
           "entrepreneur": "Entrepreneur avec ma propre entreprise",
@@ -4536,7 +4536,7 @@
         }
       },
       "valueSystem": {
-        "question": "Quel système de valeurs te correspond le plus ?",
+        "question": "Quel système de valeurs vous correspond le plus ?",
         "options": {
           "meritocracy": "Méritocratie et compétence",
           "socialProtection": "Protection sociale et égalité",
@@ -4583,20 +4583,20 @@
     },
     "result": {
       "title": "Votre type de pyramide idéal",
-      "subtitle": "Basé sur vos réponses, voici le système qui te correspond le mieux",
+      "subtitle": "Basé sur vos réponses, voici le système qui vous correspond le mieux",
       "scores": "Vos scores par type",
       "playAgain": "Rejouer",
       "learnMore": "En savoir plus"
     },
     "board": {
-      "instructions": "Lancez le dé pour avancer. Chaque case te rapporte des points vers différents types de pyramides.",
-      "rollDice": "Clique sur le dé pour lancer",
+      "instructions": "Lancez le dé pour avancer. Chaque case vous rapporte des points vers différents types de pyramides.",
+      "rollDice": "Cliquez sur le dé pour lancer",
       "landedPyramid": "+2 points pour {{type}}",
       "chanceCard": "Carte chance ! +3 points pour {{type}}",
       "trap": "Piège ! -2 points sur votre type dominant",
       "bonus": "Bonus ! +1 point sur tous les types",
       "answeredQuestion": "Bonne réponse !",
-      "victory": "Félicitations ! Vous as atteint l'arrivée !",
+      "victory": "Félicitations ! Vous avez atteint l'arrivée !",
       "moving": "En déplacement..."
     },
     "multiplayer": {
@@ -4618,7 +4618,7 @@
   "auth": {
     "login": "Connexion",
     "signup": "Inscription",
-    "subtitle": "Connecte-vous pour sauvegarder vos parties et créer votre profil",
+    "subtitle": "Connectez-vous pour sauvegarder vos parties et créer votre profil",
     "email": "Email",
     "password": "Mot de passe",
     "displayName": "Nom d'affichage",
@@ -4640,7 +4640,7 @@
   "gameModes": {
     "solo": {
       "title": "Solo",
-      "description": "Jouez seul et découvre votre type de pyramide idéal"
+      "description": "Jouez seul et découvrez votre type de pyramide idéal"
     },
     "race": {
       "title": "Course",
@@ -4663,7 +4663,7 @@
     "namePlaceholder": "Comment vous appelez-vous ?",
     "birthCountry": "Pays de naissance",
     "currentCountry": "Pays actuel",
-    "selectCountry": "Sélectionne un pays",
+    "selectCountry": "Sélectionnez un pays",
     "desiredLife": "Vie souhaitée",
     "nextPlayer": "Joueur suivant",
     "startGame": "Lancer la partie",
@@ -4743,7 +4743,7 @@
     "concept": {
       "title": "Le concept",
       "description": "PYRAMIDES est un jeu de stratégie où vous gérez des trajectoires de vie. Vous ne choisissez pas votre point de départ : vous tirez des personnages avec un pays de naissance, des traits, et des aspirations. À chaque 'année' de jeu, vous prenez des décisions : travailler, étudier, soigner, migrer, entreprendre, construire votre réseau, nourrir vos relations... Le monde bouge, les pays ont leurs règles, et la réussite dépend de votre capacité à optimiser sous contrainte.",
-      "quote": "Vous gagnes en gérant votre vie mieux que les autres, avec un système qui reste réaliste.",
+      "quote": "Vous gagnez en gérant votre vie mieux que les autres, avec un système qui reste réaliste.",
       "goal": "Objectif : Maximiser votre score de vie",
       "duration": "Durée : 20-40 tours (années)",
       "players": "Joueurs : 1 à 4",
@@ -4786,7 +4786,7 @@
     },
     "resources": {
       "title": "Les ressources",
-      "description": "Les ressources te permettent d'agir. Chaque action coûte et rapporte des ressources différentes.",
+      "description": "Les ressources vous permettent d'agir. Chaque action coûte et rapporte des ressources différentes.",
       "time": "Temps : détermine votre capacité à faire des actions",
       "money": "Argent : donne accès aux investissements",
       "health": "Santé : influence votre stabilité et protège des chutes",
@@ -4798,7 +4798,7 @@
     "actions": {
       "title": "Les actions",
       "majorTitle": "Actions majeures (1 par tour)",
-      "majorDesc": "Ce sont les grandes décisions qui façonnent votre vie. Vous ne peux en faire qu'une par année.",
+      "majorDesc": "Ce sont les grandes décisions qui façonnent votre vie. Vous ne pouvez en faire qu'une par année.",
       "work": "Travailler",
       "study": "Étudier",
       "entrepreneur": "Entreprendre",
@@ -4919,11 +4919,11 @@
     "riskWarning": "Risque d'échec : {{chance}}%",
     "work": {
       "label": "Travailler",
-      "description": "Gagne de l'argent et de l'expérience, mais fatigue"
+      "description": "Gagnez de l'argent et de l'expérience, mais fatiguez"
     },
     "study": {
       "label": "Étudier",
-      "description": "Développe vos compétences pour l'avenir"
+      "description": "Développez vos compétences pour l'avenir"
     },
     "entrepreneur": {
       "label": "Entreprendre",
@@ -4935,23 +4935,23 @@
     },
     "contribute": {
       "label": "Contribuer",
-      "description": "Augmente votre sens et votre réseau"
+      "description": "Augmentez votre sens et votre réseau"
     },
     "networking": {
       "label": "Réseauter",
-      "description": "Développe vos connexions"
+      "description": "Développez vos connexions"
     },
     "relationships": {
       "label": "Relations",
-      "description": "Nourris vos proches et votre santé mentale"
+      "description": "Nourrissez vos proches et votre santé mentale"
     },
     "heal": {
       "label": "Se soigner",
-      "description": "Récupère votre santé"
+      "description": "Récupérez votre santé"
     },
     "rest": {
       "label": "Se reposer",
-      "description": "Récupère du temps et de l'énergie"
+      "description": "Récupérez du temps et de l'énergie"
     },
     "shortcut": {
       "label": "Prendre un raccourci",
@@ -5609,7 +5609,7 @@
   },
   "characterDraft": {
     "title": "Joueur {{player}} - Choisissez votre personnage",
-    "subtitle": "Sélectionne un personnage parmi les 4 proposés. Chaque personnage a des traits, des contraintes et des aspirations uniques.",
+    "subtitle": "Sélectionnez un personnage parmi les 4 proposés. Chaque personnage a des traits, des contraintes et des aspirations uniques.",
     "reshuffle": "Remélanger",
     "confirmNext": "Confirmer et suivant",
     "startGame": "Commencer la partie",
@@ -5811,7 +5811,7 @@
       },
       "aspirations": {
         "title": "Vos objectifs personnels",
-        "content": "Votre personnage a des aspirations — devenir riche, vivre en sécurité, retrouver sa famille, ou simplement survivre. La réussite se mesure par rapport à TES objectifs, pas un standard universel.",
+        "content": "Votre personnage a des aspirations — devenir riche, vivre en sécurité, retrouver sa famille, ou simplement survivre. La réussite se mesure par rapport à VOS objectifs, pas un standard universel.",
         "reality": "La 'réussite' est relative. Un réfugié qui reconstruit sa vie a autant accompli qu'un entrepreneur qui devient millionnaire."
       },
       "endgame": {
@@ -5995,7 +5995,7 @@
     "clarification": {
       "title": "⚠️ Ce n'est PAS votre vraie vie",
       "point1": "Vous recevez un personnage fictif au hasard (héritier, réfugié, entrepreneur...)",
-      "point2": "Vous explores les mécanismes du monde sans risque réel",
+      "point2": "Vous explorez les mécanismes du monde sans risque réel",
       "point3": "C'est un outil pédagogique, pas une prédiction pour vous",
       "realLife": "Pour planifier votre vraie vie →",
       "realLifeLink": "Stratégies"
@@ -6009,7 +6009,7 @@
       "subtitle": "Un jeu de plateau où le hasard et la stratégie se mélangent.",
       "systems": {
         "title": "6 Systèmes Mondiaux",
-        "description": "Chaque pays du plateau fonctionne différemment. Apprends les règles invisibles de chaque système."
+        "description": "Chaque pays du plateau fonctionne différemment. Apprenez les règles invisibles de chaque système."
       },
       "characters": {
         "title": "12+ Personnages Jouables",
@@ -6017,7 +6017,7 @@
       },
       "choices": {
         "title": "Choix Stratégiques",
-        "description": "Travailler, étudier, migrer, entreprendre... Gère vos ressources comme dans un jeu de gestion."
+        "description": "Travailler, étudier, migrer, entreprendre... Gérez vos ressources comme dans un jeu de gestion."
       },
       "risks": {
         "title": "Raccourcis Risqués",
@@ -6029,7 +6029,7 @@
       "subtitle": "Dans le jeu comme dans la vie, vous n'aurez jamais tout."
     },
     "archetypes": {
-      "title": "Qui incarneravez-vous ?",
+      "title": "Qui incarnerez-vous ?",
       "subtitle": "Chaque personnage a ses avantages et ses obstacles. La difficulté reflète les inégalités du monde réel.",
       "seeAll": "Voir tous les personnages"
     },
@@ -6051,7 +6051,7 @@
     },
     "cta": {
       "title": "Prêt à jouer ?",
-      "subtitle": "Lancez une partie et découvre un personnage au hasard. Réussiravez-vous à naviguer le système ?",
+      "subtitle": "Lancez une partie et découvrez un personnage au hasard. Réussirez-vous à naviguer le système ?",
       "button": "Lancer le jeu"
     }
   },
@@ -6294,8 +6294,8 @@
     },
     "keyConcept": {
       "title": "Le concept clé : Tendance ≠ Certitude",
-      "explanation": "Quand l'outil dit \"ce système tend à favoriser X\", cela signifie que statistiquement, dans ce type de contexte, X est plus probable. Mais TON cas particulier dépend de milliers de facteurs que l'outil ne connaît pas.",
-      "analogy": "C'est comme une météo : \"Il pleut souvent en novembre à Paris\" est vrai statistiquement, mais ça ne prédit pas s'il pleuvra le 15 novembre prochain quand TU y seras."
+      "explanation": "Quand l'outil dit \"ce système tend à favoriser X\", cela signifie que statistiquement, dans ce type de contexte, X est plus probable. Mais VOTRE cas particulier dépend de milliers de facteurs que l'outil ne connaît pas.",
+      "analogy": "C'est comme une météo : \"Il pleut souvent en novembre à Paris\" est vrai statistiquement, mais ça ne prédit pas s'il pleuvra le 15 novembre prochain quand VOUS y serez."
     },
     "examples": {
       "title": "Exemples concrets de bonne lecture",
@@ -6327,25 +6327,25 @@
     "bestPractices": {
       "title": "Comment utiliser l'outil intelligemment",
       "practice1": {
-        "title": "Utilise-le comme point de départ",
+        "title": "Utilisez-le comme point de départ",
         "description": "Pas comme destination. Les résultats doivent ouvrir des pistes de recherche, pas les fermer."
       },
       "practice2": {
-        "title": "Croise avec d'autres sources",
-        "description": "Parle à des gens qui vivent sur place, lis des témoignages, consulte des professionnels."
+        "title": "Croisez avec d'autres sources",
+        "description": "Parlez à des gens qui vivent sur place, lisez des témoignages, consultez des professionnels."
       },
       "practice3": {
-        "title": "Adapte à TA situation",
+        "title": "Adaptez à VOTRE situation",
         "description": "Les moyennes ne s'appliquent pas à tous. Votre parcours unique peut changer radicalement les probabilités."
       },
       "practice4": {
         "title": "Révise régulièrement",
-        "description": "Vos paramètres changent. Refais les simulations quand votre situation évolue."
+        "description": "Vos paramètres changent. Refaites les simulations quand votre situation évolue."
       }
     },
     "finalNote": {
       "title": "En résumé",
-      "text": "Cet outil vous aide à voir plus clair, pas à voir le futur. Il éclaire des tendances pour que TU puisses décider en connaissance de cause. La décision, et la responsabilité, restent toujours les tiennes."
+      "text": "Cet outil vous aide à voir plus clair, pas à voir le futur. Il éclaire des tendances pour que VOUS puissiez décider en connaissance de cause. La décision, et la responsabilité, restent toujours les vôtres."
     }
   },
   "preventionFilter": {
@@ -6357,7 +6357,7 @@
     "riskTolerance": "Tolérance au risque",
     "constraint": "Contrainte dominante",
     "analyze": "Analyser cette décision",
-    "disclaimer": "Simulation ≠ prédiction. Outil d'analyse uniquement. Vous restes responsable de votre décision.",
+    "disclaimer": "Simulation ≠ prédiction. Outil d'analyse uniquement. Vous restez responsable de votre décision.",
     "newAnalysis": "Nouvelle analyse",
     "saveSimulation": "Sauvegarder cette simulation",
     "saved": "Analyse sauvegardée !",
@@ -6523,7 +6523,7 @@
   },
   "quickTest": {
     "title": "Test rapide",
-    "subtitle": "En 60 secondes, découvre le système qui ressemble à votre situation",
+    "subtitle": "En 60 secondes, découvrez le système qui ressemble à votre situation",
     "badge": "60 secondes",
     "situation": "Votre situation actuelle",
     "priority": "Votre priorité principale",
@@ -7884,17 +7884,17 @@
       "options": {
         "understand": {
           "title": "Je veux comprendre d'où je pars",
-          "description": "Analyse votre profil, vos ressources, vos contraintes",
+          "description": "Analysez votre profil, vos ressources, vos contraintes",
           "cta": "Test de profil"
         },
         "compare": {
           "title": "Je veux comparer mes options",
-          "description": "Compare les pays, systèmes, trajectoires",
+          "description": "Comparez les pays, systèmes, trajectoires",
           "cta": "Comparer"
         },
         "avoid": {
           "title": "Je veux éviter les erreurs courantes",
-          "description": "Comprends les erreurs qui coûtent des années",
+          "description": "Comprenez les erreurs qui coûtent des années",
           "cta": "Erreurs & Illusions"
         },
         "plan": {
@@ -7918,12 +7918,12 @@
       },
       "lifeTrajectory": {
         "title": "Trajectoire de Vie",
-        "description": "Simule l'évolution de votre situation sur 10-30 ans selon vos choix",
+        "description": "Simulez l'évolution de votre situation sur 10-30 ans selon vos choix",
         "bestFor": ["Visualiser les conséquences long terme", "Comparer des scénarios de vie"]
       },
       "profileTest": {
         "title": "Test de Profil",
-        "description": "Comprends votre profil, les avantages de votre nationalité, et la compatibilité avec les systèmes",
+        "description": "Comprenez votre profil, les avantages de votre nationalité, et la compatibilité avec les systèmes",
         "bestFor": ["Découvrir votre archétype", "Identifier vos forces et faiblesses"]
       },
       "lifeGame": {
@@ -7933,21 +7933,21 @@
       },
       "errorsIllusions": {
         "title": "Erreurs & Illusions",
-        "description": "Identifie les biais cognitifs et erreurs systémiques qui coûtent des années",
+        "description": "Identifiez les biais cognitifs et erreurs systémiques qui coûtent des années",
         "bestFor": ["Éviter les erreurs courantes", "Comprendre les biais cognitifs"]
       },
       "compare": {
         "title": "Comparer",
-        "description": "Compare les pays, systèmes et coûts pour trouver vos meilleures options"
+        "description": "Comparez les pays, systèmes et coûts pour trouver vos meilleures options"
       },
       "worldMap": {
         "title": "Carte du Monde",
-        "description": "Explore les 29 pays analysés et leurs types de pyramides"
+        "description": "Explorez les 29 pays analysés et leurs types de pyramides"
       }
     },
     "alternatives": {
       "title": "Des alternatives existent",
-      "subtitle": "Avant tout choix irréversible, explore toutes vos options",
+      "subtitle": "Avant tout choix irréversible, explorez toutes vos options",
       "message": "Compass montre qu'il existe parfois d'autres trajectoires : rester et entreprendre, migrer plus tard, migrer autrement, se former, changer d'objectif initial.",
       "options": {
         "stay": {
