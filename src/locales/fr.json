@@ -739,7 +739,7 @@
       },
       "game": {
         "title": "Mode éducatif (jeu)",
-        "description": "Incarne un personnage FICTIF au hasard. Découvre les mécanismes du monde sans risque. C'est un jeu pédagogique."
+        "description": "Incarne un personnage FICTIF au hasard. Découvrez les mécanismes du monde sans risque. C'est un jeu pédagogique."
       }
     },
     "origin": {
@@ -963,7 +963,7 @@
     },
     "profile": {
       "title": "Simule les conséquences",
-      "description": "Teste différents scénarios avant de t'engager. Compare les trajectoires, les risques, les coûts réels."
+      "description": "Testez différents scénarios avant de vous engager. Comparez les trajectoires, les risques, les coûts réels."
     },
     "playbook": {
       "title": "Identifie les erreurs",
@@ -976,7 +976,7 @@
     "examples": "Exemples",
     "problemRent": {
       "label": "Économie informelle",
-      "description": "Le dysfonctionnement est l'actif. Résoudre les problèmes te met en danger."
+      "description": "Le dysfonctionnement est l'actif. Résoudre les problèmes vous met en danger."
     },
     "stabilityRedis": {
       "label": "Protection sociale",
@@ -992,7 +992,7 @@
     },
     "hybridTransition": {
       "label": "Système en transition",
-      "description": "Plusieurs logiques coexistent. Navigue les contradictions et les changements rapides."
+      "description": "Plusieurs logiques coexistent. Naviguez les contradictions et les changements rapides."
     },
     "resourceExtraction": {
       "label": "Économie de ressources",
@@ -1388,7 +1388,7 @@
     "france": {
       "name": "France",
       "region": "Europe de l'Ouest",
-      "ruleOfGold": "Le système protège la stabilité, pas l'explosion. Joue le long terme dans les règles.",
+      "ruleOfGold": "Le système protège la stabilité, pas l'explosion. Jouez le long terme dans les règles.",
       "pyramid": {
         "top": "Institutions étatiques et modèle social",
         "institutions": "Bureaucratie lourde assurant la redistribution",
@@ -1628,7 +1628,7 @@
     "uae": {
       "name": "Émirats Arabes Unis",
       "region": "Moyen-Orient",
-      "ruleOfGold": "Sois utile au pouvoir, reste discret, jamais local. Tes gains t'appartiennent tant que tu suis les règles.",
+      "ruleOfGold": "Soyez utile au pouvoir, restez discret, jamais local. Vos gains vous appartiennent tant que vous suivez les règles.",
       "pyramid": {
         "top": "Familles régnantes et leurs cercles proches",
         "institutions": "Structures étatiques servant la vision royale",
@@ -2228,7 +2228,7 @@
     "netherlands": {
       "name": "Pays-Bas",
       "region": "Europe de l'Ouest",
-      "ruleOfGold": "Sois direct, sois compétent, sois intégré. Le système récompense ceux qui contribuent.",
+      "ruleOfGold": "Soyez direct, soyez compétent, soyez intégré. Le système récompense ceux qui contribuent.",
       "pyramid": {
         "top": "Institutions basées sur le consensus et commerce",
         "institutions": "Bureaucratie efficace et transparente",
@@ -2288,7 +2288,7 @@
     "argentina": {
       "name": "Argentine",
       "region": "Amérique du Sud",
-      "ruleOfGold": "Adapte-toi constamment. La seule constante est le changement — maîtrise l'art de l'improvisation.",
+      "ruleOfGold": "Adaptez-vous constamment. La seule constante est le changement — maîtrisez l'art de l'improvisation.",
       "pyramid": {
         "top": "Dynasties politiques et élites économiques",
         "institutions": "Peso instable, crises récurrentes",
@@ -2311,7 +2311,7 @@
     "austria": {
       "name": "Autriche",
       "region": "Europe de l'Ouest",
-      "ruleOfGold": "Ordre et tradition. Respecte la hiérarchie, suis les règles, intègre-toi lentement.",
+      "ruleOfGold": "Ordre et tradition. Respectez la hiérarchie, suivez les règles, intégrez-vous lentement.",
       "pyramid": {
         "top": "Anciennes familles aristocratiques et élite des affaires",
         "institutions": "Bureaucratie efficace",
@@ -2380,7 +2380,7 @@
     "china": {
       "name": "Chine",
       "region": "Asie de l'Est",
-      "ruleOfGold": "Aligne-toi avec le système ou sois aligné. La croissance est possible mais dans des limites strictes.",
+      "ruleOfGold": "Alignez-vous avec le système ou soyez aligné. La croissance est possible mais dans des limites strictes.",
       "pyramid": {
         "top": "Direction du Parti et appareil d'État",
         "institutions": "État puissant dirigeant l'économie",
@@ -2426,7 +2426,7 @@
     "cuba": {
       "name": "Cuba",
       "region": "Caraïbes",
-      "ruleOfGold": "Survie le système, ne le combats pas. Construis des alternatives discrètement en naviguant les contraintes.",
+      "ruleOfGold": "Survie le système, ne le combats pas. Construisez des alternatives discrètement en naviguant les contraintes.",
       "pyramid": {
         "top": "Direction du Parti et complexe militaro-économique",
         "institutions": "État contrôlant la plupart de l'activité économique",
@@ -2449,7 +2449,7 @@
     "denmark": {
       "name": "Danemark",
       "region": "Europe du Nord",
-      "ruleOfGold": "Janteloven - ne te démarque pas. Intègre-toi, contribue et embrasse le collectif.",
+      "ruleOfGold": "Janteloven - ne vous démarquez pas. Intégrez-vous, contribuez et embrassez le collectif.",
       "pyramid": {
         "top": "Consensus social-démocrate",
         "institutions": "Bureaucratie efficace et transparente",
@@ -2541,7 +2541,7 @@
     "norway": {
       "name": "Norvège",
       "region": "Europe du Nord",
-      "ruleOfGold": "Égalité et conformité. Intègre-toi profondément, contribue au collectif, reste humble.",
+      "ruleOfGold": "Égalité et conformité. Intégrez-vous profondément, contribuez au collectif, restez humble.",
       "pyramid": {
         "top": "Consensus social-démocrate richesse pétrolière",
         "institutions": "Efficaces, transparentes et généreuses",
@@ -2610,7 +2610,7 @@
     "qatar": {
       "name": "Qatar",
       "region": "Moyen-Orient",
-      "ruleOfGold": "Sois utile, sois discret, sois temporaire. Ta richesse t'appartient tant que tu suis les règles.",
+      "ruleOfGold": "Soyez utile, soyez discret, soyez temporaire. Votre richesse vous appartient tant que vous suivez les règles.",
       "pyramid": {
         "top": "Famille royale et cercles proches",
         "institutions": "Structures étatiques servant la vision nationale",
@@ -2702,7 +2702,7 @@
     "spain": {
       "name": "Espagne",
       "region": "Europe du Sud",
-      "ruleOfGold": "La vie d'abord, le travail ensuite. Construis des relations, apprécie le processus, pense long terme.",
+      "ruleOfGold": "La vie d'abord, le travail ensuite. Construisez des relations, apprécie le processus, pense long terme.",
       "pyramid": {
         "top": "Vieilles fortunes et establishment politique",
         "institutions": "Alignées UE avec bureaucratie lourde",
@@ -2725,7 +2725,7 @@
     "sweden": {
       "name": "Suède",
       "region": "Europe du Nord",
-      "ruleOfGold": "Lagom - ni trop, ni trop peu. Intègre-toi, conforme-toi, contribue au collectif.",
+      "ruleOfGold": "Lagom - ni trop, ni trop peu. Intégrez-vous, conformez-vous, contribuez au collectif.",
       "pyramid": {
         "top": "Consensus social-démocrate",
         "institutions": "Bureaucratie efficace et transparente",
@@ -2824,42 +2824,42 @@
     "questionOf": "Question {{current}} sur {{total}}",
     "questions": {
       "ambition": {
-        "question": "Quelle importance accordes-tu à maximiser tes revenus, ton impact et ta progression de carrière ?",
+        "question": "Quelle importance accordez-vous à maximiser vos revenus, votre impact et votre progression de carrière ?",
         "low": "Pas important",
         "high": "Essentiel"
       },
       "meritNeed": {
-        "question": "À quel point as-tu besoin que l'effort et la compétence soient justement récompensés ?",
+        "question": "À quel point avez-vous besoin que l'effort et la compétence soient justement récompensés ?",
         "low": "Je m'adapte",
         "high": "Non négociable"
       },
       "riskTolerance": {
-        "question": "Peux-tu vivre sans filet de sécurité social si le potentiel de gain est élevé ?",
+        "question": "Pouvez-vous vivre sans filet de sécurité social si le potentiel de gain est élevé ?",
         "low": "Besoin de sécurité",
         "high": "Prêt à risquer"
       },
       "securityNeed": {
-        "question": "Quelle importance accordes-tu à la stabilité, la prévisibilité et la protection ?",
+        "question": "Quelle importance accordez-vous à la stabilité, la prévisibilité et la protection ?",
         "low": "Flexible",
         "high": "Essentiel"
       },
       "bureaucracyTolerance": {
-        "question": "Peux-tu tolérer des procédures lourdes, de la paperasse et des processus lents ?",
+        "question": "Pouvez-vous tolérer des procédures lourdes, de la paperasse et des processus lents ?",
         "low": "Je déteste",
         "high": "Je gère"
       },
       "innovationDrive": {
-        "question": "À quel point es-tu motivé pour créer de nouvelles choses et résoudre des problèmes complexes ?",
+        "question": "À quel point êtes-vous motivé pour créer de nouvelles choses et résoudre des problèmes complexes ?",
         "low": "Préfère la routine",
         "high": "Obsédé"
       },
       "discretionPreference": {
-        "question": "Préfères-tu agir discrètement plutôt qu'être publiquement visible ?",
+        "question": "Préférez-vous agir discrètement plutôt qu'être publiquement visible ?",
         "low": "Aime les projecteurs",
         "high": "Rester invisible"
       },
       "mobility": {
-        "question": "Quel est ton potentiel de mobilité ?",
+        "question": "Quel est votre potentiel de mobilité ?",
         "options": {
           "low": {
             "label": "Ne peut pas bouger",
@@ -2882,35 +2882,35 @@
     "archetypes": {
       "ambitiousMeritocrat": {
         "name": "Méritocrate ambitieux",
-        "description": "Tu cherches des récompenses proportionnelles à l'excellence. Tu t'épanouis là où la compétence gagne.",
+        "description": "Vous cherchez des récompenses proportionnelles à l'excellence. Vous vous épanouissez là où la compétence gagne.",
         "strengths": ["Orienté résultats", "Forte éthique de travail"],
         "vulnerabilities": ["Peut être frustré par l'injustice", "Risque de burnout"],
         "redFlags": ["Systèmes qui récompensent les connexions plutôt que la compétence", "Systèmes de forte redistribution"]
       },
       "stabilitySeeker": {
         "name": "Chercheur de stabilité",
-        "description": "Tu valorises la prévisibilité et la protection. Tu performes mieux avec un filet de sécurité.",
+        "description": "Vous valorisez la prévisibilité et la protection. Vous performez mieux avec un filet de sécurité.",
         "strengths": ["Patient et méthodique", "Planificateur à long terme"],
         "vulnerabilities": ["Peut manquer les opportunités de croissance", "Trop averse au risque"],
         "redFlags": ["Environnements de croissance à haut risque", "Systèmes avec faible protection sociale"]
       },
       "strategicSurvivor": {
         "name": "Survivant stratégique",
-        "description": "Tu sais naviguer sans t'exposer. Tu construis discrètement et protèges tes gains.",
+        "description": "Vous savez naviguer sans vous exposer. Vous construisez discrètement et protégez vos gains.",
         "strengths": ["Conscience tactique", "Gestion des risques"],
         "vulnerabilities": ["Peut sous-exploiter la visibilité", "Peut devenir trop défensif"],
         "redFlags": ["Systèmes nécessitant un profil public", "Méritocraties transparentes"]
       },
       "growthConquistador": {
         "name": "Conquistador de croissance",
-        "description": "Tu poursuis l'échelle et la vitesse. Tu t'épanouis dans les environnements à hauts enjeux.",
+        "description": "Vous poursuivez l'échelle et la vitesse. Vous vous épanouissez dans les environnements à hauts enjeux.",
         "strengths": ["Vitesse et adaptabilité", "Reconnaissance des opportunités"],
         "vulnerabilities": ["Peut négliger la stabilité", "Risque de burnout"],
         "redFlags": ["Systèmes bureaucratiques lents", "Forte taxation sur la croissance"]
       },
       "balancedNavigator": {
         "name": "Navigateur équilibré",
-        "description": "Tu t'adaptes au contexte. Tu peux survivre dans de nombreux systèmes mais tu n'optimises pour aucun.",
+        "description": "Vous vous adaptez au contexte. Vous pouvez survivre dans de nombreux systèmes mais vous n'optimisez pour aucun.",
         "strengths": ["Flexibilité", "Large tolérance"],
         "vulnerabilities": ["Peut manquer de direction forte", "Risque de dérive"],
         "redFlags": ["Systèmes extrêmes dans n'importe quelle direction"]
@@ -2929,12 +2929,12 @@
     "categories": {
       "financial": {
         "title": "Indépendance financière",
-        "description": "Construis ta base financière peu importe ta localisation",
+        "description": "Construisez votre base financière peu importe votre localisation",
         "items": {
           "emergencyFund": { "name": "Calculateur fonds d'urgence", "description": "6-12 mois de dépenses minimum" },
           "multipleIncome": { "name": "Sources de revenus multiples", "description": "Ne jamais dépendre d'une seule source" },
           "offshoreBanking": { "name": "Bases bancaires offshore", "description": "Stratégies de diversification légitimes" },
-          "taxOptimization": { "name": "Optimisation fiscale", "description": "Structures légales pour ta situation" }
+          "taxOptimization": { "name": "Optimisation fiscale", "description": "Structures légales pour votre situation" }
         }
       },
       "skills": {
@@ -2944,24 +2944,24 @@
           "remote": { "name": "Compétences remote-first", "description": "Tech, écriture, design, consulting" },
           "certifications": { "name": "Certifications qui voyagent", "description": "Accréditations reconnues internationalement" },
           "languages": { "name": "Acquisition de langues", "description": "Priorités d'apprentissage stratégiques" },
-          "digitalPresence": { "name": "Présence digitale", "description": "Construis une réputation qui te précède" }
+          "digitalPresence": { "name": "Présence digitale", "description": "Construisez une réputation qui te précède" }
         }
       },
       "mobility": {
         "title": "Préparation à la mobilité",
-        "description": "Prépare-toi pour bouger quand l'opportunité se présente",
+        "description": "Préparez-vous pour bouger quand l'opportunité se présente",
         "items": {
           "documents": { "name": "Sécurité des documents", "description": "Garde tous les papiers organisés et à jour" },
-          "visaStrategy": { "name": "Matrice stratégie visa", "description": "Connais tes options avant d'en avoir besoin" },
+          "visaStrategy": { "name": "Matrice stratégie visa", "description": "Connaissez vos options avant d'en avoir besoin" },
           "secondResidency": { "name": "Options de seconde résidence", "description": "Chemins par investissement et compétences" },
-          "digitalNomad": { "name": "Cadres nomade digital", "description": "Teste les destinations avant de t'engager" }
+          "digitalNomad": { "name": "Cadres nomade digital", "description": "Testez les destinations avant de vous engager" }
         }
       },
       "security": {
         "title": "Sécurité & discrétion",
-        "description": "Protège-toi dans les environnements à haut risque",
+        "description": "Protégez-vous dans les environnements à haut risque",
         "items": {
-          "opsec": { "name": "Bases de sécurité opérationnelle", "description": "Minimise ton profil d'exposition" },
+          "opsec": { "name": "Bases de sécurité opérationnelle", "description": "Minimisez votre profil d'exposition" },
           "digitalPrivacy": { "name": "Confidentialité digitale", "description": "Communications et données sécurisées" },
           "assetProtection": { "name": "Protection des actifs", "description": "Structure pour minimiser le risque de saisie" },
           "networkSafety": { "name": "Sécurité du réseau", "description": "À qui faire confiance et comment vérifier" }
@@ -2973,11 +2973,11 @@
       "survival30": {
         "title": "Démarrage survie 30 jours",
         "items": [
-          "Audite ta position financière actuelle",
-          "Identifie ta compétence exportable principale",
+          "Auditez votre position financière actuelle",
+          "Identifiez votre compétence exportable principale",
           "Sécurise tous les documents d'identité",
           "Commence un fonds d'urgence (même 50€/mois)",
-          "Cartographie la valeur de ton réseau actuel",
+          "Cartographiez la valeur de votre réseau actuel",
           "Recherche une destination potentielle"
         ]
       },
@@ -3016,8 +3016,8 @@
     "select": "Langue"
   },
   "match": {
-    "title": "Tes correspondances pays",
-    "subtitle": "Basé sur ton profil, voici les pays les plus alignés avec tes valeurs et objectifs.",
+    "title": "Vos correspondances pays",
+    "subtitle": "Basé sur votre profil, voici les pays les plus alignés avec vos valeurs et objectifs.",
     "noProfile": "Aucun profil trouvé",
     "noProfileDesc": "Complète le test de profil pour obtenir des recommandations pays personnalisées.",
     "takeTest": "Faire le test de profil",
@@ -3053,10 +3053,10 @@
   },
   "compare": {
     "title": "Comparer les pays",
-    "subtitle": "Comparaison côte à côte pour t'aider à prendre des décisions éclairées.",
+    "subtitle": "Comparaison côte à côte pour vous aider à prendre des décisions éclairées.",
     "selectFirst": "Sélectionner le premier pays",
     "selectSecond": "Sélectionner le deuxième pays",
-    "selectBoth": "Sélectionne deux pays ci-dessus pour les comparer côte à côte.",
+    "selectBoth": "Sélectionnez deux pays ci-dessus pour les comparer côte à côte.",
     "keyMetrics": "Métriques clés",
     "systemType": "Type de système",
     "strategies": "Stratégies",
@@ -3154,20 +3154,20 @@
     },
     "questions": {
       "timePreference": {
-        "question": "Tu préfères : deux ans très difficiles pour une liberté rapide, ou dix ans stables mais lents ?",
+        "question": "Vous préférez : deux ans très difficiles pour une liberté rapide, ou dix ans stables mais lents ?",
         "short": "2 ans intenses",
         "shortDesc": "Liberté rapide, effort concentré",
         "long": "10 ans stables",
         "longDesc": "Progression lente mais certaine"
       },
       "incomeShock": {
-        "question": "Si tu perds 30% de tes revenus pendant trois mois, tu fais quoi concrètement ?",
+        "question": "Si vous perdez 30% de vos revenus pendant trois mois, vous faites quoi concrètement ?",
         "panic": "Je panique, je n'ai pas de plan B",
         "adapt": "Je m'adapte, je réduis mes dépenses",
         "prepared": "J'ai des réserves, c'est gérable"
       },
       "priority": {
-        "question": "Ta priorité numéro 1 (un seul choix) :",
+        "question": "Votre priorité numéro 1 (un seul choix) :",
         "freedom": "Liberté",
         "money": "Argent",
         "meaning": "Sens",
@@ -3176,44 +3176,44 @@
         "calm": "Calme"
       },
       "intensity": {
-        "question": "Tu peux encaisser 60 heures par semaine pendant six mois si ça change ta vie ?"
+        "question": "Vous pouvez encaisser 60 heures par semaine pendant six mois si ça change votre vie ?"
       },
       "geographic": {
-        "question": "La liberté géographique est-elle non négociable pour toi ?"
+        "question": "La liberté géographique est-elle non négociable pour vous ?"
       },
       "uncertainty": {
-        "question": "Ton niveau de confort avec l'incertitude :",
+        "question": "Votre niveau de confort avec l'incertitude :",
         "low": "Faible - J'ai besoin de prévisibilité",
         "medium": "Moyen - Je peux gérer des surprises",
         "high": "Élevé - L'inconnu me motive"
       },
       "autonomy": {
-        "question": "Tu préfères être :",
+        "question": "Vous préférez être :",
         "structured": "Encadré(e) - Structure et directives claires",
         "autonomous": "Autonome - Liberté de décision"
       },
       "studies": {
-        "question": "Tu veux éviter les études longues ?"
+        "question": "Vous voulez éviter les études longues ?"
       },
       "selling": {
-        "question": "Tu acceptes de \"vendre\" (te vendre / vendre un service / négocier) ?"
+        "question": "Vous acceptez de \"vendre\" (vous vendre / vendre un service / négocier) ?"
       },
       "contribute": {
-        "question": "Tu veux contribuer à une cause ?"
+        "question": "Vous voulez contribuer à une cause ?"
       },
       "lgbtq": {
-        "question": "Les droits LGBTQ+ sont-ils importants dans ton choix de destination ?"
+        "question": "Les droits LGBTQ+ sont-ils importants dans votre choix de destination ?"
       }
     },
     "results": {
-      "title": "Ton profil trajectoire",
-      "yourProfile": "Ton profil moteur",
+      "title": "Votre profil trajectoire",
+      "yourProfile": "Votre profil moteur",
       "workRelation": "Rapport au travail",
       "riskRelation": "Rapport au risque",
       "whatWorks": "Ce qui marche en vrai",
       "trap": "Le piège à éviter",
-      "trajectories": "Tes 3 trajectoires recommandées",
-      "choosePlan": "Choisis le plan qui correspond à ta situation",
+      "trajectories": "Vos 3 trajectoires recommandées",
+      "choosePlan": "Choisissez le plan qui correspond à votre situation",
       "duration": "Durée",
       "paths": "Voies adaptées",
       "skills": "Compétences à développer",
@@ -3221,7 +3221,7 @@
       "firstSteps": "Premières étapes",
       "retakeTest": "Refaire le test",
       "findCountries": "Trouver des pays compatibles",
-      "yourPlans": "Tes 3 Plans de Trajectoire",
+      "yourPlans": "Vos 3 Plans de Trajectoire",
       "exploreCountries": "Explorer Tous les Pays",
       "retake": "Refaire le Test"
     },
@@ -3670,7 +3670,7 @@
   "lifeProfiles": {
     "lottery": {
       "label": "Loterie / Coup de chance",
-      "description": "Tu cherches une sortie immédiate, une rupture avec ta situation actuelle, un raccourci.",
+      "description": "Vous cherchez une sortie immédiate, une rupture avec votre situation actuelle, un raccourci.",
       "workRelation": "Faible - l'effort long est vécu comme inutile.",
       "riskRelation": "Élevé mais mal maîtrisé (risque inconscient).",
       "whatWorks": "Cadre strict (budget plafond) + plan B solide en parallèle (revenu stable, compétence utile).",
@@ -3678,39 +3678,39 @@
     },
     "comfort": {
       "label": "Confort & zéro stress",
-      "description": "Tu recherches tranquillité, routine, sécurité psychologique.",
-      "workRelation": "Tu veux un cadre, une structure, des attentes claires.",
+      "description": "Vous recherchez tranquillité, routine, sécurité psychologique.",
+      "workRelation": "Vous voulez un cadre, une structure, des attentes claires.",
       "riskRelation": "Faible.",
       "whatWorks": "Stabilité, progression lente mais certaine, épargne automatique, hygiène de vie, job prévisible.",
       "trap": "S'ennuyer, s'éteindre, puis exploser au bout de quelques années."
     },
     "builder": {
       "label": "Bâtisseur patient",
-      "description": "Tu cherches richesse + fierté + sentiment de mérite.",
-      "workRelation": "Prêt à bosser, mais tu veux que l'effort ait du sens et rapporte.",
+      "description": "Vous cherchez richesse + fierté + sentiment de mérite.",
+      "workRelation": "Prêt à bosser, mais vous voulez que l'effort ait du sens et rapporte.",
       "riskRelation": "Modéré, calculé.",
       "whatWorks": "Business simple, compétences rares, discipline, investissement long terme.",
       "trap": "Vouloir faire trop complexe trop tôt, se disperser, s'inventer des stratégies sophistiquées avant d'avoir les bases."
     },
     "safeWealth": {
       "label": "Gros argent sans risques",
-      "description": "Tu cherches un gros revenu avec sécurité maximale.",
-      "workRelation": "Ok pour bosser, mais pas pour te mettre en danger.",
+      "description": "Vous cherchez un gros revenu avec sécurité maximale.",
+      "workRelation": "Ok pour bosser, mais pas pour vous mettre en danger.",
       "riskRelation": "Faible à modéré.",
       "whatWorks": "Augmenter fortement le revenu via une compétence rare, sécuriser via diversification.",
       "trap": "Contradiction interne (vouloir le jackpot sans contrepartie) → stagnation."
     },
     "nomad": {
       "label": "Nomade / Tour du monde",
-      "description": "Tu cherches liberté géographique et autonomie.",
-      "workRelation": "Tu veux pouvoir travailler de n'importe où.",
+      "description": "Vous cherchez liberté géographique et autonomie.",
+      "workRelation": "Vous voulez pouvoir travailler de n'importe où.",
       "riskRelation": "Variable.",
       "whatWorks": "Métiers remote, revenus en devise forte, compréhension des visas et réalités logistiques.",
       "trap": "Sous-estimer l'administratif, l'isolement, l'irrégularité des revenus."
     },
     "purpose": {
       "label": "Sens / Don de soi",
-      "description": "Tu cherches utilité, alignement, contribution.",
+      "description": "Vous cherchez utilité, alignement, contribution.",
       "workRelation": "Le travail devient mission.",
       "riskRelation": "Modéré, mais l'émotion peut pousser à s'oublier.",
       "whatWorks": "Métiers utiles + limites claires + système anti-burnout + hygiène de vie.",
@@ -3718,7 +3718,7 @@
     },
     "status": {
       "label": "Statut / Prestige",
-      "description": "Tu cherches reconnaissance, respect, identité sociale.",
+      "description": "Vous cherchez reconnaissance, respect, identité sociale.",
       "workRelation": "Le métier devient l'identité.",
       "riskRelation": "Modéré à élevé selon l'ego et la compétition.",
       "whatWorks": "Excellence, sélectivité, réseau, storytelling, stratégie de carrière.",
@@ -3726,7 +3726,7 @@
     },
     "recovery": {
       "label": "Revanche / Trajectoire post-trauma",
-      "description": "Tu cherches sécurité, contrôle, réparation, stabilité émotionnelle, reconstruction.",
+      "description": "Vous cherchez sécurité, contrôle, réparation, stabilité émotionnelle, reconstruction.",
       "workRelation": "Besoin de maîtrise, parfois peur de l'instabilité.",
       "riskRelation": "Faible au début, puis augmente si la sécurité revient.",
       "whatWorks": "Stabiliser d'abord (revenu, cadre, routine), puis montée en puissance progressive.",
@@ -4185,7 +4185,7 @@
     "qatar": {
       "name": "Qatar",
       "region": "Moyen-Orient",
-      "ruleOfGold": "Tu es un invité dans le système. Performe, épargne et planifie ta sortie.",
+      "ruleOfGold": "Vous êtes un invité dans le système. Performez, épargnez et planifiez votre sortie.",
       "pyramid": {
         "top": "Famille royale et élite dirigeante",
         "institutions": "Distribution des ressources contrôlée par l'État",
@@ -4425,7 +4425,7 @@
     "saudi-arabia": {
       "name": "Arabie Saoudite",
       "region": "Moyen-Orient",
-      "ruleOfGold": "Joue ton rôle, accumule la richesse, ne défie jamais l'ordre. Tu es temporaire.",
+      "ruleOfGold": "Jouez votre rôle, accumulez la richesse, ne défiez jamais l'ordre. Vous êtes temporaire.",
       "pyramid": {
         "top": "Famille royale et autorité religieuse",
         "institutions": "État contrôlant la distribution de la richesse pétrolière",
@@ -4486,8 +4486,8 @@
   "pyramidQuiz": {
     "title": "Le Jeu de la Vie",
     "subtitle": "Simule une trajectoire de vie à travers différents systèmes mondiaux. Incarne un personnage fictif, fais des choix, gère ses ressources.",
-    "disclaimer": "⚠️ Tu vas incarner un personnage fictif au hasard. Ce n'est pas ta vraie vie — c'est un jeu éducatif !",
-    "realLifeLink": "Tu veux planifier ta vraie vie ?",
+    "disclaimer": "⚠️ Vous vas incarner un personnage fictif au hasard. Ce n'est pas votre vraie vie — c'est un jeu éducatif !",
+    "realLifeLink": "Vous voulez planifier votre vraie vie ?",
     "questionOf": "Question {{current}} sur {{total}}",
     "back": "Retour",
     "modes": {
@@ -4498,7 +4498,7 @@
       },
       "board": {
         "title": "Mode Aventure",
-        "description": "Vis une vie entière : fais des choix, affronte des événements, gère tes ressources et construis ton destin.",
+        "description": "Vivez une vie entière : fais des choix, affronte des événements, gère vos ressources et construis votre destin.",
         "cta": "Commencer ma vie"
       },
       "multiplayer": {
@@ -4509,7 +4509,7 @@
     },
     "questions": {
       "priority": {
-        "question": "Quelle est ta priorité principale dans la vie ?",
+        "question": "Quelle est votre priorité principale dans la vie ?",
         "options": {
           "security": "Sécurité et stabilité",
           "growth": "Croissance et opportunités",
@@ -4518,7 +4518,7 @@
         }
       },
       "riskTolerance": {
-        "question": "Quelle est ta relation au risque ?",
+        "question": "Quelle est votre relation au risque ?",
         "options": {
           "avoidRisk": "Je préfère éviter les risques",
           "calculatedRisk": "Je prends des risques calculés",
@@ -4545,7 +4545,7 @@
         }
       },
       "networkStyle": {
-        "question": "Comment construis-tu ton réseau ?",
+        "question": "Comment construisez-vous votre réseau ?",
         "options": {
           "formalNetworks": "Réseaux professionnels formels",
           "informalNetworks": "Connexions informelles et amis",
@@ -4554,7 +4554,7 @@
         }
       },
       "futureVision": {
-        "question": "Quelle est ta vision géographique pour l'avenir ?",
+        "question": "Quelle est votre vision géographique pour l'avenir ?",
         "options": {
           "stayLocal": "Rester dans mon pays d'origine",
           "goGlobal": "Partir à l'international",
@@ -4563,7 +4563,7 @@
         }
       },
       "moneyRelation": {
-        "question": "Quelle est ta relation à l'argent ?",
+        "question": "Quelle est votre relation à l'argent ?",
         "options": {
           "saveSafely": "Épargner prudemment",
           "investGrowth": "Investir pour la croissance",
@@ -4572,7 +4572,7 @@
         }
       },
       "rulesAttitude": {
-        "question": "Quelle est ton attitude face aux règles ?",
+        "question": "Quelle est votre attitude face aux règles ?",
         "options": {
           "followStrictly": "Les suivre scrupuleusement",
           "useWisely": "Les utiliser intelligemment",
@@ -4582,21 +4582,21 @@
       }
     },
     "result": {
-      "title": "Ton type de pyramide idéal",
-      "subtitle": "Basé sur tes réponses, voici le système qui te correspond le mieux",
-      "scores": "Tes scores par type",
+      "title": "Votre type de pyramide idéal",
+      "subtitle": "Basé sur vos réponses, voici le système qui te correspond le mieux",
+      "scores": "Vos scores par type",
       "playAgain": "Rejouer",
       "learnMore": "En savoir plus"
     },
     "board": {
-      "instructions": "Lance le dé pour avancer. Chaque case te rapporte des points vers différents types de pyramides.",
+      "instructions": "Lancez le dé pour avancer. Chaque case te rapporte des points vers différents types de pyramides.",
       "rollDice": "Clique sur le dé pour lancer",
       "landedPyramid": "+2 points pour {{type}}",
       "chanceCard": "Carte chance ! +3 points pour {{type}}",
-      "trap": "Piège ! -2 points sur ton type dominant",
+      "trap": "Piège ! -2 points sur votre type dominant",
       "bonus": "Bonus ! +1 point sur tous les types",
       "answeredQuestion": "Bonne réponse !",
-      "victory": "Félicitations ! Tu as atteint l'arrivée !",
+      "victory": "Félicitations ! Vous as atteint l'arrivée !",
       "moving": "En déplacement..."
     },
     "multiplayer": {
@@ -4604,7 +4604,7 @@
       "selectPlayers": "Nombre de joueurs",
       "startGame": "Lancer la partie",
       "player": "Joueur",
-      "yourTurn": "C'est ton tour !",
+      "yourTurn": "C'est votre tour !",
       "gameOver": "Partie terminée !"
     },
     "cooperative": {
@@ -4618,11 +4618,11 @@
   "auth": {
     "login": "Connexion",
     "signup": "Inscription",
-    "subtitle": "Connecte-toi pour sauvegarder tes parties et créer ton profil",
+    "subtitle": "Connecte-vous pour sauvegarder vos parties et créer votre profil",
     "email": "Email",
     "password": "Mot de passe",
     "displayName": "Nom d'affichage",
-    "displayNamePlaceholder": "Comment veux-tu être appelé ?",
+    "displayNamePlaceholder": "Comment voulez-vous être appelé(e) ?",
     "loginButton": "Se connecter",
     "signupButton": "S'inscrire",
     "showPassword": "Afficher le mot de passe",
@@ -4640,7 +4640,7 @@
   "gameModes": {
     "solo": {
       "title": "Solo",
-      "description": "Joue seul et découvre ton type de pyramide idéal"
+      "description": "Jouez seul et découvre votre type de pyramide idéal"
     },
     "race": {
       "title": "Course",
@@ -4656,11 +4656,11 @@
     }
   },
   "playerProfile": {
-    "title": "Créer ton profil",
-    "subtitle": "Définis ton histoire pour personnaliser ton parcours",
+    "title": "Créer votre profil",
+    "subtitle": "Définissez votre histoire pour personnaliser votre parcours",
     "playerNumber": "Joueur {{number}}",
-    "name": "Ton nom",
-    "namePlaceholder": "Comment t'appelles-tu ?",
+    "name": "Votre nom",
+    "namePlaceholder": "Comment vous appelez-vous ?",
     "birthCountry": "Pays de naissance",
     "currentCountry": "Pays actuel",
     "selectCountry": "Sélectionne un pays",
@@ -4742,16 +4742,16 @@
     "title": "LE JEU DE LA VIE — Règles complètes",
     "concept": {
       "title": "Le concept",
-      "description": "PYRAMIDES est un jeu de stratégie où tu gères des trajectoires de vie. Tu ne choisis pas ton point de départ : tu tires des personnages avec un pays de naissance, des traits, et des aspirations. À chaque 'année' de jeu, tu prends des décisions : travailler, étudier, soigner, migrer, entreprendre, construire ton réseau, nourrir tes relations... Le monde bouge, les pays ont leurs règles, et la réussite dépend de ta capacité à optimiser sous contrainte.",
-      "quote": "Tu gagnes en gérant ta vie mieux que les autres, avec un système qui reste réaliste.",
-      "goal": "Objectif : Maximiser ton score de vie",
+      "description": "PYRAMIDES est un jeu de stratégie où vous gérez des trajectoires de vie. Vous ne choisissez pas votre point de départ : vous tirez des personnages avec un pays de naissance, des traits, et des aspirations. À chaque 'année' de jeu, vous prenez des décisions : travailler, étudier, soigner, migrer, entreprendre, construire votre réseau, nourrir vos relations... Le monde bouge, les pays ont leurs règles, et la réussite dépend de votre capacité à optimiser sous contrainte.",
+      "quote": "Vous gagnes en gérant votre vie mieux que les autres, avec un système qui reste réaliste.",
+      "goal": "Objectif : Maximiser votre score de vie",
       "duration": "Durée : 20-40 tours (années)",
       "players": "Joueurs : 1 à 4",
       "luck": "Hasard : Modéré (événements + dés)"
     },
     "pyramidsLife": {
       "title": "Les 6 Pyramides de Vie",
-      "description": "Le plateau représente 6 domaines de vie, qui montent de 0 à 5. Monter une pyramide rend ta vie plus 'réussie' sur ce domaine, mais ça a presque toujours un coût ailleurs.",
+      "description": "Le plateau représente 6 domaines de vie, qui montent de 0 à 5. Monter une pyramide rend votre vie plus 'réussie' sur ce domaine, mais ça a presque toujours un coût ailleurs.",
       "health": "Santé (corps et mental)",
       "relationships": "Relations (famille, couple, amis, soutien)",
       "career": "Carrière (statut, progression, expertise)",
@@ -4762,15 +4762,15 @@
     },
     "characters": {
       "title": "Les personnages",
-      "description": "Chaque carte Personnage contient des informations uniques qui définissent ton point de départ et tes objectifs.",
+      "description": "Chaque carte Personnage contient des informations uniques qui définissent votre point de départ et vos objectifs.",
       "birthCountry": "Pays de naissance",
-      "birthCountryDesc": "Ton système de départ",
+      "birthCountryDesc": "Votre système de départ",
       "traits": "2 Traits + 1 Contrainte",
-      "traitsDesc": "Tes avantages et limitations",
+      "traitsDesc": "Vos avantages et limitations",
       "aspirations": "2 Aspirations majeures + 1 mineure",
-      "aspirationsDesc": "Ce qui compte pour ton score",
+      "aspirationsDesc": "Ce qui compte pour votre score",
       "startingResources": "Ressources initiales",
-      "startingResourcesDesc": "Calculées selon tes traits et ton pays"
+      "startingResourcesDesc": "Calculées selon vos traits et votre pays"
     },
     "countries": {
       "title": "Les pays comme systèmes",
@@ -4787,25 +4787,25 @@
     "resources": {
       "title": "Les ressources",
       "description": "Les ressources te permettent d'agir. Chaque action coûte et rapporte des ressources différentes.",
-      "time": "Temps : détermine ta capacité à faire des actions",
+      "time": "Temps : détermine votre capacité à faire des actions",
       "money": "Argent : donne accès aux investissements",
-      "health": "Santé : influence ta stabilité et protège des chutes",
+      "health": "Santé : influence votre stabilité et protège des chutes",
       "network": "Réseau : ouvre des opportunités, protège, accélère",
       "skills": "Compétences : améliorent les rendements",
       "mobilityRes": "Mobilité : permet de migrer vers un autre système",
-      "tip": "Le jeu est conçu pour que tu n'aies jamais 'tout'. Tu choisis ce que tu sacrifies temporairement."
+      "tip": "Le jeu est conçu pour que vous n'ayez jamais 'tout'. Vous choisissez ce que vous sacrifiez temporairement."
     },
     "actions": {
       "title": "Les actions",
       "majorTitle": "Actions majeures (1 par tour)",
-      "majorDesc": "Ce sont les grandes décisions qui façonnent ta vie. Tu ne peux en faire qu'une par année.",
+      "majorDesc": "Ce sont les grandes décisions qui façonnent votre vie. Vous ne peux en faire qu'une par année.",
       "work": "Travailler",
       "study": "Étudier",
       "entrepreneur": "Entreprendre",
       "migrate": "Migrer",
       "contribute": "Contribuer / Créer",
       "minorTitle": "Actions mineures",
-      "minorDesc": "Actions complémentaires qui maintiennent l'équilibre de ta vie.",
+      "minorDesc": "Actions complémentaires qui maintiennent l'équilibre de votre vie.",
       "network": "Réseau",
       "relationships": "Relations",
       "heal": "Se soigner",
@@ -4923,7 +4923,7 @@
     },
     "study": {
       "label": "Étudier",
-      "description": "Développe tes compétences pour l'avenir"
+      "description": "Développe vos compétences pour l'avenir"
     },
     "entrepreneur": {
       "label": "Entreprendre",
@@ -4935,19 +4935,19 @@
     },
     "contribute": {
       "label": "Contribuer",
-      "description": "Augmente ton sens et ton réseau"
+      "description": "Augmente votre sens et votre réseau"
     },
     "networking": {
       "label": "Réseauter",
-      "description": "Développe tes connexions"
+      "description": "Développe vos connexions"
     },
     "relationships": {
       "label": "Relations",
-      "description": "Nourris tes proches et ta santé mentale"
+      "description": "Nourris vos proches et votre santé mentale"
     },
     "heal": {
       "label": "Se soigner",
-      "description": "Récupère ta santé"
+      "description": "Récupère votre santé"
     },
     "rest": {
       "label": "Se reposer",
@@ -5604,11 +5604,11 @@
   "character": {
     "aspirations": "Aspirations",
     "startingResources": "Ressources de départ",
-    "selectCharacter": "Choisis ton personnage",
+    "selectCharacter": "Choisissez votre personnage",
     "drawNew": "Tirer de nouveaux personnages"
   },
   "characterDraft": {
-    "title": "Joueur {{player}} - Choisis ton personnage",
+    "title": "Joueur {{player}} - Choisissez votre personnage",
     "subtitle": "Sélectionne un personnage parmi les 4 proposés. Chaque personnage a des traits, des contraintes et des aspirations uniques.",
     "reshuffle": "Remélanger",
     "confirmNext": "Confirmer et suivant",
@@ -5744,7 +5744,7 @@
         "label": "Trajectoire de survie",
         "description": "Ce scénario montre les défis extrêmes que certaines situations initiales impliquent souvent."
       },
-      "disclaimer": "Rappel : ceci est une simulation éducative. Ton parcours réel dépendra de milliers de facteurs non modélisés ici."
+      "disclaimer": "Rappel : ceci est une simulation éducative. Votre parcours réel dépendra de milliers de facteurs non modélisés ici."
     }
   },
   "tutorial": {
@@ -5761,8 +5761,8 @@
         "reality": "Chaque mécanique de ce jeu reflète une réalité vécue. Notre but est la prévention et la compréhension, pas la peur."
       },
       "lifeAssignment": {
-        "title": "Tu ne choisis pas ta vie de départ",
-        "content": "Comme dans la vraie vie, tu ne choisis pas où tu nais, ta situation économique de départ, ni tes contraintes initiales. Le jeu t'attribue une vie aléatoire — certaines plus faciles, d'autres très difficiles.",
+        "title": "Vous ne choisissez pas votre vie de départ",
+        "content": "Comme dans la vraie vie, vous ne choisissez pas où vous naissez, votre situation économique de départ, ni vos contraintes initiales. Le jeu vous attribue une vie aléatoire — certaines plus faciles, d'autres très difficiles.",
         "reality": "Naître dans un pays stable avec un bon passeport est un privilège. D'autres doivent lutter pour des droits que beaucoup considèrent acquis.",
         "examples": [
           "Un Suisse né à Genève vs un Nigérian né à Lagos — mêmes ambitions, opportunités très différentes",
@@ -5771,8 +5771,8 @@
         ]
       },
       "resources": {
-        "title": "Tes ressources de vie",
-        "content": "Tu gères 6 ressources essentielles : Santé, Argent, Réseau, Sécurité, Éducation et Moral. Chaque décision les affecte. Si certaines tombent à zéro, les conséquences peuvent être graves.",
+        "title": "Vos ressources de vie",
+        "content": "Vous gérez 6 ressources essentielles : Santé, Argent, Réseau, Sécurité, Éducation et Moral. Chaque décision les affecte. Si certaines tombent à zéro, les conséquences peuvent être graves.",
         "reality": "Dans la vraie vie, perdre sa santé ou son réseau peut signifier la fin de toutes les opportunités. L'argent seul ne protège pas de tout.",
         "examples": [
           "Santé : une maladie chronique change tout le calcul de l'expatriation",
@@ -5786,8 +5786,8 @@
         "reality": "Comprendre le système d'un pays est crucial. Ce qui fonctionne en Allemagne peut être fatal au Cameroun, et vice versa."
       },
       "events": {
-        "title": "La vie t'envoie des événements",
-        "content": "Chaque tour, des événements mondiaux et locaux affectent tes ressources. Crises économiques, opportunités, catastrophes naturelles, changements politiques — tu dois t'adapter.",
+        "title": "La vie vous envoie des événements",
+        "content": "Chaque tour, des événements mondiaux et locaux affectent vos ressources. Crises économiques, opportunités, catastrophes naturelles, changements politiques — vous devez vous adapter.",
         "reality": "Personne ne contrôle tout. Les migrants qui ont tout planifié peuvent voir leurs plans détruits par un changement de politique du jour au lendemain.",
         "examples": [
           "Une crise économique mondiale peut effacer des années d'épargne",
@@ -5795,8 +5795,8 @@
         ]
       },
       "actions": {
-        "title": "Tes choix définissent ta trajectoire",
-        "content": "Chaque tour, tu peux travailler, étudier, réseauter, économiser ou prendre des risques. Les actions majeures ont plus d'impact mais comportent plus de risques.",
+        "title": "Vos choix définissent votre trajectoire",
+        "content": "Chaque tour, vous pouvez travailler, étudier, réseauter, économiser ou prendre des risques. Les actions majeures ont plus d'impact mais comportent plus de risques.",
         "reality": "Chaque choix a un coût d'opportunité. Étudier signifie moins d'argent immédiat. Travailler dur sans réseau peut ne mener nulle part."
       },
       "shortcuts": {
@@ -5810,14 +5810,14 @@
         ]
       },
       "aspirations": {
-        "title": "Tes objectifs personnels",
-        "content": "Ton personnage a des aspirations — devenir riche, vivre en sécurité, retrouver sa famille, ou simplement survivre. La réussite se mesure par rapport à TES objectifs, pas un standard universel.",
+        "title": "Vos objectifs personnels",
+        "content": "Votre personnage a des aspirations — devenir riche, vivre en sécurité, retrouver sa famille, ou simplement survivre. La réussite se mesure par rapport à TES objectifs, pas un standard universel.",
         "reality": "La 'réussite' est relative. Un réfugié qui reconstruit sa vie a autant accompli qu'un entrepreneur qui devient millionnaire."
       },
       "endgame": {
         "title": "Le bilan de vie",
-        "content": "À la fin, le jeu évalue si tu as atteint tes aspirations, préservé ta santé, et navigué le système. Il n'y a pas de 'bonne' façon de jouer — seulement des choix et leurs conséquences.",
-        "reality": "Ce jeu est un outil de compréhension. Qu'il t'aide à apprécier ta situation ou à mieux comprendre celle des autres, c'est sa vraie victoire."
+        "content": "À la fin, le jeu évalue si vous avez atteint vos aspirations, préservé votre santé, et navigué le système. Il n'y a pas de 'bonne' façon de jouer — seulement des choix et leurs conséquences.",
+        "reality": "Ce jeu est un outil de compréhension. Qu'il vous aide à apprécier votre situation ou à mieux comprendre celle des autres, c'est sa vraie victoire."
       }
     }
   },
@@ -5983,7 +5983,7 @@
       "badge": "🎮 Jeu de plateau éducatif",
       "title1": "Le Jeu de",
       "titleHighlight": "LA VIE",
-      "subtitle": "Un jeu de simulation où tu incarnes un personnage fictif. Découvre comment fonctionne le monde à travers des trajectoires aléatoires — ce n'est pas ta vraie vie !",
+      "subtitle": "Un jeu de simulation où vous incarnez un personnage fictif. Découvrez comment fonctionne le monde à travers des trajectoires aléatoires — ce n'est pas votre vraie vie !",
       "playCta": "Lancer une partie",
       "learnCta": "Règles du jeu",
       "stats": {
@@ -5993,11 +5993,11 @@
       }
     },
     "clarification": {
-      "title": "⚠️ Ce n'est PAS ta vraie vie",
-      "point1": "Tu reçois un personnage fictif au hasard (héritier, réfugié, entrepreneur...)",
-      "point2": "Tu explores les mécanismes du monde sans risque réel",
-      "point3": "C'est un outil pédagogique, pas une prédiction pour toi",
-      "realLife": "Pour planifier ta vraie vie →",
+      "title": "⚠️ Ce n'est PAS votre vraie vie",
+      "point1": "Vous recevez un personnage fictif au hasard (héritier, réfugié, entrepreneur...)",
+      "point2": "Vous explores les mécanismes du monde sans risque réel",
+      "point3": "C'est un outil pédagogique, pas une prédiction pour vous",
+      "realLife": "Pour planifier votre vraie vie →",
       "realLifeLink": "Stratégies"
     },
     "tagline": {
@@ -6013,11 +6013,11 @@
       },
       "characters": {
         "title": "12+ Personnages Jouables",
-        "description": "Du fils de bonne famille au réfugié. Tu ne choisis pas toujours — parfois le destin décide pour toi."
+        "description": "Du fils de bonne famille au réfugié. Vous ne choisissez pas toujours — parfois le destin décide pour vous."
       },
       "choices": {
         "title": "Choix Stratégiques",
-        "description": "Travailler, étudier, migrer, entreprendre... Gère tes ressources comme dans un jeu de gestion."
+        "description": "Travailler, étudier, migrer, entreprendre... Gère vos ressources comme dans un jeu de gestion."
       },
       "risks": {
         "title": "Raccourcis Risqués",
@@ -6026,10 +6026,10 @@
     },
     "resources": {
       "title": "6 Ressources à Gérer",
-      "subtitle": "Dans le jeu comme dans la vie, tu n'auras jamais tout."
+      "subtitle": "Dans le jeu comme dans la vie, vous n'aurez jamais tout."
     },
     "archetypes": {
-      "title": "Qui incarneras-tu ?",
+      "title": "Qui incarneravez-vous ?",
       "subtitle": "Chaque personnage a ses avantages et ses obstacles. La difficulté reflète les inégalités du monde réel.",
       "seeAll": "Voir tous les personnages"
     },
@@ -6051,7 +6051,7 @@
     },
     "cta": {
       "title": "Prêt à jouer ?",
-      "subtitle": "Lance une partie et découvre un personnage au hasard. Réussiras-tu à naviguer le système ?",
+      "subtitle": "Lancez une partie et découvre un personnage au hasard. Réussiravez-vous à naviguer le système ?",
       "button": "Lancer le jeu"
     }
   },
@@ -6281,16 +6281,16 @@
       "point1": "Un modèle simplifié basé sur des données générales",
       "point2": "Un outil pour explorer des tendances et des patterns",
       "point3": "Une aide à la réflexion et à la prise de recul",
-      "point4": "Un point de départ pour tes propres recherches",
+      "point4": "Un point de départ pour vos propres recherches",
       "point5": "Une représentation de ce qui TEND à se produire dans certains contextes"
     },
     "whatSimulationIsNot": {
       "title": "Ce qu'une simulation N'EST PAS",
-      "point1": "Une prédiction de ton avenir personnel",
+      "point1": "Une prédiction de votre avenir personnel",
       "point2": "Un conseil juridique, financier ou médical",
-      "point3": "Une garantie de résultat si tu suis les recommandations",
+      "point3": "Une garantie de résultat si vous suivez les recommandations",
       "point4": "Une vérité absolue applicable à tous",
-      "point5": "Un jugement de valeur sur tes choix de vie"
+      "point5": "Un jugement de valeur sur vos choix de vie"
     },
     "keyConcept": {
       "title": "Le concept clé : Tendance ≠ Certitude",
@@ -6319,7 +6319,7 @@
     },
     "limitations": {
       "title": "Ce que l'outil NE PEUT PAS prendre en compte",
-      "point1": "Tes compétences uniques, ton réseau personnel, ta chance",
+      "point1": "Vos compétences uniques, votre réseau personnel, votre chance",
       "point2": "Les changements géopolitiques, économiques ou personnels futurs",
       "point3": "Les nuances culturelles que seul un vécu local permet de comprendre",
       "point4": "Les opportunités imprévues qui peuvent tout changer"
@@ -6336,16 +6336,16 @@
       },
       "practice3": {
         "title": "Adapte à TA situation",
-        "description": "Les moyennes ne s'appliquent pas à tous. Ton parcours unique peut changer radicalement les probabilités."
+        "description": "Les moyennes ne s'appliquent pas à tous. Votre parcours unique peut changer radicalement les probabilités."
       },
       "practice4": {
         "title": "Révise régulièrement",
-        "description": "Tes paramètres changent. Refais les simulations quand ta situation évolue."
+        "description": "Vos paramètres changent. Refais les simulations quand votre situation évolue."
       }
     },
     "finalNote": {
       "title": "En résumé",
-      "text": "Cet outil t'aide à voir plus clair, pas à voir le futur. Il éclaire des tendances pour que TU puisses décider en connaissance de cause. La décision, et la responsabilité, restent toujours les tiennes."
+      "text": "Cet outil vous aide à voir plus clair, pas à voir le futur. Il éclaire des tendances pour que TU puisses décider en connaissance de cause. La décision, et la responsabilité, restent toujours les tiennes."
     }
   },
   "preventionFilter": {
@@ -6357,7 +6357,7 @@
     "riskTolerance": "Tolérance au risque",
     "constraint": "Contrainte dominante",
     "analyze": "Analyser cette décision",
-    "disclaimer": "Simulation ≠ prédiction. Outil d'analyse uniquement. Tu restes responsable de ta décision.",
+    "disclaimer": "Simulation ≠ prédiction. Outil d'analyse uniquement. Vous restes responsable de votre décision.",
     "newAnalysis": "Nouvelle analyse",
     "saveSimulation": "Sauvegarder cette simulation",
     "saved": "Analyse sauvegardée !",
@@ -6523,12 +6523,12 @@
   },
   "quickTest": {
     "title": "Test rapide",
-    "subtitle": "En 60 secondes, découvre le système qui ressemble à ta situation",
+    "subtitle": "En 60 secondes, découvre le système qui ressemble à votre situation",
     "badge": "60 secondes",
-    "situation": "Ta situation actuelle",
-    "priority": "Ta priorité principale",
-    "riskTolerance": "Ta tolérance au risque",
-    "mainConstraint": "Ta contrainte dominante",
+    "situation": "Votre situation actuelle",
+    "priority": "Votre priorité principale",
+    "riskTolerance": "Votre tolérance au risque",
+    "mainConstraint": "Votre contrainte dominante",
     "situations": {
       "employee": "Employé",
       "freelance": "Indépendant",
@@ -7864,7 +7864,7 @@
     "structuredLucidity": "Lucidité structurée",
     "badge": "Hub d'Orientation",
     "title": "Par où commencer ?",
-    "subtitle": "Compass t'aide à comprendre tes vraies options avant toute décision. Pas de promesse, pas de raccourci — juste de la clarté.",
+    "subtitle": "Compass vous aide à comprendre vos vraies options avant toute décision. Pas de promesse, pas de raccourci — juste de la clarté.",
     "philosophy": "Compass est une plateforme d'orientation avant décision.",
     "philosophyDesc": "Permettre à chaque personne de comprendre clairement ses options réelles, leurs risques, leurs coûts et leurs alternatives, avant d'engager son argent, sa vie ou son avenir.",
     "quickTitle": "Accès rapide selon votre besoin",
@@ -7880,11 +7880,11 @@
       "compare": "Je veux comparer plusieurs pays"
     },
     "quickSituations": {
-      "title": "Ta situation",
+      "title": "Votre situation",
       "options": {
         "understand": {
           "title": "Je veux comprendre d'où je pars",
-          "description": "Analyse ton profil, tes ressources, tes contraintes",
+          "description": "Analyse votre profil, vos ressources, vos contraintes",
           "cta": "Test de profil"
         },
         "compare": {
@@ -7908,23 +7908,23 @@
       "title": "Outils disponibles",
       "preventionFilter": {
         "title": "Filtre de Prévention",
-        "description": "Identifie les risques et obstacles avant de t'engager dans une décision",
+        "description": "Identifie les risques et obstacles avant de vous engager dans une décision",
         "bestFor": ["Valider une décision importante", "Anticiper les obstacles cachés"]
       },
       "exitKeys": {
         "title": "Stratégies",
-        "description": "Feuilles de route personnalisées selon ta situation, tes objectifs et tes contraintes",
+        "description": "Feuilles de route personnalisées selon votre situation, vos objectifs et vos contraintes",
         "bestFor": ["Planifier une transition de vie", "Structurer un projet de mobilité"]
       },
       "lifeTrajectory": {
         "title": "Trajectoire de Vie",
-        "description": "Simule l'évolution de ta situation sur 10-30 ans selon tes choix",
+        "description": "Simule l'évolution de votre situation sur 10-30 ans selon vos choix",
         "bestFor": ["Visualiser les conséquences long terme", "Comparer des scénarios de vie"]
       },
       "profileTest": {
         "title": "Test de Profil",
-        "description": "Comprends ton profil, les avantages de ta nationalité, et la compatibilité avec les systèmes",
-        "bestFor": ["Découvrir ton archétype", "Identifier tes forces et faiblesses"]
+        "description": "Comprends votre profil, les avantages de votre nationalité, et la compatibilité avec les systèmes",
+        "bestFor": ["Découvrir votre archétype", "Identifier vos forces et faiblesses"]
       },
       "lifeGame": {
         "title": "Jeu de la Vie",
@@ -7938,7 +7938,7 @@
       },
       "compare": {
         "title": "Comparer",
-        "description": "Compare les pays, systèmes et coûts pour trouver tes meilleures options"
+        "description": "Compare les pays, systèmes et coûts pour trouver vos meilleures options"
       },
       "worldMap": {
         "title": "Carte du Monde",
@@ -7947,12 +7947,12 @@
     },
     "alternatives": {
       "title": "Des alternatives existent",
-      "subtitle": "Avant tout choix irréversible, explore toutes tes options",
+      "subtitle": "Avant tout choix irréversible, explore toutes vos options",
       "message": "Compass montre qu'il existe parfois d'autres trajectoires : rester et entreprendre, migrer plus tard, migrer autrement, se former, changer d'objectif initial.",
       "options": {
         "stay": {
           "title": "Rester et construire",
-          "description": "Parfois la meilleure opportunité est là où tu es déjà"
+          "description": "Parfois la meilleure opportunité est là où vous êtes déjà"
         },
         "later": {
           "title": "Migrer plus tard",
@@ -8019,8 +8019,8 @@
       "intro": "Ces erreurs sont des décalages entre les attentes d'un individu et les règles réelles d'un système."
     },
     "cta": {
-      "title": "Éviter ces erreurs commence par comprendre ton système",
-      "subtitle": "Analyse ta situation actuelle, identifie les décalages potentiels, et explore les stratégies adaptées à ton profil.",
+      "title": "Éviter ces erreurs commence par comprendre votre système",
+      "subtitle": "Analyse votre situation actuelle, identifie les décalages potentiels, et explore les stratégies adaptées à votre profil.",
       "simulateTrajectory": "Simuler ma trajectoire",
       "viewExitKeys": "Voir les Stratégies"
     }
@@ -9988,7 +9988,7 @@
         "subtitle": "Ce qui dépend vraiment de nous",
         "s1": {
           "title": "Le mythe du \"tout est possible\"",
-          "p1": "La culture contemporaine valorise l'agentivité : \"si tu veux, tu peux\". C'est parfois vrai. C'est parfois un mensonge cruel.",
+          "p1": "La culture contemporaine valorise l'agentivité : \"si vous voulez, vous pouvez\". C'est parfois vrai. C'est parfois un mensonge cruel.",
           "p2": "Nous évoluons dans des systèmes — économiques, sociaux, institutionnels — qui contraignent nos possibilités. Les ignorer, c'est se préparer à des déceptions."
         },
         "s2": {
@@ -10035,7 +10035,7 @@
         "subtitle": "Responsabilité personnelle et contraintes structurelles",
         "s1": {
           "title": "Un faux dilemme",
-          "p1": "D'un côté, le discours du \"tout est possible si tu y crois\". De l'autre, le fatalisme systémique : \"le système est contre toi\".",
+          "p1": "D'un côté, le discours du \"tout est possible si vous y crois\". De l'autre, le fatalisme systémique : \"le système est contre vous\".",
           "p2": "Les deux sont vrais — et faux. La réalité est plus nuancée : nous agissons dans des systèmes qui nous contraignent ET nous offrent des possibilités."
         },
         "s2": {
@@ -10394,7 +10394,7 @@
     "typicalTargets": "Cibles typiques",
     "redFlags": "Signaux d'alerte",
     "psychologicalTactics": "Tactiques psychologiques",
-    "risks": "Ce que tu risques",
+    "risks": "Ce que vous risques",
     "protection": "Comment te protéger",
     "whereToVerify": "Où vérifier",
     "whereToReport": "Où signaler",
@@ -10670,8 +10670,8 @@
   "pricingWidget": {
     "badge": "Gratuit pour commencer",
     "title": "Commence gratuitement.",
-    "subtitle": "Évolue selon tes besoins.",
-    "description": "Accède aux analyses de base gratuitement. Débloque les fonctionnalités avancées quand tu en as besoin.",
+    "subtitle": "Évolue selon vos besoins.",
+    "description": "Accède aux analyses de base gratuitement. Débloque les fonctionnalités avancées quand vous en as besoin.",
     "free": "Gratuit",
     "freeFeature1": "Analyse de base",
     "freeFeature2": "Tous les simulateurs",
