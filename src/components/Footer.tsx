@@ -77,6 +77,8 @@ export function Footer() {
               <li><Link to="/auth" className="hover:text-foreground transition-colors block py-0.5">{t('auth.login')}</Link></li>
               <li><Link to="/about" className="hover:text-foreground transition-colors block py-0.5">{t('footer.about')}</Link></li>
               <li><Link to="/how-to-read" className="hover:text-foreground transition-colors block py-0.5">{t('nav.howToRead', 'Guide')}</Link></li>
+              <li><Link to="/experts" className="hover:text-foreground transition-colors block py-0.5">{t('nav.experts', 'Experts')}</Link></li>
+              <li><Link to="/resources" className="hover:text-foreground transition-colors block py-0.5">{t('nav.resources', 'Ressources')}</Link></li>
               <li><Link to="/b2b" className="hover:text-foreground transition-colors block py-0.5">{t('nav.b2b', 'B2B')}</Link></li>
               <li><Link to="/disclaimer" className="hover:text-foreground transition-colors block py-0.5">{t('footer.warnings')}</Link></li>
             </ul>

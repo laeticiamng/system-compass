@@ -223,7 +223,7 @@ export function Header() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start" className="w-56">
-                <DropdownMenuLabel>{t('nav.account', 'Compte & Info')}</DropdownMenuLabel>
+                <DropdownMenuLabel>{t('nav.info', 'En savoir plus')}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 {accountItems.map((item) => {
                   const Icon = item.icon;
@@ -377,7 +377,7 @@ export function Header() {
 
                 {/* Compte & Info (includes Pro modules) */}
                 <div className="border-t border-border my-3" />
-                <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">{t('nav.account', 'Compte & Info')}</div>
+                <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">{t('nav.info', 'En savoir plus')}</div>
                 {accountItems.map((item) => {
                   const Icon = item.icon;
                   const isActive = isRouteActive(item.href);
