@@ -4,6 +4,7 @@
  */
 
 import { Helmet } from 'react-helmet-async';
+import { LocalizedLink as Link } from '@/components/i18n';
 import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -326,9 +327,9 @@ function verifyWebhook(payload, signature, secret) {
               Les webhooks sont disponibles en beta pour les partenaires B2B sur le plan Pro/Enterprise.
             </p>
             <Badge variant="outline" className="gap-2">
-              <a href="/pricing" className="flex items-center gap-1">
+              <Link to="/pricing" className="flex items-center gap-1">
                 Voir les plans <ArrowRight className="w-3 h-3" />
-              </a>
+              </Link>
             </Badge>
           </motion.div>
         </div>

@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
+import { LocalizedLink as Link } from '@/components/i18n';
 import { Helmet } from 'react-helmet-async';
 import { SITE_CONFIG } from '@/config/site';
 import { useTranslation } from 'react-i18next';
@@ -436,7 +437,7 @@ export default function ExpertMarketplace() {
                 {t('marketplace.notifyMe', 'Me prévenir à l\'ouverture')}
               </Button>
               <Button variant="outline" asChild>
-                <a href="/countries">{t('marketplace.exploreCountries', 'Explorer les pays')}</a>
+                <Link to="/countries">{t('marketplace.exploreCountries', 'Explorer les pays')}</Link>
               </Button>
             </div>
           )}
