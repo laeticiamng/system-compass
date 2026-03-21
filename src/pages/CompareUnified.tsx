@@ -396,7 +396,7 @@ export default function CompareUnified() {
             <Link to="/auth">
               <Button variant="outline" size="sm" className="gap-2">
                 <Bookmark className="w-4 h-4" />
-                <span className="hidden sm:inline">{t('multiCompare.loginToSave', 'Connecte-toi')}</span>
+                <span className="hidden sm:inline">{t('multiCompare.loginToSave', 'Connectez-vous')}</span>
               </Button>
             </Link>
           )}

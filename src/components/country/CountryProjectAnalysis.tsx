@@ -430,7 +430,7 @@ export function CountryProjectAnalysis({ countryId, countryName }: CountryProjec
             <CardHeader className="pb-3">
               <CardTitle className="text-base flex items-center gap-2">
                 <Eye className="w-4 h-4 text-blue-500" />
-                {t('countryDetail.project.blindSpots', 'Points aveugles probables pour ton projet')}
+                {t('countryDetail.project.blindSpots', 'Points aveugles probables pour votre projet')}
                 <span className="text-[10px] text-muted-foreground ml-auto font-normal">(fréquents, pas certains)</span>
               </CardTitle>
             </CardHeader>

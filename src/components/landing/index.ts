@@ -10,7 +10,9 @@ export {
   NotDoItem,
   DoItem 
 } from './FeatureCards';
-export { TestimonialsSection } from './TestimonialsSection';
+export { PlatformHighlights } from './TestimonialsSection';
+/** @deprecated Use PlatformHighlights instead */
+export { PlatformHighlights as TestimonialsSection } from './TestimonialsSection';
 export { SocialProofBanner, TrustBadges } from './SocialProofBanner';
 export { UserJourneys } from './UserJourneys';
 export { FeatureDiscoveryTooltips } from './FeatureDiscoveryTooltips';

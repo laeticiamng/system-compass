@@ -2,6 +2,7 @@
  * Become an Expert - Application page for new experts
  */
 import { useState } from 'react';
+import { LocalizedLink as Link } from '@/components/i18n';
 import { useTranslation } from 'react-i18next';
 import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { useForm } from 'react-hook-form';
@@ -534,7 +535,7 @@ export default function BecomeExpert() {
                       </FormLabel>
                       <FormDescription>
                         En soumettant ce formulaire, vous acceptez nos{' '}
-                        <a href="/disclaimer" className="underline">conditions</a>.
+                        <Link to="/disclaimer" className="underline">conditions</Link>.
                       </FormDescription>
                     </div>
                     <FormMessage />

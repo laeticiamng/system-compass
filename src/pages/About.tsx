@@ -256,7 +256,7 @@ export default function About() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-rose-500 mt-0.5">✗</span>
-                  <span>{t('about.whatWeAreNot.point4', 'Un outil qui te dit quoi faire — tu restes responsable de tes décisions')}</span>
+                  <span>{t('about.whatWeAreNot.point4', 'Un outil qui vous dit quoi faire — vous restez responsable de vos décisions')}</span>
                 </li>
               </ul>
             </CardContent>
@@ -460,7 +460,7 @@ export default function About() {
             <h2 className="text-2xl font-bold">{t('about.forEveryone.title', 'Pour tout le monde')}</h2>
           </div>
           <p className="text-muted-foreground mb-6">
-            {t('about.forEveryone.subtitle', 'Quel que soit ton point de départ, tu mérites d\'avoir accès à l\'information.')}
+            {t('about.forEveryone.subtitle', 'Quel que soit votre point de départ, vous méritez d\'avoir accès à l\'information.')}
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <span className="px-3 py-2 rounded-full bg-muted text-sm">🥖 Boulanger</span>
@@ -550,7 +550,7 @@ export default function About() {
           </div>
           <div className="glass-card rounded-xl p-6 border-l-4 border-primary text-center">
             <p className="text-sm text-muted-foreground">
-              {t('common.disclaimer', 'Pas de conseil juridique, financier ou médical. Tu restes responsable de tes décisions.')}
+              {t('common.disclaimer', 'Ne constitue pas un conseil juridique, fiscal ou médical. Vous restez responsable de vos décisions.')}
             </p>
           </div>
         </div>

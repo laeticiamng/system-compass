@@ -11,7 +11,8 @@ interface FeatureHighlight {
   description: string;
 }
 
-export function TestimonialsSection() {
+/** @deprecated Renamed from TestimonialsSection — contains platform highlights, NOT testimonials */
+export function PlatformHighlights() {
   const { t } = useTranslation();
 
   const highlights: FeatureHighlight[] = [

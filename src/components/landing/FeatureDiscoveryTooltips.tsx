@@ -25,21 +25,21 @@ const TIPS: Tip[] = [
     titleKey: 'tips.quickTest.title',
     titleDefault: '🎯 Test de profil gratuit',
     descKey: 'tips.quickTest.desc',
-    descDefault: 'En 2 minutes, découvre les pays les plus compatibles avec ton profil.',
+    descDefault: 'En 2 minutes, découvrez les pays les plus compatibles avec votre profil.',
   },
   {
     id: 'compare',
     titleKey: 'tips.compare.title',
-    titleDefault: '📊 Compare jusqu\'à 4 pays',
+    titleDefault: '📊 Comparez jusqu\'à 4 pays',
     descKey: 'tips.compare.desc',
-    descDefault: 'Utilise l\'outil de comparaison pour voir les différences côte à côte.',
+    descDefault: 'Utilisez l\'outil de comparaison pour voir les différences côte à côte.',
   },
   {
     id: 'exit_keys',
     titleKey: 'tips.exitKeys.title',
     titleDefault: '🔑 Clés de sortie',
     descKey: 'tips.exitKeys.desc',
-    descDefault: 'Découvre les étapes concrètes pour te relocaliser dans un pays.',
+    descDefault: 'Découvrez les étapes concrètes pour vous relocaliser dans un pays.',
   },
 ];
 

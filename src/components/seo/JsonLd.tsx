@@ -28,7 +28,7 @@ export function OrganizationJsonLd() {
   };
 
   const slogans: Record<string, string> = {
-    fr: 'Compare les pays avant de partir.',
+    fr: 'Comparez les pays avant de partir.',
     en: 'Compare countries before you go.',
   };
 
@@ -37,7 +37,7 @@ export function OrganizationJsonLd() {
       '@context': 'https://schema.org',
       '@type': 'Organization',
       name: 'Compass',
-      alternateName: 'Compass - Compare les pays avant de partir',
+      alternateName: 'Compass - Comparez les pays avant de partir',
       url: `${SITE_CONFIG.productionUrl}/${lang}`,
       logo: `${SITE_CONFIG.productionUrl}/icons/icon-512x512.png`,
       description: descriptions[lang] || descriptions.en,

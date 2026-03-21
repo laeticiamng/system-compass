@@ -4,6 +4,7 @@
  */
 
 import { useState, useCallback } from 'react';
+import { LocalizedLink as Link } from '@/components/i18n';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -265,9 +266,9 @@ export function ConsultationPayment({
         {/* Terms */}
         <p className="text-xs text-center text-muted-foreground">
           En procédant au paiement, vous acceptez nos{' '}
-          <a href="/disclaimer" className="underline hover:text-foreground">conditions générales</a>
+          <Link to="/disclaimer" className="underline hover:text-foreground">conditions générales</Link>
           {' '}et notre{' '}
-          <a href="/disclaimer" className="underline hover:text-foreground">politique d'annulation</a>.
+          <Link to="/disclaimer" className="underline hover:text-foreground">politique d'annulation</Link>.
         </p>
       </CardContent>
     </Card>

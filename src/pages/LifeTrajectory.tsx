@@ -572,7 +572,7 @@ export default function LifeTrajectory() {
             <div className="glass-card rounded-xl p-4 md:p-6">
               <h3 className="font-semibold mb-4 flex items-center gap-2 text-sm md:text-base">
                 <Gauge className="w-5 h-5 text-primary" />
-                Ton profil en radar
+                Votre profil en radar
               </h3>
               <div className="h-56 md:h-64">
                 <ResponsiveContainer width="100%" height="100%">

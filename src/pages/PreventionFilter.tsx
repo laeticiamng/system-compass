@@ -588,7 +588,7 @@ export default function PreventionFilter() {
 
             {/* Disclaimer */}
             <p className="text-xs text-center text-muted-foreground">
-              {t('preventionFilter.disclaimer', "Simulation ≠ prédiction. Outil d'analyse uniquement. Tu restes responsable de ta décision.")}
+              {t('preventionFilter.disclaimer', "Simulation ≠ prédiction. Outil d'analyse uniquement. Vous restez responsable de votre décision.")}
             </p>
           </div>
         ) : (

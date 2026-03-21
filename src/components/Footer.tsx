@@ -77,6 +77,8 @@ export function Footer() {
               <li><Link to="/auth" className="hover:text-foreground transition-colors block py-0.5">{t('auth.login')}</Link></li>
               <li><Link to="/about" className="hover:text-foreground transition-colors block py-0.5">{t('footer.about')}</Link></li>
               <li><Link to="/how-to-read" className="hover:text-foreground transition-colors block py-0.5">{t('nav.howToRead', 'Guide')}</Link></li>
+              <li><Link to="/experts" className="hover:text-foreground transition-colors block py-0.5">{t('nav.experts', 'Experts')}</Link></li>
+              <li><Link to="/resources" className="hover:text-foreground transition-colors block py-0.5">{t('nav.resources', 'Ressources')}</Link></li>
               <li><Link to="/b2b" className="hover:text-foreground transition-colors block py-0.5">{t('nav.b2b', 'B2B')}</Link></li>
               <li><Link to="/disclaimer" className="hover:text-foreground transition-colors block py-0.5">{t('footer.warnings')}</Link></li>
             </ul>
@@ -138,7 +140,7 @@ export function Footer() {
             </div>
             
             <p className="text-[10px] sm:text-xs text-muted-foreground/70 max-w-md">
-              {t('footer.disclaimer', 'Outil d\'analyse et simulation. Pas de conseil juridique, financier ou médical.')}{' '}
+              {t('footer.disclaimer', 'Outil d\'analyse et simulation. Ne constitue pas un conseil juridique, fiscal ou médical.')}{' '}
               <Link to="/disclaimer" className="text-primary hover:underline">{t('footer.learnMore')}</Link>
             </p>
             <span className="flex items-center gap-1 text-xs sm:text-sm text-muted-foreground">

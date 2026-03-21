@@ -296,7 +296,7 @@ export function QuickTestResults({
                 <Eye className="w-5 h-5 text-muted-foreground" />
                 <div className="text-center">
                   <p className="text-xs text-muted-foreground mb-1">
-                    {t('quickTest.result.systemLooksLike', 'Ton profil')}
+                    {t('quickTest.result.systemLooksLike', 'Votre profil')}
                   </p>
                   <p className="font-medium">{pyramidInfo.label}</p>
                 </div>

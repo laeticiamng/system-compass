@@ -273,7 +273,7 @@ export default function QuickTest() {
             transition={{ delay: 0.2 }}
             className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4"
           >
-            <span className="block text-foreground">{t('quickTest.heroTitle1', 'Découvre ton')}</span>
+            <span className="block text-foreground">{t('quickTest.heroTitle1', 'Découvrez votre')}</span>
             <span className="block bg-gradient-to-r from-primary via-amber-400 to-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-[gradient_3s_ease-in-out_infinite]">
               {t('quickTest.heroTitle2', 'profil expatrié.')}
             </span>
@@ -285,7 +285,7 @@ export default function QuickTest() {
             transition={{ delay: 0.3 }}
             className="text-lg text-muted-foreground mb-8"
           >
-            {t('quickTest.subtitle', 'En 60 secondes, découvre le pays qui correspond à ta situation')}
+            {t('quickTest.subtitle', 'En 60 secondes, découvrez le pays qui correspond à votre situation')}
           </motion.p>
 
           {/* Progress indicator */}
@@ -320,7 +320,7 @@ export default function QuickTest() {
             {/* Question 1: Situation */}
             <AnimatedSection>
               <QuestionBlock
-                title={t('quickTest.situation', 'Ta situation actuelle')}
+                title={t('quickTest.situation', 'Votre situation actuelle')}
                 selected={answers.situation}
                 onSelect={(value) => handleSelect('situation', value)}
                 options={[
@@ -335,7 +335,7 @@ export default function QuickTest() {
             {/* Question 2: Priority */}
             <AnimatedSection>
               <QuestionBlock
-                title={t('quickTest.priority', 'Ta priorité principale')}
+                title={t('quickTest.priority', 'Votre priorité principale')}
                 selected={answers.priority}
                 onSelect={(value) => handleSelect('priority', value)}
                 options={[
@@ -350,7 +350,7 @@ export default function QuickTest() {
             {/* Question 3: Risk Tolerance */}
             <AnimatedSection>
               <QuestionBlock
-                title={t('quickTest.riskTolerance', 'Ta tolérance au risque')}
+                title={t('quickTest.riskTolerance', 'Votre tolérance au risque')}
                 selected={answers.riskTolerance}
                 onSelect={(value) => handleSelect('riskTolerance', value)}
                 options={[
@@ -364,7 +364,7 @@ export default function QuickTest() {
             {/* Question 4: Main Constraint */}
             <AnimatedSection>
               <QuestionBlock
-                title={t('quickTest.mainConstraint', 'Ta contrainte dominante')}
+                title={t('quickTest.mainConstraint', 'Votre contrainte dominante')}
                 selected={answers.mainConstraint}
                 onSelect={(value) => handleSelect('mainConstraint', value)}
                 options={[

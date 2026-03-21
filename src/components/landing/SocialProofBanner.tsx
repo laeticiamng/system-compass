@@ -17,7 +17,7 @@ export function TrustBadges() {
   const badges = [
     { label: t('socialProof.trustSecureData', 'Données sécurisées'), icon: <CheckCircle className="w-4 h-4" /> },
     { label: t('socialProof.trustGdpr', 'RGPD compliant'), icon: <CheckCircle className="w-4 h-4" /> },
-    { label: t('socialProof.trustNoAdvice', 'Pas de conseil fiscal'), icon: <CheckCircle className="w-4 h-4" /> },
+    { label: t('socialProof.trustVerifiedSources', 'Sources vérifiées (Banque Mondiale, OCDE)'), icon: <CheckCircle className="w-4 h-4" /> },
   ];
 
   return (

@@ -127,7 +127,7 @@ export function ScamCard({ scam, index }: ScamCardProps) {
               <Flag className="h-4 w-4 text-destructive mt-0.5 shrink-0" />
               <div>
                 <p className="text-xs font-medium text-destructive uppercase tracking-wide">
-                  {t('financialIntel.risks', 'Ce que tu risques')}
+                  {t('financialIntel.risks', 'Ce que vous risquez')}
                 </p>
                 <div className="flex flex-wrap gap-1 mt-1">
                   {scam.risks.map((risk, i) => (
