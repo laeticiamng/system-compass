@@ -10,7 +10,7 @@ import { useAnalytics } from '@/hooks/useAnalytics';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import { Globe, Zap, GitCompareArrows, ArrowRight, Stethoscope } from 'lucide-react';
+import { Globe, Zap, GitCompareArrows, ArrowRight } from 'lucide-react';
 
 const journeys = [
   {
@@ -23,7 +23,7 @@ const journeys = [
     titleKey: 'landing.journeys.explore.title',
     titleDefault: 'Explorer les pays',
     descKey: 'landing.journeys.explore.desc',
-    descDefault: 'Parcours les 80+ fiches pays : fiscalité, visas, coût de la vie, sécurité.',
+    descDefault: 'Parcourez les 80+ fiches pays : fiscalité, visas, coût de la vie, sécurité.',
     ctaKey: 'landing.journeys.explore.cta',
     ctaDefault: 'Explorer',
     time: undefined as string | undefined,
@@ -38,7 +38,7 @@ const journeys = [
     titleKey: 'landing.journeys.test.title',
     titleDefault: 'Test rapide',
     descKey: 'landing.journeys.test.desc',
-    descDefault: 'Réponds à quelques questions et découvre les pays les plus compatibles avec ton profil.',
+    descDefault: 'Répondez à quelques questions et découvrez les pays les plus compatibles avec votre profil.',
     ctaKey: 'landing.journeys.test.cta',
     ctaDefault: 'Faire le test',
     time: '2 min',
@@ -54,26 +54,10 @@ const journeys = [
     titleKey: 'landing.journeys.compare.title',
     titleDefault: 'Comparer',
     descKey: 'landing.journeys.compare.desc',
-    descDefault: 'Compare jusqu\'à 4 pays côte à côte : radar charts, fiscalité, qualité de vie.',
+    descDefault: 'Comparez jusqu\'à 4 pays côte à côte : radar charts, fiscalité, qualité de vie.',
     ctaKey: 'landing.journeys.compare.cta',
     ctaDefault: 'Comparer',
     time: undefined as string | undefined,
-  },
-  {
-    id: 'healthcare',
-    icon: Stethoscope,
-    color: 'text-emerald-500',
-    bgColor: 'bg-emerald-500/10',
-    borderColor: 'border-emerald-500/20',
-    route: '/healthcare',
-    titleKey: 'landing.journeys.healthcare.title',
-    titleDefault: 'Professionnel de Santé',
-    descKey: 'landing.journeys.healthcare.desc',
-    descDefault: 'Reconnaissance de diplôme (🇨🇭 MEBEKO, 🇫🇷 CNOM), autorisation d\'exercer, simulateur fiscal et checklist documents.',
-    ctaKey: 'landing.journeys.healthcare.cta',
-    ctaDefault: 'Parcours santé',
-    time: undefined as string | undefined,
-    highlight: false,
   },
 ];
 
@@ -99,14 +83,14 @@ export function UserJourneys() {
             {t('landing.journeys.label', 'Par où commencer ?')}
           </p>
           <h2 className="font-display text-3xl md:text-4xl font-bold mb-3">
-            {t('landing.journeys.title', 'Choisis ton parcours')}
+            {t('landing.journeys.title', 'Choisissez votre parcours')}
           </h2>
           <p className="text-muted-foreground max-w-lg mx-auto">
-            {t('landing.journeys.subtitle', 'Que tu saches déjà où tu veux aller ou que tu cherches l\'inspiration.')}
+            {t('landing.journeys.subtitle', 'Que vous sachiez déjà où vous voulez aller ou que vous cherchiez l\'inspiration.')}
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {journeys.map((journey, i) => {
             const Icon = journey.icon;
             return (

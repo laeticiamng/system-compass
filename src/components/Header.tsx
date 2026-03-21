@@ -74,12 +74,9 @@ export function Header() {
     { href: '/healthcare', label: t('nav.healthcare', 'Parcours Santé'), icon: Stethoscope },
   ];
 
-  // Pages info/compte — essentielles uniquement (pas de doublons avec nav principale)
+  // Pages info/compte — essentielles uniquement (Guide, Experts, Ressources restent accessibles via footer)
   const accountItems = [
     { href: '/about', label: t('nav.about', 'À propos'), icon: Info },
-    { href: '/how-to-read', label: t('nav.howToRead', 'Guide'), icon: BookOpen },
-    { href: '/experts', label: t('nav.experts', 'Experts'), icon: Users },
-    { href: '/resources', label: t('nav.resources', 'Ressources'), icon: FileText },
     { href: '/b2b', label: t('nav.b2b', 'Solutions B2B'), icon: Building2 },
     { href: '/contact', label: t('nav.contact', 'Contact'), icon: Mail },
   ];
@@ -187,12 +184,12 @@ export function Header() {
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="sm" className="gap-1 h-8 px-2.5 text-xs font-medium text-muted-foreground hover:text-foreground">
                   <Wrench className="w-3.5 h-3.5" />
-                  {t('nav.tools', 'Outils')}
+                  {t('nav.tools', 'Analyser')}
                   <ChevronDown className="w-3 h-3" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start" className="w-56">
-                <DropdownMenuLabel>{t('nav.tools', 'Outils')}</DropdownMenuLabel>
+                <DropdownMenuLabel>{t('nav.tools', 'Analyser')}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 {toolsItems.map((item) => {
                   const Icon = item.icon;
@@ -221,7 +218,7 @@ export function Header() {
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="sm" className="gap-1 h-8 px-2.5 text-xs font-medium text-muted-foreground hover:text-foreground">
                   <Info className="w-3.5 h-3.5" />
-                  {t('nav.info', 'Info')}
+                  {t('nav.info', 'En savoir plus')}
                   <ChevronDown className="w-3 h-3" />
                 </Button>
               </DropdownMenuTrigger>
@@ -355,7 +352,7 @@ export function Header() {
                 
                 {/* Outils */}
                 <div className="border-t border-border my-3" />
-                <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">{t('nav.tools', 'Outils')}</div>
+                <div className="px-4 py-1 text-xs text-muted-foreground uppercase tracking-wider">{t('nav.tools', 'Analyser')}</div>
                 {toolsItems.map((item) => {
                   const Icon = item.icon;
                   const isActive = isRouteActive(item.href);

@@ -138,7 +138,7 @@ export function Footer() {
             </div>
             
             <p className="text-[10px] sm:text-xs text-muted-foreground/70 max-w-md">
-              {t('footer.disclaimer', 'Outil d\'analyse et simulation. Pas de conseil juridique, financier ou médical.')}{' '}
+              {t('footer.disclaimer', 'Outil d\'analyse et simulation. Ne constitue pas un conseil juridique, fiscal ou médical.')}{' '}
               <Link to="/disclaimer" className="text-primary hover:underline">{t('footer.learnMore')}</Link>
             </p>
             <span className="flex items-center gap-1 text-xs sm:text-sm text-muted-foreground">
