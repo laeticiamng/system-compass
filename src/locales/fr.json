@@ -128,9 +128,9 @@
   },
   "common": {
     "appName": "Compass",
-    "tagline": "Compare les pays avant de partir",
-    "positioningLine": "Outil d'analyse et de simulation. Tu décides, nous éclairons.",
-    "disclaimer": "Pas de conseil juridique, financier ou médical. Tu restes responsable de tes décisions.",
+    "tagline": "Comparez les pays avant de partir",
+    "positioningLine": "Outil d'analyse et de simulation. Vous décidez, nous éclairons.",
+    "disclaimer": "Ne constitue pas un conseil juridique, fiscal ou médical. Vous restez responsable de vos décisions.",
     "yes": "Oui",
     "no": "Non",
     "back": "Retour",
@@ -295,9 +295,9 @@
     }
   },
   "journey": {
-    "profile": "Ton profil",
-    "options": "Tes options",
-    "keys": "Tes clés"
+    "profile": "Votre profil",
+    "options": "Vos options",
+    "keys": "Vos clés"
   },
   "insights": {
     "vacationGuide": "Guide Vacances",
@@ -306,7 +306,7 @@
     "disclaimer": "Conseils générés par IA • Vérifiez toujours les informations officielles"
   },
   "steps": {
-    "profile": "Ton profil",
+    "profile": "Votre profil",
     "profileDesc": "Situation, nationalité, ressources",
     "analysis": "Analyse",
     "analysisDesc": "Systèmes, contraintes, options",
@@ -314,8 +314,8 @@
     "consequencesDesc": "Risques, coûts, conditions"
   },
   "responsibility": {
-    "title": "Tu restes responsable de tes décisions.",
-    "description": "Cet outil t'aide à comprendre le système — pas à décider à ta place."
+    "title": "Vous restez responsable de vos décisions.",
+    "description": "Cet outil vous aide à comprendre le système — pas à décider à votre place."
   },
   "profiles": {
     "baker": "Boulanger",
@@ -338,9 +338,9 @@
   },
   "finalCta": {
     "title": "Prêt à éviter des erreurs coûteuses ?",
-    "description": "Cet outil ne promet rien. Il analyse les systèmes et simule les conséquences pour que tu comprennes les règles réelles avant de t'engager.",
+    "description": "Cet outil ne promet rien. Il analyse les systèmes et simule les conséquences pour que vous compreniez les règles réelles avant de vous engager.",
     "button": "Analyser ma situation",
-    "disclaimer": "Outil d'analyse uniquement. Tu restes responsable de tes décisions."
+    "disclaimer": "Outil d'analyse uniquement. Vous restez responsable de vos décisions."
   },
   "disclaimerConsent": {
     "title": "Avant de commencer",
@@ -351,8 +351,8 @@
     "analysisToolDesc": "Compass est un outil éducatif, pas un service de conseil. Simulation ≠ prédiction.",
     "noAdviceTitle": "Pas de conseil professionnel",
     "noAdviceDesc": "Aucun conseil juridique, financier ou médical n'est fourni. Aucun verdict, aucun score de réussite.",
-    "responsibleTitle": "Tu restes responsable",
-    "responsibleDesc": "Tes décisions t'appartiennent. Les résultats dépendent de ton contexte réel.",
+    "responsibleTitle": "Vous restez responsable",
+    "responsibleDesc": "Vos décisions vous appartiennent. Les résultats dépendent de votre contexte réel.",
     "checkbox": "J'ai compris que cet outil est informatif et que je reste responsable de mes décisions.",
     "seeDetails": "Voir les détails complets",
     "accept": "J'ai compris, continuer",
@@ -369,17 +369,17 @@
     "minimal": "Exploration de scénarios",
     "viewLimits": "Voir les limites",
     "contextual": {
-      "default": "Les résultats dépendent de tes choix et de ton contexte réel. Ceci n'est pas une prédiction.",
-      "results": "Ces résultats illustrent des tendances, pas ton avenir. Chaque situation est unique.",
-      "trajectory": "Cette trajectoire montre ce que ce type de choix tend à impliquer, pas ce qui t'arrivera.",
-      "comparison": "Cette comparaison reflète des données générales, pas ta situation personnelle.",
+      "default": "Les résultats dépendent de vos choix et de votre contexte réel. Ceci n'est pas une prédiction.",
+      "results": "Ces résultats illustrent des tendances, pas votre avenir. Chaque situation est unique.",
+      "trajectory": "Cette trajectoire montre ce que ce type de choix tend à impliquer, pas ce qui vous arrivera.",
+      "comparison": "Cette comparaison reflète des données générales, pas votre situation personnelle.",
       "game": "Ce jeu éducatif simule des mécanismes réels, mais reste une simplification de la réalité."
     },
     "antiAuthority": {
       "notPrediction": "Simulation ≠ prédiction",
-      "dependsOnContext": "Dépend de ton contexte réel",
+      "dependsOnContext": "Dépend de votre contexte réel",
       "analysisOnly": "Outil d'analyse uniquement",
-      "youDecide": "Tu décides, nous éclairons",
+      "youDecide": "Vous décidez, nous éclairons",
       "noDiagnosis": "Aucun résultat n'est un diagnostic, une recommandation, ni un avis professionnel. Cela ne remplace aucun conseil spécialisé.",
       "tendsTo": "tend à • pas certain"
     }
@@ -391,11 +391,11 @@
     "title": "Ce que cet outil ne fait PAS",
     "noGuaranteedResults": "Ne promet aucun résultat personnel garanti",
     "noLegalAdvice": "Ne donne pas de conseils juridiques, financiers ou médicaux",
-    "noPredictions": "Ne prédit pas l'avenir ni ta réussite",
+    "noPredictions": "Ne prédit pas l'avenir ni votre réussite",
     "noReplacement": "Ne remplace pas un avocat, comptable ou médecin",
     "noAccuracyGuarantee": "Ne garantit pas l'exactitude des données affichées",
-    "noDecisions": "Ne prend pas les décisions à ta place",
-    "footer": "Cet outil analyse les systèmes et simule les conséquences. La responsabilité des décisions reste la tienne."
+    "noDecisions": "Ne prend pas les décisions à votre place",
+    "footer": "Cet outil analyse les systèmes et simule les conséquences. La responsabilité des décisions reste la vôtre."
   },
   "systemicMistakes": {
     "title": "Erreurs systémiques fréquentes",
@@ -411,11 +411,11 @@
     "stagnation": "Stagnation",
     "exploreExitKeys": "Explorer les stratégies associées",
     "viewExitKeys": "Voir les stratégies",
-    "ctaTitle": "Éviter ces erreurs commence par comprendre ton système",
-    "ctaSubtitle": "Analyse ta situation actuelle, identifie les décalages potentiels, et explore les stratégies adaptées à ton profil.",
+    "ctaTitle": "Éviter ces erreurs commence par comprendre votre système",
+    "ctaSubtitle": "Analysez votre situation actuelle, identifiez les décalages potentiels, et explorez les stratégies adaptées à votre profil.",
     "simulateTrajectory": "Simuler ma trajectoire",
     "understandPyramids": "Comprendre les pyramides",
-    "teaser": "Comprends les décalages qui coûtent des années — pas des jugements, des patterns à éviter.",
+    "teaser": "Comprenez les décalages qui coûtent des années — pas des jugements, des patterns à éviter.",
     "viewMistakes": "Voir les erreurs",
     "mistakes": {
       "countryWithoutUnderstanding": {
@@ -729,13 +729,13 @@
       "point1": "Un cabinet de conseil juridique, fiscal ou médical",
       "point2": "Un coach de vie ou un service de développement personnel",
       "point3": "Une promesse de réussite ou de résultats garantis",
-      "point4": "Un outil qui te dit quoi faire — tu restes responsable de tes décisions"
+      "point4": "Un outil qui vous dit quoi faire — vous restez responsable de vos décisions"
     },
     "modes": {
       "title": "Deux façons d'utiliser l'outil",
       "simulation": {
         "title": "Simulation personnelle",
-        "description": "Analyse TA situation réelle, teste TES options, comprends les conséquences de TES choix potentiels."
+        "description": "Analysez VOTRE situation réelle, testez VOS options, comprenez les conséquences de VOS choix potentiels."
       },
       "game": {
         "title": "Mode éducatif (jeu)",
@@ -747,37 +747,37 @@
       "paragraph1": "Cet outil a été créé par quelqu'un qui a perdu des années à faire des choix sans comprendre le système dans lequel il évoluait.",
       "paragraph2": "Mauvais pays, mauvaise carrière, mauvais timing — pas par manque d'intelligence, mais par manque de grille de lecture.",
       "paragraph3": "Compass est né de cette frustration : offrir à tous l'analyse que seuls les privilégiés reçoivent de leur entourage.",
-      "conclusion": "Ce n'est pas un outil qui te dit quoi faire. C'est un outil qui t'aide à VOIR — pour que TU décides en connaissance de cause."
+      "conclusion": "Ce n'est pas un outil qui vous dit quoi faire. C'est un outil qui vous aide à VOIR — pour que VOUS décidiez en connaissance de cause."
     },
     "forEveryone": {
       "title": "Pour tout le monde",
-      "subtitle": "Quel que soit ton point de départ, tu mérites d'avoir accès à l'information."
+      "subtitle": "Quel que soit votre point de départ, vous méritez d'avoir accès à l'information."
     },
     "faq": {
       "title": "Questions fréquentes",
       "q1": {
         "question": "Est-ce que Compass peut me dire quel pays choisir ?",
-        "answer": "Non. L'outil analyse les pays et simule des scénarios, mais la décision finale t'appartient. Nous fournissons l'information, tu fais tes propres choix."
+        "answer": "Non. L'outil analyse les pays et simule des scénarios, mais la décision finale vous appartient. Nous fournissons l'information, vous faites vos propres choix."
       },
       "q2": {
         "question": "Les données sont-elles fiables ?",
-        "answer": "Nous utilisons des sources publiques (indices de corruption, données fiscales, classements passeports). Ces données sont indicatives et peuvent évoluer. Vérifie toujours auprès de sources officielles avant toute décision importante."
+        "answer": "Nous utilisons des sources publiques (indices de corruption, données fiscales, classements passeports). Ces données sont indicatives et peuvent évoluer. Vérifiez toujours auprès de sources officielles avant toute décision importante."
       },
       "q3": {
         "question": "Quelle différence entre \"Ma simulation\" et \"Mode éducatif\" ?",
-        "answer": "\"Ma simulation\" (Stratégies) analyse TA vraie situation avec TES paramètres. Le \"Mode éducatif\" te fait incarner un personnage FICTIF aléatoire pour comprendre les mécanismes sans t'impliquer personnellement."
+        "answer": "\"Ma simulation\" (Stratégies) analyse VOTRE vraie situation avec VOS paramètres. Le \"Mode éducatif\" vous fait incarner un personnage FICTIF aléatoire pour comprendre les mécanismes sans vous impliquer personnellement."
       },
       "q4": {
         "question": "Est-ce gratuit ?",
-        "answer": "Oui, l'outil est gratuit. Tu peux créer un compte pour synchroniser tes données entre appareils, mais ce n'est pas obligatoire."
+        "answer": "Oui, l'outil est gratuit. Vous pouvez créer un compte pour synchroniser vos données entre appareils, mais ce n'est pas obligatoire."
       },
       "q5": {
         "question": "Mes données personnelles sont-elles protégées ?",
-        "answer": "Les données de simulation restent sur ton appareil ou dans ton compte personnel. Nous ne vendons pas tes données et ne les partageons avec personne."
+        "answer": "Les données de simulation restent sur votre appareil ou dans votre compte personnel. Nous ne vendons pas vos données et ne les partageons avec personne."
       },
       "q6": {
         "question": "Puis-je utiliser cet outil pour des décisions importantes ?",
-        "answer": "Cet outil est un point de départ pour ta réflexion, pas une source de vérité absolue. Pour des décisions importantes (immigration, fiscalité, santé), consulte toujours des professionnels qualifiés."
+        "answer": "Cet outil est un point de départ pour votre réflexion, pas une source de vérité absolue. Pour des décisions importantes (immigration, fiscalité, santé), consultez toujours des professionnels qualifiés."
       },
       "jsonld": {
         "q1": "Qu'est-ce que Compass ?",
@@ -943,10 +943,10 @@
   },
   "hero": {
     "badge": "Simulateur d'analyse",
-    "title1": "Évite les erreurs coûteuses",
-    "titleHighlight": "avant de t'engager",
+    "title1": "Évitez les erreurs coûteuses",
+    "titleHighlight": "avant de vous engager",
     "title2": "",
-    "subtitle": "Comprends les règles réelles du système. Simule les conséquences avant de décider. Du vendeur de beignets à Dakar au cadre parisien — analyse tes options ici.",
+    "subtitle": "Comprenez les règles réelles du système. Simulez les conséquences avant de décider. Du vendeur de beignets à Dakar au cadre parisien — analysez vos options ici.",
     "discoverProfile": "Simuler ma trajectoire",
     "exploreCountries": "Analyser les systèmes",
     "madeBy": "Créé par quelqu'un qui a perdu des années sans comprendre le système",
@@ -1230,8 +1230,8 @@
     "viewAll": "Voir tout"
   },
   "cta": {
-    "title": "Prêt à analyser tes options ?",
-    "subtitle": "Cet outil ne juge pas et ne conseille pas. Il analyse, simule et t'aide à comprendre les systèmes pour que TU décides en connaissance de cause.",
+    "title": "Prêt à analyser vos options ?",
+    "subtitle": "Cet outil ne juge pas et ne conseille pas. Il analyse, simule et vous aide à comprendre les systèmes pour que VOUS décidiez en connaissance de cause.",
     "button": "Commencer l'analyse"
   },
   "countries": {
