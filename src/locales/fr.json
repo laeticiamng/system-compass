@@ -958,16 +958,16 @@
     "title": "Analyse, simule, comprends",
     "subtitle": "Un outil d'analyse. Pas de promesses, pas de coaching — de l'information pour éviter des erreurs coûteuses.",
     "understand": {
-      "title": "Comprends les règles",
-      "description": "Chaque système a ses règles réelles (souvent cachées). Analyse ce qui est vraiment récompensé ou sanctionné."
+      "title": "Comprenez les règles",
+      "description": "Chaque système a ses règles réelles (souvent cachées). Analysez ce qui est vraiment récompensé ou sanctionné."
     },
     "profile": {
-      "title": "Simule les conséquences",
+      "title": "Simulez les conséquences",
       "description": "Testez différents scénarios avant de vous engager. Comparez les trajectoires, les risques, les coûts réels."
     },
     "playbook": {
-      "title": "Identifie les erreurs",
-      "description": "Repère les erreurs systémiques courantes : mauvais timing, mauvais pays, mauvaise structure. Information factuelle."
+      "title": "Identifiez les erreurs",
+      "description": "Repérez les erreurs systémiques courantes : mauvais timing, mauvais pays, mauvaise structure. Information factuelle."
     }
   },
   "pyramids": {
@@ -1237,7 +1237,7 @@
   "countries": {
     "title": "Explorer les pays",
     "subtitle": "Analyse approfondie de chaque pays : fiscalité, coût de la vie, visas, qualité de vie et plus encore.",
-    "heroTitle1": "Explore",
+    "heroTitle1": "Explorez",
     "heroTitle2": "80+ pays en détail.",
     "heroSubtitle": "Fiscalité, visas, coût de la vie, qualité de vie : tout ce qu'il faut savoir avant de partir.",
     "badge": "{{count}} pays analysés",
@@ -1508,7 +1508,7 @@
     "usa": {
       "name": "États-Unis",
       "region": "Amérique du Nord",
-      "ruleOfGold": "Gagne vite, sécurise les gains, diversifie. Le système récompense la vélocité, pas la stabilité.",
+      "ruleOfGold": "Gagnez vite, sécurisez les gains, diversifiez. Le système récompense la vélocité, pas la stabilité.",
       "pyramid": {
         "top": "Capital et potentiel de croissance",
         "institutions": "Marchés et structures d'opportunités",
@@ -1868,7 +1868,7 @@
     "morocco": {
       "name": "Maroc",
       "region": "Afrique du Nord",
-      "ruleOfGold": "Respecte les codes, construis des relations, reste discret sur le pouvoir.",
+      "ruleOfGold": "Respectez les codes, construisez des relations, restez discret sur le pouvoir.",
       "pyramid": {
         "top": "Monarchie et cercles proches du pouvoir",
         "institutions": "État modernisé avec zones d'ombre",
@@ -2334,7 +2334,7 @@
     "belgium": {
       "name": "Belgique",
       "region": "Europe de l'Ouest",
-      "ruleOfGold": "Le consensus est roi. Navigue le paysage politique complexe avec patience.",
+      "ruleOfGold": "Le consensus est roi. Naviguez le paysage politique complexe avec patience.",
       "pyramid": {
         "top": "Communautés linguistiques et partis politiques",
         "institutions": "Gouvernement fédéral avec complexité régionale",
@@ -2403,7 +2403,7 @@
     "colombia": {
       "name": "Colombie",
       "region": "Amérique du Sud",
-      "ruleOfGold": "Relations d'abord, affaires ensuite. Navigue la complexité avec chaleur et patience.",
+      "ruleOfGold": "Relations d'abord, affaires ensuite. Naviguez la complexité avec chaleur et patience.",
       "pyramid": {
         "top": "Oligarchies économiques et élites politiques",
         "institutions": "État en modernisation mais encore complexe",
@@ -2426,7 +2426,7 @@
     "cuba": {
       "name": "Cuba",
       "region": "Caraïbes",
-      "ruleOfGold": "Survie le système, ne le combats pas. Construisez des alternatives discrètement en naviguant les contraintes.",
+      "ruleOfGold": "Survivez au système, ne le combattez pas. Construisez des alternatives discrètement en naviguant les contraintes.",
       "pyramid": {
         "top": "Direction du Parti et complexe militaro-économique",
         "institutions": "État contrôlant la plupart de l'activité économique",
@@ -2472,7 +2472,7 @@
     "india": {
       "name": "Inde",
       "region": "Asie du Sud",
-      "ruleOfGold": "Navigue la complexité avec des relations. Le formel et l'informel coexistent partout.",
+      "ruleOfGold": "Naviguez la complexité avec des relations. Le formel et l'informel coexistent partout.",
       "pyramid": {
         "top": "Conglomérats d'affaires et dynasties politiques",
         "institutions": "Bureaucratie démocratique mais complexe",
@@ -2495,7 +2495,7 @@
     "italy": {
       "name": "Italie",
       "region": "Europe du Sud",
-      "ruleOfGold": "La bella figura - l'apparence et les relations comptent. Navigue avec patience et style.",
+      "ruleOfGold": "La bella figura - l'apparence et les relations comptent. Naviguez avec patience et style.",
       "pyramid": {
         "top": "Vieilles fortunes et establishment politique",
         "institutions": "Bureaucratie complexe avec variation régionale",
@@ -2518,7 +2518,7 @@
     "mexico": {
       "name": "Mexique",
       "region": "Amérique du Nord",
-      "ruleOfGold": "Relations et confiance avant les affaires. Navigue la complexité avec patience et palanca.",
+      "ruleOfGold": "Relations et confiance avant les affaires. Naviguez la complexité avec patience et palanca.",
       "pyramid": {
         "top": "Oligarchies économiques et élites politiques",
         "institutions": "Système fédéral complexe avec variation régionale",
@@ -2564,7 +2564,7 @@
     "peru": {
       "name": "Pérou",
       "region": "Amérique du Sud",
-      "ruleOfGold": "Relations et patience. Navigue l'informalité avec des connexions et une compréhension culturelle.",
+      "ruleOfGold": "Relations et patience. Naviguez l'informalité avec des connexions et une compréhension culturelle.",
       "pyramid": {
         "top": "Élites économiques et establishment politique",
         "institutions": "En modernisation mais encore informelles",
@@ -2587,7 +2587,7 @@
     "poland": {
       "name": "Pologne",
       "region": "Europe Centrale",
-      "ruleOfGold": "Travaille dur, respecte la tradition, construis lentement. Le système récompense la persistance et la conformité.",
+      "ruleOfGold": "Travaillez dur, respectez la tradition, construisez lentement. Le système récompense la persistance et la conformité.",
       "pyramid": {
         "top": "Establishment politique et nouvelle élite des affaires",
         "institutions": "Alignées UE mais conscience nationale",
@@ -2633,7 +2633,7 @@
     "russia": {
       "name": "Russie",
       "region": "Europe de l'Est",
-      "ruleOfGold": "Navigue les structures de pouvoir prudemment. Le système formel coexiste avec la réalité informelle.",
+      "ruleOfGold": "Naviguez les structures de pouvoir prudemment. Le système formel coexiste avec la réalité informelle.",
       "pyramid": {
         "top": "Direction politique et oligarques",
         "institutions": "État puissant avec application sélective",
@@ -2656,7 +2656,7 @@
     "saudi-arabia": {
       "name": "Arabie Saoudite",
       "region": "Moyen-Orient",
-      "ruleOfGold": "Sers la Vision, respecte les codes, extrais la valeur tant que possible.",
+      "ruleOfGold": "Servez la Vision, respectez les codes, extrayez la valeur tant que possible.",
       "pyramid": {
         "top": "Famille royale et priorités Vision 2030",
         "institutions": "État en modernisation avec codes stricts",
@@ -2679,7 +2679,7 @@
     "south-africa": {
       "name": "Afrique du Sud",
       "region": "Afrique Subsaharienne",
-      "ruleOfGold": "Navigue la complexité avec des réseaux. La nation arc-en-ciel nécessite la compréhension de dynamiques multiples.",
+      "ruleOfGold": "Naviguez la complexité avec des réseaux. La nation arc-en-ciel nécessite la compréhension de dynamiques multiples.",
       "pyramid": {
         "top": "Élites politiques et économiques à travers les communautés",
         "institutions": "Démocratiques mais sous pression",
@@ -2748,7 +2748,7 @@
     "turkey": {
       "name": "Turquie",
       "region": "Moyen-Orient",
-      "ruleOfGold": "Navigue le pont entre les mondes. Relations et adaptabilité sont essentielles.",
+      "ruleOfGold": "Naviguez le pont entre les mondes. Relations et adaptabilité sont essentielles.",
       "pyramid": {
         "top": "Direction politique et conglomérats d'affaires",
         "institutions": "État centralisant avec ambition économique",
@@ -2771,7 +2771,7 @@
     "venezuela": {
       "name": "Venezuela",
       "region": "Amérique du Sud",
-      "ruleOfGold": "Survie et construis des alternatives. Le système récompense ceux qui créent leurs propres opportunités.",
+      "ruleOfGold": "Survivez et construisez des alternatives. Le système récompense ceux qui créent leurs propres opportunités.",
       "pyramid": {
         "top": "Élite politique et classe connectée",
         "institutions": "État contrôlant l'économie avec dysfonctionnement",
@@ -2975,10 +2975,10 @@
         "items": [
           "Auditez votre position financière actuelle",
           "Identifiez votre compétence exportable principale",
-          "Sécurise tous les documents d'identité",
-          "Commence un fonds d'urgence (même 50€/mois)",
+          "Sécurisez tous les documents d'identité",
+          "Commencez un fonds d'urgence (même 50€/mois)",
           "Cartographiez la valeur de votre réseau actuel",
-          "Recherche une destination potentielle"
+          "Recherchez une destination potentielle"
         ]
       },
       "preMove": {
@@ -8020,7 +8020,7 @@
     },
     "cta": {
       "title": "Éviter ces erreurs commence par comprendre votre système",
-      "subtitle": "Analyse votre situation actuelle, identifie les décalages potentiels, et explore les stratégies adaptées à votre profil.",
+      "subtitle": "Analysez votre situation actuelle, identifiez les décalages potentiels, et explorez les stratégies adaptées à votre profil.",
       "simulateTrajectory": "Simuler ma trajectoire",
       "viewExitKeys": "Voir les Stratégies"
     }
@@ -10035,7 +10035,7 @@
         "subtitle": "Responsabilité personnelle et contraintes structurelles",
         "s1": {
           "title": "Un faux dilemme",
-          "p1": "D'un côté, le discours du \"tout est possible si vous y crois\". De l'autre, le fatalisme systémique : \"le système est contre vous\".",
+          "p1": "D'un côté, le discours du \"tout est possible si vous y croyez\". De l'autre, le fatalisme systémique : \"le système est contre vous\".",
           "p2": "Les deux sont vrais — et faux. La réalité est plus nuancée : nous agissons dans des systèmes qui nous contraignent ET nous offrent des possibilités."
         },
         "s2": {
@@ -10394,8 +10394,8 @@
     "typicalTargets": "Cibles typiques",
     "redFlags": "Signaux d'alerte",
     "psychologicalTactics": "Tactiques psychologiques",
-    "risks": "Ce que vous risques",
-    "protection": "Comment te protéger",
+    "risks": "Ce que vous risquez",
+    "protection": "Comment vous protéger",
     "whereToVerify": "Où vérifier",
     "whereToReport": "Où signaler",
     "whySafer": "Pourquoi c'est plus sûr",
@@ -10669,9 +10669,9 @@
   },
   "pricingWidget": {
     "badge": "Gratuit pour commencer",
-    "title": "Commence gratuitement.",
-    "subtitle": "Évolue selon vos besoins.",
-    "description": "Accède aux analyses de base gratuitement. Débloque les fonctionnalités avancées quand vous en as besoin.",
+    "title": "Commencez gratuitement.",
+    "subtitle": "Évoluez selon vos besoins.",
+    "description": "Accédez aux analyses de base gratuitement. Débloquez les fonctionnalités avancées quand vous en avez besoin.",
     "free": "Gratuit",
     "freeFeature1": "Analyse de base",
     "freeFeature2": "Tous les simulateurs",
