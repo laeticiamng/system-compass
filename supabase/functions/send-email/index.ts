@@ -48,7 +48,8 @@ Deno.serve(async (req) => {
       throw new Error('Email is required')
     }
 
-    console.log(`[send-email] Sending ${type || 'welcome'} email to ${email} (by user ${claimsData.claims.sub})`)
+    const maskedEmail = email.replace(/^(.{2})(.*)(@.*)$/, '$1***$3');
+    console.log(`[send-email] Sending ${type || 'welcome'} email to ${maskedEmail} (by user ${String(claimsData.claims.sub).slice(0, 8)}...)`)
 
     const supabaseUrl = Deno.env.get('SUPABASE_URL') ?? ''
 
@@ -63,8 +64,11 @@ Deno.serve(async (req) => {
       })
     )
 
+    const senderDomain = Deno.env.get('EMAIL_SENDER_DOMAIN') || 'system-compass.app';
+    const senderFrom = `Compass <noreply@${senderDomain}>`;
+
     const { data, error } = await resend.emails.send({
-      from: 'Compass <noreply@emotionscare.com>',
+      from: senderFrom,
       to: [email],
       subject: 'Bienvenue sur Compass 🧭',
       html,

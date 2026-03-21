@@ -17,26 +17,44 @@ const logStep = (step: string, details?: unknown) => {
   console.log(`[STRIPE-WEBHOOK] ${step}${detailsStr}`);
 };
 
-// Map Stripe price IDs to subscription tiers
-const PRICE_TO_TIER: Record<string, string> = {
-  "price_1SxpOSDFa5Y9NR1I05modzpV": "premium",
-  "price_1SxTE4DFa5Y9NR1IeeHU7qNb": "premium", // legacy price
-};
-
 async function getSubscriptionTierFromPriceId(priceId: string): Promise<string> {
-  // First check our hardcoded map
-  if (PRICE_TO_TIER[priceId]) {
-    return PRICE_TO_TIER[priceId];
-  }
-  
-  // Fallback: check the subscription_plans table
-  const { data } = await supabaseAdmin
+  // Look up tier from subscription_plans table (single source of truth)
+  const { data, error } = await supabaseAdmin
     .from("subscription_plans")
     .select("tier")
     .eq("stripe_price_id", priceId)
+    .eq("active", true)
     .maybeSingle();
-  
-  return data?.tier || "premium";
+
+  if (error) {
+    logStep("Plan lookup error", { priceId, error: error.message });
+  }
+
+  if (data?.tier) {
+    return data.tier;
+  }
+
+  // Fallback: also try matching by product ID via the Stripe price object
+  try {
+    const price = await stripe.prices.retrieve(priceId);
+    const productId = typeof price.product === 'string' ? price.product : price.product.id;
+    const { data: productData } = await supabaseAdmin
+      .from("subscription_plans")
+      .select("tier")
+      .eq("stripe_product_id", productId)
+      .eq("active", true)
+      .maybeSingle();
+
+    if (productData?.tier) {
+      logStep("Resolved tier via product ID", { priceId, productId, tier: productData.tier });
+      return productData.tier;
+    }
+  } catch (e) {
+    logStep("Product lookup fallback failed", { priceId, error: String(e) });
+  }
+
+  logStep("WARNING: No plan mapping found, defaulting to premium", { priceId });
+  return "premium";
 }
 
 async function updateUserSubscription(
@@ -56,7 +74,8 @@ async function updateUserSubscription(
   if (!email) {
     throw new Error("Customer email not found");
   }
-  logStep("Found customer email", { email });
+  const maskedEmail = email.replace(/^(.{2})(.*)(@.*)$/, '$1***$3');
+  logStep("Found customer email", { email: maskedEmail });
 
   // Find user by email in auth.users
   const { data: users, error: userError } = await supabaseAdmin.auth.admin.listUsers();
@@ -66,7 +85,7 @@ async function updateUserSubscription(
 
   const user = users.users.find((u) => u.email === email);
   if (!user) {
-    logStep("No user found with email, skipping update", { email });
+    logStep("No user found with email, skipping update", { email: maskedEmail });
     return;
   }
 

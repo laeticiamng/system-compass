@@ -80,8 +80,8 @@ interface CaseStudy {
   sources?: string[];
 }
 
-// Mock case studies
-const mockCaseStudies: CaseStudy[] = [
+// Dev-only placeholder data — not shown in production
+const mockCaseStudies: CaseStudy[] = !import.meta.env.DEV ? [] : [
   {
     id: 'case-1',
     title: 'Expatriation Tech vers Lisbonne',

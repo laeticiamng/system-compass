@@ -240,11 +240,13 @@ serve(async (req) => {
           }
 
           notificationsSent.push(email);
-          logStep("Email sent", { email, deadlineCount: deadlines.length });
+          const maskedEmail = email.replace(/^(.{2})(.*)(@.*)$/, '$1***$3');
+          logStep("Email sent", { email: maskedEmail, deadlineCount: deadlines.length });
         } catch (emailError) {
           const errorMsg = emailError instanceof Error ? emailError.message : String(emailError);
-          errors.push(`Failed to send to ${email}: ${errorMsg}`);
-          logStep("Email error", { email, error: errorMsg });
+          const maskedEmail = email.replace(/^(.{2})(.*)(@.*)$/, '$1***$3');
+          errors.push(`Failed to send to ${maskedEmail}: ${errorMsg}`);
+          logStep("Email error", { email: maskedEmail, error: errorMsg });
         }
       }
     } else {

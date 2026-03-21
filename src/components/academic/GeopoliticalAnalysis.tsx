@@ -79,8 +79,8 @@ interface GeopoliticalAnalysisProps {
   onExportReport?: () => void;
 }
 
-// Mock data for demonstration
-const mockPowerIndices: PowerIndex[] = [
+// Dev-only placeholder data — not shown in production
+const mockPowerIndices: PowerIndex[] = !import.meta.env.DEV ? [] : [
   { dimension: 'Économique', score: 76, global_rank: 7, trend: 'down', details: 'PIB nominal en recul relatif, coûts énergétiques post-Ukraine, dette publique élevée (112% PIB)' },
   { dimension: 'Militaire', score: 78, global_rank: 5, trend: 'up', details: 'Budget défense porté à 2.4% PIB (post-Ukraine). Industrie de défense en expansion. OTAN renforcé.' },
   { dimension: 'Diplomatique', score: 82, global_rank: 5, trend: 'down', details: 'Siège ONU, G7. Influence réduite au Sahel (retrait Mali/Burkina/Niger). Médiation Moyen-Orient limitée.' },
@@ -89,7 +89,7 @@ const mockPowerIndices: PowerIndex[] = [
   { dimension: 'Juridique', score: 73, global_rank: 9, trend: 'down', details: 'État de droit sous tension. Réformes contestées. Mais arbitrage international reste fort (ICC Paris).' },
 ];
 
-const mockInstitutionalIndicators: InstitutionalIndicator[] = [
+const mockInstitutionalIndicators: InstitutionalIndicator[] = !import.meta.env.DEV ? [] : [
   { name: 'Ease of Doing Business', value: 32, source: 'World Bank', year: 2025, interpretation: 'Top 20% mondial — mais lourdeur administrative persistante' },
   { name: 'Corruption Perception Index', value: 69, source: 'Transparency International', year: 2025, interpretation: 'Légère dégradation — affaires de financement politique' },
   { name: 'Rule of Law Index', value: 0.71, source: 'World Justice Project', year: 2025, interpretation: 'État de droit sous tension (mouvements sociaux, réformes contestées)' },
@@ -100,7 +100,7 @@ const mockInstitutionalIndicators: InstitutionalIndicator[] = [
   { name: 'Press Freedom Index', value: 28, source: 'RSF', year: 2025, interpretation: 'Situation satisfaisante mais pressions croissantes' },
 ];
 
-const mockLegalFrameworks: LegalFramework[] = [
+const mockLegalFrameworks: LegalFramework[] = !import.meta.env.DEV ? [] : [
   {
     domain: 'Droit des sociétés',
     framework: 'Code de Commerce, Loi PACTE 2019',
@@ -138,7 +138,7 @@ const mockLegalFrameworks: LegalFramework[] = [
   },
 ];
 
-const mockGeopoliticalRisks: GeopoliticalRisk[] = [
+const mockGeopoliticalRisks: GeopoliticalRisk[] = !import.meta.env.DEV ? [] : [
   {
     category: 'Guerre Russie-Ukraine (impact indirect)',
     level: 'high',
@@ -205,7 +205,7 @@ const mockGeopoliticalRisks: GeopoliticalRisk[] = [
   },
 ];
 
-const mockSoftPower: SoftPowerMetric[] = [
+const mockSoftPower: SoftPowerMetric[] = !import.meta.env.DEV ? [] : [
   { category: 'Culture', score: 95, components: [{ name: 'Musées', value: 98 }, { name: 'Gastronomie', value: 95 }, { name: 'Mode', value: 92 }] },
   { category: 'Éducation', score: 82, components: [{ name: 'Universités', value: 78 }, { name: 'Grandes Écoles', value: 95 }, { name: 'Recherche', value: 73 }] },
   { category: 'Diplomatie', score: 88, components: [{ name: 'ONU', value: 95 }, { name: 'UE', value: 90 }, { name: 'Francophonie', value: 80 }] },

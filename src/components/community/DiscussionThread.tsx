@@ -29,7 +29,8 @@ interface DiscussionThreadProps {
   initialPosts?: ThreadPost[];
 }
 
-const MOCK_POSTS: ThreadPost[] = [
+// Dev-only placeholder data — not shown in production
+const DEV_MOCK_POSTS: ThreadPost[] = import.meta.env.DEV ? [
   {
     id: '1',
     author: 'Utilisateur·rice',
@@ -65,12 +66,12 @@ const MOCK_POSTS: ThreadPost[] = [
     tags: ['UAE', 'Golden Visa', 'Freelance'],
     replies: [],
   },
-];
+] : [];
 
 export function DiscussionThread({ 
   title = "Discussions Communauté", 
   category: _category = "general",
-  initialPosts = MOCK_POSTS 
+  initialPosts = DEV_MOCK_POSTS
 }: DiscussionThreadProps) {
   const { user } = useAuth();
   const [posts, setPosts] = useState<ThreadPost[]>(initialPosts);
