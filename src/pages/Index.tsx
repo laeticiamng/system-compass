@@ -1,6 +1,7 @@
 /**
  * Index - Landing page simplifiée et optimisée
- * Structure : Hero → Parcours → Comment ça marche → Exemple pays → FAQ → Pricing teaser → CTA final
+ * Structure : Hero → Parcours → Comment ça marche → Exemple pays → FAQ → Pricing → CTA final
+ * UX: FAQ before pricing (answer objections then offer), TrustBadges near hero CTA, reduced-motion support
  */
 
 import { useEffect } from 'react';
@@ -80,24 +81,24 @@ export default function Index() {
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,hsl(var(--primary)/0.12)_0%,transparent_50%)]" />
           {/* Layer 1: Secondary ambient glow */}
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_70%_80%,hsl(var(--primary)/0.06)_0%,transparent_60%)]" />
-          {/* Layer 2: Rotating globe with depth offset */}
+          {/* Layer 2: Rotating globe with depth offset — reduced on mobile, respects prefers-reduced-motion */}
           <motion.div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px]"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] motion-reduce:hidden"
             animate={{ rotate: 360 }}
             transition={{ duration: 90, repeat: Infinity, ease: "linear" }}
             style={{ filter: 'blur(0.5px)' }}
           >
             <Globe className="w-full h-full text-primary/[0.03]" />
           </motion.div>
-          {/* Layer 3: Decorative floating orbs */}
+          {/* Layer 3: Decorative floating orbs — hidden when reduced motion preferred */}
           <motion.div
-            className="absolute top-[20%] left-[15%] w-32 h-32 rounded-full"
+            className="absolute top-[20%] left-[15%] w-32 h-32 rounded-full motion-reduce:hidden"
             style={{ background: 'radial-gradient(circle, hsl(var(--primary) / 0.08) 0%, transparent 70%)' }}
             animate={{ y: [-10, 10, -10], x: [-5, 5, -5] }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           />
           <motion.div
-            className="absolute bottom-[30%] right-[10%] w-48 h-48 rounded-full"
+            className="absolute bottom-[30%] right-[10%] w-48 h-48 rounded-full motion-reduce:hidden"
             style={{ background: 'radial-gradient(circle, hsl(280 60% 50% / 0.05) 0%, transparent 70%)' }}
             animate={{ y: [10, -10, 10], x: [5, -5, 5] }}
             transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
@@ -135,10 +136,13 @@ export default function Index() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-6"
           >
             {t('landing.hero.subtitle', 'Fiscalité, coût de la vie, visas, qualité de vie : comparez 80+ pays en 2 minutes et trouvez celui qui vous correspond.')}
           </motion.p>
+
+          {/* Trust badges — early credibility signal */}
+          <TrustBadges />
 
           {/* CTA principal */}
           <motion.div
@@ -188,7 +192,6 @@ export default function Index() {
               </motion.div>
             ))}
           </div>
-          <TrustBadges />
         </div>
       </section>
 
@@ -320,34 +323,7 @@ export default function Index() {
 
       {/* ConflictZonesMap and TestimonialsSection removed — stats already in hero, conflict map too anxiogenic for landing */}
 
-      {/* ========== PRICING TEASER COMPACT ========== */}
-      <section className="py-16 md:py-24 bg-muted/30">
-        <div className="container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="font-display text-2xl md:text-3xl font-bold mb-4">
-              {t('landing.pricingTeaser.title', 'Gratuit pour commencer, Premium pour aller plus loin')}
-            </h2>
-            <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-              {t('landing.pricingTeaser.subtitle', 'Explorez 80+ pays gratuitement. Passez au Premium à 9,90€/mois pour les analyses avancées et le simulateur fiscal.')}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
-              <Button onClick={() => navigate('/pricing')} className="gap-2">
-                {t('landing.pricingTeaser.cta', 'Voir les tarifs')}
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-              <Button variant="outline" onClick={() => navigate('/auth')} className="gap-2">
-                {t('landing.pricingTeaser.freeCta', 'Commencer gratuitement')}
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ========== FAQ MINI ========== */}
+      {/* ========== FAQ — before pricing (answer objections, then offer) ========== */}
       <section className="py-20 md:py-32 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -421,6 +397,33 @@ export default function Index() {
               </AccordionItem>
             </motion.div>
           </Accordion>
+        </div>
+      </section>
+
+      {/* ========== PRICING TEASER COMPACT ========== */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="font-display text-2xl md:text-3xl font-bold mb-4">
+              {t('landing.pricingTeaser.title', 'Gratuit pour commencer, Premium pour aller plus loin')}
+            </h2>
+            <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
+              {t('landing.pricingTeaser.subtitle', 'Explorez 80+ pays gratuitement. Passez au Premium à 9,90€/mois pour les analyses avancées et le simulateur fiscal.')}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+              <Button onClick={() => navigate('/pricing')} className="gap-2">
+                {t('landing.pricingTeaser.cta', 'Voir les tarifs')}
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+              <Button variant="outline" onClick={() => navigate('/auth')} className="gap-2">
+                {t('landing.pricingTeaser.freeCta', 'Commencer gratuitement')}
+              </Button>
+            </div>
+          </motion.div>
         </div>
       </section>
 
