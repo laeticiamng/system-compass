@@ -11,7 +11,6 @@ import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import { useCountries, countriesSeed } from '@/lib/countries-data';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { CountryCard } from '@/components/CountryCard';
 import { useAuth } from '@/hooks/useAuth';
 import { useAnalytics } from '@/hooks/useAnalytics';
@@ -24,7 +23,6 @@ import {
   Play,
   CheckCircle,
   Zap,
-  Shield,
 } from 'lucide-react';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 import { TrustBadges } from '@/components/landing/SocialProofBanner';
