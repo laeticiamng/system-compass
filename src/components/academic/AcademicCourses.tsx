@@ -60,7 +60,7 @@ interface Quiz {
   source?: string;
 }
 
-// Mock data
+// PLACEHOLDER: Replace with real data from Supabase when academic courses are implemented
 const mockCourses: Course[] = [
   {
     id: 'course-1',

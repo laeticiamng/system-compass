@@ -80,7 +80,7 @@ interface CaseStudy {
   sources?: string[];
 }
 
-// Mock case studies
+// PLACEHOLDER: Replace with real data from Supabase when case study system is implemented
 const mockCaseStudies: CaseStudy[] = [
   {
     id: 'case-1',

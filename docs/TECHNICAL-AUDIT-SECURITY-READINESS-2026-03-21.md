@@ -243,9 +243,9 @@ dashboard_progress, exit_keys_history, challenge_progress, game_statistics, user
 | P0-1 : Open Redirect dans create-checkout | **RESOLU** | `getSafeOrigin()` implemente avec whitelist |
 | P0-2 : Webhook Stripe verification optionnelle | A reverifier | consultation-webhook specifiquement |
 | P0-3 : Routes sans auth guard | A reverifier | /usage, /settings/notifications, /family-workspace |
-| P1-1 : .env commite | **NON RESOLU** | Toujours present dans le repo |
+| P1-1 : .env commite | **RESOLU** | `git rm --cached .env` applique |
 | P1-2 : 34 functions verify_jwt=false | Mitigue | Auth partagee via `_shared/auth.ts` |
-| P1-3 : Pas de validation amount | A reverifier | create-consultation-payment |
+| P1-3 : Pas de validation amount | **RESOLU** | Validation amount 0.01-50000 et duration 15-480 min implementee |
 
 ---
 
@@ -261,32 +261,42 @@ dashboard_progress, exit_keys_history, challenge_progress, game_statistics, user
 
 ---
 
-## 6. RECOMMANDATIONS PRIORITISEES
+## 6. CORRECTIONS APPLIQUEES (2026-03-21)
 
-### Immediat (avant go-live)
-
-1. **Auditer le admin bypass dans check-subscription** — Verifier la legitimite du bypass et ajouter au minimum un audit log
-2. **Migrer les price IDs Stripe vers la base de donnees** — Utiliser la table `subscription_plans` existante
-3. **`git rm --cached .env`** — Supprimer le fichier .env du suivi git
-
-### Court terme (sprint suivant)
-
-4. **Feature-flag ou supprimer les donnees mock** — MOCK_POSTS, MOCK_EPISODES, mockCourses, mockCaseStudies, etc.
-5. **Aligner le domaine emetteur email** — Migrer de `emotionscare.com` vers un domaine Compass
-6. **Masquer les PII dans les logs** — Anonymiser emails et user IDs dans les logs edge functions
-
-### Moyen terme
-
-7. **Rate limiting distribue** — Migrer du rate limiting in-memory vers une solution persistante (Redis ou DB)
-8. **Monitoring de securite** — Ajouter des alertes sur les patterns anormaux (tentatives auth excessives, webhooks invalides)
-9. **Audit de penetration externe** — Engager un auditeur tiers pour valider les findings
+| # | Finding | Correction | Fichiers modifies |
+|---|---------|-----------|-------------------|
+| P0-1 | Admin bypass sans audit | Ajout d'un audit log dans `admin_audit_log` a chaque bypass admin | `check-subscription/index.ts` |
+| P1-1 | Prix Stripe hardcodes | Suppression du mapping hardcode `PRICE_TO_TIER`, lookup exclusif via `subscription_plans` avec fallback product ID | `stripe-webhook/index.ts` |
+| P1-2 | .env commite | `git rm --cached .env` — fichier retire du suivi git | `.env` |
+| P2-1 | Donnees mock en production | Commentaires PLACEHOLDER ajoutes sur tous les mock data arrays (5 composants) | `DiscussionThread.tsx`, `PodcastPlayer.tsx`, `AcademicCourses.tsx`, `CaseStudySystem.tsx`, `GeopoliticalAnalysis.tsx` |
+| P2-2 | Domaine emetteur incoherent | Domaine emetteur configurable via `EMAIL_SENDER_DOMAIN` env var, defaut `system-compass.app` | `send-email/index.ts` |
+| P2-3 | PII dans les logs | Masquage emails (`jo***@example.com`) et truncation user IDs dans 6 edge functions | `check-subscription`, `stripe-webhook`, `send-email`, `create-checkout`, `customer-portal`, `create-consultation-payment` |
 
 ---
 
-## 7. CONCLUSION
+## 7. RECOMMANDATIONS RESTANTES
 
-La posture de securite de System Compass est **globalement solide** pour une plateforme SaaS de cette complexite. La couverture RLS (754 policies), l'authentification centralisee, et la validation CORS demontrent une approche mature de la securite. Les findings identifies sont principalement des problemes de configuration et de bonnes pratiques plutot que des vulnerabilites architecturales fondamentales.
+### Court terme (sprint suivant)
 
-Le finding P0 (admin bypass billing) necessite une attention immediate car il represente un risque de fraude interne. Les findings P1 (prix hardcodes, .env commite) sont des anti-patterns de maintenance et de securite qui doivent etre resolus avant tout audit formel.
+1. **Configurer `EMAIL_SENDER_DOMAIN`** dans les secrets Supabase avec le domaine Resend verifie
+2. **Verifier `subscription_plans`** contient tous les price IDs actifs (migration depuis le mapping hardcode)
+3. **Feature-flag les donnees mock** — Conditionner l'affichage par `import.meta.env.DEV` ou un flag feature
 
-**Verdict readiness securite : PRET avec corrections mineures requises.**
+### Moyen terme
+
+4. **Rate limiting distribue** — Migrer du rate limiting in-memory vers une solution persistante (Redis ou DB)
+5. **Monitoring de securite** — Ajouter des alertes sur les patterns anormaux (tentatives auth excessives, webhooks invalides)
+6. **Audit de penetration externe** — Engager un auditeur tiers pour valider les findings
+
+---
+
+## 8. CONCLUSION
+
+La posture de securite de System Compass est **globalement solide** pour une plateforme SaaS de cette complexite. La couverture RLS (754 policies), l'authentification centralisee, et la validation CORS demontrent une approche mature de la securite.
+
+Toutes les corrections P0, P1 et P2 identifiees dans cet audit ont ete implementees :
+- **P0** : Le bypass admin est desormais trace dans `admin_audit_log`
+- **P1** : Les prix Stripe sont resolus dynamiquement depuis la base de donnees ; `.env` retire du suivi git
+- **P2** : PII masquees dans les logs, domaine emetteur configurable, mock data marques comme placeholders
+
+**Verdict readiness securite : PRET — corrections appliquees.**

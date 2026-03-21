@@ -39,6 +39,7 @@ interface Episode {
   category: string;
 }
 
+// PLACEHOLDER: Replace with real data from Supabase when podcast features are implemented
 const MOCK_EPISODES: Episode[] = [
   {
     id: '1',

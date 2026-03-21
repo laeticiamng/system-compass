@@ -79,7 +79,8 @@ serve(async (req) => {
       );
     }
     const user = userData.user;
-    logStep("User authenticated", { userId: user.id, email: user.email });
+    const maskedEmail = user.email.replace(/^(.{2})(.*)(@.*)$/, '$1***$3');
+    logStep("User authenticated", { userId: user.id.slice(0, 8) + '...', email: maskedEmail });
 
     // Get expert info
     const { data: expert, error: expertError } = await supabaseAdmin

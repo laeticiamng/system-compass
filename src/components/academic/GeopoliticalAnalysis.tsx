@@ -79,7 +79,7 @@ interface GeopoliticalAnalysisProps {
   onExportReport?: () => void;
 }
 
-// Mock data for demonstration
+// PLACEHOLDER: Replace with real data from Supabase/API when geopolitical analysis is connected to live sources
 const mockPowerIndices: PowerIndex[] = [
   { dimension: 'Économique', score: 76, global_rank: 7, trend: 'down', details: 'PIB nominal en recul relatif, coûts énergétiques post-Ukraine, dette publique élevée (112% PIB)' },
   { dimension: 'Militaire', score: 78, global_rank: 5, trend: 'up', details: 'Budget défense porté à 2.4% PIB (post-Ukraine). Industrie de défense en expansion. OTAN renforcé.' },

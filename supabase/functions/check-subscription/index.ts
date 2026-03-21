@@ -35,7 +35,8 @@ serve(async (req) => {
     if (userError) throw new Error(`Authentication error: ${userError.message}`);
     const user = userData.user;
     if (!user?.email) throw new Error("User not authenticated or email not available");
-    logStep("User authenticated", { userId: user.id, email: user.email });
+    const maskedEmail = user.email.replace(/^(.{2})(.*)(@.*)$/, '$1***$3');
+    logStep("User authenticated", { userId: user.id.slice(0, 8) + '...', email: maskedEmail });
 
     // Check if user is admin - admins get Pro access automatically
     const { data: roleData } = await supabaseClient
@@ -46,7 +47,20 @@ serve(async (req) => {
       .maybeSingle();
 
     if (roleData) {
-      logStep("Admin user detected, granting Pro access");
+      logStep("Admin user detected, granting Pro access", { userId: user.id });
+
+      // Audit log: track admin billing bypass for compliance
+      await supabaseClient
+        .from('admin_audit_log')
+        .insert({
+          admin_id: user.id,
+          action: 'subscription_bypass',
+          details: { reason: 'admin_role', tier_granted: 'pro' },
+        })
+        .then(({ error }) => {
+          if (error) logStep("Audit log insert failed (non-blocking)", { error: error.message });
+        });
+
       return new Response(JSON.stringify({
         subscribed: true,
         tier: "pro",

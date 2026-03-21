@@ -29,6 +29,7 @@ interface DiscussionThreadProps {
   initialPosts?: ThreadPost[];
 }
 
+// PLACEHOLDER: Replace with real data from Supabase when community features are implemented
 const MOCK_POSTS: ThreadPost[] = [
   {
     id: '1',
