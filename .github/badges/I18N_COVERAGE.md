@@ -1,207 +1,123 @@
 # 🌍 Rapport de Couverture i18n
 
-> Généré le 25/03/2026 10:28:23
+> Généré le 25/03/2026 11:24:40
 
 ## 📊 Résumé Global
 
 | Métrique | Valeur |
 |----------|--------|
 | Langue de référence | EN |
-| Clés totales | 7016 |
-| Traductions présentes | 47720/49112 |
-| **Couverture globale** | **97.2%** |
+| Clés totales | 7012 |
+| Traductions présentes | 49042/49084 |
+| **Couverture globale** | **99.9%** |
 
 ## 📈 Couverture par Langue
 
 | Langue | Code | Présentes | Manquantes | Vides | Couverture |
 |--------|------|-----------|------------|-------|------------|
-| English | en | 7016 | 0 | 1 | ██████████ 100% |
-| Français | fr | 6784 | 232 | 1 | ██████████ 96.7% |
-| Deutsch | de | 6784 | 232 | 0 | ██████████ 96.7% |
-| Español | es | 6784 | 232 | 0 | ██████████ 96.7% |
-| Italiano | it | 6784 | 232 | 0 | ██████████ 96.7% |
-| Nederlands | nl | 6784 | 232 | 0 | ██████████ 96.7% |
-| Português | pt | 6784 | 232 | 0 | ██████████ 96.7% |
+| English | en | 7012 | 0 | 1 | ██████████ 100% |
+| Français | fr | 7005 | 7 | 1 | ██████████ 99.9% |
+| Deutsch | de | 7005 | 7 | 0 | ██████████ 99.9% |
+| Español | es | 7005 | 7 | 0 | ██████████ 99.9% |
+| Italiano | it | 7005 | 7 | 0 | ██████████ 99.9% |
+| Nederlands | nl | 7005 | 7 | 0 | ██████████ 99.9% |
+| Português | pt | 7005 | 7 | 0 | ██████████ 99.9% |
 
 ## 🔍 Clés Manquantes (aperçu)
 
 ### Français (fr)
 
 <details>
-<summary>232 clé(s) manquante(s)</summary>
+<summary>7 clé(s) manquante(s)</summary>
 
 ```
-landing.meta.title
-landing.meta.description
-landing.meta.ogTitle
-landing.meta.ogDescription
-landing.hero.badge
-landing.hero.titleLine1
-landing.hero.titleLine2
-landing.hero.subtitle
-landing.hero.ctaPrimary
-landing.hero.ctaSecondary
-landing.hero.statsCountries
-landing.hero.statsLanguages
-landing.hero.statsSystems
-landing.hero.statsIndicators
-landing.journeys.label
-landing.journeys.title
-landing.journeys.subtitle
-landing.journeys.recommended
-landing.journeys.explore.title
-landing.journeys.explore.desc
-... et 212 autres
+countries.noResultsDesc
+countries.risk
+countries.loadError
+countries.saved
+countries.unsaved
+countries.save
+countries.unsave
 ```
 </details>
 
 ### Deutsch (de)
 
 <details>
-<summary>232 clé(s) manquante(s)</summary>
+<summary>7 clé(s) manquante(s)</summary>
 
 ```
-landing.meta.title
-landing.meta.description
-landing.meta.ogTitle
-landing.meta.ogDescription
-landing.hero.badge
-landing.hero.titleLine1
-landing.hero.titleLine2
-landing.hero.subtitle
-landing.hero.ctaPrimary
-landing.hero.ctaSecondary
-landing.hero.statsCountries
-landing.hero.statsLanguages
-landing.hero.statsSystems
-landing.hero.statsIndicators
-landing.journeys.label
-landing.journeys.title
-landing.journeys.subtitle
-landing.journeys.recommended
-landing.journeys.explore.title
-landing.journeys.explore.desc
-... et 212 autres
+countries.noResultsDesc
+countries.risk
+countries.loadError
+countries.saved
+countries.unsaved
+countries.save
+countries.unsave
 ```
 </details>
 
 ### Español (es)
 
 <details>
-<summary>232 clé(s) manquante(s)</summary>
+<summary>7 clé(s) manquante(s)</summary>
 
 ```
-landing.meta.title
-landing.meta.description
-landing.meta.ogTitle
-landing.meta.ogDescription
-landing.hero.badge
-landing.hero.titleLine1
-landing.hero.titleLine2
-landing.hero.subtitle
-landing.hero.ctaPrimary
-landing.hero.ctaSecondary
-landing.hero.statsCountries
-landing.hero.statsLanguages
-landing.hero.statsSystems
-landing.hero.statsIndicators
-landing.journeys.label
-landing.journeys.title
-landing.journeys.subtitle
-landing.journeys.recommended
-landing.journeys.explore.title
-landing.journeys.explore.desc
-... et 212 autres
+countries.noResultsDesc
+countries.risk
+countries.loadError
+countries.saved
+countries.unsaved
+countries.save
+countries.unsave
 ```
 </details>
 
 ### Italiano (it)
 
 <details>
-<summary>232 clé(s) manquante(s)</summary>
+<summary>7 clé(s) manquante(s)</summary>
 
 ```
-landing.meta.title
-landing.meta.description
-landing.meta.ogTitle
-landing.meta.ogDescription
-landing.hero.badge
-landing.hero.titleLine1
-landing.hero.titleLine2
-landing.hero.subtitle
-landing.hero.ctaPrimary
-landing.hero.ctaSecondary
-landing.hero.statsCountries
-landing.hero.statsLanguages
-landing.hero.statsSystems
-landing.hero.statsIndicators
-landing.journeys.label
-landing.journeys.title
-landing.journeys.subtitle
-landing.journeys.recommended
-landing.journeys.explore.title
-landing.journeys.explore.desc
-... et 212 autres
+countries.noResultsDesc
+countries.risk
+countries.loadError
+countries.saved
+countries.unsaved
+countries.save
+countries.unsave
 ```
 </details>
 
 ### Nederlands (nl)
 
 <details>
-<summary>232 clé(s) manquante(s)</summary>
+<summary>7 clé(s) manquante(s)</summary>
 
 ```
-landing.meta.title
-landing.meta.description
-landing.meta.ogTitle
-landing.meta.ogDescription
-landing.hero.badge
-landing.hero.titleLine1
-landing.hero.titleLine2
-landing.hero.subtitle
-landing.hero.ctaPrimary
-landing.hero.ctaSecondary
-landing.hero.statsCountries
-landing.hero.statsLanguages
-landing.hero.statsSystems
-landing.hero.statsIndicators
-landing.journeys.label
-landing.journeys.title
-landing.journeys.subtitle
-landing.journeys.recommended
-landing.journeys.explore.title
-landing.journeys.explore.desc
-... et 212 autres
+countries.noResultsDesc
+countries.risk
+countries.loadError
+countries.saved
+countries.unsaved
+countries.save
+countries.unsave
 ```
 </details>
 
 ### Português (pt)
 
 <details>
-<summary>232 clé(s) manquante(s)</summary>
+<summary>7 clé(s) manquante(s)</summary>
 
 ```
-landing.meta.title
-landing.meta.description
-landing.meta.ogTitle
-landing.meta.ogDescription
-landing.hero.badge
-landing.hero.titleLine1
-landing.hero.titleLine2
-landing.hero.subtitle
-landing.hero.ctaPrimary
-landing.hero.ctaSecondary
-landing.hero.statsCountries
-landing.hero.statsLanguages
-landing.hero.statsSystems
-landing.hero.statsIndicators
-landing.journeys.label
-landing.journeys.title
-landing.journeys.subtitle
-landing.journeys.recommended
-landing.journeys.explore.title
-landing.journeys.explore.desc
-... et 212 autres
+countries.noResultsDesc
+countries.risk
+countries.loadError
+countries.saved
+countries.unsaved
+countries.save
+countries.unsave
 ```
 </details>
 
