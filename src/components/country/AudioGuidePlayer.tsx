@@ -6,7 +6,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
-import { type AudioSection, type VoiceStyle } from '@/hooks/useCountryAudioGuide';
+import { useCountryAudioGuide, type AudioSection, type VoiceStyle } from '@/hooks/useCountryAudioGuide';
 import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
