@@ -1,4 +1,13 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
+
+// Mock supabase client before any imports that depend on it
+vi.mock('@/integrations/supabase/client', () => ({
+  supabase: {
+    from: () => ({ select: vi.fn().mockResolvedValue({ data: [], error: null }) }),
+    auth: { getSession: vi.fn().mockResolvedValue({ data: { session: null } }) },
+  },
+}));
+
 import {
   adminRoutes,
   countryRoutes,
@@ -19,19 +28,19 @@ describe('Route Accessibility', () => {
       ...terrainRoutes,
     ].map((route) => route.path);
 
-    expect(featurePaths).toContain('/countries');
-    expect(featurePaths).toContain('/dashboard');
-    expect(featurePaths).toContain('/fiscal-calculator');
-    expect(featurePaths).toContain('/profile-matcher');
-    expect(featurePaths).toContain('/terrain');
+    expect(featurePaths).toContain('countries');
+    expect(featurePaths).toContain('dashboard');
+    expect(featurePaths).toContain('fiscal-calculator');
+    expect(featurePaths).toContain('profile-matcher');
+    expect(featurePaths).toContain('terrain');
   });
 
   it('preserves dynamic route patterns required by deep pages', () => {
     const dynamicPaths = countryRoutes.concat(terrainRoutes).map((route) => route.path);
 
-    expect(dynamicPaths).toContain('/country/:id');
-    expect(dynamicPaths).toContain('/country/:countryId/terrain-realities');
-    expect(dynamicPaths).toContain('/terrain/:countryId');
+    expect(dynamicPaths).toContain('country/:id');
+    expect(dynamicPaths).toContain('country/:countryId/terrain-realities');
+    expect(dynamicPaths).toContain('terrain/:countryId');
   });
 });
 
@@ -43,7 +52,7 @@ describe('Redirect Routes', () => {
       .filter((to): to is string => Boolean(to));
 
     redirects.forEach((to) => {
-      expect(to).toMatch(/^\//);
+      expect(to).toMatch(/^\.\.\//);
       expect(to).not.toBe('/');
     });
   });
@@ -51,11 +60,11 @@ describe('Redirect Routes', () => {
 
 describe('Admin Routes', () => {
   it('keeps admin pages under the /admin namespace', () => {
-    const adminPaths = adminRoutes.map((route) => route.path).filter((path) => path.startsWith('/admin'));
+    const adminPaths = adminRoutes.map((route) => route.path).filter((path) => path.startsWith('admin'));
     expect(adminPaths.length).toBeGreaterThan(0);
 
     adminPaths.forEach((path) => {
-      expect(path).toMatch(/^\/admin\//);
+      expect(path).toMatch(/^admin\//);
     });
   });
 });

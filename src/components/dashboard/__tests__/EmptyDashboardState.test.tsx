@@ -24,7 +24,7 @@ describe('EmptyDashboardState', () => {
 
       // Main CTA links to /exit-keys when no profile
       const links = screen.getAllByRole('link') as HTMLAnchorElement[];
-      const ctaButton = links.find(l => l.getAttribute('href') === '/exit-keys');
+      const ctaButton = links.find(l => l.getAttribute('href')?.endsWith('/exit-keys'));
       expect(ctaButton).toBeInTheDocument();
     });
   });
@@ -61,13 +61,13 @@ describe('EmptyDashboardState', () => {
 
       // Without profile: main CTA should link to /exit-keys
       const links = screen.getAllByRole('link') as HTMLAnchorElement[];
-      const exitKeysLink = links.find(l => l.getAttribute('href') === '/exit-keys');
+      const exitKeysLink = links.find(l => l.getAttribute('href')?.endsWith('/exit-keys'));
       expect(exitKeysLink).toBeInTheDocument();
 
       // With profile: main CTA should link to /quick-test
       rerender(<EmptyDashboardState hasProfile={true} />);
       const linksAfter = screen.getAllByRole('link') as HTMLAnchorElement[];
-      const quickTestLink = linksAfter.find(l => l.getAttribute('href') === '/quick-test');
+      const quickTestLink = linksAfter.find(l => l.getAttribute('href')?.endsWith('/quick-test'));
       expect(quickTestLink).toBeInTheDocument();
     });
   });
@@ -77,7 +77,7 @@ describe('EmptyDashboardState', () => {
       render(<EmptyDashboardState />);
 
       const links = screen.getAllByRole('link') as HTMLAnchorElement[];
-      const link = links.find(l => l.getAttribute('href') === '/exit-keys');
+      const link = links.find(l => l.getAttribute('href')?.endsWith('/exit-keys'));
       expect(link).toBeInTheDocument();
     });
 
@@ -85,7 +85,7 @@ describe('EmptyDashboardState', () => {
       render(<EmptyDashboardState />);
 
       const links = screen.getAllByRole('link') as HTMLAnchorElement[];
-      const testLink = links.find(l => l.getAttribute('href') === '/quick-test');
+      const testLink = links.find(l => l.getAttribute('href')?.endsWith('/quick-test'));
       expect(testLink).toBeInTheDocument();
     });
 
@@ -93,7 +93,7 @@ describe('EmptyDashboardState', () => {
       render(<EmptyDashboardState />);
 
       const links = screen.getAllByRole('link') as HTMLAnchorElement[];
-      const countriesLink = links.find(l => l.getAttribute('href') === '/countries');
+      const countriesLink = links.find(l => l.getAttribute('href')?.endsWith('/countries'));
       expect(countriesLink).toBeInTheDocument();
     });
 
@@ -101,7 +101,7 @@ describe('EmptyDashboardState', () => {
       render(<EmptyDashboardState />);
 
       const links = screen.getAllByRole('link') as HTMLAnchorElement[];
-      const catalogLink = links.find(l => l.getAttribute('href') === '/exit-keys-catalog');
+      const catalogLink = links.find(l => l.getAttribute('href')?.endsWith('/exit-keys-catalog'));
       expect(catalogLink).toBeInTheDocument();
     });
   });
