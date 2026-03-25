@@ -7,9 +7,11 @@
  * that would otherwise be silently overwritten by JSON.parse()
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const LOCALES_DIR = path.join(__dirname, '../src/locales');
 
 // Colors for console output
