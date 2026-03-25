@@ -362,7 +362,13 @@
     "disclaimerReset": "Disclaimer banner reset",
     "defaultCountry": "البلد par défaut",
     "defaultCountryTooltip": "Les calculateurs utilisent ce بلد par défaut. Changez-le dans les outils.",
-    "selectDefaultCountry": "اختيار le بلد par défaut"
+    "selectDefaultCountry": "اختيار le بلد par défaut",
+    "allTools": "See all tools",
+    "seeAll": "See all",
+    "cgv": "Terms of Service",
+    "legalNotice": "Legal Notice",
+    "privacyPolicy": "Privacy Policy",
+    "contact": "Contact"
   },
   "nav": {
     "home": "الرئيسية",
@@ -419,7 +425,12 @@
     "experts": "Expert Marketplace",
     "partnerServices": "Partner Services",
     "community": "Community",
-    "language": "Language"
+    "language": "Language",
+    "matcher": "Find my country",
+    "fiscalSimulator": "Tax Simulator",
+    "traceJournal": "Decision Journal",
+    "healthcare": "Healthcare Track",
+    "allTools": "All tools →"
   },
   "hero": {
     "badge": "محاكي التحليل",
@@ -518,6 +529,20 @@
       "invalidCredentials": "Invalid email or password",
       "alreadyRegistered": "An account already exists with this email",
       "generic": "An error occurred"
+    },
+    "signupSuccess": "Account created successfully! 🎉",
+    "redirecting": "Redirecting to quick test...",
+    "rememberMe": "Remember me",
+    "continueWithGoogle": "Continue with Google",
+    "continueWithApple": "Continue with Apple",
+    "orWithoutPassword": "Or without password",
+    "magicLink": "Receive a magic link",
+    "magicLinkSent": "Magic link sent! Check your inbox.",
+    "meta": {
+      "title": "Sign In - Compass | Access your account",
+      "description": "Sign in to Compass to access your country analyses, personalized recommendations and dashboard. Create a free account.",
+      "ogTitle": "Sign In - Compass",
+      "ogDescription": "Access your country analyses and personalized strategies."
     }
   },
   "countries": {
@@ -10230,7 +10255,19 @@
       "resource": "Prepare a geographic Plan B"
     },
     "restart": "Restart",
-    "disclaimer": "Simulation ≠ prediction. Exploration only."
+    "disclaimer": "Simulation ≠ prediction. Exploration only.",
+    "meta": {
+      "title": "Quick Expatriation Test in 60 Seconds - Compass",
+      "description": "Discover your expat profile in 60 seconds. Free test: situation, priorities, risk tolerance. Find countries compatible with your profile.",
+      "ogTitle": "Quick Expatriation Test - Compass",
+      "ogDescription": "Discover your expat profile in 60 seconds. Free and personalized test."
+    },
+    "heroTitle1": "Discover your",
+    "heroTitle2": "expat profile.",
+    "error": {
+      "title": "Oops, calculation failed",
+      "description": "We couldn't calculate your profile. Please try again or return to the homepage."
+    }
   },
   "subscription": {
     "tiers": {
@@ -12325,5 +12362,265 @@
     "proFeature2": "Stratégies personnalisées",
     "proFeature3": "Export PDF",
     "cta": "عرض les plans"
+  },
+  "landing": {
+    "meta": {
+      "title": "Compass - Compare 80+ countries for your expatriation",
+      "description": "Country comparison platform for expatriation. Analysis of 80+ countries: taxation, visas, cost of living, quality of life. Free profile test in 2 min.",
+      "ogTitle": "Compass - Compare countries for your expatriation",
+      "ogDescription": "Compare 80+ countries by compatibility with your profile: taxation, visas, cost of living, safety. Free test."
+    },
+    "hero": {
+      "badge": "100% free to start",
+      "titleLine1": "Want to expatriate?",
+      "titleLine2": "Compare countries before you go.",
+      "subtitle": "Taxation, cost of living, visas, quality of life: compare 80+ countries in 2 minutes and find the one that fits you.",
+      "ctaPrimary": "Find my ideal country — free",
+      "ctaSecondary": "Explore countries",
+      "statsCountries": "countries analyzed",
+      "statsLanguages": "languages",
+      "statsSystems": "expat profiles",
+      "statsIndicators": "indicators per country"
+    },
+    "journeys": {
+      "label": "Where to start?",
+      "title": "Choose your path",
+      "subtitle": "Whether you already know where you want to go or you're looking for inspiration.",
+      "recommended": "Recommended",
+      "explore": {
+        "title": "Explore countries",
+        "desc": "Browse 80+ country profiles: taxation, visas, cost of living, safety.",
+        "cta": "Explore"
+      },
+      "test": {
+        "title": "Quick test",
+        "desc": "Answer a few questions and discover the countries most compatible with your profile.",
+        "cta": "Take the test"
+      },
+      "compare": {
+        "title": "Compare",
+        "desc": "Compare up to 4 countries side by side: radar charts, taxation, quality of life.",
+        "cta": "Compare"
+      },
+      "healthcare": {
+        "title": "Healthcare Professional",
+        "desc": "Diploma recognition (🇨🇭 MEBEKO, 🇫🇷 CNOM), licensing, tax simulator and document checklist.",
+        "cta": "Healthcare track"
+      }
+    },
+    "howItWorks": {
+      "label": "How it works",
+      "title": "3 simple steps",
+      "step1Title": "Take the test",
+      "step1Description": "2 minutes to discover your profile and life priorities.",
+      "step2Title": "Compare countries",
+      "step2Description": "Discover how the economic and fiscal system of each country works.",
+      "step3Title": "Get your action plan",
+      "step3Description": "Receive concrete strategies adapted to your situation and goals."
+    },
+    "example": {
+      "label": "Concrete example",
+      "title": "A country profile preview",
+      "description": "Each country is analyzed in depth: economy, risks, opportunities and strategies.",
+      "cta": "See all {{count}} countries analyzed"
+    },
+    "pricing": {
+      "badge": "Free to start",
+      "title": "Choose your plan",
+      "subtitle": "Start for free. Upgrade as you need.",
+      "popular": "Popular",
+      "freeName": "Free",
+      "freeTag": "To discover",
+      "freeFeature1": "Complete profile test",
+      "freeFeature2": "Full country details",
+      "freeFeature3": "80+ countries available",
+      "freeFeature4": "Who succeeds, who struggles in each country",
+      "freeCta": "Start for free",
+      "premiumName": "Premium",
+      "premiumPrice": "from €9.90/month",
+      "premiumFeature1": "Everything in Free plan",
+      "premiumFeature2": "In-depth country analysis",
+      "premiumFeature3": "PDF export & tax simulator",
+      "premiumFeature4": "Recommendations tailored to your profile",
+      "premiumCta": "View plans",
+      "proName": "Pro / B2B",
+      "proPrice": "Custom quote",
+      "proFeature1": "Everything in Premium",
+      "proFeature2": "Personalized guidance",
+      "proFeature3": "Dedicated support & multi-user access",
+      "proCta": "Contact us"
+    },
+    "faq": {
+      "label": "Frequently asked questions",
+      "title": "We answer your questions",
+      "q1": "Is it really free?",
+      "a1": "Yes. The profile test, exploring 80+ countries and basic profiles are 100% free. Advanced features (PDF export, AI recommendations, Pro modules) are reserved for paid plans.",
+      "q2": "Is this legal or tax advice?",
+      "a2": "No. Compass is a simulation and comparison tool. It does not replace a lawyer, tax advisor or immigration consultant. Always consult a professional before making a decision.",
+      "q3": "How is the data calculated?",
+      "a3": "Our data comes from public sources (World Bank, UN, Transparency International, etc.) and is updated regularly. Each country profile indicates its sources.",
+      "q4": "Is Compass suitable for healthcare professionals?",
+      "a4": "Yes. Compass offers a dedicated track for healthcare professionals: diploma recognition (MEBEKO, CNOM), licensing by canton or department, cross-border tax simulator, peer community and specialty-specific document checklist.",
+      "q5": "Can I delete my account and data?",
+      "a5": "Yes. You can delete your account and all associated data at any time from your dashboard settings. Deletion is immediate and irreversible, in compliance with GDPR.",
+      "q6": "Can I export my data?",
+      "a6": "Yes. You can export your comparison results and country analyses as PDF. All your personal data can be downloaded from your account settings.",
+      "jsonld": {
+        "q1": "What is Compass?",
+        "a1": "Compass is a country comparison platform for international relocation. It analyzes 80+ countries: taxation, visas, cost of living, compatible profiles, unwritten rules.",
+        "q2": "How does the expat profile test work?",
+        "a2": "The quick test evaluates your priorities (taxation, quality of life, safety, opportunities) in 2 minutes. It suggests the countries most compatible with your specific profile, unlike generic rankings.",
+        "q3": "Is the service free?",
+        "a3": "Basic access is free: quick test, exploration of 80+ countries, basic comparison. The Premium plan at €9.90/month gives access to strategies, fiscal simulator and detailed analyses.",
+        "q4": "Where does Compass data come from?",
+        "a4": "Data comes from the World Bank, OECD, IMF, Transparency International, Numbeo and government sources. Intelligence is updated regularly via verified sources.",
+        "q5": "Can I compare multiple countries for my expatriation?",
+        "a5": "Yes, the comparison tool allows you to compare up to 4 countries simultaneously on taxation, cost of living, quality of life, visas, safety and more, with radar charts and PDF exports.",
+        "q6": "How is Compass different from classic expatriation guides?",
+        "a6": "Compass analyzes each country in depth (who succeeds, who struggles, unwritten rules) and offers personalized strategies rather than generic rankings.",
+        "q7": "Which countries are covered by Compass?",
+        "a7": "Compass covers 80+ countries: Europe (France, Switzerland, Portugal, Germany...), Americas (USA, Canada, Mexico...), Asia (Thailand, Japan, Singapore...), Middle East (UAE, Qatar...) and Africa.",
+        "q8": "How does the fiscal simulator work?",
+        "a8": "The fiscal simulator calculates your income tax in the destination country and compares it to your current situation. It integrates special regimes, double taxation treaties and legal optimizations."
+      }
+    },
+    "cta": {
+      "titleLine1": "Ready to compare",
+      "titleLine2": "countries?",
+      "subtitle": "Compare, simulate, decide. With full autonomy.",
+      "button": "Start now",
+      "freeNotice": "Free, no credit card required"
+    },
+    "guest": {
+      "mode": "Explore freely",
+      "description": "No account needed to discover.",
+      "cta": "Create an account",
+      "suffix": "to save your research."
+    },
+    "healthcare": {
+      "badge": "Dedicated track",
+      "title": "Are you a healthcare professional?",
+      "description": "Diploma recognition, licensing, social protection and cross-border tax simulator — everything you need to prepare your mobility.",
+      "cta": "Discover the healthcare track",
+      "feature1": "Diploma recognition",
+      "feature1Desc": "🇨🇭 MEBEKO · 🇫🇷 CNOM",
+      "feature2": "Practice authorization",
+      "feature2Desc": "By canton or department",
+      "feature3": "Tax simulator",
+      "feature3Desc": "Health insurance & pension compared",
+      "feature4": "Document checklist",
+      "feature4Desc": "Customized by specialty"
+    }
+  },
+  "socialProof": {
+    "badge": "By the numbers",
+    "title": "A platform built for decision-making",
+    "subtitle": "Verifiable data, detailed analyses, concrete strategies.",
+    "countries": "Countries analyzed",
+    "countriesDesc": "Detailed analysis of each country",
+    "exitKeys": "Strategies",
+    "exitKeysDesc": "Personalized exit strategies",
+    "languages": "Languages",
+    "languagesDesc": "Complete multilingual interface",
+    "indicators": "Indicators",
+    "indicatorsDesc": "Verifiable data per country",
+    "betaTitle": "Start your free analysis",
+    "betaDescription": "Explore 80+ countries for free, discover your expat profile and compare opportunities autonomously.",
+    "betaCta": "Take the free test",
+    "trustSecureData": "Secure data",
+    "trustGdpr": "GDPR compliant",
+    "trustNoAdvice": "No tax advice"
+  },
+  "geopolitics": {
+    "updatedDate": "Updated March 2026",
+    "mapTitle": "Active conflict zones",
+    "mapSubtitle": "6 conflict or high-tension zones tracked in real time. Click to see impact on neighboring countries.",
+    "status": {
+      "war": "Active war",
+      "highTension": "High tension",
+      "instability": "Instability"
+    },
+    "trend": {
+      "escalating": "Escalating",
+      "stable": "Stable",
+      "de-escalating": "De-escalating"
+    },
+    "zones": {
+      "ukraine": {
+        "name": "Ukraine — Russia",
+        "summary": "Armed conflict since 2022. Massive EU/US sanctions. Energy and visa impact across Eastern Europe."
+      },
+      "gaza": {
+        "name": "Israel — Gaza",
+        "summary": "Gaza conflict. Red Sea disruptions (+30% freight costs). Regional tensions with Lebanon and Iran."
+      },
+      "sahel": {
+        "name": "Sahel (Mali, Burkina, Niger)",
+        "summary": "Cascading coups. French forces withdrawn. AES alliance pro-Russia. High risk for expats."
+      },
+      "sudan": {
+        "name": "Sudan",
+        "summary": "Civil war SAF vs RSF. World's largest displacement crisis (10M+). Famine. Totally inadvisable."
+      },
+      "myanmar": {
+        "name": "Myanmar",
+        "summary": "Civil war against military junta. State collapse. Refugees fleeing to Thailand and India."
+      },
+      "taiwan": {
+        "name": "Taiwan Strait",
+        "summary": "Regular Chinese military exercises. Blockade risk 15-25%. Semiconductor impact (TSMC = 60% global)."
+      }
+    },
+    "detail": {
+      "since": "Since",
+      "casualties": "Casualties",
+      "trend": "Trend",
+      "impactedCountries": "Impacted countries",
+      "learnMore": "Learn more",
+      "close": "Close"
+    }
+  },
+  "cookies": {
+    "title": "Privacy Settings",
+    "close": "Close",
+    "description": "We use cookies to improve your experience. You can customize your preferences below.",
+    "necessary": "Necessary cookies",
+    "necessaryDesc": "Essential for the site to function",
+    "analytics": "Analytics",
+    "analyticsDesc": "Understand how you use the site",
+    "preferences": "Preferences",
+    "preferencesDesc": "Remember your choices and settings",
+    "marketing": "Marketing",
+    "marketingDesc": "Personalize content and ads",
+    "customize": "Customize",
+    "rejectAll": "Reject all",
+    "acceptAll": "Accept all",
+    "saveChoices": "Save my choices",
+    "learnMore": "Learn more in our",
+    "privacyPolicy": "privacy policy"
+  },
+  "tips": {
+    "quickTest": {
+      "title": "🎯 Free profile test",
+      "desc": "In 2 minutes, find the countries most compatible with your profile."
+    },
+    "compare": {
+      "title": "📊 Compare up to 4 countries",
+      "desc": "Use the comparison tool to see differences side by side."
+    },
+    "exitKeys": {
+      "title": "🔑 Relocation strategies",
+      "desc": "Discover the concrete steps to relocate to a country."
+    }
+  },
+  "miniDemo": {
+    "tax": "Taxes",
+    "cost": "Cost/month",
+    "safety": "Safety",
+    "quality": "Quality of life",
+    "france": "France",
+    "portugal": "Portugal",
+    "dubai": "Dubai",
+    "thailand": "Thailand"
   }
 }

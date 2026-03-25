@@ -162,11 +162,11 @@ export function DestinationSelector({ intention, nationalityIds, currentCountryI
                       <h4 className="font-bold text-lg">{country.name}</h4>
                       {profession ? (
                         <p className="text-xs text-muted-foreground">
-                          {t('exitKeys.destination.expectedSalary')}: ~{getEstimatedSalaryWithAge(country.id, profession.id, age).toLocaleString()}{getCountryCurrency(country.id).symbol}/{t('common.month')}
+                          {t('exitKeys.destination.expectedSalary')}: ~{getEstimatedSalaryWithAge(country.id, profession.id, age).toLocaleString()}{getCountryCurrency(country.id).symbol}{t('common.perMonth', '/mois')}
                         </p>
                       ) : (
                         <p className="text-xs text-muted-foreground">
-                          {t('exitKeys.destination.costOfLiving')}: ~{country.costOfLiving?.monthlyBudgetSingle || 1500}€/{t('common.month')}
+                          {t('exitKeys.destination.costOfLiving')}: ~{country.costOfLiving?.monthlyBudgetSingle || 1500}€{t('common.perMonth', '/mois')}
                         </p>
                       )}
                     </div>

@@ -63,11 +63,6 @@ export function NotificationBell() {
   const [typeFilter, setTypeFilter] = useState<'all' | PersistedNotification['type']>('all');
   const [sortBy, setSortBy] = useState<'newest' | 'oldest' | 'priority'>('newest');
 
-  // Don't render if not logged in
-  if (!user) {
-    return null;
-  }
-
   const handleMarkAsRead = async (notification: PersistedNotification) => {
     if (!notification.read) {
       await markAsRead(notification.id);
@@ -103,6 +98,11 @@ export function NotificationBell() {
       return b.timestamp.getTime() - a.timestamp.getTime();
     });
   }, [notifications, sortBy, statusFilter, typeFilter]);
+
+  // Don't render if not logged in
+  if (!user) {
+    return null;
+  }
 
   return (
     <Popover open={isOpen} onOpenChange={setIsOpen}>

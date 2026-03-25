@@ -86,7 +86,7 @@ const PROBLEMATIC_PATTERNS = [
   {
     name: 'empty-fallback',
     description: 'Traduction avec fallback vide',
-    regex: /\{t\([^,]+,\s*['"]{2}\s*\)\}/g,
+    regex: /\{t\(\s*['"][^'"]+['"]\s*,\s*['"]{2}\s*\)\}/g,
     severity: 'error',
     suggestion: 'Ajouter un texte de fallback significatif',
   },

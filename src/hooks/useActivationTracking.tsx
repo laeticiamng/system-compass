@@ -30,7 +30,7 @@ function getState(): ActivationState {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) return JSON.parse(raw);
-  } catch {}
+  } catch { /* empty */ }
   return {
     milestones: [],
     firstSeen: new Date().toISOString(),
@@ -42,7 +42,7 @@ function getState(): ActivationState {
 function saveState(state: ActivationState) {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-  } catch {}
+  } catch { /* empty */ }
 }
 
 export function useActivationTracking() {

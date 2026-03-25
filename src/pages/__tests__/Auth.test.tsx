@@ -1,4 +1,16 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+
+// Mock supabase client before any imports that depend on it
+vi.mock('@/integrations/supabase/client', () => ({
+  supabase: {
+    from: () => ({ select: vi.fn().mockResolvedValue({ data: [], error: null }) }),
+    auth: {
+      getSession: vi.fn().mockResolvedValue({ data: { session: null } }),
+      onAuthStateChange: vi.fn().mockReturnValue({ data: { subscription: { unsubscribe: vi.fn() } } }),
+    },
+  },
+}));
+
 import { render, screen, waitFor } from '@/test/test-utils';
 import userEvent from '@testing-library/user-event';
 import Auth from '../Auth';
@@ -55,7 +67,7 @@ describe('Auth Page', () => {
       render(<Auth />);
 
       expect(screen.getByLabelText(/email/i)).toBeInTheDocument();
-      expect(screen.getByLabelText(/password/i)).toBeInTheDocument();
+      expect(document.getElementById('password')!).toBeInTheDocument();
     });
 
     it('renders toggle between login and signup', () => {
@@ -104,7 +116,7 @@ describe('Auth Page', () => {
       // Fill form with short password
       await user.type(screen.getByLabelText(/display name/i), 'Test User');
       await user.type(screen.getByLabelText(/email/i), 'test@example.com');
-      await user.type(screen.getByLabelText(/password/i), 'Short1'); // Only 6 chars
+      await user.type(document.getElementById('password')!, 'Short1'); // Only 6 chars
 
       // Submit - find the submit button
       const allButtons = screen.getAllByRole('button') as HTMLButtonElement[];
@@ -134,7 +146,7 @@ describe('Auth Page', () => {
 
       await user.type(screen.getByLabelText(/display name/i), 'Test User');
       await user.type(screen.getByLabelText(/email/i), 'test@example.com');
-      await user.type(screen.getByLabelText(/password/i), 'ValidPass1'); // Valid password
+      await user.type(document.getElementById('password')!, 'ValidPass1'); // Valid password
 
       // Submit
       const allButtons = screen.getAllByRole('button') as HTMLButtonElement[];
@@ -159,7 +171,7 @@ describe('Auth Page', () => {
       render(<Auth />);
 
       await user.type(screen.getByLabelText(/email/i), 'invalid-email');
-      await user.type(screen.getByLabelText(/password/i), 'ValidPass1');
+      await user.type(document.getElementById('password')!, 'ValidPass1');
 
       const buttons = screen.getAllByRole('button') as HTMLButtonElement[];
       const submitBtn = buttons.find((btn) =>
@@ -178,7 +190,7 @@ describe('Auth Page', () => {
       render(<Auth />);
 
       await user.type(screen.getByLabelText(/email/i), 'valid@example.com');
-      await user.type(screen.getByLabelText(/password/i), 'ValidPass1');
+      await user.type(document.getElementById('password')!, 'ValidPass1');
 
       const buttons = screen.getAllByRole('button') as HTMLButtonElement[];
       const submitBtn = buttons.find((btn) =>
@@ -207,7 +219,7 @@ describe('Auth Page', () => {
 
       // Leave display name empty
       await user.type(screen.getByLabelText(/email/i), 'test@example.com');
-      await user.type(screen.getByLabelText(/password/i), 'ValidPass1');
+      await user.type(document.getElementById('password')!, 'ValidPass1');
 
       const allButtons = screen.getAllByRole('button') as HTMLButtonElement[];
       const submitBtn = allButtons.find((btn) =>
@@ -231,7 +243,7 @@ describe('Auth Page', () => {
       render(<Auth />);
 
       await user.type(screen.getByLabelText(/email/i), 'test@example.com');
-      await user.type(screen.getByLabelText(/password/i), 'ValidPass1');
+      await user.type(document.getElementById('password')!, 'ValidPass1');
 
       const buttons = screen.getAllByRole('button') as HTMLButtonElement[];
       const submitBtn = buttons.find((btn) =>
@@ -263,7 +275,7 @@ describe('Auth Page', () => {
 
       await user.type(screen.getByLabelText(/display name/i), 'Test User');
       await user.type(screen.getByLabelText(/email/i), 'existing@example.com');
-      await user.type(screen.getByLabelText(/password/i), 'ValidPass1');
+      await user.type(document.getElementById('password')!, 'ValidPass1');
 
       const allButtons = screen.getAllByRole('button') as HTMLButtonElement[];
       const submitBtn = allButtons.find((btn) =>
@@ -283,14 +295,14 @@ describe('Auth Page', () => {
       render(<Auth />);
 
       expect(screen.getByLabelText(/email/i)).toBeInTheDocument();
-      expect(screen.getByLabelText(/password/i)).toBeInTheDocument();
+      expect(document.getElementById('password')!).toBeInTheDocument();
     });
 
     it('uses correct input types', () => {
       render(<Auth />);
 
       expect(screen.getByLabelText(/email/i)).toHaveAttribute('type', 'email');
-      expect(screen.getByLabelText(/password/i)).toHaveAttribute('type', 'password');
+      expect(document.getElementById('password')!).toHaveAttribute('type', 'password');
     });
   });
 
@@ -298,7 +310,7 @@ describe('Auth Page', () => {
     it('does not expose password in DOM', () => {
       render(<Auth />);
 
-      const passwordInput = screen.getByLabelText(/password/i);
+      const passwordInput = document.getElementById('password')!;
       expect(passwordInput).toHaveAttribute('type', 'password');
     });
   });

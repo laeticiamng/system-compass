@@ -1,5 +1,14 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { isValidElement } from 'react';
+
+// Mock supabase client before any imports that depend on it
+vi.mock('@/integrations/supabase/client', () => ({
+  supabase: {
+    from: () => ({ select: vi.fn().mockResolvedValue({ data: [], error: null }) }),
+    auth: { getSession: vi.fn().mockResolvedValue({ data: { session: null } }) },
+  },
+}));
+
 import { allLocalizedRoutes, redirectRoutes } from '@/routes';
 
 const CRITICAL_INTERNAL_ROUTES = [

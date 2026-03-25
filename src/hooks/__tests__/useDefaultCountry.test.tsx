@@ -41,10 +41,10 @@ describe('useDefaultCountry', () => {
   });
 
   describe('initialization', () => {
-    it('should default to nigeria if no saved preference', () => {
+    it('should default to france if no saved preference', () => {
       const { result } = renderHook(() => useDefaultCountry());
 
-      expect(result.current.defaultCountryId).toBe('nigeria');
+      expect(result.current.defaultCountryId).toBe('france');
     });
 
     it('should load saved preference from localStorage', () => {
@@ -96,8 +96,8 @@ describe('useDefaultCountry', () => {
         result.current.setDefaultCountry('invalid-country');
       });
 
-      // Should remain unchanged (nigeria is default)
-      expect(result.current.defaultCountryId).toBe('nigeria');
+      // Should remain unchanged (france is default)
+      expect(result.current.defaultCountryId).toBe('france');
     });
 
     it('should handle multiple country changes', () => {
@@ -127,8 +127,8 @@ describe('useDefaultCountry', () => {
       const country = result.current.getDefaultCountry();
 
       expect(country).toBeDefined();
-      expect(country?.id).toBe('nigeria');
-      expect(country?.name).toBe('Nigeria');
+      expect(country?.id).toBe('france');
+      expect(country?.name).toBe('France');
     });
 
     it('should return updated country after setDefaultCountry', () => {
@@ -144,15 +144,15 @@ describe('useDefaultCountry', () => {
       expect(country?.name).toBe('France');
     });
 
-    it('should fallback to nigeria for invalid stored country', () => {
+    it('should fallback to france for invalid stored country', () => {
       mockLocalStorage[STORAGE_KEY] = 'nonexistent';
 
       const { result } = renderHook(() => useDefaultCountry());
 
       const country = result.current.getDefaultCountry();
 
-      // Should fallback to nigeria (the default)
-      expect(country?.id).toBe('nigeria');
+      // Should fallback to france (the default)
+      expect(country?.id).toBe('france');
     });
   });
 
@@ -160,7 +160,7 @@ describe('useDefaultCountry', () => {
     it('should save to localStorage on change', () => {
       const { result } = renderHook(() => useDefaultCountry());
 
-      expect(mockLocalStorage[STORAGE_KEY]).toBe('nigeria');
+      expect(mockLocalStorage[STORAGE_KEY]).toBe('france');
 
       act(() => {
         result.current.setDefaultCountry('usa');

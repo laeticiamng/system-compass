@@ -58,6 +58,7 @@ export function sanitizeForExternalLink(text: string, maxLength: number = 1000):
   const trimmed = text.trim().slice(0, maxLength);
   
   // Remove any control characters
+  // eslint-disable-next-line no-control-regex
   const cleaned = trimmed.replace(/[\x00-\x1F\x7F]/g, '');
   
   // Encode for URL
@@ -105,6 +106,7 @@ export function sanitizePhoneNumber(phone: string): string | null {
  */
 export function sanitizeFilename(filename: string): string {
   // Remove path separators and null bytes
+  // eslint-disable-next-line no-control-regex
   let clean = filename.replace(/[/\\:\x00]/g, '');
   
   // Remove leading dots (hidden files)
@@ -163,5 +165,6 @@ export function normalizeWhitespace(text: string): string {
  */
 export function isSafeText(text: string): boolean {
   // Allow letters, numbers, common punctuation, and whitespace
+  // eslint-disable-next-line no-useless-escape
   return /^[\p{L}\p{N}\s.,!?;:'"()\-–—@#%&*+=\[\]{}\/\\]+$/u.test(text);
 }

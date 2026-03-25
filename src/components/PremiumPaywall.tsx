@@ -106,7 +106,7 @@ export function PremiumPaywall({
           {tierConfig.price !== null ? (
             <div className="py-2">
               <span className="text-3xl font-bold">{tierConfig.price.toFixed(2).replace('.', ',')}€</span>
-              <span className="text-muted-foreground"> / {t('pricing.month', 'mois')}</span>
+              <span className="text-muted-foreground">{t('pricing.perMonth', ' / mois')}</span>
             </div>
           ) : (
             <div className="py-2">

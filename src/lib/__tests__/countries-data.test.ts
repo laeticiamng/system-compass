@@ -1,4 +1,13 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
+
+// Mock supabase client before any imports that depend on it
+vi.mock('@/integrations/supabase/client', () => ({
+  supabase: {
+    from: () => ({ select: vi.fn().mockResolvedValue({ data: [], error: null }) }),
+    auth: { getSession: vi.fn().mockResolvedValue({ data: { session: null } }) },
+  },
+}));
+
 import { countriesSeed } from '../countries-data';
 
 describe('countries-data validation', () => {

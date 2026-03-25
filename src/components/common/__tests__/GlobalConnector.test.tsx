@@ -2,10 +2,19 @@
  * GlobalConnector Tests
  * Tests for inter-module connectivity and context management
  */
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { 
-  setModuleContext, 
-  getModuleContext, 
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+
+// Mock supabase client before any imports that depend on it
+vi.mock('@/integrations/supabase/client', () => ({
+  supabase: {
+    from: () => ({ select: vi.fn().mockResolvedValue({ data: [], error: null }) }),
+    auth: { getSession: vi.fn().mockResolvedValue({ data: { session: null } }) },
+  },
+}));
+
+import {
+  setModuleContext,
+  getModuleContext,
   clearModuleContext,
 } from '../GlobalConnector';
 

@@ -142,7 +142,7 @@ export function ContextualShortcuts() {
             <button
               onClick={() => {
                 setDismissed(true);
-                try { sessionStorage.setItem('shortcuts-dismissed', 'true'); } catch {}
+                try { sessionStorage.setItem('shortcuts-dismissed', 'true'); } catch { /* empty */ }
               }}
               className="text-muted-foreground hover:text-foreground transition-colors"
             >

@@ -97,7 +97,7 @@ const PYRAMID_COLORS: Record<PyramidType, { bg: string; border: string; text: st
 export default function HexagonalBoard({ players, currentPlayerId, onSquareClick }: HexagonalBoardProps) {
 
   const getSquareStyle = (square: typeof HEXAGONAL_BOARD[0]) => {
-    let baseClass = "w-12 h-12 md:w-14 md:h-14 rounded-lg border-2 flex flex-col items-center justify-center text-xs relative transition-all duration-300 cursor-pointer hover:scale-105";
+    const baseClass = "w-12 h-12 md:w-14 md:h-14 rounded-lg border-2 flex flex-col items-center justify-center text-xs relative transition-all duration-300 cursor-pointer hover:scale-105";
     
     if (square.type === 'start') {
       return cn(baseClass, "bg-gradient-to-br from-green-500/30 to-emerald-500/30 border-green-400 ring-2 ring-green-400/50");
