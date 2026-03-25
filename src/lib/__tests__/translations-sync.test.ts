@@ -1,6 +1,7 @@
+/// <reference types="node" />
 import { describe, it, expect, beforeAll } from 'vitest';
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 
 // Translation type
 type TranslationObject = Record<string, unknown>;
