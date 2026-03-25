@@ -44,7 +44,7 @@ export class GranularErrorBoundary extends Component<Props, State> {
     this.setState({ errorInfo });
     
     // Log error to console in development
-    if (process.env.NODE_ENV === 'development') {
+    if (import.meta.env.DEV) {
       console.error(`[ErrorBoundary] ${this.props.componentName || 'Component'}:`, error);
       console.error('Component Stack:', errorInfo.componentStack);
     }

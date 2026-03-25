@@ -1,4 +1,4 @@
-import { Resend } from 'npm:resend@4.0.0'
+import { Resend } from "https://esm.sh/resend@4.0.0"
 import { getCorsHeaders, handleCorsPreflightRequest } from "../_shared/cors.ts";
 import { checkRateLimit, getRateLimitKey, rateLimitResponse } from "../_shared/rate-limit.ts";
 

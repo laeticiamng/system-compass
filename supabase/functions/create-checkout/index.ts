@@ -44,7 +44,7 @@ serve(async (req) => {
       );
     }
     const user = data.user;
-    const maskedEmail = user.email.replace(/^(.{2})(.*)(@.*)$/, '$1***$3');
+    const maskedEmail = (user.email ?? '').replace(/^(.{2})(.*)(@.*)$/, '$1***$3');
     logStep("User authenticated", { userId: user.id.slice(0, 8) + '...', email: maskedEmail });
 
     const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") || "", {

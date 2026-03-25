@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import Auth from '../Auth';
 
 // Mock ResizeObserver for Radix UI components
-global.ResizeObserver = class ResizeObserver {
+(globalThis as any).ResizeObserver = class ResizeObserver {
   observe() {}
   unobserve() {}
   disconnect() {}

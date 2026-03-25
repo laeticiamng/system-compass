@@ -66,7 +66,7 @@ export class ErrorBoundary extends Component<Props, State> {
                 {i18next.t('errors.apology', "Nous nous excusons pour ce désagrément. L'équipe technique a été notifiée.")}
               </p>
               
-              {process.env.NODE_ENV === 'development' && this.state.error && (
+              {import.meta.env.DEV && this.state.error && (
                 <div className="p-3 rounded-lg bg-muted text-xs font-mono overflow-auto max-h-32">
                   <p className="font-bold text-destructive">{this.state.error.message}</p>
                   {this.state.errorInfo?.componentStack && (
