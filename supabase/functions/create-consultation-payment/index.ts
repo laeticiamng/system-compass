@@ -79,7 +79,7 @@ serve(async (req) => {
       );
     }
     const user = userData.user;
-    const maskedEmail = user.email.replace(/^(.{2})(.*)(@.*)$/, '$1***$3');
+    const maskedEmail = (user.email ?? '').replace(/^(.{2})(.*)(@.*)$/, '$1***$3');
     logStep("User authenticated", { userId: user.id.slice(0, 8) + '...', email: maskedEmail });
 
     // Get expert info
