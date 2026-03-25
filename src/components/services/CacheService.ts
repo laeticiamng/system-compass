@@ -24,7 +24,7 @@ const CACHE_PREFIX = 'pc_cache_';
 
 class CacheServiceClass {
   private memoryCache: Map<string, CacheEntry<unknown>> = new Map();
-  private cleanupInterval: NodeJS.Timeout | null = null;
+  private cleanupInterval: ReturnType<typeof setInterval> | null = null;
 
   constructor() {
     // Start cleanup interval

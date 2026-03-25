@@ -17,8 +17,6 @@ import {
   Headphones,
   ChevronDown,
   ChevronUp,
-  Play,
-  Pause,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
@@ -141,7 +139,7 @@ export function PodcastPlayer() {
   
   // Simulated playback
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let interval: ReturnType<typeof setInterval>;
     if (isPlaying && currentEpisode) {
       interval = setInterval(() => {
         setProgress(prev => {
