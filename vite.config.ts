@@ -18,7 +18,7 @@ export default defineConfig(({ mode }) => ({
       includeAssets: ["favicon.ico", "icons/*.png"],
       manifest: false, // Use external manifest.json
       workbox: {
-        maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
+        maximumFileSizeToCacheInBytes: 8 * 1024 * 1024,
         globPatterns: ["**/*.{js,css,html,ico,png,svg,woff2,json}"],
         navigateFallback: "/index.html",
         navigateFallbackDenylist: [/^\/api/, /^\/functions/],
