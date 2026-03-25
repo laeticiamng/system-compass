@@ -83,7 +83,7 @@ interface FiscalHistorySaverProps {
   onLoadCalculation?: (calc: FiscalCalculation) => void;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+ 
 export function FiscalHistorySaver({
   originCountry,
   destinationCountry,

@@ -113,7 +113,7 @@ export function IntentionStep({ intention, onIntentionChange, age, onAgeChange }
                     {t(item.labelKey, item.value)}
                   </h3>
                   <p className="text-sm text-muted-foreground">
-                    {t(item.descKey, '')}
+                    {t(item.descKey, item.value)}
                   </p>
                 </div>
                 {isSelected && (

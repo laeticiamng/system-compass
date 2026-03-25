@@ -103,7 +103,11 @@ function checkTranslations() {
   console.log('🌍 i18n Completeness Check\n');
   console.log('═'.repeat(60));
   
-  const files = fs.readdirSync(LOCALES_DIR).filter(f => f.endsWith('.json'));
+  const files = fs.readdirSync(LOCALES_DIR).filter(f =>
+    f.endsWith('.json') &&
+    !f.startsWith('countries-positive-points-') &&
+    !f.startsWith('toasts-')
+  );
   const languages = files.map(f => f.replace('.json', ''));
   
   console.log(`Languages: ${languages.join(', ')}\n`);

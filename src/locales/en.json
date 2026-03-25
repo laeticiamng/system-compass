@@ -4761,7 +4761,6 @@
           },
           "skills": {
             "0": "Both earning and giving skills",
-            "1": "Communication",
             "1": "Communication"
           },
           "risks": {
@@ -4779,8 +4778,6 @@
             "0": "Social enterprise or foundation"
           },
           "skills": {
-            "0": "Leadership",
-            "1": "Fundraising",
             "0": "Leadership",
             "1": "Fundraising"
           },
@@ -5748,12 +5745,6 @@
     "saved": "Game saved!",
     "saveFailed": "Failed to save game",
     "gameLoaded": "Game loaded!"
-  },
-  "pyramidQuiz.cooperative": {
-    "poolScore": "Collective Score",
-    "victory": "Collective Victory!",
-    "defeat": "Objective not reached",
-    "score": "Score: {{score}} / {{target}}"
   },
   "reunionMode": {
     "title": "Reunion Mode",
