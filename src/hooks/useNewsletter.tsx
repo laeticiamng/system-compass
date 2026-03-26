@@ -60,26 +60,19 @@ export function useNewsletter(): UseNewsletterReturn {
         source: 'website',
       };
 
-      // If user is authenticated, insert directly via Supabase client
-      // Otherwise, store in localStorage (RLS now requires auth for direct inserts)
-      if (user) {
-        const { error } = await supabase
-          .from('newsletter_subscriptions')
-          .insert(insertData as never);
+      // Require authentication for newsletter subscription (RLS enforced)
+      if (!user) {
+        toast.error(t('newsletter.loginRequired', 'Veuillez vous connecter pour vous abonner'));
+        return false;
+      }
 
-        if (error) {
-          console.error('Newsletter subscription error:', error);
-          throw error;
-        }
-      } else {
-        // For anonymous users, store locally (a future edge function could handle this with rate limiting)
-        const stored = JSON.parse(localStorage.getItem('newsletter_subscriptions') || '[]');
-        stored.push({ 
-          email: email.toLowerCase().trim(), 
-          preferences: defaultPreferences,
-          subscribed_at: new Date().toISOString() 
-        });
-        localStorage.setItem('newsletter_subscriptions', JSON.stringify(stored));
+      const { error } = await supabase
+        .from('newsletter_subscriptions')
+        .insert(insertData as never);
+
+      if (error) {
+        console.error('Newsletter subscription error:', error);
+        throw error;
       }
 
       toast.success(t('newsletter.subscribed', 'Inscription réussie !'), {
