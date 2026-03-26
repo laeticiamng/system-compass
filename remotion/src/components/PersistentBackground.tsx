@@ -3,9 +3,9 @@ import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";
 export const PersistentBackground: React.FC = () => {
   const frame = useCurrentFrame();
   
-  const gradientAngle = interpolate(frame, [0, 450], [135, 200]);
-  const orbY1 = interpolate(frame, [0, 450], [0, -60]);
-  const orbY2 = interpolate(frame, [0, 450], [0, 40]);
+  const gradientAngle = interpolate(frame, [0, 600], [135, 200]);
+  const orbY1 = interpolate(frame, [0, 600], [0, -60]);
+  const orbY2 = interpolate(frame, [0, 600], [0, 40]);
   
   return (
     <AbsoluteFill>
