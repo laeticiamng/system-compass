@@ -5,6 +5,7 @@
  */
 
 import { useEffect } from 'react';
+import { AnimatedPromoSection } from '@/components/landing/AnimatedPromoSection';
 import { LocalizedLink as Link } from '@/components/i18n';
 import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { useTranslation } from 'react-i18next';
