@@ -221,6 +221,7 @@ export const allLocalizedRoutes = [
  * These are all unique first segments that need to redirect to /:lang/path
  */
 export const LEGACY_ROUTE_SEGMENTS = [
+  'index',
   'auth', 'about', 'disclaimer', 'cgv', 'mentions-legales', 'privacy',
   'quick-test', 'subscription-success', 'pricing', 'partners',
   'countries', 'world-map', 'country', 'compare',
