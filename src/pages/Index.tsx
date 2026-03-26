@@ -196,37 +196,8 @@ export default function Index() {
       {/* ========== PARCOURS UTILISATEUR ========== */}
       <UserJourneys />
 
-      {/* ========== VIDEO PROMO ========== */}
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-10">
-            <p className="text-primary font-medium mb-3 tracking-widest uppercase text-sm">
-              {t('landing.video.label', 'Découvrez Compass')}
-            </p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold">
-              {t('landing.video.title', 'Votre expatriation, simplifiée')}
-            </h2>
-          </div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl border border-border/30 bg-card"
-          >
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-auto"
-              poster=""
-            >
-              <source src="/compass-promo.mp4" type="video/mp4" />
-            </video>
-          </motion.div>
-        </div>
-      </section>
+      {/* ========== ANIMATED PROMO ========== */}
+      <AnimatedPromoSection />
 
       {/* ========== COMMENT ÇA MARCHE - 3 ÉTAPES ========== */}
       <section className="py-20 md:py-32 bg-muted/30">
