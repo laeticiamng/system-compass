@@ -209,9 +209,9 @@ const Pricing = () => {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6"
           >
-            <span className="block text-foreground">{t('pricing.heroTitle1', 'Choisissez votre')}</span>
+            <span className="block text-foreground">{t('pricing.heroTitle1', 'Commencez gratuitement.')}</span>
             <span className="block bg-gradient-to-r from-primary via-amber-400 to-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-[gradient_3s_ease-in-out_infinite]">
-              {t('pricing.heroTitle2', 'niveau d\'accès.')}
+              {t('pricing.heroTitle2', 'Passez Premium quand vous êtes prêt.')}
             </span>
           </motion.h1>
 

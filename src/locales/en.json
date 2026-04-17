@@ -784,11 +784,11 @@
       "ogDescription": "Compare 80+ countries by compatibility with your profile: taxation, visas, cost of living, safety. Free test."
     },
     "hero": {
-      "badge": "100% free to start",
-      "titleLine1": "Want to expatriate?",
-      "titleLine2": "Compare countries before you go.",
-      "subtitle": "Taxation, cost of living, visas, quality of life: compare 80+ countries in 2 minutes and find the one that fits you.",
-      "ctaPrimary": "Find my ideal country — free",
+      "badge": "Free · No credit card",
+      "titleLine1": "Which country is truly",
+      "titleLine2": "right for you?",
+      "subtitle": "80+ countries compared on taxation, visas, cost of living and quality of life. Get your top 3 matches in 2 minutes.",
+      "ctaPrimary": "Take the free test",
       "ctaSecondary": "Explore countries",
       "statsCountries": "countries analyzed",
       "statsLanguages": "languages",
@@ -10364,8 +10364,8 @@
     "freeSubtitle": "No credit card required",
     "startFree": "Start for free",
     "contactUs": "Contact us",
-    "heroTitle1": "Choose your",
-    "heroTitle2": "access level.",
+    "heroTitle1": "Start for free.",
+    "heroTitle2": "Go Premium when you're ready.",
     "proPrice": "Custom",
     "limitations": {
       "noVariants": "No country variants",
