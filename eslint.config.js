@@ -24,4 +24,23 @@ export default tseslint.config(
       "@typescript-eslint/no-explicit-any": "warn",
     },
   },
+  // Bounded-context isolation: a domain may only import from _shared or itself.
+  // Cross-domain communication must go through the shared navigation store.
+  {
+    files: ["src/domains/**/*.{ts,tsx}"],
+    rules: {
+      "no-restricted-imports": [
+        "warn",
+        {
+          patterns: [
+            {
+              group: ["@/domains/*/*", "../*/*", "../../*/*"],
+              message:
+                "Cross-domain imports are forbidden. Use @/domains/_shared (navigationStore) or expose a public API via the target domain's index.ts.",
+            },
+          ],
+        },
+      ],
+    },
+  },
 );

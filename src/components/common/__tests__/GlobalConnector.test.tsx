@@ -12,19 +12,25 @@ vi.mock('@/integrations/supabase/client', () => ({
   },
 }));
 
+// Silence the deprecation warning emitted by the shim during tests
+vi.spyOn(console, 'warn').mockImplementation(() => {});
+
 import {
   setModuleContext,
   getModuleContext,
   clearModuleContext,
 } from '../GlobalConnector';
+import { useNavigationContext } from '@/domains/_shared/navigationStore';
 
-describe('GlobalConnector', () => {
+describe('GlobalConnector (deprecated shim)', () => {
   beforeEach(() => {
     sessionStorage.clear();
+    useNavigationContext.getState().clearContext();
   });
 
   afterEach(() => {
     sessionStorage.clear();
+    useNavigationContext.getState().clearContext();
   });
 
   describe('Module Context Management', () => {
