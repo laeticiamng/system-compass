@@ -7854,8 +7854,8 @@
       "noCommitment": "Sin compromiso",
       "instantAccess": "Acceso inmediato"
     },
-    "heroTitle1": "Choose your",
-    "heroTitle2": "access level.",
+    "heroTitle1": "Empieza gratis.",
+    "heroTitle2": "Pásate a Premium cuando estés listo.",
     "freeSubtitle": "No credit card required",
     "proPrice": "Custom",
     "startFree": "Comenzar gratuitement",
@@ -12088,11 +12088,11 @@
       "ogDescription": "Compare 80+ countries by compatibility with your profile: taxation, visas, cost of living, safety. Free test."
     },
     "hero": {
-      "badge": "100% free to start",
-      "titleLine1": "Want to expatriate?",
-      "titleLine2": "Compare countries before you go.",
-      "subtitle": "Taxation, cost of living, visas, quality of life: compare 80+ countries in 2 minutes and find the one that fits you.",
-      "ctaPrimary": "Find my ideal country — free",
+      "badge": "Gratis · Sin tarjeta",
+      "titleLine1": "¿Qué país es realmente",
+      "titleLine2": "el ideal para ti?",
+      "subtitle": "80+ países comparados en fiscalidad, visados, coste de vida y calidad de vida. Recibe tus 3 países compatibles en 2 minutos.",
+      "ctaPrimary": "Hacer el test gratis",
       "ctaSecondary": "Explore countries",
       "statsCountries": "countries analyzed",
       "statsLanguages": "languages",
