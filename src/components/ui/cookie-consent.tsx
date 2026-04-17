@@ -118,13 +118,14 @@ export function CookieConsent() {
   return (
     <div
       className={cn(
-        "fixed bottom-0 left-0 right-0 z-[45] p-2 sm:p-4 pb-safe",
-        "animate-in slide-in-from-bottom duration-500",
-        "mb-0 sm:mb-0"
+        // Mobile: bandeau bas pleine largeur. Desktop: carte compacte ancrée bottom-right pour ne pas bloquer le contenu (pricing).
+        "fixed z-[45] p-2 sm:p-4 pb-safe",
+        "bottom-0 left-0 right-0",
+        "sm:bottom-4 sm:right-4 sm:left-auto sm:max-w-md",
+        "animate-in slide-in-from-bottom duration-500"
       )}
-      style={{ marginBottom: 0 }}
     >
-      <Card className="max-w-2xl mx-auto shadow-2xl border-border/50 bg-card">
+      <Card className="mx-auto shadow-2xl border-border/50 bg-card">
         <CardHeader className="pb-3">
           <div className="flex items-center justify-between">
             <CardTitle className="flex items-center gap-2 text-lg">
