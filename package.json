@@ -19,6 +19,7 @@
     "check:ts-comments": "node scripts/check-ts-comments.js"
   },
   "dependencies": {
+    "@axe-core/playwright": "^4.11.2",
     "@hookform/resolvers": "^3.10.0",
     "@lovable.dev/cloud-auth-js": "^1.0.0",
     "@playwright/test": "^1.59.1",
