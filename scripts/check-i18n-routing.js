@@ -2,18 +2,17 @@
 /**
  * Lint i18n & localized routing.
  *
- * Detects and fails on:
- *  1. `useNavigate` imported from 'react-router-dom' in src/ files (must use useLocalizedNavigate).
- *  2. `<Link to="/something">` or `to={'/something'}` with absolute path NOT prefixed by a locale token
- *     (must use useLocalizedPath or be relative).
- *  3. `navigate('/something')` calls with hardcoded absolute paths (raw useNavigate).
+ * The project provides:
+ *   - useLocalizedNavigate (wrap useNavigate with locale prefix)
+ *   - LocalizedLink from @/components/i18n (wrap react-router Link)
  *
- * Allowed exceptions:
- *  - useLocalizedNavigate.ts itself, useLocalizedPath.tsx
- *  - i18n/router setup files (App.tsx route definitions, AppRoutes.tsx)
- *  - Anchor with full URLs (https://, mailto:, tel:)
- *  - External redirects ("/auth" inside the auth routing setup)
- *  - Files in src/integrations/, src/test/, src/__tests__/
+ * This linter detects files that bypass these wrappers:
+ *
+ *  1. `useNavigate` imported from 'react-router-dom' (use useLocalizedNavigate).
+ *  2. `<Link to="/abs">` when Link is the raw react-router-dom import (use LocalizedLink).
+ *     Files that alias `LocalizedLink as Link` from @/components/i18n are exempt.
+ *
+ * Allowlist: i18n infra files, integrations, tests.
  */
 
 import fs from 'node:fs';
@@ -21,12 +20,16 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const SRC = path.resolve(__dirname, '..', 'src');
+const ROOT = path.resolve(__dirname, '..');
+const SRC = path.join(ROOT, 'src');
 
 const ALLOWLIST_FILES = new Set([
   'src/hooks/useLocalizedNavigate.ts',
   'src/hooks/useLocalizedPath.tsx',
   'src/hooks/useLocalizedPath.ts',
+  'src/components/i18n/LocalizedLink.tsx',
+  'src/components/i18n/LanguageRouter.tsx',
+  'src/components/i18n/index.ts',
   'src/App.tsx',
   'src/routes/AppRoutes.tsx',
   'src/router/index.tsx',
@@ -38,8 +41,7 @@ const ALLOWLIST_DIRS = ['src/integrations/', 'src/test/', 'src/__tests__/'];
 const violations = [];
 
 function walk(dir) {
-  const entries = fs.readdirSync(dir, { withFileTypes: true });
-  for (const e of entries) {
+  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
     const full = path.join(dir, e.name);
     if (e.isDirectory()) {
       if (e.name === 'node_modules' || e.name.startsWith('.')) continue;
@@ -56,13 +58,21 @@ function isAllowed(rel) {
 }
 
 function checkFile(absPath) {
-  const rel = path.relative(path.resolve(__dirname, '..'), absPath).replaceAll('\\', '/');
+  const rel = path.relative(ROOT, absPath).replaceAll('\\', '/');
   if (isAllowed(rel)) return;
-  if (rel.endsWith('.test.ts') || rel.endsWith('.test.tsx') || rel.endsWith('.spec.ts')) return;
+  if (/\.(test|spec)\.(t|j)sx?$/.test(rel)) return;
 
   const src = fs.readFileSync(absPath, 'utf8');
-  const lines = src.split('\n');
 
+  // File-level analysis: where does `Link` come from?
+  const importsRawLink =
+    /import\s+\{[^}]*\bLink\b(?!\s+as)[^}]*\}\s+from\s+['"]react-router-dom['"]/.test(src);
+  const aliasesLocalizedLinkAsLink =
+    /import\s+\{[^}]*LocalizedLink\s+as\s+Link[^}]*\}\s+from\s+['"]@\/components\/i18n['"]/.test(src);
+  // If the file aliases LocalizedLink as Link, all <Link> usages are safe.
+  const linkIsLocalized = aliasesLocalizedLinkAsLink && !importsRawLink;
+
+  const lines = src.split('\n');
   lines.forEach((line, i) => {
     const lineNo = i + 1;
     const trimmed = line.trim();
@@ -78,13 +88,13 @@ function checkFile(absPath) {
         file: rel,
         line: lineNo,
         rule: 'no-raw-useNavigate',
-        msg: 'Import { useLocalizedNavigate } from "@/hooks/useLocalizedNavigate" instead of useNavigate.',
+        msg: 'Use { useLocalizedNavigate } from "@/hooks/useLocalizedNavigate" instead of useNavigate.',
         code: trimmed,
       });
     }
 
-    // Rule 2: <Link to="/abs"> without locale-aware helper.
-    // Only matches `<Link ` (with space/>) so <LocalizedLink> is allowed.
+    // Rule 2: Raw <Link to="/abs"> only flagged if Link came from react-router-dom.
+    if (linkIsLocalized) return;
     const linkMatch = line.match(/<Link(?=[\s>])[^>]*\sto=(?:"([^"]+)"|\{['"]([^'"]+)['"]\})/);
     if (linkMatch) {
       const target = linkMatch[1] || linkMatch[2];
@@ -100,7 +110,7 @@ function checkFile(absPath) {
           file: rel,
           line: lineNo,
           rule: 'link-missing-locale',
-          msg: `<Link to="${target}"> bypasses locale routing — use <LocalizedLink> from @/components/common/LocalizedLink.`,
+          msg: `<Link to="${target}"> bypasses locale routing — use { LocalizedLink as Link } from "@/components/i18n".`,
           code: trimmed,
         });
       }
@@ -123,12 +133,12 @@ for (const v of violations) {
 }
 for (const [rule, items] of Object.entries(grouped)) {
   console.error(`[${rule}] ${items.length} violation(s)`);
-  for (const v of items.slice(0, 20)) {
+  for (const v of items.slice(0, 30)) {
     console.error(`  ${v.file}:${v.line}`);
     console.error(`    ${v.code}`);
     console.error(`    → ${v.msg}`);
   }
-  if (items.length > 20) console.error(`  …and ${items.length - 20} more.`);
+  if (items.length > 30) console.error(`  …and ${items.length - 30} more.`);
   console.error('');
 }
 process.exit(1);
