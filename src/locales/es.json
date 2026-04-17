@@ -675,6 +675,29 @@
       "today": "Hoy",
       "tomorrow": "Tomorrow",
       "empty": "Ninguno événement"
+    },
+    "nextBest": {
+      "label": "Próximo paso recomendado",
+      "profile": {
+        "title": "Define tu perfil en 2 minutos",
+        "description": "Sin perfil, tus recomendaciones serán genéricas. El test rápido te sugiere países compatibles al instante.",
+        "cta": "Hacer el test rápido"
+      },
+      "explore": {
+        "title": "Explora países compatibles con tu perfil",
+        "description": "Sigue 2 o 3 países para recibir sus actualizaciones y desbloquear la comparación personalizada.",
+        "cta": "Ver países recomendados"
+      },
+      "strategy": {
+        "title": "Elige una estrategia de expatriación",
+        "description": "Una estrategia estructura tu proyecto en fases concretas: preparación, transición, instalación. Ahorras 6 meses de prueba y error.",
+        "cta": "Descubrir estrategias"
+      },
+      "execute": {
+        "title": "Sigue tu próximo paso",
+        "description": "Continúa tu plan en curso y marca las acciones completadas para ver tu progreso.",
+        "cta": "Ver mi plan"
+      }
     }
   },
   "achievements": {
@@ -1598,6 +1621,12 @@
     "project": {
       "title": "Análisis personalizado",
       "subtitle": "Según tu proyecto y perfil"
+    },
+    "quickActions": {
+      "fiscal": "Fiscalidad",
+      "strategies": "Estrategias",
+      "expert": "Experto",
+      "sources": "Fuentes"
     }
   },
   "lgbtqRights": {

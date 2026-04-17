@@ -68,6 +68,7 @@ import {
 import { AiHelpButton } from '@/components/ai/AiHelpButton';
 import { AiUsageStats } from '@/components/dashboard/AiUsageStats';
 import { EmptyDashboardState } from '@/components/dashboard/EmptyDashboardState';
+import { NextBestActionHero } from '@/components/dashboard/NextBestActionHero';
 import { DashboardExitKeysWidget } from '@/components/dashboard/DashboardExitKeysWidget';
 import { UserProfileWidget } from '@/components/dashboard/UserProfileWidget';
 import { GameStatisticsWidget } from '@/components/dashboard/GameStatisticsWidget';
@@ -83,6 +84,7 @@ import { ConsolidatedCalendar } from '@/components/dashboard/ConsolidatedCalenda
 import { SmartDashboardWidget } from '@/components/dashboard/SmartDashboardWidget';
 import { RealTimeAnalyticsWidget } from '@/components/dashboard/RealTimeAnalyticsWidget';
 import { SubscriptionStatus } from '@/components/SubscriptionStatus';
+import { useCountryWatchlist } from '@/hooks/useCountryWatchlist';
 import { toast } from 'sonner';
 
 // Helper functions
@@ -142,6 +144,7 @@ export default function Dashboard() {
   const { zones } = useLatentZones();
   const { results: testResults } = useTestResults();
   const { thresholds } = useIrreversa();
+  const { watchlist } = useCountryWatchlist();
 
   const [editingNote, setEditingNote] = useState<number | null>(null);
   const [noteText, setNoteText] = useState('');
@@ -358,6 +361,15 @@ export default function Dashboard() {
               </div>
             </CardContent>
           </Card>
+        )}
+
+        {/* Next Best Action Hero — surfaces the single most useful next step */}
+        {isLoggedIn && (
+          <NextBestActionHero
+            hasProfile={!!profile}
+            hasPlan={!!selectedKeyId}
+            hasFollowedCountries={watchlist.length > 0}
+          />
         )}
 
         {/* Empty State for New Users - show only when no profile AND no exit key started */}
