@@ -2,6 +2,7 @@ import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import Stripe from "https://esm.sh/stripe@18.5.0";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.2";
 import { getCorsHeaders, handleCorsPreflightRequest, getSafeOrigin } from "../_shared/cors.ts";
+import { checkRateLimit, getRateLimitKey, rateLimitResponse } from "../_shared/rate-limit.ts";
 
 const logStep = (step: string, details?: unknown) => {
   const detailsStr = details ? ` - ${JSON.stringify(details)}` : '';
@@ -17,6 +18,10 @@ serve(async (req) => {
   }
 
   const corsHeaders = getCorsHeaders(req);
+
+  // Rate limit: 10 consultation payments / 5 min / IP
+  const rl = checkRateLimit(getRateLimitKey(req, 'consultation-payment'), { maxRequests: 10, windowSeconds: 300 });
+  if (!rl.allowed) return rateLimitResponse(rl, corsHeaders);
 
   const supabaseClient = createClient(
     Deno.env.get("SUPABASE_URL") ?? "",
