@@ -53,12 +53,11 @@ function transform(absPath) {
   let src = fs.readFileSync(absPath, 'utf8');
 
   // Bail if no react-router Link import
-  const importRegex = /import\s+\{([^}]+)\}\s+from\s+['"]react-router-dom['"]/g;
-  if (!importRegex.test(src)) return;
+  if (!/import\s+\{[^}]*\bLink\b[^}]*\}\s+from\s+['"]react-router-dom['"]/.test(src)) return;
 
-  // Bail if no absolute-path Link
+  // Bail if no absolute-path Link (any /path that is not /fr|/en|/auth|/api...)
   const absLinkRegex =
-    /<Link[^>]*\sto=(?:"\/(?!\/|fr\/|en\/|es\/|de\/|auth|api)[^"]+"|\{['"]\/(?!\/|fr\/|en\/|es\/|de\/|auth|api)[^'"]+['"]\})/;
+    /<Link\b[^>]*\sto=(?:"\/(?!fr\b|en\b|es\b|de\b|it\b|pt\b|nl\b|pl\b|ar\b|zh\b|ja\b|ru\b|tr\b|auth\b|api\b|\/)[^"]+"|\{['"]\/(?!fr\b|en\b|es\b|de\b|it\b|pt\b|nl\b|pl\b|ar\b|zh\b|ja\b|ru\b|tr\b|auth\b|api\b|\/)[^'"]+['"]\})/;
   if (!absLinkRegex.test(src)) return;
 
   const before = src;
