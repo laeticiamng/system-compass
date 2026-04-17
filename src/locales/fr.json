@@ -8983,7 +8983,17 @@
     "typeCountry": "Pays",
     "typeExitKey": "Stratégie",
     "typeError": "Erreur",
-    "typePage": "Page"
+    "typePage": "Page",
+    "page": {
+      "about": "À propos",
+      "worldMap": "Carte du monde",
+      "preventionFilter": "Filtre de prévention",
+      "compare": "Comparer des pays",
+      "pyramidTypes": "Types de pyramides",
+      "lifeGame": "Jeu de vie",
+      "dashboard": "Tableau de bord",
+      "errorsIllusions": "Erreurs & Illusions"
+    }
   },
   "notifications": {
     "title": "Notifications",
