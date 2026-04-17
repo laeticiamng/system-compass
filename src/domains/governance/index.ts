@@ -1,0 +1,1 @@
+export { useGovernanceBridge } from './store';
