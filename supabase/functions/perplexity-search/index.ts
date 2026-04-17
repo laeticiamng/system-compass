@@ -1,11 +1,16 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 import { corsHeaders } from "../_shared/cors.ts";
+import { checkRateLimit, getRateLimitKey, rateLimitResponse } from "../_shared/rate-limit.ts";
 
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
   }
+
+  // Rate limit: 15 searches / min / IP — protects PERPLEXITY_API_KEY quota
+  const rl = checkRateLimit(getRateLimitKey(req, 'perplexity-search'), { maxRequests: 15, windowSeconds: 60 });
+  if (!rl.allowed) return rateLimitResponse(rl, corsHeaders);
 
   try {
     const { query, options } = await req.json();

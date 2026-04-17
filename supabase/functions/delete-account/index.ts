@@ -1,4 +1,5 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { checkRateLimit, getRateLimitKey, rateLimitResponse } from "../_shared/rate-limit.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "https://system-compass.app",
@@ -10,6 +11,10 @@ Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
   }
+
+  // Rate limit: 3 attempts / hour / IP — destructive action
+  const rl = checkRateLimit(getRateLimitKey(req, 'delete-account'), { maxRequests: 3, windowSeconds: 3600 });
+  if (!rl.allowed) return rateLimitResponse(rl, corsHeaders);
 
   try {
     const authHeader = req.headers.get("Authorization");
