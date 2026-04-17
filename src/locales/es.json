@@ -1610,7 +1610,12 @@
     "civilUnion": "Unión civil",
     "employmentProtection": "Protección laboral",
     "safetyRating": "Nivel de seguridad",
-    "notice": "Les droits LGBTQ+ sont pris en compte dans vos recommandations de país."
+    "notice": "Les droits LGBTQ+ sont pris en compte dans vos recommandations de país.",
+    "safety": {
+      "safe": "Seguro",
+      "caution": "Precaución aconsejada",
+      "dangerous": "Peligroso"
+    }
   },
   "pyramid": {
     "top": "Cima",
@@ -6868,7 +6873,8 @@
     "error": {
       "title": "Oops, calculation failed",
       "description": "We couldn't calculate your profile. Please try again or return to the homepage."
-    }
+    },
+    "reassurance": "Sin tarjeta de crédito. Tus respuestas son privadas."
   },
   "profileMatcher": {
     "title": "Coincidencia de perfil",
@@ -7852,7 +7858,9 @@
     "trust": {
       "secure": "Pago seguro",
       "noCommitment": "Sin compromiso",
-      "instantAccess": "Acceso inmediato"
+      "instantAccess": "Acceso inmediato",
+      "refund": "Garantía de 14 días",
+      "cancel": "Cancela cuando quieras"
     },
     "heroTitle1": "Empieza gratis.",
     "heroTitle2": "Pásate a Premium cuando estés listo.",
@@ -9468,7 +9476,9 @@
       "rare": "Raro",
       "occasional": "Occasional",
       "frequent": "Frequent",
-      "severe": "Severe"
+      "severe": "Severe",
+      "very_frequent": "Muy frecuente",
+      "very_rare": "Muy raro"
     }
   },
   "healthcare": {
@@ -9492,7 +9502,8 @@
       "good": "Good",
       "adequate": "Adequate",
       "limited": "Limited",
-      "poor": "Poor"
+      "poor": "Poor",
+      "moderate": "Moderada"
     },
     "costLevels": {
       "free": "Gratis",
@@ -9570,7 +9581,12 @@
     "onSiteRequired": "On-site required",
     "effectiveRate": "Effective rate",
     "monthlyNet": "Monthly net",
-    "annualNet": "Annual net"
+    "annualNet": "Annual net",
+    "widget": {
+      "title": "Simulación fiscal rápida",
+      "grossIncome": "Ingresos brutos anuales",
+      "fullCalculator": "Calculadora completa"
+    }
   },
   "retirement": {
     "projectionTitle": "Retirement Projection 10-20 years",

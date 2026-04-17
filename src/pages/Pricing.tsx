@@ -223,6 +223,27 @@ const Pricing = () => {
           >
             {t('pricing.subtitle', 'Débloquez des analyses plus profondes et des recommandations personnalisées')}
           </motion.p>
+
+          {/* Trust strip — visible reassurance dès le hero */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
+            className="mt-8 flex flex-wrap justify-center gap-3 sm:gap-5 text-xs sm:text-sm text-muted-foreground"
+          >
+            <span className="inline-flex items-center gap-1.5">
+              <Shield className="w-3.5 h-3.5 text-emerald-500" />
+              {t('pricing.trust.refund', 'Garantie 14 jours satisfait ou remboursé')}
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <Check className="w-3.5 h-3.5 text-emerald-500" />
+              {t('pricing.trust.cancel', 'Annulation à tout moment')}
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <Check className="w-3.5 h-3.5 text-emerald-500" />
+              {t('pricing.trust.secure', 'Paiement sécurisé Stripe')}
+            </span>
+          </motion.div>
         </div>
       </section>
 

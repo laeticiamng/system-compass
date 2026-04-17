@@ -1463,7 +1463,12 @@
     "safe": "Sûr",
     "caution": "Prudence",
     "dangerous": "Dangereux",
-    "notice": "Les droits LGBTQ+ sont pris en compte dans vos recommandations de pays."
+    "notice": "Les droits LGBTQ+ sont pris en compte dans vos recommandations de pays.",
+    "safety": {
+      "safe": "Sûr",
+      "caution": "Prudence conseillée",
+      "dangerous": "Dangereux"
+    }
   },
   "pyramid": {
     "top": "Sommet",
@@ -7700,7 +7705,9 @@
       "rare": "Rare",
       "occasional": "Occasionnel",
       "frequent": "Fréquent",
-      "severe": "Sévère"
+      "severe": "Sévère",
+      "very_frequent": "Très fréquent",
+      "very_rare": "Très rare"
     }
   },
   "healthcare": {
@@ -7724,7 +7731,8 @@
       "good": "Bon",
       "adequate": "Adéquat",
       "limited": "Limité",
-      "poor": "Insuffisant"
+      "poor": "Insuffisant",
+      "moderate": "Modérée"
     },
     "costLevels": {
       "free": "Gratuit",
@@ -7802,7 +7810,12 @@
     "onSiteRequired": "Présentiel requis",
     "effectiveRate": "Taux effectif",
     "monthlyNet": "Net mensuel",
-    "annualNet": "Net annuel"
+    "annualNet": "Net annuel",
+    "widget": {
+      "title": "Simulation fiscale rapide",
+      "grossIncome": "Revenu brut annuel",
+      "fullCalculator": "Calculateur complet"
+    }
   },
   "retirement": {
     "projectionTitle": "Projection Retraite 10-20 ans",
@@ -8474,7 +8487,8 @@
     "error": {
       "title": "Oops, calculation failed",
       "description": "We couldn't calculate your profile. Please try again or return to the homepage."
-    }
+    },
+    "reassurance": "Aucune carte bancaire requise. Vos réponses restent privées."
   },
   "subscription": {
     "tiers": {
@@ -10485,7 +10499,9 @@
     "trust": {
       "secure": "Paiement sécurisé",
       "noCommitment": "Sans engagement",
-      "instantAccess": "Accès immédiat"
+      "instantAccess": "Accès immédiat",
+      "refund": "Garantie 14 jours satisfait ou remboursé",
+      "cancel": "Annulation à tout moment"
     },
     "meta": {
       "title": "Tarifs - Compass | Gratuit, Premium et Enterprise",

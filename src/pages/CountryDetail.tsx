@@ -284,10 +284,10 @@ export default function CountryDetail() {
           />
         </div>
 
-        {/* Header */}
+        {/* Header — flag + title + region en haut, actions séparées en dessous pour éviter le télescopage mobile */}
         <div className="flex flex-col gap-4 sm:gap-6 mb-6 sm:mb-8">
           <div className="flex items-start gap-3 sm:gap-4">
-            <div className="text-4xl sm:text-6xl">{getFlagEmoji(country.iso2)}</div>
+            <div className="text-4xl sm:text-6xl flex-shrink-0">{getFlagEmoji(country.iso2)}</div>
             <div className="flex-1 min-w-0">
               <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
                 <h1 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold">{displayName}</h1>
@@ -300,52 +300,53 @@ export default function CountryDetail() {
                 >
                   {typeLabel}
                 </span>
-                <Button variant="outline" size="sm" asChild className="gap-1">
-                  <Link to={`/country/${country.id}/terrain-realities`}>
-                    <MapPin className="h-4 w-4" />
-                    <span className="hidden sm:inline">{t('terrainRealities.title', 'Vie sur place')}</span>
-                  </Link>
-                </Button>
               </div>
               <p className="text-sm sm:text-base text-muted-foreground">{displayRegion}</p>
             </div>
-            <div className="flex flex-col gap-2 items-end">
-              <FollowCountryButton countryId={country.id} />
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => navigate(`/compare?countries=${country.id}`)}
-                className="gap-1.5 text-xs"
-              >
-                <Scale className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">{t('countryDetail.compareCta', 'Comparer ce pays')}</span>
-                <span className="sm:hidden">Comparer</span>
-              </Button>
-            </div>
           </div>
-          <div className="flex justify-end">
-            <AiHelpButton
-              title={t('ai.countryAnalysisAssistant', 'Assistant Analyse Pays')}
-              actions={[
-                { id: 'compare_countries', label: t('ai.actions.compareCountries', 'Comparer avec un autre pays'), description: t('ai.actions.compareCountriesDesc', 'Critères et trade-offs selon votre profil') },
-                { id: 'summarize_for_profile', label: t('ai.actions.summarizeForProfile', 'Résumer selon mes contraintes'), description: t('ai.actions.summarizeForProfileDesc', 'Résumé focalisé sur ce qui compte pour vous') },
-                { id: 'attention_points', label: t('ai.actions.attentionPoints', 'Points d\'attention'), description: t('ai.actions.attentionPointsDesc', 'Risques et contraintes pouvant casser une trajectoire') },
-              ]}
-              context={{
-                module: 'country-analysis',
-                country: {
-                  id: country.id,
-                  name: displayName,
-                  region: displayRegion,
-                  pyramidType: country.pyramidType,
-                  snapshot: country.snapshot,
-                  ruleOfGold: displayRuleOfGold,
-                },
-                profile: profile || undefined,
-              }}
-              variant="secondary"
+
+          {/* Actions row — wrap propre, pas de télescopage */}
+          <div className="flex flex-wrap items-center gap-2">
+            <Button variant="outline" size="sm" asChild className="gap-1.5">
+              <Link to={`/country/${country.id}/terrain-realities`}>
+                <MapPin className="h-4 w-4" />
+                {t('terrainRealities.title', 'Vie sur place')}
+              </Link>
+            </Button>
+            <Button
+              variant="outline"
               size="sm"
-            />
+              onClick={() => navigate(`/compare?countries=${country.id}`)}
+              className="gap-1.5"
+            >
+              <Scale className="w-4 h-4" />
+              {t('countryDetail.compareCta', 'Comparer ce pays')}
+            </Button>
+            <FollowCountryButton countryId={country.id} />
+            <div className="ml-auto">
+              <AiHelpButton
+                title={t('ai.countryAnalysisAssistant', 'Assistant Analyse Pays')}
+                actions={[
+                  { id: 'compare_countries', label: t('ai.actions.compareCountries', 'Comparer avec un autre pays'), description: t('ai.actions.compareCountriesDesc', 'Critères et trade-offs selon votre profil') },
+                  { id: 'summarize_for_profile', label: t('ai.actions.summarizeForProfile', 'Résumer selon mes contraintes'), description: t('ai.actions.summarizeForProfileDesc', 'Résumé focalisé sur ce qui compte pour vous') },
+                  { id: 'attention_points', label: t('ai.actions.attentionPoints', 'Points d\'attention'), description: t('ai.actions.attentionPointsDesc', 'Risques et contraintes pouvant casser une trajectoire') },
+                ]}
+                context={{
+                  module: 'country-analysis',
+                  country: {
+                    id: country.id,
+                    name: displayName,
+                    region: displayRegion,
+                    pyramidType: country.pyramidType,
+                    snapshot: country.snapshot,
+                    ruleOfGold: displayRuleOfGold,
+                  },
+                  profile: profile || undefined,
+                }}
+                variant="secondary"
+                size="sm"
+              />
+            </div>
           </div>
         </div>
 
