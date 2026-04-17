@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Dashboard Page', () => {
   test('should load dashboard page', async ({ page }) => {
-    await page.goto('/dashboard');
+    await page.goto('/fr/dashboard');
     
     // Dashboard should load (may redirect to auth if not logged in)
     await page.waitForTimeout(1000);
@@ -12,7 +12,7 @@ test.describe('Dashboard Page', () => {
   });
 
   test('should display main dashboard sections', async ({ page }) => {
-    await page.goto('/dashboard');
+    await page.goto('/fr/dashboard');
     
     // Wait for page to load
     await page.waitForLoadState('networkidle');
@@ -23,7 +23,7 @@ test.describe('Dashboard Page', () => {
   });
 
   test('should show login prompt for guests', async ({ page }) => {
-    await page.goto('/dashboard');
+    await page.goto('/fr/dashboard');
     
     await page.waitForLoadState('networkidle');
     
@@ -36,7 +36,7 @@ test.describe('Dashboard Page', () => {
   });
 
   test('should have navigation to exit-keys', async ({ page }) => {
-    await page.goto('/dashboard');
+    await page.goto('/fr/dashboard');
     
     await page.waitForLoadState('networkidle');
     
@@ -51,7 +51,7 @@ test.describe('Dashboard Page', () => {
   });
 
   test('should display tabs for different sections', async ({ page }) => {
-    await page.goto('/dashboard');
+    await page.goto('/fr/dashboard');
     
     await page.waitForLoadState('networkidle');
     
@@ -66,7 +66,7 @@ test.describe('Dashboard Page', () => {
   });
 
   test('should show progress indicators', async ({ page }) => {
-    await page.goto('/dashboard');
+    await page.goto('/fr/dashboard');
     
     await page.waitForLoadState('networkidle');
     
@@ -81,7 +81,7 @@ test.describe('Dashboard Page', () => {
 
   test('should be responsive on mobile', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 });
-    await page.goto('/dashboard');
+    await page.goto('/fr/dashboard');
     
     await page.waitForLoadState('networkidle');
     

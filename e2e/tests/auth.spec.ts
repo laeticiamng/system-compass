@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Authentication Flow', () => {
   test('should display login page correctly', async ({ page }) => {
-    await page.goto('/auth');
+    await page.goto('/fr/auth');
     
     // Check page title and main elements
     await expect(page.locator('h1, h2').first()).toBeVisible();
@@ -21,7 +21,7 @@ test.describe('Authentication Flow', () => {
   });
 
   test('should show validation errors for empty form', async ({ page }) => {
-    await page.goto('/auth');
+    await page.goto('/fr/auth');
     
     // Try to submit empty form
     const submitButton = page.locator('button[type="submit"]');
@@ -34,7 +34,7 @@ test.describe('Authentication Flow', () => {
   });
 
   test('should toggle between login and signup', async ({ page }) => {
-    await page.goto('/auth');
+    await page.goto('/fr/auth');
     
     // Look for toggle link/button
     const toggleLink = page.locator('text=/inscription|sign up|créer un compte/i').first();
@@ -49,7 +49,7 @@ test.describe('Authentication Flow', () => {
   });
 
   test('should redirect to dashboard after login attempt', async ({ page }) => {
-    await page.goto('/auth');
+    await page.goto('/fr/auth');
     
     // Fill in credentials
     await page.fill('input[type="email"]', 'test@example.com');
@@ -69,7 +69,7 @@ test.describe('Authentication Flow', () => {
   });
 
   test('should show password visibility toggle', async ({ page }) => {
-    await page.goto('/auth');
+    await page.goto('/fr/auth');
     
     const passwordInput = page.locator('input[type="password"]');
     await expect(passwordInput).toBeVisible();
