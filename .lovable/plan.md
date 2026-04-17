@@ -1,119 +1,108 @@
 
-The user wants to continue applying complex-system architecture + governance logic to the platform. We've already delivered:
-- Phase 0: 360° audit (PDF)
-- Chantier #1: Playwright E2E (44 tests, 6 paths)
-- Chantier #2: Rate-limiting (5 edge functions) + i18n linter
-- Hotfix: send-email JSX runtime
+Phase 1 (stabilisation) is now 4/5 done: E2E tests, rate-limiting, i18n linter, observabilité maison + cockpit gouvernance. Reste **Chantier #4** : refactor architecture en bounded contexts + migration de `GlobalConnector` (sessionStorage) vers Zustand.
 
-Remaining Phase 1 chantiers from the original plan:
-- #3 Observabilité (logging maison via edge function + table `error_logs`, since user chose "alternative gratuite")
-- #4 Bounded contexts `src/domains/` + Zustand migration of `GlobalConnector`
-- #5 Dashboard gouvernance interne `/admin/governance`
-
-Plan the next logical step. Given governance + system-architecture framing, the highest leverage now is **Observabilité maison** (prerequisite for the governance dashboard, which consumes its data). Then the governance dashboard. The Zustand refactor is heavier and benefits from having tests + observability already in place.
-
-Proposing Chantier #3 + #5 as a coherent pair (observability → dashboard that visualizes it), keeping #4 (architecture refactor) as a separate next step.
+C'est le chantier le plus structurant pour la gouvernance long terme : il transforme un codebase organisé par type technique (`components/`, `hooks/`, `services/`) en codebase organisé par **domaine métier**, ce qui rend les règles de dépendance explicites et auditables.
 
 ---
 
-## Plan — Phase 1 suite : Observabilité maison + Dashboard de gouvernance
+## Plan — Chantier #4 : Bounded Contexts + Zustand
 
 ### Objectif systémique
-Donner à la plateforme un **système nerveux** : capter les signaux faibles (erreurs, latence, abus) puis les rendre lisibles dans un cockpit unique. Sans ça, toute décision d'architecture se fait à l'aveugle.
+Passer d'une architecture **plate** (couplages diffus via sessionStorage + props drilling) à une architecture **par domaine** avec frontières explicites et état réactif typé. Bénéfice gouvernance : chaque domaine devient auditable, testable et remplaçable indépendamment.
 
-### Chantier #3 — Observabilité maison (alternative gratuite à Sentry)
+### Diagnostic actuel
+- `GlobalConnector.tsx` utilise `sessionStorage` → état non réactif, pas de re-render automatique, perte au refresh
+- 6 helpers de connexion inter-modules (`connectExitKeysToDashboard`, `connectCountryToCompare`, etc.) → logique métier dispersée
+- Code organisé par **type technique** (components/hooks/services) → frontières de domaine implicites
 
-**Backend**
-- Migration : table `error_logs` (id, user_id nullable, level, source [`web`|`edge`|`api`], message, stack, context jsonb, url, user_agent, release, created_at)
-- RLS : insert public anon (logs frontend), select admin only via `has_role`
-- Index sur `(created_at desc)`, `(level)`, `(source)`
-- Trigger : auto-purge > 30 jours
+### Architecture cible : `src/domains/`
 
-**Edge function `log-error`**
-- POST { level, message, stack?, context?, source, url? }
-- Validation Zod, rate-limit 60/min/IP (réutilise helper existant)
-- `verify_jwt = false` (logs anonymes possibles), résout user_id via header si présent
+```text
+src/domains/
+├── _shared/              ← types & utils transverses
+│   └── types.ts
+├── country/              ← données pays, comparaison
+│   ├── store.ts          (Zustand: selectedCountries, comparisonMode)
+│   ├── api.ts            (queries Supabase typées)
+│   ├── types.ts
+│   └── index.ts          (barrel export = API publique du domaine)
+├── exit-keys/            ← profil + clés de sortie
+│   ├── store.ts          (profile, computedKeys, navigation context)
+│   ├── api.ts
+│   └── index.ts
+├── governance/           ← traceos, latent zones, irreversa
+│   ├── store.ts          (decisions, thresholds, cross-module links)
+│   ├── api.ts
+│   └── index.ts
+├── observability/        ← logger + web vitals (existe déjà, on déplace)
+│   └── index.ts          (re-export depuis lib/observability)
+└── auth/                 ← user, roles, session
+    ├── store.ts          (user, roles, isAdmin)
+    └── index.ts
+```
 
-**Client**
-- `src/lib/observability/logger.ts` : `logError`, `logWarn`, `logInfo` → batch + flush toutes 5s
-- Hook dans `GlobalErrorBoundary` existant → envoie automatiquement
-- Wrapper `window.onerror` + `unhandledrejection`
-- Web Vitals (`LCP`, `INP`, `CLS`) → même endpoint avec `level=info`
+**Règle de dépendance** (vérifiable par lint) : un domaine ne peut importer que `_shared` ou ses propres fichiers. Cross-domain = via store explicite.
 
-### Chantier #5 — Dashboard `/admin/governance`
+### Migration `GlobalConnector` → Zustand
 
-Page protégée par `has_role('admin')`. Sections :
+**Avant** (sessionStorage, non réactif) :
+```ts
+setModuleContext({ sourceModule, targetModule, data })
+const ctx = getModuleContext() // lecture impérative
+```
 
-1. **Santé technique (24h / 7j / 30j)**
-   - Erreurs par niveau (sparkline)
-   - Top 10 erreurs par fréquence
-   - p50/p95 Web Vitals
-   - Edge functions : invocations + taux d'erreur (via `analytics_events`)
+**Après** (Zustand, réactif + persisté) :
+```ts
+// src/domains/_shared/navigationStore.ts
+const useNavigationContext = create(persist(...))
 
-2. **Sécurité & abus**
-   - Compteurs rate-limit hits par fonction
-   - Tentatives auth échouées
-   - Comptes supprimés (delete-account)
+// Composant cible
+const ctx = useNavigationContext(s => s.context)
+// re-render auto quand le contexte change
+```
 
-3. **Activation produit**
-   - DAU/WAU/MAU (depuis `analytics_events`)
-   - Funnel : signup → onboarding → premier export
-   - Top pays consultés
+- `persist` middleware sur sessionStorage → compatibilité ascendante
+- TTL 30min géré dans le store (pas de helper externe)
+- Helpers métier (`connectExitKeysToDashboard`, etc.) déplacés dans le store du domaine source
 
-4. **Dette & qualité (statique, snapshot manuel)**
-   - Couverture E2E (badge)
-   - Nb edge functions / tables / pages
-   - Date dernier audit
+### Périmètre du chantier (volontairement borné)
+
+**Inclus** :
+1. Créer `src/domains/` avec 5 sous-dossiers + barrel exports
+2. Créer `useNavigationContext` (Zustand + persist) qui remplace `GlobalConnector`
+3. Migrer les 6 `connectXxxToYyy` helpers vers les stores de domaine
+4. Adapter les ~10 consumers (search & remplacement guidé)
+5. Garder `GlobalConnector.tsx` comme **shim deprecated** (re-export, console.warn) pour ne rien casser
+6. Lint : règle ESLint custom `no-cross-domain-import` (warning d'abord)
+7. Test Vitest : équivalence comportementale (le test existant `GlobalConnector.test.tsx` doit toujours passer)
+
+**Exclus** (chantiers ultérieurs) :
+- Migration complète de tous les `useState` éparpillés vers Zustand
+- Réorganisation physique de `components/` par domaine (juste règles d'import pour l'instant)
+- Suppression définitive de `GlobalConnector.tsx` (après 1 sprint de stabilité)
 
 ### Détails techniques
 
-```text
-src/
-├── lib/observability/
-│   ├── logger.ts              ← API publique (logError, batch)
-│   ├── webVitals.ts           ← onLCP/onINP/onCLS → logger
-│   └── index.ts
-├── pages/admin/
-│   └── Governance.tsx         ← /admin/governance (route localisée)
-└── components/admin/governance/
-    ├── HealthSection.tsx
-    ├── SecuritySection.tsx
-    ├── ActivationSection.tsx
-    └── QualityDebtSection.tsx
-
-supabase/
-├── migrations/
-│   └── <ts>_error_logs.sql
-└── functions/
-    └── log-error/
-        ├── index.ts
-        └── deno.json (si JSX, sinon non)
-```
-
-- Route ajoutée dans le router avec garde `RequireRole admin`
-- Aucun lien public — accès via URL directe ou menu admin existant
-- Charts : `recharts` (déjà présent)
-- Pas de polling temps réel pour v1 (refresh manuel + auto 60s) → coût 0
-
-### Hors scope (prochaines étapes)
-- Chantier #4 (Zustand + `src/domains/`) : à faire ensuite, demande un PR dédié
-- Alerting email/Slack sur erreurs critiques : v2
-- SOC2 evidence collection : Phase 4
+- **Dépendance** : `zustand` (probablement déjà présent — à vérifier)
+- **Pattern** : 1 store par domaine, slice pattern si > 200 lignes
+- **Types** : interfaces exportées depuis `domains/<x>/types.ts`, pas de `any`
+- **Test** : un test par store (init, mutation, persist round-trip)
 
 ### Livrables
-- 1 migration SQL + 1 edge function `log-error`
-- 1 module `lib/observability` câblé sur ErrorBoundary
-- 1 page `/admin/governance` avec 4 sections fonctionnelles
-- README court : comment lire le dashboard, comment forcer une purge
+- 5 stores Zustand typés
+- 1 shim de compatibilité `GlobalConnector.tsx`
+- 1 règle ESLint `no-cross-domain-import` (warn)
+- 1 README `src/domains/README.md` expliquant les frontières
+- Tests verts (E2E + unit)
 
 ### Risques & mitigations
-- **Volume logs** → purge auto 30j + niveaux (info filtré côté client en prod)
-- **PII dans stacks** → scrub côté edge (regex email/UUID basique)
-- **Faux positifs** → `level=warn` par défaut pour erreurs non-Error throw
+- **Casse silencieuse** des consumers → shim deprecated + tests E2E (déjà en place grâce au Chantier #1)
+- **Sur-ingénierie** → on borne à 5 domaines, pas un par feature
+- **Zustand pas installé** → fallback sur Context API + useReducer (à confirmer après check)
 
 <lov-actions>
-<lov-suggestion message="Vas-y, exécute le Chantier #3 (Observabilité maison) puis enchaîne avec le Chantier #5 (Dashboard /admin/governance) comme prévu.">Exécuter #3 + #5</lov-suggestion>
-<lov-suggestion message="Fais uniquement le Chantier #3 (Observabilité : table error_logs + edge function log-error + logger client + Web Vitals). On verra le dashboard ensuite.">Juste #3 d'abord</lov-suggestion>
-<lov-suggestion message="Saute l'observabilité pour l'instant et attaque directement le Chantier #4 : refactor architecture src/domains/ + migration GlobalConnector vers Zustand.">Chantier #4 à la place</lov-suggestion>
-<lov-suggestion message="Avant d'exécuter, ajoute au plan un système d'alerting (email admin via Resend) quand le taux d'erreur dépasse un seuil configurable.">Ajouter alerting au plan</lov-suggestion>
+<lov-suggestion message="Vas-y, exécute le Chantier #4 tel que planifié : src/domains/ + Zustand pour GlobalConnector + shim deprecated + règle ESLint en warning.">Exécuter Chantier #4</lov-suggestion>
+<lov-suggestion message="Réduis le scope : fais uniquement la migration GlobalConnector → Zustand (avec persist), sans créer src/domains/ ni la règle ESLint pour l'instant.">Juste Zustand, pas de domains/</lov-suggestion>
+<lov-suggestion message="Avant le refactor, ajoute un test E2E qui couvre les 6 connexions inter-modules (connectExitKeysToDashboard, connectCountryToCompare, etc.) pour garantir zéro régression.">Filet E2E d'abord</lov-suggestion>
+<lov-suggestion message="Passe Phase 1 et attaque Phase 2 : alerting email admin (Resend) sur taux d'erreur > seuil + purge auto cron pour error_logs.">Phase 2 : alerting</lov-suggestion>
 </lov-actions>
