@@ -104,3 +104,9 @@ verify_jwt = false
 
 [functions.log-error]
 verify_jwt = false
+
+[functions.health]
+verify_jwt = false
+
+[functions.check-error-rate]
+verify_jwt = false
