@@ -83,9 +83,9 @@ function checkFile(absPath) {
       });
     }
 
-    // Rule 2: <Link to="/abs"> without locale-aware helper
-    //  Allow: to="/" | to="/:lang/..." | to={localizedPath(...)} | external links
-    const linkMatch = line.match(/<Link[^>]*\sto=(?:"([^"]+)"|\{['"]([^'"]+)['"]\})/);
+    // Rule 2: <Link to="/abs"> without locale-aware helper.
+    // Only matches `<Link ` (with space/>) so <LocalizedLink> is allowed.
+    const linkMatch = line.match(/<Link(?=[\s>])[^>]*\sto=(?:"([^"]+)"|\{['"]([^'"]+)['"]\})/);
     if (linkMatch) {
       const target = linkMatch[1] || linkMatch[2];
       if (
@@ -94,13 +94,13 @@ function checkFile(absPath) {
         target !== '/' &&
         !target.startsWith('//') &&
         !/^\/(fr|en|es|de|it|pt|nl|pl|ar|zh|ja|ru|tr)\b/i.test(target) &&
-        !/^\/(auth|api)\b/.test(target) // auth & api are intentionally locale-free
+        !/^\/(auth|api)\b/.test(target)
       ) {
         violations.push({
           file: rel,
           line: lineNo,
           rule: 'link-missing-locale',
-          msg: `<Link to="${target}"> bypasses locale routing — wrap with localizedPath() or use a relative path.`,
+          msg: `<Link to="${target}"> bypasses locale routing — use <LocalizedLink> from @/components/common/LocalizedLink.`,
           code: trimmed,
         });
       }
