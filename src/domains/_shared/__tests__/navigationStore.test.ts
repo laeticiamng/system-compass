@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { useNavigationContext, setModuleContext, getModuleContext, clearModuleContext } from '../navigationStore';
 
 describe('navigationStore', () => {
