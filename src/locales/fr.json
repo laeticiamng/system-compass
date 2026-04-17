@@ -8487,7 +8487,8 @@
     "error": {
       "title": "Oops, calculation failed",
       "description": "We couldn't calculate your profile. Please try again or return to the homepage."
-    }
+    },
+    "reassurance": "Aucune carte bancaire requise. Vos réponses restent privées."
   },
   "subscription": {
     "tiers": {
@@ -10498,7 +10499,9 @@
     "trust": {
       "secure": "Paiement sécurisé",
       "noCommitment": "Sans engagement",
-      "instantAccess": "Accès immédiat"
+      "instantAccess": "Accès immédiat",
+      "refund": "Garantie 14 jours satisfait ou remboursé",
+      "cancel": "Annulation à tout moment"
     },
     "meta": {
       "title": "Tarifs - Compass | Gratuit, Premium et Enterprise",

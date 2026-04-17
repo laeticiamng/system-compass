@@ -6873,7 +6873,8 @@
     "error": {
       "title": "Oops, calculation failed",
       "description": "We couldn't calculate your profile. Please try again or return to the homepage."
-    }
+    },
+    "reassurance": "Sin tarjeta de crédito. Tus respuestas son privadas."
   },
   "profileMatcher": {
     "title": "Coincidencia de perfil",
@@ -7857,7 +7858,9 @@
     "trust": {
       "secure": "Pago seguro",
       "noCommitment": "Sin compromiso",
-      "instantAccess": "Acceso inmediato"
+      "instantAccess": "Acceso inmediato",
+      "refund": "Garantía de 14 días",
+      "cancel": "Cancela cuando quieras"
     },
     "heroTitle1": "Empieza gratis.",
     "heroTitle2": "Pásate a Premium cuando estés listo.",

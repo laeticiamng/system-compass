@@ -377,9 +377,10 @@ export default function QuickTest() {
             </AnimatedSection>
           </div>
 
-          {/* Disclaimer */}
-          <p className="text-xs text-center text-muted-foreground/70 mt-12">
-            ⚠️ {t('quickTest.disclaimer', 'Simulation ≠ prédiction. Exploration uniquement.')}
+          {/* Reassurance plutôt que disclaimer auto-critique */}
+          <p className="text-xs text-center text-muted-foreground/70 mt-12 flex items-center justify-center gap-1.5">
+            <Shield className="w-3 h-3" />
+            {t('quickTest.reassurance', 'Aucune carte bancaire requise. Vos réponses restent privées.')}
           </p>
         </div>
       </section>

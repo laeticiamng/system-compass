@@ -7679,7 +7679,8 @@
     "error": {
       "title": "Oops, calculation failed",
       "description": "We couldn't calculate your profile. Please try again or return to the homepage."
-    }
+    },
+    "reassurance": "No credit card required. Your answers stay private."
   },
   "miniDemo": {
     "tax": "Taxes",
@@ -10444,7 +10445,9 @@
     "trust": {
       "secure": "Secure payment",
       "noCommitment": "No commitment",
-      "instantAccess": "Instant access"
+      "instantAccess": "Instant access",
+      "refund": "14-day money-back guarantee",
+      "cancel": "Cancel anytime"
     },
     "meta": {
       "title": "Pricing - Compass | Free, Premium & Enterprise",
