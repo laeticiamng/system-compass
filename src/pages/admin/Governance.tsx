@@ -3,7 +3,6 @@
  * Aggregates signals from error_logs and analytics_events.
  */
 import { useEffect, useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Activity, Shield, Users, Database, RefreshCw } from 'lucide-react';
