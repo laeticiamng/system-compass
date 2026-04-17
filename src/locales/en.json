@@ -1664,7 +1664,12 @@
     "civilUnion": "Civil union",
     "employmentProtection": "Employment protection",
     "safetyRating": "Safety rating",
-    "notice": "Les droits LGBTQ+ sont pris en compte dyears vos recommyeardations de country."
+    "notice": "Les droits LGBTQ+ sont pris en compte dyears vos recommyeardations de country.",
+    "safety": {
+      "safe": "Safe",
+      "caution": "Caution Advised",
+      "dangerous": "Dangerous"
+    }
   },
   "pyramid": {
     "top": "Summit",
@@ -6892,7 +6897,9 @@
       "rare": "Rare",
       "occasional": "Occasional",
       "frequent": "Frequent",
-      "severe": "Severe"
+      "severe": "Severe",
+      "very_frequent": "Very frequent",
+      "very_rare": "Very rare"
     }
   },
   "healthcare": {
@@ -6916,7 +6923,8 @@
       "good": "Good",
       "adequate": "Adequate",
       "limited": "Limited",
-      "poor": "Poor"
+      "poor": "Poor",
+      "moderate": "Moderate"
     },
     "costLevels": {
       "free": "Free",
@@ -6994,7 +7002,12 @@
     "onSiteRequired": "On-site required",
     "effectiveRate": "Effective rate",
     "monthlyNet": "Monthly net",
-    "annualNet": "Annual net"
+    "annualNet": "Annual net",
+    "widget": {
+      "title": "Quick tax simulation",
+      "grossIncome": "Annual gross income",
+      "fullCalculator": "Full calculator"
+    }
   },
   "retirement": {
     "projectionTitle": "Retirement Projection 10-20 years",
