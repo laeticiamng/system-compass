@@ -1,160 +1,119 @@
 
+The user wants to continue applying complex-system architecture + governance logic to the platform. We've already delivered:
+- Phase 0: 360° audit (PDF)
+- Chantier #1: Playwright E2E (44 tests, 6 paths)
+- Chantier #2: Rate-limiting (5 edge functions) + i18n linter
+- Hotfix: send-email JSX runtime
 
-# Audit Complet — Ce qui manque pour rendre System Compass unique et revolutionnaire
+Remaining Phase 1 chantiers from the original plan:
+- #3 Observabilité (logging maison via edge function + table `error_logs`, since user chose "alternative gratuite")
+- #4 Bounded contexts `src/domains/` + Zustand migration of `GlobalConnector`
+- #5 Dashboard gouvernance interne `/admin/governance`
 
-## Etat actuel
+Plan the next logical step. Given governance + system-architecture framing, the highest leverage now is **Observabilité maison** (prerequisite for the governance dashboard, which consumes its data). Then the governance dashboard. The Zustand refactor is heavier and benefits from having tests + observability already in place.
 
-System Compass est deja une plateforme impressionnante : 80+ pages, 72 pays, 36 edge functions, 13 langues, scanner geopolitique IA, modules B2B/governance/gamification, export PDF, marketplace d'experts, et un design system solide. C'est un produit mature.
-
-L'audit ci-dessous identifie les **lacunes strategiques** qui separent une bonne plateforme d'une plateforme *incontournable*.
-
----
-
-## A. Experiences manquantes a fort impact
-
-### A1. Assistant IA conversationnel contextuel
-Actuellement, `AiHelpButton` propose des actions predefinies. Il manque un **chatbot IA persistent** (type ChatGPT) qui :
-- Connait le profil utilisateur, ses pays favoris, son avancement
-- Repond en langage naturel : "Quels pays acceptent mon visa freelance ?" "Compare le Portugal et la Thailande pour ma situation"
-- Guide l'utilisateur pas a pas dans son parcours d'expatriation
-- Accessible depuis un panneau lateral permanent (le `AiSidePanel.tsx` existe mais semble sous-utilise)
-
-**Impact** : Differenciant majeur. Aucun concurrent n'offre un assistant IA personnalise pour l'expatriation.
-
-### A2. Simulateur de vie immersif ("A quoi ressemblera ma vie la-bas ?")
-Manque un simulateur qui transforme les donnees brutes en **projection concrete** :
-- Budget mensuel detaille (loyer, courses, transports, sante, loisirs) adapte au profil
-- Timeline interactive : "Mois 1 : arrivee, Mois 3 : ouverture compte bancaire, Mois 6 : permis de residence..."
-- Comparaison visuelle avant/apres (France vs destination) sur un tableau de bord split-screen
-- Scenarios "What-if" : "Et si mon salaire baisse de 20% ?" "Et si j'ai un enfant ?"
-
-### A3. Temoignages et retours d'experience reels (UGC)
-Les temoignages actuels dans `TestimonialsSection` sont statiques/mock. Il manque :
-- Systeme d'avis utilisateurs reels par pays (verifie par connexion)
-- "Journal d'expatrie" : les utilisateurs partagent leur experience mois apres mois
-- Notation par critere (administration, integration, cout reel vs attendu)
-- Filtrage par profil similaire ("Montrez-moi les retours de freelancers francais au Portugal")
-
-### A4. Checklist administrative dynamique et connectee
-`CountryChecklist.tsx` existe mais manque de profondeur :
-- Checklist generee par l'IA en fonction du profil exact (nationalite, statut, famille)
-- Integration calendrier (Google Calendar / iCal) pour les deadlines
-- Rappels automatiques avant echeances visa/fiscales
-- Tracking des documents (passeport, apostilles, traductions) avec upload et stockage
+Proposing Chantier #3 + #5 as a coherent pair (observability → dashboard that visualizes it), keeping #4 (architecture refactor) as a separate next step.
 
 ---
 
-## B. Fonctionnalites techniques manquantes
+## Plan — Phase 1 suite : Observabilité maison + Dashboard de gouvernance
 
-### B1. Onboarding guide
-Le flag `onboarding: a ajouter tutoriel interactif` est dans l'audit depuis des mois. Un parcours guide (type Shepherd.js / product tour) qui :
-- Detecte les nouveaux utilisateurs et les guide etape par etape
-- Personnalise le tour selon le profil (B2C simple vs B2B governance)
-- Mesure le taux de completion
+### Objectif systémique
+Donner à la plateforme un **système nerveux** : capter les signaux faibles (erreurs, latence, abus) puis les rendre lisibles dans un cockpit unique. Sans ça, toute décision d'architecture se fait à l'aveugle.
 
-### B2. Recherche globale intelligente
-`GlobalSearch.tsx` existe mais pourrait etre augmente :
-- Recherche semantique IA ("pays sans impot sur les plus-values crypto")
-- Resultats cross-modules (pays + experts + alertes + articles)
-- Suggestions predictives basees sur le profil
+### Chantier #3 — Observabilité maison (alternative gratuite à Sentry)
 
-### B3. Mode collaboratif reel (Family Workspace)
-`FamilyWorkspace.tsx` fonctionne avec des donnees demo statiques. Il faudrait :
-- Invitations par email avec lien partage
-- Synchronisation en temps reel (Supabase Realtime)
-- Vote et consensus sur les pays entre membres de la famille
-- Dashboard partage avec progression commune
+**Backend**
+- Migration : table `error_logs` (id, user_id nullable, level, source [`web`|`edge`|`api`], message, stack, context jsonb, url, user_agent, release, created_at)
+- RLS : insert public anon (logs frontend), select admin only via `has_role`
+- Index sur `(created_at desc)`, `(level)`, `(source)`
+- Trigger : auto-purge > 30 jours
 
-### B4. Notifications intelligentes
-L'infra push est prete (`usePushNotifications`) mais manque :
-- Alertes proactives : "Le Portugal a change ses regles de visa NHR" → push aux utilisateurs qui suivent le Portugal
-- Digest hebdomadaire personnalise par email (via Resend, deja connecte)
-- "Moment ideal" : suggestions basees sur le timing ("Vous partez dans 3 mois, avez-vous fait votre X ?")
+**Edge function `log-error`**
+- POST { level, message, stack?, context?, source, url? }
+- Validation Zod, rate-limit 60/min/IP (réutilise helper existant)
+- `verify_jwt = false` (logs anonymes possibles), résout user_id via header si présent
 
----
+**Client**
+- `src/lib/observability/logger.ts` : `logError`, `logWarn`, `logInfo` → batch + flush toutes 5s
+- Hook dans `GlobalErrorBoundary` existant → envoie automatiquement
+- Wrapper `window.onerror` + `unhandledrejection`
+- Web Vitals (`LCP`, `INP`, `CLS`) → même endpoint avec `level=info`
 
-## C. Lacunes de contenu et donnees
+### Chantier #5 — Dashboard `/admin/governance`
 
-### C1. Donnees temps reel
-Les donnees pays sont des snapshots statiques (seed). Il manquerait :
-- Cout de la vie actualise automatiquement (API Numbeo ou scraping Firecrawl — deja connecte)
-- Taux de change en temps reel
-- Index de qualite de l'air, meteo saisonniere
+Page protégée par `has_role('admin')`. Sections :
 
-### C2. Contenu editorial / blog reel
-`Blog.tsx` et `BlogArticle.tsx` existent mais semblent vides ou mock. Un blog alimente :
-- Guides pays approfondis ("S'installer au Portugal en 2026 : le guide complet")
-- Analyses de tendances ("Les 5 pays qui attirent le plus de freelancers en 2026")
-- SEO-driven content pour le trafic organique
+1. **Santé technique (24h / 7j / 30j)**
+   - Erreurs par niveau (sparkline)
+   - Top 10 erreurs par fréquence
+   - p50/p95 Web Vitals
+   - Edge functions : invocations + taux d'erreur (via `analytics_events`)
 
-### C3. Comparateur avance
-Le comparateur existe mais manque :
-- Comparaison de 5+ pays simultanement (actuellement limite a 4)
-- Export du comparatif en image/PDF brandee pour partage social
-- Score de compatibilite personnalise dans le comparateur
+2. **Sécurité & abus**
+   - Compteurs rate-limit hits par fonction
+   - Tentatives auth échouées
+   - Comptes supprimés (delete-account)
 
----
+3. **Activation produit**
+   - DAU/WAU/MAU (depuis `analytics_events`)
+   - Funnel : signup → onboarding → premier export
+   - Top pays consultés
 
-## D. Monetisation et croissance
+4. **Dette & qualité (statique, snapshot manuel)**
+   - Couverture E2E (badge)
+   - Nb edge functions / tables / pages
+   - Date dernier audit
 
-### D1. Freemium funnel optimise
-- Manque un compteur visible "3/5 analyses gratuites restantes" pour creer l'urgence
-- Pas de trial period pour le Premium (7 jours gratuits)
-- Pas de referral/parrainage ("Invitez un ami, gagnez 1 mois")
-
-### D2. Marketplace d'experts vivante
-Le booking est marque `a integrer` depuis l'audit. Il manque :
-- Paiement reel (Stripe Connect est configure mais pas connecte au flow)
-- Calendrier de disponibilite des experts
-- Appels video integres ou redirection Calendly
-- Commission automatique sur les transactions
-
-### D3. API publique / Widgets embarquables
-`ApiDocs.tsx` et `WebhooksDocs.tsx` existent mais pas d'API reelle. Offrir :
-- API REST pour les partenaires (agences, blogs voyage)
-- Widget embarquable "Trouvez votre pays ideal" pour sites tiers
-- Programme d'affiliation
-
----
-
-## E. Ce qui rendrait la plateforme UNIQUE (aucun concurrent ne fait ca)
-
-| Innovation | Description | Niveau de disruption |
-|-----------|-------------|---------------------|
-| **IA Coach expatriation** | Assistant conversationnel qui connait votre dossier et vous guide sur 12 mois | Tres eleve |
-| **Simulation de vie immersive** | "Vivez une journee type a Lisbonne" avec budget, transport, logement projetes | Eleve |
-| **Score de regret** | IA qui calcule la probabilite de retour/echec basee sur les profils similaires | Tres eleve |
-| **Reseau d'expatries verifies** | Mise en relation avec des expatries deja installes dans le pays cible | Eleve |
-| **Timeline reglementaire vivante** | Calendrier auto-genere des demarches admin avec rappels push | Eleve |
-| **Mode "Shadow expat"** | Suivre un expatrie pendant 30 jours (journal partage anonymise) | Tres eleve |
-
----
-
-## F. Priorites d'implementation suggerees
+### Détails techniques
 
 ```text
-IMMEDIAT (impact maximal, effort modere)
-├── 1. Assistant IA conversationnel (edge function + panneau lateral)
-├── 2. Onboarding guide interactif
-├── 3. Digest email hebdomadaire personnalise (Resend ready)
-└── 4. Blog reel avec contenus SEO generes par IA
+src/
+├── lib/observability/
+│   ├── logger.ts              ← API publique (logError, batch)
+│   ├── webVitals.ts           ← onLCP/onINP/onCLS → logger
+│   └── index.ts
+├── pages/admin/
+│   └── Governance.tsx         ← /admin/governance (route localisée)
+└── components/admin/governance/
+    ├── HealthSection.tsx
+    ├── SecuritySection.tsx
+    ├── ActivationSection.tsx
+    └── QualityDebtSection.tsx
 
-COURT TERME (1-2 semaines)
-├── 5. Simulateur de vie / budget projete par pays
-├── 6. UGC : avis et journaux d'expatries reels
-├── 7. Family Workspace collaboratif reel
-└── 8. Booking experts fonctionnel (Stripe Connect)
-
-MOYEN TERME (differenciation profonde)
-├── 9. Score de regret / probabilite de retour
-├── 10. Reseau d'expatries verifies (social layer)
-├── 11. API publique + widget embarquable
-└── 12. Mode hors-ligne complet (PWA)
+supabase/
+├── migrations/
+│   └── <ts>_error_logs.sql
+└── functions/
+    └── log-error/
+        ├── index.ts
+        └── deno.json (si JSX, sinon non)
 ```
 
----
+- Route ajoutée dans le router avec garde `RequireRole admin`
+- Aucun lien public — accès via URL directe ou menu admin existant
+- Charts : `recharts` (déjà présent)
+- Pas de polling temps réel pour v1 (refresh manuel + auto 60s) → coût 0
 
-## Resume
+### Hors scope (prochaines étapes)
+- Chantier #4 (Zustand + `src/domains/`) : à faire ensuite, demande un PR dédié
+- Alerting email/Slack sur erreurs critiques : v2
+- SOC2 evidence collection : Phase 4
 
-La plateforme est techniquement solide (669 tests, RLS A+, 36 edge functions). Ce qui manque n'est pas technique — c'est **l'experience humaine** : un assistant qui vous connait, des histoires reelles d'expatries, un simulateur qui rend le futur tangible, et un parcours guide qui elimine l'angoisse de l'inconnu. C'est la difference entre un outil d'analyse et un **compagnon d'expatriation**.
+### Livrables
+- 1 migration SQL + 1 edge function `log-error`
+- 1 module `lib/observability` câblé sur ErrorBoundary
+- 1 page `/admin/governance` avec 4 sections fonctionnelles
+- README court : comment lire le dashboard, comment forcer une purge
 
+### Risques & mitigations
+- **Volume logs** → purge auto 30j + niveaux (info filtré côté client en prod)
+- **PII dans stacks** → scrub côté edge (regex email/UUID basique)
+- **Faux positifs** → `level=warn` par défaut pour erreurs non-Error throw
+
+<lov-actions>
+<lov-suggestion message="Vas-y, exécute le Chantier #3 (Observabilité maison) puis enchaîne avec le Chantier #5 (Dashboard /admin/governance) comme prévu.">Exécuter #3 + #5</lov-suggestion>
+<lov-suggestion message="Fais uniquement le Chantier #3 (Observabilité : table error_logs + edge function log-error + logger client + Web Vitals). On verra le dashboard ensuite.">Juste #3 d'abord</lov-suggestion>
+<lov-suggestion message="Saute l'observabilité pour l'instant et attaque directement le Chantier #4 : refactor architecture src/domains/ + migration GlobalConnector vers Zustand.">Chantier #4 à la place</lov-suggestion>
+<lov-suggestion message="Avant d'exécuter, ajoute au plan un système d'alerting (email admin via Resend) quand le taux d'erreur dépasse un seuil configurable.">Ajouter alerting au plan</lov-suggestion>
+</lov-actions>
