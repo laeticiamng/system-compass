@@ -38,6 +38,7 @@ import { useExitKeysProfile } from '@/hooks/useExitKeysProfile';
 import { useCountryGovernance } from '@/hooks/useCountryGovernance';
 import { AiHelpButton } from '@/components/ai/AiHelpButton';
 import { FollowCountryButton } from '@/components/country/FollowCountryButton';
+import { CountryQuickActions } from '@/components/country/CountryQuickActions';
 import { countryRiskProfiles } from '@/lib/country-risks-data';
 
 const PYRAMID_TYPE_LABELS: Record<string, string> = {
@@ -350,6 +351,9 @@ export default function CountryDetail() {
           </div>
         </div>
 
+        {/* Quick Actions — sticky shortcuts to dense sections */}
+        <CountryQuickActions />
+
         {/* Snapshot */}
         <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 gap-2 sm:gap-4 mb-6 sm:mb-8">
           <SnapshotCard label={t('countryDetail.snapshot.gdpPerCapita')} value={`$${country.snapshot.gdpPerCapita.toLocaleString()}`} />
@@ -443,12 +447,12 @@ export default function CountryDetail() {
         )}
 
         {/* Expert Widget - recommended experts for this country */}
-        <div className="mb-12">
+        <div id="expert-section" className="mb-12 scroll-mt-24">
           <ExpertCountryWidget countryId={country.id} countryName={displayName} />
         </div>
 
         {/* Fiscal Quick Widget - avant le calculateur détaillé */}
-        <div className="mb-12">
+        <div id="fiscal-section" className="mb-12 scroll-mt-24">
           <FiscalQuickWidget countryId={country.id} countryName={displayName} />
         </div>
 
@@ -462,7 +466,7 @@ export default function CountryDetail() {
           <RetirementProjection initialCountryId={country.id} />
         </div>
 
-        <div className="mb-12">
+        <div id="strategies-section" className="mb-12 scroll-mt-24">
           <h2 className="font-display text-2xl font-bold mb-6">{t('exitKeys.title', 'Stratégies')}</h2>
           <CountryExitKeys country={country} />
         </div>
@@ -510,7 +514,7 @@ export default function CountryDetail() {
         </div>
 
         {/* Sources & Attribution (D2) */}
-        <div className="glass-card rounded-xl p-6">
+        <div id="sources-section" className="glass-card rounded-xl p-6 scroll-mt-24">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-display font-semibold">{t('countryDetail.sourcesUpdates')}</h3>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
