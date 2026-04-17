@@ -7493,7 +7493,17 @@
     "typeCountry": "País",
     "typeExitKey": "Chave de saída",
     "typeError": "Erro",
-    "typePage": "Página"
+    "typePage": "Página",
+    "page": {
+      "about": "Sobre",
+      "worldMap": "Mapa-múndi",
+      "preventionFilter": "Filtro de prevenção",
+      "compare": "Comparar países",
+      "pyramidTypes": "Tipos de pirâmides",
+      "lifeGame": "Jogo da vida",
+      "dashboard": "Painel",
+      "errorsIllusions": "Erros e ilusões"
+    }
   },
   "notifications": {
     "title": "Notificações",

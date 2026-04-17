@@ -10776,7 +10776,17 @@
     "typeCountry": "البلد",
     "typeExitKey": "Strategy",
     "typeError": "خطأ",
-    "typePage": "Page"
+    "typePage": "Page",
+    "page": {
+      "about": "حول",
+      "worldMap": "خريطة العالم",
+      "preventionFilter": "مرشح الوقاية",
+      "compare": "مقارنة البلدان",
+      "pyramidTypes": "أنواع الأهرامات",
+      "lifeGame": "لعبة الحياة",
+      "dashboard": "لوحة التحكم",
+      "errorsIllusions": "الأخطاء والأوهام"
+    }
   },
   "notifications": {
     "title": "Notifications",

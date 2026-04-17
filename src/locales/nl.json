@@ -7414,7 +7414,17 @@
     "typeCountry": "Land",
     "typeExitKey": "Exit-sleutel",
     "typeError": "Fout",
-    "typePage": "Pagina"
+    "typePage": "Pagina",
+    "page": {
+      "about": "Over ons",
+      "worldMap": "Wereldkaart",
+      "preventionFilter": "Preventiefilter",
+      "compare": "Landen vergelijken",
+      "pyramidTypes": "Piramidetypes",
+      "lifeGame": "Levensspel",
+      "dashboard": "Dashboard",
+      "errorsIllusions": "Fouten en illusies"
+    }
   },
   "notifications": {
     "title": "Meldingen",

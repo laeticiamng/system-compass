@@ -7260,7 +7260,17 @@
     "typeCountry": "Land",
     "typeExitKey": "Exit-Key",
     "typeError": "Fehler",
-    "typePage": "Seite"
+    "typePage": "Seite",
+    "page": {
+      "about": "Über uns",
+      "worldMap": "Weltkarte",
+      "preventionFilter": "Präventionsfilter",
+      "compare": "Länder vergleichen",
+      "pyramidTypes": "Pyramidentypen",
+      "lifeGame": "Lebensspiel",
+      "dashboard": "Dashboard",
+      "errorsIllusions": "Fehler & Illusionen"
+    }
   },
   "notifications": {
     "title": "Benachrichtigungen",
