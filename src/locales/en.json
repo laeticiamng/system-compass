@@ -8185,7 +8185,17 @@
     "typeCountry": "Country",
     "typeExitKey": "Strategy",
     "typeError": "Error",
-    "typePage": "Page"
+    "typePage": "Page",
+    "page": {
+      "about": "About",
+      "worldMap": "World map",
+      "preventionFilter": "Prevention filter",
+      "compare": "Compare countries",
+      "pyramidTypes": "Pyramid types",
+      "lifeGame": "Life game",
+      "dashboard": "Dashboard",
+      "errorsIllusions": "Errors & Illusions"
+    }
   },
   "notifications": {
     "title": "Notifications",
