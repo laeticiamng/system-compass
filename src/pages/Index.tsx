@@ -27,6 +27,7 @@ import {
 } from 'lucide-react';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 import { TrustBadges } from '@/components/landing/SocialProofBanner';
+import { DataSourcesStrip } from '@/components/landing/DataSourcesStrip';
 import { FAQPageJsonLd } from '@/components/seo/JsonLd';
 import { HeroMiniDemo } from '@/components/landing/HeroMiniDemo';
 import { UserJourneys } from '@/components/landing/UserJourneys';
@@ -193,6 +194,9 @@ export default function Index() {
           </div>
         </div>
       </section>
+
+      {/* ========== SOURCES DE DONNÉES (crédibilité immédiate) ========== */}
+      <DataSourcesStrip />
 
       {/* ========== PARCOURS UTILISATEUR ========== */}
       <UserJourneys />
