@@ -3,6 +3,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { validate, validationErrorResponse } from "../_shared/validation.ts";
 
 import { corsHeaders } from "../_shared/cors.ts";
+import { checkRateLimit, getRateLimitKey, rateLimitResponse } from "../_shared/rate-limit.ts";
 
 interface FinancialIntelRequest {
   country: string;
@@ -103,6 +104,10 @@ serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
   }
+
+  // Rate limit: 10 financial-intel generations / 5 min / IP — heavy AI workload
+  const rl = checkRateLimit(getRateLimitKey(req, 'financial-intel'), { maxRequests: 10, windowSeconds: 300 });
+  if (!rl.allowed) return rateLimitResponse(rl, corsHeaders);
 
   try {
     const body = await req.json();

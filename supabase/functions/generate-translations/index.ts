@@ -26,6 +26,10 @@ serve(async (req) => {
 
   const corsHeaders = getCorsHeaders(req);
 
+  // Rate limit: 30 translations / min / IP — protects LOVABLE_API_KEY quota
+  const rl = checkRateLimit(getRateLimitKey(req, 'generate-translations'), { maxRequests: 30, windowSeconds: 60 });
+  if (!rl.allowed) return rateLimitResponse(rl, corsHeaders);
+
   try {
     const { sourceText, sourceLang, targetLang, context } = await req.json();
     
