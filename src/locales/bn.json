@@ -10935,7 +10935,17 @@
     "typeCountry": "দেশ",
     "typeExitKey": "Strategy",
     "typeError": "ত্রুটি",
-    "typePage": "Page"
+    "typePage": "Page",
+    "page": {
+      "about": "সম্পর্কে",
+      "worldMap": "বিশ্ব মানচিত্র",
+      "preventionFilter": "প্রতিরোধ ফিল্টার",
+      "compare": "দেশ তুলনা",
+      "pyramidTypes": "পিরামিড প্রকার",
+      "lifeGame": "জীবনের খেলা",
+      "dashboard": "ড্যাশবোর্ড",
+      "errorsIllusions": "ত্রুটি ও বিভ্রম"
+    }
   },
   "notifications": {
     "title": "Notifications",

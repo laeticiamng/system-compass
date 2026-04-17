@@ -10939,7 +10939,17 @@
     "typeCountry": "ملک",
     "typeExitKey": "Strategy",
     "typeError": "خرابی",
-    "typePage": "Page"
+    "typePage": "Page",
+    "page": {
+      "about": "تعارف",
+      "worldMap": "عالمی نقشہ",
+      "preventionFilter": "روک تھام فلٹر",
+      "compare": "ممالک کا موازنہ",
+      "pyramidTypes": "اہرام کی اقسام",
+      "lifeGame": "زندگی کا کھیل",
+      "dashboard": "ڈیش بورڈ",
+      "errorsIllusions": "غلطیاں اور وہم"
+    }
   },
   "notifications": {
     "title": "Notifications",

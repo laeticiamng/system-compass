@@ -2,6 +2,7 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.2";
 import { validate, validationErrorResponse } from "../_shared/validation.ts";
 import { getCorsHeaders, handleCorsPreflightRequest } from "../_shared/cors.ts";
+import { checkRateLimit, getRateLimitKey, rateLimitResponse } from "../_shared/rate-limit.ts";
 
 const logStep = (step: string, details?: unknown) => {
   const detailsStr = details ? ` - ${JSON.stringify(details)}` : '';
@@ -95,6 +96,10 @@ serve(async (req) => {
   }
 
   const corsHeaders = getCorsHeaders(req);
+
+  // Rate limit: 10 gov-intel generations / 5 min / IP — heavy AI workload
+  const rl = checkRateLimit(getRateLimitKey(req, 'gov-intel-generate'), { maxRequests: 10, windowSeconds: 300 });
+  if (!rl.allowed) return rateLimitResponse(rl, corsHeaders);
 
   const supabaseClient = createClient(
     Deno.env.get("SUPABASE_URL") ?? "",

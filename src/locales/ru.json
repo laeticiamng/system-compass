@@ -10935,7 +10935,17 @@
     "typeCountry": "Страна",
     "typeExitKey": "Strategy",
     "typeError": "Ошибка",
-    "typePage": "Page"
+    "typePage": "Page",
+    "page": {
+      "about": "О нас",
+      "worldMap": "Карта мира",
+      "preventionFilter": "Фильтр предотвращения",
+      "compare": "Сравнить страны",
+      "pyramidTypes": "Типы пирамид",
+      "lifeGame": "Игра жизни",
+      "dashboard": "Панель",
+      "errorsIllusions": "Ошибки и иллюзии"
+    }
   },
   "notifications": {
     "title": "Notifications",

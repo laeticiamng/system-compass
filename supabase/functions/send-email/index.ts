@@ -7,6 +7,7 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 const resend = new Resend(Deno.env.get('RESEND_API_KEY') as string)
 
 import { corsHeaders } from "../_shared/cors.ts";
+import { checkRateLimit, getRateLimitKey, rateLimitResponse } from "../_shared/rate-limit.ts";
 
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') {
@@ -16,6 +17,10 @@ Deno.serve(async (req) => {
   if (req.method !== 'POST') {
     return new Response('Method not allowed', { status: 405, headers: corsHeaders })
   }
+
+  // Rate limit: 10 emails / 10 min / IP — protects RESEND_API_KEY quota
+  const rl = checkRateLimit(getRateLimitKey(req, 'send-email'), { maxRequests: 10, windowSeconds: 600 });
+  if (!rl.allowed) return rateLimitResponse(rl, corsHeaders);
 
   try {
     // Authenticate the caller

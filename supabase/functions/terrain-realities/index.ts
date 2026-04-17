@@ -3,6 +3,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { validate, validationErrorResponse, sanitizeString, isString } from "../_shared/validation.ts";
 
 import { corsHeaders } from "../_shared/cors.ts";
+import { checkRateLimit, getRateLimitKey, rateLimitResponse } from "../_shared/rate-limit.ts";
 
 // Valid languages for the API
 const VALID_LANGUAGES = ['fr', 'en'] as const;
@@ -210,6 +211,10 @@ serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
   }
+
+  // Rate limit: 10 terrain-realities / 5 min / IP — heavy AI workload
+  const rl = checkRateLimit(getRateLimitKey(req, 'terrain-realities'), { maxRequests: 10, windowSeconds: 300 });
+  if (!rl.allowed) return rateLimitResponse(rl, corsHeaders);
 
   try {
     // Parse JSON body safely

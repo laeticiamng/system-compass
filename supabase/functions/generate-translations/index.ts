@@ -1,6 +1,7 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { getCorsHeaders, handleCorsPreflightRequest } from "../_shared/cors.ts";
+import { checkRateLimit, getRateLimitKey, rateLimitResponse } from "../_shared/rate-limit.ts";
 
 const LANGUAGE_NAMES: Record<string, string> = {
   de: "German",
@@ -24,6 +25,10 @@ serve(async (req) => {
   }
 
   const corsHeaders = getCorsHeaders(req);
+
+  // Rate limit: 30 translations / min / IP — protects LOVABLE_API_KEY quota
+  const rl = checkRateLimit(getRateLimitKey(req, 'generate-translations'), { maxRequests: 30, windowSeconds: 60 });
+  if (!rl.allowed) return rateLimitResponse(rl, corsHeaders);
 
   try {
     const { sourceText, sourceLang, targetLang, context } = await req.json();

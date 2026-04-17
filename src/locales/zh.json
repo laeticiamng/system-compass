@@ -10783,7 +10783,17 @@
     "typeCountry": "国家",
     "typeExitKey": "Strategy",
     "typeError": "错误",
-    "typePage": "Page"
+    "typePage": "Page",
+    "page": {
+      "about": "关于",
+      "worldMap": "世界地图",
+      "preventionFilter": "预防过滤器",
+      "compare": "比较国家",
+      "pyramidTypes": "金字塔类型",
+      "lifeGame": "生命游戏",
+      "dashboard": "仪表板",
+      "errorsIllusions": "错误与幻觉"
+    }
   },
   "notifications": {
     "title": "Notifications",

@@ -10772,7 +10772,17 @@
     "typeCountry": "देश",
     "typeExitKey": "Strategy",
     "typeError": "त्रुटि",
-    "typePage": "Page"
+    "typePage": "Page",
+    "page": {
+      "about": "हमारे बारे में",
+      "worldMap": "विश्व मानचित्र",
+      "preventionFilter": "रोकथाम फ़िल्टर",
+      "compare": "देशों की तुलना",
+      "pyramidTypes": "पिरामिड प्रकार",
+      "lifeGame": "जीवन का खेल",
+      "dashboard": "डैशबोर्ड",
+      "errorsIllusions": "त्रुटियाँ और भ्रम"
+    }
   },
   "notifications": {
     "title": "Notifications",

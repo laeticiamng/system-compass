@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.2";
+import { checkRateLimit, getRateLimitKey, rateLimitResponse } from "../_shared/rate-limit.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "https://system-compass.app",
@@ -67,6 +68,10 @@ serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
+
+  // Rate limit: 15 scrapes / 5 min / IP — heavy operation, protects API quotas
+  const rl = checkRateLimit(getRateLimitKey(req, 'scrape-country-data'), { maxRequests: 15, windowSeconds: 300 });
+  if (!rl.allowed) return rateLimitResponse(rl, corsHeaders);
 
   try {
     logStep("Function started");
