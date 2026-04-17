@@ -714,6 +714,29 @@
       "today": "Today",
       "tomorrow": "Tomorrow",
       "empty": "No events"
+    },
+    "nextBest": {
+      "label": "Recommended next step",
+      "profile": {
+        "title": "Define your profile in 2 minutes",
+        "description": "Without a profile, your recommendations will be generic. The quick test instantly suggests compatible countries.",
+        "cta": "Take the quick test"
+      },
+      "explore": {
+        "title": "Explore countries compatible with your profile",
+        "description": "Follow 2 or 3 countries to receive updates and unlock personalized comparison.",
+        "cta": "See recommended countries"
+      },
+      "strategy": {
+        "title": "Choose an expatriation strategy",
+        "description": "A strategy structures your project into concrete phases: preparation, transition, installation. You save 6 months of trial and error.",
+        "cta": "Discover strategies"
+      },
+      "execute": {
+        "title": "Follow your next step",
+        "description": "Continue your current plan and check off completed actions to see your progress.",
+        "cta": "View my plan"
+      }
     }
   },
   "achievements": {
@@ -1652,6 +1675,12 @@
     "project": {
       "title": "Personalized Analysis",
       "subtitle": "Based on your project and profile"
+    },
+    "quickActions": {
+      "fiscal": "Tax",
+      "strategies": "Strategies",
+      "expert": "Expert",
+      "sources": "Sources"
     }
   },
   "lgbtqRights": {
