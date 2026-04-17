@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Navigation and Core Pages', () => {
   test('should load homepage', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/fr');
     
     await page.waitForLoadState('networkidle');
     
@@ -12,7 +12,7 @@ test.describe('Navigation and Core Pages', () => {
   });
 
   test('should have working header navigation', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/fr');
     
     await page.waitForLoadState('networkidle');
     
@@ -27,24 +27,24 @@ test.describe('Navigation and Core Pages', () => {
   });
 
   test('should navigate to countries page', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/fr');
     
     // Click on countries link
     const countriesLink = page.locator('a[href*="countries"]').first();
     
     if (await countriesLink.isVisible()) {
       await countriesLink.click();
-      await page.waitForURL('**/countries**');
+      await page.waitForURL('**/fr/countries**');
       expect(page.url()).toContain('/countries');
     } else {
       // Direct navigation
-      await page.goto('/countries');
+      await page.goto('/fr/countries');
       expect(page.url()).toContain('/countries');
     }
   });
 
   test('should display country cards on countries page', async ({ page }) => {
-    await page.goto('/countries');
+    await page.goto('/fr/countries');
     
     await page.waitForLoadState('networkidle');
     
@@ -56,7 +56,7 @@ test.describe('Navigation and Core Pages', () => {
   });
 
   test('should navigate to country detail', async ({ page }) => {
-    await page.goto('/countries');
+    await page.goto('/fr/countries');
     
     await page.waitForLoadState('networkidle');
     
@@ -73,7 +73,7 @@ test.describe('Navigation and Core Pages', () => {
   });
 
   test('should load world map explorer', async ({ page }) => {
-    await page.goto('/world-map');
+    await page.goto('/fr/world-map');
     
     await page.waitForLoadState('networkidle');
     
@@ -83,7 +83,7 @@ test.describe('Navigation and Core Pages', () => {
   });
 
   test('should load pyramid types page', async ({ page }) => {
-    await page.goto('/pyramid-types');
+    await page.goto('/fr/pyramid-types');
     
     await page.waitForLoadState('networkidle');
     
@@ -93,7 +93,7 @@ test.describe('Navigation and Core Pages', () => {
   });
 
   test('should load errors and illusions page', async ({ page }) => {
-    await page.goto('/errors-illusions');
+    await page.goto('/fr/errors-illusions');
     
     await page.waitForLoadState('networkidle');
     
@@ -103,7 +103,7 @@ test.describe('Navigation and Core Pages', () => {
   });
 
   test('should load pricing page', async ({ page }) => {
-    await page.goto('/pricing');
+    await page.goto('/fr/pricing');
     
     await page.waitForLoadState('networkidle');
     
@@ -117,7 +117,7 @@ test.describe('Navigation and Core Pages', () => {
   });
 
   test('should load about page', async ({ page }) => {
-    await page.goto('/about');
+    await page.goto('/fr/about');
     
     await page.waitForLoadState('networkidle');
     
@@ -127,7 +127,7 @@ test.describe('Navigation and Core Pages', () => {
   });
 
   test('should show 404 for unknown routes', async ({ page }) => {
-    await page.goto('/this-page-does-not-exist-12345');
+    await page.goto('/fr/this-page-does-not-exist-12345');
     
     await page.waitForLoadState('networkidle');
     
@@ -137,7 +137,7 @@ test.describe('Navigation and Core Pages', () => {
   });
 
   test('should have working footer', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/fr');
     
     await page.waitForLoadState('networkidle');
     
@@ -154,7 +154,7 @@ test.describe('Navigation and Core Pages', () => {
   });
 
   test('should handle language switching', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/fr');
     
     await page.waitForLoadState('networkidle');
     
@@ -174,7 +174,7 @@ test.describe('Navigation and Core Pages', () => {
   test('should be responsive', async ({ page }) => {
     // Test mobile viewport
     await page.setViewportSize({ width: 375, height: 667 });
-    await page.goto('/');
+    await page.goto('/fr');
     
     await page.waitForLoadState('networkidle');
     

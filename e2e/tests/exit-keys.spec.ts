@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Exit Keys Flow', () => {
   test('should load exit-keys page', async ({ page }) => {
-    await page.goto('/exit-keys');
+    await page.goto('/fr/exit-keys');
     
     await page.waitForLoadState('networkidle');
     
@@ -12,7 +12,7 @@ test.describe('Exit Keys Flow', () => {
   });
 
   test('should display step indicators', async ({ page }) => {
-    await page.goto('/exit-keys');
+    await page.goto('/fr/exit-keys');
     
     await page.waitForLoadState('networkidle');
     
@@ -25,7 +25,7 @@ test.describe('Exit Keys Flow', () => {
   });
 
   test('should have country selection', async ({ page }) => {
-    await page.goto('/exit-keys');
+    await page.goto('/fr/exit-keys');
     
     await page.waitForLoadState('networkidle');
     
@@ -39,7 +39,7 @@ test.describe('Exit Keys Flow', () => {
   });
 
   test('should navigate through wizard steps', async ({ page }) => {
-    await page.goto('/exit-keys');
+    await page.goto('/fr/exit-keys');
     
     await page.waitForLoadState('networkidle');
     
@@ -57,7 +57,7 @@ test.describe('Exit Keys Flow', () => {
   });
 
   test('should display exit key cards on catalog page', async ({ page }) => {
-    await page.goto('/exit-keys/catalog');
+    await page.goto('/fr/exit-keys/catalog');
     
     await page.waitForLoadState('networkidle');
     
@@ -69,7 +69,7 @@ test.describe('Exit Keys Flow', () => {
   });
 
   test('should filter exit keys by category', async ({ page }) => {
-    await page.goto('/exit-keys/catalog');
+    await page.goto('/fr/exit-keys/catalog');
     
     await page.waitForLoadState('networkidle');
     
@@ -90,7 +90,7 @@ test.describe('Exit Keys Flow', () => {
   });
 
   test('should open exit key detail modal/page', async ({ page }) => {
-    await page.goto('/exit-keys/catalog');
+    await page.goto('/fr/exit-keys/catalog');
     
     await page.waitForLoadState('networkidle');
     
@@ -110,7 +110,7 @@ test.describe('Exit Keys Flow', () => {
   });
 
   test('should show recommendations based on profile', async ({ page }) => {
-    await page.goto('/exit-keys');
+    await page.goto('/fr/exit-keys');
     
     await page.waitForLoadState('networkidle');
     
@@ -134,7 +134,7 @@ test.describe('Exit Keys Flow', () => {
   });
 
   test('should be accessible', async ({ page }) => {
-    await page.goto('/exit-keys');
+    await page.goto('/fr/exit-keys');
     
     await page.waitForLoadState('networkidle');
     
@@ -149,7 +149,7 @@ test.describe('Exit Keys Flow', () => {
   });
 
   test('should compare exit keys', async ({ page }) => {
-    await page.goto('/exit-keys/compare');
+    await page.goto('/fr/exit-keys/compare');
     
     await page.waitForLoadState('networkidle');
     
