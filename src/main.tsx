@@ -5,9 +5,14 @@ import App from "./App.tsx";
 import "./index.css";
 import "./i18n";
 import { autoSeedTranslationsIfEmpty } from "./lib/translations-seeder";
+import { installGlobalErrorHandlers, installWebVitals } from "./lib/observability";
 
 // Auto-seed translations to database if empty (runs once on startup)
 autoSeedTranslationsIfEmpty().catch(console.warn);
+
+// Install in-house observability (window.onerror, unhandledrejection, web vitals)
+installGlobalErrorHandlers();
+installWebVitals();
 
 // Global loading fallback
 function GlobalLoadingFallback() {

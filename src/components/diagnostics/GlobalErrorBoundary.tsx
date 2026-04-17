@@ -2,6 +2,7 @@ import { Component, ErrorInfo, ReactNode } from 'react';
 import { AlertTriangle, RefreshCw, Home, Bug } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { logError } from '@/lib/observability';
 
 interface Props {
   children: ReactNode;
@@ -27,10 +28,22 @@ export class GlobalErrorBoundary extends Component<Props, State> {
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error('Global Error Boundary caught an error:', error, errorInfo);
     this.setState({ errorInfo });
-    
-    // Log to analytics/monitoring if available
+
+    // Send to in-house observability
     try {
-      // Could send to Sentry, LogRocket, etc.
+      logError(error.message || 'GlobalErrorBoundary', {
+        stack: error.stack ?? null,
+        context: {
+          componentStack: errorInfo.componentStack?.slice(0, 2000),
+          boundary: 'global',
+        },
+      });
+    } catch {
+      /* never let logging break the boundary */
+    }
+
+    // Local persistence for offline debugging
+    try {
       const errorLog = {
         message: error.message,
         stack: error.stack,
@@ -39,8 +52,6 @@ export class GlobalErrorBoundary extends Component<Props, State> {
         url: window.location.href,
         userAgent: navigator.userAgent
       };
-      
-      // Store in localStorage for debugging
       const existingLogs = JSON.parse(localStorage.getItem('error_logs') || '[]');
       existingLogs.unshift(errorLog);
       localStorage.setItem('error_logs', JSON.stringify(existingLogs.slice(0, 10)));
