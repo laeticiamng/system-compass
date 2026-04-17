@@ -44,6 +44,10 @@ serve(async (req) => {
 
   const corsHeaders = getCorsHeaders(req);
 
+  // Rate limit: 30 country translations / min / IP — protects OPENAI_API_KEY quota
+  const rl = checkRateLimit(getRateLimitKey(req, 'generate-country-translations'), { maxRequests: 30, windowSeconds: 60 });
+  if (!rl.allowed) return rateLimitResponse(rl, corsHeaders);
+
   try {
     const { countryId, sourceCountry, targetLang } = await req.json();
     
