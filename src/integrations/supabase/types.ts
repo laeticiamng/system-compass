@@ -1417,6 +1417,48 @@ export type Database = {
         }
         Relationships: []
       }
+      error_logs: {
+        Row: {
+          context: Json | null
+          created_at: string
+          id: string
+          level: string
+          message: string
+          release: string | null
+          source: string
+          stack: string | null
+          url: string | null
+          user_agent: string | null
+          user_id: string | null
+        }
+        Insert: {
+          context?: Json | null
+          created_at?: string
+          id?: string
+          level: string
+          message: string
+          release?: string | null
+          source: string
+          stack?: string | null
+          url?: string | null
+          user_agent?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          context?: Json | null
+          created_at?: string
+          id?: string
+          level?: string
+          message?: string
+          release?: string | null
+          source?: string
+          stack?: string | null
+          url?: string | null
+          user_agent?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       event_registrations: {
         Row: {
           created_at: string
@@ -5536,6 +5578,7 @@ export type Database = {
         Args: { p_increment?: number; p_metric: string; p_user_id: string }
         Returns: undefined
       }
+      purge_old_error_logs: { Args: never; Returns: number }
       update_game_stats: {
         Args: {
           p_games_played?: number
