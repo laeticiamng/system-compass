@@ -19,14 +19,10 @@ import { motion } from 'framer-motion';
 import {
   ArrowRight,
   Compass,
-  Sparkles,
-  Globe,
   Play,
   CheckCircle,
-  Zap,
 } from 'lucide-react';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
-import { TrustBadges } from '@/components/landing/SocialProofBanner';
 import { DataSourcesStrip } from '@/components/landing/DataSourcesStrip';
 import { FAQPageJsonLd } from '@/components/seo/JsonLd';
 import { HeroMiniDemo } from '@/components/landing/HeroMiniDemo';
