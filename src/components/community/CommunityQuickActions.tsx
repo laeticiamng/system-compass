@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { scrollToAnchor } from '@/components/SmoothScrollProvider';
 import { 
   MessageCircle, 
   Calendar, 
