@@ -46,6 +46,7 @@ function CompassDial() {
 }
 
 export function SculptureHero() {
+  useFpsBudget({ label: 'SculptureHero', minFps: 45 });
   const { t } = useTranslation();
   const navigate = useLocalizedNavigate();
   const ref = useRef<HTMLElement>(null);
