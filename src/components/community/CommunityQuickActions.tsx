@@ -75,7 +75,7 @@ export function CommunityQuickActions() {
 
   const handleEvents = () => {
     toast.info(t('community.viewEvents', 'Voir les événements à venir'));
-    document.getElementById('events')?.scrollIntoView({ behavior: 'smooth' });
+    scrollToAnchor('#events');
   };
 
   const handleResources = () => {

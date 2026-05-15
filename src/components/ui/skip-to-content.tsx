@@ -3,6 +3,7 @@
  * Allows keyboard users to skip navigation and jump to main content
  */
 import { cn } from '@/lib/utils';
+import { scrollToAnchor } from '@/components/SmoothScrollProvider';
 
 interface SkipToContentProps {
   contentId?: string;
@@ -17,8 +18,8 @@ export function SkipToContent({
     e.preventDefault();
     const element = document.getElementById(contentId);
     if (element) {
-      element.focus();
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.focus({ preventScroll: true });
+      scrollToAnchor(element);
     }
   };
 
