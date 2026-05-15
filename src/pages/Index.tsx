@@ -360,7 +360,7 @@ export default function Index() {
             </p>
             <button
               onClick={() => navigate('/quick-test')}
-              className="btn-cta-premium h-14 sm:h-16 px-8 sm:px-12 text-base sm:text-lg gap-2 sm:gap-3 flex items-center justify-center text-primary-foreground font-semibold"
+              className="btn-cta-premium h-14 sm:h-16 px-8 sm:px-12 text-base sm:text-lg gap-2 sm:gap-3 inline-flex items-center justify-center mx-auto text-primary-foreground font-semibold"
             >
               <Compass className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
               {t('landing.cta.button', 'Faire le test gratuit')}
