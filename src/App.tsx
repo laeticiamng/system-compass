@@ -18,6 +18,7 @@ import { OfflineBanner } from "@/components/ui/offline-banner";
 import { CookieConsent } from "@/components/ui/cookie-consent";
 import { ContextualShortcuts, AppSidebar, Breadcrumbs } from "@/components/navigation";
 import { GlobalErrorBoundary, DevDiagnosticsPanel } from "@/components/diagnostics";
+import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 import { AiChatPanel } from "@/components/ai/AiChatPanel";
 import { FeatureDiscoveryTooltips } from "@/components/landing/FeatureDiscoveryTooltips";
 import { allLocalizedRoutes, LEGACY_ROUTE_SEGMENTS } from "@/routes";
@@ -39,6 +40,7 @@ const queryClient = new QueryClient({
 
 const AppLayout = () => (
   <SidebarProvider defaultOpen={false}>
+    <SmoothScrollProvider>
     <DialogCoordinatorProvider>
       <DisclaimerConsentDialog />
       <OnboardingDialog />
@@ -75,6 +77,7 @@ const AppLayout = () => (
         </div>
       </div>
     </DialogCoordinatorProvider>
+    </SmoothScrollProvider>
   </SidebarProvider>
 );
 
