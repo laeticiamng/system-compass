@@ -30,6 +30,7 @@ import { TrustBadges } from '@/components/landing/SocialProofBanner';
 import { DataSourcesStrip } from '@/components/landing/DataSourcesStrip';
 import { FAQPageJsonLd } from '@/components/seo/JsonLd';
 import { HeroMiniDemo } from '@/components/landing/HeroMiniDemo';
+import { SculptureHero } from '@/components/landing/SculptureHero';
 import { UserJourneys } from '@/components/landing/UserJourneys';
 import { SITE_CONFIG } from '@/config/site';
 
