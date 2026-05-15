@@ -14,7 +14,9 @@ const raf = vi.fn();
 const scrollTo = vi.fn();
 
 vi.mock('lenis', () => ({
-  default: vi.fn().mockImplementation(() => ({ stop, start, destroy, raf, scrollTo })),
+  default: function MockLenis() {
+    return { stop, start, destroy, raf, scrollTo };
+  },
 }));
 
 import { SmoothScrollProvider } from '@/components/SmoothScrollProvider';
