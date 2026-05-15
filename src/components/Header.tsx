@@ -121,7 +121,7 @@ export function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
+    <header data-app-header className="fixed top-0 left-0 right-0 z-50">
       {/* Compact disclaimer banner for simulation pages */}
       {showDisclaimer && (
         <div className="bg-amber-500/10 border-b border-amber-500/20 px-3 py-1.5">

@@ -16,6 +16,7 @@ import { useLocalizedNavigate } from '@/hooks/useLocalizedNavigate';
 import { ArrowRight, Zap, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { TrustBadges } from '@/components/landing/SocialProofBanner';
+import { useFpsBudget } from '@/hooks/useFpsBudget';
 
 const TICK_COUNT = 36;
 
@@ -45,6 +46,7 @@ function CompassDial() {
 }
 
 export function SculptureHero() {
+  useFpsBudget({ label: 'SculptureHero', minFps: 45 });
   const { t } = useTranslation();
   const navigate = useLocalizedNavigate();
   const ref = useRef<HTMLElement>(null);
