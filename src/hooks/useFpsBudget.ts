@@ -14,12 +14,15 @@ interface Options {
   windowFrames?: number;
   /** Force-enable in production. Default false. */
   enableInProd?: boolean;
+  /** Master toggle. Default true. */
+  enabled?: boolean;
 }
 
-export function useFpsBudget({ label, minFps = 45, windowFrames = 60, enableInProd = false }: Options) {
+export function useFpsBudget({ label, minFps = 45, windowFrames = 60, enableInProd = false, enabled = true }: Options) {
   useEffect(() => {
-    const enabled = import.meta.env.DEV || enableInProd;
-    if (!enabled || typeof window === 'undefined') return;
+    if (!enabled) return;
+    const dev = import.meta.env.DEV || enableInProd;
+    if (!dev || typeof window === 'undefined') return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     let rafId = 0;
