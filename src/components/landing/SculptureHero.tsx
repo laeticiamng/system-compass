@@ -46,7 +46,6 @@ function CompassDial() {
 }
 
 export function SculptureHero() {
-  useFpsBudget({ label: 'SculptureHero', minFps: 45 });
   const { t } = useTranslation();
   const navigate = useLocalizedNavigate();
   const ref = useRef<HTMLElement>(null);
@@ -59,7 +58,22 @@ export function SculptureHero() {
     const small = window.innerWidth < 768;
     const lowCores = (navigator as any).hardwareConcurrency && (navigator as any).hardwareConcurrency <= 4;
     setPerfMode(reduce || coarse || small || !!lowCores);
+
+    // Auto-degrade if FPS budget is busted at runtime
+    const onPerf = (e: Event) => {
+      const detail = (e as CustomEvent).detail;
+      if (detail?.component === 'SculptureHero') {
+        setPerfMode(true);
+        // eslint-disable-next-line no-console
+        console.info('[SculptureHero] perfMode auto-enabled — fps under budget');
+      }
+    };
+    window.addEventListener('perf:budget-exceeded', onPerf);
+    return () => window.removeEventListener('perf:budget-exceeded', onPerf);
   }, []);
+
+  // FPS monitor disables itself once perfMode kicks in (no animations to measure)
+  useFpsBudget({ label: 'SculptureHero', minFps: 45, enabled: !perfMode });
 
   const { scrollYProgress } = useScroll({
     target: ref,
