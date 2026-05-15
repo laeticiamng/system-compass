@@ -6,6 +6,7 @@
 import { useTranslation } from 'react-i18next';
 import { Calculator, Compass, UserCheck, FileText } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { scrollToAnchor } from '@/components/SmoothScrollProvider';
 
 interface QuickAction {
   id: string;
@@ -25,12 +26,7 @@ const ACTIONS: QuickAction[] = [
 export function CountryQuickActions() {
   const { t } = useTranslation();
 
-  const scrollToAnchor = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
+  const scrollTo = (id: string) => scrollToAnchor(`#${id}`);
 
   return (
     <motion.div
