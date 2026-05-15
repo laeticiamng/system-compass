@@ -27,6 +27,12 @@ import {
 } from '@/components/ui/dropdown-menu';
 
 beforeEach(() => {
+  // Radix uses ResizeObserver — provide a real class so `new ResizeObserver()` works
+  (window as unknown as { ResizeObserver: unknown }).ResizeObserver = class {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+  };
   stop.mockClear();
   start.mockClear();
   Object.defineProperty(window, 'matchMedia', {
