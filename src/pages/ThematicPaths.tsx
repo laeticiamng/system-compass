@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import { SITE_CONFIG } from '@/config/site';
 import { LocalizedLink as Link } from '@/components/i18n';
+import { scrollToAnchor } from '@/components/SmoothScrollProvider';
 import {
   Laptop,
   Users,
@@ -553,9 +554,7 @@ export default function ThematicPaths() {
                         key={path.id}
                         onClick={() => {
                           setExpandedId(path.id);
-                          document
-                            .getElementById(`path-${path.id}`)
-                            ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          scrollToAnchor(`#path-${path.id}`);
                         }}
                         className={cn(
                           'inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium border transition-all hover:scale-105',
