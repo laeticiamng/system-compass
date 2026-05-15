@@ -38,6 +38,8 @@ beforeEach(() => {
     }),
   });
   Object.defineProperty(navigator, 'maxTouchPoints', { value: 0, configurable: true });
+  // @ts-expect-error — ensure touch detection fails so Lenis activates
+  delete (window as any).ontouchstart;
   document.body.removeAttribute('data-scroll-locked');
   document.body.style.pointerEvents = '';
   document.body.innerHTML = '';
