@@ -26,7 +26,7 @@ const ACTIONS: QuickAction[] = [
 export function CountryQuickActions() {
   const { t } = useTranslation();
 
-  const scrollTo = (id: string) => scrollToAnchor(`#${id}`);
+  
 
   return (
     <motion.div
@@ -42,7 +42,7 @@ export function CountryQuickActions() {
             <button
               key={action.id}
               type="button"
-              onClick={() => scrollToAnchor(action.anchor)}
+              onClick={() => scrollToAnchor(`#${action.anchor}`)}
               className="snap-start flex-shrink-0 flex items-center gap-2 px-3 py-2 rounded-full border border-border/60 bg-card/60 backdrop-blur text-xs sm:text-sm font-medium text-muted-foreground hover:text-foreground hover:border-primary/40 hover:bg-primary/5 transition-colors"
             >
               <Icon className="w-3.5 h-3.5" />
