@@ -1,27 +1,27 @@
 # 🌍 Rapport de Couverture i18n
 
-> Généré le 26/03/2026 16:54:02
+> Généré le 07/10/2026 12:59:33
 
 ## 📊 Résumé Global
 
 | Métrique | Valeur |
 |----------|--------|
 | Langue de référence | EN |
-| Clés totales | 7012 |
-| Traductions présentes | 49042/49084 |
+| Clés totales | 7049 |
+| Traductions présentes | 49301/49343 |
 | **Couverture globale** | **99.9%** |
 
 ## 📈 Couverture par Langue
 
 | Langue | Code | Présentes | Manquantes | Vides | Couverture |
 |--------|------|-----------|------------|-------|------------|
-| English | en | 7012 | 0 | 1 | ██████████ 100% |
-| Français | fr | 7005 | 7 | 1 | ██████████ 99.9% |
-| Deutsch | de | 7005 | 7 | 0 | ██████████ 99.9% |
-| Español | es | 7005 | 7 | 0 | ██████████ 99.9% |
-| Italiano | it | 7005 | 7 | 0 | ██████████ 99.9% |
-| Nederlands | nl | 7005 | 7 | 0 | ██████████ 99.9% |
-| Português | pt | 7005 | 7 | 0 | ██████████ 99.9% |
+| English | en | 7049 | 0 | 1 | ██████████ 100% |
+| Français | fr | 7042 | 7 | 1 | ██████████ 99.9% |
+| Deutsch | de | 7042 | 7 | 0 | ██████████ 99.9% |
+| Español | es | 7042 | 7 | 0 | ██████████ 99.9% |
+| Italiano | it | 7042 | 7 | 0 | ██████████ 99.9% |
+| Nederlands | nl | 7042 | 7 | 0 | ██████████ 99.9% |
+| Português | pt | 7042 | 7 | 0 | ██████████ 99.9% |
 
 ## 🔍 Clés Manquantes (aperçu)
 
