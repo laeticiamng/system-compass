@@ -125,6 +125,12 @@ function checkTranslations() {
   try {
     countryIds = extractCountryIdsFromData();
     console.log(`Countries in data: ${countryIds.length}\n`);
+    if (countryIds.length === 0) {
+      // Depuis le commit 61ba32b, la liste des pays vit dans Supabase et
+      // countries-data.ts n'est plus qu'une ré-exportation : ce contrôle des
+      // pays ne vérifie donc plus rien. On le signale au lieu de le taire.
+      console.warn('⚠️  Contrôle des traductions de pays inactif : aucune donnée pays dans countries-data.ts (liste désormais dans Supabase).\n');
+    }
   } catch (e) {
     console.warn('⚠️  Could not parse countries-data.ts:', e.message);
   }
