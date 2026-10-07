@@ -634,6 +634,12 @@
     "project": {
       "title": "Personalized Analysis",
       "subtitle": "Based on your project and profile"
+    },
+    "quickActions": {
+      "fiscal": "الضرائب",
+      "strategies": "الاستراتيجيات",
+      "expert": "خبير",
+      "sources": "المصادر"
     }
   },
   "pyramids": {
@@ -1149,6 +1155,29 @@
       "today": "اليوم",
       "tomorrow": "Tomorrow",
       "empty": "لا شيء événement"
+    },
+    "nextBest": {
+      "label": "الخطوة التالية الموصى بها",
+      "profile": {
+        "title": "حدّد ملفك الشخصي في دقيقتين",
+        "description": "بدون ملف شخصي ستبقى توصياتك عامة. يقترح عليك الاختبار السريع فورًا الدول المتوافقة معك.",
+        "cta": "إجراء الاختبار السريع"
+      },
+      "explore": {
+        "title": "استكشف الدول المتوافقة مع ملفك الشخصي",
+        "description": "تابع دولتين أو ثلاثًا لتلقي آخر مستجداتها وفتح المقارنة المخصصة.",
+        "cta": "عرض الدول الموصى بها"
+      },
+      "strategy": {
+        "title": "اختر استراتيجية للهجرة",
+        "description": "تنظّم الاستراتيجية مشروعك في مراحل ملموسة: التحضير، الانتقال، الاستقرار. توفّر بذلك 6 أشهر من التجربة والخطأ.",
+        "cta": "اكتشف الاستراتيجيات"
+      },
+      "execute": {
+        "title": "تابع خطوتك التالية",
+        "description": "واصل خطتك الحالية وضع علامة على الإجراءات المنجزة لرؤية تقدّمك.",
+        "cta": "عرض خطتي"
+      }
     }
   },
   "latent": {
@@ -2005,7 +2034,9 @@
     "trust": {
       "secure": "Secure payment",
       "noCommitment": "No commitment",
-      "instantAccess": "Instant access"
+      "instantAccess": "Instant access",
+      "refund": "ضمان استرداد الأموال لمدة 14 يومًا",
+      "cancel": "إلغاء في أي وقت"
     },
     "meta": {
       "title": "Tarifs - Compass | مجاني, Premium et Enterprise",
@@ -4245,7 +4276,12 @@
     "civilUnion": "Union civile",
     "employmentProtection": "Protection emploi",
     "safetyRating": "Niveau de sécurité",
-    "notice": "Les droits LGBTQ+ sont pris en compte dans vos recommandations de بلد."
+    "notice": "Les droits LGBTQ+ sont pris en compte dans vos recommandations de بلد.",
+    "safety": {
+      "safe": "آمن",
+      "caution": "يُنصح بالحذر",
+      "dangerous": "خطير"
+    }
   },
   "pyramidQuiz": {
     "title": "لعبة الحياة",
@@ -9570,7 +9606,9 @@
       "rare": "Rare",
       "occasional": "Occasional",
       "frequent": "Frequent",
-      "severe": "Severe"
+      "severe": "Severe",
+      "very_frequent": "متكرر جدًا",
+      "very_rare": "نادر جدًا"
     }
   },
   "healthcare": {
@@ -9594,7 +9632,8 @@
       "good": "Good",
       "adequate": "Adequate",
       "limited": "Limited",
-      "poor": "Poor"
+      "poor": "Poor",
+      "moderate": "متوسطة"
     },
     "costLevels": {
       "free": "مجاني",
@@ -9672,7 +9711,12 @@
     "onSiteRequired": "On-site required",
     "effectiveRate": "Effective rate",
     "monthlyNet": "Monthly net",
-    "annualNet": "Annual net"
+    "annualNet": "Annual net",
+    "widget": {
+      "title": "محاكاة ضريبية سريعة",
+      "grossIncome": "الدخل الإجمالي السنوي",
+      "fullCalculator": "الحاسبة الكاملة"
+    }
   },
   "retirement": {
     "projectionTitle": "Retirement Projection 10-20 years",
@@ -10267,7 +10311,8 @@
     "error": {
       "title": "Oops, calculation failed",
       "description": "We couldn't calculate your profile. Please try again or return to the homepage."
-    }
+    },
+    "reassurance": "لا حاجة إلى بطاقة ائتمان. تبقى إجاباتك خاصة."
   },
   "subscription": {
     "tiers": {

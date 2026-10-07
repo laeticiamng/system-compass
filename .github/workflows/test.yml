@@ -1,15 +1,19 @@
 name: CI Pipeline
 
+# Gestionnaire de paquets : bun, avec bun.lock figé.
+# bun.lock est le fichier de verrouillage tenu à jour par Lovable ; package-lock.json
+# est resté figé depuis mars 2026 (lenis, zustand, web-vitals, @playwright/test,
+# @axe-core/playwright absents, jspdf et @lovable.dev/cloud-auth-js en retard),
+# ce qui faisait échouer `npm ci` (ERESOLVE) avant même le premier contrôle.
+#
+# Aucun secret n'est nécessaire : les tests unitaires simulent Supabase et le build
+# Vite n'exige pas les variables VITE_SUPABASE_* (vérifié sans fichier .env).
+
 on:
   push:
     branches: [main, develop]
   pull_request:
     branches: [main, develop]
-
-env:
-  VITE_SUPABASE_PROJECT_ID: ${{ secrets.VITE_SUPABASE_PROJECT_ID }}
-  VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
-  VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -19,7 +23,7 @@ jobs:
   quality:
     name: Code Quality
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -28,16 +32,25 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: '1.3.13'
 
-      - name: Lint
-        run: npx eslint .
+      - name: Install dependencies (lockfile figé)
+        run: bun install --frozen-lockfile
 
-      - name: Type check
-        run: npx tsc --noEmit
+      - name: Lint (ESLint + routage i18n)
+        run: npm run lint
+
+      # Le tsconfig.json racine a `files: []` : `tsc --noEmit` à la racine ne
+      # vérifiait aucun fichier. On vérifie explicitement chaque projet.
+      - name: Type check (application)
+        run: npx tsc -p tsconfig.app.json --noEmit
+
+      - name: Type check (configuration Vite)
+        run: npx tsc -p tsconfig.node.json --noEmit
 
       - name: Run tests
         run: npx vitest run --reporter=verbose
@@ -49,12 +62,12 @@ jobs:
         run: |
           echo "📦 Bundle size report:"
           du -sh dist/
-          du -sh dist/assets/*.js | head -10
+          du -sh dist/assets/*.js | sort -rh | head -10
 
   i18n-check:
     name: i18n Completeness Check
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -63,11 +76,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
-
+      # Les scripts i18n n'utilisent que des modules natifs de Node :
+      # aucune installation de dépendances n'est nécessaire.
       - name: Check duplicate JSON keys
         run: node scripts/check-duplicate-keys.js
 
@@ -97,7 +108,7 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     permissions:
       contents: write
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -106,10 +117,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
 
       - name: Generate i18n coverage
         run: node scripts/generate-i18n-coverage.js
@@ -135,10 +142,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: '1.3.13'
+
+      - name: Install dependencies (lockfile figé)
+        run: bun install --frozen-lockfile
 
       - name: Run tests with coverage
         run: npx vitest run --coverage --reporter=verbose

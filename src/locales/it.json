@@ -675,6 +675,29 @@
       "today": "Oggi",
       "tomorrow": "Tomorrow",
       "empty": "Nessuno événement"
+    },
+    "nextBest": {
+      "label": "Prossimo passo consigliato",
+      "profile": {
+        "title": "Definisci il tuo profilo in 2 minuti",
+        "description": "Senza profilo, i tuoi consigli resteranno generici. Il test rapido ti suggerisce subito i paesi compatibili.",
+        "cta": "Fai il test rapido"
+      },
+      "explore": {
+        "title": "Esplora i paesi compatibili con il tuo profilo",
+        "description": "Segui 2 o 3 paesi per ricevere i loro aggiornamenti e sbloccare il confronto personalizzato.",
+        "cta": "Vedi i paesi consigliati"
+      },
+      "strategy": {
+        "title": "Scegli una strategia di espatrio",
+        "description": "Una strategia struttura il tuo progetto in fasi concrete: preparazione, transizione, insediamento. Risparmi 6 mesi di tentativi.",
+        "cta": "Scopri le strategie"
+      },
+      "execute": {
+        "title": "Segui il tuo prossimo passo",
+        "description": "Continua il tuo piano in corso e spunta le azioni completate per vedere i tuoi progressi.",
+        "cta": "Vedi il mio piano"
+      }
     }
   },
   "achievements": {
@@ -1598,6 +1621,12 @@
     "project": {
       "title": "Analisi personalizzata",
       "subtitle": "In base al tuo progetto e profilo"
+    },
+    "quickActions": {
+      "fiscal": "Fiscalità",
+      "strategies": "Strategie",
+      "expert": "Esperto",
+      "sources": "Fonti"
     }
   },
   "lgbtqRights": {
@@ -1610,7 +1639,12 @@
     "civilUnion": "Unione civile",
     "employmentProtection": "Protezione sul lavoro",
     "safetyRating": "Livello di sicurezza",
-    "notice": "Les droits LGBTQ+ sont pris en compte dans vos recommandations de paese."
+    "notice": "Les droits LGBTQ+ sont pris en compte dans vos recommandations de paese.",
+    "safety": {
+      "safe": "Sicuro",
+      "caution": "Prudenza consigliata",
+      "dangerous": "Pericoloso"
+    }
   },
   "pyramid": {
     "top": "Vertice",
@@ -7101,7 +7135,8 @@
     "error": {
       "title": "Oops, calculation failed",
       "description": "We couldn't calculate your profile. Please try again or return to the homepage."
-    }
+    },
+    "reassurance": "Nessuna carta di credito richiesta. Le tue risposte restano private."
   },
   "profileMatcher": {
     "title": "Corrispondenza profilo",
@@ -8099,7 +8134,9 @@
     "trust": {
       "secure": "Secure payment",
       "noCommitment": "No commitment",
-      "instantAccess": "Instant access"
+      "instantAccess": "Instant access",
+      "refund": "Garanzia soddisfatti o rimborsati di 14 giorni",
+      "cancel": "Disdici in qualsiasi momento"
     },
     "meta": {
       "title": "Tarifs - Compass | Gratuito, Premium et Enterprise",
@@ -8470,7 +8507,12 @@
     "onSiteRequired": "Presenza richiesta",
     "effectiveRate": "Aliquota effettiva",
     "monthlyNet": "Netto mensile",
-    "annualNet": "Netto annuale"
+    "annualNet": "Netto annuale",
+    "widget": {
+      "title": "Simulazione fiscale rapida",
+      "grossIncome": "Reddito lordo annuo",
+      "fullCalculator": "Calcolatore completo"
+    }
   },
   "retirement": {
     "projectionTitle": "Proiezione Pensione 10-20 anni",
@@ -10016,7 +10058,9 @@
       "rare": "Raro",
       "occasional": "Occasional",
       "frequent": "Frequent",
-      "severe": "Severe"
+      "severe": "Severe",
+      "very_frequent": "Molto frequente",
+      "very_rare": "Molto raro"
     }
   },
   "healthcare": {
@@ -10040,7 +10084,8 @@
       "good": "Good",
       "adequate": "Adequate",
       "limited": "Limited",
-      "poor": "Poor"
+      "poor": "Poor",
+      "moderate": "Moderata"
     },
     "costLevels": {
       "free": "Gratuito",

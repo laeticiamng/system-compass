@@ -408,6 +408,12 @@
     "project": {
       "title": "Personalized Analysis",
       "subtitle": "Based on your project and profile"
+    },
+    "quickActions": {
+      "fiscal": "Налоги",
+      "strategies": "Стратегии",
+      "expert": "Эксперт",
+      "sources": "Источники"
     }
   },
   "pyramidTypes": {
@@ -816,6 +822,29 @@
       "today": "Сегодня",
       "tomorrow": "Tomorrow",
       "empty": "Нет événement"
+    },
+    "nextBest": {
+      "label": "Рекомендуемый следующий шаг",
+      "profile": {
+        "title": "Определите свой профиль за 2 минуты",
+        "description": "Без профиля ваши рекомендации будут общими. Быстрый тест сразу предложит подходящие страны.",
+        "cta": "Пройти быстрый тест"
+      },
+      "explore": {
+        "title": "Изучите страны, подходящие вашему профилю",
+        "description": "Отслеживайте 2–3 страны, чтобы получать обновления и открыть персональное сравнение.",
+        "cta": "Посмотреть рекомендуемые страны"
+      },
+      "strategy": {
+        "title": "Выберите стратегию эмиграции",
+        "description": "Стратегия разбивает ваш проект на конкретные этапы: подготовка, переход, обустройство. Вы сэкономите 6 месяцев проб и ошибок.",
+        "cta": "Посмотреть стратегии"
+      },
+      "execute": {
+        "title": "Выполните следующий шаг",
+        "description": "Продолжайте текущий план и отмечайте выполненные действия, чтобы видеть свой прогресс.",
+        "cta": "Открыть мой план"
+      }
     }
   },
   "latent": {
@@ -1377,7 +1406,9 @@
     "trust": {
       "secure": "Secure payment",
       "noCommitment": "No commitment",
-      "instantAccess": "Instant access"
+      "instantAccess": "Instant access",
+      "refund": "Гарантия возврата денег в течение 14 дней",
+      "cancel": "Отмена в любой момент"
     },
     "meta": {
       "title": "Tarifs - Compass | Бесплатно, Premium et Enterprise",
@@ -4404,7 +4435,12 @@
     "civilUnion": "Union civile",
     "employmentProtection": "Protection emploi",
     "safetyRating": "Niveau de sécurité",
-    "notice": "Les droits LGBTQ+ sont pris en compte dans vos recommandations de страна."
+    "notice": "Les droits LGBTQ+ sont pris en compte dans vos recommandations de страна.",
+    "safety": {
+      "safe": "Безопасно",
+      "caution": "Рекомендуется осторожность",
+      "dangerous": "Опасно"
+    }
   },
   "pyramidQuiz": {
     "title": "Игра жизни",
@@ -9729,7 +9765,9 @@
       "rare": "Rare",
       "occasional": "Occasional",
       "frequent": "Frequent",
-      "severe": "Severe"
+      "severe": "Severe",
+      "very_frequent": "Очень часто",
+      "very_rare": "Очень редко"
     }
   },
   "healthcare": {
@@ -9753,7 +9791,8 @@
       "good": "Good",
       "adequate": "Adequate",
       "limited": "Limited",
-      "poor": "Poor"
+      "poor": "Poor",
+      "moderate": "Среднее"
     },
     "costLevels": {
       "free": "Бесплатно",
@@ -9831,7 +9870,12 @@
     "onSiteRequired": "On-site required",
     "effectiveRate": "Effective rate",
     "monthlyNet": "Monthly net",
-    "annualNet": "Annual net"
+    "annualNet": "Annual net",
+    "widget": {
+      "title": "Быстрый налоговый расчёт",
+      "grossIncome": "Годовой доход до налогов",
+      "fullCalculator": "Полный калькулятор"
+    }
   },
   "retirement": {
     "projectionTitle": "Retirement Projection 10-20 years",
@@ -10426,7 +10470,8 @@
     "error": {
       "title": "Oops, calculation failed",
       "description": "We couldn't calculate your profile. Please try again or return to the homepage."
-    }
+    },
+    "reassurance": "Банковская карта не нужна. Ваши ответы остаются конфиденциальными."
   },
   "subscription": {
     "tiers": {

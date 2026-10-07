@@ -408,6 +408,12 @@
     "project": {
       "title": "Personalized Analysis",
       "subtitle": "Based on your project and profile"
+    },
+    "quickActions": {
+      "fiscal": "ٹیکس",
+      "strategies": "حکمت عملیاں",
+      "expert": "ماہر",
+      "sources": "ذرائع"
     }
   },
   "pyramidTypes": {
@@ -816,6 +822,29 @@
       "today": "آج",
       "tomorrow": "Tomorrow",
       "empty": "کوئی نہیں événement"
+    },
+    "nextBest": {
+      "label": "تجویز کردہ اگلا قدم",
+      "profile": {
+        "title": "2 منٹ میں اپنا پروفائل بنائیں",
+        "description": "پروفائل کے بغیر آپ کی سفارشات عمومی رہیں گی۔ فوری ٹیسٹ فوراً آپ کے موافق ممالک تجویز کرتا ہے۔",
+        "cta": "فوری ٹیسٹ دیں"
+      },
+      "explore": {
+        "title": "اپنے پروفائل کے موافق ممالک دریافت کریں",
+        "description": "تازہ معلومات حاصل کرنے اور ذاتی موازنہ کھولنے کے لیے 2 یا 3 ممالک کو فالو کریں۔",
+        "cta": "تجویز کردہ ممالک دیکھیں"
+      },
+      "strategy": {
+        "title": "ہجرت کی ایک حکمت عملی منتخب کریں",
+        "description": "حکمت عملی آپ کے منصوبے کو ٹھوس مراحل میں ترتیب دیتی ہے: تیاری، منتقلی، آباد ہونا۔ آپ آزمائش اور غلطی کے 6 مہینے بچاتے ہیں۔",
+        "cta": "حکمت عملیاں دریافت کریں"
+      },
+      "execute": {
+        "title": "اپنے اگلے قدم پر عمل کریں",
+        "description": "اپنا موجودہ منصوبہ جاری رکھیں اور اپنی پیش رفت دیکھنے کے لیے مکمل شدہ اقدامات پر نشان لگائیں۔",
+        "cta": "میرا منصوبہ دیکھیں"
+      }
     }
   },
   "latent": {
@@ -1377,7 +1406,9 @@
     "trust": {
       "secure": "Secure payment",
       "noCommitment": "No commitment",
-      "instantAccess": "Instant access"
+      "instantAccess": "Instant access",
+      "refund": "14 دن کی رقم واپسی کی ضمانت",
+      "cancel": "کسی بھی وقت منسوخ کریں"
     },
     "meta": {
       "title": "Tarifs - Compass | مفت, Premium et Enterprise",
@@ -4404,7 +4435,12 @@
     "civilUnion": "Union civile",
     "employmentProtection": "Protection emploi",
     "safetyRating": "Niveau de sécurité",
-    "notice": "Les droits LGBTQ+ sont pris en compte dans vos recommandations de ملک."
+    "notice": "Les droits LGBTQ+ sont pris en compte dans vos recommandations de ملک.",
+    "safety": {
+      "safe": "محفوظ",
+      "caution": "احتیاط کا مشورہ",
+      "dangerous": "خطرناک"
+    }
   },
   "pyramidQuiz": {
     "title": "زندگی کا کھیل",
@@ -9733,7 +9769,9 @@
       "rare": "Rare",
       "occasional": "Occasional",
       "frequent": "Frequent",
-      "severe": "Severe"
+      "severe": "Severe",
+      "very_frequent": "بہت کثرت سے",
+      "very_rare": "بہت نایاب"
     }
   },
   "healthcare": {
@@ -9757,7 +9795,8 @@
       "good": "Good",
       "adequate": "Adequate",
       "limited": "Limited",
-      "poor": "Poor"
+      "poor": "Poor",
+      "moderate": "درمیانہ"
     },
     "costLevels": {
       "free": "مفت",
@@ -9835,7 +9874,12 @@
     "onSiteRequired": "On-site required",
     "effectiveRate": "Effective rate",
     "monthlyNet": "Monthly net",
-    "annualNet": "Annual net"
+    "annualNet": "Annual net",
+    "widget": {
+      "title": "فوری ٹیکس تخمینہ",
+      "grossIncome": "سالانہ مجموعی آمدنی",
+      "fullCalculator": "مکمل کیلکولیٹر"
+    }
   },
   "retirement": {
     "projectionTitle": "Retirement Projection 10-20 years",
@@ -10430,7 +10474,8 @@
     "error": {
       "title": "Oops, calculation failed",
       "description": "We couldn't calculate your profile. Please try again or return to the homepage."
-    }
+    },
+    "reassurance": "کریڈٹ کارڈ کی ضرورت نہیں۔ آپ کے جوابات نجی رہتے ہیں۔"
   },
   "subscription": {
     "tiers": {

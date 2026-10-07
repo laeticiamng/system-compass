@@ -30,7 +30,7 @@ const FLUSH_INTERVAL_MS = 5000;
 const MAX_BATCH = 50;
 const MAX_QUEUE = 200;
 
-let queue: LogEntry[] = [];
+const queue: LogEntry[] = [];
 let timer: number | null = null;
 let installed = false;
 
