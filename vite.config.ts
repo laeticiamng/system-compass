@@ -1,11 +1,33 @@
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 import { VitePWA } from "vite-plugin-pwa";
 
 // https://vitejs.dev/config/
+// Configuration Supabase PUBLIQUE de secours (URL + clé anon, protégées par les RLS).
+// Les builds Lovable n'ont plus de .env depuis son retrait du dépôt : sans ces valeurs,
+// le site affichait la page de maintenance / une page blanche. Un .env ou l'environnement
+// restent prioritaires. Ajouté le 07.10.2026 avec l'accord de la CEO.
+const SUPABASE_URL_FALLBACK = "https://abysiagseykztutnbjtu.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY_FALLBACK = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFieXNpYWdzZXlrenR1dG5ianR1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc4MTY2OTYsImV4cCI6MjA4MzM5MjY5Nn0.QE6ruBuuGWJRY2Fls5kXfEFxCMXZZUrmfWM2d_l-qDs";
+const SUPABASE_PROJECT_ID_FALLBACK = "abysiagseykztutnbjtu";
+
+function supabaseDefine(mode: string): Record<string, string> {
+  const env = { ...loadEnv(mode, process.cwd(), "VITE_"), ...process.env };
+  return {
+    ...(!env.VITE_SUPABASE_URL && { "import.meta.env.VITE_SUPABASE_URL": JSON.stringify(SUPABASE_URL_FALLBACK) }),
+    ...(!env.VITE_SUPABASE_PUBLISHABLE_KEY && {
+      "import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY": JSON.stringify(SUPABASE_PUBLISHABLE_KEY_FALLBACK),
+    }),
+    ...(!env.VITE_SUPABASE_PROJECT_ID && {
+      "import.meta.env.VITE_SUPABASE_PROJECT_ID": JSON.stringify(SUPABASE_PROJECT_ID_FALLBACK),
+    }),
+  };
+}
+
 export default defineConfig(({ mode }) => ({
+  define: supabaseDefine(mode),
   server: {
     host: "::",
     port: 8080,
