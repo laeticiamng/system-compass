@@ -675,6 +675,29 @@
       "today": "Vandaag",
       "tomorrow": "Tomorrow",
       "empty": "Geen événement"
+    },
+    "nextBest": {
+      "label": "Aanbevolen volgende stap",
+      "profile": {
+        "title": "Bepaal je profiel in 2 minuten",
+        "description": "Zonder profiel blijven je aanbevelingen algemeen. De snelle test stelt meteen passende landen voor.",
+        "cta": "Doe de snelle test"
+      },
+      "explore": {
+        "title": "Ontdek landen die bij je profiel passen",
+        "description": "Volg 2 of 3 landen om updates te ontvangen en de persoonlijke vergelijking te ontgrendelen.",
+        "cta": "Bekijk aanbevolen landen"
+      },
+      "strategy": {
+        "title": "Kies een emigratiestrategie",
+        "description": "Een strategie deelt je project op in concrete fasen: voorbereiding, overgang, vestiging. Je bespaart 6 maanden uitproberen.",
+        "cta": "Ontdek de strategieën"
+      },
+      "execute": {
+        "title": "Volg je volgende stap",
+        "description": "Ga verder met je huidige plan en vink voltooide acties af om je voortgang te zien.",
+        "cta": "Bekijk mijn plan"
+      }
     }
   },
   "achievements": {
@@ -1598,6 +1621,12 @@
     "project": {
       "title": "Gepersonaliseerde analyse",
       "subtitle": "Op basis van uw project en profiel"
+    },
+    "quickActions": {
+      "fiscal": "Belastingen",
+      "strategies": "Strategieën",
+      "expert": "Expert",
+      "sources": "Bronnen"
     }
   },
   "lgbtqRights": {
@@ -1610,7 +1639,12 @@
     "civilUnion": "Geregistreerd partnerschap",
     "employmentProtection": "Arbeidsbescherming",
     "safetyRating": "Veiligheidsniveau",
-    "notice": "Les droits LGBTQ+ sont pris en compte dans vos recommandations de land."
+    "notice": "Les droits LGBTQ+ sont pris en compte dans vos recommandations de land.",
+    "safety": {
+      "safe": "Veilig",
+      "caution": "Voorzichtigheid geboden",
+      "dangerous": "Gevaarlijk"
+    }
   },
   "pyramid": {
     "top": "Top",
@@ -7101,7 +7135,8 @@
     "error": {
       "title": "Oops, calculation failed",
       "description": "We couldn't calculate your profile. Please try again or return to the homepage."
-    }
+    },
+    "reassurance": "Geen creditcard nodig. Je antwoorden blijven privé."
   },
   "profileMatcher": {
     "title": "Profielmatcher",
@@ -8099,7 +8134,9 @@
     "trust": {
       "secure": "Secure payment",
       "noCommitment": "No commitment",
-      "instantAccess": "Instant access"
+      "instantAccess": "Instant access",
+      "refund": "14 dagen geld-terug-garantie",
+      "cancel": "Altijd opzegbaar"
     },
     "meta": {
       "title": "Tarifs - Compass | Gratis, Premium et Enterprise",
@@ -8470,7 +8507,12 @@
     "onSiteRequired": "Aanwezigheid vereist",
     "effectiveRate": "Effectief tarief",
     "monthlyNet": "Maandelijks netto",
-    "annualNet": "Jaarlijks netto"
+    "annualNet": "Jaarlijks netto",
+    "widget": {
+      "title": "Snelle belastingsimulatie",
+      "grossIncome": "Jaarlijks bruto-inkomen",
+      "fullCalculator": "Volledige calculator"
+    }
   },
   "retirement": {
     "projectionTitle": "Pensioenprojectie 10-20 jaar",
@@ -10016,7 +10058,9 @@
       "rare": "Zeldzaam",
       "occasional": "Occasional",
       "frequent": "Frequent",
-      "severe": "Severe"
+      "severe": "Severe",
+      "very_frequent": "Zeer vaak",
+      "very_rare": "Zeer zelden"
     }
   },
   "healthcare": {
@@ -10040,7 +10084,8 @@
       "good": "Good",
       "adequate": "Adequate",
       "limited": "Limited",
-      "poor": "Poor"
+      "poor": "Poor",
+      "moderate": "Gemiddeld"
     },
     "costLevels": {
       "free": "Gratis",

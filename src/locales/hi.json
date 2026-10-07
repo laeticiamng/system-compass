@@ -634,6 +634,12 @@
     "project": {
       "title": "Personalized Analysis",
       "subtitle": "Based on your project and profile"
+    },
+    "quickActions": {
+      "fiscal": "कर",
+      "strategies": "रणनीतियाँ",
+      "expert": "विशेषज्ञ",
+      "sources": "स्रोत"
     }
   },
   "pyramids": {
@@ -1149,6 +1155,29 @@
       "today": "आज",
       "tomorrow": "Tomorrow",
       "empty": "कोई नहीं événement"
+    },
+    "nextBest": {
+      "label": "अनुशंसित अगला कदम",
+      "profile": {
+        "title": "2 मिनट में अपनी प्रोफ़ाइल बनाएँ",
+        "description": "प्रोफ़ाइल के बिना आपकी सिफ़ारिशें सामान्य रहेंगी। त्वरित परीक्षण तुरंत आपके अनुकूल देश सुझाता है।",
+        "cta": "त्वरित परीक्षण करें"
+      },
+      "explore": {
+        "title": "अपनी प्रोफ़ाइल के अनुकूल देशों को देखें",
+        "description": "अपडेट पाने और व्यक्तिगत तुलना अनलॉक करने के लिए 2 या 3 देशों को फ़ॉलो करें।",
+        "cta": "अनुशंसित देश देखें"
+      },
+      "strategy": {
+        "title": "प्रवास की एक रणनीति चुनें",
+        "description": "रणनीति आपकी परियोजना को ठोस चरणों में बाँटती है: तैयारी, संक्रमण, बसना। इससे आप 6 महीने की आज़माइश बचाते हैं।",
+        "cta": "रणनीतियाँ देखें"
+      },
+      "execute": {
+        "title": "अपने अगले कदम का पालन करें",
+        "description": "अपनी मौजूदा योजना जारी रखें और अपनी प्रगति देखने के लिए पूरी हुई कार्रवाइयों पर निशान लगाएँ।",
+        "cta": "मेरी योजना देखें"
+      }
     }
   },
   "latent": {
@@ -2005,7 +2034,9 @@
     "trust": {
       "secure": "Secure payment",
       "noCommitment": "No commitment",
-      "instantAccess": "Instant access"
+      "instantAccess": "Instant access",
+      "refund": "14 दिन की मनी-बैक गारंटी",
+      "cancel": "कभी भी रद्द करें"
     },
     "meta": {
       "title": "Tarifs - Compass | मुफ़्त, Premium et Enterprise",
@@ -4245,7 +4276,12 @@
     "civilUnion": "Union civile",
     "employmentProtection": "Protection emploi",
     "safetyRating": "Niveau de sécurité",
-    "notice": "Les droits LGBTQ+ sont pris en compte dans vos recommandations de देश."
+    "notice": "Les droits LGBTQ+ sont pris en compte dans vos recommandations de देश.",
+    "safety": {
+      "safe": "सुरक्षित",
+      "caution": "सावधानी की सलाह",
+      "dangerous": "ख़तरनाक"
+    }
   },
   "pyramidQuiz": {
     "title": "जीवन का खेल",
@@ -9566,7 +9602,9 @@
       "rare": "Rare",
       "occasional": "Occasional",
       "frequent": "Frequent",
-      "severe": "Severe"
+      "severe": "Severe",
+      "very_frequent": "बहुत बार-बार",
+      "very_rare": "बहुत दुर्लभ"
     }
   },
   "healthcare": {
@@ -9590,7 +9628,8 @@
       "good": "Good",
       "adequate": "Adequate",
       "limited": "Limited",
-      "poor": "Poor"
+      "poor": "Poor",
+      "moderate": "मध्यम"
     },
     "costLevels": {
       "free": "मुफ़्त",
@@ -9668,7 +9707,12 @@
     "onSiteRequired": "On-site required",
     "effectiveRate": "Effective rate",
     "monthlyNet": "Monthly net",
-    "annualNet": "Annual net"
+    "annualNet": "Annual net",
+    "widget": {
+      "title": "त्वरित कर अनुमान",
+      "grossIncome": "वार्षिक सकल आय",
+      "fullCalculator": "पूरा कैलकुलेटर"
+    }
   },
   "retirement": {
     "projectionTitle": "Retirement Projection 10-20 years",
@@ -10263,7 +10307,8 @@
     "error": {
       "title": "Oops, calculation failed",
       "description": "We couldn't calculate your profile. Please try again or return to the homepage."
-    }
+    },
+    "reassurance": "क्रेडिट कार्ड की आवश्यकता नहीं। आपके उत्तर निजी रहते हैं।"
   },
   "subscription": {
     "tiers": {

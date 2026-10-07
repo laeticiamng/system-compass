@@ -634,6 +634,12 @@
     "project": {
       "title": "Personalized Analysis",
       "subtitle": "Based on your project and profile"
+    },
+    "quickActions": {
+      "fiscal": "税务",
+      "strategies": "策略",
+      "expert": "专家",
+      "sources": "来源"
     }
   },
   "pyramids": {
@@ -1149,6 +1155,29 @@
       "today": "今天",
       "tomorrow": "Tomorrow",
       "empty": "无 événement"
+    },
+    "nextBest": {
+      "label": "推荐的下一步",
+      "profile": {
+        "title": "2 分钟完成个人档案",
+        "description": "没有个人档案，推荐内容将较为笼统。快速测试会立即为您推荐匹配的国家。",
+        "cta": "进行快速测试"
+      },
+      "explore": {
+        "title": "探索与您档案匹配的国家",
+        "description": "关注 2 到 3 个国家，即可接收其最新动态并解锁个性化比较。",
+        "cta": "查看推荐国家"
+      },
+      "strategy": {
+        "title": "选择一项移居策略",
+        "description": "策略会将您的计划分为具体阶段：准备、过渡、安顿。为您节省 6 个月的反复摸索。",
+        "cta": "探索策略"
+      },
+      "execute": {
+        "title": "执行您的下一步",
+        "description": "继续当前计划，并勾选已完成的行动以查看进度。",
+        "cta": "查看我的计划"
+      }
     }
   },
   "latent": {
@@ -2012,7 +2041,9 @@
     "trust": {
       "secure": "Secure payment",
       "noCommitment": "No commitment",
-      "instantAccess": "Instant access"
+      "instantAccess": "Instant access",
+      "refund": "14 天退款保证",
+      "cancel": "随时取消"
     },
     "meta": {
       "title": "Tarifs - Compass | 免费, Premium et Enterprise",
@@ -4256,7 +4287,12 @@
     "civilUnion": "Union civile",
     "employmentProtection": "Protection emploi",
     "safetyRating": "Niveau de sécurité",
-    "notice": "Les droits LGBTQ+ sont pris en compte dans vos recommandations de 国家."
+    "notice": "Les droits LGBTQ+ sont pris en compte dans vos recommandations de 国家.",
+    "safety": {
+      "safe": "安全",
+      "caution": "建议谨慎",
+      "dangerous": "危险"
+    }
   },
   "pyramidQuiz": {
     "title": "人生游戏",
@@ -9577,7 +9613,9 @@
       "rare": "Rare",
       "occasional": "Occasional",
       "frequent": "Frequent",
-      "severe": "Severe"
+      "severe": "Severe",
+      "very_frequent": "非常频繁",
+      "very_rare": "非常罕见"
     }
   },
   "healthcare": {
@@ -9601,7 +9639,8 @@
       "good": "Good",
       "adequate": "Adequate",
       "limited": "Limited",
-      "poor": "Poor"
+      "poor": "Poor",
+      "moderate": "中等"
     },
     "costLevels": {
       "free": "免费",
@@ -9679,7 +9718,12 @@
     "onSiteRequired": "On-site required",
     "effectiveRate": "Effective rate",
     "monthlyNet": "Monthly net",
-    "annualNet": "Annual net"
+    "annualNet": "Annual net",
+    "widget": {
+      "title": "快速税务模拟",
+      "grossIncome": "年度总收入",
+      "fullCalculator": "完整计算器"
+    }
   },
   "retirement": {
     "projectionTitle": "Retirement Projection 10-20 years",
@@ -10274,7 +10318,8 @@
     "error": {
       "title": "Oops, calculation failed",
       "description": "We couldn't calculate your profile. Please try again or return to the homepage."
-    }
+    },
+    "reassurance": "无需信用卡。您的回答将保持私密。"
   },
   "subscription": {
     "tiers": {

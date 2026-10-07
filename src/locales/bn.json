@@ -408,6 +408,12 @@
     "project": {
       "title": "Personalized Analysis",
       "subtitle": "Based on your project and profile"
+    },
+    "quickActions": {
+      "fiscal": "কর",
+      "strategies": "কৌশল",
+      "expert": "বিশেষজ্ঞ",
+      "sources": "সূত্র"
     }
   },
   "pyramidTypes": {
@@ -816,6 +822,29 @@
       "today": "আজ",
       "tomorrow": "Tomorrow",
       "empty": "কোনোটিই নয় événement"
+    },
+    "nextBest": {
+      "label": "প্রস্তাবিত পরবর্তী ধাপ",
+      "profile": {
+        "title": "২ মিনিটে আপনার প্রোফাইল তৈরি করুন",
+        "description": "প্রোফাইল ছাড়া আপনার সুপারিশগুলো সাধারণ থাকবে। দ্রুত পরীক্ষাটি সঙ্গে সঙ্গে উপযুক্ত দেশগুলো প্রস্তাব করে।",
+        "cta": "দ্রুত পরীক্ষা দিন"
+      },
+      "explore": {
+        "title": "আপনার প্রোফাইলের সাথে মানানসই দেশগুলো অন্বেষণ করুন",
+        "description": "আপডেট পেতে এবং ব্যক্তিগতকৃত তুলনা আনলক করতে ২ বা ৩টি দেশ অনুসরণ করুন।",
+        "cta": "প্রস্তাবিত দেশগুলো দেখুন"
+      },
+      "strategy": {
+        "title": "একটি প্রবাস কৌশল বেছে নিন",
+        "description": "একটি কৌশল আপনার প্রকল্পকে বাস্তব ধাপে সাজায়: প্রস্তুতি, রূপান্তর, স্থায়ী হওয়া। এতে আপনি ৬ মাসের চেষ্টা-ভুল বাঁচান।",
+        "cta": "কৌশলগুলো আবিষ্কার করুন"
+      },
+      "execute": {
+        "title": "আপনার পরবর্তী ধাপ অনুসরণ করুন",
+        "description": "আপনার চলমান পরিকল্পনা চালিয়ে যান এবং অগ্রগতি দেখতে সম্পন্ন কাজগুলোতে টিক দিন।",
+        "cta": "আমার পরিকল্পনা দেখুন"
+      }
     }
   },
   "latent": {
@@ -1377,7 +1406,9 @@
     "trust": {
       "secure": "Secure payment",
       "noCommitment": "No commitment",
-      "instantAccess": "Instant access"
+      "instantAccess": "Instant access",
+      "refund": "১৪ দিনের টাকা ফেরতের নিশ্চয়তা",
+      "cancel": "যেকোনো সময় বাতিল করুন"
     },
     "meta": {
       "title": "Tarifs - Compass | বিনামূল্যে, Premium et Enterprise",
@@ -4404,7 +4435,12 @@
     "civilUnion": "Union civile",
     "employmentProtection": "Protection emploi",
     "safetyRating": "Niveau de sécurité",
-    "notice": "Les droits LGBTQ+ sont pris en compte dans vos recommandations de দেশ."
+    "notice": "Les droits LGBTQ+ sont pris en compte dans vos recommandations de দেশ.",
+    "safety": {
+      "safe": "নিরাপদ",
+      "caution": "সতর্কতা প্রয়োজন",
+      "dangerous": "বিপজ্জনক"
+    }
   },
   "pyramidQuiz": {
     "title": "জীবন খেলা",
@@ -9729,7 +9765,9 @@
       "rare": "Rare",
       "occasional": "Occasional",
       "frequent": "Frequent",
-      "severe": "Severe"
+      "severe": "Severe",
+      "very_frequent": "খুব ঘন ঘন",
+      "very_rare": "খুব বিরল"
     }
   },
   "healthcare": {
@@ -9753,7 +9791,8 @@
       "good": "Good",
       "adequate": "Adequate",
       "limited": "Limited",
-      "poor": "Poor"
+      "poor": "Poor",
+      "moderate": "মাঝারি"
     },
     "costLevels": {
       "free": "বিনামূল্যে",
@@ -9831,7 +9870,12 @@
     "onSiteRequired": "On-site required",
     "effectiveRate": "Effective rate",
     "monthlyNet": "Monthly net",
-    "annualNet": "Annual net"
+    "annualNet": "Annual net",
+    "widget": {
+      "title": "দ্রুত কর হিসাব",
+      "grossIncome": "বার্ষিক মোট আয়",
+      "fullCalculator": "সম্পূর্ণ ক্যালকুলেটর"
+    }
   },
   "retirement": {
     "projectionTitle": "Retirement Projection 10-20 years",
@@ -10426,7 +10470,8 @@
     "error": {
       "title": "Oops, calculation failed",
       "description": "We couldn't calculate your profile. Please try again or return to the homepage."
-    }
+    },
+    "reassurance": "কোনো ক্রেডিট কার্ড লাগবে না। আপনার উত্তর গোপন থাকবে।"
   },
   "subscription": {
     "tiers": {
